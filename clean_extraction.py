@@ -22,12 +22,15 @@ SUP_TOKEN_RE = re.compile(r"^[0-9npNP+\-]{1,2}$")
 # exposants) dans ce cours -> pas d'ambiguïté contrairement à "n"/"p"/un chiffre
 SUBSCRIPT = {
     "i": "ᵢ", "j": "ⱼ", "k": "ₖ", "l": "ₗ", "m": "ₘ", "n": "ₙ", "p": "ₚ",
+    "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
+    "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
 }
 INDEX_LETTER_RE = re.compile(r"^[ijklm]$")
-# "∂fi", "∂xj", "∂fn" sur UNE seule ligne (contrairement aux cas coupés par
-# un saut de ligne) : sans ambiguïté car "∂" n'apparaît jamais dans un mot
-# français, donc pas de risque de confondre avec "affine", "modifie", etc.
-PARTIAL_DERIV_INDEX_RE = re.compile(r"∂([a-zA-Z])([ijklmnp])\b")
+# "∂fi", "∂xj", "∂fn", "∂f1", "∂x12" sur UNE seule ligne (contrairement aux
+# cas coupés par un saut de ligne) : sans ambiguïté car "∂" n'apparaît
+# jamais dans un mot français, donc pas de risque de confondre avec
+# "affine", "modifie", etc.
+PARTIAL_DERIV_INDEX_RE = re.compile(r"∂([a-zA-Z])([ijklmnp]|\d{1,2})\b")
 # l'exposant peut aussi être seulement en tête de la ligne suivante,
 # suivi du reste de la phrase sur la même ligne ("n dans R occupe...")
 SUP_TOKEN_LEADING_RE = re.compile(r"^([0-9npNP+\-]{1,2})(\s+(\S.*))?$")
@@ -128,9 +131,10 @@ def strip_control_chars(text):
 
 
 def fix_inline_partial_derivative_indices(text):
-    return PARTIAL_DERIV_INDEX_RE.sub(
-        lambda m: "∂" + m.group(1) + SUBSCRIPT[m.group(2)], text
-    )
+    def repl(m):
+        idx = "".join(SUBSCRIPT[ch] for ch in m.group(2))
+        return "∂" + m.group(1) + idx
+    return PARTIAL_DERIV_INDEX_RE.sub(repl, text)
 
 
 def clean_text(text):
