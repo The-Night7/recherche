@@ -10,13 +10,17 @@ Usage:
 """
 import html
 import json
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 from search import load_index, search
 from clean_extraction import to_blocks
 
-PORT = 8000
+# en local: http://localhost:8000 . En ligne (Render, Railway, etc.),
+# la plateforme fixe le port et l'hôte via la variable d'env PORT.
+PORT = int(os.environ.get("PORT", 8000))
+HOST = os.environ.get("HOST", "0.0.0.0")
 
 print("Chargement de l'index...")
 TFIDF, IDF, VOCAB, CHUNKS = load_index()
@@ -218,8 +222,9 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    server = ThreadingHTTPServer(("localhost", PORT), Handler)
-    print(f"\nOuvre http://localhost:{PORT} dans ton navigateur.")
+    server = ThreadingHTTPServer((HOST, PORT), Handler)
+    print(f"\nServeur lancé sur {HOST}:{PORT}")
+    print(f"En local: http://localhost:{PORT}")
     print("Ctrl+C pour arrêter le serveur.\n")
     try:
         server.serve_forever()
