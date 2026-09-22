@@ -146,6 +146,7 @@ def clean_text(text):
 
 
 LIST_MARKER_RE = re.compile(r"^(\d+[.)]|\(?[a-z]\)|[-•∀∃])\s")
+PURE_ELLIPSIS_RE = re.compile(r"^[.\s⋮⋯…]+$")
 
 
 def is_formula_line(line):
@@ -219,6 +220,10 @@ def to_blocks(text):
         if not stripped:
             flush_prose()
             flush_formula()
+            continue
+        if PURE_ELLIPSIS_RE.match(stripped):
+            # "...", ". . .", "⋮" : notation de matrice qui n'a plus de sens
+            # une fois la structure (lignes/colonnes) perdue par la linéarisation
             continue
         if is_formula_line(stripped) or LIST_MARKER_RE.match(stripped):
             flush_prose()
