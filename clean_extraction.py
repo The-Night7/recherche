@@ -21,9 +21,13 @@ SUP_TOKEN_RE = re.compile(r"^[0-9npNP+\-]{1,2}$")
 # lettres d'indice de sommation/produit : toujours des indices (jamais des
 # exposants) dans ce cours -> pas d'ambiguïté contrairement à "n"/"p"/un chiffre
 SUBSCRIPT = {
-    "i": "ᵢ", "j": "ⱼ", "k": "ₖ", "l": "ₗ", "m": "ₘ",
+    "i": "ᵢ", "j": "ⱼ", "k": "ₖ", "l": "ₗ", "m": "ₘ", "n": "ₙ", "p": "ₚ",
 }
 INDEX_LETTER_RE = re.compile(r"^[ijklm]$")
+# "∂fi", "∂xj", "∂fn" sur UNE seule ligne (contrairement aux cas coupés par
+# un saut de ligne) : sans ambiguïté car "∂" n'apparaît jamais dans un mot
+# français, donc pas de risque de confondre avec "affine", "modifie", etc.
+PARTIAL_DERIV_INDEX_RE = re.compile(r"∂([a-zA-Z])([ijklmnp])\b")
 # l'exposant peut aussi être seulement en tête de la ligne suivante,
 # suivi du reste de la phrase sur la même ligne ("n dans R occupe...")
 SUP_TOKEN_LEADING_RE = re.compile(r"^([0-9npNP+\-]{1,2})(\s+(\S.*))?$")
@@ -123,11 +127,18 @@ def strip_control_chars(text):
     return CONTROL_CHAR_RE.sub("", text)
 
 
+def fix_inline_partial_derivative_indices(text):
+    return PARTIAL_DERIV_INDEX_RE.sub(
+        lambda m: "∂" + m.group(1) + SUBSCRIPT[m.group(2)], text
+    )
+
+
 def clean_text(text):
     lines = text.split("\n")
     lines = strip_running_headers(lines)
     lines = merge_superscripts(lines)
-    return strip_control_chars("\n".join(lines))
+    cleaned = strip_control_chars("\n".join(lines))
+    return fix_inline_partial_derivative_indices(cleaned)
 
 
 LIST_MARKER_RE = re.compile(r"^(\d+[.)]|\(?[a-z]\)|[-•∀∃])\s")
