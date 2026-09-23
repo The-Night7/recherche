@@ -30,6 +30,7 @@ Mettre la transcription Markdown + LaTeX dans
 data/<cours>/transcriptions/<nom du PDF>.md puis lancer `build`.
 """
 import hashlib
+import inspect
 import json
 import os
 import re
@@ -210,14 +211,18 @@ def cmd_sync(urls):
     os.makedirs(DRIVE_DIR, exist_ok=True)
     for url in urls:
         print(f"Téléchargement de {url} …")
+        # les options de gdown changent d'une version à l'autre : on ne passe que celles qu'il connaît
+        wanted = {"output": DRIVE_DIR, "quiet": False, "resume": True, "remaining_ok": True, "retries": 3}
+        params = inspect.signature(gdown.download_folder).parameters
         try:
-            gdown.download_folder(url, output=DRIVE_DIR, quiet=True, remaining_ok=True, resume=True)
-        except TypeError:  # anciennes versions de gdown, sans resume
-            gdown.download_folder(url, output=DRIVE_DIR, quiet=True, remaining_ok=True)
+            files = gdown.download_folder(url, **{k: v for k, v in wanted.items() if k in params})
         except Exception as e:
-            sys.exit(f"Échec du téléchargement ({e}).\nLe dossier doit être partagé à « tous les "
-                     f"utilisateurs disposant du lien ». Sinon : télécharge-le depuis Drive, "
-                     f"dézippe, puis `python3 ingest.py add <dossier>`.")
+            files = None
+            print(f"  erreur : {e}")
+        if not files:
+            sys.exit("Échec du téléchargement.\nLe dossier doit être partagé à « tous les "
+                     "utilisateurs disposant du lien ». Sinon : télécharge-le depuis Drive, "
+                     "dézippe, puis `python3 ingest.py add <dossier>`.")
     if cmd_add([DRIVE_DIR]):
         cmd_build()
     else:
