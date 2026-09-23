@@ -1,0 +1,385 @@
+Exercice 1 : questions de cours (5.25 points)
+Partie 1 : déﬁnitions (2.25 points)
+1. SoitE un R-espace vectoriel etN une application deE dansN. Sous
+quelles conditionsN est-elle une norme surE. (0.75 point)
+2. Donner la déﬁnition d’un ouvert. (0.5 point)
+3. Soit (E,N ) un espace vectoriel normé etA⊂E.
+(a) Donner la déﬁnition de l’intérieur de A, noté
+◦
+A. (0.5)
+(b) Donner la déﬁnition de l’adhérence de A, notéA. (0.5)
+Solutions :
+1. N est une norme surE ssi
+— soit x∈E alors, N (x) = 0 =⇒x = 0E (0.25 point)
+— ∀λ∈ R,∀x∈E, N(λx) =|λ|N (x) (0.25 point)
+— ∀x,y∈E, N(x +y)≤N (x) +N (y) (0.25 point)
+2. (0.5 point) Soit(E,N ) un espace vectoriel normé etA⊂E. AlorsA
+est un ouvert deE si et seulement si
+∀x∈A,∃r> 0 / B(x,r )⊂A
+évidemment la déﬁntion avec le voisinage fonctionne aussi :
+A est un ouvert ssiA est voisinage de tous ses points.
+3. Soit (E,N ) un espace vectoriel normé etA⊂E, alors
+(a) (0.5 point) alors l’intérieur deA, noté
+◦
+A est déﬁni par
+x∈
+◦
+A⇐⇒∃r> 0 / B(x,r )⊂A
+(b) (0.5 point) alors l’adhérent deA, notéA est déﬁni par
+x∈A⇐⇒∀r> 0, B(x,r )∩A⁄=∅
+1
+<<<PAGE>>>
+Partie 2 : démonstrations de cours (3 points)
+Soit (E,‖·‖) un espace vectoriel normé. SoientA etB deux ensembles deE.
+Montrer que
+1. A∪B =A∪B (2 points)
+2. A∩B⊂A∩B (1 point)
+Solution :
+1. (2 points : 1 point pour chaque inclusion)
+Montrons queA∪B =A∪B :
+{
+A⊂A∪B
+B⊂A∪B =⇒
+{
+A⊂A∪B
+B⊂A∪B =⇒A∪B⊂A∪B
+OrA∪B est un fermé puisqueA etB sont des fermés. Ceci implique
+que
+A∪B =A∪B
+De plus
+{
+A⊂A
+B⊂B =⇒A∪B⊂A∪B =⇒A∪B⊂A∪B =A∪B
+Finalement, puisqueA∪B⊂A∪B et A∪B⊂A∪B, on a
+A∪B =A∪B
+2. (1 point)
+Montrons queA∩B⊂A∩B
+{
+A∩B⊂A
+A∩B⊂B =⇒
+{
+A∩B⊂A
+A∩B⊂B =⇒A∩B⊂A∩B
+2
+<<<PAGE>>>
+Exercice 2 : Norme sur l’espace des fonctions (10.25
+points)
+Onnote E le R-espacevectorieldesapplications f de [0, 1]dans RdeclasseC1
+sur [0, 1] et telles quef (0) = 0. Pourf∈E, on déﬁnit les deux applications
+suivantes
+N (f ) = sup
+x∈[0,1]
+|f (x)| + sup
+x∈[0,1]
+|f′(x)|
+ν(f ) = sup
+x∈[0,1]
+|f (x) +f′(x)|
+1. Les applicationsN et ν sont-elles des normes surE? (4.5 points)
+2. On introduit maintenant la fonctiong(x) = exf (x).
+(a) Montrer que∀f,∀x∈ [0, 1],|g′(x)|≤ eν(f ). (0.5 point)
+(b) Montrer que∀f,∀x∈ [0, 1],|g(x)|≤ eν(f ). (1 point)
+(c) En déduire que|f (x)|≤ eν(f ) et|f′(x)|≤ (1 +e)ν(f ). (2 points)
+3. Trouver alorsα> 0 et β >0 tels que
+αν(f )≤N (f )≤βν (f )
+(2 points)
+4. Que peut on déduire des applicationsN et ν? (0.25 point)
+1. Commençons par montrer queN est une norme.
+— (0.25 point) SiN (f ) = 0 alors∀x∈ [0, 1], f(x) = f′(x) = 0 d’où
+l’on déduit quef = 0.
+— (0.25 point) Soitf∈E et λ∈ R. Alors
+N (λf ) = sup
+x∈[0,1]
+|λf (x)| + sup
+x∈[0,1]
+|λf′(x)| =|λ|N (f )
+— (1.5 point) Montrons maintenant l’inégalité triangulaire. Pour cela
+commençons par remarquer que∀x∈ [0, 1]
+|f (x) +g(x)|≤| f (x)| +|g(x)|≤ sup
+x∈[0,1]
+|f (x)| + sup
+x∈[0,1]
+|g(x)|
+|f′(x) +g′(x)|≤| f′(x)| +|g′(x)|≤ sup
+x∈[0,1]
+|f′(x)| + sup
+x∈[0,1]
+|g′(x)|
+3
+<<<PAGE>>>
+On a ainsi
+|f (x)+g(x)|+|f′(x)+g′(x)|≤ sup
+x∈[0,1]
+|f (x)|+ sup
+x∈[0,1]
+|g(x)|+ sup
+x∈[0,1]
+|f′(x)|+ sup
+x∈[0,1]
+|g′(x)|
+En prenant alors le sup de cette expression, ce qui ne change rien
+au terme de droite alors
+N (f +g)≤N (f ) +N (g)
+Donc N est bien une norme.
+Etudions maintenant l’applicationν.
+— (0.75 point) Si ν(f ) = 0 alors supx∈[0,1]|f (x) + f′(x)| = 0 . Il
+faut donc que∀x∈ [0, 1] f (x) + f′(x) = 0 ce qui implique que
+f (x) = Ce−x (avecC une constante). Orf (0) = 0 , doncC = 0.
+Et ﬁnalementf = 0.
+— (0.25 point)∀f∈E et∀λ∈ R
+ν(λf ) = sup
+x∈[0,1]
+(|λ|×| f (x) +f′(x)|) =|λ|ν(f )
+— (1.5 points) Montrons maintenant l’inégalité triangulaire. Pour
+cela, remarquons que,∀x∈ [0, 1]
+|f (x) +f′(x) +g(x)+g′(x)|≤| f (x) +f′(x)| +|g(x) +g′(x)|
+≤ sup
+x∈[0,1]
+|f (x) +f′(x)| + sup
+x∈[0,1]
+|g(x) +g′(x)|
+Il ne reste plus qu’à prendre le sup de l’expression précédente, d’où
+l’on déduit que
+ν(f +g)≤ν(f ) +ν(g)
+Finalementν est bien une norme surE.
+2. g(x) = exf (x) :
+(a) (0.5 point) Alors∀x∈ [0, 1]
+|g′(x)| =|ex(f (x) +f′(x))| =ex|f (x) +f′(x)|≤ eν(f )
+(b) (1 point)∀x∈ [0, 1]
+|g(x)| =
+⏐⏐⏐⏐
+∫ x
+0
+g′(t)dt
+⏐⏐⏐⏐≤
+∫ x
+0
+|g′(t)|dt≤xeν(f )≤eν(f )
+4
+<<<PAGE>>>
+(c) On a alors
+|f (x)|≤| g(x)|≤ eν(f )
+(0.5 point)
+De plus
+|f′(x)| =|f′(x)+f (x)−f (x)|≤| f (x)+f′(x)|+|f (x)|≤ (1+e)ν(f )
+(1.5 points)
+3. ∀x∈ [0, 1], on a donc|f (x)| +|f′(x)|≤ (1 + 2e)ν(f ). Or
+N (f ) = sup
+x∈[0,1]
+|f (x)| + sup
+x∈[0,1]
+|f′(x)|≤ (1 + 2e)ν(f )
+donc β = 1 + 2e. (1 point)
+De plus∀f∈E et∀x∈ [0, 1]
+|f (x) +f′(x)|≤| f (x)| +|f′(x)|≤ sup
+x∈[0,1]
+|f (x)| + sup
+x∈[0,1]
+|f′(x)|
+d’où l’on déduit que
+ν(f )≤N (f )
+donc α = 1 (1 point).
+On a donc
+ν(f )≤N (f )≤ (1 + 2e)ν(f ) (1)
+4. Compte-tenu de (1), les deux normes sont équivalentes. (0.25 point)
+Exercice 3 : Ouvert, fermé, adhérence et intérieur (5
+points)
+Pour les ensembles suivants montrer s’ils sont des ouverts, des fermées ou
+aucun des deux et déterminer leur adhérent et leur intérieur
+1. On considère l’ensembleU1 =A∪B où
+A =
+{
+(x,y )∈ R2 / 0≤x≤ 1 et|y|≤ 1−x
+}
+B =
+{
+(x,y )∈ R2 / − 1≤x≤ 0 et|y|≤ 1 +x
+}
+5
+<<<PAGE>>>
+2.
+U2 =
+{
+(x,y )∈ R2 / 1
+2x2 + 3y2≤ 1
+}
+3.
+U3 =]−∞, 0]∪]− 1, 1[∪[3, 6[∪{7}
+Solution :
+1. La façon la plus simple de répondre à cette question est de voir que
+U1 =B1((0, 0), 1). Ainsi,U1 est un fermé et pas un ouvert (0.5 point).
+De plusU 1 =U1 (0.5 point) et alors
+◦
+U 1 =B1((0, 0), 1) (0.5 point).
+2. On peut par exemple déﬁnir la fonction continue de R2 dans R,
+f (x,y ) = 1
+2x2 + 3y2. Alors dans ce cas, U2 = f−1(]−∞, 1]). U2
+est donc l’image réciproque d’un fermé par une application continue
+donc c’est un fermé (0.5 point). CommeU2 est un fermé,U 2 = U2
+(0.5 point).
+Déterminons maintenant l’intérieur (1 point). Pour cela, je pense que
+l’on pourrait faire un exo intéressant pour les années à venir aﬁn de
+démontrer la conjecture suivante :
+Si A =f−1(B) alors
+◦
+A =f−1(
+◦
+B) (2)
+où f est une application continue. J’ai la ﬂemme de démontrer cela
+proprement ce soir.
+Mais nous allons le faire de manière plus classique. Posons donc
+comme candidat
+C =
+{
+(x,y )∈ R2 / 1
+2x2 + 3y2< 1
+}
+AlorsC est bien un ouvert (carC =f−1(]−∞, 1[)) etC⊂U2. Ainsi,
+on sait queC⊂
+◦
+U2. Démontrons maintenant que
+◦
+U2⊂C. Or cela est
+vrai ssi
+∀X∈U2\C,∀r> 0,B (X,r )⁄⊂U2
+Or
+U2\C =
+{
+(x,y )∈ R2 / 1
+2x2 + 3y2 = 1
+}
+6
+<<<PAGE>>>
+or c’est clairement le cas car ceci correspond au bord de l’ellipse...
+Finalement
+◦
+U2 =C.
+3. Commençons par remarquer queU3 =]−∞, 1[∪[3, 6[∪{7}.
+Clairement ce n’est ni un ouvert (à cause du singleton7 ou de3 (0.25
+point)) ni un fermé (à cause de1 et 6 (0.25 point)). De plus l’adhérent
+d’une union et l’union des adhérents doncU 3 =]−∞, 1]∪ [3, 6]∪{ 7}
+(0.5 point).
+(0.5 point) Cherchons maintenant
+◦
+U3. Pour cela, proposons le can-
+didat suivantC =]−∞, 1[∪]3, 6[.C est bien un ouvert et inclus dans
+U3 d’où l’on déduit queC⊂
+◦
+U3. Démontrons maintenant que
+◦
+U3⊂C.
+Or cela est vrai ssi
+∀X∈U3\C,∀r> 0,B (X,r )⁄⊂U2
+où
+U3\C ={3}∪{ 7}
+qui vériﬁe clairement la condition (3).
+Exercice 4 : Limite de fonction
+Déterminer la limite des fonctions suivantes
+1. en (0,0) de
+f1(x,y ) = x3 +y3
+x2 +y4
+(0.5 point)
+2. en (0,0) de
+f2(x,y ) = x3y2
+x6 +y4
+(0.5 point)
+3. en (0,0) de
+f3(x,y ) = x2 +y2
+1−e(x2+y2)
+(1 point)
+7
+<<<PAGE>>>
+4. en (0,0,0,0) de
+f4(x,y,u,v ) = x3 +y3− 1
+2u3−v3
+x3 +y2
+(1 point)
+5. en (0,0) de
+f5(x,y ) =
+√
+x2 +y2
+|x|
+√
+|y| +|y|
+√
+|x|
+Indication : on montrera que |x|
+√
+|y| +|y|
+√
+|x|≤ 2
+(
+max(|x|,|y|)
+)3/2.
+(1.5 points)
+Solution :
+1. Considérons f1(0,y ) = 1/y qui tend vers±∞ donc pas de limite en
+(0, 0).(0.5 point)
+2. Clairementf2(x, 0) = f2(0,y ) = 0 donc la limite def2 pour ces deux
+est 0. Mais,f (x,x 3/2) = x6
+2x6 = 1
+2. Donc la fonction n’a pas de limite.
+(0.5 point)
+3. Passons en coordonnées polaires. Alorsx2 +y2 =ρ2. Ainsi
+˜f3(ρ,θ ) = ρ2
+1−eρ2
+Or pourt∈ R qui tend vers0, on a
+et = 1 +t +tϵ(t)
+avecϵ qui tend vers0 quand t tend vers 0. Ainsi
+eρ2
+= 1 +ρ2 +ρ2ϵ(ρ)
+On a donc
+lim
+(x,y)→(0,0)
+f3(x,y ) = lim
+ρ→0
+ρ2
+−ρ2−ρ2ϵ(ρ) =−1
+donc la limite def3 en (0, 0) est−1. (1 point)
+4. f4(x, 0, 0, 0) = 1 alors quef4(x, 0,x, 0) = 1/2 donc pas de limite. (1
+point)
+8
+<<<PAGE>>>
+5. Commençons par montrer que l’indication est vraie. Pour cela, consi-
+dérons tout d’abord quemax(|x|,|y|) =|y|. Alors
+|x|
+√
+|y|≤| y|
+√
+|y| =|y|3/2
+|y|
+√
+|x|≤| y|
+√
+|y| =|y|3/2 (3)
+d’o l’on déduit que
+|x|
+√
+|y| +|y|
+√
+|x|≤ 2|y|3/2
+Si on posemax(|x|,|y|) =|x|, alors dans ce cas, on obtient
+|x|
+√
+|y| +|y|
+√
+|x|≤ 2|x|3/2
+Ainsi on déduit bien que
+|x|
+√
+|y| +|y|
+√
+|x|≤ 2(max(|x|,|y|))3/2
+(0.5 point)
+Or, on a également que
+√
+x2 +y2≥max(|x|,|y|)
+on déduit de ces deux expressions que
+|f5(x,y )|≥ 1
+2
+√
+max(|x|,|y|)
+(0.5 point)
+qui tend vers l’inﬁni quandx et y tendent vers 0 donc f5 tend vers
+plus ou moins l’inﬁni en(0, 0) (0.5 point).
+9

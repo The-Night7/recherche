@@ -1,0 +1,4828 @@
+Analyse dans Rn
+Elian Masnada 1,2
+11 septembre 2020
+1. J’encourage les élèves à me faire part de leurs remarques par email
+à l’adresse elian.masnada@cyu.fr aﬁn de m’aider à améliorer ce cours.
+2. En partie inspiré du polycopié de Jean-Michel Masereel.
+<<<PAGE>>>
+2
+<<<PAGE>>>
+Table des matières
+1 Introduction et objectifs du cours 5
+2 Espace Vectoriel Normé 9
+2.1 Objectifs du chapitre . . . . . . . . . . . . . . . . . . . . . . . 9
+2.2 Eléments de topologie dans Rn . . . . . . . . . . . . . . . . . 10
+2.2.1 Norme & Distance . . . . . . . . . . . . . . . . . . . . 10
+2.2.2 Boule ouverte, Boule Fermée et Sphère . . . . . . . . . 19
+2.2.3 Voisinage . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.2.4 Ouvert, Fermé . . . . . . . . . . . . . . . . . . . . . . 25
+2.2.5 Intérieur et adhérent . . . . . . . . . . . . . . . . . . . 32
+2.2.6 Méthodologies . . . . . . . . . . . . . . . . . . . . . . 36
+2.3 Suites d’éléments d’un EVN . . . . . . . . . . . . . . . . . . . 37
+2.3.1 Rappels . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+2.3.2 Généralisation et Généralités . . . . . . . . . . . . . . 38
+2.3.3 Suites Convergentes . . . . . . . . . . . . . . . . . . . 40
+2.3.4 Valeur d’adhérence et point d’adhérent . . . . . . . . . 44
+2.3.5 Suites de Cauchy . . . . . . . . . . . . . . . . . . . . . 48
+2.3.6 Compacité . . . . . . . . . . . . . . . . . . . . . . . . . 50
+3 Limite et Continuité d’applications 55
+3.1 Objectifs du chapitre . . . . . . . . . . . . . . . . . . . . . . . 55
+3.2 Limite, Continuité . . . . . . . . . . . . . . . . . . . . . . . . 57
+3.2.1 Méthodologie . . . . . . . . . . . . . . . . . . . . . . . 66
+3.3 Continuité uniforme . . . . . . . . . . . . . . . . . . . . . . . 70
+3.4 Topologie et fonctions continues . . . . . . . . . . . . . . . . . 72
+4 Calcul diﬀérentiel du 1er ordre 75
+4.1 Objectifs du chapitre . . . . . . . . . . . . . . . . . . . . . . . 75
+4.2 Dérivée partielle . . . . . . . . . . . . . . . . . . . . . . . . . 76
+3
+<<<PAGE>>>
+4 TABLE DES MATIÈRES
+4.3 Fonctions diﬀérentiables sur un ouvert . . . . . . . . . . . . . 80
+4.3.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . 80
+4.3.2 Fonction de classe C1 . . . . . . . . . . . . . . . . . . . 88
+4.3.3 Composition et changement de variables . . . . . . . . 93
+4.3.4 Matrice de Jacobi, gradient et inégalité des accroisse-
+ments ﬁnis . . . . . . . . . . . . . . . . . . . . . . . . . 97
+4.4 EDP du 1er ordre etC1-diﬀéomorphisme . . . . . . . . . . . . 102
+4.4.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . 102
+4.4.2 C1-diﬀéomorphisme et changement de variables . . . . 103
+4.4.3 Résolution des EDPs par changement de variables . . 107
+5 Calcul diﬀérentiel d’ordre supérieur 111
+5.1 Objectifs du chapitre . . . . . . . . . . . . . . . . . . . . . . . 111
+5.2 Diﬀérentiation d’ordre supérieur ou égal à 2 . . . . . . . . . . 112
+5.3 Systèmes d’EDPs du 1er ordre . . . . . . . . . . . . . . . . . 115
+5.4 EDPs d’ordre 2 . . . . . . . . . . . . . . . . . . . . . . . . . . 118
+5.5 Extremums de fonctions à valeurs dansR . . . . . . . . . . . 121
+5.5.1 Cas des fonctions de R dans R . . . . . . . . . . . . . 121
+5.5.2 Cas des fonctions de Rn dans R . . . . . . . . . . . . . 122
+<<<PAGE>>>
+Chapitre 1
+Introduction et objectifs du
+cours
+En Analyse 1ère année, vous avez très longuement étudié l’ensemble des
+réels et les fonctions de R dans R. Malheureusement, que ce soit en phy-
+sique, en économie, en ﬁnance ou encore en sciences sociales, la description
+des phénomènes, issus de ces domaines, fait souvent appel à des fonctions
+plus complexes : des fonctions de Rn dans Rp (où n,p ∈ N tels que, au
+moins, soitn soit p soit un entier supérieur à 1), c’est à dire des fonctions
+(vectorielles sin> 1) de plusieurs variables (sip> 1). Par exemple, en ther-
+modynamique, la description de l’énergie interneU d’un système se fait par
+l’intermédiaire de la température et de la pression. Ainsi, il faut introduire la
+fonctionU(T,P ) de R+× R+ dans R pour étudier l’évolution de ce système.
+Il s’agit d’une fonction sclaire à 2 variables. De même en électromagnétisme,
+la connaissance d’un système passe par la donnée des champs vectoriels⃗E et
+⃗B qui sont, tous deux, des applications deR3 dans R3, en toute généralité. Il
+faut donc mieux appréhender des espaces de plus grandes dimensions queR
+(comme Rn) et les fonctions de plusieurs variables. Ainsi, l’objectif du cours
+d’Analyse dansRn est d’étendre tous les concepts que vous avez étudiés en
+Analyse 1ère année aﬁn de pouvoir manipuler des fonctions de plusieurs va-
+riables, capitales dans un grand nombre de domaines.
+Rappelons ici les principales notions que vous avez abordées en 1ère an-
+née et qui seront généralisées dans ce cours d’Analyse dansRn :
+1. Toutd’abordlatopologiedebase(ouvert,fermé,compact,...)quivous
+a été introduite dansR et qui sera donc étendu en toute généralité à
+5
+<<<PAGE>>>
+6 CHAPITRE 1. INTRODUCTION ET OBJECTIFS DU COURS
+des espaces vectoriels normés et en particulier àRn. On déﬁnira dans
+cette partie les notions
+(a) de norme et de distance
+(b) d’espace vectoriel normé
+(c) de boule ouverte et de boule fermée
+(d) d’ouvert, de fermé et de compact
+(e) et enﬁn, d’intérieur et d’adhérent
+Cettepartienouspermettrad’introduirerigoureusementtouslesconcepts
+qui suivent.
+2. Nous allons généraliser les notions associées aux suites d’éléments
+de R. Nous introduirons en eﬀet dans ce cours des suites d’éléments
+d’espaces vectoriels normés, aﬁn de déﬁnir, dans ce cadre, les notions
+(a) de convergence
+(b) de suites extraites et de valeurs d’adhérence
+(c) de suite de Cauchy
+(d) et enﬁn, d’espace complet et de Banach
+3. les notions de limite, de continuité, de dérivée et de dérivabilité pour
+les fonctions de R dans R. Encore une fois tout cela sera étendu
+aux applications déﬁnies sur un espace vectoriel normé quelconque
+à valeurs dans un autre espace vectoriel normé quelconque. Ainsi,
+nous introduirons les notions
+(a) de limite
+(b) de continuité et de continuité uniforme
+(c) de dérivées partielles d’ordre 1 et d’ordre supérieur
+(d) de diﬀérentiabilité
+(e) de classeCk
+4. et enﬁn nous généraliserons les équations diﬀérentielles (qui sont des
+équations fonctionnelles dont l’inconnue est une fonction deR dans
+R) en introduisant les équations aux dérivées partielles (équations
+fonctionnelles dont l’inconnue est une fonction deRn dans Rp). Vous
+<<<PAGE>>>
+7
+avez déjà rencontré ce type d’équations en physique comme en élec-
+tromagnétisme avec l’équation de Gauss par exemple
+∂Ex(x,y,z )
+∂x + ∂Ey(x,y,z )
+∂y + ∂Ez(x,y,z )
+∂z = ρ
+ϵ0
+où ∂
+∂x signiﬁe dérivée partielle par rapportx. Il s’agit ici d’une "équa-
+tion diﬀérentielle" portant sur une fonction deR3 dans R3.
+<<<PAGE>>>
+8 CHAPITRE 1. INTRODUCTION ET OBJECTIFS DU COURS
+<<<PAGE>>>
+Chapitre 2
+Espace Vectoriel Normé
+2.1 Objectifs du chapitre
+Le but de ce cours étant d’apprendre à manipuler les fonctions de plusieurs
+variables (typiquement des fonctions deRp dans Rn mais plus généralement
+d’un espace vectoriel quelconque à un autre), nous devons tout d’abord nous
+pencher sur la structure même des espaces vectoriels. En eﬀet, lorsque dans
+la suite du cours, nous allons manipuler des fonctions de plusieurs vairables,
+nous devrons manipuler des limites (à la fois pour déﬁnir la notion de conti-
+nuité et la notion de dérivées partielles). Or, vous savez que pour une fonction
+f de R dans R, l est la limite ena∈ R si et seulement si
+∀ϵ> 0,∃η >0 /|x−a|<η =⇒|f(x)−l|<ϵ (2.1)
+|x−a| se comprend intuitivement comme la distance entrex eta. De même,
+|f(x)−l| est la distance entref(x) et l. Pour généraliser cela au cas d’une
+fonctionf allant d’un espace vectoriel quelconque à un autre, il faudra donc
+généraliser (2.1) ce qui nécessitera de déﬁnir la notion de distance et de
+norme dans un espace vectoriel.
+De plus, nous verrons que les propriétés que nous allons déﬁnir sur les fonc-
+tions de plusieurs variables nécessitent que les ensembles sur lesquels les
+fonctions sont déﬁnies remplissent certaines conditions topologiques comme
+ouvert, fermé, compact...
+Et enﬁn, nous déﬁnirons des suites d’éléments d’espace vectoriel qui seront
+utilisés dans le chapitre suivant pour caractériser la limite et à la continuité
+de fonctions de plusieurs variables.
+9
+<<<PAGE>>>
+10 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Mots clefs :
+Topologie : norme et distance, espace vectoriel normé, boule ouverte et
+boule fermée, ouvert, fermé et compact, intérieur et d’adhérent
+Suites : convergence, suites extraites et de valeurs d’adhérence, suite de
+Cauchy, espace complet et de Banach
+2.2 Eléments de topologie dans Rn
+2.2.1 Norme & Distance
+Déﬁnition 1 : (norme)
+Soit E un espace vectoriel. Soit‖·‖ une application de E dans R.‖·‖ est
+une norme sur E, si, et seulement si, l’application vériﬁe les 3 propriétés
+suivantes
+1. ∀x∈E,‖x‖ = 0 =⇒x = 0E (séparation)
+2. ∀x∈E,∀λ∈ R,‖λx‖ =|λ|‖x‖ (absolue homogénéité)
+3. ∀x,y∈E,‖x +y‖≤‖ x‖ +‖y‖ (inégalité triangulaire)
+On dira alors que(E,‖·‖) est un espace vectoriel normé (EVN).
+Remarque 1 :
+On peut combiner les deux premières propriétés de la déﬁnition pour montrer
+que x = 0E =⇒‖x‖ = 0. En eﬀet
+‖0E‖ =‖0× 0E‖ = 0×‖ 0E‖ = 0
+Remarque 2 :
+la norme du vecteurx∈E représente évidemment la taille du vec-
+teurx, mais comme nous allons le montrer par la suite, il peut exis-
+ter sur un espace vectoriel donné, plusieurs normes. Vous connaissez
+déjà une norme dans le cas des vecteurs appartenant àR3 : soit⃗X = (x,y,z )
+alors ‖‖‖⃗X
+‖‖‖ =
+√
+x2 +y2 +z2
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 11
+Donnons des exemples de norme surE = Rn :
+Soit x = (x1,x 2,...,x i,...,x n)∈ Rn. Alors, les trois applications suivantes
+sont des normes
+‖x‖1 =
+n∑
+i=1
+|xi| ‖ x‖2 =
+vuu√
+n∑
+i=1
+x2
+i
+‖x‖∞ = max
+1≤i≤n
+(|xi|)
+(2.2)
+Remarque 1 :
+La norme‖·‖2 est appelée norme Euclidienneet correspond à la généralisa-
+tion à un nombre quelconque de dimensions de la norme que vous connaissez
+déjà dans R3.
+Remarque 2 :
+Dans le cas oùE = R, les 3 normes sont alors identiques : pour toutx∈ R,
+‖x‖1 =‖x‖2 =‖x‖∞ =|x|.
+Remarque 3 :
+En dimension 2, on peut facilement s’apercevoir que ces normes corres-
+pondent à "des tailles de vecteur" dans des situations diﬀérentes (voir le
+schéma ci-dessous) :
+On voit ainsi que la norme Euclidienne correspond à la taille du vecteur− − →AB
+<<<PAGE>>>
+12 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+à vol d’oiseau tandis que la norme 1 correspond à la taille du vecteur− − →AB en
+suivant le quadrillage1.
+Remarque 4 :
+Montrons par exemple que‖·‖1 est bien une norme surRn. Pour cela, nous
+devons vériﬁer les trois points de la déﬁnition 1 :
+1. Vériﬁcation de la 1ère propriété :
+‖x‖1 = 0 =⇒∀i, xi = 0. On voit donc que‖x‖1 = 0 =⇒x = 0E.
+2. Vériﬁcation de la 2ème propriétés :
+Soitx = (x1,x 2,...,x n) etλ∈ R. On a doncλx = (λx1,λx 2,...,λx n).
+Alors
+‖λx‖1 =
+n∑
+i=1
+|λxi| =|λ|
+n∑
+i=1
+|xi| =|λ|‖x‖1
+3. Vériﬁcation de la 3ème propriétés :
+Soient x = (x1,x 2,...,x n) et y = (y1,y 2,...,y n). Alorsx +y = (x1 +
+y1,...,x n +yn). Donc
+‖x +y‖1 =
+n∑
+i=1
+|xi +yi|≤
+n∑
+i=1
+(|xi| +|yi|) =‖x‖1 +‖y‖1
+Finalement‖·‖1 est bien une norme. Les deux autres normes seront étudiées
+en TD.
+Donnons des exemples de norme surE =C([0, 1], R), oùE corres-
+pond alors à l’espace des fonctions continues sur[0, 1] dans R. Soitf
+une fonction appartenant àE. Alors les trois normes les plus souvent utilisées
+sont
+‖f‖1 =
+∫ 1
+0
+|f(x)|dx ‖f‖2 =
+√∫ 1
+0
+f 2(x)dx
+‖f‖∞ = sup
+0≤x≤1
+(|f(x)|)
+(2.3)
+1. Aux USA, on appelle aussi la norme 2, la norme de Manhattan. En eﬀet, on voit
+que cette norme correspond à la distance (même si nous n’avons pas encore déterminé le
+lien entre norme et distance) que l’on doit parcourir entre deux points dans une ville très
+quadrillée comme Manhattan.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 13
+Exemple :
+L’application suivante est-elle une norme?
+N : R2 → R
+(x,y ) ↦→ N(x,y ) =|4x + 7y|
+Pour répondre à cette question, nous devons vériﬁer siN vériﬁe les trois
+propriétés de la déﬁnition 1. Commençons par la première.
+Si N(x,y ) = 0 alors |4x + 7y| = 0 ⇐⇒ x = − 7
+4y. On déduit donc
+que la 1ère propriété n’est pas vériﬁée puisqueN(x,y ) = 0 n’implique pas
+(x = 0,y = 0). FinalementN n’est pas une norme.
+Quelques propriétés des normes
+Propriété 1: (Positivité)
+La norme est déﬁnie positive :∀x,‖x‖≥ 0.
+démonstration :
+∀x∈E, 0 =‖0E‖ =‖x−x‖≤‖ x‖ +‖−x‖ = 2‖x‖. Donc‖x‖≥ 0.
+Propriété 2:
+Pour la norme euclidienne :∀x,y ∈ E, ‖x +y‖ =‖x‖ +‖y‖⇐⇒ x = λy
+avecλ∈ R.
+Démonstration : Admis car cela fera l’objet d’une démonstration dans le
+cours d’algèbre bilinéaire.
+Remarque :
+Cela n’est pas le cas pour d’autres normes (les normes qui ne sont pas issues
+d’un produit scalaire comme vous le verrez dans le cours d’algèbre bilinéaire).
+Illustrons cela sur l’EVN(R2,‖·‖∞). Considérons alorsX et Y tels que
+{
+X = (1, 1)
+Y = (1, 0) =⇒X +Y = (2, 1)
+<<<PAGE>>>
+14 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+On a donc
+‖x +y‖∞ = max(2, 1) = 2 ‖x‖∞ =‖y‖∞ = 1
+on voit donc
+‖x +y‖∞ =‖x‖∞ +‖y‖∞
+alors que∀λ∈ R, X⁄=λY.
+Propriété 3: (2nd inégalité triangulaire)
+∀x,y∈ (E,‖·‖),‖x−y‖≥|‖ x‖−‖ y‖| (2.4)
+démonstration :
+∀x,y ‖x‖ =‖x−y +y‖≤‖ x−y‖ +‖y‖
+=⇒‖x−y‖≥‖ x‖−‖ y‖
+‖y‖ =‖y−x +x‖≤‖ y−x‖ +‖x‖
+=⇒‖x−y‖≥‖ y‖−‖ x‖
+(2.5)
+On voit donc que
+‖x−y‖≥ max(‖y‖−‖ x‖,‖x‖−‖ y‖) =|‖x‖−‖ y‖|
+Déﬁnition 2: (normes équivalentes)
+Soit E un espace vectoriel muni de deux normes ‖·‖a et ‖·‖b. Alors,
+on dit que‖·‖a est équivalent à‖·‖b si, et seulement si, il existeα, β >0
+tels que
+∀x∈E, α‖x‖a≤‖x‖b≤β‖x‖a
+Cette équivalence est bien une relation d’ordre :
+— Réﬂexivité :
+‖·‖a est équivalent à‖·‖a. En eﬀet,
+∀x∈E, ‖x‖a≤‖x‖a≤‖x‖a
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 15
+— Symétrie :
+Si‖·‖a est équivalent à‖·‖b alors‖·‖b est équivalent à‖·‖a.
+démonstration :
+Considérons que‖·‖a est équivalent à‖·‖b. Cela signiﬁe que
+∃α,β >0 /∀x∈E, α‖x‖a≤‖x‖b≤β‖x‖a
+d’après l’inégalité de gauche (commeα> 0) :
+‖x‖a≤ 1
+α‖x‖b (2.6)
+d’après l’inégalité de droite (commeβ >0) :
+1
+β‖x‖b≤‖x‖a (2.7)
+On a donc
+∀x∈E, 1
+β‖x‖b≤‖x‖a≤ 1
+α‖x‖b
+et donc‖·‖b est équivalent à‖·‖a
+— Transitif :
+Si‖·‖a équivalent à‖·‖b (1)
+Si‖·‖b équivalent à‖·‖c (2)
+Alors‖·‖a équivalent à‖·‖c (3)
+Démonstration :
+D’après(1) :∃α,β >0 /∀x∈E, α‖x‖a≤‖x‖b≤β‖x‖a
+D’après(2) :∃η,γ > 0 /∀x∈E, η‖x‖b≤‖x‖c≤γ‖x‖b
+de ces deux expressions, on déduit
+‖x‖c≤γ‖x‖b≤γβ‖x‖a
+‖x‖c≥η‖x‖b≥ηα‖x‖a
+Donc
+ηα‖x‖a≤‖x‖c≤γβ‖x‖a
+Finalement‖·‖a est équivalent à‖·‖c.
+<<<PAGE>>>
+16 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Théorème 1: (Equivalence des normes)
+Soit E un espace vectoriel de dimension ﬁnie. Alors, toutes les normes sur
+E sont équivalentes.
+Démonstration : admis.
+De manière très intuitive, vous savez que l’on peut grâce à la norme déﬁnir la
+distance entre deux points. On se propose ici de déﬁnir ce qu’est une distance
+Déﬁnition 3: (Distance)
+Soit X un ensemble quelconque. L’applicationd, de X× X −→ R+,
+est une distance surX, si et seulement si, elle vériﬁe :
+1. ∀(X,Y )∈X 2, d(X,Y ) = 0⇐⇒X =Y
+2. ∀(X,Y )∈X 2, d(X,Y ) =d(Y,X )
+3. ∀(X,Y,Z )∈X 3, d(X,Y )≤d(X,Z ) +d(Z,Y )
+Remarque : en réalité les propriétés demandées sont triviales :
+1. La seule façon pour que la distance entre deux points soit nulle est que
+les deux points soient confondus.
+2. La distance est symétrique. La distance entreX et Y est la même que la
+distance entreY et X.
+3.
+d(X,Y )≤d(X,Z ) +d(Z,Y ) : si je passe par un autre pointZ pour aller de
+X à Y, au mieux je ne réduis pas la distance au pire je fais un détour.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 17
+Propriété 4: (positivité de la distance)
+La distance est une application déﬁnie positive :∀(X,Y )∈X 2, d(X,Y )≥ 0.
+Démonstration :
+∀(X,Y )∈X 2, d(X,X )≤d(X,Y ) +d(Y,X )
+0≤ 2d(X,Y )
+0≤d(X,Y )
+Propriété 5: (Distance associée à une norme)
+Soit (E,‖·‖) un EVN. Alors, on appelle distance associée à la norme
+‖·‖, l’applicationd déﬁnie par
+d : E×E → R+
+X,Y ↦→ d(X,Y ) =‖X−Y‖
+Vériﬁons qu’il s’agit bien d’une distance. Pour cela, on doit contrôler que
+cette application respecte bien les trois propriétés introduites dans la déﬁni-
+tion de la distance :
+1. SiX =Y alors d(X,Y ) =‖X−Y‖ =‖0E‖ = 0
+Si d(X,Y ) = 0, alors‖X−Y‖ = 0, ce qui implique queX =Y.
+2. d(X,Y ) =‖X−Y‖ =‖−(Y−X)‖ =|− 1|‖Y−X‖ =d(Y,X )
+3. d(X,Y ) =‖X−Y‖ =‖X−Z +Z−Y‖≤‖ X−Z‖ +‖Z−Y‖
+et ﬁnalementd(X,Y )≤d(X,Z ) +d(Y,Z ).
+Propriété 6:
+Soient (E,‖·‖) un EVN etd la distance associée à la norme‖·‖. Alors, d
+vériﬁe
+∀X,Y ∈E, ∀λ∈ R, d (λX,λY ) =|λ|d(X,Y )
+<<<PAGE>>>
+18 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Démonstration :
+d(λX,λY ) =‖λX−λY‖ =|λ|‖X−Y‖ =|λ|d(X,Y )
+C’est cette propriété6 que nous utiliserons pour montrer qu’une distance
+n’est pas associée à aucune norme.
+Exemples de distance :
+— Considérons l’EVN(R2,‖·‖2). Alors, l’application
+d : R2× R2 → R+
+(X,Y ) ↦→ d(X,Y ) =‖X−Y‖2 =
+√
+(x1−y1)2 + (x2−y2)2
+avecX = (x1,x 2) et Y = (y1,y 2), est bien une distance.
+— Soit E un espace vectoriel quelconque. Alors l’application suivante
+est une distance
+d0 : E×E → R+
+(X,Y ) ↦→ d0(X,Y ) =
+{
+0 si X =Y
+1 si X⁄=Y
+Vériﬁons qu’il s’agit bien d’une distance.
+a) SiX =Y alors d0(X,Y ) = 0 par construction.
+Si d0(X,Y ) = 0 alors X =Y.
+b) d0 est trivialement symétrique.
+c) vériﬁons si∀X,Y,Z, d (X,Y )≤d(X,Z ) +d(Y,Z )?
+Si X =Y =Z, alors 0≤ 0 + 0donc OK
+Si X =Y ⁄=Z, alors 0≤ 1 + 1donc OK
+Si X =Z⁄=Y, alors 1≤ 0 + 1donc OK
+Si X⁄=Y =Z, alors 1≤ 1 + 0donc OK
+Si tous diﬀérents, alors1≤ 1 + 1donc OK
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 19
+Mais clairement, cette distance n’est pas associée à une norme. En
+eﬀet, prenonsX⁄=Y et λ = 3. Alors
+d0(3X, 3Y ) = 1 puisque 3X⁄= 3Y
+donc d0(3X, 3Y )⁄= 3d0(X,Y ).
+2.2.2 Boule ouverte, Boule Fermée et Sphère
+Déﬁnition 4: (Boule ouverte, Boule fermée et Sphère)
+Soit (E,‖·‖) un EVN.∀a∈E,∀r> 0, on déﬁnit :
+1. la boule ouverte de centrea et de rayon r, comme l’ensemble des
+points vériﬁants
+B(a,r ) ={x∈E /‖x−a‖<r}
+2. la boule fermée de centreaet de rayonr, comme l’ensemble des points
+vériﬁants
+B(a,r ) ={x∈E /‖x−a‖≤ r}
+3. la sphère de centre a et de rayon r, comme l’ensemble des points
+vériﬁants
+S(a,r ) ={x∈E /‖x−a‖ =r}
+On remarque alors queB(a,r ) =B(a,r )∪S(a,r )
+La forme des boules et de la sphère dépend entièrement de la
+norme choisie. Pour illustrer cela, nous allons déterminer les boules fer-
+mées de centre(0, 0) et de rayon1 des EVN suivants :(R2,‖·‖1), (R2,‖·‖2)
+et (R2,‖·‖∞).
+1. Cas (R2,‖·‖1) :
+SoitX = (x,y )∈ R2. Alors‖X− (0, 0)‖1 =|x|+|y|. Nous allons tout
+d’abord chercher la sphère, c’est-à-dire l’ensemble des points(x,y ) de
+R2 tels que|x| +|y| = 1.
+Si x> 0,y >0, alors‖X‖1 = 1⇐⇒x +y = 1⇐⇒y = 1−x.
+Si x> 0,y <0, alors‖X‖1 = 1⇐⇒x−y = 1⇐⇒y =x− 1.
+<<<PAGE>>>
+20 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Si x< 0,y >0, alors‖X‖1 = 1⇐⇒−x +y = 1⇐⇒y = 1 +x.
+Si x< 0,y <0, alors‖X‖1 = 1⇐⇒−x−y = 1⇐⇒y =−1−x.
+Donc la sphère correspond à un losange centré en0 et la boule fermée
+pour la norme1 est donnée par
+2. Cas (R2,‖·‖2) :
+Soit X = (x,y )∈ R2. Déterminons la sphère de centre(0, 0) et de
+rayon 1, c’est-à-dire l’ensemble des points vériﬁants
+‖X− (0, 0)‖2 =‖X‖2 =
+√
+x2 +y2
+ceci correspond à un cercle de rayon1. Ainsi la boule fermée pour la
+norme 2 est donnée par
+3. Cas (R2,‖·‖∞) :
+En exercice, vériﬁer que la boule fermée de rayon1 et centrée en(0, 0)
+pour la norme∞ est donnée par
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 21
+Propriété 7:
+Soit (E,‖·‖) un EVN. Alors,∀r,r′> 0 et∀a∈E :
+r<r ′⇐⇒B(a,r )⊂B(a,r′)
+r<r ′⇐⇒B(a,r )⊂B(a,r′)
+Démonstration : On étudie ici seulement la boule ouverte.
+=⇒ : On a {
+r<r ′
+x0∈B(a,r ) =⇒‖x0−a‖<r<r ′
+Finalementx0∈B(a,r′).
+⇐= :
+B(a,r )⊂B(a,r′) =⇒ il existey
+{
+∈B(a,r′)
+/∈B(a,r ) tel quer≤‖y−a‖<r′
+<<<PAGE>>>
+22 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+2.2.3 Voisinage
+Déﬁnition 5: (Voisinage)
+Soit (E,‖·‖) un EVN. Soient a ∈ E et V une partie de E. On dit
+que V est un voisinage dea, si, et seulement si,V contient au moins une
+boule ouverte centrée ena et de rayonr> 0.
+Formulation mathématique :
+V voisinage dea⇐⇒∃r> 0 /B(a,r )⊂V
+On noteV(a) l’ensemble des voisinages dea.
+Aﬁn de mieux comprendre le concept, donnons un petit exemple de voisi-
+nage :
+Pour cela, considérons(R2,‖·‖2). On cherche à savoir si l’ensembleV (caca-
+huète sur le schéma) est bien un voisinage du pointa = (−1,−1).
+La réponse est oui puisqu’il existe au moins une boule ouverte, de centrea,
+contenue dansV. À ce stade, nous pourrions nous demander si la notion de
+voisinage dépend de la norme choisie ou dit autrement est-ce qu’un ensemble
+peut être un voisinage d’un point pour une norme donnée et ne pas l’être
+pour une autre norme.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 23
+Propriété 8:
+Soit E un EVN de dimension ﬁnie, muni de plusieurs normes. Soient
+a∈E et V une partie deE. Alors le fait queV soit voisinage ou non dea
+ne dépend pas de la norme choisie.
+Démonstration :
+La démonstration de cette propriété sera discutée en TD.
+Propriété 9:
+a est toujours un élément de ses voisinages (∀V ∈V (a), a∈V)
+Démonstration :
+∀V ∈V (a),∃r >0 tel queB(a,r )⊂ V. Ora∈ B(a,r ) puisque‖a−a‖ =
+‖0E‖<r . Donca∈V puisque a∈B(a,r ) et B(a,r )⊂V.
+Propriété 10:
+Toute réunion de voisinages dea est un voisinage dea.
+Démonstration :
+Soit (Vi)i∈I une famille de voisinage dea. On poseV =∪i∈IVi l’union de
+voisinage dea.∀i∈I,∃ri> 0 tel queB(a,r )⊂Vi⊂V. Donc, il existe bien
+des boules ouvertes centrées ena entièrement contenues dansV. DoncV est
+un voisinage dea.
+Propriété 11:
+Toute intersection ﬁnie de voisinage dea est un voisinage dea.
+Démonstration :
+Rappel :r<r ′⇐⇒B(a,r )⊂B(a,r′).
+<<<PAGE>>>
+24 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Soit (Vi)i∈I une famille ﬁnie de voisinage dea. On poseV =∩i∈IVi l’in-
+tersection de voisinages dea. Posonsr = min
+i∈I
+(ri) où ri est le rayon de la
+boule ouverte contenue dansVi. Comme pour touti, ri > 0, on a évidem-
+ment r > 0. Donc∀i, B(a,r )⊂ B(a,ri) et ﬁnalementB(a,r )⊂ V. V est
+bien un voisinage dea puisqu’il contient une boule ouverte.
+Remarque : (WARNING)
+Montrons que si l’on considère une intersection inﬁnie de voisinage alors ce
+n’est pas nécessairement un voisinage. Pour cela, considérons l’EVN(R,|·| )
+et la famille des voisinages de0, Vi =]− 1
+n, 1
+n[. On voit donc que
+V =∩∞
+i=1Vi ={0}. Or aucune boule ouverte ne peut être contenue dans
+V ={0} et ﬁnalementV n’est pas un voisinage.
+Propriété 12:
+Toute boule fermée ou ouverte de rayon r et de centre a est un voisi-
+nage dea.
+Démonstration : Trivial.
+Déﬁnition 6: (Espace séparé)
+Soit E un ensemble quelconque. On dit que E est séparé si, et seule-
+ment si,∀a,b∈E, sia⁄=b, alors
+∃Va∈V (a),∃Vb∈V (b) tels queVa∩Vb =∅
+Il est en réalité très diﬃcile de se représenter un ensemble non séparé.
+Propriété 13: (EVN séparé)
+Tout EVN est un espace séparé.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 25
+Démonstration :
+Aﬁndefaireladémonstration,nousallonsnousappuyersurlareprésentation
+sur R de la propriété précédente.
+Soit a,b∈E tels quea⁄=b. Introduisons les deux voisinages suivants
+Va =B
+(
+a,‖b−a‖
+2
+)
+Vb =B
+(
+b,‖b−a‖
+2
+)
+Vériﬁons queVa∩Vb =∅. Pour cela, imaginonsx∈ Va∩Vb. On a donc,
+puisque x appartient aux deux boules
+‖x−a‖<‖b−a‖
+2 et ‖x−b‖<‖b−a‖
+2
+On peut alors utiliser l’inégalité triangulaire
+‖a−b‖ =‖a−x +x−b‖≤‖ a−x‖ +‖x−b‖<‖a−b‖
+ce qui est incohérent. Ainsi, il n’existe pasx appartenant aux deux boules
+et donc les deux voisinages sont disjoints.
+2.2.4 Ouvert, Fermé
+Déﬁnition 7: (Ouvert)
+Soit (E,‖·‖) un EVN et U une partie de E. Alors U est un ouvert,
+si, et seulement si, il existe pour chaque point deU un voisinage contenu
+dans U.
+Formulation mathématique :
+U ouvert ⇐⇒∀x∈U,∃r> 0 tel queB(a,r )⊂U
+Remarque importante :r peut évidemment dépendre dex. Plus on se rap-
+proche des bords deU est plusr doit être petit. Voir le schéma ci-dessous.
+<<<PAGE>>>
+26 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Dans la suite, sur les schémas, les ouverts seront représentés par un contour
+en pointillé.
+Comme lorsque l’on a introduit la notion de voisinage, nous nous sommes
+demandés si cette notion dépendait de la norme choisie, nous pouvons ici
+nous poser la même question, à savoir : est-ce que la notion d’ouvert dépend
+de la norme choisie.
+Propriété 14:
+Soit E un EVN de dimension ﬁnie muni de plusieurs normes. Soit U
+une partie deE. Alors le fait queU soit un ouvert ou non ne dépend pas du
+choix de la norme.
+Démonstration :
+La démonstration de cette propriété sera discutée en TD.
+Propriété 15:
+Soit (E,‖·‖) un EVN. Alors∅ et E sont des ouverts.
+Démonstration :
+À ce stade, le fait que∅ soit un ouvert est conventionnel.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 27
+E ouvert : trivial.
+Propriété 16:
+Une boule ouverte est un ouvert.
+Démonstration :
+Pour démontrer qu’une boule ouverte est un ouvert, nous allons nous guider
+avec la représentation dans(R2,‖·‖2) d’une boule ouverte (mais nous allons
+tout de même faire une démonstration générale).
+Soit la boule ouverteB(a,r ). Guider par le schéma ci-dessus, on introduit
+la boule ouverte centrée en un pointX quelconque appartenant àB(a,r ) :
+B(X,r′ =r−‖X−a‖). Comme le montre le schéma, on voit que dansR2,
+B(X,r′)⊂B(a,r ). Il suﬃt maintenant de montrer que cela reste vrai pour
+(E,‖·‖) quelconque et pour toutX∈B(a,r ).
+Etape 0 :Vériﬁons queB(X,r′)⊂B(a,r ) pour (E,‖·‖).
+Soit Y ∈B(X,r′). On peut alors écrire
+‖Y−X +X−a‖≤‖ Y−X‖ +‖X−a‖
+‖Y−a‖<r −‖X−a‖ +‖X−a‖
+‖Y−a‖≤ r
+<<<PAGE>>>
+28 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Donc B(X,r′)⊂B(a,r ).
+Etape 1 :Vériﬁons queB(X,r′)⊂B(a,r ) pour toutX.
+Or pour∀X∈ B(X,r′), r′ > 0 puisque r′ = r−‖X−a‖ et‖X−a‖ < r.
+Donc∀X∈B(a,r ), B(X,r′)⊂B(a,r ).
+Finalement la boule ouverte est un ouvert.
+Propriété 17:
+Une union quelconque d’ouverts est un ouvert.
+Démonstration :
+Soit (Ui)i∈I une famille quelconque d’ouverts. On noteU =∪i∈IUi l’union.
+Soitx∈U. Alors∃i tel quex∈Ui. OrUi est un ouvert donc il existeri> 0
+tel queB(x,ri)⊂ Ui⊂ U. Or ce raisonnement peut-être fait pour toutx
+donc U est un ouvert.
+Propriété 18:
+Toute intersection ﬁnie d’ouverts est un ouvert.
+Démonstration :
+Soit (Ui)1≤i≤n une famille ﬁnie d’ouverts. On noteU =∩iUi l’intersection
+de ces ouverts.
+Soit x∈U⇐⇒
+
+
+
+x∈U1 comme U1 est un ouvert,U1 est un voisinage dex
+x∈U2 comme U2 est un ouvert,U2 est un voisinage dex
+...
+x∈Un comme Un est un ouvert,Un est un voisinage dex
+Doncx appartient à une intersection ﬁnie de voisinage dex qui est donc un
+voisinage dex. Donc pour toutx∈U, U est un voisinage dex donc U est
+un ouvert.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 29
+Corollaire des propriétés précédentes:
+Soient E = R et a,b ∈ R tel quea < b. Alors, les intervalles suivants sont
+des ouverts
+]−∞,b [ ] a,b [ ] a, +∞[
+Démonstration :
+— ]a,b [=B(a+b
+2 , b−a
+2 ). Or une boule ouverte est un ouvert donc]a,b [ est
+un ouvert.
+— ]−∞,b [=∪α<b]α,b [ union inﬁnie d’ouverts donc ouvert.
+— ]a,∞[=∪α>a]a,α [ union inﬁnie d’ouverts donc ouvert.
+Déﬁnition 8: (Fermé)
+Soit (E,‖·‖) un EVN et F une partie de E. Alors F est un fermé si,
+et seulement si,CEF (complémentaire deF dans E) est un ouvert.
+Propriété 19:
+Soit (E,‖·‖) un EVN, alors∅ et E sont des fermés.
+Donc E et∅ sont à la fois des ouverts et des fermés (voir prop. 15).
+Démonstration :
+— Pour∅ : CE∅ =E qui est un ouvert donc∅ est un fermé.
+— Pour E : CEE =∅ qui est un ouvert (d’après la propriété 15) donc
+E est un fermé.
+Propriété 20:
+Une boule fermée est un fermé.
+<<<PAGE>>>
+30 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Démonstration :
+Aﬁn de faire la démonstration, on va s’aider du schéma ci-dessous valable
+dans (R2,‖·‖2). On doit donc étudier si le complémentaire deB(a,r ) est
+un ouvert. On commence par introduire en suivant le schéma suivant, en
+un pointX quelconque deCEB(a,r ), la boule ouverteB(X,‖X−a‖− r).
+Commençons par montrer que cette boule est bien incluse dansCEB(a,r )
+puis on montrera que cela est vrai pour toutX∈CEB(a,r ).
+Etape 0 :Vériﬁons queB(X,‖X−a‖− r)⊂CEB(a,r )
+Soit Y ∈B(X,‖X−a‖− r). Alors
+‖X−a‖ =‖X−Y +Y−a‖≤‖ X−Y‖ +‖Y−a‖
+⇐⇒−‖Y−a‖≤‖ X−Y‖−‖ X−a‖
+⇐⇒−‖Y−a‖<‖X−a‖− r−‖X−a‖
+⇐⇒ ‖Y−a‖>r
+On voit donc queY est bien extérieur àB(a,r ), doncY ∈CEB(a,r ).
+Etape 1 :Or∀X,‖X−a‖− r > 0 et donc CEB(a,r ) est un ouvert et
+donc B(a,r ) est un fermé.
+
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 31
+Propriété 21:
+Toute intersection de fermés est un fermé.
+Démonstration :
+Rappel :CE(∪iUi) =∩i(CEUi).
+On sait que si(Ui)i∈I est une famille d’ouverts alors :
+1. U =∪iUi est un ouvert (propriété 17).
+2. (CEUi)i∈I est une famille de fermés (puisque le complémentaire de
+CEUi est Ui qui est un ouvert).
+Puisque U est un ouvert,CEU est un fermé et puisque, pour touti, Ui est
+un ouvert,CEUi est un fermé. Or
+CEU =CE(∪iUi) =∩i(CEUi)
+Donc l’intersection de fermés est fermé.
+Propriété 22:
+Toute union ﬁnie de fermés est un fermé.
+Démonstration :
+Même chose que précédemment. En passant au complémentaire c’est immé-
+diat.
+Corollaire :
+Soient E = R et a,b ∈ R tel quea < b. Alors, les intervalles suivants sont
+des fermés
+]−∞,b ] [ a,b ] [ a, +∞[
+Démonstration :
+— [a,b ] =B(a+b
+2 , b−a
+2 ). Or une boule fermée est un fermé donc[a,b ] est
+un fermé.
+<<<PAGE>>>
+32 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+— trivial.
+— trivial.
+2.2.5 Intérieur et adhérent
+Déﬁnition 9: (Intérieur)
+Soit (E,‖·‖) un EVN. Soient A ⊂ E et a ∈ E. On dit que a est in-
+térieur àA si, et seulement si,A est un voisinage dea. On appelle Intérieur
+de A, que l’on note˚A, l’ensemble des points intérieurs àA.
+Formulation mathématique
+x∈ ˚A⇐⇒∃r> 0 / B(x,r )⊂A
+x∈ ˚A⇐⇒∃U⊂A / Uouvert etx∈U
+Propriété 23:
+Soit (E,‖·‖) un EVN. Soient A ⊂ E et ˚A l’intérieur deA. Alors
+˚A⊂A.
+Démonstration :
+x∈ ˚A⇐⇒∃r> 0 / B(x,r )⊂A donc x∈A donc ˚A⊂A.
+Propriété 24:
+Soit (E,‖·‖) un EVN. Soient A ⊂ E et ˚A l’intérieur deA. Alors ˚A
+est le plus grand ouvert contenu dansA.
+Démonstration :
+— Montrons tout d’abord que tout ouvertU inclus dans A est inclus
+dans ˚A
+Soit U⊂A un ouvert. Alors
+∀x∈U,∃r> 0 / B(x,r )⊂U⊂A donc x∈ ˚A
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 33
+Soit (Ui)i∈I une famille quelconque d’ouverts tels queUi⊂A. Alors
+puisque∪iUi est également un ouvert contenu dansA alors∪iUi⊂ ˚A
+— Il faut maintenant montrer que˚A⊂∪ iUi
+Soitx∈ ˚A tel quex n’appartient à aucun ouvertU⊂A alorsx /∈ ˚A.
+Donc ˚A⊂∪ iUi
+Finalement, on voit que˚A =∪iUi où l’union porte sur tous les ouverts inclus
+dans A. Donc ﬁnalement˚A est le plus grand des ouverts contenu dansA.
+Propriété 25:
+Soit (E,‖·‖) un EVN. SoientA et B deux parties deE. Alors
+1. A ouvert⇐⇒ ˚A =A
+2. ˚˚A = ˚A
+3. Si A⊂B alors ˚A⊂ ˚B
+Démonstration :
+1.(a) Si A est un ouvert alors le plus grand ouvert contenu dansA est
+A lui-même. Donc ˚A =A.
+(b) Si ˚A =A alors A est un ouvert puisque˚A est un ouvert.
+2. ˚A est un ouvert. Donc le plus grand ouvert contenu dans˚A est ˚A.
+Finalement ˚˚A = ˚A.
+3. Soit x∈ ˚A⇐⇒∃r >0 / B(x,r )⊂A⊂B donc x∈ ˚B. Finalement
+˚A⊂ ˚B.
+Quelques exemples :
+— Dans R :
+˚]a,b [ = ˚[a,b [ = ˚]a,b ] = ˚[a,b ] =]a,b [
+— Dans Rn :
+˚B(a,r ) =B(a,r ) ˚B(a,r ) =B(a,r )
+<<<PAGE>>>
+34 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Déﬁnition 10:
+Soit (E,‖·‖) un EVN. Soient A ⊂ E et a ∈ E. On dit que a est
+adhérent àA si, et seulement si, tout voisinage dea rencontreA. On appelle
+l’adhérent deA, notéA, l’ensemble des points adhérents àA.
+Formulation mathématique :
+x∈A⇐⇒∀r> 0, B(x,r )∩A⁄=∅
+Propriété 26:
+Soit (E,‖·‖) un EVN. SoitA une partie deE. AlorsA⊂A
+Démonstration :
+∀x∈A,∀r >0, B(x,r )∩A⁄=∅ puisque x∈A et x∈B(x,r ). Doncx∈A
+et ﬁnalementA⊂A.
+Propriété 27:
+Soit (E,‖·‖) un EVN. SoitA une partie deE. AlorsA est un fermé
+Démonstration :
+Pour cela étudionsCEA : si c’est un ouvert alorsA est un fermé.
+x∈A⇐⇒∀r> 0 / B(x,r )∩A⁄=∅.
+Donc pour∀x∈ CEA, ∃r > 0 tel que B(x,r )∩A =∅ sinon x serait un
+élément deA. Donc,∃r> 0/B(x,r )⊂CEA. On voit donc queCEA est un
+ouvert. FinalementA est un fermé.
+Propriété 28:
+A est le plus petit fermé contenantA.
+<<<PAGE>>>
+2.2. ELÉMENTS DE TOPOLOGIE DANS RN 35
+Démonstration :
+Démonstration remise à plus tard.
+Propriété 29:
+1. A fermé⇐⇒ A =A
+2. A =A
+3. Si A⊂B alors A⊂B
+Démonstration :
+1.(a) Si A =A alors commeA est un fermé alorsA est un fermé.
+(b) Si A est un fermé alors le plus petit fermé qui contientA est A.
+Donc A =A
+2. SoitA l’adhérent deA. DoncA est un fermé. Donc le plus petit fermé
+contenantA est A. FinalementA =A.
+3. Soit a∈ A et V un voisinage dea. On a donc queA∩V ⁄=∅. Or
+commeA⊂B, on aA∩V ⊂B∩V, il vient queB∩V ⁄=∅. Finalement
+a∈B.
+Déﬁnition 11:
+Soit (E,‖·‖) un EVN. Soit A une partie E. On appelle frontière de
+A, notéFr (a) ou ∂A, l’ensemble :
+∂A =A\ ˚A
+Quelques exemples :
+Soit la boule ferméeB(a,r ) alors
+B(a,r ) =B(a,r ) et ˚B(a,r ) =B(a,r )
+Donc
+∂B(a,r ) =B(a,r )\B(a,r ) =S(a,r )
+<<<PAGE>>>
+36 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Propriété 30:
+1. A =A∪∂A
+2. ˚A =A\∂A
+Démonstration :
+Démonstration remise à plus tard.
+2.2.6 Méthodologies
+Montrer qu’un ensembleA n’est pas ouvert :
+Le plus simple est de trouver au moins un point (qui se trouve sur la frontière
+de l’ensemble) tel que quelque soit la taille de la boule ouverte, une partie
+de la boule soit en dehors deA.
+Montrer qu’un ensembleA n’est pas fermé :
+Le plus simple est de montrer que le complémentaire de cet ensemble n’est
+pas ouvert. Pour cela, il suﬃt d’appliquer la méthode précédente au complé-
+mentaire deA.
+Trouver l’adhérent deA : (démonstration dans le TD3)
+Il est relativement facile d’avoir une idée intuitive de ce qu’estA connaissant
+A. En eﬀet,A est le plus petit fermé contenantA. Dans la suite, nous allons
+appeler B l’ensemble que nous considérons comme le candidat pour êtreA.
+Etape 1 : Vériﬁer queB est un fermé.
+Etape 2 : Vériﬁer queA⊂B.
+Si les deux conditions précédentes sont bien remplies, alors on sait que pour
+∀x∈CEB, on a∃r >0 / B(x,r )∩A =∅. On est alors sûr qu’il n’y a pas
+de points extérieurs àB qui appartient àA. Ceci revient à dire queB n’est
+pas trop petit.
+Toutefois, à ce stade, on sait seulement queA⊂ B mais on ne sait pas
+si B est trop grand (on doit vériﬁer queB⊂A).
+Etape 3 : Il faut maintenant vériﬁer queB n’est pas trop grand (B trop
+grand si, et seulement si,∃x∈B\A tel que∃r> 0, B(x,r )∩A =∅).
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 37
+On doit vériﬁer que pour∀x∈B\A :
+∀r> 0, B(x,r )∩A⁄=∅
+alors A = B. Sinon il faut supprimer les points qui ne vériﬁent pas cette
+condition.
+Trouver l’intérieur deA : (démonstration dans le TD3)
+Comme précédemment, il est plutôt facile d’avoir une intuition de ce qu’est
+˚A puisqu’il s’agit du plus grand ouvert contenu dansA. NotonsB ce candi-
+dat. Alors
+Etape 1 : Vériﬁer queB est un ouvert
+Etape 2 : Vériﬁer queB⊂A
+Si les deux conditions précédentes sont remplies, alors∀x∈ B, ∃r >0 tel
+queB(x,r )⊂A, ce qui revient à vériﬁer queB n’est pas trop grand :B⊂ ˚A.
+Toutefois, à ce stade, on sait queB n’est pas trop grand mais il reste à
+vériﬁer queB n’est pas trop petit (˚A⊂B).
+Etape 3 : On doit vériﬁer que pour∀x∈A\B alors :
+∀r> 0, B(x,r )⁄⊂A
+Si c’est le cas alors˚A =B. Sinon,B est trop petit.
+2.3 Suites d’éléments d’un EVN
+2.3.1 Rappels
+En première année, vous avez étudié ce qu’est une suite d’éléments deR. Le
+but étant dans cette partie de chapitre, d’étendre au cas de suites d’éléments
+d’unEVNquelconque,commençonsparrappelercequevousconnaissezdéjà.
+Rappel 1 :(Suite d’éléments deR)
+Une suite d’éléments deR est une application de N dans R. Si x est
+une suite d’éléments deR de terme généralxn, on notera la suite(xn)n∈N
+<<<PAGE>>>
+38 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Comme exemples de telles suites, nous pouvons considérer
+N → R
+n ↦→ xn = 2.3n
+ou encore
+N → R
+n ↦→ xn = 1
+n
+Rappel 2 :(Suite d’éléments deR qui converge)
+La suite (xn)n∈N d’éléments deR converge vers l ∈ R si, et seule-
+ment si, elle vériﬁe le critère suivant :
+∀ϵ> 0,∃N∈ N /∀n≥N, |xn−l|<ϵ
+On note alors lim
+n→∞
+xn =l cette limite.
+Nous n’allons pas rentrer plus en détail mais vous avez aussi vu que la limite,
+si elle existe, est unique. Je renvoie à votre cours de 1ère année pour plus de
+détails (sachant que nous allons généraliser ces déﬁnitions et résultats dans
+ce cette partie).
+2.3.2 Généralisation et Généralités
+Déﬁnition 12: (Suite d’éléments d’un EVN)
+Soit E un espace vectoriel normé. Une suite d’éléments de E est une
+application de N dans E. Six est une suite deE de terme généralxn, on
+notera la suite(xn)n∈N
+Quelques exemples :
+— si E = R, on retombe sur le cas étudié en première année :
+N → R
+n ↦→ xn = 2.3n
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 39
+— si E = R3 (cas étudié en analyse dansRn) :
+N → R3
+n ↦→
+(
+1
+n; 2n + 3; (3
+2)n
+)
+Déﬁnition 13: (Suite bornée)
+Soit (E,‖·‖) un EVN. La suite (xn)n∈N de E est dite bornée si, et
+seulement si, la suite numérique réelle(‖xn‖)n∈N est bornée, c’est-à-dire si,
+et seulement si
+∃M >0 /∀n∈ N,‖xn‖≤ M
+Attention, il est capital de noter queM est indépendant den.
+Quelques exemples :
+— Soit (E,‖·‖) = (R,|·| ) :
+Considérons la suite
+N → R
+n ↦→ xn =−1/n
+Alors
+‖xn‖ =
+⏐⏐⏐⏐− 1
+n
+⏐⏐⏐⏐ = 1
+n
+donc∀n∈ N,‖xn‖≤ 1 et la suite est bornée.
+— Soit (E,‖·‖) = (R3,‖·‖2) :
+Considérons la suite
+N → R3
+n ↦→ xn = (2n,−3n, 1/n)
+Alors
+‖xn‖2 =
+√
+4n2 + 9n2 + 1
+n2 −→
+n→+∞
++∞
+donc xn n’est pas borné.
+<<<PAGE>>>
+40 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+2.3.3 Suites Convergentes
+Déﬁnition 14: (Suite convergente)
+Soit (E,‖·‖) un EVN. Soit l ∈ E. La suite (xn)n∈N d’éléments deE
+converge versl si, et seulement si, elle vériﬁe l’une des 3 propriétés équiva-
+lentes suivantes
+1. ∀ϵ> 0,∃N∈ N /∀n≥N, ‖xn−l‖<ϵ .
+2. ∀ϵ> 0,∃N∈ N /∀n≥N, xn∈B(l,ϵ ).
+3. ∀V ∈V (l),∃N∈ N /∀n≥N, xn∈V.
+Les 3 formulations sont parfaitement équivalentes puisque
+‖xn−l‖<ϵ ⇐⇒xn∈B(l,ϵ )
+Donc 1. et 2. sont équivalents. De plus
+V ∈V (l)⇐⇒∃ϵ> 0 / B(l,ϵ )⊂V
+donc
+∀V ∈V (l)⇐⇒∀ϵ> 0 on considèreB(l,ϵ )
+d’où l’on déduit que 2. et 3. sont équivalents.
+Propriété 31: (Unicité de la limite)
+Soit (E,‖·‖) un EVN. Si une suite d’éléments de E, notée (xn)n∈N,
+converge alors elle admet une limite uniquel. On note alors cette limite
+lim
+n→∞
+xn =l (2.8)
+Démonstration :
+Soit (xn)n∈N une suite d’éléments de(E,‖·‖). Par hypothèse, posonsl1,l 2∈
+E tels quel1⁄=l2, vers lesquelsxn converge. On a donc, d’après la déﬁnition
+de la convergence :
+∀Vl1∈V l1,∃N1∈ N /∀n≥N1, xn∈Vl1
+∀Vl2∈V l1,∃N2∈ N /∀n≥N2, xn∈Vl2
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 41
+Or un EVN est séparé donc commel1⁄=l2,∃V1∈V (l1) et∃V2∈V (l2) tels
+que V1∩V2⁄=∅. On a donc, en posantN =max(N1,N 2) :
+∀n≥N,
+{
+xn∈V1
+xn∈V2
+, or V1∩V2 =∅ donc absurde
+et ﬁnalementl1 =l2.
+Propriété 32:
+Soit (E,‖·‖) un EVN. Soient(xn)n∈N et (yn)n∈N deux suites d’éléments de
+E, convergentes versl, l′∈E respectivement. On a alors
+1. lim
+n→∞
+xn =l =⇒ lim
+n→∞
+‖xn‖ =‖l‖
+2. lim
+n→∞
+xn = 0E⇐⇒ lim
+n→∞
+‖xn‖ = 0
+3. lim
+n→∞
+(xn +λyn) =l +λl′
+Remarque :faisons une petite remarque avant de démontrer les propriétés
+précédentes. Quelle est la signiﬁcation de
+lim
+n→∞
+‖xn‖ =‖l‖
+La suite‖xn‖ est une suite d’éléments deN dans R+ puisque la norme‖·‖
+est une application deE dans R+. Ainsi, on a, d’après le Rappel 2 (en notant
+que‖l‖∈ R+) :
+lim
+n→∞
+‖xn‖ =‖l‖ ⇐⇒ ∀ϵ> 0,∃N∈ N /∀n≥N,|‖xn‖−‖ l‖|<ϵ
+Démonstration :
+1. Si lim
+n→∞
+xn =l alors
+∀ϵ> 0,∃N∈ N /∀n≥N, ‖xn−l‖<ϵ
+or d’après la 2nd inégalité triangulaire,∀n∈ N,
+|‖xn‖−‖ l‖|≤‖ xn−l‖, on a donc
+∀ϵ> 0,∃N∈ N /∀n≥N, |‖xn‖−‖ l‖|≤‖ xn−l‖<ϵ
+<<<PAGE>>>
+42 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+donc
+lim
+n→∞
+‖xn‖ =‖l‖
+Remarque :
+Mais attention, la réciproque est trivialement fausse.
+Pour voir cela, nous pouvons considérer la suite d’éléments de l’espace
+vectoriel normé (R,|·| ) suivante :
+xn = (−1)n
+Alors trivialement‖xn‖ = 1, ∀n ∈ N. Ainsi lim
+n→∞
+‖xn‖ = 1 alors
+même que la suitexn n’admet aucune limite.
+2. C’est immédiat. En eﬀet,
+lim
+n→∞
+xn = 0E ⇐⇒ ∀ϵ> 0,∃N∈ N /∀n≥N,‖xn‖<ϵ
+lim
+n→∞
+‖xn‖ = 0 ⇐⇒ ∀ϵ> 0,∃N∈ N /∀n≥N,‖xn‖<ϵ
+C’est donc totalement équivalent.
+3. On a
+∀ϵ> 0,∃N∈ N /∀n≥N, ‖xn−l‖<ϵ
+∀ϵ′> 0,∃N′∈ N /∀n≥N′,‖yn−l‖<ϵ′
+or d’après l’inégalité triangulaire
+‖‖xn +λyn− (l +λl′)
+‖‖≤‖xn−l‖ +|λ|
+‖‖yn−l′‖‖
+donc en posantϵ′′ =ϵ +|λ|ϵ′, on obtient
+∀ϵ′′> 0,∃N′′ =max(N,N′)∈ N/∀n≥N′′,
+‖‖xn +λyn− (l +λl′)
+‖‖<ϵ′′
+donc lim
+n→∞
+(xn +λyn) =l +λl′
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 43
+Propriété 33:
+Soit E = (Rp,‖·‖). On note
+(xn)n∈N =
+(
+(x(1)
+n )n∈N, (x(2)
+n )n∈N , ... ,(x(p)
+n )n∈N
+)
+une suite d’éléments deRp où les
+(
+x(i)
+n
+)
+n∈N
+sont des suites d’éléments deN
+dans R. Alors
+lim
+n→∞
+xn = (l1,l 2,...,l p) avecli = lim
+n→∞
+x(i)
+n
+Démonstration :
+li = lim
+n→∞
+x(i)
+n ⇐⇒∀ϵi> 0,∃Ni∈ N /∀n≥Ni,|x(i)
+n −li|<ϵ i
+Posons N = max(N1,...,N p) et ϵ = ∑p
+i=1ϵi. Soit (e1,e 2,...,e p) une base
+normée, pour la norme choisie, deRp. Alors
+‖xn− (l1,l 2,...,l p)‖ =
+‖‖‖(x(1)
+n −l1)e1 +... + (x(p)
+n −lp)ep
+‖‖‖
+≤
+‖‖‖(x(1)
+n −l1)e1
+‖‖‖ +
+‖‖‖(x(2)
+n −l2)e2
+‖‖‖ +... +
+‖‖‖(x(p)
+n −l1)ep
+‖‖‖
+≤|x(1)
+n −l1|‖e1‖ +|x(2)
+n −l2|‖e2‖ +... +|x(p)
+n −lp|‖ep‖
+≤
+∑
+ϵi =ϵ
+Exemple :
+Soit la suite
+N → R2
+n ↦→ xn = (1− 1
+n, 1
+n2 )
+Alors
+lim
+n→∞
+xn =
+(
+lim
+n→∞
+1− 1
+n, lim
+n→∞
+1
+n2
+)
+= (1, 0)
+Donc la suite(xn)n∈N converge vers le vecteurl = (1, 0).
+<<<PAGE>>>
+44 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+2.3.4 Valeur d’adhérence et point d’adhérent
+Déﬁnition: (Suite extraite, Rappel)
+Soit (E,‖·‖) un EVN. Soit (xn)n∈N une suite d’éléments deE. Soit φ
+une application strictement croissante de N → N. On appelle alors suite
+extraite de (xn)n∈N (ou sous-suite extraite) la suite(yn)n∈N déﬁnie par
+yn =xφ(n)
+Une suite extraite d’une suite, est simplement une suite dont on choisit les
+éléments (mais cette séléction se fait forcément en augmentant le rang des
+éléments qui sont sélectionnés). Ainsi on peut, par exemple, pour construire
+la suite extraiteyn, sélectionner la suitexn pour n = 1, puis 2, puis 20 puis
+21... et ainsi de suite. Mais on ne peut pas choisirn = 1, puis 2, puis 20 puis
+18 car alors la fonctionφ ne serait pas strictement croissante.
+Considérons par exemple la suite
+N∗ → R2
+n ↦→ xn =
+(
+(−1)n, 1
+n2
+)
+On peut par exemple extraire de cette suite, tous les élémentsn pairs de la
+suite, conduisant ainsi à la suite extraite
+N∗ → R2
+n ↦→ yn =x2n =
+(
+1, 1
+(2n)2
+)
+Propriété 35: (convergence des suites extraites d’une suite convergente)
+Soit (E,‖·‖) un EVN. Soit (xn)n∈N une suite de E qui converge vers
+l∈E. Alors toute suite extraite converge également versl.
+Démonstration :
+— Tout d’abord, commeφ est une fonction strictement croissante de
+n∈ N, on a évidemment,∀n∈ N, φ(n)≥ n. Montrons-le par récur-
+rence.
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 45
+rang 0 :φ(0)≥ 0 donc OK
+hérédité :vériﬁons que si la propriété est vraie au rangn alors elle
+est vraie au rangn+1. Vériﬁons donc que l’on a bienφ(n+1)≥n+1.
+Par hypothèse : φ(n) ≥ n. Or φ est strictement croissante donc
+φ(n + 1)>φ (n). Puisqueφ(n)≥n, on déduit queφ(n + 1)>φ (n)≥
+n. D’où l’on déduit queφ(n + 1)≥n + 1. CQFD.
+— Montronsmaintenantquetoutesuiteextraitede (xn)n∈N quiconverge
+versl, converge aussi versl.
+(xn)n∈N CV versl ⇐⇒∀ϵ> 0,∃N∈ N /∀n≥N, ‖xn−l‖<ϵ
+or∀n, φ(n)≥n donc
+∀ϵ> 0,∃N∈ N /∀φ(n)≥n≥N,
+‖‖xφ(n)−l
+‖‖<ϵ
+donc ﬁnalementlim
+n→∞
+xφ(n) =l.
+Déﬁnition 14: (Valeur d’adhérence d’une suite)
+Soit (E,‖·‖) un EVN. Soit l ∈ E. Soit (xn)n∈N une suite d’éléments
+de E. Soit a∈ E. Alors, on dit quea est valeur d’adhérence de la suite
+(xn)n∈N, si, et seulement si, l’une des propriétés (équivalentes) suivantes est
+vériﬁés
+1. Il existe une suite extraite de(xn)n∈N qui converge versa.
+2. ∀ϵ> 0, l’ensemble{n∈ N,‖xn−a‖<ϵ} est inﬁni.
+3. ∀V ∈V (a), l’ensemble{n∈ N, xn∈V} est inﬁni.
+Exemple :
+Soit la suite
+(xn)n∈N : N → R
+n ↦→
+{
+x2n = 1
+x2n+1 =−1
+<<<PAGE>>>
+46 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+- Alors, il existe une suite extraite, la suite desn paires, qui converge vers1.
+Donc 1 est valeur d’adhérence de la suite(xn)n∈N.
+- Il existe une autre suite extraite, la suite desn impaires, qui converge
+vers−1.
+On voit donc que la suite desxn = (−1)n est bornée car‖xn‖ = 1, a deux
+valeurs d’adhérence1 et−1 mais malgré tout est non convergente.
+Propriété 36:
+Soit (E,‖·‖) un EVN. Soit (xn)n∈N une suite d’éléments de E. Si
+(xn)n∈N converge vers l ∈ E, alors l est l’unique valeur d’adhérence de
+(xn)n∈N.
+Démonstration :
+— l est valeur d’adhérence de(xn)n∈N car il suﬃt de prendre comme
+suite extraite, la suite elle-même (φ : n−→n).
+— Or d’après la propriété 35, toute suite extraite de la suite(xn)n∈N
+convergera également versl.
+Attention : la réciproque est fausse. Une suite peut n’avoir qu’une valeur
+d’adhérence est être non convergente. Exemple :
+∀n∈ N,
+{
+x2n = 2n
+x2n+1 = 1
+1 est valeur d’adhérence de la suite, tandis que la suite diverge.
+Propriété 37:
+Soit (E,‖·‖) un EVN. Soient A ⊂ E et a ∈ E. Alors, les 3 proposi-
+tions suivantes sont équivalentes :
+1. a est adhérent àA.
+2. il existe une suite (xn)n∈N d’éléments deA dont a est une valeur
+d’adhérence.
+3. il existe une suite(xn)n∈N d’éléments deA qui converge versa.
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 47
+Démonstration :
+— 1 =⇒ 3 : soita un point adhérent àA. Alors,∀n∈ N∗
+B
+(
+a, 1
+n
+)
+∩A⁄=∅
+Soit xn∈A∩B(a, 1/n). Alors puisquexn∈B(a, 1/n), on a
+‖xn−a‖< 1
+n donc lim
+n→∞
+xn =a (2.9)
+— 3 =⇒ 1 : Soit(xn)n∈N une suite d’éléments deA qui converge versa.
+SoitV un voisinage dea. Alors,∃N∈ N tel que∀n≥N, xn∈V. Or
+xn∈ A puisque (xn)n∈N est une suite d’éléments deA. On conclut
+donc quexn∈A∩V doncA∩V ⁄=∅. On peut faire ce raisonnement
+pour toutV ∈V (a). Donca∈A.
+— 2 =⇒ 3 : On choisit alors comme suite extraite de(xn)n∈N la suite
+qui converge versa.
+— 3 =⇒ 2 : Comme la suite(xn)n∈N de A converge versa alors a est
+l’unique valeur d’adhérence de(xn)n∈N
+Finalement 1⇐⇒2⇐⇒3.
+Propriété 38:
+Soit (E,‖·‖) un EVN. SoientA⊂E et a∈E. Alors
+1. A est l’ensemble des valeurs d’adhérence des suites d’éléments deA,
+ou dit autrement, l’ensemble des limites de toutes les suites conver-
+gentes d’éléments deA.
+2. A est fermé si, et seulement si, toute suite d’éléments deA qui
+converge admet une limite dansA.
+Démonstration :
+1. a∈ A⇐⇒il existe une suite d’éléments deA qui converge versA
+(propriété 37).
+Donc A est l’ensemble des limites des suites deA.
+<<<PAGE>>>
+48 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+2. =⇒:Si Aferméalors A =A.Or Aestl’ensembledeslimitesdessuites
+desélémentsde A.Doncsi Afermé,l’ensembledessuitesconvergentes
+de A converge dansA.
+⇐= : la réciproque est tout aussi évidente.
+2.3.5 Suites de Cauchy
+Déﬁnition 15: (Suite de Cauchy)
+Soit (E,‖·‖) un EVN. Soit (xn)n∈N une suite d’éléments deE. Alors
+(xn)n∈N est une suite de Cauchy si et seulement si
+∀ϵ> 0,∃N∈ N / (∀n≥N,∀p≥N),‖xp−xn‖<ϵ
+Avant de discuter de l’intérêt du concept de suite de Cauchy, nous allons
+montrer quelques propriétés.
+Propriété 39:
+1. Toute suite convergente est de Cauchy
+2. Toute suite de Cauchy est bornée
+Démonstration :
+1. Soit (xn)n∈N une suite convergente versl. Alors
+∀ϵ1> 0,∃N∈ N /∀n≥N, ‖xn−l‖<ϵ 1
+Or,∀xn,xp
+‖xn−xp‖ =‖xn−l +l−xp‖≤‖ xn−l‖ +‖xp−l‖
+Donc,∀n,p≥N, on a
+‖xn−xp‖< 2ϵ1
+et ﬁnalement
+∀ϵ = 2ϵ1> 0,∃N∈ N /∀n,p≥N,‖xp−xn‖<ϵ
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 49
+2. Démonstration remise à plus tard.
+Propriété 40:
+Si une suite de Cauchy admet une valeur d’adhérence, alors elle converge
+vers sa valeur d’adhérence.
+Démonstration :
+Soit (E,‖·‖) un EVN. Soit (xn)n∈N une suite de Cauchy d’éléments deE.
+Soit a une valeur d’adhérence de la suite. Alors :
+Soit ϵ > 0. Il existe Nc ∈ N tel que pour tout n ≥ Nc, et p ≥ Nc, on
+ait‖xn−xp‖< ϵ/2. Soit (xφ(n))n∈N une suite extraite qui converge versa.
+Alors il existeN1∈ N tel que pour toutn≥N1, on ait
+‖‖xφ(n)−a
+‖‖< ϵ/2.
+On noteN = max(Nc,N 1). Pour toutn≥ N, on aφ(n)≥ n≥ N≥ Nc.
+D’où
+‖xn−a‖≤
+‖‖xn−xφ(n)
+‖‖ +
+‖‖xφ(n)−a
+‖‖<ϵ
+Nous venons de montrer que
+∀ϵ> 0,∃N∈ N/∀n≥N, ‖xn−a‖<ϵ
+Donc la suite converge vers la valeur d’adhérencea.
+Il est important de discuter du contenu mathématique des suites de Cauchy.
+La déﬁnition stipule que les termes d’une suite de Cauchy se rapproche in-
+éxorablement à partir d’un certain rang. Intuitivement, cela implique qu’une
+suite de Cauchy converge. Toutefois, et il est capital de le comprendre, une
+suite de Cauchy ne converge pas nécessairement dans le même espace que
+l’espace dans lequel la suite est déﬁnie.
+Pour le comprendre, étudions la suite suivante (suite de Héron)
+xn+1 =
+xn + 2
+xn
+2 avecx0 = 2
+Commençons par remarquer que tous les termes de la suite sont évidemment
+des rationnels.
+<<<PAGE>>>
+50 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+Ensuite, on peut déterminer le point de convergence de cette suite. Pour
+cela, on voit que,∀n∈ N, xn> 0. De plus
+x2
+n+1− 2 =
+(x2
+n + 2
+2xn
+)2
+− 2 = x4
+n + 22 + 2× 2x2
+n
+4x2n
+− 2 =
+(x2
+n− 2
+2xn
+)2
+≥ 0
+d’où l’on déduit que∀n∈ N∗, xn≥
+√
+2. De plus,∀n∈ N∗
+xn+1−xn = x2
+n + 2
+2xn
+−xn = 2−x2
+n
+2xn
+or puisquexn≥
+√
+2, on a2−x2
+n≤ 0, ce qui implique quexn+1≤xn. Donc
+la suite est décroissante et positive ce qui implique qu’elle converge (rappel
+du cours de préING 1). Donc puisque la limite existe, notons lal. On a donc
+l = l + 2
+l
+2 =⇒l =
+√
+2 car la suite est positive
+Donc, alors que la suite de Héron est une suite déﬁnie sur l’espace des ration-
+nels Q, elle converge vers un irrationnel. Ainsi, il est intéressant de distinguer
+les espaces tels que toute suite de Cauchy déﬁnie dessus, y converge, des es-
+paces où les suites de Cauchy ne convergent pas (mais convergent tout de
+même en dehors). Ainsi :
+Déﬁnition 16: (Espace complet, Espace de Banach)
+1. Un espace métrique (c’est-à-dire un espace muni d’une distance) est
+dit complet si, et seulement si, toute suite de Cauchy déﬁnie sur cet
+espace y converge.
+2. Un espace vectoriel normé complet est appelé un espace de Banach
+Ce type d’espace jouera un rôle central en analyse fonctionnelle (cursus GM,
+Math-ϕ).
+2.3.6 Compacité
+Théorème 1: (de Bolzano-Weierstrass)
+Toute suite bornée d’un espace vectoriel de dimension ﬁnie possède
+une suite extraite convergente.
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 51
+Démonstration : Admis.
+Déﬁnition 17: (Compacité)
+Soit (E,‖·‖) un EVN. Soit A ⊂ E. On dit que A est compact dans
+E si et seulement si toute suite deA admet une suite extraite convergente
+dans A.
+Exemple :
+R est un ensemble non compact. En eﬀet, considérons la suite
+(un)n∈N : N → R
+n ↦→ un =n
+cette suite ne converge pas et aucune suite extraite d’elle ne converge. Donc
+il existe au moins une suite deR dont aucune suite extraite ne converge dans
+R. Finalement R n’est pas compact.
+Propriété 41:
+Soit (E,‖·‖) un EVN de dimension ﬁnie. Alors
+1. compact⇐⇒fermé et borné
+2. l’ensemble vide est compact.
+3. toute partie fermée d’un compact deE est compacte
+Démonstration :
+1.(a) Montrons tout d’abord que : compact=⇒ fermé et borné.
+compact =⇒ fermé :A compact donc de toute suitexn, on peut
+extraire une suitexφ(n) qui converge versl∈ A. Or, si la suite
+xn converge, elle converge nécessairement versl. Donc toute suite
+convergente d’éléments deA converge dansA =⇒ fermé (carac-
+térisation séquentielle des fermés).
+<<<PAGE>>>
+52 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+compact =⇒ borné :Pour cela prenons la contraposé
+non borné =⇒ non compact
+Si l’ensembleA n’est pas borné, alors on peut prendre une suite
+telleque∀n∈ N,‖xn‖≥ n.D’où,pourtoutesuiteextraite (xφ(n)),
+nous avonsn≤φ(n)≤
+‖‖xφ(n)
+‖‖. On en déduit donc que toute suite
+extraite de (xn)n∈N diverge et doncA n’est pas compact.
+Finalement, compact =⇒ borné, fermé.
+(b) Montrons maintenant que borné, fermé=⇒ compact :
+Soit A un ensemble borné d’un espace vectoriel normé de dimen-
+sion ﬁnie. Alors toute suite deA est bornée. D’après le théorème
+de Bolzano-Weiestrass, toute suite deA admet donc une suite ex-
+traite qui converge. OrA est fermé doncA =A donc toute suite
+extraite converge bien dansA.
+2. l’ensemble vide est fermé et borné donc c’est un compact.
+3. A compact =⇒ A fermé et borné. SoitB⊂A un fermé. AlorsB est
+également borné (puisqueA borné). DoncB est un compact.
+Remarque :en dimension inﬁnie la propriété 1. devient
+compact =⇒ borné et fermé (mais la réciproque devient fausse)
+Propriété 42:
+Tout compact d’un espace vectoriel normé est complet.
+Démonstration :
+Rappel pour la démonstration :
+1. complet : toute suite de Cauchy d’éléments deA converge dansA.
+2. toute suite convergente est de Cauchy
+3. toute suite de Cauchy ayant une valeur d’adhérence converge
+<<<PAGE>>>
+2.3. SUITES D’ÉLÉMENTS D’UN EVN 53
+A est un compact donc toute suitexn d’éléments deA admet une suite ex-
+traite xφ(n) qui converge dansA. Or sixn est une suite de Cauchy, alors
+elle admet une valeur d’adhérence dansA et converge donc vers cette valeur
+d’adhérence=⇒ toute suite de Cauchy deA converge dansA donc A com-
+plet.
+Propriété 43:
+Soient (E,‖·‖E) et (F,‖·‖F ) deux EVN. Soient A ⊂ E et B ⊂ F
+deux compacts. AlorsA×B est un compact deE×F.
+Démonstration remise à plus tard.
+<<<PAGE>>>
+54 CHAPITRE 2. ESPACE VECTORIEL NORMÉ
+<<<PAGE>>>
+Chapitre 3
+Limite et Continuité
+d’applications
+3.1 Objectifs du chapitre
+Le but de ce chapitre est de généraliser les notions de limite de fonctions et
+de continuité que vous avez étudiées en préING 1 pour les fonctions deR
+dans R (fonctions d’une variable) aux fonctions deRp dans Rn (oùp,n∈ N∗,
+fonction de plusieurs variables).
+Rappels de préING 1 :
+— Soit f une fonction deD⊂ R−→ R. Alors la limitel de f quand x
+tend versa est
+∀ϵ,∃α> 0, (∀x∈D, |x−a|<α ) =⇒|f(x)−l|<ϵ
+ce que l’on note : lim
+x→a
+f(x) =l
+— Si a appartient au domaine de déﬁnition de la fonction alors
+lim
+x→a
+f(x) =f(a)
+puisque∀ϵ> 0,|f(a)−l|<ϵ .
+Dit autrement, si f(a) n’aboutit pas une forme indéterminée0/0,
+0×∞,∞/∞ ou encore∞−∞ alors
+lim
+x→a
+f(x) =f(a)
+55
+<<<PAGE>>>
+56 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+S’il y a une forme indeterminée, alors il faut la lever pour trouver la
+limite. Par exemple
+lim
+x→0
+x3
+x2−x = 0
+0 Forme indeterminée
+Alors
+lim
+x→0
+x3
+x2−x = lim
+x→0
+x3
+x(x− 1) = lim
+x→0
+x2
+x− 1 = 0
+— Pour qu’une fonctionf : R−→ R soit continue ena, il faut et il suﬃt
+que
+lim
+x→a−
+f(x) = lim
+x→a+
+f(x) =f(a)
+exemple : Soit lafonction de Heaviside(que vous avez rencontré
+dans le cours d’Automatique)
+f : R → R
+x ↦→ f(x) =
+{
+1 si x≥ 0
+0 si x< 0
+dont une représentation est donnée sur la ﬁgure suivante
+Clairement, cette fonction n’admet pas de limite en0.
+Nous allons donc généraliser ces remarques (et plus encore...) aux cas des
+fonctions deRp−→ Rn (fonctions de plusieurs variables) comme par exemple
+les fonctions suivantes
+f : R2 → R
+(x,y ) ↦→ f(x,y ) = xy
+x2+y2
+ou encore
+g : R2 → R2
+(x,y ) ↦→ g(x,y ) =
+(
+x2+y2−1
+x ; sin(x2)+sin(y2)√
+x2+y2
+)
+On peut alors se demander : quelle est la limite def et g au point (1, 2)?
+Sont-elles continues en(0, 0)?
+Nous verrons que les notions de topologie introduites au chapitre précédent
+sont capitales :norme, voisinage, ouvert, fermé, borné.
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 57
+3.2 Limite, Continuité
+Nous devons commencer par généraliser la notion delimite des fonctions de
+R−→ R au cas des fonctions d’un EVN quelconque dans un autre EVN.
+Déﬁnition 1 : (limite d’une fonction en un point)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soit A ⊂ E. Soit f une ap-
+plication deA dansF. Soienta∈A etl∈F. On dit quef admet une limite
+l lorsquex tend versa, si et seulement si, l’une des propriétés (équivalentes)
+suivantes est vériﬁée
+1. ∀ϵ> 0,∃η >0,∀x∈A,‖x−a‖E <η =⇒‖f(x)−l‖F <ϵ
+2. ∀ϵ> 0,∃η >0,∀x∈A,x∈BE(a,η ) =⇒f(x)∈BF (l,ϵ )
+3. ∀VF∈V (l),∃VE∈V E(a),∀x∈A, (x∈VE =⇒f(x)∈VF )
+4. ∀VF∈V (l),∃VE∈V E(a), f(VE∩A)⊂VF
+Remarques :
+— ϵ est la précision à laquelle on connait la valeur prise parf(x). Ainsi,
+on ﬁxe la précisionϵ. Alors, il existeη tel que pour toutx se trouvant
+à une distance inférieure àη possède une image parf à une distance
+de l inférieure à la précisionϵ.
+
+<<<PAGE>>>
+58 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+Si ϵ tend vers 0 alors η doit tendre vers0.
+— Si f est déﬁnie ena, alors la limite estf(a).
+Exemple :
+f : R2 → R
+(x,y ) ↦→ f(x,y ) = xy
+x2+y2
+Alors ena = (1, 1) on af(a) = f(1, 1) = 1
+2 qui est donc la limite de
+f en a.
+Mais ena = (0, 0), on voit que l’on obtient une forme indeterminée
+du type0/0. Il faut alors lever l’indetermination. On étudiera dans la
+suite de ce chapitre des techniques pour cela lorsque la fonction est à
+plusieurs variables comme c’est le cas ici.
+Propriété 1 : (unicité de la limite)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soit A ⊂ E. Soit f une ap-
+plication deA dans F. Soita∈ A. Sif admet une limitel∈ F en a alors
+elle est unique.
+On note alors cette limite
+lim
+x→a
+f(x) =l
+Démonstration :
+Supposons quef possède deux limitesl et l′ telles quel⁄= l′. Posons alors
+ϵ = 1
+3‖l−l′‖F > 0. Alors, il existeη,η′> 0 tels que
+{
+∀x∈A,‖x−a‖E <η =⇒‖f(x)−l‖F <ϵ
+∀x∈A,‖x−a‖E <η′ =⇒‖f(x)−l′‖F <ϵ′
+Prenons‖x−a‖E < min(η,η′). On a alors
+‖f(x)−l‖<ϵ et
+‖‖f(x)−l′‖‖<ϵ′
+Donc
+3ϵ =
+‖‖l−l′‖‖
+F =
+‖‖l−f(x) +f(x)−l′‖‖
+F≤‖l−f(x)‖F +
+‖‖f(x)−l′‖‖
+F < 2ϵ
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 59
+ce qui est absurde. Doncl =l′.
+Exemple :
+Reprenons l’exemple de fonction précédent
+f : R2 → R
+(x,y ) ↦→ f(x,y ) = xy
+x2+y2
+Dont la représentation graphique est la suivante
+Etudions la limite de cette fonction ena = (0, 0). Pour cela, nous allons
+passer en coordonnées polaires
+<<<PAGE>>>
+60 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+On a donc
+f(x,y ) = xy
+x2 +y2−→ ˜f(ρ,θ ) = cos(θ) sin(θ)
+En coordonnée polaire le pointa = (0, 0) devient a = (ρ = 0,θ ). On peut
+alors s’approcher du pointa = (0, 0) par diﬀérent chemin, c’est-à-dire diﬀé-
+rentes valeurs deθ. Par exemple pourθ = π
+4, on a
+lim
+(x,y)→(0,0)
+f(x,y ) = lim
+(ρ,θ)→(0,π
+4 )
+˜f(ρ,θ ) = lim
+(ρ,θ)→(0,π
+4 )
+cos(θ) sin(θ) = 1
+2
+Tandis que pourθ =−π
+4, on a
+lim
+(x,y)→(0,0)
+f(x,y ) = lim
+(ρ,θ)→(0,−π
+4 )
+˜f(ρ,θ ) = lim
+(ρ,θ)→(0,−π
+4 )
+cos(θ) sin(θ) =−1
+2
+Les deux chemins suivis pour évaluer la limite sont représentés sur la ﬁgure
+suivante
+
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 61
+Finalement comme
+lim
+(ρ,θ)→(0,π
+4 )
+˜f(ρ,θ )⁄= lim
+(ρ,θ)→(0,−π
+4 )
+˜f(ρ,θ )
+la fonctionf n’admet pas de limite ena = (0, 0).
+Remarque :
+Sur cette exemple, on peut voir une diﬀérence fondamentale entre le cas des
+fonctions de R dans R et celui des fonctions deRp dans Rn. En eﬀet, dans
+le premier cas, évaluer la limite en un pointa quelconque revient seulement
+à s’approcher par deux chemins : par lesx plus grands quea et lesx plus
+petits quea. Mais dans le second cas, il existe en fait une inﬁnité de chemins
+par lesquels on peut s’approcher dea.
+et pour que la limite existe, il faut que tous les chemins par lesquels on peut
+s’approcher dea donne les mêmes limites.
+Propriété 2 :
+Changer les normes‖·‖E et‖·‖F par des normes équivalentes ne change pas
+le fait que la limite existe ou non. Si de plus elle existe, elle reste inchangée.
+Démonstration :
+Soit E et F deux EVN munis tous les deux de deux normes équivalentes.
+Pour E les deux normes équivalentes sont‖·‖1,E et‖·‖2,E. Il existe donc
+<<<PAGE>>>
+62 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+α,β >0 tels que∀x∈E
+α‖x‖2,E≤‖x‖1,E≤β‖x‖2,E
+De même, pourF les deux normes équivalentes sont‖·‖1,F et‖·‖2,F. Il existe
+donc γ,δ > 0 tels que∀y∈F
+γ‖y‖2,F≤‖y‖1,F≤δ‖y‖2,F
+Soitf une fonction allant deE dansF qui admet une limitel∈F ena∈E
+selon les normes‖·‖1,E et‖·‖1,F. Donc
+∀ϵ> 0,∃η >0 /∀x∈E, ‖x−a‖1,E <η =⇒‖f(x)−l‖1,F <ϵ
+Posons maintenantϵ =ϵ′/δ et η′ =η/α. Alors
+‖x−a‖1,E <η =⇒α‖x−a‖2,E≤‖x−a‖1,E <η =⇒‖x−a‖2,E < η
+α =η′
+De même
+‖f(x)−l‖1,F <ϵ =⇒γ‖f(x)−l‖2,F≤‖f(x)−l‖1,F <ϵ =⇒‖f(x)−l‖2,F < ϵ
+γ =ϵ′
+Donc
+∀ϵ′ = ϵ
+γ,∃η′ = η
+α /∀x∈E,‖x−a‖2,E <η′ =⇒‖f(x)−l‖2,F <ϵ′
+Propriété 3 :
+Soient (E,‖·‖E) et (F,‖·‖F ) deux EVN et A ⊂ E. Soient f et g
+deux applications deA dand F, a∈A et l∈F. Si
+lim
+x→a
+f(x) =l1 et lim
+x→a
+g(x) =l2
+Alors
+lim
+x→a
+f(x) +λg(x) =l1 +λl2 pour∀λ∈ R
+Démonstration :
+Par hypothèse, on a
+
+
+
+lim
+x→a
+f(x) =l1⇐⇒∀ϵ> 0,∃η >0,∀x∈E,‖x−a‖E <η =⇒‖f(x)−l1‖F <ϵ
+lim
+x→a
+g(x) =l2⇐⇒∀ϵ′> 0,∃η′> 0,∀x∈E,‖x−a‖E <η′ =⇒‖f(x)−l2‖F <ϵ′
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 63
+Calculons maintenant‖f(x) +λg(x)− (l1 +λl2)‖F
+‖f(x) +λg(x)− (l1 +λl2)‖F≤‖f(x)−l1‖F +|λ|‖g(x)−l2‖F
+Finalement, en posantϵ′′ =ϵ +|λ|ϵ′ et η′′ = min(η,η′)
+∀ϵ′′> 0,∃η′′> 0,‖x−a‖E <η′′ =⇒‖f(x) +λg(x)− (l1 +λl2)‖F <ϵ′′
+Propriété 4 :
+Soient (E,‖·‖E) et (F,‖·‖F ) deux EVN. SoitF⊂ R et A⊂E. Soientf et
+g deux applications deA−→F. Soita∈A. f et g sont telles que
+lim
+x→a
+f(x) =l1 et lim
+x→a
+g(x) =l2
+avecl1,l 2∈ R. Alors
+1. lim
+x→a
+f(x)g(x) =l1l2
+2. Si l2⁄= 0, lim
+x→a
+f(x)/g(x) =l1/l2
+Démonstration : laissée en exercice
+Propriété 5 :
+Soient E = Rn et F = Rp. Alors une application f de E −→ F ad-
+met l = ( l1,l 2,...,l p) comme limite lorsque x tend vers a ∈ E si, et
+seulement si, pour tout entier J1;pK, la ième "application composante"
+fi : E−→ R de f admet li pour limite quandx tend versa.
+Démonstration : laissé en exercice
+Exemple :
+Soit l’application
+f : R2 → R2
+(x,y ) ↦→ f(x,y ) =
+(
+xy2
+x2+y2 ; xy
+x2+y2
+)
+Etudions la limite ena = (0, 0) de cette fonction. D’après la propriété pré-
+<<<PAGE>>>
+64 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+cédente, il suﬃt d’étudier la limite de chacune des applications composantes
+f1 : R2 → R
+(x,y ) ↦→ f1(x,y ) = xy2
+x2+y2
+f2 : R2 → R
+(x,y ) ↦→ f2(x,y ) = xy
+x2+y2
+Même si nous avons déjà vu quef2 n’admet pas de limite en(0, 0), ce qui
+est suﬃsant pour dire quef n’admet pas de limite en ce point, étudionsf1.
+Nous allons une fois de plus utiliser les coordonnées polaires. Posons donc
+{
+x =ρ cosθ
+y =ρ sinθ
+Alors
+lim
+(x,y)→(0,0)
+xy2
+x2 +y2 = lim
+(ρ,θ)→(0,θ)
+ρ3 cosθ sin2θ
+ρ2 = 0 pour∀θ
+Donc la fonction composantef1 admet bien une limite en(0, 0).
+Déﬁnition 2 : (Application continue)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soient A ⊂ E, f une appli-
+cation de A −→ F et a ∈ A. On dit que f est continue en a si, et
+seulement si, f admet une limite en a. La fonction f est dite disconti-
+nue en a si, et seulement si, f n’est pas continue ena. La fonction est
+dite continue sur l’ensembleA si, et seulement si, elle est continue en tout
+point deA. On noteC(A,F ) l’ensemble des fonctions continues deA dansF.
+La continuité en un point quelconquea consiste donc à étudier si quelque
+soit le chemin par lequel on s’approche dea, la fonction tend vers la même
+valeur. Il s’agit également de la déﬁnition de la continuité en un point dans
+le cas d’une fonction deR−→ R. Mais dans le cas des fonctions deR−→ R
+on ne peut s’approcher que de deux façon du point : soit par lesx plus grand
+soit par lesx plus petit. La situation est beaucoup plus complexe dans le
+cas générale d’une fonction deRp −→ Rn puisqu’il y a alors une inﬁnité
+de façon de s’approcher du pointa (avecp >1 un entier). Par exemple, si
+p = 2 et a = (0, 0), alors on peut s’approcher par tous les chemins du plan
+s’approchant de l’origine.
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 65
+Théorème 1 : (Caractérisation séquentielle de la limite)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soient A ⊂ E, f une appli-
+cation deA−→F et a∈A. Alorsf admet une limitel∈F quand x tend
+vers a si, et seulement si, pour toute suite (xn)n∈N d’éléments deA qui
+converge versa, la suite
+(
+f(xn)
+)
+n∈N
+converge versl.
+Démonstration : Admis
+Corollaire : (Caractérisation séquentielle de la continuité)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soient A ⊂ E, f une appli-
+cation de A−→F et a∈ A. Alors f est continue ena si, et seulement
+si, pour toute suite (xn)n∈N d’éléments deA qui converge versa, la suite(
+f(xn)
+)
+n∈N
+converge versf(a).
+Exemple :
+Soit la fonction
+f : R2 → R
+(x,y ) ↦→ f(x,y ) =
+{ xy
+x2+y2 si (x,y )⁄= (0, 0)
+0 si (x,y ) = (0, 0)
+<<<PAGE>>>
+66 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+Prenons par exemple un = ( 1
+n, 1
+n) alors clairement lim
+n→∞
+un = (0, 0). Or
+f(un) = n2/(2n2) = 1 /2. Donc lim
+n→∞
+f(un) = 1
+2 ⁄= f(0, 0) = 0 . Donc la
+fonction n’est pas continue en(0, 0).
+3.2.1 Méthodologie
+Nousrésumonsicilesméthodesànotredispositionpourlarecherchedelimite
+d’une fonction deR2 dans R en a = (x0,y 0). On cherche donc à déterminer
+lim
+(x,y)→(x0,y0)
+f(x,y )
+Etape 1 :
+On calculef(x0,y 0) et si on n’obtient pas une forme indeterminée (0×∞,
+∞/∞, 0/0,∞−∞ ,...), alors
+lim
+(x,y)→(x0,y0)
+f(x,y ) =f(x0,y 0)
+Si on obtient une forme indeterminée, alors il faut lever l’indétermination et
+pour cela, vous devez passer à l’Etape 2.
+Etape 2 :
+Il y a dans cette deuxième étape plusieurs possibilités. Mais quelle que soit la
+méthode, l’objectif est de montrer : (i) soit que tous les chemins qui tendent
+versa aboutissent à la même valeur et alors la fonction est continue ena et
+prend cette valeur (ii) soit il existe au moins deux chemins qui tendent vers
+a mais qui n’aboutissent pas à la même valeur def et dans ce cas la fonction
+n’a pas de limite ena. Pour cela :
+1. On peut passer en coordonnées polaires notamment si le dénomina-
+teur si prête bien (par exemple de la forme(x−x0)2 + (y−y0)2). On
+pose alors
+x =x0 +ρ cos(θ)
+y =y0 +ρ sin(θ)
+permettant d’introduire la fonction˜f(ρ,θ ) =f(x,y ). On a alors
+lim
+(x,y)→(x0,y0)
+f(x,y ) = lim
+(ρ,θ)→(0,θ)
+˜f(ρ,θ )
+Si le résultat ne dépend pas deθ alors la fonctionf admet une limite
+donnée par lim
+(ρ,θ)→(0,θ)
+˜f(ρ,θ ). Cela correspond au cas où la valeur de
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 67
+f ne dépend pas du chemin qui tend versa. Si le résultat dépend de
+θ alors la fonction n’admet pas de limite ena car selon le chemin par
+lequel on tend versa (c’est-à-dire selon la valeur deθ), la valeur de
+f est diﬀérente.
+2. Si la fonction n’a pas la bonne forme pour passer en coordonnées po-
+laires, on calcule explicitement la valeur def pour diﬀérents chemins
+d’approche du pointa = (x0,y 0). Pour cela, on a deux méthodes
+(a) Caractérisation séquentielle :
+Nous savons que siun est une suite d’éléments deN dans R2 telle
+que
+lim
+n→∞
+un = (x0,y 0)
+alors sif est continue, on a
+lim
+(x,y)→(x0,y0)
+f(x,y ) = lim
+n→∞
+f(un)
+On calcule alors cette limite pour diﬀérents chemins, c’est-à-dire
+pour diﬀérentes suitesun.
+(b) Caractérisation cartésienne :
+On exprime les diﬀérents chemins par leur expression cartésienne
+qui sont de la forme(x,α (x)) par exemple (oùα est une applica-
+tion de R dans R).
+Si deux chemins donnent des valeurs diﬀérentes, quelle que soit la
+méthode, alors la fonctionf n’a pas de limite ena.
+Si, par contre, tous les chemins donnent la même valeur, alors cette
+valeur, notéelc, est un bon candidat pour être la limite de la fonction.
+On passe alors à l’étape3.
+3. Il ne reste plus qu’à calculer|f(x,y )−lc|. Si cette quantité tend vers
+0 pour (x,y ) tend vers (x0,y 0) alors :
+— Si|f(x,y )−lc| −→
+(x,y)→(x0,y0)
+0, alors lim
+(x,y)→(x0,y0)
+f(x,y ) =lc
+— Sinon, la fonction n’admet aucune limite en(x0,y 0)
+<<<PAGE>>>
+68 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+Exemple 1 :
+Soit la fonctionf1(x,y ) =xy/(x2 +y2) dont on cherche la limite en(0, 0).
+Clairementf1(0, 0) = 0/0 est une forme indeterminée.
+
+<<<PAGE>>>
+3.2. LIMITE, CONTINUITÉ 69
+Exemple 2 :
+Soit la fonctionf2(x,y ) = 1+x3/(x2+y2) dont on cherche la limite en(0, 0).
+Clairementf2(0, 0) = 0/0 est une forme indeterminée.
+On ne peut pas conclure à partir des deux dernières méthodes. En eﬀet,
+ce n’est pas parce que les deux chemins choisis donnent1 que cela signiﬁe
+que la fonction est continue. Pour conclure avec ces deux méthodes, on doit
+maintenant étudier|f(x,y )−lc| où lc = 1.
+|f(x,y )−lc| =|f(x,y )− 1| =
+⏐⏐⏐⏐
+x3
+x2 +y2
+⏐⏐⏐⏐ = x2
+x2 +y2|x|≤| x| −→
+(x,y)→(0,0)
+0
+ﬁnalement, avec les 3 méthodes, on aboutit bien à
+lim
+(x,y)→(0,0)
+f2(x,y ) = 1
+<<<PAGE>>>
+70 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+3.3 Continuité uniforme
+Déﬁnition 2 : (Continuité uniforme)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Soient A ⊂ E, f une appli-
+cation deA−→F et a∈A. On dit quef est uniformément continue surA
+si, et seulement si,
+∀ϵ> 0,∃η >0,∀a∈A,∀x∈A,
+(
+‖x−a‖E <η =⇒‖f(x)−f(a)‖F <ϵ
+)
+On rappelle que la continuité classique (celle de la section précédente) sur
+l’ensembleA s’écrit
+∀a∈A,∀ϵ> 0,∃η >0,∀x∈A,
+(
+‖x−a‖E <η =⇒‖f(x)−f(a)‖F <ϵ
+)
+La diﬀérence entre la continuité uniforme sur l’ensembleA et la continuité
+sur l’ensembleA provient donc du fait que dans la continuité uniformeη est
+indépendant du pointa∈A considéré; d’où le nom de continuité uniforme.
+Propriété 6 :
+Toute application uniformément continue est continue.
+Démonstration :
+C’est trivial. Soitf une application deA⊂E dansF. Alorsf est uniformé-
+ment continue surA si, et seulement si
+∀ϵ> 0,∃η >0,∀a∈A,∀x∈A,
+(
+‖x−a‖E <η =⇒‖f(x)−f(a)‖F <ϵ
+)
+qui implique évidemment la continuité
+∀a∈A,∀ϵ> 0,∃η >0,∀x∈A,
+(
+‖x−a‖E <η =⇒‖f(x)−f(a)‖F <ϵ
+)
+<<<PAGE>>>
+3.3. CONTINUITÉ UNIFORME 71
+Déﬁnition 3 : (Application lipschitzienne)
+Soient (E,‖·‖E) et (F,‖·‖F ), deux EVN. Une applicationf : E−→F est
+dite lipschitzienne si, et seulement si
+∃κ≥ 0,∀x∈E, ∀y∈E, ‖f(x)−f(y)‖F≤κ‖x−y‖E
+On dit alors quef est κ-lipschitzienne deE dans F.
+Remarque : en dimension ﬁnie, le caractère lipschitzien d’une application
+ne dépend pas des normes utilisées, par contre la valeur deκ, elle, en dé-
+pend.
+Propriété 7 :
+Toute application lipschitzienne est uniformément continue.
+Démonstration :
+Soient (E,‖·‖E) et (F,‖·‖F ) deux EVN etf une applicationκ-lipschitzienne
+de E dans F.
+1. Si κ = 0 alors f est une fonction constante. Donc pour touta∈ E
+et∀x ∈ E,‖f(x)−f(a)‖F = 0 < ϵ. On conclut donc que f est
+uniformément continue.
+2. Si κ⁄= 0, alors posonsη = ϵ/κ > 0. Soita∈ E et x∈ E tels que
+‖x−a‖E < η. Alors‖f(x)−f(a)‖F ≤ κ‖x−a‖E < κη = ϵ. On
+vient donc de montrer que
+∀ϵ> 0,∃η >0,∀a∈E,∀x∈E,
+(
+‖x−a‖E <η =⇒‖f(x)−f(a)‖F <ϵ
+)
+donc f est uniformément continue.
+Propriété 8 :
+Soit (E,‖·‖E) un EVN. Alors l’application ‖·‖E est 1-lipschitzienne
+de E dans (R,|·| ).
+<<<PAGE>>>
+72 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+Démonstration :
+f est donc ici l’application‖·‖E. Il suﬃt donc de montrer que
+∃κ≥ 0,∀x∈E, ∀y∈E, |‖x‖E−‖y‖E|≤ κ‖x−y‖E
+avecκ = 1. Or d’après la 2nd inégalité triangulaire,∀x,y∈E, on a|‖x‖E−
+‖y‖E|≤‖ x−y‖E. CQFD.
+Théorème 2 : (théorème de Heine)
+Toute application continue sur un compact y est uniformément conti-
+nue
+Démonstration :
+Raisonnons par l’absurde. Soitf une application continue et non uniformé-
+ment continue sur un compact. Alors
+∃ϵ0> 0,∀η >0,∃(x,y )∈A2 /‖x−y‖E <η ET‖f(x)−f(y)‖F >ϵ 0
+Ainsi, en posant pour∀n∈ N, ηn = 2−n, nous avons
+∃(xn,yn)∈A2 /‖xn−yn‖E≤ 2−n ET‖f(x)−f(y)‖F >ϵ 0
+OrAestuncompact.Donc,ilexisteunesuiteextraite (xφ(n))n∈N convergente
+vers x∈ A. Or
+‖‖xφ(n)−yφ(n)
+‖‖≤ 2−φ(n)≤ 2−n, ce qui implique queyφ(n)
+converge également versx. Ainsi,f étant continue, (f(xφ(n))) et (f(yφ(n)))
+convergent versf(x) d’où
+‖‖f(xφ(n))−f(yφ(n))
+‖‖
+F−→0
+or c’est absurde puisque cela doit être supérieur àϵ0.
+3.4 Topologie et fonctions continues
+Aﬁn de déterminer si un ensemble est un ouvert, un fermé ou un com-
+pact, il est également possible d’utiliser les fonctions continues à travers les
+deux théorèmes suivants
+<<<PAGE>>>
+3.4. TOPOLOGIE ET FONCTIONS CONTINUES 73
+Théorème 3 : (Images réciproques d’ouverts, de fermés)
+1. L’image réciproque d’un ouvert par une application continue est un
+ouvert.
+2. L’image réciproque d’un fermé par une application continue est un
+fermé.
+Démonstration :
+Soit f une application continue de (E,‖·‖E) dans (F,‖·‖F ). Commençons
+par rappeler quef est continue ena et de plusf(a) =l, si, et seulement si
+elle vériﬁe :
+∀VF∈V (l),∃VE∈V E(a),∀x∈A, (x∈VE =⇒f(x)∈VF )
+1. SoitVF un ouvert deF. Soitx∈f−1(VF ) : alors évidemmentf(x)∈
+VF. OrVF est un ouvert, c’est donc un voisinage def(x). Par conti-
+nuité :
+∃VE∈V E(x) /∀x∈VE, f(x)∈VF
+Donc VE⊂ f−1(VF ). CommeVE est un voisinage dex, cela signiﬁe
+donc quef−1(VF ) l’est aussi. Comme cette démonstration reste vraie
+pour toutf(x)∈VF, on conclue quef−1(VF ) est bien un ouvert.
+
+<<<PAGE>>>
+74 CHAPITRE 3. LIMITE ET CONTINUITÉ D’APPLICATIONS
+2. Soit A un fermé deF. Alors
+x∈CEf−1(A)⇐⇒f(x)⁄∈A⇐⇒f(x)∈CFA⇐⇒x∈f−1(CFA)
+d’où l’on déduit queCEf−1(A) =f−1(CFA). CommeA est un fermé
+deF,CFAest un ouvert deF. Donc compte-tenu de 1.,f−1(CFA)est
+un ouvert deE. DoncCEf−1(A) est un ouvert puisqueCEf−1(A) =
+f−1(CFA). FinalementCECEf−1(A) =f−1(A) est un fermé.
+Théorème 4 : (Image directe d’un compact)
+Soient (E,‖·‖)E) et (F,‖·‖)F ) deux EVN. Soitf une application continue
+de E dans F, alors l’image direct d’un compact deE par f est un compact
+de F.
+Démonstration :
+Soit A un compact deE et f une application continue surA. Si (bn)n∈N
+est une suite d’éléments def(A), alors pour∀n∈ N,∃an ∈ A telle que
+bn = f(an). A étant compact, il existe une suite extraite aφ(n) conver-
+gente vers a ∈ A. Or f est continue donc (bφ(n)) = ( f(aφ(n))) converge
+versf(a)∈f(A). Doncf(A) est un compact.
+<<<PAGE>>>
+Chapitre 4
+Calcul diﬀérentiel du 1er ordre
+4.1 Objectifs du chapitre
+L’objectif de ce chapitre est de généraliser des notions que vous avez étudié
+dans le cas des applications deR dans R et/ou de vous introduire rigoureu-
+sement des concepts que vous avez déjà utilisé en physique :
+1. dérivée première−→dérivée partiel du premier ordre :
+En fait, vous avez déjà calculé en éléctromagnétisme et en thermody-
+namique des dérivées partielles. Considérons, par exemple, la fonction
+suivante
+f : R2 → R3
+(x,y ) ↦→ f(x,y ) =
+(
+x +y,x 2−y2,x 2y
+)
+Alors
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+= (1, 2x, 2xy)
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+= (1,−2y,x 2)
+La première expression est obtenue en dérivant par rapport àx en
+ﬁxanty (ou dit autrement, en considéranty comme une constante),
+tandis que la seconde expression est obtenue en dérivant par rapport
+à y en ﬁxantx.
+75
+<<<PAGE>>>
+76 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+On introduira également la notion de gradient d’un champ scalaire
+que vous avez étudié en mécanique (⃗F =−⃗∇V) ou encore en électro-
+magnétisme. Considérons, par exemple, la fonction :
+f : R2 → R
+(x,y ) ↦→ f(x,y ) =x2 +xy
+Alors
+⃗∇f =
+( ∂f
+∂x
+⏐⏐⏐⏐
+x,y
+, ∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+= (y + 2x,x )
+2. diﬀérentiabilité : il s’agit d’une notion que vous connaissez pour les
+fonctions deR dans R. Nous allons l’étendre au cas de fonctions deRp
+dans Rn. On introduira alors les notions de diﬀérentielles, de classe
+C1.
+3. Nous généraliserons la notion d’équation diﬀérentielle d’ordre 1 en
+introduisons les équations aux dérivées partielles du 1er ordre
+4.2 Dérivée partielle
+Déﬁnition 1 : (Dérivée partielle)
+Soit U un ouvert de Rp. Soient a ∈ Rp et f une application de U
+dans F (où F est un EVN). Soit(e1,e 2,...,e p) la base canonique deRp. On
+dit dit que f admet une dérivée partielle première ena par rapport à la
+jème variable si, et seulement si, l’application
+φj =
+{
+Dj→F
+t↦→f(a +tej)
+est dérivable en0 avecDj ={t∈ R / a+tej∈U}. On a alors :
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+=φ′
+j(0) = lim
+t→0
+f(a +tej)−f(a)
+t
+Remarque : la notation ∂f
+∂xj
+⏐⏐⏐
+a
+signiﬁe que l’on calcule la dérivée def par
+rapport à la jème variable au pointa (ou que l’on évalue cette dérivée au
+<<<PAGE>>>
+4.2. DÉRIVÉE PARTIELLE 77
+point a). Il s’agit d’une notation plutôt utilisée par les physiciens. Les ma-
+thématiciens préfèrent utiliser la notation∂f
+∂xj
+(a) ou encore ∂f (a)
+∂xj
+Exemple :Soit f l’application suivante
+f : R2 → R
+(x,y ) ↦→ f(x,y ) = 3x2 +xy− 2y2
+Déterminons les dérivées partielles d’ordre1 en fonction dex et y en tout
+point (x,y ).
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
+= lim
+t→0
+f
+(
+(x,y ) + (t, 0)
+)
+−f(x,y )
+t
+= lim
+t→0
+f
+(
+x +t,y
+)
+−f(x,y )
+t
+= lim
+t→0
+3(x +t)2 + (x +t)y− 2y2− 3x2−xy + 2y2
+t
+= lim
+t→0
+3t2 + 6xt +ty
+t = lim
+t→0
+(
+3t + 6x +y
+)
+= 6x +y
+Ce qui est bien équivalent à ﬁxery et à dériver par rapport àx :
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
+= 6x +y
+Signiﬁcation graphique :
+Discutons du sens de∂f
+∂x
+⏐⏐⏐
+(x0,y0)
+. Pour cela, nous avons schématiquement re-
+présenté une fonction deR2 dans R sur la ﬁgure suivante. Alors la dérivée
+partielle def par rapport àx au point (x0,y 0) revient à calculer la dérivée
+par rapport à x au point x0 de la fonctionf(x,y 0). Graphiquement, cela
+signiﬁe que l’on commence par prendre l’intersection du plan parallèle à xOz
+situé eny =y0 avec la courbef(x,y ). Cela permet d’obtenirf(x,y 0). Il ne
+reste plus qu’à calculer la dérivée enx0 de cette fonctionf(x,y 0).
+<<<PAGE>>>
+78 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+En eﬀectuant la même démarche que précédemment (soit en utilisant la
+déﬁnition soit en utilisant la technique de calcul qui consiste à ﬁxerx et à
+dériver par rapport ày), on peut calculer la dérivée def par rapport ày
+∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+=x− 4y
+Remarque Importante :
+Une application dont toutes ses dérivées partielles sont déﬁnies en un cer-
+tain pointa, n’est pas nécessairement continues en ce point. Cela provient
+du fait que les dérivées partielles ne s’intéressent qu’à des directions portées
+par les vecteurs de la base canonique. Mais on peut s’approcher du pointa
+par d’autres directions.
+Illustrons cela à partir de la fonction
+f : R2 → R
+(x,y ) ↦→ f(x,y ) =
+{ xy
+x2+y2 si (x,y )⁄= (0, 0)
+0 si (x,y ) = (0, 0)
+f n’est pas continue :
+Prenons par exemple la suiteun = (1/n, 1/n). Donc lim
+n→∞
+un = (0, 0). Or
+f(un) = 1 /2. Donc lim
+n→∞
+f(un) = 1 /2⁄= 0. Donc la fonctionf n’est pas
+<<<PAGE>>>
+4.2. DÉRIVÉE PARTIELLE 79
+continue en0.
+Les dérivées sont déﬁnies :
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f(t, 0)−f(0, 0)
+t = 0
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f(0,t )−f(0, 0)
+t = 0
+Donc les dérivées partielles existent alors que la fonction n’est pas continue,
+cela vient du fait que la dérivée n’est déﬁnie que dans les directionsx et y
+alors qu’il y a une inﬁnité de façons de s’approcher du point(0, 0).
+Propriété 1:
+Soit U un ouvert de Rp. Soit f une application de U → Rn. f admet
+une dérivée première par rapport à la jème variable ( j ∈ J1;pK) si, et
+seulement si, pour∀i∈ J1;nK, ∂fi
+∂xj
+⏐⏐⏐
+a
+est déﬁnie. Dans ce cas, on a
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+=
+(
+∂f1
+∂xj
+⏐⏐⏐⏐
+a
+; ∂f2
+∂xj
+⏐⏐⏐⏐
+a
+; ... ; ∂fn
+∂xj
+⏐⏐⏐⏐
+a
+)
+Démonstation :
+Soit f une application deU⊂ Rp dans Rn. Alors en toute généralité cette
+application peut s’écrire
+f : U⊂ Rp → Rn
+(x1,...,x p) ↦→ f(x1,...,x p) =
+(
+f1(x1,...,x p) ; ... ; fn(x1,...,x p)
+)
+où lesfi, pouri∈ J1;pK, sont les applications composantes qui vont deRp
+dans R.
+Alors, étudions la dérivée par rapport àxj (variable portée par le vecteur
+<<<PAGE>>>
+80 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+canonique ej). On doit donc calculer la dérivée au pointa∈U
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+= lim
+t→0
+f(a +tej)−f(a)
+t
+= lim
+t→0
+(
+f1(a +tej)−f1(a)
+t ; ... ; fn(a +tej)−fn(a)
+t
+)
+Or comme nous l’avons vu au chapitre précédent (Propriété 5 du chapitre
+"Limite et Applications Continues"), on a
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+= lim
+t→0
+f(a +tej)−f(a)
+t
+=
+(
+lim
+t→0
+f1(a +tej)−f1(a)
+t ; ... ; lim
+t→0
+fn(a +tej)−fn(a)
+t
+)
+=
+(
+∂f1
+∂xj
+⏐⏐⏐⏐
+a
+; ∂f2
+∂xj
+⏐⏐⏐⏐
+a
+; ... ; ∂fn
+∂xj
+⏐⏐⏐⏐
+a
+)
+4.3 Fonctions diﬀérentiables sur un ouvert
+4.3.1 Généralités
+Déﬁnition 2 : (Fonction diﬀérentiable)
+Soit U un ouvert de (Rp,‖·‖p). Soit a ∈ U. Soit f une application de
+U dans (F,‖·‖F ). SoitU0 l’ensemble déﬁnie par
+U0 ={h∈ Rp / a+h∈U}
+On dit que f est diﬀérentiable en a si, et seulement si, il existe une
+application linéairel de Rp dans F et une applicationϵ de U0 dans F
+telles que :
+1. lim
+h→0Rp
+ϵ(h) = 0F
+2. ∀h∈U0, f(a +h) =f(a) +l(h) +‖h‖pϵ(h)
+Le second point est le développement limité à l’ordre1 de f en a. On dit
+quef est diﬀérentiable surU si, et seulement si,f est diﬀérentiable en tout
+point deU.
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 81
+Théorème 1 : (diﬀérentielle)
+Soit U un ouvert de E = ( Rp,‖·‖E). Soit a ∈ U. Soit f une applica-
+tion deU dans (F,‖·‖F ). Sif est diﬀérentiable ena alors l’applicationl est
+unique.Cetteapplicationestappelédiﬀérentiellede f enaetestnotée Daf.
+Démonstration :
+On rappelle queU est un ouvert deRp etF un EVN. Soitf une application
+de U dans F. SoitU0 ={h∈ Rp / a+h∈U} où a∈ Rp.
+Postulons quef possède 2 diﬀérentiellesl1 et l2 en a. On a donc
+
+
+
+∀h∈U0, f(a +h) =f(a) +l1 +‖h‖Eϵ1(h)
+avec lim
+h→0E
+ϵ1(h) = 0F
+et 
+
+
+∀h∈U0, f(a +h) =f(a) +l2 +‖h‖Eϵ1(h)
+avec lim
+h→0E
+ϵ2(h) = 0F
+alors∀h∈U0, on a
+0F =l1(h)−l2(h) +‖h‖E
+(
+ϵ1(h)−ϵ2(h)
+)
+et enﬁn dernier rappel, commeU est un ouvert,∃r> 0 / B(a,r )⊂U.
+Etape 1 :Etude del1(h)−l2(h) dans la boule ouverteB(0E,r ).
+−→Si h0∈B(0E,r ) alors x0 =a +h0∈B(a,r )⊂U et h0∈U0.
+démo :
+h0∈B(0E,r )⇐⇒‖h0‖E <r
+alors
+‖x0−a‖E <r =⇒‖h0‖E <r si x0 =a +h0
+or
+B(a,r )⊂U donc x0∈B(a,r )⊂U
+et ﬁnalement puisquex0 =a +h0∈U alors h0∈U0.
+<<<PAGE>>>
+82 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+−→Montrons que pour∀t∈ [0, 1], th0∈U0 :
+démo :
+On a‖h0‖E <r . Donc pour∀t∈ [0, 1]
+‖(a +th0)−a‖E =‖th0‖E =t‖h0‖E <r
+Donc a +th0∈B(a,r )⊂U donc a +th0∈U donc th0∈U0.
+−→Donc pour∀t∈ [0, 1] :
+0F =l1(th0)−l2(th0) +‖th0‖p
+(
+ϵ1(th0)−ϵ2(th0)
+)
+Par linéarité del1 et l2, on a
+0F =t
+(
+l1(h0)−l2(h0)
+)
++t‖h0‖E
+(
+ϵ1(th0)−ϵ2(th0)
+)
+Pourt⁄= 0, on peut simpliﬁer part
+0F =l1(h0)−l2(h0) +‖h0‖E
+(
+ϵ1(th0)−ϵ2(th0)
+)
+or
+lim
+t→0
+th0 = 0E =⇒ lim
+t→0
+ϵ1(th0) = lim
+t→0
+ϵ2(th0) = 0F
+Donc pour∀h0∈B(0E,r ), on a
+0F =l1(h0)−l2(h0)
+Donc surB(0E,r ), les fonctionsl1 et l2 sont identiques.
+Etape 2 :Généralisation du résultat surE = Rp.
+Soit h∈E.
+−→Si h = 0E alors h∈B(0E,r ) donc l1 =l2 compte tenu de l’étape 1.
+−→Si h⁄= 0E. On pose
+˜h = r
+2
+h
+‖h‖E
+d’où l’on déduit que
+‖‖‖˜h
+‖‖‖
+E
+= r
+2 <r h = 2‖h‖E
+r
+˜h
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 83
+On voit donc que˜h∈B(0E,r ).
+l1(˜h) =l2(˜h)⇐⇒l1
+(
+r
+2
+h
+‖h‖E
+)
+=l2
+(
+r
+2
+h
+‖h‖E
+)
+Par linéarité del1 et l2, on obtient alors
+l1(h) =l2(h)
+Propriété 2 :
+Toute application linéaire φ de Rp dans un EVN quelconque F est
+diﬀérentiable et pour∀a∈ Rp, Daφ =φ
+Démonstration :
+φ est linéaire. Donc,∀a,h∈ Rp, on a
+φ(a +h) =φ(a) +φ(h) + 0F
+on a donc juste à poser queDaφ =φ et ϵ(h) = 0F.
+Propriété 3 :
+Soit U un ouvert de Rp. Soit a ∈ U et f une application de U → F.
+Si f est diﬀérentiable ena, alors, ses dérivées partielles premières par
+rapport à toutes ses variables sont déﬁnies ena et sa diﬀérentielle en ce
+point est donnée par
+Daf : Rp → F
+h = (h1,...,h p) ↦→ Daf(h) =∑p
+i=1hi
+∂f
+∂xj
+⏐⏐⏐
+a
+Démonstration :
+f est diﬀérentiable par hypothèse. Etudions tout d’abord les dérivées
+∀j∈ J1;pK : ∂f
+∂xj
+⏐⏐⏐⏐
+a
+= lim
+t→0
+f(a +tej)−f(a)
+t
+<<<PAGE>>>
+84 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Or f est diﬀérentiable. Il existe donc une diﬀérentielleDaf telle que
+f(a +tej) =f(a) +Daf(tej) +‖tej‖ϵ(tej)
+Donc
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+= lim
+t→0
+Daf(tej) +‖tej‖ϵ(tej)
+t = lim
+t→0
+(
+Daf(ej) +‖ej‖ϵ(tej)
+)
+donc
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+=Daf(ej)
+Prenons donc
+h = (h1,h 2,...,h p) =
+p∑
+i=1
+hiei
+Alors par linéarité deDaf on a
+Daf(h) =Daf(
+p∑
+i=1
+hiei) =
+p∑
+i=1
+hiDaf(ei)
+Daf(h) =
+p∑
+i=1
+hi
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 85
+Remarque :
+l’expressionDaf(h) = ∑p
+i=1hi
+∂f
+∂xj
+⏐⏐⏐
+a
+doit normalement vous rappeler
+quelque chose... de la physique... plus précisément de la thermodynamique.
+Soit U l’énergie interne d’un système.U dépend de la température et du
+volume par exemple=⇒U(T,V ). La diﬀérentielle deU au point(T0,V 0) est
+alors donnée par
+dU(T0,V 0) = ∂U
+∂T
+⏐⏐⏐⏐
+T0,V0
+dT + ∂U
+∂V
+⏐⏐⏐⏐
+T0,V0
+dV (4.1)
+L’expression précédente est strictement identique à l’expressionDaf(h) =∑p
+i=1hi
+∂f
+∂xj
+⏐⏐⏐
+a
+. Pour voir cela, il suﬃt de poser les notations suivantes
+U −→ f
+(T,V ) −→ (x1,x 2)
+(T0,V 0) −→ a
+dU −→ Daf
+(dT,dV ) −→ h = (h1,h 2)
+En TD, nous utiliserons la physique (et plus particulièrement le calcul d’in-
+certitude) aﬁn d’obtenir une vision intuitive de ce qu’est une diﬀérentielle.
+Nous montrerons ainsi que la diﬀerentielleDaf(h) correspond à la variation
+de la fonctionf au pointa lorsque l’on se déplace du vecteurh à partir du
+point a (ceci est d’autant plus juste queh tend vers 0E). Ceci est d’ailleurs
+complètement contenu dans l’expression utilisée dans la déﬁnition d’une dif-
+férentielle (déﬁnition 2)
+∀h∈U0, f(a +h) =f(a) +Daf(h) +‖h‖Eϵ(h)
+avec lim
+h→0
+ϵ(h) = 0F
+Dans le cas de l’expression (4.1), l’interprétation se formule de la façon
+suivante : il s’agit de la variation d’énergie interneU lorsque la température
+passe de T0 à T0 +dT et le volume passe de V0 à V0 +dV (et ceci est
+d’autant plus juste quedT et dV sont proches de0).
+<<<PAGE>>>
+86 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Propriété 4 :
+Soit U un ouvert de Rp. Soit a ∈ U. Soit (F,‖·‖F ) un EVN. Soit f
+une application deU → F. Alors sif est diﬀérentiable ena, alors f est
+continue ena.
+Démonstation :
+On rappelle quef diﬀérentiable ena signiﬁe que
+∀h = (h1,...,h p)∈U0 avecU0 ={h∈ Rp / a+h∈U}
+on a
+f(a +h) =f(a) +
+p∑
+j=1
+hj
+∂f
+∂xj
+⏐⏐⏐⏐
+a
++‖h‖Eϵ(h)
+En prenant la norme de l’expression précédente, on obtient
+‖f(a +h)−f(a)‖F =
+‖‖‖‖‖‖
+p∑
+j=1
+hj
+∂f
+∂xj
+⏐⏐⏐⏐
+a
++‖h‖Eϵ(h)
+‖‖‖‖‖‖
+F
+≤
+‖‖‖‖‖‖
+p∑
+j=1
+hj
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+‖‖‖‖‖‖
+F
++‖‖h‖Eϵ(h)‖F
+≤
+p∑
+j=1
+|hj|
+⏐⏐⏐⏐
+∂f
+∂xj
+⏐⏐⏐⏐
+a
+⏐⏐⏐⏐ +‖h‖E‖ϵ(h)‖F
+Or les termes de droite tendent vers0 lorsque h tend vers 0E puisque ϵ(h)
+tend vers0F et que les termes∂f
+∂xj
+⏐⏐⏐
+a
+sont bien déﬁnies carf est diﬀérentiable.
+Donc ﬁnalement
+lim
+h→0E
+f(a +h) =f(a)
+ce qui montre (puisqueh est quelconque dans la limite précédente) quef est
+continue ena.
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 87
+On peut maintenant se demander comment savoir si une application est
+diﬀérentiable (c’est-à-dire si elle admet une diﬀérentielle dont l’expression
+est donnée dans la propriété précédente)? Nous allons répondre ici à cette
+question dans le cas particulier d’une application deR2 dans un EVN quel-
+conque.
+Théorème 2 : (Diﬀérentiabilité surR2)
+Soit U un ouvert de R2. Soit (x,y ) ∈ U. Soit (F,‖·‖F ) un EVN. Et
+enﬁn, soitf une application de U dans F. Alors f est diﬀérentiable en
+(x,y ), si, et seulement si
+lim
+(h1,h2)→(0,0)
+1
+‖(h1,h 2)‖
+(
+f
+(
+x+h1,y +h2
+)
+−f(x,y )−h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+= 0F
+Où la norme utilisée n’a pas d’inﬂuence sur le résultat ﬁnal.
+Démonstration :
+— Commençons par montrer que sif diﬀérentiable alors elle vériﬁe l’ex-
+pression précédente :
+Si f est diﬀérentiable au point(x,y ) alors il existe D(x,y)f(h1,h 2)
+donnée par
+D(x,y)f(h1,h 2) =h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
++h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+telle que
+f(x+h1,y +h2) =f(x,y )+h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
++h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
++‖(h1,h 2)‖ϵ(h1,h 2)
+avec lim
+(h1,h2)→(0,0)
+ϵ(h1,h 2) = 0F. Donc
+lim
+(h1,h2)→(0,0)
+1
+‖(h1,h 2)‖
+(
+f
+(
+x +h1,y +h2
+)
+−f(x,y )−h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+= lim
+(h1,h2)→(0,0)
+ϵ(h1,h 2) = 0F
+<<<PAGE>>>
+88 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+— Montrons maintenant que sif vériﬁe l’expression précédente alorsf
+est diﬀérentiable :
+Par hypothèse, on a donc
+lim
+(h1,h2)→(0,0)
+1
+‖(h1,h 2)‖
+(
+f
+(
+x+h1,y +h2
+)
+−f(x,y )−h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+= 0F
+posons donc
+ϵ(h1,h 2) = 1
+‖(h1,h 2)‖
+(
+f
+(
+x+h1,y +h2
+)
+−f(x,y )−h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+(4.2)
+qui a bien la propriété que
+lim
+(h1,h2)→(0,0)
+ϵ(h1,h 2) = 0F
+Et il ne reste plus qu’à réarranger les termes dans l’expression (4.2)
+f
+(
+x+h1,y +h2
+)
+=f(x,y )+h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
++h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
++‖(h1,h 2)‖ϵ(h1,h 2)
+qui est bien la déﬁnition d’une diﬀérentielle.
+4.3.2 Fonction de classeC1
+Déninition 3 : (Fonction de classeC1)
+Soit U un ouvert de Rp. Soit (F,‖·‖F ) un EVN. Soit f une applica-
+tion de U dans F. Alors f est dite de classeC1 sur U si, et seulement
+si, toutes les fonctions dérivées partielles premières de f sont déﬁnies et
+continues en tout pointa∈U. On noteC1(U,F ) l’ensemble des applications
+de U dans F de classeC1 sur U.
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 89
+Commençons par donner un exemple de fonction qui est de classeC1.
+Propriété 5 :
+Toute applicationφ linéaire de Rp dans F est de classeC1 sur Rp.
+Démonstration :
+Soit{ei} la base canonique deRp. Alors, sia∈ Rp :
+∂φ
+∂xi
+⏐⏐⏐⏐
+a
+= lim
+t→0
+(φ(a +tei)−φ
+t
+)
+= lim
+t→0
+φ
+(a +tei−a
+t
+)
+=φ(ei)
+Donc pour touti∈ J1,p K, les dérivées partielles sont déﬁnies.
+De plus, la fonction
+∂φ
+∂xi
+: Rp → F
+a ↦→ ∂φ
+∂xi
+⏐⏐⏐
+a
+=φ(ei)
+est clairement continue et même constante surRp.
+Donc φ est de classeC1 sur Rp.
+L’intérêt d’introduire cette notion provient du théorème suivant :
+Théorème 3 :
+Soit U un ouvert de E = Rp. Soit (F,‖·‖F ) un EVN. Soit f une
+application deU dans F. Sif est de classeC1 sur U, alors
+1. f est diﬀérentiable surU.
+2. f est continue surU.
+Démonstration :
+1. Admis
+2. Sif estC1 alorsf est diﬀérentiable surU. Commef est diﬀérentiable
+sur U alors f est continue surU (propriété 4).
+<<<PAGE>>>
+90 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Le lien entre diﬀérentiabilité, classeC1, continuité def et existence des dé-
+rivées premières def peut être résumé par le schéma suivant
+Attention :
+1. si f estC1 en a, alors par déﬁnition de ce qu’est la classeC1 les
+dérivées premières, ena, sont déﬁnies et continues.
+2. si f n’est que diﬀérentiable ena alors les dérivées premières sont
+déﬁnies mais pas continues
+Illustration :
+Soit la fonction
+f : U⊂ R2 → R
+(x,y ) ↦→ f(x,y ) =
+
+
+
+(x2 +y2) sin
+(
+1√
+x2+y2
+)
+si (x,y )⁄= (0, 0)
+0 si (x,y ) = (0, 0)
+−→f1 est continue surR2.
+En eﬀet, si(x,y ) = (0, 0) alors
+|f(x,y )| =
+⏐⏐⏐⏐⏐(x2 +y2) sin
+(
+1√
+x2 +y2
+)⏐⏐⏐⏐⏐≤|x2 +y2|−→ 0
+donc
+lim
+(x,y)→(0,0)
+f(x,y ) = 0
+−→Etudions maintenant la diﬀérentiabilité :
+Une fonction de R2→ R est diﬀérentiable, en(x,y ), si, et seulement si :
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 91
+lim
+(h1,h2)→(0,0)
+1
+‖(h1,h 2)‖
+(
+f
+(
+x+h1,y +h2
+)
+−f(x,y )−h1
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+x,y
+)
+= 0F
+Vériﬁons que cette fonction est diﬀérentiable en(0, 0). Pour cela calculons
+tout d’abord les dérivées partielles
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f(t, 0)−f(0, 0)
+t = lim
+t→0
+1
+t
+(
+t2 sin 1
+|t|− 0
+)
+= lim
+t→0
+t sin 1
+|t| = 0 = ∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+Alors
+lim
+(h1,h2)→(0,0)
+1√
+h2
+1 +h2
+2
+(
+(h2
+1 +h2
+2) sin 1√
+h2
+1 +h2
+2
+)
+=
+√
+h2
+1 +h2
+2 sin 1√
+h2
+1 +h2
+2
+qui tend vers0. Doncf est diﬀérentiable en(0, 0).
+−→Mais les dérivées ne sont pas continue en(0, 0) :
+Pour cela calculons la dérivée par rapport àx en (x,y ) quelconque
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+= 2x sin
+(
+1√
+x2 +y2
+)
+− x
+(x2 +y2)3/2 cos
+(
+1√
+x2 +y2
+)
+Donc la dérivée première par rapport àx est donnée
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+=
+
+
+
+2x sin
+(
+1√
+x2+y2
+)
+− x
+(x2+y2)3/2 cos
+(
+1√
+x2+y2
+)
+si (x,y )⁄= (0, 0)
+0 si (x,y ) = (0, 0)
+Or, en prenantun = (1/n, 0), alors
+∂f
+∂x
+⏐⏐⏐⏐
+un
+= 2
+n sin(n)− 1
+n(n2)3/2 cos(n)
+= sinn
+n −n2 cos(n)
+qui ne converge pas et donc qui ne converge pas vers0. Donc la fonction
+n’est pasC1. De plus, on peut voir, sur cet exemple, quef est continue en
+<<<PAGE>>>
+92 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+(0, 0), les dérivées partielles premières en(0, 0) existent mais elles ne sont
+pas continues.
+Dans la suite, la structure algébrique des fonctionsC1 va nous être très utile
+pour l’étude desC1-diﬀéomorphisme (changement de variables) et la résolu-
+tion des équations aux dérivées partielles. Nous allons donc la préciser ici :
+Théorème 4 :
+Soit U un ouvert de Rp. SoitF un EVN quelconque. L’ensembleC1(U,F )
+est un sous espace vectoriel des fonctions continues deU dansF, c’est-à-dire
+deC(U,F ).
+Démonstration :
+1. La fonction nulle est le0 de l’espace vectorielC(U,F ). Or la fonction
+nulle a pour dérivées partielles la fonction nulle. Donc la fonction
+nulle a ses dérivées partielles continues. Finallement la fonction nulle
+apprtient àC1(U,F ).
+2. De plus pour∀λ∈ R,∀f,g ∈C 1(U,F ),f +λg est également de classe
+C1 surU car la somme de fonctions continues et continues et de même
+pour la dérivée (laissé en exercice). Doncf +λg∈C 1(U,F )
+Théorème 5 :
+Soit U un ouvert de Rp. Soit F un EVN quelconque. Alors, pour
+∀f,g ∈C 1(U,F ), f×g∈C 1(U,F ).
+Démonstration : exercice.
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 93
+Théorème 6 :
+Soit U un ouvert de Rp et f une application de classe C1 de U dans
+Rq. SoitV un ouvert deRq etg une application de classeC1 deV dans Rn.
+Si f(U)⊂V, alorsg◦f est de classeC1 sur U.
+Démonstration : Admis.
+4.3.3 Composition et changement de variables
+Nous allons maintenant introduire deux propriétés qui nous seront capitales
+aﬁn de résoudre les équations aux dérivées partielles.
+Propriété 6 :
+Soit f : Rn → R une fonction de classe C1 sur un ouvert U. Soient
+u1, u2,..., un, n fonctions de classeC1 sur un intervalleI⊂ R telles que
+pour∀t∈I,
+(
+u1(t) ; u2(t) ;...; un(t)
+)
+∈U.
+Alors la fonction
+g : I → R
+t ↦→ g(t) =f
+(
+u1(t) ; u2(t) ;...; un(t)
+)
+est de classeC1 sur I et de plus,∀t∈I
+g′(t) =u′
+1(t) ∂f
+∂x1
+⏐⏐⏐⏐
+u1(t),...,un(t)
++... +u′
+n(t) ∂f
+∂xn
+⏐⏐⏐⏐
+u1(t),...,un(t)
+Remarque :
+La formule précédente est l’analogue de la formule(g◦f)′ = (g′◦f)×f′.
+Démonstration :
+Nous allons faire la démonstration pour une applicationf de R2 dans R.
+<<<PAGE>>>
+94 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Ainsi, nous pouvons écrire les développements limités à l’ordre1 des fonc-
+tions f, u1 et u2 en un point quelconquet0 et (x0,y 0)
+u1(t0 +h) =u1(t0) +hu′
+1(t0) +hϵ1(h)
+u2(t0 +h) =u2(t0) +hu′
+2(t0) +hϵ1(h)
+f(x0 +h1,y 0 +h2) =f(x0,y 0) +h1
+∂f
+∂x
+⏐⏐⏐⏐
+x0,y0
++h2
+∂f
+∂y
+⏐⏐⏐⏐
+x0,y0
++‖(h1,h 2)‖ϵ3(h1,h 2)
+De plus
+‖‖‖
+(
+u′
+1(t0) h +hϵ1(h) ; u′
+2(t0) h +hϵ2(h)
+)‖‖‖ =|h|
+‖‖‖
+(
+u′
+1(t0) +ϵ1(h) ; u′
+2(t0) +ϵ2(h)
+)‖‖‖
+donc lorsquet tend vers 0, la norme précédente tend également vers0. On
+peut donc poser
+h1 =u′
+1(t0)h +hϵ1(h)
+h2 =u′
+2(t0)h +hϵ2(h)
+puisque‖(h1,h 2)‖ doit tendre vers0. On peut maintenant écrire
+g(t0 +h) =f
+(
+u1(t0 +h) ; u2(t0 +h)
+)
+=f
+(
+u1(t0) +u′
+1(t0)h +hϵ1(h) ; u2(t0) +u′
+2(t0)h +hϵ2(h)Big)
+=f
+(
+u1(t0) +h1 ; u2(t0) +h2
+)
+On peut maintenant utiliser le développement à l’ordre1 de la fonctionf :
+g(t0 +h) =f
+(
+u1(t0),v 1(t0)
+)
++h1
+∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++h2
+∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++‖(h1,h 2)‖ϵ3(h1,h 2)
+Ce qui conduit à
+g(t0 +h) =g(t0) +h
+(
+u′
+1(t0) ∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++u′
+2(t0) ∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
+)
++h
+(
+ϵ1(h) ∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++ϵ2(h) ∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
+)
++|h|‖ (h1,h 2)‖ϵ3(h1,h 2)
+Posons maintenant
+ϵ(h) =ϵ1(h) ∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++ϵ2(h) ∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++|h|‖ (h1,h 2)‖ϵ3(h1,h 2)
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 95
+qui tend bien vers0 quand h tend vers 0. Finalement
+g(t0+h) =g(t0)+h
+(
+u′
+1(t0) ∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++u′
+2(t0) ∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
+)
++hϵ(h)
+On peut donc conclure, puisque le deuxième terme du développement limité
+d’ordre1 est la dérivéeg′(t0)
+g′(t0) =u′
+1(t0) ∂f
+∂x
+⏐⏐⏐⏐
+u1(t0),u2(t0)
++u′
+2(t0) ∂f
+∂y
+⏐⏐⏐⏐
+u1(t0),u2(t0)
+Propriété 7 :
+Soient U et V deux ouverts de R2. Soit f une application de U dans
+R. Soientg1 etg2 deux applications deV dans R.f,g1 etg2 sontC1 sur leur
+domaine de déﬁnition respectif. Pour∀(u,v )∈ V,
+(
+g1(u,v ),g 2(u,v )
+)
+∈ U.
+Alors la fonction
+h : V → R
+(u,v ) ↦→ h(u,v ) =f
+(
+g1(u,v ) ; g2(u,v )
+)
+est de classeC1 sur V et de plus,∀(u,v )∈V
+
+
+
+∂h
+∂u
+⏐⏐
+u,v = ∂f
+∂x
+⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g1
+∂u
+⏐⏐⏐
+u,v
++ ∂f
+∂y
+⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g2
+∂u
+⏐⏐⏐
+u,v
+∂h
+∂v
+⏐⏐
+u,v = ∂f
+∂x
+⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g1
+∂v
+⏐⏐⏐
+u,v
++ ∂f
+∂y
+⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g2
+∂v
+⏐⏐⏐
+u,v
+Démonstration :
+Nous n’allons montrer ici que la première égalité, la seconde se démontrant
+strictementdelamêmefaçon.Pourlapremièreégalité,onchercheàexprimer
+∂h
+∂u
+⏐⏐⏐⏐
+u,v
+en fonction des dérivées deg1 etg2. Or, prendre la dérivée partielle deh par
+rapport àu revient à étudier la variation deh en fonction deu lorsquev est
+<<<PAGE>>>
+96 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+ﬁxé. Introduisons donc les fonctions
+gv
+1(u) =g1(u,v )
+gv
+2(u) =g2(u,v )
+Etudionsmaintenantlafonction H déﬁnieparH(u) =h(u,v ) =f(gv
+1(u) ; gv
+2(u)).
+La fonctionH estC1 pour toutu puisquef,g1 etg2 sontC1. De plus, d’après
+la propriété 6
+H′(u) = ∂f
+∂x
+⏐⏐⏐⏐
+gv
+1 (u),gv
+2 (u)
+(gv
+1)′(u) + ∂f
+∂y
+⏐⏐⏐⏐
+gv
+1 (u),gv
+2 (u)
+(gv
+2)′(u)
+or
+(gv
+1)′(u) = ∂g1
+∂u
+⏐⏐⏐⏐
+u,v
+(gv
+2)′(u) = ∂g2
+∂u
+⏐⏐⏐⏐
+u,v
+et ﬁnalement
+∂h
+∂u
+⏐⏐⏐⏐
+u,v
+= ∂f
+∂x
+⏐⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g1
+∂u
+⏐⏐⏐⏐
+u,v
++ ∂f
+∂y
+⏐⏐⏐⏐
+g1(u,v),g2(u,v)
+∂g2
+∂u
+⏐⏐⏐⏐
+u,v
+Remarque :
+Posons, dans la propriété 7,g(u,v ) =
+(
+g1(u,v ),g 2(u,v )
+)
+qui est une fonction
+C1 surV. Alors :h(u,v ) = (f◦g)(u,v ) oùf est la fonction :(x,y )↦→f(x,y ).
+On voit donc que la propriété 7 permet en fait de calculer les dérivées par-
+tielles de h par rapport à u ou v (qui sont les variables naturelles deh)
+connaissant les dérivées partielles def par rapport àx et y (qui sont les
+variables naturelles def). Nous verrons que cela nous sera particulièrement
+utile pour résoudre des équations aux dérivées partielles par changement de
+variables (qui est la seule méthode que nous verrons cette année pour les
+résoudre). Pour illustrer ce qui vient d’être dit, considérons par exemple la
+fonction f déﬁnie surR2 par
+f : R2 → R
+(x,y ) ↦→ f(x,y ) = 2x2y +y2 +x
+Et, proposons d’introduire les fonctions suivantes (qui jouent le rôle deg1 et
+g2) {
+x(u,v ) =u +v
+y(u,v ) =u−v
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 97
+On peut alors introduire la fonctionhdéﬁnie parh(u,v ) =f
+(
+x(u,v ),y (u,v )
+)
+et calculer les dérivées de cette fonctionh par rapport àu et v en utilisant
+les dérivées def par rapport àx.
+
+
+
+∂h
+∂u
+⏐⏐
+u,v = ∂f
+∂x
+⏐⏐⏐
+x,y
+∂x
+∂u
+⏐⏐
+u,v + ∂f
+∂y
+⏐⏐⏐
+x,y
+∂y
+∂u
+⏐⏐⏐
+u,v
+∂h
+∂v
+⏐⏐
+u,v = ∂f
+∂x
+⏐⏐⏐
+x,y
+∂x
+∂v
+⏐⏐
+u,v + ∂f
+∂y
+⏐⏐⏐
+x,y
+∂y
+∂v
+⏐⏐⏐
+u,v
+ce qui donne, en faisant le calcul explicitement
+{∂h
+∂u
+⏐⏐
+u,v = (4xy + 1)× 1 + (2x2 + 2y)× 1
+∂h
+∂v
+⏐⏐
+u,v = (4xy + 1)× 1 + (2x2 + 2y)× (−1)
+or x =u +v et y =u−v, donc
+{∂h
+∂u
+⏐⏐
+u,v = 6u2− 2v2 + 2u− 2v + 4uv + 1
+∂h
+∂v
+⏐⏐
+u,v = 2u2− 6v2 + 1− 2u + 2v− 4uv (4.3)
+On peut vériﬁer le résultat précédent, en faisant le calcul explicite de la
+fonction h(u,v ), ainsi en utilisant que h(u,v ) = f
+(
+x(u,v ),y (u,v )
+)
+avec
+x(u,v ) =u +v et y(u,v ) =u−v, on obtient
+h(u,v ) = 2(u +v)2(u−v) + (u−v)2 +u +v
+= 2u3− 2v3 + 2u2v− 2v2u +u2 +v2− 2uv +u +v
+puis en calculant explicitement∂h
+∂u
+⏐⏐
+u,v et ∂h
+∂v
+⏐⏐
+u,v on réobtient bien les expres-
+sions (4.3).
+4.3.4 Matrice de Jacobi, gradient et inégalité des accroisse-
+ments ﬁnis
+Nous allons ici introduire la notion de matrice de Jacobi, nous verrons que
+dans les changements de variables, elle joue un rôle primordial (suite de ce
+cours et "cours d’intégration & probabilité" du second semestre). La matrice
+de Jacobi nous permettra ensuite d’introduire un opérateur que vous avez
+déjà rencontré en physique : le gradient. Enﬁn, nous relirons le gradient à
+l’inégalité des accroissements ﬁnis.
+<<<PAGE>>>
+98 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Déﬁnition 4 : (Matrice de Jacobi)
+Soit U un ouvert de Rp, a ∈ U et f une application, diﬀérentiable en
+a, deU dans Rn. On déﬁnit la matrice de Jacobi (ou matrice jacobienne)
+de f en a, notée Jf(a), la matrice à n lignes et p colonnes de Df(a)
+relativement aux bases canoniques deRn et Rp, c’est-à-dire la matrice
+Jf(a) =
+(∂fi
+∂xj
+⏐⏐⏐⏐
+a
+)
+=
+
+
+∂f1
+∂x1
+⏐⏐⏐
+a
+... ∂f1
+∂xp
+⏐⏐⏐
+a
+. . .
+∂fn
+∂x1
+⏐⏐⏐
+a
+... ∂fn
+∂xp
+⏐⏐⏐
+a
+
+
+Si n =p, on appelle jacobien def en a, le déterminant de la matriceJf(a)
+de f en a.
+Introduisons maintenant le gradient :
+Déﬁnition 5 : (Gradient)
+Soit U un ouvert de Rp, a ∈ U et f une application, diﬀérentiable en
+a, deU dans R. On déﬁnit alors le gradient def en a, noté ⃗grad(f)(a) ou
+⃗∇af, par
+⃗∇af = tJf(a) =
+
+
+∂f
+∂x1
+⏐⏐⏐
+a
+.
+∂f
+∂xp
+⏐⏐⏐
+a
+
+
+Propriété 8 : (gradient et diﬀérentielle)
+Soit U un ouvert de Rp et f une application, diﬀérentiable ena ∈ U,
+de U dans R. Alors
+∀(a,h )∈U 2, Daf(h) = ⃗∇af·h
+où ⃗∇af·h est le produit scalaire entre les deux vecteurs.
+Démonstration :
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 99
+⃗∇af·h =
+( ∂f
+∂x1
+⏐⏐⏐⏐
+a
+; ... ; ∂f
+∂xp
+⏐⏐⏐⏐
+a
+)
+· (h1 ; ... ; hp) =
+p∑
+i=1
+hi
+∂f
+∂xi
+⏐⏐⏐⏐
+a
+Propriété 9 : (interprétation du gradient)
+Le gradient d’une fonctionf, de Rn dans R, est un vecteur perpendi-
+culaire aux directions oùf est constante et pointant dans la direction où la
+variation def est maximale (de plus grande pente). La norme du gradient
+est d’autant plus grande qu’au point où il est calculé, la variation def est
+grande.
+Démonstration :
+Soit f une application deU dans R où U est un ouvert de Rn. Soita un
+point de Rn.
+1. Considérons le point p(t) = a +tv où t∈ R et v ∈ Rn telle que
+p(t)∈U et v·⃗∇af = 0 (le vecteurv est donc orthogonal au vecteur
+gradient def en a. Alors d’après la propriété 6
+d
+dtf
+(
+p(t)
+)⏐⏐⏐⏐
+t=0
+= ⃗∇af·p′(t = 0) = ⃗∇af·v = 0
+On voit donc que si l’on se déplace orthogonalement à⃗∇af alors f
+est constante. La réciproque se démontre par le même raisonnement.
+2. Considérons maintenant le pointp(t) = a +t⃗∇fa où t∈ R. Alors
+d’après la propriété 6
+d
+dtf
+(
+p(t)
+)⏐⏐⏐⏐
+t=0
+= ⃗∇af·p′(t = 0) = ⃗∇af·⃗∇af =
+‖‖‖⃗∇af
+‖‖‖
+2
+> 0
+On voit donc que plus la norme du gradient def en a est grande et
+plus la variation def est grande.
+3. Considérons le point p(t) = a +tv où t∈ R et v ∈ Rn telle que
+‖v‖ = 1. Alors d’après la propriété 6
+d
+dtf
+(
+p(t)
+)⏐⏐⏐⏐
+t=0
+= ⃗∇af·v
+<<<PAGE>>>
+100 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+ce produit scalaire est maximum si, et seulement siv est colinéaire et
+dans le même sens que⃗∇af. Donc ⃗∇af indique la direction de plus
+grande pente
+Nous allons maintenant généralisé le théorème des accroissements ﬁnis que
+vous avez étudié dans le case des fonctions deR dans R.
+Théorème 7 : (inégalité des accroissements ﬁnis)
+SoitU un ouvert deRp etf une application deU dans R de classeC1 surU.
+Soita etb deux points deU tels que[a,b ] ={(1−λ)a +λb/λ∈ [0, 1]}⊂ U.
+Si il existe un réelM tel que
+∀x∈ [a,b ],
+‖‖‖⃗∇xf
+‖‖‖
+1
+=
+p∑
+j=1
+⏐⏐⏐⏐
+∂f
+∂xj
+⏐⏐⏐⏐
+x
+⏐⏐⏐⏐≤M
+alors
+|f(b)−f(a)|≤ M‖b−a‖1
+Démonstration : remise à plus tard.
+Déﬁnition 6 : (Partie convexe)
+Soit E un espace vectoriel quelconque. Une partie C de E est dite
+convexe si, et seulement si
+∀(x,y )∈C2,∀λ∈ [0, 1], (1−λ)x +λy∈C
+Cela signiﬁe qu’un ensembleC est convexe si, et seulement si, tout segment
+joignant toute paire de points deC est contenu dansC. Pour illustrer cela,
+nous avons représenté dans la ﬁgure suivante une ellipse qui est un espace
+convexe de R2 et une cacahuète qui n’est clairement pas convexe puisqu’il
+existe au moins deux points (représentés sur la ﬁgure) tels que le segment
+de droite n’appartienne pas entièrement à l’espace (le segment extérieur à
+l’espace est représenté en rouge).
+<<<PAGE>>>
+4.3. FONCTIONS DIFFÉRENTIABLES SUR UN OUVERT 101
+Propriété 10 :
+Soit U un ouvert convexe de Rp et f une application de U dans R
+de classeC1 surU. Si il existe un réelM tel que pour tout pointa∈U on a
+‖‖‖⃗∇xf
+‖‖‖
+1
+=
+p∑
+j=1
+⏐⏐⏐⏐
+∂f
+∂xj
+⏐⏐⏐⏐
+x
+⏐⏐⏐⏐≤M
+alors f est M-lipschitzienne surU.
+Démonstration :
+Il suﬃt d’appliquer le théorème des accroissements ﬁnis à toutes les paires
+de points deU. On a donc
+∀(a,b )∈U,|f(b)−f(a)|≤ M‖b−a‖1
+ce qui est la déﬁnition d’une applicationM-lipschitzienne.
+Propriété 11 : (fonction constante)
+Soit U un ouvert convexe de Rp et f une application de U dans R
+de classeC1 sur U. Alorsf est constante surU si, et seulement si,⃗∇af est
+nul pour touta∈U, c’est-à-dire
+∀j∈ J1,p K,∀a∈U, ∂f
+∂xj
+⏐⏐⏐⏐
+a
+= 0
+alors f est M-lipschitzienne surU.
+<<<PAGE>>>
+102 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Démonstration :
+f constante ⇐⇒f 0-lipschitzienne
+4.4 EDP du 1er ordre etC1-diﬀéomorphisme
+4.4.1 Généralités
+Une équation aux dérivées partielles est une généralisation des équations dif-
+férentielles. En eﬀet :
+une equation diﬀérentielle l’inconnue d’une équation diﬀ
+est une équation liant une−→ est une fonction ne dépendant
+fonction à ses dérivées que d’une unique variable.
+alors que :
+une equation aux dérivées partielles l’inconnue d’une équation aux
+est une équation liant une fonction −→ dérivées partielles est une
+à ses dérivées partielles fonction de plusieurs variable.
+On considérera dans la suite de cette section des équations aux dérivées
+partielles de la forme
+F
+(∂f
+∂x,∂f
+∂y,f,x,y
+)
+= 0
+où la fonctionf inconnue est une fonction deR2 dans R. Ce type d’équation
+aux dérivées partielles est appelé équations aux dérivées partielles du 1er
+ordre car, elle fait intervenir au plus des dérivées partielles d’ordre 1.
+Considérons tout d’abord la plus simple des EDPs du 1er ordre
+<<<PAGE>>>
+4.4. EDP DU 1ER ORDRE ET C1-DIFFÉOMORPHISME 103
+Théorème 8 :
+Soit g : R2 → R une application continue sur un ouvert U ⊂ R2.
+Les solutions de classeC1 sur U de l’EDP
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+=g(x,y ) (4.4)
+sont de la forme
+f(x,y ) =K(y) +
+∫
+g(x,y )dx
+où
+∫
+g(x,y )dx est une primitive quelconque deg par rapport à la variable
+x.K est une fonction quelconque deR dans R de classeC1 sur un ouvert de
+R correspondant à la projection deU sur l’axe Oy.
+Démonstration : trivial
+Malheureusement, la vie (physique, ﬁnance, biologie, climatologie,...) n’est
+pas aussi simple que l’EDP précédente. Dans la suite, on cherchera des so-
+lutions à des EDP du 1er ordre un peu plus complexe. Pour cela, on sera
+amené à eﬀectuer des changements de variables aﬁn de ramener l’EDP étu-
+diée à une EDP de la forme (4.4). Nous allons donc commencer par déﬁnir
+les conditions sous-lesquelles une application peut être considérée comme un
+changement de variables.
+4.4.2 C1-diﬀéomorphisme et changement de variables
+Déﬁnition 7 : (C1-diﬀéomorphisme)
+Soient U un ouvert de Rp et V un ouvert de Rn. Une application φ
+de U dans V est unC1-diﬀéomorphisme deU dans V, si, et seulement si,
+les propriétés suivantes sont vériﬁées
+1. φ est de classeC1 sur U.
+2. φ réalise une bijection deU dans V.
+3. φ−1 est de classeC1 sur V.
+Quel est l’intérêt d’introduire le concept deC1-diﬀéomorphisme?
+<<<PAGE>>>
+104 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Pour la résolution des EDPs du 1er ordre, les changements de variables
+doivent être desC1-diﬀéomorphismes. En eﬀet, pour s’en persuader, consi-
+dérons une EDP portant sur la fonction inconnuef. Soit φ une fonction
+permettant un changement de variables (directe1, pour un changement de
+variables indirect le raisonnement est strictement identique). Ainsif devient
+h =f◦φ. Alors
+1. Si φ estC1 alors h estC1 par composition de fonctionsC1 et h peut
+donc être solution d’une EDP du 1er ordre.
+2. Si φ est une bijection, cela permet de passer des nouvelles variables
+aux anciennes et inversement ce qui est nécessaire pour pouvoir eﬀec-
+tuer légalement le changement de variables.
+3. Si φ−1 estC1 alors f =h◦φ−1 et f est bienC1.
+Il existe un cas très simple pour lequel on est en mesure de dire immé-
+diatement qu’il s’agit bien d’unC1-diﬀéomorphisme :
+Propriété 12 :
+Si φ est une application linéaire bijective de Rp dans Rn, alors p = n
+et φ est unC1-diﬀéomorphisme.
+Démonstration :
+Une application linéaire est une bijection si et seulement sin =p (voir votre
+cours de préING 1 d’algèbre linéaire). De plus, commeφ est linéaire, on sait
+qu’il s’agit d’une applicationC1. Or φ−1 est aussi une application linéaire
+et donc estC1. Finalement l’application linéaire est unC1-diﬀéomorphisme.
+1. Nous déﬁnirons par la suite ce que l’on entend par changement de variables direct
+ou indirect
+<<<PAGE>>>
+4.4. EDP DU 1ER ORDRE ET C1-DIFFÉOMORPHISME 105
+Propriété 13 : (caractérisation rapide d’unC1-diﬀéomorphisme)
+Soit U un ouvert de Rp et V un ouvert de Rn. Si l’applicationφ de
+U dans V vériﬁe les 3 prorpiétés suivantes
+1. φ est de classeC1 sur U
+2. φ réalise une bijection deU dans V
+3. pour tout pointa de U, Daφ est une application linéaire bijective de
+Rp dans Rn.
+alors p =n et φ est unC1-diﬀéomorphisme deU sur V.
+Démonstration : Admis.
+Propriété 14 :
+Soient U un ouvert de Rp et a ∈ U. Soit φ une application de U
+dans Rn. Si le jacobien associé à l’applicationφ, ena, est non nul alorsDaφ
+est une application linéaire bijective ena.
+Démonstration :
+Soient U et V deux ouverts deRp et Rq. Soitφ une application deU dans
+V. Soit ψ une application deV dans Rn. Soienta∈ U et b = φ(a)∈ V.
+Alors
+1. Daφ(h1) =Jφ(a)h1 etDbψ(h2) =Jψ(b)h2 oùh1 est un vecteur deRp
+et h2 un vecteur deRq.
+2. Da(ψ◦φ) =Dφ(a)ψ◦Daφ et doncJψ◦φ(a) =Jψ(φ(a))Jφ(a)
+Donc, si det(Jφ(a))⁄= 0 cela signiﬁe que la matriceJφ(a) est inversible. Or
+justementsionconsidèreque ψ =φ−1 alorsJφ−1◦φ(a) =Id =Jφ−1(φ(a))Jφ(a)
+et doncDφ(a) est inversible et l’inverse est donné par l’inverse de la matrice
+Jφ(a).
+Exemple :
+Soit U et V les deux ensembles déﬁnis par
+U = R∗
++×]0, 2π[×]0,π [
+V = R3\{R+×{ 0}× R}
+<<<PAGE>>>
+106 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+et l’application
+f : U → V
+(ρ,θ,φ ) ↦→ f(ρ,θ,φ ) = (ρ sinθ sinφ,ρ sinθ sinφ,ρ cosφ)
+= (f1,f 2,f 3)
+alors f est bien unC1-diﬀéomorphisme. En eﬀet
+1. f estC1 sur U car toutes les applications composantes le sont.
+2. f est une bijection deU dans V puisque
+3. montrons maintenant queDaf pour tout a∈ U est bijective. Pour
+cela déterminons le jacobien
+Jf(a) =
+
+
+∂f1
+∂ρ
+⏐⏐⏐
+a
+∂f1
+∂θ
+⏐⏐⏐
+a
+∂f1
+∂φ
+⏐⏐⏐
+a
+∂f2
+∂ρ
+⏐⏐⏐
+a
+∂f2
+∂θ
+⏐⏐⏐
+a
+∂f2
+∂φ
+⏐⏐⏐
+a
+∂f3
+∂ρ
+⏐⏐⏐
+a
+∂f3
+∂θ
+⏐⏐⏐
+a
+∂f3
+∂φ
+⏐⏐⏐
+a
+
+
+=
+
+
+cosθ sinφ −ρ sinθ sinφ ρ cosθ cosφ
+sinθ sinφ ρ cosθ sinφ ρ sinθ cosφ
+cosφ 0 −ρ sinφ
+
+
+et donc|Jf(a)| =−ρ2 sinφ⁄= 0 pour touta∈U.
+<<<PAGE>>>
+4.4. EDP DU 1ER ORDRE ET C1-DIFFÉOMORPHISME 107
+4.4.3 Résolution des EDPs par changement de variables
+Le tableau suivant résume intégralement la démarche que nous utiliserons
+pour résoudre les EDPs du 1er ordre où la fonction inconnuef va deR2 dans
+R.
+On a séparé en deux types de changement de variables : les changements de
+variables directs et indirects mais nous verrons qu’il n’est pas nécessaire de
+faire cette distinction.
+Exemple : Aﬁn d’illustrer la méthode de résolution des EDPs, cherchons
+la solution surR2 de l’équation :
+2 ∂f
+∂x
+⏐⏐⏐⏐
+x,y
+− ∂f
+∂y
+⏐⏐⏐⏐
+x,y
+=x2y (4.5)
+en utilisant le changement de variables
+(u,v ) = (x,x + 2y)
+<<<PAGE>>>
+108 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+Commençons par identiﬁer la fonctionϕ
+f : R2 → R2
+(x,y ) ↦→ ϕ(x,y ) =
+(
+u(x,y ),v (x,y )
+)
+= (x,x + 2y)
+Il faut tout d’abord montrer queϕ est bien unC1-diﬀéomorphisme. Comme
+ϕ est une application linéaire, il suﬃt de montrer que c’est une bijection de
+R2 dans R2.
+{
+u =x
+v =x + 2y ⇐⇒
+{
+x =u
+v =u + 2y ⇐⇒
+{
+x =u
+y = (v−u)/2
+ils’agitdoncbiend’unebijectionetﬁnalementϕestbienun C1-diﬀéomorphisme.
+Utilisons maintenantϕ aﬁn d’introduire une nouvelle fonctiong déﬁnie par
+f(x,y ) = (g◦ϕ)(x,y ) =g
+(
+u(x,y ),v (x,y )
+)
+⇐⇒f =g◦ϕ
+il s’agit donc d’un changement de variable indirect. De plus, on a
+g(u,v ) = (f◦ϕ−1)(x,y )⇐⇒g =f◦ϕ−1
+Comme f et ϕ sontC1 surR2 par stabilité de la propriétéC1 par composi-
+tion, g est égalementC1 sur R2.
+On peut maintenant, grâce à la propriété 7, exprimer les dérivées partielles
+de f en fonction de celle deg
+
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+= ∂g
+∂u
+⏐⏐⏐
+u,v
+∂u
+∂x
+⏐⏐
+x,y + ∂g
+∂v
+⏐⏐⏐
+u,v
+∂v
+∂x
+⏐⏐
+x,y
+∂f
+∂y
+⏐⏐⏐
+x,y
+= ∂g
+∂u
+⏐⏐⏐
+u,v
+∂u
+∂y
+⏐⏐⏐
+x,y
++ ∂g
+∂v
+⏐⏐⏐
+u,v
+∂v
+∂y
+⏐⏐⏐
+x,y
+ce qui donne 
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+= ∂g
+∂u
+⏐⏐⏐
+u,v
++ ∂g
+∂v
+⏐⏐⏐
+u,v
+∂f
+∂y
+⏐⏐⏐
+x,y
+= 2 ∂g
+∂v
+⏐⏐⏐
+u,v
+Oninjectemaintenantcesexpressionsdansl’EDPquel’onchercheàrésoudre
+2 ∂g
+∂u
+⏐⏐⏐⏐
+u,v
+=x2y =u2× v−u
+2
+<<<PAGE>>>
+4.4. EDP DU 1ER ORDRE ET C1-DIFFÉOMORPHISME 109
+On doit donc résoudre l’EDP
+∂g
+∂u
+⏐⏐⏐⏐
+u,v
+= 1
+4(u2v−u3)
+On peut facilement résoudre cette EDP en utilisant le théorème 8
+g(u,v ) = u3v
+12 − u4
+16 +K(v)
+où K est une fonction quelconque,C1 sur R.
+Or f =g◦ϕ, donc
+f(x,y ) =g(x,x + 2y) = x3(x + 2y)
+12 − x4
+16 +K(x + 2y)
+qui est donc solution de l’EDP (4.5).
+<<<PAGE>>>
+110 CHAPITRE 4. CALCUL DIFFÉRENTIEL DU 1ER ORDRE
+<<<PAGE>>>
+Chapitre 5
+Calcul diﬀérentiel d’ordre
+supérieur
+5.1 Objectifs du chapitre
+Dans le chapitre précédent, nous avons appris à résoudre les équations aux
+dérivées partielles du 1er ordre (qui font donc intervenir des dérivées par-
+tielles du 1er ordre). Nous allons, dans ce chapitre, nous intéresser aux EDPs
+faisant intervenir des dérivées partielles d’ordres supérieurs.
+De plus, nous nous intéresserons à la résolution de systèmes d’EDPs du
+1er ordre dont la résolution nécessite de manipuler des dérivées partielles
+d’ordre 2.
+Et enﬁn, nous développerons une méthode aﬁn d’étudier les extremums de
+fonctions allant deR2 à R.
+111
+<<<PAGE>>>
+112 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+5.2 Diﬀérentiation d’ordre supérieur ou égal à 2
+Déﬁnition 1 : (Dérivées partielles d’ordre supérieur)
+SoientU un ouvert deRp,f une application deU dans Rn eta∈U. Soient
+k∈ N∗ et (i1,i 2,..,i k)∈ J1,p Kk un k-uplet d’entiers.
+On dit que f admet une dérivée partielle kème en a par rapport aux
+variables numéroi1,...,i k si, et seulement si
+— f admet une dérivée (k− 1)ème par rapport aux variables numéro
+i1,i 2,...,i k−1 sur un voisinage dea.
+— cette dérivée partielle(k− 1)ème admet, elle-même, une dérivée par-
+tielle première ena par rapport à la variablekème.
+Dans ce cas, cette dernière dérivée est appelée la dérivée partiellekème ena
+par rapport aux variables numéroi1,i 2,...,i k. On note cette dérivée
+∂kf
+∂xik...∂xi2∂xi1
+⏐⏐⏐⏐
+a
+Nous venons d’introduire de manière très complexe et très formelle la notion
+de dérivée partielle d’ordre supérieur à 1 comme par exemple
+∂2f
+∂x2
+⏐⏐⏐⏐
+a
+∂2f
+∂x∂y
+⏐⏐⏐⏐
+a
+∂3f
+∂x∂y∂z
+⏐⏐⏐⏐
+a
+Exemple : Soitf(x,y,z ) =xy2z3. Alors
+∂3f
+∂x∂y∂z
+⏐⏐⏐⏐
+x,y,z
+= ∂2
+∂x∂y
+⏐⏐⏐⏐
+x,y,z
+∂f
+∂z
+⏐⏐⏐⏐
+x,y,z
+= ∂2(3xy2z2)
+∂x∂y
+⏐⏐⏐⏐
+x,y,z
+= ∂
+∂x
+⏐⏐⏐⏐
+x,y,z
+∂(3xy2z2)
+∂y
+⏐⏐⏐⏐
+x,y,z
+= ∂(6xyz 2)
+∂x
+⏐⏐⏐⏐
+x,y,z
+= 6yz 2
+Notons que l’on peut montrer que
+∂3f
+∂x∂y∂z
+⏐⏐⏐⏐
+x,y,z
+= ∂3f
+∂y∂x∂z
+⏐⏐⏐⏐
+x,y,z
+= ∂3f
+∂z∂y∂x
+⏐⏐⏐⏐
+x,y,z
+=...
+ainsi, pour cette fonction, l’ordre dans lequel on eﬀectue les dérivées par-
+tielles n’a aucune inﬂuence sur le résultat. Nous y reviendrons par la suite.
+<<<PAGE>>>
+5.2. DIFFÉRENTIATION D’ORDRE SUPÉRIEUR OU ÉGAL À 2 113
+Déﬁnition 2 : (fonction de classeCk,C∞)
+Soit U un ouvert de Rp. Soit f une application de U dans Rn. L’ap-
+plicationf est dite de classeCk surU, si, et seulement si, toutes ses dérivées
+partielles d’ordrek existent et sont continues surU. L’applicationf est dite
+de classeC∞ si, et seulement si, pour toutk∈ N, elle estCk.
+Propriété 1 :
+Soit U un ouvert de Rp. Soit f une application de U dans Rn. f est
+Ck sur U. Alors toutes les dérivées partielles d’ordre inférieur ou égal àk
+sont déﬁnies et continues.
+Démonstration : Admis.
+La structure algébrique de l’espaceCk(U,F ) (espace des fonctionsCk sur
+U ⊂ Rp) est la même que celle de l’espaceC1(U,F ) introduit au chapitre
+précédent (théorème 4, 5 et 6 du chapitre précédent). Nous n’allons rappeler
+ici que la stabilité par composition
+Théorème 1 : (stabilité deCk par composition)
+Soit U un ouvert de Rp et f une application Ck de U dans Rq. Soit
+V un ouvert de Rq et g une application de classeCk de V dans Rn. Si
+f(U)⊂V, alorsg◦f est de classeCk sur U.
+Démonstration : Admis.
+<<<PAGE>>>
+114 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+Théorème 2 :
+Soit U un ouvert de Rp et f une application Ck de U dans Rn. On a
+équivalence entre
+1. la fonctionf est de classeCk.
+2. les fonctions coordonnées def dans la baseRn sont de classeCk.
+Démonstration : évident.
+Théorème 3 : (théorème de Schwarz)
+Soit U un ouvert de Rp et f une application C1 de U dans Rq. Soit
+a∈ U et (i,j )∈ J1,p K2. Si ∂2f
+∂xj∂xi
+et ∂2f
+∂xi∂xj
+sont déﬁnies et continues ena
+alors
+∂2f
+∂xj∂xi
+⏐⏐⏐⏐
+a
+= ∂2f
+∂xi∂xj
+⏐⏐⏐⏐
+a
+Démonstration : Admis.
+Exemple : cas où il n’y a pas égalité.
+Soit la fonction
+f(x,y ) =
+{xy(x2−y2)
+x2+y2 si (x,y )⁄= (0, 0)
+0 si (x,y ) = (0, 0)
+Calculons les dérivées partielles du 1er ordre en(0, 0)
+
+
+
+∂f
+∂x
+⏐⏐⏐
+0,0
+= lim
+t→0
+(
+f (t,0)−f (0,0)
+t
+)
+= 0
+∂f
+∂y
+⏐⏐⏐
+0,0
+= lim
+t→0
+(
+f (0,t)−f (0,0)
+t
+)
+= 0
+Calculons maintenant les dérivées partielles du 1er ordre en un point(x,y )⁄=
+(0, 0) 
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+= y(4x2y2+x4−y4)
+(x2+y2)2
+∂f
+∂y
+⏐⏐⏐
+0,0
+=−x(4x2y2−x4+y4)
+(x2+y2)2
+<<<PAGE>>>
+5.3. SYSTÈMES D’EDPS DU 1ER ORDRE 115
+Les fonctions dérivées partielles premières sont donc
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+=
+{y(4x2y2+x4−y4)
+(x2+y2)2 si (x,y ) = (0, 0)
+0 si (x,y )⁄= (0, 0)
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+=
+{
+−x(4x2y2−x4+y4)
+(x2+y2)2 si (x,y ) = (0, 0)
+0 si (x,y )⁄= (0, 0)
+Or en passant aux coordonnées polaires, il est facile de montrer que ces deux
+applications sont continues.
+Etudions maintenant les dérivées secondes croisées
+∂
+∂x
+(∂f
+∂y
+) ∂
+∂y
+(∂f
+∂x
+)
+∂
+∂x
+(∂f
+∂y
+)⏐⏐⏐⏐
+0,0
+= lim
+t→0
+1
+t
+( ∂f
+∂y
+⏐⏐⏐⏐
+t,0
+− ∂f
+∂y
+⏐⏐⏐⏐
+0,0
+)
+= lim
+t→0
+t5
+t5 = 1
+∂
+∂y
+(∂f
+∂x
+)⏐⏐⏐⏐
+0,0
+= lim
+t→0
+1
+t
+( ∂f
+∂x
+⏐⏐⏐⏐
+0,t
+− ∂f
+∂x
+⏐⏐⏐⏐
+0,0
+)
+= lim
+t→0
+−t5
+t5 =−1
+on voit donc que
+∂
+∂x
+(∂f
+∂y
+)⏐⏐⏐⏐
+0,0
+⁄= ∂
+∂y
+(∂f
+∂x
+)⏐⏐⏐⏐
+0,0
+ce qui signiﬁe que les dérivées secondes ne sont pas continues.
+Nous avons ici introduit les déﬁnitions et théorèmes nécessaires à la réso-
+lution d’EDPs d’ordre supérieur à 1 ou alors de systèmes d’EDPs du 1er
+ordre. Nous allons donc maintenant étudier ces deux problèmes.
+5.3 Systèmes d’EDPs du 1er ordre
+On cherche ici à résoudre le système d’équations aux dérivées partielles
+
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+=g(x,y )
+∂f
+∂y
+⏐⏐⏐
+x,y
+=h(x,y )
+où f, g et h sontC1.
+<<<PAGE>>>
+116 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+Pour résoudre ce système, nous utiliserons la démarche suivante
+Etape 1 :
+On vériﬁe que
+∂g
+∂y
+⏐⏐⏐⏐
+x,y
+= ∂h
+∂x
+⏐⏐⏐⏐
+x,y
+En eﬀet, sig et h sontC1 alors ∂g
+∂x, ∂g
+∂y, ∂h
+∂x et ∂h
+∂y sont continues. Donc
+∂2f
+∂x2 = ∂g
+∂x ; ∂2f
+∂y 2 = ∂h
+∂y ; ∂2f
+∂x∂y = ∂h
+∂x et ∂2f
+∂y∂x = ∂g
+∂y
+sont continues. On déduit donc cela quef estC2. Doncf vériﬁe le théorème
+de Schwarz
+∂2f
+∂x∂y = ∂2f
+∂y∂x
+d’où l’on peut écrire
+∂g
+∂y = ∂h
+∂x
+Etape 2 :
+On résoud l’une des deux équations aux dérivées partielles. Résolvons par
+exemple la première :
+f(x,y ) =G(x,y ) +K1(y)
+où G est une primtive selonx de g et K1 est une fonction quelconqueC2.
+Etape 3 :
+On dérive maintenant par l’autre variable (iciy) la solution obtenue à l’étape
+2. Puis on injecte cette dérivée dans l’équation aux dérivées partielles qui n’a
+pas encore été utilisée.
+=⇒ équation surK1
+Etape 4 :
+On résoud l’équation obtenue à l’étape 3.
+Etape 5 :
+On écrit alors la solution obtenue à l’étape 2 et l’étape 4
+<<<PAGE>>>
+5.3. SYSTÈMES D’EDPS DU 1ER ORDRE 117
+Exemple :
+On cherche à résoudre, surR2, le système d’équations aux dérivées partielles
+
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+= (x + 1) cos(x +y) + sin(x +y)− sinx =g(x,y )
+∂f
+∂y
+⏐⏐⏐
+x,y
+= (x + 1) cos(x +y) =h(x,y )
+Etape 1 :
+On vériﬁe que
+∂g
+∂y
+⏐⏐⏐⏐
+x,y
+= ∂h
+∂x
+⏐⏐⏐⏐
+x,y
+alors
+∂g
+∂y =−(x + 1) sin(x +y) + cos(x +y) = ∂h
+∂x
+donc, il est possible de trouver des solutions à ce système d’équations.
+Etape 2 :
+On intégre par rapport ày la seconde EDP (car elle est plus simple à inté-
+grer). On obtient alors
+f(x,y ) = (x + 1) sin(x +y) +K1(x)
+où K1 est une fonctionC2 sur R.
+Etape 3 :
+On dérive maintenant l’expression précédente par rapport àx (l’autre va-
+riable)
+∂f
+∂x
+⏐⏐⏐⏐
+x,y
+= sin(x +y) + (x + 1) cos(x +y) +∂K1
+∂x
+On injecte cette expression dans l’EDP qui n’a pas encore été utilisée
+sin(x +y) + (x + 1) cos(x +y) +∂K1
+∂x = (x + 1) cos(x +y) + sin(x +y)− sinx
+et ﬁnalement
+∂K1
+∂x =− sinx
+<<<PAGE>>>
+118 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+Etape 4 :
+On intègre maintenant l’équation précédente
+K1(x) = cos(x) +C
+où C∈ R est une constante d’intégration.
+Etape 5 :
+On peut maintenant écrire la solution
+f(x,y ) = (x + 1) sin(x +y) +K1(x)
+= (x + 1) sin(x +y) + cos(x) +C
+avecC∈ R.
+5.4 EDPs d’ordre 2
+Nous allons maintenant résoudre des EDPs d’ordre 2. La démarche sera la
+même que pour les EDPs d’ordre 1 : il s’agira d’utiliser des changements
+de variables pour ramener l’EDP considérée à une EDP dont on connaît la
+solution.
+Théorème 4 :
+Soit U un ouvert de R2. Les solutions de classeC2 de l’équation∂2f
+∂x2 = 0
+sont de la forme
+f(x,y ) =xG(y) +H(y)
+où G et H sont des fonctionsC2 sur la projection deU sur l’axeOy.
+Démonstration : il suﬃt d’intégrer deux fois en utilisant le théorème d’inté-
+gration des EDP du chapitre précédent.
+<<<PAGE>>>
+5.4. EDPS D’ORDRE 2 119
+Théorème 5 :
+Soit U un ouvert de R2. Les solutions de classeC2 de l’équation∂2f
+∂x∂y = 0
+sont de la forme
+f(x,y ) =G(x) +H(y)
+où G et H sont des fonctionsC2 sur la projection deU sur l’axeOx et 0y
+respectivement.
+Démonstration : tout autant trivial.
+Comme pour les EDPs d’ordre 1, un changement de variables ne sera li-
+cite que si il s’agit d’unC2-diﬀéomorphisme :
+Déﬁnition 3 : (C2-diﬀéomorphisme)
+Soient U un ouvert de Rp et V un ouvert de Rn. Une application φ
+de U dans V est unC2-diﬀéomorphisme deU dans V, si, et seulement si,
+les propriétés suivantes sont vériﬁées
+1. φ est de classeC2 sur U.
+2. φ réalise une bijection deU dans V.
+3. φ−1 est de classeC2 sur V.
+Exemple de résolution d’une EDP du 2nd ordre :
+Trouver les applicationsf de R2→ R de classeC2 sur R2 solutions de
+∀(x,t )∈ R2, ∂2f
+∂x2
+⏐⏐⏐⏐
+x,t
+− 1
+c2
+∂2f
+∂T 2
+⏐⏐⏐⏐
+x,t
+= 0
+en utilisant le changement de variable(X,Y ) = (x +ct,x−ct).
+Commençons par identiﬁer l’application changement de variables :
+φ : R2 → R2
+(x,t ) ↦→ (X,Y ) =φ(x,t ) = (x +ct,x−ct)
+Commençons par vériﬁer qu’il s’agit bien d’unC2-diﬀéomorphisme.φ réalise
+clairement une bijection deR2 dans R2 car ker(φ) = 0R2. De plusφ est clai-
+rementC2 car chaque application composante estC2. Il en va de même de
+<<<PAGE>>>
+120 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+φ−1. Doncφ est unC2-diﬀéomorphisme.
+On peut alors introduire la fonctiong déﬁnie par
+f =g◦φ⇐⇒f(x,y ) = (g◦φ)(x,y ) =g◦φ(x,y ) =g(x+ct,x−ct) =g(X,Y )
+Donc g = f◦φ−1. Or la stabilité par composition de la propriétéC2, la
+fonction g est bienC2 puisque φ−1 et f le sont.
+On peut maintenant exprimer les dérivées partielles def en fonction des
+dérivées partielles deg.
+
+
+
+∂f
+∂x
+⏐⏐⏐
+x,t
+= ∂g
+∂X
+⏐⏐⏐
+X,Y
+∂X
+∂x
+⏐⏐
+x,t + ∂g
+∂Y
+⏐⏐⏐
+X,Y
+∂Y
+∂x
+⏐⏐
+x,t
+∂f
+∂t
+⏐⏐⏐
+x,t
+= ∂g
+∂X
+⏐⏐⏐
+X,Y
+∂X
+∂t
+⏐⏐
+x,t + ∂g
+∂Y
+⏐⏐⏐
+X,Y
+∂Y
+∂t
+⏐⏐
+x,t
+ce qui donne 
+
+
+∂f
+∂x
+⏐⏐⏐
+x,y
+= ∂g
+∂X
+⏐⏐⏐
+X,Y
++ ∂g
+∂Y
+⏐⏐⏐
+X,Y
+∂f
+∂t
+⏐⏐⏐
+x,y
+=c ∂g
+∂X
+⏐⏐⏐
+X,Y
+−c ∂g
+∂Y
+⏐⏐⏐
+X,Y
+en eﬀectuant le même développement pour les dérivées secondes, on obtient
+
+
+
+∂2f
+∂x2
+⏐⏐⏐
+x,t
+= ∂2g
+∂X 2
+⏐⏐⏐
+X,Y
++ ∂2g
+∂Y 2
+⏐⏐⏐
+X,Y
++ 2 ∂2g
+∂X∂Y
+⏐⏐⏐
+X,Y
+∂2f
+∂t2
+⏐⏐⏐
+x,t
+=c2 ∂2g
+∂X 2
+⏐⏐⏐
+X,Y
++c2 ∂2g
+∂Y 2
+⏐⏐⏐
+X,Y
+− 2c2 ∂2g
+∂X∂Y
+⏐⏐⏐
+X,Y
+Injectons maintenant ces dérivées partielles dans l’EDP que l’on cherche à
+résoudre, aﬁn d’obtenir
+∂2g
+∂X 2
+⏐⏐⏐⏐
+X,Y
+= 0
+or cette EDP a pour solution
+g(X,Y ) =h(Y ) +k(X)
+où h et k sont des fonctions quelconquesC2 sur R. Il ne reste plus qu’à se
+rappeler quef =g◦φ donc
+f(x,t ) = (g◦φ)(x,t ) =g(x +ct,x−ct) =h(x−ct) +k(x +ct)
+<<<PAGE>>>
+5.5. EXTREMUMS DE FONCTIONS À V ALEURS DANS R 121
+5.5 Extremums de fonctions à valeurs dansR
+5.5.1 Cas des fonctions de R dans R
+Commençons, avant de discuter de la recherche des extremums des fonctions
+de plusieurs variables, par rappeler le cas simple des fonctions d’une seule
+variable. Soit f une fonctionC2 de A⊂ R dans R. Alors on sait qu’une
+condition nécessaire pour que le point a ∈ ˚A soit un extremum est que
+f′(a) = 0 (tangente horizontale). Toutefois, ce critère n’est pas suﬃsamment
+restrictif. En eﬀet, c’est le signe de la dérivée seconde qui permet de conclure
+sur la nature du pointa.
+Le cas de gauche correspond à un minimum, celui du centre à un maximum
+et enﬁn celui de droite à un méplat (ni un maximum ni un minimum). Dans
+le dernier cas, la dérivée seconde change de signe au pointa.
+<<<PAGE>>>
+122 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+5.5.2 Cas des fonctions de Rn dans R
+Déﬁnition 4 : (maximum local ou strict, minimum local ou strict)
+Soit A une partie deRp, a∈ ˚A et f une fonction deA dans R. Alors :
+1. f admet un minimum local en a, si, et seulement si, il existe un
+voisinageV ⊂A de a tel que
+∀x∈V, f(x)≥f(a)
+2. f admet un minimum strict en a, si, et seulement si, il existe un
+voisinageV ⊂A de a tel que
+∀x∈V\{a}, f(x)>f (a)
+3. f admet un maximum local en a, si, et seulement si, il existe un
+voisinageV ⊂A de a tel que
+∀x∈V, f(x)≤f(a)
+4. f admet un maximum strict ena, si, et seulement si, il existe un
+voisinageV ⊂A de a tel que
+∀x∈V\{a}, f(x)<f (a)
+On appelle, de manière générique, les maximums et les minimums des extre-
+mums.
+Déﬁnition 5 : (extremum global)
+SoientA une partie deRp, a∈ ˚A et f une application deA dans R. Alors :
+1. f admet un minimum global ena, si, et seulement si
+∀x∈A, f(x)≥f(a)
+2. f admet un maximum global ena, si, et seulement si
+∀x∈A, f(x)≤f(a)
+<<<PAGE>>>
+5.5. EXTREMUMS DE FONCTIONS À V ALEURS DANS R 123
+Déﬁnition 7 : (point critique)
+Soient U un ouvert de Rp, a ∈ U et f une application de U dans R.
+On dit quea est un point critique def, si, et seulement si, toutes les déri-
+vées partielles premières def ena sont déﬁnies et égales à0, c’est-à-dire, si,
+et seulement si, le gradient def en a est déﬁni et nul :
+⃗∇af = 0Rp
+Propriété 2 :
+Soient U un ouvert de Rp, a ∈ U et f une application de U dans R.
+Si f admet un extremum local ena et que toutes les dérivées partielles de
+f en a sont déﬁnies, alorsa est un point critique def.
+Démonstration :
+Nous allons faire la démonstration dans le cas oùa est un minimum local.
+Il existe alorsr >0 tel queB(a,r )⊂U et pour∀x∈B(a,r ), f(x)≥f(a).
+Soit (e1,e 2,...,e p) une base deRp. Soiti∈ J1,p K. Nous avons alors
+∂f
+∂xi
+⏐⏐⏐⏐
+a
+= lim
+h→0
+f(a +hei)−f(a)
+h
+Or si|h|<r (ce qui est le cas à partir d’un moment puisqueh tend vers0),
+nous avonsa +hei∈B(a,r ) et doncf(a +hei)−f(a)≥ 0. D’où
+lim
+h→0+
+f(a +hei)−f(a)
+h ≥ 0
+lim
+h→0−
+f(a +hei)−f(a)
+h ≤ 0
+d’où une limite nulle. Comme cela est vrai pour touti∈ J1,p K, ⃗∇af = 0Rp.
+Comme dans le cas des fonctions deR dans R, la connaissance des points cri-
+tiques n’est pas suﬃsante pour connaitre leur nature (minimum, maximum
+ou aucun des deux). Et comme dans le cas des fonctions deR dans R, il faut
+étudier les dérivées du second ordre pour conclure.
+<<<PAGE>>>
+124 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+Propriété 3 : (Développement limité d’ordre 2)
+Soient U un ouvert de (Rp,‖·‖) et f une application de U dans R de
+classeC2 sur U. Soienta∈U et U0 ={h∈ Rp/a +h∈U}. Alors, il existe
+une applicationϵ : U0→ R telle que lim
+h→0Rp
+ϵ(h) = 0 et
+∀h = (h1,...,h p)∈U0,
+f(a +h) =f(a) +
+p∑
+j=1
+hj
+∂f
+∂xj
+⏐⏐⏐⏐
+a
++ 1
+2
+p∑
+i=1
+p∑
+j=1
+hihj
+∂2f
+∂xi∂xj
+⏐⏐⏐⏐
+a
++‖h‖2ϵ(h)
+Cette relation est appelée développement limité def à l’ordre 2 ena.
+Démonstration : admis.
+Théorème 6 : (Condition suﬃsante d’ordre 2)
+Soient U un ouvert de (Rp,‖·‖) et f une application de U dans R de
+classeC2 sur U. Soita un point critique def. On introduit la fonctionQ
+Q : Rp → R
+h = (h1,...,h p) ↦→ Q(h) =∑p
+i=1
+∑p
+j=1hihj
+∂2f
+∂xi∂xj
+⏐⏐⏐
+a
+S’il existe un voisinage de0Rp sur lequel
+1. Q est positive et ne s’annule qu’enh = 0, alorsf admet un minimum
+local strict ena
+2. Q est négative et ne s’annule qu’enh = 0, alorsf admet un maximum
+local strict ena.
+Si pour tout voisinage de0Rp, Q admet des valeurs positives et négatives,
+alors f n’admet pas d’extremum local ena.
+Démonstration :
+Pour h suﬃsamment petit,⃗∇(a+h)f≈ 0Rp puisque a est un point critique.
+<<<PAGE>>>
+5.5. EXTREMUMS DE FONCTIONS À V ALEURS DANS R 125
+Donc
+f(a +h)−f(a)≈
+p∑
+i=1
+p∑
+j=1
+hihj
+∂2f
+∂xi∂xj
+⏐⏐⏐⏐
+a
+=Q(h)
+Si Q est positif alorsf(a +h)>f (a) donc minimum.
+Si Q est négatif alorsf(a +h)<f (a) donc maximum.
+Aﬁn de systématiser l’étude précédente, on peut introduire la matrice hes-
+sienne
+Déﬁnition 8 : (Matrice hessienne)
+Soient U un ouvert de (Rp,‖·‖) et f une application de U dans R de
+classeC2 sur U. Soit a ∈ U un point critique de f. On déﬁnit alors la
+matrice hessienne def en a, notéeHf(a), par
+Hf(a) =
+
+
+∂2f
+∂x2
+1
+⏐⏐⏐
+a
+... ∂2f
+∂x1∂xp
+⏐⏐⏐
+a
+... ... ...
+∂2f
+∂xp∂x1
+⏐⏐⏐
+a
+... ∂2f
+∂x2p
+⏐⏐⏐
+a
+
+
+On introduit alors, pour les fonctions deR2 dans R les notations de Monge
+Déﬁnition 9 : (Notations de Monge)
+Soient U un ouvert de R2 et f une application deU dans R de classeC2
+sur U. Soita∈ U un point critique def. On déﬁnit alors les notations de
+Monge comme
+r = ∂2f
+∂x2
+⏐⏐⏐⏐
+a
+s = ∂2f
+∂x∂y
+⏐⏐⏐⏐
+a
+= ∂2f
+∂y∂x
+⏐⏐⏐⏐
+a
+t = ∂2f
+∂y 2
+⏐⏐⏐⏐
+a
+alors avec ces notations
+Hf(a) =
+(r s
+s t
+)
+<<<PAGE>>>
+126 CHAPITRE 5. CALCUL DIFFÉRENTIEL D’ORDRE SUPÉRIEUR
+Théorème 7 : (Condition suﬃsante d’ordre 2)
+SoientU un ouvert deR2 etf une application deU dans R de classeC2 sur
+U. Soita un point critique def. Alors
+1. Si det
+(
+Hf(a)
+)
+=rt−s2> 0 :
+(a) si r> 0, alorsf admet un minimum local strict ena.
+(b) si r< 0, alorsf admet un maximum local strict ena.
+2. Si det
+(
+Hf(a)
+)
+=rt−s2 < 0, alorsf n’a pas d’extremum local ena.
+Dans ce cas,a est appelé point-col, ou point-selle def.
+3. Si det
+(
+Hf(a)
+)
+=rt−s2 = 0, alors on ne peut pas conclure sans faire
+une étude locale poussée.
+Démonstration :
+distribuée en cours.
+<<<PAGE>>>
+5.5. EXTREMUMS DE FONCTIONS À V ALEURS DANS R 127
+Finalement, la détermination des extremas d’une fonction deR2 dans R
+s’eﬀectue par la méthode générale et systèmatique suivante :

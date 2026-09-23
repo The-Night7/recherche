@@ -1,0 +1,359 @@
+Préing 2 : DS 1 (sujet 2) d’Analyse dans Rn
+L’usage de tout appareil électronique est interdit.Date : Mardi 14 Novembre 2023
+Aucun document n’est autorisé. Durée : 1h
+Le barème est donné à titre indicatif. Nombre de pages : 1 page recto verso
+Il sera tenu compte de la qualité de la rédaction et de la précision des justiﬁcations.Le
+sujet comporte 4 exercices. L’ordre dans lequel ceux-ci sont traités n ’est pas imposé.
+♣ ♣ ♣
+Exercice 1 : Questions de cours/TD (5 points)
+Soit (E,||·|| ) un espace vectoriel normé quelconque. Soitr> 0 et a un point quelconque deE.
+1. Soit A⊂E. Quelles sont les déﬁnitions de :A Ouvert? A Fermé? (1 point)
+2. Montrer que la boule ouverte de centrea et de rayonr, B(a,r ), est un ouvert. (4 points)
+.
+Correction :
+1. Déﬁnition d’ouvert :(0.5 point)
+def 1 possible :
+A ouvert⇐⇒A est voisinage de chacun de ses points.
+def 2 possible :
+A ouvert⇐⇒∀x∈A,∃r> 0 / B(x,r )⊂A.
+Déﬁnition de fermé :(0.5 point)
+def 1 possible :
+A fermé⇐⇒CEA ouvert.
+def 2 possible :
+A fermé⇐⇒∀x∈CEA,∃r> 0 / B(x,r )⊂CEA.
+def 3 possible :
+A fermé⇐⇒CEA est voisinage de chacun de ses points.
+Tout autre déﬁnition sera refusée. Toute imprécision conduira à 0 pour la déﬁnition.
+2. SoitB(a,r ) la boule ouverte de centrea et de rayonr. SoitX∈B(a,r ) un point quelconque
+de la boule. Alors, par hypothèse
+||X−a||<r
+1
+<<<PAGE>>>
+Soit ϵ = r−||X−a||. Or∀X∈ B(a,r ),||X−a|| < ret donc∀X∈ B(a,r ), ϵ > 0. On
+introduit alors la boule ouverte centrée enX et de rayonϵ, B
+(
+X,ϵ =r−||X−a||
+)
+.
+Soit Y ∈B
+(
+X,ϵ =r−||X−a||
+)
+un point quelconque de cette boule. On a alors
+||Y−X||<ϵ =r−||X−a||
+Alors
+||Y−a|| =||Y−X +X−a||≤|| Y−X|| +||X−a||
+<r −||X−a|| +||X−a|| =r
+donc
+||Y−a||<r, ce qui est équivalent àY ∈B(a,r )
+Or cela est vrai∀Y ∈B
+(
+X,ϵ =r−||X−a||
+)
+, donc
+∀X∈B(a,r ), B
+(
+X,ϵ =r−||X−a||
+)
+⊂B(a,r )
+FinalementB(a,r ) est un ouvert.
+1 point si c’est le bon rayon de bouler′ qui est donné.
+1 point si il est justiﬁé quer′> 0.
+1 point si il est correctement démontré que‖Y−a‖<r .
+1 point pour conclure correctement à partir du point précédent.
+Exercice 2 : 2 normes sur l’espace des matrices (9 points)
+Soit n, p∈ N∗. SoitMn,p(R) l’espace vectoriel des matrices den lignes etp colonnes à coeﬃcients
+réels. SoitA∈M n,p(R) une matrice quelconque. On déﬁnit alors les deux applications
+f(A) =
+n∑
+i=1
+p∑
+j=1
+|aij| et g(A) = max
+1≤i≤n
+1≤j≤p
+(|aij|)
+où aij est l’élément de la lignei et de la colonnej de la matriceA.
+1. Montrer quef et g sont des normes surMn,p(R). (4.5 points)
+2. Déterminer α, β >0 tels que :
+∀A∈M n,p(R), αg(A)≤f(A)≤βg(A) (2 points)
+3. Ces normes sont-elles équivalentes? (0.5 point)
+4. Soitn =p = 2. On note0M22, l’élément nul deM22. SoitSf(0M22,r = 1) etSg(0M22,r = 1)
+les sphères de rayon1 et de centre0M22 associées aux normesf et g. Donner un élémentC
+quelconque deSf(0M22,r = 1) et un élémentD quelconque deSg(0M22,r = 1). (2 points)
+2
+<<<PAGE>>>
+Correction :
+1. Montrons quef est une norme :
+(a) Séparation : (0.5 point)
+Soit f(A) = 0, alors
+n∑
+i=1
+p∑
+j=1
+|aij| = 0 =⇒∀i,j, aij = 0
+(b) Absolue homogénéité : (0.5 point)
+Soit A une matrice deMn,p(R) (ses éléments seront notésaij) etλ∈ R. AlorsλA est la
+matrice dont ls éléments sont donnés parλaij. Calculons la norme de ce nouveau vecteur
+f(λA) =
+n∑
+i=1
+p∑
+j=1
+|λaij| =
+n∑
+i=1
+p∑
+j=1
+|λ|×| aij| =|λ|
+n∑
+i=1
+p∑
+j=1
+|aij| =|λ|f(A)
+(c) Inégalité triangulaire : (1 point)
+SoitA etB deux matrices deMn,p(R) (leurs éléments seront notésaij etbij). Calculons
+la normef de A +B
+f(A +B) =
+n∑
+i=1
+p∑
+j=1
+|aij +bij|≤
+n∑
+i=1
+p∑
+j=1
+[
+|aij| +|bij|
+]
+=f(A) +f(B)
+car∀i,j, |aij +bij|≤| aij| +|bij| (inégalité triangulaire dansR).
+Montrons queg est une norme :
+(a) Séparation : (0.5 point)
+Soit g(A) = 0, alors
+max
+1≤i≤n
+1≤j≤p
+(|aij|) = 0 =⇒∀i,j, aij = 0
+(b) Absolue homogénéité : (0.5 point)
+Soit A une matrice deMn,p(R) (ses éléments seront notésaij) etλ∈ R. AlorsλA est la
+matrice dont ls éléments sont donnés parλaij. Calculons la norme de ce nouveau vecteur
+g(λA) = max
+1≤i≤n
+1≤j≤p
+(|λaij|) = max
+1≤i≤n
+1≤j≤p
+(|λ|×| aij|) =|λ| max
+1≤i≤n
+1≤j≤p
+(|aij|) =|λ|g(A)
+(c) Inégalité triangulaire : (1.5 point)
+Soit A et B deux matrices deMn,p(R) (leurs éléments seront notésaij et bij). Alors
+∀i,j, |aij +bij|≤| aij| +|bij|≤ max
+1≤i≤n
+1≤j≤p
+(|aij|) + max
+1≤i≤n
+1≤j≤p
+(|bij|) =g(A) +g(B) (1)
+On voit donc que
+∀i,j, |aij +bij|≤ g(A) +g(B)
+3
+<<<PAGE>>>
+La relation précédente est en particulier vraie pour la valeur de(i,j ) qui maximise|aij +
+bij|. Donc
+max
+1≤i≤n
+1≤j≤p
+(
+|aij +bij|
+)
+≤g(A) +g(B)
+Finalement
+g(A +B)≤g(A) +g(B)
+Pour cette question, il faut vraiment passer par la relation (1). Si cette relation n’est pas
+écrite alors 0.
+2. Déterminons α, β >0 tels que :
+∀A∈M n,p(R), αg(A)≤f(A)≤βg(A)
+Montrons que∀A∈M n,p(R), αg(A)≤f(A) : (1 point)
+Soit A une matrice quelconque de notre espace vectoriel. Alors
+g(A) = max
+1≤i≤n
+1≤j≤p
+(
+|aij|
+)
+Soit (i0,j 0) le couple de valeurs tel que l’on maximise|aij|. Prenons maintenant la normef
+f(A) =
+n∑
+i=1
+p∑
+j=1
+|aij| =|ai0j0| +
+∑
+i⁄=i0
+∑
+j⁄=j0
+|aij| =g(A) +
+∑
+i⁄=i0
+∑
+j⁄=j0
+|aij|
+or∑
+i⁄=i0
+∑
+j⁄=j0|aij|≥ 0 d’où l’on déduit que
+∀A∈M n,p(R), g(A)≤f(A) ( α = 1)
+Montrons que∀A∈M n,p(R), f(A)≤βg(A) : (1 point)
+∀i,j |aij|≤ max
+1≤i≤n
+1≤j≤p
+(
+|aij|
+)
+=g(A)
+d’où l’on déduit que
+n∑
+i=1
+p∑
+j=1
+|aij|≤ (n×p)g(A)
+Finalement, on a
+∀A∈M n,p(R), g(A)≤f(A)≤np×g(A)
+3. Deux façons de répondre. (0.5 point)
+Méthode 1 :
+L’inégalité obtenue à la question précédente prouve, par déﬁnition, que les deux normes sont
+équivalentes.
+4
+<<<PAGE>>>
+Méthode 2 :
+L’espaceMn,p(R) est un espace de dimension ﬁnie (dim= np). Or on sait d’après le cours
+que sur un espace de dimension ﬁnie, toutes les normes sont équivalentes.
+4. Commençons par déﬁnir ces ensembles (0.5+0.5 point)
+Sf(0M22,r = 1) =
+{
+C∈M 22(R)/f(C) = 1
+}
+⇐⇒
+(
+C∈Sf(0M22,r = 1)⇐⇒
+2∑
+i=1
+2∑
+j=1
+|cij| = 1
+)
+Sg(0M22,r = 1) =
+{
+D∈M 22(R)/g(D) = 1
+}
+⇐⇒
+(
+D∈Sg(0M22,r = 1)⇐⇒ max
+1≤i≤2
+1≤j≤2
+(
+|dij|
+)
+= 1
+)
+On peut par exemple prendre (0.5+0.5 point)
+C =
+( 1
+4
+1
+41
+4
+1
+4
+)
+et D =
+(0 1
+4
+1 0
+)
+Exercice 3 : un peu de topologie dans R (6 points)
+On munit R de sa norme usuelle|·| . Soita∈ R. Soit les ensembles suivants
+I1 =]a; +∞[ I2 = [0; 1[∪]1; 2]∪{ 3}
+1. Déterminer si les ensembles précédents sont ouverts, fermés, ou aucun des deux en passant
+soit directement par les déﬁnitions soit en utilisant les suites d’éléments deR. (2 points)
+2. Déterminer l’adhérent deI1 et l’intérieur deI2 par la méthode de votre choix. (4 points)
+Correction :
+1. Commençons parI1 :
+Ouvert? (exemple de méthode)
+S’il y a un soucis, le soucis est en{a}. Soitx∈I1. Considérons alors
+B (x,r =x−a) = ]x− (x−a);x + (x−a)[ =]a; 2x−a[
+or∀x ∈ I1, r > 0. De plus∀y ∈ B (x,r =x−a), y > adonc y ∈ I1. Ainsi∀x ∈ I1,
+B (x,r =x−a)⊂I1 et doncI1 est un ouvert.
+(0.5 point).
+Fermé? (exemple de méthode)
+Soit la suiteun =a + 1
+n. Alors∀n≥ 1, un∈I1. Toutefois
+lim
+n→+∞
+un =a /∈I1
+5
+<<<PAGE>>>
+Donc I1 n’est pas un fermé. (0.5 point)
+Poursuivons avecI2 :
+Ouvert? (exemple de méthode)
+Clairement, il y a un problème en plusieurs points. Nous allons considérer{3} par exemple.
+Soit r >0 et B(3,r ) =]3−r; 3 +r[. Considéronsy = 3 + r
+2∈B(3,r ). Alors,∀r >0, y /∈I2
+et ﬁnalement∀r> 0, B(3,r )⁄⊂I2 et I2 n’est pas un ouvert. (0.5 point)
+Fermé? (exemple de méthode)
+Soit un = 1− 1
+n. Alors∀n> 2, un∈I2. Or
+lim
+n→+∞
+un = 1 /∈I2
+Donc I2 n’est pas un fermé. (0.5 point)
+2. Détermination deI 1 :
+Etape 1 : On propose un candidat sur la base du fait que l’adhérent deI1 est le plus petit
+fermé contenantI1 : C = [a; +∞[ (0.5 point).
+Etape 2 : Puis on vériﬁe queI1⊂C et queC est un fermé.
+Or par corollaire du cours on sait qu’un ensemble de la forme[a; +∞[ est bien un fermé.
+De plus,C =I1∪{a} d’où l’on déduit queI1⊂C.
+On sait alors queI 1⊂C (0.5 point).
+Etape 3 : Il ne reste plus qu’à montrer queC⊂I 1 ce qui est équivalent à
+∀x∈C\I1,∀r> 0, B(x,r )∩I1⁄=∅
+où dit autrement que tous les points deC\I1 appartiennent bien àI 1.
+Or iciC\I1 ={a}. On peut par exemple introduire la suite
+un =a + 1
+n
+donc, pourn> 0, tous les éléments de la suite appartiennent àI1. Or
+lim
+n→+∞
+un =a
+Donc{a} appartient bien àI 1. (1 point)
+On a doncI 1 =C = [a; +∞[.
+6
+<<<PAGE>>>
+Détermination de ˚I2 :
+Etape 1 (0.5 point) : proposons un candidat sur la base du fait que l’intérieur deI2 est
+le plus grand ouvert contenu dansI2. Ainsi, posons
+C =]0; 1[∪]1; 2[
+Etape 2 (0.5 point) : Nous devons vériﬁer queC est bien un ouvert et queC⊂I2.
+D’après un corollaire du cours,∀a,b ∈ R, tels quea < b, l’intervalle]a;b[ est un ouvert.
+De plus d’après une autre propriété du cours, une union quelconque d’ouvert est un ouvert.
+Ainsi on déduit queC est bien un ouvert.
+De plusI2 =C∪{ 0}∪{ 2}∪{ 3} ce qui implique queC⊂I2.
+D’après le TD, on sait alors queC⊂ ˚I2.
+Etape 3 (1 point) : Nous devons maintenant vériﬁer que˚I2⊂C.
+˚I2⊂C⇐⇒
+(
+∀x∈I2\C,∀r> 0,B (x,r )⁄⊂I1
+)
+Ici I2\C ={0}∪{ 2}∪{ 3}.
+Soit r >0 et soitB(0,r ) =]−r; +r[ la boule centrée en0 et de rayonr. Considérons alors
+y =− r
+2∈B(b,r ). Or,∀r> 0,y <0 doncy /∈I2. Ainsi∀r> 0,B(b,r )⁄⊂I2 et donc{0} /∈ ˚I2.
+De la même façon, nous pouvons montrer que{2},{3} /∈ ˚I2 et ﬁnalement
+˚I2 =C =]0; 1[∪]1; 2[
+.
+0.5 si ˚I2 est donné sans justiﬁcatif ou que le reste de la démonstration est faux.
+0.5 siI 1 est donné sans justiﬁcatif ou que le reste de la démonstration est faux.
+7
