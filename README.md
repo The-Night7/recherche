@@ -79,3 +79,12 @@ score = cos(question, passage) × (1 + 0.25 × r), avec r ∈ [0, 1] la position
 de l'année du document entre la plus ancienne et la plus récente de son cours
 (0.5 si l'année est inconnue). Désactivable dans l'interface ou avec
 `--sans-recence`.
+
+
+## Pour extraire le contenu d'un pdf :
+
+```
+pip install pypdf --break-system-packages   # une seule fois
+python3 ingest_series.py extract ~/Cours/Series/TD5_20252026_Series_P2S1_DMaths.pdf
+python3 ingest_series.py build
+```
