@@ -110,7 +110,7 @@ function renderMd(text, terms){
   const maths = [];
   const sources = [];
   // Protéger le texte source avant les maths : aucun symbole n'y est interprété.
-  const protectedText = text.replace(/^([ \t]*)(`{3,})(\w*)[^\S\n]*\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/gm,
+  const protectedText = text.replace(/^([ \t]*)(`{3,})([\w-]*)[^\S\n]*\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/gm,
     (_, indent, fence, language, source) => {
       const value = source.split('\n').map(line => line.startsWith(indent) ? line.slice(indent.length) : line).join('\n');
       return indent + `\u0001${sources.push({language, value}) - 1}\u0001`;
@@ -137,8 +137,10 @@ function renderMd(text, terms){
       const source = sourceBlock(line);
       if (source){
         const {language, value} = sources[Number(source[1])];
-        out.push(language === 'pdf'
-          ? `<details class="source-excerpt"><summary>Afficher l’expression d’origine</summary><pre>${escapeHtml(value)}</pre></details>`
+        const pdfSource = language === 'pdf' || language === 'pdf-steps';
+        const summary = language === 'pdf-steps' ? 'Étapes intermédiaires à vérifier' : 'Afficher l’expression d’origine';
+        out.push(pdfSource
+          ? `<details class="source-excerpt"><summary>${summary}</summary><pre>${escapeHtml(value)}</pre></details>`
           : `<pre class="code-block">${escapeHtml(value)}</pre>`);
         i++; continue;
       }

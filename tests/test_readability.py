@@ -187,6 +187,79 @@ class ReadabilityTests(unittest.TestCase):
         self.assertIn('\n   &+', first_equality)
         self.assertIn('\n   &-', first_equality)
 
+    def test_integral_bounds_and_differential_stay_together(self):
+        text = self.markdown('∀k ≥ 2,\nZ k+1\nk\ndt\ntln t\n=\nZ n+1\n2\ndt =\n1')
+        self.assertIn(r'\int_{k}^{k+1} \dfrac{dt}{t \ln  t}', text)
+        self.assertIn(r'\int_{2}^{n+1} dt', text)
+        self.assertNotIn(r'\dfrac{Z', text)
+        self.assertNotIn('dt &=', text)
+        self.assertIn('Z', display_math(['Z a', 'b', '=', 'c']))
+        self.assertNotIn(r'\int', display_math(['Z a', 'b', '=', 'dt']))
+        self.assertEqual(display_math(['dy', 'dx']), r'\dfrac{dy}{dx}')
+
+    def test_compact_logarithms_are_functions_and_not_sequence_indices(self):
+        for denominator in ('tln2t', 't ln2 t', 't ln2t'):
+            text = self.markdown('1\n' + denominator)
+            self.assertIn(r'\dfrac{1}{t \ln^{2} t}', text)
+            self.assertNotIn('l_n', text)
+        self.assertIn(r'\ln^{2} t', display_math(['ln2t']))
+        self.assertFalse(math_only('On additionne les valeurs.'))
+
+    def test_embedded_fractions_and_series_stay_in_their_sentence(self):
+        text = self.markdown('1. La fonction f(t) = 1\nt ln t\nest décroissante.\n'
+                             'La série ∑n≥2\n1\nn ln2n\nest convergente.')
+        self.assertIn(r'La fonction $f(t) = \dfrac{1}{t \ln  t}$ est décroissante.', text)
+        self.assertIn(r'La série $\sum_{n\ge 2} \dfrac{1}{n \ln^{2} n}$ est convergente.', text)
+        self.assertNotIn('$$', text)
+        partial = self.markdown('Soit ∑n∈N\n(z ↦ an zⁿ\n) une série entière.')
+        self.assertNotIn('```', partial)
+        self.assertIn(') une série entière.', partial)
+
+    def test_evaluation_bounds_are_not_a_fraction(self):
+        self.assertEqual(display_math(['[t]', 'k+1', 'k']), r'[t]_{k}^{k+1}')
+        self.assertEqual(display_math(['[ln(ln t)]n+1', '2']), r'[\ln (\ln  t)]_{2}^{n+1}')
+        self.assertEqual(display_math(['[', '1', 'ln t', ']n+1', '2']),
+                         r'[\dfrac{1}{\ln  t}]_{2}^{n+1}')
+        for importer in (ingest, ingest_series):
+            self.assertEqual(clean_text(importer.fix_glyphs('\x14\n1\nln t\n\x15n+1\n2')),
+                             '[\n1\nln t\n]n+1\n2')
+
+    def test_bertrand_capture_has_complete_integrals_without_invented_derivatives(self):
+        for importer in (ingest, ingest_series):
+            path = 'data/series/TD1Correction_20242025_Series_P2S1_DMaths.txt'
+            args = (path, 'series') if importer is ingest else (path,)
+            exercise = next(c for c in importer.chunk_document(*args) if c['section'] == 'Exercice 5')
+            text = self.markdown(exercise['text'])
+            # Only the two calculations with damaged derivative glyphs have
+            # a collapsed source; their integral and result remain visible.
+            self.assertEqual(text.count('```pdf-steps'), 2)
+            visible = re.sub(r'```pdf-steps.*?```', '', text, flags=re.S)
+            self.assertNotIn('```pdf', visible)
+            self.assertNotIn('tln', visible)
+            self.assertNotIn('l_n', visible)
+            self.assertNotIn('Z ', visible)
+            self.assertNotIn('}{0}', visible)
+            self.assertIn(r'\int_{2}^{n+1} \dfrac{dt}{t \ln  t}', visible)
+            self.assertIn(r'\int_{2}^{n+1} \dfrac{dt}{t \ln^{2} t}', visible)
+            self.assertIn(r'\dfrac{1}{\ln  2} - \dfrac{1}{\ln (n + 1)}', visible)
+            self.assertIn(r'[t]_{k}^{k+1}', visible)
+            answer = visible.split('#### Réponse 5')[1]
+            self.assertEqual(re.findall(r'^\d+\.$', answer, re.M), ['1.', '2.', '3.', '4.'])
+            self.assertEqual(answer.count('$$'), 16)  # Eight complete calculation blocks.
+
+    def test_readable_integral_identity_keeps_every_step(self):
+        text = self.markdown('Z 1\n0\ndt\n=\n[t]\n1\n0\n=\n1 − 0\n=\n1')
+        self.assertNotIn('```', text)
+        self.assertIn(r'\int_{0}^{1} dt', text)
+        self.assertIn(r'[t]_{0}^{1}', text)
+        self.assertIn('1 - 0', text)
+
+    def test_isolated_damaged_integral_has_no_empty_math_panel(self):
+        text = self.markdown('Z n+1\n2\n(ln t)\n0\nln2\nt\ndt')
+        self.assertIn('```pdf', text)
+        self.assertNotIn('$$', text)
+        self.assertNotIn('}{0}', text)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -43,6 +43,11 @@ expression et un exercice court conserve son propre résultat de recherche.
 Les grandes parenthèses extraites comme des espaces et des points d'exclamation
 sont restaurées lorsque leurs paires sont identifiables. Les longues égalités
 sont réparties entre leurs termes, sans couper les fractions ni les sommes.
+Les bornes d'intégrale et d'évaluation sont séparées des fractions ; les
+logarithmes compactés (`tln2t`) et les fractions commencées dans une phrase
+restent regroupés. Lorsqu'une étape de dérivation a perdu ses signes, le
+calcul affiche ses égalités lisibles et conserve l'extrait complet dans
+« Étapes intermédiaires à vérifier », replié par défaut.
 Pour les ambiguïtés restantes (portée d'une racine perdue, limite fragmentée…),
 l'expression source est accessible via « Afficher l’expression d’origine »,
 replié par défaut. Une transcription du PDF permet de retrouver un rendu

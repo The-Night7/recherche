@@ -41,6 +41,16 @@ FUNCTION_TEX = {name: name for name in MATH_FUNCTIONS} | {"sh": "sinh", "ch": "c
 OPERATOR_END_RE = re.compile(r"(?:[=<>≤≥∼≈⇔⇒+−\-×·(,]|:=|\bet)\s*$")
 
 
+def spaced_functions(s):
+    """Séparer les produits/logarithmes compactés par l'extraction PDF.
+
+    Une seule lettre peut précéder ln : on ne coupe pas les mots de prose.
+    Les puissances restent attachées à la fonction jusqu'à tex().
+    """
+    s = re.sub(r"(?<![A-Za-zÀ-ÿ\\])([a-z])ln(?=\s|[2-9(])", r"\1 ln", s)
+    return re.sub(r"\bln([2-9]?)(?=[a-z]\b)", r"ln\1 ", s)
+
+
 def balanced(s):
     d = 0
     for ch in s:
@@ -52,10 +62,10 @@ def balanced(s):
 
 
 def is_math_line(s, maxlen=20):
-    s = s.strip()
+    s = spaced_functions(s.strip())
     if HEADING_RE.match(s) or LIST_RE.match(s):
         return False
-    if not balanced(s) or re.search(r"[=→≠∼≤≥<>∑∏]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]|[a-z]?X", s) \
+    if not balanced(s) or re.search(r"[=→≠∼≤≥<>∑∏∫]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]|[a-z]?X|\bZ\s+", s) \
             or not re.search(r"[A-Za-z0-9α-ωΑ-Ω∂]", s):
         return False
     if not s or len(s) > maxlen or s[0] in ".,;:" or HEADING_RE.match(s):
@@ -74,7 +84,7 @@ GREEK = {
     "∞": r"\infty ", "−": "-", "×": r"\times ", "·": r"\cdot ", "≤": r"\le ", "≥": r"\ge ",
     "∼": r"\sim ", "≈": r"\approx ", "≠": r"\neq ", "∈": r"\in ", "→": r"\to ", "∂": r"\partial ",
     "⇔": r"\Leftrightarrow ", "⇒": r"\Rightarrow ", "√": r"\surd ", "ᐟ": "/", "!": "!", "∗": "^*",
-    "∑": r"\sum ", "∏": r"\prod ",
+    "∑": r"\sum ", "∏": r"\prod ", "∫": r"\int ",
 }
 SETS = {"N": r"\mathbb{N}", "Z": r"\mathbb{Z}", "R": r"\mathbb{R}", "C": r"\mathbb{C}", "Q": r"\mathbb{Q}"}
 
@@ -87,7 +97,7 @@ SUB_CHARS = {"₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "ₙ": 
 
 
 def tex(s):
-    s = s.strip()
+    s = spaced_functions(s.strip())
     # Les fragments reçus ici sont du texte PDF, pas des commandes LaTeX.
     s = s.replace("\\", r"\setminus ")
     s = re.sub(r"[{}#%&]", lambda m: "\\" + m.group(0), s)
@@ -95,7 +105,7 @@ def tex(s):
     s = re.sub("[" + "".join(SUP_CHARS) + "]+", lambda m: "^{" + "".join(SUP_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub("[" + "".join(SUB_CHARS) + "]+", lambda m: "_{" + "".join(SUB_CHARS[c] for c in m.group(0)) + "}", s)
     functions = "|".join(sorted(MATH_FUNCTIONS, key=len, reverse=True))
-    s = re.sub(r"\b(" + functions + r")(\d+)(?=\()",
+    s = re.sub(r"\b(" + functions + r")(\d+)(?=\(|\s+[a-z(])",
                lambda m: "\\" + FUNCTION_TEX[m.group(1)] + "^{" + m.group(2) + "}", s)
     s = re.sub(r"(?<![\\\w])(" + functions + r")\b", lambda m: "\\" + FUNCTION_TEX[m.group(1)] + " ", s)
     s = re.sub(r"(?<![A-Za-z\\])([a-zA-Z])([nkpij])(?![A-Za-z])", r"\1_\2", s)  # un -> u_n
@@ -256,6 +266,10 @@ def repair_lines(lines):
         l = lines[i]
         nxt = lines[i + 1] if i + 1 < len(lines) else ""
         nxt2 = lines[i + 2] if i + 2 < len(lines) else ""
+        if re.fullmatch(r"ln[2-9]", l) and re.fullmatch(r"[a-z]", nxt):
+            out.append(l + " " + nxt)
+            i += 2
+            continue
         if l == "lim" and re.fullmatch(r"[a-z]\s*→\s*(?:[+−-]?∞|[+−-]?\d+[+−-]?)", nxt):
             out.append(l + " " + nxt)
             i += 2
@@ -327,7 +341,7 @@ def math_only(line):
     """Reconnaître un calcul entier, sans envoyer la prose dans KaTeX."""
     if HEADING_RE.match(line) or LIST_RE.match(line):
         return False
-    plain = re.sub(r"\$[^$]+\$|\\[a-zA-Z]+", "", line)
+    plain = spaced_functions(re.sub(r"\$[^$]+\$|\\[a-zA-Z]+", "", line))
     plain = LIM_RE.sub("", plain)
     if re.search(r"\b(?:en|on|de|le|la|les|est|et|qui|donc|où|ou|il|du|au|se|ce)\b", plain, re.I):
         return False
@@ -415,6 +429,120 @@ def wrap_equation(row, width=50):
     return parts
 
 
+BOUND = r"[+−-]?(?:∞|[A-Za-z0-9]+(?:\s*[+−-]\s*\d+)?)"
+
+
+def bounded_operators(lines):
+    """Protéger les bornes avant toute tentative de reconstruire une fraction."""
+    out, i = [], 0
+    while i < len(lines):
+        line = lines[i]
+        following = lines[i + 1] if i + 1 < len(lines) else ""
+        integral = re.search(r"(?<!\w)([Z∫])\s+(" + BOUND + r")$", line)
+        # Le Z seul est aussi une variable/un ensemble. Exiger un différentiel
+        # dans ce même calcul pour interpréter le glyphe PDF comme une intégrale.
+        body = []
+        for part in lines[i + 2:i + 12]:
+            body.append(part)
+            if re.search(r"[=≤≥]|\bZ\s", part):
+                break
+        if integral and re.fullmatch(BOUND, following) and (
+                integral.group(1) == "∫" or re.search(r"\bd[txu]\b", " ".join(body))):
+            prefix = line[:integral.start()].strip()
+            if prefix:
+                out.append(prefix)
+            out.append(r"$\int_{" + tex(following) + "}^{" + tex(integral.group(2)) + "}$")
+            i += 2
+            continue
+        # [F(t)] / b / a, ou [F(t)]b / a : les bornes ne sont pas b/a.
+        evaluation = re.search(r"(\[[^\[\],]+\])\s*(" + BOUND + r")?$", line)
+        if evaluation:
+            upper = evaluation.group(2) or following
+            lower_pos = i + (1 if evaluation.group(2) else 2)
+            lower = re.match(r"^(" + BOUND + r")(\s*[=≤≥].*)?$", lines[lower_pos]) if lower_pos < len(lines) else None
+            if re.fullmatch(BOUND, upper) and lower:
+                prefix = line[:evaluation.start()].strip()
+                if prefix:
+                    out.append(prefix)
+                out.append("$" + tex(evaluation.group(1)) + "_{" + tex(lower.group(1)) + "}^{" + tex(upper) + "}$")
+                if lower.group(2):
+                    out.append(lower.group(2).strip())
+                i = lower_pos + 1
+                continue
+        # La primitive peut elle-même être une fraction entre crochets.
+        if line == "[":
+            end = next((j for j in range(i + 1, min(i + 9, len(lines))) if lines[j].startswith("]")), None)
+            if end is not None:
+                upper = lines[end][1:].strip()
+                lower = lines[end + 1] if end + 1 < len(lines) else ""
+                if re.fullmatch(BOUND, upper) and re.fullmatch(BOUND, lower):
+                    inside = display_math(lines[i + 1:end])
+                    out.append("$[" + inside + "]_{" + tex(lower) + "}^{" + tex(upper) + "}$")
+                    i = end + 2
+                    continue
+        out.append(line)
+        i += 1
+    return out
+
+
+def prepare_math(lines):
+    prepared = []
+    for line in bounded_operators(lines):
+        # Les sommes restaurées à l'import peuvent partager la ligne du terme.
+        line = re.sub(r"∑(_\{[^{}]+\})(\^\{[^{}]+\})?",
+                      lambda m: "$\\sum" + m.group(1) + (m.group(2) or "") + "$", line)
+        line = SUM_BARE_RE.sub(lambda m: "$\\" + ("sum" if m.group(1) == "∑" else "prod")
+                              + "_{" + m.group(2) + sub_index(m.group(3)) + "}$", line)
+        prepared.extend(part.strip() for part in re.split(r"(\$[^$]+\$)", line) if part.strip())
+    return prepared
+
+
+def readable_integral_steps(lines):
+    """Replier seulement les étapes où la notation de dérivation a été perdue.
+
+    On conserve les membres lisibles d'une chaîne d'égalités, sans deviner
+    les primes ou fabriquer une division par zéro à partir d'un glyphe.
+    Le calcul extrait complet reste disponible à côté du calcul abrégé.
+    """
+    steps, current = [], []
+    for line in prepare_math(lines):
+        if line.startswith("$"):
+            current.append(line)
+            continue
+        parts = re.split(r"(=)", line)
+        for part in parts:
+            if part == "=" and current:
+                steps.append(current)
+                current = []
+            if part.strip():
+                current.append(part.strip())
+    if current:
+        steps.append(current)
+    kept, omitted, uncertain = [], False, False
+    for step in steps:
+        joined = " ".join(step)
+        damaged = False
+        if r"\int" in joined and re.search(r"\bd[txu]\b", joined):
+            # (ln t) / t / ln t ou (ln t) / 0 / ln² t : le caractère
+            # entre les deux fonctions peut être une prime mal extraite.
+            damaged = any(re.search(r"\b(?:ln|log|sin|cos)\b", part) and part.endswith(")")
+                          and i + 2 < len(step) and step[i + 1] in ("0", "t", "x")
+                          and re.match(r"(?:ln|log|sin|cos)", step[i + 2])
+                          for i, part in enumerate(step))
+            damaged |= bool(re.search(r"\)[0tx]\s+d[txu]\b", joined))
+        # Une primitive qui suit une dérivation illisible ne permet pas
+        # de rétablir avec certitude le signe ou l'exposant manquant.
+        evaluation = uncertain and any(part.startswith("$[") for part in step)
+        if damaged or evaluation:
+            if not kept:
+                return [], True
+            omitted = uncertain = True
+        else:
+            kept.extend(step)
+            uncertain = False
+    return (kept, True) if omitted else (lines, False)
+
+
 def display_math(lines):
     """Restituer les fractions empilées dans un calcul isolé de la prose.
 
@@ -422,14 +550,8 @@ def display_math(lines):
     distinguent un numérateur de son dénominateur. Les indices des sommes
     sont déjà protégés par big_sums().
     """
-    prepared = []
-    for line in lines:
-        # Les sommes restaurées à l'import peuvent partager la ligne du terme.
-        line = re.sub(r"∑(_\{[^{}]+\})(\^\{[^{}]+\})?",
-                      lambda m: "$\\sum" + m.group(1) + (m.group(2) or "") + "$", line)
-        prepared.extend(part.strip() for part in re.split(r"(\$[^$]+\$)", line) if part.strip())
     fragments = []
-    for line in prepared:
+    for line in prepare_math(lines):
         if line.startswith("$") and line.endswith("$"):
             fragments.append(line)
             continue
@@ -437,7 +559,9 @@ def display_math(lines):
         relation = re.match(r"^(.*[=∼≤≥<>])\s*(.*)$", line)
         if relation:
             left = relation.group(1)[:-1].strip()
-            if fragments and is_math_line(fragments[-1], 28) and is_math_line(left, 32) \
+            if re.search(r"\bd[txu]$", left) and any(r"\int" in part for part in fragments):
+                fragments.extend([left, relation.group(1)[-1]])
+            elif fragments and is_math_line(fragments[-1], 28) and is_math_line(left, 32) \
                     and "$" not in fragments[-1] and not OPERATOR_END_RE.search(fragments[-1]):
                 fragments.extend([left, relation.group(1)[-1]])
             else:
@@ -448,7 +572,12 @@ def display_math(lines):
             fragments.append("(")
             line = line[1:].strip()
         if line:
-            fragments.append(line)
+            # Le signe après un dénominateur appartient au terme suivant.
+            tail = re.match(r"^(.+?)\s+([+−-])$", line)
+            if tail and is_math_line(tail.group(1), 32):
+                fragments.extend(tail.groups())
+            else:
+                fragments.append(line)
 
     out, i = [], 0
     while i < len(fragments):
@@ -459,6 +588,7 @@ def display_math(lines):
         while den.endswith(")") and den.count(")") > den.count("("):
             den, closers = den[:-1].rstrip(), ")" + closers
         if "$" not in cur + den and is_math_line(cur, 28) and is_math_line(den, 32) \
+                and (not re.fullmatch(r"d[txu]", den) or re.fullmatch(r"d[A-Za-z]", cur)) \
                 and not OPERATOR_END_RE.search(cur) and not OPERATOR_END_RE.search(den):
             value = r"\dfrac{" + tex(cur) + "}{" + tex(den) + "}"
             i += 2
@@ -541,11 +671,11 @@ def ambiguous_formula(lines):
     return False
 
 
-def source_formula(lines):
+def source_formula(lines, language="pdf"):
     """Bloc littéral : aucune formule, liste ou balise n'est interprétée dedans."""
     width = max([2] + [len(m.group()) for line in lines for m in re.finditer(r"`+", line)]) + 1
     fence = "`" * width
-    return "\n".join([fence + "pdf", *lines, fence])
+    return "\n".join([fence + language, *lines, fence])
 
 
 def reflow(text):
@@ -571,6 +701,7 @@ def reflow(text):
     lines = [l for l in split if l]
 
     out, prose, formula = [], "", []
+    embedded_formula = False
     indent = ""
 
     def flush_prose():
@@ -580,8 +711,10 @@ def reflow(text):
             prose = ""
 
     def flush_formula(inline=False):
-        nonlocal prose
+        nonlocal prose, embedded_formula
         if formula:
+            embedded = embedded_formula
+            embedded_formula = False
             # Une parenthèse commencée dans la phrase n'est pas un nouveau
             # calcul : garder ce fragment avec sa prose, sans encadré isolé.
             if (prose or inline) and not balanced("".join(formula)) \
@@ -596,17 +729,27 @@ def reflow(text):
                 return
             # Réparer seulement ce calcul : aucune opération ne peut consommer
             # le titre ou le repère de la question suivante.
-            value = display_math(big_sums(repair_lines(formula.copy())))
+            repaired = big_sums(repair_lines(formula.copy()))
+            readable, shortened = readable_integral_steps(repaired)
+            if shortened and not readable:
+                flush_prose()
+                out.append("\n".join(indent + line for line in source_formula(formula).split("\n")))
+                formula.clear()
+                return
+            value = display_math(readable)
             scalar = len(formula) == 1 and re.fullmatch(r"[\wℝℕℤℂℚ⁰-⁹¹²³ⁿᵖ]+", formula[0])
             inline_expression = not any(command in value for command in (r"\begin", r"\sum", r"\prod", r"\lim"))
-            if (inline and inline_expression) or (scalar and prose):
+            embedded_expression = embedded and not any(command in value for command in (r"\begin", r"\int", r"\lim"))
+            if embedded_expression or (inline and inline_expression) or (scalar and prose):
                 prose = glue(prose, "$" + value + "$")
             else:
                 flush_prose()
                 out.append("\n".join(indent + l for l in ("$$\n" + value + "\n$$").split("\n")))
+            if shortened:
+                out.append("\n".join(indent + line for line in source_formula(formula, "pdf-steps").split("\n")))
             formula.clear()
 
-    for line in lines:
+    for line_number, line in enumerate(lines):
         heading = HEADING_RE.match(line)
         if heading:
             flush_formula()
@@ -642,6 +785,24 @@ def reflow(text):
         if prose and (BLOCK_START_RE.match(line) or ARROW_START_RE.match(line)
                       or re.match(r"^(?:On |En |Dans |Les .*sommes|Car |Donc |Ainsi )", line)):
             flush_prose()
+        # Une fraction commence parfois dans la prose et continue à la ligne :
+        # « La fonction f(t) = 1 » / « t ln t » / « est décroissante… ».
+        # Même cas pour « la série ∑n≥2 » / « 1 » / « n ln n ».
+        attached = re.search(r"(?<!\w)(?:[a-zA-Z]\([^()]+\)\s*=\s*.+|[∑∏].*)$", line)
+        if attached and attached.start() and math_only(attached.group()) \
+                and line_number + 1 < len(lines) and math_only(lines[line_number + 1]):
+            continuation = [attached.group()]
+            for following in lines[line_number + 1:]:
+                if not math_only(following):
+                    break
+                continuation.append(following)
+            # Si la parenthèse ferme dans la prose suivante, garder le chemin
+            # de recollage existant plutôt que créer un calcul tronqué.
+            if balanced("".join(continuation)):
+                prose = glue(prose, line[:attached.start()].strip())
+                formula.append(attached.group())
+                embedded_formula = True
+                continue
         # Les explications successives étaient souvent dans la même ligne PDF.
         phrases = re.split(r"(?<=[.!?])\s+(?=On |Donc |Ainsi |En posant )", line)
         for i, phrase in enumerate(phrases):
@@ -653,7 +814,7 @@ def reflow(text):
     return "\n\n".join(out).strip()
 
 
-KNOWN_CMDS = set(FUNCTION_TEX.values()) | set("""begin end setminus sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
+KNOWN_CMDS = set(FUNCTION_TEX.values()) | set("""begin end setminus sqrt dfrac sum prod int lim limits to infty in mathbb le ge sim approx neq partial times cdot
 Leftrightarrow Rightarrow sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
 lambda mu pi rho sigma tau varphi psi omega Omega""".split())
 

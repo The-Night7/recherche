@@ -67,3 +67,11 @@ test('source fences can contain shorter backtick sequences', () => {
   const html = render('````pdf\nsource ``` littérale\n````');
   assert.match(html, /<pre>source ``` littérale<\/pre>/);
 });
+
+test('uncertain intermediate steps are collapsed beside the readable calculation', () => {
+  const html = render('1. Calcul\n\n   $$\\int_0^1 dt = 1$$\n\n   ```pdf-steps\n   (ln t)\n   0\n   <script>danger</script>\n   ```');
+  assert.match(html, /class="math-block"/);
+  assert.match(html, /<details class="source-excerpt"><summary>Étapes intermédiaires à vérifier<\/summary>/);
+  assert.doesNotMatch(html, /<details[^>]*\bopen\b|<script>/);
+  assert.match(html, /&lt;script&gt;/);
+});
