@@ -108,13 +108,22 @@ function richText(text, terms){
 // Une question peut contenir plusieurs paragraphes, calculs et sous-listes.
 function renderMd(text, terms){
   const maths = [];
-  const protectedText = text.replace(MATH_RE, value => {
+  const sources = [];
+  // Protéger le texte source avant les maths : aucun symbole n'y est interprété.
+  const protectedText = text.replace(/^([ \t]*)(`{3,})(\w*)[^\S\n]*\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/gm,
+    (_, indent, fence, language, source) => {
+      const value = source.split('\n').map(line => line.startsWith(indent) ? line.slice(indent.length) : line).join('\n');
+      return indent + `\u0001${sources.push({language, value}) - 1}\u0001`;
+    }).replace(MATH_RE, value => {
     const id = maths.push(value) - 1;
     return `\u0000${id}\u0000`;
   });
   const restore = s => s.replace(/\u0000(\d+)\u0000/g, (_, i) => maths[Number(i)]);
   const inline = s => richText(restore(s), terms);
-  const item = line => line.match(/^(\s*)([-*]|\d+[.)])(?:\s+(.*)|$)/);
+  const item = line => line.match(/^(\s*)([-*]|\d+[.)]|[a-z]\))(?:\s+(.*)|$)/);
+  const listType = marker => /^[a-z]/.test(marker) ? 'a' : /^\d/.test(marker) ? '1' : null;
+  const listValue = marker => listType(marker) === 'a' ? marker.charCodeAt(0) - 96 : parseInt(marker, 10);
+  const sourceBlock = line => line.trim().match(/^\u0001(\d+)\u0001$/);
   const display = line => {
     const m = line.trim().match(/^\u0000(\d+)\u0000$/);
     return m && /^(\$\$|\\\[)/.test(maths[Number(m[1])]);
@@ -125,6 +134,12 @@ function renderMd(text, terms){
     while (i < lines.length){
       const line = lines[i];
       if (!line.trim()){ i++; continue; }
+      const source = sourceBlock(line);
+      if (source){
+        const {language, value} = sources[Number(source[1])];
+        out.push(`<div class="math-source">${language === 'pdf' ? '<p class="math-source-label">Formule extraite du PDF · à vérifier</p>' : ''}<pre>${escapeHtml(value)}</pre></div>`);
+        i++; continue;
+      }
       if (display(line)){
         out.push(`<div class="math-block">${escapeHtml(restore(line.trim()))}</div>`);
         i++; continue;
@@ -133,13 +148,14 @@ function renderMd(text, terms){
       if (h){ out.push(`<h4>${inline(h[1])}</h4>`); i++; continue; }
       const first = item(line);
       if (first){
-        const ordered = /^\d/.test(first[2]);
+        const type = listType(first[2]);
+        const ordered = type !== null;
         const tag = ordered ? 'ol' : 'ul';
         const indent = first[1].length;
-        out.push(ordered ? `<ol start="${parseInt(first[2], 10)}">` : '<ul>');
+        out.push(ordered ? `<ol${type === 'a' ? ' type="a"' : ''} start="${listValue(first[2])}">` : '<ul>');
         while (i < lines.length){
           const m = item(lines[i]);
-          if (!m || m[1].length !== indent || /^\d/.test(m[2]) !== ordered) break;
+          if (!m || m[1].length !== indent || listType(m[2]) !== type) break;
           const content = [m[3] || ''];
           const width = m[1].length + m[2].length + 1;
           i++;
@@ -150,7 +166,7 @@ function renderMd(text, terms){
             content.push(next.slice(Math.min(width, next.search(/\S/))));
             i++;
           }
-          out.push(`<li${ordered ? ` value="${parseInt(m[2], 10)}"` : ''}>${blocks(content)}</li>`);
+          out.push(`<li${ordered ? ` value="${listValue(m[2])}"` : ''}>${blocks(content)}</li>`);
         }
         out.push(`</${tag}>`);
         continue;
@@ -158,7 +174,7 @@ function renderMd(text, terms){
       const para = [line.trim()];
       i++;
       while (i < lines.length && lines[i].trim() && !item(lines[i])
-             && !/^#{1,6}\s/.test(lines[i]) && !display(lines[i])){
+             && !/^#{1,6}\s/.test(lines[i]) && !display(lines[i]) && !sourceBlock(lines[i])){
         para.push(lines[i++].trim());
       }
       out.push(`<p class="prose">${inline(para.join(' '))}</p>`);

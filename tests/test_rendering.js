@@ -41,3 +41,29 @@ test('highlighting leaves LaTeX intact and source HTML is escaped', () => {
   assert.match(html, /\$convergence_n\$/);
   assert.doesNotMatch(html, /<script>/);
 });
+
+test('lettered questions form one list with their full expression', () => {
+  const html = render('a)\n\n   $$\\lim_{x\\to0}\\frac{\\sin(x)}{x}$$\n\nb)\n\n   $$\\cosh(x)$$');
+  assert.match(html, /<ol type="a" start="1"><li value="1"><div class="math-block">.*<\/li><li value="2"><div class="math-block">/s);
+  assert.equal((html.match(/<ol/g) || []).length, 1);
+  assert.equal((html.match(/class="math-block"/g) || []).length, 2);
+  assert.doesNotMatch(html, /class="prose"/);
+});
+
+test('ambiguous PDF source stays in its question and is not reinterpreted', () => {
+  const html = render('a)\n\n   ```pdf\n   limx→0\n   $x$\n   ## titre\n   1. fragment\n   <script>danger</script>\n   ```\n\nb)\n\n   $$y=1$$', ['fragment']);
+  assert.match(html, /<li value="1"><div class="math-source">.*<pre>limx→0\n\$x\$\n## titre\n1\. fragment\n&lt;script&gt;/s);
+  assert.doesNotMatch(html, /<h4>|<script>|<mark>/);
+  assert.equal((html.match(/class="math-source"/g) || []).length, 1);
+  assert.match(html, /<li value="2"><div class="math-block">/);
+});
+
+test('numbered and lettered lists nest without changing their markers', () => {
+  const html = render('1. Question\n\n   a) Premier calcul\n\n      $$x=1$$\n\n   b) Deuxième calcul\n\n2. Suite');
+  assert.match(html, /<ol start="1">.*<ol type="a" start="1">.*<li value="2">.*<\/ol><\/li><li value="2">/s);
+});
+
+test('source fences can contain shorter backtick sequences', () => {
+  const html = render('````pdf\nsource ``` littérale\n````');
+  assert.match(html, /<pre>source ``` littérale<\/pre>/);
+});

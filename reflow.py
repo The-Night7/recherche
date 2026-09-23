@@ -22,20 +22,22 @@ C'est une heuristique : le texte indexé (chunks.json) n'est pas modifié.
 import re
 
 HEADING_RE = re.compile(
-    r"^(Exercice|R[ée]ponse|Question|Partie|Probl[èe]me)\s+\d+[a-z]?\b\s*[.:]?\s*(.*)$", re.I
+    r"^(Exercice|Ex\.|R[ée]ponse|Question|Partie|Probl[èe]me)\s*\d+[a-z]?\b\s*[.:]?\s*(.*)$", re.I
 )
 BLOCK_START_RE = re.compile(
     r"^(Remarques?|D[ée]finition|Th[ée]or[èe]me|Proposition|Propri[ée]t[ée]|Lemme|Corollaire|"
     r"D[ée]monstration|Preuve|Exemples?|G[ée]n[ée]ralisation|Indication|Rappel|Consignes?|"
     r"Attention|Notation|M[ée]thode|Conclusion|Solution)\b"
 )
-LIST_RE = re.compile(r"^(?:((?:0|[1-9]\d?))[.)]|\(?([a-h]|i{1,3}|iv|v|vi{0,3})\))\s+(\S.*)$")
+LIST_RE = re.compile(r"^(?:((?:0|[1-9]\d?))[.)]|\(?([a-h]|i{1,3}|iv|v|vi{0,3})\))(?:\s+(\S.*))?$")
 BULLET_RE = re.compile(r"^([—–•▶►]|-(?=\s))\s*(.*)$")
 ARROW_START_RE = re.compile(r"^[⇒⇐]\s")
 INLINE_ITEM_RE = re.compile(r"(?<=\S)\s+(?=\d{1,2}\.\s+(?:[a-zA-Z]{1,2}\w?(?:\(\w{1,3}\))?\s*=|∑))")
 
-MATH_WORDS = {"sin", "cos", "tan", "exp", "ln", "log", "lim", "sup", "inf", "max", "min",
-              "arctan", "arcsin", "arccos", "sh", "ch", "th", "cotan", "det", "si", "dt", "dx"}
+MATH_FUNCTIONS = {"sin", "cos", "tan", "exp", "ln", "log", "sinh", "cosh", "tanh",
+                  "arctan", "arcsin", "arccos", "sh", "ch", "th", "cotan", "det"}
+MATH_WORDS = MATH_FUNCTIONS | {"lim", "sup", "inf", "max", "min", "si", "dt", "dx"}
+FUNCTION_TEX = {name: name for name in MATH_FUNCTIONS} | {"sh": "sinh", "ch": "cosh", "th": "tanh", "cotan": "cot"}
 OPERATOR_END_RE = re.compile(r"(?:[=<>≤≥∼≈⇔⇒+−\-×·(,]|:=|\bet)\s*$")
 
 
@@ -51,6 +53,8 @@ def balanced(s):
 
 def is_math_line(s, maxlen=20):
     s = s.strip()
+    if HEADING_RE.match(s) or LIST_RE.match(s):
+        return False
     if not balanced(s) or re.search(r"[=→≠∼≤≥<>∑∏]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]|[a-z]?X", s) \
             or not re.search(r"[A-Za-z0-9α-ωΑ-Ω∂]", s):
         return False
@@ -90,7 +94,10 @@ def tex(s):
     s = re.sub(r"√\s*(\([^()]*\)|[A-Za-z0-9]+)", lambda m: r"\sqrt{" + m.group(1) + "}", s)
     s = re.sub("[" + "".join(SUP_CHARS) + "]+", lambda m: "^{" + "".join(SUP_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub("[" + "".join(SUB_CHARS) + "]+", lambda m: "_{" + "".join(SUB_CHARS[c] for c in m.group(0)) + "}", s)
-    s = re.sub(r"\b(sin|cos|tan|exp|ln|log|arctan)\b", r"\\\1 ", s)
+    functions = "|".join(sorted(MATH_FUNCTIONS, key=len, reverse=True))
+    s = re.sub(r"\b(" + functions + r")(\d+)(?=\()",
+               lambda m: "\\" + FUNCTION_TEX[m.group(1)] + "^{" + m.group(2) + "}", s)
+    s = re.sub(r"(?<![\\\w])(" + functions + r")\b", lambda m: "\\" + FUNCTION_TEX[m.group(1)] + " ", s)
     s = re.sub(r"(?<![A-Za-z\\])([a-zA-Z])([nkpij])(?![A-Za-z])", r"\1_\2", s)  # un -> u_n
     s = "".join(GREEK.get(ch, ch) for ch in s)
     return s
@@ -230,7 +237,6 @@ def big_sums(lines):
 SUP_OF = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
           "9": "⁹", "n": "ⁿ", "−": "⁻", "-": "⁻", "+": "⁺", "x": "ˣ", "k": "ᵏ", "p": "ᵖ", "t": "ᵗ"}
 UNSUP = {v: k for k, v in SUP_OF.items() if k != "-"}
-LONE_MARK_RE = re.compile(r"^(?:0|[1-9]\d?)[.)]$")
 
 
 def sup(s):
@@ -250,6 +256,10 @@ def repair_lines(lines):
         l = lines[i]
         nxt = lines[i + 1] if i + 1 < len(lines) else ""
         nxt2 = lines[i + 2] if i + 2 < len(lines) else ""
+        if l == "lim" and re.fullmatch(r"[a-z]\s*→\s*(?:[+−-]?∞|[+−-]?\d+[+−-]?)", nxt):
+            out.append(l + " " + nxt)
+            i += 2
+            continue
         # "ln 1 + e" ... ")" : parenthèse ouvrante perdue avec la grande parenthèse
         if re.search(r"\bln \d", l) and ")" in lines[i + 1:i + 4]:
             l = re.sub(r"\bln (\d)", r"ln(\1", l)
@@ -315,7 +325,10 @@ def glue(prev, frag):
 
 def math_only(line):
     """Reconnaître un calcul entier, sans envoyer la prose dans KaTeX."""
+    if HEADING_RE.match(line) or LIST_RE.match(line):
+        return False
     plain = re.sub(r"\$[^$]+\$|\\[a-zA-Z]+", "", line)
+    plain = LIM_RE.sub("", plain)
     if re.search(r"\b(?:en|on|de|le|la|les|est|et|qui|donc|où|ou|il|du|au|se|ce)\b", plain, re.I):
         return False
     return bool(line.strip()) and all(
@@ -430,6 +443,42 @@ def display_math(lines):
     return "\\begin{aligned}\n" + " \\\\\n".join(aligned) + "\n\\end{aligned}"
 
 
+def ambiguous_formula(lines):
+    """Repérer les extractions dont la géométrie manque pour choisir le LaTeX.
+
+    Un bloc ambigu reste entier et conserve ses lignes source. La validité
+    syntaxique d'un LaTeX inventé ne prouve pas que la formule est correcte.
+    """
+    if not balanced("".join(lines)) or "!" in lines:
+        return True
+    for i, line in enumerate(lines[:-1]):
+        following = lines[i + 1]
+        if line == "√" and re.search(r"[+−-]", following):
+            return True  # La longueur du trait de racine a disparu.
+        if re.search(r"[a-z]$", line) and re.fullmatch(r"\d+/\d+", following):
+            return True  # Puissance fractionnaire ou fraction indépendante ?
+    # Une limite suivie d'une fraction sur deux lignes est exploitable ;
+    # plusieurs niveaux supplémentaires ne donnent plus sa barre de fraction.
+    limit = LIM_RE.fullmatch(lines[0])
+    body = lines[1:]
+    if lines[0] == "lim" and len(lines) > 1:
+        limit = LIM_RE.fullmatch("lim " + lines[1])
+        body = lines[2:]
+    if limit and not limit.group(3) and not limit.group(4) and not any("=" in line or "∑" in line for line in body):
+        if len(body) > 2:
+            return True
+        if len(body) == 2 and not all(is_math_line(part, 500) for part in body):
+            return True
+    return False
+
+
+def source_formula(lines):
+    """Bloc littéral : aucune formule, liste ou balise n'est interprétée dedans."""
+    width = max([2] + [len(m.group()) for line in lines for m in re.finditer(r"`+", line)]) + 1
+    fence = "`" * width
+    return "\n".join([fence + "pdf", *lines, fence])
+
+
 def reflow(text):
     text = text.replace("̸=", "≠").replace("̸∼", "≁").replace("̸∈", "∉").replace("\u0338", "").replace("$", "＄")
     # La police PDF code parfois les primes par des zéros. Ne les restituer
@@ -449,7 +498,7 @@ def reflow(text):
         parts = re.split(r"\s+(?=(?:qui|avec|où|car|donc)\b|,\s*il\b)", line, maxsplit=1)
         mixed.extend(parts if len(parts) == 2 and math_only(parts[0]) else [line])
     split = mixed
-    lines = big_sums(repair_lines([l for l in split if l != ""]))
+    lines = [l for l in split if l]
 
     out, prose, formula = [], "", []
     indent = ""
@@ -463,9 +512,24 @@ def reflow(text):
     def flush_formula(inline=False):
         nonlocal prose
         if formula:
-            value = display_math(formula)
+            # Une parenthèse commencée dans la phrase n'est pas un nouveau
+            # calcul : garder ce fragment avec sa prose, sans encadré isolé.
+            if (prose or inline) and not balanced("".join(formula)) \
+                    and not any(re.search(r"[=≠≤≥∼∑∏]|\blim", part) for part in formula):
+                prose = glue(prose, inline_math(" ".join(formula)))
+                formula.clear()
+                return
+            if ambiguous_formula(formula):
+                flush_prose()
+                out.append("\n".join(indent + line for line in source_formula(formula).split("\n")))
+                formula.clear()
+                return
+            # Réparer seulement ce calcul : aucune opération ne peut consommer
+            # le titre ou le repère de la question suivante.
+            value = display_math(big_sums(repair_lines(formula.copy())))
             scalar = len(formula) == 1 and re.fullmatch(r"[\wℝℕℤℂℚ⁰-⁹¹²³ⁿᵖ]+", formula[0])
-            if (inline and len(value) < 140 and "\\begin" not in value) or (scalar and prose):
+            inline_expression = not any(command in value for command in (r"\begin", r"\sum", r"\prod", r"\lim"))
+            if (inline and inline_expression) or (scalar and prose):
                 prose = glue(prose, "$" + value + "$")
             else:
                 flush_prose()
@@ -479,20 +543,20 @@ def reflow(text):
             flush_prose()
             indent = ""
             title = line[:heading.start(2)].rstrip(" .:") if heading.group(2) else line.rstrip(" .:")
+            title = re.sub(r"^Ex\.\s*", "Exercice ", title, flags=re.I)
             out.append("#### " + title)
             prose = heading.group(2)
             continue
         item = LIST_RE.match(line)
-        lone = LONE_MARK_RE.match(line)
         bullet = BULLET_RE.match(line)
-        if item or lone:
+        if item:
             flush_formula()
             flush_prose()
-            num = (item.group(1) or item.group(2)) if item else line[:-1]
-            prefix = num + "." if num.isdigit() else "- **(" + num + ")**"
+            num = item.group(1) or item.group(2)
+            prefix = num + "." if num.isdigit() else num + ")" if len(num) == 1 else "- **(" + num + ")**"
             out.append(prefix)
-            indent = " " * (len(num) + 2 if num.isdigit() else 2)
-            line = item.group(3) if item else ""
+            indent = " " * (len(num) + 2 if len(num) == 1 or num.isdigit() else 2)
+            line = item.group(3) or ""
         elif bullet:
             flush_formula()
             flush_prose()
@@ -519,7 +583,7 @@ def reflow(text):
     return "\n\n".join(out).strip()
 
 
-KNOWN_CMDS = set("""begin end setminus sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
+KNOWN_CMDS = set(FUNCTION_TEX.values()) | set("""begin end setminus sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
 Leftrightarrow Rightarrow sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
 lambda mu pi rho sigma tau varphi psi omega Omega""".split())
 

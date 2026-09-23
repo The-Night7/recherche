@@ -440,7 +440,7 @@ def sections_exercises(text, qcm=False):
         body = text[m.start(): marks[i + 1].start() if i + 1 < len(marks) else len(text)].strip()
         # clé = début de l'énoncé seulement (les choix du QCM sont mélangés d'une copie à l'autre)
         key = re.sub(r"\s+", " ", body.split("\n", 1)[-1])[:70]
-        if key in seen:  # QCM : chaque copie d'étudiant répète les questions
+        if qcm and key in seen:  # QCM : chaque copie d'étudiant répète les questions
             continue
         seen.add(key)
         body = re.split(r"\n(?:②|\+\d+/\d+/\d+\+)", body)[0]  # cases à cocher AMC
@@ -509,13 +509,15 @@ def chunk_document(path, course):
         text = re.sub(r"\n{3,}", "\n\n", text)
         secs = (sections_exercises(text, qcm=meta["kind"] == "qcm")
                 if meta["kind"] != "cours" else sections_course_pdf(text))
-    secs = merge_small([(l, t) for l, t in secs if t.strip()])
+    secs = [(l, t) for l, t in secs if t.strip()]
+    if meta["kind"] == "cours":
+        secs = merge_small(secs)
     chunks = []
     for label, body in secs:
         # Un corrigé reste entier, même si ses calculs dépassent MAX_CHARS.
         parts = split_long(label, body) if meta["kind"] == "cours" else [(label, body)]
         for sub_label, sub in parts:
-            if len(sub.strip()) < 40:
+            if not sub.strip() or (meta["kind"] == "cours" and len(sub.strip()) < 40):
                 continue
             if sub_label.startswith("Diapos"):  # pas de titres : 1re ligne parlante
                 first = next((l.strip() for l in sub.split("\n") if len(l.strip()) > 12), "")

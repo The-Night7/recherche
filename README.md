@@ -37,6 +37,13 @@ dans l'index, même lorsqu'ils dépassent la taille habituelle d'un passage.
 Les expressions répétées dans les PDF sont conservées lors du nettoyage.
 La reconstruction reste heuristique : les formules dont l'extraction a perdu
 des symboles peuvent nécessiter une transcription Markdown/LaTeX.
+Les titres (`Ex.5`, `Exercice 5`…) et les questions (`a)`, `b)`, `1.`…)
+sont délimités avant la reconstruction des maths. Une limite reste avec son
+expression et un exercice court conserve son propre résultat de recherche.
+Les ambiguïtés détectées (portée d'une racine perdue, limite fragmentée…)
+affichent les lignes extraites dans un seul bloc « à vérifier », sans inventer
+de fraction. Une transcription du PDF permet de retrouver un rendu mathématique
+fiable pour ces passages.
 
 Après une modification du nettoyage, reconstruire les données avec
 `python3 ingest.py build`, puis redémarrer `python3 server.py`.
