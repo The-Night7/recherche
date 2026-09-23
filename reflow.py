@@ -15,7 +15,8 @@ page) :
     Remarque, Théorème, ⇒, ⇐, tirets, questions numérotées...) ;
   - les fractions empilées sont reconstruites en $\\dfrac{…}{…}$ ;
   - ∑n∈N un, lim n→+∞ un, fn(x), (un) passent en LaTeX ;
-  - les numéros de page isolés disparaissent.
+  - les calculs sont séparés de la prose, avec les égalités alignées ;
+  - les paragraphes et calculs restent dans leur question numérotée.
 C'est une heuristique : le texte indexé (chunks.json) n'est pas modifié.
 """
 import re
@@ -28,16 +29,14 @@ BLOCK_START_RE = re.compile(
     r"D[ée]monstration|Preuve|Exemples?|G[ée]n[ée]ralisation|Indication|Rappel|Consignes?|"
     r"Attention|Notation|M[ée]thode|Conclusion|Solution)\b"
 )
-LIST_RE = re.compile(r"^(?:(\d{1,2})[.)]|\(?([a-h]|i{1,3}|iv|v|vi{0,3})\))\s+(\S.*)$")
+LIST_RE = re.compile(r"^(?:((?:0|[1-9]\d?))[.)]|\(?([a-h]|i{1,3}|iv|v|vi{0,3})\))\s+(\S.*)$")
 BULLET_RE = re.compile(r"^([—–•▶►]|-(?=\s))\s*(.*)$")
 ARROW_START_RE = re.compile(r"^[⇒⇐]\s")
-PAGE_NUM_RE = re.compile(r"^\d{1,3}$")
 INLINE_ITEM_RE = re.compile(r"(?<=\S)\s+(?=\d{1,2}\.\s+(?:[a-zA-Z]{1,2}\w?(?:\(\w{1,3}\))?\s*=|∑))")
 
 MATH_WORDS = {"sin", "cos", "tan", "exp", "ln", "log", "lim", "sup", "inf", "max", "min",
               "arctan", "arcsin", "arccos", "sh", "ch", "th", "cotan", "det", "si", "dt", "dx"}
 OPERATOR_END_RE = re.compile(r"(?:[=<>≤≥∼≈⇔⇒+−\-×·(,]|:=|\bet)\s*$")
-EQ_TAIL_RE = re.compile(r"^(.*[=<>≤≥∼≈])\s*(\S{1,12})$")
 
 
 def balanced(s):
@@ -52,7 +51,7 @@ def balanced(s):
 
 def is_math_line(s, maxlen=20):
     s = s.strip()
-    if not balanced(s) or re.search(r"[=→≠∼≤≥<>]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]", s) \
+    if not balanced(s) or re.search(r"[=→≠∼≤≥<>∑∏]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]|[a-z]?X", s) \
             or not re.search(r"[A-Za-z0-9α-ωΑ-Ω∂]", s):
         return False
     if not s or len(s) > maxlen or s[0] in ".,;:" or HEADING_RE.match(s):
@@ -71,6 +70,7 @@ GREEK = {
     "∞": r"\infty ", "−": "-", "×": r"\times ", "·": r"\cdot ", "≤": r"\le ", "≥": r"\ge ",
     "∼": r"\sim ", "≈": r"\approx ", "≠": r"\neq ", "∈": r"\in ", "→": r"\to ", "∂": r"\partial ",
     "⇔": r"\Leftrightarrow ", "⇒": r"\Rightarrow ", "√": r"\surd ", "ᐟ": "/", "!": "!", "∗": "^*",
+    "∑": r"\sum ", "∏": r"\prod ",
 }
 SETS = {"N": r"\mathbb{N}", "Z": r"\mathbb{Z}", "R": r"\mathbb{R}", "C": r"\mathbb{C}", "Q": r"\mathbb{Q}"}
 
@@ -84,6 +84,9 @@ SUB_CHARS = {"₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "ₙ": 
 
 def tex(s):
     s = s.strip()
+    # Les fragments reçus ici sont du texte PDF, pas des commandes LaTeX.
+    s = s.replace("\\", r"\setminus ")
+    s = re.sub(r"[{}#%&]", lambda m: "\\" + m.group(0), s)
     s = re.sub(r"√\s*(\([^()]*\)|[A-Za-z0-9]+)", lambda m: r"\sqrt{" + m.group(1) + "}", s)
     s = re.sub("[" + "".join(SUP_CHARS) + "]+", lambda m: "^{" + "".join(SUP_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub("[" + "".join(SUB_CHARS) + "]+", lambda m: "_{" + "".join(SUB_CHARS[c] for c in m.group(0)) + "}", s)
@@ -91,10 +94,6 @@ def tex(s):
     s = re.sub(r"(?<![A-Za-z\\])([a-zA-Z])([nkpij])(?![A-Za-z])", r"\1_\2", s)  # un -> u_n
     s = "".join(GREEK.get(ch, ch) for ch in s)
     return s
-
-
-def frac(num, den):
-    return f"$\\dfrac{{{tex(num)}}}{{{tex(den)}}}$"
 
 
 SUM_RE = re.compile(r"([∑∏])\s*([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+)\s+(?!ln\b)([a-zA-Z])\2?(\([^()]{0,12}\))?(?![A-Za-z(])")
@@ -183,7 +182,8 @@ def inline_math(line):
         p = SUM_RE.sub(sum_term, p)
         p = SUM_BARE_RE.sub(lambda m: f"$\\{'sum' if m.group(1) == '∑' else 'prod'}_{{{m.group(2)}{sub_index(m.group(3))}}}$", p)
         p = LIM_RE.sub(lim, p)
-        p = FN_CALL_RE.sub(lambda m: f"${m.group(1)}_{m.group(2)}({m.group(3)})$", p)
+        p = FN_CALL_RE.sub(lambda m: m.group(0) if m.group(1) + m.group(2) in MATH_WORDS
+                           else f"${m.group(1)}_{m.group(2)}({m.group(3)})$", p)
         p = PAREN_SEQ_RE.sub(paren_seq, p)
         p = UN_OP_RE.sub(lambda m: f"${m.group(1) or m.group(3)}_{m.group(2) or m.group(4)}$", p)
         parts[i] = p
@@ -199,55 +199,38 @@ def inline_math(line):
 
 
 # ---------- recollage des lignes ----------
-BIG_SUM_RE = re.compile(r"^([+−-]?)\s*X\s*([+−-]?∞|[a-zA-Z0-9+−-]{1,4})$")
-SUM_LOW_RE = re.compile(r"^([a-z])\s*=\s*(\S{1,6})$")
-MATH_TAIL_TOKEN_RE = re.compile(r"^(?:[=<>≤≥∼≈⇔+−\-×·]|[α-ωΑ-Ω]|[a-zA-Z][nk]?(?:\(\w{1,3}\))?|\d+|[+−-]?∞)$")
-
-
-def split_math_tail(cur):
-    """'On en déduit que vn =' -> ('On en déduit que', 'vn =')"""
-    toks = cur.rstrip().split(" ")
-    j = len(toks)
-    while j > 0 and MATH_TAIL_TOKEN_RE.match(toks[j - 1]):
-        j -= 1
-    # au moins une variable avant l'opérateur, sinon on ne prend que l'opérateur
-    tail = toks[j:]
-    if len(tail) < 2:
-        return " ".join(toks[:-1]), toks[-1]
-    return " ".join(toks[:j]), " ".join(tail)
+SUM_LOW_RE = re.compile(r"^([a-z](?:0{1,3}|⁰{1,3}|'{1,3})?)\s*=\s*(\S{1,6})$")
 
 
 def big_sums(lines):
     out, i = [], 0
     while i < len(lines):
-        # "f(x) = X" / "+∞" / "n=0"  (le Σ du PDF est extrait comme un X)
-        if lines[i].endswith(" X") and i + 2 < len(lines) \
-                and re.fullmatch(r"[+−-]?∞|[a-zA-Z0-9+−-]{1,4}", lines[i + 1]) and SUM_LOW_RE.match(lines[i + 2]):
-            low = SUM_LOW_RE.match(lines[i + 2])
-            out.append(lines[i][:-1] + f"$\\sum_{{{low.group(1)}={tex(low.group(2))}}}^{{{tex(lines[i + 1])}}}$")
-            i += 3
-            continue
-        m = BIG_SUM_RE.match(lines[i])
-        low = SUM_LOW_RE.match(lines[i + 1]) if m and i + 1 < len(lines) else None
-        if low:
-            up = m.group(1) + m.group(2)
-            out.append(f"$\\sum_{{{low.group(1)}={tex(low.group(2))}}}^{{{tex(up)}}}$")
-            i += 2
-            continue
+        # Le signe somme peut être collé à la formule précédente, et sa
+        # borne supérieure apparaît soit après X, soit de part et d'autre.
+        m = re.search(r"(?:X([+−-]?∞|[a-zA-Z0-9+−-]{1,4})|([a-z])X([+−-]\d+)|([a-z]?)X|∑)$", lines[i])
+        if m:
+            upper = m.group(1) or ((m.group(2) or "") + (m.group(3) or ""))
+            low_pos = i + 1
+            if not upper and low_pos < len(lines) and re.fullmatch(r"[+−-]?∞|[a-zA-Z0-9+−-]{1,4}", lines[low_pos]):
+                upper = (m.group(4) or "") + lines[low_pos]
+                low_pos += 1
+            low = SUM_LOW_RE.match(lines[low_pos]) if low_pos < len(lines) else None
+            if upper and low:
+                prefix = lines[i][:m.start()].strip()
+                if prefix:
+                    out.append(prefix)
+                out.append(f"$\\sum_{{{tex(low.group(1))}={tex(low.group(2))}}}^{{{tex(upper)}}}$")
+                i = low_pos + 1
+                continue
         out.append(lines[i])
         i += 1
     return out
 
 
-PARTIAL_RE = re.compile(r"^(∂\S{0,4}|d[a-zA-Z]{0,2})$")
-POINT_RE = re.compile(r"^[a-zA-Z0-9]{1,2}(,[a-zA-Z0-9]{1,2}){1,3}$")
-
-
 SUP_OF = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
           "9": "⁹", "n": "ⁿ", "−": "⁻", "-": "⁻", "+": "⁺", "x": "ˣ", "k": "ᵏ", "p": "ᵖ", "t": "ᵗ"}
 UNSUP = {v: k for k, v in SUP_OF.items() if k != "-"}
-LONE_MARK_RE = re.compile(r"^\d{1,2}[.)]$")
-REL_RE = re.compile(r"\s*(→|≠|=|∼|≤|≥|<|>)")
+LONE_MARK_RE = re.compile(r"^(?:0|[1-9]\d?)[.)]$")
 
 
 def sup(s):
@@ -267,15 +250,9 @@ def repair_lines(lines):
         l = lines[i]
         nxt = lines[i + 1] if i + 1 < len(lines) else ""
         nxt2 = lines[i + 2] if i + 2 < len(lines) else ""
-        nxt3 = lines[i + 3] if i + 3 < len(lines) else ""
         # "ln 1 + e" ... ")" : parenthèse ouvrante perdue avec la grande parenthèse
         if re.search(r"\bln \d", l) and ")" in lines[i + 1:i + 4]:
             l = re.sub(r"\bln (\d)", r"ln(\1", l)
-        # quatre petits nombres empilés : "2" "4" "7" "3" = 2⁴/7³
-        if all(re.fullmatch(r"\d{1,2}", x) for x in (l, nxt, nxt2, nxt3)):
-            out.append(f"$\\dfrac{{{l}^{{{nxt}}}}}{{{nxt2}^{{{nxt3}}}}}$")
-            i += 4
-            continue
         # exposant fractionnaire : "n¹" / "2" = n^(1/2)
         if l.endswith("¹") and nxt in ("2", "n"):
             lines[i + 1] = l + "ᐟ" + SUP_OF[nxt]
@@ -309,7 +286,7 @@ def repair_lines(lines):
             i += 1
             continue
         # exposant 1/n empilé : "ne" / "1" / "n − n"  ou  "e¹" / "n − 1"
-        if re.search(r"e$", l) and nxt == "1" and re.match(r"^n\b", nxt2):
+        if re.search(r"(?:^|[\s(+−-]|\d)e$", l) and nxt == "1" and re.match(r"^n\b", nxt2):
             out.append(l[:-1] + "e¹ᐟⁿ" + nxt2[1:])
             i += 3
             continue
@@ -328,110 +305,6 @@ def repair_lines(lines):
     return out
 
 
-def split_rel(line):
-    """'n2 → 1 ≠ 0 donc...' -> ('n2', ' → 1 ≠ 0 donc...') si le début est une petite formule"""
-    m = REL_RE.search(line)
-    if not m or m.start() == 0:
-        return None
-    head = line[:m.start()]
-    return (head, line[m.start():]) if is_math_line(head, 14) else None
-
-
-SUM_TAIL_RE = re.compile(r"∑\s*(?:([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+))?$")
-
-
-def lone_frac(cur, num, den):
-    """'1.' ou '2. ∑' ou '3. ∑n∈N' suivi d'une fraction"""
-    m = SUM_TAIL_RE.search(cur)
-    if m:
-        pre = cur[:m.start()].rstrip()
-        op = r"\sum" + (f"_{{{m.group(1)}{sub_index(m.group(2))}}}" if m.group(1) else "") + " "
-    else:
-        pre, op = cur, ""
-    return (pre + " " if pre else "") + f"${op}\\dfrac{{{tex(num)}}}{{{tex(den)}}}$"
-
-
-def rebuild_fractions(lines):
-    out, i = [], 0
-    while i < len(lines):
-        cur = lines[i]
-        nxt = lines[i + 1] if i + 1 < len(lines) else None
-        nxt2 = lines[i + 2] if i + 2 < len(lines) else None
-        # dérivée partielle empilée : "∂f" / "∂x" / "x,y"
-        if cur.startswith("∂") and PARTIAL_RE.match(cur) and nxt and nxt.startswith("∂") and PARTIAL_RE.match(nxt):
-            f = f"\\dfrac{{{tex(cur)}}}{{{tex(nxt)}}}"
-            skip = 2
-            if nxt2 and POINT_RE.match(nxt2):
-                f += f"({nxt2})"
-                skip = 3
-            out.append(f"${f}$")
-            i += skip
-            continue
-        # "vn =" / "un" / "1 + un"  ->  vn = frac(un, 1 + un)
-        if "$" in cur or (nxt and "$" in nxt) or (nxt2 and "$" in nxt2):
-            out.append(cur)
-            i += 1
-            continue
-        lone = LONE_MARK_RE.match(cur) or SUM_TAIL_RE.search(cur)
-        if nxt is not None and nxt2 is not None and (lone or OPERATOR_END_RE.search(cur)) \
-                and is_math_line(nxt, 14) and not is_math_line(nxt2, 18) and split_rel(nxt2) \
-                and not LIST_RE.match(nxt) and not OPERATOR_END_RE.search(nxt):
-            den, rest = split_rel(nxt2)
-            if lone:
-                out.append(lone_frac(cur, nxt, den) + rest)
-            else:
-                head, tail = split_math_tail(cur)
-                out.append((head + " " if head else "") + f"${tex(tail)} \\dfrac{{{tex(nxt)}}}{{{tex(den)}}}$" + rest)
-            i += 3
-            continue
-        if nxt is not None and nxt2 is not None and lone \
-                and is_math_line(nxt, 14) and is_math_line(nxt2, 18) and not LIST_RE.match(nxt2):
-            out.append(lone_frac(cur, nxt, nxt2))
-            i += 3
-            continue
-        if nxt is not None and nxt2 is not None and OPERATOR_END_RE.search(cur) \
-                and is_math_line(nxt, 14) and is_math_line(nxt2, 18) \
-                and not LIST_RE.match(nxt) and not LIST_RE.match(nxt2) and not nxt.startswith("∂") \
-                and not OPERATOR_END_RE.search(nxt):
-            head, tail = split_math_tail(cur)
-            f = f"{tex(tail)} \\dfrac{{{tex(nxt)}}}{{{tex(nxt2)}}}"
-            out.append((head + " " if head else "") + f"${f}$")
-            i += 3
-            continue
-        # "fn(x) = 1" / "1 + n2x"  ->  fn(x) = frac(1, 1 + n2x)
-        m = EQ_TAIL_RE.match(cur.rstrip())
-        if m and nxt is not None and is_math_line(m.group(2), 12) and is_math_line(nxt, 14) \
-                and not m.group(2).endswith((".", ",", ";")) and not LIST_RE.match(nxt) \
-                and not PAGE_NUM_RE.match(nxt) and not HEADING_RE.match(nxt):
-            den, skip = nxt, 2
-            if nxt2 is not None and re.fullmatch(r"\d", nxt2.strip()):
-                den, skip = nxt + "^" + nxt2.strip(), 3  # exposant resté seul sur sa ligne
-            elif nxt2 is not None and is_math_line(nxt2, 6) and nxt2.strip()[:1] not in ".,;":
-                out.append(cur)
-                i += 1
-                continue
-            head, tail = split_math_tail(m.group(1))
-            out.append((head + " " if head else "") + f"${tex(tail)} \\dfrac{{{tex(m.group(2))}}}{{{tex(den)}}}$")
-            i += skip
-            continue
-        out.append(cur)
-        i += 1
-    return out
-
-
-def mark_options(lines):
-    """propositions de QCM : lignes consécutives qui commencent pareil
-    ("converge uniformément sur ...") -> puces"""
-    key = [" ".join(l.split()[:2]).lower()
-           if len(l.split()) >= 3 and len(l) < 90 and re.match(r"[A-Za-zÀ-ÿ]{3,}\s", l) else None
-           for l in lines]
-    out = []
-    for j, l in enumerate(lines):
-        same = key[j] and ((j > 0 and key[j - 1] == key[j]) or (j + 1 < len(lines) and key[j + 1] == key[j]))
-        out.append("- " + l if same and not BULLET_RE.match(l) and not LIST_RE.match(l) else l)
-    return out
-
-
 def glue(prev, frag):
     if not prev:
         return frag
@@ -440,87 +313,213 @@ def glue(prev, frag):
     return prev + " " + frag
 
 
+def math_only(line):
+    """Reconnaître un calcul entier, sans envoyer la prose dans KaTeX."""
+    plain = re.sub(r"\$[^$]+\$|\\[a-zA-Z]+", "", line)
+    if re.search(r"\b(?:en|on|de|le|la|les|est|et|qui|donc|où|ou|il|du|au|se|ce)\b", plain, re.I):
+        return False
+    return bool(line.strip()) and all(
+        w.lower() in MATH_WORDS for w in re.findall(r"[A-Za-zÀ-ÿ]{3,}", plain)
+    )
+
+
+def equality_at(text):
+    """Position du signe égal hors des indices et arguments LaTeX."""
+    depth = 0
+    for i, char in enumerate(text):
+        depth += char == "{"
+        depth -= char == "}"
+        if char == "=" and depth == 0:
+            return i
+    return -1
+
+
+def display_math(lines):
+    """Restituer les fractions empilées dans un calcul isolé de la prose.
+
+    On garde les frontières des lignes jusqu'à la reconstruction : elles
+    distinguent un numérateur de son dénominateur. Les indices des sommes
+    sont déjà protégés par big_sums().
+    """
+    prepared = []
+    for line in lines:
+        # Les sommes restaurées à l'import peuvent partager la ligne du terme.
+        line = re.sub(r"∑(_\{[^{}]+\})(\^\{[^{}]+\})?",
+                      lambda m: "$\\sum" + m.group(1) + (m.group(2) or "") + "$", line)
+        prepared.extend(part.strip() for part in re.split(r"(\$[^$]+\$)", line) if part.strip())
+    fragments = []
+    for line in prepared:
+        if line.startswith("$") and line.endswith("$"):
+            fragments.append(line)
+            continue
+        # Séparer une relation de la fraction qui la suit ("un = 1" / "n").
+        relation = re.match(r"^(.*[=∼≤≥<>])\s*(.*)$", line)
+        if relation:
+            left = relation.group(1)[:-1].strip()
+            if fragments and is_math_line(fragments[-1], 28) and is_math_line(left, 32) \
+                    and "$" not in fragments[-1] and not OPERATOR_END_RE.search(fragments[-1]):
+                fragments.extend([left, relation.group(1)[-1]])
+            else:
+                fragments.append(relation.group(1).strip())
+            line = relation.group(2).strip()
+        # Une grande parenthèse peut être sur la ligne du numérateur.
+        if line.startswith("(") and not balanced(line):
+            fragments.append("(")
+            line = line[1:].strip()
+        if line:
+            fragments.append(line)
+
+    out, i = [], 0
+    while i < len(fragments):
+        cur = fragments[i]
+        nxt = fragments[i + 1] if i + 1 < len(fragments) else ""
+        # Extraire seulement les parenthèses fermantes excédentaires du dénominateur.
+        den, closers = nxt, ""
+        while den.endswith(")") and den.count(")") > den.count("("):
+            den, closers = den[:-1].rstrip(), ")" + closers
+        if "$" not in cur + den and is_math_line(cur, 28) and is_math_line(den, 32) \
+                and not OPERATOR_END_RE.search(cur) and not OPERATOR_END_RE.search(den):
+            value = r"\dfrac{" + tex(cur) + "}{" + tex(den) + "}"
+            i += 2
+            # (1/2)/n, issu de trois niveaux empilés dans le PDF.
+            third = fragments[i] if i < len(fragments) else ""
+            third_den = third.rstrip(")").strip()
+            if not closers and cur.isdigit() and den.isdigit() and re.match(r"^[a-z]\b", third_den) \
+                    and is_math_line(third_den, 20) and not OPERATOR_END_RE.search(third_den):
+                factor = "(" + tex(third_den) + ")" if re.search(r"[+−-]", third_den) else tex(third_den)
+                value = r"\dfrac{" + tex(cur) + "}{" + tex(den) + factor + "}"
+                closers = third[len(third_den):]
+                i += 1
+            out.append(value + closers)
+            continue
+        converted = inline_math(cur)
+        parts = re.split(r"(\$[^$]+\$)", converted)
+        out.append("".join(p[1:-1] if j % 2 else tex(p) for j, p in enumerate(parts)))
+        i += 1
+
+    # Une égalité par ligne : les longues chaînes de calcul ne repoussent plus
+    # l'explication jusqu'au bord de la carte.
+    rows, current = [], ""
+    for part in out:
+        if part.startswith("=") and current and not current.endswith(("=", "+", "-")):
+            rows.append(current)
+            current = part
+        elif equality_at(part) >= 0 and current and not current.endswith(("=", "+", "-", "(")) \
+                and not part.startswith("\\sum"):
+            # Le symbole de somme immédiatement précédent appartient au membre gauche.
+            tail = re.search(r"\\sum_\{[^{}]+\}\^\{[^{}]+\}$", current)
+            if tail and "\\lim" in current[:tail.start()]:
+                current = glue(current, part)
+            elif tail:
+                if current[:tail.start()].strip():
+                    rows.append(current[:tail.start()].strip())
+                current = current[tail.start():] + " " + part
+            else:
+                rows.append(current)
+                current = part
+        else:
+            current = glue(current, part)
+    if current:
+        rows.append(current)
+    if len(rows) == 1:
+        return rows[0]
+    aligned = []
+    for row in rows:
+        pos = equality_at(row)
+        aligned.append(row[:pos] + "&" + row[pos:] if pos >= 0 else "&" + row)
+    return "\\begin{aligned}\n" + " \\\\\n".join(aligned) + "\n\\end{aligned}"
+
+
 def reflow(text):
     text = text.replace("̸=", "≠").replace("̸∼", "≁").replace("̸∈", "∉").replace("\u0338", "").replace("$", "＄")
+    # La police PDF code parfois les primes par des zéros. Ne les restituer
+    # que pour un indice explicitement introduit par un changement de variable.
+    shifted = re.findall(r"(?:on pose|En posant)\s+([a-z])\s*([0⁰]{1,3})\s*=\s*\1\s*[+−-]\s*\d", text)
+    for variable, zeros in sorted(set(shifted), key=lambda x: -len(x[1])):
+        text = re.sub(r"\b" + variable + r"\s*[0⁰]{" + str(len(zeros)) + r"}(?![\w⁰])",
+                      variable + "'" * len(zeros), text)
     lines = [l.strip() for l in text.split("\n")]
-    # numéros de page : seuls sur leur ligne, en fin de passage ou entre deux phrases
-    kept = []
-    for j, l in enumerate(lines):
-        if PAGE_NUM_RE.match(l):
-            prev = next((x for x in reversed(kept) if x), "")
-            after = next((x for x in lines[j + 1:] if x), "")
-            if not after or (prev.endswith((".", "?", "!", ":")) and (not after or after[:1].isupper())):
-                continue
-        kept.append(l)
     split = []
-    for l in kept:  # mise en page sur deux colonnes : "n(n + 1) 2. un ="
+    for l in lines:  # mise en page sur deux colonnes : "n(n + 1) 2. un ="
         split += [x.strip() for x in INLINE_ITEM_RE.split(l)] if l else [l]
-    lines = rebuild_fractions(big_sums(repair_lines([l for l in split if l != ""])))
-    lines = mark_options(lines)
+    # Une équation peut commencer sur la même ligne qu'une fin d'explication.
+    split = [part for line in split for part in re.split(r"(?<=[.!?])\s+(?=∑|[a-z]?X|[a-z][nk]\s*=)", line)]
+    mixed = []
+    for line in split:
+        parts = re.split(r"\s+(?=(?:qui|avec|où|car|donc)\b|,\s*il\b)", line, maxsplit=1)
+        mixed.extend(parts if len(parts) == 2 and math_only(parts[0]) else [line])
+    split = mixed
+    lines = big_sums(repair_lines([l for l in split if l != ""]))
 
-    paras, cur, cur_is_list = [], "", False
-    prev_line = ""
+    out, prose, formula = [], "", []
+    indent = ""
 
-    def flush():
-        nonlocal cur, cur_is_list
-        if cur:
-            paras.append(("li" if cur_is_list else "p", cur))
-        cur, cur_is_list = "", False
+    def flush_prose():
+        nonlocal prose
+        if prose:
+            out.append(indent + inline_math(prose))
+            prose = ""
 
-    for l in lines:
-        pl, prev_line = prev_line, l
-        h = HEADING_RE.match(l)
-        if h:
-            flush()
-            title = l[:h.start(2)].rstrip(" .:") if h.group(2) else l.rstrip(" .:")
-            paras.append(("h", title))
-            if h.group(2):
-                cur = h.group(2)
-            continue
-        if LONE_MARK_RE.match(l):
-            flush()
-            cur, cur_is_list = l[:-1] + ".", True
-            continue
-        lm = LIST_RE.match(l)
-        bm = BULLET_RE.match(l)
-        if lm and (lm.group(1) is None or int(lm.group(1)) <= 30):
-            flush()
-            num = lm.group(1) or lm.group(2)
-            cur, cur_is_list = (f"{num}. " if lm.group(1) else f"({num}) ") + lm.group(3), True
-            continue
-        if bm or ARROW_START_RE.match(l) or BLOCK_START_RE.match(l):
-            flush()
-            if bm:
-                cur, cur_is_list = "- " + bm.group(2), True
+    def flush_formula(inline=False):
+        nonlocal prose
+        if formula:
+            value = display_math(formula)
+            scalar = len(formula) == 1 and re.fullmatch(r"[\wℝℕℤℂℚ⁰-⁹¹²³ⁿᵖ]+", formula[0])
+            if (inline and len(value) < 140 and "\\begin" not in value) or (scalar and prose):
+                prose = glue(prose, "$" + value + "$")
             else:
-                cur = l
+                flush_prose()
+                out.append("\n".join(indent + l for l in ("$$\n" + value + "\n$$").split("\n")))
+            formula.clear()
+
+    for line in lines:
+        heading = HEADING_RE.match(line)
+        if heading:
+            flush_formula()
+            flush_prose()
+            indent = ""
+            title = line[:heading.start(2)].rstrip(" .:") if heading.group(2) else line.rstrip(" .:")
+            out.append("#### " + title)
+            prose = heading.group(2)
             continue
-        # fin de paragraphe probable : ligne précédente courte terminée par un point
-        if cur and not cur_is_list and pl.endswith((".", ":")) and len(pl) < 55 \
-                and l[:1].isupper():
-            flush()
-        cur = glue(cur, l)
-    flush()
+        item = LIST_RE.match(line)
+        lone = LONE_MARK_RE.match(line)
+        bullet = BULLET_RE.match(line)
+        if item or lone:
+            flush_formula()
+            flush_prose()
+            num = (item.group(1) or item.group(2)) if item else line[:-1]
+            prefix = num + "." if num.isdigit() else "- **(" + num + ")**"
+            out.append(prefix)
+            indent = " " * (len(num) + 2 if num.isdigit() else 2)
+            line = item.group(3) if item else ""
+        elif bullet:
+            flush_formula()
+            flush_prose()
+            # Les puces d'une correction restent dans la question en cours.
+            out.append(indent + "- " + inline_math(bullet.group(2)))
+            continue
+        if not line:
+            continue
+        if math_only(line):
+            formula.append(line)
+            continue
+        flush_formula(inline=bool(re.match(r"^(?:qui |où |avec |,|\.)", line)))
+        if prose and (BLOCK_START_RE.match(line) or ARROW_START_RE.match(line)
+                      or re.match(r"^(?:On |En |Dans |Les .*sommes|Car |Donc |Ainsi )", line)):
+            flush_prose()
+        # Les explications successives étaient souvent dans la même ligne PDF.
+        phrases = re.split(r"(?<=[.!?])\s+(?=On |Donc |Ainsi |En posant )", line)
+        for i, phrase in enumerate(phrases):
+            if i:
+                flush_prose()
+            prose = glue(prose, phrase)
+    flush_formula()
+    flush_prose()
+    return "\n\n".join(out).strip()
 
-    out, prev_kind = [], None
-    for kind, t in paras:
-        t = inline_math(t)
-        if kind == "h":
-            out.append(f"\n#### {t}\n")
-        elif kind == "li":
-            if t[0].isdigit() or t.startswith("- "):
-                out.append(("" if prev_kind == "li" else "\n") + t)
-                prev_kind = kind
-                continue
-            out.append("\n" + t + "\n")  # (a) : paragraphe simple
-        else:
-            out.append("\n" + t + "\n")
-        prev_kind = kind
-    md = "\n".join(out)
-    return re.sub(r"\n{3,}", "\n\n", md).strip()
 
-
-KNOWN_CMDS = set("""sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
+KNOWN_CMDS = set("""begin end setminus sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
 Leftrightarrow Rightarrow sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
 lambda mu pi rho sigma tau varphi psi omega Omega""".split())
 
@@ -556,7 +555,7 @@ def detex(t):
 
 
 def sanitize(md):
-    return re.sub(r"\$([^$]+)\$", lambda m: m.group(0) if valid_tex(m.group(1)) else detex(m.group(1)), md)
+    return re.sub(r"(\$\$|\$)([^$]+)\1", lambda m: m.group(0) if valid_tex(m.group(2)) else detex(m.group(2)), md)
 
 
 def to_md_blocks(text):

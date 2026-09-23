@@ -185,13 +185,21 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .prose{ margin:0 0 12px; font-family:var(--serif); font-size:16.5px; line-height:1.72; }
 .prose:last-child{ margin-bottom:0; }
 .md{ font-family:var(--serif); font-size:16.5px; line-height:1.72; }
-.md h4{ font-family:var(--sans); font-size:14px; font-weight:600; color:var(--c, var(--accent)); margin:16px 0 6px; }
+.md h4{ font-family:var(--sans); font-size:14px; font-weight:600; color:var(--c, var(--accent)); margin:28px 0 14px; }
 .md h4:first-child{ margin-top:0; }
 .md ul, .md ol{ margin:0 0 12px; padding-left:24px; font:inherit; }
-.md li{ margin:4px 0; font:inherit; }
+.md li{ margin:12px 0; padding-left:4px; min-width:0; font:inherit; }
+.md ol > li + li{ margin-top:22px; }
+.md li > .prose{ margin-bottom:10px; }
+.md li > :last-child{ margin-bottom:0; }
+.md li > ul, .md li > ol{ margin-top:12px; }
 .md li::marker{ color:var(--c, var(--ink-soft)); }
 .katex{ font-size:1.06em; }
-.katex-display{ overflow-x:auto; overflow-y:hidden; padding:6px 0; margin:.6em 0; }
+.math-block{ margin:16px 0; padding:10px 14px; background:var(--sheet2); border-radius:6px; min-width:0; overflow-x:auto; }
+.katex-display{ overflow-x:auto; overflow-y:hidden; padding:8px 0; margin:.6em 0; text-align:left; }
+.katex-display > .katex{ text-align:left; }
+.math-block .katex-display{ margin:0; }
+.math-block + .prose{ margin-top:14px; }
 
 .formula{
   margin:12px 0; padding:12px 16px; background:var(--sheet2);

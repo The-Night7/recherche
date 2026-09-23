@@ -104,32 +104,84 @@ function richText(text, terms){
     i % 2 ? escapeHtml(part) : inlineMd(highlightPlain(part, terms))
   ).join('');
 }
-// mini-Markdown : titres, listes, paragraphes
+// Mini-Markdown : les formules sont protégées avant le découpage en blocs.
+// Une question peut contenir plusieurs paragraphes, calculs et sous-listes.
 function renderMd(text, terms){
-  const out = []; let list = null;
-  const closeList = () => { if (list) { out.push(`</${list}>`); list = null; } };
-  text.split(/\n\s*\n/).forEach(para => {
-    const lines = para.split('\n');
-    if (lines.every(l => /^\s*([-*]|\d+[.)])\s+/.test(l) || /^\s{2,}\S/.test(l))) {
-      lines.forEach(l => {
-        const m = l.match(/^\s*([-*]|\d+[.)])\s+(.*)$/);
-        if (!m) { if (out.length) out[out.length - 1] = out[out.length - 1].replace(/<\/li>$/, ' ' + richText(l.trim(), terms) + '</li>'); return; }
-        const tag = /\d/.test(m[1]) ? 'ol' : 'ul';
-        if (list !== tag) {
-          closeList(); list = tag;
-          out.push(tag === 'ol' ? `<ol start="${parseInt(m[1], 10) || 1}">` : '<ul>');
-        }
-        out.push(`<li>${richText(m[2], terms)}</li>`);
-      });
-      return;
-    }
-    closeList();
-    const h = para.match(/^#{1,6}\s+(.*)$/);
-    if (h && lines.length === 1) { out.push(`<h4>${richText(h[1].replace(/\*\*/g, ''), terms)}</h4>`); return; }
-    out.push(`<p class="prose">${richText(para.replace(/\n/g, ' '), terms)}</p>`);
+  const maths = [];
+  const protectedText = text.replace(MATH_RE, value => {
+    const id = maths.push(value) - 1;
+    return `\u0000${id}\u0000`;
   });
-  closeList();
-  return `<div class="md">${out.join('')}</div>`;
+  const restore = s => s.replace(/\u0000(\d+)\u0000/g, (_, i) => maths[Number(i)]);
+  const inline = s => richText(restore(s), terms);
+  const item = line => line.match(/^(\s*)([-*]|\d+[.)])(?:\s+(.*)|$)/);
+  const display = line => {
+    const m = line.trim().match(/^\u0000(\d+)\u0000$/);
+    return m && /^(\$\$|\\\[)/.test(maths[Number(m[1])]);
+  };
+  function blocks(lines){
+    const out = [];
+    let i = 0;
+    while (i < lines.length){
+      const line = lines[i];
+      if (!line.trim()){ i++; continue; }
+      if (display(line)){
+        out.push(`<div class="math-block">${escapeHtml(restore(line.trim()))}</div>`);
+        i++; continue;
+      }
+      const h = line.match(/^#{1,6}\s+(.+)$/);
+      if (h){ out.push(`<h4>${inline(h[1])}</h4>`); i++; continue; }
+      const first = item(line);
+      if (first){
+        const ordered = /^\d/.test(first[2]);
+        const tag = ordered ? 'ol' : 'ul';
+        const indent = first[1].length;
+        out.push(ordered ? `<ol start="${parseInt(first[2], 10)}">` : '<ul>');
+        while (i < lines.length){
+          const m = item(lines[i]);
+          if (!m || m[1].length !== indent || /^\d/.test(m[2]) !== ordered) break;
+          const content = [m[3] || ''];
+          const width = m[1].length + m[2].length + 1;
+          i++;
+          while (i < lines.length){
+            const next = lines[i];
+            if (!next.trim()){ content.push(''); i++; continue; }
+            if (next.search(/\S/) <= indent) break;
+            content.push(next.slice(Math.min(width, next.search(/\S/))));
+            i++;
+          }
+          out.push(`<li${ordered ? ` value="${parseInt(m[2], 10)}"` : ''}>${blocks(content)}</li>`);
+        }
+        out.push(`</${tag}>`);
+        continue;
+      }
+      const para = [line.trim()];
+      i++;
+      while (i < lines.length && lines[i].trim() && !item(lines[i])
+             && !/^#{1,6}\s/.test(lines[i]) && !display(lines[i])){
+        para.push(lines[i++].trim());
+      }
+      out.push(`<p class="prose">${inline(para.join(' '))}</p>`);
+    }
+    return out.join('');
+  }
+  const lines = [];
+  for (const line of protectedText.split('\n')){
+    const parts = line.split(/(\u0000\d+\u0000)/);
+    if (!parts.some(display)){ lines.push(line); continue; }
+    const m = item(line);
+    const indent = m ? ' '.repeat(m[1].length + m[2].length + 1) : line.match(/^\s*/)[0];
+    let pending = '';
+    for (const part of parts){
+      if (display(part)){
+        if (pending.trim()) lines.push(pending);
+        lines.push(indent + part);
+        pending = indent;
+      } else pending += part;
+    }
+    if (pending.trim()) lines.push(pending);
+  }
+  return `<div class="md">${blocks(lines)}</div>`;
 }
 
 function renderMath(el){

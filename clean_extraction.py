@@ -17,7 +17,7 @@ SUPERSCRIPT = {
     "n": "ⁿ", "p": "ᵖ", "N": "ᴺ", "P": "ᴾ",
     "+": "⁺", "-": "⁻",
 }
-SUP_TOKEN_RE = re.compile(r"^[0-9npNP+\-]{1,2}$")
+SUP_TOKEN_RE = re.compile(r"^(?=[0-9npNP+\-]*[0-9npNP])[0-9npNP+\-]{1,2}$")
 # lettres d'indice de sommation/produit : toujours des indices (jamais des
 # exposants) dans ce cours -> pas d'ambiguïté contrairement à "n"/"p"/un chiffre
 SUBSCRIPT = {
@@ -33,7 +33,7 @@ INDEX_LETTER_RE = re.compile(r"^[ijklm]$")
 PARTIAL_DERIV_INDEX_RE = re.compile(r"∂([a-zA-Z])([ijklmnp]|\d{1,2})\b")
 # l'exposant peut aussi être seulement en tête de la ligne suivante,
 # suivi du reste de la phrase sur la même ligne ("n dans R occupe...")
-SUP_TOKEN_LEADING_RE = re.compile(r"^([0-9npNP+\-]{1,2})(\s+(\S.*))?$")
+SUP_TOKEN_LEADING_RE = re.compile(r"^((?=[0-9npNP+\-]*[0-9npNP])[0-9npNP+\-]{1,2})(\s+(\S.*))?$")
 # la ligne précédente se termine par un "socle" (R, x, kxk, ...) auquel
 # l'exposant de la ligne suivante doit se raccrocher, sans faire partie
 # d'un mot plus long (d'où la frontière \b devant)

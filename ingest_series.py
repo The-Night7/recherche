@@ -196,6 +196,13 @@ def drop_running_lines(pages, whole_text=False):
     navigation des diapos beamer, pieds de page "Romain Dujol 25"...).
     Sans séparateur de pages (whole_text=True, réservé aux diapos de cours),
     on compte les répétitions dans tout le texte."""
+    # Retirer les pieds de page avant de fusionner les exposants : "k\n3"
+    # en bas de la page 3 ne doit pas devenir k³.
+    if len(pages) > 1:
+        for number, page in enumerate(pages, 1):
+            lines = page.rstrip().split("\n")
+            if lines[-1].strip() == str(number):
+                pages[number - 1] = "\n".join(lines[:-1])
     if len(pages) < 4 and not whole_text:
         return pages
     norm = lambda s: re.sub(r"\d+", "#", s.strip())
@@ -207,7 +214,9 @@ def drop_running_lines(pages, whole_text=False):
     threshold = max(3, 0.3 * len(pages)) if len(pages) >= 4 else 6
     frequent = {
         l for l, c in counts.items()
-        if c >= threshold and len(l) < 90 and not KEEP_LINE_RE.match(l) and len(l) > 2
+        if c >= threshold and len(l) < 90 and not KEEP_LINE_RE.match(l)
+        # Une expression répétée (k=1, n + 1, un =…) n'est pas un en-tête.
+        and re.search(r"[A-Za-zÀ-ÿ]{4,}", l)
     }
     return ["\n".join(l for l in p.split("\n") if norm(l) not in frequent) for p in pages]
 
@@ -228,15 +237,9 @@ def split_long(label, text):
         buf += para
     if buf.strip():
         parts.append(buf)
-    # un seul gros paragraphe (texte PDF sans lignes vides) : coupe aux lignes
-    out = []
-    for p in parts:
-        while len(p) > MAX_CHARS * 1.3:
-            cut = p.rfind("\n", 0, MAX_CHARS)
-            cut = cut if cut > MIN_CHARS else MAX_CHARS
-            out.append(p[:cut])
-            p = p[cut:]
-        out.append(p)
+    # Limite souple : ne pas couper une fraction ou une démonstration au
+    # milieu de ses lignes pour respecter un nombre arbitraire de caractères.
+    out = parts
     if len(out) == 1:
         return [(label, out[0])]
     return [(f"{label} ({i}/{len(out)})", p) for i, p in enumerate(out, 1)]
@@ -349,7 +352,8 @@ def sections_markdown(text):
 def chunk_document(path):
     stem, ext = os.path.splitext(os.path.basename(path))
     meta = parse_meta(stem)
-    raw = open(path, encoding="utf-8").read()
+    with open(path, encoding="utf-8") as source:
+        raw = source.read()
     fmt = "md" if ext == ".md" else "pdf"
     if fmt == "md":
         secs = sections_markdown(raw)
@@ -362,7 +366,9 @@ def chunk_document(path):
     secs = merge_small([(l, t) for l, t in secs if t.strip()])
     chunks = []
     for label, body in secs:
-        for sub_label, sub in split_long(label, body):
+        # Un corrigé reste entier, même si ses calculs dépassent MAX_CHARS.
+        parts = split_long(label, body) if meta["kind"] == "cours" else [(label, body)]
+        for sub_label, sub in parts:
             if len(sub.strip()) < 40:
                 continue
             if sub_label.startswith("Diapos"):  # pas de titres : 1re ligne parlante

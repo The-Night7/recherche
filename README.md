@@ -30,6 +30,24 @@ suppression des en-têtes/numéros de page répétés, fusion des exposants
 coupés. Ce n'est pas parfait (formules multi-lignes complexes) mais
 nettement plus lisible.
 
+L'affichage sépare les explications des calculs, aligne les égalités et conserve
+les paragraphes dans chaque question numérotée. Les formules longues défilent
+horizontalement sur mobile. Les exercices et leurs corrigés restent entiers
+dans l'index, même lorsqu'ils dépassent la taille habituelle d'un passage.
+Les expressions répétées dans les PDF sont conservées lors du nettoyage.
+La reconstruction reste heuristique : les formules dont l'extraction a perdu
+des symboles peuvent nécessiter une transcription Markdown/LaTeX.
+
+Après une modification du nettoyage, reconstruire les données avec
+`python3 ingest.py build`, puis redémarrer `python3 server.py`.
+
+Vérifications du rendu et de l'import :
+
+```bash
+python3 -m unittest discover -s tests
+node tests/test_rendering.js
+```
+
 ## Utilisation
 
 ```bash
