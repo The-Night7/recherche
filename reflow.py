@@ -52,7 +52,7 @@ def balanced(s):
 
 def is_math_line(s, maxlen=20):
     s = s.strip()
-    if not balanced(s) or re.search(r"=|→|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]", s) \
+    if not balanced(s) or re.search(r"[=→≠∼≤≥<>]|⇐|⇒|⇔|\blim\b|\(\d+\.\d+\)|[\[\]]", s) \
             or not re.search(r"[A-Za-z0-9α-ωΑ-Ω∂]", s):
         return False
     if not s or len(s) > maxlen or s[0] in ".,;:" or HEADING_RE.match(s):
@@ -70,19 +70,21 @@ GREEK = {
     "τ": r"\tau ", "φ": r"\varphi ", "ϕ": r"\varphi ", "ψ": r"\psi ", "ω": r"\omega ", "Ω": r"\Omega ",
     "∞": r"\infty ", "−": "-", "×": r"\times ", "·": r"\cdot ", "≤": r"\le ", "≥": r"\ge ",
     "∼": r"\sim ", "≈": r"\approx ", "≠": r"\neq ", "∈": r"\in ", "→": r"\to ", "∂": r"\partial ",
-    "⇔": r"\Leftrightarrow ", "⇒": r"\Rightarrow ", "√": r"\surd ", "!": "!", "∗": "^*",
+    "⇔": r"\Leftrightarrow ", "⇒": r"\Rightarrow ", "√": r"\surd ", "ᐟ": "/", "!": "!", "∗": "^*",
 }
 SETS = {"N": r"\mathbb{N}", "Z": r"\mathbb{Z}", "R": r"\mathbb{R}", "C": r"\mathbb{C}", "Q": r"\mathbb{Q}"}
 
 
 SUP_CHARS = {"⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7",
              "⁸": "8", "⁹": "9", "ⁿ": "n", "ᵖ": "p", "⁺": "+", "⁻": "-"}
+SUP_CHARS["ᐟ"] = "/"
 SUB_CHARS = {"₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4", "ₙ": "n", "ₖ": "k", "ₚ": "p",
              "ᵢ": "i", "ⱼ": "j", "ₘ": "m", "ₗ": "l"}
 
 
 def tex(s):
     s = s.strip()
+    s = re.sub(r"√\s*(\([^()]*\)|[A-Za-z0-9]+)", lambda m: r"\sqrt{" + m.group(1) + "}", s)
     s = re.sub("[" + "".join(SUP_CHARS) + "]+", lambda m: "^{" + "".join(SUP_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub("[" + "".join(SUB_CHARS) + "]+", lambda m: "_{" + "".join(SUB_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub(r"\b(sin|cos|tan|exp|ln|log|arctan)\b", r"\\\1 ", s)
@@ -95,7 +97,7 @@ def frac(num, den):
     return f"$\\dfrac{{{tex(num)}}}{{{tex(den)}}}$"
 
 
-SUM_RE = re.compile(r"([∑∏])\s*([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+)\s+([a-zA-Z])\2?(\([^()]{0,12}\))?(?![A-Za-z(])")
+SUM_RE = re.compile(r"([∑∏])\s*([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+)\s+(?!ln\b)([a-zA-Z])\2?(\([^()]{0,12}\))?(?![A-Za-z(])")
 SUM_BARE_RE = re.compile(r"([∑∏])\s*([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+)")
 LIM_RE = re.compile(r"\blim\s*([a-z])\s*→\s*([+−-]?∞|[+−-]?\d+[+−-]?)(?:([A-Za-z]{1,2}\([^()]{1,8}\))|\s*([a-zA-Z])\1(\([^()]{0,12}\))?)?")
 FN_CALL_RE = re.compile(r"(?<![\w$\\])([a-zA-Z])([nk])\((\w{1,3})\)")
@@ -112,7 +114,11 @@ def sub_index(idx):
 
 SAFE_SUB_RE = re.compile(r"(?<![\w$\\_])([fgvwxyhSRP])([nk])(?![\w(])")
 UN_OP_RE = re.compile(r"(?<![\w$])([uab])([nk])(?=\s*[=∼<>≤≥→])|(?<=[=∼<>≤≥⇔]\s)([uab])([nk])(?![\w(])")
-SET_RE = re.compile(r"(?<![\w$\\{])([RNZ])(?![\w'’])(\s*∗)?(\s*\+(?![\w∞(]))?")
+SET_RE = re.compile(r"(?<![\w$\\{])(R|(?<=[∈⊂(] )[NZ]|(?<=[∈⊂(])[NZ]|(?<=\bsur )[NZ]|(?<=\bdans )[NZ])"
+                    r"(?![A-Za-zÀ-ÿ0-9'’])(\s*∗)?(\s*\+(?![\w∞(]))?")
+NORM_RE = re.compile(r"(?<![A-Za-z])k([a-zA-Z·]{1,3})k(?:(\d|∞)|(?=[\s,.;:)=≤≥<>+−-]|$))")
+BRA_RE = re.compile(r"(?<![A-Za-z])h([a-zA-Z]{1,2})\|([a-zA-Z]{1,2})i(?![A-Za-z])")  # hu|vi = ⟨u|v⟩
+SUBDIGIT = {"1": "₁", "2": "₂", "3": "₃", "∞": "∞"}
 SETS_U = {"R": "ℝ", "N": "ℕ", "Z": "ℤ"}
 SUBS_U = {"n": "ₙ", "k": "ₖ"}
 MERGE_R = re.compile(r"\$([^$]+)\$\s*([=∼≠<>≤≥⇔])\s*(\$[^$]+\$|[+−-]?\d+(?:[.,]\d+)?(?![\w])|[+−-]?∞)")
@@ -123,7 +129,22 @@ def texify_rel(op):
     return GREEK.get(op, op).strip() if op not in "=<>" else op
 
 
+def close_parens(p):
+    r"""'$( \dfrac{1}{e}$)ⁿ' -> '$( \dfrac{1}{e})^{n}$'"""
+    def repl(m):
+        body, closers, sups = m.group(1), m.group(2), m.group(3)
+        missing = body.count("(") - body.count(")")
+        if missing <= 0:
+            return m.group(0)
+        take = closers[:missing]
+        return "$" + body + take + (tex(sups) if sups else "") + "$" + closers[missing:]
+    return re.sub(r"\$([^$]+)\$(\)+)([⁰-⁹¹²³ⁿᐟ⁻⁺]*)", repl, p)
+
+
 def merge_math(p):
+    p = close_parens(p)
+    p = re.sub(r"(?<![\w$\\])([a-zA-Z0-9]{1,2})\$([^$]+)\$", lambda m: f"${m.group(1)}{m.group(2)}$"
+               if not re.match(r"[A-Za-z]", m.group(2)[:1]) or len(m.group(1)) == 1 else m.group(0), p)
     p = re.sub(r"\$([^$]+)\$[ ]+\$([^$]+)\$", r"$\1 \2$", p)
     for _ in range(4):
         new = MERGE_R.sub(lambda m: f"${m.group(1)} {texify_rel(m.group(2))} "
@@ -158,6 +179,7 @@ def inline_math(line):
     parts = re.split(r"(\$[^$]+\$)", line)
     for i in range(0, len(parts), 2):
         p = parts[i]
+        p = re.sub(r"([A-Za-z0-9]|\([^()]{1,14}\))([⁰-⁹¹²³ⁿ⁻⁺]+ᐟ[⁰-⁹¹²³ⁿ]+)", lambda m: f"${tex(m.group(0))}$", p)
         p = SUM_RE.sub(sum_term, p)
         p = SUM_BARE_RE.sub(lambda m: f"$\\{'sum' if m.group(1) == '∑' else 'prod'}_{{{m.group(2)}{sub_index(m.group(3))}}}$", p)
         p = LIM_RE.sub(lim, p)
@@ -169,6 +191,8 @@ def inline_math(line):
     parts = re.split(r"(\$[^$]+\$)", line)
     for i in range(0, len(parts), 2):
         p = SAFE_SUB_RE.sub(lambda m: m.group(1) + SUBS_U[m.group(2)], parts[i])
+        p = BRA_RE.sub(r"⟨\1|\2⟩", p).replace("vuut", "√")
+        p = NORM_RE.sub(lambda m: "‖" + m.group(1) + "‖" + SUBDIGIT.get(m.group(2) or "", m.group(2) or ""), p)
         p = SET_RE.sub(lambda m: SETS_U[m.group(1)] + ("∗" if m.group(2) else "") + ("₊" if m.group(3) else ""), p)
         parts[i] = p
     return merge_math("".join(parts))
@@ -177,7 +201,7 @@ def inline_math(line):
 # ---------- recollage des lignes ----------
 BIG_SUM_RE = re.compile(r"^([+−-]?)\s*X\s*([+−-]?∞|[a-zA-Z0-9+−-]{1,4})$")
 SUM_LOW_RE = re.compile(r"^([a-z])\s*=\s*(\S{1,6})$")
-MATH_TAIL_TOKEN_RE = re.compile(r"^(?:[=<>≤≥∼≈⇔+−\-×·]|[a-zA-Z][nk]?(?:\(\w{1,3}\))?|\d+|[+−-]?∞)$")
+MATH_TAIL_TOKEN_RE = re.compile(r"^(?:[=<>≤≥∼≈⇔+−\-×·]|[α-ωΑ-Ω]|[a-zA-Z][nk]?(?:\(\w{1,3}\))?|\d+|[+−-]?∞)$")
 
 
 def split_math_tail(cur):
@@ -219,6 +243,114 @@ PARTIAL_RE = re.compile(r"^(∂\S{0,4}|d[a-zA-Z]{0,2})$")
 POINT_RE = re.compile(r"^[a-zA-Z0-9]{1,2}(,[a-zA-Z0-9]{1,2}){1,3}$")
 
 
+SUP_OF = {"0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸",
+          "9": "⁹", "n": "ⁿ", "−": "⁻", "-": "⁻", "+": "⁺", "x": "ˣ", "k": "ᵏ", "p": "ᵖ", "t": "ᵗ"}
+UNSUP = {v: k for k, v in SUP_OF.items() if k != "-"}
+LONE_MARK_RE = re.compile(r"^\d{1,2}[.)]$")
+REL_RE = re.compile(r"\s*(→|≠|=|∼|≤|≥|<|>)")
+
+
+def sup(s):
+    return "".join(SUP_OF[c] for c in s) if all(c in SUP_OF for c in s) else None
+
+
+def exponents(l):
+    """n2 -> n², (2n + 1)4 -> (2n + 1)⁴, (ln(n))n -> (ln(n))ⁿ : exposants posés à plat par l'extraction"""
+    l = re.sub(r"(?<![A-Za-z_])n([2-9])(?![\d.,]\d|\w)", lambda m: "n" + SUP_OF[m.group(1)], l)
+    l = re.sub(r"(?:(?<=[^\s(])|^)\)([2-9n])(?![\w(])", lambda m: ")" + SUP_OF[m.group(1)], l)
+    return l
+
+
+def repair_lines(lines):
+    out, i = [], 0
+    while i < len(lines):
+        l = lines[i]
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        nxt2 = lines[i + 2] if i + 2 < len(lines) else ""
+        nxt3 = lines[i + 3] if i + 3 < len(lines) else ""
+        # "ln 1 + e" ... ")" : parenthèse ouvrante perdue avec la grande parenthèse
+        if re.search(r"\bln \d", l) and ")" in lines[i + 1:i + 4]:
+            l = re.sub(r"\bln (\d)", r"ln(\1", l)
+        # quatre petits nombres empilés : "2" "4" "7" "3" = 2⁴/7³
+        if all(re.fullmatch(r"\d{1,2}", x) for x in (l, nxt, nxt2, nxt3)):
+            out.append(f"$\\dfrac{{{l}^{{{nxt}}}}}{{{nxt2}^{{{nxt3}}}}}$")
+            i += 4
+            continue
+        # exposant fractionnaire : "n¹" / "2" = n^(1/2)
+        if l.endswith("¹") and nxt in ("2", "n"):
+            lines[i + 1] = l + "ᐟ" + SUP_OF[nxt]
+            i += 1
+            continue
+        # "(un)" / "1" / "n = ..." ou ") 1" / "n" : puissance 1/n
+        if re.search(r"\)$", l) and nxt == "1" and re.match(r"^n(\s|$)", nxt2):
+            lines[i + 2] = l + "¹ᐟⁿ" + nxt2[1:]
+            i += 2
+            continue
+        if re.search(r"\)\s*1$", l) and re.match(r"^n(\s|$)", nxt):
+            lines[i + 1] = re.sub(r"\s*1$", "", l) + "¹ᐟⁿ" + nxt[1:]
+            i += 1
+            continue
+        # "√" seul sur sa ligne : racine de la ligne suivante
+        if l == "√" and nxt and len(nxt) <= 8:
+            out.append("√" + nxt)
+            i += 2
+            continue
+        # le Σ du PDF extrait comme "X" (avec parfois le 1er caractère du terme en exposant)
+        m = re.match(r"^(\d{1,2}[.)]\s*)?X([¹²³ⁿ]?)$", l)
+        if m:
+            out.append((m.group(1) or "") + "∑")
+            if m.group(2):
+                c = UNSUP[m.group(2)]
+                if c.isalpha() and re.match(r"^\d\s", nxt):  # "Xⁿ" / "2 + 1" = ∑ n² + 1
+                    out.append(c + SUP_OF[nxt[0]] + nxt[1:])
+                    i += 2
+                    continue
+                out.append(c)
+            i += 1
+            continue
+        # exposant 1/n empilé : "ne" / "1" / "n − n"  ou  "e¹" / "n − 1"
+        if re.search(r"e$", l) and nxt == "1" and re.match(r"^n\b", nxt2):
+            out.append(l[:-1] + "e¹ᐟⁿ" + nxt2[1:])
+            i += 3
+            continue
+        if l.endswith("e¹") and re.match(r"^n\b", nxt):
+            out.append(l[:-2] + "e¹ᐟⁿ" + nxt[1:])
+            i += 2
+            continue
+        # exposant seul sur la ligne suivante : "e" / "−n"
+        me = re.match(r"^([−-]?[a-z0-9]{1,2})(\s+[=∼≠<>≤≥→].*)?$", nxt)
+        if re.search(r"(?:^|[\s(+−-])e$", l) and me and sup(me.group(1)):
+            lines[i + 1] = l + sup(me.group(1)) + (me.group(2) or "")
+            i += 1
+            continue
+        out.append(exponents(l))
+        i += 1
+    return out
+
+
+def split_rel(line):
+    """'n2 → 1 ≠ 0 donc...' -> ('n2', ' → 1 ≠ 0 donc...') si le début est une petite formule"""
+    m = REL_RE.search(line)
+    if not m or m.start() == 0:
+        return None
+    head = line[:m.start()]
+    return (head, line[m.start():]) if is_math_line(head, 14) else None
+
+
+SUM_TAIL_RE = re.compile(r"∑\s*(?:([a-z])\s*(∈\s*[NZRC]\*?|[≥>]\s*\d+|=\s*\d+))?$")
+
+
+def lone_frac(cur, num, den):
+    """'1.' ou '2. ∑' ou '3. ∑n∈N' suivi d'une fraction"""
+    m = SUM_TAIL_RE.search(cur)
+    if m:
+        pre = cur[:m.start()].rstrip()
+        op = r"\sum" + (f"_{{{m.group(1)}{sub_index(m.group(2))}}}" if m.group(1) else "") + " "
+    else:
+        pre, op = cur, ""
+    return (pre + " " if pre else "") + f"${op}\\dfrac{{{tex(num)}}}{{{tex(den)}}}$"
+
+
 def rebuild_fractions(lines):
     out, i = [], 0
     while i < len(lines):
@@ -239,6 +371,23 @@ def rebuild_fractions(lines):
         if "$" in cur or (nxt and "$" in nxt) or (nxt2 and "$" in nxt2):
             out.append(cur)
             i += 1
+            continue
+        lone = LONE_MARK_RE.match(cur) or SUM_TAIL_RE.search(cur)
+        if nxt is not None and nxt2 is not None and (lone or OPERATOR_END_RE.search(cur)) \
+                and is_math_line(nxt, 14) and not is_math_line(nxt2, 18) and split_rel(nxt2) \
+                and not LIST_RE.match(nxt) and not OPERATOR_END_RE.search(nxt):
+            den, rest = split_rel(nxt2)
+            if lone:
+                out.append(lone_frac(cur, nxt, den) + rest)
+            else:
+                head, tail = split_math_tail(cur)
+                out.append((head + " " if head else "") + f"${tex(tail)} \\dfrac{{{tex(nxt)}}}{{{tex(den)}}}$" + rest)
+            i += 3
+            continue
+        if nxt is not None and nxt2 is not None and lone \
+                and is_math_line(nxt, 14) and is_math_line(nxt2, 18) and not LIST_RE.match(nxt2):
+            out.append(lone_frac(cur, nxt, nxt2))
+            i += 3
             continue
         if nxt is not None and nxt2 is not None and OPERATOR_END_RE.search(cur) \
                 and is_math_line(nxt, 14) and is_math_line(nxt2, 18) \
@@ -292,7 +441,7 @@ def glue(prev, frag):
 
 
 def reflow(text):
-    text = text.replace("̸=", "≠").replace("$", "＄")
+    text = text.replace("̸=", "≠").replace("̸∼", "≁").replace("̸∈", "∉").replace("\u0338", "").replace("$", "＄")
     lines = [l.strip() for l in text.split("\n")]
     # numéros de page : seuls sur leur ligne, en fin de passage ou entre deux phrases
     kept = []
@@ -306,7 +455,7 @@ def reflow(text):
     split = []
     for l in kept:  # mise en page sur deux colonnes : "n(n + 1) 2. un ="
         split += [x.strip() for x in INLINE_ITEM_RE.split(l)] if l else [l]
-    lines = rebuild_fractions(big_sums([l for l in split if l != ""]))
+    lines = rebuild_fractions(big_sums(repair_lines([l for l in split if l != ""])))
     lines = mark_options(lines)
 
     paras, cur, cur_is_list = [], "", False
@@ -327,6 +476,10 @@ def reflow(text):
             paras.append(("h", title))
             if h.group(2):
                 cur = h.group(2)
+            continue
+        if LONE_MARK_RE.match(l):
+            flush()
+            cur, cur_is_list = l[:-1] + ".", True
             continue
         lm = LIST_RE.match(l)
         bm = BULLET_RE.match(l)
@@ -367,7 +520,7 @@ def reflow(text):
     return re.sub(r"\n{3,}", "\n\n", md).strip()
 
 
-KNOWN_CMDS = set("""dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
+KNOWN_CMDS = set("""sqrt dfrac sum prod lim limits to infty in mathbb le ge sim approx neq partial times cdot
 Leftrightarrow Rightarrow sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
 lambda mu pi rho sigma tau varphi psi omega Omega""".split())
 

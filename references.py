@@ -25,6 +25,8 @@ EX_RE = re.compile(
     r"\b(?:exercices?|exos?|ex)\s*(?:n\s*[o°]?\s*|[-.#]\s*)?(\d{1,2}(?:\s*(?:,|et|&|-|a)\s*\d{1,2})*)\b"
 )
 VERSION_RE = re.compile(r"\b(?:version\s*|v)(\d)\b")
+CORRIGE_RE = re.compile(r"\b(?:corriges?|corrections?|solutions?|reponses?)\b")
+ENONCE_RE = re.compile(r"\b(?:enonces?|sujets?)\b")
 
 # titre d'un document : "TD1", "TD2a", "DS1 V2", "DS3 rattrapage", "QCM4",
 # ou label de l'ancien format "TD1 : Normes, ..." / "TD1 1 : ..."
@@ -50,7 +52,7 @@ def parse_reference(question):
     """-> (ref, reste de la question). ref = dict ou None :
     {"kind", "num", "variant", "version", "exercises"} (valeurs None si absentes)."""
     q = strip_accents(question.lower())
-    ref = {"kind": None, "num": None, "variant": None, "version": None, "exercises": None}
+    ref = {"kind": None, "num": None, "variant": None, "version": None, "exercises": None, "corrige": None}
 
     m = DOC_RE.search(q)
     if m:
@@ -73,6 +75,13 @@ def parse_reference(question):
 
     if ref["kind"] is None and ref["exercises"] is None:
         return None, question
+    # "td1 corrigé exercice 2" : le mot sert de filtre, pas de terme de recherche
+    if CORRIGE_RE.search(q) and not ENONCE_RE.search(q):
+        ref["corrige"] = True
+        q = CORRIGE_RE.sub(" ", q)
+    elif ENONCE_RE.search(q) and not CORRIGE_RE.search(q):
+        ref["corrige"] = False
+        q = ENONCE_RE.sub(" ", q)
     return ref, q
 
 
@@ -86,6 +95,8 @@ def describe(ref):
     if ref["exercises"]:
         ex = sorted(ref["exercises"])
         parts.append(("exercice " if len(ex) == 1 else "exercices ") + ", ".join(map(str, ex)))
+    if ref.get("corrige") is not None:
+        parts.append("corrigé" if ref["corrige"] else "énoncé")
     return " · ".join(parts)
 
 
@@ -132,6 +143,8 @@ def annotate(chunks):
 
 
 def match(chunk, ref, use_exercises=True):
+    if ref.get("corrige") is not None and bool(chunk.get("corrige")) != ref["corrige"]:
+        return False
     d = chunk.get("_doc")
     if ref["kind"]:
         if not d or d[0] != ref["kind"] or d[1] != ref["num"]:
