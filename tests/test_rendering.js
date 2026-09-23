@@ -50,11 +50,11 @@ test('lettered questions form one list with their full expression', () => {
   assert.doesNotMatch(html, /class="prose"/);
 });
 
-test('ambiguous PDF source stays in its question and is not reinterpreted', () => {
+test('unreadable PDF source is available on demand, closed by default', () => {
   const html = render('a)\n\n   ```pdf\n   limx→0\n   $x$\n   ## titre\n   1. fragment\n   <script>danger</script>\n   ```\n\nb)\n\n   $$y=1$$', ['fragment']);
-  assert.match(html, /<li value="1"><div class="math-source">.*<pre>limx→0\n\$x\$\n## titre\n1\. fragment\n&lt;script&gt;/s);
-  assert.doesNotMatch(html, /<h4>|<script>|<mark>/);
-  assert.equal((html.match(/class="math-source"/g) || []).length, 1);
+  assert.match(html, /<li value="1"><details class="source-excerpt"><summary>Afficher l’expression d’origine<\/summary><pre>limx→0\n\$x\$\n## titre\n1\. fragment\n&lt;script&gt;/s);
+  assert.doesNotMatch(html, /<h4>|<script>|<mark>|<details[^>]*\bopen\b|math-source|à vérifier/);
+  assert.equal((html.match(/class="source-excerpt"/g) || []).length, 1);
   assert.match(html, /<li value="2"><div class="math-block">/);
 });
 

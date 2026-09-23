@@ -40,10 +40,13 @@ des symboles peuvent nécessiter une transcription Markdown/LaTeX.
 Les titres (`Ex.5`, `Exercice 5`…) et les questions (`a)`, `b)`, `1.`…)
 sont délimités avant la reconstruction des maths. Une limite reste avec son
 expression et un exercice court conserve son propre résultat de recherche.
-Les ambiguïtés détectées (portée d'une racine perdue, limite fragmentée…)
-affichent les lignes extraites dans un seul bloc « à vérifier », sans inventer
-de fraction. Une transcription du PDF permet de retrouver un rendu mathématique
-fiable pour ces passages.
+Les grandes parenthèses extraites comme des espaces et des points d'exclamation
+sont restaurées lorsque leurs paires sont identifiables. Les longues égalités
+sont réparties entre leurs termes, sans couper les fractions ni les sommes.
+Pour les ambiguïtés restantes (portée d'une racine perdue, limite fragmentée…),
+l'expression source est accessible via « Afficher l’expression d’origine »,
+replié par défaut. Une transcription du PDF permet de retrouver un rendu
+mathématique fiable pour ces passages.
 
 Après une modification du nettoyage, reconstruire les données avec
 `python3 ingest.py build`, puis redémarrer `python3 server.py`.

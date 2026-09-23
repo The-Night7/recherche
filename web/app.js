@@ -137,7 +137,9 @@ function renderMd(text, terms){
       const source = sourceBlock(line);
       if (source){
         const {language, value} = sources[Number(source[1])];
-        out.push(`<div class="math-source">${language === 'pdf' ? '<p class="math-source-label">Formule extraite du PDF · à vérifier</p>' : ''}<pre>${escapeHtml(value)}</pre></div>`);
+        out.push(language === 'pdf'
+          ? `<details class="source-excerpt"><summary>Afficher l’expression d’origine</summary><pre>${escapeHtml(value)}</pre></details>`
+          : `<pre class="code-block">${escapeHtml(value)}</pre>`);
         i++; continue;
       }
       if (display(line)){

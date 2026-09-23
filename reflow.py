@@ -347,6 +347,74 @@ def equality_at(text):
     return -1
 
 
+def restore_large_parentheses(text):
+    """Restituer les grandes parenthèses cmex extraites comme espace / !.
+
+    On travaille avant strip(), qui effaçait le glyphe ouvrant. Les paires
+    restent confinées à un calcul ; un factoriel ordinaire n'est pas touché.
+    """
+    def repair(group):
+        # Un espace isolé ou devant une somme est le glyphe ouvrant cmex.
+        candidates = {i for i, line in enumerate(group)
+                      if line == " " or re.match(r"^ (?=∑|[a-z]?X|ln\()", line)}
+        if not candidates or not any("!" in line for line in group):
+            return group
+        pending, result, repaired = [], [], set()
+        for i, line in enumerate(group):
+            if i in candidates:
+                pending.append(i)
+            stripped = line.strip()
+            # Le ! de fermeture peut être seul ou collé à une fin de somme.
+            # n!, (n + 1)! et les autres factorielles restent des factorielles.
+            match = re.search(r"!(?=$|[+−-])", stripped)
+            if pending and match and (stripped == "!" or (
+                    re.search(r"\s[+−-]\s", stripped[:match.start()])
+                    and not stripped[:match.start()].rstrip().endswith(")"))):
+                opener = pending.pop()
+                repaired.add(opener)
+                line = line[:line.index("!")] + ")" + line[line.index("!") + 1:]
+            result.append(line)
+        for i in repaired:
+            result[i] = "(" + result[i][1:]
+        return result
+
+    out, group = [], []
+    for line in text.split("\n"):
+        if line == " " or (line.strip() and math_only(line.strip())):
+            group.append(line)
+        else:
+            out.extend(repair(group))
+            group = []
+            out.append(line)
+    out.extend(repair(group))
+    return "\n".join(out)
+
+
+def wrap_equation(row, width=50):
+    """Couper une longue égalité entre ses termes, jamais dans une fraction."""
+    brace_depth = paren_depth = 0
+    cuts = []
+    for i, char in enumerate(row):
+        if i and row[i - 1] == "\\":
+            continue
+        brace_depth += char == "{"
+        brace_depth -= char == "}"
+        paren_depth += char in "(["
+        paren_depth -= char in ")]"
+        if char in "+-" and brace_depth == paren_depth == 0 and i and row[i - 1].isspace():
+            cuts.append(i)
+    def measure(part):
+        return len(re.sub(r"\\[A-Za-z]+|[{}]", "", part))
+    parts, start = [], 0
+    for j, cut in enumerate(cuts):
+        end = cuts[j + 1] if j + 1 < len(cuts) else len(row)
+        if measure(row[start:end]) > width and measure(row[start:cut]) >= width // 3:
+            parts.append(row[start:cut].strip())
+            start = cut
+    parts.append(row[start:].strip())
+    return parts
+
+
 def display_math(lines):
     """Restituer les fractions empilées dans un calcul isolé de la prose.
 
@@ -434,6 +502,7 @@ def display_math(lines):
             current = glue(current, part)
     if current:
         rows.append(current)
+    rows = [part for row in rows for part in wrap_equation(row)]
     if len(rows) == 1:
         return rows[0]
     aligned = []
@@ -480,6 +549,7 @@ def source_formula(lines):
 
 
 def reflow(text):
+    text = restore_large_parentheses(text)
     text = text.replace("̸=", "≠").replace("̸∼", "≁").replace("̸∈", "∉").replace("\u0338", "").replace("$", "＄")
     # La police PDF code parfois les primes par des zéros. Ne les restituer
     # que pour un indice explicitement introduit par un changement de variable.

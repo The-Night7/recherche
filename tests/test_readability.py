@@ -6,7 +6,7 @@ from pathlib import Path
 import ingest
 import ingest_series
 from clean_extraction import clean_text
-from reflow import big_sums, display_math, is_math_line, math_only, to_md_blocks
+from reflow import big_sums, display_math, is_math_line, math_only, restore_large_parentheses, to_md_blocks
 
 
 class ReadabilityTests(unittest.TestCase):
@@ -159,6 +159,33 @@ class ReadabilityTests(unittest.TestCase):
         text = self.markdown('a)\nf(x) = (\nx)')
         self.assertEqual(re.findall(r'^[a-z]\)$', text, re.M), ['a)'])
         self.assertIn('f(x) = (x)', text)
+
+    def test_large_parentheses_recover_without_changing_factorials(self):
+        source = ' \n(n + 1)!\n+\n1\nn + 2!'
+        expected = '(\n(n + 1)!\n+\n1\nn + 2)'
+        self.assertEqual(restore_large_parentheses(source), expected)
+        self.assertEqual(restore_large_parentheses(expected), expected)
+        for factorial in ('n!', '(n + 1)!', 'n + (n + 1)!'):
+            self.assertEqual(restore_large_parentheses(factorial), factorial)
+        self.assertEqual(restore_large_parentheses(' \nn + 1\nEx.6\n!'), ' \nn + 1\nEx.6\n!')
+
+    def test_long_sum_from_capture_is_rendered_with_all_three_groups(self):
+        chunks = ingest.chunk_document('data/series/TD1Correction_20242025_Series_P2S1_DMaths.txt', 'series')
+        exercise = next(c for c in chunks if c['section'] == 'Exercice 4')
+        text = self.markdown(exercise['text'])
+        calculation = text.split('On va réunir les valeurs de k comprises entre k = 3 et k = n', 1)[1].split('Les trois dernières sommes', 1)[0]
+        self.assertNotIn('```pdf', calculation)
+        self.assertIn(r'\begin{aligned}', calculation)
+        first_equality = calculation.split(r'\begin{aligned}', 1)[1].split('\n   &=', 1)[0]
+        compact = lambda s: re.sub(r'\s+', '', s.replace('\\\\', '').replace('&', ''))
+        expected = (
+            r'\sum_{k=1}^{n} u_k = \dfrac{1}{2} (1 + \dfrac{1}{2} + \sum_{k=3}^{n} \dfrac{1}{k})'
+            r' - (\dfrac{1}{2} + \sum_{k=3}^{n} \dfrac{1}{k} + \dfrac{1}{n + 1})'
+            r' + \dfrac{1}{2} (\sum_{k=3}^{n} \dfrac{1}{k} + \dfrac{1}{n + 1} + \dfrac{1}{n + 2})'
+        )
+        self.assertEqual(compact(first_equality), compact(expected))
+        self.assertIn('\n   &+', first_equality)
+        self.assertIn('\n   &-', first_equality)
 
 
 if __name__ == '__main__':
