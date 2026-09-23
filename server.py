@@ -3,7 +3,7 @@
 Petit serveur web local pour interroger l'index TF-IDF avec une
 interface propre, sans dépendance externe (juste la bibliothèque
 standard de Python + numpy pour la recherche). La page est dans
-web/index.html ; elle permet de choisir où chercher (cours, type de
+web/ (index.html, style.css, app.js, theme.js) ; elle permet de choisir où chercher (cours, type de
 document, énoncés/corrigés, années).
 
 Usage:
@@ -58,7 +58,26 @@ def csv_param(qs, name):
     return {x for x in raw.split(",") if x} or None
 
 
-PAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "index.html")
+WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web")
+STATIC_TYPES = {
+    ".html": "text/html; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+    ".js": "text/javascript; charset=utf-8",
+    ".svg": "image/svg+xml",
+    ".png": "image/png",
+    ".ico": "image/x-icon",
+}
+
+
+def static_file(url_path):
+    """Chemin du fichier de web/ demandé, ou None (inexistant / hors de web/ / type inconnu)."""
+    rel = "index.html" if url_path == "/" else url_path.lstrip("/")
+    full = os.path.realpath(os.path.join(WEB_DIR, rel))
+    if not full.startswith(os.path.realpath(WEB_DIR) + os.sep):
+        return None
+    if os.path.splitext(full)[1] not in STATIC_TYPES or not os.path.isfile(full):
+        return None
+    return full
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -78,11 +97,13 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
 
-        if parsed.path == "/":
-            # relu à chaque requête : on peut modifier web/index.html sans relancer
-            with open(PAGE_PATH, "rb") as f:
-                self.send(f.read(), "text/html; charset=utf-8")
-            return
+        if not parsed.path.startswith("/api/"):
+            # relus à chaque requête : on peut modifier web/ sans relancer
+            path = static_file(parsed.path)
+            if path:
+                with open(path, "rb") as f:
+                    self.send(f.read(), STATIC_TYPES[os.path.splitext(path)[1]])
+                return
 
         if parsed.path == "/api/meta":
             self.send_json(META)
