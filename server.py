@@ -104,12 +104,14 @@ class Handler(BaseHTTPRequestHandler):
             except ValueError:
                 k = 5
             use_recent = qs.get("recent", ["1"])[0] != "0"
-            results, tokens = search(
+            results, tokens, info = search(
                 question, TFIDF, IDF, VOCAB, CHUNKS, k=k, mask=mask,
-                recent=RECENCY if use_recent else None,
+                recent=RECENCY if use_recent else None, with_info=True,
             )
             self.send_json({
                 "tokens": tokens,
+                "reference": info["reference"], "relaxed": info["relaxed"],
+                "highlight": info["highlight"] + [t for t in tokens if t != info["reference"]],
                 "searched": int(mask.sum()),
                 "results": [
                     {

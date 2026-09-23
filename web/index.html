@@ -276,7 +276,9 @@ function highlightPlain(text, terms){
   let html = escapeHtml(text);
   terms.forEach(t => {
     if (t.length < 3) return;
-    const re = new RegExp('(' + reEscape(t) + '[\\wÀ-ÿ]*)', 'gi');
+    const re = /\d$/.test(t)
+      ? new RegExp('(' + reEscape(t).replace(/ /g, '\\s+') + ')(?!\\d)', 'gi')   // "exercice 2" ≠ "exercice 21"
+      : new RegExp('(' + reEscape(t) + '[\\wÀ-ÿ]*)', 'gi');
     html = html.replace(re, '<mark>$1</mark>');
   });
   return html;
@@ -341,7 +343,7 @@ function renderCard(r, i, tokens){
           <div class="doc"><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(r.doc_label)}${r.corrige ? '<span class="tag">corrigé</span>' : ''}</div>
           <div class="section">${escapeHtml(r.section || r.label)}</div>
         </div>
-        <span class="score" title="similarité cosinus${state.recent ? ' × bonus de récence' : ''}">${r.score.toFixed(3)}</span>
+        <span class="score" title="${r.score >= 1 ? 'référence exacte (1 + cosinus des autres mots)' : 'similarité cosinus'}${state.recent ? ' × bonus de récence' : ''}">${r.score.toFixed(3)}</span>
       </div>
       ${body}
     </article>`;
@@ -366,8 +368,12 @@ async function doSearch(){
         Élargis la recherche (autre cours, plus de types ou d'années) ou reformule avec le vocabulaire du cours.</p>`;
       return;
     }
-    $("results").innerHTML = `<p class="count">${data.results.length} passage(s) sur ${data.searched} dans la sélection</p>` +
-      data.results.map((r, i) => renderCard(r, i, data.tokens)).join('');
+    const hl = data.highlight || data.tokens;
+    const ref = data.reference
+      ? ` · référence : <b>${escapeHtml(data.reference)}</b>${data.relaxed ? ' <span style="color:var(--warn)">(exercice introuvable, document entier)</span>' : ''}`
+      : '';
+    $("results").innerHTML = `<p class="count">${data.results.length} passage(s) sur ${data.searched} dans la sélection${ref}</p>` +
+      data.results.map((r, i) => renderCard(r, i, hl)).join('');
     renderMath($("results"));
   } catch (e) {
     $("results").innerHTML = '<p class="empty">Le serveur ne répond pas. Lance <b>python3 server.py</b> puis recharge la page.</p>';

@@ -20,6 +20,7 @@ import json
 import numpy as np
 
 from courses import COURSES, ensure_meta
+from references import annotate, describe, highlight_terms, match, parse_reference
 from text_utils import expand_query, tokenize
 
 RECENT_BOOST = 0.25
@@ -35,7 +36,7 @@ def load_index(index_path="index.npz", vocab_path="vocab.json", chunks_path="chu
         tfidf = np.zeros((n, v), dtype=np.float32)
         tfidf[data["rows"], data["cols"]] = data["vals"]
     vocab = json.load(open(vocab_path, encoding="utf-8"))
-    chunks = [ensure_meta(c) for c in json.load(open(chunks_path, encoding="utf-8"))]
+    chunks = annotate([ensure_meta(c) for c in json.load(open(chunks_path, encoding="utf-8"))])
     return tfidf, idf, vocab, chunks
 
 
@@ -82,19 +83,59 @@ def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None):
     return mask
 
 
-def search(question, tfidf, idf, vocab, chunks, k=3, mask=None, recent=None, boost=RECENT_BOOST):
-    qvec, toks = query_vector(question, vocab, idf)
-    if not toks:
-        return [], toks
-    # tfidf est déjà normalisé par ligne -> le produit scalaire = cosinus
-    cos = tfidf @ qvec
-    scores = cos * (1.0 + boost * recent) if recent is not None else cos.copy()
-    scores[cos <= 0] = 0.0
-    if mask is not None:
-        scores[~mask] = 0.0
-    order = np.argsort(-scores)[:k]
-    results = [(chunks[i], float(scores[i])) for i in order if scores[i] > 0]
-    return results, toks
+def search(question, tfidf, idf, vocab, chunks, k=3, mask=None, recent=None, boost=RECENT_BOOST,
+           with_info=False):
+    """Recherche TF-IDF, précédée d'une lecture des références structurées
+    ("td 1 exercice 2") qui deviennent un filtre exact.
+    -> (résultats, tokens) ou, avec with_info=True, (résultats, tokens, info)
+    info = {"reference": str|None, "relaxed": bool, "highlight": [...]}"""
+    info = {"reference": None, "relaxed": False, "highlight": []}
+    ref, rest = parse_reference(question)
+    base = mask if mask is not None else np.ones(len(chunks), dtype=bool)
+
+    if ref:
+        info["reference"] = describe(ref)
+        info["highlight"] = highlight_terms(ref)
+        ref_mask = np.array([match(c, ref) for c in chunks]) & base
+        if not ref_mask.any() and ref["kind"] and ref["exercises"]:
+            # exercice introuvable dans ce document : on montre le document entier
+            ref_mask = np.array([match(c, ref, use_exercises=False) for c in chunks]) & base
+            info["relaxed"] = True
+        if not ref_mask.any():
+            ref = None  # rien ne correspond : recherche plein texte classique
+            rest = question
+        else:
+            base = ref_mask
+
+    qvec, toks = query_vector(rest, vocab, idf)
+    rec = recent if recent is not None else np.zeros(len(chunks), dtype=np.float32)
+    shown = [info["reference"]] if ref else []
+
+    if ref:
+        # les passages qui correspondent à la référence passent tous ;
+        # les mots restants ("convergence", "d'Alembert"...) les départagent
+        cos = tfidf @ qvec if toks else np.zeros(len(chunks), dtype=np.float32)
+        cos = np.clip(cos, 0, None)
+        scores = (1.0 + cos) * (1.0 + boost * rec)
+        scores[~base] = -1.0
+        # à score égal : énoncé avant corrigé, puis ordre du document
+        tie = np.array([1 if c["corrige"] else 0 for c in chunks])
+        order = np.lexsort((np.arange(len(chunks)), tie, -np.round(scores, 6)))
+        order = [i for i in order if base[i]][:k]
+        results = [(chunks[i], float(scores[i])) for i in order]
+    else:
+        if not toks:
+            return ([], toks, info) if with_info else ([], toks)
+        # tfidf est déjà normalisé par ligne -> le produit scalaire = cosinus
+        cos = tfidf @ qvec
+        scores = cos * (1.0 + boost * rec)
+        scores[cos <= 0] = 0.0
+        scores[~base] = 0.0
+        order = np.argsort(-scores)[:k]
+        results = [(chunks[i], float(scores[i])) for i in order if scores[i] > 0]
+
+    toks = shown + toks
+    return (results, toks, info) if with_info else (results, toks)
 
 
 def parse_list(s):
@@ -119,7 +160,11 @@ def main():
         {int(y) if y.isdigit() else y for y in years} if years else None,
     )
     rec = None if args.sans_recence else recency(chunks)
-    results, toks = search(args.question, tfidf, idf, vocab, chunks, k=args.k, mask=mask, recent=rec)
+    results, toks, info = search(args.question, tfidf, idf, vocab, chunks, k=args.k, mask=mask,
+                                 recent=rec, with_info=True)
+    if info["reference"]:
+        print(f"Référence détectée : {info['reference']}"
+              + (" (exercice introuvable, document entier)" if info["relaxed"] else ""))
 
     if not toks:
         print("Question trop courte / aucun mot reconnu.")
