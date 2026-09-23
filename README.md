@@ -1,5 +1,10 @@
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
 
+Cours indexés : **Analyse dans ℝⁿ** et **Séries** (CM, TD, DS, QCM, corrigés).
+L'interface web permet de choisir où chercher : un cours ou tous, le type de
+document, énoncés et/ou corrigés, les années. À pertinence proche, les
+documents les plus récents passent devant.
+
 Contrairement à `ml_project/` (réseau de neurones génératif), celui-ci
 ne génère rien : il **retrouve le bon passage du cours** pour une
 question, via un moteur de recherche TF-IDF codé à la main (NumPy
@@ -32,6 +37,7 @@ pip install numpy --break-system-packages
 
 python3 build_index.py          # à refaire seulement si chunks.json change
 python3 search.py "définition d'une norme"
+python3 search.py "règle d'Alembert" --cours series --type td,ds --annees 2024,2023
 python3 ask.py                  # mode interactif (terminal)
 python3 server.py               # interface web sur http://localhost:8000
 ```
@@ -47,3 +53,29 @@ de framework JS, page HTML/CSS/JS auto-contenue servie directement.
 - La pertinence dépend du vocabulaire employé : une question formulée
   très différemment du cours (synonymes non couverts) peut ne rien
   trouver de pertinent.
+
+## Ajouter des documents au cours de Séries (`ingest_series.py`)
+
+```bash
+pip install pypdf --break-system-packages               # lecture des PDF
+python3 ingest_series.py extract ~/Cours/Series/*.pdf   # texte -> data/series/
+python3 ingest_series.py build                          # découpage + chunks.json + index
+```
+
+Les métadonnées viennent du nom de fichier (`TD4_20242025_Series_…`,
+`DS120232024V4Correction_…`, `QCM1-2022-2023_…`). Un PDF scanné (sans texte)
+est signalé par `extract` : mettre sa transcription Markdown/LaTeX dans
+`data/series/transcriptions/<même nom>.md` puis relancer `build`.
+
+Découpage : un passage par exercice pour les TD/DS/QCM (la réponse d'un
+corrigé reste avec son exercice, les questions de QCM répétées sur chaque
+copie sont dédoublonnées), par section numérotée pour le poly de cours, par
+titre pour les notes Markdown. Les formules `$…$` / `$$…$$` des notes sont
+rendues avec KaTeX dans l'interface.
+
+## Récence
+
+score = cos(question, passage) × (1 + 0.25 × r), avec r ∈ [0, 1] la position
+de l'année du document entre la plus ancienne et la plus récente de son cours
+(0.5 si l'année est inconnue). Désactivable dans l'interface ou avec
+`--sans-recence`.

@@ -1,0 +1,372 @@
+Série EISTI-Deuxième année
+Correction du DS1 - Octobre 2018
+Exercice 1.
+1. Si la suite (un)n∈N tend vers 0, alors la série X
+n≥0
+un converge.
+La proposition est fausse.
+Un contre exemple : Soit (un)n∈N∗ la suite dénie pour tout n ∈ N∗ par un =
+1
+n
+, on a la
+suite (un)n∈N∗ converge vers 0 mais la série X
+n≥1
+1
+n
+diverge : il s'agit de la série de Riemann avec
+α = 1 ≤ 1.
+2. Si la série X
+n≥0
+un diverge, alors la série X
+n≥0
+u
+2
+n diverge. La proposition est fausse.
+Un contre exemple : Soit (un)n∈N∗ la suite dénie pour tout n ∈ N∗, par un =
+1
+n
+, on a la
+série de terme général un diverge (série de Riemann avec α = 1 ≤ 1), mais la série de terme
+général u
+2
+n
+converge (la série de Riemann avec α = 2 > 1.
+3. Si la série X
+n≥0
+un diverge, alors la suite (un)n∈N ne tend pas vers 0. La proposition est fausse.
+Un contre exemple : Soit (un)n∈N∗ la suite dénie pour tout n ∈ N∗ par un =
+1
+n
+, on a la
+suite (un)n∈N∗ converge vers 0 et la série X
+n≥1
+1
+n
+diverge (série de Riemmann avec α = 1 ≤ 1).
+4. Si la série X
+n≥0
+un converge, alors la série X
+n≥0
+u
+2
+n
+converge. La proposition est vraie. Preuve :
+La suite (un)n∈N converge vers 0, car la série de terme général un converge, donc u
+2
+n =
++∞
+o(un).
+On peut déduire qu'à partir d'un certain rang n0 ∈ N, que 0 ≤ u
+2
+n ≤ un.
+La série X
+n≥0
+un converge, donc d'après le théorème de majoration (appliqué aux séries à termes
+positifs) la série X
+n≥0
+u
+2
+n
+converge.
+Exercice 2.
+1. Le terme génaral de la série X
+n≥0
+un converge vers 1 6= 0, donc la série X
+n≥0
+un diverge.
+2. La suite (vn)n∈N est à valeurs positives. On applique la règle de Cauchy, on a
+(vn)
+1
+n =
+
+2n + 5 − 4
+2n + 5 n
+=
+
+1 +
+−4
+2n + 5n
+= e
+n ln(1− 4
+2n+5 )
+On a n ln(1−
+4
+2n+5 ) ∼
++∞
+−
+4
+2n+5 , par suite lim n→+∞
+n ln(1−
+4
+2n+5 ) = −2, d'ou lim n→+∞
+(vn)
+1
+n = e
+−2 < 1.
+Ce qui implique la convergence de la série de terme général vn.
+1/4
+<<<PAGE>>>
+Série EISTI-Deuxième année
+3. Pour tout entier naturel n, le terme wn =
+(n!)3
+(3n)! .3
+n
+est postif. On applique la règle de d'Alembert :
+wn+1
+wn
+=
+((n + 1)!)3
+(n!)3
+(3n)!
+(3(n + 1))!
+3
+n+1
+3
+n
+= 3.
+(n + 1)3
+(3n + 3)(3n + 2)(3n + 1)
+=
+(n + 1)2
+(3n + 2)(3n + 1)
+lim n→+∞
+wn+1
+wn
+=
+1
+9 < 1, d'après la règle de D'Alembert la série de terme général wn converge.
+Exercice 3
+1. La suite (un)n∈N est à valeurs positives. On applique la règle de n
+αun pour montrer la convergence de la série X
+n≥0
+un. On a lim n→+∞n
+2un = lim n→+∞
+n
+2
+(n+ 1)e
+−nln(3) = 0 (croissance comparée).
+On a prouvé l'existence d'un α = 2 > 1 telle que n
+2
+X
+un tend vers 0, d'ou la convergence de
+n≥0
+un.
+2. On note S la valeur de la série X
++∞
+n=0
+un. On a
+1
+3
+S =
+X
++∞
+n=0
+n + 1
+3
+n+1
+=
+X
++∞
+n=1
+n
+3
+n
+=
+X
++∞
+n=1
+n + 1
+3
+n
+−
+X
++∞
+n=1
+1
+3
+n
+= S − u0 −
+1
+3
+1
+1 −
+1
+3
+= S −
+3
+2
+On a alors (1 −
+1
+3
+)S =
+3
+2
+par suite S =
+9
+4
+.
+2/4
+<<<PAGE>>>
+Série EISTI-Deuxième année
+Exercice 4.
+1. 1.
+(a) Le développement limité à l'ordre 2 de wn est
+wn = ln 
+n + 1
+n
+2
+un+1
+un
+!
+= ln 
+n + 1
+n
+2
+n + 1
+n + 3!
+= 2 ln(1 + 1
+n
+) + ln n(1 + 1
+n
+)
+
+− ln n(1 + 3
+n
+)
+
+= 3 ln(1 + 1
+n
+) + ln n(1 + 1
+n
+)
+
+− ln(1 + 3
+n
+)
+= 3 
+1
+n
+−
+1
+2
+1
+n2
++ o(
+1
+n2
+)
+
+−
+
+3
+n
+−
+1
+2
+9
+n2
++ o(
+1
+n2
+)
+
+=
+3
+n2
++ o(
+1
+n2
+)
+On déduit alors l'équivalence wn ∼
++∞
+3
+n2 . D'après le critère de Riemann la série X
+n≥1
+1
+n2
+converge (α = 2 > 1), donc la série X
+n≥1
+3
+n2
+converge, de plus (wn)n∈N et (
+1
+n2 )n∈N∗ sont à
+valeurs positives, en appliquant le théorème des équivalences, la série X
+n≥0
+wn converge.
+(b) On a la série X
+n≥0
+wn =
+X
+n≥0
+(vn+1 − vn) est une série téléscopique convergente (d'après la
+première question), la suite (vn)n∈N∗ est donc convergente. Soit ` sa limite.
+(c) En tulisant la relation vn = ln(n
+2un), on déduit que un =
+e
+vn
+n2 . la suite (vn)n∈N∗ converge
+vers `, donc la suite (e
+vn )n∈N∗ converge vers L = e`
+. D'ou l'équivalence un ∼
++∞
+L
+n2 .
+2. (a) A l'aide de l'équivalence un ∼
++∞
+L
+n2 , on a lim n→+∞
+nun = lim n→+∞
+L
+n = 0.
+(b) Soit SN =
+X
+N
+n=1
+zn =
+X
+N
+n=0
+(n + 1)un+1 − nun = (N + 1)uN+1 (car il s'agit d'une série téléscopique).
+D'après la question précédente lim n→+∞
+X
+N
+n=0
+zn = lim n→+∞SN = lim
+N→+∞
+nun = 0.
+(c) On note S la valeur de la série X
++∞
+n=0
+un. On commence par montrer que zn = −2un+1 + un.
+3/4
+<<<PAGE>>>
+Série EISTI-Deuxième année
+En eet, on a
+zn = (n + 1)un+1 − nun
+= (n + 1)un+1 − (n + 1)un + un
+= (n + 1)(1 −
+n + 3
+n + 1
+)un+1 + un
+= (n + 1) −2
+n + 1
+un+1 + un
+= −2un+1 + un
+Puisque X
++∞
+n=0
+zn = 0, on a
+0 = −2
+X
++∞
+n=0
+un+1 +
+X
++∞
+n=0
+un
+= −2(S − u0) + S
+= u0 − S
+On déduit alors que S = u0.
+4/4

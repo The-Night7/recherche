@@ -1,35 +1,64 @@
 # -*- coding: utf-8 -*-
 """
 Recherche sémantique "from scratch" (TF-IDF + similarité cosinus,
-tout codé à la main) dans le cours d'Analyse dans ℝⁿ.
+tout codé à la main) dans les cours indexés (Analyse dans ℝⁿ, Séries).
+
+Filtres : cours, type de document (cours/td/ds/qcm), énoncés/corrigés,
+années. Les documents récents sont favorisés : le score cosinus est
+multiplié par (1 + RECENT_BOOST × r), où r ∈ [0, 1] place l'année du
+document entre la plus ancienne (0) et la plus récente (1) de son cours
+(0.5 si l'année est inconnue).
 
 Usage:
     python3 search.py "définition d'une norme"
-    python3 search.py "extremums locaux" --k 5
+    python3 search.py "critère de d'Alembert" --cours series --type td,ds --k 5
+    python3 search.py "rayon de convergence" --cours series --annees 2024,2023
 """
 import argparse
 import json
 
 import numpy as np
 
-from text_utils import tokenize
+from courses import COURSES, ensure_meta
+from text_utils import expand_query, tokenize
+
+RECENT_BOOST = 0.25
 
 
 def load_index(index_path="index.npz", vocab_path="vocab.json", chunks_path="chunks.json"):
     data = np.load(index_path)
-    tfidf = data["tfidf"]
     idf = data["idf"]
+    if "tfidf" in data:  # ancien format (matrice dense)
+        tfidf = data["tfidf"]
+    else:
+        n, v = (int(x) for x in data["shape"])
+        tfidf = np.zeros((n, v), dtype=np.float32)
+        tfidf[data["rows"], data["cols"]] = data["vals"]
     vocab = json.load(open(vocab_path, encoding="utf-8"))
-    chunks = json.load(open(chunks_path, encoding="utf-8"))
+    chunks = [ensure_meta(c) for c in json.load(open(chunks_path, encoding="utf-8"))]
     return tfidf, idf, vocab, chunks
+
+
+def recency(chunks):
+    """r ∈ [0, 1] par passage, calculé cours par cours."""
+    r = np.full(len(chunks), 0.5, dtype=np.float32)
+    for course in {c["course"] for c in chunks}:
+        years = [c["year"] for c in chunks if c["course"] == course and c["year"]]
+        if not years:
+            continue
+        lo, hi = min(years), max(years)
+        for i, c in enumerate(chunks):
+            if c["course"] == course and c["year"]:
+                r[i] = 1.0 if hi == lo else (c["year"] - lo) / (hi - lo)
+    return r
 
 
 def query_vector(question, vocab, idf):
     toks = tokenize(question)
     v = np.zeros(len(vocab), dtype=np.float32)
-    for w in toks:
+    for w, weight in expand_query(toks):
         if w in vocab:
-            v[vocab[w]] += 1.0
+            v[vocab[w]] += weight
     v = v * idf
     n = np.linalg.norm(v)
     if n > 0:
@@ -37,25 +66,60 @@ def query_vector(question, vocab, idf):
     return v, toks
 
 
-def search(question, tfidf, idf, vocab, chunks, k=3):
+def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None):
+    """courses/kinds : ensembles d'identifiants ; versions ⊂ {"enonce", "corrige"} ;
+    years ⊂ années (int) ou "none" pour les documents sans année. None = pas de filtre."""
+    mask = np.ones(len(chunks), dtype=bool)
+    for i, c in enumerate(chunks):
+        if courses and c["course"] not in courses:
+            mask[i] = False
+        elif kinds and c["kind"] not in kinds:
+            mask[i] = False
+        elif versions and ("corrige" if c["corrige"] else "enonce") not in versions:
+            mask[i] = False
+        elif years and (c["year"] if c["year"] else "none") not in years:
+            mask[i] = False
+    return mask
+
+
+def search(question, tfidf, idf, vocab, chunks, k=3, mask=None, recent=None, boost=RECENT_BOOST):
     qvec, toks = query_vector(question, vocab, idf)
     if not toks:
         return [], toks
     # tfidf est déjà normalisé par ligne -> le produit scalaire = cosinus
-    scores = tfidf @ qvec
+    cos = tfidf @ qvec
+    scores = cos * (1.0 + boost * recent) if recent is not None else cos.copy()
+    scores[cos <= 0] = 0.0
+    if mask is not None:
+        scores[~mask] = 0.0
     order = np.argsort(-scores)[:k]
     results = [(chunks[i], float(scores[i])) for i in order if scores[i] > 0]
     return results, toks
+
+
+def parse_list(s):
+    return {x.strip() for x in s.split(",") if x.strip()} if s else None
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("question", type=str)
     ap.add_argument("--k", type=int, default=3)
+    ap.add_argument("--cours", help=f"parmi {', '.join(COURSES)} (séparés par des virgules)")
+    ap.add_argument("--type", help="parmi cours, td, ds, qcm")
+    ap.add_argument("--version", help="enonce, corrige")
+    ap.add_argument("--annees", help="ex: 2024,2023 (année de début)")
+    ap.add_argument("--sans-recence", action="store_true", help="ne pas favoriser les documents récents")
     args = ap.parse_args()
 
     tfidf, idf, vocab, chunks = load_index()
-    results, toks = search(args.question, tfidf, idf, vocab, chunks, k=args.k)
+    years = parse_list(args.annees)
+    mask = filter_mask(
+        chunks, parse_list(args.cours), parse_list(args.type), parse_list(args.version),
+        {int(y) if y.isdigit() else y for y in years} if years else None,
+    )
+    rec = None if args.sans_recence else recency(chunks)
+    results, toks = search(args.question, tfidf, idf, vocab, chunks, k=args.k, mask=mask, recent=rec)
 
     if not toks:
         print("Question trop courte / aucun mot reconnu.")
@@ -66,7 +130,7 @@ def main():
 
     for rank, (chunk, score) in enumerate(results, 1):
         print(f"\n{'=' * 70}")
-        print(f"#{rank}  [{chunk['label']}]  (score={score:.3f})")
+        print(f"#{rank}  [{COURSES[chunk['course']]}] {chunk['label']}  (score={score:.3f})")
         print('-' * 70)
         print(chunk["text"])
 

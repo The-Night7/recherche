@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Construit un index TF-IDF "from scratch" (juste NumPy, pas de
-scikit-learn) à partir de data/chunks.json, et le sauvegarde dans
+scikit-learn) à partir de chunks.json (tous les cours), et le sauvegarde dans
 index.npz + vocab.json.
 
 Rappel des maths (tout est codé ici à la main) :
@@ -25,7 +25,9 @@ from text_utils import tokenize
 
 def main(chunks_path="chunks.json", out_index="index.npz", out_vocab="vocab.json"):
     chunks = json.load(open(chunks_path, encoding="utf-8"))
-    docs_tokens = [tokenize(c["text"]) for c in chunks]
+    # le titre de section est indexé avec le texte : "Règle d'Alembert" est
+    # souvent seulement dans le titre, pas dans le corps du passage
+    docs_tokens = [tokenize(c.get("section", "") + " " + c["text"]) for c in chunks]
 
     # --- vocabulaire ---
     vocab = {}
@@ -53,7 +55,15 @@ def main(chunks_path="chunks.json", out_index="index.npz", out_vocab="vocab.json
     norms[norms == 0] = 1.0
     tfidf_norm = tfidf / norms
 
-    np.savez(out_index, tfidf=tfidf_norm.astype(np.float32), idf=idf.astype(np.float32))
+    # stockage creux (lignes, colonnes, valeurs non nulles) : la matrice
+    # dense N x V dépasserait vite les 40 Mo avec plusieurs cours
+    rows, cols = np.nonzero(tfidf_norm)
+    np.savez_compressed(
+        out_index,
+        rows=rows.astype(np.int32), cols=cols.astype(np.int32),
+        vals=tfidf_norm[rows, cols].astype(np.float32),
+        shape=np.array([N, V], dtype=np.int64), idf=idf.astype(np.float32),
+    )
     json.dump(vocab, open(out_vocab, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"Index sauvegardé dans {out_index} et {out_vocab}")
 

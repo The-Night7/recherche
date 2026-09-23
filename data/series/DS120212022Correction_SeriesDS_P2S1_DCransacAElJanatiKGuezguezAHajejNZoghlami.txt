@@ -1,0 +1,429 @@
+Cycle préparatoire 2ème année
+Devoir surveillé 1
+Didier Cransac, Abdessalam El Janati, Khaoula Guezguez, Ahmed Hajej, Zoghlami Naim
+Matière : Séries Date : Vendredi 12 novembre 2021
+Appareils électroniques et documents interdits Durée : 1 h 30 min
+Nombre de pages : 3
+Il sera tenu compte de la qualité de la rédaction et de la précision des justifications.
+Le sujet comporte trois exercices. L’ordre dans lequel ceux-ci sont traités n’est pas imposé.
+  
+Exercice 1. [8 points]
+A) Déterminer la nature de convergence des séries de terme général :
+un =
+
+1
+3
+p
+n
+; vn = 2ln(n
+3 + 1) − ln(n2 + 1)
+B) Déterminer la nature de convergence des séries de terme général :
+an = (−1)
+n
+sin(
+1
+n
+) ; bn =
+
+1 +
+1
+n3
+n
+− 1 ; cn = lnn × bn
+Correction Exercice 1
+A (1) On a lim n→+∞n
+2un = lim n→+∞
+e
+2ln(n)−
+p
+n ln(3) = lim n→+∞
+e
+p
+n
+
+2ln(n)
+p
+n
+−ln(3)
+
+= 0 (par croissance comparée).
+D’où, par le lemme de Riemann (α = 2 > 1), la série Pun est convergente.
+(2) On a vn = ln(n
+3 +1)2 −ln(n2 +1) = ln
+(n
+3 + 1)2
+n2 + 1
+
+. Or lim n→+∞
+(n
+3 + 1)2
+n2 + 1
+= lim n→+∞n
+4 = +∞. Donc, par
+continuité de ln, lim n→+∞vn = +∞ (6= 0). D’où Pvn diverge grossièrement.
+B (1) On commence par remarquer que, pour tout n ≥ 1, on a 1
+n ∈]0, 1] ⊂]0, π2
+]. Donc sin
+1
+n
+
+≥ 0 (pour
+n ≥ 1). D’autre part, (sin(1/n))n est une suite décroissante (comme composée d’une fonction
+croissante et d’une fonction décroissante) qui converge vers 0 (par le théorème des gendarmes).
+D’où, par le critère des séries alternées, Pan est convergente.
+(2) On commence par remarquer que bn ≥ 0 (pour tout n ≥ 1). On a lim n→+∞
+1
+n3
+= 0, donc n ln1 +
+1
+n3
+
+∼
+n ×
+1
+n3 =
+1
+n2
+. Cela implique que lim n→+∞n ln1 +
+1
+n3
+
+= 0. Donc e
+n ln1+
+1
+n3
+
+− 1 ∼ n ln1 +
+1
+n3
+
+∼
+1
+n2
+.
+Or P 1
+n2 est convergente, série de Riemann avec α = 2 > 1, d’où, par le théorème des équivalences
+pour les séries à termes positifs, Pbn converge.
+(3) On note que cn ≥ 0 (pour tout n ≥ 1). D’après l’exemple 2., on a cn ∼
+lnn
+n2
+= dn . Or lim n→+∞n
+3/2
+dn =
+lim n→+∞
+lnn
+n1/2
+= 0 (croissance comparée). D’où, par le lemme de Riemann (3/2 > 1),Pdn est convergente, et par la suite P
+cn est convergente (par équivalence).
+- 1 / 3 -
+<<<PAGE>>>
+Exercice 2. [5.5 points]
+1. (a) Montrer que, pour tout entier naturel k, k
+3 = k + 3k(k − 1) + k(k − 1)(k − 2).
+(b) Montrer que la sérieX
+k≥0
+k
+3
+k!
+est convergente et déterminer sa somme.
+2. Montrer que la sérieX
+n≥2
+un où un =
+1
+p
+n − 1
+−
+2
+p
+n
++
+1
+p
+n + 1
+est convergente et déterminer sa somme.
+Correction Exercice 2
+1. (a) Il suffit de développer et simplifier k + 3k(k − 1) + k(k − 1)(k − 2) pour trouver k
+3
+.
+(b ) Soit k ∈ N tel que k ≥ 3. D’aprés (a),
+k
+3
+k!
+=
+k
+k!
++
+3k(k − 1)
+k!
++
+k(k − 1)(k − 2)
+k!
+.
+En simplifiant, on obtient
+k
+3
+k!
+=
+1
+(k − 1)!
++
+3
+(k − 2)!
++
+1
+(k − 3)!
+.
+Soit Sn =
+Xn
+k=0
+k
+3
+k!
+. On a
+Sn = 5 +
+Xn
+k=3
+k
+3
+k!
+= 5 +
+Xn
+k=3
+1
+(k − 1)!
++
+Xn
+k=3
+3
+(k − 2)!
++
+Xn
+k=3
+1
+(k − 3)!
+= 5 +
+nX−1
+k=2
+1
+k!
++
+nX−2
+k=1
+3
+k!
++
+nX−3
+k=0
+1
+k!
+=
+nX−1
+k=0
+1
+k!
++
+nX−2
+k=0
+3
+k!
++
+nX−3
+k=0
+1
+k!
+.
+Or on sait que P
+n≥0
+1
+n!
+converge vers e , donc limn→∞Sn = 5e . D’où P
+k≥0
+k
+3
+k!
+conerge vers 5e .
+2. Soit
+Sn =
+Xn
+k=2
+
+1
+p
+k − 1
+−
+2
+p
+k
++
+1
+p
+k + 1
+
+=
+Xn
+k=2
+
+1
+p
+k − 1
+−
+1
+p
+k
+
++
+Xn
+k=2
+
+1
+p
+k + 1
+−
+1
+p
+k
+
+= 1 −
+1
+p
+n
++
+1
+p
+n + 1
+−
+1
+p
+2
+Donc lim n→+∞Sn = 1 −
+1
+p
+2
+=
+2 −
+p
+2
+2
+. D’où P
+n≥2
+un converge vers 2−
+p
+2
+2
+.
+Exercice 3. [6.5 points]
+Soit a ∈]0, 1[ et (un )n∈N la suite définie par :
+
+∀ n ∈ N, un+1 = un − u
+2
+n
+u0 = a
+- 2 / 3 -
+<<<PAGE>>>
+1. Montrer que : ∀n ∈ N, un ∈]0, 1[.
+2. Montrer que la suite (un )n∈N est convergente. Quelle est sa limite ?
+3. Montrer que la sérieX
+n≥0
+u
+2
+n
+est convergente et déterminer sa somme.
+4. Montrer que la sérieX
+n≥0
+ln
+un+1
+un
+
+est divergente.
+5. Quelle est la nature de la sérieX
+n≥0
+un ? ( on pourra utiliser la définition)
+Correction Exercice 3
+1. Par récurrence sur n. Soit P (n) : un ∈]0, 1[.
+Initialisation : P (0) est vraie, car u0 = a ∈]0, 1[.
+Héridité : Supposons que P (n) est vraie pour un certain n ∈ N.
+Montrons que P (n + 1) est vraie, c.à.d, un+1 ∈]0, 1[. On a un+1 = un − u
+2
+n ≤ un . Or, par hypothèse de
+récurrence, un < 1, donc un+1 < 1. D’autre part, un+1 = un − u
+2
+n = un (1 − un ). Or, par hypothèse de
+récurrence un > 0 et 1− un > 0, donc, par produit, un > 0. D’où on a établit que un+1 ∈]0, 1[, c.à.d, que
+P (n + 1) est vraie.
+Conclusion : ∀ n ∈ N,un ∈]0, 1[.
+2. Soit n ∈ N. On a, par définition, un+1 − un = −u
+2
+n ≤ 0. Donc la suite (un )n est décroissante. Or, d’après
+la question 1., (un )n est minorée par 0, d’où elle est convergente. Notons l sa limite. Passant à la limite
+dans la définition ((la fonction carré étant continue), on obtien l = l − l
+2
+. Cela implique que l = 0.
+3. Par définition, on a ∀ n ∈ N, u
+2
+n = un − un+1
+. Donc Sn =
+Pn
+k=0
+u
+2
+k
+=
+Pn
+k=0
+(uk − uk+1
+) = u0 − un+1
+. En
+utilisant le fait que lim n→+∞un = 0, on obtient que lim n→+∞Sn = a. D’où la série P
+n≥0
+u
+2
+n
+converge vers a.
+4. On a Xn
+k=0
+ln
+uk+1
+uk
+
+=
+Xn
+k=0
+(ln(uk+1) − ln(uk
+)) = ln(un+1
+) − ln(a). En utilisant le fait que la limite de un
+est 0 et la continuité de ln, on obtient que lim n→+∞
+Xn
+k=0
+ln
+uk+1
+uk
+
+= −∞. D’où la s{erie P
+n≥0
+ln
+un+1
+un
+
+est
+divergente.
+5. En utilisant la définiton et que un > 0, on a un+1
+un
+= 1 − un > 0. Cela implique que ln
+un+1
+un
+
+= ln(1 −
+un ). Or limn→∞ un = 0, donc ln(1 − un ) ∼ −un , et par la suite, un ∼ −ln
+un+1
+un
+
+. Or P−ln
+un+1
+un
+
+est
+divergente (d’après la question 4.), donc, par le théorème des équivalences pour les séries à termes
+positifs P
+n≥0
+un diverge.
+- 3 / 3 -

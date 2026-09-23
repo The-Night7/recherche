@@ -26,7 +26,33 @@ def strip_accents(s):
     )
 
 
+LATEX_CMD_RE = re.compile(r"\\[a-zA-Z]+")
+
+
 def tokenize(text):
+    # \frac, \sum, \mathbb... (notes en LaTeX) : pas des mots du cours
+    text = LATEX_CMD_RE.sub(" ", text)
     text = strip_accents(text.lower())
     words = re.findall(r"[a-z0-9]+", text)
     return [w for w in words if len(w) > 2 and w not in STOPWORDS]
+
+
+# Abréviations d'étudiant et variantes de vocabulaire du cours. Ajoutées à
+# la question (poids réduit) : "critère de d'Alembert" doit aussi trouver
+# "règle d'Alembert", "cvu" doit trouver "convergence uniforme".
+SYNONYMS = {
+    "critere": ["regle"], "regle": ["critere"],
+    "cvs": ["convergence", "simple"], "cvu": ["convergence", "uniforme"],
+    "cvn": ["convergence", "normale"], "cva": ["convergence", "absolue"],
+    "dse": ["developpement", "serie", "entiere"], "dls": ["developpement", "limite"],
+    "sep": ["serie", "termes", "positifs"], "tcsa": ["alternee", "leibniz"],
+    "dalembert": ["alembert"], "alembert": ["dalembert"],
+}
+
+
+def expand_query(tokens):
+    """-> liste de (mot, poids) : mots de la question (1.0) + synonymes (0.5)."""
+    out = [(w, 1.0) for w in tokens]
+    for w in tokens:
+        out += [(s, 0.5) for s in SYNONYMS.get(w, []) if s not in tokens]
+    return out
