@@ -3,6 +3,7 @@
   --paper:#f6f8fb; --grid:rgba(47,91,211,.075); --sheet:#ffffff; --sheet2:#f1f4fa;
   --ink:#16233d; --ink-soft:#5a6680; --rule:#dbe2ee; --margin:#e0625c;
   --rn:#2f5bd3; --series:#b0357d; --accent:var(--rn);
+  --info:#13785f; --physics:#996000; --shs:#7850b6;
   --hl:#fff27a; --hl-ink:inherit; --ok:#1f8a5b; --warn:#a86300; --warn-bg:#fff1dc;
   --sans:'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --serif:'Source Serif 4', Georgia, 'Liberation Serif', 'DejaVu Serif', serif;
@@ -14,6 +15,7 @@
     --paper:#1a2125; --grid:rgba(255,255,255,.035); --sheet:#222b30; --sheet2:#2a353b;
     --ink:#e8ece7; --ink-soft:#98a5a8; --rule:#35423f; --margin:#b9514c;
     --rn:#94b2ff; --series:#f09bcb;
+    --info:#6fd3b3; --physics:#efc072; --shs:#c4a5ef;
     --hl:rgba(255,226,80,.26); --hl-ink:#fff4b8; --ok:#6fd3a2; --warn:#f0b86a; --warn-bg:#3a2f1c;
     color-scheme:dark;
   }
@@ -22,6 +24,7 @@
   --paper:#1a2125; --grid:rgba(255,255,255,.035); --sheet:#222b30; --sheet2:#2a353b;
   --ink:#e8ece7; --ink-soft:#98a5a8; --rule:#35423f; --margin:#b9514c;
   --rn:#94b2ff; --series:#f09bcb;
+  --info:#6fd3b3; --physics:#efc072; --shs:#c4a5ef;
   --hl:rgba(255,226,80,.26); --hl-ink:#fff4b8; --ok:#6fd3a2; --warn:#f0b86a; --warn-bg:#3a2f1c;
   color-scheme:dark;
 }
@@ -127,6 +130,9 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .course[aria-pressed="true"] .sym{ background:var(--c, var(--ink)); color:var(--sheet); }
 .course[data-id="analyse-rn"]{ --c:var(--rn); }
 .course[data-id="series"]{ --c:var(--series); }
+.course[data-id="informatique3"], .card[data-course="informatique3"]{ --c:var(--info); }
+.course[data-id="electromagnetisme"], .card[data-course="electromagnetisme"]{ --c:var(--physics); }
+.course[data-id="shs"], .card[data-course="shs"]{ --c:var(--shs); }
 
 .chips{ display:flex; flex-wrap:wrap; gap:6px; }
 .chip{
@@ -204,6 +210,8 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .source-excerpt summary{ color:var(--ink-soft); font-family:var(--sans); font-size:13px; cursor:pointer; }
 .source-excerpt summary:hover{ color:var(--ink); }
 .source-excerpt pre, .code-block{ margin:10px 0 0; padding:12px 14px; background:var(--sheet2); border-radius:6px; overflow:auto; max-height:20em; font-family:var(--mono); font-size:13.5px; line-height:1.7; white-space:pre; }
+.text-excerpt{ margin:0; white-space:pre-wrap; overflow-wrap:anywhere; font-family:var(--serif); font-size:16px; line-height:1.7; }
+.card[data-course="informatique3"] .text-excerpt{ font-family:var(--mono); font-size:13.5px; tab-size:4; }
 
 .formula{
   margin:12px 0; padding:12px 16px; background:var(--sheet2);

@@ -1,0 +1,1276 @@
+INFORMATIQUE 3
+I .  LES L I S T E S C H A I N É E S
+Eva ANSERMIN & Renaud VERIN & Romuald GRIGNON
+v1.00
+<<<PAGE>>>
+Un point sur l’informatique 3
+• I. Algorithmie : listes chaînées, piles/files, arbres… 
+• 7 CM
+• 8 semaines de TD 
+• 3 DS
+• II . Script shell 
+• 2 CM
+• 4 semaines de TD
+• 1 DS
+• III. Projet : 4 séances
+➢Règles d’évaluation :
+• N-1 sur les notes de DS
+• 0.7 * notes de DS + 0.3 * note de projet
+2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+I. Rappels 
+3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154
+1155
+…
+5340
+…
+10 028
+10 029
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+4
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154
+1155
+…
+5340
+…
+10 028
+10 029
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 ???
+1155
+…
+5340
+…
+10 028
+10 029
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 ???
+1155
+…
+5340
+…
+10 028
+10 029 0 (NULL)
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 5
+1155
+…
+5340
+…
+10 028
+10 029 0 (NULL)
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+8
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 5
+1155
+…
+5340
+…
+10 028
+10 029 1154
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+9
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 5
+1155
+…
+5340
+…
+10 028
+10 029 1154
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+a=5
+10
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 5
+1155
+…
+5340
+…
+10 028
+10 029 1154
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+a=5
+p1=5 11
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 10
+1155
+…
+5340
+…
+10 028
+10 029 1154
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+a=5
+p1=5 12
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+Adresse Valeur 
+1154 10
+1155
+…
+5340
+…
+10 028
+10 029 1154
+…
+…
+22 222
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+a
+p1
+a=5
+p1=5
+a=10 13
+E.ANSERMIN | R.VERIN | R.GRIGNON Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Pointeur et pseudo-code 
+• Un pointeur est :
+• Une variable dont la valeur est une adresse mémoire…
+• L ’adresse mémoire d’une autre variable !
+int main(){
+int a;
+int* p1 = NULL;
+a = 5;
+p1 = &a;
+printf(" a =%d \n", a);
+printf("*p1=%p \n",*p1);
+*p1 = 10;
+printf(" a =%d \n", a);
+return 0;
+}
+VARIABLE 
+a: entier
+p1 : pointeur sur entier 
+DEBUT
+a ← 5
+p1 ← adresse de a
+ECRIRE(«a=»+a)
+ECRIRE(«*p1 =»+*p1)
+*p1 ← 10
+ECRIRE(« a =»+a)
+FIN
+14
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Les tableaux
+• Les valeurs d’un tableau sont à la suite dans la mémoire.
+• Lorsqu’un tableau est déclaré :
+• Un espace mémoire de la bonne taille est réservé.
+• Un pointeur constant portant le nom du tableau est créé. Il pointe sur la première case du tableau. 
+VARIABLE 
+tab[5]: tableau d’entiers
+DEBUT
+tab <- {1,3}
+FIN
+Adresse Valeur 
+1154 1
+3
+0
+0
+0
+…
+…
+…
+…
+22 222 1154
+tab[0]
+tab[1]
+tab[2]
+tab[3]
+tab[4]
+tab 15
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Les tableaux : contraintes
+• Il est obligatoire de connaître la taille d’un tableau lors de sa déclaration.
+• Même lors d’une allocation dynamique, la taille de l’espace mémoire à allouer doit être donnée. 
+• Solutions possibles:
+• Déclarer une taille de tableau suffisament grande :
+➢ Il faut être certain qu’on ne dépassera pas
+➢ Risque de mémoire « gachée »
+• Imposer une limite de taille à l’utilisateur 
+➢ Application limitée
+• Utiliser une liste chaînée.
+16
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+II. Listes chaînées : principe
+17
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Les listes chaînées
+• Une liste chaînée est un objet informatique permettant de stocker des éléments dans un ordre précis (comme un 
+tableau).
+• Contrairement à un tableau, les éléments d’une liste chaînée ne sont pas à la suite dans la mémoire. 
+• Même lors d’une allocation dynamique, la taille de l’espace mémoire à allouer doit être donnée. 
+• Un élément stocké dans une liste chaînée est toujours accompagné d’un pointeur indiquant où se trouve l’élément 
+suivant de la liste dans la mémoire.
+✓ Les éléments de la liste ne sont pas à la suite dans la mémoire mais on sait toujours où se trouve l’élément 
+suivant grâce à un pointeur !
+18
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, une structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc…) 
+• Un pointeur vers l’occurrence suivante 
+19
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, un structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc...)
+• Un pointeur vers l’occurrence suivante 
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+20
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, un structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc...)
+• Un pointeur vers l’occurrence suivante 
+• Exemple : 
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+Structure Chainon :
+elmt : entier 
+suivant : pointeur sur structure Chainon
+21
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, un structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc...)
+• Un pointeur vers l’occurrence suivante 
+• Exemple : 
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+Structure Chainon :
+elmt : réel 
+suivant : pointeur sur structure Chainon
+22
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, un structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc...)
+• Un pointeur vers l’occurrence suivante 
+• Exemple : 
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+Structure Chainon :
+elmt : Etudiant 
+suivant : pointeur sur structure Chainon
+23
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Constitution d’une liste chaînée
+• Une liste chaînée est constituée de chaînons, un structure qui contient :
+• L ’ élément à stocker (entier, flottant, tableau de caractères etc...)
+• Un pointeur vers l’occurrence suivante 
+• Exemple  en C : 
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+typedef struct chainon
+{
+int nombre;
+struct chainon* suivant;
+} Chainon;
+struct chainon
+{
+int nombre;
+struct chainon* suivant;
+};
+typedef struct chainon Chainon;
+OU
+24
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : schéma 
+elm *
+Chainon
+Elément stocké (entier, réel, structure, ...)
+Pointeur sur Chainon suivant
+25
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : schéma 
+Chainon
+elm * elm *elm * elm *….
+26
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : schéma 
+Chainon
+elm * elm *elm * elm *….
+Pointeur sur le premier Chainon de la liste (Tête)
+27
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : schéma 
+Chainon
+elm * elm *elm * elm *….
+Pointeur sur le premier Chainon de la liste (Tête)
+NULL
+Le dernier Chainon pointe sur NULL
+28
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées en mémoire : exemple
+Adresse Valeur
+1 000 1154
+1154 10
+1158 5340
+115C
+…
+5340 2
+5344 10 02C
+…
+10 02C 25
+10 031 22 222
+…
+22 222 103
+22 226 NULL
+pliste
+10 2 25 103 NULL
+pliste
+29
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+II. Listes chaînées : opérations
+30
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : construction
+1. Initialisation de la chaîne : initialisation pointeur sur Chainon NULL 
+pliste
+NULL
+31
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : construction
+1. Initialisation de la chaîne : initialisation pointeur sur Chainon NULL
+2. Création d’un Chainon 
+pliste
+NULL
+NULL
+10
+32
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : construction
+1. Initialisation de la chaîne : initialisation pointeur sur Chainon NULL
+2. Création d’un Chainon
+3. Faire pointer le pointeur sur le Chainon créé 
+pliste
+NULL
+10
+33
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Liste chaînée : construction
+1. Initialisation de la chaîne : initialisation pointeur sur Chainon NULL
+2. Création d’un Chainon 
+Chainon* creationChainon(){
+//déclaration du Chainon
+Chainon* c = malloc(sizeof(Chainon));
+if(c==NULL){
+exit(1);
+}
+printf("Entrer la valeur : ");
+if( scanf("%d", &(c->elmt)) != 1 ){
+exit(2);
+}
+c->suivant=NULL;
+return c;
+}
+Remarque : nous verrons plus tard l’intérêt d’utiliser le malloc 34
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : construction
+1. Initialisation de la chaîne : initialisation pointeur sur Chainon NULL
+2. Création d’un Chainon
+3. Pointer le pointeur sur le Chainon créé 
+Chainon* creationChainon(){
+//déclaration du Chainon
+Chainon* c = malloc(sizeof(Chainon));
+if(c==NULL){
+exit(1);
+}
+printf("Entrer la valeur : ");
+if( scanf("%d", &(c->elmt)) != 1 ){
+exit(2);
+}
+c->suivant=NULL;
+return c;
+}
+int main(){
+Chainon* pliste = NULL; //initialisation
+pListe = creationChainon();
+…
+return 0;
+}
+35
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+pliste
+10 2 25 103 NULL
+p1 ← pliste
+p1 = pliste;
+36
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+10 2 25 103 NULL
+pliste
+p1 ← pliste
+p1 = pliste;
+37
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+• On passe au Chainon suivant et on traite son élément
+10 2 25 103 NULL
+pliste
+p1 ← suivant(p1)
+p1 = p1 -> suivant; 
+38
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+• On passe au Chainon suivant et on traite son élément.
+10 2 25 103 NULL
+pliste
+p1 ← suivant(p1)
+p1 = p1 -> suivant; 
+39
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Liste chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+• On passe au Chainon suivant et on traite son élément.
+• …
+10 2 25 103 NULL
+pliste
+p1 ← suivant(p1)
+p1 = p1 -> suivant; 
+40
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+• On passe au Chainon suivant et on traite son élément.
+• …
+• Jusqu’à arriver au pointeur NULL
+10 2 25 103 NULL
+pliste
+p1 ← suivant(p1)
+p1 = p1 -> suivant; 
+41
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+• Pour parcourir une liste chaînée :
+• On déclare un pointeur = pliste. Il pointe donc sur le premier élément.
+• On traite le premier élément.
+• On passe au Chainon suivant et on traite son élément.
+• …
+• Jusqu’à arriver au pointeur NULL
+10 2 25 103 NULL
+pliste
+On doit parcourir les éléments 1 par 1 ! On ne peut pas utiliser d’indice comme pour 
+les tableaux.
+p1 ← suivant(p1)
+p1 = p1 -> suivant; 
+42
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : parcours
+10 2 25 103 NULL
+pliste
+procédure traiterListe(pliste : pointeur sur Chainon)
+VARIABLE 
+p1 : pointeur sur Chainon
+DEBUT
+p1 ← pliste;
+TANT QUE p1 ≠ NULL FAIRE
+traiter (element(p1))
+p1 ← suivant(p1)
+FIN TANT QUE
+}
+p1 ← suivant(p1)
+43
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+pliste
+10 5 12 NULL
+44
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+a. Création du Chainon
+b. Parcours de la liste jusqu’au dernier Chainon
+pliste
+10 5 12 NULL
+7
+NULL
+p1 ← suivant(p1)
+45
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+a. Création du Chainon
+b. Parcours de la liste jusqu’au dernier Chainon
+pliste
+10 5 12 NULL
+7
+NULL
+p1 ← suivant(p1)
+46
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+a. Création du Chainon
+b. Parcours de la liste jusqu’au dernier Chainon
+pliste
+10 5 12 NULL
+7
+NULL
+p1 ← suivant(p1)
+47
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+a. Création du Chainon
+b. Parcours de la liste jusqu’au dernier Chainon
+c. Faire pointer le suivant du dernier Chainon sur le nouveau. 
+pliste
+10 5 12
+7
+NULL
+p1
+48
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+a. Création du Chainon
+b. Parcours de la liste jusqu’au dernier Chainon
+c. Faire pointer le suivant du dernier Chainon sur le nouveau. 
+fonction insertFin(pliste : pointeur sur Chainon) : pointeur sur Chainon
+VARIABLE 
+nouveau, p1 : pointeur sur Chainon
+DEBUT
+nouveau ← creationChainon() // etape (a)
+p1 ← pliste
+TANT QUE(suivant(p1) ≠ NULL) FAIRE // étape (b)
+p1 ← suivant(p1)
+FIN TANT QUE
+suivant(p1) ← nouveau // étape (c) 
+// par convention on retourne le début de liste
+// même si il n’a pas été modifié
+RETOURNER pliste
+FIN
+Complexité
+temporelle
+O(N)
+49
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+a. Création Chainon
+pliste
+10 5 12 NULL
+NULL
+7
+50
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+a. Création Chainon
+b. Faire pointer le suivant du nouveau sur la chaîne 
+pliste 10 5 12 NULL
+7
+51
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+a. Création Chainon
+b. Faire pointer le suivant du nouveau sur la chaîne
+c. Faire pointer pliste sur le nouveau Chainon   
+10 5 12 NULL
+7
+pliste
+52
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+Attention à l’ordre !
+pliste
+10 5 12 NULL
+NULL
+7
+53
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+Attention à l’ordre !
+10 5 12 NULL
+NULL
+7
+Le reste de la liste est perdu !
+pliste
+Chaîne infinie
+54
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+a. Création Chainon
+b. Faire pointer le suivant du nouveau sur la chaîne
+c. Faire pointer pliste sur le nouveau Chainon   
+Fonction insertDebut( pliste : pointeur sur Chainon) : pointeur sur Chainon
+VARIABLE
+nouveau : pointeur sur Chainon
+DEBUT
+nouveau ← creationChainon() // étape (a)
+suivant(nouveau) ← pliste // étape (b)
+pliste ← nouveau // étape (c) 
+RETOURNER pliste
+FIN
+Le pointeur sur le début de la liste ayant été modifié, il faut le retourner !!
+Complexité
+temporelle
+O(1)
+55
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+a. Création du nouveau Chainon
+10 5 12 NULL
+pliste
+NULL
+NULL
+7
+56
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+a. Création du nouveau Chainon
+b. Parcourir la liste jusqu’à Chainon devant précéder le nouveau
+10 5 12 NULL
+pliste
+7
+p1
+NULL 57
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+a. Création du nouveau Chainon
+b. Parcourir la liste jusqu’à Chainon devant précédé le nouveau
+c. Faire pointer le suivant du nouveau sur le suivant de p1
+10 5 12 NULL
+pliste
+7
+p1
+58
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+a. Création du nouveau Chainon
+b. Parcourir la liste jusqu’à Chainon devant précédé le nouveau
+c. Faire pointer le suivant du nouveau sur le suivant de p1
+d. Faire pointer le suivant de p1 sur le nouveau 
+10 5 12 NULL
+pliste
+7
+p1
+59
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+Attention à l’ordre !
+10 5 12 NULL
+pliste
+7
+p1
+NULL 60
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+Attention à l’ordre !
+10 5 12 NULL
+pliste
+7
+p1
+NULL
+Reste de la liste perdue
+Chaîne infinie
+61
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+1. Ajout d’un Chainon en fin de chaîne
+2. Ajout d’un Chainon en début de chaîne
+3. Ajout d’un Chainon en milieu de chaîne
+a. Parcourir la liste jusqu’à Chainon devant précéder le nouveau
+b. Création du nouveau Chainon
+c. Faire pointer le suivant du nouveau sur le suivant de p1
+d. Faire pointer le suivant de p1 sur le nouveau 
+62
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : ajout de Chainon 
+a. Parcourir la liste jusqu’à Chainon devant précéder le nouveau
+b. Création du nouveau Chainon
+c. Faire pointer le suivant du nouveau sur le suivant de p1
+d. Faire pointer le suivant de p1 sur le nouveau 
+fonction insertPos( pliste : pointeur sur Chainon, pos: entier) pointeur sur Chainon
+VARIABLE
+nouveau, p1 : pointeurs sur Chainon
+i: entier 
+DEBUT
+SI (pos EST EGAL A 0) OU (pliste EST EGAL A NULL) ALORS // insertion à l’indice 0
+pliste ← insertDebut(pliste)
+SINON
+p1 ← pliste
+POUR i DE 0 à pos FAIRE // étape (a)
+SI p1 EST EGAL A NULL ALORS
+ERREUR() // pos > nombre de chainons
+SINON
+p1 ← suivant(p1)
+FIN SI 
+FIN POUR
+nouveau ← creationChainon() // étape (b)
+suivant(nouveau) ← suivant(p1) // étape (c)
+suivant(p1) ← nouveau  // étape (d)
+FIN SI
+RETOURNER pliste
+FIN
+63
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+10 2 25 103 NULL* * * *
+pliste
+64
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+a. Initialiser un pointeur sur le premier chaînon
+10 2 25 103 NULL* * * *
+pliste
+p1
+65
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+a. Initialiser un pointeur sur le premier chaînon
+b. Faire pointer pliste sur le suivant
+10 2 25 103 NULL* * * *
+pliste← suivant(pliste)
+p1
+66
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+a. Initialiser un pointeur sur le premier chaînon
+b. Faire pointer pliste sur le suivant
+c. Libérer le Chainon à supprimer  
+1
+0
+2 25 103 NULL* * * *
+plistep1
+10
+p1
+67
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+a. Initialiser un pointeur sur le premier chaînon
+b. Faire pointer pliste sur le suivant
+c. Libérer le Chainon à supprimer  
+1
+0
+2 25 103 NULL* * * *
+plistep1
+10
+p1
+• Libérer la mémoire allouée au Chainon à supprimer permet d’éviter les fuites mémoires (RAM). 
+68
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+a. Initialiser un pointeur sur le premier chaînon
+b. Faire pointer pliste sur le suivant
+c. Libérer le Chainon à supprimer  
+Chainon* suppDebut(Chainon * pliste){
+Chainon* p1;
+// on vérifie si la liste contient au moins un Chainon
+if(pliste==NULL){
+exit(1);
+​}
+p1=pliste; // étape (a)
+pliste=p1->suivant; // étape (b)
+free(p1);           // étape (c) : ‘libérer(p1)’ en pseudo-code
+return pliste;
+}
+69
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes chaînées : suppression de Chainon
+1. Suppression d’un Chainon en début de chaîne
+2. Exercice : suppression d’un Chainon en milieu de chaîne
+10 2 25 103 NULL* * * *
+pliste
+70
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+III.  Listes doublement chaînées
+71
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Les listes que nous venons d’étudier sont dites simplement chaînées.
+• On peut également construire des listes doublement chaînées.
+10 2 25 103 NULL* * * *
+10 2 25 103* * * * * * * * NULL
+NULL
+72
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Les Chainons des listes doublement chaînées possèdent deux pointeurs: l’un indiquant le 
+Chainon suivant, l’autre indiquant le précédent .
+• Ces chaînes sont plus compliquées à implémenter mais permettent de parcourir la liste dans 
+les deux sens. 
+10 2 25 103* * * * * * * * NULL
+NULL
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+precedent : pointeur sur structure Chainon
+73
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Insertion dans une liste doublement chaînée: 
+NULL
+NULL
+10 101 3
+8NULL NULL
+nouveau
+74
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Insertion dans une liste doublement chaînée: 
+NULL
+NULL
+10 101 3
+8
+p1 precedent(nouveau) ← p1
+suivant(nouveau) ← suivant(p1)
+nouveau
+75
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Insertion dans une liste doublement chaînée: 
+NULL
+NULL
+10 101 3
+8
+p1
+nouveau
+precedent(suivant(p1)) ← nouveau
+76
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Listes doublement chaînées
+• Insertion dans une liste doublement chaînée: 
+NULL
+NULL
+10 101 3
+8
+p1
+nouveau
+suivant(p1) ← nouveau;
+77
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+IV.  Listes chaînées ou tableaux ? 
+78
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’éléments Fixe Illimité et non fixé
+79
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’éléments Fixe Illimité et non fixé
+Données contiguës Oui Non
+80
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’éléments Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale :
+81
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’élément Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale : Nécessite l’espace pour 
+les éléments  + un 
+pointeur
+Chaque élément de la 
+liste a un pointeur (ou 
+plus) associé.
+82
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’élément Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale : Nécessite l’espace pour 
+les éléments  + un 
+pointeur
+Chaque élément de la 
+liste a un pointeur (ou 
+plus) associé.
+Complexité temporelle : 
+Ajout/suppression d’un 
+élément
+83
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’élément Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale : Nécessite l’espace pour 
+les éléments  + un 
+pointeur
+Chaque élément de la 
+liste a un pointeur (ou 
+plus) associé.
+Complexité temporelle : 
+Ajout/suppression d’un 
+élément
+Décalage de tous les 
+éléments O(n)
+O(1) en bout de chaîne
+O(n) sinon
+Accès à un élément
+84
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’élément Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale : Nécessite l’espace pour 
+les éléments  + un 
+pointeur
+Chaque élément de la 
+liste a un pointeur (ou 
+plus) associé.
+Complexité temporelle : 
+Ajout/suppression d’un 
+élément
+Décalage de tous les 
+éléments O(n)
+O(1) en bout de chaîne
+O(n) sinon
+Accès à un élément Accès direct O(1) O(1) en bout de chaîne
+O(n) sinon
+85
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Comparaison liste chaînée/ tableau
+Tableau Liste chaînée
+Nombre d’élément Fixe Illimité et non fixé
+Données contiguës Oui Non
+Complexité spatiale : Nécessite l’espace pour 
+les éléments  + un 
+pointeur
+Chaque élément de la 
+liste a un pointeur (ou 
+plus) associé.
+Complexité temporelle : 
+Ajout/suppression d’un 
+élément
+Décalage de tous les 
+éléments O(n)
+O(1) en bouts de chaîne
+O(n) sinon
+Accès à un élément Accès direct O(1) O(1) en bouts de chaîne
+O(n) sinon
+✓ Les listes chaînées ne sont pas toujours la meilleure solution !
+86
+E.ANSERMIN | R.VERIN | R.GRIGNON
+<<<PAGE>>>
+Pour résumer
+• Une liste chaînée est constituée d’éléments et de pointeurs associés indiquant l’emplacement mémoire 
+de l’élément suivant (et/ou précédent).
+• Il faut donc bien gérer les pointeurs !!
+• Ce principe permet à la liste chaînée de ne pas avoir un nombre fixé d’éléments, contrairement au 
+tableau.
+• La liste chaînée simplifie également certaines opérations par rapport au tableau. Elle n’est cependant 
+pas toujours la meilleure solution.
+• Le principe des listes chaînées est à la base de nombreux autres objetsinformatiques … et à la base de 
+votre programme d’algorithmie de deuxième année !
+87
+E.ANSERMIN | R.VERIN | R.GRIGNON

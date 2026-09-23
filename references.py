@@ -13,7 +13,7 @@ import re
 
 from text_utils import strip_accents
 
-KIND_ALIASES = {"td": "td", "ds": "ds", "qcm": "qcm", "cc": "ds", "partiel": "ds", "examen": "ds"}
+KIND_ALIASES = {"td": "td", "ds": "ds", "qcm": "qcm", "cc": "cc", "partiel": "ds", "examen": "ds"}
 
 # td 1 / td1 / td n°1 / td-2a / ds1 v2
 DOC_RE = re.compile(
@@ -30,7 +30,7 @@ ENONCE_RE = re.compile(r"\b(?:enonces?|sujets?)\b")
 
 # titre d'un document : "TD1", "TD2a", "DS1 V2", "DS3 rattrapage", "QCM4",
 # ou label de l'ancien format "TD1 : Normes, ..." / "TD1 1 : ..."
-TITLE_RE = re.compile(r"^(TD|DS|QCM)\s*(\d+)([a-d])?(?:\s+V(\d+))?", re.I)
+TITLE_RE = re.compile(r"^(TD|DS|CC|QCM)\s*(\d+)([a-d])?(?:\s+V(\d+))?", re.I)
 SECTION_EX_RE = re.compile(r"exercice\s+(\d+)", re.I)
 HEADER_EX_RE = re.compile(r"^\s*exercice\s+(\d+)\b", re.I | re.M)
 

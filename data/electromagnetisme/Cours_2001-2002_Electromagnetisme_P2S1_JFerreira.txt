@@ -1,0 +1,3161 @@
+Université Joseph Fourier
+DEUG Sma – SP2-2
+Cours
+de Magnétostatique
+Jonathan Ferreira
+Année universitaire 2001-2002
+<<<PAGE>>>
+Plan du cours
+I- Le champ magnétique
+1. Introduction
+ a. Bref aperçu historique
+ b. Nature des effets magnétiques
+2. Expressions du champ magnétique
+ a. Champ créé par une charge en mouvement
+ b. Champ créé par un ensemble de charges en mouvement
+ c. Champ créé par un circuit électrique (formule de Biot et Savart)
+ d. Propriétés de symétrie du champ magnétique
+3. Calcul du champ dans quelques cas simples
+ a. Fil rectiligne infini
+ b. Spire circulaire (sur l’axe)
+ c. Solénoïde infini (sur l’axe)
+II- Lois Fondamentales de la magnétostatique
+1. Flux du champ magnétique
+ a. Conservation du flux magnétique
+ b. Lignes de champ et tubes de flux
+2. Circulation du champ magnétique
+ a. Circulation du champ autour d’un fil infini
+ b. Le théorème d’Ampère
+ c. Relations de continuité du champ magnétique
+ d. Les trois façons de calculer le champ magnétique
+3. Le dipôle magnétique
+ a. Champ magnétique créé par une spire
+ b. Le modèle du dipôle en physique
+III- Actions et énergie magnétiques
+1. Force magnétique sur une particule chargée
+ a. La force de Lorentz
+ b. Trajectoire  d’une particule  chargée en présence d’un champ
+ c. Distinction entre champ électrique et champ électrostatique
+2. Actions magnétiques sur un circuit fermé
+ a. La force de Laplace
+ b. Définition légale de l’Ampère
+ c. Moment de la force magnétique exercée sur un circuit
+ d. Exemple du dipôle magnétique
+ e. Complément : force de Laplace et principe d’Action et de Réaction
+3. Energie potentielle magnétique
+ a. Le théorème de Maxwell
+ b. Energie potentielle d’interaction magnétique
+ c. Expressions générales de la force et du couple  magnétiques
+ d. La règle du flux maximum
+IV- Induction électromagnétique
+1. Les lois de l’induction
+ a. L’approche de Faraday
+ b. La loi de Faraday
+ c. La loi de Lenz
+2. Induction mutuelle et auto-induction
+ a. Induction mutuelle entre deux circuits fermés
+ b. Auto-induction
+3. Régimes variables
+ a. Définition du régime quasi-statique
+ b. Forces électromotrices  induites
+ c. Retour sur l’énergie  magnétique
+ d. Bilan énergétique d’un circuit  électrique
+<<<PAGE>>>
+1
+Chapitre I- Le champ magnétique
+I.1- Introduction
+I.1.1 Bref aperçu historique
+Les aimants sont connus depuis l’Antiquité, sous le nom de magnétite, pierre trouvée à
+proximité de la ville de Magnesia (Turquie). C’est de cette pierre que provient le nom actuel
+de champ magnétique.
+Les chinois furent les premiers à utiliser les propriétés des aimants, il y a plus de 1000 ans,
+pour faire des boussoles. Elles étaient constituées d’une aiguille de magnétite posée sur de la
+paille flottant sur de l’eau contenue dans une récipient gradué.
+Au XVIIIème siècle, Franklin découvre la nature électrique de la foudre (1752). Or, il y avait
+déjà à cette époque de nombreux témoignages de marins attirant l’attention sur des faits
+étranges :
+• Les orages perturbent les boussoles
+• La foudre frappant un navire aimante tous les objets métalliques.
+Franklin en déduisit « la possibilité d’une communauté de nature entre les phénomènes
+électriques et magnétiques ».
+Coulomb (1785) montre la décroissance en 1 2r des deux forces.
+Mais il faut attendre la fin du XIXème siècle pour qu’une théorie complète apparaisse, la
+théorie de l’électromagnétisme.
+Tout commença avec l’expérience de Oersted en 1820. Il plaça un fil conducteur au dessus
+d’une boussole et y fit passer un courant. En présence d’un courant l’aiguille de la boussole
+est effectivement déviée, prouvant sans ambiguïté un lien entre le courant électrique et le
+champ magnétique. Par ailleurs, il observa :
+• Si on inverse le sens du courant, la déviation change de sens.
+• La force qui dévie l’aiguille est non radiale.
+L’étude quantitative des interactions entre aimants et courants fut faite par les physiciens Biot
+et Savart (1820). Ils mesurèrent la durée des oscillations d’une aiguille aimantée en fonction
+de sa distance à un courant rectiligne. Ils trouvèrent que la force agissant sur un pôle est
+dirigée perpendiculairement à la direction reliant ce pôle au conducteur et qu’elle varie en
+raison inverse de la distance. De ces expériences, Laplace déduisit ce qu’on appelle
+aujourd’hui la loi de Biot et Savart. Une question qui s’est ensuite immédiatement posée fut :
+si un courant dévie un aimant, alors est-ce qu’un aimant peut faire dévier un courant ?
+Ceci fut effectivement prouvé par Davy en 1821 dans une expérience où il montra qu’un arc
+électrique était dévié dans l’entrefer d’un gros  aimant.
+L’élaboration de la théorie électromagnétique mit en jeu un grand nombre de physiciens de
+renom : Oersted, Ampère, Arago, Faraday, Foucault, Henry, Lenz, Maxwell, Weber,
+Helmholtz, Hertz, Lorentz et bien d’autres. Si elle débuta en 1820 avec Oersted, elle ne fut
+<<<PAGE>>>
+2
+mise en équations par Maxwell qu’en 1873 et ne trouva d’explication satisfaisante qu’en
+1905, dans le cadre de la théorie de la relativité d’Einstein.
+Dans ce cours de magnétostatique, nous traiterons dans les chapitres I à III de la question
+suivante : comment produire un champ magnétique à partir de courants permanents ? Nous
+n’aborderons que partiellement (chapitre IV) le problème inverse : comment produire de
+l’électricité à partir d’un champ magnétique ?
+I.2.1-  Nature des effets magnétiques
+Jusqu’à présent nous n’avons abordé que des particules chargées immobiles , ou encore des
+conducteurs (ensembles de particules) en équilibre. Que se passe-t-il lorsqu’on considère
+enfin le mouvement des particules ?
+Soient deux particules q1 et q2 situées à un instant t aux points M1 et M2 . En l’absence de
+mouvement, la particule q1 créé au point M2  un champ électrostatique EM12()  et la particule
+q2 subit une force dont l’expression est donnée par la loi de Coulomb
+Fq E M12 2 1 2/ ()=
+Qui dit force, dit modification de la quantité de mouvement de q2 puisque F dp
+dt
+p
+t
+12
+22
+/ =≈ ∆
+∆ .
+Autrement dit, la force électrostatique due à q1 crée une modification ∆ p2  pendant un temps
+∆t. Une force correspond en fait à un transfert d’information (ici de q1 vers q2) pendant un
+court laps de temps. Or, rien ne peut se propager plus vite que la vitesse c de la lumière. Cette
+vitesse étant grande mais finie, tout transfert d’information d’un point de l’espace à un autre
+prend nécessairement un temps fini. Ce temps pris par la propagation de l’information
+introduit donc un retard, comme nous allons le voir.
+On peut considérer l’exemple ci-dessus comme se qui se passe effectivement dans le
+référentiel propre de q1. Dans un référentiel fixe, q1 est animée d’une vitesse v1. Quelle serait
+alors l’action de q1 sur une particule q2 animée d’une vitesse v2  ?
+q1
+v1
+v2r q2
+u12
+v1dt
+c dt
+v2dt
+E1(t)E1(t-dt)
+Soit dt le temps qu’il faut à l’information (le champ électrostatique créé par q1) pour se
+propager de q1 vers q2. Pendant ce temps, q1 parcourt une distance vd t1  et q2 parcourt la
+distance vd t2 . Autrement dit, lorsque q2 ressent les effets électrostatiques dus à q1, ceux-ci ne
+sont plus radiaux : le champ Et d t1() −  « vu » par q2 est dirigé vers l’ancienne position de q1
+et dépend de la distance cdt et non pas de la distance r. On voit ici qu’il faut corriger la loi de
+<<<PAGE>>>
+3
+P
+q
+v
+M
+B(M)
+Coulomb qui nous aurait donné le champ Et1() , qui est faux (suppose propagation instantanée
+de l’information ie. une vitesse infinie).
+Les effets électriques ne peuvent se résumer au champ électrostatique.
+Cependant, l’expérience montre que la prise en compte de cette correction ne suffit pas à
+expliquer la trajectoire de q2 : une force supplémentaire apparaît, d’ailleurs plus importante
+que cette correction ! La force totale exercée par q1 sur q2 s’écrit en fait
+F qq
+rc c
+12
+12
+0
+2
+2
+4
+/ = π +∧ ∧ 
+
+
+
+
+
+
+
+
+ε u vv u  12
+1
+12
+Dans cette expression (que l’on admettra) on voit donc apparaître un deuxième terme qui
+dépend des vitesses des deux particules ainsi que la vitesse de propagation de la lumière. Ce
+deuxième terme s’interprète comme la contribution d’un champ magnétique créé par q1.
+Autrement dit,
+Fq E v B12 2 1 2 1/ =+ ∧()
+la force magnétique est une correction en vc/()
+2
+ à la force de Coulomb.  Nous reviendrons
+plus tard (chapitre III) sur l’expression et les propriétés de la force magnétique. Cette
+expression n’est valable que pour des particules se déplaçant à des vitesses beaucoup plus
+petites que celle de la lumière (approximation de la magnétostatique).
+Dernière remarque : cette expression dépend de la vitesse de la particule, ce qui implique que
+le champ magnétique dépend du référentiel (voir discussion chapitre III) !
+I.2- Expressions du champ magnétique
+I.2.1- Champ magnétique créé par une charge en mouvement
+D’après ci-dessus, le champ magnétique créé en un point M par une particule de charge q
+située en un point P et animée d’une vitesse v dans un référentiel galiléen est
+BM qv PM
+PM
+() = µ
+π
+∧0
+3
+4
+L’unité du champ magnétique dans le système international est le Tesla (T). Une autre unité
+appartenant au système CGS, le Gauss (G), est  également très souvent utilisée :
+1 Gauss =  10  Tesla-4 .
+Le facteur µ0  est la perméabilité du vide : il décrit la capacité du vide à « laisser passer » le
+champ magnétique. Sa valeur dans le système d’unités international MKSA est
+µ=π −
+0
+741 0 H.m-1 (H pour Henry)
+<<<PAGE>>>
+4
+Remarques :
+• Cette valeur est exacte, directement liée à la définition de l’Ampère (voir Chapitre III). Le
+facteur 4π a été introduit pour simplifier les équations de Maxwell (cf Licence).
+• Nous avons vus que les phénomènes électriques et magnétiques sont intimement reliés.
+Les expériences de l’époque montrèrent que la vitesse de propagation était toujours la
+même, à savoir c, la vitesse de la lumière. Cela signifiait qu’il y avait donc un lien secret
+entre le magnétisme, l’électricité et la lumière, et plongeait les physiciens dans la plus
+grande perplexité. On pose donc
+µ=00
+2 1ε c
+ce qui permet de définir la valeur de la permittivité du vide (caractéristique décrivant sa
+capacité à affaiblir les forces électrostatiques)
+ε0
+910
+36≈ π
+−
+F.m-1 (F pour Farad)
+la valeur approchée provenant de notre connaissance approchée de la valeur de la vitesse
+de la lumière.
+Deux propriétés importantes du champ magnétique:
+• De même que pour le champ électrostatique, le principe de superposition  s’applique au
+champ magnétique. Si on considère deux particules 1 et 2 alors le champ magnétique créé
+en un point M quelconque de l’espace sera la somme vectorielle des champs créés par
+chaque particule.
+• Du fait du produit vectoriel, le champ magnétique est ce qu’on appelle un pseudo-vecteur
+(voir plus bas).
+Quelques ordres de grandeur :
+• Un aimant courant B ≈ 10 mT
+• Un électroaimant ordinaire B ≈  Tesla
+• Une bobine supraconductrice B ≈ 20 Tesla
+• Une bobine résistive B ≈ de 30  à   Tesla1000
+• Champ magnétique interstellaire moyen : B ≈µ G
+• Champ magnétique dans une tache solaire B ≈≈ kG  0.1 Tesla
+• Champ magnétique terrestre : B⊥ ≈ 04, G , Bhorizontal ≈ 03. G
+• Champ magnétique d’une étoile à neutrons B ≈ 108  Tesla
+I.2.2- Champ magnétique créé par un ensemble de charges en mouvement
+Considérons N particules de charges qi  situés en des points Pi  et de vitesse vi . En vertu du
+principe de superposition, le champ magnétique créé en un point M est la somme vectorielle
+des champs créés par chaque particule et vaut
+BM qv PM
+PM
+ii i
+ii
+N
+() = µ
+π
+∧
+=
+∑
+0
+3
+14
+Si le nombre de particules est très grand dans un volume V donné et qu’on s’intéresse à des
+échelles spatiales bien plus grandes que la distance entre ces particules, il est avantageux
+<<<PAGE>>>
+5
+I
+C
+M
+B(M)
+dOP
+P
+v(P’)
+dl=v dtP
+Section du fil
+d2S
+d’utiliser une description continue. Il faut donc définir des distributions continues comme
+nous l’avons fait en électrostatique. Mais des distributions continues de quoi ?
+Le passage à la limite continue consiste à assimiler tout volume élémentaire dV3 , situé autour
+d’un point P’ quelconque de la distribution de charges en mouvement, à une charge dq animée
+d’une vitesse moyenne v. Le champ magnétique résultant s’écrit alors
+BM dqv P P M
+PMV
+() ()= µ
+π
+′ ∧ ′
+′
+∫
+0
+3
+4
+où l’intégrale porte sur le volume V total embrassé par ces charges.
+En toute généralité, considérons α espèces différentes de particules (ex : électrons, ions),
+chacune animée d’une vitesse vα , de charge qα  et d’une densité numérique nα . On peut alors
+écrire dq v n q v d V= ∑ ααα
+α
+3 , où la somme porte sur le nombre d’espèces différentes et non sur
+le nombre de particules. On reconnaît ainsi l’expression générale du vecteur densité locale de
+courant jn q v= ∑ αααα .
+L’expression du champ magnétique créé par une distribution volumique de charges
+quelconque est donc
+BM jP P M
+PM
+dV
+V
+() ()= µ
+π
+′ ∧ ′
+′∫∫∫
+0
+3
+3
+4
+Ce résultat est général et valable quelle que soit la forme du conducteur. On peut l’appliquer,
+par exemple, à l’intérieur d’un métal de volume V quelconque.
+I.2.3- Champ créé par un circuit électrique (formule de Biot et Savart)
+Dans le cas particulier d’un circuit filiforme fermé, parcouru par un courant permanent I, la
+formule précédente va nous fournir la loi de Biot et Savart.
+Dans ce cas, le volume élémentaire s’écrit dV dS d l32 =  où dS2  est un élément de surface
+transverse situé en P’ et dl  un élément de longueur du fil.
+<<<PAGE>>>
+6
+Or, on considère toujours des cas où le point M est situé à une distance telle du fil qu’on peut
+considérer celui-ci comme très mince.
+Plus précisément, le vecteur vitesse (ou densité de courant) a la même orientation sur toute la
+section du fil ( j parallèle à dl et à dS2 ). Ainsi, on écrit
+BM d l jP P M
+PM
+dS
+jP dS dl PM
+PM
+jP dS dl PM
+PM
+Idl PM
+PM
+I dOP PM
+tioncircuit circuit
+tion
+circuit
+tion
+circuit
+circuit
+() ()
+()
+()
+sec
+sec
+sec
+= µ
+π
+′ ∧ ′
+′
+= µ
+π
+′
+
+
+
+
+ ∧
+= µ
+π
+′ ⋅
+
+
+
+
+ ∧
+= µ
+π
+∧
+= µ
+π
+∧
+∫∫∫∫
+∫∫
+∫
+∫∫
+∫
+∫
+0
+3
+2 0
+2
+3
+0
+2
+3
+0
+3
+0
+44
+44
+4 PMPM
+3
+où l’on a utilisé P’M>>PP’ (donc ′ ≈PM P M ), P étant un point sur le fil (centre de la section).
+Par ailleurs, nous avons utilisé le fait que la normale à la section ainsi que dl  étaient orientés
+dans le sens du courant ( jd Sd l j d Sd l22 =⋅() ).
+Formule de Biot et Savart : en un point M quelconque de l’espace, le champ magnétique
+créé par un circuit parcouru par un courant permanent I est
+BM Id P P M
+PMcircuit
+() = µ
+π
+∧
+∫
+0
+3
+4
+où P est un point quelconque le long du circuit et dP dOP= .
+La formule de Biot et Savart (1820) a été établie expérimentalement et fournit un lien
+explicite entre le champ magnétique et le courant. Mais ce n’est que plus tard (1880+) que les
+physiciens ont réalisé que le courant était dû au déplacement de particules dans un
+conducteur.
+Règles mnémotechniques :
+Dans l’utilisation de la formule de Biot et Savart, il faut faire attention au fait que le champ
+magnétique créé par un circuit fermé est la somme vectorielle  de tous les dB, engendrés par
+un élément de circuit , dont le sens est donné par celui du courant I,
+dB Id P P M
+PM
+= µ
+π
+∧0
+3
+4
+Or, chaque dB est défini par un produit vectoriel. Il faut donc faire extrêmement attention à
+l’orientation des circuits. Voici quelques règles mnémotechniques :
+• Règle des trois doigts de la main droite
+• Règle du bonhomme d’Ampère
+• Règle du tire-bouchon
+• Règle des pôles magnétiques
+<<<PAGE>>>
+7
+I.2.4- Propriétés de symétrie du champ magnétique
+Ces propriétés sont fondamentales car elles permettent de simplifier considérablement le
+calcul du champ magnétique. Du fait que le champ soit un effet créé par un courant, il
+contient des informations sur les causes qui lui ont donné origine. Cette trivialité se traduit par
+la présence de certaines symétries et invariances si les sources de courant en possèdent
+également. Ainsi, si l’on connaît les propriétés de symétrie de la densité de courant, on pourra
+connaître celles du champ magnétique.
+Vecteurs et pseudo-vecteurs
+Un vecteur polaire, ou vrai vecteur, est un vecteur dont la direction, le module et le sens sont
+parfaitement déterminés. Exemples : vitesse d’une particule, champ électrostatique, densité de
+courant.
+Un vecteur axial, ou pseudo-vecteur, est un vecteur dont le sens est défini à partir d’une
+convention d’orientation d’espace et dépend donc de cette convention. Exemples : le vecteur
+rotation instantanée, le champ magnétique, la normale à une surface.
+Cette différence provient du produit vectoriel : le sens du produit vectoriel dépend de la
+convention d’orientation de l’espace. Le produit vectoriel de deux vrais vecteurs
+(respectivement pseudo-vecteurs) est un pseudo-vecteur (resp. vrai vecteur), tandis que celui
+d’un vrai vecteur par un pseudo-vecteur est un pseudo-vecteur.
+a
+b
+c
+c’b’
+a’
+Transformation par rapport à
+un plan de symétrie
+c = a   b
+Orienter l’espace revient à associer à un axe orienté un sens de rotation dans un plan
+perpendiculaire à cet axe. Le sens conventionnellement choisi est déterminé par la règle du
+tire-bouchon de Maxwell ou la règle du bonhomme d’Ampère (pour le champ magnétique
+mais aussi pour le vecteur rotation instantanée).
+Transformations géométriques d’un vecteur ou d’un pseudo-vecteur
+Vecteurs et pseudo-vecteurs se transforment de la même manière dans une rotation ou une
+translation. Il n’en est pas de même dans la symétrie par rapport à un plan ou à un point. Dans
+ces transformations
+• un vecteur est transformé en son symétrique,
+• un pseudo-vecteur est transformé en l’opposé du symétrique.
+<<<PAGE>>>
+8
+E
+E’
+E E
+E’E’
+B
+B’
+BB
+B’B’
+Transformation d’un vecteur par symétrie
+par rapport à un plan 
+Transformation d’un pseudo-vecteur 
+par symétrie par rapport à un plan 
+Soit ′′AM()  le vecteur obtenu par symétrie par rapport à un plan S à partir de AM() . D’après
+la figure ci-dessus, on voit que
+1) si AM()  est un vrai vecteur
+• ′′ =AM A M() ( )  si AM()  est engendré par les mêmes vecteurs de base que S ;
+• ′′ =−AM A M() ( )  si AM()  est perpendiculaire à S.
+2) au contraire, si AM()  est un pseudo-vecteur
+• ′′ =AM A M() ( )  si AM()  est perpendiculaire à S ;
+• ′′ =−AM A M() ( )  si AM()  est engendré par les mêmes vecteurs de base que S.
+Ces deux règles de transformation vont nous permettre de déterminer des règles de symétrie
+utiles.
+Principe de Curie
+« Lorsque certaines causes produisent certains effets, les éléments de symétrie des causes
+doivent se retrouver dans les effets produits. »
+Dans une espace homogène et isotrope, si l’on fait subir une transformation géométrique à un
+système physique (ex : ensemble de particules, distribution de charges et/ou de courants)
+susceptible de créer certains effets (forces, champs), alors ces effets subissent les mêmes
+transformations.
+Si un système physique S possède un certain degré de symétrie, on pourra alors déduire les
+effets créés par ce système en un point à partir des effets en un autre point.
+Règles de symétrie
+• Invariance par translation : si  S est invariant dans toute translation parallèle à un axe Oz,
+les effets ne dépendent pas de z.
+• Symétrie axiale : si S est invariant dans toute rotation θ  autour d’un axe Oz, alors ses
+effets exprimés en coordonnées cylindriques ρθ,, z()  ne dépendent pas de θ .
+• Symétrie cylindrique : si S est invariant par translation le long de l’axe Oz et rotation
+autour de ce même axe, alors ses effets exprimés en coordonnées cylindriques ρθ,, z()  ne
+dépendent que de la distance à l’axe ρ.
+• Symétrie sphérique : si S est invariant dans toute rotation autour d’un point fixe O, alors
+ses effets exprimés en coordonnées sphériques r,,θϕ()  ne dépendent que de la distance au
+centre r .
+• Plan de symétrie ∏: si S admet un plan de symétrie ∏, alors en tout point de ce plan,
+• un effet à caractère vectoriel est contenu dans le plan
+<<<PAGE>>>
+9
+• un effet à caractère pseudo-vectoriel lui est perpendiculaire.
+• Plan d’antisymétrie ∏’ : si, par symétrie par rapport à un plan ∏’, S est transformé en –S,
+alors en tout point de ce plan,
+• un effet à caractère vectoriel est perpendiculaire au plan
+• un effet à caractère pseudo-vectoriel est contenu dans ce plan.
+Exemples de plans d’antisymétrie
+j
++
+------ -
+-- -----
++ ++ + +++ +++
+Voici quelques règles simples et très utiles, directement issues de la liste ci-dessus :
+• Si j est invariant par rotation autour d’un axe, B l’est aussi.
+• Si j est poloidal (porté par uρ  et/ou uz ), alors B est toroïdal (porté par uθ ).
+• Si j est toroïdal, alors B est poloidal.
+• Si le système de courants possède un plan de symétrie, alors j est contenu dans ce plan et
+donc B lui est perpendiculaire.
+Pourquoi un vecteur Ax x x( ,,)123  est indépendant de la variable x1  si le système S n’en
+dépend pas ?
+Soit un point Mx x x( ,,)123  dont les coordonnées sont exprimées dans un système quelconque.
+Soit un point M’ lui étant infiniment proche. On a alors
+AM
+AM Ax d xx x Axx x A
+x dx
+AM Ax d x xx Ax xx A
+x dx
+AM Ax d x xx
+()
+() ( , , ) (, , )
+() ( , , ) (, , )
+() ( , , )
+′ =
+′ =+ ≈ +
+′ =+ ≈ +
+′ =+ ≈
+11 1 1 2 3 1123
+1
+1
+1
+22 1 1 2 3 2123
+2
+1
+1
+33 1 1 2 3
+∂
+∂
+∂
+∂
+AAx xx A
+x dx3123
+3
+1
+1(, , ) +
+
+
+
+
+
+
+
+
+
+∂
+∂
+c’est à dire, de façon plus compacte AM AM A
+x dx() ( )′ =+ ∂
+∂ 1
+1. Si le système physique S reste
+invariant lors d’un changement de M en M’, alors (Principe de Curie) ′′ =AM A M() ( ) . On a
+donc ∂
+∂
+A
+x1
+0=  en tout point M, ce qui signifie que  Ax x(,)23  ne dépend pas de x1 . On peut
+suivre le même raisonnement pour chacune des autres coordonnées.
+Pourquoi un vrai vecteur appartient nécessairement  à un plan ∏ de symétrie ?
+Quel que soit M de S, soit M’ son symétrique par rapport à ∏. Ce plan étant un plan de
+symétrie, cela signifie que f(M)=f(M’) pour toute fonction de M. Ceci est en particulier vrai
+pour chaque composante AM AMii() ( )= ′  du vecteur AM() . On a donc ′′ =AM A M() ( )  ce qui
+implique que AM()  est engendré par les mêmes vecteurs de base que ∏. 
+Si AM()  est un pseudo-vecteur, alors on vient de montrer que AM()  est nécessairement
+perpendiculaire à ∏.
+<<<PAGE>>>
+10
+I 
+a M 
+P 
+O
+α 
+dOP 
+Pourquoi un vrai vecteur est nécessairement perpendiculaire à un plan ∏’ d’antisymétrie ?
+Ce plan étant un plan d’antisymétrie, on a f(M’)=-f(M) pour toute fonction de M. Ceci étant
+vrai pour chaque composante du vecteur AM() , on a  donc AM AMii() ( )′ =− , ce qui implique
+que AM()  est perpendiculaire à ∏’ (ou lui appartient si AM()  est un pseudo-vecteur).
+I.3- Calcul du champ dans quelques cas simples
+I.3.1- Fil rectiligne infini
+On considère un fil rectiligne, infini, parcouru par un courant I
+permanent. La densité de courant possède une invariance par
+translation selon l’axe z ainsi que par rotation autour de cet axe.
+Elle possède donc une symétrie cylindrique. Les calculs seront
+donc plus simples dans le système de coordonnées cylindriques .
+Enfin, la densité de courant étant poloïdale, c’est à dire
+jz j u z(,,) ()ρθ ρ = ,
+le champ magnétique est toroïdal
+Bz B u(,,) ()ρθ ρ θ=
+Calculons le champ créé en un point M situé à une distance a du
+fil par un élément dOP vu sous un angle α . La loi de Biot et
+Savart donne
+dB Id O P P M
+PM
+= µ
+π
+∧0
+3
+4
+où PM PO OM=+ . Comme, par raison de symétrie, seule la composante selon uθ  est non
+nulle, on ne s’intéresse qu’à celle-ci, c’est à dire Bd B u d B=⋅ =∫∫ θθ  avec
+dB I dOP OM u
+PM
+I dOP PM
+PM
+uuu I dOP
+PM
+zθ
+θ
+ρ θ
+αα= µ
+π
+∧() ⋅
+= µ
+π ∧() ⋅= µ
+π
+0
+3
+0
+3
+0
+2
+44 4
+. cos cos
+Or, OP = PM sin =αα a tan  d’où dOP a d= cos2 α α  et on obtient alors
+Bd B I
+a d I
+a== µ
+π = µ
+π∫∫
+−π
+π
+θ
+α α0
+2
+2
+0
+42
+cos
+I.3.2- Spire circulaire (sur l’axe)
+Considérons maintenant le cas d’une spire circulaire de rayon R, parcourue par un courant
+permanent I. On ne s’intéresse ici qu’au champ magnétique sur l’axe z de la spire.
+<<<PAGE>>>
+11
+M
+O
+P
+R
+I
+α
+dB
+dOP
+La densité de courant étant toroïdale et invariante par
+rotation autour de l’axe z, c’est à dire
+jz j z u(,,) (,)ρθ ρ θ= ,
+le champ magnétique sera poloidal
+Bz B z u B z u zz(,,) (,) (,)ρθ ρ ρ ρρ=+
+Cependant, sur l’axe z, la composante radiale du champ
+s’annule et il ne reste qu’une composante selon z.
+En projetant la loi de Biot et Savart sur z on obtient
+dB I dOP
+PM
+I dOP
+R
+I
+R d
+Bd B I
+R d I
+R
+IR
+Rz
+z
+zz
+spire
+= µ
+π = µ
+π = µ
+π
+== µ
+π = µ = µ
++()∫∫
+π
+0
+2
+0
+3
+2
+0 3
+0 3
+0
+2
+0 3 0
+2
+22 32
+44 4
+42 2
+sin sin sin
+sin sin
+αα αθ
+αθ α
+I.3.3- Solénoïde infini (sur l’axe)
+Un solénoïde est constitué d’un enroulement d’un fil conducteur autour d’un cylindre. On
+suppose que ce fil est suffisamment mince pour pouvoir modéliser ce solénoïde comme une
+juxtaposition de spires coaxiales, avec N spires par unité de longueur. Chaque spire est alors
+parcourue par un courant permanent I.
+Comme pour la spire simple vue plus haut, les propriétés de symétrie du courant montrent que
+le champ magnétique du solénoïde, qui est la somme vectorielle du champ créé par chaque
+spire, est suivant z uniquement.
+Autour d’un point P situé en z, sur une épaisseur dOP=dz, il y a Ndz spires  Ces spires créent
+donc un champ en un point M quelconque de l’axe
+dB NIdz
+R= µ0 3
+2 sin α
+où la position z est reliée à l’angle par tanα = R
+z . Si on prend la différentielle de cette
+expression, on obtient
+dz R d= sin2 α α
+Attention au signe de dz qui doit être cohérent avec notre convention de signe. Ici, dz>0 pour
+un dα > 0. Le champ magnétique total s’écrit donc
+Bd B NI d NI== µ = µ −()∫∫
+α
+α
+α
+α
+αα α α
+1
+2
+1
+2
+00
+12
+22 sin cos cos
+Pour un solénoïde infini, on a αα12 0→→ π  et  , d’où un champ sur l’axe
+BN I=µ 0
+z
+MPO
+dz
+α dB
+R
+I
+<<<PAGE>>>
+12
+Chapitre II- Lois fondamentales de la magnétostatique
+Aucune des lois fondamentales citées ici ne sera démontrée. Elles constituent des faits
+d’expérience traduits dans un formalisme mathématique, apuré au fil des ans. En Licence, ces
+lois seront énoncées sous forme d’équations de Maxwell, postulats de l’électromagnétisme.
+II.1- Flux du champ magnétique
+II.1.1- Conservation du flux magnétique
+Considérons une surface fermée S quelconque, s’appuyant sur une courbe C fermée et
+orientée, c’est à dire pour laquelle on peut définir localement un élément de surface dS dSn=
+dont le vecteur normal est orienté vers l’extérieur (convention).
+dS n
+S1
+C
+dS nS2
+S= S1 + S2
+Le flux du champ magnétique à travers cette surface fermée vaut
+Φ= ⋅ =∫∫ Bd S
+S
+0
+Cette loi est générale et reste valable même en régime variable.
+La conservation du flux magnétique est une propriété très importante et montre une différence
+fondamentale entre le champ magnétique et le champ électrostatique. Nous avons vu, avec le
+théorème de Gauss, que le flux du champ électrostatique dépend des charges électriques
+contenues à l’intérieur de la surface
+Ed S Q
+s
+S
+⋅=∫∫
+int
+ε0
+Si la charge totale est positive, le flux est positif et il « sort » de cette surface un champ
+électrostatique (source). Si la charge est négative, le flux est négatif et le champ « rentre »,
+converge vers la surface (puits). Cette propriété reste d’ailleurs également valable en régime
+variable. Rien de tel n’a jamais été observé pour le champ magnétique. On ne connaît pas de
+charge magnétique analogue à la charge électrique (se serait un « monopôle magnétique ») :
+<<<PAGE>>>
+13
+tout le champ qui rentre dans une surface fermée doit également en ressortir. La source la plus
+élémentaire de champ magnétique est un dipôle (deux polarités), comme l’aimant dont on ne
+peut dissocier le pôle nord du pôle sud.
+On peut aisément montrer que le flux à travers une surface S s’appuyant sur un contour fermé
+C est indépendant du choix de cette surface. Prenons deux surfaces S1  et S2  s’appuyant sur C
+et telles que S =  S S12+  soit une surface fermée. En orientant cette surface vers l’extérieur,
+la conservation du flux magnétique impose
+ΦΦ ΦSS S=+=
+12
+0
+donc ΦΦSS12
+=− , ce qui rentre d’un coté ressort de l’autre. La différence de signe provient
+de la convention d’orientation de la normale : le flux est le même dans les deux cas.
+II.1.2- Lignes de champ et tubes de flux
+Le concept de lignes de champ (également appelées lignes de force) est très utile pour se faire
+une représentation spatiale d’un champ de vecteurs. Ce sont ces lignes de  champ qui sont
+tracées par la matière sensible au champ magnétique, telle que la limaille de fer au voisinage
+d’un aimant.
+Définition :  Une ligne de champ d’un champ de vecteur quelconque est une courbe C dans
+l’espace telle qu’en chacun de ses points le vecteur y soit tangent.
+Considérons un déplacement élémentaire dl  le long d’une ligne de champ magnétique C. Le
+fait que le champ magnétique B soit en tout point de C parallèle à dl  s’écrit :
+Bd l∧= 0
+En coordonnées cartésiennes, dl dx i dy j dz k=+ +  et les lignes de champ sont calculées
+en résolvant
+dx
+B
+dy
+B
+dz
+Bxyz
+==
+En coordonnées sphériques, dl dr u rd u r d ur=+ + θθ ϕθ ϕsin  et l’équation des lignes de
+champ devient
+dr
+B
+rd
+B
+rd
+Br
+== θθ ϕ
+θ ϕ
+sin
+La conservation du flux magnétique implique que les lignes de champ magnétique se
+referment sur elles-mêmes.
+Un tube de flux  est une sorte de « rassemblement » de lignes de champ. Soit une surface S1
+s’appuyant sur une courbe fermée C telle que le champ magnétique y soit tangent (c’est à dire
+Bd l⊥  où dl  est  un vecteur élémentaire de C). En chaque point de C passe donc une ligne de
+champ particulière. En prolongeant ces lignes de champ on construit ainsi un tube de flux.
+<<<PAGE>>>
+14
+S3
+S2
+S1
+B
+dS
+Tout au long de ce tube, le flux magnétique est conservé. En effet, considérons une portion de
+tube cylindrique entre S1 et S3 , ayant un rétrécissement en une surface S2 . La surface
+S =  S  +  S + S13L , où SL  est la surface latérale du tube, constitue une surface fermée. Donc
+le flux du champ à travers S est nul. Par ailleurs, le flux à travers la surface latérale est
+également nul, par définition des lignes de champ ( Bd S⋅= 0 sur SL ) . Donc, le flux en S1  est
+le même qu’en S3 . On peut faire le même raisonnement pour S2 . Cependant puisque S > S12
+pour un flux identique, cela signifie que le champ magnétique est plus concentré en S2 . D’une
+manière générale, plus les lignes de champ sont rapprochées et plus le champ magnétique est
+localement élevé.
+Les exemples les plus célèbres de tubes de flux rencontrés dans la nature sont les taches
+solaires.
+II.2- Circulation du champ magnétique
+II.2.1- Circulation du champ autour d’un fil infini
+Nous avons vu que le champ B créé par un fil infini en un point Mzρθ,,()  s’écrit en
+coordonnées cylindriques
+B I u= µ
+π
+0
+2 ρ
+θ
+Considérons maintenant une courbe fermée quelconque C. Un déplacement élémentaire le
+long de cette courbe s’écrit dl d u d u dzu z=+ +ρρ θρ θ . La circulation de B sur la courbe
+fermée C vaut alors
+Bd l I d
+courbe courbe
+⋅= µ π∫∫ 0
+2
+θ
+<<<PAGE>>>
+15
+I
+C
+θ
+M
+dl
+Plusieurs cas de figure peuvent se présenter :
+• Si C n’enlace pas le fil, d
+C
+θ =∫ 0.
+• Si C enlace le fil une fois, d
+C
+θ =π∫ 2 .
+• Si C enlace le fil N fois, dN
+C
+θ =π∫ 2
+La circulation de B sur une courbe fermée est
+donc directement reliée au courant qui traverse
+la surface délimitée par cette courbe. C’est Ampère qui, en recherchant une explication du
+magnétisme dans une théorie de la dynamique des courants, découvrit cette propriété du
+champ magnétique. Démontrée ici sur un cas particulier à partir de la loi de Biot et Savart,
+nous ne démontrerons pas que ce résultat est général, c’est à dire valable pour un conducteur
+quelconque.
+II.2.2- Le théorème d’Ampère
+Théorème :  La circulation de B le long  d’une courbe C quelconque, orientée et fermée,
+appelée contour d’Ampère, est égale à µ0  fois la somme algébrique des courants qui
+traversent la surface délimitée par C
+Bd l I
+courbe
+⋅= µ∫ 0i n t
+Cette relation fondamentale est l’équivalent du théorème de Gauss pour le champ
+électrostatique : elle relie le champ ( Bou Es ) à ses sources (le courant I ou la charge Q) dans
+le vide (à l’intérieur d’un matériau il faut les corriger). Cependant, à la différence du théorème
+de Gauss, elle n’est valable qu’en régime permanent (courants continus).
+C
+I1
+I2
+Iint = - I1 + I2 - I2= - I1
+<<<PAGE>>>
+16
+Remarques :
+• Le théorème d’Ampère et la loi de Biot et Savart ont la même cause originelle.
+• Le choix du sens de la circulation sur le contour d’Ampère choisi est purement arbitraire.
+Une fois ce choix fait, la règle du bonhomme d’Ampère permet d’attribuer un signe aux
+courants qui traversent la surface ainsi délimitée.
+• Comme pour le théorème de Gauss, ce qui compte c’est la somme algébrique des sources :
+par exemple, si deux courants de même amplitude mais de sens différents traversent la
+surface, le courant total sera nul (voir figure ci-dessus).
+Exemple: le solénoïde infini
+Considérons un solénoïde infini, comportant N spires par unité de longueur, chacune
+parcourue par un courant I permanent. Etant donné la géométrie cylindrique du solénoïde, on
+se place en coordonnées cylindriques, l’axe z étant l’axe du solénoïde. La densité de courant
+est toroïdale et s’écrit jz j u(,,) ()ρθ ρ θ=  puisqu’il y a invariance par rotation autour de l’axe z
+et translation le long de ce même axe. Donc, le champ magnétique est poloïdal et s’écrit
+Bz B u z(,,) ()ρθ ρ =
+On choisit trois contours d’Ampère différents (voir figure) :
+z
+O
+R
+I
+(1)
+(2)
+(3)
+DC
+BA
+l
+Contour (1) :
+Bd l Bd l Bd l Bd l
+Bd z u Bd z u
+Bl Bl
+AB BC CD DA
+z
+AB
+z
+CD
+AB DC
+⋅+ ⋅+ ⋅+ ⋅=
+⋅− ⋅=
+=
+∫∫∫∫
+∫∫
+0
+0
+Donc, le champ magnétique est uniforme à l’intérieur du solénoïde (parce qu’il est infini).
+Contour (2) : on obtient le même résultat, c’est à dire un champ uniforme à l’extérieur. Mais
+comme ce champ doit être nul à l’infini, on en déduit qu’il est nul partout.
+Contour (3) :
+Bd l Bd l Bd lB d l Nl I
+Bu dzu Nl I
+BN I
+AB BC CD DA
+zz
+CD
+⋅+ ⋅+ ⋅+ ⋅= − µ
+−⋅ = − µ
+=µ
+∫∫∫∫
+∫
+0
+0
+0
+<<<PAGE>>>
+17
+II.2.3- Relations de continuité du champ magnétique
+Puisque le courant est la source du champ magnétique, on peut se demande ce qui se passe à
+la traversée d’une nappe de courant infinie. Comme pour le champ électrostatique, va-t-on
+voir une discontinuité dans le champ ?
+Soit une distribution surfacique de courant js  séparant l’espace en deux régions 1 et 2.
+S2
+S1
+S
+Région 2
+Région 1
+dS2
+dS1
+n12 js
+Considérons une surface fermée fictive, traversant la nappe de courant. La conservation du
+flux magnétique à travers cette surface s’écrit
+Bd S Bd S Bd S
+SSS L
+⋅+ ⋅+ ⋅=∫∫ ∫∫ ∫∫
+12
+0
+où SL  est la surface latérale. Lorsqu’on fait tendre cette surface vers zéro ( S1  tend vers S2 ),
+on obtient
+Bd S Bd S
+BB n d S
+SS
+SS
+⋅+ ⋅ =
+−() ⋅=
+∫∫ ∫∫
+∫∫
+=
+12
+0
+021
+12
+12
+puisque dS dS dSn12 1 2=− =−  dans cette limite. Ce résultat étant valable quelque soit la
+surface S choisie, on vient donc de démontrer que
+BB n21 1 2 0−() ⋅=
+Pour la composante tangentielle, nous allons utiliser le théorème d’Ampère. Considérons le
+contour d’Ampère suivant :
+Région 2
+Région 1
+n12
+A
+B
+N
+M
+C
+D
+τ
+js
+Le théorème d’Ampère s’écrit alors
+Bd l Bd l Bd lB d l I
+AB BC CD DA
+⋅+ ⋅+ ⋅+ ⋅= µ∫∫∫∫ 0
+<<<PAGE>>>
+18
+Le courant I est celui qui circule sur la nappe, autrement dit, il est défini par la densité de
+courant surfacique
+Ij d S jd l
+ABCD
+s
+MN
+=⋅ =⋅ ()∫∫ ∫ τ
+où MN n,, 12 τ()  est un trièdre direct. Dans la limite DA → 0 , le théorème d’Ampère fournit
+BBd l jd lS
+MNMN
+12 0−() ⋅= µ ⋅ ()∫∫ τ
+Puisque MN est quelconque, on doit avoir
+BBd l jd l
+BBd l n
+BB n d l
+S12 0
+12 1 2
+12 1 2
+−() ⋅= µ ⋅
+=−() ⋅∧ −()
+=−() ∧[] ⋅
+τ
+τ
+τ
+c’est à dire (puisque la direction de τ  est arbitraire)
+BB n j S12 1 2 0−() ∧= µ
+En résumé, à la traversée d’une nappe de courant,
+• la composante normale du champ magnétique reste continue,
+• la composante tangentielle du champ magnétique est discontinue.
+III.2.4- Les trois façons de calculer le champ magnétique
+En guise de résumé voici des conseils sur les méthodes à employer pour calculer le champ
+magnétique.
+• La formule de Biot et Savart : elle n’est pratique que lorsqu’on sait faire l’addition
+vectorielle des champs dB créés par un petit élément du circuit (souvent des circuits
+filiformes).
+• La conservation du flux :  à n’utiliser que si l’on connaît déjà son expression dans une
+autre région de l’espace (voir un exemple d’utilisation à la section précédente).
+• Le théorème d’Ampère : il faut être capable de calculer la circulation du champ sur un
+contour choisi. Cela nécessite donc une symétrie relativement simple des courants.
+Dans tous les cas, il faut prendre en compte les propriétés de symétrie de la densité de
+courant.
+II.3- Le dipôle magnétique
+II.3.1- Champ magnétique créé par une spire
+Soit une spire plane, de forme quelconque, de centre d’inertie O, parcourue par un courant
+permanent I. Nous allons calculer le champ magnétique créé par cette spire en tout point M de
+l’espace, situé à grande distance de la spire (précisément, à des distances grandes comparées à
+la taille de la spire).
+<<<PAGE>>>
+19
+I
+z
+O
+n
+M
+u
+θ
+r
+r’
+P dOP
+On pose
+rO M r P M
+OP r r u r
+r
+= ′ =
+== − ′ =ρ
+On va donc utiliser la formule de Biot et Savart,
+dans la limite r >> ρ, pour tout point P
+appartenant à la spire
+BM Idr
+rspire
+() = µ
+π
+∧ ′
+′∫
+0
+34
+ρ
+Evaluons le terme ′
+′
+r
+r 3  pour des points M situés à grande distance de la spire :
+′
+′ = −
++− ⋅()
+≈ −
+− ⋅
+
+
+
+≈ − + ⋅
+
+
+
+≈−+ ⋅
+r
+r
+r
+rr
+r
+r r
+r
+r
+r
+r
+r
+u
+rr
+u
+r u
+3 22 32
+3
+2
+32
+32
+23 3
+2 12
+13
+3
+ρ
+ρρ
+ρ
+ρ
+ρρ
+ρρ
+où nous avons fait un développement limité à l’ordre 1. En reportant cette expression dans la
+formule de Biot et Savart on obtient
+BM I
+r du d
+rr duu
+spire spire spire
+() ≈ µ
+π ∧− ∧ +∧ ⋅ ()
+
+
+
+
+
+
+
+∫∫ ∫
+0
+24
+3ρ ρρ ρρ
+Evaluons séparément chaque terme intervenant dans la parenthèse :
+• du d u P P u
+spire spire
+ρρ ρ ρ∧=
+
+
+
+
+
+
+
+
+∧= − [] ∧=∫∫ () ()00 0
+puisque le vecteur u est indépendant du point P sur la spire et qu’on fait une intégration sur
+toute la spire, en revenant au point de départ P0 .
+• − ∧ =∧ =∫∫
+d
+rr d S
+r n
+spire spire
+ρρ ρρ12
+où n est le vecteur normal au plan de la spire (vecteur de base de l’axe z) et S sa surface. Ce
+calcul est général, valable quelle que soit la surface.
+<<<PAGE>>>
+20
+Od S
+n
+ρ
+dρ= dOPP
+En effet, une surface élémentaire dS, telle que
+             1
+2 ρρ∧=dd S n
+est toujours engendrée lors d’un petit déplacement du
+vecteur ρ.
+• duu u d u
+spire spire
+ρρ ρ ρ∧⋅ () =− ⋅ ()∫∫
+Prenons une surface S plane quelconque. Sur cette surface, on a dx y P
+Pxy
+o
+o() ==∫ [] 0 
+puisqu’on revient au même point départ P0 . On a donc l’égalité xdy =∫∫  - ydx. Par ailleurs,
+on a également la propriété suivante xd x
+x
+xx yd y
+y
+yx
+o
+o
+o
+o
+== ==∫ [] ∫ []
+22
+22 0 .
+On va utiliser ces propriétés générales pour calculer l’intégrale inconnue ci-dessus.
+Si on décompose les vecteurs ρ et u dans la base ee12,()  engendrant le plan de la spire, on
+obtient
+du d uu e duu eρρ ρ ρ ρ ρ ρ ρ⋅() =+ () ++ ()11 1 2 2 1 21 1 2 2 2
+or,
+ρρ ρ ρ11 1
+1
+1
+2
+01
+2
+0
+2 0ud u PP
+spire
+∫ =− [] =() ()
+D’où
+du u d e ud e
+uS e uS e
+Sn u
+spire spire spire
+ρρ ρ ρ ρ ρ⋅() =+
+=− +
+=∧
+∫∫ ∫ 22 1 1 1 1 2 2
+21 12
+En rassemblant ces résultats, on obtient un champ magnétique
+BM I
+r
+S
+r n u
+r Sn u() ≈ µ
+π −∧ ∧ ()
+
+
+
+
+0
+24
+23
+On voit donc apparaître une grandeur importante car décrivant complètement la spire « vue »
+depuis une grande distance, à savoir le moment magnétique dipolaire
+M = ISn
+En utilisant l’égalité uu u u u u∧∧() =⋅ () −⋅ ()MM M , on obtient alors l’expression du
+champ magnétique créé par un dipôle
+BM r uu
+u
+r
+() = µ
+π ⋅() −[]
+=− µ
+π
+⋅
+0
+3
+0
+2
+4 3
+4
+MM
+ grad M
+<<<PAGE>>>
+21
+En coordonnées sphériques, u ⋅=MM cosθ  et les composantes poloidales du champ
+s’écrivent
+B r
+B r s
+r = µ
+π
+= µ
+π
+
+
+
+
+
+0
+3
+0
+3
+4 2
+4
+M
+Mi n
+cosθ
+θθ
+Lignes de champ :
+Comme nous l’avons vu précédemment, les lignes de champ ne sont pas des courbes où la
+norme du champ magnétique est constante. Ici, l’équation des lignes de champ en
+coordonnées sphériques fournit :
+dr
+M
+r
+rd
+M
+r
+dr
+r
+d
+r
+r
+rr
+r
+r
+µ
+π θ
+θ
+µ
+π θ
+θθ
+θ
+θ
+θ
+θ
+θ
+θ
+θ
+0
+3
+0
+3
+00
+0
+0
+2
+2
+44
+2
+2
+00
+cos sin
+cos
+sin
+ln ln sin
+sin
+sin
+sin
+=
+=
+=
+= 
+
+
+
+∫∫
+où le rayon sphérique r0  correspond à un angle θ0 arbitraire.
+Remarques :
+1. Ces expressions ne sont pas à retenir : il faut par contre comprendre et savoir reproduire la
+démonstration.
+2. Pour établir l’expression du champ créé par un dipôle, nous avons fait un développement
+limité en ne conservant que les termes d’ordre un. Les termes d’ordre supérieur
+(multipolaires) ne jouent un rôle qu’à proximité immédiate de la spire.
+II.3.2- Le modèle du dipôle en physique
+Il est intéressant de remarquer que l’expression du champ magnétique créé par une spire de
+courant (dipôle magnétique M = ISn) est formellement équivalente à celle du champ
+électrostatique créé par un système de deux charges opposées (dipôle électrique p = qd )
+EM u
+r() =− π
+⋅1
+4 0
+2ε  grad p
+Cependant, pour le champ magnétique, il s’avère impossible de séparer le dipôle en une
+charge magnétique « + » et une autre « - ». Le dipôle est la première source de champ
+magnétique. C’est la raison pour laquelle il joue un si grand rôle dans la modélisation des
+effets magnétiques observés dans la nature, au niveau microscopique comme macroscopique.
+L’origine du champ magnétique d’un matériau quelconque (ex : aimant) doit être
+microscopique. En utilisant le modèle atomique de Bohr, on peut se convaincre que les
+<<<PAGE>>>
+22
++e
+-e
+ω
+v = ω a0
+a0
+atomes (du moins certains) ont un moment magnétique dipolaire intrinsèque. Le modèle de
+Bohr de l’atome d’Hydrogène consiste en un électron de charge q=-e en mouvement circulaire
+uniforme autour d’un noyau central (un proton) avec une période T = π2
+ω .
+Si on regarde sur des échelles de temps longues par
+rapport à T, tout se passe comme s’il y avait un courant
+I q
+T
+q== π
+ω
+2
+On a donc une sorte de spire circulaire, de rayon moyen la
+distance moyenne au proton, c’est à dire le rayon de Bohr
+a0. L’atome d’Hydrogène aurait donc un moment
+magnétique intrinsèque
+M
+L
+== = ()
+=
+ISn q an q
+m man
+q
+m
+ω ω22
+2
+0
+2
+0
+2
+où L  est le moment cinétique de l’électron et q
+m2()  est appelé le facteur gyromagnétique.
+Ce raisonnement peut se généraliser aux autres atomes. En effet, un ensemble de charges en
+rotation autour d’un axe vont produire un moment magnétique proportionnel au moment
+cinétique total. Cela se produit même si la charge totale est nulle (matériau ou atome neutre) :
+ce qui compte c’est l’existence d’un courant. Il suffit donc d’avoir un décalage, même léger,
+entre les vitesses des charges « + » et celles des charges « - ».
+Du coup, on peut expliquer qualitativement les propriétés magnétiques des matériaux en
+fonction de l’orientation des moments magnétiques des atomes qui les composent :
+• Matériaux diamagnétiques : les moments sont distribués aléatoirement, il n’y a pas de
+champ magnétique intrinsèque.
+• Matériaux paramagnétiques : ceux pour lesquels les moments peuvent s’orienter dans une
+direction privilégiée en présence d’un champ magnétique extérieur, pouvant donc être
+ainsi aimantés momentanément.
+• Matériaux ferromagnétiques : ceux dont les moments sont déjà orientés dans une direction
+particulière, de façon permanente (aimants naturels).
+La Terre est connue pour avoir un champ magnétique dipolaire, où le pôle Nord magnétique
+correspond au pôle Sud géographique (à un angle près).
+Au niveau macroscopique, l’explication de l’existence du champ magnétique observé sur les
+planètes et sur les étoiles est encore aujourd’hui loin d’être satisfaisante. La théorie de l’effet
+dynamo essaye de rendre compte des champs observés par la présence de courants,
+essentiellement azimutaux, dans le cœur des astres.
+Plusieurs faits connus restent partiellement inexpliqués :
+• Les cycles magnétiques :  le Soleil a un champ magnétique à grande échelle qui ressemble
+à celui de la Terre, approximativement dipolaire. Cependant, il y a une inversion de
+polarité tous les 11 ans. Pour la Terre, on a pu mettre en évidence qu’il y avait eu une
+inversion il y a environ 700.000 ans. Par ailleurs, on observe des fluctuations du champ.
+• Non-alignement avec le moment cinétique de l’astre :  s’il est de l’ordre d’une dizaine de
+degrés pour la Terre (avec une modification de la direction de l’axe magnétique d’environ
+15’ par an), il est de 90° pour celui de Neptune !
+<<<PAGE>>>
+23
+Chapitre III- Actions et énergie magnétiques
+III.1- Force magnétique sur une particule chargée
+Ce qui a été dit aux chapitres précédents concerne plus particulièrement les aspects
+macroscopiques, l’influence mesurable d’un champ magnétique sur un circuit électrique. Or,
+le courant circulant dans un circuit est dû au déplacement de particules chargées. Nous
+prendrons donc le parti ici de poser l’expression de la force magnétique s’exerçant sur une
+particule (sans la démontrer) puis de montrer comment s’exprime cette force sur un circuit.
+Historiquement bien sûr, c’est la force de Laplace qui a été mise en évidence la première, la
+force de Lorentz n’est venue que bien plus tard…
+III.1.1- La force de Lorentz
+La force totale, électrique et magnétique (on dit électromagnétique) subie par une particule de
+charge q et de vitesse v mesurée dans un référentiel galiléen est
+Fq EvB=+ ∧()
+On appelle cette force la force de Lorentz. On peut la mettre sous la forme
+FFF
+qE
+Fq v B
+em
+m
+=+
+=∧
+
+
+
+     où     
+F=e
+où Fe  est la composante électrique et Fm  la composante magnétique . La composante
+magnétique de la force de Lorentz (parfois appelée force magnétique) possède un ensemble de
+propriétés remarquables :
+1. La force magnétique ne fournit pas de travail. Si on applique la relation fondamentale de
+la dynamique pour une particule de masse m et charge q, on obtient
+Fq v B m dv
+dt
+m =∧ =
+donc
+d
+dt mv d
+dt mv v mv dv
+dt qv v B1
+2
+1
+2 02
+
+
+ =⋅ 
+
+
+ =⋅= ⋅ ∧ () = .
+L’énergie cinétique de la particule est donc bien conservée.
+2. La force magnétique est une correction en vc/()
+2
+ à la force de Coulomb  , où c est la
+vitesse de la lumière (cf chapitre I).
+3.  Violation du principe d’action et de réaction.  On peut aisément vérifier sur un cas
+particulier simple que la force magnétique ne satisfait pas au 3 ème principe de Newton.
+Pour cela, il suffit de prendre une particule 1 se dirigeant vers une particule 2. Le champ
+magnétique créé par 1 sera alors nul à l’emplacement de la particule 2,
+B q
+r
+1
+01
+24 0=v u 11 2
+µ
+π ∧= ,
+<<<PAGE>>>
+24
+z
+x
+y
+B
+-e
+RL
+v0 = v   i0
+Cas particulier d’une particule de charge 
+négative (rotation dans le sens direct)
+et donc la force F12/ sera nulle. Mais si la deuxième particule ne se dirige pas vers la
+première, son champ magnétique sera non nul en 1 et il y aura une force F21/  non nulle…
+III.1.2- Trajectoire d’une particule chargée en présence d’un champ magnétique
+Considérons une particule de masse m et charge q placée dans un champ magnétique
+uniforme avec une vitesse initiale vt v() ==0 0 . La relation fondamentale de la dynamique
+s’écrit
+dv
+dt
+q
+m vB=∧
+Puisque la force magnétique est nulle dans la direction du champ, cette direction est
+privilégiée. On va donc tirer parti de cette information et décomposer la vitesse en deux
+composantes, l’une parallèle et l’autre perpendiculaire au champ, vt v v p() =+ ⊥ . L’équation
+du mouvement s’écrit alors
+dv
+dt
+dv
+dt
+q
+m vB
+p
+=
+=∧
+
+
+
+
+
+
+⊥
+⊥
+0
+La trajectoire reste donc rectiligne uniforme dans la direction du champ. Prenons un repère
+cartésien dont l’axe z est donné par le champ BB k= .
+L’équation portant sur la
+composante perpendiculaire se
+décompose alors en deux équations
+dv
+dt v
+dv
+dt v
+x
+y
+y
+x
+=
+=−
+
+
+
+
+
+ω
+ω
+où  ω = qB
+m
+Ce système se ramène à deux
+équations de la forme dv
+dt vi
+i
+2
+2
+2=− ω    (pour i = x,y)  et a donc pour solution
+dx
+dt vv t
+dy
+dt vv t
+x
+y
+==
+== −
+
+
+
+
+
+⊥
+⊥
+0
+0
+cos
+sin
+ω
+ω
+où l’on a choisi une vitesse initiale suivant x, vv i⊥⊥ =
+00
+. En intégrant une deuxième fois ce
+système on obtient
+<<<PAGE>>>
+25
+x v t
+y v t
+=
+=
+
+
+
+
+
+
+⊥
+⊥
+0
+0
+ω ω
+ω ω
+sin
+cos
+où les constantes d’intégration ont été choisies nulles (choix arbitraire). La trajectoire est donc
+un cercle de rayon R mv
+qB
+L =
+⊥0
+, le rayon de Larmor , décrit avec la pulsation ω = qB
+m , dite
+pulsation gyro-synchrotron. Ce cercle est parcouru dans le sens conventionnel positif pour
+des charges négatives.
+Le rayon de Larmor correspond à la « distance » la plus grande que peut parcourir une
+particule dans la direction transverse avant d’être déviée de sa trajectoire. Cela correspond
+donc à une sorte de distance de piégeage. A moins de recevoir de l’énergie cinétique
+supplémentaire, une particule chargée est ainsi piégée dans un champ magnétique.
+Il est intéressant de noter que plus l’énergie cinétique transverse d’une particule est élevée
+(grande masse ou grande vitesse transverse) et plus le rayon de Larmor est grand.
+Inversement, plus le champ magnétique est élevé et plus ce rayon est petit.
+Remarque :  Nous avons vu au Chapitre II qu’une charge en mouvement créé un champ
+magnétique. Donc, une particule mise en rotation par l’effet d’un champ magnétique extérieur
+va créer son propre champ. Il n’en a pas été tenu compte dans le calcul précédent, celui-ci
+étant la plupart du temps négligeable.
+III.1.3- Distinction entre champ électrique et champ électrostatique
+Nous allons traiter ici un problème un peu subtil. En mécanique classique, il y a trois
+principes fondamentaux : le principe d’inertie, la relation fondamentale de la dynamique et le
+principe d’action et de réaction. Nous avons déjà vu que la force magnétique Fq v Bm =∧  ne
+satisfaisait pas au 3 ème  principe. Mais il y a pire. Pour pouvoir appliquer la relation
+fondamentale de la dynamique, il faut se choisir un référentiel galiléen. Ce choix étant
+arbitraire, les lois de la physique doivent être indépendantes de ce choix (invariance
+galiléenne). Autrement dit, les véritables forces doivent être indépendantes du référentiel. Il
+est clair que ce n’est pas le cas de la force magnétique Fm . En effet, considérons une particule
+q se déplaçant dans un champ magnétique avec une vitesse constante dans le référentiel du
+laboratoire. Dans ce référentiel, elle va subir une force magnétique qui va dévier sa trajectoire.
+Mais si on se place dans le référentiel propre de la particule (en translation uniforme par
+rapport au laboratoire, donc galiléen), sa vitesse est nulle. Il n’y a donc pas de force et elle ne
+devrait pas être déviée ! Comment résoudre ce paradoxe ?
+C’est Lorentz qui a donné une solution formelle à ce problème, mais c’est Einstein qui lui a
+donné un sens grâce à la théorie de la relativité. La véritable force, électromagnétique, est la
+force de Lorentz
+Fq EvB=+ ∧()
+Supposons que cette particule soit soumise à un champ électrostatique Es  et un champ
+magnétique B, mesurés dans le référentiel R du laboratoire. Dans un référentiel R’ où la
+particule est au repos, le terme magnétique sera nul. Si on exige alors l’invariance de la force,
+on doit écrire
+<<<PAGE>>>
+26
+′ = ′ == + ∧ ()Fq EF q Ev B s
+Le champ ′E  « vu » dans le référentiel R’ est donc la somme du champ électrostatique Es  et
+d’un autre champ, appelé champ électromoteur  Ev Bm =∧ . Ainsi, on a bien conservé
+l’invariance de la force lors d’un changement de référentiel, mais au prix d’une
+complexification du champ électrique qui n’est plus simplement un champ électrostatique !
+Deux conséquences importantes :
+1. La circulation d’un champ électrique EE E sm=+  est en générale non nulle à cause du
+terme électromoteur (d’où son nom d’ailleurs) : celui-ci peut donc créer une différence de
+potentiel qui va engendrer un courant, ce qui n’est pas possible avec un champ purement
+électrostatique.
+2. Le champ électrique « vu » dans R’ dépend du champ magnétique « vu » dans R. On ne
+peut donc pas appliquer la règle de changement de référentiel classique (transformation
+galiléenne) mais une autre, plus complexe (transformation de Lorentz). Champs électrique
+et magnétique dépendent tous deux du référentiel, la compréhension de ce phénomène
+électromagnétique ne pouvant se faire que dans le contexte de la relativité.
+Ceci dit, nous utiliserons tout de même l’expression de la force magnétique ou de Lorentz
+pour calculer, par exemple, des trajectoires de particules dans le formalisme de la mécanique
+classique. On ne devrait pas obtenir des résultats trop aberrants tant que leurs vitesses restent
+très inférieures à celle de la lumière.
+Une dernière remarque : nous avons implicitement supposé que la charge q de la particule
+était la même dans les deux référentiels. Cela n’est a priori pas une évidence. Nous pouvons
+en effet imposer que toute propriété fondamentale de la matière soit effectivement invariante
+par changement de référentiel. Le concept de masse, par exemple, nécessite une attention
+particulière. En effet, tout corps massif possède un invariant appelé « masse au repos ».
+Cependant sa « masse dynamique » (impulsion divisée par sa vitesse) sera d’autant plus
+élevée que ce corps aura une vitesse s’approchant de celle de la lumière.
+Nous admettrons donc que la charge électrique est bien un invariant (dit relativiste).
+III.2- Actions magnétiques sur un circuit fermé
+III.2.1- La force de Laplace
+Nous avons vu que la force subie par une particule chargée en mouvement dans un champ
+magnétique, la force de Lorentz, s’écrit ; Fq EvB=+ ∧() . Considérons un milieu comportant
+α espèces différentes de particules chargées, chaque espèce ayant une densité volumique n α,
+et une vitesse vα . Ces divers porteurs de charges sont donc responsables d’une densité locale
+de courant
+jn q v= ∑ ααα
+α
+.
+Par ailleurs, chaque particule étant soumise à la force de Lorentz, la force s’exerçant sur un
+élément de volume dV3  comportant ndVα
+α
+3
+∑  particules s’écrit
+<<<PAGE>>>
+27
+dF nq E v B dV33 =+ ∧∑ αα α
+α
+()
+On voit donc apparaître une force due au champ électrique. Cependant, si le volume
+élémentaire que l’on considère est suffisamment grand pour que s’y trouve un grand nombre
+de particules e si le conducteur est électriquement neutre, on doit avoir
+nqαα
+α
+∑ = 0
+ce qui annule la force électrique.
+On obtient alors  dF nqv B dV nqv B dV33 3 =∧ = ∧∑∑ααα
+α
+ααα
+α
+() , c’est à dire
+dF j B dV33 =∧
+Nous avons donc ci-dessus l’expression générale de la force créée par un champ magnétique
+extérieur sur une densité de courant quelconque circulant dans un conducteur neutre (la
+résultante est évidemment donnée par l’intégrale sur le volume).
+Dans le cas particulier d’un conducteur filiforme, l’élément de volume s’écrit dV dS d l32 =⋅ ,
+où dl  est un élément de longueur infinitésimal orienté dans la direction de j et dS2  une
+surface infinitésimale.
+dl
+d2S
+S: section du fil
+j
+Dans le cas d’un circuit filiforme (très mince donc où l’on peut considérer que le champ est
+constant), la force qui s’exerce par unité de longueur s’écrit
+dF j B d Sdl jd S dl B
+jd Sd l B
+Idl B
+S
+S
+S
+=∧ = ∧
+=⋅ ∧
+=∧
+∫∫ ∫∫
+∫∫
+() ( )
+()
+22
+2
+La force qui s’exerce sur un conducteur fermé, parcouru par un courant permanent I, appelée
+force de Laplace, vaut
+FId l B
+circuit
+=∧ ∫
+Cette force s’applique sur un circuit qui est un solide . Dans ce cours, on ne considèrera que
+des circuits pour lesquels on pourra appliquer le principe fondamental de la mécanique, en
+<<<PAGE>>>
+28
+assimilant ceux-ci à des points matériels (leur centre d’inertie). Aucun élément de longueur ne
+sera privilégié : la force dF Idl B=∧  s’applique au milieu de chaque portion dl.
+Remarques :
+1. Ayant été établie à partir d’équations valables uniquement en régime permanent, cette
+expression n’est vraie que pour un courant permanent. Il faut en particulier faire attention
+à intégrer la force sur le circuit fermé.
+2.  Pour des circuits fermés de forme complexe, il devient difficile de calculer la force
+magnétique à partir de l’expression de la force de Laplace. Dans ce cas, il vaut mieux
+utiliser une méthode énergétique (travaux virtuels, voir plus bas).
+3. A partir de la force de Lorentz, qui est une force microscopique agissant sur des particules
+individuelles et qui ne travaille pas, nous avons obtenu une force macroscopique agissant
+sur un solide. Cette force est capable de déplacer le solide et donc d’exercer un travail non
+nul. Comment comprendre ce résultat ? Il faut interpréter la force de Laplace comme la
+résultante de l’action des particules sur le réseau cristallin du conducteur. C’est donc une
+sorte de réaction du support à la force de Lorentz agissant sur ses constituants chargés. Au
+niveau microscopique cela se traduit par la présence d’un champ électrostatique, le champ
+de Hall.
+4. Bien que la force de Lorentz ne satisfasse pas le principe d’Action et de Réaction, la force
+de Laplace entre deux circuits, elle, le satisfait !  La raison profonde réside dans
+l’hypothèse du courant permanent parcourant les circuits (I le même, partout dans chaque
+circuit) : en régime permanent, il n’y a plus de problème de délai lié à la vitesse de
+propagation finie de la lumière.
+III.2.2- Définition légale de l’Ampère
+Considérons le cas de deux fils infinis parcourus par un courant I1 et I2 , situés à une distance
+d l’un de l’autre.
+I1 I2
+u12
+d
+B1
+B1
+Grâce au théorème d’Ampère, il est alors facile de calculer le champ magnétique créé par
+chaque fil. La force par unité de longueur subie par le fil 2 à cause du champ B1 vaut
+dF I dl B Id l B d F
+II
+d u
+12 21 12 21
+012
+12
+2
+// =∧ = − ∧ = −
+=− µ
+π
+Cette force est attractive si les deux courants sont dans le même sens, répulsive sinon.
+Puisqu’il y a une force magnétique agissant sur des circuits parcourus par un courant, on peut
+<<<PAGE>>>
+29
+mesurer l’intensité de celui-ci. C’est par la mesure de cette force qu’a été établie la définition
+légale de l’Ampère (A) :
+L’Ampère est l’intensité de courant passant dans deux fils parallèles, situés à 1 mètre l’un
+de l’autre, et produisant une attraction réciproque de 2.10 -7 Newtons par unité de longueur
+de fil.
+II.2.3- Moment  de la force magnétique exercée sur un circuit
+Puisqu’un circuit électrique est un solide, il faut utiliser le formalisme de la mécanique du
+solide (2ème année de DEUG). On va introduire ici les concepts minimaux requis.
+ Soit un point P quelconque appartenant à un circuit électrique et le point O, le centre d’inertie
+de ce circuit. Si ce circuit est parcouru par un courant permanent I et plongé dans un champ
+magnétique B, alors chaque élément de circuit dl dOP= , situé autour de P, subit une force
+de Laplace dF Idl B=∧ . Le moment par rapport à O de la force de Laplace sur l’ensemble du
+circuit est alors
+Γ= ∧ ∫OP dF
+circuit
+Soient trois axes ∆i , passant par le centre d’inertie O du circuit et engendrés par les vecteurs
+unitaires ui . Le moment de la force s’écrit alors ΓΓ=
+=
+∑ ii
+i
+u
+1
+3
+. L’existence d’un moment non
+nul se traduit par la mise en rotation du circuit autour d’un ou plusieurs axes ∆i . Autrement
+dit, par une modification de la « quantité de rotation » du solide, c’est à dire son moment
+cinétique. Le moment cinétique du solide par rapport à O est
+JO P v d m
+circuit
+=∧ ∫
+où dm est la masse élémentaire située sur l’élément dOP, et v sa vitesse. Dans tous les cas de
+figure étudiés dans ce cours, on admettra que le moment cinétique d’un circuit peut se mettre
+sous la forme
+JI u I ii
+i
+i== []
+=
+∑ ΩΩ
+1
+3
+où Ω est le vecteur instantané de rotation et Ii  les 3 moments d’inertie du circuit par rapport
+aux 3 axes ∆i  ([I] est la matrice d’inertie, ici diagonale). Le moment d’inertie par rapport à
+l’axe ∆i  est défini par
+Id m rii
+circuit
+= ∫
+2
+où ri  est la distance d’un point P quelconque du circuit à l’axe ∆i . La dynamique d’un circuit
+soumis à plusieurs moments de forces extérieures est donnée par le théorème du moment
+cinétique (pour un solide)
+dJ
+dt
+ext= ∑Γ
+Dans le cas d’un circuit tournant autour d’un seul axe Oz, avec une vitesse angulaire
+ΩΩ== uuzz
+«θ  et un moment d’inertie Iz  constant, on obtient l’équation simplifiée suivante
+Izz
+««θ = ∑Γ
+<<<PAGE>>>
+30
+M
+B
+Γ
+O
+I
++
+II.2.4- Exemple du dipôle magnétique
+Considérons le cas simple d’un dipôle magnétique,
+c’est à dire d’une spire parcourue par un courant I
+permanent, plongé dans un champ magnétique extérieur
+B constant (soit dans tout l’espace, soit ayant une
+variation spatiale sur une échelle bien plus grande que
+la taille de la spire).
+La force de Laplace s’écrit alors
+FI d l B I dl B
+spire spire
+=∧ = ∧ =∫∫ () 0
+Un champ magnétique constant ne va donc engendrer aucun mouvement de translation de la
+spire. Le moment de la force de Laplace par rapport au centre d’inertie 0 de la spire s’écrit
+Γ= ∧ = ∧ ∧
+=⋅ ⋅ − ⋅ ⋅ =⋅ ⋅ −
+=+ () ⋅+() =+
+=−() =−()
+=
+∫∫
+∫∫ ∫
+∫∫ ∫
+∫
+OP dF OP I dOP B
+I dOP OP B I B OP dOP I dOP OP B
+Id x i d y j x B y B I Bi ydx IB j xdy
+IB j IB i xdy IB j IB i S
+ISn
+spire spire
+spire spire spire
+spire
+xy y
+spire
+x
+spire
+xy
+spire
+xy
+()
+() ( ) () 0
+∧∧ Bn k    (où =   ,voir calcul du dipôle)
+c’est à dire
+Γ= ∧M B
+Malgré une résultante des forces nulle, le champ magnétique exerce un moment qui va avoir
+tendance à faire tourner la spire sur elle-même, de telle sorte que son moment magnétique
+dipolaire M  s’aligne dans la direction de B.
+Remarques :
+1. Cette expression n’est valable que dans le cas d’un dipôle.
+2.  On utilise souvent le terme « couple magnétique » pour décrire le moment des forces
+magnétiques sur un circuit, ceci pour éviter de confondre avec le moment magnétique
+dipolaire.
+3. Les matériaux ferromagnétiques sont ceux pour lesquels  on peut assimiler leurs atomes à
+des dipôles alignés dans le même sens. Mis en présence d’un champ magnétique externe,
+ils auront tendance à se mettre dans la direction du champ, ce qui va produire un
+mouvement macroscopique d’ensemble.
+<<<PAGE>>>
+31
+II.2.5- Complément : force de Laplace et principe d’Action et de Réaction
+On va démontrer que le principe d’Action et de Réaction est bien vérifié pour la force de
+Laplace s’exerçant entre deux circuits C1 et C2  quelconques, parcourus par des courant
+permanents I1 et I2 . La force exercée par C1 sur C2  s’écrit
+FI d P BI d P Id P u
+PP
+II dP dP u
+PPCC CC C
+12 2 2 1 2 2
+01 1 1 2
+12
+2
+012
+2
+11 2
+12
+2
+21 2 12
+44
+/ =∧ =∧ ∧
+
+
+
+
+
+
+
+=∧ ∧∫∫ ∫∫ ∫µ
+π
+µ
+π
+où P1 (resp. P2) est un point quelconque de C1 (resp. C2 ) et PP PP u12 12 1 2= . La force exercée
+par C2  sur C1 vaut
+FI d P BI d P Id P u
+PP
+II dP dP u
+PPCC CC C
+21 1 1 2 1 1
+02 2 2 1
+21
+2
+012
+1
+21 2
+12
+2
+12 1 21
+44
+/ =∧ =∧ ∧
+
+
+
+
+
+
+
+=− ∧ ∧∫∫ ∫∫ ∫µ
+π
+µ
+π
+puisque uu21 12=− .  Par ailleurs, on a
+dP dP u dP dP u u dP dP
+dP dP u dP dP u u dP dP
+21 1 2 1 2 12 12 2 1
+12 1 2 2 1 12 12 1 2
+∧∧() =⋅ () −⋅ ()
+∧∧() =⋅ () −⋅ ()
+Il nous suffit donc de calculer le premier terme puisque le second est identique dans les deux
+expressions des forces. Mathématiquement, les expressions
+[] = []∫∫∫ ∫
+CCC C211 2
+sont effectivement équivalentes si ce qui se trouve dans le crochet (la fonction à intégrer) est
+symétrique par rapport aux variables de chacune des deux intégrales. Mais dans celle de
+gauche, le point P1 reste d’abord constant lors de l’intégrale portant  sur C2 , tandis que dans
+celle de droite, c’est le point P2 qui est maintenu constant lors de l’intégration sur C1.
+Ainsi, on peut écrire
+dP dP u
+PP dP dP u
+PP
+dP dP u
+PP dP dP u
+PP
+CC
+CC
+1 21 2
+12
+2 1 21 2
+12
+2
+2 11 2
+12
+2 2 11 2
+12
+2
+22
+11
+⋅() =⋅ ⋅
+⋅() =⋅ ⋅
+∫∫
+∫∫
+Posant rP P= 12  et remarquant que dP dPP dP21 2 1=+ , on obtient
+dP u
+PP
+dr r
+r
+dr
+rCC C
+21 2
+12
+2 3
+2
+3
+22 2
+2 0⋅ = ⋅ = () =∫∫ ∫
+puisque l’on fait un tour complet sur C2  et l’on revient donc au point de départ. Le résultat est
+évidemment le même pour l’intégrale portant sur C1. En résumé, on obtient
+F II dP dP u
+PP
+II ud P d P II ud P d P
+F
+CCC CC C
+12
+012
+2
+11 2
+12
+2
+012
+12 2 1
+012
+12 1 2
+21
+444
+121 22 1
+/
+/
+=∧ ∧ =− ⋅ ⋅ () =− ⋅ ⋅ ()
+=−
+∫∫∫ ∫∫ ∫µ
+π
+µ
+π
+µ
+π
+Ceci achève la démonstration.
+<<<PAGE>>>
+32
+I
+dr
+d2S n
+dl
+III.3- Energie potentielle d’interaction magnétique
+III.3.1- Le théorème de Maxwell
+Un circuit électrique parcouru par un courant produit un champ magnétique engendrant une
+force de Laplace sur un deuxième circuit, si celui-ci est lui-même parcouru par un courant.
+Chaque circuit agit sur l’autre, ce qui signifie qu’il y a une énergie d’origine magnétique mise
+en jeu lors de cette interaction. D’une façon générale, un circuit parcouru par un courant
+permanent placé dans un champ magnétique ambiant possède une énergie potentielle
+d’interaction magnétique.
+Pour la calculer, il suffit d’évaluer le travail de la force de Laplace lors d’un déplacement
+virtuel de ce circuit (méthode des travaux virtuels, comme en électrostatique).
+Considérons un élément dl  d’un circuit filiforme,
+orienté dans la direction du courant I. Cet élément
+subit une force de Laplace dF . Pour déplacer le
+circuit d’une quantité dr, cette force doit fournir un
+travail
+dW d F dr
+Id l B d r
+Id r d l B
+Id Sn B
+2
+2
+=⋅
+=∧ ⋅
+=∧ ⋅
+=⋅
+()
+()
+où dS n2  est la surface élémentaire décrite lors du déplacement de l’élément de circuit (les
+trois vecteurs dr dl n,,  forment un trièdre direct). On reconnaît alors l’expression du flux
+magnétique à travers cette surface balayée, appelé flux coupé. Pour l’ensemble du circuit, le
+travail dû à un déplacement élémentaire dr est
+dW d W Id Id c
+circuitcircuit
+c=== ∫∫
+22 ΦΦ
+Théorème de Maxwell :
+Le déplacement d’un circuit électrique fermé dans un champ magnétique extérieur engendre
+un travail des forces magnétiques égal au produit du courant traversant le circuit par le flux
+coupé par celui-ci lors de son déplacement.
+WI c=Φ
+Commentaires sur la notion de Flux coupé
+Le nom de flux coupé provient de notre représentation du champ magnétique sous forme de
+lignes de champ. Lors du déplacement du circuit, celui-ci va en effet passer à travers ces
+lignes, donc les « couper ».
+La notion de flux coupé est très importante car elle permet parfois considérablement de
+simplifier les calculs. Par ailleurs, dans le cas d’un champ magnétique constant dans le temps,
+<<<PAGE>>>
+33
+nous allons démontrer que le flux coupé par le circuit Φc  lors de son déplacement est
+exactement égal à la variation du flux total ∆Φ .
+d2Sf
+d2Si
+d2Sd
+Position initiale
+du circuit
+Position finale
+du circuit
+Soit un circuit C orienté, parcouru par un courant I et déplacé dans un champ magnétique
+extérieur. Ce circuit définit à tout instant une surface S s’appuyant sur C. Lors du
+déplacement de sa position initiale vers sa position finale, une surface fermée ∑= + +SS Si fd
+est ainsi décrite, où Sd  est la surface balayée lors du déplacement. On choisit d’orienter les
+normales à chaque surface vers l’extérieur. La conservation du flux magnétique impose alors
+ΦΦΦ Φ∑ =++=SS Si fd
+0
+c’est à dire
+ΦΦ ΦSS Sd i f
+=− −
+Si on réoriente les normales par référence au courant, on a ΦΦSSff
+→ , ΦΦSSii
+→−  et
+ΦΦSSdd
+→± . Autant il est possible de définir correctement et en toute généralité le signe des
+flux totaux, celui du flux à travers la surface balayée, autrement dit, le flux coupé, dépend de
+chaque situation. Cependant, on a donc bien
+Φ∆ Φc =
+qui est vérifié algébriquement. Ne pas oublier que ce raisonnement n’est valable que pour un
+champ magnétique extérieur statique (pas de variation temporelle du champ au cours du
+déplacement du circuit).
+III.3.2- Energie potentielle d’interaction magnétique
+Considérons un circuit électrique parcouru par un courant permanent I et placé dans un champ
+magnétique statique.  Le circuit est donc soumis à la force de Laplace : cela signifie qu’il est
+susceptible de se déplacer et donc de développer une vitesse. On pourra calculer cette vitesse
+en appliquant, par exemple, le théorème de l’énergie cinétique ∆∆ ΦEW Ic == . Mais d’où
+provient cette énergie ?
+Si l’on en croit le principe de conservation de l’énergie, cela signifie que le circuit possède un
+réservoir d’énergie potentielle Wm , lié à la présence du champ magnétique extérieur.
+L’ énergie mécanique du circuit étant EE Wcm=+ , on obtient dW dWm =− .
+L’énergie potentielle magnétique d’un circuit parcouru par un courant permanent I et placé
+dans une champ magnétique extérieur est donc
+WIm =− Φ   +   Constante
+<<<PAGE>>>
+34
+∆i
+O
+I
+ui
+dαi
+r
+dr
+La valeur de la constante, comme pour toute énergie potentielle d’interaction, est souvent
+choisie arbitrairement nulle à l’infini.
+III.3.3- Expressions générales de la force et du couple magnétiques
+L’existence d’une énergie potentielle se traduit par une action possible (reconversion de cette
+énergie). Ainsi, la résultante Fd F
+circuit
+= ∫ des forces magnétiques exercées sur le circuit est
+donnée par
+dW W
+x dx dW F dr Fdxm
+m
+ii
+ii i
+i
+== − = − ⋅ = −
+==
+∑∑
+∂
+∂1
+3
+1
+3
+où les dxi mesurent les déplacements (translations) dans les trois directions de l’espace par
+rapport au centre d’inertie du circuit (là où s’applique la force magnétique). On obtient ainsi
+l’expression générale de la force de Laplace agissant sur un circuit parcouru par un courant
+permanent, c’est à dire
+F W
+x
+i
+m
+i
+=− ∂
+∂
+ou, sous forme vectorielle
+FW I m=− = grad  grad Φ
+Remarques :
+1. La force totale (s’exerçant donc sur le centre d’inertie du circuit) a tendance à pousser le
+circuit vers les régions où le flux sera maximal.
+2.  Cette expression est valable uniquement pour des courants permanents. Noter qu’elle
+s’applique néanmoins pour des circuits déformés et donc pour lesquels il y aura aussi une
+modification du flux sans réel déplacement du circuit.
+On peut faire le même raisonnement dans le cas d’un mouvement de rotation pure du circuit.
+Prenons le cas général de rotations d’angles infinitésimaux d iα  autour de trois axes ∆i ,
+passant par le centre d’inertie O du circuit et engendrés par les vecteurs unitaires ui .
+Soit le vecteur rO Pr u==  reliant un point P
+quelconque d’un circuit et le point O. La vitesse du
+point P s’écrit en toute généralité (voir cours de
+mécanique)
+dr
+dt
+dr
+dt ur=+ ∧ Ω
+où le premier terme correspond à une translation pure
+et le second à une rotation pure, décrite par le vecteur
+instantané de rotation Ω
+«
+«
+«
+α
+α
+α
+α
+1
+2
+3
+1
+3
+
+
+
+
+
+
+
+
+
+
+=
+=
+∑d
+dt ui
+i
+i .
+L’expression générale du moment de la force magnétique  par rapport à O est ΓΓ=
+=
+∑ ii
+i
+u
+1
+3
+.
+<<<PAGE>>>
+35
+Le travail dû à la force de Laplace lors d’une rotation pure ( rO P=  reste constant) s’écrit
+dW dF dr dF d u r
+du rd F du
+Id
+Id
+circuit circuit
+ii
+i
+ii
+i circuit
+ii
+i
+ii
+i
+=⋅ =⋅ ∧ 
+
+
+
+=⋅ ∧ 
+
+
+ =⋅
+=
+=
+∫∫ ∑
+∑ ∫ ∑
+∑
+=
+==
+=
+α
+αα
+∂
+∂α α
+1
+3
+1
+3
+1
+3
+1
+3
+Γ
+Φ
+Φ
+d’où
+Γ Φ
+i
+i
+I= ∂
+∂α
+Autrement dit, le moment de la force magnétique par rapport à un axe ∆i  passant par le centre
+d’inertie O du circuit, dépend de la variation de flux lors d’une rotation du circuit autour de
+cet axe.
+Exemple : Le dipôle
+En supposant que le champ magnétique extérieur est constant à l’échelle d’un dipôle de
+moment magnétique dipolaire M = ISn, on obtient un flux  Φ= ⋅BS n .
+La force magnétique totale s’écrit alors
+FI I S n B== ∇ ⋅ () grad Φ
+c’est à dire
+FB=⋅ () grad M
+Le moment de la force magnétique (couple magnétique) s’écrit
+Γ Φ
+i
+ii i i
+II B n S B ISn B M== ⋅ () =⋅
+
+
+
+
+
+ =⋅∂
+∂α
+∂
+∂α
+∂
+∂α
+∂
+∂α
+Or, le moment magnétique dipolaire varie de la façon suivante lors d’une rotation
+dM d u M M dii
+ii i
+i=∧ =
+==
+∑∑α ∂
+∂α α
+1
+3
+1
+3
+et on obtient donc
+Γii i Bu M MBu=⋅ ∧ () =∧() ⋅
+c’est à dire l’expression vectorielle
+Γ= ∧M B
+Remarquer que ce calcul est bien plus facile que le calcul direct effectué à la section II.2.4.
+<<<PAGE>>>
+36
+III.3.4- La règle du flux maximum
+Un solide est dans une position d’équilibre stable si les forces et les moments auxquels il est
+soumis tendent à le ramener vers cette position s’il en est écarté. D’après le théorème de
+Maxwell on a
+dW Id I F dr f i== − = ⋅ΦΦ Φ()
+Si la position est stable, cela signifie que l’opérateur doit fournir un travail, autrement dit un
+déplacement dr dans le sens contraire de la force (qui sera une force de rappel), donc dW < 0
+ou ΦΦf i< .
+Un circuit tend toujours à se placer dans des conditions d’équilibre stable, où le flux du
+champ est maximum.
+Cette règle est très utile pour se forger une intuition des actions magnétiques.
+<<<PAGE>>>
+37
+Chapitre IV- Induction électromagnétique
+IV.1- Les lois de l’induction
+IV.1.1- L’approche de Faraday
+Jusqu’à maintenant, nous nous sommes intéressés  essentiellement à la création d’un champ
+magnétique à partir d’un courant permanent. Ceci fut motivé par l’expérience de Oersted. A la
+même époque, le physicien anglais Faraday était préoccupé par la question inverse : puisque
+ces deux phénomènes sont liés, comment produire un courant à partir d’un champ
+magnétique ?
+Il fit un certain nombre d’expériences qui échouèrent car il essayait de produire un courant
+permanent. En fait, il s’aperçut bien de certains effets troublants, mais ils étaient toujours
+transitoires.
+Exemple d’expérience : on enroule sur un même cylindre deux fils électriques. L’un est relié à
+une pile et possède un interrupteur, l’autre est seulement relié à un galvanomètre, permettant
+ainsi de mesurer tout courant qui serait engendré dans ce second circuit. En effet, Faraday
+savait que lorsqu’un courant permanent circule dans le premier circuit, un champ magnétique
+serait engendré et il s’attendait donc à voir apparaître un courant dans le deuxième circuit. En
+fait rien de tel n’était observé : lorsque l’interrupteur était fermé ou ouvert, rien ne se passait.
+Par contre, lors de son ouverture ou de sa fermeture, une déviation fugace de l’aiguille du
+galvanomètre pouvait être observée (cela n’a pas été perçu immédiatement). Une telle
+déviation pouvait également s’observer lorsque, un courant circulant dans le premier circuit,
+on déplaçait le deuxième circuit.
+Autre expérience : prenons un aimant permanent et plaçons le à proximité d’une boucle
+constituée d’un fil conducteur relié à un galvanomètre. Lorsque l’aimant est immobile, il n’y a
+pas de courant mesurable dans le fil. Par contre, lorsqu’on déplace l’aimant, on voit apparaître
+un courant dont le signe varie selon qu’on approche ou qu’on éloigne l’aimant. De plus, ce
+courant est d’autant plus important que le déplacement est rapide.
+Ces deux types d’expériences ont amené Faraday à écrire ceci : « Quand le flux du champ
+magnétique à travers un circuit fermé change, il apparaît un courant électrique. »
+Dans les deux expériences, si on change la résistance R du circuit, alors le courant I
+apparaissant est également modifié, de telle sorte que e=RI reste constant. Tous les faits
+expérimentaux mis en évidence par Faraday peuvent alors se résumer ainsi :
+Loi de Faraday : la variation temporelle du flux magnétique à travers un circuit fermé y
+engendre une fém induite
+e d
+dt=− Φ  ( expression 1)
+L’induction électromagnétique est donc un phénomène qui dépend intrinsèquement du temps
+et, au sens strict, sort du cadre de la magnétostatique (étude des phénomènes magnétiques
+<<<PAGE>>>
+38
+stationnaires). Nous allons toutefois l’étudier, l’induction étant l’équivalent magnétique de
+l’influence électrostatique.
+IV.1.2- La loi de Faraday
+Posons-nous la question de Faraday. Comment crée-t-on un courant ?
+Un courant est un déplacement de charges dans un matériau conducteur. Ces charges sont
+mises en mouvement grâce une différence de potentiel (ddp) qui est maintenue par une force
+électromotrice ou fém (elle s’exprime donc en Volts). Une pile, en convertissant son énergie
+chimique pendant un instant dt, fournit donc une puissance P (travail W par unité de temps)
+modifiant l’énergie cinétique des dQ porteurs de charge et produisant ainsi un courant I.
+Soit Pq  la puissance nécessaire pour communiquer une vitesse v à une particule de charge q.
+Sachant que dans un conducteur il y a n porteurs de charge par unité de volume, la puissance
+totale P que doit fournir le générateur (par ex une pile) est
+Pn P d Vd ln P d S d ln F v d S
+nqv dS Fd l
+q
+Fd l
+q jd S
+I Fd l
+q Ie
+q
+V
+q
+tioncircuit tion circuit
+tioncircuit circuit tion
+circuit
+== = ⋅
+=⋅ ()
+⋅ = ⋅ ⋅()
+= ⋅ =
+∫∫∫ ∫∫ ∫∫ ∫ ∫
+∫∫∫∫ ∫ ∫
+∫
+sec sec
+sec sec
+On pose donc que la fém d’un circuit est
+e P
+I
+F
+q dl
+circuit
+== ⋅ ∫
+où F est la force qui s’exerce sur les charges mobiles q. Or, la force de Coulomb est
+incapable de produire une fém, puisque la circulation du champ électrostatique (donc le
+travail) est nulle sur un circuit fermé,
+eE d l VA VAs
+circuit
+=⋅ =−=∫ () () 0
+Pour créer un courant continu dans un circuit fermé, il faut donc un champ électromoteur dont
+la circulation le long du circuit ne soit pas nulle. L’expérience de Faraday montre donc que
+c’est l’existence d’un champ magnétique qui permet l’apparition d’un courant. Cela signifie
+que la force de Lorentz doit être responsable de l’apparition d’une fém, c’est à dire
+eE v B d l
+circuit
+=+ ∧() ⋅∫  ( expression 2)
+Reprenons maintenant l’expérience qui consiste à déplacer un circuit fermé avec une vitesse v
+dans un champ magnétique B et un champ électrique Es  statiques. Que se passe-t-il pendant
+un instant dt ?
+<<<PAGE>>>
+39
+dr= v dt
+dr
+d2S n
+dl
+La force de Lorentz (due à ce mouvement d’ensemble) agissant sur
+chaque particule q du conducteur s’écrit Fq E vBs=+ ∧() ,
+fournissant ainsi une fém
+eE v B d l dt vdt dl B
+dt dS n B
+s
+circuit circuit
+circuit
+=+ ∧() ⋅= − ∧ () ⋅
+=− ⋅
+∫∫
+∫
+1
+1 2
+où dS n2  est la surface orientée élémentaire, décrite lors du
+déplacement vdt  du circuit. On reconnaît alors l’expression du flux
+coupé à travers cette surface élémentaire. On a donc
+e dt d d
+dt
+d
+dtcircuit
+c
+c=− =− =−∫
+1 2Φ ΦΦ
+puisque la variation du flux coupé est égale à celle du flux total à travers le circuit
+(conservation du flux magnétique, cf théorème de Maxwell).
+Attention au sens de dl  : il doit être cohérent avec dd cΦΦ= .
+Nous venons de démontrer la loi de Faraday  dans le cas d’un circuit rigide, déplacé dans un
+champ électromagnétique statique. Nous avons vu apparaître naturellement l’expression du
+flux coupé. En fait, la seule chose qui compte, c’est l’existence d’un mouvement d’ensemble
+du tout ou d’une partie du circuit (revoir démonstration pour s’en convaincre). Ainsi,
+l’expression de la fém induite
+e d
+dt
+c=− Φ (expression 3)
+reste valable pour un circuit déformé et/ou déplacé dans un champ magnétique statique. Cette
+démonstration s’est faite à partir de la force de Lorentz et est donc a priori indépendante du
+référentiel choisi.
+Première difficulté 
+Prenons l’expérience de la roue de Barlow. L’appareil consiste en un disque métallique
+mobile autour d’un axe fixe, plongeant dans un champ magnétique et touchant par son bord
+extérieur une cuve de mercure. Un circuit électrique est ainsi établi entre la cuve et l’axe et on
+ferme ce circuit sur un galvanomètre permettant de mesurer tout courant. Lorsqu’on fait
+tourner le disque, un courant électrique est bien détecté, en cohérence avec la formule ci-
+dessus. Cependant, il n’y a pas de variation du flux total à travers la roue ! Ce résultat
+expérimental semble donc contradictoire avec e d
+dt=− Φ  !
+Comment comprendre cela ? Même si, globalement, il n’y a pas de variation du flux total, il
+n’en reste pas moins que les charges du disque conducteur se déplacent dans un champ
+magnétique. On pourrait donc faire fi de l’égalité dd cΦΦ=  et utiliser l’expression 3 et
+calculer ainsi une fém non nulle.
+Cependant, la cause physique fondamentale de son existence réside dans l’expression 2. Il
+faut donc utiliser les expressions 1 et 3 uniquement comme des moyens parfois habiles de
+calculer cette fém.
+<<<PAGE>>>
+40
+Deuxième difficulté
+Si on se place maintenant dans le référentiel du circuit rigide, on verra un champ magnétique
+variable (c’est le cas, par ex, lorsqu’on approche un aimant d’un circuit immobile). Dans ce
+cas, le flux coupé est nul et on devrait donc avoir une fém nulle, ce qui n’est pas le cas d’après
+l’expérience de Faraday. Ce résultat expérimental semble cette fois-ci en contradiction avec
+e d
+dt
+c=− Φ  !
+Résolution de ce paradoxe
+Puisque, dans ce dernier cas, le champ magnétique dépend du temps, il n’y a plus de lien
+direct entre le flux coupé et le flux total à travers le circuit. Si on revient à l’expression 2, on
+voit que dans le référentiel du circuit la force « magnétique » est nulle et il ne reste plus que le
+terme « électrique ». Or, nous avons déjà vu que ce champ électrique n’est pas simplement
+constitué d’un champ électrostatique. Si on rassemble ce que nous dit d’un coté la théorie et
+de l’autre l’expérience, on obtient
+e d
+dt
+Ed lm
+circuit
+=−
+=⋅ ∫
+Φ    (expérience de Faraday)
+   (notre théorie)
+c’est à dire
+d
+dt
+d
+dt Bd S B
+t dS E dl
+circuit circuit
+m
+circuit
+Φ =⋅ = ⋅ = − ⋅∫∫ ∫∫ ∫
+∂
+∂
+Autrement dit, la seule façon de concilier notre théorie avec l’expérience, c’est d’admettre
+qu’une variation temporelle du champ magnétique engendre un champ électrique.
+Nous avons ici un nouvel effet physique, totalement indépendant de tout ce que nous avons vu
+jusqu’à présent : l’induction est un phénomène électromagnétique.
+Résumé/Bilan
+Que se passe-t-il si on déplace un circuit (rigide ou non) dans un champ magnétique variable ?
+Quelle expression faut-il utiliser ? En fait, il faut revenir à la force de Lorentz dans le cas
+général de champs variables. On aura alors une fém induite
+eE v B d l Ed l d
+dt
+d
+dt
+B
+t dS d
+dt
+circuit
+m
+circuit
+c
+circuit
+c
+=+ ∧() ⋅= ⋅ −
+=− =− ⋅ −
+∫∫
+∫∫
+Φ
+ΦΦ ∂
+∂
+Le premier terme décrit la circulation non nulle d’un champ électromoteur, associé à la
+variation temporelle du champ magnétique, tandis que le deuxième terme décrit la présence
+d’un flux coupé dû au déplacement du circuit et/ou à sa déformation.
+Remarque importante :
+Dans le calcul ci-dessus, nous n’avons pris en compte que la vitesse communiquée au circuit
+et non la vitesse totale des particules. En effet, s’il existe un courant, cela signifie que les
+particules chargées se déplacent à l’intérieur du circuit. En fait, la force magnétique associée à
+<<<PAGE>>>
+41
+cette composante de la vitesse est, en régime quasi-statique, exactement compensée par le
+champ électrostatique de Hall.
+IV.1.3- La loi de Lenz
+Enoncé : l’induction produit des effets qui s’opposent aux causes qui lui ont donné
+naissance.
+Cette loi est, comme la règle du flux maximum, déjà contenue dans les équations et donc
+n’apporte rien de plus, hormis une intuition des phénomènes physiques. En l’occurrence, la
+loi de Lenz n’est  que l’expression du signe « – » contenu dans la loi de Faraday.
+Exemple : si on approche un circuit du pôle nord d’un aimant, le flux augmente et donc la fém
+induite est négative. Le courant induit sera alors négatif et produira lui-même un champ
+magnétique induit opposé à celui de l’aimant. Deux conséquences :
+1. L’augmentation du flux à travers le circuit est amoindrie.
+2.  Il apparaît une force de Laplace FI=  grad Φ négative, s’opposant à l’approche de
+l’aimant.
+Ce signe « – » dans la loi de Faraday (la loi de Lenz) décrit le fait que dans des conditions
+normales, il n’y a pas d’emballement possible (ex, courant ne faisant qu’augmenter).
+Remarque sur la convention de signe
+La détermination du sens du courant induit se fait de la façon suivante :
+1. On se choisit arbitrairement un sens de circulation le long du circuit.
+2. Ce sens définit, grâce à la règle du bonhomme d’Ampère, une normale au circuit.
+3. Le signe du flux est alors déterminé en faisant le produit scalaire du champ magnétique
+par cette normale.
+4. En utilisant ensuite la loi de Faraday, on obtient la valeur et le signe de la fém.
+5. Enfin, le courant est obtenu à partir de la loi d’Ohm (son signe peut aussi être directement
+connu en utilisant la loi de Lenz).
+IV.2- Induction mutuelle et auto-induction
+IV.2.1- Induction mutuelle entre deux circuits fermés
+Soient deux circuits fermés, orientés, traversés par des courants I1 et I2 .
+dS1
+dS2
+I2
+I1
+<<<PAGE>>>
+42
+Le premier crée un champ magnétique B1  dont on peut calculer le flux Φ12  à travers le
+deuxième circuit,
+Φ12 1 2
+0
+3 21
+21 2
+4=⋅ = µ
+π
+∧ ⋅
+
+
+
+
+
+
+
+∫∫ ∫ ∫∫Bd S dl PM
+PM
+dS I
+SC S
+où P est un point quelconque du circuit C1  (l’élément de longueur valant dl dOP= ) et M un
+point quelconque de la surface délimitée par C2 , à travers laquelle le flux est calculé. De
+même, on a pour le flux créé par le circuit C2  sur le circuit C1
+Φ21 2 1
+0
+3 12
+12 1
+4=⋅ = µ
+π
+∧ ⋅
+
+
+
+
+
+
+
+∫∫ ∫ ∫∫Bd S dl PM
+PM
+dS I
+SC S
+où P est cette fois-ci un point du circuit C2  et M un point de la surface délimitée par C1 , à
+travers laquelle le flux est calculé. Les termes entre crochets dépendent de la distance entre les
+deux circuits et de facteurs uniquement géométriques liés à la forme de chaque circuit.
+Comme, dans le cas général, ils sont difficiles voire impossible à calculer, il est commode de
+poser
+Φ
+Φ
+12 12 1
+21 21 2
+=
+=
+MI
+MI
+Le signe des coefficients dépend de l’orientation respective des circuits et suit la même
+logique que pour le courant induit. D’après les choix pris pour le sens de circulation le long de
+chaque circuit (voir figure), les flux sont négatifs pour des courants I1 et I2  positifs. Donc les
+coefficients sont négatifs.
+Théorème : Le coefficient d’induction mutuelle ou inductance mutuelle (unités : Henry, H)
+MM M== 12 21
+Il met en jeu une énergie potentielle d’interaction magnétique entre les deux circuits
+WM I Im =− 12   +    Constante
+Il nous faut démontrer que les inductances sont bien les mêmes pour chaque circuit. La raison
+profonde réside dans le fait qu’ils sont en interaction, donc possèdent chacun la même énergie
+potentielle d’interaction. Si on déplace C2 , il faut fournir un travail
+dW I d I I dM22 1 2 12 1 2== Φ
+Mais ce faisant, on engendre une variation du flux à travers C1  et donc un travail
+dW I d I I dM11 2 1 21 2 1== Φ
+Puisqu’ils partagent la même énergie d’interaction (chaque travail correspond au mouvement
+relatif de C1  par rapport à C2 ), on a dW dW12=  et donc
+dM dM M M12 21 12 21=⇒ =    +  Constante
+Cette constante d’intégration doit être nulle puisque, si on éloigne les circuits l’un de l’autre à
+l’infini, l’interaction tend vers zéro et donc les inductances s’annulent.
+<<<PAGE>>>
+43
+IV.2.2- Auto-induction
+Si on considère un circuit isolé, parcouru par un courant I, on s’aperçoit qu’on peut produire
+le même raisonnement que ci-dessus. En effet, le courant I engendre un champ magnétique
+dans tout l’espace et il existe donc un flux de ce champ à travers le circuit lui-même,
+Φ= ⋅ = µ
+π
+∧ ⋅
+
+
+
+
+
+
+
+∫∫ ∫ ∫∫Bd S dl PM
+PM
+dS I
+SC S
+0
+3
+4
+qu’on peut simplement écrire
+Φ= LI
+où L est le coefficient d’auto-induction ou auto-inductance (ou self), exprimé en Henry. Il ne
+dépend que des propriétés géométriques du circuit et est nécessairement positif (alors que le
+signe de l’inductance mutuelle dépend de l’orientation d’un circuit par rapport à l’autre).
+IV.3- Régimes variables
+IV.3.1- Définition du régime quasi-statique
+Avec les lois que nous avons énoncé jusqu’à présent, nous sommes en mesure d’étudier
+certains régimes variables. En effet, tous les raisonnements basés sur la notion d’un champ
+(électrique ou magnétique) constant  au cours du temps peuvent aisément être appliqués à des
+systèmes physiques variables (champs dépendant du temps), pourvu que cette variabilité
+s’effectue sur des échelles de temps longues par rapport au temps caractéristique d’ajustement
+du champ. Voici tout de suite un exemple concret.
+La plupart des lois de la magnétostatique supposent un courant permanent, c’est à dire le
+même dans le tout le circuit. Lorsqu’on ferme un interrupteur, un signal électromagnétique se
+propage dans tout le circuit et c’est ainsi que peut s’établir un courant permanent : cela prend
+un temps de l’ordre de l/c, où l est la taille du circuit et c la vitesse de la lumière. Si l’on a
+maintenant un générateur de tension sinusoïdale de période T, alors on pourra malgré tout
+utiliser les relations déduites de la magnétostatique si
+T >> l/c
+Ainsi, bien que le courant soit variable, la création d’un champ magnétique obéira à la loi de
+Biot et Savart tant que le critère ci-dessus reste satisfait. Ce type de régime variable est
+également appelé régime quasi-statique.
+IV.3.2- Forces électromotrices (fém) induites
+Considérons tout d’abord le cas d’un circuit isolé rigide (non déformable). Nous avons vu
+qu’une fém induite apparaissait dès lors que le flux variait. D’après la loi de Faraday et
+l’expression ci-dessus, cette fém vaudra
+eL dI
+dt=−
+(L étant constant pour un circuit rigide). En régime variable, si le courant diminue, on verra
+donc apparaître une fém positive engendrant un courant induit qui va s’opposer à la
+<<<PAGE>>>
+44
+décroissance du courant dans le circuit. La self d’un circuit tend donc à atténuer les variations
+de courant.
+Dans les schémas électriques la self est symbolisée par une bobine. C’est en effet la façon la
+plus commode de produire une self : plus le nombre de spires est élevé et plus grande sera
+l’auto-inductance L (le cylindre sur lequel on fait l’enroulement est d’ailleurs constitué de fer
+doux, matériau ferromagnétique, pour amplifier le champ, donc L). Ceci se comprend
+aisément. La fém s’écrit en effet
+eE v B d l NE v B d l
+circuit spire
+=+ ∧() ⋅= + ∧ () ⋅∫∫
+ce qui d’ailleurs justifie la règle
+ΦΦcircuit spireN=
+Si l’on considère maintenant deux circuits couplés C1  et C2 , alors l’expression des flux totaux
+à travers ces circuits s’écrit
+ΦΦ Φ
+ΦΦ Φ
+11 12 1 1 1 2
+22 2 1 2 2 2 1
+=+=+
+=+= +
+
+
+
+LI M I
+LI M I
+On aura donc en régime variable des fém induites dans chaque circuit
+eL dI
+dt M dI
+dt
+eM dI
+dt L dI
+dt
+11
+12
+2
+1
+2
+2
+=− −
+=− −
+
+
+
+
+
+Ceci peut avoir des conséquences importantes (parfois désastreuses), comme l’apparition
+soudaine d’un courant dans un circuit fermé non alimenté. En effet, supposons que I2  soit nul
+à un instant et qu’il y ait à ce moment là une variation de courant I1. L’induction mutuelle va
+alors engendrer un courant I2  induit, qui va à son tour modifier I1.
+IV.3.3- Retour sur l’énergie magnétique
+Dans le Chapitre III, nous avons vu que l’énergie magnétique d’un circuit parcouru par un
+courant permanent I placé dans un champ magnétique extérieur B s’écrit WIm =− Φ .   Or, un
+tel circuit produit un flux Φ= LI  à travers lui-même, ce qui semblerait impliquer une énergie
+magnétique… négative. Etrange. D’autant plus que nous avions interprété cette énergie
+comme une énergie potentielle d’interaction entre le circuit et le champ extérieur. Peut-on
+parler d’énergie d’interaction du circuit avec lui-même ? Manifestement, cela n’a pas de sens.
+Il nous faut raisonner autrement. Tout effet a nécessité un travail (hélas) et est donc porteur
+d’énergie. Un conducteur portant une charge électrique Q possède une énergie électrostatique
+W Q
+C
+e =
+2
+2
+où C est la capacité du conducteur. Cette énergie est stockée dans (portée par) le champ
+électrostatique. Nous avons calculé cette énergie en évaluant le travail fourni pour constituer
+ce réservoir de charges. Il nous faut faire un raisonnement similaire ici.
+<<<PAGE>>>
+45
+S’il existe un courant I, c’est qu’un générateur  a fourni une puissance Pe i=  pendant un
+certain temps. Cela signifie que le circuit (décrit par une self L) a reçu une puissance
+Pe i L i di
+dt
+d
+dt
+Li
+m =− = =
+
+
+
+
+
+
+2
+2
+puisque celui-ci crée un champ magnétique (on néglige ici toute dissipation). Partant d’un
+courant nul à t=0, on obtient après un temps t un courant I et une énergie emmagasinée
+WP d t LImm
+t
+==∫
+0
+21
+2
+Cette énergie est stockée dans le champ magnétique qui est créé par  un courant d’amplitude I,
+circulant dans un circuit de self L. Le facteur 1/2 provient de l’action du circuit sur lui-même.
+Si l’on prend en compte la dissipation (voir plus bas), on obtient que l’énergie nécessaire à la
+création d’un courant I (ou la génération du champ B associé) doit être supérieure.
+Si l’on place maintenant ce circuit dans un champ magnétique extérieur Bext , l’énergie
+magnétique totale sera
+WL I Im ext=−1
+2
+2 Φ
+où l’on a supposé implicitement que l’existence du circuit ne perturbe pas la source du champ
+Bext  (celui-ci n’est pas affecté par des variations éventuelles du courant circulant dans le
+circuit). En général, de tels cas correspondent à une énergie d’interaction dominante sur
+l’énergie emmagasinée.
+Prenons maintenant le cas de deux circuits en interaction. Chacun est parcouru par un courant
+permanent et engendre ainsi un champ magnétique. L’énergie magnétique totale emmagasinée
+est alors
+We I d t e Id t
+LI dI
+dt MI dI
+dt dt L I dI
+dt MI dI
+dt dt
+LI L I MI I
+m
+tt
+tt
+=− −
+=+ 
+
+
+ ++ 
+
+
+
+=+ () +
+∫∫
+∫∫
+11
+0
+11
+0
+11
+1
+1
+2
+0
+22
+2
+2
+1
+0
+11
+2
+22
+2
+12
+1
+2
+On voit donc que WW Wm ≠+ 12  : il y a un troisième terme, correspondant à l’interaction entre
+les deux circuits.
+IV.3.4-  Bilan énergétique d’un circuit électrique
+D’après la relation établie en électrocinétique, la tension entre deux points A et B d’un circuit
+vaut
+VV R I eAB−=−
+où e est la fém située entre A et B, R la résistance totale et le courant I circulant de A vers B.
+Etant parcouru par un courant, ce circuit (ou cette branche du circuit) va engendrer un champ
+<<<PAGE>>>
+46
+magnétique, donc produire un flux à travers lui-même qui, si le champ varie, va engendrer
+une  fém (loi de Faraday) et on aura alors
+VV R I L dI
+dt
+AB−=+
+ Si le circuit est placé dans un champ magnétique extérieur Bext , le champ total sera la somme
+du champ induit et du champ Bext  et l’équation sera
+VV R I L dI
+dt
+d
+dt
+AB
+ext−=+ − Φ
+Ainsi, un circuit composé d’un générateur délivrant une tension U, d’une résistance R, d’une
+bobine de self  L et d’un condensateur de capacité C (circuit RLC) aura pour équation
+UR IL dI
+dt
+Q
+C=+ +
+où I dQ
+dt=  est le courant circulant dans le circuit et Q la charge sur l’une des armatures du
+condensateur.
+La puissance fournie par le générateur se transmet au circuit qui l’utilise alors de la façon
+suivante :
+PU I
+IR I L dI
+dt
+Q
+C RI d
+dt LI d
+dt
+Q
+C
+=
+=++
+
+
+ =+ 
+
+
+ +
+
+
+
+
+
+
+22
+21
+2
+1
+2
+c’est à dire
+PP d
+dt WWJm e=+ + ()
+Une partie de la puissance disponible est donc convertie en chaleur (dissipation par effet
+Joule), tandis que le reste sert à produire des variations de l’énergie électro-magnétique totale
+du circuit.
+Dans un circuit « libre » (où U=0), on voit que cette énergie totale diminue au cours du temps,
+entièrement reconvertie en chaleur.
+<<<PAGE>>>
+Formulaire de Magnétostatique
+Champ magnétostatique
+Créé par une particule en mouvement:
+BM qv P M
+PM() = ∧µ
+π
+0
+34
+Créé par n charges en mouvement:
+BM qv P M
+PM
+ii i
+ii
+n
+() = ∧
+=
+∑
+µ
+π
+0
+3
+1 4
+Créé par une distribution continue:
+BM jP P M
+PM dV() ()= ∧
+∫∫∫
+µ
+π
+0
+3
+3
+4
+Créé par un circuit filiforme
+BM Id l P M
+PMcircuit
+() = ∧
+∫
+µ
+π
+0
+34
+Propriétés fondamentales
+Flux conservatif
+Φ= ⋅ =∫∫ Bd S
+S
+0
+Circulation (Th. d'Ampère):
+ Bd l I
+contour
+⋅=∫ µ0 int
+Dipôle magnétique
+Moment dipolaire magnétique
+MI S n=
+Couple magnétique sur un dipôle
+Γ= ∧MB
+Force magnétique sur un dipôle
+F grad M B=⋅ ()
+Actions et énergie magnétiques
+Sur une particule chargée (force de
+Lorentz)
+Fq EvB=+ ∧()
+Sur un circuit filiforme (force de Laplace)
+FI d l B
+circuit
+=∧ ∫
+Force (à partir de l'énergie)
+FW I m=− =grad grad Φ
+Couple (à partir de l'énergie)
+ΓΓ Γ Φ==
+=
+∑ ii
+i
+i
+i
+uI
+1
+3
+      avec     ∂
+∂α
+Théorème de Maxwell
+dW F dr Id c=⋅ =Φ
+Energie d'interaction magnétique
+WI Cstm =− +Φ
+Energie magnétique emmagasinée
+WL Im = 1
+2
+2
+Induction
+Loi de Faraday
+e d
+dt
+B
+t dS d
+dt
+EvB d l
+S
+c
+circuit
+=− =− ⋅ −
+=+ ∧() ⋅
+∫∫
+∫
+ΦΦ ∂
+∂
+Coefficient d'induction mutuelle
+M II==ΦΦ12
+1
+21
+2
+Coefficient d'auto-induction
+L I= Φ

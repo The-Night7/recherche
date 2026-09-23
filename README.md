@@ -1,6 +1,7 @@
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
 
-Cours indexés : **Analyse dans ℝⁿ** et **Séries** (CM, TD, DS, QCM, corrigés).
+Cours de **Préing 2 — semestre 1** : **Analyse dans ℝⁿ**, **Séries**,
+**Informatique 3**, **Électromagnétisme** et **SHS** (CM, TD, DS, CC, QCM, corrigés).
 L'interface web permet de choisir où chercher : un cours ou tous, le type de
 document, énoncés et/ou corrigés, les années. À pertinence proche, les
 documents les plus récents passent devant.
@@ -87,7 +88,30 @@ de framework JS, page HTML/CSS/JS auto-contenue servie directement.
   très différemment du cours (synonymes non couverts) peut ne rien
   trouver de pertinent.
 
-## Ajouter des documents au cours de Séries (`ingest_series.py`)
+## Ajouter des documents
+
+Depuis la racine du projet, importer un fichier ou un dossier complet :
+
+```bash
+python3 ingest.py add /chemin/vers/le/dossier
+```
+
+L'import reconnaît les noms contenant `Series`, `Analyse-dans-RN`,
+`Informatique3`, `Electromagnetisme` ou `SHS`, suivis du repère `_P2S1_`.
+Les suffixes `-DS` et `-CC` sont acceptés. Les cinq matières du corpus actuel
+sont rattachées à Préing 2, semestre 1, dans les métadonnées et l'interface.
+L'index est reconstruit automatiquement ; redémarrer ensuite `python3 server.py`.
+Les doublons sont ignorés et les scans sans texte sont signalés pour transcription.
+Les PDF d'informatique et de SHS conservent leur texte et leurs retours à la ligne ;
+les notes Markdown conservent leurs blocs de code.
+
+Pour reconstruire après une modification d'un texte ou d'une transcription :
+
+```bash
+python3 ingest.py build
+```
+
+## Import historique de Séries (`ingest_series.py`)
 
 ```bash
 pip install pypdf --break-system-packages               # lecture des PDF

@@ -17,7 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 from reflow import to_md_blocks
-from courses import COURSES, KINDS
+from courses import COURSES, CURRICULUM, KINDS
 from search import filter_mask, load_index, recency, search
 
 # en local: http://localhost:8000 . En ligne (Render, Railway, etc.),
@@ -41,8 +41,8 @@ def build_meta():
         for c in cs:
             kinds[c["kind"]] = kinds.get(c["kind"], 0) + 1
         years = sorted({c["year"] for c in cs}, key=lambda y: -1 if y is None else y)
-        courses.append({"id": cid, "name": name, "count": len(cs), "kinds": kinds, "years": years})
-    return {"courses": courses, "kinds": KINDS}
+        courses.append({"id": cid, "name": name, "curriculum": CURRICULUM["id"], "count": len(cs), "kinds": kinds, "years": years})
+    return {"courses": courses, "kinds": KINDS, "curriculum": CURRICULUM}
 
 
 META = build_meta()
@@ -51,6 +51,14 @@ META = build_meta()
 def md_blocks(text):
     # un seul bloc : le rendu Markdown côté page gère paragraphes, listes et $…$
     return [{"type": "md", "text": text}]
+
+
+def content_blocks(chunk):
+    if chunk.get("fmt") == "md":
+        return md_blocks(chunk["text"])
+    if chunk.get("fmt") == "text":
+        return [{"type": "text", "text": chunk["text"]}]
+    return to_md_blocks(chunk["text"])
 
 
 def csv_param(qs, name):
@@ -139,9 +147,10 @@ class Handler(BaseHTTPRequestHandler):
                         "label": c["label"], "section": c.get("section", ""),
                         "doc_label": c.get("doc_label", ""), "course": c["course"],
                         "course_name": COURSES.get(c["course"], c["course"]),
+                        "curriculum": c["curriculum"],
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
                         "score": score,
-                        "blocks": md_blocks(c["text"]) if c.get("fmt") == "md" else to_md_blocks(c["text"]),
+                        "blocks": content_blocks(c),
                     }
                     for c, score in results
                 ],

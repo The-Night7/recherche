@@ -37,8 +37,8 @@ import re
 import sys
 import zipfile
 
-from clean_extraction import clean_text
-from courses import COURSES, detect_course
+from clean_extraction import clean_text, strip_control_chars
+from courses import COURSES, CURRICULUM, detect_course, ensure_meta
 
 DATA_ROOT = "data"
 DRIVE_DIR = os.path.join(DATA_ROOT, "_drive")
@@ -257,6 +257,8 @@ def parse_meta(stem, course):
         kind = "qcm"
     elif upper.startswith("DS"):
         kind = "ds"
+    elif upper.startswith("CC") or re.match(r"RAT+RAPAGE", upper):
+        kind = "cc"
     elif upper.startswith("TD"):
         kind = "td"
     else:
@@ -275,25 +277,27 @@ def parse_meta(stem, course):
             title = f"TD{m.group(1)}" + (f"-{m.group(2)}" if m.group(2) else "")
         else:  # recueil de toutes les feuilles de TD
             title = "Feuilles de TD"
-    elif kind == "ds":
-        m = re.match(r"DS[-_]?(\d)", name)
-        title = f"DS{m.group(1)}"
+    elif kind in ("ds", "cc"):
+        m = re.match(r"(?:DS|CC)[-_]?(\d+)", name, re.I)
+        title = f"{kind.upper()}{m.group(1)}" if m else "Rattrapage"
         v = re.search(r"V(\d)", name)
         if v:
             title += f" V{v.group(1)}"
-        if re.search(r"rat+rapage", name, re.I):
+        if m and re.search(r"rat+rapage", name, re.I):
             title += " rattrapage"
     elif kind == "qcm":
         title = "QCM" + re.match(r"QCM(\d)", name).group(1)
     else:
-        prefix = key(name.split("_")[0])
-        title = COURSE_TITLES.get(prefix, "Notes de cours")
+        raw_prefix = name.split("_")[0]
+        prefix = key(raw_prefix)
+        title = COURSE_TITLES.get(prefix, raw_prefix.replace("-", " ") if prefix != "cm" else "Notes de cours")
     if author and kind in ("cours", "td") and not title.startswith(("TD", "DS")):
         title += f" ({author})"
 
     years_txt = f"{year}-{year + 1}" if year else "année inconnue"
     return {
         "course": course,
+        "curriculum": CURRICULUM["id"],
         "kind": kind,
         "corrige": corrige,
         "year": year,
@@ -470,12 +474,15 @@ def sections_course_pdf(text):
     return secs
 
 
-MD_HEAD_RE = re.compile(r"(?m)^(#{1,4})\s+(.+?)\s*$")
+MD_HEAD_RE = re.compile(r"(?m)^(#{1,4})[ \t]+(.+?)[ \t]*$")
 
 
 def sections_markdown(text):
     text = re.sub(r"(?s)^---\n.*?\n---\n", "", text)  # front-matter
-    marks = list(MD_HEAD_RE.finditer(text))
+    # Les commentaires et directives dans un programme ne sont pas des titres.
+    heading_text = re.sub(r"(?ms)^[ \t]*(`{3,})[^\n]*\n.*?^[ \t]*\1[ \t]*(?=\n|$)",
+                          lambda m: re.sub(r"[^\n]", " ", m.group()), text)
+    marks = list(MD_HEAD_RE.finditer(heading_text))
     if not marks:
         return [("Document", text)]
     secs, path = [], {}
@@ -505,8 +512,14 @@ def chunk_document(path, course):
     if fmt == "md":
         secs = sections_markdown(raw)
     else:
-        pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
-        text = fix_sums(clean_text("\n\n".join(pages)))
+        if course in ("informatique3", "shs"):
+            # Garder le code, ses indentations et les textes de SHS : les
+            # heuristiques de fractions/indices sont propres aux maths.
+            fmt = "text"
+            text = strip_control_chars(raw.replace(PAGE_SEP, "\n\n"))
+        else:
+            pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
+            text = fix_sums(clean_text("\n\n".join(pages)))
         text = re.sub(r"\n{3,}", "\n\n", text)
         secs = (sections_exercises(text, qcm=meta["kind"] == "qcm")
                 if meta["kind"] != "cours" else sections_course_pdf(text))
@@ -556,7 +569,7 @@ def cmd_build():
     chunks = json.load(open("chunks.json", encoding="utf-8"))
     # passages de l'ancien format, sans fichier source dans data/ (poly et TD d'Analyse dans ℝⁿ)
     legacy = [c for c in chunks if not c.get("doc")]
-    merged = legacy + new_chunks
+    merged = [ensure_meta(c) for c in legacy + new_chunks]
     json.dump(merged, open("chunks.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"\n{len(new_chunks)} passages depuis data/ + {len(legacy)} anciens = {len(merged)}")
 

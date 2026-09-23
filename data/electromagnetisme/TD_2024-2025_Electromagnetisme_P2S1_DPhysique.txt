@@ -1,0 +1,500 @@
+CY Cergy Paris Universit´ e 2024 – 2025
+CY Tech
+Pr´ eIng 2
+Travaux dirig´ es d’´Electromagn´ etisme
+Ce document est disponible en ligne
+— 1/19 —
+<<<PAGE>>>
+Table des mati` eres
+1. Distributions continues 5
+I. Applications de cours . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+II. Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2. Champ ´ electrostatique 7
+I. Loi de Coulomb . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+II. Calculs de flux de champ ´ electrique . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+III. Calcul de champ ´ electrique avec le th´ eor` eme de Gauss . . . . . . . . . . . . . . . . . . 8
+IV. Lignes de champ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+V. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3. Potentiel ´ electrostatique 10
+I. Gradient et champ ´ electrique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+II. Calcul de potentiel et de champ ´ electrique pour diverses sym´ etries . . . . . . . . . . . 10
+4. Conducteurs ` a l’´ equilibre ´ electrostatique 11
+I. Propri´ et´ es des conducteurs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+II. Calcul de la capacit´ e . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+5. Force de Lorentz 13
+I. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+6. Champ magn´ etostatique 15
+I. Loi de Biot et Savart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+II. Calcul de champ magn´ etique avec le th´ eor` eme d’Amp` ere . . . . . . . . . . . . . . . . 15
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+7. ´Equations de Maxwell 17
+I. Cons´ equences des ´ equations de Maxwell . . . . . . . . . . . . . . . . . . . . . . . . . 17
+II. Applications des ´ equations de Maxwell . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+8. Induction 19
+I. Ph´ enom` enes d’induction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+— 2/19 —
+<<<PAGE>>>
+Plan du cours
+´Electrostatique
+Force entre deux charges
+Champ ´ electrique
+Th´ eor` eme de superposition et sym´ etries
+Th´ eor` eme de Gauss
+Potentiel ´ electrostatique
+Conducteurs en ´ equilibre ´ electrostatique
+Magn´ etostatique
+Champ magn´ etique - Force de Lorentz
+Loi de Biot et Savart - Th´ eor` eme de superposition et sym´ etries
+Induction ´ electromagn´ etisme
+´Electrodynamique des r´ egimes quasi stationnaires
+Intensit´ e et tension
+´Equations caract´ eristiques des principaux dipˆ oles
+Lois de Kirchoff
+´Equations de Maxwell
+´Equations de Maxwell
+´Equations de Maxwell dans le vide
+— 3/19 —
+<<<PAGE>>>
+Contact
+— Enseignants charg´ es du cours magistral :´Emilie Dupont et Abdelaziz Boumiz
+— Bureau : Bˆ atiment Cauchy| ´Etage 3 | CY 308
+— E-mail : emilie.dupont@cyu.fr
+— E-mail : abdelaziz.boumiz@cyu.fr
+L’´ equipe p´ edagogique
+Cours Magistral (CM) : ´Emilie Dupont (Cergy), Abdelaziz Boumiz ; et Paul Fruton (Pau)
+Travaux dirig´ es (TD):
+Panayotis Akridas (Cergy) panayotis.akridas-morel@cyu.fr
+Abdelaziz Boumiz (Cergy) abdelaziz.boumiz@cyu.fr
+Lucie Desplat (Pau) lucie.desplat@cyu.fr
+´Emilie Dupont (Cergy) emilie.dupont@cyu.fr
+Paul Fruton (Pau) paul.fruton@cyu.fr
+Fabien Piguet (Cergy) fabien.piguet@cyu.fr
+Quelques r´ ef´ erences
+Liste non exhaustive de livres recommand´ es pour ce cours.
+— Jos´ e-Philippe P´ erez, Robert Carles, Robert Fleckinger :« ´Electromagn´ etisme : Fondements et
+applications », Dunod ; 4e ´ edition (20 janvier 2020)
+— « Le Cours de physique de Feynman »(titre original : Feynman Lectures on Physics) de Richard
+Feynman, Robert B. Leighton (en) et Matthew Sands (en), ´Electromagn´ etisme 1.
+— J´ erˆ ome Majou :« Super manuel de physique », MPSI, PCSI, PTSI, Br´ eal
+Consultez le site du cours sur la plateforme.
+Allez voir aussi les sites : http://cpinettes.u-cergy.fr/S3-Electromag.html, https://etienneklein.fr/ et
+https://www.physagreg.fr/electromagnetisme1.php.
+Regarder la chaˆ ıne youtube sciences ´ etonnantes... Il y a beaucoup de ressources en ligne, apprenez ` a
+choisir les bonnes (et bien sˆ ur gare aux fakesciences)
+— 4/19 —
+<<<PAGE>>>
+1 Distributions continues
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Applications de cours
+Exercice 1 – Calculs d’aire et de volume
+En choisissant le syst` eme de coordonn´ ees appropri´ e :
+1/ Calculer, en utilisant une int´ egrale double, la surface d’un disque de rayonR.
+2/ Calculer, en utilisant une int´ egrale double, la surface de la paroi lat´ erale d’un cylindre de
+hauteur h et de rayon R.
+3/ Calculer, en utilisant une int´ egrale triple, le volume d’un cylindre de hauteurh et de rayon R.
+Exercice 2 – Calculs de charge totale
+En choisissant le syst` eme de coordonn´ ees appropri´ e :
+1/ Calculer la charge totale contenue dans un fil de longueur L uniform´ ement charg´ e dont la
+densit´ e lin´ eique vautλ0.
+2/ Calculer la charge totale contenue dans un disque de rayon R uniform´ ement charg´ e en surface
+dont la densit´ e surfacique vautσ0.
+3/ Calculer la charge totale contenue dans une boule de rayon R uniform´ ement charg´ ee en volume
+dont la densit´ e volumique vautρ0.
+Exercices
+Exercice 3 – Charge totale d’une distribution surfacique
+On consid` ere une sph` ere de centreO et de rayon R portant en sa surface une densit´ e de charges
+σ =σ0(1 + cosθ)
+o` uθ = (− →Oz,−→OP ).
+Calculer la charge totale port´ ee par la distribution.
+Exercice 4 – Noyaux atomiques ∗
+Du point de vue du potentiel et du champ ´ electrique qu’ils cr´ eent, les noyaux de certains atomes l´ egers
+peuvent ˆ etre mod´ elis´ es par une distribution volumique de charge ` a l’int´ erieur d’une sph` ere de centre
+O et de rayon a. On d´ esigne par− →r =−→OP , le vecteur position d’un point P quelconque de l’espace.
+Pourr <a, la charge volumique ρ(P ) qui repr´ esente le noyau varie en fonction der suivant la loi :
+ρ(r) =ρ0
+(
+1− r2
+a2
+)
+o` uρ0 est une constante positive.
+— 5/19 —
+<<<PAGE>>>
+1/ Donner les sym´ etries et invariances de cette distribution de charges.
+2/ Exprimer la charge totale Q du noyau.
+Pour aller plus loin
+Exercice 5 – Masse volumique de la Terre
+On peut supposer, dans un mod` ele grossier, que la r´ epartition de la masse de la Terre (assimil´ ee ` a une
+sph` ere de rayonR) n’est pas uniforme : le noyau terrestre, principalement form´ e de fer et de nickel,
+est plus dense que la croˆ ute. La masse volumiqueρ d´ epend donc de la distancer au centre C :
+ρ(r) =ρ0
+(
+1− r
+2R
+)
+Donn´ ees : la densit´ e du fer vaut environ8 et celle des roches granitiques vaut environ 4.
+1/ Exprimer la masse M de la Terre en fonction deR et ρ0.
+2/ Calculer num´ eriquement la masse volumique au centre et ` a la surface de la Terre. Commenter.
+On donne M = 6.0× 1024 kg et R = 6.4× 103 km
+— 6/19 —
+<<<PAGE>>>
+2 Champ ´ electrostatique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Loi de Coulomb
+Exercice 1 – Distribution discr` ete de charges ponctuelles
+Quatre charges ´ electriques ponctuelles, de valeur absolueq, sont plac´ ees aux sommets d’un carr´ e
+ABCD . Ce carr´ e a pour cˆ ot´ e2a, centre O et appartient au plan Oxz, comme le montre la figure
+ci-dessous.
+D´ eterminer l’expression de la force subie par la charge ´ electriqueQ plac´ ee en un pointM quelconque
+de l’axe Oy.
+— 7/19 —
+<<<PAGE>>>
+Calculs de flux de champ ´ electrique
+Exercice 2 – Sym´ etrie sph´ erique
+Soit une sph` ere, de rayonR, charg´ ee uniform´ ement.
+En commen¸ cant par une ´ etude de sym´ etrie et d’invariance, calculer
+le flux de − →E ` a travers la surfaceΣ d’une sph` ere de rayonr. Les
+deux sph` eres ont le mˆ eme centre.
+Exercice 3 – Sym´ etrie cylindrique
+Soit un cylindre, de rayon R et de hauteur suppos´ ee infinie, charg´ e
+uniform´ ement.
+En commen¸ cant par une ´ etude de sym´ etrie et d’invariance, calculer
+le flux de− →E ` a travers la surfaceΣ d’un cylindre de rayon r et de
+hauteur h. Les deux cylindres ont le mˆ eme axe.
+Exercice 4 – Sym´ etrie plane
+Soit un plan infini charg´ e uniform´ ement de densit´ eσ.
+En commen¸ cant par une ´ etude de sym´ etrie et d’invariance, calculer
+le flux de− →E ` a travers la surfaceΣ d’un cylindre de rayon r et de
+hauteur h. L’axe du cylindre est perpendiculaire au plan charg´ e.
+(il serait int´ eressant de prendreh/2 de part et d’autre du plan).
+Calcul de champ ´ electrique avec le th´ eor` eme de Gauss
+Exercice 5 – Sph` ere uniform´ ement charg´ ee en volume
+Une boule de centre O et de rayon R porte une densit´ e volumique de charge uniformeρ.
+1/ Quelle est l’expression de la charge totale, not´ eeQ, contenue dans la sph` ere ?
+2/ Calculer le champ ´ electrostatique− →E (M) en consid´ erant le pointM :
+a) ` a l’interieur de la sph` ere :r <R
+b) ` a l’ext´ erieur de la sph` ere :r >R
+3/ Le champ est-il continu ` a la travers´ ee de la sph` ere ?`A commenter.
+4/ Tracer l’allure de E(r).
+Exercice 6 – Sph` ere uniform´ ement charg´ ee en surface
+Une sph` ere de centreO et de rayon R porte une densit´ e surfacique de charge uniformeσ.
+1/ Quelle est l’expression de la charge totale, not´ eeQ, sur la sph` ere ?
+2/ Calculer le champ ´ electrostatique− →E (M) en consid´ erant le pointM :
+a) ` a l’interieur de la sph` ere :r <R
+b) ` a l’ext´ erieur de la sph` ere :r >R
+3/ Le champ est-il continu ` a la travers´ ee de la sph` ere ?`A commenter.
+4/ Tracer l’allure de E(r).
+— 8/19 —
+<<<PAGE>>>
+Exercice 7 – Fil infini uniform´ ement charg´ e
+1/ Calculer par int´ egration le champ ´ electrostatique− →E cr´ e´ e en un pointM quelconque de l’espace
+par une distribution lin´ eique de charges de densit´ eλ uniforme et r´ epartie le long de l’axe desz.
+2/ Retrouver ce r´ esultat en calculant− →E en appliquant le th´ eor` eme de Gauss.
+Exercice 8 – Plan infini uniform´ ement charg´ e
+Soit un plan infini uniform´ ement charg´ e en surface, de densit´ e surfacique de chargeσ s´ eparant l’espace
+en deux demi-espaces z >0 et z <0.
+Appliquer le th´ eor` eme de Gauss pour calculer le champ ´ electrostatique− →E engendr´ e par cette distribu-
+tion en tout point M de l’espace.
+Remarquer la discontinuit´ e du champ− →E en z =zplan(= 0 ici).
+Lignes de champ
+Exercice 9 – Lecture d’une carte de champ∗
+On donne ci-contre les lignes de champ ´ electrostatique
+g´ en´ er´ ees par une distribution de charges ponctuelles. Les
+charges sont num´ erot´ ees de 1 ` a 5 de gauche ` a droite.
+1/ Donner le signe de chacune des charges.
+2/ D´ eterminer les ´ eventuels plans de sym´ etrie et
+d’anti-sym´ etrie de la distribution de charge.
+Exprimer les charges q4 et q5 en fonction des
+autres.
+3/ D’apr` es les lignes du champ ´ electrostatique− →E ,
+que peut-on dire de − →E·− →dS en tout point de la
+surface S ?
+4/ En d´ eduireq3 en fonction des autres charges.
+Pour aller plus loin
+Exercice 10 – Sph` ere charg´ ee avec une cavit´ e
+Une sph` ere de rayonR porte une densit´ e volumique de charge constanteρ, sauf dans une cavit´ e
+sph` erique (de rayona et dont le centre est ` a la distanced du centre de la grande sph` ere) creus´ ee dans
+la sph` ere.
+Calculer le champ ´ electrique dans la cavit´ e.
+— 9/19 —
+<<<PAGE>>>
+3 Potentiel ´ electrostatique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Gradient et champ ´ electrique
+Exercice 1 –
+D´ eterminer les coordonn´ ees de−−→gradf o` uf est le champ scalaire suivant :
+1/ f(x,y,z ) =xy2−yz 2
+2/ f(x,y,z ) =xyz× sin(xy)
+3/ On donne le champ scalaire f(x,y,z ) =x2 +y2 +z2. Calculer−−→gradf .
+Discuter les sym´ etries et invariances des champsf et−−→gradf .
+Exercice 2 – Calcul de potentiel ´ electrique
+Le potentiel cr´ e´ e par une charge ponctuelle en un pointM, situ´ e ` a la distancer de la charge q, est (` a
+une constante additive pr` es) :
+V (M) = 1
+4πε0
+q
+r
+Calculer le champ ´ electrostatique− →E qui d´ erive du potentielV .
+Calcul de potentiel et de champ ´ electrique pour diverses
+sym´ etries
+Exercice 3 – Sym´ etrie sph´ erique
+Soit une sph` ere de centreO et de rayonR (cf. exercice 6 du TD2). D´ eterminer le potentiel ´ electrostatique
+cr´ e´ e par la distribution surfacique de charges de densit´ eσ r´ epartie uniform´ ement sur la surface de
+cette sph` ere.
+Exercice 4 – Sym´ etrie cylindrique
+Soit un cylindre de rayon R et de hauteur infinie. D´ eterminer le potentiel ´ electrostatique cr´ e´ e par la
+distribution surfacique de charges de densit´ eσ r´ epartie uniform´ ement sur la surface de ce cylindre.
+Exercice 5 – Sym´ etrie axiale∗
+Un champ de vecteur− →E d´ erive d’un potentielV qui a la sym´ etrie de r´ evolution autour de l’axe (Oz).
+On se place dans un plan contenant l’axe (Oz). Dans ce plan, on adopte les coordonn´ ees polaires, et
+l’on pose θ = (− →Oz,−−→OM). Le potentiel V a alors pour expression :
+V =
+(K
+r3
+)(
+3 cos2θ− 1
+)
+D´ eterminer les composantes du champ− →E .
+— 10/19 —
+<<<PAGE>>>
+4 Conducteurs ` a l’´ equilibre ´ electrostatique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Propri´ et´ es des conducteurs
+Exercice 1 – Conducteur creux
+Soit A, un conducteur creux.
+On place en son sein un second conducteur not´ eB portant une charge +Q :
+1/ Retrouver le fait que QA,int =−QB =−Q en utilisant le th´ eor` eme de Gauss. On noteQA,int :
+charge surfacique pr´ esente au niveau de la surface int´ erieure deA.
+2/ Calculer la charge ext´ erieureQA,ext (i.e. charge surfacique pr´ esente au niveau de la surface
+ext´ erieure deA) dans les cas suivants :
+a) A est isol´ e et initialement neutre.
+b) A porte une charge initiale q
+Calcul de la capacit´ e
+Exercice 2 – Condensateur plan
+Un condensateur plan, plac´ e dans le vide(ε0), est constitu´ e de deux armatures conductrices planes de
+surface S, parall` eles entre elles, et s´ epar´ ees d’une distancee l’une de l’autre.
+Dans cette ´ etude, on se place dans l’approximation d’un condensateur plan infini.
+— 11/19 —
+<<<PAGE>>>
+1/ En utilisant le th´ eor` eme de Gauss, d´ eterminer le champ ´ electrostatique− →E cr´ ee par un plan
+infini charg´ e avec une densit´ e de charge surfacique uniforme(+σ).
+2/ D´ eduire le champ entre les deux armatures du condensateur en fonction de la charge surfacique
+(+σ) puis en fonction de la charge totale (+Q) port´ ee par l’armaturen◦1.
+3/ En d´ eduire la diff´ erence de potentiel∆V = V1−V2 entre les armatures n◦1 et n◦2, puis la
+capacit´ eC du condensateur en fonction de S, e et ε0.
+4/ Application num´ erique:
+Pendant un orage, la surface de la Terre et la surface inf´ erieure des nuages forment, avec une
+assez bonne approximation, un condensateur plan. On suppose que le nuage se trouve ` a 1000
+m` etres d’altitude et qu’il couvre une surface d’environ20 km2.
+Quelle est la valeur de la capacit´ e du condensateur form´ e par le syst` eme« Terre− Nuage » ?
+Donn´ ees :ε0 = 8.85× 10−12 SI
+Exercice 3 – Condensateur cylindrique
+Un condensateur cylindrique ` a air est form´ e de deux armatures coaxiales, de rayons not´ esR1 et R2
+avecR1 < R2. Ces deux cylindres infinis coaxiaux sont uniform´ ement charg´ es en surface avec une
+chargeQ1 et Q2 respectivement, telles que Q1 =−Q2 =Q.
+1/ On suppose ici que ce conducteur est de longueur infinie. D´ eterminer− →E en un point M situ´ e ` a
+la distance r de l’axe, avec R1 <r <R 2.
+2/ En d´ eduire l’expression de la capacit´ eC de ce condensateur. A.N. : R2 = 20 cm,R 1 = 10 cm
+et h = 50 cm.
+3/ Que devient l’expression de la capacit´ eC lorsque les rayons sont voisins c-` a-d :R2−R1 =e≪
+R1.
+Pour aller plus loin
+Exercice 4 –∗
+On consid` ere deux boules conductrices de rayonsR1 et R2 dont les centres sont ` a une distanced
+grande devantR1 et R2. Elles portent les charges respectives Q1 et Q2, distribu´ ees uniform´ ement.
+1/ Calculer les potentiels V1 et V2 de chacune des boules, en leur centre.
+2/ On relie les boules par un fil conducteur. Calculer les charges Q1′ etQ2′, ainsi que les potentiels
+not´ esV1′ et V2′.
+3/ En d´ eduire la capacit´ e de ce conducteur constitu´ e des deux boules reli´ ees par le fil conducteur.
+— 12/19 —
+<<<PAGE>>>
+5 Force de Lorentz
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Exercice 1 – Force magn´ etique sur une charge en mouvement
+1/ Un proton se d´ eplace vers la droite ` a3000 m/s dans un champ de 10 G orient´ e dans la direction
+indiqu´ ee sur la figure.
+Quelle est la force sur ce proton ? Donner l’expression litt´ erale de cette force puis sa valeur
+num´ erique.
+2/ Une charge de 1µC se d´ eplace dans une r´ egion o` u le champ magn´ etique est uniforme et
+constant.
+Elle ne subit pas de force quand elle se dirige avec une vitesse de 5 m/s dans la direction de
+l’axe des x positifs. Elle subit cependant une force de 10−7 N dans la direction de l’axe des z
+positifs quand elle a une vitesse de − →v = (3− →i + 4− →j )m· s−1.
+Les vecteurs unitaires de la base cart´ esienne sont :− →i vecteur unitaire de l’axe x,− →j vecteur
+unitaire de l’axe y et− →k vecteur unitaire de l’axe z.
+Quel est le champ magn´ etique ?
+Exercice 2 – Force de Lorentz
+Un proton (q = 1,60× 10−19 C, m = 1,67× 10−27 kg) se trouve dans un champ magn´ etique uniforme
+d’intensit´ eB = 0,5 T. On appelle x l’axe qui pointe dans la direction de ce champ.
+`A t = 0 s, le proton a une vitesse − →v avec vx(t = 0) = 1 ,5× 105 m· s−1, vy(t = 0) = 0 m · s−1 et
+vz(t = 0) = 2,0× 105 m· s−1.
+De plus, on est au point (0, 0, 0).
+1/ `A l’aide de la deuxi` eme loi de Newton, ´ ecrire les ´ equations diff´ erentielles du premier ordre pour
+vx, vy et vz ` at ⩾ 0 s.
+On notera− →Ω =− q
+m
+− →B ,
+2/ ´Etablir les deux ´ equations diff´ erentielles du second ordre pourvy et vz.
+3/ Montrer que la trajectoire du proton est une h´ elice qui a pour axe la droite parall` ele ` ax
+d’´ equation(z = 0;y =R), pour rayon R = vz(t = 0)
+Ω et de pas vx(t = 0)2π
+Ω .
+— 13/19 —
+<<<PAGE>>>
+Exercice 3 – Spectrom` etre de masse
+On envoie un atome de krypton ionis´ e 1 fois avec une vitesse de40 000 m· s−1 dans un spectrom` etre
+de masse o` u r` egne un champ magn´ etique uniforme et constant de0,6 T. L’atome frappe la plaque ` a
+une distance de 11,044 cm du point d’entr´ ee de l’atome.
+1/ Quelle est la masse de l’atome ?
+2/ De quel isotope de l’atome pourrait-il s’agir ?
+Pour aller plus loin
+Exercice 4 – Particule dans des champs ´ electrique et magn´ etique
+Une particule de massem et de chargeq p´ en` etre avec une vitesse− →v 0 =v0
+− →u x dans une zone o` u existent
+un champ ´ electrique− →E =E0
+− →u y et un champ magn´ etique− →B =B0
+− →u z uniformes et stationnaire.
+1. `A quelle condition le vecteur vitesse de la particule reste-t-il inchang´ e ?
+2. Expliquer comment ce dispositif peut ˆ etre adapt´ e en s´ electeur de vitesse.
+Exercice 5 – Particule dans des champs ´ electrique et magn´ etique
+On consid` ere un point mat´ eriel de chargeq > 0 et de masse m, de vitesse initiale − →v 0 ` a l’entr´ ee
+d’une zone o` u r` egnent un champ ´ electrique− →E ou un champ magn´ etique− →B . On suppose ces champs
+uniformes et ind´ ependants du temps, et on n´ eglige toute autre force que celles provoqu´ ees par ces
+champs.
+La particule d´ ecrit une droite et poss` ede une acc´ el´ eration constantea.
+1. D´ eterminer la direction et la norme du ou des champs qui provoquent cette trajectoire.
+2. D´ eterminer la position du point mat´ eriel en fonction du temps.
+La particule d´ ecrit une trajectoire circulaire de rayonR0 dans un plan (xOy).
+1. D´ eterminer la direction du ou des champs qui provoquent cette trajectoire.
+2. D´ eterminer la norme du champ en fonction dev0 et R0.
+— 14/19 —
+<<<PAGE>>>
+6 Champ magn´ etostatique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Loi de Biot et Savart
+Exercice 1 – Fil rectiligne infiniment long
+1/ Calculer, par int´ egration en utilisant laloi de Biot et Savart , le champ magn´ etique− →B cr´ e´ e en
+un point M quelconque par un fil rectiligne infiniment long et d´ efini par l’axe(Oz).
+2/ Retrouver ce champ magn´ etique− →B en appliquant le th´ eor` eme d’Amp` ere.
+Exercice 2 – Spire
+Calculer, par int´ egration en utilisant laloi de Biot et Savart , le champ magn´ etique− →B (direction, sens
+et module) cr´ e´ e en un pointM de l’axe de r´ evolution d’une spire de centreO et de rayon R parcourue
+par un courant d’intensit´ eI constante.
+Calcul de champ magn´ etique avec le th´ eor` eme d’Amp` ere
+Exercice 3 – Sol´ eno¨ıde fini ∗
+On consid` ere un sol´ eno¨ıde (fini) de longueur L et comprenant N spires, chacune ´ etant parcourue par
+un courant d’intensit´ eI constante.
+Ces spires sont circulaires de rayon R et sont r´ eguli` erement enroul´ ees sur un cylindre de r´ evolution
+autour de l’axe (z′z).
+On cherche ` a d´ eterminer compl` etement le champ magn´ etique− →B (M) en un point M quelconque de
+l’axe (z′z).
+Le courant et l’axe (z′z) sont orient´ es de mani` ere directe (r` egle du tire-bouchon).
+1/ Soit une longueur ´ el´ ementairedz de l’axe (z′z) o` u se trouve le sol´ eno¨ıde. Quel nombre ´ el´ ementaire
+dN de spires se trouvent entre la cote (z) et (z +dz) ?
+2/ Calculer le champ ´ el´ ementaired− →B (M) cr´ e´ e au pointMpar ces dN spires ?
+3/ En d´ eduire la valeurB(z) du champ magn´ etique au pointM(z). On fera apparaˆ ıtre les angles
+α1 et α2 sous lesquels on voit, du point M, la spire d’entr´ ee et la spire de sortie du sol´ eno¨ıde.
+4/ Retrouver l’expression du champ magn´ etique− →B (M) ` a l’int´ erieur d’un sol´ eno¨ıde infiniment
+long, en utilisant le r´ esultat pr´ ec´ edent.
+5/ Retrouver l’expression du champ magn´ etique− →B (M) ` a l’int´ erieur et ` a l’ext´ erieur d’un sol´ eno¨ıde
+infiniment long en utilisant le th´ eor` eme d’Amp` ere.
+— 15/19 —
+<<<PAGE>>>
+Pour aller plus loin
+Exercice 4 – Tore circulaire
+On veut ´ etudier le champ magn´ etique cr´ e´ e par une distribution de courants pr´ esente sur un tore
+circulaire de rayon R ` a section circulaire de rayona. On note O le centre du tore et (Oz) son axe de
+r´ evolution. Une chambre ` a air gonfl´ ee, de v´ elo par exemple, constitue un tel tore.
+La distribution de courants est constitu´ ee par un enroulement d’un grand nombre deN spires jointives
+circulaires de rayon a enroul´ ees sur toute la surface du tore, le sens du courant ´ etant donn´ e sur la
+figure. On n´ egligera l’´ epaisseur des fils.
+Soit M un point quelconque de l’espace o` u l’on cherche le champ magn´ etique− →B cr´ e´ e par cette
+distribution.
+1/ ´Etude qualitative
+a) Quel est le domaine de d´ efinition du champ magn´ etique ? Dans toute la suite, on consid` ere
+que M appartient ` a ce domaine.
+b) Quelle est la direction de − →B en M ? Justifier la r´ eponse.
+c) Que vaut − →B au point O ?
+d) Justifier le choix du syst` eme de coordonn´ ees cylindriques d’axe(O,z ). De quelle(s) coor-
+donn´ ee(s) d´ epend le module∥− →B∥ du champ ?
+2/ Montrer qu’en tout point situ´ e ` a l’ext´ erieur du tore,− →B est nul.
+3/ D´ eterminer l’expression de− →B en un point quelconque de l’int´ erieur du tore.
+— 16/19 —
+<<<PAGE>>>
+7 ´Equations de Maxwell
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Cons´ equences des ´ equations de Maxwell
+Exercice 1 – ´Equations de Poisson
+´Etablir les ´ equations de Poisson vues en cours.
+∆V + ρ
+ε0
+= 0
+− →∆− →A +µ0
+− →j =− →0
+Exercice 2 – Cylindre parcouru par un courant
+En utilisant les ´ equations locales de Maxwell, d´ eterminer le champ magn´ etique cr´ e´ e par un cylindre
+plein, infiniment long, de rayon R, parcouru par un courant uniforme I, suivant sa longueur.
+Exercice 3 – Champ ´ electrique
+Dans le demi-espace vide x >0, il r` egne un champ ´ electrique− →E (− →r,t ) = E0cos(ωt−kz).− →e x, en
+coordonn´ ees cart´ esiennes, avecω et k deux constantes positives.
+1. Calculer div(− →E ). Justifier le r´ esultat obtenu.
+2. Calculer− →rot− →E et donner l’expression de l’´ equation de Mawxell faisant intervenir la quantit´ e− →rot− →E .
+3. D´ eterminer ainsi le champ magn´ etique− →B (− →r,t ). On supposera que− →B n’a pas de terme constant.
+4. V´ erifier la valeur de sa divergence.
+5. D´ eterminer la relation entre les constantesω et k, ` a l’aide d’une autre ´ equation de Maxwell,
+exprim´ ee dans le vide.
+Applications des ´ equations de Maxwell
+Exercice 4 – ´Equation de Maxwell-Gauss
+Une sph` ere creuse, de rayon interneR/2 et de rayon externeR, est charg´ ee, avec une charge de densit´ e
+volumique de charge ρ(r). La charge totale port´ ee par cette sph` ere est ´ egale ` aQ.
+Le champ ´ electrostatique cr´ e´ e ` a la distancer du centre O, pour R/2≤ r≤ R a pour expression− →E =k(αr−R)− →u r o` u− →u r est le vecteur unitaire radial de la base de coordonn´ es sph´ eriques. Le milieu
+est assimilable au vide.
+1. Exprimer − →E (0).
+— 17/19 —
+<<<PAGE>>>
+2. Etablir l’expression de− →E (r) pour 0<r ≤R/2 ` a partir des ´ equations locales de Maxwell. En
+d´ eduire la valeur deα.
+3. Etablir la loi ρ(r). Calculer la charge totale et d´ eduire la valeur dek.
+4. A l’ext´ erieur de la sph` ere, les r´ esultats obtenus sont-ils compatibles avec le th´ eor` eme de Gauss ?
+Exercice 5 – Cylindre conducteur
+Soit un cylindre conducteur de conductivit´ eσ, de longueur
+h consid´ er´ ee comme infinie, parcouru par un courant sta-
+tionnaire uniform´ ement r´ eparti, dans la direction de son axe,
+d’intensit´ eI.
+1. D´ eterminer le champ ´ electromagn´ etique en tout point de l’espace.
+2. En d´ eduire le vecteur de Poynting en tout point de l’espace et son flux ` a travers la surface
+cylindrique du conducteur. Commenter le r´ esultat obtenu.
+3. V´ erifier l’´ equation locale de Poynting en tout point. Commenter.
+— 18/19 —
+<<<PAGE>>>
+8 Induction
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Ph´ enom` enes d’induction
+Exercice 1 – Roue de Barlow
+Un disque conducteur de rayon a est libre de tourner autour de son axe horizontal passant par O. Un
+courant constant d’intensit´ ei arrive en son centre O et repart par le point A, sur la p´ eriph´ erie. La
+roue est plac´ ee dans un champ magn´ etique horizontal, d’intensit´ eB, uniforme et permanent.
+Calculer le moment Σ en O de la force de Laplace exerc´ ee sur le disque conducteur.
+Exercice 2 – Rail de Laplace
+La barre (AB), de longueur a et de masse m, de centre de masse d’abscisse x(t) et de vitesse− →v =v− →ux
+(avecv = ˙x) est lanc´ ee avec une vitesse initialev0 sur des rails m´ etalliques sur lesquels elle glisse sans
+frottement.
+Elle constitue avec les rails de r´ esistance n´ egligeable un circuit rectangulaire(C) de r´ esistanceR
+constante et d’inductance n´ egligeable et dont la surface ` a l’instantt est S(t) =ax(t).
+Ce circuit est plac´ e dans un champ magn´ etique permanent− →B =B− →uz d’origine ext´ erieure ` a(C).
+1/ D´ eterminer la f´ em induite.
+2/ En d´ eduire l’expression du courant induit qui circule dans la barre.
+3/ ´Etablir l’´ equation diff´ erentielle dev(t) et en d´ eduire l’expression de la solution en tenant compte
+des conditions initiales.
+4/ Montrer que l’´ energie cin´ etique initiale de la barre se dissipera totalement en chaleur par effet
+Joule dans la r´ esistance.
+— 19/19 —

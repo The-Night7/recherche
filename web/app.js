@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id);
-const COURSE_SYM = { "analyse-rn": "ℝⁿ", "series": "Σ" };
+const COURSE_SYM = { "analyse-rn": "ℝⁿ", "series": "Σ", "informatique3": "⌘", "electromagnetisme": "Φ", "shs": "§" };
 const DEFAULT = () => ({ course: "all", kinds: [], versions: [], years: [], k: 5, recent: true });
 let META = null;
 let state = DEFAULT();
@@ -29,14 +29,19 @@ function renderFilters(){
   // cours
   const box = $("courses"); box.innerHTML = "";
   const total = META.courses.reduce((s, c) => s + c.count, 0);
-  const entries = [{ id: "all", name: "Tous les cours", count: total }, ...META.courses];
+  const entries = [{ id: "all", name: "Toutes les matières", count: total }, ...META.courses];
   entries.forEach(c => {
     const b = document.createElement("button");
     b.className = "course"; b.dataset.id = c.id;
     b.setAttribute("aria-pressed", state.course === c.id ? "true" : "false");
     b.innerHTML = `<span class="sym">${c.id === "all" ? "∗" : COURSE_SYM[c.id] || "·"}</span>
       <span class="name">${escapeHtml(c.name)}<small>${c.count} passages</small></span>`;
-    b.onclick = () => { state.course = c.id; state.years = []; update(); };
+    b.onclick = () => {
+      state.course = c.id;
+      state.years = [];
+      if (c.id !== "all") state.kinds = state.kinds.filter(kind => c.kinds[kind]);
+      update();
+    };
     box.appendChild(b);
   });
 
@@ -67,7 +72,7 @@ function renderFilters(){
   $("recent").checked = state.recent;
 
   // résumé (mobile)
-  const parts = [state.course === "all" ? "tous les cours" : META.courses.find(c => c.id === state.course)?.name];
+  const parts = [state.course === "all" ? "toutes les matières" : META.courses.find(c => c.id === state.course)?.name];
   if (state.kinds.length) parts.push(state.kinds.map(k => META.kinds[k]).join("+"));
   if (state.versions.length === 1) parts.push(state.versions[0] === "corrige" ? "corrigés" : "énoncés");
   if (state.years.length) parts.push(state.years.length + " année(s)");
@@ -77,6 +82,7 @@ function renderFilters(){
 function update(){
   save(); renderFilters();
   if ($("q").value.trim()) doSearch();
+  else showWelcome();
 }
 
 /* ---------- rendu des passages ---------- */
@@ -219,6 +225,7 @@ function renderMath(el){
 function renderCard(r, i, tokens){
   const body = r.blocks.map(b => {
     if (b.type === "md") return renderMd(b.text, tokens);
+    if (b.type === "text") return `<pre class="text-excerpt">${escapeHtml(b.text)}</pre>`;
     if (b.type === "formula") return `<div class="formula"><pre>${escapeHtml(b.text)}</pre></div>`;
     return `<p class="prose">${highlightPlain(b.text, tokens)}</p>`;
   }).join('');
@@ -258,7 +265,7 @@ async function doSearch(){
     if (!data.tokens.length) { $("results").innerHTML = '<p class="empty">Question trop courte : ajoute un mot du cours (3 lettres ou plus).</p>'; return; }
     if (!data.results.length) {
       $("results").innerHTML = `<p class="empty">Aucun passage trouvé pour <b>${data.tokens.map(escapeHtml).join(', ')}</b> avec ces filtres.
-        Élargis la recherche (autre cours, plus de types ou d'années) ou reformule avec le vocabulaire du cours.</p>`;
+        Élargis la recherche (autre matière, plus de types ou d'années) ou reformule avec le vocabulaire du cours.</p>`;
       return;
     }
     const hl = data.highlight || data.tokens;
@@ -274,11 +281,21 @@ async function doSearch(){
 }
 
 
-const EXAMPLES = ["critère de d'Alembert", "rayon de convergence", "norme équivalente", "série géométrique", "différentiabilité"];
+const EXAMPLES = {
+  "analyse-rn": ["norme équivalente", "différentiabilité"],
+  "series": ["critère de d'Alembert", "rayon de convergence"],
+  "informatique3": ["listes chaînées", "arbres binaires", "piles et files"],
+  "electromagnetisme": ["théorème de Gauss", "champ magnétique"],
+  "shs": ["recherche documentaire", "méthodes"],
+};
 function showWelcome(){
+  const examples = state.course === "all"
+    ? META.courses.map(c => EXAMPLES[c.id]?.[0]).filter(Boolean)
+    : EXAMPLES[state.course] || [];
   $("results").innerHTML = `<div class="hint">
-    <p>Choisis <b>où chercher</b> (un cours, des TD, les DS d'une année…), puis tape ta question et Entrée.</p>
-    <div class="examples">${EXAMPLES.map(e => `<button class="example">${escapeHtml(e)}</button>`).join('')}</div>
+    <p>Retrouve les cours et exercices de <b>${escapeHtml(META.curriculum?.label || $("curriculum").textContent)}</b>.</p>
+    <p>Choisis une matière, puis tape une notion ou une référence comme « TD1 exercice 2 ».</p>
+    <div class="examples">${examples.map(e => `<button class="example">${escapeHtml(e)}</button>`).join('')}</div>
   </div>`;
   document.querySelectorAll(".example").forEach(b => b.onclick = () => { $("q").value = b.textContent; doSearch(); });
 }
@@ -307,6 +324,7 @@ $("toggle-filters").onclick = () => {
 
 fetch('/api/meta').then(r => r.json()).then(meta => {
   META = meta;
+  if (META.curriculum) $("curriculum").textContent = META.curriculum.label;
   if (state.course !== "all" && !META.courses.some(c => c.id === state.course)) state.course = "all";
   renderFilters();
   showWelcome();

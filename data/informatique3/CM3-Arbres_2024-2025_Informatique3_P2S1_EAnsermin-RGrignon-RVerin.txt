@@ -1,0 +1,2452 @@
+INFORMATIQUE 3
+III. A R B R E S
+Eva ANSERMIN & Renaud VERIN & Romuald GRIGNON
+v1.1
+<<<PAGE>>>
+Rappel: les listes chaînées
+• Les chaînons de la liste pointent sur le chaînon suivant. 
+• Contrairement aux tableaux statiques, la taille des listes chaînées n’est pas limitée.
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+E.ANSERMIN | R.VERIN | R.GRIGNON
+2
+<<<PAGE>>>
+Et si on rajoutais une dimension ? 
+typedef struct chainon
+{
+int elmt;
+struct chainon *suivant1;
+struct chainon *suivant2;
+struct chainon *suivant3;
+} Chainon;
+elmt
+suivant2
+• Le principe des listes chaînées est utilisé pour de nombreux autres concepts!
+• Exemple : une Chainon avec plusieurs « suivant »…
+E.ANSERMIN | R.VERIN | R.GRIGNON
+3
+<<<PAGE>>>
+Et si on rajoutais une dimension ? 
+• Le principe des listes chaînées est utilisé pour de nombreux autres concepts!
+• Exemple : une Chainon avec plusieurs « suivant »… permet de construire un arbre !
+… …
+E.ANSERMIN | R.VERIN | R.GRIGNON
+4
+<<<PAGE>>>
+Les graphes 
+• Les listes chaînées appartiennent à la famille des graphes. 
+• Un graphe est composé d’un ensemble d’éléments reliés entre eux.
+• Il existe une très grande variété de types de graphes. La discipline qui les étudie est la théorie des 
+graphes.  
+E.ANSERMIN | R.VERIN | R.GRIGNON
+5
+<<<PAGE>>>
+Arbre : définition 
+• Un arbre est un graphe (orienté ou non), connexe et sans cycle. 
+Arbre
+Connexe : d’un seul tenant.
+On peut toujours trouver un chemin
+qui lie deux élément entre eux
+Sans cycle : pas de “rebouclage” entre 
+les éléments
+Graphe connexe avec cycle  
+Orienté: il n’y a qu’un seul sens autorisé
+pour aller d’un élément à l’autre
+E.ANSERMIN | R.VERIN | R.GRIGNON
+6
+<<<PAGE>>>
+Arbre enraciné
+• Arbre non-enraciné : il n’y a pas d’ordre entre ses éléments
+Arbre non enraciné
+E.ANSERMIN | R.VERIN | R.GRIGNON
+7
+<<<PAGE>>>
+Arbre enraciné
+• Arbre non-enraciné : il n’y a pas d’ordre entre ses éléments
+Arbre non enraciné
+• Arbre enraciné : arbre hiérarchique dans lequel on peut établir des niveaux. Il est orienté.
+Arbre enraciné ou orienté
+E.ANSERMIN | R.VERIN | R.GRIGNON
+8
+<<<PAGE>>>
+Arbre : vocabulaire
+• Un nœud est un élément de l’arbre. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+9
+<<<PAGE>>>
+Arbre : vocabulaire
+• Racine : nœud au sommet de l’arbre.
+• Nœud externe ou feuille : c’est un nœud qui n’a pas d’arc sortant, qui est au bout de l’arbre.
+• Nœud interne : c’est un nœud qui n’est pas externe.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+10
+<<<PAGE>>>
+Arbre : vocabulaire
+• Racine : nœud au sommet de l’arbre.
+• Nœud externe ou feuille : c’est un nœud qui n’a pas d’arc sortant, qui est au bout de l’arbre.
+• Nœud interne : c’est un nœud qui n’est pas externe.
+• Degré d’un nœud : le nombre d’arcs sortants d’un nœud, nombre de fils.  
+E.ANSERMIN | R.VERIN | R.GRIGNON
+11
+<<<PAGE>>>
+Arbre : vocabulaire
+• Racine : nœud au sommet de l’arbre.
+• Nœud externe ou feuille : c’est un nœud qui n’a pas d’arc sortant, qui est au bout de l’arbre.
+• Nœud interne : c’est un nœud qui n’est pas externe.
+• Degré d’un nœud : le nombre d’arcs sortants d’un nœud, nombre de fils. 
+• Nœuds frères ou sœurs : des nœuds qui ont le même parent. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+12
+<<<PAGE>>>
+Arbre : vocabulaire
+• Racine : nœud au sommet de l’arbre.
+• Nœud externe ou feuille : c’est un nœud qui n’a pas d’arc sortant, qui est au bout de l’arbre.
+• Nœud interne : c’est un nœud qui n’est pas externe.
+• Degré d’un nœud : le nombre d’arcs sortants d’un nœud, nombre de fils. 
+• Nœuds frères ou sœurs : des nœuds qui ont le même parent. 
+• Un sous-arbre est l’arbre issu d’un nœud. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+13
+
+<<<PAGE>>>
+Arbre : vocabulaire
+• Une liste chaînée est un arbre orienté (enraciné) ou chaque noeud a un seul fils! 
+• Arbre non orienté où chaque noeud à un fils ?? 
+* * * *
+E.ANSERMIN | R.VERIN | R.GRIGNON
+14
+<<<PAGE>>>
+Arbre : vocabulaire
+• Une liste chaînée est un arbre orienté (enraciné) ou chaque noeud a un seul fils! 
+Liste doublement chaînée !
+* * * *
+* * * * * * * *
+• Arbre non orienté où chaque noeud à un fils ?? 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+15
+<<<PAGE>>>
+Arbre : vocabulaire
+• Arbre numéroté : chaque nœud est étiqueté par un entier positif
+• Arbre ordonné : il existe un ordre entre les enfants et les nœuds internes. On dit que le i ème enfant est 
+absent si aucun nœud n’est étiqueté par la valeur i. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+16
+<<<PAGE>>>
+Arbre : vocabulaire
+• Arbre numéroté : chaque nœud est étiqueté par un entier positif
+• Arbre ordonné : il existe un ordre entre les enfants et les nœuds internes. On dit que le i ème enfant est 
+absent si aucun nœud n’est étiqueté par la valeur i. 
+• Un arbre k-iaire est un arbre dont les nœud ont au maximum k fils 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+17
+<<<PAGE>>>
+Arbre : vocabulaire
+• Arbre numéroté : chaque nœud est étiqueté par un entier positif
+• Arbre ordonné : il existe un ordre entre les enfants et les nœuds internes. On dit que le i ème enfant est 
+absent si aucun nœud n’est étiqueté par la valeur i. 
+• Un arbre k-iaire est un arbre dont les nœud ont au maximum k fils. Ici on a k=3.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+18
+<<<PAGE>>>
+Arbre : vocabulaire
+• Arbre numéroté : chaque nœud est étiqueté par un entier positif
+• Arbre ordonné : il existe un ordre entre les enfants et les nœuds internes. On dit que le i ème enfant est 
+absent si aucun nœud n’est étiqueté par la valeur i. 
+• Un arbre binaire est un arbre dont les nœuds ont au maximum 2 fils. 
+Exemple d’arbre binaire
+E.ANSERMIN | R.VERIN | R.GRIGNON
+19
+<<<PAGE>>>
+Arbre : vocabulaire
+• Taille d’un arbre: nombre de de nœuds internes de l’arbre
+E.ANSERMIN | R.VERIN | R.GRIGNON
+20
+<<<PAGE>>>
+Arbre : vocabulaire
+• Taille d’un arbre: nombre de de nœuds internes de l’arbre
+• Profondeur d’un nœud : c’est la distance du chemin qui relie la racine au nœud.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+21
+<<<PAGE>>>
+Arbre : vocabulaire
+• Taille d’un arbre: nombre de de nœuds internes de l’arbre
+• Profondeur d’un nœud : c’est la distance du chemin qui relie la racine au nœud.
+• Hauteur d’un arbre : profondeur maximale.  Ici 3.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+22
+<<<PAGE>>>
+Arbre : Utilité
+• Les arbres sont souvent utilisés en informatique (compression, expressions arithmétiques,  arbres de 
+recherche, structures de données hierarchiques etc… ) 
+• Exemple : organisation en arbre des fichiers
+E.ANSERMIN | R.VERIN | R.GRIGNON
+23
+<<<PAGE>>>
+Arbre : Utilité
+• Les arbres sont souvent utilisés en informatique (compression, expressions arithmétiques,  arbres de 
+recherche, structures de données hierarchiques etc... ) 
+• Exemple : Théorie des jeux, intelligence artificielle classique
+E.ANSERMIN | R.VERIN | R.GRIGNON
+24
+<<<PAGE>>>
+Arbre : Utilité
+• Les arbres sont souvent utilisés en informatique (compression, expressions arithmétiques,  arbres de 
+recherche, structures de données hierarchiques etc… ) 
+• Exemple : arbre syntaxique pour la compilation 
+         
+    
+                
+     
+        
+       
+        
+        
+       
+     
+      
+       
+           
+      
+     
+      
+      
+     
+         
+        
+      
+        
+       
+        
+       
+        
+       
+        
+       
+        
+       
+        
+       
+        
+       
+        
+       
+        
+       
+         
+E.ANSERMIN | R.VERIN | R.GRIGNON
+25
+<<<PAGE>>>
+Implémentation d’un arbre
+• Le cas des arbres binaires est le plus facile à étudier et à implémenter car l’on connait par avance le 
+nombre maximal de fils de chaque nœud. 
+• Nous nous concentrons sur ce cas particulier d’arbres pour la suite du cours. 
+• L ’extension à des arbres k-aire se fait en augmentant le nombre de fils. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+26
+<<<PAGE>>>
+Implémentation d’un arbre binaire
+• Les nœuds d’un arbre binaire ont maximum deux fils.
+• La structure d’un nœud de l’arbre peut donc être : 
+Structure Arbre :
+elmt : Element
+fg, fd : pointeurs sur structure Arbre; // fils gauche et droit
+E.ANSERMIN | R.VERIN | R.GRIGNON
+27
+<<<PAGE>>>
+Implémentation d’un arbre binaire
+• Création d’un nœud de l’arbre : 
+FONCTION creerArbre(r: Element) : pointeur sur Arbre
+VARIABLE
+noeud : pointeur sur Arbre
+DEBUT
+noeud ← reserverMemoire(Arbre)
+elmt(noeud) ← r
+fg(noeud) ← NULL // Le noeud n’a pas de fils à sa création
+fd(noeud) ← NULL
+RETOURNER noeud
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+28
+<<<PAGE>>>
+Implémentation d’un arbre binaire
+• Création d’un nœud de l’arbre : 
+Remarque : comme pour les listes chaînées, on 
+va utiliser des pointeurs sur Arbre plutôt que 
+des structures Arbre afin de pouvoir libérer 
+l’espace mémoire à postériori.
+FONCTION creerArbre(r: Element) : pointeur sur Arbre
+VARIABLE
+noeud : pointeur sur Arbre
+DEBUT
+noeud ← reserverMemoire(Arbre)
+elmt(noeud) ← r
+fg(noeud) ← NULL // Le noeud n’a pas de fils à sa création
+fd(noeud) ← NULL
+RETOURNER noeud
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+29
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Vérifier sur un nœud de l’arbre est une feuille (nœud « au bout » de l’arbre)
+FONCTION estFeuille(a : pointeur sur Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+FIN SI
+SI ??? ALORS
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+30
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Vérifier sur un nœud de l’arbre est une feuille (nœud « au bout » de l’arbre)
+FONCTION estFeuille(a : pointeur sur Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+FIN SI
+SI fd(a) EGAL A NULL ET fg(a) EGAL A NULL ALORS
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+31
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Vérifier si le fils droit ou gauche d’un nœud existe : 
+FONCTION existeFilsDroit(a : pointeur sur 
+Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI ??? ALORS
+RETOURNER FAUX
+SINON
+RETOURNER VRAI
+FIN SI
+FIN
+FONCTION existeFilsGauche(a : pointeur sur 
+Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI ??? ALORS
+RETOURNER FAUX
+SINON
+RETOURNER VRAI
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+32
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Vérifier si le fils droit ou gauche d’un nœud existe : 
+FONCTION existeFilsDroit(a : pointeur sur 
+Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI fd(a) EGAL A NULL ALORS
+RETOURNER FAUX
+SINON
+RETOURNER VRAI
+FIN SI
+FIN
+FONCTION existeFilsGauche(a : pointeur sur 
+Arbre) : Booleen
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI fg(a) EGAL A NULL ALORS
+RETOURNER FAUX
+SINON
+RETOURNER VRAI
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+33
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Retourner l’adresse du fils droit ou gauche d’un arbre: 
+FONCTION filsDroit(a: pointeur sur Arbre) : 
+pointeur sur Arbre
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsDroit(a) ALORS
+RETOURNER fd(a)
+SINON
+RETOURNER NULL
+FIN SI
+FIN
+FONCTION filsGauche(a: pointeur sur Arbre) : 
+pointeur sur Arbre
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+RETOURNER fg(a)
+SINON
+RETOURNER NULL
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+34
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Modifier l’ élément d’un nœud 
+PROCEDURE modifierElement(a: pointeur sur Arbre; r: Element) : 
+pointeur sur Arbre
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON
+elmt(a) ← r
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+35
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Ajouter un fils droit ou gauche au nœud : 
+FONCTION ajouterFilsGauche(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL ALORS
+???
+SINON SI ??? ALORS
+fg(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+FONCTION ajouterFilsDroit(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL ALORS
+???
+SINON SI ??? ALORS
+fd(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+36
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Ajouter un fils droit ou gauche au nœud : 
+FONCTION ajouterFilsGauche(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL
+a ← creerArbre(r)
+RETOURNER VRAI
+SINON SI ??? ALORS
+fg(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+FONCTION ajouterFilsDroit(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL ALORS
+a ← creerArbre(r)
+RETOURNER VRAI
+SINON SI ??? ALORS
+fd(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+37
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Ajouter un fils droit ou gauche au nœud : 
+FONCTION ajouterFilsGauche(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL
+a ← creerArbre(r)
+RETOURNER VRAI
+SINON SI NON existeFilsGauche(a) ALORS
+fg(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+FONCTION ajouterFilsDroit(a: pointeur sur 
+Arbre; r: Element) : Booléen
+DEBUT
+SI a EGAL A NULL ALORS
+a ← creerArbre(r)
+RETOURNER VRAI
+SINON SI NON existeFilsDroit(a) ALORS
+fd(a) ← creerArbre(r)
+RETOURNER VRAI
+SINON
+RETOURNER FAUX
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+38
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: 
+PROCEDURE supprimerFilsDroit(a: pointeur sur Arbre)
+DEBUT
+// pointeur NULL ?
+SI a EGAL A NULL ALORS
+ERREUR()
+// Existence du fils droit ?
+SINON SI existeFilsDroit(a) ALORS
+libererMemoire(fd(a))
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+39
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: 
+la libération de mémoire correspond à celle allouée, donc uniquement au nœud, pas 
+ses descendants !
+→ Fuite mémoire RAM
+→ Il faut également supprimer tous les descendants
+PROCEDURE supprimerFilsDroit(a: pointeur sur Arbre)
+DEBUT
+// pointeur NULL ?
+SI a EGAL A NULL ALORS
+ERREUR()
+// Existence du fils droit ?
+SINON SI existeFilsDroit(a) ALORS
+libererMemoire(fd(a))
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+40
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: 
+PROCEDURE supprimerFilsDroit(a: pointeur sur Arbre)
+DEBUT
+// pointeur NULL ?
+SI a EGAL A NULL ALORS
+ERREUR()
+// Existence du fils droit ?
+SINON SI existeFilsDroit(a) ALORS
+// noeud à supprimer possède un fils droit ?
+SI existeFilsGauche(fd(a)) ALORS
+???
+FIN SI 
+// noeud à supprimer possède un fils gauche ?
+SI existeFilsDroit(fd(a)) ALORS
+???
+FIN SI
+libererMemoire(fd(a))
+FIN SI
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+41
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: 
+PROCEDURE supprimerFilsDroit(a: pointeur sur Arbre)
+DEBUT
+// pointeur NULL ?
+SI a EGAL A NULL ALORS
+ERREUR()
+// Existence du fils droit ?
+SINON SI existeFilsDroit(a) ALORS
+// noeud à supprimer possède un fils droit ?
+SI existeFilsGauche(fd(a)) ALORS
+supprimerFilsGauche(fd(a))  // appel récursif procédure «miroir»
+FIN SI 
+// noeud à supprimer possède un fils gauche ?
+SI existeFilsDroit(fd(a)) ALORS
+supprimerFilsDroit(fd(a)) // appel récursif
+FIN SI
+libererMemoire(fd(a))
+FIN SI
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+42
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: 
+PROCEDURE supprimerFilsDroit(a: pointeur sur Arbre)
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsDroit(a) ALORS
+SI existeFilsGauche(fd(a)) ALORS
+supprimerFilsGauche(fd(a)) 
+FIN SI 
+SI existeFilsDroit(fd(a)) ALORS
+supprimerFilsDroit(fd(a))
+FIN SI
+libererMemoire(fd(a))
+FIN SI
+FIN
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+43
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+44
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+45
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+46
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+47
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+48
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+49
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+50
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+51
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+52
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+53
+<<<PAGE>>>
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+E.ANSERMIN | R.VERIN | R.GRIGNON
+54
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+55
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+56
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+57
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+58
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+59
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+60
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+61
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+62
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+63
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+64
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+65
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+66
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+67
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+68
+<<<PAGE>>>
+Opérations sur un arbre binaire
+a
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+69
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+70
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+71
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+72
+<<<PAGE>>>
+Opérations sur un arbre binaire
+• Supprimer fils gauche/ fils droit d’un nœud: illustration
+PROCEDURE supprimerFilsGauche(a: pointeur sur Arbre) 
+DEBUT
+SI a EGAL A NULL ALORS
+ERREUR()
+SINON SI existeFilsGauche(a) ALORS
+SI existeFilsGauche(fg(a)) ALORS 
+supprimerFilsGauche(fg(a))
+FIN SI
+SI existeFilsDroit(fg(a)) ALORS
+supprimerFilsDroit(fg(a)) 
+FIN SI 
+libererMemoire(fg(a))
+FIN SI 
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+73
+<<<PAGE>>>
+Parcours d’un arbre
+• Un algorithme de parcours d’un arbre permet de passer par tous ses nœuds. On en distingue deux types:
+• Les parcours en longueur : lorsque, systématiquement, si l’arbre n’est pas vide, le parcours de l’un 
+des deux sous-arbres est terminé avant que ne commence celui de l’autre. On explore jusqu’au 
+bout une branche pour passer à la suivante (on va vers les fils avant d’aller vers les frères). 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+74
+<<<PAGE>>>
+Parcours d’un arbre
+• Un algorithme de parcours d’un arbre permet de passer par tous ses nœuds. On en distingue deux types:
+• Les parcours en longueur
+• Les parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite 
+sur le niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+75
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+76
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1
+E.ANSERMIN | R.VERIN | R.GRIGNON
+77
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+78
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+79
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2, 3, 4
+E.ANSERMIN | R.VERIN | R.GRIGNON
+80
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2, 3, 4
+E.ANSERMIN | R.VERIN | R.GRIGNON
+81
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2, 3, 4, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+82
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Dans un arbre binaire, on l’appelle parcours R G D (Racine, Gauche, Droit)
+• Parcours : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10  
+E.ANSERMIN | R.VERIN | R.GRIGNON
+83
+<<<PAGE>>>
+Parcours en longueur
+• Type PREFIXE : on visite chaque nœud avant de visiter ses fils.
+• 1. On visite la racine de l’arbre
+• 2.  Parcours préfixe des sous-arbre de gauche à droite 
+• Algorithme :
+PROCEDURE parcoursPrefixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+traiter( elmt(a) )
+parcoursPrefixe( fg(a) )
+parcoursPrefixe( fd(a) )
+FIN SI
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+84
+<<<PAGE>>>
+Parcours en longueur
+• Type INFIXE : parcours en « triangle » (dans un arbre binaire seulement) : on visite chaque nœud après 
+son fils à gauche et avant son fils à droite.
+• Parcours infixe du sous-arbre gauche 
+• Visite de la racine
+• Parcourt infixe du sous-arbre droit
+• Dans un arbre binaire, on l’appelle parcours G  R D (Gauche Racine Droit)).
+• Parcours : 4, 3, 5, 2, 6, 7, 1, 9, 8, 10
+E.ANSERMIN | R.VERIN | R.GRIGNON
+85
+<<<PAGE>>>
+a
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+Eva ANSERMIN & Romuald GRIGNON
+86
+E.ANSERMIN | R.VERIN | R.GRIGNON
+86
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a
+Eva ANSERMIN & Romuald GRIGNON
+87
+E.ANSERMIN | R.VERIN | R.GRIGNON
+87
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a
+Eva ANSERMIN & Romuald GRIGNON
+88
+E.ANSERMIN | R.VERIN | R.GRIGNON
+88
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a
+a
+Eva ANSERMIN & Romuald GRIGNON
+89
+E.ANSERMIN | R.VERIN | R.GRIGNON
+89
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a
+a
+Eva ANSERMIN & Romuald GRIGNON
+90
+E.ANSERMIN | R.VERIN | R.GRIGNON
+90
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a
+a
+Eva ANSERMIN & Romuald GRIGNON
+91
+E.ANSERMIN | R.VERIN | R.GRIGNON
+91
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+92
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+93
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+94
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+95
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+96
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+97
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+98
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+99
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+100
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+101
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+102
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+103
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+a          NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+104
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+105
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+106
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+107
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+108
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+109
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+110
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+111
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+112
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+113
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+114
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+115
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+116
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+117
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+118
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+119
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+120
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+121
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+122
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+123
+a
+a
+a         NULL
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+124
+a
+a
+a         NULL
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+125
+a
+a
+a         NULL
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+126
+a
+a
+a         NULL
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+127
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+128
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+129
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+130
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+131
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+132
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+133
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+134
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+135
+a
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+136
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+137
+a
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+138
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+139
+a
+<<<PAGE>>>
+Parcours en longueur
+• Algorithme :
+PROCEDURE parcoursInfixe(a : pointeur sur Arbre)
+DEBUT
+SI a DIFFERENT DE NULL ALORS
+parcoursInfixe(fg(a))
+traiter(elmt(a))
+parcoursInfixe(fd(a))
+FIN SI
+FIN
+Parcours : 4, 3, 5, 2, 6, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+140
+a
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+141
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1,
+E.ANSERMIN | R.VERIN | R.GRIGNON
+142
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+143
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8
+E.ANSERMIN | R.VERIN | R.GRIGNON
+144
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+145
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6
+E.ANSERMIN | R.VERIN | R.GRIGNON
+146
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6, 9
+E.ANSERMIN | R.VERIN | R.GRIGNON
+147
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6, 9, 10
+E.ANSERMIN | R.VERIN | R.GRIGNON
+148
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6, 9, 10, 4
+E.ANSERMIN | R.VERIN | R.GRIGNON
+149
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6, 9, 10, 4, 5
+E.ANSERMIN | R.VERIN | R.GRIGNON
+150
+<<<PAGE>>>
+Parcours en largeur
+• Parcours en largeur : On explore les nœuds un par un sur un même niveau. On passe ensuite sur le 
+niveau suivant, et ainsi de suite (on va vers les frères avant de parcourir les fils). 
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+• Parcours: 1, 2, 8, 3, 6, 9, 10, 4, 5, 7
+E.ANSERMIN | R.VERIN | R.GRIGNON
+151
+<<<PAGE>>>
+Parcours en largeur
+• Le parcours en largeur se réalise à l’aide d’une file de la façon suivante : 
+• Mettre la racine dans la file
+• Tant que la file n’est pas vide :
+1. Récupérer en tête de file le nœud à traiter
+2. Traiter le nœud 
+3. Ajouter ses fils dans la file
+PROCEDURE parcoursLargeur(a : pointeur sur Arbre)
+VARIABLE
+noeud : pointeur sur Arbre
+f : File de pointeurs sur Arbre
+DEBUT
+SI (nonVide(a)) ALORS
+creerFile(f)
+enfiler(f, a)
+TANT QUE NON fileVide(f) FAIRE
+noeud ← defile(f)
+traiter(noeud)
+SI (existeFilsGauche(noeud)) enfiler(f, fg(noeud))
+SI (existeFilsDroit (noeud)) enfiler(f, fd(noeud))
+FIN TANT QUE
+FIN SI
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+152

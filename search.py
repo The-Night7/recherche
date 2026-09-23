@@ -147,7 +147,7 @@ def main():
     ap.add_argument("question", type=str)
     ap.add_argument("--k", type=int, default=3)
     ap.add_argument("--cours", help=f"parmi {', '.join(COURSES)} (séparés par des virgules)")
-    ap.add_argument("--type", help="parmi cours, td, ds, qcm")
+    ap.add_argument("--type", help="parmi cours, td, ds, cc, qcm")
     ap.add_argument("--version", help="enonce, corrige")
     ap.add_argument("--annees", help="ex: 2024,2023 (année de début)")
     ap.add_argument("--sans-recence", action="store_true", help="ne pas favoriser les documents récents")
