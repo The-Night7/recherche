@@ -16,7 +16,7 @@ import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
-from clean_extraction import to_blocks
+from reflow import to_md_blocks
 from courses import COURSES, KINDS
 from search import filter_mask, load_index, recency, search
 
@@ -120,7 +120,7 @@ class Handler(BaseHTTPRequestHandler):
                         "course_name": COURSES.get(c["course"], c["course"]),
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
                         "score": score,
-                        "blocks": md_blocks(c["text"]) if c.get("fmt") == "md" else to_blocks(c["text"]),
+                        "blocks": md_blocks(c["text"]) if c.get("fmt") == "md" else to_md_blocks(c["text"]),
                     }
                     for c, score in results
                 ],

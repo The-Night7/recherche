@@ -113,7 +113,7 @@
   .prose:last-child{ margin-bottom:0; }
   .md h4{ font-family:'Segoe UI',system-ui,sans-serif; font-size:13.5px; color:var(--accent2); margin:14px 0 6px; }
   .md ul, .md ol{ margin:0 0 12px; padding-left:22px; }
-  .md li{ margin:3px 0; }
+  .md li{ margin:3px 0; font-family:'Georgia','Liberation Serif', serif; font-size:15.5px; line-height:1.75; }
   .katex{ font-size:1.05em; }
   .katex-display{ overflow-x:auto; overflow-y:hidden; padding:4px 0; }
 
@@ -304,7 +304,10 @@ function renderMd(text, terms){
         const m = l.match(/^\s*([-*]|\d+[.)])\s+(.*)$/);
         if (!m) { if (out.length) out[out.length - 1] = out[out.length - 1].replace(/<\/li>$/, ' ' + richText(l.trim(), terms) + '</li>'); return; }
         const tag = /\d/.test(m[1]) ? 'ol' : 'ul';
-        if (list !== tag) { closeList(); out.push(`<${tag}>`); list = tag; }
+        if (list !== tag) {
+          closeList(); list = tag;
+          out.push(tag === 'ol' ? `<ol start="${parseInt(m[1], 10) || 1}">` : '<ul>');
+        }
         out.push(`<li>${richText(m[2], terms)}</li>`);
       });
       return;
