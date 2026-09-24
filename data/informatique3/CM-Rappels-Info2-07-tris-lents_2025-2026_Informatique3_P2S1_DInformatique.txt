@@ -1,0 +1,1056 @@
+Informatique II
+Tris lents
+
+<<<PAGE>>>
+Trier un tableaux
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+1 | 9 | 14 | 27 | 58 | 63 | 64 | 72
+⚫ Un algorithme de tri permet de modifier un tableau afin de 
+ranger ses éléments dans l’ordre croissant (ou 
+décroissant).
+⚫ Permet de faciliter la recherche (dichotomie possible).
+<<<PAGE>>>
+Trier un tableaux
+⚫ Problème très classique en algorithmie!
+https://fr.wikipedia.org/wiki/Algorithme_de_tri
+<<<PAGE>>>
+3 algorithmes de tri «lents »
+⚫Tri par sélection
+⚫Tri à bulles 
+⚫Tri par insertion 
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 63 | 27 | 72 | 64 | 58 | 14 | 9
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 63 | 27 | 72 | 64 | 58 | 14 | 9
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 27 | 72 | 64 | 58 | 14 | 63
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 27 | 72 | 64 | 58 | 14 | 63
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 14 | 72 | 64 | 58 | 27 | 63
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 14 | 27 | 64 | 58 | 72 | 63
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 64 | 72 | 63
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 63 | 72 | 64
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Principe
+⚫ Rechercher le plus petit élément et le placer à l’indice 0
+⚫ Rechercher le second plus petit élément et le placer à l’indice 1
+⚫ Continuer jusqu’à avoir trié tout le tableau
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri par sélection 
+⚫ Algorithme
+PROCEDURE TriSelection(A[n] :Tableau T de taille n)
+VARIABLE
+noEtape, noCase, indiceMin : ENTIER
+temp : T
+DEBUT
+POUR noEtape de 0 à n-1 FAIRE
+indiceMin ← noEtape
+POUR noCase de noEtape + 1 à n FAIRE
+SI A[noCase] < A[indiceMin] ALORS
+indiceMin ← noCase
+FIN SI
+FIN POUR
+SI indiceMin ≠ noEtape Alors
+temp ← A[indiceMin]
+A[indiceMin] ← A[noEtape]
+A[noEtape] ← temp
+FIN SI
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri par sélection 
+⚫ Algorithme
+PROCEDURE TriSelection(A[n] :Tableau T de taille n)
+VARIABLE
+noEtape, noCase, indiceMin : ENTIER
+temp : T
+DEBUT
+POUR noEtape de 0 à n-1 FAIRE
+indiceMin ← noEtape
+POUR noCase de noEtape + 1 à n FAIRE
+SI A[noCase] < A[indiceMin] ALORS
+indiceMin ← noCase
+FIN SI
+FIN POUR
+SI indiceMin ≠ noEtape Alors
+temp ← A[indiceMin]
+A[indiceMin] ← A[noEtape]
+A[noEtape] ← temp
+FIN SI
+FIN POUR
+FIN
+T: type quelconque
+<<<PAGE>>>
+Tri par sélection 
+⚫ Algorithme
+PROCEDURE TriSelection(A[n] :Tableau T de taille n)
+VARIABLE
+noEtape, noCase, indiceMin : ENTIER
+temp : T
+DEBUT
+POUR noEtape de 0 à n-1 FAIRE
+indiceMin ← noEtape
+POUR noCase de noEtape + 1 à n FAIRE
+SI A[noCase] < A[indiceMin] ALORS
+indiceMin ← noCase
+FIN SI
+FIN POUR
+SI indiceMin ≠ noEtape Alors
+temp ← A[indiceMin]
+A[indiceMin] ← A[noEtape]
+A[noEtape] ← temp
+FIN SI
+FIN POUR
+FIN
+Recherche n fois du minimum dans le tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Algorithme
+PROCEDURE TriSelection(A[n] :Tableau T de taille n)
+VARIABLE
+noEtape, noCase, indiceMin : ENTIER
+temp : T
+DEBUT
+POUR noEtape de 0 à n-1 FAIRE
+indiceMin ← noEtape
+POUR noCase de noEtape + 1 à n FAIRE
+SI A[noCase] < A[indiceMin] ALORS
+indiceMin ← noCase
+FIN SI
+FIN POUR
+SI indiceMin ≠ noEtape Alors
+temp ← A[indiceMin]
+A[indiceMin] ← A[noEtape]
+A[noEtape] ← temp
+FIN SI
+FIN POUR
+FIN
+Recherche du minimum dans le sous-tableau
+<<<PAGE>>>
+Tri par sélection 
+⚫ Algorithme
+PROCEDURE TriSelection(A[n] :Tableau T de taille n)
+VARIABLE
+noEtape, noCase, indiceMin : ENTIER
+temp : T
+DEBUT
+POUR noEtape de 0 à n-1 FAIRE
+indiceMin ← noEtape
+POUR noCase de noEtape + 1 à n FAIRE
+SI A[noCase] < A[indiceMin] ALORS
+indiceMin ← noCase
+FIN SI
+FIN POUR
+SI indiceMin ≠ noEtape Alors
+temp ← A[indiceMin]
+A[indiceMin] ← A[noEtape]
+A[noEtape] ← temp
+FIN SI
+FIN POUR
+FIN
+Echange des cases du tableau
+<<<PAGE>>>
+Tri par sélection : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : 0
+<<<PAGE>>>
+Tri par sélection : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n²)
+<<<PAGE>>>
+Tri par sélection : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n²)
+⚫ Pire cas (le tableau est de la forme [5 1 2 3 4 ]):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : n-1
+<<<PAGE>>>
+Tri par sélection : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n²)
+⚫ Pire cas (le tableau est de la forme [5 1 2 3 4 ]):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : n-1
+➢ Complexité : O(n²)
+<<<PAGE>>>
+Tri par sélection : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n²)
+⚫ Pire cas (le tableau est de la forme [5 1 2 3 4 ]):
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : n-1
+➢ Complexité : O(n²)
+⚫ Cas moyen :  O(n²)
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+On échange  !
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 72 | 64 | 58 | 14 | 9
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 72 | 64 | 58 | 14 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 72 | 64 | 58 | 14 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 72 | 58 | 14 | 9
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 72 | 58 | 14 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 72 | 14 | 9
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 72 | 14 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 14 | 72 | 9
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 14 | 72 | 9
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 14 | 9 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+27 | 1 | 63 | 64 | 58 | 14 | 9 | 72
+On recommence!
+
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 64 | 58 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 64 | 58 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 64 | 58 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 64 | 58 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 64 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 64 | 14 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 64 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 64 | 9 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 9 | 64 | 72
+On recommence!
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 9 | 64 | 72
+Pas besoin de tester la dernière case: la plus grande valeur est forcément à la fin! 
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 63 | 58 | 14 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 63 | 14 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 63 | 14 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 63 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 63 | 9 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 58 | 14 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 14 | 58 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 14 | 58 | 9 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 14 | 9 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 14 | 9 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 27 | 14 | 9 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 14 | 27 | 9 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 14 | 27 | 9 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 14 | 9 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 14 | 9 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 14 | 9 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Principe
+⚫ On compare les éléments deux à deux 
+⚫ Comparer chaque élément avec l’élément suivant et les permuter si 
+besoin
+⚫ Recommencer jusqu’à ce qu’il n’y ait plus d’échange à faire
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 63 | 64 | 72
+<<<PAGE>>>
+Tri à bulle
+⚫ Algorithme
+PROCEDURE TriBulle(A[n] :Tableau de T)
+desordre : BOOLEEN
+noEtape, noCase : ENTIER
+temp : T
+DEBUT
+noEtape ← n - 1
+Faire
+desordre ← FAUX
+Pour noCase de 0 à noEtape Faire
+Si A[noCase] > A[noCase + 1] Alors
+desordre ← VRAI
+temp ← A[noCase]
+A[noCase] ← A[noCase + 1] A[noCase + 1] ← temp
+FinSi
+FinPour
+noEtape ← noEtape - 1
+TantQue (noEtape > 0) et desordre
+Fin
+<<<PAGE>>>
+Tri à bulle
+⚫ Algorithme
+PROCEDURE TriBulle(A[n] :Tableau de T)
+desordre : BOOLEEN
+noEtape, noCase : ENTIER
+temp : T
+DEBUT
+noEtape ← n - 1
+Faire
+desordre ← FAUX
+Pour noCase de 0 à noEtape Faire
+Si A[noCase] > A[noCase + 1] Alors
+desordre ← VRAI
+temp ← A[noCase]
+A[noCase] ← A[noCase + 1] A[noCase + 1] ← temp
+FinSi
+FinPour
+noEtape ← noEtape - 1
+TantQue (noEtape > 0) et desordre
+Fin
+Comparaison et échange 
+de cases voisines
+<<<PAGE>>>
+Tri à bulle
+⚫ Algorithme
+PROCEDURE TriBulle(A[n] :Tableau de T)
+desordre : BOOLEEN
+noEtape, noCase : ENTIER
+temp : T
+DEBUT
+noEtape ← n - 1
+Faire
+desordre ← FAUX
+Pour noCase de 0 à noEtape Faire
+Si A[noCase] > A[noCase + 1] Alors
+desordre ← VRAI
+temp ← A[noCase]
+A[noCase] ← A[noCase + 1] A[noCase + 1] ← temp
+FinSi
+FinPour
+noEtape ← noEtape - 1
+TantQue (noEtape > 0) et desordre
+Fin
+Parcours du tableau
+<<<PAGE>>>
+Tri à bulle
+⚫ Algorithme
+PROCEDURE TriBulle(A[n] :Tableau de T)
+desordre : BOOLEEN
+noEtape, noCase : ENTIER
+temp : T
+DEBUT
+noEtape ← n-1
+Faire
+desordre ← FAUX
+Pour noCase de 0 à noEtape Faire
+Si A[noCase] > A[noCase + 1] Alors
+desordre ← VRAI
+temp ← A[noCase]
+A[noCase] ← A[noCase + 1] A[noCase + 1] ← temp
+FinSi
+FinPour
+noEtape ← noEtape - 1
+TantQue (noEtape > 0) et desordre
+Fin
+Recommencer tant que le tableau 
+n’est pas trié
+<<<PAGE>>>
+Tri à bulle : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+<<<PAGE>>>
+Tri à bulle : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+⚫ Pire cas (le tableau est trié dans l’ordre inverse)[5,4,3,2,1]
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : (n-1)+(n-2)+…+1 = n(n-1)/2
+➢ Complexité : O(n²)
+<<<PAGE>>>
+Tri à bulle : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+⚫ Pire cas (le tableau est trié dans l’ordre inverse)
+⚫ Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+⚫ Nombre d’échanges : (n-1)+(n-2)+…+1 = n(n-1)/2
+➢ Complexité : O(n²)
+⚫ Cas moyen :  O(n²)
+<<<PAGE>>>
+Tri par insertion
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+Pas d’element precedent
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+On passe à l’element suivant et on le 
+compare à ses éléments precedents
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+L’élémentest déjà bien placé, on passe au suivant.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 63 | 72 | 64 | 58 | 14 | 9
+On place l’element là où il faut par rapport à ses
+éléments précédents
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 63 | 72 | 64 | 58 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 63 | 72 | 64 | 58 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 63 | 64 | 72 | 58 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 63 | 64 | 72 | 58 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 58 | 63 | 64 | 72 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 27| 58 | 63 | 64 | 72 | 14 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 14 | 27 | 58 | 63 | 64 | 72 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Exemple
+1 | 14 | 27 | 58 | 63 | 64 | 72 | 9
+On parcourt ainsi tous les éléments.
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+<<<PAGE>>>
+Tri par insertion
+⚫ Principe
+⚫ Prendre les éléments dans l’ordre et comparer chaque élément avec 
+les éléments précédents du tableau pour déterminer son emplacement
+⚫ Décaler les éléments du tableau pour faire l’insertion
+⚫ Exemple
+1 | 9 | 14 | 27 | 58 | 63 | 64 | 72
+On parcourt ainsi tous les éléments.
+<<<PAGE>>>
+Tri par insertion
+⚫ Algorithme
+PROCEDURE TriInsertion(A[n] :Tableau de T)
+Variables
+noetape, decalage :ENTIER
+temp : T
+DEBUT
+POUR noetape de 1 à n FAIRE
+tmp ← A[noetape]
+decalage ← noetape -1
+TANT QUE (decalage >= 0) et (A[decalage] > tmp) FAIRE
+A[decalage + 1] ← A[decalage]
+decalage ← decalage - 1
+FIN TANT QUE
+A[decalage + 1] ← tmp
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri par insertion
+⚫ Algorithme
+PROCEDURE TriInsertion(A[n] :Tableau de T)
+Variables
+noetape, decalage :ENTIER
+temp : T
+DEBUT
+POUR noetape de 1 à n FAIRE
+tmp ← A[noetape]
+decalage ← noetape -1
+TANT QUE (decalage >= 0) et (A[decalage] > tmp) FAIRE
+A[decalage + 1] ← A[decalage]
+decalage ← decalage - 1
+FIN TANT QUE
+A[decalage + 1] ← tmp
+FIN POUR
+FIN
+Gestion de l’element à traiter
+<<<PAGE>>>
+Tri par insertion
+⚫ Algorithme
+PROCEDURE TriInsertion(A[n] :Tableau de T)
+Variables
+noetape, decalage :ENTIER
+temp : T
+DEBUT
+POUR noetape de 1 à n FAIRE
+tmp ← A[noetape]
+decalage ← noetape -1
+TANT QUE (decalage >= 0) et (A[decalage] > tmp) FAIRE
+A[decalage + 1] ← A[decalage]
+decalage ← decalage - 1
+FIN TANT QUE
+A[decalage + 1] ← tmp
+FIN POUR
+FIN
+Décalage des éléments du tableau
+avant placement
+<<<PAGE>>>
+Tri par insertion
+⚫ Algorithme
+PROCEDURE TriInsertion(A[n] :Tableau de T)
+Variables
+noetape, decalage :ENTIER
+temp : T
+DEBUT
+POUR noetape de 1 à n FAIRE
+tmp ← A[noetape]
+decalage ← noetape -1
+TANT QUE (decalage >= 0) et (A[decalage] > tmp) FAIRE
+A[decalage + 1] ← A[decalage]
+decalage ← decalage - 1
+FIN TANT QUE
+A[decalage + 1] ← tmp
+FIN POUR
+FIN
+Placement de l’élément à la bonne place 
+<<<PAGE>>>
+Tri par insertion : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : 
+⚫ Nombre d’échanges : 
+➢ Complexité : O(n)
+<<<PAGE>>>
+Tri par insertion : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+<<<PAGE>>>
+Tri par insertion : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+⚫ Pire cas (le tableau est trié dans l’ordre inverse)
+⚫ Nombre de comparaisons : O(n²)
+⚫ Nombre d’échanges : O(n²)
+➢ Complexité : O(n²)
+<<<PAGE>>>
+Tri par insertion : complexité 
+⚫ Meilleur cas (tableau déjà trié):
+⚫ Nombre de comparaisons : (n-1)
+⚫ Nombre d’échanges : 0
+➢ Complexité : O(n)
+⚫ Pire cas (le tableau est trié dans l’ordre inverse)
+⚫ Nombre de comparaisons : O(n²)
+⚫ Nombre d’échanges : O(n²)
+➢ Complexité : O(n²)
+⚫ Cas moyen : O(n²)
+<<<PAGE>>>
+Comparaison des tris lents
+
+<<<PAGE>>>
+Trier un tableaux
+⚫ Autres tris :
+https://fr.wikipedia.org/wiki/Algorithme_de_tri

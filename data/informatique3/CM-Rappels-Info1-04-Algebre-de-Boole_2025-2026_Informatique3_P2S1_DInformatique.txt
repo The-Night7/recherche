@@ -1,0 +1,508 @@
+INFORMATIQUE 1
+I I I .  A L G E B R E D E  B O O L E
+Eva Ansermin & Romuald Grignon 
+v1.1
+<<<PAGE>>>
+Algèbre de Boole : introduction
+➢ Nous avons vu que les ordinateurs ne peuvent manipuler que 
+des 0 et des 1.  
+➢ Comment parviennent-ils à effectuer des opérations ? 
+➢ Les opérations effectuées « électroniquement » dans un 
+ordinateur sont basées sur l’algèbre de Boole.
+➢ L’algèbre de Boole est une approche algébrique de la 
+logique.
+George BOOLE  
+(1815-1864)
+Eva ANSERMIN & Romuald GRIGNON
+2
+<<<PAGE>>>
+Algèbre de Boole : Variables
+➢ L’algèbre de Boole permet de modéliser des raisonnements 
+logiques.
+➢ Elle manipule des données qui ne peuvent prendre que 2 valeurs:
+➢ VRAI 
+➢ FAUX
+Ce sont des variables logiques ou booléennes
+➢ L’algèbre de Boole est donc exploité pour faire des opérations par 
+l’ordinateur. On aura :
+➢ VRAI  ≈ 0
+➢ FAUX ≈ 1
+➢ On peut construire des fonctions dépendant d’une ou plusieurs 
+variables logiques : ce sont des fonctions logiques 
+George BOOLE  
+(1815-1864)
+Eva ANSERMIN & Romuald GRIGNON
+3
+<<<PAGE>>>
+Algèbre de Boole : Fonctions logiques 
+➢ Les fonctions logiques permettent d’exprimer une sortie logique en fonction 
+d’entrées logiques.
+➢ Les fonctions logiques peuvent se représenter sous plusieurs formes : 
+𝑒1 𝑒2 … 𝑒𝑛 𝑠
+0 0 … 0
+0 0 … 1
+… … … …
+1 1 …. 0
+1 1 …. 1
+Eva ANSERMIN & Romuald GRIGNON
+4
+<<<PAGE>>>
+Algèbre de Boole : Table de vérité
+➢ Une table de vérité est un tableau indiquant la sortie d’une fonction logique selon 
+toutes les combinaisons possibles d’entrées. 
+sortie
+Entrées logiques
+Combinaison 
+d’entrées
+Sortie associée
+𝑒1 𝑒2 𝑒3 … 𝑒𝑛 𝑠
+0 0 0 … 0 0
+0 0 0 … 1 1
+… … … … …
+1 1 1 …. 0 1
+1 1 1 …. 1 0
+Eva ANSERMIN & Romuald GRIGNON
+5
+<<<PAGE>>>
+Algèbre de Boole : Table de vérité
+➢ Exemple avec 2 entrées
+➢ Pour ne pas oublier de lignes, on peut compter en binaire.
+➢ Pour n entrées, il y a 2𝑛 combinaisons différentes d’entrées, soit 2𝑛 lignes dans la 
+table de vérité.
+𝑒1 𝑒2 𝑠
+0 0
+0 1
+1 0
+1 1
+Eva ANSERMIN & Romuald GRIGNON
+6
+<<<PAGE>>>
+Algèbre de Boole : Opérateurs de base
+➢ L’inversion NON/NOT : la sortie vaut 1 si l’entrée vaut 0 et inversement. La sortie est 
+le complément de l’entrée.  
+𝑎 𝑠 = ത𝑎
+0 1
+1 0
+Eva ANSERMIN & Romuald GRIGNON
+7
+<<<PAGE>>>
+Algèbre de Boole : Opérateurs de base
+➢ Le ET/AND: La sortie vaut 1 si TOUTES les entrées valent 1
+(la sortie vaut 0 si AU MOINS une entrée vaut 0)
+𝑎 𝑏 𝑠 = 𝑎. 𝑏
+0 0 0
+0 1 0
+1 0 0
+1 1 1
+Eva ANSERMIN & Romuald GRIGNON
+8
+<<<PAGE>>>
+Algèbre de Boole : Opérateurs de base
+𝑎 𝑏 𝑠 = 𝑎 + 𝑏
+0 0 0
+0 1 1
+1 0 1
+1 1 1
+Eva ANSERMIN & Romuald GRIGNON
+9
+➢ Le OU/OR : La sortie vaut 1 si AU MOINS une entrée vaut 1
+(la sortie vaut 0 si TOUTES les entrées valent 0)
+<<<PAGE>>>
+Algèbre de Boole : Opérateurs de base
+➢ Le XOR/OU EXCLUSIF: La sortie vaut 1 si UNE SEULE entrée vaut 1
+𝑎 𝑏 𝑠 = a⨁𝑏
+0 0 0
+0 1 1
+1 0 1
+1 1 0
+a
+s
+b
+Eva ANSERMIN & Romuald GRIGNON
+10
+<<<PAGE>>>
+Algèbre de Boole : Opérateurs de base
+➢ Exemple: le NON-ET/NAND
+𝑎 𝑏 𝑠 = 𝑎. 𝑏
+0 0 1
+0 1 1
+1 0 1
+1 1 0
+Eva ANSERMIN & Romuald GRIGNON
+11
+➢ On peut associer le NON à d’autre portes pour obtenir la fonction complémentaire :
+<<<PAGE>>>
+Algèbre de Boole : Implémentation physique
+➢ Les circuits électroniques peuvent reproduire ces opérateurs!
+➢ Les transistors sont la base de cette implémentation.
+Eva ANSERMIN & Romuald GRIGNON
+12
+<<<PAGE>>>
+Algèbre de Boole : Implémentation physique
+➢ Les circuits électroniques peuvent reproduire ces opérateurs!
+➢ Les transistors sont la base de cette implémentation.
+Eva ANSERMIN & Romuald GRIGNON
+13
+<<<PAGE>>>
+Algèbre de Boole : Implémentation physique
+➢ Les circuits électroniques peuvent reproduire ces opérateurs!
+➢ Les transistors sont la base de cette implémentation.
+➢ Les portes logiques pouvant être reproduites par des circuits électroniques, 
+on peut donc implanter physiquement des fonctions logiques dans un 
+ordinateur pour effectuer des opérations.
+➢ Pour économiser des ressources, il faut utiliser le moins de portes logiques 
+possibles pour une même fonction logique.
+➢ A l’aide des propriétés de l’algèbre de Boole, on va chercher à réduire et 
+simplifier les fonctions logiques. 
+Eva ANSERMIN & Romuald GRIGNON
+14
+<<<PAGE>>>
+Algèbre de Boole : Propriétés
+Eva ANSERMIN & Romuald GRIGNON
+15
+<<<PAGE>>>
+Algèbre de Boole : Loi de Morgan
+Eva ANSERMIN & Romuald GRIGNON
+16
+<<<PAGE>>>
+Algèbre de Boole : Loi de Morgan
+➢ Démonstration de la loi de Morgan avec une table de vérité :
+On a bien :
+𝑎 𝑏 ത𝑎 ത𝑏 ത𝑎 . ത𝑏 𝑎 + 𝑏 𝑎 + 𝑏
+0 0 1 1 1 0 1
+0 1 1 0 0 1 0
+1 0 0 1 0 1 0
+1 1 0 0 0 1 0
+𝑎 + 𝑏 = ത𝑎 . ത𝑏
+Eva ANSERMIN & Romuald GRIGNON
+17
+<<<PAGE>>>
+Algèbre de Boole : Loi de Morgan
+➢ Démonstration de la loi de Morgan par énoncé logique:
+Soit l’énoncé suivant :
+« Je sors s’il ne pleut pas et s’il fait chaud. »
+Quelle est la contraposée de cet énoncé?
+→ « Je ne sors pas s’il pleut ou s’il fait froid »
+Eva ANSERMIN & Romuald GRIGNON
+18
+<<<PAGE>>>
+Algèbre de Boole : Simplification d’expression
+➢ A l’aide de propriétés Booléennes démontrer les règles suivantes:
+1. Règle d’absorption :  
+Démonstration : 
+𝑎. 𝑎 + 𝑏 = 𝑎
+𝑎. 𝑎 + 𝑏 = 𝑎. 𝑎 + 𝑎. 𝑏 (distributivité du ET)
+= 𝑎 + 𝑎. 𝑏 (𝑎. 𝑎 = 𝑎)
+= 𝑎 1 + 𝑏 (factorisation par a et a. 1 = a)
+= 𝑎 (1 + b = 1 ∀ b)
+Eva ANSERMIN & Romuald GRIGNON
+19
+<<<PAGE>>>
+Algèbre de Boole : Simplification d’expression
+➢ A l’aide de propriétés Booléennes démontrer les règles suivantes:
+1. Règle de simplification  :  
+Démonstration : 
+𝑎 + ത𝑎. 𝑏 = 𝑎 + 𝑏
+𝑎 + ത𝑎. 𝑏 = 𝑎. 𝑎 + 𝑏 + ത𝑎. 𝑏 (voir slide précédente)
+= 𝑎. 𝑎 + 𝑎. 𝑏 + ത𝑎. 𝑏
+= 𝑎 + 𝑎. 𝑏 + ത𝑎. 𝑏 (𝑎. 𝑎 = 𝑎)
+= 𝑎 + 𝑏( 𝑎 + ത𝑎) (factorisation)
+= 𝑎 + 𝑏 (𝑎 + ത𝑎 = 1)
+Eva ANSERMIN & Romuald GRIGNON
+20
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ Pour simplifier une expression logique, on peut :
+1. La simplifier à l’aide des propriétés de l’algèbre de Boole (slides précédentes)
+2. Utiliser un tableau de Karnaugh
+➢ Un tableau de Karnaugh est une représentation différente de la table de vérité : il s’agit 
+d’un tableau à double entrée donnant les valeurs de la sortie en fonction des entrées.
+a b   c
+Valeurs
+possibles
+de l’entrée a
+Valeurs possibles du couple d’entrées b et c
+Eva ANSERMIN & Romuald GRIGNON
+21
+<<<PAGE>>>
+➢ Pour simplifier une expression logique, on peut :
+1. La simplifier à l’aide des propriétés de l’algèbre de Boole (slides précédentes)
+2. Utiliser un tableau de Karnaugh
+➢ Un tableau de Karnaugh est une représentation différente de la table de vérité : il s’agit 
+d’un tableau à double entrée donnant les valeurs de la sortie en fonction des entrées.
+a b   c
+Valeurs
+possibles
+de l’entrée a
+Valeurs possibles du couple d’entrées b et c
+Algèbre de Boole : Tableau de Karnaugh 
+Eva ANSERMIN & Romuald GRIGNON
+22
+0
+1
+<<<PAGE>>>
+➢ Pour simplifier une expression logique, on peut :
+1. La simplifier à l’aide des propriétés de l’algèbre de Boole (slides précédentes)
+2. Utiliser un tableau de Karnaugh
+➢ Un tableau de Karnaugh est une représentation différente de la table de vérité : il s’agit 
+d’un tableau à double entrée donnant les valeurs de la sortie en fonction des entrées.
+a b   c
+Valeurs
+possibles
+de l’entrée a
+Valeurs possibles du couple d’entrées b et c
+0
+1
+Algèbre de Boole : Tableau de Karnaugh 
+0    0 0    1 1     1 1    0
+Eva ANSERMIN & Romuald GRIGNON
+23
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+Dans la construction du tableau les valeurs des variables ne 
+doivent varier que d’un seul bit entre chaque ligne / colonne !
+Eva ANSERMIN & Romuald GRIGNON
+24
+➢ Pour simplifier une expression logique, on peut :
+1. La simplifier à l’aide des propriétés de l’algèbre de Boole (slides précédentes)
+2. Utiliser un tableau de Karnaugh
+➢ Un tableau de Karnaugh est une représentation différente de la table de vérité : il s’agit 
+d’un tableau à double entrée donnant les valeurs de la sortie en fonction des entrées.
+a b   c
+Valeurs
+possibles
+de l’entrée a
+Valeurs possibles du couple d’entrées b et c
+0
+0    0 0    1 1     1 1    0
+1
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ Pour simplifier une expression logique, on peut :
+1. La simplifier à l’aide des propriétés de l’algèbre de Boole (slides précédentes)
+2. Utiliser un tableau de Karnaugh
+➢ Un tableau de Karnaugh est une représentation différente de la table de vérité : il 
+s’agit d’un tableau à double entrée donnant les valeurs de la sortie en fonction 
+des entrées.
+➢ Une fois le tableau rempli, on regroupe TOUTES les cases contenant ‘1’ par des 
+groupes de tailles en puissances de 2 (1, 2, 4, …). Il faut prendre les groupes les 
+plus grands possibles.
+➢ En analysant ces groupes, on peut trouver une équation directement simplifiée.
+Eva ANSERMIN & Romuald GRIGNON
+25
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+𝑠 =
+1 1 1 0
+0 0 1 0
+a b   c
+0
+1
+0    0 0    1 1     1 1    0
+Eva ANSERMIN & Romuald GRIGNON
+26
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+𝑠 = ത𝑎. ത𝑏
+1 1 1 0
+0 0 1 0
+a b   c
+0
+1
+0    0 0    1 1     1 1    0
+On remarque que dans ce paquet de 1 on a b=a=0
+Eva ANSERMIN & Romuald GRIGNON
+27
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+𝑠 = ത𝑎. ത𝑏 + 𝑏. 𝑐
+1 1 1 0
+0 0 1 0
+a b   c
+0
+1
+0    0 0    1 1     1 1    0
+On remarque que dans ce paquet de 1 on a b=c=1
+Eva ANSERMIN & Romuald GRIGNON
+28
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+0 1 1 0
+0 1 1 1
+0 1 1 1
+1    0 0 1 1 0
+a  b c  d 0    0 0    1 1     01    1
+0    0
+0    1
+1    1
+𝑠 =
+Eva ANSERMIN & Romuald GRIGNON
+29
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+0 1 1 0
+0 1 1 1
+0 1 1 1
+1    0 0 1 1 0
+a  b c  d 0    0 0    1 1     01    1
+0    0
+0    1
+1    1
+𝑠 = 𝑑 +
+On remarque que dans ce paquet, on a : d=1
+Eva ANSERMIN & Romuald GRIGNON
+30
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+0 1 1 0
+0 1 1 1
+0 1 1 1
+1    0 0 1 1 0
+a  b c  d 0    0 0    1 1     01    1
+0    0
+0    1
+1    1
+𝑠 = 𝑑 + 𝑏. 𝑐. ҧ𝑑
+On pourrait regrouper ces deux 1,
+mais il est possible d’obtenir un
+plus grand groupe
+Eva ANSERMIN & Romuald GRIGNON
+31
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+0 1 1 0
+0 1 1 1
+0 1 1 1
+1    0 0 1 1 0
+a  b c  d 0    0 0    1 1     01    1
+0    0
+0    1
+1    1
+𝑠 = 𝑑 + 𝑏. 𝑐
+Dans ce groupe on a c=1 et b=1
+Eva ANSERMIN & Romuald GRIGNON
+32
+➢ Exemple: soit le tableau de Karnaugh suivant, trouvez l’équation logique associée
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh 
+➢ On peut « reboucler sur le tableau »
+0 0 0 0
+1 0 0 1
+1 0 0 1
+1    0 0 0 0 0
+a  b c  d 0    0 0    1 1     01    1
+0    0
+0    1
+1    1
+𝑠 = 𝑏. ҧ𝑑
+➢ Il faut que TOUS les 1 appartiennent à un groupe.
+Eva ANSERMIN & Romuald GRIGNON
+33
+<<<PAGE>>>
+Algèbre de Boole : Construction de circuit logique
+➢ Pour construire un circuit logique à partir d’un énoncé:
+1. Construire la table de vérité
+2. Déterminer l’équation logique grâce :
+à la simplification de l’équation logique 
+OU
+au tableau de Karnaugh
+3.     Dessiner le circuit à l’aide de portes logiques.
+Eva ANSERMIN & Romuald GRIGNON
+34
+<<<PAGE>>>
+Algèbre de Boole : Représentation logique
+A​ B​ C​ S​
+0​ 0​ 0​ ​0
+0​ 0​ 1​ ​0
+0​ 1​ 0​ ​0
+0​ 1​ 1​ ​1
+1​ 0​ 0​ ​0
+1​ 0​ 1​ ​1
+1​ 1​ 0​ ​1
+1​ 1​ 1​ ​1
+Exemple : « S(A,B,C) = 1 si et seulement si la majorité des trois variables A, B, C valent 1. »
+1. Table de vérité​ : 
+Eva ANSERMIN & Romuald GRIGNON
+35
+<<<PAGE>>>
+Algèbre de Boole : Représentation logique
+« S(A,B,C) = 1 ssi la majorité des
+trois variables A, B, C valent 1. »
+2 Equation :
+1. On regroupe les cas ou S=1
+2. On simplifie l’équation
+𝑠 = ത𝑎𝑏𝑐 + 𝑎 ത𝑏c + ab ҧ𝑐 + 𝑎𝑏𝑐
+𝑠 = ത𝑎𝑏𝑐 + 𝑎 ത𝑏c + ab ҧ𝑐 + 𝑎 + 𝑎 + 𝑎 𝑏𝑐
+𝑎 + 𝑎 = 𝑎
+𝑠 = ത𝑎𝑏𝑐 + 𝑎 ത𝑏c + ab ҧ𝑐 + 𝑎𝑏𝑐 + 𝑎𝑏𝑐 + 𝑎𝑏𝑐
+𝑠 = 𝑏𝑐 ത𝑎 + 𝑎 + 𝑎𝑏 ҧ𝑐 + 𝑐 + 𝑎𝑐 ത𝑏 + 𝑏
+𝒔 = 𝒃𝒄 + 𝒂𝒃 + 𝒂𝒄 𝑎 + ത𝑎 = 1
+Eva ANSERMIN & Romuald GRIGNON
+36
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh
+Ou utilisation du tableau de Karnaugh
+0
+0
+0
+1
+1
+1 1
+0
+Eva ANSERMIN & Romuald GRIGNON
+37
+
+<<<PAGE>>>
+Algèbre de Boole : Tableau de Karnaugh
+𝒔 = 𝒃𝒄 + 𝒂𝒃 + 𝒂𝒄
+On retrouve bien le même résultat.
+Eva ANSERMIN & Romuald GRIGNON
+38
+0
+0
+0
+1
+1
+1 1
+0
+Ou utilisation du tableau de Karnaugh
+<<<PAGE>>>
+Algèbre de Boole : Représentation logique
+« S(A,B,C) = 1 si et seulement si la majorité des trois variables A, B, C valent 1. »
+3.Circuit :
+S=BC+AC+AB
+A B C
+𝐴. 𝐵
+𝐵. 𝐶
+𝐴. 𝐶
+𝐴. 𝐵 + 𝐵. 𝐶
+𝐴. 𝐵 + 𝐵. 𝐶 + 𝐴. 𝐶 = 𝑆
+Eva ANSERMIN & Romuald GRIGNON
+39
+<<<PAGE>>>
+Algèbre de Boole : Représentation logique
+Eva ANSERMIN & Romuald GRIGNON
+40
+« S(A,B,C) = 1 si et seulement si la majorité des trois variables A, B, C valent 1. »
+3.Circuit :
+S=BC+AC+AB
+<<<PAGE>>>
+Conclusion
+➢ L’algèbre de Boole permet de modéliser des énoncés logiques et utilise des 
+variables dont les valeurs possibles sont VRAI (1) ou FAUX (0).
+➢ A partir d’un énoncé, on peut déterminer une équation et un circuit logique 
+répondant au problème.
+➢ Les différents opérateurs de l’algèbre de Boole sont implémentables sur des 
+circuits électroniques grâce aux transistors. 
+➢ Le fonctionnement d’un ordinateur se base sur l’algèbre de Boole : les différents 
+calculs et traitements de données effectués par un ordinateur (comparaison, 
+addition etc. ) sont modélisés par des circuits logiques implémentés sur carte 
+électronique.
+Eva ANSERMIN & Romuald GRIGNON
+41
