@@ -1,0 +1,160 @@
+ 
+ING2 -MI  
+EXAMEN DE DATAMINING 2 
+ 2023-2024 
+Durée : 2h 
+Examen papier 
+Calculatrice autorisée 
+4 feuilles R/V 
+ 
+Le barème est donné à titre indicatif mais est susceptible d’évoluer. 
+Exercice 1 :                                                                                                                         4 points 
+On considère le réseau de neurone défini par l’instruction suivante. 
+ 
+modele = keras.Sequential([ 
+layers.Input(shape=(10,)), 
+layers.Dense( 5, activation = 'tanh' ), 
+layers.Dense( 5, activation = 'sigmoid' ), 
+layers.Dense(p,activation= 'sigmoid' ) 
+]) 
+ 
+1)  Combien y-a-t-il de variables explicatives (features ) dans le jeu de données ? 
+2)  Quelle est la nature de la variable cible, combien doit-on mettre de neurones sur la couche de sortie 
+(p= ?) ? 
+3)  Dessinez le réseau de neurones. 
+4)  Combien y-a-t-il de poids dans le réseau ? Justifiez vos calculs. 
+ 
+Exercice 2 :                                                                                                                         4 points 
+On souhaite prédire la classe d’un objet (Y=0 ou Y=1=) en fonction de sa taille T (S=small, M=medium, L=Large) 
+et sa couleur C (R=rouge, B=bleu). 
+Y T C 
+1 S R 
+1 S R 
+1 L B 
+1 M B 
+1 M B 
+0 S B 
+0 S B 
+0 S R 
+0 L R 
+0 L R 
+0 M B 
+1)  Utilisez la formule de Bayes pour transformer les probabilités conditionnelles du modèle bayésien naïf : 
+( = 0|, 	)  et ( = 1|, 	) . 
+2)  Expliquez ce que signifie l’hypothèse d’indépendance dans le modèle bayésien naïf. 
+3)  Exprimez les probabilités de la question 1 en appliquant l’hypothèse d’indépendance. 
+4)  Quelle est la prévision obtenue avec ce modèle pour un objet de taille Small et de couleur Rouge ? 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+2 
+ 
+Exercice 3 : Etude de cas                                                                                              12 points 
+Among the certified rice grown in TURKEY, the Osmancik species, which has a large planting area since 1997 and 
+the Cammeo species grown since 2014 have been selec ted for the study. When looking at the general 
+characteristics of Osmancik species, they have a wi de, long, glassy and dull appearance. When looking a t the 
+general characteristics of the Cammeo species, they have wide and long, glassy and dull in appearance. A total of 
+3810 rice grain's images were taken for the two spe cies, processed and feature inferences were made. 7  
+morphological features were obtained for each grain of rice. 
+Variable Name  Type  Description  
+ ∶ Area  Integer  Returns the number of pixels within the boundaries of the rice grain  
+ ∶ Perimeter Continuous Calculates the circumference by calculating the distance between pixels 
+around the boundaries of the rice grain 
+ ∶
+ Major_Axis_Length  Continuous The longest line that can be drawn on the rice grain, i.e. the main axis 
+distance, gives 
+ ∶
+ Minor_Axis_Length  Continuous The shortest line that can be drawn on the rice grain, i.e. the small axis 
+distance, gives 
+ ∶ Eccentricity Continuous It measures how round the ellipse, which has the same moments as the rice 
+grain, is 
+ ∶ Convex_Area Integer Returns the pixel count of the smallest convex shell of the region formed by 
+the rice grain 
+ ∶ Extent  Continuous  Returns the ratio of the region formed by the rice grain to the bounding box  
+ ∶ Species  Binary  0 = Cammeo and 1 = Osmancik  
+ 
+Partie 1. Préparation des données  
+1)  Commentez la répartition de la variable cible. 
+ 
+2)  A partir du jeu de données on construit la base d’e ntrainement, la base de validation et la base de te st. 
+Pouvez-vous rappeler à quoi servent ces trois bases. 
+3)  Quelle(s) transformation(s) doit-on faire sur les différentes variables du jeu de données ? 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+3 
+ 
+Partie 2. Arbre de décision  
+On ajuste un arbre de décision avec l’instruction 
+modele=rpart(Species~.,train,control=rpart.control(minsplit =5,cp=0)) 
+On obtient le graphique de l’erreur de prévision en fonction de la complexité de l’arbre ci-dessous.  
+1)  Comment peut-on élaguer l’arbre ? 
+2)  Pourquoi faut-il l’élaguer ? 
+ 
+3)  On considère l’arbre élagué ci-dessous. Quelle est la matrice de confusion et le taux de bien classés sur 
+la base d’apprentissage ? 
+4)  Représenter l’arbre avec uniquement deux feuilles.  
+5)  Quel est l’indice de Gini du jeu de la base d’apprentissage ? 
+6)  Calculer le gain du premier split. 
+ 
+
+<<<PAGE>>>
+4 
+ 
+Partie 3. Foret aléatoire  
+On ajuste une première forêt aléatoire avec le pack age RandomForest de R et on obtient le graphique de  
+convergence ci-dessous.  
+1)  Pensez-vous que cela est suffisant ou bien faut-il ajouter des arbres (justifiez votre réponse) ? 
+ 
+ 
+ 
+Après avoir optimisé les hyperparamètres, on obtient la forêt aléatoire suivante. 
+ 
+Call: 
+ randomForest(formula = Species ~ ., data = train, importance = T,      
+ntree = 100, mtry = 3)  
+               Type of random forest: classification 
+                     Number of trees: 100 
+No. of variables tried at each split: 3 
+ 
+        OOB estimate of  error rate: 7.2% 
+Confusion matrix: 
+         Cammeo Osmancik class.error 
+Cammeo     1031      102  0.09002648 
+Osmancik     90     1444  0.05867014 
+ 
+ 
+2)  Que signifie mtry = 3 ? 
+3)  Expliquez à quoi correspond l’erreur OOB ? 
+Partie 3. Régression logistique  
+On construit une régression logistique. Ci-dessous les résultats obtenus après la procédure de sélection de modèle 
+pas-à-pas. 
+
+<<<PAGE>>>
+5 
+ 
+ 
+1)  Rappelez la procédure de sélection de modèle pas-à-pas. 
+2)  Ecrivez le modèle obtenu ( = 1| ). 
+3)  En déduire la classe d’un grain dont les caractéristiques sont les suivantes (arrondir à 10 -2). 
+ 
+ 
+ 
+4)  Quel est l’odds-ratio de la variable Area ? Expliquez ce que cela signifie. 
+5)  Sur la base de validation, on obtient la matrice de confusion suivante. 
+ 
+Comparer les performances de la régression logistiq ue et de la forêt aléatoire à l’aide du taux de bie n 
+classés. 
+ 
+Questions générales  
+Parmi les méthodes utilisées ci-dessus : 
+1)  Quels sont les hyperparamètres principaux à optimiser ? 
+2)  Quelles méthodes sont sensibles au sur-ajustement ? 
+3)  Quelles sont les variables explicatives ( features ) ayant de l’influence dans le modèle ? Comparer. 
+ 
+ 

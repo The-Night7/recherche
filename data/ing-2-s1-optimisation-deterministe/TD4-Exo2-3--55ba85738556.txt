@@ -1,0 +1,218 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy.linalg import norm
+from numpy.linalg import inv
+
+
+#gradf à écrire correspond au calcul du gradient 
+
+
+# Variables de l'exercice 2 TD4
+A = np.array([[10, 0],
+              [0, 1]])
+b = np.array([-3, -3])
+c = 0
+f = lambda x :c + np.dot(b.T, x) + (1/2) * np.dot(x.T, np.dot(A, x))
+gradf=lambda x:np.dot(A,x)+b
+x0 = np.array([-2, -7])
+omega = 0.0001
+tau = 0.7
+d0 = - np.dot(A, x0) - b
+rho = 1
+
+# Autres variables
+esp = 0.0001
+iterMax = 100
+
+# for k in range(7):
+#     diff = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2
+#     print('rho=', rho)
+#     print('diff=', diff)
+#     rho = tau * rho
+
+# Variables de l'exercice 2 TD4 avec la recherche des 1ers pas d'Armijo
+A = np.array([[10, 0],
+              [0, 1]])
+b = np.array([-3, -3])
+c = 0
+f = lambda x :c + np.dot(b.T, x) + (1/2) * np.dot(x.T, np.dot(A, x))
+x0 = np.array([-2, -7])
+omega = 10 ** (-4)
+tau = 0.7
+d0 = - np.dot(A, x0) - b
+
+# for k in range(3):
+#     rho = 1
+#     test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+#     while test:
+#         rho = tau * rho
+#         test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+#     x1 = x0 + rho * d0
+#     d1 = - np.dot(A, x1) - b
+#     print('rho=', rho)
+#     print('x=', x1)
+#     x0 = x1
+#     d0 = d1
+
+# Variables de l'exercice 2 TD4 avec la reccherche des 1ers pas d'Armijo ca fonction quadratique
+# A = np.array([[10, 0],
+#               [0, 1]])
+# b = np.array([-3, -3])
+# c = 0
+# x0 = np.array([-2, -7])
+# eps = 0.0001
+# iterMax = 100
+
+# test = True
+# k = 0
+# d0 = - np.dot(A, x0) - b
+# rho = norm(d0) ** 2 / np.dot(d0.T, np.dot(A, d0))
+# x1 = x0 + rho * d0
+
+# while (test and k < iterMax):
+#     g = np.dot(A, x1) + b
+#     beta = np.dot(g.T, np.dot(A, d0)) / np.dot(d0.T, np.dot(A, d0))
+#     d1  = - np.dot(A, x1) - b + beta * d0
+#     rho = norm(d1) ** 2 / np.dot(d1.T, np.dot(A, d1))
+#     x2 = x1 + rho * d1
+#     test = (norm(x2 - x1) > eps * norm(x2))
+#     k += 1
+#     x0 = x1
+#     x1 = x2
+
+#     print('x=', x2)
+#     print('k=', k)
+
+#Algo du gradient conjugué à pas d'Armijo avec variante de Fletcher-Reeves pour une fonction f avec gradient égal à gradf
+
+#Exo clean 
+#Méthode de Fletcher-Reeves
+print("Méthode de Fletcher-Reeves")
+
+omega = 0.0001
+tau = 0.7
+eps = 0.0001
+iterMax = 100
+
+test = True
+k = 0
+d0 = - gradf(x0)
+#test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+def armijo(x,d,f):
+    rho = 1
+    test = f(x + rho * d) - f(x) + omega * rho * norm(d) ** 2 > 0
+    while test:
+        rho = tau * rho
+        test = f(x + rho * d) - f(x) + omega * rho * norm(d) ** 2 > 0
+    return rho
+
+rho=armijo(x0,d0,f)
+x1=x0+rho*d0
+test1=True
+while (test1 and k < iterMax):
+    g0 = gradf(x0)
+    g1 = gradf(x1)
+    beta = (norm(g1) / norm(g0)) **2
+    d1 = - gradf(x1) + beta * d0
+    rho = armijo(x1,d1,f)
+    x2 = x1 + rho * d1
+    test1 = (norm(x2 - x1) > eps * norm(x2))
+    k += 1
+    x0 = x1
+    x1 = x2
+    d0=d1
+
+#Exo pas clean car on a pas défini de fonction pour l'armijo 
+# while test:
+#     rho = tau * rho
+#     test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+# x1 = x0 + rho * d0 #le pas rho
+
+# while (test and k < iterMax): #manque la définition d'une fonction pas d'armicho car on répète la fonction
+#     g0 = gradf(x0)
+#     g1 = gradf(x1)
+#     beta = (norm(g1) / norm(g0)) **2
+#     d1 = - gradf(x1) + beta * d0
+#     rho = 1
+#     test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+
+# while test: #c'est en double => on crée une fonction 
+#     rho = tau * rho
+#     test = f(x0 + rho * d0) - f(x0) + omega * rho * norm(d0) ** 2 > 0
+
+# x2 = x1 + rho * d1
+# test = (norm(x2 - x1) > eps * norm(x2))
+# k += 1
+# x0 = x1
+# x1 = x2
+
+print('x=', x2)
+print('k=', k)
+
+
+#méthode de Polak-Ribière
+print("Méthode de Polack-Ribière")
+omega = 0.0001
+tau = 0.7
+eps = 0.0001
+iterMax = 100
+
+test = True
+k = 0
+d0 = - gradf(x0)
+
+rho=armijo(x0,d0,f)
+x1=x0+rho*d0
+test1=True
+
+while (test1 and k < iterMax):
+    g0 = gradf(x0)
+    g1 = gradf(x1)
+    beta = np.dot(g1.T,g1-g0)/norm(g0)**2
+    d1 = - gradf(x1) + beta * d0
+    rho = armijo(x1,d1,f)
+    x2 = x1 + rho * d1
+    test1 = (norm(x2 - x1) > eps * norm(x2))
+    k += 1
+    x0 = x1
+    x1 = x2
+    d0=d1
+    
+print('x=', x2)
+print('k=', k)
+
+
+#Exercice 3
+#méthode de Polak-Ribière avec toutes les n étapes on réinitialise la direction
+print("Méthode de Polack-Ribière réinitialisation des étapes toutes les 2 étapes")
+omega = 0.0001
+tau = 0.7
+eps = 0.0001
+iterMax = 100
+
+test = True
+k = 0
+d0 = - gradf(x0)
+
+rho=armijo(x0,d0,f)
+x1=x0+rho*d0
+test1=True
+
+while (test1 and k < iterMax):
+    g0 = gradf(x0)
+    g1 = gradf(x1)
+    beta = np.dot(g1.T,g1-g0)/norm(g0)**2
+    d1 = -g1+beta*d0
+    rho=armijo(x1,d1,f)
+    x2=x1+rho*d1
+    d2=-gradf(x2)
+    rho = armijo(x2,d2,f)
+    x3 = x2 + rho * d2
+    test1 = (norm(x3 - x2) > eps * norm(x3))
+    k+=2
+    x0 = x1
+    x1 = x2
+    x2=x3
+    d0=d1
+print('x=', x3)
+print('k=', k)

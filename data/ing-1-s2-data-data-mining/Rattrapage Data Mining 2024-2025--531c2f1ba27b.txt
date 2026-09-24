@@ -1,0 +1,69 @@
+CY-Tech - Département Mathématiques
+1ère année Ingénieurs - Mathématiques appliquées
+Examen : Data Mining
+Donné le 10/06/2025 (Durée 2h00)
+2 feuilles manuscrites recto verso sont autorisées. La calculatrice (standard) est autorisée.
+Téléphones portables et tout autre document sont interdits.
+Exercice 1 : Règle d’association (6pts)
+Le restaurant « Bistro Gourmand » propose une carte assez réduite. Nous avons présenté dans
+le tableau suivant les 8 premières commandes de la journée.
+Ticket Commande
+T1 Salade verte, Lasagnes, Tarte aux pommes, Eau pétillante
+T2 Soupe de légumes, Ratatouille
+T3 Salade verte, Lasagnes, Eau pétillante
+T4 Lasagnes, Tarte aux pommes, Eau pétillante
+T5 Salade verte, Ratatouille, Tarte aux pommes
+T6 Salade verte, Ratatouille, Eau pétillante
+T7 Salade verte, Lasagnes, Eau pétillante
+T8 Salade verte, Lasagnes
+1. Quel est le nombre total de sous-ensembles (itemsets) candidats?
+2. Donner la fréquence de chaque item.
+3. Trouver les itemsets fréquents dont le support est au moins égal à minsup = 50%.
+4. Parmi ces règles, établir les règles d’association de confiance supérieure à 60% et calculer
+leur lift.
+5. Annoncer les règles utiles.
+Exercice 2 : Clustering (5pts)
+Certains clients de ce restaurant sont des habitués et y mangent 10 fois par semaine. Le restau-
+rateur a noté, pour chacun d’eux, le nombre de repas contenant de la viande et le nombre de
+repas contenant un dessert, sur une semaine. On utilise la distance de Manhattan pour mesurer
+la dissimilarité entre deux clients :
+d(A, B) =|x1(A)− x1(B)| +|x2(A)− x2(B)|.
+Client Viandes / semaine Desserts / semaine
+C1 9 2
+C2 8 1
+C3 7 3
+C4 2 7
+C5 1 9
+C6 3 8
+1. Tracer dans un repère orthonormé les 6 clients et intuiter le nombre de groupes.
+1
+<<<PAGE>>>
+2. Utiliser l’algorithme k-means pour construire 2 clusters. On initialise les centres de gravité
+avec les clients (C1 et C4).
+3. Calculer le pourcentage d’inertie expliquée par la partition obtenue.
+Exercice 3 : Arbre de décision (9pts)
+Le restaurateur souhaite mener une étude statistique en utilisant des arbres de décision afin de
+déterminer si un client prendra un dessert en fin de repas, à partir de sa commande (entrée, plat
+principal, boisson).
+Partie 1 : Analyse de l’arbre
+1. Décrire la tâche de Datamining effectué par le restaurateur.
+2. Établir la matrice de confusion et déduire l’erreur d’ajustement.
+3. Un client a commandé lors du premier passage du serveur une Salade, une ratatouille
+(Légume) et une boisson. Selon cet arbre, va-t-il commander un dessert?
+4. Dessiner l’arbre élagué contenantqu’un seul nœud.
+5. L’erreur d’ajustement a-t-il diminué ou augmenté? Est-ce surprenant?
+Partie 2 : Gain d’une coupe
+Voici un sous-échantillon de sa base donnée. On rappelle que la variable cible est la variable
+"Dessert Commandé". Les prochains calculs sont à faireuniquement sur ce sous-échantillon.
+Client Plat principal Entrée Boisson Dessert commandé
+C1 Légume Salade Oui Oui
+C2 Viande Soupe Non Non
+C3 Légume Salade Oui Non
+C4 Viande Aucune Oui Oui
+C5 Légume Salade Non Oui
+C6 Viande Salade Oui Oui
+C7 Viande Aucune Oui Oui
+C8 Viande Salade Non Non
+1. Calculer l’indice de Gini et l’entropie de la variable cible.
+2. Calculer le gain de la première coupe de l’arbre précédent en utilisant l’indice de Gini.
+2

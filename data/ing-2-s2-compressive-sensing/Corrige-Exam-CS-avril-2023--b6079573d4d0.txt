@@ -1,0 +1,258 @@
+Corrigé examen Compressive Sensing
+13 avril 2023
+Exercice 1
+1. (a) et le seuil est donné par R=x0 ( ) S=t= 2.5 = 4.31 ( ) ‖R‖0 ( )
+K
+‖x‖
+12
+(b) Seules les contributions des atmoes n°2 et 3 dépassent le seuil. .P= 2, 31 [ ]
+2. On construit la matrice , on résout le problème aux moindres carrés𝛷=d,d1 [ 2 3 ]
+𝛼=‖x -𝛷 𝛼‖1 ( ) arg min
+𝛼 1 2
+La solution étant :  , le nouveau résidu est : .𝛼=𝛷 𝛷 𝛷x1 ( ) T
+1 1
+-1 T
+1 R=x -𝛷 𝛼1 ( )
+1
+1 ( )
+3. On calcule les contributions des différents atomes  au résidu , di R 1 ( )
+à savoir les :  et on les compare au seuil : .
+| <d,R> |
+‖d‖
+j
+1 ( )
+j2
+S=t= 2.52 ( ) ‖R‖1 ( )
+K
+3.03
+12
+On sélectionne les indices dont la contribution dépasse le seuil :
+. On actualise l'ensemble des indices .𝛬=j, >S2
+| <d,R> |
+‖d‖
+j
+1 ( )
+j2
+2 ( ) P=P,𝛬2 [ 1 2 ]
+On construit la matrice  , on résout le problème aux moindres carrés𝛷=d2 [ i]i∈𝛬2
+𝛼=‖x -𝛷 𝛼‖2 ( ) arg min
+𝛼 2 2
+La solution étant :  , le nouveau résidu est : .𝛼=𝛷 𝛷 𝛷x2 ( ) T
+2 2
+-1 T
+2 R=x -𝛷 𝛼2 ( )
+2
+2 ( )
+Exercice 2
+1. Si on prend  avec 𝛼=𝛼,...,𝛼(1K ) 𝛼= 1i  i⩽ssi
+𝛼= 0i sinon
+et  avec , alors on a bien .𝛽=𝛽,...,𝛽(1K ) 𝛽= 1i  2⩽i⩽s+ 1si
+𝛽= 0i sinon 𝛼,𝛽 ∈ 𝛴 s
+Mais  car il possède exactement  composantes non nulles. Par conséquent  n'est 𝛼+𝛽 ∉ 𝛴 s s+ 1 𝛴s
+pas un espace vectoriel (non stable par addition).
+2.  et .x=x,...,x∈ 𝛴 ⟺ ∃i≠i∈ ⟦1,K⟧,∀j∈ ⟦1,K⟧,j≠i( 1K ) 2 1 2 1 j≠i⟹x= 02j
+   avec ème vecteur de la base canonique de ⟺ ∃i,i∈ ⟦1,K⟧,  x∈Vect e,e1 2 ( i1 i2 )e= j j RK
+Chaque couple  est une combinaison de  parmi . Il y en a donc .i,i(1 2 ) 2K= K
+2
+K K-1
+2
+( )
+Autrement dit,  est la réunion de  sous-espaces vectoriels engendrés par les couples 𝛴2
+K K-1
+2
+( )
+.e,e(i1 i2 )
+3. Le même raisonnement conduit à une réunion de sous-espaces engendrés par  vecteurs de la ℓ
+base canonique parmi les . Le nombre de ces sous-espaces est donc .K K
+ℓ
+<<<PAGE>>>
+4. Supposons que :       ∀𝛼,𝛽 ∈ 𝛴,    𝛼 ≠ 𝛽 ⟹A𝛼 ≠A𝛽s
+Ou bien, par contraposée :       ∀𝛼,𝛽 ∈ 𝛴,    A𝛼=A𝛽 ⟹ 𝛼=𝛽s
+On veut montrer :    .Ker A∩ 𝛴= 0 ( )2s { }
+Soit donc . 𝛾 ∈Ker A∩ 𝛴( ) 2s
+On a donc d'une part :  possède au maximum  composantes non nulles et d'autre part : .𝛾2s A𝛾= 0
+Or tout vecteur -parcimonieux peut être écrit comme la différence entre 2 vecteurs -parcimonieux.2s s
+Il suffit pour cela de prendre uniquement les  premières composantes non nulles pour former le 1er s
+vecteur et les opposés des autres pour former le 2ème.
+Nous pouvons donc écrire  avec .𝛾=𝛼-𝛽 𝛼,𝛽 ∈ 𝛴 s
+On en déduit : 
+0 =A𝛾=A𝛼-𝛽 ⟹A𝛼=A𝛽 ⟹ 𝛼=𝛽 ⟹ 𝛾=𝛼-𝛽= 0( )
+5. Supposons que .Ker A∩ 𝛴= 0 ( )2s { }
+Soient maintenant : .𝛼,𝛽 ∈ 𝛴,    A𝛼=A𝛽s
+On a alors  et évidemment 𝛼-𝛽=𝛾 ∈ 𝛴 2s A𝛾= 0
+L'hypothèse implique immédiatement , c à d .𝛾= 0𝛼=𝛽
+Exercice 3
+1. Chaque matrice  est le produit matriciel de la colonne  par la ligne . Donc toutes les d𝛬i( )
+i,⋅ d i( ) 𝛬i
+colonnes de cette matrice sont colinéaires à  et toutes les lignes sont colinéaire à . Par d i( ) 𝛬i,
+conséquent, le rang de cette matrice est inférieur à .1
+Pour que ce rang soit égal à , il faudrait que la matrice soit nulle. Ce qui ne peut être garanti que 0
+par la nullité de l'un des 2 vecteurs. Le vecteur  étant unitaire (parce que atome du dictionnaire) d i( )
+ne peut être nul, c'est donc  qui doit être nulle.𝛬i⋅
+Conclusion : rang .d𝛬= 1  ⟺ 𝛬 ≠0i( )
+i,⋅ i,⋅
+2.  On sait que . On en déduit :D𝛬=d𝛬=d𝛬+d𝛬∑
+k
+j=1
+j( )
+j,⋅ ∑
+k
+j=1
+j≠i
+j( )
+j,⋅
+i( )
+i,⋅
+E=X - D𝛬=X - d𝛬- d𝛬=E - d𝛬∑
+k
+j=1
+j≠i
+j( )
+j,⋅
+i( )
+i,⋅i
+i( )
+i,⋅
+avec  erreur sans tenir compte de la contribution de l'atome .E=X - d𝛬=i ∑
+k
+j=1
+j≠i
+j( )
+j,⋅ d i( )
+3. Etape 0 : on initialise le dictionnaire  aléatoirement ou à partir de certaines colonnes de , D X
+normalisées.
+Etape k : 
+• on fixe le dictionnaire actuel  et on calcule les représentations parcimonieuses  par un algorithme D 𝛬
+tel que OMP
+• on fixe  et on remplace successivement les atomes  de  afin de minimiser l'erreur .𝛬 d i( ) D Ei
+on utilise pour cela la décomposition en valeurs singulières.
+<<<PAGE>>>
+• on recommence jusqu'à ce que la représentation parcimonieuse soit suffisamment précise ou 
+jusqu'à un nombre fixe d'itérations.
+Exercice 4
+1. (a)  On sait que  . On peut donc l'écrire :‖𝛼‖= |𝛼|p
+p ∑
+K
+i=1
+i
+p
+‖𝛼‖= |𝛼| |𝛼| = ||𝛼|𝛼| = |w𝛼|p
+p ∑
+K
+i=1
+i
+p-2
+i
+2 ∑
+K
+i=1
+i
+-1p
+2 i
+2 ∑
+K
+i=1
+i i
+2
+avec   . w= |𝛼|i i
+-1p
+2
+Si on note  la matrice diagonale de coefs , on a donc : .W wi ‖𝛼‖=‖W𝛼‖p
+p
+2
+2
+Ainsi le problème  devient : P(p)
+, tel que MCP:‖W𝛼‖(2) min 2
+2 x=D𝛼
+(b) Si on pose , alors . 𝛽=W𝛼D𝛼=DW W𝛼=DW𝛽-1-1
+Le problème  s'écrit alors : MCP(2)
+, tel que MCP:‖𝛽‖(2) min 2
+2 x=A𝛽
+où la matrice  est donnée par .A A=DW -1
+2. (a) Les matrices  et  sont symétriques semi-définies positives et possèdent donc des AAT A AT
+valeurs propres positives. 
+Comme , les matrices   et  auront des valeurs propres strictement 𝜆> 0A A+𝜆I T
+K AA+𝜆IT
+N
+positives. Elle sont donc inversibles.
+(b) Calculons le produit matriciel : A A+𝜆I A AA+𝜆IT
+K
+T T
+N
+-1
+A A+𝜆I A AA+𝜆I=A AA+𝜆A AA+𝜆IT
+K
+T T
+N
+-1 T T T T
+N
+-1
+=A AA+𝜆I AA+𝜆I=AT T
+N
+T
+N
+-1 T
+Il suffit alors de multiplier par  pour obtenir le résultat attendu :A A+𝜆IT
+K
+-1
+A A+𝜆I A=A AA+𝜆IT
+K
+-1 T T T
+N
+-1
+(c) Soit  la solution de  , 𝛽* PSC:‖x - A𝛽‖+𝜆‖𝛽‖=f𝛽( 2) min
+𝛽
+2
+2
+2
+2 min
+𝛽
+( )
+On peut écrire cette fonction  sous la forme :f
+f𝛽=x - A𝛽x - A𝛽+𝜆𝛽 𝛽=x x -2𝛽A x+𝛽A A𝛽+𝜆𝛽 𝛽( ) ( ) T( ) T T T T T T T
+Le gradient de cette fonction par rapport à la variable  est donné par :𝛽
+∇f𝛽=-2A x+ 2A A𝛽+ 2𝜆𝛽( ) T T
+Le point critique est déterminé par :
+∇f𝛽= 0⟺-2A x+ 2A A𝛽+ 2𝜆𝛽= 0 ⟺A A+𝜆I𝛽=A x( ) T T T
+K
+T
+⟺ 𝛽=A A+𝜆I A x* T
+K
+-1 T
+(d) Grâce à la question (b) on peut écrire : .𝛽=A AA+𝜆I x*T T
+N
+-1
+Comme  et , on peut encore transformer cette écriture en :𝛽=W𝛼A=DW -1
+<<<PAGE>>>
+W𝛼=DW DW DW+𝜆I x* -1 T -1 -1 T
+N
+-1
+𝛼=W DW DW DW+𝜆I x*-1 -1 T -1 -1 T
+N
+-1
+En tenant compte du fait que  est diagonale, on peut simplifier et obtenir :W
+𝛼=W D DW D+𝜆I x*-2T -2T
+N
+-1
+Soit encore :
+𝛼=QD DQD+𝜆I x*T T
+N
+-1
+avec Q=W=W-2 -1 2
+3. (a) Le coefficient  est là pour garantir l'inversibilité de la matrice  dans le cas ou l'une des 𝜖 W
+composantes  est nulle.𝛼i
+(b) A l'étape , nous disposons de . k𝛼 k-1 ( )
+Nous construisons la matrice , à partir des . W=diag wk( ) k
+i
+( ) w= |𝛼| +𝜖k
+i
+( ) k-1
+i
+( )
+-1p
+2
+On en déduit .Q=Wk( ) k( )-2
+Ensuite on résout le pb aux moindres carrés  dont la solution nous donne  :MCP(2) 𝛼 k( )
+𝛼=Q D DQ D+𝜆I xk( )k( )T k( )T
+N
+-1

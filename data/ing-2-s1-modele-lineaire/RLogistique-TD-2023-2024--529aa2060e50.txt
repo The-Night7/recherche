@@ -1,0 +1,120 @@
+Département de Mathématiques
+ING2-Génie Mathématiques
+2023 - 2024
+TD - Régression Logistique
+Exercice 1 : On considère le jeu de données, fichier cœur : COEUR = f(AGE, TAUX-MAX, AN-
+GINE), pour prédire la présenceY = 1 ou l’absenceY = 0 d’un problème cardiaque en fonction des
+trois variables :
+• X1 : âge du patient (quantitative),
+• X2 : taux max de la pression sanguine (quantitative),
+• X3 : angine de poitrine (qualitative).
+1. Afin d’étudier ce modèle, on donne les sorties de R suivants :
+Coefficients:
+(Intercept) age taux_max angine
+14.49379 -0.12563 -0.06356 1.77901
+Degrees of Freedom: 19 Total (i.e. Null); 16 Residual
+Null Deviance: 24.43
+Residual Deviance: 16.62 AIC: 24.62
+Utiliser les sorties du logiciel pour répondre aux questions suivantes :
+a) Quelle est la valeur de dévianceDM,
+b) Quel les valeurs desbβi dans le vecteurbβ = ( bβ0, bβ1, bβ2, bβ3),
+c) Déterminer une estimation de la fonctionC(X) = logit(π(x)) = β0 +β1X1 +β2X2 +β3 +X3.
+d) Etudier la significativité globale du modèle avec un risqueα = 0.1.
+2. On s’interesse maintenant à tester le coefficient AGE dans la régression CŒUR. Pour cela,on
+réalise une nouvelle régression sans "âge" et comparer avec le modèle complet. Le logiciel R nous a
+forni les résultats suivants :
+> modele.age0 <- glm(coeur~taux_max+angine, data=donnees, family="binomial")
+> summary(modele.age0)
+glm(formula = coeur ~ taux_max + angine, family = "binomial", data = donnees)
+Coefficients:
+Estimate Std. Error z value Pr(>|z|)
+(Intercept) 7.44969 5.94266 1.254 0.210
+taux_max -0.05860 0.03991 -1.468 0.142
+angine 1.55142 1.24128 1.250 0.211
+Null deviance: 24.435 on 19 degrees of freedom
+Residual deviance: 19.094 on 17 degrees of freedom
+AIC: 25.094
+1
+<<<PAGE>>>
+Utiliser les sorties du logiciel pour répondre aux questions suivantes :
+(a) Donner la déviance edu modèleD(taux_max,angine ).
+(b) Déterminer le rapport de vraisemblanceLR =D(taux_max,angine )−DM.
+(c) Au risque 10%, tester l’hypothèse nulleβ1 = 0?
+3. Afin de tester la nullité simultanée des coefficientsβ1 (AGE) etβ2 (TAUX MAX) dans le fichier
+cœur, on réalise une régression logistique simple avec la variable "Angine". Le logiciel R donne les
+résultats suivants :
+> modele.age0.taux0<-glm(coeur~angine, data=donnees, family="binomial")
+> summary(modele.age0.taux0)
+glm(formula = coeur ~ angine, family = "binomial", data = donnees)
+Coefficients
+Estimate Std. Error z value Pr(>|z|)
+(Intercept) -1.3863 0.6455 -2.148 0.0317*
+angine 1.7918 1.1180 1.603 0.1090
+Null deviance: 24.435 on 19 degrees of freedom
+Residual deviance: 21.742 on 18 degrees of freedom
+AIC: 25.742
+(a) Déterminer la dévianceDangine
+(b) en déduire Le rapport de vraisemblanceLR =Dangine−DM
+(c) au risque 10%, tester l’hypothèse nulleβ1 =β2 = 0?
+Exercice 2 : Considérons le jeu de données sur le ronflement
+AGE POIDS TAILLE ALCOOL SEXE TABAC RONFLE
+47 71 158 A H O 0
+56 58 164 I F N 1
+46 116 208 M H O 0
+... ... ... ... ... ... ...
+Table 1 – Extrait du jeu de données.
+L’objectif est d’expliquer le ronflement d’une personne en fonction des autres caractéristiques.
+• RONFLE est la variable cibleY. C’est une variable binaire telle que RONFLE=1 si la personne
+ronfle et RONFLE=0 sinon.
+• AGE∈ [20, 80], POIDS∈ [42, 120], TAILLE∈ [158, 208] sont des variables explicatives quan-
+titatives.
+• SEXE (H/F), TABAC (O=oui/N=non) sont des variables qualitatives à deux modalités.
+• ALCOOL est une variable qualitative avec trois modalités A=absence de consommation,
+M=consommation modérée (entre 1 et 4 verres par jour), I=consommation importante (plus 4
+verres par jour).
+2
+<<<PAGE>>>
+A- Régression Logistique Simple
+Ci dessous les résultats obtenus pour les différents modèles de régression logistique à une variable
+explicative.
+variable explicative ba0 bσ0 ba1 bσ1 D AIC
+1 POIDS -0.5693525 1.0367340 -0.0005497 0.0112372 129.49 133.49
+2 AGE -3.11574 1.09564 0.04696 0.01988 123.51 127.51
+3 TAILLE -1.047381 0.002364 0.002364 0.015789 129.47 133.47
+4 SEXE H -1.3863 0.5000 0.9808 0.5528 125.97 129.97
+5 TABAC O -0.3365 0.3381 -0.4520 0.4324 128.401 132.4
+ba0 bσ0 ba1 bσ1 ba2 bσ1 D AIC
+(ALCOOL=I) (ALCOOL=M)
+6 ALCOOL -1.2993 0.3761 1.3793 0.5492 0.8685 0.5180 122.51 128.51
+1) Étude du Modèle 2
+(a) Explicitez le modèle 2 et faites-en une représentation graphique. Qu’en pensez-vous? Est-
+ce que le modèle retrouve bien la bonne classification pour les 3 premières personnes du
+tableau?
+(b) Calculez l’odds en fonction de l’âge. En déduire l’odds pour une personne de 80 ans.
+Qu’est-ce cela signifie?
+(c) Effectuez un test pour déterminer sia1 est significativement non nul. Effectuez le même
+test dans le modèle 3.
+2) Étude du Modèle 4
+(a) Explicitez le modèle 4. Est-ce que le modèle retrouve bien la bonne classification pour les
+3 premières personnes du tableau?
+(b) Calculez l’odds des hommes et l’odds des femmes. Interpréter.
+(c) Calculer le rapport de odds entre les hommes et les femmes.
+B- Régression logistique avec interactions
+Ci-dessous les résultats obtenus pour de régressions logistiques à deux variables explicatives
+présentant des interactions.
+ba0 bσ0 ba1 bσ1 ba2 bσ2 ba12 bσ12 D AIC
+7 X1 : SEXE -5.74134 3.77684 6.10816 3.94731 0.04663 0.03859 -0.05517 0.04055 123.60 131.6
+X2 : POIDS
+8 X1 : SEXE -1.0116 0.5839 1.1069 0.7293 -1.1856 1.2049 0.4794 1.3130 123.01 131.01
+X2 : TABAC
+1) Écrire un modèle avec une interaction dans les trois cas :
+(a) les deux variables explicatives sont quantitatives;
+(b) les deux variables explicatives sont binaires;
+3
+<<<PAGE>>>
+(c) une variable est quantitative et l’autre binaire.
+2) Étude des modèles 7 et 8
+(a) Ecrire le modèle 7.
+(b) Ecrire le modèle 8.
+(c) Peut-on considérer qu’il y a une interaction entre le tabac et le sexe?
+4

@@ -1,0 +1,291 @@
+Chap 3: Interpolation
+polynomiale
+Laboratoire AGM: Analyse, Modélisation et Géométrie
+
+<<<PAGE>>>
+2
+Interpolation Polynômiale
+Soit I un intervalle deIR,(x 0,······,x n)∈I n,n+1 points distincts, on
+veut déterminer un polynômeP∈IR n[X]tel queP(x i ) =f(x i )∀i
+Theorem
+∃!P∈IR n[X],∀0≤i≤n,P(x i ) =f(x i ).
+Démonstration.
+On considère
+φ:IR n[X]− →IRn+1
+,
+P− →(P(x0),···,P(x n)).
+On montre queφest linéaire etKerφ={0}.■
+2 / 12
+<<<PAGE>>>
+3
+Méthode directe
+On écritP(x) = Pn
+i=0 ai x i et les coefficients(ai )sont solution du
+système linéaire de Vandermonde : Soit
+
+
+1x 0 x 2
+0 ···x n
+0
+1x 1 x 2
+1 ···x n
+1
+... ... ... ... ...
+1x n x 2
+n ···x n
+n
+
+
+
+
+a0
+a1
+...
+an
+
+ =
+
+
+f(x 0)
+f(x 1)
+...
+f(x n)
+
+
+Les points sont distincts donc la matrice est inversible.
+3 / 12
+<<<PAGE>>>
+4
+Méthode de Lagrange
+On utilise la base de Lagrange deIRn[X]définie par
+Li (xj) =δ i,j∀0≤i≤n,∀0≤j≤n.
+On a
+Li (x) = Π n
+j=0,j̸=i
+(x−x j)
+(xj−x i )
+On montre facilement que(Li )n
+i=0 est une famille libre et génératice de
+IRn[X].
+Le polynôme d’interpolation est alors
+Pn(x) =
+nX
+i=0
+f(x i )Li (x).
+4 / 12
+<<<PAGE>>>
+5
+Méthode de Newton
+Definition
+On définit les divisions divisées par recurrence
+f[x i ] =f(x i )
+f[x 0,x 1,···,x N] = f[x 1,x 2,···,x N]−f[x 0,x 1,···,x N−1]
+xN−x 0
+On a
+P(x) =
+NX
+k=0
+f[x 0,···,x k]Πk−1
+j=0 (x−x j)
+5 / 12
+<<<PAGE>>>
+6
+Exemple de calcul a vec les 3
+méthodes du polynome d’interpolation
+On prendf(x) =e x,x 0 =−1,x 1 =0 etx 2 =1. Pour la méthode
+directe, on a 
+
+1−1−1
+1 0 0
+1 1 1
+
+
+
+
+a0
+a1
+a2
+
+ =
+
+
+e−1
+1
+e
+
+
+On a
+P(x) =1+sh(e)X+ (−1+ch(e))X 2.
+On calcule la base de Lagrange :L0(−1) =1,L 0(0) =0 etL 0(1) =0
+d’ouL 0(X) =CX(X−1)et avec la premiere condition on aC=1/2
+d’ouL 0(X) =X/2∗(X−1). De même,L 1(X) =1−X 2 et
+L2(X) =X/2∗(X+1). Ainsi
+P(X) =e −1X/2∗(X−1) +1−X 2 +eX/2∗(X+1)
+Pour la dernière méthode, on calculef[x0,x 1] = f[x 1]−f[x 0]
+x1−x0
+=1−e −1,
+f[x 1,x 2] = f[x 2]−f[x 1]
+x2−x1
+=e−1 etf[x 0,x 1,x 2] =ch(e)−1.
+6 / 12
+<<<PAGE>>>
+7
+Estimation de l’erreur
+d’interpolation
+On a si f très régulière :∃ζ∈Itel que∀x∈I
+|EN(x)|=|f(x)−P(x)|≤ |f (N+1)(ζ)|
+(N+1)! ΠN
+i=0 (x−x i )|
+demonstration : Soitx∈I, different desx i et on définit
+G(t) =E N(t)−Π N
+i=0 (t−x i ) EN(x)
+πN
+i=0 (x−x i
+.
+On voit queGs’annule enx i pouri=0,..,Net enx. DoncGs’annule
+au moinsN+2 fois. En utilsant le théorème de Rolle, on peut dire que
+G′ s’annuleN+1 fois. En reiterant on a l’existenceζ∈Itel que
+G N+1(ζ) =0.Il reste a calculer
+G (N+1)(t) =f (N+1)(t)−(N+1)! EN(x)
+ΠN
+i=0 (x−x i ).
+7 / 12
+<<<PAGE>>>
+8
+Méthode d’Hermite
+On veut déterminerPtel queP(x i ) =f(x i )etP ′(xi ) =f ′(xi )pour tout
+i.On a
+P(x) =
+NX
+i=0
+1X
+k=0
+f (k) Li,k (x)
+avec d p
+dx p Li,k (xj) =1 sii=jetk=pet 0 sinon.
+8 / 12
+<<<PAGE>>>
+9
+Exemple de Calcul d’erreur a vec
+Hermite
+Exercice (corrigé en TD) :
+On cherchePtel queP(0) =f(0),P(1) =f(1),P ′(0) =f ′(0)et
+P′(1) =f ′(1). Soit 0<h<1, on définitR(x) =f(x)−P(x),
+Π(x) =x 2(x−1) 2 etF(x) =R(x)π(h)−R(h)π(x).
+1 Montrer l’existence et l’unicité deP.
+2 Déterminer les racines deRetΠ.
+3 Montrer qu’il existeζtel queF (4)(ζ) =0.
+4 En deduire queR(h) = 1
+4! f (4)(ζ)π(h).
+5 Montrer que
+|f(x)−P(x)|≤ 1
+380||f (4)||∞.
+9 / 12
+<<<PAGE>>>
+10
+Méthode des splines cubiques
+Soientfune fonction régulière donnée, on cherches 3∈IR 3[X]telle que
+s(x i ) =f(x i )∀i=1,···,N+1 ets 3 a une dérivée seconde continue. On
+notes 3(xi ) =f i,M i =s (2)
+3 (xi ). Notons pars3,i−1 (x) =s 3(x)pour tout
+x∈[x i−1,x i ]. On sait ques(2)
+3,i−1 est linéaire
+s (2)
+3,i−1 (x) =M i−1
+xi−x
+hi
++M i
+x−x i−1
+hi
+avech i =x i−x i−1. En intégrant deux fois, on a
+s3,i−1 (x) =M i−1
+(xi−x) 3
+6hi
++M i
+(x−x i−1] )3
+6hi
++C i−1 (x−x i ) + ˜Ci−1.
+En utilisant les égalitéss3,i−1 (xi ) =f i ets 3,i−1 (xi−1 ) =f i−1, on a
+˜Ci−1 =f i−1−M i−1
+h2
+i
+6
+et
+Ci−1 = fi−f i−1
+hi
+− hi
+6 (Mi−M i−1 ).
+10 / 12
+<<<PAGE>>>
+11
+Méthode des splines cubiques
+On a∀i=1,···,N,∀x∈[x i−1−x i ]
+s3,i−1 =M i−1
+(xi−x) 3
+6hi
++M i
+(x−x i−1 )3
+6hi
++( fi−f i−1
+hi
+− hi
+6 (Mi−M i−1 ))(x−x i−1 ) +f i−1−M i−1
+h2
+i
+6 .
+Imposons que la dérivée première des3 est continue aux pointsxi. On
+doit écrire
+s′
+3(x +
+i ) =s′
+3,i (xi ) =s′
+3(x−
+i ) =s′
+3,i−1 (xi )∀i=1,N−1.
+Ainsi ayant déjà calculés′
+3,i−1, on a
+s′
+3(x−
+i ) = hi
+6 Mi−1 + hi
+3 Mi + fi−f i−1
+hi.
+De même, en calculants3,i, on a
+s′
+3(x +
+i ) =− hi+1
+3 Mi− hi+1
+6 Mi+1 + fi+1−f i
+hi+1
+.
+11 / 12
+<<<PAGE>>>
+12
+On aN−1 équations appelées équations des moments
+µi Mi−1 +2M i +λ i Mi+1 =d i∀i=1,N−1
+avec
+µi = hi
+hi +h i+1
+λi = hi+1
+hi +h i+1
+di = 6
+hi +h i+1
+( fi+1−f i
+hi+1
+− fi−f i−1
+hi
+).
+On aN+1 inconnuesM i par contre on aN−1 équations, donc on va
+rajouter par exemple deux équations qui seront des splines dites
+naturellesM 0 =M N =0
+Exemple :x 0 =0,x 1 =1,x 2 =2 etf(x 0) =0,f(x 1) =1 etf(x 2) =0.
+On a une seule équation des moments
+M0 +4M 1 +M 1 =−12.
+On trouve comme spline cubique
+s3,0(x) =− 1
+2 x 3 + 3
+2 x 2∀x∈[0,1],
+s3,1(x) =− 1
+2 (2−x) 3 + 3
+2 (2−x)∀x∈[1,2].
+12 / 12

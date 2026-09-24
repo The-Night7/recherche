@@ -1,0 +1,67 @@
+ING2-MI : S´ eries Temporelles
+TP5- Processus AR-MA
+March 21, 2024
+Tableau des propri´ et´ es
+ACF PACF
+AR(p) ρ(h) : d´ ecroissance exponentielle vers 0 (h→∞ ) r(h) = 0 si h>p
+MA(q) ρ(h) = 0 si h>q r(h) d´ ecroissance exponentielle vers 0
+• Ces propri´ et´ es servent ` a identiﬁer la nature des s´ eries temporelles. Sous R , on
+utilise les fonctions acf , pacf qui tracent, respectivement, les ˆρ(h) et ˆr(h) (les auto-
+corr´ elations empiriques et les auto-corr´ elations partielles empiriques).
+• Le logiciel trace en plus un niveau bleu horizontal en y =mα tel que pour tout h,
+P(|ˆρ(h)|≥ mα|ρ(h) = 0) =α
+(en g´ en´ eral, le niveauα est ﬁx´ e ` a 0, 05) (la situation est la mˆ eme pour les auto-
+corr´ elations partielles empiriques)
+Exercice 1.
+1. Calculer l’esp´ erance, la variance et la covariance du processus suivant et conclure sur
+sa stationnarit´ e.
+Xt =Xt−1 +ϵt o` uϵt ↪→ i.i.dN (0,σ 2
+ϵ )
+2. ´Etudier les conditions de stationnarit´ e et d’inversibilit´ e du processus :
+Xt =bϵt +cϵt−1, b,c ∈ R.
+Exercice 2. Soit ( ϵt) un bruit blanc (faible) et ( Xt) un processus stationnaire au second
+ordre, v´ eriﬁant la relation de r´ ecurrence
+Xt =−0.4Xt−1 + 0.12Xt−2 +ϵt. (1)
+(1) De quel mod` ele s’agit-il ? Quelle est sa moyenne ?
+(2) Montrer que ( ϵt) est l’innovation de ( Xt), et que la fonction d’autocorr´ elation de
+(Xt), not´ eeρ(·), v´ eriﬁe une relation de r´ ecurrence de la forme
+ρ(h) =aρ(h− 1) +bρ(h− 2), pour h≥ 2,
+o` ua et b sont des constantes ` a pr´ eciser.
+(3) Calculer la variance de (Xt) en fonction de celle (ϵt).
+(4) Montrer que
+ρ(h) = 2
+11[0.2]h + 9
+11[−0.6]h pour tout h≥ 0.
+1
+<<<PAGE>>>
+Exercice 3-Op´ erateur de diﬀ´ erence. Supposons que {Yt} soit stationnaire avec une
+fonction d’autocovariance γk.
+1. Montrez que Wt =∇Yt = Yt−Yt−1 est stationnaire. Donner son esp´ erance et sa
+fonction d’autocovariance
+2. On consid` ere le processusUt =∇2Yt. Donner sa forme explicit´ e et calculer sa moyenne.
+Ce processus est-il stationnaire ?
+Exercice 4. Si X etY sont d´ ependants mais Var(X) = Var(Y ), trouvez Cov(X +Y,X−Y ).
+Exercice 5.
+a) Soit{Xt} une s´ erie chronologique stationnaire de moyenne nulle eta,b, des constantes.
+SiYt =a +bt +st +Xt, o` ust est une composante de saisonnalit´ e de p´ eriode 12, d´ emontrer
+que
+∇∇12Yt = (1−B)(1−B12)Yt
+est stationnaire.
+b) Si Yt = (a +bt)st +Xt, o` ust est toujours une composante de saisonnalit´ e de p´ eriode 12,
+d´ emontrer que ∆2
+12Yt = (1−B12)2Yt est stationnaire.
+Exercice 6. Consid´ erer le processus ` a moyenne mobile{Xt} suivant :
+Xt =ϵt +θϵt−2, o` u{ϵt}↪→BBN (0, 1).
+a) Calculer les fonctions d’autocovariance et d’autocorr´ elation de ce processus.
+b) `A l’aide de la fonction arima.sim de R, simuler 300 observations du processus ci-dessus
+avecθ = 0.8. Calculer et tracer le corr´ elogramme du processus ainsi obtenu.
+c) R´ ep´ eter la partie b) avecθ =−0.8.
+d) Les corr´ elogrammes obtenus en b) et c) correspondent-ils ` a la fonction d’autocorr´ elation
+th´ eorique calcul´ ee en a) ?
+e) On remarquera que la s´ erie en b) ﬂuctue moins rapidement que celle en c). Expliquer
+cet ´ etat de fait ` a l’aide de la fonction d’autocorr´ elation.
+Exercice 7. Ajuster un MA (1) ` a
+Xt =−0.7Xt−1 +ϵt, s´ erieX1
+o` uϵt est un bruit blanc gaussien de variance 4, c’est-` a-dire un mod` ele incorrect. Eﬀectuer
+un test montrant que ce mod` ele ne convient pas.
+2

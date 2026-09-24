@@ -1,0 +1,624 @@
+2023/2024
+Semestre 2  Ing 1
+03/05/2024
+Équations Différentielles
+Examen
+◁ Consignes ⊿
+Durée : 120 mn
+▶ Les documents et les supports électroniques sont interdits.
+▶ L'épreuve est composée d'exercices indépendants.
+▶ Le barème est à titre indicatif.
+▶ La qualité de la rédaction et la rigueur des justications seront prises en compte dans la notation.
+◁ Sujet de l'épreuve ⊿
+Exercice 1
+Soit
+A =
+(−1 2
+4 1
+)
+.
+1. Déterminer le spectre et les espaces propres de la matrice A.
+2. Soit t∈ R. En déduire la valeur de la matrice etA.
+Considérons le système linéaire
+X′(t) = AX(t).
+avec la condition initiale : X(0) = X0 =
+(x0
+y0
+)
+3. Expliciter les coordonnées de la solutions maximale X(t), est-elle globale ?
+4. La solution de la question précédente est-elle bornée ?
+Réponse. 1. Le polynôme caractéristique χA de la matrice A est égal à
+∀λ∈ R, χA(λ) =
+⏐⏐⏐⏐
+λ + 1 −2
+−4 λ− 1
+⏐⏐⏐⏐ =λ2− 9 = (λ− 3)(λ + 3),
+de sorte que le spectre de cette matrice est
+σ(A) =
+{
+− 3, 3
+}
+.
+On calcule les espaces propre, on obtient :
+E3(A) = Vect
+{
+e1 :=
+(
+1
+2
+)}
+et E−3(A) = Vect
+{
+e2 :=
+(
+1
+−1
+)}
+.
+2. Soit t∈ R, et soit
+P =
+(1 1
+2 −1
+)
+.
+D'après la question 1., on a
+A =P
+(
+3 0
+0 −3
+)
+P−1,
+de sorte que
+etA = exp
+(
+P
+(3t 0
+0 −3t
+)
+P−1
+)
+=P exp
+(3t 0
+0 −3t
+)
+P−1 =P
+(e3t 0
+0 e−3t
+)
+P−1.
+On a :
+P−1 = 1
+det (P )
+(−1 −1
+−2 1
+)
+= 1
+3
+(1 1
+2 −1
+)
+,
+si bien que :
+etA = 1
+3
+(e3t + 2e−3t e3t−e−3t
+2e3t− 2e−3t 2e3t +e−3t
+)
+.
+1
+<<<PAGE>>>
+3. On rappelle que la résultante du système est la matrice etA, ainsi :
+X(t) = etAX0,
+on obtient :
+x(t) = 1
+3
+(
+e3t(x0 +y0) +e−3t(2x0−y0)
+)
+y(t) = 1
+3
+(
+e3t(2x0 + 2y0) +e−3t(−2x0 +y0)
+)
+.
+4. D'après la question 1., la matrice A possède une valeur propre 3 strictement positive. La solution
+n'est pas bornée.
+Exercice 2
+Soit ω >0 et f∈C 0(R, R). Considérons l'équation diérentielle
+x′′(t) +ω2x(t) = f (t).
+1.a. Écrire cette équation diérentielle sous la forme d'un système diérentiel du premier ordre.
+b. Soit (x0,x 1)∈ R2. En déduire que le problème de Cauchy
+{
+x′′(t) +ω2x(t) = f (t),
+x(0) = x0, et x′(0) = x1,
+possède une unique solution x∈C 2(R, R).
+2.a. Déterminer la résolvante du système du premier ordre associé à l'équation diérentielle homogène
+x′′(t) +ω2x(t) = 0.
+b. Déterminer la valeur de la solution x du problème de Cauchy précédent, et de sa dérivée x′, en fonction
+des nombres x0 et x1, et de la fonction f .
+3. Soit T = 2π/ω. Supposons que la fonction f est T -périodique. Montrer que si toute solution x de
+l'équation diérentielle est T -périodique alors :
+∫ T
+0
+f (s) sin(ωs)ds =
+∫ T
+0
+f (s) cos(ωs)ds = 0.
+Réponse. 1.a. Supposons que la fonction x est de classe C2 sur son intervalle de dénition I, on pose
+∀t∈I, X(t) =
+(x(t)
+x′(t)
+)
+.
+La fonction X est de classe C1 sur I, et si la fonction x est solution de l'équation diérentielle, alors
+X′(t) =
+(x′(t)
+x′′(t)
+)
+=
+( x′(t)
+f (t)−ω2x(t)
+)
+=AX(t) +B(t),
+où
+A =
+( 0 1
+−ω2 0
+)
+, et B(t) =
+( 0
+f (t)
+)
+.
+Réciproquement, si X = (X1,X 2)∈C 1(I, R2) est solution de ce système diérentiel, alors, les fonctions
+X1 et X2 satisfont
+∀t∈I, X′
+1(t) = X2(t), et X′
+2(t) =−ω2X1(t) +f (t).
+Par la première de ces formules, la fonction x = X1 est de classe C2 sur I, et par la seconde, elle
+satisfait
+x′′(t) +ω2x(t) = f (t).
+Cette équation diérentielle est donc bien équivalente au système diérentiel du premier ordre
+X′(t) = AX(t) +B(t).
+2
+<<<PAGE>>>
+1.b. D'après le théorème de CauchyLipschitz global, les équation diérentielle linéaire d'ordre 1 ad-
+mettent une unique solution globale. D'où l'existence et l'unicité de X ∈ C1(R, R2). Ceci car les
+fonctions anes sont globalement Lipschitziennes. La première coordonnée de X fournit une unique
+x∈C 2(R, R) solution globale de l'équation.
+2.a. D'après la question 1.a, le système du premier ordre associé à l'équation diérentielle homogène
+x′′(t) +ω2x(t) = 0,
+s'écrit
+X′(t) = AX(t).
+Comme la matrice A est à coecients constants, la résolvante R(t,s ) de ce système est donnée par la
+formule
+R(t,s ) = e(t−s)A,
+quels que soient les nombres (s,t )∈ R2.
+Pour calculer cette exponentielle, il y a deux méthodes.
+1. On remarque :
+A2 =−ω2Id2.
+d'où, pour tout k∈ N :
+A2k = (−1)kω2kId2 et A2k+1 = (−1)kω2kA
+et nalement en séparant termes pairs et impairs dans la série exponentielle :
+eτA =
+(∞∑
+k=0
+(−1)k (ωτ )2k
+2k!
+)
+Id2+
+(∞∑
+k=0
+(−1)k (ωτ )2k
+(2k + 1)!
+)
+A = cos(ωτ )Id2+ sin(ωτ )
+ω A =
+(
+cos(ωτ ) sin(ωτ )
+ω
+−ω sin(ωτ ) cos( ωτ )
+)
+2. Sinon, la réduction complexe... Le polynôme caractéristique de A est :
+∀λ∈ R, χA(λ) =
+⏐⏐⏐⏐
+λ −1
+ω2 λ
+⏐⏐⏐⏐ =λ2 +ω2 = (λ−iω)(λ +iω).
+Le spectre complexe est
+σ(A) =
+{
+−iω,iω
+}
+.
+et les espaces propres sont conjugués :
+Eiω(A) = Vect
+{
+e1 =
+(
+1
+iω
+)}
+et E−iω(A) = Vect
+{
+e2 =
+(
+1
+−iω
+)}
+.
+d'où :
+A =P
+(iω 0
+0 −iω
+)
+P−1,
+avec :
+P =
+( 1 1
+iω −iω
+)
+.
+Finalement :
+eτA = exp
+(
+P
+(iωτ 0
+0 −iωτ
+)
+P−1
+)
+=P
+(eiωτ 0
+0 e−iωτ
+)
+P−1,
+où
+P−1 = 1
+2iω
+(iω 1
+iω −1
+)
+,
+donc :
+eτA =
+(
+cos(ωτ ) sin(ωτ )
+ω
+−ω sin(ωτ ) cos( ωτ )
+)
+,
+Dans tous les cas :
+R(t,s ) =
+(
+cos(ω(t−s)) sin(ω(t−s))
+ω
+−ω sin(ω(t−s)) cos( ω(t−s))
+)
+.
+3
+<<<PAGE>>>
+2b. Par la méthode de variation de la constante (ou formule de Duhamel ), nous savons que l'unique
+solution X du problème de Cauchy
+{
+X′(t) = AX(t) +B(t),
+X(0) = (x0,x 1),
+s'écrit
+∀t∈ R, X(t) = R(t, 0)X(0) +
+∫ t
+0
+R(t,s )B(s)ds,
+soit
+X(t) = etAX(0) +
+∫ t
+0
+e(t−s)AB(s)ds.
+D'après la question 1.a, cette solution est égale à
+X(t) =
+(
+x(t)
+x′(t)
+)
+,
+où x est la solution du problème de Cauchy considéré, pour laquelle nous obtenons la forme suivante :
+∀t∈ R,
+{
+x(t) = x0 cos(ωt) +x1
+sin(ωt)
+ω +
+∫t
+0
+sin(ω(t−s))
+ω f (s)ds,
+x′(t) =−x0ω sin(ωt) +x1 cos(ωt) +
+∫t
+0 cos(ω(t−s))f (s)ds.
+3. Supposons que x est T -périodique, alors x′ est aussi T -périodique, et :
+x(T ) = x(0), et x′(T ) = x′(0).
+D'après les formules de la question 2.b, nous obtenons
+{
+x0 cos(ωT ) +x1
+sin(ωT )
+ω +
+∫T
+0
+sin(ω(T−s))
+ω f (s)ds =x0,
+−x0ω sin(ωT ) +x1 cos(ωT ) +
+∫T
+0 cos(ω(T−s))f (s)ds =x1.
+Sachant que T = 2π/ω, on a :
+cos(ωT ) = cos(2π) = 1, et sin(ωT ) = sin(2π) = 0,
+ainsi que, pour 0≤s≤T ,
+cos(ω(T−s)) = cos(2π−ωs) = cos(ωs), et sin(ω(T−s)) = sin(2π−ωs) =− sin(ωs).
+Finalement {
+x0− 1
+ω
+∫T
+0 sin(ωs)f (s)ds =x0,
+x1 +
+∫T
+0 cos(ωs)f (s)ds =x1,
+et enn : ∫ T
+0
+f (s) sin(ωs)ds =
+∫ T
+0
+f (s) cos(ωs)ds = 0.
+Exercice 3
+1. Soit a≥ 0. Montrer qu'il existe une unique solution locale Qa du problème de Cauchy
+
+
+
+Q′′
+a(x)−Qa(x) +Qa(x)5 = 0,
+Qa(0) = a,
+Q′
+a(0) = 0.
+Soit Ia l'intervalle de dénition de la solution Qa.
+2. Considérons la densité d'énergie
+∀x∈Ia, ea(x) = 1
+2Q′
+a(x)2− 1
+2Qa(x)2 + 1
+6Qa(x)6.
+Vérier que la fonction ea est constante sur l'intervalle Ia.
+4
+<<<PAGE>>>
+3. a. En déduire qu'il existe au plus une solution globale non triviale Qa∗ telle que
+Qa∗ (x)→ 0, et Q′
+a∗ (x)→ 0,
+lorsque x→ +∞.
+b. Montrer qu'elle correspond à a∗ = 3
+1
+4 et calculer alors ea∗ (x) pour tout x dans R.
+4. Montrer que cette solution Qa∗ doit vérier :
+∀x∈Ia∗, Qa∗ (x)> 0.
+(On pourra raisonner par l'absurde et supposer dans un premier temps qu'elle s'annule quelque part.)
+5. On veut montrer :
+∀x∈I∩ R∗
++, 0<Q a∗ (x)< 3
+1
+4,
+a. Soit :
+S :={x∈I,∀y∈]0,x [,Q′
+a∗ (y)< 0}⊂ I∩ R∗
++
+Montrer que S est non vide, on pose alors x∗ = Sup(S) .
+b. Montrer que si x∗∈I alors Q′
+a∗ (x∗) = Qa∗ (x∗) = 0 . En déduire le résultat.
+6. a. On pose y =
+√
+3/Q2
+a∗ , calculer y′.
+b. Trouver une solution de l'équation satisfaite par ea∗ (x) (trouvée à la question 3.b.).
+On rappelle que :
+(cosh(x)−1)′ = 1√
+x2− 1
+et cosh′(x) = sinh(x).
+c. Vérier que c'est la solution Qa∗ du problème de Cauchy initial.
+Réponse. 1.a. Pour Y (x) :=
+(Q(x)
+Q′(x)
+)
+, le problème de Cauchy est Y (0) =
+(a
+0
+)
+et Y′(x) = E(Y (x)) où
+E
+(y1
+y2
+)
+=
+( y2
+y1−y5
+1
+)
+. La fonction E est C1 sur R2 donc il y a une unique solution Qa.
+2. On sait que Qa est C1 donc Q′′
+a aussi, et donc Qa est C3 et ea est C2. On calcule e′
+a = 0 facilement.
+3.a.b. Supposons que cette solution globale Q :=Qa∗ existe, alors I :=Ia∗ = R, et pour tout x∈ R,
+e(x) = e(0) =− 1
+2a2
+∗ + 1
+6a6
+∗ =− 1
+2a∗
+(
+1− 1
+3a4
+∗
+)
+= lim
+x→+∞
+e(x) = 0
+donc a∗ = 0 ou a∗ = 3
+1
+4 . Par Cauchy-Lipschitz, la fonction nulle est celle qui est associée à a∗ = 0, et
+celle associée à a∗ = 3
+1
+4 est non nulle.
+4. Supposons qu'il existe x∈ I tel que Q(x) = 0 . Alors, comme e(x) = 0 , on a aussi Q′(x) = 0 . La
+fonction Q vérie le problème de Cauchy
+H′′−H +H 5 = 0, H (x) = 0,H′(x) = 0,
+et la fonction nulle aussi, donc par unicité (Cauchy-Lipschitz), Q = 0. Or on a supposé que Q n'était
+pas la fonction nulle. Donc Q ne change pas de signe, et de plus, Q(0) = a∗.
+5.a. Comme
+Q′′(0) = a∗(1−a4
+∗) =
+a4
+∗=3
+−2× 3
+1
+4 < 0
+et Q′(0) = 0 , il existe τ >0 tel que pour tout t∈]0,τ [, Q′(t)< 0. On a donc τ∈S, ainsi S⁄= ∅.
+5.b. Supposons que x∗∈ I. Alors Q′(x∗) = 0 (on peut le démontrer par l'absurde : si Q′(x∗) < 0, par
+continuité de Q′, il existe ε> 0 tel que Q′(x∗ +t)< 0 pour tout t∈ [0,ε ], donc x∗ +ε∈S et x∗ n'est
+pas le sup de S). De plus,
+0 = e(x∗) =− 1
+2Q(x∗)2(1− 1
+3Q(x∗)4).
+Comme Q(0) = 3
+1
+4 et 1− 1
+3Q(0)4 = 0 et la fonction x↦→ 1− 1
+3Q(x)4 est strictement croissante sur
+[0,x∗[ (car Q est strictement décroissante sur [0,x∗[) donc 1− 1
+3Q(x)4 > 0, donc sur [0,x∗[, Q(x) = 0 ,
+donc Q(x∗) = 0 . Par Cauchy-Lipschitz, Q = 0, ce qui est absurde. Donc x∗ /∈I.
+Comme, x∗ /∈I, on a x∈I∩ R∗
++, Q′(x)< 0 (car I est connexe).
+5
+<<<PAGE>>>
+6 Pour tout x∈I, e(x) = 0 donc
+Q′(x)2 =Q(x)2− 1
+3Q(x)6
+Comme Q(0) = 3
+1
+4 et pour tout x∈I∩ R∗
++, Q′(x)< 0 et Q(x)> 0, alors sur I∩ R∗
++, 0<Q (x)< 3
+1
+4
+et
+Q′(x) =−Q(x)
+√
+1− 1
+3Q(x)4.
+Par composition, y est bien dénie et de classe C1 sur I, avec ∀x∈I∩ R∗
++,
+y′(x) =− 2
+√
+3
+Q(x)3Q′(x) = 2
+√
+3
+Q(x)2
+√
+1− 1
+3Q(x)4 = 2
+√
+y(x)2− 1
+6b. Donc pour tout X∈]0,x [,
+∫ x
+X
+y′(s)√
+y(s)2− 1
+ds = 2(x−X) =
+∫ y(x)
+y(X)
+dy√
+y2− 1
+.
+(Comme l'intégrale
+∫ 2
+1
+dy√
+y2−1
+est bien convergente, dans la limite X→ 0, et y(0) = 1 ) on a,
+∫ y(x)
+1
+dy√
+y2− 1
+= 2x.
+On rappelle que sur ]1, +∞[, (cosh−1)′(x) = 1√
+x2−1 . Par le changement de variable y = cosh t,
+∫ cosh−1(y(x))
+0 dt = 2x donc cosh−1(y(x)) = 2x donc y(x) = cosh(2x) et
+Q(x) = 3
+1
+4
+√
+cosh(2x)
+.
+6c Vérions qu'il s'agit bien de la solution recherchée. Par composition, Q est bien dénie et C∞ sur R,
+avec Q(0) = 3
+1
+4 et Q(x)→ 0 quand x→±∞ . De plus, cosh′ = sinh,
+Q′(x) =−3
+1
+4
+sinh(2x)
+cosh(2x)
+3
+2
+donc Q′(0) = 0 et Q′(x)→ 0 quand x→±∞ . Enn,
+Q′′(x) =−2 3
+1
+4
+cosh(2x)
+1
+2
++ 31+ 1
+4
+sinh(2x)2
+cosh(2x)
+5
+2
+=−2Q(x) + 3Q(x)−Q(x)5
+et nalement Q′′−Q +Q5 = 0.
+Exercice 4
+Soit (x0,x 1)∈ R2, et le problème de Cauchy suivant :
+
+
+
+x′′(t) +et sin(x′(t)) + 2e−x(t)2
+=et2
+,
+x(0) = x0,
+x′(0) = x1,
+1. Écrire le système sous la forme :
+X′(t) = F (t,X (t)),
+avec F∈C (R× R2, R2) telle que pour tout t∈ R,X ∈ R2 :
+||F (t,X )||1≤||X||1 +f (t),
+où f est une fonction que l'on déterminera.
+2. En déduire que les solutions du problème de Cauchy sont globales.
+6
+<<<PAGE>>>
+Réponse. 1. Posant X(t) =
+(x(t)
+x′(t)
+)
+, c'est équivalent au problème de Cauchy où X(0) =
+(x0
+x1
+)
+et
+X′(t) = F (t,X (t)),
+F (t,x 1,x 2) =
+( x2
+et2
+−et sinx2 + 2e−x2
+1
+)
+De plus :
+||F (t,X )||1≤|x2| +et +et2
++ 2≤||X||1 +et +et2
++ 2
+2. L'équation diérentielle r′ = r +et +et2
++ 2 a une solution globale sur R (équation homogène plus
+solution particulière). Comme F est C1, le problème a une unique solution globale sur R, par le lemme
+de Gronwall.
+7

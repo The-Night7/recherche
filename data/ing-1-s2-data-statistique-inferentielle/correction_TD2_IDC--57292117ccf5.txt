@@ -1,0 +1,189 @@
+CY T ech  ING1-GM Statistiques Inférentielles
+TD2  Intervalles de Conance
+Correction Détaillée
+Statistiques Inférentielles  1 ère année Ingénieurs
+Rappels de cours  Intervalles de conance pour une loi gaussienne
+Soit (X1,...,X n) un échantillon i.i.d. de loi N (µ,σ 2). On note Xn = 1
+n
+PXi la moyenne
+empirique et S∗2
+n = 1
+n−1
+P(Xi−Xn)2 la variance empirique corrigée.
+Cas 1 : σ2 connue Z = Xn−µ
+σ/√n ∼N (0, 1)
+IC 1−α(µ) =
+
+¯xn±zα/2
+σ√n
+
+Cas 2 : σ2 inconnue T = Xn−µ
+S∗n/√n∼T (n− 1)
+IC 1−α(µ) =
+
+¯xn±tn−1,α/ 2
+s∗
+n√n
+
+IC pour σ2 ( µ inconnue) (n− 1)S∗2
+n
+σ2 ∼χ2(n− 1)
+IC 1−α(σ2) =
+"
+(n− 1)s∗2
+n
+χ2
+n−1,α/ 2
+; (n− 1)s∗2
+n
+χ2
+n−1, 1−α/2
+#
+T aille d'échantillon (pour une précision ε donnée, σ connue) :
+n≥
+zα/2σ
+ε
+2
+1 Exercice 1  Force de compression d'un ciment
+Données : n = 9, ¯x9 = 19.72 kg/cm 2, s∗2
+9 = 0.69, α = 10%.
+Question 1 : IC pour µ et σ2 ( σ2 inconnue)
+Méthode
+Les deux paramètres µ et σ2 sont inconnus. On utilise :
+ la loi de Student T (n− 1) pour µ,
+ la loi du χ2(n− 1) pour σ2.
+V aleurs critiques pour α = 10%, n− 1 = 8 degrés de liberté :
+t8, 0.05 = 1.860, χ 2
+8, 0.05 = 15.507, χ 2
+8, 0.95 = 2.733
+Intervalle de conance pour µ :
+On calcule d'abord s∗
+9 =
+√
+0.69≈ 0.831 et s∗
+9√n = 0.831
+3 ≈ 0.277.
+1
+<<<PAGE>>>
+CY T ech  ING1-GM Statistiques Inférentielles
+IC 0.90(µ) = [19.72± 1.860× 0.277] = [19.72± 0.515]
+Résultat
+IC 0.90(µ) = [19.205 ; 20.235] kg/cm 2
+Intervalle de conance pour σ2 :
+IC 0.90(σ2) =
+"
+(n− 1)s∗2
+9
+χ2
+8, 0.05
+; (n− 1)s∗2
+9
+χ2
+8, 0.95
+#
+=
+8× 0.69
+15.507 ; 8× 0.69
+2.733
+
+=
+ 5.52
+15.507 ; 5.52
+2.733
+
+Résultat
+IC 0.90(σ2) = [0.356 ; 2.020] (kg/cm 2)2
+Question 2 : IC pour µ avec σ2 = 0.69 connue
+Méthode
+σ2 est maintenant supposée connue. On utilise la loi normale standard N (0, 1).
+V aleur critique : z0.05 = 1.645.
+IC 0.90(µ) =
+"
+19.72± 1.645×
+√
+0.69
+3
+#
+= [19.72± 1.645× 0.277] = [19.72± 0.456]
+Résultat
+IC 0.90(µ) = [19.264 ; 20.176] kg/cm 2
+Comparaison :
+σ2 inconnue (Student) σ2 connue (normale)
+Demi-largeur ± 0.515 ± 0.456
+Intervalle [19.205 ; 20.235] [19 .264 ; 20.176]
+Remarque
+L'intervalle obtenu avec σ2 connue est plus étroit (±0.456 contre ±0.515). Cela s'explique
+par le fait que connaître σ2 réduit l'incertitude : la loi de Student possède des queues plus
+lourdes que la loi normale, ce qui élargit mécaniquement l'intervalle.
+2 Exercice 2  Poids des pièces de 2 ¿
+Données : σ = 10−1 = 0.1 g (connue), n = 100, ¯x100 = 8.55 g.
+2
+<<<PAGE>>>
+CY T ech  ING1-GM Statistiques Inférentielles
+Question 1 : IC à 99% pour µ
+Méthode
+La variance est connue, l'échantillon est grand : on utilise N (0, 1).
+V aleur critique : z0.005 = 2.576 (risque α = 1%, donc α/2 = 0.005).
+σ√n = 0.1√
+100 = 0.1
+10 = 0.01 g
+IC 0.99(µ) = [8.55± 2.576× 0.01] = [8.55± 0.02576]
+Résultat
+IC 0.99(µ) = [8.524 ; 8.576] grammes
+Le poids moyen d'une pièce de 2 ¿ a 99% de chance de se trouver dans cet intervalle.
+Question 2 : Taille d'échantillon pour une précision ε = 10 −2 g
+On souhaite que la demi-largeur de l'intervalle à 99% soit inférieure à ε = 0.01 g :
+zα/2
+σ√n <ε ⇐⇒ √n> zα/2σ
+ε ⇐⇒ n>
+zα/2σ
+ε
+2
+Application numérique :
+n>
+2.576× 0.1
+0.01
+2
+=
+0.2576
+0.01
+2
+= (25.76)2 = 663.6
+Résultat
+Il faut prélever au minimum n≥ 664 pièces pour obtenir une précision inférieure à 10−2
+gramme au niveau de conance 99%.
+Remarque
+La précision demandée ( 10−2 g) est exactement la demi-largeur obtenue en Q1 avec n = 100.
+On constate que pour diviser celle-ci par un facteur k, il faut multiplier la taille d'échantillon
+par k2.
+3 Exercice 3  Abonnés au journal Le Monde
+Données : n = 25, ¯x25 = 6.7 h/semaine, s∗
+25 = 5.8 h, niveau 1−α = 95%.
+Méthode
+σ est inconnue et estimée par s∗
+25. L'échantillon est de taille modérée ( n = 25). On suppose
+la population gaussienne et on utilise la loi de Student T (n− 1) =T (24).
+V aleur critique : Pour α = 5% et n− 1 = 24 degrés de liberté :
+t24, 0.025 = 2.064
+3
+<<<PAGE>>>
+CY T ech  ING1-GM Statistiques Inférentielles
+Calcul de la demi-largeur :
+t24, 0.025× s∗
+25√n = 2.064× 5.8√
+25 = 2.064× 5.8
+5 = 2.064× 1.16≈ 2.394
+Intervalle de conance :
+IC 0.95(µ) = [6.7± 2.394]
+Résultat
+IC 0.95(µ) = [4.306 ; 9.094] heures par semaine
+Le temps moyen hebdomadaire de consultation d'internet par les abonnés au Monde est estimé
+entre 4h18 et 9h06 avec un niveau de conance de 95%.
+Remarque
+L'intervalle est relativement large ( ≈ 4.8 heures d'amplitude) en raison :
+ de la petite taille d'échantillon ( n = 25), et
+ de la grande variabilité ( s∗
+25 = 5.8 h, soit presque autant que la moyenne).
+Un échantillon plus grand permettrait de réduire cet intervalle.
+Fin de la correction du TD2  Pour toute question ou précision complémentaire, n 'hésitez pas !
+4

@@ -1,0 +1,3156 @@
+ING1 – Mathématiques Appliquées
+Théorie des graphes – Notes de cours
+Maria Malek, Romain Dujol
+
+<<<PAGE>>>
+Table des matières
+1 Généralités 4
+1.1 Graphe non orienté . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.1.1 Déﬁnition et terminologie . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.1.2 Graphe simple . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.1.3 Matrice d’adjacence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.4 Sous-graphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.5 Isomorphisme de graphes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.6 Chaîne et cycle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.7 Degré . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2 Graphes particuliers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.2.1 Graphe planaire . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.2.2 Graphe complet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.2.3 Graphe connexe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+1.2.4 Graphe biparti . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+1.2.5 Graphe régulier . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.3 Type de données . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.3.1 Tableau /liste des arêtes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.3.2 Matrice d’adjacence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.3.3 Tableau de la liste des voisins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+1.4 Graphe valué . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2 Arbres 18
+2.1 Arbre . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.1.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.1.2 Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.1.3 Forêt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.1.4 Isthme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.1.5 Caractérisation d’un arbre . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.2 Arbre couvrant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.2 Caractérisations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.3 Lemmes d’échange . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.2.4 Arbre couvrant minimum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+Maria Malek, Romain Dujol 1
+<<<PAGE>>>
+3 Coloration de graphes 27
+3.1 Coloration d’un graphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+3.1.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+3.1.2 Recherche de coloration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+3.1.3 Calcul du nombre chromatique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+3.2 Polynôme chromatique d’un graphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+3.2.1 Contraction d’une arête d’un graphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+3.2.2 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+3.3 Colorations des arêtes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.4 Graphes extrêmaux . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+4 Tournées eulériennes et hamiltoniennes 34
+4.1 Chaînes et cycles eulériens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+4.1.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+4.1.2 Conditions d’existence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+4.1.3 Calcul de cycle eulérien . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+4.2 Cycles hamiltoniens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+4.2.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+4.2.2 Conditions d’existence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+4.2.3 Problème du voyageur de commerce ( PVC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+5 Graphes orientés 41
+5.1 Graphe orienté . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+5.1.1 Déﬁnition et terminologie de base . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+5.1.2 Graphe strict . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+5.1.3 Matrice d’adjacence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+5.1.4 Sous-graphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+5.1.5 Chemin et circuit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+5.1.6 Degré . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+5.1.7 Type de données . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+5.1.8 Graphe orienté valué . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+5.2 Arborescences . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+5.2.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+5.2.2 Terminologie . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+5.2.3 Caractérisations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+5.3 Parcours en profondeur d’abord . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+5.3.1 Cas d’une arborescence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+5.3.2 Cas général . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+5.3.3 Parcours en profondeur d’abord étendu . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+5.3.4 Tri topologique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+5.4 Recherche de chemin optimal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+5.4.1 Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+5.4.2 Classiﬁcation des types de recherche . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+Maria Malek, Romain Dujol 2
+<<<PAGE>>>
+6 Graphes bipartis et problèmes d’affectation 65
+6.1 Graphes bipartis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+6.1.1 Couplage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+6.1.2 Transversal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+6.1.3 Théorème de K ÖNIG . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+6.2 Problèmes d’affectation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+6.2.1 Modélisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+6.2.2 Méthode « hongroise » . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68
+6.3 Problèmes de planiﬁcation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+6.3.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+6.3.2 Modélisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+6.3.3 Ajout de la contrainte des salles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+6.3.4 Existence d’emploi du temps équilibré . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 70
+6.3.5 Application . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+7 Réseaux de transport 74
+7.1 Déﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+7.1.1 Réseau de transport . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+7.1.2 Flot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+7.1.3 Coupe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+7.2 Recherche de ﬂot maximal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76
+7.2.1 Flot et couplage d’un graphe biparti . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 77
+7.2.2 Théorème ﬂot-max /coupe-min . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 77
+7.2.3 Algorithme de F ORD -FULKERSON . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81
+Maria Malek, Romain Dujol 3
+<<<PAGE>>>
+Chapitre 1
+Généralités
+1.1 Graphe non orienté
+1.1.1 Déﬁnition et terminologie
+Déﬁnition 1.1 (Graphe non orienté).
+Un graphe non orienté est un triplet G = (V , E ,γ) où :
+— V est un ensemble ﬁni non vide : tout élément de V est appelé un sommet de G ;
+— E est un ensemble ﬁni (éventuellement vide) : tout élément de E est appelé une arête deG ;
+— γ est une application de E dans V 2.
+Pour tout e∈ E , les composantes deγ(e ) sont appelées les extrêmités de E .
+On peut représenter graphiquement un graphe non orienté de la manière suivante :
+— tout sommet est représenté soit par un point ou par cercle contenant le nom du sommet ;
+— toute arête est représentée par un trait reliant ses deux extrêmités.
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+est une représentation de G = ({v1, v2, v3, v4},{e1, e2, e3, e4, e5, e6},γ) avec : γ : E → V 2
+e1 7→ (v1, v2)
+e2 7→ (v2, v3)
+e3 7→ (v2, v3)
+e4 7→ (v2, v4)
+e5 7→ (v3, v4)
+e6 7→ (v4, v4)
+Maria Malek, Romain Dujol 4
+<<<PAGE>>>
+Déﬁnition 1.2 (Sommets adjacents). Soit G = (V , E ,γ) un graphe non orienté.
+On dit que v1∈ V et v2∈ V sont voisins ou adjacents si et seulement si il existe une arête e∈ E
+dont les extrêmités sont v1 et v2.
+Si v∈ V n’est adjacent à aucun autre sommet, il est ditisolé.
+Remarque. On dit aussi que l’arêtee relie v1 et v2.
+Déﬁnition 1.3 (Boucle). Soit G = (V , E ,γ) un graphe non orienté. Uneboucle est une arête dont les
+deux extrêmités sont égales, i.e.
+e est une boucle ⇐⇒∃ v∈ V ,γ(e ) = (v, v )
+Déﬁnition 1.4 (Arêtes multiples). Soit G = (V , E ,γ) un graphe non orienté.
+Deux arêtes deG sont dites multiples ou parallèles si et seulement si elles partagent les mêmes
+extrêmités.
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+— v1 et v2 sont adjacents ;
+— v1 et v3 ne sont pas adjacents ;
+— e6 est une boucle ;
+— e2 et e3 sont parallèles.
+1.1.2 Graphe simple
+Déﬁnition 1.5 (Graphe simple). Un graphe non orienté G = (V , E ,γ) est dit simple si et seulement
+si il n’a ni boucle, ni arêtes multiples.
+IMPORTANT . Dans un graphe simple, une arête peut être identiﬁée à ses extrêmités : on pourra alors
+noter v v′ l’arête d’extrêmitésv et v′.
+E sera alors identiﬁé à une partie de V 2 etγ sera omis.
+Déﬁnition 1.6 (Graphe sous-jacent). Soit G = (V , E ,γ) un graphe non orienté.
+Le graphe sous-jacent de G est le graphe non orienté simple G′ = (V , E′) tel que
+∀(v, v′), v v′∈ E′⇐⇒ (v⁄= v′) et∃e∈ E d’extrêmitésv et v′
+Remarque. Pour passer au graphe sous-jacent, il sufﬁt donc de supprimer les boucles et les arêtes mul-
+tiples (sauf une).
+Maria Malek, Romain Dujol 5
+<<<PAGE>>>
+Exemple. Le graphe sous-jacent de v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+est v1 v2
+v3
+v4 .
+1.1.3 Matrice d’adjacence
+Déﬁnition 1.7 (Matrice d’adjacence). Soit G = (V , E ,γ) un graphe non orienté. On noteV ={vi}1≤i≤n .
+La matrice d’adjacence deG est une matrice M carrée d’ordren = cardV telle que :
+∀(i , j )∈ J1, nK2 , Mi j est le nombre d’arêtes d’extrêmitésvi et v j
+Exemple. G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+a pour matrice
+M =
+
+
+0 1 0 0
+1 0 2 1
+0 2 0 1
+0 1 1 1
+
+
+Proposition 1.1 (Matrice d’adjacence).
+Soit G = (V , E ,γ) un graphe non orienté et M sa matrice d’adjacence. Alors :
+1. M est symétrique
+2. G simple⇔
+¤
+∀i ∈ J1, nK2 , Mi i = 0
+∀(i , j )∈ J1, nK2 , Mi j∈{ 0, 1}
+1.1.4 Sous-graphe
+Déﬁnition 1.8 (Sous-graphe). Soit G = (V , E ,γ) un graphe non orienté.
+Un sous-graphe de G est un graphe non orienté G′ = (V′, E′,γ′) tel que :
+— V′⊂ V ;
+— E′⊂ E etγ(E′)⊂ V′× V′.
+Un sous-graphe G′ = (V′, E′,γ′) est dit couvrant (ou partiel) si et seulement si V′ = V .
+Maria Malek, Romain Dujol 6
+<<<PAGE>>>
+Déﬁnition 1.9 (Sous-graphe engendré). Soit G = (V , E ,γ) un graphe non orienté.
+Soit V′ une partie de V . On appelle sous-graphe de G engendré par V′, noté GV′, le graphe
+GV′ = (V′, E′,γ′) tel que :
+e∈ E′⇐⇒γ(e )∈ V′× V′
+Soit E′ une partie de E . On appelle sous-graphe de G engendré par E′, noté G (E′), le graphe
+G (E′) = (V , E′,γ|E′).
+Exemple. Soit G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+G{v1,v2,v4} = v1 v2
+v4
+e1
+e4
+e6
+G{v1,v3} = v1
+v3
+G ({e1, e4, e6}) =
+v1 v2
+v3
+v4
+e1
+e4
+e6
+Déﬁnition 1.10 (Autres notions de sous-graphes engendrés). Soit G = (V , E ) un graphe non orienté.
+On déﬁnit les notations suivantes :
+G− V′ ≡ GV\V′
+G− E′ ≡ G (E\E′)
+G− v ≡ G−{ v}≡ GV\{v}
+G− e ≡ G−{ e}≡ G (E\{e})
+Si e /∈ E est une arête dont les extrêmités sont dans V , alors on note G + e≡ (V , E∪{ e}).
+Maria Malek, Romain Dujol 7
+<<<PAGE>>>
+1.1.5 Isomorphisme de graphes
+Déﬁnition 1.11 (Isomorphisme de graphes).
+Soit G1 = (V1, E1,γ1) et G2 = (V2, E2,γ2) deux graphes non orientés.
+Un isomorphisme de G1 dans G2 est un couple (φ,ψ) tel que :
+— φ est une bijection de V1 dans V2 ;
+— ψ est une bijection de E1 dans E2 ;
+— ∀e∈ E ,∀(v, v′)∈ V 2, v et v′ extrêmités de e ⇐⇒φ(v ) etφ(v′) extrêmités deψ(e )
+Déﬁnition 1.12 (Graphes isomorphes). Deux graphes non orientés G1 et G2 sont dits isomorphes
+si et seulement si il existe un isomorphisme de G1 sur G2.
+IMPORTANT . Lorsque deux graphes sont isomorphes, leurs structures sont identiques et seuls les noms
+des sommets et des arêtes diffèrent.
+Donc l’isomorphisme conserve la plupart des propriétés qui seront abordées dans ce cours.
+Remarque. L ’isomorphisme n’est pas forcément unique. . .
+Exemple. v1 v2
+v3
+v4
+et
+♣
+♦
+♥
+♠
+sont isomorphes via φ1 {v1, v2, v3, v4} → {♣,♦,♥,♠}
+v1 7→ ♣
+v2 7→ ♦
+v3 7→ ♥
+v4 7→ ♠
+ou φ2 {v1, v2, v3, v4} → {♣,♦,♥,♠}
+v1 7→ ♣
+v2 7→ ♦
+v3 7→ ♠
+v4 7→ ♥
+.
+1.1.6 Chaîne et cycle
+1.1.6.1 Chaîne
+Déﬁnition 1.13 (Chaîne). Soit G = (V , E ,γ) un graphe non orienté.
+Une chaîne de G est une suite ﬁnie C = (v0, e1, v1, . . . ,ei , vi , . . . ,ep , vp ) telle que :
+— ∀i∈ J0, p K , vi∈ V
+— ∀i∈ J1, p K , ei∈ E et ses extrêmités sont vi−1 et vi .
+L ’entierp est appelé la longueur de C et noté𝓁(C ). v0 et vp sont appelés les extrêmités de C .
+Remarque. Si G est simple, une chaîne peut être identiﬁée à la suite de ses sommets :
+C = (v0, v1, . . . ,vi , . . . ,vp )
+Maria Malek, Romain Dujol 8
+<<<PAGE>>>
+Déﬁnition 1.14 (Chaîne simple). Soit G = (V , E ,γ) un graphe non orienté.
+Une chaîneC = (v0, e1, v1, . . . ,ep , vp ) de G est dite simple si et seulement si les arêtes constituant
+C sont distinctes deux à deux :
+∀(i , j )∈ J1, p K2 , (i⁄= j ) =⇒ ei⁄= e j
+Déﬁnition 1.15 (Chaîne élémentaire). Soit G = (V , E ,γ) un graphe non orienté.
+Une chaîne C = (v0, e1, v1, . . . ,ep , vp ) de G est dite élémentaire si et seulement si les sommets
+constituant C sont distincts deux à deux :
+∀(i , j )∈ J0, p K2 , (i⁄= j ) =⇒ vi⁄= v j
+Proposition 1.2. Soit G = (V , E ,γ) un graphe non orienté.
+Toute chaîne élémentaire deG est une chaîne simple de G .
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+— La chaîne (v2, e2, v3, e5, v4, e4, v2, e2, v3) n’est pas simple (répétition de l’arête e2), donc pas élé-
+mentaire.
+— La chaîne (v1, e1, v2, e2, v3, e3, v2, e4, v4) est simple, mais pas élémentaire (répétition du sommet
+v2).
+— La chaîne (v1, e1, v2, e4, v4) est élémentaire, donc simple.
+Lemme (Existence de chaîne élémentaire). Soit G = (V , E ) un graphe non orienté et (v, v′)∈ V 2.
+Si v et v′ sont les extrêmités d’une chaîne deG , alors ils sont les extrêmités d’une chaîne élémen-
+taire de G .
+Démonstration. Soit C = (v0 = v, e1, v1, . . . ,ep , vp = v′) une chaîne reliant v et v′.
+— Si C est élémentaire, C′ = C convient.
+— Sinon il existe i< j tel que vi = v j . Alors C1 = (v0 = v, e1, v1, . . . ,ei , vi = v j , . . . ,e j +1, . . . ,en , vn = v′) a pour
+extrêmités v et v′ et𝓁(C1) =𝓁(C )− ( j− i )<𝓁 (C ).
+On repéte ce procédé jusqu’à ce que la chaîne obtenue soit élémentaire. La terminaison est assurée par :
+— la ﬁnitude de C ;
+— la stricte décroissance de la suite des longueurs des chaînes obtenues à chaque étape.
+1.1.6.2 Cycle
+Déﬁnition 1.16 (Cycle). Soit G = (V , E ,γ) un graphe non orienté.
+Un cycle de G est une chaîne simple C = (v0, e1, v1, . . . ,ep , vp ) telle que𝓁(C )> 0 et vp = v0.
+Maria Malek, Romain Dujol 9
+<<<PAGE>>>
+Remarque.
+— Un cycle de longueur un est tout simplement une boucle.
+— Un cycle peut être décrit par des suites distinctes (contrairement à une chaîne non cycle).
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+C = (v2, e2, v3, e5, v4, e4, v2) est un cycle aussi représenté par :
+— C = (v3, e5, v4, e4, v2, e2, v3)
+— C = (v4, e4, v2, e2, v3, e5, v4)
+1.1.7 Degré
+Déﬁnition 1.17 (Degré d’un sommet). Soit G = (V , E ,γ) un graphe non orienté et v∈ V .
+On appelle degré de v , noté d (v ), le réel d (v ) = card{e∈ E , v est une extrêmité de e}.
+IMPORTANT . Une boucle sur v compte double dans le calcul de d (v ).
+Proposition 1.3 (Sommet isolé). Soit G = (V , E ,γ) un graphe non orienté.
+Alors v∈ V est isolé si et seulement si d (v ) = 0.
+Théorème 1.1 (Lemme des poignées de main).
+Soit G = (V , E ,γ) un graphe non orienté. Alors
+∑
+v∈V
+d (v ) = 2 cardE .
+Corollaire. Soit G = (V , E ,γ) un graphe non orienté.
+Le nombre de sommets de degré impair d’un graphe est pair.
+Corollaire. Soit G = (V , E ) un graphe non orienté.
+On note n = cardV , m = card E ,δ = min
+v∈V
+d (v ) et ∆ = max
+v∈V
+d (v ). Alors
+nδ≤ 2m≤ n ∆
+Démonstration. ∀v∈ V ,δ≤ d (v )≤ ∆. Donc
+∑
+v∈V
+δ≤
+∑
+v∈V
+d (v )≤
+∑
+v∈V
+∆, i.e. nδ≤ 2m≤ n ∆.
+Exemple.
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+v v1 v2 v3 v4
+d (v ) 1 4 3 4
+Maria Malek, Romain Dujol 10
+<<<PAGE>>>
+— Vériﬁons le lemme des poignées de main :
+—
+∑
+v∈V
+d (v ) = 1 + 4 + 3 + 4 = 12
+— card E = 6
+— Il y a deux sommets de degré impair ( v1 et v3).
+— Comme δ = 1 et ∆ = 4, on a 4 = 4· 1≤ 2· 6≤ 4· 4 = 16.
+1.2 Graphes particuliers
+1.2.1 Graphe planaire
+Déﬁnition 1.18 (Graphe planaire). Un graphe non orienté planaire est un graphe dont les arêtes
+ne se chevauchent pas dans au moins une représentation graphique.
+Exemple.
+1
+3
+4
+2
+est planaire, car représentable en
+1
+2
+4
+3
+Proposition 1.4. Soit G1 et G2 deux graphes non orientés tel que G1 soit planaire.
+1. Tout sous-graphe de G1 est planaire.
+2. Si G1 et G2 sont isomorphes, alors G2 est planaire.
+1.2.2 Graphe complet
+Déﬁnition 1.19 (Graphe complet). Un graphe non orienté est dit complet si et seulement si il est
+simple et que tous les sommets sont adjacents deux à deux.
+Proposition 1.5 (Nombre d’arêtes d’un graphe complet).
+Soit G = (V , E ,γ) un graphe non orienté complet et n = cardV . Alors card E =
+
+n
+2
+
+= n (n− 1)
+2 .
+Corollaire. Soit G = (V , E ,γ) un graphe non orienté simple et n = cardV . Alors card E≤ n (n− 1)
+2 .
+Maria Malek, Romain Dujol 11
+<<<PAGE>>>
+Théorème 1.2 (Graphe complet Kn ). Soit n un entier naturel non nul.
+Alors tout graphe complet G = (V , E ,γ) tel que card V = n est isomorphe au graphe simple
+Kn = (J1, nK , En ,γn ) contenant toutes les arêtes :
+∀(v, v′)∈ J1, nK , v v′∈ En
+Exemple (Les premiers graphes complets).
+1
+K1
+1 2
+K2 (1 arête)
+1
+2
+3
+K3 (3 arêtes)
+1
+2
+3
+4
+≡
+1
+2
+3
+4
+K4 (6 arêtes)
+1 2
+3
+4 5
+K5 (10 arêtes)
+Proposition 1.6 (Graphes complets planaires).
+Soit n un entier naturel non nul. Alors Kn est planaire si et seulement si n≤ 4.
+1.2.3 Graphe connexe
+Déﬁnition 1.20 (Graphe connexe). Soit G = (V , E ,γ) un graphe non orienté.
+G est dit connexe si et seulement si pour tout couple (v, v′)∈ V 2, il existe une chaîne d’extrê-
+mités v et v′.
+Déﬁnition 1.21 (Composantes connexes). Soit G = (V , E ,γ) un graphe non orienté.
+Une composante connexe deG est un sous-graphe connexe maximal au sens de l’inclusion des
+sommets et des arêtes.
+Proposition 1.7.
+1. Un graphe est connexe si et seulement si il a une seule composante connexe : auquel cas, la com-
+posante connexe est le graphe lui-même.
+2. Les composantes connexes d’un graphe sont disjontes : elles n’ont ni sommet, ni arête en com-
+mun.
+Maria Malek, Romain Dujol 12
+<<<PAGE>>>
+Exemple. G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+est connexe.
+G = v1 v2
+v3
+v4
+e2
+e3
+e6
+a trois composantes connexes : G{v1}, G{v2,v3} et G{v4}.
+1.2.4 Graphe biparti
+Déﬁnition 1.22 (Graphe biparti). Soit G = (V , E ,γ) un graphe non orienté.
+G est dit biparti si et seulement si il existe une partition (V1, V2) de V telle que V1 et V2 soient
+non vides et :
+∀e∈ E , e a une extrêmité dans V1 et l’autre dansV2
+On note alors G = (V1, V2, E ,γ).
+Remarque. Un graphe biparti est souvent utilisé pour représenter des associations entre deux classes
+d’objets.
+Corollaire. Un graphe non orienté biparti n’a pas de boucle.
+Remarque. Mais un graphe non orienté biparti n’est pas toujours simple pour autant : il peut avoir des
+arêtes multiples.
+Proposition 1.8 (Matrice d’adjacence d’un graphe biparti).
+Soit G = (V , E ,γ) un graphe non orienté etM sa matrice d’adjacence. AlorsG est biparti si et seule-
+ment si
+∃(n1, n2)∈ N, n1 + n2 = n,∃B∈M n1,n2(R), M =
+
+0n1,n1 B
+tB 0n2,n2
+
+Déﬁnition 1.23 (Graphe biparti complet). Soit G = (V1, V2, E ,γ) un graphe non orienté biparti.
+G est dit complet si et seulement si il est simple et tout sommet deV1 est adjacent à tout sommet
+de V2.
+ATTENTION . Un graphe biparti complet n’est pas un graphe complet !
+Maria Malek, Romain Dujol 13
+<<<PAGE>>>
+Théorème 1.3 (Graphe biparti complet Kn1,n2). Soit n1 et n2 deux entiers naturels non nuls.
+Alors tout graphe biparti complet G = ( V1, V2, E ,γ) tel que card V1 = n1 et card V2 = n2 est
+isomorphe au graphe simple Kn1,n2 = (J1, n1K , Jn1 + 1, n1 + n2K , En1,n2,γn1,n2) contenant toutes les
+arêtes possibles pour un graphe biparti :
+∀(v1, v2)∈ V1× V2, v1v2∈ En1,n2
+Exemple. G =
+v1
+v2v3
+v4 v5
+= ({v1, v3, v4},{v2, v5}, E ,γ) est biparti.
+1 3
+42
+K2,2
+1
+3
+4
+5
+2
+K2,3
+1 4
+5
+6
+2
+3
+K3,3
+Proposition 1.9 (Graphes bipartis complets planaires) . Soit n1 et n2 deux entiers naturels non nuls.
+Alors Kn1,n2 si et seulement si min(n1, n2)≤ 2.
+Proposition 1.10 (Caractérisation des graphes bipartis). Soit G = (V , E ,γ) un graphe non orienté. Alors
+G est biparti si et seulement si tout cycle de G est de longueur paire.
+Démonstration.
+(⇒) Soit G = ( V1, V2, E ,γ) un graphe non orienté biparti. Suppposons par l’absurde qu’il existe un cycle
+C = (v0, . . . ,vp−1, ep , v0) de G tel que p =𝓁(C ) soit impair.
+— Si v0∈ V1, alors comme p− 1 est pair, il vient que vp−1∈ V1. Donc v0∈ V2, ce qui est impossible.
+— Si v0∈ V2, alors comme p− 1 est pair, il vient que vp−1∈ V2. Donc v0∈ V1, ce qui est impossible.
+(⇐) Soit C = (v0, e1, v1, . . . ,ep , vp ) une chaîne élémentaire de G dont les sommets sont alternativement mar-
+qués « 0 » et « 1 ». Tout cycle étant pair, on est assuré de ne pas marquer un sommet de deux manières
+différentes.
+On répète ce procédé sur le sous-graphe engendré par les sommets non marqués jusqu’à épuisement
+des sommets.
+Alors G = (V1, V2, E ) où V1 est alors l’ensemble des sommets marqués « 0 » etV2 l’ensemble des sommets
+marqués « 1 ».
+Maria Malek, Romain Dujol 14
+<<<PAGE>>>
+1.2.5 Graphe régulier
+Déﬁnition 1.24 (Graphe régulier). Soit k un entier naturel.
+Un graphe G = (V , E ,γ) est dit k -régulier si et seulement si tout sommet de G est de degré k :
+∀v∈ V , d (v ) = k .
+G est dit régulier si et seulement si il existe un entier naturel k tel que G est k -régulier.
+Proposition 1.11. Soit k un entier naturel.
+Si G = (V , E ,γ) est un graphe k -régulier, alors k· cardV = 2 cardE .
+Démonstration. C’est une conséquence directe du lemme des poignées de main.
+Exemple. Comme Kn est (n− 1)-régulier, on a (n− 1)· n = 2 cardE : donc card E = n (n− 1)
+2 .
+1.3 Type de données
+1.3.1 Tableau /liste des arêtes
+On implémente un graphe comme le tableau (ou la liste) des arêtes, chacune étant un couple de
+sommets (ses extrêmités).
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+La représentation est un tableau (ou une liste) t de longueur 6 :
+— t(1) = (v1, v2)
+— t(2) = (v2, v3)
+— t(3) = (v2, v3)
+— t(4) = (v2, v4)
+— t(5) = (v3, v4)
+— t(6) = (v4, v4)
+1.3.2 Matrice d’adjacence
+On implémente un tableau bi-dimensionnel contenant les valeurs de la matrice d’adjacence de la
+déﬁnition 1.7 page 6.
+Maria Malek, Romain Dujol 15
+<<<PAGE>>>
+1.3.3 Tableau de la liste des voisins
+On implémente un graphe comme le tableau des listes des sommets adjacents à chaque sommet.
+Exemple. v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+La représentation est un tableau t de longueur 4 :
+— t(1) = [2]
+— t(2) = [1, 3, 3, 4]
+— t(3) = [2, 2, 4]
+— t(4) = [2, 3, 4]
+1.4 Graphe valué
+Déﬁnition 1.25 (Graphe valué).
+Un graphe non orienté valué est un quadruplet G = (V , E ,γ, w ) où :
+— G = (V , E ,γ) est un graphe non orienté ;
+— w est une application de E dans R appelée valuation de G .
+Remarque. La valuation des arêtes est la valuation la plus communue. Il existe également une valuation
+des sommets.
+Déﬁnition 1.26 (Matrice d’adjacence). Soit G = (V , E ,γ, w ) un graphe non orienté valué simple.
+La matrice d’adjacence deG est une matrice M carrée d’ordren = cardV telle que :
+∀(i , j )∈ J1, nK2 , Mi j =
+
+
+
+0 si i = j
+w (vi v j ) si vi v j∈ E
++∞ si vi v j /∈ E
+Maria Malek, Romain Dujol 16
+<<<PAGE>>>
+Chapitre 1. Généralités — TD
+Exercice 1.1. Une entreprise compte cinq employés. Est-il possible que chacun d’entre eux serre la main
+à trois autres personnes exactement ?
+Exercice 1.2. Soit G un graphe non orienté.
+1. Soit v un sommet de G de degré impair . Montrer qu’il existe un sommet v′ de degré impair , distinct
+de v tel qu’il existe une chaîne entre v et v′.
+2. En déduire que, si G a exactement deux sommets de degré impair , alors il existe une chaîne entre
+ces deux sommets.
+Exercice 1.3. Soit n> 1 et G un graphe simple à n sommets.
+1. Justiﬁer rapidement que chaque sommet de G a un degré strictement inférieur à n.
+2. (a) Montrer G ne peut admettre un sommet de degré nul et un sommet de degré n − 1.
+(b) En déduire qu’il existe au moins deux sommets ayant même degré.
+3. Que dire l’afﬁrmation :
+« Parmi un ensemble d’au moins deux personnes, au moins deux ont le même nombre d’amis » ?
+Exercice 1.4. Soit G = (V , E ) un graphe simple.
+1. Montrer que, si card E> (cardV− 1)(cardV− 2)
+2 , alors G est connexe.
+2. Trouver un graphe simple G = (V , E ) non connexe tel que card E = (cardV− 1)(cardV− 2)
+2 .
+Exercice 1.5. Montrer que tout graphe biparti G = ( V1, V2, E ,γ) régulier avec au moins une arête est
+équilibré, i.e. cardV1 = cardV2.
+Exercice 1.6. Soit G = (V , E ,γ) un graphe non orienté. On note V ={v1, . . . ,vn} avec n = cardV .
+Soit M est la matrice d’adjacence de G . Montrer que :
+∀k∈ N∗,∀(i , j )∈ J1, nK2 , (M k )i j = card{chaînes d’extrêmités vi et v j de longueur k}
+Appliquer ce résultat sur l’exemple du cours lorsque k= 3 et (i , j ) = (2, 3).
+Maria Malek, Romain Dujol 17
+<<<PAGE>>>
+Chapitre 2
+Arbres
+2.1 Arbre
+2.1.1 Déﬁnition
+Déﬁnition 2.1 (Arbre). Un arbre est un graphe non orienté connexe et acyclique (i.e. sans cycle).
+Proposition 2.1.
+1. Tout arbre est un graphe simple
+2. Toute chaîne élémentaire est un arbre.
+Démonstration.
+1. Toute boucle est un cycle et deux arêtes multiples induisent un cycle.
+Donc un arbre ne peut contenir ces éléments : il est donc simple.
+2. Soit C = (v0, v1, . . . ,vp ) une chaîne élémentaire :
+— comme tous les sommets sont reliés, C est connexe ;
+— comme tous les sommets sont distincts, C est acyclique.
+Donc C est un arbre.
+Exemple.
+Maria Malek, Romain Dujol 18
+<<<PAGE>>>
+2.1.2 Structure
+Proposition 2.2 (Existence de sommets de degré un). Soit T = (V , E ,γ) un arbre tel que cardV≥ 2.
+Alors il existe au moins deux sommets de degré un.
+Démonstration. Soit C = (v0, v1, . . . ,vp ) une chaîne élémentaire de T maximale (au sens de la longueur).
+Supposons par l’absurde qued (v0)≥ 2. Alors il existe un somme v distinct de v tel que v0v∈ E .
+Soit C′ = (v, C ) = (v, v0, v1, . . . ,vp ) :
+— Si v∈{ vi}2≤i≤n , alors C′ contient un cycle de T , ce qui est impossible car T est acyclique.
+— Si v /∈{ vi}2≤i≤n , alors C′ est une chaîne élémentaire strictement plus long que C , ce qui est impossible
+par maximalité de C .
+Donc d (v0) = 1. On montre de manière identique que d (vp ) = 1.
+Théorème 2.1 (Nombre de sommets et d’arêtes dans un arbre). Soit T = (V , E ,γ) un arbre.
+Alors card E = cardV− 1.
+Démonstration. Montrons le résultat par récurrence sur n = cardV .
+— Si n = cardV = 1, alors comme T n’admet pas de boucle on a cardE = 0 = 1− 1.
+— Soit n∈ N tel que∀T = (V , E ) arbre, cardV = n⇒ card E = n− 1.
+Soit T = (V , E ) arbre à n + 1 sommets.
+Soit v un sommet de T de degré un (qui existe d’après la proposition 2.2) et e l’arête incidente en v .
+Alors G− v = (V\{v}, E\{e}) est un arbre et :
+— card (E\{e}) = card E− 1 ;
+— card (V\{v}) = n donc card(E\{e}) = n− 1 par hypothèse de récurrence.
+Donc card E− 1 = n− 1, puis card E = n = cardV− 1.
+Proposition 2.3 (Unicité de chaîne élémentaire). Soit T = (V , E ,γ) un arbre.
+Alors pour tout couple (v, v′)∈ V 2, il existe une unique chaîne élémentaire d’extrêmitésv et v′.
+Démonstration.
+— Comme G est connexe, l’existence de la chaîne élémentaire est assurée par le lemme page 9.
+— Supposons par l’absurde qu’il existe deux chaînes élémentaires distinctes d’extrémités v et v′.
+Alors elles induisent un cycle, ce qui est impossible.
+2.1.3 Forêt
+Déﬁnition 2.2 (Forêt). Une forêt est un graphe non orienté acyclique.
+Proposition 2.4 (Composantes connexes d’une forêt).
+Toute composante connexe d’une forêt est un arbre.
+Démonstration. Toute composante connexe est donc connexe et acyclique : c’est un arbre.
+Maria Malek, Romain Dujol 19
+<<<PAGE>>>
+Proposition 2.5 (Nombre de sommets et d’arêtes dans une forêt). Soit G = (V , E ,γ) une forêt.
+Alors card E≤ cardV− 1.
+Démonstration. On note T1, . . . ,Tp les composantes connexes de G .
+Pour tout i∈ J1, p K, Ti = (Vi , Ei ) est un arbre : donc cardEi = cardVi− 1. D’où
+card E =
+p∑
+i =1
+card Ei =
+p∑
+i =1
+(cardVi− 1) =
+p∑
+i =1
+cardVi− p = cardV− p≤ cardV− 1
+2.1.4 Isthme
+Déﬁnition 2.3 (Isthme). Soit G = (V , E ,γ) un graphe non orienté.
+Un isthme de G est une arête e telle G− e ait une composante connexe de plus que G .
+Proposition 2.6. Soit G = (V , E ,γ) un graphe non orienté et e∈ E .
+Alors e est un isthme de G si et seulement si ses extrémités ne sont reliés par aucune chaîne de
+G− e .
+Proposition 2.7 (Arbre et isthmes). Toute arête d’un arbre est un isthme.
+Lemme. Soit G = (V , E ,γ) un graphe non orienté et e∈ E .
+e est un isthme de G si et seulement si elle n’appartient à aucun cycle deG
+Démonstration. Quitte à considérer les composantes connexes deG , on peut se ramener au cas oùG est connexe.
+On raisonne par contraposition pour les deux implications.
+(⇒) Soit e∈ C = (v0, e , v1, e2, . . . ,ep , v0) cycle de G .
+Soit (v, v′)∈ V 2 et D = (u0 = v, f1, u1, . . . ,e𝓁, u𝓁 = v′) :
+— si e /∈ D , alors D est une chaîne de G− e ;
+— si e∈ D , alors il existe i∈ J1,𝓁K tel que e = fi : donc D′ = (u0 = v, f1, u1, . . . ,ui−1, C− e , ui , . . . ,u𝓁 = v′)
+est une chaîne de G− e .
+Donc G− e reste connexe et e n’est pas un isthme.
+(⇐) Soit e∈ E une arête d’extrêmitésv et v′ qui n’est pas un isthme. Alors il existe une chaîne élémentaire
+C de G− e d’extrêmitésv et v′ et C + e est un cycle de G contenant e .
+2.1.5 Caractérisation d’un arbre
+Théorème 2.2 (Caractérisations d’un arbre). Soit G = (V , E ,γ) un graphe non orienté.
+Les propositions suivantes sont équivalentes.
+1. G est un arbre.
+2. G est connexe et card E = cardV− 1.
+3. G est acyclique et card E = cardV− 1.
+4. G est connexe et toute arête est un isthme.
+5. Pour tout couple (v, v′)∈ V 2, il existe une unique chaîne élémentaire d’extrêmitésv et v′.
+Maria Malek, Romain Dujol 20
+<<<PAGE>>>
+2.2 Arbre couvrant
+2.2.1 Déﬁnition
+Déﬁnition 2.4 (Arbre couvrant). Soit G = (V , E ,γ) un graphe non orienté.
+Un sous-graphe T est un arbre couvant de G si et seulement si T est un arbre et un graphe
+couvrant de G .
+Proposition 2.8 (Existence d’arbre couvrant).
+Tout graphe ﬁni connexe admet au moins un arbre couvrant.
+Démonstration. Soit G = (V , E ,γ) un graphe non orienté ﬁni.
+Tant qu’il reste des arètes qui ne sont pas isthmes, on en supprime une : la terminaison de ce processs est
+assurée par la ﬁnitude de E .
+Le graphe ainsi obtenu est couvrant et ne contient que des isthmes : donc c’est un arbre.
+Corollaire. Soit G = (V , E ,γ) un graphe non orienté connexe ﬁni. Alors card E≥ cardV− 1.
+Démonstration. Soit T = (V , F,γ|F ) un arbre couvrant de G : alors card F = cardV− 1.
+Comme cardF⊂ card E , card E≥ card F = cardV = 1.
+Exemple. G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+v1 v2
+v3
+v4
+e1
+e2
+e4
+et
+v1 v2
+v3
+v4
+e1 e3 e5
+sont des arbres couvrants de G .
+2.2.2 Caractérisations
+Proposition 2.9. Soit G = (V , E ,γ) un graphe connexe et G′ un graphe partiel de G .
+Alors G′ est un arbre couvrant deG si et seulement si il est le plus petit graphe connexe (au sens de
+la suppression des arêtes).
+Démonstration.
+(⇒) Toute arête deG′ est un isthme, donc supprimer une arête fait perdre la connexité.
+(⇐) Pour toute arête e , G′− e n’est pas connexe : donce est un isthme de G′. Donc aucune arête de G n’est
+contenue dans un cycle : G est acyclique. Comme G′ est connexe, c’est donc un arbre.
+Maria Malek, Romain Dujol 21
+<<<PAGE>>>
+Proposition 2.10. Soit G = (V , E ) un graphe connexe et G′ un graphe partiel de G .
+Alors G′ est un arbre couvrant de G si et seulement si il est le plus grand graphe acyclique (au sens
+de l’ajout des arêtes).
+Démonstration. On note G′ = (V , F,γ|F ).
+(⇒) Soit e∈ E\F , alors les extrêmités de e sont reliées par une chaîne C de G′ et C + e est un cycle de G .
+(⇐) Soit (v, v′)∈ V 2 et C une chaîne de G d’extrémitésv et v′.
+Pour toute arête e ∈ E\E′ de C , G′ + e est un cycle par maximalité, donc e n’est pas un isthme : on
+substitue e dans C par une chaîne de G′ reliant les extrêmités de e . La chaîne obtenue après toutes les
+substitutions est une chaîne de G′.
+Donc tout couple de sommets est relié par une chaîne de G′ : G est connexe. Comme G′ est acyclique,
+c’est donc un arbre.
+2.2.3 Lemmes d’échange
+Proposition 2.11. Soit G = (V , E ,γ) un graphe non orienté et T = (V , F,γ|F ) un arbre couvrant de G .
+Alors pour toute arête e∈ E\F, T + e contient un unique cycle élémentaire.
+Démonstration.
+(Existence) Comme T est couvrant, il est maximal au sens de l’ajout d’arête etT + e contient un cycle, et donc
+un cycle élémentaire.
+(Unicité) Soit C et C′ deux cycles élémentaires de T + e . Alors C− e et C′− e chaînes élémentaires reliant les
+extrêmités de e . Comme T est un arbre, on a C− e = C′− e , puis C = C′.
+Théorème 2.3 (Lemme de l’échange).
+Soit G = (V , E ,γ) un graphe non orienté et T = (V , F,γ|F ) un arbre couvrant de G .
+Pour toute arête e ∈ E\F et pour toute arête f de l’unique cycle élémentaire de T + e ,
+(T + e )− f est un arbre couvrant de G .
+Démonstration. Soit e∈ E\F et f une arête de T + e . Comme f appartient à un cycle, f n’est pas un isthme :
+donc (T + e )− f est connexe. De plus, T = (V , F′) avec cardF′ = card F = cardV− 1 : (T + e )− f est un arbre.
+Exemple. G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+T = v1 v2
+v3
+v4
+e1
+e2
+e4
+Avec e = e5 et f = e4,
+(T + e )− f = v1 v2
+v3
+v4
+e1
+e2
+e5
+est un arbre couvrant de G .
+Maria Malek, Romain Dujol 22
+<<<PAGE>>>
+Théorème 2.4 (Lemme de l’échange fort).
+Soit G = (V , E ,γ) un graphe non orienté, T = (V , F,γ|F ) et T′ = (V , F′,γ|F′) deux arbres cou-
+vrants de G .
+Pour toute arête e∈ F′\F , il existe une arête f∈ F\F′ telle que (T + e )− f et (T′ + f )− e sont
+des arbres couvrants de G .
+Exemple. G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+T = v1 v2
+v3
+v4
+e1
+e2
+e4
+T′ = v1 v2
+v3
+v4
+e1 e3 e5
+Si e = e5, alors f = e4 convient (mais pas f = e2) :
+(T + e )− f = v1 v2
+v3
+v4
+e1
+e2
+e5
+(T′ + f )− e = v1 v2
+v3
+v4
+e1 e3
+e4
+Déﬁnition 2.5 (Arbres couvrants voisins).
+Soit G = (V , E ,γ) un graphe non orienté,T = (V , F,γ|F ) et T′ = (V , F′,γ|F′) deux arbres couvrants
+de G .
+T et T′ sont dits voisins si et seulement si il existe une arête e∈ F′\F et une arête f ∈ F\F′
+telles que T′ = (T + e )− f et T = (T′ + f )− e .
+Exemple. Dans l’exemple,T et T′ sont donc voisins.
+Maria Malek, Romain Dujol 23
+<<<PAGE>>>
+2.2.4 Arbre couvrant minimum
+Déﬁnition 2.6 (Valeur d’un arbre couvrant).
+Soit G = (V , E ,γ, w ) un graphe non orienté valué et T = (V , E′,γ|E′) un arbre couvrant de G .
+On appele la valeur de T , notée w (T ) le réel déﬁni par w (T ) =
+∑
+e∈E′
+w (e ).
+Déﬁnition 2.7 (Arbre couvrant minimum). Soit G = (V , E , w ) un graphe valué simple et connexe.
+Un arbre couvrant minimum de G est un arbre couvrant de G dont la valeur est minimale
+parmi tous les arbres couvrants de G .
+Remarque. Un arbre couvrant minimum n’est pas toujours unique.
+Exemple. G = Paris
+Strasbourg
+Lille
+Brest
+Bordeaux
+Perpignan
+Nice
+490
+222
+596
+583
+857 932
+804
+522
+725
+623
+451
+476
+Un arbre couvrant minium de G est Paris
+Strasbourg
+Lille
+Brest
+Bordeaux
+Perpignan
+Nice
+490
+222
+596
+583
+451
+476
+Recherche d’arbre couvrant minimum
+Une première solution peut consister en une recherche exhaustive, c’est-à-dire :
+— recenser tous les arbres couvrants ;
+— pour chacun d’entre eux, calculer sa valeur ;
+— en choisir un parmi ceux qui ont la valeur la plus faible.
+Cette solution a une complexité exponentielle : elle est donc inutilisable en pratique car trop coûteuse.
+Maria Malek, Romain Dujol 24
+<<<PAGE>>>
+Une autre solution consiste en l’application d’un algorithme de type « glouton » : l’algorithme de
+KRUSKAL .
+1. On initialise le graphe couvrant avec aucune arête.
+2. Soit e l’arête non encore testée de plus faible valuation : sie n’induit pas un cycle, on l’ajoute au
+graphe couvrant en cours.
+D’après le théorème 2.2 page 20, il sufﬁt d’ajouter cardV− 1 arêtes.
+préconditions : G = (V , E ,γ, w ) graphe valué simple et connexe
+postconditions : G (F ) est un arbre couvrant minimal de G
+E c← E
+F←;
+tant que card F< cardV− 1 faire
+e est choisi dans argmin{w (e ), e∈ E c}
+E c← E c\{e}
+si G (F∪{ e}) est acyclique alors
+F← F∪{ e}
+ﬁn si
+ﬁn tant que
+Algorithme 1: Algorithme de KRUSKAL
+Théorème 2.5 (Terminaison et complexité de l’algorithme de KRUSKAL ).
+L ’algorithme de KRUSKAL converge vers un arbre couvrant minimum.
+Sa complexité est O
+ 
+card E· log(cardV )
+
+.
+Exemple. On reprend l’exemple page précédente.
+Initialisation F =;
+Itération no 1 e = Paris – Lille⇒ F = F∪{ e}
+Itération no 2 e = Bordeaux – Perpignan⇒ F = F∪{ e}
+Itération no 3 e = Perpignan – Nice⇒ F = F∪{ e}
+Itération no 4 e = Paris – Strasbourg⇒ F = F∪{ e}
+Itération no 5 e = Lille – Strasbourg⇒ F inchangé
+Itération no 6 e = Paris – Bordeaux⇒ F = F∪{ e}
+Itération no 7 e = Paris – Brest⇒ F = F∪{ e}
+Terminaison card F = 6 = cardV− 1⇒ STOP
+Maria Malek, Romain Dujol 25
+<<<PAGE>>>
+Chapitre 2. Arbres — TD
+Exercice 2.1. Déterminer tous les arbres à six sommets.
+[ Indication : Il y en a six, à isomorphisme près.]
+Exercice 2.2. Soit T = (V , E ) un arbre et ∆ = max{d (v ), v∈ V}.
+Montrer que T admet au moins ∆ sommets de degré un.
+Exercice 2.3. Démontrer le théorème 2.2 page 20 (Caractérisations d’un arbre).
+Exercice 2.4. Soit G un graphe connexe.
+1. Montrer que e est un isthme de G si et seulement si elle appartient à tout arbre couvrant de G .
+2. Montrer que e est une boucle de G si et seulement si elle n’appartient à aucun arbre couvrant de G .
+Exercice 2.5. Démontrer le théorème 2.4 page 23 (lemme de l’échange fort).
+Exercice 2.6. Soit G = (V , E ,γ, w ) un graphe non orienté valué.
+1. Soit T un arbre couvrant de G tel que w (T )≤ w (T′) pour tout arbre couvrant T′ de G voisin de T .
+Montrer que T est un arbre couvrant minimum de G .
+2. En déduire que l’algorithme de KRUSKAL converge toujours vers un arbre couvrant minimum.
+Maria Malek, Romain Dujol 26
+<<<PAGE>>>
+Chapitre 3
+Coloration de graphes
+3.1 Coloration d’un graphe
+3.1.1 Déﬁnition
+Déﬁnition 3.1 (Coloration. Coloration propre).
+Soit G = (V , E ,γ) un graphe non orienté etC un ensemble.
+Une coloration (des sommets) deG est une applicationc de V dansC :C est appelé l’ensemble
+des couleurs de c .
+Une coloration c de G est dite propre si et seulement si
+∀(v, v′)∈ V 2, v et v′ adjacents⇒ c (v )⁄= c (v′)
+Déﬁnition 3.2 (k -coloration. Graphe k -colorable).
+Soit G = (V , E ,γ) un graphe non orienté et k un entier non nul.
+Une k -coloration de G est une coloration c de G telle que card c (V ) = k .
+G est dit k -colorable si et seulement si il existe une k -coloration propre de G .
+Déﬁnition 3.3 (Nombre chromatique). Soit G = (V , E ,γ) un graphe non orienté.
+Le nombre chromatique de G , notéχ(G ), est l’entier déﬁni par :
+χ(G ) = min{card c (V ), c coloration propre de G}
+Déﬁnition 3.4 (Coloration optimale). Soit G = (V , E ,γ) un graphe non orienté.
+Une coloration propre c de G optimale est uneχ(G )-coloration propre de G .
+Maria Malek, Romain Dujol 27
+<<<PAGE>>>
+Remarque. La coloration des sommets d’un graphe permet de modéliser des relations de type incom-
+patibilité entre éléments.
+Exemple. Soit G un graphe dont les sommets représentent des produits chimiques. Deux sommets
+sont adjacents si et seulement si les produits chimiques correspondants ne peuvent être transportés
+ensemble dans un camion (car trop volatiles).
+A
+B
+E
+F
+H
+C
+G D
+Alors une coloration propre modélise les sous-ensembles de produits transportables ensemble et le
+nombre chromatique est le nombre minimal de camions nécessaires pour effectuer le transport si-
+multané de tous les produits chimiques.
+A
+B
+E
+F
+H
+C
+G D
+Ainsi une répartition est possible avec quatre camions, l’un transportant A tout seul, un autre B , D et
+H , un autre C , E et G et un dernier F tout seul.
+3.1.2 Recherche de coloration
+Une première solution peut consister en une recherche exhaustive, c’est-à-dire :
+— recenser toutes les colorations propres ;
+— en choisir une parmi celles avec le plus faible nombre de couleurs.
+Cette solution a une complexité exponentielle : elle est donc inutilisable en pratique car trop coûteuse.
+Une autre solution consiste en l’application d’un algorithme de type « glouton » : l’algorithme de
+WELSH et POWELL .
+Tant qu’il reste des sommets non coloriés,
+1. colorer un sommet non coloré de plus haut degré avec une nouvelle couleur ;
+2. colorer itérativement, par degré décroissant, tous les sommets non colorés possibles en conser-
+vant une coloration propre.
+ATTENTION . La convergence vers une coloration optimale n’est pas assurée.
+Maria Malek, Romain Dujol 28
+<<<PAGE>>>
+Exemple. On reprend l’exemple page précédente et on trie les sommets par degré décroissant :
+v E A B H D F G C
+d (v ) 5 4 3 2
+L ’application de l’algorithme de WELSH et POWELL donne la coloration suivante.
+— Couleur n o 1 : E , G puis C
+— Couleur n o 2 : A puis D
+— Couleur n o 3 : B puis H
+— Couleur n o 4 : F
+A
+B
+E
+F
+H
+C
+G D
+3.1.3 Calcul du nombre chromatique
+Proposition 3.1 (Majorant du nombre chromatique).
+Soit G = (V , E ,γ) un graphe non orienté ﬁni et ∆ = max{d (v ), v∈ V}. Alorsχ(G )≤ ∆ + 1.
+Démonstration. Soit v le dernier sommet coloré par l’algorithme glouton. Alorsv est adjacent à toutes les cou-
+leurs précédentes (il y en a au plus d (v )). Doncχ(G )≤ d (v ) +1≤ ∆ + 1
+Théorème 3.1 (Théorème des quatre couleurs, 1976).
+Soit G = (V , E ,γ) un graphe non orienté ﬁni planaire. Alorsχ(G )≤ 4.
+Proposition 3.2 (Nombre chromatique d’un graphe complet). Soit n∈ N∗. Alorsχ(Kn ) = n
+Démonstration.
+— Comme ∆ = n− 1, il vient queχ(Kn )≤ (n− 1) +1 = n.
+— Comme tous les sommets voisins deux à deux, il faut au moins n couleurs, i.e.χ(Kn )≥ n
+On en conclut queχ(Kn ) = n.
+Proposition 3.3 (Croissance du nombre chromatique).
+Soit G = (V , E ,γ) un graphe non orienté et G′ est un sous-graphe de G . Alorsχ(G′)≤χ(G ).
+Corollaire (Minoration du nombre chromatique). Soit G = (V , E ,γ) un graphe non orienté.
+Si G contient un sous-graphe complet à p sommets, alorsχ(G )≥ p .
+Démonstration. Comme Kp est un sous-graphe de G ,χ(G )≥χ(Kp ) = p .
+Maria Malek, Romain Dujol 29
+<<<PAGE>>>
+3.2 Polynôme chromatique d’un graphe
+3.2.1 Contraction d’une arête d’un graphe
+Déﬁnition 3.5 (Contraction d’une arête).
+Soit G = (V , E ,γ) un graphe non orienté et e∈ E une arête d’extrêmitésv et v′.
+On déﬁnit le graphe G .e = (V′, E′) issue de la contraction de e avec :
+— V′ = V\{v1, v2}∪{ v∗}
+— E′ = E\{f∈ E , v1 ou v2 extrêmité de}∪{ v v∗, v∈ V adjacent à v1 ou v2}
+Remarque. Autrement dit :
+— on remplace les extrêmités v et v′ de E par un sommet commun v∗ ;
+— on remplace les arêtes d’extrêmité v1 ou v2 par des arêtes d’extrêmitév∗.
+Exemple. Si G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+alors G .e2 = v1 v∗ v4
+3.2.2 Déﬁnition
+Théorème 3.2 (Polynôme chromatique). Soit G = (V , E ,γ) un graphe non orienté ﬁni simple.
+Alors il existe un unique polynômeP , appelépolynôme chromatique deG , à coefﬁcients en-
+tiers, de degré cardV tel que pour toutk∈ N∗, P (k ) est le nombre dek -colorations propres deG .
+Démonstration. On raisonne par récurrence forte sur la taille de G , i.e. t (G ) = cardV + card E .
+• Si card E = 0, alors chaque sommet peut être coloré avec n’importe quelle couleur, et ce de manière
+indépendante. Donc P (k ) = k cardV pour tout k∈ J1, cardV K et P = X cardV
+• Si cardE> 0, alors il existe une arête e∈ E :
+— comme le graphe G− e a une arête de moins que G , on a t (G− e )< t (G ) : donc G− e admet un
+polynôme chromatique Q par hypothèse de récurrence ;
+— comme le graphe G .e a au moins un sommet de moins que G , on a t (G .e )< t (G ) : donc G .e admet
+un polynôme chromatique R par hypothèse de récurrence.
+Soit k ∈ J1, cardV K. Alors le nombre de k -colorations de G est le nombre de k -colorations de G− e
+qui ne colorent pas les extrêmités de e de la même couleur. Comme toute coloration de ce type est une
+coloration de G .e , on en conclut que P (k ) = Q (k )− R (k ) puis que P = Q− R .
+Exemple. Le polynôme chromatique de est X (X− 1)3− X (X− 1)(X− 2).
+Maria Malek, Romain Dujol 30
+<<<PAGE>>>
+Proposition 3.4 (Polynômes chromatiques particuliers). Soit n un entier naturel non nul.
+— Le polynôme chromatique d’un graphe à n sommets isolés est X n .
+— Le polynôme chromatique d’un arbre à n sommets est X (X− 1)n−1.
+3.3 Colorations des arêtes
+Déﬁnition 3.6 (Coloration des arêtes). Soit G = (V , E ,γ) un graphe non orienté etC un ensemble.
+Une coloration des arêtes de G est une application c1 de E dansC :C est appelé l’ensemble
+des couleurs de c1.
+Une coloration c1 de G est dite propre si et seulement si
+∀(e , e′)∈ E 2, e et e′ ont une extrémité commune⇒ c1(e )⁄= c1(e′)
+Déﬁnition 3.7 (k -coloration des arêtes. Graphe k -colorable pour les arêtes).
+Soit G = (V , E ,γ) un graphe non orienté et k un entier non nul.
+Une k -coloration des arêtes deG est une coloration des arêtes c1 de G telle que cardc1(E ) = k .
+G est dit k -colorable pour les arêtes si et seulement si il existe unek -coloration pour les arêtes
+propre de G .
+Déﬁnition 3.8 (Indice chromatique). Soit G = (V , E ,γ) un graphe non orienté.
+L ’indice chromatique de G , notéχ1(G ) (ouχ′(G )), est l’entier déﬁni par :
+χ1(G ) = min{card c1(E ), c1 coloration propre des arêtes de G}
+Déﬁnition 3.9 (Coloration des arêtes optimale). Soit G = (V , E ,γ) un graphe non orienté.
+Une coloration des arêtes proprec1 de G optimale est uneχ1(G )-coloration des arêtes propre deG .
+Exemple. La coloration des arêtes permet de modeliser des associations incompatibles dans le cadre
+de planiﬁcation d’emplois du temps ou d’organisation de tournois par exemple.
+Proposition 3.5. Soit G = (V , E ,γ) un graphe ﬁni simple et ∆ = max{d (v ), v∈ V}. Alorsχ1(G )≥ ∆
+Démonstration. Soit v∈ V tel que d (v ) = ∆ : alors il faut ∆ couleurs pour colorer les arêtes incidentes en v .
+Théorème 3.3 (KÖNIG , 1916).
+Soit G = (V , E ,γ) un graphe ﬁni biparti et ∆ = max{d (v ), v∈ V}. Alorsχ1(G ) = ∆.
+Théorème 3.4 (VIZING , 1964).
+Soit G = (V , E ,γ) un graphe ﬁni simple et ∆ = max{d (v ), v∈ V}. Alorsχ1(G )≤ ∆ + 1.
+Remarque. Donc, si G est ﬁni et simple, alorsχ1(G ) n’a que deux valeurs possibles :∆ ou ∆ + 1.
+Maria Malek, Romain Dujol 31
+<<<PAGE>>>
+3.4 Graphes extrêmaux
+Déﬁnition 3.10 (Graphe extrêmal). Soit P (G ) un prédicat sur l’ensemble des graphes.
+Un graphe non orientéG = (V , E ) est dit extrêmal pour P si et seulement si les deux conditions
+suivantes sont vériﬁées :
+— P (G ) n’est pas vraie ;
+— pour toute arête e /∈ E , P (G + e ) est vraie.
+Théorème 3.5 (MANTEL , 1907).
+Soit G = (V , E ,γ) un graphe ﬁni n’admettant jamais K3 comme sous-graphe.
+Alors card E≤ (cardV )2
+4 .
+Théorème 3.6 (TURÁN , 1941).
+Soit G = (V , E ,γ) un graphe ﬁni n’admettant jamais Kr +1 comme sous-graphe.
+Alors card E≤
+
+1− 1
+r
+
+· (cardV )2
+2 .
+Remarque. On retrouve le théorème de MANTEL lorsque r = 2.
+Maria Malek, Romain Dujol 32
+<<<PAGE>>>
+Chapitre 3. Coloration de graphes — TD
+Coloration des sommets
+Exercice 3.1. Soit G =
+B
+C
+F
+G
+DA E H .
+1. Appliquer l’algorithme de WELSH et POWELL .
+2. Montrer que χ(G ) = 3. Que peut-on en conclure ?
+Exercice 3.2. On souhaite planiﬁer les examens de ﬁn de session en ING3. Comme il y a des modules
+communs à plusieurs options, on souhaite mutualiser les épreuves.
+— L ’option 1 contient les modules m 1, m2 et m3.
+— L ’option 2 contient les modules m 4 et m6.
+— L ’option 3 contient les modules m 4 et m5.
+— L ’option 4 contient les modules m 3 et m5.
+Sachant que chaque examen dure trois heures, quel est le nombre minimal d’heures nécessaire pour
+l’ensemble des examens ?
+Exercice 3.3.
+1. Montrer que le polynôme chromatique d’un arbre à n sommets est X (X− 1)n−1.
+2. Montrer que le polynôme chromatique de est X (X− 1)3− X (X− 1)(X− 2).
+Coloration des arêtes
+Exercice 3.4. Une soirée rassemble six invités. Montrer que l’une des propositions est vraie :
+— trois invités se connaissent mutuellement ;
+— trois invités ne connaissent pas deux à deux.
+Exercice 3.5. Soit n≥ 3. On analyse les résultats d’étudiants sur n examens :
+— pour chaque examen, exactement trois étudiants ont obtenu la meilleure note ;
+— pour deux examens différents, seul un étudiant a obtenu la meilleure note pour ces deux examens.
+Determiner l’ensemble des valeurs de n pour lesquelles ces conditions impliquent un étudiant ait eu la
+meilleure pour tous les examens.
+Graphes extrêmaux
+Exercice 3.6. Un pays possède vingt aéroports tel que pour tout groupe de trois aéroports, au moins deux
+n’ont pas de vol direct.
+Donner un majorant du nombre de vols directs dans ce pays.
+Maria Malek, Romain Dujol 33
+<<<PAGE>>>
+Chapitre 4
+Tournées eulériennes et hamiltoniennes
+4.1 Chaînes et cycles eulériens
+4.1.1 Déﬁnition
+Déﬁnition 4.1 (Chaîne eulérienne. Cycle eulérien). Soit G = (V , E ,γ) un graphe non orienté.
+Une chaîne ou un cycleC de G est dit eulérien(ne) si et seulement toute arêtee de E est conte-
+nue dans C sans répétition.
+Déﬁnition 4.2 (Graphe eulérien).
+Un graphe non orienté G est dit eulérien si et seulement si il existe un cycle de G eulérien.
+Exemple (Problème des sept ponts de Königsberg, 1736).
+Ce problème est considéré le problème fondateur de la théorie des graphes.
+FIGURE 4.1 – Königsberg (actuellement Kaliningrad) au XVIIIe siècle
+Le problème est le suivant :
+« Peut-on passer une fois et une seule par tous les ponts et revenir à son point de départ ?»
+Maria Malek, Romain Dujol 34
+<<<PAGE>>>
+On modélise le graphe représentant la topologie de Königsberg en associant les sommets à des rives
+et les arêtes aux ponts reliant les rives. On obtient le graphe G suivant :
+N
+O
+S
+E
+Le problème des sept ponts de Königsberg se ramène alors au problème suivant :
+« G est-il eulérien ? »
+Exemple. G =
+2
+3
+4
+5
+6
+7
+1 8 est eulérien.
+En effet, (1, 2, 4, 6, 8, 7, 5, 3, 2, 5, 6, 7, 4, 3, 1) est un cycle eulérien.
+4.1.2 Conditions d’existence
+Théorème 4.1 (Théorème d’EULER ).
+Soit G = (V , E ,γ) un graphe non orienté connexe tel que card E≥ 1.
+Alors G est eulérien si et seulement si tous ses sommets sont de degré pair.
+Démonstration.
+(⇒) Soit C un cycle eulérien de G .
+Tout passage de v∈ V utilise une arête entrante et une arête sortante (distincte de l’entrante).
+Comme un jeu d’arêtes différent est utilisé à chaque passage,d (v ) est nécessairement pair.
+(⇐) On raisonne par récurrence forte sur m = card E .
+— Si m = 1, alors l’unique arête ne peut relier deux sommets distincts (sinon ceux-ci seraient de degré
+un) : donc il s’agit d’une boucle sur un sommet de degré deux.
+— Soit m≥ 1 tel que tout graphe non orienté connexe d’au plusm−1 arêtes dont tous les sommets sont
+de degré pair soit eulérien.
+Soit G = (V , E ,γ) un graphe non orienté connexe tel que card E = m dont tous les sommets sont de
+degré pair. Comme G n’admet aucun sommet de degré un, G n’est pas un arbre et n’est donc pas
+acyclique.
+Soit doncC un cycle deG , EC l’ensemble de ses arêtes et{Hi = (Vi , Ei )}1≤i≤p les composantes connexes
+de G− Ec . Alors pour tout i∈ J1, p K, le degré de chaque sommet est diminué d’un nombre pair.
+Donc tous les sommets de Hi sont de degré pair et Hi est eulérien par hypothèse de récurrence. Soit
+Ci un cycle eulérien de Hi . Comme G est connexe, il existe xi∈ V commun à C et Ci .
+Pour tout i∈ J1, p K, on insère Ci dans C à la place de xi : le cycle ainsi obtenu est eulérien.
+Maria Malek, Romain Dujol 35
+<<<PAGE>>>
+Corollaire (Existence de chaîne eulérienne).
+Soit G = (V , E ,γ) un graphe non orienté connexe tel que card E≥ 1.
+G admet une chaîne eulérienne si et seulement si au plus deux de ses sommets sont de degré impair.
+Démonstration.
+(⇒) On reprend le raisonnement du théorème d’EULER : les sommets potentiellement de degré impair sont
+les extrêmités de la chaîne considérée.
+(⇐) D’après le lemme des poignées de main, le nombre de sommets de degré impair est alors zéro ou deux.
+— Si ce nombre est zéro, alors tous les sommets de G sont de degré pair.
+Donc G est eulérien d’après le théorème d’EULER et admet une chaîne eulérienne.
+— Si ce nombre est deux, soit alors (v, v′)∈ V 2 tel que v⁄= v′ et d (v ) = d (v′) = 2.
+Soit e /∈ E une arête d’extrémitésv et v′. Tous les sommets deG′ = G + e sont de degré pair : doncG′
+est eulérien. Soit C un cycle eulérien de G′ : alors C− e est une chaîne eulérienne de G .
+4.1.3 Calcul de cycle eulérien
+La démonstration du théorème d’EULER est constructive et permet de proposer un algorithme (ré-
+cursif) de recherche de cycle eulérien.
+fonction euler(G ) : C
+préconditions : G = (V , E ) connexe dont les sommets sont de degré pair
+postconditions : C est un cycle eulérien de G
+C← cycle de G
+si E⁄= EC alors
+(H1, . . . ,Hp )← composantes connexes de G− EC
+pour i← 1 à p faire
+Ci← euler(Hi )
+xi← point de contact entre C et Ci
+Insérer Ci en xi dans C
+ﬁn pour
+ﬁn si
+retourner C
+ﬁn fonction
+Algorithme 2: Algorithme de HIERHOLZER
+Théorème 4.2. Soit G = (V , E ,γ) un graphe eulérien.
+La complexité de l’algorithme de HIERHOLZER est O(card E ).
+Exemple. G =
+2
+3
+4
+5
+6
+7
+1 8
+L ’appel deeuler(G ) avec comme choix de cycle initial C = (1, 2, 4, 6, 8, 7, 5, 3, 1) donne une compo-
+sante connexe H1 = G ({23, 25, 34, 47, 56, 67}) commune à C au sommet 2.
+L ’appel deeuler(H1) donne le cycle eulérien euler(H1) = C1 = (2, 5, 6, 7, 4, 3, 2).
+Le résultat ﬁnal est alors euler(G ) = (1, C1, 4, 6, 8, 7, 5, 3, 1) = (1, [2, 5, 6, 7, 4, 3, 2], 4, 6, 8, 7, 5, 3, 1)
+Maria Malek, Romain Dujol 36
+<<<PAGE>>>
+4.2 Cycles hamiltoniens
+4.2.1 Déﬁnition
+Déﬁnition 4.3 (Chaîne hamiltonienne. Cycle hamiltonien). Soit G = (V , E ,γ) un graphe non orienté.
+Une chaîne ou un cycleC de G est dit hamiltonien(ne) si et seulement tout sommet v de V est
+contenu dans C sans répétition.
+Déﬁnition 4.4 (Graphe hamiltonien).
+Un graphe non orientéG est dit hamiltonien si et seulement si il existe un cycle deG hamiltonien.
+Proposition 4.1 (Cas particuliers de graphes hamiltoniens).
+1. Pour tout entier naturel n≥ 3, Kn est hamiltonien et admet (n− 1)!
+2 cycles hamiltoniens.
+2. Un graphe biparti G = (V1, V2, E ) biparti est hamiltonien si et seulement si cardV1 = cardV2.
+4.2.2 Conditions d’existence
+Proposition 4.2 (Condition nécessaire). Soit G = (V , E ,γ) un graphe hamiltonien et V′∈P (V )\{;, V}.
+Alors le nombre de composantes connexes de G− V′ ne dépasse pas cardV′.
+Théorème 4.3 (Condition sufﬁsante) . Soit G = (V , E ,γ) un graphe simple tel que :
+∀(v, v′)∈ V 2, v et v′ non adjacents =⇒ d (v ) +d (v′)≥ cardV
+Alors G est hamiltonien.
+4.2.3 Problème du voyageur de commerce ( PVC)
+Ce problème est également connu sous le sigle TSP (pour Traveling Salesman Problem) :
+« On se donne un ensemble de villes toutes reliées directement entre elles. Quelle est la tournée
+la plus courte couvrant toutes les villes une fois et une seule ?»
+On modélise le graphe représentant la cartographie de l’ensemble des villes en associant les som-
+mets aux différentes villes et les arêtes aux voies entre les villes : ces arêtes sont valuées par leur distance.
+Le graphe G = (V , E ,γ, w ) obtenu doit alors être complet et w doit être à valeurs positives :
+— pour tout cycle hamiltonien C de G , on déﬁnit la valeur de C , notée w (C ), par
+w (C ) =
+∑
+e arête de C
+w (e )
+(i.e. la somme des valuations des arêtes qui composent C ) ;
+— on déﬁnit la valeur de G , notée w∗(G ), par
+w∗(G ) = min{w (C ), C cycle hamiltonien de G}
+(i.e. la plus faible valeur de cycle hamiltonien).
+Maria Malek, Romain Dujol 37
+<<<PAGE>>>
+Le problème PVC se ramène alors au problème suivant :
+« Quel est le cycle hamiltonien tel que w (C∗) = w∗(G ) ? »
+Théorème 4.4 (KARP , 1972). Le problème PVC est un problème NP-complet.
+Une première solution peut consister en une recherche exhaustive, c’est-à-dire :
+— recenser tous les cycles hamiltoniens ;
+— en choisir un parmi ceux avec la valeur la plus faible.
+Cette solution a une complexité exponentielle : elle est donc inutilisable en pratique car trop coûteuse.
+Une autre solution consiste en l’application d’un algorithme de type « glouton » :
+1. on initialise le cycle avec un sommet du graphe choisi arbitrairement ;
+2. le sommet suivant est le sommet adjacent non encore visité le plus proche (en terme de valuation
+d’arête).
+4.2.3.1 Algorithme 1
+2 -approché
+Déﬁnition 4.5 (Algorithmeϵ-approché).
+Un algorithme est dit ϵ-approché si et seulement si pour toute instance G = ( V , E ,γ, w ) du
+problème PVC, il fournit un cycle hamiltonien C tel que w (C )
+w∗(G )≤ 1
+1−ϵ .
+On présente un algorithme qui n’est valable que sur des instancesG = (V , E ,γ, w ) dites métriques,
+c’est-à-dire telles que :
+∀(v, v′, v′′)∈ V 3, w (v v′′)≤ w (v v′) + w (v′v′′)
+Remarque. « La voie directe entre deux villes est toujours la voie la plus courte. »
+Autrement dit, la distance la plus courte entre deux sommets en terme de valuation est aussi celle
+en terme de longueur de chaîne. . .
+Soit G = (V , E ,γ, w ) une instance du problème PVC
+1. On calcule arbre couvrant minimal T de G (à l’aide de l’algorithme de KRUSKAL ).
+2. U est le graphe obtenu par duplication de chaque arête de T . Par construction, U est eulérien :
+on calcule alors un cycle eulérien D de U (à l’aide de l’algorithme de HIERHOLZER par exemple).
+3. Le cycle hamiltonien C ﬁnal est obtenu par « nettoyage » deD , c’est-à-dire en retirant les sommets
+surnuméraires de D .
+Algorithme 3: Algorithme 1
+2 -approché
+Maria Malek, Romain Dujol 38
+<<<PAGE>>>
+Théorème 4.5.
+L ’algorithme précédent est1
+2 -approché pour tout instance métrique du problème PVC.
+Démonstration. Soit G = (V , E ,γ, w ) une instance métrique du problème PVC et C le cycle produit par l’algo-
+rithme précédent pour cette instance.
+Soit C′ un cycle hamiltonien de G : alors pour toute arête e de C′, C′− e est un arbre couvrant de G .
+Donc w (C′− e )≥ w (T ) où T est un arbre couvrant minimal de G , puis w (C′)≥ w (C′− e )≥ w (T ) car w est
+positive : on en déduit que w∗(G ) = min{w (C′), C′ hamiltonien}≥ w (T ).
+Par construction, w (D ) = 2w (T ). Comme G est métrique, le cycle hamiltonien C obtenu par « nettoyage »
+de D est plus direct que D . Donc w (C )≤ w (D ).
+On en conclut alors que w (C )≤ w (D ) = 2w (T )≤ 2w∗(G ), c’est-à-dire w (C )
+w∗(G )≤ 2 = 1
+1− 1
+2
+.
+Exemple. Soit G =
+B
+CD
+E F
+A
+dont la matrice de valuation est
+A B C D E F
+A 0 7 9 12 13 11
+B 7 0 16 16 15 13
+C 9 16 0 14 14 16
+D 12 16 14 0 25 5
+E 13 15 14 25 0 24
+F 11 13 16 5 24 0
+Alors l’algorithme 1
+2 -approché peut donner le résultat suivant.
+1. T = G ({DF, AB, AC, AF, AE})
+2. D = (A, F, D, F, A, E, A, C, A, B, A)
+3. C = (A, F, D, E, C, B, A) avec w (C ) = 78
+Maria Malek, Romain Dujol 39
+<<<PAGE>>>
+Chapitre 4. Tournées eulériennes et hamiltoniennes — TD
+Tournées eulériennes
+Exercice 4.1. Résoudre le problème des sept ponts de Königsberg.
+Exercice 4.2. Trouver une chaîne ou cycle eulérien dans les graphes suivants :
+Exercice 4.3. Soit G = (V , E ) un graphe non orienté tel que tous ses sommets sont de degré pair .
+Montrer qu’il existe une partition(Ei )i≤i≤p de E telle que E i est l’ensemble des arêtes d’un cycle élé-
+mentaire pour tout i∈ J1, p K.
+Tournées hamiltoniennes
+Exercice 4.4. Soit G = (V , E ,γ) un graphe non orienté simple tel que cardV≥ 3.
+On suppose queδ = min{d (v ), v∈ V}≥ cardV
+2 .
+1. Sans utiliser les résultats de ce chapitre, montrer que G admet un cycle élémentaire.
+2. Montrer que G est hamlitonien.
+Exercice 4.5. On considère l’exemple dePVC du cours.
+1. Appliquer l’algorithme glouton à cet exemple, en considérant chaque sommet comme point de dé-
+part.
+Comparer les résultats entre eux et avec le résultat de l’algorithme1
+2 -approché.
+2. Proposer un (ou plusieurs) représentation(s) adaptée(s) aux deux algorithmes.
+Exercice 4.6. Appliquer l’algorithme 1
+2 -approché à l’instance duPVC géographique sur six villes dont la
+matrice de valuation est :
+A B C D E F
+A 0 5 12,5 16,5 25 14
+B 5 0 11,5 13,5 24,5 16
+C 12,5 11,5 0 7 13 9,5
+D 16,5 13,5 7 0 15,5 16,5
+E 25 24,5 13 15,5 0 14
+F 14 16 9,5 16,5 14 0
+Maria Malek, Romain Dujol 40
+<<<PAGE>>>
+Chapitre 5
+Graphes orientés
+5.1 Graphe orienté
+5.1.1 Déﬁnition et terminologie de base
+Déﬁnition 5.1 (Graphe orienté). Un graphe orienté est un triplet G = (V , A,γ) où :
+— V est un ensemble non vide : tout élément de V est appelé un sommet de G ;
+— A est un ensemble (éventuellement vide) : tout élément de A est appelé un arc de G ;
+— γ est une application de A dans V 2.
+Pour tout a∈ A, siγ(a ) = (v, v′), v est l’origine de a et v′ est la destination de a .
+On peut représenter graphiquement un graphe orienté de la manière suivante :
+— tout sommet est représenté soit par un point ou par cercle contenant le nom du sommet ;
+— tout arc est représentée par une ﬂèche allant de l’origine vers la destination.
+Exemple.
+v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+est une représentation de G = ({v1, v2, v3, v4},{a1, a2, a3, a4, a5, a6},γ) avec : γ : A → V 2
+a1 7→ (v1, v2)
+a2 7→ (v2, v3)
+a3 7→ (v2, v3)
+a4 7→ (v2, v4)
+a5 7→ (v3, v4)
+a6 7→ (v4, v4)
+Maria Malek, Romain Dujol 41
+<<<PAGE>>>
+Déﬁnition 5.2. Soit G = (V , A,γ) un graphe orienté et (v1, v2)∈ V 2.
+On dit que v2 est un successeur dev1 ou v1 est un prédecesseur dev2 si et seulement si il existe
+un arc a∈ A tel queγ(a ) = (v1, v2).
+Remarque. On dit aussi que l’arca va de v1 à v2.
+Déﬁnition 5.3 (Boucle). Soit G = (V , A,γ) un graphe orienté. Une boucle est un arc dont l’origine
+et la destination coïncident, i.e.
+a est une boucle ⇐⇒∃ v∈ V ,γ(a ) = (v, v )
+Déﬁnition 5.4 (Arcs multiples). Soit G = (V , A,γ) un graphe orienté.
+Deux arcs de G a et a′ sont dits multiples ou parallèles si et seulement si ils ont même origine
+et même destination, i.e.γ(a ) =γ(a′).
+Déﬁnition 5.5 (Arcs opposés). Soit G = (V , A,γ) un graphe orienté.
+Deux arcs de G a et a′ sont dits opposés si et seulement siγ(a ) = (v, v′)⇐⇒γ(a′) = (v′, v ).
+Remarque. Autrement dit, l’origine de l’un est la destination de l’autre et réciproquement.
+Déﬁnition 5.6 (Graphe non orienté associé). Soit G = (V , A,γ) un graphe orienté.
+Le graphe non orienté associé àG est le graphe non orientéG = (V , E ,γ) où tout arc de A d’ori-
+gine v et destination v′ est remplacé par une arête d’extrêmitésv et v′
+Proposition 5.1. Soit G = (V , E ,γ) un graphe non orienté.
+Alors il y a 2card E graphes orientés dont G est le graphe non orienté associé.
+5.1.2 Graphe strict
+Déﬁnition 5.7 (Graphe strict).
+Un graphe orienté G = (V , A,γ) est dit strict si et seulement si il n’a ni boucle, ni arcs multiples.
+IMPORTANT . Dans un graphe strict, un arc est donc identiﬁable uniquement à partir de son origine et
+de sa destination : on pourra alors noter v v′ l’arc d’originev et de destination v′.
+A sera alors identiﬁé à une partie de V 2 etγ sera omis.
+Déﬁnition 5.8 (Graphe symétrique).
+Un graphe orienté strict G = (V , A,γ) est dit symétrique si et seulement si
+∀a∈ A,∃a′∈ A, a et a′ sont opposés
+Maria Malek, Romain Dujol 42
+<<<PAGE>>>
+Exemple. G = v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+— a6 est une boucle, donc le graphe n’est pas strict ;
+— a2 et a3 sont opposés, mais le graphe n’est pas symétrique.
+Le graphe non orienté associé à G est :
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+5.1.3 Matrice d’adjacence
+Déﬁnition 5.9 (Matrice d’adjacence). Soit G = (V , A,γ) un graphe orienté. On note V ={vi}1≤i≤n .
+La matrice d’adjacence deG est une matrice M carrée d’ordren = cardV telle que :
+∀(i , j )∈ J1, nK2 , Mi j est le nombre d’arcs d’originevi et destination v j
+Exemple. G = v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+a pour matrice
+M =
+
+
+0 1 0 0
+0 0 1 1
+0 1 0 1
+0 0 0 1
+
+
+Proposition 5.2 (Matrice d’adjacence).
+Soit G = (V , A,γ) un graphe orienté et M sa matrice d’adjacence. Alors :
+1. G symétrique ⇐⇒ M symétrique
+2. G strict⇔
+¤
+∀i ∈ J1, nK2 , Mi i = 0
+∀(i , j )∈ J1, nK2 , Mi j∈{ 0, 1}
+5.1.4 Sous-graphe
+Déﬁnition 5.10 (Sous-graphe). Soit G = (V , A,γ) un graphe orienté.
+Un sous-graphe de G est un graphe orienté G′ = (V′, A′,γ′) tel que :
+— V′⊂ V ;
+— A′⊂ A etγ(A′)⊂ V′× V′.
+Maria Malek, Romain Dujol 43
+<<<PAGE>>>
+Déﬁnition 5.11 (Sous-graphe engendré). Soit G = (V , A,γ) un graphe orienté.
+Soit V′ une partie de V . On appelle sous-graphe de G engendré par V′, noté GV′, le graphe
+GV′ = (V′, A′,γ′) tel que :
+a∈ A′⇐⇒γ(a )∈ V′× V′
+Soit A′ une partie de A. On appelle sous-graphe de G engendré par A′, noté G (A′), le graphe
+G (A′) = (V , A′,γ|A′).
+Déﬁnition 5.12 (Autres notions de sous-graphes engendrés). Soit G = (V , A) un graphe orienté.
+On déﬁnit les notations suivantes :
+G− V′ ≡ GV\V′
+G− A′ ≡ G (A\A′)
+G− v ≡ G−{ v}≡ GV\{v}
+G− a ≡ G−{ a}≡ G (A\{a})
+Si a/∈ A est un arc dont les extrêmités sont dans V , alors on note G + a≡ (V , A∪{ a}).
+5.1.5 Chemin et circuit
+5.1.5.1 Chemin
+Déﬁnition 5.13 (Chemin). Soit G = (V , A,γ) un graphe orienté.
+Un chemin de G est une suite ﬁnie C = (v0, a1, v1, . . . ,ai , vi , . . . ,ap , vp ) telle que :
+— ∀i∈ J0, p K , vi∈ V
+— ∀i∈ J1, p K , ai∈ A et son origine est vi−1 et sa destination vi .
+L ’entierp est appelé la longueur de C et noté𝓁(C ). v0 et vp sont appelés les extrémités de C .
+Remarque. SiG est strict, un chemin peut être identiﬁé à la suite de ses sommets :C = (v0, v1, . . . ,vi , . . . ,vp ).
+Déﬁnition 5.14 (Chemin simple). Soit G = (V , A,γ) un graphe orienté.
+Un chemin C = (v0, a1, v1, . . . ,ap , vp ) de G est dit simple si et seulement si les arcs constituantC
+sont distincts deux à deux :
+∀(i , j )∈ J1, nK2 , (i⁄= j ) =⇒ ai⁄= a j
+Déﬁnition 5.15 (Chemin élémentaire). Soit G = (V , A,γ) un graphe orienté.
+Un chemin C = ( v0, a1, v1, . . . ,ap , vp ) de G est dit élémentaire si et seulement si les sommets
+constituant C sont distincts deux à deux :
+∀(i , j )∈ J0, nK2 , (i⁄= j ) =⇒ vi⁄= v j
+Maria Malek, Romain Dujol 44
+<<<PAGE>>>
+Proposition 5.3. Soit G = (V , A,γ) un graphe orienté.
+Tout chemin élémentaire deG est un chemin simple de G .
+Exemple. v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+— Le chemin (v2, a2, v3, a3, v2, a2, v3, a5, v4) n’est pas simple (répétition de l’arc a2), donc pas élé-
+mentaire.
+— Le chemin (v1, a1, v2, a2, v3, a3, v2, a4, v4) est simple, mais pas élémentaire (répétition de v2).
+— Le chemin (v1, a1, v2, a4, v4) est élémentaire donc simple.
+5.1.5.2 Circuit
+Déﬁnition 5.16 (Cycle). Soit G = (V , A,γ) un graphe orienté.
+Un cycle de G est un chemin simple C = (v0, a1, v1, . . . ,ap , vp ) tel que𝓁(C )> 0 et vp = v0.
+Remarque.
+— Un circuit de longueur un est tout simplement une boucle.
+— Un circuit peut être décrit par des suites distinctes (contrairement à un chemin non circuit).
+Exemple. v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+C = (v2, a2, v3, a3, v2) est un circuit aussi représenté par (v3, a3, v2, a2, v3).
+5.1.5.3 Graphe fortement connexe
+Déﬁnition 5.17 (Graphe fortement connexe). Soit G = (V , A,γ) un graphe orienté.
+G est dit fortement connexe si et seulement si pour tout couple(v, v′)∈ V 2, il existe un chemin
+d’originev et de destination v′.
+Déﬁnition 5.18 (Composantes fortement connexes). Soit G = (V , A,γ) un graphe orienté.
+Une composante fortement connexe de G est un sous-graphe fortement connexe maximal au
+sens de l’inclusion des sommets et des arcs.
+Maria Malek, Romain Dujol 45
+<<<PAGE>>>
+Proposition 5.4.
+1. Un graphe est connexe si et seulement si il a une seule composante connexe : auquel cas, la com-
+posante connexe est le graphe lui-même.
+2. Les composantes connexes d’un graphe sont disjontes : elles n’ont ni sommet, ni arc en commun.
+Exemple. G = v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+n’est pas fortement connexe
+et ses composantes fortement connexes sont G{v1}, G{v2,v3} et G{v4}.
+Proposition 5.5. Soit G = (V , A,γ) un graphe orienté.
+Tout circuit deG est contenu dans une seule composante fortement connexe de G .
+5.1.6 Degré
+Déﬁnition 5.19 (Degrés d’un sommet). Soit G = (V , A,γ) un graphe orienté et v∈ V .
+On appelle :
+— le degré intérieur de v , noté d−(v ), le réel d−(v ) = card{a∈ A,∃v′∈ V ,γ(a ) = (v′, v )}
+— le degré extérieur de v , noté d +(v ), le réel d−(v ) = card{a∈ A,∃v′∈ V ,γ(a ) = (v, v′)}
+— le degré de v , noté d (v ), le réel d (v ) = d−(v ) +d +(v ).
+Déﬁnition 5.20 (Source. Puits). Soit G = (V , A) graphe orienté et v∈ V .
+v est une source (de G ) si et seulement si d−(v ) = 0.
+v est un puits (de G ) si et seulement si d +(v ) = 0.
+Théorème 5.1 (Lemme des poignées de main).
+Soit G = (V , A) un graphe orienté. Alors
+∑
+v∈V
+d−(v ) =
+∑
+v∈V
+d +(v ) = card A.
+Exemple.
+v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6 v v1 v2 v3 v4
+d−(v ) 0 2 1 3
+d +(v ) 1 2 2 1
+d (v ) 1 4 3 4
+Vériﬁons le lemme des poignées de main :
+—
+∑
+v∈V
+d−(v ) = 0 + 2 + 1 + 3 = 6
+—
+∑
+v∈V
+d +(v ) = 1 + 2 + 2 + 1 = 6
+— card A = 6
+Maria Malek, Romain Dujol 46
+<<<PAGE>>>
+5.1.7 Type de données
+5.1.7.1 Tableau /liste des arcs
+On implémente un graphe comme le tableau (ou la liste) des arcs, chacun étant un couple de som-
+mets (son origine et sa destination)
+Exemple. v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+La représentation est un tableau (ou une liste) t de longueur 6 :
+— t(1) = (v1, v2)
+— t(2) = (v2, v3)
+— t(3) = (v3, v2)
+— t(4) = (v2, v4)
+— t(5) = (v3, v4)
+— t(6) = (v4, v4)
+5.1.7.2 Matrice d’adjacence
+On implémente un tableau bi-dimensionnel contenant les valeurs de la matrice d’adjacence de la
+déﬁnition 5.9 page 43.
+5.1.7.3 Tableau de la liste des voisins
+On implémente un graphe comme le tableau des listes des successeurs (ou des prédecesseurs) de
+chaque sommet.
+Exemple. v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+La représentation est un tableau t de longueur 4 :
+— t(1) = [2]
+— t(2) = [3, 4]
+— t(3) = [2, 4]
+— t(4) = [4]
+5.1.8 Graphe orienté valué
+Déﬁnition 5.21 (Graphe valué). Un graphe orienté valué est un quadruplet G = (V , A,γ, w ) où :
+— G = (V , A,γ) est un graphe orienté ;
+— w est une application de A dans R appelée valuation de G
+Remarque. La valuation des arcs est la valuation la plus communue. Il existe également une valuation
+des sommets.
+Maria Malek, Romain Dujol 47
+<<<PAGE>>>
+Déﬁnition 5.22 (Matrice d’adjacence). Soit G = (V , A,γ, w ) un graphe orienté valué strict.
+La matrice d’adjacence deG est une matrice M carrée d’ordren = cardV telle que :
+∀(i , j )∈ J1, nK2 , Mi j =
+
+
+
+0 si i = j
+w (vi v j ) si vi v j∈ A
++∞ si vi v j /∈ A
+5.2 Arborescences
+5.2.1 Déﬁnition
+Déﬁnition 5.23 (Racine d’un graphe orienté). Soit G = (V , A,γ) un graphe orienté et r∈ V .
+r est une racine de G si et seulement si il existe un chemin de r à tout sommet de G .
+Déﬁnition 5.24 (Arborescence). Une arborescence est un graphe orienté admettant une racine et
+tel que son graphe non orienté associé soit un arbre.
+Proposition 5.6. La racine d’une arborescence est unique.
+Démonstration. Si il y a deux racines, alors elles induisent un circuit et donc un cycle dans le graphe non orienté
+associé, ce qui est impossible car ce dernier est un arbre.
+Remarque. On peut représenter graphiquement une arborescence de manière plus spéciﬁque :
+— on place la racine en haut ;
+— on peut omettre l’orientation des arcs.
+Exemple.
+Maria Malek, Romain Dujol 48
+<<<PAGE>>>
+5.2.2 Terminologie
+Déﬁnition 5.25 (Profondeur). Soit G = (V , A,γ) une arborescence de racine r .
+Soit v∈ V . La profondeur de v est la longueur du chemin entre r et v .
+Déﬁnition 5.26 (Feuille. Nœud) . Soit G = (V , A,γ) une arborescence.
+Une feuille de G est un puits de G .
+Tout autre sommet est un nœud de G .
+Remarque. On utilise largement une terminologie empruntée de la généalogie. Ainsi :
+— ﬁls , enfant de v : successeur de v
+— père, parent de v : prédecesseur de v
+— frère, descendant, etc. . .
+5.2.3 Caractérisations
+Déﬁnition 5.27 (Condition des degrés intérieurs). Soit G = (V , A) un graphe orienté.
+Un grapne orienté G = (V , A,γ) vériﬁe la condition des degrés intérieurs si et seulement si :
+¤
+∃!r∈ V , d−(r ) = 0
+∀v∈ V\{r}, d−(r ) = 1
+Théorème 5.2 (Caractérisations d’une arborescence). Soit G = (V , A,γ) un graphe orienté.
+Les propositions suivantes sont équivalentes.
+1. G est une arborescence.
+2. G admet une racine et son graphe non orienté associé est acyclique.
+3. G admet une racine et cardA = cardV− 1.
+4. ∃r∈ V ,∀v∈ V ,∃! chemin de r vers v
+5. G est connexe et vériﬁe la condition des degrés intérieurs.
+6. G vériﬁe la condition des degrés intérieurs et son graphe non orienté associé est acyclique.
+7. G n’admet pas de circuit et vériﬁe la condition des degrés intérieurs.
+Plan de la démonstration.
+— 1 ⇐⇒ 2, 1⇐⇒ 3
+— 6 ⇐⇒ 7
+— 1 ⇒ 4⇒ 5⇒ 6⇒ 1
+2KS
+
+7KS
+
+3 ks +3 1
+
+6ks
+4 +3 5
+KS
+Maria Malek, Romain Dujol 49
+<<<PAGE>>>
+5.3 Parcours en profondeur d’abord
+5.3.1 Cas d’une arborescence
+On présente l’algorithme de parcours en profondeur d’abord ouDepth-First Search (DFS) pour une
+arborescence.
+procedure DFS(T , v0)
+préconditions : T = (V , A,γ) est une arborescence et v0∈ V
+pour v successeur de v0 faire
+/* Prévisite de v */
+DFS(T , v )
+/* Postvisite de v */
+ﬁn pour
+ﬁn procedure
+Algorithme 4: Parcours en profondeur d’abord d’une arborescence
+Proposition 5.7 (Complexité). Soit G = (V , A,γ) une arborescence.
+Alors la complexité de l’algorithme 4 est O(card A) = O(cardV ).
+Remarque. G est une arborescence, donc cardA = cardV− 1.
+Exemple.
+1| 7
+2| 6
+3| 1 4| 2 5| 5
+6| 3 7| 4
+Ordre de prévisite| Ordre de postvisite
+Maria Malek, Romain Dujol 50
+<<<PAGE>>>
+5.3.2 Cas général
+On présente l’algorithme de parcours en profondeur d’abord pour un graphe orienté quelconque.
+procedure DFS(G , v0)
+préconditions : G = (V , A,γ) graphe orienté et v0∈ V
+visited : Tableau associatif de<Sommet> de booléen
+pour v∈ V faire
+visited(v )← FAUX
+ﬁn pour
+/* Prévisite de v0 */
+visited(v0)← VRAI
+pour v successeur de v0 faire
+si visited(v ) alors
+/* Revisite de v */
+sinon
+/* Prévisite de v */
+DFS(T , v )
+/* Postvisite de v */
+ﬁn si
+ﬁn pour
+/* Postvisite de v0 */
+ﬁn procedure
+Algorithme 5: Parcours en profondeur d’abord d’un graphe orienté
+Proposition 5.8. Soit G = (V , A,γ) un graphe orienté strict et v0∈ V .
+Soit v∈ V tel qu’il existe un chemin dev0 à v . Alors durant l’appel deDFS(G , v0), v est accédé :
+— d’abord en prévisite ;
+— puis (éventuellement) en revisite ;
+— et enﬁn en postviste.
+Proposition 5.9 (Complexité). Soit G = (V , A,γ) un graphe orienté.
+Alors la complexité de l’algorithme 5 est O(card A + cardV ).
+Remarque. L ’expression de la complexité se décompose en deux parties :
+— le parcours des sommets : O (card A) ;
+— le traitement de visited : O(cardV ).
+Maria Malek, Romain Dujol 51
+<<<PAGE>>>
+Exemple.
+v2
+v3
+v5
+v9
+v1
+v8
+v10
+v6
+v4
+v7
+L ’appel deDFS(G , v1) donne les étapes suivantes :
+• — Prévisite de v1, v2, v5, v6
+— Revisite de v2
+— Postvisite de v6, v5, v2
+• — Prévisite de v3, v9, v10, v7 + Revisite de v1
+— Prévisite de v8 + Revisite de v1, v3, v9, v10
+— Postvisite de v8, v7, v10, v9, v3
+• Revisite de v5 + Postvisite de v1
+Remarque. Comme il n’existe pas de chemin dev1 vers v4, ce dernier v4 n’est pas visité lors de l’appel.
+5.3.3 Parcours en profondeur d’abord étendu
+Comme le montre l’exemple précédent, un parcours en profondeur d’abord peut ne pas atteindre
+tous les sommets : il faut alors étendre l’algorithme pour atteindre tous les sommets.
+C’est l’objectif de l’algorithme de parcours en profondeur d’abord étendu ouextended Depth-First
+Search (xDFS) présenté dans l’algorithme 6 page suivante.
+IMPORTANT . La procédure DFS a été modiﬁée en ajoutant visited comme paramètre (et non plus
+comme variable locale) aﬁn de la transmettre d’un appel de DFS à l’autre.
+Proposition 5.10. Soit G = (V , A,γ) un graphe orienté strict et v∈ V .
+Alors durant l’appel dexDFS(G ), v est accédé :
+— d’abord en prévisite ;
+— puis (éventuellement) en revisite ;
+— et enﬁn en postviste.
+Maria Malek, Romain Dujol 52
+<<<PAGE>>>
+procedure xDFS(G )
+préconditions : G = (V , A,γ) graphe non orienté
+visited : Tableau associatif de<Sommet> de booléen
+pour v∈ V faire
+visited(v )← FAUX
+ﬁn pour
+tant que{v∈ V , visited(v ) = FAUX}⁄ =; faire
+v0 est choisi dans{v∈ V , visited(v ) = FAUX}
+DFS(G , visited, v0)
+ﬁn tant que
+ﬁn procedure
+Algorithme 6: Parcours en profondeur d’abord étendu
+Exemple. L ’appel dexDFS(G ) donne les étapes suivantes :
+• DFS(G , v1) (cf. page 52)
+• DFS(G , v4)
+— Prévisite de v4
+— Revisite de v3, v9
+— Postvisite de v4
+5.3.4 Tri topologique
+Lemme (Existence de source et puits). Tout graphe orienté sans circuit admet une source et un puits.
+Démonstration. Soit G = (V , A,γ) un graphe orienté sans circuit et v∈ V .
+On construit un chemin partant de v : la non-existence de circuit assure la ﬁnitude du chemin et son autre
+extrêmité est un puits.
+On raisonnement de manière analogue pour la source.
+Déﬁnition 5.28 (Tri topologique). Soit G = (V , A,γ) un graphe orienté.
+Un tri topologique de G est une bijectionφ de V→ J1, cardV K telle que :
+∀a∈ A d’originev et destination v′,φ(v )<φ (v′)
+Proposition 5.11(Existence de tri topologique). Un graphe orienté admet un tri topologique si et seule-
+ment si il n’admet pas de circuit.
+Remarque. Même dans un tel cas, le tri topologique n’est pas forcément unique.
+Exemple. v1 v2
+v3
+v4
+a1
+a2
+a4
+a3 a5
+a6
+n’admet pas de tri topologique.
+Maria Malek, Romain Dujol 53
+<<<PAGE>>>
+Exemple.
+v3
+v4
+v5 v6
+v1 v2
+admet deux tris topologiques : v1 7→ 1
+v2 7→ 2
+v3 7→ 3
+v4 7→ 4
+v5 7→ 5
+v6 7→ 6
+et v1 7→ 1
+v2 7→ 2
+v3 7→ 3
+v4 7→ 5
+v5 7→ 4
+v6 7→ 6
+.
+Proposition 5.12 (Existence et calcul). Soit G = (V , A,γ) un graphe orienté strict.
+G est sans circuit si et seulement si, lors de l’appel dexDFS(G ), tout sommet n’est revisité qu’après
+avoir été postvisité.
+Auquel cas, un tri topologique de G est l’ordre inverse des postvisites.
+IMPORTANT . Donc xDFS détecte les circuits : c’est un algorithme de test d’existence de tri topologique.
+En conclusion, si on modiﬁe xDFS aﬁn qu’il mémorise les postvisites, on obtient un algorithme qui,
+non seulement établit si un tri topologique est possible, mais en plus en calcule un.
+Exemple.
+v2
+v3
+v5
+v9
+v1
+v8
+v10
+v6
+v4
+v7
+Exemple. Reprenons les étapes obtenues lors de l’appel dexDFS(G ) :
+DFS(G , v1)
+• — Prévisite de v1, v2, v5, v6
+— Revisite de v2 : STOP car v2 n’a pas encore été postvisité.
+Donc ce graphe admet un circuit et n’admet pas de tri topologique.
+Maria Malek, Romain Dujol 54
+<<<PAGE>>>
+Exemple. G =
+v3
+v4
+v5 v6
+v1 v2
+L ’appel dexDFS(G ) donne les étapes suivantes :
+• DFS(G , v1) :
+• — Prévisite de v1, v2, v3, v4, v6
+— Postvisite de v6, v4
+• — Prévisite de v5 + Revisite de v6 + Postvisite de v5
+— Revisite de v6
+— Postvisite de v3
+• Revisite de v4
+• Postvisite de v2, v1
+Comme les postvisites ont été faites dans l’ordre suivant : v6, v4, v5, v3, v2 et v1, on en déduit qu’un tri
+topologique de G est v1 7→ 1
+v2 7→ 2
+v3 7→ 3
+v5 7→ 4
+v4 7→ 5
+v6 7→ 6
+.
+5.4 Recherche de chemin optimal
+5.4.1 Déﬁnition
+Déﬁnition 5.29 (Valeur d’un chemin).
+Soit G = (V , A,γ, w ) un graphe orienté valué et C un chemin de G .
+La valeur de C , notée w (C ), est le réel w (C ) =
+∑
+a∈C
+w (a )
+Déﬁnition 5.30 (Chemin optimal). Soit G = (V , A,γ, w ) un graphe orienté et (s , t )∈ V 2.
+Un chemin de s à t est dit optimal si et seulement si sa valeur est minimale parmi tous les
+chemins de G reliant s à t .
+Déﬁnition 5.31 (Circuit absorbant). Soit G = (V , A,γ, w ) un graphe orienté valué.
+Un circuit de G est dit absorbant si et seulement si sa valeur est négative.
+Maria Malek, Romain Dujol 55
+<<<PAGE>>>
+Théorème 5.3 (Condition d’existence de chemin optimal).
+Soit G = (V , A,γ, w ) un graphe orienté valué et (s , t )∈ V 2.
+Si il existe un chemin des à t et qu’aucun chemin des à t n’admet de circuit absorbant, alors
+il existe un chemin optimal de s à t .
+Remarque. Soit G = (V , A,γ, w ) un graphe orienté valué.
+On note V ={v1, v2, . . . ,vn} avec v1 = s et vn = t , ainsi que wi j =
+¤
+w (vi v j ) si vi v j∈ A
+0 sinon
+.
+Pour tout (i , j )∈ J1, nK2, on note xi j l’appartenance (ou non) devi v j au chemin optimal de s à t .
+Alors la recherche de chemin optimal des à t se ramène au problème d’optimisation linéaire suivant :
+
+
+
+min
+n∑
+i =1
+n∑
+i =1
+wi j xi j
+∀i∈ J1, nK ,
+n∑
+k =1
+xk i−
+n∑
+k =1
+xi k =
+
+
+
+1 si i = 1
+0 si i∈ J2, n− 1K
+−1 si i = n
+∀(i , j )∈ J1, nK2 , xi j∈{ 0, 1}
+5.4.2 Classiﬁcation des types de recherche
+Soit G = (V , A,γ, w ) un graphe orienté et valué.
+On identiﬁe les recherches de chemins optimaux dites :
+— « à source unique s et destination unique t » : recherche du chemin optimal de s à t
+— « à source unique s » : recherche du chemin optimal de s à t pour tout t∈ V
+— « à destination unique t » : recherche du chemin optimal de s à t pour tout s∈ V
+— « à sources multiples » : recherche du chemin optimal de s à t pour tout (s , t )∈ V 2
+On peut alors faire les remarques suivantes :
+— la recherche « à destination unique t » sur G est équivalente à la recherche « à source uniquet »
+sur le graphe obtenu par inversion de tous les arcs de G ;
+— effectuer une recherche « à source unique s et destination unique t » permet d’obtenir des che-
+mins optimaux de s aux prédecesseurs de t .
+Autrement dit, on se ramène à deux types de problématiques :
+— la recherche de chemins optimaux à « source unique » ;
+— la recherche de chemins optimaux à « sources multiples ».
+5.4.2.1 Problème à source unique
+Proposition 5.13 (Structure de l’ensemble des chemins optimaux).
+Soit G = (V , A,γ, w ) un graphe orienté valué de v0∈ V .
+Alors l’ensemble des chemins optimaux dev0 à tout sommet v∈ V est une arborescence couvrante
+dont la racine est v0.
+Maria Malek, Romain Dujol 56
+<<<PAGE>>>
+Il est possible de résoudre le problème en appliquant un algorithme de type « glouton » :
+— Initialement, tous les sommets sont à distance inﬁnie de v0, sauf v0 qui est à distance nulle.
+— Tant qu’il reste des sommets non visités,
+— visiter un sommet s non encore visité de distance à v0 minimale ;
+— mettre à jour les distances des successeurs de s .
+Plusieurs algorithmes gloutons de recherche de chemin optimal à source unique existent :
+BELLMAN -FORD (1956) Cet algorithme est adapté aux valuations quelconques et permet de détecter
+la présence de circuit absorbant.
+DIJKSTRA (1959) Cet algorithme est une optimisation de l’algorithme de BELLMAN -FORD pour les graphes
+à valuations positives, peu adaptée pour des graphes de grande taille.
+Nous présentons ici l’algorithme de DIJKSTRA :
+préconditions : G = (V , A,γ, w ) graphe orienté valué et v0∈ V
+postconditions : G (B ) est l’arborescence des chemins optimaux depuisv0
+postconditions : ∀v∈ V , d[v ] est la valeur du chemin optimal de v0 à v
+1 d : Tableau associatif de<Sommet> de réel
+2 pour v∈ V\{v0} faire
+3 d[v ]← +∞
+4 ﬁn pour
+5 d[v0]← 0
+6 V c← ∅
+7 B← ∅
+8 tant que V c⁄= V faire
+9 s est choisi dans argmin{d[v ], v/∈ V c}
+10 V c← V c∪{ s}
+11 pour v/∈ V c successeur de s faire
+12 si d[v ]> d[s ] + w (s v) alors
+13 B← B\{v′v, v′v∈ B}∪{ s v}
+14 d(v )← d(s ) + w (s v)
+15 ﬁn si
+16 ﬁn pour
+17 ﬁn tant que
+Algorithme 7: Algorithme de DIJKSTRA
+Remarque. Pour une recherche à source unique v0 et destination unique v∗, il sufﬁt de remplacer la
+condition « V c⁄= V » ligne 8 par la condition « v∗/∈ V c ».
+Proposition 5.14 (Convergence de l’algorithme de DIJKSTRA ).
+Soit G = (V , A,γ, w ) un graphe orienté et valué.
+Si w est à valeurs positives et G n’admet aucun circuit absorbant, alors l’algorithme de DIJKSTRA
+converge vers l’arborescence des chemins optimaux depuisv0 pour tout v0∈ V .
+La complexité de l’algorithme de DIJKSTRA est O
+ 
+card E + (cardV )· log(cardV )
+
+.
+Maria Malek, Romain Dujol 57
+<<<PAGE>>>
+Exemple.
+Poitiers Limoges
+Bordeaux Langon
+EISTI Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+EISTI Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+EISTI Cergy Orléans Tours Poitiers Limoges Angoulême Brive-la-G. Bordeaux Langon Montauban Auch EISTI Pau
+0 ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+V c← V c∪{ EISTI Cergy} 0 150 EISTI Cergy ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+V c← V c∪{ Orléans} 0 150 EISTI Cergy 269 Orléans ∞ 423 Orléans ∞ ∞ ∞ ∞ ∞ ∞ ∞
+V c← V c∪{ Tours} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans ∞ ∞ ∞ ∞ ∞ ∞ ∞
+V c← V c∪{ Poitiers} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers ∞ ∞ ∞ ∞ ∞ ∞
+V c← V c∪{ Limoges} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges ∞ 646 Limoges ∞ ∞ ∞
+V c← V c∪{ Angoulême} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême ∞ ∞ ∞
+V c← V c∪{ Brive-la-Gaillarde} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. ∞ ∞
+V c← V c∪{ Bordeaux} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. ∞ ∞
+V c← V c∪{ Langon} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. ∞ 794 Langon
+V c← V c∪{ Montauban} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. 854 Montauban 794 Langon
+V c← V c∪{ EISTI Pau} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. 854 Montauban 794 Langon
+V c← V c∪{ Auch} 0 150 EISTI Cergy 269 Orléans 377 Tours 423 Orléans 497 Poitiers 519 Limoges 632 Angoulême 644 Angoulême 765 Brive-la-G. 854 Montauban 794 Langon
+Maria Malek, Romain Dujol 58
+<<<PAGE>>>
+L ’arborescence des chemins optimaux depuis l’EISTI Cergy est :
+Poitiers Limoges
+Bordeaux Langon
+EISTI Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+EISTI Pau
+Auch
+150
+273
+119
+135 147 246
+120 96
+150
+108
+89
+Maria Malek, Romain Dujol 59
+<<<PAGE>>>
+5.4.2.2 Problème à sources multiples
+Une première solution peut consister en une recherche exhaustive, c’est-à-dire :
+— recenser tous les chemins ;
+— en choisir parmi ceux dont la valeur est la plus faible.
+Cette solution a une complexité exponentielle : elle est donc inutilisable en pratique car trop coûteuse.
+Une autre solution consiste en l’application d’un algorithme de type « glouton » : l’algorithme de FLOYD -
+WARSHALL .
+— Initialement, on part de la matrice d’adjacence du graphe.
+— Pour chaque sommet, on met à jour les distances des chemins passant par ce sommet.
+Déﬁnition 5.32 (Matrice des prédecesseurs).
+Soit G = (V , A,γ) un graphe orienté. On note V ={vi}1≤i≤n .
+La matrice des prédecesseurs de G est une matrice M carrée d’ordren = cardV à coefﬁcients
+dans V telle que :
+∀(i , j )∈ J1, nK2 , Pi j = vi si vi v j∈ A
+les autres éléments du tableau restant indéﬁnis.
+Nous présenterons ici l’algorithme de FLOYD -WARSHALL :
+préconditions : M est la matrice d’adjacence deG = (V , A, w )
+préconditions : P est la matrice des prédecesseurs de G = (V , A, w )
+postconditions : M contient les distances optimales
+postconditions : P contient les prédecesseurs des chemins optimaux
+pour k∈ J1, nK faire
+pour i∈ J1, nK faire
+pour j∈ J1, nK faire
+si Mi j> Mi k + Mk j alors
+Mi j← Mi k + Mk j
+Pi j← Pk j
+si Mi i< 0 alors
+/* Existence de circuit absorbant */
+ﬁn si
+ﬁn si
+ﬁn pour
+ﬁn pour
+ﬁn pour
+Maria Malek, Romain Dujol 60
+<<<PAGE>>>
+Exemple. On reprend l’exemple page 58 ainsi que l’ordre des sommets : EISTI Cergy, Orléans, Tours,
+Poitiers, Limoges, Angoulême, Brive-la-Gaillarde, Bordeaux, Langon, Montauban, Auch et EISTI Pau.
+Initialement, on a :
+M =
+
+
+C O T P L A B-G B La M Au Pa
+C 0 150 ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+O ∞ 0 119 ∞ 273 ∞ ∞ ∞ ∞ ∞ ∞ ∞
+T ∞ ∞ 0 108 ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+P ∞ ∞ ∞ 0 118 120 ∞ ∞ ∞ ∞ ∞ ∞
+L ∞ ∞ ∞ ∞ 0 107 96 ∞ 223 ∞ ∞ ∞
+A ∞ ∞ ∞ ∞ ∞ 0 ∞ 135 147 ∞ ∞ ∞
+B-G ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 246 ∞ ∞
+B ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 48 ∞ ∞ ∞
+La ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 150
+M ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 89 ∞
+Au ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 107
+Pa ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0
+
+
+P =
+
+
+C O T P L A B-G B La M Au Pa
+C C
+O O O
+T T
+P P P
+L L L L
+A A A
+B-G B-G
+B B
+La La
+M M
+Au Au
+Pa
+
+
+Maria Malek, Romain Dujol 61
+<<<PAGE>>>
+L ’application de l’algorithme de FLOYD -WARSHALL donne :
+M =
+
+
+C O T P L A B-G B La M Au Pa
+C 0 150 269 377 423 497 519 632 644 765 854 794
+O ∞ 0 119 227 273 347 369 482 494 615 704 644
+T ∞ ∞ 0 108 226 228 322 363 375 568 657 525
+P ∞ ∞ ∞ 0 118 120 214 255 267 460 549 417
+L ∞ ∞ ∞ ∞ 0 107 96 242 223 342 431 373
+A ∞ ∞ ∞ ∞ ∞ 0 ∞ 135 147 ∞ ∞ 297
+B-G ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 246 335 442
+B ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 48 ∞ ∞ 198
+La ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 150
+M ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 89 196
+Au ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 107
+Pa ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0
+
+
+P =
+
+
+C O T P L A B-G B La M Au Pa
+C C O T O P L A A B-G M La
+O O T O P L A A B-G M La
+T T P P L A A B-G M La
+P P P L A A B-G M La
+L L L A L B-G M La
+A A A La
+B-G B-G M Au
+B B La
+La La
+M M Au
+Au Au
+Pa
+
+
+On peut alors obtenir les chemins optimaux en remontant la liste des prédecesseurs :
+— le chemin optimal d’Orléans à Angoulême (valeur : 347) est A ← P← T← O ;
+— le chemin optimal entre les deux campus (valeur : 794) est Pa ← La← A← P← T← O← C qui
+est bien celui obtenu par l’algorithme de DIJKSTRA .
+Maria Malek, Romain Dujol 62
+<<<PAGE>>>
+Chapitre 5. Graphes orientés — TD
+Graphes orientés
+Exercice 5.1. Soit G un graphe orienté et C un circuit de G .
+Montrer qu’il existe une partition(Ci )i≤i≤p de C telle que C i est l’ensemble des arcs d’un circuit élé-
+mentaire pour tout i∈ J1, p K.
+Exercice 5.2. Soit G = (V , E ,γ) un graphe orienté. On note V ={v1, . . . ,vn} avec n = cardV et M est la
+matrice d’adjacence de G .
+1. Montrer que :
+∀k∈ N∗,∀(i , j )∈ J1, nK2 , (M k )i j = card{chemins d’extrêmités vi et v j de longueur k}
+Appliquer ce résultat sur l’exemple du cours lorsque k= 3 et (i , j ) = (2, 3).
+2. En déduire que G est sans circuit si et seulement si M est nilpotente, i.e. il existe k ∈ N∗ tel que
+M k = 0.
+Arborescences
+Exercice 5.3. Montrer qu’un graphe orienté est une arborescence si et seulement si il admet une racine
+et qu’il est minimal pour cette propriété (au sens de la suppression des arcs).
+Exercice 5.4. Déterminer (si il existe) un tri topologique du graphe suivant :
+Maria Malek, Romain Dujol 63
+<<<PAGE>>>
+Recherche de chemins optimaux
+Exercice 5.5. Le graphe ci-dessous donne le temps (très) indicatif en minutes de parcours en métro/RER/OrlyBus
+entre deux stations.
+ChâteletChamps-Élysées
+Clémenceau Concorde
+Gare Montparnasse Denfert-Rochereau
+Antony Aérogare Orly-Ouest
+EISTI Cergy
+La Défense
+Saint-Michel
+39 min
+9 min15 min
+2 min
+9 min
+4 min
+6 min
+8 min
+11 min
+6 min
+42 min
+6 min
+12 min 20 min
+6 min
+Quel est le chemin le plus court de l’école jusqu’à la gare ? jusqu’à l’aéroport ?
+Exercice 5.6. Appliquer l’algorithme deFLOYD -WARSHALL au graphe suivant :
+B
+C
+A D
+1
+3 1
+4
+2
+Maria Malek, Romain Dujol 64
+<<<PAGE>>>
+Chapitre 6
+Graphes bipartis et problèmes d’affectation
+6.1 Graphes bipartis
+6.1.1 Couplage
+Déﬁnition 6.1 (Couplage). Soit G = (V , E ,γ) un graphe non orienté.
+Un couplage de G est une partie C de E telle que deux arêtes quelconques de C n’aient aucun
+sommet en commun.
+Un couplage de G est dit maximal si et seulement si il est maximal en nombre d’arêtes.
+Un couplage C de G est dit complet ou parfait si et seulement si son sous-graphe engendréGC
+est couvrant.
+Proposition 6.1. Tout couplage parfait d’un graphe non orienté est maximal.
+Démonstration. Comme le couplage est couvrant, l’ajout d’une arête brise la condition de couplage.
+Exemple. G =
+A
+D E
+B C
+{AD , B E} est un couplage (maximal) de G , mais G n’admet pas de couplage parfait.
+6.1.2 Transversal
+Déﬁnition 6.2 (Transversal). Soit G = (V , E ,γ) un graphe non orienté.
+Un transversal deG est une partie T de V telle que toute arête deE soit incidente à un sommet
+de T .
+Un transversal de G est dit minimal si et seulement si il est minimal en nombre de sommets.
+Maria Malek, Romain Dujol 65
+<<<PAGE>>>
+Exemple. G =
+A
+D E
+B C
+{A, B, C} et{D , E} sont des transversaux de G : le dernier est minimal.
+6.1.3 Théorème de K ÖNIG
+Théorème 6.1 (Dualité faible). Soit G un graphe non orienté.
+Pour tout couplage C de G , pour tout transversal T de G , cardC≤ cardT .
+Démonstration. Soit C un couplage de G et T un transversal de G .
+Alors chaque sommet de T est extrémité d’au plus une arête deC . Donc cardC≤ cardT .
+Théorème 6.2 (Dualité forte (KÖNIG , 1931)). Soit G un graphe biparti.
+Pour tout couplage maximal C de G , pour tout transversal minimalT de G , cardC = cardT .
+Démonstration. On déﬁnit d’abord la notion de chaîne alternante.
+Déﬁnition (Chaîne alternante). Soit G = (V1, V2, E ,γ) un graphe biparti et C un couplage de G .
+Une chaîne alternante par rapport à C est une chaîne telle que :
+— l’une des extrêmités est un sommet de V1 qui n’est pas une extrêmité d’une arête deC ;
+— les arêtes qui la composent sont alternativement dans C et dans E\C .
+Exemple. Dans G =
+A
+D E
+B C
+, (C , E , B, D , A) est une chaîne alternante par rapport au couplage{AD , B E}.
+Soit G = (V1, V2, E ,γ) un graphe biparti et C un couplage maximal et :
+— U l’ensemble des sommets deV1 qui ne sont pas des extrêmités d’arêtes deC ;
+— Z l’ensemble des sommets accessibles depuis un sommet deU par une chaîne (éventuellement de lon-
+gueur nulle) alternant arête de E\C et arête de C .
+Soit e une arète de C d’extrêmitésx1∈ V1 et x2∈ V2 :
+— si x2∈ Z , alors la chaîne alternanteC atteint x2 par une arête de E\C : doncC∪ e est une chaîne alter-
+nante atteignant x1 ; d’oùx1∈ Z ;
+— si x1∈ Z , alors x1/∈ U : x1 a donc été atteint par une chaî ne alternante de longueur non nulle avec une
+arête de C ; comme C est un couplage, il s’agit nécessairement dee ; d’oùx2∈ Z .
+c’est-à-direx1∈ Z ⇐⇒ x2∈ Z .
+Notons T = (V1\Z )∪ (V2∩ Z ) :
+— si x1∈ Z alors x2∈ Z : donc x1/∈ T et x2∈ T
+— si x1/∈ Z alors x2/∈ Z : donc x1∈ T et x2/∈ T .
+Donc T contient exactement une extrêmité de chaque arête de C et cardT≥ cardC .
+Maria Malek, Romain Dujol 66
+<<<PAGE>>>
+Exemple. G =
+A
+D E
+B C
+— {AD , B E} est un couplage maximal de G et n’est pas unique ({B D, C E} convient également) ;
+— {D , E} est l’unique transversal minimal deG .
+6.2 Problèmes d’affectation
+6.2.1 Modélisation
+Déﬁnition 6.3 (Problème d’affectation).
+Soit G = (V1, V2, E ,γ, w ) un graphe biparti complet valué tel que cardV1 = cardV2.
+Un problème d’affectation surG est la recherche d’un couplage parfaitC tel que
+∑
+e∈C
+w (e ) soit
+minimal.
+IMPORTANT . L ’application standard de ce type de problème est la recherche de l’affectation à moindre
+coût de n agents à n tâches :
+— V1 est l’ensemble desn agents ;
+— V2 est l’ensemble desn tâches à réaliser ;
+— w ({x1, x2}) est le coût d’affectation de l’agentx1 à la tache x2.
+Déﬁnition 6.4 (Matrice d’affectation).
+Soit G = (V1, V2, E ,γ, w ) un graphe biparti complet valué tel que cardV1 = cardV2.
+La matrice d’affectation deG est une matrice carrée A d’ordren = cardV1 = cardV2 telle que :
+∀(i , j )∈ J1, nK2 , ai j = w
+
+v (1)
+i v (2)
+j
+
+avec V1 ={v (1)
+i }1≤i≤n et V2 ={v (2)
+i }1≤i≤n .
+Remarque. Si on note xi j affectation (ou non) de l’agent n o i à la tâche n o j pour tout (i , j )∈ J1, nK2,
+alors le problème d’affectation sur G se ramène au problème d’optimisation linéaire en nombres en-
+tiers suivant : 
+
+
+min
+n∑
+i =1
+n∑
+i =1
+ai j xi j
+n∑
+i =1
+xi j = 1 ,
+n∑
+j =1
+xi j = 1
+∀(i , j )∈ J1, nK2 , xi j∈{ 0, 1}
+Maria Malek, Romain Dujol 67
+<<<PAGE>>>
+6.2.2 Méthode « hongroise »
+On présente un algorithme de recherche de solution du problème d’affectation, l’algorithme de
+KUHN -MUNKRES , souvent appelé « méthode hongroise ».
+Init. On part de la matrice d’affectationdu graphe.
+Étape 1 (a) On enlève à chaque ligne sa plus petite valeur.
+(b) On enlève à chaque colonne sa plus petite valeur.
+Si des emplacements des valeurs nulles donnent une affectation valide, l’algorithme s’arrête.
+Sinon, on passe à l’étape 2.
+Étape 2 (a) On choisit un ensemble minimal de lignes et de colonnes couvrant la totalité des valeurs
+nulles.
+(b) On cherche la plus petite valeur non couverte et :
+— on la soustrait à tous les élements non couverts ;
+— on l’ajoute aux intersections des lignes et colonnes couvrantes.
+Si des emplacements des valeurs nulles donnent une affectation valide, l’algorithme s’arrête.
+Sinon, on recommence l’étape 2.
+Théorème 6.3 (KUHN , 1955 ; MUNKRES , 1957).
+L ’algorithme de KUHN -MUNKRES résout le problème d’affectation en un temps polynômial.
+Exemple. Soit le problème d’affectation associé à la matrice
+
+
+7 1 3
+5 2 8
+6 9 4
+
+.
+Étape 1 (a) On enlève à chaque ligne sa plus petite valeur :
+
+
+6 0 2
+3 0 6
+2 5 0
+
+.
+(b) On enlève à chaque colonne sa plus petite valeur.
+
+
+4 0 2
+1 0 6
+0 5 0
+
+.
+L ’affectation n’est pas valide.
+Étape 2 (a) Un ensemble minimal de lignes et colonnes couvrant les valeurs nulles est composé de
+la ligne no 3 et de la colonne no 2.
+(b) La valeur minimale non couverte est alors 1 (ligne n o 2, colonne no 1).
+— on la soustrait à tous les élements non couverts :
+
+
+3 0 1
+0 0 5
+0 5 0
+
+.
+— on l’ajoute aux intersections des lignes et colonnes couvrantes :
+
+
+3 0 1
+0 0 5
+0 6 0
+
+.
+(c) L ’affectation est valide et a un coût de 1+ 5 + 4 = 10.
+Maria Malek, Romain Dujol 68
+<<<PAGE>>>
+6.3 Problèmes de planiﬁcation
+6.3.1 Introduction
+La problématique est la suivante : étant des cours à assurer des enseignants donnés à des classes
+données, comment répartir ces cours sur la période la plus courte possible sachant que :
+— un enseignant ne peut faire cours à deux classes différentes simultanément ;
+— une classe ne peut avoir deux cours avec des enseignants différents simultanément.
+Aﬁn d’alléger les calculs, on fait l’hypothèse que tous les cours ont la même durée.
+6.3.2 Modélisation
+On choisit de modéliser un tel problème par un graphe biparti G = (V1, V2, E ,γ) où
+— V1 est l’ensemble des enseignants ;
+— V2 est l’ensemble des classes ;
+— E est l’ensemble des cours, représentés comme des associations enseignant-classe.
+Compte tenu des contraintes de non-simultanéité, l’ensemble des cours pouvant être dispensés simul-
+tanément est un couplage de G .
+On recherche donc une partition de E , dont le nombre de parties est minimal, telle que chaque
+partie soit un couplage.
+Déﬁnition 6.5 (Créneau. Emploi du temps). Soit G = (V1, V2, E ,γ) un graphe biparti.
+Un emploi du temps deG est une partitionT de E dont chaque élément est un couplage deG .
+Tout élément de cette partitionT est appelé un créneau deT .
+Proposition 6.2. Soit G = (V1, V2, E ,γ) un graphe biparti.
+L ’ensemble des emplois du temps deG est en bijection avec l’ensemble des colorations des arêtes
+propres de G .
+Démonstration. SiT est un emploi du temps de G , on associe une couleur à chaque partie constitutive de T .
+Comme chacune de ces parties est un couplage, la coloration des arêtes associée est propre.
+Si c1 est une coloration des arêtes propre de G , alors pour chaque couleur, la partie des arêtes de même
+couleur est un couplage deG . Donc la partition de E en parties de même couleur constitue un emploi du temps
+de G .
+6.3.3 Ajout de la contrainte des salles
+Jusqu’à présent, on fait l’hypothèse que l’on peut dispenser autant de cours simultanément que
+nécessaire.
+Si le nombre de salles est limité, cette hypothèse peut ne plus être vériﬁée : le nombre de salles
+effectivement utilisé pour chaque créneau est le nombre d’arêtes dans le couplage correspondant.
+Déﬁnition 6.6 (Emploi du temps à s salles). Soit G = (V1, V2, E ,γ) un graphe biparti et s∈ N.
+Un emploi du temps de G à s salles est un emploi du tempsT = (Ci )1≤i≤p tel que
+∀∈ J1, p K , card Ci≤ s
+Maria Malek, Romain Dujol 69
+<<<PAGE>>>
+Proposition 6.3 (Nombre minimal de créneaux).
+Soit G = (V1, V2, E ,γ) un graphe biparti et ∆ = max{d (v ), v∈ V1∪ V2}.
+Le plus petit nombre de créneaux d’un emploi du temps deG à s salles estpmin = max
+
+∆,
+¡ card E
+s
+⁄
+.
+Remarque. La limitation par le nombre de salles n’est effective que lorsque∆<
+¡ card E
+s
+⁄
+.
+6.3.4 Existence d’emploi du temps équilibré
+L ’emploi du temps ﬁnal a intérêt à utiliser au maximum les salles disponibles, et ce à chaque cré-
+neau. Il faut alors éviter les emplois du temps trop disparates et considérer des versions équilibrées.
+Déﬁnition 6.7 (Emploi du temps équilibré). Soit G = (V1, V2, E ,γ) un graphe biparti.
+Un emploi du tempsT = (Ci )1≤i≤p de G est dit équilibré si et seulement si
+∀(i , j )∈ J1, p K ,| cardCi− cardC j|≤ 1
+Proposition 6.4 (Nombre d’arêtes dans les créneaux).
+Soit G = (V1, V2, E ,γ) un graphe biparti etT = (Ci )1≤i≤p un emploi du temps équilibré de G .
+Alors∀i∈ J1, p K ,
+ card E
+p
+
+≤ cardCi≤
+¡ card E
+p
+⁄
+.
+Théorème 6.4 (Existence d’emploi du temps équilibré).
+Soit G = (V1, V2, E ,γ) un graphe biparti et ∆ = max{d (v ), v∈ V1∪ V2}.
+Alors pour tout entier p≥ ∆, il existe un emploi du temps équilibré à p créneaux
+Démonstration. Soit p≥ ∆. D’après le théorème de KÖNIG ,χ1(g ) = ∆ : donc p≥χ1(G ).
+Donc il existe une p -coloration propre de G pour les arêtes, c’est-à-dire un emploi àp créneaux.
+SoitT = (Ci )1≤i≤p un emploi du temps quelconque à p créneaux et
+(i1, j1) = argmax
+
+| cardCi− cardC j|, (i , j )∈ J1, p K2	
+On échange les appartenances des arêtes de Ci1 et C j1 dans les chaînes alternantes de Ci1∪ C j1 de longueur
+impaire jusquà ce que| cardCi1− cardC j1|≤ 1.
+On recommence l’opération jusqu’à équilibrer l’emploi du temps dans son ensemble.
+Remarque.
+— L ’emploi du temps initial n’a pas à être équilibré.
+— La démonstration est constructive : elle donne donc une technique d’équilibrage d’un emploi
+du temps.
+Maria Malek, Romain Dujol 70
+<<<PAGE>>>
+6.3.5 Application
+Soit G =
+A
+1 2
+B
+3
+C
+4 5
+D
+On a G = (V1, V2, E ,γ) avec cardV1 = 4, cardV2 = 5, card E = 13.
+On fait l’hypothèse des = 3 salles disponibles. Alors pmin = max
+
+4,
+¡ 13
+3
+⁄
+= max(4, 5) = 5.
+On cherche donc un emploi du tempsT = (Ci )1≤i≤5 équilibré, i.e. tel que
+∀i∈ J1, 5K , card Ci∈ J2, 3K
+Choix de l’emploi du temps initial
+On choisit l’emploi du temps à cinq créneauxT = (C1, C2, C3, C4, C5) avec (cf. ﬁgure 6.1) :
+— C1 ={A1, B2, C3, D4} (en bleu dans la ﬁgure 6.1)
+— C2 ={A2, B3, C4, D5} (en rouge dans la ﬁgure 6.1)
+— C3 ={A2, B1, C5} (en marron dans la ﬁgure 6.1)
+— C4 ={C2, D5} (en vert dans la ﬁgure 6.1)
+— C5 = ∅ (en noir)
+Comme cardC1> 3,T n’est pas équilibré.
+A
+1 2
+B
+3
+C
+4 5
+D
+FIGURE 6.1 – Emploi du temps à cinq créneaux initial
+Première itération : C1 (4 arêtes) et C5 (0 arête)
+On échange deux arêtes de C1 et que l’on place dansC5 (cf. ﬁgure 6.2) :
+A
+1 2
+B
+3
+C
+4 5
+D
+−→
+A
+1 2
+B
+3
+C
+4 5
+D
+FIGURE 6.2 – Première étape : C1 et C5
+Maria Malek, Romain Dujol 71
+<<<PAGE>>>
+Deuxième itération : C2 (4 arêtes) et C4 (2 arêtes)
+On échange l’appartenance des arêtes dans la chaîne (A,2,C,4) de longueur trois (cf. ﬁgure 6.3) :
+A
+1 2
+B
+3
+C
+4 5
+D
+−→
+A
+1 2
+B
+3
+C
+4 5
+D
+FIGURE 6.3 – Deuxième étape : C2 et C4
+Conclusion
+On obtient donc l’emploi du temps de la ﬁgure 6.4.
+A
+1 2
+B
+3
+C
+4 5
+D
+FIGURE 6.4 – Emploi du temps à cinq créneaux équilibré
+Comme card C1 = cardC5 = 2 et card C2 = cardC3 = cardC4 = 3, cet emploi du temps à trois salles
+est équilibré. Il correspond à la planiﬁcation suivante :
+Premier créneau (C1)
+— Salle 1 : Enseignant A, classe 1
+— Salle 2 : Enseignant B, classe 2
+Deuxième créneau (C2)
+— Salle 1 : Enseignant B, classe 3
+— Salle 2 : Enseignant C, classe 2
+— Salle 3 : Enseignant D, classe 5
+Troisième créneau (C3)
+— Salle 1 : Enseignant A, classe 2
+— Salle 2 : Enseignant B, classe 1
+— Salle 3 : Enseignant C, classe 5
+Quatrième créneau (C4)
+— Salle 1 : Enseignant A, classe 2
+— Salle 2 : Enseignant C, classe 4
+— Salle 3 : Enseignant D, classe 5
+Cinquième créneau (C5)
+— Salle 1 : Enseignant C, classe 3
+— Salle 2 : Enseignant D, classe 4
+Maria Malek, Romain Dujol 72
+<<<PAGE>>>
+Chapitre 6. Graphes bipartis et problèmes d’affectation — TD
+Problèmes d’affectation
+Exercice 6.1. Un agent immobilier dispose de cinq maisons à vendre dont les prix de vente sont donnés
+en table 6.1.
+Maison m1 m2 m3 m4 m5
+Prix 7 12 10 15 9
+TABLE 6.1 – Prix de vente des maisons (en dizaine de milliers d’euros)
+Cinq acheteurs potentiels sont interéssés par ces maisons, mais ils ne décideront d’acheter une maison
+que si son prix de vente est inférieur à leur propre estimation. Ces estimations sont données en table 6.2.
+m1 m2 m3 m4 m5
+a1 8 14 9 15 7
+a2 9 11 10 14 8
+a3 6 13 9 17 10
+a4 8 10 11 14 7
+a5 9 11 11 12 8
+TABLE 6.2 – Estimation des maisons (en dizaine de milliers d’euros) par les acheteurs
+1. Montrer que la demande des cinq acheteurs ne pourra pas être satisfaite, mais qu’elle le sera si le
+prix de vente de m5 est réévalué à 70 000 €.
+2. Dans cette question, le prix de vente de m 5 est ﬁxé à 70 000 €.
+Déterminer une affectation des cinq maisons aux cinq acheteurs de manière à maximiser la somme
+des écarts entre l’estimation de la maison et son prix de vente.
+Problèmes de planiﬁcation
+Exercice 6.2. On considère l’emploi du temps suivant (A, B, C, D : enseignants ; 1, 2, 3, 4, 5 : classes) :
+A B C D
+C1 1 2 4
+C2 3 1 4 5
+C3 5 1 2
+C4 3 2 1
+C5 4 3
+C6 5 1 3
+1. Combien cet emploi du temps nécessite-t-il de salles ?
+2. (a) Montrer , sans le calculer , qu’il existe un emploi du temps pour le même ensemble de cours avec
+le même nombre de créneaux qui nécessite une salle de moins.
+(b) Calculer un tel emploi du temps de manière à ce que l’enseignant B n’ait pas de cours durant
+les deux derniers créneaux.
+3. (a) Déterminer le nombre de créneaux nécessaires pour assurer le même ensemble de cours avec
+deux salles.
+(b) Calculer un tel emploi du temps.
+Maria Malek, Romain Dujol 73
+<<<PAGE>>>
+Chapitre 7
+Réseaux de transport
+7.1 Déﬁnitions
+7.1.1 Réseau de transport
+Déﬁnition 7.1 (Réseau de transport).
+Un réseau de transport est un graphe orienté simple et valué N = (V , A,γ, c ) tel que :
+— il existe un unique sommet source s ;
+— il existe un unique sommet puits t ;
+— il existe un chemin reliant s à t ;
+— c est une fonction à valeurs positives appelée capacité de N .
+— pour tout arc de A, l’arc opposé n’est pas dansA.
+Exemple.
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+7.1.2 Flot
+Déﬁnition 7.2 (Flot dans un réseau de transport). Soit N = (V , A,γ, c ) un réseau de transport.
+Un ﬂot sur N est une valuation w du graphe orienté (V , A,γ) telle que :
+— ∀(v, v′)∈ V 2, 0≤ w (v v′)≤ c (v v′)
+— ∀v∈ V\{s , t},
+∑
+a v∈A
+w (a v) =
+∑
+v b∈A
+w (v b) (« loi de KIRCHHOFF » ou « loi des nœuds »).
+Remarque. On représente un ﬂot un réseau transport en ajoutant les informations de valuations en
+plus de la capacité : v′v
+w (v v′)/c (v v′)
+Maria Malek, Romain Dujol 74
+<<<PAGE>>>
+Déﬁnition 7.3 (Valeur d’un ﬂot). Soit N = (V , A,γ, c ) un réseau de transport et w un ﬂot sur N .
+La valeur de w est le réel
+∑
+s x∈A
+v (s x) =
+∑
+x t∈A
+v (x t ).
+Remarque. Autrement dit, la valeur du ﬂot est la somme des valeurs de tous les arcs sortant de s (ou
+de tous les arcs entrant en t , l’égalité des deux expressions étant assurée par la loi « des nœuds »).
+Exemple.
+s
+v1
+v3
+v2 v4
+t
+1/2
+1/1
+0/3
+1/1
+1/1
+1/1
+2/22/3
+0/2
+La valeur de ce ﬂot est 2. En effet, w (s v1) + w (s v3) = 1 + 1 = 2 et w (v4t ) + w (v3t ) = 2 + 0 = 2.
+Déﬁnition 7.4 (Flot maximal). Soit N = (V , A,γ, c ) un réseau de transport et w un ﬂot sur N .
+w est dit maximal sur N si et seulement si sa valeur est maximale parmi tous les ﬂots sur N .
+7.1.3 Coupe
+Déﬁnition 7.5 (Coupe). Soit G = (V , A,γ) un graphe orienté.
+On déﬁnit une coupe sur G de deux manières équivalentes :
+— une partition {X1, X2} des sommets de X ;
+— l’ensemble des arcs dont l’origine est dans X1 et la destination dans X2.
+Soit (s , t )∈ V 2. Une coupe s− t sur G est une coupe{X1, X2} sur G telle que s∈ X1 et t∈ X2.
+Déﬁnition 7.6 (Poids d’une coupe). Soit G = (V , A,γ, w ) un graphe orienté valué.
+SoitC ={X1, X2} une coupe sur (V , A,γ).
+Le poids deC , noté w (C ), est le réel w (C ) =
+∑
+(v1,v2)∈X1×X2
+w (v1v2) =
+∑
+a∈C
+w (a ).
+Remarque. Autrement dit, le poids d’une coupe est la somme des valeurs des arcs qui la composent.
+Maria Malek, Romain Dujol 75
+<<<PAGE>>>
+Exemple.
+s
+v1
+v3
+v2 v4
+t
+1
+1
+0
+1
+1
+1
+22
+0
+C ={{s , v1, v2},{v4, v3, t}} est une coupe s− t également représentable par{v1v4, v2v3, s v3}.
+Son poids est w (C ) = w (v1v4) + w (v2v3) + w (s v3) = 1 + 1 + 1 = 3.
+Déﬁnition 7.7 (Coupe s− t minimale). Soit G = (V , A,γ, w ) un graphe orienté valué et (s , t )∈ V 2.
+Une coupe s−tC sur G est dite minimale surG si et seulement si son poids est minimal parmi
+toutes les coupes s− t sur G .
+7.2 Recherche de ﬂot maximal
+Remarque. Soit N = (V , A,γ, c ) un réseau de transport.
+On note V ={v1, v2, . . . ,vn} avec v1 = s et vn = t , ainsi que ci j =
+¤
+c (vi v j ) si vi v j∈ A
+0 sinon
+.
+Pour tout ﬂot w sur N , on note wi j =
+¤
+w (vi v j ) si vi v j∈ A
+0 sinon
+.
+Alors la recherche de ﬂot maximal sur N se ramène au problème d’optimisation linéaire suivant :
+
+
+
+max
+n∑
+i =2
+w1i =
+n−1∑
+i =1
+wi n
+∀(i , j )∈ J1, nK2 , 0≤ wi j≤ ci j
+∀i∈ J2, n− 1K ,
+n∑
+k =1
+wk i−
+n∑
+k =1
+wi k = 0 (loi de K IRCHHOFF )
+Maria Malek, Romain Dujol 76
+<<<PAGE>>>
+7.2.1 Flot et couplage d’un graphe biparti
+Déﬁnition 7.8 (Réseau de transport associé à un graphe biparti).
+Soit G = (V1, V2, E ) un graphe biparti.
+On construit le réseau de transport associé à G de la manière suivante :
+1. on ajoute deux sommets s et t ;
+2. pour tout v1∈ V1, on ajoute un arc de s vers v1 ;
+3. pour tout v2∈ V2, on ajoute un arc de v2 vers t ;
+4. on remplace toute arête de G entre v1∈ V1 et v2∈ V2, par un arc de v1 vers v2 ;
+5. tout arc a une capacité de 1.
+Exemple. Le réseau de transport associé à K3,2 =
+A
+D
+E
+B
+C
+est :
+s
+A
+B
+C
+t
+D
+E
+1
+1
+1
+1
+1 1
+11
+1
+1
+1
+Théorème 7.1 (Recherche de couplage maximal).
+Rechercher un couplage maximal dans un graphe biparti revient à rechercher un ﬂot maxi-
+mal dans le réseau de transport associé.
+IMPORTANT . Le couplage est alors constitué des arêtes dont les arcs correspondants dans le réseau de
+transport sont de valeur un dans le ﬂot maximal.
+7.2.2 Théorème ﬂot-max /coupe-min
+Théorème 7.2 (Flot-max/coupe-min).
+Soit N = (V , A, c ) un réseau de transport de source s et de puits t .
+Alors la valeur d’un ﬂot maximal sur N est égal au poids d’une coupe minimale s− t sur le
+graphe orienté valué (V , A, c ).
+Maria Malek, Romain Dujol 77
+<<<PAGE>>>
+7.2.3 Algorithme de F ORD -FULKERSON
+Plusieurs algorithmes de recherche de ﬂot maximal existent :
+FORD -FULKERSON (1956) Cet algorithme est adapté aux capacités à valeurs entières, mais peu adapté
+pour des ﬂots de grande valeur.
+EDMONDS -KARP (1972) C’est une modiﬁcation de l’algorithme de FORD -FULKERSON en forçant à chaque
+itération une recherche en largeur d’abord du chemin.
+etc...
+Nous présenterons ici l’algorithme de FORD -FULKERSON :
+Soit N = (V , A, c ) un réseau de transport de source s et de puits t .
+0. On part d’un ﬂot nul, i.e. w (v v′) = 0,∀v v′∈ A.
+1. Tant qu’il existe un cheminP de s à t dans N tel que c (P ) = min
+(x ,y )∈P
+c (x , y )> 0,
+on met à jour w et N de la manière suivante : pour toute arête x y∈ P ,
+— w (x y )← w (x y ) + c (P )
+— c (x y )← c (x y )− c (P )
+— c (y x )← c (y x ) + c (P ) [si y x n’existait pas, on le crée]
+2. Si un tel chemin n’existe pas, w est un ﬂot maximal et l’algorithme s’arrête.
+Algorithme 8: Algorithme de FORD -FULKERSON
+Exemple. Initialisation
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+s
+v1
+v3
+v2 v4
+t
+0/2
+0/1
+0/3
+0/1
+0/1
+0/1
+0/20/3
+0/2
+Maria Malek, Romain Dujol 78
+<<<PAGE>>>
+Itération no 1 : P = (s , v1, v2, v3, v4, t ) et c (P ) = 1
+s
+v1
+v3
+v2 v4
+t
+1
+1
+2
+1
+0
+1
+12
+21
+1
+1 1 1
+s
+v1
+v3
+v2 v4
+t
+1/2
+0/1
+1/3
+0/1
+1/1
+0/1
+1/21/3
+0/2
+Itération no 2 : P = (s , v1, v4, t ) et c (P ) = 1
+s
+v1
+v3
+v2 v4
+t
+0
+1
+2
+0
+0
+1
+02
+22
+1
+1 1 2
+1
+s
+v1
+v3
+v2 v4
+t
+2/2
+0/1
+1/3
+1/1
+1/1
+0/1
+2/21/3
+0/2
+Maria Malek, Romain Dujol 79
+<<<PAGE>>>
+Itération no 3 : P = (s , v3, t ) et c (P ) = 1
+s
+v1
+v3
+v2 v4
+t
+0
+0
+2
+0
+0
+1
+02
+12
+1
+1 1 2
+1
+1 1
+s
+v1
+v3
+v2 v4
+t
+2/2
+1/1
+1/3
+1/1
+1/1
+0/1
+2/21/3
+1/2
+Tout chemin P de s à t vériﬁe c (P ) = 0, donc l’algorithme s’arrête.
+Remarque. La valeur du ﬂot maximal trouvé est 3 donc, d’après le théorème ﬂot-max/coupe-min, toute
+coupe minimale a un poids égal à 3, comme{s v1, s v3} ou{v1v4, v2v3, s v3} :
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+Maria Malek, Romain Dujol 80
+<<<PAGE>>>
+Chapitre 7. Réseaux de transport — TD
+Exercice 7.1. Déterminer un couplage maximal de K 3,2 à l’aide de l’algorithme deFORD -FULKERSON .
+Exercice 7.2. On considère le réseau de transport suivant :
+s
+u
+v
+t
+1000
+1000 1
+1000
+1000
+1. Montrer que l’algorithme de FORD -FULKERSON peut converger en deux itérations.
+2. Montrer que l’algorithme de FORD -FULKERSON peut nécessiter deux mille itérations.
+3. Que dire de la complexité de cet algorithme tel qu’il est présenté ?
+Exercice 7.3. Un serveur s est connecté à une machine t via un réseau de quatre nœuds. On donne les
+capacités des connexions entre les nœuds dans la table 7.1.
+a b c d t
+s 2 6 2
+a 3 7
+b 3 5
+c 2 6
+d 4
+TABLE 7.1 – Capacités des connexions entre les nœuds (en Mb /s)
+On souhaite établir une règle de routage permettant le débit maximal lors du téléchargement d’une
+ressource sur le serveur s par la machine t .
+1. Identiﬁer le type de problème posé et un algorithme pour le résoudre.
+2. Appliquer cet algorithme de manière détaillée.
+3. En déduire le débit maximal et le routage obtenu.
+Maria Malek, Romain Dujol 81

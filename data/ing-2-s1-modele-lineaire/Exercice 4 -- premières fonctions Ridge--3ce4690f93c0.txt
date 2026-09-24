@@ -1,0 +1,36 @@
+# **** Centrer et r�duire les donn�es *****
+dataS = data.frame(scale(cigarettes))
+# ****  Construire un groupe entrainement et un groupe test 
+dataSapp=dataS[c(1:15),]
+dataStest=dataS[c(16:24),]
+# ****  centrer et r�duire le groupe entrainement et le groupe test ****
+dataSapp1 = data.frame(scale(dataSapp))
+dataStest1 = data.frame(scale(dataStest))
+# **************    Premi�res utilisations de fonction R *******
+# ******* installation de quelques libraries utiles ******
+library(MASS)
+install.packages('glmnet')
+library(Matrix)
+library(glmnet)
+install.packages('lmridge')
+library(lmridge)
+# ******************* avec la fonction lmridge **************
+### avec lambda =0
+mod.ridge1=lmridge(CO~.,data=dataSapp1,K=0)
+summary(mod.ridge1)
+print.lmridge(mod.ridge1)
+predtest1=predict(mod.ridge1,dataStest1)
+predtestt1=predtest1*sd(cigarettes$CO[16:24])+mean(cigarettes$CO[16:24])
+print(predtestt1)
+## Question :  Comparer vos r�sultats avec ceux obtenus dans l'exercice 3 TD3 sans r�ugularisation
+# *************************
+### avec lambda =0.0712
+mod.ridge2=....
+summary(mod.ridge2)
+print.lmridge(mod.ridge2)
+predtest2=....
+predtestt2=....
+print(predtestt2)
+# *************************
+## Question :  Comparer vos r�sultats avec ceux obtenus dans l'exercice 3 TD3 avec lambda=0.0712
+

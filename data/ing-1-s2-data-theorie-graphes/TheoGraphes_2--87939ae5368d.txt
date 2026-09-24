@@ -1,0 +1,429 @@
+Théorie des graphes
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc
+CY T/e.sc/c.sc/h.sc– ING1-MA
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc 1
+<<<PAGE>>>
+Arbres
+Arbre
+Arbre couvrant
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 37
+<<<PAGE>>>
+Arbre
+Arbre
+Définition
+Structure
+Forêt
+Isthme
+Caractérisations
+Arbre couvrant
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 38
+<<<PAGE>>>
+Arbre
+Définition (Arbre)
+Graphe non orienté connexe et acyclique (i.e. sans cycle)
+Propriété
+1. Tout arbre est un graphe simple
+2. Toute chaîne élémentaire est un arbre.
+Démonstration.
+1. Toute boucle est un cycle.
+Deux arêtes multiples induisent un cycle.
+2. Soit C = (v0, v1, . . . ,vp) élémentaire :
+▶ tous les sommets sont reliés⇒ C connexe
+▶ tous les sommets sont distincts⇒ C acyclique
+Donc C est un arbre.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 39
+<<<PAGE>>>
+Arbre
+Exemples
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 40
+<<<PAGE>>>
+Structure d’un arbre (1/3)
+Propriété (Existence de sommets de degré un)
+Soit G = (V, E) un arbre tel que card V≥ 2.
+Alors card{v∈ V, d(v) = 1}≥ 2.
+Démonstration.
+Soit C = (v0, v1, . . . ,vp) une chaîne élémentaire de G maximale
+(au sens de la longueur).
+Par l’absurde : sid(v0)≥ 2⇒∃ v⁄= v1, v0v∈ E.
+On note C′ = (v, v0, v1, . . . ,vp).
+▶ v∈{ vi}2≤i≤n⇒ C′ cycle
+▶ v /∈{ vi}2≤i≤n⇒ C′ élémentaire et 𝓁(C′) > 𝓁(C).
+D’où la contradiction. (Idem pourvp)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 41
+<<<PAGE>>>
+Structure d’un arbre (2/3)
+Théorème (Nombre de sommets et d’arêtes)
+Soit G = (V, E) un arbre. Alors card E = card V− 1.
+Démonstration.
+Par récurrence sur n = cardV.
+▶ Si n = cardV = 1, alors cardE = 0 (pas de boucle !).
+▶ Soit n∈ N tel que
+∀G = (V, E) arbre, cardV = n⇒ cardE = n− 1
+Soit G = (V, E) arbre à n + 1 sommets.
+Soit v un sommet de degré un et e l’arête incidente env.
+Alors G− v = (V\{v}, E\{e}) est un arbre et :
+▶ card(E\{e}) = cardE− 1
+▶ card(V\{v}) = n donc card(E\{e}) = n− 1
+(hypothèse de récurrence)
+Donc cardE = n = cardV− 1.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 42
+<<<PAGE>>>
+Structure d’un arbre (3/3)
+Propriété (Unicité de chaîne élémentaire)
+Soit G = (V, E) arbre.
+∀(v, v′)∈ V2,∃!C d’extrêmités v et v′ élémentaire
+Démonstration.
+▶ Comme G est connexe, on a l’existence de la chaîne
+élémentaire :
+∀(v, v′)∈ V2,∃C d’extrêmitésv et v′ élémentaire
+▶ Par l’absurde : si il y a deux chaînes élémentaires
+distinctes, elles induisent un cycle, ce qui est
+impossible.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 43
+<<<PAGE>>>
+Forêt
+Définition (Forêt)
+Graphe non orienté acyclique
+Propriété (Composantes connexes d’une forêt)
+Toute composante connexe d’une forêt est un arbre.
+Propriété (Nombre de sommets et d’arêtes)
+Soit G = (V, E) une forêt. Alors card E≤ card V− 1.
+Démonstration.
+Soit G1, . . . ,Gp les composantes connexes de G.
+∀i∈ J1, pK , Gi = (Vi, Ei) arbre⇒ cardEi = cardVi− 1
+cardE =
+p
+∑
+i=1
+cardEi =
+p
+∑
+i=1
+(cardVi− 1)
+=
+p
+∑
+i=1
+cardVi− p = cardV− p≤ cardV− 1
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 44
+<<<PAGE>>>
+Isthme (1/2)
+Définition (Isthme de G = (V, E))
+Arête e telle G− e ait une composante connexe de plus que G.
+Propriété
+Soit G = (V, E) un graphe.
+L’arête e∈ E est un isthme de G si et seulement si ses
+extrémités ne sont reliés par aucune chaîne de G − e.
+Propriété (Arbre et isthmes)
+Toute arête d’un arbre est un isthme.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 45
+<<<PAGE>>>
+Isthme (2/2)
+Lemme
+e isthme de G = (V, E)⇐⇒ e n’appartient à aucun cycle de G
+Démonstration.
+On se ramène à G connexe (e.g. via les composantes
+connexes).
+(⇒) Soit e∈ C = (v0, e, v1, e2, . . . ,ep, v0) cycle de G.
+Soit (v, v′)∈ V2 et D = (u0 = v, f1, u1, . . . ,e𝓁, u𝓁 = v′).
+▶ e /∈ D⇒ D chaîne de G− e
+▶ e∈ D⇒∃ i∈ J1, 𝓁K , e = fi
+Alors D′ = (u0 = v, f1, u1, . . . ,ui−1, C− e, ui, . . . ,u𝓁 = v′) est une
+chaîne de G− e.
+Donc G− e reste connexe et e n’est pas un isthme.
+(⇐) Soit e∈ E non-isthme d’extrêmitésv et v′.
+Alors∃C élémentaire de G− e d’extrêmitésv et v′ : donc
+C + e est un cycle de G contenant e.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 46
+<<<PAGE>>>
+Caractérisations d’un arbre
+Théorème (Caractérisations d’un arbre)
+Soit G = (V, E) un graphe non orienté. Les propositions
+suivantes sont équivalentes
+1. G est un arbre.
+2. G est connexe et card E = card V− 1.
+3. G est acyclique et card E = card V− 1.
+4. G est connexe et toute arête est un isthme.
+5. ∀(v, v′)∈ V2,∃!C d’extrêmités v et v′ élémentaire
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 47
+<<<PAGE>>>
+Arbre couvrant
+Arbre
+Arbre couvrant
+Définition
+Caractérisations
+Lemmes d’échange
+Arbre couvrant minimum
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 48
+<<<PAGE>>>
+Arbre couvrant (1/3)
+Définition (Arbre couvrant de G = (V, E))
+Arbre et graphe couvrant de G
+Propriété (Existence d’arbre couvrant)
+Tout graphe fini connexe admet au moins un arbre couvrant.
+Démonstration.
+On enlève une à une les arêtes qui ne sont pas des isthmes.
+(terminaison assurée par la finitude de E ).
+Le graphe obtenu est couvrant, connexe et acyclique.
+Corollaire
+Soit G = (V, E) un graphe connexe. Alors card E≥ card V− 1.
+Démonstration.
+Soit T = (V, F) arbre couvrant de G avec F⊂ E.
+Alors cardE≥ cardF = cardV− 1
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 49
+<<<PAGE>>>
+Arbre couvrant (1/3)
+Exemple
+G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+Deux arbres couvrants de G sont :
+v1 v2
+v3
+v4
+e1
+e2
+e4
+et
+v1 v2
+v3
+v4
+e1 e3 e5
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 50
+<<<PAGE>>>
+Arbre couvrant (2/3)
+Propriété
+Soit G = (V, E) un graphe connexe et G′ un graphe partiel de
+G. Alors G′ est un arbre couvrant de G si et seulement si il est
+le plus petit graphe connexe (au sens de la suppression des
+arêtes).
+Démonstration.
+(⇒) Toute arête de G′ est un isthme, donc supprimer une
+arête fait perdre la connexité.
+(⇐) ∀e∈ E, G′− e non connexe : donc e isthme de G′.
+Donc G est acyclique : comme G′ connexe, c’est un
+arbre
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 51
+<<<PAGE>>>
+Arbre couvrant (3/3)
+Propriété
+Soit G = (V, E) un graphe connexe et G′ un graphe partiel de
+G. Alors G′ est un arbre couvrant de G si et seulement si il est
+le plus grand graphe acyclique (au sens de l’ajout des arêtes).
+Démonstration.
+On note G′ = (V, F).
+(⇒) ∀e∈ E\F, les extrêmités de e sont reliées par une chaîne C
+de G′. Donc C + e est un cycle de G.
+(⇐) Soit (v, v′)∈ V2 et C chaîne d’extrémitésv et v′
+Pour toute arête e∈ E\E′ de C, G′ + e est un cycle par
+maximalité, donc e n’est pas un isthme.
+On substitue e dans C par une chaîne de G′ reliant les
+extrêmités de e.
+La chaîne obtenue après toutes les substitutions est une
+chaîne de G′.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 52
+<<<PAGE>>>
+Lemme de l’échange
+Propriété
+Soit G = (V, E) un graphe et T = (V, F) un arbre couvrant de G.
+∀e∈ E\F, T + e contient un unique cycle élémentaire.
+Démonstration.
+(Existence) Comme T est maximal, T + e contient un cycle.
+(Unicité) Soit C et C′ deux cycles élémentaires de T + e. Alors
+C− e et C′− e chaînes élémentaires reliant les extrêmités de e.
+Comme T est un arbre, on a C− e = C′− e, puis C = C′.
+Théorème (de l’échange)
+Soit G = (V, E) un graphe et T = (V, F) un arbre couvrant de G.
+∀e∈ E\F,∀f arête du cycle de T + e, (T + e)− f arbre couvrant
+Démonstration.
+Soit e∈ E\F et f une arête de T + e. Comme f est dans un
+cycle, f n’est pas un isthme : donc(T + e)− f connexe.
+De plus, T = (V, F′) avec cardF′ = cardF = cardV− 1. Donc
+(T + e)− f est un arbre.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 53
+<<<PAGE>>>
+Lemme de l’échange
+Exemple
+G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+T = v1 v2
+v3
+v4
+e1
+e2
+e4
+e = e5⇒ f = e4 convient (mais pas f = e1)
+(T + e)− f = v1 v2
+v3
+v4
+e1
+e2
+e5
+est un arbre couvrant de G.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 54
+<<<PAGE>>>
+Lemme de l’échange
+Théorème (de l’échange fort)
+Soit G = (V, E) un graphe, T = (V, F) et T′ = (V, F′) deux arbres
+couvrants de G. Alors :
+∀e∈ F′\F,∃f∈ F\F′, (T +e)−f et (T′ +f )−e arbres couvrants de G
+Définition (Arbres couvrants voisins)
+G = (V, E) graphe, T = (V, F) et T′ = (V, F′) arbres couvrants de
+G. Soit G = (V, E) un graphe, T = (V, F) et T′ = (V, F′) deux
+arbres couvrants de G.
+T et T′ sont dits voisins si et seulement si
+∃e∈ F′\F,∃f∈ F\F′, T′ = (T + e)− f et T = (T′ + f )− e
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 55
+<<<PAGE>>>
+Lemme de l’échange fort
+Exemple
+G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+T = v1 v2
+v3
+v4
+e1
+e2
+e4
+T′ = v1 v2
+v3
+v4
+e1 e3 e5
+e = e5⇒ f = e4 convient (mais pas f = e2)
+(T + e)− f = v1 v2
+v3
+v4
+e1
+e2
+e5
+(T′ + f )− e = v1 v2
+v3
+v4
+e1 e3
+e4
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 56
+<<<PAGE>>>
+Arbres couvrants et graphes valués
+Définition (Valeur d’un arbre couvrant)
+Soit G = (V, E, w) un graphe valué et T = (V, E′) arbre couvrant
+de G.
+Valeur de T : w(T) = ∑
+e∈E′
+w(e)
+Définition (Arbre couvrant minimum)
+Soit G = (V, E, w) un graphe valué simple et connexe.
+Arbre couvrant minimum de G : arbre couvrant Tm de G tel
+que :
+w(Tm) = min{w(T), T arbre couvrant de G}
+Remarque
+Un arbre couvrant minimum n’est pas toujours unique.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 57
+<<<PAGE>>>
+Arbres couvrants et graphes valués
+Exemple
+Paris
+Strasbourg
+Lille
+Brest
+Bordeaux
+Perpignan
+Nice
+490
+222
+596
+583
+857 932
+804
+522
+725
+623
+451
+476
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 58
+<<<PAGE>>>
+Arbres couvrants et graphes valués
+Exemple
+Paris
+Strasbourg
+Lille
+Brest
+Bordeaux
+Perpignan
+Nice
+490
+222
+596
+583
+451
+476
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 58
+<<<PAGE>>>
+Recherche d’arbre couvrant minimum
+Première solution : recherche exhaustive
+▶ Recenser tous les arbres couvrants
+▶ Calculer leurs valeurs et trouver celui de valeur minimale
+=⇒ Complexité exponentielle
+=⇒ Beaucoup trop coûteux, donc inutilisable
+Deuxième solution : algorithme glouton
+▶ Initialisation : sous-graphe partiel sans arête
+▶ Ajout itératif de cardV− 1 arêtes de valuation minimale
+ne créant pas de cycle.
+=⇒ Algorithme de K/r.sc/u.sc/s.sc/k.sc/a.sc/l.sc
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 59
+<<<PAGE>>>
+Recherche d’arbre couvrant minimum
+Algorithme de K/r.sc/u.sc/s.sc/k.sc/a.sc/l.sc
+préconditions : G = ( V, E, w) graphe valué simple et
+connexe
+postconditions : G(F) est un arbre couvrant minimal de G
+Ec← E
+F← / 0
+tant que cardF < cardV− 1 faire
+e est choisi dans argmin{w(e), e∈ Ec}
+Ec← Ec\{e}
+si G(F∪{ e}) est acyclique alors
+F← F∪{ e}
+fin si
+fin tant que
+=⇒ G(F) = (V, F) arbre couvrant minimal de G
+Propriété
+L’algorithme deK/r.sc/u.sc/s.sc/k.sc/a.sc/l.scconverge vers un arbre couvrant
+minimum. Sa complexité est O
+(
+card E· log(card V)
+)
+.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 60
+<<<PAGE>>>
+Recherche d’arbre couvrant minimum
+Exemple
+Initialisation F = / 0
+Itération no 1 e = Paris – Lille⇒ F = F∪{ e}
+Itération no 2 e = Bordeaux – Perpignan⇒ F = F∪{ e}
+Itération no 3 e = Perpignan – Nice⇒ F = F∪{ e}
+Itération no 4 e = Paris – Strasbourg⇒ F = F∪{ e}
+Itération no 5 e = Lille – Strasbourg⇒ F inchangé
+Itération no 6 e = Paris – Bordeaux⇒ F = F∪{ e}
+Itération no 7 e = Paris – Brest⇒ F = F∪{ e}
+Terminaison card F = 6 = cardV− 1⇒ STOP
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 61

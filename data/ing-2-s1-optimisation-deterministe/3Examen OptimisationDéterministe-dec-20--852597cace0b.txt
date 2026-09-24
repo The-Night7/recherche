@@ -1,0 +1,171 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Optimisation déterministe
+Donné le 17-12-2020 (Durée 3h00)
+Téléphones portables et tout document sont interdits
+EXERCICE 1 (Questions de cours – 5 points) Soit f (x) = 1
+2 < Ax, x > + < b, x > + c avec A ∈ Mn(R) une
+matrice symétrique, b ∈ Rn et c ∈ R.
+1. Justiﬁer pourquoi ∇ f (x) = Ax + b et H f (x) = A.
+2. Donner une condition nécessaire et sufﬁsante pour que f soit une fonction convexe.
+3. Supposons que que A soit semi-déﬁnie positive, donner une condition sufﬁsante pour trouver un
+minimum global de f sur Rn.
+4. Supposons que f admette un minimim global. Soit x(0) ∈ Rn un vecteur quelconque.
+Montrer que le premier itéré de la méthode de Newton x(1) où x(1) = x(0) − H −1
+f
+(
+x(0))
+∇ f
+(
+x(0))
+est le
+minimum global de f .
+EXERCICE 2 (Directions conjuguées – 10 points) Soit f une fonction réelle déﬁnie pour (x1, x2) ∈ R2 par
+f (x1, x2) = 2x2
+1 + x2
+2 + x1 + 2x2 − x1x2.
+1. On note x =
+
+x1
+x2
+
+. Mettre f (x) sous la forme f (x) = 1
+2 < Ax, x > + < b, x > +c.
+2. f est-elle convexe? justiﬁer.
+3. Donner, en justiﬁant votre réponse, le point x∗ minimum de f .
+4. On note (P ) le problème d’optimisation sans contrainte min
+x∈R2
+f (x). Soit x(0) =
+
+0
+0
+
+ et d(0) = −∇f
+(
+x(0))
+.
+(a) Construire x(1) = x(0)+t ∗d(0) avec t ∗ ∈ R qui minimise f
+(
+x(0) + t d(0))
+, t ∗ = argmin
+t ∈R
+f
+(
+x(0) + t d(0))
+.
+(b) Soit d(1) =
+
+d1
+d2
+
+ la direction à l’itéréx(1). Donner la condition que doit vériﬁer d(1) pour être une
+direction de descente de f au point x(1).
+(c) Donner la relation que doit vériﬁer d(1) pour être conjuguée à d(0) par rapport à A.
+<<<PAGE>>>
+EXAMEN : O PTIMISATION DÉTERMINISTE
+(d) Tenant compte des relations trouvées aux questionx (b) et (c), en déduire que d2 doit être né-
+gatif.
+(e) Construire d(1) =
+
+d1
+d2
+
+ conjuquée à d(0) par rapport à A telle que d2 = −2.
+(f) Construire l’itéré x(2) = x(1) + t ∗∗d(1) avec t ∗∗ ∈ R qui minimise f
+(
+x(1) + t d(1))
+selon t.
+(g) Est-il nécessaire de faire une itération supplémentaire? Vériﬁer l’optimalité dex(2) pour le prob-
+lème (P ).
+EXERCICE 3 (10 points) On considère la fonction f déﬁnie pour tout ( x1, x2, x3) ∈ R3 par
+f (x1, x2, x3) = x2
+1 + 2x2
+2 + 5
+2 x2
+3 + 3x1x3 + x1 − x2 + x3.
+1. Montrer que f est une fonction quadratique.
+2. Exprimer ∇ f (x1, x2, x3) sous la forme A
+
+
+x1
+x2
+x3
+
+ + b, A et b sont à déterminer.
+3. Soit d une direction de descente de la fonction f en x ∈ R3 et on considère la fonction g déﬁnie sur R
+pour tout t ∈ R par g (t) = f (x + t d).
+(a) Exprimer g
+′
+(t) en fonction de ∇ f .
+(b) En supposant que A est une matrice déﬁnie positive, montrer que g réalise son minimum en
+t ∗ = −
+⟨
+d, ∇ f (x)
+⟩
+〈d, Ad〉 . t ∗ est appelé le pas de Cauchy de f en x dans la direction de d.
+4. Les questions 4.(a), 4.(b) et 4.(c) sont à rendre sur Exammanager. Implémenter les algorithmes
+suivants (rappelé ci-dessous) en utilisant comme critère d’arrêt‖∇ f (x(k)‖ < ε.
+(a) L ’algorithme du gradient à pas de Cauchy. (En sortie, le minimum obtenu x∗, le nombre d’itérations
+et le résiduel ‖∇ f (x∗)‖).
+(b) L ’algorithme du gradient à pas d’Armijo. (En sortie, le minimum obtenu x∗, le nombre d’itérations
+et le résiduel ‖∇ f (x∗)‖).
+(c) L ’algorithme du gradien conjugué à pas de Cauchy. (En sortie, le minimum obtenu x∗, le nombre
+d’itérations et le résiduel‖∇ f (x∗)‖).
+5. Application: On initialise les algorithmes ci-dessus enx(0) =
+
+
+1
+0
+2
+
+ et on ﬁxe les paramètres suivants:
+ε = 10−4, τ = 0.7, ω = 10−4, rhoinit = 1, Nmax = 1000.
+CY-Tech 2/3
+<<<PAGE>>>
+EXAMEN : O PTIMISATION DÉTERMINISTE
+(a) Remplir le tableau suivant:
+Le minimum obtenu Le nombre d’itérations Le résiduel
+Méthode du gradient à pas de Cauchy
+Méthode du gradient à pas d’Armijo
+Méthode du gradient conjugué à pas de Cauchy
+(b) Commenter vos résultats.
+Algorithme de la recherche du pas d’Armijo:
+x(k) et d(k) ﬁxes. Choix des paramètres τ, ω
+Initialisation: i=0, choix d’un pasρk
+i = rhoinit.
+Tant que
+f
+(
+x(k) + ρk
+i d(k)
+)
+> f
+(
+x(k)
+)
++ ωρ(k)
+i 〈∇ f (x(k)), d(k)〉,
+on choisit ρ(k)
+i +1 = τρ(k)
+i ,
+i=i+1
+Algorithme du gradient :
+Initialisation : k=0, x(k) = x(0)
+Tant que ‖∇ f (x(k))‖ > ε et k ≤ Nmax faire
+Calculer la direction de descente du gradient:d(k) = −∇f (x(k))
+Calculer le pas de descente: ρ(k)
+Calculer l’itérer suivant:x(k+1) = x(k) + ρ(k)d(k)
+k=k+1
+Algorithme du gradient conjugué pour les fonctions quadratiques
+Initialisation: k=0, x(k) = x(0), d (k) = −∇f (x(k)) .
+Tant que ‖∇ f (x(k))‖ > ε et k ≤ Nmax faire
+Calculer le pas optimal ρ(k),
+Calculer l’itéré suivant : x(k+1) = x(k) + ρ(k)d(k)
+Calculer β(k) =
+‖‖∇ f (x(k+1))
+‖‖2
+‖‖∇ f (x(k))
+‖‖2
+Mettre à jour la direction de descente conjuguée : d(k+1) = −∇f (x(k+1)) + β(k)d(k)
+k=k+1
+CY-Tech 3/3

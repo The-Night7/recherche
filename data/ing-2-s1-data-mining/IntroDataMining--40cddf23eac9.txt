@@ -1,0 +1,1544 @@
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Introduction to Data Mining
+Maria Malek
+16 septembre 2024
+ING2-MI Introduction to Data Mining 1/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+1 Introduction
+2 Clustering & Partitioning
+3 Bayesian Model
+4 Decision Trees and Random Forest
+The ID3 algorithm
+The CART algorithm
+5 Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+ING2-MI Introduction to Data Mining 2/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Data Mining versus Machine Learning
+Data Mining ..
+Knowledge discovery from Data
+Data mining uses information from past data to analyze the
+outcome of a particular problem or situation that may arise
+[Fayyad et al., 1995].
+”How to make Data speaking about themselve ? ”
+Machine Learning ..
+Given an experiment or observation E (provided as a data set)
+a task, and a performance measure M :
+a computer system is said to learn from experiment E to
+perform the task T if after learning the system’s performance
+on T improves as measured by M [Michell,1997 ]
+ING2-MI Introduction to Data Mining 3/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Fields
+ING2-MI Introduction to Data Mining 4/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Data
+An exemple a structure, an observation (statistics), an
+instance (object), a point, a vector.
+An attribute can be qualitative or quantitative, or a
+structure.
+Data base : a set of examples
+an example/case/observation = A p-attributes vector,
+each attribute is associated to a given predefined area (domain)
+ING2-MI Introduction to Data Mining 5/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The weather examples
+NUM Outlook TEMP. HUMI. Wind CLASS
+1 sunny high strong no N
+2 sunny high strong yes N
+3 overcast high strong no P
+4 rainy mild strong no P
+5 rainy low normal no P
+6 rainy low normal yes N
+7 overcast low normal yes P
+8 sunny mild strong no N
+9 sunny low normal no P
+10 rainy mild normale no P
+11 sunny mild normal yes P
+12 overcast mild strong yes P
+13 overcast high normal no P
+14 rainy mild strong yes N
+Table – The weaher dataSet
+ING2-MI Introduction to Data Mining 6/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM versus ML Process
+ING2-MI Introduction to Data Mining 7/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Process-1
+Problem Analysis.
+Data selection and Exploration
+Data Quality evaluation,
+Data clustering and visualisation,
+Data pathology detection.
+Data pre-processing
+Cleaning noise, missing values, aberrant values,
+Reduction instances selection, extraction, variables
+combination,
+Transformation discretisation of continuous variables, nominal
+variables binarisation, adding of new variables.
+ING2-MI Introduction to Data Mining 8/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Process-2
+The ≪data mining≫ algorithm or the machine learning one.
+Results evaluation and Interpretation
+ING2-MI Introduction to Data Mining 9/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Variables Nature
+Independents and dependents
+Independents : predictive or explicative Variable : The value is
+obtained by observation.
+Dependent : target Variable : The value of this variable
+depends of some others.
+Machine Learning : supervised and unsupervised methods
+Unsupervised Learning : no target variable, ex.clustering.
+Supervised Learning : Target Variable (value to predict) ex.
+classification.
+ING2-MI Introduction to Data Mining 10/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Process Result
+Extracted knowledge in the form of :
+Model : global overview of the data set relevant to
+examples domain.
+Pattern : local description of subsets of data, example :
+rules.
+ING2-MI Introduction to Data Mining 11/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Example of a model : a decision Tree
+NUM Outlook TEMP. HUMI. Wind CLASS
+1 sunny high strong no N
+2 sunny high strong yes N
+3 overcast high strong no P
+4 rainy mild strong no P
+5 rainy low normal no P
+6 rainy low normal yes N
+7 overcast low normal yes P
+8 sunny mild strong no N
+9 sunny low normal no P
+10 rainy mild normale no P
+11 sunny mild normal yes P
+12 overcast mild strong yes P
+13 overcast high normal no P
+14 rainy mild strong yes N
+ING2-MI Introduction to Data Mining 12/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Example of Rules
+A decision tree can be represented as a set of rules :
+IF OUTLOOK= sunny& HUMI=strong THEN CLASS=N
+IF OUTLOOK= sunny & HUMI=normal THEN CLASS=P
+IF OUTLOOK= overcast THEN CLASSE=P
+IF OUTLOOK= rainy & WIND=yes THEN CLASS=N
+IF OUTLOOK= rainy & WIND=no THEN CLASS=P
+ING2-MI Introduction to Data Mining 13/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Tasks
+Supervised approaches :
+each instance = p predictive variables + 1 target variable (to
+predict)
+Classification : Discret target variable Example : disease
+diagnosis, etc.
+Regression : Continuous target variable Example : price
+estimation, etc.
+Unsupervised approaches :
+segmentation (clustering) Example : user profile detection,etc.
+Association Example : analysis of web server Log, etc.
+ING2-MI Introduction to Data Mining 14/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Tasks
+ING2-MI Introduction to Data Mining 15/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+DM and ML Tasks
+ING2-MI Introduction to Data Mining 16/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Supervised ML Process
+ING2-MI Introduction to Data Mining 17/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classification
+Classifier Types
+Construction of a model (a decision tree for example) in order
+to predict the target class values.
+Direct estimation of the target class value in function of
+examples.
+Construction of a parameterizable model (Neural Networks,
+support Vector Machines).
+ING2-MI Introduction to Data Mining 18/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+K-Nearest Neighbours Classifier
+Data set with two numerical attributes( X1,X2) and two class
+values (A,B).
+ING2-MI Introduction to Data Mining 19/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation -1
+The classifier error Er is the probability that the classifier does
+not predict correctly the target value of a given data.
+Success ratio is 1 − Er.
+The training error is measured on the training set (used to
+construct the classifier).
+To estimate the classifier quality we need :
+A training set Xtrain ;
+A test set Xtest in order to estimante the classification error,
+the target value is given in the test set for each example.
+ING2-MI Introduction to Data Mining 20/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation : illustration
+ING2-MI Introduction to Data Mining 21/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation-2
+Quality classification measures : for each target value :
+TP/TN : True positive/negative frequency :
+positive/negative examples’ number that have a
+positive/negative target value.
+FP/FN : The negative/positive examples’ number whose
+predicted target values are positive/negative.
+Confusion Matrix
++ Pred - Pred
+Real + TP FN
+Real - FP TN
+ING2-MI Introduction to Data Mining 22/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation-3
++ Pred - Pred
+Real + TP FN
+Real - FP TN
+Model Quality measures, for each target value :
+We define 4 measures :
+Precision for positive and negative : TP
+TP+FP , TN
+TN+FN ;
+Recall for positive and negative : TP
+TP+FN , : TN
+TN+FP .
+The (positive) precision measures the ratio of really positive
+examples among those classified positive by the classifier.
+The (positive) recall measure the ratio of found positive
+examples among all positives examples.
+ING2-MI Introduction to Data Mining 23/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation-4
+Cross Validation Technics :
+Cut up the data set to n disjoint subsets of the same size.
+Each target value have to appear in the n subsets.
+Let A,B,C are 3 subsets :
+The classifier build from A∪ B is named CLA∪B,
+The test error computed on C is named ErC .
+Three tests are done : ( CLA∪B,ErC ),
+(CLC∪A,ErB),(CLC∪B,ErA).
+The global error rate is given by par Er = ErA+ErB +ErC
+3
+ING2-MI Introduction to Data Mining 24/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Classifier Validation-5
+Cross Validation : illustration
+ING2-MI Introduction to Data Mining 25/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Practical Works : Classification Problem
+Data sets Weather (qualitative attributes), IRIS (quantitative
+ones).
+Data exploration and visualisation
+Methods K-nearest neighbours, Decision trees
+Validation
+ Strategies : training set, test set, cross validation
+Measures : confusion matrix, error, precision,
+recall, F-score,
+Softwares Weka, R, Python
+ING2-MI Introduction to Data Mining 26/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Clustering & Partitioning
+Given a data set of unlabeled examples X, Find a partition of
+X into k clusters verifying the following proprieties :
+1 Data belonging to one cluster Gi , (i∈ 1..k) are similar.
+2 2 different examples belonging to different clusters are not
+similar.
+Example : E-commerce web sites’s Log analysis : user profile
+detection.
+ING2-MI Introduction to Data Mining 27/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Definitions & Notations
+X : Examples set | X| = N (cardinality de X).
+K : Clusters number (an algorithm parameter).
+Given an examples set X, each of them characterized by P
+attributes : the centroid of X named g, is a synthetical
+example described by : g ={ ¯a1... ¯ai} where ¯ai is the average
+of all ai values in X.
+Aim : Find K cluster : each cluster will be represented by its
+centroid gi.
+Non hierarchical approaches (k-means).
+Hierarchical approaches.
+ING2-MI Introduction to Data Mining 28/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+K-Means Method
+Definition :
+The inertia of a data set X containing N examples :
+I = 1
+N
+PN
+i=1 d 2(xi, g) where g is the centroid of X. and d is a
+distance function :
+Euclidian
+qPn
+i=1 (xi− yi )2
+Manhatan Pn
+i=1| xi− yi|
+Hamming
+...
+Let I1,.., In inertias of clusters (groups) g1...gk the intra-cluster
+inertia : Iw = Pk
+i=1 Ik
+Let I1...Ik inertias of clusters (groups) g1...gk the inter-cluster
+inertia : IB = Pk
+i=1 wi d 2(gi, g) with wi = |gi|
+N
+I = IW + IB
+Aim : get dense clusters ( groups), well separated if possible :
+Minimise Iw .
+ING2-MI Introduction to Data Mining 29/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+K-means Algorithm
+(Input : A data set X K∈ N (I←∞ )).
+Randomly choose K centroids Ck∈ X
+REPEAT
+For k∈{ 1..K} Do
+Gk← Φ
+For i∈{ 1..N}
+K∗← argmink∈{1..K}d(xi , Ck)
+Gk∗← Gk∗∪ xi
+For k∈{ 1..k}
+Ck← centroid of Gk
+I← Iw
+Compute Iw
+UNTIL|I− IW|<ϵ
+ING2-MI Introduction to Data Mining 30/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+K-means : Illustration
+ING2-MI Introduction to Data Mining 31/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Hierarchical clustering
+Down-Top Approaches that
+allow to group examples
+progressively in clusters.
+N-1 groups, N-2 groups,..,1
+group.
+We get a tree
+Leaves are examples
+(Nleaves)
+The root represent X.
+An horizontal cut of the
+tree allows to obtain
+K-groups (clusters)
+ING2-MI Introduction to Data Mining 32/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Hiererachical clustering Algorithm
+Input : N examples
+N clusters Gi← xi
+Label Gi.
+For d=1 to N-1
+Chose Gi, Gj labaled.
+Merge them :
+Gd← Gi∪ Gj.
+Unlabel Gi, Gj.
+Label Gd.
+ING2-MI Introduction to Data Mining 33/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+How to choose clusters to merge
+Choose ( Gi, Gj) to merge, 4
+approaches are possible :
+Minimal Jump : the
+smallest distance is
+minimal.
+Maximal Jump : the
+largest distance is
+minimal.
+Average Jump : the
+distance between the
+centroids is minimal.
+Ward Method : minimal
+loose of Iw .
+SGi,Gj =
+wi wj
+wi +wj
+d 2(gi , gj)
+wi = |Gi|
+N
+wj =
+|Gj|
+N
+ING2-MI Introduction to Data Mining 34/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Exercices
+Let the following points in R : x1 = 1, x2 = 2, x3 = 9, x4 = 12 and
+t x5 = 20.
+1 Apply the k-means algorithm with :
+1 k=2, g1 = 1 et g2 = 20
+2 k=2, g1 = 2 et g2 = 9
+3 k=3, g1 = 1 , g2 = 9 et g3 = 12
+2 Apply the ascendant hierarchical classification method using
+the minimal jump
+ING2-MI Introduction to Data Mining 35/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Gool
+The principal of the bayesian classifier is to classify a given
+data x in class y using a data set (labeled data) : X, by
+applying Bayes rule.
+X : A labeled data set. Example : Weather.
+Given an example x : find and associate ` a class value y.
+x = ((outlook = overcast)∧(Temperature = high)∧(wind = yes))
+y = P ?
+y = N ?
+ING2-MI Introduction to Data Mining 36/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The weather example
+NUM Outlook TEMP. HUMI. Wind CLASS
+1 sunny high strong no N
+2 sunny high strong yes N
+3 overcast high strong no P
+4 rainy mild strong no P
+5 rainy low normal no P
+6 rainy low normal yes N
+7 overcast low normal yes P
+8 sunny mild strong no N
+9 sunny low normal no P
+10 rainy mild normale no P
+11 sunny mild normal yes P
+12 overcast mild strong yes P
+13 overcast high normal no P
+14 rainy mild strong yes N
+Table – The weaher data set
+ING2-MI Introduction to Data Mining 37/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bayes Theorem & classification - 1
+Bayes Theorem (Conditional Probabilities )
+Pr(A|B) = Pr(B|A)∗ Pr(A)
+Pr(B)
+Pr(A|B, C ) = Pr(B|A, C )∗ Pr(A|C )
+Pr(B|C )
+Application on classification Problem :
+C← X
+Pr(y|x, X )?
+Pr(y|x, X ) = Pr(x|y,X )∗Pr(y|X )
+Pr(x|X )
+with X is the dataset, x is a given example and y is the class
+ING2-MI Introduction to Data Mining 38/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bayes Theorem & classification - 2
+Pr(y|x, X ) = Pr(x|y,X )∗Pr(y|X )
+Pr(x|X )
+The term Pr(y|X ) in the probability to have the class value yi
+taking into consideration the data set X.
+y1 = P : Pr(y1|X ) = 9
+14
+y2 = N : Pr(y2|X ) = 5
+14
+ING2-MI Introduction to Data Mining 39/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bayes Therorem & classification - 3
+x = ((outlook = overcast)∧(Temperature = high)∧(wind = yes))
+Pr(y|x, X ) = Pr(x|y,X )∗Pr(y|X )
+Pr(x|X )
+The term Pr(x|yi, X ) is computed assuming the attributes
+describing x are independent :
+a1 = v1, a2 = v2,..., ai, vi
+Pr(x|yi, X ) = Qn
+i=1 P(ai = vi|yi, X )
+Pr(x|y = P, X ) = 4
+9∗ 2
+9∗ 3
+9
+And Finally ..
+Pr(x|X ) = P
+yi∈γ Pr(x|yi, X )Pr(yi|X )
+ING2-MI Introduction to Data Mining 40/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Example - 1
+Given the following example :
+x = ((outlook=sunny), (temperature = cold) , (Humidity =
+high) , (wind = yes))
+What lis the class value of x (P or N) ?
+Pr(y = P|x, X )? Bayes Rule
+Pr(y = N|x, X )? Bayes Rule
+Pr(y = P|x, X ) = Pr(x|y = PX )∗ Pr(y = P|X )
+Pr(x|X )
+Pr(x|y = P, X ) = 2
+9∗ 3
+9∗ 3
+9∗ 3
+9 = 2
+243
+ING2-MI Introduction to Data Mining 41/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Example - 2
+Given the following example :
+x = ((outlook=sunny), (temperature = cold) , (Humidity =
+high) , (wind = yes))
+Pr(y = P|x, X ) = Pr(x|y=P,X )∗Pr(y=P|X )
+Pr(x|X )
+Pr(x|y = P, X ) = 2
+9∗ 3
+9∗ 3
+9∗ 3
+9 = 2
+243
+Pr(x|y = N, X ) = 3
+5∗ 1
+5∗ 4
+5∗ 3
+5 = 36
+625
+Pr(x|X ) = P
+yi∈γ Pr(x|yi, X )Pr(yi|X )
+Pr(y = P|x, X ) =
+2
+243∗ 9
+14
+2
+243∗ 9
+14 + 36
+625∗ 5
+14
+= 0.205
+Pr(y = N|x, X ) =
+36
+625∗ 5
+14
+2
+243∗ 9
+14 + 36
+625∗ 5
+14
+= 0.795
+ING2-MI Introduction to Data Mining 42/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Numerical attributes - 1
+We suppose that the distribution is normal :
+Pr(A = a) = 1√
+2πσ2 e− (a−a)2
+2σ2
+where A is a continuous attribute (a is a value).
+a : the average of the variable of A values computed from the
+dataset X.
+σ : the standard variation.
+ING2-MI Introduction to Data Mining 43/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Numerical attributes - 2
+Example :
+Pr(Temperature = 18|play = P, X ) = 1
+√
+2∗π∗(2.91)2∗e
+(18−21.5)2
+2∗(2.91)2
+σ (temperature, play= P) = 2.91
+v (temperature,play = P) = 21.5
+ING2-MI Introduction to Data Mining 44/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Missing Values- 1
+Missing Attribute values in example to predict
+Example : x=(outlook=sunny, Humidity= high)
+Pr(x|y, X ) = Pr(outlook = sunny|y, X )∗ Pr(Humidity =
+high|y, X )
+Missing values in training set
+Example : Pr(outlook = overcast|play = N) ? ?
+ING2-MI Introduction to Data Mining 45/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Missing Values - 2
+Missing Attribute values in example to predict
+Missing values in training set
+Example : Pr(outlook = overcast|play = N) ? ?
+Laplace estimator Technics.
+We increment from 0 to 1 as well as all the attribute values
+In the class play=N, we have : 3 sunny, 0 overcast and 2 rainy.
+We modify : 4 sunny, 1 overcast and 3 rainy.
+Here : µ = 3
+ING2-MI Introduction to Data Mining 46/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Missing Values - 3
+Missing values in training set
+Exemple : Pr(outlook = ouversacst|play = N) ? ?
+Pr(play = P|outlook = overcast) =
+Pr(outlook=overcast|play=P)∗Pr(play=P)
+Pr(outlook=overcast)
+Pr(play = P|outlook = overcast) =
+5
+12∗ 12
+20
+Pr(outlook=overcast)
+Pr(play = N|outlook = overcast) =
+Pr(outlook=overcast|play=N)∗Pr(play=N)
+Pr(outlook=overcast)
+Pr(play = N|outlook = overcast) =
+1
+8∗ 8
+20
+Pr(outlook=overcast)
+ING2-MI Introduction to Data Mining 47/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Inductive approaches
+Knowledge discovery from data : Decision trees
+A leaf indicates a given class value,
+A node represents a test to apply to a given attribute, an edge
+is associated to a given value from the domain of the
+attribute.
+The training set must cover the data domain (even unusual
+example must be represented).
+ING2-MI Introduction to Data Mining 48/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The weather example
+NUM Outlook TEMP. HUMI. Wind CLASS
+1 sunny high strong no N
+2 sunny high strong yes N
+3 overcast high strong no P
+4 rainy mild strong no P
+5 rainy low normal no P
+6 rainy low normal yes N
+7 overcast low normal yes P
+8 sunny mild strong no N
+9 sunny low normal no P
+10 rainy mild normale no P
+11 sunny mild normal yes P
+12 overcast mild strong yes P
+13 overcast high normal no P
+14 rainy mild strong yes NING2-MI Introduction to Data Mining 49/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+A decision Tree ? !
+ING2-MI Introduction to Data Mining 50/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Applying the algorithm ID3
+ING2-MI Introduction to Data Mining 51/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Applying the algorithm ID3 : finding the root
+ING2-MI Introduction to Data Mining 52/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+A decision Tree
+Figure – Discovered tree from the weather data set
+ING2-MI Introduction to Data Mining 53/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+How to interpret the decision tree ?
+A decision tree can be represented as a set of rules :
+IF OUTLOOK= sunny& HUMI=strong THEN PLAY=N
+IF OUTLOOK= sunny & HUMI=normal THEN PLAY=P
+IF OUTLOOK= overcast THEN CLASSE=P
+IF OUTLOOK= rainy & WIND=yes THEN PLAY=N
+IF OUTLOOK= rainy & WIND=no THEN PLAY=P
+The class value Play=P is described by :
+(OUTLOOK = overcast∧ HUMI = normal)∨ (OUTLOOK =
+overcast)∨ (OUTLOOK = rainy∧ WIND = no)
+ING2-MI Introduction to Data Mining 54/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -1
+Let E ={ei} be a training set :
+each example is defined by a vector of attributes, and its class
+value ci.
+To each attribute j is associated a test Tj :
+Tj : E→ Vj ={Vji}
+Example : Test of the attribute OUTLOOK is given by :
+T1 : E→{ sunny, overcast, rainy}.
+ING2-MI Introduction to Data Mining 55/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -2
+FUNCTION construct− tree(E : exemples,{T1,.., Tm} :
+tests) : decisionTree
+IFall examples are from the same class
+construct− tree← a leaf labeled by the class value
+ELSE
+Tj← Info− choose({T1, .., Tm})
+let{Ej1, .., Ejk} the partition of E according to Tj
+construct− tree← tree of root Tj
+l← 1
+WHILE l <= k
+sub− treel← construct− tree(Ejl ,{T1, .., Tm}\Tj)
+l← l + 1
+ING2-MI Introduction to Data Mining 56/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -3
+info-choice ? ?
+The information quantity given by a sub-set of cardinality n
+extracted from a set of N events is :
+Q = log2
+N
+n (1)
+The entropy of a partition E1,..,Ek of a set E of cardinality N
+with card(Ei ) = ni is :
+I (partition) = Pm
+i=1 ( ni
+N ) log2
+N
+ni
+pi = ni
+N :
+I (partition) = Pk
+i=1 (pi ) log2
+1
+pi
+ING2-MI Introduction to Data Mining 57/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -4
+The decision tree is an information source that emits the
+following quantity of information :
+I (E ) =
+NCX
+i=1
+(pi) log2
+1
+pi
+(2)
+where pi is the frequency of class i in the training set E and
+NC is the number of the class values
+The average of information given by k sub-sets obtained from
+E according to a given test T is : Pk
+l=1 Wl I (E T
+l ) where Wl is
+the ratio of examples represented by the subset E T
+l .
+The information gain for a test T is defined by :
+gain(T ) = I (E )− Pk
+l=1 Wl I (E T
+l )
+ING2-MI Introduction to Data Mining 58/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -5
+In case of classification problem with two class values, a
+decision tree is an information source that emits the following
+quantity of information :
+I (p, n) = ( p
+p + n ) log2( p + n
+p ) + ( n
+p + n ) log2( p + n
+n ) (3)
+where p is the number of positive examples and n is the
+number of negative ones
+The average of information given by sub-trees obtained from
+the tree of root T is : Pk
+i=1 ( pi +ni
+p+n )I (pi, ni) where pi,ni are
+(resp.) the numbers of positive and negative examples in the
+sub-tree i
+The information gain for a test T is defined by :
+gain(T ) = I (p, n)− Pk
+i=1 ( pi +ni
+p+n )I (pi, ni)
+ING2-MI Introduction to Data Mining 59/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The ID3 Algorithm -6
+Example (PlayTennis)
+gain(OUTLOOK) = 0.246 bits,
+gain(OUTLOOK) = I (9, 5)− ( 5
+14 I (2, 3) + 4
+14 I (4, 0) + 5
+14 I (3, 2))
+comparing to the other possible tests :
+gain(TEMP.) = 0.029 bits,
+gain(HUMI.) = 0.151 bits,
+gain(WIND) = 0.048 bits
+ING2-MI Introduction to Data Mining 60/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The C4.5 Algorithm - 1
+A Descendent of ID3 ..
+Handles with continuous attributes : using of discretizing
+methods.
+Gain normalisation :
+SplitInfo(T ) =−
+kX
+i=1
+∥Ti∥
+∥T∥ log2
+∥Ti∥
+∥T∥ (4)
+The gain is normalised as follow : GainRatio(T ) = gain(T )
+SplitInfo(T )
+Attributes value Grouping.
+ING2-MI Introduction to Data Mining 61/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+The C4.5 Algorithm - 2
+Handles with missing values : assume that the value of the
+attribute ai is missing in a given example :
+the training set is partitioned into n groups according to the n
+possible values of ai,
+the given example is affected to each one of the n groups with
+a probability estimated as the frequency of the group..
+the probability is considered when the gain is computed
+the probability is propagated in the tree.
+Pruning of the decision tree.
+ING2-MI Introduction to Data Mining 62/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Decision Trees : Cart algorithm
+Classification and Regression Tree
+1984, L. Breiman, J.H Friedman, R.A. Olshen et C.J. Stone
+Binary : Two child nodes for each parent nodes
+Accept all types of variables
+Separation : GINI Index
+ING2-MI Introduction to Data Mining 63/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+CART algorithm -Gini Index
+IG (No) = 1−
+NCX
+1
+p2
+i (5)
+No : A node that represents a subset of the data
+NC : Number of classes
+pi : Frequency of class i in the subset associated to the node
+No.
+More the Gini index is small, more the node is pure.
+Splitting one node to two nodes : we search to maximise the
+purity gain
+Search discrimination variable ; maximising :
+IG (beforeSplit.)− [W1∗ IG (child1) + W2∗ IG (child2)]
+Wi is the ratio of examples represented by child i.ING2-MI Introduction to Data Mining 64/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Gini Index - Weather example
+IG (No) = 1− PNC
+1 p2
+i
+IG (windy) = 1− [( 9
+14)2 + ( 5
+14)2]
+IG (child1) = 1− [( 2
+8)2 + (6
+8)2], IG (child2) = 1− [( 3
+6)2 + (3
+6)2]
+Gain(windy) = IG (windy)− [ 8
+14∗ IG (child1) + 6
+14∗ IG (child2)]
+ING2-MI Introduction to Data Mining 65/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Gini index : curve
+ING2-MI Introduction to Data Mining 66/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+CART algorithm - Tree construction
+Tree Construction
+While stop conditions are not verified
+1 Find the variable X as well as the positive and negative
+conditions corresponding to the better separation (maximising
+Gini index)
+2 Split the data into two subsets according to this variable :
+3 A node representing the variable X is constructed with left
+child and right child.
+4 Repeat the splitting for each child (go to step 1).
+Prune the tree (optional)
+Stop conditions :
+Depth level of the tree ( related to the number of used
+variables).
+Leaves number is limited.
+Population represented by a child is limited.
+Sufficient performance (training error is small)
+No performance improvement
+ING2-MI Introduction to Data Mining 67/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+CART algorithm - Tree Pruning and Class values
+assignment
+Tree Pruning
+Construct the whole tree
+Successif pruning of the tree (by deleting two leaves that
+correspond to two Childs of a node).
+Keep the pruned tree having the better performance (smaller
+error on the test set).
+Class values assignment
+For each leaf
+For each class value ci :Pci is the ratio of the leaf examples
+that belong to the class ci
+Assign to the leaf the class value ck whose Pck value is
+maximal.
+ING2-MI Introduction to Data Mining 68/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+The ID3 algorithm
+The CART algorithm
+Class assignment - Example
+No is the node windy (from the dataset weather)
+child1 [wind=false] as a leaf : P(6), N(2)
+PP = 6
+8 , PN = 2
+8
+Affected class : P
+Error rate = 2
+8
+child2 [wind=true] as a leaf : P(3), N(3)
+PP = 3
+6 , PN = 3
+6
+Affected class : P ? ?
+Error rate = 3
+6
+Global Error rate= Weighted sum of leaves errors
+ING2-MI Introduction to Data Mining 69/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Combinaison de Plusieurs mod` eles
+ING2-MI Introduction to Data Mining 70/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+D´ ecision de plusieurs mod` eles
+Transformer les diff´ erentes sorties des mod` eles ` a une simple
+pr´ ediction : Effectuer un vote ou un vote pond´ er´ e
+M´ ethodes :
+Bagging : mod` eles ayant le mˆ eme poids
+Boosting : Mod` eles ayant poids diff´ erents selon leurs succ` es
+ING2-MI Introduction to Data Mining 71/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Bagging : Introduction
+A partir de k ensemble d’apprentissage ayant la mˆ eme taille :
+les exemples sont choisis d’une mani` ere al´ eatoire pour chacun.
+Un mod` ele est appris ` a partir de chaque ensemble (ex. un
+arbre de d´ ecision).
+les k mod` eles r´ esultants ne pr´ edisent pas de la mˆ eme fa¸ con un
+exemple de test !
+Solution d´ emocratique: Effectuer un vote.
+ING2-MI Introduction to Data Mining 72/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Algorithme : bagging
+G´ en´ eration du mod` ele :
+N ´ etant le nombre d’exemples dans la base d’apprentissage
+pour chacune des k it´ erations faire
+Choisir N exemples de l’ensemble de l’apprentissage Tirage
+al´ eatoire avec remise
+Appliquer l’algorithme de l’apprentissage sur l’´ echantillon de
+N exemple
+stocker le mod` ele r´ esultant.
+Classification
+Pour chacun des k mod` eles faire
+Pr´ edire la classe de l’exemple en utilisant le mod` ele stock´ e
+Retourner la classe majoritaire
+ING2-MI Introduction to Data Mining 73/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Bagging : Discussion
+M´ ethodes instables par rapport au changement des donn´ ees.
+Essaie de neutraliser l’instabilit´ e des mod` eles ` a partir d’un
+ensemble d’apprentissage donn´ e.
+Bagging : Bootstrap Aggregating.
+les k ensembles d’apprentissage ne sont pas disjoints deux ` a
+deux.
+M´ ethodes num´ erique : Au lieu de voter les sorties, la moyenne
+est calcul´ ee.
+ING2-MI Introduction to Data Mining 74/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Boosting : Introduction
+Les mod` eles appris sont diff´ erents par leur capacit´ e de
+g´ en´ eralisation.
+Boosting est fond´ e sur le vote ou le calcul de la moyenne
+Les mod` eles sont construits d’un fa¸ con it´ erative, chaque
+mod` ele est influenc´ e par les mod` eles construits auparavant.
+AdaBoost.M1 : les exemples sont pond´ er´ es.
+l’erreur est calcul´ ee sur les exemples pond´ er´ es : la somme des
+poids des exemples mal-class´ es divis´ ee par la somme totale
+des poids.
+la pond´ eration des instances permet au classifieur de se
+concentrer sur certains instances.
+ING2-MI Introduction to Data Mining 75/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Algorithme : Boosting - G´ en´ eration de mod` ele
+Affecter le mˆ eme poids ` a chaque exemple d’apprentissage
+(w = 1
+N )
+pour chaque iteration t des k it´ erations faire
+Appliquer l’algorithme d’apprentissage ` a l’ensemble d’exemples
+pond´ er´ es
+Stocker le mod` ele r´ esultant
+Calculer l’erreur et sur l’ensemble d’apprentissage et stocker
+l’erreur 1
+SI l’erreur est ´ egale ` a 0 ou sup´ erieure ` a 0.5
+Terminer
+SINON
+Pour chaque exemple ei class´ e correctement par le mod` ele
+wi← wi∗ et
+1− et
+Normaliser les poids de tous les exemples (pour que la
+sommes soit N).
+1. L’erreur d’un exemple sera pond´ er´ e par son poids w
+ING2-MI Introduction to Data Mining 76/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Algorithme : Boosting - Classification
+Affecter le poids 0 ` a toutes les classes
+Pour chacun mod` ele (num´ ero t) trouv´ e
+Ajouter−log et
+1−et
+au poids de la classe pr´ edite par le mod` ele,
+et correspond ` a l’erreur du mod` ele.
+Retourne la classe ayant le poids le plus ´ elev´ e
+ING2-MI Introduction to Data Mining 77/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Boosting : Discussion - 1
+Les exemples sont re-pond´ er´ es apr` es chaque it´ eration
+Pour chaque exemple bien class´ e nous avons :wi← wi∗ et
+1−et
+Normalisation des poids (pour que la somme reste la mˆ eme
+pour toutes les it´ erations)
+Par cons´ equence :
+Les poids des exemples correctement class´ es seront
+d´ ecr´ ement´ es : les exemples faciles.
+Les poids des exemples mal class´ es seront incr´ ement´ es : les
+exemples difficiles.
+ING2-MI Introduction to Data Mining 78/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Boosting : Discussion - 2
+Pour pr´ edire une nouvelle donn´ ee, les sorties des mod` eles sont
+combin´ ees en utilisant un vote pond´ er´ e :Wt =−log et
+1−et
+Pour chaque classe on effectue la somme des poids.
+La classe ayant le poids maximal est choisie.
+ING2-MI Introduction to Data Mining 79/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Random Forest
+Application du Bagging dans le cas sp´ ecifique de l’utilisation
+d’un algorithme construisant un arbre de d´ ecision.
+L’objectif est de rendre les mod` eles (arbres) construits plus
+ind´ ependants entre eux.
+Cette ind´ ependance va permettre de rendre le vote des
+experts plus efficace.
+Approche tr` es fructueuse en grande dimension.
+ING2-MI Introduction to Data Mining 80/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Random Forest
+Figure – Combinaison de plusieurs mod` eles : Random Forest
+ING2-MI Introduction to Data Mining 81/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Random Forest - Algorithme
+z ={(x1, y1)..(xn, yn)} ´ echantillon d’apprentissage,xi d´ ecrit
+par p variables explicatives
+Pour t = 1..K (K repr´ esente le nombre d’arbres form´ es dans la
+forˆ et)
+Tirer un ´ echantillon al´ eatoirezt avec remise parmi z.
+Estimer un arbre sur zt avec randomisation des variables :
+Pour la construction de chaque nœud de chaque arbre, on tire
+uniform´ ementq variables parmi p pour former la d´ ecision
+associ´ ee au nœud
+En fin d’algorithme, on poss` edeK arbres que l’on moyenne ou
+qu’on fait voter pour la r´ egression ou la classification
+ING2-MI Introduction to Data Mining 82/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Exercice - 1
+Find decision trees of the following Boolean formula :
+1 A∧¬ B
+2 A∨ (B∧ C )
+3 A XOR B
+4 (A∧ B)∨ (C∧ D)
+Apply ID3 (via Weka) on the precedent examples. Comment.
+ING2-MI Introduction to Data Mining 83/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Exercice - 2
+We have the following examples :
+Instance Classe a1 a2
+1 + T T
+2 + T T
+3 - T F
+4 + F F
+5 - F T
+6 - F T
+1 Compute the entropy of the set of examples according to the
+class value.
+2 Find the gain of the attribute a2 ?
+ING2-MI Introduction to Data Mining 84/85
+<<<PAGE>>>
+Introduction
+Clustering & Partitioning
+Bayesian Model
+Decision Trees and Random Forest
+Combinaison de plusieurs mod` eles
+Bagging
+Boosting
+Random Forest
+Exercice - 3
+Apply ID3 to the wether set in order to find the decision tree.
+ING2-MI Introduction to Data Mining 85/85

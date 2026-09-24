@@ -1,0 +1,185 @@
+Département de Mathématiques
+Année universitaire 2022-2023
+EXAMEN CORRECTION
+Filière : ING2 MI
+Matière : Traitement du Signal
+Date : 16/12/2022 Durée : 2h
+Responsable Cergy : HAJEJ Ahmed
+Responsables Pau : BARRAU Nelly; DESPLA T Lucie
+Exercice 1 [5 points] Questions du cours
+Les réponses doivent être écrites sur votre copie (et non sur ce sujet).
+Aucune justification n’est demandée. Toute erreur peut être sanctionnée de points négatifs.
+PARTIE I Vrai ou Faux ?
+1. L’échantillonnage d’un signal consiste à :
+(a) Prélever la valeur du signal à intervalles de temps réguliers.
+(b) Convertir les nombres binaires en tensions.
+(c) Convertir les valeurs du signal en nombres binaires.
+2. Considérons les trois signaux suivants
+s1(t) = cos(2πt), s 2(t) = 1 + s2
+1(t), s 3(t) = signe(s1(t)).
+(a) s1 est un signal à temps continu et valeurs discrètes.
+(b) s1 est périodique de période 1.
+(c) s2 est périodique de période 1.
+(d) s3 est périodique de période 1 et à valeurs discrètes.
+3. Un signal numérique est un signal qui évolue, au cours du temps, de manière :
+(a) Continue. (b) Discontinue.
+PARTIE II Question de cours
+Définissez la réponse impulsionnelle d’un système (filtre) à temps continu.
+Exercice 2 [3 points] Calculer la transformée de Fourier de la fonction suivante
+f (x) =
+
+
+
+1 +x si x ∈ [−1; 0]
+1−x si x ∈ [0; 1]
+0 sinon
+La fonctionf est dansL2(R) et admet donc une transformée de Fourier. Il vient, pourν̸= 0 :
+F (f )(ν) =
+Z +∞
+−∞
+f (t)e−2iπνtdt
+=
+Z 0
+−1
+(1 +t)e−2iπνtdt +
+Z 1
+0
+(1−t)e−2iπνtdt
+Traitons chaque intégrale séparément : on la divise en 2 :
+Z 0
+−1
+(1 +t)e−2iπνtdt =
+Z 0
+−1
+e−2iπνtdt +
+Z 0
+−1
+te−2iπνtdt
+1
+<<<PAGE>>>
+puis on effectue une intégration par partie (sur la 2eme intégrale) , il vient
+Z 0
+−1
+(1 +t)e−2iπνtdt =
+−e−2iπνt
+2iπν
+0
+−1
++
+ 
+t−e−2iπνt
+2iπν
+0
+−1
+−
+Z 0
+−1
+−e−2iπνt
+2iπν dt
+!
+On obtient donc Z 0
+−1
+(1 +t)e−2iπνtdt = i
+2πν + 1
+4π2ν2− e−2iπν
+4π2ν2
+Par un raisonnement analogue, on obtient pour l’autre intégrale :
+Z 1
+0
+(1−t)e−2iπνtdt = −i
+2πν + 1
+4π2ν2− e−2iπν
+4π2ν2
+Finalement, on obtient
+F (f )(ν) = sin2(πν)
+π2ν2 (⋆)
+Notons que si ν = 0 , on doit alors calculer
+Z
+R
+f (t)dt qui vaut 1 (résultat cohérent avec l’expression (⋆) en
+faisant tendreν vers 0).
+Exercice 3 [3 points] On rappelle que la fonction de HeavisideH et la fonction rampeR sont données par
+H(t) =
+ 0 si t ≤ 0
+1 si t> 0 R(t) = tH(t)
+1. Montrer que la fonction rampe R définit une distribution.
+La fonctionR est localement intégrable doncR définie bien un distribution.
+2. Déterminer R′ etR′′ au sens des distributions.
+DéterminonsR′ : Pour toutφ∈D (R),
+<R′,φ> =−<R,φ ′>=−
+Z +∞
+−∞
+R(t)φ′(t)dt
+=−
+Z +∞
+0
+tφ′(t)dt =−[tφ(t)]+∞
+0 +
+Z +∞
+0
+φ(t)dt
+=
+Z +∞
+0
+φ(t)dt
+=
+Z +∞
+−∞
+H(t)φ(t)dt.
+La fonction de Heaviside H est localement intégrable donc elle définit une distribution régulière. On a
+donc pour toutφ∈D (R),
+<R′,φ> =<H,φ>.
+La dérivée au sens des distribution de la fonctionR est donc la fonction de Heaviside.
+Déterminons maintenantR′′ : Pour cela, il suffit de calculerH′. On a pour toutφ∈D (R),
+<H′,φ> =−<H,φ ′>=−
+Z +∞
+−∞
+H(t)φ′(t)dt
+=−
+Z +∞
+0
+φ′(t)dt =−[φ(t)]+∞
+0 =φ(0)
+=<δ 0,φ>.
+La dérivée de la fonction de Heaviside est donc la distribution de Dirac en 0.
+Remarque. cet exercice a été traité dans le TD2 de Pau
+2
+<<<PAGE>>>
+Exercice 4 [4 points] Considérons le système discret suivant : y[n] = x[n] +x[n− 1]
+1. Déterminer la réponse en fréquence du système.
+En appliquant la transformée de Fourier enz à l’équation ci-dessus, on obtient
+Y (z) = X(z) +z−1X(z) = (1 + z−1)X(z)
+DoncH(z) = 1 + z−1.
+2. Calculer la réponse impulsionnelle h[n] du système.
+3. Tracer le diagramme de Bode de h[n].
+4. Donner la bande passante à−3dB du système.
+Remarque. cet exercice a été traité dans le TD5 de Cergy
+Exercice 5 [7 points] Soit un circuit formé d’un conducteur ohmique R et d’un condensateur de capacité C,
+soumis à une tension sinusoïdaleUe =Ueexp(jwt), avecj2 =−1 :
+1. Déterminer la fonction de transfert H du filtre RC : H(ω) = Us
+Ue
+.
+2. On écrit la fonction de transfert de la façon suivante :
+H(ω) =
+j ω
+ωc
+1 +j ω
+ωc
+oùωc est la pulsation de coupure. Identifierωc.
+3. Déduire la fréquence de coupure notée fc.
+4. Calculer le gain GdB en dB à la fréquence de coupure. On rappelle queGdB = 20log(|H|).
+5. Représenter le diagramme de Bode de ce filtre.
+6. Déduire la nature de ce filtre.
+[Indication]
+1. La relation courant tension pour un condensateur est : i =CdUc
+dt .
+2. En notation complexe, pour n’importe quel dipôle, on a U =ZI..
+Pour le conducteur ohmiqueZR =R et pour le condensateurZc = 1
+jCω .
+3. Le diagramme de Bode d’un filtre se compose de deux tracés :
+3
+<<<PAGE>>>
+— Le gain en décibels (dB) en fonction de ω donné parGdB = 20log(|H(ω)|).
+— la phase en degré en fonction de ω, donnée pararg(H(ω))
+Fin.
+4

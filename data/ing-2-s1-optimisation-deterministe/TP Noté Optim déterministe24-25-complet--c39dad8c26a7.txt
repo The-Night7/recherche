@@ -1,0 +1,867 @@
+CY-Tech 2024-2025
+ING2-MI
+TP noté
+Optimisation déterministe
+L'énoncé du sujet comporte 4 parties. Les 2 premières présentent les 2 problèmes à résoudre. La troisième contient les paramètres 
+utiles, et la quatrième les consignes pour votre rendu.
+En annexe sont fournies les données individualisées et organisées par sujet.
+Prenez le temps de le lire en entier et attentivement avant de commencer.
+I. Problème aux moindres carrés
+Le but de cette partie est de résoudre le problème d'optimisation sans contraintes suivant : 
+g x=‖Bx -𝛽‖min
+x∈R3
+( ) min
+x∈R3
+1
+2
+2 P(1)
+où .B∈MR,  𝛽 ∈R4,3( ) 4
+Pour chacun(e) d'entre vous la matrice , le vecteur  et le point initial  de tous les algorithmes sont à B𝛽x 0
+récupérer dans l'annexe en fin de sujet en face du numéro de sujet qui vous a été affecté.
+Les paramètres nécessaires pour les différents algorithmes sont donnés dans la partie 3.
+1) Préliminaire :
+a) Ecrire sur Python une fonction g_moindresC  qui renvoie l'expression de .g(x)
+b) Ecrire une fonction grad_g_moindresC qui renvoie le gradient de  en .g x
+c) Tester vos fonctions en affichant les valeurs données pour  et de .g x(0)∇g x( 0)
+2) Algorithme du gradient à pas fixe :
+On va résoudre  par l’algorithme du gradient à pas fixe pour une fonction des moindres carrés.P(1)
+Pour le choix du pas fixe , on démontre que, lorsque la hessienne est définie positive :𝜌
+➢  il y a convergence si et ssi , où  est la plus grande valeur propre de la hessienne 𝜌< 2
+𝜆max
+𝜆max
+de g
+➢ la vitesse de convergence est optimale pour , où  est la plus petite valeur 𝜌= 2
+𝜆+𝜆max min
+𝜆min
+propre de la hessienne.
+a) A l'aide de la commande eig de numpy.linalg, calculer les valeurs propres de la matrice 
+hessienne de , et justifier qu'elle est définie positive.g
+b) Implémenter l'algorithme du gradient à pas fixe en donnant comme sortie la valeur de la 
+<<<PAGE>>>
+solution  et le nombre d'itérations .x* k
+c) Tester votre code sur  avec 3 valeurs différentes du pas fixe : g
+i) une valeur respectant la condition de convergence, 
+ii) une valeur ne respectant pas la condition de convergence,
+iii) une valeur égale au pas assurant la vitesse optimale. 
+Vous indiquerez la valeur du pas  choisi et les sorties obtenues  et .𝜌 x* k
+3) Algorithme du gradient à pas optimal (de Cauchy) :
+a) Rappeler la valeur du pas optimal au point  dans la direction  dans le cas des moindres xk dk
+carrés.
+b) Implémenter l'algorithme du gradient à pas optimal.
+c) Tester votre code avec la fonction  en donnant les sorties  et .g x * k
+4) Algorithme du gradient conjugué à pas optimal (de Cauchy) :
+a) Implémenter l'algorithme du gradient conjugué à pas optimal.
+b) Tester votre code avec la fonction  en donnant les sorties  et .g x * k
+II. Fonction non quadratique
+Dans cette partie, nous allons traiter le problème d'optimisation sans contraintes suivant : 
+ f x=  50x - x+ 1- xmin
+x∈R2
+( ) min
+x∈R2
+2
+2
+1
+2
+( 1)2 P(2)
+où . Nous ferons partir nos algorithmes de .x= x1
+x2
+x=0
+-1.9
+2
+1) Préliminaire :
+a) Ecrire sur Python une fonction f  qui renvoie l'expression de .f(x)
+b) Ecrire une fonction grad_f qui renvoie le gradient de  en .f x
+c) Tester vos fonctions en affichant les valeurs données pour  et de . f x(0)∇f x( 0)
+2) Algorithme du gradient à pas d'Armijo :
+a) Implémenter l'algorithme du gradient à pas d'Armijo.
+b) Tester votre code avec la fonction  en donnant les sorties  et .f x * k
+3) Algorithme du gradient conjugué à pas d'Armijo, variante Fletcher-Reeves :
+a) Implémenter l'algorithme du gradient conjugué à pas d'Armijo variante Fletcher-Reeves.
+b) Tester votre code avec la fonction  en donnant les sorties  et .f x * k
+III. Paramètres des algorithmes
+On prendra les paramètres suivants : 
+eps =𝜖= 10 = 0.0001-4
+iterMax = 500
+Pour le pas d'Armijo :
+tau =𝜏= 0.7
+omega =𝜔= 10 = 0.0001-4
+<<<PAGE>>>
+rho0 =𝜌= 10
+IV. Consignes pour le rendu
+1) Pour la partie I, vous devez travailler avec la matrice , et les vecteurs  et  figurant dans le sujet B𝛽x 0
+dont le numéro vous a été affecté et apparaissant dans l'annexe à l'énoncé du TP.
+2) Vous devez impérativement rendre une archive au format .zip portant le nom 
+"RenduTPnote_Votre nom.zip"
+• Elle doit contenir un rapport  contenant vos réponses sur le modèle du fichier 
+"Rapport_TPnote_untel.docx" qui est joint à l'énoncé, mais impérativement sous format .pdf. Les 
+résultats numériques doivent être donnés avec 4 décimales au moins.
+• Vos codes python sous la forme d'un ou de plusieurs fichiers .py portant également des noms de la 
+forme "Grad_pas_fixe_votre nom.py".
+2) Le non respect de ces consignes engendrera des pénalités.
+3) Vous devez adresser votre rendu par mail à votre professeur de TD avant vendredi 22 novembre 
+23h59. Tout fichier parvenu après cette heure sera ignoré.
+<<<PAGE>>>
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Annexe – TP noté – Optimisation déterministe
+10 octobre 2023
+Vous devez utiliser la matriceB, le vecteurβ, le vecteurx 0 pour l’initialisation, qui correspondent au
+numéro de votre sujet.
+Pour l’application numérique:
+Sujet 1: B=
+
+
+1 2 0
+0 1 0
+1 0 2
+−1 3−2
+
+
+,β=
+
+
+1
+0
+2
+−1
+
+
+etx 0 =
+
+
+1
+0
+−4
+
+.
+Sujet 2: B=
+
+
+−1 2 0
+0−1 0
+−1 0 2
+1 3−2
+
+
+,β=
+
+
+1
+1
+1
+0
+
+
+etx 0 =
+
+
+1
+0
+−4
+
+.
+Sujet 3: B=
+
+
+1 1 3
+0−1 0
+1 0 3
+0 0 1
+
+
+,β=
+
+
+2
+0
+0
+3
+
+
+etx 0 =
+
+
+0
+0
+0
+
+.
+Sujet 4: B=
+
+
+0 1 3
+0−1 0
+0 1 1
+3 0 1
+
+
+,β=
+
+
+0
+1
+3
+2
+
+
+etx 0 =
+
+
+0
+0
+0
+
+.
+Sujet 5: B=
+
+
+0 1 3
+0−1 0
+0 1 1
+3 0 1
+
+
+,β=
+
+
+0
+1
+3
+2
+
+
+etx 0 =
+
+
+1
+1
+1
+
+.
+Sujet 6: B=
+
+
+3 0 3
+0−1 0
+2−1 1
+3 0 1
+
+
+,β=
+
+
+−1
+3
+0
+3
+
+
+etx 0 =
+
+
+0
+1
+0
+
+.
+Sujet 7: B=
+
+
+1 0 0
+0−1 0
+0 1 1
+0 0 0
+
+
+,β=
+
+
+1
+0
+3
+3
+
+
+etx 0 =
+
+
+−1
+1
+0
+
+.
+Sujet 8: B=
+
+
+0 0 0
+0−1 0
+0 1 1
+1 0 0
+
+
+,β=
+
+
+3
+0
+3
+1
+
+
+etx 0 =
+
+
+−1
+1
+0
+
+.
+Sujet 9: B=
+
+
+2 9 1
+0 1 0
+1 0 1
+1 0−2
+
+
+,β=
+
+
+1
+1
+2
+1
+
+
+etx 0 =
+
+
+2
+−1
+0
+
+.
+Sujet 10: B=
+
+
+1 9 1
+3 1 0
+1 2 1
+1 2−2
+
+
+,β=
+
+
+0
+1
+0
+0
+
+
+etx 0 =
+
+
+0
+−1
+0
+
+.
+Sujet 11: B=
+
+
+2 2 1
+0 1 0
+2 0 1
+4−2−2
+
+
+,β=
+
+
+1
+−1
+0
+1
+
+
+etx 0 =
+
+
+0
+0
+0
+
+.
+Sujet 12: B=
+
+
+0 2 1
+0 1 0
+2 0 1
+3−2−2
+
+
+,β=
+
+
+1
+−1
+0
+1
+
+
+etx 0 =
+
+
+0
+0
+0
+
+.
+<<<PAGE>>>
+TP NOTÉ
+Sujet 13: B=
+
+
+2 0−3
+0 1 0
+1 0 1
+1 0−2
+
+
+,β=
+
+
+0
+0
+2
+1
+
+
+etx 0 =
+
+
+2
+0
+−1
+
+.
+Sujet 14: B=
+
+
+0 0−3
+4 1 0
+−1 2 1
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+2
+0
+1
+
+.
+Sujet 15: B=
+
+
+5 0−3
+4 5 0
+−1 2 5
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+2
+0
+1
+
+.
+Sujet 16: B=
+
+
+6 0−3
+4 6 0
+−1 2 6
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+0
+0
+1
+
+.
+Sujet 17: B=
+
+
+1 2 0
+0 1 0
+1 0 2
+−1 3−2
+
+
+,β=
+
+
+1
+0
+2
+−1
+
+
+etx 0 =
+
+
+1
+0
+−4
+
+.
+Sujet 18: B=
+
+
+7 0−3
+4 7 0
+−1 2 7
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+1
+0
+0
+
+.
+Sujet 19: B=
+
+
+8 0−3
+2 8 0
+−1 2 8
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+1
+0
+0
+
+.
+Sujet 20: B=
+
+
+2 0−3
+0 2 0
+−1 2 8
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+1
+1
+0
+
+.
+Sujet 21: B=
+
+
+2 1−3
+0 2 1
+−1 2 1
+2−2−2
+
+
+,β=
+
+
+1
+1
+0
+1
+
+
+etx 0 =
+
+
+−1
+0
+−1
+
+.
+Sujet 22: B=
+
+
+0 2−3
+2 2 1
+−1 2 1
+2−2−2
+
+
+,β=
+
+
+1
+1
+0
+1
+
+
+etx 0 =
+
+
+−1
+0
+−1
+
+.
+Sujet 23: B=
+
+
+1 2−3
+2 2 1
+4 2 1
+2−2−2
+
+
+,β=
+
+
+0
+1
+0
+1
+
+
+etx 0 =
+
+
+1
+0
+1
+
+.
+Sujet 24: B=
+
+
+0 0−3
+2 2 1
+0 2 1
+2 2−2
+
+
+,β=
+
+
+1
+1
+1
+1
+
+
+etx 0 =
+
+
+−1
+0
+1
+
+.
+Sujet 25: B=
+
+
+5 2−3
+4 5 2
+−1 2 5
+2 2−2
+
+
+,β=
+
+
+1
+0
+2
+1
+
+
+etx 0 =
+
+
+−1
+0
+1
+
+.
+Sujet 26: B=
+
+
+−5 2−3
+4−5 2
+1 2 5
+2 2 2
+
+
+,β=
+
+
+1
+0
+−2
+1
+
+
+etx 0 =
+
+
+0
+0
+1
+
+.
+Sujet 27: B=
+
+
+3 6−3
+2 0 2
+1 2 5
+0 2 2
+
+
+,β=
+
+
+0
+0
+1
+1
+
+
+etx 0 =
+
+
+1
+−1
+1
+
+.
+Sujet 28: B=
+
+
+3 0−3
+2 0 2
+1 2 0
+0 2 2
+
+
+,β=
+
+
+2
+2
+1
+1
+
+
+etx 0 =
+
+
+0
+−1
+1
+
+.
+Sujet 29: B=
+
+
+−7 7−3
+2 7 2
+1 3 0
+9 2 2
+
+
+,β=
+
+
+0
+2
+0
+2
+
+
+etx 0 =
+
+
+0
+0
+1
+
+.
+CY TECH – Optimisation déterministe 2/2

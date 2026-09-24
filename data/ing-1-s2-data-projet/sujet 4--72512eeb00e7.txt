@@ -1,0 +1,103 @@
+V´ erification Formelle d’Applications Critiques avec
+R´ eseaux de Petri
+Projet GM 2026
+Objectif g´ en´ eral
+L’objectif de ce projet est de permettre aux ´ etudiants de :
+•Identifier et analyser une application critique r´ eelle.
+• ´Etudier et pr´ esenter les m´ ethodes formelles utilis´ ees pour la v´ erification de syst` emes
+critiques.
+•Mod´ eliser une application critique de votre choix ` a l’aide der´ eseaux de Petri.
+Attention : l’application ne doit pas ˆ etre trop simple ni trop complexe.
+•Formuler et exprimer des propri´ et´ es critiques de votre application ` a v´ erifier en
+logique temporelle (LTL, CTL, etc.).
+•V´ erifier automatiquement que les propri´ et´ es critiques de l’application choisie ne
+sont pas viol´ ees (model checking).
+´Etape 1 : Travail pr´ eparatoire - M´ ethodes formelles
+pour applications critiques
+Avant de commencer la mod´ elisation, chaque groupe doit :
+1. Faire un ´ etat de l’art desm´ ethodes formellesutilis´ ees pour la v´ erification d’applications
+critiques telles que l’aviation, le ferroviaire, le spatial, la m´ edecine, etc.
+2. La liste des m´ ethodes doit inclure (mais ne pas se limiter ` a) :
+•Logique temporelle (LTL, CTL, CTL*) et logiques modales
+•Mod` eles bas´ es sur les automates : automates finis, automates ` a ´ etats finis
+(FSM), automates temporis´ es
+•Syst` emes ` a ´ ev´ enements discrets : R´ eseaux de Petri classiques et color´ es
+•Process algebras (CSP, CCS)
+•Outils de model checking : SPIN, NuSMV, UPPAAL, LoLA, TINA, CPN
+Tools
+1
+<<<PAGE>>>
+•Analyse de s´ ecurit´ e et de sˆ uret´ e : invariants, deadlock detection, vivacit´ e,
+s´ ecurit´ e
+3. Discuter des avantages et limites de chaque m´ ethode selon le type d’application
+critique.
+´Etape 2 : Choix d’une application critique
+Chaque groupe doit :
+•Choisir une application critique concr` ete : exemples possibles
+–Syst` eme de contrˆ ole a´ erien
+–Syst` eme de freinage ferroviaire
+–Syst` eme de commande d’un satellite ou drone
+–Syst` eme de gestion d’´ energie critique (centrale nucl´ eaire, r´ eseau ´ electrique)
+•D´ ecrire le fonctionnement global du syst` eme choisi.
+•Identifier les ´ el´ ements critiques et les risques associ´ es.
+Unicit´ e de l’application choisie :Vous devez inscrire l’application que vous avez
+choisie sur un drive qui sera communiqu´ e ult´ erieurement. Votre application ne doit pas
+ˆ etre d´ ej` a s´ electionn´ ee par une autre ´ equipe. En cas de conflit, l’´ equipe ayant inscrit
+l’application en premier sera consid´ er´ ee comme prioritaire.
+´Etape 3 : Mod´ elisation avec R´ eseaux de Petri
+1. Identifier lesplaces,transitionsetjetonspertinents pour le syst` eme.
+2. Construire un mod` ele initial de votre application en r´ eseau de Petri.
+3. D´ efinir des sous-mod` eles si n´ ecessaire pour g´ erer la complexit´ e (ex : modules con-
+currents).
+4. Outils autoris´ es : CPN Tools, PIPE, LoLA, Tina, ou tout autre logiciel de mod´ elisation
+de RdP.
+´Etape 4 : Expression des propri´ et´ es
+•Identifier les propri´ et´ es critiques de votre application ` a v´ erifier, par exemple :
+–S´ ecurit´ e : “une situation dangereuse ne peut jamais se produire”
+–Vivacit´ e : “toute action commenc´ ee se termine ´ eventuellement”
+–Absence de deadlock : “le syst` eme ne peut pas se bloquer”
+–Invariants sur les ressources
+•Exprimer ces propri´ et´ es en logique formelle :
+–LTL (Linear Temporal Logic)
+–CTL (Computation Tree Logic) si n´ ecessaire
+2
+<<<PAGE>>>
+´Etape 5 : Programmation et simulation par code
+Cette partie du projet inclut un aspect programmation afin de vous permettre de manip-
+uler concr` etement les r´ eseaux de Petri et d’automatiser la v´ erification des propri´ et´ es. Il
+est demand´ e :
+1.Repr´ esentation du r´ eseau de Petri par code :Cr´ eer une structure de donn´ ees
+pour repr´ esenter les places, transitions, arcs et jetons du r´ eseau de Petri choisi. Cela
+peut ˆ etre r´ ealis´ e en Python, Java, ou tout autre langage autoris´ e.
+2.Simulation du r´ eseau :D´ evelopper une fonction qui simule l’´ evolution du r´ eseau
+de Petri sur plusieurs ´ etapes jusqu’` a un ´ etat final, en respectant les r` egles de tirage
+des transitions.
+3.V´ erificateur automatique des propri´ et´ es de base du r´ eseau :Programmer
+un v´ erificateur des propri´ et´ es fondamentales des r´ eseaux de Petri (vivacit´ e, borni-
+tude, absence d’interblocage, invariants, etc.).
+Remarque :L’objectif est que vous compreniez la m´ ecanique du ”model checking” et
+la dynamique des r´ eseaux de Petri avant d’utiliser les outils disponibles pour la suite du
+travail.
+´Etape 6 : V´ erification formelle (Model Checking)
+1. Utiliser les outils de model checking compatibles avec les RdP pour v´ erifier les
+propri´ et´ es.
+2. Discuter les r´ esultats obtenus.
+Rapport final
+•Rapport ´ ecrit complet (15 ` a 20 pages) comprenant :
+– ´Etat de l’art des m´ ethodes formelles
+–Description du syst` eme choisi
+–Mod` ele Petri net avec diagrammes
+–Propri´ et´ es formul´ ees en logique temporelle
+–R´ esultats de la v´ erification formelle
+–Analyse des r´ esultats.
+–Conception de votre impl´ ementation.
+Crit` eres d’´ evaluation
+•Qualit´ e et exhaustivit´ e de l’´ etat de l’art
+•Pertinence du choix de l’application critique
+3
+<<<PAGE>>>
+•Justesse et clart´ e de la mod´ elisation Petri net
+•Correctitude de la formulation des propri´ et´ es
+•Interpr´ etation et analyse des r´ esultats du model checking
+•Qualit´ e de la pr´ esentation orale et des supports visuels
+4

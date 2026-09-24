@@ -1,0 +1,183 @@
+Corrige Compressive Sensing avril 24
+1. Exercice 1
+1) vecteur des mesures associées au signal  par l'intermédiaire de la matrice de y= x
+mesures .𝛷
+2) représentation parcimonieuse du signal  dans le dictionnaire .𝛼= x D
+3) ensemble des vecteurs -parcimonieux𝛴=s s=x∈R,  ℓx⩽s N
+0( )
+ensemble des vecteurs dont le nombre de composantes non nulles ne dépasse =
+pas .s
+ n'est pas un sous-espace vectoriel car il n'est pas stable par addition.𝛴s
+4) On sait que : . y=A𝛼=𝛼A∑
+K
+j=1
+j j
+a) Comme  pour , on en déduit : 𝛼= 0j j∉L
+y=𝛼A∑
+j∈L
+j j
+b) Supposons que les ( ) ne sont pas linéairement indépendants, on peut A,  j∈Lj
+donc exprimer l'une de ces colonnes, , comme combinaison linéaire des Aj0
+autres, mettons 
+A=𝛾Aj0
+∑
+j∈L, j≠j0
+j j
+En remplçant  dans l'expression , on arrive ainsi à exprimer Aj0 y=𝛼A∑
+j∈L
+j j y
+comme combinaison linéaire des , doit  colonnes A,  j∈L,  j≠jj0 s -1 ( )
+seulement.
+On trouve ainsi une représentation -parcimonieuse de  par rapport à .s -1 ( )y A
+Ceci contredit le fait que , avec , soit la solution du pb. de 𝛼 ℓ 𝛼=s 0( )
+minimisation .ℓ(0)
+Conclusion : les vecteurs ( ) sont forcément linéairement indépendants.A,  j∈Lj
+c) Si la matrice  possède  colonnes indépendantes, alors son rang est supérieur A s
+à .s
+D'autre part, l'ordre de cette matrice est , avec . Par conséquent M×K M<K
+son rang est inférieur à . En résumé : M
+.s⩽rang A⩽M( )
+5) On suppose .Ker A∩ 𝛴= 0 ( )2s { K }
+a) Supposons que le pb. de minimisation  admette 2 solutions -ℓ(0)s
+parcimonieuses  et .𝛼 𝛽
+<<<PAGE>>>
+On a donc :                et .𝛼,𝛽 ∈ 𝛴 s A𝛼=A𝛽=y
+On en déduit :           et .𝛾=𝛼-𝛽 ∈ 𝛴 2s A𝛾=A𝛼- A𝛽= 0
+Autrement dit :          et .𝛾 ∈ 𝛴 2s 𝛾 ∈Ker A⟹ 𝛾 ∈Ker A∩ 𝛴= 0( ) ( ) 2s { K }
+Conclusion :             .𝛾= 0   ⟹ 𝛼=𝛽
+Il y a donc bien unicité de la solution dans .𝛴s
+b) Les seules composantes non nulles de  sont les , il y en a exactement .𝛼 𝛼 'j 2s
+Donc .𝛼 ∈ 𝛴 2s
+c) On voit immédiatement que :
+.A𝛼=A𝛼' = 0     ⟹ 𝛼 ∈Ker AJ[ ] ( )
+d) A partir de n'importe quel vecteur , on peut construire, comme 𝛼'∈Ker A( J[ ])
+précedemment, un vecteur .𝛼 ∈Ker A∩ 𝛴= 0⟹ 𝛼= 0 ⟹ 𝛼' = 0( ) 2s { K }
+Donc .Ker A= 0 (J[ ]) { }
+e)  signifie que les  colonnes de  sont indépendantes. En Ker A= 0 (J[ ]) { } 2s A J[ ]
+suivant le raisonnement de 4.c), on obtient .M⩾2s
+2. Exercice 2
+Il y avait une ambiguïté dans la manière dont les indices sont ordonnés. Soit dans 
+l'ordre décroissant d'importance des contributions, soit dans l'ordre croissant des 
+indices. C'est ce dernier choix qui est fait dans ce corrigé. 
+J'en ai tenu compte dans la correction des copies.
+1) Itération 1 : On notera les indices en suivant la convention de Python. .s= 4
+a) On prend les  plus grandes contributions : .8 Supp= 0, 3, 5, 6, 7, 9, 10, 121 [ ]
+b) .Supp=∅ ∪Supp=Supp= 0, 3, 5, 6, 7, 9, 10, 12[ ] 1 1 [ ]
+c)  est obtenu en résolvant le pb. aux moindres carrés .𝛼Supp A𝛼=ySupp[ ]Supp
+La solution est obtenue à l'aide du pseudo-inverse  par : .A†
+Supp[ ] 𝛼=A ySupp
+†
+Supp[ ]
+d) On conserve les  plus grands coefs en valeur absolue : .s Supp= 0, 3, 7, 10 [ ]
+e) Après rejet, on peut écrire : 
+.y= 1.374A -1.685A+ 1.09A -0.619A+R0 3 7 10
+1 ( )
+f) .‖R‖=‖y -1.374A -1.685A+ 1.09A -0.619A‖1 ( ) ( 0 3 7 10 )
+2) Itération 2 : 
+a) On prend les  plus grandes contributions : .8 Supp= 0, 1, 2, 3, 4, 7, 12, 131 [ ]
+b) .Supp= 0, 3, 7, 10∪Supp= 0, 1, 2, 3, 4, 7, 10, 12, 13[ ] 1 [ ]
+c) En ne tenant pas compte des 2 dernières composantes de , on retient : 𝛼Supp
+.Supp= 0, 1, 2, 13 [ ]
+d) .y=-2A+A+A+A+R0 1 2 13
+2 ( )
+e) . L'algorithme a ‖R‖=‖y - -2A+A+A+A‖= 4.96 × 102 ( ) ( 0 1 2 13 ) -15
+convergé et donné une représentation exacte (résidu nul) : 
+<<<PAGE>>>
+.y=-2A+A+A+A0 1 2 13
+3. Exercice 3
+1) .f z=‖R - zd‖j( ) k-1 ( )
+j
+2
+a) f z=‖R - zd‖=‖R‖+z‖d‖-2 <R,zd>j( ) k-1 ( )
+j
+2k-1 ( ) 2 2
+j
+2k-1 ( )
+j
+.f z=z‖d‖-2zd R+‖R‖( ) 2
+j
+2 T
+j
+k-1 ( )k-1 ( ) 2
+b) Il s'agit d'une fonction polynômiale de degré 2. Son minimum est atteint pour 
+.z= =* 2d R
+2‖d‖
+T
+j
+k-1 ( )
+j
+2
+<d,R>
+‖d‖
+j
+k-1 ( )
+j
+2
+c) Ce minimum a pour valeur :  
+f z=‖d‖-2d R+‖R‖j
+* d R
+‖d‖
+T
+j
+k-1 ( )
+j
+2
+2
+j
+2 d R
+‖d‖
+T
+j
+k-1 ( )
+j
+2
+T
+j
+k-1 ( )k-1 ( ) 2
+.f z=‖R‖-=‖R‖-j
+* k-1 ( ) 2
+d R
+‖d‖
+T
+j
+k-1 ( )2
+j
+2
+k-1 ( ) 2
+<d,R>
+‖d‖
+j
+k-1 ( ) 2
+j
+2
+d) Le terme  étant constant, chercher le minimum de , parmi les ‖R‖k-1 ( ) 2 f zj
+*
+indices , revient à chercher le maximum de . j
+<d,R>
+‖d‖
+j
+k-1 ( ) 2
+j
+2
+Autrement dit, en prenant les racines carrées : 
+.m=k arg max
+| <d,R> |
+‖d‖
+j
+k-1 ( )
+j
+2) On a évidemment : .z=z=k
+*
+mk
+<d,R>
+‖d‖
+mk
+k-1 ( )
+mk
+2
+3) , d'une part.x=z d+z d+ ... +z d+R1m 1 2m 2 k-1m k-1
+k-1 ( )
+, d'autre part. Par conséquent : x=z d+z d+ ... +z d+z d+R1m 1 2m 2 k-1m k-1 k m k
+k( )
+R=R - z dk( )k-1 ( )
+k m k

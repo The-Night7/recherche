@@ -1,0 +1,240 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Compressive sensing
+Donné le 12-04-2022 (Durée 2h00)
+Ordinateurs, téléphones portables et tout document sont interdits
+Calculatrice interdite
+EXERCICE 1 (Questions de cours – 5 points)
+1. Expliquer le principe général du procédé du compressive sensing.
+2. Expliquer l’intérêt d’un dictionnaire dans le procédé du compressive sensing.
+3. Donner la définition de la cohérence mutuelle. Comment choisir la matrice de mesure Φ relative-
+ment à la cohérence mutuelle avec le dictionnaire D.
+4. Démontrer qu’à chaque itérationk ≥ 1 de la méthode de la poursuite gloutonne OMP , l’algorithme
+ne sélectionne pas un atome déjà sélectionné à l’itération k − 1.
+EXERCICE 2 (Apprentissage d’un dictionnaire – 9 points) On considère ℓ vecteurs d’apprentissage x(ȷ)
+où x(ȷ) ∈ RN, ȷ = 1, .. .,ℓ. On note X ∈ MNℓ la matrice d’apprentissage:
+X =
+h
+x(1) | x(2)| · · · | x(ℓ)
+i
+.
+On se propose de déterminer les matrices D ∈ MN×K et Λ ∈ MK×ℓ, notées
+D =
+£
+d(1) | d(2) | · · · | d(K) ⁄
+et Λ =
+h
+α(1) | α(2) | · · · | α(ℓ)
+i
+en résolvant le problème suivant
+min
+D,Λ
+∥X − DΛ∥F sous les contraintes
+
+
+
+ℓ0
+¡
+α(ȷ)¢
+≤ s, ȷ = 1, .. .,ℓ
+∥d(i )∥2 = 1, i = 1, .. .,K
+
+
+ (1)
+1. Rappeler la définition de la pseudo-norme ℓ0 qu’on note communément ∥.∥0. Pourquoi ∥.∥0 n’est
+pas une norme?
+2. Que signifie s dans la contrainte ℓ0
+¡
+α(ȷ)¢
+≤ s du problème (1)?
+3. Pour i = 1, .. .,K, on note Λi ,. la i -ème ligne de la matrice Λ et on écrit : DΛ =
+KX
+i =1
+d(i )Λi ,..
+(a) Montrer que rang
+¡
+d(i )Λi ,.
+¢
+≤ 1.
+(b) Établir une condition nécessaire et suffisante pour que rang
+¡
+d(i )Λi ,.
+¢
+= 1.
+(c) Montrer que ∥X − DΛ∥F = ∥Ei −di Λi ,.∥F où Ei est l’erreur sur les ℓ signaux lorsqu’on ne tient
+plus compte de la contribution de d(i ).
+4. (a) Expliquer le principe général de l’apprentissage d’un dictionnaire D.
+(b) Présenter les deux étapes majeurs de l’apprentissage du dictionnaire en résolvant (1).
+(c) Donner 2 façons différentes pour initialiser le dictionnaire.
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+(d) Supposons que le dictionnaire initial D0 est connu. Comment déterminer Λ?
+5. Pour que la condition établie à la question 3.(b) soit vérifiée, on s’intéresse au problème de min-
+imisation
+°°°E R
+i − d(i )ΛR
+i ,.
+°°°
+F
+où ΛR
+i ,. = Λi ,.Ωi et E R
+i = Ei Ωi .
+(a) Quel est le rôle de la matrice Ωi ?
+(b) Quelle est la meilleure approximation de E R
+i au sens de la norme de Frobenius? Justifier.
+(c) Comment fait-on la mise à jour des vecteurs d(i ) et ΛR
+i ,.?
+6. Expliquer le principe général de l’apprentissage du dictionnaire D par KSVD.
+EXERCICE 3 (6 points) On considère 24 vecteurs d’apprentissage de R6 et représentés dans la matrice
+X :
+X =
+
+
+1 1 2 5 0 0 3 −2 1 2 2 2 5 1 3 1 −1 2 9 5 5 1 1 5
+0 −1 4 2 −1 1 0 0 5 0 2 2 7 −12 2 5 5 2 7 4 −9 −2 1 2
+1 3 1 1 5 1 2 2 1 1 1 1 5 0 −1 1 0 1 2 1 1 2 5 5
+0 1 5 1 5 2 2 −2 5 0 −4 5 1 5 0 0 −1 −4 −8 2 2 −1 1 0
+0 −1 2 3 2 2 3 1 1 0 0 0 0 4 −1 −2 0 7 4 3 4 −1 1 0
+−1 8 6 3 2 2 2 4 −2 −3 −4 1 1 1 1 0 −2 −3 4 1 1 −1 1 0
+
+
+On souhaite apprendre un dictionnaire composé de 10 atomes.
+1. Quelle est la taille du dictionnaire appris ?
+2. Quelle condition doit-on imposer sur les atomes du dictionnaire initial?
+3. Ci-dessous les résultats partiels du dictionnaire initial:
+D0 =
+
+
+0, 58 0, 11 0,22 0, 71 0, 00 0,00 0, 55 −0, 37 0,13 0, 53
+0, 00 −0, 11 0,43 0, 29 −0, 13 0,27 0, 00 0, 00 0,66 0, 00
+0, 58 0, 34 0,11 0, 14 0, 65 0,27 0, 37 0, 37 0,13 0, 27
+0, 00 0, 11 0,54 0, 14 0, 65 0,53 0, 37 −0, 37 0,66 0, 00
+... ... ... ... ... ... ... ... ... ...
+
+
+À l’issue de cette initialisation, on applique la méthode gloutonne Orthogonal Matching Pursuit
+sur les x(ȷ), ȷ = 1, .. ., 24 et on obtient la matriceΛ. Ci-dessous quelques résultats partiels:
+::::::::::Transposée:::de::la::::1ère
+::::::::colonne ::de:::Λ:
+1.73 0. 0. 0. 0. 0. 0. 0. 0. 0.
+::::3ème
+:::::ligne:::de ::Λ:
+0 0 9,3 0 0 0 0 0 0 0 0 0 0 0 0 0 -2,4 0 0 0 0 0 0 0
+(a) Que représente la 1 ère colonne de Λ relativement à X?
+(b) Que représente la 3 ème ligne de Λ relativement à X?
+(c) Afin de mettre à jour l’atome i , i = 1, .. ., 10, on calcule le support de lai ème ligne de Λ qu’on
+note
+wi =
+'
+k, 1 ≤ k ≤ 24 tel que Λi ,k , 0
+“
+.
+Calculer w3.
+CY-Tech 2/3
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+4. Le dictionnaire a été entrainé L fois. On note C5 et C15 la cinquième et la quinzième colonne
+respectivement de la matrice Λ. DC5 et DC15 désignent les produits matriciels en utilisant le
+dictionnaire résultant de la mise à jour KSVD.
+Ci-dessous des résultats pour deux valeurs différentes de L:
+L=1 L=2
+C5 C15 DC5 DC15 C5 C15 DC5 DC15
+
+0
+0
+0
+0
+0
+3, 7
+0
+0
+0
+0
+
+
+
+
+−31
+25
+1
+0
+0
+0, 7
+−1
+0
+0
+−1
+
+
+
+
+0
+1
+1
+2
+2
+2
+
+
+
+
+1
+5
+1
+−1, 7× 10−13
+−2
+8, 5× 10−14
+
+
+
+
+0
+8, 1
+0
+0
+−8, 7
+0
+12,8
+63,4
+−61,1
+6, 3
+
+
+
+
+0
+−3, 3
+0
+0
+8, 2
+0
+−5, 7
+−25,5
+21
+−7, 4
+
+
+
+
+3 × 10−13
+1
+1
+2
+2
+2
+
+
+
+
+1
+5
+1
+−4 × 10−13
+−2
+2 × 10−13
+
+
+Table 1: Quelques résultats de l’entrainement du dictionnaire
+Donner une analyse des résultats du tableau (Table 1): Le choix de L, la parcimonie, la reconstruction
+du signal. . .
+CY-Tech 3/3

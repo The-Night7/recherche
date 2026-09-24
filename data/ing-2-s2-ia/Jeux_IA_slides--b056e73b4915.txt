@@ -1,0 +1,302 @@
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Une Introduction aux Jeux en Intelligence
+Artificielle
+Houcine Senoussi
+August 28, 2023
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+1 Introduction
+2 Mod´ elisation d’un jeu
+3 L’algorithme Minimax
+4 Conclusion
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Introduction
+´Etudi´ es en IA depuis ses d´ ebuts, les jeux ont donn´ e ` a l’IA une
+partie de ses grands succ` es.
+Ces travaux, et succ` es, concernent toutes sortes de jeux: ` a un
+joueur/` a deux ou plusieurs joueurs, ` a information
+compl` ete/information incompl` ete, ...
+Dans cette introduction, nous consid´ erons exclusivement des
+jeux:
+1 ` a deux joueurs,
+2 ` a somme nulle,
+3 ` a information compl` ete.
+Les ´ echecs et les dames sont des exemples de tels jeux.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Mod´ elisation d’un jeu
+Pour mod´ eliser un jeu, nous avons besoin des ´ el´ ements
+suivants:
+1 un ensemble d’´ etatsS.
+Exemple: dans le cas des ´ echecs, un ´ etat est d´ etermin´ e par
+une configutaion de l’´ echiquier, c’est-` a-dire par le contenu de
+chacune des 8 × 8 cases, ainsi que le joueur dont c’est le tour.
+2 Un ´ etat initials0∈ S.
+3 Un ensemble d’´ etats finalsF⊂ S.
+Les ´ etats finals sont soit ´ enum´ er´ es, soit d´ efinis par une ou
+plusieurs propri´ et´ es, comme c’est le cas aux ´ echecs o` u les
+´ etats finals ne correspondant pas ` a une partie nulle, sont ceux
+o` u un roi sera captur´ e au cas suivant.
+4 Un ensemble d’actions. Une action fait passer d’un ´ etat ` a un
+autre.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Mod´ elisation d’un jeu-2
+(Suite mod´ elisation d’un jeu)
+5 Une fonction d’utilit´ e (ou de gain) associant une valeur
+num´ erique ` a chaque ´ etat final.
+Aux ´ echecs, les ´ etats finals correspondant ` a un gain, une perte
+ou une partie nulle. Nous leur associons donc respectivement
+les valeurs 1, −1 et 0. Dans d’autres jeux, un nombre de
+points est associ´ e ` a chaque ´ etat final.
+Une partie est donc d´ efinie par une suite d’actions conduisant
+de l’´ etat initial ` a un ´ etat final.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Difficult´ e du probl` eme
+`A chaque fois qu’il a la main, un joueur doit choisir une action
+parmi celles qui sont valides compte tenu de l’´ etat courant.
+Aux ´ echecs, on ´ evalue ` a 35 le nombre moyen de coups valide ` a
+chaque ´ etape. On appelle cette valeur le facteur de
+branchement.
+En fonction de quoi un joueur choisit-il le coup qu’il joue ? En
+fonction d’un crit` ere ` a long terme qui est le r´ esultat de la
+partie.
+Pour choisir un coup, il faudrait donc envisager toutes les
+suites de coups possibles commen¸ cant par l’´ etat en cours et se
+terminant par une fin de partie.
+Autrement dit, il faudrait ´ enum´ erer toutes les parties possibles
+du jeu. Dans le cas des ´ echecs, ce nombre est ´ evalu´ e ` a 1050
+(ce qui est sup´ erieur au nombre de mol´ ecules dans l’univers!).
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Difficult´ e du probl` eme-2
+La difficult´ e du probl` eme vient de l` a: il s’agit d’un probl` eme
+de recherche dans un espace dont la taille est, au moins dans
+le cas des jeux ”int´ eressants”, est suffisamment grande pour
+rendre impossible l’´ enum´ eration explicite. Cela rend la
+m´ ethode ”force brute” impossible ` a utiliser, quelque soit la
+puissance de nos machines. Il y a donc besoin d’ intelligence,
+naturelle ou artificielle.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Exercice
+Donnez une mod´ elisation du jeu du Morpion (Tic-Tac-Toe)
+ainsi qu’une majoration du nombre d’´ etats.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+L’algorithme Minimax
+Nous nous pla¸ cons du point de vue de l’un des deux joueurs et
+le d´ esignons parMax (celui qui cherche ` a maximiser les
+gains). L’autre joueur est d´ esign´ e parMin.
+La partie est repr´ esent´ ee par unarbre (arbre de recherche)
+dont la racine est l’´ etat de d´ epart, dans lequel on suppose que
+c’est ` a Max de jouer. Il s’agit de l’´ etat courant ` a partir duquel
+Max cherche ` a d´ efinir unestrat´ egie: une suite de coˆ uts dont
+l’objectif est de maximiser ses gains . Ensuite, chaque neud
+a comme fils les noeuds r´ esultant de tous les coups possibles.
+Le joueur Max utilise cet arbre pour jouer, c’est-` a-dire choisir
+ses coups.
+La figure suivante montre l’arbre de recherche du jeu du
+Morpion.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Morpion-Arbre de recherche
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+L’algorithme Minimax-2
+L’algorithme Minimax se compose des ´ etapes suivantes:
+1 G´ en´ erer l’arbre. Cet arbre comporte donc des niveaux Max et
+des niveaux Min. La racine est un noeud Max.
+2 Donner des valeurs aux feuilles. Pour ce faire, nous disposons
+de la fonction d’utilit´ e si la construction de l’arbre est pouss´ ee
+jusqu’aux ´ etats finals.
+3 En allant des feuilles vers la racine, calculer les valeurs de
+chaque noeud de la mani` ere suivante:
+La valeur d’un noeud Max = maximum(valeurs de ses fils).
+La valeur d’un noeud Min = minimum(valeurs de ses fils).
+4 Utilisation de l’arbre: jouer un coup conduisant ` a un fils dont
+la valeur est la plus grande du niveau.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+L’algorithme Minimax-Exemples
+Exemple: voir fichier minimax exemple1.pdf.
+Exercice: On consid` ere l’arbre d’un jeu (` a deux joueurs) d´ efini
+comme suit :
+Il comporte 4 niveaux (racine=niveau 1 → feuilles=niveau 4).
+La racine correspond au joueur Max.
+Chaque noeud non terminal poss` ede 3 fils.
+Les feuilles sont ´ etiquet´ ees par les valeurs suivantes (de gauche
+` a droite) : 10, 13, 5, 16, 1, 0, 7, 18, 9, 9, 5, 14, 16, 17, 2, 11,
+13, 14, 18, 12, 7, 8, 9, 10, 2, 8, 3.
+Travail demand´ e :
+1 Construire l’arbre.
+2 Expliquer la signification des valeurs des feuilles et la mani` ere
+dont elles ont pu ˆ etre obtenues.
+3 Appliquer l’algorithme MiniMax puis donner la signification de
+la valeur de la racine.
+4 Quelle utilisation le joueur Max fera-t-il de cet arbre ?
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+L’algorithme Minimax-3
+Si la construction de l’arbre est pouss´ ee jusqu’` a la profondeur
+m et que le facteur de branchement est de b, la complexit´ e
+temporelle de cet algoritme est en O(bm). Ce qui pour les
+jeux comme les ´ echecs rend l’algorithme inutilisable en l’´ etat
+si on pousse la construction jusqu’aux ´ etats finals (souvenez
+vous des valeurs de b et de m).
+Au lieu de pousser jusqu’` a la fin, nous nous contenterons donc
+d’une profondeur raisonnable et utiliserons une heuristique
+pour assosier une valeur ` a chaque feuille (qui repr´ esente donc
+un ´ etat non terminal).
+Une heuristique est une fonction qui associe ` a chaque ´ etat une
+valeur estimant sa qualit´ e, c’est-` a-dire une moyenne des
+valeurs des ´ etats finals auxquels il conduit ou la probabilit´ e
+qu’il conduise ` a un ´ etat gagnant.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+L’algorithme Minimax-3
+Exercice: Comment peut-on d´ efinir une heuristique dans le
+cas des ´ echecs ?
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+´Elagage Alpha-Beta
+En plus d’avoir une complexit´ e temporelle ´ elev´ ee, Minimax
+s’av` ere non ”optimis´ e”: en remontant des feuilles vers la
+racine, certains calculs qu’il fait sont inutiles. En effet,
+consid´ erons lesdeux cas suivants:
+1 En calculant la valeur v d’un noeud Max, nous savons
+(comment ?) qu’elle est sup´ erieureou ´ egale ` a une certaine
+valeur α. Dans ce cas, si nous avons des fils dont la valeur est
+strictement inf´ erieure` aα la branche correspondante est ` a
+couper.
+2 En calculant la valeur v d’un noeud Min, nous savons
+(comment ?) qu’elle est inf´ erieureou ´ egale ` a une certaine
+valeur β. Dans ce cas, si nous avons des fils dont la valeur est
+strictement sup´ erieure` aβ la branche correspondante est ` a
+couper.
+Exemple: voir fichier minimax exemple1.pdf.
+Exercice: appliquer cette d´ emarche ` a l’arbre de l’exercice
+pr´ ec´ edent.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Coupes α et β
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+´Elagage Alpha-Beta
+De mani` ere plus formelle, cette variante de Minimax
+fonctionne comme suit:
+1 Pour calculer la valeur v d’un noeud, l’algorithme utilise deux
+valeurs α et β telles que α ≤ v ≤ β.
+2 Le calcul de v se fait de mani` ere r´ ecursive: pour calculer la
+valeur d’un noeud l’algorithme s’appelle lui-mˆ eme pour chacun
+des fils.
+3 α et β sont initialis´ ees ` a∞ et−∞, respectivement.
+4 Sur un noeud Max, soit r la valeur retourn´ ee pour un fils (Min
+donc).
+Si r ≥β, l’algorithme s’arrˆ ete car par d´ efinition deβ v ne
+peut pas ˆ etre plus grand queβ. Cela s’appelle une coupe β.
+L’algorithme retourne r =β.
+Si α< r <β , l’algorithme met ` a jour la valeur deα = r.
+Si r ≤α, l’algorithme continue et prend en compte les autres
+fils.
+Si tous les fils ont ´ et´ e explor´ es, l’algorithme retourner =α.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+´Elagage Alpha-Beta
+(Suite)
+5 Sur un noeud Min, soit r la valeur retourn´ ee pour un fils (Max
+donc).
+Si r ≤α, l’algorithme s’arrˆ ete car par d´ efinition deα, v ne
+peut pas ˆ etre plus petit queα. Cela s’appelle une coupe α.
+L’algorithme retourne r =α.
+Si α< r <β , l’algorithme met ` a jour la valeur deβ = r.
+Si r ≥β, l’algorithme continue et prend en compte les autres
+fils.
+Si tous les fils ont ´ et´ e explor´ es, l’algorithme retourner =β.
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle
+<<<PAGE>>>
+Introduction
+Mod´ elisation d’un jeu
+L’algorithme Minimax
+Conclusion
+Conclusion
+Dans ce chapitre nous avons introduit les jeux en intelligence
+artificielle ` a travers notamment l’algorithme MiniMax et sa
+variante AlphaBeta.
+Cet algorithme est utilis´ e dans les programmes de jeux o` u il
+collabore avec d’autres algorithmes et m´ ethode comme Monte
+Carlo, l’apprentissage par renforcement
+Houcine Senoussi Une Introduction aux Jeux en Intelligence Artificielle

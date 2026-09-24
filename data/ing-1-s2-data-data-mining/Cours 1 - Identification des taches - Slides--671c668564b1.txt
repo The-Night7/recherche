@@ -1,0 +1,234 @@
+Datamining 1 : Introduction
+Datamining 1
+Les objectifs de cours sont :
+• Recenser l'ensemble des problématiques couvertes par le Datamining.
+• Mettre en face de chacune des problématiques, la ou les méthodes de 
+résolution.
+• Aborder les principales méthodes des deux familles supervisée et non 
+supervisée : concepts généraux de chaque famille, algorithmes et 
+applications.
+Modalités : 18h de cours et TD
+Evaluation :
+• 1ère session :  Examen papier 2h
+• Rattrapage : Examen papier 2h
+• Calculatrice, 2 feuilles manuscrites R/V autorisées
+<<<PAGE>>>
+Datamining 1 : Introduction
+Process for a datamining study
+2
+2
+Definition of the 
+study
+what issues do you
+want to answer?
+Define the statistical
+unit and the variables
+Collect the data
+select the data in 
+accordance with your
+issues
+Pre-processing the 
+data
+outliers, standardisation, 
+missing data, …
+A Quantitative variable
+is numerical and represents a 
+measurable quantity (continuous or 
+discrete)
+A Categorial variable
+takes on values that are names or labels
+Apply methods
+Choice of the method depends on
+•The nature of the variables
+• The size of the data
+• The objective
+p
+n
+j
+n
+1
+n
+p
+i
+j
+i
+1
+i
+p
+2
+j
+2
+1
+2
+p
+1
+j
+1
+1
+1
+xxx
+xxx
+xxx
+xxx
+
+
+
+p variables 
+n observations
+DATA is a table with
+• p columns : 
+realizations of the 
+random variables
+• n rows : 
+observations of the 
+statistical unit
+Male
+Female
+Ginger
+Blond
+Black
+Brown
+SizeFamily
+Hair colors Sex
+<<<PAGE>>>
+Datamining 1 : Introduction
+3
+Nettoyage
+- Fiabiliser
+- Remplacer
+- Supprimer 
+les données incorrectes, c’est-à-dire 
+- les données manquantes
+- les données aberrantes
+- les valeurs extrêmes (outliers)
+ Si pour une variable étudiée, il y a peu d’individus présentant une donnée incorrecte, 
+- soit on supprime l’individu de l’étude, 
+- soit on remplace par une valeur vraisemblable (moyenne, mode,…)
+ Si une variable présente trop de valeurs incorrectes alors on la supprime de l’étude
+Boite de Tukey
+!      méthodes basées sur la moyenne et la variance
+Données très variées:
+Statistiques : variables quantitatives, qualitatives                                    Texte : chaînes de caractères
+Signal : série indexée par le temps                                                              Images : données 2D 
+Réseaux : graphes                                                                                           ….
+souvent en flot continu et sans contrôle de l’acquisition, d’où la nécessité d’un pré-
+traitement : nettoyage,codage/normalisation, réduction de la dimension.
+Exploration et préparation des données 
+(1/3)
+<<<PAGE>>>
+Datamining 1 : Introduction
+4
+Exploration et préparation des données 
+(2/3)
+4
+Pop. 
+(milliers)
+Taux nat. 
+(pour mille)
+Esp. 
+vie
+Nb. 
+enfants
+Argentine 41050 16,87 75,87 2,19
+Arménie 3099 15,47 74,44 1,77
+Australie 21731 12,56 81,99 1,85
+Autriche 8407 9,01 80,55 1,40
+(41050-3099)²+(16,87-15,47)²+(75,87-74,44)²+(2,19-1,77)²=1440278405
+(41050-3099)² =1440278401 
+distance entre 
+l’ Argentine et 
+l’ Arménie
+k
+kk
+ik
+i s
+xxx 
+Problème des unités
+(ordre de grandeurs des variables)
+Centrage et réduction
+Codage
+• Codage des données brutes : date en durée, âge ou ancienneté,  transformation de 
+« bleu », « vert », « jaune » en « 1 », « 2 »,…,, transformation d’une variable continue en 
+classes,…
+• Création d’indicateurs pertinents  (ratio, moyenne sur une période, montant moyen d’un 
+achat  à partir du nombre et du montant de chaque achat …)
+Normalisation
+<<<PAGE>>>
+Datamining 1 : Introduction
+5
+Exploration et préparation des données 
+(3/3)
+Réduction de la dimension
+ Réduction du nombre d’individus
+- Elimination des individus hors norme (<1%-2%)
+- Echantillonnage (aléatoire, systématique ou stratifié) : diminue le temps de 
+traitement
+- Partitionnement des individus (clustering) : permet de travailler sur des groupes plus 
+homogènes d’individus 
+ Réduction des variables
+- Supprimer les variables non exploitables (trop de données incorrectes) ou non 
+pertinentes par rapport à l’objectif
+- Ignorer des variables corrélées entre elles ou les combiner (ACP)  
+Diminuer le nombre de variables permet de diminuer la complexité du modèle. Au-delà de 
+20 variables un modèle de prédiction risque de voir sa capacité de généralisation diminuer.
+ Réduction du nombre de modalités
+- Regrouper les modalités ou les valeurs discrètes ayant un faible effectif
+- Discrétiser une variable continue en classes (par exemple les quartiles)
+<<<PAGE>>>
+Datamining 1 : Introduction
+6
+Basic datamining objective
+6
+Unsupervised learning /Description
+Describe hidden structure from 
+unlabeled data
+Supervised learning /Prediction
+Explain a target variable with other
+variables
+• Categorial target
+Classification
+logistic regression
+decision tree
+ neural network
+…
+• Quantitative target
+Regression
+ linear regression
+ SVR
+ neural network
+ …
+• Description
+Summarize the variables,
+detect link between
+Variables, detect outliers, …
+Graphical and numerical description
+PCA, CA ,,…
+Association rules, …
+• Clustering
+Organizing objects into
+groups (clusters) such that
+the members in each
+Group are similar
+K-means
+Hierarchical clustering
+…
+
+<<<PAGE>>>
+Datamining 1 : Introduction
+7
+Sommaire
+7
+!! Attention à la terminologie !!
+Anglais Français
+Classification                             Discrimination, classement (apprentissage supervisé) 
+Clustering Segmentation,…  (apprentissage non-supervisé)
+Cela prête d’autant plus à confusion que la méthode appelée « classification hiérarchique ascendante » est 
+une méthode de clustering et non de classification !
+Clustering
+• k-means
+• CAH
+Réduction de dimension 
+• Réduire la dimension avec une ACP avant un k-means
+Découverte de règles 
+• non-supervisé : Règles d'association
+• supervisé : Arbre de décision

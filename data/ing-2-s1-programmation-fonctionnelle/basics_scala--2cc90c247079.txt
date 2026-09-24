@@ -1,0 +1,111 @@
+Hello program
+object HelloWorld {
+def main(args: Array[String]) {
+println("Hello, world!")
+}
+}
+object HelloWorld extends App{
+println("Hello, world!")
+}
+<<<PAGE>>>
+Scala as a REPL 
+o Very useful to test some short programs 
+
+<<<PAGE>>>
+Types and variables
+
+<<<PAGE>>>
+Types and variables
+o Specification of x’s type  and inference of x’s type 
+scala> var x:String="String"
+x: String = String
+o Wrong specification of x’s type 
+scala> var x:Int="String"
+<console>:11: error: type mismatch;
+found : String("String")
+required: Int
+var x:Int="String"
+^
+o No specification of x’s type  and inference of x’s type
+scala> var x="String"
+x: String = String
+<<<PAGE>>>
+Definition of a block (var, val) (1) 
+o The value of a scala block is the value of its last expression
+o The println statements are performed
+o The evaluation of a block with var or val is done as soon as it is
+declared
+o The val and var are evaluated when defined. 
+o Also, val defines a constant, a fixed value which cannot be modified 
+once declared and assigned while var defines a variable, which can 
+be modified or reassigned
+<<<PAGE>>>
+Definition of a block (var, val) (2) 
+
+<<<PAGE>>>
+Lazy val
+o Lazy execution means delaying the initialization of values. The constant is valued when it is 
+accessed for the first time.
+o This is useful in cases where the val needs to be initialized only when it is referenced for the 
+first time.
+o Once it is referenced, the val is initialized and is never re-evaluated for any subsequent
+references. 
+<<<PAGE>>>
+Lazy val
+
+<<<PAGE>>>
+Expression
+o Everything is an expression in Scala 
+
+<<<PAGE>>>
+The hierarchy of types in Scala
+
+<<<PAGE>>>
+The hierarchy of types in Scala (1)
+o The previous Figure  shows the type hierarchy in scala
+o Any is the supertype of all types
+o Any has two subclasses : AnyVal and AnyRef
+o The value types ("simple" types in french) are subclasses of AnyVal: Boolean, Int, Char, etc.
+o The other types are subclasses of AnyRef
+o Null is a subtype of all AnyRefs and Nothing the subtype of Any
+<<<PAGE>>>
+The hierarchy of types in Scala (2)
+
+<<<PAGE>>>
+The hierarchy of types in Scala (3)
+
+<<<PAGE>>>
+Option type
+o Scala Option[ T ] is a container for zero or one element of a given type. An 
+Option[T] can be either Some[T] or None object, which represents a missing 
+value.
+scala>  def toInt(s: String): Option[Int] = {
+|     try {
+|         Some(Integer.parseInt(s.trim))
+|     } catch {
+|         case e: Exception => None
+|     }
+| }
+toInt: (s: String)Option[Int]
+scala> toInt("abc")
+res5: Option[Int] = None
+scala> toInt("123")
+res6: Option[Int] = Some(123)
+<<<PAGE>>>
+If expression
+if (your test) {
+// do something
+}
+else if (some test) {
+// do something
+}
+else {
+// do some default thing
+}
+scala> var x=10
+x: Int = 10
+scala> var y=20
+y: Int = 20
+scala> val z= if (x<y){x=y+5;x+90} 
+else y
+z: Int = 115

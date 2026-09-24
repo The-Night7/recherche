@@ -1,0 +1,86 @@
+/**
+Date : 07-03-2014
+Auteur :
+Sujet : calcul de PI par la methode des rectangles
+*/
+#include <mpi.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+// calcul de la fonction
+float f(float x) {
+    return 4/(1+x*x);
+}
+// calcul local de l'integrale
+double Rectangle (float local_a, float local_b,
+                   int local_n, float h) {
+  double integrale; /* resultat */
+  float x;
+  int i;
+  integrale = (f(local_a) + f(local_b))/2.0;
+  x = local_a;
+
+  for (i = 1; i <= local_n-1; i++) {
+    x += h;
+    integrale += f(x);
+  }
+  integrale *= h;
+  return integrale;
+} 
+
+
+
+void main(int argc, char* argv[]) {
+  int my_rank; /* Mon rang */
+  int p; /* Nombre de processus */
+  float a = 0.0; /* Extremite gauche */
+  float b = 1.0; /* Extremite droite */
+  float h; /* Largeur du rectangle */
+  float local_a; /* Extremite gauche pour mon processus */
+  float local_b; /* Extremite droite pour mon processus */
+  int local_n; /* Nombre de rectanles pour mon calcul */
+  double integrale; /* Integrale sur mon intervalle */
+  double total; /* Integrale totale */
+  int source; /* Emetteur */
+  int dest = 0; /* Tous les messages vont au processus 0 */
+  int tag = 50;
+  int n = 50000;
+  MPI_Status status;
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+  /* Combien sommes-nous ? */
+   MPI_Comm_size(MPI_COMM_WORLD, &p);
+   h = (b-a)/n; /* h est identique pour tous les processus */
+  local_n = n/p; /* idem pour le nombre de carr�s */
+
+  /* Longueur de chaque intervalle d�integration : local_n*h */
+  local_a = a + my_rank*local_n*h;
+  local_b = local_a + local_n*h;
+  
+  integrale =Rectangle(local_a, local_b, local_n, h);
+
+ //collecte des resultats
+ //Le processus 0 collecte les r�sultats
+    if (my_rank == 0) {
+        total = integrale;
+		printf("Processus = %d, integrale partielle = %.16lf\n", source, integrale);
+        for (source = 1; source < p; source++)
+       {
+          MPI_Recv(&integrale, 1, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &status);
+          total += integrale;
+		  printf("Processus = %d, integrale partielle = %.16lf\n", source, integrale); 
+       }
+   }
+   //Les autres lui retournent leur r�sultat local
+   else {
+          MPI_Send(&integrale, 1, MPI_FLOAT, dest,tag, MPI_COMM_WORLD);
+   }
+   //affichage du resultat
+  //Affichage du r�sultat
+  if (my_rank == 0) {
+     printf("Estimation : %.16lf\n", total);
+   }
+//Terminaison
+MPI_Finalize();
+} /* main */

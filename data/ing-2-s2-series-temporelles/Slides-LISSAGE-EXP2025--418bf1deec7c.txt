@@ -1,0 +1,709 @@
+Séries temporelles-Chapitre 4: LISSAGE-Exponentiel
+CY T ech
+26 janvier 2025
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 1 / 51
+<<<PAGE>>>
+Plan
+1 Lissage exponentiel simple (LES)
+2 Lissage exponentiel double (LED)
+3 Méthode de Holt-Winters
+4 Annexe 1 : Mise en œuvre sous R
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 2 / 51
+<<<PAGE>>>
+Introduction
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 3 / 51
+<<<PAGE>>>
+Référénces
+Julien JACQUES website :
+https ://eric.univ-lyon2.fr/jjacques/index.html
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 4 / 51
+<<<PAGE>>>
+Introduction [1]
+▷ Dans l’industrie, lesprévisions de ventes et de productions’appuient sur des
+techniques de lissage exponentiel,
+développées par Brown (1959), Holt (1957) et Winters (1960).
+▷ Ces méthodes utilisent desmoyennes pondérées des observations passées, où :
+Les poids des observations diminuent exponentiellement avec le temps, donnant plus
+d’importance aux données récentes.
+▷ Points clés :
+Simples et largement utilisées en économie et gestion.
+Fournissent des prévisions ponctuelles sans hypothèses probabilistes.
+Efficaces pour des prévisions à court terme.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 5 / 51
+<<<PAGE>>>
+Introduction [2]- Idées générales
+▷ On considère une sériex = (x1, . . . ,xn) de longueur n, observée aux dates 1, . . . ,n.
+À la daten, on souhaite prévoir la valeur futurexn+h à l’horizon h.
+Cette prévision est notéebxn,h, où n est parfois appeléebase de la prévision.
+▷ Les méthodes delissage exponentielsont des techniques les plus anciennes.
+Ces méthodes ajustent à la série, localement, une fonction simple :
+une constante pour le LES,
+une droite pour le lissage exponentiel double (LED) ,
+des fonctions polynomiales ou périodiques pour des lissages plus avancés.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 6 / 51
+<<<PAGE>>>
+Introduction [3] - Idées générales
+▷ Supposons que la série initiale suit le modèle :
+Xt = ft,k + ϵt avec E(ϵt ) =0, E(ϵ2
+t ) = σ2, E(ϵt ϵs ) =0 ∀s ̸= t.
+▷ La fonction ft,k est un polynôme de degrék, avec des paramètres dépendant du temps.
+Si k =0 :
+Xt = at + ϵt avec at = a pour t ∈ {T1,T2} ⊂ {1,T }.
+Dans ce cas, on utilise le lissage exponentiel simple (LES) pour ajuster localement
+une constante.
+Si k =1 :
+Xt = at + bt t + ϵt avec at = a, bt = b pour t ∈ {T1,T2} ⊂ {1,T }.
+Ici, on utilise le lissage exponentiel double (LED) pour ajuster localement unedroite.
+Si k est quelconque : La méthode employée est le lissage exponentiel généralisé, qui
+ajuste localement un polynôme de degrék.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 7 / 51
+<<<PAGE>>>
+1. Lissage exponentiel simple (LES)
+▷ Cette méthode convient pour
+la prévision des donnéessans tendance claire ni modèle saisonnier.
+Elle s’applique à des séries chronologiquessans saisonnalité et à tendance
+localement constante.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 8 / 51
+<<<PAGE>>>
+LES. Exemple
+les données de la figure 1 n’affichentaucun comportement de tendance clair ni
+saisonnalité.
+Il y a une augmentation au cours des dernières années, ce qui pourrait suggérer une
+tendance.
+library(fpp2)
+oildata <- window(oil, start=1996)
+autoplot(oildata)+ ylab("Oil (millions of tonnes)") + xlab("Year")
+Figure – 1. Production de pétrole en Arabie Saoudite de 1996 à 2013
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 9 / 51
+<<<PAGE>>>
+Lissage Exponentiel Simple (LES)
+▷ Caractéristiques principales du LES :
+La prévision estsimple et indépendante de l’horizonde prévision h.
+L’indice h est conservé pour garantir la cohérence avec les notations ultérieures.
+▷ Définition :La prévision bxn,h est construite en tenant compte :
+• De toute l’histoire de la série, c’est-à-dire de toutes les observations
+jusqu’à la basen.
+• Plus une observation est ancienne, moins son influence est importante
+dans la prévision.
+• Cette décroissance d’influence suit uneloi exponentielle.
+▷ Formalisation :
+On dispose de la sériex1, . . . ,xn et on souhaite estimerbxn+h, où h ∈ N∗.
+Pour un paramètre de lissageα ∈]0,1[ (fixé), la prévision par lissage exponentiel
+simple (LES) est définie par :
+bxn+1 = αxn + (1 − α)bxn.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 10 / 51
+<<<PAGE>>>
+Lissage Exponentiel Simple : Formules et Propriétés
+bxn,h = α
+n−1X
+j=0
+(1 − α)j xn−j . (1)
+▷ Caractéristiques principales :
+▷ La prévision estconstante (indépendante de l’horizonh).
+▷ Elle correspond à unemoyenne pondérée des observations passées.
+▷ Si α est petit (α ≤0.3), les observations anciennes ont plus de poids.
+▷ Si α est grand (α ≥0.7), le poids des observations passées décroît rapidement.
+▷ La valeur deα doit être réglée en fonction des données.
+▷ Formules récursives :La définition (1) se reformule de manière récursive :
+bxn,h = αxn + (1 − α)bxn−1,h, (2)
+bxn,h = bxn−1,h + α(xn − bxn−1,h). (3)
+▷ Propriété clé :
+La prévision actuellebxn,h dépend uniquement :
+De la prévision précédente bxn−1,h.
+De la nouvelle observation xn.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 11 / 51
+<<<PAGE>>>
+Interprétation Géométrique
+▷ Asymptotiquement, bxn,h est lameilleure approximation au sens des moindres carrés
+(MC) de la sériex = (x1, . . . ,xn) par levecteur constant a ×1, où : 1= (1, . . . ,1)′ ∈ Rn.
+La valeur dea minimise :
+n−1X
+j=0
+(1 − α)j (xn−j − a)2. (4)
+Résultat :
+ban = α
+1 − (1 − α)n
+n−1X
+j=0
+(1 − α)j xn−j . (5)
+▷ Propriétés :
+▷ L’influence des observations décroît exponentiellement avec l’éloignement de la base
+n.
+▷ L’ajustement par la constantea est local, au voisinage den.
+▷ Extension du modèle :Si on considère le vecteur transformé :
+x = (x1, . . . ,xn)′ = (. . . ,0, . . . ,0,x1, . . . ,xn)′,
+où les coordonnées pour les indices négatifs ou nuls sont nulles, l’interprétation
+géométrique reste cohérente.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 12 / 51
+<<<PAGE>>>
+Minimisation et Solution Asymptotique
+▷ On cherche la valeur dea qui minimise :
+∞X
+j=0
+(1 − α)j (xn−j − a)2.
+▷ La solution asymptotiqueà ce problème de minimisation est donnée par :
+bxn,h = α
+n−1X
+j=0
+(1 − α)j xn−j .
+▷ On peut montrer que les deux estimateursban (défini en (5)) etbxn,h sont
+asymptotiquement équivalents, c’est-à-dire :
+limn→+∞ ban = limn→+∞ bxn,h.
+▷ Résultat Formel :
+Lemme 1
+La prédiction bxn,h est asymptotiquement la solution du problème de minimisation :
+bxn,h =argmin
+a
+n−1X
+j=0
+(1 − α)j (xn−j − a)2.
+Ce résultat souligne que l’ajustement par la constantea est optimal au sens des moindres
+carrés (MC) lorsqu’une pondération exponentielle est appliquée aux observations passées.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 13 / 51
+<<<PAGE>>>
+Démonstration
+▷ Soit la fonction à minimiser :
+f (a) =
+n−1X
+j=0
+(1 − α)j (xn−j − a)2.
+▷ Recherche des points critiques :
+f ′(a) = −2
+n−1X
+j=0
+(1 − α)j (xn−j − a).
+▷ La dérivée s’annule ena0 donné par :
+a0 =
+Pn−1
+j=0 (1 − α)j xn−j
+Pn−1
+j=0 (1 − α)j =
+α Pn−1
+j=0 (1 − α)j xn−j
+1 − (1 − α)n .
+▷ Comportement asymptotique : lorsquen → +∞, on obtient :
+a0 ∼n→+∞ α
+n−1X
+j=0
+(1 − α)j xn−j .
+▷ Analyse du minimum absolu :
+Une étude du tableau de variations def montre que a0 est un minimum absolu.
+Par l’équivalent asymptotique, on conclut queban est la solution « asymptotique »
+du problème des moindres carrés.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 14 / 51
+<<<PAGE>>>
+Choix de la constante de lissage
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 15 / 51
+<<<PAGE>>>
+Choix de la constante de lissage
+▷ Limitations du lissage exponentiel simple :
+La méthode estpeu performante:
+- en présence de tendance ou de composante saisonnière,
+- ou en cas de fluctuations de hautes fréquences.
+▷ Utilisation pratique :
+Le lissage exponentiel simple estrarement utiliséen pratique.
+Des valeurs deα comprises entre 0.7 et 0.99 :
+- produisent desprévisions rigides,
+- tiennent compte du passé lointain mais sont peu sensibles aux
+variations conjoncturelles.
+Au contraire, pourα ∈ [0.01,0.3], les prévisions sontplus soupleset influencées par
+les observations récentes.
+▷ Détermination de α adapté :
+Pour un horizon donnéh, on cherche la valeur deα qui minimise :
+n−hX
+t=1
+ˆ
+xt+h − α
+t−1X
+j=0
+(1 − α)j xt−j
+!2
+.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 16 / 51
+<<<PAGE>>>
+Choix optimal deα
+▷ Objectif : Trouver la valeur deα qui minimise l’erreur quadratique moyennedes
+prévisions à l’horizonh.
+▷ Méthode :
+Sélectionner une grille de valeurs pourα.
+Calculer, pour chaqueα, les prédictionsbxt,h(α).
+Évaluer l’erreur quadratique :
+E2(α) =
+n−hX
+t=1
+¡
+xt+h − bxt,h(α)
+¢2 .
+Retenir α comme :
+α =argminα E2(α).
+▷ Critère : Une erreur quadratique faible indique queα génère des prévisions
+performantes.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 17 / 51
+<<<PAGE>>>
+Comparaison de modèles
+▷ Méthode : Découper les données enapprentissage/test :
+Entraînement : Environ 2
+3 (ou 80%) des données servent à estimer les paramètres
+des modèles.
+Test : Le reste (1
+3 ou 20%) sert à évaluer les modèles via leRMSE (Root Mean
+Square Error) :
+ϵerreur,h =
+vuut
+n−mX
+h=1
+¡
+bxm,h − xm+h
+¢2,
+où m est le nombre de données d’apprentissage.
+▷ Ajustements possibles :
+Adapter la taille de l’échantillon test à l’horizon de prédiction souhaité.
+Remarque : Une fois le meilleur modèle sélectionné, il est crucial de leréestimer sur
+l’ensemble des données disponibles avant d’effectuer des prédictions finales.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 18 / 51
+<<<PAGE>>>
+Exemple-Prévision par LES avecα =0.1
+Figure – 2. Prévision par LES avecα =0.1
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 19 / 51
+<<<PAGE>>>
+Exemple-Prévision par LES avecα =0.9
+Figure – 3. Prévision par LES avecα =0.9
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 20 / 51
+<<<PAGE>>>
+Exemple-Prévision par LES-Choix automatique deα
+Pour choisir α de façon optimale (apprentissage/test), il suffit d’indiquer "alpha=NULL"
+dans les options.
+Figure – 4. Prévision par LES avec choix optimal deα
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 21 / 51
+<<<PAGE>>>
+Exemple-Prévision par LES ajout d’intervalle de prédiction
+On peut également ajouter un intervalle de prédiction.
+Figure – 5. Prévision par LES avec choix optimal deα
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 22 / 51
+<<<PAGE>>>
+Lissage exponentiel double (LED) non saisonnier
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 23 / 51
+<<<PAGE>>>
+Lissage exponentiel double (LED)
+▷ Problème :On cherche àajuster une droite, à l’instantt, au voisinage den, avec
+l’équation suivante :
+yt = a1 + a2(t − n).
+▷ La prévision par lissage exponentiel double (LED) s’écrit :
+bxn,h = ba1 + ba2h,
+où les coefficients(ba1, ba2) sont déterminés en résolvant le problème de minimisation
+suivant :
+(ba1, ba2) =argmin(a1,a2)∈R2
+n−1X
+j=0
+(1 − α)j ¡
+xn−j − (a1 + a2j)
+¢2, (6)
+avec 0< α <1.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 24 / 51
+<<<PAGE>>>
+Proposition 1
+Les solutions asymptotiques du e problème de minimisation (6) sont données par :
+ba1 = −L2(n) +2L1(n),
+ba2 = α
+1 − α
+¡
+− L2(n) + L1(n)
+¢
+,
+où les termesL1(n) et L2(n) sont définis comme suit :
+L1(n) = α
+n−1X
+j=0
+(1 − α)j xn−j ,
+L2(n) = α
+n−1X
+j=0
+(1 − α)j L1(n − j).
+L1(n) représente une moyenne pondérée exponentiellement décroissante des
+observations passées xn−j.
+L2(n) est une moyenne pondérée des valeurs deL1(n − j), appliquant une double
+pondération exponentielle.
+La méthode permet d’obtenir des coefficientsba1 et ba2 qui ajustent la tendance
+linéaire à l’instantn, tout en tenant compte d’un lissage des observations passées.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 25 / 51
+<<<PAGE>>>
+Remarque 1
+On observe icideux lissages exponentiels successifs, car L2 est un lissage
+exponentiel de L1.
+C’est pour cette raison que l’on parle de lissage exponentiel double.
+▷ Les formules de mise à jour
+
+
+
+ba1(n) = ba1(n −1) + ba2(n −1) + (2α − α2)(xn − bxn−1,1)
+ba2(n) = ba2(n −1) + α2(xn − bxn−1,1) ,
+(7)
+avec l’initialisation 
+
+
+ba1(0) = x1
+ba2(0) = x2 − x1 .
+Ces formules permettent de comprendre comment calculer récursivement les coefficients
+(ce qui limite la complexité du calcul).
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 26 / 51
+<<<PAGE>>>
+Méthode de Holt-Winters
+▷ Cette approche a pour but d’améliorer et de généraliser le Lissage Exponentiel Simple
+(L.E.S.).
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 27 / 51
+<<<PAGE>>>
+Introduction.
+▷ Nous examinons divers cas particuliers de la méthode de Holt-Winters :
+- Ajustement d’unedroite affine(sans saisonnalité),
+- Ajustement d’unedroite affine+ une composante saisonnière,
+- Ajustement d’uneconstante + une composante saisonnière.
+Le dernier cas peut être considéré comme un cas particulier du second.
+1. Méthode de Holt-Winters non saisonnière:
+L’objectif est d’ajuster une droiteau voisinage de l’instantn, décrite par l’équation :
+yt = a1 + (t − n)a2.
+La prévision à l’instantn + h est donnée par :
+xn,h = ba1(n) + h ba2(n).
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 28 / 51
+<<<PAGE>>>
+Calcul des paramètres.
+▷ On utilise deuxconstantes de lissage, α et β, définies dans l’intervalle
+]0,1[.
+▷ Les paramètres ba1(n) (niveau) et ba2(n) (tendance) sont calculés de
+manière récursive comme suit :
+ba1(n) = αxn + (1 − α)
+£
+ba1(n −1) + ba2(n −1)
+⁄
+, (8)
+ba2(n) = β
+£
+ba1(n) − ba1(n −1)
+⁄
++ (1 − β)ba2(n −1). (9)
+ba1(n) : Estimation duniveau actuel de la série.
+ba2(n) : Estimation de latendance de la série (taux de variation).
+α : Contrôle le degré de réactivité deba1(n) aux nouvelles observations.
+β : Détermine la rapidité d’ajustement de la tendanceba2(n) face aux variations des
+niveaux estimés.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 29 / 51
+<<<PAGE>>>
+Méthode non saisonnière - Remarque
+L’introduction des deux constantesα et β rend cette méthode plus flexible que le
+lissage exponentiel double classique :
+α intervient dans l’estimation de l’ordonnée à l’origine (a1) de la droite.
+β est utilisé pour estimer lapente (a2) de la droite.
+Lorsque α et β sont faibles, cela reflète une forte influence du passé lointain,
+accordant moins de poids aux observations récentes.
+Ordonnée à l’origineba1 : Niveau estimé de la série à un instant donné.
+Pente ba2 : Variation ou tendance de la série dans le temps.
+Les paramètres α et β ajustent la réactivité des estimations selon que l’on privilégie
+les données récentes ou l’historique.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 30 / 51
+<<<PAGE>>>
+Lissage Exponentiel de Holt-Wintersnon saisonnier-Exemple
+▷ On prédit la suite de la série par une droite d’équation
+bxn,h = ba1 + h ba2
+où 2 constantes de lissage(α, β) interviennent respectivement sura1 et a2.
+Figure – Lissage Exponentiel double
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 31 / 51
+<<<PAGE>>>
+2. Ajout d’une composante saisonnière.
+Méthode saisonnière additive
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 32 / 51
+<<<PAGE>>>
+2. Ajout d’une composante saisonnière : Méthode saisonnière additive
+▷ Nous cherchons, au voisinage den, àajuster une courbed’équation :
+yt = a1 + a2(t − n) + st ,
+où :
+a1 est l’ordonnée à l’origine, représentant le niveau de base de la série.
+a2 est lapente, représentant la tendance de la série.
+st est unecomposante périodique de période T, reflétant la saisonnalité (effets
+cycliques réguliers surT périodes).
+▷ Pour appliquer cette méthode, il est nécessaire de choisir trois constantes :α, β, γ,
+toutes comprises dans[0,1[, ainsi que la périodeT.
+Les formules de récursion sont les suivantes :
+ba1(n) = α
+¡
+xn − bsn−T
+¢
++ (1 − α)
+h
+ba1(n −1) + ba2(n −1)
+i
+,
+ba2(n) = β
+£
+ba1(n) − ba1(n −1)
+⁄
++ (1 − β)ba2(n −1),
+bsn = γ
+£
+xn − ba1(n)
+⁄
++ (1 − γ)bsn−T .
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 33 / 51
+<<<PAGE>>>
+2. Ajout d’une composante saisonnière : Méthode saisonnière additive
+▷ La prévision s’exprime comme suit :
+bxn,h = ba1(n) + h ba2(n) + bsn+h−T , 1 ≤ h ≤ T ,
+bxn,h = ba1(n) + h ba2(n) + bsn+h−2T , T +1 ≤ h ≤2T ,
+. . . = . . .
+Et ainsi de suite pourh >2T, où les indices saisonniers sont ajustés en fonction des
+périodes multiples deT.
+Le choix des constantesα, β et γ est délicat et nécessite souvent des essais ou une
+optimisation sur des données historiques.
+▷ Interprétation :
+ba1(n) : Niveau estimé à l’instantn, ajusté pour tenir compte de la saisonnalité.
+ba2(n) : Variation moyenne (tendance) entre deux instants consécutifs.
+bsn : Effet saisonnier estimé pour l’instantn, basé sur les valeursT périodes plus tôt.
+bxn,h : Prévision pour l’instantn + h, intégrant le niveau, la tendance, et l’effet
+saisonnier ajusté.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 34 / 51
+<<<PAGE>>>
+2. Ajout d’une composante saisonnière : Méthode saisonnière additive
+▷ Avantages :
+Permet de modéliser des séries chronologiques présentant à la fois une tendance et
+une saisonnalité.
+Méthode flexible grâce aux paramètresα, β, γ, qui contrôlent respectivement le
+niveau, la tendance, et la saisonnalité.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 35 / 51
+<<<PAGE>>>
+Initialisation
+Les valeurs initiales suivantes permettent (mais on pourrait en proposer d’autres) de
+commencer le calcul récursif des prévisions àpartir de l’instant T +2 :
+ba1(T +1) = xT +1
+ba2(T +1) = xT +1 − x1
+T
+bsj = xj − (x1 + (T −1)ba2(T +1))) pour j ∈ {1, . . . ,T }.
+Les trois constantes de lissages,α, β, γ ont le même effet que précédemment,
+plus elles sont petites et plus l’importance des données éloignées est significative.
+Elles agissent respectivement sur les paramètresa1,a2 et st.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 36 / 51
+<<<PAGE>>>
+Lissage Exponentiel de Holt-Winters saisonnier additif-Exemple
+▷ Pour pouvoirestimer la saisonnalité, il fautpréciser la taillede celle-ci lors de la
+définition de l’objet série temporelle
+serie=0.5*(1 : 100) +rnorm (100,0,1) + 3*cos(pi/6*(1 : 100))
+serie=ts(serie,start= c(1,1),end=c(9,4),frequency= 12)
+LES= HoltWinters (serie,alpha=NULL,beta=NULL,gamma=NULL)
+plot (serie,xlim= c(1,11),ylim=c(0,70))
+p<- predict(LES,n.ahead=20)
+lines(p,col=2)
+Figure –(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 37 / 51
+<<<PAGE>>>
+Méthode saisonnière multiplicative
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 38 / 51
+<<<PAGE>>>
+Méthode saisonnière multiplicative
+On cherche, au voisinage den, àajuster une courbed’équation
+yt = (a1 + a2(t − n)) × st
+(avec s. périodique, de période T). Il faut choisirα, β, γ dans ]0;1[. Les formules de
+récursion sont
+
+
+
+ba1(n) = (1 − α) xn
+bsn−T
++ α(ba1(n −1) + ba2(n −1))
+ba2(n) = (1 − β)(ba1(n) − ba1(n −1)) + βba2(n −1)
+bsn = (1 − γ) xn
+ba1(n) + γbsn−T .
+La prévision prend la forme
+
+
+
+bxn,h = (ba1(n) + h ba2(n)) × bsn+h−T ,1 ≤ h ≤ T
+bxn,h = (ba1(n) + h ba2(n)) × bsn+h−2T , T +1 ≤ h ≤2T
+. . . . . .
+Initialisation : c’est très dur mais on peut se contenter de mettre les premiersba2 à 0 et
+les premiers ba1 à 1 (et le système se corrige par la suite).
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 39 / 51
+<<<PAGE>>>
+Remarque 2
+Les deux méthodes ci-dessus (saisonnière additive et saisonnière multiplicative)
+ne peuvent être mises en place que si nous disposons d’un certain nombre de période
+pour estimer la partie périodique.
+Si le nombre de données est insuffisant,R renvoie un message d’erreur.
+On choisit la méthode saisonnière additive ou saisonnière multiplicative en fonction
+de l’aspect graphique des données.
+En gros :
+amplitudes constantes − →méthode saisonnière additive,
+amplitudes non constantes − →méthode saisonnière multiplicative.
+▷ Conclusion.
+La méthode de lissage exponentiel est une méthode de prévisiondéterministe
+efficace, qui permet de prendre en compte :
+- une tendance linéaire dans la série
+- et une composante saisonnière
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 40 / 51
+<<<PAGE>>>
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 41 / 51
+<<<PAGE>>>
+Annexe 1 : mise en œuvre sous R
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 42 / 51
+<<<PAGE>>>
+Mise en œuvre sous R
+▷ Les méthodes delissages exponentielssont disponiblessous R, grâce à la fonction
+HoltWinters. Pour unesérie temporellex, cette procédure permet :
+un lissage exponentiel simple :
+xlisse <- HoltWinters(x,alpha=α,beta=FALSE,gamma=FALSE),
+un lissage exponentiel double de paramètre 1− α′ :
+xlisse <- HoltWinters(x,alpha=α, beta=β, gamma=FALSE) avec α =1 − (α′)2,
+β = 1−α′
+1+α′,
+un lissage de Holt-Winters sans composante saisonnière :
+xlisse <- HoltWinters(x,alpha=α,beta=β,gamma=FALSE),
+un lissage Holt-Winters additif :
+xlisse <- HoltWinters(x,alpha=α,beta=β,gamma=γ,seasonal=”add”),
+un lissage Holt-Winters multiplicatif :
+xlisse <- HoltWinters(x,alpha=α,beta=β,gamma=γ,seasonal=”mul”).
+▷ Pour un lissage de Holt-Winters avec composante saisonnière la série temporellex doit
+être un objet de type série temporelle, défini avec la fonctionts en précisant la
+saisonnalité.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 43 / 51
+<<<PAGE>>>
+Mise en œuvre sous R- affichage et visualisation des résultats
+summary(xlisse) : description de l’objetxlisse obtenu précédemment par la
+procédure HoltWinters,
+plot(xlisse) : représentation des valeurs observées et des valeurs lissées,
+▷ Les prévisionsà l’horizonh sont réalisées à l’aide de la fonctionpredict :
+p<-predict(xlisse,n.ahead=h) (attention len fait partie de la commande et leh
+est une variable qui peut prendre les valeurs 1,2, . . .).
+Un intervalle de confiance peut être obtenu en validant (à TRUE) l’option
+prediction.interval.
+Tracer la prédiction et la série sur le même graphique :
+xlisse=HoltWinters(x,...);
+p=predict(xlisse,n.ahead=50); plot(xlisse,p).
+Remarque : lorsqu’aucune valeur n’est précisée pour les constantes de lissage, un
+algorithme interne à la procédure HoltWinters se charge d’estimer la meilleur constante
+possible à partir de la série des observations.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 44 / 51
+<<<PAGE>>>
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 45 / 51
+<<<PAGE>>>
+Annexe 2
+Démonstration de la Proposition 1 :
+à LIRE et à COMPRNDRE
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 46 / 51
+<<<PAGE>>>
+Démonstration de la Proposition 1
+▷ Notons
+C (a1,a2) =
+n−1X
+j=0
+(1 − α)j (xn−j − (a1 + a2j))2 .
+▷ On commence par chercher lespoints critiquesde C. Nous avons
+∂C
+∂a1
+(a1,a2) = − 2
+n−1X
+j=0
+(1 − α)j (xn−j − (a1 + a2j)) ,
+∂C
+∂a2
+(a1,a2) = − 2
+n−1X
+j=0
+(1 − α)j j (xn−j − (a1 + aj)) .
+▷ Nous cherchons donc (a1,a2) solutions du système
+
+
+
+− Pn−1
+j=0 (1 − α)j xn−j + Pn−1
+j=0 (1 − α)j a1 + Pn−1
+j=0 (1 − α)j j a 2 = 0
+− Pn−1
+j=0 (1 − α)j j x n−j + Pn−1
+j=0 (1 − α)j j a 1 + Pn−1
+j=0 (1 − α)j j2a2 = 0 .
+(10)
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 47 / 51
+<<<PAGE>>>
+▷ Rappelons les formules
++∞X
+j=0
+(1 − α)j = 1
+α ,
++∞X
+j=0
+j(1 − α)j = 1 − α
+α2 ,
++∞X
+j=0
+j2(1 − α)j = (1 − α)(2 − α)
+α3
+▷ On obtient donc, en remplaçant certaines sommes partielles de séries par leurs limites,
+
+
+
+−α Pn−1
+j=0 (1 − α)j xn−j + a1 + 1−α
+α a2 = 0
+−α2 Pn−1
+j=0 (1 − α)j jxn−j + (1 − α)a1 + (1−α)(2−α)
+α a2 = 0 .
+(11)
+▷ Attention, les systèmes (10) et (11) ne sont pas équivalents. Plusn est grand, plus ils
+se ressemblent.
+▷ Nous allons continuer le calcul à partir du système (11) et c’est pour cela que l’on
+parle de solution « asymptotique » dans l’énoncé de la proposition.
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 48 / 51
+<<<PAGE>>>
+▷ Posons (pour toutn) 
+
+
+L1(n) = α Pn−1
+j=0 (1 − α)j xn−j
+L2(n) = α Pn−1
+j=0 (1 − α)j L1(n − j) .
+▷ Nous remarquons que
+L2(n) = α
+n−1X
+j=0
+(1 − α)j L1(n − j)
+= α2 n−1X
+j=0
+(1 − α)j
+n−j−1X
+i =0
+(1 − α)i xn−j−i
+(k = i + j) = α2 n−1X
+k=0
+xn−k (1 − α)k (k +1) .
+▷ Le système devient alors
+(
+−L1(n) + a1 + (1−α)
+α a2 =0
+−L2(n) + αL1(n) + (1 − α)a1 + (1−α)(2−α)
+α a2 =0 .
+▷ D’où
+−L1(n)(2 − α) + a1(2 − α) + L2(n) − αL1(n) −(1 − α)a1 = 0
+−L2(n) +2L1(n) = a1 ,
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 49 / 51
+<<<PAGE>>>
+et
+a2 = α
+1 − α (L1(n) − a1)
+= α
+1 − α (L2(n) − L1(n)) .
+▷ Montrons que lafonction C est convexe. Pour (a1,a2) et (b1,b2) dans R2 et λ ∈ [0;1],
+nous avons
+C (λ(a1,a2) + (1 − λ)(b1,b2)) =
+n−1X
+j=0
+(1 − α)j (xn−j − (λa1 + (1 − λ)b1 + (λa2 + (1 − λ)b2)j))2
+=
+n−1X
+j=0
+(1 − α)j (λ(xn−j − (a1 + ja2)) + (1 − λ)(xn−j − (b1 + jb2))2
+(convexité de la fonction carré)≤
+n−1X
+j=0
+(1 − α)j [λ(xn−j − (a1 + ja2))2
++(1 − λ)(xn−j − (b1 + jb2))2]
+= λC (a1,a2) + (1 − λ)C (b1,b2) .
+Ce qui montre que la fonctionC est convexe.
+L’unique point critique est donc le minimum absolu. □
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 50 / 51
+<<<PAGE>>>
+(CY T ech) Séries temporelles-Chapitre 4: LISSAGE-Exponentiel 26 janvier 2025 51 / 51

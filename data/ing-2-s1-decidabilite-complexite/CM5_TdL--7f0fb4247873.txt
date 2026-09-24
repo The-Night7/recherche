@@ -1,0 +1,872 @@
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Th´ eorie des Langages
+Chomsky
+Yannick Le Nir Gaspard F´ erey
+Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+10 octobre 2024
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+La classification de Chomsky
+Langages d´ ecidables et hi´ erarchie de classes
+▶ Les langages de type 3 : rationnels ou r´ eguliers
+▶ Les langages de type 2 : alg´ ebriques ou hors contexte
+▶ Les langages de type 1 : sensibles au contexte
+▶ Les langages de type 0 : tous les autres d´ ecidables
+Chaque ensemble est strictement inclus dans ceux de
+num´ ero inf´ erieur.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Grammaire de type 3
+D´ efinition
+Une grammaire G =< T, N, S, P > est de type 3 si les
+r` egles de production sont de la forme :
+▶ soit A→ a o` uA∈ N et a∈ T∪{ε}
+▶ soit A→ B a (ou a B ) o` uA, B∈ N et a∈ T
+Langage associ´ e
+Un langage est de type 3 s’il peut ˆ etre engendr´ e par une
+grammaire de type 3.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Exemple de grammaire
+Affectation num´ erique
+La grammaire G = <T, N, S, P> du cours pr´ ec´ edent pour
+l’analyse lexicale de l’affectation num´ erique est de type 3 :
+▶ T = lettre∪ chiffre∪{ +,−,∗,/, =,.}
+▶ N ={mot, nombre, operateur, nombre, identifiant}
+▶ S = mot
+▶ P =
+
+
+mot→ operateur
+operateur→ +|−|∗| /| =
+mot→ nombre
+nombre→ (chiffre+)|(chiffre+).(chiffre+)
+mot→ identifiant
+identifiant→ lettre|identifiant(lettre|chiffre)
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Grammaire de type 2
+D´ efinition
+Une grammaire G =< T, N, S, P > est de type 2 si les
+r` egles de production sont de la forme :
+▶ A→α o` uA∈ N et α∈ (N∪ T )∗
+Le membre gauche est donc exactement un non terminal
+alors que le membre droit est quelconque.
+Langage associ´ e
+Un langage est de type 2 s’il peut ˆ etre engendr´ e par une
+grammaire de type 2.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Exemple de grammaire
+Langage anbn
+Le fameux langage anbn peut ˆ etre engendr´ e par la
+grammaire hors contexte G =< T, N, S, P > avec :
+▶ T ={a, b}
+▶ N ={S}
+▶ S = S
+▶ P ={ S→ a S b | a b}
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Autres grammaires
+Grammaire de type 1
+Une grammaire G =< T, N, S, P > est de type 1 si les
+r` egles de production sont de la forme :
+u A v → u w v o` uA∈ N, u, v∈ T ∗ et w∈ (N∪ T )∗
+Grammaire de type 0
+Une grammaire G =< T, N, S, P > est de type 0 si les
+r` egles de production sont quelconques.
+Th´ eor` emes
+▶ Une grammaire n’engendre qu’un seul langage. La
+r´ eciproque est fausse.
+▶ Les diff´ erentes familles de langages sont incluses les
+unes dans les autres : L3⊂ L2⊂ L1⊂ L0
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Forme normale de Chomsky
+D´ efinition
+Une grammaire de type 2 (sans ε) est dite sous forme
+normale de Chomsky si et seulement si toutes les r` egles
+sont de la forme :
+▶ soit A→ a (o` ua∈ T )
+▶ soit A→ BC (o` uB, C∈ N)
+Th´ eor` eme
+Tout langage hors-contexte (de type 2) sans ε peut ˆ etre
+engendr´ e par une grammaire en forme normale de Chomsky.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Transformation en forme normale de Chomsky
+Algorithme
+1. remplacer tous les terminaux x en partie droite des
+r` egles par des non-terminauxX en ajoutant les r` egles
+X→ x
+2. Toute r` egleX→ YZW est remplac´ ee parX→ YV et
+V→ ZW
+3. remplacer les r` eglesX→ Y par X→ WZ si Y→ WZ
+Exemple
+Le langage anbn peut ˆ etre engendr´ e par la grammaire sous
+forme normale de Chomsky suivante :
+<{a, b},{S, A, B}, S, P > avec
+P =
+
+
+
+S→ A B | A X, X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+Algorithme CKY (Cocke, Kasami et Younger)
+▶ D´ ecouvert ind´ ependamment par Cocke, Kasami et
+Younger.
+▶ Algorithme efficace pour reconna ˆ ıtre l’appartenance ` a
+un langage hors-contexte produit par une grammaire
+sous forme normale de Chomsky.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Algorithme CKY
+Probl` eme et algorithme
+▶ Donn´ ees :
+▶ G une grammaire sous forme normale de Chomsky
+▶ w : mot de longueur n
+▶ Question : w appartient-il ` aL(G ) ?
+▶ Id´ ee :
+▶ Pour chaque sous-mot m de w (m = w[i, j]), on peut
+construire successivement
+Mi,j ={X∈ N / tels que X→∗ m}
+▶ Il suffit alors de v´ erifier si le symbole axiome S fait
+partie des non-terminaux obtenus pour le mot entier.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+Construction
+▶ Tableau triangulaire : colonnes num´ erot´ ees par
+i = 1, 2,..., n (les positions de d´ ebut de mot dans w) et
+lignes par j = 1, 2,..., n (les longueurs possibles).
+▶ Remplissage de la ligne 1 puis 2 ...
+▶ La p-i` eme case de la lignek correspond aux
+non-terminaux qui peuvent engendrer w[p, k].
+▶ On examine donc toutes les coupures du mot w[p, k] en
+deux sous-mots : w[p, l] et w[p + l, k− l].
+▶ Pour tous les Y possibles et tous les l compris entre 1
+et k, on regarde toutes les expressions Xp Xp+l en
+recherchant s’il existe Y dans la grammaire tel que
+Y→ XpXp+l.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2
+1
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2 ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2 ∅ S
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3 ∅
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3 ∅
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4 ∅
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4 ∅
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+D´ eroulement du CKY
+4 S
+3 ∅ X
+2 ∅ S ∅
+1 A A B B
+input a a b b
+P =
+
+
+
+S→ A B
+S→ A X
+X→ S B
+A→ a
+B→ b
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+Algorithme
+Donn´ ees :G =< T, N, P, S > et w un mot de T ∗
+n←| w|
+V← matrix(n, n)
+// Sous-mots d’une lettre
+pour i = 1 ` an faire
+V [i, 1] ={A| A→ a∈ P et w[i] = a}
+// Sous-mots de plusieurs lettres
+pour j = 2 ` an faire
+pour i = 1 ` an− j + 1 faire
+V [i, j]←∅
+pour k = 1 ` aj− 1 faire
+V [i, j] = V [i, j] S
+{A| A→ BC∈ P, B∈ V [i, k] et C∈ V [i + k, j− k]}
+w reconnu par G ssi S∈ V [1, n].
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Chomsky
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Hi´ erarchie de
+Grammaires
+Forme normale de
+Chomsky
+Analyse dans les
+grammaires hors
+contexte
+Analyse CKY
+JFLAP
+L’algorithme est illustr´ e dans JFLAP 7.0 et (en plus d´ etaill´ e)
+dans JFLAP 8.0 .

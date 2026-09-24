@@ -1,0 +1,86 @@
+Filière ingénieure - Parcous MI
+Fouille de Données T.P. N o 3
+Arbres de décision et forêts aléatoires
+6 décembre 2023
+1 Combinaison des modèles
+Nousconsidéronspoursimplifierunalgorithmedecombinaisondemodèles
+de type boosting avec seulement 2 itérations. L’ensemble d’apprentissage
+contient seulement 4 exemples :{ex1, ex2, ex3, ex4}
+Exercice 1 Nous supposons que pour la premier tirage aléatoire l’exemple
+ex1estchoisideuxfois,ainsiquelesdeuxexemples ex2et ex3.Noussupposons
+aussiqueleclassifiersetrompeseulementsurl’exemple ex3.quelleestl’erreur
+de ce classifier? Quels seront les poids des exemples à la fin de cette itération.
+Exercice 2 Concernantladeuxièmeitération,noussupposonsquelesexemples
+ex2, ex3 sont titrés ainsi que l’exempleex4 en doublon. Nous supposons que
+le classifieur se trompe sur l’exemple ex4. quelle est l’erreur de ce classifieur?
+Exercice 3 Quelle sera la décision finale du modèle sur les exemplesex2
+et ex3?
+1
+<<<PAGE>>>
+Data Mining
+2 Etude pratique avec R
+Le but de cette section est d’appliquer les algorithmes CART et Random
+Forest sur le dataset IRIS :
+1. Exploration de l’ensemble des données IRIS :
+2. Caractéristiques :
+dim(iris)
+names(iris)
+str(iris)
+attributes(iris)
+3. Devision en train et test
+set.seed(1234)
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.7, 0.3))
+trainData <- iris[ind==1,]
+testData <- iris[ind==2,]
+trainData
+testData
+4. Construction d’un arbre de décision
+myFormula <- Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width
+library(rpart)
+iris_rpart <- rpart(myFormula, data=trainData,
+control = rpart.control(minsplit = 5))
+attributes(iris_rpart)
+print(iris_rpart)
+5. Plot
+library(rpart.plot)
+prp(iris_rpart,extra=1)
+6. Prédictions et matrices de confusion
+trainPred <- predict(iris_rpart, newdata = trainData, type="class")
+table(trainPred, trainData$Species)
+testPred <- predict(iris_rpart, newdata = testData, type="class")
+table(testPred, testData$Species)
+Exercice 4 Il est possible d’ajuster l’arbre en réglant un paramètre de
+complexité : afficher le paramètre de complexité avec la commande
+2
+<<<PAGE>>>
+Data Mining
+iris_rpart$control$cp
+Représenter graphique l’erreur sur l’ensemble d’apprentissage en fonction du
+paramètre cp avec la commande
+plotcp(iris_rpart)
+A-t-onbesoind’ajustermieuxceparamètre?Effectuerlamodificationsuivante
+du paramètre cp :
+iris_rpart <- rpart(myFormula, data=trainData,
+control = rpart.control(minsplit = 5, cp=0.2))
+Exercice 5 Appliquer la fonction evaluator (voir le TP numéro 2 sur les
+modèles bayésiens) sur le modèleiris_rpart et l’ensemble de test.
+1. Construction d’une forêt aléatoire
+library(randomForest)
+rf <- randomForest(Species ~ ., data=trainData, ntree=100)
+print(rf)
+attributes(rf)
+plot(rf$err.rate[,1], type="l",)
+2. Importance des variables
+importance(rf)
+varImpPlot(rf)
+l’erreur oob : pour une observation i de l’échantillon d’apprentissage
+on calcul l’erreur obtenu par l’agrégation de tous les arbres n’ayant
+pas été appris avec cette observation. L’erreur oob est la somme des
+erreurs calculé ainsi sur l’ensemble de l’échantillon d’apprentissage.
+Exercice 6 Faire varier les paramètres suivants : ntree qui correspond
+au nombre d’arbres (500 par défaut) et mtry qui correspond au nombre
+de variables à prendre en compte pour chaque nœud d’arbre. Comparer les
+résultats sur l’ensemble du test avec la fonction evaluator.
+Exercice 7 Refaire le même travail décrit dans cette partie pratique sur le
+dataset PimaIndiansDiabetes de la librairemlbench
+3

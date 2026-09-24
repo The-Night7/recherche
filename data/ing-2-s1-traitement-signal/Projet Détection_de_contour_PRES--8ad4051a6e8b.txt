@@ -1,0 +1,322 @@
+Traitement du signal
+ING2 2021/2022
+Nelly Barrau : nbu@cy-tech.fr, bureau E203
+Lucie Desplat: ld@cy-tech.fr, bureau E207
+1
+
+<<<PAGE>>>
+2
+Modalités d’évaluation
+Concernant le projet (mini-soutenance + rapport)
+• Groupe de 2 à 5 étudiants
+• Thématique: détection de contours & critères de performance
+• Durée de la soutenance : ~ 5 min par personne (à titre indicatif) .
+• Rapport rédigé façon cahier des charges (+ fichiers codes à fournir)
+Dates limites :
+• Avant les vacances de février, les groupes doivent être formés;
+• Au retour des vacances : communication de la thématique choisie par groupe;
+• Rendu de rapport (cahier des charges + codes) : Dimanche 03/04/2022 avant 17h
+• Soutenance (+présentation/démo des codes) : durant la dernière séance de TD
+(semaine du 4 avril)
+<<<PAGE>>>
+3
+Traitement du signal
+• Partie 1 : Introduction
+• Partie 2 : Généralités autour du signal et de son traitement
+• Partie 3 : Filtres
+• Partie 4 : Traitement del’image
+• Partie 5 : Outils mathématiques, Analyse et modélisation
+• Partie 6 : Application: Détection de contours
+<<<PAGE>>>
+4
+Détection de contours
+• La mise en évidence des points représentant les contours d'objets dans une image peut servir à
+reconnaître des objets présents dans une scène, à extraire une information réduite...
+• Contour : rupture d'intensité dans l'image suivant une direction donnée.
+Définition d’un contour
+<<<PAGE>>>
+5
+Détection de contours
+ Plusieurs méthodes pour détecter cette rupture +/- complexes, +/- gourmandes en calculs, etc .
+ On va procéder en deux étapes :
+• Localiser des contours à partir d'un calcul de Gradient ou de Laplacien dans des directions
+privilégiées tout en quantifiant l'importance du contour.
+• Isoler les contours du reste de l'image grâce à un seuillage judicieux.
+ Plusieurs façons de déterminer le Gradient ou le Laplacien d'une image. Idem pour le seuillage.
+ Il existe plusieurs combinaisons de calcul Gradient-seuillage pour détecter les contours.
+ Choix des opérateurs pour satisfaire les exigences associées à l'image à traiter.
+<<<PAGE>>>
+6
+Détection de contours
+Rappels : Filtrage spatial, convolution
+• Le filtrage d'une image numérique permet de modifier son spectre spatial.
+• La dérivation est une opération de filtrage, utilisée pour la détection de contour.
+Le filtrage spatial correspond à des opérations permettant de modifier chaque pixel de l'image en
+fonction des valeurs des pixels de son voisinage.
+En traitement d'image, le filtrage spatial convolutif est défini par un masque de convolution.
+<<<PAGE>>>
+Exemples de types de contours : marche, toit et pointe.
+7
+Détection de contours
+Modèle d’un contour
+Contours : discontinuités de la fonctiond’intensité dans les images.
+
+<<<PAGE>>>
+8
+Détection de contours
+Modèle d’un contour
+La détection de contours repose sur l’étude des dérivées de la fonction d’intensité dans l’image : les
+extréma locaux du gradient del’intensité et les passages par zéro du laplacien.
+Fonctiond’intensité I sur un contour marche, ses dérivées 1ère et 2nde
+<<<PAGE>>>
+9
+Détection de contours
+Le gradient d’une image
+Le gradientd’une image est le vecteur 𝑔𝑟𝑎𝑑 𝐼 𝑥, 𝑦 et est défini par :
+𝑔𝑟𝑎𝑑 𝐼 𝑥, 𝑦 =
+𝜕𝐼
+𝜕𝑥
+𝜕𝐼
+𝜕𝑦
+Il est caractérisé par un module G et une direction Φ dansl’image :
+𝐺 = 𝜕𝐼
+𝜕𝑥
+2
++ 𝜕𝐼
+𝜕𝑦
+2
+et 𝜙 = arctan
+𝜕𝐼
+𝜕𝑦
+𝜕𝐼
+𝜕𝑥
+I : fonctiond’intensité de l’image
+<<<PAGE>>>
+10
+Détection de contours
+Le gradient d’une image
+• Le module du gradient quantifie l'importance du contour, c-à-d l'amplitude du saut
+d'intensité.
+• La direction du gradient est orthogonale à celle du contour. Le gradient pointe dans
+la direction vers laquellel’intensité varie le plus au voisinage du pixel(x,y)
+Le principe de la détection de contours par l'utilisation du gradient consiste à calculer
+d'abord le gradient de l'image dans deux directions orthogonales puis le module du
+gradient.
+Il faut ensuite sélectionner les contours les plus marqués, c-à-d les points de plus fort
+contraste par un seuillage adéquat.
+<<<PAGE>>>
+11
+Détection de contours
+Approche gradient
+• A partir del’image en niveau de gris, on calculel’image du gradient.
+• Les points des contours sont obtenus par binarisation del’image du module du gradient.
+• Les points del’image du module du gradient de valeur supérieure à un seuil ( à définir judicieusement)
+sont considérés comme points de contours.
+
+<<<PAGE>>>
+12
+Détection de contours
+Le gradient d’une image
+Ces noyaux de convolution ne s'utilisent pas car ils ne sont pas centrés
+Dans une image numérique, I est défini en un nombre fini de pixels. Les composantes du vecteur
+gradient, qui sont des dérivées partielles sont approximées par la méthode des différences finies :
+• 𝜕𝐼
+𝜕𝑥 ≈ 𝐼 𝑥 + 1, 𝑦 − 𝐼(𝑥, 𝑦)
+• 𝜕𝐼
+𝜕𝑦 ≈ 𝐼 𝑥, 𝑦 + 1 − 𝐼(𝑥, 𝑦)
+En terme de filtrage, cela correspond au masque de convolution :
+• 0 − 1 1 pour 𝜕𝐼
+𝜕𝑥
+• 0 − 1 1 𝑇 pour 𝜕𝐼
+𝜕𝑦
+
+<<<PAGE>>>
+13
+Détection de contours
+Le gradient d’une image
+On préfère utiliser une approximation de la dérivée par rapport à x (idem en y) par
+une différence centrée :
+𝜕𝐼
+𝜕𝑥 ≈ 𝐼 𝑥 + 1, 𝑦 − 𝐼(𝑥 − 1, 𝑦)
+En terme de filtrage, cela correspond au masque de convolution :
+−1 0 1
+Ces nouveaux masques exploitent les informations provenant de part et d'autre du pixel, et non d'un seul côté.
+<<<PAGE>>>
+14
+Détection de contours
+Ainsi, l’image du gradient notée g, peut être obtenue par filtrage linéaire. g est obtenue par
+convolution del’image I avec un filtre de masque M :
+g=I*M
+Algorithme de convolution de l’image I avec un filtre de masque M de taille 3 × 3
+pour tout pixel de coordonnées (x,y) :
+𝑔𝑥,𝑦 = ෍
+𝑖=−1
+1
+෍
+𝑗=−1
+1
+𝐼𝑥−𝑖,𝑦−𝑗 . 𝑀𝑖,𝑗
+Le gradient d’une image
+<<<PAGE>>>
+15
+Détection de contours
+Le gradient d’une image
+
+<<<PAGE>>>
+16
+Détection de contours
+Approche gradient
+Exemple : Filtre de Sobel
+Algorithme de convolution de l’image G avec le filtre de Sobel:
+On applique les deux masques* notés 𝐻1 et 𝐻2 pour produire les deux
+gradients directionnels au point (x,y) par convolution :
+𝑔1𝑥,𝑦 = ෍
+𝑖=−1
+1
+෍
+𝑗=−1
+1
+𝐼𝑥−𝑖,𝑦−𝑗 . 𝐻1𝑖,𝑗
+𝑔2𝑥,𝑦 = ෍
+𝑖=−1
+1
+෍
+𝑗=−1
+1
+𝐼𝑥−𝑖,𝑦−𝑗 . 𝐻2𝑖,𝑗
+La norme du gradient au point (x,y) est obtenue par 𝐺𝑥,𝑦 = 𝑔12 + 𝑔22
+* Deux masques sont utilisés pour déterminer le gradient de l'image dans deux directions
+orthogonales. Pour info, il existe des filtres à plus de 2 masques..Faire des recherches sur« Opérateur gradient boussole ».
+normalisation
+<<<PAGE>>>
+17
+Détection de contours
+Approche gradient
+Exemple : Filtre de Sobel
+Image convertie en niveau
+de gris
+Image gradient x
+Contours – Sobel/seuillage
+Image gradient y
+<<<PAGE>>>
+18
+Détection de contours
+Approche gradient
+• Il existe en fait beaucoup d'autres noyaux de convolution pour approximer le gradient.
+• Les approximations sont calculées en prenant en compte plusieurs (les 8 plus proches) autres
+pixels du voisinage.
+• Un poids plus important est alors donné aux pixels adjacents dans la direction de la dérivée.
+
+<<<PAGE>>>
+19
+Détection de contours
+Approche gradient
+Il existe pleins de filtres différents : filtres de Prewitt, Roberts, Kirsch parmi tant d’autres. A vous
+de faire un petit travail de recherche pour trouverd’autres filtres couramment utilisés.
+V ouspouvez également en créer!
+Note : la présence de bruit dansl’image peut rendre délicate la detection de contours…
+<<<PAGE>>>
+20
+Détection de contours
+Gestion des bords d’une image
+Pour les pixels du bord, le masque déborde de l'image. Les valeurs des pixels du bord sont à définir:
+Il existe plusieurs possibilités pour fixer ces valeurs :
+• Zero-padding : on suppose que les pixels en
+dehors de l'image sont de valeur nulle ;
+• Duplication : on duplique les premières et
+dernières lignes et colonnes au delà des bords ;
+• Miroir : on duplique l'image en miroir au-delà des
+bords.
+
+<<<PAGE>>>
+21
+Détection de contours
+Approche Laplacien
+Une autre approche pour trouver les contours de l’image est d’utiliser la dérivée seconde de l’image(le
+passage par zéro de la dérivée seconde d'une rupture d'intensité permet également de mettre en évidence le contour).
+• Pour cela, on utilise le Laplacien comme opérateur :
+∆𝐼 = 𝜕2𝐼
+𝜕𝑥² + 𝜕2𝐼
+𝜕𝑦² =
+𝜕 𝜕𝐼
+𝜕𝑥
+𝜕𝑥 +
+𝜕 𝜕𝐼
+𝜕𝑦
+𝜕𝑦 = ⋯ = I x + 1, y + I x − 1, y + I x, y + 1 + I x, y − 1 − 4I x, y
+Cette opération de calcul de Laplacien peut être appliquée à une image par l'intermédiaire d'un filtrage
+avec le masque 3*3 suivant :
+Démo : differences finies non centrées..
+<<<PAGE>>>
+22
+Détection de contours
+Approche Laplacien
+• Plusieurs approximations discrètes du Laplacien existent :
+• Une seule matrice de convolution
+
+<<<PAGE>>>
+23
+Détection de contours
+Approche Laplacien
+Image convertie en niveau de 
+gris
+ Contours – Laplacien/seuil=70
+Exemple : Filtre Laplacien
+<<<PAGE>>>
+24
+Détection de contours
+Seuillage
+• Les méthodes précédentes ont permis de déterminer le module du gradient d'une image qui permet
+effectivement de mettre en évidence les contours présents.
+• L'image obtenue est en niveaux de gris.
+• Pour aboutir à une information plus nette (présence de contours ou non), on va binariser l'image
+du module du gradient :c’est le seuillage.
+• Les pixels blancs (de valeur 1) attestent de la présence d'un contour, les pixels noirs (de valeur 0)
+de l'absence.
+• Cette opération nécessite le réglage d'un paramètre : le seuilθ.
+• Sélection des contours les plus significatifs.
+<<<PAGE>>>
+25
+Détection de contours
+Seuillage
+Il existe plusieurs méthodes de seuillage :
+Seuillage global
+Le seuil correspond à une valeur réelle dans
+l'intervalle [0,255].
+On procède par tâtonnement à partir de
+l'image en noir et blanc résultante censée
+mettre en évidence les contours.
+Seuillage par hystérésis
+• Constat :difficile de choisir la valeurd’un bon seuil.
+• Seuillage par hystérésis : deux seuils notés 𝜃ℎ𝑎𝑢𝑡 et
+𝜃𝑏𝑎𝑠.
+• Si 𝑔𝑟𝑎𝑑 𝐼 ≥ 𝜃ℎ𝑎𝑢𝑡, alors le pixel (x,y) est situé
+sur un contour,
+• Si 𝑔𝑟𝑎𝑑 𝐼 ≥ 𝜃𝑏𝑎𝑠, alors le pixel (x,y) est situé sur
+un contour ssil’un de ses huits voisins aussi,
+• Sinon, le pixel (x,y)n’est pas sur un contour.
+Il en existe pleinsd’autres: seuillage global par histogramme, seuillage des maxima locaux,…
+<<<PAGE>>>
+26
+Détection de contours
+Critères de performance
+• Temps de calcul,
+• Exhaustivité de la détection
+• Exactitude de la localisation des contours,
+• Calculs lourds (par exemple : minimiser le nombre de contours détectés
+plusieurs fois, cf Filtre de Canny pour plusd’info)
+• Liste non exhaustive…
+• Les critères dependent évidemment de l’application dans laquelle
+vous avez choisie de travailler !
+
+<<<PAGE>>>
+Références et liens utiles
+• Traitement numérique du signal - Maurice Bellanger– Sciences Sup– Dunod
+• Théorie et Traitement du signal - 1. Représentation des signaux et des systèmes –
+Messaoud Benidir - Sciences Sup– Dunod
+• Théorie et Traitement du signal - 2.Méthodes de base pour l’analyse et le traitement du
+signal–Messaoud Benidir - Sciences Sup– Dunod
+• Mathématiques du signal - Dariush Ghorbanzadeh, Pierre Marry, Nelly Point, Denise
+Vial - Sciences Sup– Dunod
+• http://hebergement.u-psud.fr/mkowalski/doc/L3_DLMP_Signal.pdf
+27

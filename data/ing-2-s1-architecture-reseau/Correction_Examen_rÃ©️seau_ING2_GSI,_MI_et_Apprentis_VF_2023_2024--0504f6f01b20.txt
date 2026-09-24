@@ -1,0 +1,224 @@
+ 
+ 
+ING2 : EXAMEN D’ARCHITECTURE RÉSEAU 
+EXAMEN PAPIER – DOCUMENTS MANUSCRITS AUTORISÉS 
+DURÉE 2 HEURES 
+L’équipe pédagogique 
+A l’intention des étudiants d’ING2 (GSI, MI et 
+Apprentis) 
+13 décembre 2023 
+   
+  
+Nom Prénom    Groupe Note 
+        
+  
+  
+  
+Modalités 
+·    Durée totale : 2 heures. 
+·    Les réponses devront être fournies sur le sujet lui-même. 
+·    Documents manuscrits autorisés. 
+·    Aucune machine électronique ne doit se trouver sur vous ou à proximité, même éteinte. 
+·    Aucune sortie n’est autorisée avant une durée incompressible d’une heure. 
+·    Les déplacements et les échanges ne sont pas possibles. 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+QCM: Plusieurs réponses peuvent être possibles (6pts) 
+ 
+1/ Quel est le rôle du masque de réseau ? 0.25 
+●   Il permet de cacher l'adresse IP 
+●   Il détermine l'adresse d'un réseau IP à partir de l'adresse IP d'un poste 
+● Il détermine l'adresse du poste dans le réseau IP 
+●   Il permet de crypter les communications sur le réseau IP 
+2/ Un réseau a comme masque 255.255.255.224. Combien de machines peut- il y avoir 
+sur un tel réseau ? Détaillez. 0.5 
+      □ 254        □ 128    □ 224    □ 30 
+La réponse est 30, en effet, 224 en binaire = 1110 0000, donc la partie codage des machines « hôtes » se 
+fait sur 5 bits, soit 25- 2= 30 machines hôtes possible 
+ 
+3/ Quel est le masque d'un réseau 193.16.1.0/24 ? 0.25 
+     □ 255.0.0.0               □ 255.255.0.0           □ 255.255.255.0                       □ 255.255.255.24 
+4/ En utilisant l'adressage par classe, l'adresse 190.24.12.8/16 fait partie de quel réseau ? 
+0.5 
+● 190.0.0.0 
+● 190.255.255.25 
+● 190.24.0.0 
+● 190.24.12.0 
+● 0.12.24.190     
+5/ Quel est l'adresse IP de la boucle locale (Local Loopback) ?0.5 
+    □ 128.0.0.1              □ 127.0.0.1              □ 127.0.0.0              □ 126.0.0.1 
+6/ L'adresse IP 192.168.255.1 est une :0.5 
+●  adresse de broadcast 
+● adresse publique 
+● adresse routable sur Internet 
+● adresse privée d'un poste 
+7/ Quels sont les rôles possibles d'un routeur dans un réseau ?0.5 
+● Connecter différents réseaux 
+● Filtrer le trafic basé sur les adresses MAC 
+●  Acheminer les paquets 
+● Faciliter la communication entre les périphériques sur le même réseau 
+<<<PAGE>>>
+ 
+ 
+8/Quelles sont les caractéristiques d'un protocole de routage dynamique ?0.5 
+●  Il nécessite une configuration manuelle des route 
+● Il ajuste automatiquement les tables de routage en fonction des changements 
+dans le réseau 
+● Il est généralement moins complexe que les protocoles de routage statique 
+● Il est recommandé pour les réseaux très stables avec peu de modifications 
+9/Dans la résolution itérative, que fait  le serveur DNS racine lorsqu’il reçoit une requête 
+d’un autre serveur demandeur (qui demande la résolution d’une adresse IP)?0.5 
+●  Retourne au serveur demandeur une adresse d’un autre serveur de noms à contacter 
+● Demande la résolution de l’adresse au serveur du sous-domaine juste en dessous dans 
+la hiérarchie 
+●   Aucune de ces réponses. 
+10/Un serveur DHCP est capable d’allouer une adresse IP à un client en fonction de 
+son adresse MAC d’une manière statique.0.5 
+● Vrai 
+●   Faux  
+11/Il est possible d’avoir plusieurs serveurs DHCP sur un même réseau 0.5 
+●  Vrai  
+● Faux  
+12/Quel est le type de NAT (dynamique, statique) que vous utilisez pour rendre un 
+serveur web ou un serveur de transfert de fichier FTP disponible sur Internet. 
+Justifier votre réponse ? 0.5 
+●  Statique 
+●  Dynamique 
+Justification: utilisation du NAT statique  permet d'associer une adresse privée à une 
+adresse publique unique donc lorsqu’ un utilisateur externe veut accéder au serveur web 
+le NAT remplace l’@ publique par l’@ privée.  
+13/ Les adresses IPv6 sont décomposées en 0.5: 
+●   Identifiant réseau, identifiant sous réseau, identifiant machine. 
+●  Identifiant réseau, identifiant machine. 
+● Préfixe de localisation, identifiant sous réseau, identifiant de l’interface  
+ 
+Exercice 1: Calculs de masque ( 4pts) 
+<<<PAGE>>>
+Supposons qu’un prestataire d’accès Internet a reçu, pour exercer son activité, le bloc d'adresses 
+CIDR 202.0.64.0/18 avec lequel il a constitué son réseau. 
+a) Si un client demande 800 adresses, quelle est la plage d’adresses que le prestataire lui donne, 
+si la première adresse réseau libre est 202.0.70.0  (1 pt) 
+ 
+Il peut lui attribuer 800 adresses IP de 202.0.70.0 jusqu’à 202.0.73.31.  
+ 
+b) Comment découper l'espace des 800 adresses attribuées au client pour avoir 4 sous-réseaux: 
+Production (240 postes), Re cherche (235 postes), Développement (230 postes) et 
+Administration (28 postes). (1pt) 
+Avec CIDR on utilise le masque /24 pour les 3 premiers réseaux (c’est-à-dire, 202.0.70.0/24, 
+202.0.71.0/24 et 202.0.71.0/24, ce qui donne 3*256 @ip) et le masque /27 pour le 4ème réseau 
+(c’est-à-dire, 202.0.73.0/27, ce qui donne 32 @ip de 202.0.73.0 à 202.0.73.31) 
+ 
+c) Donnez les réseaux en (en format CIDR) en précisant les adresses de réseau, broadcast et 
+machines hôtes ? (2pts) 
+Par conséquent, dans la table de routage du prestataire nous ajoutons une entrée (route) pour 
+chacun des réseaux : 202.0.70.0/24, 202.0.71.0/24, 202.0.71.0/24 et 202.0.73.0/27 
+Ces réseaux en détail : 
+·       Pour 202.0.70.0/24, adresse de réseau 202.0.70.0, broadcast 202.0.70.255, nœuds de 
+202.0.70.1 à 202.0.70.254 
+·       Pour 202.0.71.0/24, adresse de réseau 202.0.71.0, broadcast 202.0.71.255, nœuds de 
+202.0.71.1 à 202.0.71.254 
+·       Pour 202.0.72.0/24, adresse de réseau 202.0.72.0, broadcast 202.0.72.255, nœuds de 
+202.0.72.1 à 202.0.72.254 
+·       Pour 202.0.73.0/27, adresse de réseau 202.0.73.0, broadcast 202.0.73.31, nœuds de 
+202.0.73.1 à 202.0.73.30 
+Exercice 2 : Analyse de trame (3,5 pts) 
+0000 : 00 24 d5 2f 66 34 00 07 cb 10 91 d7 08 00 45 00 
+0010 : 00 fa  a6 ed 40 00 2f 06 49  12 d1 2b ca 24 c2 a8 
+<<<PAGE>>>
+0020 : 00 06 00 50 b1 ef 5a f7 0c  17  88 2b aa f4 80 18 
+0030 : 01 f5 1d 62 00 00 01 01 08 0a f0 9a 8d 0e 00 83 
+0040 : 69 41 48 54 54 50 2f 31  2e 31 20 32 30 30 20 4f 
+En utilisant la capture de trame ci-dessus et en utilisant les en-têtes des protocoles donnés 
+dans l’annexe, déterminer: 
+a) Les adresses Mac source et destination. (0,5pt) 
+@detination: 00 24 d5 2f 66 34    @ Source: 00 07 cb 10 91 d7 
+b) Le protocole de la couche réseau et de la couche transport encapsulés par cette trame 
+(justifier votre réponse). (1pt) 
+on a le type =0800 donc  le protocole de la couche réseau est: IP 
+on a le protocole =06  donc  le protocole de la couche transport est: TCP 
+c) Les adresses IP source et destination (0,5pt) 
+@ip source: d1 2b ca 24=209.43.202.36      @detination: c2 a8 00 06=194.168.0.6 
+ 
+d) Le nombre maximum de Routeur que la trame pourra traverser avant qu’elle soit détruite 
+?(0,75) 
+la durée de vie (TTL)= 2f =47 routeurs 
+e) Le service véhiculé par la trame ? justifier votre réponse (0,75 pt) 
+le port source = 00 50=80 donc le message vient d’un serveur web et utilise le protocole 
+HTTP 
+Exercice 3 : Ipv6 (1.5pts) 
+Comment peut-on compresser les adresses suivantes ? 
+a- 2001:0db8:0000:0000:b450:0000:0000:00b4 => 2001:db8::b450:0:0:b4 
+b- 2001:0db8:0f3c:00d7:7dab:03d0:0000:00ff  => 2001:db8:f3c:d7:7dab:3d0::ff 
+c- 2001:0db8:0000:0000:0000:0000:0000:0001 =>2001:db8::1 
+ 
+Exercice 4 : Routage (5pts) 
+<<<PAGE>>>
+Partie 1: 
+Ce réseau est constitué de deux routeurs possédant les tables de routage comme le montre la 
+figure suivante  
+ 
+ 
+1/ Complétez la table de routage du Routeur de gauche (1,5 pts) 
+destination 
+ 
+masque      passerelle 
+82.0.0.0 255.0.0.0 direct 
+134.21.0.0 255.255.0.0 direct 
+198.198.198.0 255.255.255.0 134.21.2.1 
+default 134.21.2.1 134.21.1.1 
+  
+2/ Complétez la table de routage du routeur de droite (1,5pts) 
+destination 
+ 
+masque passerelle 
+82.0.0.0 255.0.0.0 134.21.1.1 
+134.21.0.0 255.255.0.0 direct 
+198.198.198.0 255.255.255.0 direct 
+default 134.21.1.1 134.21.2.1 
+Partie 2: 
+Ci-dessous la table de routage de routeurs R0 dans un réseau: 
+
+<<<PAGE>>>
+ 
+Donner la topologie du réseau que vous pouvez déduire à partir de cette table de routage. 
+ 
+ 
+ 
+ 
+Annexe 
+Sur un réseau circulent des trames. Ces trames sont des messages interprétables quand on 
+connaît la règle du jeu (le protocole). Chaque trame est composée d'une partie entête et d'une 
+partie information et que cette partie information est un message que l'on peut aussi décoder si 
+on connaît le protocole correspondant. 
+Décodage de Trame Ethernet  
+●  À l'intérieur du champ « Information » se trouve aussi une structure représentant une 
+unité de données de protocole de réseau NPDU (Network Protocol Data Unit). 
+Lorsqu’il y a moins de 46 octets de données, ce champ est complété par des octets de 
+bourrage pour atteindre sa taille minimale. 
+● Le champ Type vous renseigne sur la manière de lire le contenu du champ  
+Information. Ce contenu peut être 
+❖ Un paquet IP si « Type » = 08 00 
+❖ Un paquet ARP si « Type » = 08 06 
+● Souvent le code correcteur n’est pas affiché lors des captures des trames 
+Décodage de paquets IP 
+
+<<<PAGE>>>
+  
+Décodage de ARP 
+ 
+ 
+Segment TCP 
+ 
+Segment UDP 
+
+<<<PAGE>>>
+ 
+ 
+Message ICMP 
+ 
+ 

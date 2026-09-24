@@ -1,0 +1,318 @@
+Ingénieurs 2ème année : Mathématiques et Informatique
+Méthodes itératives d’optimisation déterministe
+CM4 – Directions de descente
+Nisrine FORTIN CAMDAVANT
+
+<<<PAGE>>>
+1 Direction de descente du 1 er ordre
+Méthode du gradient
+Méthode du gradient conjugué
+Gradient conjugué pour les fonctions quadratiques
+Gradient conjugué pour les fonctions non quadratiques
+2 Méthodes de Newton
+3 Méthodes quasi-Newton
+<<<PAGE>>>
+Articulation du cours
+Ce cours est scindé en deux parties :
+I. Les méthodes de descente à direction du premier ordre :
+↝ Méthodes qui exploitent legradient (les dérivées du premier ordre) pour exprimer
+la direction de descente.
+II. Les méthodes de descente à direction du second ordre :
+↝ Méthodes utilisant legradient et la matricehessienne de la fonction critère pour
+exprimer la direction de descente.
+<<<PAGE>>>
+Rappel
+2 Les méthodes de descente procèdent
+dans l’objectif de diminuer la fonctionf,
+en effectuant undéplacement dans une direction d, d∈ Rn,
+en construisant une suite d’itérés(xk )k≥1 approchant la solutionx∗
+du problème (PSC ).
+2 Un algorithme à directions de descente
+est déterminé par la direction d,
+la façon dont la direction de descente d est calculée donne son nom
+à l’algorithme.
+<<<PAGE>>>
+Direction de descente du 1 er ordre
+Méthode du gradient
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode du gradient
+La méthode (ou algorithme) duGradient fait partie de la classe desméthodes
+de descente. Elle consiste à choisir une direction de descente en fonction du
+gradient de la fonction à optimiser. La direction de descented vérifie
+⟨∇f (x),d⟩<0, un choix classique pour cette méthode est donné par
+dk =−∇f (xk )
+Géométriquement, cela représente que−∇f (x) est une direction de descente en
+x (si ∇f (x)≠0Rn) qui est de plus forte pente.
+À l’itération k ≥0, la direction dk =−∇f (xk ) et on distinguera trois variantes :
+:::::Gradient::à ::pas:::fixe ::::::Gradient :à:::pas ::de :::::Cauchy ::::::Gradient:à:::pas::::::d’Armijo
+ρk =ρ une constante ρk = arg min
+ρ>0
+f (xk +ρdk) f(xk +ρkdk)≤ f(xk)+ρkω⟨∇f(xk),dk⟩,
+ω ∈]0,1[
+6/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode du gradient – Propriété
+Propriété
+Dans la méthode du gradient à pas de Cauchy, les directions de descentes
+successives sont orthogonales.
+Preuve :Soit k ≥0, ⟨dk,dk+1⟩= ⟨dk,−∇f (xk+1)⟩= ⟨dk,−∇f (xk +ρkdk)⟩. Comme
+ρk = arg min
+ρ>0
+f (xk +ρdk)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+=g (ρ)
+alors g
+′
+(ρk)=0, soit ⟨dk,∇f (xk +ρkdk)⟩=0 donc ⟨dk,dk+1⟩=0.
+Remarques :
+∎ La convergence de l’algorithme du gradient n’est pas toujours assurée
+donc une règle de base est de fixer un nombre maximum d’itérationskmax.
+∎ Méthodes conceptuellement très simples et peuvent être programmées
+directement, mais elles sont souvent lentes dans la pratique.
+∎ Elles convergent mais sous des conditions de convergence souvent
+complexes.
+7/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre
+Méthode du gradient conjugué
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode du gradient conjugué
+Descendre le long de la plus grande pente n’est pas toujours optimal.
+En considérant la direction de descente égale à l’opposé du gradient au
+point courant peut nous diriger en arrière et de prendre des directions déjà
+explorées et qui sont "mauvaises".
+Le principe de la méthode du gradient conjugué repose sur une
+minimisation de la fonctionf selon une première directiondk.
+9/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode du gradient conjugué
+dk+1⊥dk n’est pas suffisante pour déterminerdk+1 en fonction dedk en n
+dimensions puisqu’à 3 dimensions ou plus il y a une infinité de vecteurs
+perpendiculaires.
+Donc il nous faut une condition supplémentaire pour déterminerdk+1.
+La méthode du gradient conjugué est une méthode de directions
+conjuguées qui possède la propriété particulière de n’utiliser que le vecteur
+∇f (xk ) et le vecteurdk−1 pour générer le vecteurdk :
+dk =−∇f (xk )+βkdk−1. (1)
+10/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode du gradient conjugué – Choix du paramètreβk
+Les méthodes du gradient conjugué ne sont pas uniques, mais se déclinent sous
+plusieurs formes. En général, on distingue la formulation selon le choix du
+paramètreβk qui donne son nom à l’algorithme.
+k =0, d 0 =−∇f (x0) /leftr⫯g⊸tl⫯ne→x1 =x0+ρ0d0.
+k ≥1, dk =−∇f (xk )+βkdk−1 /leftr⫯g⊸tl⫯ne→xk+1 =xk +ρkdk.
+Choix deβk
+:::Cas ::::d’une ::::::fonction ::::::::quadratique :::Cas ::::d’une :::::fonction ::non::::::::quadratique
+f(x)= c+ bTx+ 1
+2xT Ax (On n’a pasde matrice A)
+∎ On chercheβk tel que⟨dk, Adk−1⟩=0 ∎ Flechter Reevs ∎ Polack Ribière
+⇓ ⇓ ⇓
+βk = ⟨Adk−1,∇f (xk)⟩
+⟨Adk−1,dk−1⟩ βk = ∥∇f(xk)∥2
+∥∇f (xk−1)∥2 βk = ⟨∇f(xk),∇f(xk)−∇ f(xk−1)⟩
+∥∇f(xk−1)∥2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .>
+Exprimerβk sans l’expression deA afin de généraliser dans le cas non quadratique.
+11/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre
+Méthode du gradient conjugué pour les fonctions quadratiques
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Gradient conjugué pour les fonctions quadratiques
+Soit f ∶x↦ c+ bTx+ 1
+2xT Ax une fonction quadratique surRn avec A une
+matrice symétrique et définie positive.
+Pour k ≥1, on suppose connue la direction dk−1. Si l’itéré courant
+xk =xk−1+ρk−1dk−1
+n’est pas le minimum recherché,on souhaite calculer l’itéré
+xk+1 =xk +ρkdk ;
+1 dk une direction du gradient conjugué : dk =−∇f (xk )+βkdk−1.
+βk est choisi tel quedk−1 et dk soient A-conjuguées : ⟨dk, Adk−1⟩=0.
+⟨dk, Adk−1⟩= ⟨−∇f(xk)+βkdk−1, Adk−1⟩ = ⟨−∇f(xk), Adk−1⟩+βk ⟨dk−1, Adk−1⟩ =0 et
+⟨dk−1, Adk−1⟩>0 pour dk−1 non nul carA est définie positive,on trouve facilement que
+βk = ⟨Adk−1,∇f (xk)⟩
+⟨Adk−1,dk−1⟩ (2)
+2 ρk est le pas optimal de Cauchy :ρk =− ⟨dk,∇f (xk )⟩
+dT
+k Adk
+.
+13/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+L’expression du pas optimal de Cauchy pour le GC – Fonction quadratique
+Le pas de Cauchy pour une fonction quadratique est donné par
+ρk = ∥∇f (xk )∥2
+dT
+k Adk
+. (3)
+14/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+L’exression deβk sans l’expression de la matrice de la fonction quadratique
+Afin d’adapter ces calculs et les généraliser aux fonctions non quadratiques de
+classe C1, on va exprimer le paramètreβk sans utiliser la matriceA.
+βk = ⟨Adk−1,∇f (xk )⟩
+⟨Adk−1,dk−1⟩ = ∥∇f (xk )∥2
+∥∇f (xk−1)∥2.
+La matrice A n’intervient pas dans le calcul du paramètreβk.,
+15/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Convergence de l’algorithme du GC pour les fonctions quadratiques
+Supposons que la matriceA est symétrique et définie positive. Soit
+(dk )k=0,...,n−1 une suite de vecteurs non nuls et A-conjugués deux à deux. Etant
+donné un point initialx0 ∈ Rn alors la suite(xk )k=0,...,n−1 générée par
+xk+1 =xk +ρkdk
+converge vers l’unique minimumx∗ de la fonction quadratique
+f ∶x↦ c+ bTx+ 1
+2xT Ax
+après n itérations.
+16/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre
+Méthode du gradient conjugué pour les fonctions non
+quadratiques
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Gradient conjugué pour les fonctions non quadratiques
+La notion de vecteurs conjugués n’a alors plus de sens.
+2 La méthode de Flechter-Reeves et de Polak-Ribière sont des extensions de
+la méthode du gradient conjugué à une fonctionf quelconque de classe
+C1.
+2 xk+1 =xk +ρkdk où
+k =0, d 0 =−∇f (x0) /leftr⫯g⊸tl⫯ne→x1 =x0+ρ0d0.
+k ≥1, dk =−∇f (xk )+βkdk−1 /leftr⫯g⊸tl⫯ne→xk+1 =xk +ρkdk.
+On distingue les variantes selon le choix du paramètreβk.
+Flechter Reevs Polack Ribière
+βk = ∥∇f (xk )∥2
+∥∇f (xk−1)∥2 βk = ⟨∇f (xk ),∇f (xk )−∇ f (xk−1)⟩
+∥∇f (xk−1)∥2
+2 Le calcul du pas optimal peut se faire par une méthode de recherche
+linéaire d’Armijo.
+On ne peut espérer une convergence en au plusn itérations, c’est pour cela, on
+relance l’algorithme au bout den itérations en réinitialisant les directions de
+descente.
+18/27
+<<<PAGE>>>
+Direction de descente du 2 nd ordre
+<<<PAGE>>>
+Cette classe de méthodes utilise legradient et la matricehessienne de la
+fonction critère. Elles supposent donc quef soit deux fois continûment
+différentiable.
+2 La méthode de Newton est une méthode de descente à pas fixe égal à 1,
+pour k ≥0 et xk un point courant, on cherche une direction d telle que
+xk +d soit un point critique def.
+2 L’algorithme de Newton consiste à chercher une racine de la fonction∇f
+en identifiant un vecteur d∈ Rn tel que∇f (xk +d)=0Rn. Comme
+∇f (xk +d)=∇f (xk )+Hf (xk )d+ o (∥d∥)
+alors l’approximation de∇f (xk+d) nous permet de choisir le vecteur d tel
+que
+∇f (xk )+Hf (xk )d=0Rn.
+Ainsi d est choisi tel que Hf (xk )d=−∇f (xk ).
+Si la matrice hessienne Hf (xk) au point courant xk est définie positive (et donc inversible) alors
+d=−Hf (xk)−1∇f (xk).
+<<<PAGE>>>
+Direction de descente du 2 nd ordre
+Méthodes de Newton
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode de descente de Newton
+Soit f une fonction deux fois continûment différentiable. Si la matrice hessienne
+Hf (xk ) de f en xk est définie positive alors
+dk =−Hf (xk )−1∇f (xk )
+est une direction de descente.
+22/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Algorithme de descente de Newton
+Algorithme de descente de Newton
+1 Initialisation: choix d’un point initial x 0.
+2 Pour k ≥1 croissant
+2.1 calculer d k =−∇2f (xk )−1∇f (xk )
+2.2 tester la convergence par
+⟨∇f (xk ),∇2f (xk )−1∇f (xk )⟩<ϵ
+2.3 poser x k+1 = xk + dk
+∎ Inconvénients majeurs :
+Sensibilité au choix du point de départ : la convergence est locale.
+Choisir le point de départx0 "assez près" dex∗. Puisqu’on ne connait pas x∗, en
+pratique on essaie de s’approcher de x∗ par une méthode de type gradient par
+exemple, puis on applique la méthode de Newton.
+∎ Avantages :
+Grande rapidité.
+La convergence est quadratique, c’est à dire que l’erreur
+ek = ∥xk+1−xk∥
+est élevée au carré à chaque itération. Concrètement, si elle vaut 10−2 à l’étape k
+elle vaudra 10−4 à l’étape k+1 et 10−8 à l’étape k+2.
+23/27
+<<<PAGE>>>
+Direction de descente du 2 nd ordre
+Méthodes quasi-Newton
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthodes quasi-Newton
+Les méthodes du Quasi Newton consistent à imiter l’algorithme de Newton,
+mais sans calculer le Hessien def ni son inverse. Au lieu de calculer
+xk+1 =xk −Hf (xk )−1∇f (xk ), on calcule
+xk+1 =xk −ρkSk∇f (xk )
+Sk est une approximation symétrique de Hf (xk )−1
+ρk un paramètre positif fourni par une recherche linéaire le long de la
+direction
+dk =−Sk∇f (xk ).
+25/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Méthode quasi-Newton BFGS
+Une variante des méthodes quasi-Newton est La méthode BFGS (pour
+Broyden-Fletcher-Goldfarb-Shanno).
+2 Cette méthode propose un calcul de l’approximation Sk+1 de Hf (xk+1)−1
+en fonction de Sk grâce à des formules algébriques et itératives :
+Sk+1 =Sk + (1+ yt
+kSkyk
+δt
+kyk
+)δkδt
+k
+δt
+kyk
+− δkyt
+kSk +Skykδt
+k
+δt
+kyk
+2 où δk =xk+1−xk, yk =∇f (xk+1)−∇ f (xk ).
+2 L’initialisation se fait par une matrice S0, symétrique définie positive.
+Les méthodes dites quasi-Newton gardent la rapidité de la méthode de Newton,
+evitent le calcul (coûteux) de la matrice Hf (Xk )−1 à chaque itération et sont
+plus robustes par rapport au point de départ.
+26/27
+<<<PAGE>>>
+Direction de descente du 1 er ordre Méthodes de Newton Méthodes quasi-Newton
+Algorithme quasi-Newton BFGS
+Algorithme de B.F.G.C
+On choisit une matrice S0, symétrique définie positive, et
+un point x 0
+à l’étape k, la recherche linéaire se fait dans la direction
+dk =−Sk∇f (xk ) et produit βk . D’où
+xk+1 =xk +βkdk, δ k =xk+1−xk =βkdk,
+avec yk =∇f (xk+1)−∇ f (xk ), on remet à jour la matrice Sk par
+Sk+1 =Sk + (1+ yt
+kSkyk
+δt
+kyk
+)δkδt
+k
+δt
+kyk
+− δkyt
+kSk +Skykδt
+k
+δt
+kyk
+27/27

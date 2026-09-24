@@ -1,0 +1,47 @@
+/******************************************************************************
+* FILE: omp_threadprivate.c
+* DESCRIPTION:
+*   OpenMP Example - The THREADPRIVATE directive is used to make global 
+*   file scope variables (C/C++)
+******************************************************************************/
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int  a, b,  tid;
+float x;
+ 
+#pragma omp threadprivate(a, x)
+ 
+void main ()  {
+ 
+/* Explicitly turn off dynamic threads */
+  omp_set_dynamic(0);
+ 
+  printf("1st Parallel Region:\n");
+#pragma omp parallel private(b,tid)
+  {
+  tid = omp_get_thread_num();
+  a = tid;
+  b = tid;
+  x = 1.1 * tid + 1.0;
+  printf("Thread %d:   a,b,x= %d %d %f\n",tid,a,b,x);
+  }  /* end of parallel section */
+ 
+  tid = omp_get_thread_num();
+  printf("************************************\n");
+  printf("Master thread %d doing serial work here \n", tid);
+  printf("************************************\n");
+ 
+  printf("2nd Parallel Region:\n");
+#pragma omp parallel private(tid)
+  {
+  tid = omp_get_thread_num();
+  printf("Thread %d:   a,b,x= %d %d %f\n",tid,a,b,x);
+  }  /* end of parallel section */
+
+}
+
+
+
+

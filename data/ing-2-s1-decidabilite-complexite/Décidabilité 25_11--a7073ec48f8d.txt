@@ -1,0 +1,54 @@
+une machine de Turing est définie par un septuplet
+Q,  𝛤,  Σ,  q ,  B,  F,  𝛿0
+Q  un  ensemble  fini  d 'é tats
+𝛤 alphabet  de  ruban
+Σ alphabet  d ' entr é e
+q ∈ Q  est  l 'é tat  initial0
+B  ∈  𝛤 - Σ est  le  symbole  blanc  ' ici  ▢'( )
+F  ⊆  Q  est  l ' ensemble  des  é tats  acceptants
+𝛿 Q  * 𝛤 ⟹  L, S, R * Q  avec  L, S, R  ≡ Left,  Straight,  Right{ } { } { }
+ 
+NB : Dans l'article de Turing, elle est appelée a-machine pour automatic machine
+_______
+Il faut que  ait au moins 2 symboles/élémentsΣ
+_______
+Elle  dispose  d ' une  bande  bi - infinie  sur  laquelle  il  est  possible  de  lire  et  d 'é crire.  
+Elle  dispose  d ' une  t ê te  de  lecture  / é criture
+Elle  recoit  en  entr é e  un  mot  s s ... s  o ù s ∈ Σ0 1 n i
+Au  d é part  elle  est  dans  l 'é tat  q0
+Elle  commence  la  lecture  par  le  symbole  le  plus  à gauche  de  la  cha î ne
+A  chaque  fois  q ' une  symbole  s  est  lu
+elle  trouve  la  transition  q, s ⟹ s '. dep. q '  o ù q  est  l 'é tat  en  cours( ) ( )
+elle  s 'é crit  s '
+elle  effectue  le  d é placement  dep
+elle  passe  dans  l 'é tat  q '
+ 
+ 
+ 
+<<<PAGE>>>
+ 
+ 
+1  0   1   1  0
+917 923
+0;1;R
+942 91327
+◻ ; ◻ ; L
+q ⟹ 1, q0 17, L
+a b |n ⩾ 0 =n n
+= 𝜖, ab, aabb, aaabbb,...{ }
+ 
+q  succ è s  
+q  é chec
+q0
+1;0;R
+1;0;R
+HALT
+◻ ; ◻ ; S
+Q  ×  𝛤 ⟹  𝛤 × dep  × Q
+Q  ×  𝛤 ⟹  Q
+q0 HALT
+◻ ; ◻ ; S
+b
+q0 HALT
+b
+a

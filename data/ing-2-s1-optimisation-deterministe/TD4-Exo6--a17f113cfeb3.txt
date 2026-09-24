@@ -1,0 +1,63 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy.linalg import norm
+from numpy.linalg import inv
+
+
+#Algorithme de Newton
+f=lambda x:x[0]**4+4*x[1]**4+4*x[0]*x[1]
+gradf=lambda x:np.array([4*x[0]**3+4*x[1],16*x[1]**3+4*x[0]])
+Hesf=lambda x:np.array([[12*x[0]**2,4],[4,48*x[1]**2]])
+x0 = np.array([1, 1])
+
+omega = 0.0001
+tau = 0.7
+eps=0.0001
+iterMax=100
+print("Méthode de Newton")
+k=0
+test=True
+while test:
+    d0=-np.dot(inv(Hesf(x0)),gradf(x0))
+    x1=x0+d0
+    test=norm(x1-x0)>eps*norm(x1)
+    x0=x1
+    k=k+1
+    
+print('x=',x1)
+print('k=',k)
+
+def armijo(x,d,f):
+    rho = 1
+    test = f(x + rho * d) - f(x) + omega * rho * np.dot(gradf(x).T,d)>0
+    while test: 
+        rho = tau * rho
+        test = f(x + rho * d) - f(x) + omega * rho *np.dot(gradf(x).T,d)>0
+    return rho
+
+#Algorithme de BFGS (quasi Newton)
+print("Méthode de BFGS (quasi-Newton)")
+k=0
+test1=True
+def matS(S,y,delta):
+    parent=1+(1/np.dot(delta.T,y))*np.dot(y.T,np.dot(S,y))
+    rapp1=(1/np.dot(delta.T,y))*np.dot(delta,delta.T)
+    rapp2=(1/np.dot(delta.T,y))*np.dot(delta,np.dot(y.T,S))+np.dot(S,np.dot(y,delta.T))
+    S1=S+(parent*rapp1)-rapp2
+    return S1
+
+S0=np.eye(2)
+while test1 and k<iterMax:
+    d0=np.dot(S0,gradf(x0))
+    rho=armijo(x0,d0,f)
+    x1=x0+rho*d0
+    test1=norm(x1-x0)>eps*norm(x1)
+    delta=x1-x0
+    y=gradf(x1)-gradf(x0)
+    S1=matS(S0,y,delta)
+    S0=S1   
+    x0=x1
+    k=k+1
+      
+print('x=',x1)
+print('k=',k)

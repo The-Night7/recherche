@@ -1,0 +1,91 @@
+## 2023-2024   ING1 GM
+# ANALYSE NUMERIQUE
+# TP noté
+# NOM Prenom :
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+name="chien.png"
+# choix possibles :
+# 1ers tests (60%) : chevaux   chien
+# 2emes tests (85%) : crapule1   crapule2  crapule3
+# 3emes tests (95%) : inconnuA inconnuB inconnuC
+
+## RECUPERATION IMAGE CORROMPUE
+# récuperation/lecture de l'image corrompue
+# ne pas modifier
+image_defect= plt.imread("corrompue-"+name, True)
+# visualisation de cette image
+plt.figure(0)
+plt.imshow(image_defect,cmap="gray")
+# plt.show()
+
+
+## MASQUE : matrice/image contenant uniquement les pixels perdus.
+# Construction du masque associé (propre) a l'image etudiee :
+# tous les pixels noirs (=0) sont des pixels perdus
+# tous les autres pixels (différent de 0) sont des pixels sains (non corrumpus)
+# ne pas modifier
+mask=np.ones_like(image_defect)  # tous les pixels sont sains
+mask[image_defect==0]=0          # on positionne sur le masque les pixels perdus (=0)
+
+
+
+## CONSTRUCTION DE LA MATRICE
+def matrice_A(b,beta,beta_prec,Mask,omega):
+    # b : second membre
+    # beta :
+    # beta_prec : beta a l'itere precedent
+    # Mask : masque de l'image
+    # omega : parametre de relaxation
+
+    # a ecrire
+
+
+## CONSTRUCTION DE L'IMAGE
+def getImage(b,beta,Mask):
+    # a ecrire
+    return Im
+
+
+## CRITERE de convergence
+# on regarde la distance entre 2 solutions successives
+# ne pas modifier
+def getCritere(beta_prec,beta):
+    return np.linalg.norm(beta_prec-beta)
+
+
+
+## MAIN
+# ne pas modifier
+b=image_defect
+beta=b.copy()
+eps=1.e-3
+iter=0
+omega=1.25   # parametre de relaxation
+N=100 # nb d'iteration max (en cas de non-convergence)
+
+
+while (True):
+    beta_prec=beta.copy()
+    matrice_A(b,beta,beta_prec,mask,omega)
+    critere=getCritere(beta_prec,beta)
+    iter+=1
+    if (iter==1): critere0=critere
+    print(critere,iter)
+    if(critere/critere0<eps and iter<N):
+        print(critere,iter)
+        break
+
+# reconstruction de l'image corrompue
+Im=getImage(b,beta,mask)
+# visualisation
+plt.figure(1)
+plt.imshow(Im,cmap="gray")
+plt.show()
+# creation du fichier de l'image reconstruite
+imwrite("reconst-"+name,np.round(Im *255).astype(np.uint8))
+
+

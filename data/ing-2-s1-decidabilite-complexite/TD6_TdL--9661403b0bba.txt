@@ -1,0 +1,73 @@
+CY TECH : Théorie des langages 2024-2025
+TD6 - Machines de Turing et langages contextuels
+Objectifs
+• Machine de Turing et langages contextuels.
+• Aspect universel de la machine de Turing : résolution de problèmes quelconques.
+Rappels et notations
+Commepourlesautrestravauxdirigés,vousutiliserezl’utilitaireJFLAP(http://jflap.org/jflaptmp).
+Remarques sur JFLAP :
+• si on considère la machine de Turing comme un transformateur, la chaîne de sortie est lue à
+partir du curseur. Il faut donc revenir au début du mot avant d’arrêter la machine
+• dans une machine de Turing :
+– le symbole∼ désigne n’importe quel caractère. Par exemple, une transition∼;∼, R effectue
+un pas vers la droite indépendemment du caractère lu et sans modifier celui-ci
+ATTENTION! le carré blanc,□, qui dénote une case vide, fait partie des caractères
+– dans une transition!x désigne n’importe quel symbole saufx
+– dans une transition pour désigner tout sauf le symbole carré blanc, on écrit!
+– La transition "s1, ... ,sn}w ;w,R" signifie que si on rencontre un des symbolessi il ne sera
+pas changé.w désigne la dernière variable lue et peut être utilisé pour d’autres transitions
+• Les noms par défaut des états q0, ..., qi peuvent être changés (clic droit sur l’état). On peut
+également ajouter des étiquettes en dessous des états (clic droit sur l’état).
+Nous pouvons créer des machines de Turing en JFLAP . Pour cela, on utilise le boutonTuring
+Machine du menu initial. Ensuite, il suffit de créer l’automate.
+La machine de Turing peut être utilisée comme un transformateur ou comme un accepteur.
+• Pour le premier exercice, elle est utilisée comme transformateur. Pour la tester on peut lui
+soumettre un ensemble de chaînes d’entrées dans l’itemMultiple Run (Transducer) du menu
+Input.
+• Dans le second, la machine de Turing est utilisée comme un accepteur afin de reconnaître des
+langages. Pour la tester on peut lui soumettre un ensemble de chaînes d’entrées dans l’item
+Multiple Run du menu Input.
+1
+<<<PAGE>>>
+Exercice 1. Machine de Turing et universalité
+Dans cet exercice, on utilise la machine de Turing comme un transformateur. Donc, à la fin de la
+modification de la chaîne, on doit placer le curseur au début du mot (JFLAP renvoie la chaîne à partir
+du curseur).
+Question 1. Ecrire une machine de Turing permettant de remplacer tous les 0 d’un nombre binaire
+par des 1.
+Question 2. Ecrire une machine de Turing permettant de calculer X + 1 (X est un mot binaire).
+Exercice 2. Machine de Turing et reconnaissance de mots d’un langage
+Dans cet exercice, on utilise la machine de Turing comme machine à reconnaître des langages.
+Question 1. Soit l’alphabet A ={a, b}.
+Définir une machine de Turing permettant de reconnaître le langageL ={anbn/n∈ N}.
+On rappelle que ce langage est de type 2 et qu’il peut donc être aussi reconnu par un
+automate à pile.
+Question 2. Soit l’alphabet A ={a, b, c}. Définir une machine de Turing permettant de reconnaître
+le langage L ={anbncn/n∈ N}.
+Note : Cet exemple est l’un des plus "simples" qui soit un "vrai" langage de type 1 (i.e : non
+reconnaissable par un automate à pile).
+Pour rappel, une grammaire possible de ce langage (contextuelle) estG =< T, N, S, P > avec :
+T ={a, b, c}
+N ={S, T, Z, C} les états de l’automate
+S = S
+P =
+
+
+
+S→ T Z // Z est utilisé pour repérer la fin du mot (puis à droite deZ on n’aura que desc)
+T→ a T b C | ε // à chaque fois que l’on ajoute una, on ajoute unb et un C
+(Problème : lesb et les C seront alternés)
+C b→ b C // On désentrelace lesb et les C en faisant passer lesC à droite desb
+C z → Z c // si on a unC à la fin du mot, on le remplace par unc et on décale
+le caractère de fin de mot :Z
+b Z→ b // si le caractère de fin de mot atteint lesb, on n’a plus deC à transformer,
+on supprime doncZ
+
+
+
+Question 3. Définir une machine de Turing permettant de reconnaître le langageL ={0n/n = 2 p}
+des mots composés d’un nombre de 0 qui soit une puissance de 2.
+Question 4. Dans cette question, on utilise l’alphabet binaire,A ={0, 1}.
+Définir une machine de Turing permettant de reconnaître les palindromes, c’est à dire les mots qui
+se lisent identiquement dans les deux sens. Exemple : 0010100.
+2

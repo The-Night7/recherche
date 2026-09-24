@@ -1,0 +1,250 @@
+from matplotlib.pyplot import *
+from numpy import *
+from time import *
+
+#
+print("Exercice 1.","\n")
+#
+
+# Question 1.a
+
+def Base(j, X, x):
+    l = 1
+    for k in range(0, len(X)):
+        if k != j:
+            l = l * (x - X[k])/(X[j] - X[k])
+    return l
+
+# Test de la fonction Base avec des fonctions affines
+X = [1, 2]
+A = linspace(0.1,5,100)
+B = []
+C = []
+for x in A:
+    B.append(Base(0, X, x))
+    C.append(Base(1, X, x))
+plot(A, B)
+plot(A, C)
+show()
+
+# Question 1.b
+
+def Lagrange1(f, X, x):
+    P = 0
+    for k in range(0, len(X)):
+        P = P + f(X[k]) * Base(k, X, x)
+    return P
+# Test de la fonction Lagrange1 avec une fonction affine
+def g(x):
+    return x
+G = g(A)
+Q = []
+for x in A:
+    Q.append(Lagrange1(g, X, x))
+figure(2)
+plot(A, G)
+plot(A, Q)
+show()
+
+#
+print("Question 2.a :","\n")
+#
+
+def Repartie(N):
+    return linspace(-1, 1, N)
+# Test de la fonction Repartie pour N = 5
+print("Repartie(5) =",Repartie(5),"\n")
+
+# Question 2.b
+
+def f(x):
+    return 1/(1 + 5*x**2)
+E = linspace(-1, 1, 1000)
+F = f(E)
+P1 = []
+for x in E:
+    P1.append(Lagrange1(f, Repartie(11), x))
+figure(3)
+plot(E, F)
+plot(E, P1)
+show()
+
+#
+print("Question 2.c :","\n")
+#
+
+def Tchebychev(N):
+    T = []
+    for i in range(0, N + 1):
+        T.append(cos(((2 * i + 1) *pi)/(2 * N + 2)))
+    return T
+# Test de la fonction Tchebychev pour N = 2
+print("Tchebychev(2) =",Tchebychev(2),"\n")
+
+# Question 2.d
+
+P2 = []
+for y in E:
+    P2.append(Lagrange1(f, Tchebychev(11), y))
+figure(3)
+plot(E, P2)
+show()
+
+# # Question 3.a
+
+def g(x):
+    return abs(x)
+G = []
+Q1 = []
+Q2 = []
+for x in E:
+    G.append(g(x))
+    Q1.append(Lagrange1(g, Repartie(11), x))
+    Q2.append(Lagrange1(g, Tchebychev(11), x))
+figure(4)
+plot(E, G)
+plot(E, Q1)
+plot(E, Q2)
+show()
+
+# # Question 3.b
+
+def h(x):
+    if x > 0:
+        return 1
+    else:
+        if x == 0:
+            return 0.5
+        else:
+            return 0
+H = []
+R1 = []
+R2 = []
+for x in E:
+    H.append(h(x))
+    R1.append(Lagrange1(h, Repartie(11), x))
+    R2.append(Lagrange1(h, Tchebychev(100), x))
+figure(5)
+plot(E, H)
+plot(E, R1)
+plot(E, R2)
+show() 
+
+#
+print("Exercice 2.","\n")
+#
+
+#
+print("Question 1.a :","\n")
+#
+
+def DifferenceDivisee(f, X):
+    A = []
+    for x in X:
+        A.append(f(x))
+    B = []
+    B.append(A)
+    for i in range(1, len(X)):
+        A = []
+        for j in range(0, len(X) - i):
+            A.append((B[i-1][j + 1] - B[i - 1][j])/(X[j + i] - X[j]))
+        B.append(A)
+#        print(B)
+    return(B)
+
+
+# Test de la fonction DifferenceDivisee à l'aide de la fonction identité I
+def I(x):
+    return x
+Z = [1, 2, 3, 4]
+print("DifferenceDivisee(I,Z) =",DifferenceDivisee(I, Z),"\n")
+
+#
+print("Question 1.b :","\n")
+#
+
+def Horner(f, X):
+    B = DifferenceDivisee(f, X)
+    #print('ttt')
+    #print(B)
+    #print(B[0][2])
+    Q = [B[len(X) - 1][0]]
+    #print(Q[0])
+    #print(Q)
+    for j in range(1,len(X)):
+        Q = [0] + Q
+        #print('rr')
+        #print(Q)
+        #print(len(Q))
+        for k in range(1, len(Q)):
+            Q[k - 1] = Q[k - 1] - X[len(X)-j-1] * Q[k]
+            #print('test')
+            #print(Q[0])
+            #print(Q[1])
+        Q[0] = Q[0] + B[len(X) - j - 1][0]
+        #print('tt')
+        #print(B[len(X)-j-1][0])
+    print(Q)    
+    return Q
+# Test de la fonction HornerifferenceDivisee à l'aide de la fonction identité I
+print("Horner(I,Z) =",Horner(I, Z),"\n")
+
+# Question 1.c
+
+def Lagrange2(f, X, x):
+    B = DifferenceDivisee(f, X)
+    Q = 0
+    for j in range(0, len(X)):
+        Q = B[len(X) - j - 1][0] + (x - X[len(X) - j - 1]) * Q 
+    return Q
+# Test de la fonction Lagrange2 avec un résultat affine
+A = linspace(0.2, 5, 100)
+L = []
+for x in A:
+    L.append(Lagrange2(I, X, x))
+figure(6)
+plot(A, L)
+show()
+
+#
+print("Question 2.a :","\n")
+#
+
+def u(y):
+    return 1/y
+Y = [0.25, 0.5, 2, 4]
+print("Horner(u,Y) =",Horner(u,Y))
+
+# Question 2.b
+
+U = u(A)
+L1 = []
+L2 = []
+for y in A:
+    L1.append(Lagrange1(u, Y, y))
+    L2.append(Lagrange2(u, Y, y))
+figure(7)
+plot(A, U)
+plot(A, L1)
+plot(A, L2)
+show()
+
+# Question 3
+
+T1 = []
+for i in range(1,100):
+    X = linspace(0.1,5,i)
+    t = time()
+    Lagrange1(u, X, 1)
+    T1.append(time()-t)
+T2 = []
+for i in range(1,100):
+    X = linspace(0.1,5,i)
+    t = time()
+    Lagrange2(u, X, 1)
+    T2.append(time()-t)
+figure(8)
+T = list(range(1, 100))
+plot(T, T1)
+plot(T, T2)
+show()

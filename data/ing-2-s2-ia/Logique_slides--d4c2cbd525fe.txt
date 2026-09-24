@@ -1,0 +1,345 @@
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ ecibabilit´ e :
+El´ ements de base
+Houcine Senoussi
+November 7, 2018
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+1 Introduction
+2 Algorithmes et complexit´ e
+3 Rappels sur la th´ eorie des graphes
+4 El´ ements de logique
+5 El´ ements de la th´ eorie des langages
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Objectif
+Question centrale :
+Etant donn´ e un probl` eme P,
+1 peut-on le r´ esoudre sur ordinateur ?
+2 et si oui, avec quel coˆ ut ?
+R´ esolution sur ordinateur : existence d’un algorithme.
+D´ ecidabilit´ e (probl` eme d´ ecidable : r´ esoluble sur ordinateur).
+Coˆ ut de la r´ esolution : en temps et en espace.
+Complexit´ e (temporelle et spatiale).
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Objectif-2
+Objectif du cours :
+Introduire les concepts, les m´ ethodes et les outils permettant
+pour un probl` eme donn´ eP de r´ epondre ` a la (double) question
+centrale donn´ ee ci-dessus.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Rappels et D´ eﬁnitions :
+Un algorithme est une suite d’instructions servant ` a r´ esoudre
+un probl` eme.
+La complexit´ e temporelle (resp. spatiale) caract´ erise le coˆ ut
+en temps (resp. en espace) d’un algorithme.
+La complexit´ e (temporelle) d’un algorithme est le nombre
+d’op´ erations ´ el´ ementairesqui le composent.
+Ce nombre d’op´ erations est calcul´ e en fonction de lataille du
+probl` emenot´ een.
+Taille d’un probl` eme : taille d’uneinstance du probl` eme.
+Exemple : dans le cas du tri la taille du probl` eme = nombre
+d’´ el´ ements du tableau ` a trier.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Rappels et D´ eﬁnitions-2 :
+On donne la complexit´ e sous la formeO(f (n))
+Signiﬁcation de cette notation : La nombre d’op´ erations a
+comme terme de plus haut degr´ ef (n).
+Exemples : O(n2),O(n.logn),O(2n).
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Complexit´ e des algorithmes
+f (n) =O(g(n)) si :
+∃n0∈ N tels que pour n≥ n0 f (n)≤ c.g(n).
+Autrement dit, f augmente au plus aussi vite que g.
+f (n) = Ω(g(n)) si g(n) =O(f (n))
+f augmente au moins aussi vite que g.
+f (n) = Θ(g(n)) si f (n) =O(g(n)) et f (n) = Ω(g(n))
+f et g augmentent aussi vite l’une que l’autre.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Complexit´ e des algorithmes-Exemple 1
+Donn´ e : un tableau d’entiers tab de taille N.
+R´ esultat : le mˆ eme tableau tri´ e.
+Pour taille=N, ..., 2 Faire
+Pour i=1, ..., taille-1 Faire
+Si (tab[i]>tab[i+1]) Alors
+tmp = tab[i]
+tab[i] = tab[i+1]
+tab[i+1] = tmp
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Complexit´ e des algorithmes-Exemple 2
+Donn´ e : un tableau d’entiers tab de taille N et un entier e
+R´ esultat : un bool´ een trouv´ e qui vaut VRAI si l’´ el´ ement
+appartient au tableau et FAUX sinon
+Inf = 1
+Sup = N
+trouv´ e = Faux
+Tant que ((inf < sup) ET (trouv´ e = Faux))
+Milieu = (inf + sup)/2
+Si (e = tab[milieu]) Alors Trouv´ e = Vrai
+Sinon
+Si (e < tab[milieu]) Alors Sup = milieu+1
+Sinon inf = milieu - 1
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions :
+D´ eﬁnition :
+Un graphe G(S,A) est constitu´ e de deux ensembles :
+l’ensemble S des sommets S ={s1, ..., sn}
+l’ensemble A des arcs A ={a1, ..., am}. Un arc ai est un
+couple de sommets ( si1,si2).
+La d´ eﬁnition ci-dessus est celle d’un graphe orient´ e.
+Dans un graphe non-orient´ e lescouples de sommets ( arcs)
+sont remplac´ es par despaires de sommets ( arˆ etes).
+Un graphe (orient´ e ou non orient´ e) peut ˆ etre valu´ e : ` a chaque
+arc (arˆ ete) est attribu´ e une valeur (une distance, un coˆ ut, ...).
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions-2 :
+Chemin et cycle.
+Chemin (cycle) hamiltonien.
+Chemin (cycle) eut´ erien.
+Sous-graphe et graphe partiel.
+Graphe complet et clique.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions
+A la base de la logique propositionnelle il y a :
+Des propositions : symbˆ oles ayant une valeur de v´ erit´ e (Vrai
+ou Faux).
+Des connecteurs logiques :¬,∨,∧,=⇒,⇐⇒.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions-2
+Formule bien form´ ee :
+Une proposition est une formule bien form´ ee.
+Si A est une fbf, alors ¬A est une fbf.
+Si A et B sont des fbf, alors A∨ B est une fbf.
+Si A et B sont des fbf, alors A∧ B est une fbf.
+Si A et B sont des fbf, alors A =⇒ B est une fbf.
+Si A et B sont des fbf, alors A⇐⇒ B est une fbf.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions-3
+Interpr´ etation :
+Etant donn´ ee une fbfA. Soit ∆ A l’ensemble des propositions
+intervenant dans A. On appelle une interpr´ etationde A une
+fonction de ∆ A dans{VRAI,FAUX}. Autrement dit une
+interpr´ etaion deA est une valuation des propositions intervenant
+dans A.
+satisﬁabilit´ e :
+Etant donn´ ee une fbfA et une interpr´ etationI de A. On dit que A
+est satisﬁable par I si A a la valeur VRAI lorque les propositions
+intervenant dans A prennent les valeurs que leur associent I .
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions-4
+Mod` ele :
+Etant donn´ ee une fbfA et une interpr´ etationI de A. I est un
+mod` elede A si A est satisﬁable par I .
+Formule insatisﬁable :
+Etant donn´ ee une fbfA. A est dite insatisﬁable si elle n’a pas de
+mod` ele.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions-5
+Litt´ eral :
+Etant donn´ ee une propositionp, un litt´ eralrelatif ` a cette
+proposition est soit p soit¬p.
+Clause :
+Une clause C est une disjonction de litt´ erauxl1∨ l2∨...∨ ln.
+Forme conjonctive normale :
+Une forme conjonctive normale (fcn) est une conjonction de
+clauses C1∧ C2∧...∧ Cn.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Logique propositionnelle-Exemples
+1 Mettre sous forme conjonctive normale la formule :
+y⇐⇒(x1∨ x2).
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+D´ eﬁnitions
+Alphabet :
+Un alphabet Σ est un ensemble ﬁni de symbˆ oles.
+Mot :
+Un mot ω d´ eﬁni sur un alphabet Σ est une suite de symboles s1,
+s1, ..., sn appartenant ` a l’alphabet Σ.
+Langage :
+Un langage L d´ eﬁni sur un alphabet Σ est un ensemble (ﬁni ou
+inﬁni) de mots d´ eﬁnis surΣ.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Machine de Turing-D´ eﬁnition
+Machine de Turing :
+Une machine de Turing est d´ eﬁnie par un quadruplet (K , Σ, δ, q0)
+o` u
+Σ est un alphabet,
+K est un ensemble ﬁni d’ ´ etats,
+q0∈ K est l’´ etatinitial,
+δ est une fonction, appel´ ee la fonction de transition, de Σ ×
+K vers Σ× K×{→ ,←,−}.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Machine de Turing-Fonctionnement
+Elle dispose d’une bande inﬁnie sur laquelle il est possible de
+lire et d’´ ecrire.
+Elle dispose d’une tˆ ete de lecture/´ ecriture.
+Elle re¸ coit en entr´ ee une cha ˆ ıne de symbˆ olessos1...sn o` usi∈
+Σ.
+Au d´ epart elle est dans l’´ etatqo.
+Elle commence la lecture par le symbˆ ole le plus ` a gauche de la
+cha ˆ ıne.
+A chaque fois qu’un symbˆ oles est lu :
+elle trouve la transition ( s, q)→ (s ′, q′, dep),o` uq est l’´ etat
+en cours.
+elle ´ ecrits ′.
+elle eﬀectue le d´ eplacementdep.
+elle passe dans l’´ etatq′.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Machine de Turing-Exemple
+Etude de l’exemple donn´ e dans le polycopi´ e.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Machine de Turing non-d´ eterministe
+D´ eﬁnition :
+Une machine de Turing non-d´ eterministe est d´ eﬁnie par un
+quadruplet ( K , Σ, δ, q0) o` u
+Σ, K et q0 sont les mˆ emes que pour une MdT d´ eterministe.
+δ est une ’fonction’ de transition qui ` a chaque couple de Σ ×
+K associe un ou plusieurs triplets de Σ× K×{→ ,←,−}.
+Autrement dit le caract` ere non d´ eterministe se traduit par :
+A partir d’une situation donn´ ee (´ etat + symbˆ ole lu) la MDT a
+’le choix’ entre plusieurs transitions.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base
+<<<PAGE>>>
+Introduction
+Algorithmes et complexit´ e
+Rappels sur la th´ eorie des graphes
+El´ ements de logique
+El´ ements de la th´ eorie des langages
+Machine de Turing ` a plusieurs bandes
+D´ eﬁnition :
+Une machine de Turing ` ak bandes est d´ eﬁnie par un quadruplet
+(K , Σ, δ, q0) o` u
+Σ, K et q0 sont les mˆ emes que pour une MdT d´ eterministe.
+δ est une fonction de Σ k× K vers Σ k× K×{→ ,←,−}k.
+Autrement dit : ` a chaque ´ etape la machine litk symbˆ oles (1
+symbˆ ole par bande) et en fonction de l’´ etat et desk symbˆ oles
+lus, elle ´ ecritk symbˆ oles, eﬀectuek d´ eplacements et prend un
+nouvel ´ etat.
+Houcine Senoussi D´ ecibabilit´ e : El´ ements de base

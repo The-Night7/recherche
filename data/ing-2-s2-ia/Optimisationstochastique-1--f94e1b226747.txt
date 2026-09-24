@@ -1,0 +1,267 @@
+Optimisation 
+stochastique - 1
+Le recuit simulé
+
+<<<PAGE>>>
+Optimisation stochastique
+2
+<<<PAGE>>>
+3
+<<<PAGE>>>
+Optimisation
+4
+
+<<<PAGE>>>
+Optimisation
+5
+
+<<<PAGE>>>
+La malédiction de la dimension
+6
+http ://cleverowl.uk/2016/02/06/curse-of-dimensionality-explained/
+<<<PAGE>>>
+7
+[Métaheuristiques pour l’optimisation difficile, P. Siarry et al.]
+<<<PAGE>>>
+Typologie de problèmes
+8
+● Optimisation difficile;
+● Problème de minimisation / maximisation;
+● Problèmes mono-objectif, multi-objectifs, “many”-objectifs;
+● Problèmes à variables discrètes / continues / mixtes;
+● Problèmes sous contraintes;
+● Problèmes à grande dimension;
+● Problèmes dynamiques.
+<<<PAGE>>>
+Typologie de problèmes à variables discrètes
+9
+● Voyageur de commerce
+● Tournée de véhicules
+● Coloration de graphe
+● Sac à dos
+● Planification...
+gurobi.com
+3.dp.blogspot.com
+mathworks.com
+
+<<<PAGE>>>
+Typologie de problèmes à variables continues
+● Fonction analytique (benchmarks) ;
+● Expression non analytique (code de calcul, problème inverse) ;
+● Autres problèmes variés (géométrie, chimie, physique)...
+10
+urban&you
+http://www.sfu.ca
+<<<PAGE>>>
+Métaheuristiques
+Ce sont des méthodes :
+● globales;
+● stochastiques;
+● génériques même si dépendantes du contexte continu/discret;
+● qui ne garantissent pas l’optimalité;
+● basées sur des analogies avec la biologie, la physique, l’éthologie...
+11
+<<<PAGE>>>
+Cherchez l’intrus...
+12
+coucou !
+
+<<<PAGE>>>
+Cherchez l’intrus...
+13
+coucou !
+
+<<<PAGE>>>
+Éléments constitutifs et stratégies
+14
+Elles sont généralement composées de :
+● Une ou plusieurs (population) solutions initiales;
+● Une stratégie de génération de nouvelle solution basée sur l’aléatoire;
+● Un critère d’acceptation d’une nouvelle solution;
+● Des coefficients de contrôle de comportement de l’algorithme;
+● Le partage d’information, l’utilisation d’une mémoire de solutions 
+explorées;
+● Un critère de convergence.
+
+<<<PAGE>>>
+Initialisation
+● Aléatoirement
+● Manière intelligente
+○ sampling
+○ hypercubes latins
+○ séquence de Halton
+○ ...
+15
+?
+<<<PAGE>>>
+Recherche
+16
+Exploration
+VS
+Exploitation
+lycee-delacroix-maisons-alfort.fr
+www.ethos3.com
+<<<PAGE>>>
+Voisinage
+● Définition : 
+○ Cas des variables discrètes : décalage de composantes de la données,
+○ Cas des variables continues : hyper(sphère|cube) centré autour de la donnée.
+● Stratégies  
+○ Voisinage géographique, 
+○ Voisinage social, 
+○ Voisinage aléatoire.
+● Méthodes du gradient, Newton-Raphson, dichotomie, polytope de 
+Nelder-Mead…
+● Hybridation avec des méthodes de recherche locales
+17
+<<<PAGE>>>
+Le recuit simulé
+18
+<<<PAGE>>>
+Pour l’histoire… un peu de physique !
+Le recuit est une technique qui permet 
+d’améliorer la qualité d’un matériau selon 
+la méthode suivante : 
+● On le porte à très haute température 
+pour le liquéfier
+● On abaisse progressivement la 
+température pour stabiliser la 
+structure du matériau
+19
+[Métaheuristiques pour l’optimisation difficile, P. Siarry et al.]
+<<<PAGE>>>
+● Métaheuristique variante de l’algorithme de Metropolis-Hastings (voir 
+exemple ici) ;
+● Proposée en 83 par Kirkpatrick, Gelatt et Vecchi et en 85 par Cerny;
+● Première métaheuristique proposée;
+● Adaptée aux problèmes discrets (originellement au placement de 
+composant électronique sur une plaque).
+Le recuit simulé (Simulated Annealing)
+20
+<<<PAGE>>>
+Le recuit simulé - l’analogie
+21
+● La fonction f à minimiser est l’énergie du système;
+● Une solution X représente un état du matériau;
+● L’équilibre thermodynamique est atteint lors d’un palier de température;
+● À température T, une perturbation de la solution courante est acceptée 
+avec de manière probabiliste basée sur le critère de Metropolis.
+
+<<<PAGE>>>
+Critère de ....
+critereMetropolis(Δf,T) : 
+Si  Δf ≤ 0 alors 
+retourner VRAI 
+sinon
+retourner aléa(0,1) < e(-Δf/T)
+22
+● Δf ≤ 0, le voisin est accepté;
+● Une petite variation a plus de chance 
+d’être acceptée qu’une importante;
+● Cette fonction est stochastique.
+<<<PAGE>>>
+acceptation
+selon 
+e(-Δf/T)
+acceptation
+selon 
+e(-Δf/T)
+voisin accepté
+Critère de ....
+23
+X
+?
+<<<PAGE>>>
+Algorithme du recuit simulé
+24
+X, une solution, f(X) énergie du système, T Température initiale 
+fmin <- f(X) 
+Xmin <- X 
+Tant que T > T min ou non critèreConvergence()
+Tant que non équilibreThermodynamique() // palier de température 
+ Xvois <- perturbation(X)
+ Δf = f(X vois) - f(X) 
+Si Δf < 0 ou acceptationCritèreMétropolis(Δf,T) alors 
+ Si Δf < 0 et f(X vois) < f min alors 
+fmin <- f(X vois)
+Xmin <- X vois
+ Fin si 
+ f(X) <- f(X vois) 
+X <- X vois
+ Fin si 
+Fin tant que 
+T <- refroidissement(T)
+Fin tant que 
+<<<PAGE>>>
+Recuit simulé : Critères de convergence
+25
+Permet de terminer l’algorithme selon plusieurs conditions : 
+● La température atteint une valeur minimale;
+● Le nombre d’évaluations atteint une limite;
+● Il n’y a pas eu d’amélioration depuis un certain nombre d’itérations.
+<<<PAGE>>>
+Recuit simulé : Équilibre thermodynamique
+26
+Permet de “fouiller” autour d’une bonne solution en cours : 
+● Le nombre d’évaluations atteint une limite;
+● Il n’y a pas eu d’amélioration depuis un certain nombre d’itérations.
+<<<PAGE>>>
+Recuit simulé : Refroidissement
+27
+Permet de diminuer la probabilité d’acceptation d’une solution non améliorante 
+selon le critère de Métropolis : 
+● Une forte décroissance empêche une exploration convenable, l’algorithme 
+converge rapidement vers un minimum local;
+● Une faible décroissance permet une forte exploration lors des premières 
+itérations de l’algorithme et rend peu probable la sélection d’une solution 
+dégradante;
+● À T=0, aucune solution dégradante n’est sélectionnée; à T=∞, toute solution 
+est acceptée.
+<<<PAGE>>>
+Recuit simulé : Refroidissement
+28
+[Wikipedia]
+Espace de variation du 
+critère de Métropolis 
+1
+e(-Δf/T)
+0 1
+e(-Δf/T)
+● À haute température, la valeur du critère de Métropolis est proche 
+de 1, la plupart des solutions dégradantes sont acceptées :
+● À faible température, la valeur du critère de Métropolis tend vers 
+0, la plupart des solutions dégradantes sont rejetées :
+acceptation
+refus
+0
+<<<PAGE>>>
+Recuit simulé : Refroidissement
+29
+Différents schémas de réduction de la température : 
+● Géométrique (si l’on ne considère pas les paliers…) : Tk+1 = α.Tk, le plus 
+couramment utilisé;
+● Logarithmique : Tk = μ / log(1+k), où k : nb de paliers et μ une constante. 
+Très coûteux en temps de calcul, peu utilisée;
+● Exponentiel : Tk = T0.exp(-k/τ),  où k : nb de paliers et τ une constante;
+● Ésotérique : on peut remonter la température selon un critère particulier.
+<<<PAGE>>>
+Recuit simulé : Perturbation
+30
+ 
+● Génère une nouvelle solution au voisinage de la solution en cours;
+● Influence de la distance entre ces deux solutions (hypervolume du 
+voisinage);
+● Spécifique au problème à résoudre (discret/continu).
+<<<PAGE>>>
+No free lunch theorem [Wolpert and Macready]
+31
+Des restaurants (méthodes de résolution) possèdent un menu proposant des 
+plats (problèmes) à différents prix (performance de résolution). Chaque 
+restaurant propose les même plats mais à des prix différents.
+Il n’existe pas de menu parfait pour un omnivore.
+<<<PAGE>>>
+Un exemple d’application...
+32
+
+<<<PAGE>>>
+That’s all folks !

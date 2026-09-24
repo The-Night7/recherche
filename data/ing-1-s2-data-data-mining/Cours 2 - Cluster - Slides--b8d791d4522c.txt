@@ -1,0 +1,281 @@
+Datamining 1 : Clustering
+Clustering
+Méthodes de clustering :
+• Généralités
+• K-means
+• Classification hiérarchique ascendante
+Le clustering est la technique non supervisée la plus répandue en datamining.
+Elle permet de distinguer des groupes homogènes (classes, segments, clusters) au sein d’un 
+grand volume de données.
+- De part leur constitution, ces groupes peuvent apporter une information pertinente  
+sur les données, notamment s’ils sont représentés graphiquement à l’aide d’une ACP .
+- Ils peuvent aussi servir à découper une étude en sous-parties,  chacune pouvant 
+bénéficier de traitements particuliers.
+<<<PAGE>>>
+Datamining 1 : Clustering
+Généralités
+2
+Recherche exhaustive impossible
+Notons que le nombres de partitions distinctes de n objets est
+Par exemple pour 30 objets, on a plus 1023 partitions possibles.
+ Algorithme de recherche performant
+
+1k
+n
+!k
+k
+e
+1
+L’objectif des méthodes est 
+ à la fois, de regrouper les observations ayant des 
+caractéristiques similaires au sein d’une même classe,
+distance entre observations
+ à la fois de construire des classes les plus dissemblables
+possibles. 
+distance entre classes
+<<<PAGE>>>
+Datamining 1 : Clustering
+3
+Les métriques sur les observations : 
+variables quantitatives
+2/1d
+1i
+2
+ii2 )yx()y,x(d 
+
+  
+
+
+
+
+d
+1i
+ii1 yx)y,x(d
+ dd11 yx,...,yxmax)y,x(d 
+ 
+2/11T
+)yx()yx()y,x(d 
+
+Pour trouver des similarités entre les observations il faut définir une métrique  
+sur les observations :
+ Distance euclidienne :
+ Distance Manhattan :
+Atténue l’impact des individus hors norme car pas d’écart au carré
+ Distance infinie :
+ Distance de Mahalanobis :
+ =matrice carrée définie positive (permet d’introduire une corrélation entre les variables )
+-1 1
+-1
+1
+<<<PAGE>>>
+Datamining 1 : Clustering
+4
+Les métriques sur les classes
+ Distance de Ward  : 
+la plus utilisée, permet de fusionner les deux classes faisant le moins baisser l’inertie inter-classes, 
+tend à produire des classes sphériques de même  effectif . 4
+ Distance minimale entre deux observations des deux classes : 
+détecte les formes  allongées voire sinueuses, sensible à l’effet de de 
+chaîne (2 points éloignés sont considérés comme appartenant à la même classe car reliés par une série 
+de points proches les uns des autres)
+C1
+C2
+g1
+g2
+)y,x(dmin)C,C(d
+21 Cy,Cx21min 
+
+)y,x(dmoyenne)C,C(d
+21 Cy,Cx
+21moy
+
+
+)g,g(dnn
+nn)C,C(d 21
+21
+21
+21Ward
+
+
+ Distance moyenne entre deux observations des deux classes : 
+moins sensible au  bruit, tend à produire des classes de même variance. 
+ Distance maximale entre deux observations des deux classes : 
+très sensible aux observations atypiques
+)y,x(dmax)C,C(d
+21 Cy,Cx21max 
+
+Pour construire des classes dissemblables il faut définir une métrique 
+sur les classes, c’est-à-dire une distance entre deux ensembles de 
+points
+où ni et gi sont l’effectif et le 
+centre de gravité de la classe Ci
+<<<PAGE>>>
+Datamining 1 : Clustering
+5
+Inertie inter et intra classes
+Le coefficient
+est le pourcentage d’inertie du nuage expliquée par les classes. L’objectif est d’obtenir un R² 
+proche de 1 avec un minimum de classes (si nb classes =n alors R²=1)
+Il peut servir pour
+• Comparer deux partitionnements ayant le même nombre de classes
+• Sélectionner le nombre de classes  (courbe R² vs nb classes. on choisit le dernier saut important du R²)5
+
+
+
+n
+1i
+ixn
+1g
+Centre de gravité 
+du nuage
+
+
+
+ki Cx
+i
+k
+k xn
+1g
+Centre de gravité 
+d’une classe Ck
+Inertie Totale                =              Inertie intra classes + Inertie inter classes 
+  
+erintI
+p
+1k
+k
+2
+k )g,g(dnn
+1
+
+
+
+    
+raint
+k
+I
+p
+1k
+n
+1i
+ki
+2
+)gx(dn
+1
+
+totI
+n
+1i
+i
+2
+)g,x(dn
+1
+
+
+= 
+ Chercher la partition qui minimise l’inertie intra classes (homogénéité des observations dans les classes)
+ Chercher la partition qui maximise l’inertie inter classes (dissimilarité des classes entre elles)
+tot
+erint2
+I
+IR 
+Ça ne vous 
+rappelle rien?
+d=distance 
+euclidienne
+<<<PAGE>>>
+Datamining 1 : Clustering
+6
+Algorithme des k-means (1/2)
+6
+Algorithme
+Etape 1 : Choisir C individus au hasard 
+comme centres initiaux des 
+classes
+Etape 2 : On calcule les distances entre 
+chaque individu et chaque centre 
+de classe, et on affecte 
+l’individu à la classe la plus 
+proche
+Etape 3 : On remplace les centres des 
+classes par  les C barycentres 
+des classes définies à l’étape 2
+Etape 4 : On itère à partir de l’étape 2 
+jusqu’à convergence
+Etape 1 Etape 2
+Etape 3Etape 4
+Basé sur la 
+distance entre 
+individus
+Soit C le nombre de classes souhaitées.
+<<<PAGE>>>
+Datamining 1 : Clustering
+7
+Caractéristiques
+ Dépend de l’initialisation des centres  répéter plusieurs fois l’algorithme
+ Nombre C de classes fixé à l’avance   tester plusieurs valeurs de C 
+ Un individu atypique est détecté car il forme une classe à lui tout seul (en général)
+ Complexité linéaire  adapté à de grands volumes de données
+(attention toutefois car il faut tester plusieurs nombres de classes et répéter l’algorithme 
+plusieurs fois pour chaque classe)
+Algorithme des k-means (2/2)
+<<<PAGE>>>
+Datamining 1 : Clustering
+8
+Classification hiérarchique ascendante
+(1/2)
+8
+Algorithme
+Etape 1 : Chaque individu forme une classe      
+(n classes)
+Etape 2 : On calcule les distances entre 
+les classes et on regroupe les 
+deux classes les plus proches
+(C classes  C-1 classes)
+Etape 3 : On itère à partir de l’étape 2 
+jusqu’à n’avoir qu’une seule 
+classe
+Etape 4 : Choix du partitionnement à 
+partir de dendrogramme
+Le dendrogramme représente la suite de
+partitions obtenues au cours de l’algorithme.
+L’axe des ordonnées représente une mesure de
+dissimilarité/inertie inter-classes (R² partiel,…).
+On coupe le dendrogramme où la hauteur des
+branches est élevée. Cela permet d’obtenir
+simultanément :
+• Le nombre de classes
+• La constitution des classes
+Basé sur la 
+distance entre 
+classes
+<<<PAGE>>>
+Datamining 1 : Clustering
+9
+Classification hiérarchique ascendante
+(2/2)
+Caractéristiques 
+ Regroupe des individus ou des variables dès qu’il y a une notion de distance
+ Pas de dépendance à l’initialisation
+ Nombre de classes non fixé à l’avance
+ formes diverses des groupes grâce au choix de la distance 
+ A chaque étape le partitionnement dépend de celui obtenu avant   Optimum local
+ Complexité exponentielle de l’algorithmique 
+<<<PAGE>>>
+Datamining 1 : Clustering
+10
+Avez-vous des questions?
+Documents ayant servis à la rédaction des slides et TD :
+• DataMining et Statistiques décisionnelles, Stéphane Tufféry, Ed. Technip
+• https://penseeartificielle.fr/choisir-distance-machine-learning/
+• http://eric.univ-lyon2.fr/~ricco/cours/slides/classif_centres_mobiles.pdf
+• https://scikit-learn.org/stable/index.html
+Méthodes non hiérarchiques
+ Il faut avoir une idée a priori du nombre de classes 
+ L’initialisation de l’algorithme peut avoir un impact sur la partition finale
+ L’algorithme converge assez vite (complexité linéaire)
+Algorithme hiérarchique 
+ La complexité de l’algorithme est exponentielle
+ On n’a pas besoin de connaitre à l’avance le nombre de classes
+Quand cela est possible confirmer les résultats par plusieurs méthodes
+Conclusion

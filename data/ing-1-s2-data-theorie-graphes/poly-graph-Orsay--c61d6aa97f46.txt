@@ -1,0 +1,3399 @@
+Introduction à la théorie des graphes
+Eric Sigward
+e.sigward@ac-nancy-metz.fr
+Les sept ponts de Königsberg
+<<<PAGE>>>
+Introduction 2
+Déﬁnitions et premiers exemples 2
+Graphes non orientés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+Graphes orientés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Terminologie 7
+Éléments de la théorie des graphes 9
+Graphes eulériens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Graphes hamiltoniens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .11
+Matrice d’adjacence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .12
+Distance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .14
+Coloriage des sommets d’ungraphe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .16
+Graphes valués et problème du plus court chemin . . . . . . . . . . . . . . . . . . . . . . . . . .20
+Graphes probabilistes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .27
+Chaîne de Markov . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .27
+Graphes probabilistes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .32
+Les graphes en Terminale ES 34
+Exercices 35
+Solutions des exercices 38
+Complément : les arbres 43
+Déﬁnition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .43
+Arbre de recouvrement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .43
+Arbre partiel de coût minimum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .44
+1
+<<<PAGE>>>
+A Introduction
+L’histoire de la théorie des graphes débute peut-être avec les travaux d’Euler au
+XVIII
+/CT
+siècle et trouve son origine dans l’étude de certains problèmes, tels que celui
+des ponts de Königsberg (voir page de couverture, les habitants de Königsberg se
+demandaient s’il était possible, en partant d’un quartier quelconque de la ville, de
+traverser tous les ponts sans passer deux fois par le même et de revenir à leur point
+de départ), la marche du cavalier sur l’échiquier ou le problème de coloriage de
+cartes.
+La théorie des graphes s’est alors développée dans diverses disciplines telles
+que la chimie, la biologie, les sciences sociales. Depuis le début du XX
+/CT
+siècle,
+elle constitue une branche à part entière des mathématiques, grâce aux travaux de
+König, Menger, Cayley puis de Berge et d’Erdös.
+De manière générale, un graphe permet de représenter la structure, les connex-
+ions d’un ensemble complexe en exprimant les relations entre ses éléments : réseau
+de communication, réseaux routiers, interaction de diverses espèces animales, cir-
+cuits électriques,. . .
+Les graphes constituent donc une méthode de pensée qui permet de modéliser
+une grande variété de problèmes en se ramenant à l’étude de sommets et d’arcs.
+Les derniers travaux en théorie des graphes sont souvent effectués par des infor-
+maticiens, du fait de l’importance qu’y revêt l’aspect algorithmique.
+B Déﬁnitions et premiers exemples
+B.1 Graphes non orientés
+1. Déﬁnition
+Un graphe simple /BZ est un couple formé de deux ensembles : un ensemble
+/CG /BP /CU /DC
+/BD
+/BN/DC
+/BE
+/BN/BM/BM/BM /BN/DC
+/D2
+/CV dont les éléments sont appelés sommets, et un ensemble
+/BT /BP /CU /CP
+/BD
+/BN/CP
+/BE
+/BN/BM/BM/BM /BN/CP
+/D1
+/CV , partie de l’ensemble /C8
+/BE
+(/CG ) des parties à deux éléments
+de /CG , dont les éléments sont appelé s arêtes. On notera /BZ /BP/B4 /CG/BN /BT /B5 .
+Lorsque /CP /BP /CU /DC/BN /DD /CV/BE /BT , on dit que /CP est l’arête de/BZ d’extrémités/DC et /DD ,o uq u e
+/CP joint /DC et /DD , ou que /CP passe par /DC et /DD . Les sommets /DC et /DD sont dits adjacents
+dans /BZ .
+2
+<<<PAGE>>>
+2. Déﬁnition
+Un multigraphe /BZ /BP/B4 /CG /BN /BT/BN /CU /B5 est déterminé par :
+– un ensemble /CG de sommets
+– un ensemble /BT/BN cette fois abstrait
+– une application /CU /BM /BT /AX/C8
+/BE
+/B4 /CG /B5
+Dans cet exemple, /DC , /DD , /DE , /D8 sont les sommets du multigraphe et : /CU /B4 /CP
+/BD
+/B5/BP
+/CU /B4 /CP
+/BE
+/B5/BP /CU /B4 /CP
+/BF
+/B5/BP /CU /DC/BN /D8 /CV /BN /CU /B4 /CP
+/BG
+/B5/BP /CU /DC/BN /DD /CV /BN /CU /B4 /CP
+/BH
+/B5/BP /CU /DC/BN /DE /CV /BN /CU /B4 /CP
+/BI
+/B5/BP /CU /DE/BN /D8 /CV /BN
+Un multigraphe avec boucles est un triplet /B4 /CG /BN /BT/BN /CU /B5 où /CU est une application
+de /BT dans /C8
+/BE
+/B4 /CG /B5 /CJ/C8
+/BD
+/B4 /CG /B5 /BN en d’autres termes, un multigraphe avec boucles
+peut comprendre des arêtes multiples entre deux sommets donnés ainsi que
+des boucles multiples en un sommet.
+3. Exemples :
+a. Le graphe d’un tournoi, /CC /BP/B4 /CG/BN /BT /B5 où :
+/CG est l’ensemble des participants au tournoi
+/BT est l’ensemble des paires de joueurs se rencontrant dans le tournoi.
+b. La carte routière de la France, /BY /BP/B4 /CG/BN /BT /B5 où
+/CG est l’ensemble des villes de la France.
+/BT /BP /CU/CU /DC/BN /DD /CV /BP il y a au moins une route directe reliant les villes /DC et /DD /CV /BM
+c. Le graphe discret d’ordre /D2 , /BW
+/D2
+/BP/B4 /CG/BN /BN /B5 /BM
+d. Le graphe complet d’ordre /D2 , /C3
+/D2
+/BN où /CG /BP /CU /BD /BN /BE /BN/BM/BM/BM /BN/D2 /CV et /BT /BP /C8
+/BE
+/B4 /CG /B5
+/C3
+/BD
+/C3
+/BE
+/C3
+/BF
+/C3
+/BG
+/C3
+/BH
+e. Le graphe biparti-complet /C3
+/D4/BN/D5
+où /CG /BP /CU /DC
+/BD
+/BN/DC
+/BE
+/BN/BM/BM/BM /BN/DC
+/D4
+/BN/DD
+/BD
+/BN/DD
+/BE
+/BN/BM/BM/BM/BN/DD
+/D5
+/CV et
+/BT /BP /CU/CU /DC
+/CX
+/BN/DD
+/CY
+/CV /BP /BD /BI /CX /BI /D4 et /BD /BI /CY /BI /D5 /CV
+3
+<<<PAGE>>>
+/C3
+/BG /BN /BE
+f. Le cycle /BV
+/D2
+,o ù /CG /BP /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV et /BT /BP /CU/CU /BD /BN /BE /CV /BN /CU /BE /BN /BF /CV /BN/BM/BM/BM/BN /CU /D2 /A0 /BD /BN/D2 /CV /BN /CU /D2/BN /BD /CV/CV
+/BV
+/BG
+4. Déﬁnition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple, et /DC un sommet de ce graphe. Le degré
+de /DC , noté /CS /B4 /DC /B5 , est le nombre d’arêtes incidentes à /DC/BN c’est–à-dire contenant /DC .
+Lorsque /CS /B4 /DC /B5/BP /BC , on dit que le sommet /DC est isolé, lorsque /DC /BP/BD , il est dit
+pendant.
+Exemples :
+si /DC est un sommet de /BV
+/D2
+, /CS /B4 /DC /B5/BP/BE
+si /DC est un sommet de /C3
+/D2
+, /CS /B4 /DC /B5/BP /D2 /A0 /BD
+5. Déﬁnition
+Un graphe simple est dit régulier de degré /D6 , lorsque tous ses sommets sont de
+degré /D6 .
+6. Lemme des poignées de mains
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple, alors
+/CG
+/DC /BE /CG
+/CS /B4 /DC /B5/BP/BE /CY /BT /CY
+En effet, chaque paire /CU /DC/BN /DD /CV de /BT est comptée deux fois, une fois pour /CS /B4 /DC /B5 et
+une seconde fois pour /CS /B4 /DD /B5 /BM
+Remarque
+Le lemme des poignées de mains reste valable pour les multigraphes avec boucles
+en convenant qu’une boucle contribue pour 2 dans le calcul du degré d’un som-
+met.
+7. Exercices
+a. Montrer qu’un graphe simple a un nombre pair de sommets de degré impair.
+Notons /C8 l’ensemble des sommets de degré pair et/C1 l’ensemble des sommets
+de degré impair d’un graphe simple/BZ /BP/B4 /CG/BN /BT /B5 /BM/C8 et /C1 forment une partition
+4
+<<<PAGE>>>
+de /CG/BN d’après le lemme des poignées de mains, on a :
+/CG
+/DC /BE /CG
+/CS /B4 /DC /B5/BP/BE /CY /BT /CY /BP
+/CG
+/DC /BE /C8
+/CS /B4 /DC /B5/B7
+/CG
+/DC /BE /C1
+/CS /B4 /DC /B5
+Or /BE /CY /BT /CY et
+/CG
+/DC /BE /C8
+/CS /B4 /DC /B5 sont des entiers pairs, on en déduit alors que
+/CG
+/DC /BE /C1
+/CS /B4 /DC /B5
+est également pair, comme différence de deux entiers pairs. Chaque terme de
+cette dernière somme est impair, elle ne peut donc être paire que si et seule-
+ment si le nombre de termes est pair, on a donc montré que /CY /C1 /CY est un entier
+pair.
+b. Est-il possible de relier 15 ordinateurs de sorte que chaque appareil soit relié
+avec exactement trois autres ?
+Considérons le graphe simple dont les sommets sont les 15 ordinateurs, les
+arêtes étant les liaisons entre ces ordinateurs. Si chaque appareil est relié à
+exactement 3 ordinateurs du réseau, les sommets du graphe sont tous de degré
+impair. D’après le résultat établi dans l’exercice précédent, un tel graphe doit
+posséder un nombre pair de sommets, le réseau est donc impossible.
+c. Montrer que le nombre total de gens qui ont habité la Terre et qui ont donné
+un nombre impair de poignées de mains est pair.
+Considérons le graphe dont les sommets sont les gens qui ont habité la Terre et
+dont les arêtes représentent les poignées de mains échangées entre ces person-
+nes. La réponse à la question découle immédiatement du résultat du premier
+exercice.
+B.2 Graphes orientés
+1. Déﬁnition
+Un graphe orienté /BZ est formé de deux ensembles : un ensemble/CG /BP /CU /DC
+/BD
+/BN/DC
+/BE
+/BN/BM/BM/BM/BN/DC
+/D2
+/CV
+dont les éléments sont appelés sommets, et un ensemble /BT /BP /CU /CP
+/BD
+/BN/CP
+/BE
+/BN/BM/BM/BM /BN/CP
+/D1
+/CV ,
+partie du produit cartésien/CG /A2 /CG , dont les éléments sont appelésarcs. On notera
+/BZ /BP/B4 /CG/BN /BT /B5 .
+Si /CP /BP/B4 /DC/BN /DD /B5 est un arc du graphe/BZ , /DC est l’extrémité initiale de/CP et /DD l’extrémité
+ﬁnale de /CP .
+5
+<<<PAGE>>>
+Remarque
+À tout graphe orienté /BZ /BP/B4 /CG/BN /BT /B5 /BN on associe le graphe simple /B4 /CG/BN /BU /B5 où :
+/CU /DC/BN /DD /CV/BE /BU /B8 /B4/B4 /DC/BN /DD /B5 /BE /BT ou /B4 /DD/BN /DC /B5 /BE /BT /B5/B5
+2. Déﬁnition
+Soit /DC un sommet d’un graphe orienté. On note /CS
+/B7
+/B4 /DC /B5 le nombre d’arcs ayant/DC
+comme extrémité initiale, et /CS
+/A0
+/B4 /DC /B5 le nombre d’arcs ayant /DC comme extrémité
+ﬁnale. Ainsi, on a :
+/CS /B4 /DC /B5/BP /CS
+/B7
+/B4 /DC /B5/B7 /CS
+/A0
+/B4 /DC /B5
+3. Exercice
+/BZ /BP/B4 /CG/BN /BT /B5 est un graphe orienté, montrer que /BM
+/CG
+/DC /BE /CG
+/CS
+/B7
+/B4 /DC /B5/BP
+/CG
+/DC /BE /CG
+/CS
+/A0
+/B4 /DC /B5
+En effet, on a clairement :
+/CG
+/DC /BE /CG
+/CS
+/B7
+/B4 /DC /B5/BP
+/CG
+/DC /BE /CG
+/CS
+/A0
+/B4 /DC /B5/BP /CY /BT /CY /BM
+6
+<<<PAGE>>>
+C Terminologie
+/AF Sous-graphe : /C0 /BP/B4 /CH/BN /BU /B5 est un sous-graphe de /BZ /BP/B4 /CG/BN /BT /B5 si /CH /AI /CG et
+/BU /AI /BT/BM
+/AF Graphe partiel :/C0 /BP/B4 /CH/BN /BU /B5 est un graphe partiel de /BZ /BP/B4 /CG/BN /BT /B5 si /CH /BP /CG et
+/BU /AI /BT/BM
+/AF Ordre d’un graphe: l’ordre d’un graphe est le nombre de sommets de ce graphe.
+/AF Chaîne : suite ﬁnie de sommets reliés entre eux par une arête.
+/AF Chaîne simple : chaîne qui n’utilise pas deux fois la même arête.
+/AF Chaîne eulérienne : chaîne simple passant par toutes les arêtes d’un graphe.
+/AF Chaîne hamiltonienne : chaîne simple passant par tous les sommets d’un graphe
+une et une seule fois.
+/AF Chemin : suite de sommets reliés par des arcs dans un graphe orienté.
+/AF Cycle : chaîne qui revient à son point de départ.
+/AF Cycle eulérien : cycle simple passant par toutes les arêtes d’un graphe une et
+une seule fois.
+/AF Cycle hamiltonien : cycle simple passant par tous les sommets d’un graphe une
+et une seule fois.
+/AF Graphe connexe : un graphe /BZ est dit connexe si pour toute paire de sommets
+/CU /DC/BN /DD /CV de /BZ , il existe une chaîne de premier terme /DC et de dernier terme /DD .
+/AF Arbre : graphe connexe sans cycle simple et sans boucle.
+/AF Graphe eulérien : graphe qui possède un cycle eulérien.
+/AF Graphe semi-eulérien : graphe qui possède une chaîne eulérienne.
+/AF Graphe hamitonien : graphe qui possède un cycle hamiltonien.
+/AF Graphe semi-hamiltonien : graphe qui possède une chaîne hamiltonienne.
+/AF Graphe valué : graphe où des réels sont associés aux arêtes. Dans cet exposé,
+on ne considérera que des valuations positives.
+/AF Longueur d’une chaîne: nombre des arêtes qui composent la chaîne.
+/AF Valeur d’une chaîne : somme des valeurs des arêtes (arcs) d’une chaîne d’un
+graphe valué.
+/AF Distance entre deux sommets : longueur de la plus courte chaîne joignant ces
+deux sommets.
+/AF Diamètre d’un graphe: maximum des distances entre les sommets d’un graphe.
+/AF Indice chromatique : nombre minimal de couleurs permettant de colorier les
+7
+<<<PAGE>>>
+arêtes d’un graphe, de telle sorte que deux arêtes adjacentes n’aient pas la même
+couleur.
+/AF Nombre chromatique d’un graphe : nombre minimal de couleurs permettant
+de colorier les sommets d’un graphe, de telle sorte que deux sommets adjacents
+n’aient pas la même couleur.
+8
+<<<PAGE>>>
+D Éléments de la théorie des graphes
+D.1 Graphes eulériens
+1. Théorème d’Euler(1766)
+Un graphe simple connexe /BZ /BP/B4 /CG/BN /BT /B5 est eulérien si et seulement si pour tout
+sommet /DC de /CG , /CS /B4 /DC /B5 est pair.
+Démonstration
+Supposons /BZ eulérien, soit alors /CR un cycle eulérien et /DC un sommet de /BZ .L e
+cycle /CR contient toutes les arêtes de/BZ , donc toutes les /CS /B4 /DC /B5 arêtes ayant /DC comme
+extrémité. Lors d’un parcourt de /CR on arrive en /DC autant de fois qu’on en repart,
+chaque arête de /BZ étant présente une et seule fois dans/CR , /CS /B4 /DC /B5 est nécessairement
+un nombre pair.
+Réciproquement, supposons que tous les sommets de /BZ soient de degré pair.
+Formons une chaîne simple /CR
+/BD
+, aussi longue que possible, à partir d’un sommet
+arbitraire /DC
+/BC
+. Cette chaîne /CR
+/BD
+est en fait un cycle, sinon, son extrémité ﬁnale
+serait de degré impair. Si ce cycle /CR
+/BD
+contient toutes les arêtes du graphe /BZ , /CR
+/BD
+est le cycle eulérien cherché. Dans le cas contraire, on considère le sous-graphe
+/C0 obtenu à partir de /BZ en éliminant les arêtes de /CR
+/BD
+et ses sommets qui ne sont
+incidents à aucune des arêtes restantes. Comme /BZ est connexe, /C0 possède au
+moins un sommet commun avec le cycle/CR
+/BD
+. Soit /DC
+/BD
+un tel sommet. Les sommets
+de /C0 sont encore de degré pair. Construisons alors, de la même manière que
+précédemment, un cycle /CR
+/BE
+dans /C0 à partir de /DC
+/BD
+. Rallongeons le cycle /CR
+/BD
+en
+insérant à partir du sommet /DC
+/BD
+le cycle /CR
+/BE
+pour former un cycle /CR
+/BC
+/BD
+de /DC
+/BC
+à /DC
+/BC
+.
+Si ce cycle /CR
+/BC
+/BD
+possède toutes les arêtes de /BZ , /CR
+/BC
+/BD
+est le cycle eulérien cherché.
+Sinon, on continue ce processus, qui se terminera car les sommets du graphe /BZ
+sont en nombre ﬁni.
+Remarques
+– Le théorème d’Euler reste valable pour des multigraphes connexes.
+– La démonstration fournit un algorithme de construction de cycle eulérien
+Exemples
+i.
+/BZ
+/BD
+/BZ
+/BE
+/BZ
+/BD
+n’est pas eulérien, ses sommets ne sont pas tous pairs.
+9
+<<<PAGE>>>
+/BZ
+/BE
+est eulérien, un cycle eulérien est par exemple :/CP/BN /CQ/BN /CR/BN /CS/BN /CR/BN /CT/BN /CS/BN /CQ/BN /CT/BN /CP/BN /CT/BN /CP
+ii. Le problème des ponts de Königsberg
+La ville de Königsberg en Prusse (maintenant Kaliningrad) comprenait 4
+quartiers, séparés par les bras du Prégel. Les habitants de Königsberg se
+demandaient s’il était possible, en partant d’un quartier quelconque de la
+ville, de traverser tous les ponts sans passer deux fois par le même et de
+revenir à leur point de départ.
+Le plan de la ville peut se modéliser à l’aide du multigraphe ci-dessous, les
+quartiers sont représentés par les 4 sommets, les 7 ponts par des arêtes :
+La question posée devient alors : ce graphe est-il eulérien ? Le théorème
+d’Euler répond immédiatement de façon négative aux habitants de Königs-
+berg.
+iii. Est-il possible de tracer une courbe continue coupant chacun des 16 seg-
+ments de la ﬁgure ci-dessous exactement une et une seule fois ?
+Considérons le multigraphe dont les sommets sont les 6 régions de la ﬁg-
+ure, /CP/BN /CQ/BN /CR/BN /CS/BN /CT/BN /CU /BN et dont les arêtes sont les 16 segments qui sont frontières
+entre les différentes régions.
+10
+<<<PAGE>>>
+Le problème consiste à construire un cycle eulérien, ce qui est impossible,
+car le sommet /CT/BN par exemple, est de degré 5.
+2. Théorème
+Un graphe simple connexe est semi-eulérien si et seulement si il admet 0 ou ex-
+actement 2 sommets de degré impair.
+La démonstration est identique à celle du théorème d’Euler. Si le nombre de
+sommets de degré impair est nul, la chaîne sera un cycle et le graphe sera en
+fait eulérien, et s’il est égal à deux, les chaînes eulériennes du graphe auront ces
+deux sommets pour extrémités.
+D.2 Graphes hamiltoniens
+Contrairement aux graphes eulériens, il n’existe pas de caractérisation simple des
+graphes hamiltoniens ou semi-hamiltoniens. On peut cependant énoncer quelques
+propriétés et conditions sufﬁsantes.
+1. Un graphe possédant un sommet de degré 1 ne peut être hamiltonien.
+2. Si un sommet dans un graphe est de degré 2, alors les deux arêtes incidentes à
+ce sommet doivent faire partie du cycle hamiltonien.
+3. Les graphes /C3
+/D2
+sont hamiltoniens.
+4. Théorème (Ore)
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple d’ordre /D2 /BQ /BF /BM Si pour toute paire /CU /DC/BN /DD /CV de
+sommets non adjacents, on a /CS /B4 /DC /B5/B7 /CS /B4 /DD /B5 /BQ /D2/BN alors /BZ est hamiltonien.
+5. Corollaire (Dirac)
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple d’ordre /D2 /BQ /BF /BM Si pour tout sommet /DC de /BZ/BN
+on a /CS /B4 /DC /B5 /BQ
+/D2
+/BE
+/BN alors /BZ est hamiltonien.
+En effet, un tel graphe vériﬁe les conditions du théorème précédent, si /DC et /DD ne
+sont pas adjacents, on a bien :
+/CS /B4 /DC /B5/B7 /CS /B4 /DD /B5 /BQ
+/D2
+/BE
+/B7
+/D2
+/BE
+/BP /D2
+6. Exemples
+/BZ
+/BD
+/BZ
+/BE
+/BZ
+/BD
+n’est pas hamiltonien, car il possède un sommet de degré 1.
+11
+<<<PAGE>>>
+/BZ
+/BE
+est hamiltonien : /CP/BN /CQ/BN /CR/BN /CS/BN /CT/BN /CP est un cycle hamiltonien. (La condition du
+corollaire de Dirac n’est pas nécessaire : /BZ
+/BE
+est d’ordre 5, et/CS /B4 /CP /B5/BP/BE /BO
+/BH
+/BE
+)
+D.3 Matrice d’adjacence
+1. Déﬁnition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe orienté, avec /CG /BP /CU /DC
+/BD
+/BN/DC
+/BE
+/BM/BM/BM /BN/DC
+/D2
+/CV /BM La matrice
+d’adjacence du graphe /BZ est la matrice /C5 /B4 /BZ /B5 /BE /C5
+/D2
+/B4 /CA ) dont les coefﬁcients
+/D1
+/CX/BN/CY
+sont déﬁnis par :
+/D1
+/CX/BN/CY
+/BP
+/AQ
+/BD si /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5 /BE /BT
+0s i /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5 /BP/BE /BT
+exemple :
+/C5 /B4 /BZ /B5/BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BC /BC /BC /BD
+/BD /BC /BD /BC /BC
+/BC /BC /BC /BC /BC
+/BC /BD /BC /BD /BC
+/BD /BC /BD /BC /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BT
+/BZ
+2. Propriétés
+Avec les notations précédentes, nous avons les propriétés immédiates suivantes :
+a. Pour tout /CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV /BN
+/CS
+/B7
+/B4 /DC
+/CX
+/B5 /BP
+/D2
+/CG
+/CY /BP/BD
+/D1
+/CX/BN/CY
+/CS
+/A0
+/B4 /DC
+/CX
+/B5 /BP
+/D2
+/CG
+/CY /BP/BD
+/D1
+/CY/BN/CX
+/CG
+/CX/BN/CY
+/D1
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CX /BP/BD
+/CS
+/B7
+/B4 /DC
+/CX
+/B5/BP
+/CG
+/CX /BP/BD
+/CS
+/A0
+/B4 /DC
+/CX
+/B5/BP /CY /BT /CY
+b. La trace de /C5 /B4 /BZ /B5 est égale au nombre de boucles du graphe /BZ
+Remarque La représentation matricielle est également utilisable pour des
+graphes non orientés, leurs matrices sont symétriques.
+3. Théorème
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe orienté, avec /CG /BP /CU /DC
+/BD
+/BN/DC
+/BE
+/BM/BM/BM /BN/DC
+/D2
+/CV /BN de matrice
+d’adjacence /C5 /BP/B4 /D1
+/CX/BN/CY
+/B5 /BM Pour tout entier naturel /CZ/BN non nul notons /C5
+/CZ
+/BP
+/B4 /D1
+/B4 /CZ /B5
+/CX/BN/CY
+/B5 /BM Alors /D1
+/B4 /CZ /B5
+/CX/BN/CY
+est égal au nombre de chemins de longueur /CZ du sommet /DC
+/CX
+12
+<<<PAGE>>>
+au sommet /DC
+/CY
+/BM
+Démonstration
+Effectuons une récurrence sur /CZ : /D1
+/B4/BD/B5
+/CX/BN/CY
+/BP /D1
+/CX/BN/CY
+désigne bien le nombre de
+chemins allant de /DC
+/CX
+à /DC
+/CY
+/BM Supposons le résultat vrai pour l’entier/CZ /A0 /BD /BN comme
+/C5
+/CZ
+/BP /C5
+/CZ /A0 /BD
+/A2 /C5/BN on a :
+/D1
+/B4 /CZ /B5
+/CX/BN/CY
+/BP
+/D2
+/CG
+/D0 /BP/BD
+/D1
+/B4 /CZ /A0 /BD/B5
+/CX/BN/D0
+/BM/D1
+/D0/BN/CY
+Par hypothèse de récurrence, /D1
+/B4 /CZ /A0 /BD/B5
+/CX/BN/D0
+est le nombre de chemins de longueur/CZ /A0 /BD
+allant de /DC
+/CX
+à /DC
+/D0
+et /D1
+/D0/BN/CY
+est égal à 1 si /B4 /DC
+/D0
+/BN/DC
+/CY
+/B5 est une arête de /BZ et à /BC sinon.
+/D1
+/B4 /CZ /A0 /BD/B5
+/CX/BN/D0
+/BM/D1
+/D0/BN/CY
+est donc le nombre de chemins de longueur /CZ allant de /DC
+/CX
+à /DC
+/CY
+dont
+la dernière arête est /B4 /DC
+/D0
+/BN/DC
+/CY
+/B5 /BN la somme de ces termes est donc bien le nombre de
+chemins de longueur /CZ allant de /DC
+/CX
+à /DC
+/CY
+/BM
+Exemples
+/AF Déterminons le nombre de chemins de longueur 4 allant de/CP à /CQ dans le graphe
+/BZ
+/BD
+/BZ
+/BD
+La matrice d’adjacence de/BZ
+/BD
+est :
+/C5 /BP
+/BC
+/BU
+/BU
+/BS
+/BC /BC /BD /BD
+/BC /BC /BD /BD
+/BD /BD /BC /BC
+/BD /BD /BC /BC
+/BD
+/BV
+/BV
+/BT
+Le nombre de chemins cherché est le terme /B4/BD /BN /BE/B5 de la matrice
+/C5
+/BG
+/BP
+/BC
+/BU
+/BU
+/BS
+/BK /BK /BC /BC
+/BK /BK /BC /BC
+/BC /BC /BK /BK
+/BC /BC /BK /BK
+/BD
+/BV
+/BV
+/BT
+c’est-à-dire 8.
+/AF Déterminons le nombre de circuits de longueur 4 dans le graphe /BZ
+/BE
+/BM
+13
+<<<PAGE>>>
+/BZ
+/BE
+La matrice d’adjacence de/BZ
+/BE
+est :
+/C5 /BP
+/BC
+/BS
+/BC /BD /BD
+/BD /BC /BD
+/BC /BD /BD
+/BD
+/BT
+Le nombre de circuits de longueur 4 dans /BZ
+/BE
+est égale à la trace de /C5
+/BG
+/BM
+/C5
+/BG
+/BP
+/BC
+/BS
+/BF /BH /BK
+/BE /BI /BK
+/BF /BH /BK
+/BD
+/BT
+et /D8/D6 /B4 /C5
+/BG
+/B5/BP /BD /BJ /BM
+4. Exercice
+Soit /BZ un graphe simple orienté d’ordre /D2/BN de matrice d’adjacence /C5/BM Mon-
+trer que si /C5
+/D2
+n’est pas nulle, alors le graphe /BZ contient des cycles. Étudier la
+réciproque.
+Si /C5
+/D2
+n’est pas la matrice nulle, il existe/B4 /CX/BN /CY /B5 /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/BE
+/BN tel que /D1
+/B4 /D2 /B5
+/CX/BN/CY
+/BI/BP
+/BC /BM Il existe donc au moins un chemin de longueur /D2 de /DC
+/CX
+à /DC
+/CY
+/BM Or un chemin
+de longueur /D2 dans un graphe d’ordre /D2 passe au moins deux fois par le même
+sommet, c’est qu’il existe un cycle dans/BZ/BM
+Réciproquement/BN si /BZ contient un cycle, alors on peut trouver un chemin de
+longueur arbitraire dans le graphe, en particulier un chemin de longueur /D2/BM On
+en déduit que /C5
+/D2
+/BI/BP/BC /BM
+D.4 Distance
+1. Déﬁnition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe orienté. Pour tout /B4 /DC/BN /DD /B5 /BE /CG
+/BE
+/BN la distance entre le
+sommet /DC et le sommet /DD est le nombre /CS /B4 /DC/BN /DD /B5 déﬁni par :
+/CS /B4 /DC/BN /DD /B5/BP
+/AQ
+/BD s’il n’existe pas de chemin de/DC à /DD
+/D1/CX/D2 /CU /D0 /B4 /CR /B5 /CY /CR est un chemin de /DC à /DD /CV
+/D0 /B4 /CR /B5 désigne la longueur du chemein /CR/BM La matrice des distances du graphe /BZ est
+la matrice /BW /BP/B4 /CS
+/CX/BN/CY
+/B5/BP/B4 /CS /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5/B5 /BM
+14
+<<<PAGE>>>
+exemple
+/BZ
+La matrice des distances de /BZ est :
+/BW /BP
+/BC
+/BS
+/BC /BD /BD
+/BD /BC /BD
+/BD /BD /BC
+/BD
+/BT
+2. Algorithme de Moore
+Soit /DC et /DD deux sommets d’un graphe/BZ /BP/B4 /CG/BN /BT /B5 /BM L’algorithme suivant calcule
+la distance /CS /B4 /DC/BN /DD /B5 :
+On étiquette les sommets de /BZ en observant les règles suivantes :
+– le sommet /DC reçoit l’étiquette 0
+–s i /B4 /D9/BN /DA /B5 /BE /BT et /D9 est étiqueté /CZ :
+i. si /DA n’est pas étiqueté, alors/DA reçoit l’étiquette/CZ /B7/BD
+ii. si /DA est étiqueté /D0/BN alors l’étiquette de/DA est remplacée par /D1/CX/D2 /B4 /D0/BN /CZ /B7/BD /B5
+Si, à la ﬁn, /DD à une étiquette /CZ/BN alors /CS /B4 /DC/BN /DD /B5/BP /CZ/BN sinon /CS /B4 /DC/BN /DD /B5/BP /BD /BM
+Exemple
+On a dans cet exemple: /CS /B4 /DC/BN /DD /B5/BP /BF
+Remarque : lorsque /CS /B4 /DC/BN /DD /B5/BP /CZ/BN l’algorithme précédent permet d’exhiber
+de façon récursive les chemins de longueur /CZ de /DC à /DD : on part de /DD et on
+détermine les sommets /DE tels que /B4 /DE/BN /DD /B5 /BE /BT avec /CS /B4 /DC/BN /DE /B5/BP /CZ /A0 /BD et ainsi de
+suite jusqu’en/DC/BM
+15
+<<<PAGE>>>
+D.5 Coloriage des sommets d’un graphe
+1. Déﬁnitions
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe non orienté. Un sous-ensemble /CB de /CG est stable
+s’il ne comprend que des sommets non adjacents deux à deux. Le cardinal de la
+plus grande partie stable est le nombre de stabilité de /BZ/BN on le note /AB /B4 /BZ /B5 /BM
+La coloration des sommets d’un graphe consiste à affecter tous les sommets de
+ce graphe d’une couleur de telle sorte que deux sommets adjacents ne portent
+pas la même couleur. Une coloration avec /CZ couleurs est donc une partition de
+l’ensemble des sommets en /CZ parties stables. Le nombre chromatique, noté
+/AD /B4 /BZ /B5 /BN du graphe /BZ est le plus petit entier /CZ pour lequel il existe une partition de
+/CG en /CZ sous-ensembles stables.
+2. Encadrement du nombre chromatique
+a. Proposition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple d’ordre/D2/BM On a l’encadrement suivant :
+Ꜵ
+/D2
+/AB /B4 /BZ /B5
+/AP
+/BI /AD /B4 /BZ /B5 /BI /D6 /B7/BD
+où /D6 est le degré maximal des sommets du graphe /BZ/BM
+Démonstration
+Notons /CU /CB
+/BD
+/BN/CB
+/BE
+/BN/BM/BM/BM /BN/CB
+/CZ
+/CV une partition de /CG en /CZ parties stables avec /CZ /BP
+/AD /B4 /BZ /B5 /BM Alors :
+/D2 /BP
+/CZ
+/CG
+/CX /BP/BD
+/CY /CB
+/CX
+/CY /BI
+/CZ
+/CG
+/CX /BP/BD
+/AB /B4 /BZ /B5/BP /CZ/BM /AB /B4 /BZ /B5/BP /AD /B4 /BZ /B5 /BM/AB /B4 /BZ /B5
+/D2/BN /AB /B4 /BZ /B5 et /AD /B4 /BZ /B5 étant des entiers naturels, l’inégalité de gauche est établie.
+Construisons une partition de /CG en sous-ensembles stables de la manière
+suivante :
+/A3 on considère un sommet /DC
+/BD
+arbitraire de /CG/BN et /CB
+/BD
+est une plus grande partie
+stable de /CG contenant /DC
+/BD
+/A3 s’il existe un sommet /DC
+/BE
+de /CG qui n’est pas dans /CB
+/BD
+, on construit /CB
+/BE
+/BN une
+plus grande partie stable de /CG contenant /DC
+/BE
+disjointe de /CB
+/BD
+/A3 s’il existe un sommet /DC
+/BF
+de /CG qui n’est pas dans /CB
+/BD
+/CJ /CB
+/BE
+/BN on construit /CB
+/BF
+/BN
+plus grande partie stable de /CG contenant /DC
+/BF
+telle que /CB
+/BD
+/BN/CB
+/BE
+et /CB
+/BF
+soient
+deux à deux disjointes.
+/A3 /CG étant un ensemble ﬁni, ce procédé se terminera et nous obtenons une
+partition /CU /CB
+/BD
+/BN/CB
+/BE
+/BN/BM/BM/BM/BN/CB
+/CZ
+/CV de /CG/BM En choisissant une couleur par élément de
+la partition, nous aurons nécessairement : /AD /B4 /BZ /B5 /BI /CZ/BM
+Considérons à présent un sommet /DC de la partie /CB
+/CZ
+/BM Le caractère maximal
+des parties construites assure que ce sommet /DC est adjacent à au moins un
+sommet de chaque partie /CB
+/CX
+/BN/CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/CZ /A0 /BD /CV /BM On en déduit alors que
+16
+<<<PAGE>>>
+/CS /B4 /DC /B5 /BQ /CZ /A0 /BD /BN d’où :
+/D6 /BQ /CS /B4 /DC /B5 /BQ /CZ /A0 /BD /BQ /AD /B4 /BZ /B5 /A0 /BD
+ce qui établit la deuxième inégalité.
+b. Proposition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple d’ordre/D2/BN alors :
+/AD /B4 /BZ /B5/B7 /AB /B4 /BZ /B5 /BI /D2 /B7/BD
+Démonstration
+Considérons /CB/BN une partie stable de /CG de cardinal /AB /B4 /BZ /B5 /BM Une coloration pos-
+sible des sommets consiste à colorier les sommets de /CB d’une même couleur
+et les /D2 /A0 /AB /B4 /BZ /B5 autres sommets de couleurs toutes différentes. On en déduit
+que :
+/AD /B4 /BZ /B5 /BI /BD/B7 /B4 /D2 /A0 /AB /B4 /BZ /B5/B5
+3. Exemples
+i. /AD /B4 /BV
+/BE /D2
+/B5/BP/BE
+ii. /AD /B4 /BV
+/BE /D2 /B7/BD
+/B5/BP/BF /BN pour /D2 /BQ /BD /BM
+iii. /AD /B4 /BW
+/D2
+/B5/BP/BD
+iv. /AD /B4 /C3
+/D2
+/B5/BP /D2
+v. Déterminons le nombre chromatique du graphe /BZ suivant :
+Considérons la partition de l’ensemble des sommets de/BZ en sous-ensembles
+stables :
+/CB
+/BD
+/BP /CU /CP/BN /CS /CV
+/CB
+/BE
+/BP /CU /CQ/BN /CT /CV
+/CB
+/BF
+/BP /CU /CR/BN /CU /CV
+on a donc /AD /B4 /BZ /B5 /BI /BF /BM D’autre part, /BZ contient un cycle d’ordre 3, donc
+/AD /B4 /BZ /B5 /BQ /BF /BM Finalement, le nombre chromatique de /BZ est donc 3. La parti-
+tion précédente en donne une 3_coloration :
+17
+<<<PAGE>>>
+4. Exemples d’application
+a. Problème d’emploi du temps
+Une université doit organiser les horaires des examens. On suppose qu’il y a
+7 épreuves à planiﬁer, correspondant aux cours numérotés de 1 à 7 et que les
+paires de cours suivantes ont des étudiants communs : 1 et 2, 1 et 3, 1 et 4, 1
+et 7, 2 et 3, 2 et 4, 2 et 5, 2 et 7, 3 et 4, 3 et 6, 3 et 7, 4 et 5, 4 et 6, 5 et 6, 5 et
+7 et 6 et 7. Comment organiser ces épreuves de façon qu’aucun étudiant n’ait
+à passer deux épreuves en même temps et cela sur une durée miminale ?
+Solution :
+Construisons le graphe /BZ dont les sommets sont les épreuves numérotées de 1
+à 7, une arête relie deux de ses sommets lorsque les deux cours correspondant
+possèdent des étudiants communs :
+Planiﬁer les examens en un temps minimal consiste à déterminer une /CZ _
+coloration de /BZ/BN avec /CZ /BP /AD /B4 /BZ /B5 /BM
+/BZ possède un sous-graphe complet d’ordre 4 (de sommets 1,2,3,4), donc
+/AD /B4 /BZ /B5 /BQ /BG /BM Déterminons une partition des sommets de /BZ en sous-ensembles
+stables :
+/CB
+/BD
+/BP /CU /BD /BN /BI /CV
+/CB
+/BE
+/BP /CU /BE /CV
+/CB
+/BF
+/BP /CU /BF /BN /BH /CV
+/CB
+/BG
+/BP /CU /BG /BN /BJ /CV
+d’où /AD /B4 /BZ /B5 /BI /BG /BN et ﬁnalement /AD /B4 /BZ /B5/BP /BG /BM Les examens peuvent être répartis
+en 4 périodes, de la manière suivante :
+18
+<<<PAGE>>>
+/A3 1
+/D6/CT
+période, épreuves des cours 1 et 6
+/A3 2
+/CT
+période, épreuve du cours 2
+/A3 3
+/CT
+période, épreuves des cours 3 et 5
+/A3 4
+/CT
+période, épreuves des cours 4 et 7.
+b. Un problème d’aquariophilie(exercice du document d’accompagnement )
+A, B, C, D, E, F, G et H désignent huit poissons ; dans le tableau ci-dessous,
+une croix signiﬁe que les poissons ne peuvent cohabiter dans un même aquar-
+ium :
+A
+ B
+ C
+ D
+ E
+ F
+ G
+ H
+A
+ x
+ x
+ x
+ x
+ x
+B
+ x
+ x
+ x
+ x
+C
+ x
+ x
+ x
+ x
+ x
+D
+ x
+ x
+ x
+ x
+E
+ x
+ x
+ x
+ x
+F
+ x
+ x
+ x
+G
+ x
+ x
+ x
+ x
+H
+ x
+ x
+ x
+Quel nombre minimum d’aquariums faut-il ?
+Solution :
+Construisons le graphe /BZ dont les sommets sont les huit poissons tel que
+deux de ses sommets sont reliés lorsque les poissons associés à ces sommets
+ne peuvent cohabiter. Le nombre minimum d’aquariums est égal au nombre
+chromatique de ce graphe.
+/BZ contient un sous-graphe complet d’ordre 4 (de sommets/BT /BN /BV/BN /BW/BN /C0 /B5 /BN donc
+/AD /B4 /BZ /B5 /BQ /BG /BM Déterminons une partition des sommets de /BZ en sous-ensembles
+stables :
+/CB
+/BD
+/BP /CU /BT/BN /BX /CV
+/CB
+/BE
+/BP /CU /BU/BN /BV /CV
+/CB
+/BF
+/BP /CU /BW/BN /BY/BN /BZ /CV
+19
+<<<PAGE>>>
+/CB
+/BG
+/BP /CU /C0 /CV
+donc /AD /B4 /BZ /B5 /BI /BG /BN et on en déduit que /AD /B4 /BZ /B5/BP /BG /BM
+5. Algorithme de coloriage des sommets d’un graphe simple
+V oici un algorithme permettant de colorier un graphe simple. Nommons les
+sommets du graphe en ordre de degré décroissant : /DC
+/BD
+/BN/DC
+/BE
+/BN/BM/BM/BM /BN/DC
+/D2
+/BN avec /CS /B4 /DC
+/CX
+/B5 /BQ
+/CS /B4 /DC
+/CY
+/B5 pour 1/BI /CX/BO /CY /BI /D2/BM Attribuons la couleur /CR
+/BD
+à /DC
+/BD
+et au sommet suivant
+de la liste qui n’est pas adjacent à /DC
+/BD
+et ainsi de suite avec les sommets de la
+liste qui ne sont pas adjacents aux sommets déjà coloriés. Ensuite, on attribue
+la couleur /CR
+/BE
+au premier sommet non colorié ainsi qu’aux sommets suivants qui
+ne sont pas adjacents aux sommets coloriés par la couleur /CR
+/BE
+/BM On continue ce
+processus jusqu’à épuisement des sommets de la liste. Remarquons bien que le
+nombre de couleurs ainsi utilisées n’est pas nécessairement minimal.
+Appliquons cet algorithme au graphe de l’exemple précédent. Rangeons les som-
+mets par ordre de degré décroissant :
+Sommet
+ degré
+A
+ 5
+C
+ 5
+B
+ 4
+D
+ 4
+E
+ 4
+G
+ 4
+F
+ 3
+H
+ 3
+On attribue la couleur /CR
+/BD
+aux sommets : A et E
+On attribue la couleur /CR
+/BE
+aux sommets : C et B
+On attribue la couleur /CR
+/BF
+aux sommets : D,F et G
+On attribue enﬁn la couleur /CR
+/BG
+au sommet H.
+D.6 Graphes valués et problème du plus court chemin
+Beaucoup de problèmes peuvent être modélisés en utilisant des graphes valués.
+Les problèmes de cheminement dans les graphes, en particulier la recherche du
+plus court chemin, comptent parmi les problèmes les plus anciens de la théorie des
+graphes et les plus importants par leurs applications : coût de transport, temps de
+parcours, problème de traﬁc,. . . Les algorithmes de recherche de plus court chemin
+seront différents selon les caractérisitiques du graphe.
+1. Déﬁnition
+Un graphe valué est un graphe orienté /BZ /BP/B4 /CG/BN /BT /B5 /BN muni d’une fonction /AD :
+/BT /AX /CA
+/A3
+/B7
+/BN appelée fonction de coût.
+Remarque On peut également déﬁnir la notion de graphe valué non orienté
+20
+<<<PAGE>>>
+2. Exemple
+Graphe valué de modélisation d’un réseau aérien
+3. Déﬁnitions
+Le coût d’un chemin est la somme des coûts des arcs de ce chemin. On peut
+déﬁnir la matrice des coûts du graphe, c’est la matrice /BV /BP/B4 /CR
+/CX/BN/CY
+/B5 où :
+/CR
+/CX/BN/CY
+/BP
+/BK
+/BO
+/BM
+/BC si /CX /BP /CY
+/BD si /CX /BI/BP /CY et /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5 /BP/BE /BT
+/AD /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5 si /CX /BI/BP /CY et /B4 /DC
+/CX
+/BN/DC
+/CY
+/B5 /BE /BT
+4. Déﬁnition
+Soit /BZ /BP/B4 /CG/BN /BT /BN /AD /B5 un graphe valué, /DC et /DD deux éléments de /CG/BM Une chemin /CR
+de /BZ de /DC à /DD est dit minimum lorsque pour tout chemin /CR
+/BC
+de /BZ allant de /DC à /DD
+on a : /AD /B4 /CR
+/BC
+/B5 /BQ /AD /B4 /CR /B5 /BM On déﬁnit la matrice /C5 /BP/B4 /D1
+/CX/BN/CY
+/B5 de coût minimum par :
+/D1
+/CX/BN/CY
+/BP
+/BK
+/BO
+/BM
+/BC si /CX /BP /CY
+/BD s’il n’existe pas de chemin de/DC à /DD
+/D1/CX/D2 /CU /AD /B4 /CR /B5 /CY /CR chemin de /DC à /DD /CV
+Décrivons à présent deux algorithmes de recherche de chemin minimum.
+5. Algorithme de Dijkstra
+/BD
+( 1959 )
+Numérotons les sommets du graphe de 1 à /D2/BM Cet algorithme calcule le plus
+court chemin du sommet 1 à tous les sommets du graphe ( il donnera donc la
+première ligne de la matrice de coût minimum ). On construit un vecteur /AP /BP
+/B4 /AP /B4/BD/B5 /BN/AP /B4/BE/B5 /BN/BM/BM/BM/BN/AP /B4 /D2 /B5/B5 ayant /D2 composantes tel que /AP /B4 /CX /B5 soit égal à la longueur
+du plus court chemin allant de 1 au sommet /CX/BM On initialise ce vecteur à /B4 /CR
+/BD /BN/CX
+/B5 /BN
+c’est-à-dire à la première ligne de la matrice des coûts du graphe. On considère
+ensuite deux ensembles de sommets, /CB initialisé à /CU /BD /CV et
+ /CB son complémentaire
+dans /CG/BN ensemble des sommets du graphe. À chaque pas de l’algorithme, on
+ajoute à /CB des sommets jusquà ce que /CB /BP /CG de telle sorte que le vecteur /AP
+donne à chaque étape le coût minimal des chemins de 1 aux sommets de /CB/BM
+/BD
+Edsger Dijsktra, Université d’Amsterdam
+21
+<<<PAGE>>>
+Description de l’algorithme:
+initialisations
+/AP /BP/B4 /CR
+/BD /BN/CX
+/B5 pour /CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/CB /BP /CU /BD /CV ;
+ /CB /BP /CU /BE /BN /BF /BN/BM/BM/BM/BN/D2 /CV
+itérations
+Tant que
+ /CB /BI/BP /BN
+Choisir /CX dans
+ /CB tel que /AP /B4 /CX /B5 est minimum
+Retirer /CX de
+ /CB et l’ajouter à /CB
+Pour chaque successeur /CY de /CX dans
+ /CB
+/AP /B4 /CY /B5/BM /BP /D1 /CX /D2 /B4 /AP /B4 /CY /B5 /BN/AP /B4 /CX /B5/B7 /AD /B4 /CX/BN /CY /B5/B5
+Exemple :
+Appliquons l’algorithme de Dijkstra au graphe suivant :
+Initialisation
+/CB /BP /CU /BD /CV ;
+ /CB /BP /CU /BE /BN /BF /BN /BG /BN /BH /CV ; /AP /BP/B4 /BC /BN /BD/BH /BN /BD /BN /BD /BN /BG/B5
+1
+/D6/CT
+itération : /CX /BP/BH car /AP /B4/BH/B5 /BP /D1/CX/D2 /B4/BD/BH /BN /BD /BN /BD /BN /BG/B5 /BP /BG
+/CB /BP /CU /BD /BN /BH /CV ;
+ /CB /BP /CU /BE /BN /BF /BN /BG /CV ; les successeurs de 5 dans
+ /CB sont 3 et 4, /AP /B4/BF/B5
+prend la nouvelle valeur /D1/CX/D2 /B4 /BD /BN/AP /B4/BH/B5 /B7 /AD /B4/BH /BN /BF/B5/B5 /BP /D1/CX/D2 /B4 /BD /BN /BG /B7 /BJ/B5 /BP /BD/BD /BN/AP /B4/BG/B5
+prend la nouvelle valeur /D1/CX/D2 /B4 /BD /BN/AP /B4/BH/B5 /B7 /AD /B4/BH /BN /BG/B5/B5 /BP /BL /BN d’où le nouveau vecteur
+/AP /BP/B4 /BC /BN /BD/BH /BN /BD/BD /BN /BL /BN /BG/B5
+2
+/CT
+itération : /CX /BP/BG ; /AP /B4 /BG /B5/BP/BL
+/CB /BP /CU /BD /BN /BH /BN /BG /CV ;
+ /CB /BP /CU /BE /BN /BF /CV ; /AP /BP/B4 /BC /BN /BD/BE /BN /BD/BD /BN /BL /BN /BG/B5
+3
+/CT
+itération : /CX /BP/BF ; /AP /B4 /BF /B5/BP/BD /BD
+/CB /BP /CU /BD /BN /BH /BN /BG /BN /BF /CV ;
+ /CB /BP /CU /BE /CV ; /AP /BP/B4 /BC /BN /BD/BE /BN /BD/BD /BN /BL /BN /BG/B5
+4
+/CT
+itération : /CX /BP/BE ; /AP /B4 /BE /B5/BP/BD /BE
+/CB /BP /CU /BD /BN /BH /BN /BG /BN /BF /BN /BE /CV ;
+ /CB /BP /BN ; /AP /BP/B4 /BC /BN /BD/BE /BN /BD/BD /BN /BL /BN /BG/B5
+Le chemin minimal de 1 à 4 par exemple est de coût 9, c’est le chemin/BD /BN /BH /BN /BG /BM
+Remarque
+Si /BZ /BP/B4 /CG/BN /BT /B5 est un graphe orienté, on peut considérer la fonction de coût /BM
+/AD /BM /BT /AX/CU /BD /CV
+/CP /AX /BD
+22
+<<<PAGE>>>
+Le coût d’un chemin du graphe/BZ ainsi valué par /AD est la longueur de ce chemin.
+La matrice des coûts est la matrice des distances. L’algorithme de Dijkstra dans
+ce cas particulier est en fait l’algorithme de Moore. (voirD.4.2)
+Exercice
+La matrice qui suit donne en heures les durées des vols entre certaines villes
+/DA
+/BD
+/BN/DA
+/BE
+/BN/BM/BM/BM /BN/DA
+/BI
+:
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BF /BD /BH /BD /BD
+/BF /BC /BH /BE /BG /BD
+/BD /BG /BC /BD /BG /BF
+/BI /BE /BD /BC /BG /BG
+/BD /BG /BG /BH /BC /BE
+/BD /BD /BH /BG /BF /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+le terme /B4 /CX/BN /CY /B5 de cette matrice est égal à /BD lorque le vol au départ de la ville /DA
+/CX
+à destination de /DA
+/CY
+n’existe pas.
+a. Quel est l’itinéraire le plus rapide de /DA
+/BD
+à /DA
+/BI
+?
+b. S’il y a une escale obligatoire de respectivement 2,3,1,1,4,5 heures aux villes
+/DA
+/BD
+/BN/DA
+/BE
+/BN/BM/BM/BM /BN/DA
+/BI
+/BN quel est alors l’itinéraire le plus rapide de/DA
+/BD
+à /DA
+/BI
+?
+(a) Appliquons l’algorithme de Dijkstra pour déterminer la valeur d’un chemin
+minimal de /DA
+/BD
+à /DA
+/BI
+/BM
+Initialisation
+/CB /BP /CU /BD /CV ;
+ /CB /BP /CU /BE /BN /BF /BN /BG /BN /BH /CV ; /AP /BP/B4 /BC /BN /BF /BN /BD /BN /BH /BN /BD /BN /BD /B5
+1
+/D6/CT
+itération : /CX /BP/BE
+/CB /BP /CU /BD /BN /BE /CV ;
+ /CB /BP /CU /BF /BN /BG /BN /BH /BN /BI /CV ; /AP /BP/B4 /BC /BN /BF /BN /BK /BN /BH /BN /BJ /BN /BD /B5
+2
+/CT
+itération : /CX /BP/BG ;
+/CB /BP /CU /BD /BN /BE /BN /BG /CV ;
+ /CB /BP /CU /BF /BN /BH /BN /BI /CV ; /AP /BP/B4 /BC /BN /BF /BN /BK /BN /BH /BN /BJ /BN /BL/B5
+3
+/CT
+itération : /CX /BP/BH ;
+/CB /BP /CU /BD /BN /BE /BN /BG /BN /BH /CV ;
+ /CB /BP /CU /BF /BN /BI /CV ; /AP /BP/B4 /BC /BN /BF /BN /BK /BN /BH /BN /BJ /BN /BL/B5
+4
+/CT
+itération : /CX /BP/BF ;
+/CB /BP /CU /BD /BN /BE /BN /BG /BN /BH /BN /BF /CV ;
+ /CB /BP /CU /BI /CV ; /AP /BP/B4 /BC /BN /BF /BN /BK /BN /BH /BN /BJ /BN /BL/B5
+5
+/CT
+itération : /CX /BP/BI ;
+/CB /BP /CU /BD /BN /BE /BN /BG /BN /BH /BN /BF /BN /BI /CV ;
+ /CB /BP /BN ; /AP /BP/B4 /BC /BN /BF /BN /BK /BN /BH /BN /BJ /BN /BL/B5
+L’itinéraire le plus rapide nécessite donc 9 heures pour aller de la ville /DA
+/BD
+à
+la ville /DA
+/BI
+/BM L’itinéraire/DA
+/BD
+/BN/DA
+/BG
+/BN/DA
+/BI
+est un itinéraire minimum. (Il y en a deux
+autres...)
+(b) On applique le même algorithme à la nouvelle matrice des durées, obtenue
+en ajoutant au vol de /DA
+/CX
+à /DA
+/CY
+la durée de l’escale en /DA
+/CY
+/BN c’est-à-dire au graphe
+de matrice des coûts :
+23
+<<<PAGE>>>
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BI /BD /BI /BD /BD
+/BH /BC /BI /BF /BK /BD
+/BD /BJ /BC /BD /BK /BF
+/BK /BH /BD /BC /BK /BG
+/BD /BJ /BH /BI /BC /BE
+/BD /BD /BI /BH /BJ /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+on trouve à nouveau /DA
+/BD
+/BN/DA
+/BG
+/BN/DA
+/BI
+comme itinéraire minimal (en terme de durée),
+de durée 10 heures.
+6. L’algorithme de Maria Hasse
+/BE
+Cette méthode consiste à calculer la matrice des coûts minimums. Considérons
+les opérations /A8 et Ꜳ déﬁnies sur /CJ/BC/BN /BD /CL/BP /CA
+/A3
+/B7
+/CJ/CU /BC /BN /BD/CV par :
+/CP /A8 /CQ /BP /D1/CX/D2 /B4 /CP/BN /CQ /B5
+/CP Ꜳ /CQ /BP /CP /B7 /CQ
+Déﬁnissons alors un nouveau produit matriciel en remplaçant l’addition et la
+multiplication des réels par /A8 et Ꜳ respectivement. Le produit des matrices
+/C5 /BP/B4 /D1
+/CX/BN/CY
+/B5 et /C6 /BP/B4 /D2
+/CX/BN/CY
+/B5 de /C5
+/D2
+/B4 /CA ) est la matrice /C8 /BP/B4 /D4
+/CX/BN/CY
+/B5 où :
+/D4
+/CX/BN/CY
+/BP /A8
+/D2
+/CZ /BP/BD
+/D1
+/CX/BN/CZ
+Ꜳ /D2
+/CZ/BN /CY
+/BP /D1/CX/D2
+/CZ /BE/CU /BD /BN /BE /BN/BM/BM/BM /D2 /CV
+/B4 /D1
+/CX/BN/CZ
+/B7 /D2
+/CZ/BN /CY
+/B5
+a. Théorème
+Soit /BZ /BP/B4 /CG /BN /BT/BN /AD /B5 un graphe valué de matrice des coûts /BV /BP/B4 /CR
+/CX/BN/CY
+/B5 /BM Si /CZ est
+un entier naturel tel que /BV
+/CZ
+/BP /BV
+/CZ /B7/BD
+/BN alors /BV
+/CZ
+est la matrice des coûts mini-
+mums.(les puissances successives de la matrice/BV é tant calculées à l’aide des
+opérations décrites précédemment)
+Démonstration
+Montrons par récurrence sur /CZ que /CR
+/B4 /CZ /B5
+/CX/BN/CY
+est le minimum parmi les coûts des
+chemins de longueur inférieure à /CZ de /DC
+/CX
+à /DC
+/CY
+/BM Pour /CZ /BP/BD /BN c’est clair. Sup-
+posons le résulat vrai pour l’entier /CZ /A0 /BD /BN alors /D1/CX/D2
+/D0
+/B4 /CR
+/B4 /CZ /A0 /BD/B5
+/CX/BN/D0
+/B7 /CR
+/D0/BN/CY
+/B5/BP /CR
+/B4 /CZ /B5
+/CX/BN/CY
+représente bien le minimum des coûts des chemins de longueur /CZ allant de /DC
+/CX
+à /DC
+/CY
+/BM Si pour un certain entier /CZ on a /BV
+/CZ
+/BP /BV
+/CZ /B7/BD
+/BN alors pour tout entier na-
+turel /D1 /BQ /CZ/BN /BV
+/D1
+/BP /BV
+/CZ
+/BN/CR
+/B4 /CZ /B5
+/CX/BN/CY
+désigne alors le minimum des coûts des chemins
+de longueur quelconque allant de /DC
+/CX
+à /DC
+/CY
+/BN/BV
+/CZ
+est bien la matrice des coûts
+minimums.
+b. V oici une procédure Maple calculant la matrice des coûts minimums en util-
+isant la méthode de Maria Hasse.
+On prend 1 000 000 pour représenter l’inﬁni
+/BQ i:=10^6:
+La procédure produit calcule le produit de 2 matrices à l’aide des nouvelles
+opérations
+/BQ produit:=proc(A,B::matrix)
+local i,j,k,n,C;
+/BE
+Maria Hasse, Université de Halle Wittenberg
+24
+<<<PAGE>>>
+n:=rowdim(A):
+for i to n do
+for j to n do
+C[i,j]:=min(seq(A[i,k]+B[k,j],k=1..n)):
+od;
+od;
+matrix(n,n,[seq(seq(C[i,j],j=1..n),i=1..n)]):
+end:
+La procédure hasse détermine le plus petit entier/CZ et afﬁche la matrice des coûts
+minimums.
+/BQ hasse:=proc(C::matrix)local k,n,A,B;
+k:=1:
+n:=rowdim(C);
+A:=copy(C);
+B:=produit(A,A);
+while not equal(A,B) do
+A:=copy(B);
+B:=produit(B,C);
+k:=k+1;
+od;
+print(cat(‘k=‘,k,‘ ‘,‘la matrice des coûts minimums est‘));
+evalm(matrix(n,n,[seq(seq(B[i,j],j=1..n),i=1..n)]));
+end:
+Exemple
+Appliquons la métode de Hasse pour déterminer la matrice des coûts minimums du
+graphe valué suivant :
+25
+<<<PAGE>>>
+La matrice des coûts de ce graphe est :
+/BV /BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BK /BD /BD /BG /BD
+/BD /BC /BF /BD /BK /BD
+/BD /BD /BC /BE /BD /BD
+/BD/BF /BF /BD /BC /BD /BH
+/BD /BD /BD /BH /BC /BD
+/BD /BD /BD /BD /BI /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+La procédure Maple renvoie la matrice des coûts minimums au bout de la qua-
+trième itération
+/C5 /BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BK /BD/BD /BL /BG /BD/BG
+/BD/BD /BC /BF /BH /BK /BD/BC
+/BK /BH /BC /BE /BD/BE /BJ
+/BI /BF /BI /BC /BD/BC /BH
+/BD/BD /BK /BD/BD /BH /BC /BD/BC
+/BD /BL /BD/BE /BD/BC /BH /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+La connaissance des puissances intermédiaires de /BV est nécessaire pour déterminer
+un chemin minimal. Cherchons par exemple un chemin de coût minimal de/DC
+/BE
+à /DC
+/BD
+/BM
+/BV
+/BE
+/BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BK /BD/BD /BL /BG /BD
+/BD /BC /BF /BH /BK /BD
+/BD/BH /BH /BC /BE /BD /BJ
+/BI /BF /BI /BC /BD/BD /BH
+/BD/BK /BK /BD /BH /BC /BD/BC
+/BD /BL /BD /BD/BD /BH /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+/BV
+/BF
+/BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BK /BD/BD /BL /BG /BD/BG
+/BD/BK /BC /BF /BH /BK /BD/BC
+/BK /BH /BC /BE /BD/BF /BJ
+/BI /BF /BI /BC /BD/BC /BH
+/BD/BD /BK /BD/BD /BH /BC /BD/BC
+/BD /BL /BD/BE /BD/BC /BH /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+/BV
+/BG
+/BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BK /BD/BD /BL /BG /BD/BG
+/BD/BD /BC /BF /BH /BK /BD/BC
+/BK /BH /BC /BE /BD/BE /BJ
+/BI /BF /BI /BC /BD/BC /BH
+/BD/BD /BK /BD/BD /BH /BC /BD/BC
+/BD /BL /BD/BE /BD/BC /BH /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+Comme /CR
+/B4/BF/B5
+/BE /BN /BD
+/BP/BD /BK /BI/BP /CR
+/B4/BG/B5
+/BE /BN /BD
+/BP/BD /BD /BN le coût du chemin minimal de /DC
+/BE
+à /DC
+/BD
+est égal à 11.
+Comme /CR
+/B4/BF/B5
+/BE /BN/CX
+/B7 /CR
+/CX/BN /BD
+/BP/BD /BD pour /CX /BP/BI /BN le chemin se termine par l’arc/B4 /DC
+/BI
+/BN/DC
+/BD
+/B5 ; de même
+/CR
+/B4/BF/B5
+/BE /BN /BI
+/BP/BD /BC /BP /CR
+/B4/BE/B5
+/BE /BN/CX
+/B7 /CR
+/CX/BN /BI
+pour /CX /BP/BG /BN les deux derniers arcs sont /B4 /DC
+/BG
+/BN/DC
+/BI
+/B5 /BN /B4 /DC
+/BI
+/BN/DC
+/BD
+/B5 /BM ;
+enﬁn, /CR
+/B4/BE/B5
+/BE /BN /BG
+/BP/BH /BP /CR
+/BE /BN /BF
+/B7 /CR
+/BF /BN /BG
+/BN le deuxième arc est /B4 /DC
+/BF
+/BN/DC
+/BG
+/B5 /BM Finalement, le chemin
+cherché est : /DC
+/BE
+/BN/DC
+/BF
+/BN/DC
+/BG
+/BN/DC
+/BI
+/BN/DC
+/BD
+/BM
+26
+<<<PAGE>>>
+D.7 Graphes probabilistes
+D.7.1 Chaîne de Markov
+1. Déﬁnitions
+Soit /D2 un entier naturel non nul. Un vecteur stochastique de /CA
+/D2
+est un vecteur
+/CG tel que :
+/BK /CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/D2 /CV /BN/CG
+/CX
+/BQ /BC /BN
+/D2
+/CG
+/CX /BP/BD
+/CG
+/CX
+/BP/BD /BM
+Une matrice /C8 de /C5
+/D2
+/B4 /CA ) est dite stochastique, lorsque :
+/BK /B4 /CX/BN /CY /B5 /BE /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/BE
+/BN/C8
+/CX/BN/CY
+/BQ /BC
+/BK /CX /BE /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/D2
+/CG
+/CY /BP/BD
+/C8
+/CX/BN/CY
+/BP/BD
+Une matrice stochastique est donc une matrice dont chacune des lignes est un
+vecteur stochastique.
+2. Propriété
+Si /CG est un vecteur stochastique de /CA
+/D2
+et si /C8 est une matrice stochastique de
+/C5
+/D2
+/B4 /CA ), alors /CG/C8 est un vecteur stochatisque de /CA
+/D2
+/BM
+En effet, pour tout /CY /BE/CU /BD /BN /BE /BN/BM/BM/BM /BN/D2 /CV /BN
+/B4 /CG/C8 /B5
+/CY
+/BP
+/D2
+/CG
+/CX /BP/BD
+/CG
+/CX
+/C8
+/CX/BN/CY
+/BQ /BC
+et
+/D2
+/CG
+/CY /BP/BD
+/B4 /CG/C8 /B5
+/CY
+/BP
+/D2
+/CG
+/CY /BP/BD
+/D2
+/CG
+/CX /BP/BD
+/CG
+/CX
+/C8
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CX /BP/BD
+/CG
+/CX
+/D2
+/CG
+/CY /BP/BD
+/C8
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CX /BP/BD
+/CG
+/CX
+/BP/BD
+3. Propriété
+Si /C8 et /C9 sont deux matrices stochastiques de /C5
+/D2
+/B4 /CA ), alors /C8/C9 est encore une
+matrice stochastique de /C5
+/D2
+/B4 /CA ).
+En effet, pour tout /B4 /CX/BN /CY /B5 /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/BE
+/BN
+/B4 /C8/C9 /B5
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CZ /BP/BD
+/C8
+/CX/BN/CZ
+/C9
+/CZ/BN /CY
+/BQ /BC
+et pour tout /CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/D2
+/CG
+/CY /BP/BD
+/B4 /C8/C9 /B5
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CY /BP/BD
+/D2
+/CG
+/CZ /BP/BD
+/C8
+/CX/BN/CZ
+/C9
+/CZ/BN /CY
+/BP
+/D2
+/CG
+/CZ /BP/BD
+/C8
+/CX/BN/CZ
+/D2
+/CG
+/CY /BP/BD
+/C9
+/CZ/BN /CY
+/BP/BD
+On montre alors par récurrence que pour tout entier naturel /D1/BN /C8
+/D1
+est une ma-
+trice stochastique.
+27
+<<<PAGE>>>
+4. Déﬁnition
+Fixons /CB un ensemble ﬁni, appelé ensemble des états. Une chaîne de Markov
+/BF
+à temps discret sur /CB est une suite de variables aléatoires à valeurs dans /CB/BN
+/CG /BP/B4 /CG
+/D2
+/B5
+/D2 /AL /BC
+satisfaisant les deux conditions suivantes :
+(a). (Condition d’indépendance)
+Pour tout /D2 /BQ /BC et pour tout choix de /CX
+/BC
+/BN/CX
+/BD
+/BN/BM/BM/BM/BN/CX
+/D2 /A0 /BD
+et /CX dans /CB pour
+lesquels /C8 /CJ/B4 /CG
+/BC
+/BN/CG
+/BD
+/BN/BM/BM/BM/BN/CG
+/D2
+/B5/BP/B4 /CX
+/D3
+/BN/CX
+/BD
+/BN/BM/BM/BM /BN/CX
+/D2 /A0 /BD
+/BN/CX /B5/CL /BQ /BC /BN on a :
+/C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CY /B4 /CG
+/BC
+/BN/CG
+/BD
+/BN/BM/BM/BM /BN/CG
+/D2
+/B5/BP/B4 /CX
+/D3
+/BN/CX
+/BD
+/BN/BM/BM/BM /BN/CX
+/D2 /A0 /BD
+/BN/CX /B5/CL
+/BP /C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CY /CG
+/D2
+/BP /CX /CL
+(b). (Condition d’homogénéité)
+Pour tout /CX et pour tout /CY dans /CB et pour tous les entiers /D2 tels que
+/C8 /CJ /CG
+/D2
+/BP /CX /CL /BQ /BC /BN la probabilité conditionnelle /C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CY /CG
+/D2
+/BP /CX /CL
+ne dépend pas de /D2/BM
+5. Déﬁnitions
+Soit /CG /BP/B4 /CG
+/D2
+/B5
+/D2 /BQ /BC
+une chaîne de Markov sur un ensemble /CB
+La matrice /C8 /BP/B4 /D4
+/CX/BN/CY
+/B5
+/B4 /CX/BN/CY /B5 /BE /CB
+/BE
+déﬁnie par :
+/D4
+/CX/BN/CY
+/BP /C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CY /CG
+/D2
+/BP /CX /CL
+s’appellela matrice de transition de la chaîne de Markov.
+La distribution /AP
+/BC
+/BP/B4 /C8 /CJ /CG
+/BC
+/BP /CX /CL/B5
+/CX /BE /CB
+s’appelle la loi initiale de la chaîne de
+Markov.
+Remarque : la matrice /C8 est une matrice stochastique, en effet :
+/CG
+/CY /BE /CB
+/D4
+/CX/BN/CY
+/BP
+/CG
+/CY /BE /CB
+/C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CY /CG
+/D2
+/BP /CX /CL/BP /C8
+/B4 /CG
+/D2
+/BP /CX /B5
+/CJ /CJ
+/CY /BE /CB
+/B4 /CG
+/D2 /B7/BD
+/BP /CY /B5/CL /BP /BD
+Exemple
+Considérons une particule qui se déplace de façon aléatoire, l’ensemble/CB représente
+l’ensemble de toutes les positions possibles (que l’on suppose être en nombre
+ﬁni). Pour tout /D2 /BE /C6 , la variable /CG
+/D2
+représente la position de la particule à
+l’instant /D2/BN donc après /D2 déplacements. Si après /D2 transitions la particule est à
+la position /CX/BN alors elle choisira aléatoirement sa ( /D2 /B7/BD /B5 ième position selon la
+distribution de probabilité /B4 /C8
+/CX/BN/CY
+/B5
+/CY /BE /CB
+et ce indépendamment de /D2 et de ses états
+aux instants qui ont précédé/BM
+6. Propriété
+Notons /CB /BP /CU /BD /BN /BE /BN/BM/BM/BM/BN/D6 /CV et pour tout instant /D2/BN
+/AP
+/D2
+/BP/B4 /C8 /B4 /CG
+/D2
+/BP/BD /B5 /BN /C8 /CJ /CG
+/D2
+/BP/BE /CL /BN/BM/BM/BM/BN /C8 /CJ /CG
+/D2
+/BP /D6 /CL/B5 /BM On a alors pour tout /D2 /BE /C6 :
+/AP
+/D2 /B7/BD
+/BP /AP
+/D2
+/C8
+En effet, pour tout /CY /BE /CB :
+/B4 /AP
+/D2 /B7/BD
+/B5
+/CY
+/BP /C8 /CJ /CG
+/D2 /B7/BD
+/BP /CY /CL/BP /C8 /CJ/B4 /CJ
+/CX /BE /CB
+/B4 /CG
+/D2 /B7/BD
+/BP /CY /B5 /CK /B4 /CG
+/D2
+/BP /CX /B5/B5/CL
+/BF
+Andrei Andreyevich Markov (1856-1922) Élève de Chebyshev, professeur à St Petersburg.
+Ses travaux ont porté sur l’analyse, la théorie des nombres et les processus aléatoires.
+28
+<<<PAGE>>>
+/BP
+/CG
+/CX /BE /CB
+/C8 /CJ /CG
+/D2
+/BP /CX /CL /C8 /CJ/B4 /CG
+/D2 /B7/BD
+/BP /CY /B5 /CY /B4 /CG
+/D2
+/BP /CX /B5/CL
+/BP
+/CG
+/CX /BE /CB
+/B4 /AP
+/D2
+/B5
+/CX
+/D4
+/CX/BN/CY
+/BP/B4 /AP
+/D2
+/C8 /B5
+/CY
+La loi de la chaîne de Markov est donc entièrement déterminée par la donnée de
+sa matrice de transition /C8 et de l’état initial/AP
+/BC
+/BM
+7. Théorème
+Si la matrice de transition /C8 a tous ses coefﬁcients strictement positifs, alors :
+– la suite /B4 /AP
+/D2
+/B5 converge vers un vecteur/AP indépendant de la distribution initiale.
+– La suite des matrices /B4 /C8
+/D1
+/B5 converge vers une matrice stochastique /C8
+/BD
+dont
+toutes les lignes sont égales au vecteur /AP/BM De plus, /AP /BP /AP/C8
+/BD
+Démonstration
+Soit /D2 un entier naturel supérieur ou égal à 2. Notons /C8
+/D2
+l’ensemble des ma-
+trices stochastiques de /C5
+/D2
+/B4 /CA )e t /C3
+/D2
+l’ensemble des vecteurs lignes stochas-
+tiques de /C5
+/BD /BN/D2
+/B4 /CA ).
+Pour une matrice /C8 /BP/B4 /D4
+/CX/BN/CY
+/B5 de /C8
+/D2
+/BN introduisons les notations suivantes :
+/AX /BP /D1/CX/D2
+/BD /AK /CX /AK /D2/BN /BD /AK /CY /AK /D2
+/D4
+/CX/BN/CY
+/BN /BK /D1 /BE /C6 , /C8
+/D1
+/BP/B4 /D4
+/B4 /D1 /B5
+/CX/BN/CY
+/B5
+/BK /D1 /BE /C6 , /BK /CY /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV /BN
+/AB
+/B4 /D1 /B5
+/CY
+/BP /D1/CX/D2
+/BD /AK /CX /AK /D2
+/D4
+/B4 /D1 /B5
+/CX/BN/CY
+/BN/AC
+/B4 /D1 /B5
+/CY
+/BP/D1 /CP /DC
+/BD /AK /CX /AK /D2
+/D4
+/B4 /D1 /B5
+/CX/BN/CY
+et Æ
+/B4 /D1 /B5
+/CY
+/BP /AC
+/B4 /D1 /B5
+/CY
+/A0 /AB
+/B4 /D1 /B5
+/CY
+Établissons les deux inégalités :
+/AC
+/B4 /D1 /B7/BD/B5
+/CY
+/BI /AC
+/B4 /D1 /B5
+/CY
+/A0 /AXÆ
+/B4 /D1 /B5
+/CY
+(1)
+/AB
+/B4 /D1 /B7/BD/B5
+/CY
+/BQ /AB
+/B4 /D1 /B5
+/CY
+/B7 /AXÆ
+/B4 /D1 /B5
+/CY
+(2)
+pour /CY /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV et /D1 /BE /C6 .
+Soit /CZ
+/BC
+vériﬁant /D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/BP /AB
+/B4 /D1 /B5
+/CY
+/BM On a :
+/D4
+/B4 /D1 /B7/BD/B5
+/CX/BN/CY
+/BP
+/D2
+/CG
+/CZ /BP/BD
+/D4
+/CX/BN/CZ
+/D4
+/B4 /D1 /B5
+/CZ/BN /CY
+/BP /D4
+/CX
+/BN
+/CZ
+/BC
+/D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/B7
+/CG
+/CZ /BI/BP /CZ
+/BC
+/D4
+/CX/BN/CZ
+/D4
+/B4 /D1 /B5
+/CZ/BN /CY
+/BI /D4
+/CX
+/BN
+/CZ
+/BC
+/D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/B7
+/AW
+/CG
+/CZ /BI/BP /CZ
+/BC
+/D4
+/CX
+/BN
+/CZ
+/AX
+/AC
+/B4 /D1 /B5
+/CY
+/BP /D4
+/CX
+/BN
+/CZ
+/BC
+/D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/B7/B4 /BD /A0 /D4
+/CX/BN/CZ
+/BC
+/B5 /AC
+/B4 /D1 /B5
+/CY
+/BP /AC
+/B4 /D1 /B5
+/CY
+/A0 /D4
+/CX/BN/CZ
+/BC
+/B4 /AC
+/B4 /D1 /B5
+/CY
+/A0 /D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/B5/BP /AC
+/B4 /D1 /B5
+/CY
+/A0 /D4
+/CX/BN/CZ
+/BC
+/B4 /AC
+/B4 /D1 /B5
+/CY
+/A0 /AB
+/B4 /D1 /B5
+/CY
+/B5
+/BP /AC
+/B4 /D1 /B5
+/CY
+/A0 /D4
+/CX/BN/CZ
+/BC
+Æ
+/B4 /D1 /B5
+/CY
+/BI /AC
+/B4 /D1 /B5
+/CY
+/A0 /AXÆ
+/B4 /D1 /B5
+/CY
+En prenant le max sur /CX/BN on obtient : /AC
+/B4 /D1 /B7/BD/B5
+/CY
+/BI /AC
+/B4 /D1 /B5
+/CY
+/A0 /AXÆ
+/B4 /D1 /B5
+/CY
+/BM
+L’inégalité (2) se démontre de la même manière en considérant /CZ
+/BC
+tel que
+/D4
+/B4 /D1 /B5
+/CZ
+/BC
+/BN/CY
+/BP /AC
+/B4 /D1 /B5
+/CY
+/BM
+L’inégalité (1) montre que la suite /B4 /AC
+/B4 /D1 /B5
+/CY
+/B5
+/D1
+est décroissante, l’inégalité (2)
+permet d’établir la croissance de la suite /B4 /AB
+/B4 /D1 /B5
+/CY
+/B5
+/D1
+/BM En faisant la différence de
+29
+<<<PAGE>>>
+(1) et de (2), on obtient :
+/AC
+/B4 /D1 /B7/BD/B5
+/CY
+/A0 /AB
+/B4 /D1 /B7/BD/B5
+/CY
+/BI /AC
+/B4 /D1 /B5
+/CY
+/A0 /AB
+/B4 /D1 /B5
+/CY
+/A0 /BE /AXÆ
+/B4 /D1 /B5
+/CY
+c’est-à-dire :
+Æ
+/B4 /D1 /B7/BD/B5
+/CY
+/BI /B4/BD /A0 /BE /AX /B5 Æ
+/B4 /D1 /B5
+/CY
+D’où, pour tout entier/D1 :
+/BC /BI Æ
+/B4 /D1 /B7/BD/B5
+/CY
+/BI /B4/BD /A0 /BE /AX /B5
+/D1
+Æ
+/B4/BD/B5
+/CY
+Or /B4/BD /A0 /BE /AX /B5 /BE /CJ/BC/BN /BD/CJ /BN en effet :
+/BD/BP
+/D2
+/CG
+/CY /BP/BD
+/D4
+/CX/BN/CY
+/BQ
+/D2
+/CG
+/CY /BP/BD
+/AX /BP /D2/AX /B5 /AX /BI
+/BD
+/D2
+/BI
+/BD
+/BE
+et /AX/BQ /BC , car on a supposé que les coefﬁcients de/C8 étaient strictement positifs.
+On en déduit alors que :
+/D0/CX/D1
+/D1 /AX /B7 /BD
+Æ
+/B4 /D1 /B5
+/CY
+/BP/BC
+Les suites /B4 /AB
+/B4 /D1 /B5
+/CY
+/B5
+/D1
+et /B4 /AC
+/B4 /D1 /B5
+/CY
+/B5
+/D1
+sont alors adjacentes et vont converger vers une
+limite commune /D0
+/CY/BM
+Or pour tout /B4 /CX/BN /CY /B5 /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV
+/BE
+/AB
+/B4 /D1 /B5
+/CY
+/BI /D4
+/B4 /D1 /B5
+/CX/BN/CY
+/BI /AC
+/B4 /D1 /B5
+/CY
+Le théorème des limites par encadrement permet alors d’afﬁrmer que la suite
+/B4 /D4
+/B4 /D1 /B5
+/CX/BN/CY
+/B5
+/D1
+converge vers /D0
+/CY
+/BM
+Posons alors /C4 /BP/B4 /D0
+/BD
+/BN/D0
+/BE
+/BN/BM/BM/BM /BN/D0
+/D2
+/B5 et soit /C8
+/BD
+la matrice dont toutes les lignes
+sont égales à /C4/BN on a alors :
+/D0/CX/D1
+/D1 /AX /B7 /BD
+/C8
+/D1
+/BP /C8
+/BD
+De plus, si /CG
+/D2
+est la matrice colonne dont les coefﬁcients valent 1:
+/C8
+/BD
+/CG
+/D2
+/BP /D0/CX/D1
+/D1 /AX /B7 /BD
+/C8
+/D1
+/CG
+/D2
+/BP /D0/CX/D1
+/D1 /AX /B7 /BD
+/CG
+/D2
+(car chaque /C8
+/D1
+est stochastique/B5
+/BP /CG
+/D2
+ce qui prouve bien que la matrice limite /C8
+/BD
+est stochastique.
+D’autre part, on a vu que pour tout /D1/BN /AP
+/D1
+/BP /AP
+/BC
+/C8
+/D1
+/BN la suite /B4 /AP
+/D1
+/B5 converge
+alors vers le vecteur ligne /AP /BP /AP
+/BC
+/C8
+/BD
+vériﬁant :
+/AP/C8
+/BD
+/BP /AP
+/BC
+/C8
+/BE
+/BD
+/BP /AP/C8
+/BD
+/BP /AP
+en effet, la suite /B4 /C8
+/BE /D1
+/B5 converge vers /C8
+/BD
+comme sous-suite de la suite con-
+vergente /B4 /C8
+/D1
+/B5 /BN et comme /C8
+/BE /D1
+/BP/B4 /C8
+/D1
+/B5
+/BE
+/BN elle converge également vers /C8
+/BE
+/BD
+/BM
+Par unicité de la limite, on a bien /C8
+/BE
+/BD
+/BP /C8
+/BD
+/BM
+Il reste à démontrer que le vecteur ligne /AP est indépendant de la distribution
+initiale /AP
+/BC
+/BM
+Le vecteur ligne /C4 obtenu précédemment, vériﬁe également /C4/C8
+/BD
+/BP /C4/BN en
+effet, pour tout entier /D1/BN on a /C8
+/D1
+/C8 /BP /C8
+/D1 /B7/BD
+/BN par passage à la limite, /C8
+/BD
+/C8 /BP
+/C8
+/BD
+/BM En interprétant le produit par blocs, on constate que :/C8
+/BD
+/C8 /BP
+/BC
+/BS
+/C4/C8
+...
+/C4/C8
+/BD
+/BT
+/BM
+On en déduit alors que /C4/C8 /BP /C4/BM Soit maintenant /C4
+/BC
+un vecteur ligne vériﬁ-
+ant /C4
+/BC
+/C8 /BP /C4
+/BC
+/BN alors /C4
+/BC
+/C8
+/D1
+/BP /C4
+/BC
+pour tout entier /D1/BN à la limite, /C4
+/BC
+/C8
+/BD
+/BP /C4
+/BC
+/BM
+30
+<<<PAGE>>>
+Notons /C4
+/BC
+/BP/B4 /D0
+/BC
+/BD
+/BN/D0
+/BC
+/BE
+/BN/BM/BM/BM /BN/D0
+/BC
+/D2
+/B5 /BN alors :
+/C4
+/BC
+/C8
+/BD
+/BP /C4
+/BC
+/B5
+/AW
+/D2
+/CG
+/CX /BP/BD
+/D0
+/BC
+/CX
+/AX
+/C4 /BP /C4
+/BC
+/C4
+/BC
+est donc colinéaire à /C4/BM On en déduit que l’espace des vecteurs lignes /CG
+vériﬁant /CG/C8 /BP /CG est la droite engendrée par/C4/BN son seul élément stochastique
+est le vecteur /C4 /BP /AP/BM En particulier, le vecteur ligne /AP ne dépend pas de /AP
+/BC
+/BN
+puisque sa caractérisation n’évoque que/C8/BM
+Autre démonstration (dans le cas :/CY /CB /CY /BP/BE /BN /B5 voir exercice F.9 pour une
+application numérique)
+On considère la décomposition de la matrice /C8 suivante :
+/C8 /BP
+/AI
+/BD /A0 /D4 /D4
+/D5 /BD /A0 /D5
+/AJ
+/BP /C9 /B7/B4 /BD /A0 /D4 /A0 /D5 /B5 /CA/BN avec /B4 /D4/BN /D5 /B5 /BE /CL/BC/BN /BD/CJ
+/BE
+où
+/C9 /BP
+/BC
+/BS
+/D5
+/D4 /B7 /D5
+/D4
+/D4 /B7 /D5
+/D5
+/D4 /B7 /D5
+/D4
+/D4 /B7 /D5
+/BD
+/BT
+et /CA /BP
+/BC
+/BU
+/BS
+/D4
+/D4 /B7 /D5
+/A0 /D4
+/D4 /B7 /D5
+/A0 /D5
+/D4 /B7 /D5
+/D5
+/D4 /B7 /D5
+/BD
+/BV
+/BT
+On remarquera que /C9 est une matrice stochastique dont les lignes sont égales.
+Calculons le produit /C9/CA :
+/C9/CA /BP
+/B4/BD /A0 /D4 /A0 /D5 /B5
+/B4 /D4 /B7 /D5 /B5
+/BE
+/AI
+/D5 /D4
+/D5 /D4
+/AJ/AI
+/D4 /A0 /D4
+/A0 /D5 /D5
+/AJ
+/BP
+/AI
+/BC /BC
+/BC /BC
+/AJ
+Un calcul identique montre que/CA/C9 est la matrice nulle. Calculons maintenant
+les puissances successives de /C9 et de /CA :
+/C9
+/BE
+/BP
+/BD
+/B4 /D4 /B7 /D5 /B5
+/BE
+/AI
+/D5 /D4
+/D5 /D4
+/AJ/AI
+/D5 /D4
+/D5 /D4
+/AJ
+/BP
+/BD
+/B4 /D4 /B7 /D5 /B5
+/BE
+/AI
+/D5
+/BE
+/B7 /D4/D5 /D4/D5 /B7 /D4
+/BE
+/D5
+/BE
+/B7 /D4/D5 /D4/D5 /B7 /D4
+/BE
+/AJ
+/BP
+/BD
+/B4 /D4 /B7 /D5 /B5
+/BE
+/AI
+/D5 /B4 /D4 /B7 /D5 /B5 /D4 /B4 /D4 /B7 /D5 /B5
+/D5 /B4 /D4 /B7 /D5 /B5 /D4 /B4 /D4 /B7 /D5 /B5
+/AJ
+/BP /C9
+On en déduit par récurrence, que pour tout entier/D2/BN /C9
+/D2
+/BP /C9/BM On montre de la
+même manière que pour tout entier /D2/BN /CA
+/D2
+/BP /CA/BM Finalement, en développant
+par la formule du binôme, on obtient :
+/C8
+/D2
+/BP/B4 /C9 /B7/B4 /BD /A0 /D4 /A0 /D5 /B5 /CA /B5
+/D2
+/BP /C9 /B7/B4 /BD /A0 /D4 /A0 /D5 /B5
+/D2
+/CA
+et comme /CY /BD /A0 /D4 /A0 /D5 /CY /BO /BD /BN la suite /B4 /C8
+/D2
+/B5
+/D2
+converge vers la matrice stochas-
+tique à lignes égales /C9 :
+/D0/CX/D1
+/D2 /AX /B7 /BD
+/C8
+/D2
+/BP /C8
+/BD
+/BP /C9 /BP
+/BC
+/BS
+/D5
+/D4 /B7 /D5
+/D4
+/D4 /B7 /D5
+/D5
+/D4 /B7 /D5
+/D4
+/D4 /B7 /D5
+/BD
+/BT
+31
+<<<PAGE>>>
+On conclut alors de la même manière que dans la démonstration précédente.
+D.7.2 Graphes probabilistes
+1. Déﬁnitions
+Un graphe probabiliste est un graphe orienté et valué tel que la somme des coûts
+des arcs issus d’un sommet donné est égal à 1.
+La matrice de transition d’un graphe probabiliste /BZ /BP/B4 /CG/BN /BT /BN /AD /B5 d’ordre/D2/BN est
+la matrice /C8 /BP/B4 /D4
+/CX/BN/CY
+/B5 /BE /C5
+/D2
+/B4 /CA /B5 où :
+/D4
+/CX/BN/CY
+/BP
+/AQ
+/AD /B4 /CX/BN /CY /B5 si /B4 /CX/BN /CY /B5 /BE /BT
+/BC si /B4 /CX/BN /CY /B5 /BP/BE /BT
+Remarques :
+– pour tout /CX /BE/CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV /BN
+/D2
+/CG
+/CY /BP/BD
+/D4
+/CX/BN/CY
+/BP/BD
+La matrice de transition d’un graphe probabiliste est donc une matrice stochas-
+tique.
+– Les graphes probabilistes sont utilisés pour modéliser l’évolution d’un indi-
+vidu pouvant changer aléatoirement d’état : les sommets sont les états possi-
+bles et le coût de l’arc /B4 /CX/BN /CY /B5 est la probabilité de transition de l’état /CX à l’état
+/CY/BM
+– L’état probabiliste de l’individu à l’instant/D2 /BE /C6 est une loi de probabilité sur
+l’ensemble des états possibles et qui est représentée par un vecteur stochas-
+tique /AP
+/D2
+/BM Lorsque les hypothèses d’indé pendance et d’homogénéité sont véri-
+ﬁées (cf déﬁnition d’une chaîne de Markov), on : /AP
+/D2
+/BP /AP
+/BC
+/C8
+/D2
+Exemple
+Un dispositif comprend deux éléments fonctionnant indépendamment l’un de
+l’autre. Chaque élément a une probabilité égale à /D4 de tomber en panne au
+cours d’une journée. Au départ, les deux éléments fonctionnent correctement
+et il n’y a pas de réparation possible.
+Ce processus sera dans l’état /BC /BN /BD ou 2 selon qu’il y a zéro, une ou deux ma-
+chines en panne au début d’une journée. Le processus aléatoire peut être
+représenté par le graphe probabiliste :
+32
+<<<PAGE>>>
+La matrice de transition est :
+/C8 /BP
+/BC
+/BS
+/B4/BD /A0 /D4 /B5
+/BE
+/BE /D4 /B4/BD /A0 /D4 /B5 /D4
+/BE
+/BC /BD /A0 /D4 /D4
+/BC /BC /BD
+/BD
+/BT
+33
+<<<PAGE>>>
+E Les graphes en Terminale ES
+1. Le programme
+a. Vocabulaire élémentaire des graphes
+Sommets, sommets adjacents, arêtes, degré d’un sommet, ordre d’un graphe,
+chaîne, longueur d’une chaîne, graphe complet, distance entre deux sommets,
+diamètre, sous-graphe stable, graphe connexe, nombre chromatique, chaîne
+eulérienne, matrice associée à un graphe, matrice de transition pour un graphe
+pondéré par des probabilités.
+Un lexique sera fourni dans le document d’accompagnement, il déﬁnira claire-
+ment les limites du programme, toute notion qui ne correspondrait pas à l’un
+des termes du lexique est hors programme.
+Les termes du lexique seront introduits à l’occasion de résolution de prob-
+lèmes.
+b. Résultats élémentaires sur les graphes
+/A3 Lien entre la somme des degrés des sommets et le nombre d’arêtes
+/A3 Conditions d’existence de chaînes et de cycles eulériens (théorème d’Euler)
+/A3 Le terme /B4 /CX/BN /CY /B5 de la matrice /BT
+/D2
+(/BT est la matrice associée à un graphe)
+donne le nombre de chaînes de longueur /D2 reliant les sommets /CX et /CY
+/A3 Le nombre chromatique d’un graphe est inférieur ou égal à/D6 /B7/BD /BN/D6 étant le
+plus haut des degrés du graphe.
+/A3 Si /C8 est la matrice de transition d’un graphe probabiliste à /D2 sommets,
+l’état probabiliste à l’étape/D2 est /AP
+/BC
+/C8
+/D2
+/BN où /AP
+/BC
+est la matrice ligne décrivant
+l’état initial
+/A3 Exemple de convergence pour des graphes probabilistes à deux sommets :
+lorsque la matrice /C8 de transition ne comporte pas de 0, l’état/AP
+/D2
+à l’état/D2/BN
+converge vers un état /AP indépendant de l’état initial/AP
+/BC
+vériﬁant /AP /BP /AP/C8 /BM
+Ces propriétes ﬁgurent au programme, elles seront introduites à l’occasion
+de problèmes. Elles pourront être démontrées ou commentées.
+2. Commentaires
+L’enseignement des graphes en Terminale ES estentièrement fondé sur la ré-
+solution de problèmes. L’objectif est de savoir modéliser des situations par des
+graphes et d’identiﬁer en terme de propriétés de graphes la question à résoudre.
+34
+<<<PAGE>>>
+F Exercices
+F.1 Tracer le graphe de la matrice d’adjacence suivante :
+/BC
+/BU
+/BU
+/BS
+/BD /BD /BD /BC
+/BC /BC /BD /BC
+/BD /BD /BC /BD
+/BD /BD /BD /BC
+/BD
+/BV
+/BV
+/BT
+F.2 Montrer que dans une assemblée, il y a au moins deux personnes qui ont le
+même nombre d’amis.
+F.3Combien y-a-t-il de graphes simples/BZ /BP/B4 /CG/BN /BT /B5 tels que /CG /BP /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV ?
+F.4 Existe-t-il un graphe simple d’ordre 5 dont les sommets ont les degrés suiv-
+ants ? Si oui, tracer un tel graphe :
+a. 3,3,3,3,2
+b. 1,2,3,4,5
+F.5 Combien y-a-t-il de sommets dans un graphe régulier de degré 4 ayant 10
+arêtes ?
+F.6 Calculer le diamètre des graphes /C3
+/D2
+/BN/BV
+/D2
+et /C3
+/D4/BN/D5
+/BM
+F.7 Pour traverser une chaîne de montagnes, il faut passer par plusieurs sommets,
+reliés entre eux par des voies ne pouvant être franchies que dans un seul sens. On
+donne ci-dessous le graphe associé à cette situation ( /BX est le point d’entrée et /CB le
+point de sortie). L’ofﬁce de tourisme cherche toutes les traversées qui partent de /BX
+et arrivent en /CB en 4,5 ou 8 étapes (une étape est le passage d’un sommet à un autre,
+ou du départ à un sommet, ou d’un sommet à l’arrivée).
+35
+<<<PAGE>>>
+Les sommets étant classés dans l’ordre/BX /BN /BT/BN /BU /BN /BV /BN /BZ/BN /BW /BN /BY /BN /CB/BN la matrice d’adjacence
+du graphe est :
+/C5 /BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BD /BD /BD /BC /BC /BC /BC
+/BC /BC /BC /BC /BD /BD /BC /BC
+/BC /BD /BC /BC /BC /BC /BC /BC
+/BC /BC /BD /BC /BD /BC /BD /BC
+/BC /BC /BC /BC /BC /BC /BD /BC
+/BC /BC /BC /BC /BD /BC /BC /BD
+/BC /BC /BC /BC /BC /BD /BC /BD
+/BC /BC /BC /BC /BC /BC /BC /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+Après calcul des puissances successives de la matrice /C5/BN on obtient :
+/C5
+/BG
+/BP
+/BC
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BU
+/BS
+/BC /BC /BC /BC /BF /BF /BE /BG
+/BC /BC /BC /BC /BD /BD /BC /BE
+/BC /BC /BC /BC /BC /BD /BD /BD
+/BC /BC /BC /BC /BE /BC /BE /BE
+/BC /BC /BC /BC /BC /BC /BD /BC
+/BC /BC /BC /BC /BD /BC /BC /BD
+/BC /BC /BC /BC /BC /BD /BC /BD
+/BC /BC /BC /BC /BC /BC /BC /BC
+/BD
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BV
+/BT
+– la première ligne de /C5
+/BF
+e s t:01002222
+– la première ligne de /C5
+/BH
+e s t:00003235
+– la première ligne de /C5
+/BI
+e s t:00002335
+– la première ligne de /C5
+/BJ
+e s t:00003326
+– la première ligne de /C5
+/BK
+e s t:00003235
+a. Combien de traversées peut-on faire en 4 (respectivement 5) étapes ?
+b. Trouver toutes les traversées en 8 étapes.
+(exercice proposé par le GEPS)
+F.8 Un individu vit dans un milieu où il est susceptible d’attraper une maladie
+par piqûre d’insecte. Il peut être dans l’un des trois états suivants : immunisé (I),
+malade (M), non malade et non immunisé (S). D’un mois à l’autre, son état peut
+changer selon les règles suivantes :
+– étant immunisé, il peut le rester avec une probabilité 0,9 ou passer à l’état S avec
+une probabilié 0,1;
+– étant dans l’état S, il peut le rester avec une probabilité 0,5 ou passer à l’état M
+avec une probabilité 0,5 ;
+36
+<<<PAGE>>>
+– étant malade, il peut le rester avec une probabilité 0,2 ou passer à l’état I avec
+une probabilité 0,8.
+Tracer un graphe probabiliste pour décrire cette situation et écrire la matrice de
+transition. Calculer l’état de probabilité de l’individu au bout de trois mois, de six
+mois, d’un an, de deux ans, pour chacune des situations suivantes :
+– au, départ, il est immunisé,
+– au départ, il est non malade et non immunisé,
+– au départ, il est malade.
+Pouvez-vous donner des éléments sur la proportion d’individus malades dans la
+population étudiée ?
+(exercice proposé par le GEPS)
+F.9 Chaque matin, l’allumeur de réverbère du Petit Prince change l’état de sa
+planète avec une probabilité 0,75. Au jour 0, le réverbère est éteint.
+– Qu’observe-t-on en simulant une grande population de réverbères régis par le
+même système probabiliste de changements d’états ?
+– Faire un arbre permettant de trouver l’état probabiliste du réverbère au deuxième
+jour.
+– Décrire cette situation à l’aide d’un graphe proababiliste. Soit /C5 la matrice de
+transition associée à ce graphe. Vériﬁer que :
+/C5 /BP /C6 /A0
+/BD
+/BE
+/CA/BN où/C6 /BP
+/BD
+/BE
+/AI
+/BD /BD
+/BD /BD
+/AJ
+et /CA /BP
+/BD
+/BE
+/AI
+/BD /A0 /BD
+/A0 /BD /BD
+/AJ
+/BM
+– Calculer /C6
+/BE
+/BN/CA
+/BE
+/BN/C6 /CA et /CA/C6 puis en déduire /C5
+/D2
+/BN pour /D2 entier naturel.
+– Au jour 0, le reverbère est allumé (respectivement éteint). Calculer la probabilité
+/D4
+/D2
+(respectivement /D4
+/BC
+/D2
+/B5 que le réverbère soit allumé (respectivement éteint) au
+/D2 ième matin. Faire le lien avec les résultats des simulations observées en pre-
+mière question.
+(exercice proposé par le GEPS)
+F.10 Montrer que, parmi 6 personnes, i lyau n groupe de 3 qui se connaissent
+mutuellement, ou bien un groupe de 3 qui ne se connaissent pas. (on suppose que
+la relation de connaissance est une relation symétrique)
+37
+<<<PAGE>>>
+G Solutions des exercices
+F.1
+F.2 Considérons le graphe dont les sommets sont les/D2 personnes de l’assemblée.
+On suppose bien entendu, que la relation d’amitié est une relation symétrique. Deux
+sommets du graphe sont reliés par une arê te lorsque les deux personnes correspon-
+dantes sont amies. Il sufﬁt alors de prouver que deux sommets au moins de ce
+graphe ont même degré. Supposons que les /D2 sommets soient tous de degré dis-
+tinct. On peut alors numéroter les sommets de /DC
+/BD
+à /DC
+/D2
+avec :
+/BC /BI /CS /B4 /DC
+/BC
+/B5 /BO/CS /B4 /DC
+/BD
+/B5 /BO /BM/BM/BM /BO /CS /B4 /DC
+/D2 /A0 /BD
+/B5
+Or le degré maximal d’un sommet d’un graphe simple d’ordre/D2 est égal à /D2 /A0 /BD /BM
+On a donc nécessairement /CS /B4 /DC
+/CX
+/B5/BP /CX/BN pour tout /CX de /CU /BC /BN /BD /BN/BM/BM/BM/BN/D2 /A0 /BD /CV /BM Avec notre
+hypothèse, le graphe comprendrait un sommet de degré 0 (c’est une personne bien
+seule ...) et un sommet de degré /D2 /A0 /BD /BN donc relié à tous les autres sommets du
+graphe, en particulier au sommet isolé, ce qui est contradictoire. Nous avons donc
+montré qu’un graphe simple contient au moins deux sommets de même degré.
+F.3 Un graphe simple /BZ /BP/B4 /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV /BN/BT /B5 est déterminé par la donnée de /BT
+qui est une partie de /C8
+/BE
+(/CU /BD /BN /BE /BN/BM/BM/BM /BN/D2 /CV ). Or /CY/C8
+/BE
+/B4 /CU /BD /BN /BE /BN/BM/BM/BM/BN/D2 /CV /B5 /CY /BP
+/AI
+/D2
+/BE
+/AJ
+/BM Le nombre
+de graphe est donc égal à /BE
+/A0
+/D2
+/BE
+/A1
+F.4
+a. Oui, par exemple :
+b. Non, la somme des degrés est impaire
+38
+<<<PAGE>>>
+F.5 Notons /BZ /BP/B4 /CG/BN /BT /B5 le graphe, on a :
+/CG
+/DC /BE /CG
+/CS /B4 /DC /B5 /BP /BE /CY /BT /CY
+/B5 /BG /CY /CG /CY /BP/BE /BC
+/B5 /CY /CG /CY /BP/BH
+F.6 Pour tout sommet /DC de /C3
+/D2
+/BN /D1/CP/DC
+/DD /BE /CG
+/B4 /CS /B4 /DC/BN /DD /B5/B5 /BP /BD /BN donc Æ /B4 /C3
+/D2
+/B5/BP/BD /BM
+Pour tout sommet/DC de /BV
+/D2
+/BN /D1/CP/DC
+/DD /BE /CG
+/B4 /CS /B4 /DC/BN /DD /B5/B5 /BP
+/D2
+/BE
+si /D2 est pair, et/D1/CP/DC
+/DD /BE /CG
+/B4 /CS /B4 /DC/BN /DD /B5/B5 /BP
+/D2 /A0 /BD
+/BE
+lorsque /D2 est impair. Donc Æ /B4 /BV
+/D2
+/B5/BP
+/D2
+/BE
+si /D2 est pair, et Æ /B4 /BV
+/D2
+/B5/BP
+/D2 /A0 /BD
+/BE
+lorsque /D2 est impair.
+Pour tout sommet /DC de /C3
+/D4/BN/D5
+/D1/CP/DC
+/DD /BE /CG
+/B4 /CS /B4 /DC/BN /DD /B5 /B5/BP/BE /BN donc Æ /B4 /C3
+/D4/BN/D5
+/B5/BP /BE /BN lorsque
+/B4 /D4/BN /D5 /B5 /BI/BP/B4 /BD /BN /BD/B5 /BNÆ /B4 /C3
+/BD /BN /BD
+/B5/BP/BD /BM
+F.7
+i. /D1
+/B4/BG/B5
+/BD /BN /BK
+/BP/BG /BN il y a donc 4 traversées possibles en 4 étapes.
+/D1
+/B4/BH/B5
+/BD /BN /BK
+/BP/BH /BN il y a donc 5 traversées possibles en 5 étapes.
+ii. /D1
+/B4/BK/B5
+/BD /BN /BK
+/BP/BH /BN il y a donc 5 traversées possibles en 8 étapes. Déterminons ces
+traversées. Pour cela, notons /CG la quatrième étape des traversées possibles.
+D’après la première ligne de/C5
+/BG
+/BN l’étape/CG ne peut être que l’un des sommets
+/BZ/BN /BW /BN /BY ou /CB/BM
+/A1 /CG ne peut être le sommet /BZ/BN en effet, /D1
+/B4/BG/B5
+/BH /BN /BK
+/BP/BC et on ne peut joindre le
+sommet /CB à partir de /BZ en 4 étapes.
+/A1 Si /CG /BP /BW : /D1
+/B4/BG/B5
+/BD /BN /BI
+/BP/BF /BN il a donc 3 chemins de longueur 4 allant de /BX
+à /BW/BN ce sont les chemins : /BX /BN /BT/BN /BZ/BN /BY /BN /BW /BN /BX /BN /BV /BN /BU /BN /BT/BN /BW et /BX /BN /BV/BN /BZ /BN /BY/BN /BW/BM
+D’autre part, /D1
+/B4/BG/B5
+/BI /BN /BK
+/BP/BD /BN il y a un chemin joignant /BW à /CB/BN c’est le chemin
+/BW/BN /BZ /BN /BY/BN /BW/BN /CB /BM Nous obtenons ainsi 3 traversées en 8 é tapes ayant le som-
+met /BW comme 4
+/CT
+étape : /BX /BN /BT /BN /BZ /BN /BY/BN /BW/BN /BZ /BN /BY/BN /BW/BN /CB ; /BX /BN /BV /BN /BU /BN /BT/BN /BW /BN /BZ/BN /BY /BN /BW /BN /CB
+et /BX /BN /BV/BN /BZ /BN /BY/BN /BW/BN /BZ /BN /BY/BN /BW/BN /CB /BM
+/A1 Si /CG /BP /BY : /D1
+/B4/BG/B5
+/BD /BN /BJ
+/BP/BE /BN il a donc 2 chemins de longueur 4 allant de /BX
+à /BY/BN ce sont les chemins : /BX /BN /BU /BN /BT/BN /BZ/BN /BY et /BX/BN /BT /BN /BW /BN /BZ /BN /BY /BM D’autre part
+/D1
+/B4/BG/B5
+/BJ /BN /BK
+/BP/BD /BN il n’y a qu’un seul chemin de longueur 4 allant de /BY à /CB/BM Nous
+obtenons ainsi 2 traversées en 8 étapes ayant le sommet /BY comme 4
+/CT
+étape
+: /BX /BN /BU /BN /BT/BN /BZ/BN /BY /BN /BW /BN /BZ/BN /BY /BN /CB et /BX /BN /BT/BN /BW /BN /BZ/BN /BY /BN /BW /BN /BZ/BN /BY /BN /CB/BM
+Finalement, les cinq traversées cherchées sont :/BX /BN /BT/BN /BZ/BN /BY /BN /BW /BN /BZ/BN /BY /BN /BW /BN /CB ;
+/BX /BN /BV/BN /BU /BN /BT /BN /BW/BN /BZ /BN /BY/BN /BW/BN /CB ; /BX /BN /BV/BN /BZ /BN /BY/BN /BW/BN /BZ /BN /BY/BN /BW/BN /CB ; /BX /BN /BU /BN /BT/BN /BZ/BN /BY /BN /BW /BN /BZ/BN /BY /BN /CB
+et /BX /BN /BT /BN /BW/BN /BZ /BN /BY/BN /BW/BN /BZ /BN /BY/BN /CB /BM
+39
+<<<PAGE>>>
+F.8 V oici le graphe probabiliste traduisant la situation dé crite :
+Les sommets étant classés dans l’ordre I, M, S la matrice de transition est :
+/C8 /BP
+/BC
+/BS
+/BC /BN /BL /BC /BC /BN /BD
+/BC /BN /BK /BC /BN /BE /BC
+/BC /BC /BN /BH /BC /BN /BH
+/BD
+/BT
+Notons /AP
+/D2
+l’état probabiliste de l’individu au/D2 ième mois, à l’aide de la calculatrice
+ou de l’ordinateur, on obtient les résultats suivants :
+i. si /AP
+/BC
+/BP /B4/BD/BN /BC/BN /BC/B5 : /AP
+/BF
+/BP/B4 /BC /BN /BJ/BI/BL/BN /BC /BN /BC/BK/BN /BC /BN /BD/BH/BD/B5/BN /AP
+/BI
+/BP/B4 /BC /BN /BJ/BH/BF/BL/BE/BD/BN /BC /BN /BC/BL/BG/BK /BC/BH /BN /BC /BN /BD/BH/BD /BE/BJ /BG/B5/BN
+/AP
+/BD/BE
+/BP/B4 /BC /BN /BJ/BH/BG/BJ/BD/BL/BC/BF/BI/BL /BN /BC /BN /BC/BL /BG/BF/BF /BK/BD /BK/BF/BL /BE/BN /BC /BN /BD /BH/BC/BL /BG/BE /BJ/BJ/BL /BF/B5/BN
+/AP
+/BE/BG
+/BP/B4 /BC /BN /BJ/BH/BG/BJ/BD/BI/BL/BK/BD/BD /BN /BC /BN /BC/BL /BG/BF/BF /BL/BI /BE/BE/BI /BG/BN /BC /BN /BD /BH/BC/BL /BG/BF /BF/BL/BI /BE/B5/BN
+ii. Lorsque /AP
+/BC
+/BP /B4/BC/BN /BD/BN /BC/B5 ou /AP
+/BC
+/BP/B4 /BC /BN /BC /BN /BD /B5 on constate que l’état probabiliste de
+l’individu se stabilise également vers/B4/BC /BN /BJ/BH/BH/BN /BC /BN /BC/BL/BG/BN /BC /BN /BD/BH /BD/B5 /BM
+Remarque
+Le théorème D7.7 admet la généralisation suivante : s’il existe un entier/D1 tel
+que la matrice /C8
+/D1
+ait tous ses coefﬁcients strictement positifs, alors la suite
+/B4 /C8
+/D2
+/B5 est convergente vers une matrice stochastique ayant ses lignes toutes
+égales à une même ligne. Dans l’exerciceF.8, /C8
+/BE
+/BP
+/BC
+/BS
+/BC /BN /BK/BD /BC /BN /BC/BH /BC /BN /BD/BG
+/BC /BN /BK/BK /BC /BN /BC/BG /BC /BN /BC/BK
+/BC /BN /BG /BC /BN /BF/BH /BC /BN /BE/BH
+/BD
+/BT
+et la généralisation s’applique.
+iii. La probabilité que l’individu soit malade au bout d’un certain temps est donc
+voisine de 0,094. On peut donc estimer à 9,4% la proportion d’individus
+malades dans la population.
+F.9 Notons /BX (respectivement /BT /B5 l’événement «le réverbère est éteint (respec-
+tivement allumé».
+– Simulation de la situation (effectuée à l’aide d’un tableur ou d’une calculatrice)
+pour une population de 500 réverbères sur une durée de 6 jours :
+jour 0
+ jour 1
+ jour 2
+ jour 3
+ jour 4
+ jour 5
+ jour 6
+Nombre de réverbères éteints
+ 500
+ 121
+ 295
+ 232
+ 266
+ 226
+ 255
+Nombre de réverbère allumés
+ 0
+ 379
+ 205
+ 268
+ 234
+ 274
+ 245
+On constate une stabilisation assez rapide vers la situation où un réverbère sur
+40
+<<<PAGE>>>
+deux est allumé..–
+La probabilité que le réverbère soit éteint le deuxième jour est :
+/BF
+/BG
+/A2
+/BF
+/BG
+/B7
+/BD
+/BG
+/A2
+/BD
+/BG
+/BP
+/BH
+/BK
+et celle qu’il soit allumé est
+/BF
+/BK
+/BM
+– Le graphe probabiliste de la situation est :
+et la matrice de transition associée à ce graphe, en classant les sommets dans
+l’ordre E,A est :
+/C8 /BP
+/BC
+/BU
+/BS
+/BD
+/BG
+/BF
+/BG
+/BF
+/BG
+/BD
+/BG
+/BD
+/BV
+/BT
+nous sommes dans la situation décrite dans le théorème D.7.7 (deuxième dé-
+monstration) avec /D4 /BP /D5 /BP
+/BF
+/BG
+. La suite des états probabilistes converge alors vers
+l’état/B4
+/D5
+/D4 /B7 /D5
+/BN
+/D4
+/D4 /B7 /D5
+/B5/BP/B4
+/BD
+/BE
+/BN
+/BD
+/BE
+/B5 , résultat cohérent avec les simulations effectué es
+en première question.
+F.10 Construisons un graphe dont les sommets sont les 6 personnes, deux som-
+mets sont reliés par une arête en trait plein lorsque les personnes correspondantes
+se connaissent et en trait discontinu dans le cas contraire. Il s’agit de prouver que
+ce graphe contient un cycle simple de longueur 3 dont les arêtes sont de même na-
+ture. Si l’on ne tient pas compte de la nature des arêtes, ce graphe est complet, deux
+personnes au hasard, ou bien se connaissent ou bien ne se connaissent pas. Chaque
+sommet est donc de degré 5 et parmi les 5 arêtes issues d’un sommet, trois d’entre
+elles sont de même nature. Supposons, par exemple, que les arêtes /CU /CP/BN /CQ /CV /BN /CU /CP/BN /CR /CV et
+/CU /CP/BN /CS /CV soient en trait plein. Considérons alors le cycle /CQ/BN /CR/BN /CS/BM Si ses arêtes sont en
+trait discontinu, c’est terminé, sinon, l’une des trois arêtes sera en trait plein et per-
+41
+<<<PAGE>>>
+mettra de former avec deux arêtes du triangle/CP/CQ/CS un cycle dont les trois arêtes sont
+en trait plein.
+42
+<<<PAGE>>>
+H Complément : les arbres
+H.1 Déﬁnition
+Un arbre est un graphe simple connexe ne possédant pas de cycle simple.
+Exemple
+H.2 Arbre de recouvrement
+1. Déﬁnition
+Soit /BZ /BP/B4 /CG/BN /BT /B5 un graphe simple. Un arbre de recouvrement de /BZ est un
+sous-graphe de /BZ qui est un arbre contenant chaque sommet de /BZ/BM
+2. Algorithme de construction d’un arbre de recouvrement
+On choisit un sommet arbitraire du graphe, puis on construit à partir de ce som-
+met une chaîne simple en ajoutant des arêtes de /BZ tant que c’est possible. Si la
+chaîne ainsi construit contient tous les sommets du graphe, la chaîne est un arbre
+de recouvrement. Sinon, on retourne à l’avant-dernier sommet de la chaîne et
+à partir de celui-ci, et si c’est possible, on construit une nouvelle chaîne sim-
+ple aussi longue que possible et ne contenant aucun sommet du premier chemin
+construit. Si ce n’est pas possible, il faut remonter à l’antépénultième sommet
+et recommencer. Si le graphe est connexe, on peut réitèrer ce processus jusqu’à
+épuisement des sommets pour obtenir un arbre de recouvrement.
+Exemple
+Appliquons l’algorithme précédent pour trouver un arbre de recouvrement du
+43
+<<<PAGE>>>
+graphe connexe suivant :
+– Partons par exemple du sommet /CP
+–1
+/D6/CT
+étape : on construit la chaîne simple /CP/BN /CQ/BN /CR/BN /CS/BN /CV /BN /CW/BN /CX/BN /CY/BN /CZ /BN /D0 /BN /CU
+–2
+/CT
+étape : on remonte jusqu’au sommet /CV pour former la chaîne /CV/BN /CT
+– Un arbre de recouvrement est alors :
+H.3 Arbre partiel de coût minimum
+1. Exemple introductif
+On considère le réseau routier représenté par le graphe ci-dessous. Ces routes
+sont souvent enneigées en hiver et l’équipement décide de déneiger un nombre
+minimal de routes de telle sorte que deux villages quelconques du réseau soient
+toujours reliés par une route déneigée.
+44
+<<<PAGE>>>
+Le problème consiste à construire un graphe partiel, connexe, comprenant un
+nombre minimal d’arêtes. Le graphe contient 6 sommets, le sous-graphe cherché
+doit donc contenir 5 arêtes. Il s’agit donc de construire un arbre de recouvrement
+du graphe (On peut montrer que la relation /CY /BT /CY /BP /CY /CG /CY/A0 /BD caractérise les arbres
+parmi les graphes simples connexes).
+V oici un algorithme de recherche d’arbre partiel de coût minimum lorsque le
+graphe est simple, connexe et valué.
+2. Algorithme de Sollin-Calestagne
+/BZ /BP/B4 /CG /BN /BT/BN /AD /B5 est un graphe simple connexe valué.
+– (1) /CP
+/BD
+/BP /CU /DC
+/BD
+/BN/DD
+/BD
+/CV est une arête de coût minimum. On pose /CB /BP /CU /DC
+/BD
+/BN/DD
+/BD
+/CV et
+/CC /BP /CU /CP
+/BD
+/CV /BM Passer à (2)
+– (2) Si /CB /BP /CG/BN alors l’arbre/B4 /CB/BN /CC /B5 est l’arbre cherché, sinon, passer en(3)
+– (3) On choisit une arête /CP /BP /CU /DC/BN /DD /CV de coût minimum ayant un sommet dans/CB
+et l’autre dans le complémentaire de/CB dans /CG/BM On remplace /CB par /CB /CJ/CU /DC/BN /DD /CV
+et /CC par /CC /CJ/CU /CP /CV /BM Passer en (2).
+Exemple
+Utiliser l’algorithme de Sollin-Calestagne pour concevoir un réseau de com-
+munication à coût minimal reliant tous les ordinateurs représentés par le graphe
+suivant :
+45
+<<<PAGE>>>
+Solution possible (le coût minimal est égal à 4700 euros)
+46

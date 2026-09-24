@@ -1,0 +1,474 @@
+Ingénieurs 2ème année : Parcours Mathématique & Informatique
+Modèle linéaire et extensions
+CM 4: Pratiques de la régression linéaire multiple
+Nisrine FORTIN-CAMDA VANT & Naamane LAIB
+
+<<<PAGE>>>
+1 Introduction
+2 Colinéarité
+3 Détection de la colinéarité
+4 Traitement de la colinéarité
+Critère du R2
+Critères AIC et BIC
+5 Sélection des variables
+Procédures de sélection
+Techniques basées sur le critère AIC
+Techniques basées sur le F partiel de Fisher
+<<<PAGE>>>
+Introduction
+<<<PAGE>>>
+Les étapes à suivre pour établir un modèle linéaire sont les suivantes :
+1 Estimation des paramètres (CM1 - Thématique 1)
+2 Mesure de la qualité d’ajustement (CM1 - Thématique 1)
+3 Étude de la validité du modèle (CM1 - Thématique 2)
+a. Si les hypothèses sur les erreurs non vérifiées STOP
+b. Si observations aberrantes/influentes
+i. Correction/suppression
+ii. Retour à l’étape 1
+4 Inférence statistique (CM 1 - Thématique 3)
+a. Test de significativité globale
+b. Test de significativité des coefficients (individuelle ou par bloc)
+5 Évaluation de la mulicolinéarité (CM2 - Thématique 1)
+6 Sélection de variables (CM2 - Thématique 1)
+a. Modèle restreint
+b. Réitération des étapes 1,2,3, 4
+<<<PAGE>>>
+↝ Dans le cours précédent, l’accent a été mis sur l’étude dela qualitédes
+estimateurs et des prédicteurs en minimisant l’erreur quadratique
+moyenne.
+↝ Le modèle ainsi obtenu peut être bon pour expliquer les données au sens
+d’une déviance minimale (ou d’unR2 maximale).
+Cependant ce modèle peut contenir un nombre important de variables pouvant
+introduire des colinéarités.
+Le bon modèle est celui qui conduit aux prédictions les plus fiables.
+1 Faire unesélection de variables pertinenteset choisir un modèle
+final en utilisant un critère de choix et un algorithme de
+recherche.
+2 Faire un diagnostic a postériori pour vérifier les hypothèses du
+modèle.
+Cela nous amène à
+<<<PAGE>>>
+La colinéarité
+♠ Les valeurs de deux variables ou plus sont liées entre elles : on parle des
+problèmes de colinéarité.
+♠ Il y a donc des variables redondantes parmi les Xj.
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Colinéarité
+2 Certaines variables exogènes sont redondantes, elles emmènent le même
+type d’information :
+C’est le problème de la colinéarité
+Les variables explicatives se gênent mutuellement dans la régression.
+2 On peut définir la colinéarité comme la corrélation entre une des exogènes
+avec une combinaison linéaire des autres exogènes.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Le coefficient de corrélation entre Xj et Xk :
+rXj,Xk = Cov(Xj,Xk)
+σXjσXk
+.
+7/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+1 Si la colinéarité est parfaite (rXj,Xk =1 j ≠ k) :
+rang(X′X)<p+1 ⇒ (X′X)−1 n’existe pas.
+Le calcul des estimateurs
+̂a= (X′X)−1X′Y, ̂σ2
+̂a = ̂σ2(X′X)−1 est impossible.
+2 Si la colinéarité est forte (rXj,Xk ≃1 ∀ j≠ k), alors :
+det(X′X)≃0 ⇒ (X′X)−1 = 1
+det(X′X)Com′(X′X)
+La matrice inverse X′X contient alors des valeurs très élevées.
+3 Dès lors, le test de Studenttobs = ̂aj
+̂σ̂aj
+pour tester la significativité
+des coefficients présentent de très faibles valeurs.
+La variable paraît non significative et elle est éliminée.
+Pourquoi la colinéarité est un problème?
+8/34
+<<<PAGE>>>
+Conséquences de la colinéarité
+Les variances des estimateurs sont exagérées;
+Les coefficients sont extrêmement instables.
+Une modification faibledans lesdonnées entraîne une fortemodification de
+l’estimation (en particulier, un changement d’échantillon peut modifier les
+résultats)
+Contradiction entre test de Student et de Fisher.
+Le test de Student peut donner que les coefficients ne sont pas significatifs
+malgré que le test de Fisher montre l’existence des coefficients significatifs.
+9
+<<<PAGE>>>
+Détection de la colinéarité
+On s’intéresse à quelques techniques de détection de la colinéairité
+1 Le test de KLEIN
+2 Le facteur d’inflation de la variance VIF
+3 Cohérence des signes
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Test de KLEIN
+Le test de KLEIN est une technique de détection simple : il repose sur le
+principe suivant :
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+1 Calcul du coefficient de déterminationR2
+2 Calcul des corrélations croisées entre les variables explicatives
+rj1,j2 =cor(Xj1,Xj2 ) avec j 1 ≠j2.
+3 Il y a présomption de colinéarité s’il existe un couple de variables
+Xja,Xjb tel que
+R2 <r2
+ja,jb.
+Dans la pratique, une simple proximité des valeursR2 et r2
+ja,jb
+doit nous alerter.
+11/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Exemple 1
+:::::::Matrice :::des :::::::::corrélations:::::::croisées :C
+Prix Cylindrée Puissance Poids
+Prix 1 0.92 0.93 0.95
+Cylindrée 0.92 1 0.96 0.86
+Puissance 0.93 0.96 1 0.85
+Poids 0.95 0.86 0.85 1
+:::::::Matrice :::des :::::::::corrélations:::::::croisées ::au:::::carré ::C2
+Prix Cylindrée Puissance Poids
+Prix 1 0.84 0.86 0.90
+Cylindrée 0.84 1 0.91 0.74
+Puissance 0.86 0.91 1 0.73
+Poids 0.90 0.74 0.73 1
+On aR2 =0.9295∼r2
+puissance, cylindrée.
+Les variables Puissance et Cylindrée ne paraissent pas pertinentes pour
+expliquer la consommation des véhicules.
+12/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Test de multicolinéarité
+Le test de Klein détecte la colinéarité bivariée. Pour évaluer la multicolinéarité,
+↝ il faudrait effectuer la régression de chaque variable Xj avec les autres
+(p−1) variables,
+↝ puis étudier le coefficient de déterminationR2
+j associé.
+La source principale d’instabilité dans l’estimation de a est la muliticolinéarité.
+Comme
+Var(ˆa)= (X′X)
+−1
+σ2
+Si les prédicteurs sont très corrélés entre eux, X′X est mal conditionnée et
+Var(ˆa) aura des termes élevés.
+Dans ce cas, les paramètres du modèle seront estimés avec imprésisions et
+les prédictions pourront être entachées d’erreurs considérables même si le
+coefficient de déterminationR2 a une valeur élevée.
+Il est donc important de mesurer l’effet de la colinéarité entre les prédicteurs,
+cela s’effectue au moyen des facteurs d’inflation de la variance.
+13/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+La facteur d’inflation de la variance
+Il sera commode pour la suite de supposer que toutes les variables sont
+centrées et réduites. Ce qui ne change pas le coefficient de déterminationR2 ni
+les valeurs prévues et que l’on effectue donc une régression sans constante :
+˜X
+′ ˜X est donc une matrice de taille p et a un vecteur à p composantes. On donc
+˜X
+′ ˜X= nR
+où R est la matrice de corrélation entre les prédicteurs.
+La matrice de variance-covariance des estimateurs
+des coefficients (a1,..., ap) est
+Var(a)=σ2 (˜X
+′ ˜X)
+−1
+donc Var(a)= σ2
+n R−1 et Var(aj)= σ2
+n (R−1)jj
+(R−1)jj est le jème terme diagonal deR−1.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+(R−1)jj = 1
+1−R2
+j
+R2
+j est le coefficient de
+détermination de la régression de Xj
+sur les autres variables.
+14/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+La facteur d’inflation de la variance
+On appelle facteur d’inflation de la variance (Variance Inflation Factor)
+(VIF), la quantité
+Vj ∶=VIFj = 1
+1−R2
+j
+, 1≤j≤p.
+Le terme 1−R2
+j est appelé tolérance.
+Problème dès queR2
+j ≃1⇒ Vj ≃+∞
+Facteur d’inflation de la variance VIF
+Plus Xj est "linéairement" proche de ces variables, plusRj est proche de 1 et
+plus lavariance de l’estimateurde aj est élevée;
+15/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+La facteur d’inflation de la variance - Remarques
+Var(ˆaj)= ˆσ2
+n (R−1)jj/Leftr⫯g⊸tl⫯ne⇒Var(ˆaj)= ˆσε
+n VIFj,
+Lorsque Vj ≃+∞ alors Var(ˆaj)≃∞ et par conséquent tobsj = ˆaj
+ˆσj
+sera très
+proche de 0. (variable non significative)
+On pense qu’il y a problème dès que la tolérance 1−R2
+j est inférieure à
+0.25 et donc Vj ≥4.
+A partir de quelle valeur de Vj doit-on s’inquiéter?
+16/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Exemple 1
+:::::Inverse:::de ::la ::::::matrice :::des:::::::::corrélations:::::::C−1
+Prix Cylindrée Puissance Poids
+Prix 19.79 -1.45 -7.51 -11.09
+Cylindrée -1.45 12.87 -9.80 -1.36
+Puissance -7.51 -9.80 14.89 2.86
+Poids -11.09 -1.36 2.86 10.23
+Les VIF se trouvent sur la diagonale principale.
+On constante que toutes les variables posent problème (Vj ≥4).
+17/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Cohérence des signes
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Cette approche consiste à comparer les signes des coefficients de la régression
+avec les signes des corrélations simples entre les variables Xj et la variable prédite
+Y.
+Repérer les signes des coefficients estimésˆaj
+Calculer les corrélations croisées
+rY,Xj =corr(Xj,Y) ∀ j=1,..., p.
+Il y a présomption de colinéarité s’il existe des situations où
+signe(ˆaj)≠signe(rY,Xj ).
+Cohérence des signes
+18/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Exemple 1
+::::::::::Comparaison:::des::::::::::corrélations::::::::::individuelles ::et :::des:::::::::coefficients
+ˆaj rY,Xj
+prix 0.000034 0.942597
+cylindree 0.001208 0.908790
+puissance -0.003742 0.888304
+poids 0.003728 0.944740
+On remarque qu’il y a un conflit pour la variable puissance.
+19/34
+<<<PAGE>>>
+Traitement de la colinéarité
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Il existe plusieurs pistes pour traiter la colinéarité. On note principalement :
+1 La régression ridge qui vise à rendre l’inverse de la matrice(X′X) plus
+stable.
+2 La régression sur les composantes principales
+Dans ce qui suit, nous traitons plus particulièrement la sélection de variables.
+:::::::Sélection:::par:::::::::::::::::optimisation-Objectif ::
+Trouver un sous-ensemble de q variables explicatives(q≤p) qui soient,
+autant que possible, pertinentes et non-redondantes pour expliquer Y.
+1 Comment choisir ces q variables?
+2 Quel critère faut-il utiliser?
+Deux problèmes :
+21/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Critère R2
+Le coefficient de déterminationR2 exprime la part de la variance expliquée par
+le modèle et mesure la qualité globale du modèle, mais il a le défaut
+d’augmenter automatiquement lorsqu’on ajoute de nouvelles variables
+explicatives, par exemple
+R2
+Y.(X1,X2) <R2
+Y.(X1,X2,X3)
+même si X3 est une variable qui n’apporte aucune information.
+La solution optimale selonR2 est donc le modèle complet :
+Il ne peut donc servir qu’à comparer deux modèles de même niveau c’est-à-dire
+avec le même nombre de variables.
+C’est pourquoi on introduit le coefficient de détermination ajusté, qui corrige ce
+défaut.
+22/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Critère duR2
+a - Coefficient de détermination ajusté
+Le coefficient de détermination ajusté, notéR2
+a défini par :
+R2
+a =1− SCR/(n−p−1)
+SCT/(n−1) =1− n−1
+n−p−1 (1−R2).
+Il tient compte de degrés de liberté (donc du nombre de variables introduits
+dans le modèle). Le rapport
+SCR(n−p−1)/SCT(n−1) introduit une pénalisation liée au nombre de
+paramètres à estimer. On a :
+R2
+a =1− (n−1)CMR
+SCT
+Dans la comparaison de deux modèles ayant la même SCT, on observe que
+R2
+a >R2
+a,q ⇔ CMR<CMRq
+CMR et CMRq désignant respectivement l’erreur quadratique moyenne du
+modèle complet et celle d’un modèle àq variables explicatives.
+Maximiser leR2
+a revient donc à minimiser l’erreur quadratique moyenne.
+23/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Critères AIC et BIC
+Les critères AIC (Akaike Information Criterion) et BIC (Bayesian Information
+Criterion) sont deux critères de vraisemblance pénalisées définis par :
+AIC = n ln SCRq
+n +2(q+1)
+BIC = n ln SCRq
+n + ln(n)(q+1)
+où SCRq est la somme des carrées résiduelle du modèle Mq à q ≤p variables
+explicatives.
+Ces deux critères s’appuient sur la même idée que pour le coefficient de
+détermination ajusté, on doit minimiser les critères AIC ou BIC.
+24/34
+<<<PAGE>>>
+Sélection des variables
+<<<PAGE>>>
+Procédures de sélection
+Un problème de complexité : Le nombre de modèles à considérer est
+p
+∑
+q=1
+C p
+q =2p−1
+Ce nombre croît exponentiellement avec p variables. En pratique, on utilise
+donc des heuristiques dont les plus simples sont les procédures pas à pas
+ascendante ou descendante.
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Procédures de sélection
+:♠:::::::::Méthodes::::pas :à::::pas ::♠
+Élimination successive ou Ajout successif de variables explicatives
+Test de tous les modèles impossible
+1 La méthode descendante (Backward) consiste à éliminer la variable la
+moins significative parmi les p. On recalcule alors la régression puis on
+recommence jusqu’à être satisfait.
+2 La méthode ascendante (Forward) procède en sens inverse : on part de la
+meilleure régression à une seule variable puis on ajoute la variable la plus
+significative.
+27/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Méthode descendante avec critère AIC
+Trouver le modèle optimal qui minimise le critère l’AIC :
+1
+::::Étape::::::initiale::: Calculer le critère AIC en présence de toutes les variables,
+2
+::::Étape::1:::
+a Supprimer les variables dans le modèle completMp une à une et
+calculer le critère AIC avec les p-1 variables restantes.
+b Éliminer la variable dont la suppression a permis de diminuer le
+critère AIC.
+3 Répéter à chaque::::étape:::::k ≥1 ::
+a Éliminer les variables du modèleMp−k+1 une à une et calculer le
+critère AIC avec les p-k variables restantes.
+b Éliminer la variable dont la suppression a permis de diminuer le
+critère AIC.
+4 Continuer ainsi tant que la suppression d’une variable améliore le critère.
+28/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Modèle courant AIC Suppr d’1 va (AIC)
+1 prix + cylindrée + puissance + poids -18,69 puiss→ - 20,6188
+Modèle :M4 prix→ - 20,0081
+cylind→ - 17,4625
+poids→ - 12,1155
+2 prix + cylindrée + poids -20,6188 prix→ -21,9986
+Modèle :M3 cylind→ -17,6000
+poids→ -13,3381
+3 cylindrée + poids - 21,9986 cylind→ -13,3049
+Modèle :M2 poids→ - 0,2785
+Le modèleM4 avec toutes les variables nous donne AIC=−18,69
+L’étape 1 : La suppression de puissance⇒ une diminution du critère
+(−20,6188).
+On retient le modèleM3 sans la variable puissance avec AIC=−20,6188.
+L’étape 2, suppression de prix⇒ une diminution du critère (−21,9986).
+On retient le modèleM2 sans la variable prix (et puissance) avec un
+AIC=−21,9986.
+L’étape 3, on constate qu’aucune suppression de variable n’améliore le
+modèle courant.
+29/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Techniques basées sur le F partiel de Fisher
+1 Ajouter une variable si le tobs de Student (ou t2
+obs= F-partiel)
+dans la régression passe le seuil critique à 5%
+↝ le coefficient associé est significativement différent de 0.
+2 Supprimer une variable si le tobs de Student est en deçà du seuil
+critique
+↝ le coefficient n’est pas significatif.
+S’appuyer sur les propriétés inférentielles de la régression
+30/34
+<<<PAGE>>>
+Sélection Ascendante ( Forward Selection)
+basée sur le F-partiel
+Repérer à chaque étape, la variable
+↝ proposant un tobs de Student le plus élevé en valeur absolue (ou dont le
+carré est le plus élevé),
+↝ de l’ajouter si le coefficient est significatif,
+↝ et de continuer ainsi tant que les ajouts sont possibles.
+1 On commence par p régressions simples.
+2 Si une variable a été ajoutée, on poursuit avec p−1 régressions à 2
+variables, etc.
+3 L’ajout d’une variable dépend de la significativité du coefficient de la
+variable choisie, il dépend donc du risqueα défini par l’utilisateur.
+Si on souhaite obtenir peu de variables, on fixe un risque faible.
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Exemple 1
+Le processus de sélection appliqué aux données de consommation de véhicules
+avec 27 observations (observations atypiques supprimées), avec un risque de
+5%, donne :
+Étape Modèle courant (cte = constante) R2 Evaluation t2
+obs =F (p-valeur)
+1 y = cte - poids→ 207,63 (0,0000)
+prix→ 199,19 (0,0000)
+cylindrée→ 118,60 (0,0000)
+puissance→ 93,53 (0,0000)
+2 y = poids + cte 0,8925 cylindrée→11,66 (0,0023)
+puissance→ 7,42 (0,0118)
+prix→ 6,32 (0,0190)
+3 y = poids + cylindrée + cte 0,9277 prix→ 0,53 (0,4721)
+puissance→ 0,01 (0,9288)
+32/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Exemple 1
+::::Étape::1:: Parmi les 4 régressions simples, la variable poids a un
+t2
+obs =F=207,63 le plus élevé. Elle est très significative
+(avec unp-value largement en-deçà du niveau que l’on s’est fixé). 5%).
+⇒ La variable poids est donc intégrée.
+::::Étape::2::
+↝ Nous essayons de voir quelle est la variable qu’on pourrait lui ajouter.
+↝ Nous effectuons 3 régressions à 2 variables (poids et une autre) :
+↝ Cylindrée se révèle être la plus intéressante, avec un F=11,66,
+↝ Elle est significative à 5%. On l’intègre dans le modèle.
+::::Étape::3::
+↝ Nous avons 2 régressions à 3 variables (poids, cylindrée et une autre)
+à tester.
+↝ La variable la plus intéressante prix avec un F=0,53, n’est plus
+significative (p-value >5%)
+↝ On s’en tient donc au modèle à 2 variables : poids et cylindrée.
+33/34
+<<<PAGE>>>
+Introduction Colinéarité Détection de la colinéarité T raitement de la colinéarité Sélection des variables
+Pour l’exemple de consommation des véhicules, après avoir effectué une
+détection de valeurs aberrantes/influentes, nous avons travaillé avec un
+échantillon à 27 observations. l’optimisation du AIC et la sélection For-
+ward basée sur leF-partiel donnent des résultats identiques.
+Le modèle à privilégier pour mieux expliquer la consommation des vé-
+hicules sera en fonction du poids et la cylindrée du véhicule.
+Consommation des véhicules
+34/34

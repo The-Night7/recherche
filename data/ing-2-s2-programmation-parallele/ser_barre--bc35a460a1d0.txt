@@ -1,0 +1,88 @@
+/******************************************************************************
+* FILE: openmp_barre.c
+* DESCRIPTION:
+*
+* REMARQUE: la taille du tableau doit �tre uniform�ment disible par le nombre de taches N.
+* AUTHOR:
+* LAST REVISED: 11/01/13
+****************************************************************************/
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+#include<unistd.h>
+#define CHUNKSIZE   100
+#define N       200000
+
+void Remplace(float m[],float n[], int taille);
+void Display(float m[], int taille,int nb);
+int Comparer(float m[],float n[], int taille);
+
+
+int main(int argc, char *argv[]){
+
+ int i, chunk;
+ float b[N], c[N];
+ int t;
+ int Est_egal;
+
+ /* Condition aux limite de la barre, initialisations */
+  for (i=0; i < N-1 ; i++)
+    b[i] = c[i] = 0.0;
+
+    b[N-1]= c[N-1]=1.0;
+
+    chunk = CHUNKSIZE;
+
+    t=1;
+
+    Display(c, N,t);
+
+	/*une boucle while pour parcourir le temps jusqu'� la stabilit�
+	de la propagation de la temperature
+	*/
+    do{// on itere jusqu'a ce qu'il y ai stabilit�
+
+	/******************
+	   code parallele
+	*******************/
+       #pragma omp parallel for shared(b, c, shunk) \
+              private(i) schedule(dynamic,chunk)
+        for (i=1; i<N-1; i++) {
+          c[i]= 0.25 *(b[i-1] + b[i+1] + 2*b[i]);
+        }
+	//Afficher(c, N,t);
+    Est_egal=Comparer(b,c,N);
+    //system("PAUSE");
+	t++;//increase le nombre d'it�ration
+	Display(b, N,t);
+	Display(c, N,t);
+    Remplace(b,c,N);
+ }while(!Est_egal);
+
+   
+  //system("PAUSE");
+  return 0;
+}
+
+void Remplace(float m[],float n[], int taille){
+     int i;
+     for (i=1; i < taille-1; i++) m[i] = n[i];
+}
+
+void Display(float m[], int taille,int nb)
+{
+     int i;
+	 printf("nombre d'iterations =%d\n", nb);
+     for (i=0; i < taille; i++)
+        printf("m[%d]=%.3f ", i, m[i]);
+     printf("\n");
+}
+
+int Comparer(float m[],float n[], int taille){
+     int i;
+     for(i=0;i<taille;i++) {
+       if (fabs(m[i]-n[i]) > 0.001) return 0;
+     }
+     return 1;
+}

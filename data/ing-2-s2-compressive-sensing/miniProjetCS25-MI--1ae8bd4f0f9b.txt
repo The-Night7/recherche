@@ -1,0 +1,74 @@
+ING2-MI
+Mini Projet Compressive Sensing
+D´ epartement :Math´ ematiques Date de rendu : 26 mars 2024
+Nombre de pages : 5 Heure limite : 23h59
+Le but de ce mini-projet est de montrer la compr´ ehension du proc´ ed´ e de Compressive Sensing.
+1 Partie th´ eorique
+1. Rappeler la signiﬁcation de la ralaxation convexe appliqu´ ee au probl` eme
+(P0) : min‖α‖0 sous contrainte Dα =x.
+Vous devez pr´ esenter le nouveau probl` eme (P1), et expliquer pourquoi il est plus int´ eressant.
+2. Justiﬁer que l’algorithme IRLS peut ˆ etre utilis´ e pour r´ esoudre le probl` eme relax´ e convexe obtenu
+dans la question pr´ ec´ edente.
+3. Quel est l’int´ erˆ et de traiter ce probl` eme l` a plutˆ ot que
+(Pp) : min‖α‖p sous contrainte Dα =x
+avec 0<p< 1 ?
+4. Indiquer une autre m´ ethode pour r´ esoudre le probl` eme relax´ e convexe. Vous pr´ esenterez la r´ e´ ecriture
+du probl` eme permettant d’appliquer cette m´ ethode, notamment les changements de variables, de
+fonction objectif et de contraintes.
+2 Codage de base
+1. Coder les 4 algorithmes de de codage parcimonieux, OMP, StOMP, CoSaMP et IRLS.
+Attention, dans IRLS, wi = (|α(k−1)
+i | +ε)
+p
+2−1. Et le crit` ere d’arrˆ et est‖α(k)−α(k−1)‖<
+√ε
+100.
+2. Votre code doit avoir la forme de fonctions portant le nom de chaque algorithme avec comme
+arguments le signal x, le dictionnaire D, le nombre maximal d’it´ erations iterMax ainsi que les
+autres arguments ε, t ou s.
+3. Vous pr´ eciserez sur votre rapport les sorties de chacune de ces fonctions, ainsi que les modiﬁcations
+et am´ eliorations que vous auriez pu apporter par rapport ` a ce que nous avons vu en s´ eance.
+4. Coder ´ egalement les 4 matrices de mesure vues en cours. Vous pourrez, si vous le souhaitez, en
+rajouter d’autres en justiﬁant vos choix.
+5. Coder une fonction permettant de calculer la coh´ erence mutuelle entre 2 matrices.
+3 G´ en´ eration d’un dictionnaire et de 4 signaux
+1. G´ en´ erer al´ eatoirement un dictionnaire de taille 200× 350. Vous pr´ eciserez sur votre rapport le
+choix de la m´ ethode. Attention, les atomes doivent ˆ etre normalis´ es.
+2. G´ en´ erer 4 signaux 5-parcimonieux dans ce dictionnaire. Vous d´ eposerez le dictionnaire et les 4
+signaux dans des ﬁchiers Dico.csv et signaux.csv.
+1
+<<<PAGE>>>
+4 Comparaison des algorithmes de codage parcimonieux
+1. Tester les 4 algorithmes de codage parcimonieux sur les 4 signaux.
+2. D´ eﬁnir un crit` ere de comparaison d’eﬃcacit´ e de ces algos, et donner votre conclusion.
+5 Choix de la matrice de mesure
+Aﬁn de Tester le proc´ ed´ e complet de compressive sensing, vous devez choisir une matrice de mesure
+parmi les 4 d´ ej` a cod´ ees et pour des tailles de mesurem variant entre 5%, 10%, 25%, 40% et 50% de la
+taille du signal.
+1. Expliquer la m´ ethode que vous allez suivre pour d´ ecider.
+2. Eﬀectuer vos calculs et aﬃcher vos r´ esultats.
+6 Proc´ ed´ e complet de compessive sensing
+1. Utiliser la matrice de mesure s´ electionn´ ee pour g´ en´ erer les 4 vecteurs de mesure associ´ es aux 4
+signaux g´ en´ er´ es. Vous les d´ eposerez dans un ﬁchiermesures.csv.
+2. Expliquer comment reconstruire les signaux ` a partir de ces mesures.
+3. Eﬀectuer cette reconstruction et expliquer comment ´ evaluer la qualit´ e de celle-ci.
+7 Rendus attendus
+Votre rendu doit se faire sous la forme d’un seul ﬁchier : une archive .zip, portant les noms des membres
+du groupe.
+Elle doit contenir :
+• un rapport pdf contenant les r´ eponses ` a la partie th´ eorique, les justiﬁcations des choix de param` etres
+ainsi que les r´ esultats et discussions menant ` a d´ ecision.
+• un ou des ﬁchiers .py contenant les fonctions omp, stomp, cosamp et irls pour les algos de codage
+parcimonieux, les g´ en´ erations de matrices de mesure, du dictionnaire et des signaux, le calcul de
+coh´ erence et la reconstruction.
+• les ﬁchiers Dico.csv, signaux.csv et mesures.csv ainsi que Signaux-reconstruits.csv contenant les 4
+signaux reconstruits.
+2
+<<<PAGE>>>
+8 Annexes
+Algorithme StOMP :
+3
+<<<PAGE>>>
+Algorithme CoSaMP :
+Algorithme IRLS :
+4

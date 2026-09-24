@@ -1,0 +1,118 @@
+CY TECH : Théorie des langages 2025-2026
+TD5 - Grammaires de type 2 et algorithme CKY
+Objectifs
+• Notions de langage algébrique
+• Transformer une grammaire sous forme normalisée de Chomsky
+• Tester l’appartenance d’un mot à une grammaire sous forme normalisée de Chomsky
+– Algorithme CKY
+• Application au traitement des langages naturels
+Rappels et notations
+Les termesalgébrique et hors-contexte sont synonymes quand il s’agit de grammaire ou de langage.
+Une grammaireG =<T,N,S,P > est algébrique quand toutes les règles deP sont de la forme :
+• X→a où a∈T et X∈N
+• X→Y où Y ∈ (N∪T )∗ et X∈N
+Une grammaire G =< T,N,S,P > hors-contexte qui ne produit pas ε est dite sous forme
+normale de Chomsky si et seulement si toutes les règles deP sont de la forme :
+• A→a où a∈T
+• A→BC où B,C ∈N
+Le mot vide,ε, peut également être notéλ (c’est notamment le cas en JFLAP).
+Procédure de mise sous forme normalisée de Chomsky
+1. Remplacer tous les terminauxx en partie droite des règles par des non terminaux en ajoutant
+des règles de la formeX→x
+2. Transformer les parties droites des règles comme suit.
+X→YZW est remplacée par deux régles : X→YV et V →ZW
+3. Transformer les parties droites des règles comme suit :
+X→Y remplacée par X→WZ pour chaqueW et Z tels que Y →WZ
+1
+<<<PAGE>>>
+Algorithme CKY
+On utilisera l’algorithme de Coke, Younger et Kasami (CKY) pour tester si un motw est reconnu
+par une grammaire sous forme normale de Chomsky.
+Données :G =<T,N,P,S > et w un mot deT ∗
+n←|w|
+v← matrix(n,n )
+pour i = 1 à n faire
+v[i, 1] =
+{A tel queA est le membre gauche d’une règleA→a et a est lei-ème symbole du motw}
+pour j = 2 à n faire
+pour i = 1 à n−j + 1 faire
+v[i,j ]←∅
+pour k = 1 à j− 1 faire
+v[i,j ] = v[i,j ]∪
+{A tel queA est le membre gauche d’une règleA→BC avecB∈v[i,k ] et C∈v[i +k,j−k]}
+Algorithme 1 :Algorithm CKY
+Le motw est reconnu par la grammaire ssiS∈v[1,n ].
+Exercice 1. Reconnaissance d’un mot par l’algorithme CKY
+Soit G =<T,N,S,P > une grammaire avec
+T ={a,b}
+N ={S,A,B}
+S =S
+P =
+
+
+
+S→bA| aB
+A→a| aS| bAA
+B→b| bS| aBB
+
+
+
+Question 1. Est-ce que cette grammaire est algébrique? rationnelle?
+Question 2. Mettre cette grammaire sous forme normalisée de Chomsky.
+Question3. Enutilisantl’algorithmeCKY,montrerquelemot aabbabappartientaulangageengendré
+par la grammaire.
+Exercice 2. Des propositions très relatives
+On s’intéresse aux constructions de phrases avec des propositions relatives.
+2
+<<<PAGE>>>
+Soit G =<T,N,S,P > une grammaire avec
+T ={que,qui,regarde,regardent,mange,mangent,dort,dorment,tombe,tombent,
+une,un,la,le,des,les,pommes,pomme,femme,femmes,Pierre,Marie}
+N ={s,sn,reln,rela,sv,proa,pron,vt,vi,det,n,np}
+S = s
+P =
+
+
+
+s→ sn sv
+sn→ det n reln| det n rela| np reln| np rela| det n| np
+reln→ pron sv
+rela→ proa sn vt
+sv→ vi|vt sn
+proa→que
+pron→qui
+vt→regarde| regardent| mange| mangent
+vi→dort| dorment| tombe| tombent
+det→une| un| la| le| des| les
+n→pommes| pomme| femme| femmes
+np→Pierre| Marie
+
+
+
+Légende :
+• reln⇐⇒proposition relative nominative
+• rela⇐⇒proposition relative accusative
+• proa⇐⇒pronom relatif accusatif
+• pron⇐⇒pronom relatif nominatif
+• vi⇐⇒verbe intransitif
+• vt⇐⇒verbe transitif
+• det⇐⇒déterminant
+• n⇐⇒nom commun
+• np⇐⇒nom propre
+Question 1. Est-ce que cette grammaire est algébrique? rationnelle?
+Question 2. Vérifier l’appartenance de la phraseune pomme que Pierre regarde tombeau
+langage reconnu par la grammaire en utilisant un arbre syntaxique.
+Question 3. Appliquer l’algorithme CKY pour vérifier :
+• l’appartenance de la phraseune pomme que Pierre regarde tombeau langage engendré par
+la grammaire
+• le rejet de la phraseune pomme qui Pierre regarde tombedu langage engendré par la
+grammaire
+Exercice 3. JFLAP
+L’analyse CKY peut être effectuée par le logiciel JFLAP (http://jflap.org/jflaptmp).
+Pour cela, on se place en modegrammaire (Grammar). Ensuite, on rentre les différentes règles
+de la grammaire non normalisée.
+On peut alors vérifier qu’il s’agit bien d’une grammaire algébrique (context-free) grâce à l’itemTest
+for Grammar Type de l’onglet Test.
+On peut ensuite normaliser la grammaire grâce à l’item (Transform Grammar) de l’ongletConvert.
+On peut ensuite réaliser l’analyse CKY grâce à la commandeCYK Parse de l’onglet Input.
+3

@@ -1,0 +1,62 @@
+//                 __
+// But : calcul de || par la methode des rectangles (point milieu).
+//
+// /1
+// |     4           __
+// | ---------- dx = ||
+// | 1 + x**2
+// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+#include <sys/time.h>
+#include <unistd.h> 
+
+
+ //pour windows
+double omp_get_wtime(){ return ((double) clock())/CLOCKS_PER_SEC;}
+
+/*
+//pour linux
+double omp_get_wtime() {  
+       struct timeval tv;  
+       gettimeofday(&tv, (void *)0);  
+       return (double) tv.tv_sec + tv.tv_usec*1e-6;
+}
+
+//get_omp_wtime()
+
+*/
+
+double calcul_pi(int N){  
+       double start,stop;  
+       double cpu_time_used; 
+       int i = 0;  
+       double valeur_pi = 0.0;  
+       double sommeFX = 0.0;  
+       double X;  
+       double h = 1.0 / (double)N; // pas d'integration
+       start = 	omp_get_wtime();   
+       for(i = 1; i < N; i++) {    
+             X = h * (i - 0.5);    
+             sommeFX += 4.0/(1.0 + X*X);  
+       }  
+       valeur_pi= h * sommeFX; 
+       stop = omp_get_wtime();
+       cpu_time_used = stop - start;		 
+       printf("Valeur de pi %1.12f\n",valeur_pi);     
+       return cpu_time_used;
+}
+             
+int main(int argc, char **argv){     
+    int nb=1;  
+    double t=0.0;  
+  //  printf("Nb.threads\tTps.\n");  
+   // for(nb=1;nb<=12;nb++){     
+      t = calcul_pi(100000);    
+      printf("%d \t %f\n ",nb,t);  
+	 printf("\t %f\n ",t);
+   // }  
+    system("PAUSE"); 
+    return(EXIT_SUCCESS);
+}  

@@ -1,0 +1,59 @@
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+function[y]=ODE_CN()
+C=2;
+y_cn(1)=C;
+y_eu(1)=C; 
+y_th(1)=C; 
+N=10;
+T=10;
+t(1)=1;
+delta_t=(T-t(1))/N;
+eps=0.000001;
+    
+for n=1:N
+ z=y_cn(n);
+     while abs(d(z,y_cn(n),t(n),N))>eps
+     z=z-d(z,y_cn(n),t(n),N);
+     end
+ t(n+1)=t(n)+delta_t;   
+ y_cn(n+1)=z;
+ y_eu(n+1)=y_eu(n)+delta_t*myfun(y_eu(n),t(n)); 
+ y_th(n+1)=sqrt(C^2 +2*(t(n+1)-t(1)));
+ 
+end
+figure;
+plot(t,y_cn,'r')
+hold on;
+%plot(t,exp(t),'r')
+hold on;
+plot(t,y_eu,'b')
+hold on;
+plot(t,y_th,'-o m')
+end
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>

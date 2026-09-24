@@ -1,0 +1,127 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Optimisation déterministe
+Donné le 15-12-2022 (Durée 2h00)
+Téléphones portables et tout document sont interdits
+EXERCICE 1 (5 points)
+1. Soit H un sous-ensemble non vide de Rn. On s’intéresse au problème d’optimisation défini par
+(PC) : min
+x∈H
+f (x)
+où f : Rn → R une application différentiable et convexe sur le convexe H. Soit x∗ un point admissible
+(il vérifie les contraintes). Supposons que ∀x ∈ H,
+〈∇ f (x∗), x − x∗〉 ≥ 0.
+Montrer que x∗ est un minimum global de (PC).
+2. On considère le problème d’optimisation suivant (P )
+
+
+
+min
+(x1,x2,x3)∈R3
+x2
+1 + x2
+2 + x2
+3
+Sous les contraintes‰ x1 + x2 − x3 = 1
+2x1 − x2 = 3
+¾
+(a) Écrire l’ensemble des contraintes H du problème (P ) en terme matriciel Ax = b en précisant la
+matrice A et le vecteur b.
+(b) Montrer que H est un convexe de R3.
+(c) Montrer que x∗ =
+µ 9
+7 ; − 3
+7 ; − 1
+7
+¶
+est un point admissible du problème (P ).
+(d) Montrer que x∗ est un minimum global de (P ).
+(e) Que peut-on dire sur la valeur du ∇ f (x∗)? Commenter
+EXERCICE 2 (9 points) Soit f : x 7→ c + bT x + 1
+2 xT Ax une fonction quadratique sur Rn avec A une matrice
+symétrique et définie positive.
+1. Montrer, en justifiant vos calculs, que la fonction f admet un minimum unique X∗ sur Rn.
+2. Pour k ≥ 1, on suppose connue la direction de descente dk−1. Si l’itéré courant xk = xk−1 + ρk−1dk−1
+n’est pas le minimum recherché, on souhaite calculer l’itéréxk+1 = xk + ρk dk où
+dk = −∇f (xk) + βk dk−1.
+(a) Montrer que dk et dk−1 sont A-conjuguées si et seulement si βk = 〈Adk−1, ∇ f (xk)〉
+〈Adk−1, dk−1〉 .
+(b) Montrer que le pas optimal de Cauchy ρk = argmin
+ρ>0
+f (xk + ρdk) est : ρk = −
+›
+dk, ∇ f (xk)
+ﬁ
+dT
+k Adk
+.
+<<<PAGE>>>
+EXAMEN : O PTIMISATION DÉTERMINISTE
+3. Application: On considère la fonction quadratique f où A =
+µ 3 0
+0 1
+¶
+, b =
+µ 1
+−2
+¶
+et c=0.
+(a) Montrer que f admet un minimum global réalisé en X∗ =
+µ − 1
+3
+2
+¶
+.
+(b) Descente du gradient à pas optimal. On considère X0 =
+µ 0
+1
+¶
+.
+i. Calculer la direction de descente du gradient d0.
+ii. Calculer le pas optimal de Cauchy ρ0 et en déduire l’itéré X1 par la descente du gradient à
+pas optimal.
+iii. Calculer la direction de descente du gradient d1, ρ1 puis en déduire l’itéré X2 par la méth-
+ode dedescente du gradient à pas optimal.
+(c) Descente du gradient conjugué à pas optimal. On considère X0 =
+µ 0
+1
+¶
+.
+i. Calculer β1 et d1 = −∇f (X1) + β1d0.
+ii. Calculer le pas optimal de Cauchy dans la direction du gradient conjugué d1.
+iii. En déduire l’itéré X∗
+2 par la méthode de descente du gradient conjugué à pas optimal.
+(d) Commentez vos résultats en justifiant.
+EXERCICE 3 (6 points) Soit f : Rn :→ R une fonction deux fois différentiable surRn et on considère le prob-
+lème d’optimisation
+(P ) min
+x∈Rn
+f (x.)
+1. (a) Rappeler la définition générale d’une direction de descente.
+(b) Montrer que dans le cas d’une forme quadratique strictement convexe, la méthode de Newton
+converge en une seule itération.
+(c) Quelles sont les limitations de cette méthode?
+2. On considère dans cette question le problème d’optimisation sans contrainte suivant:
+(P) min
+(x,y,z)∈R3
+‡
+f (x, y, z) = x4 + 2y 4 + z4 − 2x + y − z
+·
+(1)
+On cherche à minimiser f sur R3 par la méthode de Newton. (Algorithme rappelé ci-dessous )
+(a) Soit X ∈ R3. Calculer ∇ f (X ) et trouver le(s) point(s) critique(s) de f .
+(b) Calculer, à l’itération k, la direction de descente de Newton d (k) en précisant les cas de son
+existence.
+(c) On considère X (0) = (1, 1, 1). Quelles sont les valeurs ded (0) et de X (1) ?
+Algorithme de Newton
+X(0) donné;
+ρ(k) = 1 ∀k;
+d(k) = −
+¡
+H(X(k))
+¢−1∇ f ( X X (k));
+X(k+1) = X(k) −
+¡
+H(X(k))
+¢−1∇ f (X(k));
+CY-Tech 2/2

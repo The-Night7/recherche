@@ -1,0 +1,418 @@
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Les r´ eseaux de neurones
+Le perceptron multicouches
+Maria Malek
+6 novembre 2024
+Maria Malek Le perceptron 1/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+1 Mod` ele de neurone
+2 Typologie et fonctionnement des r´ eseaux de neurones
+3 Le perceptron
+Maria Malek Le perceptron 2/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+R´ eseaux de neurones
+Un mod` ele de r´ eseaux de neurones est constitu´ e d’un
+ensemble de neurones avec des liens entre eux.
+l’apprentissage se fait par adaptation des poids stock´ es dans
+les connections du r´ eseau en fonction des exemples
+d’apprentissage.
+Certaines m´ ethodes sont supervis´ ees et d’autre sont non
+supervis´ ees.
+Le r´ eseau de neurone se stabilise (les poids des connections)
+apr` es un certain nombre de passage de l’ensemble
+d’apprentissage.
+Maria Malek Le perceptron 3/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Le neurone de McCulloch Pitts
+x1,.. xn : les entr´ ees du neurone.
+w1,.. wn : les poids des connections entrantes.
+θ un seuil de comparaison.
+f est la fonction d’activation du neurone.
+La sortie du neurone se calcule par : x = f (
+nP
+i
+wi xi−θ)
+Maria Malek Le perceptron 4/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Les fonctions d’activation binaires
+Maria Malek Le perceptron 5/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Les fonctions d’activation binaires
+f (s)∈ [0, 1]
+Fonction de seuil (fonction heaviside quand δ = 0)
+f (s) =
+ 1 si s≥δ
+0 sinon.
+o` uδ≥ 0
+Fonction lin´ eaire par morceaux
+f (s) =
+
+
+
+0 si s≤−δ
+δ+s
+2δ si −δ <s <δ
+1 si s≥δ
+Fonction sigmo ¨ ıde (Fonction logistique)f (s) = 1
+1+e−λs
+o` uλ est la pente de la fonction
+Maria Malek Le perceptron 6/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+les fonctions d’activation bipolaires
+Maria Malek Le perceptron 7/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Les fonctions d’activation bipolaires
+f (s)∈ [−1, 1]
+Fonction de seuil
+f (s) =
+ 1 si s≥δ
+−1 sinon.
+o` uδ≥ 0
+Fonction lin´ eaire par morceaux
+f (s) =
+
+
+
+−1 si s≤−δ
+s
+δ si −δ <s <δ
+1 si s≥δ
+Fonction sigmo ¨ ıdef (s) = 1−e−s
+1+e−s
+o` uλ est la pente de la fonction
+Maria Malek Le perceptron 8/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+R´ eseaux de neurones multicouches
+Maria Malek Le perceptron 9/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+R´ eseaux de neurones multicouches
+Un r´ eseau de neurones multi-couche est compos´ e d’un
+ensemble de neurones x l
+j dispos´ e enL + 1 couches.
+On appelle x l
+j le j` eme neurone de la couche l.
+La couche 0 ´ etant la couche d’entr´ ee.
+La couche L est la couche de sortie.
+nl est le nombre de neurones de la couche l. On note n0 = n
+et nL = m
+L’´ etat du neuronex l
+i est donn´ e pars l
+i =−w l
+0i +
+nl−1P
+j=1
+w l
+ji x l−1
+j
+Nous pouvons ´ ecrire :s l
+i =
+nl−1P
+j=0
+w l
+ji x l−1
+j , avec x l−1
+0 =−1 :
+Ecriture matricielle W l = [w l
+ji]
+S l = W l X l−1, f (S l) = f (W l X l−1)
+Maria Malek Le perceptron 10/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Typologie et fonctionnement des r´ eseaux de neurones
+Par structure
+R´ eseaux r´ ecurrents.
+R´ eseaux multi-couches (ou sans couche cach´ ee)
+Apprentissage Supervis´ e
+Pour chaque entr´ ee pr´ esent´ ee au RNA on conna ˆ ıt la sortie
+r´ eelle (d´ esir´ ee).
+La mise ` a jour des valeurs des poids et des seuils tient compte
+de la comparaison entre la sortie r´ eelle et la sortie calcul´ ee.
+Sortie : approximation de la fonction ou bien une regression
+non-lin´ eaire
+Exemple : Algorithme de moindres carr´ ees et de
+r´ etro-propagation de l’erreur.
+Apprentissage non- supervis´ e
+Le r´ eseau de neurones converge vers une repr´ esentation
+synth´ etique des donn´ ees.
+Exemple : les r´ eseaux de neurones de Kohonen.
+Maria Malek Le perceptron 11/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Tˆ aches principales apprises par les r´ eseaux de neurones-1
+Approximation des fonctions par apprentissage supervis´ e avec RNA
+non r´ ecurrent ` a une ou plusieurs couches cach´ ees et
+on utilisera un apprentissage par correction d’erreur.
+Auto-association
+ Un RNA qui stocke un ensemble des formes
+et qui sera capable sur pr´ esentation d’une de ces
+formes avec description partielle de la retrouver.
+Apprentissage non supervis´ e selon la loi de
+Hebb :
+La valeur du poids de la connexion entre deux
+neurones doit ˆ etre fonction du produit des
+valeurs d’activation de deux neurones.
+Le r´ esultat de cette m´ ethode est que les deux
+neurones ont un comportement synchrone :
+Le poids de leur connexion augmente et dans le
+cas contraire, il diminue.
+Maria Malek Le perceptron 12/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Tˆ aches principales apprises par les r´ eseaux de neurones-2
+Classification Nous disposons d’un ensemble des classes
+pr´ eexistantes. La tˆ ache du RNA est d’attribuer ` a un
+exemple la classe ` a laquelle il appartient. On peut
+appliquer un apprentissage supervis´ e.
+Segmentation La tˆ ache du RNA est de repr´ esenter les donn´ ees par
+des groupes (clusters), des mesures de similarit´ es ou
+de distance sont utilis´ es lors du fonctionnement du
+r´ eseau : Il s’agit d’un apprentissage non supervis´ e.
+Maria Malek Le perceptron 13/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Le perceptron
+Le perceptron a ´ et´ e introduit par Rosenblatt en 1958.
+n entr´ ees et un neurone de sortie dont l’´ etat est une
+combinaison lin´ eaire des entr´ ees avec les poids.
+Classer une population en deux classes.
+Domaines d’application : la reconnaissance de formes, le
+traitement de la parole et de l’image, etc.
+Fonction d’activation pour la sortie du perceptron : fonction
+de seuil binaire, soit bipolaire.
+Maria Malek Le perceptron 14/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron et fonctions bool´ eennes
+Maria Malek Le perceptron 15/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Le probl` eme XOR
+Maria Malek Le perceptron 16/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Algorithme du perceptron
+Param` etres et Variables
+p entr´ ees-sorties diff´ erentes (Xk, Yk), avec K = 1..p,
+Xk = (−1, x1,.. xn),
+Un vecteur de poids ( w0, w1,.. wn), avec w0 =θ
+La sortie calcul´ eeYck pour chaque Xk. Yck∈{ 0, 1} ou bien
+Yck∈{− 1, 1}
+Un param` etreµ dont le rˆ ole est de contrˆ oler la convergence.
+Maria Malek Le perceptron 17/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Algorithme du perceptron
+Initialisation du vecteur W par des valeurs al´ eatoires.
+Apprentissage R´ ep´ eter (passage de l’ensemble d’apprentissage)
+R´ ep´ eter selon un ordre donn´ e
+choisir l’entr´ eeXk
+Calculer l’´ etat du neurones = W T Xk, et sa
+fonction d’activation Yck = f (s)
+Adaptation : W = W +µ(Yk− Yck)Xk
+Test de convergence : Jusqu’` a stabilisation du
+vecteur W.
+Maria Malek Le perceptron 18/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Algorithme du perceptron
+Convergence
+Si Les deux classes sont lin´ eairement s´ eparables alors le
+perceptron converge, l’hyperplan s´ eparateur des classes est
+donn´ e par :
+W T X = 0
+La distance d’un exemple donn´ e par rapport ` a l’hyperplan est
+de dW (X ) = W T X√
+W T W
+Maria Malek Le perceptron 19/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Algorithme du perceptron
+Erreur quadratique
+Err = (Y− Yc) pour l’exemple (X,Y).
+Minimisation de l’erreur quadratique (Loss function) :
+E = 1
+2 Err 2 = 1
+2× (Y− Yc)2 avec Yc = f (s) = f (
+nP
+i
+wi xi−θ)
+pour l’exemple (X,Y).
+Application de l’optimisation avec l’algorithme de descente du
+gradient.
+∂E
+∂wj
+= Err× ∂Err
+∂wj
+= Err× ∂(Y−f (s))
+∂wj
+= Err×
+∂(Y−f (
+nP
+i
+wi xi−θ))
+∂wj
+∂E
+∂wj
+=−Err× f′(s)× xj
+wj = wj +µErr× f′(s)× xj
+Maria Malek Le perceptron 20/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron multi-couches
+Maria Malek Le perceptron 21/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron multi-couches (sans biais)
+x5 = f (w35x3 + w45x4−θ5)
+x5 = f (w35×f (w13x1+w23x2−θ3)+w45×f (w14x1+w24x2−θ4)−θ5)
+Maria Malek Le perceptron 22/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron multi-couches
+R´ etro-propagation de l’erreur
+Couche de sortie Comme le perceptron :
+w L
+ji = w L
+ji +µ× x L−1
+j × ∆L
+i avec
+∆L = Err L× f′(S L−1)
+Nous pouvons d´ emontrer que∂E
+∂w L
+ji
+=−x L−1
+j × ∆L
+i
+Couche cach´ ee ∆l =
+nP
+i
+w l
+ji∆l+1
+i × f′(S l−1),
+w l
+kj = w l
+kj +µ× x l−1
+j × ∆l
+j
+Nous pouvons d´ emontrer que ∂E
+∂w l
+kj
+=−x l−1
+j × ∆l
+j
+Maria Malek Le perceptron 23/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron multi-couches : Loss Functions
+Loss functions
+Erreur quadratique pour un probl` eme de regression :
+E = 1
+2 Err 2 = 1
+2× (y− yc)2 avec yc = f (
+nP
+i
+wi xi−θ)
+pour l’exemple (x,y), f ´ etant la fonction d’activation
+Binary cross entropy pour une classification binaire avec une
+fonction d’activation sigmoid : L(w; x, y) =
+y∗ ln( 1
+1+exp(−w T x)) + (1− y)∗ ln(1− 1
+1+exp(−w T x)),
+y∈{ 0, 1}
+Categorial cross entropy pour une classification multimodale avec
+une fonction d’activation sigmoid
+L(w; x, y) =Pm
+k=1 yk∗ ln( 1
+1+exp(−w T xk)) m ´ etant le
+nombre de neurones dans la couche de sortie, la sortie y
+est encod´ e en vecteur (y1,.. ym) , yk est ´ egal ` a 1 pour le neurone repr´ esentant la ki` eme
+modalit´ e, 0 sinon.
+Maria Malek Le perceptron 24/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Perceptron multi-couches : Sigmod activations
+Fonctions d’activation les + utilis´ ees dans les logiciels
+Logistic Function f (s) = 1
+1+e−s avec s =−w T x
+Softmax Function pour les probl` emes de classification
+multimodales f (s)i = esi
+Pj=m
+j=1 esj i ´ etant le numero d’un
+neurone dans la couche de sortie, m ´ etant le nombre
+de neurones dans la couche de sortie ( i≤ m)
+Maria Malek Le perceptron 25/26
+<<<PAGE>>>
+Mod` ele de neurone
+Typologie et fonctionnement des r´ eseaux de neurones
+Le perceptron
+Exercice-1
+On construit un perceptron pour la porte logique AND avec les
+caract´ eristiques suivantes :
+les entr´ ees sont binaires et les sorties bipolaires ;
+le taux d’apprentissage est µ = 1 ;
+le vecteur de poids initiaux W = [3; 2; 3] o` u la premi` ere
+composante correspond au biais.
+1 Appliquer l’algorithme du perceptron et tracer pour les
+diff´ erents vecteurs des poids, les droites s´ eparatrices.
+2 Donner le plan s´ eparateur de la solution.
+3 Calculer pour chaque exemple sa distance au plan s´ eparateur,
+Maria Malek Le perceptron 26/26

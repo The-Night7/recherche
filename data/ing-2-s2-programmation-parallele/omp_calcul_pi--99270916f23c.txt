@@ -1,0 +1,91 @@
+
+//                 __
+// But : calcul de || par la methode des rectangles (point milieu).
+//
+// /1
+// |     4           __
+// | ---------- dx = ||
+// | 1 + x**2
+// /0
+/*
+La directive critical permet de protéger un bloc (délimité par des accolades) des accès simultanés. 
+A un instant donné, il ne peut y avoir qu’un seul thread qui accède à un bloc déclaré critical. 
+Dans notre exemple, la ligne qui calcule la sum des aires doit être placée dans un bloc critique.
+#pragma omp critical
+{
+sum += 4.0/(1.0 +X*X) ;
+}
+
+Il est possible d’éviter l’usage d’un bloc s’il ne comprend qu’une seule ligne en remplaçant 
+la directive critical par la directive atomic. Par contre, la directive atomic ne peut être
+utilisée que pour des accès à la mémoire (elle ne peut pas être utilisée pour un test, un appel de fonction, ...).
+Certains compilateurs utilisent l’optimisation matérielle pour les blocs déclarés atomic, les autres 
+compilateurs remplacent simplement les directives atomic par des blocs critical. 
+
+#pragma omp atomic
+sum += 4.0/(1.0 +X*X) ;
+
+Les opérations cumulées sur une variable peuvent être optimisées de manière particulière en utilisant 
+une clause de reduction à la suite de la directive omp parallel for (attention à l’ordre des différents 
+éléments si vous utilisez en plus d’autres clauses comme shared,...). 
+
+#pragma omp parallel for num_threads(nb_threads) private(X) reduction(+:sumFX)
+for (i = 0; i < N; i++) {
+   X = h * (i - 0.5);
+   sumFX += 4.0/(1.0 + X*X);
+}
+
+
+
+
+
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+//#include <time.h>
+#include <unistd.h> 
+
+// pour windows
+//double omp_get_wtime(){ return ((double) clock())/CLOCKS_PER_SEC;}
+
+/*
+//pour linux
+double get_time() {  
+       struct timeval tv;  
+       gettimeofday(&tv, (void *)0);  
+       return (double) tv.tv_sec + tv.tv_usec*1e-6;
+}*/
+
+double calcul_pi_parallel(int nb_threads, long N){  
+       double start,stop;  
+       double cpu_time_used; 
+       int i = 0;  
+       double value_pi = 0.0;  
+       double sumFX = 0.0;  
+       double X;  
+       double h = 1.0 / (double)N;  
+       start = omp_get_wtime();  
+       #pragma omp parallel for num_threads(nb_threads) \
+	      private(X) reduction(+:sumFX)  
+       for(i = 1; i < N; i++) {    
+             X = h * (i - 0.5);    
+             sumFX +=  4.0/(1.0 + X*X);  
+             }  
+       value_pi= h * sumFX;  
+       stop = omp_get_wtime();
+	   cpu_time_used = stop-start;  
+       printf("value of pi %1.12f\n",value_pi);     
+       return cpu_time_used;
+}
+             
+int main(int argc, char **argv){     
+    int nb;  
+    double t=0.0;  
+    printf("Nb.threads\tTps.\n");  
+    for(nb=1;nb<=12;nb++){     
+      t = calcul_pi_parallel(nb, 1000000000);    
+      printf("nbthreads = %d \t runningtime = %f\n ",nb,t);  
+    }  
+   return 0;  
+}  

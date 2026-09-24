@@ -1,0 +1,138 @@
+Data mining 2
+Examen de rattrapage
+janvier-2023
+Dur´ eee :2 heures. Documents autoris´ es :2 feuilles recto-verso.
+1 Questions de cours et de r´ eﬂexion
+Il vous est demand´ e de r´ epondre de mani` ere br` eve et pr´ ecise aux questions
+suivantes :
+1. Quel(s) avantage(s) pr´ esentent les forˆ ets al´ eatoires (RF) par rapport
+aux arbres de d´ ecision.
+2. Rappelez le principe du bootstrapping.
+3. Quels sont les deux hyperparam` etres principaux des RFs.
+4. Que contient chaque noeud de chaque arbre d’une RF ?
+5. Comment l’algorithme (appel´ e CART) de construction des arbres de
+d´ ecision formant une RF choisit-il ce contenu ?
+6. Rappelez les deux erreurs calcul´ ees pour une RF.
+7. Expliquez comment l’algorithme calcule l’importance des variables.
+2 G´ en´ eralit´ es
+Dans cette partie, nous consid´ erons un probl` eme de classiﬁcation binaire
+dans lequel les deux classes sont C et¬C (exemple : Malade et Sain). Soit
+CON F la matrice de confusion d’un classiﬁeur binaire. CON F peut ˆ etre
+not´ ee comme suit :
+1
+<<<PAGE>>>
+ING2-MI 2022-23 Data mining
+Valeurs r´ eelles
+Valeurs pr´ edites
+C ¬C
+C TP FP
+¬C FN TN
+T otal P N
+1. Soit un classiﬁeur qui pr´ edit syst´ ematiquement la classeC. Consid´ erons
+un ensemble D d’exemples contenant 90 exemples de la classe C et
+10 exemples de la classe¬C. En utilisant D comme ensemble de test,
+donnez la matrice de confusion du classiﬁeur et calculez son taux d’er-
+reur ta correspondant ` a la pr´ ecision (accuracy). Que constatez-vous
+?
+2. Proposez et calculez un autre taux d’erreur tb permettant d’´ eviter les
+faiblesses du taux ta.
+Une autre fa¸ con d’´ evaluer un classiﬁeur binaire est d’utiliser les deux
+mesures suivantes :
+— La sensibilit´ e :Se = T P
+P .
+— La sp´ eciﬁcit´ e :Sp = T N
+N .
+3. Calculez la sp´ eciﬁcit´ e et la sensibilit´ e pour les exemples suivants :
+M1 =
+(9 8
+1 1
+)
+M2 =
+(1 1
+9 8
+)
+M3 =
+(9 1
+1 8
+)
+.
+4. Quelle signiﬁcation donnez-vous ` a chacune de ces mesures ?
+5. Expliquez pourquoi il est facile d’avoir ”une bonne valeur” pour l’une
+ou l’autre de ces deux mesures, mais que cela ne suﬃt pas pour avoir
+un bon classiﬁeur.
+3 Classiﬁeurs bay´ esiens
+Nous supposons dans un premier temps que nos observations (exemples) sont
+d´ ecrites par des variables exclusivement cat´ egorielles.
+1. Rappelez en expliquant chacun de ses ´ el´ ements la formule math´ ematique
+utilis´ ee par les classiﬁeurs bay´ esiens.
+2. Quels sont les entr´ ees et les sorties de l’algorithme permettant de
+construire un classiﬁeur bay´ esien ?
+3. Une fois qu’il est d´ eﬁni, quelle r´ eponse un classiﬁeur bay´ esien donne-
+t-il lorsqu’on lui soumet une nouvelle instance ?
+2
+<<<PAGE>>>
+ING2-MI 2022-23 Data mining
+4. Utilisez l’ensemble de donn´ ees ci-dessous pour construire un classi-
+ﬁeur bay´ esien permettant de pr´ edire la valeur de la variable ‘Emprunt
+accord´ e’.
+5. Appliquez ce classiﬁeur ` a un exemple de votre choix.
+6. Expliquez bri` evement comment on teste la qualit´ e d’un tel classiﬁeur.
+7. Dans certains cas, le r´ esultat de cette validation n’est pas satisfai-
+sant car certaines probabilit´ es calcul´ ees par l’algorithme sont nulles.
+Comment expliquez-vous cela ? Comment rem´ edier ` a ce probl` eme ?
+Num. ˆAge A un emploi A un logement Qualit´ e dossier Emprunt accord´ e
+1 Jeune Faux Faux Moyen Non
+2 Jeune Faux Faux Bon Non
+3 Jeune Vrai Faux Bon Oui
+4 Jeune Vrai Vrai Moyen Oui
+5 Jeune Faux Faux Moyen Non
+6 Interm´ ediaire Faux Faux Moyen Non
+7 Interm´ ediaire Faux Faux Bon Non
+8 Interm´ ediaire Vrai Vrai Bon Oui
+9 Interm´ ediaire Faux Vrai Excellent Oui
+10 Interm´ ediaire Faux Vrai Excellent Oui
+11 Senior Faux Vrai Excellent Oui
+12 Senior Faux Vrai Bon Oui
+13 Senior Vrai Faux Bon Oui
+14 Senior Vrai Faux Excellent Oui
+15 Senior Faux Faux Moyen Non
+Nous supposons ` a pr´ esent que les variables ind´ ependantes de notre probl` eme
+sont num´ eriques.
+8. Quelle autre formule math´ ematique utilisent les classiﬁeurs bay´ esiens
+?
+9. Que suppose cette formule au sujet des variables ind´ ependantes ?
+4 R´ eseaux de neurones
+On consid` ere un r´ eseau de neurones compos´ e de 3 couches telles que la
+couche d’entr´ ee contientn neurones, la couche cach´ ee contientn neurones et
+la couche de sortie contient 1 neurone. La fonction d’activation des couches
+cach´ ee et de sortie est la fonction de Heaviside. Les entr´ ees ne prennent que
+les valeurs 0 et 1. Nous avons les valeurs suivantes des poids et des biais :
+3
+<<<PAGE>>>
+ING2-MI 2022-23 Data mining
+Figure 1 – R´ eseau de neurones
+— Neurones de la couche cach´ ee : tous les poids sont ´ egaux ` a 1, et en
+parcourant les neurones de gauche ` a droite, les biais sont ´ egaux ` a
+−0.5,−1.5,−2.5, . . . ,0.5− n respectivement.
+— Neurone de la couche de sortie : en parcourant les liens de gauche
+` a droite les poids sont ´ egaux ` a 1,−1, 1,−1, . . . respectivement, et le
+biais est ´ egal ` a−0.5.
+La ﬁgure 1 r´ ecapitule ces caract´ eristiques (les ﬂ` eches bleues correspondent ` a
+un poids 1 et les ﬂ` eches rouge ` a un poids−1).
+1. Cas n=2 :
+(a) Repr´ esentez graphiquement le r´ eseau.
+(b) Calculez la sortie de chaque neurone des couches cach´ ee et de sor-
+tie.
+(c) Quelle fonction calcule ce r´ eseau ?
+2. Cas n=3 :
+(a) Repr´ esentez graphiquement le r´ eseau.
+(b) Calculez la sortie de chaque neurone des couches cach´ ee et de sor-
+tie.
+4
+<<<PAGE>>>
+ING2-MI 2022-23 Data mining
+(c) Quelle fonction calcule ce r´ eseau ?
+3. Cas gen´ eral :
+(a) Quelle fonction calcule ce r´ eseau ? (vous justiﬁerez de mani` ere
+d´ etaill´ ee votre r´ eponse)
+5

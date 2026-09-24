@@ -1,0 +1,291 @@
+ 
+ 
+ING2-GMA 
+                                          EXAMEN DE Modèle linéaire 
+                                                            2022-2023 
+ 
+Durée : 2h00 
+ Examen papier  
+ 2 feuilles R/V autorisées(manuscrits ou non) 
+                 Calculatrice autorisée 
+Les tables des lois sont données dans l’Annexe. 
+ 
+Exercice 1 : Régression Linéaire Simple 
+Le tableau suivant contient la liste de 7 pays d'Amérique du Nord et d'Amérique Centrale, dont la 
+population dépassait le million d'habitants en 1985. Pour chaque pays, on mesure le taux de natalité Y 
+(nombre de naissances annuel pour 100 habitants) ainsi que le taux d'urbanisation X (taux de la 
+population vivant dans des villes de plus de 10000 habitants). 
+ 
+Pays X=Taux d’urbanisation Y=Taux de natalité 
+Canada 5.5 1.62 
+Costa-Rica 2.73 3.05 
+Cuba 3.33 1.69 
+USA 5.65 1.6 
+El Salvador 1.15 4.02 
+Guatemala 1.42 3.84 
+Haïti 1.39 4.13 
+ 
+On donne  ∑ 𝑋𝑖
+7
+𝑖=1 =  21.17,     ∑ 𝑌𝑖
+7
+𝑖=1  = 19.95,  ∑ 𝑋𝑖
+27
+𝑖=1  = 85.98, ∑ 𝑌𝑖
+27
+𝑖=1  = 65.30 , cov(X,Y)= -2.102 
+ ∑ 𝑋𝑖𝑌𝑖7
+𝑖=1  = 47.72. 
+ 
+1) Déterminer la droite de régression de Y en fonction de X sous la forme Y=β0+ β1X. 
+ 
+ 
+ 
+
+<<<PAGE>>>
+2) Calculer la valeur prédite du taux de natalité Y si le taux d’urbanisation X est 5.65. Déduire la valeur du 
+résidu. 
+ 
+ 
+ 
+3) Donner le tableau d’analyse de la variance de la régression de Y en X. 
+ 
+ 
+ 
+4) Calculer le coefficient de détermination R². Interpréter les résultats. 
+ 
+ 
+ 
+5) La régression est-elle significative ? (Tester F).  
+ 
+ 
+<<<PAGE>>>
+ 
+Exercice 2 : Régression Linéaire Multiple, Régression Logistique Simple et 
+Multiple  
+Le jeu de données Car est constitué de 30 voitures caractérisées par 6 variables quantitatives et une 
+variable qualitative. Les variables étudiées sont : 
+ 
+1.  price :                    Le prix de la voiture en milliers d’euros. 
+2.  horsepower :        La puissance en chevaux de la voiture.         
+3. length :                   Longueur de la voiture.  
+4. width:                     Largeur de la voiture. 
+5. height:                    Hauteur de la voiture. 
+6. curb-weight:          Poids vide de la voiture. 
+ 7. fuel   représente le type de carburant, variable qualitative à deux modalités (Diesel : 1 et Essence : 0) 
+ 
+A- Régression linéaire multiple  
+ 
+En premier temps, nous souhaitons estimer le prix d’une voiture en fonction de toutes les variables 
+quantitatives qui se trouve dans le jeu des données. Avec le logiciel R, nous obtenons les résultats 
+suivants : 
+ 
+reg.lin <- lm  (price ~. , data=car1) 
+summary (reg.lin) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+reg.lin <- lm (price ~. , data=car1) 
+anova (reg.lin) 
+ 
+ 
+ 
+1) Donner l’équation du modèle de régression qui sera utilisé pour prédire le prix d’une voiture ? 
+ 
+ 
+ 
+2) Quelle est la somme des carrés due à la régression pour l’ensemble des variables explicatives ? 
+ 
+ 
+3) Donner la somme des carrés totale. 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+4) Quelle est la valeur du coefficient de détermination R² ? Interpréter cette valeur. 
+ 
+ 
+5) Une voiture de marque a les caractéristiques suivants : horspower= 182, length = 192.7, 
+width=71.4, height=55.9 et curb.weight=3505. Prédire le prix de cette voiture. 
+ 
+ 
+ 
+6) La régression est-elle significative avec un risque de 5%? Effectuer le test nécessaire en précisant 
+les hypothèses, la statistique du test, le seuil et le d.d.l. 
+ 
+ 
+ 
+7) En utilisant les sorties du logiciel R, les variables horsepower et curb.weight sont-elles 
+significatives avec un risque de 5%.  
+ 
+ 
+<<<PAGE>>>
+ 
+ 
+ 
+ 
+8) Le calcul du facteur d’inflation de la variance (VIF) est résumé dans le tableau ci-dessous.  
+ 
+Vif (reg.lin) 
+ 
+ 
+ Commenter ces résultats. 
+ 
+ 
+ 
+ 
+ 
+9) Si nous ne tenons compte que de la variable explicative horsepower pour estimer le prix, quel 
+serait alors le tableau d’analyse de la variance correspondant ?  
+ 
+Source de variation Somme des carrées d.d.l 
+Régression due à horsepower 2034.63  
+Résiduelle   
+Totale   
+ 
+ 
+B- Régression Logistique Simple avec une variable quantitative. 
+ 
+Ci-dessous les résultats obtenus pour la régression logistique de fuel avec une seule variable explicative 
+quantitative (price).. 
+ 
+reg.log1 <- glm(fuel ~heigth , data=car.log) 
+summary (reg.log1) 
+ 
+
+<<<PAGE>>>
+ 
+ 
+Calculez l’odds en fonction du prix. En déduire l’odds pour une voiture de prix égale à 23,578 euros. 
+ 
+ 
+ 
+ 
+C- Régression Logistique Multiple avec plusieurs variables explicatives. 
+ 
+Nous souhaitons expliquer le type de carburant d’une voiture (fuel) en fonction des certaines 
+caractéristiques (price, length, height). Le logiciel R nous fournit les résultats suivants : 
+ 
+reg.log2 <- glm(fuel ~. , data=car.log) 
+summary (reg.log2) 
+ 
+ 
+1) Déterminer une estimation de la fonction C(X) = logit(p(x)). 
+ 
+ 
+ 
+2) Tester la nullité des tous les coefficients avec un risque α = 0.05, en précisant tous les éléments 
+du test (les hypothèses, la statistique du test, le seuil, le d.dl)... 
+
+<<<PAGE>>>
+ 
+ 
+ 
+ 
+3) On souhaite tester le coefficient price dans le modèle de régression, pour cela, il faut tout 
+d’abord réaliser une nouvelle régression avec les deux variables length et height mais sans la 
+variable price et comparer ce modèle avec le modèle complet.  
+ 
+reg.log3 <- glm(fuel ~length+heigth , data=car.log) 
+summary (reg.log3) 
+ 
+ 
+Utiliser les sorties de R ci-dessus pour tester la nullité du coefficient price avec un risque de 5%. 
+ 
+
+<<<PAGE>>>
+ 
+ 
+ 
+ 
+4) Avec les résultats ci-dessous, étudier au risque de 5% la nullité simultanée des coefficients 
+price et lenght. 
+ 
+reg.log24<- glm(fuel ~heigth , data=car.log) 
+summary (reg.log4) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+Table de la loi de Fisher 
+ 
+ 
+
+<<<PAGE>>>
+Annexes : tables statistiques Page 4 
+ 
+ 
+1 : Fractiles de la loi du  
+ ²
+   
+ 
+Cette table donne les fractiles FP de la loi de khi-deux 
+à 
+  degrés de liberté : P =  P( 
+ ²
+  ≤ FP )  
+ 
+ 
+ 
+ 
+ 
+       
+    P 0.010 0.020 0.025 0.050 0.100 0.150 0.200 0.800 0.900 0.950 0.975 0.980 0.990 
+1 0.000 0.001 0.001 0.004 0.016 0.036 0.064 1.642 2.706 3.841 5.024 5.412 6.64 
+2 0.020 0.040 0.051 0.103 0.211 0.325 0.446 3.219 4.605 5.991 7.378 7.824 9.21 
+3 0.115 0.185 0.216 0.352 0.584 0.798 1.005 4.642 6.251 7.815 9.348 9.837 11.35 
+4 0.297 0.429 0.484 0.711 1.064 1.366 1.649 5.989 7.779 9.488 11.143 11.668 13.28 
+5 0.554 0.752 0.831 1.145 1.610 1.994 2.343 7.289 9.236 11.070 12.833 13.388 15.09 
+6 0.872 1.134 1.237 1.635 2.204 2.661 3.070 8.558 10.645 12.592 14.449 15.033 16.81 
+7 1.239 1.564 1.690 2.167 2.833 3.358 3.822 9.803 12.017 14.067 16.013 16.622 18.48 
+8 1.646 2.032 2.180 2.733 3.490 4.078 4.594 11.030 13.362 15.507 17.535 18.168 20.09 
+9 2.088 2.532 2.700 3.325 4.168 4.817 5.380 12.242 14.684 16.919 19.023 19.679 21.67 
+10 2.558 3.059 3.247 3.940 4.865 5.570 6.179 13.442 15.987 18.307 20.483 21.161 23.21 
+11 3.053 3.609 3.816 4.575 5.578 6.336 6.989 14.631 17.275 19.675 21.920 22.618 24.73 
+12 3.571 4.178 4.404 5.226 6.304 7.114 7.807 15.812 18.549 21.026 23.337 24.054 26.22 
+13 4.107 4.765 5.009 5.892 7.042 7.901 8.634 16.985 19.812 22.362 24.736 25.472 27.69 
+14 4.660 5.368 5.629 6.571 7.790 8.696 9.467 18.151 21.064 23.685 26.119 26.873 29.14 
+15 5.229 5.985 6.262 7.261 8.547 9.499 10.307 19.311 22.307 24.996 27.488 28.259 30.58 
+16 5.812 6.614 6.908 7.962 9.312 10.309 11.152 20.465 23.542 26.296 28.845 29.633 32.00 
+17 6.408 7.255 7.564 8.672 10.085 11.125 12.002 21.615 24.769 27.587 30.191 30.995 33.41 
+18 7.015 7.906 8.231 9.390 10.865 11.946 12.857 22.760 25.989 28.869 31.526 32.346 34.81 
+19 7.633 8.567 8.907 10.117 11.651 12.773 13.716 23.900 27.204 30.144 32.852 33.687 36.19 
+20 8.260 9.237 9.591 10.851 12.443 13.604 14.578 25.038 28.412 31.410 34.170 35.020 37.57 
+21 8.897 9.915 10.283 11.591 13.240 14.439 15.445 26.171 29.615 32.671 35.479 36.343 38.93 
+22 9.542 10.600 10.982 12.338 14.041 15.279 16.314 27.301 30.813 33.924 36.781 37.659 40.29 
+23 10.196 11.293 11.689 13.091 14.848 16.122 17.187 28.429 32.007 35.172 38.076 38.968 41.64 
+24 10.856 11.992 12.401 13.848 15.659 16.969 18.062 29.553 33.196 36.415 39.364 40.270 42.98 
+25 11.524 12.697 13.120 14.611 16.473 17.818 18.940 30.675 34.382 37.652 40.646 41.566 44.31 
+26 12.198 13.409 13.844 15.379 17.292 18.671 19.820 31.795 35.563 38.885 41.923 42.856 45.64 
+27 12.879 14.125 14.573 16.151 18.114 19.527 20.703 32.912 36.741 40.113 43.195 44.140 46.96 
+28 13.565 14.847 15.308 16.928 18.939 20.386 21.588 34.027 37.916 41.337 44.461 45.419 48.28 
+29 14.256 15.574 16.047 17.708 19.768 21.247 22.475 35.139 39.087 42.557 45.722 46.693 49.59 
+30 14.953 16.306 16.791 18.493 20.599 22.110 23.364 36.250 40.256 43.773 46.979 47.962 50.89 
+40 22.164 23.838 24.433 26.509 29.051 30.856 32.345 47.269 51.805 55.758 59.342 60.436 63.69 
+50 29.707 31.664 32.357 34.764 37.689 39.754 41.449 58.164 63.167 67.505 71.420 72.613 76.15 
+60 37.485 39.699 40.482 43.188 46.459 48.759 50.641 68.972 74.397 79.082 83.298 84.580 88.38 
+70 45.442 47.893 48.758 51.739 55.329 57.844 59.898 79.715 85.527 90.531 95.023 96.388 100.42 
+80 53.540 56.213 57.153 60.391 64.278 66.994 69.207 90.405 96.578 101.88 106.63 108.07 112.33 
+ 
+           Exemple :  
+  =  10 d.d.l.    P = P( 
+ ²10   ≤  F P ) = 0.95   
+   FP = 18.307 
+       Approximation : Pour  
+  >  100 d.l.l.      
+ 
+ 

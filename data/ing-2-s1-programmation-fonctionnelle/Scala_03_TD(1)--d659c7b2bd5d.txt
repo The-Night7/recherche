@@ -1,0 +1,44 @@
+Postgraduate level - Second year
+Exercise sheet #3 – Classes
+Subject : Functional programming Date : 2020 – 2021
+Duration : 3 heures
+Number of pages : 2
+Exercise 1 (Binary trees).
+a. In a sbt project, deﬁne in ﬁle src/main/scala/BinaryTree.scala the BinaryTree[T] type describing
+binary trees with labels of type T. A binary tree is either :
+• an empty tree ;
+• or a node with a label and left and right childs.
+Type must provide following methods :
+• size computes number of labels of tree ;
+• height computes tree height ;
+• contains(x : T) checks if x is a label in tree ;
+b. Try to write size, height and contains as three special cases of one new method named fold.
+c. Type parameter T should typically be covariant.
+(i) What happens when T is set to be covariant ? Why ?
+(ii) How to solve the problem while letting covariance ?
+Exercise 2 (Rational numbers).
+a. Build a sbt project.
+b. Deﬁne in ﬁle src/main/Rational.scala the Rational type representing rational numbers with :
+• exactly two constructors that may be used without keyword new :
+– Rational(numerator : Int, denominator : Int) ;
+– Rational(numerator : Int) ≡ Rational(numerator : Int, 1) ;
+• arithmetic unary operators unary_-, inverse ;
+• arithmetic binary operators +, -, *, / ;
+• equality operator ;
+• comparison operators using predeﬁned Ordered trait ;
+• toString redeﬁned accordingly ;
+Deﬁne also rational constants zero, one and inf (as 1/0).
+c. Modify type Rational such that arithmetic binary operators, equality and comparison operators can
+handle mixed parameters, i.e. with type Int and Rational.
+- 1 / 2 -
+<<<PAGE>>>
+Exercise 3 (Arithmetical expressions) . In sbt project from previous exercise, deﬁne in ﬁle
+src/main/scala/Expression.scala the Expression type describing expression trees with :
+• integer and rational constants ;
+• usual arithmetic operators (+, −, ∗ and unary −) ;
+Type must be designed such that any built instance represent a valid expression.
+Type must provide following methods :
+• eval computes the value of the expression ;
+• +, -, * and unary_- builds the corresponding expression.
+Hint : You may start with integer constants only at ﬁrst.
+- 2 / 2 -

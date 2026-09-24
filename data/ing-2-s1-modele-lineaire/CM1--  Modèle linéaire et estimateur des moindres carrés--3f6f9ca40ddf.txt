@@ -1,0 +1,1564 @@
+Ingénieurs 2ème année : Parcours Mathématique & Informatique
+Modèle linéaire et extensions
+CM 1: Modèle linéaire et estimation des moindres carrés ordinaires
+Nisrine FORTIN-CAMDAVANT & Naamane LAIB
+
+<<<PAGE>>>
+1 Introduction
+2 Formulation du problème
+3 Hypothèses du modèle
+4 Processus de la modélisation
+Estimation des paramètres du modèle
+Prédictions et résidus
+Propriétés des estimateurs MCO
+5 Qualité de l’ajustement
+Interprétation géométrique et analyse de la variance
+Le coefficient de détermination
+<<<PAGE>>>
+Introduction
+<<<PAGE>>>
+La régression linéaire est une méthode statistique utilisée pour établir un lien
+entre
+↝ une variable continue Y
+↝ et une variable X ou plusieurs autres variables X1,X2,..., Xp continues.
+X (Xj,j=1,..., p) est appelée variable :
+∥ explicative, exogène ou indépendante.
+Y est appelée variable :
+∥ réponse, à expliquer, à prédire, endogène ou dépendante.
+On note f la fonction reliant Y aux variables explicatives :
+Y= f (X1,X2,... ).
+La régression est dite linéaire lorsque la fonction f est linéaire.
+4
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Les deux variables X et Y ne jouent pas un rôle symétrique.
+Si X n’est pas aléatoire , mais fixée (contrôlée par l’expérimentateur), on
+parle alors deModèle linéaire plutôt que de régression linéaire.
+Le domaine d’excellence du modèle linéaire est l’expérimentation.
+Pour chaque unité expérimentale (une parcelle, un gâteau, une voiture,...),
+↝ on fixe une valeur de X=x (une dose d’engrais, une température de
+cuisson, ::une:::::taille ::de:::::::cylindrée,...),
+↝ à l’issue de l’expérience (culture, préparation, ::test,...),
+↝ on explique, analyse, prévoit la valeur de Y :le rendement, le degré de
+cuisson, :la::::::::::::consommation :::::::d’essence,....
+5/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Cas Unité expérimentale Variable explicative Variable expliquée
+1 Parcelle Quantité d’azote Rendement
+2 Gâteau Température de cuisson degré de cuisson
+3 Voiture Taille de la cylindrée Consommation essence
+↝ Dans le cas 1, on s’intéresse à expliquer le
+rendement d’une parcelle par rapport à la
+dose d’engrais utilisé
+↝ Dans le cas 2 : on s’intéresse à l’influence de
+la température de cuisson de gâteau sur leur
+degré de cuisson apprécié par un jury.
+↝ Dans le cas 3, on évalue l’influence du à la
+taille de la cylindrée d’une voiture sur la
+consommation en essence.
+:::::Utiliser::le::::::modèle:::::pour ::
+- Analyser
+- Prévoir
+- Optimiser
+6
+6/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Question :
+Peut-on expliquer la
+consommation Y des
+véhicules à partir de p=4
+variables exogènes :
+1 le prix, X1
+2 la cylindrée, X2
+3 la puissance, X3
+4 le poids, X4?
+On dispose de n=31
+observations.
+Modèle à estimer
+Consommation= a0+ a1X1+ a2X2+ a3X3+ a4X4+ε
+Exemple 1 : Consommation des voitures
+i Modèle Prix Cylindrée Puissance Poids Consommation
+1 Daihatsu Cuore 11600 846 32 650 5,7
+2 Suzuki Swift 1.0 GLS 12490 993 39 790 5,8
+3 Fiat Panda Mambo L 10450 899 29 730 6,1
+4 VW Polo 1.4 60 17140 1390 44 955 6,5
+5 Opel Corsa 1.2i Eco 14825 1195 33 895 6,8
+6 Subaru Vivio 4WD 13730 658 32 740 6,8
+7 Toyota Corolla 19490 1331 55 1010 7,1
+8 Ferrari 456 GT285000 5474 325 1690 21,3
+9 Mercedes S 600183900 5987 300 2250 18,7
+10 Maserati Ghibli GT 92500 2789 209 1485 14,5
+11 Opel Astra 1.6i 16V 25000 1597 74 1080 7,4
+12 Peugeot 306 XS 108 22350 1761 74 1100 9,0
+13 Renault Safrane 2.2. V 36600 2165 101 1500 11,7
+14 Seat Ibiza 2.0 GTI 22500 1983 85 1075 9,5
+15 VW Golt 2.0 GTI 3 1580 1984 85 1155 9,5
+16 Citroen ZX Volcane 28750 1998 89 1140 8,8
+17 Fiat Tempra 1.6 Liberty22600 1580 65 1080 9,3
+18 Fort Escort 1.4i PT20300 1390 54 1110 8,6
+19 Honda Civic Joker 1.4 19900 1396 66 1140 7,7
+20 Volvo 850 2.5 39800 2435 106 1370 10,8
+21 Ford Fiesta 1.2 Zetec 19740 1242 55 940 6,6
+22 Hyundai Sonata 3000 38990 2972 107 1400 11,7
+23 Lancia K 3.0 LS 50800 2958 150 1550 11,9
+24 Mazda Hachtback V 36200 2497 122 1330 10,8
+25 Mitsubishi Galant 31990 1998 66 1300 7,6
+26 Opel Omega 2.5i V6 47700 2496 125 1670 11,3
+27 Peugeot 806 2.0 36950 1998 89 1560 10,8
+28 Nissan Primera 2.0 26950 1997 92 1240 9,2
+29 Seat Alhambra 2.0 36400 1984 85 1635 11,6
+30 Toyota Previa salon 50900 2438 97 1800 12,8
+31 Volvo 960 Kombi aut 49300 2473 125 1570 12,7
+7/53
+<<<PAGE>>>
+Formulation du problème
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Formulation du problème
+2 À partir d’un échantillon de n observations, on souhaite expliquer une
+variable Y en fonction d’autres variables explicatives
+→ On formule cette relation par un modèle
+↝ Sous forme d’équations
+↝ Sous forme matricielle
+→ On précise le vocabulaire nécessaire à utiliser
+2 On définit des hypothèses sur le modèle pour pouvoir valider les résultats
+des estimations
+→ Ces hypothèses pèsent sur les propriétés des estimateurs et sur les lois de
+distributions.
+9/53
+<<<PAGE>>>
+La formulation du du modèle
+Cadre d’étude
+2 Y une variable expliquée
+(caractère non contrôlé).
+2 X1,X2,..., Xp variables
+explicatives (caractères
+contrôlés)
+2 Un échantillon de n
+observations i.i.d
+→ yi est la valeur observée pour
+l’individu i, i=1,...,n
+→ C’est une réalisation d’une
+variable aléatoire Yi
+→ xij est la valeur fixée pour
+l’individu i et la variable Xj,
+j=1,..., p
+V.A à expliquer Variables explicatives
+Y Cste :1n X1 X2 ... Xp
+y1 1 x11 x12 ... x1p
+y2 1 x21 x22 ... x2p
+⋮
+⋮ 1
+.
+yi 1 xij
+yn 1 xn1 xn2 ... xnp
+↑
+Variable Xj
+<<<PAGE>>>
+Écriture du modèle sous forme d’équations
+Pour chaque individu i=1,..., n, et à chaque valeur xi1,xi2,..., xip peut
+correspondre plusieurs valeurs de Yi modélisées par la variable aléatoire :
+∀i=1,..., n, Yi =a0+a1xi1+ a2xi2+... +apxip+εi
+↝ a0+a1xi1+a2xi2+... +apxip est la partie déterministe du modèle.
+↝ εi est la partie aléatoire. (Part de variabilité de Yi qui n’est pas expliquée
+par le lien linéaire).
+Le résiduεi quantifie les écarts entre les valeurs réellement observées et
+les valeurs prédites par le modèle. Il résume les informations manquantes
+qui permettent d’expliquer les valeurs de Y à l’aide des p variables Xj.
+↝ a0,a1,a2,..., ap coefficients du modèle, constantes (valeurs fixes dans la
+population). Ce sont les p+1 paramètres inconnus du modèle.
+11
+<<<PAGE>>>
+Écriture du modèle sous forme matricielle
+Y1 = a0+a1x11+a2x12+... +apx1p+ε1
+Y2 = a0+a1x21+a2x22+... +apx2p+ε2
+⋮ = ⋮
+Yi = a0+a1xi1+a2xi2+... +apxip+εi
+⋮ = ⋮
+Yn = a0+a1xn1+a2xn2+... +apxnp+εn
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+L’ensemble des équations associées à
+chacune des observations, s’écrit
+matriciellement :
+Y⌟⟨⟨⟪rl⟫
+n×1
+= X⌟⟨⟨⟪rl⟫
+n×(p+1)
+a⌟⟨⟨⟪rl⟫
+(p+1)×1
++ ε⌟⟨⟨⟪rl⟫
+n×1
+.
+⎛
+⎜⎜⎜⎜⎜
+⎝
+Y1
+⋮
+Yi
+⋮
+Yn
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Y
+=
+⎛
+⎜⎜⎜⎜⎜
+⎝
+1 X 11 ... X1j ... X1p
+1 ⋮ ⋮ ⋮ ⋮ ⋮
+1 Xi1 ... Xij ... Xip
+1 ⋮ ⋮ ⋮ ⋮ ⋮
+1 X n1 ... Xnj ... Xnp
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X
+⎛
+⎜⎜⎜⎜⎜
+⎝
+a0
+⋮
+ai
+⋮
+ap
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+a
++
+⎛
+⎜⎜⎜⎜⎜
+⎝
+ε1
+⋮
+εi
+⋮
+εn
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+ε
+a= (a0... ai... ap)
+′
+est le vecteur des coefficients du modèle.
+La première colonne 1n = (1... 1... 1)
+′
+représente la constante.
+12
+<<<PAGE>>>
+Écriture du modèle sous forme matricielle – Exemple 1
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+5,7
+5,8
+6,1
+6,5
+6,8
+6,8
+7,1
+21,3
+18,7
+14,5
+7,4
+9,0
+11,7
+9,5
+9,5
+8,8
+9,3
+8,6
+7,7
+10,8
+6,6
+11,7
+11,9
+10,8
+7,6
+11,3
+10,8
+9,2
+11,6
+12,8
+12,7
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Y
+=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+1 11600 846 32 650
+1 12490 993 39 790
+1 10450 899 29 730
+1 17140 1390 44 955
+1 14825 1195 33 895
+1 13730 658 32 740
+1 19490 1331 55 1010
+1 285000 5474 325 1690
+1 183900 5987 300 2250
+1 92500 2789 209 1485
+1 25000 1597 74 1080
+1 22350 1761 74 1100
+1 36600 2165 101 1500
+1 22500 1983 85 1075
+1 1580 1984 85 1155
+1 28750 1998 89 1140
+1 22600 1580 65 1080
+1 20300 1390 54 1110
+1 19900 1396 66 1140
+1 39800 2435 106 1370
+1 19740 1242 55 940
+1 38990 2972 107 1400
+1 50800 2958 150 1550
+1 36200 2497 122 1330
+1 31990 1998 66 1300
+1 47700 2496 125 1670
+1 36950 1998 89 1560
+1 26950 1997 92 1240
+1 36400 1984 85 1635
+1 50900 2438 97 1800
+1 49300 2473 125 1570
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+a0
+a1
+a2
+a3
+a4
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+a
++
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+ε1
+ε2
+ε3
+ε4
+ε5
+ε6
+ε7
+ε8
+⋮
+⋮
+ε16
+⋮
+⋮
+⋮
+⋮
+⋮
+⋮
+ε31
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+ε
+13
+<<<PAGE>>>
+Hypothèses du modèle
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Hypothèses du modèle
+Les conditions standards imposées auxεi, i=1,..., n sont :
+(H1) : E (εi)=0, ∀i=1,..., n.
+L’hypothèse (H1) indique que les erreurs sont centrées.
+(H2) : Var (εi)=σ2, ∀i=1,..., n.
+L’hypothèse (H2) est l’hypothèse d’homoscédasticité (homogénéité des
+variances). La varianceσ2 est un paramètre du modèle qu’il faudra estimer.
+(H3) : Cov (εi,ε k )=0, ∀i=1,..., n, ∀k =1,..., n, i≠ k.
+Sous l’hypothèse (H3), les termes d’erreurεi sont non corrélés. C’est une
+hypothèse d’exogénéité /Leftr⫯g⊸tl⫯ne⇒Cov(Xi,ε i)=0.
+15/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Hypothèses du modèle en écriture matricielle
+Sous les conditions (H1), (H2) et (H3), on a alors :
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+↝ E(ε) = 0n, ♯ vecteur nul de dimension n
+↝ E(Y) = E (Xa+ε)=Xa, ♯ E(Y)∈ Rn
+↝ Var(ε) = Var(Y)=σ2In, ♯ In matrice identité de dimensionn× n
+Dans la suite de ce chapitre, on suppose que
+(H4) : n>p+1 et rang(X)=p+1. (La matrice X est de plein rang).
+On a donc plus d’observations que de variables et il n’existe pas de relation linéaire entre
+les variables explicatives Xj (pas de multicolinéarité).
+Dans certains cas le modèle peut être sans constante, a0 =0 et X∈ Rn×p.
+Dans ce cas, il faut faire attention aux degrés de liberté pour les tests (voit tableau
+ANOVA)
+16/53
+<<<PAGE>>>
+Processus de la modélisation
+<<<PAGE>>>
+Les étapes à suivre pour établir un modèle linéaire sont les suivantes :
+1 Estimation des paramètres (CM 1)
+2 Mesure de la qualité d’ajustement (CM 1)
+3 Étude de la validité du modèle (CM 2)
+a. Si les hypothèses sur les erreurs non vérifiées STOP
+b. Si observations aberrantes/influentes
+i. Correction/suppression
+ii. Retour à l’étape 1
+4 Inférence statistique (CM 3)
+a. Test de significativité globale
+b. Test de significativité des coefficients (individuelle ou par bloc)
+5 Évaluation de la mulicolinéarité (CM 4)
+6 Sélection de variables (CM 4)
+a. Modèle restreint
+b. Réitération des étapes 1,2,3, 4
+<<<PAGE>>>
+Processus de la modélisation
+Estimation des paramètres du modèle
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimation des paramètres du modèle linéaire
+2 À partir de l’échantillon (aléatoire) de n observations(xi1,..., xip, yi),
+i=1,..., n on veut estimer les paramètres a0,a1,..., ap.
+On cherche les valeurs de a i de façon à approcher au mieux la valeur
+de yi par une relation linéaire en fonction de x i1,... ; xip :
+yi ≈ a0+ a1xi1+... + apxip.
+2 On utilise la méthode des moindres carrés qui,
+ne nécessite pas d’hypothèse supplémentaires sur la distribution de εi
+contrairement à la méthode du maximum de vraisemblance qui est
+fondée sur la normalité de εi.
+2 La méthode des MCO/Leftr⫯g⊸tl⫯ne⇒un estimateur ˆaj des coefficients.
+/leftr⫯g⊸tl⫯ne→Ces derniers ont une variance en fonction deσ2 (variance desεi).
+/leftr⫯g⊸tl⫯ne→Le paramètreσ2 est inconnu.
+/leftr⫯g⊸tl⫯ne→On doit donc également donner une estimation deσ2.
+20/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Méthode générale
+∎ À chaque observation i=1,..., n, on a
+→ La valeur observée : yi
+→ La valeur prévue par le modèle :ˆyi = ˆa0+ ˆa1xi1+... + ˆapxip.
+∎ Le vecteur des résidus (erreurs) est donc
+représenté par le vecteur des écarts :
+εi =yi− ˆyi.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+ε=
+⎛
+⎜⎜⎜
+⎝
+ε1
+ε2
+⋮
+εn
+⎞
+⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+n×1
+=
+⎛
+⎜⎜⎜
+⎝
+y1− ˆy1
+y2− ˆy2
+⋮
+yn− ˆyn
+⎞
+⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+n×1
+.
+∎ Les coefficients ai sont estimés en minimisant
+la somme des résidus suivante :
+n
+∑
+i=1
+L (εi), où L
+est la fonction de coût.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+♣ L(u)= ∣u∣ est le coût absolu
+♣ L(u)= u2 est le coût quadratique
+En régression linéaire, le coût est quadratique (estimation par Moindres Carrés
+Ordinaires MCO). La fonction à optimiser devient alors
+E (a0,a1,..., ap)=
+n
+∑
+i=1
+(yi−a0−a1xi1−... −apxip)2 = ∥Y−Xa∥2.
+21/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Quelques rappels – Voir aussi cours Optimisation déterministe
+Soit z ∈ Rq et t ∈ Rq.
+↝ Le produit scalaire euclidien :⟨z, t⟩=
+q
+∑
+i=1
+ziti = t′z = z′t
+↝ La norme euclidienne dez : ∥z∥2 = ⟨z, z⟩=
+q
+∑
+i=1
+zi
+2.
+↝ Soit g ∶ Rq→ R une fonction différentiable. On définit le gradient deg comme étant le
+vecteur des dérivées partielles deg :
+gradg (z)= ( ∂ (g (z))
+∂z1
+∂g (z)
+∂z2
+... ∂g (z)
+∂zq
+)
+′
+↝ Soit c ∈ Rq. Par rapport àz : grad(c
+′
+z)= c.
+↝ Si la matriceA est symétrique alors, grad(z
+′
+Az)=2Az par rapport àz.
+↝ Si la matriceA est symétrique, b ∈ Rq etα∈ R, on appelle fonction quadratique la
+fonction q définie pour z ∈ Rq,
+q(z)=α+ b′z+ 1
+2 z′Az
+grad(q(z))= b+ Az.
+La matrice hessienne estA.
+q est convexe si et seulement si la matriceA est semi définie positive.
+22/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Quelques calculs – Voir aussi cours Optimisation déterministe
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+∥Y−Xa∥2 = ⟨Y−Xa,Y−Xa⟩ ♯Définition de la norme euclidienne
+= ⟨Y−Xa,Y⟩− ⟨Y−Xa,Xa⟩ ♯Linéarité selon la seconde variable
+= ⟨Y,Y⟩− ⟨Xa,Y⟩− ⟨Y,Xa⟩+ ⟨Xa,Xa⟩ ♯Linéarité selon la première variable
+= ⟨Y,Y⟩− ⟨Xa,Y⟩− ⟨Xa,Y⟩+ ⟨Xa,Xa⟩ ♯Symétrie
+= ∥Y∥2−Y′ (Xa)−X′ (Ya)+ (Xa)′ (Xa) ♯Définition du produit scalaire euclidien
+= ∥Y∥2−2X′Ya+a′ (X′X)a ♯Propriété de la transposée
+23/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimation des moindres carrés ordinaires MCO
+Formulation du problème d’optimisation
+On cherche le vecteurˆa∈ Rp+1 tel que
+ˆa = arg min
+(a0,...,ap)∈Rp+1
+∥Y −Xa∥2
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+E (a0,...,ap)
+= arg min
+(a0,...,ap)∈Rp+1
+(∥Y∥2 −2Y
+′
+Xa +a
+′
+X
+′
+Xa)
+↝ La fonction E ∶ Rp+1→ R est une fonction quadratique où
+α= ∥Y∥2, b′ =−2Y
+′
+X et A=X
+′
+X
+car A=2X
+′
+X est symétrique.
+↝ La fonction E est convexe, en effetA est définie positive.
+↝ La fonction E réalise son minimum en son point critique.
+24/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Résolution du problème d’optimisation
+♣ :::::::Calculons:::les :::::points:::::::critiques::de::E:::
+ˆa est un point critique deE⇐⇒grad (E (ˆa))=0p+1.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+↝ grad (E (a)) = grad
+⎛
+⎜⎜⎜⎜
+⎝
+∥Y∥2
+⌟⟨⟨⟪rl⟫⌟⟨l⟪3
+constante
+−2 Y
+′
+X⌟⟨⟨⟪rl⟫⌟⟨l⟪3
+vecteur ligne
+a+a
+′
+(X
+′
+X)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+matrice symétrique
+a
+⎞
+⎟⎟⎟⎟
+⎠
+= −2X
+′
+Y+2 (X
+′
+X)a
+↝ grad (E (a))=0⇔−2X
+′
+Y+2 (X
+′
+X)a=0⇔ (X
+′
+X)a=X
+′
+Y.
+À condition que la matrice X
+′
+X soit inversible (ok par hypothèse de rang plein),
+ˆa est un point critique deE si et seulement si
+ˆa= (X
+′
+X)
+−1
+X
+′
+Y.
+♣ :::::::Optimum::de::E::: Comme E est strictement convexe alorsˆa est l’unique
+minimum global de la fonctionE.
+25/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimation des paramètres par MCO
+Estimation des coefficients
+ˆa= (X
+′
+X)
+−1
+X
+′
+Y.
+/Leftr⫯g⊸tl⫯ne⇒ˆY=Xˆa=X (X
+′
+X)
+−1
+X
+′
+Y
+ˆa est appelé estimateur des moindres carrés (MCO)
+Remarques
+∎ Cette expression est importante : elle montre qu’il est nécessaire d’inverser
+la matrice X
+′
+X.
+∎ Les problèmes pratiques rencontrés en régression (par exemple la
+multicolinéarité) sont liés à cette inversion.
+26/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Le coin calcul!
+↝ Matrice des sommes des produits croisés entre les variables exogènes (Elle
+est symétrique) (son inverse est donc symétrique.)
+X
+′
+X =
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+1 1 ... 1 ... 1
+X11 X21 ... Xi1 ... Xn1
+⋮ ⋮ ... ⋮ ... ⋮
+X1j X2j ... Xij ... Xnj
+⋮ ⋮ ... ⋮ ... ⋮
+X1p X2p ... Xip ... Xnp
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X′
+⎛
+⎜⎜⎜⎜⎜
+⎝
+1 X 11 ... X1j ... X1p
+1 ⋮ ⋮ ⋮ ⋮ ⋮
+1 X i1 ... Xij ... Xip
+1 ⋮ ⋮ ⋮ ⋮ ⋮
+1 X n1 ... Xnj ... Xnp
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X
+=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+n
+n
+∑
+i=1
+Xi1 ...
+n
+∑
+i=1
+Xip
+n
+∑
+i=1
+Xi1
+n
+∑
+i=1
+X2
+i1 ...
+n
+∑
+i=1
+Xi1×Xip
+⋮ ... ⋱
+n
+∑
+i=1
+X2
+ip
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+(p+1,p+1)
+↝ Si les variables sont centrées1
+n (X′X) = matrice de variance covariance
+↝ Si les variables sont centrées et réduites1
+n (X′X) = matrice de corrélation
+27/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Le coin calcul!
+X
+′
+Y=
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+1 1 ... 1 ... 1
+X11 X21 ... Xi1 ... Xn1
+⋮ ⋮ ... ⋮ ... ⋮
+X1j X2j ... Xij ... Xnj
+⋮ ⋮ ... ⋮ ... ⋮
+X1p X2p ... Xip ... Xnp
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X′
+⎛
+⎜⎜⎜⎜⎜
+⎝
+Y1
+Y2
+⋮
+⋮
+Yn
+⎞
+⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Y
+=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+n
+∑
+i=1
+Yi
+n
+∑
+i=1
+YiXi1
+⋮
+n
+∑
+i=1
+YiXip
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+(p+1,1)
+↝ Si les variables sont centrées1
+n (X′Y) = matrice vecteur des covariances (Y,
+X). (Cov(Y,1n), Cov(Y,X1),..., Cov(Y,Xp)
+↝ Si les variables sont centrées et réduites1
+n (X′Y) = matrice de corrélation
+entre (Y, X)
+28/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimateur MCO – Exemple 1
+::::Pour ::::notre:::::::exemple::1 :::sur :la:::::::::::::consommation,
+X
+′
+X=
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+31 1356425 64904 3010 38940
+1356425 1 ,50317E +11 4548968325 238826625 2082249275
+64904 4548968325 175725810 8609270 91977255
+3010 238826625 8609270 436506 4366165
+38940 2082249275 91977255 4366165 52817950
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+(X′X)11 =31.
+On retrouve le
+nombre
+d’observations.
+ˆa= (X
+′
+X)
+−1
+X
+′
+Y=
+⎛
+⎜⎜⎜⎜⎜
+⎝
+2,456294054
+2,04205E −05
+−0,000500593
+0,024994476
+0,004160583
+⎞
+⎟⎟⎟⎟⎟
+⎠
+29/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimateur MCO – Exemple 2
+On considère le tableau des données suivantes :
+n0 observation X1 X2 Y
+1 −1 −1 −4
+2 −1 1 2
+3 1 −1 0
+4 1 1 2
+moyenne 0 0 0
+variance 1 1 6
+Cov(Xj,Y) 1 2
+r(Xj,Y) .408 .816
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Ici, on a p=2 et n=4.
+On a :
+X=
+⎛
+⎜⎜⎜
+⎝
+1 −1 −1
+1 −1 1
+1 1 −1
+1 1 1
+⎞
+⎟⎟⎟
+⎠
+, X′Y=
+⎛
+⎜
+⎝
+0
+4
+8
+⎞
+⎟
+⎠
+X′X=
+⎛
+⎜
+⎝
+4 0 0
+0 4 0
+0 0 4
+⎞
+⎟
+⎠
+ˆa= (X′X)
+−1
+X′Y=
+⎛
+⎜
+⎝
+0
+1
+2
+⎞
+⎟
+⎠
+30/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Estimateur MCO – Exemple 2
+X′X=4Id, Ce cas est très particulier .
+Les prédicteurs sont centrés (ce qui est toujours possible) et non corrélés
+entre eux.
+(X′X)
+−1
+= 1
+4Id.
+Le modèle peut donc s’écrire, en notant̂Yi la valeur prédite pour
+l’observation i, i=1,..., 4 :
+ˆYi =0+1Xi1+2Xi2.
+31/53
+<<<PAGE>>>
+Processus de la modélisation
+Prédictions et résidus
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Prédictions et résidus
+↝ Le modèle théorique : Y=Xa + ε.
+↝ Une fois que le vecteur des coefficients a a été estimé, nous pouvons
+reconstruire nos données à l’aide de notre modélisation.
+Le vecteur des n valeurs prédites ou des valeurs ajustées (fitted
+values) s’écrit :
+̂Y=X̂a ou encore ̂Yi = ̂a0+
+p
+∑
+j=1
+̂ajXij(i=1,..., n)
+Le vecteur des résidus observés (residuals) :
+̂ε=Y− ̂Y ou encore ̂εi =Yi− ̂Yi (v.a.) ( i=1,..., n)
+Remarque. ̂Yi est un estimateur deE(Yi) et non de Yi.
+33/53
+<<<PAGE>>>
+Écriture du modèle sous forme matricielle – Exemple 1
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+5,7
+5,8
+6,1
+6,5
+6,8
+6,8
+7,1
+21,3
+18,7
+14,5
+7,4
+9,0
+11,7
+9,5
+9,5
+8,8
+9,3
+8,6
+7,7
+10,8
+6,6
+11,7
+11,9
+10,8
+7,6
+11,3
+10,8
+9,2
+11,6
+12,8
+12,7
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+observée
+=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+1 11600 846 32 650
+1 12490 993 39 790
+1 10450 899 29 730
+1 17140 1390 44 955
+1 14825 1195 33 895
+1 13730 658 32 740
+1 19490 1331 55 1010
+1 285000 5474 325 1690
+1 183900 5987 300 2250
+1 92500 2789 209 1485
+1 25000 1597 74 1080
+1 22350 1761 74 1100
+1 36600 2165 101 1500
+1 22500 1983 85 1075
+1 1580 1984 85 1155
+1 28750 1998 89 1140
+1 22600 1580 65 1080
+1 20300 1390 54 1110
+1 19900 1396 66 1140
+1 39800 2435 106 1370
+1 19740 1242 55 940
+1 38990 2972 107 1400
+1 50800 2958 150 1550
+1 36200 2497 122 1330
+1 31990 1998 66 1300
+1 47700 2496 125 1670
+1 36950 1998 89 1560
+1 26950 1997 92 1240
+1 36400 1984 85 1635
+1 50900 2438 97 1800
+1 49300 2473 125 1570
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+X
+⎛
+⎜⎜⎜
+⎝
+2,45
+2,045E −05
+−0,0005
+0,024
+0,004
+⎞
+⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+estimateurs
++
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+ˆε1
+ˆε2
+ˆε3
+ˆε4
+ˆε5
+ˆε6
+ˆε7
+ˆε8
+⋮
+⋮
+ˆε16
+⋮
+⋮
+⋮
+⋮
+⋮
+⋮
+ˆε31
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+ˆε
+34
+<<<PAGE>>>
+Écriture du modèle sous forme matricielle – Exemple 1
+Consommation Prédiction Résidu observé
+Y ˆY ˆε
+5,7 5,7739 -0,0739
+5,8 6,4759 -0,6759
+6,1 5,9817 0,1183
+6,5 7,1836 -0,6836
+6,8 6,7094 0,0906
+6,8 6,2859 0,5141
+7,1 7,7649 -0,6649
+21,3 20,6905 0,6095
+18,7 20,0742 -1,3742
+14,5 14,3514 0,1486
+7,4 8,5104 -1,1104
+9,0 8,4574 0,5426
+11,7 10,8852 0,8148
+9,5 8,5202 0,9798
+9,5 9,0380 0,4620
+8,8 9,0108 -0,2108
+9,3 8,2449 1,0551
+8,6 8,1430 0,4570
+7,7 8,5565 -0,8565
+10,8 10,3995 0,4005
+6,6 7,5233 -0,9233
+11,7 10,2640 1,4360
+11,9 12,2110 -0,3110
+10,8 10,5284 0,2716
+7,6 9,1678 -1,5678
+11,3 12,2534 -0,9534
+10,8 10,9257 -0,1257
+9,2 9,4656 -0,2656
+11,6 11,1335 0,4665
+12,8 12,1888 0,6112
+12,7 11,8815 0,8185
+35
+<<<PAGE>>>
+Exemple 2
+On utilise les données de l’exemple 2, on obtient :
+n0 observation X 1 X2 Y ̂Y ̂ϵ
+1 −1 −1 −4 −3 −1
+2 −1 1 2 1 1
+3 1 −1 0 −1 1
+4 1 1 2 3 −1
+36
+<<<PAGE>>>
+Processus de la modélisation
+Propriétés des estimateurs MCO
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Propriétés des estimateurs MCO
+Biais de ˆa
+E(ˆa) = E ((X
+′
+X)
+−1
+X
+′
+Y)
+= (X
+′
+X)
+−1
+X
+′
+E (Y)
+= (X
+′
+X)
+−1
+X
+′
+E (Xa+ε)
+= (X
+′
+X)
+−1
+X
+′
+⎛
+⎜⎜
+⎝
+Xa+ E (ε)
+⌟⟨⟨⟪rl⟫⌟⟨l⟪4
+=0n
+⎞
+⎟⎟
+⎠
+= (X
+′
+X)
+−1
+(X
+′
+X)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+matrice identité
+a
+= a
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+ˆa est donc un estimateur sans biais.
+Matrice de Variance-Covariance deˆa
+Var(ˆa) = Var
+⎛
+⎜⎜⎜
+⎝
+(X
+′
+X)
+−1
+X
+′
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+M
+Y
+⎞
+⎟⎟⎟
+⎠
+= MVar(Y)M′
+= MVar( Xa⌟⟨⟨⟪rl⟫⌟⟨l⟪⌟
+vecteur constant
++ε)M′
+= M Var (ε)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+σ2In
+M′
+= σ2MM′
+= σ2 (X′X)−1
+38/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Variance du résidu
+La matrice de variances-covariances deˆa fait intervenir la variance théoriqueσ2
+du résidu.
+↝ Cette variance est inconnue, elle est donc estimée.
+↝ On l’estime à partir de
+n
+∑
+i=1
+ε2
+i .
+Estimation de la variance
+ˆσ2 =
+n
+∑
+i=1
+ε2
+i
+n− (p+1).
+n est le nombre d’individus
+p est le nombre de variables
+n− (p+1) est le nombre de degrés de libertéen
+comptant la constante.
+; On reprend l’exemple 1 de consommation :
+n=31,p=4,ddl=31−5=26,
+31
+∑
+i=1
+ˆε2
+i =17,3648, ˆσ2 =0,667 .
+; On reprend l’exemple 2 :
+n=4,p=2,ddl=4−2−1=1,
+4
+∑
+i=1
+ˆε2
+i =4, , ˆσ2 =4 .
+39/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Variance du résidu
+Propriétés de l’estimateur̂σ2 :
+→ E (̂σ2)=σ2.
+C’est un estimateur sans biais de σ2. (Voir cours
+statistique inférentielle ING1).
+→ On en déduit un estimateur sans biais deVar(ˆa) :
+̂Var(ˆa)= ˆσ2 (X′X)
+−1
+.
+→ L’écart-type estimé dêaj, j =0,..., p est déduit à
+partir de la matrice de variance et covarianceCov (̂a)
+en remplaçantσ2 par son estimateur
+̂σˆaj = ˆσj =
+√
+̂σ2( (XTX)−1 )jj.
+ˆσj est appelé erreur standard de ˆaj.
+Plus la variance estimée
+est faible, meilleur est le
+modèle
+40/53
+<<<PAGE>>>
+Exemple 1
+̂Var(ˆa) = 0,667×
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+0,59 −0,01 0 ,01 0 ,01 −0,01
+−0,01 0 ,01 −0,01 −0,01 0 ,01
+0,01 −0,01 0 ,01 −0,01 −0,01
+0,01 −0,01 −0,01 0 ,01 −0,01
+−0,01 0 ,01 −0,01 −0,01 0 ,01
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+=
+⎛
+⎜⎜⎜⎜⎜⎜⎜
+⎝
+0,3929010 −0,0000003 0 ,0000282 0 ,0010144 −0,0004091
+−0,0000003 0,0000000 0 ,0000000 −0,0000001 0 ,0000000
+0,0000282 0 ,0000000 0,0000003 −0,0000032 −0,0000003
+0,0010144 −0,0000001 −0,0000032 0,0000998 −0,0000014
+−0,0004091 0 ,0000000 −0,0000003 −0,0000014 0,0000008
+⎞
+⎟⎟⎟⎟⎟⎟⎟
+⎠
+Donc la variance estimée pour chaque estimateur des coefficients est lue sur la
+diagonale et
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Erreur standard deˆa0 ∶ ̂σ0 = 0,626818119
+Erreur standard deˆa1 ∶ ̂σ1 = 8,73067E −06
+Erreur standard deˆa2 ∶ ̂σ2 = 0,000574822
+Erreur standard deˆa3 ∶ ̂σ3 = 0,009991852
+Erreur standard deˆa4 ∶ ̂σ4 = 0,000878787
+41
+<<<PAGE>>>
+Exemple 2
+̂Var(ˆa) = 4×
+⎛
+⎜⎜⎜⎜⎜⎜
+⎝
+1
+4 0 0
+0 1
+4 0
+0 0 1
+4
+⎞
+⎟⎟⎟⎟⎟⎟
+⎠
+=
+⎛
+⎜⎜
+⎝
+1 0 0
+0 1 0
+0 0 1
+⎞
+⎟⎟
+⎠
+Donc la variance estimée pour chaque estimateur des coefficients est lue sur la
+diagonale et
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Erreur standard deˆa0 ∶ ̂σ0 = 1
+Erreur standard deˆa1 ∶ ̂σ1 = 1
+Erreur standard deˆa2 ∶ ̂σ2 = 1
+42
+<<<PAGE>>>
+Qualité de l’ajustement
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Qualité de l’ajustement
+◻ Le problème des moindres carrés peut être formulé géométriquement
+comme une projection orthogonale sur l’espace engendré par le vecteur
+des constantes et les vecteurs des variables explicatives.
+◻ L’évaluation globale de l’ajustement d’un modèle se basera sur la
+variabilité
+⧫ Totale du modèle
+⧫ Expliquée par le modèle
+⧫ Non expliquée par le modèle
+◻ Une fois le modèle ajusté, un indicateur de qualité de l’ajustement est le
+coefficient de détermination.
+→ Il exprime la proportion de variabilité de Y qui est retranscrite par le
+modèle.
+◻ Lorsqu’on souhaite comparer la pertinence de deux modèles n’ayant pas le
+même nombre de variables explicatives, on doit adapter cet indicateur.
+44/53
+<<<PAGE>>>
+Qualité de l’ajustement
+Interprétation géométrique et analyse de la variance
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+♣ Comme ˆa= arg min
+(a0,...,ap)∈Rp+1
+∥Y−Xa∥2 alors ∥Y−Xˆa∥= min
+a∈Rp+1
+∥Y−Xa∥.
+↝ ∥Y−Xˆa∥ = ∥Y−X (X
+′
+X)
+−1
+X
+′
+Y∥
+= ∥Y− ˆY∥
+= d (Y, ˆY)
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+↝ min
+a∈Rp+1
+∥Y−Xa∥ = min
+a∈Rp+1
+d (Y,Xa)
+= d(Y,Vect{1n,X1,..., Xp }
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+W
+)
+= d (Y,W)
+On en déduit que d (Y, ˆY)=d (Y,W).
+♣ :::::::Approche::::::::::géométrique:: d(Y,W) étant la plus petite distance de Y au
+sous-espace vectoriel W,
+↝ ˆY est donc la projection orthogonale du vecteur Y sur le sous-espace
+vectoriel W engendré par les vecteurs 1n,X1,..., Xp.
+↝ L’opérateur de la projection est donné par PrW =X (X
+′
+X)
+−1
+X
+′
+.
+46/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Interprétation géométrique
+Cadre géométrique
+♢ W=Vect {1n,X1,..., Xp}
+♢ 1n =
+⎛
+⎜⎜⎜
+⎝
+1
+1
+⋮
+1
+⎞
+⎟⎟⎟
+⎠
+♢ D=Vect {1n}, D⊂W
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Concernant la droite D
+♢ dim (D)=1
+♢ Une base orthonormale de D∶
+B= { 1√n1n}.
+♢ PrD (Y) = ⟨Y, 1√n1n⟩ 1√n1n
+= ⎛
+⎝
+1
+n
+n
+∑
+i=1
+Yi
+⎞
+⎠1n
+= Y1n
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+∥Y−Y1n∥
+∥ ˆY−Y1n∥
+Y
+ˆY
+D
+Y1n
+θ
+W
+↝ ˆY=PrW (Y)⇒ ˆY∈W et Y− ˆY∈W/⊙◇⊞.
+↝ Y1n =PrD(Y)⇒Y1n ∈W⇒ ˆY−Y1n ∈W.
+↝ Y− ˆY /⊙◇⊞ˆY−Y1.
+47/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Interprétation géométrique
+D’après Pythagore :
+∥Y−Y1n∥2 = ∥Y− ˆY∥2+ ∥ˆY−Y1n∥2.
+De plus :cos2(θ)= ∥ˆY−Y1n∥2
+∥Y−Y1n∥2
+.
+∥Y−Y1n∥
+∥ˆε∥2
+∥ ˆY−Y1n∥
+θ
+Plus θ est petit, meilleur est l’ajustement.
+48/53
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Interprétation géométrique et analyse de la variance
+Cette analyse consiste à diviser la variance de Y en
+↝ une partie expliquée par les variables X1,... Xp
+↝ une partie résiduelle.
+et comme ∥Y−Y1n∥2 = ∥Y− ˆY∥2+ ∥ˆY−Y1n∥2, on peut écrire
+n
+∑
+i=1
+(Yi −Y)
+2
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Somme des carrées
+Totale
+SCT
+=
+n
+∑
+i=1
+(Yi − ˆYi)
+2
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Somme des carrées
+Résiduelle
+SCR
++
+n
+∑
+i=1
+(ˆYi −Y)
+2
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Somme des carrées
+Expliquée
+SCE
+/Leftr⫯g⊸tl⫯ne⇒cos2(θ)= SCE
+SCT.
+49/53
+<<<PAGE>>>
+Qualité de l’ajustement
+Le coefficient de détermination
+<<<PAGE>>>
+Introduction Formulation du problème Hypothèses du modèle Processus de la modélisation Qualité de l’ajustement
+Le coefficient de détermination
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+On peut évaluer la qualité de la régression multiple en utilisant le rapport
+de la variance expliquée SCE par la régression sur la variance totale SCT.
+Le coefficient de détermination, noté R2, donne un indicateur de la
+qualité de l’ajustement.
+Le coefficient de détermination
+R2 = cos2(θ)= SCE
+SCT
+2 R2 =1⇔θ =0⇔Y∈W⇔Y=Xa. ,, Modèle parfait.,,
+2 R2 ≈0⇔θ = π
+2 ⇔ résidus très élevés./ Modèle de régression linéaire
+inadapté.//
+2 R2 est proche de 1 signifie que Y est bien expliquée par les variables
+X1,..., Xp. ♡♡
+51/53
+<<<PAGE>>>
+Exemple 1
+Y=9,954.
+i Y−Y1n Y− ˆY ˆY−Y1n (Yi−Y)
+2
+(Yi− ˆYi)
+2
+( ˆYi−Y)
+2
+1 -4,3 -0,1 -4,18 18,1 0,0 17,5
+2 -4,2 -0,7 -3,47 17,3 0,5 12,1
+3 -3,9 0,1 -3,97 14,9 0,0 15,8
+4 -3,5 -0,7 -2,77 11,9 0,5 7,7
+5 -3,2 0,1 -3,24 10,0 0,0 10,5
+6 -3,2 0,5 -3,66 10,0 0,3 13,5
+7 -2,9 -0,7 -2,18 8,2 0,4 4,8
+8 11,3 0,6 10,73 128,7 0,4 115,3
+9 8,7 -1,4 10,11 76,5 1,9 102,4
+10 4,5 0,1 4,39 20,7 0,0 19,3
+11 -2,6 -1,1 -1,44 6,5 1,2 2,1
+12 -1,0 0,5 -1,49 0,9 0,3 2,2
+13 1,7 0,8 0,93 3,0 0,7 0,9
+14 -0,5 1,0 -1,43 0,2 1,0 2,1
+15 -0,5 0,5 -0,91 0,2 0,2 0,8
+16 -1,2 -0,2 -0,94 1,3 0,0 0,9
+17 -0,7 1,1 -1,70 0,4 1,1 2,9
+18 -1,4 0,5 -1,81 1,8 0,2 3,3
+19 -2,3 -0,9 -1,39 5,1 0,7 2,0
+20 0,8 0,4 0,44 0,7 0,2 0,2
+21 -3,4 -0,9 -2,43 11,3 0,9 5,9
+22 1,7 1,4 0,30 3,0 2,1 0,1
+23 1,9 -0,3 2,25 3,8 0,1 5,1
+24 0,8 0,3 0,57 0,7 0,1 0,3
+25 -2,4 -1,6 -0,78 5,5 2,5 0,6
+26 1,3 -1,0 2,29 1,8 0,9 5,3
+27 0,8 -0,1 0,97 0,7 0,0 0,9
+28 -0,8 -0,3 -0,48 0,6 0,1 0,2
+29 1,6 0,5 1,17 2,7 0,2 1,4
+30 2,8 0,6 2,23 8,1 0,4 5,0
+31 2,7 0,8 1,926 7,5 0,7 3,7
+SCT SCR SCE SCR+SCE R2
+382,1 17,4 364,8 382,1 0,954
+R2 est proche de 1. La variabilité de la
+consommation est expliquée à 95% par le
+prix, la cylindrée, la puissance et le poids.
+52
+<<<PAGE>>>
+Exemple 2
+Y=0.
+i Y−Y1n Y− ˆY ˆY−Y1n (Yi−Y)
+2
+(Yi− ˆYi)
+2
+( ˆYi−Y)
+2
+1 -4 -1 -3 16 1 9
+2 2 1 1 4 1 1
+3 0 1 -1 0 1 1
+4 2 -1 3 4 1 9
+SCT SCR SCE SCR+SCE R2
+24 4 20 24 0,833
+La variabilité de Y est expliquée à environ
+83% par X1 et X2.
+53

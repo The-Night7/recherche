@@ -1,0 +1,244 @@
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Régression linéaire multiple
+TD 3 : Significativité d’un modèle linéaire multiple
+Le TD 3 est fondé autour des objectifs suivants :
+1. mettre en application les règles de décisions concernant la significativité d’un modèle,
+2. savoir lire les résultats fournis par le logiciel R,
+3. étudier la significativité du modèle établi au TD 1 et 2.
+Exercice 1. On a collecté la consommation hebdomadaire de gaz et la température moyenne
+externe d’une maison au sud-est de l?Angleterre pendant une saison. Une régression pour
+expliquer la consommation de gaz en fonction de la température est réalisée avec le logiciel R. Les
+résultats numériques sont les suivants :
+Residuals
+Min 1Q Median 3Q Max
+-0.97802 -0.11082 0.02672 0.25294 0.63803
+Coefficients :
+Estimated Std.Error t value Pr(>|t|)
+(Intercept) 4.72385 0.12974 36.41 <2e-11
+Temp -0.27793 0.0252 -11.04 1.05e-11
+Residual standard error : 0.3548 on 28 degrees of freedom
+Multiple R-Squared : 0.8131 Adjusted R-squared : 0.8064
+F-statistic : 121.8 on 1 and 28 degrees of freedom, the p-value is 1.046e-11
+1. Donner le modèle et les hypothèses de la régression.
+2. Soit Z une variable aléatoire de loi de Student de degré de liberté 28. Quelle est la probabilité
+que |Z| soit supérieure à 11.04?
+3. Préciser les éléments du test correspondant à la ligne "Temp" du tableau (H0, H1, la statistique
+de test, sa loi sous H0, la règle de décision).
+4. Interpréter le nombre "Multiple R-Squared : 0.8131" du tableau.
+5. Donner une estimation de la variance du terme d’erreur dans le modèle de régression simple.
+6. Expliquer et interpréter la dernière ligne du tableau : "F-statistic : 121.8 on 1 and 28 DF, p-value :
+1.046e-11". Voyez-vous une autre façon d’obtenir cette p-value?
+7. Pensez-vous que la température extérieure a un effet sur la consommation de gaz? Justifiez votre
+réponse.
+<<<PAGE>>>
+TD3 – Modèle linéaire
+Exercice 2. On s’intéresse à la relation liant la demande pour la bière Y, aux variables indépen-
+dantes X1 (le prix de celle-ci), X2 (le revenu disponible) et X3 (la demande de l’année précédente).
+Un total de 20 observations est disponible. Vous postulez le modèle
+Yi = a0 +a1Xi1 +a2Xi2 +a3Xi3 +εi;
+où E[εi] = 0 et Cov(εi;εj) = 0 pour i̸= j. Les résultats de cette régression, tels que calculés dans
+R, sont fournis ci-dessous :
+> fit <- lm(Y ~ X1 + X2 + X3, data = biere)
+> summary(fit)
+Call: lm(formula = Y ~ X1 + X2 + X3, data = biere)
+Residuals:
+Min. 1st Qu. Median 3rd Qu. Max.
+-1.014e+04 -5.193e-03 -2.595e-03 4.367e-03 2.311e-02
+Coefficients:
+Value Std.Error t value Pr(>|t|)
+(Intercept) 1.5943 1.0138 1.5726 0.1354
+X1 -0.0480 0.1479 -0.3243 0.7499
+X2 0.0549 0.0306 1.7950 0.0916
+X3 0.8130 0.1160 7.0121 2.933e-06
+Residual standard error: 0.0098 on 16 degrees of freedom
+Multiple R-Squared: 0.9810 Adjusted R-squared: 0.9774
+F-statistic: 275.49 on 3 and 16 degrees of freedom,
+the p-value is 7.160e-14
+1. Indiquer les dimensions des matrices et vecteurs dans la représentation matricielle
+Y = Xa +ε (1)
+du modèle.
+2. La régression est-elle significative? Expliquer.
+3. Étudier la significativité individuelle de chaque variable dans le modèle estimé de (1).
+4. (a) Quelle est la valeur et l’interprétation deR2, le coefficient de détermination?
+(b) De manière générale, est-il envisageable d’obtenir unR2 élevé et, simultanément, toutes
+les statistiques t pour les tests H0 : a1 = a2 = a3 = 0 non significatives?
+(c) Expliquer brièvement.
+Exercice 3. On souhaite expliquer la hauteury (en mètres) d’un arbre en fonction de sa circon-
+férence x (en centimètres) à 1m30 du sol et de la racine carrée√x de cette circonférence. On a
+2/4
+<<<PAGE>>>
+TD3 – Modèle linéaire
+relevé 1429 couples (xi,y i). On considère donc le modèle de régression suivant :
+yi = a0 +a1xi +a2
+√xi +εi, 1≤i≤n.
+Les εi sont des variables aléatoires indépendantes, de loi normale centrée admettant la même
+varianceσ2. En posant :
+X =
+
+
+1 x1
+√x1
+... ... ...
+1 xn
+√xn
+
+ et Y =
+
+
+y1
+...
+yn
+
+
+on a observé :
+X
+′
+X =
+
+
+∗ ∗ 9792
+∗ 3306000 ∗
+∗ 471200 67660
+
+ , X
+′
+Y =
+
+
+30310
+1462000
+209700
+
+ et Y
+′
+Y = 651900.
+1. Déterminer les valeurs manquantes dans la matrice X
+′
+X.
+2. Que vaut la circonférence moyenne empiriquex?
+3. Le calcul donne (en arrondissant!)
+
+X
+′
+X
+−1
+=
+
+
+4.646 0 .101 1 .379
+0.101 0 .002 0 .030
+1.379 0 .030 0 .411
+
+ ,
+
+X
+′
+X
+−1
+X
+′
+Y =
+
+
+16.8
+0.30
+7.62
+
+.
+Que valent les estimateursˆa0, ˆa1 et ˆa2 par la méthode des moindres carrés?
+4. Calculer l’estimateur deσ2 pour les moindres carrés.
+5. Calculer poura2 un intervalle de confiance à95%.
+6. Tester l’hypothèsea1 = 0 au niveau de risque10%.
+7. Que vaut la hauteur moyenne empiriquey? En déduire le coefficient de détermination ajusté
+R2
+a.
+8. Construire un intervalle de prévision à95% de yn+1 connaissantxn+1 = 49.
+9. Construire un intervalle de prévision à95% de yn+1 connaissantxn+1 = 25.
+10. Des deux intervalles précédents, lequel est le plus grand? Pouvait-on s’y attendre?
+Exercice 4. Dans un modèle linéaire, parmi les variables explicatives, certaines peuvent être
+fonction l’une de l’autre : la régression polynomiale est un exemple de modèle linéaire. Dans le cas
+d’une seule variable explicative X observée pourn individus et une variable Y à expliquer, une
+régression polynomiale de degrék consiste établir le moèle suivant
+Yi = a0 +a1Xi +a2X2
+i +... +akXk
+i +εi, i = 1,...,n
+3/4
+<<<PAGE>>>
+TD3 – Modèle linéaire
+Généralement, le degrék n’est pas connu mais on peut l’établir par validation croisée.
+C’est un modèle linéaire aveck régresseurs qui sont les puissances successives de la variable expli-
+cative X. Il s’écrit sous la façon générale d’un modèle linéaire général :
+Y =
+
+
+Y1
+Y2
+...
+Yn
+
+
+=
+
+
+1 X1 X2
+1 ... Xk
+1
+1 X2 X2
+2 ... Xk
+2
+... ... ... ... ...
+... ... ... ... ...
+1 Xn X2
+n ... Xk
+n
+
+
+
+
+a0
+a1
+...
+...
+ak
+
+
++
+
+
+ε1
+ε2
+...
+...
+εn
+
+
+= Xa +ε.
+Ce modèle est polynomial en Xi mais linéaire en aj, j = 0,...,k .
+Application. (Voir fichier datapoly
+On observe les valeurs :
+i 1 2 3 4 5 6 7 8 9 10 11
+xi -5 -4 -3 -2 -1 0 1 2 3 4 5
+yi 12,89 10,12 5,00 1,59 1,55 3,96 6,42 7,00 10,71 14,32 15,91
+1. Représenter le nuage de points(xi,y i). Commentez.
+2. Compléter le tableau des données datapoly en y ajoutant la colonnex2
+i.
+3. On considère le modèle de régression linéaire simple suivant :
+Yi = a0 +a1xi +εi, 1≤i≤n,
+où lesεi sont des variables aléatoires i.i.d. de loi gaussienne centrée de varianceσ2.
+(a) En utilisant la fonction lm sur R, déterminer un estimateur des coefficients du modèle
+de régression linéaire simple.
+(b) Que peut-on dire sur la qualité de l’ajustement du modèle?
+4. On considère le modèle de régression polynomiale suivant :
+Yi = a0 +a1xi +a2x2
+i +εi, 1≤i≤n,
+où lesεi sont des variables aléatoires i.i.d. de loi gaussienne centrée de varianceσ2.
+(a) En utilisant la fonction lm sur R, déterminer un estimateur des coefficients du modèle
+de régression polynomiale.
+(b) Que peut-on dire sur la qualité de l’ajustement du modèle?
+5. Calculer (à l’aide de la formule du cours) lap-valeur du test de significativité globale du
+modèle de la régression polynomiale.
+6. Construire un intervalle de confiance de niveau de confiance95% pour b2.
+7. Déterminer lap-valeur du test de nullité deb2. Le résultat est-il cohérent avec celui de la
+question précédente?
+4/4

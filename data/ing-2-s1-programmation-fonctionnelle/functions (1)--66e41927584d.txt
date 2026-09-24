@@ -1,0 +1,65 @@
+Functions (def)
+o A function is a group of statements that perform a task.
+Syntax :    def functionName ([list of parameters]) : [return type] = {
+function body
+}
+
+<<<PAGE>>>
+Evaluation by name
+o By-name parameters are evaluated every time they are used. They won’t be evaluated at 
+all if they are unused
+o To make a parameter called by-name, simply prepend => to its type
+
+<<<PAGE>>>
+Default value
+
+<<<PAGE>>>
+Default value
+
+<<<PAGE>>>
+Tail recursion
+
+<<<PAGE>>>
+Tail recursion
+o Exercise 1
+o Exercise 2
+o Exercise 3
+
+<<<PAGE>>>
+Polymorphic function
+o Methods in Scala can be parameterized by type. The syntax is similar to that of generic 
+classes. Type parameters are enclosed in square brackets
+scala> def listOfDuplicates[A](x: A, length: Int): List[A] = {
+|   if (length < 1)
+|     Nil
+|   else
+|     x :: listOfDuplicates(x, length - 1)
+| }
+
+<<<PAGE>>>
+Pattern matching
+o Generalized switch-case
+value match{
+case x1=> action1
+case x2=> action2
+_ =>default action
+}
+<<<PAGE>>>
+Pattern matching
+o Example 1
+
+<<<PAGE>>>
+Pattern matching
+o Example 2
+
+<<<PAGE>>>
+Pattern matching
+o Example 2 (suite)
+
+<<<PAGE>>>
+Pattern matching
+o Example 3
+
+<<<PAGE>>>
+Pattern matching
+o Example 3 (suite)

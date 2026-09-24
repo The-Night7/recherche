@@ -1,0 +1,39 @@
+Troisième série d'exercices sur OpenMP 
+Programmes sources avec des bugs 
+ 
+ 
+I. Lorsque les choses tournent mal ... 
+il ya  beaucoup de choses qui  peuvent mal se passer  lors de l'élaboration  des programmes  
+OpenMP. La série de programmes omp_bugX.c montre quelques-uns.  
+Voyez si vous pouvez comprendre quel est le problème à chaque cas et le corriger. 
+ 
+1. Echec de compilation, donner la solution pour compiler le fichier source 
+ 
+2.  Les identifiants des threads sont faux 
+ 
+3. Erreur d’exécution 
+ 
+4. Erreur de segmentation 
+ 
+5. Programme se bloque 
+ 
+6. Echec de compilation 
+ 
+II. Comprendre le problème et le programme 
+Algorithme de calcul de la suite de Fibonacci codé en C++, parallélisez ce code 
+suivante  F(0)=0 et F(1)=F(2)=1 et pou tout n ≥2 alors F(n) = F(n-1) + F(n-2)  avec 
+int fibonacci(int n) 
+{ 
+  int u = 0; 
+  int v = 1; 
+  int i, t; 
+ 
+  for(i = 2; i <= n; i++) 
+  { 
+    t = u + v; 
+    u = v; 
+    v = t; 
+  } 
+  return v; 
+} 
+ 

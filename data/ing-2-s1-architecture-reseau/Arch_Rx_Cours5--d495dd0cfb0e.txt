@@ -1,0 +1,152 @@
+Cours réseaux 
+Serveur NAT et protocole IPv6 et 
+comparaison avec IPv4 
+<<<PAGE>>>
+Network Address Translation (NAT) 
+• C’est un système qui fait correspondre les adresses IP 
+internes non-uniques et souvent non routables d'un 
+intranet à un ensemble d'adresses externes uniques et 
+routables.  
+• Ce mécanisme permet notamment de faire 
+correspondre une seule adresse externe publique 
+visible sur Internet à toutes les adresses d'un réseau 
+privé, et pallier ainsi l'épuisement des adresses IPv4. 
+• La fonction NAT dans un routeur de service intégré 
+(ISR) traduit une adresse IP source interne en adresse 
+IP globale. 
+ 
+<<<PAGE>>>
+Principe de la traduction d’adresse 
+• Permettre à n adresses publiques d’être 
+partagées par un grand nombre m de stations 
+(périphériques réseau) 
+ 
+ 
+• il faut placer une NATBox qui doit être le seul point de passage 
+entre le Site NAT (réseau de l'organisation) et le WAN (Internet) 
+• la NATBox est la seule qui possède et gère les n adresses publiques 
+ 
+<<<PAGE>>>
+Quelques précisions 
+Remarque : Pour les stations du WAN, seules les n adresses de 
+la NATBox existent et le Site NAT avec ses adresses privées est 
+invisible 
+ 
+
+<<<PAGE>>>
+Quelques précisions 
+• A  l’intérieur du Site NAT, les stations 
+communiquent entre elles en utilisant leurs 
+adresses privées (ARP) 
+• sans le NAT, un message envoyé à l'extérieur 
+ne pourrait avoir de réponse car les adresses 
+privées ne sont pas routables dans le WAN 
+• la NATBox doit traduire (remplacer) dans un 
+tel message, l'adresse privée par une adresse 
+publique, et inversement pour la réponse 
+ 
+<<<PAGE>>>
+NAT et la discussion interne 
+• La station A (10.0.0.2) veut discuter avec la station 
+B (10.0.0.3) : 
+– le dialogue étant interne, la NATBox n'est pas 
+concernée par ce trafic 
+– les datagrammes contiennent les adresses de A et de B 
+ 
+10.0.0.1 
+<<<PAGE>>>
+NAT et la discussion extérieur 
+• A (10.0.0.2) veut discuter avec la station externe C 
+(139.124.187.4) : 
+1. A envoie le datagramme qui parvient au routeur (NATBox) 
+ 
+
+<<<PAGE>>>
+• 2. La NATBox remplace l'adresse source (privée) par 
+une adresse publique disponible (82.3.4.6),  enregistre 
+une association (82.3.4.6, 10.0.0.2) dans sa table de 
+traductions , et transmet le datagramme vers C 
+ 
+ 
+NAT et la discussion extérieur 
+
+<<<PAGE>>>
+3. C répond a l'adresse source du datagramme (82.3.4.6) 
+ 
+NAT et la discussion extérieur 
+
+<<<PAGE>>>
+• 4. la NATBbox reçoit le datagramme, consulte sa table 
+de traductions, trouve l'association (82.3.4.6, 
+10.0.0.2), remplace l'adresse destination par 10.0.0.2 
+et retransmet le datagramme à A 
+ 
+ 
+NAT et la discussion extérieur 
+
+<<<PAGE>>>
+Réutilisation des adresses publiques 
+IP interne IP externe Durée (s) Réutilisable ? 
+10.101.10.20 193.48.100.174 1 200 non 
+10.100.54.251 193.48.101.8 3 601 oui 
+10.100.0.89 193.48.100.46 0 non 
+Voici par exemple une table de NAT simplifiée.  
+ 
+On supposera qu'une entrée pourra être réclamée si la traduction n'a pas été utilisée 
+depuis plus de 3 600 secondes. 
+ 
+A chaque utilisation, remise à zéro de la TTL 
+ 
+ La plupart des pare-feu et routeurs implémentent le NAT pour permettre à plusieurs 
+machines de partager une seule adresse IP publique. 
+<<<PAGE>>>
+Identification d’un processus 
+• Un processus peut être identifié de manière 
+unique sur tout l’internet par un triplet qu’on 
+appellera demi-association  ayant la forme 
+( 
+ protocole transport   (TCP ou UDP) 
+ adresse local réseau  (IP) 
+ processus local  (numéro de port ou de service) 
+) 
+• Il existe 2 protocoles TCP et UDP 
+• il existe 65535 ports disponibles (moins les 1024 
+réservés). 
+<<<PAGE>>>
+Types de translation 
+• Translation statique 
+– consiste à associer une adresse IP publique à une adresse IP privée interne au 
+réseau (première adresse interne avec première externe…) 
+– un ensemble d'adresses internes fait l'objet d'une traduction vers un 
+ensemble de même taille d'adresses externes. 
+– ces NAT servent à donner accès à des serveurs en interne à partir de 
+l'extérieur. 
+• Il existe trois types de NAT statiques : 
+– NAT statique unidirectionnel qui transfèrent uniquement les connexions de 
+l'extérieur vers l'intérieur.  
+– NAT statique bidirectionnel qui transfèrent les connexions dans les deux sens. 
+– NAT statique PAT (Port Address Translation du port serveur). Conjonction d'une 
+NAT statique uni ou bidirectionnelle et d'une traduction du port serveur. Le 
+nom PAT vient du fait que le port serveur/destination est transféré  
+ 
+<<<PAGE>>>
+Types de translation 
+• Translation dynamique 
+– un ensemble d'adresses internes est transféré dans un plus petit ensemble 
+d'adresses externes 
+– l'association entre une adresse interne et sa contrepartie externe est créée 
+dynamiquement au moment de l'initiation de la connexion 
+– les numéros de ports qui vont permettre d'identifier la traduction en place : le 
+numéro du port source va être modifié par le routeur.  
+• Il existe plusieurs types de NAT dynamiques : 
+– NAT dynamique PAT (Port Address Translation du port client/source). Le nom PAT vient 
+du fait que le port source est modifié ; à ne pas confondre avec la NAT statique PAT. 
+– NAT pool de source est la plus vieille des NAT. La première connexion venant de 
+l'intérieur prend la première adresse externe, la suivante la seconde 
+– Masquerading où l'adresse IP du routeur est seule utilisée comme adresse externe. 
+Le masquerading est donc un sous-cas de la dynamique PAT. 
+– Port Forwarding (extension de NAT) 
+• consistant à configurer la passerelle pour transmettre à une machine spécifique du réseau 
+interne, tous les paquets reçus sur un port particulier ex:  serveur web 
+• NAT pool de destination permet de faire de la répartition de charge entre plusieurs serveurs.  
+ 

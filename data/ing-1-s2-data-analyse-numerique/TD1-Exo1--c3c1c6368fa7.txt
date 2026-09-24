@@ -1,0 +1,82 @@
+### Nelly BARRAU
+## 2025-2026
+## MI1 S2 Analyse Numérique en Python
+## Chapitre 1 - Détermination des valeurs propres
+## TD1 - Exercice 1
+
+
+from pylab import *
+import scipy.linalg as sl
+import matplotlib.pyplot as plt
+
+
+def plot_disques_colonne(matrice):
+    N=len(matrice)
+
+    # centre des disques
+    D = np.diag(matrice)
+    min=np.min(D)
+    max=np.max(D)
+
+    # Rayons des disques (Lignes/Colonnes)
+    Rc = np.zeros(N) # disque colonne
+
+    # Disque colonnes
+    fig, ax = plt.subplots()
+    ax.axis([min-3, max+3, -5, 5])
+    plt.grid(linestyle='--')
+    ax.set_aspect(1)
+    plt.xlabel("$Re$")
+    plt.ylabel("$Im$")
+    for k in range(N):
+        x, y = D[k].real, D[k].imag    #centre D[k]=A[k,k]
+        Rc[k] = sum(abs(matrice[:,k])) - abs(matrice[k,k]) # rayon
+        ax.add_artist( plt.Circle((x, y), Rc[k], color='red') )
+
+    plt.title("Disque-Colonnes de Gershgorin")
+    # plt.subplot(1, 2, 2)
+    plt.show()
+
+
+def plot_disques_ligne(matrice):
+    N=len(matrice)
+
+    # centre des disques
+    D = np.diag(matrice)
+    min=np.min(D)
+    max=np.max(D)
+
+    # Rayons des disques (Lignes/Colonnes)
+    Rl = np.zeros(N) # disque ligne
+
+    # Disque Lignes
+    fig, ax = plt.subplots()
+    ax.axis([min-2, max+5, -5, 5])
+    plt.grid(linestyle='--')
+    ax.set_aspect(1)
+    plt.xlabel("$Re$")
+    plt.ylabel("$Im$")
+
+    for k in range(N):
+        x, y = D[k].real, D[k].imag    #centre D[k]=matrice[k,k]
+        Rl[k] = sum(abs(matrice[k,:])) - abs(matrice[k,k])  # rayon
+        ax.add_artist( plt.Circle( (x, y), Rl[k], color='blue')  )
+
+    plt.title("Disque-lignes de Gershgorin")
+    plt.show()
+
+
+
+
+
+A = array([[2,-0.5,0,-0.5] ,[0,4,0,2] ,[-0.5,0,6,0.5] ,[0,0,1,9]])
+
+B = array([[-5,0,0.5,0.5] ,[0.5,2,0.5,0] ,[0,1,0,0.5] ,[0,0.25,0.5,3]])
+
+
+plot_disques_ligne(A)
+plot_disques_colonne(A)
+
+
+plot_disques_ligne(B)
+plot_disques_colonne(B)

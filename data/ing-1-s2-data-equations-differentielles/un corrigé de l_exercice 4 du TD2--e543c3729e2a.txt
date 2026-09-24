@@ -1,0 +1,139 @@
+CY TECH– ING1 GMTD 2 : Équations Différentielles
+Corrigé Détaillé - Exercice 4 : Explosion en temps fini
+Énoncé :On considère le problème de Cauchy non linéaire de Riccati :
+(PC) :
+(
+u′(t) =u(t) 2 +t 2
+u(0) = 0
+La fonctionf(t,u) =u 2 +t 2 étant de classeC∞ surR 2 (donc localement lipschitzienne par rapport àu),
+lethéorème de Cauchy-Lipschitz non linéairegarantit l’existence d’une unique solution maximaleu,
+définie sur un intervalle ouvertJ=]−a,b[.
+1. Linéarisation et positivité stricte dez
+Pour toutt∈J, on posez(t) = exp
+
+−
+Z t
+0
+u(s)ds
+
+.
+Régularité et garantie de non-annulation :Puisqueuest de classeC1 surJ, le théorème fondamental
+de l’analyse nous assure que la fonctiont7→
+Rt
+0u(s)dsest de classeC 2. Par composition,zest de classeC 2 sur
+J. Surtout, la fonction exponentielle ne s’annulant jamais surR,on a rigoureusementz(t)>0pour tout
+t∈J. Cela garantit que la relation inverseu(t) =− z′(t)
+z(t) est toujours licite (sans division par zéro) sur tout
+l’intervalleJ.
+Équation différentielle vérifiée :
+z′(t) =−u(t)·exp
+
+−
+Z t
+0
+u(s)ds
+
+=−u(t)z(t)
+En dérivant une seconde fois :
+z′′(t) =−u′(t)z(t)−u(t)z ′(t) =−(u 2 +t 2)z−u(−uz) =−u 2z−t 2z+u 2z=−t 2z(t)
+La fonctionzvérifie l’équation différentielle linéaire :(E) :z ′′(t) +t 2z(t) = 0.
+Conditions initiales : l’intégrale étant nulle ent= 0,z(0) =e 0 = 1. Commeu(0) = 0,z ′(0) = 0.
+2. Recherche de la solution formelle : Argument d’analyticité
+Justification théorique :L’équation(E)est linéaire et homogène. Son coefficientt7→t 2 est une fonction
+polynomiale, donc analytique (développable en série entière avec un rayon infini). D’après lethéorème de
+Cauchy linéaire pour les séries entières, la solution globale du problème de Cauchy estanalytique
+surRet peut donc être cherchée sous la forme d’une série entièreS(t) =
++∞X
+n=0
+antn de rayonR= +∞.
+En injectantSetS ′′ dans(E)et en réindexant (posonsk=n−2dans la première somme) :
+2a2 + 6a3t+
++∞X
+m=0
+[(m+ 4)(m+ 3)a m+4 +am]tm+2 = 0
+Parunicité du développement en série entière(valide autour de 0), on identifie :a 2 =a 3 = 0, et
+am+4 =− am
+(m+4)(m+3). Aveca0 = 1eta 1 = 0, seuls les indices multiples de 4 subsistent. Pourm= 4k:
+S(t) =
++∞X
+k=0
+(−1)kt4k
+bk
+avecb k =
+kY
+j=1
+4j(4j−1) (etb 0 = 1)
+3. Validation du rayon de convergence infini
+Appliquons le critère de d’Alembert sur le terme généraluk(t) = t4k
+bk
+pourt̸= 0:
+
+uk+1(t)
+uk(t)
+ = t4
+(4k+ 4)(4k+ 3) −−−−−→
+k→+∞
+0
+La limite étant nulle (donc<1), la convergence est absolue pour toutt∈R. Le rayon de convergence est bien
+R= +∞, justifiant pleinement notre cadre analytique.
+1
+<<<PAGE>>>
+CY TECH– ING1 GMTD 2 : Équations Différentielles
+4. Le cœur du problème : Existence de la première racineτ
+La série étant délicate à évaluer à l’infini, prouvons par l’absurde l’existence d’une racine : Supposons que
+S(t)>0pour toutt≥0.
+— PuisqueS′′(t) =−t 2S(t)≤0, la fonctionS ′ est strictement décroissante surR+.
+— OrS′(0) = 0, donc pourt= 1, on aS ′(1) =−α<0.
+— Pourt≥1, la décroissance deS ′ imposeS ′(t)≤−α. En intégrant :
+S(t)≤S(1)−α(t−1)−−−−→
+t→+∞
+−∞
+— Contradiction avec l’hypothèseS(t)>0.
+La fonctionSs’annule donc au moins une fois surR∗
++. L’image réciproque de{0}par la fonction continueS
+étant fermée, elle admet un minimum. Soitτle plus petit zéro strictement positif deS.
+5. Majoration par le CSSA et localisation (τ >2)
+Posonsx=t 4 etf(x) = 1 + P+∞
+k=1(−1)kxk
+bk
+. Sur[0,16], la suite des termes est positive, décroissante et
+tend vers 0. LeCritère Spécial des Séries Alternéesnous autorise à encadrer la somme par ses sommes
+partielles.
+a) Décroissance def:Majoronsf ′(x)en tronquant au terme positif (indicek= 2) :
+f′(x)≤− 1
+12 + 2
+672x≤− 1
+12 + 32
+672 =− 7
+84 + 4
+84 =− 3
+84 <0
+Cette majoration grossière mais valide prouve quefeststrictement décroissantesur[0,16].
+b) Signe strict sur[0,16]:Minorons le minimumf(16)en tronquant au terme négatif (indicek= 3) :
+f(16)≥1− 16
+12 + 256
+672− 4096
+88704 =− 1
+3 + 8
+21− 32
+693 = 1
+693 >0
+Ainsi,f(x)>0sur[0,16], doncS(t)>0sur[0,2]. Ce qui assureτ >2.
+6. Synthèse : Symétrie, Explosion et Intervalle MaximalJ
+Conclusion globale :
+1.Symétrie et Parité :L’équationu′ =u 2 +t 2 est invariante par le changement(t,u)→(−t,−u). Si
+u(t)est solution,v(t) =−u(−t)l’est aussi. Par unicité,v=u, doncuest impaire. Son intervalle
+d’existence est nécessairement symétrique :J=]−b,b[. De fait,z(et doncS) est une fonctionpaire.
+Le premier zéro négatif deSest exactement−τ.
+2.Coïncidence et Explosion :SurJ, par unicité globale linéaire, l’exponentiellezcoïncide avecS.
+Pour toutt∈[0,b[,u(t) =− S′(t)
+S(t) . Lorsquet→τ −, on aS(t)→0 +. Surtout, la décroissance stricte
+deSgarantit queS ′(τ)<0, donc le numérateur−S ′(τ)est strictement positif.
+lim
+t→τ−
+u(t) =−S′(τ)
+0+ = +∞
+3.Intervalle Maximal :Cette explosion vers l’infini positif bloque tout prolongement au-delà deτ.
+L’imparité deuimplique une explosion symétrique vers−∞en−τ. L’intervalle maximal est donc
+parfaitement scellé :J=]−τ,τ[avecτ >2.
+2

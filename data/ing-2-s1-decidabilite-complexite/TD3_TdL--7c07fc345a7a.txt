@@ -1,0 +1,43 @@
+CY TECH : Théorie des langages 2024-2025
+TD3 - Quotients gauches et systèmes d’équations
+Objectifs
+Ce travail dirigé a pour but d’étudier la bijection entre les langages réguliers et les automates à
+états finis.
+• Génération d’un automate minimal à partir de l’expression régulière d’un langage
+• Génération de l’expression régulière d’un langage à partir d’un automate à états finis
+Rappels et notations
+Lemme d’Arden
+Soient A un alphabet etX, B, C trois langages définis surA∗.
+Une solution de l’équationX = BX + C est
+X = B∗C
+Quelques propriétés utiles pour l’algorithme des quotients gauches :
+• X ∗ = X + ∪ ε = X + + ε l’union ∪ est équivalente au signe+ (pas celui en exposant)
+• X + = XX ∗ on en déduit :X ∗ = XX ∗ + ε
+• x−1x = ε
+• x−1Y = ∅ si le langageY ne contient aucun mot commencant parx
+• On en déduit par exemple : x−1y = ∅ x−1ε = ∅
+• Note : ∅ + X = X ∅.X = ∅ x−1∅ = ∅
+• x−1(X + Y ) = x−1X + x−1Y
+Exercice 1. Un premier langage simple
+Question 1. Soit l’alphabet A = {a, b} et le langageL = a∗b∗. Trouver un automate qui reconnaîtL.
+Question 2. Vérifier cette réponse en utilisant l’algorithme des quotients gauches à partir de l’ex-
+pression régulière :L = a∗b∗.
+Question 3. On cherche maintenant à vérifier que l’automate est bien équivalent à l’expression régu-
+lière initiale.
+Pour cela, résoudre le système d’équation issu de l’automate en utilisant le lemme d’Arden.
+Exercice 2. Un deuxième langage moins simple
+Question 1. Trouver le langage engendré par l’automate suivant par la résolution du système d’équa-
+tion associé.
+1
+<<<PAGE>>>
+Question 2. Vérifier ce résultat en appliquant l’algorithme des quotients gauches sur l’expression
+régulière que vous venez de trouver.
+Exercice 3. Un troisième langage difficile
+Soit l’alphabet A = {a,... ,z}. On reprend l’automate non déterministe représentant le langage des
+mots se terminant par man :
+Question 1. Plutôt que de tenter de résoudre le système d’équations de l’automate déterministe (très
+difficile), résolvez le système d’équation de cet automate non déterministe pour trouver une expression
+régulière du langage qu’il reconnaît.
+Question 2. Vérifier ce résultat en appliquant l’algorithme des quotients gauches sur le langage que
+vous venez de trouver.
+2

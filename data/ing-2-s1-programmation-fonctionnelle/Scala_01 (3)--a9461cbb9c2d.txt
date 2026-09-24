@@ -1,0 +1,1691 @@
+Functional programming with Scala
+Basics
+Djaouida ZAOUCHE , Romain DUJOL
+CY T ECH – ING2
+2020 – 2021
+Djaouida ZAOUCHE , Romain DUJOL 1
+<<<PAGE>>>
+Introduction
+<<<PAGE>>>
+In the beginning. . .
+[...] Functional code is characterised by one thing: the
+absence of side-effects. It doesn’t rely on data outside
+the current function, and it doesn’t change data that ex-
+ists outside the current function. Every other “ functional ”
+thing can be derived from this property. Use it as a guide
+rope as you learn.
+[...] La programmation fonctionnelle se caractérise par
+une chose : l’absence d’effet de bord. Elle ne s’appuie
+pas sur des données hors de la fonction courante et elle ne
+change pas de donnée existant hors de la fonction courante.
+Toute autre caractéristique «fonctionnelle » peut être déduite
+de cette propriété. Utilisez cela comme ﬁl conducteur lors de
+votre apprentissage.
+Mary Rose COOK, A practical introduction to functional
+programming
+Djaouida ZAOUCHE , Romain DUJOL 3
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+−→ Constant
+Variable modiﬁcation IS a side-effect
+−→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable
+−→ Constant
+Variable modiﬁcation IS a side-effect
+−→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+−→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+−→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction
+−→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure
+−→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+Loop
+−→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+Loop −→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+Loop −→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Functional paradigm≡ no side-effect
+Variable −→ Constant
+Variable modiﬁcation IS a side-effect
+Instruction −→ (Typed) expression
+Only interest of an instruction : the side-effect it produces !
+Procedure −→ Pure function
+Only interest of a procedure : the side-effect it produces !
+Loop −→ Recursivity
+Loop≡ Instructions with some variable modiﬁcation
++ Any function is a (typed) expression.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Introduction
+History
+<<<PAGE>>>
+Functional programming languages
+History
+▶ 1958 : LISP (LISt Processor)
+▶ 1970 : Scheme
+▶ 1973 : ML (Meta Language)
+▶ 1985 : C AML
+▶ 1996 : OC AML
+▶ 1990 : Standard ML
+▶ 1990 : Haskell
+▶ 2003-2004 : Scala
+▶ 2005 : F# (based on C#)
+Djaouida ZAOUCHE , Romain DUJOL 6
+<<<PAGE>>>
+Imperative programming languages
+Historique
+▶ 1972 : C
+▶ 1983 : Turbo Pascal
+▶ 1985 : C++ (object oriented)
+▶ 2011 : C++ includes anonymous functions
+▶ 1995 : Java (object oriented)
+▶ 2014 : Java 8 includes anonymous functions
+▶ 2000 : C# (object oriented)
+▶ 2011 : Kotlin (object oriented with functional elements)
+Other languages start to give it in functional features
+▶ Anmonymous functions≡ functions deﬁned on-the-ﬂy
+▶ Functions as parameters⇐⇒ Processings as parameters
+⇒ Code factorization improved
+Djaouida ZAOUCHE , Romain DUJOL 7
+<<<PAGE>>>
+Less elements so less expressive. . . isn’t it ?
+Well, not at all !
+▶ 1930-1936, Alonzo CHURCH : λ-calculus
+Representation of functional programming languages
+▶ 1936-1937, Alan TURING : machines de T URING
+Representation of current computers
+▶ 1936-1937, Alan TURING :
+Both representations are equivalent.
+Advantages
+▶ less elements⇒ simpler, more intuitive
+▶ easier to analyse, simpler unit tests
+▶ closer to mathematical description
+Drawbacks
+▶ needs more resources (in progress)
+▶ limit of applicability (I/O)
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Less elements so less expressive. . . isn’t it ?
+Well, not at all !
+▶ 1930-1936, Alonzo CHURCH : λ-calculus
+Representation of functional programming languages
+▶ 1936-1937, Alan TURING : machines de T URING
+Representation of current computers
+▶ 1936-1937, Alan TURING :
+Both representations are equivalent.
+Advantages
+▶ less elements⇒ simpler, more intuitive
+▶ easier to analyse, simpler unit tests
+▶ closer to mathematical description
+Drawbacks
+▶ needs more resources (in progress)
+▶ limit of applicability (I/O)
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Less elements so less expressive. . . isn’t it ?
+Well, not at all !
+▶ 1930-1936, Alonzo CHURCH : λ-calculus
+Representation of functional programming languages
+▶ 1936-1937, Alan TURING : machines de T URING
+Representation of current computers
+▶ 1936-1937, Alan TURING :
+Both representations are equivalent.
+Advantages
+▶ less elements⇒ simpler, more intuitive
+▶ easier to analyse, simpler unit tests
+▶ closer to mathematical description
+Drawbacks
+▶ needs more resources (in progress)
+▶ limit of applicability (I/O)
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Less elements so less expressive. . . isn’t it ?
+Well, not at all !
+▶ 1930-1936, Alonzo CHURCH : λ-calculus
+Representation of functional programming languages
+▶ 1936-1937, Alan TURING : machines de T URING
+Representation of current computers
+▶ 1936-1937, Alan TURING :
+Both representations are equivalent.
+Advantages
+▶ less elements⇒ simpler, more intuitive
+▶ easier to analyse, simpler unit tests
+▶ closer to mathematical description
+Drawbacks
+▶ needs more resources (in progress)
+▶ limit of applicability (I/O)
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+And you can make big money !
+What languages are associated with the highest salaries
+worldwide?
+1. Scala : 76 000 $ (Global), 150 000 $ (USA)
+2. . . .
+Source : StackOverﬂow 2020 Developer Survey
+(Global median over all respondants)
+Why such a renewed interest ?
+Classical progamming languages (C++, Java, C#) make it hard to
+address new needs in applications (cf. Reactive Manifesto) :
+▶ highly availability and scalability ;
+▶ concurrent and distributed applications ;
+▶ interfaces for both end-users and other applications.
+Djaouida ZAOUCHE , Romain DUJOL 9
+<<<PAGE>>>
+And you can make big money !
+What languages are associated with the highest salaries
+worldwide?
+1. Scala : 76 000 $ (Global), 150 000 $ (USA)
+2. . . .
+Source : StackOverﬂow 2020 Developer Survey
+(Global median over all respondants)
+Why such a renewed interest ?
+Classical progamming languages (C++, Java, C#) make it hard to
+address new needs in applications (cf. Reactive Manifesto) :
+▶ highly availability and scalability ;
+▶ concurrent and distributed applications ;
+▶ interfaces for both end-users and other applications.
+Djaouida ZAOUCHE , Romain DUJOL 9
+<<<PAGE>>>
+Introduction
+Recap
+<<<PAGE>>>
+Pure function
+Pure function≡ function with no side-effect
+⇒ input only parameters
+⇒ result depending only on function parameters
+↝ Similar to a function in the mathematical sense
+(if a type is associated to its set of values)
+Such a function is a typed constant
+The function type is given by :
+▶ the types of its parameters ;
+▶ and the type of its result.
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Pure function
+Pure function≡ function with no side-effect
+⇒ input only parameters
+⇒ result depending only on function parameters
+↝ Similar to a function in the mathematical sense
+(if a type is associated to its set of values)
+Such a function is a typed constant
+The function type is given by :
+▶ the types of its parameters ;
+▶ and the type of its result.
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Recursive function
+Recursive function
+Function calling itself
+Base case
+To terminate, a recursive function must contain at least onebase
+case, i.e. a non-recursive evaluation.
+Tail-recursive function
+Recursive function such that any recursive call is a direct call of the
+function itself
+A tail-recursive function needs less memory than a non
+tail-recursive one.
+Djaouida ZAOUCHE , Romain DUJOL 12
+<<<PAGE>>>
+Recursive function
+Factorial (non tail-recursive)
+Function factorial(n : integer) : integer
+If n≤ 0 then
+Return 1
+Else
+Return n× factorial(n− 1)
+EndIf
+EndFunction
+Factorial (tail-recursive)
+Function factorialTR(n : integer, a : integer) : integer
+If n = 0 then
+Return a
+Else
+Return factorialTR(n− 1,n× a)
+EndIf
+EndFunction
+Function factorial(n : integer) : integer
+Return factorialTR(n,1)
+EndFunction
+Djaouida ZAOUCHE , Romain DUJOL 13
+<<<PAGE>>>
+Recursive function
+Factorial (non tail-recursive)
+Function factorial(n : integer) : integer
+If n≤ 0 then
+Return 1
+Else
+Return n× factorial(n− 1)
+EndIf
+EndFunction
+Factorial (tail-recursive)
+Function factorialTR(n : integer, a : integer) : integer
+If n = 0 then
+Return a
+Else
+Return factorialTR(n− 1,n× a)
+EndIf
+EndFunction
+Function factorial(n : integer) : integer
+Return factorialTR(n,1)
+EndFunction
+Djaouida ZAOUCHE , Romain DUJOL 13
+<<<PAGE>>>
+Static VS dynamic type checking
+Déﬁnition (Static type checking)
+Types are bound to variables.
+Exemples
+Java, C++, Scala
+Déﬁnition (Dynamic type checking)
+Types are bound to values of variables.
+Exemples
+Javascript, Python, Ruby, Groovy
+Djaouida ZAOUCHE , Romain DUJOL 14
+<<<PAGE>>>
+Static VS dynamic type checking
+Déﬁnition (Static type checking)
+Types are bound to variables.
+Exemples
+Java, C++, Scala
+Déﬁnition (Dynamic type checking)
+Types are bound to values of variables.
+Exemples
+Javascript, Python, Ruby, Groovy
+Djaouida ZAOUCHE , Romain DUJOL 14
+<<<PAGE>>>
+Static VS dynamic type checking
+Déﬁnition (Static type checking)
+Types are bound to variables.
+Exemples
+Java, C++, Scala
+Déﬁnition (Dynamic type checking)
+Types are bound to values of variables.
+Exemples
+Javascript, Python, Ruby, Groovy
+Djaouida ZAOUCHE , Romain DUJOL 14
+<<<PAGE>>>
+Static VS dynamic type checking
+Déﬁnition (Static type checking)
+Types are bound to variables.
+Exemples
+Java, C++, Scala
+Déﬁnition (Dynamic type checking)
+Types are bound to values of variables.
+Exemples
+Javascript, Python, Ruby, Groovy
+Djaouida ZAOUCHE , Romain DUJOL 14
+<<<PAGE>>>
+Scala
+<<<PAGE>>>
+Scala
+Description
+<<<PAGE>>>
+Identity sheet
+Created in 2003 by Martin ODERSKY
+▶ Professor at École Polytechnique Fédérale de Lausanne
+▶ Co-designed Java Generics (for Java 5)
+▶ Original author of current javac reference compiler
+Apache 2.0 license
+▶ Current version : 2.13.3 (June 25, 2020)
+▶ Version 3 expected for end of 2020 : available for test under
+“Dotty” code name
+Features
+▶ Functional AND object-oriented language
+▶ Strong static type checking
+▶ UTF-8 encoding by default
+▶ JVM language (hence generates Java bytecode)
+Djaouida ZAOUCHE , Romain DUJOL 17
+<<<PAGE>>>
+Foundation of various frameworks
+Actor/message-based development
+▶ Akka
+Web development
+▶ Play!
+▶ Lift
+▶ Scalatra
+Testing
+▶ ScalaTest
+▶ ScalaCheck
+▶ Specs2
+Distributed computation
+▶ Spark
+Djaouida ZAOUCHE , Romain DUJOL 18
+<<<PAGE>>>
+Scala
+Environment
+<<<PAGE>>>
+Console
+Call : scala (with no parameter)
+$ scala
+Welcome to Scala 2.11.12 (OpenJDK 64-Bit Server VM, Java 11.0.8).
+Type in expressions for evaluation. Or try :help.
+scala> 1 + 1
+res0: Int = 2
+scala> "42"
+res1: String = 42
+Option -Dscala.color enables syntax highlighting on results.
+Special commands
+▶ :help
+▶ :load ﬁle load contents of ﬁle as Scala code
+▶ :quit (ou Ctrl + D ) : quits console
+Djaouida ZAOUCHE , Romain DUJOL 20
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Features
+▶ Minimal conﬁguration for simple projects
+▶ Support for Scala (and tests)
+▶ Tasks written in Scala DSL
+▶ Dependency support via Ivy
+▶ Interactive mode (console) is available
+Djaouida ZAOUCHE , Romain DUJOL 21
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Create a sbt project
+1. Create following directories :
+/folder_open_altWorking directory
+/file_text_altbuild.sbt (Conﬁguration)
+/folder_open_altlib (JARs)
+/folder_open_altsrc
+/folder_open_altmain
+/folder_open_altjava (Java source ﬁles)
+/folder_open_altscala (Scala sources ﬁles)
+/folder_open_altresources (Data ﬁles)
+/folder_open_alttest
+/folder_open_altjava (Java test source ﬁles)
+/folder_open_altscala (Scala test source ﬁles)
+/folder_open_altresources (Data ﬁles)
+2. Create ﬁle build.sbt.
+Djaouida ZAOUCHE , Romain DUJOL 22
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Example for build.sbt ﬁle
+organization := "fr.cyu"
+name := "HelloWorld"
+version := "1.0-SNAPSHOT"
+// Add one dependency for tests (with '% "test"')
+libraryDependencies += "junit" % "junit" % "4.8" % "test"
+// Add various dependencies
+libraryDependencies ++= Seq("org.scala-lang" % "scala-xml" % "2.11.0-M4",
+"joda-time" % "joda-time" % "2.9.5")
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+sbt (Simple Build Tool)
+Subcommands
+Any subcommand may be invoked :
+▶ as a parameter when calling sbt from terminal ;
+▶ directy in sbt console.
+Some useful subcommands
+▶ clean deletes all ﬁles generated by build in target directory
+▶ compile compiles all source ﬁles from main directory
+▶ test compiles all source ﬁles from test directory and launch
+tests
+▶ package builds a JAR archive
+▶ run arguments executes main class with arguments as
+parameters
+▶ help prints the list of available subcommands
+▶ help command prints the help of command
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Scala
+Basic elements
+<<<PAGE>>>
+Main class. . . rather main object
+Same purpose as Java. . .
+▶ Entry point for program with main method
+▶ Arguments from call in console captured in a string array
+. . . but some differences in deﬁning it
+▶ One instance =⇒ object declaration (instead of class)
+▶ App trait deﬁnes main method :
+▶ no need to declare method if object extends App ;
+▶ the whole object body becomes the main method body.
+(Some of these concepts will be addressed later.)
+Djaouida ZAOUCHE , Romain DUJOL 26
+<<<PAGE>>>
+Main class. . . rather main object
+Same purpose as Java. . .
+▶ Entry point for program with main method
+▶ Arguments from call in console captured in a string array
+. . . but some differences in deﬁning it
+▶ One instance =⇒ object declaration (instead of class)
+▶ App trait deﬁnes main method :
+▶ no need to declare method if object extends App ;
+▶ the whole object body becomes the main method body.
+(Some of these concepts will be addressed later.)
+Djaouida ZAOUCHE , Romain DUJOL 26
+<<<PAGE>>>
+Main class. . . rather main object
+Hello World
+object HelloWorld
+{
+def main(args : Array [String])
+{
+println("Hello World !")
+}
+}
+Hello World (extending App)
+object HelloWorld extends App
+{
+println("Hello, world!")
+}
+(Not recommended in Scala 3 for performance reasons)
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Main class. . . rather main object
+Hello World
+object HelloWorld
+{
+def main(args : Array [String])
+{
+println("Hello World !")
+}
+}
+Hello World (extending App)
+object HelloWorld extends App
+{
+println("Hello, world!")
+}
+(Not recommended in Scala 3 for performance reasons)
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+In Scala, any basic type is a class.
+Any basic type is a subclass of AnyVal.
+▶ Integer types : Byte, Short, Int, Long
+▶ Floating types : Float, Double
+▶ Other types : Boolean, Char
+▶ Unit≡ void in Java
+▶ Nothing : type with no value
+▶ . . . (46 basic types)
+Encapsulation of Java counterparts for namesakes
+▶ Concerns integer, ﬂoating and other types
+=⇒ All Java operations are available with some subtleties
+(in particular implicit conversions, becoming less implicit in
+Scala 3)
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Basic types
+Divide integers
+scala> 1 / 2
+res0: Int = 0
+scala> (1 / 2).toDouble
+res1: Double = 0.0
+scala> 1.toDouble / 2
+res2: Double = 0.5
+Djaouida ZAOUCHE , Romain DUJOL 29
+<<<PAGE>>>
+Basic types
+Divide integers
+scala> 1 / 2
+res0: Int = 0
+scala> (1 / 2).toDouble
+res1: Double = 0.0
+scala> 1.toDouble / 2
+res2: Double = 0.5
+Djaouida ZAOUCHE , Romain DUJOL 29
+<<<PAGE>>>
+Basic types
+Divide integers
+scala> 1 / 2
+res0: Int = 0
+scala> (1 / 2).toDouble
+res1: Double = 0.0
+scala> 1.toDouble / 2
+res2: Double = 0.5
+Djaouida ZAOUCHE , Romain DUJOL 29
+<<<PAGE>>>
+Declaration of values and variables
+Value versus variable
+▶ Value : immutable content, declared with val
+▶ Variable : mutable content, declared with var
+Of course, functional programming favors values.
+Variable declaration in Scala
+var i : Int = 7
+var msg : String = "Hello world !"
+Variable declaration in Java
+int i = 7 ;
+String msg = "Hello world !"
+Value declaration in Scala
+val i : Int = 7
+val msg : String = "Hello world !"
+Value declaration in Java
+final int i = 7 ;
+final String msg = "Hello world !"
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Declaration of values and variables
+Value versus variable
+▶ Value : immutable content, declared with val
+▶ Variable : mutable content, declared with var
+Of course, functional programming favors values.
+Variable declaration in Scala
+var i : Int = 7
+var msg : String = "Hello world !"
+Variable declaration in Java
+int i = 7 ;
+String msg = "Hello world !"
+Value declaration in Scala
+val i : Int = 7
+val msg : String = "Hello world !"
+Value declaration in Java
+final int i = 7 ;
+final String msg = "Hello world !"
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Declaration of values and variables
+Value versus variable
+▶ Value : immutable content, declared with val
+▶ Variable : mutable content, declared with var
+Of course, functional programming favors values.
+Variable declaration in Scala
+var i : Int = 7
+var msg : String = "Hello world !"
+Variable declaration in Java
+int i = 7 ;
+String msg = "Hello world !"
+Value declaration in Scala
+val i : Int = 7
+val msg : String = "Hello world !"
+Value declaration in Java
+final int i = 7 ;
+final String msg = "Hello world !"
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Declaration of values and variables
+Value versus variable
+▶ Value : immutable content, declared with val
+▶ Variable : mutable content, declared with var
+Of course, functional programming favors values.
+Variable declaration in Scala
+var i : Int = 7
+var msg : String = "Hello world !"
+Variable declaration in Java
+int i = 7 ;
+String msg = "Hello world !"
+Value declaration in Scala
+val i : Int = 7
+val msg : String = "Hello world !"
+Value declaration in Java
+final int i = 7 ;
+final String msg = "Hello world !"
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Declaration of values and variables
+Value versus variable
+▶ Value : immutable content, declared with val
+▶ Variable : mutable content, declared with var
+Of course, functional programming favors values.
+Variable declaration in Scala
+var i : Int = 7
+var msg : String = "Hello world !"
+Variable declaration in Java
+int i = 7 ;
+String msg = "Hello world !"
+Value declaration in Scala
+val i : Int = 7
+val msg : String = "Hello world !"
+Value declaration in Java
+final int i = 7 ;
+final String msg = "Hello world !"
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Declaration of values and variables
+Type may be infered (unlike Java)
+▶ So type is not always required (although recommended) in a
+declaration.
+scala> val answer : String = "42"
+answer: String = 42
+scala> val answer = "42"
+answer: String = 42
+▶ Static type checking prevents from assigning non-coherent
+type to value or variable.
+scala> val answer : Int = "42"
+<console>:11: error: type mismatch;
+found : String("42")
+required: Int
+val answer : Int = "42"
+^
+Djaouida ZAOUCHE , Romain DUJOL 31
+<<<PAGE>>>
+Declaration of values and variables
+Type may be infered (unlike Java)
+▶ So type is not always required (although recommended) in a
+declaration.
+scala> val answer : String = "42"
+answer: String = 42
+scala> val answer = "42"
+answer: String = 42
+▶ Static type checking prevents from assigning non-coherent
+type to value or variable.
+scala> val answer : Int = "42"
+<console>:11: error: type mismatch;
+found : String("42")
+required: Int
+val answer : Int = "42"
+^
+Djaouida ZAOUCHE , Romain DUJOL 31
+<<<PAGE>>>
+Declaration of values and variables
+Type may be infered (unlike Java)
+▶ So type is not always required (although recommended) in a
+declaration.
+scala> val answer : String = "42"
+answer: String = 42
+scala> val answer = "42"
+answer: String = 42
+▶ Static type checking prevents from assigning non-coherent
+type to value or variable.
+scala> val answer : Int = "42"
+<console>:11: error: type mismatch;
+found : String("42")
+required: Int
+val answer : Int = "42"
+^
+Djaouida ZAOUCHE , Romain DUJOL 31
+<<<PAGE>>>
+Standard evaluation
+Block
+▶ Sequence of instructions/expressions
+▶ Result of block : result of last expression in block
+Declarations are done immediately
+▶ Evaluation is performed as soon as it is declared
+▶ Expression are evaluated when deﬁned.
+Djaouida ZAOUCHE , Romain DUJOL 32
+<<<PAGE>>>
+Standard evaluation
+Block
+▶ Sequence of instructions/expressions
+▶ Result of block : result of last expression in block
+Declarations are done immediately
+▶ Evaluation is performed as soon as it is declared
+▶ Expression are evaluated when deﬁned.
+Djaouida ZAOUCHE , Romain DUJOL 32
+<<<PAGE>>>
+Standard evaluation
+Fichier Test.scala
+object Test extends App
+{
+var y = 90 ;
+val x =
+{
+println("Step 1 (x)") ; y = y + 1 ;
+println("Step 2 (x)") ; "#####" + y
+}
+println(x)
+println(x)
+val z =
+{
+println("Step 1 (z)") ; y = y + 1 ;
+println("Step 2 (z)") ; "#####" + y
+}
+println(z)
+println(z)
+}
+Djaouida ZAOUCHE , Romain DUJOL 33
+<<<PAGE>>>
+Standard evaluation
+Result of execution of Test.scala
+scala> :load Test.scala
+Loading Test.scala...
+defined object Test
+Step 1 (x)
+Step 2 (x)
+#####91
+#####91
+Step 1 (z)
+Step 2 (z)
+#####92
+#####92
+Djaouida ZAOUCHE , Romain DUJOL 34
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+How lazy evaluation works
+▶ Evaluation at ﬁrst actual use outside declaration
+▶ Afterwards, stays unchanged (hey, it’s still aval !)
+val versus lazy val
+scala> val x = {println("x is set") ; 3 + 3}
+x is set
+x: Int = 6
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> x + 3
+x is set
+res0: Int = 9
+scala> x
+res1: Int = 6
+Djaouida ZAOUCHE , Romain DUJOL 35
+<<<PAGE>>>
+Lazy evaluation : lazy val
+Evaluation at ﬁrst actual use
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> if (false) x else 0
+res0: Int = 0
+scala> if (true) x else 0
+x is set
+res1: Int = 6
+=⇒ Dynamic evaluation (although type checking remain static)
+Djaouida ZAOUCHE , Romain DUJOL 36
+<<<PAGE>>>
+Lazy evaluation : lazy val
+Evaluation at ﬁrst actual use
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> if (false) x else 0
+res0: Int = 0
+scala> if (true) x else 0
+x is set
+res1: Int = 6
+=⇒ Dynamic evaluation (although type checking remain static)
+Djaouida ZAOUCHE , Romain DUJOL 36
+<<<PAGE>>>
+Lazy evaluation : lazy val
+Evaluation at ﬁrst actual use
+scala> lazy val x = {println("x is set") ; 3 + 3}
+x: Int = <lazy>
+scala> if (false) x else 0
+res0: Int = 0
+scala> if (true) x else 0
+x is set
+res1: Int = 6
+=⇒ Dynamic evaluation (although type checking remain static)
+Djaouida ZAOUCHE , Romain DUJOL 36
+<<<PAGE>>>
+Everything is an expression. . . hence is typed
+Some basic examples
+scala> val e1 = 1
+e1: Int = 1
+scala> val e2 = 2
+e2: Int = 2
+scala> e1 + e2
+res0: Int = 3
+scala> e1 == e2
+res1: Boolean = false
+scala> val e0 = println(e1)
+1
+e0: Unit = ()
+Djaouida ZAOUCHE , Romain DUJOL 37
+<<<PAGE>>>
+Everything is an expression. . . hence is typed
+Expression if (cond) expr1 else expr2
+▶ Condition cond must be within parentheses
+▶ Type of result : least common supertype of expr1 and expr2
+scala> if (e1 == e2) e1 else e2
+res2: Int = 2
+Advanced example
+scala> val e =
+{
+val cmPerInch = 2.54
+15 * cmPerInch
+}
+e: Double = 38.1
+scala> cmPerInch
+<console>:12: error: not found: value cmPerInch
+cmPerInch
+^
+Djaouida ZAOUCHE , Romain DUJOL 38
+<<<PAGE>>>
+Everything is an expression. . . hence is typed
+Expression if (cond) expr1 else expr2
+▶ Condition cond must be within parentheses
+▶ Type of result : least common supertype of expr1 and expr2
+scala> if (e1 == e2) e1 else e2
+res2: Int = 2
+Advanced example
+scala> val e =
+{
+val cmPerInch = 2.54
+15 * cmPerInch
+}
+e: Double = 38.1
+scala> cmPerInch
+<console>:12: error: not found: value cmPerInch
+cmPerInch
+^
+Djaouida ZAOUCHE , Romain DUJOL 38
+<<<PAGE>>>
+Scala class/type hierarchy
+Source : scala-lang.org
+Djaouida ZAOUCHE , Romain DUJOL 39
+<<<PAGE>>>
+Source : scala-lang.org
+<<<PAGE>>>
+Source : scala-lang.org
+<<<PAGE>>>
+Source : scala-lang.org
+<<<PAGE>>>
+Source : scala-lang.org
+<<<PAGE>>>
+Scala class hierarchy
+Supertypes
+▶ AnyVal : supertype of all basic types
+▶ AnyRef : supertype of all other classes, including Java
+classes
+Default supertype of any user-deﬁned class
+▶ Any : supertype of any class (hence of AnyVal and AnyRef)
+Subtypes
+▶ Nothing : subtype of any class
+▶ Null : subtype of any non-basic class
+Class String
+Alias to Java class java.lang.String
+Djaouida ZAOUCHE , Romain DUJOL 41
+<<<PAGE>>>
+Scala class hierarchy
+Example
+scala> val x : Any = "abc"
+x: Any = abc
+scala> val y : String = x
+x: Any = abc
+<console>:12: error: type mismatch;
+found : Any
+required: String
+val y : String = x
+^
+(Reverse way by switching types works, of course.)
+scala> if (true) 42 else "42"
+res0: Any = 42 (Type checking is static)
+Djaouida ZAOUCHE , Romain DUJOL 42
+<<<PAGE>>>
+Scala class hierarchy
+Example
+scala> val x : Any = "abc"
+x: Any = abc
+scala> val y : String = x
+x: Any = abc
+<console>:12: error: type mismatch;
+found : Any
+required: String
+val y : String = x
+^
+(Reverse way by switching types works, of course.)
+scala> if (true) 42 else "42"
+res0: Any = 42 (Type checking is static)
+Djaouida ZAOUCHE , Romain DUJOL 42
+<<<PAGE>>>
+Scala class hierarchy
+Example
+scala> val x : Any = "abc"
+x: Any = abc
+scala> val y : String = x
+x: Any = abc
+<console>:12: error: type mismatch;
+found : Any
+required: String
+val y : String = x
+^
+(Reverse way by switching types works, of course.)
+scala> if (true) 42 else "42"
+res0: Any = 42 (Type checking is static)
+Djaouida ZAOUCHE , Romain DUJOL 42
+<<<PAGE>>>
+Scala class hierarchy
+Example
+scala> val x : Any = "abc"
+x: Any = abc
+scala> val y : String = x
+x: Any = abc
+<console>:12: error: type mismatch;
+found : Any
+required: String
+val y : String = x
+^
+(Reverse way by switching types works, of course.)
+scala> if (true) 42 else "42"
+res0: Any = 42 (Type checking is static)
+Djaouida ZAOUCHE , Romain DUJOL 42
+<<<PAGE>>>
+Tuples
+Tuple≡ immutable record with numbered ﬁelds
+▶ Syntax taken from mathematics
+▶ Fixed number of components (maximum 22)
+(limitation removed in Scala 3)
+▶ Types of components may be different
+Comes in handy for making function return multiple values
+Examples
+scala> val t = ("The answer", 42, "Douglas Adams")
+t: (String, Int, String) = (The answer,42,Douglas Adams)
+scala> t. _2
+res0: Int = 42
+scala> t. _4
+<console>:13: error: value _4 is not a member of (String, Int, Double)
+t._4
+^
+Djaouida ZAOUCHE , Romain DUJOL 43
+<<<PAGE>>>
+Tuples
+Tuple≡ immutable record with numbered ﬁelds
+▶ Syntax taken from mathematics
+▶ Fixed number of components (maximum 22)
+(limitation removed in Scala 3)
+▶ Types of components may be different
+Comes in handy for making function return multiple values
+Examples
+scala> val t = ("The answer", 42, "Douglas Adams")
+t: (String, Int, String) = (The answer,42,Douglas Adams)
+scala> t. _2
+res0: Int = 42
+scala> t. _4
+<console>:13: error: value _4 is not a member of (String, Int, Double)
+t._4
+^
+Djaouida ZAOUCHE , Romain DUJOL 43
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Aim of Option[T]
+Provides a way to add a “no value”value to type T
+Two kinds of expressions
+▶ Some(x) where x has type T (mere encapsulation of valuex)
+▶ None for the “no value”case
+Designed to replace exceptions
+⇒ Lack of result becomes a normal behaviour (with None)
+▶ Error handling made easier (e.g. for generic functions)
+▶ Error may be transmitted to calling function
+▶ May be not enough to differentiate multiple errors
+Djaouida ZAOUCHE , Romain DUJOL 44
+<<<PAGE>>>
+Option[T]
+Example : conversion String → Int
+scala> def toInt(s : String ) : Option [Int] =
+{
+try
+{
+Some(Integer.parseInt(s.trim))
+}
+catch
+{
+case e : Exception => None
+}
+}
+toInt: (s: String)Option[Int]
+scala> toInt("42")
+res0: Option[Int] = Some(42)
+scala> toInt("The answer")
+res1: Option[Int] = None
+Djaouida ZAOUCHE , Romain DUJOL 45
+<<<PAGE>>>
+Option[T]
+Example : conversion String → Int
+scala> def toInt(s : String ) : Option [Int] =
+{
+try
+{
+Some(Integer.parseInt(s.trim))
+}
+catch
+{
+case e : Exception => None
+}
+}
+toInt: (s: String)Option[Int]
+scala> toInt("42")
+res0: Option[Int] = Some(42)
+scala> toInt("The answer")
+res1: Option[Int] = None
+Djaouida ZAOUCHE , Romain DUJOL 45
+<<<PAGE>>>
+Option[T]
+Example : conversion String → Int
+scala> def toInt(s : String ) : Option [Int] =
+{
+try
+{
+Some(Integer.parseInt(s.trim))
+}
+catch
+{
+case e : Exception => None
+}
+}
+toInt: (s: String)Option[Int]
+scala> toInt("42")
+res0: Option[Int] = Some(42)
+scala> toInt("The answer")
+res1: Option[Int] = None
+Djaouida ZAOUCHE , Romain DUJOL 45

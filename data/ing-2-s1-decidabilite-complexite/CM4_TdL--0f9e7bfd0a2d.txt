@@ -1,0 +1,423 @@
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Th´ eorie des Langages
+Automates ` a pile
+Yannick Le Nir Gaspard F´ erey
+Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+9 octobre 2024
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+La classification de Chomsky
+Langages d´ ecidables et hi´ erarchie de classes
+▶ Les langages de type 3 : rationnels ou r´ eguliers
+▶ Les langages de type 2 : alg´ ebriques ou hors contexte
+▶ Les langages de type 1 : sensibles au contexte
+▶ Les langages de type 0 : tous les autres d´ ecidables
+Chaque ensemble est strictement inclus dans ceux de
+num´ ero inf´ erieur.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Grammaire de type 2
+D´ efinition
+Une grammaire G =< T, N, S, P > est de type 2 si les
+r` egles de production sont de la forme :
+A→α o` uA∈ N et α∈ (N∪ T )∗
+Langage associ´ e
+Un langage est de type 2 s’il peut ˆ etre engendr´ e par une
+grammaire de type 2.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Grammaires de type 2
+Exemple de grammaire
+Le fameux langage anbn n’est pas r´ egulier mais peut ˆ etre
+engendr´ e par la grammaire hors contexte suivante :
+▶ T ={a, b}
+▶ N ={S}
+▶ S = S
+▶ P =
+ S→ a S b
+S→ a b
+
+Domaines d’application
+▶ Langages de programmation
+▶ La plupart des constructions des langues naturelles
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Pr´ esentation
+▶ Classe de machines abstraites plus puissantes que les
+automates d’´ etats finis.
+▶ Capables de reconna ˆ ıtre les expressions parenth´ es´ ees et
+les imbrications de blocs begin-end.
+▶ Augmentation de la puissance des automates finis en
+ajoutant un pile simulant une m´ emoire.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+D´ efinition
+Un automate ` a pilenon d´ eterministeest d´ efini par un
+septuplet M = (Q, Σ, Γ, ∆, Z, S, F )
+▶ Q est un ensemble fini d’´ etats
+▶ Σ est un alphabet d’entr´ ee
+▶ Γ est un alphabet de pile
+▶ ∆⊂ ((Q∗ Σ∗∗ Γ∗)∗ (Q∗ Γ∗)) est la relation de
+transition
+▶ Z∈ Γ est le symbole initial de pile
+▶ S∈ Q est l’´ etat initial
+▶ F⊆ Q est l’ensemble des ´ etats terminaux (acceptants)
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Op´ erations
+▶ Lire un symbole (et avancer la tˆ ete de lecture)
+▶ D´ epiler un symbole
+▶ Empiler un (ou plusieurs) symboles
+▶ Changer d’´ etat
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Transition
+(p, x, y; q, z)
+▶ p est l’´ etat courant
+▶ x est le symbole en entr´ ee
+▶ y est le symbole d´ epil´ e
+▶ q est le nouvel ´ etat
+▶ z est le symbole empil´ e
+On autorise z = z1...zn qui empile plusieurs symboles.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Remarques
+▶ Le y est d´ epil´ e avant que lez ne soit empil´ e.
+▶ L’automate n’est pas oblig´ e de faire ` a la fois une lecture,
+un empilement et un d´ epilement ` a chaque transition.
+▶ Si aucun symbole n’est lu (resp. d´ epil´ e) (resp.empil´ e) ,
+x (resp. y) (resp. z) est remplac´ e parλ.
+Note :
+Ces conventions (λ-transitions, empilements multiples) sont
+autoris´ ees car on peut prouver qu’elles ne permettent pas de
+calculer plus de choses.
+De la mˆ eme fa¸ con, on autorise le non-d´ etermisme, les
+ε-transitions et l’incompl´ etude pour les automate finis.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemples
+▶ La transition (1, a, t; 2, b) signifie que l’automate passe
+de l’´ etat 1 ` a l’´ etat 2, en lisant una, en d´ epilant unt et
+en empilant un b.
+▶ La transition ( p,λ,λ ; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq (aucune lecture, ni empilement, ni
+d´ eplacement).
+▶ La transition ( p,λ, 2; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en enlevant le symbole 2 de la pile.
+▶ La transition ( p, a,λ ; q, c) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en lisant le symbole a et en
+pla¸ cantc sur la pile.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemples
+▶ La transition (1, a, t; 2, b) signifie que l’automate passe
+de l’´ etat 1 ` a l’´ etat 2, en lisant una, en d´ epilant unt et
+en empilant un b.
+▶ La transition ( p,λ,λ ; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq (aucune lecture, ni empilement, ni
+d´ eplacement).
+▶ La transition ( p,λ, 2; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en enlevant le symbole 2 de la pile.
+▶ La transition ( p, a,λ ; q, c) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en lisant le symbole a et en
+pla¸ cantc sur la pile.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemples
+▶ La transition (1, a, t; 2, b) signifie que l’automate passe
+de l’´ etat 1 ` a l’´ etat 2, en lisant una, en d´ epilant unt et
+en empilant un b.
+▶ La transition ( p,λ,λ ; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq (aucune lecture, ni empilement, ni
+d´ eplacement).
+▶ La transition ( p,λ, 2; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en enlevant le symbole 2 de la pile.
+▶ La transition ( p, a,λ ; q, c) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en lisant le symbole a et en
+pla¸ cantc sur la pile.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemples
+▶ La transition (1, a, t; 2, b) signifie que l’automate passe
+de l’´ etat 1 ` a l’´ etat 2, en lisant una, en d´ epilant unt et
+en empilant un b.
+▶ La transition ( p,λ,λ ; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq (aucune lecture, ni empilement, ni
+d´ eplacement).
+▶ La transition ( p,λ, 2; q,λ ) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en enlevant le symbole 2 de la pile.
+▶ La transition ( p, a,λ ; q, c) signifie que l’automate passe
+de l’´ etatp ` a l’´ etatq en lisant le symbole a et en
+pla¸ cantc sur la pile.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Repr´ esentation
+▶ Les diagrammes de transition des automates ` a pile sont
+identiques ` a ceux des automates d’´ etats finis sauf que
+l’´ etiquette d’un arc est plus complexe.
+▶ Ces ´ etiquettes ont la formex, y; z avec :
+▶ x le symbole lu
+▶ y le symbole d´ epil´ e
+▶ z le symbole empil´ e
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemple
+Soit le Langage anbn avec n≥ 1.
+▶ Q ={q0,q1}
+▶ Σ ={a,b}
+▶ Γ ={A} alphabet de pile
+▶ Z∈ Γ est le symbole initial de pile
+▶ S = q0
+▶ Il n’y a pas d’´ etat final. La reconnaissance est par pile
+vide. Il y a un seul symbole de alphabet de pile, not´ e A.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Exemple
+Les transitions sont :
+1 : (q0,a, Z ,q0,A)
+2 : (q0,a,A,q0,AA)
+3 : (q0,ε, A, q1, A)
+4 : (q1,b,A,q1,ε)
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Propri´ et´ es
+▶ L’automate ` a pile est d´ emarr´ e dans l’´ etat initial avec la
+pile vide.
+▶ Il accepte la s´ equence d’entr´ ee ssi ilpeut atteindre un
+´ etat finalapr` esl’avoir lue en entier.
+▶ ”peut” : car la d´ efinition d’un automate ` a pile n’exige
+pas que l’ensemble des transitions repr´ esente une
+fonction ; les automates ` a pile peuvent ˆ etre non
+d´ eterministes.
+▶ ”apr` es”: il n’est pas n´ ecessaire que l’automate ` a pile
+atteigne un ´ etat final tout de suite apr` es avoir lu le
+dernier symbole d’entr´ ee. Apr` es avoir termin´ e la lecture
+de la s´ equence d’entr´ ee, l’automate peut effectuer des
+transitions sans lecture, en manipulant sa pile et
+atteindre de cette fa¸ con un ´ etat final.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates ` a pile
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Langages
+alg´ ebriques
+Automates ` a pile
+Langage reconnu
+Automates ` a pile
+Langage accept´ e
+Le langage accept´ e par un automate ` a pileM est not´ eL(M).
+C’est l’ensemble des s´ equences accept´ ees
+(i.e. L(M) ={w∈ Σ∗ / w est accept´ e})
+Th´ eor` eme
+Tout langage accept´ e par un automate ` a pile est alg´ ebrique.
+Th´ eor` eme
+Tout langage alg´ ebrique est accept´ e par un automate ` a pile.

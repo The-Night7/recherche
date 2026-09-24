@@ -1,0 +1,727 @@
+Théorie des graphes
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc
+CY T/e.sc/c.sc/h.sc– ING1-MA
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc 1
+<<<PAGE>>>
+Généralités
+Graphe non orienté
+Graphes particuliers
+Type de données
+Graphe valué
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 2
+<<<PAGE>>>
+Introduction
+(Au moins) Deux problèmes fondateurs
+▶ Problème des « sept ponts de Königsberg »
+(E/u.sc/l.sc/e.sc/r.sc, XVIIIème siècle)
+▶ Problème des « quatre couleurs » (XIXème siècle)
+Formalisation récente (XXème siècle)
+Discipline entre informatique fondamentale et optimisation
+Applications nombreuses et variées
+▶ ordonnancement de tâches ;
+▶ couverture de réseaux ;
+▶ recherche de chemins optimaux. . .
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 3
+<<<PAGE>>>
+Graphe non orienté
+Graphe non orienté
+Définition
+Terminologie de base
+Matrice d’adjacence
+Sous-graphe
+Isomorphisme de graphes
+Graphes particuliers
+Type de données
+Graphe valué
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 4
+<<<PAGE>>>
+Graphe non orienté
+Définition (Graphe non orienté)
+Graphe (non orienté) G = (V, E) :
+▶ V ensemble fini non vide des sommets de G ;
+▶ E ensemble fini des arêtes de G.
+À chaque arête e, on associe deux sommets : ses extrêmités.
+Représentation graphique
+Sommet Point ou cercle contenant le nom du sommet
+Arête Trait reliant ses deux extrêmités
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 5
+<<<PAGE>>>
+Graphe non orienté
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+Alors G = ({v1, v2, v3, v4},{e1, e2, e3, e4, e5, e6}) où :
+▶ e1 a pour extrêmités v1 et v2 ;
+▶ e2 a pour extrêmités v2 et v3 ;
+▶ e3 a pour extrêmités v2 et v3 ;
+▶ e4 a pour extrêmités v2 et v4 ;
+▶ e5 a pour extrêmités v3 et v4 ;
+▶ e6 a pour extrêmités v4 et. . .v4.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 6
+<<<PAGE>>>
+Terminologie (1/2)
+G = (V, E) graphe non orienté
+«v1∈ V et v2∈ V sont les extrêmités de e∈ E » ou :
+▶ « L’arêtee relie v1 et v2 ».
+▶ v1 et v2 sont dits voisins ou adjacents.
+Définition (Boucle)
+Arête dont les deux extrêmités sont égales
+Définition (Arêtes multiples)
+Arêtes distinctes ayant les mêmes extrêmités
+(On parle aussi d’arêtes parallèles.)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 7
+<<<PAGE>>>
+Terminologie (1/2)
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+▶ v1 et v2 sont adjacents ;
+▶ v1 et v3 ne sont pas adjacents ;
+▶ e6 est une boucle ;
+▶ e2 et e3 sont parallèles.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 8
+<<<PAGE>>>
+Terminologie (1/2)
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+▶ v1 et v2 sont adjacents ;
+▶ v1 et v3 ne sont pas adjacents ;
+▶ e6 est une boucle ;
+▶ e2 et e3 sont parallèles.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 8
+<<<PAGE>>>
+Terminologie (2/2)
+Définition (Graphe simple)
+Graphe non orienté sans boucle, ni arêtes multiples
+Dans un graphe simple, une arête est donc identifiable
+uniquement à partir de ses extrêmités.
+Définition (Graphe sous-jacent de G = (V, E))
+Graphe non orienté simple G′ = (V, E′) tel que
+∀(v, v′), vv′∈ E′⇐⇒ v⁄= v′ et∃e∈ E d’extrêmitésv et v′
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 9
+<<<PAGE>>>
+Terminologie (2/2)
+Exemple
+Le graphe sous-jacent de
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+est
+v1 v2
+v3
+v4
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 10
+<<<PAGE>>>
+Matrice d’adjacence
+Définition (Matrice d’adjacence deG = (V, E))
+Matrice M carrée d’ordren = cardV telle que :
+∀(i, j)∈ J1, nK2 , Mij est le nombre d’arêtes d’extrémitésvi et vj
+avec V ={vi}1≤i≤n.
+Propriété (Matrice d’adjacenceM de G = (V, E))
+▶ M est symétrique
+▶ G simple ⇔
+{
+∀i ∈ J1, nK2 , Mii = 0
+∀(i, j)∈ J1, nK2 , Mij∈{ 0,1}
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 11
+<<<PAGE>>>
+Matrice d’adjacence
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+a pour matrice M =
+
+
+0 1 0 0
+1 0 2 1
+0 2 0 1
+0 1 1 1
+
+
+.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 12
+<<<PAGE>>>
+Matrice d’adjacence
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+a pour matrice M =
+
+
+0 1 0 0
+1 0 2 1
+0 2 0 1
+0 1 1 1
+
+.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 12
+<<<PAGE>>>
+Sous-graphe
+Définition (Sous-graphe de G = (V, E))
+Graphe G′ = (V′, E′) tel que :
+▶ V′⊂ V ;
+▶ E′⊂ E et toute arête de E′ a ses extrémités dans V′.
+Sous-graphe G′ = (V′, E′) couvrant (ou partiel)⇐⇒ V′ = V.
+Définition (Sous-graphe G = (V, E) engendré par
+V′⊂ V)
+Graphe GV′ = (V′, E′) tel que :
+e∈ E′⇐⇒ les extrémités de e sont dans V′
+Définition (Sous-graphe G = (V, E) engendré par
+E′⊂ E)
+Graphe G(E′) = (V, E′)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 13
+<<<PAGE>>>
+Sous-graphe
+Exemple
+G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+G{v1,v2,v4} = v1 v2
+v4
+e1
+e4
+e6
+G{v1,v3} = v1
+v3
+G({e1, e4, e6}) = v1 v2
+v3
+v4
+e1
+e4
+e6
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 14
+<<<PAGE>>>
+Sous-graphe
+G = (V, E) graphe non orienté
+Autres notations
+G− V′ ≡ GV\V′
+G− E′ ≡ G(E\E′)
+G− v ≡ G−{ v}≡ GV\{v}
+G− e ≡ G−{ e}≡ G(E\{e})
+Soit e /∈ E une arête dont les extrêmités sont dans V, alors :
+G + e≡ (V, E∪{ e})
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 15
+<<<PAGE>>>
+Isomorphisme de graphes
+Définition (Isomorphisme de graphes)
+Isomorphisme (φ , ψ) de G1 = (V1, E1) sur G2 = (V2, E2)
+▶ φ bijection de V1 dans V2 ;
+▶ ψ bijection de E1 dans E2 ;
+▶ ∀e∈ E,∀(v, v′)∈ V2,
+v et v′ extrémités de e⇐⇒ φ(v) et φ(v′) extrémités de ψ(e)
+G1 et G2 isomorphes⇔ il existe un isomorphisme deG1 sur G2.
+(L’isomorphisme n’est pas forcément unique. . . )
+Lorsque deux graphes sont isomorphes,. . .
+▶ leurs structures sont identiques ;
+▶ seuls les noms des sommets et des arêtes diffèrent.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 16
+<<<PAGE>>>
+Isomorphisme de graphes
+Exemple
+v1
+v2
+v3
+v4
+et ♣
+♦
+♥
+♠
+sont isomorphes via v1 ↦→ ♣
+v2 ↦→ ♦
+v3 ↦→ ♥
+v4 ↦→ ♠
+ou v1 ↦→ ♣
+v2 ↦→ ♦
+v3 ↦→ ♠
+v4 ↦→ ♥
+.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 17
+<<<PAGE>>>
+Graphes particuliers
+Graphe non orienté
+Graphes particuliers
+Graphe planaire
+Graphe complet
+Graphe connexe
+Chaîne. Cycle
+Définition
+Graphe biparti
+Graphe régulier
+Degré
+Définition
+Type de données
+Graphe valué
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 18
+<<<PAGE>>>
+Graphe planaire
+Définition (Graphe planaire)
+Graphe dont les arêtes ne se chevauchent pas dans au moins
+une représentation graphique.
+Exemple
+1
+3
+4
+2
+est planaire, car représentable en 1
+2
+4
+3
+Propriété (Conservation par isomorphisme){
+G1 et G2 isomorphes
+G1 planaire =⇒ G2 planaire
+Propriété G planaire⇒ tout sous-graphe de G est planaire
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 19
+<<<PAGE>>>
+Graphe complet
+Définition (Graphe complet Kn (n≥ 1))
+Graphe simple Kn = (J1, nK , E) contenant toutes les arêtes :
+∀(v, v′)∈ J1, nK2 , vv′∈ E
+Propriété (Nombre d’arêtes d’un graphe complet)
+Si Kn = (J1, nK , E), alors card E =
+(n
+2
+)
+= n(n− 1)
+2 .
+Corollaire
+G = (V, E) graphe non orienté simple .
+card E≤ n(n− 1)
+2 où n = card V
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 20
+<<<PAGE>>>
+Graphe complet
+Les premiers graphes complets
+1
+K1
+1 2
+K2 (1 arête)
+1
+2
+3
+K3 (3 arêtes)
+1
+2
+3
+4
+1
+2
+3
+4
+K4 (6 arêtes)
+1 2
+3
+4 5
+K5 (10 arêtes)
+Propriété (Graphes complets planaires)
+Kn planaire ⇐⇒ n≤ 4
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 21
+<<<PAGE>>>
+Chaîne (1/2)
+Définition (Chaîne de G = (V, E))
+Suite (finie) C = (v0, e1, v1, . . . ,ei, vi, . . . ,en, vn) telle que :
+▶ ∀i∈ J0, nK , vi∈ V
+▶ ∀i∈ J1, nK , ei∈ E et ses extrémités sont vi−1 et vi.
+n = 𝓁(C) : longueur de C v 0, vn : extrémités de C
+Si G est simple, on réduit C à C = (v0, v1, . . . ,vi, . . . ,vn).
+Définition (Chaîne simple C = (v0, e1, v1, . . . ,en, vn))
+Les arêtes sont distinctes deux à deux :
+∀(i, j)∈ J1, nK2 , (i⁄= j) =⇒ ei⁄= ej
+Définition (Chaîne élémentaire
+C = (v0, e1, v1, . . . ,en, vn))
+Les sommets sont distincts deux à deux (même les
+extrêmités) :
+∀(i, j)∈ J0, nK2 , (i⁄= j) =⇒ vi⁄= vj
+Propriété C élémentaire =⇒ C simple
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 22
+<<<PAGE>>>
+Chaîne (1/2)
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+Chaîne Simple ? Élementaire ?
+(v2, e2, v3, e5, v4, e4, v2, e2, v3)
+× ×
+(v1, e1, v2, e2, v3, e3, v2, e4, v4)
+✓ ×
+(v1, e1, v2, e4, v4)
+✓ ✓
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 23
+<<<PAGE>>>
+Chaîne (1/2)
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+Chaîne Simple ? Élementaire ?
+(v2, e2, v3, e5, v4, e4, v2, e2, v3) × ×
+(v1, e1, v2, e2, v3, e3, v2, e4, v4) ✓ ×
+(v1, e1, v2, e4, v4) ✓ ✓
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 23
+<<<PAGE>>>
+Chaîne (2/2)
+Lemme (Existence de chaîne élémentaire)
+Soit G = (V, E) un graphe non orienté et (v, v′)∈ V2.
+∃C d’extrémités v et v′⇒∃ C′ d’extrémités v et v′ élémentaire
+Démonstration.
+Si C = (v0, e1, v1, . . . ,en, vn) est élémentaire, C′ = C convient.
+Sinon il existe i < j tel que vi = vj.
+Alors C1 = (v0, e1, v1, . . . ,ei, vi = vj, . . . ,ej+1, . . . ,en, vn) a pour extrêmités
+v0 et vn et 𝓁(C1) = 𝓁(C)− (j− i) < 𝓁(C).
+On repéte ce procédé jusqu’à ce que la chaîne soit élémentaire. La
+terminaison est assurée par :
+▶ la finitude de C ;
+▶ la stricte décroissance de la suite des longueurs des chaînes
+obtenues à chaque étape.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 24
+<<<PAGE>>>
+Cycle
+Définition (Cycle de G = (V, E))
+Chaîne simple C = (v0, e1, v1, . . . ,en, vn) telle que :
+▶ 𝓁(C) > 0 ;
+▶ vn = v0.
+Remarque
+▶ Cycle de longueur 1≡ boucle
+▶ Un cycle peut être décrit par des suites distinctes
+(contrairement à une chaîne) .
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 25
+<<<PAGE>>>
+Cycle
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+C = (v2, e2, v3, e5, v4, e4, v2) est un cycle aussi représenté par :
+▶ C = (v3, e5, v4, e4, v2, e2, v3)
+▶ C = (v4, e4, v2, e2, v3, e5, v4)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 26
+<<<PAGE>>>
+Graphe connexe
+Définition (Graphe G = (V, E) connexe)
+∀(v, v′)∈ V2, il existe une chaîne d’extrêmitésv et v′.
+Définition (Composantes connexes de G = (V, E))
+Sous-graphes connexes maximaux
+(au sens de l’inclusion des sommets et des arêtes)
+Propriété
+G connexe ⇐⇒ G a une seule composante connexe
+Remarque Alors la composante connexe est G lui-même.
+Propriété
+Les composantes connexes d’un graphe sont disjontes
+(ni sommet, ni arêtes en commun).
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 27
+<<<PAGE>>>
+Graphe connexe
+Exemple
+G =
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+est connexe.
+G = v1 v2
+v3
+v4
+e2
+e3
+e6
+a trois composantes connexes :
+G{v1} , G{v2,v3} et G{v4}
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 28
+<<<PAGE>>>
+Graphe biparti (1/2)
+Définition (Graphe biparti G = (V1, V2, E))
+(V1, V2) partition de V telle que :
+∀e∈ E, e a une extrêmité dans V1 et l’autre dansV2
+Corollaire
+Un graphe biparti n’a pas de boucle.
+Définition (Graphe biparti complet Kn1,n2 (n1≥ 1,
+n2≥ 1))
+Graphe simple Kn1,n2 = (J1, n1K , Jn1 + 1, n1 + n2K , E) contenant
+toutes les arêtes possibles pour un graphe biparti :
+∀(v1, v2)∈ V1× V2, v1v2∈ E
+Propriété (Graphes bipartis complets planaires)
+Kn1,n2 planaire⇐⇒ min(n1, n2)≤ 2
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 29
+<<<PAGE>>>
+Graphe biparti (1/2)
+Exemple
+G =
+v1
+v2v3
+v4 v5
+= ({v1, v3, v4},{v2, v5}, E) est biparti.
+1 3
+42
+K2,2
+1
+3
+4
+5
+2
+K2,3
+1 4
+5
+6
+2
+3
+K3,3
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 30
+<<<PAGE>>>
+Graphe biparti (2/2)
+Propriété (Caractérisation des graphes bipartis)
+G = (V, E) biparti⇐⇒ Tout cycle de G est de longueur paire.
+Démonstration.
+(⇒) Par l’absurde. SoitC = (v0, . . . ,vp−1, ep, v0) un cycle de
+G = (V1, V2, E) de longueur p impaire et v0∈ V1.
+p− 1 pair, donc vp−1∈ V1. Donc v0∈ V2 : impossible !
+(⇐) ▶ Choix de v0∈ V : on le marque « 0 ».
+▶ Choix de v1∈ V adjacent à v0 : on le marque « 1 ».
+▶ Choix de v2∈ V adjacent à v0 : on le marque « 0 ».
+▶ . . .
+On répète ce procédé pour obtenir une chaîne simple C.
+Comme 𝓁(C) est pair, les sommets « 0 » ne sont adjacents
+qu’aux sommets « 1 ».
+On répète ce procédé sur le sous-graphe engendré par
+les sommets non marqués jusqu’à épuisement des
+sommets.
+V1 est alors l’ensemble des sommets marqués 0.
+V2 est alors l’ensemble des sommets marqués 1.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 31
+<<<PAGE>>>
+Degré d’un sommet
+Définition (Degré d(v) d’un sommetv de G = (V, E))
+Nombre d’arêtes incidentes env
+Attention ! Une boucle sur v compte double !
+Définition (Sommet isolé d’un graphe)
+Sommet de degré zéro, i.e. sans voisin
+Théorème (Lemme des poignées de main)
+Soit G = (V, E) graphe non orienté. Alors ∑
+v∈V
+d(v) = 2 card E.
+Corollaire
+Le nombre de sommets de degré impair d’un graphe est
+pair.
+Corollaire
+Soit G = (V, E) un graphe non orienté.
+On note n = card V, m = card E, δ = min
+v∈V
+d(v) et ∆ = max
+v∈V
+d(v).
+nδ≤ 2m≤ n∆
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 32
+<<<PAGE>>>
+Degré d’un sommet
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+v v1 v2 v3 v4
+d(v)
+1 4 3 4
+▶ Lemme des poignées de main :
+▶ ∑
+v∈V
+d(v) = 1 + 4 + 3 + 4 = 12
+▶ cardE = 6
+▶ Il y a deux sommets de degré impair (v1 et v3).
+▶ δ = 1 et ∆ = 4 : on a 4 = 4· 1≤ 2· 6≤ 4· 4 = 16.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 33
+<<<PAGE>>>
+Degré d’un sommet
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+v v1 v2 v3 v4
+d(v) 1 4 3 4
+▶ Lemme des poignées de main :
+▶ ∑
+v∈V
+d(v) = 1 + 4 + 3 + 4 = 12
+▶ cardE = 6
+▶ Il y a deux sommets de degré impair (v1 et v3).
+▶ δ = 1 et ∆ = 4 : on a 4 = 4· 1≤ 2· 6≤ 4· 4 = 16.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 33
+<<<PAGE>>>
+Graphe régulier
+Définition (Graphe G = (V, E) régulier)
+Graphe k-régulier :∀v∈ V, d(v) = k.
+Propriété
+Si G = (V, E) est k-régulier, alors k· card V = 2 card E.
+Exemple : Kn est (n− 1)-régulier
+Alors (n− 1)· n = 2card E : donc cardE = n(n− 1)
+2 .
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 34
+<<<PAGE>>>
+Type de données
+Graphe non orienté
+Graphes particuliers
+Type de données
+Tableau/liste des arêtes
+Matrice d’adjacence
+Tableau de la liste des voisins
+Graphe valué
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 35
+<<<PAGE>>>
+Tableau/liste des arêtes
+Principe
+Tableau (ou liste) de couples de sommets numéroté par arête
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+La représentation est un tableau (ou une liste) t de longueur
+6 :
+▶ t(1) = (v1, v2)
+▶ t(2) = (v2, v3)
+▶ t(3) = (v2, v3)
+▶ t(4) = (v2, v4)
+▶ t(5) = (v3, v4)
+▶ t(6) = (v4, v4)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 36
+<<<PAGE>>>
+Représentation en machine : matrice
+d’adjacence
+Principe
+Tableau bi-dimensionnel contenant les valeurs de la matrice
+d’adjacence
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 37
+<<<PAGE>>>
+Représentation en machine : tableau de listes
+de voisins
+Principe
+Tableau de listes des sommets adjacents numéroté par
+sommet
+Exemple
+v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+La représentation est un tableau t de longueur 4 :
+▶ t(1) = [2]
+▶ t(2) = [1,3,3,4]
+▶ t(3) = [2,2,4]
+▶ t(4) = [2,3,4]
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 38
+<<<PAGE>>>
+Graphe valué
+Graphe non orienté
+Graphes particuliers
+Type de données
+Graphe valué
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 39
+<<<PAGE>>>
+Graphe valué
+Définition (Graphe valué)
+Graphe (non orienté) valué G = (V, E, w) :
+▶ G = (V, E) graphe (non orienté)
+▶ w : E→ R fonction de valuation
+Définition (Matrice d’adjacence deG = (V, E, w)
+simple)
+Matrice M carrée d’ordren = cardV telle que :
+∀(i, j)∈ J1, nK2 , Mij =
+
+
+
+0 si i = j
+w(vivj) si vivj∈ E
++∞ si vivj /∈ E
+Remarque
+Une valuation des sommets existe, mais elle reste peu
+classique.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 40

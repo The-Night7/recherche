@@ -1,0 +1,526 @@
+Datamining 1 : Arbres de décision
+Arbres de décision
+Un arbre de décision est une méthode supervisée de classification1. 
+On considère donc une variable cible 𝑌 qualitative dont les modalités sont appelées classes, et 
+p variables explicatives 𝑋1, 𝑋2, … , 𝑋𝑝, appelées attributs. 
+L’objectif est de construire un modèle qui permet de prédire la probabilité qu’une observation 
+appartienne à une classe en fonction des valeurs de ses attributs,
+𝑃(𝑌 ∈ 𝐶) = 𝑓(𝑋1, 𝑋2, … , 𝑋𝑝).
+Par exemple, quelle est la probabilité qu’un emprunteur assure le remboursement de son prêt
+en fonction de son salaire, sa situation maritale, sa CSP ,… ou bien quelle est la probabilité
+qu’un patient présente une maladie connaissant ses caractéristiques physiques, ses
+antécédents,…
+1 Les arbres de décision peuvent être utilisés comme méthode de régression mais cela est plus rare.
+Le cours se décompose en 2 parties :
+• Généralités sur les méthodes de classification
+• Construction et utilisation d’un arbre de décision
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+Généralités sur les 
+méthodes de classification
+Toutes les méthodes de prévision, et plus spécifiquement de classification, suivent les mêmes 
+règles, le même processus de construction et de validation. Nous ferons quelques unes des ces 
+règles : 
+• Le calcul de l’erreur
+• La validation croisée (base d’apprentissage et base test)
+• La détection du sur-apprentissage
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+3
+Emplacement Type de maison Revenu
+Client 
+anterieur? Cible
+banlieue jumelée bas non insatisfait
+banlieue rangée bas oui insatisfait
+banlieue unifamiliale élevé non satisfait
+banlieue unifamiliale élevé oui satisfait
+banlieue rangée élevé non satisfait
+rural jumelée bas oui insatisfait
+rural unifamiliale bas non satisfait
+rural unifamiliale élevé non insatisfait
+rural rangée élevé oui satisfait
+ville jumelée bas non satisfait
+ville jumelée bas oui satisfait
+ville rangée bas non satisfait
+ville jumelée élevé non satisfait
+ville rangée élevé oui Satisfait
+banlieue jumelée élevé non ???
+Pour construire un modèle de prévision, on utilise une base d’apprentissage, c'est-à-dire un jeu 
+de données pour lequel la variable cible est connue 2.  
+Nous allons illustrer ce chapitre avec le jeu de données suivant :
+2 Ce qui pose le problème de l’étiquetage des données. 
+Base d’apprentissage
+L’objectif est de construire à partir de la base d’apprentissage un modèle permettant de prédire 
+la satisfaction du client.
+Base 
+d’apprentissage
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+4
+Emplacement
+Type de 
+maison Revenu
+Client 
+anterieur? Cible Prévision
+banlieue jumelée bas non insatisfait insatisfait
+banlieue rangée bas oui insatisfait insatisfait
+banlieue unifamiliale élevé non satisfait insatisfait
+banlieue unifamiliale élevé oui satisfait satisfait
+banlieue rangée élevé non satisfait satisfait
+rural jumelée bas oui insatisfait satisfait
+rural unifamiliale bas non satisfait satisfait
+rural unifamiliale élevé non insatisfait insatisfait
+rural rangée élevé oui satisfait satisfait
+ville jumelée bas non satisfait satisfait
+ville jumelée bas oui satisfait satisfait
+ville rangée bas non satisfait satisfait
+ville jumelée élevé non satisfait satisfait
+ville rangée élevé oui satisfait insatisfait
+adapté de http://www.decisiontrees.net/tutorial/1_intro.html
+Une fois le modèle construit, on va vérifier s’il donne bien les résultats attendus. Pour chaque 
+observation, on va confronter la valeur de la variable cible prédite par le modèle à la vraie valeur.
+2 Ce qui pose le problème de l’étiquetage des données. 
+Calcul de l’erreur
+Erreurs du modèle𝑓
+On construit ensuite un tableau de 
+contingence entre la prévision et la vraie 
+valeur, appelé matrice de confusion
+Sur la diagonale se trouve le nombre d’observations bien prédites par le modèle. On en déduit le nombre 
+de bien classés (somme de la diagonale sur effectif total) et le nombre de mal classés.
+Prévision
+satisfait insatisfait
+vraie 
+valeur
+statisfait 8 2
+insatisfait 1 3
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+5
+élémentsd'total  nb
+classésmal  élémentsd' nbet
+Calcul simple du taux d’erreur 
+Exemple : Cas d’un diagnostic médical sur une base constituée de 5 personnes malades et
+995 saines. Si le classifieur considère les 1000 personnes comme étant saines alors
+te=0,5%. Autrement dit, une très bonne performance alors qu’il n’a détecté aucune des
+personnes malades.
+Calcul pondéré du taux d’erreur 
+Problème des classes non 
+équilibrées
+Notons Ci, i=1,…,C les C classes, ni
+le nombre d’éléments dans la classe
+Ci et n le nombre total d’éléments
+
+
+
+C
+1i i
+e nC
+1t iC dans classésmal  élémentsd' nb
+Exemple : Avec ce nouveau calcul, on obtient un taux d’erreur
+te=50%.
+Predicted cluster
+C1 C2 … Ck
+True cluster
+C1
+C2
+…
+Ck
+Matrice de confusion
+Taux d’erreur
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+6
+Erreur d’ajustement vs erreur de prévision
+Data set
+Testing
+set
+Training 
+set
+La validation croisée consiste à :
+• Diviser la base d’apprentissage en p sous-ensembles
+• Pour chaque sous-ensemble i,
+- Apprendre un modèle sur les (p-1) sous-ensembles restant
+- À l’aide du modèle, prédire les valeurs du sous ensemble i
+- Comparer les valeurs prédites ou vraies valeurs
+• Calculer un score de prévision
+Deux types d’erreur:
+• l’erreur d’ajustement : calculée sur la base 
+d’apprentissage. Une petite erreur d’ajustement 
+signifie que le modèle reproduit bien les 
+données connues.
+• l’erreur de prévision : calculée sur de 
+nouvelles données. Une petit erreur de 
+prévision signifie que le modèle est capable de 
+prédire de nouvelles valeurs
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+7
+Dans la phase d’apprentissage certains modèles ont tendance à se complexifier  pour ajustement au plus 
+près les données d’apprentissage. On parle alors de sur-ajustement ou sur-apprentissage.  Le modèle aura 
+alors une très faible capacité de généralisation. Cela signifie que le modèle va reproduire parfaitement les 
+données qui ont servies à le construire mais sera incapable de prédire de nouveaux exemples.
+Le sur-apprentissage (overfitting)
+La détection du sur-apprentissage se fait en comparant l’évolution des erreurs d’apprentissage et de 
+prévision en fonction de la complexité du modèle (profondeur d’un arbre, nombre de neurones…).
+Complexité du 
+modèle
+Erre
+ur 
+Le modèle 
+apprend des 
+cas 
+particuliers
+Le modèle 
+apprend des 
+généralités
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+Les arbres de décision
+Dans cette deuxième partie nous allons voir un modèle de prévision particulier : les arbres de 
+décision.
+• Principe
+• Construction
+• Utilisation 
+• Elagage
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+9
+Définition
+Un arbre de décision est une méthode d’apprentissage supervisée très intuitive. Son résultat est
+un graphe où chaque nœud intermédiaire représente un test et chaque nœud final (feuille)
+représente une décision (classe).
+Lorsque la classe à prédire est une variable qualitative, nous avons un arbre de classification.
+Si la classe à prédire est une variable quantitative, nous avons un arbre de régression.
+Dans ce module, nous nous intéressons aux arbres de classification.
+Exemple : Cet exemple simple permet d’expliquer comment un arbre de décision peut être
+traduit sous la forme d’un ensemble de règles de décision.
+Soit l’arbre de décision suivant qui permet de décider si une institution bancaire peut accorder
+ou non un prêt à un demandeur de prêt.
+La décision de la variable cible Prêt se base sur les variables moyenne du salaire (MoySal),
+âge (Age) et possession d’autres comptes (Autres comptes). Les attributs des feuilles de
+l’arbre, c’est-à-dire Prêt, sont des valeurs booléennes qui correspondent à une classification
+dans l’ensemble {Oui, Non}.
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+10
+Cet arbre de décision engendre les règles de décisions suivantes : 
+1. Si MoySal > 50000 $ alors Prêt = Oui. 
+2. 2. Si MoySal < 50000 $ et Age < 25 alors Prêt = Non. 
+3. 3. Si MoySal < 50000 $ et Age > 25 et AutresComptes = Oui alors Prêt = Oui. 
+4. 4. Si MoySal < 50000 $ et Age > 25 et AutresComptes = Non alors Prêt = Non. 
+En utilisant ces règles, l’institution est en mesure de décider facilement si elle 
+accorde ou non un prêt à un demandeur. 
+Exemple : Si Olivier a un salaire moyen de 35000$, âgé de 32 ans et qui ne 
+possède pas un autre compte désire obtenir un prêt, il sera vraisemblablement 
+classé sous la classe Prêt = Non. Contrairement à Sarah qui a 23 ans et qui a 
+un salaire moyen de 55000$.
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+11
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+Emplacement Type de maison Revenu
+Client 
+anterieur? Resultat
+banlieue jumelée bas non insatisfait
+banlieue rangée bas oui insatisfait
+banlieue unifamiliale élevé non satisfait
+banlieue unifamiliale élevé oui satisfait
+banlieue rangée élevé non satisfait
+rural jumelée bas oui insatisfait
+rural unifamiliale bas non satisfait
+rural unifamiliale élevé non insatisfait
+rural rangée élevé oui satisfait
+ville jumelée bas non satisfait
+ville jumelée bas oui satisfait
+ville rangée bas non satisfait
+ville jumelée élevé non satisfait
+ville rangée élevé oui satisfait
+Instances/Observations
+Attribut/variable Cible
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+12
+Algorithme générique
+Etape 0. Initialiser l’arbre à l’arbre vide et le nœud à la racine
+Etape 1. 
+si nœud est terminal
+lui affecter une classe
+sinon
+choisir une variable et un test
+pour  chaque valeur du test
+ créer un sous-ensemble d’apprentissage avec les 
+observations correspondantes à la valeur du test
+ répéter l’étape 1 avec le sous-ensemble
+finpour
+finsi
+La démarche est récursive. Il s’agit de diviser le plus efficacement possible l’ensemble
+d’apprentissage par des tests sur les observations jusqu’à obtenir des sous-ensembles ne
+contenant que (ou presque) des observations d’une même classe.
+Il existe plusieurs algorithmes de construction (arbres CART, arbres de 
+QUINLAN,…). Chacun se distingue par sa façon de répondre aux deux questions : 
+• Décider si un nœud est terminal?
+• Choisir un attribut pour le partage du nœud?
+Principe de construction
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+13
+Le partage d’un nœud
+Le partage
+• Si l’attribut X est catégoriel ( qualitatif) alors on partage l’ensemble 
+d’apprentissage suivant les modalités (ou regroupement de modalités) de 
+l’attribut
+• Si l’attribut X est quantitatif alors on partage l’ensemble d’apprentissage 
+suivant  un test  X<a ou Xa (fonction split). On teste « toutes » les valeurs 
+intermédiaires entre xi et xi+1.
+Ne permet pas de modéliser 
+des classes du type 
+« patatoïdes »
+Exemple : Classification avec deux attributs quantitatifs
+Arbre de décision 
+ Classification obtenue dans 
+l’espace de variation des 
+variables explicatives X1 et X2
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+14
+Choix du meilleur attribut de partage (1/2)
+Il existe deux critères usuels pour mesurer l’homogénéité (uniformité) de la répartition.
+L’idée est de faire converger l’arbre le plus rapidement possible vers des feuilles qui caractérisent une 
+classe de la variable cible, c.a.d. des feuilles contenant majoritairement une seule classe de la variable 
+cible.
+lndice de Gini : C’est une mesure statistique permettant d’étudier la répartition d’une variable 
+(Salaire, âge,...) au sein d’une population. Développé par le statisticien italien Corrado Gini, il 
+mesure le niveau de répartition d’une variable dans la population.
+Ce coefficient varie entre 0 et 1. La valeur 0 signifie l’égalité parfaite c’est-à-dire la variable prend 
+une valeur identique sur l'ensemble de la population et 1 signifie une forte inégalité. 
+Soient E un ensemble et E1,…,Ek une partition de E. La fréquence d’une classe Ei est 
+données par 
+)E(card
+)E(cardp i
+i
+ i
+k
+1i
+i p1p)E(Gini 
+
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+15
+Exemple : Ce coefficient peut utiliser pour mesurer l’inégalité des revenus dans un pays. Si ce 
+coefficient est égale à 0 ça signifie l’égalité parfaite et si c’est 1, qui ne peut être atteint, signifie 
+une inégalité parfaite (une seule personne dispose de tous les revenus et une infinité d’autres 
+n'ont aucun revenu). 
+Entropie : L’entropie d’une distribution représente la quantité d’information qu’elle peut apporter.
+log définie la fonction de logarithme en base 2 qui vérifie : 
+𝑙𝑜𝑔2 𝑥 = 𝑎  𝑥 = 2𝑎 .
+Pour les calculs : 𝑙𝑜𝑔2 𝑥 = 
+log 𝑥
+log 2 .
+Les fonctions Ent(E) et Gini (E) sont maximales s’il y a uniformité :
+ pi=card(E)/k 
+𝐸𝑛𝑡(𝐸) = − ෍
+𝑖=1
+𝑘
+𝑝𝑖 × 𝑙𝑜𝑔2 𝑝𝑖
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+16
+Exemple : Dans l’exemple précedant, la variable cible était “Résultat” avec deux  
+modalités “Satisfait” et “Insatisfait”.
+Parmi les clients, on a 4 clients qui sont insatisfait et 10 clients satisfait. 
+On commence à calculer la fréquence de chaque modlité (classe).
+La fréquence de clients insatisfait est :   𝑝1 =
+4
+14 = 0.29
+La fréquence de clients satisfait est :   𝑝2 =
+10
+14 = 0.71
+Indice de Gini = 𝒑𝟏(1 - 𝒑𝟏) + 𝒑𝟐(1 - 𝒑𝟐) = 0.29( 1 - 0.29) + 0.71(1 - 0.71) =0.41
+Ent (E) = - 𝒑𝟏𝑙𝑜𝑔2 𝑝1 - 𝒑𝟐𝑙𝑜𝑔2 𝑝2 = - 0.29 𝑙𝑜𝑔2 0.29 - 0.71 𝑙𝑜𝑔2 0.71
+=  - 0.29 
+log 0.29
+log 2 - 0.71 
+log 0.71
+log 2 = 0.87
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+17
+Choix du meilleur attribut de partage (2/2)
+L’idée est donc de choisir l’attribut qui fera le plus progresser l’arbre vers un arbre « homogène ». On 
+calcule pour cela le gain de l’attribut .
+Le gain est maximal lors que le choix d’un attribut permet de classer correctement toutes les 
+instances.
+Exemple :  Si on choisit la variable de partage (la variable racine) « Revenu », alors le gain est
+G(Revenu)=0.41-[p(bas)*Gini(bas)+p(élevé)*Gini(élevé)]=0.10
+Le gain ne permet pas de comparer des variables n’ayant pas le même nombre de modalités.
+Solutions :
+• Binariser les variables (solution souvent adoptée par logiciel)
+• Pondérer le gain (cf. le GainRatio) 
+)E(Ginip)E(GiniGain i
+k
+1i
+i 
+
+)E(Entp)E(EntGain i
+k
+1i
+i 
+
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+On décide si un nœud est terminal quand :
+• les instances associés au nœud sont quasiment tous dans la même classe
+• un nœud à moins de k observations
+• toutes les variables ont été testées, s’il n’y a que des variables qualitatives 3
+Le choix de la condition d’arrêt influe sur la profondeur de l’arbre et sur la précision de 
+la prévision. Plus un arbre est profond, meilleure sera la prévision, mais plus il sera long 
+à calculer et plus il y aura de risque de sur-apprentissage.
+Exemple  extrême d’un arbre ayant  autant de feuilles que d’observations . Il n’a donc 
+plus de capacité de généralisation. 
+Afin d’éviter le sur-apprentissage, on évite d’avoir de arbres trop profonds. On procède 
+à leur élagage si nécessaire. 
+Critères d’arrêt
+3 On peut tester plusieurs fois de suite une variable quantitative
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+21
+Probabilité d’appartenir à 
+une classe
+Le chemin dans l’arbre permet d’aboutir à une feuille. Dans une feuille, plusieurs classes de la variable 
+cible peuvent être présentes.
+Pour connaitre la classe prédite, on calcule la probabilité de chacune des classes dans la feuille et on choisit 
+la plus probable.
+100% pour Setosa
+90,74% pour Versicolor
+9,26% pour Virginica 2,17pour Versicolor
+97,83% pour Virginica
+Cette probabilité est importante pour 
+connaitre la fiabilité de la prévision. La 
+décision sera plus confortable si une 
+nouvelle observation à 95% de chance 
+d’appartenir à C1 et 5% de chance 
+d’appartenir à C2, que si le pourcentage est 
+de 51% pour C1 et 49% pour C2.
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+22
+Elagage d’un arbre
+L’élagage d’un arbre consiste à limiter la profondeur de l’arbre. L’objectif est d’éviter de les feuilles les 
+plus profondes représentent  des cas particuliers.
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+4/5 4/5
+Elagage de l’arbre
+Automatiquement l’élagage augmente l’erreur d’ajustement 
+(car le modèle n’apprend plus les cas particuliers). En contre 
+partie, il permet d’avoir une meilleure généralisation. 
+Le niveau d’élagage correspond à l’augmentation de l’erreur 
+de prévision 
+Nombre de feuilles
+Erreur de prévision
+<<<PAGE>>>
+Datamining 1 : Arbres de décision
+23
+Emplacem = bnl,vll
+Revenu = elv
+Type.de. = rng,unf Client.a = oui
+Emplacem = vll
+4 / 4 1 / 1
+1 / 1 1 / 1
+3 / 3
+4 / 4
+insatisf satisfai
+insatisf satisfai
+satisfai
+satisfai
+yes no
+Supposons que pour un nouvel individu une
+variable explicative n’est pas renseignée.
+Si cette variable intervient dans l’arbre alors il
+n’est pas possible de prédire la classe de ce nouvel
+individu.
+Soit le nouvel individu défini par :
+• Emplacement=ville
+• Revenu : Non renseigné
+• Type de maison = jumelée
+• Client antérieur = oui
+Impossible de lui appliquer l’arbre ci-contre 
+au niveau du 2ème split.
+Une solution consiste à utiliser des
+variables de substitution (surrogate-
+split), c’est-à-dire une variable qui
+aboutit au même sous-ensembles
+lors du split. La variable de
+substitution vient remplacer la
+variable explicative non renseignée
+pour la prévision.
+E={1,2,3,4,5,6,7,8,9,10}
+E={1,5,6,7,8} E={2,3,4,9,10}
+X1=0 X1=1
+E={1,2,3,4,5,6,7,8,9,10}
+E={1,5,6,7,8} E={2,3,4,9,10}
+X2=0 X2=1
+X1 et X2 sont des variables de substitution
+Gestion des données manquantes

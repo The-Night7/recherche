@@ -1,0 +1,54 @@
+D´ ecidabilit´ e : Examen
+Session principale 2016-17
+10 mars 2017
+1 Questions de cours et de r´ eﬂexion :
+1. Rappeler la d´ eﬁnition de la complexit´ e d’un algorithme. Illustrer par
+un exemple simple (il vous est demand´ e de d´ etailler les calculs).
+2. Pourquoi avons nous-introduit la machine de Turing dans ce cours ?
+3. Quand est-ce qu’on dit qu’un probl` eme n’est pas d´ ecidable. Exemple
+? (la d´ emonstration n’est pas demand´ ee)
+4. Rappeler la d´ eﬁnition de la classe P des probl` emes. Exemple d’un
+probl` eme appartenant ` a cette classe ? (la d´ emonstration n’est pas
+demand´ ee)
+5. Rappeler la d´ eﬁnition de la classe N P des probl` emes. Exemple d’un
+probl` eme appartenant ` a cette classe ? (la d´ emonstration n’est pas
+demand´ ee)
+6. Pourquoi les chercheurs ’pensent’-ils que l’inclusion entre P et N P
+est stricte ?
+7. Rappeler la d´ eﬁnition d’un probl` emeN P-complet. Exemple ? (ici la
+d´ emonstration n’est pas demand´ ee)
+8. Rappeler la d´ emarche utilis´ ee pour prouver qu’un probl` eme estN P-
+complet. Appliquez cette d´ emarche ` a un exemple (sans rentrer dans
+les d´ etails de la d´ emonstration)?
+2 Exercice :
+Dans cet exercice nous voulons d´ emontrer que le probl` eme dela clique est
+N P-complet en partant du probl` eme3-SAT. Pour ce faire, nous associons ` a
+1
+<<<PAGE>>>
+ING2-Parcours MI Cours de D´ ecidabilit´ e
+chaque formule F du probl` eme3-SAT un graphe G(F ) d´ eﬁni de la mani` ere
+suivante :
+— Soit F = C1 ∧ Ci ∧ ... ∧ Cn.
+— Pour chaque clause C de F , pour chaque litt´ erall intervenant dans C
+nous associons un sommet xCl dans G(F ).
+— Les arˆ etes deG sont d´ eﬁnies comme suit :
+— Pour toute paire de sommet {xCl, xDk}, nous avons une arˆ ete
+{xCl, xDk} si et seulement si nous avons les deux conditions :
+C ⁄= D et xCl ⁄= ¬xDk. Autrement dit, il y a une arˆ ete si
+les deux sommets ne sont pas issus de la mˆ eme clause et que les
+litt´ eraux correspondants ne sont pas la n´ egation l’un de l’autre.
+1. D´ emontrez que le probl` eme de la clique est dansN P.
+2. Donnez un algorithme na¨ ıf pour la r´ esolution de ce probl` eme et expli-
+quez pourquoi ”on pense” qu’il n’est pas dans P.
+3. Donnez un exemple de formule du probl` eme 3-SAT comprenant 4
+clauses et construisez le graphe correspondant.
+4. D´ emontrez qu’une formuleF est satisﬁable si et seulement le graphe
+correspondant comporte une clique de taille n. Conclusion ?
+Indication pour la derni` ere question :Quelle condition doivent v´ eriﬁer
+les clauses pour queF soit vraie ? quelle condition doivent v´ eriﬁer les litt´ eraux
+d’une clause pour que la clause soit vraie ?
+3 Annexe : Probl` eme de la clique
+— Etant donn´ e un grapheG(S, A), G poss` ede-t-il uneclique ? c’est-` a-
+dire un sous-graphe complet, c’est-` a-dire encore un sous-ensemble S′
+de S dont chaque paire ( s1,s2) est reli´ ee par une arˆ ete ?
+2

@@ -1,0 +1,85 @@
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+TD3- Apprentissage d'un dictionnaire
+2020-2021
+On se propose de résoudre le problème suivant
+min
+D,Λ
+‖X− DΛ‖F sous les contraintes 𝓁0
+(
+α(i)
+)
+≤s et ‖dk‖2 = 1 (1)
+Exercice 1.
+1. Décomposer le produit DΛ en somme de K matrices de rang inférieur ou égal à 1.
+2. On note f(D) la fonction objectif du problème d'optimisation (1). Soit i∈ J1, KK. Montrer
+que
+f(D) =
+‖‖Ei− diΛi,.
+‖‖2
+F
+où Λi,. est la i-ème ligne de la matrice Λ et Ei est l'erreur sur les 𝓁 signaux lorsqu'on ne tient
+plus compte de la contribution de la i-ème colonne de D.
+On s'intéresse à la i-ème colonne di de D et la i-ème ligne de Λ.
+Exercice 2. On note wi =
+{
+k, 1≤k≤𝓁 tel que Λi,.(k)⁄= 0
+}
+le support de la i-ème ligne de
+Λ.
+1. On note ΛR
+i,. le vecteur ligne obtenu à partir de Λi,. en ne gardant que les coecients non
+nuls. Montrer que ΛR
+i,. = Λi,.Ωi, Ωi à déterminer.
+2. Exprimer l'erreur de reconstruction ER
+i sans tenir compte des atomes correspondant aux
+coecients nuls de Λi,. en fonction de Ei et Ωi.
+La solution qu'on cherchera va minimiser
+‖‖ER
+k − dkαk
+R
+‖‖2
+F à la fois par rapport à dk et αk
+R. On va
+utiliser une décomposition en valeur singulière (Singular Value Decomposition SVD) de ER
+k :
+ER
+i =U∆V T.
+U et V sont des matrices unitaires (dont les colonnes sont orthonormées) et ∆ une matrice dont les
+éléments diagonaux sont des réels positifs ou nuls, rangés par ordre décroissant appelés valeurs singulières
+de ER
+k . La décomposition SVD permet d'obtenir la matrice de rang r donnant la meilleure approximation
+au sens de la norme de Frobenius d'une matrice donnée, sous la forme ~U~∆~V T où ~∆ ne compte que les
+r plus grandes valeurs singulières, ~U ne compte que les r premières colonnes de U et ~V ne compte que
+les r premières colonnes de V .
+Exercice 3.
+1. Quelle est la meilleure approximation par la décomposition SVD de ER
+k au sens de la norme
+de Frobenius.
+2. Comment peut on choisir di et ΛR
+i,. ?
+<<<PAGE>>>
+TD-TP Compressive Sensing
+L'algorithme K-SVD a besoin depuis sa première itération d'un dictionnaire D, on pourrait penser
+à l'initialiser avec des valeurs 0, 1 pour avoir des colonnes de norme égale à 1, mais on va priviligier de
+remplir le dictionnaire initial par les premières colonnes de la matrice des vecteurs d'apprentissage en
+les normalisant.
+Exercice 4 (L'algorithme de mise à jour du dictionnaire) .
+1. Ecire un algorithme représentant la méthode de la mise à jour du dictionnaire par la K-SVD.
+2. Implémenter sur scilab l'algorithme K-SVD pour la mise à jour du dictionnaire.
+Remarque : si le support wk est vide, on renverra pour di une colonne aléatoire de Λ et on
+sort directement de la méthode et on n'eectue pas les opréations suivantes.
+3. Implémenter l'algorithme global de l'apprentissage du dictionnaire par K-SVD en considérant
+comme critère d'arrêt l'erreur PSNR entre X et la matrice ˆX = ~DˆΛ.
+Exercice 5. Les données d'apprentissage que vous utiliserez pour l'apprentissage d'un dic-
+tionnaire sont déposées sur Arel. Elles sont présentées sous le format ".dat" : data.dat pour la
+matrice de vecteurs d'apprentissage. Pour utiliser ces données sur Scilab, vous pourrez utiliser
+'load("chemin \ chier.dat")'.
+Les données 1 représentées dans la matrice "data.dat" correspondent à la production des puits en
+gaz, la production d'huile et la production en eau. Cette matrice est de taille N×𝓁, N = 99 et
+𝓁 = 108.
+Les colonnes Xi, i = 1,...,𝓁 représentent des vecteurs d'apprentissage et nous permettrons d'ap-
+prendre un dictionnaire D∈M N×K (R) dans lequel les signaux Xi sont parcimonieux.
+Utiliser la méthode K-SVD pour apprendre un dictionnaire D∈M N×K (R) concernant nos don-
+nées "data.sci". ( N = 99, K = 100, L = 10 et ϵ = 10−6).
+2/2

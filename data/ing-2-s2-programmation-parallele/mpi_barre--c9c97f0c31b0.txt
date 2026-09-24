@@ -1,0 +1,134 @@
+/******************************************************************************
+* FILE: mpi_barre.c
+* DESCRIPTION: 
+*   
+* REMARQUE: la taille du tableau doit �tre uniform�ment disible par le nombre de taches N.
+Pour faciliter le traitement,
+1. dans un premier temps on suppose qu'il y a autant de processus que de pixels
+2. On repartit la barre par tranche pour chaque processus
+* AUTHOR: 
+* LAST REVISED: 11/01/13
+****************************************************************************/
+
+#include "mpi.h"
+#include <stdio.h>
+#include <stdlib.h>
+#define N       20000
+#define CHUNKSIZE   100
+#define  MASTER		0
+
+
+int main (int argc, char *argv[])
+{
+int   numtasks, taskid, rc, dest, offset, i, j, tag1,
+      tag2, source, chunksize, prochain, avant; 
+
+float update(int myoffset, int chunk, int myid);
+void Remplace(float m[],float n[], int taille);
+void Afficher(float m[], int taille,int nb);
+int Comparer(float m[],float n[], int taille);
+
+MPI_Status status;
+
+/***** Initialisations *****/
+MPI_Init(&argc, &argv);
+MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
+
+if (numtasks % 4 != 0) {
+   printf("Quitter. Nombre de processus doit �tre divisible par 4.\n");
+   MPI_Abort(MPI_COMM_WORLD, rc);
+   exit(0);
+   }
+   
+printf ("traitement de la tache  %d a demarre...\n", taskid);
+chunksize = (ARRAYSIZE / numtasks);
+tag2 = 1;
+tag1 = 2;
+
+/***** tache maitre uniquement ******/
+if (numtasks == MASTER){
+
+  /* Condition aux limite de la barre, initialisations */
+  for (i=0; i < N-1 ; i++)
+    b[i] = c[i] = 0.0;
+    b[N-1]= c[N-1]=1.0;
+   
+  chunk = CHUNKSIZE;
+  
+
+  /* Envoie a chaque processus le pixel pour leque il calcul le valeur de la chaleur - 
+ 
+ 
+  /* attente de la reception des resultat de chaque tache */
+  for (i=1; i<numtasks; i++) {
+    source = i;
+    MPI_Recv(&offset, 1, MPI_INT, source, tag1, MPI_COMM_WORLD, &status);
+    MPI_Recv(&data[offset], chunksize, MPI_CHAR, source, tag2,
+      MPI_COMM_WORLD, &status);
+    }
+
+  /* Collecte la somme globale et affiche le tableau final puis la somme globale */  
+  MPI_Reduce(&mysum, &sum, 1, MPI_INT, MPI_SUM, MASTER, MPI_COMM_WORLD);
+  
+  printf("Sample results: \n"); 
+  printf("*** Final sum= %d ***\n",sum);
+  offset = 0;
+  for (i=0; i<numtasks; i++) {
+    for (j=0; j<chunksize; j++) 
+      printf("  %c",data[offset+j]);
+      printf("\n");
+      offset = offset + chunksize;
+    }
+  }  /* fin de la section du traitement de la tache principale */
+
+/***** uniquement les autres taches sans la tache maitre *****/
+
+if (taskid > MASTER) {
+
+  /* Reception de ma tranche de tableau de la tache principale */
+  source = MASTER;
+  MPI_Recv(&offset, 1, MPI_INT, source, tag1, MPI_COMM_WORLD, &status);
+  MPI_Recv(&data[offset], chunksize, MPI_CHAR, source, tag2, 
+    MPI_COMM_WORLD, &status);
+
+  /* je fais la mise � jour des elements de ma tranche et je calcule leur somme*/ 
+  mysum = update(offset, chunksize, taskid);
+  MPI_Reduce(&mysum, &sum, 1, MPI_INT, MPI_SUM, MASTER, MPI_COMM_WORLD);
+  /* Envoie mes resultats a la tache principale */
+  dest = MASTER;
+  MPI_Send(&offset, 1, MPI_INT, dest, tag1, MPI_COMM_WORLD);
+  MPI_Send(&data[offset], chunksize, MPI_CHAR, MASTER, tag2, MPI_COMM_WORLD);
+ } /* fin du traitement d'une tache non maitre */
+
+
+MPI_Finalize();
+
+}   /* fin du main */
+
+
+//fonction de mise � jour d'un tableau et le calcul de la somme de ses elements
+void update(int i) {
+        c[i]= 0.25 *(b[i-1] + b[i+1] + 2*b[i]);
+}
+
+void Remplace(float m[],float n[], int taille){
+     int i;
+     for (i=1; i < taille-1; i++) m[i] = n[i];   
+}
+
+void Afficher(float m[], int taille)
+{
+     int i;
+	 printf("nombre d'iterations =%d\n", nb); 
+     for (i=0; i < taille; i++) 
+        printf("m[%d]=%f ", i, m[i]); 
+        printf("\n");  
+}
+
+int Comparer(float m[],float n[], int taille){
+     int i;
+     for(i=0;i<taille;i++) {
+       if (m[i]!=n[i]) return 0;
+     }
+     return 1;
+}

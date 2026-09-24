@@ -1,0 +1,147 @@
+ 
+ING2 -MI  
+EXAMEN DE DATAMINING 2 
+ 2021-2022 
+Durée : 2h 
+Examen papier 
+Calculatrice autorisée 
+4 feuilles R/V 
+ 
+Le barème est donné à titre indicatif mais est susceptible d’évoluer. 
+ 
+Exercice 1 : Questions rapides                                                                                       6 points 
+ 
+1)  Parmi les méthodes de classification suivantes, quelle(s) est (sont) celle(s) qui sont stochastiques ? 
+o Naïve Bayes 
+o Arbres de décision 
+o Forêts aléatoires 
+o Régression logistique 
+o Réseaux de neurones 
+ 
+2)  Soit un problème de classification avec une variable cible binaire. On construit un modèle de prévision 
+sur une base d’apprentissage et on obtient la matrice de confusion suivante sur une base test. 
+  Valeurs prédites  
+  0 1 
+Vraies 
+valeurs 
+0 2 2 
+1 3 93 
+a)  Quel est le taux de bien classés ?  
+b)  Peut-on conclure que le modèle est bon ?  
+ 
+3)  On considère un ensemble d'apprentissage D={(x i,y i)} tel que x i est décrit par p variables explicatives 
+X1,…,X p et y i appartient {C1, C2, C3}. Nous souhaitons utiliser D pour créer un classifieur bayésien. 
+ 
+a)  Quelles sont les probabilités qui doivent être calculées pour définir le classificateur ?  
+b)  Quelles seront les entrées et les sorties de ce classifieur une fois défini ? 
+c)  Pour valider le classifieur, nous utilisons un ense mble de test T={(x j,y j)}. Comment procéder pour 
+réaliser cette validation ? On précisera en particulier une métrique utilisée pour cela. 
+d)  Dans certains cas, le résultat de cette validation n'est pas satisfaisant pour la raison suivante : 
+certaines probabilités calculées par l'algorithme s ont nulles. Comment expliquez-vous cela ? 
+Comment remédier à ce problème ? 
+ 
+Exercice 2 : Etude de cas                                                                                              10 points 
+ 
+The dataset is designed to use geographical (Fire l ocation), temporal (Month and Day), Fire Weather var iables 
+(FFMC, DMC,DC,ISI) and weather variables (RH, Temp,  Rain, Wind) to predict the area burned by forest fi res. 
+Data were obtained from the UCI Machine Learning da tabaseand contain details for 517 fires found in th e 
+Montesinho Natural Park in Portugal. 
+ 
+1. X - x-axis spatial coordinate within the Montesinho park map: 1 to 9 
+2. Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9 
+3. month - month of the year: 'jan' to 'dec' 
+4. day - day of the week: 'mon' to 'sun' 
+5. FFMC - FFMC index from the FWI system: 18.7 to 96.20 
+6. DMC - DMC index from the FWI system: 1.1 to 291.3 
+7. DC - DC index from the FWI system: 7.9 to 860.6 
+<<<PAGE>>>
+2 
+ 
+8. ISI - ISI index from the FWI system: 0.0 to 56.10 
+9. temp - temperature in Celsius degrees: 2.2 to 33.30 
+10. RH - relative humidity in %: 15.0 to 100 
+11. wind - wind speed in km/h: 0.40 to 9.40 
+12. rain - outside rain in mm/m2 : 0.0 to 6.4 
+13. fire - "yes" if the area is burned and "no" elseif (270 yes – 247 no) 
+ 
+1)  Random Forest  
+ 
+Ci-dessous les sorties R obtenues avec le package randomForest. 
+ 
+ 
+ 
+ 
+a)  A quoi correspond la ligne : No. of variables tried at each split: 3 ? Comment est 
+choisi ce nombre ? 
+b)  Expliquez comment est calculée l’erreur OOB (Out Of Bag). 
+c)  Calculer l’ erreur sur l'ensemble d'apprentissage à partir de la matrice de confusion. Conclusion. 
+d)  Quelles variables contribuent le plus dans cette forêt aléatoire ? 
+ 
+2)  Neural network  
+Ci-dessous le réseau de neurones obtenu avec R pour une couche cachée et 10 neurones. La matrice de 
+confusion est calculée sur la base d’apprentissage. 
+ 
+ 
+<<<PAGE>>>
+3 
+ 
+ 
+ 
+a)  Combien y-a-t-il de neurones en entrée ? Justifier.  
+b)  Combien y-a-t-il de poids dans ce réseau de neurones ? Justifier. 
+c)  Pour une nouvelle entrée, le réseau de neurones retourne 0,128. Qu’est-ce que cela signifie ? Quelle est 
+la classe prédite ? 
+d)  Calculer l’ erreur sur l'ensemble d'apprentissage à partir de la matrice de confusion. Conclusion. 
+ 
+3) Régression logistique 
+ 
+Ci-dessous les résultats de la régression logistique après sélection des variables avec la procédure  step . 
+ 
+ 
+ 
+a)  Ecrire le modèle.  
+b)  Que prédit le modèle pour une position X=1 et une température de 20° au mois d’aout.  
+c)  Quel est l’odds ratio de la température ? Qu’est-ce que cela signifie ? 
+d)  Calculer l’ erreur sur l'ensemble d'apprentissage à partir de la matrice de confusion. Conclusion. 
+ 
+ 
+ 
+e)  Quelle sont les variables importantes dans ce modèle ? Est-ce cohérent avec les résultats obtenus avec 
+la forêt aléatoire ? 
+<<<PAGE>>>
+4 
+ 
+ 
+Exercice 3 : Naive Bayes                                                                                                  4 points 
+ 
+On cherche à prédire une variable cible binaire Y en fonction de deux variables continues X 1 et X 2.  
+L’objectif est donc de trouver 
+ 
+1)  Expliquer pourquoi et sous quelle(s) hypothèse(s), le problème est équivalent à  
+ 
+où est la fonction de densité de la variable X i conditionnellement à la classe k. 
+ 
+Sur une base d’apprentissage de 100 individus, nous obtenons les résumés numériques du tableau ci-dessous. 
+  X1 X2 
+ effectif  moyenne  variance  moyenne  variance  
+Y=0  40  1 4 -1 1 
+Y=1  60  0 4 2 9 
+ 
+1)  Donnez une estimation de P(Y=k) pour k=0 et k=1 
+2)  Si on suppose que X i|Y=k suit une loi normale (rappel de la fonction de densité de la loi normale à la fin 
+de l’exercice), écrivez les fonctions de densité de X 1 et X 2 à l’intérieur de chaque classe. 
+3)  Quelle classe sera prédite pour un nouvel individu tel que x 1=0 et x 2=0 ? Justifiez votre résultat. 
+4)  La base d’apprentissage est représentée sur le grap hique ci-dessous. Pensez-vous que la méthode de 
+classification Naïve Bayes est adaptée au problème ? Si non, quelle(s) méthode(s) proposez-vous ? 
+Justifiez votre réponse 
+ 
+N.B. Pour X~N(µ, σ²) la fonction de densité est 
+2σ
+µ)²(x
+2
+1
+e
+π 2σ
+1f(x)
+−−
+=  

@@ -1,0 +1,255 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Compressive sensing
+Donné le 13-04-2023 (Durée 2h00)
+Ordinateurs, téléphones portables et tout document sont interdits
+Calculatrice interdite
+Dans tout le sujet, on note A′ la transposée de la matrice A.
+EXERCICE 1 (Codage parcimonieux StOMP – 5 points) On applique l’algorithme StOMP (voir annexe
+en fin de sujet) avec le dictionnaire suivant :
+D =
+
+
+1 1 −1 1 0 0 0.3 −0.2 0.1 0.2 2 2
+0 −1 −1 1 0 0 0.5 0 2 2 1 −1
+1 1 1 0.5 1 0.2 0.2 1 1 1 1 0.5
+1 0.5 2 2 5 0 −0.4 0.5 1 0.5 0 0
+0 2 2 1 1 0 0 0 0 1 −1 −0.2
+−1 2 2 2 −4 −0.3 −0.4 −1 −1 1 1 0
+
+
+et le signal x donné par : x =
+
+
+−1
+−1
+1.5
+2.1
+5.1
+0.9
+
+
+où ∥x∥2 ≃ 5.96 et on choisit la valeur du paramètre donnant le
+seuil : t = 2.5. Le calcul des contributions des différents atomes à ce signal
+〈d j , x〉
+∥d j ∥2
+a donné les valeurs
+suivantes :
+0.85 4.34 5.08 2.94 2.06 0.08 -2.03 1.22 0.22 2.35 -2.02 -0.55
+1. La valeur du seuillage de la première itération est : S(1) = 4.3.
+(a) Expliquer comment ce calcul a été fait en précisant l’expression de R (0).
+(b) En déduire les numéros des atomes qui seront retenus à cette étape. On noteraP1 l’ensemble
+des indices sélectionnés à l’issue de ce seuillage.
+2. Expliquer les différentes étapes menant au calcul de α(1), puis de R(1).
+3. Les valeurs obtenues sont α(1)
+P1
+=
+ˆ
+0.31
+1.11
+!
+et R(1) =
+
+
+−0.2
+0.42
+0.08
+−0.27
+2.26
+−1.93
+
+
+, avec ∥R(1)∥2 ≃ 3.03
+Expliquer les différentes étapes menant au calcul de α(2), puis de R(2).
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+EXERCICE 2 (La parcimonie – 5 points) On se place dans RK, et on note Σs l’ensemble des vecteurs
+s-parcimonieux de RKavec 1 É s < K.
+Σs =
+'
+α = (α1,. .. ,αK) ∈ RK, card{αi , 0} É s
+“
+1. Montrer que Σs n’est pas un sous-espace vectoriel de RK.
+2. Montrer que Σ2 est la réunion de K(K − 1)
+2 sous-espaces vectoriels engendrés par certains vecteurs
+de la base canonique de RK.
+3. Soit ℓ ∈ N∗. Montrer, plus généralement, que Σℓ est la réunion de
+ˆ
+K
+ℓ
+!
+sous-espaces vectoriels
+engendrés par certains vecteurs de la base canonique de RKoù
+ˆ
+K
+ℓ
+!
+est le coefficient binomial
+défini par :
+ˆ
+K
+ℓ
+!
+= K!
+ℓ!(K − ℓ)! .
+4. Soit A ∈ MnK(R) avec n ≤ K et n ≥ 2s.
+(a) Soit α ∈ Σs, β ∈ Σs, vérifiant la propriété suivante: α , β ⇒ Aα , Aβ. Montrer que
+ker(A) ∩ Σ2s = {0K}.
+(b) Supposons que ker( A) ∩ Σ2s = {0K}. Soit α ∈ Σs et β ∈ Σs. Montrer que
+α , β ⇒ Aα , Aβ.
+EXERCICE 3 (Apprentissage d’un dictionnaire – 3 points) On considère ℓ vecteurs d’apprentissage x(ȷ)
+où x(ȷ) ∈ RN, ȷ = 1, .. .,ℓ. On note X ∈ MNℓ la matrice d’apprentissage: X =
+£
+x(1) | x(2)| · · · | x(ℓ)⁄
+. On se
+propose de déterminer les matrices D ∈ MN×K et Λ ∈ MK×ℓ, notées
+D =
+£
+d(1) | d(2) | · · · | d(K) ⁄
+et Λ =
+h
+α(1) | α(2) | · · · | α(ℓ)
+i
+en résolvant le problème suivant
+min
+D,Λ
+∥X − DΛ∥F sous les contraintes
+
+
+
+ℓ0
+¡
+α(ȷ)¢
+≤ s, ȷ = 1, .. .,ℓ
+∥d(i )∥2 = 1, i = 1, .. ., K
+
+
+
+(1)
+Pour i = 1, .. ., K, on noteΛi ,. la i -ème ligne de la matrice Λ et on écrit : DΛ =
+KX
+i =1
+d(i )Λi ,..
+1. Montrer que rang
+¡
+d(i )Λi ,.
+¢
+≤ 1 et établir une condition nécessaire pour que rang
+¡
+d(i )Λi ,.
+¢
+= 1.
+2. Montrer que ∥X − DΛ∥F = ∥Ei − di Λi ,.∥F où Ei est l’erreur sur les ℓ signaux lorsqu’on ne tient plus
+compte de la contribution de d(i ).
+3. Expliquer le principe général de l’apprentissage d’un dictionnaire D.
+CY-Tech 2/4
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+EXERCICE 4 (Algorithme Iteratively Reweighted Least-Squares (IRLS) – 7 points) Soit un vecteur α ∈
+RK et 0 < p < 1, la pseudo norme ℓp se définit par
+ℓp (α) = ∥α∥p =
+ˆ
+KX
+i =1
+|αi |p
+! 1
+p
+.
+On considère le signal x ∈ RN et le dictionnaire D ∈ RN×K. On s’intéresse à la possibilité de résoudre le
+problème (P p) suivant :
+(P p) : min ∥α∥p, tel que x = Dα
+1. ::::::::::::::::::::::::::::::::Reformulation du problème (P p). On suppose que ∀i ∈ 1; K, αi , 0.
+(a) Montrer que le problème (P p) s’écrit sous forme d’un problème de moindres carrés pondérés:
+(MCP2) : min ∥W α∥2, tel que x = Dα
+W est une matrice diagonale dépendant de α. Déterminer W .
+(b) On pose β = W α. Montrer que le problème (MCP2) s’écrit
+min ∥β∥2, tel que x = Aβ
+La matrice A est à déterminer.
+2. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::Résolution d’un problème des moindres carrés ordinaires régularisé. Dans sa deuxième écrit-
+ure, le problème de minimisation avec contrainte (question 1.(b)) peut être formulé par un prob-
+lème de minimisation sans contrainte:
+(PSC2) : min
+β,λ
+∥x − Aβ∥2
+2 + λ∥β∥2
+2
+λ est un paramètre de régularisation strictement positif.
+(a) En raisonnant sur les valeurs propres, montrer que les matrice A′A + λIK et AA′ + λIN sont
+inversibles.
+(b) Montrer que
+¡
+A′A + λIK
+¢−1 A′ = A′ ¡
+AA′ + λIN
+¢−1.
+(c) On fixe λ > 0 et on cherche β∗ ∈ RK solution au sens des moindres carrés ordinaires du
+problème (PSC2). Montrer que β∗ =
+¡
+A′A + λIK
+¢−1 A′x.
+(d) En déduire que α∗ solution de (MCP2), dans sa première écriture, est donnée par
+α∗ = QD
+′ ‡
+DQD
+′
++ λIN
+·−1
+x.
+Donner l’expression de la matrice Q et exprimer les conditions d’existence d’une telle solu-
+tion.
+3. :::::::::::::::::::::::::::::::::::::::::::::::Algorithme itératif des moindres carrés pondérés. On fixe le paramètre λ > 0.
+• On initialise la solution parcimonieuse (en supposant DD′ inversible):
+α(0) = D′ ¡
+DD′¢−1 x.
+CY-Tech 3/4
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+• À l’itération k = 1,
+⇝ on calcule les poids w (1)
+i , les éléments diagonaux de la matrice W (1), à partir de α(0)
+i et
+d’un facteur de régularisation ε>0
+w (1)
+i =
+‡ﬂﬂﬂα(0)
+i
+ﬂﬂﬂ+ ε
+·p
+2 −1
+⇝ puis on met à jour la solution parcimonieuse α(1).
+(a) A quoi sert le facteur de régularisation ε?
+(b) Généraliser le processus itératif de l’algorithme IRLS à l’itération k ≥ 1 en explicitant les
+expressions de W (k) et de α(k).
+Annexe – Algorithme StOMP
+α = 0K,1, R = x; R : le résiduel P0 = [ ] P : la liste des atomes sélectionnés initialement vide
+À l’itération k ≥ 1, l’algorithme StOMP procède selon les étapes suivantes:
+1. Calcul du vecteur des valeurs absolues des contributions de tous les atomes d j , j = 1, .. .,K
+au résiduel courant,
+C j =
+ﬂﬂ〈d j , R(k−1)〉
+ﬂﬂ
+∥d j ∥2
+.
+2. La sélection:
+(a) On calcule le seuillage S(k): S(k) = t ∥R(k−1)∥2
+p
+K
+, 2 ≤ t ≤ 3.
+(b) On sélectionne l’ensemble Λk des indices des atomes dont la contribution est
+supérieure au seuillage S(k)
+Λk =
+n
+j ∈ {1,. .. ,K}, C j > S(k)
+o
+.
+3. La mise à jour: On met à jour l’ensemble des indices Pk = Pk−1 ∪ Λk.
+4. On construit la matrice Φk en considérant les colonnes dp, p ∈ Pk.
+Φk = [dp, p ∈ Pk].
+5. On résout le problème d’optimisation α(k)
+Pk
+= argmin ∥x −Φk αPk ∥2 par la méthode des moin-
+dres carrées.
+6. On met à jour le résiduel, R (k) = x − Φk α(k)
+Pk
+.
+CY-Tech 4/4

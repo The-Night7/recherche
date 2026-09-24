@@ -1,0 +1,89 @@
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+TD 1- Introduction au compressive sensing et à la parcimonie
+On s’intéresse dans un premier lieu à l’utilisation des notions nécessaires à l’articulation de ce
+module. On traite un exemple simple pour déterminer une représentation parcimonieuse d’un
+vecteurx dans une matriceD.
+On s’intéresse ensuite dans ce travail à la décomposition en cosinus discrets. Cette base ortho-
+normale est couramment utilisée en traitement de signal (voir semestre 1) et nous permet de
+construire un dictionnaire connu a priori. Le travail attendu :
+• Construire le dictionnaire DCT de tailleN.
+• Générer un signalx (avec une certaine périodicité).
+• Représenterx dans ce dictionnaire DCT et en déduire sa représentation parcimonieuseα.
+• Reconstruire le signal d’orginex, en partant du dictionnaire DCT et de la représentation
+parcimonieuse α.
+Ce travail sera fait sur Python (ou scilab) et accompagné de graphiques permettant une meilleure
+visualisation des résultats.
+Objectifs de ce travail
+Exercice 1.
+1. On considère un dictionnaireD∈M nK (R) et un signalx∈M n1 (R). Soitα∈M K1 (R) tel que
+x = Dα. Montrer quex peut s’écrire
+x =α1d1 +... +αKdK
+où dj,j = 1,..., K représentent les colonnes (atomes) deD.
+2. Soit D =
+
+
+1 0 −2 1 0
+2 1 1 0 1
+1 1 1 0 1
+0 1 1 0 1
+
+ etx =
+
+
+1
+1
+1
+1
+
+. Déterminer un vecteurα 3-parcimonieux tel que
+x = Dα.
+Exercice 2 (Autour de la décomposition en cosinus discrets). La décomposition en cosinus discrets
+est un outil fondamental introduit en 1974, il est à la base des premières méthodes de compressions de
+données (signaux, images,...) et en particlier de la norme jpeg. On parle de DCT pour Discrete Cosinus
+Transform. Cette décomposition s’applique à des signaux réels, à temps discret et de longueur finie N.
+On indexe les instants det = 0 à t = N− 1 et on munitRN du produit scalaire usuel : six et y sont
+de tels signaux, leur produit scalaire est défini par⟨x, y⟩ =
+N−1X
+t=0
+xtyt.
+On définit N signaux Ci pour i = 0,..., N− 1 de longueur N comme suit.
+<<<PAGE>>>
+TD-TP Compressive Sensing
+⇝ Le premier signal est un signal constant tel que,
+C0(j) = 1√
+N
+, j = 0,..., N− 1.
+⇝ les N− 1 autres signaux sont définis pourt = 1,..., N− 1 par
+Ct(j) =
+r
+2
+N cos
+ 2j + 1
+2N πt
+
+, j = 0,..., N− 1.
+Montrer que la familleA ={Ct, t = 0,..., N− 1} est une famille orthonormale deRN. Est-elle une
+base de RN?
+Exercice 3 (Transformée en cosinus discrète).
+1. Implémenter sur Python/Scilab une fonction DCT permettant de générer la matrice de la trans-
+formée en cosinus discrète de tailleN. Vérifier que la matrice DCT est bien orthonormale.
+2. Implémenter le signal x défini pour un réel t par x(t) = sin (2 π×f0×t) cos (2π×fp×t) où
+f0 = 50 et fp = 100.
+On considère N = 500 et t∈ 1
+400 J0; NK
+3. Calculer la représentationα du signalx dans le dictionnaire DCT.
+4. Représenter graphiquement le signalx et sa représentationα. α est-elle parcimonieuse?
+5. Commenter les résultats.
+Exercice 4 (Transformée en Fourier discrète). Reprendre le même signalxque dans l’exercice précédent
+et déterminer saa représentation parcimonieuse par transformation de Fourier discrète.
+Dans ce travail, on a considéré un dictionnaire DCT qui est une matrice orthonormale. Par consé-
+quent, déterminer une représentation parcimonieuseα d’un signalx consiste à inverser la matrice
+DCT qui est égale à sa transposée.
+Dans ce qui suit, on disposera d’un signalx et d’un dictionnaire D qui n’est pas forcément in-
+versible, pas forcément carrée et donc cette procédure s’avère limitée. On s’intéressera alors aux
+méthodes de poursuite gloutonnes pour construire cette représentation parcimonieuse.
+On supposera que le dictionnaire est bien adapté pour construire une représentation parcimo-
+nieuse.
+Les limites et améliorations
+2/2

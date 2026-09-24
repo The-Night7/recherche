@@ -1,0 +1,1461 @@
+Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de
+régression linéaire
+N. Laïb
+CY-T ech
+14 janvier 2025
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 1 / 67
+<<<PAGE>>>
+Plan
+1 Introduction
+2 Ajustement Tendanciel- Estimation du trend en l’absence de saisonnalité
+3 Détermination des coefficients saisonniers
+4 Détermination de la série corrigée
+5 Désaisonnalisation par régression linéaire sur Variables Indicatrices (RVI)
+6 Modèle trimestriel de Buys-Ballon (1847)
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 2 / 67
+<<<PAGE>>>
+Introduction
+▷ Pourquoi désaisonnaliser une série?
+De nombreuses séries économiques présentent descomportements périodiques, ce
+qui rend difficile la comparaison de deux instants successifs.
+La désaisonnalisation permet
+- d’obtenir des séries dites corrigées des variations saisonnières(cvs).
+- De telles séries sont obtenues en éliminant la composante saisonnière de la série initiale.
+Ces techniques sont largement utilisées par lesinstituts de statistiques et de
+recherche économique. Elles permettent d’étudier
+- les indicateurs entre les différentes dates sans les effets introduits par la saisonnalité.
+- Ces instituts publient des séries temporelles "cvs" afin d’en faciliter les comparaisons.
+Les méthodes couramment employées pour désaisonnaliser une série temporelle sont
+- la régression linéaire et les filtres moyennes mobiles
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 3 / 67
+<<<PAGE>>>
+Ajustement Tendanciel.
+Estimation du trend en l’absence de saisonnalité
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 4 / 67
+<<<PAGE>>>
+Modèle Additif
+Le modèle additif simple s’écrit :
+Xt = mt + st| {z }
+partie déterministe
++ ϵt|{z}
+partie aléatoire
+où mt, st, et ϵt représentent respectivement : la Tendance, la Saisonnalité, et le
+Bruit.
+Tendance (mt) : C’est une fonction décrite par un nombre fini de paramètres. Elle
+peut être une fonction linéaire du temps (a + bt) ou un polynôme ent.
+Saisonnalité (st) : Si d est la période dest, alors st+d = st pour tout t. On suppose
+également que st ne contient pas de tendance, ce qui s’écrit :
+dX
+j=1
+st+j =0.
+Autrement dit, toute la tendance est modélisée dansmt.
+Élimination des variations saisonnières :Pour simplifier l’analyse, on élimine les
+variations saisonnières et on considère la série :
+Xt = mt + ϵt = β0 + β1t + ϵt , t =1, . . . ,n.
+Les ϵt sont des variables aléatoires (gaussiennes) centrées et indépendantes
+identiquement distribuées (i.i.d.).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 5 / 67
+<<<PAGE>>>
+Ajustement Tendanciel : Régression linéaire sur le temps (RGLT)
+Méthode des moindres carrés ordinaires (MCO). L’objectif est de déterminer la
+droite des moindres carrésy = β0 + β1t qui ajuste au mieux le nuage de points
+(t,Xt ).
+Les estimations des paramètresβ0 et β1 sont obtenues en minimisant la somme des
+carrés des écarts :
+Q(β0, β1) =
+nX
+t=1
+[Xt − (β0 + β1t)]2 .
+Solutions des moindres carrés: Les estimations bβ0 et bβ1 sont données par :
+bβ1 =
+Pn
+t=1(Xt − X )(t − t)
+Pn
+t=1(t − t)2 = Cov (t,X )
+Var(t)
+bβ0 = X − bβ1t. (1)
+Remarques :
+La moyenne det est t = (n +1)/2.
+Les expressions suivantes peuvent être utilisées :
+Var(t) = 1
+n
+nX
+t=1
+t2 − (t)2 = n2 −1
+12 ,
+Cov (t,X ) = 1
+n
+nX
+t=1
+t · Xt − t · X .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 6 / 67
+<<<PAGE>>>
+Ajustement polynomial : RGLT
+Modèle polynomial: On considère le modèle suivant :
+Xt = mt + ϵt = β0 + β1t + β2t2 + . . .+ βqtq + ϵt , t =1, . . . ,n.
+Choix de l’ordreq : Une analyse graphique permet souvent de suggérer une valeur
+pour q (généralement q =1,2 ou 3). Une foisq fixé, les coefficients
+β = (β0, β1, . . . ,βq)′ sont estimés par (MCO), en minimisant la somme des carrés des
+résidus :
+bβ =argminβ
+nX
+t=1
+(Xt − mt )2.
+Formulation matricielle: Le modèle peut être exprimé en notation matricielle :
+X =
+
+
+X1
+X2
+...
+Xn
+
+
+, β =
+
+
+β0
+β1
+...
+βq
+
+
+, Z =
+
+
+1 t1 t2
+1 . . . tq
+1
+1 t2 t2
+2 . . . tq
+2
+...
+...
+... . . .
+...
+1 tn t2n . . . tq
+n
+
+
+, ϵ =
+
+
+ϵ1
+ϵ2
+...
+ϵn
+
+
+Le modèle : X = Z β + ϵ.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 7 / 67
+<<<PAGE>>>
+Solution des (MCO): Les estimations des coefficientsβ sont données par :
+bβ =
+¡ bβ0, bβ1, . . . ,bβq
+¢′ =argminβ||X − Z β||2
+2 = (Z ′Z )−1Z ′X .
+Résidus estiméssont :
+bϵ := e = X − Z bβ = X − Z (Z ′Z )−1Z ′X .
+▷ Choix du degré du polynôme "q" :
+Observation du graphe: L’analyse graphique de la série permet d’estimer le degré
+"q", en fonction de la forme de la courbe observée.
+Compromis à réaliser: Le choix de "q" doit équilibrer deux objectifs :
+Obtenir des résidus qui fluctuent autour de 0 avec une amplitude minimale. (Cela
+nécessite d’augmenter le degré du polynôme.)
+Utiliser un polynôme avec le degré le plus faible possible, pour éviter un ajustement
+excessif ou une surmodélisation.
+Choix optimal: On sélectionne le degré minimal qui donne un ajustement
+satisfaisant. Il existe un degré à partir duquel augmenter davantage le degré du
+polynôme n’apporte pas d’amélioration significative.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 8 / 67
+<<<PAGE>>>
+Ajustement tendanciel : Cas général (RGL-G)
+Ajustement tendanciel : Cas général
+Objectif : Ajuster une série temporelle(Xt )1≤t≤n à une tendancem(t) exprimée
+comme une combinaison linéaire deq fonctions linéairement indépendantes
+(exemples : polynômes, exponentielles, logarithmes, etc.).
+Le modèle s’écrit :
+Xt = m(t) + ϵt =
+qX
+j=0
+βj fj (t) + ϵt , 1 ≤ t ≤ n, (2)
+où ϵt représente les résidus d’ajustement.
+En notation matricielle, on a :
+X = Z β + ϵ, (3)
+où :
+X est le vecteur des observations (n composantes),
+ϵ est le vecteur des résidus (n composantes),
+β est le vecteur des paramètres à estimer (q +1 composantes),
+Z est une matrice de taillen × (q +1), dont les éléments sont définis par :
+Z = (zij )1≤i ≤n, 0≤j≤q , où zij = fj (ti ).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 9 / 67
+<<<PAGE>>>
+Ajustement tendanciel : Cas général (RGL-G)
+L’estimateur des (MCO) bβ est obtenu en minimisant la somme des carrés des
+résidus :
+Rn(β) =
+nX
+t=1
+[Xt − m(t)]2 =
+nX
+t=1
+ϵ2
+t = ϵ′ϵ = (X − Z β)′(X − Z β).
+Les équations normales (voir cours sur les modèles linéaires) sont données par :
+Z ′Z β = Z ′X .
+La solution unique est :
+bβ = (Z ′Z )−1Z ′X .
+Remarque :
+L’indépendance des fonctionsfj implique que lesq +1 vecteurs colonnes deZ sont
+linéairement indépendants.
+Ainsi, Z est de rangq +1, ce qui impose que le nombre d’observationsn soit supérieur
+ou égal àq +1.
+Dans ce cas, la matriceZ ′Z est inversible.
+Exemple. Cas du modèle linéaire simple :Xt = at + b + ϵt , 1 ≤ t ≤ n,
+correspond à :q =2, f1(t) =1, f2(t) = t.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 10 / 67
+<<<PAGE>>>
+Ajustement tendanciel : Cas général (RGL-G) - Exemple : Modèle linéaire
+Pour le modèle linéaireXt = at + b + ϵt, on obtient :
+Z ′Z =
+µ 1 . . . 1
+1 . . . n
+¶
+
+
+1 1
+...
+...
+1 n
+
+
+=
+µ n PtPt Pt2
+¶
+= n
+ˆ
+1 t
+t t2
+!
+,
+où t = 1
+n
+Pt et t2 = 1
+n
+Pt2.
+L’inverse de Z ′Z est donné par :
+(Z ′Z )−1 = 1
+n(t2 − (t)2)
+ˆ
+t2 −t
+−t 1
+!
+.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 11 / 67
+<<<PAGE>>>
+Pour Z ′X, on a :
+Z ′X =
+µ 1 . . . 1
+1 . . . n
+¶
+
+
+x1
+...
+xn
+
+ =
+µ PxtPtxt
+¶
+.
+Ainsi, les estimateurs des moindres carrés sont :
+µ bb
+ba
+¶
+= 1
+n(t2 − (t)2)
+ˆ
+t2 −t
+−t 1
+! µ PxtPtxt
+¶
+.
+En explicitant :
+ba =
+Pn
+t=1 txt − nt x
+Pn
+t=1 t2 − nt2 , bb = nt2 x − nt tx
+Pn
+t=1 t2 − nt2 .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 12 / 67
+<<<PAGE>>>
+Détermination des coefficients saisonniers
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 13 / 67
+<<<PAGE>>>
+Détermination des coefficients saisonniers [1]
+La tendance mt est estimée par la méthode des MCO, et son estimation est notée
+bmt.
+On cherche maintenant àestimer les variations saisonnièresSt.
+Méthode : Le composant saisonnierSt est estimé à partir d’une série(dt ) :
+dt = Xt − bmt .
+On travaille ainsi sur la série(t,dt ).
+On identifie lesdonnées dt à l’aide de deux indices :
+- i : représente l’année de l’observation.
+- j : représente lemois ou la période correspondante. Cela peut être
+un trimestre, un mois, ou un jour.
+Exemple : Si les données s’étendent surN années, avec p périodes (mois, trimestres,
+etc.) par an :
+L’observation du jème mois de laième année, notée di ,j, peut aussi s’écriredt avec :
+t = (i −1) · p + j .
+Les indices prennent les valeurs suivantes :
+- i : 1,2,3, . . . ,N.
+- j : 1,2,3, . . . ,p.
+- t : 1,2,3, . . . ,Np.
+Cas particulier:
+p =4 : Série trimestrielle.
+p =12 : Série mensuelle.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 14 / 67
+<<<PAGE>>>
+Détermination des coefficients saisonniers [2]
+Soit (Xt )1≤t≤T une série temporelle.
+Les variations saisonnièresse répètent identiquement à chaque période. Par
+conséquent :
+- On estime un coefficient saisonnier pour chaquemois, trimestre ou jour.
+- La variation saisonnière pour tous les moisj correspondra aucoefficient saisonnierdu
+mois j.
+Pour des données trimestrielles (périodep =4), nous obtenons :
+- 4 coefficients caractérisant la saisonnalité, notés :
+sj := cj , 1 ≤ j ≤4.
+- Le coefficient du mois de janvier (ou du premier trimestre) est la moyenne de tous les
+mois de janvier dans la sériedt.
+- Les coefficients sont calculés grâce à la formule suivante (modèle additif) :
+cj = 1
+Card(Tj )
+X
+t∈Tj
+(Xt − bmt ), 1 ≤ j ≤4.
+Notations :
+- Xt représente les données brutes.
+- bmt est l’estimation de la tendance.
+- Tj est l’ensemble des temps associés au mois (ou trimestre)j.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 15 / 67
+<<<PAGE>>>
+Détermination des coefficients saisonniers [3]
+Exemple 1. Si T =16, alors :
+- La saison j =1 correspond autrimestre 1.
+- La saison j =2 correspond au trimestre 5=1 +4 (on ajoute une année pour retrouver
+la même saison).
+- Ainsi :
+T1 = {1,5,9,13}, T2 = {2,6,10,14}, T3 = {3,7,11,15}, T4 = {4,8,12,16}.
+- Les coefficients saisonnierscj pour un modèle additif sont calculés comme suit :
+cj = 1
+Card(Tj )
+X
+t∈Tj
+(Xt − bmt ), 1 ≤ j ≤ p,
+où p désigne la période (icip =4 pour des données trimestrielles).
+- Par exemple, pour la saisonj =2 (T2 = {2,6,10,14}) :
+bS2 = c2 = 1
+Card(T2)
+X
+t∈T2
+(Xt − bmt )
+= 1
+4 [(X2 − bm2) + (X6 − bm6) + (X10 − bm10) + (X14 − bm14)] .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 16 / 67
+<<<PAGE>>>
+Définition. La composante saisonnière provisoire estiméebSt est définie par :
+bSt = {cj , j ∈ Tj }, 1 ≤ j ≤ p,
+où p désigne la période.
+- Quel que soit l’annéei (i =1, . . . ,N) :
+bSt = cj si t correspond au jème trimestre d’une annéei .
+Ceci peut aussi s’exprimer sous forme compacte :
+bSt =
+pX
+k=1
+ck1{trimestre=k}(t).
+Enfin, nous avonsSij = Sj = cj, ce qui explicite que la composante saisonnière
+dépend uniquement du trimestre.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 17 / 67
+<<<PAGE>>>
+Détermination des coefficients saisonniers [4]
+La composante saisonnière estiméebSt est répétitive (périodique). Il suffit donc de
+calculer seulementles quatre premiers coefficients saisonniers.
+On obtient :
+- Pour 1≤ t ≤4, les quatre premiers coefficients saisonniers.
+- Ensuite, pour 5≤ t ≤8, les quatre coefficients saisonniers sont recopiés.
+- Et ainsi de suite.
+Calcul de bS14. En faisant la division euclidienne de 14 par 4, dont le reste est 2, on
+obtient :
+bS14 = c2.
+S12 = c4, car le reste de la division euclidienne de 12 par 4 est 0. Le reste 0
+correspond à la saison 4.
+On peut utiliser la représentation à double indice de la sériedi ,j pour calculer sj :
+sj := cj = 1
+N
+NX
+i =1
+(Xi ,j − bmi ,j ), 1 ≤ j ≤ p, t = (i −1) × p + j .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 18 / 67
+<<<PAGE>>>
+Calcul des coefficients saisonniers définitifs [5]
+▷ Le principe de la conversion des aires:
+- Les moyennes annuelles de la série brute et de la série corrigée des
+variations saisonnières (cvs) doivent être identiques.
+▷ Dans le cas d’un schéma additif:
+- la somme des coefficients doit être nulle.
+Soit cj le j-ème coefficient provisoire, on calcule la somme de ces coefficients :
+c =
+pX
+j=1
+cj avec p la période de la saisonnalité.
+- Si c =0, alors lescj sont les coefficients saisonniers définitifs.
+- Si c ̸=0, les coefficients saisonniers sont normés afin que leur somme
+soit nulle. Les coefficients définitifs sont donnés par :
+c ∗
+j = cj − c où c = 1
+p
+pX
+j=1
+cj .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 19 / 67
+<<<PAGE>>>
+▷ Dans le cas d’un schéma multiplicatif: la moyenne des coefficients doit être égale à 1.
+- Soit Sj le j-ème coefficient provisoire, on calcule la somme des
+coefficients :
+c = 1
+p
+pX
+j=1
+cj .
+- Les coefficients définitifs sont donnés par :
+c ∗
+j =
+cj
+c .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 20 / 67
+<<<PAGE>>>
+Détermination de la série corrigée
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 21 / 67
+<<<PAGE>>>
+Données corrigées des variations saisonnièresXcvs,t à l’instant t
+▷ La composante saisonnière estiméebSt est remplacée par
+S ∗
+t =
+n
+c ∗
+j , j ∈ Tj
+o
+, 1 ≤ j ≤ p.
+Définition 1
+On appelle
+série désaisonnaliséeou série corrigée des variations saisonnières, notée sériecvs ou
+Xcvs,t,
+la série chronologiqueXt à laquelle on aenlevé les variations saisonnières.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 22 / 67
+<<<PAGE>>>
+Données corrigées des variations saisonnièresXcvs,t à l’instant t
+Modèle Additif. La série corrigée à l’instantt est
+Xcvs,t = Xt − S ∗
+t , 1 ≤ t ≤ T ou encore Xcvs,(i ,j) = Xij − c ∗
+j .
+Modèle Multiplicatif. La série corrigée à l’instantt est
+Xcvs,t = Xt
+S ∗
+t
+ou encore Xcvs,(i ,j) =
+Xij
+c ∗
+j
+.
+Si on retire les coefficients saisonniers de la série des observations, on reconstitue la
+série corrigée des variations saisonnières.
+Xcvs,t représente l’évolution de la variable observée s’il n’y avait pas eu les
+mouvements saisonniers.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 23 / 67
+<<<PAGE>>>
+Intérêt de la sérieXcvs,t à l’instant t : Exemple
+□ La particularité de la série cvs est que lesdonnées de Xcvs,t sont directement
+comparables.
+Exemple. Pour une série annuelle (p =12) :
+on aenlevé l’effet des saisons et donc le caractère propre de chaque mois,
+cela permet par exemple comparer les données d’unmois de janvieret celle d’un
+mois de juillet.
+Figure – Évolution du trafic voyageur entre janvier 1963 et décembre 1966
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 24 / 67
+<<<PAGE>>>
+Réajustement de la tendance sur la sérieXcvs,t
+On peutréévaluer la tendance par ajustement(moindres carrés sur
+Xcvs,t), afin d’avoir unemeilleure estimation de la tendance.
+Figure – Évolution du trafic voyageur entre janvier 1963 et décembre 1966
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 25 / 67
+<<<PAGE>>>
+Série ajustée et variations accidentelles
+1. Série ajustée bXt
+La sérieajustée, notée bXt, est obtenue enrecomposant les deux composantes
+estimées :
+- la tendance, notée bmt,
+- et lesvariations saisonnièresestimées Scvs,t, selon le modèle choisi.
+Recomposition selon le modèle
+Modèle additif : bXt = bmt + Scvs,t , ou encore bXij = bmij + Scvs,j .
+Modèle multiplicatif : bXt = bmt × Scvs,t , ou encore bXij = bmij × Scvs,j .
+Interprétation de bXt :
+- L’évolution qu’aurait subi la grandeur observée,
+- si les variations saisonnières étaient parfaitement périodiques,
+- et en l’absence de variations accidentelles.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 26 / 67
+<<<PAGE>>>
+Série ajustée et variations accidentelles
+.
+2. Variations accidentelles ou résiduelles ou résidusbϵt.
+Modèle additif: la différence entre la sérieXt et sa série ajustée
+représente les variations accidentelles ou résiduelles :
+bϵt = Xt − bXt
+Modèle multiplicatif: le rapport entre la sérieXt et sa série ajustée
+représente les variations accidentelles ou résiduelles :
+bϵt = Xt
+bXt
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 27 / 67
+<<<PAGE>>>
+Décomposition d’une série chronologiqueXt
+Étapes de la décomposition :
+1 Tracer le graphede (Xt ) et générer un graphique des courbes superposées.
+2 Estimer la tendancemt et la représenter graphiquement.
+3 Choisir le modèlede décomposition : additif ou multiplicatif.
+4 Estimer les variations saisonnièresSt.
+5 Calculer la série corrigée des variations saisonnièresXcvs,t et la représenter
+graphiquement.
+6 Calculer la série ajustéebXt.
+7 Estimer les variations accidentellesbϵt.
+Critère de validité :
+La décomposition estcorrecte lorsque la série ajustée, visualisée sur le graphique des
+courbes superposées, estproche de la série initialeXt.
+Figure –Ajustement incorrect et ajustement correct d’une sérieN. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 28 / 67
+<<<PAGE>>>
+Prévisions avec tendance ajustée
+Principe des prévisions :
+Lorsque la tendance bmt est ajustée et exprimée en fonction det, il devient possible
+de réaliser des prévisions pour les périodes futures.
+Pour obtenir uneprévision à une dateT :
+- Calculer bmT à partir de l’expression de la tendance en fonction det.
+- Ajouter le coefficient saisonnier du mois en question àbmT, si le modèle est additif.
+- Multiplier bmT par le coefficient saisonnier si le modèle est multiplicatif.
+- Cette démarche revient à prolonger le calcul de la série ajustée pour les périodes
+futures.
+Formule de prévision :
+La prévision pour l’instantt + h est donnée par :
+X p
+t+h = bmt+h + cj
+- où cj = s(j) est lecoefficient saisonnierassocié à la période(t + h).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 29 / 67
+<<<PAGE>>>
+Remarque :
+- Ces coefficients saisonniersc1,c2, . . . ,cj reflètent leprofil saisonnier
+moyen de la série.
+- En supposant que la saisonnalité se répète de manière identique, ils
+peuvent être utilisés pour prévoir les valeurs futures.
+- La prévision finale est obtenue en combinant les différentes composantes
+(tendance, saisonnalité, etc.).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 30 / 67
+<<<PAGE>>>
+Schéma de désaisonnalisation d’une série trimestrielle (p =4)
+Notations :
+(Xt )t=1,...,Np = (Xi ,j )1≤i ≤N, 1≤j≤p : Série trimestrielle, où :
+t : Nombre de trimestres depuis la date initiale (0).
+i : Numéro de l’année.
+j : Numéro du trimestre dans l’annéei.
+Étapes du schéma :
+Xt ≃ mt ⇒ Estimation par MCO
+⇓
+Estimation de mt : bmt = ba + bbt
+Choix du modèle :
+Modèle Additif Modèle Multiplicatif
+Méthode : Différence à la tendance Méthode : Rapport à la tendance
+dt = Xt − bmt dt = Xt
+bmt
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 31 / 67
+<<<PAGE>>>
+Calcul des coefficients saisonniers provisoires :
+cj = 1
+Card(Tj )
+X
+t∈Tj
+dt avec 1≤ j ≤ p
+Normalisation des coefficients saisonniers :
+Additif : P
+j cj =0 Multiplicatif : P
+j cj = p
+Coefficients définitifs :c ∗
+j = cj − c Coefficients définitifs :c ∗
+j = cj
+c
+Désaisonnalisation :
+Additif : X cvs
+t = Xt − S ∗
+t , S ∗
+t = {c ∗
+j | j ∈ Tj }
+Multiplicatif : X cvs
+t = Xt
+S ∗
+t
+, S ∗
+t = {c ∗
+j | j ∈ Tj }
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 32 / 67
+<<<PAGE>>>
+Tableau récapitulatif
+Dates (T = t) Série (Xt) bmt = ba + bbt dt = Xt − bmt c ∗
+j Xscv ,t
+...
+...
+...
+...
+...
+...
+Observations clés :
+- Élimination de la saisonnalité :Les données corrigées (Xscv ,t) permettent
+de supprimer les variations périodiques des données brutes (Xt).
+- Indépendance saisonnière :L’évolution de Xscv ,t reflète la dynamique
+propre de la série, en dehors de l’effet saisonnier.
+- Interprétation graphique :Lorsque Xscv ,t passe en dessous de la tendance
+( bmt), cela indique une baisse marquée, tandis qu’un dépassement traduit
+une augmentation indépendante de la composante saisonnière.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 33 / 67
+<<<PAGE>>>
+Désaisonnalisation par régression linéaire
+sur Variables Indicatrices (RL-Var Ind)
+Cette méthode permet d’estimer simultanément la tendance et la saisonnalité.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 34 / 67
+<<<PAGE>>>
+Variables Indicatrices
+Jusqu’à présent, nous avons supposé que chaque prédicteur (variable explicative)
+prend des valeurs numériques.
+Mais que se passe-t-il lorsqu’un
+prédicteur est une variable catégorielle
+ne prenant que deux valeurs, comme"oui" et "non"?
+Par exemple, dans le cadre de la prévision des ventes quotidiennes :
+On souhaite intégrer l’information sur le fait qu’un jour est férié ou non.
+Dans ce cas, le prédicteur prend la valeur"oui" pour un jour férié et"non" sinon.
+Cette situation peut être traitée dans les modèles de régression multiple en créant
+une variable muette:
+Une variable qui prend la valeur1 pour "oui" et 0 pour "non".
+Cette variable est aussi appelée"variable indicatrice".
+Une variable indicatricepeut également être utilisée pour :
+Tenir compte d’une valeur aberrante dans les données, sans l’exclure complètement.
+Introduire des effets de saisonnalité, comme les trimestres ou les jours de la semaine.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 35 / 67
+<<<PAGE>>>
+Variables muettes saisonnières
+▷ Supposons que nous prévoyons desdonnées quotidienneset que nous souhaitons
+prendre en compte le jour de la semainecomme prédicteur.
+On peut alors créer les variables indicatrices suivantes :
+d1,t d2,t d3,t d4,t d5,t d6,t
+Lundi 1 0 0 0 0 0
+Mardi 0 1 0 0 0 0
+Mercredi 0 0 1 0 0 0
+Jeudi 0 0 0 1 0 0
+Vendredi 0 0 0 0 1 0
+Samedi 0 0 0 0 0 1
+Dimanche 0 0 0 0 0 0
+Lundi 1 0 0 0 0 0
+...
+...
+...
+...
+...
+...
+Seules six variables fictives sont nécessaires pour coder sept catégories. La septième
+catégorie (dans ce cas, dimanche) est capturée par l’intercepte.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 36 / 67
+<<<PAGE>>>
+On utilise une variable muette de moins que les catégories.
+- Pour des données trimestrielles, trois variables muettes suffisent.
+- Pour des données quotidiennes, six variables fictives suffisent, et
+ainsi de suite.
+Interprétation :Chaque coefficient des variables fictives mesure l’effet de sa
+catégorie par rapport à la catégorie omise.
+- Par exemple, le coefficient ded1,t (lundi) mesure l’effet du lundi sur
+la variable à prévoir par rapport à l’effet du dimanche.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 37 / 67
+<<<PAGE>>>
+Exemple : Production trimestrielle de bière en Australie
+Figure – Production trimestrielle de bière australienne
+▷ Modélisation :
+Ces données peuvent être modélisées à l’aide d’une régression avec tendance linéaire
+et variables muettes trimestrielles :
+yt = β0 + β1t + β2d2,t + β3d3,t + β4d4,t + εt ,
+où di ,t =1 si t est dans le trimestrei, et 0 sinon.
+▷ Nous voulons prévoir la valeur de la future production de bière.
+La variable du premier trimestre a été omise,
+afin que les coefficients des autres trimestres mesurent leur différence par rapport au
+premier trimestre.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 38 / 67
+<<<PAGE>>>
+La fonction tslm() permet de gérer automatiquement cette situation en spécifiant
+la saison comme prédicteur.
+fit.beer <- tslm(beer2 ~ trend + season)
+summary(fit.beer)
+#>
+#> Call:
+#> tslm(formula = beer2 ~ trend + season)
+#>
+#> Residuals:
+#> Min 1Q Median 3Q Max
+#> -42.90 -7.60 -0.46 7.99 21.79
+#>
+#> Coefficients:
+#> Estimate Std. Error t value Pr(>|t|)
+#> (Intercept) 441.8004 3.7335 118.33 < 2e-16 ***
+#> trend -0.3403 0.0666 -5.11 2.7e-06 ***
+#> season2 -34.6597 3.9683 -8.73 9.1e-13 ***
+#> season3 -17.8216 4.0225 -4.43 3.4e-05 ***
+#> season4 72.7964 4.0230 18.09 < 2e-16 ***
+#> ---
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 39 / 67
+<<<PAGE>>>
+▷ Interprétation des coefficients estimés des variables fictives capturant la saisonnalité
+trimestrielle de la production de bière en Australie. :
+- Une tendance moyenne à labaisse de -0,34 mégalitre par trimestre.
+- En moyenne :
+- Le deuxième trimestrea une production de 34,7
+mégalitres inférieure à celle dupremier trimestre.
+- Le troisième trimestre a une production de 17,8
+mégalitres inférieure à celle du premier trimestre.
+- Le quatrième trimestre a une production de 72,8
+mégalitres supérieure à celle du premier trimestre.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 40 / 67
+<<<PAGE>>>
+RL-Var Ind : Modèle Additif
+Modèle Additif:
+Xt = mt + St + ϵt
+▷ Hypothèses :
+E(ϵt ) =0, Var(ϵt ) = σ2, Cov(ϵt , ϵt−h) =0 ∀ h >0.
+▷ On suppose quemt et St sont des combinaisons linéaires de fonctions connues dans le
+temps, mi
+t et S j
+t : (
+mt = β1m1
+t + β2m2
+t + · · · +βqmq
+t ,
+St = c1S1
+t + c2S2
+t + · · · +cnS n
+t .
+▷ Objectif :Estimer les coefficientsβ1, . . . ,βq et c1, . . . ,cn à partir des observations.
+▷ On peut alors écrire le modèle :
+Xt =
+qX
+i =1
+βi mi
+t +
+nX
+j=1
+cj S j
+t + ϵt , t =1, . . . ,T .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 41 / 67
+<<<PAGE>>>
+RL-Var Ind :données trimestrielles,
+▷ La forme de St dépend du type de donnéeset de laforme de lasaisonnalité.
+Pour des données trimestrielles,St peut être représentée par une fonction périodique
+de période p =4.
+Cette composante prend quatre valeurs (ou coefficients saisonniers) :c1,c2,c3,c4,
+associées à chacun des trimestres.
+St = cj, si la datet correspond au trimestrej.
+Le modèle peut être écrit sous la forme :
+St = c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t ,
+où S j
+t est une fonction indicatrice du trimestrej.
+S j
+t prend la valeur 1 sit correspond au trimestrej (ou t est congru àj modulo p).
+S j
+t prend la valeur 0 sinon.
+Les fonctions indicatricesS j
+t sont définies comme suit :
+(
+S j
+t =1 si t =trimestre j ,
+S j
+t =0 si t ̸=trimestre j .
+ou
+(
+S j
+t =1 si t ≡ j [modulo p],
+S j
+t =0 si t ̸≡ j [modulo p].
+=1{j[p]}(t).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 42 / 67
+<<<PAGE>>>
+Modèle trimestriel de Buys-Ballon (1847)
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 43 / 67
+<<<PAGE>>>
+RL-Var Ind : Modèle trimestriel de Buys-Ballot
+▷ Dans le cas où la tendance est linéaire et les données sont trimestrielles, en posant
+m1
+t =1 et m2
+t = t, le modèle s’écrit :
+Xt = β1 + β2t| {z }
+Tendance (mt )
++c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t| {z }
+Saisonnalité (St )
++ϵt ,
+où
+Xt = mt + St + ϵt .
+▷ Application aux données SNCF
+- On suppose que les données commencent au 1er trimestre.
+Au premier trimestre de 1963 : 1750+1560 +1820 +2090 =5130,
+Au deuxième trimestre : 6410, etc.
+Ainsi, le modèle peut être utilisé pour estimer les composantes de la tendance et de la
+saisonnalité.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 44 / 67
+<<<PAGE>>>
+RL-Var Ind : Modèle de Buys-Ballot. Application aux données SNCF
+
+
+5130
+6410
+8080
+5900
+5110
+6680
+8350
+5910
+5080
+...
+Xt
+
+
+=
+
+
+1 1 1 0 0 0
+1 2 0 1 0 0
+1 3 0 0 1 0
+1 4 0 0 0 1
+1 5 1 0 0 0
+1 6 0 1 0 0
+1 7 0 0 1 0
+1 8 0 0 0 1
+...
+...
+...
+...
+...
+...
+1 t S 1
+t S2
+t S3
+t S4
+t
+
+
+
+
+β1
+β2
+c1
+c2
+c3
+c4
+
+
++
+
+
+ϵ1
+ϵ2
+ϵ3
+ϵ4
+ϵ5
+ϵ6
+ϵ7
+ϵ8
+ϵ9
+...
+ϵt
+où
+
+
+⇒ X = Dδ + ϵ
+X est le vecteur des observations(Xt );
+D est la matrice des variables explicatives : la constante(1), la tendance(t), et les
+indicatrices de saisonnalité(S1
+t ,S2
+t ,S3
+t ,S4
+t );
+δ = (β1, β2,c1,c2,c3,c4)⊤ est le vecteur des paramètres;
+ϵ est le vecteur des résidus(ϵt ).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 45 / 67
+<<<PAGE>>>
+RL-Var Ind : Modèle de Buys-Ballot. Application aux données SNCF
+▷ Avec les définitions suivantes :
+D = [m |S] et δ⊤ = [β1, β2 |c1,c2,c3,c4],
+où
+m est la matrice des composantes liées à la tendance(m1
+t ,m2
+t );
+S est la matrice des composantes saisonnières(S1
+t , . . . ,S4
+t ).
+m = [mi
+t ]i =1,2;t=1,...,T =
+
+
+1 1
+1 2
+1 3
+...
+...
+1 T
+
+
+, où m1
+t =1 et m2
+t = t.
+S = [S j
+t ]j=1,...,4;t=1,...,T =
+
+
+S1
+1 S2
+1 S3
+1 S4
+1
+S1
+2 S2
+2 S3
+2 S4
+2
+S1
+3 S2
+3 S3
+3 S4
+3
+...
+...
+...
+...
+S1
+T S2
+T S3
+T S4
+T
+
+
+.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 46 / 67
+<<<PAGE>>>
+▷ Le modèle devient :
+X = Dδ + ϵ,
+où
+X est le vecteur des observations (Xt, pour t =1, . . . ,T);
+δ = (β1, β2,c1,c2,c3,c4)⊤ est le vecteur des paramètres;
+ϵ est le vecteur des résidus (ϵt, pour t =1, . . . ,T).
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 47 / 67
+<<<PAGE>>>
+RL-Var Ind : Modèle trimestriel de Buys-Ballot. Identification du modèle
+▷ L’estimateur des moindres carrés pour le vecteurδ est : bδ = (D′D)−1D′X ,
+sous réserve que la matriceD′D soit inversible.
+▷ **Problème d’inversibilité** : La matriceD′D n’est pas inversible carla première
+colonne est égale à la somme des quatre dernières(composantes saisonnières).
+▷ **Méthodes pour identifier le modèle** :
+(a) Exclure la constanteβ1 : Le modèle devient :
+Xt = β2t + c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t + ϵt .
+(b) Inclure une contrainte sur les composantes saisonnières: Ajouter la contrainte
+c1 + c2 + c3 + c4 =0 :
+(
+Xt = β1 + β2t + c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t + ϵt ,
+avec la contrainte c1 + c2 + c3 + c4 =0.
+▷ Remarque : La contrainte sur les coefficients saisonniers est arbitraire, mais fournit une
+interprétation cohérente des composantes saisonnières.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 48 / 67
+<<<PAGE>>>
+RL-Var Ind : Estimateur des moindres carrés ordinaires (m.c.o.)- Cas général
+▷ Considérons lemodèle généralsuivant
+Xt =
+qX
+i =1
+βi mi
+t +
+nX
+j=1
+cj S j
+t + ϵt , t =1, . . . ,T .
+▷ Nous cherchons les paramètresβi et cj qui minimisent la somme des carrés des erreurs
+¡ bβ, bc
+¢
+=argmin
+" TX
+t=1
+ϵ2
+t
+#
+=argmin
+
+
+TX
+t=1
+(
+Xt −
+qX
+i =1
+βi mi
+t −
+nX
+j=1
+cj S j
+t
+)2
+ .
+▷ Écriture matricielle. Soit
+β = (β1, . . . ,βq)′, c = (c1, . . . ,cn)′, m =
+h
+mi
+t
+i
+1≤i ≤q, 1≤t≤T ,
+S =
+h
+S j
+t
+i
+1≤j≤n, 1≤t≤T .
+▷ En regroupant les composantes linéaires et saisonnières dans une matriceD, le modèle
+peut s’écrire
+X = Dδ + ϵ, avec D = [m|S] et δ′ = [β′,c ′].
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 49 / 67
+<<<PAGE>>>
+RL-Var Ind : Estimateur des (m.c.o.) - Cas général
+▷ Le modèle peut s’écrire sous forme matricielle
+X = mβ + Sc + ϵ = [m |S]
+•β
+c
+‚
++ ϵ = Dδ + ϵ,
+avec δ =
+•β
+c
+‚
+.
+▷ L’estimateur des moindres carrésbδ =
+•bβ
+bc
+‚
+satisfait l’équation normale suivante :
+D′D bδ = D′X ⇒ [m |S]
+•m′
+S ′
+‚
+bδ =
+•m′
+S ′
+‚
+X .
+▷ En explicitant la solution, on obtient
+bδ =
+•bβ
+bc
+‚
+=
+•m′m m ′S
+S ′m S ′S
+‚−1 •m′X
+S ′X
+‚
+.
+▷ Cas particulier :Si aucun effet saisonnier n’est présent (S =0), alors X = mβ + ϵ, et on
+retrouve le modèle linéaire usuel.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 50 / 67
+<<<PAGE>>>
+RL-Var Ind - Cas particulier : le modèle trimestriel de Buys-Ballot
+▷ Le modèle trimestriel de Buys-Ballot est défini par :
+Xt = β1 + β2t + c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t ,
+où S j
+t (j =1, . . . ,4) représentent les composantes saisonnières.
+▷ On cherche à résoudre le problème de minimisation suivant :
+(
+minβ,c
+PT
+t=1
+h
+Xt − β1 − β2t − P4
+j=1 cj S j
+t
+i2
+,
+sous la contrainte c1 + c2 + c3 + c4 =0.
+▷ En utilisant la propriétéP4
+j=1 S j
+t =1 pour toutt, ce problème peut être réécrit comme
+suit : 
+
+
+minβ2,τj
+PT
+t=1
+h
+Xt − β2t − P4
+j=1 τj S j
+t
+i2
+,
+avec les relations
+
+
+
+β1 = τ1+τ2+τ3+τ4
+4 ,
+cj = τj − β1 ∀j .
+▷ Ces relations permettent de reformuler le problème en fonction desτj, simplifiant ainsi
+l’identification des paramètres.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 51 / 67
+<<<PAGE>>>
+RL-Var Ind- Cas particulier : le modèle trimestriel de Buys-Ballot
+▷ Le système précédent montre que les estimateursbβ1, bβ2, et bcj (j =1, . . . ,4) peuvent
+être calculés à l’aide d’unedémarche en deux étapes.
+▷ Étape 1. Chercher bβ2 et bτj (j =1, . . . ,4) en minimisant :
+TX
+t=1
+"
+Xt − β2t −
+4X
+j=1
+τj S j
+t
+#2
+C’est-à-dire effectuer une régression deXt sur les variables suivantes :
+t, S1
+t , S2
+t , S3
+t , S4
+t .
+Cela correspond à une régression par les moindres carrés ordinaires (m.c.o.) sans
+contrainte.
+▷ Étape 2. Calculer ensuite bβ1 et bcj (j =1, . . . ,4) à l’aide des relations :
+
+
+
+bβ1 = 1
+4
+P4
+j=1 bτj ,
+bcj = bτj − 1
+4
+P4
+j=1 bτj , ∀j =1, . . . ,4.
+▷ Cette approche sépare l’estimation en deux étapes claires : la régression initiale pour
+obtenir bβ2 et bτj, suivie du calcul direct des coefficientsbβ1 et bcj.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 52 / 67
+<<<PAGE>>>
+RL-Var Ind - Cas particulier : le modèle trimestriel de Buys-Ballot
+▷ Calcul de bβ2 et bτj
+- Notons N le nombre d’années complètes, défini parN = T /4, où T est le nombre
+total d’observations.
+- Désignons par i le numéro de l’année, avec i =1, . . . ,N.
+- L’indice t correspond à l’observationXt associée au j-ième trimestre (j =1, . . . ,4) de
+la i-ième année (i =1, . . . ,N). L’indice t est donné par :
+t =4(i −1) + j .
+- exi : la moyenne des observationsXt pour les quatre trimestres de l’annéei, définie
+par :
+exi = 1
+4
+4X
+j=1
+X4(i −1)+j .
+- x j : la moyenne desXt pour tous les trimestresj (j =1, . . . ,4) sur l’ensemble des
+années N, donnée par :
+x j = 1
+N
+NX
+i =1
+X4(i −1)+j .
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 53 / 67
+<<<PAGE>>>
+- x : la moyenne globale de toutes les observationsXt, définie comme suit :
+x = 1
+T
+TX
+t=1
+Xt = 1
+N
+NX
+i =1
+exi = 1
+4
+4X
+j=1
+x j .
+▷ Ces définitions permettent de structurer le calcul des coefficientsbβ2 et bτj à partir des
+moyennes par trimestre et par année.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 54 / 67
+<<<PAGE>>>
+- Cas particulier : le modèle trimestriel de Buys-Ballot
+▷ On obtient
+bβ2 =3
+PN
+i =1 i exi − N(N+1)
+2 x
+N(N2 −1)
+bτj = x j − [j +2(N −1)] bβ2 pour j =1,2,3,4
+▷ Et
+
+
+
+bβ1 = 1
+4
+P4
+j=1 bτj = x −
+h5
+2 +2(N −1)
+i
+bβ2
+bcj = bτj − bβ1 = x j − x − bβ2
+‡
+j − 5
+2
+·
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 55 / 67
+<<<PAGE>>>
+Explications
+▷ Dans le calcul debβ2 :
+- Le terme N(N+1)
+2 correspond à la somme des indices temporelst sur l’ensemble des
+N années (en supposant que les indices des années sont 1,2, . . . ,N).
+- Le dénominateur N(N2 −1) est une constante calculée à partir des indices temporels
+et garantit que le modèle est bien identifié.
+▷ Dans leCalcul des bτj (coefficients trimestriels)
+- x j est la moyenne desXt pour le trimestrej sur toutes les années.
+- Le terme [j +2(N −1)] correspond à l’effet du temps cumulé au trimestrej en
+fonction du nombre total d’annéesN.
+- En soustrayant cet effet temporel pondéré parbβ2, on isole l’effet saisonnier
+spécifique à chaque trimestre.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 56 / 67
+<<<PAGE>>>
+Explications
+▷ Dans le Calcul de bβ1 et bcj
+- bβ1 est obtenu comme la moyenne desbτj. Cela reflète la valeur moyenne des
+coefficients trimestriels sur l’ensemble des trimestres.
+- Le second terme,
+h5
+2 +2(N −1)
+i
+bβ2, ajuste cette moyenne pour prendre en compte
+l’effet temporel global.
+- bcj est le coefficient centré pour chaque trimestrej, obtenu en soustrayantbβ1 de bτj.
+Cette étape garantit que la contrainteP4
+j=1 cj =0 est respectée.
+- Le terme bβ2(j − 5
+2 ) représente une correction pour l’effet temporel relatif à chaque
+trimestre.
+▷ Résumé :Cette démarche en trois étapes permet de séparer les effets linéaires (β1, β2)
+et saisonniers (cj) tout en respectant les contraintes du modèle.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 57 / 67
+<<<PAGE>>>
+RVI- Généralisation des formules de Buys-Ballot (tendance linéaire)
+▷ Les relations précédentes peuvent être généralises dans le cas d’une périodicitép. Le
+modèle s’écrit alors
+Xt = β1 + β2t + c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t + . . .+ cpS p
+t + ϵt ,
+▷ On veut résoudre le problème de minimisation suivante :
+(
+minβ,c
+PT
+t=1
+h
+Xt − β1 − β2t − Pp
+j=1 cj S j
+t
+i2
+sous la contreante c1 + c2 + c3 + c4 + . . .+ cp =0
+▷ On obtient :
+bβ2 = 12
+p
+PN
+i =1 i exi − N(N+1)
+2 x
+N(N2 −1)
+bβ1 = x − bβ2
+Np +1
+2
+bcj = exj − x − bβ2[j − p +1
+2 ]
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 58 / 67
+<<<PAGE>>>
+RVI- Série Corrigée et prévision
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 59 / 67
+<<<PAGE>>>
+La série corrigé des variations saisonnièresXt,cvs peut être estimée par :
+bXt,cvs = Xt − bSt = Xt −
+qX
+j=1
+bcj S j
+t
+Prévision. Les estimateurs bβi, bcj peuvent servir à prévoir une valeur de X non encore
+observée : XT +h, h >1.
+Si on suppose que le modèle est encore vrai à l’instantT + h, on a :
+XT +h =
+qX
+i =1
+βi mi
+T +h +
+nX
+j=1
+cj S j
+T +h + ϵT +h
+avec
+E(ϵT +h) =0, V (ϵT +h) = σ2, Cov (ϵT +h, ϵT ) =0, t =1, . . . ,T .
+La valeur XT +h peut être approchée par
+bXT +h =
+qX
+′i =1
+bβi mi
+T +h +
+nX
+j=1
+bcj S j
+T +h.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 60 / 67
+<<<PAGE>>>
+Application au trafic voyageur-SNCF : Série agrégée par trimestre
+▷ Considérons la série(xi ,j ) du trafic SNCFagrégée par trimestreen ligne les années,
+i \j 1 2 3 4 exi = x ij
+1 5130 6410 8080 5900 6380
+2 5110 6680 8350 5910 6513
+3 5080 6820 8190 5990 6520
+4 5310 6600 8090 6020 6505
+5 5320 6800 7650 6110 6470
+6 5486 6738 7258 6111 6398
+7 5629 6696 7491 6494 6578
+8 5682 7359 7836 6583 6865
+9 5963 6743 7844 6692 6811
+10 6270 7524 7997 6853 7161
+11 6472 7871 8188 7207 7435
+12 6892 8236 8978 7561 7917
+13 7505 9005 9591 8608 8677
+14 8139 9212 9522 8816 8922
+15 8088 9494 9583 9204 9092
+16 8983 9986 9907 9457 9583
+17 8829 10340 10070 9669 9727
+18 9009 10265 10236 10458 9992
+xj 6605 7932 8603 7425 7641
+et encolonne les trimestres,
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 61 / 67
+<<<PAGE>>>
+Application au trafic voyageur-SNCF : Série agrégée par trimestre
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 62 / 67
+<<<PAGE>>>
+Application au trafic voyageur-SNCF : Modèle avec saisonnalité et tendance
+▷ Considérons un modèle de la forme :
+Xt = β1 + β2t + c1S1
+t + c2S2
+t + c3S3
+t + c4S4
+t + ϵt
+avec la contrainte : c1 + c2 + c3 + c4 =0. (4)
+Modèle avec unesaisonnalité en 4 composantes,
+Les données sont trimestrielles, chaque composante correspondant à un trimestre.
+La tendance est supposée linéaire :
+mt = β1 + β2t.
+▷ Les paramètres sont estimés en deux étapes:
+(i) Estimation du modèle (4)sans contrainte et sans constanteβ1,
+en utilisant les expressions des estimateurs données à l’étape 1 du modèle de
+Buys-Ballot.
+(ii) Reconstruction du modèle complet (4), avec contrainte et constante,
+en appliquant les relations de l’étape 2 du modèle de Buys-Ballot.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 63 / 67
+<<<PAGE>>>
+Application : Série agrégée par trimestre- Calcul direct des estimateurs
+Figure – exn = exi = x i ,j ( en utilisant les notaions du cours)
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 64 / 67
+<<<PAGE>>>
+Application : Série agrégée par trimestre - Calcul direct des estimateurs
+▷ Pour chaque année(i) etchaque trimestre(j), il est possible de calculer des
+moyennes afin d’obtenir des estimations des paramètres du modèle.
+- La moyenne annuelle pour 1963 (i =1) est de 6380, et celle pour 1973 (i =11) est
+de 7435.
+- De manière similaire, la moyenne du premier trimestre est de 6605, et celle du
+troisième trimestre est de 8603.
+- La moyenne totale des observations est de 7641, calculée sur un ensemble de 72
+observations (Ntotal =18 ×4).
+- Le nombre total d’années observées estN =18.
+- La pente de la droite de tendance,bβ2, est calculée à partir des moyennes annuelles
+comme suit :
+bβ2 = 3
+N(N2 −1)
+" NX
+i =1
+i exi − N(N +1)
+2 x
+#
+,
+où exi est la moyenne annuelle pour l’annéei, et x est la moyenne totale.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 65 / 67
+<<<PAGE>>>
+En remplaçant par les valeurs correspondantes :
+bβ2 = 3
+18(182 −1)
+[1419019 −1306678] ≃57.97.
+▷ Ce calcul utilise les moyennes par année et par trimestre présentées dans le tableau
+précédent. Les relations de base des modèles de Buys-Ballot permettent ensuite de
+compléter l’estimation des paramètres restants.
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 66 / 67
+<<<PAGE>>>
+Application : Série agrégée par trimestre- Calcul direct des estimateurs
+bτj = x j − [j +2(N −1)] bβ2 = ⇒
+
+
+
+bτ1 = 6605 −35 ×57.97 ≃4577
+bτ2 = 7932 −36 ×57.97 ≃5845
+bτ3 = 8603 −37 ×57.97 ≃6459
+bτ4 = 7425 −38 ×57.97 ≃5222
+▷ Calcul de β1 et cj :
+
+
+
+bβ1 = 1
+4
+P bτj ≃5526
+bcj = bτj − bβ1
+= ⇒
+
+
+
+bc1 =4577 −5526 ≃ −949
+bc2 =5845 −5526 ≃ +320
+bc3 =6459 −5526 ≃ +933
+bc1 =5222 −5526 ≃ −304
+Le modèle s’écrit donc
+Xt =5526 +58t −949S1
+t +320S2
+t +933S3
+t −304S4
+t
+N. Laïb (CY-T ech) Séries temporelles: Chapitre II. Désaisonnalisation par la méthode de régression linéaire14 janvier 2025 67 / 67

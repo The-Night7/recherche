@@ -1,0 +1,259 @@
+Théorie des graphes
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc
+CY T/e.sc/c.sc/h.sc– ING1-MA
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc 1
+<<<PAGE>>>
+Tournées eulériennes et hamiltoniennes
+Chaînes et cycles eulériens
+Cycles hamiltoniens
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 73
+<<<PAGE>>>
+Chaînes et cycles eulériens
+Chaînes et cycles eulériens
+Définition
+Conditions d’existence
+Calcul de cycle eulérien
+Cycles hamiltoniens
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 74
+<<<PAGE>>>
+Chaîne eulérienne. Cycle eulérien
+Définition (Chaîne/Cycle eulérien(ne) de G = (V, E))
+Chaîne/Cycle contenant toutes les arêtes de E sans répétition
+Définition (Graphe eulérien)
+G = (V, E) eulérien⇐⇒ ∃cycle eulérien de G
+Exemple
+2
+3
+4
+5
+6
+7
+1 8 est
+eulérien
+car (1,2,4,6,8,7,5,3,2,5,6,7,4,3,1) est un cycle eulérien.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 75
+<<<PAGE>>>
+Chaîne eulérienne. Cycle eulérien
+Problème des sept ponts de Königsberg, 1736
+F/i.sc/g.sc/u.sc/r.sc/e.sc– Königsberg (actuellement Kaliningrad) au XVIIIe siècle
+Peut-on passer une fois et une seule par tous les ponts et
+revenir à son point de départ ?
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 76
+<<<PAGE>>>
+Chaîne eulérienne. Cycle eulérien
+Modélisation
+▶ Sommets≡ rives
+▶ Arêtes≡ ponts
+La question posée est donc :
+N
+O
+S
+E est-il eulérien ?
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 77
+<<<PAGE>>>
+Théorème d’E/u.sc/l.sc/e.sc/r.sc
+Théorème (E/u.sc/l.sc/e.sc/r.sc)
+Soit G = (V, E) un graphe connexe tel que card E≥ 1. Alors :
+G eulérien ⇐⇒ tous les sommets sont de degré pair
+Démonstration.
+(⇒) Soit C un cycle eulérien de G.
+Tout passage de v∈ V utilise une arête entrante et une
+arête sortante (distincte de l’entrante).
+Comme un jeu d’arêtes différent est utilisé à chaque
+passage, d(v) est nécessairement pair.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 78
+<<<PAGE>>>
+Théorème d’E/u.sc/l.sc/e.sc/r.sc
+Théorème (E/u.sc/l.sc/e.sc/r.sc)
+Soit G = (V, E) un graphe connexe tel que card E≥ 1. Alors :
+G eulérien ⇐⇒ tous les sommets sont de degré pair
+Démonstration.
+(⇐) Par récurrence forte sur cardE
+▶ cardE = 1 : e = vv′ avec v⁄= v′ impossible⇒ boucle (degré 2)
+▶ Comme cardE > 1, G n’est pas acyclique car n’admet pas de
+sommets de degré 1.
+Soit C un cycle de G, EC l’ensemble de ses arêtes et
+{Hi = (Vi, Ei)}1≤i≤p composantes connexes de G− Ec .
+Comme on enlève un nombre pair d’arêtes, tous les
+sommets de G− EC, et donc de Hi sont de degré pair et Hi
+est eulérien. Soit Ci cycle eulérien de Hi : G étant connexe, il
+existe xi∈ V commun à C et Ci.
+Pour tout i∈ J1, pK, on insère Ci dans C à la place de xi : le
+cycle ainsi obtenu est eulérien.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 79
+<<<PAGE>>>
+Théorème d’E/u.sc/l.sc/e.sc/r.sc
+Corollaire (Existence de chaîne eulérienne)
+Soit G = (V, E) un graphe connexe.
+G admet une chaîne eulérienne ⇐⇒
+au plus deux sommets sont de degré impair
+Démonstration.
+(⇒) cf. théorème d’E/u.sc/l.sc/e.sc/r.sc
+(⇐) D’après le lemme des poignées de main, il y a 0 ou 2
+sommets de degré impair.
+▶ Si il y en a 0, alors G est eulérien.
+▶ Si il y en a 2, alors∃(v, v′)∈ V2, v⁄= v′ et d(v) = d(v′) = 2.
+Soit e /∈ E d’extrémitésv et v′ et G′ = G + e.
+Alors G′ eulérien et C est un cycle eulérien de G′.
+Donc C− e est une chaîne eulérienne de G.
+Démonstrations constructives⇒ algorithmes (récursifs)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 80
+<<<PAGE>>>
+Algorithme de H/i.sc/e.sc/r.sc/h.sc/o.sc/l.sc/z.sc/e.sc/r.sc
+Algorithme de H/i.sc/e.sc/r.sc/h.sc/o.sc/l.sc/z.sc/e.sc/r.sc
+fonction euler(G) : C
+préconditions : G = ( V, E) connexe dont les sommets sont de
+degré pair
+postconditions : C est un cycle eulérien de G
+C← cycle de G
+si E⁄= EC alors
+(H1, . . . ,Hp)← composantes connexes de G− EC
+pour i← 1 à p faire
+Ci← euler(Hi)
+xi← point de contact entre C et Ci
+Insérer Ci en xi dans C
+fin pour
+fin si
+retourner C
+fin fonction
+Théorème
+La complexité de l’algorithme deH/i.sc/e.sc/r.sc/h.sc/o.sc/l.sc/z.sc/e.sc/r.scest O(card E).
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 81
+<<<PAGE>>>
+Algorithme de H/i.sc/e.sc/r.sc/h.sc/o.sc/l.sc/z.sc/e.sc/r.sc
+Exemple
+2
+3
+4
+5
+6
+7
+1 8
+euler(G) avec C = (1,2,4,6,8,7,5,3,1) :
+▶ H1 = G({2,3,4,5,6,7}) en 2
+⇒ euler(H1) = (2,5,6,7,4,3,2)
+⇒ euler(G) = (1, [2,5,6,7,4,3,2],4,6,8,7,5,3,1)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 82
+<<<PAGE>>>
+Cycles hamiltoniens
+Chaînes et cycles eulériens
+Cycles hamiltoniens
+Définition
+Conditions d’existence
+Problème du voyageur de commerce
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 83
+<<<PAGE>>>
+Cycle hamiltonien
+Définition (Chaîne/Cycle hamiltonien(ne) de
+G = (V, E))
+Chaîne/Cycle contenant tous les sommets de V
+sans répétition
+Définition (Graphe hamiltonien)
+G = (V, E) hamiltonien⇐⇒ ∃cycle hamiltonien de G
+Propriété (Cas particuliers de graphes
+hamiltoniens)
+▶ ∀n≥ 3, Kn est hamiltonien
+Nombre de cycles hamiltoniens de K n : (n− 1)!
+2
+▶ Soit G = (V1, V2, E) biparti. Alors :
+G hamiltonien ⇐⇒ card V1 = card V2
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 84
+<<<PAGE>>>
+Cycle hamiltonien
+Propriété (Condition nécessaire)
+Soit G = (V, E) un graphe hamiltonien et V′∈ P(V)\{ / 0, V}.
+nombre de composantes connexes de G− V′≤ card V′
+Théorème (Condition suffisante)
+Soit G = (V, E) un graphe simple tel que :
+∀(v, v′)∈ V2, v et v′ non adjacents ⇒ d(v) +d(v′)≥ card V
+Alors G est hamiltonien.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 85
+<<<PAGE>>>
+Problème du voyageur de commerce (PVC)
+a.k.a. TSP (Traveling Salesman Problem)
+Formulation du problème
+Ensemble de villes toutes reliées directement entre elles
+Objectif : Tournée la plus courte couvrant toutes les villes une
+fois et une seule
+Modélisation
+Soit G = (V, E, w) un graphe complet valué tel que w≥ 0.
+Définition (Valeur d’un cycle hamiltonienC de
+G)
+Valeur de C : w(C) = ∑
+e arête de C
+w(e)
+Définition (Valeur du PVC)
+Valeur de G :
+w∗(G) = min{w(C), C cycle hamiltonien de G}
+⇒ Trouver C∗ tel que w(C∗) = w∗(G) Problème NP-complet
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 86
+<<<PAGE>>>
+Recherche de cycle hamiltonien minimal
+Première solution : recherche exhaustive
+▶ Recenser tous les cycles hamiltoniens
+▶ Calculer leurs valeurs et trouver celui de valeur minimale
+=⇒ Complexité super-exponentielle
+=⇒ Beaucoup trop coûteux, donc inutilisable
+Deuxième solution : algorithme glouton
+▶ Initialisation : sommet du graphe (choix arbitraire)
+▶ Ajout itératif de sommets non encore visités adjacents
+dont les arêtes ont la valuation la plus faible
+Définition (Algorithme ε-approché)
+Fournit une solution approchée C telle que w(C)
+w∗(G)≤ 1
+1− ε
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 87
+<<<PAGE>>>
+Algorithme 1
+2-approché
+Conditions d’application
+Le graphe complet G = (V, E, w) doit être métrique :
+∀(v, v′, v′′)∈ V3, w(vv′′)≤ w(vv′) +w(v′v′′)
+Algorithme 1
+2-approché sur G = (V, E, w)
+1. T : arbre couvrant minimal de G (algorithme de K/r.sc/u.sc/s.sc/k.sc/a.sc/l.sc)
+2. U : graphe obtenu par duplication de chaque arête de T
+U eulérien⇒ D cycle eulérien de U
+3. C : cycle hamiltonien obtenu par « nettoyage » deD
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 88
+<<<PAGE>>>
+Algorithme 1
+2-approché
+Théorème
+L’algorithme précédent est1
+2 -approché pour tout graphe
+complet métrique.
+Démonstration.
+On note C le cycle produit par l’algorithme précédent.
+∀C′ cycle hamiltonien,∀e arête de C′, C′− e arbre couvrant de
+G
+Donc w(C′)≥ w(C′− e)≥ w(T) puis
+w∗(G) = min{w(C′), C′ hamiltonien}≥ w(T)
+Par construction, w(D) = 2w(T).
+Comme G est métrique, C est plus direct que D et
+w(C)≤ w(D).
+w(C)≤ w(D) = 2w(T)≤ 2w∗(G)⇒ w(C)
+w∗(G)≤ 2 = 1
+1− 1
+2
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 89
+<<<PAGE>>>
+Algorithme 1
+2-approché
+Exemple
+B
+CD
+E F
+A
+Matrice de valuation :
+A B C D E F
+A 0 7 9 12 13 11
+B 7 0 16 16 15 13
+C 9 16 0 14 14 16
+D 12 16 14 0 25 5
+E 13 15 14 25 0 24
+F 11 13 16 5 24 0
+1. T = G({df , ab, ac, af , ae})
+2. D = (a, f , d, f , a, e, a, c, a, b, a)
+3. C = (a, f , d, e, c, b, a)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 90

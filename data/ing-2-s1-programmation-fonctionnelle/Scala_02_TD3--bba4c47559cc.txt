@@ -1,0 +1,36 @@
+import scala.annotation.tailrec
+
+/* NEWTON method give x <- (x + a / x) / 2 */
+def squareRoot(a : Double, eps : Double) =
+  {
+    @tailrec
+    def squareRoot_TR(guess : Double) : Double =
+      if (math.abs(guess * guess - a) < eps)
+        guess
+      else
+        squareRoot_TR(0.5 * (guess + a / guess))
+    squareRoot_TR(1.0)
+  }
+
+@tailrec
+def guess[T](isGoodEnough : T => Boolean, improveGuess : T => T, initialGuess : T) : T =
+  if (isGoodEnough(initialGuess)) initialGuess else
+    guess(isGoodEnough, improveGuess, improveGuess(initialGuess))
+
+def squareRoot(a : Double, eps : Double) =
+  guess[Double](x => math.abs(x * x - a) < eps,
+                x => 0.5 * (x + a / x),1.0)
+
+def pi(eps : Double) =
+  guess[Double](x => math.abs(math.sin(x)) < eps, x => x - math.tan(x),3.0)
+
+def fixedPoint(gap : Double, f : Double => Double)(initialGuess : Double) =
+  guess[Double](x => math.abs(f(x) - x) < gap, f)(initialGuess)
+  /* ou "gap * math.abs(x)" pour une condition sur l'erreur relative */
+
+def damping(f : Double => Double)(x : Double) = 0.5 * (x + f(x))
+
+def fixedPoint_damping(gap : Double, f : Double => Double)(initialGuess : Double) =
+  fixedPoint(gap, damping(f)(_))(initialGuess)
+
+def squareRoot(a : Double, eps : Double) = fixedPoint_damping(eps, x => a / x)(1.0)

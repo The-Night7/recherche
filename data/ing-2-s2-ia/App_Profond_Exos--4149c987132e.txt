@@ -1,0 +1,40 @@
+Deep Learning-TP
+7 f´ evrier 2023
+1 Op´ erations de base d’un r´ eseau ConvNet
+Dans cet exercice, il vous est demand´ e de programmer ‘` a la main’ les op´ erations/couches
+de base d’un r´ eseau convolutionnel. L’image ` a l’entr´ ee du r´ eseau ainsi que le ﬁltre seront
+d´ eﬁnis al´ eatoirement.
+2 R´ ecup´ eration et ´ etude des donn´ ees MNIST
+1. R´ ecup´ erez les donn´ ees MNIST.
+2. Pour chaque composante des donn´ ees v´ eriﬁez ses dimensions, le type de son contenu
+et les valeurs extrˆ emales.
+3. Transformez l’ensemble des images d’apprentissage (resp. de test) en une seule
+matrice de r´ eels compris entre 0 et 1,
+4. Visualisez quelques images.
+3 Keras/Tensorﬂow : un premier exemple
+1. Fabriquez un r´ eseau de neurones ayant deux couches cach´ ees adapt´ e ` a un ensemble
+de donn´ ees dont la sortie est binaire et testez le sur le datasetPima Indians onset
+of diabetes dataset .
+4 Keras/Tensorﬂow : notre premier r´ eseau ConvNet
+1. Chargez la base mnist des chiﬀres manuscrits et en extraire 1000 exemples pour
+l’apprentissage et 100 exemples pour le test.
+2. Transformez les ensembles d’apprentissage et de test en tenseurs de dimension 4 :
+nombre images × largeur × longueur × 1 (cette transformation est suppos´ ee par
+le traitement qui va suivre).
+3. Normalisez les niveaux de gris pour les ramener entre 0 et 1.
+4. Transformez les donn´ ees y test et y train en donn´ ees qualitatives (ayant donc
+autant de modalit´ es qu’il y a de chiﬀres, cette transformation est suppos´ ee par le
+traitement qui va suivre).
+1
+<<<PAGE>>>
+5. Cr´ eez un r´ eseau de neurones convolutionnel avec dans l’ordre la couche d’entr´ ee,
+une couche convolutionnelle, une deuxi` eme couche convolutionnelle, une couche
+Pooling, une couche Dropout, une couche Flatten, une couche Dense, une deuxi` eme
+couche Dropout, la couche de sortie.
+NB : le nombre, le type et l’ordre des couches est celui utilis´ e et test´ e par le
+travail sur lequel nous nous sommes bas´ es pour pr´ eparer ce TP. Il n’est en aucun
+cas obligatoire. Les ´ etudiants peuvent essayer des variantes (tout en restant dans
+le cadre des r´ eseaux convolutionnels).
+6. Aﬃchez une description du r´ eseau et v´ eriﬁer la coh´ erence de cette description.
+7. Compl´ etez le programme en ajoutant la compilation, l’apprentissage et l’´ evaluation.
+2

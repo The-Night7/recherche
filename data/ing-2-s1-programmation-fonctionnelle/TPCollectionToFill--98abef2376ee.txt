@@ -1,0 +1,56 @@
+abstract class User(lastName:String,firstName:String,age:Int)
+case class Teacher(lastName:String,firstName:String,age:Int,seniority:Int) extends User(lastName,firstName,age)
+case class Student(lastName:String,firstName:String,age:Int,schoolYear:Int) extends User(lastName,firstName,age)
+object Data{
+val Paul=Teacher("Paul","Paul",22,4)
+val Anne=Teacher("Anne","Anne",30,10)
+val Ali=Teacher("Ali","Ali",35,15)
+val teachers=List(Paul,Anne,Ali)
+val Mari= Student("Mari","Mari",17,1)
+val Mathieu=Student("Mathieu","Mathieu",16,1)
+val Amina=Student("Amina","Amina",37,1)
+val students =List(Mari,Mathieu,Amina)
+
+}
+object requestData{
+import Data._
+/* search for all students of a given school year and sort them ;*/
+def SearchYear(year:Int):List[Student]????
+/* search for all teachers with at least ten years of seniority and sort them ;*/
+def SearchSenSup10():List[Teacher]=???
+/* compute for any school year the number of students ;*/
+def SchoolNumber(annee:Int):Int=????
+/* search for all couples student/teacher where student is at least as old as teacher ;*/
+def couple()=????
+def SchoolYearMarge(year:Int):Double=???
+
+}
+
+
+// Suite
+case class Room(name:String,building:String,capacity:Int)
+case class Course(name:String,teacher:Teacher,promotion:Int,room:Room,startingtime:String,duration:Int)
+
+object Data1{
+import Data._
+val s1=Room("TG201","Turing",40)
+	val s2=Room("CT403","Cauchy",35)
+	val s3=Room("AmphiCY","Cauchy",70)
+	val rooms=List[Room](s1,s2,s3)
+	val c1=Course("IA",Paul,2023,s1,"10h:00",90)
+	val c2=Course("Datamining",Paul,2022,s2,"13h:00",120)
+	val c3=Course("English",Anne,2022,s3,"13h00",120)
+	val ListeCours=List(c1,c2,c3)
+
+}
+object Data1Request{
+
+/*search for all courses of a given teacher ;
+search for all courses of a given student ;
+compute for any room the number of courses ;
+compute for any building the number of courses ;
+ search for any course in a room that does not fit with headcount ;
+ search for any conflit in courses (courses are planned on fixed non-overlapping times).
+*/
+}	
+

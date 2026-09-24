@@ -1,0 +1,76 @@
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Optimisation déterministe
+TD3 - Algorithme de descente
+2023-2024
+EXERCICE 1 Soient A une matrice d’ordre n et à coefficients réels, b ∈ Rn et c ∈ R. On considère la
+fonction quadratique f : Rn → R définie pour tout vecteur x ∈ Rn par son expression
+f (x) = c + bT x + 1
+2 xT Ax
+où A est supposée symétrique et définie positive.
+1. Montrer que si x n’est pas un point critique de f alors −(Ax + b) est une direction de descente de
+la fonction f en x.
+2. En considérant que la direction de descente de f en xk est dk = −(Axk + b), calculer le pas de
+descente optimal.
+3. Écrire l’algorithme de la direction du gradient à pas optimal pour une fonction quadratique.
+EXERCICE 2 Soient (m, n) ∈ N2, B ∈ Mm×n(R) une matrice réelle et β un vecteur de Rm. On considère
+la fonction des moindres carrés f : Rn − →R définie pour tout x ∈ Rn par
+f (x) = 1
+2
+°°°B x − β
+°°°
+2
+.
+Écrire l’algorithme de la direction du gradient à pas optimal pour le problème de minimisation des
+moindres carrées.
+EXERCICE 3 Soit B =
+
+
+1 0
+1 1
+0 1
+
+ et β =
+
+
+2
+1
+3
+
+. On considère la fonction des moindres carrés f : R2 → R
+définie pour tout x ∈ R2 par
+f (x) = 1
+2
+°°°B x − β
+°°°
+2
+1. Montrer que f est une fonction quadratique.
+2. Résoudre le problème de minimisation min
+x∈R2
+f (x).
+<<<PAGE>>>
+TD 3
+EXERCICE 4 On considère la fonction h définie sur l’intervalle [−1, 1] par
+h(x) = x3.
+L ’espaceC 0 ([−1, 1]) des fonctions continues sur [ −1, 1] est muni du produit scalaire défini pour tous
+( f , g ) ∈
+¡
+C 0 ([−1, 1])
+¢2 par
+〈 f , g 〉 =
+Z 1
+−1
+f (x)g (x)d x
+et on note ∥.∥ la norme associée, définie par ∥ f ∥ =
+p
+〈 f , f 〉.
+On souhaite déterminer le polynôme P = a + b X de degré inférieur ou égal à 1 qui approche le mieux h
+au sens des moindres carrés, autrement dit, on s’intéresse au problème de minimisation min
+(a,b)∈R2
+J(a, b)
+où J(a, b) = ∥h − P ∥2.
+1. Mettre ce problème sous la forme d’un problème de minimisation d’une fonction quadratique.
+2. Étudier l’existence et l’unicité des solutions de ce problème.
+3. Résoudre ce problème et donner l’expression du polynôme qui approche le mieux h au sens des
+moindres carrés.
+CY TECH – Optimisation déterministe 2/2

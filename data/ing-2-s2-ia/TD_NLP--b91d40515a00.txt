@@ -1,0 +1,114 @@
+Traitement automatique du langage
+naturel(NLP)
+S´ erie d’exercices
+3 avril 2023
+Objet du TD : TALN : expressions r´ eguli` eres, analyse lexicale, analyse
+syntaxique, analyse s´ emantique. Analyse de sentiments.
+1 Expressions r´ eguli` eres
+1. D´ eﬁnir une expression r´ eguli` ere d´ ecrivant les noms d’utilisateurs du
+r´ eseau social Twitter. Ces derniers se composent de 4 ` a 15 caract` eres
+(uniquement des lettres, des chiﬀres ou des traits de soulignement)
+pr´ ec´ ed´ es par le caract` ere @.´Ecrire un code Python permettant d’ex-
+traire tous les noms d’utilisateurs des tweets du module nltk.
+2. D´ eﬁnir une expression r´ eguli` ere d´ ecrivant les hashtags de Twitter en
+supposant dans un premier temps que ces hashtags ne comportent
+que des des lettres, des chiﬀres ou des traits de soulignement, puis en
+supposant qu’ils peuvent contenir tous les caract` eres sauf les signes de
+ponctuations et les espaces et les caract` eres r´ eserv´ es.´E crire un code
+Python permettant de :
+(a) extraire et comparer des tweets de nltk les hashtags d´ ecrits par les
+deux expressions r´ eguli` eres,
+(b) compter les nombre d’occurences de chaque hashtag et aﬃcher les
+10 hashtags les plus populaires.
+3. D´ eﬁnir une expression r´ eguli` ere d´ ecrivant lesU RL (voir annexe A) et
+appliquez la aux donn´ ees du ﬁchierurl4regs.csv.
+1
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artiﬁcielle
+2 Analyse lexicale
+Ecrire un code python permettant de :
+1. tokeniser et ”nettoyer” un texte,
+2. associer ` a chaque mot son tag POS, puis lister les mots par tag.
+3. Aﬃcher la description d’un tag ou d’une famille de tags (aide Python),
+4. lemmatiser les mots du texte.
+On appliquera ce traitement, par exemple, au texte du ﬁchiertheguardian.txt.
+3 Une grammaire hors-contexte (CFG) pour
+le langage naturel
+On consid` ere la grammaire d´ eﬁnie par les r` egles de production suivantes :
+S −→ si S alors S.
+S −→ soit S soit S.
+S −→ NP VP.
+NP −→ Det N.
+NP −→ PN.
+NP −→ NP Conj NP.
+Det −→ un une le la.
+VP −→ V NP.
+VP −→ V PP.
+PP −→ Prep NP.
+N −→ gar¸ con|ﬁlle|chien|chat|nourriture|restaurant|maison|glace|cantine.
+V −→ mange|aime|monte|va.
+PN −→ il|elle.
+Prep −→ ` a| au.
+Conj −→ et|ou.
+1. V´ eriﬁez que cette grammaire est hors contexte.
+2. Recensez les symboles terminaux et les symboles non terminaux de
+cette grammaire.
+3. V´ eriﬁez que les phrases suivantes sont reconnues par la grammaire et
+donnez leurs arbre d’analyse syntaxique.
+(a) Si la ﬁlle a faim alors elle va au restaurant.
+(b) Soit il mange ` a la maison soit il va au restaurant.
+(c) Si le chat a faim alors soit il mange ` a la maison soit il va au
+restaurant.
+2
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artiﬁcielle
+4 Ambiguit´ e(s) du langage naturel
+On consid` ere la phrase ”Time ﬂies like an arrow’ dont Chomski aﬃrmait
+qu’elle avait 4 sens possibles (d’apr` es le r´ ef´ erence [1]).
+1. Quel(s) type(s) d’ambiguit´ e rencontrons-nous dans cette phrase ?
+2. Construisez les arbres syntaxiques correspondants aux 4 sens ´ evoqu´ es
+par Chomsky.
+5 Un classiﬁeur bay´ esien pour l’analyse des
+sentiments
+Dans cet exercice, notre objectif est de cr´ eer un classiﬁeur bay´ esien ca-
+pable de classer des tweets en deux classes : Positif et N´ egatif. Pour ce faire,
+nous avons besoin de :
+1. R´ ecup´ erer les tweets inclus dans le module NLTK. On remarquera
+que ces tweets sont d´ ej` a r´ epartis en deux ensembles (tweets positifs et
+tweets n´ egatifs).
+2. Tokenizer ces tweets.
+3. Nettoyer les tweets.
+4. Cr´ eer et tester le classiﬁeur.
+R´ ef´ erences
+[1] I. Tellier. Introduction au TALN et ` a l’ing´ enierie linguistique. Universit´ e
+Lille 3. Ann´ ee non pr´ ecis´ ee, 104 pages.
+A Description d’une URL
+La description des URL que nous donnons ici est une description sim-
+pliﬁ´ ee1. Une URL ( url1 = https : //partage.cyu.f r/?loginOp = logout
+et url2 = https : //mail.google.com/mail/u/ 0/#inbox) se compose des
+´ el´ ements suivants :
+1. un sch´ ema(http ou https) suivi de : et de //.
+1. On peut trouver une description plus compl` ete desU RL dans les RF C 3986 et 1738
+les d´ ecrivant, ainsi que dans les articlesWikipedia qui leur sont consacr´ es.
+3
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artiﬁcielle
+2. un nom de domainequi se pr´ esente sous la formewww.dom1.dom2.....dom
+(exemple : www.boursier.com) ou dom1.dom2.....dom (exemple jour-
+nal.lemonde.fr). On supposera que chacune des chaˆ ınes domi com-
+porte des caract` eres alphanum´ eriques et le caract` ere et que la chaˆ ıne
+dom ne comporte que des lettres 2,
+3. un chemin se pr´ esentant sous la forme d’une suite ´ eventuellement
+vide de chaˆ ınes de caract` eres pr´ ec´ ed´ ees par le caract` ere ’/’ (exemple :
+/mail/u/0). Ces chaˆ ınes peuvent contenir tous les caract` eres ` a l’ex-
+ception des cacart` eres r´ eserv´ es ou interdits.
+4. une requˆ eteoptionnelle qui commence par le caract` ere ? ´ eventuellement
+pr´ ec´ ed´ e par le caract` ere/ (exemple : ? loginOp = logout) et pouvant
+comporter tous les caract` eres ` a l’exception de ceux r´ eserv´ es ou inter-
+dits.
+5. un fragment optionnel qui commence par le caract` ere # ´ eventuellement
+pr´ ec´ ed´ e par le caract` ere/ (exemple : # inbox) et pouvant comporter
+tous les caract` eres ` a l’exception de ceux r´ eserv´ es ou interdits.
+2. Cette composante d’une URL comporte d’autres ´ el´ ements servant notamment ` a l’au-
+thentiﬁcation que nous ignorons ici.
+4

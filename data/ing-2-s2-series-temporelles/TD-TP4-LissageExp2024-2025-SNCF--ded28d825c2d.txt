@@ -1,0 +1,232 @@
+D´ epartement de Math´ ematiques
+ING2-MI
+Introduction aux s´ eries temporelles
+TP4: Lissage exponentiel
+January 26, 2025
+Exercice 1. Calcul d’une pr´ evision par lissage exponentiel simple (LES)-A traiter
+avec Tableur .
+Les donn´ ees observ´ ees d’une s´ erie (Xt) temporelle sont consign´ ees dans le tableau ci-dessous.
+1. Repr´ esenter graphiquement cette s´ erie et justifier l’utilisation de la m´ ethode LES pour
+rendre cette s´ erie plus lisse
+2. Calculer une pr´ evision par un LES avec param` etre de lissageα = 0.3 en compl´ etant
+le tableau suivant
+t X t et =Xt − bXt
+1 30
+2 40
+3 40
+4 30
+5 20
+6 20
+7 30
+8 30
+9
+10
+11
+3. Repr´ esenter sur le mˆ eme graphique la s´ erie brute et la s´ erie obtenue par la m´ ethode
+LES. Commenter
+Exercice 2: Lissage exponentiel avec R
+La fonction ets du package forecast permet d’ajuster un mod` ele de lissage exponentiel1.
+L’objectif de cet exercice est de comprendre son fonctionnement sur les donn´ ees SNCF.
+ets(y, model=”ZZZ”, alpha=NULL, beta=NULL, gamma =NULL, ...)
+y s´ erie temporelle dans la classe ts
+model chaine de 3 caract` eres caract´ erisant le mod` ele.
+La premi` ere lettre indique le type d’erreur (”A”, ”M” or ”Z”),
+la seconde lettre indique la tendance (”N”,”A”,”M” or ”Z”)
+et la troisi` eme lettre indique la saison (”N”,”A”,”M” or ”Z”)
+o` u ”A”=additive, ”M”=multiplicative, ”Z”=selection automatique et ”N”=none.
+Par exemple ”ANN” est un lissage exponentiel simple avec une erreur additive.
+1Il existe d’autres fonctions permettant d?ajuster un lissage exponentiel, HoltWinters par exemple
+1
+<<<PAGE>>>
+Valeur alpha: Si NULL alors le param` etre est automatiquement estim´ e
+Valeur beta : Si NULL alors le param` etre est automatiquement estim´ e
+Valuer gamma : Si NULL alors le param` etre est automatiquement estim´ e
+1. Analyse du jeu de donn´ ees
+(a) Transformer les donn´ eesSNCF.txt en une s´ erie temporelle mensuelle avec un
+d´ ebut en janvier 1963 (ts).
+(b) D´ esaisonnaliser la s´ erie (not´ eeserie.des) en utilisant la fonction decompose.
+(c) Repr´ esenter la s´ erie, la s´ erie d´ esaisonnalis´ ee ainsi que le graphique des r´ esum´ es
+mensuels (monthplot). Conclusion.
+Code R
+# a) Chargement des donn´ ees et transformation en s´ erie temporelle
+SNCF <- read.table("SNCF.txt") # Lecture des donn´ ees depuis un fichier texte
+serie <- ts(data = SNCF, start = c(1963, 1), frequency = 12)
+# Cr´ eation d’une s´ erie temporelle avec des observations mensuelles
+# d´ ebutant en janvier 1963
+# b) D´ esaisonnalisation de la s´ erie
+serie.des <- decompose(serie)$trend
+# Extraction de la composante tendance (s´ erie sans saisonnalit´ e)
+# c) Visualisation des donn´ ees
+X11() # Ouvre une nouvelle fen^ etre graphique
+par(mfcol = c(2, 1))
+# Divise la fen^ etre graphique en deux lignes et une colonne
+# Graphique 1 : S´ erie originale avec superposition de la s´ erie d´ esaisonnalis´ ee
+plot(serie, main = "1963-1980", ylab = "Passagers", xlab = "")
+# Affiche la s´ erie temporelle originale
+points(serie.des, type = "l", col = "red")
+# Superpose la s´ erie d´ esaisonnalis´ ee en rouge
+# Graphique 2 : R´ esum´ es mensuels
+monthplot(serie, main = "1963-1980", ylab = "Passagers", xlab = "")
+# Affiche un r´ esum´ e graphique des variations mensuelles
+Figure ...............
+Interpr´ etation des r´ esultats :.....................
+2. Lissage exponentiel simple.
+(a) Cr´ eation des sous-s´ eries :
+• Cr´ eer une sous-s´ erieserie.LES sans tendance pour la p´ eriode de janvier
+1963 ` a d´ ecembre 1967 (window).
+2
+<<<PAGE>>>
+• D´ ecomposer cette s´ erie en :
+– Une s´ erie d’application (serie.LES.app) pour 1963-1966.
+– Une s´ erie de validation (serie.LES.val) pour 1967.
+# Chargement des donn´ ees et cr´ eation des s´ eries
+serie.LES = window(serie, start = c(1963, 1), end = c(1967, 12))
+plot(serie.LES, main = "S´ erie 1963-1967", ylab = "Passagers", xlab = "")
+# D´ ecomposition en s´ eries d’application et de validation
+serie.LES.app = window(serie, start = c(1963, 1), end = c(1966, 12))
+# S´ erie application
+serie.LES.val = window(serie, start = c(1967, 1), end = c(1967, 12))
+# S´ erie validation
+Remarque : La s´ erieserie.LES repr´ esente la sous-p´ eriode 1963-1967. Elle est
+d´ ecompos´ ee pour s´ eparer les donn´ ees utilis´ ees pour ajuster le mod` ele (serie.LES.app)
+et celles r´ eserv´ ees ` a la validation (serie.LES.val).
+—
+(b) Choix du mod` ele :
+• Repr´ esenter la s´ erie d’applicationserie.LES.app.
+• Afficher les r´ esum´ es mensuels (monthplot).
+• Identifier visuellement les propri´ et´ es de la s´ erie (tendance, saisonnalit´ e, vari-
+ance).
+# Repr´ esentation de la s´ erie d’application
+plot(serie.LES.app, main = "S´ erie d’application 1963-1966", ylab =
+"Passagers")
+monthplot(serie.LES.app, main = "R´ esum´ e mensuel (1963-1966)", ylab
+= "Passagers")
+Conclusion visuelle : La s´ erie pr´ esente : .............
+—
+(c) Ajustement du mod` ele LES :
+• Ajuster un mod` ele de lissage exponentiel simple (LES) avec la fonction ets.
+• Afficher et interpr´ eter les param` etres estim´ es (summary).
+# Ajustement du LES
+LES = ets(serie.LES.app, model = "ANN", additive.only = TRUE)
+summary(LES)
+Sorties principales : ....................
+—
+(d) Pr´ evisions :...........................
+• Calculer les pr´ evisions pour 12 mois (1967) avec la fonctionforecast.
+• Comparer graphiquement les pr´ evisions et les donn´ ees r´ eelles.
+3
+<<<PAGE>>>
+# Calcul des pr´ evisions
+prev = forecast(LES, h = 12)
+X11()
+plot(prev, main = "Pr´ evisions pour 1967")
+points(serie.LES.val, type = "l", col = "red", lwd = 2) # S´ erie r´ eelle
+Graphique : .......................
+Interpr´ etation :........................
+3. Lissage exponentiel double.
+a) Cr´ eation des sous-s´ eries :
+• Extraire une sous-s´ erie avec tendance (serie.LED) pour la p´ eriodejanvier
+1970 ` a d´ ecembre 1980.
+• Diviser cette s´ erie en deux :
+– S´ erie d’application (serie.LED.app) : donn´ ees dejanvier 1970 ` a d´ ecembre
+1975.
+– S´ erie de validation (serie.LED.val) : donn´ ees de1976 ` a 1980.
+serie.LED = window(serie, start = c(1970, 1), end = c(1980, 12))
+serie.LED.app = window(serie, start = c(1970, 1), end = c(1975, 12))
+serie.LED.val = window(serie, start = c(1976, 1), end = c(1980, 12))
+—
+b) Choix du mod` ele :
+• Repr´ esenter la s´ erie compl` eteserie.LED et la superposer ` a sa tendance
+(decompose).
+• Afficher le graphique des r´ esum´ es mensuels pour analyser la saisonnalit´ e.
+serie.LED.des = decompose(serie.LED)$trend
+X11()
+par(mfcol = c(2, 1))
+plot(serie.LED, main = "1970-1980", ylab = "Passagers", xlab = "")
+points(serie.LED.des, type = "l", col = "red")
+monthplot(serie.LED, main = "1970-1980", ylab = "Passagers", xlab = "")
+Conclusion :.................
+—
+c) Ajustement du mod` ele LED :
+• Ajuster un mod` ele de lissage exponentiel double (LED) ` a la s´ erie d’application
+(serie.LED.app) avec la fonction ets.
+• Afficher les r´ esultats d´ etaill´ es (summary).
+4
+<<<PAGE>>>
+LED = ets(serie.LED.app, model = "AAN", additive.only = TRUE)
+summary(LED)
+Param` etres estim´ es :..........................; —
+d) Pr´ evisions :
+• Calculer les pr´ evisions pour la p´ eriode de1976 ` a 1980(forecast).
+• Comparer les pr´ evisions avec les donn´ ees r´ eelles (serie.LED.val).
+prev = forecast(LED, h = 60)
+plot(prev)
+points(serie.LED, type = "l", col = "red") # S´ erie r´ eelle
+Interpr´ etation des pr´ evisions :................;
+4. Lissage exponentiel de Holt-Winters
+a) Ajustement du mod` ele :
+• Ajuster un mod` ele de Holt-Winters avec erreur, tendance et saisonnalit´ e
+additives (AAA) sur la s´ erie d’application (serie.LED.app).
+• Examiner les r´ esultats r´ esum´ es (summary).
+HW = ets(serie.LED.app, model = "AAA", additive.only = TRUE)
+summary(HW)
+Figure 1: Param` etres du mod` ele Holt-Winters : En plus des param` etresα etβ, un param` etre
+γ est estim´ e pour capturer la saisonnalit´ e. Les coefficients initiaux pour les 12 mois de la
+saisonnalit´ e sont ´ egalement affich´ es.
+b) Pr´ evisions :
+5
+<<<PAGE>>>
+• Calculer les pr´ evisions de 1976 ` a 1980avec le mod` ele de Holt-Winters
+(forecast).
+• Comparer les pr´ evisions avec les observations r´ eelles.
+• Tester d’autres mod` eles :
+– Mod` ele multiplicatif (MMM).
+– Mod` ele s´ electionn´ e automatiquement (ZZZ).
+# Mod` ele AAA
+Prev1 = forecast(HW, h = 60)
+X11()
+plot(Prev1)
+points(serie.LED, type = "l", col = "red")
+Figure 2: Le mod` ele Holt-Winters AAA capture bien la saisonnalit´ e, mais la tendance est
+l´ eg` erement sur-estim´ ee ` a long terme.
+# Mod` ele multiplicatif
+HW_MMM = ets(serie.LED.app, model = "MMM")
+Prev2 = forecast(HW_MMM, h = 60)
+# Mod` ele automatique
+HW_ZZZ = ets(serie.LED.app, model = "ZZZ")
+Prev3 = forecast(HW_ZZZ, h = 60)
+—
+c) Comparaison des mod` eles :
+• Repr´ esenter les pr´ evisions des trois mod` eles (AAA,MMM, etZZZ) sur des graphiques
+s´ epar´ es.
+• Superposer les r´ esultats sur un mˆ eme graphique pour faciliter la comparaison.
+# Comparaison graphique
+X11()
+par(mfcol = c(3, 1))
+6
+<<<PAGE>>>
+plot(Prev1)
+points(serie.LED, type = "l", col = "red")
+plot(Prev2)
+points(serie.LED, type = "l", col = "red")
+plot(Prev3)
+points(serie.LED, type = "l", col = "red")
+Figure 3: Le mod` ele automatique ( ZZZ) utilise une erreur multiplicative. Bien que
+l’incertitude augmente rapidement, les intervalles de confiance sont mieux calibr´ es et in-
+cluent les vraies valeurs, contrairement aux mod` eles AAA et MMM.
+# Superposition des pr´ evisions
+plot(serie.LED, ylim = c(1800, 5000))
+points(Prev1$fitted, col = 2, type = ’l’)
+points(Prev1$mean, col = 2, type = ’l’)
+points(Prev2$fitted, col = 3, type = ’l’)
+points(Prev2$mean, col = 3, type = ’l’)
+points(Prev3$fitted, col = 4, type = ’l’)
+points(Prev3$mean, col = 4, type = ’l’)
+legend("topleft", c("S´ erie", "AAA", "MMM", "ZZZ"),
+col = c(1, 2, 3, 4), lty = c(1, 1, 1, 1))
+abline(v = 1976, lty = 3)
+7
+<<<PAGE>>>
+Figure 4: Comparaison des mod` eles : Les mod` eles AAA et MMM surestiment la pente. Le
+mod` ele automatique (ZZZ) fournit des intervalles de confiance plus fiables.
+8

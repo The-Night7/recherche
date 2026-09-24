@@ -1,0 +1,249 @@
+Corrigé exam analyse numérique 2022
+1. Exercice 1
+On souhaite approcher le zéro positif de la fonction définie par : .f x= 2x -2x -1 ( )2
+On sait que la valeur exacte est .𝛼=≃1, 3661+
+2
+3
+1. Dans un premier temps, on envisage d'utiliser la méthode du point fixe en utilisant la 
+fonction définie par .g x= 2x - x -1 ( )2
+Expliquer le lien entre  et  et donner la formule de récurrence de cette méthode.f,  g𝛼
+. Les zéros de  sont les points fixes de .f x= 0 ⟺g x=x( ) ( )f g
+ est donc l'unique point fixe positif de . La suite récurrente censée converger vers 𝛼 g 𝛼
+est définie par : ⟺x0
+x=g xn+1 ( n)
+x0
+x= 2x - x -1n+1
+2
+n n
+2. Justifier que  est un point fixe répulsif et conclure quant à la convergence de cette 𝛼
+méthode.
+.g'𝛼= 4𝛼-1 = 4-1 = 1 + 2( ) 1+
+2
+3 3
+On a bien , par conséquent  est un point fixe répulsif.|g'𝛼| > 1 ( )𝛼
+La suite récurrente  ne convergera pas (sauf si ).xn x=𝛼0
+3. On souhaite maintenant approcher  par la méthode de Newton.𝛼
+Donner la formule de récurrence associée.
+La formule de récurrence de la méthode de Newton est : .x=x -n+1n
+f x
+f'x
+( n)
+( n)
+Ce qui donne  :  .x=x -n+1n
+2x -2x -1
+4x -2
+2
+n n
+n
+4. En partant de , calculer les 2 premiers itérés  et .x= 10 x1 x2
+x= 1  ⟹ x=x -= 1-= = 1, 50 1 0
+2x -2x -1
+4x -2
+2
+0 0
+0
+-1
+2
+3
+2
+x=⟹ x=x -=-=-= 1, 3751
+3
+2 2 1
+2x -2x -1
+4x -2
+2
+1 1
+1
+3
+24
+1
+2 3
+2
+1
+8
+2. Exercice 2 
+On considère la matrice  et on s'intéresse au système linéaire  où A=
+2 0 1
+4-1 3
+-2-1 3
+Ax=b
+<<<PAGE>>>
+ est donné par : .b b=
+5
+8
+-4
+1. Justifier que  possède une factorisation . A L U
+Est-elle unique ?
+Les déterminants des 2 sous-matrices principales sont non nuls, donc  possède une A
+factorisation .L U
+De plus, , donc cette factorisation est det A= 2 + 1 =-2≠0( ) -1 3
+-1 3
+4-1
+-2-1
+unique.
+2. Déterminer les 2 matrices  et  de cette factorisation.L U
+La matrice  s'obtient en 2 étapes :  qui donne : ,            U L L -2L2 ← 2 1
+L L+L3 ← 3 1
+2 0 1
+0-1 1
+0-1 4
+  puis  qui donne : .L L - L3 ← 3 2 U=
+2 0 1
+0-1 1
+0 0 3
+La matrice  peut être obtenue par identification grâce à .L=
+1 0 0
+a1 0
+b c1
+L U=A
+L U=⟹ ⟺
+2 0 1
+2a -1a+ 1
+2b -c b+c+ 3
+2a= 4
+a+ 1 = 3
+2b=-2
+-c=-1
+b+c+ 3 = 3
+a= 2
+b=-1
+c= 1
+Donc L=
+1 0 0
+2 1 0
+-1 1 1
+3. Utiliser cette factorisation pour résoudre le système.
+La résolution revient à résoudre 2 systèmes triangulaires : 
+Ax=b ⟺ Ly=b
+Ux=y
+Ly=b  ⟹ y=
+5
+-2
+3
+Ux=y ⟹ x=
+2
+3
+-1
+<<<PAGE>>>
+3. Exercice 3
+On rappelle que la norme matricielle subordonnée à la norme 2 est calculée de la manière 
+suivante :   plus grande valeur singulière de .‖|A‖| = = =2 𝜌AA * 𝜌A A* A
+1. Montrer que si  est une matrice réelle orthogonale (i.e. ), alors Q Q=Q-1T
+.‖|Q‖| = 12
+‖|Q‖| = = = = = 12 𝜌QQ * 𝜌QQ T 𝜌QQ -1 𝜌I(n)
+2. En déduire que si  est une matrice réelle inversible, qui s'écrit sous la forme A
+, avec  orthogonale, alors les conditionnements pour la norme 2 vérifient :A=QR Q
+Cond A=Cond R2( ) 2( )
+A A=A A=QR QR=R Q QR=R Q QR=R I R=R R=R R*T ( ) T T T T -1T
+n
+T*
+Donc  :  ‖|A‖| = = =‖|R‖|2 𝜌A A* 𝜌R R*
+2
+De même, puisque :  , on peut écrire : A=QR=R Q=R Q-1 ( ) -1-1-1-1T
+A A=R Q R Q=R Q Q R=R R=R R-1 -1 T -1T -1T T -1T -1 T -1 -1 T -1 -1 *
+Donc  : 
+.‖|A‖| = = = =‖|R‖|-1
+2 𝜌A A-1 -1 *
+𝜌A A-1 -1 T
+𝜌R R-1 -1 * -1
+2
+Finalement, on a bien : 
+Cond A=‖|A‖|‖|A‖| =‖|R‖|‖|R‖| =Cond R2( ) 2
+-1
+2 2
+-1
+2 2 ( )
+4. Exercice 4
+La résolution d'un problème d'interpolation nous a ramené au système linéaire  avec : Ax=b
+  et  .A=
+1 0 1
+1 0 0
+0 1 0
+0 1 1
+b=
+1
+1
+1
+-1
+1. Ce système n'ayant pas de solution, quel est le problème des moindres carrés par 
+lequel il est remplacé ?
+Le système est surdéterminé, il est remplacé par la recherche de : 
+x=‖Ax - b‖arg min 2
+2
+2. La solution du problème aux moindres carrés précédent fait appel à la décomposition 
+en valeurs singulières :
+A=U 𝛴 V T
+où  est une matrice diagonale de même dimension que  et dont les coefs 𝛴 A
+diagonaux sont les valeurs singulières de  par ordre décroissant.A
+<<<PAGE>>>
+Le pseudo-inverse  de  s'obtient facilement à partir de cette décomposition.A† A
+Donner l'expression de de  en fonction de  et de  dont vous expliciterez les A† U,  V𝛴 †
+composantes.
+Le pseudo-inverse  est donné par :   , A† A=V 𝛴 U† †T
+avec  matrice de taille  diagonale, dont les coefs diagonaux sont les inverses 𝛴† 3 × 4
+de ceux de .𝛴
+3. Calculer la solution de ce problème des moindres carrés à partir de la donnée de : 
+A=†
+1
+4
+3
+4
+1
+4
+-1
+4
+-1
+4
+1
+4
+3
+4
+1
+4
+1
+2
+-1
+2
+-1
+2
+1
+2
+x=A b= =†
+1
+4
+3
+4
+1
+4
+-1
+4
+-1
+4
+1
+4
+3
+4
+1
+4
+1
+2
+-1
+2
+-1
+2
+1
+2
+1
+1
+1
+-1
+3 / 2
+1 / 2
+-1
+4. Question bonus : Justifier que  est de rang maximal et en déduire une expression A
+de son pseudo-inverse  en fonction de  et .A† A A T
+On a bien . On peut le voir en remarquant que la matrice obtenue en rang A= 3 ( )
+éliminant la 1ère ligne est inversible, ou en montrant que les 3 colonnes sont 
+indépndantes.
+Par conséquent, le peudo-inverse peut être obtenu par la formule : 
+A=A A A† T -1 T

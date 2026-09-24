@@ -1,0 +1,328 @@
+Collections
+o Collections are containers of objects. Each container can be  a List, Tuple, 
+Option, Map, etc. A collection may have an arbitrary number of elements.
+o Scala provides rich set of collection library. It contains classes and traits to 
+collect data. 
+o These collections can be mutable or immutable. 
+o Scala.collection.mutable package contains all the mutable collections. You 
+can add, remove and update data while using this package.
+o Scala.collection.immutable contains all the immutable collections. It does not 
+allow you to modify data. 
+<<<PAGE>>>
+Scala immutable Collections Hierarchy
+
+<<<PAGE>>>
+Scala mutable Collections Hierarchy
+
+<<<PAGE>>>
+Trait  Traversable
+o All the collections Traversable implement foreach : def foreach[U](f:Element=>U):Unit :
+o foreach method allows to traverse all the collection’s elements.
+o the f function is applied to each element of the collection.
+o U is an arbitrary result type.
+o Element is the type of the collection’s elements. 
+
+<<<PAGE>>>
+o Collections are created by the same uniform syntax : the name class followed by its
+elements.
+Creation of a new collection
+
+<<<PAGE>>>
+Creation
+of an empty collection
+
+<<<PAGE>>>
+Add or remove an element(Map,Set)
+
+<<<PAGE>>>
+Add or remove an element(Map,Set)
+scala> var z=Set(2,3,4,3)
+z: scala.collection.immutable.Set[Int] = Set(2, 3, 4)
+scala> z+6
+res5: scala.collection.immutable.Set[Int] = Set(2, 3, 4, 6)
+scala> z+(6,6,7)
+res6: scala.collection.immutable.Set[Int] = Set(6, 2, 7, 3, 4)
+scala> var tab=Map.empty[String,Int]
+
+<<<PAGE>>>
+Update operations
+scala> r: Array[Int] = Array(3, 4, 5)
+scala> r(1)=80
+scala> r
+res33: Array[Int] = Array(3, 80, 5)
+
+<<<PAGE>>>
+Update operations
+scala> r: Array[Int] = Array(3, 4, 5)
+scala> r(1)=80
+scala> r
+res33: Array[Int] = Array(3, 80, 5)
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+Conversions 
+o It is possible to translate a collection into another collection such as :
+- toArray
+- toBuffer
+- toList
+- toMap
+- toStream
+-toString
+-toVector
+<<<PAGE>>>
+Exercice
+Write a function scala printDecrease(n : Int) similar to the following C++ one :
+void printDecrease(int n) {
+for (int i=n; i>=0; i--) {
+cout << i << "\n";
+}}
+<<<PAGE>>>
+Exercice
+def printDecrease(n : Int) : Unit = {
+(0 to n).toList.reverse.foreach(println)
+}
+<<<PAGE>>>
+Exercice
+Write a function scala  values(fun: Int => Int, low: Int, high: Int) which generates ,for a 
+given function fun, a list of couples bounded by the integers low et high. For instance :
+values(x=> x*x, -5, 4)
+gives
+List((-5,25), (-4,16), (-3,9), (-2,4), (-1,1), (0,0), (1,1), (2,4), (3,9), 
+(4,16)) 
+<<<PAGE>>>
+Exercice
+def values(fun : Int => Int, low : Int, high : Int) : List[(Int,Int)] = {
+(low to high).toList.map(x => (x,fun(x)))
+}
+<<<PAGE>>>
+Conversions (Example) 
+
+<<<PAGE>>>
+Methods to get information on collections
+
+<<<PAGE>>>
+Methods to get information on collections
+o See also:
+- forall
+- exists
+- sum
+- product
+- min
+- max
+<<<PAGE>>>
+Methods to select or split  collections
+scala> var liste=List(1,2,3,4,5)
+liste: List[Int] = List(1, 2, 3, 4, 5)
+scala> liste head
+res42: Int = 1
+scala> liste last
+res43: Int = 5
+scala> liste tail
+res44: List[Int] = List(2, 3, 4, 5)
+scala> liste init
+res45: List[Int] = List(1, 2, 3, 4)
+scala> liste take(2)
+res47: List[Int] = List(1, 2)
+scala> var z=liste splitAt(2)
+z: (List[Int], List[Int]) = (List(1, 2),List(3, 4, 5))
+
+<<<PAGE>>>
+Methods to select or split  collections
+
+<<<PAGE>>>
+Methods to select or split  collections
+o See the following methods :
+- takeRight
+- dropRight
+- takeWhile
+- span
+- filter
+-filterNot
+- partition
+- slice
+Example
+<<<PAGE>>>
+List transformations
+Example
+
+<<<PAGE>>>
+List transformations
+o There are several transformations available in the standard Scala library such as 
+map, flatMap, filter, sort, foldLeft, and foldRight. 
+o map() is a higher order function.
+Every collection object has the map() method.
+map() takes some function as a parameter.
+map() applies the function to every element of the source collection.
+map() returns a new collection of the same type as the source collection.
+o Distributing a function f on a collection’s elements  by using function map
+<<<PAGE>>>
+List transformations
+Example
+
+<<<PAGE>>>
+List transformations
+Example
+
+<<<PAGE>>>
+List transformations
+o foldLeft and foldRight
+In the functional programming paradigm, foldLeft and foldRight are used to reduce a set of
+values to one value. Typical examples include, but are not restricted to, summing a set of
+numbers in a list, concatenating a set of strings, and so on. Using the foldLeft and foldRight
+operations can help a transition to doing parallel operations in future. The foldLeft (resp. 
+foldRight) operation applies the function passed to every element from left to right (resp. right
+to left).
+o foldLeft
+def foldLeft[B](z: B)(f: (B, A) => B): B
+The foldLeft takes two sets of parameters, they are curried. It accepts an initial value denoted
+by the z parameter of type B and an input parameter that is a function denoted by f. The f
+function accepts parameters of type B and A and outputs B. Ultimately, foldLeft returns B.
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+List transformations
+
+<<<PAGE>>>
+Application(map,Map,mkString)
+o Translate a sentence from french to English
+scala> val dic=Map("le"->"the","chat"->"cat","mange"->"eats","souris"->"mouse","la"->"the")
+dic: scala.collection.immutable.Map[String,String] = Map(le -> the, souris -> mouse, la -> the, 
+mange -> eats, chat -> cat)
+scala> val phrase="Le chat mange la souris"
+phrase: String = Le chat mange la souris
+scala> val sentence1=phrase.toLowerCase
+sentence1: String = le chat mange la souris
+scala> val sentence2=sentence.split(" ")
+sentence2: Array[String] = Array(le, chat, mange, la, souris)
+scala> val sentence3=sentence2.map(dic(_))
+sentence3: Array[String] = Array(the, cat, eats, the, mouse)
+scala> val sentence4=sentence2.mkString(" ")
+sentence4: String = le chat mange la souris
+<<<PAGE>>>
+Application(map,Map,mkString)
+scala> val sentence=phrase
+.toLowerCase.split(" ")
+.map(dic(_))
+.mkString(" ")
+sentence: String = the cat eats the mouse
+<<<PAGE>>>
+Parallel collections
+o Until now, we have only used sequential collections. In some cases, computations may be 
+done independently since they involve independent elements.
+o For example, the distribution of a function on the collection’s elements may be done in 
+parallel, by creating several threads.
+o The parallel computation aims to improve the performances of the computation.
+o A parallel collection is obtained by converting the collection thanks to the method par.
+<<<PAGE>>>
+Parallel collections
+Conceptually, Scala's parallel collections framework parallelizes an operation on a parallel 
+collection by recursively “splitting” a given collection, applying an operation on each 
+partition of the collection in parallel, and re-“combining” all the results that were 
+completed in parallel.
+<<<PAGE>>>
+Parallel collections
+val start=System.nanoTime
+val r=0 to 1000
+val cpt=r.count(_%3==0)
+val micros=(System.nanoTime -start)/1000
+println("%d microseconds".format(micros))
+val start=System.nanoTime
+val r=0 to 1000
+val cpt=r.par.count(_%3==0)
+val micros=(System.nanoTime -start)/1000
+println("%d microseconds".format(micros))
+o Sequential code
+o Parallel code
+<<<PAGE>>>
+Mutability versus immutability
+o Immutability is a very important concept of functional programming. Immutable objects cannot 
+be changed,  however  the values of a mutable object can be changed once it is created. There 
+are several reasons to prefer immutable objects instead of  mutable ones . 
+o Referential transparency is one of the properties of functional programming that always 
+evaluates to the same result with the same input. In other words, there are no side effects of the 
+operation.
+scala> val x="Hello"
+x: String = Hello
+scala> var y=x.reverse
+y: String = olleH
+scala> var z=x.reverse
+z: String = olleH
+"x" is referentially transparent. No side effects after substitution
+<<<PAGE>>>
+Mutability versus immutability
+
+<<<PAGE>>>
+Mutability versus immutability
+State: State in a program is difficult to manage when the variable is shared with more than one 
+thread. Without an explicit lock, such as a mutex, it becomes impossible to detect the correctness 
+of a program.  The following is a program that illustrates the aforementioned point. We use the 
+par method  to perform an operation in parallel:
+
+<<<PAGE>>>
+Mutability versus immutability
+
+<<<PAGE>>>
+Mutability versus immutability
+o With pure functions , there is no need for an explicit lock. Pure functions are functions that
+result in the same output for the same set of inputs without side effects.
+o Immutability is desirable given the advantages it provides compared tomutability. Of course, 
+real-world programming has mutability, but it should be used judiciously.
+<<<PAGE>>>
+Exercices
+Write a function which accepts a string and returns the number of  each word's 
+occurrences.
+<<<PAGE>>>
+Exercices
+scala> def occ(sentence:String)=
+{sentence.split(" ").foldLeft(Map.empty[String, Int]) {
+(count, word) =>
+count + (word -> (count.getOrElse(word, 0) + 1))
+}
+}
+occ: (sentence: String)scala.collection.immutable.Map[String,Int]
+<<<PAGE>>>
+Exercices
+scala> def intermediateResult(text:List[String])=text.map(occ)
+intermediateResult: (text: 
+List[String])List[scala.collection.immutable.Map[String,Int]]
+scala> def merge(text:List[String]): Map[String, Int] = {
+intermediateResult(text).foldLeft(Map[String, Int]()) {
+(el, acc) =>
+el.map {
+case (word, count) =>
+acc.get(word).map(accCount => (word -> (accCount + 
+count))).getOrElse(word -> count)
+} ++ (acc -- el.keys)
+}
+}
+merge: (text: List[String])Map[String,Int]
+<<<PAGE>>>
+Exercices
+scala> var text=List("Hello Mr Alex","How are you, Mr Alex","Hello","You are right")
+text: List[String] = List(Hello Mr Alex, How are you, Mr Alex, Hello, You are right)
+scala> merge(text)
+res2: Map[String,Int] = Map(are -> 2, How -> 1, Mr -> 2, Alex -> 2, You -> 1, you, -> 1, 
+Hello -> 2, right -> 1)
+<<<PAGE>>>
+Exercices
+// a parallel computation
+scala> def intermediateResult(text:List[String])=text.par.map(occ)
+intermediateResult: (text: 
+List[String])scala.collection.parallel.immutable.ParSeq[scala.collection.immutable.M
+ap[String,Int]]

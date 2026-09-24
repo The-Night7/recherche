@@ -1,0 +1,1521 @@
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Th´ eorie des Langages
+Expressions rationnelles, Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir Gaspard F´ erey
+Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+2 octobre 2024
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Rappels
+Langages, grammaires et automates
+▶ Langages rationnels ou r´ eguliersou de type 3
+▶ grammaire de type 3
+▶ expressions r´ eguli` eres
+▶ automates ´ etats finis
+Th´ eor` eme de Kleene
+Un langage est r´ egulier ssi il est reconnu par un automate
+d’´ etats finis.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Langages et automates
+Objectifs
+▶ Une nouvelle m´ ethode de d´ efinition d’un langage : les
+expressions r´ eguli` eres.
+▶ G´ en´ eration d’une expression r´ eguli` ere ` a partir d’un
+automate
+▶ mise en ´ equation
+▶ lemme d’Arden
+▶ Construction de l’automate minimal ` a partir d’une
+expression r´ eguli` ere
+▶ m´ ethode des quotients gauches
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Expressions rationnelles ou r´ eguli` eres
+Construction
+Soit A un alphabet.
+▶ ∀x∈ A, x est une expression r´ eguli` ere (ER)
+▶ ε (mot vide) et ∅ (ensemble vide) sont des ER
+▶ si E1 et E2 sont des ER, E1 + E2 est une ER
+▶ si E1 et E2 sont des ER, E1.E2 est une ER
+Note : le point peut ˆ etre omis.
+▶ si E est un ER, E∗ est une ER
+Exemples
+(0 + 1) ∗ 110∗ +ε A+ = A(A∗)
+(0(10)∗)1 0(1 + ∅) A∪ B = A + B
+(10)∗(01)∗ (0∗ + 1∗)∗ {a, b, c}∗ = (a + b + c)∗
+AnB n
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Remarques
+Remarques
+▶ On s’autorise l’usage de parenth` eses pour clarifier
+l’ordre des op´ erations.
+▶ La concat´ enation est associative donc on note
+A(BC ) = (AB)C = ABC .
+▶ L’´ etoile (∗) est prioritaire sur la concat´ enation (.) qui
+est prioritaire sur l’union (+) :
+▶ AB ∗ = A(B ∗)
+▶ A + BC = A + (BC )
+▶ AB + C = (AB) + C
+▶ A + B ∗ = A + (B ∗)
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Langages rationnels (r´ eguliers)
+D´ efinition
+Soit E une ER. Le langage µ(E ) est d´ efini par
+∀x∈ A,µ (x) ={x} µ(∅) =∅
+µ(E1 + E2) =µ(E1)∪µ(E2) µ(ε) ={ε}
+µ(E1· E2) =µ(E1)∩µ(E2) µ(E∗) =µ(E )∗
+Propri´ et´ e fondamentale
+Un langage L est rationnel (r´ egulier) si et seulement si il
+existe une expression rationnelle (r´ eguli` ere)E telle que
+L =µ(E ).
+Remarque
+On confondra souvent par abus de langage, une expression
+et le langage qu’elle repr´ esente.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Langages et expressions
+Equivalence
+▶ Un langage peut ˆ etre produit par des grammaires
+diff´ erentes (cf TD 1).
+S’il est rationnel, certaines d’entre elles sont de type 3.
+▶ Un langage rationnel peut ˆ etre reconnu par des
+automates diff´ erents (cf TD 2).
+▶ Un langage rationnel peut ´ egalement ˆ etre repr´ esent´ e par
+diff´ erentes expressions (dites ´ equivalentes).
+Exemples
+▶ Les expressions ( a∗b∗)∗ et (a + b)∗ sont ´ equivalentes
+et repr´ esentent toutes les deux le langage{a, b}∗
+▶ Par contre (aa + b)∗ et (aa + aab + bb)∗ ne sont pas
+´ equivalentes, car par exempleb appartient au langage
+associ´ e ` a la premi` ere mais pas ` a celui de la seconde.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Automates et langages
+De l’automate au langage
+▶ D´ eterminer le syst` eme d’´ equations ` a partir de
+l’automate.
+▶ D´ eterminer sa solution : le langage reconnu par
+l’automate.
+▶ R´ esolution via lemme d’Arden.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : algorithme
+Construction d’une ER ` a partir d’un AFD
+Soit < Et, F, Ev, Ψ, q0> un AFD.
+▶ Les ´ ev` enements forment l’alphabet :A := Ev
+▶ Pour chaque ´ etat de ”d´ epart”qi∈ Et on d´ efinit une
+inconnue Yi repr´ esentant le langage reconnu par l’AFD
+si qi ´ etait l’´ etat initial.
+▶ Pour chaque ´ etat de ”d´ epart”qi∈ Et, toutes les
+transitions ( qi, e, qf ) produisent l’´ equation :
+Yi =
+X
+(qi ,e,qf )∈Ψ
+e· Yf (+ ε si qi∈ F )
+▶ La solution (langage reconnu par l’AFD) est la valeur de
+l’inconnue Y0 correspondant ` a l’´ etat initialq0.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : exemple
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : exemple
+Exemple
+Y1
+= aY2 + bY3
+Y2
+= bY1
+Y3
+= aY2 +ε
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : exemple
+Exemple
+Y1 = aY2 + bY3
+Y2
+= bY1
+Y3
+= aY2 +ε
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : exemple
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3
+= aY2 +ε
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Mise en ´ equations : exemple
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Lemme d’Arden
+Lemme
+Soient A et D des langages.
+Soit (E ) une ´ equation de la formeX = A.X + D.
+1. Le langage X = A∗D est une solution de ( E )
+2. Toute solution de ( E ) contient A∗D (solution
+minimale).
+3. Si ε /∈ A alors A∗D est l’unique solution de ( E ).
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ esolution de l’´ equation
+Principe
+▶ G´ en´ erer le syst` eme d’´ equations
+▶ Appliquer plusieurs fois le lemme d’Arden
+(X = A.X + D⇒ X = A∗D) pour r´ esoudre le syst` eme
+d’´ equations
+▶ La solution est le langage reconnu par l’AFD
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+Y1 = aY2 + b(aY2 +ε)
+= (a + ba)Y2 + b
+= (a + ba)bY1 + b
+=Arden ((a + ba)b)∗b
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ esolution de l’´ equation
+Principe
+▶ G´ en´ erer le syst` eme d’´ equations
+▶ Appliquer plusieurs fois le lemme d’Arden
+(X = A.X + D⇒ X = A∗D) pour r´ esoudre le syst` eme
+d’´ equations
+▶ La solution est le langage reconnu par l’AFD
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+Y1 = aY2 + b(aY2 +ε)
+= (a + ba)Y2 + b
+= (a + ba)bY1 + b
+=Arden ((a + ba)b)∗b
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ esolution de l’´ equation
+Principe
+▶ G´ en´ erer le syst` eme d’´ equations
+▶ Appliquer plusieurs fois le lemme d’Arden
+(X = A.X + D⇒ X = A∗D) pour r´ esoudre le syst` eme
+d’´ equations
+▶ La solution est le langage reconnu par l’AFD
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+Y1 = aY2 + b(aY2 +ε)
+= (a + ba)Y2 + b
+= (a + ba)bY1 + b
+=Arden ((a + ba)b)∗b
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ esolution de l’´ equation
+Principe
+▶ G´ en´ erer le syst` eme d’´ equations
+▶ Appliquer plusieurs fois le lemme d’Arden
+(X = A.X + D⇒ X = A∗D) pour r´ esoudre le syst` eme
+d’´ equations
+▶ La solution est le langage reconnu par l’AFD
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+Y1 = aY2 + b(aY2 +ε)
+= (a + ba)Y2 + b
+= (a + ba)bY1 + b
+=Arden ((a + ba)b)∗b
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ esolution de l’´ equation
+Principe
+▶ G´ en´ erer le syst` eme d’´ equations
+▶ Appliquer plusieurs fois le lemme d’Arden
+(X = A.X + D⇒ X = A∗D) pour r´ esoudre le syst` eme
+d’´ equations
+▶ La solution est le langage reconnu par l’AFD
+Exemple
+Y1 = aY2 + bY3
+Y2 = bY1
+Y3 = aY2 +ε
+Y1 = aY2 + b(aY2 +ε)
+= (a + ba)Y2 + b
+= (a + ba)bY1 + b
+=Arden ((a + ba)b)∗b
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Langages et automates
+Du langage ` a l’automate minimal
+▶ D´ eterminer les ´ etats ` a partir du langage
+▶ D´ eterminer les transitions
+▶ → construction via quotients gauches
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Quotients gauches
+D´ efinition
+Soit L un langage sur un alphabet A.
+Les quotients gauches de L sont not´ esa−1L pour a∈ A et
+sont d´ efinis par :
+a−1L ={w∈ A∗/aw∈ L}
+C’est l’ensemble des mots de L commencant par le symbole
+a priv´ e de ce premier symbolea.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Quotients gauches
+Propri´ et´ e
+Soient L1 et L2 deux langages sur un alphabet A.
+Soient a, b∈ A tels que a̸= b.
+a−1(a) = ε
+a−1(b) = ∅
+a−1(L1L2) =
+ (a−1L1)L2 + a−1L2 si ε∈ L1
+(a−1L1)L2 sinon
+a−1(L1 + L2) = a−1L1 + a−1L2
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Quotients gauches
+Th´ eor` eme
+L’ensemble des quotients gauches de L, Q(L), est fini.
+Proposition
+Soit A un AFD et L = L(A). On a Q(L) ={Lq/q∈ L} fini.
+On peut construire un automate minimal qui reconnait L et
+dont chaque ´ etat correspond ` a un ´ el´ ement deQ(L).
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Construction de l’automate
+Principe
+▶ Chaque quotient est un ´ etat de l’automate
+▶ Chaque transition permet de passer d’un ´ etat ` a l’autre
+▶ L’´ etat final est le quotient cha ˆ ıne vide (ε)
+▶ L’´ etat poubelle est le quotient vide (∅)
+Exemple
+Soit l’E.R. L = 1∗0(0 + 1)
+0−1L = 0 + 1 et 1−1L = L
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Construction de l’automate
+Principe
+▶ Chaque quotient est un ´ etat de l’automate
+▶ Chaque transition permet de passer d’un ´ etat ` a l’autre
+▶ L’´ etat final est le quotient cha ˆ ıne vide (ε)
+▶ L’´ etat poubelle est le quotient vide (∅)
+Exemple
+Soit l’E.R. L = 1∗0(0 + 1)
+0−1(0 + 1) =ε et 1−1(0 + 1) =ε
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Construction de l’automate
+Principe
+▶ Chaque quotient est un ´ etat de l’automate
+▶ Chaque transition permet de passer d’un ´ etat ` a l’autre
+▶ L’´ etat final est le quotient cha ˆ ıne vide (ε)
+▶ L’´ etat poubelle est le quotient vide (∅)
+Exemple
+Soit l’E.R. L = 1∗0(0 + 1)
+0−1ε =∅ et 1−1ε =∅
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Construction de l’automate
+Principe
+▶ Chaque quotient est un ´ etat de l’automate
+▶ Chaque transition permet de passer d’un ´ etat ` a l’autre
+▶ L’´ etat final est le quotient cha ˆ ıne vide (ε)
+▶ L’´ etat poubelle est le quotient vide (∅)
+Exemple
+Soit l’E.R. L = 1∗0(0 + 1)
+0−1∅ =∅ et 1−1∅ =∅
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+R´ ecapitulons
+Langage
+Grammaire
+Grammaire
+de type 3
+Langage rationnel
+TD 1
+Automate fini
+TD 2
+TD 2
+Automate fini
+complet Automate fini
+d´ eterministe
+complet
+TD 2
+TD 2
+Expression r´ eguli` ere
+TD 3
+TD 3
+Automate fini
+minimal
+TD 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Algorithme de d´ eterminisation
+Principe
+▶ Construire une expression r´ eguli` ere ` a partir de
+l’automate fini non d´ eterministe (mise en ´ equation et
+lemme d’Arden).
+▶ Appliquer les quotients gauches pour construire
+l’automate fini minimal d´ eterministe ´ equivalent ` a
+l’automate fini non d´ eterministe.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Preuve du lemme d’Arden
+Lemme
+(E ) X = A.X + D
+1. X = A∗D est solution de ( E ).
+2. A∗D est la solution minimale.
+3. Si ε /∈ A alors A∗D est l’unique solution de ( E ).
+Preuve de 1.
+A∗D = (A+ +ε)D
+= (AA∗ +ε)D
+= (AA∗)D +εD
+= A(A∗D) + D
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Preuve du lemme d’Arden
+Lemme
+(E ) X = A.X + D
+1. X = A∗D est solution de ( E ).
+2. A∗D est la solution minimale.
+3. Si ε /∈ A alors A∗D est l’unique solution de ( E ).
+Preuve de 2.
+Soit X solution de ( E ).
+Montrons par r´ ecurrence surn que AnD⊂ X :
+▶ n = 0 : D⊂ X
+▶ n> 0 : AnD = A(An−1D).
+Or par hypoth` ese de recurrence,An−1D⊂ X
+Donc AnD = A(An−1D)⊂ AX⊂ X .
+Donc∀n, AnD⊂ X et on en conclut A∗D⊂ X .
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Expressions
+rationnelles,
+Lemme d’Arden et
+Quotients gauches
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Expressions
+r´ eguli` eres
+Construction de
+langages rationnels
+Construction
+d’automates finis
+minimaux
+Conclusion
+Bonus : Preuve du
+lemme d’Arden
+Preuve du lemme d’Arden
+Lemme
+(E ) X = A.X + D
+1. X = A∗D est solution de ( E ).
+2. A∗D est la solution minimale.
+3. Si ε /∈ A alors A∗D est l’unique solution de ( E ).
+Preuve de 3.
+Supposons ε /∈ A. Soit X solution de ( E ) et w∈ X .
+Montrons w∈ A∗D par r´ ecurrence forte sur|w|.
+▶ |w| = 0 : w =ε possible ssi w∈ D⊂ A∗D.
+▶ |w|> 0 : si w /∈ D, alors n´ ecessairementw∈ AX .
+Donc w = aw′ avec a∈ A et w′∈ X .
+Comme ε /∈ A,|a|> 0 et|w′|<|w|.
+Par hypoth` ese de r´ ecurrence,w′∈ A∗D et donc
+w∈ AA∗D⊂ A∗D.

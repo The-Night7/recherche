@@ -1,0 +1,80 @@
+ING2-GMA
+Mini Projet Compressive Sensing
+D´ epartement :Math´ ematiques Date de rendu : 6 avril 2025
+Nombre de pages : 4 Heure limite : 23h59
+Le but de ce mini-projet est de prouver une compr´ ehension minimale du proc´ ed´ e de Compressive Sensing.
+1 Partie th´ eorique
+1. En compressive sensing, le probl` eme principal ` a r´ esoudre est celui de la minimisation𝓁0 :
+(P0) : min‖α‖0 sous contrainte Aα =y.
+o` uy est le vecteur de mesures et A = ΦD, avec D le dictionnaire et Φ la matrice de mesure.
+Expliquer pourquoi ce probl` eme est diﬃcile ` a r´ esoudre, et pourquoi on lui pr´ ef` ere des versions
+modiﬁ´ ees.
+2. Donner l’´ enonc´ e exact de deux probl` emes qui sont trait´ es ` a la place de (P0), et pr´ eciser en d´ etail
+la m´ ethode ou l’algorithme qui est utilis´ e pour les r´ esoudre.
+Autour de OMP :
+3. Expliquer de mani` ere rigoureuse pourquoi ` a chaque it´ eration de OMP, l’atome s´ electionn´ e est
+diﬀ´ erent des atomes s´ electionn´ es dans les it´ erations pr´ ec´ edentes.
+4. Est-ce le cas pour l’algorithme StOMP ? Justiﬁer tr` es clairement votre r´ eponse.
+5. Mˆ eme question pour CoSaMP.
+2 Codage de base
+Nous avons vu que le crit` ere d’arrˆ et principal des algorithmes OMP, StOMP et CoSaMP ´ etait que la
+norme du r´ esidu soit inf´ erieure ` a la tol´ eranceε.
+En r´ ealit´ e, lorsqu’on connaˆ ıt le niveau de parcimonies de notre signal, le crit` ere d’arrˆ et le plus adapt´ e
+pour OMP et pour StOMP pourrait ˆ etre le nombre d’atomes s´ electionn´ es. On pourrait les arrˆ eter d` es
+la s´ election des atomes.
+1. Coder les 3 algorithmes de codage parcimonieux, OMP, StOMP et CoSaMP en laissant ` a l’utilisateur
+la possibilit´ e de choisir, lorsque cela est possible, le crit` ere d’arrˆ et : norme du r´ esidu ou nombre
+d’atomes s´ electionn´ es.
+2. Votre code doit avoir la forme de fonctions portant le nom de chaque algorithme avec comme
+arguments le signal x, le dictionnaire D, le nombre maximal d’it´ erations iterMax ainsi que les
+autres arguments ε, t ou s.
+3. Vous pr´ eciserez sur votre rapport les sorties de chacune de ces fonctions, ainsi que les modiﬁcations
+et am´ eliorations que vous auriez pu apporter par rapport ` a ce que nous avons vu en s´ eance.
+4. Coder ´ egalement les 4 matrices de mesure vues en cours. Vous pourrez, si vous le souhaitez, en
+rajouter d’autres en justiﬁant vos choix.
+5. Coder une fonction permettant de calculer la coh´ erence mutuelle entre 2 matrices.
+1
+<<<PAGE>>>
+3 G´ en´ eration d’un dictionnaire et de 4 signaux
+1. G´ en´ erer al´ eatoirement un dictionnaire de taille 100× 180. Vous pr´ eciserez sur votre rapport le
+choix de la m´ ethode. Attention, les atomes doivent ˆ etre normalis´ es.
+2. G´ en´ erer 5 signaux 4-parcimonieux dans ce dictionnaire. Vous d´ eposerez le dictionnaire et les 5
+signaux dans des ﬁchiers Dico.csv et signaux.csv.
+4 Comparaison des algorithmes de codage parcimonieux
+1. Tester les 3 algorithmes de codage parcimonieux sur les 5 signaux. Attention au choix du crit` ere
+d’arrˆ et.
+2. D´ eﬁnir un crit` ere de comparaison d’eﬃcacit´ e de ces algorithmes, et donner votre conclusion.
+5 Choix de la matrice de mesure
+Aﬁn de Tester le proc´ ed´ e complet de compressive sensing, vous devez choisir une matrice de mesure
+parmi les 4 d´ ej` a cod´ ees et pour des tailles de mesurem variant entre 5%, 10%, 25%, 40% et 50% de la
+taille du signal.
+1. Expliquer la m´ ethode que vous allez suivre pour d´ ecider.
+2. Eﬀectuer vos calculs et aﬃcher vos r´ esultats.
+6 Proc´ ed´ e complet de compessive sensing
+1. Utiliser la matrice de mesure s´ electionn´ ee pour g´ en´ erer les 5 vecteurs de mesure associ´ es aux 5
+signaux g´ en´ er´ es. Vous les d´ eposerez dans un ﬁchiermesures.csv.
+2. Expliquer comment reconstruire les signaux ` a partir de ces mesures.
+3. Eﬀectuer cette reconstruction et expliquer comment ´ evaluer la qualit´ e de celle-ci.
+7 Rendus attendus
+Votre rendu doit se faire sous la forme d’un seul ﬁchier : une archive .zip, portant les noms des membres
+du groupe.
+Il doit ˆ etre adress´ e, par mail (et non pas par Teams), ` a votre professeur (abourhat@cyu.fr) avant dimanche
+6 avril 23h59 dernier d´ elai.
+L’archive doit contenir :
+• un rapport pdf contenant les r´ eponses ` a la partie th´ eorique, les justiﬁcations des choix de param` etres
+ainsi que les r´ esultats et discussions menant ` a d´ ecision.
+Attention, ce rapport ne doit pas contenir de code. Mis ` a part les r´ eponses th´ eoriques, on donnera
+les r´ esultats de pr´ ef´ erence sous forme de graphiques ou de tableaux.
+• un ou des ﬁchiers .py contenant les fonctions omp, stomp, cosamp pour les algos de codage
+parcimonieux, les g´ en´ erations de matrices de mesure, du dictionnaire et des signaux, le calcul
+de coh´ erence et la reconstruction.
+• les ﬁchiers Dico.csv, signaux.csv, matrice-mesure.csv et mesures.csv ainsi que Signaux-reconstruits.csv
+contenant les 4 signaux reconstruits.
+2
+<<<PAGE>>>
+8 Annexes
+Algorithme StOMP :
+3
+<<<PAGE>>>
+Algorithme CoSaMP :
+4

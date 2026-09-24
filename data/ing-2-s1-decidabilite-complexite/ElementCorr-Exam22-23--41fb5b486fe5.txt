@@ -1,0 +1,49 @@
+  
+ 
+Eléments de Correction Examen session principale 
+2022-2023 
+ 
+Exercice 1 : Machines de Turing 
+ 
+1. Soient a et b deux symbôles et soit L le langage = {anb2n | n ∈ℕ}.  
+Définir une machine de Turing permettant de 'reconnaître' les mots de ce langage. 
+ 
+2. Modifier cette machine pour reconnaître le langage { an+1b2n | n ≥ 1}. 
+Exercice 2 
+Idem réduction depuis arrêt existenciel ou universel vers H_empty (cf TD4) par effaçage du ruban 
+ 
+Exercice 3 
+Considérons l’algorithme suivant: 
+Pour tout 4-uplets de sommets (x, y, z, t) vérifier s’il est un cycle de de longueur égale a 4. 
+ 
+La complexité de cet algorithme est O(n^4) ,  
+d’où la complexité de l’algorithme de résolution du problème est polynomiale. 
+Donc le problème est dans la classe P. 
+ 
+Exercice 4 
+Le problème est dans NP car étant donnée une suite de sommets s, on peut vérifier 
+en temps polynomial si s est un cycle de de longueur egale a  |V|/2  dans G. 
+Donc le problème est dans la classe NP. 
+ 
+Exercice 5 
+— Le problème est dans NP car étant donne un plan de table, on peut vérifier en temps polynomial si 
+pour chaque chevalier, il n’est pas a cote d’un ennemi. 
+— Nous allons faire la réduction à partir du problème du cycle hamiltonien 
+Soit I = <G =(V, E)> une instance du problème du cycle hamiltonien. 
+Maintenant, nous allons transformer cette instance en une instance I2 du problème des Chevaliers de la 
+table ronde de la façon suivante : 
+— chaque sommet du graphe est un chevalier. 
+— Deux chevaliers sont des ennemis si et seulement si il n’existe pas une arête dans G impliquant les 
+deux sommets représentés par ces deux chevaliers 
+ 
+Cette transformation peut se faire en temps polynomial  
+Il est facile de prouver que : 
+— Si il existe un cycle hamiltonien dans G, alors il existe un plan de table. Il suffit 
+de voir qu’une arête dans G correspond au fait que les deux chevaliers ne sont 
+pas ennemis. Donc le plan de table correspond au cycle hamiltonien. 
+— Si il existe un plan de table alors il existe un cycle hamiltonien dans G. 
+ 
+Donc le problème des Chevaliers de la table ronde est NP-complet. 
+ 
+ 
+ 

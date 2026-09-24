@@ -1,0 +1,127 @@
+ 
+ING2-MI 
+RATTRAPAGE DE DATAMINING 2 
+ 2023-2024 
+Durée : 2h 
+Examen papier 
+Calculatrice autorisée 
+4 feuilles R/V 
+ 
+Le barème est donné à titre indicatif mais est susceptible d’évoluer. 
+Questions générales                                                                                                         3 points 
+1) Expliquez pourquoi la méthode des forêts aléatoires est stochastique ? 
+2) Expliquez brièvement la signification de l ’importance des variables dans les forêts aléatoires et 
+la façon dont elle est calculée. 
+3) Rappelez la définition du sur-apprentissage et citez une méthode qui y est robuste en justifiant 
+votre réponse. 
+Exercice 1 :    Réseau de neurones                                                                                    8 points 
+On considère le jeu de données décrit ci-dessous.  
+The dataset is designed to use geographical (Fire location), temporal (Month and Day), Fire Weather 
+variables (FFMC, DMC,DC,ISI) and weather variables (RH, Temp, Rain, Wind) to predict the area burned 
+by forest fires. Data were obtained from the UCI Machine Learning database 
+(http://archive.ics.uci.edu/ml/datasets/Forest+Fires) and contain details for 517 fires found in the 
+Montesinho Natural Park in Portugal. 
+Name Description Type Value 
+X x-axis spatial coordinate Numeric 1 to 9 
+Y y-axis spatial coordinate  Numeric 2 to 9 
+month month of the year Categorical 'jan' to 'dec' 
+day day of the week Categorical 'mon' to 'sun' 
+FFMC FFMC index from the FWI system Numeric 18.7 to 96.20 
+DMC DMC index from the FWI system Numeric 1.1 to 291.3 
+DC DC index from the FWI system Numeric 7.9 to 860.6 
+ISI ISI index from the FWI system Numeric  0.0 to 56.10 
+temp temperature in Celsius degrees Numeric 2.2 to 33.30 
+RH relative humidity in % Numeric 15.0 to 100 
+wind wind speed in km/h Numeric 0.40 to 9.40 
+rain outside rain in mm/m2 Numeric 0.0 to 6.4 
+fire  "yes" if the area is burned and "no" elseif Categorical "yes" to "no" 
+  
+On souhaite construire un réseau de neurones pour prédire si une zone est brulée en fonction des autres 
+variables. On utilise l’instruction suivante pour définir le réseau de neurones. 
+modele = keras.Sequential([ 
+layers.Input(shape=(n1,)), 
+layers.Dense( 15 , activation = 'tanh'), 
+layers.Dense( 10 , activation = 'tanh'), 
+layers.Dense( n2 , activation='??') 
+]) 
+ 
+1) Avant d'utiliser les lignes de code ci-dessus, nous procédons à des tâches de prétraitement qui 
+consistent à transformer les variables explicatives. Les variables qualitatives sont alors représentées à 
+l'aide de l'encodage one-hot dont le principe est rappelé en annexe. Quelle(s) transformation(s) 
+proposez-vous pour les variables numériques ? Expliquez l'intérêt de ces transformations. 
+<<<PAGE>>>
+2 
+ 
+2) Combien y-a-t-il de neurones en entrées (n1) ? 
+3) Quelle est la valeur de n2 ? 
+4) Quelle est la fonction d’activation sur la couche de sortie ? 
+5) Dessiner schématiquement le réseau de neurones ?  
+6) Rappelez la définition des paramètres dans un réseau de neurones. Calculez le nombre de paramètres 
+de ce réseau (vous justifierez, bien entendu, vos calculs). 
+7) Quelle valeur calcule le réseau de neurones en sortie ? 
+8) Ecrire la fonction qui exprime un neurone de la première couche cachée en fonction de la couche 
+d’entrée. 
+ 
+Exercice 2 :                                                                                                                         9 points 
+   The aim is to distinguish between 11 different textures (Grass  lawn, Pressed calf leather, Handmade paper, 
+Raffia looped to a high pile, Cotton canvas, ...), each pattern (pixel) being characterised by 40 numerical attributes. 
+The data set contains 11 classes of 500 instances, 
+Grass lawn   (D09)   
+Pressed calf leather  (D24)  
+Handmade paper  (D57)  
+Raffia looped to a high pile:        (D84)  
+Cotton canvas   (D77)  
+Pigskin    (D92)  
+Beach sand:      (D28)  
+Beach sand    (D29)  
+Oriental straw cloth:  (D53)  
+Oriental straw cloth  (D78)  
+Oriental grass fiber cloth            (D79) 
+  
+P. Brodatz "Textures: A Photographic Album for Artists and Designers", Dover Publications,Inc.,New York, 1966. 
+A. Forêt aléatoire 
+Nous donnons ci-dessous une trace de la création d’une forêt aléatoire pour ce problème et d’un début 
+d’analyse de ses propriétés. 
+1) Combien y-a-t-il d’arbres dans la for êt ? Pour une nouvelle observation, expliquez comment le modèle 
+fait pour calculer la probabilté d’appartenir à chacune des classes. 
+2) Commentez la matrice de confusion et les taux d’erreur. 
+3) Quelles variables sont les plus déterminantes pour le modèle ? 
+ 
+
+<<<PAGE>>>
+3 
+ 
+ 
+B. Naïve Bayes 
+On considère maintenant le classifieur Bayésien. 
+1) Quelles sont les deux hypothèses nécessaires à la méthode Naïve Bayes sur cet exemple ? 
+2) A quoi correspondent les lignes suivantes ? Commentez les résultats. 
+ 
+3) A quoi correspondent les colonnes 1 et 2 dans les tableaux suivants? 
+ 
+ 
+4) Si on ne considère que les variables X1 et X2, écrire le modèle qui permet de calculer la probabilité de la 
+classe D09. 
+On obtient la matrice de confusion suivante sur une base de validation/test.  
+
+<<<PAGE>>>
+4 
+ 
+ 
+5) Même si la matrice de confusion et le taux d’erreur n’ont pas été calculés sur le même jeu de données, 
+expliquez pourquoi on peut tout de même comparer les résultats des deux modèles, forêt aléatoire et 
+Naive Bayes. 
+6) Calculer le taux d’erreur. 
+7) Commentez les résultats 
+C. Préparation des données 
+1) Quels prétraitements des variables ont été nécessaires avant de construire les modèles. Soyez précis dans 
+votre réponse.  
+2) Ci-dessous, le nuage de points des variables 2 à 2 (uniquement sur les 10 premières variables mais les 
+autres graphiques sont du même type). Que pouvez -vous dire  ? Quel prétraitement aurait été 
+nécessaire ? 
+ 
+ 
+Annexe :   rappel de l’encodage one-hot                                                                                                                   
+L'encodage one-hot, ou encodage 1 parmi  n, consiste à représenter une variable qualitative ayant n modalités  
+sur n bits dont un seul prend la valeur 1, le numéro du bit valant 1 étant le numéro de la valeur prise par 
+la variable. 

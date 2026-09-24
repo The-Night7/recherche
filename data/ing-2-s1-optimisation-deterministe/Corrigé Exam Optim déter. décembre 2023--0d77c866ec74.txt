@@ -1,0 +1,165 @@
+Corrigé Exam Optim déter. décembre 2023
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+Réponses :
+1)  est symétrique, et ses valeurs propres sont positives ou nulles.A'A=A AT
+En effet, si  est une valeur propre de , il existe , tel que .𝜆 A'A x≠0A'Ax=𝜆x
+On a alors : .𝜆‖x‖=<𝜆x,x> =<A'Ax,x> =<Ax,Ax> =‖Ax‖ ⩾02 2
+ Si on lui ajoute , avec , la matrice  ne possède que des valeurs 𝜆Ip 𝜆> 0A'A+𝜆I p
+propres strictement positives. (Rappel : non inversible admet  comme valeur ⟺0
+propre).
+Cette matrice  est donc bien inversible.A'A+𝜆I p
+2) Sachant que , on peut écrire :‖x‖=x'x=x'I x2
+p
+f x=b - Ax'b - Ax+𝜆x'I x=b'b+x'A'Ax - x'A'b - b'Ax +𝜆x'I x( ) ( ) ( ) p p
+f x=‖b‖- 2x'A'b +x'A'A+𝜆I x( ) 2 ( p)
+(Remarque : )x'A'b=<x,A'b> =<A'b,x> =A'b'x=b'Ax( )
+Donc  s'écrit bien sous la forme :   avec f x( ) c+x'd+x'Bx1
+2
+c=‖b‖ 2
+d=-2A'b
+B= 2A'A+𝜆I( p)
+ est une constante,  est un vecteur constant et  est une c d=A'b B= 2A'A+𝜆I( p)
+matrice symétrique.  est donc bien une fonction quadratique.f
+3) .∇f x=Bx+d= 2A'A+𝜆I x -2A'b( ) ( p)
+4) On sait que  est symétrique et on a montré que ses valeurs propres étaient A'A+𝜆I p
+strictement positives. Par conséquent elle est définie positive.
+<<<PAGE>>>
+5)  On s'intéresse à : .P f x( ) min
+x∈Rp
+( )
+a) La matrice hessienne de  est  définie positive, donc  est f B= 2A'A+𝜆I( p)f
+strictement convexe. De plus le gradient s'annule bien en un seul point .x*
+Conclusion : possède une unique solution.P( )
+b)  est solution de x* ∇f x= 0   ⟹ 2A'A+𝜆I x -2A'b= 0* ( p) *
+⟹ x=A'A+𝜆I A'b* ( p)-1
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+Réponses :
+1) f x= 30 +x - x+x+ 2x+x x=    c+b'x+x'Ax( ) 1 2
+2
+1
+2
+2 1 2
+1
+2
+avec et  est bien symétrique. Donc  est bien quadratique.
+c= 30
+b= 1
+-1
+A= 2 1
+1 4
+B f
+2) La matrice hessienne de  est  qui est symétrique définie positive (  et f A tr A> 0 ( )
+).  Donc  est strictement convexe.det A= 7 > 0 ( )f
+<<<PAGE>>>
+3) .∇f x= 0 ⟺ Ax+b= 0 ⟺ x=- A b=-=* * *-1 1
+7
+4-1
+-1 2
+1
+-1
+-5
+7
+3
+7
+La convexité stricte garantit que  est l'unique solution.x*
+4) Méthode de descente :
+a)  direction de descente à partir de .d x ⟺<d,∇f x>⩽0 ( )
+b) Définissons la fonction . Sa dérivée est donnée par : g t=f x+td( ) ( )
+g't=<d,∇f x+td> =d A x+td+b( ) ( ) T( ( ) )
+g't= d Ax +t d Ad+ d b( ) T T T
+g't= d Ax+b +t d Ad( ) T( ) T
+Cette dérivée s'annule pour la valeur : 
+t=-=-d Ax+b
+ d Ad
+T( )
+T
+d∇f x
+ d Ad
+T ( )
+T
+Donc .𝜌=-=-* d∇f x
+ d Ad
+T ( )
+T
+d Ax+b
+ d Ad
+T( )
+T
+c) Dans le cas de la méthode du gradient, on choisit .d=-∇f x=- Ax+b( ) ( )
+L'expression du pas optimal devient : .𝜌=-=* d∇f x
+ d Ad
+T ( )
+T
+‖d‖
+ d Ad
+2
+T
+i)  et .X=⟹d=- AX+b=0
+1
+0 0 ( 0 ) -3
+0 𝜌= =0
+9
+18
+1
+2
+D'où : .X=X+𝜌d=1 0 0 0
+-1
+2
+0
+ii)   et  .d=- AX+b=1 ( 1 )
+0
+3
+2
+𝜌= =1
+9
+9
+4 1
+4
+D'où : .X=X+𝜌d=2 1 1 1
+-1
+2
+3
+8
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+<<<PAGE>>>
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+Réponses :
+1) On sait que lorsque  est convexe et différentiable, nous avons : f
+∀x,y∈H     f y⩾f x+ <∇f x,y - x>( ) ( ) ( )
+Si maintenant,  vérifie la condition  :x*
+.∀x∈H, <∇f x,x - x>⩾0* *
+La caractérisation de la convexité appliquée avec  donne alors : x=x *
+∀y∈H     f y⩾f x+ <∇f x,y - x>⩾f x( ) * * * *
+Donc  est un minimum global de  sur .f x * f H
+2) On cherche à résoudre .P( )
+a) Soient  et  deux éléments de  et .x=x,x' (1 2 )y=y,y' ( 1 2 )H t∈0, 1 [ ]
+On sait que :    et  x+x1 2 ⩽4
+x+ 3x1 2 ⩽9
+y+y1 2 ⩽4
+y+ 3y1 2 ⩽9
+On en déduit immédiatement que :
+tx+ 1- t y+tx+ 1- t y( 1 ( ) 1 ( 2 ( ) 2)⩽4t+ 4 1- t= 4 ( )
+tx+ 1- t y+ 3tx+ 1- t y( 1 ( ) 1 ( 2 ( ) 2)⩽9t+ 9 1- t= 9 ( )
+Par conséquent le point  appartient également à .tx+ 1- t y( ) H
+OU BIEN : Tout demi-plan est convexe, et  est l'intersection de 2 demi-plans.H
+Donc  est convexe.H
+<<<PAGE>>>
+b) Les coordonnées de  vérifient les inéquations définissant , donc . x* H x∈H *
+c) ∇f x=⟹ ∇f x= .( ) 2x -4 (1 )
+2x -4 (2 )
+* -4
+-4
+Si , on a :     et     .x=x,x'∈H(1 2 ) x+x1 2 ⩽4
+x+ 3x1 2 ⩽9 x - x=* x -21
+x -22
+Donc : <∇f x,x - x> =-4x -2-4x -2 = 16-4x+x* * ( 1 ) ( 2 ) ( 1 2 )
+.<∇f x,x - x> =-4x+x -4⩾0* * ( 1 2 )
+Donc  vérifie la condition de la question 1, et par suite c'est un minimum global x*
+de de .P( )
+d) , mais cela n'a rien de surprenant. Il s'agit d'un ∇f x=≠* -4
+-4
+0
+0
+minimum dans  qui n'est pas du tout ouvert (en fait fermé). La condition de H
+nullité du gradient n'a donc pas lieu d'être ici.

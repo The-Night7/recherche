@@ -1,0 +1,65 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+#import imageio
+
+## EXO20
+A=np.array([[0., 1., 1., 1.],
+       [0., 1., 1., 1.],
+       [0., 0., 0., 1.],
+       [0., 0., 0., 1.]])
+
+M = np.array([[1,0,-1],[0,0,0],[-1,0,1]])
+B=signal.convolve2d(A, M, mode='same',fillvalue=0)
+
+# B[B>1]=1
+# B[B<0]=0
+#B=255-B
+
+print(B)
+#
+# plt.subplot(1,3,1)
+# plt.imshow(A,cmap="gray")
+# plt.subplot(1,3,2)
+# plt.imshow(B,cmap="gray")
+
+
+### Autre exemple
+# Autres exemples avec A plus grande (aille) et plus fine (+ de pixels)
+N=200
+K=70
+A1=np.zeros([2*N,2*N])
+A1[:N,:(N-K)]=0
+A1[:N,(N-K):(2*N)]=1
+A1[N:(2*N),:(N+K)]=0
+A1[N:(2*N),(N+K):(2*N)]=1
+
+
+# #Motif de convolution :
+# M1 permet d'extraire les contours verticaux
+M1 = np.array([[1,0,-1],[2,0,-2],[1,0,-1]])
+# M2 permet d'extraire les contours horizontaux
+M2 = np.array([[-1,-2,-1],[0,0,0],[1,2,1]])
+#
+#
+B1=signal.convolve2d(A1, M1, boundary='fill',  mode='same',fillvalue=0)
+B2=signal.convolve2d(A1, M2, boundary='fill',  mode='same',fillvalue=0)
+
+#
+# #On ram\`ene les valeurs entre 0 et 255 (ici les images sont cod\'ees sur 8 bits)
+# B1[B1>255]=255
+# B1[B1<0]=0
+# B1=255-B1
+#
+# B2[B2>255]=255
+# B2[B2<0]=0
+# B2=255-B2
+
+
+plt.subplot(1,3,1)
+plt.imshow(A,cmap="gray")
+plt.subplot(1,3,2)
+plt.imshow(B1,cmap="gray")
+plt.subplot(1,3,3)
+plt.imshow(B2,cmap="gray")
+plt.show()

@@ -1,0 +1,190 @@
+D´ epartement de Math´ ematiques
+Introduction aux s´ eries temporelles
+ING2-MI
+TP2 -D´ esaisonnalisation et Pr´ evision par r´ egression lin´ eaire
+January 14, 2025
+Exercice 1. [d´ esaisonnalisation d’une s´ erie par la m´ ethode de r´ egression sur le
+temps]
+On consid` ere la s´ erie des ventes trimestrielles d’un produit:
+Tableau 1: S´ erie des ventes
+DATES VENTES
+T 1 1248, 30
+T 2 1392, 10
+T 3 1056, 60
+T 4 3159, 10
+T 1 890, 80
+T 2 1065, 30
+T 3 1117, 60
+T 4 2934, 20
+T 1 1138, 20
+T 2 1456, 00
+T 3 1224, 30
+T 4 3090, 20
+1. Tracer le graphique de cette s´ erie et commenter.
+2. Construire le tableau de Buys-Ballon (tableau constitu´ e en lignes par les ann´ ees et
+en colonne par le facteur ` a analyser (mois, trimestre, ...). Classer les trimestres pour
+chaque ann´ ee par valeurs d´ ecroissantes.
+3. Quelle est votre conclusion ?
+4. D´ esaisonnaliser la s´ erie selon un sch´ ema additif en utilisant la m´ ethode de r´ egression
+sur le temps vu dans le cous.
+• Pour r´ epondre ` a la question 4,
+• on r´ egresseXt sur t pour estimer la tendance mt,
+• puis on estime les coefficients saisonniers cj,
+• et on construit enfin la s´ erie d´ esaisonnalis´ ee, appel´ ee s´ erie corrig´ ee des variations
+saisonni` eres, que l’on noteXscv,t.
+1
+<<<PAGE>>>
+• Cette m´ ethode peut ˆ etre r´ esum´ ee selon l’algorithme suivant:
+Xt≃mt → MCO
+⇓
+On estime mt bmt = ba + bbt
+Mod´ el Additif Mod` ele Multiplicatif
+⇓ ⇓
+M´ ethode de la diff´ erence ` a la tendance M´ ethode du rapport ` a la tendance
+dt =Xt− bmt dt = Xt
+bmt
+Coefficients saisonniers provisoires : cj = 1
+Card (Tj )
+P
+t∈Tjdt, 1≤j≤p
+X
+j
+cj = 0 P
+jcj =p
+Coefficients saisonniers d´ efinitifs :c∗
+j =cj−c c ∗
+j = cj
+c
+S∗
+t ={c∗
+j,j ∈Tj}, X cvs
+t =Xt−S∗
+t X cvs
+t = Xt
+S∗
+t
+.
+Dates :T =t S´ erie :Xt bmt = ba + bbt dt =Xt− bmt c∗
+j Xscv,t
+... ... ... ... ...
+Exercice 2. [D´ esaisonnalisation par r´ egression sur des variables indicatrices]
+On consid` ere ici le cas o` u la tendancemt est mod´ elis´ ee par une fonction lin´ eaire et la
+composante saisonni` ere (St) par un ensemble de variables dichotomiques, not´ ees1Sj
+t
+. Soit Xt
+une s´ erie trimestrielle (de p´ eriode 4) ob´ eissant ` a un sch´ ema additif. On peut donc mod´ eliser
+cette s´ erie par :
+Xt =β1 +β2t +
+4X
+j=1
+cjISj
+t
++ϵt, t = 1,...,T. (1)
+o` u1Sj
+t
+= 1 si t correspond ` a la p´ eriode saisonni` ere (out est congru ` aj modulo 4).
+• L’objectif de cet exercice , dans un premier temps, est d’estimer les param` etresβ1 et
+β2 et les coefficients c1,c 2,c 3,c 4.
+• Ce probl` eme se ram` ene donc ` a l’estimation des param` etres d’un mod` ele de r´ egression
+multiple (vu dans le cours de mod` ele lin´ eaire).
+Rappel-Mod` ele lin´ eaire. On rappelle que l’estimation du vecteur de param` etres β =
+t(β1,β 2,c 1,c 2,c 3,c 4) d’un mod` ele de r´ egression lin´ eaire peut ˆ etre estim´ e parbβ = (tXX )−1 tXY
+o` uX est la matrice du mod` ele suppos´ ee de plein rang etY le vecteur des observations de
+la variable ` a expliquer. On applique cette m´ ethode avec les notations des cours en posant
+bβ = bδ = t( bβ1, bβ2, bc1, bc2, bc3, bc4), X =D et Y =Ventes (s´ erie de ventes de l’exercice 2).
+• Pour traiter ce probl` eme vous allez utiliser dans un premier temps un tableur, puis le
+logiciel R.
+2
+<<<PAGE>>>
+Partie I. Utilisation d’un Tableur .
+Questions :
+1. Quelle est la matrice D du mod` ele complet ? Calculer le d´ eterminant de (tDD). Que
+constatez-vous ?
+2. Consid´ erons le mod` ele sans le coefficient saisonnierc4.
+(a) ´Ecrire la matrice du mod` ele. D´ eterminer le vecteurbδ = t( bβ1, bβ2, bc1, bc2, bc3). ´Ecrire
+le mod` ele obtenu et calculer la s´ erie des pr´ evisions (bXt)1≤t≤T . Tracer la s´ erie
+initiale et la s´ erie des pr´ evisions sur le mˆ eme graphique et commenter.
+(b) Comparer les r´ esultats obtenus avec les r´ esultats de l’exercice 1.
+(c) Peut-on d´ esaisonnaliser la s´ erie (Xt) ?
+3. Consid´ erer le mod` ele sans la constanteβ1 et r´ epondre aux questions (a), (b), (c) de 2.
+Partie II. Utilisation du logiciel R .
+Questions:
+1. Taper les commandes suivantes:
+Mydata=read.table("Vente.txt",header=T,sep="\t",dec=",")
+plot(Mydata$Ventes,type="b",lwd=2)
+modele=lm(Ventes~t+Dates,data=Mydata)
+summary(modele)
+(a) Que constatez-vous ?
+(b) ´Ecrire le mod` ele obtenu.
+(c) Faire de la pr´ evision et comparer avec les r´ esultats obtenus avec Excel.
+(d) Peut-on d´ esaisonnaliser la s´ erie ?
+2. ´Etude du mod` ele sans la constante.
+Pour que R ne mette pas la constante dans le mod` ele, on pr´ ecise -1 dans la formule:
+modele=lm(Ventes~t+Dates-1,data=Mydata)
+summary(modele)
+(a) ´Ecrire le mod` ele obtenu.
+(b) Comparer avec la question (c) de la partie I.
+(c) Calculer les composantes saisonni` eres :
+3
+<<<PAGE>>>
+a=modele$coef[1]
+b=mean(modele$coef[2:5])
+c1=modele$coef[2]-b
+c2=modele$coef[3]-b
+c3=modele$coef[4]-b
+c4=modele$coef[5]-b
+(d) Retrouver la s´ erie d´ esaisonnalis´ ee. Pour cela il faut travailler de fa¸ con matricielle
+:
+X1=Mydata$Dates=="T1"
+X1=X1*(Mydata$Ventes-c1) # Regarder le vecteur obtenu
+X2=Mydata$Dates=="T2"
+X2=X2*(Mydata$Ventes-c2)
+X3=Mydata$Dates=="T3"
+X3=X3*(Mydata$Ventes-c3)
+X4=Mydata$Dates=="T4"
+X4=X4*(Mydata$Ventes-c4)
+Xcsv=X1+X2+X3+X4
+3. ´Etude du mod` ele sans le coefficientc4. Pour ´ eviter le probl` eme d’inversibilit´ e de
+la matrice du mod` ele, on calcule seulement trois coefficientsc1,c 2,c 3, et pour respecter
+le principe de la conservation des aires: P4
+j=1cj = 0, on choisit c4 =−(c1 +c2 +c3).
+(a) ´Ecrire la matrice du mod` ele.
+(b) G´ en´ erer trois variables indicatrices1S1, 1S2 et 1S3 puis effectuer la r´ egression avec
+les ventes de la s´ erie de l’exercice 2 comme variable ` a expliquer sur les quatre
+variables explicatives (tendance, 1S1, 1S2, 1S3).
+(c) Analyser la sortie de la fonction ”lm” de R.
+(d) ´Ecrire le mod` ele obtenu et calculer la s´ erie des pr´ evisions. Tracer la s´ erie initiale
+et la s´ erie des pr´ evisions sur le mˆ eme graphique et commenter. Comparer avec
+la question 2.b) de la premi` ere partie.
+Exercice 3. [Donn´ ees Passagers a´ eriens]
+On consid` ere les donn´ ees de la s´ erie repr´ esentant le nombre mensuel de passagers a´ eriens,
+en milliers, de janvier 1949 ` a d´ ecembre 1960.
+Question: Appliquez la m´ ethode de r´ egression sur les variables indicatrices pour d´ esaisonnaliser
+cette s´ erie.
+Code R pour la s´ erie Air Passengers :
+# Chargement des donn´ ees
+library(datasets)
+data(AirPassengers)
+4
+<<<PAGE>>>
+# Cr´ eation d’une variable temps
+time_series <- time(AirPassengers)
+months <- cycle(AirPassengers)
+# Cr´ eation du mod` ele avec variables indicatrices
+months_factors <- factor(months, labels = month.abb)
+model <- lm(AirPassengers ~ time_series + months_factors)
+summary(model)
+# Pr´ edictions
+predicted_values <- predict(model)
+plot(time_series, AirPassengers, type = "l", col = "blue", lwd = 2,
+xlab = "Ann´ ee", ylab = "Passagers")
+lines(time_series, predicted_values, col = "red", lwd = 2)
+legend("topleft", legend = c("Observ´ e", "Pr´ evu"), col =
+c("blue", "red"), lty = 1, lwd = 2)
+# Calcul des composantes saisonni` eres
+coefficients <- coef(model)[-c(1, 2)]
+seasonal_effects <- coefficients - mean(coefficients)
+de-seasonalized <- AirPassengers - seasonal_effects[months]
+plot(time_series, de-seasonalized, type = "l", col = "green", lwd = 2,
+xlab = "Ann´ ee", ylab = "S´ erie d´ esaisonnalis´ ee")
+5

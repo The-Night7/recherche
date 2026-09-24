@@ -1,0 +1,165 @@
+Département de Mathématiques
+ING2-GMA
+TD1 - Régression Linéaire Simple
+Exercice 1 : On suppose qu’on dispose d’un échantillon(xi,y i)1≤i≤n et que chaque valeur observée
+yi dans l’échantillon est uneréalisation d’une variable aléatoire Yi définie par :
+Yi =α +βxi +ϵi, i = 1,...,n
+oùα etβ sont des paramètres inconnus, les{ϵi}n
+i=1 sont des v.a. indépendantes de même loiN (0,σ 2).
+On considère que les coefficientsˆα et ˆβ, les valeurs ajustéesbyi et les erreursei (trouvées à partir
+de l’échantillon) sont des réalisations de variables aléatoires définies par :
+bβ =
+Pn
+i=1(xi−x)(Yi−Y )Pn
+i=1(xi−x)2
+bα = Y− bβx
+bYi = bα + bβxi
+bϵi = Yi− bYi
+1. Montrer que
+E[Yi] = α +βxi et Var(Yi) = σ2.
+2. Montrer que
+(a) Pn
+i=1(xi−x) = 0.
+(b) Pn
+i=1(xi−x)2 = Pn
+i=1(xi−x)xi.
+On écrit bβ sous la forme suivante :
+bβ =
+Pn
+i=1(xi−x)YiPn
+i=1(xi−x)2 .
+3. Montrer que
+(a) E[ bβ] = β.
+(b) E[bα] = α.
+(c) Interpréter les résultats.
+Exercice 2 : On considère les données suivantes et le modèle de régression linéaireYt =β0 +β1Xt +
+ϵt :
+t 1 2 3 4 5 6 7 8 9 10
+Xt 65 43 44 59 60 50 52 38 42 40
+Yt 12 32 36 18 17 20 21 40 30 24
+1. Placer les points sur un graphique.
+2. Calculer les équations normales.
+3. Calculer les estimateurs bβ0 et bβ1 en résolvant le système d’équations obtenu en 2).
+1
+<<<PAGE>>>
+4. Calculer les prévisionsbYt correspondant àXt pour t = 1,...,n . Ajouter la droite de régression
+au graphique fait en 1).
+5. Vérifier empiriquement queP10
+t=1et = 0, avecet =Yt− bYt pour toutt = 1,..., 10.
+Exercice 3 : On vous donne les observations ci-dessous.
+t 1 2 3 4 5 6 7 8
+Xt 2 3 5 7 4 4 1 6
+Yt 6 4 6 3 6 4 7 4
+8X
+t=1
+Xt = 32,
+8X
+t=1
+X 2
+t = 156,
+8X
+t=1
+Yt = 40,
+8X
+t=1
+Y 2
+t = 214,
+8X
+t=1
+XtYt = 146.
+1. Calculer les coefficients de la régression
+Yt =β0 +β1Xt +ϵt,
+où{ϵt}t sont iid qui suivent la loi normaleN (0,σ 2).
+2. Construire le tableau d’analyse de variance de la régression en 1) et calculer le coefficient de
+détermination R2. Interpréter les résultats.
+Exercice 4 : Le jeu de données ‘women.dat’ est inclus dans ‘R’, contient les tailles et les poids
+moyens de femmes américaines âgées de 30 à 39 ans. Importer les données dans ‘R’ ou rendre le jeu
+de données disponible avec ‘data(women)’, puis répondre aux questions suivantes.
+1. Établir graphiquement une relation entre la taille (height) et le poids (weight) des femmes.
+2. À la lumière du graphique en 1., proposer un modèle de régression approprié et en estimer les
+paramètres.
+3. Ajouter la droite de régression calculée en 1. au graphique. Juger visuellement de l’ajustement
+du modèle.
+4. Obtenir, à l’aide de la fonction summary la valeur du coefficient de déterminationR .La valeur
+est-elle conforme à la conclusion faite en 3.?
+5. Calculer les statistiques SST, SSR et SSE, puis vérifier queSST = SSR +SSE. Calculer
+ensuite la valeur deR2 et la comparer à celle obtenue en 4.
+Exercice 5 : (Consommation de gaz) Mr Derek Whiteside de la UK Building Research Station
+a collecté la consommation hebdomadaire de gaz et la température moyenne externe de sa maison
+au sud-est de l’Angleterre pendant 30 semaines. Une régression pour expliquer la consommation de
+gaz en fonction de la température est réalisée avec le logiciel R. Les résultats numériques sont les
+suivants.
+Residuals
+Min 1Q Médian 3Q Max
+-0.97802 -0.11082 0.02672 0.25294 0.63803
+Coefficients
+Estimated std.Error t value Pr( >|t|)
+Intercept 4.72385 0.12974 36.41 < 2e− 11∗∗
+Temp -0.27793 0.0252 -11.04 1.05e - 11***
+2
+<<<PAGE>>>
+Signif.codes : 0*** 0.001** 0.01** 0.05. 0.1 1
+Residual standard error : 0.3548 on 28 degrees of freedom
+Multiple R-Squared : 0.8131, Adjusted R-squared : 0.8064
+F-statistic : 121.8 on 1 and 28 DF, p-value : 1.046e-11
+1. Donner le modèle et les hypothèses de la régression.
+2. Soit Z une variable aléatoire de loi de Student de degré de liberté 28. Quelle est la probabilité
+que|Z| soit supérieure à 11.04?
+3. Préciser les éléments du test correspondant à la ligne “Temp” du tableau (H0,H1, la statistique
+de test, sa loi sousH0).
+4. Interpréter le nombre “Multiple R-Squared : 0.8131” du tableau.
+5. Donner une estimation de la variance du terme d’erreur dans le modèle de régression simple.
+6. Expliquer et interpréter la dernière ligne du tableau :
+"F-statistic : 121.8 on 1 and 28 DF, p-value : 1.046e-11".
+7. Pensez-vous que la température extérieure a un effet sur la consommation de gaz? Justifiez
+votre réponse.
+Exercice 6 : (Hauteur d’un arbre) Noussouhaitonsexprimerlahauteur y (enpieds)d’unarbre
+d’une essence donnée en fonction de son diamètrex (en pouces) à 1m30 du sol. Pour ce faire, nous
+avons mesuré 20 couples (diamètre, hauteur) et effectué les calculs suivants :
+x = 4.53, y = 8.65 et
+1
+20
+20X
+i=1
+(xi−x)2 = 10.97, 1
+20
+20X
+i=1
+(yi−y)2 = 2.24, 1
+20
+20X
+i=1
+(xi−x)(yi−y) = 3.77.
+1. On note by = bβ0 + bβ1x la droite de régression. Calculerbβ0 et bβ1.
+2. Donner et commenter une mesure de la qualité de l’ajustement des données au modèle.
+3. On donne les estimations de l’écart-type debβ0 , bσ0 = 1.62, et de ˆβ1 , bσ1 = 0.05. On suppose
+les perturbationsϵi sont gaussiennes, centrées, de même variance et indépendantes.
+Tester :
+H0 : βj = 0 contre H1 : βj̸= 0 pour j = 0, 1.
+Exercice 7 : Considérons l’échantillon de 10 offres de vente d’appartements situés dans le troisième
+arrondissement de Paris : on note parx la surface enm2 et y le prix en milliers d’euros.
+Appartement 1 2 3 4 5 6 7 8 9 10
+x 23 36 50 60 62 66 75 105 113 117
+y 75 148 216 282 331 233 358 602 640 488
+1. Effectuer une régression linéaire dey sur x.
+2. Calculer SCT, SCE. En déduire le coefficient de déterminationR2. Interpréter.
+3. Calculer SCR. En déduire s
+4. Prédire le prix moyen d’un appartement ayant une surface dex0 = 80m2.
+5. Donner le tableau de l’analyse de la variance.
+6. TesterF. Conclure.
+3
+<<<PAGE>>>
+Exercice 8 : (sous R) Le fichier (DepensesEduData.csv) recense les dépenses publiques de
+certains états pour l’éducation ainsi que le nombre d’élèves (donnée Eurostat 2008).
+1. Tracer le nuage de points des dépenses en fonction du nombre d’élèves.
+2. Calculer le coefficient de corrélation linéaire. Conclusion
+3. Déterminer la droite de régression. Tracer la droite sur le graphique.
+4. Vérifier les hypothèses sur les résidus. Quel pays semble atypique par rapport au modèle?
+5. Supprimer le pays atypique et refaire la même chose.
+6. Quel pourcentage de variabilité des dépenses est expliqué par la droite de régression? Est-ce
+que vous validez le modèle?
+7. Calculer les budgets prédits par le modèle pour 1000, 6000 et 9500 milliers d’étudiants. Placer
+les sur le graphique.
+Exercice 9 : (sous R) Reprendre toutes les instructions de l’exercice précédent avec le jeu de
+données (FrenchCities.csv) pour étudier le lien entre les deux variables TEMP (Y) et NO2 (X).
+4

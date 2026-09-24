@@ -1,0 +1,112 @@
+library(readxl)
+Poids <-read_excel("poids.xlsx")
+print(Poids)
+
+summary(Poids)
+
+Poids<-read.table("Poids.txt", header=T, sep="\t", dec=",")
+n=nrow(Poids)
+TailleH=(3*n)%/%4
+set.seed(3)
+c=runif(n)
+rang=rank(c)
+app=rang[1 : TailleH]
+##### Modele M1 #####
+lmM1=lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10, data=Poids[app,])
+predM1=predict(lmM1, newdata=Poids[-app,])
+print(predM1)
+##### Modele M2 ##### 
+lmM2=lm(Y~X1+X6+X7+X8+X9+X10, data=Poids[app,])
+predM2=predict(lmM2, newdata=Poids[-app,])
+print(predM2)
+#### Modele M3 #####
+lmM3=lm(Y~X1+X6+X7+X8++X10, data=Poids[app,])
+predM3=predict(lmM3, newdata=Poids[-app,])
+print(predM3)
+
+residuM1=mean((predM1 - Poids[-app,]$Y)^2)
+print(residuM1)
+residuM2=mean((predM2 - Poids[-app,]$Y)^2)
+print(residuM2)
+residuM3=mean((predM3 - Poids[-app,]$Y)^2)
+print(residuM3)
+
+#Commentaires Modele M2 qui est le mieux 
+
+
+groupeL=1:nrow(Poids)
+
+erreurM1=rep(0,n)
+print(erreurM1)
+erreurM2=rep(0,n)
+print(erreurM2)
+erreurM3=rep(0,n)
+print(erreurM3)
+
+for (i in 1:n){
+  LOOCVM1=lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10,data=Poids[groupeL !=i,])
+  LOOCVM2=lm(Y~X1+X6+X7+X8+X9+X10,data=Poids[groupeL !=i,])
+  LOOCVM3=lm(Y~X1+X6+X7+X8+X10,data=Poids[groupeL !=i,])
+  predLOO1=predict(LOOCVM1,newdata=Poids[groupeL==i,])
+  predLOO2=predict(LOOCVM2,newdata=Poids[groupeL==i,])
+  predLOO3=predict(LOOCVM3,newdata=Poids[groupeL==i,])
+  erreurM1[i]=(predLOO1 - Poids$Y[i])^2
+  erreurM2[i]=(predLOO2 - Poids$Y[i])^2
+  erreurM3[i]=(predLOO3 - Poids$Y[i])^2
+}
+residuL001 = mean(erreurM1)
+print(residuL001)
+residuL002 = mean(erreurM2)
+print(residuL002)
+residuL003 = mean(erreurM3)
+print(residuL003)
+
+Fold1=rang[1 :7]
+Fold2=rang[8 :15]
+Fold3=rang[16 :22]
+Fold12=rang[1 :15]
+Fold23=rang[8 :22]
+A=c(1 :7,16 :22)
+Fold13=rang[A]
+Poids12=Poids[Fold12,]
+Poids3=Poids[Fold3,]
+FOLD12M1=lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10,data=Poids12)
+pred3M1=predict(FOLD12M1,newdata=Poids3)
+Poids13=Poids[Fold13,]
+Poids2=Poids[Fold2,]
+FOLD13M1=lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10,data=Poids13)
+pred2M1=predict(FOLD12M1,newdata=Poids2)
+Poids23=Poids[Fold23,]
+Poids1=Poids[Fold1,]
+FOLD23M1=lm(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10,data=Poids23)
+pred1M1=predict(FOLD12M1,newdata=Poids1)
+
+Poids12=Poids[Fold12,]
+Poids3=Poids[Fold3,]
+FOLD12M2=lm(Y~X1+X6+X7+X8+X9+X10,data=Poids12)
+pred3M2=predict(FOLD12M1,newdata=Poids3)
+Poids13=Poids[Fold13,]
+Poids2=Poids[Fold2,]
+FOLD13M2=lm(Y~X1+X6+X7+X8+X9+X10,data=Poids13)
+pred2M2=predict(FOLD12M1,newdata=Poids2)
+Poids23=Poids[Fold23,]
+Poids1=Poids[Fold1,]
+FOLD23M2=lm(Y~X1+X6+X7+X8+X9+X10,data=Poids23)
+pred1M2=predict(FOLD12M1,newdata=Poids1)
+
+
+Poids12=Poids[Fold12,]
+Poids3=Poids[Fold3,]
+FOLD12M3=lm(Y~X1+X6+X7+X8+X10,data=Poids12)
+pred3M3=predict(FOLD12M1,newdata=Poids3)
+Poids13=Poids[Fold13,]
+Poids2=Poids[Fold2,]
+FOLD13M3=lm(Y~X1+X6+X7+X8+X10,data=Poids13)
+pred2M3=predict(FOLD12M1,newdata=Poids2)
+Poids23=Poids[Fold23,]
+Poids1=Poids[Fold1,]
+FOLD23M3=lm(Y~X1+X6+X7+X8+X10,data=Poids23)
+pred1M3=predict(FOLD12M1,newdata=Poids1)
+
+
+residuM1=mean((pred1M1 - Poids[,]$Y)^2)

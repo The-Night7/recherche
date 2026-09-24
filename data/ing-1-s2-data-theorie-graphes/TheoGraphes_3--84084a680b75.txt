@@ -1,0 +1,259 @@
+Théorie des graphes
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc
+CY T/e.sc/c.sc/h.sc– ING1-MA
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc 1
+<<<PAGE>>>
+Coloration de graphes
+Coloration d’un graphe
+Polynôme chromatique d’un graphe
+Colorations des arêtes
+Graphes extrêmaux
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 60
+<<<PAGE>>>
+Coloration d’un graphe
+Coloration d’un graphe
+Définition
+Recherche de coloration
+Calcul du nombre chromatique
+Polynôme chromatique d’un graphe
+Colorations des arêtes
+Graphes extrêmaux
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 61
+<<<PAGE>>>
+Coloration
+Définition (Coloration (des sommets) de G = (V, E))
+Application c : V↦→ C (C ensemble de couleurs)
+Coloration c propre :
+∀(v, v′)∈ V2, v et v′ adjacents⇒ c(v)⁄= c(v′)
+Définition (Graphe G = (V, E) k-colorable)
+c k -coloration⇐⇒ cardc(V) = k
+G k -colorable⇐⇒∃ k-coloration propre de G
+Définition (Nombre chromatique de G = (V, E))
+χ(G) = min{cardc(V), c coloration propre de G}
+Coloration propre optimale≡ χ(G)-coloration propre
+Applications
+Traduire des relations d’incompatibilité entre les sommets
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 62
+<<<PAGE>>>
+Coloration
+Exemple
+▶ Sommets : produits chimiques
+▶ Arêtes : entre deux produits non transportables ensembe
+⇒ Coloration propre : sous-ensembles de produits
+transportables ensemble
+⇒ Nombre chromatique : nombre minimal de transports
+simultanés
+A
+B
+E
+F
+H
+C
+G D
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 63
+<<<PAGE>>>
+Coloration
+Exemple
+▶ Sommets : produits chimiques
+▶ Arêtes : entre deux produits non transportables ensembe
+⇒ Coloration propre : sous-ensembles de produits
+transportables ensemble
+⇒ Nombre chromatique : nombre minimal de transports
+simultanés
+A
+B
+E
+F
+H
+C
+G D
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 63
+<<<PAGE>>>
+Recherche de coloration optimale
+Première solution : recherche exhaustive
+▶ Recenser toutes les colorations propres
+▶ Trouver celle dont le nombre de couleurs est minimale
+=⇒ Complexité exponentielle
+=⇒ Beaucoup trop coûteux, donc inutilisable
+Deuxième solution : algorithme glouton
+Tant qu’il reste des sommets non coloriés,
+1. colorer un sommet non coloré de plus haut degré avec
+une nouvelle couleur ;
+2. colorer itérativement, par degré décroissant, tous les
+sommets non colorés possibles en conservant une
+coloration propre.
+=⇒ Algorithme de W/e.sc/l.sc/s.sc/h.scet P/o.sc/w.sc/e.sc/l.sc/l.sc
+Attention
+La convergence vers une coloration optimale n’est pas
+assurée.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 64
+<<<PAGE>>>
+Recherche de coloration optimale
+Exemple
+v E A B H D F G C
+d(v) 5 4 3 2
+▶ Couleur no 1 : E, G puis C
+▶ Couleur no 2 : A puis D
+▶ Couleur no 3 : B puis H
+▶ Couleur no 4 : F
+A
+B
+E
+F
+H
+C
+G D
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 65
+<<<PAGE>>>
+Nombre chromatique d’un graphe
+Propriété (Majorant de χ(G))
+Soit G = (V, E) un graphe et ∆ = max{d(v), v∈ V}.
+Alors χ(G)≤ ∆ +1.
+Démonstration.
+Soit v le dernier sommet coloré par l’algorithme glouton.
+Alors v est adjacent à toutes les couleurs précédentes (il y en
+a au plus d(v)) : donc χ(G)≤ d(v) +1≤ ∆ +1.
+Théorème (Théorème des quatre couleurs, 1976)
+Si G est planaire, alors χ(G)≤ 4.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 66
+<<<PAGE>>>
+Nombre chromatique d’un graphe
+Propriété (Nombre chromatique d’un graphe
+complet)
+χ(Kn) = n
+Démonstration.
+▶ ∆ = n− 1⇒ χ(Kn)≤ n.
+▶ Tous les sommets voisins deux à deux⇒ χ(Kn)≥ n
+Propriété (Croissance de χ)
+Si G′ est un sous-graphe de G, alors χ(G′)≤ χ(G).
+Corollaire (Minoration de χ(G))
+Si G contient un sous-graphe complet à p sommets, χ(G)≥ p.
+Démonstration.
+Comme Kp est un sous-graphe de G, χ(G)≥ χ(Kp) = p.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 67
+<<<PAGE>>>
+Polynôme chromatique d’un graphe
+Coloration d’un graphe
+Polynôme chromatique d’un graphe
+Contraction d’une arête d’un graphe
+Polynôme chromatique
+Colorations des arêtes
+Graphes extrêmaux
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 68
+<<<PAGE>>>
+Contraction d’une arête d’un graphe
+Définition (Contraction d’une arête deG = (V, E))
+Soit e∈ E une arête d’extrêmitésv1 et v2.
+On définit G.e = (V′, E′) avec :
+▶ V′ = V\{v1, v2}∪{ v∗}
+▶ E′ = E\{f∈ E, v1 ou v2 extrêmité de f}
+∪{ vv∗, v∈ V adjacent à v1 ou v2}
+Autrement dit. . .
+▶ on remplace les extrêmités v1 et v2 de e par un sommet
+commun v∗ ;
+▶ on remplace les arêtes d’extrêmitév1 ou v2 par des arêtes
+d’extrêmitév∗.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 69
+<<<PAGE>>>
+Contraction d’une arête d’un graphe
+Exemple
+G = v1 v2
+v3
+v4
+e1
+e2
+e3
+e4
+e5
+e6
+G.e2 = v1 v∗ v4
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 70
+<<<PAGE>>>
+Polynôme chromatique d’un graphe
+Théorème (Polynôme chromatique de G = (V, E)
+simple)
+∃!P∈ Z[X], deg P = card V,∀k∈ J1, card VK ,
+P(k) = card{k-colorations propres de G}
+P est le polynôme chromatique de G
+Démonstration.
+Par récurrence forte sur t(G) = cardV + cardE :
+▶ cardE = 0⇒ P = XcardV
+▶ cardE > 0 : soit e∈ E.
+▶ t(G− e) < t(G)⇒ Q polynôme chromatique de G− e
+▶ t(G.e) < t(G)⇒ R polynôme chromatique de G.e
+⇒ P = Q− R
+Propriété (Polynômes chromatiques particuliers)
+▶ Arbre à n sommets : P = X(X− 1)n−1.
+▶ Carré (cycle de long. 4) : P = X(X− 1)3− X(X− 1)(X− 2)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 71
+<<<PAGE>>>
+Colorations des arêtes
+Coloration d’un graphe
+Polynôme chromatique d’un graphe
+Colorations des arêtes
+Graphes extrêmaux
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 72
+<<<PAGE>>>
+Coloration des arêtes
+Définition (Coloration des arêtes de G = (V, E))
+Application c1 : E↦→ C (C ensemble de couleurs)
+Coloration des arêtes c1 propre :
+∀(e, e′)∈ E2, e et e′ ont une extrémité commune⇒ c1(e)⁄= c1(e′)
+Définition (Graphe G = (V, E) colorable pour les
+arêtes)
+c1 k-coloration pour les arêtes ⇐⇒ cardc1(E) = k
+G k -colorable pour les arêtes
+⇐⇒∃ k-coloration pour les arêtes propre de G
+Définition (Indice chromatique de G = (V, E))
+χ1(G) = min{cardc1(E), c1 coloration propre des arêtes de G}
+Coloration des arêtes propre optimale
+≡ χ1(G)-coloration des arêtes propre
+Applications
+Planification d’emplois du temps, organisation de tournois, . . .
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 73
+<<<PAGE>>>
+Coloration des arêtes
+Propriété
+Soit G = (V, E) un graphe et ∆ = max{d(v), v∈ V}.
+Alors χ1(G)≥ ∆
+Démonstration.
+Si d(v) = ∆, alors il faut au moins ∆ couleurs pour les arêtes
+incidentes en v.
+Théorème (K/odieresis.sc/n.sc/i.sc/g.sc, 1916)
+Soit G = (V, E) un graphe biparti et ∆ = max{d(v), v∈ V}.
+Alors χ1(G) = ∆
+Théorème (V/i.sc/z.sc/i.sc/n.sc/g.sc, 1964)
+Soit G = (V, E) un graphe simple et ∆ = max{d(v), v∈ V}.
+Alors χ1(G)≤ ∆ +1
+Remarque G simple =⇒ χ1(G)∈{ ∆,∆ +1}
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 74
+<<<PAGE>>>
+Graphes extrêmaux
+Coloration d’un graphe
+Polynôme chromatique d’un graphe
+Colorations des arêtes
+Graphes extrêmaux
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 75
+<<<PAGE>>>
+Graphes extrêmaux
+Définition (Graphe extrêmal)
+Soit P(G) un prédicat sur l’ensemble des graphes.
+G = (V, E) extrêmal pour P⇐⇒
+{
+¬P(G)
+∀e /∈ E, P(G + e)
+Théorème (M/a.sc/n.sc/t.sc/e.sc/l.sc, 1907)
+Soit G = (V, E) un graphe simple sans sous-graphe de type K 3.
+Alors card E≤ (card V)2
+4 .
+Théorème (T/u.sc/r.sc/aacute.sc/n.sc, 1941)
+Soit G = (V, E) un graphe simple sans sous-graphe de type
+Kr+1.
+Alors card E≤
+(
+1− 1
+r
+)
+· (card V)2
+2 .
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 76

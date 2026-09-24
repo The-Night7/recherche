@@ -1,0 +1,179 @@
+1 
+ 
+ 
+                TP 3 : Routage statique et routage dynamique 
+ 
+ 
+Partie 1 : Configuration des réseaux  
+Etape 1 : 
+ 
+L’adresse du sous-réseau 172.16.1.0 – 255.255.255.0 du réseau de classe B sera utilisé pour 
+l’université. Vous serez en Charge de déployer ce plan d’adressage sur les 5 départements de 
+l’université avec les  besoins ci-dessous : 
+ 
+Département 1: 25 adresses pour les PCs + Equipements réseau 
+Département 2: 25 adresses pour les PCs + Equipements réseau 
+Département 3: 25 adresses pour les PCs + Equipements réseau 
+Département 4: 25 adresses pour les PCs + Equipements réseau 
+Département 5: 29 adresses pour les PCs + Equipements réseau et Serveurs 
+ 
+Chaque département devrait être dans son propre sous -réseau. Un routeur central avec 5 interfaces 
+sera utilisé pour interconnecter les 5 réseaux et permettra de créer une topologie en étoile. 
+ 
+Il faudrait tout d’abord déterminer pour chaque Département, l’adresse du sous -réseau, le masque 
+correspondant, la plage des adresses à affecte r au PCs, l’adresse Broadcast ainsi que l’adresse de la  
+passerelle. La passerelle devrait être la dernière adresse dans chaque sous-réseau. En deuxième étape, 
+il faudrait implémenter la solution proposée dans Packet Tracer. 
+ 
+ 
+ 
+
+<<<PAGE>>>
+2 
+ 
+ 
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+ 
+ 
+ 
+Département Sous-Réseau Masque Plage des 
+Adresses 
+Passerelle Broadcast 
+1      
+2      
+3      
+4      
+5      
+ 
+Le routeur doit être dimensionné pour supporter 5 interfaces Ethernets. On pour choisir par Exemple le 2811 avec 2 
+interfaces par défaut et rajouter 3 interfaces WIC-1ENET. 
+ 
+Exemple de configuration d’un PC : (Departement3) 
+ 
+Adresse IP PC5 = 172.16.1.65 Masque : 
+255.255.255.224 
+Passerelle : 172.16.1.94 
+ 
+Exemple de configuration d’une interface sur le routeur : (Departement3) 
+ 
+Router>enable Router# 
+Router# 
+Router#configure terminal 
+Enter configuration commands, one per line. End with CNTL/Z. 
+Router(config)#interface Ethernet 0/0/0 <<<<<<<<<<<<<<<<<<<< (utiliser la commande show ip interface brief 
+pour déduire les noms des interfaces Ethernet de votre routeur). 
+Router(config-if)#ip address 172.16.1.64 255.255.255.224 
+Router(config-if)#no shutdown 
+Router(config-if)#exit 
+ 
+ 
+Important: N’oublier pas de sauvegarder la configuration du routeur (copy startup-config running- config) ainsi que la 
+topologie du réseau. Le même réseau sera utilisé dans la partie suivante. 
+ 
+ 
+Etape 2 : 
+ 
+On veut communiquer un autre réseau de classe C (192.168.1.0 255.255.255.0)  au réseau déployé 
+dans le TP précèdent. Ce réseau  est localisé au Campus Nord (éloignée géographiquement de 
+quelques kilomètres du Campus Sud). Une liaison spécialisée  de 2048 kbps ent re les deux  campus 
+est mise en place.  
+ 
+Votre tâche dans ce TP est d’accomplir ce qui suit: 
+ 
+- Ajouter aux routeurs les cartes qu’il faut pour effectuer ce raccordement 
+- Définir un plan d’adressage pour la liaison Point-a-Point 
+- Configurer le routage entre les deux réseaux de façon statique et ensuite de façon dynamique. 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+3 
+ 
+ 
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+ 
+ 
+ 
+ 
+Dimensionner les routeurs afin de supporter une liaison WAN Point-a-Point. Il faut rajouter une carte 
+WIC-1T a chaque router. 
+ 
+Configuration des interfaces : 
+ 
+Router0>enable 
+Router0#Config Terminal 
+Router0(config)# interface Serial0/3/0 <<<< Utiliser la commande show ip interface brief pour 
+déduire les noms des interfaces 
+Router0(config)#bandwidth 2048 
+Router0(config)#ip address 10.10.10.1 255.255.255.252 
+Router0(config)#no shutdown 
+ 
+Router1>enable 
+Router1#Config Terminal 
+Router1(config)# interface Serial0/3/0 
+Router1(config)#bandwidth 2048 
+Router1(config)#ip address 10.10.10.2 255.255.255.252 
+Router1(config)#no shutdown 
+ 
+N.B : N’oublier pas de configurer l’interface Ethernet du nouveau routeur Routeur1 et d’affecter les 
+adresses IP au PCs du campus Nord. Voir l’étape 1 de cette partie pour un rappel des instructions. 
+ 
+Partie 2 : Configuration du routage statique entre les deux réseaux: 
+ 
+Router0(config)#ip route 192.168.1.0 255.255.255.0 10.10.10.2 
+ 
+Router1(config)#ip route 172.16.1.0 255.255.255.0 10.10.10.1 
+ 
+La commande pour visualiser la table de routage : 
+ 
+Router0# show ip route 
+ 
+Les routes statiques sont marques avec un S. 
+
+<<<PAGE>>>
+4 
+ 
+ 
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+ 
+• Tester la connectivité entre les PCs sur les deux réseaux avec les commandes Ping et Tracert. 
+• Expliquer les différents composants d’une route statique (par exemple: ip route 172.16.1.0 255.255.255.0 
+10.10.10.1). 
+ 
+ 
+Partie 3 : Configuration du routage dynamique : 
+ 
+Router0(config)#no ip route 192.168.1.0 255.255.255.0 10.10.10.2 <<< On commence par enlever les 
+routes statiques 
+Router0(config)#router rip <<< On utilise le protocole RIP pour le routage dynamique 
+Router0(config-router)#network 10.0.0.0 <<< On ajoute les réseaux auxquels le routeur est 
+connecté 
+Router0(config-router)#network 192.168.1.0 
+ 
+Router1(config)#no ip route 172.16.1.0 255.255.255.0 10.10.10.1 
+Router1(config)#router rip 
+Router1(config-router)#network 10.0.0.0 
+Router1(config-router)#network 172.16.1.0 
+ 
+La commande pour visualiser la table de routage : 
+ 
+Router0# show ip route 
+ 
+Les routes RIP sont marques avec un R. 
+• Tester la connectivité entre les PCs sur les deux réseaux avec les commandes Ping et Tracert. 
+• Pourquoi il y a qu’une seule route vers le réseau 172.16.1.0 alors que le Campus Sud dispose de 5  
+sous- réseaux ? 
+• Quel est l’avantage du routage dynamique par rapport au routage statique. 

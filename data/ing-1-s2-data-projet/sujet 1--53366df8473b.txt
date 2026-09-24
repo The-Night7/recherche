@@ -1,0 +1,80 @@
+Résolution d’une équation diﬀérentiel
+d’ordre deux
+1 Résumé
+Ce projet s’intéresse à une equation diﬀérentielle d’ordre deux sur l’axe réel qui
+dépend de deux paramètres, dont on cherche à savoir si elle ad met une solu-
+tion. L’objectif est de démontrer rigoureusement une métho de pour trouver ces
+paramètres, puis d’implémenter numériquement cette métho de pour aﬃcher les
+solutions possibles. Ce projet contient donc une partie thé orique (plutôt courte)
+et une partie de programmation (plutôt longue).
+2 Plan du projet
+On se donne une fonction g∈C 2(R,R) avec g(0)=g ′(0)=0. On s’interesse au prob-
+lème suivant : pour quels paramètres µ,c>0 est-ce qu’il existe une solution de
+l’équation diﬀérentiel suivantes sur R:
+
+
+
+−Q′′+µQ+g(Q)=0
+Q(+∞)=0
+Q(−∞)=c.
+La première partie du projet consiste à démontrer l’existen ce d’un algorithme pour
+trouver les valeurs de µ,c>0 qui fonctionne.
+2.1 Description de l’algorithme
+− On déﬁnit la fonction P (x)=− 2
+x2
+∫
+0
+xg(t)dt. Elle est bien déﬁnie sur [0,+∞[.
+− On cherche toutes les valeurs de c tel que P ′(c)=0,P (c)>0 et P (x)<P (c)
+pour tout x∈[0,c[.
+− L’équation diﬀérentiel admet une solution que pour les para mètres c,µ =P (c)
+qui sont obtenues dans l’étape précédente.
+2.2 Preuve de l’algorithme
+La partie théorique de ce projet consiste à prouver que toute s les solutions de
+l’équation sont bien obtenues par l’algorithme dans la sect ion précédente. On
+donne ici une liste de question intermédiaires pour le prouv er.
+Partie 1 : Analyse. On suppose qu’il existe une solution Q a l’équation pour
+des paramètres µ,c>0
+1. Montrer que la fonction H(x)= Q ′2(x)
+2 −
+(
+G(Q(x))+ µ
+2 Q2(x)
+)
+où
+G(y)=∫
+0
+yg(t)dt est constante. Calculez sa valeur.
+1
+<<<PAGE>>>
+2. Montrer que pour y>0 assez petit, on a G(y)+ µ
+2 y2>0
+3. Montrer qu’il existe ε∈{−1,1} tel que Q′=ε µQ 2+2G(Q)
+√
+.
+4. Montrer que la fonction y→µy2+2G(y) ne s’annule pas sur ]0,c[
+5. Montrer que ε=−1. En déduire que Q est décroissante.
+6. Montrer que µc+g(c)=0 et en déduire que g(c(µ))<0.
+7. Montrer que µ=P (c)>0,P ′(c)=0 et que P ′(c)=0,P (c)>0 et P (x)<P (c)
+pour tout x∈[0,c[.
+Partie 2. Synthèse. On suppose qu’il existe c,µ> 0 tel que µ=P (c)>0,P ′(c)=0
+et que P ′(c)=0,P (c)>0 et P (x)<P (c) pour tout x∈[0,c[.
+1. Montrer que y→µy 2+2G(y) ne s’annule pas sur [0,c[.
+2. Montrer que l’équation diﬀérentiel Q′=− µQ2+2G(Q)
+√
+admet une solu-
+tion sur tout l’axe réel.
+3. Conclure quand à l’existence d’une solution à l’équation diﬀérentiel initiale.
+4. Montrer que si il existe Q˜ une autre solution à l’équation diﬀérentiel initiale,
+alors il existe a∈R tel que Q˜(x)=Q(x+a).
+2.3 Implémentation numérique
+La partie numérique de ce projet consiste à implémenter les d eux fonctions suiv-
+antes:
+i. Une fonction qui prend en entrée une fonction g∈C 2(R,R) avec
+g(0)=g ′(0)=0 et qui donne toutes les valeurs de c,µ> 0 obtenues en suivant
+l’algorithme de la section 2.1
+ii. Une fonction qui prend en entrée une fonction g comme précédemment et
+un couple de valeur c,µ> 0, et déssine le graphe de la fonction Q qui est
+solution de l’équation diﬀérentiel. Celà peut se faire à l’a ide d’un ode solver
+(en python par exemple).
+2 Section 2

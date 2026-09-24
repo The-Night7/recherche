@@ -1,0 +1,99 @@
+Département de Mathématiques
+Année 2022-2023
+Examen
+Filière : ING2 MI Matière : EDP
+Durée : 2h
+Responsables : Kortchemski I. ; Barrau N.
+— Aucun appareil électronique n’est autorisé. Une feuille recto-verso est autorisée .
+— La qualité de la rédaction sera prise en compte dans la note. Les réponses devront être
+soigneusement justifiées.
+— Cet examen est constitué de deux exercices indépendants. Le barème est donné à titre indicatif.
+Exercice 1 [12 points] - Équation de la chaleur
+Soitν >0. On considère, pour l’équation de la chaleur sur R :
+
+
+∂u
+∂t (t,x )−ν∂2u
+∂x2 (t,x ) = 0 ∀x∈ R,∀t> 0,
+u(0,x ) = u0(x) ∀x∈ R,
+(1)
+Le schéma d’approximation (Schéma de Gear) par différences finies sur un maillage régulier (uni-
+forme) de pas ∆x en espace et ∆t en temps :
+3un+1
+i − 4un
+i +un−1
+i
+2∆t −ν un+1
+i+1 +un+1
+i−1− 2un+1
+i
+(∆x)2 = 0. (2)
+Indication : pour la suite, on pourra poserλ = 2ν∆t
+(∆x)2 .
+1. Le schéma (2) est-il implicite ou explicite ? Justifier votre réponse.
+2. Montrer que ce schéma est consistant avec le problème (1).
+3. Montrer que le schéma (2) est d’ordre 2 en temps et en espace.
+Indication : utiliser des formules de Taylor à des ordres suffisants ...
+4. Montrer que le schéma (2) est inconditionnellement stable.
+5. Soit α,β des constantes données. On poseΩ = [0; 1]. On considère dans cette question le problème
+(1) sur Ω× [0;T ] avec des conditions aux limites suivantes : u(t, 0) = α ∀t∈]0;T [,
+u(t, 1) = β ∀t∈]0;T [, (3)
+Les conditions de raccordsu0(0) =α etu0(1) =β sont admises.
+(a) De quelle nature sont les conditions aux limites du problème (3) ?
+(b) Définir un maillage. Former le système à résoudre à chaque pas de temps et la matrice associée.
+(c) Décrire la structure de la matrice obtenue et proposer une méthode permettant la résolution de
+ce système.
+6. On considère ici le problème (1) sur Ω× [0;T ] avec des conditions aux limites suivantes :
+( ∂u
+∂x (t, 0) = γ ∀t∈]0;T [,
+u(t, 1) = β ∀t∈]0;T [,
+(4)
+Les conditions de raccords sont de nouveau admises.
+(a) De quelle nature sont les conditions aux limites du problème (4) ?
+(b) En utilisant les notations précédentes, modifier la matrice selon les conditions de bords (4).
+Tournez svp→
+1
+<<<PAGE>>>
+Exercice 2 [12 points] Schéma de Crank-Nicolson et d’Euler pour l’équation de Dupire.
+SoitL,T > 0 et Ω = [0,L ]. Considérons l’équation de Dupire qui modélise l’évolution du prix d’une
+option Call EuropéenneV (t,x ) sur le domaine spatio-temporel [0,T ]× Ω :
+
+
+
+∂V
+∂t (t,x ) +rx∂V
+∂x (t,x )− 1
+2σ2(t,x )x2∂2V
+∂x2 (t,x ) = 0 ∀(t,x )∈]0,T ]× Ω
+V (t = 0,x ) = max( S0−x; 0) ∀x∈ Ω
+V (t,x = 0) = S0e−rt ∀t∈]0,T ]
+∂V
+∂x (t,x =L) = 0 ∀t∈]0,T ]
+où
+— la variable x modélise le prix d’exercice d’un actif,
+— la variable t modélise la durée de la vie de l’option,
+— les coefficients r etS0 sont des constantes,
+— σ(x,t ) est une fonction régulière de volatilité, représentant une mesure de risque.
+1. Partie 1 : Discrétisation
+(a) Décrire votre maillage sur Ω. Pour cela utiliser un dessin et expliciter les deux quantités∆x et
+∆t en fonction du nombre de discrétisation des intervalles Ω et [0,T ].
+(b) Discrétiser les conditions initiales. Discrétiser les conditions aux limites.
+(c) Sur le maillage, marquer les conditions initiales et aux limites.
+2. Partie 2 : Implémentation
+(a) Discrétiser l’équation par la méthode d’Euler explicite.
+(b) Implémenter ce schéma avec un pseudo-code. Indiquer par des flèches le déroulement de l’al-
+gorithme.
+(c) Discrétiser l’équation par la méthode de Crank-Nicolson.
+(d) Écrire l’équation sous la forme matricielle MV n+1 =Kn, en précisant la matriceM etKn.
+(e) Expliquer à l’aide des dessins comment calculer toutes les valeurs de niveau temporel n = 1.
+Expliquer clairement comment calculerV (t,x =L).
+3. Partie 3 : Conditions aux limites de Robin
+On remplace les 2 conditions aux limites précédentes par les conditions aux limites de Robin
+suivantes : ( V (t,x = 0) = S0e−rt ∀t∈]0,T ]
+V (t,x =L)−e−rt∂V
+∂x (t,x =L) = 0 ∀t∈]0,T ]
+Préciser la matriceM et le vecteurKn de l’équation
+MV n+1 =Kn
+.
+FIN
+2

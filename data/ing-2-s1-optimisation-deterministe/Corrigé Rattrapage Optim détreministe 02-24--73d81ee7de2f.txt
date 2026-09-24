@@ -1,0 +1,144 @@
+Corrigé rattrapage Optimisation déterministe 02-24
+1) .‖∇f+d‖ ⩽ ‖∇f‖   ⟺ ‖∇f+d‖ ⩽ ‖∇f‖ ⟺ ‖∇f+d‖-‖∇f‖ ⩽0  2 2 2 2
+Or .‖∇f+d‖=‖∇f‖+‖d‖+ 2 <∇f,d>2 2 2
+On a donc   ‖∇f+d‖-‖∇f‖=   ‖d‖+ 2 <∇f,d>⩽0  2 2 2
+⟺<∇f,d>⩽-< 0 ‖d‖
+2
+2
+On en conclut que  est bien une direction de descente.d
+2)  étént de classe , on peut faire son développement limité à l'ordre  au voisinage f C 1 1
+de  qui donne :x
+f x+h=f x+∇f x h+o‖h‖( ) ( ) ( ) T ( )
+a) Si on prend , avec  vecteur constant, cela donne :h=𝜃d d
+f x+𝜃d=f x+∇f x𝜃d+o‖𝜃d‖=f x+𝜃∇f x d+o𝜃( ) ( ) ( ) T( ) ( ) ( ) ( )T ( )
+On en déduit :
+=∇f x d+ =∇f x d+o1f x+𝜃d - f x
+𝜃
+( ) ( ) ( ) T o𝜃
+𝜃
+( ) ( ) T ( )
+Et par passage à la limite, 
+.=∇f x dlim
+𝜃0→
+f x+𝜃d - f x
+𝜃
+( ) ( ) ( ) T
+<<<PAGE>>>
+b)  minimum local x* ⟺ ∃r> 0,∀x∈U,   x∈B x,r⟹f x⩾f x.* ( ) *
+où désigne la boule ouverte de centre  et de rayon .B x,r* x* r
+Soit , comme  est convexe, .x∈U U∀𝜃 ∈0, 1 ,  y=𝜃x+ 1-𝜃x∈U [ ] ( ) *
+Remarquons que  et notons . Ce qui nous permet y=x+𝜃x - x* * d=x - x *
+d'écrire : .y=x+𝜃d*
+Pour  suffisamment petit, plus précisèment , on aura .𝜃 𝜃< =𝜖r
+‖d‖ y∈B x,r *
+Par conséquent : ∀𝜃<𝜖,   f y⩾f x⟺ f x+𝜃d - f x⩾0( ) * * *
+Ainsi :    et par passage à la limite lorsque , on ⩾0
+f x+𝜃d - f x
+𝜃
+* *
+𝜃0→
+obtient :
+.∇f x d=∇f x x - x⩾0* T * T *
+c) Nous savons que lorsque  est convexe et différentiable, nous avons : f
+∀x,y∈U     f y⩾f x+ <∇f x,y - x>( ) ( ) ( )
+Si maintenant,  vérifie la condition nécessaire de 1er ordre, à savoir :x*
+.∀x∈U, <∇f x,x - x>⩾0* *
+La caractérisation de la convexité appliquée avec  donne alors : x=x *
+∀y∈U     f y⩾f x+ <∇f x,y - x>⩾f x( ) * * * *
+Donc  est un minimum global de  sur .f x * f U
+1) f x=‖Ax - b‖=Ax - b Ax - b=x A Ax - x A b+b b( ) 1
+2
+2 1
+2( ) T( ) 1
+2
+T T T T 1
+2
+T
+<<<PAGE>>>
+On en déduit immédiatement que : .∇f x= ( )A Ax - A bT T
+H x=f( )A A T
+2)  est symétrique et définie positive car  est inversible.H=A Af
+T A
+Par conséquent,  est strictement convexe.f
+3) Le minimum est atteint au seul point critique : 
+.x=A A A b=A A A b=A b* T -1 T -1T -1 T -1
+4) x=x - H x∇f x=x - H x A Ax - A b1 ( ) 0 ( )
+f
+0 ( )-1 0 ( ) 0 ( )
+f
+0 ( )-1 T0 ( )T
+x=x - A A A Ax - A b=x - A A A Ax+A A A b1 ( ) 0 ( ) T -1 T0 ( )T 0 ( )-1T -1 T0 ( )-1T -1 T
+.x=x - x+A b=x1 ( ) 0 ( ) 0 ( )-1 *
+5) Les directions de descente étant -conjuguées 2 à 2, la convergence peut se faire en A
+moins de  itérations.n
+1)  avec  et .J X=X AX+b X+c( ) 1
+2
+T T c= 0,  b= -6
+-1 A= 4 1
+1 2
+2)        et     .∇J X=AX+b( )H X=A J( )
+3)  est symétrique et définie positive car ses valeurs propres sont  (leur A > 0
+somme , leur produit ). Donc  est strictement convexe.=tr A= 6 ( ) =det A= 7 ( )J
+4) Le point minimisant  est l'unique point critique : J
+.X=- A b= =*-1 1
+7
+2-1
+-1 4
+-6
+-1
+-11 / 7
+2 / 7
+<<<PAGE>>>
+1) .d=-∇J X=- b=0 ( ) 0 ( ) 6
+1
+𝜌= = =0 ( )
+‖∇J X‖
+d Ad
+0 ( ) 2
+0T( ) 0 ( )
+‖d‖
+d Ad
+0 ( ) 2
+0T( ) 0 ( )
+37
+158
+.X=X+𝜌d= =1 ( ) 0 ( ) 0 ( ) 0 ( ) 37
+158
+6
+1
+111
+79
+37
+158
+2) ∇J X=AX+b= (1 ( ) 1 ( )
+-23
+158
+69
+79
+.𝛽= = =1 ( )
+‖∇J X‖
+‖∇J X‖
+1 ( ) 2
+0 ( ) 2
++
+37
+-23
+158
+2 69
+79
+2
+529
+24964
+.d=-∇J X+𝛽d= + =1 ( ) 1 ( ) 1 ( ) 0 ( )
+23
+158
+-69
+79
+529
+24964
+6
+1
+1702
+6241
+-21275
+24964

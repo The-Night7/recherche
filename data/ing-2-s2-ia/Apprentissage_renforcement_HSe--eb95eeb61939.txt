@@ -1,0 +1,966 @@
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Une introduction ` a l’apprentissage par
+renforcement
+Houcine Senoussi
+janvier 2022
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+1 Introduction
+2 Formalisation
+3 Processus de d´ ecision markovien
+4 Trouver une strat´ egie optimale
+5 Q-Learning
+6 Conclusion
+7 R´ ef´ erences
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+De quoi s’agit-il ?
+D´ eﬁnition :
+L’apprentissage par renforcement est le probl` eme auquel est
+confront´ e un agent qui apprend ` a se comporter ` a l’aide des
+interactions avec son environnement, bas´ ees sur le principe
+Essai-Erreur.
+Autrement dit : chaque action aﬀectu´ ee par l’agent provoque un
+retour de la part de l’environnement (une ”r´ ecompense” ou une
+”punition”). Ce retour est utilis´ e par l’agent pour aﬃner ses choix
+de l’action ` a ex´ ecuter.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+De quoi s’agit-il ?
+Le mod` ele de l’apprentissage est donc d´ eﬁni comme suit :
+Un agent est connect´ e ` a sonenvironnement via sa
+perception et son action.
+`A chaque ´ etape, l’agent re¸ coit en entr´ ee une indication
+concernant l’´ etat de l’environnement. Il choisit alors une
+action.
+L’action modiﬁe l’´ etat de l’environnement et l’agent re¸ coit un
+retour de ce dernier.
+Le comportement de l’agent doit maximiser la somme ` a long
+terme de ces retours.
+Il apprend ` a faire cela en renouvellant les essais et en prenant
+en compte les retours de l’environnement.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Exemples
+1 Un robot qui se d´ eplace dans un environnement dans lequel il
+y a de la nourriture (→ r´ ecompense) et des obstacles (→
+punition).
+2 Jeux (ex : Backgammon, Go) : gain → r´ ecompense, perte→
+punition.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Formalisation
+Un probl` eme d’apprentissage par renforcement est d´ eﬁni par :
+Un ensemble d’´ etatsS.
+Un ensemble d’actions A.
+Un ensemble de ”signaux de renforcement” scalaires : qui
+peut ˆ etre l’ensemble{0, 1} ou l’ensemble R par exemple.
+Une fonction I dont l’ensemble de d´ epart estS. `A chaque
+´ etape, l’entr´ ee de l’agent est la valeurI (s), o` us est l’´ etat en
+cours.
+Ici nous prenons I = la fonction Identit´ e deS (comme c’est
+souvent le cas dans le domaine). Ce choix correspond ` a
+l’hypoth` ese de ”l’observabilit´ e totale” : l’agent per¸ coit
+l’environnement tel qu’il est.
+Une fonction reward qui d´ etermine le ”signal de
+renforcement” r obtenu apr` es chaque action.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Formalisation
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Formalisation
+Le d´ eroulement de l’apprentissage est donc une suite d’´ etapes
+dont chacune est compos´ e de :
+1 Perception : l’agent re¸ coit la valeur de l’´ etats.
+2 D´ ecision/Action : l’agent ex´ ecute une actiona.
+3 Cons´ equence : L’agent re¸ coit un rewardr de la part de
+l’environnement-L’environnement passe dans l’´ etats′.
+L’agent doit donc associer une action a ` a chaque ´ etats.
+1 Il doit donc apprendre une strat´ egieπ : S−→A .
+2 Cet apprentissage est guid´ e par un objectif : maximiser la
+somme des rewards ` a long terme.
+3 Plusieurs algorithmes d’apprentissage possibles (voir plus bas).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Formalisation
+Remarques : L’environnement est souvent non d´ eterministe : une
+mˆ eme action ex´ ecut´ ee ` a partir d’un mˆ eme ´ etat ` a deux moments
+diﬀ´ erents peut g´ en´ erer deux couples diﬀ´ erents (rewardr, nouvel
+´ etats′). Mˆ eme lorsque c’est le cas l’environnement est suppos´ e
+stationnaire : les probabilit´ es des nouveaux couples (r, s′) sont
+toujours les mˆ emes.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Mod` eles d’optimalit´ e
+Nous avons dit que l’objectif de l’agent doit ˆ etre de maximiser
+le gain ` a long terme.
+Question : comment prendre en compte le futur dans la prise
+de d´ ecision ? Autrement dit : quel horizon consid´ erer et
+comment prendre en compte les r´ ecompenses futures ?
+Il y a principalement trois mod` eles pour prendre en compte le
+futur : le mod` ele ` a horizon ﬁni, le mod` ele ` a horizon inﬁni et
+Mod` ele ` a ”r´ ecompense moyenne”.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Mod` eles d’optimalit´ e
+1 Mod` ele ` ahorizon ﬁni. L’agent doit maximiser la moyenne de
+ses rewards sur les h prochaines ´ etapes. Soit :
+E (∑h−1
+t=0 rt)
+2 Mod` ele ` ahorizon inﬁni pond´ er´ e avec un facteur
+d’actualisation γ. L’agent prend en compte la totalit´ e des
+rewards futurs mais l’importance de ces derniers d´ ecroit
+lorsqu’on s’´ eloigne de l’´ etape courante. La valeur ` a maximiser
+est : ∑∞
+t=0γtrt
+avec 0 ≤γ < 1.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Mod` eles d’optimalit´ e
+3 Mod` ele ` a ”r´ ecompense moyenne” (average-reward). L` a aussi,
+le long terme est pris en compte mais sous une autre forme.
+C’est la moyenne des r´ ecompenses ` a long-terme que l’agent
+doit maximiser, soit :
+limh→∞E ( 1
+h
+∑h−1
+t=0 rt)
+Exemple : Faire l’exercice 1 du TD. Objectif : comparer ces
+trois mod` eles.
+Le choix du mod` ele d’optimalit´ e et de ses param` etres ´ eventuels
+doit ˆ etre fait en fonction de l’application consid´ er´ ee. Dans ce cours
+nous adoptons le mod` ele ` a horizon inﬁni avec un facteur
+d’actualisation γ.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’AR et les autres types d’apprentissage
+1 Rappelons qu’on dit qu’un programme (un agent) apprend si
+sa performance dans l’ex´ ecution d’unetˆ aches’am´ eliore
+avec l’exp´ erience.
+2 L’AR v´ eriﬁe bien cette d´ eﬁnition : La performance dans
+l’ex´ ecution est mesur´ ee par le retour de l’environnment.
+L’exp´ erience est la suite des interactions avec l’environnement.
+L’am´ elioration de la performane grˆ ace ` a l’exp´ erience se fait
+par la prise en compte des retours de l’environnement dans
+l’ex´ ecution des actions ”qui rapportent le plus”.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’AP et les autres types d’apprentissage-2
+3 Contrairement ` a l’apprentissage supervis´ e ne re¸ coit pas en
+entr´ ee des exemples (pas de superviseur) qu’il faut g´ en´ eraliser.
+4 Contrairement ` a l’apprentissage non supervis´ e, l’AR ne se
+contente de regrouper des donn´ ees (les ´ etats et les actions)
+selon une mesure de similarit´ e. Il leur associe une valeur en
+fonction des retours de l’environnement.
+5 Contrairement aux deux autres types d’apprentissage, l’AR
+introduit la notion d’action et celles d’essai, d’erreur et de
+r´ ecompense/punition. Il introduit aussi le facteur temps (prise
+en compte de la r´ ecompense ` a long-terme).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Ce qu’on cherche ` a mod´ eliser
+L’agent doit apprendre une strat´ egieπ : S−→A .
+Une strat´ egie d´ eﬁnit les actions ”imm´ ediates” mais l’objectif
+de l’agent est de maximiser le cumul r´ ecompenses` along
+terme.
+Autrement dit, l’agent apprend ` a choisir une action en fonction
+de r´ ecompenses qui peuvent arriver bien plus tard.
+Il doit donc ˆ etre capable de calculer pour chaque ´ etats une
+valeur V π(s) qui caract´ erise le cumul des r´ ecompenses ` a partir
+de l’´ etat si une strat´ egieπ est suivie.
+Ces probl` emes sont tr` es bien mod´ elis´ es par les processus de
+mod´ elisation markovien que nous pr´ esentons dans cette
+section.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Propri´ et´ e de Markov
+D´ eﬁnition :
+Un processus stochastique est une famille de variables al´ eatoires Xt
+t∈ T index´ ee par le temps.
+D´ eﬁnition :
+Un processus stochastique v´ eriﬁe lapropri´ et´ e de Markovsi la
+pr´ ediction de l’avenir ` a partir du pr´ esent n’y est pas rendue plus
+pr´ ecise par la connaissance du pass´ e. Un tel processus est appel´ e
+processus de Markov . Un processus de Markov peut ˆ etre continu
+ou discret.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Propri´ et´ e de Markov-2
+D´ eﬁnition :
+Cas discret : Soit Xt, t ∈ N une suite de variables al´ eatoires
+prenant leurs valeurs dans l’ensemble ﬁni ou d´ enombrable S =
+{s1, s2,..., sM,...}, appel´ e espace d’´ etats. Cette suite est appel´ ee
+cha ˆ ıne de Markovsi nous avons la propri´ et´ e :
+pour tout ensemble de valeurs x0,...,xt−1, x, y prises dans S
+P(Xt+1 = y|Xt = x, Xt−1 = xt−1,..., X0 = x0) =
+P(Xt+1 = y|Xt = x)
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Propri´ et´ e de Markov-3
+Cela signiﬁe que :
+L’´ etat ` a un instant donn´ e d´ epend de celui ` a l’instant
+pr´ ec´ edent mais pas de l’historique.
+Autrement dit : ”Le futur d´ epend directement du pr´ esent
+mais pas du pass´ e”.
+On peut aussi parler d’un processus ”sans m´ emoire”.
+La distribution conditionnelle de probabilit´ e des ´ etats futurs
+ne d´ epend que de l’´ etat pr´ esent.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Matrice de transition
+Nous notons Pij pour si, sj∈ S la probabilit´ e de passer de
+l’´ etatsi ` a l’´ etatsj. Autrement dit Pij=P(Xn+1 = sj|Xn = si).
+Ces valeurs peuvent donc ˆ etre r´ esum´ ees dans la matrice carr´ ee
+suivante appel´ eematrice de transition :
+
+
+P11 P12 ... P1M
+P21 P22 ... P2M
+.. .. ... ..
+.. .. ... ..
+PM1 PM2 ... PMM
+
+
+Propri´ et´ e de la matrice de transition : la somme des ´ el´ ements
+de chaque ligne est ´ egale ` a 1.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov
+La connaissance de la matrice de transition et de la distribution de
+X0 est suﬃsante pour cacluler la probabilit´ e de toute suite d’´ etats.
+En eﬀet :
+A = P(Xn = xn, Xn−1 = xn−1,..., X0 = x0)
+= P(Xn = xn|Xn−1 = xn−1,..., X0 = x0)P(Xn−1 = xn−1,..., X0 = x0)
+= P(Xn = xn|Xn−1 = xn−1)P(Xn−1 = xn−1,..., X0 = x0)
+= Pxnxn−1 P(Xn−1 = xn−1,..., X0 = x0)
+= ...
+= Pxnxn−1...Px1x0 P(X0 = x0)
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov-Exemples
+Faire l’exercice 2 et/ou l’exercice 3 du TD.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Apprentissage par renforcement & Propri´ et´ e de Markov
+Le fonctionnement de l’agent tel que nous l’avons d´ ecrit
+indique que :
+L’´ etatSt+1 de l’agent ` a l’instantt + 1 d´ epend enti` erement de
+son ´ etatSt ` a l’instant t.
+La suite S1, ...., St, St+1, ... est donc une cha ˆ ıne de Markov.
+Nous reste ` a prendre en compte les actions et les r´ ecompenses
+dans le mod` ele. C’est ce qu’on fait en introduisant les
+processus markoviens de d´ ecision.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov-Introduction d’une r´ ecompense
+Tous les ´ etats n’ont pas dans la vie d’un agent la mˆ eme
+valeur. L’origine de cette diﬀ´ erence d´ epend des applications.
+Par exemple : un ´ etat qui correspond ` a une partie gagn´ ee a
+forc´ ement une valeur sup´ erieure ` a celle d’un ´ etat qui
+correspond ` a une partie perdue.
+Nous allons donc supposer qu’` a chaque ´ etats correspond une
+r´ ecompenseRs.
+Cette r´ ecompense est une donn´ ee du probl` eme. Elle est d´ eﬁnie
+comme ´ etant la r´ ecompense moyenne que l’agent re¸ coit ` a
+l’instant t + 1 lorsque ` a l’instantt il est dans l’´ etatS.
+Autrement dit :
+Rs = E (Rt+1| St = s)
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov-Introduction d’une r´ ecompense
+Reste ` a en d´ eduire la ”vraie” valeur d’un ´ etat.
+Question : De quelle mani` ere un agent doit-il prendre en
+compte les r´ ecompenses futures pour ´ evaluer la qualit´ e d’un
+´ etat ?
+Autrement dit : de quelle mani` ere l’agent doit-il int´ egrer le
+futur dans sa prise de d´ ecision ?
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov avec r´ ecompense-Valeur d’un ´ etat
+Compte tenu du fait que nous avons adopt´ e le mod` ele ` a
+horizon inﬁni et actualis´ e, cette valeur se d´ eﬁnit de la
+mani` ere suivante :
+v(s) = E (Rt+1 +γRt+2 +γ2Rt+3 +...| St = s).
+Cette valeur peut ˆ etre r´ e´ ecrite comme suit :
+V (s) = E (Rt+1| St = s) +γE (Rt+2 +γRt+3 +...| St = s).
+= Rs +γ ∑
+s ′ Pss ′V (s′).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Cha ˆ ıne de Markov avec r´ ecompense-´Equation de Bellman
+Pour obtenir les valeur de chaque ´ etat, nous devons donc
+r´ esoudre le syst` eme suivant contenant une ´ equation pour
+chaque ´ etats de S : V (s) = Rs +γ ∑
+s ′ Pss ′V (s′).
+Plusieurs m´ ethodes de r´ esolution existent :
+1 R´ esolution directe du syst` eme (surtout lorsque le nombre
+d’´ etats est faible, voir TD).
+2 R´ esolution indirecte (exemple : programmation dynamique).
+Exemple : Suite de l’exercice 3 du TD.
+Pour arriver ` a une description compl` ete de nos probl` emes
+d’apprentissage par renforcement il nous faut ajouter un
+ensemble d’actions. Pour cela nous introduisons les processus
+de d´ ecision markoviens.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Processus de d´ ecision markovien
+D´ eﬁnition :
+Un processus de d´ ecision markovien est d´ eﬁni par
+un ensemble d’´ etatsS.
+un ensemble d’actions A.
+une fonction de transition T : S×A×S−→ [0, 1].
+T (s, a, s′) est la probabilit´ e de passer de l’´ etats ` a l’´ etats′ en
+utilisant l’action a.
+On peut aussi dire que T (s, a, s′) =
+P(St+1 = s′| St = s, At = a)
+une fonction de r´ ecompense (reward)R : S×A−→ R.
+un facteur d’actualisation γ∈ [0, 1[.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Processus de d´ ecision markovien-2
+Remarque : Compte tenu du fait qu’une action a, ex´ ecut´ ee ` a
+partir d’un ´ etats peut conduire ` a plusieurs ´ etats, la valeur
+R(s, a) est une moyenne. Plus pr´ ecis´ ement :
+R(s, a) = E (Rt+1| St = s, At = a).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Qu’est-ce qu’une strat´ egie ?
+Une strat´ egie (policy) d´ eﬁnit un comportement possible de
+l’agent. Dans le cas g´ en´ eral elle est d´ eﬁnie par une
+distribution de probabilit´ es :
+π(s, a) = P(At = a| St = s).
+Dans le cas d´ eterministe, elle est d´ eﬁnie par une fonction :
+π : S−→A .
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Valeur d’un ´ etat
+Pour caract´ eriser la qualit´ e des ´ etats en termes de
+r´ ecompenses imm´ ediate et futures, nous introduisons la notion
+de valeur d’un ´ etat.
+Pour commencer, nous d´ eﬁnissons la valeur d’un ´ etats pour
+une strat´ egie donn´ eeπ. :
+Vπ(s) = Eπ(∑∞
+t=0 γtrt)
+o` uEπ signiﬁe que la moyenne est calcul´ ee dans le cas o` u la
+strat´ egie suivie par l’agent estπ. Autrement dit Vπ(s) est la
+valeur moyenne de la somme actualis´ ee des r´ ecompenses que
+l’agent va gagner s’il commence en s et qu’il ex´ ecute la
+strat´ egieπ.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Valeur d’un ´ etat-2
+Nous d´ eﬁnissonsla valeur optimale d’un ´ etats de la mani` ere
+suivante :
+C’est la valeur moyenne de la somme actualis´ ee des
+r´ ecompenses que l’agent va gagner s’il commence en s et qu’il
+ex´ ecute la strat´ egie optimale. Soit :
+V∗(s) = maxπE (∑∞
+t=0 γt rt)
+Cette valeur est unique et est la solution des ´ equations
+suivantes :
+V∗(s) = maxa(R(s, a) +γ ∑
+s ′ T (s, a, s′)V∗(s′))
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Valeur d’un ´ etat-3
+La valeur optimale des ´ etats nous permet de caract´ eriser une
+strat´ egie optimale(d´ eterministe)π∗ :
+s∈ S, π∗(s) = argmaxa(R(s, a) +γ ∑
+s ′ T (s, a, s′)V∗(s′))
+Il nous faut ` a pr´ esent r´ esoudre ces ´ equations pour d´ eterminer,
+ou du moins approcher, la fonction V∗ et la strat´ egieπ∗.
+Pour commencer, nous allons pr´ esenter les deux algorithmes
+Value Iteration et Policy Iteration.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme ’Value Iteration’
+Pour trouver la strat´ egie optimaleπ∗ en passant par la fonction
+valeur optimale V∗, on peut utiliser l’algorithme Value Iteration
+suivant :
+1 Initialiser V (s), s∈ S ` a des valeurs quelconques.
+2 R´ ep´ eter jusqu’` a (crit` ere d’arrˆ et atteint)
+1 Pour chaque ´ etats
+1 Pour chaque action a
+Q(s, a) = R(s, a)+γ ∑
+s′ T (s, a, s ′)V (s ′)
+2 V (s) = maxaQ(s, a)
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme ’Value Iteration’-2
+Il a ´ et´ e d´ emontr´ e que cet algorithme converge vers la fonction
+V∗.
+Crit` ere d’arrˆ et : Le maximum des diﬀ´ erences entre deux
+valeurs successives de V est inf´ erieur ` aϵ pour un param` etreϵ
+donn´ e.
+Complexit´ e de l’algorithme : Au pire des cas chaque it´ eration
+est quadratique en |S| et lin´ eaire en|A|. L’ensemble des
+valeurs de T (s, a, s′) ´ etant creux (grand nombre de valeurs 0),
+dans la pratique chaque it´ eration est aussi lin´ eaire en|S|.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme ’Value Iteration’-3
+Une fois obtenue l’estimation V de V∗ ` a l’aide de cet
+algorithme, on d´ eduit une estimationπ de la strat´ egie
+optimale π∗ en aﬀectant ` a chaque ´ etats l’action π(s) = a qui
+permet d’atteindre la valeur V (s).
+Question : Peut-on modiﬁer ’l´ eg` erement’ cet algorithme de
+mani` ere qu’il retourne les deux estimationsV et π ?
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme ’Policy Iteration’
+Cet algorithme manipule directement la strat´ egieπ plutˆ ot que la
+fonction V .
+1 Choisir une strat´ egie quelconqueπ′.
+2 R´ ep´ eter
+1 π = π′
+2 Calculer la fonction Vπ. Pour ce faire r´ esoudre le syst` eme :
+Vπ(s) = R(s,π (s)) +γ ∑
+s′ T (s,π (s), s ′)Vπ(s ′))
+3 Mettre ` a jour la strat´ egie. Pour chaque ´ etat s:
+π′(s) = argmaxa(R(s, a) +γ ∑
+s′ T (s, a, s ′)Vπ(s ′))
+3 Jusqu’` aπ′ = π
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Les m´ ethodes sans mod` ele
+Les deux algorithmes que nous venons de pr´ esenter supposent que
+nous connaissons d´ ej` a le ’mod` ele’ du probl` eme, c’est-` a-dire la
+fonction de transition T (s, a, s′) et la fonction de renforcement
+R(s, a). L’apprentissage par renforcement, consiste ` a trouver (plus
+exactement apprendre) la strat´ egie optimale lorsque ce mod` ele
+n’est pas connu ` a l’avance. L’agent doit interagir avec son
+environnement pour obtenir des informations qui, ` a l’aide d’un
+algorithme appropri´ e, permettront de d´ ecouvrir la strat´ egie
+optimale.
+Nous avons donc besoin d’une m´ ethode qui ne suppose pas que le
+mod` ele est d´ ej` a connu. Il en existe deux cat´ egories que nous
+appellerons model-based et model-free.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Les m´ ethodesmodel-based
+1 Les m´ ethodes de la premi` ere cat´ egorie commencent par
+estimer un mod` ele puis l’utilisent pour calculer une strat´ egie
+optimale. On parle alors d’ apprentissage indirect ou de
+model-based methods. Elles proc` edent de deux fa¸ cons
+diﬀ´ erentes :
+1 On construit d’abord le mod` ele (les fonctions T () et R()) et
+ensuite on applique l’un des algorithmes pr´ esent´ es plus haut
+pour trouver la valeur optimale des ´ etats et/ou la strat´ egie
+optimale.
+2 La construction du mod` ele et son utilisation pour d´ eﬁnir la
+strat´ egie optimale sont imbriqu´ ees. La m´ ethode Dyna que
+nous pr´ esentons ici proc` ede de cette fa¸ con.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Les m´ ethodesmodel-free
+2 Les m´ ethodes de la deuxi` eme cat´ egorie apprennent une
+strat´ egie optimale sans passer par un mod` ele. On parle alors
+d’apprentissage direct ou de model-free methods. Les
+m´ ethodesQ-learning et que nous pr´ esentons ici sont des
+exemples de cette cat´ egorie.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme Dyna
+Une boucle dont chaque it´ eration utilise un quadruplet (s, a, s′, r).
+1 Mettre ` a jour les valeurs du mod` eleˆT et ˆR.
+2 Mettre ` a jour la strat´ egie ens en utilisant la derni` ere version
+du mod` ele.
+Q(s, a) = ˆR(s, a) + γ ∑
+s′ ˆT (s, a, s′)maxa′Q(s′, a′)
+3 Mettre ` a jourk autres valeurs de Q(si, ai) i = 1,..., k, pour
+des couples ( si, ai) choisis au hasard.
+4 Choisir une action a′ ` a ex´ ecuter ens′ et recommencer.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Q-learning, principe
+Il s’agit d’´ evaluer la qualit´ e de chaque action partant de
+chaque ´ etat.
+La qualit´ e d’un couple ´ etat/action est li´ ee ` a la r´ ecompense
+cumul´ ee dans le futur (long-terme) lorsque l’agent ex´ ecute
+l’action en partant de l’´ etat et qu’ensuite il se comporte de
+mani` ere optimale.
+L’apprentissage consiste ` a aﬃner progressivement cette
+´ evaluation ` a l’aide de la r´ ecompenser obtenue ` a chaque
+ex´ ecution de l’action ` a partir de l’´ etat.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+La fonction Q
+Pour un ´ etats et une action a, Q∗(s, a) repr´ esente la
+moyenne de la r´ ecompense cumul´ ee lorsque l’agent est dans
+l’´ etats, qu’il ex´ ecute l’actiona puis se comporte de mani` ere
+optimale. Nous avons donc :
+Q∗(s, a) = R(s, a)+ γ ∑
+s ′ T (s, a, s′)maxa′Q∗(s′, a′).
+`A partir de cette fonction, nous pouvons d´ eduire la valeur
+optimale de chaque ´ etat et la strat´ egie optimale :
+1 V∗(s) = maxaQ∗(s, a).
+2 π∗(s) = argmaxaQ∗(s, a).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+La fonction Q
+Remarque : comme nous l’avons fait pour la fonction V valeur
+des ´ etats, nous pourrions aussi d´ eﬁnir la fonctionQ π pour une
+strat´ egie quelconqueπ puis consid´ ererQ∗ comme celle
+correspondant ` a la strat´ egie optimaleπ∗.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme Q-learning
+L’algorithme (d’apprentissage) Q-learning consiste ` a apprendre la
+fonction Q∗ (` a partir de maintenant on diraQ tout simplement),
+pour ensuite en d´ eduire la strat´ egie optimaleπ∗. Il se compose
+d’une suite d’´ etapes (ou ´ episodes) qui se d´ eroulent toutes selon les
+´ etapes suivantes :
+1 L’agent oberve son ´ etats.
+2 Il choisit et ex´ ecute une actiona.
+3 Il observe le nouvel ´ etats′.
+4 Il re¸ coit une r´ ecompense imm´ ediater.
+5 Il met ` a jour la valeur de Q pour le couple ( s, a).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Choix d’une action
+Comment l’agent choisit-il l’action ` a ex´ ecuter (´ etape 2) ? Il doit
+trouver un compromis entre les deux possibilit´ es suivantes :
+1 Exploitation : Choisir l’action qui (selon l’´ evaluation
+actuelle) rapporte la r´ ecompense ` a long-terme la plus
+importante, c’est-` a-dire celle qui correspond la plus grande
+valeur de Q(s, a).
+2 Exploration : Choisir une action au hasard. L’objectif ´ etant
+d’explorer une direction qui ne l’a pas encore ´ et´ e.
+L’algorithme aura donc un param` etre qu’on noteϵ qui repr´ esente
+ce compromis. Plus exactement ϵ repr´ esentera la probabilit´ e qu’on
+veut donner aux choix al´ eatoires d’une action.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Facteur d’apprentissage
+Nous avons besoin de la r` egle de mise ` a jour de la valeur de Q
+(´ etape 5). Cette r` egle est la suivante :
+Q(s, a) = Q(s, a) + α(r +γmaxa′Q(s′, a′)− Q(s, a))
+qu’on peut ´ ecrire aussi de la mani` ere suivante :
+Q(s, a) = (1−α)Q(s, a) + α(r +γmaxa′Q(s′, a′))
+α est un param` etre compris entre 0 et 1 appel´ efacteur
+d’apprentissage (learning rate).
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme Q-learning-Convergence
+Notons Qn(s, a) la valeur de fonction Q(s, a) ` a lanieme it´ eration
+de l’algorithme. Il a ´ et´ e d´ emontr´ e que :
+1 Dans le cas d´ eterministe :
+Si chaque couple ( s, a) est visit´ einﬁniment souvent alors
+limn→∞ Qn(s, a) = Q∗(s, a)
+2 Dans le cas stochastique :
+Le r´ esultat le plus connu concernant la convergence dans ce cas
+consid` ere un facteur d’apprentissageα d´ ependant du temps.
+Autrement dit nous avons :
+Qn(s, a) = Qn−1(s, a) +
+αn(rn +γmaxa′Qn−1(s′, a′)− Qn−1(s, a))
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme Q-learning-Convergence(2)
+2 Cas stochastique (suite):
+Notons ni (s, a) le num´ ero de l’it´ eration o` u l’actiona est
+ex´ ecut´ ee ` a partir de l’´ etats our la i eme fois. Si les conditions
+suivantes sont v´ eriﬁ´ ees :
+1 Les r´ ecompensesr sont born´ ees :∃R∀ n|rn|≤R .
+2 La fonction α v´ eriﬁe les propri´ et´ es suivantes :
+(a)∀ n, 0≤αn < 1.
+(b)∀ s, a, ∑∞
+i=1αni (s,a) =∞ et ∑∞
+i=1α2
+ni (s,a) <∞
+Alors∀ s, a, Qn(s, a)→ Q∗(s, a) lorsque n→∞ avec une
+probabilit´ e 1.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+L’algorithme Q-learning-Convergence(3)
+2 Cas stochastique (suite):
+La condition n´ ecessaire pour la convergence peut ˆ etre exprim´ ee
+de la mani` ere suivante :
+1 Les r´ ecompenses sont born´ ees.
+2 Tous les facteurs d’apprentissage sont compris entre 0 et 1.
+3 Pour chaque couple ( s, a), (s, a) est visit´ e (premi` ere somme
+→∞ ).
+4 Pour chaque couple ( s, a), le facteur d’apprentissage utilis´ e
+pour ce couple d´ ecroit ”d’une certaine mani` ere” : la premi` ere
+somme→∞ et ldeuxi` eme somme reste born´ ee.
+Exemple de ”bonnes valeurs de αn” : Nous savons que la
+somme ∑∞
+n=1
+1
+np converge si p> 1 et diverge si p≤ 1, donc
+on peut prendre :
+αn = 1
+nw avec 1
+2 < w <= 1.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+Conclusion
+Nous avons pr´ esent´ e l’apprentissage par renforcement ` a travers :
+Son principe et ses sp´ eciﬁcit´ es.
+Sa mod´ elisation : processus markovien de d´ ecision.
+Plusieurs exemples d’algorithmes et notamment le Q-learning.
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement
+<<<PAGE>>>
+Introduction
+Formalisation
+Processus de d´ ecision markovien
+Trouver une strat´ egie optimale
+Q-Learning
+Conclusion
+R´ ef´ erences
+R´ ef´ erences
+Reinforcement Learning : A Survey. L.P. Kaebling et al.
+Initiation aux probabilit´ es. Sheldon M. Ross.
+Q-learning. Technical note. C. Watkins.
+Cours de David Silver ` a l’UCL.http://www0.cs.ucl.ac.
+uk/staff/d.silver/web/Teaching.html
+Houcine Senoussi Une introduction ` a l’apprentissage par renforcement

@@ -1,0 +1,50 @@
+import pandas as pd #data manipulation library (dataframe)
+import sklearn as sklearn #machine learning library
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, accuracy_score
+from keras.models import Sequential #réseau de neurones
+from keras.layers import Dense #couches du RNA
+import numpy as np
+import tensorflow as tf
+
+# 1. Lecture des données
+data = pd.read_csv('spamDataNum.csv')
+print(f"Nombre d'observations: {data.shape[0]}")
+print(f"Nombre de colonnes: {data.shape[1]}")
+print(f"Nombre de modalites de la classe CSpam: {data['CSpam'].nunique()}")
+
+# 2. Création des ensembles d’apprentissage et de test
+X = data.drop('CSpam', axis=1)
+y = data['CSpam']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Normalisation des données
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# 3. Création du réseau
+model = Sequential()
+model.add(Dense(5, input_dim=X_train.shape[1], activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+# 4. Affichage des caractéristiques du réseau
+model.summary()
+
+# Compilation du modèle
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# 5. Entrainement du réseau
+iterations = [10, 50, 100]
+for it in iterations:
+    print(f"Entrainement avec {it} itérations")
+    model.fit(X_train, y_train, epochs=it, batch_size=10, verbose=1)
+
+# 6. Test du réseau
+y_pred = (model.predict(X_test) > 0.5).astype("int32")
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+print(f"Précision: {accuracy}")
+print(f"Matrice de confusion:\n{conf_matrix}")

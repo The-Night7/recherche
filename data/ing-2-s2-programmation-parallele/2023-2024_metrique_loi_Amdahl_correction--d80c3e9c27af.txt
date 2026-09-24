@@ -1,0 +1,358 @@
+ 
+ING2 MI : PROGRAMMATION PARALLELE DISTRIBUEE 
+METRIQUE ET LOI AMDAHL 
+SÉRIE D’EXERCICES 1  
+Rédigé par : Ref : ING2 MI 
+ Créé  : 06/01/2024 
+ 
+Page 1 sur 6 
+ 
+I performances et métriques 
+ 
+Exercice 1 :  
+Lors de l’exécution d’un programme donné, l’ordinateur A exécute 100 MIPS contre 5 MIPS pour l’ordinateur 
+B. en revanche, l’ordinateur A prend 60 secondes pour exécuter le programme, tandis que l’ordinateur B n’en 
+requiert que 45. 
+Comment cela est-il possible ? 
+ 
+Le nombre de MIPS indique la vitesse d’exécution des instructions par le processeur, mais chaque architecture 
+de processeur requiert un nombre différent d’instructions pour réaliser un calcul donné. Si l’ordinateur A doit 
+exécuter un nombre plus important d’instructions que l’ordinateur B pour exécuter le progra mme, il sera 
+parfaitement possible qu’il prenne plus de temps pour le faire, même s’il parvient à exécuter plus d’instructions 
+par seconde. 
+ 
+Exercice 2  
+ Un programme exécuté sur un système donné requiert 1000 000 de cycles. Si le système réalise un CPI de  40, 
+combien d'instructions ont été exécutées pour faire tourner le programme ? 
+ 
+CPI= NbCycles/NbInstructions.  
+Donc NbInstrcvutions=NbCycles/CPI.  
+1000000/40=25000 instructions ont donc été exécutées pour faire tourner le programme 
+ 
+Exercice 3 :  
+Quel est l'IPC d'un programme qui exécute 35000 instructions et requiert 17000 cycles de temps d'exécution ? 
+ 
+IPC= NbInstructions/NbCycles.  
+35000/17000=2.06 
+ 
+Exercice 4 :  
+Soit un programme contenant 200 000 instructions dont 40% sont des opérations flottantes (p ossédants un 
+CPI de 10), et le reste d’instructions divers (possédants un CPI de 2). Quel sera le temps d’exécution du 
+programme sachant que le temps de cycle est de 10-6 secondes ? 
+ 
+Nombre d’instructions flottantes = 40% des 200 000 instructions = 80 000 instructions  
+Nombre d’instructions diverses = 60% des 200 000 instructions = 120 000 instructions  
+Nombre de cycles des instructions flottantes = CPI*Nb Inst = 800 000 cycles  
+Nombre de cycles des instructions diverses = CPI*Nb Inst = 240 000 cycles  
+Donc nombre total de cycles = 1 040 000 cycles  
+Temps d’exécution = nombre de cycle * temps de cycle = 1.04*106*10-6 = 1.04 secondes 
+ 
+ 
+ 
+ 
+ 
+Exercice 5 :  
+Un ordinateur C obtient une note de 42 auprès d’un banc d’essai (les notes les plus élevées correspondant aux 
+meilleures performances). Un ordinateur D obtient la note 35 pour le même banc d’essai. Lorsque vous exécutez 
+<<<PAGE>>>
+ 
+ 
+Page 2 sur 6 
+ 
+votre programme, vous constatez pourtant que l’ordinateur C prend 20% de temps de plus que l’ordinateur D pour 
+l’exécution du programme. Comment cela est-il possible ? 
+ 
+L’explication la plus plausible est que votre programme dépend fortement d’un aspect du système qui n’est 
+pas mis à l’épreu ve par le banc d’essai. Par exemple, votre programme peut avoir à réaliser un très grand 
+nombre de calculs à virgule flottante, alors que le banc d’essai s’intéressait plutôt à la performance sur les 
+entiers, ou vice-versa. 
+ 
+II. Loi d'amdahl 
+ 
+Exercice 6 :  
+Supposons qu’un ordinateur prenne 90% de son temps à gérer un type particulier de calcul lorsqu’il exécute 
+un programme donné et que son fabricant apporte une modification qui améliore sa performance sur ce type 
+de calcul en la multipliant par 10. 
+a) Si le programme prenait à l’origine 100 secondes pour s’exécuter, combien de temps lui faudra-t-il après la 
+modification ? 
+b) Quelle est l’accélération réalisée en passant de l’ancien au nouveau système ? 
+c) Quelle fraction de son temps d’exécution le nouveau système prend-il pour exécuter le type de calcul qui a 
+été amélioré ? 
+ 
+a) Il s’agit d’une application directe de la loi d’Amdahl :  
+ Temps d’exécutionancien = 100s 
+• Fracutilisée = 0.9 
+• Fracinutilisée = 0.1 
+• s = 10 
+ 
+Temps d’exécutionnouveau=Temps d’exécutionancien x [Fracinutilisée + (Fracutilisée / Accélérationutilisée)]  
+Temps d’exécutionancien = 100s Fracutilisée = 0.9 Fracinutilisée = 0.1 Accélérationutilisée = 10  
+Temps d’exécutionnouveau = 100 x [0.1 + 0.9/10)] = 19 secondes  
+ 
+b) En utilisant la définition de l’accélération, on obtient une accélération de 5,3. On peut également appliquer 
+les valeurs à la loi d’Amdahl pour obtenir le même résultat.  
+ 
+c) La loi d’Amdahl ne nous permet pas de répondre directement à cette question. Le système d’origine passait 
+90% de son temps à exécuter le type de calcul qui a été amélioré, aussi consacrait -il 90 secondes à cela pour 
+un programme de 100 secondes. La performance de calcul ayant été multipliée par 10, le système amélioré 
+passe 90/10 = 9 secondes à exécuter ce type de calcul. Puisque 9 secondes correspondent à 47% de 19 secondes 
+(le nouveau temps d’exécution du programme), le nouveau système passe à présent 47% de son temps à 
+exécuter le type de calcul qui a été amélioré.  
+ 
+Exercice 7 :  
+Quelle amélioration permet de réduire le plus fortement le temps d’exécution :  
+une amélioration utilisée 20% du temps qui multiplie la performance par deux lorsqu’elle est utilisée  
+ou une amélioration 70% du temps qui multiplie la performance par 1.3 lorsqu’elle est utilisée. 
+ 
+En appliquant la loi d’Amdahl, on obtient l’équation suivante pour la première amélioration :  
+Temps d’exécutionnouveau=Temps d’exécutionancien x [Fracinutilisée + (Fracutilisée / Accélérationutilisée)]  
+Temps d’exécutionnouveau =Temps d’exécutionancien x [0.8 + (0.2 / 2)]  
+Temps d’exécutionnouveau/Temps d’exécutionancien = 0.9 = 90% par rapport à l'ancien temps d'exécution.  
+ 
+Ca veut dire que le temps d’exécution avec amélioration correspond à 90% du temps d’exécution sans 
+amélioration.  
+<<<PAGE>>>
+ 
+ 
+Page 3 sur 6 
+ 
+ 
+Pour la deuxième amélioration 
+En appliquant la loi d’Amdahl aux valeurs de la deuxième amélioration, on obtient :  
+Temps d’exécutionnouveau =Temps d’exécutionancien x [0.3 + (0.7 / 1.3)]  
+Temps d’exécutionnouveau/Temps d’exécutionancien = 0.84 = 84%.  
+ 
+En conséquence, c’est la deuxième amélioration qui aura le plus fort impact sur le temps d’exécution global, 
+bien qu’elle représente une amélioration moindre lorsqu’elle est utilisée. 
+ 
+Exercice 8 :  
+a) L’amélioration de l’exécution des instructions non multiplicatrices doit être la plus avantageuse. Chaque 
+amélioration augmente la performance des capacités concernées à même proportion. Or, le système passe plus 
+de temps à exécuter des instructions non multiplicatrices qu’à traiter l’une ou l’autre des deux autres catégories 
+d’opérations. La loi d’Amdahl stipulant que l’impact global d’une amélioration augmente à mesure 
+qu’augmente la fraction de temps durant laquelle elle est utilisée, on en déduit que l’amélioration du traitement 
+des instructions non multiplicatrices fournira les meilleurs résultats en termes de performance.  
+ 
+b) En appliquant à la loi d’Amdahl les valeurs du pourcentage de tem ps d’utilisation (0.7, 0.8, 0.5) et de 
+l’amélioration en cours d’utilisation de 2:  
+ 
+Accélération = 1/[Fracinutilisée + (Fracutilisée / Accélérationutilisée)]  
+= 1/[0.7 + (0.3 / 2)] = 1.18 (accès à la mémoire)  
+= 1/[0.8 + (0.2 / 2)] = 1.11 (multiplications)  
+= 1/[0.5 + (0.5 / 2)] = 1.33 (autres instructions)  
+Ces résultats confirment nos raisonnements précédents. 
+ 
+ 
+Exercice 9 :  
+Un architecte d’ordinateur conçoit le système mémoire pour la nouvelle génération d’un processeur. Si dans sa 
+version courante, le processeur passe 40% de son temps à traiter des références mémoires,  
+a de combien l’architecte doit-il accélérer le système mémoire pour proposer une accélération générale de 1.2 ?  
+b Qu’en serait-il pour une accélération générale de 1.6 ? 
+ 
+a Pour résoudre ce problème, nous appliquons la loi d’Amdahl pour les accélérations locales, la variable 
+Accélérationutilisée devenant l’inconnue (soit x) au lieu de l’Accélération générale. La valeur de Frac utilisée est 
+0.4 car le système original passe 40% de son temps à gérer des références mémoire. La valeur de Frac inutilisée 
+est donc 0.6. Pour une augmentation de 20% des performances générales, on obtient :  
+Accélération = 1.2 = 1/[0.6 + (0.4 / x)]  x = 1.71  
+ 
+b Pour obtenir la valeur Accélération utilisée requise pour une accélération générale de 1.6, la seule valeur à 
+modifier dans l’équation précédente est celle de l’accé lération générale. On obtient ainsi une valeur 
+Accélérationutilisée = 16.  
+ 
+Cet exemple nous montre à quel point les efforts sont peu récompensés lorsqu’on ne fait porter les 
+améliorations que sur un seul aspect des performances du système. Pour faire pass er l’accélération générale 
+de 1.2 à 1.6, nous sommes contraints de multiplier pratiquement par 10 le paramètre Accélérationutilisée, car les 
+60% du temps durant lesquels la mémoire n’est pas utilisée affectent sans cesse plus fortement la performance 
+générale à mesure que nous améliorons la performance de la mémoire. 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+ 
+ 
+Page 4 sur 6 
+ 
+Exercice 10 :  
+Considérez une architecture qui possède quatre types d’instruction : additions, multiplications, opérations 
+mémoire et branchements. Le tableau qui suit indique le nombr e d’instructions associé à chaque type 
+d’opération pour le programme dont vous vous préoccupez, le nombre de cycles que prend ce programme 
+pour exécuter chaque type d’instruction et l’accélération de l’exécution du type d’instruction offerte par une 
+amélioration proposée (chaque amélioration n’affecte qu’un seul type d’instruction). 
+Classez les améliorations liées à chaque type d’instruction selon l’ordre de leur impact sur la performance 
+générale. 
+ 
+Pour résoudre ce problème, nous devons en premier lieu calculer le nombre de cycles nécessaires à l’exécution 
+de chaque type d’instruction avant que les améliorations ne soient apportées et la fraction du nombre de cycles 
+passée à exécuter chaque type d’instruction (Fracutilisée pour chaque instruction).  
+ 
+Type 
+d’instruction 
+Nombre 
+d’instructions 
+Temps 
+d’exécution 
+Accélératio
+n pour le 
+type 
+Addition  10 millions  2 cycles  2.0  
+Multiplication  30 millions  20 cycles  1.3  
+Mémoire  35 millions  10 cycles  3.0  
+Branchement  15 millions  4 cycles  4.0  
+ 
+ 
+Ceci nous permettra d’utiliser la loi d’Amdahl pour calculer l’accélération générale offerte par chacune des 
+améliorations proposées. En multipliant le nombre d’instructions de chaque type par le temps d’exécution 
+d’une instruction, nous obtiendrons les no mbres de cycles passés à exécuter chaque type d’instruction. En 
+additionnant ces valeurs, nous obtiendrons le nombre total de cycles requis pour exécuter le programme. On 
+obtient ainsi les valeurs présentées dans le tableau suivant (le temps d’exécutions total étant de 1 030 millions 
+de cycles) : 
+Type 
+d’instruction 
+Nombre 
+d’instructions 
+Temps 
+d’exécution 
+Accélératio
+n pour le 
+type 
+Nombre de 
+cycles 
+Fraction* 
+de cycles 
+Addition  10 millions  2 cycles  2.0  20 millions  1.94%  
+Multiplication  30 millions  20 cycles  1.3  600 
+millions  
+58.25%  
+Mémoire  35 millions  10 cycles  3.0  350 
+millions  
+33.98%  
+Branchement  15 millions  4 cycles  4.0  60 millions  5.83%  
+*Fraction de cycles = (nombre de cycles/ nombre total de cycles) x 100 
+ 
+III. Achat d'équipement d'un laboratoire 
+ 
+Exercice 11 : Achat de machines en laboratoire  
+ 
+Votre laboratoire vient d’acheter de nouvelles machines avec 4 cœurs et on vous demander d’optimiser vos 
+logiciels qui sont uniquement séquentiels pour l’instant. Deux applicat ions doivent tourner en même temps 
+sur ces machines mais leurs besoins en ressources sont différents.  
+La première application requiert 60% des ressources et la seconde 40%.  
+ 
+1. En supposant que la première application est parallélisable à 80%, quel gain pourriez-vous obtenir si cette 
+application était exécutée seule sur le système ?  
+1/(0.2+0.8/4) = 2.5 
+2. En supposant que la seconde application est parallélisable  à 90%, quel gain pourriez -vous obtenir si cette 
+application était exécutée seule sur le système ?  
+1/(0.1+0.9/4) = 3.08 
+<<<PAGE>>>
+ 
+ 
+Page 5 sur 6 
+ 
+3. En supposant toujours que la première application est parallélisable à 80%, quel gain global du système 
+pourriez-vous obtenir si cet te application était parallélisée, mais pas la seconde application (mais en faisant 
+tourner les deux en même temps) ?  
+Tnew = 0.6×(0.2+0.8/4)+0.4 = 0.64 
+S = Told /Tnew = 1.56  
+4. Quel gain global obtiendriez-vous si les deux applications étaient parallélisées et exécutées en même temps 
+(toujours avec une parallélisation de 80% pour la première et de 90% pour la seconde) ? Quelle en serait 
+l'efficacité ? 
+Tnew = 0.6×(0.2+0.8/4)+0.4×(0.1+0.9/4) = 0.24+0.13 = 0.37 
+S = Told /Tnew = 2.70 
+E = S/P 
+E4 = 2.70/4 = 0.675 
+5. Refaire les 4 questions précédentes avec en  considérant un système avec 12 cœurs et après avec  24 cœurs. 
+Que pouvez-vous conclure à propos de l'augmentation  de nombre de cœurs 
+ 
+12 cores: 
+Tnew = 0.6×(0.2+0.8/12)+0.4×(0.1+0.9/12) = 0.16+0.07 = 0.23 
+S = Told /Tnew = 4.35 
+E12 = 4.35/12 = 0.3625 
+ 
+24 cores: 
+Tnew = 0.6×(0.2+0.8/24)+0.4×(0.1+0.9/24) = 0.14+0.055 = 0.195 
+S = Told /Tnew = 5.13 
+E24 = 5.13/24 = 0.21375 
+ 
+Notice how, although you do get better speedups, the efficiency is lower withmore cores, you 
+are not using all the potential of the machines. 
+ 
+6. une machine à 4 cœurs coûte 1 000 EUR, une machine à 12 cœurs coûte 2 500 EUR et une machine à 24 
+cœurs coûte 6 000 EUR. Compte tenu de ces prix et des précédentes accélérations obtenues, que conseilleriez-
+vous au responsable des achats ? 
+4coeurs→1000/2.70 = 370.3 EUR par environnement 
+12coeurs→2500/4.35 = 574.7 EUR par environnement 
+24coeurs→6000/5.13 = 1169.6 per par environnement 
+ 
+IV. Choix du nombre de processeur 
+ 
+Exercice 12 : Bien choisir le nombre de cœurs  
+Vous disposez d’un programme qui met 1000 unités de temps pour s’exécuter. Après analyse, vous considérez 
+que 70% de son code est parallélisable.  
+1. Considérant la loi d’Amdahl, quel est le speedup maximal possible ? 
+2. Chaque fois que l’on ajoute un cœur, le système perd un peu de temps pour la gestion du thread 
+supplémentaire. Vous estimez cette perte à 5 unités de temps par cœur.  
+a. Tracez une courbe représentant l’évolution du temps de calcul en fonction du nombre de cœurs.  
+b. Quelle est la valeur optimale du nombre de cœurs à utiliser ?  
+3. Sur le même graphique, ajoutez la courbe correspondant au code séquentiel. À partir de combien de cœurs 
+l’application parallèle deviendra-t-elle plus lente que la version séquentielle ?  
+ 
+1. 
+Amdahl dit que le temps d'exécution parallèle est 0.7/S +0.3 
+Dans un cœur, la partie séquentielle prend: 
+Tseq = Meilleur_Temps_Parallele = 1000∗0.3 = 300 
+<<<PAGE>>>
+ 
+ 
+Page 6 sur 6 
+ 
+La vitesse maximale est donc: 1000/300 = 3.33... 
+On peut le voir aussi en appliquant directement l’équation d’Amdahl: 
+Smax = lim
+𝑛→∞
+(
+1
+0.3+0.7
+p  
+) =
+1
+33 = 3.33 
+2. 
+T = 300+700/p +5∗(p −1) 
+ 
+3. 
+1000 = 300+700/p +5∗(p −1) 
+5∗p2−705p +700 = 0 
+p = 705+√(705^2 − 4 ∗ 5 ∗ 700 )/(2 ∗ 5) 
+p = 705+ 
+√(511025 )
+2∗5 = 140 
+ 
+À 140 cœurs, la mise en œuvre parallèle serait plus lente que la version séquentielle. 
+Notez que 140∗5 = 700, est le temps de faire le rapport parallèle de l'application en séquentiel, 
+donc c'est logique, pas besoin de faire tous les calculs. 
+ 
+V. La loi de Gustafson 
+Considérons un programme informatique qui traite les fichiers du disque. Une partie de ce programme peut 
+analyser le répertoire du disque et créer une liste de fichiers en interne en mémoire. Après cela, une autre 
+partie du programme transmet chaque fichier à un thread distinct pour traitement. La partie qui analyse le 
+répertoire et crée la liste des fichiers ne peut pas être accélérée sur un ordinateur parallèle, contrairem ent à la 
+partie qui traite les fichiers. 
+Soit le temps d'exécution total sur le système parallèle T = 1 seconde pour 10 processeurs. Nous décidons 
+d'attribuer 4 processeurs supplémentaires à notre système. De combien la charge de travail doit -elle varier si 
+l’on veut garder le temps d’exécution constant ? De combien varie l’accélération ? Considérez que la partie 
+du programme qui analyse le répertoire et crée la liste des fichiers représente 5 % de la charge de travail totale 
+d'exécution. 
+If Fs = 0.05, then Fp = 0.95. La loi de Gustavson dit que 
+Slatency (s) = (1−Fp)+s.Fp = 1+(s −1).Fp 
+Si nous gardons le temps d'exécution constant, alors la charge de travail W sera: 
+Pour les 10 premiers processeurs:W =W*Fs +W*Fp =W*0.05+W*0.95 
+Lors de l'ajout de 4 processeurs:W′ =W*Fs +W*Fp*p =W*0.05+W*0.95*4 
+ 
+𝑊′
+𝑊 = 𝑤. (0.05 + 0.95 ∗ 4)
+𝑊 = 3.85 
+The speedups: 
+Slatency(10) = 1+(10−1) · 0.95 = 9.55 
+Slatency(14) = 1+(14−1) · 0.95 = 13.35 
