@@ -1,5 +1,22 @@
 const $ = id => document.getElementById(id);
-const COURSE_SYM = { "analyse-rn": "ℝⁿ", "series": "Σ", "informatique3": "⌘", "electromagnetisme": "Φ", "shs": "§" };
+const COURSE_SYM = {
+  "algebre1": "⊕", "algebre2": "⊕", "algebre-lineaire": "⊕", "algebre": "⊕",
+  "analyse1": "∫", "analyse2": "∫", "analyse-rn": "ℝⁿ", "series": "Σ",
+  "cef1": "¶", "cef": "¶", "ic1": "✎", "shs": "§", "ethique": "§", "design": "✎", "histoire-du-design": "✎",
+  "informatique1": "⌘", "informatique2": "⌘", "informatique3": "⌘", "informatique4": "⌘",
+  "physique1": "F", "mecanique-du-point": "→", "electromagnetisme": "Φ", "ondes": "∿", "physique-moderne": "Ψ",
+  "projet1-s1": "◇", "projet1-s2": "◇", "projet": "◇", "integration-proba": "μ",
+  "algorithmique": "⟳", "bdd": "▤", "data-exploration": "▦", "mesures-integration": "μ", "optimisation": "∇",
+  "probabilites": "ℙ", "programmation-procedurale": "{ }", "unix": "$", "informations": "i",
+  "complement-maths": "∀", "systeme-exploitation": ">_",
+  "analyse-numerique": "≈", "data-mining": "◈", "equations-differentielles": "y′", "gestion-entreprise": "€",
+  "statistique-inferentielle": "x̄", "theorie-graphes": "⊶", "theorie-langages": "L",
+  "anglais": "Aa", "architecture-reseau": "⇄", "communication-interculturelle": "@", "decidabilite-complexite": "⊥",
+  "ece": "¶", "modele-lineaire": "β", "optimisation-deterministe": "∇", "programmation-fonctionnelle": "λ",
+  "traitement-signal": "∿", "economie": "€", "compressive-sensing": "ℓ₁", "design-decision": "◆",
+  "edp": "∂", "ia": "AI", "methodes-agiles": "⟲", "programmation-parallele": "∥", "series-temporelles": "t",
+};
+const courseSym = id => COURSE_SYM[id.replace(/^(?:ing-1-s\d-(?:gm|info|data)|ing-\d(?:-s\d)?)-/, "")] || "·";
 const DEFAULT = () => ({ program: "all", study_year: "all", semester: "all", track: "all", course: "all", kinds: [], versions: [], years: [], k: 5, recent: true });
 let META = null;
 let state = DEFAULT();
@@ -98,7 +115,7 @@ function renderFilters(){
     const b = document.createElement("button");
     b.className = "course"; b.dataset.id = c.id;
     b.setAttribute("aria-pressed", state.course === c.id ? "true" : "false");
-    b.innerHTML = `<span class="sym">${c.id === "all" ? "∗" : COURSE_SYM[c.id] || "·"}</span>
+    b.innerHTML = `<span class="sym">${c.id === "all" ? "∗" : courseSym(c.id)}</span>
       <span class="name">${escapeHtml(c.name)}<small>${c.count} passages</small></span>`;
     b.onclick = () => {
       state.course = c.id;
@@ -302,7 +319,7 @@ function renderCard(r, i, tokens){
     <article class="card" data-course="${r.course}">
       <div class="card-head">
         <div class="doc">
-          <span class="badge" aria-hidden="true">${COURSE_SYM[r.course] || "·"}</span>
+          <span class="badge" aria-hidden="true">${courseSym(r.course)}</span>
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(r.doc_label)}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
