@@ -1,0 +1,214 @@
+TP3 - La recherche et le tri
+Inès de Courchelle
+2021 - 2022
+Consignes : Durant ce TD l’utilisation de la souris, Touchpad et/ou Trackpoint sont
+strictement interdit. Seul le clavier est autorisé.
+Objectifs : Ce TD a pour objectif :
+- de réaliser des recherches ciblées sur des noms de ﬁchiers et des contenus de ﬁchiers
+- de trier des données en fonction de critéres déﬁnis
+- de connaître et de se familiariser les commandes distantes
+Fichiers attachés à la séance hp1.txt, soccer.csv
+1 Exercices
+1.1 Find et grep
+1. Lister les lignes du ﬁchierhp1.txt contenant le chiﬀre 1. L’aﬃchage du chiﬀre 1
+devra être en rouge.
+Réponses
+grep --color=always 1 hp1.txt
+2. Modiﬁer cette commande aﬁn de faire apparaître au début de chaque ligne le numéro
+de la ligne correspondante dans le ﬁchier d’origine.
+Réponses
+grep --color=always -n 1 hp1.txt
+3. Aﬃcher les lignes du ﬁchierhp1.txt contenant le chiﬀre1 ou le chiﬀreV
+Réponses
+grep --color=always -n [1V] hp1.txt 
+grep --color=always -n '1\|V' hp1.txt
+1
+<<<PAGE>>>
+4. Lister le ﬁchierhp1.txt en faisant précéder chaque ligne par son numéro dans le
+ﬁchier (sans utiliser la commande grep).
+Réponses
+cat -n hp1.txt
+5. Chercher le ﬁchierhp1.txt à partir de votre répertoire de connexion
+Réponses
+ﬁnd ./ -name "hp1.txt"
+6. En utilisant la même commande find et avec l’aide dels -l, vériﬁer les droits
+d’accès duhp1.txt.
+Réponses
+ﬁnd ./ -name "hp1.txt" -exec ls -l{}\;
+7. En utilisant la même commandefind et avec l’aide degrep, aﬃcher toutes les lignes
+du ﬁchierhp1.txt contenant le chiﬀre1 ou la lettre V. Aﬃcher les motifs "matchés"
+en couleur.
+Réponses
+find ./ -name "hp1.txt" -exec grep --color=always '[1V]' {} \;
+find ./ -name "hp1.txt" -exec grep --color=always '1\|V' {} \;
+8. En utilisant la même commande, find et avec l’aide demv, renommer le ﬁchier
+hp1.txt en HarryPotter.txt
+Réponses
+find ./ -name "hp1.txt" -exec mv {} HarryPotter.txt \;
+2
+<<<PAGE>>>
+9. Dans le ﬁchierHarryPotter.txt :
+(a) Sur combien de lignes le motmuggles apparaît-il? ne pas tenir compte de la
+casse du mot.
+Réponses
+grep -i muggles HarryPotter.txt -c
+(b) Extraire les lignes vides (ne contenant pas des blancs) et mettre le résultat dans
+hp1bis.txt
+Réponses
+grep "∧$" HarryPotter.txt > hp1bis.txt
+une ligne avec uniquement des "blancs" (tab ou space) ne sera pas considérée
+comme vide. Si on veut l’inclure aussi on fait "ˆ *$"
+(c) Eliminer les lignes vides (ne contenant pas des blancs) et mettre le résultat dans
+un nouveau ﬁchierhp1ter.txt.
+Rép
+onses
+grep
+-v "∧$" HarryPotter.txt > hp1ter.txt
+(d) Vériﬁer que les sommes dehp1bis.txt et hp1ter.txt sont bien égale.
+Réponses
+wc -l HarryPotter.txt; wc -l hp1bis.txt; wc -l hp1ter.txt
+10. Combien d’éléments sont présents dans le répertoire/etc
+Réponses
+ls -r1 /etc | wc -l
+11. Compter uniquement le nombre de ﬁchiers contenu dans le répertoire/etc
+Rép
+onses
+ls
+-r1 /etc | grep "∧-" | wc -l
+3
+<<<PAGE>>>
+12. Dans le ﬁchiers du répertoire/etc, et pas dans ses sous répertoires, trouver si un des
+ﬁchiers de conﬁguration contient votre login?
+Réponses
+grep "eisti" /etc/*
+Ici, le login est eisti
+13. La commande précédente peut générer des erreurs (permission denied )
+ou fichier/répertoire non trouvé . Comment enlever ces messages d’erreurs?
+(indice : rediréction des erreurs vers un autre répertoire)
+Réponses
+grep "eisti" /etc/* 2>/dev/null
+14. Comment faire pour que la recherche eﬀectuée précédemment puisse s’appliquer sur
+tout les sous répertoire de/etc/?
+Réponses
+grep -R "eisti" /etc/* 2>/dev/null
+4
+<<<PAGE>>>
+1.2 Le traitement des données
+1. Trier le ﬁchiersoccer.csv par
+(a) Ordre alphabétique des joueurs
+Réponses
+sort -k1 soccer.csv
+(b) note ("Rating") décroissant (10ième colonne)
+Réponses
+sort -k10nr soccer.csv → ne marche pas il faut lui indiquer le délimiteur de 
+colonnes
+sort -t’,’ -k10nr soccer.csv
+pour vérifier on peut faire un :     sort -t’,’ -k10nr soccer.csv | cut -d’,’ -f10,1
+(c) Nom d’équipe (5ième colonne)
+Réponses
+sort -k5 soccer.csv
+2. Filtrer les joueurs de l’équipe du real madrid, et n’aﬃcher UNIQUEMENT les pré-
+noms.
+Réponses
+grep -wi "Real Madrid" soccer.csv | cut -d’,’ -f1
+3. Créer un ﬁchierjoueurs.txt qui contient uniquement les joueurs évoluant au "Real
+Madrid" et les trier par ordre alphabétique de nom.
+Réponses
+grep -wi "Real Madrid" soccer.csv | sort -k1 | cut -d’,’ -f1 > joueurs.txt
+5
+<<<PAGE>>>
+1.3 Les protocoles de communications
+En plus de vos portables, vous avez un compte créer à l’école. Ce compte vous permet
+de consulter vos mails, de vous connecter sur AREL, et de sauvegarder vos données.
+1. Connectez vous sur une machine de l’école via la machine qui s’appellessh.
+Réponses
+login@ssh.pau.eisti.fr←pour pau
+login@ssh.cergy.eisti.fr←pour cergy
+2. Combien de personnes sont actuellement connectées sur cette machine?indice : who
+Réponses
+who | sort | cut -f1 -d ’ ’ | uniq | wc -l
+3. Créerdansvotrerépertoiredeconnexionlocal(votre home)unﬁchierappelé monMemo.txt.
+Réponses
+touch memo.txt
+4. Copierleﬁchier monMemo.txtdansvotredisquelocalducomptedistant(votre home).
+Réponses
+scp monMemo.txt login@ssh.pau.eisti.fr :.
+scp monMemo.txt login@ssh.pau.eisti.fr :∼
+5. Copier maintenant l’ensemble de votre répertoireCommandesUnix sur le compte dis-
+tant.
+Réponses
+scp -r CommandesUnix login@ssh.pau.eisti.fr :.
+scp -r CommandesUnix login@ssh.pau.eisti.fr :
+6. Créer un ﬁchierthisIsTheInternet.txt sur votre compte distant, et télécharger le
+en local dans le répertoireCommandesUnix.
+Réponses
+touch thisIsTheInternet.txt
+scp login@ssh.pau.eisti.fr :thisIsTheInternet.txt∼/CommandesUnix/
+6
+<<<PAGE>>>
+7. Aﬃcher la liste des utilisateurs connectés sur la même machine que vous, ainsi que
+la date du dernier redémarrage (boot) de la machine.
+Réponses
+who -b -u
+8. Créer un ﬁchier appelétoto dans votre compte distant. Ajouter du texte à ce ﬁchier.
+A votre avis, à quoi peut servir l’éditeur de texte vi?
+Réponses
+vi permet de se passer d’interface graphique, car sur nos comptes distants nous ne
+pouvons pas lancer de commandes graphiques
+2 Et si je révisai !
+1. Quelle est la diﬀérence entre ﬁnd et grep?
+Réponses
+ﬁnd⇒permet de rechercher un nom de ﬁchier
+grep⇒permet de rechercher une chaîne de caractères dans des ﬁchiers
+2. Nous considérons un ﬁchiermonCours.txt.
+(a) Trouver le mot "tux"
+Réponses
+grep --color=always "tux" monCours.txt
+(b) Compter le nombre de fois où le mot tux apparaît
+Réponses
+grep --color=always "tux" monCours.txt -c
+(c) Aﬃcher les lignes du ﬁchiermonCours.txt contenant le chiﬀre 4 ou la lettre t
+Réponses
+grep --color=always -n [4t] monCours.txt
+7
+<<<PAGE>>>
+3. Rechercher depuis votre répertoirehome, le ﬁchierreponsePartiel.txt, et compter
+le nombre de lignes qu’il contient
+Réponses
+ﬁnd ./ -name "reponsePartiel.txt" -exec wc -l
+4. Rechercher dans/etc et dans ses sous répertoires, si un ou des ﬁchiers contiennent le
+mot Eisti
+Réponses
+grep -wi eisti /etc
+grep eisti /etc
+5. Quelle est la diﬀérence entre un pipe classique et l’utilisation deexec?
+Réponses
+exec permet d’eﬀectuer des commandes sur tous les ﬁchiers recherchés
+lepipeclassiqueredirigeralasortied’unecommandeenentréed’uneautrecommande
+6. Nous considérons le ﬁchiernotes.txt suivant :
+5896 Java 14 15
+4589 BD 20 1
+7415 Algorithme 17 3
+4568 Pascal 8 20
+4567 Web 15 7
+(a) Donner la commande permettant de copiernotes.txt sur votre compte distant
+dans le répertoiremonAnnee (Le ﬁchier est stocké dans le répertoire courant)
+Réponses
+scp notes.txt login@ssh.pau.eisti.fr : /monAnnee/.
+(b) Trier le ﬁchier par note décroissante (3ieme colonne)
+Réponses
+sort -k3nr notes.txt
+8
+<<<PAGE>>>
+(c) Trier le ﬁchier par ordre croissant sur l’intitulé des matières
+Réponses
+sort -k2d notes.txt ou sort -k2 notes.txt
+(d) Trierleﬁchierparordrecroissantduclassement(quatrièmecolonne)etn’aﬃcher
+que les matières
+Réponses
+sort -k4n notes.txt | cut -d " " -f2
+(e) Chercher la matière Algorithme et aﬃcher le résultat en majuscule
+Rép
+onses
+grep -wi Algorithme notes.txt| tr [:lower:] [:upper:]
+9

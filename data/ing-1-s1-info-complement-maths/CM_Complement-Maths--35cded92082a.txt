@@ -1,0 +1,691 @@
+Compléments de Mathématiques
+Sam P.
+Table des matières
+1 Séries numériques 3
+1.1 Généralités et définitions fondamentales . . . . . . . . . . . . . . . . . . . . 3
+1.2 Structure algébrique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.3 Condition nécessaire de convergence . . . . . . . . . . . . . . . . . . . . . . 4
+1.4 Séries de référence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.5 Séries à termes positifs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.6 Séries alternées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.7 Séries à termes quelconques . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2 Intégrales 7
+2.1 Fonctions en escalier et intégrale . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2 Fonctions continues par morceaux . . . . . . . . . . . . . . . . . . . . . . . 9
+2.3 Sommes de Riemann . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.4 Primitives et intégrale définie . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.5 Méthodes de calcul . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6 Intégrales généralisées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.7 Intégrales usuelles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3 Formes bilinéaires, espaces euclidiens et endomorphismes remarquables 11
+3.1 Formes bilinéaires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2 Matrice associée à une forme bilinéaire . . . . . . . . . . . . . . . . . . . . 12
+3.3 Formes quadratiques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.4 Positivité des formes quadratiques . . . . . . . . . . . . . . . . . . . . . . . 13
+3.5 Diagonalisation des formes quadratiques . . . . . . . . . . . . . . . . . . . 14
+3.6 Applications géométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.7 Produit scalaire . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.8 Inégalités fondamentales . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.9 Espaces euclidiens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.10 Bases orthonormées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.11 Projecteurs orthogonaux . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+1
+<<<PAGE>>>
+3.12 Symétries orthogonales . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.13 Endomorphismes symétriques . . . . . . . . . . . . . . . . . . . . . . . . . 17
+3.14 Théorème spectral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+3.15 Applications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+Sam P. 2
+<<<PAGE>>>
+1 Séries numériques
+1.1 Généralités et définitions fondamentales
+Définition.Soit(u n)une suite à valeurs dansRou dansC. Lasérie numérique de
+terme généralun est la somme formelle :
+u0 +u 1 +u 2 +...
+que l’on note :
++∞X
+n=0
+un.
+Si la suite commence à l’indicen0, on écrit :
++∞X
+n=n0
+un.
+Exemple.
+u1 +u 2 +···=
++∞X
+n=1
+un.
+Définition (Sommes partielles).Pour toutN∈N, lasomme partielle d’ordreN
+est :
+SN =
+NX
+n=0
+un =u 0 +u 1 +···+u N.
+La suite(SN )est appeléesuite des sommes partiellesde la sériePun.
+Exemple.
+— Pour
++∞X
+n=1
+1
+n2, il est difficile de calculer toutes les sommes partielles. Par exemple :
+S3 = 1
+12 + 1
+22 + 1
+32 = 1 + 1
+4 + 1
+9.
+— Pour
++∞X
+n=0
+2n, il s’agit d’une série géométrique de raisonq= 2, donc :
+SN =
+NX
+n=0
+2n = 1−2 N+1
+1−2 = 2N+1−1.
+Sam P. 3
+<<<PAGE>>>
+Définition (Convergence et divergence).La série Pun est diteconvergentesi la
+suite de ses sommes partielles(SN )converge. Dans ce cas, on définit :
+lim
+N→+∞
+SN =
++∞X
+n=0
+un.
+Sinon, la série est ditedivergente.
+Exemple.Pour
++∞X
+n=0
+2n, on aSN = 2N+1−1etlim N→+∞SN = +∞, donc la série diverge.
+Définition (Reste d’une série convergente).Si Pun converge versS, on définit
+pour toutN:
+RN =S−S N =
++∞X
+n=N+1
+un.
+1.2 Structure algébrique
+SoientPun etPvn deux séries numériques etλ∈R.
+—Addition :
+X
+(un +vn).
+—Multiplication par un scalaire :λ
+X
+un =
+X
+(λun).
+—Produit de Cauchy :
+X
+un
+X
+vn
+
+=
+X
+wn oùw n =Pn
+k=0ukvn−k.
+Remarque.Si les séries Pun etPvn convergent :
+1. P(un +vn)converge;
+2. P(λun)converge;
+3. Si au moins une des deux converge absolument, alorsPwn converge.
+1.3 Condition nécessaire de convergence
+Théorème.Si
+X
+un converge, alorslimn→+∞un = 0.
+Corollaire.Silim
+n→+∞
+un̸= 0, alors la série diverge (divergence grossière). La réciproque
+est fausse :un→0n’implique pas la convergence dePun.
+Sam P. 4
+<<<PAGE>>>
+1.4 Séries de référence
+Série géométrique.Soitq∈R. La série
++∞X
+n=0
+qn :
+
+
+
+converge si|q|<1,
+diverge si|q|≥1.
+Série de Riemann.Soitγ∈R. La série
++∞X
+n=1
+1
+nγ :
+
+
+
+converge siγ >1,
+diverge siγ≤1.
+1.5 Séries à termes positifs
+Définition.Une série
+X
+un estpositivesiu n≥0pour toutn.
+Propriété.Pour une série positive, la suite(S N )est croissante. Elle converge si et
+seulement si elle est majorée.
+Critères de convergence
+Critère d’Alembert.Soit Pun une série à termes positifs etl= limn→+∞
+un+1
+un
+. Alors :
+
+
+
+l<1⇒la série converge,
+l>1⇒la série diverge,
+l= 1⇒pas de conclusion.
+Critère de Cauchy.Soit Pun une série à termes positifs etl= limn→+∞ n√un. Alors :
+
+
+
+l<1⇒la série converge,
+l>1⇒la série diverge,
+l= 1⇒pas de conclusion.
+Critères de comparaison
+Sam P. 5
+<<<PAGE>>>
+Suites équivalentes.Deux suites(u n)et(v n)non nulles à partir d’un certain rang
+sont diteséquivalentes, notéun∼v n, si :
+lim
+n→+∞
+un
+vn
+= 1.
+Équivalences utiles.Silim n→+∞un = 0, alors :
+sin(un)∼u n,cos(u n)∼1,ln(1 +u n)∼u n, e un∼1.
+Tout polynôme ennest équivalent à son monôme de plus haut degré.
+Comparaison par inégalité.Si0≤u n≤v n à partir d’un certain rang :
+X
+vn converge⇒
+X
+un converge,
+X
+un diverge⇒
+X
+vn diverge.
+Comparaison par équivalence.Siu n∼v n, alors les sériesPun et Pvn sont de
+même nature (convergentes ou divergentes).
+1.6 Séries alternées
+Définition.Une série de la forme
+X
+(−1)nun ouP(−1)n+1un, avecun≥0, est appelée
+série alternée.
+CritèredeLeibniz.Si(u n)estdécroissanteetlim n→+∞un = 0,alorslasérie
+X
+(−1)nun
+converge.
+Exemple.La série harmonique alternée
++∞X
+n=1
+(−1)n
+n converge par le critère de Leibniz.
+1.7 Séries à termes quelconques
+Convergence absolue et semi-convergence
+Définition.La série Pun estabsolument convergentesi P|un|converge. Toute
+série absolument convergente est convergente.
+Exemple.
++∞X
+n=1
+(−1)n
+n converge (critère de Leibniz) maisP+∞
+n=1
+1
+n diverge, donc elle est
+semi-convergente.
+Sam P. 6
+<<<PAGE>>>
+Critères usuels de convergence absolue
+Critère d’Alembert (valeurs absolues).Silim
+n→+∞
+
+un+1
+un
+ =l, alors :
+
+
+
+l<1⇒convergence absolue,
+l>1⇒divergence grossière,
+l= 1⇒pas de conclusion.
+Critère de Cauchy (valeurs absolues).Silim
+n→+∞
+n
+p
+|un|=l, alors :
+
+
+
+l<1⇒convergence absolue,
+l>1⇒divergence grossière,
+l= 1⇒pas de conclusion.
+Théorèmes spécifiques
+Théorème spécial des séries alternées (TSSA).Si(|u n|)est décroissante et tend
+vers0, alors Pun converge.
+Série de Riemann alternée.La série
++∞X
+n=1
+(−1)n
+nλ converge si et seulement siλ>0.
+Série de Bertrand.Pourα,β∈R:
++∞X
+n=2
+1
+nα(lnn)β converge si et seulement si
+
+
+
+α>1,pour toutβ,
+ouα= 1etβ >1.
+Sommes télescopiques.Siv n =u n+1−un, alors :
+X
+vn converge⇔(u n)converge,
+et
++∞X
+n=0
+vn = lim
+n→+∞
+(un−u 0).
+2 Intégrales
+Dans tout ce chapitre, on fixe deux réelsa,b∈Rtels quea<b.
+Sam P. 7
+<<<PAGE>>>
+2.1 Fonctions en escalier et intégrale
+Définition (Subdivision).Soitn∈N ∗. On appellesubdivisiondu segment[a,b]
+toute famille ordonnée
+σ= (x 0,x 1,...,x n)
+telle que
+a=x 0 <x 1 <···<x n =b.
+On noteS(a,b)l’ensemble des subdivisions de[a,b].
+Exemple.La famille(0, 1
+2,1)est une subdivision du segment[0,1].
+Définition (Subdivision régulière).On appellesubdivision régulière de rangn
+du segment[a,b]la subdivision définie par
+xk =a+k b−a
+n , k= 0,...,n.
+Définition (Fonction en escalier).Une fonctionφ: [a,b]→Rest diteen escalier
+s’il existe une subdivisionσ= (x 0,...,x n)de[a,b]et des réelsc 0,...,c n−1 tels que
+∀k∈{0,...,n−1},∀x∈]x k,xk+1[, φ(x) =c k.
+On noteE([a,b])l’ensemble des fonctions en escalier sur[a,b].
+Définition (Intégrale d’une fonction en escalier).Soitφ∈E([a,b])associée à une
+subdivisionσ= (x 0,...,x n). On appelleintégrale deφsur[a,b]la quantité
+Z b
+a
+φ(x)dx=
+n−1X
+k=0
+ck(xk+1−xk).
+Propriétés fondamentales.Soientφ,ψ∈E([a,b])etλ∈R.
+—
+Z b
+a
+(φ+ψ) =
+Z b
+a
+φ+
+Z b
+a
+ψ
+—
+Z b
+a
+λφ=λ
+Z b
+a
+φ
+— Siφ≥0, alors
+Z b
+a
+φ≥0
+Relation de Chasles.Pour toutc∈[a,b]:
+Z b
+a
+φ(x)dx=
+Z c
+a
+φ(x)dx+
+Z b
+c
+φ(x)dx.
+Sam P. 8
+<<<PAGE>>>
+2.2 Fonctions continues par morceaux
+Définition.Une fonctionf: [a,b]→Rest ditecontinue par morceauxs’il existe
+une subdivisionσ= (x 0,...,x n)telle que :
+—fest continue sur chaque intervalle]x k,xk+1[,
+—fadmet des limites réelles à droite et à gauche en chaquexk.
+On noteC 0
+pm([a,b])l’ensemble des fonctions continues par morceaux sur[a,b].
+Remarques.
+— Toute fonction continue est continue par morceaux :
+C0([a,b])⊂C 0
+pm([a,b]).
+— Toute fonction en escalier est continue par morceaux :
+E([a,b])⊂C 0
+pm([a,b]).
+Intégrabilité.Toute fonctionf∈C 0
+pm([a,b])est intégrable sur[a,b].
+Positivité.Sif∈C 0
+pm([a,b])etf(x)≥0sur[a,b], alors
+Z b
+a
+f(x)dx≥0.
+La réciproque est fausse.
+Inégalité de Cauchy–Schwarz.Pour toutes fonctionsf,g∈C 0
+pm([a,b]):
+
+Z b
+a
+f(x)g(x)dx
+≤
+Z b
+a
+f(x) 2dx
+1/2Z b
+a
+g(x)2dx
+1/2
+.
+Nullité de l’intégrale.Sifest continue, positive sur[a,b]et
+Z b
+a
+f(x)dx= 0,
+alorsfest identiquement nulle.
+2.3 Sommes de Riemann
+Proposition.Soitf∈C 0
+pm([a,b]). Alors :
+lim
+n→+∞
+b−a
+n
+nX
+k=1
+f
+
+a+k b−a
+n
+
+=
+Z b
+a
+f(x)dx.
+Sam P. 9
+<<<PAGE>>>
+2.4 Primitives et intégrale définie
+Définition (Primitive).SoitIun intervalle deRetf:I→Rcontinue. Une fonction
+F:I→Rest uneprimitivedefsi
+F′(x) =f(x),∀x∈I.
+Théorème.Toute fonction continue sur un intervalle admet des primitives.
+Définition (Intégrale définie).Sifest continue sur[a,b]etFune primitive def,
+on définit Z b
+a
+f(x)dx=F(b)−F(a).
+Théorème fondamental de l’analyse.Sifest continue sur[a,b]et
+F(x) =
+Z x
+a
+f(t)dt,
+alorsFest une primitive defsur[a,b].
+2.5 Méthodes de calcul
+Intégration par parties
+Proposition.Sif,g∈C 1([a,b]), alors :
+Z b
+a
+f′(x)g(x)dx= [f(x)g(x)] b
+a−
+Z b
+a
+f(x)g′(x)dx.
+Changement de variable
+Proposition.Soitφ∈C 1([a,b])strictementmonotoneetfcontinuesurφ([a,b]).Alors:
+Z φ(b)
+φ(a)
+f(u)du=
+Z b
+a
+f(φ(x))φ′(x)dx.
+2.6 Intégrales généralisées
+Définition.Une intégrale est ditegénéraliséesi :
+— l’intervalle est infini;
+— ou la fonction n’est pas bornée.
+Convergence.Une intégrale généralisée converge si la limite définissant l’intégrale
+existe et est finie.
+Sam P. 10
+<<<PAGE>>>
+Convergence absolue.Si Z b
+a
+|f(x)|dx
+converge, alors Z b
+a
+f(x)dx
+converge.
+2.7 Intégrales usuelles
+Intégrales de Riemann.Soitα∈R:
+Z 1
+0
+1
+xαdxconverge ssiα<1,
+Z +∞
+1
+1
+xαdxconverge ssiα>1.
+Exponentielle. Z +∞
+0
+e−αxdxconverge ssiα>0.
+Critère de comparaison.Soientf,gcontinues, positives sur[a,b[, avecf≤g.
+— Si
+R
+gconverge, alors
+R
+fconverge.
+— Si
+R
+fdiverge, alors
+R
+gdiverge.
+Théorème d’équivalence.Sif(x)∼g(x)au voisinage d’un point singulier, alors
+Z
+fet
+Z
+gsont de même nature.
+3 Formes bilinéaires, espaces euclidiens et endomor-
+phismes remarquables
+Dans tout ce chapitre,Edésigne un espace vectoriel réel de dimension finien.
+3.1 Formes bilinéaires
+Définition.Une application
+φ:E×E−→R
+est appeléeforme bilinéairesi elle est linéaire par rapport à chacune de ses variables,
+c’est-à-dire :
+∀x,y,z∈E,∀λ∈R,
+
+
+
+φ(x+y,z) =φ(x,z) +φ(y,z),
+φ(λx,z) =λφ(x,z),
+Sam P. 11
+<<<PAGE>>>
+et de même pour la seconde variable.
+Exemples.
+— DansR n, l’application(x,y)7→x ⊤yest une forme bilinéaire.
+— L’application(x,y)7→0est une forme bilinéaire.
+— L’application(x,y)7→∥x∥∥y∥n’est pas bilinéaire.
+Définition (Forme symétrique).Une forme bilinéaireφest ditesymétriquesi :
+∀x,y∈E, φ(x,y) =φ(y,x).
+Définition (Forme antisymétrique).Une forme bilinéaireφest diteantisymé-
+triquesi :
+∀x,y∈E, φ(x,y) =−φ(y,x).
+Propriété.Siφest antisymétrique, alors :
+∀x∈E, φ(x,x) = 0.
+Réciproque.La réciproque est fausse en général.
+3.2 Matrice associée à une forme bilinéaire
+Définition.SoitB= (e 1,...,e n)une base deEetφune forme bilinéaire. On appelle
+matrice associée àφdans la baseBla matrice
+MB(φ) =
+ 
+φ(ei,ej)
+
+1≤i,j≤n.
+Expression matricielle.Six,y∈Eont pour coordonnéesX,Y∈R n dans la baseB,
+alors :
+φ(x,y) =X ⊤MB(φ)Y.
+Changement de base.SiPest la matrice de passage d’une baseBà une baseB ′,
+alors :
+MB′(φ) =P ⊤MB(φ)P.
+Symétrie matricielle.
+φest symétrique⇐⇒M B(φ)⊤ =MB(φ).
+Sam P. 12
+<<<PAGE>>>
+3.3 Formes quadratiques
+Définition.Une applicationq:E→Rest appeléeforme quadratiques’il existe une
+forme bilinéaire symétriqueφtelle que :
+∀x∈E, q(x) =φ(x,x).
+Remarque fondamentale.Une forme quadratique ne détermine pas une unique forme
+bilinéaire, mais elle détermine une unique forme bilinéaire symétrique associée.
+Polarisation.La forme bilinéaire symétrique associée àqest donnée par :
+φ(x,y) = 1
+2
+ 
+q(x+y)−q(x)−q(y)
+
+.
+Expression matricielle.Dans une baseB:
+q(x) =X ⊤AX,
+oùAest une matrice symétrique réelle.
+Exemple.DansR 2 :
+q(x,y) =x 2 + 2xy+ 3y 2 ⇐⇒A=
+ 
+1 1
+1 3
+!
+.
+3.4 Positivité des formes quadratiques
+Définition.Une forme quadratiqueqest dite :
+—positivesi∀x, q(x)≥0,
+—définie positivesi∀x̸= 0, q(x)>0,
+—négativesi∀x, q(x)≤0,
+—indéfiniesinon.
+Lien matriciel.qest définie positive si et seulement si sa matrice associée est symé-
+trique définie positive.
+Critère de Sylvester.Une matrice symétrique réelle est définie positive si et seulement
+si tous ses mineurs principaux sont strictement positifs.
+Sam P. 13
+<<<PAGE>>>
+3.5 Diagonalisation des formes quadratiques
+Théorème (Réduction de Gauss).Toute forme quadratique réelle peut être mise
+sous forme diagonale dans une base convenable :
+q(x) =λ 1x2
+1 +···+λ nx2
+n.
+Signature.Le nombre de coefficients strictement positifs et strictement négatifs est
+invariant par changement de base.
+Théorème d’inertie de Sylvester.La signature(p,q)d’une forme quadratique réelle
+est indépendante de la base choisie.
+Cas particulier.Une forme quadratique est définie positive si et seulement si tous les
+coefficients diagonaux sont strictement positifs.
+3.6 Applications géométriques
+Classification des coniques.Les formes quadratiques permettent de classifier les co-
+niques selon leur signature :
+— ellipse,
+— hyperbole,
+— parabole (cas dégénéré).
+Exemple.
+x2 +y 2 = 1ellipse, x 2−y 2 = 1hyperbole.
+3.7 Produit scalaire
+Définition.Unproduit scalairesurEest une forme bilinéaire symétrique⟨·,·⟩:
+E×E→Rtelle que :
+—∀x∈E,⟨x,x⟩≥0,
+—⟨x,x⟩= 0⇐⇒x= 0.
+Exemples.
+— DansR n :
+⟨x,y⟩=
+nX
+i=1
+xiyi.
+— Pour une matrice symétrique définie positiveA:
+⟨x,y⟩A =x⊤Ay.
+Sam P. 14
+<<<PAGE>>>
+Norme associée.On définit :
+∥x∥=
+p
+⟨x,x⟩.
+3.8 Inégalités fondamentales
+Inégalité de Cauchy–Schwarz.Pour tousx,y∈E:
+|⟨x,y⟩|≤∥x∥∥y∥.
+Démonstration.Considérer la fonctiont7→⟨x+ty,x+ty⟩et utiliser sa positivité.
+Inégalité triangulaire.
+∥x+y∥≤∥x∥+∥y∥.
+Distance.La distance associée est :
+d(x,y) =∥x−y∥.
+3.9 Espaces euclidiens
+Définition.Un espace vectoriel réel de dimension finie muni d’un produit scalaire est
+appeléespace euclidien.
+Orthogonalité.Deux vecteursx,ysont orthogonaux si :
+⟨x,y⟩= 0.
+Orthogonal d’un sous-espace.Pour un sous-espaceF⊂E:
+F⊥ ={x∈E|∀y∈F,⟨x,y⟩= 0}.
+Propriétés.
+F⊥ est un sous-espace deE,dimF+ dimF ⊥ = dimE.
+3.10 Bases orthonormées
+Définition.Une base(e 1,...,e n)est diteorthonorméesi :
+⟨ei,ej⟩=
+
+
+
+1sii=j,
+0sii̸=j.
+Sam P. 15
+<<<PAGE>>>
+Coordonnées.Dans une base orthonormée :
+⟨x,y⟩=
+nX
+i=1
+xiyi,∥x∥ 2 =
+nX
+i=1
+x2
+i.
+Théorème de Gram–Schmidt.Toute base d’un espace euclidien peut être transfor-
+mée en une base orthonormée.
+3.11 Projecteurs orthogonaux
+Définition (Projecteur).Un endomorphismep:E→Eest un projecteur si :
+p2 =p.
+Définition (Projecteur orthogonal).Un projecteurpest dit orthogonal s’il est sy-
+métrique :
+⟨p(x),y⟩=⟨x,p(y)⟩.
+Décomposition orthogonale.Pour tout sous-espaceF:
+E=F⊕F ⊥.
+Projection orthogonale.Pour toutx∈E, il existe un uniquep F (x)∈Ftel que :
+x=p F (x) + (x−p F (x)), x−p F (x)∈F ⊥.
+Distance à un sous-espace.
+d(x,F) =∥x−p F (x)∥.
+3.12 Symétries orthogonales
+Définition.Unesymétrieest un endomorphismestel que :
+s2 = Id.
+Symétrie orthogonale.La symétrie orthogonale par rapport àFest :
+sF (x) = 2pF (x)−x.
+Sam P. 16
+<<<PAGE>>>
+3.13 Endomorphismes symétriques
+Définition.Un endomorphismeu:E→Eest ditsymétriquesi :
+∀x,y∈E,⟨u(x),y⟩=⟨x,u(y)⟩.
+Lien matriciel.Dans une base orthonormée, la matrice deuest symétrique.
+Propriété spectrale.Toutes les valeurs propres d’un endomorphisme symétrique sont
+réelles.
+Orthogonalité des sous-espaces propres.Deux sous-espaces propres associés à des
+valeurs propres distinctes sont orthogonaux.
+3.14 Théorème spectral
+Théorème spectral réel.Tout endomorphisme symétrique d’un espace euclidien :
+— est diagonalisable,
+— admet une base orthonormée de vecteurs propres.
+Conséquence matricielle.Toute matrice symétrique réelle est diagonalisable par une
+matrice orthogonale.
+3.15 Applications
+Moindres carrés.Le problème
+min
+y∈F
+∥x−y∥
+admet une solution unique : la projection orthogonale dexsurF.
+Interprétation géométrique.La projection orthogonale est le meilleur approximant
+dexdansFau sens de la norme euclidienne.
+Sam P. 17

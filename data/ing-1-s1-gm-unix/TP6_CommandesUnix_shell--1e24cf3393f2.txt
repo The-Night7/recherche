@@ -1,0 +1,84 @@
+TP6 - Programmation en shell
+ING1-GI-GM – Commandes Unix
+Année 2017–2018
+Traitement des données
+1 Écrivez un script qui permet un afﬁchage trié d’un ﬁchier de note, sans trier l’entête (pre-
+mière ligne). □
+Fichiers et répertoires
+2 Dans un répertoire, on a des ﬁchiers. On désire réaliser un script qui déplace tous les
+ﬁchiers dans des sous répertoires. Pour ce faire, on extrait les extensions des ﬁchiers, puis
+on crée des répertoires ayant comme nom la valeur des extensions. Enﬁn, on déplace
+l’ensemble des ﬁchiers correspondants dans les sous répertoires adéquats. Réaliser ce
+script. Voici un exemple :
+> l s . /
+t a t a . adb toto . adb toto . ads toto . tex
+> r e p a r t i _ f i c h i e r
+> l s . /
+adb ads tex
+> l s −R . /
+. / :
+adb ads tex
+. / adb :
+t a t a . adb toto . adb
+. / ads :
+toto . ads
+. / tex :
+toto . tex
+□
+EISTI – Équipe pédagogique. 1/3
+<<<PAGE>>>
+TP6 - Programmation en shell
+Gestion des arguments d’entrée
+3 En utilisant la fonctiongetopts (aide :man bash), étendez le script précédent pour qu’il
+traite les arguments suivants :
+-h,–help : afﬁche de l’aide sur la commande.
+-d rep : lance le script sur le répertoirerep.
+-v : mode verbose. Il faudra faire une fonction qui, si on active ce paramètre, montre
+plus d’information sur la démarche du script.
+□
+Gestion des données avec sed
+4 Soit le ﬁchier contenant les lignes :
+a s t e r i x ; 20
+t r o l l de troy ; 8
+rubrique à brac ; 46
+Lanfeust de troy ; 8
+autre / diver ; 30
+Avec la commandesed, faites les modiﬁcations suivantes (elles seront traitées indépen-
+damment les unes des autres) :
+— remplacer les lettres ; par un !
+— remplacer les lettres t en début de ligne par un T
+— remplacer les lettres / précédé d’un espace par une virgule
+— remplacer les lettres / par un + et les lettres ; par un @
+— ne pas afﬁcher les lignes 2 à 4
+Rappel : dans sed, la forme de la commande de substitution est :
+s/remplacé/remplacement/modifiers
+Ensuite, exécuter les commandes suivantes :
+sed −e ’ s / \ ( ^ . \ ) / \ 1 \ 1 / g ’ f i c h i e r
+sed −e ’ s / \ ( ^ . \ ) / \ 1 \ 1 \ 1 \ 1 / g ’ f i c h i e r
+□
+EISTI – Équipe pédagogique. 2/3
+<<<PAGE>>>
+TP6 - Programmation en shell
+Gestion d’utilisateurs
+5 Écrivez un script qui teste si un nom proposé par l’utilisateur est un login ou pas tant qu’il
+le souhaite. Si le login existe, le script doit montrer le(s) groupe(s) auquel il appartient.□
+Détection de doublons
+Nous allons écrire un ensemble de scripts. Ces scripts s’appelleront entre eux. De plus, ces
+scripts vont réaliser un parcours d’arborescence. Il est donc indispensable de pouvoir accéder à
+l’ensemble des scripts depuis un endroit quelconque de l’arborescence.
+6 Écrire un script qui prend en paramètre un ﬁchier, et qui afﬁche son nom, sa taille, son
+md5sum, et son cksum. Les deux dernières informations sont obtenues en appliquant les
+fonctionsmd5sum etcksum sur le ﬁchier. □
+7 Écrire un script qui prend en paramètre un répertoire, et qui applique le script de la ques-
+tion 6, sur tous les ﬁchiers présents dans ce répertoire. □
+8 Écrire un script qui prend en paramètre un nom de script et un répertoire, et qui appelle
+le script passé en paramètre sur tous les sous répertoires du répertoire passé en para-
+mètre. □
+9 Écrire un script qui afﬁche l’ensemble des informations suivantes :nom, taille, md5sum,
+cksum. Vous devez afﬁcher les informations pour tous les ﬁchiers présents dans l’arbo-
+rescence à partir de l’endroit où l’on appelle le script. □
+10 Écrire un script pour détecter s’il existe des doublons. On considérera qu’un ﬁchier est
+doublon d’un autre si son nom, sa taille, sonmd5sum et son cksum sont identiques. Vous
+devez vériﬁer tous les ﬁchiers présents dans l’arborescence à partir de l’endroit où l’on
+appelle le script. □
+EISTI – Équipe pédagogique. 3/3

@@ -1,0 +1,342 @@
+Ingénieurs 1ère année : Mathématiques appliquées
+Mesure et intégration
+CM1 – Tribu et application mesurable
+Nisrine FORTIN CAMDAVANT
+
+<<<PAGE>>>
+1 Introduction au module
+2 Algèbre de Boole et tribu
+3 Tribu engendrée, tribu borélienne
+Tribu engendrée
+Tribu borélienne
+4 Application mesurable
+<<<PAGE>>>
+Introduction au module et organisation
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Introduction au module
+La théorie de la mesure permet d’associer une grandeur numérique à un
+ensemble. Plusieurs types de "mesures" ont déjà été rencontrés.
+Le cardinal d’un ensemble discret : le cardinal de{10,19,25,75} est 4 et le cardinal de
+N est +∞.
+La longueur d’une courbe : la longueur de l’intervalle[a, b], a≤ b est b− a et la
+longueur de la droite réelle est+∞.
+L’aire d’une figure plane : l’aire du disque D(0,R) centré en (0,0) et de rayon R est
+πR2.
+Le volume d’un solide en dimension 3 : le volume du cylindre de base le disque D(0,R)
+et de hauteurh estπR2h.
+La probabilité d’un évènement : la probabilité d’avoir la face quatre lors d’un lancer de
+dé équilibré est 1/6.
+4/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Aperçu sur l’organisation du module
+Ces exemples forment des cas particuliers d’une notion plus générale de
+mesures (Chapitre 2), outil de base pour une nouvelle théorie de
+l’intégration, dite intégrale de Lebesgue(Chapitre 3).
+L’intégrale au sens de Lebesgue généralise la notion de l’intégrale de
+Riemann. Cette nouvelle théorie s’applique à une classe de fonctions
+beaucoup plus grande (les fonctions mesurables ), cette dernière étend la
+notion de continuité de fonctions(Chapitre 1).
+Une mesure est associée àune famille d’ensembles à mesurer, appelée
+tribu de parties (Chapitre 1). Ainsi, unetribu va englober desensembles
+mesurables par une mesure donnée.
+On définira les fonctions qui préservent la propriété de mesurabilité de
+l’image réciproque d’un ensemble mesurable.
+Cette théorie s’appliquera à des théorèmes de convergence beaucoup plus
+puissants : théorème de convergence monotone, théorème de convergence
+dominée (Chapitre 4).
+5/25
+<<<PAGE>>>
+Algèbre de Boole et tribu
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Intuitivement, si on se place dans un ensemble non videΩ, une tribu définie sur
+Ω contiendra des sous-ensembles deΩ. Ces ensembles qu’on mesure seront
+"rassemblés" de la façon suivante :
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
+La mesure choisie doit nous permettre de mesurerΩ donc
+Ω doit appartenir à la tribu;
+Si A appartient à la tribu, on peut donc la mesurer et on souhaite que le
+complémentaire de A dansΩ soit aussi mesurable donc on impose dans la
+définition
+la condition de stabilité par passage au complémentaire;
+Si on sait mesurer deux parties A et B (appartiennent donc à la tribu), on
+souhaite que leur union soit aussimesurable donc on impose dans la
+définition
+la condition de stabilité par union dénombrable.
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
+7/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Algèbre de Boole et tribu
+Algèbre de Boole
+SoitA⊂P (Ω). On dit queA est une algèbre de Boole (de parties deΩ) si elle
+vérifie les propriétés suivantes :
+1 Ω∈A ,
+2 A∈A =⇒ Ω\A∈A ,
+3 A∈A , B∈A =⇒ A∪B∈A .
+Tribu
+SoitT ⊂P(Ω), on dit queT est une tribu de parties (ouσ-algèbre) si elle
+vérifie :
+1 Ω∈T ,
+2 la stabilité par passage au complémentaire :A∈T =⇒ Ω\A∈T ,
+3 la stabilité par réunion dénombrable :Si An∈T pout tout n∈ N alorsS
+n∈N
+An∈T .
+8/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Algèbre de Boole et tribu
+::::::::::Conséquence::
+Une tribu est une algèbre de Boole stable par réunion dénombrable.
+∅∈T
+Si An∈T pour tout n∈ N alors T
+n∈N
+An∈T .
+Démonstration TD 1
+♢ La plus petite tribu deΩ estT ={∅, Ω}, elle est appelée tribu
+grossière.
+♢ La plus grande tribu deΩ estT = P (Ω), elle est appelée tribu
+discrète.
+Exemples.
+9/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+La tribu trace
+SoientT une tribu de parties surΩ et U⊂ Ω.
+TU ={A∩U, A∈T}
+est une tribu sur U. Cette tribu est appelée la tribu trace sur U.
+Tribu trace
+Démonstration TD 1.
+10/25
+<<<PAGE>>>
+Tribu engendrée, tribu borélienne
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu engendrée, tribu borélienne
+En général, une tribu contient énormément d’éléments d’où le nom de tribu.
+⇝ Souvent, on ne peut pas décrire tous les éléments d’une tribu mais cela
+n’a pas d’importance.
+⇝ En effet, ce qu’il faut retenir, sont certaines parties deΩ de la tribu et on
+doit rester dans la tribu lorsqu’on itère sur les éléments de la tribu les
+opérations
+de complémentarité,
+de réunion dénombrable.
+12/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu engendrée
+Soit Ω un ensemble etH⊂P (Ω).
+Définition
+On dit queT est la tribu engendrée parH siT est la plus petite tribu(au sens
+de l’inclusion) de parties deΩ contenantH.
+On note dans ce cas,T =σ(H).
+Proposition
+σ(H) existe toujours, c’est l’intersection de toutes les tribus surΩ contenantH.
+13/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu engendrée - Exemples
+SiH ={∅} ou bien siH ={Ω}, alors
+σ(H) ={∅, Ω}.
+SiH ={A} ou bien siH ={Ac} où A̸=∅ et A̸= Ω, alors
+σ(H) ={∅, Ω,A,Ac}.
+Soient Ω ={a,b,c},H ={{a};{b}}; on peut décrire la tribu engendrée
+parH :
+σ(H) =
+
+
+
+Ω|{z}
+Ω∈tribu
+;∅; {a} ;{b}| {z }
+les éléments de H
+;{b,c}|{z}
+{a}c
+;{a,c}|{z}
+{b}c
+;{a,b}|{z}
+{a}∪{b}
+; {c}|{z}
+({a}∪{b})c
+
+
+
+.
+14/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu engendrée
+SoientH1⊂P (Ω) etH2⊂P (Ω).
+1 H1⊂σ(H1).
+∥ ⇝ Par définition deσ(H1).
+2 SiT est une tribu contenantH alorsσ(H)⊂T .
+∥ ⇝ Par définition deσ(H).
+3 SiH1⊂H 2 alorsσ(H1)⊂σ(H2).
+
+⇝H1⊂H 2⊂σ (H2).
+⇝σ (H2) est une tribu.
+⇝ Doncσ (H2) est une tribu qui contientH1 et commeσ (H1)
+est la plus petite tribu contenantH1 alors
+σ (H1)⊂σ (H2).
+Propriétés.
+15/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu borélienne
+Si l’ensemble Ω possède une structure topologique, la notion de tribu
+engendrée permet de définir la plus petite tribu adaptée à cette structure.
+Définition : Soit (Ω, d) un espace métrique. On appelle tribu borélienne
+de Ω, la tribu engendrée par les ouverts de(Ω, d). On la noteB(Ω) et ses
+éléments sont appelés les boréliens deΩ.
+Définition : La tribu borélienne surR (respectivement R) est la tribu
+engendrée par les intervalles ouverts deR.
+T définit une topologie surΩ si Ω∈T ,∅∈T , la stabilité par union finie ou infinie et
+par intersection finie est vérifiée.
+(Ω, d) est un espace métrique lorsqueΩ est muni d’une distanced : Ω→ R+ vérifiant
+les propriétés suivantes 1.d(x, y) = 0⇔ x = y, 2. d(x, y) = d(y, x) et 3.
+d(x, z)≤ d(x, y) + d(y, z).
+16/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Tribu borélienne
+[1;2[∈ B(R), en effet,[1;2[ = ]1;2[∪{1} et
+♢ ]1;2[∈ B(R),
+♢ {1} =
++∞T
+n=1
+
+1− 1
+n ;1 + 1
+n
+
+| {z }
+An∈B(R)
+.
+Exemple.
+17/25
+<<<PAGE>>>
+Application mesurable
+La notion de fonctions mesurables étend la notion de fonctions continues. Elle
+prend son sens sur des ensembles munis d’une tribu et joueront un rôle
+important dans l’intégration au sens de Lebesgue.
+On appelle espace mesurable tout couple(Ω,T ) formé par un ensembleΩ et
+une tribuT sur Ω.
+Les ensembles mesurables sont les parties deΩ qui appartiennent àT : A est
+mesurable si A∈T .
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Applications mesurables
+Soient (Ω1,T1) et (Ω2,T2) deux espaces mesurables. Soitf : Ω1→ Ω2.
+Application mesurable
+On dit quef est (T1,T2)-mesurable si l’image réciproque de tout élément deT2
+par f appartient àT1 :
+∀B∈T 2, f−1(B)∈T 1.
+Quand il n’y a pas de confusion possible, on dit quef est mesurable.
+Application borélienne
+Soient (Ω1, d) et (Ω2,δ ) deux espaces métriques et soitf : Ω1→ Ω2. Si f est
+(B(Ω1), B(Ω2))-mesurable, on dit quef est borélienne.
+f−1(B) ={x∈ Ω1, f (x)∈ B}.
+19/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Si f est une fonction constante alorsf est mesurable, en effet :
+∀x∈ Ω1, f (x) = y0, où y0∈ Ω2.
+Soit B∈T Y alors f−1(B) ={x∈ Ω1, y0∈ B} =
+
+
+
+∅ si y0 /∈ B
+Ω1 si y0∈ B
+PuisqueT1 est une tribu surΩ1 alors Ω1∈T 1 et∅∈T 1, ainsi
+f−1(B)∈T 1.
+La fonction constante est donc mesurable.
+Exemple.
+20/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+1 Soit f : (Ω1,T1)→ (Ω2,T2). SiT2 =σ (C2) alors f est mesurable si
+et seulement si
+∀B∈ C2, f−1 (B)∈T 1.
+Démonstration – Voir Notes de cours.
+2 Soient (Ω,T ) un espace mesurable et A une partie deΩ.
+La fonction indicatrice 1A est mesurable si et seulement si A∈T .
+Démonstration – Voir TD 1.
+3 Soient (Ω1,T1), (Ω2,T2) et (Ω3,T3) des espaces mesurables. Soient
+f : Ω1→ Ω2 une fonction (T1,T2)-mesurable
+g: Ω2→ Ω3 une fonction (T2,T3)-mesurable
+alors g◦ f est (T1,T3)-mesurable.
+⇝ Démonstration – Voir TD 1.
+Propriétés.
+21/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Application mesurable
+Corollaire
+Si f est continue alors f elle est borélienne.
+Attention : la réciproque est fausse. Voir exemple (*).
+Mise en garde
+Si f : Ω 1→ Ω2 avec Ω1 et Ω2 munis respectivement d’une structure topologiqueT1 et T2,
+alors on dit quef est continue sif−1 
+O2
+|{z}
+∈T2
+
+∈ T1.
+22/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Soit (Ω,T ) un espace mesurable, f, g : (Ω,T )→ (R, B(R)) des fonc-
+tions mesurables etλ∈ R, alors
+f + g, fg, λ f, min(f, g), max(f, g).
+sont mesurables.
+Opérations sur les fonctions mesurables numériques
+Démonstrations – Voir Notes de cours.
+Soient fn : Ω→ R des fonctions mesurables, alors
+inf
+n
+fn, sup
+n
+fn, lim inf
+n
+fn et lim sup
+n
+fn
+sont mesurables à valeurs dansR.
+Soit f : Ω→ R une fonction mesurable, alors|f| est une fonction
+mesurable.
+Conséquences
+Démonstrations – TD 1.
+23/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Proposition
+Soit (Un)n une suite finie ou infinie d’éléments disjoints deux à deux dansT1
+telle que Ω1 = S
+n∈N
+Un. Soit f : Ω1→ Ω2, alors f est (T1,T2)-mesurable si et
+seulement si f|Un (restriction de f à Un) est (TUn,T2)-mesurable pour toutn.
+24/25
+<<<PAGE>>>
+Introduction au module Algèbre de Boole et tribu T ribu engendrée, tribu borélienne Application mesurable
+Ω1 = Ω2 = R,T1 =T2 = B(R).
+f : Ω 1→ Ω2
+x7→ f (x) =
+
+
+
+1
+x si x̸= 0
+1 si x = 0
+On note U0 =]−∞ ;0[, U1 ={0} et U2 =]0; +∞[.
+]−∞ ;0[ est ouvert⇒ U0∈ B(R).
+{0} est fermé⇒ U1∈ B(R).
+]0; +∞[ est ouvert⇒ U2∈ B(R).
+U0∪ U1∪ U2 = R.
+f|U0 est continue⇒ f est (TU0, B(R))-mesurable.
+f|U1 est constante⇒ f est (T{0}, B(R))-mesurable.
+f|U2 est continue⇒ f est (TU2, B(R))-mesurable.
+f est donc (B(R), B(R))-mesurable.
+Exemple*.
+25/25

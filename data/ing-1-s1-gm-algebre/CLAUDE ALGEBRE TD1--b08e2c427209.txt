@@ -1,0 +1,572 @@
+Algèbre linéaire appliquée
+CY TECH - ING1 Mathématiques
+TD1 - Rappels et fondamentaux d’algèbre linéaire
+Exercice 1
+Correction détaillée
+Rappel des définitions des normes vectorielles :
+Pour un vecteurx= (x 1,x 2,...,x n)⊤∈R n :
+— Norme 1 :∥x∥1 =Pn
+i=1|xi|
+— Norme 2 (euclidienne) :∥x∥2 =
+qPn
+i=1x2
+i
+— Norme infinie :∥x∥∞ = maxi=1,...,n|xi|
+Application au vecteurx= (1,0,1,−4) ⊤ :
+Norme 1 :
+∥x∥1 =|1|+|0|+|1|+|−4|= 1 + 0 + 1 + 4 = 6
+Norme 2 :
+∥x∥2 =
+p
+12 + 02 + 12 + (−4)2 =
+√
+1 + 0 + 1 + 16 =
+√
+18 = 3
+√
+2≈4.24
+Norme infinie :
+∥x∥∞ = max{|1|,|0|,|1|,|−4|}= max{1,0,1,4}= 4
+Résultats :∥x∥ 1 = 6,∥x∥ 2 = 3
+√
+2,∥x∥∞ = 4
+Calculer les normes 1, 2, et∞du vecteurx= (1,0,1,−4) ⊤.
+Exercice 2
+Correction détaillée
+Rappel :In est la matrice identité de taillen×n:
+In =
+
+
+1 0···0
+0 1···0
+... ... ... ...
+0 0···1
+
+
+Définitions des normes matricielles :
+—∥A∥ 1 = maxj=1,...,n
+Pm
+i=1|aij|(maximum des sommes des colonnes)
+—∥A∥ 2 =
+p
+λmax(A⊤A)(racine de la plus grande valeur propre deA⊤A)
+1
+<<<PAGE>>>
+—∥A∥ ∞ = maxi=1,...,m
+Pn
+j=1|aij|(maximum des sommes des lignes)
+—∥A∥ F =
+qPm
+i=1
+Pn
+j=1a2
+ij (norme de Frobenius)
+Calculs pourIn :
+Norme 1 :Chaque colonne deIn contient un seul 1 et des 0.
+∥In∥1 = max
+j
+nX
+i=1
+|iij|= max
+j
+1 = 1
+Norme 2 :I⊤
+nIn =I n, et les valeurs propres deIn sont toutes égales à 1.
+∥In∥2 =
+p
+λmax(In) =
+√
+1 = 1
+Norme infinie :Chaque ligne deIn contient un seul 1 et des 0.
+∥In∥∞ = max
+i
+nX
+j=1
+|iij|= max
+i
+1 = 1
+Norme de Frobenius :In contientncoefficients égaux à 1 et le reste à 0.
+∥In∥F =
+vuut
+nX
+i=1
+nX
+j=1
+i2
+ij =
+√
+n·1 2 =√n
+Résultats :∥In∥1 = 1,∥I n∥2 = 1,∥I n∥∞ = 1,∥I n∥F =√n
+Calculer la norme deIn pour les normes matricielles∥·∥ 1,∥·∥ 2,∥·∥ ∞ et∥·∥ F.
+Exercice 3
+Correction détaillée
+Matrice donnée :
+A=
+
+
+2 1 1
+2 3 2
+1 1 2
+
+
+Norme 1(maximum des sommes des colonnes) :
+Colonne 1 :|2|+|2|+|1|= 5
+Colonne 2 :|1|+|3|+|1|= 5
+Colonne 3 :|1|+|2|+|2|= 5
+∥A∥1 = max{5,5,5}= 5
+Norme infinie(maximum des sommes des lignes) :
+Ligne 1 :|2|+|1|+|1|= 4
+Ligne 2 :|2|+|3|+|2|= 7
+Ligne 3 :|1|+|1|+|2|= 4
+∥A∥∞ = max{4,7,4}= 7
+2
+<<<PAGE>>>
+Norme 2(racine de la plus grande valeur propre deA⊤A) :
+CalculonsA⊤A:A ⊤A=
+
+
+2 2 1
+1 3 1
+1 2 2
+
+
+
+
+2 1 1
+2 3 2
+1 1 2
+
+ =
+
+
+9 9 8
+9 11 9
+8 9 9
+
+
+Calculons le polynôme caractéristiquedet(A⊤A−λI 3) = 0:
+A⊤A−λI 3 =
+
+
+9−λ9 8
+9 11−λ9
+8 9 9−λ
+
+
+Développement par la première ligne :
+det(A⊤A−λI 3) = (9−λ)
+
+11−λ9
+9 9−λ
+−9
+
+9 9
+8 9−λ
+ + 8
+
+9 11−λ
+8 9
+
+Calculons chaque déterminant2×2:
+
+11−λ9
+9 9−λ
+ = (11−λ)(9−λ)−81 = 99−11λ−9λ+λ 2−81
+=λ 2−20λ+ 18
+
+9 9
+8 9−λ
+ = 9(9−λ)−72 = 81−9λ−72 = 9−9λ
+
+9 11−λ
+8 9
+ = 9·9−8(11−λ) = 81−88 + 8λ=−7 + 8λ
+Regroupons :
+det(A⊤A−λI 3) = (9−λ)(λ 2−20λ+ 18)−9(9−9λ) + 8(−7 + 8λ)
+= (9−λ)(λ 2−20λ+ 18)−81 + 81λ−56 + 64λ
+= (9−λ)(λ 2−20λ+ 18) + 145λ−137
+Développons(9−λ)(λ 2−20λ+ 18):
+= 9λ 2−180λ+ 162−λ 3 + 20λ2−18λ
+=−λ 3 + 29λ2−198λ+ 162
+Donc :det(A⊤A−λI 3) =−λ 3 + 29λ2−198λ+ 162 + 145λ−137 =−λ 3 + 29λ2−53λ+ 25
+Résolvons−λ 3 + 29λ2−53λ+ 25 = 0, soitλ 3−29λ 2 + 53λ−25 = 0.
+Par essai, testonsλ= 1:1−29 + 53−25 = 0
+Donc(λ−1)est un facteur. Division polynomiale :λ 3−29λ 2 + 53λ−25 = (λ−1)(λ 2−
+28λ+ 25)
+Résolvonsλ 2−28λ+ 25 = 0:λ= 28±√784−100
+2 = 28±
+√
+684
+2 = 28±2
+√
+171
+2 = 14±
+√
+171
+Les trois valeurs propres sont :λ1 = 1, λ 2 = 14−
+√
+171≈0.92, λ 3 = 14+
+√
+171≈27.08
+La plus grande valeur propre estλmax = 14 +
+√
+171.
+∥A∥2 =
+p
+14 +
+√
+171≈
+√
+27.08≈5.20
+Résultats :∥A∥ 1 = 5,∥A∥ 2≈5.21,∥A∥ ∞ = 7
+3
+<<<PAGE>>>
+Calculer les normes∥·∥ 1,∥·∥ 2 et∥·∥ ∞ de la matrice
+A=
+
+
+2 1 1
+2 3 2
+1 1 2
+
+
+Exercice 4
+Correction détaillée
+À démontrer :Pour toute matriceA∈R m×n,
+∥A∥∞ = max
+i=1,...,m
+nX
+j=1
+|aij|
+Rappel :La norme matricielle subordonnée à la norme vectorielle∥·∥est définie par :
+∥A∥= sup
+x̸=0
+∥Ax∥
+∥x∥ = sup
+∥x∥=1
+∥Ax∥
+Démonstration :
+Étape 1 :Montrons que∥A∥∞≤max i
+P
+j|aij|.
+Soitx∈R n tel que∥x∥∞ = 1, c’est-à-dire|xj|≤1pour toutj.
+Lei-ème coefficient deAxest(Ax) i =Pn
+j=1aijxj.
+Donc :
+|(Ax)i|=
+
+nX
+j=1
+aijxj
+
+≤
+nX
+j=1
+|aij||xj|≤
+nX
+j=1
+|aij|·1 =
+nX
+j=1
+|aij|
+Par conséquent :
+∥Ax∥∞ = max
+i
+|(Ax)i|≤max
+i
+nX
+j=1
+|aij|
+Étape 2 :Montrons que cette borne est atteinte.
+Soiti 0 l’indice tel quePn
+j=1|ai0j|= max i
+P
+j|aij|.
+Construisonsxtel quex j =sgn(a i0j)(où sgn(a) = 1sia≥0,−1sinon).
+Alors∥x∥∞ = 1et :
+(Ax)i0 =
+nX
+j=1
+ai0jxj =
+nX
+j=1
+ai0j·sgn(ai0j) =
+nX
+j=1
+|ai0j|
+Donc :
+∥Ax∥∞≥|(Ax) i0|=
+nX
+j=1
+|ai0j|= max
+i
+nX
+j=1
+|aij|
+Conclusion :Les deux inégalités donnent l’égalité :
+∥A∥∞ = max
+i=1,...,m
+nX
+j=1
+|aij|
+4
+<<<PAGE>>>
+Démontrer le résultat (43) :
+∥A∥∞ = max
+i=1,...,m
+nX
+j=1
+|aij|
+Exercice 5
+Correction détaillée
+À démontrer :Pour toute matriceA∈R m×n,
+∥A∥1 =∥A⊤∥∞
+Démonstration :
+Rappel des définitions :
+—∥A∥ 1 = maxj=1,...,n
+Pm
+i=1|aij|(maximum des sommes des colonnes deA)
+—∥A ⊤∥∞ = maxi=1,...,n
+Pm
+j=1|(a⊤)ij|(maximum des sommes des lignes deA⊤)
+Observation clé :La transposition transforme les colonnes en lignes et vice-versa.
+SiA= (a ij)∈R m×n, alorsA⊤ = (a⊤
+ij)∈R n×m avec :
+a⊤
+ij =a ji
+Calcul de∥A⊤∥∞ :
+Lai-ème ligne deA⊤ contient les éléments(a⊤
+i1,a⊤
+i2,...,a ⊤
+im).
+Or,a⊤
+ij =a ji, donc lai-ème ligne deA⊤ correspond à lai-ème colonne deA.
+Par conséquent :
+mX
+j=1
+|a⊤
+ij|=
+mX
+j=1
+|aji|
+qui est exactement la somme des valeurs absolues de lai-ème colonne deA.
+Donc :
+∥A⊤∥∞ = max
+i=1,...,n
+mX
+j=1
+|a⊤
+ij|= max
+i=1,...,n
+mX
+j=1
+|aji|
+Or, parcourirjde 1 àmpour une colonneifixée deArevient à :
+max
+i=1,...,n
+mX
+j=1
+|aji|= max
+j=1,...,n
+mX
+i=1
+|aij|=∥A∥ 1
+Conclusion :
+∥A∥1 =∥A⊤∥∞
+Cette propriété exprime la dualité entre les normes 1 et∞par transposition.
+Démontrer le résultat suivant pour toute matriceA∈Rm×n :
+∥A∥1 =∥A⊤∥∞
+5
+<<<PAGE>>>
+Exercice 6
+Correction détaillée
+Pour chaque affirmation, on détermine si elle est vraie ou fausse.
+1. SiAetBsont deux matrices carrées de même taille, on a∥A∥1·∥B∥ 1 =∥AB∥ 1.
+FAUX.Cette égalité n’est généralement pas vérifiée.
+Contre-exemple :PrenonsA=B=
+1 1
+0 1
+
+Calcul de∥A∥ 1 :
+— Colonne 1 :|1|+|0|= 1
+— Colonne 2 :|1|+|1|= 2
+Donc∥A∥ 1 = 2et∥B∥ 1 = 2.
+Calcul deAB:
+AB=
+1 1
+0 1
+ 1 1
+0 1
+
+=
+1 2
+0 1
+
+Calcul de∥AB∥ 1 :
+— Colonne 1 :|1|+|0|= 1
+— Colonne 2 :|2|+|1|= 3
+Donc∥AB∥ 1 = 3.
+Or,∥A∥ 1·∥B∥ 1 = 2·2 = 4̸= 3 =∥AB∥ 1.
+Remarque :On a en revanche l’inégalité∥AB∥1≤∥A∥ 1·∥B∥ 1 (sous-multiplicativité).
+2. SiAetBsont deux matrices carrées de même taille, on a∥AB∥2≤∥A∥ 2·∥B∥ 2.
+VRAI.C’est la propriété de sous-multiplicativité des normes matricielles subordonnées.
+Démonstration :Pour toutx̸= 0:
+∥ABx∥2
+∥x∥2
+=∥A(Bx)∥2
+∥Bx∥2
+·∥Bx∥2
+∥x∥2
+≤∥A∥ 2·∥B∥ 2
+En prenant le supremum sur tous lesx̸= 0, on obtient :
+∥AB∥2 = sup
+x̸=0
+∥ABx∥2
+∥x∥2
+≤∥A∥ 2·∥B∥ 2
+3. Pour toute matriceA∈R n×n, il existe unx∈R n et une norme vectorielle
+notée∥·∥tels que∥A∥ F = ∥Ax∥
+∥x∥ .
+FAUX.La norme de Frobenius n’est pas une norme subordonnée.
+Argument :La norme de Frobenius est définie par∥A∥F =
+qP
+i,ja2
+ij.
+Pour la matrice identitéIn, on a∥In∥F =√n.
+Or, pour toute norme subordonnée, on a∥In∥= 1car :
+∥Inx∥=∥x∥
+doncsup x̸=0
+∥Inx∥
+∥x∥ = 1.
+Pourn >1, on a √n >1, donc∥I n∥F ne peut pas être obtenu comme une norme
+subordonnée.
+Conclusion :La norme de Frobenius n’est pas une norme matricielle subordonnée à une
+norme vectorielle.
+6
+<<<PAGE>>>
+Pour chacune des affirmations ci-dessous, dites si elle est vraie ou fausse. Dans le cas où elle
+est vraie, démontrez la, sinon trouvez un contre-exemple ou un argument dans le cours.
+1. SiAetBsont deux matrices carrées de même taille, on a∥A∥ 1·∥B∥ 1 =∥AB∥ 1.
+2. SiAetBsont deux matrices carrées de même taille, on a∥AB∥ 2≤∥A∥ 2·∥B∥ 2.
+3. Pour toute matriceA∈R n×n, il existe unx∈R n et une norme vectorielle notée∥·∥tels
+que∥A∥ F = ∥Ax∥
+∥x∥ .
+Exercice 7
+Correction détaillée
+Matrice donnée :Pour tout réelα,
+Aα =
+
+
+α1 0
+1α1
+0 1α
+
+
+1. Valeurs propres deAα
+Le polynôme caractéristique estdet(Aα−λI 3) = 0.
+Aα−λI 3 =
+
+
+α−λ1 0
+1α−λ1
+0 1α−λ
+
+
+Développement du déterminant par la première ligne :
+det(Aα−λI 3) = (α−λ)
+
+α−λ1
+1α−λ
+−1
+
+1 1
+0α−λ
+
+= (α−λ)[(α−λ) 2−1]−1[(α−λ)−0]
+= (α−λ) 3−(α−λ)−(α−λ)
+= (α−λ) 3−2(α−λ)
+= (α−λ)[(α−λ) 2−2]
+Posonsµ=α−λ, alorsµ(µ 2−2) = 0.
+Solutions :µ= 0ouµ=±
+√
+2, doncλ=αouλ=α∓
+√
+2.
+Valeurs propres :λ 1 =α−
+√
+2, λ 2 =α, λ 3 =α+
+√
+2
+2. Inversibilité deAα
+Aα est inversible si et seulement sidet(Aα)̸= 0, c’est-à-dire si aucune valeur propre n’est
+nulle.
+Conditions :α−
+√
+2̸= 0,α̸= 0, etα+
+√
+2̸= 0.
+Conclusion :Aα est inversible si et seulement siα̸= 0,±
+√
+2
+3. Calcul des normes∥Aα∥1,∥A α∥2 et∥A α∥∞
+Norme 1(maximum des sommes des colonnes) :
+Colonne 1 :|α|+|1|+|0|=|α|+ 1
+Colonne 2 :|1|+|α|+|1|=|α|+ 2
+Colonne 3 :|0|+|1|+|α|=|α|+ 1
+∥Aα∥1 = max{|α|+ 1,|α|+ 2,|α|+ 1}=|α|+ 2
+7
+<<<PAGE>>>
+Norme infinie(maximum des sommes des lignes) :
+Ligne 1 :|α|+|1|+|0|=|α|+ 1
+Ligne 2 :|1|+|α|+|1|=|α|+ 2
+Ligne 3 :|0|+|1|+|α|=|α|+ 1
+∥Aα∥∞ = max{|α|+ 1,|α|+ 2,|α|+ 1}=|α|+ 2
+Norme 2:∥A α∥2 =
+p
+λmax(A⊤αAα).
+Pour une matrice symétrique commeAα, on aA⊤
+α =A α, donc :
+∥Aα∥2 = max
+i
+|λi(Aα)|
+Les valeurs propres sontα−
+√
+2,α,α+
+√
+2.
+En valeur absolue, la plus grande dépend du signe deα:
+— Siα≥0:∥A α∥2 =|α+
+√
+2|=α+
+√
+2
+— Siα<0et|α|≤
+√
+2:∥A α∥2 =α+
+√
+2
+— Siα<−
+√
+2:∥A α∥2 =|α−
+√
+2|=−α+
+√
+2
+Forme compacte :∥Aα∥2 = max{|α−
+√
+2|,|α|,|α+
+√
+2|}
+Pour tout réelα, on noteAα la matrice
+Aα =
+
+
+α1 0
+1α1
+0 1α
+
+
+1. Quelles sont les valeurs propres de la matriceAα?
+2. Pour quelles valeurs deα, la matriceAα est-elle inversible?
+3. Calculer les normes∥Aα∥1,∥A α∥2 et∥A α∥∞.
+8

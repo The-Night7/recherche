@@ -1,0 +1,114 @@
+ING1
+Bases de données
+TD 01
+Modèle Entités-Associations
+ L'objectif de ce travail dirigé est d'apprendre à extraire d'un cahier des
+charges, la modélisation d'une base de données en utilisant le modèle Entité-
+Association.
+Exercice 1 : CyTech
+1 Les simples entités
+Question 1 : Un livre de la bibliothèque de CyTech est renseigné par :
+ le titre
+ l'éditeur
+ l'année d'édition
+ le numéro ISBN qui est unique et normalisé
+ un numéro de livre pour l'identier dans la base
+ Modéliser un livre avec une entité.
+Question 2 : Un professeur à CyTech est renseigné par :
+ son nom
+ son prénom
+ son e-mail CyTech
+ sa spécialité principale (math, info, management, ...)
+ son adresse (rue, ville et code postal)
+ Modéliser un professeur avec une entité.
+Question 3 : Un étudiant à CyTech est renseigné par :
+ son nom
+ son prénom
+ sa date de naissance
+ son e-mail CyTech
+ son adresse (rue, ville, code postal)
+ Modéliser un étudiant avec une entité.
+Question 4 : Une promotion (PréIng1, Ing1, ...) est renseignée par :
+ son libellé
+Équipe pédagogique 1 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+ son cycle
+ Modéliser une promotion avec une entité.
+Question 5 : Une matière est renseignée par :
+ son libellé
+ sa durée
+ son syllabus
+ Modéliser une matière avec une entité.
+2 Des associations simples
+Question 1 : Une matière est enseignée dans une promotion.
+ Modéliser cette phrase avec une association adéquate.
+Question 2 : Un professeur enseigne un certain nombre de matières.
+ Modéliser cette phrase avec une association adéquate.
+Question 3 : Un livre de la bibliothèque concerne un certain nombre de
+matières.
+ Modéliser cette phrase avec une association adéquate.
+Question 4 : Un livre de la bibliothèque est associé à un ou plusieurs mots-
+clés.
+ Modéliser cette phrase avec une association adéquate.
+3 Des associations un peu plus compliquées
+Question 1 : Une matière nécessite un certain nombre de pré-requis d'autres
+matières.
+ Modéliser cette phrase avec une association adéquate.
+Question 2 : Pour une année scolaire, un étudiant est dans une promotion.
+A la n de l'année scolaire, l'étudiant a l'un des statuts suivants :
+ redoublant ;
+ admis en année supérieur ;
+ exclus ;
+ diplômé.
+ Modéliser cette phrase avec une association adéquate.
+Équipe pédagogique 2 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+Question 3 : On désire gérer les cycles à part entière. Que doit-on changer
+dans la modélisation de la promotion ? On tiendra compte qu'il y a un ordre des
+promotions à l'intérieur d'un cycle.
+ Modéliser cette phrase avec une association adéquate.
+Question 4 : Chaque étudiant d'une promotion est évalué dans chaque ma-
+tière attachée à la promotion. La moyenne générale d'un étudiant est une moyenne
+pondérée des notes obtenues dans chaque matière. La pondération de chaque ma-
+tière est xée pour chaque année scolaire et est commune à tous les étudiants.
+ Traduisez cet ensemble de phrases à l'aide d'un MCD.
+Exercice 2 : Pokémon Go, partie 1
+Nous voudrions construire une base de données pour gérer les jeux vidéo en
+ligne. Pour chaque jeu, on connait son nom, son genre et sa date de sortie, ainsi
+que les plateformes sur lesquels on peut jouer (iOS, Android). Un jeu peut être
+écrit par un seul ou plusieurs développeurs, et géré par une société. Il peut être
+téléchargé sur plusieurs sites tels que 01net, topito, etc. Le nombre de télécharge-
+ments est utilisé pour mesurer la popularité du jeu. Nous collectons les données
+des joueurs comme leur adresse mail, leur date de naissance et leur niveau.
+ Modéliser le problème à l'aide d'un MCD.
+Exercice 3 : Gestion d'un hôpital
+On se propose de modéliser la base de données d'un hôpital. L'analyse de
+l'existant a dégagé les informations suivantes :
+ L'hôpital a un ensemble d'employés qui sont des docteurs et des inrmières.
+Chaque employé possède un numéro d'employé, un nom, un prénom, une
+adresse et un numéro de téléphone.
+ L'hôpital est composé de plusieurs services, pour lesquels on connaît le code,
+le nom, le bâtiment et le directeur, qui est en fait un docteur.
+ Chaque service contient plusieurs salles. Une salle est représentée par un
+numéro, un surveillant et le nombre de lits qu'elle possède. Le numéro de
+salle est local à un service (i.e., chaque service possède une salle numéro 1).
+Un surveillant est un inrmier.
+ Un inrmier est aecté à un service et à un seul.
+ Les docteurs ne sont pas aectés à un service particulier, mais on connaît
+sa spécialité.
+Équipe pédagogique 3 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+ On connaît aussi pour chaque inrmier sa rotation.
+ Les patients ont un nom et une adresse. Le suivi médical de chaque patient
+est décrit dans un dossier. Ce dossier est sous la responsabilité d'un unique
+médecin ; il contient la liste des diérentes maladies du patient, ainsi que
+la date de début de chaque maladie. Une même maladie peut toucher le
+même patient à deux dates diérentes.
+ Dénir le MCD de ce système.
+Équipe pédagogique 4 2021-2022

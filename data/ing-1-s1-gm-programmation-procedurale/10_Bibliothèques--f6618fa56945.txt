@@ -1,0 +1,104 @@
+PROGRAMMATION
+PROCEDURALE
+Eva ANSERMIN & Romuald GRIGNON
+1
+1 0 .  B I B L I O T H E Q U E S       
+_ _   S T A T I Q U E S       
+_ _   D Y N A M I Q U E S
+E. ANSERMIN | R. GRIGNON
+v1.00
+<<<PAGE>>>
+• Fichiers d’entête : 
+• Prototypes des fonctions
+• Constantes
+• Types
+• Bibliothèques : 
+• Code compilé des fonctions
+• Statique ou Dynamique (cf. diapositives suivantes)
+• Permet le regroupement d’un ensemble de fonctions traitant du même sujet
+• Trigonométrie
+• Entrées / Sorties
+• Calcul Matriciel
+• Tris de données
+• Listes chainées
+• …
+Bibliothèques 
+ Headers
+E. ANSERMIN | R. GRIGNON
+2
+<<<PAGE>>>
+• Le code des fonctions de la bibliothèque est inclus dans l’exécutable
+• Permet d’exécuter le programme sur n’importe quel système
+• (un système qui ne possèderait pas la bibliothèque utilisée)
+• Produit un exécutable de taille plus importante
+• Tout le code utile est stocké dans l’exécutable
+• Utile pour :
+• des fonctions très particulières (spécificité de la bibliothèque)
+• conserver la propriété intellectuelle
+Bibliothèques statiques
+E. ANSERMIN | R. GRIGNON
+3
+<<<PAGE>>>
+• Le code des fonctions de la bibliothèque n’est pas inclus dans l’exécutable
+• Chargement de la bibliothèque à l’exécution
+• si le système ne l’a pas déjà chargée en mémoire
+• nécessite de posséder cette bibliothèque dans le système
+• Produit un exécutable plus léger
+• le code de la bibliothèque se situe dans un autre fichier
+• Utile pour :
+• des fonctions très utilisées par plusieurs programmes
+• permet de factoriser la place occupée par ces fonctions
+• Protège un peu moins la propriété intellectuelle
+Bibliothèques dynamiques
+E. ANSERMIN | R. GRIGNON
+4
+<<<PAGE>>>
+• Création d’un fichier objet comme toute partie de programme C
+• Utilisation de la commande ‘ar’
+• Se référer à la documentation de la commande ‘ar’ pour voir les
+différentes fonctionnalités de création
+• L ’extensiond’une bibliothèque statique est ‘.a’
+• Exemple :
+• ar r libromu.a <fichiers *.o>
+Bibliothèques statiques : création
+E. ANSERMIN | R. GRIGNON
+5
+<<<PAGE>>>
+• Compilation des fichiers objet avec l’option –fPIC
+• Position Independent Code
+• permet de simplifier les liens avec les fonctions de la bibliothèque
+• Utilisation de la commande ‘gcc’ avec l’option ‘-shared’
+• L ’extensiond’une bibliothèque dynamique est ‘.so’
+• l’équivalent sur les systèmes windows est ‘.dll’
+• Exemple :
+• gcc -shared libromu.so <fichiers *.o>
+Bibliothèques dynamiques : création
+E. ANSERMIN | R. GRIGNON
+6
+<<<PAGE>>>
+• Faire référence aux bibliothèques à utiliser lors de la compilation de l’exécutable
+• Bibliothèques statiques : gcc –L   <directories> -lromu -lxxx…
+• Bibliothèques dynamiques : gcc –Wl <directories> -lromu –lxxx…
+• Etre rigoureux sur le nommage et la référence des bibliothèques:
+• libxxx en minuscule lors de la création
+• –lxxx lors de la référence
+• xxx étant le nom donné à la bibliothèque
+Bibliothèques : utilisation
+E. ANSERMIN | R. GRIGNON
+7
+
+<<<PAGE>>>
+• Les bibliothèques permettent de regrouper du code compilé pour être partagé
+• Bibliothèques statiques
+• Exécutable autonome : tout est embarqué
+• Nécessité de recompiler l’éxécutable à chaque modification de la bibliothèque
+• Utilisation pour des fonctions spécifiques
+• Propriété intellectuelle protégée (reverse-engineering complexe)
+• Bibliothèques dynamiques
+• Les exécutables sont plus petits (compilation rapide) mais incomplets
+• L ’exécutablene change pas à chaque modification de la bibliothèque
+• Utilisation pour des fonctions communes à pusieurs programmes
+• La propriété intellectuelle est un peu moins protégée
+Conclusion
+E. ANSERMIN | R. GRIGNON
+8

@@ -1,0 +1,2003 @@
+A K TA R YA L Ç I N
+P R O B A B I L I T É S
+C Y T E C H I N G 1 - G M 2 0 2 4
+C Y T E C H
+<<<PAGE>>>
+
+<<<PAGE>>>
+Table des matières
+1. Axiomes de Probabilités 5
+2. Probabilités conditionnelles et indépendance et Probabilités sur un espace fini
+ou dénombrable 11
+3. Variables aléatoires sur un espace fini ou dénombrable et Construction d’une
+mesure de probabilité 15
+4. Probabilités sur R et fonctions de répartition 21
+5. Intégration par rapport à une mesure de probabilité (espérance, variance)
+25
+6. Variables aléatoires indépendantes et Lois de probabilités sur R 29
+7. Fonctions caractéristiques et quelques propriétés 39
+8. Sommes de variables aléatoires indépendantes et Variables aléatoires gaus-
+siennes 41
+9. Convergence des variables aléatoires, convergence en loi et applications avec
+fonctions caractéristiques 45
+<<<PAGE>>>
+4
+10. Loi des grands nombres et le théorème-limite central 51
+Bibliographie 53
+<<<PAGE>>>
+1. Axiomes de Probabilités
+Soit Ω un espace abstrait, i.e. sans structure particulière.
+Rappelons queP (Ω) ou 2Ω désigne l’ensemble de tous les sous-
+ensembles de Ω, y compris le sous-ensemble vide noté ∅.
+Définition 1 (tribu (ou σ-algèbre)) Une partieA⊆P (Ω) est appelée
+tribu (ou σ-algèbre) sur Ω si elle vérifie les propriétés suivantes :
+(1) Ω∈A
+(2) A est stable par complémentaire i.e. si A∈A alors Ac ∈A , où
+Ac = Ω\ A.
+(3) A est stable par union dénombrable i.e. si pour tout i∈ N∗, Ai∈A ,
+alors S
+i∈N∗
+Ai∈A .
+Dans la définition d’une algèbre d’ensembles, "dénombrable" est
+remplacé par "finie". En théorie des probabilités, le couple (Ω,A) est
+appelé espace probabilisable (contrairement à "espace mesurable").
+Exemple 1 1) La tribu dite grossière : A ={∅, Ω}.
+2) La tribu discrète : A =P (Ω).
+3) Si Ω ={ω1, ω2, ω3, ω4} alorsA ={∅,{ω1},{ω2, ω3, ω4}, Ω} est
+une tribu sur Ω.
+4) A ={A∈P (Ω) t.q. A ou A c est dénombrable} est une tribu sur Ω dans ce dernier exemple, si on change
+"dénombrable" en "fini" cela devient
+une algèbre mais pas une σ-algèbre.Définition 2 (tribu engendrée) Si C⊂P (Ω), la tribu engendrée par C
+et notée par σ(C) est la plus petite tribu contenant C. C’est-à-dire
+σ(C) =
+\
+A tribu t.q.
+C⊂A
+A.
+Remarque : l’intersection d’une famille quelconque de tribus est encore
+une tribu et l’intersection ci-dessus n’est pas vide, car il y a au moins
+A =P (Ω).
+Exemple 2 Si A⊂ Ω, alors σ(A) ={∅, A, Ac, Ω}.
+Si Ω = R (ou plus généralement si Ω est un espace topologique), la tribu
+borélienne, ou de Borel est la tribuB(R) engendrée par la classe des ouverts
+(ou de manière équivalente, par la classe des fermés) ; une partie de R qui est
+dans la tribu borélienne s’appelle un borélien.
+<<<PAGE>>>
+6
+Théorème 1 B(R) = σ(
+
+]− ∞, a], a∈ Q
+	
+).
+Définition 3 (Mesure de Probabilité) Une mesure de probabilité, ou
+simplement une probabilité, définie sur une tribuA d’un espace Ω, est une
+application P :A→ [0, 1] qui vérifie :
+1. P(Ω) = 1.
+2. Pour toute suite A1, A2, A3, . . . d’éléments deA (des événements) qui
+sont deux à deux disjoints (i.e. A n∩ Am = ∅ si n̸= m), on a
+P
+ ∞[
+n=1
+An
+
+=
+∞
+∑
+n=1
+P(An).
+Le nombre P(A) s’appelle la probabilité de l’événement A.
+Le point 2. s’appelle σ-additivité de P.
+Théorème 2 Si P est une probabilité sur la tribuA, alors :
+(i) P(∅) = 0 ;
+(ii) si A, B∈A tels que A∩ B = ∅, alors P(A∪ B) = P(A) + P(B)
+(condition d’ additivité).
+Voici deux conséquences immédiates de l’additivité et de l’axiome
+P(Ω) = 1 :
+Propriété 1 1. A ∈A⇒ P(Ac) = 1− P(A)
+2. A , B∈A , A⊂ B⇒ P(A)≤ P(B)
+Preuve:
+1. Utiliser l’additivité avec A, Ac et P(Ω) = 1.
+2. Utiliser l’additivité avec A et C := Ac∩ B.
+□
+Définition 4 Soient A un ensemble et (An)n∈N∗ une suite d’ensembles.
+On note (An)n∈N∗↘A et on dit que (An)n∈N∗ décroît (ou "tend en
+décroissant") vers A si A n+1⊂An pour tout n∈ N∗ et siT
+n∈N∗ An = A.
+On note (An)n∈N∗↗A et on dit que (An)n∈N∗ croît (ou "tend en
+croissant") vers A si A n⊂An+1 pour tout n∈ N∗ et siS
+n∈N∗ An = A.
+Remarque : si les An, n∈ N∗ sont dans la tribuA, il en est de même
+de A dans les deux cas ci-dessus (propriété de σ-algèbre deA).
+Le théorème ci-dessous exprime ce qu’il faut exactement ajouter à
+l’additivité pour obtenir la σ-additivité :
+Théorème 3 SoitA une tribu sur Ω. Supposons que P :A→ [0, 1]
+satisfasse l’axiome 1 (i.e. P(Ω) = 1) et soit additive.
+Les assertions suivantes sont alors équivalentes :
+
+<<<PAGE>>>
+7
+(i) on a l’axiome 2 (i.e. σ-additivité) ;
+(ii) si (An)n∈N∗∈A N∗
+et décroit vers ∅ alors P(An)↘ 0.
+(iii) si (An)n∈N∗∈A N∗
+et décroit vers A alors P(An)↘ P(A).
+(iv) si (An)n∈N∗∈A N∗
+et croît vers Ω alors P(An)↗ 1.
+(v) si (An)n∈N∗∈A N∗
+et croît vers A alors P(An)↗ P(A).
+Preuve: Observons que An ↘ A implique Ac
+n ↗ Ac. Comme
+P(Ac
+n) = 1− P(An) et P(Ac) = 1− P(A), on voit que (ii) et (iv) sont
+équivalents, ainsi que (iii) et (v). L’implication (v)⇒ (iv) est évidente.
+Supposons maintenant (iv). Soit An∈A avec An↗ A. Posons
+Bn = An∪ Ac. Alors (Bn) croît vers Ω, de sorte que P(Bn)↗ 1.
+Comme An⊂ A, on a An∩ Ac = ∅, donc P(An∪ Ac) = P(An) +
+P(Ac) et il vient 1 = lim
+n→+∞
+P(Bn) = lim
+n→+∞
+(P(An) + P(Ac)). Par suite,
+lim
+n→+∞
+P(An) = 1− P(Ac) = P(A), et on a (v).
+Il reste à montrer que (i) et (v) sont équivalents. Supposons
+d’abord (v). Soit des An∈A deux à deux disjoints, et définissons
+Bn = Sn
+p=1 Ap et B = S∞
+n=1 An. L’additivité implique P(Bn) =
+∑n
+p=1 P(Ap) qui croît vers ∑∞
+p=1 P(Ap) quand n→ ∞ et croît aussi
+vers P(B) par (v), donc P(B) = P(S∞
+n=1 An) = ∑∞
+n=1 P(An), et (i) est
+prouvé.
+Finalement, supposons (i). Soit An∈A , avec An croissant vers
+A. On construit une nouvelle suite d’éléments deA avec B1 = A1,
+Bn = An\ An−1 = An∩ Ac
+n−1. On a S∞
+n=1 Bn = A et les (Bn)n≥1 sont
+deux à deux disjoints. Donc (i) entraine P(A) = limn→∞ ∑n
+p=1 P(Bp). On
+a aussi ∑n
+p=1 P(Bp) = P(An), donc limn→∞ P(An) = P(A) et on a (v). □
+Si A est une partie de Ω, on définit sa fonction indicatrice par
+1A(ω) = 1 si ω∈ A et 1A(ω) = 0 si ω̸∈ A. Notez qu’une fonction
+indicatrice 1A estF-mesurable si et seulement si A∈F . On associe
+aussi à toute suite (An)n∈N∗ de parties de Ω les ensembles suivants :
+lim sup
+n→∞
+déf=
+∞\
+n=1
+[
+m≥n
+Am =: A∗ ; lim infn→∞
+déf=
+∞[
+n=1
+\
+m≥n
+Am =: A∗.
+Propriété 2 A∗⊂A∗ et si (An)n∈N∗∈A N∗
+alors A∗, A∗∈A .
+Les règles élémentaires sur∪,∩ et la complémentarité, donnent
+sans difficulté
+(A∗)c = ( Ac)∗.
+De plus, A∗ et A∗ ont les interprétations suivantes :
+Propriété 3 Soit (Ai)i∈N une collection infinie d’ensembles. Alors
+i) ω∈ A∗⇔ "à partir d’un certain rang, ω est dans tous les A i".
+ii) ω∈ A∗⇔ "ω est dans une infinité de A m".
+On écrit parfois{Am i.s.} où i.s. signifie "infiniment souvent".
+<<<PAGE>>>
+8
+Preuve:
+i) Soit ω qui, à partir d’un certain rang, est dans tous les Am. On
+traduit cela de la façon suivante (qui est une équivalence) : il existe
+un rang n≥ 1 tel que pour tout m≥ n, ω est dans Am. D’après la
+signification des symboles∀,∃,∩ et∪, cela revient à écrire
+ω∈
+[
+n≥1
+|{z}
+il existe
+n≥1
+\
+m≥n
+|{z}
+pour tout
+m≥n
+Am|{z}
+ω est
+dans Am
+.
+ii) Dire que ω est dans une infinité de Am est équivalent à dire que
+" pour tout n, il existe m≥ n avec ω dans Am”.
+En effet, si tel est le cas, ω est bien dans une infinité de Am car,
+d’après cette propriété,
+- avec n = 1, il existe m1≥ n tel que ω est dans Am1, m1≥ 1.
+- avec n = m1 + 1, il existe m2≥ n tel que ω est dans Am2, m2
+strictement plus grand que m1,
+- avec n = m2 + 1, il existe m3≥ n tel que ω est dans Am3, m3
+strictement plus grand que m2,
+- . . .,
+- avec n = mk + 1, il existe mk+1≥ n tel que ω est dans Amk+1,
+mk+1 strictement plus grand que mk.,
+- . . .,
+et finalement, ω est dans chaque Amk avec (mk)k∈N∗ strictement
+croissante, c’est-à-dire dans une infinité de Am.
+Réciproquement, s’il est dans une infinité de Ai, alors il existe une
+suite d’entiers positifs (ik)k≥1 tel que ω∈ Aik pour tout k∈ N∗. Donc
+sachant que pour tout k∈ N∗, ik≥ k, il vient que pour tout n∈ N∗
+il existe m≥ n tel que ω∈ Am, et ce m peut être choisi tel que m = ip
+avec p≥ n.
+Donc, pour ce deuxième point, pour tout n, on trouve m≥ n, tel
+que ω∈ Aq, en langage∀,∃, cela s’écrit
+ω∈
+\
+n≥1
+|{z}
+pour tout
+n≥1
+[
+m≥n
+|{z}
+il existe
+m≥n
+Am|{z}
+ω est
+dans Am
+.
+□
+Lien entre lim inf, lim sup d’ensembles et de fonctions
+<<<PAGE>>>
+9
+Rappel : Pour une suite réelle u = ( un)n∈N, on définit ses limites
+supérieur et inférieure par
+u∗ := lim inf
+n→+∞
+un = sup
+n≥0
+inf
+k≥n
+uk
+u∗ := lim sup
+n→+∞
+un = inf
+n≥0
+sup
+k≥n
+uk
+Ce sont les plus petite et plus grande valeurs d’adhérence de la suite
+u. On a toujours
+u∗≤ u∗
+et il y a égalité ssi la suite u converge ; de plus si tel est le cas limn→+∞ un =
+u∗ = u∗. En plus, en changeant le signe, les limites inférieure et supé-
+rieure s’échangent :
+(−u)∗ =−u∗
+(−u)∗ =−u∗.
+Pour une suite de fonctions ( fn)n≥0, on définit des fonctions limites
+inférieure et supérieure de la façon suivante :
+f∗(x) = lim inf
+n→+∞
+fn(x), f∗(x) = lim sup
+n→+∞
+fn(x).
+Propriété 4 Soit (An)n∈N une suite d’ensemble mesurables, on a
+(1A)∗ = 1A∗ et (1A)∗ = 1A∗.
+Preuve: la démonstration complète est à faire soi-même. Pour
+vous aider : montrer que (1A)∗ = 1A∗ revient, par définition et
+notation, à montrer que (1A(ω))∗ = 1A∗ (ω), qui est équivalent à
+inf
+n≥1
+sup
+m≥n
+1Am (ω) = 1 T
+n≥1
+S
+m≥n Am
+(ω).
+□
+Définition 5 (Convergence d’ensembles) On dit qu’une suite d’en-
+semble (An)n∈N converge vers A et on note A n→ A, n→ +∞, si
+A∗ = A∗ = A.
+On montre alors aussi :
+Propriété 5 Soit P une probabilité et (An)n∈N∗∈A N∗
+qui converge vers
+A. Alors A∈A et limn→∞ P(An) = P(A).
+Preuve: D’après la Propriété 2, on a A∗ = A∗∈A , et donc d’après la
+définition précédente A∈A .
+Ensuite, soit Bn = T
+m≥n Am et Cn = S
+m≥n Am. Alors (Bn)n
+croît vers A et (Cn)n décroît vers A, donc limn→∞ P(Bn) = P(A) =
+limn→∞ P(Cn) d’après le Théorème 3. Mais Bn⊂ An⊂ Cn, donc
+P(Bn)≤ P(An)≤ P(Cn), de sorte que lim n→∞ P(An) = P(A).
+□
+<<<PAGE>>>
+
+<<<PAGE>>>
+2. Probabilités conditionnelles et indé-
+pendance et Probabilités sur un espace
+fini ou dénombrable
+Soient A, B∈ (Ω,A, P). La fréquence fn(A) de réalisation de A
+lorsqu’on répète n fois la même expérience, converge (en un sens à
+préciser !) vers la probabilité P(A), qui quantifie "les chances de voir
+A réalisé".
+Supposons maintenant qu’on sache que B est réalisé. Les chances
+de voir A réalisé vont changer et être quantifiées par un nouveau
+nombre P(A|B), "la probabilité de A sachant B" : on peut à nouveau
+considérer la fréquence de A lorsque l’expérience est répétée n fois,
+sauf qu’il faut calculer cette fréquence sur l’ensemble des expériences
+où B se réalise.
+Il est ainsi naturel de considérer le nombre de fois où A et B
+sont réalisés, c’est-à-dire n fn(A∩ B) ; pour obtenir une fréquence il
+convient de diviser ce nombre par le nombre d’occurrences de B, i.e.
+n fn(B), de sorte qu’en définite on doit avoir
+P(A|B)≈ n fn(A∩ B)
+n fn(B) = fn(A∩ B)
+fn(B) .
+La définition ci-dessous est tirée de cette relation en "prenant la
+limite en n".
+En particulier, il se peut que le fait de savoir que B est réalisé ne
+donne aucune information sur la réalisation de A : on dit alors que
+A est "indépendant" de B, et cela se traduit par le fait que P(A|B) =
+P(A). Et donc P(A∩B)
+P(B) = P(A), donc P(A∩ B) = P(A)P(B). Nous
+allons maintenant introduire les définitions proprement dites en
+commençant par l’indépendance :
+Définition 6 (indépendance) a) A et B sont dit indépendants si P(A∩
+B) = P(A)P(B).
+b) Soit (Ai)i∈I une famille d’événements, où I⊂ N. Les (Ai)i∈I sont dits
+<<<PAGE>>>
+12
+indépendants, ou parfois "mutuellement indépendants" si
+∀J⊂ I fini, P
+
+\
+j∈J
+Aj
+
+ = ∏
+j∈J
+P(Aj).
+Remarque : Si les (Ai)i∈I sont indépendants, ils sont aussi deux à
+deux indépendants, ce qui signifie que Ai et Aj sont indépendants
+pour tous i, j avec i̸= j, mais la réciproque est fausse.
+Théorème 4 Si A et B sont indépendants, il en est de même de A et Bc, de
+Ac et B, et de A c et Bc.
+Preuve: Pour A et Bc, on a P(A∩ Bc) = P(A)− P(A∩ B) =
+P(A)− P(A)P(B) = P(A)(1− P(B)) = P(A)P(Bc). Les autres
+propriétés se montrent de manière analogue. □
+Exemple 3 1. On choisit une carte au hasard parmi 52 cartes. A =
+{la carte est un cœur}, et B = {la carte est une dame}. Un modèle
+naturel pour cette expérience consiste à affecter la probabilité 1
+52 au choix
+de chacune des cartes. Par additivité, P(A) = 13
+52 et P(B) = 4
+52 et
+P(A∩ B) = 1
+52, donc A et B sont indépendants.
+2. Soit Ω ={1, 2, 3, 4} etA =P (Ω). Soit P(i) = 1
+4 pour i∈{ 1, 2, 3, 4}.
+Soit enfin A ={1, 2}, B ={1, 3} et C ={2, 3}. Alors A, B, C sont
+deux à deux indépendants, mais pas (mutuellement) indépendants.
+Définition 7 (Probabilité conditionnelle) Soit A, B deux événements,
+avec P(B) > 0. La probabilité conditionnelle de A sachant B est P(A|B) =
+P(A∩ B)/P(B).
+Théorème 5 (Probabilité conditionnelle sachant un événement)
+Supposons que P(B) > 0.
+(a) A et B sont indépendants ⇔ P(A|B) = P(A).
+(b) L’application PB :A∋ A7→ P(A|B)∈ [0, 1] définit une nouvelle me-
+sure de probabilité surA, appelée la "probabilité conditionnelle sachant
+B".
+Preuve: (a) résulte d’un calcul immédiat. Pour (b), on doit mon-
+trer que PB vérifie les deux axiomes (1) et (2) d’une probabilité de
+mesure. (1) provient de PB(Ω) = P(Ω|B) = P(Ω∩ B)/P(B) =
+P(B)/P(B) = 1.
+Quant à (2), PB(∪n∈N∗ An) = P(∪n∈N∗ (An∩ B))/P(B) =
+∑n∈N∗ P(An∩ B)/P(B), car les (An∩ B)n∈N∗ sont deux à deux
+disjoints, d’où PB(∪n∈N∗ An) = ∑n∈N∗ P(An|B) = ∑n∈N∗ PB(An). □
+<<<PAGE>>>
+13
+Théorème 6 (Théorème des probabilités composées) Soit A0 = Ω.
+Soit n∈ N∗\{ 1}. On pose In ={1, 2, . . . ,n}. Si (Ai)i∈I ∈A I et si
+P(∩i∈In−1 ) > 0, alors
+P(A1∩ A2∩···∩ An) = P(A1)P(A2|A1)P(A3|A1∩ A2)··· P(An|A1∩···∩ An−1).
+Preuve: En utilisant la définition de la probabilité conditionnelle la
+preuve se fait par récurrence. □
+Théorème 7 (Formule des probabilités totales) Soit (En)n∈I∈A I
+une partition dénombrable de Ω. Pour tout A∈A , on a
+P(A) = ∑
+n∈I
+P(A|En)P(En).
+Preuve: On a A = A∩ Ω =S
+n∈I(A∩ En) et comme les (A∩ En)n∈I
+sont deux à deux disjoints, on obtient par σ-additivité de P, P(A) =
+∑n∈I P(A∩ En) = ∑n∈I P(A|En)P(En). □
+Théorème 8 (Théorème de Bayes, ou de "probabilité des causes".)
+Soit (En)n∈I∈A I une partition dénombrable de Ω. Pour tout A∈A tel
+que P(A) > 0 on a
+P(Em|A) = P(A|Em)P(Em)
+∑n∈I P(A|En)P(En) .
+Preuve: Au vu du précédent théorème le dénominateur vaut P(A),
+la formule devient donc P(A|Em)P(Em)
+P(A) = P(A∩Em)
+P(A) = P(Em|A). □
+Ce théorème a des conséquences profondes en probabilités et en
+statistique, voir par exemple les exercices en TD.
+Probabilités sur un espace fini ou dénombrable :
+Dans cette section nous supposons que l’espace d’états Ω est
+fini ou dénombrable, et nous choisissons pour la tribu la classe
+A =P (Ω).
+Théorème 9 a) Une probabilité sur l’ensemble fini ou dénombrable Ω est
+caractérisée par ses valeurs sur les singletons : p ω := P({ω}), ω∈ Ω.
+b) Si (pω)ω∈Ω est une famille de réels indéxée par l’ensemble fini ou
+dénombrable Ω, il existe une probabilité P (nécessairement unique par
+a)) sur Ω telle que P({ω}) = pω pour tout ω∈ Ω si et seulement si
+pω≥ 0 et ∑ω∈Ω pω = 1.
+Preuve: Soit A∈A ; on a A = S
+ω∈A{ω}, réunion finie ou dénom-
+brable de singletons deux à deux disjoints. Si P est une probabilité
+sur Ω, la σ-additivité implique P(A) = ··· = ∑ω∈A pω. On a donc
+a). Pour la condition nécessaire de b), i.e. l’implication⇒, on re-
+marque sur si P({ω}) = pω, alors par définition pω≥ 0, et aussi
+<<<PAGE>>>
+14
+1 = P(Ω) = P(S
+ω∈Ω{ω}) = ∑ω∈Ω P(ω) = ∑ω∈Ω pω. Suppo-
+sons inversement que les pω vérifient pω ≥ 0 et ∑ω∈Ω pω = 1.
+On a pose P(A) := ∑ω∈A pω, avec la convention qu’une somme
+"vide" est nulle. On a donc P(Ω) = 1. Pour la σ-additivité, elle
+est évident lorsque Ω est fini, et lorsque Ω est dénombrable elle
+provient de ce qu’on peut "sommer par paquets" pour obtenir que
+∑i∈I ∑ω∈Ai pω = ∑ω∈∪i∈I Ai pω si les Ai sont deux à deux disjoints. □
+Exemple 4 • Prenons Ω = N etA =P (N), et P({ω}) = e−λ ωn
+n! pour
+tout ω∈ Ω. P est une mesure de probabilité et est appelée la loi de Poisson
+de paramètre λ > 0.
+• Prenons Ω = N etA =P (N), et P({ω}) = ( 1− α)αω, pour tout
+ω∈ Ω. P est une mesure de probabilité et est appelée La loi géométrique de
+paramètre α∈ [0, 1[.
+Définition 8 (Probabilité uniforme) On dit que la probabilité P sur
+l’espace fini Ω est uniforme si p ω = P({ω}) ne dépend pas de ω.
+Dans ce cas il est immédiait que P(A) = card(A)
+card(Ω) où card(A) désigne
+le "cardinal", ou nombre de points, de A.
+<<<PAGE>>>
+3. Variables aléatoires sur un espace fini
+ou dénombrable et Construction d’une
+mesure de probabilité
+Dans ce chapitre nous supposons encore l’espace d’états Ω dénom-
+brable, et nous choisissons pour tribu la classe A =P (Ω) de toutes
+les parties de Ω.
+Définition 9 Une variable aléatoire X est définie comme une application de
+Ω dans un ensemble E (a priori arbitraire).
+Une variable aléatoire représente une quantité qui dépend de l’issue
+de l’expérience.
+Noter que l’espace d’arrivée E n’est pas nécessairement dénom-
+brable. Par exemple E = R si l’expérience consiste à choisir une
+personne dans une salle et si X(ω) représente la taille de la personne
+ω ; mais l’image E′ de Ω par X, i.e. E′ :={i∈ E,∃ω∈ Ω| X(ω) = i},
+est, quant à elle, nécessairement dénombrable.
+On peut alors définir la loi de X, notée par PX, appelée aussi la
+distribution de X, par
+PX(A) = P(X−1(A)),∀A∈P (E′).
+Le fait que PX définisse une mesure de probabilité sur E′ est évident
+(muni de la tribu de toutes ses parties P (E′)). Comme E′ est dénom-
+brable, PX est complètement déterminé par les nombres
+pX
+j := P(X = j) = ∑
+{ω∈Ω : X(ω)=j}
+pω,
+et la famille (pX
+j )j∈E′ est aussi appelée la loi de la variable X. On a
+bien sûr PX(A) = ∑j∈A pX
+j pour tout A∈P (E′).
+Si PX est une loi munie d’un nom, par exemple une loi de Poisson,
+on dit aussi que X est une variable aléatoire de Poisson.
+Définition 10 Soit X une variable aléatoire à valeurs dans E = R, définie
+sur un espace dénombrable. On appelle espérance, ou espérance mathéma-
+<<<PAGE>>>
+16
+tique, de X le nombre
+E[X] = ∑
+ω∈Ω
+X(ω)pω,
+lorsqu’il est bien défini ; c’est le cas si Ω est fini ; c’est aussi le cas, lorsque
+Ω est infini dénombrable, si la série ci-dessus est absolument convergente,
+ou si X(ω) ≥ 0 pour tout ω ∈ Ω (dans ce dernier cas on peut avoir
+E[X] = + ∞).
+NotonsL1 l’espace de toutes les variables aléatoires réelles qui ont
+une espérance finie. Il est alors immédiat que :
+(1) L1 est un espace vectoriel et la fonctionnelle espérance E est
+linéaire.
+(2) La fonctionnelle espérance E est positive : si X∈L 1 et X≥ 0,
+alors E[X]≥ 0. Plus généralement si X, Y∈L 1 et X≤ Y alors
+E[X]≤ E[Y].
+(3) L1 contient toutes les variables aléatoires bornées. Si X ≡ a,
+a∈ R, alors E[X] = a.
+(4) Si X∈L 1, son espérance dépend seulement de sa loi, et si E′ est
+l’image de Ω par X, on a
+E[X] = ∑
+j∈E′
+jP(X = j).
+∑
+ω∈Ω
+X(ω)pω = ∑
+ω∈ S
+j∈E′
+X−1({j})
+X(ω)pω = ∑
+j∈E′
+∑
+ω∈X−1({j})
+X(ω)pω
+= ∑
+j∈E′
+∑
+ω∈X−1({j})
+jp ω = ∑
+j∈E′
+j ∑
+ω∈X−1({j})
+pω = ∑
+j∈E′
+jP(X−1({j}) = ∑
+j∈E′
+jP(X = j)
+(5) Si X = 1A est l’indicatrice d’un événement A, on a E[X] = P(A).
+En effet E[X] est bien défini car X≥ 0, et on a E[X] = ∑ω∈Ω 1A(ω)pω =
+∑ω∈A 1× pω = P(A).
+Théorème 10 Soit h : R→ [0, ∞] une fonction positive et X une variable
+aléatoire réelle. On alors
+P({ω∈ Ω : h(X(ω))≥ a})≤ E[h(X)]
+a
+pour tout a > 0.
+Preuve: Comme X est une variable aléatoire, il en est de même de
+Y = h(X) ; soit A = Y−1([a, ∞[) ={ω : h(X(ω))≥ a} ={h(X)≥ a},
+alors on a h(X)≥ a1A, donc E[h(X)]≥ E[a1A] = aE[1A] = aP(A) et
+le résultat suit. □
+Corollaire 1 (Inégalité de Markov)
+P(|X|≥ a)≤ E[|X|]
+a .
+<<<PAGE>>>
+17
+Preuve: Prendre R∋ x7→ h(x) :=|x| dans le Théorème 10. □
+Remarque : Pour tout réel x,|x|≤ 1 + x2, donc X2∈L 1⇒ X∈L 1
+d’où
+Définition 11 Soit X une variable aléatoire réelle telle que X2∈L 1. On
+appelle variance de X le nombre
+σ2
+X = E[(X− E[X])2]
+et l’écart-type le nombre σX la racine carrée "positive" de la variance.
+L’espérance de X, est également appelé la moyenne de X, parfois notée par
+µX.
+Corollaire 2 (Inégalités de Bienaymé-Chebyshev) Si X2∈L 1, on a
+a) P(|X|≥ a)≤ E[X2]
+a2 pour tout a > 0,
+b) P(|X− µX|≥ a)≤ σ2
+X
+a2 pour tout a > 0.
+Preuve: Pour a), on applique le Théorème 10 avec h : x7→ x2, ce qui
+donne P(|X|≥ a) = P(h(X)≥ a2)≤ E[X2]
+a2 . Pour b), on applique a) à
+la variable aléatoire Y =|X− µX|. □
+Exemple 5 1) X suit une loi de Poisson de paramètre, que l’on note par
+X∼ Poisson(λ), si pour tout A⊂ N, on a P(X∈ A) = ∑j∈A P(X =
+j) = ∑j∈A
+λj
+j! e−λ.
+L’espérance de X est donnée par E[X] = ∑∞
+j=0 jP(X = j) =
+∑∞
+j=0 j λj
+j! e−λ = λ.
+2) X est de Bernoulli, i.e. elle prend seulement les deux valeurs 1 et
+0 avec les probabilités respectives p et q = 1− p (avec p∈]0, 1[). Alors
+E[X] = 1· P(X = 1) + 0· P(X = 0) = p.
+3) X est binomiale, que l’on écrit X∼B (p, n), i.e. X peut prendre les
+valeurs 0, 1, . . . ,n, et P(X = k) = (n
+k)pkqn−k.
+Construction d’une mesure de probabilité
+Dans ce chapitre Ω est un espace totalement quelconque, muni
+d’une tribuA.
+Nous nous proposons de construire, ou de caractériser, une me-
+sure de probabilité surA (on dit aussi sur (Ω,A)) à partir de la
+connaissance des probabilités P(A) pour les événements A apparte-
+nant à une certaine sous-classe deA, qu’on aimerait être "aussi petite
+que possible".
+Quand Ω est dénombrable nous avons vu que c’était une chose
+simple à réaliser, à partir par exemple de la probabilité pω = P({ω})
+des singletons.
+<<<PAGE>>>
+18
+Mais dans le cas général la même méthode ne marche plus : une
+probabilité "typique" P vérifiera P({ω}) = 0 pour tout ω et donc les
+nombres P({ω}) ne caractérisent pas P.
+Pour construire P il convient d’abord de préciser les ingrédients
+de base : on verra dans des cas "concrets" et notamment au chapitre
+suivant, qu’il est souvent aisé de construire une "probabilité" sur
+une algèbre qui engendre la tribuA, et le problème qu’on se pose
+ci-dessous est l’extension de cette probabilité à la tribu A elle-même.
+Soit donc une algèbreA0 qui engendre la tribuA, et une probabi-
+lité P :A0→ [0, 1] surA0, et donc :
+1) P(Ω) = 1 et 2) pour toute suite (An)n∈N∗ d’éléments
+deA0 deux à deux disjoints et telle que S
+n∈N∗ An ∈ A0, on a
+P(S
+n∈N∗ An) = ∑n∈N∗ P(An).
+Théorème 11 Toute probabilité P définie sur une algèbreA0 admet une
+unique extension (notée aussi P) à la tribuA = σ(A0).
+Nous allons démontrer l’unicité de P dont l’existence est assez
+difficile.
+Note : pour l’existence vous pouvez vous référer par exemple aux
+livres suivants :
+• Théorie de l’intégration ; Vuibert ; Paris - M. Briane, G. Pagès ( 1998)
+• Bases mathématiques du calcul des probabilités. Paris - J. Neveu
+(1964).
+• Introduction to Measure and Integration ; Cambridge University
+Press ; Cambdrige, Grande-Bretagne - S.J. Taylor (1973).
+Définition 12 • Une classeC de parties de Ω est stable par intersection
+si pour tous A, B∈C on a A∩ B∈C (et alors, si A1, . . . ,An∈C , on a
+A1∩ A2∩··· An∈C pour n arbitraire fini).
+• Une classeC est stable par limite croissante si pour toute suite crois-
+sante (An)n∈N∗∈C N∗
+on aS∞
+n=1 An∈C .
+• Une classeC est stable par différence si pour tous A, B∈ Cavec
+A⊂ B on a B\ A∈C .
+Théorème 12 (Théorème des classes monotones) SoitC une classe de
+parties de Ω, contenant Ω, stable par intersection.
+SoitD la plus petite classe contenantC et stable par limite croissante et
+par différence. AlorsD = σ(C).
+Preuve: Remarquons d’abord que l’intersection d’une famille quel-
+conque de classes qui sont stables par limite croissante et par dif-
+férence est une classe également stable par limite croissante et par
+différence. Ainsi en prenant l’intersection de toutes les classes ayant
+ces propriétés et contenantC on voit qu’il existe une plus petite classe
+contenantC et stable par limite croissante et par différence.
+<<<PAGE>>>
+19
+Pour tout B ⊂ Ω notonsDB la classe de toutes les parties de
+A vérifiant A∈D et A∩ B∈D . Étant données les propriétés de
+D, on voit facilement queDB est stable par limite croissante et par
+différence.
+Soit B∈C : pour chaque C∈C on a B∩ C∈C⊂D et C∈D , donc
+C∈D B. Par suiteC⊂D B⊂D . DoncD=DB, grâce aux propriétés de
+D etDB.
+Maintenant, soit B dansD. Pour chaque C ∈ Con a B∈ DC,
+et grâce à ce qui précède il vient B∩ C∈D , donc C∈D B, donc
+C⊂D B⊂D .
+CommeD =DB pour tout B∈D , on conclut queD est stable par
+intersection. De plus Ω∈D , etD est stable par différence, donc aussi
+par complémentation. CommeD est aussi stable par limite croissante,
+il s’ensuit queD est une tribu, et c’est clairement la plus petite tribu
+contenantC. □ La preuve de l’unicité dans le Théorème 11 est une
+conséquence immédiate du Corollaire 3 ci-dessous, qui est lui-même
+une conséquence du Théorème 12.
+Corollaire 3 Soient P et Q deux probabilités définies surA. Si P et
+Q coïncident sur une classeC ⊂ Aqui est stable par intersection et si
+σ(C) =A, alors P = Q.
+Preuve: Ω∈A parce queA est une tribu sur Ω et comme P(Ω) =
+Q(Ω) = 1 on peut supposer sans perte de généralité que Ω∈C .
+SoitB ={A∈A : P(A) = Q(A)}. Par définition d’une mesure
+de probabilité et par le Théorème 3,B est stable par différence et
+par limite croissante. De plusB contientC par hypothèse. Par suite,
+comme σ(C) = A, on aB =A par application du Théorème des
+classes monotone 12. □
+Si en général on ne peut pas étendre la probabilité P sur la tribuA
+à la tribuP (Ω), on peut néanmoins l’étendre à une tribu un peu plus
+grande queA :
+Définition 13 Soit P une probabilité surA. Un ensemble négligeable
+pour P est une partie A de Ω telle qu’il existe un élément B deA vérifiant
+A⊂ B et P(B) = 0.
+On dit qu’une propriété est vraie presque sûrement (en abrégé : p.s.) si
+elle est vraie en dehors d’un ensemble négligeable ; cette notion dé-
+pend bien sûr de la probabilité, de sorte qu’on dit parfois P-presque
+sûrement, ou P-p.s.
+Théorème 13 Soit P une probabilité surA etN la classe de tous les
+ensembles P-négligeables. AlorsA′ ={A∪ N : A∈A , N∈N} est une
+tribu, appelée P-complétition deA. C’est la plus petite tribu contenantA et
+N , et P s’étend de manière unique en une mesure de probabilité (notée aussi
+P) surA′, en posant P(A∪ N) = P(A) pour A∈A et N∈N .
+<<<PAGE>>>
+20
+Preuve: L’unicité de l’extension, si elle existe est triviale ; de même
+comme ∅∈A et ∅∈N , le fait queA′, si c’est une tribu, soit la
+plus petite tribu contenantA etN est trivial. Il nous suffit donc de
+montrer queA′ est une tribu et que si on pose Q(B) = P(A) pour
+B = A∪ N (avec A∈A et N∈N ), alors Q(B) ne dépend pas de la
+décomposition B = A∪ N et Q est une probabilité surA′.
+D’abord, Ω ∈ A ⊂ A′ et on a déjà vu que ∅ ∈ A′. Ensuite
+commeA etN sont stables par les unions dénombrables,A′ l’est
+également. Soit B = A∪ N∈A ′, avec A∈A et N∈N . Il existe
+C∈ Aavec P(C) = 0 et N ⊂ C. Posons A′ = Ac∩ Cc ∈ Aet
+N′ = Nc∩ Ac∩ C⊂ C (donc∈N ) ; comme Bc = A′∪ N′, on a
+Bc∈A′, etA′ est stable par complémentation : ainsiA′ est une tribu.
+Supposons maintenant que A1∪ N1 = A2∪ N2 avec Ai∈A et
+Ni∈N . La différence symétrique A1∆A2 = ( A1∩ Ac
+2)∪ (Ac
+1∩ A2) est
+contenue dans N1∪ N2, lui-même contenu dans un élément C deA de
+probabilité nulle : par suite P(A1) = P(A2), ce qui montre que Q est
+défini sans ambiguïté, et coïncide de manière évidente avec P surA.
+Enfin le fait que Q soit une probabilité surA′ est évident. □
+<<<PAGE>>>
+4. Probabilités sur R et fonctions de ré-
+partition
+0.0.1 Probabilités sur R
+Dans ce chapitre nous travaillerons sur un espace mesurable
+(Ω,F ) avec Ω = R etF =B(R).
+Définition 14 Si P est une probabilité sur (R,B(R)), sa fonction de
+répartition est la fonction F (x) = P(]− ∞, x]).
+Théorème 14 La fonction de répartition F caractérise la probabilité, i.e.
+que si Q est une autre probabilité sur (R,B(R)), de fonction de répartition
+G(x) = Q(]− ∞, x]) et si F = G, alors P = Q.
+Preuve: la preuve est admise, voir page 41, Théorème 7.1 de 1. □
+La signification de ce théorème est que la probabilité est entièrement
+connu si on connaît seulement F : on peut donc en principe retrou-
+ver P(A) pour n’importe quel borélien A à partir de la fonction F
+(déterminer "explicitement" P(A) en fonction de F est une autre
+chose !).
+Il est donc important de savoir caractériser les fonctions F qui sont
+des fonctions de répartition : cela permet en principe de caractériser
+toutes les probabilités P, et cela fait l’objet du théorème suivant.
+Théorème 15 Une fonction F est la fonction de répartition d’une (unique)
+probabilité sur (R,B(R)) si et seulement si elle vérifie les propriétés sui-
+vantes :
+(i) F est croissante ;
+(ii) F est continue à droite ;
+(iii) limx→−∞ F(x) = 0 et limx→∞ F(x) = 1.
+Preuve: la preuve est admise, voir page 42, Théorème 7.2 de 1. □
+Propriété 6 Soit F la fonction de répartition de la probabilité P sur R. En
+notant F(x−) la limite à gauche de F au point x (qui existe puisque F est
+croissante), pour tous x < y on a
+si égalité fonctions de répartitions
+alors égalité des probas
+<<<PAGE>>>
+22
+(i) P(]x, y]) = F(y)− F(x),
+(ii) P([x, y]) = F(y)− F(x−),
+(iii) P([x, y[) = F(y−)− F(x−),
+(iv) P(]x, y[) = F(y−)− F(x),
+(v) P({x}) = F(x)− F(x−),
+et en particulier P({x}) = 0 pour tout x si et seulement si la fonction F est
+continue.
+Preuve: (i) se démontrer avec F(x) + P(]x, y]) = P(]− ∞, x]) +
+P(]x, y]) = P(]− ∞, x]∪]x, y]) car P est une mesure et on a deux
+ensembles disjoints, et donc F(x) + P(]x, y]) = P(]− ∞, y]) = F(y).
+Pour (ii) on écrit que P(]x− 1/n, y]) = F(y)− F(x− 1/n) par (i).
+Le membre de droite converge quand n→ ∞ vers F(y)− F(x−) par
+définition de la limite à gauche de F ; quant au membre de gauche
+P(]x− 1/n, y]), il converge vers P([x, y]) par application du théorème
+vu en cours, en effet∩n∈N∗ ]x− 1/n, y] = [ x, y] et (]x− 1/n, y])n∈N∗
+décroit vers [x, y], d’où P(∩n∈N∗ ]x− 1/n, y]) = limn→∞ P(]x−
+1/n, y]) = P([x, y]).
+Les assertions (iii), (iv) et (v) se montrent de manière analogue. □
+Exemple 6 Si f est positive et Riemann-intégrable et
+R
+R f (x) dx = 1,
+la fonction F(x) = R x
+−∞ f (y) dy définit la fonction de répartition d’une
+probabilité P sur R (voir le théorème précédent), en effet F est croissante,
+càd (car continue), limx→−∞ F(x) = 0 et limx→∞ F(x) = 1.
+La fonction f est appelée sa densité. (Il n’est pas vrai que toute probabilité
+sur R admet une densité ; en effet s’il existe une densité alors la fonction F
+est continue, alors qu’il existe beaucoup de fonctions de répartition disconti-
+nues, ainsi que le montre l’exemple suivant.)
+Exemple 7 Soit α∈ R. La "masse de Dirac" au point a est la probabilité
+sur R qui est donné par P(A) = 1A(α). Sa fonction de répartition est
+F(x) = 1[a,∞[(x).
+Dans les exemples suivants nous définissons la probabilité (ou "loi")
+P sur R par sa densité f ; c’est-à-dire que nous définissons la fonction
+positive f d’intégrale 1, et la fonction de répartition F de P est définie
+par F(x) = R x
+−∞ f (u) du. On commet un léger abus de langage
+(habituel) en identifiant f avec la loi P correspondante, puisqu’elle
+détermine en fait de manière unique cette loi.
+Exemple 8 f (x) = 1
+b−a 1[a,b](x) pour tout x∈ R, la loi est appelée la loi
+uniforme sur [a, b].
+Exemple 9 f (x) = βe−βx1R+ (x) pour tout x∈ R, la loi exponentielle de
+paramètre β > 0.
+<<<PAGE>>>
+23
+Exemple 10 f (x) = βα
+Γ(α) xα−1e−βx1R+ (x) pour tout x ∈ R, la loi
+gamma de paramètre α et β avec α, β∈ R∗+. Γ désigne la fonction gamma,
+définie par Γ(α) = R ∞
+0 xα−1e−x dx pour tout α > 0 ; remarquons que
+Γ(α) = ( α− 1)! pour tout α∈ N∗ et Γ( 1
+2 ) =√π.
+Exemple 11 f (x) = αβαxα−1e−(βx)α
+1R+ (x) pour tout x∈ R, la loi de
+Weibull, avec α, β∈ R∗+.
+Exemple 12 f (x) = 1√
+2πσ2 e− 1
+2
+  x−µ
+σ
+2
+pour tout x∈ R, la loi Normale
+(ou distribution Gaussienne) avec (µ, σ2)∈ R× R∗+ ; la notation standard
+estN (µ, σ2).
+Exemple 13 En posant gµ,σ2 (x) = 1√
+2πσ2 e− 1
+2
+  x−µ
+σ
+2
+pour tout x∈ R et
+en posant f (x) = 1
+x gµ,σ2 (ln(x))1R∗+ (x) pour tout x∈ R, la loi lognormale,
+avec (µ, σ2)∈ R× R∗+.
+Exemple 14 f (x) = β
+2 e−β|x−α| pour tout x∈ R, la loi double exponen-
+tielle, avec α, β∈ R.
+Exemple 15 f (x) = 1
+βπ
+1
+1+
+  x−α
+β
+2 = 1
+π
+d
+dx
+ 
+arctan
+  x−α
+β
+
+pour tout
+x∈ R, la loi de Cauchy, avec (α, β)∈ R× R∗+.
+0.0.2 Variables aléatoires
+Dans un chapitre précédent nous avons considéré des variables
+aléatoires définies sur un espace dénombrable Ω.
+Nous voulons maintenant considérer un espace Ω quelconque,
+éventuellement non dénombrable, cet espace étant muni d’une tribu
+A d’événements et d’une probabilité P (surA).
+Comme nous l’avons vu, une variable aléatoire est une application
+X : Ω→ E. Ce qui nous intéresse est la détermination de la proba-
+bilité P({X∈ A}) = P({ω∈ Ω : X(ω)∈ A}) = P(X−1(A)) (trois
+manières équivalent d’écrire le même événement). Pour cela, il faut
+évidemment que l’ensemble{X∈ A} soit dans la tribuA, ce qui a
+priori n’est pas vrai pour une partie arbitraire A de F. Cela motive la
+définition suivante :
+Définition 15 (Variable aléatoire) Soit (Ω,A) un espace mesurable,
+toute fonction mesurable X : (Ω,A)→ (R,B(R)) est appelée variable
+aléatoire.
+Remarque : en probabilités avancées on étudiera les v.a. à valeurs
+Rd, i.e. des v.a. X : (Ω,A)→ (Rd,B(Rd)). Rappelons un théorème
+issu de Mesure et Intégration utile :
+<<<PAGE>>>
+24
+Théorème 16 SoitC une classe de parties de F telle que σ(C) =F tribu
+sur F. Pour qu’une application X : (E,E )→ (F,F ) soit mesurable ssi
+X−1(C)⊂E , i.e. X−1(C)∈E pour tout C∈C .
+Un cas particulier de ce théorème permet de caractériser de manière
+particulièrement simple les v.a. à valeurs réelles, i.e. quand F = R.
+Corollaire 4 Soit (F,F ) = ( R,B(R)) et X, Xn : (E,E )→ (F,F ). On a
+l’équivalence suivante :
+X est mesurable ssi{X≤ a}∈E pour tout a∈ R ssi{X≤ a}∈E pour
+tout a∈ Q.
+Preuve: Il suffit d’appliquer le théorème précédent avec le fait que
+B(R) = σ(C) = σ(C′), oùC ={]− ∞, a], a∈ R} etC′ ={]− ∞, a], a∈
+Q}. □
+Remarque : grâce au cours de Mesure et Intégration on sait que
+supn Xn, infn Xn, lim sup
+n→∞
+Xn, lim infn→∞ Xn sont toutes mesurables et que
+si (Xn)n converge simplement vers X, alors X est mesurable.
+Soit X une v.a. définie sur un espace de probabilité (Ω,A, P), à
+valeurs dans un espace mesurable (E,E ). La loi de X est alors définie
+par
+PX(B) = P(X∈ B),∀B∈E .
+PX est appelée l’image de P par X, comme X−1 commute avec les
+réunions et les intersections (finies, dénombrables ou infinies non
+dénombrables !), et comme X−1(E) = Ω, on a de manière immédiate :
+Théorème 17 La loi PX de X est une mesure de probabilité sur (E,E ).
+Lorsque X est une variable aléatoire réelle, sa loi PX est une pro-
+babilité sur R, dont on sait qu’elle entièrement caractérisée par sa
+fonction de répartition :
+FX(x) = PX(]− ∞, x]) = P(X≤ x),∀x∈ R.
+La fonction FX s’appelle la fonction de répartition de la v.a. X.
+Lorsque FX admet une densité fX (i.e. FX(x) = R x
+−∞ fX(y) dy pour
+tout x∈ R), on dit aussi que la fonction fX est la densité de la v.a. X.
+<<<PAGE>>>
+5. Intégration par rapport à une mesure
+de probabilité (espérance, variance)
+Soit (Ω,A, P) un espace de probabilité. Nous voulons définir
+l’espérance d’une variable aléatoire réelle (puis la variance) sur cet
+espace de probabilité, en utilisant la notion d’intégrale d’une fonction
+mesurable (variable aléatoire).
+Définition 16 a) Soit X : (Ω,A, )→ (R,B(R)) variable aléatoire
+réelle positive. L’espérance de X (ou "espérance mathématique", ou
+"intégrale" par rapport à P de X), notée par E[X], est définie par
+E[X] = R
+Ω X(ω) dP(ω), d’après Mesure et Intégration E[X] existe et
+est à valeurs [0, +∞].
+b) On dit qu’une v.a. X réelle (pas forcément positive) a une espérance finie,
+et on la note par E[X], si E[X+] et E[X−] sont toutes deux finies et on
+la définie par E[X] = E[X+]− E[X−] (remarque X = X+− X−), qu’on
+écrit également sous la forme
+R
+Ω X(ω) dP(ω).
+c) On noteL1(Ω,A, P) (lorsqu’il n’y a pas d’ambiguïté on note cela par
+L1) l’ensemble de toutes les v.a. X réelles intégrables (i.e. E[X] est fini).
+d) Une v.a. réelle X admet une espérance si E[X+] et E[X−] ne sont pas
+toutes deux simultanément égales à +∞. Dans ce cas, son espérance
+E[X] est encore définie par E[X] = E[X+]− E[X−] (avec les conven-
+tions +∞ + α = + ∞ et−∞ + α =−∞ pour tout α∈ R.
+Noter que si E[X] admet une espérance, on a E[X]∈ [−∞, +∞], et
+X est intégrable si et seulement si son espérance existe et est finie (en effet
+|X| = X+ + X−, voir Mesure et Intégration).
+Le théorème suivant présente les propriétés les plus importantes de
+la fonctionnelle espérance. Les preuves des parties se trouvent dans
+le cours de Mesure et Intégration.
+Dans son énoncé, l’assertion " X = Y presque sûrement", ou en
+abrégé "p.s.", signifie que l’événement{X ̸= Y} est négligeable
+(P-négligeable), i.e. P(X ̸= Y) = 0 ou de manière équivalente
+P(X = Y) = 1 ; de même X≥ Y p.s. signifie que P(X≥ Y) = 1, et
+(Xn)n converge p.s. vers X, signifie que P({ω∈ Ω, limn→∞ Xn(ω) =
+X}) = 1.
+<<<PAGE>>>
+26
+Théorème 18
+a) L1 est un espace vectoriel et l’espérance est une forme linéaire surL1, et
+aussi une fonctionnelle positive (i.e. X≥ 0 p.s. implique E[X]≥ 0). Si
+de plus X et Y sont deux v.a. avec 0≤ X≤ Y et Y∈L 1, alors X∈L 1
+et E[X]≤ E[Y].
+b) X ∈ L1 si et seulement si|X| ∈ L1, ou de manière équivalent si
+E[|X|] < +∞, et dans ce cas|E[X]|≤ E[|X|]. En particulier toute v.a.
+bornée est intégrable.
+c) Si X = Y p.s., alors E[X] = E[Y].
+d) (Théorème de convergence monotone.) Si les v.a. Xn, n ∈ N, sont
+positives et si la suite (Xn)n croît p.s. vers X, alors limn→∞ E[Xn] =
+E[X] (même si E[X] = ∞).
+e) (Lemme de Fatou.) Si les v.a. Xn, n∈ N vérifient Xn≥ Y p.s. avec Y
+intégrable, les v.a. Xn et lim infn→∞ Xn admettent une espérance, et on a
+E[lim infn→∞ Xn]≤ lim infn→∞ E[Xn]. Cela est vraie en particulier si
+Xn≥ 0 p.s. pour tout n.
+f) (Théorème de convergence dominée de Lebesgue.) Si (Xn)n converge p.s.
+vers X et si|Xn|≤ Y p.s. pour tout n, où Y est une v.a. intégrable, alors
+Xn∈L 1, X∈L 1, et E[Xn]→ E[X].
+Rappelons que comme en Mesure et Intégration, l’égalité p.s. entre
+v.a. est clairement une relation d’équivalence, et deux v.a. équiva-
+lentes (i.e. p.s. égales) ont la même espérance : On peut donc définie
+l’espace L1 comme "L1 modulo cette relation d’équivalence".
+En d’autres termes un élément de L1 est une classe d’équivalence,
+c’est-à-dire l’ensemble de toutes les v.a. qui sont p.s ; égales à une v.a.
+particulière. Vu (c) ci-dessus, on peut parler de "l’espérance" de cette
+classe d’équivalence, qui est l’espéance de n’importe laquelle des v.a.
+appartenant à cette classe. Comme de plus l’addition de deux v.a.
+et la multiplication d’une v.a. par une constante préservent l’égalité
+p.s., l’ensemble L1 est aussi un espace vectoriel. Par suite on commet
+l’abus (anodin) d’identifier une v.a. avec sa classe d’équivalence, et on
+écrit d’habitude X∈ L1 au lieu de X∈L 1.
+Si 1 < p < ∞, on définitLp comme l’ensemble des v.a. X telles que
+|X|p∈L 1 ; Lp est défini de manière analogue à L1 : c’estLp modulo
+la relation d’équivalence "égalité p.s." ; ou de manière équivalente,
+deux éléments deLp qui sont p.s. égaux sont considérés comme deux
+représentants du même élément de Lp.
+<<<PAGE>>>
+27
+Une conséquence utile du théorème de convergence dominée de
+Lebesgue est le résultat suivant, qui permet d’intervertir sommation
+et espérance.
+Théorème 19 Soit (Xn)n une suite de v.a.
+a) Si les X n sont toutes positives, alors
+E
+ ∞
+∑
+n=1
+Xn
+
+=
+∞
+∑
+n=1
+E[Xn].
+b) Si ∑∞
+n=1 E[|Xn|] < ∞, alors la série ∑∞
+n=1 Xn converge p.s., sa somme
+est intégrable et on a l’égalité E[∑∞
+n=1 Xn] = ∑∞
+n=1 E[Xn].
+Preuve: S n := ∑n
+k=1|Xk| et Tn := ∑n
+k=1 Xk.
+(Sn)n croît vers S := ∑∞
+k=1|Xk| donc par TCM on a E[S] =
+∑∞
+k=1 E[|Xk|] < ∞.
+Si les Xn sont toutes positives alors Sn = Tn et donc (a) est prouvé.
+Si les Xn ne sont pas nécessairement positives, mais si on a
+∑∞
+k=1 E[|Xk|] < ∞, on obtient aussi que E[S] < ∞.
+Maintenant pour chaque ε > 0, P(S = ∞) ≤ εE[S], et donc
+E[S] < ∞ et ε arbitraire donnent que P(S = ∞) = 0, donc ∑∞
+k=1 Xk
+est p.s. une série absolument convergente, et sa somme disons T est
+la limite des Tn. De plus|Tn|≤ Sn≤ S et S∈ L1. Par suite le TCD
+implique E[∑∞
+k=1 Xk] = E[limn→∞ Tn] = E[T]. □
+Rappelons que L1 et L2 sont les ensembles de classes d’équiva-
+lences de v.a. intégrables (respectivement de carré intégrable), pour la
+relation d’équivalence "égalité p.s.".
+Théorème 20
+a) Si X et Y sont dans L 2, on a XY∈ L1 et l’inégalité de Cauchy-Schwarz :
+|E[XY]|≤
+q
+E[X2]E[Y2].
+b) On a L 2⊂ L1 et si X∈ L2 alors E[X]2≤ E[X2].
+c) L’espace L2 est un espace vectoriel : si X, Y∈ L2 et α, β∈ R, alors
+αX + βY∈ L2 (en fait vous verrez que L 2 est un espace de Hilbert).
+Preuve: a) On a|XY|≤ X2/2 + Y2/2 d’où la réponse. La fonction
+a7→ E[(aX + Y)2] est du second degré en a qui est positive pour tout
+a∈ R, donc il est de discriminant négatif, d’où la réponse.
+b) Utiliser a) avec X = X× 1 et 1∈ L2.
+c) Pour tous X, Y∈ L2 et pour tous α, β∈ R, on a (αX + βY)2≤
+α2X2/2 + β2Y2/2 d’où la réponse. □
+Définition 17 Si X∈ L2, la variance de X, notée aussi σ2(X) ou σ2
+X, est
+définie par Var(X) = E[(X− E[X])2].
+<<<PAGE>>>
+28
+Remarque : X∈ L2⇒ X∈ L1, donc E[X] existe. On a Var(X) =
+E[X2]− E[X]2.
+Théorème 21 (Inégalité de Bienaymé-Chebyshev)
+P(|X|≥ a)≤ E[X2]
+a2 ,∀a∈ R∗
++.
+Preuve: a 21{|X|≥a}≤ X2 pour tout a∈ R∗+ d’où la réponse. □
+Corollaire 5
+P(|X− E[X]|≥ a)≤ σ2(X)
+a2 ,∀a∈ R∗
++.
+Le théorème suivant est très utile, de même que le corollaire qui le
+suit, pour les calculs effectifs d’espérance. Il montre que l’espérance
+d’une v.a. ne dépend que de sa loi, et il s’agit d’une version de la
+formule "de changement de variable" dans les intégrables, vue sous
+un aspect "abstrait".
+Théorème 22 Soit X une v.a. définie sur (Ω,A, P) à valeurs dans (E,E ),
+et de loi PX. Soit h : (E,E )7→ (R,B(R)) une application mesurable.
+a) On a h (X)∈L 1(Ω,A, P)⇔ h∈L 1(R,B(R), PX).
+b) Si h est positive satisfaisant à a ) alors on a
+E[h(X)] =
+Z
+R
+h(x) dPX(x).
+Preuve: Rappelons que par définition PX(B) = P(X−1(B)) pour tout
+B∈B (R). Or E[1B(X)] = P(X−1(B)) = PX(B) = R
+R 1B(x) dPX(x)
+donc la formule est vraie pour h = 1B simple n = 1, pour h simple
+(étagé) quelconque on a la formule valide par linéarité de l’espérance.
+Si h est positive il existe (d’après Mesure et Intégration) une suite
+croissante (hn)n de fonctions mesurables positives simples telles que
+limn→∞ hn = h. Donc E[h(X)] = E[limn hn(X)] = limn E[hn(X)] =
+limn
+R
+R hn(x) dPX(x) = R
+R limn hn(x) dPX(x) = R
+R h(x) dPX(x), où
+on a utilisé deux fois le TCM. Cela prouve b) quand h est positive.
+En appliquant à|h|, cela prouve aussi a) (rappelons que X∈L 1 ssi
+E[|X|] < ∞). Enfin en écrivant h = h+− h− on déduit la formule
+demandée pour h de signe quelconque de la même formule pour h
+positive par soustraction. □
+Le résultat suivant peut se déduire de ce théorème, cela sera
+prouvée plus tard.
+Corollaire 6 Soit X une v.a. réelle admettant une densité fX (i.e. P(X≤
+x) = R x
+−∞ fX(u) du pour tout x∈ R). Si E[|h(X)|] < ∞ ou si h est
+positive, on a E[h(X)] = R
+R h(x) fX(x) dx.
+Sous réserve que a) ou b soit vrai, 
+alors on a l'égalité
+<<<PAGE>>>
+6. Variables aléatoires indépendantes et
+Lois de probabilités sur R
+0.1 Variables aléatoires indépendantes
+Rappelons que deux événements A et B sont indépendants si la
+connaissance du fait que B est réalisé ne change pas la probabilité
+de A, ce qui revient à dire que P(A∩ B) = P(A)P(B). De même
+une famille quelconque (Ai)i∈I d’événements est indépendante si
+P(∩j∈J Aj) = ∏j∈J P(Aj) pour tout sous-ensemble fini J de I.
+De manière analogue, deux v.a. X et Y seront indépendantes si
+{Y∈ A} et{X∈ B} sont indépendants pour tous A et B dans les
+tribus correspondantes.
+Si X est mesurable de (Ω,A) dans (E,E ), on rappelle (voir Mesure et
+Intégration) que la tribu engendrée par X est X−1(E ) = {X−1(A) :
+A∈E} .
+Définition 18 a) Soit (Ai)i∈I une famille de sous-tribus deA. Les tribus
+Ai sont indépendantes si pour tout partie finie de J de I et tous Ai∈A i
+on a
+P(∩j∈J Aj) = ∏
+j∈J
+P(Aj).
+b) Soit (Xi)i∈I une famille de variables aléatoires, à valeurs respectives dans
+les (Ei,Ei). Les variables aléatoires Xi sont indépendantes si les tribus
+engendrées X−1
+i (Ei) sont indépendantes.
+Dans la suite de ce chapitre nous considérons essentiellement des
+couples de v.a., de façon à garder des notations simples. Tous les
+résultats s’étendent de manière évidente aux familles finies de v.a.
+Noter que X et Y prennent leurs valeurs dans (E,E ) et (F,F ) respec-
+tivement : les espace E et F peuvent être différents.
+Théorème 23 Pour que X et Y soient indépendantes, il faut et il suffit que
+l’une des conditions équivalentes ci-dessous soit satisfaite :
+a) P(X∈ A, Y∈ B) = P(X∈ A)P(Y∈ B) pour tous A∈E , B∈F .
+<<<PAGE>>>
+30
+b) P(X∈ A, Y∈ B) = P(X∈ A)P(Y∈ B) pour tous A∈C , B∈D ,
+où σ(C) =E et σ(D) =F avecE etF des classes de parties de E etF,
+stables par intersection finie.
+c) f (X) et g(Y) sont indépendantes pour tout couple ( f , g) de fonctions
+mesurables réelles sur E et F respectivement.
+d) E[ f (X)g(Y)] = E[ f (X)]E[g(Y)] pour tout couple ( f , g) de fonctions
+mesurables réelles, bornées (ou positives) sur E et F respectivement.
+e) Si de plus E et F sont des espaces métriques avec leurs tribus boréliennes
+respectivesE etF, alors E[ f (X)g(Y)] = E[ f (X)]E[g(Y)] pour tout
+couple ( f , g) de fonctions mesurables continues réelles bornées.
+Preuve: Comme X−1(A) = {X∈ A} et X−1(B) = {X∈ B} pour
+tous A∈E et B∈F d’où a).
+L’implication a)⇒ b) est triviale.
+Pour l’implication b)⇒ a) : La classeCB des ensembles A∈E
+vérifiant P(X∈ A, Y∈ B) = P(X∈ A)P(Y∈ B) pour B∈D donné
+est stable par limites croissantes et par différence, et contient C par
+hypothèse, tandis queC est stable par intersection. Le théorème des
+classes monotones entraîne alors queCB =E. En d’autres termes on
+a b) avecC =E. De manière analogue (en fixant A∈E ) on obtient
+qu’on a b) avec de plusD =F : en d’autres termes, on a a).
+Pour l’implication c) ⇒ a) : il suffit de prendre f (x) = x et
+g(y) = y (les applications identité sur E et F respectivement).
+Pour l’implication a)⇒ c) : Ètant données f et g, on voit que
+f (X)−1(E ) = X−1( f−1(E ))⊂ X−1(E ), et de même g(Y)−1(F )⊂
+Y−1(F ) : le résultat est alors évident.
+L’implication d)⇒ a) : Prendre f (x) = 1A(x) et g(x) = 1B(x).
+a)⇒ d) : Par hypothèse on a d) pour f et g fonctions indicatrices,
+et donc pour f et g fonctions simples par linéarité. Si f et g sont
+positives il existe des suites ( fn)n et (gn)n de fonctions simples po-
+sitives croissant vers f et g respectivement. Noter que les produits
+fn(X)gn(Y) croissent vers f (X)g(Y). En appliquant le TCM il vient
+alors E[ f (X)g(Y)] = E[ limn→∞ fn(X)gn(Y)] = limn→∞ E[ fn(X)gn(Y)] =
+limn→∞ E[ fn(X)]E[gn(Y)] = limn→∞ E[ fn(X)] limn→∞ E[gn(Y)] = E[ f (X)]E[g(Y)].
+On a donc le résultat lorsque f et g sont positives. Lorsque f et g sont
+bornées on écrit f = f +− f− et g = g+− g−, et on conclut par
+linéarité.
+d)⇒ e) : Évident.
+e)⇒ b) : Il suffit de montrer b) lorsqueC etD sont les classes de
+tous les fermés de E et F (ces classes sont stables par intersection).
+Soit par exemple A un fermé de E ; si fn(x) = min(1, nd(x, A)),
+où d(x, A) désignae la distance du point x au fermé A, alors fn est
+continue, et vérifie 0≤ fn≤ 1 et décroît vers l’indicatrice 1A. Pour
+<<<PAGE>>>
+31
+B fermé de F soit de même une suite (gn)n de fonctions continues
+0≤ gn≤ 1 et convergeant vers 1B. On peut reproduire la fin de la
+preuve de l’implication a)⇒ d) en remplaçant le TCM par celui de la
+convergence dominée, pour obtenir b). □ Rappelons (voir Mesure et Intégration)
+qu’en généralE,F tribus respectives
+sur E et F n’impliquent pas que le
+produit cartésienE×F est une tribu
+sur E× F. La plus petite tribu de E× F
+contenantE×F , soit σ(E×F ) est très
+fréquemment rencontrée et est notée
+ainsi :E⊗F = σ(E×F ).
+Rappel d’un théorème de Mesure et Intégration :
+Théorème 24 Soit f : (E× F,E⊗F )→ (R,B(R)) mesurable. Pour
+tout x∈ E, y7→ f (x, y) est une fonctionF-mesurable ; de même pour tout
+y∈ F la fonction x7→ f (x, y) estE-mesurable.
+Preuve: (du théorème 24)
+Supposons d’abord f de la
+forme f (x, y) = 1C(x, y), pour
+C∈E⊗F . SoitH ={C∈E⊗F : y7→
+1C(x, y) estF-mesurable pour chaque x∈
+E fixé}. AlorsH et une tribue (facile)
+contenantE×F , donc σ(E×F )⊂H .
+Comme par constructionH⊂ σ(E×F ),
+il vientH = E⊗F . On a donc
+montré le résultat pour les fonctions
+indicatrices, donc par linéarité pour
+les fonctions mesurables simples. Par
+limite croissante, on l’obtient aussi
+pour les fonctions mesurables positives.
+Enfin par différence f = f +− f−, on
+l’obtient pour les fonctions mesurables
+quelconques.
+□
+Théorème 25 (Tonelli-Fubini) Soient P et Q des probabilités sur (E,E )
+et (F,F ) respectivement.
+(a) Posons R(A× B) = P(A)Q(B) pour tous A∈E et B∈F . Alors R
+s’étend de manière unique en une probabilité sur (E× F,E⊗F ), notée
+P⊗ Q.
+(b) Pour toute fonction f : (E× F,E⊗F )→ (R,B(R)) positive ou
+P⊗ Q-intégrable, la fonction x7→R
+F f (x, y)Q(dy) estE-mesurable, la
+fonction y7→R
+E f (x, y)P(dx) estF-mesurable, et on a
+Z
+E×F
+f d(P⊗ Q) =
+Z
+E
+Z
+F
+f (x, y)Q(dy)
+
+P(dx)
+=
+Z
+F
+Z
+E
+f (x, y)P(dx)
+
+Q(dy).
+Preuve: Voir Théorème 10.3 p.71 de 1. □
+Corollaire 7 Soient X et Y deux v.a. sur (Ω,A, P) à valeurs respectives
+dans (E,E ) et (F,F ). Le couple Z := ( X, Y) peut être considéré comme
+une v.a. à valeurs dans (E× F,E⊗F ) et les deux v.a. X et Y sont indépen-
+dantes si et seulement si la loi P(X,Y) du couple égale le produit PX⊗ PY.
+Preuve: Il est évident que Z−1(A× B) = X−1(A)∩ Y−1(B)∈A
+si A∈E et B∈F , de sorte que la mesurabilité de Z découle de
+la définition de la tribuE⊗F et du Théorème 16. L’indépendance
+de X et Y revient au fait que pour tous A ∈ Eet B ∈ Fon ait
+P((X, Y) ∈ A× B) = P(X ∈ A)P(Y ∈ B), ce qui équivaut à
+P(X,Y)(A× B) = PX(A)PY(B), de sorte que l’unicité de la probabilité
+produit dans le théorème de Fubini nous donne la seconde assertion.
+□
+• Nous faisons maintenant une légère digression en construi-
+sant un modèle pour des variables aléatoires indépendantes, ce qui
+permet en particulier de vérifier que cette notion n’est pas vide.
+• Soit d’abord µ une probabilité sur un espace mesurable (E,E ). Il est
+facile de construire une v.a. X à valeurs dans E et de loi µ : prendre
+<<<PAGE>>>
+32
+simplement Ω = E,A =E, P = µ, et prendre pour X l’identité
+(X(x) = x).
+• Un peu plus compliquée est la construction d’un couple de deux
+v.a. indépendantes X et Y, à valeurs dans (E,E ) et (F,F ), et de lois
+respectives µ et ν (probabilités données a priori sur E et F) : on peut
+prendre Ω = E× F,A =E⊗F , P = µ⊗ ν, et X(x, y) = x et
+Y(x, y) = y, où (x, y)∈ E× F.
+Il est malheureusement bien plus compliqué, mais indispensable
+pour les applications (loi loi des grands nombres par exemple qu’on
+verra plus tard, ou même l’étude d’une suite infinie de jets de dés,
+etc. . .) de construire une suite infinie de v.a. indépendantes de lois
+données. Plus précisément, pour chaque entier n on se donne une
+v.a. Xn définie sur un espace de probabilité (Ω,An, Pn), à valeurs
+dans (En,En) et de loi µn (pour construire chaque Xn on peut opérer
+comme ci-dessus).
+Ensuite, on pose Ω = ∏∞
+n=1 Ωn (produit cartésien dénombrable),
+A = N∞
+n=1An oùN∞
+n=1An désigne la plus petite tribu de Ω à
+laquelle appartiennent tous les ensembles suivants : A1× A2×·×
+Ak× Ωk+1× Ωk+2×· , Ai∈A i, k∈ N∗.
+Le théorème suivant constitue un résultat non trivial de la théorie
+de la Mesure et généralise le théorème de Fubini.
+Théorème 26 (dû à Cassius Ionescu-T ulcea) Avec les notations ci-
+dessus, il existe une probabilité P et une seule sur (Ω,A) telle que P(A1×
+·× Ak× Ωk+1× Ωk+2×· ) = ∏k
+i=1 Pi(Ai) pour tous k∈ N∗, et Ai∈A i.
+Maintenant, on note eXn l’extension naturelle de Xn à Ω, c’est-à-dire que
+pour chaque ω := ( ω1, ω2, . . . ,ωn, . . .) ∈ Ω avec ωi ∈ Ωi on pose
+eXn(ω) = Xn(ωn).
+Preuve: Pour une preuve voir par exemple Theorem 16.6 (p. 150)
+de 2. □
+Corollaire 8 (Lomnick-Ulam) Les variables aléatoires eXn ci-dessus sont
+indépendantes, et chaque eXn a la loi µn.
+Preuve: Soit Bn∈E n. On a eX−1
+n (Bn) = Ω1× . . .× Ωn−1× X−1
+n (Bn)×
+Ωn+1× Ωn+2× . . . et le théorème ci-dessus nous donne que pour tout
+k∈ N∗ :
+P(∩k
+n=1fXn
+−1
+(Bn)) = P(X−1
+1 (B1)× . . .× X−1
+k (Bk)× Ωk+1× . . .)
+=
+k
+∏
+n=1
+Pn(Xn∈ Bn) =
+k
+∏
+n=1
+µn(Bn).
+En particulier P(eXn∈ Bn) = µn(Bn).
+P .S. Le résultat original est dans 3 (1934). □
+<<<PAGE>>>
+33
+Théorème 27 (Lemme de Borel-Cantelli) Soit (An)n∈N∗ une suite
+d’événements sur (Ω,A, P). Alors on a :
+a) Si ∑∞
+n=1 P(An) < ∞, alors P(A∗) = 0.
+b) Si P(A∗) = 0 et si les An, n∈ N∗ sont indépendants, alors on a
+∑∞
+n=1 P(An) < ∞.
+{ω ∈ A∗} = {Am i.s.}, A∗ =
+lim supn→∞ An =∩∞
+n=1∪m≥n Am.
+Nous verrons plus bas (comme cas
+particulier de la "loi 0− 1") que si les An
+sont indépendants, P(A∗)∈{ 0, 1}. Par
+suite si la série ∑∞
+n=1 P(An) converge
+on a P(A∗) = 0, et si elle diverge on a
+P(A∗) = 1.
+Preuve: a) : Soit an = P(An) = E[1An ], donc d’après b) du Théo-
+rème 19 on a ∑∞
+n=1 an < ∞ implique ∑∞
+n=1 1An < ∞ p.s. Comme
+∑∞
+n=1 1An (ω) = ∞ ssi ω∈ A∗ d’où a) prouvé.
+b) : P(A∗) = limn→∞ lim
+k→∞
+P(∪k
+m=nAm) = 1− limn→∞ lim
+k→∞
+∏k
+m=n(1− am)
+par indépendance, donc limn→∞ lim
+k→∞
+∏k
+m=n(1− am) = 1, d’où avec ln
+on obtient limn→∞ lim
+k→∞
+∑k
+m=n ln(1− am) = 0, i.e. limn→∞ ∑m≥n ln(1− am) =
+0, or| ln(1− x)| ≥x pour 0≤ x < 1, d’où ∑m am converge i.e.
+∑∞
+n=1 P(An) < ∞. □
+Soit maintenant des v.a. Xn définies sur (Ω,A, P). Soient les tribus
+Bn = σ(Xn),Cn = σ(∪p≥nBp) etC∞ =∩∞
+n=1Cn.
+C∞ est appelée la tribu asymptotique. Un événement est dans cette
+tribu s’il ne dépend que du comportement de la suite Xn lorsque
+n→ ∞ (d’où son nom) : voici des exemples de v.a.C∞- mesurables
+juste après le théorème suivant.
+Théorème 28 (Loi 0− 1) Soit (Xn)n∈N∗ une suite de v.a. indépendantes
+définies sur (Ω,A, P), et soitC∞ la tribu asymptotique associée. Pour tout
+C∈C ∞, on a P(C)∈{ 0, 1}.
+Preuve: SoitDn = σ(∪p<nBp). Par hypothèse les tribusCn etDn
+sont indépendantes, donc si A∈C n et B∈D n on a P(A∩ B) =
+P(A)P(B). Si A∈C ∞ nous avons donc P(A∩ B) = P(A)P(B) pour
+tout B∈D n donc aussi pour tout B∈D = σ(∪nDn), par le théorème
+des classes monotones. CependantC∞⊂D , donc on a B = A∈C ∞,
+qui implique P(A∩ A) = P(A)P(A) = P(A)2, donc P(A)∈{ 0, 1}. □
+Conséquence. Si les v.a. X1, X2, . . . ,Xn, . . . sont indépendantes, on a
+1. {ω∈ Ω : lim n→∞ Xn(ω) existe}∈C ∞, donc soit la suite (Xn)n
+converge p.s. soit elle diverge p.s.
+2. Chaque v.a. qui estC∞-mesurable (pour une preuve voir le TD)
+est p.s. constante. En particulier pour Y ∈ {X, X}, lim sup
+n→∞
+Yn,
+lim infn→∞ Yn, sont toutes p.s. constantes, où Xn := 1
+n ∑n
+p=1 Xp.
+0.2 Lois de probabilités sur R
+Rappel 1 : Les intégrales (dites impropres) sur des intervalles non
+bornés sont définies de la façon suivante. Soit f une fonction définie
+<<<PAGE>>>
+34
+sur [a, +∞[, elle est dite localement Riemann intégrable, si elle est
+Riemann intégrable sur tout compact [a, x], avec x≥ a. L’intégraleR ∞
+a f (t) dt est dite convergente (resp. absolument convergente) siR x
+a f (t) dt (resp.
+R x
+a| f (t)| dt) existe et est finie pour tout x ≥ a et
+admet une limite finie lorsque x→ ∞.
+Rappel 2 :
+Théorème 29 Soit f une fonction Riemann intégrable sur [a, b]. Alors,
+il existe g∈L 1
+R([a, b],B([a, b]), λ) telle que f = g λ-p.p., et telle queR
+[a,b] f (x) dλ(x) =R
+[a,b] f (x) dx.
+En particulier, si f est en plus mesurable, alors f∈L 1
+R([a, b],B([a, b]), λ)
+et les deux intégrales coïncident.
+Un exemple de fonction Lebesgue
+intégrable qui n’est pas Riemann inté-
+grable : soit f (x) = 1Q∩[0,1](x) pour tout
+x∈ R. Montrer que
+R
+R f (x) dλ(x) = 0,
+mais que f n’est pas Riemann inté-
+grable sur [0, 1].
+Ce théorème implique que les intégrales de Lebesgue et de Riemann
+de fonctions admettant une limite à gauche et une limite à droite en
+tout point (où cela a un sens) de [a, b], coïncident.
+Théorème 30 ( Riemann-Lebesgue (1902)) Soit f une fonction locale-
+ment Riemann intégrable, d’intégrale absolument convergente sur [a, +∞[.
+Alors, il existe g∈L 1
+R([a, +∞[,B([a, +∞[, λ) telle que f = g λ-p.p., et
+telle que
+R ∞
+a f (x) dλ(x) =R ∞
+a f (x) dx.
+Une fonction borélienne est intégrable au sens de Lebesgue si
+et seulement si f + et f− sont intégrables, où f = f +− f− avec
+f± := max(± f , 0).
+Définition 19 La densité d’une probabilité P sur (R,B(R)) est une
+fonction borélienne positive f qui vérifie pour tout x ∈ R :
+P(]− ∞, x]) =
+Z x
+−∞
+f (y) dy =
+Z
+R
+f (y)1]−∞,x](y) dy.
+Si P = PX, la loi d’une v.a. réelle X, on dit alors que X admet la densité f
+(on dit aussi f est une densité de X).
+Remarque : Comme on l’a déjà vu, il n’est pas vrai que toute pro-
+babilité sur (R,B(R)) admette une densité, puisque dans ce cas
+la fonction de répartition F est continue, ce qui n’est pas vrai de
+toutes les fonctions de répartition. Il existe même des fonctions de
+répartition continues qui n’admettent pas de densité.
+localement Riemann intégrable
+<=> intégrable pour tout segment 
+sur la def de f
+<<<PAGE>>>
+35
+Théorème 31 a) Une fonction borélienne positive f sur R est la den-
+sité d’une probabilité P sur (R,B(R))) si et seulement si elle vérifieR
+R f (x) dx = 1. Dans ce cas elle détermine la probabilité de ma-
+nière unique, et toute autre fonction borélienne positive g vérifiant
+λ( f̸= g) = 0 est aussi une densité de P.
+b) Inversement si une probabilité admet une densité, celle-ci est déterminée
+de manière unique à un ensemble de mesure de Lebesgue nulle près (i.e. si
+f et g sont deux densités pour la même probabilié, on a λ( f̸= g) = 0).
+Preuve: Voir le Théorème 11.3 (p.78) de 1. □
+Remarque : La densité f et la fonction de répartition F étant
+liées par F(x) = R x
+−∞ f (y) dy, on est tenté de conclure que F est
+dérivable et que sa dérivée vaut F′(x) = f (x). C’est vrai en tout
+point x où la fonction est continue. On peut montrer (c’est un résultat
+difficile dû à Lebesgue, Théorème de différentiation de Lebesgue
+(1904)) que c’est vrai pour λ-presque tout x. Comme f n’est définie
+de manière unique qu’à un ensemble de mesure de Lebesgue nulle
+près, "concrètement" si on connaît F et si on sait que f existe (par
+exemple si F est continue partout et dérivable par morceaux), on
+peut prendre pour f la dérivée de F partout où celle-ci existe, et des
+valeurs arbitraires (par exemple 0) ailleurs.
+Corollaire 9 Soit X une v.a. réelle admettant la densité de f . Si g est une
+fonction borélienne sur R, elle est intégrable (resp. admet une intégrale) par
+rapport à la loi PX de X si et seulement si la fonction production g fX est
+intégrable (resp. admet une intégrale) par rapport à la mesure de Lebesgue,
+et on a alors
+E[g(X)] =
+Z
+R
+g(x) PX(dx) =
+Z
+R
+g(x) fX(x) dx.
+Preuve: L’égalité est satisfaite pour les fonctions g indicatrices grâce
+au Théorème 31, car elle se réduit alors à la forme P(A) =R
+A f (y) dy.
+Par linéarité elle est donc vraie pour les fonctions boréliennes
+simples, puis par limite croissante pour les fonctions boréliennes
+positives. Pour les fonctions de signe quelconque, on déduit le résul-
+tat par linéarité encore, en utilisant les décompositions g = g+− g− et
+g fX = g+ fX− g− fX. □
+Soit X une v.a. réelle de densité fX. Soit Y = g(X) une nouvelle v.a.
+avec g borélienne, peut-on exprimer la densité de Y si elle existe, en
+termes de fX et g ? On le peut dans les "bons cas", par exemple :
+Théorème 32 Soit X une v.a. de densité fX et g une fonction borélienne.
+Soit Y = g(X). La fonction de répartition de Y est
+FY(y) = P(Y≤ y) =
+Z
+Ay
+fX(u) dy, où A y = g−1(]− ∞, y]).
+<<<PAGE>>>
+36
+Si FY est continue partout et dérivable sauf en un nombre fini de
+points, on peut utiliser le résultat ci-dessus pour obtenir la densité fY
+de Y.
+Exemple 16 Soit X∼ U([0, 1]) et Y =− 1
+λ ln(X) où λ > 0. Alors
+FY(y) = P(X≥ e−λy) = ( 1− e−λy)1R+ (y) pour tout y∈ R.
+Donc fY(y) = d
+dy FY(y) = λe−λy1R∗+ (y) pour tout y∈ R et on voit que
+Y∼ Exp(λ).
+Attention : cet exemple est très simple car g est injective. Le résultat
+général pour g injective est donné ci-dessous, le cas non injectif étant donné
+plus bas.
+Corollaire 10 Soit X une v.a.r. qui admet une densité fX. Soit g ∈
+C1(R; R) (on dit aussi continûment dérivable) dont la dérivée ne s’an-
+nule pas (elle est donc strictement monotone), et soit h = g−1 sa fonction
+réciproque, qui est définie sur g (R), continûment dérivable sur g (R). Rappel : Par définition on dit que
+f : I→ J est Ck(I; J)-difféomorphisme
+si f est une bijection de I sur J, et si f et
+f−1 sont de classe Ck, i.e. f i existe pour
+tout i≤ k et f k est continue.
+Tout simplement l’hypothèse du
+corollaire est :
+g est C1(R; g(R))-difféomorphisme, en
+effet une propriété appelée Caractérisa-
+tion des Ck-difféomorphismes dit que
+f ∈ Ck(I; f (I))-difféomorphisme ssi
+f∈ Ck sur I et f′̸= 0 sur I.
+Alors la v.a.r. Y := g(X) admet une densité f Y donnée par
+fY =|h′| ( fX◦ h) 1g(R).
+Preuve: Supposons g croissante. g(R) =] a, b[ avec a, b∈ R. Soit FY
+la fonction caractéristique de Y. Si a < y < b on a par la croissance
+de h, FY(y) = P(g(X)≤ y) = P(h(g(X))≤ h(y)) = P(X≤ h(y)) =
+FX(h(y)) = R h(y)
+−∞ f (x) dx. On sait par ailleurs que la dérivée de h
+est h′ = 1
+f′(h(x)) (en effet g est injective, dérivable, de dérivée non
+nulle, donc h dérivable), donc FY est dérivable sur ]a, b[ et FY(y) =
+f (h(y))h′(y) = f (h(y))|h′(y)|. Enfin FY(y) = 0 si y≤ a, quand
+a >−∞, et de même FY(y) = 1 si y≥ b, quand b < ∞, donc FY
+est également dérivable, et de dérivée nulle, sur ]− ∞, a[∪]b, ∞[. On
+en déduit le résultat. Si g est décroissante, pour y∈ g(R), le même
+argument conduit à FY(y) = f (h(y))(−h′(y)) = f (h(y))|h′(y)|, et on
+conclut comme ci-dessus.
+□
+Corollaire 11 Soit X une v.a.r. admettant une densité fY continue par
+morceaux. Soit g∈ C1(R; R) et strictement monotone par morceaux, i.e.
+il existe une partition (Ii)1≤i≤n de R constituée d’intervalles et telle que
+g∈ C1(I′
+i ; g(I′
+i ))-difféomorphisme, I′
+i étant l’intervalle ouvert ayant les
+mêmes extrémités que Ii. Pour chaque i on note hi = ( g|I′
+i
+)−1 et Λi = g(I′
+i ).
+Alors la v.a. Y := g(X) admet une densité f Y, définie par
+fY =
+n
+∑
+i=1
+|h′
+i|( fX◦ hi)1Λi.
+Preuve: La preuve, analogue à celle du corollaire précédent, est
+laissée. Cette méthode de démonstration utilise la continuité par
+<<<PAGE>>>
+37
+morceaux de fX, mais le résultat reste vrai quand fX est borélienne.
+□
+<<<PAGE>>>
+
+<<<PAGE>>>
+7. Fonctions caractéristiques et quelques
+propriétés
+Définition 20 Pour une v.a.r. X on définit E[eiX ] := E[cos(X)] +
+i E[sin(X)] avec i2 =−1.
+Définition 21 Soit µ une mesure de probabilité sur (R,B(R)). Sa
+transformée de Fourier, notéebµ, est la fonction sur R définiebµ(u) =R
+R eiux dµ(x).
+Remarque :bµ est bien définie puisque|eiux|≤ 1 et 1∈L 1(R,B(R), µ).
+Définition 22 Soit X une v.a.r. Sa fonction caractéristique ϕX est la
+fonction sur R définie par ϕX(u) = E[eiuX ]. En d’autres termes ϕX(u) =R
+X eiux dPX(x) = cPX(u).
+Ainsi on remarque que la fonction caractéristique de X est la transfor-
+mée de Fourier de sa loi PX.
+Théorème 33 Soit µ une probabilité sur (R,B(R)). La fonctionbµ est
+bornée (de module inférieur ou égale à 1), continue, et vérifie bµ(0) = 1.
+Preuve: Voir le Théorème 13.1 de 1 (page 111). □
+Définition 23 On dit qu’une v.a.r. X admet des moments d’ordre jusqu’à
+l’ordre m si X∈ Lk(Ω) pour tout 1≤ k≤ m.
+Théorème 34 Soit X une v.a.r. admettant des moments jusqu’à l’ordre m.
+Alors ϕX est m fois dérivable et
+ϕ(m)
+X (u) = imE[Xm eiuX ].
+Remarque et Application :
+Si X∈ L1(Ω) alors E[X] =−iϕ′
+X(0). Si X∈ L2(Ω) alors E[X2] =
+−ϕ′′
+X(0).
+Théorème 35 Soit X une v.a.r. et a∈ R avec b∈ R, alors ϕa+bX (u) =
+eiua ϕX(bu) pour tout u∈ R.
+<<<PAGE>>>
+40
+Théorème 36 (Théorème d’unicité) La transformée de Fourier bµ d’une
+mesure de probabilité µ sur (R,B(R)) caractérises µ : i.e. que si deux
+mesures de probabilités sur (R,B(R)) admettent la même transformée de
+Fourier, alors elles sont égales.
+Preuve: Voir le Théorème 14.1. de 1 (page 117) □
+Corollaire 12 Deux v.a.r. X et Y sont indépendantes si et seulement si
+E[ei(uX+vY)] = ϕX(u)ϕY(v) pour tous u, v∈ R.
+Preuve: Si X et Y sont indépendantes, alors c’est vrai par indépen-
+dance. L’autre sens sera démontré en probabilité avancées lorsque
+nous manipulerons les vecteurs aléatoires. □
+<<<PAGE>>>
+8. Sommes de variables aléatoires indé-
+pendantes et Variables aléatoires gaus-
+siennes
+0.2.1 Somme de v.a. indépendantes
+Une part importante des applications des probabilités découle des
+propriétés des sommes de v.a.r. indépendantes. Un exemple simple
+apparaît en statistique : si nous répétons n fois la même expérience
+indépendamment et si nous appelons Xj le résultat de la j-ième expé-
+rience, la "valeur moyenne" est donnée par ¯x = 1
+n ∑n
+j=1 Xj. La v.a. ¯x
+est alors appelée un estimateur de la moyenne µ de la loi commune
+des Xj. La statistique étudie quand (et comment) ¯x converge vers
+µ quand n→ ∞. Même une fois qu’on sait que ¯x tend vers µ, on a
+aussi besoin de savoir quelle taille donner à n pour être raisonna-
+blement sûr que ¯x est proche de la vraie valeur µ, qui est en général
+inconnue. D’autres problèmes difficiles se posent aussi naturelle-
+ment : quelle est la loi de ¯x ? Si on ne peut la déterminer, peut-on
+au moins l’approximer ? Quelle taille doit avoir n pour que cette
+approximation soit bonne ? Si on dispose d’informations complémen-
+taires sur µ, comment les utiliser pour améliorer l’estimateur ¯x ? Bien
+évidemment, avant de commencer à résoudre les plus simples de
+ces questions, il nous faut étudier les sommes de v.a. indépendantes.
+Voici un premier théorème
+Théorème 37 Soient X et Y deux v.a. réelles. La loi µZ de Z := X + Y est
+le produit de convolution des lois µX et µY de X et Y, qui est définie par
+µZ(A) = ( µX∗ µY)(A) =
+Z
+R
+Z
+R
+1A(x + y) dµX(x) dµY(y),
+i.e. µZ(A) = R
+R2 g(z) d(µX⊗ µY)(z), où g(z) := 1A(z1 + z2) pour tout
+z∈ R2.
+Preuve: preuve admise, sera donnée en probabilités avancées. □
+Remarque : Donc cela monter que pour h : R→ R borélienne et Z =
+<<<PAGE>>>
+42
+X + Y, avec X et Y indépendantes : E[h(Z)] = R
+R2 f (z) d(µX⊗ µY)(z)
+où f (z) := h(z1 + z2) pour tout z∈ R2.
+Théorème 38 Soient X et Y deux v.a. réelles indépendantes, et Z := X + Y.
+La fonction caractéristique ϕZ est le produit de ϕX et ϕY, i.e.
+ϕZ(u) = ϕX(u)ϕY(u)∀u∈ R.
+Preuve: Prenez h(u) = eiuz dans la preuve précédente. □ Remarquons que ϕZ(u) = ϕX(u)ϕY(u)
+pour tout u ∈ R où Z := X + Y,
+n’implique pas que X et Y sont indé-
+pendantes.
+Théorème 39 Soient X et Y deux v.a.r. indépendantes, et Z = X + Y.
+Alors on a
+a) Si X admet une densité f X, alors Z admet une densité f Z donnée par
+fZ(z) =
+Z
+R
+fX(z− y) dµY(y).
+b) Si de plus Y admet une densité f Y, alors
+fZ(z) =
+Z
+R
+fX(z− y) fY(y) dy =
+Z
+R
+fX(x) fY(z− x) dx.
+Preuve: Pour montrer b), supposons a) démontré, alors on a fZ(z) =R
+R fX(z− y) dµY(y), comme dµY(y) = fY(y) dy d’où la première
+égalité de b). La seconde s’obtient en échangeant les rôles de X et Y.
+Pour montrer a), d’après le théorème 37 on a pour tout borélien
+A∈B (R) :
+µZ(A) = R
+R
+R
+R 1A(x + y) dµX(x) dµY(y), i.e. µZ(A) = R
+R
+R
+R 1A(x +
+y) fX(x) dx
+
+dµY(y), donc en posant z = x + y, on a dz = dx et
+on obtient µZ(A) = R
+R
+R
+R 1A(z) fX(z− y) dz
+
+dµY(y) et avec le
+théorème de Fubini, on obtient la réponse. □
+Théorème 40 Soient X et Y deux v.a.r. indépendantes, de carré intégrable,
+alors on a σ2
+X+Y = σ2
+X + σ2
+Y.
+Preuve: Facile □
+0.2.2 Variables aléatoires gaussiennes
+Rappelons que la loi normale que l’on désigne par la notation
+N (µ, σ2), où µ∈ R et σ2 > 0, est la probabilité sur (R,B(R)) de
+densité f définie par f (x) = 1√
+2πσ2 e− 1
+2
+  x−µ
+σ
+2
+.
+Il est commode d’étendre la classe des lois normales de façon à
+inclure le cas où σ2 = 0, de la manière suivante : on noteN (µ, 0) la
+loi égale à la masse de Dirac au point µ, i.e. la loi d’une v.a. qui est
+<<<PAGE>>>
+43
+p.s. égale à la constante µ. Cette loi n’admet pas de densité, aussi
+parle-t-on parfois de loi normale "dégénérée". La loi N (0, 1) s’appelle
+la loi normale réduite, ou standard.
+Si X est une v.a.r. de loiN (µ, σ2), sa fonction caractéristique ϕX est
+ϕX(u) = eiuµ− 1
+2 σ2u2
+pour tout u∈ R.
+Rappelons que E[X] = µ et Var(X) = σ2.
+Théorème 41 La fonction caractéristique d’une variable aléatoire X qui
+suit la loiN (µ, σ2) est donnée par ϕX(u) = eiuµ− 1
+2 u2σ2
+pour tout u∈ R.
+Preuve: à faire via le Théorème de résidu de Cauchy. □
+Théorème 42 Soit X∼N (µ, σ2) alors X et µ + σY où Y∼N (0, 1)
+suivent la même loi.
+Preuve: En effet, d’après le Théorème d’unicité, il suffit de prouver
+que ϕX(u) = ϕµ+σY(u) pour tout u∈ R. Or pour tout u∈ R, on
+a ϕµ+σY(u) = E[eiu(µ+σY)] = eiuµE[eiuσY] = eiuµe− 1
+2 (u2σ2), d’où la
+réponse. □
+Définition 24 On dit que deux v.a.r. X et Y de carré intégrable sont non
+corrélées si Cov(X, Y) := E[(X− E[X])(Y− E[Y])] = 0.
+<<<PAGE>>>
+
+<<<PAGE>>>
+9. Convergence des variables aléatoires,
+convergence en loi et applications avec
+fonctions caractéristiques
+Définition 25 On dit qu’une suite (Xn)n≥1 de v.a.r. converge presque
+sûrement vers une v.a.r. X si l’ensemble N des ω tels que la suite numérique
+(Xn(ω))n≥1 ne converge pas vers X (ω) vérifie P(N) = 0. Rappelons qu’on
+dit que N est négligeable.
+Noter qu’on a aussi Nc = Λ ={ω∈ Ω : limn→∞ Xn(ω) = X(ω)} vérifie
+P(Λ) = 1. On note la convergence presque sûre ainsi :
+limn→∞ Xn = X p .s. ou Xn→ X p.s.
+Il apparaît que la convergence presque sûre est parfois forte dans
+certaines situations, et ce pourquoi nous introduisons deux autres
+mode de convergence.
+Définition 26 On dit qu’une suite (Xn)n≥1 de v.a.r. converge dans Lp(Ω),
+où p∈ [1, ∞[, vers une v.a.r. X si les X n sont dans L p(Ω), et si on a
+limn→∞ E[|Xn− X|p] = 0.
+On dit aussi que (Xn)n converge en moyenne d’ordre p vers X, et on écrit
+Xn
+Lp(Ω)
+−−−→X
+Les cas les plus importants sont p = 1 (convergence "en moyenne") et
+p = 2 (convergence "en moyenne quadratique"). Quand p = 1, on a
+|E[Xn− X]|≤ E[|Xn− X|] et|E[|Xn|]− E[|X|]|≤ E[|Xn− X|] parce
+que||x|−| y||≤| x− y|. Donc Xn
+L1(Ω)
+−−−→X implique E[Xn]→ E[X] et
+E[|Xn|]→ E[|X|].
+De même, quand Xn
+Lp(Ω)
+−−−→X pour p∈]1, ∞[, on peut montrer que
+E[|Xn|p]→ E[|X|p].
+<<<PAGE>>>
+46
+Définition 27 On dit qu’une suite (Xn)n≥1 de v.a.r. converge en probabi-
+lité vers une v.a.r. X si
+∀ ε > 0, limn→∞ P(|Xn− X| > ε) = 0,
+ou plus simplement P(|Xn− X| > ε)→ 0 quand n→ ∞. On écrit alors
+Xn
+P− →X
+Une autre manière d’écrire les choses est la suivante :
+Xn converge en probabilité vers X lorsque,
+∀ ε, δ > 0,∃Nε,δ, n≥ N⇒ P(|Xn− X| > ε) < δ.
+Avant d’établir les rapports entre les différents modes de convergence
+on va donner un critère simple de convergence en probabilité.
+Théorème 43 On a X n
+P− →X si et seulement si limn→∞ E
+h |Xn−X|
+1+|Xn−X|
+i
+= 0.
+Preuve: On ne nuit pas à la généralité en supposant que X = 0,
+de sorte qu’il nous suffit de montrer que Xn
+P− →X équivaut à
+limn→∞ E[ |Xn|
+1+|Xn| ] = 0. Supposons d’abord que Xn
+P− →X. Pour tout ε > 0,
+on a limn→∞ P(|Xn| > ε) = 0. Mais |Xn|
+1+|Xn|≤ |Xn|
+1+|Xn| 1|Xn|>ε + ε1|Xn|≤ε≤
+1|Xn|>ε + ε, donc E[ |Xn|
+1+|Xn| ]≤ P(|Xn| > ε) + ε, en prenant les limites on
+arrive à lim supn→∞ E
+h |Xn|
+1+|Xn|
+i
+≤ ε ; comme ε est arbitrairement petit
+il vient limn→∞ E[|Xn|/(1 +|Xn|)] = 0.
+Supposons à l’inverse que limn→∞ E[|Xn|/(1 +|Xn|)] = 0. La fonction
+f (x) = x/(1 + x) est strictement croissante, donc f (ε)1|Xn|>ε ≤
+f (|Xn|)1|Xn|>ε≤ f (|Xn|). En prenant les espérances, puis les limites,
+on arrive à f (ε) limn→∞ P(|Xn| > ε)≤ limn→∞ E[ f (|Xn|)] = 0. Comme ε > 0
+est fixé, on conclut que limn→∞ P(|Xn| > ε) = 0. □ Ce théorème nous dit que Xn
+P− →X ssi
+E[ f (|Xn− X|)])→ 0 pour la fonction
+f (x) = |x|/(1 +|x|). Un examen
+soigneux de cette preuve montre
+que la même équivalence reste vraie
+pour tout fonction f sur [0, ∞[ qui est
+bornée, strictement croissante, continue,
+nulle en 0. Par exemple, Xn
+P− →X
+ssi E[|Xn− X|∧ 1]→ 0, et aussi ssi
+E[arctan(|Xn− X|)]→ 0.
+Le théorème suivant nous indique que la convergence en probabi-
+lité est le mode convergence le plus faible introduit jusqu’à présent.
+Théorème 44 Soit (Xn)n≥1 une suite de v.a.r.
+a) Si X n
+Lp(Ω)
+−−−→X, alors on a X n
+P− →X,
+b) Si X n→ X p.s., alors on a X n
+P− →X.
+Preuve: Pour a) : P(|Xn− X| > ε)≤ 1
+εp E[|Xn− X|p]→ 0 quand
+n→ ∞ (pour ε > 0 fixé), d’où le résultat.
+Pour b) : Posons f (x) =|x|/(1 +|x|), alors on a f (Xn− X)≤ 1, et
+donc limn→∞ E[ f (|Xn− X|)] = E[ limn→∞ f (|Xn− X|)] = E[0] = 0, grâce au
+<<<PAGE>>>
+47
+théorème de convergence dominée de Lebesgue. □ Attention les
+réciproques sont fausses en général.
+Par contre il existe des réciproques "partielles" :
+Théorème 45 Supposons que Xn
+P− →X. Il existe alors une sous-suite
+(nk)k∈N∗∈ N∗N∗
+telle que X nk→ X p.s. lorsque k→ ∞.
+Preuve: f (x) :=|x|/(1 +|x|), on a limn→∞ E[ f (Xn− X)] = 0 par un
+théorème précédent et donc on peut trouver suite d’entiers nk telle
+que E[ f (Xnk− X)] < 1/2k. On a alors ∑∞
+k=1 E[ f (Xnk− X)] < ∞, donc
+∑∞
+k=1 f (Xnk− X) < ∞ p.s. et donc limn→∞|Xnk− X| = 0 p.s. □
+Théorème 46 Supposons que Xn
+P− →X et que|Xn| ≤Y pour tout n, où
+Y∈ Lp(Ω) pour p∈ [1, ∞[. On a alors X∈ Lp(Ω) et Xn
+Lp(Ω)
+−−−→X
+Preuve: Xn ∈ Lp et pour tout ε > 0, P(|X| > Y + ε)≤ P(|X−
+Xn| > ε) et donc en passant à la limite on obtient P(|X| > Y + ε)≤
+limn . . . = 0, ceci étant vrai pour tout ε > 0 on obtient P(|X| >
+Y) ≤ limm→∞ P(|X| > Y + 1
+m ) = 0, et donc|X| ≤Y p.s. et donc
+X∈ Lp(Ω). Supposons maintenant que (Xn)n ne converge pas vers X
+dans Lp. Il existe alors une suite d’entier strictement croissante nk et
+un ε > 0 tels que E[|Xnk− X|p]≥ ε pour tout k. La sous-suite (Xnk )k
+converge évidemment vers X en probabilité, donc elle admet (d’après
+le théorème précédent) une sous-sous-suite (Xnk j )j qui converge p.s.
+vers X. Donc (Xnk j− X)j converge p.s. vers 0, tout en restant majorées
+en valeurs absolue par 2Y : une application du théorème de Lebesgue
+donne alors que E[|Xnk j− X|p]→ 0, en contradiction avec le fait que
+E[|Xnk− X|p]≥ ε pour tout k. □
+Le théorème suivant est facile, mais utile
+Théorème 47 Soit f une fonction continue.
+a) Si X n→ X p.s., alors f (Xn)→ f (X) p.s.
+b) Si X n
+P− →X, alors f (Xn) P− →f (X).
+Preuve: voir la page 153 de 1. □
+<<<PAGE>>>
+48
+0.2.3 convergence en loi
+Définition 28 Soit µn et µ deux probabilités sur (R,B(R)). On dit que
+(µn)n converge étroitement vers µ si (R
+R f (x) dµn(x))n converge versR
+R f (x) dµ(x) pour toute fonction f réelle continue et bornée.
+Définition 29 Soit (Xn)n et X des v.a.r. On dit que (Xn)n converge en loi
+vers X si (PXn )n converge étroitement vers PX, et on écrit X n
+Loi−→X.
+Remarque : les Xn et X ne sont pas forcément définies sur un même
+espace de probabilité, puisque seul leurs lois jouent le rôle dans la
+définition.
+Théorème 48 Soit (Xn)n et X des v.a.r. On a X n
+Loi−→X ssi
+limn→∞ E[ f (Xn)] = E[ f (X)]
+pour toute fonction réelle f continue et bornée sur R.
+Preuve: Il suffit de combiner les deux définitions précédentes et
+d’observer que E[ f (Xn)] = R
+R f (x) dPX(x) et E[ f (X)] = R
+R f (x) dPX(x).
+□
+Pour avoir la convergence p.s. ou dans Lp ou en probabilité les v.a.
+Xn et X doivent être définies sur le même espace de probabilité. Donc
+a priori la convergence en loi n’est pas comparable aux autres. On a
+cependant le résultat suivant :
+Théorème 49 Soient (Xn)n et X des v.a.r. toutes définies sur le même
+espace de probabilité (Ω,A, P). Si (Xn)n converge vers X en probabilité,
+alors Xn converge aussi vers X en loi.
+Preuve: Soit f une fonction réelle bornée et continue sur R. Le
+théorème 47 implique que f (Xn) converge vers f (X) en probabilité
+également. Comme f est bornée, cette convergence a aussi lieu dans
+L1 (théorème 46). Donc limn→∞ E[ f (Xn)] = E[ f (X)], et le théorème
+précédent donne le résultat. □
+Théorème 50 Soit (Xn)n et X des v.a. définies sur le même espace de
+probabilité (Ω,A, P). Si (Xn)n converge en loi vers X et si de plus X est
+p.s. constante, alors (Xn)n converge vers X en probabilité.
+Preuve: Supposons que X = a p.s. La fonction f (x) = |x− a|/(1 +
+|x− a|) étant bornée et continue, on a limn→∞ E[ f (Xn− a)] = 0, et donc
+<<<PAGE>>>
+49
+Xn
+P− →X en vertu du théorème 43 □
+Théorème 51 Soient (Xn)n et X des v.a.r.
+a) Si Xn
+Loi−→ X alors limn→∞ FXn (x) = FX(x) pour tout x appartenant à un
+sous-ensemble dense de R, donné par D ={x∈ R, FX(x−) = FX(x)},
+i.e. FX est continue pour x ∈ D, qui est appelé l’ensemble des points de
+continuité de la fonction FX.
+b) Supposons que limn→∞ FXn (x) = FX(x) pour tout x appartenant à un sous-
+ensemble dense de R. Alors X n
+Loi−→X.
+Preuve: Voir la page 159 de 1. Remarquez que D⊂ R est dense dans
+R puisque Dc est dénombrable. □
+Théorème 52 (Théorème de Continuité de P . Lévy) Soit (µn)n≥1 une
+suite de probabilités sur (R,B(R)), et ( ˆµn)n la suite de leurs transformées
+de Fourier (ou fonction caractéristiques).
+a) Si (µn)n converge étroitement vers une probabilité µ (ou Xn
+Loi−→ X, i.e.
+(PXn )n converge étroitement vers PX) alors ( ˆµn)n converge simplement
+vers la transformée de Fourier ˆµ (ou ϕXn→ ϕX)
+b) Si ( ˆµn)n converge simplement vers une fonction f , et si de plus cette
+fonction est continue au point 0, alors il existe une probabilité µ sur
+(R,B(R)) t.q. ˆµ = f , et (µn)n converge étroitement vers µ.
+Preuve: voir le Théorème 19.1. qui se trouve à la page 173 de 1. □
+<<<PAGE>>>
+
+<<<PAGE>>>
+10. Loi des grands nombres et le théorème-
+limite central
+0.2.4 La loi des grands nombres
+Théorème 53 (Loi forte des grands nombres) Soit (Xn)n∈N∗ une suite
+de v.a.r. i.i.d. de carré intégrables avec µ := E[X1] et σ2 = σ2
+X1
+< ∞. Soit
+Sn := ∑n
+i=1 Xi. On a alors
+limn→∞
+Sn
+n = µ p.s. et dans L 2(Ω).
+Preuve: Voir le Théorème 20.1. de la page 179 de 1. □
+Théorème 54 (Loi des grands nombres de Kolmogorov) Soit
+(Xn)n∈N∗ une suite de v.a.r. i.i.d. et soit µ∈ R.
+limn→∞
+Sn
+n = µ p.s.⇔ E[X1] = µ.
+Dans ce cas, la convergence a aussi lieu dans L 1(Ω).
+Théorème 55 (Théorème-limite central-version 1) Soit (Xn)n∈N∗ une
+suite de v.a.r. i.i.d. avec E[X1] = µ et Var(X1) = σ2 > 0.
+Alors
+  Sn−nµ
+σ√n
+
+n converge en loi vers une v.a. X∼N (0, 1).
+Preuve: Voir Théorème 21.1. de la page 187 de 1. □
+Théorème 56 (Théorème-limite central-version 1) Soit (Xn)n∈N∗ une
+suite de v.a.r. indépendantes. Supposons que E[Xn] = 0 pour tout n∈ N∗.
+Supposons que ∑j E[|Xj|2+ε] < ∞ et ∑∞
+n=1 σ2
+n = ∞ pour un ε > 0. Alors
+Snq
+∑n
+j=1 σ2
+j
+Loi−−−→n→∞ vers une v.a. X∼N (0, 1).
+—————————————————————————————-
+<<<PAGE>>>
+
+<<<PAGE>>>
+Bibliographie
+Jean Jacod and Philip Protter. Probability Essentials. Springer, Berlin,
+2nd edition, 2003. ISBN 978-3-540-43188-4.
+Aurel Spataru. Analysis of Probability. Academic Press, Oxford, UK,
+2013. ISBN 978-0-12-401665-4. URL https://www.amazon.fr/
+Analysis-Probability-Aurel-Spataru/dp/0124016650 .
+Z. Łomnicki and Stanisław Ulam. Sur la théorie de la mesure dans les
+espaces combinatoires et son application au calcul des probabilités.
+i. variables indépendantes. Fundamenta Mathematicae, 23(1) :237–278,
+1934. ISSN 0016-2736. URL http://eudml.org/doc/212724.

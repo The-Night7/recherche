@@ -1,0 +1,127 @@
+TP – Compilation séparée
+ING1 – Programmation C
+Préambule
+Maintenant, nous allons utiliser le principe de la compilation separée. C’est-a-dire que pour
+chaque fichier C que vous allez écrire, il faudra créer le fichier en-tête correspondant. C’est ce
+qu’on appelle le principe de la programmation modulaire.
+L ’ensemble du TP formera un seul programme. Les différentes fonctionnalités traitées devront
+être accessible via un menu. Pour vous aider à bien découper votre code, l’ensemble des fonc-
+tionnalités sont déjà pré-découpées en module. Plus vous découperez le problème en plusieurs
+fonctions, plus votre code sera lisible et moins vous aurez d’erreurs.
+Remarques :
+— La fonction puissance et racine existent déjà en C et s’appellent respectivement pow et
+sqrt 1. Attention de ne pas oublier de compiler avec l’option -lm.
+— Lorsque l’on souhaite introduire du hasard dans un programme, on utilise un générateur
+de nombre “aléatoire2” . Ce générateur est en réalité une congruence linéaire :
+Xn+1 = (a Xn + b)%m
+Les nombres a, b et m sont fixés à l’avance. Lorsqu’on demande à l’ordinateur de nous don-
+ner un nombre aléatoire 3, il calcule en fait le terme suivant de la suite. Par défaut X0 pos-
+sède la même valeur à chaque lancement de programme. Ce qui fait que la suite générée est
+toujours la même. La fonction srand permet d’initialiser le générateur. Bien sûr, cela n’est
+à faire qu’une seule fois dans un programme. En général, on utilise srand(time(NULL));
+pour initialiser le générateur. La fonction time(NULL) retourne le nombre de secondes de-
+puis l’Epoch qui représente la date initiale à partir de laquelle est mesuré le temps par les
+systèmes d’exploitations. Sous UNIX, c’est le 1er janvier 1970.
+1. Pour plus d’information : man pow et man sqrt
+2. En fait il s’agit d’un générateur pseudo-aléatoire. Par définition, le hasard est incalculable.
+3. via la fonction rand
+CY Tech – E. Ranisavljevi´ c 1/3
+<<<PAGE>>>
+TP – Compilation séparée
+Approximation de π
+1 Aire d’un disque par quadrillage
+π peut être obtenu à partir d’un cercle, si son rayon et son aire sont connus, en utilisant
+la relation :
+A = πr 2
+Si un cercle de rayon r avec son centre situé en (0,0), tout point dont la distance à l’ori-
+gine est inférieure à r sera situé dans le disque. Les carrés dont le centre se trouve à
+l’intérieur ou exactement à la limite du cercle peuvent ensuite être comptés en testant si,
+pour chaque point (x, y), q
+x2 + y 2 ≤ r.
+Le nombre total de point satisfaisant cette condition se rapproche ainsi de l’aire du
+cercle, qui peut ensuite être utilisée pour calculer une approximation de π.
+Écrivez la fonction qui permet d’effectuer une approximation de π en utilisant cette mé-
+thode empirique. La fonction prendra en paramètre le nombre n de points ( x, y) à tirer
+aléatoirement et retournera la valeur de π calculée. □
+2 Madhava de Sangamagrama
+Vers 1400, Madhava de Sangamagrama trouve une série permettant de calculerπ, la pre-
+mière :
+π = 4
+∞X
+k=0
+(−1)k
+2k + 1
+Écrivez la fonction qui permet d’effectuer une approximation deπ en utilisant cette série.
+La fonction prendra en paramètre le nombre d’itération n et retournera la valeur de π
+calculée. □
+3 John Wallis
+En 1655, John Wallis met en évidence une autre formule permettant de calculer π :
+π
+2 =
+∞Y
+k=1
+(2k)2
+(2k)2 − 1
+Écrivez la fonction qui permet d’effectuer une approximation deπ en utilisant cette série.
+La fonction prendra en paramètre le nombre d’itération n et retournera la valeur de π
+calculée. □
+CY Tech – E. Ranisavljevi´ c 2/3
+<<<PAGE>>>
+TP – Compilation séparée
+Approximation de
+p
+2
+4 Isaac Newton
+La méthode de Newton appliquée à la fonction racine carrée permet de calculer une
+valeur approchée de
+p
+2 de manière itérative avec une convergence quadratique. La ré-
+currence a la forme :
+un+1 = un
+2 + 1
+un
+, u0 = 1
+Écrivez la fonction qui permet d’effectuer une approximation de
+p
+2 en utilisant cette
+suite. La fonction prendra en paramètre le nombre d’itération n et retournera la valeur
+de
+p
+2 calculée. □
+5 Edmund Halley
+La méthode de Halley cherche le zéro de f (x) = x2 − 2 en utilisant les deux premières
+dérivées. La solution itérative est :
+xn+1 = xn × x2
+n + 6
+3x2
+n + 2
+, x0 = 1
+Écrivez la fonction qui permet d’effectuer une approximation de
+p
+2 en utilisant cette
+formule. La fonction prendra en paramètre le nombre d’itérationn et retournera la valeur
+de
+p
+2 calculée. □
+6 Méthode de Théon de Smyrne
+On doit à Théon de Smyrne ces deux suites (pn) et (qn) définies par récurrence :
+pn+1 = pn + 2qn, p0 = 1
+qn+1 = pn + qn, q0 = 1
+Ces suites sont à valeur entière strictement positive, donc strictement croissantes par
+récurrence, et vérifient p2
+n − 2q2
+n = (−1)n(p2
+0 − 2q2
+0) de sorte que pn
+qn
+tend vers
+p
+2.
+Écrivez la fonction qui permet d’effectuer une approximation de
+p
+2 en utilisant ces
+suites de Théon. La fonction prendra en paramètre le nombren d’itération et retournera
+la valeur de
+p
+2 calculée. □
+CY Tech – E. Ranisavljevi´ c 3/3

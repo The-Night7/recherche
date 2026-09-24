@@ -1,0 +1,80 @@
+S´ erie d’exercices No2
+2019-2020
+Objet de la s´ erie: Enregistrements et tableaux
+1 G´ eom´ etrie
+On consid` ere des points ` a coordonn´ ees r´ eelles dans un espace ` a deux dimensions.
+— D´ eﬁnir un type point.
+— ´Ecrire une fonction qui calcule les coordonn´ ees d’un vecteur ` a partir de ses deux
+extr´ emit´ es.
+— ´Ecrire une fonction qui calcule le produit scalaire de deux vecteurs.
+— ´Ecrire une fonction qui calcule la ”norme sign´ ee” du produit vectoriel de deux
+vecteurs.
+— ´Ecrire une fonction qui v´ eriﬁe si un triangle d´ eﬁni par 3 sommets contient (stric-
+tement) l’origine du rep` ere. (c’est le probl` eme 102 du Project Euler https://
+projecteuler.net/problem=102)
+2 Algorithme de tri avec 3 valeurs
+On consid` ere un tableau de nombres entiers appartenant ` a l’ensemble{0, 1, 2}. Notre
+objectif est de trier un tel tableau en utilisant la m´ ethode suivante :
+1. On d´ ecompose le tableau en 4 zones, la premi` ere ne contient que des 0, la deuxi` eme
+que des 1, la quatri` eme que des 2. La troisi` eme zone contient les ´ el´ ements non tri´ es.
+2. Au d´ epart les premi` ere, deuxi` eme, et quatri` eme zones sont vides.
+3. Trier le tableau revient ` a trier la troisi` eme zone (d´ elimit´ ee par les indicesj et k).
+Pour cela, on parcourt s´ equentiellement de gauche ` a droite cette troisi` eme zone.
+Pour l’´ el´ ement courant x de cette zone, trois cas se pr´ esentent :
+(a) si x = 1 : il suﬃt d’accroˆ ıtre la zone des 1,
+(b) si x = 2 : le permuter avec l’´ el´ ement le plus ` a droite de la zone non tri´ ee et
+accroˆ ıtre la zone des 2,
+(c) si x = 0 : le permuter avec l’´ el´ ement le plus ` a gauche de la zone des 1, accroˆ ıtre
+la zone des 0 et d´ ecaler la zone des 1.
+Il vous est demand´ e de :
+1. Faire tourner l’algorithme ` a la main sur le jeu d’essai (0; 2; 1; 0; 0; 2; 2; 1; 0; 0; 1; 1).
+1
+<<<PAGE>>>
+2. ´Ecrire une proc´ edure permettant ` a l’utilisateur de saisir un tel tableau.
+3. ´Ecrire une proc´ edure permettant de trier un tel tableau ` a l’aide de l’algorithme
+d´ ecrit ci-dessus.
+4. ´Ecrire une proc´ edure d’aﬃchage d’un tableau d’entiers.
+5. ´Ecrire l’algorithme principal.
+3 Tri par comptage
+Il vous est demand´ e d’´ ecrire un algorithme mettant en oeuvre le tri par comptage
+dont le principe est le suivant :
+— Soit T le tableau ` a trier.
+— Pour connaˆ ıtre la position de l’´ el´ ementT [i] dans le tableau tri´ e, nous devons
+compter le nombre de valeurs inf´ erieures ` aT [i].
+4 Op´ erations simples sur les matrices
+´Ecrire les algorithmes correspondant aux op´ erations suivantes :
+1. Calcul de l’addition de deux matrices.
+2. Calcul de la somme des ´ el´ ements diagonaux d’une matrice.
+3. Calcul du produit de de deux matrices.
+5 Traitement d’images et convolutions
+On consid` ere dans cet exercice des images binaires, c’est-` a-dire, des images repr´ esent´ ees
+par des matrices dont les ´ el´ ements (on dit les pixels) valent 0 ou 1.
+1. ´Ecrire un algorithme permettant de saisir une image, de d´ etecter les points de
+cette image qui forment le contour (voir d´ eﬁnition ci-dessous) puis d’aﬃcher une
+image r´ eduite ` a ce contour.
+2. ´Ecrire un algorithme permettant de calculer le produit de convolution d’une image
+I avec un ’template’ (une image plus petite) T (voir d´ eﬁnition de la convolution
+ci-dessous).
+D´ eﬁnition 5.1Un pixel appartient au contour s’il est noir (vaut 1) et que au moins l’un
+de ses voisins est blanc (vaut 0).
+D´ eﬁnition 5.2´Etant donn´ es une imageI de taille n× n et un template de taille m× m
+avec m < n , le produit de convolution de I par T est donn´ e par le tableauConv de taille
+n− m× n− m d´ eﬁni par :
+Conv[i, j] =∑
+u=1,..,m
+∑
+v=1,..,m T [u, v]∗ I[i + u, j + v]
+2
+<<<PAGE>>>
+6 Tableaux d’enregistrements
+1. D´ eﬁnir un enregistrement destin´ e ` a d´ ecrire un ´ etudiant ` a l’aide de son nom, son
+pr´ enom et sa moyenne.
+2. ´Ecrire un algorithme permettant de calculer et d’aﬃcher les moyennes d’un groupe
+de 20 ´ etudiants. Pour cela on proc´ edera comme suit :
+(a) l’utilisateur saisit le nombre de notes nbnotes dont on calculera la moyenne,
+(b) pour chaque ´ etudiant, l’utilisateur saisit les nbnotes qu’il a obtenues, ensuite
+l’algorithme calcule la moyenne de cet ´ etudiant,
+(c) ` a la ﬁn l’algorithme aﬃche pour chaque ´ etudiant son nom, son pr´ enom et sa
+moyenne.
+3. Reprendre le mˆ eme exercice en triant les ´ etudiants par moyenne.
+3

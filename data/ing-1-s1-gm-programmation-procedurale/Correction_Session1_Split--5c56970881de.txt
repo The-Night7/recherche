@@ -1,0 +1,281 @@
+CORRECTION - SESSION #1
+Programmation Procédurale - ING1 Semestre 1 2024/2025
+Exercice 1 : Makefile & Co. [3.0 pts]
+1. Quelles sont les principales parties d'une règle dans un Makefile ?
+Une règle dans un Makefile se compose de trois parties principales :
+ Cible (target) : le fichier à créer ou l'action à exécuter
+ Dépendances (dependencies) : les fichiers dont dépend la cible
+ Commandes (commands) : les instructions pour créer la cible
+Syntaxe générale :
+2. Quelle est la règle par défaut dans un Makefile lorsqu'aucune cible n'est spécifiée ?
+La règle par défaut est la première règle définie dans le Makefile (en ignorant les règles commençant par
+un point).
+Lorsqu'on tape simplement make sans argument, c'est cette première cible qui sera construite.
+Exemple : Si la première règle est all: prog1 prog2, alors make construira prog1 et prog2.
+3. Pourquoi est-il important d'utiliser des fichiers objets (.o) plutôt que de compiler directement un
+exécutable depuis les fichiers sources ?
+L'utilisation de fichiers objets (.o) présente plusieurs avantages majeurs :
+ Compilation incrémentale : seuls les fichiers modifiés sont recompilés
+ Gain de temps : pour un gros projet, on évite de tout recompiler à chaque modification
+ Modularité : chaque module peut être compilé indépendamment
+ Détection d'erreurs : les erreurs sont isolées par module
+ Réutilisation : les fichiers objets peuvent être utilisés dans plusieurs programmes
+Exemple : Si on a 100 fichiers .c et qu'on modifie seulement 1 fichier, on ne recompile que ce fichier en .o,
+puis on relie tous les .o. Sans fichiers objets, il faudrait tout recompiler !
+4. Quelles sont les principales variables pré-définies dans make, et que contiennent-elles comme
+valeurs ?
+Les principales variables automatiques de make sont :
+ $@ : nom de la cible actuelle
+ $< : nom de la première dépendance
+ $^ : liste de toutes les dépendances (sans doublons)
+ $? : liste des dépendances plus récentes que la cible
+ $* : partie commune du nom (stem) dans une règle pattern
+Il existe aussi des variables standards :
+ CC : compilateur C (généralement "gcc")
+ CFLAGS : options de compilation
+
+<<<PAGE>>>
+ LDFLAGS : options de l'éditeur de liens
+5. Comment make décide-t-il si une cible doit être reconstruite ?
+Make utilise les dates de modification des fichiers pour décider :
+Une cible est reconstruite si :
+ La cible n'existe pas
+ Une des dépendances est plus récente que la cible (timestamp plus récent)
+ Une des dépendances a été modifiée
+Algorithme :
+1. Make vérifie récursivement toutes les dépendances
+2. Compare les dates de modification
+3. Reconstruit si nécessaire en remontant l'arbre de dépendances
+Exception : Les cibles .PHONY sont toujours reconstruites (elles n'ont pas de fichier physique).
+6. Que fait la directive .PHONY ? Pourquoi est-il recommandé de l'utiliser pour certaines cibles ?
+.PHONY déclare des cibles qui ne correspondent pas à des fichiers réels.
+Utilité :
+ Évite les conflits si un fichier a le même nom que la cible
+ Force l'exécution de la règle à chaque appel
+ Clarifie l'intention du code
+Exemple typique : .PHONY: clean all install test
+Problème sans .PHONY :
+Si un fichier nommé "clean" existe dans le répertoire, make clean ne s'exécutera pas car make pensera
+que la cible "clean" est à jour !
+Avec .PHONY : la commande s'exécute toujours, même si un fichier "clean" existe.
+
+<<<PAGE>>>
+Exercice 2 : Fonction 'split' [17.5 pts]
+1. Procédure copy(...) [2.8 pts]
+ void copy(const char *source, char *destination, int maxChars) {
+    int i = 0;
+    
+    // Copier jusqu'à la fin de source OU jusqu'à maxChars
+    while (i < maxChars && source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    
+    // Ajouter le terminateur de chaîne
+    destination[i] = '\0';
+}
+Explications :
+ On copie caractère par caractère avec une boucle
+ Deux conditions d'arrêt : atteindre maxChars OU rencontrer '\0'
+ Important : toujours terminer par '\0' pour avoir une chaîne valide
+ const sur source : indique qu'on ne modifie pas la source
+2. Fonction nbOccurs(...) [2.8 pts]
+ int nbOccurs(const char *chaine, char caractere) {
+    int compteur = 0;
+    int i = 0;
+    
+    // Parcourir toute la chaîne
+    while (chaine[i] != '\0') {
+        if (chaine[i] == caractere) {
+            compteur++;
+        }
+        i++;
+    }
+    
+    return compteur;
+}
+Explications :
+ Parcours complet de la chaîne jusqu'au '\0'
+ Incrémenter le compteur à chaque occurrence du caractère recherché
+ Retourner le nombre total d'occurrences
+Exemple : nbOccurs("123;4;abc;;xyz", ';') retourne 4
+
+<<<PAGE>>>
+3. Fonction getFirstSubStringLen(...) [2.45 pts]
+ int getFirstSubStringLen(const char *chaine, char separateur) {
+    int longueur = 0;
+    
+    // Compter les caractères avant le premier séparateur
+    while (chaine[longueur] != '\0' && chaine[longueur] != separateur) {
+        longueur++;
+    }
+    
+    return longueur;
+}
+Explications :
+ On compte les caractères jusqu'à rencontrer le séparateur ou la fin de chaîne
+ Si le séparateur est en première position, on retourne 0
+ Si le séparateur n'existe pas, on retourne la longueur totale de la chaîne
+Exemples :
+ getFirstSubStringLen("123;4;abc", ';') → 3
+ getFirstSubStringLen(";123;4", ';') → 0
+ getFirstSubStringLen("123456", ';') → 6
+
+<<<PAGE>>>
+4. Fonction splitString(...) [5.95 pts]
+ char** splitString(const char *chaine, char separateur, int *taille) {
+    // 1. Calculer le nombre de sous-chaînes (nb séparateurs + 1)
+    int nbSousChaines = nbOccurs(chaine, separateur) + 1;
+    *taille = nbSousChaines;
+    
+    // 2. Allouer le tableau de pointeurs
+    char **tableau = (char**)malloc(nbSousChaines * sizeof(char*));
+    if (tableau == NULL) {
+        return NULL;
+    }
+    
+    // 3. Parcourir et découper la chaîne
+    const char *debut = chaine;  // Pointeur sur le début de la sous-chaîne
+    int index = 0;
+    
+    while (index < nbSousChaines) {
+        // Trouver la longueur de la sous-chaîne actuelle
+        int len = getFirstSubStringLen(debut, separateur);
+        
+        // Allouer la mémoire pour la sous-chaîne (+1 pour '\0')
+        tableau[index] = (char*)malloc((len + 1) * sizeof(char));
+        if (tableau[index] == NULL) {
+            // Libérer ce qui a déjà été alloué
+            for (int i = 0; i < index; i++) {
+                free(tableau[i]);
+            }
+            free(tableau);
+            return NULL;
+        }
+        
+        // Copier la sous-chaîne
+        copy(debut, tableau[index], len);
+        
+        // Avancer le pointeur (passer le séparateur)
+        debut += len;
+        if (*debut == separateur) {
+            debut++;  // Sauter le séparateur
+        }
+        
+        index++;
+    }
+    
+    return tableau;
+}
+Algorithme détaillé :
+Étape 1 : Compter le nombre de sous-chaînes
+ Nombre de sous-chaînes = nombre de séparateurs + 1
+ Exemple : "a;b;c" → 2 séparateurs → 3 sous-chaînes
+Étape 2 : Allouer le tableau de pointeurs
+ Chaque case contiendra l'adresse d'une sous-chaîne
+ Vérifier que malloc a réussi
+Étape 3 : Découper et copier chaque sous-chaîne
+ Pour chaque sous-chaîne :
+1. Calculer sa longueur avec getFirstSubStringLen()
+2. Allouer la mémoire nécessaire (longueur + 1 pour '\0')
+3. Copier les caractères avec copy()
+4. Avancer le pointeur au-delà du séparateur
+Gestion des erreurs :
+ Si une allocation échoue, libérer toutes les allocations précédentes
+ Retourner NULL en cas d'erreur
+Cas particulier : Les séparateurs consécutifs créent des chaînes vides
+ "a;;b" → ["a", "", "b"]
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+5. Programme principal [3.5 pts]
+ #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// ... (toutes les fonctions précédentes) ...
+int main() {
+    char chaine[256];
+    int taille;
+    
+    // Demander la chaîne à l'utilisateur
+    printf("Entrez une chaîne sans espace : ");
+    scanf("%s", chaine);
+    
+    // Appeler splitString avec ';' comme séparateur
+    char **tableau = splitString(chaine, ';', &taille);
+    
+    if (tableau == NULL) {
+        printf("Erreur d'allocation mémoire\n");
+        return 1;
+    }
+    
+    // Afficher le résultat au format demandé : ['...', '...', ...]
+    printf("[");
+    for (int i = 0; i < taille; i++) {
+        printf("'%s'", tableau[i]);
+        if (i < taille - 1) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+    
+    // Libération mémoire (bonus, non demandé)
+    for (int i = 0; i < taille; i++) {
+        free(tableau[i]);
+    }
+    free(tableau);
+    
+    return 0;
+}
+Test avec l'exemple donné :
+Entrée : 123;4;abcdefg;;wxyz
+Sortie attendue : ['123', '4', 'abcdefg', '', 'wxyz']
+Points importants :
+ Utilisation de scanf pour lire une chaîne sans espaces
+ Vérification du retour de splitString
+ Formatage correct de l'affichage avec crochets et guillemets simples
+ Gestion des virgules (pas de virgule après le dernier élément)
+ La libération mémoire est un bonus (non demandée dans l'énoncé)
+
+<<<PAGE>>>
+Récapitulatif des points clés
+1. Manipulation de chaînes en C :
+ Toujours terminer par '\0'
+ Utiliser des boucles avec condition sur '\0'
+ Attention aux débordements de buffer
+2. Allocation dynamique :
+ Toujours vérifier le retour de malloc
+ Libérer en cas d'erreur partielle
+ Calculer la taille exacte nécessaire
+3. Architecture modulaire :
+ Décomposer en fonctions simples et réutilisables
+ Chaque fonction a une responsabilité unique
+ Les fonctions simples servent à construire les fonctions complexes
+4. Gestion d'erreurs robuste :
+ Retourner NULL en cas d'échec
+ Nettoyer les ressources allouées
+ Ne jamais laisser de fuites mémoire
+Barème détaillé
+Exercice
+Partie
+Points
+Exercice 1
+Questions théoriques Makefile
+3.0 pts
+Exercice 2
+copy(...)
+2.8 pts
+nbOccurs(...)
+2.8 pts
+getFirstSubStringLen(...)
+2.45 pts
+splitString(...)
+5.95 pts
+Programme principal
+3.5 pts
+<b>Total Exercice 2</b>
+<b>17.5 pts</b>
+<b>TOTAL EXAMEN</b>
+<b>20.5 pts</b>
+Document créé pour la préparation aux examens ING1 - CY Tech

@@ -1,0 +1,204 @@
+Algèbre Linéaire Appliquée
+Corrigé Détaillé du TD5
+Méthodes directes (LU, Cholesky, Matrices creuses)
+Pour les étudiants ING1-GM
+Année 2025-2026
+Exercice 22 : Résolution d’un système triangulaire inférieur
+Question :Écrire l’algorithme de résolution d’un système triangulaire inférieurLx=b.
+Rappel du Cours
+Un système est dittriangulaire inférieursi tous les coefficients au-dessus de la diagonale
+sont nuls (lij = 0sij > i). Le système s’écrit :
+
+
+l11 0. . .0
+l21 l22 . . .0
+... ... ... ...
+ln1 ln2 . . . l nn
+
+
+
+
+x1
+x2
+...
+xn
+
+ =
+
+
+b1
+b2
+...
+bn
+
+
+La méthode utilisée est ladescente(ou substitution avant).
+Point Pédagogique (Le "Pourquoi")
+Pourquoi cet algorithme ?On ne cherche pas à inverser la matriceL(trop coûteux).
+On exploite la structure : la première ligne ne contient qu’une seule inconnue (x 1), la
+deuxième en contient deux (x 1, x2), etc. On peut donc calculer les inconnues une par
+une, dans l’ordre croissant des indices.
+Solution Détaillée
+Écrivons la ligneidu système :
+li1x1 +l i2x2 +···+l iixi =b i
+On cherche à calculerx i. On suppose quex 1, . . . , xi−1 ont déjà été calculés aux étapes
+précédentes. On isolex i :
+liixi =b i−
+i−1X
+j=1
+lijxj
+| {z }
+Termes connus
+=⇒x i = 1
+lii
+
+bi−
+i−1X
+j=1
+lijxj
+
+
+Algorithme :
+Entrées :L(matricen×ntriangulaire inf.),b(vecteur taillen)
+Sortie :x(vecteur solution)
+1
+<<<PAGE>>>
+foriallant de 1 àndo
+S←0
+forjallant de 1 ài−1do
+S←S+L ij×x j ▷Somme des termes déjà connus
+end for
+ifL ii = 0then
+Erreur :Matrice non inversible (pivot nul)
+else
+xi←(b i−S)/L ii
+end if
+end for
+2
+<<<PAGE>>>
+Exercice 23 : Factorisation LU et Pivotage
+Question :RésoudreAx=bavecA=
+
+
+0 3 1
+4 1 1
+2 2 4
+
+ etb=
+
+
+1
+5
+6
+
+ par factorisation LU.
+Point Pédagogique (Le "Pourquoi")
+Problème critique :Regardez le coefficienta 11 = 0. La méthode du pivot de Gauss (et
+donc la factorisation LU standard) nécessite de diviser par le pivot pour éliminer les
+termes sous la diagonale. Ici, on ne peut pas diviser par 0.
+Solution :Il faut effectuer unpivotage partiel, c’est-à-dire échanger la ligne 1 avec une
+autre ligne pour amener un coefficient non nul (et idéalement le plus grand possible en
+valeur absolue) sur la diagonale.
+Solution Détaillée
+Étape 1 : Permutation (Pivotage)On regarde la 1ère colonne :|0|,|4|,|2|. Le maximum
+est 4 (ligne 2). On échangeL 1 etL 2.
+P A=
+
+
+4 1 1
+0 3 1
+2 2 4
+
+ , P b=
+
+
+5
+1
+6
+
+
+La matrice de permutation estP=
+
+
+0 1 0
+1 0 0
+0 0 1
+
+.
+Étape 2 : Élimination de Gauss (Factorisation LU de PA)
+—Colonne 1 :Pivot = 4.
+— On veut annuler le 2 en position (3,1). Multiplicateurl 31 = 2
+4 = 0.5.
+— Opération :L 3←L 3−0.5L 1 =⇒(2,2,4)−(2,0.5,0.5) = (0,1.5,3.5).
+— Matrice courante :
+
+
+4 1 1
+0 3 1
+0 1.5 3.5
+
+.
+—Colonne 2 :Pivot = 3.
+— On veut annuler le 1.5 en position (3,2). Multiplicateurl 32 = 1.5
+3 = 0.5.
+— Opération :L 3←L 3−0.5L 2 =⇒(0,1.5,3.5)−(0,1.5,0.5) = (0,0,3).
+Étape 3 : Construction de L et U
+U=
+
+
+4 1 1
+0 3 1
+0 0 3
+
+ (Matrice finale triangulaire sup.)
+L=
+
+
+1 0 0
+0 1 0
+0.5 0.5 1
+
+ (Diagonale de 1 et multiplicateurs stockés)
+Étape 4 : Résolution deLU x=P bOn posey=U x. On résout d’abordLy=P b=
+(5,1,6) T (descente) :
+—y 1 = 5
+—y 2 = 1
+—y 3 = 6−0.5(5)−0.5(1) = 6−2.5−0.5 = 3
+On résout ensuiteU x=y= (5,1,3) T (remontée) :
+3
+<<<PAGE>>>
+—3x 3 = 3 =⇒x 3 = 1
+—3x 2 +x 3 = 1 =⇒3x 2 + 1 = 1 =⇒3x 2 = 0 =⇒x 2 = 0
+—4x 1 +x 2 +x 3 = 5 =⇒4x 1 + 0 + 1 = 5 =⇒4x 1 = 4 =⇒x 1 = 1
+Conclusion
+La solution estx= (1,0,1) T .Vérification :A·x=
+
+
+0
+4
+2
+
+·1 +
+
+
+3
+1
+2
+
+·0 +
+
+
+1
+1
+4
+
+·1 =
+
+
+1
+5
+6
+
+ =b.
+Correct.
+4

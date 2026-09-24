@@ -1,0 +1,159 @@
+TP4 - Des processus au shell
+Inès de Courchelle
+2021 - 2022
+Consignes : Durant ce TD l’utilisation de la souris, Touchpad et/ou Trackpoint sont
+strictement interdit. Seul le clavier est autorisé.
+Objectifs : Ce TD a pour objectif :
+- d’archiver des dossiers et des ﬁchiers en ligne de commandes
+- de connaître les commandes pour aﬃcher les processus en cours d’exécution
+- de gérer l’espace sur son ordinateur
+- d’utiliser les expressions régulières
+- de se familiariser avec les variables prédéﬁnies du shell
+Fichiers attachés à la séancetp4.tar
+1 Exercices
+1.1 Les archives
+1. Télécharger l’archivetp4.tar (Disponible sur AREL). Décompresser l’archive dans
+votre répertoire CommandesUnix/tp4.
+Réponses
+tar -xvf tp4.tar
+2. Compresser l’archive en .zip et et .tar dans votre répertoireCommandesUnix/tp4.
+Réponses
+tar -cvz tp4 -f tp4.zip
+tar -cv tp4 -f tp4.tar
+1
+<<<PAGE>>>
+3. Lister le contenu du répertoiretp4 par date de modiﬁcation décroissante des ﬁchiers.
+Réponses
+ls -lart tp4
+4. Aﬃcher le ﬁchierlesListes.pas en faisant apparaître le numéro de chaque ligne
+Réponses
+cat -n lesListes.pas
+5. Vériﬁer que personne ne puisse manipuler (lire, écrire, exécuter) ce ﬁchier à part vous.
+Si ce n’est pas le cas, modiﬁer les droits d’accès du ﬁchier.
+Réponses
+chmod 700 lesListes.pas
+6. Ajouter les droits d’exécution pour legroup pour l’ensemble des ﬁchiers présents
+dans le dossier TP4 .
+Réponses
+chmod g+x *
+7. Aﬃcher uniquement les ﬁchiers contenant l’extension.txt
+Réponses
+ls *.txt
+1.2 Les processus
+1. Visualiser la liste des processus en cours dans le terminal courant (où vous vous
+trouvez).
+Réponses
+ps
+2
+<<<PAGE>>>
+2. Visualiser tous les processus du système. Quel est le père de la plus part des processus
+systèmes?
+Réponses
+ps -ef ou ps auwx
+Le père de la plupart est systemd et non init
+pour aﬃcher l’arbre des process : ps -axjf ou ps -ejH ou pstree (il faut installer
+tree)
+3. Visualiser les processus dont vous êtes le propriétaire?
+Réponses
+ps -x -u<mon_login>
+1.3 Gestion des espaces
+1. Aﬃcher l’espace utilisé dans l’ordinateur de votre répertoire.
+Réponses
+du -hs∼
+2. Visualiser la taille qu’occupe chacun de vos (sous) répertoires
+Réponses
+du -h∼
+3. Dans votre répertoire, trier les sous répertoire par ordre décroissant sur leurs tailles.
+Que remarquez vous?
+Réponses
+du -h∼| sort -k1n | more
+Les répertoires qui occupent le plus de place sont les mémoires caches (surtout
+le navigateur web).
+3
+<<<PAGE>>>
+1.4 Les expressions régulières
+1. Remplacer toutes les lettre H par la lettre Z dans le ﬁchierhp1.txt et enregistrer les
+modiﬁcations réalisées dans le ﬁchierhp1Modif1.txt
+Réponses
+sed -e ’s/H/Z/g’ hp1.txt > hp1Modif.txt
+2. Remplacer les lettres m en début de ligne par un M et enregistrer les modiﬁcations
+réalisées dans le ﬁchierhp1Modif2.txt
+Réponses
+sed -e ’s/∧m/M/g’ hp1.txt > hp1Modif2.txt
+3. Remplacer les lettres précédées d’un espace par une virgule et enregistrer les modiﬁ-
+cations réalisées dans le ﬁchierhp1Modif3.txt
+Réponses
+sed -e ’s/ [a-z|A-Z]/ ,/g’ hp1.txt > hp1Modif3.txt
+4. Remplacer leslettres, parun+ etleslettres; parun@ etenregistrerles modiﬁcations
+réalisées dans le ﬁchierhp1Modif4.txt
+Réponses
+sed -e ’s/,/+/g;s/;/@/g’ hp1.txt > hp1Modif4.txt
+5. Enregistrerlecontenudehp1.txt,exceptéleslignes2,3et4,dansleﬁchier hp1Modif5.txt
+Réponses
+sed -e ’2,4d’ hp1.txt > hp1Modif5.txt
+4
+<<<PAGE>>>
+6. En utilisant la commande ls et grep, rechercher dans le répertoire etc et sous-
+répertoire :
+(a) les noms des éléments commençant par "a" et dont la deuxième lettre est "s" ou
+"t";
+Réponses
+ls -R/etc | grep -E ’ˆa[st]’
+(b) les noms des éléments contenant "au" et se terminant par "t";
+Réponses
+ls -R /etc | grep -E ’*au.*t$’
+(c) les noms des éléments contenant "gre" ou "st".
+Réponses
+ls -R /etc | grep -E ’gre|st’
+1.5 Les variables prédéﬁnies du shell
+1. Tapez les 3 commandes suivantes dans votre terminal :printenv, env et set. A
+votre avis, que font ces commandes?
+Réponses
+- printenv←aﬃche les variables d’environnement (cde ancienne)
+- env←aﬃche les variables (pareil que printenv)
+- set←aﬃche en plus les variables locales.
+2. Qu’est ce que le prompt? Quelle est la variable privée qui représente le prompt?
+Réponses
+Le prompt est une invite de commande. Il indique de manière générale le nom
+de l’utilisateur, de la machine et du chemin du répertoire où on se trouve.
+La variable estPS1
+5
+<<<PAGE>>>
+3. Changez le prompt pour qu’il aﬃche la chaîne de caractères :Vous ne passerez
+pas !
+Réponses
+export PS1="Vous ne passerez pas "
+4. Combien de commandes sont mémorisées par l’historique du terminal? Changez le
+nombre de commandes.
+Indices : HISTSIZE
+Réponses
+echo $HISTSIZE
+export $HISTSIZE=3
+2 Et si je revisai!
+1. Quelle est la commande permettant de déziper l’archivemonArchive.tar dans votre
+répertoire courant?
+Réponses
+tar xvf monArchive.tar
+2. Quelle est la commande permettant d’aﬃcher uniquement les ﬁchiers ayant l’exten-
+sion .txt contenu dans un répertoiremonExam, existant dans le répertoire courant.
+Réponses
+ls -R monExam/*.txt
+3. Qu’est ce qu’une variable d’environnement?
+Réponses
+Une variable d’environnement permet d’inﬂuencer le comportement de votre
+système (langue, encodage de caractères ...)
+6
+<<<PAGE>>>
+4. En utilisant la commandegrep, recherchez dans le l’ensemble du répertoire courant
+et ses sous-répertoire :
+(a) Les mots commençants par la lettre C
+Réponses
+ls -R | grep -e ’∧C’
+(b) La chaîne de caractères "mesRevisions"
+Réponses
+ls -R | grep -e ’mesRevisions’
+5. A quoi sert les expressions régulières?
+Réponses
+Les expressions régulières servent à identiﬁer une chaîne de caractères répon-
+dant à plusieurs critères.
+7

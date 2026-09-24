@@ -1,0 +1,472 @@
+Corrigé Annale 3 - Algèbre Linéaire Appliquée
+ING1 Mathématiques - CY Tech
+Exercice 1 : Normes matricielles et propriétés (4 points)
+A =
+
+
+3 2 1
+1 4 2
+2 1 3
+
+, B =
+
+
+2 0 1
+0 3 0
+1 0 2
+
+
+1. Calcul des normes (1,5 point)
+Pour A :
+Norme 1 (max colonne) :
+ Col 1 : |3| +|1| +|2| = 6
+ Col 2 : |2| +|4| +|1| = 7
+ Col 3 : |1| +|2| +|3| = 6
+∥A∥1 = 7
+Norme innie (max ligne) :
+ Ligne 1 : |3| +|2| +|1| = 6
+ Ligne 2 : |1| +|4| +|2| = 7
+ Ligne 3 : |2| +|1| +|3| = 6
+∥A∥∞ = 7
+Pour B :
+Norme 1 :
+ Col 1 : |2| +|0| +|1| = 3
+ Col 2 : |0| +|3| +|0| = 3
+ Col 3 : |1| +|0| +|2| = 3
+∥B∥1 = 3
+Norme innie :
+ Ligne 1 : |2| +|0| +|1| = 3
+ Ligne 2 : |0| +|3| +|0| = 3
+ Ligne 3 : |1| +|0| +|2| = 3
+∥B∥∞ = 3
+1
+<<<PAGE>>>
+2. Vérication de l'inégalité (1 point)
+Calculons AB :
+AB =
+
+
+3 2 1
+1 4 2
+2 1 3
+
+
+
+
+2 0 1
+0 3 0
+1 0 2
+
+
+AB =
+
+
+6 + 0 + 1 0 + 6 + 0 3 + 0 + 2
+2 + 0 + 2 0 + 12 + 0 1 + 0 + 4
+4 + 0 + 3 0 + 3 + 0 2 + 0 + 6
+
+
+=
+
+
+7 6 5
+4 12 5
+7 3 8
+
+
+∥AB∥∞ = max(|7| +|6| +|5|,|4| +|12| +|5|,|7| +|3| +|8|) = max(18, 21, 18) = 21
+∥A∥∞·∥B∥∞ = 7× 3 = 21
+21≤ 21 ✓
+L'inégalité est vériée (en fait, égalité).
+3. Démonstration (1,5 point)
+À montrer : ∥An∥≤∥ A∥n pour toute norme subordonnée.
+Démonstration par récurrence :
+Initialisation ( n = 1) : ∥A1∥ =∥A∥≤∥ A∥1 ✓
+Hérédité : Supposons ∥Ak∥≤∥ A∥k pour un certain k≥ 1.
+Pour n =k + 1 :
+∥Ak+1∥ =∥Ak·A∥
+≤∥Ak∥·∥ A∥ (propriété sous-multiplicative)
+≤∥A∥k·∥A∥ (hypothèse de récurrence)
+=∥A∥k+1
+Conclusion : Par récurrence, ∥An∥≤∥ A∥n pour tout n≥ 1.
+Exercice 2 : Conditionnement et perturbations (6 points)
+A =
+
+
+10 7 8 7
+7 5 6 5
+8 6 10 9
+7 5 9 10
+
+, b =
+
+
+32
+23
+33
+31
+
+, x = (1, 1, 1, 1)T
+On admet : A−1 =
+
+
+25 −41 10 −6
+−41 68 −17 10
+10 −17 5 −3
+−6 10 −3 2
+
+
+2
+<<<PAGE>>>
+1. Conditionnement (1 point)
+∥A∥∞ = max(32, 23, 33, 31) = 33
+∥A−1∥∞ = max(|25| + 41 + 10 + 6,|41| + 68 + 17 + 10, 10 + 17 + 5 + 3, 6 + 10 + 3 + 2)
+= max(82, 136, 35, 21) = 136
+κ∞(A) = 33× 136 = 4488
+Le système est très mal conditionné !
+2. Résidu (1 point)
+Ax1 =
+
+
+10 7 8 7
+7 5 6 5
+8 6 10 9
+7 5 9 10
+
+
+
+
+1, 1
+0, 9
+1, 1
+0, 9
+
+
+Ligne 1 : 10(1, 1) + 7(0, 9) + 8(1, 1) + 7(0, 9) = 11 + 6, 3 + 8, 8 + 6, 3 = 32, 4
+Ligne 2 : 7(1, 1) + 5(0, 9) + 6(1, 1) + 5(0, 9) = 7, 7 + 4, 5 + 6, 6 + 4, 5 = 23, 3
+Ligne 3 : 8(1, 1) + 6(0, 9) + 10(1, 1) + 9(0, 9) = 8, 8 + 5, 4 + 11 + 8, 1 = 33, 3
+Ligne 4 : 7(1, 1) + 5(0, 9) + 9(1, 1) + 10(0, 9) = 7, 7 + 4, 5 + 9, 9 + 9 = 31, 1
+r1 =b−Ax1 =
+
+
+32
+23
+33
+31
+
+−
+
+
+32, 4
+23, 3
+33, 3
+31, 1
+
+ =
+
+
+−0, 4
+−0, 3
+−0, 3
+−0, 1
+
+
+∥r1∥∞ = 0, 4
+3. Erreur exacte (1 point)
+x−x1 =
+
+
+1
+1
+1
+1
+
+−
+
+
+1, 1
+0, 9
+1, 1
+0, 9
+
+ =
+
+
+−0, 1
+0, 1
+−0, 1
+0, 1
+
+
+∥x−x1∥∞ = 0, 1
+∥x−x1∥∞
+∥x∥∞
+= 0, 1
+1 = 0, 1 = 10%
+4. Estimation par le résidu (1 point)
+On utilise : ∥x−x1∥≤∥ A−1∥·∥ r1∥
+∥x−x1∥∞≤∥A−1∥∞·∥r1∥∞ = 136× 0, 4 = 54, 4
+Erreur relative estimée :
+∥x−x1∥∞
+∥x∥∞
+≤ 54, 4
+1 = 54, 4 soit 5440%
+Remarque : L'estimation est très pessimiste (10% réel vs 5440% estimé) mais montre bien le
+mauvais conditionnement.
+3
+<<<PAGE>>>
+5. Perturbation du second membre (1 point)
+∆b =
+
+
+0, 1
+−0, 1
+0, 1
+−0, 1
+
+, ∥∆b∥∞ = 0, 1
+∥∆b∥∞
+∥b∥∞
+= 0, 1
+32 ≈ 0, 003125
+Erreur relative maximale :
+∥∆x∥∞
+∥x∥∞
+≤κ∞(A)·∥∆b∥∞
+∥b∥∞
+= 4488× 0, 003125 = 14, 025
+Une perturbation de 0,3% sur b peut induire une erreur de jusqu'à 1400% sur la solution !
+6. Conclusion (1 point)
+Le système est extrêmement mal conditionné ( κ≈ 4500).
+Conséquences :
+ De petites perturbations sur les données entraînent de grandes erreurs sur la solution
+ Un résidu faible ne garantit pas une solution précise
+ Il faut utiliser des méthodes numériques de haute précision
+ Les erreurs d'arrondi en machine peuvent être catastrophiques
+Exercice 3 : Factorisation LU avec pivot (5 points)
+A =
+
+
+0 2 1
+1 1 2
+2 1 1
+
+, b =
+
+
+3
+4
+3
+
+
+1. Factorisation LU sans pivot ? (0,5 point)
+Le premier pivot serait a11 = 0.
+Or on ne peut pas diviser par 0 !
+Non, A n'admet pas de factorisation LU sans pivot
+2. Factorisation avec pivot partiel (2 points)
+Étape 1 : Chercher le pivot maximal dans la colonne 1
+ |a11| = 0
+ |a21| = 1
+ |a31| = 2← maximum
+Échanger lignes 1 et 3 :
+P1A =
+
+
+2 1 1
+1 1 2
+0 2 1
+
+
+Élimination :
+4
+<<<PAGE>>>
+ l21 = 1
+2 , ligne 2 ← ligne 2 − 1
+2 ligne 1
+ l31 = 0
+
+
+2 1 1
+0 1 /2 3 /2
+0 2 1
+
+
+Étape 2 : Pivot dans colonne 2 (lignes 2-3)
+ |1/2| = 0, 5
+ |2| = 2← maximum
+Échanger lignes 2 et 3 : 
+
+2 1 1
+0 2 1
+0 1 /2 3 /2
+
+
+Élimination :
+ l32 = 1/2
+2 = 1
+4
+ ligne 3 ← ligne 3 − 1
+4 ligne 2
+U =
+
+
+2 1 1
+0 2 1
+0 0 5 /4
+
+
+Matrices nales :
+P =
+
+
+0 0 1
+0 1 0
+1 0 0
+
+
+
+
+1 0 0
+0 0 1
+0 1 0
+
+ =
+
+
+0 0 1
+1 0 0
+0 1 0
+
+
+L =
+
+
+1 0 0
+1/2 1 0
+0 1 /4 1
+
+, U =
+
+
+2 1 1
+0 2 1
+0 0 5 /4
+
+
+3. Résolution complète (1,5 point)
+Étape 1 : Pb =
+
+
+0 0 1
+1 0 0
+0 1 0
+
+
+
+
+3
+4
+3
+
+ =
+
+
+3
+3
+4
+
+
+Étape 2 : Résolution Ly =Pb
+y1 = 3
+y2 = 3− 1
+2· 3 = 3
+2
+y3 = 4− 1
+4· 3
+2 = 4− 3
+8 = 29
+8
+Étape 3 : Résolution Ux =y
+x3 = 29/8
+5/4 = 29
+8 · 4
+5 = 29
+10
+x2 = 3/2− 1· 29/10
+2 = 15/10− 29/10
+2 =−14/10
+2 =− 7
+10
+x1 = 3− 1· (−7/10)− 1· 29/10
+2 = 30/10 + 7/10− 29/10
+2 = 8/10
+2 = 2
+5
+5
+<<<PAGE>>>
+x =
+
+
+2/5
+−7/10
+29/10
+
+ =
+
+
+0, 4
+−0, 7
+2, 9
+
+
+4. Intérêt du pivot partiel (1 point)
+A vantages :
+ Stabilité numérique : En choisissant le plus grand pivot, on minimise les erreurs d'arrondi
+ Évite division par zéro : Comme dans cet exercice
+ Universalité : Fonctionne pour toute matrice inversible
+ Petits multiplicateurs : Les lij restent ≤ 1 en valeur absolue
+Exercice 4 : Méthodes itératives avancées (5 points)
+A =
+
+
+3 1 1
+1 3 1
+1 1 3
+
+, valeurs propres : λ1 = 5, λ2 =λ3 = 2
+1. Symétrie dénie positive (1 point)
+Symétrie : AT =A (évident) ✓
+Dénie positive : Les valeurs propres sont toutes positives ( 5> 0, 2> 0)
+A est symétrique dénie positive
+2. Dominance diagonale (1 point)
+ Ligne 1 : |3| = 3>|1| +|1| = 2 ✓
+ Ligne 2 : |3| = 3>|1| +|1| = 2 ✓
+ Ligne 3 : |3| = 3>|1| +|1| = 2 ✓
+Oui, A est strictement diagonalement dominante
+3. Convergence (1 point)
+Jacobi :
+ A strictement diagonalement dominante ⇒ Converge ✓
+Gauss-Seidel :
+ A strictement diagonalement dominante ⇒ Converge ✓
+ A symétrique dénie positive ⇒ Converge ✓
+Les deux méthodes convergent
+6
+<<<PAGE>>>
+4. Vitesse de convergence (1 point)
+On a : ρ(BJ) = 1/3 et ρ(BGS) = 1/9
+La vitesse de convergence est d'autant plus grande que ρ est petit.
+ρ(BGS) = 1
+9 < 1
+3 =ρ(BJ)
+Gauss-Seidel converge plus rapidement que Jacobi
+F acteur d'amélioration : 1/3
+1/9 = 3 fois plus rapide !
+Remarque : On a ρ(BGS) = (ρ(BJ))2 = (1/3)2 = 1/9, ce qui est typique des matrices tridiagonales.
+5. Intervalle pour SOR (1 point)
+Pour la méthode SOR, la condition générale est 0<ω < 2.
+Pour une matrice symétrique dénie positive, cette condition garantit la convergence.
+ω∈ (0, 2)
+Remarque : Le ω optimal est souvent proche de 1,5-1,8 pour ce type de matrice, mais nécessite
+un calcul plus approfondi.
+Fin du corrigé - Note totale : /20
+7

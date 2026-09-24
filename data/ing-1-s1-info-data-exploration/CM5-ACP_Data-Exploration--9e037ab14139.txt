@@ -1,0 +1,441 @@
+CM 3 : Analyse multivariée - ACP 
+Data exploration
+Analyse en Composantes Principales
+Observer simultanément des individus d'une population sur p>2 variables 
+ Etudier le lien entre les variables 
+ Faire une représentation graphique d’un nuage de points à p 
+dimensions 
+ Qualifier les observations du jeu de donnée 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+2
+ACP 
+Nuage de points en dimension p
+22
+np ni n1 
+kp ki k1 
+2p 2i 21 
+1p 1i 11 
+xxx
+xxx
+xxx
+xxx
+M
+LK
+M
+Variable : 
+p variables 
+n observations 
+Perte 
+d’information Figure J.P. Fenelon 
+Un jeu de données est un tableau avec en ligne les observations et en colonne les variables 
+, … , . On peut donc représenter chaque ligne du tableau comme un point dont les coordonnées 
+sont les valeurs prises par les variables. 
+Si p>3, il est impossible de visualiser le nuage de points. L’objectif de l’ACP est de trouver une 
+projection du nuage de points en dimension 2 ou 3 de façon à perdre le moins possible 
+d’information. 
+• Qu’est-ce que l’information? 
+• Si projection alors produit scalaire? 
+• Quel lien avec les variables  , … , ?
+Sur cet exemple chaque 
+point est un pays 
+caractérisé par son 
+espérance de vie, et ses 
+taux de natalité et de 
+mortalité. 
+observation : 	
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+3
+ACP 
+Comment mesurer l’information?
+33
+Centre de gravité 
+Le centre de gravité est le point dont les coordonnées sont définies par les valeurs moyennes des 
+variables, 
+
+ = (, … , )
+Inertie 
+L’information contenue dans un nuage de points correspond à l’inertie de celui-ci, c.-à-d. la somme 
+des distances au carré entre les observations et le centre de gravité du nuage, 
+ =  	 − 
+ 
+
+	
+où . désigne la norme euclidienne. 
+Propriétés de l’inertie 
+L’inertie peut s’exprimer comme la trace de la matrice de variance-covariance, c.-à-d. la somme des 
+variances des variables, 
+ =   = ∑ 	
+
+	 où        =
+
+ ⋯  
+⋮ ⋱ ⋮
+ ⋯  
+.
+La matrice de variance-covariance est symétrique définie positive. 
+L’inertie peut aussi s’écrire comme la somme des valeurs propres de ,
+ =  + ⋯ + 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+4
+ACP 
+Centrer et réduire les variables 
+44
+L’analyse en composantes principales nécessite de calculer des distances entre observations, 
+	 − 	#  = ∑ ($	 − $	%
+
+ )².
+Si les variables n’ont pas le même ordre de grandeur, certaines variables à valeurs faibles 
+« disparaitrons » de l’information au profit de celles ayant de fortes valeurs. 
+Pop. (milliers) Taux nat. (pour mille) Esp. vie Nb. en fants 
+Argentine 41050 16,87 75,87 2,19 
+Arménie 3099 15,47 74,44 1,77 
+Australie 21731 12,56 81,99 1,85 
+Autriche 8407 9,01 80,55 1,40 
+(41050-3099)² +(16,87-15,47)²+(75,87-74,44)²+(2,19-1,77)²= 1440278405 
+(41050-3099)² =1440278401 
+distance entre 
+l’Argentine et 
+l’Arménie 
+Les variables Taux nat., Esp. 
+vie et Nb. enfants ne 
+comptent pas dans le calcul de 
+la distance 
+Il est donc important de centrer et réduire les variables 
+   ←  − 
+
+, i = 1, … , p
+De la même façon la quantification de l’information au travers de l’inertie,  = ∑ 
+
+ , privilégie les 
+variables fortement dispersés. 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+5
+ACP 
+Quel produit scalaire?
+55
+Le produit scalaire entre deux variables  et + est défini par, 
+<  , + > = 1
+.  $	 $	+ 
+
+	
+,
+d’où la norme 
+ ² = 1
+.  $	
+
+	
+²
+Si les variables sont centrées alors <  , + > = /0 et    = 
+
+D’après la formule du cosinus, 
+cos , + 4 = <  , + >
+ + 
+=
+/0
+ +
+= /0
+• |56|=1  ⇔ les variables sont colinéaires 
+corrélées positivement  si 56=1 
+corrélées négativement si 56=-1 
+• 56 = 0 ⇔ les variables sont orthogonales 
+⇔ les variables ne sont pas linéairement corrélées                     
+78 
+79 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+6
+ACP 
+Principe de l’ACP
+6
+Le principe de l’ACP est de trouver des espaces de petites dimensions sur lesquels les projections des 
+observations minimisent la déformation de la réalité. 
+On cherche donc un sous-espace :; de Rpde dimension q (q=2,3,..) sur lequel projeté le nuage de 
+points. Les axes de ce sous-espace sont des combinaisons linéaires des axes d’origine (c.-à-d. les 
+variables). Les nouveaux axes s’appellent les composantes principales .
+X1
+X2
+C1
+C2
+Principe 
+• La 1ère composante principale  (C 1) doit « capturer » le 
+maximum d’information 
+Il reste un résidu d’information non expliquée 
+• La 2 ème composante principale (C 2) est calculée sur ce 
+résidu telle que 
+ Elle capture un maximum d’information 
+ Elle soit non corrélée linéairement à C 1 
+(orthogonalité) 
+• Sur le même principe, calcul de C 3, C 4, …,C p
+Il s’agit d’un changement de repère pour passer du repère initial formé par les variables à un repère 
+orthogonale tel que les nouveaux axes sont ordonnés par quantité d’information décroissante. 
+Nb. composantes principales = Nb. variables initiales 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+7
+ACP 
+Comment perdre le moins 
+d’information possible?
+7
+Fq
+ek
+fkg
+Soit 	 un point du nuage et notons <	 sa projection orthogonale sur le sous-
+espace :;. 
+On cherche :; tel que la distance entre :; et les individus soit minimale. 
+Minimiser :    ∑ <	 − 	 ²
+	
+D’après Pythagore, 
+Donc le problème revient à maximiser 
+∑ <	 − = ²
+	  
+<	 − 	 ²= = − 	  − <	 − = ²
+car = − 	  ne dépend pas de :;
+autrement dit maximiser l’inertie du nuage projeté. On cherche à garder un 
+maximum de dispersion dans la projection. 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+8
+ACP 
+Solution du problème
+Le sous-espace qui minimise l’inertie du nuage projeté est définir par :
+:; = vect(Q, … , Q;)
+où QR est le vecteur propre unitaire de la matrice de variance-covariance  associée à la kème plus 
+grande valeur propre.
+Les vecteurs propres sont appelés les axes principaux 
+ Le premier axe principal Q est associé à la plus grande valeur propre λ1
+ Le deuxième axe principal Q est associé à la deuxième valeur propre λ2
+ Etc… 
+L’ACP est un changement de repère dans lequel les 1ers axes contiennent un maximum d’information 
+ L’inertie du nuage projeté sur Q	 est 	
+ L’inertie du nuage projeté sur :; est +…+ ;
+ L’inertie totale est I= +…+ ;
+La projection des individus sur un axe principal est une nouvelle variable appelée composante principale 
+ La première composante c 1représente les coordonnées des projections des individus sur l’axe Q
+ La deuxième composante c 2représente les coordonnées des projections des individus sur l’axe Q
+ Etc… 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+9
+ACP 
+Combien d’axes retient-on?
+Il y a deux règles pour le choix du nombre d’axes :
+• garder un maximum d’information contenu dans ces axes (pourcentage cumulé d’inertie) 
+• couper sur le dernier grand saut d’information entre les axes (elbow rule)
+
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+10 
+ACP 
+Exemple de la démographie mondiale
+Pays caractérisés par 4 variables :
+• TNAT : Taux de natalité 
+• TMORT : Taux de mortalité 
+• EV : Espérance de vie 
+• T65 : Taux >65 ans 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+-6 -4 -2 0 2 4
+-3 -2 -1 0 1 2 3
+11 
+ACP 
+Représentation des observations 
+La 1 ère composante principale contient 
+66,6% de l’inertie. 
+La 2 ème composante principale contient 
+29,9% de l’inertie. 
+La représentation des pays sur le plan 
+principal retranscrit 96,5% de l’information. 
+eigenvalue percentage cumulative % 
+of variance     of variance 
+comp 1 2.66302177 66.5755442 66.57554 
+comp 2 1.19799267 29.9498168 96.52536 
+comp 3 0.12720887 3.1802217 99.70558 
+comp 4 0.01177669 0.2944172 100.00000 
+4 variables 
+(TNAT, TMORT, EV, T65) 
+⇔
+4 composantes principales 
+(combinaisons linaires des 4 variables 
+initiales) 
+Comment interpréter ce 
+graphique? 
+Comment qualifier un pays en haut à droite par 
+exemple? 
+Comp 1
+Comp 2
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+12 
+ACP 
+Représentation des variables 
+$cor 
+Dim.1      Dim.2  Dim.3 Dim.4 
+TNAT  -0.9477642 -0.1409135     ... 
+TMORT -0.4674138  0.8814408 
+EV     0.9692397 -0.1966503 
+T65    0.7790144  0.6021020 
+$cos2 
+Dim.1      Dim.2 
+TNAT  0.8982571 0.01985663 
+TMORT 0.2184757 0.77693792 
+EV    0.9394256 0.03867136 
+T65   0.6068634 0.36252677 
+$contrib 
+Dim.1     Dim.2 
+TNAT  33.73074  1.657492 
+TMORT  8.20405 64.853311 
+EV    35.27668  3.228013 
+T65   22.78853 30.261184 
+-1.0 -0.5 0.0 0.5 1.0 
+-1.0 -0.5 0.0 0.5 1.0 
+Représentation des variables 
+TNAT 
+TMORT 
+EV 
+T65 
+r(T65,c 1)
+r(T65,c 2)
+Comp 2
+Comp 1
+$cor = coordonnée=corrélation 
+$cos2= répartition de la variable sur les 4 axes principaux 
+La variable TNAT est représentée à 89.82% sur C 1et 1.98% sur C 2etc.. 
+$contrib = contribution de la variable à la construction de l’axe 
+La variable TMORT ne contribue pas (8%) à la construction de c 1.
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+13 
+ACP 
+Interprétation
+-6 -4 -2 0 2 4
+-3 -2 -1 0 1 2 3
+Représentation des individus 
+Dim 1 (66.58%) 
+D im  2  (2 9 .9 5 % ) 
+-1.0 -0.5 0.0 0.5 1.0 
+-1.0 -0.5 0.0 0.5 1.0 
+Représentation des variables 
+Dim 1 (66.58%) 
+Dim 2 (29.95%) 
+TNAT 
+TMORT 
+EV 
+T65 
+•TNAT et EV sont corrélés négativement
+les pays avec un fort taux de natalité ont une espérance de vie courte 
+•TMORT et T65 sont non corrélés
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+14 
+ACP 
+Validité des représentations graphiques 
+• La projection perd le moins d’information possible 
+ vérifier le % d’inertie expliquée pas l’axe 
+ conserver le nombre d’axes nécessaire pour avoir une inertie expliquée correcte 
+• Les variables sont bien représentées si elles sont proches du cercle. A 
+contrario celles qui sont proches de l’origine sont peu corrélées avec les axes 
+ pas d’interprétation possible pour ces variables 
+• Les individus sont bien représentés s’ils ne sont pas trop 
+éloignés de l’axe sur lequel on les projette 
+ vérifier le cosinus entre l’individu et l’axe (proche de 1) 
+ valable si l’individu loin du centre de gravité 
+e1
+e2
+g ck
+Autre utilisation de l’ACP = réduire la dimension d’un problème 
+L’ACP est très souvent utilisée en amont de méthodes de machine learning pour réduire le 
+nombre de variables. L’objectif n’est plus l’interprétation des données sur un graphique. 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+15 
+ACP 
+Ajout de variable ou d’observation
+-6 -4 -2 0 2 4
+-3 -2 -1 0 1 2 3
+Représentation des individus 
+Dim 1 (66.58%) 
+Dim 2 (29.95%) 
+AFRIQUE 
+AMERNOR 
+AMERSUD 
+ASIE 
+EUROPE 
+OCEANIE 
+Ajout d’une variable 
+qualitative 
+une modalité = un nouveau 
+point qui est le centre de 
+gravité des individus 
+présentant cette modalité 
+Il est possible d’ajouter des individus ou des variables aux représentations graphiques. 
+Ceux-ci ne participent pas à la construction des axes 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+16 
+ACP 
+Ajout de variable ou d’observation
+-1.0 -0.5 0.0 0.5 1.0 
+-1.0 -0.5 0.0 0.5 1.0 
+Représentation des variables 
+Dim 1 (66.58%) 
+Dim 2 (29.95%) 
+TNAT 
+TMORT 
+EV 
+T65 
+NBENF 
+TCR 
+Ajout des variables nombre d’enfants 
+par femme et taux de croissance. 
+Cet ajout n’a pas modifié le calcul des 
+composantes principales. Il s’agit juste 
+d’une projection des variables dans le 
+cercle de corrélation. 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+17 
+ACP 
+Ajout de variable ou d’observation
+-1.0 -0.5 0.0 0.5 1.0 
+-1.0 -0.5 0.0 0.5 1.0 
+Représentation des variables 
+Dim 1 (66.58%) 
+Dim 2 (29.95%) 
+TNAT 
+TMORT 
+EV 
+T65 
+NBENF 
+TCR 
+Ajout des variables nombre d’enfants 
+par femme et taux de croissance. 
+Cet ajout n’a pas modifié le calcul des 
+composantes principales. Il s’agit juste 
+d’une projection des variables dans le 
+cercle de corrélation. 
+<<<PAGE>>>
+CM 3 : Analyse multivariée - ACP 
+18 
+ACP 
+Alternatives à l’ACP
+L'algorithme t-SNE(t-distributedstochasticneighbor 
+embedding ) est une technique de réduction de 
+dimension pour lavisualisation de données .Il s'agit 
+d'une méthode non linéaire (contrairement à l’ACP) 
+permettant de représenter un ensemble de points d'un 
+espace à grande dimension dans un espace de deux 
+outrois dimensions, les données peuvent ensuite être 
+visualisées avec un nuage de points. L'algorithme t-SNE 
+tente de trouver une configuration optimale pour 
+respecter les proximités entre points : deux points qui 
+sont proches (resp. éloignés) dans l'espace d'origine 
+devront être proches (resp. éloignés) dans l'espace de 
+faible dimension. 
+https://openclassrooms.com/fr/courses/4379436 
+https://www.commonlounge.com/discussion/9bcc188644cd4bc9b7542dab93fa8bd7/history 
+Analyse en composantes principales indépendants 
+Analyse en composantes principales par noyaux 

@@ -1,0 +1,689 @@
+4 .  LES T A B L E A U X S T A T I Q U E S
+Eva Ansermin & Romuald Grignon 
+v1.00
+PROGRAMMATION
+PROCEDURALE
+<<<PAGE>>>
+I. Principe des tableaux
+Eva ANSERMIN & Romuald GRIGNON
+2
+<<<PAGE>>>
+● Je veux écrire un algorithme pour gérer les notes du devoir de la promo (les consulter, calculer la 
+moyenne générale, l’écart type, trouver la plus basse etc… ).
+● Problème : vous êtes 330 ! 
+Le problème avec les variables classiques…
+Eva ANSERMIN & Romuald GRIGNON
+3
+<<<PAGE>>>
+● Je veux écrire un algorithme pour gérer les notes du devoir de la promo (les 
+consulter, calculer la moyenne générale, l’écart type, trouver la plus basse etc… ).
+● Problème : vous êtes 330 ! 
+Le problème avec les variables classiques…
+PROGRAMME note_etudiant
+VARIABLE
+moy: réel
+note1 : réel
+note2 : reel
+note3: reel
+…
+note330 : reel
+DEBUT:
+moy<- (note1+note2+…+note330)/330
+Eva ANSERMIN & Romuald GRIGNON
+4
+<<<PAGE>>>
+● Un tableau est un ensemble de variables ordonnées de même type.
+Les tableaux 
+Un Tableau d’entiers 
+● Manipuler un tableau avec beaucoup de « cases » est plus simple que de 
+manipuler plein de variables séparément. 
+Eva ANSERMIN & Romuald GRIGNON
+5
+<<<PAGE>>>
+● Un tableau est un ensemble de variables ordonnées de même type.
+● Le nombre de cases d’un tableau est sa taille.
+● Dans cet exemple, la taille du tableau est 10.
+Les tableaux 
+Un Tableau d’entiers 
+Eva ANSERMIN & Romuald GRIGNON
+6
+<<<PAGE>>>
+● Un tableau est un ensemble de variables ordonnées de même type.
+Les tableaux 
+Eva ANSERMIN & Romuald GRIGNON
+7
+<<<PAGE>>>
+● Un tableau est un ensemble de variables ordonnées de même type.
+Les tableaux 
+La première case a l’indice 0 !
+Eva ANSERMIN & Romuald GRIGNON
+8
+<<<PAGE>>>
+● Pour accéder à une case du tableau :  
+Les tableaux 
+Nom_Tableau[indice de la case]
+Eva ANSERMIN & Romuald GRIGNON
+9
+<<<PAGE>>>
+● Pour accéder à une case du tableau :  
+Les tableaux 
+Nom_Tableau[indice de la case]
+note[1]= 
+note[4]= 
+note[10]=
+note
+Eva ANSERMIN & Romuald GRIGNON
+10
+<<<PAGE>>>
+● Pour accéder à une case du tableau :  
+Les tableaux 
+Nom_Tableau[indice de la case]
+note[1]= 13
+note[4]= 14
+note[10]= la case n’existe pas!
+note
+Eva ANSERMIN & Romuald GRIGNON
+11
+<<<PAGE>>>
+Le tableau dans la mémoire
+● Les cases d’un tableau sont stockées à la suite dans la mémoire.
+● Ex :   tab : [10, 23, 10 ,8] // tableau de taille 4
+tab[1]
+tab[0]
+tab[2]
+tab[3]
+Eva ANSERMIN & Romuald GRIGNON
+12
+<<<PAGE>>>
+Le tableau dans la mémoire
+● Les cases d’un tableau sont stockées à la suite dans la mémoire.
+tab[1]
+tab[0]
+tab[2]
+tab[3]
+L ’adresse de tab[2] est l’adresse de tab[0]+2
+L ’indice du tableau indique donc où l’ordinateur
+doit aller chercher la variable dans la mémoire.
+Eva ANSERMIN & Romuald GRIGNON
+13
+<<<PAGE>>>
+Le tableau dans la mémoire
+● Les cases d’un tableau sont stockées à la suite dans la mémoire.
+tab[1]
+tab[0]
+tab[2]
+tab[3]
+tab[4] est « en dehors » de l’espace 
+mémoire réservé pour le tableau!
+tab[4] indique la case mémoire tab[0]+4
+tab[4]
+Eva ANSERMIN & Romuald GRIGNON
+14
+<<<PAGE>>>
+Attention aux indices des tableaux !
+● Si on déclare un tableau de taille N, on ne peut que utiliser des indices entre 
+0 et N-1.
+● Si on utilise un indice incorrect (tableau[-1], tableau[N], tableau[N+10]), on 
+essaye d’accéder à une partie de la mémoire sans en avoir l’autorisation.
+● C’est la Segmentation fault.
+Eva ANSERMIN & Romuald GRIGNON
+15
+<<<PAGE>>>
+II. Tableaux en pseudo-code
+Eva ANSERMIN & Romuald GRIGNON
+16
+<<<PAGE>>>
+Déclaration et manipulation d’un tableau : pseudo-
+code
+● Déclaration d’un tableau statique :
+nomTableau[taille] : TABLEAU DE type
+o Le tableau possède taille cases contenant une variable de type
+o La première case est nomTableau[0] la dernière nomTableau[taille-1]
+● Manipulation :
+Accéder à la (i+1)ème case : nomTableau[i], 0 ≤ i < taille.
+● Initialisation :
+Par défaut les valeurs ne sont pas initialisées
+On peut initialiser un tableau de la manière suivante :
+nomTableau <- {val1, val2, val3…}
+Dans ce cas, les cases non indiquées sont mises à zéro. Eva ANSERMIN & Romuald GRIGNON
+17
+<<<PAGE>>>
+Déclaration et manipulation d’un tableau : pseudo-
+code
+● Exemple
+PROGRAMME note_etudiant
+VARIABLE
+moy: réel
+note[330]: tableau de réels
+DEBUT:
+note <- {0}  // Met toutes les cases à 0 !
+note[0] <- 15
+note[10] <- 13
+ECRIRE(“Le premier étudiant a la note de ”+note[0])
+…
+FIN
+Eva ANSERMIN & Romuald GRIGNON
+18
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● On souhaite afficher son contenu. 
+Eva ANSERMIN & Romuald GRIGNON
+19
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● On souhaite afficher son contenu. 
+ECRIRE(tab)
+● Il faut afficher toutes les cases du tableau une par une ! 
+Eva ANSERMIN & Romuald GRIGNON
+20
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+DEBUT 
+ECRIRE(tab[0])
+Eva ANSERMIN & Romuald GRIGNON
+21
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+DEBUT 
+ECRIRE(tab[0])
+ECRIRE(tab[1])
+Eva ANSERMIN & Romuald GRIGNON
+22
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+DEBUT 
+ECRIRE(tab[0])
+ECRIRE(tab[1])
+ECRIRE(tab[2])
+Eva ANSERMIN & Romuald GRIGNON
+23
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+DEBUT 
+ECRIRE(tab[0])
+ECRIRE(tab[1])
+ECRIRE(tab[2])
+…
+Eva ANSERMIN & Romuald GRIGNON
+24
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+DEBUT 
+ECRIRE(tab[0])
+ECRIRE(tab[1])
+ECRIRE(tab[2])
+…
+ECRIRE(tab[9])
+FIN
+Eva ANSERMIN & Romuald GRIGNON
+25
+<<<PAGE>>>
+Parcours d’un tableau
+● Soit le tableau suivant : 
+tab[10]: tableau d’entiers
+● Il faut afficher toute les cases du tableau une par une ! 
+POUR i de 0  à 10 FAIRE
+ECRIRE(tab[i])
+FIN POUR 
+Eva ANSERMIN & Romuald GRIGNON
+26
+<<<PAGE>>>
+Parcours d’un tableau
+● Pour réaliser une opération sur un tableau, il faut parcourir toutes ses cases.
+POUR i de 0 à taille FAIRE
+instruction
+FIN POUR 
+Eva ANSERMIN & Romuald GRIGNON
+27
+<<<PAGE>>>
+Parcours d’un tableau
+● Exemple : remplir un tableau de note aléatoire:
+PROGRAMME note_etudiant
+VARIABLE
+moy: réel
+note[330]: tableau de reels
+i : entier
+DEBUT:
+POUR i de 0 à 330   FAIRE 
+note[i] <- ALEA( 20 )
+FIN POUR 
+FIN
+Eva ANSERMIN & Romuald GRIGNON
+28
+<<<PAGE>>>
+● On peut directement passer un tableau en argument d’une fonction.
+PROCEDURE afficher_tab(tab[330]: tableau de réels)
+VARIABLE
+i : entier
+DEBUT
+POUR i de 0 à 330 FAIRE
+ECRIRE(tab[i])
+FIN POUR 
+FIN 
+Passage de tableaux à une fonction
+Eva ANSERMIN & Romuald GRIGNON
+29
+<<<PAGE>>>
+● Pour l’appel à la fonction, il suffit de donner le nom du tableau 
+PROCEDURE afficher_tab(tab[330]: tableau de réels)
+VARIABLE
+i : entier
+DEBUT
+POUR i de 0 à 330 FAIRE
+ECRIRE(tab[i])
+FIN POUR 
+FIN
+VARIABLE 
+note[330]: tableau de reels
+DEBUT
+afficher_tab(note) 
+Passage de tableaux à une fonction
+Eva ANSERMIN & Romuald GRIGNON
+30
+<<<PAGE>>>
+● Plus général !
+PROCEDURE afficher_tab(tab: tableau de reels, taille : entier)
+VARIABLE
+i : entier
+DEBUT
+POUR i de 0 à taille FAIRE
+ECRIRE(tab[i])
+FIN POUR 
+FIN
+VARIABLE 
+note[330]: tableau de reels
+DEBUT
+afficher_tab(note, 330) 
+Passage de tableaux à une fonction
+Eva ANSERMIN & Romuald GRIGNON
+31
+<<<PAGE>>>
+Passage de tableaux à une fonction
+● Si un tableau passé en argument est modifié dans une fonction, il sera modifié 
+dans le reste du programme sans avoir besoin d’utiliser de return!  
+PROCEDURE increm_tab(tab: tableau de reels, taille : entier)
+VARIABLE
+i : entier
+DEBUT
+POUR i de 0 à taille FAIRE
+tab[i] <- tab[i]+1
+FIN POUR 
+FIN
+VARIABLE 
+note[330]: tableau de reels
+DEBUT
+increm_tab(note, 330) // note sera modifiée !! 
+Eva ANSERMIN & Romuald GRIGNON
+32
+<<<PAGE>>>
+III. Tableaux en C
+Eva ANSERMIN & Romuald GRIGNON
+33
+<<<PAGE>>>
+Déclaration et manipulation d’un tableau : langage C
+● Déclaration d’un tableau statique :
+type nomTableau[taille]
+● Manipulation :
+Accéder à la (i+1)ème case : nomTableau[i], 0 ≤ i < taille.
+● Initialisation :
+On peut initialiser toutes les cases du tableau lors de la déclaration:
+type nomTableau[taille]={val1, val2, val3, …}
+Les cases non indiquées sont mises à zéros
+Eva ANSERMIN & Romuald GRIGNON
+34
+<<<PAGE>>>
+Déclaration et manipulation d’un tableau :  langage C
+● Exemple
+int main(){
+float note[330]={0}; // met toutes les cases à 0
+note[0]=15;
+note[10]=13;
+printf(“La note du premier étudiant est %f”,note[0]);
+return 0;
+}
+Eva ANSERMIN & Romuald GRIGNON
+35
+<<<PAGE>>>
+Parcours d’un tableau : langage C
+● Exemple
+int main(){
+float note[330]={0}; // met toutes les cases à 0
+note[0]=15;
+note[10]=13;
+printf(“Les notes des étudiants sont:”);
+for (i=0; i<330 ; i++){// boucle pour parcourir le tableau
+printf(“%f”,note[i]);
+}
+return 0;
+}
+Eva ANSERMIN & Romuald GRIGNON
+36
+<<<PAGE>>>
+Passage de tableaux à une fonction : langage C
+void afficher_tab(float tab[], int taille){    // /!\ au []
+int i;
+for (i=0;i<taille;i++){
+printf(“%f”,tab[i]);
+}
+}
+int main(){
+float note[330];
+…
+afficher_tab(note, 330);
+return 0;
+}
+Eva ANSERMIN & Romuald GRIGNON
+37
+<<<PAGE>>>
+IV. Les constantes
+Eva ANSERMIN & Romuald GRIGNON
+38
+<<<PAGE>>>
+Gestion de la taille du tableau 
+● La taille du tableau est fixe. Il faut donc toujours utiliser la 
+même valeur dans le code.
+● 3 possibilités :
+○ Ecrire la valeur qui correspond à sa taille tout le temps ! 
+( comme on a fait jusqu’ici )
+Eva ANSERMIN & Romuald GRIGNON
+39
+<<<PAGE>>>
+Gestion de la taille du tableau 
+● La taille du tableau est fixe. Il faut donc toujours utiliser la 
+même valeur dans le code.
+● 3 possibilités :
+○ Ecrire la valeur qui correspond à sa taille tout le temps ! 
+( comme on a fait jusqu’ici )
+○ Points négatifs : 
+■ Il faut s’en souvenir 
+■ Si on souhaite changer entre deux exécutions, il 
+faudra changer la valeur partout !
+Eva ANSERMIN & Romuald GRIGNON
+40
+<<<PAGE>>>
+Gestion de la taille du tableau 
+Eva ANSERMIN & Romuald GRIGNON
+41
+● La taille du tableau est fixe. Il faut donc toujours utiliser la 
+même valeur dans le code.
+● 3 possibilités :
+○ Ecrire la valeur qui correspond à sa taille tous le temps ! 
+( comme on a fait jusqu’ici )
+○ Ecrire la taille du tableau dans une variable.
+<<<PAGE>>>
+Gestion de la taille du tableau 
+● La taille du tableau est fixe. Il faut donc toujours utiliser la 
+même valeur dans le code.
+● 3 possibilités :
+○ Ecrire la valeur qui correspond à sa taille tous le temps ! 
+( comme on a fait jusqu’ici )
+○ Ecrire la taille du tableau dans une variable.
+■ Points négatifs : 
+● C’est dangereux : il ne faut pas modifier la 
+valeur de la variable en cours de code !
+● Certains compilateurs ne l’acceptent pas. Eva ANSERMIN & Romuald GRIGNON
+42
+<<<PAGE>>>
+Gestion de la taille du tableau 
+● La taille du tableau est fixe. Il faut donc toujours utiliser la 
+même valeur dans le code.
+● 3 possibilités :
+○ Ecrire la valeur qui correspond à sa taille tous le temps ! 
+( comme on a fait jusqu’ici )
+○ Ecrire la taille du tableau dans une variable.
+○ Utiliser une constante. 
+Eva ANSERMIN & Romuald GRIGNON
+43
+<<<PAGE>>>
+Les constantes
+● Les constantes sont des données dont la valeur est fixée (au contraire des 
+variables).
+● Les constantes sont dites globales : elle sont accessibles par l’ensemble du code 
+(au contraire des variables locales qui ne sont valables que dans les fonctions 
+dans lesquelles elles sont déclarées).
+● Par convention, le nom des constantes en est MAJUSCULE
+● Pratique pour les tailles de tableaux qui ne doivent pas être modifiées !
+Eva ANSERMIN & Romuald GRIGNON
+44
+<<<PAGE>>>
+Les constantes
+● En pseudo-code 
+PROGRAMME test_tableau
+Constante TAILLE1 <- 10
+Constante TAILLE2 <- 200
+VARIABLE
+tab1[TAILLE1]: tableau de reels
+tab2[TAILLE2] :tableau d’entiers
+…
+DEBUT
+POUR i de 0 à TAILLE1 FAIRE
+…
+Partout dans le code TAILLE1 sera 
+remplacé par 10 et TAILLE2 par 200
+Eva ANSERMIN & Romuald GRIGNON
+45
+<<<PAGE>>>
+Les constantes
+● En langage C
+#include<stdio.h>
+#define TAILLE1 10
+#define TAILLE2 200
+int main(){
+float tab1[TAILLE1];
+int tab2[TAILLE2];
+…
+for (i=0; i<TAILLE1;i++)
+…
+Partout dans le code TAILLE1 sera 
+remplacé par 10 et TAILLE2 par 200
+Eva ANSERMIN & Romuald GRIGNON
+46
+<<<PAGE>>>
+Définition de constantes en C
+http://www.spencerauthor.com/pblproblems/
+● On peut utiliser #define pour remplacer une expression par une autre.
+Syntaxe :  #define symbole expression : 
+#define N 10
+#define VRAI 1
+#defince FAUX 0
+#define PI 3.141592655359
+● Les commandes commençant par # sont toujours en premier dans le code. 
+Ces commandes sont des directives du compilateur. On les appelle 
+directives du préprocesseur.
+Eva ANSERMIN & Romuald GRIGNON
+47
+<<<PAGE>>>
+Structure générale d’un fichier .c 
+#Instructions du préprocesseur 
+(inclusion bibliothèque)
++ définition constante 
+Code de la fonction 1
+Code de la fonction 2
+….
+Code de la fonction main
+Eva ANSERMIN & Romuald GRIGNON
+48
+<<<PAGE>>>
+V. Les chaînes de caractères
+Eva ANSERMIN & Romuald GRIGNON
+49
+<<<PAGE>>>
+Tableau en C : cas des chaînes de caractères. 
+● Le type chaîne de caractères n’existe pas directement en C. Ceci est dû au fait 
+qu’on ne connait pas le nombre de caractères nécessaire à l’avance. 
+● Une chaîne de caractères est une suite ordonnée de caractères.
+Eva ANSERMIN & Romuald GRIGNON
+50
+<<<PAGE>>>
+Tableau en C : cas des chaînes de caractères. 
+● Le type chaîne de caractères n’existe pas directement en C. Ceci est dû au fait 
+qu’on ne connait pas le nombre de caractères nécessaire à l’avance. 
+● Une chaîne de caractères est une suite ordonnée de caractères.
+● Pour gérer un ensemble de caractères, on va utiliser un tableau de caractères.
+B o n j o u r
+Eva ANSERMIN & Romuald GRIGNON
+51
+<<<PAGE>>>
+• Si on veut stocker/ afficher un mot on peut donc faire ceci: 
+Tableau en C : cas des chaînes de caractères. 
+int i=0;
+char chaine[6]; // Tableau de 6 char pour stocker S-a-l-u-t
+chaine[0] = 'S’; //toujours mettre les ‘ ‘ quand on manipule des caractères
+chaine[1] = 'a';
+chaine[2] = 'l';
+chaine[3] = 'u';
+chaine[4] = ‘t’;
+// On peut écrire aussi directement chaine= " Salut" !
+// afficher le mot: 
+for(i=0;i<5;i++){
+printf(“%c“, chaine[i]);
+}
+Eva ANSERMIN & Romuald GRIGNON
+52
+<<<PAGE>>>
+• Problème : on ne connait pas toujours le nombre de caractères nécessaire! 
+• Pour cela, un utilise un caractère de fin de chaîne : ‘\0’ ; 
+• Exemple : 
+char maChaine[8] = ‘Salut’;
+S a l u t \0maChaine
+Tableau en C : cas des chaînes de caractères. 
+Eva ANSERMIN & Romuald GRIGNON
+53
+<<<PAGE>>>
+• Pour afficher un mot/ phrase sans en connaitre la taille : 
+Tableau en C : cas des chaînes de caractères. 
+int i=0;
+// afficher le mot: 
+while(chaine[i] != ‘\0 ’){
+printf(“%c“, chaine[i]);
+i++
+}
+Eva ANSERMIN & Romuald GRIGNON
+54
+<<<PAGE>>>
+• Heureusement le C peut faire cela automatiquement grâce au format %s.
+Tableau en C : cas des chaînes de caractères. 
+char nom[100];    // pourquoi 100 ?
+printf(“Comment tu t’appelles? “);
+scanf(“%s“,nom); // rempli automatiquement le tableau nom et met \0 à la fin, 
+pas de & !!!
+printf(“Bonjour %s”, nom); //affiche les cases de nom jusqu’à ‘\0’
+}
+• La bibliothèque string.h comporte des fonctions utiles à la gestion des chaînes 
+de caractères.
+Eva ANSERMIN & Romuald GRIGNON
+55
+<<<PAGE>>>
+VI. Les tableaux à deux dimensions
+Eva ANSERMIN & Romuald GRIGNON
+56
+<<<PAGE>>>
+• Les tableaux peuvent avoir deux ou plusieurs dimensions !
+• Les tableau à deux dimensions peuvent être vus comme des matrices. 
+• On manipule alors deux indices : l’un représentant les lignes, l’autre les 
+colonnes. 
+Tableau à deux dimensions : principe
+1 10 15 .. … … 20
+3 … … … … … 1
+6 … … … … … 7
+7 … … … … … 50
+10 … … … … … 16
+18 … … … … … 7
+13 … … … … … 12
+Eva ANSERMIN & Romuald GRIGNON
+57
+<<<PAGE>>>
+• Les tableaux peuvent avoir deux ou plusieurs dimensions !
+• Les tableau à deux dimensions peuvent être vus comme des matrices. 
+• On manipule alors deux indices : l’un représentant les lignes, l’autre les 
+colonnes. 
+Tableau à deux dimensions : principe
+0 1 2 … … Nombre colonne -2 Nombre colonne -1
+0 1 10 15 .. … … 20
+1 3 … … … … … 1
+2 6 … … … … … 7
+… 7 … … … … … 50
+… 10 … … … … … 16
+Nombre ligne -2 18 … … … … … 7
+Nombre ligne -1 13 … … … … … 12
+Indice ligne
+Indice colonne
+Eva ANSERMIN & Romuald GRIGNON
+58
+<<<PAGE>>>
+• En pseudo –code :
+• Déclaration du tableau :
+nomTableau [nbLignes, nbColonnes] : TABLEAU DE type
+• Accéder à la ième ligne, jème colonne : 
+nomTableau[i,j], 0 ≤ i < nbLignes, 0 ≤ j < nbColonnes
+Tableau à deux dimensions : déclaration
+• En C : 
+• Déclaration : 
+type monTab2D[nbLignes][nbColonnes]; 
+exemple : int monTab2D[3][4] // Tableau de 3 lignes et 4 colonnes ;
+• Accéder à la ième ligne, jème colonne : 
+nomTableau[i][j], 0 ≤ i < nbLignes, 0 ≤ j < nbColonnes
+Eva ANSERMIN & Romuald GRIGNON
+59
+<<<PAGE>>>
+Tableau à deux dimensions
+• C’est ce  principe qui est utilisé pour l’initiation d’un tableau: 
+T <- { {0, 1, 1, 0},  {0, -2, 0, 7},  {-1, 1, 0, 0} }
+0 1 1 0
+0 -2 0 7
+-1 1 0 0
+• Un tableau 2D peut également être vu comme un tableau de tableaux : 
+chaque ligne est un sous-tableau.
+Eva ANSERMIN & Romuald GRIGNON
+60
+<<<PAGE>>>
+• Dans la mémoire le stockage des valeurs est consécutif ! 
+Mémoire 
+0 1 1 0 0 -2 0 7 -1 1 0 0
+0 1 1 0
+0 -2 0 7
+-1 1 0 0
+Seconde ligne
+T[0][0] T[1][0] T[2][0]
+Première ligne Troisième ligne
+Eva ANSERMIN & Romuald GRIGNON
+61
+<<<PAGE>>>
+• Un tableau 2D en C est équivalent à un tableau de taille : 
+nombre_ligne * nombre_colonne.
+• Lors de la manipulation du tableau le calcul suivant est donc effetcué :
+tab2D[i][j] ⇔ case du tableau n° i * nombre_colonne + j
+Mémoire 
+0 1 1 0 0 -2 0 7 -1 1 0 0
+Seconde ligne
+T[0][0] T[1][0] T[2][0]
+Première ligne Troisième ligne
+Eva ANSERMIN & Romuald GRIGNON
+62
+<<<PAGE>>>
+• Les tableaux permettent de stocker un ensemble de variables.  Ils peuvent avoir
+plusieurs dimensions et sont de taille fixe.
+• Les valeurs du tableau sont stockées les unes à la suite des autres dans la mémoire. 
+• Attention aux indices !
+En résumé 
+Eva ANSERMIN & Romuald GRIGNON
+63

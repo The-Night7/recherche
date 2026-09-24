@@ -1,0 +1,266 @@
+Programmation C
+Variables et Fonctions
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 26
+<<<PAGE>>>
+Fonctions
+ING1 Programmation C CY Tech 2 / 26
+<<<PAGE>>>
+Rappel
+Structure d’un fichier .c
+/*! Commentaires de fichiers */
+Macro-pr´ eprocesseur
+/*! Commentaires de la fonction 1 */
+Fonction 1
+/*! Commentaires de la fonction 2 */
+Fonction 2
+...
+/*! Commentaires de la fonction main */
+main
+ING1 Programmation C CY Tech 3 / 26
+<<<PAGE>>>
+Prototype
+type de retour
+nom de la fonction
+type des param` etres
+´ eventuellement le nom des param` etres
+se termine par un ; ⇔ n’inclut pas le corps de la fonction
+permet de savoir comment utiliser la fonction 
+i n t abs ( i n t) ;
+i n t l a b s (long i n t ) ;
+i n t p r i n t f ( const char ∗ format , . . . ) ;
+ 
+d´ eclare une fonction
+ING1 Programmation C CY Tech 4 / 26
+<<<PAGE>>>
+Param` etres
+int main (int argc, char** argv) ;
+Type de retour
+Nom de la fonction
+Param` etres formels
+Figure – Exemple de prototype
+ING1 Programmation C CY Tech 5 / 26
+<<<PAGE>>>
+Param` etres
+Formel ou Effectif
+Formel
+▶ Nom du param` etre
+▶ Utile pour la d´ eclaration
+Effectif
+▶ Valeur du param` etre
+▶ Uniquement lors de l’ex´ ecution
+ING1 Programmation C CY Tech 6 / 26
+<<<PAGE>>>
+M´ ecanisme d’appel
+Passage par valeur (ou par copie)
+´Evaluation des param` etres appelant
+Copie de la valeur de ceux-ci ` a la fonction
+Ex´ ecution de la fonction
+Retour de la valeur obtenue
+ING1 Programmation C CY Tech 7 / 26
+<<<PAGE>>>
+Contexte d’ex´ ecution
+Ce que conna ˆ ıt la fonction
+▶ ses param` etres
+▶ les variables globales
+▶ les variables locales
+Ne conna ˆ ıt pas les variables des autres fonctions
+ING1 Programmation C CY Tech 8 / 26
+<<<PAGE>>>
+Fonctions, proc´ edures ?
+procedure afficheCarres(debut, fin: entier)
+.../...
+fin procedure
+fonction calculCarres(nb: entier): entier
+.../...
+fin fonction
+ 
+void a f f i c h e C a r r e s ( i n t i n t d e b u t , i n t i n t f i n ) {
+. . . / . . .
+}
+i n t c a l c u l C a r r e s ( i n t i n t n b ) {
+. . . / . . .
+return ( . . . ) ;
+}
+ 
+ING1 Programmation C CY Tech 9 / 26
+<<<PAGE>>>
+Attention
+Ordre de d´ efinition des fonctions
+Une fonction ne connait que les fonctions d´ efinies A VANTelle.
+ING1 Programmation C CY Tech 10 / 26
+<<<PAGE>>>
+Variables
+ING1 Programmation C CY Tech 11 / 26
+<<<PAGE>>>
+Types de variables
+ 
+#i n c l u d e<s t d i o . h>
+i n t G i n t g l o b a l ; // V a r i a b l e g l o b a l e
+i n t main ( i n t argc , char ∗∗ a r g v ) {
+i n t i n t l o c a l ; // V a r i a b l e l o c a l e
+. . . / . . .
+}
+ 
+Une variable a la dur´ ee de vie de son bloc
+ING1 Programmation C CY Tech 12 / 26
+<<<PAGE>>>
+Types de variables
+Types de variables
+Globales
+▶ `A d´ eclarer entre le d´ ebut du fichier et la premi` ere fonction. Id´ ealement
+entre les macros-pr´ eprocesseurs et le d´ ebut
+▶ Ne correspond pas ` a la d´ eclaration de variable dans leProgramme
+▶ Interdit d’utilisation ` a CY Tech, sauf obligation
+Locales
+▶ Locale ` a la fonction
+▶ Dur´ ee de vie limit´ ee⇔ n’existe que pendant le temps d’ex´ ecution de la
+fonction
+ING1 Programmation C CY Tech 13 / 26
+<<<PAGE>>>
+Qualificatif
+const : variable ne doit pas ˆ etre modifiable
+▶ g´ en´ eralement pour les param` etres de m´ ethodes en ”lecture seul”
+volatile : variable peut ˆ etre modifi´ ee par d’autres programmes
+▶ variable partag´ ee par d’autres programme
+▶ zone de m´ emoire partag´ ee
+▶ ...
+register : variable doit ˆ etre plac´ ee dans un registre processeur
+(variable utilis´ ee fr´ equement)
+extern : variable d´ efinie ailleurs
+static : permet d’avoir une variable avec une dur´ ee de vie de la
+dur´ ee du programme
+ING1 Programmation C CY Tech 14 / 26
+<<<PAGE>>>
+Test de fonction
+ING1 Programmation C CY Tech 15 / 26
+<<<PAGE>>>
+Test
+Fonction
+Doit tester ses param` etres
+Utilisation des assertions peut ˆ etre utile pendant la phase de codage a
+Utilisation de test et de code d’erreur
+D´ efinition de constante pour une meilleure lisibilit´ e
+a. Attention aux effets de bord !
+ING1 Programmation C CY Tech 16 / 26
+<<<PAGE>>>
+Constantes symboliques
+Remplacer une ”expression” par un symbole dans le code
+Permet de clarifier le code
+#define symbole expression
+▶ #define N 10
+▶ #define ERREUR SAISIE -1
+▶ #define M 20;
+Utilisation des majuscules
+´Eviter de mettre un ; ` a la fin d’un define
+ING1 Programmation C CY Tech 17 / 26
+<<<PAGE>>>
+Exemple
+ 
+#i n c l u d e<s t d i o . h>
+#i n c l u d e< s t d l i b . h>
+#d e f i n eERREUR SAISIE −1
+i n t main ( i n t argc , char ∗∗ a r g v ) {
+. . . / . . .
+i n t r e t o u r = s c a n f ( ”%d” , & i n t v a l ) ;
+// t e s t de l a l e c t u r e
+i f ( i n t r e t o u r = = 0) {
+. . . / . . .
+/∗ on q u i t t e a v e c l e c o d e d ’ e r r e u r
+a s s o c i e a l a s a i s i e ∗/
+e x i t ( ERREUR SAISIE ) ;
+}
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 18 / 26
+<<<PAGE>>>
+Doxygen
+ 
+/ ∗ !
+\ d e f ERREUR SAISIE
+Code d ’ e r r e u r a s s o c i e a l a s a i s i e
+∗/
+#d e f i n eERREUR SAISIE −1
+ 
+ING1 Programmation C CY Tech 19 / 26
+<<<PAGE>>>
+Assertion
+ 
+i n t d i v i s e ( i n t i n t a , i n t i n t b ) {
+a s s e r t ( i n t b != 0 ) ;
+return ( i n t a / i n t b ) ;
+}
+ 
+Utile lors de la phase de codage
+Peut ˆ etre enlev´ e en utilisant-DNDEBUG lors de la compilation
+ING1 Programmation C CY Tech 20 / 26
+<<<PAGE>>>
+Test de param` etres et autres
+TOUS les param` etres d’une fonction devraient ˆ etre test´ es, sauf si la
+fonction admet un domaine de d´ efinition infini
+Deux cas peuvent
+▶ valeur en dehors de la plage d’utilisation mais acceptable ⇔ utilisation
+de test et impression de message sur la sortie d’erreur standard
+(fprintf et strerror)
+▶ valeur inacceptable ⇔ utilisation d’ exit pour quitter le programme
+Les valeurs de retour des fonctions doivent ˆ etre test´ ees, sauf si l’on
+est sˆ ur qu’il n’y aura JAMAIS d’erreur
+ING1 Programmation C CY Tech 21 / 26
+<<<PAGE>>>
+Exemple
+ 
+i n t r e t o u r = s c a n f ( ”%d” , & i n t v a l ) ;
+/∗ t a n t que l a s a i s i e e s t i n c o r r e c t e ,
+on redemande une s a i s i e ∗/
+while ( i n t r e t o u r = = 0) {
+f p r i n t f ( s t d e r r , ” E n t r e e i n c o r r e c t e \n” ) ;
+p r i n t f ( ” E n t r e rune a u t r e v a l e u r : ” ) ;
+// A t t e n t i o n aux p r o b l e m e s de b u f f e r !
+i n t r e t o u r = s c a n f ( ”%d” , & i n t v a l ) ;
+}
+a s s e r t ( i n t v a l < 0 ) ;
+i f ( i n t v a l < 0) {
+e x i t ( ERREUR UTILISATEUR ) ;
+}
+ 
+ING1 Programmation C CY Tech 22 / 26
+<<<PAGE>>>
+Traitement des erreurs
+Besoin de d´ etecter les erreurs possibles
+Indiquer ce qui ne va pas
+Donner des messages clairs !
+Utiliser le bon canal de communication ⇔ stderr
+ING1 Programmation C CY Tech 23 / 26
+<<<PAGE>>>
+Utilisation de fprintf
+Permet de sp´ ecifier un fichier de sortie
+Unix : trois fichiers ouverts par d´ efaut
+▶ entr´ ee standard :stdin
+▶ sortie standard : stdout
+▶ sortie d’erreur standard : stderr
+S’utilise comme printf
+ING1 Programmation C CY Tech 24 / 26
+<<<PAGE>>>
+Exemple
+ 
+i n t r e t o u r = s c a n f ( ”%d” , & i n t v a l ) ;
+// T e s t de l a s a i s i e
+i f ( i n t r e t o u r = = 0) {
+f p r i n t f ( s t d e r r , ” E n t r e e i n c o r r e c t e \n” ) ;
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 25 / 26
+<<<PAGE>>>
+Utilisation de strerror
+Possibilit´ e de ”remonter” l’erreur syst` eme
+Utilisation de strerror avec errno
+▶ errno : positionn´ e automatiquement par les fonctions
+▶ utilisation uniquement quand possible ...
+▶ ouverture de fichiers, copie, ...
+ 
+f p r i n t f ( s t d e r r , ”%s \n” , s t r e r r o r ( e r r n o ) ) ;
+ 
+ING1 Programmation C CY Tech 26 / 26

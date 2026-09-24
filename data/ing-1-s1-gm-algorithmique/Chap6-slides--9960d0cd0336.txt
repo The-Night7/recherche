@@ -1,0 +1,1403 @@
+Maps et tables de hachage
+Algorithmique II
+EISTI – ING1
+2012–2013
+R´ emi Vernay
+remi.vernay@eisti.eu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 1 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Association ≪ clef, valeur ≫
+Une clef donne une seule valeur
+Une valeur peut ˆ etre obtenue par plusieurs clefs
+Aucune valeur n’existe sans clef
+Aucune clef n’existe sans valeur
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 2 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et V l’ensemble des valeurs
+C
+c1
+c2
+c3
+c4
+c5
+V
+v1
+v2
+v3
+v4
+f : C −→ V
+ci ↦−→ f (ci)
+Il s’agit donc d’une application surjective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 3 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Application surjective
+▶ probl` eme
+⋆ f (cj) = f (ck)⇒ aﬀectation de f (cj) ´ ecrasef (ck)
+▶ solution
+⋆ utilisation d’alv´ eoles
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 4 / 24
+1
+<<<PAGE>>>
+Maps et tables de hachage
+Algorithmique II
+EISTI – ING1
+2012–2013
+R´ emi Vernay
+remi.vernay@eisti.eu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 1 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Association ≪ clef, valeur ≫
+Une clef donne une seule valeur
+Une valeur peut ˆ etre obtenue par plusieurs clefs
+Aucune valeur n’existe sans clef
+Aucune clef n’existe sans valeur
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 2 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et V l’ensemble des valeurs
+C
+c1
+c2
+c3
+c4
+c5
+V
+v1
+v2
+v3
+v4
+f : C −→ V
+ci ↦−→ f (ci)
+Il s’agit donc d’une application surjective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 3 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Application surjective
+▶ probl` eme
+⋆ f (cj) = f (ck)⇒ aﬀectation de f (cj) ´ ecrasef (ck)
+▶ solution
+⋆ utilisation d’alv´ eoles
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 4 / 24
+2
+<<<PAGE>>>
+Maps et tables de hachage
+Algorithmique II
+EISTI – ING1
+2012–2013
+R´ emi Vernay
+remi.vernay@eisti.eu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 1 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Association ≪ clef, valeur ≫
+Une clef donne une seule valeur
+Une valeur peut ˆ etre obtenue par plusieurs clefs
+Aucune valeur n’existe sans clef
+Aucune clef n’existe sans valeur
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 2 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et V l’ensemble des valeurs
+C
+c1
+c2
+c3
+c4
+c5
+V
+v1
+v2
+v3
+v4
+f : C −→ V
+ci ↦−→ f (ci)
+Il s’agit donc d’une application surjective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 3 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Application surjective
+▶ probl` eme
+⋆ f (cj) = f (ck)⇒ aﬀectation de f (cj) ´ ecrasef (ck)
+▶ solution
+⋆ utilisation d’alv´ eoles
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 4 / 24
+3
+<<<PAGE>>>
+Maps et tables de hachage
+Algorithmique II
+EISTI – ING1
+2012–2013
+R´ emi Vernay
+remi.vernay@eisti.eu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 1 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Association ≪ clef, valeur ≫
+Une clef donne une seule valeur
+Une valeur peut ˆ etre obtenue par plusieurs clefs
+Aucune valeur n’existe sans clef
+Aucune clef n’existe sans valeur
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 2 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et V l’ensemble des valeurs
+C
+c1
+c2
+c3
+c4
+c5
+V
+v1
+v2
+v3
+v4
+f : C −→ V
+ci ↦−→ f (ci)
+Il s’agit donc d’une application surjective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 3 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Application surjective
+▶ probl` eme
+⋆ f (cj) = f (ck)⇒ aﬀectation de f (cj) ´ ecrasef (ck)
+▶ solution
+⋆ utilisation d’alv´ eoles
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 4 / 24
+4
+<<<PAGE>>>
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et A l’ensemble des alv´ eoles
+C
+c1
+c2
+c3
+c4
+c5
+A
+a1
+a2
+a3
+a4
+a5
+g : C −→ A
+ci ↦−→ g(ci) = ai
+Il s’agit donc d’une application bijective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 5 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Utilisation d’alv´ eoles
+▶ les clefs sont li´ ees aux alv´ eoles
+▶ la donn´ ee est stock´ ee dans l’alv´ eole
+▶ modiﬁer le contenu d’une alv´ eole n’aﬀecte aucune autre
+▶ concept th´ eorique identique
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 6 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Propri´ et´ es
+▶ connaissance de la m´ ethode de stockage des clefs inutile
+▶ connaissance de la m´ ethode de stockage des valeurs inutile
+▶ acc` es direct ` a chaque valeur en fonction de sa clef
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 7 / 24
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+D´ eclaration du conteneur Map
+▶ un type pour les clefs
+▶ un type pour les valeurs
+map: Map<type clef> de type valeur
+Exemple :
+map: Map<cha^ ıne> de r´ eel
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 8 / 24
+5
+<<<PAGE>>>
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et A l’ensemble des alv´ eoles
+C
+c1
+c2
+c3
+c4
+c5
+A
+a1
+a2
+a3
+a4
+a5
+g : C −→ A
+ci ↦−→ g(ci) = ai
+Il s’agit donc d’une application bijective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 5 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Utilisation d’alv´ eoles
+▶ les clefs sont li´ ees aux alv´ eoles
+▶ la donn´ ee est stock´ ee dans l’alv´ eole
+▶ modiﬁer le contenu d’une alv´ eole n’aﬀecte aucune autre
+▶ concept th´ eorique identique
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 6 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Propri´ et´ es
+▶ connaissance de la m´ ethode de stockage des clefs inutile
+▶ connaissance de la m´ ethode de stockage des valeurs inutile
+▶ acc` es direct ` a chaque valeur en fonction de sa clef
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 7 / 24
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+D´ eclaration du conteneur Map
+▶ un type pour les clefs
+▶ un type pour les valeurs
+map: Map<type clef> de type valeur
+Exemple :
+map: Map<cha^ ıne> de r´ eel
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 8 / 24
+6
+<<<PAGE>>>
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et A l’ensemble des alv´ eoles
+C
+c1
+c2
+c3
+c4
+c5
+A
+a1
+a2
+a3
+a4
+a5
+g : C −→ A
+ci ↦−→ g(ci) = ai
+Il s’agit donc d’une application bijective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 5 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Utilisation d’alv´ eoles
+▶ les clefs sont li´ ees aux alv´ eoles
+▶ la donn´ ee est stock´ ee dans l’alv´ eole
+▶ modiﬁer le contenu d’une alv´ eole n’aﬀecte aucune autre
+▶ concept th´ eorique identique
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 6 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Propri´ et´ es
+▶ connaissance de la m´ ethode de stockage des clefs inutile
+▶ connaissance de la m´ ethode de stockage des valeurs inutile
+▶ acc` es direct ` a chaque valeur en fonction de sa clef
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 7 / 24
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+D´ eclaration du conteneur Map
+▶ un type pour les clefs
+▶ un type pour les valeurs
+map: Map<type clef> de type valeur
+Exemple :
+map: Map<cha^ ıne> de r´ eel
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 8 / 24
+7
+<<<PAGE>>>
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Soient C l’ensemble des clefs et A l’ensemble des alv´ eoles
+C
+c1
+c2
+c3
+c4
+c5
+A
+a1
+a2
+a3
+a4
+a5
+g : C −→ A
+ci ↦−→ g(ci) = ai
+Il s’agit donc d’une application bijective.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 5 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Utilisation d’alv´ eoles
+▶ les clefs sont li´ ees aux alv´ eoles
+▶ la donn´ ee est stock´ ee dans l’alv´ eole
+▶ modiﬁer le contenu d’une alv´ eole n’aﬀecte aucune autre
+▶ concept th´ eorique identique
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 6 / 24
+I – Maps
+1 – D´ eﬁnition
+D´ eﬁnition
+Propri´ et´ es
+▶ connaissance de la m´ ethode de stockage des clefs inutile
+▶ connaissance de la m´ ethode de stockage des valeurs inutile
+▶ acc` es direct ` a chaque valeur en fonction de sa clef
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 7 / 24
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+D´ eclaration du conteneur Map
+▶ un type pour les clefs
+▶ un type pour les valeurs
+map: Map<type clef> de type valeur
+Exemple :
+map: Map<cha^ ıne> de r´ eel
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 8 / 24
+8
+<<<PAGE>>>
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+proc´ edure cr´ eerMap(map: Map<´El´ ement> de ´El´ ement (S))
+proc´ edure stocker(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement ; valeur:´El´ ement)
+proc´ edure supprimer(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement)
+fonction estVide(map: Map <´El´ ement> de ´El´ ement): Bool´ een
+fonction cardinalite(map: Map <´El´ ement> de ´El´ ement): Entier
+fonction clefExiste(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement): Bool´ een
+fonction valeurExiste(map: Map <´El´ ement> de ´El´ ement ; valeur:´El´ ement): Bool´ een
+fonction valeurDe(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement):´El´ ement
+proc´ edure listeClefs(map: Map<´El´ ement> de ´El´ ement ; clefs: Liste de´El´ ement (S))
+proc´ edure copier(map1: Map<´El´ ement> de ´El´ ement ; map2: Map<´El´ ement> de ´El´ ement (S))
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 9 / 24
+I – Maps
+3 – Pr´ econditions
+Pr´ econditions
+cr´ eerMap(map)⇔ aucune
+stocker(map,clef,valeur)⇔ map initialis´ ee
+supprimer(map,clef)⇔ clef existante
+estVide(map)⇔ map initialis´ ee
+cardinalite(map)⇔ map initialis´ ee
+clefExiste(map,clef)⇔ map initialis´ ee
+valeurExiste(map,valeur)⇔ map initialis´ ee
+valeurDe(map,clef)⇔ clef existante
+listeClefs(map,clefs)⇔ map initialis´ ee
+copier(map1,map2)⇔ map1 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 10 / 24
+I – Maps
+4 – Postconditions
+Postconditions
+cr´ eerMap(map)⇒ map initialis´ ee
+stocker(map,clef,valeur)⇒ cardinalite(map)>0
+supprimer(map,clef)⇒ map initialis´ ee
+estVide(map)⇒ aucune
+cardinalite(map)⇒ aucune
+clefExiste(map,clef)⇒ aucune
+valeurExiste(map,valeur)⇒ aucune
+valeurDe(map,clef)⇒ aucune
+listeClefs(map,clefs)⇒ clefs initialis´ ee avec des clefs existantes
+copier(map1,map2)⇒ map2 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 11 / 24
+I – Maps
+5 – Exemple
+Exemple
+Saisie de noms d’´ etudiants avec leur moyenne.
+nb, i: Entier
+valeur: r´ eel
+clef: Cha ˆ ıne
+mapMoyennes: Map<cha ˆ ıne> de r´ eel
+cr´ eerMap(mapMoyennes)
+r´ ep´ eter
+´ ecrire(”Combien d’´ etudiants ?”)
+lire(nb)
+jusqu’` anb/greaterorequalslant0
+pour i←1 ` anb faire
+r´ ep´ eter
+´ ecrire(”Nom de l’´ etudiant ?”)
+lire(clef)
+jusqu’` a non(clefExiste(mapMoyennes,clef))
+r´ ep´ eter
+´ ecrire(”Sa moyenne ?”)
+lire(valeur)
+jusqu’` a0⩽valeur et valeur⩽20
+stocker(mapMoyennes,clef,valeur)
+ﬁn pour
+. . .R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 12 / 24
+9
+<<<PAGE>>>
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+proc´ edure cr´ eerMap(map: Map<´El´ ement> de ´El´ ement (S))
+proc´ edure stocker(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement ; valeur:´El´ ement)
+proc´ edure supprimer(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement)
+fonction estVide(map: Map <´El´ ement> de ´El´ ement): Bool´ een
+fonction cardinalite(map: Map <´El´ ement> de ´El´ ement): Entier
+fonction clefExiste(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement): Bool´ een
+fonction valeurExiste(map: Map <´El´ ement> de ´El´ ement ; valeur:´El´ ement): Bool´ een
+fonction valeurDe(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement):´El´ ement
+proc´ edure listeClefs(map: Map<´El´ ement> de ´El´ ement ; clefs: Liste de´El´ ement (S))
+proc´ edure copier(map1: Map<´El´ ement> de ´El´ ement ; map2: Map<´El´ ement> de ´El´ ement (S))
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 9 / 24
+I – Maps
+3 – Pr´ econditions
+Pr´ econditions
+cr´ eerMap(map)⇔ aucune
+stocker(map,clef,valeur)⇔ map initialis´ ee
+supprimer(map,clef)⇔ clef existante
+estVide(map)⇔ map initialis´ ee
+cardinalite(map)⇔ map initialis´ ee
+clefExiste(map,clef)⇔ map initialis´ ee
+valeurExiste(map,valeur)⇔ map initialis´ ee
+valeurDe(map,clef)⇔ clef existante
+listeClefs(map,clefs)⇔ map initialis´ ee
+copier(map1,map2)⇔ map1 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 10 / 24
+I – Maps
+4 – Postconditions
+Postconditions
+cr´ eerMap(map)⇒ map initialis´ ee
+stocker(map,clef,valeur)⇒ cardinalite(map)>0
+supprimer(map,clef)⇒ map initialis´ ee
+estVide(map)⇒ aucune
+cardinalite(map)⇒ aucune
+clefExiste(map,clef)⇒ aucune
+valeurExiste(map,valeur)⇒ aucune
+valeurDe(map,clef)⇒ aucune
+listeClefs(map,clefs)⇒ clefs initialis´ ee avec des clefs existantes
+copier(map1,map2)⇒ map2 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 11 / 24
+I – Maps
+5 – Exemple
+Exemple
+Saisie de noms d’´ etudiants avec leur moyenne.
+nb, i: Entier
+valeur: r´ eel
+clef: Cha ˆ ıne
+mapMoyennes: Map<cha ˆ ıne> de r´ eel
+cr´ eerMap(mapMoyennes)
+r´ ep´ eter
+´ ecrire(”Combien d’´ etudiants ?”)
+lire(nb)
+jusqu’` anb/greaterorequalslant0
+pour i←1 ` anb faire
+r´ ep´ eter
+´ ecrire(”Nom de l’´ etudiant ?”)
+lire(clef)
+jusqu’` a non(clefExiste(mapMoyennes,clef))
+r´ ep´ eter
+´ ecrire(”Sa moyenne ?”)
+lire(valeur)
+jusqu’` a0⩽valeur et valeur⩽20
+stocker(mapMoyennes,clef,valeur)
+ﬁn pour
+. . .R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 12 / 24
+10
+<<<PAGE>>>
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+proc´ edure cr´ eerMap(map: Map<´El´ ement> de ´El´ ement (S))
+proc´ edure stocker(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement ; valeur:´El´ ement)
+proc´ edure supprimer(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement)
+fonction estVide(map: Map <´El´ ement> de ´El´ ement): Bool´ een
+fonction cardinalite(map: Map <´El´ ement> de ´El´ ement): Entier
+fonction clefExiste(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement): Bool´ een
+fonction valeurExiste(map: Map <´El´ ement> de ´El´ ement ; valeur:´El´ ement): Bool´ een
+fonction valeurDe(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement):´El´ ement
+proc´ edure listeClefs(map: Map<´El´ ement> de ´El´ ement ; clefs: Liste de´El´ ement (S))
+proc´ edure copier(map1: Map<´El´ ement> de ´El´ ement ; map2: Map<´El´ ement> de ´El´ ement (S))
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 9 / 24
+I – Maps
+3 – Pr´ econditions
+Pr´ econditions
+cr´ eerMap(map)⇔ aucune
+stocker(map,clef,valeur)⇔ map initialis´ ee
+supprimer(map,clef)⇔ clef existante
+estVide(map)⇔ map initialis´ ee
+cardinalite(map)⇔ map initialis´ ee
+clefExiste(map,clef)⇔ map initialis´ ee
+valeurExiste(map,valeur)⇔ map initialis´ ee
+valeurDe(map,clef)⇔ clef existante
+listeClefs(map,clefs)⇔ map initialis´ ee
+copier(map1,map2)⇔ map1 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 10 / 24
+I – Maps
+4 – Postconditions
+Postconditions
+cr´ eerMap(map)⇒ map initialis´ ee
+stocker(map,clef,valeur)⇒ cardinalite(map)>0
+supprimer(map,clef)⇒ map initialis´ ee
+estVide(map)⇒ aucune
+cardinalite(map)⇒ aucune
+clefExiste(map,clef)⇒ aucune
+valeurExiste(map,valeur)⇒ aucune
+valeurDe(map,clef)⇒ aucune
+listeClefs(map,clefs)⇒ clefs initialis´ ee avec des clefs existantes
+copier(map1,map2)⇒ map2 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 11 / 24
+I – Maps
+5 – Exemple
+Exemple
+Saisie de noms d’´ etudiants avec leur moyenne.
+nb, i: Entier
+valeur: r´ eel
+clef: Cha ˆ ıne
+mapMoyennes: Map<cha ˆ ıne> de r´ eel
+cr´ eerMap(mapMoyennes)
+r´ ep´ eter
+´ ecrire(”Combien d’´ etudiants ?”)
+lire(nb)
+jusqu’` anb/greaterorequalslant0
+pour i←1 ` anb faire
+r´ ep´ eter
+´ ecrire(”Nom de l’´ etudiant ?”)
+lire(clef)
+jusqu’` a non(clefExiste(mapMoyennes,clef))
+r´ ep´ eter
+´ ecrire(”Sa moyenne ?”)
+lire(valeur)
+jusqu’` a0⩽valeur et valeur⩽20
+stocker(mapMoyennes,clef,valeur)
+ﬁn pour
+. . .R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 12 / 24
+11
+<<<PAGE>>>
+I – Maps
+2 – M´ ethodes
+M´ ethodes
+proc´ edure cr´ eerMap(map: Map<´El´ ement> de ´El´ ement (S))
+proc´ edure stocker(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement ; valeur:´El´ ement)
+proc´ edure supprimer(map: Map<´El´ ement> de ´El´ ement (E/S) ; clef:´El´ ement)
+fonction estVide(map: Map <´El´ ement> de ´El´ ement): Bool´ een
+fonction cardinalite(map: Map <´El´ ement> de ´El´ ement): Entier
+fonction clefExiste(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement): Bool´ een
+fonction valeurExiste(map: Map <´El´ ement> de ´El´ ement ; valeur:´El´ ement): Bool´ een
+fonction valeurDe(map: Map <´El´ ement> de ´El´ ement ; clef:´El´ ement):´El´ ement
+proc´ edure listeClefs(map: Map<´El´ ement> de ´El´ ement ; clefs: Liste de´El´ ement (S))
+proc´ edure copier(map1: Map<´El´ ement> de ´El´ ement ; map2: Map<´El´ ement> de ´El´ ement (S))
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 9 / 24
+I – Maps
+3 – Pr´ econditions
+Pr´ econditions
+cr´ eerMap(map)⇔ aucune
+stocker(map,clef,valeur)⇔ map initialis´ ee
+supprimer(map,clef)⇔ clef existante
+estVide(map)⇔ map initialis´ ee
+cardinalite(map)⇔ map initialis´ ee
+clefExiste(map,clef)⇔ map initialis´ ee
+valeurExiste(map,valeur)⇔ map initialis´ ee
+valeurDe(map,clef)⇔ clef existante
+listeClefs(map,clefs)⇔ map initialis´ ee
+copier(map1,map2)⇔ map1 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 10 / 24
+I – Maps
+4 – Postconditions
+Postconditions
+cr´ eerMap(map)⇒ map initialis´ ee
+stocker(map,clef,valeur)⇒ cardinalite(map)>0
+supprimer(map,clef)⇒ map initialis´ ee
+estVide(map)⇒ aucune
+cardinalite(map)⇒ aucune
+clefExiste(map,clef)⇒ aucune
+valeurExiste(map,valeur)⇒ aucune
+valeurDe(map,clef)⇒ aucune
+listeClefs(map,clefs)⇒ clefs initialis´ ee avec des clefs existantes
+copier(map1,map2)⇒ map2 initialis´ ee
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 11 / 24
+I – Maps
+5 – Exemple
+Exemple
+Saisie de noms d’´ etudiants avec leur moyenne.
+nb, i: Entier
+valeur: r´ eel
+clef: Cha ˆ ıne
+mapMoyennes: Map<cha ˆ ıne> de r´ eel
+cr´ eerMap(mapMoyennes)
+r´ ep´ eter
+´ ecrire(”Combien d’´ etudiants ?”)
+lire(nb)
+jusqu’` anb/greaterorequalslant0
+pour i←1 ` anb faire
+r´ ep´ eter
+´ ecrire(”Nom de l’´ etudiant ?”)
+lire(clef)
+jusqu’` a non(clefExiste(mapMoyennes,clef))
+r´ ep´ eter
+´ ecrire(”Sa moyenne ?”)
+lire(valeur)
+jusqu’` a0⩽valeur et valeur⩽20
+stocker(mapMoyennes,clef,valeur)
+ﬁn pour
+. . .R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 12 / 24
+12
+<<<PAGE>>>
+II – Tables de hachage
+1 – Introduction
+Introduction
+Tables de hachage
+▶ diminue la complexit´ e des m´ ethodes courantes
+⋆ recherche
+⋆ insertion
+⋆ suppression
+▶ une des impl´ ementations possibles des maps
+⋆ adressage direct
+⋆ m´ ethodes de hachage
+⋆ adressage ouvert
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 13 / 24
+II – Tables de hachage
+1 – Introduction
+Introduction
+Probl´ ematique
+▶ m´ ethode par adressage direct trop coˆ uteux
+⋆ index contenant autant de clefs que de valeurs
+⋆ type des clefs trop volumineux (cha ˆ ınes, etc.)
+▶ tenter de
+⋆ ne stocker que des entiers comme index
+⋆ limiter la taille de l’index
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 14 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Soient C l’ensemble des clefs, I celui des index et V celui des valeurs.
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+V
+v1
+v3, v4
+v5, v2
+v◦ h : C −→ V
+ci ↦−→ v◦ h(ci)
+⇒ Probl` eme de collisions.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 15 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Fonctionnement
+▶ une fonction de hachage h(c)
+⋆ renvoie une valeur de hachage i∈ {0, 1, 2, . . . ,n − 1}
+⋆ les valeurs de hachage de h(c) doivent ˆ etre ´ equiprobables
+▶ un stockage en fonction de h(c)⇒ collisions
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 16 / 24
+13
+<<<PAGE>>>
+II – Tables de hachage
+1 – Introduction
+Introduction
+Tables de hachage
+▶ diminue la complexit´ e des m´ ethodes courantes
+⋆ recherche
+⋆ insertion
+⋆ suppression
+▶ une des impl´ ementations possibles des maps
+⋆ adressage direct
+⋆ m´ ethodes de hachage
+⋆ adressage ouvert
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 13 / 24
+II – Tables de hachage
+1 – Introduction
+Introduction
+Probl´ ematique
+▶ m´ ethode par adressage direct trop coˆ uteux
+⋆ index contenant autant de clefs que de valeurs
+⋆ type des clefs trop volumineux (cha ˆ ınes, etc.)
+▶ tenter de
+⋆ ne stocker que des entiers comme index
+⋆ limiter la taille de l’index
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 14 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Soient C l’ensemble des clefs, I celui des index et V celui des valeurs.
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+V
+v1
+v3, v4
+v5, v2
+v◦ h : C −→ V
+ci ↦−→ v◦ h(ci)
+⇒ Probl` eme de collisions.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 15 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Fonctionnement
+▶ une fonction de hachage h(c)
+⋆ renvoie une valeur de hachage i∈ {0, 1, 2, . . . ,n − 1}
+⋆ les valeurs de hachage de h(c) doivent ˆ etre ´ equiprobables
+▶ un stockage en fonction de h(c)⇒ collisions
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 16 / 24
+14
+<<<PAGE>>>
+II – Tables de hachage
+1 – Introduction
+Introduction
+Tables de hachage
+▶ diminue la complexit´ e des m´ ethodes courantes
+⋆ recherche
+⋆ insertion
+⋆ suppression
+▶ une des impl´ ementations possibles des maps
+⋆ adressage direct
+⋆ m´ ethodes de hachage
+⋆ adressage ouvert
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 13 / 24
+II – Tables de hachage
+1 – Introduction
+Introduction
+Probl´ ematique
+▶ m´ ethode par adressage direct trop coˆ uteux
+⋆ index contenant autant de clefs que de valeurs
+⋆ type des clefs trop volumineux (cha ˆ ınes, etc.)
+▶ tenter de
+⋆ ne stocker que des entiers comme index
+⋆ limiter la taille de l’index
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 14 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Soient C l’ensemble des clefs, I celui des index et V celui des valeurs.
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+V
+v1
+v3, v4
+v5, v2
+v◦ h : C −→ V
+ci ↦−→ v◦ h(ci)
+⇒ Probl` eme de collisions.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 15 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Fonctionnement
+▶ une fonction de hachage h(c)
+⋆ renvoie une valeur de hachage i∈ {0, 1, 2, . . . ,n − 1}
+⋆ les valeurs de hachage de h(c) doivent ˆ etre ´ equiprobables
+▶ un stockage en fonction de h(c)⇒ collisions
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 16 / 24
+15
+<<<PAGE>>>
+II – Tables de hachage
+1 – Introduction
+Introduction
+Tables de hachage
+▶ diminue la complexit´ e des m´ ethodes courantes
+⋆ recherche
+⋆ insertion
+⋆ suppression
+▶ une des impl´ ementations possibles des maps
+⋆ adressage direct
+⋆ m´ ethodes de hachage
+⋆ adressage ouvert
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 13 / 24
+II – Tables de hachage
+1 – Introduction
+Introduction
+Probl´ ematique
+▶ m´ ethode par adressage direct trop coˆ uteux
+⋆ index contenant autant de clefs que de valeurs
+⋆ type des clefs trop volumineux (cha ˆ ınes, etc.)
+▶ tenter de
+⋆ ne stocker que des entiers comme index
+⋆ limiter la taille de l’index
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 14 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Soient C l’ensemble des clefs, I celui des index et V celui des valeurs.
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+V
+v1
+v3, v4
+v5, v2
+v◦ h : C −→ V
+ci ↦−→ v◦ h(ci)
+⇒ Probl` eme de collisions.
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 15 / 24
+II – Tables de hachage
+2 – Principe
+Principe
+Fonctionnement
+▶ une fonction de hachage h(c)
+⋆ renvoie une valeur de hachage i∈ {0, 1, 2, . . . ,n − 1}
+⋆ les valeurs de hachage de h(c) doivent ˆ etre ´ equiprobables
+▶ un stockage en fonction de h(c)⇒ collisions
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 16 / 24
+16
+<<<PAGE>>>
+II – Tables de hachage
+3 – Collisions
+Collisions
+Plusieurs valeurs ` a stocker par valeur de hachage h(c)
+▶ utilisation d’alv´ eoles contenant des listes
+▶ utilisation de structures pour les ´ el´ ements de la liste
+Type StructValeur = structure
+clef: ´El´ ement
+valeur: ´El´ ement
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 17 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+Utilisation de listes
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+A
+v1
+v3, v4
+v5, v2
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 18 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+On stocke la structure comprenant la clef et la valeur
+Le nombre de valeurs stock´ ees par liste reste faible
+La recherche est rapide
+Les valeurs de hachage doivent ˆ etre bien r´ eparties
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 19 / 24
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Exemple de fonction de hachage : clef du num´ ero de s´ ecurit´ e sociale
+h(c) = 97 − (c −
+⌊ c
+97
+⌋
+× 97)
+h(c)∈ {0, 1, 2, . . . , 96}
+1 95 74 10 023 068 ⇒ c = 1957410023068
+h(1957410023068) = 10
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 20 / 24
+17
+<<<PAGE>>>
+II – Tables de hachage
+3 – Collisions
+Collisions
+Plusieurs valeurs ` a stocker par valeur de hachage h(c)
+▶ utilisation d’alv´ eoles contenant des listes
+▶ utilisation de structures pour les ´ el´ ements de la liste
+Type StructValeur = structure
+clef: ´El´ ement
+valeur: ´El´ ement
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 17 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+Utilisation de listes
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+A
+v1
+v3, v4
+v5, v2
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 18 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+On stocke la structure comprenant la clef et la valeur
+Le nombre de valeurs stock´ ees par liste reste faible
+La recherche est rapide
+Les valeurs de hachage doivent ˆ etre bien r´ eparties
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 19 / 24
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Exemple de fonction de hachage : clef du num´ ero de s´ ecurit´ e sociale
+h(c) = 97 − (c −
+⌊ c
+97
+⌋
+× 97)
+h(c)∈ {0, 1, 2, . . . , 96}
+1 95 74 10 023 068 ⇒ c = 1957410023068
+h(1957410023068) = 10
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 20 / 24
+18
+<<<PAGE>>>
+II – Tables de hachage
+3 – Collisions
+Collisions
+Plusieurs valeurs ` a stocker par valeur de hachage h(c)
+▶ utilisation d’alv´ eoles contenant des listes
+▶ utilisation de structures pour les ´ el´ ements de la liste
+Type StructValeur = structure
+clef: ´El´ ement
+valeur: ´El´ ement
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 17 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+Utilisation de listes
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+A
+v1
+v3, v4
+v5, v2
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 18 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+On stocke la structure comprenant la clef et la valeur
+Le nombre de valeurs stock´ ees par liste reste faible
+La recherche est rapide
+Les valeurs de hachage doivent ˆ etre bien r´ eparties
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 19 / 24
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Exemple de fonction de hachage : clef du num´ ero de s´ ecurit´ e sociale
+h(c) = 97 − (c −
+⌊ c
+97
+⌋
+× 97)
+h(c)∈ {0, 1, 2, . . . , 96}
+1 95 74 10 023 068 ⇒ c = 1957410023068
+h(1957410023068) = 10
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 20 / 24
+19
+<<<PAGE>>>
+II – Tables de hachage
+3 – Collisions
+Collisions
+Plusieurs valeurs ` a stocker par valeur de hachage h(c)
+▶ utilisation d’alv´ eoles contenant des listes
+▶ utilisation de structures pour les ´ el´ ements de la liste
+Type StructValeur = structure
+clef: ´El´ ement
+valeur: ´El´ ement
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 17 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+Utilisation de listes
+C
+c1
+c2
+c3
+c4
+c5
+I
+0
+1
+2
+A
+v1
+v3, v4
+v5, v2
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 18 / 24
+II – Tables de hachage
+3 – Collisions
+Collisions
+On stocke la structure comprenant la clef et la valeur
+Le nombre de valeurs stock´ ees par liste reste faible
+La recherche est rapide
+Les valeurs de hachage doivent ˆ etre bien r´ eparties
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 19 / 24
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Exemple de fonction de hachage : clef du num´ ero de s´ ecurit´ e sociale
+h(c) = 97 − (c −
+⌊ c
+97
+⌋
+× 97)
+h(c)∈ {0, 1, 2, . . . , 96}
+1 95 74 10 023 068 ⇒ c = 1957410023068
+h(1957410023068) = 10
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 20 / 24
+20
+<<<PAGE>>>
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Fonctions de hachage
+▶ diﬀ´ erentes m´ ethodes
+⋆ cr´ e´ ees sur mesure
+⋆ m´ ethode dite de la division
+⋆ m´ ethode dite de la multiplication
+⋆ hachage universel
+On doit avoir la mˆ eme probabilit´ e d’obtenir toutes les valeurs de
+hachage
+▶ il faut tendre au maximum vers cet absolu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 21 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+pr´ econditions :numero est un num´ ero de s´ ecurit´ e sociale valide
+postconditions : 0 ⩽h(numero)< 97
+fonction h(numero: Entier): Entier
+retourner 97-(numero mod 97)
+ﬁn fonction
+Type Assure = structure
+numero: Entier
+nom: Cha ˆ ıne
+prenom: Cha ˆ ıne
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 22 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+programme Exemple
+alveoles: Tableau de Liste de Assure
+i, numero: Entier
+nom, prenom: Cha ˆ ıne
+cr´ eerTableau(alveoles,97)
+pour i←0 ` a96 faire
+cr´ eerListe(alveoles[i])
+ﬁn pour
+. . .
+lire(nom)
+lire(prenom)
+lire(numero)
+enregistrer(alveoles,nom,prenom,numero)
+. . .
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 23 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+procedure enregistrer(alveoles: Tableau de Liste de Assure (E/S) ; nom, prenom: Cha ˆ ıne ;
+numero: Entier)
+assure: Assure
+nouveau: Bool´ een
+l: Liste de Assure
+nouveau←VRAI
+l←alveoles[h(numero)]
+tant que non (estVide(l) et nouveau faire
+si tˆ ete(l).numero=numero alors
+nouveau←FAUX
+tˆ ete(l).nom←nom
+tˆ ete(l).prenom←prenom
+ﬁn si
+l←reste(l)
+ﬁn tant que
+si nouveau alors
+assure.numero←numero
+assure.nom←nom
+assure.prenom←prenom
+ajouter(alveoles[h(numero)],assure)
+ﬁn si
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 24 / 24
+21
+<<<PAGE>>>
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Fonctions de hachage
+▶ diﬀ´ erentes m´ ethodes
+⋆ cr´ e´ ees sur mesure
+⋆ m´ ethode dite de la division
+⋆ m´ ethode dite de la multiplication
+⋆ hachage universel
+On doit avoir la mˆ eme probabilit´ e d’obtenir toutes les valeurs de
+hachage
+▶ il faut tendre au maximum vers cet absolu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 21 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+pr´ econditions :numero est un num´ ero de s´ ecurit´ e sociale valide
+postconditions : 0 ⩽h(numero)< 97
+fonction h(numero: Entier): Entier
+retourner 97-(numero mod 97)
+ﬁn fonction
+Type Assure = structure
+numero: Entier
+nom: Cha ˆ ıne
+prenom: Cha ˆ ıne
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 22 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+programme Exemple
+alveoles: Tableau de Liste de Assure
+i, numero: Entier
+nom, prenom: Cha ˆ ıne
+cr´ eerTableau(alveoles,97)
+pour i←0 ` a96 faire
+cr´ eerListe(alveoles[i])
+ﬁn pour
+. . .
+lire(nom)
+lire(prenom)
+lire(numero)
+enregistrer(alveoles,nom,prenom,numero)
+. . .
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 23 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+procedure enregistrer(alveoles: Tableau de Liste de Assure (E/S) ; nom, prenom: Cha ˆ ıne ;
+numero: Entier)
+assure: Assure
+nouveau: Bool´ een
+l: Liste de Assure
+nouveau←VRAI
+l←alveoles[h(numero)]
+tant que non (estVide(l) et nouveau faire
+si tˆ ete(l).numero=numero alors
+nouveau←FAUX
+tˆ ete(l).nom←nom
+tˆ ete(l).prenom←prenom
+ﬁn si
+l←reste(l)
+ﬁn tant que
+si nouveau alors
+assure.numero←numero
+assure.nom←nom
+assure.prenom←prenom
+ajouter(alveoles[h(numero)],assure)
+ﬁn si
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 24 / 24
+22
+<<<PAGE>>>
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Fonctions de hachage
+▶ diﬀ´ erentes m´ ethodes
+⋆ cr´ e´ ees sur mesure
+⋆ m´ ethode dite de la division
+⋆ m´ ethode dite de la multiplication
+⋆ hachage universel
+On doit avoir la mˆ eme probabilit´ e d’obtenir toutes les valeurs de
+hachage
+▶ il faut tendre au maximum vers cet absolu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 21 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+pr´ econditions :numero est un num´ ero de s´ ecurit´ e sociale valide
+postconditions : 0 ⩽h(numero)< 97
+fonction h(numero: Entier): Entier
+retourner 97-(numero mod 97)
+ﬁn fonction
+Type Assure = structure
+numero: Entier
+nom: Cha ˆ ıne
+prenom: Cha ˆ ıne
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 22 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+programme Exemple
+alveoles: Tableau de Liste de Assure
+i, numero: Entier
+nom, prenom: Cha ˆ ıne
+cr´ eerTableau(alveoles,97)
+pour i←0 ` a96 faire
+cr´ eerListe(alveoles[i])
+ﬁn pour
+. . .
+lire(nom)
+lire(prenom)
+lire(numero)
+enregistrer(alveoles,nom,prenom,numero)
+. . .
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 23 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+procedure enregistrer(alveoles: Tableau de Liste de Assure (E/S) ; nom, prenom: Cha ˆ ıne ;
+numero: Entier)
+assure: Assure
+nouveau: Bool´ een
+l: Liste de Assure
+nouveau←VRAI
+l←alveoles[h(numero)]
+tant que non (estVide(l) et nouveau faire
+si tˆ ete(l).numero=numero alors
+nouveau←FAUX
+tˆ ete(l).nom←nom
+tˆ ete(l).prenom←prenom
+ﬁn si
+l←reste(l)
+ﬁn tant que
+si nouveau alors
+assure.numero←numero
+assure.nom←nom
+assure.prenom←prenom
+ajouter(alveoles[h(numero)],assure)
+ﬁn si
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 24 / 24
+23
+<<<PAGE>>>
+II – Tables de hachage
+4 – Fonctions de hachage
+Fonctions de hachage
+Fonctions de hachage
+▶ diﬀ´ erentes m´ ethodes
+⋆ cr´ e´ ees sur mesure
+⋆ m´ ethode dite de la division
+⋆ m´ ethode dite de la multiplication
+⋆ hachage universel
+On doit avoir la mˆ eme probabilit´ e d’obtenir toutes les valeurs de
+hachage
+▶ il faut tendre au maximum vers cet absolu
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 21 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+pr´ econditions :numero est un num´ ero de s´ ecurit´ e sociale valide
+postconditions : 0 ⩽h(numero)< 97
+fonction h(numero: Entier): Entier
+retourner 97-(numero mod 97)
+ﬁn fonction
+Type Assure = structure
+numero: Entier
+nom: Cha ˆ ıne
+prenom: Cha ˆ ıne
+ﬁn type
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 22 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+programme Exemple
+alveoles: Tableau de Liste de Assure
+i, numero: Entier
+nom, prenom: Cha ˆ ıne
+cr´ eerTableau(alveoles,97)
+pour i←0 ` a96 faire
+cr´ eerListe(alveoles[i])
+ﬁn pour
+. . .
+lire(nom)
+lire(prenom)
+lire(numero)
+enregistrer(alveoles,nom,prenom,numero)
+. . .
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 23 / 24
+II – Tables de hachage
+5 – Exemple
+Exemple
+Assur´ es
+procedure enregistrer(alveoles: Tableau de Liste de Assure (E/S) ; nom, prenom: Cha ˆ ıne ;
+numero: Entier)
+assure: Assure
+nouveau: Bool´ een
+l: Liste de Assure
+nouveau←VRAI
+l←alveoles[h(numero)]
+tant que non (estVide(l) et nouveau faire
+si tˆ ete(l).numero=numero alors
+nouveau←FAUX
+tˆ ete(l).nom←nom
+tˆ ete(l).prenom←prenom
+ﬁn si
+l←reste(l)
+ﬁn tant que
+si nouveau alors
+assure.numero←numero
+assure.nom←nom
+assure.prenom←prenom
+ajouter(alveoles[h(numero)],assure)
+ﬁn si
+ﬁn programme
+R´ emi Vernay (EISTI) Maps et tables de hachage 2012–2013 24 / 24
+24

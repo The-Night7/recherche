@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Les documents de Préing — années 1 et 2</title>
+<title>Les documents de cours — Préing et Ing</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
@@ -15,8 +15,8 @@
 </head>
 <body>
 <header class="top">
-  <h1 class="brand"><span class="glyph" aria-hidden="true">P</span>
-    <span class="title">Les documents de Préing<small id="curriculum">Préing 1 et 2 — semestres 1 et 2</small></span></h1>
+  <h1 class="brand"><span class="glyph" aria-hidden="true">C</span>
+    <span class="title">Les documents de cours<small id="curriculum">Préing et Ing — semestres 1 et 2</small></span></h1>
   <div id="searchbar">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input id="q" type="search" placeholder="Une notion, un exercice, un chapitre…" autofocus aria-label="Question" autocomplete="off">
@@ -34,12 +34,20 @@
     <button id="toggle-filters" aria-expanded="false"><span>Où chercher : <b id="scope-summary">toutes les matières</b></span></button>
     <div id="filters">
       <fieldset>
-        <legend>Année de Préing</legend>
+        <legend>Cycle</legend>
+        <div class="chips" id="programs"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Année dans le cycle</legend>
         <div class="chips" id="study-years"></div>
       </fieldset>
       <fieldset>
         <legend>Semestre</legend>
         <div class="chips" id="semesters"></div>
+      </fieldset>
+      <fieldset id="track-field" hidden>
+        <legend>Parcours</legend>
+        <div class="chips" id="tracks"></div>
       </fieldset>
       <fieldset>
         <legend>Matières</legend>

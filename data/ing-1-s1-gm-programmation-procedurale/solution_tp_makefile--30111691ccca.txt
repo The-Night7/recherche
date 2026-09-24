@@ -1,0 +1,17 @@
+Solution complète du TP Makefile
+Exercice 1 :
+toto: main.c score.c gui.c ia.c
+gcc main.c score.c gui.c ia.c -o toto
+Exercice 2 :
+PROG = toto
+OBJ = main.o score.o gui.o ia.o
+$(PROG): $(OBJ)
+gcc $^ -o $@
+%.o : %.c
+gcc -c $<
+Exercice 3 :
+clean:
+rm -f $(OBJ) $(PROG) *~ *.bak *.old #*#
+[...]
+Makefile final complet :
+(Le Makefile final complet est donné dans la discussion ChatGPT.)

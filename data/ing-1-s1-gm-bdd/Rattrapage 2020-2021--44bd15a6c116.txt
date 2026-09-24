@@ -1,0 +1,77 @@
+Rattrapage de Bases de Données 
+  
+CY TECH, ING1 GI/GM 
+ 
+29 mars 2021 - Durée : 2h 
+ 
+Exercice 1 : Modélisation (6 pts) 
+ 
+Une auto -école comprend des moniteurs et des véhicules. Elle prépare les élèves à 
+passer un permis d’un type donné. A chaque type de permis correspond un ensemble de 
+caractéristiques rassemblées sous forme d’un libellé. Les moniteurs donnent des leçons aux  
+élèves. On souhaite stocker le nom et le prénom des moniteurs ainsi que ceux des élèves. Les 
+moniteurs et les élèves sont identifiés par un numéro unique. Chaque leçon est donnée par un 
+seul moniteur, pour un seul élève à la fois et une certaine durée. Un  élève ne passe qu’un seul 
+type de permis et n’apprend à conduire que sur un seul véhicule. Chaque véhicule a un nom (clio, 
+micra, tiguan...) et est identifié par son immatriculation. Le prix d’un permis est forfaitaire, quel 
+que soit le nombre de leçons. 
+Question 1 : Proposez un MCD (Modèle Conceptuel de Données) pour ce problème. 
+Question 2 : Transformez le MCD précédent en MLD (Modèle Logique de Données). 
+Exercice 2 : Normalisation (4 pts) 
+ 
+On considère la relation Sportif permettant de représenter ses sportifs dans le contexte 
+qui nous a marqué ; on considère qu’il n’y a pas d’homonymes. Voici le schéma de la relation : 
+ 
+Sportif(nom, métier, sport, nationalité, compétition, année) 
+ 
+Voici la relation complète : 
+nom métier sport nationalité compétition année 
+Loeb Pilote Rally Française Championnats du Monde 2010 
+Vettel Pilote Formule 1 Allemande Championnats du Monde 2010 
+Messi Footballeur Football Argentine Liga 2010 
+Lemaître Athlète Athlétisme Française Championnats d’Europe 2010 
+Alonso Pilote Formule 1 Espagnole Championnats du Monde 2010 
+Grange Skieur Ski Alpin Française Coupe du Monde de Slalom 2009 
+  
+Question 1 : Donner la liste des dépendances fonctionnelles de cette relation. 
+Question 2 : Donner la liste des dépendances fonctionnelles élémentaires de cette relation. 
+Question 3 : Mettre ce modèle en 3FN s’il ne l’est pas déjà. 
+<<<PAGE>>>
+ 
+ 
+Exercice 3 : Mario Kart (10 pts) 
+ 
+Nous souhaitons gérer une base de données de Mario Kart.  
+Un personnage peut réaliser un certai n nombre de courses sur plusieurs circuits différents. 
+Chacun de ses temps sur un circuit est conservé (en min). Un circuit possède un certain nombre 
+de tours prédéfinies. Un personnage possède une ou plusieurs voitures. Une voiture appartient 
+à un seul et  unique personnage. Une voiture a un nom, une vitesse maximale (en km/h) et un 
+poids (en kg).   
+On obtient la modélisation suivante :  
+ 
+Personnage(id, nom, dateNaissance) 
+Circuit(id, nom, nbTour) 
+RéaliserUneCourse(#idPerso, #idCircuit, dateCourse, durée) 
+Voiture(id, nom, vitesse, poids, #idPerso) 
+ 
+1. Donner les requêtes de création de toutes les tables (2pts) 
+2. Quels personnages ont leur nom commençant par un M ? Dans le résultat, vous affichez le 
+nom, et la date de naissance.  
+3. Quelles sont les voitures appartenant au personnage appelé “Mario” ? Dans le résultat, vous 
+affichez le nom du personnage, le nom de la voiture et sa vitesse.   
+4. Quel est le circuit qui a été réalisé le plus récemment ? Dans le résultat, vous affichez le nom 
+du circuit, la date, et le nom du personnage ayant réalisé le circuit.  
+5. Quelles sont les voitures dont le nom commence par la lettre B, M ou W ? Dans le résultat, 
+vous affichez le nom des voitures. 
+6. Quelles sont les voitures dont la vitesse ne dépasse pas 5 km/h ? Dans le résultat, vous 
+affichez le nom des voitures, le nom du personnage à qui elle appartient et la vitesse 
+maximale.  
+7. Classez les personnages en fonction du nombre de courses réalisées (même les 
+personnages qui n’ont pas réalisé de courses). Dans le résultat, vous affichez le nom des 
+personnages, leur nombre de courses.  
+8. Quels sont les personnages qui ont réalisé tous les circuits ? Dans le résultat, vous affichez 
+le nom des personnages.   
+9. Quelles sont les voitures ayant un poids supérieur au poids moyen de toutes les voitures ? 
+Dans le résultat, vous affichez le nom des personnages, le poids et le nom de la voiture.   
+ 
+ 

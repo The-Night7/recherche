@@ -1,0 +1,471 @@
+Correction TD1 - Tribus et Applications Mesurables
+Mesure et Int´ egration
+Exercice 1 : Propri´ et´ es Fondamentales d’une Tribu
+Rappel de Cours : D´ efinition d’une Tribu
+[citestart]UnefamilleTdesous−ensemblesd ′unensembleΩ, soitT⊂P(Ω), est unetribu
+(ouσ-alg` ebre) si elle satisfait les trois axiomes suivants[cite: 6]:
+[citestart]
+0.L’ensemble universel est inclus: Ω∈T[cite: 7]. [cite start]
+0.Stabilit´ e par passage au compl´ ementaire: Si un ensembleAest dansT, alors
+son compl´ ementaire Ω\A(not´ e aussiAc) est ´ egalement dansT[cite: 8].
+A∈T=⇒A c∈T
+[citestart]
+0.Stabilit´ e par union d´ enombrable: Si (An)n∈N est une suite d’ensembles appar-
+tenant ` aT, alors leur union est aussi dansT[cite: 9].
+(∀n∈N,A n∈T) =⇒
+[
+n∈N
+An∈T
+a) Montrer que∅∈T
+D´ emonstration :Pour d´ emontrer que l’ensemble vide (∅) appartient ` a la tribuT, nous
+utilisons les deux premiers axiomes de la d´ efinition.
+1. D’apr` es l’axiome 1, nous savons que l’ensemble universel Ω appartient ` a la tribu :
+Ω∈T
+2. D’apr` es l’axiome 2 (stabilit´ e par passage au compl´ ementaire), si un ensemble est
+dansT, son compl´ ementaire l’est aussi. Appliquons cette propri´ et´ e ` a Ω :
+Ω∈T=⇒Ω c∈T
+3. Par d´ efinition, le compl´ ementaire de Ω est l’ensemble vide : Ωc = Ω\Ω =∅.
+4. Nous pouvons donc conclure que l’ensemble vide est bien un ´ el´ ement de la tribu :
+∅∈T
+[citestart]Conclusion :Toutetribucontientn´ecessairementl′ensemblevide[cite: 11].
+1
+<<<PAGE>>>
+b) Montrer la stabilit´ e par intersection d´ enombrable
+[citestart]
+´Enonc´ e :Montrer que si (A n)n∈N est une suite d’ensembles deT, alors leur intersection
+d´ enombrableT
+n∈NAn appartient ´ egalement ` aT[cite: 12, 13].
+D´ emonstration :Cette d´ emonstration repose sur l’utilisation combin´ ee des axiomes
+de la tribu et deslois de De Morgan.
+1. Soit (A n)n∈N une suite d’´ el´ ements de la tribuT.
+∀n∈N,A n∈T
+2. En utilisant l’axiome 2 (stabilit´ e par compl´ ementaire), le compl´ ementaire de chaque
+An, not´ eAc
+n, est aussi dansT.
+∀n∈N,A c
+n∈T
+3. En utilisant l’axiome 3 (stabilit´ e par union d´ enombrable), l’union de tous ces
+compl´ ementaires est un ´ el´ ement deT.
+[
+n∈N
+Ac
+n∈T
+4. Appliquons ` a nouveau l’axiome 2 ` a cet nouvel ensemble. Le compl´ ementaire de
+cette union appartient donc ` aT.
+ [
+n∈N
+Ac
+n
+!c
+∈T
+5. Selon les lois de De Morgan, le compl´ ementaire d’une union est l’intersection des
+compl´ ementaires :  [
+n∈N
+Ac
+n
+!c
+=
+\
+n∈N
+(Ac
+n)c =
+\
+n∈N
+An
+6. En combinant les deux derniers points, nous obtenons le r´ esultat souhait´ e :
+\
+n∈N
+An∈T
+Conclusion :Une tribu est stable non seulement par union d´ enombrable, mais aussi
+par intersection d´ enombrable.
+2
+<<<PAGE>>>
+Exercice 2 : Tribu Trace
+´Enonc´ e
+SoitTune tribu sur un ensemble Ω et soitUun sous-ensemble de Ω (U⊂Ω). [cite start]Ond´efinitl′ensembleTU
+comme suit[cite: 15]:
+TU ={A∩U|A∈T}
+Montrer queT U est une tribu sur l’ensembleU. [cite start]Onl′appellelatribu tracedeTsurU[cite:
+16].
+D´ emonstration
+Pour prouver queT U est une tribu surU, nous devons v´ erifier qu’elle satisfait les trois
+axiomes d’une tribu, en consid´ erantUcomme le nouvel ensemble universel.
+1. L’ensemble universelUappartient ` aT U
+•Par d´ efinition, un ´ el´ ement deTU s’´ ecrit sous la formeA∩U, o` uA∈T.
+•Nous savons queTest une tribu sur Ω, donc Ω∈T(axiome 1).
+•ChoisissonsA= Ω. Alors l’ensembleA∩U= Ω∩Uest bien un ´ el´ ement deT U.
+•PuisqueU⊂Ω, l’intersection deUavec Ω estUlui-mˆ eme : Ω∩U=U.
+•On a donc montr´ e queU∈T U. Le premier axiome est v´ erifi´ e.
+2. Stabilit´ e par passage au compl´ ementaire dansU
+•SoitBun ´ el´ ement quelconque deT U.
+•Par d´ efinition deT U, il existe un ensembleA∈Ttel queB=A∩U.
+•Nous devons montrer que le compl´ ementaire deBdansU, not´ eU\B, appartient
+aussi ` aTU.
+•Calculons ce compl´ ementaire :
+U\B=U\(A∩U)
+•En utilisant les propri´ et´ es des ensembles, on sait queU\(A∩U) =U∩(A∩U) c.
+En appliquant les lois de De Morgan, cela devientU∩(A c∪U c). En distribuant,
+on obtient (U∩A c)∪(U∩U c) =U∩A c.
+U\B=U∩A c
+•Pour que cet ensembleU∩A c appartienne ` aTU, il faut qu’il puisse s’´ ecrire sous la
+formeA′∩UavecA ′∈T.
+•Or, nous avonsU∩A c =A c∩U. CommeA∈Tet queTest une tribu, son
+compl´ ementaireAc est aussi dansT.
+•En posantA ′ =A c, nous avons bienA ′∈TetU\B=A ′∩U.
+•Le deuxi` eme axiome est donc v´ erifi´ e.
+3
+<<<PAGE>>>
+3. Stabilit´ e par union d´ enombrable
+•Soit (B n)n∈N une suite d’ensembles appartenant ` aTU.
+•Pour chaquen∈N, il existe un ensembleA n∈Ttel queB n =A n∩U.
+•Nous devons montrer que leur union S
+n∈NBn est ´ egalement dansTU.
+•Calculons cette union : [
+n∈N
+Bn =
+[
+n∈N
+(An∩U)
+•Grˆ ace ` a la distributivit´ e de l’union sur l’intersection, on peut r´ e´ ecrire cette expres-
+sion :
+[
+n∈N
+(An∩U) =
+ [
+n∈N
+An
+!
+∩U
+•PosonsA ′ =S
+n∈NAn. Puisque chaqueA n est dans la tribuTet queTest stable
+par union d´ enombrable (axiome 3), l’ensembleA′ appartient ` aT.
+•L’union desB n s’´ ecrit doncA′∩UavecA ′∈T. Ceci correspond exactement ` a la
+d´ efinition d’un ´ el´ ement deTU.
+•Le troisi` eme axiome est v´ erifi´ e.
+Conclusion g´ en´ erale :L’ensembleT U v´ erifie les trois axiomes d’une tribu surU.
+C’est donc bien la tribu trace deTsurU.
+Exercice 3 : Op´ erations sur les Tribus
+1. L’intersection de tribus est une tribu
+´Enonc´ e :Montrer que l’intersection d’une famille quelconque (finie ou infinie) de tribus
+sur Ω est encore une tribu sur Ω.
+D´ emonstration :Soit (T i)i∈I une famille de tribus sur Ω, o` uIest un ensemble
+d’indices quelconque. Notons leur intersectionT= T
+i∈I Ti. Pour montrer queTest
+une tribu, nous devons v´ erifier les trois axiomes.
+1.V´ erification deΩ∈T:
+•Par d´ efinition, chaqueT i est une tribu sur Ω, donc pour tout indicei∈I, on
+a Ω∈T i.
+•Puisque Ω appartient ` achaqueT i de la famille, il appartient par d´ efinition ` a
+leur intersection.
+•Donc, Ω∈T. Le premier axiome est v´ erifi´ e.
+2.V´ erification de la stabilit´ e par compl´ ementaire :
+•SoitAun ensemble appartenant ` aT.
+4
+<<<PAGE>>>
+•Par d´ efinition de l’intersection, cela signifie queA∈T i pour touti∈I.
+•Comme chaqueT i est une tribu, elle est stable par passage au compl´ ementaire.
+Donc, pour touti∈I, le compl´ ementaireA c appartient ` aTi.
+•PuisqueA c appartient ` a chaqueTi, il appartient ` a leur intersectionT.
+•Donc,A∈T=⇒A c∈T. Le deuxi` eme axiome est v´ erifi´ e.
+3.V´ erification de la stabilit´ e par union d´ enombrable :
+•Soit (A n)n∈N une suite d’ensembles appartenant ` aT.
+•Pour chaquen∈N, on aA n∈T, ce qui signifie que pour touti∈I,A n∈T i.
+•Fixons un indicei∈I. La suite (A n)n∈N est une suite d’´ el´ ements de la tribu
+Ti.
+•CommeT i est une tribu, elle est stable par union d´ enombrable. Par cons´ equent,
+l’unionS
+n∈NAn appartient ` aTi.
+•Ce raisonnement est valable pour n’importe quel indicei∈I. L’union S
+n∈NAn
+appartient donc ` a chaqueTi.
+•Il s’ensuit que l’union appartient ` a leur intersectionT. Le troisi` eme axiome
+est v´ erifi´ e.
+Conclusion :Ayant v´ erifi´ e les trois axiomes, nous concluons que l’intersection d’une
+famille quelconque de tribus est bien une tribu.
+2. Tribu image r´ eciproque
+´Enonc´ e :Soitfune application deEdansFetFune tribu surF. Montrer que
+l’image r´ eciproque deFparf, d´ efinie parf−1(F) ={f −1(B)|B∈F}, est une tribu sur
+E.
+Rappel des propri´ et´ es de l’image r´ eciproque :Pour cette d´ emonstration, nous
+utiliserons les trois propri´ et´ es fondamentales suivantes :
+•f −1(F) =E
+•Pour toutB⊂F,f −1(Bc) = (f−1(B))c
+•Pour toute famille (B n)n∈N de sous-ensembles deF,f −1 S
+n∈NBn
+
+=S
+n∈Nf−1(Bn)
+D´ emonstration :Nous v´ erifions les trois axiomes pourf−1(F).
+1.V´ erification deE∈f −1(F):
+•Fest une tribu surF, doncF∈F.
+•Par d´ efinition def −1(F), l’image r´ eciproque de tout ´ el´ ement deFest dans
+f−1(F). Appliquons cela ` aF.
+•f −1(F)∈f −1(F).
+•Or, l’image r´ eciproque de l’espace d’arriv´ eeFest l’espace de d´ epartEtout
+entier. DoncE=f −1(F).
+5
+<<<PAGE>>>
+•On a bienE∈f −1(F).
+2.V´ erification de la stabilit´ e par compl´ ementaire :
+•SoitA∈f −1(F). Par d´ efinition, il existe un ensembleB∈Ftel queA=
+f−1(B).
+•Le compl´ ementaire deAdansEestA c = (f−1(B))c.
+•En utilisant la propri´ et´ e de l’image r´ eciproque et du compl´ ementaire, on a :
+(f−1(B))c =f −1(Bc).
+•PuisqueB∈Fet queFest une tribu, son compl´ ementaireB c est aussi dans
+F.
+•Nous avons donc montr´ e queA c est l’image r´ eciproque d’un ´ el´ ement deF(en
+l’occurrenceB c), ce qui prouve queA c∈f −1(F).
+3.V´ erification de la stabilit´ e par union d´ enombrable :
+•Soit (A n)n∈N une suite d’ensembles def −1(F).
+•Pour chaquen, il existe un ensembleB n∈Ftel queA n =f −1(Bn).
+•Consid´ erons l’union :S
+n∈NAn =S
+n∈Nf−1(Bn).
+•En utilisant la propri´ et´ e de l’image r´ eciproque et de l’union, on a :S
+n∈Nf−1(Bn) =
+f−1 S
+n∈NBn
+
+.
+•Puisque chaqueB n appartient ` a la tribuF, leur union d´ enombrableS
+n∈NBn
+appartient aussi ` aF.
+•Nous avons donc montr´ e queS
+n∈NAn est l’image r´ eciproque d’un ´ el´ ement de
+F, ce qui prouve que S
+n∈NAn∈f −1(F).
+Conclusion :L’ensemblef −1(F) v´ erifie les trois axiomes et est donc bien une tribu sur
+E.
+Exercice 4 : Tribu Engendr´ ee
+Rappel de Cours : Tribu Engendr´ ee
+Latribu engendr´ eepar une familleCde sous-ensembles de Ω, not´ eeσ(C), est laplus
+petitetribu sur Ω qui contient tous les ensembles deC. Elle peut ˆ etre vue comme
+l’intersection de toutes les tribus sur Ω qui contiennentC.
+1. Tribu engendr´ ee par un seul ensemble
+´Enonc´ e :D´ ecrire la tribu engendr´ ee par un sous-ensembleA⊂Ω.
+6
+<<<PAGE>>>
+Solution :Soitσ({A}) la tribu engendr´ ee par{A}.
+•Une tribu doit contenir Ω et∅.
+•Puisqu’elle doit contenirA, elle doit aussi contenir son compl´ ementaireA c = Ω\A.
+Consid´ erons la famille d’ensemblesTA ={∅,A,A c,Ω}. Montrons que c’est une tribu :
+1.ContientΩ : Oui, Ω∈T A.
+2.Stabilit´ e par compl´ ementaire:
+•∅ c = Ω (et vice-versa). Les deux sont dansT A.
+•A c est dansT A. Et (A c)c =A, qui est aussi dansT A.
+L’ensemble est stable par compl´ ementaire.
+3.Stabilit´ e par union (d´ enombrable): Comme l’ensemble est fini, il suffit de
+v´ erifier la stabilit´ e par union finie. Toutes les unions possibles d’´ el´ ements deTA
+redonnent un ´ el´ ement deTA (par exemple,A∪A c = Ω,A∪∅=A, etc.).
+TA est donc bien une tribu. De plus, toute tribu contenantAdoit n´ ecessairement contenir
+∅,A,A c,Ω pour satisfaire les axiomes.T A est donc la plus petite tribu contenantA.
+Conclusion :La tribu engendr´ ee parAestσ({A}) ={∅,A,A c,Ω}.Cas particuliers
+:SiA=∅ouA= Ω, la tribu engendr´ ee est la tribu triviale{∅,Ω}.
+2. Tribu engendr´ ee par deux ensembles
+´Enonc´ e :D´ ecrire la tribu engendr´ ee par deux sous-ensemblesAetBde Ω.
+Solution :La tribuσ({A,B}) doit contenirAetB, leurs compl´ ementairesA c etB c,
+ainsi que toutes leurs intersections et unions.
+La m´ ethode la plus simple pour la d´ ecrire est de construire lapartitionde Ω form´ ee
+parAetB. Les ”atomes” de cette partition sont les quatre ensembles disjoints suivants
+:
+•P 1 =A∩B
+•P 2 =A∩B c
+•P 3 =A c∩B
+•P 4 =A c∩B c
+Ces quatre ensembles sont deux ` a deux disjoints et leur union est Ω. Toute tribu contenant
+AetBdoit contenir ces quatre ensembles (car ils sont obtenus par intersections et
+compl´ ementaires).
+La tribu engendr´ ee parAetBest alors l’ensemble detoutes les unions possibles
+que l’on peut former avec ces quatre atomes. Par exemple :
+•A= (A∩B)∪(A∩B c) =P 1∪P 2
+•B= (A∩B)∪(A c∩B) =P 1∪P 3
+7
+<<<PAGE>>>
+•A∪B=P 1∪P 2∪P 3
+•∅est l’union de z´ ero atome.
+•Ω est l’union des quatre atomes.
+L’ensemble de toutes ces unions forme une tribu. Elle contientAetBet c’est la plus
+petite possible. Le nombre d’´ el´ ements dans cette tribu est au maximum 24 = 16 (certains
+atomes peuvent ˆ etre vides, ce qui r´ eduit le nombre d’ensembles distincts).
+Conclusion :La tribu engendr´ ee parAetBest l’ensemble des unions de sous-
+familles de la partition{A∩B,A∩B c,A c∩B,A c∩B c}.
+σ({A,B}) =
+([
+i∈I
+Pi|I⊂{1,2,3,4}
+)
+Exercice 5 : Composition d’applications
+´Enonc´ e
+Soient (Ω 1,T 1), (Ω 2,T 2) et (Ω 3,T 3) trois espaces mesurables. Soientf: Ω 1→Ω 2 une
+application mesurable etg: Ω 2→Ω 3 une application continue. Montrer queh=g◦f
+est une application mesurable.
+Rappel de Cours
+[citestart]
+•Application mesurable :Une applicationf: (Ω 1,T 1)→(Ω 2,T 2) est dite
+mesurable si l’image r´ eciproque de tout ensemble mesurable de l’espace d’arriv´ ee
+est un ensemble mesurable de l’espace de d´ epart[cite: 26, 27]. Formellement :
+∀B∈T 2, f −1(B)∈T 1
+•Continuit´ e et Mesurabilit´ e :Une application continue entre deux espaces
+topologiques est mesurable par rapport ` a leurs tribus bor´ eliennes (la tribu engendr´ ee
+par les ouverts). La continuit´ e degimplique que l’image r´ eciproque de tout bor´ elien
+de Ω3 est un bor´ elien de Ω2. [cite start]Onsupposeiciquelacontinuit´edegimpliquesamesurabilit´ede(Ω2,T 2)
+dans (Ω3,T 3)[cite: 30].
+D´ emonstration
+Pour montrer queh=g◦fest (T 1,T 3)-mesurable, nous devons prouver que pour tout
+ensembleC∈T 3, son image r´ eciproqueh−1(C) appartient ` aT1.
+1. SoitCun ensemble quelconque de la tribu d’arriv´ ee,C∈T 3.
+2. Exprimons l’image r´ eciproque deCpar la fonction compos´ eeh:
+h−1(C) = (g◦f) −1(C) =f −1 
+g−1(C)
+
+8
+<<<PAGE>>>
+[citestart]
+2. L’applicationg: (Ω 2,T 2)→(Ω 3,T 3) est continue, donc mesurable[cite: 30]. Par
+d´ efinition, puisqueC∈T 3, son image r´ eciproqueg−1(C) doit appartenir ` aT2.
+3. PosonsB=g −1(C). Nous venons d’´ etablir queB∈T 2. L’expression devient :
+h−1(C) =f −1(B) avecB∈T 2
+[citestart]
+3. L’applicationf: (Ω 1,T 1)→(Ω 2,T 2) est mesurable[cite: 30]. Par d´ efinition, l’image
+r´ eciproque parfde n’importe quel ensemble deT 2 est un ensemble deT 1.
+4. PuisqueB∈T 2, on a n´ ecessairementf−1(B)∈T 1.
+5. Nous avons donc montr´ e queh−1(C)∈T 1.
+Conclusion :Pour toutC∈T 3, son image r´ eciproqueh−1(C) appartient ` aT 1.
+L’applicationh=g◦fest donc bien mesurable.
+Exercice 6 : Caract´ erisation de la mesurabilit´ e d’un
+ensemble
+´Enonc´ e
+Soit (X,T) un espace mesurable. On note 1A la fonction indicatrice d’un ensembleA⊂X.
+[citestart]Montrerque1 A est mesurable si et seulement siAest mesurable (c’est-` a-dire
+A∈T)[cite: 31].
+D´ emonstration
+C’est une d´ emonstration par double implication. La fonction indicatrice 1A :X→Rest
+d´ efinie par :
+1A(x) =
+(
+1 six∈A
+0 six /∈A
+L’espace d’arriv´ eeRest muni de sa tribu bor´ elienneB(R). La fonction 1A est mesurable
+si pour tout bor´ elienB∈B(R), l’ensemble (1 A)−1(B) est dansT.
+(⇐) Implication : Si A est mesurable, alors1 A est mesurable.
+Supposons queAest mesurable, c’est-` a-direA∈T. CommeTest une tribu, son
+compl´ ementaireAc =X\Aest aussi dansT.
+SoitBun bor´ elien quelconque deR. L’image r´ eciproque (1A)−1(B) d´ epend de si 0 ou
+1 appartiennent ` aB:
+•Cas 1 :0/∈Bet 1/∈B. Alors (1 A)−1(B) =∅. Or∅∈T.
+9
+<<<PAGE>>>
+•Cas 2 :0∈Bet 1/∈B. Alors (1 A)−1(B) ={x∈X|1 A(x) = 0}=A c. Or
+Ac∈T.
+•Cas 3 :0/∈Bet 1∈B. Alors (1 A)−1(B) ={x∈X|1 A(x) = 1}=A. OrA∈T.
+•Cas 4 :0∈Bet 1∈B. Alors (1 A)−1(B) ={x∈X|1 A(x)∈{0,1}}=X. Or
+X∈T.
+Dans tous les cas possibles, l’image r´ eciproque (1A)−1(B) est un ´ el´ ement deT. Donc, la
+fonction 1A est mesurable.
+(⇒) R´ eciproque : Si1A est mesurable, alors A est mesurable.
+Supposons que 1 A est une fonction mesurable. Par d´ efinition, cela signifie que pourtout
+bor´ elienB∈B(R), l’image r´ eciproque (1A)−1(B) appartient ` a la tribuT.
+Pour montrer queA∈T, il suffit de trouver un bor´ elienBtel que (1 A)−1(B) =A.
+•Choisissons le bor´ elienB={1}. C’est un ensemble ferm´ e dansR, donc c’est un
+bor´ elien.
+•Calculons son image r´ eciproque par 1A :
+(1A)−1({1}) ={x∈X|1 A(x)∈{1}}={x∈X|1 A(x) = 1}=A
+•Puisque 1 A est suppos´ ee mesurable et que{1}est un bor´ elien, l’image r´ eciproque
+Adoit appartenir ` a la tribuT.
+Donc,Aest un ensemble mesurable.
+Conclusion :Nous avons prouv´ e les deux sens de l’implication. Une fonction in-
+dicatrice 1 A est mesurable si et seulement si l’ensembleAqui la d´ efinit est lui-mˆ eme
+mesurable.
+Exercice 7 : Troncature d’une fonction mesurable
+´Enonc´ e
+Soit (X,T) un espace mesurable etf: (X,T)→(R,B(R)) une application mesurable.
+Soitk >0. On d´ efinit la fonction tronqu´ eefk par :
+fk(x) =
+
+
+
+ksif(x)>k
+f(x) si|f(x)|≤k
+−ksif(x)<−k
+Montrer quef k est mesurable.
+D´ emonstration
+La m´ ethode la plus ´ el´ egante consiste ` a voirfk comme la composition defavec une
+fonction bien choisie.
+10
+<<<PAGE>>>
+1. D´ efinissons une fonction de troncaturegk :R→Rpar :
+gk(y) =
+
+
+
+ksiy >k
+ysi−k≤y≤k
+−ksiy <−k
+Cette fonction peut aussi s’´ ecrire de mani` ere plus compacte :gk(y) = max(−k,min(y,k)).
+2. La fonctiony7→min(y,k) est continue surR.
+3. La fonctionz7→max(−k,z) est continue surR.
+4. La fonctiong k est la composition de deux fonctions continues, elle est donc elle-
+mˆ emecontinuesurR.
+5. Par construction, notre fonctionf k est la composition defetg k :
+fk(x) =g k(f(x)) = (g k◦f)(x)
+6. Nous avons la composition de deux fonctions :
+•f: (X,T)→(R,B(R)) est mesurable (par hypoth` ese).
+•g k : (R,B(R))→(R,B(R)) est continue, donc elle est bor´ elienne, c’est-` a-dire
+mesurable.
+7. D’apr` es le r´ esultat de l’exercice 5, la composition d’une fonction mesurable suivie
+d’une fonction continue (et donc mesurable) est une fonction mesurable.
+Conclusion :L’applicationf k =g k◦fest la composition de deux fonctions mesurables,
+elle est donc mesurable.
+Exercice 8 : Stabilit´ e de la mesurabilit´ e
+1. Stabilit´ e par sup, inf, lim sup et lim inf
+´Enonc´ e :Soientf n : Ω→Rdes fonctions mesurables. Montrer que sup nfn, inf nfn,
+lim supnfn et lim infnfn sont des fonctions mesurables.
+D´ emonstration :Une fonctiong: Ω→Rest mesurable si et seulement si pour tout
+a∈R, l’ensemble{x∈Ω|g(x)≤a}est mesurable.
+•Mesurabilit´ e desupnfn :
+Soitg(x) = sup n∈Nfn(x). L’in´ egalit´ eg(x)≤aest vraie si et seulement sitousles
+fn(x) sont inf´ erieurs ou ´ egaux ` aa. On a donc l’´ egalit´ e d’ensembles suivante :
+{x|sup
+n
+fn(x)≤a}=
+\
+n∈N
+{x|f n(x)≤a}
+Pour chaquen, la fonctionf n est mesurable, donc l’ensemble{x|f n(x)≤a}
+est mesurable. Une tribu ´ etant stable par intersection d´ enombrable (r´ esultat de
+l’exercice 1), l’ensemble T
+n∈N{x|f n(x)≤a}est mesurable. Donc sup nfn est
+mesurable.
+11
+<<<PAGE>>>
+•Mesurabilit´ e deinf nfn :
+On utilise l’identit´ e infnfn =−sup n(−fn).
+–Sif n est mesurable, alors−f n est aussi mesurable (composition def n avec la
+fonction continuey7→−y).
+–D’apr` es le point pr´ ec´ edent, supn(−fn) est une fonction mesurable.
+–Finalement,−sup n(−fn) est mesurable. Donc inf nfn est mesurable.
+•Mesurabilit´ e delim supnfn :
+Par d´ efinition, lim supnfn = inf k≥0(supn≥kfn).
+–Pour chaquekfix´ e, posonsg k = supn≥kfn. D’apr` es le premier point, chaque
+fonctiong k est mesurable.
+–La limite sup´ erieure est alors infk≥0gk. C’est l’infimum d’une suite de fonctions
+mesurables.
+–D’apr` es le deuxi` eme point, cette fonction est mesurable.
+•Mesurabilit´ e delim infnfn :
+Par d´ efinition, lim infnfn = supk≥0(inf n≥kfn). Le raisonnement est identique : c’est
+le supremum d’une suite de fonctions mesurables, donc elle est mesurable.
+2. Mesurabilit´ e de la valeur absolue
+´Enonc´ e :Soitf: Ω→Rune fonction mesurable. Montrer que|f|est une fonction
+mesurable.
+D´ emonstration :C’est une nouvelle application du th´ eor` eme de composition.
+•La fonction valeur absolue, not´ eeg(y) =|y|, est une fonction deRdansR.
+•Cette fonctiongest continue surR, elle est donc bor´ elienne (mesurable de (R,B(R))
+dans lui-mˆ eme).
+•La fonction|f|est la composition defet deg:
+|f|(x) =|f(x)|=g(f(x)) = (g◦f)(x)
+•Nous avons la composition def: (Ω,T)→(R,B(R)) qui est mesurable, et de
+g: (R,B(R))→(R,B(R)) qui est aussi mesurable.
+Conclusion :La fonction|f|est la composition de deux fonctions mesurables, elle est
+donc mesurable.
+12

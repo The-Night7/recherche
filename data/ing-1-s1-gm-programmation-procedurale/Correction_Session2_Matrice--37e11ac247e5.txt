@@ -1,0 +1,350 @@
+CORRECTION - SESSION #2 (RATTRAPAGE)
+Programmation Procédurale - ING1 Semestre 1 2024/2025
+Exercice 1 : Makefile [7.5 pts]
+Cet exercice demande de créer un Makefile complet avec récupération automatique des fichiers, création
+d'une bibliothèque dynamique, et respect de nombreuses règles de bonnes pratiques.
+Solution complète :
+ # Variables de configuration
+SRCDIR = src
+INCDIR = inc
+OBJDIR = obj
+# Récupération automatique des fichiers
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+HEADERS = $(wildcard $(INCDIR)/*.h)
+OBJECTS = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.c=.o)))
+# Compilateur et options
+CC = gcc
+CFLAGS = -Wall -Wextra -I$(INCDIR) -fPIC
+LDFLAGS = -shared
+# Nom de la bibliothèque
+LIBNAME = libmodule.so
+TARGET = $(OBJDIR)/$(LIBNAME)
+# Cibles non-physiques
+.PHONY: all clean
+# Règle par défaut
+all: $(TARGET)
+# Créer la bibliothèque dynamique
+$(TARGET): $(OBJECTS)
+■$(CC) $(LDFLAGS) -o $@ $^
+# Règle pattern pour compiler les .c en .o
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADERS) | $(OBJDIR)
+■$(CC) $(CFLAGS) -c -o $@ $<
+# Créer le dossier obj si nécessaire
+$(OBJDIR):
+■mkdir -p $(OBJDIR)
+# Nettoyage
+clean:
+■rm -rf $(OBJDIR)
+
+<<<PAGE>>>
+Explications détaillées :
+1. Variables de configuration
+ SRCDIR, INCDIR, OBJDIR : noms des dossiers stockés en variables
+ Facilite les modifications futures
+2. Récupération automatique
+ $(wildcard $(SRCDIR)/*.c) : récupère tous les .c dans src/
+ $(wildcard $(INCDIR)/*.h) : récupère tous les .h dans inc/
+ $(notdir ...) : extrait le nom sans le chemin
+ $(SOURCES:.c=.o) : remplace .c par .o (substitution)
+ $(addprefix $(OBJDIR)/, ...) : ajoute obj/ devant chaque nom
+3. Options de compilation
+ -I$(INCDIR) : spécifie où trouver les headers
+ -fPIC : Position Independent Code (obligatoire pour bibliothèque dynamique)
+ -shared : créer une bibliothèque partagée
+4. Règles
+ all : cible par défaut, construit la bibliothèque
+ $(TARGET): $(OBJECTS) : lie tous les .o en bibliothèque
+ $(OBJDIR)/%.o: $(SRCDIR)/%.c : règle pattern avec dépendance sur tous les headers
+ | $(OBJDIR) : order-only prerequisite (crée le dossier si nécessaire)
+ clean : supprime le dossier obj entier
+5. Utilisation des variables automatiques
+ $@ : nom de la cible (libmodule.so ou main.o, etc.)
+ $^ : toutes les dépendances (tous les .o)
+ $< : première dépendance (le fichier .c)
+6. .PHONY
+ Déclare que all et clean ne sont pas des fichiers
+ Force l'exécution même si des fichiers nommés "all" ou "clean" existent
+
+<<<PAGE>>>
+Exercice 2 : Compression de matrice 2D [13.0 pts]
+Cet exercice consiste à compresser une matrice sparse (avec beaucoup de zéros) en ne stockant que les
+valeurs non-nulles avec leurs coordonnées.
+Question 1 : Calcul du nombre maximal de valeurs [0.5 pt]
+Données :
+ Matrice : 12 lignes × 4 colonnes = 48 cases
+ Taille matrice originale : 48 × 4 octets = 192 octets
+Format compressé :
+ Entête : 3 entiers = 3 × 4 = 12 octets
+ Chaque triplet (ligne, colonne, valeur) : 3 × 4 = 12 octets
+Calcul :
+Pour ne pas dépasser 192 octets :
+12 + (n × 12) ≤ 192
+n × 12 ≤ 180
+n ≤ 15
+Réponse : Maximum 15 valeurs non-nulles
+Si on a 16 valeurs ou plus, le format compressé sera plus grand que l'original !
+
+<<<PAGE>>>
+Question 2 : Structure Matrix [0.75 pt]
+ typedef struct {
+    int nbLignes;
+    int nbColonnes;
+    int **data;  // Double pointeur pour accès 2D
+} Matrix;
+Explications :
+ nbLignes et nbColonnes : dimensions de la matrice
+ data : double pointeur permettant l'accès data[i][j]
+Schéma mémoire demandé :
+ Un bloc contigu pour toutes les données
+ Un tableau de pointeurs (un par ligne) pointant vers ce bloc
+ Cela permet d'avoir des données contiguës tout en gardant la syntaxe data[i][j]
+Question 3 : createArray(...) [0.5 pt]
+ int* createArray(int taille) {
+    int *array = (int*)malloc(taille * sizeof(int));
+    if (array == NULL) {
+        return NULL;
+    }
+    return array;
+}
+Points clés :
+ Allocation de taille * sizeof(int) octets
+ Vérification que malloc a réussi
+ Retour de NULL en cas d'erreur
+ Cast explicite pour la clarté (optionnel en C)
+
+<<<PAGE>>>
+Question 4 : createMatrix(...) [4.25 pts]
+ Matrix* createMatrix(int lignes, int colonnes) {
+    // 1. Allouer la structure
+    Matrix *mat = (Matrix*)malloc(sizeof(Matrix));
+    if (mat == NULL) {
+        return NULL;
+    }
+    
+    // 2. Initialiser les dimensions
+    mat->nbLignes = lignes;
+    mat->nbColonnes = colonnes;
+    
+    // 3. Allouer le tableau de pointeurs (une entrée par ligne)
+    mat->data = (int**)malloc(lignes * sizeof(int*));
+    if (mat->data == NULL) {
+        free(mat);
+        return NULL;
+    }
+    
+    // 4. Allouer le bloc contigu pour toutes les données
+    int *bloc = (int*)malloc(lignes * colonnes * sizeof(int));
+    if (bloc == NULL) {
+        free(mat->data);
+        free(mat);
+        return NULL;
+    }
+    
+    // 5. Faire pointer chaque ligne vers sa partie du bloc
+    for (int i = 0; i < lignes; i++) {
+        mat->data[i] = bloc + (i * colonnes);
+    }
+    
+    // 6. Initialiser toutes les cases à 0
+    for (int i = 0; i < lignes * colonnes; i++) {
+        bloc[i] = 0;
+    }
+    
+    return mat;
+}
+
+<<<PAGE>>>
+Algorithme détaillé :
+Étape 1 : Allouer la structure Matrix
+ Contient les dimensions et le double pointeur
+ Si échec, retourner NULL immédiatement
+Étape 2 : Initialiser les dimensions
+ Stocker nbLignes et nbColonnes
+Étape 3 : Allouer le tableau de pointeurs
+ Un pointeur par ligne : lignes × sizeof(int*)
+ Si échec : libérer la structure et retourner NULL
+Étape 4 : Allouer le bloc contigu de données
+ Toutes les données : lignes × colonnes × sizeof(int)
+ Si échec : libérer data et mat, retourner NULL
+Étape 5 : Configurer les pointeurs de lignes
+ Chaque data[i] pointe vers (bloc + i × colonnes)
+ Cela permet l'accès data[i][j] tout en gardant les données contiguës
+Étape 6 : Initialiser à zéro
+ Parcourir tout le bloc et mettre chaque case à 0
+Schéma mémoire :
+ Mémoire :
+[0,0,0,0,9, 0,1,0,0,0, 0,0,0,-3,0, 10,0,0,0,-4]
+ |          |           |            |
+ data[0]    data[1]     data[2]      data[3]
+Tableau de pointeurs : [ptr0, ptr1, ptr2, ptr3]
+
+<<<PAGE>>>
+Question 5 : compress(...) [4.25 pts]
+ int* compress(Matrix *mat) {
+    if (mat == NULL) return NULL;
+    
+    // 1. Compter les valeurs non-nulles
+    int nbNonZeros = 0;
+    for (int i = 0; i < mat->nbLignes; i++) {
+        for (int j = 0; j < mat->nbColonnes; j++) {
+            if (mat->data[i][j] != 0) {
+                nbNonZeros++;
+            }
+        }
+    }
+    
+    // 2. Calculer la taille du tableau compressé
+    // Entête (3) + triplets (3 par valeur non-nulle)
+    int taille = 3 + (nbNonZeros * 3);
+    
+    // 3. Allouer le tableau
+    int *compressed = (int*)malloc(taille * sizeof(int));
+    if (compressed == NULL) {
+        return NULL;
+    }
+    
+    // 4. Remplir l'entête
+    compressed[0] = taille;               // Taille totale
+    compressed[1] = mat->nbLignes;        // Nb lignes
+    compressed[2] = mat->nbColonnes;      // Nb colonnes
+    
+    // 5. Remplir les triplets
+    int index = 3;  // Position dans le tableau compressé
+    for (int i = 0; i < mat->nbLignes; i++) {
+        for (int j = 0; j < mat->nbColonnes; j++) {
+            if (mat->data[i][j] != 0) {
+                compressed[index++] = i;                // Ligne
+                compressed[index++] = j;                // Colonne
+                compressed[index++] = mat->data[i][j];  // Valeur
+            }
+        }
+    }
+    
+    return compressed;
+}
+
+<<<PAGE>>>
+Explications :
+Étape 1 : Compter les valeurs non-nulles
+ Parcourir toute la matrice
+ Incrémenter un compteur pour chaque valeur ≠ 0
+Étape 2 : Calculer la taille nécessaire
+ Entête : 3 entiers (taille, lignes, colonnes)
+ Données : 3 entiers par valeur non-nulle (ligne, colonne, valeur)
+ Total : 3 + (nbNonZeros × 3)
+Étape 3 : Allouer le tableau compressé
+ Vérifier le retour de malloc
+Étape 4 : Remplir l'entête
+ compressed[0] = taille totale du tableau
+ compressed[1] = nombre de lignes de la matrice
+ compressed[2] = nombre de colonnes de la matrice
+Étape 5 : Remplir les triplets
+ Pour chaque valeur non-nulle, stocker (i, j, valeur)
+ Avancer l'index de 3 à chaque triplet
+Exemple :
+Matrice 4×5 :
+ 0  0  0  0  9
+0  1  0  0  0
+0  0  0 -3  0
+10 0  0  0 -4
+→ Tableau compressé :
+[18, 4, 5,  0, 4, 9,  1, 1, 1,  2, 3, -3,  3, 0, 10,  3, 4, -4]
+ ↑   ↑  ↑    ↑  ↑  ↑   ↑  ↑  ↑   ↑   ↑   ↑    ↑  ↑   ↑    ↑  ↑   ↑
+taille L C   L  C  V   L  C  V   L  C   V    L  C   V    L  C   V
+
+<<<PAGE>>>
+Question 6 : decompress(...) [2.75 pts]
+ Matrix* decompress(int *compressed) {
+    if (compressed == NULL) return NULL;
+    
+    // 1. Lire l'entête
+    int taille = compressed[0];
+    int lignes = compressed[1];
+    int colonnes = compressed[2];
+    
+    // 2. Créer la matrice (déjà initialisée à 0)
+    Matrix *mat = createMatrix(lignes, colonnes);
+    if (mat == NULL) {
+        return NULL;
+    }
+    
+    // 3. Calculer le nombre de triplets
+    int nbTriplets = (taille - 3) / 3;
+    
+    // 4. Remplir la matrice avec les valeurs compressées
+    int index = 3;  // Commencer après l'entête
+    for (int t = 0; t < nbTriplets; t++) {
+        int i = compressed[index++];      // Ligne
+        int j = compressed[index++];      // Colonne
+        int valeur = compressed[index++]; // Valeur
+        
+        // Vérification des limites (sécurité)
+        if (i >= 0 && i < lignes && j >= 0 && j < colonnes) {
+            mat->data[i][j] = valeur;
+        }
+    }
+    
+    return mat;
+}
+Explications :
+Étape 1 : Extraire les informations de l'entête
+ Lire taille, lignes, colonnes des 3 premières cases
+Étape 2 : Créer la matrice
+ Utiliser createMatrix() qui initialise déjà tout à 0
+ Vérifier le retour
+Étape 3 : Calculer le nombre de triplets
+ (taille - 3) / 3 = nombre de valeurs à restaurer
+Étape 4 : Restaurer les valeurs
+ Lire chaque triplet (ligne, colonne, valeur)
+ Placer la valeur à la position correcte
+ Vérifier les limites pour éviter les dépassements
+Optimisation : Comme createMatrix initialise déjà à 0, on n'a qu'à remplir les valeurs non-nulles.
+
+<<<PAGE>>>
+Récapitulatif et points clés
+Makefiles avancés :
+✓ Utiliser wildcard pour récupérer automatiquement les fichiers
+✓ Combiner notdir, addprefix, subst pour transformer les noms
+✓ -fPIC obligatoire pour les bibliothèques dynamiques
+✓ Order-only prerequisites (|) pour créer des dossiers
+✓ Minimiser le nombre de règles avec des patterns
+Allocation de structures complexes :
+✓ Allouer en plusieurs étapes avec vérification à chaque fois
+✓ Nettoyer les allocations partielles en cas d'erreur
+✓ Pour une matrice 2D contiguë : 2 allocations (pointeurs + données)
+✓ Configurer les pointeurs de lignes vers le bloc contigu
+Compression de données :
+✓ Format avec entête (métadonnées) + données compressées
+✓ Compression efficace pour matrices sparse (beaucoup de zéros)
+✓ Calculer d'abord le nombre d'éléments avant d'allouer
+✓ Parcours systématique pour compression et décompression
+Robustesse du code :
+✓ Vérifier tous les paramètres en entrée (NULL, valeurs invalides)
+✓ Vérifier tous les retours d'allocation
+✓ Libérer proprement en cas d'erreur
+✓ Documenter le format des structures de données
+Barème
+Exercice
+Question
+Points
+Exercice 1
+Makefile complet
+7.5 pts
+Exercice 2
+Q1 - Calcul max valeurs
+0.5 pt
+Q2 - Structure Matrix
+0.75 pt
+Q3 - createArray
+0.5 pt
+Q4 - createMatrix
+4.25 pts
+Q5 - compress
+4.25 pts
+Q6 - decompress
+2.75 pts
+<b>Total Ex 2</b>
+<b>13.0 pts</b>
+<b>TOTAL</b>
+<b>20.5 pts</b>
+Document créé pour la préparation aux examens ING1 - CY Tech

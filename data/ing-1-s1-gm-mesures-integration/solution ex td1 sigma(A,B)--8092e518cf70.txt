@@ -1,0 +1,66 @@
+Structure de la tribu engendrée par deux ensembles
+Énoncé de l’exercice
+SoientAetBdeux sous-ensembles d’un universΩ. Décrire explicitement la tribu
+engendrée par ces deux ensembles, notéeσ(A,B).
+Démonstration.Nous allons appliquer directement la Proposition sur la structure d’une
+tribu finiment engendrée.
+1.Identification des paramètres :
+La famille génératrice est{A1,A 2}avecA 1 =AetA 2 =B. Nous avons doncn= 2.
+2.Construction des "atomes" :
+La proposition nous dit de construire les atomesen considérant toutes les intersections
+de la formeT2
+i=1Avi
+i oùv= (v 1,v 2)est un vecteur binaire dans{0,1} 2. Les2 n = 2 2 = 4
+vecteurs binaires possibles sont(1,1),(1,0),(0,1)et(0,0).
+Calculons les 4 atomes correspondants, en rappelant queC1 =CetC 0 =C c :
+— Pourv= (1,1):P 1 :=A 1
+1∩A 1
+2 =A∩B
+— Pourv= (1,0):P 2 :=A 1
+1∩A 0
+2 =A∩B c
+— Pourv= (0,1):P 3 :=A 0
+1∩A 1
+2 =A c∩B
+— Pourv= (0,0):P 4 :=A 0
+1∩A 0
+2 =A c∩B c
+3.Formation de la partition :
+Comme démontré dans le cours, ces quatre atomes forment une partition deΩ. Notons
+Pne la collection des atomesnon videsparmi{P 1,P 2,P 3,P 4}.
+4.Conclusion sur la structure de la tribu :
+La proposition énonce que la tribu engendrée est l’ensemble de toutes les unions
+possibles des atomes non vides.
+Formellement,σ(A,B) =
+S
+P∈J P|J⊆P ne
+	
+.
+1
+<<<PAGE>>>
+Illustration : Les 16 éléments deσ(A,B)
+En supposant que les quatre atomesP 1,P 2,P 3,P 4 sont tous non vides, la tribu engendrée
+σ(A,B)contient exactement2 4 = 16éléments. Voici la liste exhaustive, montrant comment
+chaque élément peut être exprimé à partir deAetB.
+Unions de 0 ou 4 atomes (les éléments triviaux) :
+—∅(union de zéro atome)
+—Ω =P 1∪P 2∪P 3∪P 4
+Unions de 1 atome (la partition de base) :
+—P 1 =A∩B
+—P 2 =A∩B c =A\B
+—P 3 =A c∩B=B\A
+—P 4 =A c∩B c = (A∪B) c
+Unions de 2 atomes :
+—A=P 1∪P 2
+—B=P 1∪P 3
+—A c =P 3∪P 4
+—B c =P 2∪P 4
+— La différence symétrique :A∆B= (A\B)∪(B\A) =P 2∪P 3
+— Le complémentaire de la différence symétrique :(A∆B)c =P 1∪P 4
+Unions de 3 atomes (les complémentaires des atomes) :
+—(A∩B) c =A c∪B c =P 2∪P 3∪P 4
+—(A\B) c =A c∪B=P 1∪P 3∪P 4
+—(B\A) c =B c∪A=P 1∪P 2∪P 4
+—(A∪B) = (A c∩B c)c =P 1∪P 2∪P 3
+■
+2

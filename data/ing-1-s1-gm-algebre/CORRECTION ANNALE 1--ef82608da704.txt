@@ -1,0 +1,402 @@
+Corrigé Annale 1 - Algèbre Linéaire Appliquée
+ING1 Mathématiques - CY Tech
+Exercice 1 : Normes vectorielles et matricielles (5 points)
+Soit le vecteur x = (2,−1, 3,−4)T∈ R4.
+1. Calcul des normes de x (1,5 point)
+∥x∥1 =|2| +|− 1| +|3| +|− 4| = 2 + 1 + 3 + 4 = 10
+∥x∥2 =
+p
+22 + (−1)2 + 32 + (−4)2 =
+√
+4 + 1 + 9 + 16 =
+√
+30≈ 5, 477
+∥x∥∞ = max(|2|,|− 1|,|3|,|− 4|) = 4
+2.a. Calcul des normes de A (1,5 point)
+Pour A =
+
+
+1 −2 3
+2 0 −1
+−1 4 2
+
+ :
+Norme 1 (maximum des sommes colonnes) :
+ Colonne 1 : |1| +|2| +|− 1| = 4
+ Colonne 2 : |− 2| +|0| +|4| = 6
+ Colonne 3 : |3| +|− 1| +|2| = 6
+∥A∥1 = max(4, 6, 6) = 6
+Norme innie (maximum des sommes lignes) :
+ Ligne 1 : |1| +|− 2| +|3| = 6
+ Ligne 2 : |2| +|0| +|− 1| = 3
+ Ligne 3 : |− 1| +|4| +|2| = 7
+∥A∥∞ = max(6, 3, 7) = 7
+Norme de F robenius :
+∥A∥F =
+sX
+i,j
+a2
+ij =
+√
+1 + 4 + 9 + 4 + 0 + 1 + 1 + 16 + 4 =
+√
+40 = 2
+√
+10≈ 6, 325
+1
+<<<PAGE>>>
+2.b. Vérication ∥A∥1 =∥AT∥∞ (1 point)
+AT =
+
+
+1 2 −1
+−2 0 4
+3 −1 2
+
+
+Sommes lignes de AT :
+ Ligne 1 : |1| +|2| +|− 1| = 4
+ Ligne 2 : |− 2| +|0| +|4| = 6
+ Ligne 3 : |3| +|− 1| +|2| = 6
+∥AT∥∞ = max(4, 6, 6) = 6 =∥A∥1 ✓
+La propriété est bien vériée.
+2.c. Vérication inégalité (1 point)
+Pour x = (1, 1, 1)T :
+Ax =
+
+
+1 −2 3
+2 0 −1
+−1 4 2
+
+
+
+
+1
+1
+1
+
+ =
+
+
+2
+1
+5
+
+
+∥Ax∥∞ = max(|2|,|1|,|5|) = 5
+∥A∥∞·∥x∥∞ = 7× 1 = 7
+On a bien : 5≤ 7 ✓
+Exercice 2 : Méthode du point xe (5 points)
+Équation : x3− 2x− 5 = 0 sur [2, 3]
+1. Existence et unicité (0,5 point)
+Soit f(x) =x3− 2x− 5.
+Existence : f continue sur [2, 3] et :
+ f(2) = 8− 4− 5 =−1< 0
+ f(3) = 27− 6− 5 = 16> 0
+Par le théorème des valeurs intermédiaires, ∃x∗∈ [2, 3] tel que f(x∗) = 0.
+Unicité : f′(x) = 3x2− 2> 0 pour x∈ [2, 3] donc f strictement croissante ⇒ solution unique.
+2.a. Étude des dérivées (1,5 point)
+Pour g1(x) = 3√2x + 5 :
+g′
+1(x) = 1
+3(2x + 5)−2/3· 2 = 2
+3(2x + 5)2/3
+Pour x∈ [2, 3] : 2x + 5∈ [9, 11]
+g′
+1(x)∈
+ 2
+3· 112/3, 2
+3· 92/3
+
+≈ [0, 141; 0, 165]
+Donc |g′
+1(x)|< 1 sur [2, 3]⇒ Convergence garantie
+2
+<<<PAGE>>>
+Pour g2(x) = x3−5
+2 :
+g′
+2(x) = 3x2
+2
+Pour x∈ [2, 3] : g′
+2(x)∈ [6, 13, 5]
+Donc |g′
+2(x)|> 1 sur [2, 3]⇒ Pas de convergence
+Pour g3(x) =
+q
+x3−5
+2 :
+g′
+3(x) = 1
+2
+q
+x3−5
+2
+· 3x2
+2 = 3x2
+4
+q
+x3−5
+2
+Pour x = 2, 5 : g′
+3(2, 5) = 3·6,25
+4
+q
+10,625
+2
+≈ 18,75
+4·2,304≈ 2, 04> 1
+Donc |g′
+3(x)|> 1⇒ Pas de convergence
+2.b. Conclusion (1 point)
+Seule la fonction g1 permet la convergence de la méthode du point xe.
+2.c. Deux itérations avec g1 (1 point)
+A vec x0 = 2, 5 :
+x1 =g1(2, 5) = 3
+p
+2· 2, 5 + 5 =
+3√
+10≈ 2, 154
+x2 =g1(2, 154) = 3
+p
+2· 2, 154 + 5 = 3
+p
+9, 308≈ 2, 104
+2.d. Vitesse de convergence (1 point)
+On a calculé que g′
+1(x∗)̸= 0 (environ 0,15 près de la solution).
+Donc la convergence est linéaire avec taux de convergence ≈|g′
+1(x∗)|≈ 0, 15.
+Exercice 3 : Conditionnement (4 points)
+A =
+4 1
+1 3
+
+, b =
+5
+4
+
+1. Calcul de A−1 (1 point)
+det(A) = 4· 3− 1· 1 = 11
+A−1 = 1
+11
+ 3 −1
+−1 4
+
+=
+ 3/11 −1/11
+−1/11 4 /11
+
+2. Conditionnement (1 point)
+∥A∥∞ = max(|4| +|1|,|1| +|3|) = max(5, 4) = 5
+∥A−1∥∞ = 1
+11 max(|3| +|− 1|,|− 1| +|4|) = 1
+11 max(4, 5) = 5
+11
+κ∞(A) = 5× 5
+11 = 25
+11≈ 2, 27
+Le système est bien conditionné ( κ proche de 1).
+3
+<<<PAGE>>>
+3. Nouvelle solution avec perturbation (1 point)
+A vec b′ =
+5, 1
+3, 9
+
+:
+x′ =A−1b′ =
+ 3/11 −1/11
+−1/11 4 /11
+ 5, 1
+3, 9
+
+=
+ (15, 3− 3, 9)/11
+(−5, 1 + 15, 6)/11
+
+x′ =
+11, 4/11
+10, 5/11
+
+=
+1, 0364
+0, 9545
+
+Erreur relative :
+∥x′−x∥∞
+∥x∥∞
+= max(|0, 0364|,|0, 0455|)
+1 = 0, 0455 ≈ 4, 55%
+4. Borne théorique (1 point)
+Perturbation relative sur b :
+∥b′−b∥∞
+∥b∥∞
+= max(|0, 1|,|− 0, 1|)
+5 = 0, 1
+5 = 0, 02 = 2%
+Borne théorique :
+∥∆x∥∞
+∥x∥∞
+≤κ∞(A)·∥∆b∥∞
+∥b∥∞
+= 25
+11× 0, 02≈ 0, 0455 = 4, 55%
+L'erreur réelle (4,55%) est exactement égale à la borne théorique, ce qui conrme l'analyse.
+Exercice 4 : Factorisation LU (6 points)
+A =
+
+
+2 1 1
+4 1 0
+−2 2 1
+
+, b =
+
+
+4
+5
+1
+
+
+1. Existence factorisation LU (1 point)
+Calcul des mineurs principaux :
+ M1 =a11 = 2̸= 0 ✓
+ M2 = det
+2 1
+4 1
+
+= 2− 4 =−2̸= 0 ✓
+ M3 = det(A) = 2(1− 0)− 1(4− 0) + 1(8 + 2) = 2− 4 + 10 = 8̸= 0 ✓
+Tous les mineurs principaux sont non nuls ⇒ A admet une factorisation LU.
+2. Factorisation A = LU (3 points)
+Initialisation :
+U =
+
+
+2 1 1
+0 · ·
+0 · ·
+
+, L =
+
+
+1 0 0
+l21 1 0
+l31 l32 1
+
+
+Étape 1 : Première colonne de L
+l21 = a21
+u11
+= 4
+2 = 2
+4
+<<<PAGE>>>
+l31 = a31
+u11
+=−2
+2 =−1
+Étape 2 : Deuxième ligne de U
+u22 =a22−l21u12 = 1− 2· 1 =−1
+u23 =a23−l21u13 = 0− 2· 1 =−2
+Étape 3 : Deuxième colonne de L
+l32 = a32−l31u12
+u22
+= 2− (−1)· 1
+−1 = 3
+−1 =−3
+Étape 4 : Troisième ligne de U
+u33 =a33−l31u13−l32u23 = 1− (−1)· 1− (−3)· (−2) = 1 + 1− 6 =−4
+Résultat :
+L =
+
+
+1 0 0
+2 1 0
+−1 −3 1
+
+, U =
+
+
+2 1 1
+0 −1 −2
+0 0 −4
+
+
+3. Résolution Ly = b (1 point)
+
+
+1 0 0
+2 1 0
+−1 −3 1
+
+
+
+
+y1
+y2
+y3
+
+ =
+
+
+4
+5
+1
+
+
+Descente :
+y1 = 4
+y2 = 5− 2y1 = 5− 8 =−3
+y3 = 1− (−1)y1− (−3)y2 = 1 + 4− 9 =−4
+y =
+
+
+4
+−3
+−4
+
+
+4. Résolution U x = y (1 point)
+
+
+2 1 1
+0 −1 −2
+0 0 −4
+
+
+
+
+x1
+x2
+x3
+
+ =
+
+
+4
+−3
+−4
+
+
+Remontée :
+x3 =−4
+−4 = 1
+x2 =−3− (−2)· 1
+−1 =−3 + 2
+−1 = 1
+x1 = 4− 1· 1− 1· 1
+2 = 2
+2 = 1
+x =
+
+
+1
+1
+1
+
+
+Fin du corrigé - Note totale : /20
+5

@@ -1,0 +1,273 @@
+Correction : Examen Mesure & Intégration - Exercice 1
+Rappels de cours (issus de la Fiche de Révision)
+Avant d’attaquer l’exercice, voici les points essentiels de votre fiche nécessaires pour
+résoudre ce problème :
+1. Définition d’une Mesure (Page 2)
+Une applicationm:T →[0,+∞]est une mesure si :
+—m(∅) = 0
+—σ-additivité : Si(A n)sont disjoints, alorsm(SAn) =Pm(An).
+2. Mesure à Densité (Page 4)
+Sif≥0est mesurable etµest une mesure, on peut définir une nouvelle mesureν
+par :
+ν(A) =
+Z
+A
+fdµ
+Formule de changement de variable :
+Z
+gdν=
+Z
+gfdµ
+Intégrabilité :gestν-intégrable⇐⇒gfestµ-intégrable.
+3. Propriétés de l’Intégrale (Page 2 et 3)
+—Linéarité :
+R
+(αf+βg)dµ=α
+R
+fdµ+β
+R
+gdµ.
+—Fonction positive :Sig≥0,
+R
+gdµ= 0 =⇒g= 0µ-p.p. (et inversement
+sur un ensemble de mesure nulle).
+1
+<<<PAGE>>>
+Solution de l’Exercice 1
+Données :
+—(Ω,T)un espace mesurable.
+—f: (Ω,T)→(R +,B(R +))mesurable (f≥0).
+—m 1,m 2 deux mesures positives.
+—α 1,α 2∈R∗
++.
+— Définition dem:∀A∈T,m(A) =α 1
+R
+Afdm 1 +α 2
+R
+Afdm 2.
+1. Montrer que(Ω,T,m)est un espace mesuré.
+Il faut vérifier quemest bien une mesure surT. D’après le cours (Mesure à densité,
+page 4), posonsν 1(A) =
+R
+Afdm 1 etν 2(A) =
+R
+Afdm 2. Commef≥0,ν 1 etν 2 sont des
+mesures sur(Ω,T). On a alorsm=α 1ν1 +α 2ν2. Commeα 1,α 2 >0, une combinaison
+linéaire à coefficients positifs de mesures est une mesure.
+Vérification détaillée (si nécessaire) :
+—Ensemble vide :
+m(∅) =α 1
+Z
+∅
+fdm 1 +α 2
+Z
+∅
+fdm 2 =α 1×0 +α 2×0 = 0.
+—σ-additivité :Soit(A n)n∈N une suite d’ensembles disjoints deT.
+m
+ [
+n
+An
+!
+=α 1ν1
+ [
+n
+An
+!
++α 2ν2
+ [
+n
+An
+!
+=α 1
+X
+n
+ν1(An) +α 2
+X
+n
+ν2(An) (carν i sont des mesures)
+=
+X
+n
+(α1ν1(An) +α 2ν2(An)) =
+X
+n
+m(An).
+Conclusion :mest bien une mesure.
+2. Montrer quemest finie ssifestm i-intégrable pouri= 1,2.
+Une mesuremest finie sim(Ω)<+∞. Calculonsm(Ω):
+m(Ω) =α 1
+Z
+Ω
+fdm 1 +α 2
+Z
+Ω
+fdm 2.
+Puisquef≥0,α 1 >0etα 2 >0, les deux termes de la somme sont positifs. Une somme
+de termes positifs est finie si et seulement si chaque terme est fini.
+m(Ω)<+∞ ⇐⇒
+Z
+Ω
+fdm 1 <+∞ET
+Z
+Ω
+fdm 2 <+∞.
+Or, commef≥0, dire que
+R
+Ωfdm i <+∞est exactement la définition de "festm i-
+intégrable".
+Conclusion :mest finie⇐⇒ ∀i= 1,2,festm i-intégrable.
+2
+<<<PAGE>>>
+3. SoitA∈T. Montrer quem 1(A) = 0etm 2(A) = 0 =⇒m(A) = 0.
+Supposonsm 1(A) = 0etm 2(A) = 0. Par définition :
+m(A) =α 1
+Z
+A
+fdm 1 +α 2
+Z
+A
+fdm 2 =α 1
+Z
+Ω
+f·1 Adm1 +α 2
+Z
+Ω
+f·1 Adm2.
+Rappelons une propriété classique (Page 2, astuce "suites d’événements" ou simplement
+propriété de l’intégrale) : l’intégrale sur un ensemble de mesure nulle est nulle.
+— Puisquem 1(A) = 0,lafonctionf·1 A estnullem 1-presquepartout.Donc
+R
+Afdm 1 =
+0.
+— De même,m 2(A) = 0 =⇒
+R
+Afdm 2 = 0.
+Ainsi,m(A) =α 1×0 +α 2×0 = 0.
+4. Soitg: (Ω,T)→(R,B(R))mesurable et positive.
+(a) Montrer que
+Z
+Ω
+gdm=α 1
+Z
+Ω
+fgdm 1 +α 2
+Z
+Ω
+fgdm 2.
+C’est la généralisation de la formule de changement de variable pour les mesures à
+densité (Page 4). On procède par laméthode de la fonction étagée (standard machine):
+1. Sig=1 A (fonction indicatrice):
+Z
+Ω
+1Adm=m(A) =α 1
+Z
+A
+fdm 1 +α 2
+Z
+A
+fdm 2 =α 1
+Z
+Ω
+f1 Adm1 +α 2
+Z
+Ω
+f1 Adm2.
+La formule est vraie.
+2. Sig= P
+kak1Ak (fonction étagée positive): Par linéarité de l’intégrale (Page 2), la
+formule reste vraie (combinaison linéaire de l’étape 1).
+3. Sigest mesurable positive quelconque : Il existe une suite croissante de fonctions
+étagées positives(g n)telle queg n ↑g. On applique leThéorème de Convergence
+Monotone (Beppo-Levi)(Page 3) :
+Z
+gdm= lim
+n→∞
+Z
+gndm
+Et pour le membre de droite :
+lim
+n→∞
+
+α1
+Z
+fg ndm1 +α 2
+Z
+fg ndm2
+
+=α 1
+Z
+fgdm 1 +α 2
+Z
+fgdm 2.
+(Carfg n↑fgpuisquef≥0). La formule est donc démontrée.
+(b) En déduire condition d’intégrabilité.
+gestm-intégrable⇐⇒
+R
+Ω|g|dm<+∞. Icig≥0, donc|g|=g. D’après la formule
+(a) : Z
+Ω
+gdm=α 1
+Z
+Ω
+fgdm 1
+| {z }
+A
++α2
+Z
+Ω
+fgdm 2
+| {z }
+B
+.
+Commeα 1,α 2 >0etA,B≥0, la somme est finie si et seulement siA <∞etB <∞.
+Or,
+R
+fgdm i <∞signifie exactement quefgestm i-intégrable (carfg≥0).
+Conclusion :gestm-intégrable⇐⇒fgestm i-intégrable pouri= 1,2.
+3
+<<<PAGE>>>
+5. Soitgmesurable de signe quelconque.
+(a) Condition d’intégrabilité.
+Par définition,gestm-intégrable si et seulement si|g|estm-intégrable. On applique
+le résultat de la question4.(b)à la fonction positive|g|.gestm-intégrable⇐⇒ |g|est
+m-intégrable⇐⇒f|g|estm i-intégrable pouri= 1,2. Or,f|g|=|fg|(carf≥0). Donc
+⇐⇒fgestm i-intégrable pouri= 1,2.
+(b) Formule intégrale.
+Supposonsgintégrable. On décomposeg=g +−g− (parties positive et négative, Page
+3). On a|g|=g + +g−. L’intégrabilité degimplique que
+R
+g+dm<∞et
+R
+g−dm<∞.
+On peut appliquer la formule de la question4.(a)àg+ etg − séparément :
+Z
+g+dm=α 1
+Z
+fg +dm1 +α 2
+Z
+fg +dm2
+Z
+g−dm=α 1
+Z
+fg−dm1 +α 2
+Z
+fg−dm2
+En soustrayant ces deux égalités (ce qui est légitime car toutes les intégrales sont finies) :
+Z
+gdm=
+Z
+g+dm−
+Z
+g−dm
+=α 1
+Z
+f(g +−g−)dm1 +α 2
+Z
+f(g +−g−)dm2
+=α 1
+Z
+fgdm 1 +α 2
+Z
+fgdm 2.
+4

@@ -1,0 +1,287 @@
+TP1 - Les commandes de bases
+In` es de Courchelle
+2021 - 2022
+Consignes : Durant ce TD l’utilisation de la souris, Touchpad et/ou Trackpoint sont
+strictement interdit. Seul le clavier est autoris´ e.
+Objectifs : Ce TD a pour objectif de connaˆ ıtre le fonctionnement et l’utilisation des
+syst` emes Unix. Le premier concept abord´ e est le changement du mot de passe. Les ca-
+ract` eristiques du syst` emes de ﬁchier UNIX sont ´ etudi´ ees via les fonctionnalit´ es de types :
+ajout, suppression, modiﬁcation, aﬃchage et d´ eplacement dans l’arborescence. Une intro-
+duction ` a l’´ editeur de texte VI est illustr´ e ` a travers des exemples.
+1 Le mot de passe
+Les caract` eristiques de chaque utilisateur sont enregistr´ ees dans un ﬁchier/etc/passwd
+qui est g´ er´ e par l’administrateur syst` eme, mais que vous pouvez consulter. Dans ce ﬁchier,
+vous trouverez pour chaque utilisateur, le num´ ero de son groupe, son nom, son pr´ enom, et
+le shell ou programme ` a lancer. Le mot de passe est votre protection contre les intrusions.
+C’est la seul fa¸ con de prot´ eger vos donn´ ees.
+1.1 Trouver un bon mot de passe
+Voici quelques conseils qui vous permettront de trouver un mot de passe le plus sˆ ur
+possible.
+Ce qu’il faut faire !
+- appliquer des majuscules et des minuscules
+- utiliser des chiﬀres et des caract` eres sp´ eciaux
+- adopter une longueur de 7 ` a 8 caract` eres minimum
+- concat´ ener des mots pour en cr´ eer un autre
+Ce qu’il NE faut PAS faire !
+- mettre un mot de passe que l’on peut trouver dans un dictionnaire
+- avoir recours ` a un nom de famille (surtout si la famille est c´ el` ebre et qu’on peut
+trouver le nom dans un dictionnaire), un nom de lieu, le pr´ enom de votre chat ...
+- employer un mot trop court
+1
+<<<PAGE>>>
+1.2 Changer le mot de passe
+Pour changer son mot de passe, il faut utiliser la commande passwd. Le programme
+demande alors l’ancien mot de passe puis deux fois le nouveau. Si le d´ eroulement est normal,
+le nouveau mot de passe sera utilis´ e pour une prochaine session.
+2 Editeur de texte VI
+2.1 Qu’est ce que VI ?
+VI est un ´ editeur de texte, directement disponible dans le terminal. Il a ´ et´ e d´ evelopp´ e
+` a l’Universit´ e de Berkeley en Californie. Il poss` ede trois modes de travail :
+- Mode commande : Toutes les entr´ ees claviers sont interpr´ et´ ees comme des commandes
+- Mode insertion : Toutes les entr´ ees claviers sont du textes ´ ecrits dans le ﬁchier
+- Mode ´ etendu : Toutes les entr´ ees claviers sont interpr´ et´ ees comme des commandes
+propres ` a l’´ editeur
+Figure 1 – Les modes VI
+2.2 Quelques que commandes utiles (attention mode commande
+activ´ e)
+- Sauvegarder : w
+- Sauvegarder et quitter wq
+- Sauvegarder, quitter et sans demande de conﬁrmation wq!
+- Rechercher dans le ﬁchier / suivi du mot rechercher, n permet d’aller directement ` a
+l’occurence suivante.
+2
+<<<PAGE>>>
+3 Pour bien commencer
+- Ouvrir un terminal = ctrl + alt + t
+- Aﬃcher le contenu d’un r´ epertoire =ls
+- Savoir o` u on se trouve dans l’arborescence = pwd
+- Revenir ` a son r´ epertoire courant =cd
+- Aller au r´ epertoire pr´ ec´ edent =cd ..
+- Connaˆ ıtre le principe d’une commande et ses options associ´ ees =man nom commande
+Pour parcourir le manuel ( man) :
+- q = permet de sortir du manuel
+- man -k search = liste tous les manuels li´ es ` a ”search”
+- man man = ouvre le manuel de man
+- man ls puis = recherche un mot contenu dans le manuel
+4 Exercices
+A l’aide de la commandemkdir cr´ eer un r´ epertoire ` a votre racine appel´ eCommandesUnix.
+Il ne doit pas y avoir d’espace dans le titre du r´ epertoire.
+4.1 Naviguer dans le syst` eme de ﬁchier
+1. Aller dans le r´ epertoirebin et aﬃcher son contenu
+R´ eponses
+cd /bin/
+2. Revener dans votre home-directory. R´ ealiser les 3 solutions possibles.
+R´ eponses
+cd /home/eisti/
+cd ∼
+cd
+3
+<<<PAGE>>>
+4.2 Mettre ` a jour sa machine (Sur vos machines perso unique-
+ment)
+1. A votre avis, ¸ c` a sert ` a quoi de mettre ` a jour son syst` eme d’exploitation UNIX ?
+R´ eponses
+Mˆ eme si nous ne sommes pas sous windows, il existe cependant des failles de s´ ecurit´ e.
+Il est donc important de mettre ` a jour r´ eguli` erement son syst` eme. De plus, l’en-
+semble des logiciels, tel que ﬁrefox, propose des mises ` a jour r´ eguli´ eres pour la
+s´ ecurit´ e, les derni` eres technologies etc. Il est donc important de mettre son ordi-
+nateur r´ eguli` erement ` a jour.
+2. Aﬃcher le manuel de la commande apt.
+R´ eponses
+man apt
+3. La mise ` a jour se fait en deux ´ etapes :
+- resynchroniser un ﬁchier repertoriant les paquets disponibles et sa source
+etc/apt/sources.list : update.
+- Instalation des paquets sur le syst` eme : upgrade
+R´ ealiser cette mise ` a jour ` a l’aide de la commandeapt. Que remarquez vous ?
+R´ eponses
+il faut ˆ etre en super utilisateur pour l’utiliser.
+sudo apt update
+sudo apt upgrade
+Attention : n’´ eteignez surtout pas votre ordinateur, si la mise ` a jour n’est pas ter-
+min´ ee.
+4. De plus, la commande apt permet d’installer des paquets (application, logiciels ...).
+A l’aide de la commande apt, rechercher l’existance d’un paquet appel´ esl
+R´ eponses
+apt search sl
+5. Installer le paquet sl
+R´ eponses
+sudo apt install sl
+6. (Bonus) Lancer la commande sl dans le terminal. Que remarquez vous ?
+4
+<<<PAGE>>>
+4.3 Ecrire et lire dans un ﬁchier
+1. Cr´ eer un ﬁchier mesMusiques. Attention, le nom du ﬁchier ne doit pas contenir
+d’espace. Ins´ erer une ou deux phrases en utilisant l’´ editeur de texte vi.
+R´ eponses
+touch mesMusiques
+vi mesMusiques Passez en mode insertion (touche i)
+”Un grand pouvoir implique de grande responsabilit´ e”
+Passez en mode commandes (touche esc)
+:wq !
+2. Visualiser le contenu de mesMusiques dans le terminal, sans utiliser VI.
+R´ eponses
+cat mesMusiques
+3. Quelle est la taille du ﬁchier ? mesMusiques
+R´ eponses
+du -h mesMusiques
+4.4 Copier/Coller
+1. Faire une copie de mesMusiques appel´ eemyMusic
+R´ eponses
+cp mesMusiques myMusic
+2. Comparer leur taille
+R
+´ eponses
+du -h mesMusiques myMusic
+3. Renommer myMusic en mySong
+R´ eponses
+mv myMusic mySong
+5
+<<<PAGE>>>
+4. Quelle diﬀ´ erence y a-t-il entremv myMusic mySong et cp myMusic mySong
+R´ eponses
+La premi` ere commande renomme le ﬁchiermyMusic en mySong, et le ﬁchier myMusic
+n’existe plus.
+La deuxi` eme commande permet de copier et renommer le ﬁchiermyMusic en mySong,
+et le ﬁchier myMusic existe toujours.
+4.5 Cr´ eer des r´ epertoires
+1. Cr´ eer un r´ epertoiremyFiles
+R´ eponses
+mkdir myFiles
+2. D´ eplacermySong dans myFiles et renommer mySong en song2 (en une seule com-
+mande).
+R´ eponses
+mv mySong myFiles/song2
+3. Cr´ eer deux sous r´ epertoires dansmyFiles :
+- Albums/favorites
+- Artistes
+R´ eponses
+mkdir -p myFiles/Albums/favorites ; mkdir myFiles/Artistes
+4. Aﬃcher le contenu du r´ epertoire de mani` ere d´ etaill´ ee, en aﬃchant mˆ eme les ﬁchiers
+cach´ esmyFiles
+R´ eponses
+ls -la myFiles
+6
+<<<PAGE>>>
+4.6 D´ etruire des ﬁchiers ou des r´ epertoires
+1. Essayer de d´ etruire le r´ epertoiremyFiles avec la commande rm. Que se passe-t-il ?
+R´ eponses
+La commande rm indique qu’elle ne peut supprimer un r´ epertoire.
+2. D´ etruire tout ce que contientmyFiles avec la commande rmdir. Que se passe-t-il ?
+R´ eponses
+La commande rmdir indique qu’elle ne peut supprimer le r´ epertoire car il n’est pas
+vide.
+3. D´ etruire tout ce que contientmyFiles avec la commande rm en mode r´ ecurcif.
+R´ eponses
+rm -rf myFiles
+4.7 Lire le manuel
+1. A quoi sert l’option -R de ls ?
+R´ eponses
+Liste de mani` ere r´ ecursive l’ensemble des r´ epertoires et des sous-r´ epertoires.
+2. Dans quel ordre les ﬁchiers et r´ epertoires courant sont-ils class´ es par d´ efaut ?
+R´ eponses
+Les r´ epertoires, par d´ efaut, sont class´ es par ordre alphab´ etique.
+3. Quelles sont les options qui peuvent servir ` a modiﬁer ce crit` ere de classement ?
+R´ eponses
+Aller dans le man et recherchez le mot cl´ esort
+7
+<<<PAGE>>>
+4. Aﬃcher le contenu de votre r´ epertoire courant de telle sorte que les ﬁchiers r´ ecemment
+utilis´ es apparaissent en premier.
+R´ eponses
+ls -lt ou ls -t1
+5. D´ ecriver le r´ esultat de la commande ls -l
+R´ eponses
+L’option l permet d’aﬃcher une description d´ etaill´ ee de l’ensemble des ﬁchiers dont
+les droits
+6. Comment aﬃcher les droits d’un r´ epertoire donn´ e ?
+R´ eponses
+ls -l < nom du repertoire >
+7. Aﬃcher le contenu de votre r´ epertoire avec des signes distinctifs qui permettent
+d’identiﬁer plus vite le type de ﬁchiers (slash / pour les r´ epertoires, @ pour les liens,
+etc.)
+R´ eponses
+ls -F
+8. Un r´ epertoire a les droits suivants : drwx-x-x. Je ne suis pas propri´ etaire, puis je
+aﬃcher le contenu du r´ epertoire ?
+R´ eponses
+Ici, le propri´ etaire peut r´ ealiser lecture / ´ ecriture / ex´ ecution, les membres de son
+groupe et les autres utilisateurs ne peuvent r´ ealiser que l’´ ex´ ecution du r´ epertoire.
+9. Cr´ eer un r´ epertoireMoi, et metter lui les droits suivants : drwxr-x-wx. Sont-ils des
+droits pertinants ` a mettre sur un r´ epertoire ou un ﬁchier ?
+R´ eponses
+mkdir Moi
+chmod -R 753
+Ces droits sont peu pertinants car on autorise les gens qui n’appartiennent pas ` a
+notre groupe ` a modiﬁer et ex´ ecuter les ﬁchiers.
+8
+<<<PAGE>>>
+4.8 Aller plus loin ...
+1. Quel est le Shell utilis´ e sur votre ordinateur ?
+R´ eponses
+echo $SHELL
+le shell est un interpreteur de commandes dont le fonctionnement permet d’aﬃcher
+un prompt et analyser et ex´ ecuter une commande. Il peut de plus cr´ eer des processus.
+2. Aﬃcher la version du syst` eme que vous utilisez.
+R´ eponses
+uname -v
+3. Donner le chemin absolu du ﬁchier cat
+R´ eponses
+whereis cat ou which cat
+4. A quoi ¸ c` a sert le bashrc ?
+R´ eponses
+Ce ﬁchier est un ﬁchier de conﬁguration du shell. C’est un ﬁchier cach´ e, situ´ e ` a la
+racine de votre home-directory
+5. A quoi sert la commande history ?
+R´ eponses
+Cette commande permet d’aﬃcher dans le terminal l’ensemble des commandes d´ ej` a
+r´ ealis´ ees.
+9
+<<<PAGE>>>
+5 Et si je r´ evisai !
+1. Quels sont les deux types de chemin ? Donnez une courte d´ eﬁnition.
+R´ eponses
+Les chemins relatifs : Le chemin part directement du r´ epertoire courant.
+Les chemins absolus : Le chemin part directement du r´ epertoire racine.
+2. A quoi sert la commande man ?
+R´ eponses
+man aﬃche le manuel de la plupart des commandes unix install´ ees sur votre syst` eme.
+3. Qu’est ce qu’un r´ epertoire ?
+R´ eponses
+Un r´ epertoire en informatique est un dossier contenant une liste ou une description
+de ﬁchiers. Les r´ epertoire sont trait´ es comme des ﬁchiers.
+4. Comment acc` ede t-on ` a notrehome-directory ? Donner les 3 solutions.
+R´ eponses
+cd /home/eisti/
+cd ∼
+cd
+5. Aﬃcher le contenu du r´ epertoire courant de telle sorte que les ﬁchiers r´ ecemment
+modiﬁ´ es apparaissent en premier
+R´ eponses
+ls -lt ou ls -t
+10
+<<<PAGE>>>
+6. Cr´ eer en une seule commande un r´ epertoireCours avec un sous-r´ epertoireUnix
+R´ eponses
+mkdir -p Cours/Unix
+7. Cr´ eer 4 ﬁchiers ` a l’int´ erieur du sous r´ epertoireUnix s’appelant TD1 - TD2 - TD3 -
+TD4
+R´ eponses
+touch Cours/Unix/TD1
+touch Cours/Unix/TD2
+touch Cours/Unix/TD3
+touch Cours/Unix/TD4
+8. ´Ecrire le texte ”Para bailar” dans TD1 et le texte ”La Bamba” dans TD2.
+R´ eponses
+echo ”Para bailar” > Cours/Unix/TD1
+echo ”La Bamba” > Cours/Unix/TD2
+9. Supprimer le ﬁchier TD1
+R´ eponses
+rm Cours/Unix/TD1
+10. Renommer le ﬁchier TD2 en Rictchie
+R´ eponses
+mv Cours/Unix/TD2 Cours/Unix/Ritchie
+11. Copier le ﬁchier ”Ritchie” dans votre home-directory.
+R´ eponses
+cp Cours/Unix/Ritchie  .
+11

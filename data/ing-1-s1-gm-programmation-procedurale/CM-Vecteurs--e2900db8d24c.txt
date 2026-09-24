@@ -1,0 +1,213 @@
+Programmation C
+Tableaux Statiques
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 20
+<<<PAGE>>>
+D´ efinition de constantes
+ING1 Programmation C CY Tech 2 / 20
+<<<PAGE>>>
+Rappel
+Constantes symboliques
+Remplacer une ”expression” par un symbole dans le code
+Permet de clarifier le code
+#define symbole expression
+▶ #define N 10
+▶ #define ERREUR SAISIE -1
+▶ #define M 20;
+Permet de d´ eclarer une macro
+ING1 Programmation C CY Tech 3 / 20
+<<<PAGE>>>
+Utilisation avanc´ ee
+Macro
+Possibilit´ e de d´ eclarer un traitement sp´ ecifique
+Attention aux effets de bord ...
+#define formule(a,b,...) expression
+▶ #define MAX(a,b) a>b?a:b
+▶ #define ERREUR(message) fprintf(stderr, "%s \n", message)
+Utilisation des majuscules
+´Eviter de mettre un ; ` a la fin d’un define
+ING1 Programmation C CY Tech 4 / 20
+<<<PAGE>>>
+Vecteurs
+ING1 Programmation C CY Tech 5 / 20
+<<<PAGE>>>
+D´ eclaration C (statique)
+Algo :
+nom: Tableau de type(taille)
+C : 
+t y p e nomTableau [ t a i l l e ] ;
+ 
+Les tableaux commencent ` a l’index 0
+Aucune variation de la taille pendant l’ex´ ecution
+N´ ecessite normalement une taille connue ` a l’avance 
+#d e f i n e DIMENSION 3
+f l o a t t f l t v e c t e u r 1 [ DIMENSION ] ;
+i n t t i n t v e c t e u r 2 [ 1 5 ] ;
+ 
+Stock´ e cons´ ecutivement en m´ emoire
+Il n’existe aucune fonction qui donne la taille d’un tableau
+ING1 Programmation C CY Tech 6 / 20
+<<<PAGE>>>
+Utilisation
+vecteur1 = vecteur2; est ill´ egal
+vecteur1 + vecteur2; est ill´ egal
+vecteur1 = 0; est ill´ egal
+vecteur1 d´ esigne le tableau
+vecteur1[indice] d´ esigne la case d’indexindice
+ING1 Programmation C CY Tech 7 / 20
+<<<PAGE>>>
+`A proscrire !
+ 
+i n t i n t t a i l l e ;
+. . . s c a n f ( ”%d” , & i n t t a i l l e ) ;
+. . . / . . .
+{
+i n t t a b l e a u [ i n t t a i l l e ] ;
+. . . / . . .
+}
+ 
+Possibilit´ e d’erreur
+ING1 Programmation C CY Tech 8 / 20
+<<<PAGE>>>
+Attention
+Passage de param` etre
+ 
+. . . / . . .
+v o i d t o t o ( i n t i n t n b ) {
+i n t n b = 5 ;
+}
+. . . / . . .
+i n t main ( i n t argc , char ∗∗ a r g v ){
+i n t i n t n b ;
+i n t n b = 4 ;
+t o t o ( i n t n b ) ;
+p r i n t f ( ”%d” , i n t n b ) ; // A f f i c h e 4
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 9 / 20
+<<<PAGE>>>
+Attention
+Modification du tableau
+ 
+. . . / . . .
+v o i d t o t o ( i n t t i n t t a b [N ] ) {
+t i n t t a b [ 0 ] = 5 ;
+}
+. . . / . . .
+i n t t i t i ( i n t t i n t t a b [N ] ) {
+t i n t t a b [ 0 ] = 4 ;
+p r i n t f ( ”%d” , t i n t t a b [ 0 ] ) ; // A f f i c h e 4
+t o t o ( t i n t t a b ) ;
+p r i n t f ( ”%d” , t i n t t a b [ 0 ] ) ; // A f f i c h e 5
+. . . / . . .
+}
+ 
+Principe du traitement par effet de bord
+ING1 Programmation C CY Tech 10 / 20
+<<<PAGE>>>
+Tableau en argument
+ 
+. . . / . . .
+i n t main ( i n t argc , char ∗∗ a r g v ){
+i n t t i n t n o t e [N ] ; // D e c l a r a t i o n t a b l e a u de n o t e
+// T r i du t a b l e a u
+// Notez l ’ a p p e l du t a b l e a u
+t r i t a b l e a u ( t i n t n o t e ) ;
+// I c i , l e t a b l e a u a e t e m o d i f i e
+. . . / . . .
+r e t u r n( 0 ) ;
+}
+ 
+Appel en passant le nom du tableau
+Pour l’instant pas de fonction qui retourne un tableau
+ING1 Programmation C CY Tech 11 / 20
+<<<PAGE>>>
+Exemple : Afficher un tableau
+ 
+v o i d a f f i c h e r T a b l e a u (i n t t i n t t a b [N ] ) {
+i n t i ;
+f o r ( i =0; i <N; + +i ) {
+p r i n t f ( ”%d ” , t i n t t a b [ i ] ) ;
+}
+}
+. . . / . . .
+i n t main ( i n t argc , char ∗∗ a r g v ){
+i n t t i n t t a b [N ] ; // D e c l a r a t i o n t a b l e a u de n o t e
+. . . / . . .
+// A f f i c h e l e t a b l e a u
+a f f i c h e r T a b l e a u ( t i n tt a b ) ;
+. . . / . . .
+r e t u r n( 0 ) ;
+}
+ 
+ING1 Programmation C CY Tech 12 / 20
+<<<PAGE>>>
+Commentaires doxygen
+ 
+/ ∗ !
+∗ \ f n v o i d a f f i c h e r T a b l e a u ( i n t t i n t t a b [ N ] )
+∗ \ param t i n t t a b T a b l e a u a a f f i c h e r
+∗ \ b r i e f A f f i c h e un t a b l e a u d ’ e n t i e r de N c a s e s
+∗/
+v o i d a f f i c h e r T a b l e a u (i n t t i n t t a b [N ] ) ;
+ 
+Il n’y pas la dimension du tableau dans la description du param` etre !
+ING1 Programmation C CY Tech 13 / 20
+<<<PAGE>>>
+Cas particulier
+ING1 Programmation C CY Tech 14 / 20
+<<<PAGE>>>
+Tableau de caract` eres
+char nom[20];
+Fa¸ con de d´ eclarer des ”cha ˆ ınes” de caract` eres
+Manipulation d´ elicate
+Permet de stocker n− 1 caract` eres
+Ne pas oublier le marqueur de fin de cha ˆ ıne : ’\0’
+Une case : un caract` ere
+ING1 Programmation C CY Tech 15 / 20
+<<<PAGE>>>
+Sch´ ema
+T O T O
+char str nom[8] ;
+.../...
+str nom[0] str nom[4] = ’\0’ str nom[7]
+ING1 Programmation C CY Tech 16 / 20
+<<<PAGE>>>
+Saisie
+Attention 
+char s t r n o m [ 2 0 ] ;
+i n t i n t r e t o u r ;
+i n t r e t o u r = s c a n f ( ”%s ” , s t r n o m ) ;
+ 
+Pas de & lors de la saisie pour une cha ˆ ıne
+ING1 Programmation C CY Tech 17 / 20
+<<<PAGE>>>
+Matrice
+ING1 Programmation C CY Tech 18 / 20
+<<<PAGE>>>
+Matrices
+D´ eclaration statique
+int tint mat[3][2];
+D´ eclare un tableau de 3 lignes par 2 colonnes
+Taille fixe, mˆ eme nombre de colonnes par ligne
+Choix arbitraire pour l’ordre des dimensions
+N´ ecessaire de garder une coh´ erence dans la notation
+Besoin de conna ˆ ıtre la convention lors de la communication avec
+d’autres d´ eveloppeurs
+Stock´ e cons´ ecutivement en m´ emoire⇔ possibilit´ e de d´ ebordement
+et/ou recouvrement
+ING1 Programmation C CY Tech 19 / 20
+<<<PAGE>>>
+Exemple
+ 
+i n t t i n t m a t r i c e [N ] [M] ;
+. . . / . . .
+f o r ( i =0; i <N; + +i ) {
+f o r ( j =0; j <M; + +j ) {
+t i n t m a t r i c e [ i ] [ j ] = rand ()%20;
+}
+}
+ 
+ING1 Programmation C CY Tech 20 / 20

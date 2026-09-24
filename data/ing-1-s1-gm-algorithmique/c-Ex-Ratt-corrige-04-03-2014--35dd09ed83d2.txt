@@ -1,0 +1,182 @@
+  
+IINNGG  11  ::  EEXXAAMMEENN  DDEE  RRAATTTTRRAAPPAAGGEE  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Rédigé par : l'équipe pédagogique du module Algo. Procédurale Ref : ING1-ALG-PROC-EXAMEN-RATT 
+A l’intention de : Etudiants des ING1 Créé le : 18/02/2014 
+ 
+Page 1 sur 4 
+ 
+Préambule 
+Cet examen dure 2h00. L'examen se fait sur feuilles. Aucun document n'est autorisé. L'ordinateur est interdit.  On 
+vous demande de mentionner dans votre copie le libellé de votre groupe.   
+1. Tableaux, tris et structures 
+Afin de jouer à la dame de pique, on souhaite trier son jeu de carte. Une carte est définie par une valeur allant du 2 à 
+l’As et par une couleur pouvant prendre les valeurs suivantes : TREFLE (♣), CARREAU (♦), PIQUE (♠) et CŒUR (♥).   
+Pour trier le jeu, on décide d’utiliser la méthode du tri par base. Le tri par base commence par trier en fonction des 
+éléments le moins significatif jusqu’à l’élément le plus significatif. Dans notre cas de jeu de cartes, on commencera 
+par trier en fonction de la valeur, puis en fonction de la couleur. Il faut que l'algorithme du deuxième tri conserve 
+l'ordre du premier tri en cas d'égalité, c'est-à-dire que toutes les cartes d'une même couleur soient encore triées par 
+valeur (d'où le terme de stabilité). 
+Par exemple : [4♥, V♣, 4♣, 9♦, A♠]  [4♥, 4♣, 9♦, V♣, A♠]  [4♣, V♣, 9♦, A♠, 4♥]. 
+ 
+Pour simplifier, on considèrera les valeurs suivantes pour les figures : Valet = 11, Dame = 12, Roi = 13 et As = 14. On a 
+également à disposition le type Couleur qui prend les valeurs TREFLE, CARREAU, PIQUE puis CŒUR. Pour la dame 
+de pique, on impose le tri d’ordre croissant ainsi que l’ordre des couleurs suivant: TREFLE, CARREAU, PIQUE puis 
+CŒUR.  
+ 
+ Définir la structure Carte. 
+Ecrire la méthode comparerCouleur qui permet de comparer la couleur d’une carte par rapport à une autre. 
+Ecrire la méthode comparerValeur qui permet de comparer la valeur d’une carte par rapport à une autre. 
+ Ecrire la méthode trierCouleur qui permet de trier de façon stable les cartes par rapport à la couleur. 
+Ecrire la méthode trierValeur qui permet de trier les cartes par rapport à la valeur. 
+ Ecrire la méthode triCartes qui permet de trier le jeu de cartes (tableau de Carte) en utilisant un tri par 
+base.  
+ De quoi faut-il s’assurer pour que le tri par base soit de complexité linéaire ? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+IINNGG  11  ::  EEXXAAMMEENN  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Page 2 sur 4 
+2. Structures séquentielles 
+On veut implémenter une file d’au plus n éléments à l’aide d’une structure nommée FileTableau  contenant un 
+tableau T[1 . . n] et deux indices tete et queue. Si on note F une variable de type FileTableau, F.tête indexe le premier 
+élément de la file et  F.queue indexe l’emplacement où sera inséré un élément nouveau. Les éléments de la file se 
+trouvent aux emplacements F.T(F.tête), F.T(F.tête+1), . . ., F.T(F.queue), en bouclant à la fin du tableau : 
+l’emplacement 1 suit immédiatement l’emplacement n dans un ordre circulaire.  Quand la file est vide, tenter de 
+défiler un élément provoque un débordement négatif de la file. De même, quand la file est pleine, tenter d’enfiler un 
+élément provoque alors un débordement. 
+1) Ecrire le type de cette structure que l’on appellera FileTableau. 
+Corrigé : La structure décrite dans l’énoncé est la suivante : 
+Structure FileTableau 
+{ 
+T : Tableau(N) de Element 
+tete : Entier 
+queue : Entier 
+n : Entier 
+} 
+2) Quelle doit être la valeur initiale de tête et celle de queue pour une variable de type FileTableau ? 
+Corrigé : Une file est vide juste après sa création. On peut donc prendre comme valeur initiale pour tête 0 ou 
+0 pour queue car ces deux valeurs sont des indices impossibles dans un tableau. 
+3) Ecrire la fonction estVideFT (FT : FileTableau de élément(E)). 
+Corrigé :  
+Fonction estVide(FT : FileTableau de Element (E)) : Booleen 
+Debut 
+ Retourner FT.tete = 0 
+Fin  
+4) Quand la file est -elle pleine  ? Ecrire la procédure enfiler FT (FT : F ileTableau de Element(E/S), 
+elt :Element)  en tenant compte des débordements.  (On rappelle que l’on dispose d’une procédure erreur 
+qui prend en argument une chaîne qu’elle affiche avant d’interrompre le programme).  
+Corrigé :  
+Dans ce qui suit, on a tenu compte que les indices d’un tableau en algorithmique commencent à 1. 
+ La file est pleine quand il y a n éléments dans la file. Cela se caractérise par l’égalité suivante : 
+((FT.queue – FT.tete+1) mod n) = 0 et  NON(FT.queue = FT.tete). 
+ Procedure enfilerFT (FT : FileTableau de Element(E/S), elt :Element)  
+SI ((FT.queue – FT.tete+1) mod n) = 0 et  NON(FT.queue = FT.tete) Alors 
+erreur(‘La file est pleine’) 
+SINON SI estVide(FT) ALORS 
+FT.queue  1 
+FT.tete  1 
+FT.T(FT.queue)  elt 
+SINON 
+FT.queue  (FT.queue mod n) + 1 
+FT.T(FT.queue)  elt 
+Fin Si 
+Fin enfilerFT 
+<<<PAGE>>>
+IINNGG  11  ::  EEXXAAMMEENN  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Page 3 sur 4 
+5) Ecrire la procédure defilerFT (FT : FileTableau de élément(E/S)) en tenant compte des débordements.  
+Corrigé :  
+Procedure defilerFT (FT : FileTableau de élément(E/S)) 
+Si estVide(FT) Alors 
+Erreur(‘La file est vide’) 
+Sinon Si FT.tete = FT.queue Alors 
+FT.tete  0 
+FT.queue  0 
+Sinon 
+FT.tete  ((FT.tete mod n) + 1 
+Fin Si 
+Fin deflierFT 
+ 
+3. Problème  
+On considère un échiquier (8 cases x 8 cases) et on prend un cavalier. Le problème consiste à trouver la succession 
+de déplacements que doit faire le cavalier pour passer par toutes les cases de l'échiquier en ne passant qu'une seule 
+fois par chaque case à l'exception de la case de départ qui doit être aussi la case d'arrivée. 
+Rappel : un déplacement d'un cavalier consiste :  
+ Soit à avancer de deux cases verticalement puis d'une case horizontalement. 
+ Soit à avancer de deux cases horizontalement puis d'une case verticalement. 
+ 
+On vous donne ci-dessous les huit déplacements possibles d'un cavalier. La case marquée symbolise la case du 
+cavalier avant le déplacement. Toutes les autres cases marquées symbolisent tous les déplacements possibles.  
+        
+          
+   a1   a2     
+ a8       a3   
+     d       
+ a7       a4   
+   a6   a5     
+          
+L'algorithme qui est demandé consiste à parcourir tous les chemins possibles jusqu'à trouver une première solution. 
+Le principe de l'algorithme consiste à faire avancer le cavalier tant que c'est possible. Si on arrive sur une case qui ne 
+permet plus d'avancer alors on revient une case en arrière et à partir de cette case, on essaie de déplacer le cavalier 
+vers une autre  case si cela est possible sinon on recule encore d'une case et ainsi de suite. 
+1)   Donner le principe de l'algorithme en utilisant une matrice de booléen et une pile de couple d'entiers. 
+Chaque couple représente les coordonnées d'une case sur l'échiquier. 
+2)   Ecrire l'algorithme sous forme d'une procédure. 
+ 
+<<<PAGE>>>
+IINNGG  11  ::  EEXXAAMMEENN  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Page 4 sur 4 
+4. Récursivité 
+Soit la fonction définie par f(n)=n-10 pour n>100 et f(n)=f(f(n+11)) pour n≤100. 
+1) Que vaut f(99) ? f(100) ? f(101) ? 
+Corrigé :  
+Nous avons : f(99)=f(f(110))=f(110-10)=f(100)=f(f(111))=f(111-10)=f(101)=101-10=91. 
+Ce qui donne les 3 résultats demandés. 
+ 
+2) Montrer que le calcul de f(n) se termine toujours pour n>0. 
+Corrigé : 
+Nous avons pour n<=100, f(n) = f(f(n+11)). (1) 
+Autrement dit f(n) = f2(n+11). 
+Considérons un entier n tel que n<=100. 
+Soit p le plus petit entier supérieur strictement à 100 et tel que p-n est un multiple de 11. 
+Autrement dit, nous avons : 
+ p>100 
+ p-n = k*11 
+En appliquant la formule (1) k fois, nous avons 
+ f(n) = f(k+1)(p) 
+ 
+Illustrons cela par un exemple : 
+ f(25) = f2(36) = f3(47) = f4(58) = f5(69) = f6(80) = f7(91) = f8(102) 
+Nous avons 
+ 102 = 25 + 7*11 et 
+ f(25) = f8(102) 
+ 
+Reprenons la démonstration. 
+Il est facile de vérifier que l’entier p est compris entre 101 et 111 
+ 101 ≤ p ≤ 111 
+ 
+Dans le calcul de f(n) une première étape consiste donc à aboutir par des appels successifs de f(n) à 
+f(k+1)(p) càd f(k+1)( n+k*11). 
+ 
+Le calcul de f(k+1)(p) se fait de la manière suivante : 
+fk(p)= f(k-1)(f(p)) soit f(k-1)(p-10) soit f(k-2)(f(p-10)) soit f(k-2)(f2(p-10+11)) càd f(k-2)( f2(p+1))  soit fk(p+1) 
+ 
+Une deuxième étape consiste donc à passer de fk(p) à fk(p+1), …, jusqu’à fk(111). 
+Le calcul de fk(111) de la manière suivante : 
+fk(111) =f(k-1)(f(111)) soit f(k-1)(111-10) soit f(k-1)(101) soit f(k-2)(91) soit f(k-1)(102) soit f(k-2)(92) soit f(k-1)(103) soit 
+f(k-2)(93) soit f(k-1)(104) soit f(k-2)(94) soit f(k-1)(105) soit f(k-2)(95) soit f(k-1)(106) soit f(k-2)(96) soit f(k-1)(107)  
+soit f(k-2)(97) soit f(k-1)(108) soit f(k-2)(98) soit f(k-1)(109) soit f(k-2)(99) soit f(k-1)(110) soit f(k-2)(100) soit f(k-1)(111). 
+ 
+Une troisième étape consiste donc à passer de fk(111) à f(k-1)(111) …, jusqu’à f2(111). 
+Arrivés à f2(111) nous avons le résultat de manière immédiate : f(f(111))= f(101) = 111-10=91. 
+Ce qui signifie donc que f(n) = 91 pour toute valeur de n <=100. 
+ 
+ 
+ 

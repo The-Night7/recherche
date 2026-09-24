@@ -1,0 +1,415 @@
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Analyse des algorithmes :
+Rappels et compl´ ements
+Houcine Senoussi
+Ann´ ee universitaire 2016-17
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+1 Introduction
+2 Terminaison et correction
+3 Complexit´ e des algorithmes
+4 Conclusion
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Rappels et D´ eﬁnitions :
+■ Notre objectif est d’apprendre ` aanalyser les algorithmes :
+• Analyser un algorithme :
+1) Terminaison : prouver qu’il termine.
+2) Correction : prouver qu’il r´ esout le probl` eme.
+3) Complexit´ e : ´ evaluer son coˆ ut en temps et en espace.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Terminaison et correction
+■ Pour la plupart des (suite d’) instructions, l’´ etude de la
+terminaison et de la correction des algorithmes ne pr´ esente
+pas de diﬃcult´ es.
+■ Deux types de suites d’instructions doivent ˆ etre trait´ es ` a part :
+• les boucles : que nous ´ etudions ` a l’aide desinvariants de
+boucles. Il s’agit d’une d´ emarche semblable ` a la
+r´ ecurrence math´ ematique (voir plus bas).
+• les appels r´ ecursifs : ce probl` eme sera ´ etudi´ e dans le
+chapitre suivant.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Invariant de boucle
+■ Un invariant de boucle est une assertion v´ eriﬁant les trois
+propri´ et´ es suivantes :
+• Initialisation : elle est vraie avant la premi` ere it´ eration
+de la boucle.
+• Conservation (transmission) : si elle est vraie avant une
+it´ eration de la boucle, alors elle est vraie avant la
+suivante.
+• Terminaison : ` a la ﬁn de la boucle, elle fournit une
+propri´ et´ e permettant de montrer la correction de
+l’algorithme.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Exemple : Tri par insertion
+Donn´ e : un tableau d’entiers tab de taille N.
+R´ esultat : le mˆ eme tableau tri´ e.
+Pour taille de 2 ` a N
+c := tab[taille]
+i := taille-1
+Tant que i > 0 ET A[i] > c Faire
+tab[i+1] := tab[i]
+i := i-1
+FinTantque
+tab[i+1] := c
+FinPour
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Exemple : Tri par insertion
+■ Id´ ee de l’algorithme : ` a la ﬁn de l’´ etape correspondant ` a
+taille=t, les t ´ el´ ements le plus ` a gauche sont tri´ es.
+■ Nous traduisons cette id´ ee en un invariant de boucle d´ eﬁni
+comme suit :
+Invariant de boucle du tri par insertion
+Le sous tableau tab[1..t-1] se compose des ´ el´ ements (a) qui
+occupaient les t− 1 premi` eres positions du tableau initial et (b)
+qui ont ´ et´ e tri´ es.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Exemple : Tri par insertion
+■ Initialisation : La premi` ere it´ eration correspond ` at = 2. Au
+d´ ebut de cette it´ eration, le sous-tableau tab[1..t-1]=tab[1]
+contient bien le premier ´ el´ ement du tableau.
+■ Conservation : Supposons que la propri´ et´ e soit vraie jusqu’` a
+l’it´ erationt− 1. Le corps de l’it´ erationt consiste ` a :
+• Trouver la valeur de k telle que k =
+max{h ≤ t− 1 ET tab [h] ≤ tab[t]}.
+• D´ ecalertab[k + 1], ..., tab[t− 1] d’un indice vers la
+droite.
+• Aﬀecter ` atab[k + 1] la valeur tab[t].
+Les valeurs pr´ esentes dans tab[1..t] sont donc bien celles de
+tab[1..t] au d´ ebut de la boucle et elles sont tri´ ees. L’assertion
+est donc vraie ` a la ﬁn de l’it´ erationt.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Exemple : Tri par insertion
+■ Terminaison : La condition qui force la boucle ` a s’arrˆ eter est
+t > N. Plus exactement t = N + 1 puisque le pas de la boucle
+est ´ egal ` a 1. Pour cette valeur det l’invariant de boucle est
+”le sous-tableau tab[1..N] est compos´ e des ´ el´ ements initiaux
+de tab[1..N] et ils ont ´ et´ e tri´ es”. Cela signiﬁe simplement que
+le tableau a ´ et´ e tri´ e, ce qui prouve l’algorithme.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Exercices
+■ Trouvez un invariant de boucle pour le calcul (it´ eratif) de la
+factorielle.
+■ Idem pour le calcul de la division euclidienne par la m´ ethode
+des soustractions.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Rappels et D´ eﬁnitions :
+■ Un algorithme est une suite d’instructions servant ` a r´ esoudre
+un probl` eme.
+■ La complexit´ e temporelle (resp. spatiale) caract´ erise le coˆ ut
+en temps (resp. en espace) d’un algorithme.
+■ La complexit´ e (temporelle) d’un algorithme est le nombre
+d’op´ erations ´ el´ ementairesqui le composent.
+■ On appelle op´ eration ´ el´ ementaire une op´ eration dont le coˆ ut
+est constant (ne d´ epend pas du probl` eme).
+• Exemples : aﬀectation, addition, multiplication,
+comparaison, permutation.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Rappels et D´ eﬁnitions-2 :
+■ Ce nombre d’op´ erations est calcul´ e en fonction de lataille du
+probl` emenot´ een.
+• Taille d’un probl` eme : taille d’uneinstance du probl` eme,
+c’est-` a-dire la taille des donn´ ees que l’algorithme re¸ coit
+en entr´ ee.
+• Exemple : dans le cas du tri la taille du probl` eme =
+nombre d’´ el´ ements du tableau ` a trier.
+■ On donne souvent la complexit´ e sous la formeO(g(n))
+• Signiﬁcation de cette notation : La nombre d’op´ erations
+f (n) a comme terme pr´ epond´ erant (de plus haut degr´ e)
+g(n).
+• Exemples : O(n2),O(n.logn),O(2n).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Notations
+Plus g´ en´ eralement, les notations utilis´ ees pour exprimer la
+complexit´ e sont les suivantes :
+■ f (n) =O(g(n)) si :
+• ∃n0∈ N tels que pour n≥ n0 f (n)≤ c.g(n).
+• Autrement dit, f augmente au plus aussi vite que g.
+■ f (n) = Ω(g(n)) si g(n) =O(f (n))
+• f augmente au moins aussi vite que g.
+■ f (n) = Θ(g(n)) si f (n) =O(g(n)) et f (n) = Ω(g(n))
+• f et g augmentent aussi vite l’une que l’autre.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Ordres de grandeur-exemples
+■ 4n2 + 5n + 8 = Θ( n2)
+■ 4n2 + 5n + 8 =O(n3)
+■ 4n2 + 5n + 8 =O(n2)
+■ nlogn =O(n2)
+■ nlogn⁄= Θ(n2)
+■ n3⁄= Θ(2 n)
+■ n3 =O(2n)
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Pire des cas et cas moyen
+■ On distingue la complexit´ e aupire des cas et la complexit´ e
+moyenne.
+■ Pour les d´ eﬁnir, notons{d} l’ensemble des instances du
+probl` eme, etnbOp(d) le nombre d’op´ erations eﬀectu´ ees par
+l’algorithme pour r´ esoudre le probl` eme lorsqu’il re¸ coit en
+entr´ ee l’instanced.
+■ La complexit´ e au pire des cas peut ˆ etre d´ eﬁnie de la mani` ere
+suivante :
+• fsup(n) = max{nbOp(d)/ d de taille n }.
+■ La complexit´ e moyenne peut ˆ etre d´ eﬁnie de la mani` ere
+suivante (p(d) : probabilit´ e de l’instanced):
+• fmoy(n) = ∑
+(d de taille n )(p(d)∗ nbOp(d) ).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Pire des cas et cas moyen
+■ En g´ en´ eral, c’est la complexit´ e au pire des cas que l’on calcule.
+• Correpond ` a une borne sup´ erieure du temps d’ex´ ecution
+pour une entr´ ee quelconque. D’o` u la certitude que le
+programme ne mettra jamais plus de temps que cette
+valeur.
+• Pour beaucoup d’algorithmes le cas le plus d´ efavorable
+survient tr` es souvent.
+• Souvent, le cas moyen est presque aussi mauvais que le
+cas le plus d´ efavorable.
+■ Il n’est pas facile de d´ eﬁnir pr´ ecis´ ement la complexit´ e
+moyenne, car la distribution de probabilit´ esp n’est pas facile ` a
+d´ eterminer.
+• On suppose parfois que toutes les instances sont
+´ equi-probables.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Complexit´ e des algorithmes-Exemple 1
+Donn´ e : un tableau d’entiers tab de taille N.
+R´ esultat : le mˆ eme tableau tri´ e.
+Pour taille de N ` a 2 pas -1 Faire
+Pour i de 1 ` a taille-1 Faire
+Si (tab[i] >tab[i+1]) Alors
+tmp := tab[i]
+tab[i] := tab[i+1]
+tab[i+1] := tmp
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Complexit´ e des algorithmes-Exemple 1
+1) La boucle principale est ex´ ecut´ ee (N− 1) fois (une fois pour
+chaque valeur de taille).
+2) Pour chaque valeur de taille, la deuxi` eme boucle est ex´ ecut´ ee
+(taille− 1) fois.
+3) Pour chaque it´ eration de cette derni` ere boucle, pour chaque
+valeur de i, il y a au plus 4 op´ erations ´ el´ ementaires : 1
+comparaison et 3 aﬀectations.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Complexit´ e des algorithmes-Exemple 1
+4) Au total, cet algorithme comporte donc NbOp op´ erations
+´ el´ ementaires avec :
+NbOp = ∑N
+taille=2 4∗ (taille− 1)
+= 4 ∗ ∑N−1
+p=1 p
+= 4 ∗ (N−1)∗N
+2
+= 2 ∗ (N− 1)∗ N
+= 2 ∗ N 2− 2∗ N
+5) La complexit´ e de cet algorithme est donc en O(n2).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Complexit´ e des algorithmes-Exemple 2
+Donn´ e : un tableau d’entiers tab de taille N tri´ e de fa¸ con
+croissante et un entier e
+R´ esultat : un bool´ een trouv´ e qui vaut VRAI si l’´ el´ ement
+appartient au tableau et FAUX sinon
+inf := 1
+sup := N
+trouv´ e := Faux
+Tant que ( (inf ≤ sup) ET non(trouv´ e) )
+milieu := (inf + sup) div 2
+Si (e = tab[milieu]) Alors trouv´ e = Vrai
+Sinon
+Si (e < tab[milieu]) Alors sup := milieu-1
+Sinon inf := milieu + 1
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Complexit´ e des algorithmes-Exemple 2
+1) Au pire, la boucle principale est ex´ ecut´ ee tant que les valeurs
+de Inf et Sup v´ eriﬁentInf≤ Sup, c’est-` a-dire pour des
+tableaux de taille N, N
+2 , N
+4 , ..., N
+2i ,...,1.
+2) Le nombre d’ex´ ecutions de cette boucle est donc de nb tque
+N
+2nb−1 = 1 c’est-` a-dire quenb = logN + 1.
+3) Au pire, chaque ´ etape est compos´ ee de 4 op´ erations
+´ el´ ementaires : 2 comparaisons et 2 aﬀectations.
+4) Le nombre total d’op´ erations ´ el´ ementaires est donc
+4∗ (logN + 1).
+5) La complexit´ e de cet algorithme est donc en Olog(N).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Cas des algorithmes de complexit´ e exponentielle
+■ Cas 1 : Consid´ erons un probl` eme de taille n, dans lequel nous
+devons consid´ erer toutes les permutations sur n donn´ ees :
+• Exemple (Probl` eme du voyageur du commerce) : Les n
+variables sont des villes, et nous voulons comparer les
+longueurs de tous les chemins passant une et une fois par
+chaque ville.
+■ Un algorithme intuitif pour r´ esoudre ce probl` eme a donc une
+complexit´ en! (on n’en conna ˆ ıt pas de meilleur).
+■ Un calcul simple nous montre que pour une valeur de n ´ elev´ ee
+(mais pas trop !!!, n=20 par exemple), le temps d’ex´ ecution
+se mesure en si` ecle (!!!).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Cas des algorithmes de complexit´ e exponentielle
+■ Cas 2 : Consid´ erons un probl` eme de taille n, dans lequel
+chaque variable peut prendre k valeurs, et nous devons
+consid´ erer toutes les combinaisons de ces valeurs.
+• Exemple (Probl` eme SAT, pour Satisﬁability): Les n
+variables sont bool´ eennes, et nous voulons ´ etudier toutes
+les valeurs possibles d’une expression logique contenant
+les n variables.
+■ Un algorithme intuitif pour r´ esoudre ce probl` eme a donc une
+complexit´ e 2n (on n’en conna ˆ ıt pas de meilleur).
+■ L` a aussi, un calcul simple nous montre que pour une valeur de
+n ´ elev´ ee, le temps d’ex´ ecution se mesure en ann´ ee, voire en
+si` ecle (!!!).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Classes de complexit´ e
+■ une complexit´ e logarithmique (comme celle de notre
+algorithme de recherche) est ce qu’on peut esp´ erer de mieux.
+Elle correspond ` a des algorithmes d’une grande eﬃcacit´ e.
+■ Une complexit´ e polynomiale est une bonne complexit´ e,
+surtout si le degr´ e du polynome est faible (ce qui est le cas de
+notre algorithme de tri).
+■ Un algoritme dont la complexit´ e est exponentielle (par
+exemple n!) est inutilisable d` es que la taille n du probl` eme
+devient importante. Pour les probl` emes dont on n’a que des
+algorithmes de complexit´ e exponentielle, on a souvent recours
+` a des algorithmes de r´ esolution approch´ ee.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Algorithmes optimaux
+■ Il est parfois possible de trouver une borne inf´ erieure Cp pour
+la complexit´ e des algorithmes permettant de r´ esoudre un
+probl` eme donn´ eP.
+■ Dans ce cas on dit que :
+• le probl` eme est de complexit´ eCp.
+• les algorithmes ayant cette complexit´ e sontoptimaux.
+■ Exemple : la complexit´ e du le tri est enO(nlogn) (voir TD).
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements
+<<<PAGE>>>
+Introduction
+Terminaison et correction
+Complexit´ e des algorithmes
+Conclusion
+Conclusion
+■ Rappels et compl´ ements sur l’analyse des algorithmes :
+Terminaison-Correction et Complexit´ e.
+■ Retour sur toutes ces notions dans les chapitres suivants.
+Houcine Senoussi Analyse des algorithmes : Rappels et compl´ ements

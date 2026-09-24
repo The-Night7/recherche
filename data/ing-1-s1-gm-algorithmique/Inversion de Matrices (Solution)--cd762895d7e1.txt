@@ -1,0 +1,88 @@
+procedure inverse(mat:tableau de réel, S res : tableau de réel) 
+variables 
+i,j,k, pivot : réel 
+tab, res : tableau de réel 
+ 
+################################## 
+# initialisation de la matrice augmentée # 
+################################## 
+n := longueur(mat) 
+ 
+creerTableau(tab,n) 
+ 
+pour i de 1 à n 
+creerTableau (tab[i],2*n) 
+FinPour 
+pour i de 1 à n 
+pour j de 1 à 2*n 
+tab[i,j] := 0 
+ FinPour 
+FinPour 
+ 
+pour i de 1 à n 
+pour j de 1 à n 
+tab[i,j] := mat[i,j] 
+ FinPour 
+FinPour 
+ 
+pour i de 1 à n 
+tab[i,n+j] := 1 
+FinPour 
+ 
+################################################ 
+# normalisation de la diagonale et # 
+# élimination des coefficients en dessous de la diagonale # 
+################################################ 
+pour j de 1 à n 
+i := j 
+tant que i<n et tab[i,j] = 0 
+i := i+1 
+ FinTanque 
+ 
+si i = n alors 
+erreur(’’Matrice non inversible’’) 
+si i =/= j alors 
+permuter_lignes(tab,i,j) 
+ 
+ #################### 
+# normalisation ligne j # 
+#################### 
+pivot := tab[j,j] 
+pour k de 1 à 2*n 
+tab[j,k] := tab[j,k]/pivot 
+ FinPour 
+ 
+<<<PAGE>>>
+ ################################# 
+# obtention des 0 en dessous du pivot # 
+################################# 
+pour i de j+1 à n 
+facteur := tab[i,j] 
+pour k de 1 à 2*n 
+tab[i,k] := tab[i,k] - facteur*tab[j,k] 
+  FinPour 
+FinPour 
+FinPour 
+ 
+############################################### 
+# élimination des coefficients au dessus de la diagonale # 
+############################################### 
+pour j de 2 à n 
+pour i de 1 à j 
+facteur = tab[i,j] 
+pour k de 1 à 2*n 
+tab[i,k] := tab[i,k]- facteur*tab[j,k] 
+  FinPour 
+FinPour 
+FinPour 
+ 
+######################################################## 
+# extraction de la matrice inverse à partir de la matrice augmentée # 
+######################################################## 
+pour i de 1 à n 
+pour j de 1 à n 
+res[i,j] := tab[i,j+n] 
+ FinPour 
+FinPour 
+ 
+retourner res 

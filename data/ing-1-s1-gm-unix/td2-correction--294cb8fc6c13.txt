@@ -1,0 +1,242 @@
+TP2 - Les entrées et sorties
+Inès de Courchelle
+2021 - 2022
+Consignes : Durant ce TD l’utilisation de la souris, Touchpad et/ou Trackpoint sont
+strictement interdit. Seul le clavier est autorisé.
+Objectifs : Ce TD a pour objectif de :
+- connaître et de se familiariser avec les entrées/sorties standards ainsi que les redirec-
+tions
+- d’étudier les spéciﬁcités de la suppression de ﬁchiers et de répertoires
+- traiter la lecture et l’écriture dans des ﬁchiers de données de typesCSV
+- d’utiliser les liens symboliques et les variables shell
+- créer des alias pour gagner du temps
+Fichiers attachés à la séance: soccer.csv
+1 Avant de commencer
+1.1 Les entrées et les sorties
+Chaque commande a :
+- une entrée standard←par défaut le clavier
+- une sortie standard←par défaut l’écran
+- une sortie d’erreur standard←par défaut l’écran
+Il y a donc la possibilité de rediriger les diﬀérentes entrées et sorties via les commandes de
+redirection.
+- < redirection de l’entrée standard
+- > redirection de la sortie standard
+- 2 > redirection de la sortie erreur standard
+- >> concaténation et redirection de la sortie standard
+- 2 >> concaténation et redirection de la sortie erreur standard
+1
+<<<PAGE>>>
+1.2 Les redirections
+En Unix, tout est ﬁchier. Il existe un ﬁchier appelé "null", dont le chemin absolu est
+/dev/null/. Tout ce qui est copié dans ce ﬁchier n’existe plus, il est perdu. Ce ﬁchier
+permet donc de rediriger les erreurs d’une commande ou encore d’un script
+2 Exercices
+2.1 Les entrées et les sorties standard de commandes Unix
+1. Quelles sont les entrées et les sorties standard de la commande cat?
+Réponses
+entrée : clavier
+sortie : écran
+2. Dans votre répertoire de connexion (home-directory), créer un dossier TP2 dans
+un répertoire CommandesUnix
+Réponses
+mkdir -p
+CommandesUnix/TP2
+3. Sans
+utiliser VI, créer un ﬁchier vide appeléHarryPotter.txt
+Réponses
+touch HarryPotter.txt
+4. Sans utiliser VI, ajouter le texte suivant à l’intérieur du ﬁchier "Mais Harry! Ce n
+est pas n importe quel balai, c est un Nimbus 2000."
+indices : il faut utiliser la redirection de la sortie standard vers un ﬁchier
+Réponses
+echo "Mais Harry ! Ce n'est pas n'importe quel balai, c'est un Nimbus 2000." > 
+HarryPotter.txt
+5. En une seule commande et sans utiliser VI, ajouter le texte suivant à l’intérieur du
+ﬁchier "Un éclair de feu".
+Réponses
+echo "Un éclair de feu" >> HarryPotter.txt
+2
+<<<PAGE>>>
+6. En une seule commande et sans utiliser VI, créer le ﬁchierhoy contenant la date et
+l’heure du jour.
+Réponses
+date > hoy
+2.2 Les destructions de répertoires et leurs spéciﬁcités
+1. Créer un répertoire vide appeléGryffondor
+Réponses
+mkdir Gryﬀondor
+2. Supprimer le répertoire vide appeléGryffondor
+Réponses
+rmdir Gryﬀondor
+3. Supprimer le répertoire TP2 (qui n’est pas vide). Que remarquez vous?
+Réponses
+rmdir CommandesUnix/TP2
+4. Comment faut-il faire pour supprimer entièrement le répertoire TP2?
+Réponses
+rm -rf CommandesUnix/TP2
+le -r le fait aller récursivement dans n’importe quel sous-répertoire qu’il trouve
+le -f indique que vous n’êtes pas invité à conﬁrmer
+2.3 La lecture et l’écriture dans des ﬁchiers de données
+1. Aﬃcher la première ligne du ﬁchiersoccer.csv
+Réponses
+head -n1 soccer.csv
+3
+<<<PAGE>>>
+2. Aﬃcher les 100 premières lignes du ﬁchiersoccer.csv
+Réponses
+head -n100 soccer.csv
+3. Aﬃcher le ﬁchier 7 lignes par 7 lignes à partir de la ligne 5.
+indice : more
+Réponses
+more -7 +5soccer.csv
+4. Créer un ﬁchierdata.csv contenant les lignes 12 à 14 (inclus) et 33 à 36 (inclus)
+du ﬁchiersoccer.csv, en utilisant uniquement les commandes head, tail, cat et la
+redirection de la sortie standard).
+Réponses
+head -14 soccer.csv | tail -3 > data.csv
+head -36 soccer.csv | tail -4 >> data.csv
+5. Visualiser le ﬁchiersoccer.csv à l’aide de la commande cat. Puis le visualiser à
+l’aide de la commande more. Quelles sont les diﬀérences?
+Réponses
+cat soccer.csv
+more soccer.csv
+La commande more aﬃche page par page, ce qui n’est pas le cas avec cat. De plus,
+la commande more permet de rechercher des motifs, et beaucoup d’autres choses.
+6. Compter le nombre de lignes et de mots du ﬁchiersoccer.csv
+Réponses
+wc -lw soccer.csv
+4
+<<<PAGE>>>
+2.4 Les liens symboliques
+Les liens symboliques permettent de donner plusieurs noms à un même ﬁchier et de
+faire des économies de places.
+1. Créerunrépertoire tmp/dansvotre home-directory,etdéplacerleﬁchier soccer.csv
+(existant dans votrehome-directory) vers le répertoiretmp/.
+Réponses
+mkdir tmp
+mv soccer.csv tmp/
+2. Copierleﬁchier soccer.csvàlaracinedevotrecompteetrenommerleen mySoccer.csv
+(en une seule commande).
+Réponses
+cp tmp/soccer.csv∼/mySoccer.csv
+3. Vériﬁer que le ﬁchier s’y trouve bien.
+Réponses
+ls∼
+4. Créer un lien symbolique de nomlienMySoccer sur le ﬁchiermySoccer.csv.
+Réponses
+ln -s mySoccer.csv lienMySoccer
+5. Lister le contenu du répertoire courant en aﬃchant tous les détails des ﬁchiers.
+Réponses
+ls -l
+6. Supprimer le ﬁchiermySoccer.csv se trouvant à la racine de votre répertoire de
+connexion (home-directory).
+Réponses
+rm mySoccer.csv
+5
+<<<PAGE>>>
+7. Lister le contenu de votre répertoire de connexion (home-directory). Que remarquez
+vous?
+Réponses
+ls∼
+le lien symboliquelienMySoccer existe toujours mais est brisé
+2.5 Alias et ﬁchier de conﬁguration
+1. Entrer le code suivant dans un terminal : alias cd=ls. Utiliser la commande cd.
+Que remarquez vous?
+Réponses
+Vous constatez que maintenant la commande cd se comporte comme la commande
+ls.
+2. A votre avis à quoi sert la commande alias?
+Réponses
+La commande alias nous permet de surcharger une commande et/ou de donner un
+surnom à une longue commande utilisée de manière régulière.
+3. Supprimer l’aliasalias cd=ls
+Réponses
+unalias
+cd
+4.
+Que fait la commande alias seule?
+Réponses
+elle
+aﬃche l’ensemble des alias déjà déﬁnis.
+6
+<<<PAGE>>>
+5. Lorsque le terminal est fermé l’ensemble des alias déﬁnis pendant la durée d’ouverture
+du terminal ne sont pas enregistré. Pour cela plusieurs solutions sont envisageable. 
+Aﬃcher le contenu du ﬁchier appelé . bashrc (attention il y  a  bien un point devant 
+ce ﬁchier), il se situe à la racine de votre home-directory. Utiliser vi, emacs ou tout 
+simplement la commande cat. Le ﬁchier . bashrc est un ﬁchier de conﬁguration lu 
+à chaque démarrage d’un terminal. C’est donc l’endroit où vous pouvez rajouter des 
+alias.
+Ajouter l’alias alias ls=ls -l suivant dans le .bashrc. Fermer le fichier et lancer la 
+commande dans le terminal. Que remarquez vous ?
+Réponses
+cat .bashrc
+ajouter la ligne de code suivante dans le fichier : alias ls=ls -l
+ecrire la commande suivante dans le terminal : ls
+l’alias rajouté n’est pas pris en compte. Pour cela, il faut fermer le terminal en cours 
+et l’ouvrir de nouveau
+6. Pour ne pas avoir à relancer le terminal vous pouvez remmettre à jour le ﬁchier
+.bashrc depuis le terminal en utilisant la commandesource.
+Réponses
+source∼/.bashrc
+2.6 Les pipes et les ﬁltres
+Un pipe est un moyen de communication entre deux processus. En Unix, il nous permet
+de connecter le ﬂot de sortie d’une commande au ﬂot d’entrée d’une autre. Ainsi on peut
+enchaîner plusieurs commandes sur un ﬂot initial. Autrement dit, la sortie de la première
+commande est redirigée en entrée de la seconde.
+Le pipe sur le terminal est représenté par|. Ce caractère est accessible au clavier via la
+touche AltGr (située à droite de la barre espace) et la touche6 (située au dessus de la
+touche t et y)
+7
+<<<PAGE>>>
+1. Aﬃcher le contenu du répertoire/bin à l’aide de la commande ls -l combinée avec
+more pour aﬃcher petit à petit le contenu.
+Réponses
+ls -l /bin | more
+2. Créer un ﬁchiernbFic qui contient le nombre de d’éléments contenu dans le dossier
+/bin.
+Réponses
+ls -l | wc -l > nbFic
+3 Et si je révisai!
+1. Quelle est la diﬀérence entre :
+echo toto > toto
+echo toto >> toto
+Réponses
+echo toto > toto⇒permet de remplacer le contenu du ﬁchier toto par la chaîne de
+caractères toto
+echo toto>> toto⇒permet d’ajouter à la ﬁn du ﬁchier toto, la chaîne de caractères
+toto
+2. Considérons un répertoire appelétoto.
+(a) Ajouter à l’interieur un sous répertoire appelétutu et un ﬁchiertata
+Réponses
+mkdir -p toto/tutu
+touch toto/tata
+(b) Supprimer le repertoiretutu
+Réponses
+rmdir toto/tutu
+(c) Supprimer le repertoiretoto
+Réponses
+rm -rf toto
+ou rmdir -rf toto
+8
+<<<PAGE>>>
+3. Considérons un ﬁchier appelémaListe.csv contenant plus de 5000 lignes.
+(a) Aﬃcher dans le terminal le ﬁchier. Quelle commande priviligiez vous et pour-
+quoi?
+Réponses
+more ou less car le ﬁchier est trop important en nombre de lignes
+(b) Combien de lignes exactes contient le ﬁchier?
+Réponses
+wc -l maListe.csv
+(c) Combien de mots contient le ﬁchier?
+Réponses
+wc -w maListe.csv
+4. De manière général, à quoi sert un alias? Où peut-on le déﬁnir?
+Réponses
+Un alias sert à se créer des raccourcis de commandes aﬁn de gagner du temps, et
+d’adapter le terminal à ses besoins. Le plus simple est de le déﬁnir dans le bashrc
+5. De manière général, à quoi sert les pipes?
+Réponses
+Les pipes permettent de rediriger les sorties d’une commande vers une entrée d’une
+autre commande.
+9

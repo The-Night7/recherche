@@ -1,0 +1,42 @@
+ING1
+Bases de données
+TD 07
+Requêtes SQL
+L'objectif de ce travail dirigé est de vous familiariser avec le langage de
+manipulation de données SQL via les requêtes avec SELECT :
+1. Les jointures externes ;
+2. Les requêtes complexes.
+Données
+ Nous réutilisons le schéma relationnel sur les Pokémons :
+Equipe(id , nom, couleur)
+Joueur(pseudonyme , personnage, sexe, niveau, #idEquipe)
+Pokemon(id , nom, espece, pointCombat, #idJoueur)
+Emplacement(id , latitude, longitude)
+Arene(id , nom, #idEmplacement)
+Defense(#idEquipe, #idArene, dateControle )
+Apparition(#idPokemon, #idEmplacement , horaire, duree)
+Eectuez les requêtes suivantes en SQL :
+1. 1. Classez les Pokémons en fonction de nombre d'apparitions. Nous sommes
+intéressés aux Pokémons qui n'ont pas encore apparu également (dont le
+nombre d'apparition vaut 0).
+2. Quels sont les Pokémons dont le nombre d'apparitions est supérieur au
+nombre moyen d'apparitions ?
+3. On veut obtenir le pseudonyme, le sexe, le niveau et le nombre de Pokémons
+de tous les joueurs, y compris ceux qui n'ont capturé aucun Pokémon. Triez
+votre résultat.
+4. Quels sont les Pokémons qui ont apparu dans tous les emplacements dié-
+rents ?
+5. Quels sont les joueurs qui ont capturé toutes les espèces de Pokémon ?
+Équipe pédagogique 1 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+6. Combien de joueurs possèdent des Pokémons qui sont placés dans l'empla-
+cement avec la latitude la plus septentrionale (la plus haute) ?
+7. Quelle est l'équipe qui a pris le contrôle d'une arène plus souvent ?
+8. Quelle est la plage des dates auxquelles les Pokémons de l'équipe de la ques-
+tion précédente ont apparu ?
+9. Achez les joueurs dont le niveau est le plus élevé de leur équipe.
+10. Achez les noms des pokémons dont les points de combat sont supérieur à
+la moyenne de ceux de leur joueur.
+Équipe pédagogique 2 2021-2022

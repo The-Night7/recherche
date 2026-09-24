@@ -1,0 +1,1250 @@
+PROGRAMMATION
+PROCEDURALE
+2 A .  LES B R A N C H E M E N T S
+C O N D I T I O N N E L S
+Eva Ansermin & Romuald Grignon 
+v1.00
+<<<PAGE>>>
+Rappel 
+● Un algorithme est un ensemble d’instructions s’executant dans un ordre précis.
+● Dans les codes étudiés précédement, toutes les instructions étaient executées
+séquentiellement dans l’ordre : nos programmes font toujours la même chose!
+Que fait ce code ?
+VARIABLE
+n1, n2: ENTIER
+m : REEL 
+DEBUT
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m<- (n1+n2)/2
+ECRIRE(“Le résultat est” + m)
+FIN
+2
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Problématique
+● Le code permet de calculer la moyenne de deux notes saisies par l’utilisateur.
+● Le résultat final n’est pas prévisible lors de l’écriture du code : il va dépendre de 
+ce qui est saisi par l’utilisateur.
+● Problème : 
+○ Comment gérer les cas où l’utilisateur se trompe dans sa saisie / donne une valeur
+incoherente? 
+○ Comment faire si l’on souhaite ensuite indiquer à l’édudiant s’il a la moyenne ? 
+● Branchements conditionnels : l’algorithme va tester une condition et, en
+fonction de sa valeur,  va effectuer des instructions différentes. 3
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+I. Branchements conditionnels
+4
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Principe
+● Nous avons une condition dont le résultat va modifier le comportement de 
+l’algorithme:
+● Remarque : il ne peut y avoir que deux embranchements par condition.
+Instructions
+condition 
+VRAI FAUX
+Instructions A Instructions B
+5
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Principe
+● Exemple :
+ECRIRE (“Donnez les deux 
+notes”)
+LIRE(n1)
+LIRE(n2)
+m <- (n1+n2)/2
+m≥10 ? 
+VRAI FAUX
+ECRIRE (“Matière 
+validée !”)
+ECRIRE (“Raté! A 
+l’année
+prochaine!”) 6
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+● En pseudo-code on utilise les mots clefs SI, ALORS et SINON 
+● La condition testée est une variable booléenne
+SI (booléen) ALORS
+Instructions A
+SINON
+Instructions B 
+FIN SI 
+Branchement conditionnel simple
+7
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchement conditionnel simple
+SI (booléen) ALORS
+Instructions A
+SINON
+Instructions B 
+FIN SI 
+indentation
+8
+Eva ANSERMIN & Romuald GRIGNON
+● En pseudo-code on utilise les mots clefs SI, ALORS et SINON 
+● La condition testée est une variable booléenne
+<<<PAGE>>>
+SI (booléen) ALORS
+Instructions A
+SINON
+Instructions B 
+FIN SI 
+indentation
+FIN SI indique que le branchement est fini : 
+toute instruction suivante sera exécutée.
+Instructions C
+Branchement conditionnel simple
+9
+Eva ANSERMIN & Romuald GRIGNON
+● En pseudo-code on utilise les mots clefs SI, ALORS et SINON 
+● La condition testée est une variable booléenne
+<<<PAGE>>>
+SI (booléen) ALORS
+Instructions A
+SINON
+Instructions B 
+FIN SI 
+Instructions C
+indentation
+Instructions C
+Branchement conditionnel simple
+10
+Eva ANSERMIN & Romuald GRIGNON
+● En pseudo-code on utilise les mots clefs SI, ALORS et SINON 
+● La condition testée est une variable booléenne
+<<<PAGE>>>
+● Exemple ECRIRE (“Donnez les deux 
+notes”)
+LIRE(n1)
+LIRE(n2)
+m<- (n1+n2)/2
+m ≥ 10 ? 
+VRAI FAUX
+ECRIRE (“Matière 
+validée !”)
+ECRIRE (“Raté! A 
+l’année prochaine!”)
+ECRIRE (“Matière 
+validée !”)
+ECRIRE (“moyenne :”+m)
+Branchement conditionnel simple
+11
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le SINON
+● Le mot clef SINON est optionnel :
+● On effectue des instructions supplémentaires que si une condition est vraie.
+SI (booléen) ALORS
+Instructions A
+FIN SI
+Instructions
+condition 
+VRAI
+Instructions A
+Instructions C
+FAUX
+12
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+● Exemple : ECRIRE (“Donnez les deux 
+notes”)
+LIRE(n1)
+LIRE(n2)
+m<- (n1+n2)/2
+m<10 ? 
+VRAI FAUX
+ECRIRE (“Attention, 
+risque de 
+redoublement!”)
+ECRIRE (“
+ECRIRE (“moyenne :”+m)
+Le SINON
+ECRIRE (“Attention, 
+risque de 
+redoublement!”)
+13
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Il est possible d’avoir plusieurs conditions à la suite afin d’avoir plusieurs
+embranchements. Le mot clef estSINON SI.
+SI (booléen 1) ALORS
+Instructions A
+SINON SI (booléen 2) ALORS
+Instructions B 
+SINON
+Instructions C
+FIN SI
+Instructions
+Condition 1 
+VRAI
+FAUX
+Instructions A
+Condition 2 
+Instructions B
+VRAI
+Instructions C
+Instructions D
+14
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 15 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») VRAI
+m ≥ 10 ?
+ECRIRE(«Ca passe!») 
+FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m) 15
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 15 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») VRAI
+m ≥ 10 ?
+ECRIRE(«Ca passe!») 
+FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m)
+m=16? 
+16
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 15 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») VRAI
+m ≥ 10 ?
+ECRIRE(«Ca passe!») 
+FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m)
+m=16?
+Félicitation 
+Moyenne 16 
+17
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 15 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») VRAI
+m ≥ 10 ?
+ECRIRE(«Ca passe!») 
+FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m)
+m=13?
+18
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 15 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») VRAI
+m ≥ 10 ?
+ECRIRE(«Ca passe!») 
+FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m)
+m=13?
+Ca passe !
+Moyenne 13  
+19
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Branchements multiples
+● Exemple …
+m ≥ 10 ?
+VRAI FAUX
+ECRIRE(« Félicitations ! ») 
+VRAI
+m ≥ 15 ?ECRIRE(«Ca passe!») FAUX
+ECRIRE (“Attention, risque de 
+redoublement!”)
+ECRIRE (“moyenne”+m)
+À l’ordre!
+m=16 
+Ca passe !
+Moyenne 16
+20
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+II. Conditions
+21
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Rappel: variables booléennes
+● Rappel : une variable de type booléenne ne peut prendre que deux valeurs : 
+VRAI ou FAUX 
+● Déclaration des variables booléennes :
+VARIABLE
+c1, c2 : booleen
+DEBUT
+…
+FIN
+22
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+● Une variable booléenne peut prendre le résultat d’une comparaison entre 2 variables.
+● Les différents opérateurs de comparaison sont : 
+● On peut également utiliser les opérateurs boléensNON, ET etOU . 
+Opérateur mathématique Pseudo-code
+= EST EGAL A
+≠ EST DIFFERENT DE 
+< EST STRICTEMENT INFERIEUR
+> EST STRICTEMENT SUPERIEUR
+≤ EST INFERIEUR OU EGAL
+≥ EST SUPERIEUR OU EGAL
+23
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+● Attention à ne pas confondre :
+○ L ’affectation<- : on donne une valeur à une variable:
+○ La comparaison EST EGAL A : est une condition. On regarde si une
+variable est égale à une autre
+● On peut écrire :
+a<-b // a prend la valeur de b
+a EST EGAL A b // est ce que a=b? 
+VARIABLE
+c : booléen
+a : entier
+DEBUT
+…
+c <- a EST EGAL A 10
+FIN 24
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN 25
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+● Exemple :
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1
+c2
+Supposons que m = 9
+26
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 FAUX
+c2
+Supposons que m = 9
+27
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 FAUX
+c2 FAUX
+Supposons que m = 9
+28
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 FAUX
+c2 FAUX
+Supposons que m = 9
+29
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 FAUX
+c2 FAUX
+Supposons que m = 9
+30
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 FAUX
+c2 FAUX
+Supposons que m = 9
+Rattrapage!
+31
+Eva ANSERMIN & Romuald GRIGNON
+● Exemple :
+<<<PAGE>>>
+Opérateurs de comparaison
+● Autre écriture :
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN 32
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1
+c2
+Supposons que m = 9
+33
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 VRAI
+c2
+Supposons que m = 9
+34
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 VRAI
+c2 FAUX
+Supposons que m = 9
+35
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 VRAI
+c2 FAUX
+Supposons que m = 9
+36
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 VRAI
+c2 FAUX
+Supposons que m = 9
+37
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+ECRIRE (“Donnez les deux notes”)
+LIRE(n1)
+LIRE(n2)
+m  <- (n1+n2)/2
+c1 <- m INFERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1 ET c2) ALORS
+ECRIRE (“Ca passe !”)
+SINON SI (NON(c2)) ALORS
+ECRIRE (“Rattrapage!”)
+SINON
+ECRIRE(“Félicitations!”)
+FIN SI
+FIN
+variables valeurs
+m 9
+c1 VRAI
+c2 FAUX
+Supposons que m = 9
+Rattrapage!
+38
+Eva ANSERMIN & Romuald GRIGNON
+● Autre écriture :
+<<<PAGE>>>
+Opérateurs de comparaison
+● Attention ! Deux SI à la suite sont différents d’un SI … SINON SI !
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+…
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+…
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+FIN SI
+SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+m=18?
+39
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+…
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+SINON SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+VARIABLE
+n1, n2: ENTIER
+m : REEL
+c1, c2: BOOLEEN 
+DEBUT 
+…
+c1 <- m SUPERIEUR OU EGAL A 15
+c2 <- m SUPERIEUR OU EGAL A 10
+SI (c1) ALORS
+ECRIRE (“Félicitations !”)
+FIN SI
+SI (c2) ALORS
+ECRIRE (“Ca passe!”)
+SINON
+ECRIRE(“Rattrapage!”)
+FIN SI
+FIN
+Félicitations ! Félicitations ! 
+Ca passe !
+m=18?
+40
+Eva ANSERMIN & Romuald GRIGNON
+● Attention ! Deux SI à la suite sont différents d’un SI … SINON SI !
+<<<PAGE>>>
+Opérateurs de comparaison
+c<-condition
+SI (c) ALORS
+Instructions A
+SINON
+Instructions B
+FIN SI 
+SI (condition) ALORS
+Instructions A
+SINON
+Instructions B 
+FIN SI 
+41
+Eva ANSERMIN & Romuald GRIGNON
+● Attention ! Deux SI à la suite sont différents d’un SI … SINON SI !
+<<<PAGE>>>
+Selon cas
+● S’il y a beaucoup de valeurs fixes à tester on peut utiliser le selon cas 
+Selon(a) 
+cas v1 : instructions A
+cas v2 : instructions B
+cas v3 : instructions C
+defaut : instructions D
+Fin selon
+42
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Selon cas
+● Exemple (m variable de type entier) :
+DEBUT 
+…
+SELON (m)
+cas 20 : ECRIRE(“Parfait”)
+cas 19 : ECRIRE (“Presque parfait”)
+cas 18 : ECRIRE (“Très bien”)
+…
+cas 0  : ECRIRE (“Nul!”)
+défaut : ECRIRE (“Note invalide”)
+FIN SELON
+FIN
+DEBUT 
+…
+SI (m EST EGAL à 20) ALORS
+ECRIRE(“Parfait”)
+SINON SI (m EST EGAL à 19) ALORS
+ECRIRE (“Presque parfait”)
+SINON SI (m EST EGAL à 18) ALORS
+ECRIRE (“ Très bien”)
+…
+SINON SI (m EST EGAL à 0) ALORS
+ECRIRE(“Nul!”)
+SINON 
+ECRIRE(“La note est invalide”)
+FIN SI
+FIN
+43
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+III. Langage C
+44
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Les branchements conditionnels
+if(condition1){
+instructions1
+}
+else if (condition2){
+instructions2
+}
+else{
+instruction3
+}
+SI (condition1) ALORS
+instructions1
+SINON SI (condition2) ALORS
+instructions2
+SINON 
+instructions3
+FIN SI
+45
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Les branchements conditionnels
+if(condition1){
+instructions1
+}
+else if (condition2){
+instructions2
+}
+else{
+instruction3
+}
+SI (condition1) ALORS
+instructions1
+SINON SI (condition2) ALORS
+instructions2
+SINON
+instructions3
+FIN SI
+if  si     else if  sinon si    else  sinon
+46
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Les branchements conditionnels
+if(condition1){
+instructions1
+}
+else if (condition2){
+instructions2
+}
+else{
+instruction3
+}
+SI (condition1) ALORS
+instructions1
+SINON SI (condition2) ALORS
+instructions2
+SINON 
+instructions3
+FIN SI
+Les accolades {    } indiquent le début et la fin des instructions appartenant au branchement.
+47
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Les branchements conditionnels
+if(condition1){
+instructions1
+}
+else if (condition2){
+instructions2
+}
+else{
+instruction3
+}
+SI (condition1) ALORS
+instructions1
+SINON SI (condition2) ALORS
+instructions2
+SINON 
+instruction3
+FIN SI
+Les indentations doivent aussi être présentes en C  !
+48
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Opérateurs de comparaison
+● Pas de variable booléene en C (ou importer la bibliothèque bool.h). Mais on peut
+utiliser des entiers : 0  FAUX, autre valeur  VRAI 
+● Les différents opérateurs de comparaison sont : 
+● On peut également utiliser les opérateurs! (non), || (OU), && (ET)
+Opérateur 
+mathématique
+Pseudo-code C
+= EST EGAL A ==
+≠ EST DIFFERENT DE !=
+< EST STRICTEMENT INFERIEUR <
+> EST STRICTEMENT SUPERIEUR >
+≤ EST INFERIEUR OU EGAL <=
+≥ EST SUPERIEUR OU EGAL >=
+49
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Exemple : majeur ou mineur?
+#include<stdio.h>
+int main(){
+int age;
+printf(“Quel age as-tu?”);
+scanf(“%d”,&age);
+if(age>=18){
+printf(“Tu es majeur!”);
+}
+else {
+printf(“Tu es mineur!”);
+}
+return 0;
+}
+50
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Exemple : majeur ou mineur?
+#include<stdio.h>
+int main(){
+int age;
+printf(“Quel age as-tu?”);
+scanf(“%d”,&age);
+if(age>=18){
+printf(“Tu es majeur!”);
+}
+else if(age<18 && age >=14){
+printf (“Tu es un ado!”);
+}
+else {
+printf(“Tu es mineur!”);
+}
+return 0;
+}
+51
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Exemple : majeur ou mineur?
+#include<stdio.h>
+int main(){
+int age;
+printf(“Quel age as-tu?”);
+scanf(“%d”,&age);
+if(age>=18){
+printf(“Tu es majeur!”);
+}
+else if(age<18 && age >=14){
+printf (“Tu es un ado!”);
+}
+else {
+printf(“Tu es mineur!”);
+}
+return 0;
+}
+Condition implicitement VRAIE
+52
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le ‘switch case’
+switch (a) {
+case v1 : 
+…
+break;
+case v2:
+…
+break;
+case v3 : 
+…
+break;
+default : 
+…
+break;
+}
+Selon(a) 
+cas v1 : …
+cas v2 : …
+cas v3 : …
+defaut : …
+Fin selon
+53
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case
+switch (a) {
+case v1 : 
+…
+break;
+case v2:
+…
+case v3 : 
+…
+break;
+default : 
+…
+break;
+}
+Si on écrit pas le break, on fait 
+également les cas suivants jusqu’à
+rencontrer un break.
+54
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+Qu’affiche le code si :
+55
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 10
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+56
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 10
+=> enfant
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+57
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 26
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+58
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 26
+=> Age pas interessant
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+59
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 20
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+60
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Le switch case : exemple
+Qu’affiche le code si :
+age = 20
+Presque adulte adulte! parfait
+switch (age) {
+case 5 : 
+printf(“un bébé”);
+break;
+case 10:
+printf(“Un enfant”);
+break;
+case 20 : 
+printf(“Presque adulte”);
+case 25 :
+printf(“Adulte!”);
+case 31 :
+printf(“Parfait!”);
+break;
+default : 
+printf(“Age pas interessant!”);
+}
+61
+Eva ANSERMIN & Romuald GRIGNON
+<<<PAGE>>>
+Conclusion
+● Sans branchement conditionnel, un algorithme s’effectue de manière linéaire et 
+fait toujours la même chose.
+● Il arrive très souvent qu’un algorithme doit se comporter différement selon
+certains paramètres.
+● La structure SI, SINON SI, SINON permet de gérer le comportement d’un 
+algorithme dans différents cas.
+● Attention à l’ordre et à l’écriture des conditions ! 
+● Attention à la syntaxe !
+62
+Eva ANSERMIN & Romuald GRIGNON

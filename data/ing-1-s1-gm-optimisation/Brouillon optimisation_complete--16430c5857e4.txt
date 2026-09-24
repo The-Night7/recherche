@@ -1,0 +1,394 @@
+FICHE OPTIMISA TION - CY TECH ING1-GM
+=== I. OPTIMISA TION LINEAIRE ===
+1. MÉTHODE SIMPLEXE - FORME ST ANDARD
+F orme standard : maxcTx s.c. Ax≤b, x≥ 0
+A vec variables d'écart : Ax +s =b, s≥ 0
+Base réalisable : V ariables hors base = 0
+Critère d'optimalité : T ous coef. ligne z≤ 0
+Choix pivot : Colonne : coef. > 0 en ligne z | Ligne : min ratio bi/aik ( aik > 0)
+Pivotage : (1) Diviser ligne pivot par pivot | (2) Annuler colonne pivot
+Solution non bornée : Colonne pivot sans coef. > 0
+Dégénérescence : bi = 0 dans base ⇒ risque cyclage
+2. MÉTHODE 2 PHASES
+Phase I : minPyi avec variables articielles yi
+Si min = 0 ⇒ base réalisable trouvée
+Si min> 0⇒ problème impossible
+Phase II : Simplexe normal avec base phase I
+3. DUALITÉ
+Primal (P) : maxcTx, Ax≤b, x≥ 0
+Dual (D) : minbTy, ATy≥c, y≥ 0
+Théorème dualité faible : cTx≤bTy∀x,y réalisables
+Théorème dualité forte : Si x∗,y∗ optimaux ⇒ cTx∗ =bTy∗
+Complémentarité (KKT) :
+ x∗
+j > 0⇒ contrainte duale j saturée : (ATy∗)j =cj
+ y∗
+i > 0⇒ contrainte primale i saturée : (Ax∗)i =bi
+ x∗
+j (cj− (ATy∗)j ) = 0
+ y∗
+i (bi− (Ax∗)i) = 0
+V ariables d'écart : si > 0⇒ y∗
+i = 0
+T rouver dual depuis tableau nal : Lire valeurs y∗ dans ligne z sous colonnes
+si
+4. OPTIMISA TION EN ENTIERS
+Méthode des coupes de Gomory :
+(1) Résoudre relaxation continue
+(2) Si solution entière ⇒ FIN
+(3) Sinon, choisir ligne avec xi non entier
+(4) Coupe : P{aij}xj +s ={bi} où {x} =x−⌊x⌋
+(5) Ajouter coupe au tableau et pivoter
+Branch & Bound :
+(1) Résoudre relaxation
+(2) Si entier ou pire que borne ⇒ élaguer
+(3) Sinon brancher : xi≤⌊x∗
+i⌋ et xi≥⌈x∗
+i⌉
+=== II. OPTIMISA TION NON LINEAIRE ===
+5. CONDITIONS D'OPTIMALITÉ SANS CONTRAINTE
+Point critique : ∇f (x∗) = 0
+Hessienne : Hf (x) =
+
+∂2 f
+∂xi ∂xj
+
+T est du second ordre :
+ H dénie positive ⇒ minimum local strict
+ H dénie négative ⇒ maximum local strict
+ H indénie ⇒ point selle
+ H semi-dénie ⇒ test non concluant
+Matrice dénie positive : T ous VP > 0 OU tous mineurs principaux > 0
+Critère de Sylvester (déf. pos.) : det(H1)> 0, det(H2)> 0, ..., det(Hn)> 0
+Critère déf. nég. : (−1)k det(Hk)> 0∀k
+6. CONVEXITÉ
+F onction convexe : f (λx + (1−λ)y)≤λf (x) + (1−λ)f (y)
+Critère Hessienne : f convexe ⇔ Hf (x) semi-dénie positive ∀x
+Propriété : Si f convexe, tout minimum local est global
+Ensemble convexe : λx + (1−λ)y∈C∀x,y∈C, λ∈ [0, 1]
+F orme quadratique : f (x) = 1
+2xTQx +bTx +c
+Convexe ⇔ Q semi-dénie positive
+7. MOINDRES CARRÉS
+Problème : min 1
+2∥Ax−b∥2
+Développement : f (x) = 1
+2xTATAx−bTAx + 1
+2bTb
+Gradient : ∇f (x) = ATAx−ATb
+Hessienne : Hf =ATA (semi-dénie positive)
+Solution : Si ATA inversible : x∗ = (ATA)−1ATb
+8. OPTIMISA TION A VEC CONTRAINTES D'ÉGALITÉ
+Problème : minf (x) s.c. hi(x) = 0 , i = 1,...,p
+Lagrangien : L(x,λ ) = f (x)−Pp
+i=1λihi(x)
+Conditions nécessaires (KKT) :
+ ∇xL(x∗,λ∗) = 0 (stationnarité)
+ hi(x∗) = 0 ∀i (admissibilité)
+Point régulier : ∇h1(x∗),...,∇hp(x∗) linéairement indépendants
+Espace tangent : T (x∗) ={y∈ Rn :∇hi(x∗)Ty = 0,∀i}
+Condition 2nd ordre (susante) :
+yT∇2
+xxL(x∗,λ∗)y >0∀y∈T (x∗), y̸= 0
+Méthode substitution : Exprimer variables via contraintes puis optimiser
+9. OPTIMISA TION A VEC CONTRAINTES INÉGALITÉ
+Problème : minf (x) s.c. gj (x)≤ 0, j = 1,...,m
+Lagrangien : L(x,µ ) = f (x) +Pm
+j=1µjgj (x)
+Conditions KKT :
+ ∇xL(x∗,µ∗) = 0 (stationnarité)
+ gj (x∗)≤ 0∀j (admissibilité primale)
+ µ∗
+j≥ 0∀j (admissibilité duale)
+ µ∗
+jgj (x∗) = 0 ∀j (complémentarité)
+Contraintes actives : I(x∗) ={j :gj (x∗) = 0}
+Si j /∈I(x∗)⇒ µ∗
+j = 0
+Point qualié (LICQ) : ∇gj (x∗) pour j∈I(x∗) lin. indép.
+Cône tangent : K(x∗) ={d :∇gj (x∗)Td≤ 0,j ∈I(x∗)}
+Condition 2nd ordre : dT∇2
+xxL(x∗,µ∗)d> 0∀d∈K(x∗), d̸= 0
+10. CAS MIXTE (ÉGALITÉ + INÉGALITÉ)
+minf (x) s.c. hi(x) = 0 , gj (x)≤ 0
+L(x,λ,µ ) = f (x)−P
+iλihi(x) +P
+jµjgj (x)
+KKT :
+ ∇xL = 0
+ hi(x∗) = 0 ∀i
+ gj (x∗)≤ 0∀j
+ µ∗
+j≥ 0∀j
+ µ∗
+jgj (x∗) = 0 ∀j
+Cas à examiner : 2m combinaisons contraintes actives/inactives
+Pour chaque cas : résoudre système KKT, vérier µj≥ 0 et admissibilité
+=== III. FORMULES ESSENTIELLES ===
+11. CALCUL DIFFÉRENTIEL
+Gradient : ∇f =
+
+
+∂f
+∂x1
+...
+∂f
+∂xn
+
+
+Dérivées usuelles :
+ ∇(xTAx) = (A +AT )x (si A symétrique : 2Ax)
+ ∇(bTx) = b
+ ∇(xTx) = 2x
+ ∇(∥Ax−b∥2) = 2AT (Ax−b)
+Hessiennes usuelles :
+ H(xTAx) = A +AT (si A sym. : 2A)
+ H(∥Ax−b∥2) = 2ATA
+12. ALGÈBRE LINÉAIRE
+V aleurs propres : det(A−λI) = 0
+T race : tr (A) = Pλi
+Déterminant : det(A) = Qλi
+Inverse 2× 2 : A−1 = 1
+det(A)
+
+d −b
+−c a
+
+pour A =
+
+a b
+c d
+
+Projection orthogonale : P =A(ATA)−1AT
+Distance point-plan : d(x0,{Ax =b}) = |Ax0−b|
+∥A∥
+13. ASTUCES EXAMEN
+Reconnaître un min/max :
+ Coecients négatifs ⇒ max probable
+ F orme −x2⇒ max
+ F orme x2 ou ∥...∥2⇒ min
+T ester convexité rapide : Calculer H en un point, vérier VP ou mineurs
+KKT - énumérer cas :
+ 2 contraintes ⇒ 4 cas : (0, 0), (1, 0), (0, 1), (1, 1)
+ Commencer par cas sans contraintes actives
+ Vérier µj≥ 0 et gj (x∗)≤ 0
+Simplexe - trouver base initiale : Si bi < 0⇒ multiplier ligne par −1
+Si pas de base évidente ⇒ méthode 2 phases
+=== IV. EXEMPLES TYPES ===
+14. EXEMPLE SIMPLEXE COMPLET
+max(x1 + 2x2) s.c. −3x1 + 2x2≤ 2, −x1 + 2x2≤ 4, x1 +x2≤ 5
+F orme standard : maxz =x1 + 2x2
+−3x1 + 2x2 +s1 = 2
+−x1 + 2x2 +s2 = 4
+x1 +x2 +s3 = 5
+T ableau initial :
+x1 x2 s1 s2 s3
+s1 −3 2 1 0 0 2
+s2 −1 2 0 1 0 4
+s3 1 1 0 0 1 5
+z −1 −2 0 0 0 0
+Pivot sur x2 (colonne 2), ligne s2 (ratio min 4/2 = 2 )
+Solution nale : x∗
+1 = 2 , x∗
+2 = 3 , z∗ = 8
+15. EXEMPLE KKT COMPLET
+minf (x1,x 2) = x2
+1−x2
+2 +x1x2
+s.c. g1(x1,x 2) = x2
+1 +x2
+2− 1≤ 0, g2(x1,x 2) = x1 +x2− 1≤ 0
+L =x2
+1−x2
+2 +x1x2 +µ1(x2
+1 +x2
+2− 1) +µ2(x1 +x2− 1)
+∇xL =
+
+2x1 +x2 + 2µ1x1 +µ2
+−2x2 +x1 + 2µ1x2 +µ2
+
+= 0
+Cas 1 : µ1 =µ2 = 0⇒ x∗ = (0, 0)
+Vérier : g1(0, 0) =−1≤ 0 , g2(0, 0) =−1≤ 0
+Hessienne en (0, 0) : indénie ⇒ point selle
+Cas 2 : µ1 > 0, µ2 = 0⇒ g1(x∗) = 0
+Système : x2
+1 +x2
+2 = 1 , ...
+Cas 3 : µ1 = 0 , µ2 > 0⇒ g2(x∗) = 0
+Cas 4 : µ1 > 0, µ2 > 0⇒ les deux actives
+Résoudre chaque cas, garder solutions avec µj≥ 0
+16. EXEMPLE MOINDRES CARRÉS
+A =
+
+
+1 0
+0 1
+1 1
+
+, b =
+
+
+6
+3
+3
+
+
+ATA =
+
+2 1
+1 2
+
+, (ATA)−1 = 1
+3
+
+2 −1
+−1 2
+
+ATb =
+
+9
+6
+
+x∗ = (ATA)−1ATb = 1
+3
+
+12
+3
+
+=
+
+4
+1
+
+=== V. PIÈGES À ÉVITER ===
+17. ERREURS FRÉQUENTES
+Simplexe :
+ Oublier de changer signe si bi < 0
+ Choisir mauvais ratio (ignorer aik≤ 0)
+ Ne pas vérier si solution non bornée
+Dualité :
+ Confondre primal max et dual min
+ Oublier y≥ 0 dans le dual
+ Complémentarité : si > 0⇒ yi = 0 (pas l'inverse !)
+KKT :
+ Signe Lagrangien : L =f +Pµjgj (pas −)
+ µj≥ 0 toujours ! (sinon solution invalide)
+ Vérier admissibilité gj (x∗)≤ 0
+ T est 2nd ordre sur K(x∗), pas Rn
+Hessienne :
+ Critère Sylvester pour déf. nég. : (−1)k det(Hk)> 0
+ Semi-dénie ̸= dénie (test non concluant)
+18. VÉRIFICA TIONS RAPIDES
+Solution trouvée :
+ Réinjecter dans contraintes
+ Vérier signes multiplicateurs
+ Comparer valeurs objectif (dualité)
+Convexité :
+ f convexe + contraintes convexes ⇒ KKT susantes
+ Min local = min global si f convexe
+=== VI. T ABLEAUX RÉCAP ===
+19. P ASSAGE PRIMAL-DUAL
+Primal Dual
+maxcTx minbTy
+Contrainte i : aT
+i x≤bi V ariable yi≥ 0
+Contrainte i : aT
+i x≥bi V ariable yi≤ 0
+Contrainte i : aT
+i x =bi V ariable yi libre
+V ariable xj≥ 0 Contrainte j : (ATy)j≥cj
+V ariable xj≤ 0 Contrainte j : (ATy)j≤cj
+V ariable xj libre Contrainte j : (ATy)j =cj
+20. NA TURE POINTS CRITIQUES
+Hessienne Nature
+Déf. positive Min local strict
+Déf. négative Max local strict
+Semi-déf. pos. Min local possible
+Semi-déf. nég. Max local possible
+Indénie Point selle
+V aleurs propres : T outes > 0 : déf. pos. | T outes < 0 : déf. nég.
+T outes ≥ 0 : semi-déf. pos. | Signes mixtes : indénie
+21. FORMULES CLÉS À RETENIR
+Gradient forme quad. : ∇( 1
+2xTQx +bTx) = Qx +b
+Projection : proj C (x) = C(CTC)−1CTx
+1
+<<<PAGE>>>
+Distance : d(x0,{h = 0}) = |h(x0 )|
+∥∇h(x0 )∥
+Plan tangent en x0 : ∇h(x0)T (x−x0) = 0
+Norme : ∥x∥2 =
+q
+x2
+1 +... +x2n
+Produit scalaire : ⟨x,y⟩ =xTy =Pxiyi
+=== VII. STRA TÉGIE EXAMEN ===
+22. GESTION DU TEMPS
+Lecture (5 min) :
+ Identier types exos (simplexe, KKT, moindres carrés...)
+ Noter barème et temps par exo
+Résolution (1h45) :
+ Commencer par exos maîtrisés
+ Questions indép. : faire celles qu'on sait
+ Si bloqué : passer et revenir
+Vérication (10 min) :
+ Relire calculs importants
+ Vérier signes et contraintes
+23. RÉDACTION
+Ce qu'on attend :
+ Justier chaque étape
+ Écrire formules avant calculs
+ Conclure clairement
+Exemple bon format :
+"On calcule le gradient : ∇f (x) = (2x1 +x2,−2x2 +x1)
+Point critique : ∇f (x∗) = 0 donne x∗ = (0, 0)
+Hessienne : H =
+
+2 1
+1 −2
+
+det(H) =−5< 0 donc H indénie
+Conclusion : (0, 0) est un point selle."
+24. CAS P AR TICULIERS EXAM
+Si "Optimiser" sans préciser :
+Regarder fonction : coef. négatifs ou forme −x2⇒ max
+Sinon calculer limite ∥x∥→∞ ou Hessienne
+Si plusieurs solutions KKT :
+Calculer f (x) pour chaque, choisir min pour minimisation
+Si demande "justier sans calcul" :
+Utiliser propriétés : convexité, théorème existence, unicité...
+Si problème impossible :
+Phase I donne miny >0 ou contradictions contraintes
+=== VIII. ANNALES TYPES ===
+25. EXOS RÉCURRENTS
+Type 1 : Moindres carrés (5-7 pts)
+min 1
+2∥Ax−b∥2 avec A,b donnés
+(1) Montrer quadratique : développer ∥Ax−b∥2
+(2) Points critiques : ∇f =ATAx−ATb = 0
+(3) Convexe : H =ATA semi-déf. pos.
+(4) Solution : x∗ = (ATA)−1ATb
+(5) Application numérique
+Type 2 : KKT avec 2 contraintes (7-9 pts)
+minf (x) s.c. g1(x)≤ 0, g2(x)≤ 0
+(1) Lagrangien : L =f +µ1g1 +µ2g2
+(2) Points réguliers : vérier ∇g1,∇g2 lin. indép.
+(3) Conditions KKT : écrire système
+(4) Énumérer 4 cas : résoudre, vérier µj≥ 0 et admissibilité
+(5) T est 2nd ordre et conclusion
+Type 3 : Optimisation sans contrainte (5-6 pts)
+(1) Points critiques : ∇f = 0
+(2) Nature : calculer H, VP ou Sylvester
+(3) Min/max global : limite inni, convexité
+Type 4 : Simplexe + dual (6-7 pts)
+(1) Résoudre primal par tableaux
+(2) Lire y∗ dans tableau nal (ligne z, colonnes si)
+(3) Vérier dualité forte : cTx∗ =bTy∗
+26. PIÈGES EXAMENS P ASSÉS
+Exam 23-24 : Confusion min/max (regarder coef. fonction !)
+Exam 24-25 : KKT avec point non régulier (vérier LICQ d'abord)
+Rattrapage 23-24 : Oubli λ> 0 dans convexité
+Courant : Simplexe avec phase I nécessaire, ne pas oublier étape
+2

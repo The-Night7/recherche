@@ -1,0 +1,776 @@
+TD 06 - Vecteurs Aléatoires
+Correction Détaillée
+Année 2025-2026
+Exercice 1.Considérons un vecteur aléatoire(Z1,Z 2) =:Ztel queZ 1(Ω) =Z 2(Ω) ={0,1}et :
+—P(Z= (0,0)) = (1−p) 2
+—P(Z= (1,1)) =p 2
+—P(Z= (0,1)) =P(Z= (1,0)) =p(1−p)
+oùp∈]0,1[.Montrer queZ 1 etZ 2 sont indépendantes.
+Solution :
+1. Stratégie : Critère analytique
+Nous allons utiliser la caractérisation par les fonctions caractéristiques.
+Rappel :Deux variablesZ 1 etZ 2 sont indépendantes si et seulement si pour tout(t1,t 2)∈R 2,
+la fonction caractéristique conjointe est le produit des marginales :
+φ(Z1,Z2)(t1,t 2) =φ Z1(t1)×φ Z2(t2)
+Rappel :ϕZ(t)est par définitionE[e it·Z ]avect·Z= Pd
+k=1tkZk avecZvecteur aléatoire de taille
+dett∈R d.
+2. Calcul des fonctions caractéristiques marginales
+Commençons par identifier la loi marginale deZ1.
+P(Z1 = 1) =P(Z= (1,0)) +P(Z= (1,1)) =p(1−p) +p 2 =p(1−p+p) =p
+P(Z1 = 0) = 1−P(Z 1 = 1) = 1−p
+Z1 suit donc une loi de BernoulliB(p). Par symétrie,Z2 aussi.
+La fonction caractéristique d’une variableX∼B(p)estφ X(t) =E[e itX] = (1−p) +pe it.
+Formons le produit des marginales :
+φZ1(t1)φZ2(t2) =
+
+(1−p) +pe it1
+
+×
+
+(1−p) +pe it2
+
+= (1−p) 2 +p(1−p)e it2 +p(1−p)e it1 +p 2ei(t1+t2) (∗)
+3. Calcul de la fonction caractéristique conjointe
+Par définition,φ (Z1,Z2)(t1,t 2) =E
+
+ei(t1Z1+t2Z2)
+. C’est une espérance discrète sur les 4 couples de
+valeurs possibles donnés par l’énoncé :
+φZ(t1,t 2) =
+X
+z1,z2
+ei(t1z1+t2z2)P(Z= (z 1,z 2))
+Détaillons la somme :
+— Pour(0,0):e i(0)(1−p) 2 = (1−p) 2
+— Pour(1,0):e i(t1·1+t2·0)p(1−p) =p(1−p)e it1
+— Pour(0,1):e i(t1·0+t2·1)p(1−p) =p(1−p)e it2
+1
+<<<PAGE>>>
+— Pour(1,1):e i(t1·1+t2·1)p2 =p 2ei(t1+t2)
+En sommant tout :
+φZ(t1,t 2) = (1−p) 2 +p(1−p)e it1 +p(1−p)e it2 +p 2ei(t1+t2) (∗∗)
+4. ConclusionEn comparant les expressions(∗)et(∗∗), on constate l’égalité parfaite pour tout
+(t1,t 2).L’indépendance est donc démontrée.
+2
+<<<PAGE>>>
+Exercice2.SoientXetYdeux v.a. dont la densité conjointe estf (X,Y) (x,y) =c(2x+y)1 ]2,6[×]0,5[(x,y).
+1. Que vaut c?
+2. Trouvez les fonctions de répartitions marginalesFX etF Y.
+3. Trouver les fonctions de densités marginalesfX etf Y.
+4. CalculerP(X >3,Y >2),P(X >3)etP(X+Y <4).
+5. En déduire siXetYsont indépendantes.
+Solution : 1. Calcul de la constante c
+Condition de normalisation :Pour quef (X,Y) soit une densité de probabilité, son intégrale
+totale par rapport à la mesure de LebesgueλR2 doit valoir 1 :
+Z
+R2
+f(X,Y) dλR2 = 1
+La fonctionf (X,Y) est mesurable et positive surR2. D’après le théorème de Fubini-
+Tonelli, l’intégrale double par rapport à la mesure produit est égale aux intégrales itérées :
+Z
+R2
+f(X,Y) dλR2 =
+Z
+R
+Z
+R
+f(X,Y) (x,y) dλ(y)
+
+dλ(x)
+Passage à l’intégrale de Riemann :Sur le pavé ouvertD=]2,6[×]0,5[, la fonction(x,y)7→
+c(2x+y)est continue (c’est un polynôme). Sur un domaine borné, pour une fonction continue (et
+bornée), l’intégrale de Lebesgue coïncide avec l’intégrale de Riemann classique.
+On peut donc écrire le calcul avec les bornes et le symboledxdyusuel :
+1 =c
+Z 6
+2
+Z 5
+0
+(2x+y) dy
+
+dx
+Calculons l’intégrale intérieure (par rapport ày) :
+Z 5
+0
+(2x+y) dy=
+
+2xy+ y2
+2
+y=5
+y=0
+=
+
+10x+ 25
+2
+
+−0 = 10x+ 12.5
+Calculons l’intégrale extérieure (par rapport àx) :
+I=c
+Z 6
+2
+(10x+ 12.5) dx=c
+
+5x2 + 12.5x
+6
+2
+I=c[(5(36) + 12.5(6))−(5(4) + 12.5(2))]
+I=c[(180 + 75)−(20 + 25)] =c(255−45) = 210c
+On a donc210c= 1 =⇒c= 1
+210.
+2. & 3. Marginales (Densités et Répartitions)
+— Pour la variable X —
+Densité :On intègre la densité conjointe par rapport àysurR.
+fX(x) =
+Z
+R
+c(2x+y)1 ]2,6[(x)1]0,5[(y)dy=c1 ]2,6[(x)
+Z 5
+0
+(2x+y)dy
+=c1 ]2,6[(x)(10x+ 12.5) = 4x+ 5
+84 1]2,6[(x)
+Répartition :Par définition,F X(x) =
+Rx
+−∞fX(t)dt.
+FX(x) =
+Z x
+−∞
+4t+ 5
+84 1]2,6[(t)dt=
+Z
+R
+4t+ 5
+84 1]2,6[(t)1]−∞,x](t)dt
+L’intégrale porte sur l’intersection des supports :]2,6[∩]−∞,x].
+3
+<<<PAGE>>>
+— Six≤2, l’intersection est vide=⇒0.
+— Six∈]2,6[, l’intersection est]2,x] =⇒
+Rx
+2
+4t+5
+84 dt= 2x2+5x−18
+84 .
+— Six≥6, l’intersection est]2,6[ =⇒1.
+FX(x) = 2x2 + 5x−18
+84 1[2,6[(x) + 1[6,+∞[(x)
+— Pour la variable Y —
+Densité :On intègre par rapport àxsurR.
+fY (y) =
+Z 6
+2
+2x+y
+210 dx·1 ]0,5[(y) = [x2 +xy] 6
+2
+210 = 32 + 4y
+210 = 16 + 2y
+105 1]0,5[(y)
+Répartition :Par définition,F Y (y) =
+Ry
+−∞fY (t)dt. En utilisant les indicatrices pour gérer les
+bornes rigoureusement :
+FY (y) =
+Z
+R
+16 + 2t
+105 1]0,5[(t)·1 ]−∞,y](t)dt
+Le produit des indicatrices1]0,5[(t)·1 ]−∞,y](t)vaut1 ]0,min(y,5)[(t)(siy >0).
+Calculons l’intégrale selon la position dey:
+— Siy≤0: Le domaine d’intégration est vide.F Y (y) = 0.
+— Siy∈]0,5[: Le domaine est]0,y].
+FY (y) =
+Z y
+0
+16 + 2t
+105 dt= 1
+105[16t+t 2]y
+0 = 16y+y 2
+105
+— Siy≥5: Le domaine est]0,5[. L’intégrale vaut 1 (densité totale).
+FY (y) = y2 + 16y
+105 1[0,5[(y) + 1[5,+∞[(y)
+4. Calculs de probabilités détaillés
+a) Calcul deP(X >3,Y >2)
+On chercheP((X,Y)∈B)avecB={(x,y)∈R 2|x>3,y >2}. L’intersection de cet événement
+avec le support de la densitéS=]2,6[×]0,5[est :
+A=B∩S= (]3,+∞[∩]2,6[)×(]2,+∞[∩]0,5[) =]3,6[×]2,5[
+Justification :Aest un produit d’ouverts deR, c’est donc un ouvert deR2, et par conséquent
+un borélien. On peut intégrer la densité sur cet ensemble.
+P(X >3,Y >2) =
+ZZ
+R2
+f(X,Y) (x,y)1A(x,y)dxdy
+= 1
+210
+Z 6
+3
+Z 5
+2
+(2x+y)dy
+
+dx
+Calculons l’intégrale intérieure :
+h
+2xy+ y2
+2
+i5
+2
+= (10x+ 12.5)−(4x+ 2) = 6x+ 10.5.
+Calculons l’intégrale extérieure :
+1
+210
+Z 6
+3
+(6x+ 10.5)dx= 1
+210
+
+3x2 + 10.5x
+6
+3
+= 1
+210[(108 + 63)−(27 + 31.5)] = 112.5
+210 = 15
+28
+4
+<<<PAGE>>>
+b) Calcul deP(X >3)
+Nous pouvons procéder par deux méthodes rigoureuses.
+Méthode 1 : Par la densité conjointe (Marginalisation)
+P(X >3) =P(X >3,Y∈R) =
+ZZ
+R2
+f(X,Y) (x,y)1 ]3,+∞[(x)dxdy
+En restreignant au supporty∈]0,5[etx∈]2,6[∩]3,+∞[=]3,6[:
+P(X >3) =
+Z 6
+3
+Z 5
+0
+f(X,Y) (x,y)dy
+
+| {z }
+=fX(x)
+dx=
+Z 6
+3
+4x+ 5
+84 dx=···= 23
+28
+Méthode 2 : Par la fonction de répartition
+P(X >3) = 1−P(X≤3) = 1−F X(3)
+Comme3∈]2,6[, nous utilisons l’expression fractionnelle calculée précédemment :
+FX(3) = 2(3)2 + 5(3)−18
+84 = 18 + 15−18
+84 = 15
+84
+D’oùP(X >3) = 1− 15
+84 = 69
+84 = 23
+28.
+c) Calcul deP(X+Y <4)
+On chercheP((X,Y)∈A)oùA={(a,b)∈R 2|a+b<4}.
+Justification topologique :Soit la fonctionh:R 2 →Rdéfinie parh(a,b) =a+b.hest
+polynomiale en ses variables, elle est donc continue surR2. L’ensembleAest l’image réciproque de
+l’ouvert]−∞,4[parh(A=h −1(]−∞,4[)).Aest donc un ouvert deR 2, c’est un borélien.
+Détermination des bornes d’intégration :On cherche l’intersection deAavec le support
+S=]2,6[×]0,5[.
+(a,b)∈A∩S⇐⇒
+
+
+
+a+b<4
+2<a<6
+0<b<5
+⇐⇒
+
+
+
+a<4−b
+2<a<6
+0<b<5
+Les conditions surase résument à :2< a <min(4−b,6). Pour que cet intervalle pourasoit non
+vide, il faut que2<min(4−b,6).
+— Puisqueb>0, on a4−b<4<6. Doncmin(4−b,6) = 4−b.
+— La condition d’existence devient2<4−b⇐⇒b<2.
+— En combinant avec0<b<5, on obtient0<b<2.
+Le domaine d’intégration effectif est donc :0<b<2et2<a<4−b.
+P(X+Y <4) = 1
+210
+Z 2
+0
+Z 4−b
+2
+(2a+b)da
+
+db
+Calcul de l’intégrale intérieure :
+
+a2 +ab
+a=4−b
+a=2 = ((4−b) 2 +b(4−b))−(4 + 2b)
+= (16−8b+b 2 + 4b−b 2)−4−2b= 12−6b
+Calcul de l’intégrale extérieure :
+1
+210
+Z 2
+0
+(12−6b)db= 1
+210
+
+12b−3b 22
+0 = 1
+210(24−12) = 12
+210 = 2
+35
+5
+<<<PAGE>>>
+5. Indépendance
+Question : A-t-on indépendance entre X et Y?
+SiXetYétaient indépendantes, on aurait l’égalité presque partout :
+f(X,Y) (x,y) =f X(x)×f Y (y)
+Comparons les expressions sur le domaine ouvertD=]2,6[×]0,5[:
+—f (X,Y) (x,y) = 1
+210(2x+y). C’est un polynôme de degré 1.
+— Le produit des marginales est :
+P(x,y) =
+4x+ 5
+84
+ 16 + 2y
+105
+
+= 64x+ 8xy+ 80 + 10y
+8820
+C’est un polynôme comportant un terme enxy.
+Considérons la fonction différence∆(x,y) =f (X,Y) (x,y)−P(x,y)sur l’ouvertD.∆est une
+fonction polynomiale (donc continue). Le terme enxydans∆(x,y)est− 8
+8820xy̸= 0. Le polynôme
+∆n’est donc pas le polynôme nul.
+Argument de mesure non nulle :Puisque∆est continue et non nulle, il existe au moins un
+point(x 0,y 0)∈Dtel que∆(x 0,y 0)̸= 0. Par continuité, il existe une petite boule ouverteB⊂D
+autour de(x 0,y 0)sur laquelle∆(x,y)̸= 0. Une boule ouverte a une mesure de Lebesgue strictement
+positive.
+L’égalitéf (X,Y) =f XfY est fausse sur un ensemble de mesure non nulle. Les variables
+ne sont donc pas indépendantes.
+Alternative rigoureuse : Argument via la Fonction de Répartition
+SiXetYétaient indépendantes, on aurait l’égalitéF (X,Y) (x,y) =F X(x)FY (y)pour tout(x,y)∈
+R2.
+Comparons les expressions sur l’ouvertD=]2,6[×]0,5[:
+—F (X,Y) (x,y) = 1
+210
+Rx
+2
+Ry
+0 (2u+v)dvdu= 2x2y+xy2−8y−2y2
+420 .
+— Le produit des marginales estP(x,y) =F X(x)FY (y) = (2x2+5x−18)(16y+y 2)
+8820 .
+Considérons la fonction différence∆(x,y) =F(X,Y) (x,y)−P(x,y). C’est une fonction polynomiale
+(car différence de polynômes), elle est donccontinuesurD.
+Testons un point, par exemple(4,2):
+—F (X,Y) (4,2) = 56
+420 = 2
+15≈0.1333
+—P(4,2) = 34
+84× 36
+105 = 17
+42× 12
+35 = 34
+245≈0.1387
+On constate que∆(4,2)̸= 0.
+Argument de mesure non nulle :Puisque∆est continue surDet non nulle en(4,2), il existe
+un voisinage ouvertV⊂Dautour de(4,2)sur lequel∆(x,y)reste strictement non nulle. Or, la
+mesure de Lebesgue d’un ouvert non vide est strictement positive (λ(V)>0).
+L’égalitéF (X,Y) =F XFY est donc fausse sur un ensemble de mesure non nulle. Les
+variables ne sont pas indépendantes.
+6
+<<<PAGE>>>
+Exercice 3.SoientX,Y∼N(0,1)i.i.d. Calculer la densité de(U,V)avecU=X+YetV=X−Y.
+Solution : 1. Identification de la transformation
+On cherche la loi du couple(U,V)défini par le système :
+(
+U=X+Y
+V=X−Y
+Soitϕ:R 2→R 2 l’application définie parϕ(x,y) = (x+y,x−y). On a donc(U,V) =ϕ(X,Y).
+2. Justification duC1-difféomorphisme
+Pour appliquer le théorème du changement de variable, nous devons montrer queϕest unC1-
+difféomorphisme deR 2 surR 2.
+—Bijectivité :Résolvons le systèmeu=x+yetv=x−ypour trouver l’application réciproque
+ψ=ϕ −1. En additionnant les deux lignes :u+v= 2x=⇒x= u+v
+2 . En soustrayant :
+u−v= 2y=⇒y= u−v
+2 . L’application réciproque est doncψ(u,v) =
+ u+v
+2 , u−v
+2
+
+. Elle est
+bien définie sur toutR2, doncϕest bijective.
+—Régularité : Rappel (Résultat classique) :Les applicationsϕetψsont des applications
+linéaires (ce sont des polynômes de degré 1 en leurs variables). Or, toute application linéaire
+sur un espace de dimension finie est de classeC∞ (et doncC 1).
+Puisqueϕestbijective,C 1,etquesaréciproqueψestaussiC 1,ϕestunC 1-difféomorphisme
+deR 2 surR 2.
+3. Calcul du Jacobien
+Le théorème nécessite le déterminant de la matrice jacobienne de l’applicationinverseψ:
+Jψ(u,v) =
+∂x
+∂u
+∂x
+∂v∂y
+∂u
+∂y
+∂v
+
+=
+1/2 1/2
+1/2−1/2
+
+Calculons ce déterminant :
+det(Jψ) =
+1
+2
+
+−1
+2
+
+−
+1
+2
+ 1
+2
+
+=− 1
+4− 1
+4 =− 1
+2
+On prend la valeur absolue :|det(Jψ)|=|−1/2|= 1
+2.
+4. Calcul de la densité
+Par hypothèse,XetYsont i.i.d.N(0,1).La densité conjointe est le produit des marginales :
+f(X,Y) (x,y) = 1√
+2πe−x2/2· 1√
+2πe−y2/2 = 1
+2πe−x2+y2
+2
+Appliquons la formule du changement de variable :
+f(U,V) (u,v) =f (X,Y) (ψ(u,v))·|det(J ψ)|
+f(U,V) (u,v) =f (X,Y)
+u+v
+2 ,u−v
+2
+
+· 1
+2
+Détaillons le calcul de l’exposant :
+x2 +y 2 =
+u+v
+2
+2
++
+u−v
+2
+2
+= u2 + 2uv+v 2
+4 + u2−2uv+v 2
+4
+Les termes croisés2uvs’annulent :
+x2 +y 2 = 2u2 + 2v2
+4 = u2 +v 2
+2
+7
+<<<PAGE>>>
+On injecte ce résultat dans la densité :
+f(U,V) (u,v) = 1
+2π exp
+
+−1
+2· u2 +v 2
+2
+
+· 1
+2 = 1
+4πe−u2
+4 e−v2
+4
+5. Conclusion et Identification
+On peut séparer la densité en un produit de fonctions deuet dev:
+f(U,V) (u,v) =
+ 1√
+4πe−u2
+4
+
+×
+ 1√
+4πe−v2
+4
+
+On rappelle qu’une densitéN(0,σ 2)s’écrit 1√
+2πσ2e− t2
+2σ2. Ici, on identifie2σ2 = 4 =⇒σ 2 = 2. Le
+terme de normalisation correspond bien : 1√
+2π(2)
+= 1√
+4π.
+Ainsi,UetVsont deux variables aléatoires indépendantes, et elles suivent toutes
+deux la loiN(0,2).
+Exercice4.Soit(X,Y,Z)un vecteur aléatoire de densitéf (X,Y,Z) (x,y,z) = 1−sin(x) sin(y) sin(z)
+8π3 1[0,2π[3(x,y,z).
+Montrer queX,Y,Zsont 2 à 2 indépendantes mais pas (mutuellement) indépendantes.
+Solution : 1. Indépendance 2 à 2 (Exemple pour X et Y)
+Calculons la densité marginale du couple(X,Y)en intégrant la densité conjointe par rapport à
+zsurR. Pour(x,y)∈[0,2π[ 2 :
+f(X,Y) (x,y) =
+Z 2π
+0
+1−sin(x) sin(y) sin(z)
+8π3 dz
+Par linéarité de l’intégrale :
+f(X,Y) (x,y) = 1
+8π3
+Z 2π
+0
+1dz−sin(x) sin(y)
+Z 2π
+0
+sin(z)dz
+
+Rappel:L’intégraledelafonctionsinussurunepériodecomplète[0,2π]estnulle:
+R 2π
+0 sin(z)dz=
+[−cos(z)] 2π
+0 =−1−(−1) = 0.
+Le terme contenant le produit des sinus s’annule donc. Il reste :
+f(X,Y) (x,y) = 1
+8π3 (2π−0)1 [0,2π[2(x,y) = 2π
+8π31[0,2π[2(x,y) = 1
+4π21[0,2π[2(x,y)
+On reconnaît le produit de deux densités uniformes sur[0,2π]:
+fX(x) = 1
+2π1[0,2π[(x)etf Y (y) = 1
+2π1[0,2π[(y)
+Puisquef (X,Y) (x,y) =f X(x)fY (y)presque partout,XetYsont indépendantes.
+Par symétrie de l’expression enx,y,z, le même calcul montre que(X,Z)sont indépendantes et
+(Y,Z)sont indépendantes.
+2. Non-indépendance mutuelle (globale)
+Les variablesX,Y,Zseraient mutuellement indépendantes si et seulement si :
+f(X,Y,Z) (x,y,z) =f X(x)fY (y)fZ(z)presque partout.
+Le produit des trois marginales est la densité uniforme sur le cube :
+P(x,y,z) = 1
+2π· 1
+2π· 1
+2π1[0,2π[3 = 1
+8π31[0,2π[3
+8
+<<<PAGE>>>
+Considérons la fonction différence∆sur l’ouvertD=]0,2π[ 3 :
+∆(x,y,z) =f (X,Y,Z) (x,y,z)−P(x,y,z) =− sin(x) sin(y) sin(z)
+8π3
+Cette fonction estcontinuesurD. Prenons le pointM= ( π
+2, π
+2, π
+2 ). On a∆(M) =− 1·1·1
+8π3 ̸= 0.
+Argument de mesure non nulle :Puisque∆est continue et non nulle enM, il existe un
+voisinage ouvertV⊂DdeMsur lequel∆ne s’annule pas. La mesure de Lebesgue de cet ouvert
+est strictement positive (λ(V)>0).
+L’égalitéf (X,Y,Z) =f XfYfZ est fausse sur un ensemble de mesure non nulle. Les trois
+variables ne sont pas mutuellement indépendantes.
+9
+<<<PAGE>>>
+Exercice 5.SoientX∼N(0,1)etY∼Γ(n/2,1/2)indépendantes, avecn∈N ∗. Quelle est la loi
+deZ= √n X√
+Y ?
+Solution : 1. Analyse du problème de dimension et stratégie
+Nous cherchons la loi deZ=√n X√
+Y . La transformation(x,y)7→zest une application deR 2 dans
+R.Problème :On ne peut pas appliquer le théorème du changement de variable (difféomorphisme)
+directement car les dimensions de l’espace de départ (2) et d’arrivée (1) ne sont pas identiques.
+Stratégie :Il faut créer artificiellement la seconde composante du vecteur aléatoire de dimension
+2(Z,W)en introduisantWparW=h(X,Y). On cherche une applicationΦ :D→∆, définie par
+Φ(x,y) = (√n x√y,h(x,y)), qui soit unC 1-difféomorphisme d’un ouvertDsur un ouvert∆. Une fois
+la densité conjointef(Z,W) trouvée, on obtiendra la densité marginale par intégration :
+fZ(z) =
+Z
+R
+f(Z,W) (z,w)dw
+2. Choix de la variable auxiliaireh(x,y)
+Le support du couple(X,Y)est l’ouvertD=R×R ∗
++ (carY∼Γest strictement positive).
+—Essai (mauvais) avech(x,y) =x:PosonsW=X. On cherche à inverser le système(
+z= √nx/√y
+w=x . Cela implique√y= √nx
+z = √nw
+z. Or, par définition√y >0. Cette
+équation n’a de sens que siw
+z >0(i.e.wetzde même signe). Siwetzsont de signes opposés,
+il n’y a pas de solution.L’image∆ne serait pas un produit d’intervalles simples
+(forme complexe). Ce choix est rejeté.
+—Essai (bon) avech(x,y) =y:PosonsW=Y. Le système devient
+(
+z= √nx/√y
+w=y .
+L’inversion donney=wetx=z √w/√n. Commey∈R ∗
++, on aw∈R ∗
++. Pour toutz∈R,
+xest bien défini. L’espace d’arrivée est∆ =R×R ∗
++, qui est un ouvert simple.Ce choix
+fonctionne parfaitement.
+3. Justification duC1-difféomorphisme
+Considérons l’applicationΦ :D→∆définie parΦ(x,y) = ( √n x√y,y).
+—Bijectivité :D’après l’étude ci-dessus, l’application réciproque estψ(z,w) = ( z√w√n ,w). Elle
+est définie de manière unique pour tout(z,w)∈∆.
+—Régularité :Les fonctions composantes utilisent la racine carrée, la multiplication et la
+division. Sur les ouvertsDet∆(oùy >0etw >0), ces opérations sontC ∞.
+DoncΦest unC 1-difféomorphisme deDsur∆.
+4. Calcul du Jacobien et de la densité conjointe
+Calculons le déterminant de la matrice jacobienne de l’applicationinverseψ:
+Jψ(z,w) =
+∂x
+∂z
+∂x
+∂w∂y
+∂z
+∂y
+∂w
+
+=
+ √w√n
+z
+2√nw
+0 1
+!
+det(Jψ) =
+rw
+n =⇒ |J|=
+rw
+n (carw >0)
+La densité conjointe est donnée par la formule du changement de variable :
+f(Z,W) (z,w) =f (X,Y) (ψ(z,w))·|J|·1 ∆(z,w)
+f(Z,W) (z,w) =
+
+fX
+z√w√n
+
+fY (w)
+rw
+n·1 R(z)1R∗
++(w)
+10
+<<<PAGE>>>
+En remplaçant par les expressions (avecX∼N(0,1)etY∼Γ(n/2,1/2)) :
+f(Z,W) (z,w) =
+ 1√
+2πe− 1
+2
+z2w
+n
+ (1/2)n/2
+Γ(n/2) w
+n
+2−1e−w
+2
+w1/2
+n1/2 1R(z)1R∗
++(w)
+5. Calcul de la densité marginale de Z
+La densité deZs’obtient en intégrant la densité conjointe par rapport àwsurR. L’indicatrice
+1R∗
++(w)restreint le domaine d’intégration à]0,+∞[.
+fZ(z) =
+Z +∞
+0
+1√
+2πn
+(1/2)n/2
+Γ(n/2) ·w
+n
+2−1+ 1
+2·exp
+
+−w
+1
+2 + z2
+2n
+
+dw
+Regroupons les termes constantsKet l’intégrale dépendant dez:
+fZ(z) =K
+Z +∞
+0
+w
+n+1
+2 −1e−w·AdwavecA= 1
+2
+
+1 +z2
+n
+
+Astuce du noyau Gamma :On reconnaît (à la constante de normalisation près) l’intégrale
+d’une densité Gamma de paramètresα′ = n+1
+2 etβ ′ =A. On sait que
+R∞
+0 xα′−1e−β′xdx= Γ(α′)
+(β′)α′.
+Donc : Z +∞
+0
+w
+n+1
+2 −1e−wAdw= Γ(n+1
+2 )
+ 1
+2(1 + z2
+n )
+n+1
+2
+6. Simplification Finale
+fZ(z) =
+ 1√
+2πn
+(1/2)n/2
+Γ(n/2)
+
+·
+ 
+Γ(n+1
+2 )
+(1/2)
+n+1
+2 (1 + z2
+n )
+n+1
+2
+!
+Simplifions les puissances de1/2:
+(1/2)n/2
+(1/2)(n+1)/2 = (1/2)n/2−(n+1)/2 = (1/2)−1/2 =
+√
+2
+Il reste :
+fZ(z) =
+√
+2√
+2πn
+Γ(n+1
+2 )
+Γ(n/2)
+
+1 +z2
+n
+−n+1
+2
+On simplifie
+√
+2√
+2πn = 1√πn.
+fZ(z) = Γ( n+1
+2 )
+√nπΓ(n/2)
+
+1 +z2
+n
+− n+1
+2
+On reconnaît exactement la densité d’une loi de Student àndegrés de liberté, notée
+t(n).
+11

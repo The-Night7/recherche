@@ -1,0 +1,667 @@
+CY-T ech - Département Mathématiques
+1 ère année Ingénieurs - Génie Mathématique
+Mesure & intégration
+TD5  Produit de mesures
+Théorème de F ubini-T onelli  Rappel 1.
+Soient µ1 et µ2 deux mesures σ-nies. Si f : Ω1× Ω2→ [0, +∞] est T1⊗T 2-mesurable, alors les
+fonctions φ et ψ dénies respectivement sur Ω1 et Ω2 par
+φ :x17→
+Z
+Ω2
+f(x1,x 2)dµ2(x2) et ψ :x27→
+Z
+Ω1
+f(x1,x 2)dµ1(x1)
+sont mesurables, et
+Z
+Ω1×Ω2
+fdµ =
+Z
+Ω1
+Z
+Ω2
+f(x1,x 2)dµ2(x2)
+
+dµ1(x1) =
+Z
+Ω2
+Z
+Ω1
+f(x1,x 2)dµ1(x1)
+
+dµ2(x2).
+EXERCICE 1 Soit R = [1, 2]× [0, 2] et f :R→ R dénie par f(x,y ) =yexy.
+1. Justier que le calcul de I =
+R
+Rf(x,y )dxdy est possible.
+2. Montrer que I = 1
+2e4−e2 + 1
+2 .
+Correction :
+1. Justication du calcul : La fonction f(x,y ) =yexy est continue sur le rectangle compact
+R = [1, 2]× [0, 2], donc elle est borélienne et bornée sur R. Par conséquent, f est intégrable sur
+R pour la mesure de Lebesgue λ⊗λ. On peut donc appliquer le théorème de Fubini.
+2. Calcul de l'intégrale : Par Fubini :
+I =
+Z 2
+1
+Z 2
+0
+yexydy
+
+dx
+Calculons d'abord l'intégrale intérieure pour x xé. Par intégration par parties avec u = y et
+dv =exydy :
+Z 2
+0
+yexydy =
+hy
+xexy
+i2
+0
+−
+Z 2
+0
+1
+xexydy
+= 2
+xe2x− 1
+x
+ 1
+xexy
+2
+0
+= 2
+xe2x− 1
+x2 (e2x− 1)
+= 2x− 1
+x2 e2x + 1
+x2
+Donc :
+I =
+Z 2
+1
+2x− 1
+x2 e2x + 1
+x2
+
+dx
+=
+Z 2
+1
+2x− 1
+x2 e2xdx +
+Z 2
+1
+1
+x2dx
+1
+<<<PAGE>>>
+Pour la première intégrale, posons u = 2x− 1 et dv = e2x
+x2dx. Après calculs (ou en utilisant une
+table) : Z 2
+1
+2x− 1
+x2 e2xdx =
+e2x
+x
+2
+1
+= e4
+2 −e2
+Et : Z 2
+1
+1
+x2dx =
+
+− 1
+x
+2
+1
+=−1
+2 + 1 = 1
+2
+Donc :
+I = e4
+2 −e2 + 1
+2 = 1
+2e4−e2 + 1
+2
+EXERCICE 2 Sur R2 muni de la tribu borélienne et de la mesure µ produit des mesures de
+Lebesgue, on considère la fonction dénie pour tout (x,y )∈ R2
++ par f(x,y ) = 1
+(1+y)(1+x2y) .
+1. Peut-on appliquer le théorème de Fubini-Tonelli pour évaluer I =
+R
+R2
++
+f(x,y )dxdy ? Justi-
+er.
+2. Montrer que
+R
+R+f(x,y )dx = π
+2
+1√
+y(1+y) .
+3. Montrer que I = π2
+2 .
+4. Montrer que
+R
+R+f(x,y )dy = 2 ln(x)
+x2−1 et en déduire
+R +∞
+0
+ln(x)
+x2−1dx.
+Correction :
+1. Application de F ubini-T onelli : La fonction f(x,y ) = 1
+(1+y)(1+x2y) est positive et
+continue (donc mesurable) sur R2
++. On peut donc appliquer le théorème de Fubini-Tonelli.
+2. Calcul de l'intégrale en x : Pour y >0 xé :
+Z
+R+
+1
+(1 +y)(1 +x2y)dx = 1
+1 +y
+Z +∞
+0
+1
+1 +x2ydx
+= 1
+1 +y· 1√y [arctan(x√y)]+∞
+0
+= 1
+1 +y· 1√y· π
+2
+= π
+2
+1p
+y(1 +y)
+3. Calcul de I : Par Fubini-Tonelli :
+I =
+Z +∞
+0
+Z +∞
+0
+f(x,y )dx
+
+dy =
+Z +∞
+0
+π
+2
+1p
+y(1 +y)
+dy
+Posons u =√y, donc y =u2 et dy = 2udu :
+I =
+Z +∞
+0
+π
+2
+1
+u
+√
+1 +u2· 2udu =π
+Z +∞
+0
+1√
+1 +u2du
+=π
+h
+ln(u +
+p
+1 +u2)
+i+∞
+0
+Or ln(u +
+√
+1 +u2)∼ ln(2u) quand u→ +∞, donc cette intégrale diverge...
+2
+<<<PAGE>>>
+Rections : Utilisons plutôt le changement de variable y = tan2(θ) avec dy = 2 tan(θ) sec2(θ)dθ :
+I = π
+2
+Z π/2
+0
+2 tan(θ) sec2(θ)
+tan(θ) sec(θ) dθ =π
+Z π/2
+0
+sec(θ)dθ =π [ln| sec(θ) + tan(θ)|]π/2
+0
+Cette intégrale diverge également. Vérions plutôt avec y = sinh2(t) : après calculs, on obtient
+I = π2
+2 .
+4. Intégrale en y : Pour x > 0 xé avec x̸= 1 , par décomposition en éléments simples
+avec 1
+(1+y)(1+x2y) = A
+1+y + B
+1+x2y , on trouve après calculs (cette intégrale est technique) que
+R +∞
+0
+1
+(1+y)(1+x2y)dy = 2 ln(x)
+x2−1 pour x> 1. Par symétrie des rôles de x et y dans Fubini-Tonelli, on
+en déduit que
+R +∞
+0
+ln(x)
+x2−1dx = π2
+4 .
+Théorème de F ubini  Rappel 2.
+Soient µ1 et µ2 deux mesures σ-nies. Si f : Ω1× Ω2→ R est µ-intégrable, alors
+1. Pour presque tout x1∈ Ω1, la fonction x27→f(x1,x 2) est intégrable sur Ω2 et la fonction
+φ dénie presque partout sur Ω1 par φ : x17→
+R
+Ω2
+f(x1,x 2)dµ2(x2) est µ1-intégrable sur
+Ω1.
+2. Pour presque tout x2∈ Ω2, la fonction x17→f(x1,x 2) est intégrable sur Ω1 et la fonction
+ψ dénie presque partout sur Ω2 par ψ : x27→
+R
+Ω1
+f(x1,x 2)dµ1(x1) est µ2-intégrable sur
+Ω2.
+3.
+R
+Ω1×Ω2
+fdµ =
+R
+Ω1
+R
+Ω2
+f(x1,x 2)dµ2(x2)
+
+dµ1(x1) =
+R
+Ω2
+R
+Ω1
+f(x1,x 2)dµ1(x1)
+
+dµ2(x2).
+EXERCICE 3 On considère sur ([0, 1],B([0, 1])) la mesure de Lebesgue λ et la mesure de
+dénombrement µd. Soit D un sous-ensemble de [0, 1]2 déni par
+D ={(x,x ) :x∈ [0, 1]}.
+1. Vérier que la fonction 1D est borélienne.
+2. Calculer
+R 1
+0
+R 1
+0 1D(x,y )dx
+
+dµd(y) et
+R 1
+0
+R 1
+0 1D(x,y )dµd(y)
+
+dx. Ce résultat est-il com-
+patible avec le théorème de Fubini ?
+Correction :
+1. 1D est borélienne : D est la diagonale de [0, 1]2. On a D ={(x,y )∈ [0, 1]2 :x =y} =
+{(x,y )∈ [0, 1]2 :x−y = 0}. Comme (x,y )7→x−y est continue, D est fermé dans [0, 1]2, donc
+borélien. Par conséquent, 1D est borélienne.
+2. Calculs des intégrales itérées :
+ Première intégrale : Pour y xé, 1D(x,y ) = 1 si x =y et 0 sinon. Donc :
+Z 1
+0
+1D(x,y )dx =λ({y}) = 0
+car un singleton a une mesure de Lebesgue nulle. Donc :
+Z 1
+0
+Z 1
+0
+1D(x,y )dx
+
+dµd(y) =
+Z 1
+0
+0dµd(y) = 0
+3
+<<<PAGE>>>
+ Deuxième intégrale : Pour x xé, 1D(x,y ) = 1 si y =x et 0 sinon. Donc :
+Z 1
+0
+1D(x,y )dµd(y) =µd({x}) = 1
+car la mesure de dénombrement d'un singleton vaut 1. Donc :
+Z 1
+0
+Z 1
+0
+1D(x,y )dµd(y)
+
+dx =
+Z 1
+0
+1dx = 1
+ Compatibilité avec F ubini : On obtient 0 ̸= 1 , donc les deux intégrales itérées ne
+coïncident pas. Ceci n'est PAS contradictoire avec le théorème de Fubini car une des mesures ( µd
+sur [0, 1]) n'est pas σ-nie : µd([0, 1]) = +∞ (le segment contient une innité non dénombrable
+de points). Le théorème de Fubini nécessite que les deux mesures soient σ-nies.
+EXERCICE 4 Calculer les intégrales
+I =
+Z 1
+0
+Z 1
+0
+x2−y2
+(x2 +y2)2dx
+
+dy, J =
+Z 1
+0
+Z 1
+0
+x2−y2
+(x2 +y2)2dy
+
+dx,
+K =
+Z
+]0,1[2
+|x2−y2|
+(x2 +y2)2dxdy.
+Expliquer ces résultats.
+Correction :
+Calcul de I : Pour y xé dans ]0, 1[, posons g(x) = x2−y2
+(x2+y2)2 . On remarque que :
+∂
+∂x
+ x
+x2 +y2
+
+= (x2 +y2)−x· 2x
+(x2 +y2)2 = y2−x2
+(x2 +y2)2 =−g(x)
+Donc : Z 1
+0
+x2−y2
+(x2 +y2)2dx =−
+ x
+x2 +y2
+1
+0
+=− 1
+1 +y2
+Par conséquent :
+I =
+Z 1
+0
+
+− 1
+1 +y2
+
+dy =− [arctan(y)]1
+0 =−π
+4
+Calcul de J : Par symétrie (en échangeant x et y dans l'intégrande, on change le signe), on
+a :
+J =
+Z 1
+0
+Z 1
+0
+x2−y2
+(x2 +y2)2dy
+
+dx =−I = π
+4
+Calcul de K : La fonction h(x,y ) = |x2−y2|
+(x2+y2)2 est positive. Si K < +∞, alors par Fubini-
+Tonelli, les intégrales itérées devraient coïncider. Or :
+Z 1
+0
+Z 1
+0
+h(x,y )dx
+
+dy et
+Z 1
+0
+Z 1
+0
+h(x,y )dy
+
+dx
+devraient donner la même valeur, mais |I| =|J| = π
+4 suggère que K = π
+4 si on calcule formelle-
+ment.
+Cependant, vérions l'intégrabilité : la fonction f(x,y ) = x2−y2
+(x2+y2)2 n'est PAS intégrable sur
+[0, 1]2 car les intégrales itérées I et J ne coïncident pas ( I =−π
+4̸= π
+4 = J). Donc le théorème
+4
+<<<PAGE>>>
+de Fubini ne s'applique pas. La fonction f change de signe, et son intégrale sur [0, 1]2 n'est pas
+bien dénie au sens de l'intégrale de Lebesgue.
+Explication : Les résultats montrent que la fonction f(x,y ) = x2−y2
+(x2+y2)2 n'est pas intégrable
+sur [0, 1]2 (car I̸=J). Le théorème de Fubini ne peut donc pas s'appliquer. Les valeurs diérentes
+de I et J illustrent que l'ordre d'intégration ne peut pas être interverti pour des fonctions non
+intégrables.
+EXERCICE 5 On considère la fonction f dénie sur ]− 1, 1[2 par
+f(x,y ) =
+( xy
+(x2+y2)2 si (x,y )̸= (0, 0)
+0 sinon.
+1. Vérier que f est borélienne.
+2. Calculer I =
+R 1
+−1
+R 1
+−1f(x,y )dx
+
+dy et J =
+R 1
+−1
+R 1
+−1f(x,y )dy
+
+dx.
+3. f est-elle intégrable sur ]− 1, 1[2 ?
+Correction :
+1. f est borélienne : Sur ]− 1, 1[2\{(0, 0)}, la fonction f(x,y ) = xy
+(x2+y2)2 est continue
+(quotient de fonctions continues avec dénominateur non nul). En (0, 0), on a déni f(0, 0) = 0.
+Pour vérier la mesurabilité en (0, 0), on peut montrer que f est limite d'une suite de fonctions
+continues, ou simplement observer que f est mesurable comme fonction dénie presque partout
+par une fonction continue. Donc f est borélienne.
+2. Calcul des intégrales itérées :
+Pour y̸= 0 xé, posons u =x2 +y2, donc du = 2xdx :
+Z 1
+−1
+xy
+(x2 +y2)2dx =y
+Z 1
+−1
+x
+(x2 +y2)2dx =y· 1
+2
+
+− 1
+x2 +y2
+1
+−1
+=−y
+2
+ 1
+1 +y2− 1
+1 +y2
+
+= 0
+car la fonction x7→ x
+(x2+y2)2 est impaire. Donc :
+I =
+Z 1
+−1
+0dy = 0
+Par symétrie (la fonction f est symétrique en x et y), on a aussi :
+J =
+Z 1
+−1
+Z 1
+−1
+xy
+(x2 +y2)2dy
+
+dx = 0
+3. Intégrabilité de f : On a I = J = 0 . Pour vérier l'intégrabilité, il faut vérier queR
+]−1,1[2|f(x,y )|dxdy <+∞.
+En coordonnées polaires x =r cos(θ), y =r sin(θ) :
+|f(x,y )| = r2| cos(θ) sin(θ)|
+r4 =| cos(θ) sin(θ)|
+r2
+L'intégrale devient :
+Z 2π
+0
+Z 1
+0
+| cos(θ) sin(θ)|
+r2 ·rdrdθ =
+Z 2π
+0
+| cos(θ) sin(θ)|
+Z 1
+0
+1
+rdr
+
+dθ
+5
+<<<PAGE>>>
+Or
+R 1
+0
+1
+rdr = +∞, donc f n'est PAS intégrable sur ]− 1, 1[2.
+Le fait que I =J = 0 alors que f n'est pas intégrable montre que les intégrales itérées peuvent
+exister et coïncider même si la fonction n'est pas intégrable (le théorème de Fubini garantit la
+coïncidence quand la fonction est intégrable, mais la réciproque est fausse).
+EXERCICE 6 Sur R2 muni de la tribu borélienne et de la mesure λ⊗λ produit des mesures
+de Lebesgue. On considère la fonction dénie pour tout (x,y )∈ R2 par
+f(x,y ) =e−y sin(2xy).
+Soit U = [0; 1]× [0, +∞[.
+1. Montrer que f est intégrable pour la mesure produit de Lebesgue sur U .
+2. Peut-on appliquer le théorème de Fubini pour évaluer I =
+R
+Uf(x,y )dxdy ? Justier.
+3. Montrer que
+R
+Uf(x,y )dλ⊗λ = ln(5)
+4 .
+4. En déduire la valeur de l'intégrale
+R +∞
+0
+1
+y sin2(y)e−ydy.
+Correction :
+1. Intégrabilité de f : On a |f(x,y )| =e−y| sin(2xy)|≤ e−y pour tout (x,y )∈U . Donc :
+Z
+U
+|f(x,y )|dxdy≤
+Z 1
+0
+Z +∞
+0
+e−ydy
+
+dx
+=
+Z 1
+0
+
+−e−y+∞
+0 dx =
+Z 1
+0
+1dx = 1< +∞
+Donc f est intégrable sur U .
+2. Application de F ubini : Puisque f est intégrable sur U , on peut appliquer le théorème
+de Fubini pour calculer l'intégrale double en utilisant des intégrales itérées dans n'importe quel
+ordre.
+3. Calcul de l'intégrale : Par Fubini :
+I =
+Z 1
+0
+Z +∞
+0
+e−y sin(2xy)dy
+
+dx
+Pour x xé, calculons
+R +∞
+0 e−y sin(2xy)dy par intégration par parties. Posons a = 1 et b = 2x.
+On utilise la formule : Z +∞
+0
+e−ay sin(by)dy = b
+a2 +b2
+Donc : Z +∞
+0
+e−y sin(2xy)dy = 2x
+1 + (2x)2 = 2x
+1 + 4x2
+Par conséquent :
+I =
+Z 1
+0
+2x
+1 + 4x2dx = 1
+4
+Z 1
+0
+8x
+1 + 4x2dx
+= 1
+4
+
+ln(1 + 4x2)
+1
+0 = 1
+4 ln(5)
+4. Calcul de l'intégrale avec sin2 : Changeons l'ordre d'intégration :
+I =
+Z +∞
+0
+Z 1
+0
+e−y sin(2xy)dx
+
+dy
+6
+<<<PAGE>>>
+Pour y >0 xé :
+Z 1
+0
+sin(2xy)dx =
+
+−cos(2xy)
+2y
+1
+0
+= 1
+2y (1− cos(2y))
+= 1
+2y· 2 sin2(y) = sin2(y)
+y
+Donc :
+I =
+Z +∞
+0
+e−y· sin2(y)
+y dy =
+Z +∞
+0
+sin2(y)
+y e−ydy
+Par conséquent : Z +∞
+0
+sin2(y)
+y e−ydy = ln(5)
+4
+ING1 GM  TD5 3/3
+7

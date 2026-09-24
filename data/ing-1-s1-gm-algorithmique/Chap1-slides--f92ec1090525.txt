@@ -1,0 +1,1094 @@
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+´El´ ements de base
+Houcine Senoussi
+September 21, 2016
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+1 Qu’est-ce qu’un algorithme ?
+2 Premiers exemples
+3 Variables et instructions
+4 Structures de contrˆ ole
+5 Structure d’un algorithme
+6 Conclusion
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Qu’est-ce qu’un algorithme ?
+D´ eﬁnition :
+Un algorithme est une proc´ edure permettant de r´ esoudreun
+probl` eme.
+Une proc´ edure = unesuite d’op´ erations(actions, tˆ aches
+´ el´ ementaires).
+Un algorithme re¸ coit en entr´ ee des donn´ ees (les entr´ ees) et
+retourne un ou plusieurs r´ esultats (les sorties).
+Exemples de probl` emes :
+Calculer les solutions d’un syst` eme d’´ equations.Trier un
+ensemble de r´ eels.Rechercher un ´ element dans un liste.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Du probl` eme ` a l’algorithme au programme
+Un mˆ eme probl` eme peut ˆ etre r´ esolu par plusieurs algorithmes.
+Illustration : dans la suite du cours nous pr´ esenterons plusieurs
+algorithmes de tri.
+En g´ en´ eral un algorithme est destin´ e ` a ˆ etre traduit en
+programme.
+Vocabulaire : on dit dans ce cas qu’on impl´ emente
+l’algorithme (il s’agit d’un anglicisme).
+Lorsqu’on ´ ecrit un algorithme, on le fait de mani` ere
+ind´ ependante des (nombreux) langages de programmation
+dans lesquels il peut ˆ etre traduit.
+Nous avons donc besoin d’une syntaxe pour d´ ecrire nos
+algorithmes : on parle souvent de pseudo-code. Cette syntaxe
+sera pr´ esent´ ee dans la suite de ce chapitre.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Du probl` eme ` a l’algorithme au programme-2
+Eﬃcacit´ e :Un algorithme eﬃcace est un algorithme rapide
+et peu gourmand en ressources.
+Autrement dit, l’eﬃcacit´ e d’un algorithme se mesure ` a l’aide
+de deux crit` eres :
+Le premier est relatif au nombre d’op´ erations qu’il comporte,
+c’est-` a-dire au temps d’ex´ ecution de ses impl´ ementations.
+Nous l’appellerons la complexit´ e temporelle.
+Le deuxi` eme est relatif ` a la ’quantit´ e de donn´ ees’ qu’il utilise
+c’est-` a-dire ` a la quantit´ e de m´ emoire exig´ ee par ses
+impl´ ementations. Nous l’appellerons lacomplexit´ e spatiale.
+Dans la suite de ce cours nous pr´ esenterons une introduction
+` a l’´ etude de la complexit´ e (temporelle).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 1 :
+Probl` eme : R´ esoudre une ´ equation du premier degr´ e.
+Donn´ ees : deux r´ eelsa et b.
+R´ esultat : le r´ eelx0 tel que ax0 + b = 0.
+S´ equence d’op´ erations :
+1 Multiplier b par -1.
+2 Diviser le r´ esultat para.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 1-suite :
+Remarque 1 :
+(contraintes impos´ ees par le probl` eme) Comme le montre cet
+exemple, un algorithme ne s’applique pas forc´ ement ` a toutes les
+donn´ ees. Un (bon) algorithme comportera donc des instructions
+pour contrˆ oler les valeurs des donn´ ees (lesquelles dans notre cas ?).
+Remarque 2 :
+Les algorithmes ont souvent besoin d’instructions particuli` eres pour
+r´ ecup´ ererles donn´ ees etrestituer les r´ esultats. Il s’agit
+notamment d’instructions de saisie et d’aﬃchage.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 2 :
+Probl` eme : chercher un mot dans un texte.
+Donn´ ees : un motm et un texte t.
+R´ esultat : Les positions occup´ ees par les occurences
+´ eventuelles dem dans t.
+S´ equence d’op´ erations :
+1 Parcours du texte.
+2 Comparaison de m avec les diﬀ´ erentes suites de lettres de t.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 2-suite :
+Remarque 3 :
+Contrairement ` a celles manipul´ ees dans l’exemple pr´ ec´ edent, les
+donn´ ees manipul´ ees dans cet exemple ne sont pas num´ eriques. Ce
+sont plutˆ ot des lettres, plus g´ en´ eralement des symbˆ oles (nous
+dirons des caract` eres). Cela nous permet d’introduire la notion de
+type de donn´ eestr` es importante en algorithmique et en
+programmation.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 3 :
+Probl` eme : R´ esoudre une ´ equation de second degr´ e.
+Entr´ ee : trois r´ eelsa, b et c.
+Sortie : les solutions ´ eventuelles de l’´ equationax 2 + bx + c=0.
+S´ equence d’op´ erations :
+1 Calcul du discriminant (plusieurs multiplications et une
+soustraction).
+2 Calcul des solutions ´ eventuelles (calcul d’une racine carr´ ee,
+soustraction, multiplication et division).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 3-suite :
+Remarque 4 :
+Cet exemple nous montre que les instructions ` a ex´ ecuter peuvent
+changer en fonction de la valeur des donn´ ees (ici en fonction de
+celle du discriminant). Cela nous conduira ` a introduire des
+structures de contrˆ olesconditionnelles du type Si ... Alors ...
+Sinon.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 4 :
+Probl` eme : Trier une liste de personnes dans l’ordre
+alphab´ etique.
+Entr´ ee : une liste des personnes p1, ..., pn d´ eﬁnies, par
+exemple, par leur nom et pr´ enom.
+Sortie : Une permutation p′
+1, ..., p′
+n de la liste de d´ epart, dans
+laquelle p′
+1≤ ...≤p′
+n
+S´ equence d’op´ erations :
+1 Plusieurs fa¸ cons de faire (→ algorithmes classiques de tri).
+2 Op´ erations de base : comparaison et permultaion.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Exemple 4-suite :
+Remarque 5 :
+Cet exemple montre que les donn´ ees manipul´ ees sont souvent des
+donn´ eescomplexes : dans notre cas une liste de couples (nom,
+pr´ enom). Les noms et pr´ enoms ´ etant eux-mˆ eme dessuites de
+lettres. Cela nous conduira ` a introduire, entre autres, ce que nous
+appelons des structures de donn´ ees.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Autres exemples
+Construire les emplois de temps des diﬀ´ erentes promotions
+d’une ´ ecole.
+Trouver le chemin le plus court pour aller d’un endroit ` a un
+autre.
+Trouver les pages internet correspondant ` a un sujet donn´ e.
+Aﬀecter les bacheliers ` a des ´ etablissements de l’enseignement
+sup´ erieur (Admission Post Bac).
+Exercice :
+Pour chacun des probl` emes list´ es ci-dessus d´ eterminez les entr´ ees
+et les sorties ainsi que (de mani` ere sommaire) les op´ erations
+utilis´ ees.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+R´ esumons ...
+Les exemples pr´ ec´ edents nous ont permis d’introduire les
+premiers concepts et les premiers ´ el´ ements devocabulaire de
+l’algorithmique.
+En mettant de l’ordre dans ces ´ el´ ements, puis en les
+enrichissant, nous allons apprendre ` a :
+concevoir des algorithmes (simples),
+´ etudier des algorithmes d´ ej` a existants (’classiques’),
+´ ecrire nos algorithmes ` a l’aide d’une syntaxe ais´ ement
+compr´ ehensible par un humain et ais´ ement traduisible dans un
+langage de programmation (compr´ ehensible par une machine).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Composants d’un algorithme
+Un algorithme = une suite de tˆ aches ´ el´ ementaires.
+Une tˆ ache ´ el´ ementaire consiste ` a appliquer une op´ eration
+(action) ` a un (ou plusieurs) op´ erande(s).
+Les ´ el´ ements constitutifs d’un algorithme sont donc :
+les variables← les donn´ ees,
+les instructions← les op´ erations.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Variables
+Une variable est d´ eﬁnie par :
+un nom : qui l’identiﬁe de mani` ere unique.
+un type : l’ensemble des valeurs qu’elle peut prendre.
+Le nom d’une variable est une suite de symbˆ oles ne
+comportant pas d’espace et commen¸ cant par une lettre (cette
+derni` ere condition est propre ` a ce cours).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Variables-Type
+Le type d’une variable peut ˆ etre un type standard ou un type
+d´ eﬁni pour les besoins de l’algorithme.
+Les 4 types de base sont : Entier, Caract` ere, R´ eel, Bool´ een,
+et Cha ˆ ıne.
+Nous verrons ` a partir du deuxi` eme chapitre comment d´ eﬁnir
+de nouveaux types.
+Notations :
+Nous utiliserons les simples quotes pour noter les caract` eres
+(’A’, ’1’, ’$’, ...).
+Nous utiliserons les doubles quotes pour noter les cha ˆ ınes de
+caract` eres (”ABC”, ”EISTI2016”, ...).
+Nous noterons FAUX et VRAI les deux valeurs possibles du
+type Boole´ en.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Variables-D´ eclaration
+Chaque variable sera d´ eclar´ ee avant utilisation.
+D´ eclarer une variable : donner son nom et son type.
+Syntaxe : dans ce cours nous d´ eclarerons les variables sous
+l’une des deux formes suivantes :
+nomdelavariable : typedelavariable
+nomvar1, nomvar2, ..., nomvarn : typedesvariable
+Les variables seront d´ eclar´ es dans un bloc qui commence par
+le mot r´ eserv´ evariables.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Variables-Exemples
+Exemple 1:
+variables
+x, y, z : R´ eel
+m, n : Entier
+Exemple 2:
+variables
+nbEtud, nbMat : Entier
+note, moy : Reel
+passage : Bool´ een
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Variables-Remarques
+Remarque 1
+Pour la lisibilit´ e de l’algorithme (et plus tard celle du programme)
+il faut donner des noms signiﬁcatifs aux variables. Des deux
+exemples pr´ ec´ edents, le deuxi` eme est meilleur car les noms des
+variables indiquent bien leur utilisation : nombre d’´ etudiants,
+nombre de mati` eres, note, moyenne et r´ esultat de ﬁn d’ann´ ee.
+Remarque 2
+En r` egle g´ en´ erale on choisit une ou plusieursconventions pour le
+nommage des variables. Par exemple : le nom d’une variable
+commence toujours par une minuscule et lorsqu’il se compose de
+plusieurs mots, les mots ` a partir du deuxi` eme commencent par une
+majuscule (voir notre deuxi` eme exemple).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Instructions
+La plus ´ el´ ementaire des instructions est l’aﬀectation
+(d´ esign´ ee aussi par le motassignation qui est un anglicisme).
+Une aﬀectation consiste ` a donner une valeur ` a une variable.
+La valeur donn´ ee ` a une variable peut ˆ etre :
+une valeur constante (exemples : l’entier 5, le r´ eel 3.14, le
+bool´ een VRAI),
+une expression combinant des op´ erations, des variables et des
+valeurs constantes (voir plus bas).
+Dans ce cours, l’aﬀectation sera not´ ee:=.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Instructions
+Exemple
+nbEtud := 38
+note := 8.5
+moy := totalNotes/nbMat
+passage := FAUX
+Exercice
+Il arrive qu’une aﬀectation utilise la mˆ eme variable ` a gauche et ` a
+droite (par exemple : nbMat := nbMat+1). Quelle est la
+signiﬁcation de cette double utilisation ?
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Op´ erations arithm´ etiques
+Nous utilisons les op´ erations suivantes sur les donn´ ees de type
+Entier ou Reel :
++,−,∗ et /
+Nous utilisons les deux op´ erations suivantes sur les donn´ ees de
+type Entier :
+div pour le quotient de la divison euclidienne.
+mod pour le reste de la divison euclidienne.
+Nous supposerons aussi que certaines fonctions
+math´ ematiques usuelles sont disponibles.
+Exemple : la fonction racine() pour le calcul de la racine carr´ ee
+Nous utilisons les op´ erations suivantes sur les donn´ ees de type
+Bool´ een :
+ET , OU et NON.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Op´ erations sur les cha ˆ ınes de caract` eres
+Nous avons une op´ eration [] pour acc´ eder aux diﬀ´ erents
+caract` eres d’une cha ˆ ıne, pour les consulter ou les modiﬁer.
+La fonction ’standard’ longueur() nous donne le nombre de
+caract` eres d’une cha ˆ ıne.
+Les indices des caract` eres dans une cha ˆ ınech varient entre 1
+et longueur(ch).
+la concat´ enation des cha ˆ ınes sera not´ ee &.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Op´ erations sur les cha ˆ ınes de caract` eres
+Exemple :
+variables
+...
+ch : Cha ˆ ıne
+...
+...
+ch := ”EISTI2015”
+....
+...
+ch[9]:=’6’
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Entr´ ees-sorties conversationnelles
+Un algorithme est souvent amen´ e ` a communiquer avec
+l’utilsateur pour :
+lui permettre de saisir des donn´ ees,
+aﬃcher des r´ esultats ou un message.
+Dans ce cours nous utiliserons les instructions Lire() et
+Ecrire() pour ces tˆ aches.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Entr´ ees-sorties conversationnelles-Syntaxe
+Syntaxe de Lire:
+Cette fonction permet de lire une variable ` a la fois avec la
+syntaxe lire(nomdelavariable).
+Syntaxe de Ecrire :
+Cette fonction permet d’aﬃcher plusieurs donn´ ees
+alphnum´ eriques (Entier, R´ eel, Caract` ere, Cha ˆ ıne) les uns ` a la
+suite des autres avec la syntaxe Ecrire(a1, a2, ..., an).
+Nous utilisons aussi une variante de la fonction Ecrire() qui
+permet d’aﬃcher puis de retourner ` a la ligne : c’est la
+fonction Ecrirenl().
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Entr´ ees-sorties conversationnelles-Exemple
+Exemple :
+variables
+...
+nom, prn : Cha ˆ ıne
+...
+...
+Ecrire(”Donnez votre nom : ”)
+Lire(nom)
+Ecrire(”Donnez votre pr´ enom : ”)
+Lire(prn)
+Ecrire(”Bonjour ”,prn,” ”,nom)
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Blocs d’instructions
+Il arrive souvent (voir exemples plus bas) que des instructions
+soient regroup´ ees pour former un bloc.
+Dans ce cas le bloc commence par D´ ebutet se termine par Fin.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structure d’un algorithme-Forme simple
+A pr´ esent, nous en savons assez pour pr´ esenter la forme la
+plus simple d’un algorithme et pour ´ ecrire notre premier
+algorithme.
+La ﬁgure ci-dessous donne cette forme.
+Nous illustrons cette forme par l’algorithme de notre premier
+exemple (r´ esolution d’une ´ equation de premier degr´ e).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structure d’un algorithme-Forme simple
+Figure: Structure d’un algorithme
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structure d’un algorithme-Forme simple-Exemple
+Algorithme resEqPremDeg
+variables
+a, b : R´ eel
+x0 : R´ eel
+D´ ebut
+Ecrire(”Donnez le coeﬃcient a : ”)
+Lire(a)
+Ecrire(”Donnez le coeﬃcient b : ”)
+Lire(b)
+x0 = -b/a
+Ecrire(”La solution est : ”, x0)
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole
+`A l’origine des structures de contrˆ ole il y a les deux remarques
+suivantes :
+1 certaines instructions - ou blocs d’instructions- ne sont
+ex´ ecut´ ees que dans certains cas (voir ci-dessus notre exemple
+2).
+2 certaines instructions - ou blocs d’instructions- peuvent ˆ etre
+ex´ ecut´ es z´ ero, une ou plusieurs fois.
+La premi` ere remarque est ` a l’origine des structures de contrˆ ole
+conditionnelles.
+La deuxi` eme remarque est ` a l’origine des structures de
+contrˆ ole it´ eratives (ou r´ ep´ etitives).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles
+La principale structure de contrˆ ole conditionnelle est la
+structure Si .... Alors ... Sinon.
+La forme g´ en´ erale de cette structure est donn´ ee par la ﬁgure
+ci-dessous.
+La partie ’Sinon’ n’est pas obligatoire. Lorsqu’on la supprime,
+la structure devient de la forme :
+Si (Condition) Alors D´ ebut ... Fin.
+Lorsqu’un bloc comporte une seule instruction, les mots
+D´ ebutet Fin peuvent ˆ etre omis.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles
+Figure: Forme g´ en´ eral de la structure Si...Alors...Sinon.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles
+’condition’ est une expression logique , c’est-` a-dire une
+expression pouvant prendre les valeurs VRAI et FAUX.
+Exemples : b = 0, b∗ b− 4∗ a∗ c > 0, moy≥ 10.
+Pour d´ eﬁnir la condition nous utilisons les op´ erateurs de
+comparaison ainsi que les op´ erations sur les bool´ eens.
+Op´ erateurs de comparaison : =,⁄=, <,≤, >,≥.
+Lorsque condition vaut VRAI, c’est le bloc Instructions(1) qui
+est ex´ ecut´ e. Dans le cas contraire c’est le bloc Instructions(2)
+qui est ex´ ecut´ e.
+Ci-dessous nous illustrons notre structure de contrˆ ole ` a l’aide
+des l’exemple 2 (r´ esolution des ´ equations de second degr´ e).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles-Exemple 1
+Algorithme resEqPremDeg2
+variables
+a, b : R´ eel
+x0 : R´ eel
+D´ ebut
+Ecrire(”Donnez le coeﬃcient a : ”)
+Lire(a)
+Ecrire(”Donnez le coeﬃcient b : ”)
+Lire(b)
+Si (a=0) Alors
+Ecrire(”Pas de solution.”)
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles-Exemple 1
+Suite ...
+Sinon
+D´ ebut
+x0 = -b/a
+Ecrire(”La solution est : ”, x0)
+Fin
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles-Exemple 2
+Algorithme resEqSecDeg
+variables
+a, b, c : R´ eel
+delta : R´ eel
+x0, x1, x2 : R´ eel
+D´ ebut
+Ecrire(”Donnez le coeﬃcient a : ”)
+Lire(a)
+Ecrire(”Donnez le coeﬃcient b : ”)
+Lire(b)
+Ecrire(”Donnez le coeﬃcient c : ”)
+Lire(c)
+delta := b*b-4*a*c
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles-Exemple 2
+Suite ...
+Si (delta <0) Alors
+Ecrire(”Pas de solution.”)
+Sinon
+D´ ebut
+Si (delta=0) Alors
+D´ ebut
+x0 = -b/2*a
+Ecrire(”La solution est : ”, x0)
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles-Exemple 2
+Suite ...
+Sinon (delta=0) Alors
+D´ ebut
+x1 = (-b-racine(delta))/2*a
+x1 = (-b+racine(delta))/2*a
+Ecrire(”Deux solutions : ”, x1, ” ”, x2)
+Fin
+Fin
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole conditionnelles
+La structure de contrˆ ole ’Si...Alors...Sinon’ consid` ere deux cas
+: condition vaut VRAI ou FAUX.
+Avec des Si...Alors imbriqu´ es, nous pouvons consid´ erer
+plusieurs cas (voir exemple de l’´ equation du second degr´ e).
+Mais il y a une autre structure de contrˆ ole qui g` ere
+directement ce cas.
+Le sch´ ema g´ en´ eral de cette structure est donn´ e ci-dessous et
+elle sera illustr´ ee en TD par un exemple degestion de menu .
+Le test porte sur une expression arithm´ etique expr.
+Selon la valeur de cette expression ( val1, ..., valn, autre) un
+bloc d’instructions diﬀ´ erent est ex´ ecut´ e.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole ` a choix multiples
+Forme g´ en´ erale
+Selon (expression)
+Cas val1 :
+Instructions (1)
+Cas val2 :
+Instructions (2)
+...
+...
+Cas valn :
+Instructions (n)
+D´ efaut:
+Instructions (*)
+FinSelon
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole it´ eratives
+Le principe de ces structures de contrˆ oles est de r´ ep´ eter une
+suite d’instruction
+un nombre donn´ e de fois : premi` ere variante (la structure
+Pour),
+tant qu’une condition est v´ eriﬁ´ ee : deuxi` eme variante (les
+structures ’Tant que’ ’Faire...Tant que’),
+ou jusqu’` a ce qu’une condition soit vraie : troisi` eme variante
+(la structure ’ R´ ep´ eter ... Jusqu’` a’).
+La forme g´ en´ erale de chacune de ces structures est pr´ esent´ ee
+ci-dessous et un exemple de la premi` ere d’entre elle est donn´ e
+` a la suite. Les autres seront ´ etudi´ ees en TD.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole it´ eratives
+Forme g´ en´ erale de la structure Pour
+Pour compteur de deb ` aﬁn [pas=valeur]
+Instructions
+FinPour
+Forme g´ en´ erale de la structure Tant que
+Tant que condition Faire
+Instructions
+Fintantque
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole it´ eratives
+Forme g´ en´ erale de la structure Faire ... Tant que
+Faire
+Instructions
+Tant que condition
+Forme g´ en´ erale de la structure R´ ep´ eter
+R´ ep´ eter
+Instructions
+Jusqu’` acondition
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole it´ eratives-Exemple
+Exemple de la structure Pour
+Pour cpt de 1 ` a9 pas=2
+Ecrire(”Le carr´ e de ”,cpt, ”=”,cpt*cpt)
+FinPour
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structures de contrˆ ole it´ eratives
+Exercice
+´Etudiez les ´ equivalences deux ` a deux ´ eventuelles de ces structures.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Algorithme principal
+Nous avons donn´ e ci-dessus (voir ﬁgure 1) la forme la plus
+simple de la structure d’un algorithme :
+Entˆ ete + Bloc de d´ eclaration des variables + Bloc
+d’instructions.
+Cette structure est commune ` a tous les algorithmes : c’est
+l’algorithme principal.
+En g´ en´ eral, en plus de l’algo principal, un algorithme
+comprend des sous-algorithmes que nous ´ etudions dans la
+suite.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+D´ eﬁnition d’un sous-algorithme : une suite d’instructions
+qu’on d´ eﬁnitune fois pour toutes et qu’on peut ex´ ecuter
+ensuite (on dit qu’on l’ appelle’) ` a chaque fois que n´ ec´ essaire.
+Exemples : En algorithmique g´ eom´ etrique, on peut par
+exemple avoir souvent besoin d’aﬃcher des vecteurs, de
+calculer le produit scalaire de deux vecteurs. Donc au lieu de
+r´ e-´ ecrrie le mˆ eme code plusieurs fois,
+on d´ eﬁnit un sous-algorithmeaﬃcherVecteur et un autre
+produitScalaire qu’on appellera ` a chaque fois qu’on en aura
+besoin.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Il existe deux types de sous-algorithmes :
+les fonctions : Sous-algorithmes qui retournent un r´ esultat,
+produitScalaire en est un exemple : retourne la valeur du
+produit scalaire.
+les proc´ edures: Sous-algorithmes qui ne retournent pas un
+r´ esultat,aﬃcherVecteur en est un exemple : retourne la valeur
+du produit scalaire.
+La forme g´ en´ erale dela d´ eﬁnitiond’un sous-algorithme est
+donn´ ee par la ﬁgure ci-dessous.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Figure: Forme g´ en´ erale d’un sous-algorithme.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Dans le cas d’une proc´ edure l’entˆ ete se pr´ esente de la mani` ere
+suivante :
+le mot r´ eserv´ eproc´ edure,
+le nom de la proc´ edure, exemple : aﬃcherVecteur,
+la liste des param` etres, ce sont les entr´ ees fournies ` a la
+proc´ edure :
+chaque param` etre est donn´ ee par une cat´ egorie (voir plus
+bas), un type et un nom.
+le bloc des variables locales, qui commence par le mot r´ eserv´ e
+variable,
+le bloc des instructions qui d´ ecrit ce que fait la proc´ edure, il
+est compris entre D´ ebutet Fin.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Figure: Forme g´ en´ erale d’une proc´ edure.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures-Exemple
+Proc´ edure aﬃcherMax(a : R´ eel, b : R´ eel)
+variables
+m : R´ eel
+D´ ebut
+Si (a>b) Alors
+m=a
+Sinon
+m=b
+FinSi
+Ecrire(”Le max est ´ egal ` a : ”,m)
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Dans le cas d’une proc´ edure l’entˆ ete se pr´ esente de la mani` ere
+suivante :
+le mot r´ eserv´ eFonction,
+le nom de la fonction, exemple : produitScalaire,
+la liste des param` etres, ce sont les entr´ ees fournies ` a la
+fonction.
+le type du r´ esultat retourn´ e par la fonction.
+le bloc des variables locales,
+le bloc des instructions qui d´ ecrit ce que fait la fonction, il se
+termine par l’instruction :
+Retourner nomvariable
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Figure: Forme g´ en´ erale d’une fonction.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures-Exemple
+Fonction calculerMax(a : R´ eel, b : R´ eel) : R´ eel
+variables
+m : R´ eel
+D´ ebut
+Si (a>b) Alors
+m=a
+Sinon
+m=b
+FinSi
+Retourner m)
+Fin
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et proc´ edures
+Cat´ egorie des param` etres :
+E (entr´ ee) : fournie au sous algorithme qui ne peut pas la
+modiﬁer. C’est la cat´ egorie par d´ efaut.
+E/S (entr´ ee/sorte) : fournie au sous algorithme qui peut la
+modiﬁer.
+S (sorte) : c’est le sous-algorithme qui lui donne sa valeur.
+Port´ ee des variables :
+les variables d´ eﬁnies dans les sous-algorithmes sont dites
+locales,
+elles ne sont ”vues” qu’` a l’int´ erieur du sous-algorithme,
+leurs valeurs sont perdues une fois l’ex´ ecution du
+sous-algorithme termin´ ee.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Fonctions et Proc´ edures
+Appel des sous-algorithmes :
+une proc´ edure est appel´ ee parnomproc´ edure(valeur des
+param` etres).
+une fonction est appel´ ee parval := nomfonction(valeur des
+param` etres).
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structure d’un algorithme-Forme compl` ete
+Pour obtenir la forme g´ en´ erale d’un algorithme il suﬃt de
+prendre la forme simple donn´ ee ci-dessus et d’y ajouter la
+d´ eﬁnition des fonction et des proc´ edures les unes ` a la suite
+des autres, entre l’entˆ ete et le d´ ebut de la d´ eclarationdes
+varaibales.
+Remarque : Ne jamais d´ eﬁnir une fonction ou une proc´ edure ` a
+l’int´ erieur d’une autre fonction ou proc´ edure.
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Structure d’un algorithme-Forme compl` ete
+Figure: Structure d’un algorithme
+Houcine Senoussi ´El´ ements de base
+<<<PAGE>>>
+Qu’est-ce qu’un algorithme ?
+Premiers exemples
+Variables et instructions
+Structures de contrˆ ole
+Structure d’un algorithme
+Conclusion
+Conclusion
+Nous avons pr´ esent´ e les ´ el´ ements permettant de
+d´ ebuter/”re-d´ emarrer” en algorithmique.
+Prochain cours : Donn´ ees complexes.
+Houcine Senoussi ´El´ ements de base

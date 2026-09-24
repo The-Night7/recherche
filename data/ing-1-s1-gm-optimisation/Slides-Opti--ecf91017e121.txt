@@ -1,0 +1,1612 @@
+0.
+Optimisation linéaire et non linéaire
+ING1 Maths appliquées
+Nguyen Thi Hien
+Thi Hien Nguyen Optimisation linéaire et non linéaire ING1 Maths appliquées 1 / 84
+<<<PAGE>>>
+0.
+Information générale
+1 Volume : 18h CM et 18h TD
+2 Évaluation: Examen 2h sur papier, 2 feuilles A4 recto-verso +
+calculatrice
+3 Contact: thi-hien.nguyen5@cyu.fr / Teams
+4 Motivations :
+Recherche opérationnelle / Logistique / Transport
+Automatique / Contrôle des systèmes
+Machine Learning / Data Science
+Économie / Finance
+···
+5 Pré-requis mathématiques
+Géométrie analytique : Droites, plans, hyperplans
+Algèbre linéaire : matrice, vecteurs et opérations, rang, valeurs
+propres,...
+Analyse dans Rn: Dérivées partielles, Continuité, diérentiabilité,...
+2 / 84
+<<<PAGE>>>
+0.
+1 Partie I-Optimisation linéaire
+Méthode géométrique
+(pour n = 2)
+Algorithme du simplexe (George Dantzig, 1947)
+Dualité
+Optimisation linéaire en nombres entiers
+Méthode des coupes - Gomory 1958
+Séparation et évaluation ( Branch and bound )
+2 Partie II-Optimisation non-linéaire
+Forme quadratique et convexité
+Résultats d'existence et d'unicité (PC ) min x∈Kf(x)
+Optimisation sans contraintes
+Optimisation avec contraintes égalités
+Optimisation avec contraintes d'inégalités
+3 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire
+Table of Contents
+1 Partie I-Optimisation linéaire
+Méthode géométrique
+(pour n = 2)
+Algorithme du simplexe (George Dantzig, 1947)
+Dualité
+Optimisation linéaire en nombres entiers
+Méthode des coupes - Gomory 1958
+Séparation et évaluation ( Branch and bound )
+2 Partie II-Optimisation non-linéaire
+Forme quadratique et convexité
+Résultats d'existence et d'unicité (PC ) min x∈Kf(x)
+Optimisation sans contraintes
+Optimisation avec contraintes égalités
+Optimisation avec contraintes d'inégalités
+4 / 84
+<<<PAGE>>>
+Méthode géométrique
+(pour n = 2)
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Méthode géométrique ,(pour n = 2)
+Méthode géométrique (pour n = 2)
+A1 =
+
+
+(x1,x 2)∈ R2
+
+2x1 + 4x2≤ 10
+−3x1 + 4x2≤− 2
+−x1−x2≤ 0
+
+
+
+6 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Méthode géométrique ,(pour n = 2)
+Ligne de niveau
+A2 =
+
+(x1,x 2)∈ R2 2x1 +x2≥ 0 et − 5≤x1−x2≤ 3
+	
+une intersection de ligne de niveau non vide avec le domaine A2.
+7 / 84
+<<<PAGE>>>
+Algorithme du simplexe
+(George Dantzig, 1947)
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Algorithme du simplexe
+[Forme standard] Un vecteur c∈ Rn, une matrice A∈M m,n(R) et un
+vecteur b∈ Rm tels que :
+(Ps)
+
+
+
+max
+x∈Rn
+c⊤x
+sous la contrainte Ax =b, x≥ 0
+Le réel y est appelé variable d'écart de l'inégalité α1x1+··· +αnxn≤β
+si y≥ 0 tel que
+α1x1 +··· +αnxn +y =β
+9 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Exemple: Exo1.1.a
+max(x1 + 1
+2x2) sous les contraintes :
+
+
+
+x1 +x2 ≤ 4
+−3x1 +x2 ≤ 3
+x1− 1
+2x2 ≤ 1
+x1, x2 ≥ 0
+Le problème a pour forme standard :
+max x1 + 1
+2x2 + 0y1 + 0y2 + 0y3 sous les contraintes :
+
+
+
+x1 +x2 +y1 = 4
+−3x1 +x2 +y2 = 3
+x1− 1
+2x2 +y3 = 1
+x1, x2, y1, y2, y3≥ 0
+10 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Méthodes des tableaux: variable entrante/sortante
+Tableau 1, min{ bk
+ak,j ,ak,j > 0}
+x1 x2 y1 y2 y3 Second membre Ratio
+f 1 1 /2 0 0 0 0
+y1 1 1 1 0 0 4 4
+1 = 4
+y2 −3 1 0 1 0 3 3
+−3 =−1< 0
+y3 1 −1/2 0 0 1 1 1
+1 = 1
+Tableau 2
+x1 x2 y1 y2 y3 Second membre Ratio
+f 0 1 0 0 −1 −1
+y1 0 3 /2 1 0 −1 3 ···
+y2 0 −1/2 0 1 3 6 ···
+x1 1 −1/2 0 0 1 1 ···
+11 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Exercice 1.1. a
+Tableau 3
+x1 x2 y1 y2 y3 Second membre
+f 0 0 −2/3 0 −1/3 −3
+x2 0 1 2 /3 0 −2/3 2
+y2 0 0 1 /3 1 8 /3 7
+x1 1 0 1 /3 0 2 /3 2
+Conclusion : L'optimum est atteint en (x1,x 2) = (2, 2), avec une valeur
+optimale de 3.
+Méthode
+Initialisation (faire tableau avec A, b, c)
+Itération (déterminer variable entrante (x) et variable sortante (y) en
+calculant les ratios) Li =Li−αLj
+Terminaison (quand aucune coecient n'est strictement positif)
+Attention: valeur du critère nal est l'opposé de la valeur en n. 12 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Pratique: Exercice 4.c - TD1
+max x1 + 2x2 sous les contraintes :
+
+
+
+−3x1 + 2x2≤ 2
+−x1 + 2x2≤ 4
+x1 +x2≤ 5
+x1≥ 0, x 2≥ 0
+13 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Simplexe avec les logiciels
+Excel
+Calculatrice
+Fonction Solveur Ficher/Options/Compléments/Compléments
+Solveur/Atteindre/Complément Solveur/OK
+Données/Solveur
+Sommeprod(matrice1,matrice2)
+R
+library(boot)
+z=c(1,2)
+A= matrix(c(-3,2,-1,2,1,1), nrow = 3, byrow = T)
+b=c(2,4,5)
+result = simplex(z, A, b,maxi = T)
+result
+Python
+···
+14 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Cas non standards
+max 2 x1 +x2 sous les contraintes :
+
+
+
+−x1 +x2≤ 1
+2x1− 3x2≤ 1
+x1≥ 0, x 2≥ 0
+max 3 x1 + 6x2 sous les contraintes :
+
+
+
+x1 + 2x2≤ 2
+2x1 +x2≤ 2
+x1≥ 0, x 2≥ 0
+Remarque ?
+15 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Cas d'une origine non admissible : méthode des deux phases
+L'origine n'est pas admissible si au moins l'un des seconds membres est
+strictement négatif.
+Phase I
+[Problème auxiliaire]
+(Pa) max −δ avec
+(
+Ax−δe≤b
+x≥ 0, δ ≥ 0
+Théorème
+Si (Pa) admet un optimum (xa,δa), et :
+si δa = 0, alors xa est une conguration admissible de (P ) ;
+si δa> 0, alors (P ) n'admet aucune conguration admissible.
+Phase II
+Retirer la colonne associée à δ
+Résoudre le problème (P ) à partir la nouvelle conguration 16 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Exemple méthode des deux phases
+Maximiser (x1−x2) avec
+
+
+
+−2x1 +x2≤− 2
+x1− 2x2≤ 2
+x1 +x2≤ 5
+x1≥ 0, x 2≥ 0
+⇒ (Pa)Maximiser (−δ) avec
+
+
+
+−2x1 +x2−δ≤− 2
+x1− 2x2−δ≤ 2
+x1 +x2−δ≤ 5
+x1≥ 0, x 2, δ ≥ 0
+x1 x2 δ y 1 y2 y3 Second membre
+f 0 0 −1 0 0 0 0
+y1 −2 1 -1 1 0 0 −2
+y2 1 −2 −1 0 1 0 2
+y3 1 1 −1 0 0 1 5
+variable entrante est δ, variable sortante est zi telle que i = argmin{bi}
+17 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Exemple deux phases (suite)
+x1 x2 δ y 1 y2 y3 Second membre Ratio
+f 2 −1 0 −1 0 0 2
+δ 2 −1 1 −1 0 0 2 ...
+y2 3 −3 0 −1 1 0 4 ...
+y3 3 0 0 −1 0 1 7 ...
+x1 x2 δ y 1 y2 y3 Second membre
+f 0 0 −1 0 0 0 0
+x1 1 −1/2 1 /2 −1/2 0 0 1
+y2 0 −3/2 −3/2 1 /2 1 0 1
+y3 0 3 /2 −3/2 1 /2 0 1 4
+Phase II. Nous avons
+x1− 1
+2x2− 1
+2y1 = 0
+et donc
+x1−x2 =
+
+1 + 1
+2x2 + 1
+2y1
+
+−x2 = 1− 1
+2x2 + 1
+2y1 18 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Phase II
+x1 x2 y1 y2 y3 Second membre
+f 0 −1/2 1 /2 0 0 −1
+x1 1 −1/2 −1/2 0 0 1
+y2 0 −3/2 1/2 1 0 1
+y3 0 3 /2 1 /2 0 1 4
+x1 x2 y1 y2 y3 Second membre
+f 0 1 0 −1 0 −2
+x1 1 −2 0 1 0 2
+y1 0 −3 1 2 0 2
+y3 0 3 0 −1 1 3
+x1 x2 y1 y2 y3 Second membre
+f 0 0 0 −2/3 −1/3 −3
+x1 1 0 0 1 /3 2 /3 4
+y1 0 0 1 1 1 5
+x2 0 1 0 −1/3 1 /3 1
+19 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Algorithme du simplexe (George Dantzig, 1947)
+Résumer méthode deux phases
+Détecter problème (l'origine n'est pas admissible)
+Phase I: ajouter variable δ et résoudre (Pδ)
+Phase II: retirer la colonne associée à δ, exprime le critère en fonction
+de variables hors-base résoudre à partir de cette nouvelle conguration.
+Pratique: exercice 9(TD1)
+Maximiser x1 + 2x2 sous les contraintes
+
+
+
+2x1 + 3x2≤ 12
+3x1 +x2≤ 9
+x1 +x2≥ 2
+x1≥ 0, x 2≥ 0
+20 / 84
+<<<PAGE>>>
+Dualité
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Dualité
+Dualité
+(P )
+(
+maxx∈Rnc⊤x
+Ax≤b, x ≥ 0 (D)
+(
+minu∈Rmb⊤u
+A⊤u≥c, u ≥ 0
+On appelle problème dual de (P) le problème d'optimisation linéaire
+(D) déni par :
+Exemple, Exo 1- TD2
+(P ) max(x1 + 2x2) sous contraintes
+
+
+
+−3x1 + 2x2≤ 2
+−x1 + 2x2≤ 4
+x1 +x2≤ 5
+x1≥ 0, x 2≥ 0
+(D) min(2u1 + 4u2 + 5u3)
+
+
+
+−3u1−u2 +u3≥ 1
+2u1 + 2u2 +u3≥ 2
+u1≥ 0, u 2≥ 0, u 3≥ 0
+22 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Dualité
+Dualité faible et Dualité forte
+Theorem (Dualité faible)
+Nous avons (c⊤x)≤ (b⊤u).
+De plus, si (c⊤x) = (b⊤u) alors x est un optimum de (P ) et u est un
+optimum de (D).
+Theorem (Dualité forte)
+Si (P) admet un optimum, alors (D) en admet un aussi, et réciproquement.
+Theorem (Complémentarité)
+x∗ est un optimum de (P) et u∗ est un optimum de (D) si et seulement si :
+(A⊤u∗−c)⊤x∗ = 0 ⇐⇒ ∀i∈ [1,n ], x ∗
+i·
+
+(A⊤u∗)−c
+
+i
+= 0.
+23 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Dualité
+Example, Exo 1- TD2
+(P ) max(x1 + 2x2) sous contraintes
+
+
+
+−3x1 + 2x2≤ 2
+−x1 + 2x2≤ 4
+x1 +x2≤ 5
+x1≥ 0, x 2≥ 0
+a un optimum (x1,x 2) = (2, 3). En eet, par méthode des tableaux
+comme x1 = 2̸= 0, l'optimum dual sature la première contrainte :
+−3u1−u2 +u3 = 1;
+comme x2 = 3̸= 0, l'optimum dual sature la deuxième contrainte :
+2u1 + 2u2 +u3 = 2;
+comme y1 = 2̸= 0, l'optimum primal ne sature pas la première
+contrainte donc u1 = 0.
+Résoudre le système on a solution de problème dual est
+(u1,u 2,u 3) = (0, 1
+3, 4
+3)
+24 / 84
+<<<PAGE>>>
+Optimisation linéaire en
+nombres entiers
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Motivation et Applications
+1 Motivation
+Beaucoup de situations réelles, certaines décisions doivent être entières
+(par exemple, on ne peut pas produire 2,7 voitures, ni embaucher 3,4
+employés)
+Certaines décisions sont binaires (0 ou 1) (par exemple: oui ou non,
+absence ou présente,...)
+PLNE (programmation linéaire en nombres entiers) Modéliser des
+décisions discrètes impossibles avec la PL continue.
+2 Applications
+Planication de production et gestion d'entrepôt
+Optimisation des transports et logistique (Problème du voyageur de
+commerce)
+Décisions stratégiques d'investissement
+Télécommunications et réseaux
+...
+26 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Quelques dénitions
+Problème relaxé ( ¯P ) est le problème quand on enlève les conditions
+xi∈ N
+Matrice totalement unimodulaire si et seulement si le déterminant de
+toute sous-matrice carrée de A est un élément de {−1, 0, 1}.
+Theorem
+Si A est totalement unimodulaire et b est à composantes entières, alors
+tout sommet optimum de ( ¯P ) est un optimum de (P).
+Exemple
+Maximiser x1 +x2 sous les contraintes
+
+
+
+x1≤ 1
+x2≤ 1
+x1 +x2≤ 1
+x1,x 2∈ N
+27 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Méthode des coupes - Gomory 1958
+Idée: coupe le polyèdre et se rapproche de la solution optimale entière
+Exemple 2
+Maximiser 7x1 + 9x2 sous les contraintes
+
+
+
+−x1 + 3x2≤ 6
+7x1 +x2≤ 35
+x1,x 2∈ N
+Résoudre problème relaxe,
+x1 x2 y1 y2
+f 7 9 0 0 0
+y1 −1 3 1 0 6
+y2 7 1 0 1 35
+→
+x1 x2 y1 y2
+f 10 0 −3 0 −18
+x2 −1/3 1 1 /3 0 2
+y2 22/3 0 −1/3 1 33
+x1 x2 y1 y2
+f 0 0 −28/11 −15/11 −63
+x2 0 1 7 /22 1 /22 7/2
+x1 1 0 −1/22 3 /22 9/2
+Solution (x∗
+1,x∗
+2) = (9/2, 7/2)
+28 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Méthode des coupes - Gomory 1958
+Comme x∗
+1,x∗
+2 /∈ N, on coupe selon x2 pour obtenir
+x1 x2 y1 y2 γ1
+f 0 0 −28/11 −15/11 0 −63
+x2 0 1 7 /22 1 /22 0 7/2
+x1 1 0 −1/22 3 /22 0 9/2
+γ1 0 0 −7/22 −1/22 1 −1/2
+Here a4,k←−{a2,k}. Maintenant min{−28/11
+−7/22,−15/11
+−1/22} = −28/11
+−7/22 donc y1
+devient une variable de la base à la place de γ1,
+x1 x2 y1 y2 γ1
+f 0 0 0 −1 −8 −59
+x2 0 1 0 0 1 3
+x1 1 0 0 1 /7 −1/7 32/7
+y1 0 0 1 1 /7 −22/7 11/7
+29 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Méthode de coupes (suite)
+Comme x1 /∈ N, on coupe selon x1, pour obtenir
+x1 x2 y1 y2 γ1 γ2
+f 0 0 0 −1 −8 0 −59
+x2 0 1 0 0 1 0 3
+x1 1 0 0 1 /7 −1/7 0 32/7
+y1 0 0 1 1 /7 −22/7 0 11/7
+γ2 0 0 0 -1/7 −6/7 1 −4/7
+x1 x2 y1 y2 γ1 γ2
+f 0 0 0 0 −2 −7 −55
+x2 0 1 0 0 1 0 3
+x1 1 0 0 0 −1 1 4
+y1 0 0 1 0 −4 1 1
+y2 0 0 0 1 6 −7 4
+Alors nous avons (x∗
+1,x∗
+2) = (4, 3) et f = 55.
+30 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Pratique
+[Examen 24-25] Résoudre le problème en utilisant la méthode de coupes
+
+
+
+max 20 x1 + 30x2
+x1 + 2x2≤ 20
+x1 +x2≤ 12
+5x1 +x2≤ 40
+2x1 +x2≤ 11
+x1,x 2∈ N
+31 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Pratique
+32 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Séparation et évaluation ( Branch and bound )
+On choisit une coordonnée non entière ¯xi de ¯x, optimum du problème
+relaxé de (P ), puis on construit les sous-problèmes (P−) et (P +) dénis
+par :
+(P−)
+
+
+
+max
+x∈Rn (c|x)
+Ax≤b, x ≤⌊ ¯xi⌋,
+x∈ Nn
+et (P +)
+
+
+
+max
+x∈Rn (c|x)
+Ax≤b, x ≥⌈ ¯xi⌉ + 1,
+x∈ Nn
+Exemple
+Considérons le problème (P )
+
+
+
+max (3x1 + 5x2)
+x1 + 2x2≤ 3
+6x1 + 8x2≤ 15
+x1, x2∈ N
+et f : (x1,x 2)7→ 3x1 + 5x2.
+L'optimum de son problème relaxé est
+¯x =
+  3
+2, 3
+4
+
+et f(¯x) = 33
+4 = 8, 25.
+33 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Exemple séparation (suite)
+Eectuons une séparation basée sur la première coordonnée. On obtient
+alors les deux sous-problèmes :
+(P−)
+
+
+
+max (3x1 + 5x2)
+x1 + 2x2≤ 3
+6x1 + 8x2≤ 15
+x1≤ 1
+x1,x 2∈ N
+et (P +)
+
+
+
+max (3x1 + 5x2)
+x1 + 2x2≤ 3
+6x1 + 8x2≤ 15
+x1≥ 2
+x1,x 2∈ N
+On résout les problèmes relaxés de ces deux sous-problèmes :
+¯x− = (1, 1) et f(¯x−) = 8 ;
+¯x+ =
+ 
+2, 3
+8
+
+et f(¯x+) = 63
+8 = 7,875.
+Donc on en déduit que ¯x− est à coordonnées entières et constitue un
+meilleur candidat.
+34 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Détail calculs problème relaxé
+L'optimum de son problème relaxé est
+¯x =
+  3
+2, 3
+4
+
+et f(¯x) = 8 1
+4 = 8, 25.
+35 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Solution (P −)
+Solution ¯x− = (1, 1) et f(¯x−) = 8
+36 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Solution (P +), méthode deux phases
+37 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Arborescence
+Optimum: ( 3
+2, 3
+4 )
+Valeur: 8.25
+Optimum: (1,1)
+Valeur: 8
+x1≤ 1
+Optimum: (2, 3
+8 )
+Valeur: 7.875
+x1≥ 2
+38 / 84
+<<<PAGE>>>
+1. Partie I-Optimisation linéaire Optimisation linéaire en nombres entiers
+Résumé partie Optimisation linéaire
+1 Méthode géométrique (n=2)
+2 Méthode des tableaux (simplex)
+3 Méthode deux phases
+4 Dualié
+5 Optimisation linéaire nombre entière
+Coupes
+Séparation
+39 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire
+Table of Contents
+1 Partie I-Optimisation linéaire
+Méthode géométrique
+(pour n = 2)
+Algorithme du simplexe (George Dantzig, 1947)
+Dualité
+Optimisation linéaire en nombres entiers
+Méthode des coupes - Gomory 1958
+Séparation et évaluation ( Branch and bound )
+2 Partie II-Optimisation non-linéaire
+Forme quadratique et convexité
+Résultats d'existence et d'unicité (PC ) min x∈Kf(x)
+Optimisation sans contraintes
+Optimisation avec contraintes égalités
+Optimisation avec contraintes d'inégalités
+40 / 84
+<<<PAGE>>>
+Forme quadratique et
+convexité
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Forme quadratique
+Soient A une matrice symétrique d'ordre n, b∈ Rn un vecteur et c∈ R
+un réel.
+On dénit la forme quadratique f : Rn→ R par :
+f(x) =c +b⊤x + 1
+2x⊤Ax
+Soit A∈S n et b∈ Rn.
+A est semi-dénie positive ( A⪰ 0), lorsque :
+x⊤Ax≥ 0, ∀x∈ Rn.
+A est dénie positive ( A≻ 0), lorsque :
+x⊤Ax> 0, ∀x∈ Rn\{ 0}.
+On note (λi)i≥1 ses valeurs propres réelles de A∈S n.
+A⪰ 0⇔λi≥ 0, ∀i
+A≻ 0⇔λi> 0, ∀i
+42 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Exemple forme quadratique, matrice dénit positive
+1 f(x) = 4−x1 + 2x2 +x2
+1 +x1x2 + 3
+2x2
+2 ici
+f(x) =c +b⊤x + 1
+2x⊤Ax
+avec
+A =
+2 1
+1 3
+
+, b =
+−1
+2
+
+, c = 4
+2
+A =
+
+
+2 1 0
+1 2 0
+0 0 1
+
+ est dénit positive
+Calculer les valeurs propres
+Montrer par la dénition
+43 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Optimum de forme quadratique
+Theorem
+Soit A∈S n dénie positive, et b∈ Rn, et soit f la forme quadratique
+associée, dénie par :
+f(x) = 1
+2x⊤Ax +b⊤x +c.
+Soit ˆx le vecteur (unique) vériant Aˆx =b. Alors ˆx réalise le minimum de
+f , c'est-à-dire :
+f(ˆx)≤f(x), ∀x∈ Rn.
+Appliquons sur exemple précédent.
+44 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Convexité
+Un ensemble K⊂ Rn est dit convexe si
+∀(x,y )∈K2,∀λ∈ [0, 1]λx + (1−λ)y∈K.
+L'intersection d'un nombre quelconque d'ensembles convexes est
+convexe.
+La réunion de deux parties convexes n'est pas en général convexe.
+Exemple
+1 Rn et ∅ sont des convexes.
+2 Sur R, les intervalles sont des convexes.
+3 [1, 2]∪ [3, 5] non convexe
+45 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Fonction convexe
+Soit f : Ω→ R ici Ω⊂ Rn convexe. On dit f convexe si et seulement si :
+∀(x,y )∈ Ω2,∀α∈ [0, 1], f (αx + (1−α)y)≤αf(x) + (1−α)f(y).
+1 Si l'inégalité est stricte pour tout x̸=y, on dit que f est strictement
+convexe
+2 On dit que f est concave lorsque −f est convexe.
+−2 2
+2
+4
+6
+8
+x
+f(x)
+46 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Propriétés et caractérisation fonction convexe
+Soit f : R→ R une fonction deux fois dérivable. Alors f est convexe si
+et seulement si f”≥ 0.
+Exemple
+f(x) =x2
+f(x) = sin(x) + 0.2x
+Soit Ω un convexe et f : Ω→ R. Soit (x,y )∈ Ω2. On dénit la fonction
+:
+g : [0, 1]→ R, t 7→f
+ 
+tx + (1−t)y
+
+.
+Alors, g est convexe sur [0, 1], pour tout (x,y )∈ Ω2 si et seulement si
+f est convexe sur Ω.
+Toute combinaison linéaire de fonctions convexes (à coecients positifs)
+est une fonction convexe
+47 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Rappels de calcul diérentiel
+Soit une fonction f : Rn→ R, une fonction deux fois diérentiable.
+le gradient de f , noté ∇f ou grad f , est le vecteur des dérivées partielles
+:
+∇f(x1,x 2,...,x n) =
+∂f
+∂x1
+, ∂f
+∂x2
+,..., ∂f
+∂xn
+⊤
+la matrice hessienne est dénie par :
+Hf =∇2f =
+ ∂2f
+∂xi∂xj
+
+ij
+Exemple f(x,y,z ) =x2 + 3xy− 2z3.
+∇f(x,y,z ) = (2x + 3y, 3x,−6z2)⊤ Hf =∇2f =
+
+
+2 3 0
+3 0 0
+0 0 −12z
+
+
+48 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Caractérisation de la convexité en termes du gradient
+Soit f :K⊂ Rn→ R une fonction une fois diérentiable. Alors, f est
+convexe si et seulement si :
+f(y)≥f(x) +∇f(x)⊤(y−x), ∀(x,y )∈K2
+f est strictement convexe si l'inégalité est stricte pour tout x̸=y.
+L'interprétation géométrique quand n = 1?
+−2 −1 1 2
+2
+4
+6
+8
+x = 0
+x
+f (x)
+f (x) = ex
+T angente en x = 0
+49 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Forme quadratique et convexité
+Caractérisation de la convexité en termes du hessien
+Soit Ω⊂ Rn convexe et f : Ω→ R une fonction deux fois diérentiable
+( f∈C 2), alors
+f est convexe si et seulement si ∇2f(x)≥ 0,∀x∈ Ω
+strictement convexe si et seulement si ∇2f(x)> 0,∀x∈ Ω.
+Corollaire
+Soit f une forme quadratique dénie par :
+f(x) = 1
+2x⊤Ax +b⊤x +c,
+alors f est convexe si et seulement si A⪰ 0, et strictement convexe si et
+seulement si A≻ 0.
+50 / 84
+<<<PAGE>>>
+Résultats d'existence et
+d'unicité (P C) min x∈K f (x)
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Résultats d'existence et d'unicité (PC ) min x∈Kf (x)
+Existence solution dans le cas compact
+Un ensemble K ∈ Rn est dit compact si, de toute suite {xk}, où
+xk∈ K,∀k, on peut extraire une sous-suite convergente. K∈ Rn est
+compact si et seulement si il est fermé et borné .
+Soit K⊂ Rncompact. Si f : K→ R est continue alors le problème
+minx∈Kf(x) admet une solution optimale ˆx∈K, qui vérie :
+f(ˆx)≤f(x), ∀x∈K.
+Soit f : Rn→ R une fonction continue sur Rn. Si
+lim
+∥x∥→∞
+f(x) = +∞,
+alors le problème minx∈Kf(x) admet une solution optimale ˆx∈ Rn.
+Preuve Soit x0∈ Rn. il existe M >0 tel que :
+∀∥x∥>M ⇒f(x)>f (x0). problème : min∥x∥≤Mf(x) admet une
+solution car la boule {x∈ Rn :∥x∥≤ M} est compacte. 52 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Résultats d'existence et d'unicité (PC ) min x∈Kf (x)
+Unicité dans le cas convexe
+Soit f : K ⊂ Rn → R une fonction strictement convexe sur un
+ensemble convexe K. Le minimum de f sur K, s'il existe, est unique.
+Démonstration : Soit ˆx∈K tel que f(ˆx)≤f(x), ∀x∈K. Supposons
+qu'il existe ˆy∈K, avec ˆy̸= ˆx, tel que :
+f(ˆy)≤f(x), ∀x∈K.
+Posons, pour θ∈ (0, 1), et u =θˆy + (1−θ)ˆx. Comme K est convexe,
+u∈K. Par stricte convexité de f , on a alors :
+f(u)<θf (ˆy) + (1−θ)f(ˆx) =f(ˆx).
+Cela contredit le fait que ˆx soit un minimum global de f sur K. Par
+conséquent, ˆy = ˆx, et le minimum est unique.
+53 / 84
+<<<PAGE>>>
+Optimisation sans contraintes
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Point critique
+Soit f : Rn→ R une fonction diérentiable sur Rn. Un point x∗∈ Rn
+vériant ∇f(x∗) = 0 est appelé un point critique .
+Exemple Soit la fonction f : R2→ R dénie par :
+f(x,y ) =x2 +xy +y2.
+On cherche les points critiques, c'est-à-dire les points où le gradient
+s'annule :
+∇f(x,y ) =
+ ∂f
+∂x∂f
+∂y
+!
+=
+2x +y
+x + 2y
+
+.
+On résout le système :
+(
+2x +y = 0
+x + 2y = 0 ⇒
+(
+x = 0
+y = 0
+Conclusion : le seul point critique est (0, 0).
+55 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Condition nécessaire
+Soit f : Rn→ R une fonction diérentiable. Si ˆx∈ Rn vérie : f(ˆx)≤
+f(x),∀x∈ Rn, alors nécessairement ∇f(ˆx) = 0.
+Démonstration :
+Soient h∈ Rn et t∈ R. Par hypothèse, on a :
+f(ˆx)≤f(ˆx +th), ∀t∈ R.
+On considère la fonction φ(t) =f(ˆx +th). Alors φ admet un minimum
+global en t = 0, donc :
+φ′(0) = d
+dtf(ˆx +th)
+
+t=0
+=∇f(ˆx)⊤h = 0.
+Or cela est vrai pour tout h∈ Rn, donc :
+∇f(ˆx)⊤h = 0, ∀h∈ Rn.
+En particulier, on peut prendre h =∇f(ˆx), ce qui donne :
+∇f(ˆx)⊤∇f(ˆx) =∥∇f(ˆx)∥2 = 0,
+d'où :
+∇f(ˆx) = 0.
+56 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Condition nécessaire et susant dans le cas convexe
+Soit f : Rn→ R une fonction convexe et diérentiable. Si ˆx est un
+point critique, alors f(ˆx)≤f(x), ∀x∈ Rn.
+Démonstration :
+Soient x∈ Rn et θ∈ [0, 1]. Par convexité de f , on a :
+f(θˆx + (1−θ)x)≤θf(ˆx) + (1−θ)f(x).
+L'inégalité équivalent à
+f(ˆx +t(x− ˆx))−f(ˆx)
+t ≤f(x)−f(ˆx).
+Passons t→ 0, on obtient par dénition du gradient :
+∇f(ˆx)⊤(x− ˆx)≤f(x)−f(ˆx).
+Mais par hypothèse ∇f(ˆx) = 0, donc :
+0≤f(x)−f(ˆx), ∀x∈ Rn.
+57 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Cas non convexe, optimum local
+On dit que x⋆∈ Rn est un minimum local de f s'il existe ε >0 tel
+que :
+f(x⋆)≤f(x), ∀x∈ Rn tel que ∥x−x⋆∥≤ ε.
+Soit f : Rn→ R une fonction deux fois diérentiable. Si :
+∇f(x⋆) = 0 et ∇2f(x⋆)≻ 0,
+alors x⋆ est un minimum local de f .
+Démonstration :
+Par développement de Taylor à l'ordre 2, ∀h∈ Rn et t∈ R, on a :
+f(x⋆ +th) =f(x⋆) +t∇f(x⋆)⊤h + t2
+2h⊤∇2f(x⋆)h +t2∥h∥2ε(th),
+Puisque ∇f(x⋆) = 0, donc
+f(x⋆ +th)−f(x⋆)
+t2 = 1
+2h⊤∇2f(x⋆)h +∥h∥2ε(th).
+58 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Résumer pour le TD, Critères du second ordre
+Soit f : Rn→ R une fonction dans C2, et soit x∈ Rn un point critique
+∇f(x) = 0. On note Hf(x) =∇2f(x). Alors :
+1 Si Hf(x) est dénie positive , alors f est localement convexe en x,
+et x est un minimum local .
+2 Si Hf(x) est dénie négative , alors f est localement concave en x,
+et x est un maximum local .
+3 Si Hf(x) est non dénie (i.e. ni positive ni négative), alors x est un
+point selle .
+4 Si Hf(x) est semi-dénie positive ou semi-dénie négative , alors
+aucune conclusion locale ne peut être tirée à partir du second ordre
+uniquement. Une analyse plus ne est nécessaire (ordre supérieur,
+étude géométrique...).
+59 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation sans contraintes
+Exemple concrète
+Étude de la fonction f2(x,y ) =x3 + 3x2y− 15x− 12y
+∇f2(x,y ) =
+∂f2
+∂x ,∂f2
+∂y
+
+=
+ 
+3x2 + 6xy− 15, 3x2− 12
+
+On cherche les solutions du système :
+(
+3x2 + 6xy− 15 = 0
+3x2− 12 = 0
+Donc, les points critiques sont : (2, 1
+4) et (−2,− 1
+4)
+On calcule la matrice hessienne :
+Hf(x,y ) =
+ ∂2f
+∂x2
+∂2f
+∂x∂y
+∂2f
+∂y∂x
+∂2f
+∂y 2
+!
+=
+6x + 6y 6x
+6x 0
+
+Les deux points critiques (2, 1
+4) et (−2,− 1
+4) sont des points selles .
+60 / 84
+<<<PAGE>>>
+Optimisation avec contraintes
+égalités
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Contraintes égalités linéaire
+On considère (
+minx∈Rnf(x)
+Ax−b = 0
+où Ap×n avec p<n , et b∈ Rp. On note l'ensemble des points admissibles
+:
+S ={x∈ Rn|Ax−b = 0}.
+Un vecteur d∈ Rn est une direction admissible en un point x∈S s'il
+existe δ >0 tel que :
+x +td∈S, ∀t∈ [−δ, δ].
+Dans notre cas, puisque x∈S, on a :
+A(x +td)−b =Ax +tAd−b =tAd.
+Donc x +td∈S⇔Ad = 0.
+Autrement dit, les directions admissibles = kerA. 62 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Soit ˆx∈S tel que f(ˆx)≤f(x), ∀x∈S.
+Alors il existe nécessairement un vecteur λ∈ Rp tel que :
+∇f(ˆx) +A⊤λ = 0.
+Si, de plus, la matrice A est de rang p, alors λ est unique.
+Démonstration
+Soit d une direction admissible, donc d∈ kerA. Pour tout t∈ R, on a :
+f (ˆx)≤f (ˆx +td),
+ce qui implique :
+f (ˆx +td)−f (ˆx)
+t
+≥ 0 pour t> 0,
+f (ˆx +td)−f (ˆx)
+t
+≤ 0 pour t< 0.
+En faisant tendre t→ 0, on obtient :
+∇f (ˆx)∈ (kerA)⊥ = Im(A⊤).
+Cela prouve le résultat d'existence.
+Pour l'unicité, supposons qu'il existe deux vecteurs λ1 et λ2 tels que :
+∇f (ˆx) =−A⊤λ1 =−A⊤λ2.
+Alors :
+A⊤(λ1−λ2) = 0,
+ce qui implique λ1−λ2 = 0 si A est de rang p, donc λ1 =λ2. Cela montre l'unicité de λ.
+63 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Contraintes inégalité non linéaire
+(PCE ) min
+x∈Rn
+f(x) sous les contraintes
+
+
+
+h1(x) = 0
+...
+hp(x) = 0
+On suppose que h est diérentiable, avec :
+h : Rn→ Rp, x 7→ (h1(x),...,h p(x)).
+On dit que ˆx est un point régulier pour la contrainte h(x) = 0 si :
+h(ˆx) = 0,
+Les vecteurs ∇hi(ˆx) sont linéairement indépendants.
+Exemple
+min
+(x1,x2,x3)∈R3
+f(x1,x 2,x 3) =x3 sous les contraintes
+(
+x2
+1 +x2
+2− 2 = 0
+x1 +x2 +x3 = 0
+Ici ˆx = (1,−1, 0) est un point régulier pour les contraintes. 64 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Plan tangent
+H ={x∈ Rn|h(x) = 0}
+On dit que y∈ Rn est une direction admissible en ˆx∈H s'il existe
+α> 0 et une courbe x(t) vériant :
+
+
+
+x(t)∈H, ∀t∈ [−α,α ],
+x(0) = ˆx,
+˙x(0) =y.
+On note y∈T (ˆx) ici T (ˆx) dénit le plan tangent à H en ˆx.
+Si ˆx est un point régulier pour la contrainte h(x) = 0, alors
+∇h(ˆx)⊤y = 0 ⇒ y∈T (ˆx).
+65 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Exemple: point régulier et plan tangent
+Revenons exemple précédent.
+Caractérisons le plan tangent à ˆx: Comme ˆx est un point régulier pour
+la contrainte h(x) = 0 alors T (ˆx) = ker(∇h(ˆx)T ).
+Soit y = (a,b,c ),y∈T (ˆx)⇔y∈ ker(∇h(ˆx)T )⇔∇h(ˆx)Ty = 03
+⇔
+2 −2 0
+1 1 1
+
+
+a
+b
+c
+
+ =
+0
+0
+
+⇔
+ 2a− 2b = 0
+a +b +c = 0
+⇔y∈ Vect {(1, 1,−2)}
+Conclusion: T (ˆx) = Vect {(1, 1,−2)}.
+66 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Théorème de Lagrange
+On appelle lagrangien associé au problème (PCE) la fonction
+L: Rn× Rp→ R, (x,λ )7→f(x) +
+pX
+i=1
+λihi(x)
+Soit ˆx un point régulier solution du problème (PCE), vériant :
+f(ˆx)≤f(x), ∀x∈H
+Alors il existe nécessairement un vecteur λ∈ Rp unique vériant :
+∇xL(ˆx,λ )⇔∇f(ˆx) +
+pX
+i=1
+λi∇hi(ˆx) = 0
+Les composantes du vecteur λ sont appelées multiplicateurs de
+Lagrange .
+67 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Condition susent d'optimalité du 2nd ordre
+Soit ˆx∈ Rn, λ∈ Rp vériant les conditions suivantes :
+(
+h(ˆx) = 0,
+∇xL(ˆx,λ ) = 0,
+y⊤∇2
+xxL(ˆx,λ )y >0,∀y∈T (ˆx), y̸= 0 alors ˆx est un minimum local
+y⊤∇2
+xxL(ˆx,λ )y <0,∀y∈T (ˆx), y̸= 0 alors ˆx est un maximum local
+Example
+min
+(x1,x2,x3)∈R3
+f(x1,x 2,x 3) =x3 sous les contraintes
+(
+x2
+1 +x2
+2− 2 = 0
+x1 +x2 +x3 = 0
+Le lagrangien associé est
+L(x1,x 2,x 3,λ 1,λ 2) =x3 +λ1(x2
+1 +x2
+2− 2) +λ2(x1 +x2 +x3)
+68 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes égalités
+Exemple (suite)
+1 Condition nécessaire
+(
+∇xL(ˆx,λ ) = 0
+h(ˆx) = 0 ⇔
+
+
+
+∂L
+∂x1
+= 2λ1x1 +λ2 = 0
+∂L
+∂x2
+= 2λ1x2 +λ2 = 0
+∂L
+∂x3
+= 1 +λ2 = 0
+h1(x) =x2
+1 +x2
+2− 2 = 0
+h2(x) =x1 +x2 +x3 = 0
+⇔
+(
+λ2 =−1
+λ2
+1 = 1
+4
+2 Condition susante
+λ1 = 1
+2,λ 2 =−1, ˆx1 = (−1,−1, 2),
+T (ˆx1) = ker
+ 
+∇h(ˆx1)⊤
+= Vect{(1, −1, 0)}
+∇2
+xxL(ˆx1,λ ) =
+
+
+−1 0 0
+0 −1 0
+0 0 0
+
+
+Donc ˆx1 est un maximum local.
+λ1 = −1
+2 ,λ 2 =−1, ˆx2 = (−1, 1,−2), ... est un minimum local
+69 / 84
+<<<PAGE>>>
+Optimisation avec contraintes
+d'inégalités
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Problème optimisation avec contraintes d'inégalités (PCI)
+(PCI ) min
+x∈Rn
+f(x) sous les contraintes :
+
+
+
+g1(x)≤ 0
+...
+gm(x)≤ 0
+On suppose que g est diérentiable, où :
+g : Rn→ Rm, x 7→ (g1(x),...,g m(x)).
+On note
+K ={x∈ Rn|g(x)≤ 0}
+71 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Contraintes saturées
+On appelle contraintes saturées en ˆx l'ensemble des indices i tels que
+gi(ˆx) = 0, et on note :
+I(ˆx) ={i tel que gi(ˆx) = 0}.
+S(ˆx) ={x∈ Rn tel que gi(x) = 0,∀i∈I(ˆx)}.
+On dit que y∈ Rn est une direction admissible en ˆx∈ K s'il existe
+α> 0 et une courbe x(t) vériant :
+
+
+
+x(t)∈K, ∀t∈ [0,α ],
+x(0) = ˆx,
+˙x(0) =y.
+On notera alors y∈C(ˆx).
+72 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Lemme
+Soit y∈ Rn une direction admissible en ˆx∈K, alors on a nécessairement
+∇gi(ˆx)⊤y≤ 0, i ∈I(ˆx).
+Démonstration : Considérons une courbe x(t) dénie pour t∈ [−α,α ]
+vériant 
+
+
+x(t)∈K, ∀t∈ [−α,α ], α> 0
+x(0) = ˆx,
+˙x(0) =y.
+Comme gi(x)< 0 pour i /∈I(ˆx), on aura toujours gi(x(t))< 0 pour t
+susamment petit. Par contre, pour i∈I(ˆx), on doit avoir gi(x(t))≤ 0
+pour t susamment petit. Si on utilise le développement de Taylor de
+gi(x(t)) en t = 0 on doit donc avoir
+gi(ˆx) +∇gi(ˆx)⊤yt +ε(t)≤ 0.
+Puisque gi(ˆx) = 0, il faut donc nécessairement que l'on ait
+∇gi(ˆx)⊤y≤ 0.
+73 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Point régulier
+On dit que ˆx est un point régulier pour la contrainte g(x)≤ 0 si
+g(ˆx)≤ 0,
+les vecteurs ∇gi(ˆx) pour i∈I(ˆx) sont linéairement indépendants.
+Notons C(ˆx) le cône tangent en ˆx, alors Si ˆx est un point régulier pour
+le problème d'optimisation (PCI ), alors
+∇gi(ˆx)⊤y≤ 0, i ∈I(ˆx)⇒y∈C(ˆx).
+Autrement dit,
+C(ˆx) =
+n
+y∈ Rn,∇gi(ˆx)⊤y≤ 0, i∈I(ˆx)
+o
+.
+74 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple
+On considère le problème suivante: optimiser
+f(x1,x 2,x 3,x 4) = 4x2
+1− 2x1 + 4x2
+2 +x2
+3− x4
+4
+sous les contraintes : (
+x2
+3≤ 1 +x1,
+x4≤ 2 + 4x2.
+On met les contraintes sous la forme gi(x)≤ 0
+(
+g1(x1,x 2,x 3,x 4) =x2
+3− 1−x1,
+g2(x1,x 2,x 3,x 4) =x4− 2− 4x2.
+On note :
+K ={x∈ R4|g1(x)≤ 0, g2(x)≤ 0}.
+75 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple point régulier, déterminer cône tangent
+Considérons ˆx1 = (0, 0, 1, 0). Notons que ∇g1 =
+
+
+−1
+0
+2x3
+0
+
+
+ˆx1 est un point admissible, ˆx1∈K car
+(
+g1(ˆx1) = 0≤ 0
+g2(ˆx1) =−2≤ 0
+g1(0, 0, 1, 0) = 0 et g2(0, 0, 1, 0) =−2 donc I(ˆx1) ={1}. La première
+contrainte est donc saturée en ˆx1.
+∇Tg1(0, 0, 1, 0) = (−1, 0, 2, 0)̸=⃗0 donc ˆx1 est donc un point régulier.
+Calcul du cône tangent en ˆx1 : Comme ˆx1 est un point régulier
+alors
+y∈C(ˆx1)⇔∇gi(ˆx1)Ty≤ 0, i ∈I(ˆx1)
+Soit y = (a,b,c,d ), ∇g1(ˆx1)Ty =−a + 2c.
+∇g1(ˆx1)Ty≤ 0⇔ 2c≤a, (a,b,c,d )∈ R4
+Donc C(ˆx1) ={(a,b,c,d )∈ R4, a ≥ 2c} 76 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple point régulier, déterminer cône tangent
+Considérons ˆx2 = (0, 0, 1, 2). Notons que ∇g1 =
+
+
+−1
+0
+2x3
+0
+
+,∇g2 =
+
+
+0
+−4
+0
+1
+
+
+ˆx2 est un point admissible, ˆx2∈K car
+(
+g1(ˆx2) = 0≤ 0
+g2(ˆx1) = 0≤ 0
+g1(0, 0, 1, 2) = 0 et g2(0, 0, 1, 2) = 0 donc I(ˆx2) ={1, 2}. Les deux
+contraintes sont donc saturée en ˆx2.
+∇Tg1(0, 0, 1, 2) = (−1, 0, 2, 0),∇Tg2(0, 0, 1, 2) = (0,−4, 0, 1) sont
+linéairement indépendants donc ˆx2 est donc un point régulier.
+Calcul du cône tangent en ˆx2 : Comme ˆx2 est un point régulier
+alors Soit y = (a,b,c,d ),
+∇g1(ˆx2)Ty =−a + 2c ∇g2(ˆx2)Ty =−4b +d.
+∇g1(ˆx2)Ty≤ 0⇔ 2c≤a, −4b +d≤ 0
+Donc C(ˆx2) ={(a,b,c,d )∈ R4, a ≥ 2c,d≤ 4b} 77 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Conditions nécessaires d'optimalité
+Proposition
+Soit ˆx une solution du problème (PCI ). Il existe η >0 tel que
+∀x∈B(ˆx,η ), gi(x)< 0, ∀i /∈I(ˆx). Alors ˆx est la solution du problème
+( min
+x∈B(ˆx,η)
+f(x)
+gi(x) = 0, i ∈I(ˆx)
+Théorème (Conditions de Kuhn Tucker (du 1er ordre))
+Soit ˆx∈K un point régulier solution du problème (PCI ), alors il existe un
+unique vecteur λ∈ Rm vériant
+
+
+
+∇f(ˆx) +
+mP
+i=1
+λi∇gi(ˆx) = 0
+λi≥ 0, i = 1,...,m
+λigi(ˆx) = 0, i = 1,...,m
+78 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple Kuhn Tucker
+Revenons exemple précédent : Optimiser
+f(x1,x 2,x 3,x 4) = 4x2
+1− 2x1 + 4x2
+2 +x2
+3− x4
+4
+sous les contraintes : (
+g1(x1,x 2,x 3,x 4) =x2
+3− 1−x1≤ 0
+g2(x1,x 2,x 3,x 4) =x4− 2− 4x2≤ 0.
+Alors condition Kuhn Tucker, si ˆx∈K un point régulier, alors ˆx est
+solution du système
+
+
+
+∇f(ˆx) +
+mP
+i=1
+λi∇gi(ˆx) = 0
+λi≥ 0, i = 1,...,m
+λigi(ˆx) = 0, i = 1,...,m
+⇔
+
+
+
+
+
+8x1− 2
+8x2
+2x3
+−1/4
+
+ +λ1
+
+
+−1
+0
+−2x3
+0
+
+ +λ2
+
+
+0
+−4
+0
+1
+
+ =
+
+
+0
+0
+0
+0
+
+
+λ1≥ 0,λ 2≥ 0
+λ1(x2
+3− 1−x1) = 0
+λ2(x4− 2− 4x2) = 0
+Solution (λ1,λ 2) = (0, 1/4) et ˆx = (1/4, 1/8, 0, 5/2). 79 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Conditions susantes d'optimalité
+Théorème (Condition susante du premier ordre (convexité))
+Soit ˆx∈K et supposons qu'il existe ˆλ vériant les conditions de
+KuhnTucker. Si
+la fonction objectif f est convexe / concave,
+les fonctions contraintes gi, i= 1,...,m sont convexes,
+alors ˆx est une solution (minimum global/ maximum global) du problème
+(PCI).
+Revenons l'exemple précédent.
+1 f(x1,x 2,x 3,x 4) = 4x2
+1− 2x1 + 4x2
+2 +x2
+3− x4
+4 , f est une somme de
+fonctions convexes, donc f est convexe .
+2 g1(x1,x 2,x 3,x 4) =x2
+3− 1−x1, g1 est donc convexe .
+3 g2(x1,x 2,x 3,x 4) =x4− 2− 4x2, g2 est ane, donc convexe .
+On en déduit que ˆx =
+1
+4, 1
+8, 0, 5
+2
+
+est un minimum global.
+80 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Condition susante du second ordre
+Théorème
+Soit ˆx∈ Rn et ˆλ∈ Rp vériant les conditions
+
+
+
+g(ˆx)≤ 0,
+∇f(x) +
+pX
+i=1
+λi∇gi(x) = 0,
+λi≥ 0, i = 1,...,m,
+λigi(ˆx) = 0, i = 1,...,m,
+y⊤∇2
+xxL(ˆx, ˆλ)y >0, ∀y∈T +(ˆx), y̸= 0
+où T +(ˆx) est le plan tangent en ˆx à la surface
+S+ ={x∈ Rn, gi(x) = 0, i∈I(ˆx) et λi> 0}.
+Alors ˆx est un minimum local du problème (PCI ).
+81 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple
+Revenons problème optimiser
+f(x1,x 2,x 3,x 4) = 4x2
+1− 2x1 + 4x2
+2 +x2
+3− x4
+4
+sous les contraintes : (
+g1(x1,x 2,x 3,x 4) =x2
+3− 1−x1≤ 0
+g2(x1,x 2,x 3,x 4) =x4− 2− 4x2≤ 0.
+1 ˆx =
+1
+4, 1
+8, 0, 5
+2
+
+et (λ1,λ 2) =
+
+0, 1
+4
+
+vériant Kuhn-Tucker.
+2 Calculons le plan tangent en ˆx à la surface S+ :
+S+ =
+
+x∈ R4, gi(ˆx) = 0, i∈I(ˆx) et λi > 0
+	
+=
+
+x∈ R4, g2(x) = 0 et λ2 = 1
+4
+
+Soit y = (a,b,c,d ), y∈T +(ˆx) donc yT∇g2(ˆx) = 0⇔d = 4b.
+Ainsi
+T +(ˆx) =
+
+(a,b,c, 4b), (a,b,c )∈ R3	
+.
+3 Calculons ∇2
+xxL(ˆx, ˆλ) :
+82 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Exemple (suite)
+L(x1,x 2,x 3,x 4, 0, 1
+4) = 4x2
+1− 2x1 + 4x2
+2 +x2
+3− x4
+4 + 1
+4(x4− 2− 4x2)
+Rappelons ˆx =
+1
+4, 1
+8, 0, 5
+2
+
+,
+∇2
+xxL(ˆx, ˆλ) =
+
+
+8 0 0 0
+0 8 0 0
+0 0 2 0
+0 0 0 0
+
+
+Soit y∈T +(ˆx), y = (a,b,c,d ), y̸= 0
+yT∇2
+xxL(ˆx, ˆλ)y = 8a2 + 8b2 + 2c2> 0, ∀y̸= 0
+D'après le théorème (condition susant du second ordre), ˆx =
+1
+4, 1
+8, 0, 5
+2
+
+est un
+minimum local du problème. On retrouve le résultat.
+83 / 84
+<<<PAGE>>>
+2. Partie II-Optimisation non-linéaire Optimisation avec contraintes d'inégalités
+Résumé de PCI
+1 Mettre les contraintes sous formes gi(x)≤ 0.
+2 Résoudre système de condition KuhnTucker
+3 Regarder si les fonctions ( f , gi) convexe/concave.
+Si oui, utiliser condition susante du 1er ordre
+Si non, utiliser condition susante du 2er ordre.
+Les questions liées au ce chapitre:
+Vérier un point est régulier?
+Déterminer le cône tangent
+Résoudre problème optimisation
+84 / 84

@@ -1,0 +1,128 @@
+CY Tech
+ING1 Mathématique
+Algèbre linéaire appliquée
+TD5 - Méthodes directes
+Exercice 22
+Écrire l'algorithme de résolution d'un système triangulaire inférieur.
+Exercice 23
+On se propose de résoudre le système Ax=b avec les valeurs de A et b suivantes :
+A=
+⎛
+⎜
+⎝
+0 3 1
+4 1 1
+2 2 4
+⎞
+⎟
+⎠
+et b=
+⎛
+⎜
+⎝
+1
+5
+6
+⎞
+⎟
+⎠
+On choisit de le faire par une factorisation LU .
+1. Quelle méthode préconisez-vous ? Justiez votre réponse.
+2. Indiquez les étapes du calcul de la solution x.
+3. Ecrire un programme pour eectuer :
+ la décomposition LU : DecoLU.py
+ la décomposition LU avec pivot maximal : DecoLUPivotMaximal.py
+Testez votre méthode de résolution et donnez la solution x.
+Indication : On doit trouver
+⎛
+⎜
+⎝
+1
+0
+1
+⎞
+⎟
+⎠
+Exercice 24
+Soit ε un réel quelconque et A=
+⎛
+⎜
+⎝
+1 1 −ε 3
+2 2 2
+3 6 4
+⎞
+⎟
+⎠
+1. Déterminer les valeurs de ε pour lesquelles A admet une factorisation LU .
+2. Déterminer les valeurs de ε pour lesquelles A n 'est pas inversible.
+Pour ces dites valeurs, A admet-elle une factorisation LU ?
+Exercice 25
+Soit n un entier naturel non nul.
+On note A la matrice carrée d'ordre n dénie par A= (ij−1)1≤i,j≤n.
+1. Implémenter l'algorithme de calcul de factorisation LU ou utiliser celui de l'exercice 2 : DecoLU.py
+Le modier pour qu'il compte les nombres d'opérations arithmétiques eectuées.
+68
+<<<PAGE>>>
+2. Calculer le nombre d'opérations du calcul de la factorisation LU de A pour n ∈
+{10, 20, 30, 40, 50, 60}.
+Représenter graphiquement le résultat.
+3. Retrouver l'ordre de complexité de la méthode.
+Indication. On pourra utiliser :
+ les logarithmes de n et des nombres d'opéraions ;
+ la commande LinregressResult de Scipy qui permet de calculer les coecients de régression
+linéaire d'un nuage de points.
+Exercice 26
+Soit A=
+⎛
+⎜
+⎝
+1 1 + 5⋅ 10−16 3
+2 2 20
+3 6 4
+⎞
+⎟
+⎠
+.
+1. Vérier que A est inversible et qu'elle admet une factorisation LU .
+2. Calculer la factorisation LU de A à l'aide du code de l'exercice précédent.
+Vérier que A−LU =
+⎛
+⎜
+⎝
+0 0 0
+0 0 0
+0 0 4
+⎞
+⎟
+⎠
+. Expliquer.
+3. Analyser la diérence entre ce résultat et celui obtenu avec la fonction scipy.linalg.lu .
+Exercice 27
+Soit n un entier naturel non nul et A une matrice carrée d'ordre n inversible.
+1. On suppose que A admet une factorisation LU .
+Montrer qu'il existe un algorithme de complexité (n3) pour calculer A−1.
+2. Est-ce toujours possible si A admet une factorisation LU avec pivot partiel ?
+Matrices creuses
+Exercice 28
+Soit A=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+1 0 0 0 1 0 0 0
+0 1 1 0 0 1 0 1
+0 1 1 0 1 0 0 0
+0 0 0 1 0 0 1 0
+1 0 1 0 1 0 0 0
+0 1 0 0 0 1 0 1
+0 0 0 1 0 0 1 1
+0 1 0 0 0 1 1 1
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+.
+1. Quelle est la largeur de bande de A ?
+2. Quelle est la nouvelle largeur de bande :
+(a) après application de l'algorithme de Cuthill-McKee ?
+(b) après application de l'algorithme de Cuthill-McKee inversé ?
+69

@@ -1,0 +1,130 @@
+ING1 - GI/GM/DU-CPI/MIM
+Rattrapage Data Exploration
+D´ epartement :Math´ ematiques Date : 5 f´ evrier 2024
+Nombre de pages : 3 Dur´ ee : 2h
+2 feuilles manuscrites recto verso et calcultarice autoris´ ees.
+Exercice 1. -
+On s’int´ eresse au lien qu’il peut y avoir entre l’esp´ erance de vie (en ann´ ees) et le PIB par habitant (en
+milliers de dollars en 2017) dans 209 pays (donn´ ees du Fonds Mon´ etaires International FMI). Le tableau
+ci-dessous repr´ esente certaines valeurs recueillies par pays.
+Pays Esp´ erance de vie PIB/habitant
+Albanie 77.22 7.7
+Alg´ erie 74.26 7.1
+Samoa am´ ericaines 73.97 8.0
+Andorre 82.36 44.9
+Angola 38.48 8.3
+Anguilla 80.77 12.2
+Antigua et Barbuda 75.26 17.2
+... ... ...
+1. Quelle est la population ´ etudi´ ee ? Donner sa taille. Quelles sont les variables ´ etudi´ ees ? Donner
+leur type.
+2. (a) Quelle forme particuli` ere du nuage de points entre les deux variables ´ etudi´ ees va nous diriger
+vers une mod´ elisation par la m´ ethode de r´ egression ?
+(b) Quelle peut ˆ etre l’inﬂuence d’une valeur atypique sur la droite de r´ egression ?
+(c) Quels risques peut impliquer la suppression d’une valeur atypique unique, en terme d’apparition
+de nouvelles valeurs atypiques ?
+3. On note X le PIB (par habitant) et Y l’esp´ erance de vie. On dispose des calculs interm´ ediaires
+suivants :
+n∑
+i=1
+xi = 3420 ,
+n∑
+i=1
+yi = 14728 ,
+n∑
+i=1
+x2
+i = 126677 ,
+n∑
+i=1
+y2
+i = 1058461 et
+n∑
+i=1
+xiyi = 257436.
+(a) D´ eterminer les moyennes et les ´ ecarts-types de X et Y ainsi que la covariance entre X et Y.
+(b) En d´ eduire le coeﬃcient de corr´ elation entre ces deux variables. Interpr´ eter.
+(c) D´ eterminer la droite de r´ egression de l’esp´ erance de vie en fonction du PIB.
+(d) Donner une estimation de l’esp´ erance de vie dans un pays ayant un PIB/habitant de 15 milliers
+de dollars.
+4. En utilisant le logiciel R sur ces donn´ ees restreintes aux trente pays ayant le plus fort PIB,
+on a obtenu le r´ esultat suivant :
+1
+<<<PAGE>>>
+(a) Donner le pourcentage de variance de l’esp´ erance de vie expliqu´ ee par le PIB.
+(b) Donner une estimation du coeﬃcient de corr´ elation entre l’esp´ erance de vie et le PIB.
+(c) D´ eterminer la droite de r´ egression de l’esp´ erance de vie en fonction du PIB.
+(d) Pouvez-vous comparer les r´ esultats obtenus avant et apr` es la s´ election des pays ? Peut-on
+faire conﬁance aux r´ esultats obtenus sur les 30 pays ?
+Exercice 2. -
+On souhaite savoir s’il existe un lien entre l’ˆ age du conducteur ou conductrice et le nombre d’accidents.
+Pour cela on a fait une sondage et on a regroup´ e les r´ esultats dans le tableau de contingence suivant :
+Classes d’ˆ age
+nombre d’accidents 18-30 31-40 41-50 51-60 61-70 >70 Total
+aucun 758 851 786 723 693 691 4502
+un seul 74 62 51 66 50 35 338
+deux accidents 31 25 22 18 15 10 121
+plus que deux accidents 9 10 6 5 7 2 39
+Total 872 948 865 812 765 738 5000
+1. On note ni,j l’eﬀectif de la i-` eme modalit´ e du nombre d’accidents et laj-` eme modalit´ e des classes
+d’ˆ age, etfi,j la fr´ equence correspondante.
+D´ eterminer les valeurs den2,1, de n,3 et de f2, en indiquant ce que ces valeurs repr´ esentent.
+2. Aﬁn d’avoir une premi` ere impression du lien ´ eventuel entre ˆ age et nombre d’accidents, on dresse
+le tableau suivant :
+Classes d’ˆ age
+nombre d’accidents 18-30 31-40 41-50 51-60 61-70 >70
+aucun 0,869 0,898 0,909 0,890 0,906 0,936
+un seul 0,085 0,065 0,059 0,081 0,065 0,047
+deux accidents 0,036 0,026 0,025 0,022 0,020 0,014
+plus que deux accidents 0,010 0,011 0,007 0,006 0,009 0,003
+Indiquer, en justiﬁant votre r´ eponse, s’il s’agit d’un tableau de fr´ equences, de proﬁls-lignes ou de
+proﬁls-colonnes ?
+3. A quel proﬁl moyen doit-on le comparer ? Calculer ce proﬁl moyen.
+4. Faites cette comparaison et donner une premi` ere r´ eponse ` a la question du lien ou de l’ind´ ependance
+entre ˆ age et nombre d’accidents.
+5. Aﬁn de donner une r´ eponse plus pr´ ecise, nous construisons le tableau de contingence th´ eorique
+suivant :
+2
+<<<PAGE>>>
+Classes d’ˆ age
+nombre d’accidents 18-30 31-40 41-50 51-60 61-70 >70 Total
+aucun 785,1 853,6 778,8 731,1 688,8 664,5 4502
+un seul 58,9 64,1 58,5 54,9 51,7 49,9 338
+deux accidents 21,1 22,9 20,9 19,7 18,5 17,9 121
+plus que deux accidents 6,8 7,4 6,7 6,3 6,0 5,8 39
+Total 872 948 865 812 765 738 5000
+6. Quelle est l’hypoth` ese qui permet de calculer ces eﬀectifs th´ eoriques ? Donner la formule permettant
+de calculer la valeur d’une cellule, et appliquer la pour obtenir la valeur de la cellule en gras.
+7. La distance du khi2 calcul´ ee entre les eﬀectifs th´ eoriques et observ´ es a ´ et´ e calcul´ ee et vaut :
+χ2 = 27.57. Expliquer comment elle est calcul´ ee.
+8. D´ eterminer le nombre de degr´ es de libert´ e de cette distance et utiliser la table suivante pour
+conclure le test d’ind´ ependance.
+nombre de degr´ es de libert´ e 11 12 13 14 15 16
+Seuil du χ2 19.68 21.03 22.36 23.68 25.00 26.30
+Exercice 3. -
+On s’int´ eresse ici au lien ´ eventuel entre la dur´ ee de chˆ omage et la cat´ egorie socio-professionnelle.
+Nous disposons des donn´ ees concernant la dur´ ee de chˆ omage (exprim´ ee en nombre de semaines) de
+n1 = 25 cadres(Cad), n2 = 50 ouvriers qualiﬁ´ es(OQ) etn3 = 75 ouvriers non qualiﬁ´ es(ONQ).
+Voici un aper¸ cu du ﬁchier de donn´ ees nomm´ e ”chomage.csv” :
+Dur´ ee Cat´ egorie
+2 OQ
+4 Cad
+0 Cad
+11 ONQ
+1 OQ
+... ...
+Le r´ esum´ e num´ erique de la dur´ ee de chˆ omage global et par cat´ egorie est le suivant :
+Cat´ egorie Eﬀectif Moyenne Variance
+Cad 25 3.92 1.51
+OQ 50 7.34 5.26
+ONQ 75 6.74 3.15
+Total 150 6.47 4.96
+1. Donner la formule permettant de calculer la moyenne pour la cat´ egorie OQ et la formule de la
+variance pour la cat´ egrie Cadres.
+2. Calculer la variance intra-classes.
+3. Calculer la variance inter-classes sans utiliser le r´ esultat pr´ ec´ edent.
+4. Quelle formule lie les 2 variances pr´ ec´ edentes ? V´ erifer ` a l’aide de vos 2 calculs pr´ ec´ edents cette
+formule.
+5. Calculer le rapport de corr´ elation et donner une r´ eponse ` a la question pos´ ee sur le lien entre
+cat´ egorie et dur´ ee de chˆ omage.
+3

@@ -1,0 +1,961 @@
+Algèbre Linéaire Appliquée
+Corrigé du TD2
+CY Tech - ING1 Mathématiques
+12 octobre 2025
+1
+<<<PAGE>>>
+Exercice 8 : Méthode du point fixe pour une équation du second
+degré
+Question :On cherche à résoudre l’équationx2−2x−3 = 0par une méthode de point fixe.
+1. Déterminer les solutions exactes.
+Solution Détaillée
+C’est une équation du second degré. On calcule le discriminant∆ =b2−4ac.
+∆ = (−2)2−4(1)(−3) = 4 + 12 = 16 = 4 2
+Les solutions sont donc :
+x1,2 =−b±
+√
+∆
+2a = 2±4
+2
+Ce qui nous donne deux racines distinctes :
+—x 1 = 2−4
+2 =−1
+—x 2 = 2+4
+2 = 3
+2. Appliquer l’algorithme de point fixe pourg1,g 2,g 3 en partant dex0 = 4.
+Rappel du Cours
+La méthode du point fixe consiste à transformer une équationf(x) = 0en une forme
+équivalentex=g(x). On construit ensuite une suite(x k)k par la relation de récurrence
+xk+1 =g(x k).
+La convergence de la méthode est assurée localement si la fonctiongest contractante,
+c’est-à-dire si|g′(r)|<1au voisinage de la raciner.
+Solution Détaillée
+On part dex0 = 4et on calcule les premiers termes pour chaque fonction.
+—Pourg 1(x) =√2x+ 3:
+x1 =g 1(4) =
+p
+2(4) + 3 =
+√
+11≈3.3166
+x2 =g 1(3.3166) =
+p
+2(3.3166) + 3 =
+√
+9.6332≈3.1037
+x3 =g 1(3.1037) =
+p
+2(3.1037) + 3 =
+√
+9.2074≈3.0344
+...
+—Pourg 2(x) = 3
+x−2 :
+x1 =g 2(4) = 3
+4−2 = 1.5
+x2 =g 2(1.5) = 3
+1.5−2 = 3
+−0.5 =−6
+x3 =g 2(−6) = 3
+−6−2 =−0.375
+x4 =g 2(−0.375) = 3
+−0.375−2 = 3
+−2.375≈−1.2631
+...
+2
+<<<PAGE>>>
+—Pourg 3(x) = x2−3
+2 :
+x1 =g 3(4) = 42−3
+2 = 13
+2 = 6.5
+x2 =g 3(6.5) = 6.52−3
+2 = 42.25−3
+2 = 19.625
+x3 =g 3(19.625) = 19.6252−3
+2 ≈191.07
+...
+3. Dans quels cas converge-t-on apparemment, et vers quelle racine?
+Conclusion
+— La suite générée parg1 semble converger vers la racinex2 =3.
+— La suite générée parg2 semble converger (en oscillant) vers la racinex1 =−1.
+— La suite générée parg3 diverge très rapidement.
+4. Expliquer les résultats que vous constatez.
+Solution Détaillée
+Pour expliquer la convergence, nous devons étudier la condition|g′(r)|<1pour chaque
+fonction au voisinage des racinesr=−1etr= 3.
+Calculons d’abord les dérivées :
+—g ′
+1(x) = 2
+2√2x+3 = 1√2x+3
+—g ′
+2(x) = −3
+(x−2)2
+—g ′
+3(x) =x
+Évaluons maintenant ces dérivées aux points fixes (les racines) :
+Dérivée Valeur enr 1 =−1 Valeur enr 2 = 3
+g′
+1(x) |g′
+1(−1)|=| 1√
+1|= 1 |g′
+1(3)|=| 1√
+9|= 1
+3 <1
+g′
+2(x) |g′
+2(−1)|=| −3
+(−3)2|= 1
+3 <1 |g′
+2(3)|=| −3
+(1)2|= 3>1
+g′
+3(x) |g′
+3(−1)|=|−1|= 1 |g′
+3(3)|=|3|= 3>1
+Analyse des résultats :
+—Pourg 1 :La condition de convergence est strictement vérifiée pourr 2 = 3
+(|g′
+1(3)|= 1/3<1). La méthode converge donc vers 3. Pourr1 =−1,|g ′
+1(−1)|= 1,
+la convergence n’est pas garantie et est généralement très lente (convergence sous-
+linéaire).
+—Pourg 2 :La condition de convergence est strictement vérifiée pourr 1 =−1
+(|g′
+2(−1)|= 1/3<1). La méthode converge donc vers -1. Pourr 2 = 3,|g ′
+2(3)|=
+3>1, le point fixe est répulsif, la méthode diverge de ce point.
+—Pourg 3 :Pourr 2 = 3, on a|g′
+3(3)|= 3>1, donc le point est répulsif. Comme
+notre point de départx0 = 4est proche de 3, la suite s’éloigne rapidement de cette
+racine. Pourr 1 =−1,|g ′
+3(−1)|= 1, la convergence n’est pas garantie.
+3
+<<<PAGE>>>
+Exercice 9 : Étude d’une famille de fonctions pour le point fixe
+Question :Soitλ∈R. On poseg(x) =λx(1−x).
+Modifions la condition deλenλ∈R ∗ car autrement il est inutile d’étudier la
+fonctiongnulle.
+1. Déterminer les points fixes de la fonction g.
+Rappel du Cours
+Par définition un point fixe d’une fonctiongest une valeurrqui reste invariante par cette
+fonction, c’est-à-dire une solution de l’équationg(r) =r.
+Solution Détaillée
+On résout l’équationg(x) =xpour trouver les points fixes :
+λx(1−x) =x
+λx−λx 2 =x
+λx−λx 2−x= 0
+x(λ−λx−1) = 0
+Cette équation produit deux solutions :
+— Soitx= 0. C’est notre premier point fixe et on va le symboliser par,r1(λ) = 0.
+— Soitλ−λx−1 = 0. En isolantx, on trouveλx=λ−1. Siλ̸= 0, on obtient le
+second point fixe et on va le symboliser par,r2(λ) = λ−1
+λ .
+Conclusion
+La fonctiongadmet deux points fixes :
+—r 1(λ) = 0.
+—r 2(λ) = 1− 1
+λ.
+2. Déterminer pour chaque point fixe, les valeurs deλpour lesquelles ce point
+fixe est attractif.
+Rappel du Cours
+Un point fixer, dans notre exercice noté parri(λ)pour touti∈{1,2}, est ditattractifsi
+la méthode du point fixe converge localement vers lui. Une condition suffisante pour cela
+est que la fonctiongsoit contractante au voisinage der, ce qui se traduit par l’inégalité :
+|g′(r)|<1
+Attention, ceci est une condition suffisante, il se peut qu’on ait un autre en-
+semble de fonctionsgvérifiant une autre hypothèse que|g′(r)|<1au voisinage
+derafin que la méthode du point fixe converge localement versr..
+Solution Détaillée
+D’abord, calculons la dérivée deg:
+g′(x) =λ−2λx=λ(1−2x)
+4
+<<<PAGE>>>
+Cas du point fixer1(λ):
+— On évalue la dérivée enr1(λ):g ′(0) =λ(1−2(0)) =λ.
+— On applique la condition de convergence :|g′(0)|<1 =⇒ |λ|<1.
+— Le point fixer1(λ)est donc attractif si et seulement siλ∈]−1,1[.
+Cas du point fixer2(λ):
+— On évalue la dérivée enr2(λ):
+g′
+λ−1
+λ
+
+=λ
+
+1−2 λ−1
+λ
+
+=λ
+λ−2(λ−1)
+λ
+
+=λ−2λ+ 2 = 2−λ
+— On applique la condition de convergence :|g′(r2(λ))|<1 =⇒ |2−λ|<1.
+— On résout l’inégalité :
+−1<2−λ<1
+−1−2<−λ<1−2
+−3<−λ<−1
+1<λ<3
+— Le point fixer2(λ)est donc attractif si et seulement siλ∈]1,3[.
+3. Déterminer la valeur deλpour laquelle la convergence sera quadratique.
+Lien entre le Développement de Taylor et la Convergence Quadra-
+tique
+Rappel du Cours
+Pour une méthode de point fixexk+1 =g(x k)qui converge vers une raciner, on définit
+l’erreur à l’itérationkpare k =x k−r.
+L’erreur à l’itération suivante est donc :
+ek+1 =x k+1−r=g(x k)−g(r)
+Puisquex k =r+e k, on peut écrire :
+ek+1 =g(r+e k)−g(r)
+Cette relation est la base de l’analyse de convergence.
+1. Application du Développement de Taylor
+On effectue un développement de Taylor de la fonctiong(r+ek)au voisinage der. En
+supposantgsuffisamment dérivable, on a :
+g(r+e k) =g(r) +g ′(r)ek + g′′(r)
+2! e2
+k + g′′′(r)
+3! e3
+k +...
+En substituant cette expansion dans l’équation de l’erreurek+1 =g(r+e k)−g(r), on
+obtient :
+ek+1 =
+
+g(r) +g′(r)ek + g′′(r)
+2 e2
+k +...
+
+−g(r)
+Ce qui se simplifie en :
+ek+1 =g′(r)ek + g′′(r)
+2 e2
+k +O(e 3
+k)
+2. Application des conditions spécifiques
+5
+<<<PAGE>>>
+Maintenant, appliquons les conditions (c’est une hypothèse surgque nous écrivons)
+g′(r) =0etg ′′(r)̸=0.
+— Commeg′(r) = 0, le premier terme du développement (g′(r)ek) s’annule.
+— Le terme dominant qui reste est celui ene2
+k.
+L’expression de l’erreur devient alors, en négligeant les termes d’ordre supérieur à 2 :
+ek+1≈ g′′(r)
+2 e2
+k
+L’expression finaleek+1≈ g′′(r)
+2 e2
+k correspond exactement à la forme générale de la conver-
+gence quadratiqueek+1≈C·e 2
+k (c’est ça la définition).
+On identifie même la constante de convergence asymptotique :C=
+g′′(r)
+2
+.
+C’est donc bien le développement de Taylor quiprouveque la conditiong′(r) = 0(avec
+g′′(r)̸= 0) est une condition suffisante pour garantir une convergence d’ordre 2 (quadra-
+tique) pour une méthode de point fixe.
+Solution Détaillée
+Nous avons les dérivées deg:
+—g ′(x) =λ(1−2x)
+—g ′′(x) =−2λ
+Nous appliquons les conditions de convergence quadratique à nos deux points fixes :
+r1(λ) = 0etr 2(λ) = 1− 1
+λ.
+Analyse pour le point fixer1(λ) = 0:
+1.Conditiong ′(r1) = 0:
+g′(0) =λ(1−2(0)) =λ
+Pour que cette dérivée soit nulle, il faut queλ=0.
+2.Conditiong ′′(r1)̸= 0:
+g′′(0) =−2λ̸= 0
+Rappel : on avait dès le départλ̸= 0.
+Conclusion pourr 1 :La convergence quadratique n’est pas atteinte au sens strict. Le
+casλ= 0est un cas dégénéré où la fonctiongdevient identiquement nulle et on avait dès
+le départ exclu ce cas qui n’est pas du tout intéressant, et la suite atteintr1 = 0en une
+seule étape de manière triviale.
+Analyse pour le point fixer2(λ) = 1− 1
+λ :
+1.Conditiong ′(r2) = 0:Nous avons déjà calculég ′(r2) = 2−λ.
+2−λ= 0 =⇒λ=2
+2.Conditiong ′′(r2)̸= 0:La dérivée secondeg ′′(x) =−2λest une constante (elle
+ne dépend pas dex). Pourλ= 2, on a :
+g′′(r2) =−2(2) =−4
+Puisque−4̸= 0, la deuxième condition est bien remplie.
+6
+<<<PAGE>>>
+Conclusion
+La convergence de la méthode du point fixe estquadratiquepour le point fixer2(λ)si
+et seulement siλ=2.
+Dans ce cas, le point fixe estr2(2) = 1− 1
+2 = 1
+2.
+7
+<<<PAGE>>>
+Exercice 10 : Vitesse de convergence de la méthode de Newton
+Question :On considère six fonctions ayant toutesα=
+√
+2pour zéro et on analyse la
+convergence de la méthode de Newton à partir dex0 = 1.
+1. Compléter le tableau des dérivées enx=
+√
+2.
+Solution Détaillée
+Pour chaque fonction, nous devons calculer la dérivée premièref′(x)et secondef ′′(x),
+puis les évaluer enx=
+√
+2.
+—f(x) =x 2−2 =⇒f ′(x) = 2x,f′′(x) = 2
+—g(x) =x 2−
+√
+3x+ (
+√
+6−2) =⇒g ′(x) = 2x−
+√
+3,g′′(x) = 2
+—h(x) =x 2−2x+ (2
+√
+2−2) =⇒h ′(x) = 2x−2,h ′′(x) = 2
+—i(x) = (x−
+√
+2)4 + 1
+2(x−
+√
+2) =⇒i ′(x) = 4(x−
+√
+2)3 + 1
+2,i′′(x) = 12(x−
+√
+2)2
+—j(x) = 1
+8(e4(x−
+√
+2)−1) =⇒j ′(x) = 1
+2e4(x−
+√
+2),j′′(x) = 2e4(x−
+√
+2)
+—k(x) = 1
+2(x−
+√
+2) =⇒k ′(x) = 1
+2,k′′(x) = 0
+En évaluant enx=
+√
+2, on obtient le tableau suivant :
+f g h i j k
+Dérivée 1ère en
+√
+2 2
+√
+2 2
+√
+2−
+√
+3 2
+√
+2−2 1
+2
+1
+2
+1
+2
+Dérivée 2nde en
+√
+2 2 2 2 0 2 0
+2. Tracer sur la figure (2.5) les quatre premiers termes des suites associées.
+Rappel du Cours
+Interprétation géométrique de la méthode de Newton :La méthode de Newton
+consiste à construire une suite d’approximations de la racine d’une fonctionf. Pour passer
+d’un pointxn au suivantxn+1 :
+1. On se place au point(xn,f(x n))sur la courbe de la fonction.
+2. On trace latangenteà la courbe en ce point.
+3. Le nouveau point,xn+1, est l’abscisse de l’intersectionde cette tangente avec
+l’axe des abscisses (y= 0).
+Solution Détaillée
+D’abord, calculons les valeurs des quatre premiers termes pour chaque suite, en partant
+dex 0 = 1.
+Pour la suitexf
+n (fonctionf(x) =x 2−2) :
+—x f
+0 = 1
+—x f
+1 = 1.5
+—x f
+2 = 1.41666...
+—x f
+3 = 1.414215...
+Pour la suitexg
+n (fonctiong(x) =x 2−
+√
+3x+
+√
+6−2) :
+—x g
+0 = 1
+—x g
+1≈2.056
+—x g
+2≈1.588
+—x g
+3≈1.435
+Construction graphique sur la Figure 2.5 :
+8
+<<<PAGE>>>
+1.Pourx f
+1 :
+— Placez le point(x0,f(x 0)) = (1,−1)sur la courbe noire def.
+— Tracez la tangente à la courbe en ce point.
+— L’abscisse où cette tangente coupe l’axe desy= 0estx f
+1 = 1.5.
+2.Pourx f
+2 :
+— Placez le point(x1,f(x 1)) = (1.5,0.25)sur la courbe def.
+— Tracez la tangente en ce nouveau point.
+— L’intersection de cette tangente avec l’axe des abscisses vous donneraxf
+2 ≈
+1.417.
+3. Répétez le processus pourxf
+3. Vous verrez que les points se rapprochent très vite
+de
+√
+2.
+4.Faites de même pour la fonction g(courbe rouge), en partant du même point
+x0 = 1. Vous observerez que la convergence est visiblement plus lente, comme
+discuté dans la question 6.
+Conclusion
+Le tracé des tangentes successives et de leurs intersections avec l’axe des abscisses permet
+de visualiser la convergence des suites de Newton. On constate graphiquement que la
+suite associée à la fonctionf(courbe noire) s’approche de la racine
+√
+2beaucoup plus
+rapidement que celle associée à la fonctiong(courbe rouge).
+3. Que se passe-t-il pour la fonction h?
+Solution Détaillée
+La méthode de Newton est définie par la suitexn+1 =x n− h(xn)
+h′(xn). Le point de départ est
+x0 = 1.
+Calculons la dérivée dehen ce point :h′(x) = 2x−2.
+h′(1) = 2(1)−2 = 0
+La dérivée est nulle enx0 = 1. L’expression dex 1 nécessiterait une division par zéro, ce
+qui est impossible.
+Interprétation géométrique :La tangente à la courbe dehau point d’abscissex0 = 1
+est horizontale. Elle ne coupe donc jamais l’axe des abscisses pour fournir une nouvelle
+approximation. La méthode de Newton échoue dès la première itération.
+9
+<<<PAGE>>>
+5. Que se passe-t-il pour la fonction k?
+Solution Détaillée
+La fonctionk(x) = 1
+2(x−
+√
+2)est une fonction affine (une droite). La méthode de Newton
+consiste à approcher la fonction par sa tangente. Or, pour une droite, la tangente en
+n’importe quel point est la droite elle-même.
+Ainsi, dès la première itération, l’intersection de la tangente avec l’axe des abscisses est
+exactement la racine de la fonction.
+x1 =x 0− k(x0)
+k′(x0) = 1−
+1
+2(1−
+√
+2)
+1
+2
+= 1−(1−
+√
+2) =
+√
+2
+La méthode converge enune seule itération.
+6. Classer les fonctions f et g selon la vitesse de convergence.
+Conclusion
+La méthode de Newton appliquée àf converge plus viteque pour g.
+Solution Détaillée
+Explication :L’erreur de la méthode de Newton pour une racine simpleαvérifie ap-
+proximativemente n+1≈ f ′′(α)
+2f ′(α)e2
+n. Pour une convergence rapide, il est préférable que le
+facteur
+f ′′(α)
+2f ′(α)
+ soit petit.
+Ici,f ′′(
+√
+2) =g ′′(
+√
+2) = 2. La vitesse de convergence dépend donc de la valeur de la
+dérivée première au voisinage de la racine.
+—|f ′(
+√
+2)|= 2
+√
+2≈2.83
+—|g ′(
+√
+2)|= 2
+√
+2−
+√
+3≈2.83−1.73 = 1.10
+Puisque|f ′(
+√
+2)|est plus grand, le facteur
+f ′′
+2f ′
+ est plus petit pourf. Géométriquement,
+une pente plus forte au niveau de la racine signifie que la tangente coupe l’axe desxplus
+près de la racine, accélérant la convergence.
+7. Classer les fonctions i, j et k selon la vitesse de convergence.
+Conclusion
+L’ordre de convergence, du plus rapide au plus lent, est :k>i>j.
+Solution Détaillée
+Explication :Les trois fonctions ont la même dérivée première en
+√
+2(1/2). La différence
+de vitesse vient donc des dérivées d’ordre supérieur.
+—Fonction k :La convergence est exacte en une étape (voir question 5). C’est le
+cas le plus rapide possible. Cela est dû au fait quek′′(x) = 0pour toutx.
+—Fonction i :On ai ′(
+√
+2) = 1/2eti ′′(
+√
+2) = 0. Le fait que la dérivée seconde
+s’annule à la racine implique une convergence d’ordre supérieur à 2 (en l’occurrence,
+d’ordre 3), ce qui est extrêmement rapide.
+—Fonction j :On aj ′(
+√
+2) = 1/2maisj ′′(
+√
+2) = 2̸= 0. La convergence est donc
+quadratique standard.
+10
+<<<PAGE>>>
+Ainsi, la convergence "instantanée" dekest plus rapide que la convergence cubique dei,
+qui est elle-même plus rapide que la convergence quadratique dej.
+8. Expliquer pourquoi les fonctions g, h, i, j, k ne sont pas très adaptées pour
+calculer des approximations de
+√
+2.
+Solution Détaillée
+Le but est de calculer une approximation d’un nombre que l’on ne connaît pas. Or, pour
+évaluer les fonctionsg(x),h(x),i(x),j(x)etk(x)(ou leurs dérivées), il est nécessaire d’uti-
+liser la valeur de
+√
+2,
+√
+3ou
+√
+6dans les calculs.
+Par exemple, pour calculerg(1) = 1 2−
+√
+3(1) + (
+√
+6−2), il faut déjà connaître
+√
+3et√
+6. C’est un raisonnement circulaire : on ne peut pas utiliser la valeur que l’on cherche à
+calculer dans le processus de calcul lui-même.
+Seule la fonctionf(x) =x 2−2et ses dérivées (f′(x) = 2x,f ′′(x) = 2) n’utilisent que des
+opérations et des nombres rationnels. Elle est donc la seule fonction de la liste qui soit
+réellement utilisable en pratique pour trouver une approximation de
+√
+2.
+11
+<<<PAGE>>>
+Exercice 11 : Épaisseur maximale d’un profil d’aile NACA
+Question :Déterminer la valeur dexoù l’épaisseur du profil d’aile est maximale en utilisant
+la méthode de Newton.
+Rappel du Cours
+Justification de l’approche :Pour trouver la valeur dexqui maximise une fonction
+différentiablet(x),ilfauttrouverlespointsoùsadérivéepremières’annule.Nouscherchons
+donc à résoudre l’équation :
+t′(x) = 0
+Il s’agit d’un problème de recherche de zéro, pour lequel laméthode de Newtonest
+parfaitement adaptée.
+La formule itérative de Newton estxk+1 =x k− f(x k)
+f ′(xk).
+Dans notre cas, la fonction dont on cherche le zéro estf(x) =t′(x). La formule devient
+donc :
+xk+1 =x k− t′(xk)
+t′′(xk)
+Solution Détaillée
+1. Calcul des dérivées
+La fonction de demi-épaisseur est donnée part(x) =T·(3.7x1/2−3.4x−0.3x 4). On peut
+ignorer la constante multiplicativeTpour la recherche du zéro de la dérivée.
+—Dérivée première :
+t′(x) =T
+ 3.7
+2√x−3.4−1.2x 3
+
+—Dérivée seconde :
+t′′(x) =T
+
+−3.7
+4 x−3/2−3.6x 2
+
+=T
+
+−0.925
+x√x−3.6x 2
+
+2. Application de la méthode de Newton
+Le corrigé suggère de partir du point initialx0 = 0.3.
+Première itération :On calculet′(0.3)ett ′′(0.3)(en omettantT) :
+t′(0.3)/T= 1.85√
+0.3−3.4−1.2(0.3) 3≈3.3779−3.4−0.0324 =−0.0545
+t′′(0.3)/T=− 0.925
+(0.3)
+√
+0.3−3.6(0.3) 2≈−5.6293−0.324 =−5.9533
+On peut maintenant calculerx1 :
+x1 =x 0− t′(x0)
+t′′(x0) = 0.3− −0.0545
+−5.9533≈0.3−0.00915 =0.29085
+Deuxième itération :On repart dex1≈0.29085.
+t′(0.29085)/T= 1.85√
+0.29085−3.4−1.2(0.29085) 3≈3.4305−3.4−0.0295≈0.001
+t′′(0.29085)/T=− 0.925
+(0.29085)
+√
+0.29085−3.6(0.29085) 2≈−5.8847−0.3046≈−6.1893
+On calculex 2 :
+x2 =x 1− t′(x1)
+t′′(x1)≈0.29085− 0.001
+−6.1893≈0.29085 + 0.00016 =0.29101
+12
+<<<PAGE>>>
+Conclusion
+Après deux itérations, on obtient une excellente approximation de la solution. La suite
+des itérés converge très rapidement :
+—x 0 = 0.3
+—x 1≈0.29085
+—x 2≈0.29101
+La valeur exacte est proche de0.29098. On observe bien la convergence quadratique ca-
+ractéristique de la méthode de Newton. L’épaisseur maximale de l’aile se trouve donc à
+environ 29.1% de la corde à partir du bord d’attaque.
+13
+<<<PAGE>>>
+Exercice 12 : Intersection d’un cercle et d’une ellipse
+Question :Déterminer les points d’intersection d’un cercle avec une ellipse situés dans le
+premier cadran, par la méthode de Newton vectorielle.
+1. Formulation du problème
+Solution Détaillée
+On cherche à résoudre le système d’équations non linéaires suivant :
+(
+x2 +y 2 = 2
+x2 + (4y)2 = 4 ⇐⇒
+(
+x2 +y 2−2 = 0
+x2 + 16y2−4 = 0
+Ce problème revient à trouver les zéros de la fonctionF:R2→R 2 définie par :
+F(x,y) =
+f1(x,y)
+f2(x,y)
+
+=
+ x2 +y 2−2
+x2 + 16y2−4
+
+On note le vecteur des inconnuesX=
+x
+y
+
+. Le problème est donc de trouverXtel que
+F(X) = 0.
+2. Solution Analytique (pour comparaison)
+Solution Détaillée
+On peut résoudre ce système directement pour trouver la solution exacte et évaluer la
+précision de la méthode numérique. En soustrayant la première équation à la seconde, on
+obtient :
+(x2 + 16y2−4)−(x 2 +y 2−2) = 0
+15y2−2 = 0
+y2 = 2
+15
+Comme on cherche une solution dans le premier cadran (y≥0), on ay=
+q
+2
+15.
+On remplacey 2 dans la première équation pour trouverx:
+x2 + 2
+15 = 2 =⇒x 2 = 2− 2
+15 = 30−2
+15 = 28
+15
+Comme on est dans le premier cadran (x≥0), on ax=
+q
+28
+15.
+La solution exacte est doncX∗ =
+p
+28/15p
+2/15
+
+≈
+ 1.36626
+0.365148
+
+.
+14
+<<<PAGE>>>
+3. Méthode de Newton Vectorielle
+Rappel du Cours
+Le principe de la méthode de Newton dans le cas vectoriel est décrit à lasection 2.2.2
+(page 37)du cours. À partir d’un point initialXk, on trouve le point suivantXk+1 en
+deux étapes :
+1. Résoudre le système linéaire :J F (Xk)·Y k =−F(X k), oùY k est le vecteur de
+correction.
+2. Mettre à jour la solution :Xk+1 =X k +Yk.
+JF (X)est la matrice Jacobienne de la fonctionFau pointX.
+Solution Détaillée
+Étape 1 : Calculer la matrice Jacobienne
+La Jacobienne deF(x,y) =
+ x2 +y 2−2
+x2 + 16y2−4
+
+est :
+JF (X) =
+ ∂f1
+∂x
+∂f1
+∂y
+∂f2
+∂x
+∂f2
+∂y
+!
+=
+2x2y
+2x32y
+
+Étape 2 : Appliquer une itération manuellement
+Le fichier Python ‘TD2-Exo12.py‘ fourni avec le TD utilise le point de départX0 =
+1.3
+0.3
+
+.
+Effectuons la première itération.
+—Calcul deF(X 0):
+F(X 0) =
+ (1.3)2 + (0.3)2−2
+(1.3)2 + 16(0.3)2−4
+
+=
+1.69 + 0.09−2
+1.69 + 1.44−4
+
+=
+−0.22
+−0.87
+
+—Calcul deJ F (X0):
+JF (X0) =
+2(1.3) 2(0.3)
+2(1.3) 32(0.3)
+
+=
+2.6 0.6
+2.6 9.6
+
+—Résolution du systèmeJ F (X0)·Y 0 =−F(X 0):
+2.6 0.6
+2.6 9.6
+
+Y0 =−
+−0.22
+−0.87
+
+=
+0.22
+0.87
+
+En soustrayant la première ligne de la seconde, on a(9.6−0.6)∆y 0 = 0.87−
+0.22 =⇒9∆y 0 = 0.65, soit∆y 0≈0.07222. En réinjectant dans la première ligne :
+2.6∆x0 + 0.6(0.07222) = 0.22 =⇒2.6∆x 0≈0.17667, soit∆x 0≈0.06795. Le
+vecteur correction estY0≈
+0.06795
+0.07222
+
+.
+—Mise à jour de la solution:
+X1 =X 0 +Y 0 =
+1.3
+0.3
+
++
+0.06795
+0.07222
+
+=
+1.36795
+0.37222
+
+Après une seule itération, on est déjà très proche de la solution exacteX ∗ ≈
+(1.36626,0.365148).
+15
+<<<PAGE>>>
+Conclusion
+La méthode de Newton vectorielle converge très rapidement. Le fichier ‘TD2-Exo12.py‘
+montre que la solution est trouvée avec une précision de10−4 en seulement3 itérations.
+—Solution numérique finale :Xfinal =
+1.36626004
+0.36514837
+
+—Solution analytique :X ∗ =
+1.36626010
+0.36514837
+
+L’écart (norme euclidienne) entre la solution numérique et la solution exacte est infime,
+de l’ordre de6×10−8, ce qui démontre la grande efficacité de la méthode lorsque le point
+de départ est bien choisi.
+16
+<<<PAGE>>>
+Exercice 13 : Résolution d’un système non linéaire
+Question :On recherche les solutions du système d’équations
+(
+x2 +y 2 = 4
+ex +y= 1 par la mé-
+thode de Newton vectorielle, avec une précisionϵ= 10−4.
+1. Formulation du problème et note sur les solutions
+Solution Détaillée
+On cherche les zéros de la fonctionF:R2→R 2 définie par :
+F(x,y) =
+f1(x,y)
+f2(x,y)
+
+=
+x2 +y 2−4
+ex +y−1
+
+Note importante
+L’énoncé du TD mentionne que les solutions exactes sont(1,−2)et(−2,1).Ceci est une
+erreur.En effet, aucun de ces couples ne vérifie la première équation (12 + (−2)2 = 5̸= 4
+et(−2) 2 + 12 = 5̸= 4). Le but de l’exercice est justement de trouver les vraies solutions
+par une méthode numérique.
+2. Méthode de Newton Vectorielle
+Rappel du Cours
+L’algorithme de Newton pour un systèmeF(X) = 0est une méthode itérative(Support
+de cours, section 2.2.2, page 37). À chaque étape, on met à jour l’approximationXk
+en calculantXk+1 =X k +Y k, où le vecteur de correctionYk est la solution du système
+linéaire :
+JF (Xk)·Y k =−F(X k)
+JF (X)est la matrice Jacobienne deF.
+Solution Détaillée
+Étape 1 : Calculer la matrice Jacobienne
+La Jacobienne deF(x,y) =
+x2 +y 2−4
+ex +y−1
+
+est :
+JF (X) =
+ ∂f1
+∂x
+∂f1
+∂y
+∂f2
+∂x
+∂f2
+∂y
+!
+=
+2x2y
+ex 1
+
+Étape 2 : Choix des points de départ
+Graphiquement,onvoitquelescourbesducerclex 2+y2 = 4etdel’exponentielley= 1−e x
+se croisent en deux points :
+— Unesolutionavecx<0ety >0.UnpointdedépartjudicieuxseraitX 0 =
+−1.8
+0.8
+
+.
+— Unesolutionavecx>0ety <0.UnpointdedépartjudicieuxseraitX 0 =
+ 1.9
+−0.6
+
+.
+Étape 3 : Application d’une itération (pour la 1ère solution)
+Partons deX 0 =
+−1.8
+0.8
+
+.
+17
+<<<PAGE>>>
+—Calcul deF(X 0):
+F(X 0) =
+(−1.8)2 + (0.8)2−4
+e−1.8 + 0.8−1
+
+=
+ 3.24 + 0.64−4
+0.1653 + 0.8−1
+
+=
+ −0.12
+−0.0347
+
+—Calcul deJ F (X0):
+JF (X0) =
+2(−1.8) 2(0.8)
+e−1.8 1
+
+=
+−3.6 1.6
+0.1653 1
+
+—Résolution du systèmeJ F (X0)·Y 0 =−F(X 0):
+−3.6 1.6
+0.1653 1
+
+Y0 =
+ 0.12
+0.0347
+
+La résolution de ce système2×2donne le vecteur de correctionY0≈
+−0.0167
+0.0375
+
+.
+—Mise à jour de la solution:
+X1 =X 0 +Y 0 =
+−1.8
+0.8
+
++
+−0.0167
+0.0375
+
+=
+−1.8167
+0.8375
+
+On continuerait ce processus jusqu’à ce que la norme du vecteur de correctionYk soit
+inférieure àϵ= 10 −4.
+Conclusion
+En poursuivant les itérations (par exemple avec un script Python), on trouve les deux
+solutions avec la précision requise :
+—Solution 1 :En partant deX 0 =
+−1.8
+0.8
+
+, la méthode converge en 3 itérations
+vers :
+X∗
+1≈
+−1.817256
+0.838183
+
+—Solution 2 :En partant deX 0 =
+ 1.9
+−0.6
+
+, la méthode converge en 3 itérations
+vers :
+X∗
+2≈
+ 1.957584
+−0.370817
+
+Le critère d’arrêt est atteint car la norme de la correction à la 3ème itération est inférieure
+à10−4. L’écart à la "vraie" solution est donc maîtrisé par la précision demandée.
+18

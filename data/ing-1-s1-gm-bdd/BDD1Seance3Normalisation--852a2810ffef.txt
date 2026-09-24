@@ -1,0 +1,489 @@
+Base de données
+Séance 3
+Normalisation
+<<<PAGE>>>
+Normalisation 
+ Dans la phase de conception sur le modèle 
+entités-associations et dans le modèle 
+relationnel pour éviter :
+◼ la redondance de données
+◼ la perte de données
+◼ les incohérences 
+◼ l'effondrement de performance des traitements
+ Dépendance fonctionnelle !
+<<<PAGE>>>
+Relation en extension (table)
+ Soit R la relation définie sur les ensembles
+A1, A2, …, An   
+R     A1 x A2 x … x An
+A1 A2 … An
+a11 a21 … an2
+a11 a21 … ank
+… … … …
+a12 a2j … ank
+(a11, a21, …, ank) est un n-uplet (ou tuple)
+
+ L’extension de R est l’ensemble de tuples de la relation à 
+une instance donnée :
+<<<PAGE>>>
+Relation en intension (MLD)
+ Schéma relationnel :
+R(A1:D1, A2:D2,…, An:Dn)
+avec :
+- R: nom de la relation
+- A1, A2, …, An : nom des attributs de la relation
+- D1, D2,…, Dn : domaine des attributs
+- et des contraintes d’intégrités éventuelles 
+<<<PAGE>>>
+ Soit la relation de schéma  
+Voiture(nv, marque, type, puissance, couleur) :
+Exemple
+MARQUE PUISSANCE
+RME8 5 
+TYPE
+Renault 
+NV
+AF234567
+XN228756
+DE998031
+ANA22201
+COULEUR
+FJ000075
+SI141481
+Citroën 
+Peugeot 
+Opel
+Ford
+4ZX2
+P307B
+OCA6 
+FFI9
+4ZX2 
+7 
+7 
+5
+5
+7 
+rouge 
+grise 
+verte
+noir 
+jaune
+verteCitroën 
+BI151465 RME9 9 jauneRenault 
+<<<PAGE>>>
+Définition
+ Dépendance fonctionnelle (DF): 
+◼ Soit R(A1,A2,… An) un schéma de relation, 
+et X et Y des sous-ensembles de {A1, A2,… 
+An} 
+◼ On dit que X détermine Y ou que Y 
+dépend fonctionnellement de X si, et 
+seulement si, des valeurs identiques de X 
+impliquent des valeurs identiques de Y 
+◼ On le note : X → Y
+<<<PAGE>>>
+Exemple
+ Ville(numville, nom, code_postal, 
+population) 
+◼ numville → nom
+◼ numville → code_postal
+◼ numville → population
+◼ code_postal → nom
+◼ nom → code_postal
+
+<<<PAGE>>>
+Propriétés
+ Dépendances triviales (réflexivité)
+◼ A → A
+◼ A, B → A
+ Augmentation
+◼ A → B   =>   A, C → B
+ Transitivité
+◼ A → B et B → C  =>   A → C
+<<<PAGE>>>
+Définition
+ Dépendance fonctionnelle élémentaire
+◼ Une DF élémentaire est une DF de la forme X → A
+ où A est un attribut unique n’appartenant pas à X 
+ et où il n’existe pas X' inclus au sens strict dans X 
+(i.e. X'    X) tel que X' → A
+
+<<<PAGE>>>
+Exemple
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+CRU
+CHENAS
+MEDOC
+JULIENAS
+A C2 4%CHENAS
+ Soit la relation de schéma  
+Reduction(cru, client, type, remise) :
+ cru, client → remise est élémentaire :
+ cru → remise : (CHENAS, A, C1, 3%) et (CHENAS, A, C2, 4%)
+ client → remise :  (CHENAS, A, C1, 3%) et (JULIENAS, B, C1, 4%)
+<<<PAGE>>>
+ Soit la relation de schéma  
+Reduction(cru, client, type, remise) :
+ cru, client → type 
+ est une DF
+ mais n’est pas élémentaire : cru → type
+Exemple
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+CRU
+CHENAS
+MEDOC
+JULIENAS
+A C2 4%CHENAS
+<<<PAGE>>>
+Définitions
+ Dépendance fonctionnelle directe 
+◼ Une DF X → A est une DF directe s’il n’existe 
+aucun attribut B tel que l’on puisse avoir 
+X → B et B → A
+<<<PAGE>>>
+ On reprend la relation de schéma  
+Voiture(nv, marque, type, puissance, couleur) :
+Exemple
+MARQUE PUISSANCE
+RME8 5 
+TYPE
+Renault 
+NV
+AF234567
+XN228756
+DE998031
+ANA22201
+COULEUR
+FJ000075
+SI141481
+Citroën 
+Peugeot 
+Opel
+Ford
+4ZX2
+P307B
+OCA6 
+FFI9
+4ZX2 
+7 
+7 
+5
+5
+7 
+rouge 
+grise 
+verte
+noir 
+jaune
+verteCitroën 
+BI151465 RME9 9 jauneRenault 
+<<<PAGE>>>
+ On reprend la relation de schéma  
+Voiture(nv, marque, type, puissance, couleur) :
+ On a NV → MARQUE, NV → TYPE, NV → PUISSANCE, NV → COULEUR
+ mais aussi TYPE → MARQUE et TYPE → PUISSANCE
+ donc NV → MARQUE, NV → PUISSANCE ne sont pas directes
+ et NV → TYPE, NV → COULEUR sont directes
+Exemple
+MARQUE PUISSANCE
+RME8 5 
+TYPE
+Renault 
+NV
+AF234567
+XN228756
+DE998031
+ANA22201
+COULEUR
+FJ000075
+SI141481
+Citroën 
+Peugeot 
+Opel
+Ford
+4ZX2
+P307B
+OCA6 
+FFI9
+4ZX2 
+7 
+7 
+5
+5
+7 
+rouge 
+grise 
+verte
+noir 
+jaune
+verteCitroën 
+BI151465 RME9 9 jauneRenault 
+<<<PAGE>>>
+ Quatre formes normales essentielles
+◼ 1FN, 2FN, 3FN et BCNF.
+ Définissent la façon d’utiliser les 
+entités, les attributs ou certaines 
+contraintes sur les dépendances.
+ Pour les modèles complexes : 4FN, 
+5FN, 6FN, FNDC
+Règles de normalisation
+<<<PAGE>>>
+Formes normales
+1FN
+2FN
+3FN
+FNBC
+4FN
+5FN
+6FN
+<<<PAGE>>>
+Première forme normale (1FN)
+ Une relation est en 1FN si, et seulement si, 
+tout attribut contient une valeur atomique (non 
+multiple, non composée).
+ Exemple non en 1FN :
+◼ Personne(numPersonne, nom, prenom, rueEtVille, 
+prenomsEnfants)
+◼ Personne(numPersonne, nom, prenom, rue, ville)
+◼ Prenom(numPrenom, prenom)
+◼ Prenom_enfant(numPersonne, numPrenom)
+<<<PAGE>>>
+
+MCD non en 1FN
+
+<<<PAGE>>>
+Deuxième forme normale (2FN)
+ Une relation est en 2FN si, et seulement si
+◼ elle est en 1FN
+◼ et si toutes les dépendances fonctionnelles entre la 
+clé et les autres attributs sont élémentaires
+ Exemple non en 2FN :
+◼ Reduction(cru, client, type, remise)
+◼ Remise(cru, client, remise) et Type(cru, type)
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+CRU
+CHENAS
+MEDOC
+JULIENAS
+A C2 4%CHENAS
+<<<PAGE>>>
+Deuxième forme normale (2FN)
+ Une relation est en 2FN si, et seulement si
+◼ elle est en 1FN
+◼ et si toutes les dépendances fonctionnelles entre la 
+clé et les autres attributs sont élémentaires
+ Exemple non en 2FN :
+◼ Reduction(cru, client, type, remise)
+◼ Remise(cru, client, remise) et Type(cru, type)
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+TYPE CLIENT REMISE
+A 
+A 
+B
+C1 
+C2 
+C1
+3% 
+5% 
+4%
+CRU
+CHENAS
+MEDOC
+JULIENAS
+A C2 4%CHENAS
+<<<PAGE>>>
+Relation non en 2FN
+Une telle relation doit être décomposée en
+R1(K1,K2,X) et R2(K2,Y)
+K1      K2 X        Y  R
+<<<PAGE>>>
+
+MCD non en 2FN
+Evaluation
+Etudiant
+Matiere
+Note
+Age
+Etudiant
+Id
+Nom
+Age
+Matiere
+Id
+evaluer
+note
+1,n1,n
+<<<PAGE>>>
+Troisième forme normale (3FN)
+ Une relation est en 3FN si, et seulement si
+◼ elle est en 2FN 
+◼ et si toutes les dépendances fonctionnelles entre 
+la clé et les autres attributs sont directes
+ Exemple non en 3FN :
+◼ Voiture(nv, marque, type, puissance, couleur)
+<<<PAGE>>>
+Troisième forme normale (3FN)
+ Une relation est en 3FN si, et seulement si
+◼ elle est en 2FN 
+◼ et si toutes les dépendances fonctionnelles entre 
+la clé et les autres attributs sont directes
+ Exemple non en 3FN :
+◼ Voiture(nv, marque, type, puissance, couleur)
+<<<PAGE>>>
+Troisième forme normale (3FN)
+ Une relation est en 3FN si, et seulement si
+◼ elle est en 2FN 
+◼ et si toutes les dépendances fonctionnelles entre 
+la clé et les autres attributs sont directes
+ Exemple non en 3FN :
+◼ Voiture(nv, marque, type, puissance, couleur)
+◼ Vehicule(nv, type, couleur) 
+◼ Modele(type, marque, puissance)
+<<<PAGE>>>
+Relation non en 3FN
+Une telle relation doit être décomposée en   
+R1(K, X, Y) et R2(X,Z)
+R      K               X Y Z  
+<<<PAGE>>>
+
+libelleProvenance ne  dépend pas directement de 
+la clé mais d’un autre attribut
+MCD non en 3FN
+Etudiant
+Id
+Nom
+Prénom
+IdProvenance
+LibelleProvenance
+Etudiant
+Id
+Nom
+Prénom
+Provenance
+Id
+Libelle
+venir
+0,n1,1
+<<<PAGE>>>
+Forme normale de Boyce-Codd 
+(BCNF)
+ Une relation est en BCNF si, et seulement si
+◼ elle est en 3FN 
+◼ et si les seules dépendances fonctionnelles élémentaires 
+sont celles dans lesquelles une clé détermine un attribut.
+ Exemple 
+◼ Universite(numEtudiant, numMatiere, numEnseignant,note)
+◼ Si un enseignant n’enseigne qu’une seule matière :  
+numEnseignant → numMatiere
+<<<PAGE>>>
+Forme normale de Boyce-Codd 
+(BCNF)
+ Universite(numEtudiant, numMatiere, numEnseignant, 
+note) n'est pas en BCNF => redondances de données 
+ Evaluation(numEtudiant, numMatiere, note)
+ Enseignement(numEnseignant, numMatiere)
+numEtudiant numMatiere numEnseignant note
+1 5 4 8
+2 5 4 14
+3 5 4 9,5
+1 7 10 13
+<<<PAGE>>>
+Relation en 3FN mais non en BCNF
+Une telle relation peut être décomposée en 
+R1(K1, K2, X) et R2(Y,K1)
+R      K1      K2 X Y  
+<<<PAGE>>>
+
+MCD en 3FN mais non en BCNF
+
+<<<PAGE>>>
+Conclusion
+ Mnémonique :
+"The key, the whole key, nothing but the key"
+Chris Date
+ Historique :
+◼ 1FN, 2FN et 3FN par Ted Codd (1971)
+◼ BCNF par Chris Date (1974)
+<<<PAGE>>>
+Exercice : normaliser cette relation ! 
+ Commandes(numCommande, dateCommande, numClient, 
+nomClient, adresseClient, nomVendeur, numProduit, nomProduit, 
+prix, quantite, montant, total) 
+◼ numCommande : identifiant unique
+◼ numClient : identifiant unique
+◼ nomClient : doubles possibles
+◼ adresseClient : doubles possibles
+◼ nomVendeur : identifiant unique du vendeur qui passe la commande
+◼ numProduit : identifiant unique
+◼ nomProduit : doubles possibles
+◼ prix : prix unitaire d'un produit
+◼ quantite : quantité commandée d'un produit
+◼ montant : montant pour la quantité commandée du produit
+◼ total : montant total de la commande pour tous les produits commandés 

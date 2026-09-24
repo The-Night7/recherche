@@ -41,7 +41,7 @@ class CourseImportTests(unittest.TestCase):
             chunk = ensure_meta({'course': course})
             self.assertEqual((chunk['study_year'], chunk['semester']),
                              (course_context(course)['study_year'], course_context(course)['semester']))
-        self.assertEqual(len(CURRICULA), 4)
+        self.assertEqual(len([c for c in CURRICULA.values() if c['program'] == 'preing']), 4)
 
     def test_folder_context_disambiguates_projects_and_corrects_mislabeled_filename(self):
         for semester in (1, 2):

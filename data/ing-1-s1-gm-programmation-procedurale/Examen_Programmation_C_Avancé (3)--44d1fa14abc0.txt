@@ -1,0 +1,124 @@
+Examen de Programmation C – Niveau Intermédiaire à Avancé
+
+Durée : 2 heures
+
+Partie 1 : Questions théoriques (5 points)
+
+1. Expliquez le rôle d'un Makefile dans un projet en C. Pourquoi est-il important lors du développement de programmes complexes ? (2 points)
+
+2. Décrivez le rôle des mots-clés suivants en C : const, volatile, et static. Donnez un exemple d’utilisation pour chacun. (3 points)
+
+Partie 2 : Manipulation de chaînes et pointeurs (7 points)
+
+1. Fonction de copie (3 points)
+
+Écrivez une fonction `copyString` qui copie une chaîne source vers une chaîne destination en utilisant des pointeurs. La fonction doit arrêter la copie dès qu’elle atteint la fin de la chaîne source ou une longueur maximale spécifiée.
+
+**Prototype :**
+```c
+void copyString(char* source, char* destination, int maxLength);
+```
+
+**Exemple :**
+```
+Source : "Programmation"
+Max Length : 5
+Destination : "Progr"
+```
+
+
+2. Recherche dans une chaîne (4 points)
+
+Implémentez une fonction `findSubstring` qui recherche la première occurrence d’une sous-chaîne dans une chaîne principale. Retournez l’indice de début de la sous-chaîne si elle est trouvée, sinon -1.
+
+**Prototype :**
+```c
+int findSubstring(char* str, char* substr);
+```
+
+**Exemple :**
+```
+Chaîne principale : "programmation en C"
+Sous-chaîne : "gram"
+Résultat : 3
+```
+
+
+Partie 3 : Manipulation de tableaux et structures (8 points)
+
+1. Tri par sélection (4 points)
+
+Écrivez une fonction qui trie un tableau d’entiers en ordre décroissant en utilisant l’algorithme de tri par sélection (Selection Sort).
+
+**Prototype :**
+```c
+void selectionSort(int* array, int size);
+```
+
+Voici les différents étapes que vous devriez faire : 
+
+1. Trouver l'élément maximum.
+
+2. L'échanger avec l'élément de la position courante.
+
+3. Répéter pour les positions suivantes jusqu'à ce que le tableau soit trié.
+
+
+```
+
+
+2. Gestion de structures (4 points)
+
+Définissez une structure `Personne` avec les champs suivants : nom (chaîne), âge (entier), et salaire (float). Écrivez un programme qui :
+- Crée un tableau dynamique de `Personne`.
+- Demande à l'utilisateur de remplir les informations pour `n` personnes.
+- Affiche les informations de la personne ayant le salaire le plus élevé.
+
+**Prototype des fonctions :**
+```c
+typedef struct {
+    char nom[50];
+    int age;
+    float salaire;
+} Personne;
+
+void afficherPersonneAvecSalaireMax(Personne* personnes, int taille);
+```
+
+**Exemple d’exécution :**
+```
+Nombre de personnes : 3
+Nom : Alice
+Âge : 30
+Salaire : 3500.00
+
+Nom : Bob
+Âge : 25
+Salaire : 4500.00
+
+Nom : Clara
+Âge : 28
+Salaire : 4000.00
+
+Résultat : Bob, Âge : 25, Salaire : 4500.00
+```
+
+
+Partie 4 : Programme principal avec Makefile (5 points)
+
+**Objectif :** Créez un programme principal qui :
+1. Appelle la fonction `findSubstring` pour rechercher une sous-chaîne dans une chaîne donnée par l'utilisateur.
+2. Appelle la fonction `selectionSort` pour trier un tableau d’entiers.
+3.Ecrivez un Makefile qui permet de compiler et exécuter le programme
+
+**Exemple d’exécution :**
+```
+Entrez une chaîne principale : programmation en C
+Entrez une sous-chaîne : gram
+Résultat : La sous-chaîne "gram" commence à l’indice 3.
+
+Taille du tableau : 5
+Entrez les éléments : 5 1 4 2 3
+Tableau trié : [5, 4, 3, 2, 1]
+```
+

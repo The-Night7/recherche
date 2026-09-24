@@ -1,0 +1,408 @@
+Corrigé Annale 2 - Algèbre Linéaire Appliquée
+ING1 Mathématiques - CY Tech
+Exercice 1 : Normes et valeurs propres (5 points)
+Bα =
+
+
+α 2 0
+2 α 2
+0 2 α
+
+
+1. Calcul des valeurs propres (2 points)
+Le polynôme caractéristique est :
+det(Bα−λI) = det
+
+
+α−λ 2 0
+2 α−λ 2
+0 2 α−λ
+
+
+Développement par la première colonne :
+= (α−λ)[(α−λ)2− 4]− 2[2(α−λ)− 0]
+= (α−λ)3− 4(α−λ)− 4(α−λ)
+= (α−λ)3− 8(α−λ)
+= (α−λ)[(α−λ)2− 8]
+Les valeurs propres sont donc :
+ λ2 =α (racine simple)
+ (α−λ)2 = 8⇒λ =α± 2
+√
+2
+λ1 =α + 2
+√
+2, λ 2 =α, λ 3 =α− 2
+√
+2
+2. Inversibilité (1 point)
+Bα est inversible si et seulement si toutes ses valeurs propres sont non nulles.
+ λ1̸= 0 : α + 2
+√
+2̸= 0⇒α̸=−2
+√
+2
+ λ2̸= 0 : α̸= 0
+ λ3̸= 0 : α− 2
+√
+2̸= 0⇒α̸= 2
+√
+2
+Bα inversible ⇔α /∈{− 2
+√
+2, 0, 2
+√
+2}
+1
+<<<PAGE>>>
+3. Normes de B1 (1 point)
+Pour α = 1 : B1 =
+
+
+1 2 0
+2 1 2
+0 2 1
+
+
+∥B1∥1 = max(|1| +|2| +|0|,|2| +|1| +|2|,|0| +|2| +|1|) = max(3, 5, 3) = 5
+∥B1∥∞ = max(|1| +|2| +|0|,|2| +|1| +|2|,|0| +|2| +|1|) = max(3, 5, 3) = 5
+(Remarque : B1 est symétrique donc ∥B1∥1 =∥B1∥∞)
+4. Rayon spectral (1 point)
+Pour α = 1 :
+λ1 = 1 + 2
+√
+2≈ 3, 828
+λ2 = 1
+λ3 = 1− 2
+√
+2≈− 1, 828
+ρ(B1) = max(|3, 828|,|1|,|− 1, 828|) = 1 + 2
+√
+2≈ 3, 828
+Vérication : ρ(B1)≈ 3, 828< 5 =∥B1∥∞ ✓
+Exercice 2 : Méthode de Newton (4 points)
+Calculer
+√
+7 en résolvant f (x) = x2− 7 = 0
+1. Formule de Newton (1 point)
+f (x) = x2− 7, f ′(x) = 2x
+xn+1 =xn− f (xn)
+f′(xn) =xn− x2
+n− 7
+2xn
+= x2
+n + 7
+2xn
+= xn
+2 + 7
+2xn
+2. Itérations avec x0 = 3 (1,5 point)
+x1 = 32 + 7
+2· 3 = 16
+6 = 8
+3≈ 2, 6667
+x2 = (8/3)2 + 7
+2· 8/3 = 64/9 + 7
+16/3 = 64/9 + 63/9
+16/3 = 127/9
+16/3 = 127
+48 ≈ 2, 6458
+x3 = (127/48)2 + 7
+2· 127/48 = 16129/2304 + 7
+127/24
+= 16129/2304 + 16128/2304
+127/24 = 32257/2304
+127/24 = 32257
+12192≈ 2, 6457514
+3. Erreur absolue (0,5 point)
+A vec
+√
+7≈ 2, 6457513 :
+|x3−
+√
+7|≈| 2, 6457514− 2, 6457513|≈ 10−7
+L'approximation est excellente après seulement 3 itérations !
+2
+<<<PAGE>>>
+4. Convergence quadratique (1 point)
+La fonction d'itération est g(x) = x2+7
+2x .
+g′(x) = 2x· 2x− (x2 + 7)· 2
+4x2 = 4x2− 2x2− 14
+4x2 = 2x2− 14
+4x2 = x2− 7
+2x2
+Au point xe x∗ =
+√
+7 :
+g′(
+√
+7) = 7− 7
+2· 7 = 0
+Comme g′(x∗) = 0 , la convergence est au moins quadratique .
+Exercice 3 : Représentation IEEE-754 (4 points)
+1. Représentation de 5,75 (2 points)
+Conversion en binaire :
+5, 75 = 5 + 0, 75 = 101 2 + 0, 112 = 101, 112
+Normalisation :
+101, 112 = 1, 01112× 22
+Bit de signe : s = 0 (nombre positif)
+Exposant : e = 2, avec biais 127
+E =e + 127 = 2 + 127 = 129 = 10000001 2
+Mantisse : On garde les 23 bits après la virgule
+M = 0111 0000 0000 0000 0000 000
+Représentation complète (32 bits) :
+0 10000001 01110000000000000000000
+Ou en hexadécimal : 40B8000016
+2. Chires signicatifs (1 point)
+Simple précision :
+ 23 bits de mantisse
+ En décimal : log10(223)≈ 6, 9 chires
+Environ 7 chires signicatifs
+Double précision :
+ 52 bits de mantisse
+ En décimal : log10(252)≈ 15, 7 chires
+Environ 16 chires signicatifs
+3
+<<<PAGE>>>
+3. Système simplié (1 point)
+Paramètres : β = 2, p = 4, emin =−3, emax = 3
+Nombre d'exposants : emax−emin + 1 = 3− (−3) + 1 = 7
+Nombre de mantisses possibles :
+ Premier chire : 1 seul choix (toujours 1 en base 2 normalisée)
+ 3 chires restants : 23 = 8 possibilités
+ Total mantisses : 8
+V aleurs normalisées positives : 8× 7 = 56
+T otal avec négatifs et zéro :
+2× 56 + 1 = 113 valeurs
+Exercice 4 : Méthodes itératives (7 points)
+A =
+
+
+4 −1 0
+−1 4 −1
+0 −1 4
+
+, b =
+
+
+3
+2
+3
+
+
+1. Décomposition (1 point)
+D =
+
+
+4 0 0
+0 4 0
+0 0 4
+
+, −E =
+
+
+0 0 0
+−1 0 0
+0 −1 0
+
+, −F =
+
+
+0 −1 0
+0 0 −1
+0 0 0
+
+
+2. Méthode de Jacobi (1,5 point)
+Mx (k+1) =Nx (k) +b avec M =D,N =E +F
+x(k+1) =D−1(E +F )x(k) +D−1b
+BJ =D−1(E +F ) = 1
+4
+
+
+0 1 0
+1 0 1
+0 1 0
+
+ =
+
+
+0 1 /4 0
+1/4 0 1 /4
+0 1 /4 0
+
+
+cJ =D−1b = 1
+4
+
+
+3
+2
+3
+
+ =
+
+
+3/4
+1/2
+3/4
+
+
+3. Méthode de Gauss-Seidel (1,5 point)
+M =D−E, N =F
+x(k+1) = (D−E)−1Fx (k) + (D−E)−1b
+D−E =
+
+
+4 0 0
+−1 4 0
+0 −1 4
+
+
+4
+<<<PAGE>>>
+(D−E)−1 = 1
+4
+
+
+1 0 0
+1/4 1 0
+1/16 1 /4 1
+
+ =
+
+
+1/4 0 0
+1/16 1 /4 0
+5/64 1 /16 1 /4
+
+
+BGS = (D−E)−1F =
+
+
+1/4 0 0
+1/16 1 /4 0
+5/64 1 /16 1 /4
+
+
+
+
+0 1 0
+0 0 1
+0 0 0
+
+
+BGS =
+
+
+0 1 /4 0
+0 1 /16 1 /4
+0 5 /64 1 /16
+
+
+cGS = (D−E)−1b =
+
+
+1/4 0 0
+1/16 1 /4 0
+5/64 1 /16 1 /4
+
+
+
+
+3
+2
+3
+
+ =
+
+
+3/4
+19/32
+127/128
+
+
+4. Dominance diagonale (1 point)
+Vérions si |aii|> P
+j̸=i|aij| :
+ Ligne 1 : |4| = 4 >|− 1| +|0| = 1 ✓
+ Ligne 2 : |4| = 4 >|− 1| +|− 1| = 2 ✓
+ Ligne 3 : |4| = 4 >|0| +|− 1| = 1 ✓
+A est strictement diagonalement dominante
+Conséquence : Les méthodes de Jacobi et Gauss-Seidel convergent toutes les deux.
+5. Une itération de Jacobi (1 point)
+x(1) =BJx(0) +cJ =
+
+
+0 1 /4 0
+1/4 0 1 /4
+0 1 /4 0
+
+
+
+
+0
+0
+0
+
+ +
+
+
+3/4
+1/2
+3/4
+
+
+x(1) =
+
+
+3/4
+1/2
+3/4
+
+ =
+
+
+0, 75
+0, 5
+0, 75
+
+
+6. Une itération de Gauss-Seidel (1 point)
+Formule composante par composante (plus simple) :
+x(1)
+1 = 1
+4 (3− 0·x(0)
+2 − 0·x(0)
+3 ) = 3
+4
+x(1)
+2 = 1
+4 (2 + 1·x(1)
+1 − 1·x(0)
+3 ) = 1
+4 (2 + 3/4) = 11
+16
+x(1)
+3 = 1
+4 (3 + 1·x(1)
+2 ) = 1
+4 (3 + 11/16) = 59
+64
+x(1) =
+
+
+3/4
+11/16
+59/64
+
+≈
+
+
+0, 75
+0, 6875
+0, 9219
+
+
+Fin du corrigé - Note totale : /20
+5

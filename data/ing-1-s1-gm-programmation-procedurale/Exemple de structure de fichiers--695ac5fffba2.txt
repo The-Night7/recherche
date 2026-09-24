@@ -1,0 +1,316 @@
+Exemple de structure de fichiers :
+
+																 
+
+																tp_compilation_separee/
+
+																│
+
+																├── main.c
+
+																├── pi/
+
+																│   ├── pi.h
+
+																│   ├── pi_quadrillage.c
+
+																│   ├── pi_madhava.c
+
+																│   └── pi_wallis.c
+
+																├── sqrt2/
+
+																│   ├── sqrt2.h
+
+																│   ├── sqrt2_newton.c
+
+																│   ├── sqrt2_halley.c
+
+																│   └── sqrt2_theon.c
+
+																└── Makefile
+
+
+
+2. Module : Approximation de π
+
+a. Fichier pi.h
+
+																c
+
+																#ifndef PI_H
+
+																#define PI_H
+
+																
+
+																double approximer_pi_quadrillage(int n);
+
+																double approximer_pi_madhava(int n);
+
+																double approximer_pi_wallis(int n);
+
+																
+
+																#endif
+
+b. Implémentation des fonctions
+
+i. Méthode du quadrillage (pi_quadrillage.c)
+
+																c
+
+																 
+
+																#include <stdlib.h>
+
+																#include <time.h>
+
+																#include "pi.h"
+
+																
+
+																double approximer_pi_quadrillage(int n) {
+
+																    srand(time(NULL));
+
+																    int points_dans_cercle = 0;
+
+																    for (int i = 0; i < n; i++) {
+
+																        double x = (double)rand() / RAND_MAX;
+
+																        double y = (double)rand() / RAND_MAX;
+
+																        if (x*x + y*y <= 1.0) {
+
+																            points_dans_cercle++;
+
+																        }
+
+																    }
+
+																    return 4.0 * points_dans_cercle / n;
+
+																}
+
+ii. Méthode de Madhava (pi_madhava.c)
+
+																c
+
+																 
+
+																#include "pi.h"
+
+																
+
+																double approximer_pi_madhava(int n) {
+
+																    double pi = 0.0;
+
+																    for (int k = 0; k < n; k++) {
+
+																        double terme = (k % 2 == 0) ? 1.0 : -1.0;
+
+																        pi += terme / (2*k + 1);
+
+																    }
+
+																    return 4.0 * pi;
+
+																}
+
+iii. Méthode de Wallis (pi_wallis.c)
+
+																c
+
+																 
+
+																#include "pi.h"
+
+																
+
+																double approximer_pi_wallis(int n) {
+
+																    double produit = 1.0;
+
+																    for (int k = 1; k <= n; k++) {
+
+																        produit *= (4.0 * k * k) / (4.0 * k * k - 1.0);
+
+																    }
+
+																    return 2.0 * produit;
+
+																}
+
+
+
+3. Module : Approximation de √2
+
+a. Fichier sqrt2.h
+
+																c
+
+																 
+
+																#ifndef SQRT2_H
+
+																#define SQRT2_H
+
+																
+
+																double approximer_sqrt2_newton(int n);
+
+																double approximer_sqrt2_halley(int n);
+
+																double approximer_sqrt2_theon(int n);
+
+																
+
+																#endif
+
+b. Implémentation des fonctions
+
+i. Méthode de Newton (sqrt2_newton.c)
+
+																c
+
+																 
+
+																#include "sqrt2.h"
+
+																
+
+																double approximer_sqrt2_newton(int n) {
+
+																    double u = 1.0;
+
+																    for (int i = 0; i < n; i++) {
+
+																        u = u/2.0 + 1.0/u;
+
+																    }
+
+																    return u;
+
+																}
+
+ii. Méthode de Halley (sqrt2_halley.c)
+
+																c
+
+																 
+
+																#include "sqrt2.h"
+
+																
+
+																double approximer_sqrt2_halley(int n) {
+
+																    double x = 1.0;
+
+																    for (int i = 0; i < n; i++) {
+
+																        x = x * (x*x + 6.0) / (3.0*x*x + 2.0);
+
+																    }
+
+																    return x;
+
+																}
+
+iii. Méthode de Théon de Smyrne (sqrt2_theon.c)
+
+																c
+
+																 
+
+																#include "sqrt2.h"
+
+																
+
+																double approximer_sqrt2_theon(int n) {
+
+																    int p = 1, q = 1;
+
+																    for (int i = 0; i < n; i++) {
+
+																        int p_new = p + 2*q;
+
+																        int q_new = p + q;
+
+																        p = p_new;
+
+																        q = q_new;
+
+																    }
+
+																    return (double)p / q;
+
+																}
+
+
+
+4. Fichier main.c
+
+																c
+
+																 
+
+																#include <stdio.h>
+
+																#include "pi.h"
+
+																#include "sqrt2.h"
+
+																
+
+																int main() {
+
+																    int choix, n;
+
+																    printf("Choisissez une méthode :\n");
+
+																    printf("1. Approximation de π par quadrillage\n");
+
+																    printf("2. Approximation de π par Madhava\n");
+
+																    printf("3. Approximation de π par Wallis\n");
+
+																    printf("4. Approximation de √2 par Newton\n");
+
+																    printf("5. Approximation de √2 par Halley\n");
+
+																    printf("6. Approximation de √2 par Théon de Smyrne\n");
+
+																    scanf("%d", &choix);
+
+																    printf("Entrez le nombre d'itérations : ");
+
+																    scanf("%d", &n);
+
+																
+
+																    switch (choix) {
+
+																        case 1: printf("π ≈ %f\n", approximer_pi_quadrillage(n)); break;
+
+																        case 2: printf("π ≈ %f\n", approximer_pi_madhava(n)); break;
+
+																        case 3: printf("π ≈ %f\n", approximer_pi_wallis(n)); break;
+
+																        case 4: printf("√2 ≈ %f\n", approximer_sqrt2_newton(n)); break;
+
+																        case 5: printf("√2 ≈ %f\n", approximer_sqrt2_halley(n)); break;
+
+																        case 6: printf("√2 ≈ %f\n", approximer_sqrt2_theon(n)); break;
+
+																        default: printf("Choix invalide.\n");
+
+																    }
+
+																    return 0;
+
+																}
+

@@ -1,0 +1,511 @@
+CORRECTION - PROGRAMMATION C AVANCÉE
+Examen Intermédiaire à Avancé - Durée : 2h
+Partie 1 : Questions théoriques [5 points]
+Question 1 : Rôle d'un Makefile [2 points]
+Réponse :
+Un Makefile est un fichier de configuration utilisé par l'utilitaire make pour automatiser la compilation et la
+construction de programmes.
+Rôles principaux :
+1. Automatisation de la compilation
+ Définit les règles de compilation pour chaque fichier
+ Évite de retaper manuellement les commandes gcc à chaque modification
+ Facilite la gestion de projets avec de nombreux fichiers
+2. Compilation incrémentale
+ Make détecte quels fichiers ont été modifiés (via timestamps)
+ Recompile UNIQUEMENT les fichiers modifiés et leurs dépendances
+ Économise énormément de temps sur les gros projets
+3. Gestion des dépendances
+ Spécifie qu'un fichier dépend d'autres fichiers (headers, sources)
+ Si un header change, tous les fichiers qui l'incluent sont recompilés
+ Garantit la cohérence du programme
+4. Maintenabilité
+ Centralise les options de compilation (-Wall, -O2, etc.)
+ Facilite les modifications (changer le compilateur, ajouter des flags)
+ Documentation implicite de la structure du projet
+Importance pour les programmes complexes :
+ Sur un projet de 100 fichiers, sans Makefile, il faudrait recompiler les 100 à chaque modification
+ Avec Makefile, seuls 1-5 fichiers sont recompilés → gain de temps énorme
+ Permet le travail en équipe avec compilation cohérente
+ Standard de l'industrie pour les projets C/C++
+
+<<<PAGE>>>
+Question 2 : Mots-clés C - const, volatile, static [3 points]
+Réponse détaillée :
+1. const (1 pt)
+Rôle : Déclare qu'une variable ou un pointeur ne peut pas être modifié.
+Utilisation principale : Protection contre les modifications accidentelles
+Exemples :
+ // Variable constante
+const int MAX = 100;
+// MAX = 200;  // ERREUR : ne peut pas modifier
+// Pointeur vers constante
+const char *str = "Hello";
+// str[0] = 'h';  // ERREUR : ne peut pas modifier le contenu
+str = "World";     // OK : peut changer le pointeur
+// Pointeur constant
+char * const ptr = buffer;
+ptr[0] = 'A';      // OK : peut modifier le contenu
+// ptr = autre;    // ERREUR : ne peut pas changer le pointeur
+// Les deux
+const char * const str2 = "Hello";
+// str2[0] = 'h';  // ERREUR
+// str2 = "Hi";    // ERREUR
+// Dans les paramètres de fonction (très courant !)
+void afficher(const char *texte) {
+    printf("%s", texte);
+    // texte[0] = 'X';  // ERREUR : protégé
+}
+2. volatile (1 pt)
+Rôle : Indique au compilateur qu'une variable peut changer de manière imprévisible, indépendamment du
+code.
+Utilisation : Programmation embarquée, registres matériels, variables partagées entre
+threads/interruptions
+Exemples :
+ // Registre matériel (GPIO, timer, etc.)
+volatile int *registre_materiel = (int*)0x40000000;
+// Sans volatile, le compilateur pourrait optimiser :
+int val1 = *registre_materiel;
+int val2 = *registre_materiel;
+// Le compilateur pourrait penser : "val2 = val1" (optimisation)
+// Mais le registre peut avoir changé entre les deux lectures !
+// Avec volatile, chaque lecture est forcée
+volatile int *reg = (int*)0x40000000;
+int v1 = *reg;  // Lecture forcée
+int v2 = *reg;  // Nouvelle lecture forcée
+// Variable partagée avec interruption
+volatile int compteur = 0;
+void interruption_handler() {
+    compteur++;  // Modifié par interruption
+}
+int main() {
+    while (compteur < 10) {
+        // Sans volatile, le compilateur pourrait
+        // mettre compteur en registre et ne jamais
+        // voir les changements !
+    }
+
+<<<PAGE>>>
+}
+
+<<<PAGE>>>
+3. static (1 pt)
+Rôle : Modifie la portée et la durée de vie d'une variable ou fonction.
+Trois utilisations différentes :
+ // 1. Variable locale static : conserve sa valeur entre appels
+void compteur() {
+    static int compte = 0;  // Initialisée UNE SEULE FOIS
+    compte++;
+    printf("%d\n", compte);
+}
+int main() {
+    compteur();  // Affiche 1
+    compteur();  // Affiche 2 (conserve la valeur !)
+    compteur();  // Affiche 3
+}
+// 2. Variable globale static : visible uniquement dans ce fichier
+static int variable_privee = 42;
+// Autres fichiers ne peuvent pas y accéder
+// 3. Fonction static : visible uniquement dans ce fichier
+static void fonction_interne() {
+    // Utilisable seulement dans ce fichier
+    // Autres fichiers ne peuvent pas l'appeler
+}
+// Exemple pratique : module avec API publique/privée
+// === module.c ===
+static int compteur_interne = 0;  // Privé
+static void helper() {            // Privé
+    compteur_interne++;
+}
+void fonction_publique() {        // Public
+    helper();
+    printf("%d\n", compteur_interne);
+}
+// Autre fichier peut appeler fonction_publique()
+// mais pas helper() ni accéder à compteur_interne
+
+<<<PAGE>>>
+Partie 2 : Manipulation de chaînes et pointeurs [7 points]
+Question 1 : Fonction copyString [3 points]
+ void copyString(char* source, char* destination, int maxLength) {
+    int i = 0;
+    
+    // Copier jusqu'à maxLength-1 OU jusqu'à '\0'
+    while (i < maxLength - 1 && source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    
+    // Toujours terminer par '\0'
+    destination[i] = '\0';
+}
+Explications :
+1. Condition de la boucle :
+ i < maxLength - 1 : on laisse de la place pour '\0'
+ source[i] != '\0' : arrêt à la fin de source
+ Les deux conditions avec ET logique
+2. Copie caractère par caractère
+ Simple affectation : destination[i] = source[i]
+3. Terminaison
+ CRUCIAL : ajouter '\0' à la fin
+ Sans cela, destination n'est pas une chaîne valide !
+Test avec l'exemple :
+ Source : "Programmation" (13 caractères)
+ maxLength : 5
+ Boucle : i va de 0 à 4 (5 itérations max)
+ Mais s'arrête à i = 5 car i < 5 - 1 est faux
+ Copie : "Prog" puis destination[4] = '\0'
+ Résultat : "Progr" (4 caractères + '\0')
+
+<<<PAGE>>>
+Question 2 : Fonction findSubstring [4 points]
+ int findSubstring(char* str, char* substr) {
+    // Cas particulier : sous-chaîne vide
+    if (substr[0] == '\0') {
+        return 0;
+    }
+    
+    // Parcourir la chaîne principale
+    for (int i = 0; str[i] != '\0'; i++) {
+        // Vérifier si sous-chaîne commence à la position i
+        int j = 0;
+        int match = 1;  // Flag de correspondance
+        
+        while (substr[j] != '\0') {
+            if (str[i + j] == '\0' || str[i + j] != substr[j]) {
+                match = 0;  // Pas de correspondance
+                break;
+            }
+            j++;
+        }
+        
+        if (match) {
+            return i;  // Trouvé ! Retourner l'indice
+        }
+    }
+    
+    return -1;  // Pas trouvé
+}
+Algorithme détaillé :
+1. Cas spécial : sous-chaîne vide → retourner 0
+2. Boucle principale (parcours de str) :
+ Pour chaque position i dans str
+ Tenter de matcher substr à partir de cette position
+3. Vérification du match :
+ Parcourir substr caractère par caractère
+ Comparer avec str[i+j]
+ Si différence ou fin de str → pas de match, sortir
+4. Si match complet : retourner i
+5. Si aucun match trouvé : retourner -1
+Trace d'exécution avec l'exemple :
+ str = "programmation en C"
+ substr = "gram"
+i=0 : 'p' vs 'g' → non
+i=1 : 'r' vs 'g' → non
+i=2 : 'o' vs 'g' → non
+i=3 : 'g' vs 'g' → ok, continuer
+'r' vs 'r' → ok
+'a' vs 'a' → ok
+'m' vs 'm' → ok
+Fin de substr → MATCH !
+Retour : 3
+
+<<<PAGE>>>
+Partie 3 : Tableaux et structures [8 points]
+Question 1 : Tri par sélection décroissant [4 points]
+ void selectionSort(int* array, int size) {
+    // Parcourir le tableau
+    for (int i = 0; i < size - 1; i++) {
+        // Trouver l'indice du maximum dans [i, size-1]
+        int maxIndex = i;
+        
+        for (int j = i + 1; j < size; j++) {
+            if (array[j] > array[maxIndex]) {  // > pour décroissant
+                maxIndex = j;
+            }
+        }
+        
+        // Échanger array[i] avec le maximum trouvé
+        if (maxIndex != i) {
+            int temp = array[i];
+            array[i] = array[maxIndex];
+            array[maxIndex] = temp;
+        }
+    }
+}
+Algorithme du tri par sélection :
+Principe : À chaque itération, placer le plus grand élément restant à sa position finale
+Étapes :
+1. Pour chaque position i (de 0 à size-2)
+2. Trouver le maximum dans la partie non triée [i, size-1]
+3. Échanger ce maximum avec l'élément en position i
+Exemple avec [5, 1, 4, 2, 3] :
+Début : [5, 1, 4, 2, 3]
+i=0 : max=5 à indice 0 → pas d'échange
+[5, 1, 4, 2, 3]
+i=1 : max=4 à indice 2 → échanger positions 1 et 2
+[5, 4, 1, 2, 3]
+i=2 : max=3 à indice 4 → échanger positions 2 et 4
+[5, 4, 3, 2, 1]
+i=3 : max=2 à indice 3 → pas d'échange
+[5, 4, 3, 2, 1]
+Résultat : [5, 4, 3, 2, 1] (ordre décroissant ✓)
+Complexité : O(n²) - deux boucles imbriquées
+Note : Pour ordre croissant, changer > en <
+
+<<<PAGE>>>
+Question 2 : Gestion de structures Personne [4 points]
+ #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef struct {
+    char nom[50];
+    int age;
+    float salaire;
+} Personne;
+void afficherPersonneAvecSalaireMax(Personne* personnes, int taille) {
+    if (personnes == NULL || taille <= 0) {
+        printf("Tableau invalide\n");
+        return;
+    }
+    
+    // Trouver l'indice de la personne avec salaire max
+    int indexMax = 0;
+    for (int i = 1; i < taille; i++) {
+        if (personnes[i].salaire > personnes[indexMax].salaire) {
+            indexMax = i;
+        }
+    }
+    
+    // Afficher
+    printf("Résultat : %s, Âge : %d, Salaire : %.2f\n",
+           personnes[indexMax].nom,
+           personnes[indexMax].age,
+           personnes[indexMax].salaire);
+}
+int main() {
+    int n;
+    
+    // Demander le nombre de personnes
+    printf("Nombre de personnes : ");
+    scanf("%d", &n);
+    
+    if (n <= 0) {
+        printf("Nombre invalide\n");
+        return 1;
+    }
+    
+    // Allocation dynamique du tableau
+    Personne *personnes = (Personne*)malloc(n * sizeof(Personne));
+    if (personnes == NULL) {
+        printf("Erreur d'allocation\n");
+        return 1;
+    }
+    
+    // Remplir les informations
+    for (int i = 0; i < n; i++) {
+        printf("Nom : ");
+        scanf("%s", personnes[i].nom);
+        
+        printf("Âge : ");
+        scanf("%d", &personnes[i].age);
+        
+        printf("Salaire : ");
+        scanf("%f", &personnes[i].salaire);
+        
+        printf("\n");
+    }
+    
+    // Afficher la personne avec salaire max
+    afficherPersonneAvecSalaireMax(personnes, n);
+    
+    // Libération
+    free(personnes);
+    
+    return 0;
+}
+
+<<<PAGE>>>
+Explications du programme :
+1. Définition de la structure
+ typedef permet d'utiliser Personne au lieu de struct Personne
+ Champs : nom (chaîne fixe), age (entier), salaire (float)
+2. Fonction afficherPersonneAvecSalaireMax
+ Recherche linéaire du maximum
+ Compare les salaires pour trouver l'indice du max
+ Affiche les informations de cette personne
+3. Programme principal
+ Demande le nombre n de personnes
+ Alloue dynamiquement un tableau de n Personne
+ Vérifie que l'allocation a réussi
+ Remplit les données avec scanf
+ Appelle la fonction d'affichage
+ Libère la mémoire
+Points importants :
+ Vérification de l'allocation
+ scanf("%s") pour les chaînes (attention : pas d'espaces)
+ scanf("%d") pour les entiers
+ scanf("%f") pour les floats
+ Libération avec free() à la fin
+Amélioration possible :
+Utiliser fgets() au lieu de scanf() pour permettre les noms avec espaces
+
+<<<PAGE>>>
+Partie 4 : Programme principal avec Makefile [5 points]
+Programme principal complet
+ #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// Prototypes
+int findSubstring(char* str, char* substr);
+void selectionSort(int* array, int size);
+int main() {
+    // === Partie 1 : Recherche de sous-chaîne ===
+    char chaine[256];
+    char souschaine[100];
+    
+    printf("Entrez une chaîne principale : ");
+    fgets(chaine, sizeof(chaine), stdin);
+    chaine[strcspn(chaine, "\n")] = '\0';  // Retirer \n
+    
+    printf("Entrez une sous-chaîne : ");
+    fgets(souschaine, sizeof(souschaine), stdin);
+    souschaine[strcspn(souschaine, "\n")] = '\0';
+    
+    int index = findSubstring(chaine, souschaine);
+    if (index != -1) {
+        printf("Résultat : La sous-chaîne \"%s\" commence à l'indice %d.\n\n",
+               souschaine, index);
+    } else {
+        printf("Sous-chaîne non trouvée.\n\n");
+    }
+    
+    // === Partie 2 : Tri de tableau ===
+    int taille;
+    printf("Taille du tableau : ");
+    scanf("%d", &taille);
+    
+    if (taille <= 0) {
+        printf("Taille invalide\n");
+        return 1;
+    }
+    
+    int *tableau = (int*)malloc(taille * sizeof(int));
+    if (tableau == NULL) {
+        printf("Erreur d'allocation\n");
+        return 1;
+    }
+    
+    printf("Entrez les éléments : ");
+    for (int i = 0; i < taille; i++) {
+        scanf("%d", &tableau[i]);
+    }
+    
+    // Trier en ordre décroissant
+    selectionSort(tableau, taille);
+    
+    // Afficher le résultat
+    printf("Tableau trié : [");
+    for (int i = 0; i < taille; i++) {
+        printf("%d", tableau[i]);
+        if (i < taille - 1) {
+            printf(", ");
+        }
+    }
+    printf("]\n");
+    
+    free(tableau);
+    return 0;
+}
+// Implémentation des fonctions
+int findSubstring(char* str, char* substr) {
+    if (substr[0] == '\0') return 0;
+    
+    for (int i = 0; str[i] != '\0'; i++) {
+        int j = 0;
+
+<<<PAGE>>>
+        int match = 1;
+        
+        while (substr[j] != '\0') {
+            if (str[i + j] == '\0' || str[i + j] != substr[j]) {
+                match = 0;
+                break;
+            }
+            j++;
+        }
+        
+        if (match) return i;
+    }
+    
+    return -1;
+}
+void selectionSort(int* array, int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int maxIndex = i;
+        for (int j = i + 1; j < size; j++) {
+            if (array[j] > array[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+        if (maxIndex != i) {
+            int temp = array[i];
+            array[i] = array[maxIndex];
+            array[maxIndex] = temp;
+        }
+    }
+}
+
+<<<PAGE>>>
+Makefile associé
+ # Configuration
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99
+TARGET = prog
+# Fichiers source
+SOURCES = main.c
+OBJECTS = $(SOURCES:.c=.o)
+# Règles
+.PHONY: all clean run
+all: $(TARGET)
+$(TARGET): $(OBJECTS)
+■$(CC) -o $@ $^
+%.o: %.c
+■$(CC) $(CFLAGS) -c -o $@ $<
+clean:
+■rm -f $(OBJECTS) $(TARGET)
+run: $(TARGET)
+■./$(TARGET)
+Utilisation du Makefile :
+ make ou make all : compile le programme
+ make run : compile et exécute
+ make clean : nettoie les fichiers générés
+Points clés :
+ Règle pattern %.o: %.c pour compilation générique
+ Variables automatiques ($@, $^, $<)
+ .PHONY pour les cibles non-fichiers
+ Flags de compilation standards (-Wall -Wextra)
+Barème détaillé
+Partie
+Question
+Points
+Partie 1
+Q1 - Makefile
+2.0 pts
+Q2 - const, volatile, static
+3.0 pts
+Partie 2
+Q1 - copyString
+3.0 pts
+Q2 - findSubstring
+4.0 pts
+Partie 3
+Q1 - selectionSort
+4.0 pts
+Q2 - Structure Personne
+4.0 pts
+Partie 4
+Programme + Makefile
+5.0 pts
+<b>TOTAL</b>
+<b>25 pts</b>
+Document créé pour la préparation aux examens ING1 - CY Tech

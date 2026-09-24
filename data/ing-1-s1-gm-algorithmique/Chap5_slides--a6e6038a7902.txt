@@ -1,0 +1,415 @@
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+R´ ecursivit´ e
+Premi` ere partie
+Houcine Senoussi
+Ann´ ee universitaire 2016-17
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+1 Introduction
+2 R´ ecursivit´ es terminale et non terminale
+3 Diviser pour r´ egner
+4 Analyse des algorithmes
+Correction des algorithmes
+Complexit´ e
+5 Conclusion
+6 Bibliographie
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Rappels
+principe de la r´ esursivit´ e : pour r´ esoudre le probl` eme, un
+algorithme fait appel ` a lui mˆ eme, une ou plusieurs fois,
+directement ou indirectement. Chaque appel correspond ` a la
+r´ esolution d’un sous-probl` eme similaire au probl` eme de d´ epart.
+Exemple 1 : un algorithme r´ ecursif pour le calcul de la
+factorielle d’un entier n s’appelle lui-mˆ eme pour calculer la
+factorielle de n− 1.
+Exemple 2 : pour trier un tableau t, un algorithme r´ ecursif de
+tri fait appel ` a lui mˆ eme deux fois : une fois pour le tri de la
+moiti´ e gauche det et une fois pour le tri de sa moiti´ e droite.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+R´ ecursivit´ es terminale et non terminale
+Consid´ erons les deux fonctions suivantes :
+Fonction factorielle(n : Entier) : Entier
+D´ ebut
+Si (n≤1) Alors Retourner 1
+Sinon Retourner n*factorielle(n-1)
+Fin
+Fonction factorielleRT(n : Entier, acc : Entier) : Entier
+D´ ebut
+Si (n≤1) Alors Retourner acc
+Sinon Retourner factorielleRT(n-1, acc*n)
+Fin
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+R´ ecursivit´ es terminale et non terminale
+Les deux fonctions permettent de calculer la factorielle.
+Appel de la premi` ere :factorielle(n)
+Appel de la seconde : factorielleRT(n,1)
+On remarque que la derni` ere instruction de la fonction est
+l’appel r´ ecursif dans la seconde,
+une autre instruction (une multiplication) dans la premi` ere.
+Nous avons donc :
+une r´ ecursion terminale dans la seconde,
+une r´ ecursion non terminale dans la premi` ere.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+R´ ecursivit´ es terminale et non terminale
+D´ eﬁnition :
+La r´ ecursivit´ e est dite terminale lorsque l’appel (r´ ecursif) est la
+derni` ere instruction de la fonction.
+Avantages : la fonction passe la main ` a la fonction appel´ ee
+(elle mˆ eme) sans avoir besoin de la reprendre.
+L’impl´ ementation peut donc se faire sans ajouter un ´ el´ ement ` a
+la ’pile des appels ’. Le contexte de la fonction appelante n’a
+pas besoin d’ˆ etre sauvegard´ e→ r´ eduction de l’espace
+m´ emoire utilis´ e.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Principe
+L’approche Diviser pour r´ egner consiste ` a :
+1 [Diviser] : S´ eparer le probl` eme ` a r´ esoudre en sous-probl` emes
+semblables au probl` eme initial mais de taille plus petite.
+2 [R´ egner]: R´ esoudre r´ ecursivement les sous probl` emes.
+3 [Combiner] : Combiner les solutions des sous-probl` emes pour
+produire la solution du probl` eme initial.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Exemple : Tri par fusion
+Principe : Pour trier un tableau de taille n :
+1 Le diviser en deux sous tableaux de taille (presque) ´ egale.
+2 Trier r´ ecursivement les deux sous tableaux.
+3 Fusionner les deux sous tableaux tri´ es.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Tri par fusion-2
+Algorithme Algo-Tri-Fusion
+D´ ebut
+...
+Tri-Fusion(A, 1, n)
+Fin
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Tri par fusion-3
+Procedure Tri-Fusion(E/S A, p, r)
+D´ ebut
+Si (p≤ r) Alors
+q = (p + r)/2
+Tri-Fusion(A, p, q)
+Tri-Fusion(A, q+1, r)
+Fusion(A, p, q, r)
+Fin
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Tri par fusion-4
+Procedure Fusion(E/S A, p, q, r)
+variables
+....
+D´ ebut
+n1 := q-p+1
+n2 := r-q
+L := cr´ eerTableau(n1)
+R := cr´ eerTableau(n2)
+Pour i de 1 ` a n1 L[i] := A[p+i-1]
+Pour j de 1 ` a n2 R[j] := A[q+j]
+L[n1] := INF
+R[n2] := INF
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Tri par fusion-5
+(* Suite de la proc´ edure Fusion *)
+i := 1
+j := 1
+Pour k de p ` a r
+Si L[i]≤ R[j]
+A[k] := L[i]
+i := i+1
+Sinon
+A[k] := R[j]
+j := j+1
+Fin
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+M´ ethode g´ en´ erale
+Pour d´ emontrer la correction d’un algorithme ’Diviser pour
+r´ egner’ on est souvent amen´ e ` a combiner :
+une r´ ecurrence pour les parties r´ ecursives (R´ egner),
+d’autres m´ ethodes (notamment les invariants de boucle) pour
+les autres parties (Diviser, Combiner).
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Exemple : Tri par fusion
+la partie ’Diviser’ se r´ eduit au calcul de la position du milieu
+du tableau.
+les parties ’R´ egner’ et ’Combiner’ sont analys´ ees de la mani` ere
+suivante :
+Cas de base : tableau r´ eduit ` a un seul ´ el´ ement. Tri´ e.
+Supposons que pour n≥ 2 l’algorithme trie correctement les
+tableaux de taille m≤ n/2.
+Il nous faut d´ eduire que l’algorithme trie correctement un
+tableau de taille n.
+Cela revient ` a d´ emonter la correction de la proc´ edure ’Fusion’.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Exemple : Tri par fusion-2
+Nous allons d´ emontrer la correction de la proc´ edure ’Fusion’
+par l’invariant de boucle suivant :
+Au d´ ebut de l’it´ erationk le tableau A[p, .., k− 1] contient les
+k− p plus petits ´ el´ ements deL[1..n1 + 1] et R[1..n2 + 1] en
+ordre tri´ e. En outre,L[i] et R[j] sont les plus petits ´ el´ ements
+de leurs tableaux ` a ne pas avoir ´ et´ e copi´ es dansA.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Exemple : Tri par fusion-3
+Initialisation : Avant la premi` ere it´ eration nous avons
+k = p.Le sous-tableau A[p..k− 1] est donc vide : il contient
+les ’0=k− p ´ el´ ements’ les plus petits deL et R. Les tableaux
+L et R ´ etant tri´ es eti = j = 1, L[i] et R[j] sont eﬀectivement
+les plus petits ´ el´ ements de leur tableaux ` a ne pas ˆ etre copi´ es
+dans A.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Exemple : Tri par fusion-4
+Conservation : Supposons que la propri´ et´ e soit vraie jusqu’` a
+l’it´ erationk. `A l’it´ eration suivantek + 1, le plus petit des
+deux ´ el´ ementsL[i] et R[j] est ajout´ ee en positionk + 1. Le
+sous-tableau A[p..k] contient donc les k + 1 plus petits
+´ el´ ements tri´ es etL[i] et R[j + 1] contiennent les plus petit
+´ el´ ement de leurs tableaux ` a ne pas avoir ´ et´ e copi´ es dansA
+(noter que seule l’une des deux valeurs de i et j a ´ et´ e
+incr´ ement´ ee).
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Exemple : Tri par fusion-5
+Terminaison : `A la ﬁn k = r + 1, i = n1 + 1 et j = n2 + 1.
+L’invariant de boucle s’´ ecrit comme suit :
+Le tableau A[p..r] contient les r− p + 1 ´ el´ ements les plus
+petits de L et R tri´ es. Seuls les ´ el´ ements ’artiﬁciels’
+(sentinelles) INF n’ont pas ´ et´ e copi´ es dansA. Ces sentinelles
+sont les valeurs actuelles de L[i] et R[j].
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+M´ ethode g´ en´ erale
+Le nombre d’op´ erations d’un algorithme r´ ecursif est souvent
+donn´ e par une´ equation de r´ ecurrence.
+Cette ´ equation d´ ecrit le nombre d’op´ erations de l’algorithme
+pour une taille de probl` emen (probl` eme initial) en fonction
+des nombres d’op´ erations de l’algorithme appliqu´ e au(x)
+sous-probl` eme(s) (taille < n).
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+M´ ethode g´ en´ erale
+Supposons que :
+le probl` eme de taillen est divis´ e ena sous-probl` emes de taille
+n/b.
+le coˆ ut des op´ erations qui pr´ ec` edent l’appel r´ ecursif soitC (n).
+le coˆ ut des op´ erations qui suivent l’appel r´ ecursif soitD(n).
+pour les petites valeurs de n (n≤ c) le nombre d’op´ erations
+est constant et on le note Θ(1).
+L’´ equation de r´ ecurrence est donc
+T (n) =
+{
+Θ(1) si n ≤ c
+aT (n/b) + D(n) + C (n) sinon
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Complexit´ e-Tri par fusion
+Appliquons cette m´ ethode au tri par fusion.
+Nous prenons c = 2
+La partie qui pr´ ec` ede l’appel r´ ecurisf se contente de calculer le
+milieu du tableau, donc C (n) = Θ(1).
+Chaque ´ etape divise le probl` eme (taillep) en deux
+sous-probl` emes de taillep/2 (a = 2 et b = 2).
+La partie qui suit l’appel r´ ecursif est la fusion. Sa complexit´ e
+D(n) est en Θ( n) (voir d´ etails ci-dessous).
+L’´ equation de r´ ecurrence est donc
+T (n) =
+{
+Θ(1) si n ≤ 1
+2T (n/2) + Θ(n) sinon
+Il est ais´ e d’en d´ eduire que la complexit´ e du tri par fusion est
+en Θ(nlogn).
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Correction des algorithmes
+Complexit´ e
+Complexit´ e-Tri par fusion-2
+Complexit´ e de la proc´ edure Fusion :
+Nous avons trois boucles qui comportent chacune Θ( r− p)
+aﬀectations (et autant de tests pour la troisi` eme).
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Conclusion
+Rappels sur la r´ ecursivit´ e.
+R´ ecursivit´ es terminale et non terminale.
+Approche ’Diviser pour r´ egner’ pour la conception des
+algorithmes.
+Analyse des algorithmes utilisant cette approche : correction
+& complexit´ e.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie
+<<<PAGE>>>
+Introduction
+R´ ecursivit´ es terminale et non terminale
+Diviser pour r´ egner
+Analyse des algorithmes
+Conclusion
+Bibliographie
+Bibliographie
+Cormen T.H., Leiserson C.E., Rivest R.L. et Stein C.
+Algorithmique. Dunod. 2010, 1188 pages.
+Houcine Senoussi R´ ecursivit´ ePremi` ere partie

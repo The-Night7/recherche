@@ -1,0 +1,101 @@
+ Examen Bases de Données 
+Session Rattrapage 
+ 
+ING1-GI-GM-GIA-GMA Année 2022-23 
+ 
+ 
+1 / 2 
+Examen papier - Durée : 2h 
+Aucun document ou machine n'est autorisé. 
+ 
+Exercice 1 : Modélisation (7 pts) 
+Conception d’une base de données pour le suivi des défaillances 
+Un service qualité désire réalis er une base de données pour conserver la mémoire des 
+défaillances observées sur les produits d’une entreprise. 
+Une observation de l’entreprise a montré qu’un type de produit est un assemblage de 
+différents types de composants, un même type de composant pouvant appartenir à différents 
+types de produits, en quantité variable. 
+Un type de produit est caractérisé par un nom, une référence (identifiant) et un descriptif. De 
+même, un type de composant est caractérisé par un nom, une référence (identifiant) et un 
+descriptif. 
+Les types de défaillances des types de composants sont stockés dans la base de données et 
+sont caractérisés par un nom (identifiant) et un descriptif. Un type de défaillance peut affecter 
+qu’un seul type de composant à plusieurs occurrences, mais un même composant peut subir 
+différents types de défaillances.  
+Dans le but de calculer la fréquence d’une défaillance, on sauvegarde le nombre 
+d’occurrences de chaque type de défaillance. 
+Lorsqu’une défaillance est détectée, elle est prise en charge à une date précise par un expert 
+afin de l’évaluer et identifier le type. D’autres experts peuvent aussi intervenir sur la même 
+défaillance afin d’évaluer la gravité de la défaillance, identifier les causes, ou rechercher une 
+solution, etc. Le suivi des actions menées sur la défaillance (le type d’intervention, la date de 
+l’intervention, …) sera sauvegardé. 
+Une fois la décision prise, le produit concerné est déplacé dans un de ces entrepôts 
+(Decheterie, Entrepot_Correctif, Entrepot_Amelioratif). Chaque entrepô t est caractérisé par 
+un code et une surface. 
+ 
+1. Proposer un MCD modélisant cet énoncé.  
+2. Traduire votre MCD en MLD.  
+ 
+Exercice 2 : Normalisation (3 pts) 
+ 
+Une entreprise de services informatiques désire concevoir une base de données afin de 
+sauvegarder les détails des ordinateurs de ses clients, les dépannages informatiques ainsi 
+que le suivi des installations de logiciels. 
+Le schéma relationnel de la base de données est le suivant : 
+ 
+SuiviInstallation (numOrdi, nomLogiciel, marqueOrdi, dateInstallation, tailleRAM) 
+ 
+SuiviDepannage (idDepannage, #numOrdi, typeDepannage, dateDepannage) 
+ 
+ 
+<<<PAGE>>>
+ Examen Bases de Données 
+Session Rattrapage 
+ 
+ING1-GI-GM-GIA-GMA Année 2022-23 
+ 
+ 
+2 / 2 
+ 
+1. Donnez les dépendances fonctionnelles des relations de ce MLD. 
+2. La relation SuiviInstallation est en 1FN et pas en 2FN ? Justifiez. 
+3. La relation SuiviDepannage est-elle en 3FN ? Justifiez 
+4. Proposez une décomposition du MLD précédent qui lui permette d’être en 3FN. 
+ 
+Exercice 3 : Requêtes (10 pts) 
+ 
+Soit la base de données dont le schéma relationnel est donné ci-dessous : 
+Usine ( NumU, NomU, VilleU) 
+Produit ( NumP, NomP, Couleur,  Poids) 
+Fournisseur ( NumF, NomF, Statut, VilleF) 
+PUF ( #NumP,  #NumU,  #NumF, Quantité) 
+ 
+Ces relations décrivent le fait que : 
+ • Usine: une usine est décrite par son numéro NumU, son nom NomU et la ville 
+VilleU où elle est située. 
+• Produit: un produit est décrit par son numéro NumP, son nom NomP, sa couleur 
+et son poids.  
+• Fournisseur: un fournisseur est décrit par son numéro NumP, son nom NomF, 
+son statut (soustraitant, client…) et la ville VilleF où il est domicilié. 
+• PUF: le produit de numéro NumP a été délivré à l’usine de numéro NumU par le 
+fournisseur de numéro NumF dans une quantité donnée. 
+Les clés primaires sont soulignées; les clés étrangères sont en italique précédées d’un #. 
+ 
+Formuler en SQL les requêtes suivantes : 
+1. Créer la table PUF. On supposera que les relations Usine, Produit et Fournisseur 
+existent déjà. 
+2.  Changer la ville du fournisseur 7 par Lyon. 
+3. Donner le numéro, le nom, la ville de toutes les usines de Marseille. 
+4. Donner les noms des fournisseurs qui approvisionnent une usine de Paris ou de Créteil 
+en produit rouge. 
+5. Donner les numéros des usines qui ont au moins un fournisseur qui n’est pas de la 
+même ville. 
+6. Donner le numéro du produit le plus léger (les numéros si plusieurs produits ont ce 
+même poids) 
+7. Donner le numéro des usines qui ne reçoivent aucun produit rouge d’un fournisseur 
+parisien. 
+8. Donner le nombre de produits délivrés par fournisseur. 
+9. Donner les numéros des fournisseurs qui approvisionnent toutes les usines avec un 
+même produit. 
+10. Donner les numéros d es usines qui achètent au fournisseur de numéro 3 tous les 
+produits qu’il fournit. 

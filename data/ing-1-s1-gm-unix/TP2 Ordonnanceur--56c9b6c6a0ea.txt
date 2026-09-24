@@ -1,0 +1,109 @@
+CY Tech – Département Informatique 1/4  
+Systèmes d’exploitation 
+TP - Ordonnanceur 
+ING1 Informatique - Mathématique appliquée  
+Année 2024–2025 
+ 
+ 
+ 
+Ordonnanceur non-préemptif 
+ 
+ 
+Considérons cinq travaux A, B, C, D et E, dont les temps d’exécution et leurs temps 
+d’arrivée respectifs sont donnés dans la table ci -dessous. Faire un schéma qui illustre 
+son exécution et calculer : 
+— Le schéma d’exécution des processus 
+— le temps de séjour de chaque processus : intervalle de temps entre la soumission 
+du travail et son achèvement. 
+— le temps moyen de séjour 
+— le temps d’attente : temps de séjour - temps d’exécution du travail 
+— le temps moyen d’attente 
+en utilisant les techniques : 
+1. First Come First Served (FCFS) 
+2. Shortest Job First (SJF) 
+ 
+Processus Temps d’exécution Temps d’arrivée 
+A 3 0 
+B 6 1 
+C 4 4 
+D 2 6 
+E 1 7 
+ 
+1 
+<<<PAGE>>>
+Systèmes d’exploitation 
+CY Tech – Département Informatique 2/4 
+ 
+ 
+Ordonnanceur préemptif 
+ 
+ 
+Soient deux processus A et B prêts tels que A est arrivé en premier suivi de B, 2 unités de  
+temps après. Les temps nécessaires pour l’exécution des processus A et B sont 
+respectivement 15 et 4 unités de temps. Le temps de commutation est supposé nul sauf si 
+dit autrement. Calculer : 
+— le schéma d’exécution des processus 
+— le temps de séjour de chaque processus A et B 
+— le temps moyen de séjour 
+— le temps d’attente : temps de séjour - temps d’exécution du travail 
+— le temps moyen d’attente 
+— le nombre de changements de contexte 
+en utilisant les techniques : 
+1. SRT (Shortest Remaining Time) 
+2. Round robin (quantum = 10 unités de temps) 
+3. Round robin (quantum = 3 unités de temps) 
+ 
+Processus Temps d’exécution Temps d’arrivée 
+A 15 0 
+B 4 2 
+ 
+2 
+<<<PAGE>>>
+Systèmes d’exploitation 
+CY Tech – Département Informatique 3/4 
+ 
+ 
+Ordonnanceurs de processus avec de la priorité 
+ 
+ 
+Cinq processus A, B, C, D et E sont soumis à un processeur. Leurs durées, leurs temps 
+d’arrivée et leurs priorités (avec le plus petit chiffre égal à la priorité la plus forte) 
+respectifs sont donnés dans la table ci -dessous. Ces travaux ne font pas d’entrées -
+sorties.            Déterminer pour chaque processus : 
+— le schéma d’exécution des processus 
+— le temps de séjour de chaque processus 
+— le temps moyen de séjour 
+— le temps d’attente : temps de séjour - temps d’exécution du travail 
+— le temps moyen d’attente 
+— le nombre de changements de contexte 
+en considérant tout d’abord que l’ordonnancement est non préemptif, puis qu’il est 
+préemptif (c’est-à-dire, qu’un processus peut être réquisitionné lorsqu’un autre avec 
+une priorité plus forte arrive). 
+Processus Temps d’exécution Temps d’arrivée Priorité 
+A 10 2 3 
+B 6 0 5 
+C 2 5 2 
+D 4 5 1 
+E 8 3 4 
+3 
+<<<PAGE>>>
+Systèmes d’exploitation 
+CY Tech – Département Informatique 4/4 
+ 
+ 
+ 
+Considérons quatre processus P1, P2, P3 et P4 dont les caractéristiques sont les sui - 
+vantes : 
+ 
+Processus Temps d’exécution Priorité 
+P1 5 3 
+P2 8 4 
+P3 12 2 
+P4 4 1 
+Sachant que les quatre processus sont présents à l’instant t0 = 0 dans la file des processus  
+prêts et que les processus étaient arrivés dans l’ordre P1, P2, P3, P4. L’ordonnancement  
+est en tourniquet (Round -Robin) avec un quantum Q égal à (5 - priorité du processus)  
+unités. Donnez la séquence d’exécution des processus. Si un processus ne consomme 
+pas l’intégra lité de son quantum, le processus suivant reçoit immédiatement un nouveau  
+quantum Q. 
+4 

@@ -1,0 +1,91 @@
+
+Cycle ingénieur 1ère année
+Examen
+L ’équipe enseignante
+Matière : Commandes Unix Date : Janvier 2019
+Durée de l’épreuve: 1 heures
+Nombre de pages du sujet : 3
+Modalités
+- Durée : 1 heure.
+- Type : papier
+- Aucun document n’est autorisé.
+- Vous devez rédiger votre copie à l’aide d’un stylo à encre exclusivement.
+- Les déplacements et les échanges ne sont pas autorisés.
+- Aucune question ne peut être posée aux enseignants, posez des hypothèses en cas de doute.
+1 Exercice 1 - 11 points
+Vous venez de vous connecter au système utilisateur en tant que Jimmy. Vous vous trouvez dans
+/home/Jimmy.
+1. Afﬁcher le contenu de /home/Jimmy de telle sorte que les ﬁchiers récemment modiﬁés appa-
+raissent en premier (0.5 pt)
+ls -lt ou ls -t
+2. Créer en une seule commande un répertoire Cours avec un sous-répertoire Unix (1 pt)
+mkdir -p Cours/Unix
+1 point pour la réponse correcte et 0.5 point s’ils utilisent plusieurs commandes
+3. Créer 4 ﬁchiers à l’intérieur du sous répertoire Cours s’appelant TD1 - TD2 - TD3 - TD4 (1 pt)
+touch Cours/Unix/TD1
+touch Cours/Unix/TD2
+touch Cours/Unix/TD3
+touch Cours/Unix/TD4
+4. Modiﬁer les droits de l’ensemble de ces ﬁchiers en une seule commande de la manière suivante :
+rwxr–r–(1 pt)
+chmod 744 Cours/Unix/TD*
+5. Écrire le texte «Para bailar »dans TD1 et le texte «La Bamba »dans TD2 (1 pt)
+echo "Para bailar" > Cours/Unix/TD1 echo "La Bamba" > Cours/Unix/TD2
+6. Compter le nombre de ligne dans le ﬁchier TD1 (0.5 pt)
+wc -l TD1
+7. Afﬁcher le contenu du répertoire Cours /Unix avec des signes distinctifs qui permettent d’identi-
+ﬁer plus vite le type de ﬁchier (0.5 pt)
+ls -F
+- 1 / 3 -
+<<<PAGE>>>
+8. Supprimer le ﬁchier TD1 (0.5 pt)
+rm Cours/Unix/TD1
+9. Renommer le ﬁchier TD3 en Rictchie (1 pt)
+mv Cours/Unix/TD3 Cours/Unix/Ritchie
+10. Copier le ﬁchier «Ritchie»dans le répertoire Cours (1 pt)
+cp Cours/Unix/Ritchie Cours/
+11. Rechercher le ﬁchier TD4 et renommer ce ﬁchier en «notes». Réaliser cette opération en une et une seul
+commande. (1.5 pt)
+ﬁnd . / -name TD4 -exec mv {} Cours/Unix/notes \;
+12. Rechercher dans etc/ et dans ses sous répertoires, si un ou des ﬁchiers contient le mot Jimmy
+(1.5 pt)
+grep -wi Jimmy /etc/*
+grep Jimmy /etc/*
+2 Exercice 2 - 5 points
+Soit le ﬁchier de notes de l’étudiant Jimmy : «notes.txt »
+5896 Java 14 15
+4589 BD 20 1
+7415 Algorithme 17 3
+4568 Pascal 8 20
+4567 Web 15 7
+NB : la première colonne désigne l’identiﬁant de la matière, la deuxième colonne l’intitulé de la
+matière, la troisième colonne la note obtenue, et la quatrième colonne le classement de l’étudiant dans
+la matière
+1. Trier le ﬁchier par note décroissante (1 pt)
+sort -k3nr notes.txt
+2. Trier le ﬁchier par ordre sur l’intitulé des matières (1 pt)
+sort -k2d notes.txt ou sort -k2 notes.txt
+3. Trier le ﬁchier par ordre croissant du classement (quatrième colonne) et n’afﬁcher que les ma-
+tières (1.5 pt)
+sort -k4n notes.txt | cut -d " " -f2
+4. Chercher la matière Algorithme et afﬁcher le résultat en majuscule (1.5 pt)
+Deux solutions acceptées :
+grep -wi Algorithme notes.txt| tr [ :lower :] [ :upper :]
+3 Exercice 3 - 4 points
+Écrire un script shell prenant en argument un ﬁchier F1.txt
+Par exemple : ./test.sh F1.txt. Ce script doit réaliser les actions suivantes :
+- 2 / 3 -
+<<<PAGE>>>
+1. Afﬁcher le nombre d’arguments passés en paramètre et vériﬁer qu’il est égale à 1 (2 pt)
+2. Créer un répertoire « Partiel » et puis chercher dans le répoertoire courant, le ﬁchier passé en
+argument et déplacer le dans répertoire «Partiel«(2 pt)
+#!/bin/sh
+echo "Le nombre d 'argument passé en paramètre est égal à $#"
+if [ $# != 1 ]
+then
+echo "Le nombre d 'argument passé en paramètre est différent de 1"
+exit 2
+fi
+mkdir -p Partiel
+find . -iname $1 -exec mv{} Partiel \;
+- 3 / 3 -

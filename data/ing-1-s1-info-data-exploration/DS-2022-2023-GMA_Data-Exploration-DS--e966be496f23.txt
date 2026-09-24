@@ -1,0 +1,204 @@
+ 
+ 
+ING1-GMA 
+                                          EXAMEN DE DATA EXPLORATION 
+                                                            2022-2023 
+ 
+Durée : 2h00 
+Examen papier 
+2 feuilles R/V (manuscrites ou non) autorisées  
+Calculatrice autorisée 
+ 
+Ce sujet contient un seul exercice avec plusieurs parties.   
+On considère le jeu de données Ozone. Nous souhaitons analyser la relation entre le maximum journalier de 
+la concentration en ozone maxO3 (en microgrammes par millilitre : µg/m3) et la température à différentes 
+heures de la journée, la nébulosité à différentes heures de la journée, la projection du vent sur l’axe Est-ouest 
+à différentes heures de la journée et la concentration maximale de la veille du jour considéré. Nous disposons 
+de 112 données relevées durant l’été 2001 à Rennes (fichier ozone.txt). 
+A- Analyse Quantitative x Quantitative 
+L’objectif est d’étudier le  lien entre le maximum journalier de la concentration en ozone (maxO3) et la 
+température à 9h00 du matin (T9).  Avec le logiciel R, nous avons obtenu ce résultat :  
+ 
+Coefficients: 
+Estimate Std. Error t value Pr(>|t|) 
+(Intercept) -25.622    11.4551  -2.235   0.0274 * 
+T9            6.3130     0.6151  10.263   <2e-16 *** 
+--- 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+ 
+Residual standard error: 20.24 on 110 degrees of freedom 
+Multiple R-squared:  0.4891,
+ 
+Adjusted R-squared:  0.4845 
+F-statistic: 105.3 on 1 and 110 DF, p-value: < 2.2e-16 
+ 
+a) Déterminer la droite de régression de maxO3 en fonction de T9. 
+ 
+ 
+b) Quel est le pourcentage de variation de maxO3 expliquée par la droite de régression ? 
+ 
+ 
+c) Donner une estimation du coefficient de corrélation entre les deux variables maxO3 et T9. 
+ 
+ 
+d) Calculer la prévision de la valeur de maxO3 si la température à 9h00 du matin est de 15.6. 
+ 
+ 
+ 
+<<<PAGE>>>
+e) On observe une concentration maximale maxO3=87 pour une température à 9h00 du matin de 15.6. 
+Calculer le résidu dans ce cas. 
+ 
+ 
+f)     Comment peut -on vérifier les hypothèses sur les résidus. Comment peut -on valider un modèle de  
+régression ? 
+ 
+ 
+On donne les indicateurs numériques suivants, 
+𝑥̅ = 18.36, 𝑦̅ = 90.30, 𝑠𝑥2 = 9.75, 𝑠𝑦2 = 794.52, 𝑐𝑜𝑣(𝑥, 𝑦) = 61.56 
+où 𝑦=maxO3 et 𝑥=T9. 
+ 
+g) Retrouver les coefficients de la droite de régression à partir de ces indicateurs (aux arrondis près). 
+ 
+ 
+ 
+ 
+B- Analyse Qualitative x Qualitative 
+ 
+L’objectif est d’étudier le lien entre les deux variables vent (Nord, Est, Ouest, Sud) et la variable Pluie (Pluie, 
+Sec).   
+ 
+A partir des tableaux ci-dessous, répondez aux questions suivantes. 
+ 
+Tableau des effectifs observés 
+ Est Nord Ouest Sud Total 
+Pluie 2 10 26 5 43 
+Sec 8 16 23 16 63 
+Humide 0 5 1 0 6 
+Total 10 31 50 21 112 
+      
+ 
+Tableau des fréquences observées 
+ Est Nord Ouest Sud Total 
+Pluie 0,02 0,09 0,23 0,04 0,38 
+Sec 0,07 0,14  0,14  
+Humide 0,00 0,04 0,01 0,00 0,05 
+Total 0,09 0,28 0,45 0,19 1,00 
+ 
+Tableau des profils lignes 
+ Est Nord Ouest Sud 
+Pluie 0,05 0,23 0,60 0,12 
+Sec 0,13  0,37 0,25 
+Humide 0,00 0,83 0,17 0,00 
+. 
+Tableau des profils colonnes 
+ Est Nord Ouest Sud 
+Pluie 0,20 0,32  0,24 
+Sec 0,80 0,52 0,46 0,76 
+Humide 0,00 0,16 0,02 0,00 
+ 
+<<<PAGE>>>
+ 
+ 
+ 
+a) Compléter les 4 cases vides dans les tableaux ci-dessus. Expliquez vos calculs. 
+ 
+ 
+b) Quel est le pourcentage des observations avec un vent d’Est et un temp pluvieux ? 
+ 
+ 
+c) Quel est le pourcentage des observations de vent de Sud ayant un temp sec ? 
+ 
+ 
+d) Avec quelles fréquences peut -on comparer les profils lignes  ? Que pouvez-vous en conclure sur le  
+lien entre les deux variables ? Argumentez votre réponse. 
+ 
+ 
+ 
+e) Calculer le tableau des effectifs théoriques, en détaillant le calcul d’une seule case. 
+<<<PAGE>>>
+ 
+ 
+f) On suppose que la distance de khi -deux est de 17.7, donner une conclusion sur le lien entre les 
+variables. Justifiez votre réponse. 
+ 
+                 Voici le tableau de seuils de décision : 
+ 
+d.d.l 2 3 4 5 6 7 8 9 10 15 
+Seuil 5.99 7.82 9.49 11.075 12.59 14.07 15.51 16.92 18.31 24.99 
+ 
+ 
+ 
+ 
+C- Analyse Quantitative x Qualitative 
+ 
+On souhaite étudier le lien entre les deux variables T9 et Pluie. 
+Analysis of Variance Table 
+ 
+Response: T9 
+                             Df           Sum Sq             Mean          Sq               F value    Pr(>F)     
+as.factor(pluie)    1           159.05              159.050       18.948       3.022e-05 *** 
+Residuals             110        923.36             8.394                       
+--- 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+ 
+ 
+a) Donner les variances inter-groupe et intra-groupe. 
+<<<PAGE>>>
+ 
+ 
+b) Déduire la variance totale. 
+ 
+ 
+c) Calculer le rapport de corrélation. Commenter. 
+ 
+ 
+D- ACP 
+Nous réalisons une analyse en composantes principales sur les variables : maxO3, T9, Ne9, Vx9 et maxO3v. 
+(les résultats sont en Annexe). 
+a) Le nuage de points est constitué de combien de points ? Combien de dimensions sont nécessaires 
+pour représenter les points ? 
+ 
+ 
+a) Comment est définie la quantité d’information (inertie) contenue dans le nuage de points ? A partir 
+de quelle matrice peut-on la calculer et comment la calcule-t-on ? 
+ 
+ 
+<<<PAGE>>>
+ 
+b) Quel est le pourcentage manquant dans le tableau des valeurs propres ? 
+ 
+ 
+c) Combien d’axes faut-il retenir et pourquoi ? 
+ 
+ 
+d) Quel est la contribution théorique (poids) de chaque variable ? 
+ 
+ 
+ 
+e) Utiliser les résultats sur les variables de l’annexe pour étudier la qualité de représentation des 
+variables T9 et Vx9 ? 
+ 
+ 
+f) Interpréter le graphe des variables. 
+ 
+ 
+ 
+<<<PAGE>>>
+Annexe 
+ 
+Résultats sur les valeurs propres : 
+ 
+ 
+Résultats sur les variables 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Cos2 
+ 
+ 
+Contribution 

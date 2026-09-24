@@ -1,0 +1,472 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
+--
+-- Client :  localhost:3306
+-- Généré le :  Jeu 16 Mai 2019 à 18:09
+-- Version du serveur :  5.7.26-0ubuntu0.18.04.1
+-- Version de PHP :  7.2.17-0ubuntu0.18.04.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `harrypotter`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Eleve`
+--
+
+CREATE TABLE `Eleve` (
+  `idEleve` int(100) NOT NULL,
+  `nom` varchar(42) NOT NULL,
+  `prenom` varchar(42) NOT NULL,
+  `idMaison` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Eleve`
+--
+
+INSERT INTO `Eleve` (`idEleve`, `nom`, `prenom`, `idMaison`) VALUES
+(1, 'Potter', 'Harry', 1),
+(2, 'Weasley', 'Ron', 1),
+(3, 'Weasley', 'Ginny', 1),
+(4, 'Weasley', 'Percy', 1),
+(5, 'Weasley', 'Georges', 1),
+(6, 'Weasley', 'Fred', 1),
+(7, 'Granger', 'Hermione', 1),
+(8, 'Dean', 'Thomas', 1),
+(9, 'Londubat', 'Neville', 1),
+(10, 'Chang', 'Cho', 2),
+(11, 'Davies', 'Roger', 2),
+(12, 'Lovegood', 'Luna', 2),
+(13, 'Winger', 'Talbott', 2),
+(14, 'Carmichael', 'Eddie', 2),
+(15, 'Ackerley', 'Stewart', 2),
+(16, 'Boot', 'Terry', 2),
+(17, 'Hannah', 'Abbot', 3),
+(18, 'Bones', 'Susan', 3),
+(19, 'Diggory', 'Cedric', 3),
+(20, 'Whitby', 'Kevin', 3),
+(21, 'Smith', 'Zacharias', 3),
+(22, 'Zeller', 'Rose', 3),
+(23, 'Macmillan', 'Ernie', 3),
+(24, 'Malefoy', 'Drago', 4),
+(25, 'Crabbe', 'Vincent ', 4),
+(26, 'Baddock', 'Malcolm', 4),
+(27, 'Goyle', 'Gregory', 4),
+(28, 'Fintz', 'Marcus', 4),
+(29, 'Bulstrode', 'Millicent', 4),
+(30, 'Nott', 'Theodore', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `EleveSuitMatiere`
+--
+
+CREATE TABLE `EleveSuitMatiere` (
+  `idEleve` int(100) NOT NULL,
+  `idMatiere` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `EleveSuitMatiere`
+--
+
+INSERT INTO `EleveSuitMatiere` (`idEleve`, `idMatiere`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(3, 3),
+(3, 5),
+(3, 7),
+(3, 9),
+(4, 3),
+(4, 5),
+(4, 7),
+(4, 8),
+(4, 9),
+(5, 3),
+(5, 4),
+(5, 5),
+(5, 6),
+(5, 7),
+(6, 3),
+(6, 4),
+(6, 5),
+(6, 6),
+(6, 9),
+(7, 1),
+(7, 2),
+(7, 3),
+(7, 4),
+(7, 5),
+(8, 2),
+(8, 3),
+(8, 5),
+(9, 1),
+(9, 2),
+(9, 3),
+(9, 4),
+(9, 5),
+(10, 2),
+(10, 3),
+(10, 5),
+(11, 1),
+(11, 5),
+(11, 6),
+(12, 3),
+(12, 5),
+(12, 7),
+(13, 3),
+(13, 5),
+(13, 7),
+(14, 3),
+(14, 5),
+(14, 7),
+(15, 2),
+(15, 7),
+(15, 8),
+(16, 4),
+(17, 4),
+(17, 8),
+(18, 2),
+(18, 4),
+(19, 2),
+(19, 4),
+(19, 6),
+(19, 9),
+(20, 4),
+(20, 8),
+(21, 8),
+(21, 9),
+(22, 3),
+(22, 8),
+(23, 4),
+(23, 6),
+(23, 8),
+(24, 1),
+(24, 6),
+(25, 1),
+(27, 1),
+(27, 9),
+(28, 5),
+(28, 6),
+(28, 9),
+(29, 1),
+(29, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Maison`
+--
+
+CREATE TABLE `Maison` (
+  `idMaison` int(1) NOT NULL,
+  `nom` varchar(42) NOT NULL,
+  `couleur` varchar(42) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Maison`
+--
+
+INSERT INTO `Maison` (`idMaison`, `nom`, `couleur`) VALUES
+(1, 'Gryffondor', 'rouge - Jaune'),
+(2, 'Serdaigle', 'bleu - noir'),
+(3, 'Poufsouffle', 'Jaune - noir'),
+(4, 'Serpentard', 'vert - noir');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Matiere`
+--
+
+CREATE TABLE `Matiere` (
+  `idMatiere` int(100) NOT NULL,
+  `intitule` varchar(42) NOT NULL,
+  `idProfesseur` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Matiere`
+--
+
+INSERT INTO `Matiere` (`idMatiere`, `intitule`, `idProfesseur`) VALUES
+(1, 'potion', 1),
+(2, 'métamorphose', 2),
+(3, 'sortilèges', 3),
+(4, 'botanique', 4),
+(5, 'défense contre les forces du mal', 5),
+(6, 'quidditch', 6),
+(7, 'soins aux créatures magiques', 7),
+(8, 'divination', 8),
+(9, 'histoire de la magie', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Points`
+--
+
+CREATE TABLE `Points` (
+  `idProfesseur` int(100) NOT NULL,
+  `idEleve` int(100) NOT NULL,
+  `motif` varchar(100) NOT NULL,
+  `nbPoints` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Points`
+--
+
+INSERT INTO `Points` (`idProfesseur`, `idEleve`, `motif`, `nbPoints`) VALUES
+(1, 1, 'Non respect des consignes', -10),
+(1, 1, 'Retard', -10),
+(1, 1, 'Usage de la magie dans les couloirs', -10),
+(1, 2, 'Retard', -10),
+(1, 2, 'Usage de la magie dans les couloirs', -10),
+(1, 5, 'Non respect des consignes', -10),
+(1, 6, 'Non respect des consignes', -10),
+(1, 7, 'Usage de la magie dans les couloirs', -10),
+(1, 9, 'Usage de la magie dans les couloirs', -10),
+(1, 24, 'Participation et réponse correcte', 10),
+(1, 25, 'Gentil en classe', 20),
+(1, 25, 'Participation et réponse correcte', 10),
+(1, 26, 'Participation et réponse correcte', 20),
+(1, 27, 'Gentil en classe', 10),
+(1, 27, 'Participation et réponse correcte', 20),
+(1, 29, 'Participation et réponse correcte', 20),
+(1, 30, 'Participation et réponse correcte', 20),
+(2, 1, 'Non respect des consignes', -10),
+(2, 1, 'Participation et réponse correcte', 10),
+(2, 1, 'Service exceptionnel rendu à l\'école', 50),
+(2, 2, 'Service exceptionnel rendu à l\'école', 50),
+(2, 2, 'Usage de la magie dans les couloirs', -10),
+(2, 3, 'Participation et réponse correcte', 10),
+(2, 4, 'Participation et réponse correcte', 10),
+(2, 7, 'Participation et réponse correcte', 10),
+(2, 7, 'Service exceptionnel rendu à l\'école', 50),
+(2, 7, 'Usage de la magie dans les couloirs', -10),
+(2, 14, 'Participation et réponse correcte 1', 10),
+(2, 14, 'Participation et réponse correcte 2', 10),
+(2, 24, 'Non respect des consignes', -10),
+(3, 1, 'Participation et réponse correcte', 10),
+(3, 1, 'Service exceptionnel rendu à l\'école', 50),
+(3, 1, 'Usage de la magie dans les couloirs', -10),
+(3, 3, 'Aide au professeur', 10),
+(3, 3, 'Non respect des consignes', -10),
+(3, 3, 'Service exceptionnel rendu à l\'école', 50),
+(3, 4, 'Aide au professeur', 10),
+(3, 7, 'Non respect des consignes', -10),
+(3, 7, 'Participation et réponse correcte', 10),
+(3, 7, 'Service exceptionnel rendu à l\'école', 50),
+(3, 14, 'Aide au professeur', 10),
+(3, 14, 'Participation et réponse correcte', 10),
+(3, 15, 'Aide au professeur', 10),
+(3, 24, 'Non respect des consignes', -10),
+(4, 1, 'Aide au professeur', 10),
+(4, 2, 'Aide au professeur', 10),
+(4, 2, 'Retard', -10),
+(4, 3, 'Non respect des consignes', -10),
+(4, 4, 'Retard', -10),
+(4, 5, 'Participation et réponse correcte', 10),
+(4, 5, 'Service exceptionnel rendu à l\'école', 50),
+(4, 6, 'Participation et réponse correcte', 10),
+(4, 7, 'Aide au professeur', 10),
+(4, 7, 'Retard', -10),
+(4, 7, 'Service exceptionnel rendu à l\'école', 50),
+(4, 8, 'Service exceptionnel rendu à l\'école', 50),
+(4, 9, 'Retard', -10),
+(4, 10, 'Aide au professeur', 10),
+(4, 14, 'Aide au professeur', 10),
+(4, 14, 'Aide au professeur 1', 10),
+(4, 14, 'Aide au professeur 2', 10),
+(4, 14, 'Aide au professeur 3', 10),
+(4, 14, 'Participation et réponse correcte', 10),
+(5, 1, 'Aide au professeur', 10),
+(5, 2, 'Aide au professeur', 10),
+(5, 2, 'Retard', -10),
+(5, 3, 'Non respect des consignes', -10),
+(5, 5, 'Aide au professeur', 10),
+(5, 5, 'Service exceptionnel rendu à l\'école', 50),
+(5, 5, 'Usage de la magie dans les couloirs', -10),
+(5, 6, 'Participation et réponse correcte', 10),
+(5, 7, 'Aide au professeur', 10),
+(5, 7, 'Retard', -10),
+(5, 7, 'Service exceptionnel rendu à l\'école', 50),
+(5, 8, 'Gentil en classe', 50),
+(5, 8, 'Service exceptionnel rendu à l\'école', 50),
+(5, 15, 'Aide au professeur', 10),
+(5, 24, 'Retard', -10),
+(5, 27, 'Participation et réponse correcte', 10),
+(5, 28, 'Aide au professeur', 10),
+(6, 24, 'Non respect des consignes', -10),
+(6, 24, 'Retard', -10),
+(6, 27, 'Retard', -10),
+(6, 28, 'Non respect des consignes', -10),
+(7, 17, 'Aide au professeur', 10),
+(7, 18, 'Aide au professeur', 10),
+(7, 19, 'Aide au professeur', 10),
+(7, 20, 'Aide au professeur', 10),
+(8, 14, 'Participation et réponse correcte', 10),
+(8, 15, 'Aide au professeur', 10),
+(9, 19, 'Aide au professeur', 10),
+(9, 22, 'Participation et réponse correcte', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Professeur`
+--
+
+CREATE TABLE `Professeur` (
+  `idProfesseur` int(100) NOT NULL,
+  `nom` varchar(42) NOT NULL,
+  `prenom` varchar(42) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Professeur`
+--
+
+INSERT INTO `Professeur` (`idProfesseur`, `nom`, `prenom`) VALUES
+(1, 'Rogue', 'Severus'),
+(2, 'McGonagall', 'Minerva'),
+(3, 'Flitwick', 'Filius'),
+(4, 'Chourave', 'Pomona'),
+(5, 'Lupin', 'Remus'),
+(6, 'Bibine', 'Rolanda'),
+(7, 'Hagrid', 'Rubeus'),
+(8, 'Trelawney', 'Sibylle'),
+(9, 'Binns', 'Cuthbert');
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  ADD PRIMARY KEY (`idEleve`),
+  ADD KEY `idMaison` (`idMaison`);
+
+--
+-- Index pour la table `EleveSuitMatiere`
+--
+ALTER TABLE `EleveSuitMatiere`
+  ADD PRIMARY KEY (`idMatiere`,`idEleve`),
+  ADD KEY `idEleve` (`idEleve`);
+
+--
+-- Index pour la table `Maison`
+--
+ALTER TABLE `Maison`
+  ADD PRIMARY KEY (`idMaison`);
+
+--
+-- Index pour la table `Matiere`
+--
+ALTER TABLE `Matiere`
+  ADD PRIMARY KEY (`idMatiere`),
+  ADD KEY `idProfesseur` (`idProfesseur`);
+
+--
+-- Index pour la table `Points`
+--
+ALTER TABLE `Points`
+  ADD PRIMARY KEY (`idProfesseur`,`idEleve`,`motif`),
+  ADD KEY `idEleve` (`idEleve`);
+
+--
+-- Index pour la table `Professeur`
+--
+ALTER TABLE `Professeur`
+  ADD PRIMARY KEY (`idProfesseur`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  MODIFY `idEleve` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT pour la table `Maison`
+--
+ALTER TABLE `Maison`
+  MODIFY `idMaison` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `Matiere`
+--
+ALTER TABLE `Matiere`
+  MODIFY `idMatiere` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT pour la table `Professeur`
+--
+ALTER TABLE `Professeur`
+  MODIFY `idProfesseur` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `Eleve`
+--
+ALTER TABLE `Eleve`
+  ADD CONSTRAINT `Eleve_ibfk_1` FOREIGN KEY (`idMaison`) REFERENCES `Maison` (`idMaison`);
+
+--
+-- Contraintes pour la table `EleveSuitMatiere`
+--
+ALTER TABLE `EleveSuitMatiere`
+  ADD CONSTRAINT `EleveSuitMatiere_ibfk_1` FOREIGN KEY (`idMatiere`) REFERENCES `Matiere` (`idMatiere`),
+  ADD CONSTRAINT `EleveSuitMatiere_ibfk_2` FOREIGN KEY (`idEleve`) REFERENCES `Eleve` (`idEleve`);
+
+--
+-- Contraintes pour la table `Matiere`
+--
+ALTER TABLE `Matiere`
+  ADD CONSTRAINT `Matiere_ibfk_1` FOREIGN KEY (`idProfesseur`) REFERENCES `Professeur` (`idProfesseur`);
+
+--
+-- Contraintes pour la table `Points`
+--
+ALTER TABLE `Points`
+  ADD CONSTRAINT `Points_ibfk_1` FOREIGN KEY (`idProfesseur`) REFERENCES `Professeur` (`idProfesseur`),
+  ADD CONSTRAINT `Points_ibfk_2` FOREIGN KEY (`idEleve`) REFERENCES `Eleve` (`idEleve`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

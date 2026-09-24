@@ -1,0 +1,1050 @@
+TD4 – Mesure et Intégration
+Ingénieur 1 – Génie Mathématique – 2025/2026
+Avant-propos
+Ce corrigé détaillé est dédié à l’ensemble de la promotion.
+Une pensée particulière accompagne ceux qui, tout au long du semestre, ont préféré
+l’observation extérieure et distante à la présence en cours. Puisse ce document combler le
+fossé qu’ils ont eux-mêmes creusé.
+Exercice 1
+Soient(Ω,T,µ)et(R +,B(R +),λ)deux espaces mesurés, oùµest une mesure finie surΩetλla mesure
+de Lebesgue surR+. On considère l’application mesurablef: (Ω,T,µ)→(R +,B(R +),λ). On suppose
+que
+R
+Ωf 2dµ<+∞. SoientA 1 ={x∈Ω|0≤f(x)≤1}etA 2 ={x∈Ω|f(x)>1}.
+1. Montrer queA1 etA 2 sont deux ensembles mesurables,A1∈TetA 2∈T.
+2. Montrer que
+R
+A1
+fdµ<+∞.
+3. Montrer que
+R
+A2
+fdµ<+∞.
+4. Que peut-on déduire sur l’intégrabilité defsurΩ? Justifier.
+Corrigé de l’Exercice 1
+1.Mesurabilité deA 1 etA 2 :
+PourA 1 :L’applicationfest mesurable de(Ω,T)dans(R +,B(R +)). Par définition,A 1 =
+{x∈Ω|f(x)∈[0,1]}=f −1([0,1]).
+— L’intervalle[0,1]est unfermédeR +, c’est donc un ensemble borélien :[0,1]∈B(R+).
+— Par définition de la mesurabilité def, l’image réciproque d’un borélien appartient à la tribu
+de départ.
+⇒On en déduit queA 1∈T.
+PourA 2 :La fonctionfprend ses valeurs dansR +. Par conséquent, pour toutx∈Ω, nous
+avons l’alternative suivante :
+— Soit0≤f(x)≤1, ce qui correspond àx∈A 1.
+— Soitf(x)>1, ce qui correspond àx∈A 2.
+Puisquef(x)ne peut pas être strictement négatif, ces deux cas couvrent l’intégralité de l’espace
+Ωet sont disjoints. Ainsi,A 2 est exactement le complémentaire deA1 :
+A2 = Ω\A 1 =A c
+1.
+Justification :Test une tribu, elle est donc stable par passage au complémentaire. Puisque
+nous avons montré queA1∈T, il en résulte immédiatement queAc
+1∈T.⇒DoncA 2∈T.
+1
+<<<PAGE>>>
+2.Intégrabilité defsurA 1 :
+Sur l’ensembleA1, on a par définition l’encadrement0≤f(x)≤1. La fonctionfest donc bornée
+sur cet ensemble. En intégrant cette inégalité surA1 par rapport à la mesureµ:
+Z
+A1
+fdµ≤
+Z
+A1
+1dµ=µ(A 1).
+Argument clé :Par monotonie de la mesure,µ(A1)≤µ(Ω). Or, l’énoncé précise queµest une
+mesure finie, doncµ(Ω)<+∞.
+Z
+A1
+fdµ≤µ(Ω)<+∞.
+⇒Ainsi,
+R
+A1
+fdµ<+∞.
+3.Intégrabilité defsurA 2 :
+Sur l’ensembleA2, on af(x)>1. En multipliant parf(x)(qui est positif), on obtient l’inégalité :
+f(x)<(f(x)) 2 pour toutx∈A 2.
+Par monotonie de l’intégrale : Z
+A2
+fdµ≤
+Z
+A2
+f 2dµ.
+De plus, l’intégrale sur une partie est inférieure à l’intégrale sur le tout (carf2≥0) :
+Z
+A2
+f 2dµ≤
+Z
+Ω
+f 2dµ.
+Hypothèse :On suppose quef 2 est intégrable surΩ, c’est-à-dire
+R
+Ωf 2dµ <+∞.⇒Par
+comparaison,
+R
+A2
+fdµ<+∞.
+4.Intégrabilité defsurΩ:
+Les ensemblesA 1 etA 2 forment une partition deΩ(comme vu à la question 1). Par additivité
+de l’intégrale par rapport au domaine :
+Z
+Ω
+fdµ=
+Z
+A1
+fdµ+
+Z
+A2
+fdµ.
+Nous avons montré que les deux termes de droite sont finis. De plus, commef≥0, on a|f|=f.
+Z
+Ω
+|f|dµ=
+Z
+Ω
+fdµ<+∞.
+⇒On en déduit quefest intégrable surΩ(c’est-à-diref∈L 1(µ)).
+2
+<<<PAGE>>>
+Corrigé de l’Exercice 2
+Soit(f n)n∈N∗ la suite de fonctions définie surRpar :
+fn(x) = xn
+1 +xn+2 1R+(x).
+1.Limite simple de la suite(fn):
+Soitx∈R + fixé. Étudions la limite de la suite numérique(fn(x))n≥1 :
+—Cas0≤x<1:On alim n→+∞xn = 0etlim n→+∞xn+2 = 0.
+lim
+n→+∞
+fn(x) = 0
+1 + 0 = 0.
+—Casx= 1:Pour toutn∈N ∗,f n(1) = 1n
+1+1n+2 = 1
+2.
+lim
+n→+∞
+fn(1) = 1
+2.
+—Casx>1:On factorise par le terme prépondérantx n+2 au dénominateur :
+fn(x) = xn
+xn+2(x−(n+2) + 1) = 1
+x2· 1
+1 + 1
+xn+2
+.
+Commex>1, on alim n→+∞ 1
+xn+2 = 0. Par opérations sur les limites :
+lim
+n→+∞
+fn(x) = 1
+x2.
+⇒La suite(f n)converge simplement surR + vers la fonctionfdéfinie par :
+f(x) =
+
+
+
+0si0≤x<1
+1/2six= 1
+1/x2 six>1
+Remarque importante :L’ensemble{1}étant de mesure nulle pour la mesure de Lebesgue, on a
+l’égalité presque partout :
+f(x) = 1
+x2 1]1,+∞[(x)λ-p.p.
+2.Calcul de la limite de l’intégraleIn :
+Nous allons appliquer leThéorème de Convergence Dominée (TCD). Vérifions les hypo-
+thèses :
+—Mesurabilité :Soitn∈N ∗. La fonctionfn est définie parfn(x) = Nn(x)
+Dn(x)·1 R+(x).
+— Les fonctionsNn :x7→x n etD n :x7→1 +x n+2 sont des fonctions polynomiales, elles
+sont donccontinuessurR.
+—Vérification du domaine :Pour toutx∈R +, on axn+2≥0, donc le dénominateur
+vérifieD n(x)≥1>0. Il ne s’annule jamais sur le domaine d’étude.
+— Par conséquent, la fonctionx7→ xn
+1+xn+2 estcontinuesurR + (comme quotient de
+fonctions continues dont le dénominateur ne s’annule pas).
+— Or, toute fonction continue définie sur un borélien (iciR+) est mesurable par rapport à
+la tribu borélienne. L’indicatrice1R+ étant également mesurable (carR+ est un fermé
+deRdonc élément deB(R)),f n est mesurable par produit.
+3
+<<<PAGE>>>
+—Convergence simple :Comme montré à la question 1, la suite(fn)converge simplement
+versfsurR +.
+—Hypothèse de domination :Cherchons une fonctiong∈L 1(R+)(indépendante den)
+telle que∀n∈N ∗,∀x∈R +,|fn(x)|≤g(x).
+— Six∈[0,1]: On a1 +x n+2≥1, donc :
+|fn(x)|= xn
+1 +xn+2≤x n≤1.
+— Six>1: On a1 +x n+2≥x n+2, donc :
+|fn(x)|= xn
+1 +xn+2≤ xn
+xn+2 = 1
+x2.
+Définissons la fonction dominantegpar :
+g(x) =1 [0,1](x) + 1
+x2 1]1,+∞[(x).
+Intégrabilité deg:
+Par additivité de l’intégrale de Lebesgue sur les parties disjointes[0,1]et]1,+∞[, dont la
+réunion estR +, on a
+Z
+R+
+gdλ=
+Z
+[0,1]
+1[0,1](x)dλ(x) +
+Z
+]1,+∞[
+1
+x2dλ(x).
+— Sur[0,1], la fonction1 [0,1] est l’indicatrice d’un intervalle borné de mesure de Lebesgue
+λ([0,1]) = 1, donc Z
+[0,1]
+1dλ(x) =λ([0,1]) = 1.
+— Sur]1,+∞[, la fonctionx7→ 1
+x2 est continue (donc mesurable) et positive. L’intégrale de
+Lebesgue d’une fonction continue et positive sur un intervalle coïncide avec l’intégrale
+de Riemann impropre. On peut donc écrire
+Z
+]1,+∞[
+1
+x2dλ(x) =
+Z +∞
+1
+1
+x2dx=
+
+− 1
+x
++∞
+1
+= 1.
+Finalement, Z
+R+
+gdλ= 1 + 1 = 2<+∞,
+ce qui montre queg∈L 1(R+,λ).
+⇒Toutes les hypothèses du TCD sont réunies.On peut donc intervertir la limite et
+l’intégrale :
+lim
+n→+∞
+Z
+R
+fn(x)dx=
+Z
+R
+f(x)dx.
+Calculons l’intégrale de la limite :
+Z
+R
+f(x)dx=
+Z 1
+0
+0dx+
+Z
+{1}
+1
+2dx+
+Z +∞
+1
+1
+x2dx.
+L’intégrale sur[0,1[est nulle, et l’intégrale sur le singleton{1}est nulle (mesure de Lebesgue).
+Il reste : Z +∞
+1
+1
+x2dx=
+
+− 1
+x
++∞
+1
+= 1.
+⇒Finalement,lim n→+∞In = 1.
+4
+<<<PAGE>>>
+Exercice 3
+On considère la suite de fonctions(fn)n∈N∗ définie par :
+fn(x) = sin
+x
+n
+ n
+x(1 +x 2)IR∗(x)∀x∈R,∀n∈N ∗.
+1. Mesurabilité defn
+Soitn∈N ∗ fixé. La fonctionfn peut s’écrire comme le produit de deux fonctions :
+fn(x) =φ n(x)×1 R∗(x)avecφ n(x) = nsin(x/n)
+x(1 +x 2).
+—Étude de la fonctionφ n :
+— Le numérateurx7→nsin(x/n)est continu surR(composée de fonctions continues).
+— Le dénominateurx7→x(1 +x 2)est polynomial, donc continu surR. Il ne s’annule que pour
+x= 0(car1 +x 2≥1>0).
+— Par quotient de fonctions continues,φn estcontinuesur l’ouvertR ∗ =R\{0}.
+— Toute fonction continue sur un ouvert deRest mesurable par rapport à la tribu borélienne.
+—Étude de l’indicatrice :L’ensembleR ∗ est un ouvert, c’est donc un borélien. Sa fonction
+indicatrice1 R∗ est donc mesurable.
+⇒La fonctionf n est mesurable surRcomme produit de deux fonctions mesurables.
+2. Limite simple de(fn)n∈N∗
+Soitx∈R. Étudions la limite de la suite numérique(fn(x))n≥1.
+—Casx= 0:Par définition de la fonction indicatrice1 R∗, pour toutn∈N ∗, on afn(0) = 0.
+Donclim n→+∞fn(0) = 0.
+—Casx̸= 0:On a1 R∗(x) = 1. L’expression devient :
+fn(x) = n
+x(1 +x 2) sin
+x
+n
+
+.
+Analyse asymptotique :Lorsquen→+∞, le termeu n = x
+n tend vers 0. On utilise l’équivalent
+usuel au voisinage de 0 :sin(u)∼u.
+fn(x)∼
+n→+∞
+n
+x(1 +x 2)·
+x
+n
+
+= 1
+1 +x 2.
+Par conséquent,limn→+∞fn(x) = 1
+1+x2.
+⇒La suite(f n)converge simplement surRvers la fonctionfdéfinie par :
+f(x) = 1
+1 +x 2 1R∗(x) =
+(
+1
+1+x2 six̸= 0
+0six= 0
+Remarque importante (Égalité presque partout) :En théorie de l’intégration de Lebesgue, les
+ensembles de mesure nulle sont négligeables. L’ensemble des points oùx7→f(x)diffère de la fonction
+continuex7→g(x) = 1
+1+x2 est le singleton{0}. Or, pour la mesure de Lebesgue,λ({0}) = 0. On a
+donc l’égalité fondamentale pour la suite de l’exercice :
+f(x) = 1
+1 +x 2 λ-p.p. surR.
+5
+<<<PAGE>>>
+3. Calcul de la limite de l’intégrale
+Nous appliquons leThéorème de Convergence Dominée (TCD). Vérifions les hypothèses :
+—Convergencesimple:Commeétabliàlaquestionprécédente,lasuite(f n)convergesimplement
+(et presque partout) surRvers la fonctionfdéfinie parf(x) = 1
+1+x2.
+—Hypothèse de domination :Nous cherchons un majorant intégrable indépendant den. Pour
+toutn∈N ∗ et toutx∈R ∗, on utilise l’inégalité usuelle|sin(u)|≤|u|. En posantu= x
+n :
+|fn(x)|=
+
+n
+x(1 +x 2) sin
+x
+n
+≤ n
+|x|(1 +x 2)·
+x
+n
+ = 1
+1 +x 2.
+Cette inégalité reste vraie pourx= 0(oùf n(0) = 0). Posons la fonction dominanteg(x) = 1
+1+x2.
+—Intégrabilité deg(Justification du passage Lebesgue→Riemann) :La fonctiong:x7→
+1
+1+x2 estcontinuesurR.
+— Elle est donc mesurable (tribu borélienne).
+— Comme elle estpositive, son intégrale de Lebesgue surRest égale à son intégrale de
+Riemann impropre.
+On peut donc calculer son intégrale à l’aide d’une primitive :
+Z
+R
+g(x)dλ(x) =
+Z +∞
+−∞
+1
+1 +x 2dx= lim
+A→+∞
+[arctan(x)]+∞
+−∞ = π
+2−
+
+−π
+2
+
+=π <+∞.
+La fonction dominantegest donc bien intégrable surR.
+⇒Les hypothèses du TCD sont vérifiées.On peut donc intervertir la limite et l’intégrale :
+lim
+n→+∞
+Z
+R
+fn(x)dλ(x) =
+Z
+R
+lim
+n→+∞
+fn(x)dλ(x) =
+Z
+R
+1
+1 +x 2dλ(x).
+Le calcul de cette dernière intégrale a été effectué lors de la vérification de la domination.
+lim
+n→+∞
+In =π.
+6
+<<<PAGE>>>
+Corrigé de l’Exercice 4 : Mesure définie par une densité
+Soient(Ω,T,µ)un espace mesuré etfune fonction mesurable positive (la densité). On définit :
+ν(A) =
+Z
+A
+fdµ=
+Z
+Ω
+1Afdµ∀A∈T.
+1.Montrons queνest une mesure sur(Ω,T):
+La fonctionfest positive etµest une mesure positive, doncνest à valeurs dans[0,+∞].
+—Mesure de l’ensemble vide :
+ν(∅) =
+Z
+∅
+fdµ= 0 (carµ(∅) = 0).
+—σ-additivité :Soit(A n)n∈N une suite d’ensembles mesurables deT, deux à deux dis-
+joints. PosonsB= S
+n∈NAn. La fonction indicatrice de l’union disjointe est la somme des
+indicatrices :
+1B =
++∞X
+n=0
+1An.
+Par définition deν:
+ν(B) =
+Z
+Ω
+1Bfdµ=
+Z
+Ω
+ +∞X
+n=0
+1Anf
+!
+dµ.
+Les fonctionsun =1 Anf,n∈N, sontmesurables(produit de mesurables) etpositives
+(carf≥0). D’après leThéorème de Convergence Monotone (forme série):
+Z
+Ω
+ +∞X
+n=0
+un
+!
+dµ=
++∞X
+n=0
+Z
+Ω
+undµ.
+Ce qui donne exactement :
+ν
+ [
+n∈N
+An
+!
+=
++∞X
+n=0
+Z
+An
+fdµ=
++∞X
+n=0
+ν(An).
+⇒νest bien une mesure sur(Ω,T).
+2.Cas oùgest mesurable positive:
+Nous allons prouver l’égalité
+R
+Ωgdν=
+R
+Ωgfdµpar la méthode standard (approximation par
+fonctions étagées).
+Étape 1 :gest une fonction indicatriceSoitg=1 A avecA∈T.
+Z
+Ω
+gdν=ν(A)et
+Z
+Ω
+gfdµ=
+Z
+A
+fdµ=ν(A).
+L’égalité est vraie.
+Étape 2 :gest une fonction étagée positiveSoitg= Pn
+i=1ai1Ai aveca i≥0etA i∈T.
+Par linéarité de l’intégrale (pourνetµ) :
+Z
+Ω
+gdν=
+nX
+i=1
+aiν(Ai) =
+nX
+i=1
+ai
+Z
+Ai
+fdµ=
+Z
+Ω
+ nX
+i=1
+ai1Ai
+!
+fdµ=
+Z
+Ω
+gfdµ.
+7
+<<<PAGE>>>
+Étape 3 :gest une fonction mesurable positive quelconqueIl existe une suite croissante
+de fonctions étagées positives(gn)n telle queg n↗g. Alors la suite(g nf)n est aussi une suite
+croissante de fonctions mesurables positives convergeant versgf(carf≥0). En appliquant le
+Théorème de Convergence Monotone(Beppo-Levi) deux fois :
+Z
+Ω
+gdν= lim
+n→∞
+Z
+Ω
+gndν= lim
+n→∞
+Z
+Ω
+gnfdµ=
+Z
+Ω
+gfdµ.
+⇒L’égalité est démontrée pour toute fonction mesurable positive.
+3.Cas oùgest mesurable de signe quelconque:
+On décomposegen sa partie positive et sa partie négative :g=g +−g−, avecg + = max(g,0)
+etg− = max(−g,0). Remarquons que(gf) + =g +fet(gf) − =g−fcarf≥0.
+(a)Intégrabilité :
+gestν-intégrable⇐⇒
+Z
+g+dν <∞et
+Z
+g−dν <∞.
+D’après le résultat de la question 2 (appliqué àg+ etg−) :
+⇐⇒
+Z
+g+fdµ<∞et
+Z
+g−fdµ<∞
+⇐⇒gfestµ-intégrable.
+(b)Formule de transfert :Sigest intégrable, on a par linéarité :
+Z
+Ω
+gdν=
+Z
+Ω
+g+dν−
+Z
+Ω
+g−dν
+=
+Z
+Ω
+g+fdµ−
+Z
+Ω
+g−fdµ=
+Z
+Ω
+(g+−g−)fdµ=
+Z
+Ω
+gfdµ.
+⇒Pour toute fonctiong∈L 1(ν), on a
+R
+gdν=
+R
+gfdµ.
+8
+<<<PAGE>>>
+Corrigé de l’Exercice 5 : Densité de probabilité
+Contexte :On travaille sur l’espace mesuré(R,B(R),λ)oùλest la mesure de Lebesgue. Soitf:R→
+R+ une fonction mesurable positive vérifiant
+R
+Rfdλ= 1.
+On considère la mesure à densitéνdéfinie parfpar rapport àλ.
+1.Statutdemesure:D’aprèslerésultatdel’Exercice4(Question1),commefestmesurable
+positive etλest une mesure, l’applicationνdéfinie par :
+∀A∈B(R), ν(A) =
+Z
+A
+fdλ
+est bien unemesuresur(R,B(R)).
+2.Vérification de la condition de probabilité :Une mesure est une probabilité si et seulement
+si la mesure de l’espace total vaut 1. Nous devons calculerν(R).
+Utilisons laformule de transfert (Exercice 4, Question 2):
+∀gmesurable positive,
+Z
+Ω
+gdν=
+Z
+Ω
+gfdµ.
+Appliquons ceci avec :
+— L’espaceΩ =Ret la mesure de référenceµ=λ.
+— La fonction testg=1 R (la fonction constante égale à 1). Elle est mesurable (indicatrice
+d’un borélien) et positive.
+On obtient :
+ν(R) =
+Z
+R
+1Rdν=
+Z
+R
+1R·fdλ=
+Z
+R
+fdλ.
+Hypothèse :L’énoncé précise que
+R +∞
+−∞ f(x)dx= 1. (Note : Pour une fonction positive, l’inté-
+grale de Lebesgue coïncide avec cette notation).
+ν(R) = 1.
+⇒La mesureνest une mesure surRde masse totale 1. C’est donc une mesure de
+probabilité.
+9
+<<<PAGE>>>
+Corrigé de l’Exercice 6 : Mesure image
+Cadre :
+—(Ω,F,µ)un espace mesuré.
+—(Ω ′,A)un espace mesurable.
+—T: (Ω,F)→(Ω ′,A)une application mesurable.
+— On définitµT surApar :∀B∈A, µ T (B) =µ(T −1(B)).
+1.Montrons queµ T définit une mesure sur(Ω′,A):
+—Non-négativité :Pour toutB∈A,T −1(B)∈F(carTest mesurable). Doncµ T (B) =
+µ(T−1(B))∈[0,+∞]carµest une mesure positive.
+—Mesure de l’ensemble vide :On sait queT−1(∅) =∅.
+µT (∅) =µ(T −1(∅)) =µ(∅) = 0.
+—σ-additivité :Soit(B n)n∈N une suite d’ensembles deA, deux à deux disjoints. Posons
+An =T −1(Bn).
+—Propriété de l’image réciproque :Si lesBn sont disjoints, alors lesAn le sont aussi.
+En effet, six∈A i∩Aj, alorsT(x)∈B i∩Bj =∅, ce qui est impossible.
+— On a aussiT−1(S
+nBn) =S
+nT−1(Bn) =S
+nAn.
+Parσ-additivité de la mesureµ:
+µT
+ +∞[
+n=0
+Bn
+!
+=µ
+ +∞[
+n=0
+An
+!
+=
++∞X
+n=0
+µ(An) =
++∞X
+n=0
+µT (Bn).
+⇒µ T est bien une mesure sur(Ω′,A).
+2.Formule de transfert:
+Nous allons prouver l’équivalence et l’égalité par la méthode de la"Machine Standard".
+Étape 1 :gest une fonction indicatriceSoitg=1 B avecB∈A. On ag◦T(x) =1 B(T(x)).
+Or1 B(T(x)) = 1⇐⇒T(x)∈B⇐⇒x∈T −1(B). Doncg◦T=1 T−1(B).
+Z
+Ω′
+gdµT =µ T (B) =µ(T −1(B)) =
+Z
+Ω
+1T−1(B)dµ=
+Z
+Ω
+g◦Tdµ.
+L’égalité est vraie.
+Étape 2 :gest une fonction étagée positiveSoitg= Pn
+i=1ai1Bi aveca i≥0etB i∈A.
+Par linéarité de l’intégrale :
+Z
+Ω′
+gdµT =
+nX
+i=1
+ai
+Z
+Ω′
+1BidµT =
+nX
+i=1
+ai
+Z
+Ω
+1Bi◦Tdµ=
+Z
+Ω
+ nX
+i=1
+ai(1Bi◦T)
+!
+dµ=
+Z
+Ω
+g◦Tdµ.
+Étape 3 :gest une fonction mesurable positiveIl existe une suite croissante de fonctions
+étagées positives(gn)n telle quegn↗g. Alors la suite(gn◦T) n est aussi une suite croissante de
+fonctions mesurables positives convergeant versg◦T. En appliquant leThéorème de Conver-
+gence Monotonedeux fois :
+Z
+Ω′
+gdµT = lim
+Z
+Ω′
+gndµT = lim
+Z
+Ω
+gn◦Tdµ=
+Z
+Ω
+g◦Tdµ.
+⇒L’égalité est vraie pour toute fonction positive (dans[0,+∞]).Par conséquent,R
+gdµT <∞ ⇐⇒
+R
+g◦Tdµ<∞.
+10
+<<<PAGE>>>
+Étape 4 :gest une fonction mesurable de signe quelconqueOn décomposeg=g +−g−.
+On a(g◦T) + =g +◦Tet(g◦T) − =g−◦T.
+g∈L 1(µT )⇐⇒
+Z
+g+dµT <∞et
+Z
+g−dµT <∞
+⇐⇒
+Z
+g+◦Tdµ<∞et
+Z
+g−◦Tdµ<∞(d’après l’étape 3)
+⇐⇒g◦T∈L 1(µ).
+Si cette condition est vérifiée, on soustrait les égalités pourg+ etg − pour obtenir le résultat
+final.
+⇒g∈L 1(µT )⇐⇒g◦T∈L 1(µ)et
+R
+Ω′gdµT =
+R
+Ωg◦Tdµ.
+11
+<<<PAGE>>>
+Corrigé de l’Exercice 7 : Mesure finie
+Données :Soitfune fonction mesurable strictement positive sur(Ω,T,µ). On suppose quef∈L 1(µ)
+et 1
+f∈L 1(µ).
+Méthode 1 : Utilisation de l’inégalité arithmético-géométrique
+—Inégalité ponctuelle (presque partout) :Hypothèse :La fonctionfest strictement positive
+µ-presque partout. Ainsi,f(x)et 1
+f(x) sont définis et strictement positifs pourµ-presque tout
+x∈Ω.
+D’après l’Inégalité Arithmético-Géométrique(
+√
+ab≤ a+b
+2 ), on aµ-p.p. :
+s
+f(x)· 1
+f(x)≤ 1
+2
+
+f(x) + 1
+f(x)
+
+.
+Puisquef(x)· 1
+f(x) = 1, cela se simplifie en :
+1≤ 1
+2f(x) + 1
+2
+1
+f(x) (µ-p.p.).
+—Intégration :L’inégalité étant vraie presque partout entre fonctions mesurables positives, on
+peut l’intégrer surΩpar rapport àµ:
+Z
+Ω
+1dµ≤ 1
+2
+Z
+Ω
+fdµ+ 1
+2
+Z
+Ω
+1
+f dµ.
+—Vérification des hypothèses : Hypothèse :On sait que
+R
+Ωf <∞et
+R
+Ω
+1
+f <∞. Le membre
+de droite est donc une somme de nombres finis.
+—Résultat :Or,
+R
+Ω 1dµ=µ(Ω).
+µ(Ω)≤ 1
+2
+
+∥f∥ 1 +
+
+1
+f
+
+1
+
+<+∞.
+⇒La mesure de l’espace totalµ(Ω)est finie.
+Méthode 2 : Utilisation de l’inégalité de Cauchy-Schwarz
+—Astuce de décomposition :On cherche à majorerµ(Ω) =
+R
+Ω 1dµ. Commef >0µ-p.p., on
+peut écrire pourµ-presque toutx:
+1 =
+p
+f(x)× 1p
+f(x)
+.
+Posonsu= √fetv= 1√f. Ces fonctions sont définiesµ-p.p.
+—AppartenanceauxespacesL 2 :Avantd’appliquerCauchy-Schwarz,vérifionsqueu,v∈L 2(µ).
+Z
+Ω
+|u|2dµ=
+Z
+Ω
+(
+p
+f) 2dµ=
+Z
+Ω
+fdµ.
+Or,par hypothèse,f∈L 1(µ), donc
+R
+f <∞, ce qui impliqueu∈L 2(µ).
+De même : Z
+Ω
+|v|2dµ=
+Z
+Ω
+ 1√f
+2
+dµ=
+Z
+Ω
+1
+f dµ.
+Par hypothèse, 1
+f∈L 1(µ), donc
+R 1
+f <∞, ce qui impliquev∈L 2(µ).
+12
+<<<PAGE>>>
+—Applicationduthéorème:Onappliquel’InégalitédeCauchy-Schwarz(∥uv∥ 1≤∥u∥ 2∥v∥2):
+Z
+Ω
+p
+f· 1√f
+
+dµ≤
+Z
+Ω
+fdµ
+1/2
+·
+Z
+Ω
+1
+f dµ
+1/2
+.
+µ(Ω)≤
+p
+∥f∥ 1·
+s
+1
+f
+
+1
+.
+Le produit de deux nombres réels finis est fini.
+⇒On retrouve queµ(Ω)<+∞.
+13
+<<<PAGE>>>
+Corrigé de l’Exercice 8 : Généralisation de Hölder
+Données :Soit(Ω,F,µ)un espace mesuré. Soientp,q,rtrois réels strictement positifs vérifiant la
+relation : 1
+p + 1
+q = 1
+r.
+On suppose quef∈L p(Ω)etg∈L q(Ω).
+1.Exposants conjugués :
+On poseα= p
+r etβ= q
+r. Partons de la relation donnée :
+1
+p + 1
+q = 1
+r.
+En multipliant cette égalité parr(qui est non nul), on obtient :
+r
+p + r
+q = 1⇐⇒ 1
+α + 1
+β = 1.
+⇒Les réelsαetβsont strictement supérieurs à 1 (carr <petr <q) et vérifient la
+relation de conjugaison. Ce sont des exposants conjugués.
+2.Démonstration de l’inégalité :
+Nous cherchons à majorer la norme∥fg∥r. Par définition :
+∥fg∥r
+r =
+Z
+Ω
+|f(x)g(x)|rdµ=
+Z
+Ω
+|f|r·|g| rdµ.
+Posons les fonctions auxiliairesF=|f| r etG=|g| r.
+—Vérification des hypothèses :
+— Hypothèse :f∈L p(Ω). Calculons la normeαdeF:
+Z
+Ω
+|F|αdµ=
+Z
+Ω
+(|f|r)p/rdµ=
+Z
+Ω
+|f|pdµ=∥f∥ p
+p<+∞.
+DoncF∈L α(Ω)et∥F∥ α = (∥f∥p
+p)1/α =∥f∥ p/α
+p =∥f∥ r
+p.
+— Hypothèse :g∈L q(Ω). De même, calculons la normeβdeG:
+Z
+Ω
+|G|βdµ=
+Z
+Ω
+(|g|r)q/rdµ=
+Z
+Ω
+|g|qdµ=∥g∥ q
+q <+∞.
+DoncG∈L β(Ω)et∥G∥ β =∥g∥ r
+q.
+—Application du théorème :PuisqueF∈L α etG∈L β avecα,βconjugués, nous pouvons
+appliquer l’Inégalité de Hölder classique:
+Z
+Ω
+|FG|dµ≤∥F∥ α∥G∥β.
+En remplaçant par les expressions en fonction defetg:
+Z
+Ω
+|f|r|g|rdµ≤∥f∥ r
+p·∥g∥ r
+q.
+Soit :
+∥fg∥r
+r≤(∥f∥ p∥g∥q)r.
+14
+<<<PAGE>>>
+La fonctionx7→x 1/r étant croissante surR +, on prend la raciner-ième de l’inégalité :⇒
+∥fg∥r≤∥f∥ p∥g∥q.
+3.Intégrabilité :
+— La fonctionfgest mesurable comme produit de fonctions mesurables.
+— D’après l’inégalité démontrée à la question 2 :
+∥fg∥r≤∥f∥ p|{z}
+<∞
+×∥g∥q|{z}
+<∞
+.
+Le majorant est fini carf∈L p etg∈L q.
+⇒On a donc∥fg∥ r <+∞, ce qui signifie quefg∈L r(Ω).
+15
+<<<PAGE>>>
+Corrigé de l’Exercice 9 : Inclusions et produits dans les espacesLp
+1.Étude du produitf∈L 1 etg∈L ∞
+—Mesurabilité:Lesfonctionsfetgsontmesurablessur(Ω,F).Leproduitdedeuxfonctions
+mesurables est mesurable. Doncfgest mesurable.
+—Majoration (Inégalité de Hölder cas limite) :Par définition de l’espaceL∞, il existe
+une constanteC=∥g∥ ∞ telle que :
+|g(x)|≤∥g∥ ∞ µ-presque partout.
+En multipliant cette inégalité par|f(x)|(qui est positif), on obtient :
+|f(x)g(x)|≤∥g∥ ∞|f(x)|µ-p.p.
+—Intégrabilité :Intégrons cette inégalité surΩ(possible par positivité et mesurabilité) :
+Z
+Ω
+|fg|dµ≤
+Z
+Ω
+∥g∥∞|f|dµ=∥g∥ ∞
+Z
+Ω
+|f|dµ.
+Hypothèse :Commef∈L 1, on a∥f∥ 1 <∞. De plus∥g∥ ∞ <∞. Le membre de droite
+est donc fini.
+⇒La fonctionfgest intégrable (i.e.,fg∈L 1) et∥fg∥ 1≤∥f∥ 1∥g∥∞.
+2.Inclusions des espacesL p (Mesure finie)
+Hypothèse fondamentale :On suppose queµ(Ω)<+∞. Soient1≤p 1≤p 2≤+∞.
+A. InclusionL∞⊂L p2 Soitf∈L ∞(Ω).
+— On a|f(x)|≤∥f∥ ∞ µ-p.p.
+— En élevant à la puissancep2 (fonction croissante surR+) :
+|f(x)|p2≤∥f∥ p2
+∞ µ-p.p.
+— En intégrant surΩ:
+Z
+Ω
+|f|p2dµ≤
+Z
+Ω
+∥f∥p2
+∞dµ=∥f∥ p2
+∞×µ(Ω).
+Commeµ(Ω)<∞, l’intégrale est finie.
+⇒Doncf∈L p2, ce qui prouveL∞⊂L p2.
+B. InclusionLp2⊂L p1 Soitf∈L p2(Ω). Nous voulons montrer que
+R
+Ω|f|p1 <∞.
+Méthode : Découpage de l’espace (plus rigoureux que la majoration +1).Considérons les ensembles
+A={x:|f(x)|≤1}etB={x:|f(x)|>1}.
+Z
+Ω
+|f|p1dµ=
+Z
+A
+|f|p1dµ+
+Z
+B
+|f|p1dµ.
+—SurA:On a|f|≤1. Commep 1≥1, on a|f| p1≤1.
+Z
+A
+|f|p1dµ≤
+Z
+A
+1dµ=µ(A)≤µ(Ω)<∞.
+—SurB:On a|f|>1. Commep 1≤p 2, la fonctiont7→t p1 croît moins vite quetp2 pour
+t>1. On a donc|f| p1≤|f| p2.
+Z
+B
+|f|p1dµ≤
+Z
+B
+|f|p2dµ≤
+Z
+Ω
+|f|p2dµ=∥f∥ p2
+p2 <∞.
+La somme de deux quantités finies est finie.⇒Doncf∈L p1, ce qui prouveLp2⊂L p1.
+16
+<<<PAGE>>>
+C. InclusionLp1⊂L 1 C’est un cas particulier du point précédent avec l’exposant 1 à la place
+dep 1 etp 1 à la place dep2 (puisque1≤p 1).⇒DoncL p1⊂L 1.
+Synthèse :En chainant les résultats, on obtient la chaîne d’inclusions pour une mesure finie :
+L∞⊂L p2⊂L p1⊂L 1
+17

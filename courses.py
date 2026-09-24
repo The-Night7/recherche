@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Matières et rattachement explicite à une année de Préing et un semestre.
+"""Matières et rattachement explicite au cycle, à une année, un semestre et un parcours.
 `year` reste l'année scolaire du document, indépendante de `study_year`.
 """
 import re
 import unicodedata
 from pathlib import Path
 
+PROGRAMS = {"preing": "Préing", "ing": "Ing"}
+
 CURRICULA = {
     f"preing-{year}-s{semester}": {
         "id": f"preing-{year}-s{semester}",
         "label": f"Préing {year} — semestre {semester}",
-        "study_year": year, "semester": semester,
+        "program": "preing", "study_year": year, "semester": semester, "track": None,
     }
     for year in (1, 2) for semester in (1, 2)
 }
@@ -50,11 +52,88 @@ SUBJECTS = {
         "physique-moderne": ("Physique moderne", "Physique-moderne"),
     },
 }
+# Les parcours restent ceux des dossiers fournis : aucun parcours n'est
+# supposé pour Ing 2. Les documents de rentrée d'Ing 1 n'ont pas de semestre.
+ING_SUBJECTS = {
+    "ing-1": (1, None, None, {"informations": ("Informations générales", "Informations générales")}),
+    "ing-1-s1-gm": (1, 1, "gm", {
+        "algebre": ("Algèbre", "ALGEBRE"),
+        "algorithmique": ("Algorithmique", "ALGO"),
+        "bdd": ("Bases de données", "BDD"),
+        "cef": ("CEF", "CEF"),
+        "data-exploration": ("Data exploration", "DATA EXPLORATION"),
+        "design": ("Histoire du design", "DESIGN"),
+        "ethique": ("Éthique", "ETHIQUE"),
+        "mesures-integration": ("Mesures et intégration", "MESURE INTÉ"),
+        "optimisation": ("Optimisation", "OPTIMISATION"),
+        "probabilites": ("Probabilités", "PROBA"),
+        "programmation-procedurale": ("Programmation procédurale", "PROGRAMMATION PROCEDURAL"),
+        "unix": ("Unix", "UNIX"),
+        "informations": ("Informations générales", "Informations générales"),
+    }),
+    "ing-1-s1-info": (1, 1, "info", {
+        "bdd": ("Bases de données", "BDD"),
+        "complement-maths": ("Compléments de mathématiques", "Complement-Maths"),
+        "data-exploration": ("Data exploration", "Data-Exploration"),
+        "mesures-integration": ("Mesures et intégration", "Mesures-et-integration"),
+        "probabilites": ("Probabilités", "Proba"),
+        "systeme-exploitation": ("Systèmes d'exploitation", "Systeme-Exploitation"),
+        "unix": ("Unix", "Unix"),
+    }),
+    "ing-1-s2-data": (1, 2, "data", {
+        "analyse-numerique": ("Analyse numérique", "Analyse numérique"),
+        "data-mining": ("Data mining", "Data Mining"),
+        "equations-differentielles": ("Équations différentielles", "Equation différentielles"),
+        "gestion-entreprise": ("Gestion d'entreprise", "Gestion Entreprise"),
+        "projet": ("Projet GM", "Projet GM"),
+        "statistique-inferentielle": ("Statistique inférentielle", "Statistique inférentielle"),
+        "systeme-exploitation": ("Systèmes d'exploitation", "Système d_exploitation"),
+        "theorie-graphes": ("Théorie des graphes", "Théorie des graphes"),
+        "theorie-langages": ("Théorie des langages", "Théorie des langages"),
+        "informations": ("Informations générales", "Informations générales"),
+    }),
+    "ing-2-s1": (2, 1, None, {
+        "anglais": ("Anglais", "Anglais"),
+        "architecture-reseau": ("Architecture réseau", "Architecture réseau"),
+        "communication-interculturelle": ("Communication interculturelle", "Communication InterCulturelle"),
+        "data-mining": ("Data mining 2", "Data Mining 2"),
+        "decidabilite-complexite": ("Décidabilité et complexité", "Décidabilité & Complexité"),
+        "ece": ("ECE", "ECE"),
+        "modele-lineaire": ("Modèle linéaire", "Modéle linéaire"),
+        "optimisation-deterministe": ("Optimisation déterministe", "Optimisation déterministe"),
+        "programmation-fonctionnelle": ("Programmation fonctionnelle", "Programmation fonctionelle"),
+        "traitement-signal": ("Traitement du signal", "Traitement du signal"),
+        "economie": ("Économie", "Économie"),
+    }),
+    "ing-2-s2": (2, 2, None, {
+        "compressive-sensing": ("Compressive sensing", "Compressive Sensing"),
+        "design-decision": ("Design de la décision", "Design de la décision"),
+        "edp": ("Équations aux dérivées partielles", "EDP"),
+        "ia": ("Intelligence artificielle", "IA"),
+        "methodes-agiles": ("Méthodes agiles", "Methodes Agile"),
+        "programmation-parallele": ("Programmation parallèle", "Programmation Parralèle"),
+        "series-temporelles": ("Séries temporelles", "Série temporelle"),
+    }),
+}
+for context, (year, semester, track, subjects) in ING_SUBJECTS.items():
+    label = f"Ing {year}" + (f" — semestre {semester}" if semester else " — hors semestre")
+    if track:
+        label += f" — {track.upper()}"
+    CURRICULA[context] = dict(id=context, label=label, program="ing", study_year=year, semester=semester, track=track)
+    SUBJECTS[context] = {f"{context}-{cid}": entry for cid, entry in subjects.items()}
+
 COURSES = {cid: name for subjects in SUBJECTS.values() for cid, (name, _) in subjects.items()}
 COURSE_CURRICULA = {cid: ctx for ctx, subjects in SUBJECTS.items() for cid in subjects}
 PLAIN_TEXT_COURSES = {"informatique1", "informatique2", "informatique3", "informatique4",
                       "shs", "ethique", "histoire-du-design", "cef1", "ic1", "projet1-s1", "projet1-s2"}
-KINDS = {"cours": "Cours", "td": "TD", "tp": "TP", "ds": "DS", "cc": "CC", "qcm": "QCM", "projet": "Projets"}
+PLAIN_TEXT_COURSES.update(
+    f"{context}-{cid}" for context, (_, _, _, subjects) in ING_SUBJECTS.items() for cid in subjects
+    if cid in {"algorithmique", "bdd", "cef", "design", "ethique", "programmation-procedurale", "unix",
+               "informations", "projet", "systeme-exploitation", "theorie-langages", "anglais", "architecture-reseau",
+               "communication-interculturelle", "ece", "programmation-fonctionnelle", "economie", "design-decision",
+               "methodes-agiles", "programmation-parallele"}
+)
+KINDS = {"cours": "Cours", "td": "TD", "tp": "TP", "ds": "DS", "cc": "CC", "qcm": "QCM", "projet": "Projets", "ressource": "Ressources", "infos": "Informations"}
 
 
 def normalized(value):
@@ -68,6 +147,8 @@ def course_context(course):
 
 def subject_in_context(name, context):
     name = re.sub(r"(?:ds|cc|projets?|tp)$", "", normalized(name))
+    if context == "ing-2-s1" and name == "modelelineairebis":
+        name = "modelelineaire"
     for cid, (_, alias) in SUBJECTS.get(context, {}).items():
         if name in (normalized(alias), normalized(cid)):
             return cid
@@ -81,8 +162,50 @@ def detect_course(stem):
     return None
 
 
+def ing_source_context(path):
+    parts = Path(path).parts
+    for i, part in enumerate(parts[:-1]):
+        match = re.fullmatch(r"ING[ -]?([12])", part.strip(), re.I)
+        if not match:
+            continue
+        year = int(match[1])
+        if i + 2 == len(parts):
+            return (f"ing-{year}", parts[i + 1:])
+        semester = re.fullmatch(r"(?:S|Semestre\s*)([12])(?:\s+(GM|INFO|DATA))?", parts[i + 1].strip(), re.I)
+        if not semester:
+            return None
+        track = semester[2].lower() if semester[2] else None
+        context = f"ing-{year}-s{semester[1]}" + (f"-{track}" if track else "")
+        return context, parts[i + 2:]
+    return None
+
+
+def ing_source_course(path):
+    found = ing_source_context(path)
+    if not found:
+        return None
+    context, tail = found
+    if context not in SUBJECTS:
+        return None
+    if len(tail) == 1:
+        if context == "ing-2-s2" and normalized(tail[0]).startswith("methodesagile"):
+            return context + "-methodes-agiles"
+        return context + "-informations" if context + "-informations" in SUBJECTS[context] else None
+    if context == "ing-1-s1-gm" and normalized(tail[0]) == "examen":
+        name = normalized(Path(path).stem)
+        for hint, cid in {"design": "design", "algo": "algorithmique", "optimisation": "optimisation", "proba": "probabilites",
+                          "algebre": "algebre", "unix": "unix", "ethique": "ethique", "bdd": "bdd", "information": "informations"}.items():
+            if hint in name:
+                return context + "-" + cid
+        return None
+    return subject_in_context(tail[0], context)
+
+
 def source_course(path):
     """Le dossier PREINGx-Sy/Matière fait foi, même si un nom est mal étiqueté."""
+    ing_course = ing_source_course(path)
+    if ing_course:
+        return ing_course
     parts = Path(path).parts
     for i, part in enumerate(parts[:-1]):
         match = re.fullmatch(r"PREING([12])-S([12])", part, re.I)
@@ -114,5 +237,6 @@ def ensure_meta(chunk):
             "section": label.split(" — ", 1)[1] if " — " in label else "",
         })
     context = course_context(chunk["course"])
-    chunk.update(curriculum=context["id"], study_year=context["study_year"], semester=context["semester"])
+    chunk.update(curriculum=context["id"], program=context["program"], study_year=context["study_year"],
+                 semester=context["semester"], track=context["track"])
     return chunk

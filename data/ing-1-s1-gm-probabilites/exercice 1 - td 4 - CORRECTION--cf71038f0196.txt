@@ -1,0 +1,100 @@
+Exercice 1SoientXetYdeux v.a.r. ind´ ependantes de loiP(X= 1) =P(Y= 1) = 1
+2 etP(X=−1) =
+P(Y=−1) = 1
+2. SoitZ=XY. Montrer queX,Y,Zsont ind´ ependantes deux ` a deux, mais qu’elles ne
+sont pas ind´ ependantes.
+Solution :La solution se d´ ecompose en deux parties :
+1. Montrer l’ind´ ependance deux ` a deux.
+2. Montrer la non-ind´ ependance (globale) des trois variables.
+Partie 1 : Ind´ ependance deux ` a deux
+Dire queX,YetZsont ind´ ependantes deux ` a deuxsignifie que les trois couples suivants sont
+compos´ es de variables al´ eatoires ind´ ependantes :
+1.XetYsont ind´ ependantes.
+2.XetZsont ind´ ependantes.
+3.YetZsont ind´ ependantes.
+1. Ind´ ependance deXetY
+Ceci est vrai d’apr` es l’´ enonc´ e de l’exercice.
+2. Ind´ ependance deXetZ
+Nous devons prouver queXetZ=XYsont ind´ ependantes.Nous allons utiliser lam´ ethode des
+fonctions caract´ eristiques: montrer queφ(X,Z)(a, b) =φ X(a)φZ(b) pour tousa, b∈R.
+Soienta, b∈R. Par d´ efinition :
+φ(X,Z)(a, b) =E[e i(aX+bZ) ] =E[e i(aX+bXY) ] =E[e iX(a+bY) ]
+=E[e iX(a+bY)·(1{Y=−1} +1{Y=+1} )] (carY(Ω) ={−1,1})
+=E[e iX(a+bY) 1{Y=−1} +e iX(a+bY) 1{Y=+1} ]
+Justification de la lin´ earit´ e :PosonsV1 =e iX(a−b)1{Y=−1} etV 2 =e iX(a+b)1{Y=+1} . Ces variables
+al´ eatoires sont ` a valeurs complexes. V´ erifions qu’elles sont dansL1.|V 1|=|e iX(a−b)|·|1 {Y=−1}|≤1·1 = 1.
+L’espace (Ω,A,P) est un espace de probabilit´ e, doncE[1] = 1<∞. Puisque|V 1|≤1,V 1 est int´ egrable.
+De mˆ eme,|V2|≤1, doncV 2 est int´ egrable.Par lin´ earit´ e de l’esp´ erance pour les fonctions deL1,
+on peut s´ eparer les termes :
+φ(X,Z)(a, b) =E[e iX(a−b)1{Y=−1} ] +E[e iX(a+b)1{Y=+1} ]
+Justification de l’ind´ ependance : Pour toutk∈Retj∈R, d´ efinissons les fonctionsf k :
+R→Cparf k(x) =e ikx etg j :R→Rparg j(y) =1{y=j}.
+—f k est continue surR, elle est donc bor´ elienne (mesurable) et born´ ee (en module par 1).
+—g j est l’indicatrice du singleton{j}. Le singleton{j}est un ferm´ e deR, donc un bor´ elien.g j est
+donc mesurable et born´ ee (par 1).
+L’expression devient :
+φ(X,Z)(a, b) =E[f a−b(X)·g −1(Y)] +E[f a+b(X)·g +1(Y)]
+Par hypoth` ese,XetYsont ind´ ependantes.Le lemme d’ind´ ependance nous dit que pour des fonctions
+mesurables born´ eesfetg,E[f(X)g(Y)] =E[f(X)]E[g(Y)].
+φ(X,Z)(a, b) =E[f a−b(X)]·E[g −1(Y)] +E[f a+b(X)]·E[g +1(Y)]
+=E[e iX(a−b)]·E[1 {Y=−1} ] +E[e iX(a+b)]·E[1 {Y=+1} ]
+=φ X(a−b)·P(Y=−1) +φ X(a+b)·P(Y= 1)
+=φ X(a−b)· 1
+2 +φ X(a+b)· 1
+2
+1
+<<<PAGE>>>
+Calculonsφ X(k) =E[e ikX] :
+φX(k) =e ik(1)P(X= 1) +e ik(−1)P(X=−1) = eik +e−ik
+2 = cos(k)
+En substituant :
+φ(X,Z)(a, b) = 1
+2 cos(a−b) + 1
+2 cos(a+b) = 1
+2[2 cos(a) cos(b)] = cos(a) cos(b)
+Calcul du produit des fonctions caract´ eristiques :Nous avonsφ X(a) = cos(a). Il faut calculer
+φZ(b). Calculons la loi deZ=XY:
+—P(Z= 1) =P({X= 1, Y= 1}∪{X=−1, Y=−1}) =P(X= 1)P(Y= 1) +P(X=−1)P(Y=
+−1) = 1
+2· 1
+2 + 1
+2· 1
+2 = 1
+2.
+—P(Z=−1) =P({X= 1, Y=−1}∪{X=−1, Y= 1}) = 1
+2· 1
+2 + 1
+2· 1
+2 = 1
+2.
+Zsuit donc lamˆ eme loiqueXetY. Par cons´ equent,φ Z(b) = cos(b). Le produit des fonctions ca-
+ract´ eristiques estφX(a)φZ(b) = cos(a) cos(b).
+Puisqueφ (X,Z)(a, b) =φ X(a)φZ(b)pour tous(a, b),XetZsont ind´ ependantes.
+3. Ind´ ependance deYetZ
+Les variablesXetYont la mˆ eme loi etZ=XY=Y X. Le rˆ ole deXetYest sym´ etrique. Le calcul de
+φ(Y,Z)(a, b) est donc en tout point identique ` a celui deφ (X,Z)(a, b), menant ` aφY (a)φZ(b).YetZsont
+ind´ ependantes.
+Partie 2 : Non-ind´ ependance (globale)
+Dire queX, Y, Zsont ind´ ependantessignifie que pour tousA, B, Cbor´ eliens, on aP(X∈A, Y∈
+B, Z∈C) =P(X∈A)P(Y∈B)P(Z∈C).Nous allons montrer que cette ´ egalit´ e est fausse en
+trouvant un contre-exemple.
+Choisissons les ´ ev´ enements (qui sont des bor´ eliens)A={1},B={1}etC={−1}.
+—Calcul de gauche :
+P(X= 1, Y= 1, Z=−1)
+Par d´ efinition,Z=XY. SiX= 1 etY= 1, alorsZdoit ˆ etre 1×1 = 1. L’´ ev´ enement{X= 1, Y=
+1, Z=−1}est donc l’ensemble vide∅.
+P(X= 1, Y= 1, Z=−1) =P(∅) = 0
+—Calcul de droite :
+P(X= 1)·P(Y= 1)·P(Z=−1)
+Nous savons queP(X= 1) = 1
+2,P(Y= 1) = 1
+2 etP(Z=−1) = 1
+2. Le produit est donc :
+1
+2· 1
+2· 1
+2 = 1
+8
+Puisque0̸= 1
+8, les variablesX, YetZne sont pas ind´ ependantes.
+2

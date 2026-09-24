@@ -43,11 +43,12 @@ from pathlib import Path
 
 from clean_extraction import clean_text, strip_control_chars
 from courses import COURSES, PLAIN_TEXT_COURSES, course_context, source_course, ensure_meta
+from document_sources import CODE_EXTS, OFFICE_EXTS, IMAGE_EXTS, ReadableHTML, extract_office, source_metadata, storage_stem
 
 DATA_ROOT = "data"
 DRIVE_DIR = os.path.join(DATA_ROOT, "_drive")
 PAGE_SEP = "\n<<<PAGE>>>\n"
-SOURCE_EXTS = (".pdf", ".md", ".txt", ".docx", ".png")
+SOURCE_EXTS = {".pdf", ".md", ".txt", ".docx", ".html"} | CODE_EXTS | OFFICE_EXTS | IMAGE_EXTS
 
 # documents volontairement ignorés, par cours (noms comparés sans tirets ni casse)
 SKIP = {
@@ -92,6 +93,13 @@ def skip_reason(course, stem):
 # --------------------------------------------------------------------------
 
 def extract_file(path):
+    ext = Path(path).suffix.lower()
+    if ext in OFFICE_EXTS:
+        return extract_office(path, PAGE_SEP)
+    if ext == '.html':
+        parser = ReadableHTML()
+        parser.feed(Path(path).read_text(encoding='utf-8', errors='replace'))
+        return ''.join(parser.parts)
     if str(path).lower().endswith('.docx'):
         with zipfile.ZipFile(path) as archive:
             root = ET.fromstring(archive.read('word/document.xml'))
@@ -101,7 +109,7 @@ def extract_file(path):
             node.text or '' if node.tag.endswith('}t') else '\n' if node.tag.endswith('}br') else '\t'
             for node in para.iter() if node.tag.rsplit('}', 1)[-1] in ('t', 'br', 'tab')
         ) for para in root.findall('.//w:p', ns))
-    raw = open(path, "rb").read()
+    raw = Path(path).read_bytes()
     if raw[:2] == b"PK":  # export "zip" (pages .txt + images) du dossier partagé
         z = zipfile.ZipFile(path)
         pages = sorted(
@@ -125,8 +133,7 @@ def collect(paths):
     for p in paths:
         if os.path.isdir(p):
             for root, _, files in os.walk(p):
-                out += [os.path.join(root, f) for f in sorted(files)
-                        if os.path.splitext(f)[1].lower() in SOURCE_EXTS]
+                out += [os.path.join(root, f) for f in sorted(files)]
         elif os.path.isfile(p):
             out.append(p)
         else:
@@ -174,17 +181,22 @@ class Library:
 def cmd_add(paths, dry_run=False):
     """Retourne le nombre de documents ajoutés."""
     lib = Library()
-    added, report = 0, {"déjà là": 0, "autre cours": 0, "doublon": 0, "à transcrire": 0, "erreur": 0}
+    added, report = 0, {"déjà là": 0, "autre cours": 0, "doublon": 0, "à transcrire": 0, "erreur": 0, "annexe": 0}
     details = []
     def record(path, status, course=None, **extra):
         details.append(dict(source=str(path), status=status, course=course, **extra))
     for path in collect(paths):
         stem, ext = os.path.splitext(os.path.basename(path))
+        if ext.lower() not in SOURCE_EXTS:
+            report['annexe'] += 1
+            record(path, 'annexe non indexée', source_course(path), reason='format de données, audio ou archive')
+            continue
         course = source_course(path)
         if course is None:
             report["autre cours"] += 1
             record(path, "matière inconnue")
             continue
+        stem = storage_stem(path, course)
         tag = f"[{course}]"
         reason = skip_reason(course, stem)
         if reason:
@@ -195,7 +207,7 @@ def cmd_add(paths, dry_run=False):
             report["déjà là"] += 1
             record(path, "déjà là", course)
             continue
-        if ext.lower() == '.png':
+        if ext.lower() in IMAGE_EXTS:
             report["à transcrire"] += 1
             record(path, "à transcrire", course)
             print(f"  à transcrire  {tag} {stem} (image)")
@@ -215,7 +227,7 @@ def cmd_add(paths, dry_run=False):
             print(f"  doublon       {tag} {stem} (même texte que {lib.hashes[course][digest]})")
             continue
         letters = sum(ch.isalpha() for ch in text.replace(PAGE_SEP, ""))
-        if letters < 150:
+        if letters < (150 if ext.lower() == '.pdf' else 10):
             report["à transcrire"] += 1
             record(path, "à transcrire", course)
             print(f"  à transcrire  {tag} {stem}  (PDF scanné -> data/{course}/transcriptions/{stem}.md)")
@@ -224,7 +236,7 @@ def cmd_add(paths, dry_run=False):
         lib.known[course][key(stem)] = stem
         lib.hashes[course][digest] = stem
         added += 1
-        record(path, "ajouté", course)
+        record(path, "ajouté", course, doc=stem)
         if not dry_run:
             os.makedirs(course_dir(course), exist_ok=True)
             out_ext = ".md" if ext.lower() == ".md" else ".txt"
@@ -232,15 +244,13 @@ def cmd_add(paths, dry_run=False):
                 f.write(text)
             meta_path = Path(course_dir(course)) / 'source_meta.json'
             source_meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
-            extra = {"source": str(path)}
-            if any(re.search(r'(?:^|-)projets?$', p, re.I) for p in Path(path).parts[:-1]):
-                extra['kind'] = 'projet'
-            source_meta[stem] = extra
+            source_meta[stem] = source_metadata(path, course)
             meta_path.write_text(json.dumps(source_meta, ensure_ascii=False, indent=2), encoding='utf-8')
 
     print(f"\n  {added} {'à ajouter' if dry_run else 'ajouté(s)'}, {report['déjà là']} déjà indexé(s), "
           f"{report['doublon']} doublon(s), {report['à transcrire']} à transcrire, "
-          f"{report['erreur']} erreur(s), {report['autre cours']} matière(s) inconnue(s)")
+          f"{report['erreur']} erreur(s), {report['autre cours']} matière(s) inconnue(s), "
+          f"{report['annexe']} annexe(s) non indexée(s)")
     if not dry_run:
         lib.save()
         Path(DATA_ROOT, 'import-report.json').write_text(json.dumps(details, ensure_ascii=False, indent=2), encoding='utf-8')
@@ -348,6 +358,8 @@ def parse_meta(stem, course):
     return {
         "course": course,
         "curriculum": course_context(course)["id"],
+        "program": course_context(course)["program"],
+        "track": course_context(course)["track"],
         "study_year": course_context(course)["study_year"],
         "semester": course_context(course)["semester"],
         "kind": kind,
@@ -567,10 +579,10 @@ def chunk_document(path, course):
     if fmt == "md":
         secs = sections_markdown(raw)
     else:
-        if course in PLAIN_TEXT_COURSES or meta.get('source', '').lower().endswith('.docx'):
+        if course in PLAIN_TEXT_COURSES or meta.get('source_format') in ('code', 'text') or meta.get('source', '').lower().endswith(('.docx', '.pptx', '.txt')):
             # Garder le code, ses indentations et les textes de SHS : les
             # heuristiques de fractions/indices sont propres aux maths.
-            fmt = "text"
+            fmt = "code" if meta.get('source_format') == 'code' else "text"
             text = strip_control_chars(raw.replace(PAGE_SEP, "\n\n"))
         else:
             pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
@@ -584,7 +596,18 @@ def chunk_document(path, course):
     chunks = []
     for label, body in secs:
         # Un corrigé reste entier, même si ses calculs dépassent MAX_CHARS.
-        parts = split_long(label, body) if meta["kind"] == "cours" else [(label, body)]
+        if meta['kind'] == 'ressource':
+            # Les tableaux et sources de code sont découpés entre leurs lignes.
+            lines, groups, size = [], [], 0
+            for line in body.splitlines(keepends=True):
+                if size + len(line) > MAX_CHARS and lines:
+                    groups.append(''.join(lines)); lines, size = [], 0
+                lines.append(line); size += len(line)
+            if lines:
+                groups.append(''.join(lines))
+            parts = [(f'{label} ({i}/{len(groups)})', text) for i, text in enumerate(groups, 1)]
+        else:
+            parts = split_long(label, body) if meta["kind"] in ('cours', 'infos') else [(label, body)]
         for sub_label, sub in parts:
             if not sub.strip() or (meta["kind"] == "cours" and len(sub.strip()) < 40):
                 continue

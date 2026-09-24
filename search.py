@@ -78,7 +78,7 @@ def query_vector(question, vocab, idf):
 
 
 def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None,
-                study_years=None, semesters=None):
+                study_years=None, semesters=None, programs=None, tracks=None):
     """courses/kinds : ensembles d'identifiants ; versions ⊂ {"enonce", "corrige"} ;
     years ⊂ années (int) ou "none" pour les documents sans année. None = pas de filtre."""
     mask = np.ones(len(chunks), dtype=bool)
@@ -93,7 +93,11 @@ def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None,
             mask[i] = False
         elif study_years and c["study_year"] not in study_years:
             mask[i] = False
-        elif semesters and c["semester"] not in semesters:
+        elif semesters and (c["semester"] if c["semester"] is not None else "none") not in semesters:
+            mask[i] = False
+        elif programs and c["program"] not in programs:
+            mask[i] = False
+        elif tracks and (c.get("track") or "none") not in tracks:
             mask[i] = False
     return mask
 
@@ -163,20 +167,28 @@ def main():
     ap.add_argument("--k", type=int, default=3)
     ap.add_argument("--cours", help=f"parmi {', '.join(COURSES)} (séparés par des virgules)")
     ap.add_argument("--type", help="parmi cours, td, tp, ds, cc, qcm, projet")
-    ap.add_argument("--preing", help="année de Préing : 1,2")
-    ap.add_argument("--semestre", help="semestre : 1,2")
+    ap.add_argument("--cycle", choices=['preing', 'ing'], help="cycle : preing ou ing")
+    years_group = ap.add_mutually_exclusive_group()
+    years_group.add_argument("--preing", help="année de Préing : 1,2 (implique --cycle preing)")
+    years_group.add_argument("--annee", help="année dans le cycle : 1,2")
+    ap.add_argument("--semestre", help="semestre : 1,2 ou none (hors semestre)")
+    ap.add_argument("--parcours", help="parcours : gm,info,data")
     ap.add_argument("--version", help="enonce, corrige")
     ap.add_argument("--annees", help="ex: 2024,2023 (année de début)")
     ap.add_argument("--sans-recence", action="store_true", help="ne pas favoriser les documents récents")
     args = ap.parse_args()
+    if args.preing and args.cycle == 'ing':
+        ap.error('--preing est incompatible avec --cycle ing ; utiliser --annee')
 
     tfidf, idf, vocab, chunks = load_index()
     years = parse_list(args.annees)
     mask = filter_mask(
         chunks, parse_list(args.cours), parse_list(args.type), parse_list(args.version),
         {int(y) if y.isdigit() else y for y in years} if years else None,
-        study_years={int(y) for y in parse_list(args.preing)} if args.preing else None,
-        semesters={int(s) for s in parse_list(args.semestre)} if args.semestre else None,
+        study_years={int(y) for y in parse_list(args.preing or args.annee)} if args.preing or args.annee else None,
+        semesters={int(s) if s.isdigit() else s for s in parse_list(args.semestre)} if args.semestre else None,
+        programs={args.cycle or 'preing'} if args.cycle or args.preing else None,
+        tracks=parse_list(args.parcours),
     )
     rec = None if args.sans_recence else recency(chunks)
     results, toks, info = search(args.question, tfidf, idf, vocab, chunks, k=args.k, mask=mask,

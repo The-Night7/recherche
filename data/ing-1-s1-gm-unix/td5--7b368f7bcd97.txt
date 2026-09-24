@@ -1,0 +1,141 @@
+TP5 - Les scripts et les jobs
+Inès de Courchelle
+2021 - 2022
+1 Quelques conseils !
+1.1 Quote, quote-quote, ou back-quote
+Dans un shell, tapez les commandes suivantes :
+ls -l
+ls -l | wc -l
+echo "ls -l | wc -l"
+echo /quotesingle.ts1ls -l | wc -l /quotesingle.ts1
+echo /grave.ts1ls -l | wc -l /grave.ts1(back-cote combinaisons touches : altGr + 7)
+La première des écriture des commandesecho est écrite avec des "doubles-quotes"1. La
+seconde est écrite avec des simples quotes2, la dernière est écrite avec des back-quotes.
+Notez bien la diﬀérence qui existe entre les deux dernières commandes. Cette diﬀérence est
+utile lorsque l’on veut mixer des commandes dans d’autres.
+1. Appelées aussi quote-quote
+2. Nomées quote
+1
+<<<PAGE>>>
+2 Exercices
+2.1 Mon premier script
+1. Recopier le script suivant,script1.sh, dans un éditeur de texte soit vi, emacs ou
+autres, et exécuterscript1.sh.
+1 #!/bin/bash
+2 for i in /grave.ts1seq 1 10 /grave.ts1
+3 # on peut aussi faire for i in $(seq 1 10)
+4 do
+5 echo "Rock n roll"
+6 done
+Réponses
+2. Que fait le script suivant? Décrivez le programme ligne par ligne.
+1 #!/bin/bash
+2 i1=/grave.ts1ls -a /grave.ts1
+3 i2="grep -R /quotesingle.ts1tutu/quotesingle.ts1~"
+4 echo $i1
+5 echo $i2
+Réponses
+2
+<<<PAGE>>>
+3. Exécutez un shell, qui aﬃche "bonjour" directement dans le terminal sans passer par
+un éditeur de texte.
+Réponses
+2.2 Mon deuxième script
+Ecrire un programme, appelépetitScript.sh qui prend 5 paramètres/arguments et
+qui aﬃche :
+- Son nom
+- Son nombre de paramètres/arguments
+- Le numéro de processus courant (celui qui exécute le script shell)
+- Sa liste de paramètres que vous lui avez passés
+Quelques indices de variables utiles :
+- $0 ⇒ contient le nom du programme en cours
+- $1..$9 ⇒ contiennent les diﬀérentes valeurs des arguments/paramètres
+- $# ⇒ contient le nombre de paramètres/arguments
+- $* ⇒ contient une liste de l’ensemble des paramètres/arguments
+- $? ⇒ contient l’état de sortie de la dernière commande. Si la commande s’est bien
+passée, alors elle renvoie 0, sinon une valeur diﬀérente de zéro.
+- $$ ⇒ contient le numéro du processus en cours
+3
+<<<PAGE>>>
+Réponses
+4
+<<<PAGE>>>
+2.3 Mon troisième script
+1. Créer dans le répertoire de connexion un répertoiremonTroisieme qui contient les
+ﬁchiers suivants (qui peuvent être vides) :
+- p1.c
+- p2.pas
+- p3.py
+- memo
+- p4.c
+- p5.txt
+- p6.sh
+- p7.sh
+2. Rajouter manuellement le droit d’exécution à quelques ﬁchiers, par exemple à : p3.py,
+p6.sh et p7.sh
+3. Créer dans votre répertoire de connexion un scriptmaTache.sh, qui doit :
+- être appelé avec un et un seul paramètre/argument
+- vériﬁer que le paramètre/argument est bien un répertoire
+4. Ajouter au scriptmaTache.sh la capacité de consulter tous les ﬁchiers du répertoire
+passé en paramètre et aﬃcher le nom de ceux qui sont exécutables. Pour tester, il
+faut passer en paramètre le répertoire monTroisième.
+Attention un ﬁchier en unix est dit exécutable s’il possède les droits d’exécution.
+5. Modiﬁer le script pour qu’il aﬃche la taille de chacun des ﬁchiers exécutables.
+6. Modiﬁer le script pour qu’il compte le nombre des ﬁchiers exécutables
+7. Modiﬁer le script pour créer un répertoireexec et déplacer l’ensemble des exécutables
+à l’intérieur.
+5
+<<<PAGE>>>
+Réponses
+6
+<<<PAGE>>>
+2.4 Les modes d’exécution des processus
+1. Créer un "script" qui eﬀectue une boucle inﬁnie contenant l’instruction sleep.
+indices : consulter le manuel desleep
+Réponses
+2. Exécuter le script en mode foreground. Est-il possible d’exécuter encore des com-
+mandes dans le terminal dans lequel le script a été lancé?
+Réponses
+3. Arrêter le script, puis vériﬁer que le script n’est plus dans la liste des processus en
+cours.
+Réponses
+4. Exécuter le script de manière à pouvoir utiliser le terminal.
+Réponses
+5. Exécuter le script en mode foreground puis passer le processus en mode background.
+Réponses
+7
+<<<PAGE>>>
+6. Exécuter en background le script, puis rechercher le dans la liste des processus en
+cours, et enﬁn, tuer le script.
+Réponses
+7. Exécuter 2 script d’aﬃler en mode background (&), et tuer les deux processus.
+Réponses
+3 Et si je révisai !
+1. Nous considérons le ﬁchier de notes suivant :
+Liste de notes EISTI 2017
+paco 10
+pepe 5
+jose 18
+juan 15
+luis 19.5
+toto 2
+titi 5
+8
+<<<PAGE>>>
+Créez un script qui permet un aﬃchage trié d’un ﬁchier de note sans trier l’entête
+(première ligne)
+Réponses
+9
+<<<PAGE>>>
+2. Aﬃchez la liste des jobs dont vous êtes le propriétaires
+Réponses
+3. Aﬃchez dans le terminal l’identiﬁant local des processus lancés
+Réponses
+4. Nous considérons un scripttoto.sh :
+(a) Exécutez le processus
+Réponses
+(b) Passez le processus en mode background
+Réponses
+(c) Arrêtez le processustoto.sh
+Réponses
+10

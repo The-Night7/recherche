@@ -17,7 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 from reflow import to_md_blocks
-from courses import COURSES, CURRICULA, KINDS, course_context
+from courses import COURSES, CURRICULA, PROGRAMS, KINDS, course_context
 from search import filter_mask, load_index, recency, search
 
 # en local: http://localhost:8000 . En ligne (Render, Railway, etc.),
@@ -43,12 +43,13 @@ def build_meta():
         years = sorted({c["year"] for c in cs}, key=lambda y: -1 if y is None else y)
         context = course_context(cid)
         courses.append({"id": cid, "name": name, "curriculum": context["id"],
+                        "program": context["program"], "track": context["track"],
                         "study_year": context["study_year"], "semester": context["semester"],
                         "curriculum_label": context["label"],
                         "count": len(cs), "kinds": kinds, "years": years})
     contexts = [dict(ctx, count=sum(c['count'] for c in courses if c['curriculum'] == ctx['id']))
                 for ctx in CURRICULA.values()]
-    return {"courses": courses, "kinds": KINDS, "curricula": contexts}
+    return {"courses": courses, "kinds": KINDS, "curricula": contexts, "programs": PROGRAMS}
 
 
 META = build_meta()
@@ -64,6 +65,8 @@ def content_blocks(chunk):
         return md_blocks(chunk["text"])
     if chunk.get("fmt") == "text":
         return [{"type": "text", "text": chunk["text"]}]
+    if chunk.get("fmt") == "code":
+        return [{"type": "code", "text": chunk["text"]}]
     return to_md_blocks(chunk["text"])
 
 
@@ -135,6 +138,8 @@ class Handler(BaseHTTPRequestHandler):
                 years={int(y) if y.isdigit() else y for y in years} if years else None,
                 study_years={int(y) if y.isdigit() else y for y in csv_param(qs, "study_year") or []} or None,
                 semesters={int(s) if s.isdigit() else s for s in csv_param(qs, "semester") or []} or None,
+                programs=csv_param(qs, "program"),
+                tracks=csv_param(qs, "track"),
             )
             try:
                 k = max(1, min(20, int(qs.get("k", ["5"])[0])))
@@ -158,6 +163,7 @@ class Handler(BaseHTTPRequestHandler):
                         "curriculum": c["curriculum"],
                         "curriculum_label": course_context(c["course"])["label"],
                         "study_year": c["study_year"], "semester": c["semester"],
+                        "program": c["program"], "track": c["track"],
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
                         "score": score,
                         "blocks": content_blocks(c),

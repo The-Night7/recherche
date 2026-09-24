@@ -1,0 +1,3643 @@
+Département de Mathématiques
+Cycle ingénieur 1ère année
+Semestre 1 – Mathématiques appliquées
+Mesure et intégration
+Notes de cours
+Nisrine FORTIN CAMDAVANT
+<<<PAGE>>>
+
+<<<PAGE>>>
+Table des matières
+0.1 Approche intuitive . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+0.2 Exemple d’application : les probabilités . . . . . . . . . . . . . . . . . . . . . . . . 6
+0.3 Terminologie et définitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1 Tribu et application mesurable 11
+1.1 Algèbre de Boole et tribu . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.2 Tribu engendrée, tribu borélienne . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+1.2.1 Tribu engendrée . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+1.2.2 Tribu borélienne . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1.3 Applications mesurables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1.4 Quelques propriétés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2 Introduction à la mesure 20
+2.1 Fonction d’ensembles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.2 Mesure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.1 Exemples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.2 Conséquences de la σ-additivité . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.3 Ensembles négligeables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+2.4 Espaces mesurés complets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+3 Intégration de fonctions étagées positives 31
+3.1 Fonction indicatrice de Q sur [0; 1] . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.2 Fonctions étagées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.3 Intégrale d’une fonction étagée positive . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.4 Intégration de fonctions mesurables positives . . . . . . . . . . . . . . . . . . . . . 37
+3.5 Principaux théorèmes d’intégration de fonctions positives . . . . . . . . . . . . . . 40
+4 Intégration de fonctions mesurables 46
+4.1 Intégration de fonctions réelles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+4.2 Propriétés de l’intégrale de fonctions réelles . . . . . . . . . . . . . . . . . . . . . . 48
+4.3 Mesures à densité - Théorème de Radon-Nikodym . . . . . . . . . . . . . . . . . . 51
+4.3.1 Mesure définie par une densité . . . . . . . . . . . . . . . . . . . . . . . . . 51
+4.4 Espaces Lp et Lp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+4.5 Normes sur Lp (p∈ [1, +∞[) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+4.6 Espaces L∞ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+4.6.1 Théorème de Radon Nikodym . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+4.6.2 Mesure image . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+3
+<<<PAGE>>>
+Table des matières 4
+5 Produit de mesures 62
+5.1 Produit de tribus . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+5.2 Mesure produit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+5.3 Théorème de Fubini . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+<<<PAGE>>>
+Introduction générale au module
+La théorie de la mesure permet d’associer une grandeur numérique à un ensemble. Plusieurs
+types de "mesures" ont déjà été rencontrés : le cardinal d’un ensemble discret, la longueur d’une
+courbe, l’aire d’une figure plane, le volume d’un solide en dimension 3, la probabilité d’un évène-
+ment....
+Cesmesuressontcourantesetformentdescasparticuliersd’unenotionplusgénéraledemesures
+(Chapitre 2), outil de base pour une nouvelle théorie de l’intégration, dite intégrale de Lebesgue
+(Chapitre 3).
+L’intégrale au sens de Lebesgue généralise la notion de l’intégrale de Riemann. Cette nouvelle
+théorie s’applique à une classe de fonctions beaucoup plus grande (les fonctions mesurables), cette
+dernière étend la notion de continuité de fonctions(Chapitre 1).
+Une mesure est associée àune famille d’ensemblesà mesurer, appeléetribu de parties(Cha-
+pitre 1). Ainsi, unetribu va englober desensembles mesurablespar unemesure donnée.
+0.1 Approche intuitive
+Intuitivement, si on se place dans un ensemble non videΩ, une tribu définie surΩ contiendra
+des sous-ensembles deΩ. Ces ensembles qu’on mesure seront "rassemblés" de la façon suivante :
+• La mesure choisie doit nous permettre de mesurerΩ donc
+Ω doit appartenir à la tribu;
+• Si A appartient à la tribu, on peut donc la mesurer et on souhaite que le complémentaire
+de A dansΩ soit aussimesurable donc on impose dans la définition
+la condition de stabilité par passage au complémentaire;
+• Si on sait mesurer deux parties A et B (appartiennent donc à la tribu), on souhaite que
+leur union soit aussimesurable donc on impose dans la définition
+la condition de stabilité par union dénombrable.
+On définira les fonctions qui préservent la propriété de mesurabilité de l’image réciproque d’un
+ensemble mesurable. Cette théorie s’appliquera à des théorèmes de convergence beaucoup plus
+puissants : théorème de convergence monotone, théorème de convergence dominée(Chapitre 5).
+5
+<<<PAGE>>>
+Table des matières 6
+0.2 Exemple d’application : les probabilités
+Le calcul des probabilités s’intéresse à mesurer la "chance" qu’un certain "événement", résultat
+d’une expérience, a de se produire. Considérons par exemple "l’expérience" qui consiste à lancer
+un dé. On appelle "éventualité" associée à cette expérience un des résultats possibles de cette
+expérience, et "univers des possibles" l’ensembleΩ de ces éventualités. Dans notre exemple, les
+éventualités peuvent être 1, 2, 3, 4, 5 ou 6
+Ω ={1, 2, 3, 4, 5, 6}.
+Onpourraitchoisiraussicommeéventualitéslesrésultatscorrespondantau"décassé".Onpeut
+donc tout de suite remarquer que l’ensembleΩ des univers du possible dépend de la modélisation,
+c’est à dire de la formalisation mathématique que l’on fait du problème. Notons qu’il est parfois
+difficile de définir l’ensembleΩ.
+Supposons que toutes les faces paires d’un dé soient effacées. Dans ce cas, si le résultat du
+lancer est pair, il nous est impossible de déterminer si la face 2 est survenue. On peut seulement
+déterminer si le résultat est pair ou impair et dans ce dernier cas, déterminer quelle était la face
+obtenue (1,3,5). Un sous-ensemble E deΩ correspond à l’événement et qu’un des éléments de E
+s’est réalisé. Si l’on retourne à l’expérience du lancer du dé, les événements qui sont observables
+seront tous les sous-ensembles deΩ. Par exemple, l’événement{1; 2; 3} est observable. Par contre,
+si l’on est dans le cas où les faces paires sont non différentiables, l’événement{1; 2; 3} n’est plus
+observable puisqu’on n’est plus en mesure de déterminer si l’événement 2 est survenu. Dans ce
+dernier cas, les seuls événements possibles sont
+∅,{1},{3},{5},{1; 3},{1; 5},{3; 5},{1; 3; 5},{1; 2; 4; 6},
+{2; 3; 4; 6},{2; 4; 5; 6},{1; 2; 3; 4; 6},{1; 2; 4; 5; 6},{2; 3; 4; 5; 6},{2; 4; 6}, Ω.
+Intuitivement, si deux événements sont observables, leur réunion devrait l’être aussi. De plus, le
+complémentaire d’un événement observable devrait être observable aussi car si on peut déterminer
+si l’événement E est survenu, alors on peut également déterminer si l’événement Ec est survenu.
+Finalement, Ω survient à tous les coups, donc ce sont toujours des événements observables.
+<<<PAGE>>>
+7 0.3. Terminologie et définitions
+0.3 Terminologie et définitions
+Soit Ω une partie d’éléments non vide. La classe (ensemble) des parties deΩ, notéeP(Ω) est
+définie par :
+P(Ω) ={A, A⊆ Ω}.
+Classe de parties
+Exemple 1. Ω ={a,b,c}. L’ensemble des parties deΩ est donné par :
+P(Ω) =
+n
+∅, {a}, {b} ,{c}, {a,b}, {a,c}, {b,c}, {a,b,c}
+o
+.
+Attention, on dit quea∈ Ω,{a}⊂ Ω,{a}∈P (Ω) et
+
+{a}
+	
+⊂P (Ω).
+Pour toute partieA∈P (Ω), on note le complémentaire de A dansΩ par
+Ac = Ω\A =
+
+x∈ Ω, x /∈ A
+	
+.
+Le complémentaire d’un ensemble
+Soient A et B deux parties deΩ alors
+(A∪B)c = Ac∩Bc et (A∩B)c = Ac∪ Bc.
+Propriété 1.
+Soit Ω un ensemble d’éléments. On dit que
+■ Ω est infini s’il existex0∈ Ω et une injection deΩ dans Ω\
+
+x0
+	
+.
+■ Ω est dénombrable s’il existe une bijection entre l’ensembleΩ et N.
+■ Ω est au plus dénombrables’il est fini ou dénombrable.
+Dénombrabilité d’un ensemble
+Exemple 2. N est infini car0∈ N et l’application
+f : N → N
+n 7→ n + 1
+est une injection.
+<<<PAGE>>>
+Table des matières 8
+Exemple 3.
+• N, Z, Q, N× N sont dénombrables.
+⇝ L’application
+f : N → N
+n 7→ n
+est une bijection.
+⇝ L’application
+f : N → Z
+n 7→ xn
+où x2k =k et x2k+1 =−k− 1, k étant un entier naturel, est une bijection.
+⇝ L’application
+f : N → N× N
+n 7→ xn
+où xn = (i,j ) tel quei +j =n est une bijection.
+• R n’est pas dénombrable.
+On dit que(Ai)n∈N∗ forme une partition deΩ si :
+• ∀n∈ N∗, An̸=∅.
+• ∀n∈ N∗,∀m∈ N∗, n̸=m, An∩Am =∅.
+•
++∞S
+n=1
+An = Ω.
+Une partition
+SoientAetBdeuxpartiesde Ω.LadifférencesymétriquedeAetBnotéeA aBestl’ensemble
+des éléments appartenant à A ou à B exclusivement.
+A
+i
+B = (A∪B)\ (A∩B)
+Différence symétrique
+Soient E et F deux ensembles etf : E→ F une application.
+• Soit B⊂ F. On appelle image réciproque de B parf l’ensemble des éléments x deE
+Image réciproque et image directe
+<<<PAGE>>>
+9 0.3. Terminologie et définitions
+dont l’imagef(x) par f est dans B. C’est un sous-ensemble deE; on le note
+f−1(B) ={x∈ E, f(x)∈ B}.
+• Soit A⊂ E. On appelle image directe de A parf l’ensemble des images f(x) des
+éléments x de A. C’est un sous-ensemble deF; on le note
+f(A) ={y∈ F, ∃x∈ A tel que y =f(x)}.
+• On af−1(∅) =∅, mais même si B est non vide,f−1(B) peut être vide.
+• Pour toute partie B de F,f
+ 
+f−1(B)
+
+⊂ B.
+f
+ 
+f−1(B)
+
+= B⇐⇒f est surjective.
+• Pour toute partie A de E, A⊂f−1 (f(A)).
+A =f−1 (f(A))⇐⇒f est injective.
+• Pour toute famille(Bi)i∈I de parties de F,
+▶ f−1
+ \
+i∈I
+Bi
+!
+=
+\
+i∈I
+f−1 (Bi).
+▶ f−1
+ [
+i∈I
+Bi
+!
+=
+[
+i∈I
+f−1 (Bi).
+Propriété 2.
+Soit (fn)n une suite de fonctions définies surΩ. On définit :
+lim inffn = sup
+p∈N
+
+inf
+n≥p
+fn(x)
+
+et lim supfn = inf
+p∈N
+
+sup
+n≥p
+fn(x)
+
+.
+Limite inférieure et limite supérieure
+f+ = sup (f, 0), f− = sup (−f, 0) = (−f)+.
+Partie positive et partie négative
+f =f+−f− et |f|=f+ +f−.
+Propriétés 1.
+<<<PAGE>>>
+Table des matières 10
+Soit A⊂ Ω. On appelle fonction indicatrice deA, notée 1A (ou χA), la fonction deΩ dans
+{0, 1} qui, à toutx∈ Ω, associe 1 si x∈A et 0 si x /∈A :
+1A(x) =
+(
+1 si x∈A
+0 si x /∈A
+Fonction indicatrice
+a) ∀x∈ Ω, 1∅(x) = 0 et 1Ω(x) = 1.
+b) A⊂B⇔ 1A≤ 1B ;
+c) 1A∩B = 1A.1B = inf(1A, 1B);
+d) 1A∪B = 1A + 1B− 1A∩B = sup(1A, 1B);
+e) 1Ω\A = 1− 1A;
+f) si (Ai)i∈N est une famille dénombrable de parties deΩ telle queAn∩Ap =∅ pour
+n̸=p alors 1 S
+i∈N
+Ai =
+X
+i∈N
+1Ai.
+Propriété 3(Quelques propriétés sur la fonction indicatrice).
+<<<PAGE>>>
+1 | Tribu et application mesurable
+Sommaire
+1.1 Algèbre de Boole et tribu . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.2 T ribu engendrée, tribu borélienne . . . . . . . . . . . . . . . . . . . . 13
+1.2.1 Tribu engendrée . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+1.2.2 Tribu borélienne . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1.3 Applications mesurables . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1.4 Quelques propriétés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+1.1 Algèbre de Boole et tribu
+SoitA⊂P (Ω). On dit queA est une algèbre de Boole (de parties deΩ) si elle vérifie :
+1. Ω∈A ,
+2. A∈A =⇒ Ω\A∈A ,
+3. A∈A , B∈A =⇒ A∪B∈A .
+Définition 1.
+SoitT ⊂P (Ω), on dit queT est une tribu de parties (ouσ-algèbre) si elle vérifie :
+1. Ω∈T ,
+2. la stabilité par passage au complémentaire :A∈T =⇒ Ω\A∈T ,
+3. la stabilité par réunion dénombrable :Si An ∈ Tpour tout n∈ N alors
+S
+n∈N
+An∈T .
+Définition 2.
+Remarque 1.
+11
+<<<PAGE>>>
+Chapitre 1. Tribu et application mesurable 12
+• Une tribu est donc une algèbre de Boole stable par réunion dénombrable.
+• Si An∈T pour toutn∈ N alors T
+n∈N
+An∈T . (Démonstration en TD1)
+On appelle espace mesurable tout couple(Ω,T ) formé par un ensembleΩ et une tribu
+T sur Ω. Les ensembles mesurables sont les parties deΩ qui appartiennent àT .
+Définition 3.
+Exemple 4.
+♢ La plus petite tribu deΩ estT ={∅, Ω}, elle est appelée tribu grossière.
+♢ La plus grande tribu deΩ estT =P (Ω), elle est appelée tribu discrète.
+Exemple 5(La tribu trace). SoientT une tribu de parties surΩ et U⊂ Ω.
+TU ={A∩U, A∈T}
+est une tribu sur U. Cette tribu est appelée la tribu trace sur U.
+En effet,
+⇝ U∈T U car U= Ω∩U et Ω∈T .
+⇝ Soit B∈T U, donc B= A∩U avec A∈T . Pour simplifier les notations, on notera∗c le
+complémentaire de∗ dans Ω.
+U\B = U∩Bc = U∩ (A∩U)c = U∩ (Ac∪Uc) = U∩Ac.
+Comme A∈T ,T est une tribu surΩ alors Ac∈T , il s’en suit que
+U\B = U∩Ac, Ac∈T
+Donc U\B∈TU.
+⇝ Soit Bn∈TU pour n∈ N. Donc∀n∈ N, Bn = U∩An avec An∈T .
+[
+n∈N
+Bn =
+[
+n∈N
+(U∩An) = U∩
+ [
+n∈N
+An
+!
+<<<PAGE>>>
+13 1.2. Tribu engendrée, tribu borélienne
+Et comme An∈T etT est une tribu alorsS
+n∈NAn∈T . Finalement
+[
+n∈N
+Bn∈T U.
+1.2 Tribu engendrée, tribu borélienne
+En général, une tribu contient énormément d’éléments d’où le nom de tribu. Souvent, on ne
+peut pas décrire tous les éléments d’une tribu mais cela n’a pas d’importance. En effet, ce qu’il
+faut retenir, sont certaines parties deΩ de la tribu et on doit rester dans la tribu lorsqu’on itère
+sur les éléments de la tribu les opérations de complémentarité et de réunion dénombrable.
+1.2.1 Tribu engendrée
+Soit Ω un ensemble. Ω quelconque, H⊂P (Ω). On dit queT est la tribu engendrée par
+H siT est la plus petite tribu(au sens de l’inclusion) de parties deΩ contenantH.
+On note dans ce cas,T =σ(H).
+Définition 4.
+On considère un ensemble quelconqueΩ et H⊂P (Ω). σ(H) existe toujours, c’est l’in-
+tersection de toutes les tribus surΩ contenant H.
+Proposition 4.
+Remarque 2. Soient H1⊂P (Ω) et H2⊂P (Ω).
+1. H1⊂σ(H1). (Par définition deσ(H1).)
+2. SiT est une tribu contenantH alors σ(H)⊂T . (Par définition deσ(H).)
+3. Si H1⊂ H2 alors σ(H1)⊂σ(H2).
+⇝ H1⊂H 2⊂σ (H2).
+⇝ σ (H2) est une tribu doncσ (H2) est une tribu qui contientH1. Commeσ (H1) est la
+plus petite tribu contenantH1 alors σ (H1)⊂σ (H2).
+Exemple 6.
+• Si H ={∅} ou bien siH ={Ω}, alorsσ(H) ={∅, Ω}
+• Si H ={A} ou bien siH ={Ac} où A̸=∅ et A̸= Ω, alorsσ(H) ={∅,A,Ac, Ω}.
+<<<PAGE>>>
+Chapitre 1. Tribu et application mesurable 14
+• Soient Ω ={a, b, c}, H ={{a};{b}}; on peut décrire la tribu engendrée parH :
+σ(H) =
+
+
+
+Ω|{z}
+Ω∈tribu
+;∅; {a} ;{b}| {z }
+les éléments de H
+;{b, c}|{z}
+{a}c
+;{a, c}|{z}
+{b}c
+;{a, b}|{z}
+{a}∪{b}
+; {c}|{z}
+({a}∪{b})c
+
+
+
+.
+1.2.2 Tribu borélienne
+Si l’ensemble Ω possède une structure topologique1, la notion de tribu engendrée permet de
+définir la plus petite tribu adaptée à cette structure.
+Soit (Ω,d ) un espace métriquea. On appelle tribu borélienne deΩ, la tribu engendrée
+par les ouverts de(Ω,d ). On la noteB(Ω) et ses éléments sont appelés les boréliens de
+Ω.
+a. (Ω, d) est un espace métrique siΩ est muni d’une distanced : Ω → R+ vérifiant les propriétés
+suivantes 1.d(x, y) = 0⇔ x = y, 2. d(x, y) = d(y, x) et 3. d(x, z)≤ d(x, y) + d(y, z).
+Définition 5.
+La tribu borélienne surR (respectivement R) est la tribu engendrée par les intervalles ouverts de
+R.
+Exemple 7. [1; 2[∈ B(R), en effet,[1; 2[ = ]1; 2[∪{ 1} avec
+♢ ]1; 2[∈ B(R), ♢ { 1} =
++∞T
+n=1
+
+1− 1
+n; 1 + 1
+n
+
+| {z }
+An∈B(R)
+.
+1.3 Applications mesurables
+La notion de fonction mesurable étend la notion de fonctions continues. Elle prend son sens
+sur des ensembles munis d’une tribu et joueront un rôle important dans l’intégration au sens de
+Lebsgue.
+1. T définit une topologie surΩ si Ω∈T ,∅∈T , la stabilité par union finie ou infinie et par intersection finie
+est vérifiée.
+<<<PAGE>>>
+15 1.3. Applications mesurables
+Soient (Ω1,T1) et (Ω1,T1) deux espaces mesurables. Soitf : Ω1→ Ω1. On dit quef est
+(T1,T2)-mesurable si l’image réciproque de tout élément deT2 par f appartient àT1 :
+∀B∈T 2, f−1(B)∈T 1.
+Définition 6.
+Quand il n’y a pas de confusion possible, on dit quef est mesurable.
+Exemple 8. Si f est une fonction constante surΩ1 où Ω1 est muni de la tribuT1 alors f
+est mesurable. En effet :
+∀x∈ Ω,f (x) =y0, où y0∈ Ω2.
+Ω2 est munie de la tribuT2. Soit B∈T 2, donc
+f−1(B) ={x∈ Ω1, y0∈ B} =
+
+
+
+∅ si y0 /∈ B
+Ω1 si y0∈ B
+PuisqueT1 est une tribu surΩ1 alors Ω1∈T 1 et∅∈T 1, ainsif−1(B)∈T 1.
+Si (X,d ) et (Y,δ ) sont deux espaces métriques et si f : X → Y est (B(X), B(Y))-
+mesurable, on dit quef est borélienne.
+Définition 7.
+Soit f : (Ω1,T1)→ (Ω2,T2). SiT2 est engendrée par une classeC2,T2 = σ (C2) alors f
+est mesurable si et seulement si∀B∈C2, f−1 (B)∈T 1.
+Propriété 5.
+Démonstration .
+• ⇒) Supposons quef est (T1,T2)-mesurable. Soit B∈C2.
+CommeT2 = σ (C2) alors C2⊂T 2 et donc B∈T 2. La fonctionf étant (T1,T2)-mesurable,
+par définition, on obtient le résultat,f−1 (B)∈T 1.
+• ⇐) Supposons que∀B∈C2, f−1 (B)∈T 1. SoitD∈T 2.
+<<<PAGE>>>
+Chapitre 1. Tribu et application mesurable 16
+CommeT2 =σ (C2) alors∃J⊂ N,∃Bj∈C2, j∈J tels queD =
+[
+j∈J
+Bj.
+f−1(D) =f−1
+
+[
+j∈J
+Bj
+
+ =
+[
+j∈J
+f−1 (Bj).
+Comme Bj ∈ C2 alors, par hypothèse,f−1 (Bj)∈T 1. La propriété de stabilité par union
+dénombrable d’une tribu nous conduit à déduire que
+[
+j∈J
+f−1 (Bj)∈T 1.
+Par conséquent,f−1(D)∈T 1. f est donc (T1,T2)-mesurable.
+Soient (X,d ) et (Y,δ ) deux espaces métriques et soitf : X→ Y. Sif est continuea, elle
+est borélienne.
+a. Si f : X→ Y avec X et Y munis respectivement d’une structure topologiqueTX etTY, alors on
+dit que f est continue sif−1 
+OY|{z}
+∈TY
+
+∈ TX.
+Corollaire 1.
+Attention : la réciproque est fausse. Voir exemple 9
+Démonstration . Soit OY un ouvert de l’espace métrique Y,δ ). Comme f est continue alors
+f−1(OY) est un ouvert de l’espace métrique(X,d ).
+⇝ D’après la définition 5,OY∈ B(Y) et f−1(OY)∈ B(X).
+⇝ D’après la propriété 5, l’applicationf est mesurable.
+1.4 Quelques propriétés
+Soient (Ω1,T1), (Ω2,T2) et (Ω3,T3) des espaces mesurables. Soient
+f : Ω1→ Ω2 une fonction (T1,T2)-mesurable
+g: Ω2→ Ω3 une fonction (T2,T3)-mesurable
+alors g◦f est (T1,T3)-mesurable.
+Proposition 6.
+<<<PAGE>>>
+17 1.4. Quelques propriétés
+Démonstration . Soit B∈T Z,
+(g◦f)−1 (B) =
+ 
+f−1◦g−1
+(B) =f−1 
+g−1(B)
+
+| {z }
+∈TY
+∈T X.
+Soient (Ω,T ) un espace mesurable,f,g : (Ω,T )→ (R, B(R)) des fonctions mesurables
+et λ∈ R, alors les fonctions
+f +g, fg, λf, min(f,g ), max(f,g )
+sont mesurables.
+Proposition 7(Opérations sur les fonctions numériques).
+Démonstration .
+1. On commence par démontrer la mesurabilité def +g, fg et λf. Pour cela, on utilisera la
+proposition 5.
+On pose Φ l’application définie comme suit :
+Φ : Ω → R× R
+x 7→ (f(x),g (x))
+On note Ψ1 et Ψ2 deux applications réelles deR2 définies comme suit :
+Ψ1 : R× R → R
+(x1,x 2) 7→ x1 +x2
+
+Ψ2 : R× R → R
+(x1,x 2) 7→ x1x2
+Ψ1 et Ψ2 sont continues surR2 donc d’après le corollaire 1.,Ψ1 et Ψ2 sont boréliennes.
+L’application Φ est borélienne, en effet, siV un ouvert de R2 alors il existe des intervalles
+ouvertsIn et Jn de R tels que il
+V =
+[
+n∈N
+(In×Jn).
+En particulier,
+Φ−1(V ) =
+[
+n∈N
+Φ−1 (In×Jn) =
+[
+n∈N
+f−1(In)∩g−1(Jn).
+Par la mesurabilité def et de g, f−1(In)∈T et g−1(Jn)∈T . PuisqueT est stable par
+intersection et par réunion dénombrable alors
+[
+n∈N
+f−1(In)∩g−1(Jn)∈T . On en déduit que
+<<<PAGE>>>
+Chapitre 1. Tribu et application mesurable 18
+Φ−1(V )∈T . L’application Φ est donc une fonction mesurable.
+(a) Notons quef +g = Ψ1◦ Φ. Ψ1 est borélienne, Φ est (T,B(R))-mesurable. d’après la
+proposition 5., Ψ1◦ Φ est donc mesurable.
+(b) Notons que fg = Ψ 2◦ Φ. Ψ2 est borélienne, Φ est (T,B(R))-mesurable. d’après la
+proposition 5., Ψ2◦ Φ est donc mesurable.
+(c) λf est un cas particulier defg avec g = λ une application constante. Doncλf est
+mesurable.
+2. Soit a∈ R. Puisque
+
+
+min(f,g )
+−1
+]−∞,a [
+
+=
+
+min(f,g )<a
+
+= {f <a}∩{ g <a}.
+
+max(f,g )
+−1
+]a, +∞[
+
+=
+
+max(f,g )>a
+
+= {f >a}∪{ g >a}.
+f et g sont mesurables donc{f <a}∈T ,{f >a}∈T ,{g <a}∈T et{g >a}∈T .
+PuisqueT est stable par union et par intersection alors
+{f <a}∩{ g <a}∈T et {f <a}∪{ g <a}∈T
+On déduit que les fonctionsmin(f,g ) et max(f,g ) sont mesurables.
+• Soientfn : Ω→ R des fonctions mesurables, alorsinf
+n
+fn , sup
+n
+fn, lim inf
+n
+fn et lim sup
+n
+fn
+sont mesurables à valeurs dansR.
+• Soit f : Ω→ R une fonction mesurable, alors|f| est une fonction mesurable.
+Conséquences
+Soient (Ω1,T1) et (Ω2,T2) deux espaces mesurables. Soit(Un)n une suite finie ou infinie
+d’élémentsdansT1 telleque Ω1 = S
+n∈N
+Un.Soitf : Ω1→ Ω2,alors f est (T1,T2)-mesurable
+si et seulement sif|Un (restriction def à Un) est (TUn,TY )-mesurable pour toutn.
+Proposition 8.
+<<<PAGE>>>
+19 1.4. Quelques propriétés
+Exemple 9. X =Y = R,TX =TY = B(R).
+f : X→Y
+x7→f(x) =
+
+
+
+1
+x si x̸= 0
+1 si x = 0
+On applique la proposition (8) avecU0 = R∗ et U1 ={0}.
+• R∗ est ouvert⇒U0∈ B(R)
+• {0} est fermé⇒U1∈ B(R)
+• U0∪U1 = R
+• f|U0 est continue⇒f est (TR∗, B(R))-mesurable.
+• f|U1 est constante⇒f est (T{0}, B(R))-mesurable.
+D’où f est (B(R), B(R))-mesurable.
+<<<PAGE>>>
+2 | Introduction à la mesure
+La notion de mesure va étendre la notion usuelle de longueur pour les ensembles deR, ou de
+volume pour ceux deRd, et ceci de deux manières :
+• on veut pouvoir considérer des espaces de base plus généraux, ou plus "abstraits" (espaces
+de dimension infinie, espaces sur lesquels on définit les probabilités, etc... )
+• on veut englober dans le même cadre mathématique d’une part les notions de longueur,
+surface, volume, et d’autre part la notion de "masses" ou "charges ponctuelles" que l’on
+rencontre en mécanique ou en électricité.
+Sommaire
+2.1 F onction d’ensembles . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.2 Mesure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.1 Exemples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.2 Conséquences de la σ-additivité . . . . . . . . . . . . . . . . . . . . . . . 23
+2.3 Ensembles négligeables . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+2.4 Espaces mesurés complets . . . . . . . . . . . . . . . . . . . . . . . . . 27
+2.1 Fonction d’ensembles
+Soient Ω un ensemble non vide etP(Ω) l’ensemble des parties deΩ. SoitT ⊂P(Ω).
+Une fonction m :T −→[0, +∞] est une fonction d’ensembles positive.
+Définition 1.
+Une propriété que l’on exigera d’une telle fonction sera laσ-additivité au sens suivant :
+Une fonctionm :T −→[0, +∞]estσ-additive si et seulement si pour toute suite(An)n∈N
+dansT telle que S
+n∈N
+An∈T et An∩Ap =∅ pour n̸=p,
+m
+ [
+n∈N
+An
+!
+=
+X
+n∈N
+m (An).
+Définition 2.
+20
+<<<PAGE>>>
+21 2.2. Mesure
+2.2 Mesure
+Une "mesure abstraite" est une fonction d’ensemble vérifiant certaines propriétés. SoitΩ un
+ensemble non vide.
+SoientT une tribu de parties de Ω et m :T −→[0, +∞] une fonction d’ensembles
+positive. m est une mesure positive surT si et seulement si les conditions suivantes sont
+vérifiées :
+1. m(∅) = 0;
+2. m est σ-additive.
+Définition 3.
+2.2.1 Exemples
+::::::Masse:::ou::::::::mesure:::de:::::::Dirac
+Soientx0∈ Ω et A∈P (Ω). On pose :
+δx0(A) =
+(
+1 si x0∈ A
+0 si x0 /∈ A
+Si Ω est muni d’une tribuT alorsδx0 est une mesure appelée mesure de Dirac de masse1 et
+concentrée au pointx0.
+:::::::Mesure::::de ::::::::::comptage
+Soit m :P(Ω)−→[0, +∞] définie par
+m(A) =
+
+
+
+card A si A est fini
++∞ si A est infini
+Remarque 1.Par convention,+∞ est considéré ici comme un élément deR = R∪{−∞}∪{ +∞}
+♢ m est une mesure.
+♢ m aura beaucoup d’intérêt pourΩ = N.
+<<<PAGE>>>
+Chapitre 2. Introduction à la mesure 22
+:::::::Mesure::::de ::::::::::Lebesgue :::sur:::R
+Soit Ω l’ensemble des unions finies d’intervalles semi-ouverts. On se donne la fonction
+croissanteF : R→ R . Si
+A = [a1,b 1[∪[a2,b 2[∪···∪ [an,bn[
+aveca1 <b 1 <a 2 <b 2 <··· <a n <b n. On pose
+m(A) =
+nX
+i=1
+(F (bi)−F (ai)
+avecF (+∞) = sup
+x∈R
+F (x) et F (−∞) = inf
+x∈R
+F (x).
+m est additive surΩ.
+En prenantF (x) = x pour toutx∈ R, F (bi)−F (ai) est la longueur de l’intervalle[ai,bi[.
+On a alors
+m(A) =
+nX
+i=1
+(bi−ai)
+En prolongeant m à la plus petite tribu contenantΩ, on obtient la mesure de Lebesgue sur
+R, notéeλ. On a
+λ ({x}) = 0, ∀x∈ R et λ ([ai,bi[) =λ (]ai,bi[) =λ ([ai,bi]) =bi−ai.
+Remarque 2. pourquoi ne pas aller plus loin que laσ-additivité?
+On pourrait supposer pour une mesurem définie sur une tribuT , la propriété suivante :
+Si{Ai,i ∈ I} est une famille d’éléments deT deux à deux disjoints et tel queT
+i∈I
+Ai∈T avec I
+quelconque (pas forcément dénombrable) alors
+m
+[
+i∈I
+Ai
+
+=
+X
+i∈I
+m(Ai)
+Cette propriété n’est pas naturelle, siλ est la mesure de Lebesgue surR, on aλ
+
+{x}
+
+= 0 pour
+tout x∈ R, avec la condition précédente, et en écrivant[0, 1] = S
+x∈[0,1]
+{x} on aurait
+λ
+
+[0, 1]
+
+=
+X
+x∈[0,1]
+λ
+
+{x}
+
+= 0, 0̸= 1.
+<<<PAGE>>>
+23 2.2. Mesure
+2.2.2 Conséquences de la σ-additivité
+Soient Ω un ensemble,T une tribu de parties deΩ et m une mesure positive surT . On a les
+propriétés suivantes :
+1. Si (A,B)∈T 2 tels que A⊂ B alors m(A)≤ m(B).
+2. Si An∈T pour toutn∈ N, alors m
+ S
+n∈N
+An
+
+≤
+X
+n∈N
+m(An).
+3. Si An∈T pour toutn∈ N, avec An⊂ An+1 alors
+m
+[
+n∈N
+An
+
+= lim
+n→+∞
+m(An).
+4. Si An∈T pour toutn∈ N, avec An+1⊂ An et m(A0)< +∞ alors
+m
+\
+n∈N
+An
+
+= lim
+n→+∞
+m(An).
+Démonstration .
+1. Soit A et B deux ensembles mesurables tels que A⊂ B. On note
+B\A = B∩
+ 
+Ω\A
+
+.
+Remarquons que,
+A∪
+ 
+B\A
+
+= B et A ∩
+ 
+B\A
+
+=∅.
+Comme m est σ-additive alors
+m(B) = m(A) + m(B\A)| {z }
+≥0
+(d’après A∪
+ 
+B\A
+
+= B)
+Donc m(A)≤ m(B).
+2. Soit (An)n∈N une suite d’éléments deT . On pose
+A′
+n = An\
+[
+j<n
+Aj
+
+(A′
+n∈T et A′
+n peut être éventuellement vide).∀n∈ N, on a
+A′
+n⊂ An, A′
+p∩A′
+q =∅ pour p̸=q et
+[
+n∈N
+A′
+n =
+[
+n∈N
+An.
+<<<PAGE>>>
+Chapitre 2. Introduction à la mesure 24
+Comme m est σ-additive, m
+  S
+n∈N
+An
+
+= m
+  S
+n∈N
+A′
+n
+
+= P
+n∈N
+m(A′
+n).
+D’après la première propriété, A′
+n⊂ An⇒ m(A′
+n)≤ m(An). D’où
+m
+[
+n∈N
+An
+
+≤
+X
+n∈N
+m(An).
+3. On garde la construction de la suite(A′
+n)n∈N de 2. Comme An⊂ An+1 pour tout entiern
+alors
+k[
+n=0
+A′
+n =
+k[
+n=0
+An = Ak, (pour tout k).
+m
+  S
+n∈N
+An
+
+= m
+  S
+n∈N
+A′
+n
+
+= P
+n∈N
+m
+ 
+A′
+n
+
+♯ parσ− additivité
+= lim
+n→+∞
+nP
+k=0
+m
+ 
+A′
+k
+
+♯ série à termes positifs
+= lim
+n→+∞
+m
+  nS
+k=0
+A′
+k
+
+♯ parσ− additivité
+= lim
+n→+∞
+m (An)
+4. Soit Bn = A0\An. On aBn⊂ Bn+1. D’après Pr.3.
+m
+ [
+n∈N
+Bn
+
+= lim
+n→+∞
+m(Bn).
+On a A0 = An∪Bn avec An∩Bn =∅ et comme m est σ-additive, alors :
+m(A0) = m(An) + m(Bn)
+et doncm(Bn) = m(A0)− m(An). De même S
+n∈N
+Bn = A0\
+T
+n∈N
+An
+
+donc m
+S
+n∈N
+Bn
+
+=
+m(A0)− m
+T
+n∈N
+An
+
+. Ainsi
+m(A0)− m
+ \
+n∈N
+An
+!
+= lim
+n→+∞
+m(Bn) = lim
+n→+∞
+[m(A0)− m(An)]
+Par linéarité de la limite, on en déduitm
+T
+n∈N
+An
+
+= lim
+n→+∞
+m(An) car m(A0)< +∞.
+<<<PAGE>>>
+25 2.3. Ensembles négligeables
+Remarque 3. Dans la propriété4., on peut remplacer l’hypothèse
+”m(A0)< +∞”
+par "il existek∈ N tel que m(Ak)< +∞".
+Si on ne met pas l’hypothèsem(A0) < +∞ (ou il existek∈ N tel que m(Ak) < +∞), la
+propriété 4. n’est plus valable.
+Prenons Ω = N,T =P (N), m la mesure de comptage surN définie par
+m(A) =
+(
+card A si A est fini
++∞ si A est infini
+Soit An ={n,n + 1,... }, T
+n∈N
+An =∅, donc m
+ T
+n∈N
+An
+
+= 0. D’autre partm(An) = +∞
+∀n∈ N, donc m
+ T
+n∈N
+An
+
+̸= lim
+n
+m(An).
+Mise en garde.
+2.3 Ensembles négligeables
+Les ensembles négligeables jouent un rôle très important dans la théorie de la mesure et de
+l’intégration. Les ensembles négligeables vont permettre d’exprimer le fait que certaines proprié-
+tés ponctuelles (continuité, convergence simple, majoration,...) n’ont pas lieu en tout point mais
+seulement "presque partout", c’est à dire sur le complémentaire d’un ensemble négligeable.
+Il s’avère techniquement nécessaire de ne pas restreindre la notion d’ensemble négligeable aux
+seuls sous-ensembles mesurables.
+Dans tout ce chapitre,Ω désigne un ensemble quelconque non vide,T une tribu de parties de
+Ω et m une mesure positive surT . Le triplet(Ω,T, m) est appeléun espace mesuré.
+Soit (Ω,T, m) un espace mesuré.
+1. On dit qu’un ensembleN∈T est m-négligeable si m(N) = 0.
+2. On dit qu’une partieN de Ω est m-négligeable s’il existe A∈T tel que N⊂ A et
+m(A) = 0.
+Définition 4.
+<<<PAGE>>>
+Chapitre 2. Introduction à la mesure 26
+Exemple 1. On considère l’espace mesuré(Ω,T, m) où Ω ={a;b;c}, a, b et c des réels et
+T ={Ω,∅,{a,b},{c}}.
+• :::Cas:::où:::::::m =δc :::est::la:::::::mesure:::de :::::Dirac::::::::::concentrée:::en ::c.
+⇝ Les parties mesurables de mesure nulle :δc (∅) = 0, δc ({a,b}) = 0 car c /∈{a,b}.
+⇝ Les parties non mesurables négligeables :
+♢ {a}⊂{ a,b} et δc ({a,b}) = 0 donc{a} est δc-négligeable.
+♢ {b}⊂{ a,b} et δc ({a,b}) = 0 donc{b} est δc-négligeable.
+Les ensemblesδc-négligeables sont donc∅,{a,b},{a} et{b}.
+• :::Cas:::où:::::::m =µd::::est ::la :::::::mesure ::de::::::::::comptage.
+⇝ Les parties mesurables de mesure nulle :µd (∅) = 0.
+⇝ Les parties non mesurables négligeables : La seule partie mesurable de mesure
+nulle est l’ensemble vide et ce dernier ne contient aucune partie deΩ.
+L’unique ensembleµd-négligeable est donc∅.
+• :::Cas:::où::::::m =λ::::est ::la :::::::mesure ::de:::::::::Lebesgue.
+⇝ Les parties mesurables de mesure nulle :λ (∅) = 0, λ (Ω) = λ ({a,b,c}) = 0 car
+{a,b,c} est dénombrable.
+{a,b}⊂ Ω,{c}⊂ Ω et λ (Ω) = 0 donc λ ({a,b}) =λ ({c}) = 0.
+⇝ Les parties non mesurables négligeables : Toutes les parties deΩsont par définition
+inclues dans Ω, λ (Ω) = 0 donc toutes les parties deΩ sontλ-négligeables.
+Les ensemblesλ-négligeables sont donc toutes les parties deΩ.
+1. ∅ est m-négligeable.
+2. Si N est un ensemble m-négligeable, N′ ∈ T avec N′ ⊂ N, alors N′ est m-
+négligeable.
+3. La réunion d’une famille dénombrable d’ensembles m-négligeables est m-
+négligeable.
+Proposition 1.
+Remarque 4. Si Ω = R, m =λ la mesure de Lebesgue etT = B(R), alors pour toutx∈ R,
+{x} est λ-négligeable.{x} est fermé etλ
+ 
+{x}
+
+= 0.
+<<<PAGE>>>
+27 2.4. Espaces mesurés complets
+La réunion d’une famille infinie non dénombrable d’ensemblesm-négligeables n’est pasm-
+négligeable.
+En effet, pourΩ = R,T = B(R) et m =λ où λ est la mesure de Lebesgue, on considère
+A = [0, 1].
+A∈T et λ(A) = 1. A n’est pasλ-négligeable.
+De plus, on peut écrireA = S
+x∈[0,1]
+{x} avec{x} λ-négligeable,∀x∈ [0, 1]. Donc
+[
+x∈[0,1]
+{x}
+n’est pasλ-négligeable.
+Mise en garde.
+Une propriétéP(x) dépendant de l’élémentx∈ Ω est dite vérifiée m-presque partout
+(ou simplement presque partout quand il n’y a pas d’ambiguïté) si l’ensemble desx de
+Ω pour lesquels la propriétéP(x) est fausse estm-négligeable.
+Définition 5.
+On écrira en abrégéP(x) est m-p.p. (ou simplement p.p. quand il n’y a pas d’ambiguïté).
+2.4 Espaces mesurés complets
+On a vu dans la définition (4) qu’une partieN de Ω m-négligeable n’est pas nécessairement un
+élément deT . Pourtant pour respecter le principe de monotonie croissante de la mesurem, il est
+naturel d’attribuer àN la mesure 0. On est alors en train d’élargir la tribuT . D’où la définition
+suivante :
+Si toutes les parties deΩ m-négligeables sont mesurables, on dit que l’espace(Ω,T, m)
+est complet.
+Définition 6.
+Exemple 2. On considère l’espace mesuré(Ω,T, m) où Ω ={a;b;c}, a, b et c des réels et
+T ={Ω,∅,{a,b},{c}}.
+<<<PAGE>>>
+Chapitre 2. Introduction à la mesure 28
+• :::Cas:::où::::::::m =δc :::est:::la :::::::mesure :::de :::::Dirac:::::::::::concentrée ::en:::c. L’ensemble des parties δc-
+négligeables est
+N ={∅,{a,b},{a},{b}}
+{a} est δc-négligeable mais non mesurable donc(Ω,T,δc) n’est pas un espace mesuré
+complet.
+• :::Cas:::où:::::::m =µd::::est ::la :::::::mesure ::de::::::::::comptage. L’ensemble des partiesµd-négligeables est
+N ={∅}.
+∅ est µd-négligeable et mesurable donc(Ω,T,µd) est un espace mesuré complet.
+• :::Cas:::où::::::m =λ::::est ::la :::::::mesure ::de:::::::::Lebesgue. L’ensemble des partiesλ-négligeables est
+N =P (Ω).
+{a} est λ-négligeable mais non mesurable donc(Ω,T,λ ) n’est pas un espace mesuré
+complet.
+Lorsqu’un espace mesuré(Ω,T, m) n’est pas complet, on peut lecompléter canoniquement de
+la façon suivante :
+Soit (Ω,T, m) un espace mesuré et soitN l’ensemble des parties m-négligeables. On
+considère
+eT ={A∪N;A∈T et N∈N} .
+Pour toutA∈T et pour toutN∈N , on poseem(A∪N) = m(A). Alors
+1. eT est une tribu surΩ contenantT ;
+2. em définit une mesure positive sureT qui coïncide avecm surT ;
+3. Si on noteeN la famille des sous-ensembles deX em-négligeables alors eN =N ;
+4. (Ω,eT,em) est un espace mesuré complet.
+Proposition 2.
+On dit que(Ω,eT,em) est lecomplété de l’espace mesuré(Ω,T, m).
+Définition 7.
+<<<PAGE>>>
+29 2.4. Espaces mesurés complets
+Remarque 5.
+• Un espace mesuré complet est égal à son complété.
+• SiP(x) est une propriété dépendant dex∈ Ω alors,P(x) est vraiem-p.p. si et seulement si
+P(x) est vraieem-p.p.
+La tribueT dépend et de la tribuT et de la mesurem par rapport à laquelle on effectue la
+complétion.
+Mise en garde.
+Exemple 3. On considère l’espace mesuré(Ω,T, m) où Ω ={a;b;c}, a, b et c des réels et
+T ={Ω,∅,{a,b},{c}}.
+• :::Cas:::où::::::::m =δc :::est:::la :::::::mesure :::de :::::Dirac:::::::::::concentrée ::en:::c. L’ensemble des parties δc-
+négligeables est
+N ={∅,{a,b},{a},{b}}
+(Ω,T,δc) n’est pas un espace mesuré complet et son complété est obtenu par union des
+ensembles mesurables et les ensembles négligeables :
+XXXXXXXXXXXXXN ∈ N
+A ∈ T
+Ω ∅ {a,b} {c}
+∅ Ω ∅ {a,b} {c}
+{a,b} Ω {a,b} {a,b} Ω
+{a} Ω {a} {a,b} {a,c}
+{b} Ω {b} {a,b} {b,c}
+Tableau 1. Les unionsA ∪N
+La tribu complétée dans ce cas est donc˜T ={Ω,∅,{a,b},{c},{a},{b},{a,c},{b,c}}.
+• :::Cas:::où::::::::m =µd :::est::la:::::::mesure:::de::::::::::comptage. (Ω,T,µd) est un espace mesuré complet
+donc ˜T =T .
+• :::Cas:::où::::::m =λ::::est ::la :::::::mesure ::de:::::::::Lebesgue. L’ensemble des partiesλ-négligeables est
+N =P (Ω).
+(Ω,T,λ ) n’est pas un espace mesuré complet et dans ce cas˜T =P (Ω).
+<<<PAGE>>>
+Chapitre 2. Introduction à la mesure 30
+Remarque 6(La tribu de LebesgueL(R)). Si (Ω,T, m) = (R, B(R),λ ). L’espace(R, B(R),λ )
+n’est pas complet.
+• La tribueT est la tribu de Lebesgue surR et on la noteL(R);
+• La mesureem s’appelle aussi la mesure de Lebesgue et sera aussi notéeλ au lieu deeλ;
+• Lesélémentsde L(R)sontappeléspartiesmesurablesausensdeLebesgueoupartiesLebesgue-
+mesurables.
+<<<PAGE>>>
+3 | Intégration de fonctions étagées positives
+Dans la suite de ce cours, on considère l’espace mesuré(Ω,T,µ ). Les fonctions étagées jouent,
+dans la construction de l’intégrale de Lebesgue, le rôle réservé aux fonctions en escalier dans la
+théorie de l’intégrale de Riemann.
+Sommaire
+3.1 F onction indicatrice de Q sur [0; 1] . . . . . . . . . . . . . . . . . . . . 31
+3.2 F onctions étagées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.3 Intégrale d’une fonction étagée positive . . . . . . . . . . . . . . . . . 35
+3.4 Intégration de fonctions mesurables positives . . . . . . . . . . . . . 37
+3.5 Principaux théorèmes d’intégration de fonctions positives . . . . . . 40
+3.1 Fonction indicatrice de Q sur [0; 1]
+Soit la fonctionf définie sur l’intervalle[0; 1]par :f(x) =
+(
+1 si x∈ Q
+0 si x /∈ Q
+On va montrer que cette fonction n’est pas intégrable au sens de Riemann. Notons
+Pn =
+n
+x(n)
+0 ,x (n)
+1 ,··· ,x (n)
+n−1,x (n)
+n
+o
+où x(n)
+0 < x(n)
+1 <··· < x(n)
+n , x(n)
+0 = 0, x(n)
+n = 1 une subdivision du segment[0; 1]. Soit de plus
+Cn ={Cn(i)}1≤i≤n un ensemble de points tels que
+x(n)
+i−1 <C n(i)<x (n)
+i .
+On définit alors la somme de RiemannS (f,Pn,Cn) associée à la fonctionf, à la subdivisionPn,
+et à l’ensembleCn par :
+S (f,Pn,Cn) =
+nX
+i=1
+f (Cn(i))
+
+x(n)
+i −x(n)
+i−1
+
+.
+31
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 32
+On sait alors que l’intégrale de RiemannIR (f) de f, si elle existe, est définie par :
+IR (f) =
+Z 1
+0
+f(x)dx = lim
+n→+∞
+S (f,Pn,Cn). (3.1)
+De plus, cette définition est indépendante du choix de la suite de subdivisionsPn et de l’ensemble
+Cn. On considère la subdivision suivante :
+Pn =
+
+0; 1
+n; 2
+n;··· ;n− 1
+n ; 1
+
+,
+et les deux ensembles distincts suivants :
+Cn = {Cn(i)}1≤i≤n avec Cn(i)∈
+i
+x(n)
+i−1;x(n)
+i
+h
+∩ Q.
+C
+′
+n =
+n
+C
+′
+n(i)
+o
+1≤i≤n
+avec C
+′
+n(i)∈
+i
+x(n)
+i−1;x(n)
+i
+h
+\Q.
+Autrement dit,Cn(i) et C
+′
+n(i) sont respectivement rationnel et irrationnel, on a :
+∀i∈{ 1,··· ,n− 1}, f (Cn(i)) = 1 et f
+
+C
+′
+n(i
+
+= 0.
+La relation (3.1) entraine que
+lim
+n→+∞
+S (f,Pn,Cn) = lim
+n→+∞
+S
+
+f,Pn,C
+′
+n
+
+. (3.2)
+Or
+S (f,Pn,Cn) =
+nX
+i=1
+f (Cn(i)) 1
+n = 1
+n
+nX
+i=1
+1 = 1
+S
+
+f,Pn,C
+′
+n
+
+=
+nX
+i=1
+f
+
+C
+′
+n(i)
+ 1
+n = 1
+n
+nX
+i=1
+0 = 0
+ce qui contredit l’égalité (3.2) ainsi la fonctionf n’est pas Riemann-intégrable.
+Autre point de vue?
+Construire une subdivision de f ([0; 1]). On sait que f ([0; 1]) = {0; 1} donc on prendra la
+subdivision
+Fn ={y0;y1}
+où y0 = 0 et y1 = 1, on a bieny0 <y 1. On définit alors la sommeS (f,Fn) associée à la fonction
+f et à la subdivisionFn par :
+S (f,Fn) =
+2X
+i=1
+ 
+mesure def−1 ({yi})
+
+yi.
+<<<PAGE>>>
+33 3.2. Fonctions étagées
+Si on fait le choix de travailler avec la mesure de Lebesgueλ, alors
+S (f,Fn) = λ
+ 
+f−1 ({0})
+
+× 0 +λ
+ 
+f−1 ({1})
+
+× 1
+= λ ([0; 1]\Q)× 0 +λ ([0; 1]∩ Q)× 1
+= 1 × 0 + 0× 1
+= 0 .
+N’ayant qu’une seule subdivision possible, la sommeS correspond alors à l’intégrale qu’on souhaite
+calculer.
+3.2 Fonctions étagées
+Soit f une fonction de Ω dans R. La fonctionf est diteT -étagée si f est (T, B(R))-
+mesurable etf(Ω) est un sous-ensemble fini deR.
+Définition 1.
+Exemple 1. Soit n∈ N∗. φ =
+nP
+i=1
+ai1Ai où ai∈ R et Ai∈T pour touti∈ J1,n K.
+• φ est mesurable car c’est une combinaison linéaire de fonctions mesurables.
+• φ prend un nombre fini de valeurs(ai)i=1,···,n
+φ est donc une fonctionT -étagée.
+Notations :
+E(Ω,T ) ={f : Ω→ R T - étagées}
+E+(Ω,T ) ={f : Ω→ [0, +∞[ T - étagées}
+:::::::::::::::Représentation:::::::::::canonique::::::d’une:::::::::fonction:::::::étagée
+Soit f une fonction étagée. Désignons para1,...,a m les éléments def(Ω), la suite(ai)1≤i≤m
+étant strictement croissante, et posons pour touti∈ J1,m K
+Ai =f−1 ({ai}).
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 34
+Les sous-ensemblesA1,A 2,...,A m de Ω sont non vides, mesurables, deux à deux disjoints et de
+réunion Ω. Ainsif s’écrit sous la forme
+f =
+mX
+i=1
+ai1Ai (3.3)
+Inversement, étant données une suite strictement croissante(ai)1≤i≤m d’éléments deR et une suite
+(Ai)1≤i≤m de sous-ensembles deΩ, mesurables, non vides, deux à deux disjoints et dont la réunion
+est Ω, il existe une fonction étagéef de Ω dans R et une seule telle que
+f =
+mX
+i=1
+ai1Ai.
+On dira que le couple
+ 
+(a1,...,a m), (A1,...,A m)
+
+est le couple canonique def et que (3.3) est la
+représentation canonique def.
+Exemple 2.
+1. Soit A∈T\{∅} . La fonctionu = 1A est étagée et a pour représentation canonique
+u = 0× 1AC + 1× 1A.
+2. Ω = R,T = B(R). Soitφ = 1]0,+∞[, son écriture canonique est :
+φ = 0× 1]−∞,0] + 1× 1]0,+∞].
+D’autres écritures non canoniques deφ :
+φ = 0|{z}
+a1
+×1]−∞,0]+ 1|{z}
+a2
+×1]0,1[+ 1|{z}
+a3
+×1[1,+∞[
+a2 =a3 =⇒ pas canonique
+φ = 0× 1]−∞, 0]| {z }
+A1
++ 1
+3× 1]0, +∞[| {z }
+A2
++ 2
+3× 1]0, +∞[| {z }
+A3
+, A2∩A3̸=∅ =⇒ pas canonique
+Soientφ et ψ deux fonctions étagées surΩ, α et β deux réels alors les fonctions
+• αφ +βψ • φψ • sup(φ,ψ ) • inf(φ,ψ )
+sont des fonctions étagées surΩ.
+Propriétés 2(Opérations sur les fonctions étagées).
+<<<PAGE>>>
+35 3.3. Intégrale d’une fonction étagée positive
+3.3 Intégrale d’une fonction étagée positive
+Soitφ∈E +(Ω,T ) et
+mX
+i=1
+ai1Ai sa représentation canonique. On appelle intégrale deφ sur
+Ω par rapport à la mesureµ et on note
+Z
+Ω
+φdµ ou
+Z
+Ω
+φ(x)dµ(x), la somme
+mX
+i=1
+aiµ(Ai) :
+Z
+Ω
+φdµ =
+mX
+i=1
+aiµ(Ai)
+Définition 2.
+En vertu de la convention0×µ(A) = 0 si µ(A) = +∞, la somme
+mP
+i=1
+aiµ(Ai) a toujours un sens
+dans [0, +∞] puisque chaque termeaiµ(Ai) appartient à [0, +∞].
+On dit qu’une fonction étagée et positiveφ est µ-intégrable si
+Z
+Ω
+φdµ< +∞.
+Exemple 10. On prend (Ω,T ) = (R, B(R)) et φ = 1R. Il est clair queφ∈E +(X,T ).
+• Pourµ =λ, on a
+Z
+R
+φdλ =λ(R) = +∞.
+• Pourµ =δ0, on a
+Z
+R
+φdδ0 =δ0(R) = 1
+Soitφ∈E +(Ω,T ) et
+mX
+i=1
+ai1Ai sa représentation canonique. SoitA une partie mesurable.
+On définit l’intégrale deφ sur A :
+Z
+A
+φdµ =
+Z
+Ω
+φ1Adµ =
+mX
+i=1
+aiµ(Ai∩A).
+Définition 3.
+Le calcul de l’intégrale d’une fonction étagée à partir de la définition (2) nécessite la dé-
+composition canonique. Le lemme suivant nous permet d’alléger le recours systématique à cette
+décomposition.
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 36
+Soit φ une fonction étagée positive telle queφ =
+pX
+i=1
+ti1Ci où Ci sont des ensembles
+mesurables et disjoints deux à deux etti sont des constantespas forcément distinctes
+alors Z
+Ω
+φdµ =
+pX
+i=1
+tiµ(Ci).
+Lemme 1.
+Soientφ∈E +(Ω,T ), ψ∈E +(Ω,T ) et r∈ [0, +∞[.
+♠ ::::::::::::::Homogénéité :
+Z
+Ω
+rφdµ =r
+Z
+Ω
+φdµ.
+♠ :::::::::::Additivité :
+Z
+Ω
+(φ +ψ)dµ =
+Z
+Ω
+φdµ +
+Z
+Ω
+ψdµ.
+♠ ::::::::::::Croissance : φ≤ψ⇒
+Z
+Ω
+φdµ≤
+Z
+Ω
+ψdµ.
+Propriétés 3.
+Démonstration .
+1. Soientφ∈E +(Ω,T ) et
+mX
+i=1
+ai1Ai sa représentation canonique. Sir = 0,
+Z
+Ω
+0×φdµ = 0 = 0×
+Z
+Ω
+φdµ.
+Il convient de remarquer que si
+Z
+Ω
+φdµ = +∞ alors 0×
+Z
+Ω
+φdµ = 0 en vertu de la convention
+0×µ(A) = 0 si µ(A) = +∞.
+Sir> 0.Lasuite (ai)1≤i≤m eststrictementcroissantedonclasuite (rai)1≤i≤m eststrictement
+croissante carr est strictement positif.
+mX
+i=1
+rai1Ai est donc la représentation canonique derφ
+donc rφ est une fonction étagée positive. D’après la définition de l’intégrale d’une fonction
+étagée : Z
+Ω
+rφdµ =
+mX
+i=1
+raiµ(Ai) =r
+mX
+i=1
+aiµ(Ai) =r
+Z
+Ω
+φdµ.
+2. Soient (φ,ψ )∈ (E+(Ω,T ))2 telles que φ =
+nX
+i=1
+ai1Ai et ψ =
+mX
+i=1
+bi1Bi leur représentation
+canonique. φ +ψ est une fonction étagée et
+φ +ψ =
+nX
+i=1
+mX
+j=1
+(ai +bj) 1Ai∩Bj,
+<<<PAGE>>>
+37 3.4. Intégration de fonctions mesurables positives
+(Ai∩Bj)i,j sont disjoints deux à deux. Notons queai +bj ne sont pas forcément distincts
+deux à deux.
+D’après le lemme
+Z
+Ω
+(φ +ψ)dµ =
+nX
+i=1
+mX
+j=1
+(ai +bj)µ (Ai∩Bj)
+=
+nX
+i=1
+ai
+mX
+j=1
+µ (Ai∩Bj) +
+mX
+j=1
+bj
+nX
+i=1
+µ (Ai∩Bj)
+=
+nX
+i=1
+aiµ (Ai) +
+mX
+j=1
+bjµ (Bj)
+En effet,
+mX
+j=1
+µ (Ai∩Bj) =µ
+
+
+m[
+j=1
+Ai∩Bj
+
+ =µ
+
+Ai∩
+m[
+j=1
+Bj
+
+ et comme
+m[
+j=1
+Bj = Ω alors
+mX
+j=1
+µ (Ai∩Bj) =µ(Ai). De la même façon, on obtient
+nX
+i=1
+µ (Ai∩Bj) =µ(Bj).
+Puisque
+Z
+Ω
+φdµ =
+nX
+i=1
+aiµ (Ai) et
+Z
+Ω
+ψdµ =
+mX
+j=1
+bjµ (Bj), on en déduit l’égalité recherchée.
+3. Si φ∈E +(Ω,T ), ψ∈E +(Ω,T ) et φ≤ψ alors ψ−φ∈E +(Ω,T ). Remarquons que
+ψ = (ψ−φ) +φ.
+Par additivité, on peut écrire
+Z
+Ω
+ψdµ =
+Z
+Ω
+(ψ−φ)dµ +
+Z
+Ω
+φdµ. Puisque
+Z
+Ω
+(ψ−φ)dµ≥ 0
+alors
+Z
+Ω
+ψdµ−
+Z
+Ω
+φdµ≥ 0, soit
+Z
+Ω
+φdµ≤
+Z
+Ω
+ψdµ.
+Si (φn)n∈N est une suite croissante de fonctions étagées positives qui tendµ-p.p vers une
+fonction étagéeφ, alors la suite
+Z
+Ω
+φndµ
+
+n∈N
+tend vers
+Z
+Ω
+φdµ :
+lim
+n→+∞
+Z
+Ω
+φndµ
+
+=
+Z
+Ω
+lim
+n→+∞
+φndµ =
+Z
+Ω
+φdµ.
+Proposition 9.
+3.4 Intégration de fonctions mesurables positives
+Soit (Ω,T ) un espace mesurable. On note
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 38
+L+(Ω,T ) =
+
+f : Ω→ [0, +∞],
+ 
+T, B
+ 
+R+
+
+-mesurables.
+	
+Le théorème suivant nous permettra de faire le lien entre les fonctions étagées positives et les
+fonctions mesurables positives. Il sera d’une grande utilité dans la démonstration de beaucoup de
+propriétés dans les exercices.
+Si f ∈ L+(Ω,T ), il existe une suite croissante (φn)n dansE+(Ω,T ) telle que (φn)n
+converge simplement versf sur Ω. Si de plus,f est bornée, alors(φn)n converge unifor-
+mément versf sur Ω.
+Théorème 1.
+Démonstration . Pourn et k dans N, on pose
+An,k =
+
+x∈ Ω, k
+2n≤f(x)< k + 1
+2n
+
+et An ={x∈ Ω, f(x)≥n}.
+On considèreφn =
+ nX
+k=0
+k
+2n 1An,k
+!
++n1An.
+À n fixé :
+• Si f(x)≥n alors φn(x) =n.
+• Sinon il existek∈{ 0,··· ,n 2n}, f(x)∈
+ k
+2n,k + 1
+2n
+
+⇒φn(x) = k
+2n.
+Montrons queφn≤φn+1 (n∈ N).
+⇝ Si x∈An,k, φn(x) = k
+2n, calculonsφn+1(x).
+f(x)∈
+ k
+2n,k + 1
+2n
+
+=
+ 2k
+2n+1, 2k + 1
+2n+1
+
+∪
+2k + 1
+2n+1 , 2k + 2
+2n+1
+
+φn+1(x) =
+
+
+
+2k
+2n+1 = k
+2n si f(x)∈
+ 2k
+2n+1, 2k + 1
+2n+1
+
+2k + 1
+2n+1 = k
+2n + 1
+2n+1 si f(x)∈
+2k + 1
+2n+1 , 2k + 2
+2n+1
+
+donc φn+1(x)≥φn(x).
+⇝ Si x∈An alors φn(x) =n et φn+1(x) =
+
+n,n + 1
+2n+1,n + 1
+2n,...
+
+Donc φn+1≥ n|{z}
+φn
+.
+Soit x∈ Ω, alors
+⋆ ou bienf(x) = +∞,
+∀n∈ N, x∈An⇒φn(x) =n→ +∞ lorsque n→ +∞ et doncf(x) = lim
+n→+∞
+φn(x)
+<<<PAGE>>>
+39 3.4. Intégration de fonctions mesurables positives
+⋆ ou bienf(x)< +∞, il existen0∈ N tel quef(x)≤n0.
+∀n≥n0, x∈An,k, |φn(x)−f(x)|≤ 1
+2n→ 0, lorsque n→ +∞
+donc (φn)n converge simplement versf sur Ω.
+Si f est bornée, il existen0∈ N,∀n≥n0,|f(x)|≤n0, on se replace dans le deuxième
+cas et on a la convergence uniforme de(φn)n versf sur Ω.
+Soit f une fonction def de L+(Ω,T ). On appelle intégrale de Lebesgue def sur Ω par
+rapport à la mesureµ, et on note
+Z
+Ω
+fdµ ou
+Z
+Ω
+f(x)dµ(x), l’élément de[0, +∞] suivant
+I(f) = sup
+Z
+φdµ, φ∈E +(Ω,T ), φ≤f
+
+.
+Autrement dit, Z
+Ω
+fdµ = sup
+Z
+φdµ, φ∈E +(Ω,T ), φ≤f
+
+.
+Plus généralement, siA∈T , on pose
+Z
+A
+fdµ =
+Z
+Ω
+f 1Adµ.
+Définition 4.
+Bien distinguer le fait que
+Z
+Ω
+fdµ a toujours un sens dans[0, +∞] et le fait que
+Z
+Ω
+fdµ est
+finie, c’est à dire
+Z
+Ω
+fdµ∈ [0, +∞[. D’où la définition suivante :
+Mise en garde.
+Soitf∈ L+(Ω,T ). On dit quef estµ-intégrable surΩ (ou simplement intégrable quand
+il n’y a pas de risque de confusion) si l’intégrale
+Z
+Ω
+fdµ est finie.
+Définition 5.
+Exemple 3. La fonction 1R est δ0-intégrable sur R mais n’est pasλ-intégrable sur R.
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 40
+3.5 Principauxthéorèmesd’intégrationdefonctionspositives
+Le développement de la théorie de l’intégration surL+(Ω,T ) repose sur un important théorème
+de convergence des intégrales, propre aux suites croissantes d’éléments deL+(Ω,T ), qui permet
+sous un minimum d’hypothèses de commuter "intégration" et "passage à la limite".
+Soit (fn)n∈N une suite croissante de fonctions de L+(Ω,T ) qui tend µ-p.p vers une
+fonction f, alors
+1. f∈ L+(Ω,T ),
+2. La suite
+Z
+fn dµ
+
+n∈N
+converge en croissant vers
+Z
+f dµ.
+Théorème 2(Théorème de convergence monotone ou de Beppo-Levi).
+Soit (An)n∈N une suite d’ensembles deT , telle queAn⊂An+1 pour n∈ N. Alors
+lim
+n→+∞
+µ (An) =µ
+ [
+n∈N
+An
+!
+.
+En effet, la fonction indicatrice1An est mesurable, positive, croissante etlim
+n→+∞
+1An = 1S
+n
+An.
+D’après le théorème de Beppo-Lévi : lim
+n→+∞
+Z
+Ω
+1Andµ =
+Z
+Ω
+1S
+n
+Andµ.
+Puisque
+Z
+Ω
+1Andµ =µ(An) alors lim
+n→+∞
+µ (An) =µ
+ [
+n
+An
+!
+.
+Cas particulier :
+<<<PAGE>>>
+41 3.5. Principaux théorèmes d’intégration de fonctions positives
+Soientf etg deux fonctions mesurables et positives surΩ. SoientA etB deux ensembles
+mesurables. α∈ [0, +∞].
+1.
+Z
+Ω
+(αf)dµ =α
+Z
+Ω
+fdµ (Homogénéité positive).
+2.
+Z
+Ω
+(f +g)dµ =
+Z
+Ω
+fdµ +
+Z
+Ω
+gdµ (Additivité).
+3. f≤g =⇒
+Z
+fdµ≤
+Z
+gdµ (Croissance de l’intégrale).
+4. A⊂B =⇒
+Z
+A
+fdµ≤
+Z
+B
+fdµ.
+5. Soit (Ai)i une famille d’ensembles mesurables et disjoints deux à deux, alors
+Z
+S
+i≥1
+Ai
+f dµ=
+X
+i≥1
+Z
+Ai
+fdµ.
+6. Si N est µ-négligeable alors
+Z
+N
+fdµ = 0 et
+Z
+Ω\N
+fdµ =
+Z
+Ω
+fdµ.
+7. f = 0 µ-p.p si et seulement si
+Z
+Ω
+fdµ = 0.
+8. Sif∈ L+(X,T ) et si
+Z
+Ω
+fdµ< +∞, alors{x∈ Ω, f (x) = +∞} estµ-négligeable.
+Propriétés 4(Propriétés de l’intégrale de fonctions positives).
+Démonstration . f,g ∈ L+(Ω,T ), donc d’après le théorème (2), il existe(φn)n et (ψn)n dans
+E+(Ω,T ) telles queφn↗n f et ψn↗n g.
+1. αφn↗n αf ⇒
+Z
+Ω
+(αf)dµ = lim
+n→+∞
+Z
+Ω
+αφndµ, et puisqueφn∈E +(Ω,T ) alors
+lim
+n→+∞
+Z
+Ω
+αφndµ = lim
+n→+∞
+α
+Z
+Ω
+φndµ =α lim
+n→+∞
+Z
+Ω
+φndµ =α
+Z
+Ω
+fdµ;
+2. φn +ψn↗n f +g
+⇒
+Z
+Ω
+(f +g)dµ = lim
+n
+Z
+Ω
+(φn +ψn)dµ = lim
+n
+Z
+Ω
+φndµ +
+Z
+Ω
+ψndµ
+
+car φn,ψn∈E +(Ω,T )
+⇒
+Z
+Ω
+(f +g)dµ = lim
+n
+Z
+Ω
+φndµ + lim
+n
+Z
+Ω
+ψndµ =
+Z
+Ω
+fdµ +
+Z
+Ω
+gdµ
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 42
+3. La croissance. Soientf et g deux fonctions mesurables et positives. On a
+Z
+fdµ = sup
+Z
+φdµ, φ∈E +(Ω,T ), φ≤f
+
+Z
+gdµ = sup
+Z
+φdµ, φ∈E +(Ω,T ), φ≤g
+
+Si on suppose quef≤g alors on a
+Z
+φdµ, φ∈E +(Ω,T ), φ≤f
+
+⊂
+Z
+φdµ, φ∈E +(Ω,T ), φ≤g
+
+Par passage au sup, on obtient Z
+fdµ≤
+Z
+gdµ.
+4. SoientA et B deux ensembles mesurables donc1A et 1B sont deux fonctions mesurables et
+positives. PuisqueA⊂B alors 1A≤ 1B. Donc 1Af≤ 1Bf.
+Par croissance de l’intégrale, on obtient
+Z
+1Afdµ≤
+Z
+1Bfdµ. Donc
+Z
+A
+fdµ≤
+Z
+B
+fdµ.
+5.
+Z
+S
+i≥1
+Ai
+f dµ =
+Z
+Ω
+f1 S
+i≥1
+Ai dµ. Comme les ensemblesAi sont mesurables et disjoints deux à
+deux alors 1 S
+i≥1
+Ai =
+X
+i≥1
+1Ai. Donc
+Z
+Ω
+f1 S
+i≥1
+Ai dµ =
+Z
+Ω
+
+X
+i≥1
+f1Ai
+
+dµ
+Et comme
+Z
+Ω
+
+X
+i≥1
+f1Ai
+
+dµ =
+X
+i≥1
+Z
+Ω
+f1Ai
+
+d’après le lemme de Fatou (3.4) alors
+Z
+S
+i≥1
+Ai
+f dµ=
+X
+i≥1
+Z
+Ω
+f1Ai
+
+=
+X
+i≥1
+Z
+Ai
+f
+
+.
+6. Par la propriété de la croissance,f≤ sup
+Ω
+f⇒
+Z
+N
+fdµ≤
+Z
+N
+
+sup
+Ω
+f
+
+dµ. De plus
+Z
+N
+
+sup
+Ω
+f
+
+dµ = sup
+Ω
+f×
+Z
+N
+dµ = sup
+Ω
+f×µ(N).
+N est µ-négligeable doncµ(N) = 0, ainsi sup
+Ω
+f×µ(N) = 0.
+<<<PAGE>>>
+43 3.5. Principaux théorèmes d’intégration de fonctions positives
+Même si supΩf = +∞, on a par covnetion+∞(N) = 0 si µ(N) = 0.
+On démontre l’autre égalité en remarquant que f = 1Nf + 1Ω\Nf et en appliquant la
+propriété de linéarité.
+7. • Supposons quef = 0 µ-p.p. SoitA ={x∈ Ω, f(x)> 0} =f−1(]0; +∞[). Donc A∈T
+et par hypothèse,A est µ-négligeable. Considérons la fonctiong définie sur Ω par
+g(x) =
+(
++∞ si x∈A
+0 sinon
+g∈ L+(Ω,T ), g≥f donc par croissance,
+Z
+Ω
+gdµ≥
+Z
+Ω
+fdµ.
+En appliquant le théorème de Beppo-Lévi à la suite de fonctions mesurables positive et
+croissante (n1A)n,
+g = lim
+n
+(n1A) ⇒
+Z
+gdµ = lim
+n
+Z
+n1Adµ = lim
+n
+nµ(A) = 0.
+Finalement, de
+Z
+Ω
+gdµ≥
+Z
+Ω
+fdµ≥ 0 et
+R
+gdµ, on déduit que
+R
+fdµ = 0.
+• Supposons que
+R
+fdµ = 0. Commef est (T, B(R))-mesurable, alors
+{x∈ Ω, f(x)> 0} =f−1 (]0, +∞[)∈T .
+D’autre part, on a
+{x∈ Ω, f(x)> 0} =
+[
+n∈N∗
+
+x, f(x)≥ 1
+n
+
+On poseAn =
+
+x, f(x)≥ 1
+n
+
+, doncf≥ 1
+n 1An, ∀n∈ N∗.
+D’après la propriété de croissance de l’intégrale,
+Z
+Ω
+fdµ≥
+Z
+Ω
+ 1
+n 1An
+
+dµ.
+De plus
+Z  1
+n 1An
+
+dµ = 1
+nµ(An) et 0≥ 1
+nµ(An)≥ 0, ainsi∀n∈ N∗, µ(An) = 0 donc
+l’ensemble{x∈ Ω, f(x)> 0} est réunion dénombrable d’ensemblesµ-négligeables, donc
+il estµ-négligeable.
+::::::::::Conclusion.{x∈ Ω, f(x)> 0} est µ-négligeable doncf = 0 µ-p.p.
+8. Soit A ={x∈ Ω, f (x) = +∞}, A∈T car A =f−1 ({+∞}).
+∀n∈ N∗, f≥n1A⇒∀n∈ N∗
+Z
+Ω
+fdµ≥nµ(A)⇒ 0≤µ(A)≤ 1
+n
+Z
+Ω
+fdµ ∀n∈ N∗.
+Z
+Ω
+fdµ< +∞ donc µ(A) = 0.
+<<<PAGE>>>
+Chapitre 3. Intégration de fonctions étagées positives 44
+En l’absence de l’hypothèse de croissance sur la suite de fonctions deL+(Ω,T ), on a tout de même
+le résultat partiel suivant :
+Soit (fn)n une suite de fonctions deL+(Ω,T ) alors
+Z
+lim inffndµ≤ lim inf
+Z
+fndµ.
+Corollaire 2(Lemme de Fatou).
+Démonstration . Pour toutx∈ Ω, on note pourp∈ N, gp(x) = inf
+n≥p
+fn(x). On a
+(lim inffn)(x) = lim inffn(x) = sup
+p∈N
+[ inf
+n≥p
+fn(x)] = sup
+p
+[gp(x)]
+• ∀p∈ N, gp≤ gp+1 et gp≥ 0 donc lim
+p→+∞
+[gp(x)] = sup
+p∈N
+[gp(x)] et d’après le théorème de la
+convergence monotone, on a
+lim
+p→+∞
+Z
+Ω
+gpdµ =
+Z
+Ω
+lim
+p→+∞
+gpdµ =
+Z
+Ω
+(lim inffn)dµ. (3.4)
+• D’autre part, on a pour tout entierp, gp = inf
+n≥p
+fn, donc
+∀n≥p, gp≤fn.
+Par la propriété de la croissance de l’intégrale, on obtient pour tout entierp et tout entiern
+tel quen≥p Z
+gpdµ≤
+Z
+fndµ.
+Ceci étant vrai pour tout entiern supérieur à l’entierp, on en déduit par passage à la borne
+inférieure que
+∀p∈ N,
+Z
+gpdµ≤ inf
+n≥p
+Z
+fndµ
+Ainsi
+sup
+p∈N
+Z
+gpdµ≤ sup
+p∈N
+inf
+n≥p
+Z
+fndµ. (3.5)
+Comme (gp)p est croissante, la propriété de la croissance de l’intégrale nous permet de déduire
+que
+Z
+gpdµ
+
+p
+estcroissanteetque lim
+p→+∞
+Z
+gpdµ = sup
+p∈N
+Z
+gpdµ. De(3.4)et (3.5),ondéduit
+que
+lim
+p→+∞
+Z
+gpdµ≤ lim inf
+Z
+fndµ.
+Lessériesdefonctionssontd’utilisationcourante,ilestutilededonnerl’expressionduthéorème
+de la convergence monotone dans ce cas.
+<<<PAGE>>>
+45 3.5. Principaux théorèmes d’intégration de fonctions positives
+Soit (fn)n≥0 une suite d’éléments deL+(Ω,T ). Alors
+1.
+Z
+Ω
+ +∞X
+n=0
+fn
+!
+dµ =
++∞X
+n=0
+Z
+Ω
+fndµ
+
+;
+2. Si
++∞X
+n=0
+Z
+Ω
+fndµ
+
+< +∞ alors il existe un ensembleN mesurable etµ-négligeable
+tel que
++∞X
+n=0
+fn < +∞ sur Ω\N.
+Théorème 3(intégration d’une série de fonctions deL+(Ω,T )).
+En pratique, on utilisera souvent des intégrales par rapport à la mesure de Lebesgue, les
+théorèmes suivants expriment des cas où on peut se ramener à un calcul d’intégrale au sens de
+Riemann. Les propriétés suivantes seront valables pour des fonctions mesurables positives ou de
+signe quelconque.
+Soit f : [a,b ]→ R une fonction mesurable.
+1. Si f est Riemann intégrable, alorsf est Lebesgue intégrable et les intégrales sont
+égales, autrement dit Z
+[a,b]
+fdλ =
+Z b
+a
+f(x)dx
+2. Si f est bornée alorsf est Riemann intégrable ssi
+λ ({x∈]a,b [tel quef n’est pas continue enx}) = 0,
+autrement dit, si et seulement si l’ensemble des points de discontinuités def dans
+]a,b [ est de mesure de Lebesgue nulle.
+Théorème 4.
+Soit f : [0, +∞[→ R une fonction mesurable et Riemann intégrable sur tout intervalle
+[0,n ], n∈ N.
+f est Lebesgue intégrable sur[0, +∞[ ssi lim
+n→∞
+Z n
+0
+|f(x)|dx< +∞.
+Dans ce cas,
+Z +∞
+0
+f(x)dx =
+Z
+[0,+∞[
+fdλ .
+Corollaire 3.
+<<<PAGE>>>
+4 | Intégration de fonctions mesurables
+Dans tout ce chapitre,Ω désigne un ensemble quelconque non vide,T une tribu de parties de
+Ω etµ une mesure positive surT . Dans la suite de ce cours, on considère l’espace mesuré(Ω,T,µ ).
+Sommaire
+4.1 Intégration de fonctions réelles . . . . . . . . . . . . . . . . . . . . . . 46
+4.2 Propriétés de l’intégrale de fonctions réelles . . . . . . . . . . . . . . 48
+4.3 Mesures à densité - Théorème de Radon-Nikodym . . . . . . . . . . 51
+4.3.1 Mesure définie par une densité . . . . . . . . . . . . . . . . . . . . . . . 51
+4.4 Espaces Lp et Lp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+4.5 Normes sur Lp (p ∈ [1, +∞[) . . . . . . . . . . . . . . . . . . . . . . . . . 57
+4.6 Espaces L∞ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+4.6.1 Théorème de Radon Nikodym . . . . . . . . . . . . . . . . . . . . . . . . 60
+4.6.2 Mesure image . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+On présentera les théorèmes fondamentaux d’intégration au sens de Lebesgue de fonctions
+mesurables positives ou de signe quelconque. On s’intéressera à la définition de nouvelles mesures
+à partir d’autres mesures. Ces mesures ont une grande importance dans l’articulation du cours de
+probabilité.
+4.1 Intégration de fonctions réelles
+On étend la notion d’intégrale et d’intégrabilité aux fonctions réelles mesurables de signe quel-
+conque en se basant sur les définitions et les propriétés de fonctions mesurables et positives. Soit
+(Ω,T ) un espace mesurable. On note
+L(Ω,T ) =
+
+f : Ω→ R, (T, B (R))-mesurables.
+	
+Une fonctionf de Ω dans R est diteµ-intégrable sif est (T, B(R))-mesurable et
+Z
+f+dµ< +∞ et
+Z
+f−dµ< +∞.
+Définition 1.
+46
+<<<PAGE>>>
+47 4.1. Intégration de fonctions réelles
+Sif estµ-intégrable. On appelle intégrale def, notée
+Z
+fdµ ou
+Z
+Ω
+fdµ ou
+Z
+Ω
+f(x)dµ(x)
+le nombre Z
+Ω
+f+dµ −
+Z
+Ω
+f−dµ.
+On noteL1
+R(Ω,T,µ ) (ou en abrégéL1) l’ensemble des fonctionsµ-intégrables.
+Définition 2.
+1. Si f∈L (Ω,T ), on a l’équivalence suivante
+f∈L 1(Ω,T,µ )⇐⇒
+Z
+|f|dµ< +∞
+2. Si f∈L 1(Ω,T,µ ), alors
+
+Z
+fdµ
+≤
+Z
+|f|dµ.
+Théorème 1.
+Démonstration .
+1. ⇝ Soit f∈L 1(Ω,T,µ ), donc
+Z
+f+dµ <+∞ et
+Z
+f−dµ <+∞. Comme| f|= f+ +f−
+alors par la propriété de l’additivité des intégrales de fonctions mesurables et positives
+Z
+|f|dµ =
+Z
+f+dµ
+| {z }
+<+∞
++
+Z
+f−dµ
+| {z }
+<+∞
+.
+Il s’en suit que
+Z
+|f|dµ< +∞.
+⇝ Réciproquement, on a0≤f+≤|f| et 0≤f−≤|f|. D’après la propriété de la croissance
+de l’intégrale,
+Z
+f+dµ<
+Z
+|f|dµ< +∞ et
+Z
+f−dµ<
+Z
+|f|dµ< +∞.
+La fonctionf est doncµ-intégrable.
+2.
+
+Z
+fdµ
+ =
+
+Z
+f+dµ−
+Z
+f−dµ
+. Comme
+
+Z
+f+dµ−
+Z
+f−dµ
+≤
+
+Z
+f+dµ
+ +
+
+Z
+f−dµ
+ et
+que
+Z
+f+dµ +
+Z
+f−dµ =
+Z
+|f|dµ alors
+
+Z
+fdµ
+≤
+Z
+|f|dµ.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 48
+4.2 Propriétés de l’intégrale de fonctions réelles
+Soientf∈L (Ω,T ) et g∈L 1(Ω,T,µ ). Si|f|≤|g|µ-p.p alors
+f∈L 1(Ω,T,µ ) et
+Z
+|f|dµ≤
+Z
+|g|dµ.
+Corollaire 4.
+Démonstration . Par hypothèse, il existeN∈T , N est µ-négligeable tel que∀x∈ Ω\N,
+|f(x)|≤| g(x)|.
+D’après les propriétés de l’intégrale de fonctions mesurables et positives,
+Z
+Ω
+|f|dµ =
+Z
+Ω\N
+|f|dµ =
+Z
+Ω
+1Ω\N|f|dµ. (4.1)
+Par la croissance de l’intégrale de fonctions mesurables et positives,
+Z
+Ω
+1Ω\N|f|dµ≤
+Z
+Ω
+1Ω\N|g|dµ (4.2)
+et comme Z
+Ω
+1Ω\N|g|dµ =
+Z
+Ω
+|g|dµ
+alors les relations (4.1) et (4.2) impliquent que
+Z
+Ω
+|f|dµ≤
+Z
+Ω
+|g|dµ.
+Si g∈L 1 alors
+Z
+|g|dµ< +∞⇒
+Z
+|f|dµ< +∞. On en déduit que
+f∈L 1 et
+Z
+|f|dµ≤
+Z
+|g|dµ.
+Pour f∈L 1(Ω,T,µ ) et A∈T , on note
+Z
+A
+fdµ =
+Z
+1Afdµ car d’après le corollaire (4), si
+f∈L 1(Ω,T,µ ) alors 1Af∈L 1(Ω,T,µ ).
+Notation.
+<<<PAGE>>>
+49 4.2. Propriétés de l’intégrale de fonctions réelles
+1. Soientf et g deux fonctions deL1(Ω,T,µ ) et α∈ R, alors
+(a)
+Z
+(αf)dµ =α
+Z
+fdµ ;
+(b)
+Z
+(f +g)dµ =
+Z
+fdµ +
+Z
+gdµ;
+(c) f≤g⇒
+Z
+fdµ≤
+Z
+gdµ.
+2. L1(Ω,T,µ ) est un espace vectoriel réel.
+Théorème 2.
+Démonstration .
+1. Si f est µ-intégrable alors
+Z
+Ω
+fdµ =
+Z
+Ω
+f+dµ−
+Z
+Ω
+f−dµ. Comme
+(−f) = (−f)+− (−f)−, (−f)+ =f− et (−f)− =f+
+alors
+Z
+Ω
+fdµ =
+Z
+Ω
+(−f)−dµ−
+Z
+Ω
+(−f)+dµ =−
+Z
+Ω
+(−f)+dµ−
+Z
+Ω
+(−f)−dµ
+
+=−
+Z
+Ω
+(−f)dµ.
+(a) On distingue le cas oùα≥ 0 et le casα≤ 0 puis on applique les propriétés de l’intégrale
+de fonctions mesurables et positives.
+(b) On pose (f +g) = (f +g)+− (f +g)− = (f)+ + (g)+− (f)−−g−.
+Z
+Ω
+(f+g)dµ =
+Z
+Ω
+(f+g)+dµ−
+Z
+Ω
+(f+g)−dµ =
+Z
+Ω
+(f)+dµ+
+Z
+Ω
+(g)+dµ−
+Z
+Ω
+(f)−dµ +
+Z
+Ω
+(g)−dµ
+
+La commutativité nous permet d’écrire
+Z
+Ω
+(f +g)dµ =
+Z
+Ω
+(f)+dµ−
+Z
+Ω
+(f)−dµ
+
+| {z }
+=
+Z
+Ω
+fdµ
++
+Z
+Ω
+(g)+dµ−
+Z
+Ω
+(g)−dµ
+
+| {z }
+=
+Z
+Ω
+gdµ
+.
+(c) Comme g = (g−f)| {z }
+≥0
++f, on applique la propriété précédente (linéarité) et on obtient
+Z
+Ω
+gdµ =
+Z
+Ω
+(g−f)dµ
+| {z }
+≥0
++
+Z
+Ω
+fdµ. Le résultat est immédiat.
+2. Il est aisé de montrer que L1(Ω,T,µ ) est un sous-espace vectoriel de l’espace vectoriel
+L(T, B(R)) pour en déduire queL1(Ω,T,µ ) est espace vectoriel réel.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 50
+Si f∈L 1 et siN∈T est µ-négligeable alors
+Z
+N
+fdµ = 0 et
+Z
+Ω\N
+fdµ =
+Z
+Ω
+fdµ.
+Corollaire 5.
+Soient (fn)n∈N une suite de fonctions deL(Ω,T ) et g∈L 1(Ω,T,µ ). On suppose que
+• (fn)n∈N converge versf µ-p.p
+• Pour toutn∈ N,|fn|≤ g.
+Alors 
+
+
+f∈L 1(Ω,T,µ )
+lim
+n→+∞
+Z
+fndµ =
+Z
+fdµ
+Théorème 3(Théorème de la convergence dominée).
+Soitf∈L (Ω,T ). Il existe une suite(φn)n∈N dansE(Ω,T ) qui converge simplement vers
+f sur Ω. Si de plus,f est bornée, alors(φn)n∈N converge uniformément versf sur Ω.
+Théorème 4.
+Démonstration .f =f+−f− et d’après le théorème 1 du chapitre 6,
+• il existe une suiteψn∈E +(Ω,T ) avecψn↗f+,
+• il existe une suiteφn∈E +(Ω,T ) avecφn↗f−.
+Posons Φn =ψn−φn Φn∈E (Ω,T ) et∀x∈ Ω
+lim
+n
+Φn(x) =f+(x)−f−(x) =f(x).
+Si f est bornée,f+ et f− sont bornées donc
+• ψn converge uniformément versf+;
+• φn converge uniformément versf−;
+donc Φn converge uniformément versf+−f− =f.
+<<<PAGE>>>
+51 4.3. Mesures à densité - Théorème de Radon-Nikodym
+4.3 Mesures à densité - Théorème de Radon-Nikodym
+L’objectif est de construire des mesures à partir de mesures connues ou de "transporter" une
+mesure d’un espace à un autre. En particulier sur
+ 
+R,B (R)
+
+, nous n’avons construit que la mesure
+de Lebesgueλ.
+En théorie de l’intégration, le théorème de Radon-Nykodym est un théorème très important qui
+aura des répercussions du côté des probabilités notamment en probabilité conditionnelle. Ce théo-
+rème aura sa place importante en analyse fonctionnelle par rapport à la dualité des espacesLp.
+C’est un théorème de décomposition. Étant données deux mesuresλ et µ, on va essayer de relier
+l’une à l’autre par la décomposition :
+λ =λa +λs.
+• La mesureλa est une mesure absolument continue par rapport àµ, autrement dit si la mesure
+d’un ensemble mesurable parµ est nulle alors la mesure de cet ensemble parλa est nulle.
+• La mesureλs est une mesure qu’on appellera mesure étrangère, autrement ditλs charge un
+ensemble qui est disjoint de l’ensemble chargé parµ ce qui veut encore dire que dès qu’un
+ensemble est mesuré parµ alors il est de mesure nulle parλs.
+4.3.1 Mesure définie par une densité
+Si f est une fonction positive mesurable, la fonction d’ensemble positiveν :T →R+
+définie pour toutA∈T par
+ν(A) =
+Z
+A
+fdµ =
+Z
+Ω
+1Afdµ.
+définit une nouvelle mesure sur(Ω,T ). La fonctionf s’appelle la densité deν par rapport
+à µ, et la mesureν est aussi notéeν =f•µ. On note égalementf = dν
+dµ.
+Proposition 10.
+Démonstration . ν est une fonction d’ensembles positive.
+1. ν(∅) =
+Z
+∅
+fdµ =
+Z
+∅
+1Afdµ = 0.
+2. Soit
+ 
+An
+
+n∈N une famille d’ensembles mesurables et disjoints deux à deux.
+ν
+[
+n∈N
+An
+
+=
+Z
+Ω
+1 S
+n∈N
+Anfdµ =
+Z
+Ω
+X
+n∈N
+1Anf
+
+dµ. (4.3)
+Puisque la fonction 1Anf est mesurable et positive alors d’après le théorème d’intégration
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 52
+d’une série de fonctions mesurables positives, on peut écrire
+Z
+Ω
+X
+n∈N
+1Anf
+
+dµ =
+X
+n∈N
+Z
+Ω
+1Anfdµ
+
+. (4.4)
+Des égalités (4.3) et (4.4), on déduit
+ν
+ S
+n∈N
+An
+
+=
+X
+n∈N
+ν
+ 
+An
+
+.
+ν définit donc bien une mesure sur(Ω,T ).
+Remarque 3.
+1. Si f1 = f2 µ−p.p alors∀A ∈ T,
+Z
+A
+f1dµ =
+Z
+A
+f2dµ ainsi ν est définie par une classe
+d’équivalence de densités, égalesµ−p.p.
+2. Sif estµ-intégrable, on peut de cette façon engendrer une probabilité sur
+ 
+Ω,A
+
+en écrivant :
+∀A∈A, P (A) =
+Z
+A
+fdµ
+Z
+Ω
+fdµ
+.
+Exemple 1.
+1. La mesure sur R de densité g(x) = θe−θx1[0;+∞[(x) s’appelle la loi de probabilité
+exponentielle de paramètreθ : c’est une mesure de probabilité (une mesure de masse
+totale égale à1 puisque
+Z +∞
+0
+θe−θxdx = 1). Plus généralement, toute mesure surR de
+densité g vérifiant
+Z +∞
+−∞
+g(x)dx = 1 est une mesure de probabilité.
+2. On considère des mesures définies par des densités par rapport à la mesure de Lebesgue
+sur
+ 
+R,B (R)
+
+, comme :
+La densité de Cauchy : f(x) = 1
+π (1 +x2),
+La densité de Gauss : f(x) = 1√
+2πe− x2
+2 ,
+La densité exponentielle : f(x) = λe−λx1R+(x).
+<<<PAGE>>>
+53 4.3. Mesures à densité - Théorème de Radon-Nikodym
+Soientµ et ν deux mesures sur l’espace mesurable(Ω,T ). On dit que :
+1. ν est absolument continue par rapport àµ et on noteν≪µ si :
+∀A∈T , µ (A) = 0⇒ν(A) = 0.
+2. ν est étrangère àµ et on noteν⊥µ s’il existeA∈T tel queµ (A) = 0 etν (Ac) = 0.
+Définition 3.
+Soit f : (Ω,T )→
+ 
+R,B (R)
+
+. La mesureν de densitéf par rapport à la mesureµ est
+absolument continue par rapport àµ.
+Théorème 5.
+Démonstration . SoitA∈T tel queµ (A) = 0. D’après les propriétés de l’intégrale de fonctions
+positives, Z
+A
+fdµ = 0
+Ainsi ν (A) = 0.
+Soient f : (Ω,T )→
+ 
+R,B (R)
+
+une fonction mesurable et positive etν une mesure de
+densité f par rapport àµ. Soitg : (Ω,T )→
+ 
+R,B (R)
+
+une fonction mesurable; on a
+alors la propriété suivante :
+Z
+Ω
+gdν =
+Z
+Ω
+gfdµ.
+g est ν-intégrable si et seulement sigf est µ-intégrable.
+Théorème 6.
+Démonstration . g et fg sont mesurables donc leur intégrales existent. On distingue 4 cas :
+1. Si g = 1A, A∈T ,
+Z
+Ω
+gdν =
+Z
+Ω
+1Adν =ν(A) =
+Z
+A
+fdµ =
+Z
+Ω
+1Afdµ =
+Z
+Ω
+fgdµ.
+Donc
+Z
+Ω
+gdν <+∞ si et seulement si
+Z
+Ω
+fgdµ< +∞.
+2. Si g∈E + alors g =
+X
+ai1Ai, Ai∈T .
+Z
+Ω
+gdν =
+X
+aiν (Ai) =
+X
+ai
+Z
+Ai
+fdµ
+
+=
+Z
+Ω
+X
+ai1Aifdµ =
+Z
+Ω
+fgdµ.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 54
+Donc
+Z
+Ω
+gdν <+∞ si et seulement si
+Z
+Ω
+fgdµ< +∞.
+3. Si g∈M + alors g est une limite simple d’une suite croissante de fonctions mesurables et
+positives. g = lim
+n→+∞
+↑gn, gn∈E +.
+Z
+Ω
+gdν =
+Z
+Ω
+lim
+n→+∞
+↑gndν = lim
+n→+∞
+↑
+Z
+Ω
+gndν
+| {z }
+Beppo-Levi
+= lim
+n→+∞
+↑
+Z
+Ω
+fgndµ =
+Z
+Ω
+lim
+n→+∞
+↑fgndν
+| {z }
+Beppo-Levi
+=
+Z
+Ω
+fgdµ.
+Donc
+Z
+Ω
+gdν <+∞ si et seulement si
+Z
+Ω
+fgdµ< +∞.
+4. Si g =g+−g−.
+g est ν−intégrable ⇔
+
+
+
+Z
+Ω
+g+dν < + ∞
+Z
+Ω
+g−dν < + ∞
+⇔
+
+
+
+Z
+Ω
+fg +dµ < + ∞
+Z
+Ω
+fg−dµ < + ∞
+⇔fg est µ−intégrable
+et Z
+Ω
+gdν =
+Z
+Ω
+g+dν−
+Z
+Ω
+g−dν =
+Z
+Ω
+fg +dµ−
+Z
+Ω
+fg−dµ =
+Z
+Ω
+fgdµ.
+4.4 Espaces Lp et Lp
+Soit p ∈ [1, +∞[, on noteLp (X,T,µ ) (en abrégéLp), l’ensemble des fonctions f ∈
+L (X,T ) tel que|f|p∈L 1 (X,T,µ ) :
+f∈L p (X,T,µ )⇔f∈L (X,T ) et
+Z
+X
+|f|pdµ< +∞.
+On dit quef∈L p (X,T,µ ) est depuissance pième-intégrable.
+Définition 1.
+Remarque 4.
+1. La fonction|f|p désigne la fonctionx7−→(|f(x)|)p (ce n’est pas la composée.)
+2. Pourp = 1, on obtient les fonctionsµ-intégrables.
+Pourp = 2, on obtient les fonctions de carré intégrables.
+3. Si f∈L (X,T ) alors|f|p∈L (X,T ).
+<<<PAGE>>>
+55 4.4. Espaces Lp et Lp
+Propriété 4.4.1. Lp (X,T,µ ) est un espace vectoriel.
+Démonstration . On montre queLp (X,T,µ ) est un sous-espace vectoriel deL (X,T ).
+• Lp (X,T,µ )⊂L (X,T ) (par définition);
+• 0∈L p doncLp̸=∅;
+• soientf∈L p et α∈ R donc αf∈L (X,T ) et
+Z
+|αf|pdµ =
+Z
+|α|p|f|pdµ =|α|p
+Z
+|f|pdµ
+| {z }
+<+∞ car f∈Lp
+< +∞
+donc αf∈L p;
+• Soit (f,g )∈L p×Lp alors f +g∈L (X,T ).
+∀x∈X,|f(x) +g(x)|≤ 2 max (|f(x)|,|g(x)|)
+⇒|f(x) +g(x)|p ≤ 2p
+
+max (|f(x)|,|g(x)|)
+p
+⇒
+Z
+|f +g|dµ ≤ 2p
+Z
+sup
+
+|f|p,|g|p
+
+dµ
+≤ 2p
+Z 
+|f|p +|g|p
+
+dµ
+≤ 2p
+Z
+|f|pdµ +
+Z
+|g|pdµ
+
+Notation
+N ={f∈L (X,T ), f = 0 µ -p.p}.
+N est un espace vectoriel réel et pour toutp∈ [1, +∞[,N⊂L p.
+Proposition 11.
+Remarque 5. Pourf∈L (X,T ) et g∈L (X,T ), f−g∈N⇔ f =g µ p.p.
+Lp(X,T,µ ) (ou en abrégéLp) est l’espace vectoriel quotient deLp(X,T,µ ) parN. C’est
+à dire l’ensemble des classes d’équivalence d’éléments deLp par la relationf =g µ-p.p.
+Définition 2.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 56
+Remarque 6. Bien que ses éléments soient des classes d’équivalence des fonctions. On a
+l’habitude de dire qu’un élément deLp(X,T,µ ) est une fonction, bien que strictement il s’agisse
+d’une classe de fonctions.
+f∈Lp (X,T,µ )⇔
+
+
+
+∃g∈L (X,T,µ )
+f = g µp.p
+Z
+X
+|g|pdµ< +∞.
+
+
+
+Exemple 11.
+1. On considère l’espace probabilisé(X,P (X), P). La loi binomialeB(n,p ),p∈ ]0, 1[, mo-
+délise le nombre de succès dans une répétition indépendante den expériences aléatoires
+identiques où la probabilité de succès de chaque expérience est égale àp.
+P la mesure de probabilité telle que sik∈{ 0, 1,...,n }
+P
+ 
+{k}
+
+= P (nombre de sucès=k) =Ck
+npk(1−p)n−k.
+• Si X ={0, 1,...,n } alors le plus gros ensembleP-négligeable est l’ensemble vide.
+• Si X = N et si P (k) = 0 pour k≥ n alors N ={n + 1,... } est le plus gros
+ensemble P-négligeable.
+2. Il n’existe pas toujours de plus gros ensembleµ-négligeable. Pour la mesure de Lebesgue
+sur R, il n’en existe pas.
+En effet, supposons par l’absurde queN est le plus grosλ-négligeable. On peut dire
+dans ce cas queN est mesurable sinon il est contenu strictement dans un mesurable de
+mesure égale à 0 ce qui contredit l’hypothèse queN est le plus gros négligeable.
+On sait queλ (R) = +∞ donc N ⊊ R. Il existex∈ R avecx /∈N. SoitN
+′
+=N∪{x}.
+N
+′
+∈B (R) et λ(N
+′
+) =λ(N) +λ ({x}) = 0 donc N
+′
+est λ-négligeable etN
+′
+⊃N.
+<<<PAGE>>>
+57 4.5. Normes sur Lp (p∈ [1, +∞[)
+4.5 Normes sur Lp (p∈ [1, +∞[)
+Notations
+1. Pourf∈L (X,T ) et p∈ [1, +∞[, on note
+Np(f) =
+Z
+|f(x)|pµ (dx)
+ 1
+p
+.
+2. Pour ef∈Lp et p∈ [1, +∞[, on note
+∥ef∥p =Np(f).
+Remarque 7. Si f∈L (X,T ) alors
+f∈L p⇔Np(f)< +∞.
+Soient p et q dans [1, +∞[, on dit quep et q sont conjugués si 1
+p + 1
+q = 1. On dit alors
+que q est l’exposant conjugué dep (il est unique).
+Définition 3.
+Remarque 8. On convient que 1 et+∞ sont conjugués.
+Soient a et b deux réels strictement positifs,p et q conjugués dans [1, +∞[. Alorsab≤
+1
+pap + 1
+qbq.
+Lemme 2(Inégalité de Young).
+Soientp et q conjugués dans [1, +∞[. Soientf∈L p et g∈L q alors
+N1(f×g)≤Np(f)×Nq(g) et f×g∈L 1.
+Lemme 3(Inégalité de Hölder).
+Remarque 9. Si p =q = 2, on obtient l’inégalité deCauchy-Schwartz.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 58
+Soientp dans [1, +∞[, f∈L p et g∈L p alors
+Np(f +g)≤Np(f) +Np(g).
+Lemme 4(Inégalité de Minkowski).
+Théorème 4.5.1. Pourp∈ [1, +∞[,∥.∥p est une norme surLp.
+Pourp∈ [1, +∞[, (Lp,∥.∥p) est un espace de Banach.
+Théorème 5(Fischer-Riesz).
+4.6 Espaces L∞
+Une fonctionf deL(X,T ) est dite essentiellement bornée s’il exister≥ 0 tel que|f|≤ r
+µ-p.p.
+On noteL∞ (X,T,µ ) l’ensemble des fonctions essentiellement bornées deL(X,T ).
+Définition 4.
+1. L∞ est un espace vectoriel réel.
+2. N⊂L ∞.
+Proposition 12.
+1. L∞ (X,T,µ ) est l’espace vectoriel quotient deL∞ (X,T,µ ) parN.
+2. Si f∈L (X,T ),
+N∞(f) = inf{r≥ 0 / |f|≤ r µ-p.p}
+3. Si ef∈L∞ alors∥ef∥∞ =N∞(f).
+Définition 5.
+Conséquence
+Si f∈L (X,T ),
+<<<PAGE>>>
+59 4.6. Espaces L∞
+f∈L∞(X,T ) ⇔N∞(f)< +∞.
+1. ∥.∥∞ est une norme surL∞.
+2. (L∞,∥.∥∞) est complet.
+3. InégalitédeHölder: pour1et +∞:si f∈L 1 etg∈L∞ alorsfg estµ-intégrable
+et
+N1(f×g)≤N1(f)×N∞(g).
+Théorème 6.
+Si µ(X)< +∞ et 1≤p1≤p2≤ +∞ alors
+L∞⊂L p2⊂L p1⊂L 1.
+Proposition 13(Relations entre lesLp).
+Démonstration .
+• L∞⊂L p pourp fini, en effet,
+f∈L∞⇒|f|≤ N∞(f) µ−p.p
+⇒|f|p≤ (N∞(f))p µ−p.p⇒
+Z
+|f|pdµ≤ (N∞(f))pµ(X)< +∞ µ−p.p
+Donc f∈L p.
+• Si p1≤p2. Soitf∈L p2. On distingue deux cas :
+– |f|≤ 1 donc
+|f|p1≤ 1⇒
+Z
+|f|p1dµ≤
+Z
+1dµ
+| {z }
+=µ(X)
+<∞⇒ f∈L p1⇒L p2⊂L p1.
+– |f|≥ 1 donc
+|f|p1≤|f|p2⇒
+Z
+|f|p1dµ≤
+Z
+|f|p2dµ< ∞⇒ f∈L p1⇒L p2⊂L p1.
+<<<PAGE>>>
+Chapitre 4. Intégration de fonctions mesurables 60
+4.6.1 Théorème de Radon Nikodym
+Sur un espace probabilisé (Ω,A, P), on considèreB une sous-tribu deA. On veut définir, à
+partir d’une variable aléatoire réelle X∈ L1 
+Ω,A, P
+
+, une autre variable aléatoire réelle qui va
+"oublier" tout se qui se passe en dehors deB.
+L’espérance conditionnelle sert à modéliser la réponse à la question suivante : si X est une
+variable aléatoire liée à une certaine expérience, que sait-on d’elle si l’on n’a pas toute l’information
+(donnée par la tribuA) des événements, mais seulement une information partielle (donnée par une
+sous-tribuB).
+En pratique, il est fréquent de travailler sur
+ 
+R,B (R)
+
+,
+ 
+Rn,Bn (R)
+
+et
+ 
+N,P (N)
+
+munis des
+lois de probabilités qui seront dominées parλ, mesure de Lebesgue surR,λn, mesure de Lebesgue
+sur Rn etµ, mesure discrète de comptage surN. Ces lois admettront donc des densités par rapport
+à λ, λn et µ.
+Les théorèmes suivants énoncent des conditions générales d’existence de densités.
+Soit (Ω,T ) un espace mesurable,µ :T →[0, +∞] une mesure positive, on dit queµ est
+σ-finie, si
+1. il existe une suite(An)n∈N, An∈T pour tout entier n, telle queS
+n∈N
+An = Ω,
+2. µ(An)< +∞, pour toutn∈ N.
+Définition 4.
+• Une mesureσ-finie peut être de masse totale infinie, par exemple la mesure de Lebesgue.
+• La mesure de Lebesgue surR et la mesure de comptage surN sontσ-finies.
+Mise en garde.
+Soientµetν deuxmesures σ−finiessur (Ω,T ).Ilexistealorsununiquecoupledemesures
+σ−finies (µa,µs) sur (Ω,T ) telles que
+1. µ =µa +µs,
+2. µa≪ν et µs⊥ν.
+De plus, il existe une fonction mesurablef : Ω→ R+ telle que
+∀A∈T , µa (A) =
+Z
+A
+fdν
+et la fonctionf est unique à un ensemble deν−mesure nulle près.
+Théorème 7(Théorème de Radon-Nikodym, Lebesgue-Nikodym).
+<<<PAGE>>>
+61 4.6. Espaces L∞
+4.6.2 Mesure image
+Soient (Ω,T,µ )un espace mesuré,
+
+Ω
+′
+,A
+
+un espace mesurable, etT : (Ω,T )→
+
+Ω
+′
+,A
+
+une application mesurable. On appelle mesure image deµ par T, la mesureµT définie
+sur
+
+Ω
+′
+,A
+
+par :
+∀B∈A, µ T(B) =µ
+ 
+T−1 (B)
+
+=µ◦ T−1 (B).
+Définition 5.
+Exemple 2. Soient (Ω,A, P) un espace probabilisé et
+ 
+R,B (R)
+
+l’espace mesurable des
+boréliens. Soit X une variable aléatoire de(Ω,A, P) dans
+ 
+R,B (R)
+
+. On définira l’image par
+X de P par :
+∀b∈ R, PX
+
+−∞,b
+
+= P
+
+X−1
+
+−∞,b
+
+= P
+
+X∈
+
+−∞,b
+
+.
+On retrouve ici la notion de la fonction de répartition de X.
+Soient (Ω,T,µ )un espace mesuré,
+
+Ω
+′
+,A
+
+un espace mesurable, etT : (Ω,T )→
+
+Ω
+′
+,A
+
+une application mesurable. µT la mesure image deµ par T définie sur
+
+Ω
+′
+,A
+
+. Soit
+f :
+
+Ω
+′
+,A
+
+→
+ 
+R,B (R)
+
+une fonction mesurable. Alors
+f est µT−intégrable si et seulement si l’application mesurablef◦ T est µ−intégrable
+et on a Z
+Ω′
+fdµ T =
+Z
+Ω
+f◦ Tdµ.
+Théorème 8( Théorème de transfert).
+<<<PAGE>>>
+5 | Produit de mesures
+SoientA et B deux ensembles mesurables respectivement dans deux espaces mesurés
+(Ω1,T1,µ ) et (Ω2,T2,ν ). On construit intuitivement la mesure deA× B égale àµ(A)×ν(B). La
+théorie de la mesure nous donne ce résultat. Le théorème deFubininous permettra d’intégrer
+par rapport à une mesure produit et facilitera le calcul des intégrales multiples.
+Sommaire
+5.1 Produit de tribus . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+5.2 Mesure produit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+5.3 Théorème de F ubini . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+5.1 Produit de tribus
+On appelle pavé mesurable tout ensembleA1×A 2 avecAi∈T i, i∈{ 1, 2}.
+Définition 8.
+Remarque 10. Le complémentaire d’un pavé peut s’écrire comme une union finie de pavés :
+(Ω1× Ω2)\ (A1×A 2) =
+ 
+(Ω1\A1)× (Ω2\A 2)
+!
+∪
+ 
+(Ω1\A 1)× Ω2
+!
+∪
+ 
+Ω1× (Ω2\A 2)
+!
+.
+Une union finie de pavés mesurables est égale à une union finie de pavés mesurables
+disjoints.
+Propriété 14.
+On appelle tribu produit,T1⊗T 2, deT1 parT2 la tribu de parties deΩ1× Ω2 engendrée
+par les pavés mesurables deΩ1× Ω2 :T1⊗T 2 :=σ
+
+{A1×A 2; A1∈T 1, A2∈T 2}
+
+Définition 9.
+Remarque 11.
+1. La famille des pavés mesurables n’est pas elle même une tribu en général. Elle n’est stable ni
+par réunion finie ni par complémentaire.
+62
+<<<PAGE>>>
+63 5.1. Produit de tribus
+2. Le produit de deux tribus n’est pas commutatif. La tribuT1⊗T 2 n’est pas en général égale
+àT2⊗T 1, tout simplement parce que le produit cartésien n’est pas commutatif :Ω1× Ω2̸=
+Ω2× Ω1. Par conséquent le produit de deux mesures que nous allons définir surT1⊗T 2 ne
+sera pas non plus commutatitif.
+Conséquence :B
+ 
+R2
+=B (R)⊗B (R). Par récurrence, on peut démontrer à partir du résultat
+précédent que pour toutn∈ N∗B (Rn) =B (R)⊗... ⊗B (R)| {z }
+n fois
+.
+1. Tout ouvert deR2 est réunion dénombrable de pavés ouverts.
+2. B
+ 
+R2
+=B (R)⊗B (R).
+Propriété 15.
+Soit (Y,F) un espace mesurable. On considère pouri = 1, 2 la projection canonique de
+Ω1× Ω2 sur Ωi,
+πi : Ω 1× Ω2 → Ωi
+(x1,x 2) 7→ xi
+La fonctiong : Y → Ω1× Ω2 est (F,T1⊗T 2)-mesurable si et seulement si∀i∈{ 1, 2},
+πi◦g est (F,Ti)-mesurable.
+Proposition 1.
+SiA∈T 1⊗T 2 et si x1 ∈ Ω1, on appelle coupe deA par rapport à x1, notéeAx1,
+l’ensemble
+{x2∈ Ω2, (x1,x 2)∈A} .
+On aAx1 =π2 (A∩{ x1}× Ω2).
+Définition 10.
+Soient (Ω1,T1), (Ω2,T2) et (Ω3,T3) trois espaces mesurables.
+1. Si f : Ω1× Ω2→ Ω3 est (T1⊗T 2,T3)-mesurable, alors
+
+↬ ∀x2∈ Ω2, x 17→f(x1,x 2) est (T1,T3)−mesurable.
+↬ ∀x1∈ Ω1, x 27→f(x1,x 2) est (T2,T3)−mesurable.
+2. SiA∈T 1⊗T 2 alorsAx1∈T 2 pour toutx1∈ Ω1.
+Proposition 2.
+<<<PAGE>>>
+Chapitre 5. Produit de mesures 64
+5.2 Mesure produit
+Soit (Ω,T,µ ) un espace mesuré, on dit queµ est σ-finie, si
+1. il existe une suite(An)n∈N,An∈T pour tout entier n, telle queS
+n∈N
+An = Ω,
+2. µ(An)< +∞, pour toutn∈ N.
+Définition 11.
+Remarque 12.
+• Une mesureσ-finie peut être de masse totale infinie, par exemple la mesure de Lebesgue.
+• La mesure de Lebesgue surR et la mesure de comptage surN sontσ-finies.
+Soient (Ω1,T1,µ 1) et (Ω2,T2,µ 2) deux espaces mesurés etµ1 etµ2 σ-finies alors il existe
+une mesure uniqueµ surT1⊗T 2 telle que :
+∀A1∈T 1, ∀A2∈T 2, µ (A1×A 2) =µ1 (A1)×µ2 (A2).
+• µ est une mesureσ-finie
+• x17→µ2 (Ax1) estT1-mesurable pour toutA∈T 1⊗T 2
+• µ(A) =
+Z
+Ω1
+µ2 (Ax1)dµ1(x1).
+µ est la mesure produit deµ1 par µ2 et on la noteµ1⊗µ2.
+Théorème 7.
+Remarque 13.
+1. Si on a trois espaces mesurés(Ωi,Ti,µi),i∈{ 1, 2, 3} avecµi σ-finies alors on a l’associativité
+du produit :µ1⊗µ2⊗µ3 =µ1⊗ (µ2⊗µ3). Comme on avait(T1⊗T 2)⊗T 3 =T1⊗ (T2⊗T 3),
+on peut donc définir la mesure surT1⊗T 2⊗T 3 comme l’unique mesureµ sur ce produit de
+tribus telle que
+µ (A1×A 2×A 3) =µ(A1)×µ(A2)×µ(A3) avec Ai∈T i, i∈{ 1, 2, 3}.
+Idem avec n facteurs(n∈ N∗) (par récurrence).
+2. La mesure de Lebesgue surR2 est le produit des mesures de Lebesgue sur(R,B(R)). et la
+mesure de Lebesgue sur Rn (n∈ N∗) est le produit des mesures de Lebesgue sur chaque
+facteur.
+<<<PAGE>>>
+65 5.3. Théorème de Fubini
+5.3 Théorème de Fubini
+Dans la suite, on suppose que (Ω1,T1,µ 1) et (Ω2,T2,µ 2) deux espaces mesurés etµ1 et µ2
+σ-finies etµ =µ1⊗µ2. L’intégration d’une fonction numérique définie surT1⊗T 2 par rapport à
+la mesureµ est précisée par les deux théorèmes ci-dessous.
+Le premier traite le cas d’une fonction positive, connu sous le nom duthéorème de Fubini-
+Tonelli; le deuxième traite le cas d’une fonction de signe quelconque, connu sous le nom du
+théorème de Fubini.
+Si f : Ω 1× Ω2 → [0, +∞] estT1⊗T 2-mesurable, alors les fonctions φ et ψ définies
+respectivement sur Ω1 et Ω2 par
+φ :x17→
+Z
+Ω2
+f (x1,x 2)dµ2 (x2) et ψ :x27→
+Z
+Ω1
+f (x1,x 2)dµ1 (x1)
+sont mesurables. et
+Z
+Ω1×Ω2
+fdµ =
+Z
+Ω1
+Z
+Ω2
+f (x1,x 2)dµ2 (x2)
+
+dµ1 (x1)
+=
+Z
+Ω2
+Z
+Ω1
+f (x1,x 2)dµ1 (x1)
+
+dµ2 (x2).
+Théorème 8(Théorème de Fubini-Tonelli).
+<<<PAGE>>>
+Chapitre 5. Produit de mesures 66
+Si f : Ω1× Ω2→ R est µ-intégrable, alors
+1. Pour presque toutx1∈ Ω1, la fonctionx27→ f(x1,x 2) est intégrable surΩ2 et la
+fonction φ définie presque partout surΩ1 par
+φ :x17→
+Z
+Ω2
+f (x1,x 2)dµ2 (x2)
+est µ1-intégrable sur Ω1.
+2. Pour presque toutx2∈ Ω2, la fonctionx17→ f(x1,x 2) est intégrable surΩ1 et la
+fonction ψ définie presque partout surΩ2 par
+ψ :x27→
+Z
+Ω1
+f (x1,x 2)dµ1 (x1)
+est µ2-intégrable sur Ω2.
+3. Z
+Ω1×Ω2
+fdµ =
+Z
+Ω1
+Z
+Ω2
+f (x1,x 2)dµ2 (x2)
+
+dµ1 (x1)
+=
+Z
+Ω2
+Z
+Ω1
+f (x1,x 2)dµ1 (x1)
+
+dµ2 (x2).
+Théorème 9(Théorème de Fubini).
+Si l’une des trois intégrales suivantes
+I1 =
+Z
+Ω1×Ω2
+|f|dµ
+I2 =
+Z
+Ω1
+Z
+Ω2
+|f (x1,x 2)dµ2 (x2)
+
+|dµ1 (x1)
+I3 =
+Z
+Ω2
+Z
+Ω1
+|f (x1,x 2)dµ1 (x1)
+
+|dµ2 (x2)
+est finie alors il en est de même pour les deux autres,f est intégrable et
+Z
+Ω1
+Z
+Ω2
+f (x1,x 2)dµ2 (x2)
+
+dµ1 (x1) =
+Z
+Ω2
+Z
+Ω1
+f (x1,x 2)dµ1 (x1)
+
+dµ2 (x2).
+Mode d’emploi :
+Pour prouver quef est intégrable surT1⊗T 2, on applique le théorème de Fubini-Tonelli à|f|
+qui affirme queI1,I2 etI3 sont égales (qu’elles soient finies ou non), puis montrer queI2 ouI3 est
+finie. Souvent, l’une d’elles est facile à estimer.
+<<<PAGE>>>
+67 5.3. Théorème de Fubini
+Mise en garde :
+Bien distinguer le casf mesurable positive où les trois intégralesI1, I2 et I3 ont toujours un
+sens (valeur finie ou infinie) du cas oùf est de signe variable pour lequel les intégrales
+Z
+Ω1
+Z
+Ω2
+fdµ2
+
+dµ1 et
+Z
+Ω2
+Z
+Ω1
+fdµ1
+
+dµ2
+peuvent ne pas exister, ou bien peuvent exister avec des valeurs finies ou infinies distinctes ou
+égales, sans quef soit intégrable. Autrement dit, sif est en général mesurable mais pas intégrable,
+les expressions Z
+Ω1
+Z
+Ω2
+fdµ2
+
+dµ1 et
+Z
+Ω2
+Z
+Ω1
+fdµ1
+
+dµ2
+peuvent exister mais avoir des valeurs différentes.
+Fonctions à variables séparées
+Si f1 et f2 sont deux fonctions mesurables positives (ou intégrables), définies respectivement
+sur Ω1 et Ω2. On posef(x1,x 2) =f1(x1)×f2(x2). Alorsf estT1⊗T 2-mesurable et
+Z
+Ω1×Ω2
+fd (µ1×µ2) =
+Z
+Ω1
+f1dµ1
+Z
+Ω2
+f2dµ2
+
+.

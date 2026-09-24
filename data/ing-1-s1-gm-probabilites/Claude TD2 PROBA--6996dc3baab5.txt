@@ -1,0 +1,359 @@
+CYT ech 2025-2026
+ING1 - GM : Probabilités
+TD 2
+Exercice 1 Soit g : [0,∞[→ [0,∞[ strictement croissante avec g(0)̸= 0. Montrer que
+P (|X|≥ a)≤ E[g(|X|)]
+g(a) , pour tout a> 0.
+Correction :
+Pour a> 0, considérons l'événement {|X|≥ a}. Puisque g est strictement croissante, on a :
+|X|≥ a⇒g(|X|)≥g(a)
+Donc sur l'événement {|X|≥ a}, on a g(|X|)≥g(a), d'où :
+1{|X|≥a}≤ g(|X|)
+g(a)
+En prenant l'espérance des deux côtés :
+E[1{|X|≥a}]≤E
+g(|X|)
+g(a)
+
+P (|X|≥ a)≤ E[g(|X|)]
+g(a)
+Ce qui est l'inégalité demandée. Il s'agit d'une généralisation de l'inégalité de Markov.
+Exercice 2 Soit h : R→ [0,α ]. Montrer que pour 0≤a<α on a
+P (h(X)≥a)≥ E[h(X)]−a
+α−a .
+Correction :
+Décomposons l'espérance de h(X) :
+E[h(X)]=E[h(X)1{h(X)≥a}] +E[h(X)1{h(X)<a}]
+≤E[α1{h(X)≥a}] +E[a1{h(X)<a}]
+=αP (h(X)≥a) +aP (h(X)<a )
+=αP (h(X)≥a) +a(1−P (h(X)≥a))
+=a + (α−a)P (h(X)≥a)
+Donc :
+E[h(X)]−a≤ (α−a)P (h(X)≥a)
+D'où :
+P (h(X)≥a)≥ E[h(X)]−a
+α−a
+1
+<<<PAGE>>>
+Exercice 3 Montrer que σ2
+X =E[X 2]−E[X]2 si E[X 2]< +∞.
+Correction :
+Par dénition, la variance est :
+σ2
+X=E[(X−E[X])2]
+=E[X 2− 2XE[X] +E[X]2]
+=E[X 2]− 2E[X]E[X] +E[X]2
+=E[X 2]− 2E[X]2 +E[X]2
+=E[X 2]−E[X]2
+On a utilisé la linéarité de l'espérance et le fait que E[X] est une constante.
+Exercice 4 Montrer que E[X]2≤E[X 2] si X admet une espérance.
+Correction :
+D'après l'exercice précédent, on a :
+σ2
+X =E[X 2]−E[X]2
+Or la variance est toujours positive ou nulle : σ2
+X≥ 0. Donc :
+E[X 2]−E[X]2≥ 0
+D'où :
+E[X]2≤E[X 2]
+Cette inégalité est aussi une conséquence de l'inégalité de Cauchy-Schwarz appliquée à la constante
+1 et à X : E[1·X]2≤E[12]E[X 2] =E[X 2].
+Exercice 5 Soit X une v.a.r. qui suit une loi binomiale B(n,p ). Montrer que la probabilité pour
+que X soit paire est de 1
+2(1 + (1− 2p)n).
+Correction :
+Notons Ppaire =P (X paire ) et Pimpaire =P (X impaire ).
+On a Ppaire +Pimpaire = 1.
+Calculons Ppaire −Pimpaire :
+Ppaire −Pimpaire =
+nX
+k=0
+(−1)kP (X =k)
+=
+nX
+k=0
+(−1)k
+n
+k
+
+pk(1−p)n−k
+=
+nX
+k=0
+n
+k
+
+(−p)k(1−p)n−k
+= (1−p−p)n = (1− 2p)n
+par la formule du binôme de Newton.
+2
+<<<PAGE>>>
+En résolvant le système avec les deux équations, on obtient :
+Ppaire = 1 + (1− 2p)n
+2
+Exercice 6 Soit Xn ∼B (n,pn) avec λ = npn constant. Soit An ={Xn ≥ 1}, et soit Y ∼
+Poisson (λ).
+1. Montrer que limn→∞P (Xn =j|An) =P (Y =j|Y ≥ 1).
+2. On suppose que la constante λ est un entier. Montrer que E[|Y−λ|] = 2λλe−λ
+(λ−1)! .
+Correction :
+1. On a pn = λ
+n . Par dénition :
+P (Xn =j|An) = P (Xn =j)
+1−P (Xn = 0) pour j≥ 1
+Quand n→∞ , on sait que Xn→Y en loi (approximation de Poisson), donc :
+P (Xn =j)→P (Y =j) = λje−λ
+j!
+Et :
+P (Xn = 0) =
+
+1− λ
+n
+n
+→e−λ
+Donc :
+lim
+n→∞
+P (Xn =j|An) =
+λje−λ
+j!
+1−e−λ =P (Y =j|Y ≥ 1)
+2. La loi de Poisson de paramètre λ entier a ses modes en λ− 1 et λ. Par calculs (utilisant
+les relations de récurrence de la loi de Poisson), on obtient :
+E[|Y−λ|] = 2λλe−λ
+(λ− 1)!
+Exercice 7 Soit X une v.a. qui prend ses valeurs dans N. Montrer que E[X] =P∞
+n=0P (X >n).
+Correction :
+On a :
+∞X
+n=0
+P (X >n)=
+∞X
+n=0
+∞X
+k=n+1
+P (X =k)
+=
+∞X
+k=1
+k−1X
+n=0
+P (X =k)
+=
+∞X
+k=1
+kP (X =k)
+=E[X]
+On a inversé l'ordre de sommation (justié car les termes sont positifs) et utilisé le fait quePk−1
+n=0 1 =k.
+3
+<<<PAGE>>>
+Exercice 8 Soit X une variable aléatoire de loi de Poisson de paramètre λ. Montrer que pour
+r∈ N∗\{ 1}, on a E[X(X− 1)(X− 2)··· (X−r + 1)] =λr.
+Correction :
+On calcule :
+E[X(X− 1)··· (X−r + 1)]=
+∞X
+k=0
+k(k− 1)··· (k−r + 1)λke−λ
+k!
+=
+∞X
+k=r
+k!
+(k−r)!
+λke−λ
+k!
+=
+∞X
+k=r
+λke−λ
+(k−r)!
+=λre−λ
+∞X
+k=r
+λk−r
+(k−r)!
+=λre−λ
+∞X
+j=0
+λj
+j!
+=λre−λ·eλ =λr
+Exercice 9 Soit X : Ω→ N une variable aléatoire tel que X(Ω) = N. On suppose que X admet
+une variance.
+1. Montrer que P∞
+k=0k2P (X =k) converge.
+2. En déduire que limn→∞n2P (X >n) = 0.
+3. Montrer que E[X 2] =P∞
+k=0(2k + 1)P (X >k).
+Correction :
+1. Si X admet une variance, alors E[X 2]< +∞. Or E[X 2] =P∞
+k=0k2P (X =k), donc cette
+série converge.
+2. Pour n≥ 1 :
+∞X
+k=n+1
+k2P (X =k)≥ (n + 1)2P (X >n)
+Puisque P∞
+k=0k2P (X =k) converge, on a P∞
+k=n+1k2P (X =k)→ 0 quand n→∞ .
+Donc (n + 1)2P (X >n)→ 0, ce qui implique n2P (X >n)→ 0.
+3. En utilisant l'astuce P (X =k) =P (X >k− 1)−P (X >k) :
+E[X 2]=
+∞X
+k=1
+k2[P (X >k− 1)−P (X >k)]
+=
+∞X
+k=0
+(k + 1)2P (X >k)−
+∞X
+k=1
+k2P (X >k)
+=P (X >0) +
+∞X
+k=1
+[(k + 1)2−k2]P (X >k)
+=
+∞X
+k=0
+(2k + 1)P (X >k)
+4
+<<<PAGE>>>
+Exercice 10 Soit X∼ Poisson (λ). Rappeler l'espérance et la variance de X, et montrer que
+P (X≤λ/2)≤ 4/λ.
+Correction :
+Pour une loi de Poisson de paramètre λ : E[X] =λ et Var (X) =λ.
+On a X≤λ/2 équivaut à |X−λ|≥ λ/2.
+Par l'inégalité de Bienaymé-Tchebychev :
+P (|X−λ|≥ λ/2)≤ λ
+(λ/2)2 = 4
+λ
+Donc :
+P (X≤λ/2)≤P (|X−λ|≥ λ/2)≤ 4
+λ
+Exercice 11 Soient α,β ∈]0, 1[ deux réels xés. Soit Ω = N2. Pour tout (i,j )∈ Ω, on pose
+pi,j =αβ(1−α)i(1−β)j.
+1. Montrer qu'en posant P ({(i,j )}) = pi,j pour tout (i,j )∈ Ω, on dénit une mesure de
+probabilité.
+2. Pour tout (i,j )∈ Ω, on pose X((i,j )) =i et Y ((i,j )) =j. Déterminer la loi de X et la loi
+de Y .
+3. Calculer P (X <Y ), P (X =Y ) et P (X >Y ).
+Correction :
+1. Il faut vérier que P
+(i,j)∈N2pi,j = 1 :
+∞X
+i=0
+∞X
+j=0
+αβ(1−α)i(1−β)j=αβ· 1
+α· 1
+β = 1
+2. Pour la loi de X :
+P (X =i) =
+∞X
+j=0
+pi,j =α(1−α)i
+Donc X∼ Géométrique (α). De même, Y ∼ Géométrique (β).
+3. Calcul de P (X <Y ) :
+P (X <Y ) = α(1−β)
+α +β−αβ
+Calcul de P (X =Y ) :
+P (X =Y ) = αβ
+α +β−αβ
+Calcul de P (X >Y ) :
+P (X >Y ) = β(1−α)
+α +β−αβ
+Exercice 12 Soit (An)n≥1 une suite d'événements deux à deux disjoints. Montrer que limn→∞P (An) =
+0.
+Correction :
+5
+<<<PAGE>>>
+Supposons par l'absurde qu'il existe ε> 0 et une sous-suite (Ank) tels que P (Ank)≥ε pour
+tout k.
+Les événements étant deux à deux disjoints :
+P
+ N[
+k=1
+Ank
+!
+=
+NX
+k=1
+P (Ank)≥Nε
+Quand N→∞ , cela tend vers +∞, ce qui contredit P (Ω) = 1.
+Donc limn→∞P (An) = 0.
+Exercice 13 Soit (Aβ)β∈B une famille d'événements deux à deux disjoints.
+1. Montrer que si P (Aβ)> 0 pour tout β∈B, alors B est dénombrable.
+2. En déduire que pour une fonction de répartition F qui admet une innité de points de
+discontinuités B, B est dénombrable.
+Correction :
+1. Pour tout n∈ N∗, posons An ={Aβ :P (Aβ)> 1/n}. Chaque An est ni car :
+Card (An)· 1
+n <
+X
+Aβ∈An
+P (Aβ)≤ 1
+Or :
+{Aβ :P (Aβ)> 0} =
+∞[
+n=1
+An
+C'est une union dénombrable d'ensembles nis, donc dénombrable.
+2. Les points de discontinuité correspondent aux sauts P ({x}) > 0. Par la question 1, leur
+ensemble est dénombrable.
+Exercice 14 Soit P une probabilité sur R admettant une densité f Borel mesurable. Montrer
+que P ({x0}) = 0 pour tout x0∈ R.
+Correction :
+On a {x0} =T∞
+n=1[x0− 1/n,x 0]. Par continuité décroissante :
+P ({x0}) = lim
+n→∞
+P ([x0− 1/n,x 0]) = lim
+n→∞
+Z x0
+x0−1/n
+f(x)dx = 0
+car la longueur de l'intervalle tend vers 0.
+Exercice 15 Soit F (x) = P∞
+i=1
+1
+2i 1[1/i,∞[(x). Montrer que c'est une fonction de répartition et
+calculer les probabilités demandées.
+Correction :
+F est croissante, limx→−∞F (x) = 0 , limx→+∞F (x) = 1 , et continue à droite. Donc F est
+une fonction de répartition.
+a) P ([1,∞[) = 1−P∞
+i=2
+1
+2i = 1
+2
+b) P ([ 1
+10,∞[) = 1−P∞
+i=11
+1
+2i = 210−1
+210
+6
+<<<PAGE>>>
+c) P ({0}) = 0
+d) P ([0, 1
+2[) =P∞
+i=3
+1
+2i = 1
+4
+e) P (]−∞, 0[) = 0
+f) P (]0,∞[) = 1
+Exercice 16 Soient X,Y : Ω → R telles que {X̸= Y}∈N (i.e. X = Y p.s.). Montrer que
+X : (Ω,A′)→ (R,B(R)) est mesurable si et seulement si Y l'est.
+Correction :
+Supposons Y mesurable. Pour tout B∈B (R), notons N ={X̸=Y}∈N .
+Sur {X =Y}, on a X−1(B) =Y−1(B). Donc :
+X−1(B) = (Y−1(B)∩{X =Y})∪ (X−1(B)∩N)
+Puisque Y−1(B)∈A′ et N∈N⊂A ′, on a X−1(B)∈A′.
+Par symétrie, si X est mesurable, alors Y l'est.
+2/2
+7

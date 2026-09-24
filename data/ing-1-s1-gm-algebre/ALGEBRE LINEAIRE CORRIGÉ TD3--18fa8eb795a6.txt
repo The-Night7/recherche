@@ -1,0 +1,251 @@
+Algèbre Linéaire Appliquée
+Corrigé Détaillé du TD3
+Représentation des nombres en machine
+Pour les étudiants ING1-GM
+Le 7 novembre 2025
+Exercice 14 : Conversion en hexadécimal
+Question :Convertir les nombres décimaux suivants en hexadécimal (base 16).
+Rappel du Cours
+Pour convertir un nombrexde la base 10 à la base 16, on traite séparément sa partie
+entièreEet sa partie fractionnaireF.
+—Partie entière (E) :On utilise la méthode desdivisions euclidiennes successives
+par 16. On lit les restes de bas en haut(Support de cours, Algorithme 3.1.1, page
+35).
+—Partie fractionnaire (F) :On utilise la méthode desmultiplications successives
+par 16. On lit les parties entières obtenues de haut en bas(Support de cours,
+Algorithme 3.1.2, page 36).
+—Chiffres hexadécimaux :A= 10,B= 11,C= 12,D= 13,E= 14,F= 15.
+1. Conversion de 15,275
+Solution Détaillée
+Partie entière :E= 15.
+15÷16 = 0reste15
+Le reste est 15, qui correspond au chiffreF. Donc,15 10 =F 16.
+Partie fractionnaire :F= 0,275.
+0,275×16 = 4,4→Partie entière =4
+0,4×16 = 6,4→Partie entière =6
+0,4×16 = 6,4→Partie entière =6
+...
+La partie fractionnaire est0,466... 16.
+Conclusion
+15,275 10 = (F,466...) 16
+1
+<<<PAGE>>>
+2. Conversion de 358,937
+Solution Détaillée
+Partie entière :E= 358.
+358÷16 = 22reste6
+22÷16 = 1reste6
+1÷16 = 0reste1
+En lisant les restes de bas en haut :358 10 = 166 16.
+Partie fractionnaire :F= 0,937.
+0,937×16 = 14,992→Partie entière = 14 (E)
+0,992×16 = 15,872→Partie entière = 15 (F)
+0,872×16 = 13,952→Partie entière = 13 (D)
+...
+La partie fractionnaire est0,EFD... 16.
+Conclusion
+358,937 10≈(166,EFD) 16
+3. Conversion de 387,62
+Solution Détaillée
+Partie entière :E= 387.
+387÷16 = 24reste3
+24÷16 = 1reste8
+1÷16 = 0reste1
+En lisant les restes de bas en haut :387 10 = 183 16.
+Partie fractionnaire :F= 0,62.
+0,62×16 = 9,92→Partie entière =9
+0,92×16 = 14,72→Partie entière = 14 (E)
+0,72×16 = 11,52→Partie entière = 11 (B)
+0,52×16 = 8,32→Partie entière =8
+...
+Conclusion
+387,62 10≈(183,9EB8...) 16
+2
+<<<PAGE>>>
+4. Conversion de 5233,618
+Solution Détaillée
+Partie entière :E= 5233.
+5233÷16 = 327reste1
+327÷16 = 20reste7
+20÷16 = 1reste4
+1÷16 = 0reste1
+En lisant les restes de bas en haut :5233 10 = 1471 16.
+Partie fractionnaire :F= 0,618.
+0,618×16 = 9,888→Partie entière =9
+0,888×16 = 14,208→Partie entière = 14 (E)
+0,208×16 = 3,328→Partie entière =3
+...
+Conclusion
+5233,618 10≈(1471,9E3...) 16
+3
+<<<PAGE>>>
+Exercice 15 : Représentation IEEE-754
+Question :Calculer la représentation de 5,75 et 0,1 en simple et double précision.
+Rappel du Cours
+Un nombre est stocké au format IEEE-754 normalisé sous la formex= (−1) s×(1,m) 2×
+2e. Le format binaire estSigne (S) | Exposant décalé (E) | Fraction (m).
+—Simple Précision (32 bits): 1 bit (S), 8 bits (E), 23 bits (m).Biais = 127.E=e+127.
+—Double Précision (64 bits): 1 bit (S), 11 bits (E), 52 bits (m).Biais = 1023.E=
+e+ 1023.
+(Support de cours, T able 3.1, page 39)
+1. Représentation de 5,75
+Solution Détaillée
+Étape 1 : Conversion en binaire
+— Partie entière :5 10 = 4 + 1 = 1·2 2 + 0·2 1 + 1·2 0 = 101 2.
+— Partie fractionnaire :0,75 10 = 0,5 + 0,25 = 1·2 −1 + 1·2 −2 = 0,11 2.
+— Résultat :5,75 10 = 101,11 2.
+Étape 2 : NormalisationOn décale la virgule vers la gauche pour obtenir la forme1,m×
+2e :
+101,11 2 = 1,0111 2×2 2
+On identifie les composants :s= 0(positif),e= 2,m= 0111.
+Étape 3 : Codage Simple Précision (32 bits)
+—S(1 bit) : 0
+—E(8 bits) :E=e+Biais= 2+127 = 129 10.129 = 128+1 = 1·2 7+1·2 0 = 10000001 2.
+—m(23 bits) : On complète0111avec des zéros :01110000000000000000000.
+Étape 4 : Codage Double Précision (64 bits)
+—S(1 bit) : 0
+—E(11 bits) :E=e+Biais= 2 + 1023 = 1025 10.1025 = 1024 + 1 = 1·2 10 + 1·2 0 =
+100000000012.
+—m(52 bits) : On complète0111avec des zéros :0111000...0.
+Conclusion
+Comme la conversion binaire de 5,75 est finie, la représentation estexacte.
+—Simple Précision :0 | 10000001 | 01110000000000000000000
+—Double Précision :0 | 10000000001 | 011100...0(48 zéros)
+4
+<<<PAGE>>>
+2. Représentation de 0,1
+Solution Détaillée
+Étape 1 : Conversion en binaire
+— Partie entière :0 10 = 0 2.
+— Partie fractionnaire :0,1 10.
+0,1×2 = 0,2→0
+0,2×2 = 0,4→0
+0,4×2 = 0,8→0
+0,8×2 = 1,6→1
+0,6×2 = 1,2→1
+0,2×2 = 0,4→0(Début de la répétition)
+— Résultat :0,1 10 = 0,0001100110011... 2 = 0,0 00112.
+Étape 2 : NormalisationOn décale la virgule vers la droite :
+0,000110011... 2 = 1,100110011... 2×2 −4
+On identifie les composants :s= 0(positif),e=−4,m= 100110011...
+Point Pédagogique (Important)
+La représentation binaire de 0,1 est infinie et périodique. Il y aura donc uneerreur d’ar-
+rondi, car on ne peut pas stocker tous les bits.
+Solution Détaillée
+Étape 3 : Codage Simple Précision (32 bits)
+—S(1 bit) : 0
+—E(8 bits) :E=e+Biais=−4 + 127 = 123 10.123 = 64 + 32 + 16 + 8 + 2 + 1 =
+0·128 + 1111011 2 = 01111011 2.
+—m(23 bits) : La fraction infinie estm= 10011001100110011001100| {z }
+23 bits
+|1001...Le
+24ème bit (le premier bit rejeté) est1. On doit donc arrondir au plus près en ajou-
+tant 1 aux 23 bits gardés :
+10011001100110011001100
++ 1
+10011001100110011001101
+La fraction stockée est10011001100110011001101.
+Étape 4 : Codage Double Précision (64 bits)
+—S(1 bit) : 0
+—E(11 bits) :E=e+Biais=−4 + 1023 = 1019 10.1019 = 512 + 256 + 128 + 64 +
+32 + 16 + 8 + 2 + 1 = 2 9 + 28 + 27 + 26 + 25 + 24 + 23 + 21 + 20. En 11 bits (avec
+210 = 1024) :E= 01111111011 2.
+—m(52 bits) : La fraction est le motif ‘1001‘ répété52÷4 = 13fois.m=
+1001...1001| {z }
+52 bits
+|1001...Le 53ème bit est1. On arrondit en ajoutant 1 :
+5
+<<<PAGE>>>
+...10011001
++ 1
+...10011010
+La fraction stockée est1001...10011010.
+Conclusion
+La représentation de 0,1 estapprochéedans les deux cas.
+—Simple Précision :0 | 01111011 | 10011001100110011001101
+—Double Précision :0 | 01111111011 | 1001...10011010(le motif 1001 12
+fois, suivi de 1010)
+6
+<<<PAGE>>>
+Exercice 16 : Système binaire simplifié (Facultatif)
+Question :Analyser le code Python qui génère les nombres flottants d’un système simplifié.
+Rappel du Cours
+Le code Python (‘TD3-Exo16-TousNombresSaufDenormalises.py‘) simule un système en
+base 2(radix= 2) avec :
+—p= 3chiffres de mantisse au total.
+— Exposantsedeemin=−2àemax= 3.
+Un nombre normalisé s’écritx= (1,m) 2×2 e. Avecp= 3, la mantisse a 3 chiffres au
+total (ex :1,00 2 ou1,11 2). La mantisseM(entière) va deMmin= 2 p−1 = 2 2 = 4à
+Mmax= 2 p−1 = 2 3−1 = 7. La formuleM×radix∗∗(e−p+ 1)calculeM×2 e−3+1 =
+M×2 e−2 = (M/4)×2 e.
+—M= 4 =⇒(4/4)×2 e = 1,00 2×2e
+—M= 5 =⇒(5/4)×2 e = (1 + 1/4)×2 e = 1,01 2×2e
+—M= 6 =⇒(6/4)×2 e = (1 + 2/4)×2 e = 1,10 2×2e
+—M= 7 =⇒(7/4)×2 e = (1 + 3/4)×2 e = 1,11 2×2e
+Solution Détaillée
+1. Retapez et lancez le script :Le script affiche un graphique avec des barres bleues
+représentant tous les nombres (positifs et négatifs) que ce système peut générer.
+2. Zoomer sur la zone proche de 0 :On observe un "trou" important entre 0 et le plus petit
+nombre positif normalisé. Ce plus petit nombre normalisé est obtenu pour l’exposant
+minimal (e=emin=−2) et la mantisse minimale (M=Mmin= 4) :
+xmin_normal = 1,00 2×2 −2 = 1×0,25 = 0,25
+Il n’y a aucun nombre normalisé représentable entre 0 et 0,25 (ni entre 0 et -0,25).
+3. Suppression de la boucle pour les négatifs :Si on supprime la première boucle ‘for‘
+(celle avec ‘range(emax, emin - 1, -1)‘), on ne génère plus les nombres négatifs. Le gra-
+phique n’affichera que 0 et les barres bleues à droite de 0.
+4. Ajout des nombres sous-normalisés (dénormalisés) :Les nombres sous-normalisés
+(Support de cours, Déf. 3.2.3, page 38)comblent le "trou" autour de 0. Ils sont utilisés
+quand l’exposant estemin=−2mais que la mantisse est de la forme0,m 2 (le ’1,’ im-
+plicite disparaît). Dans le code (‘TD3-Exo16-TousNombresAvecDenormalises.py‘), cela
+correspond aux boucles ajoutées :
+—e = emin
+—Mva de1àMmin-1(soit 1, 2, 3) pour les positifs.
+—Mva de-Mmin+1à-1(soit -3, -2, -1) pour les négatifs.
+Calculons ces nouveaux nombres (positifs) :
+—M= 1 =⇒(1/4)×2 −2 = 0,01 2×2 −2 = 0,0001 2 = 0,0625
+—M= 2 =⇒(2/4)×2 −2 = 0,10 2×2 −2 = 0,0010 2 = 0,125
+—M= 3 =⇒(3/4)×2 −2 = 0,11 2×2 −2 = 0,0011 2 = 0,1875
+Conclusion
+En ajoutant les nombres sous-normalisés (0,0625, 0,125, 0,1875 et leurs négatifs), on
+comble le "trou"entre 0 et 0,25. L’espacement entre les nombres devient régulier près
+de 0, ce qui permet une "perte de précision gracieuse" (gradual underflow) plutôt qu’un
+arrêt brutal à 0,25.
+7
+<<<PAGE>>>
+Exercice 17 : Système en baseβ(Facultatif)
+Question :Calculer le nombre de valeurs normalisées pour un système en baseβ, avecpplaces
+de mantisse, et exposantsE∈[E m,EM ].
+Rappel du Cours
+Pourβ= 2(notre cas IEEE-754), le bit implicite est1. Pourβ >2(commeβ= 10), la
+convention est que le premier chiffre *après* la virgule est non nul (0,a 1a2...ap).
+Un nombre normalisé s’écrit :x= (−1) s×(0,a 1a2...ap)β×β E aveca 1̸= 0.
+Solution Détaillée
+Nous devons compter le nombre de combinaisons possibles pours,E, et la mantisse.
+—Signes (s) :2 choix (positif ou négatif).
+—Exposants (E) :Le nombre d’exposants disponibles estE M−E m + 1. Comme
+dans le cas binaire, on réserve les exposants extrêmes (min et max) pour les zéros,
+infinis et NaN(Support de cours, Remarque 20, page 37). Nombre d’exposants
+pour les normalisés :(EM−Em + 1)−2 =E M−E m−1.
+—Mantisses (0,a 1a2...ap) :
+—a 1 : ne peut pas être 0 (par définition de la normalisation pourβ >2). Il y a
+(β−1)choix (de 1 àβ−1).
+—a 2,...,a p : peuvent être n’importe quel chiffre de 0 àβ−1. Il y aβchoix pour
+chacun desp−1chiffres, soitβ p−1 combinaisons.
+Nombre total de mantisses :(β−1)×β p−1.
+Le nombre total de valeurs normalisées est le produit de ces possibilités :
+N= 2|{z}
+signes
+×(EM−Em−1)| {z }
+exposants
+×(β−1)β p−1
+| {z }
+mantisses
+Conclusion
+Application numérique :β= 10,p= 3,E m =−15,E M = 16.
+— Signes : 2
+— Exposants :16−(−15)−1 = 16 + 15−1 = 30
+— Mantisses :(10−1)×10 3−1 = 9×10 2 = 900
+N= 2×30×900 = 54000.
+En ajoutant les deux zéros (positif et négatif), on obtient54002valeurs, ce qui corres-
+pond au corrigé.
+8

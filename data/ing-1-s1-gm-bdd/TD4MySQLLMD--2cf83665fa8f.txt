@@ -1,0 +1,94 @@
+ING1
+Bases de données
+TD 04
+Langage de Manipulation de Données (LMD)
+ L'objectif de ce travail est de vous familiariser avec le langage de mani-
+pulation de données SQL.
+1. Les commandes INSERT, UPDATE et DELETE
+2. Les commandes SELECT simples : projection, restriction, tri, fonctions
+de calcul
+Données
+ On utilise cette base de données Pokémon :
+Equipe(id , nom, couleur)
+Joueur(pseudonyme , personnage, sexe, niveau, #idEquipe)
+Pokemon(id , nom, espece, pointCombat, #idJoueur)
+Emplacement(id , latitude, longitude)
+Arene(id , nom, #idEmplacement)
+Defense(#idEquipe, #idArene, dateControle )
+Apparition(#idPokemon, #idEmplacement , horaire, duree)
+ La création des tables et certaines données de cette base se trouvent dans
+le script "pokemon_tables.sql" sur Arel.
+Equipe id nom couleur
+1 Intuition Jaune
+2 Sagesse Bleu
+3 Bravoure Rouge
+Joueur pseudonyme personnage sexe niveau idEquipe
+Shadow Smith F 10 1
+Root Alice F 20 2
+Admin Bob M 1 1
+Équipe pédagogique 1 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+Pokemon id nom espece pointCombat idJoueur
+1 Bulbizarre Graine 1071 Shadow
+25 Pikachu Souris 887 Root
+107 Tygnon Puncheur 204 Shadow
+103 Noadkoko Fruitpalme 190 Admin
+150 Mewtwo Génétique 4144 Root
+Emplacement id latitude longitude
+1 49.0350369 2.0696998
+2 48.857848 2.295253
+3 -74,0445 40,6892
+Arene id nom idEmplacement
+1 Liberte 3
+2 Eisti 1
+3 Star 2
+Defense idEquipe idArene dateControle
+1 1 2016-10-10
+1 2 2016-09-01
+Apparition idPokemon idEmplacement horaire duree
+1 2 2016-10-09 10
+25 1 2016-09-01 20
+107 3 2016-10-02 5
+103 1 2016-10-25 15
+25 3 2016-10-25 3
+Exercice 1 :
+Lancer ce script et ensuite eectuer les requêtes SQL suivantes en expliquant
+les éventuelles erreurs de manipulation de données rencontrées.
+Penser à faire SELECT * FROM tab ; après chaque requête pour vérier le
+contenu de la table.
+Équipe pédagogique 2 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+1. Insérer quelques données dans la table Equipe :
+19, Rattata, Souris, 20, Admin
+39, Rondoudou, Bouboule, 4145, Moustache
+2. Ajouter une ligne indiquant que l'équipe numéro 3 a pris le contrôle de
+l'arène numéro 2 le 10 octobre 2016.
+3. Ajouter une ligne indiquant que l'équipe numéro 2 a pris le contrôle de
+l'arène numéro 3.
+4. Ajouter dans la table Joueur les lignes suivantes :
+Flavius, Ruth, M, 20, 2
+Asterix, Ruth, M, 5, 1
+5. Mettre le niveau de tous les joueurs féminins à 15.
+6. Supprimer les Pokémons dont l'espèce contient le mot  fruit .
+7. Supprimer le joueur Admin.
+Exercice 2 :
+Eectuer sur la base de données Pokémons les requêtes suivantes :
+1. Quel est l'arène dont le nom contient le mot "eisti" ?
+2. Quels sont les Pokémons dont le nom commence par la lettre p sans tenir
+compte de la casse ?
+3. Quels sont les pseudonymes des joueurs qui ne contiennent pas la lettre a ?
+4. Trier les Pokémons selon le point de combat en ordre décroissant.
+5. Calculer la durée moyenne d'apparition des Pokémons.
+6. Compter le nombre d'apparitions des Pokémons en octobre 2016.
+7. Donner les noms des Pokémons qui sont de même espèce que Pikachu.
+8. Quels sont les joueurs dont le niveau est supérieur que le niveau moyen des
+joueurs ?
+9. Quel est le Pokémon le plus fort ?
+10. Augmenter de 2 le niveau de Shadow.
+11. Sélectionner les pokémons qui ont apparu en septembre. Ecrire la requête
+sans utiliser le LIKE.
+Équipe pédagogique 3 2021-2022

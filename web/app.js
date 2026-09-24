@@ -1,10 +1,14 @@
 const $ = id => document.getElementById(id);
 const COURSE_SYM = { "analyse-rn": "ℝⁿ", "series": "Σ", "informatique3": "⌘", "electromagnetisme": "Φ", "shs": "§" };
-const DEFAULT = () => ({ study_year: "all", semester: "all", course: "all", kinds: [], versions: [], years: [], k: 5, recent: true });
+const DEFAULT = () => ({ program: "all", study_year: "all", semester: "all", track: "all", course: "all", kinds: [], versions: [], years: [], k: 5, recent: true });
 let META = null;
 let state = DEFAULT();
 
-try { Object.assign(state, JSON.parse(localStorage.getItem("tuteur-filtres") || "{}")); } catch (e) {}
+try {
+  const saved = JSON.parse(localStorage.getItem("tuteur-filtres") || "{}");
+  Object.assign(state, saved);
+  if (!("program" in saved) && state.study_year !== "all") state.program = "preing";
+} catch (e) {}
 function save(){ try { localStorage.setItem("tuteur-filtres", JSON.stringify(state)); } catch (e) {} }
 
 function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -26,19 +30,36 @@ function coursesInScope(){
 }
 
 function availableCourses(){
-  return META.courses.filter(c => (state.study_year === "all" || String(c.study_year) === state.study_year)
-    && (state.semester === "all" || String(c.semester) === state.semester));
+  return META.courses.filter(c => (state.program === "all" || c.program === state.program)
+    && (state.study_year === "all" || String(c.study_year) === state.study_year)
+    && (state.semester === "all" || String(c.semester ?? "none") === state.semester)
+    && (state.track === "all" || c.track === state.track));
+}
+
+function contextChoices(){
+  return META.curricula.filter(c => c.count > 0 && (state.program === "all" || c.program === state.program)
+    && (state.study_year === "all" || String(c.study_year) === state.study_year));
+}
+
+function availableTracks(){
+  return [...new Set(contextChoices().filter(c => state.semester === "all" || String(c.semester ?? "none") === state.semester)
+    .map(c => c.track).filter(Boolean))];
 }
 
 function scopeLabel(){
-  const year = state.study_year === "all" ? "Préing 1 et 2" : `Préing ${state.study_year}`;
-  const semester = state.semester === "all" ? "semestres 1 et 2" : `semestre ${state.semester}`;
-  return `${year} — ${semester}`;
+  const chosen = META.courses.find(c => c.id === state.course);
+  if (chosen) return chosen.curriculum_label;
+  const programs = [...new Set(availableCourses().map(c => c.program))];
+  const year = programs.map(p => META.programs[p] + (state.study_year === "all" ? "" : ` ${state.study_year}`)).join(" et ");
+  const semester = state.semester === "all" ? "tous les semestres" : state.semester === "none" ? "hors semestre" : `semestre ${state.semester}`;
+  return `${year || "Tous les cycles"} — ${semester}${state.track === "all" ? "" : ` — ${state.track.toUpperCase()}`}`;
 }
 
 function normalizeScope(){
+  if (state.program !== "all" && !META.programs[state.program]) state.program = "all";
   if (!["all", "1", "2"].includes(state.study_year)) state.study_year = "all";
-  if (!["all", "1", "2"].includes(state.semester)) state.semester = "all";
+  if (!contextChoices().some(c => String(c.semester ?? "none") === state.semester)) state.semester = "all";
+  if (!availableTracks().includes(state.track)) state.track = "all";
   if (!availableCourses().some(c => c.id === state.course)) state.course = "all";
   const courses = coursesInScope();
   state.kinds = state.kinds.filter(k => courses.some(c => c.kinds[k]));
@@ -46,9 +67,17 @@ function normalizeScope(){
 }
 
 function renderFilters(){
-  [["study-years", "study_year", "Toutes", "Préing"], ["semesters", "semester", "Tous", "Semestre"]].forEach(([id, field, all, label]) => {
+  const programOptions = [["all", "Tous"], ...Object.entries(META.programs)];
+  const semesterOptions = [...new Set(contextChoices().map(c => String(c.semester ?? "none")))].sort()
+    .map(value => [value, value === "none" ? "Hors semestre" : `Semestre ${value}`]);
+  const tracks = availableTracks();
+  $("track-field").hidden = tracks.length === 0;
+  [["programs", "program", programOptions],
+   ["study-years", "study_year", [["all", "Toutes"], ["1", "Année 1"], ["2", "Année 2"]]],
+   ["semesters", "semester", [["all", "Tous"], ...semesterOptions]],
+   ["tracks", "track", [["all", "Tous"], ...tracks.map(t => [t, t.toUpperCase()])]]].forEach(([id, field, options]) => {
     const container = $(id); container.innerHTML = "";
-    ["all", "1", "2"].forEach(value => container.appendChild(chip(value === "all" ? all : `${label} ${value}`,
+    options.forEach(([value, label]) => container.appendChild(chip(label,
       state[field] === value, () => { state[field] = value; normalizeScope(); update(); })));
   });
   $("curriculum").textContent = scopeLabel();
@@ -262,6 +291,7 @@ function renderCard(r, i, tokens){
   const body = r.blocks.map(b => {
     if (b.type === "md") return renderMd(b.text, tokens);
     if (b.type === "text") return `<pre class="text-excerpt">${escapeHtml(b.text)}</pre>`;
+    if (b.type === "code") return `<pre class="code-block">${escapeHtml(b.text)}</pre>`;
     if (b.type === "formula") return `<div class="formula"><pre>${escapeHtml(b.text)}</pre></div>`;
     return `<p class="prose">${highlightPlain(b.text, tokens)}</p>`;
   }).join('');
@@ -294,6 +324,8 @@ async function doSearch(){
   const sequence = ++searchSequence;
   const p = new URLSearchParams({ q, k: state.k, recent: state.recent ? 1 : 0 });
   if (state.course !== "all") p.set("course", state.course);
+  if (state.program !== "all") p.set("program", state.program);
+  if (state.track !== "all") p.set("track", state.track);
   if (state.study_year !== "all") p.set("study_year", state.study_year);
   if (state.semester !== "all") p.set("semester", state.semester);
   if (state.kinds.length) p.set("kinds", state.kinds.join(","));
@@ -349,15 +381,34 @@ const EXAMPLES = {
   "ondes": ["propagation", "interférences"],
   "physique-moderne": ["quantique", "fonction d'onde"],
 };
+const ING_EXAMPLES = {
+  "algebre": ["diagonalisation"], "algorithmique": ["complexité"], "bdd": ["requêtes SQL"],
+  "data-exploration": ["régression"], "mesures-integration": ["fonctions mesurables"],
+  "probabilites": ["variables aléatoires"], "optimisation": ["simplexe"],
+  "programmation-procedurale": ["pointeurs"], "unix": ["commandes shell"],
+  "analyse-numerique": ["interpolation"], "data-mining": ["classification"],
+  "equations-differentielles": ["équations différentielles"], "statistique-inferentielle": ["estimation"],
+  "systeme-exploitation": ["processus"], "theorie-graphes": ["plus court chemin"],
+  "theorie-langages": ["automates"], "architecture-reseau": ["adressage IP"],
+  "decidabilite-complexite": ["machine de Turing"], "modele-lineaire": ["régression linéaire"],
+  "optimisation-deterministe": ["gradient"], "programmation-fonctionnelle": ["Scala"],
+  "traitement-signal": ["transformée de Fourier"], "economie": ["marché"],
+  "compressive-sensing": ["parcimonie"], "edp": ["différences finies"],
+  "ia": ["apprentissage par renforcement"], "programmation-parallele": ["OpenMP"],
+  "series-temporelles": ["moyenne mobile"], "methodes-agiles": ["Scrum"],
+};
+function courseExamples(id){
+  return EXAMPLES[id] || ING_EXAMPLES[id.replace(/^ing-[12](?:-s[12])?(?:-(?:gm|info|data))?-/, "")] || [];
+}
 function showWelcome(){
   ++searchSequence;
   const courses = coursesInScope();
   const examples = state.course === "all"
-    ? [...new Set(courses.map(c => EXAMPLES[c.id]?.[0]).filter(Boolean))].slice(0, 8)
-    : EXAMPLES[state.course] || [];
+    ? [...new Set(courses.map(c => courseExamples(c.id)[0]).filter(Boolean))].slice(0, 8)
+    : courseExamples(state.course);
   $("results").innerHTML = `<div class="hint">
     <p>Retrouve les cours et exercices de <b>${escapeHtml(courses.length === 1 ? courses[0].curriculum_label : scopeLabel())}</b>.</p>
-    <p>Choisis ton année de Préing, ton semestre et ta matière, puis tape une notion ou une référence comme « TD1 exercice 2 ».</p>
+    <p>Choisis ton cycle, ton année, ton semestre et ta matière, puis tape une notion ou une référence comme « TD1 exercice 2 ».</p>
     <div class="examples">${examples.map(e => `<button class="example">${escapeHtml(e)}</button>`).join('')}</div>
   </div>`;
   document.querySelectorAll(".example").forEach(b => b.onclick = () => { $("q").value = b.textContent; doSearch(); });
