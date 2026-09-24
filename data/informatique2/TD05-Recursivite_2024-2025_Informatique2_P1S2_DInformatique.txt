@@ -1,0 +1,73 @@
+Informatique II
+Semestre 2 - 2023/2024
+TD 5 : Récursivité
+Ne pas oublier de créer un répertoire pour placer les codes de ce TD!
+T outes les fonctions écrites doivent être testées dans le programme principal !
+Pour ce TD et les suivants : les inclusions de bibliothèques, la déclaration des constantes ainsi que la déclaration des
+types structurés si besoin, doivent être écrits dans un fichier.h qui doit être inclus dans votre fichier.c
+Exercice 1 (Fonction puissance)
+1. Ecrire une fonction itérativeint powerIter(int a, int b) qui retourne ab.
+2. Donner une définition récursive puis écrire la fonction récursivepowerRec(int a, int b) qui retourne ab.
+3. Dessiner l’arbre de récursivité de powerRec( 3 , 4 ) .
+Exercice 2 (Coefficient binomial)
+Pour deux entiers naturelsn et p tels que 0≤ p≤ n, les coefficients binomiaux donnent le nombre de sous-ensembles
+possibles de p élements d’un ensemble àn éléments.
+Ils se notent
+n
+k
+
+.
+On a les trois propriétés suivantes :
+∀p∈ N,∀n∈ N
+n
+0
+
+= 1 et
+n
+n
+
+= 1 et
+n
+p
+
+=
+n− 1
+p− 1
+
++
+n− 1
+p
+
+En utilisant ces formules, écrire une fonction calculant le coefficient binomial de deux entiers sans utiliser de calcul de
+factoriel.
+Quel type de fonction doit-on utiliser?
+Exercice 3 (Fonction récursive pour tableau)
+Les fonctions suivantes doivent être testées dans un programme principal en utilisant un tableau rempli aléatoirement.
+1. Ecrire une fonction recursive permettant d’afficher un tableau passé en paramètre.
+2. Ecrire une fonction récursive permettant de trouver le maximum d’un tableau passé en paramètre.
+3. Ecrire une fonction recursive permettant de compter le nombre d’éléments divisibles par3 dans un tableau :
+— En testant les valeurs du tableau en partant de la fin
+— En testant les valeurs du tableau en partant du début
+Exercice 4 (Somme des entiers)
+1. Écrire une fonction itérative sommeEntiers(int a, int b) qui retourne la somme de tous les nombres entiers se
+trouvant entrea et b inclus (exemple :a = 7 et b = 10 retourne 7 + 8 + 9 + 10 = 34 ).
+2. En effectuant la somme dans l’ordre croissant (c’est-à-dire en commençant à sommer les nombres les plus petits), donner
+une définition récursive de cette somme puis écrire la fonctionsommeEntiersCroissant(int a, int b) associée qui
+calcule cette somme (on pourra choisir entre récursivité terminale ou non-terminale.).
+3. En parcourant la somme dans le sens décroissant (c’est-à-dire en commençant à sommer les nombres les plus grands),
+donner une définition récursive de cette somme puis écrire la fonction récursivesommeEntiersDecroissant(int a,
+int b) qui calcule cette somme.
+4. Proposer un programme principal pour tester les fonctions construites ci-dessus en prenant des valeurs de paramètres
+aléatoires entre 100 et 200 pour les paramètres de ces fonctions en ajoutant des conditions si nécessaire.
+1
+<<<PAGE>>>
+Exercice 5 (Somme des chiffres)
+1. Ecrire une fonction itérative qui retourne la somme des chiffres d’un entier positif composé de 3 chiffres.
+Exemple : somme3Chiffres(219) => 12
+2. Modifier la fonction précédente pour qu’elle fonctionne pour n’importe quel nombre entier positif (n’importe quel
+nombre de chiffres).
+Exemple : sommeChiffres(3807) => 18
+3. Donner la définition récursive et écrire une version récursive non terminale de la fonction.
+4. Donner l’arbre de récursivité de votre fonction récursive non terminale avec en argument le nombre6053.
+5. Recommencer les 2 points précédents en utilisant une version récursive terminale de la fonction.
+2

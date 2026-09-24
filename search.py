@@ -16,27 +16,37 @@ Usage:
 """
 import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 
-from courses import COURSES, ensure_meta
+from courses import COURSES, course_context, ensure_meta
 from references import annotate, describe, highlight_terms, match, parse_reference
 from text_utils import expand_query, tokenize
 
 RECENT_BOOST = 0.25
 
 
+class SparseIndex:
+    """Produit matrice-vecteur NumPy sans matérialiser tous les zéros du corpus."""
+    def __init__(self, rows, cols, vals, shape):
+        self.rows, self.cols, self.vals = rows, cols, vals
+        self.shape = tuple(int(n) for n in shape)
+
+    def __matmul__(self, vector):
+        return np.bincount(self.rows, weights=self.vals * vector[self.cols],
+                           minlength=self.shape[0]).astype(np.float32)
+
+
 def load_index(index_path="index.npz", vocab_path="vocab.json", chunks_path="chunks.json"):
-    data = np.load(index_path)
-    idf = data["idf"]
-    if "tfidf" in data:  # ancien format (matrice dense)
-        tfidf = data["tfidf"]
-    else:
-        n, v = (int(x) for x in data["shape"])
-        tfidf = np.zeros((n, v), dtype=np.float32)
-        tfidf[data["rows"], data["cols"]] = data["vals"]
-    vocab = json.load(open(vocab_path, encoding="utf-8"))
-    chunks = annotate([ensure_meta(c) for c in json.load(open(chunks_path, encoding="utf-8"))])
+    with np.load(index_path) as data:
+        idf = data["idf"]
+        if "tfidf" in data:  # ancien format (matrice dense)
+            tfidf = data["tfidf"]
+        else:
+            tfidf = SparseIndex(data["rows"], data["cols"], data["vals"], data["shape"])
+    vocab = json.loads(Path(vocab_path).read_text(encoding="utf-8"))
+    chunks = annotate([ensure_meta(c) for c in json.loads(Path(chunks_path).read_text(encoding="utf-8"))])
     return tfidf, idf, vocab, chunks
 
 
@@ -67,7 +77,8 @@ def query_vector(question, vocab, idf):
     return v, toks
 
 
-def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None):
+def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None,
+                study_years=None, semesters=None):
     """courses/kinds : ensembles d'identifiants ; versions ⊂ {"enonce", "corrige"} ;
     years ⊂ années (int) ou "none" pour les documents sans année. None = pas de filtre."""
     mask = np.ones(len(chunks), dtype=bool)
@@ -79,6 +90,10 @@ def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None):
         elif versions and ("corrige" if c["corrige"] else "enonce") not in versions:
             mask[i] = False
         elif years and (c["year"] if c["year"] else "none") not in years:
+            mask[i] = False
+        elif study_years and c["study_year"] not in study_years:
+            mask[i] = False
+        elif semesters and c["semester"] not in semesters:
             mask[i] = False
     return mask
 
@@ -147,7 +162,9 @@ def main():
     ap.add_argument("question", type=str)
     ap.add_argument("--k", type=int, default=3)
     ap.add_argument("--cours", help=f"parmi {', '.join(COURSES)} (séparés par des virgules)")
-    ap.add_argument("--type", help="parmi cours, td, ds, cc, qcm")
+    ap.add_argument("--type", help="parmi cours, td, tp, ds, cc, qcm, projet")
+    ap.add_argument("--preing", help="année de Préing : 1,2")
+    ap.add_argument("--semestre", help="semestre : 1,2")
     ap.add_argument("--version", help="enonce, corrige")
     ap.add_argument("--annees", help="ex: 2024,2023 (année de début)")
     ap.add_argument("--sans-recence", action="store_true", help="ne pas favoriser les documents récents")
@@ -158,6 +175,8 @@ def main():
     mask = filter_mask(
         chunks, parse_list(args.cours), parse_list(args.type), parse_list(args.version),
         {int(y) if y.isdigit() else y for y in years} if years else None,
+        study_years={int(y) for y in parse_list(args.preing)} if args.preing else None,
+        semesters={int(s) for s in parse_list(args.semestre)} if args.semestre else None,
     )
     rec = None if args.sans_recence else recency(chunks)
     results, toks, info = search(args.question, tfidf, idf, vocab, chunks, k=args.k, mask=mask,
@@ -175,7 +194,7 @@ def main():
 
     for rank, (chunk, score) in enumerate(results, 1):
         print(f"\n{'=' * 70}")
-        print(f"#{rank}  [{COURSES[chunk['course']]}] {chunk['label']}  (score={score:.3f})")
+        print(f"#{rank}  [{course_context(chunk['course'])['label']} · {COURSES[chunk['course']]}] {chunk['label']}  (score={score:.3f})")
         print('-' * 70)
         print(chunk["text"])
 

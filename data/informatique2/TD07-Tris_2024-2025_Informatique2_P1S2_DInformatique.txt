@@ -1,0 +1,87 @@
+Pré-ING1
+Semestre 2 - 2024/2025
+Informatique II
+TD 7 : Tris de t ableaux
+Ne pas oublier de créer un répertoire pour placer les codes de ce TD!
+T outes les fonctions écrites doivent être testées dans le programme principal !
+Pour ce TD et les suivants : les inclusions de bibliothèques, la déclaration des constantes ainsi que la déclaration des
+types structurés si besoin, doivent être écrits dans un fichier.h qui doit être inclus dans votre fichier.c
+1 Mise en place
+1. Définir une constante TAILLE de valeur 100.
+2. Déclarer dans le programme principal, un tableau d’entiers de taille 100 et le remplir avec des valeurs aléatoires entre
+0 et 500.
+3. Écrire/récuperer des TP précédents la procédureAfficheTableau(int* tab, int taille) qui permet d’afficher le
+tableau de taille TAILLE passé en paramètre.
+4. Écrire une fonctionint tabTri(int tab[ ] que retourne 1 si les éléments du tableau passé en paramètres sont triés
+dans l’ordre croissant.
+5. La fonction suivante permet de retourner le temps système en millisecondes. Si on appelle donc deux fois cette fonction,
+en début et en fin de code, on peut déterminer par différence le temps pris par la portion du programme pour s’exécuter.
+(Le format d’affichage du type unsigned long est %ld).
+ATTENTION : ne mettez pas d’instructionsprintf dans la portion de code que vous chronométrez car cela faussera
+grandement la mesure : en effet, d’un point de vue du temps machine, l’affichage sur le terminal est une opération
+extrêmement lente : prudence donc dans vos mesures.
+#include <sys/time.h> // a inclure !
+unsigned long getTimeMilliSec(){
+struct timeval tv;
+gettimeofday(&tv,NULL);
+return (1000 * tv.tv_sec) + (tv.tv_usec / 1000);
+}
+2 Programmation des tris lents
+Implémenter un des tris lents parmi les 3 suivants.
+Mesurer le temps mis par la fonction et visualiser la variation de temps lorsque l’on multiplie TAILLE par 2 ou 4.
+1. En vous inspirant du cours, écrire une procédurevoid triSelection(int* tab, int taille) , qui trie le tableau
+passé en paramètre avec la méthode du tri par sélection. Vérifier que ce tri fonctionne en utilisant le tableau et les
+fonctions définies précédemment.
+2. En vous inspirant du cours, écrire une procédurevoid triBulle(int* tab, int taille) , qui trie le tableau passé
+en paramètre avec la méthode du tri par sélection. Vérifier que ce tri fonctionne en utilisant le tableau et les fonctions
+définies précédemment.
+3. En vous inspirant du cours, écrire une procédurevoid triInsertion(int* tab, int taille) , qui trie le tableau
+passé en paramètre avec la méthode du tri par sélection. Vérifier que ce tri fonctionne en utilisant le tableau et les
+fonctions définies précédemment.
+1
+<<<PAGE>>>
+3 Implémentation des tris rapide.
+Implementer un des tris rapides parmis les deux çi-dessous.
+Mesurer le temps mis par la fonction et visualiser la variation de temps lorsque l’on multiplie TAILLE par 2 ou 4.
+1. Tris fusion :
+— En vous inspirant du cours, écrire une procédurevoid triFusion(int* tab, int taille) qui trie le tableau
+passé en paramètre avec la méthode du tri fusion. Vérifier que ce tri fonctionne.
+— Modifier le code précédent pour afficher le tableau à chaque étape du tri : à chaque passage dans la fonction et
+après chaque fusion pour observer les différentes étapes de l’algorithme.
+2. Tri rapide : L’algorithme de tri rapide du cours ne fonctionne que pour un tableau n’ayant pas de doublon dans ses
+éléments. Modifier l’algorithme de remplissage du tableau afin que deux tableau ne puissent pas être égaux (on pourra
+utiliser la fonction de recherche simple écrite au debut du TD).
+— En vous inspirant du cours, écrire une procédurevoid triRapide(int* tab, int taille) , qui trie le tableau
+passé en paramètre avec la méthode du tri rapide. Vérifier que ce tri fonctionne.
+— Modifier le code précédent pour afficher le tableau à chaque étape du tri (après chaque partition) pour observer les
+différentes étapes de l’algorithme.
+4 Recherche dans un tableau trié/non trié
+1. Écrire une fonctionint RechercheTab(int* tab, int taille, int val) qui parcourt le tableau passé en paramètre
+et retourne la valeur 1 si l’élement existe dans le tableau, la valeur 0 sinon.
+2. On rappelle qu’une recherche dichotomique est applicable sur un tableau préalablement trié. Elle se base sur le principe
+suivant :
+— on regarde l’élément central du tableau : s’il est plus petit que la valeur recherchée, alors cette dernière se trouve
+dans la seconde partie du tableau et inversement.
+— On recommence le processus précédent sur la moitié du tableau où l’on sait que se trouve l’élément recherché.
+— On procède ainsi jusqu’à trouver l’élément ou bien n’avoir plus qu’un tableau d’une seule case (dans ce cas l’élément
+recherché n’existe pas dans le tableau).
+Écrire la fonctionrécursive int rechercheDico(int* tab, int taille, int val, int debut, int fin) qui re-
+cherche de manière dichotomique sival appartient au tableau passé en paramètre dont l’indice de départ estdebut et
+l’indice final inclu estfin.
+La fonction retourne la valeur 1 si l’élement appartient au tableau, la valeur 0 sinon. Tester cette fonction.
+5 Comparaison des recherches.
+1. Afficher le temps d’exécution d’une recherche simple (non dichotomique) ainsi que d’une recherche dichotomique pour
+la recherche du même élément dans le tableau tab.
+2. Recommencer en passant la valeur de TAILLE à 1000 puis à 10000. Quelle recherche est la plus efficace?
+6 Pour aller plus loin : le tri drapeau (difficile!)
+Le tri drapeau est un tri répondant à un problème bien particulier : réorganiser une collection d’éléments identifiés par
+leur couleur, sachant que seules trois couleurs sont présentes (par exemple, rouge, blanc, bleu, dans le cas du drapeau des
+Pays-Bas). Pour simplifier, nous allons utiliser des entiers plutôt que des couleurs, mais vous pouvez corser l’exercice en
+utilisant des énumérations.
+1. Définir un tableau d’entiers de taille 100 dont les éléments seront aléatoires entre 1 et 3 (compris).
+2. Écrire une procédureTriDrapeau(int* tab, int taille) qui prends en paramètre un tableau dont les éléments ne
+peuvent avoir que trois valeurs différentes et qui va le tier ainsi : tous les éléments 1 au début du tableau, puis les 2 puis
+les 3. Attention, on veut un vrai tri, c’est-à-dire qu’il ne faut pas compter le nombre d’occurrences de chaque élément
+et redéfinir un nouveau tableau, mais bien échanger les éléments entre eux pour obtenir le tableau souhaité.
+Essayer d’obtenir une complexité enO(n).
+2

@@ -1,0 +1,3742 @@
+CM Algèbre 2
+Cycle pré-ingénieur 1
+Mohamed Ali DEBYAOUI Florian DUSSAP Thi Hien NGUYEN
+2023-2024
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 1/231
+<<<PAGE>>>
+Évaluation
+Vous aurez 4 notes :
+DS1 (25%) : 1h en TD, semaine du 04/03/2024.
+DS2 (25%) : 1h en TD, semaine du 01/04/2024.
+Examen (40%) : 2h, semaine du 03/06/2024.
+TD (10%) : au cours du semestre.
+On calcule une moyenne pondéréeM de ces notes :
+M = 0,25 (DS1 + DS2) +0,4 E +0,1 TD.
+La note finaleNF est le maximum entre la moyenneM et l’examen E :
+NF = max(M, E ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 2/231
+<<<PAGE>>>
+Chapitres
+1 Groupes et morphismes
+2 Systèmes linéaires
+3 Espaces vectoriels
+4 Applications linéaires
+5 Matrices et inverses de matrices
+6 Déterminants
+7 Représentation matricielle et changements de bases
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 3/231
+<<<PAGE>>>
+Groupes et morphismes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 4/231
+<<<PAGE>>>
+Contenu
+1 Groupes et morphismes
+Lois de composition interne
+Groupes
+Morphismes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 5/231
+<<<PAGE>>>
+Contenu
+1 Groupes et morphismes
+Lois de composition interne
+Groupes
+Morphismes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 6/231
+<<<PAGE>>>
+Lois de composition interne
+Définition
+Soit E un ensemble. Une loi de composition interne surE est une
+application :
+∗ : E× E −→ E
+(x, y ) 7−→ x∗ y.
+On appelle magma tout couple(E,∗) formé d’un ensembleE et d’une loi
+de composition interne∗ sur E.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 7/231
+<<<PAGE>>>
+Lois de composition interne
+Questions
+1 Sur R, les opérations+,−,×,÷ sont-elles des lois de composition
+interne?
+2 La soustraction est-elle une loi de composition interne surN? sur Z?
+sur Q? sur R? sur C?
+3 Donner une loi de composition interne sur l’ensembleF (E, E ) des
+applications d’un ensembleE dans lui-même.
+Réponses
+1 Les opérations +,− et× sont des lois de compositions internes surR,
+mais pas÷. En revanche,÷ est une loi de composition interne surR∗.
+2 La soustraction n’est pas une loi de composition interne surN. C’est
+une loi de composition interne surZ, Q, R et C.
+3 La composition◦ est une loi de composition interne surF (E, E ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 8/231
+<<<PAGE>>>
+Associativité et commutativité
+Définition
+Soit (E,∗) un magma.
+On dit que∗ est associative si∀x, y, z∈ E, (x∗ y )∗ z = x∗ (y∗ z).
+On dit que∗ est commutative si∀x, y∈ E, x∗ y = y∗ x.
+Exemple
+Sur R, l’addition et la multiplicationsont associatives et commutatives.
+Sur R, la soustractionn’est ni associative ni commutative.
+SurF (E, E ), la composition d’applicationsest associative :
+∀f, g, h∈F (E, E ), (f◦ g )◦ h = f◦ (g◦ h),
+mais pas commutative (sauf siCard(E )≤ 1) :
+f◦ g̸= g◦ f en général.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 9/231
+<<<PAGE>>>
+Distributivité
+Définition
+Soit E un ensemble et soient∗ et △ deux lois de composition interne surE.
+On dit que∗ est distributive à gauche par rapport à△ si :
+∀x, y, z∈ E, x∗ (y △ z) = ( x∗ y ) △ (x∗ z).
+On dit que∗ est distributive à droite par rapport à△ si :
+∀x, y, z∈ E, (x △ y )∗ z = (x∗ z) △ (y∗ z).
+On dit que∗ est distributive par rapport à△ si elle est distributive à
+gauche et à droite par rapport à△.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 10/231
+<<<PAGE>>>
+Distributivité
+Exemple
+Dans R, la multiplication est distributive par rapport à l’addition.
+Soit E un ensemble. Dans l’ensembleP(E ) des parties deE,
+l’intersection est distributive par rapport à la réunion :
+∀A, B, C∈P (E ),
+(
+A∩ (B∪ C ) = ( A∩ B)∪ (A∩ C ),
+(A∪ B)∩ C = (A∩ C )∪ (B∩ C ).
+La réunion est également distributive par rapport à l’intersection :
+∀A, B, C∈P (E ),
+(
+A∪ (B∩ C ) = ( A∪ B)∩ (A∪ C ),
+(A∩ B)∪ C = (A∪ C )∩ (B∪ C ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 11/231
+<<<PAGE>>>
+Élément neutre
+Définition
+Soit (E,∗) un magma et soite∈ E. On dit quee est un élément neutre
+pour∗ si :
+∀x∈ E, x∗ e = e∗ x = x.
+Exemple
+Dans (N, +), l’élément neutre est 0.
+Dans (R,×), l’élément neutre est 1.
+Dans (2Z,×), il n’y a pas d’élément neutre.
+Dans (F (E, E ),◦), l’élément neutre estidE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 12/231
+<<<PAGE>>>
+Élément neutre
+Proposition (unicité de l’élément neutre)
+Soit (E,∗) un magma. Si∗ possède un élément neutre, alors il est unique.
+Démonstration.
+Soient e et e′ des éléments neutres de(E,∗). Puisque e est neutre pour∗,
+on a :
+e∗ e′ = e′.
+Mais puisque e′ est aussi neutre pour∗, on a :
+e∗ e′ = e.
+Par conséquent, on ae = e′.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 13/231
+<<<PAGE>>>
+Symétrique d’un élément
+Définition
+Soit (E,∗) un magma possédant un élément neutree et soit x∈ E.
+On dit quex admet un symétrique à droite s’il existex′∈ E tel que
+x∗ x′ = e.
+On dit quex admet un symétrique à gauche s’il existex′∈ E tel que
+x′∗ x = e.
+On dit quex est symétrisable s’il existex′∈ E qui est à la fois
+symétrique à droite et à gauche.
+Vocabulaire. On emploie aussi le terme « inversible » à la place de
+« symétrisable ».
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 14/231
+<<<PAGE>>>
+Symétrique d’un élément
+Exemple
+Dans (R, +), le symétrique d’un nombrex est son opposé−x.
+Dans (R,×), un nombrex est symétrisable si et seulement six̸= 0.
+Dans ce cas, le symétrique dex est son inverse 1
+x.
+Dans (F (E, E ),◦), une applicationf est symétrisable si et seulement
+si f est bijective.Dans ce cas, le symétrique def est son application
+réciproque f−1.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 15/231
+<<<PAGE>>>
+Symétrique d’un élément
+Proposition (unicité du symétrique)
+Soit (E,∗) un magma associatif possédant un élément neutre et soitx∈ E.
+1 Si x′ est un symétrique à droite et six′′ est un symétrique à gauche
+de x, alors x′ = x′′.
+2 Si x est symétrisable, alors son symétrique est unique.
+Démonstration.
+Soit x∈ E et soient x′, x′′ les symétriques à droite et à gauche dex,
+c.-à-.d. x∗ x′ = e et x′′∗ x = e où e est l’élément neutre de(E,∗). Par
+associativité de∗, on a :
+x′ = e∗ x′ = (x′′∗ x)∗ x′ = x′′∗ (x∗ x′) = x′′∗ e = x′′.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 16/231
+<<<PAGE>>>
+Symétrique d’un produit
+Proposition
+Soit (E,∗) un magma associatif possédant un élément neutre.Si x, y∈ E
+sont symétrisables de symétriquesx−1 et y−1, alors x∗ y est symétrisable
+de symétrique :
+(x∗ y )−1 = y−1∗ x−1.
+Remarque. Si∗ n’est pas commutative, l’ordre des symétriques ci-dessus
+est important.
+Démonstration.
+Notons e l’élément neutre de(E,∗). On a par associativité de∗ :
+(x∗ y )∗ (y−1∗ x−1) = x∗ (y∗ y−1)∗ x−1 = x∗ e∗ x−1 = x∗ x−1 = e,
+donc y−1∗ x−1 est le symétrique à droite dex∗ y. On procède de même
+pour montrer que c’est le symétrique à gauche.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 17/231
+<<<PAGE>>>
+Simplification par un élément symétrisable
+Proposition
+Soit (E,∗) un magma associatif possédant un élément neutre et soit
+x∈ E. Si x est symétrisable, alors :
+∀y, z∈ E, x∗ y = x∗ z =⇒ y = z
+∀y, z∈ E, y∗ x = z∗ x =⇒ y = z.
+Attention!
+Ces implications sont fausses en général six n’est pas inversible.Par
+exemple, dans le magma
+ 
+P(R),∪
+
+, on a :
+[0,1]∪ [0,2] = [0,1]∪ [1,2] mais [0,2]̸= [1,2].
+Un autre contre-exemple important est le produit matriciel, cf. chapitre 5.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 18/231
+<<<PAGE>>>
+Itérés d’un élément
+Définition
+Soit (E,∗) un magma associatif possédant un élément neutree. Si x∈ E
+et n∈ N, on notex n l’itéré n-ième de x qu’on définit par récurrence par :
+(
+x 0 = e
+x n = x∗ x n−1 si n≥ 1.
+Autrement dit, sin≥ 1 alors :
+x n = x∗···∗ x| {z }
+n fois
+.
+Remarque. Pour une loi additive+, l’élément neutre se note 0E et l’itéré
+n-ième de x se note nx.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 19/231
+<<<PAGE>>>
+Itérés d’un élément
+Proposition
+Soit (E,∗) un magma associative possédant un élément neutree. Si x∈ E
+possède un symétriquex−1, alors pour toutn∈ N, x n est symétrisable et :
+(x n)−1 =
+ 
+x−1n
+.
+Dans ce cas, on notex−n le symétrique dex n. On définit ainsix k pour
+tout k∈ Z.
+Remarque. Pour une loi additive+, le symétrique dex se note−x. La
+proposition précédente s’écrit−(nx) = n(−x). On note−nx le symétrique
+de nx, ce qui permet de définirkx pour tout k∈ Z.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 20/231
+<<<PAGE>>>
+Itérés d’un élément
+Exemple
+On considère le magma(F (E, E ),◦). L’itéré n-ième d’une applicationf est
+définie par :
+f n =
+
+
+
+idE si n = 0,
+f◦···◦ f| {z }
+n fois
+si n≥ 1.
+Si f est bijective, alors on notef−n l’itéré n-ième de f−1.
+Attention!
+Si f : R→ R, alors f 2 peut avoir un sens différent selon le contexte :
+f 2 peut désigner l’itéré 2e de f, c’est-à-dire l’applicationx7→ f (f (x)).
+f 2 peut désigner le carré def, c’est-à-dire l’applicationx7→ f (x)2.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 21/231
+<<<PAGE>>>
+Applications à valeurs dans un magma
+Proposition
+Soit E et F des ensembles non vides et soit∗ une loi de composition
+interne sur F. On définit la loi de composition interne⊛ surF (E, F ) par :
+∀x∈ E, (f ⊛ g )(x) = f (x)∗ g (x).
+De plus :
+1 si∗ est associative ou commutative,⊛ l’est aussi.
+2 si e est l’élément neutre pour∗, alors l’application constante égale àe
+est l’élément neutre pour⊛.
+En pratique, on note aussi∗ la loi deF (E, F ). C’est ainsi qu’on définit la
+somme et le produit de fonctions à valeurs réelles :
+(f + g )(x) = f (x) + g (x) et (fg )(x) = f (x)g (x).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 22/231
+<<<PAGE>>>
+Contenu
+1 Groupes et morphismes
+Lois de composition interne
+Groupes
+Morphismes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 23/231
+<<<PAGE>>>
+Groupes
+Définition
+Soit (G,∗) un magma. On dit que(G,∗) est un groupe si :
+1 la loi∗ est associative;
+2 la loi∗ admet un élément neutre;
+3 tout élément deG est symétrisable pour∗.
+Si de plus la loi∗ est commutative, on dit que(G,∗) est un groupe
+commutatif (ou abélien).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 24/231
+<<<PAGE>>>
+Groupes
+Exemple
+(Z, +), (Q, +), (R, +) et (C, +) sont des groupes abéliens.
+(Q∗,×), (R∗,×) et (C∗,×) sont des groupes abéliens.
+(N, +), (Z∗,×) et (R,×) ne sont pas des groupes.
+Soit E un ensemble et soitS(E ) l’ensemble des applications bijectives
+de E dans E. Alors (S(E ),◦) est un groupe, non abélien siE possède
+au moins trois éléments.Ce groupe est appelé groupe symétrique de
+E, ou groupe des permutations deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 25/231
+<<<PAGE>>>
+Groupe produit
+Définition
+Soient (E1,∗1),..., (En,∗n) des magmas.On définit surE = E1×···× En
+une loi de composition interne∗ appelée loi produit par :
+∀(x1,..., xn)∈ E,∀(y1,..., yn)∈ E,
+(x1,..., xn)∗ (y1,..., yn) = ( x1∗1 y1, ..., xn∗n yn).
+Proposition (à faire chez vous)
+Soient (G1,∗1),..., (Gn,∗n) des groupes d’éléments neutrese1,..., en.
+Alors G = G1×···× Gn est un groupe pour la loi produit,d’élément
+neutre (e1,..., en). De plus, le symétrique d’un élément(x1,..., xn)∈ G
+est l’élément (x−1
+1 ,..., x−1
+n ) où x−1
+i est le symétrique dexi dans (Gi,∗i ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 26/231
+<<<PAGE>>>
+Sous-groupes
+Définition
+Soient (G,∗) un groupe etH une partie deG. On dit queH est un
+sous-groupe de G si (H,∗) un groupe.
+Exemple
+Pour tout groupeG d’élément neutre e, les parties{e} et G sont des
+sous-groupes de G. Un sous-groupe deG différent de{e} et G est appelé
+sous-groupe propre deG.
+Lemme
+Soient (G,∗) un groupe d’élément neutree et H un sous-groupe deG.
+Alors :
+1 e est l’élément neutre de(H,∗).
+2 H est stable par passage à l’inverse :∀h∈ H, h−1∈ H.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 27/231
+<<<PAGE>>>
+Sous-groupes
+Démonstration.
+1 Soit H un sous-groupe de(G,∗). Alors (H,∗) est un groupe, notons
+eH son élément neutre. Alors on aeH∗ eH = eH et eH∗ e = eH, donc
+eH∗ eH = eH∗ e. En simplifiant à gauche pareH, on obtienteH = e.
+2 Soit h∈ H, soit h′∈ H son inverse dansH et soit h−1 son inverse
+dans G. Alors on a :
+h′ = e∗ h′ = (h−1∗ h)∗ h′ = h−1∗ (h∗ h′) = h−1∗ e = h−1.
+Donc h−1∈ H.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 28/231
+<<<PAGE>>>
+Caractérisation des sous-groupes
+Proposition
+Soient (G,∗) un groupe etH une partie deG. Alors H est un sous-groupe
+de G si et seulement si :
+1 H est non vide;
+2 H est stable par produit et passage à l’inverse :
+∀x, y∈ H, x∗ y−1∈ H.
+En pratique, pour vérifier queH est non vide, on regarde si l’élément
+neutre e de G appartient à H :
+si e∈ H, alors H est non vide. Il reste à vérifier la propriété de
+stabilité pour montrer queH est un sous-groupe.
+si e /∈ H, alors H n’est pas un sous-groupe.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 29/231
+<<<PAGE>>>
+Caractérisation des sous-groupes
+Démonstration.
+Ces conditions sont évidemment nécessaires, montrons qu’elles sont
+suffisantes.
+Puisque H est non vide, soitx∈ H. Par stabilité, on a
+e = x∗ x−1∈ H. Puisque e est neutre pour∗ dans G, il l’est aussi
+dans H.
+Si x∈ H, alors par stabilitéx−1 = e∗ x−1∈ H. Donc le symétrique
+de x pour∗ appartient à H.
+Si x, y∈ H, alors y−1∈ H d’après le point précédent,donc par
+stabilité on ax∗ y = x∗ (y−1)−1∈ H. Ainsi, H est sable par∗.
+La loi∗ étant associative surG, elle l’est à fortiori surH.
+On a montré que∗ est une loi de composition interne associative surH,
+possède un élément neutre dansH et que tout élément deH possède un
+symétrique dans H. Donc H est un sous-groupe de(G,∗).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 30/231
+<<<PAGE>>>
+Caractérisation des sous-groupes
+Exemple
+(Z, +) est un sous-groupe de(Q, +), qui est un sous-groupe de
+(R, +), qui est un sous-groupe de(C, +).
+Montrons que (U,×) est groupe. Pour ce faire, on montre que c’est
+un sous-groupe de(C∗,×) :
+1 On a bienU⊂ C∗.
+2 U est non vide car 1∈ U.
+3 Pour tous z, w∈ U, on a :
+zw−1 = |z|
+|w| = 1
+1 = 1,
+donc zw−1∈ U.
+Pour tout n∈ N∗, (Un,×) est un sous-groupe deU (le vérifier!).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 31/231
+<<<PAGE>>>
+Contenu
+1 Groupes et morphismes
+Lois de composition interne
+Groupes
+Morphismes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 32/231
+<<<PAGE>>>
+Morphismes
+Définition
+Soient (E,∗) et (F, △) deux magmas etf une application deE dans F. On
+dit que f est un morphisme (ou homomorphisme) de(E,∗) dans (F, △) si :
+∀x, y∈ E, f (x∗ y ) = f (x) △ f (y ).
+Si (E,∗) et (F, △) sont des groupes, on dit quef est un morphisme de
+groupes.
+Un peu de vocabulaire :
+Un morphisme de(E,∗) dans lui-même est appelé un endomorphisme.
+Un morphisme bijectif est appelé un isomorphisme.
+Un endomorphisme bijectif est appelé un automorphisme.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 33/231
+<<<PAGE>>>
+Morphismes
+Exemple
+Pour toutλ∈ R, l’application linéaire :
+f : R −→ R
+x 7−→ λx,
+est un endomorphisme du groupe(R, +). Siλ̸= 0, c’est un
+automorphisme.
+L’exponentielle est un isomorphisme de groupes de(R, +) dans
+(R∗
++,×). En effet, pour tousx, y∈ R, on a :
+exp(x + y ) = exp( x)× exp(y ),
+donc exp est un morphisme de groupe, et on sait que l’exponentielle
+est bijective deR dans R∗
++.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 34/231
+<<<PAGE>>>
+Composition de morphismes
+Proposition
+La composée de deux morphismes est un morphisme.
+Démonstration.
+Soient (E,∗), (F, △) et (G,♡) des magmas, et soientf : E→ F et
+g : F→ G des morphismes. Alors pour tousx, y∈ E, on a :
+(g◦ f )(x∗ y ) = g
+ 
+f (x∗ y )
+
+= g
+ 
+f (x) △ f (y )
+
+= g
+ 
+f (x)
+
+♡ g
+ 
+f (y )
+
+= (g◦ f )(x)♡ (g◦ f )(y ).
+Par conséquent, g◦ f est un morphisme de(E,∗) dans (G,♡).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 35/231
+<<<PAGE>>>
+Application réciproque d’un isomorphisme
+Proposition
+L’application réciproque d’un isomorphisme est un isomorphisme.
+Démonstration.
+Soient (E,∗) et (F, △) des magmas et soitf : E→ F un isomorphisme.
+L’application f est bijective, donc elle possède une application réciproque
+f−1 : F→ E également bijective.Montrons que f−1 est un morphisme.
+Pour tous x, y∈ F, on a :
+f
+ 
+f−1(x)∗ f−1(y )
+
+= f
+ 
+f−1(x)
+
+△ f
+ 
+f−1(y )
+
+= x △ y,
+donc f−1(x)∗ f−1(y ) = f−1(x △ y ). Par conséquent, f−1 est un
+isomorphisme.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 36/231
+<<<PAGE>>>
+Calculs avec un morphisme de groupes
+Proposition
+Soient (G,∗) et (G′, △) deux groupes d’éléments neutres respectifse∈ G
+et e′∈ G′. Si f : G→ G′ est un morphisme, alors :
+1 f (e) = e′.
+2 ∀x∈ G, f (x−1) = f (x)−1.
+3 ∀x∈ G,∀n∈ Z, f (x n) = f (x)n.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 37/231
+<<<PAGE>>>
+Calculs avec un morphisme de groupes
+Démonstration.
+1 On a e = e∗ e, donc :
+f (e) = f (e∗ e) =⇒ f (e) = f (e) △ f (e)
+=⇒ f (e) △ f (e)−1 = f (e) △ f (e) △ f (e)−1
+=⇒ e′ = f (e).
+2 Soit x∈ G, alors on a :
+e′ = f (e) = f (x∗ x−1) = f (x) △ f (x−1).
+Par conséquent, f (x−1) est le symétrique def (x).
+3 Par récurrence (à faire chez soi).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 38/231
+<<<PAGE>>>
+Image directe/réciproque d’un sous-groupe
+Proposition
+Soient (G,∗) et (G′, △) deux groupes et soitf : G→ G′ un morphisme.
+1 Si H est un sous-groupe de(G,∗), alors f (H) est un sous-groupe de
+(G′, △).
+2 Si H′ est un sous-groupe de(G′, △), alors f−1(H′) est un sous-groupe
+de (G,∗).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 39/231
+<<<PAGE>>>
+Image directe/réciproque d’un sous-groupe
+Démonstration de 1.
+L’ensemble f (H) est non vide carH est non vide.Soient y1, y2∈ f (H),
+alors il existex1, x2∈ H tels que f (x1) = y1 et f (x2) = y2. Montrons que
+y1 △ y−1
+2 ∈ f (H). On a :
+y1 △ y−1
+2 = f (x1) △ f (x2)−1 = f (x1∗ x−1
+2 ).
+Or, x1∗ x−1
+2 ∈ H car H est un sous-groupe de(G,∗), donc
+y1 △ y−1
+2 ∈ f (H). Ainsi, on a montré quef (H) est un sous-groupe de
+(G′, △).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 40/231
+<<<PAGE>>>
+Image directe/réciproque d’un sous-groupe
+Démonstration de 2.
+On a f (e) = e′∈ H′, donc e∈ f−1(H′). Par conséquent,f−1(H′) est non
+vide. Soient x1, x2∈ f−1(H′), montrons quex1∗ x−1
+2 ∈ f−1(H′). On a :
+f (x1∗ x−1
+2 ) = f (x1) △ f (x2)−1∈ H′,
+car f (x1)∈ H′, f (x2)∈ H′ et H′ est un sous-groupe de(G′, △). Par
+conséquent, x1∗ x−1
+2 ∈ f−1(H′). Ainsi, on a montré quef−1(H′) est un
+sous-groupe de (G,∗).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 41/231
+<<<PAGE>>>
+Noyau et image d’un morphisme de groupes
+Définition
+Soient (G,∗) et (G′, △) deux groupes et soitf : G→ G′ un morphisme.
+On note e′ l’élément neutre deG′.
+f (G ) est appelé l’image def et on le noteIm f.
+f−1({e′}) est appelé le noyau def et on le noteker f.
+Proposition
+Si f : G→ G′ est un morphisme de groupe, alorsker f est un sous-groupe
+de G et Im f est un sous-groupe deG′.
+C’est la conséquence de la proposition précédente.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 42/231
+<<<PAGE>>>
+Injectivité d’un morphisme de groupes
+Lemme
+Soient (G,∗) et (G′, △) deux groupes et soitf : G→ G′ un morphisme.
+Pour tous x, y∈ G, on a l’équivalence :
+f (x) = f (y ) ⇐⇒ x∗ y−1∈ ker f.
+Démonstration.
+Soit e′ l’élément neutre deG′ et soient x, y∈ G. Alors on a :
+f (x) = f (y ) ⇐⇒ f (x) △ f (y )−1 = e′
+⇐⇒ f (x∗ y−1) = e′ (f est un morphisme)
+⇐⇒ x∗ y−1∈ ker f.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 43/231
+<<<PAGE>>>
+Injectivité d’un morphisme de groupes
+Théorème
+Soit (G,∗) un groupe d’élément neutree et soit (G′, △) un groupe.Alors
+un morphisme f : G→ G′ est injectif si et seulement siker f ={e}.
+Démonstration.
+On procède par double implication.
+( =⇒ ) Supposons quef est injective.Soit x∈ ker f, alors on a :
+f (x) = e′ = f (e),
+donc x = e par injectivité def. Par conséquent, ker f ={e}.
+(⇐= ) Supposons queker f ={e}. Soient x, y∈ E tels que f (x) = f (y ),
+alors d’après le lemme précédent, on ax∗ y−1∈ ker f. Puisque ker f ={e},
+alors x∗ y−1 = e, c’est-à-dire x = y. Par conséquent, f est injective.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 44/231
+<<<PAGE>>>
+Systèmes linéaires
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 45/231
+<<<PAGE>>>
+Contenu
+2 Systèmes linéaires
+Définitions
+Systèmes équivalents
+Algorithme de Gauss
+Résolution d’un système linéaire
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 46/231
+<<<PAGE>>>
+Contenu
+2 Systèmes linéaires
+Définitions
+Systèmes équivalents
+Algorithme de Gauss
+Résolution d’un système linéaire
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 47/231
+<<<PAGE>>>
+Système d’équations linéaires
+Dans ce chapitre,K désigne l’ensemble R ou l’ensemble C, et n et p sont
+des entiers naturels non nuls.
+Définition
+On appelle système den équations linéaires àp inconnues x1,..., xp un
+système de la forme :
+
+
+
+a1,1 x1 + a1,2 x2 +··· + a1,p xp = b1
+a2,1 x1 + a2,2 x2 +··· + a2,p xp = b2
+...
+an,1 x1 + an,2 x2 +··· + an,p xp = bn,
+où les ai,j∈ K sont les coefficients du systèmeet les bi∈ K sont le second
+membre. Une solution de ce système est un vecteur(s1,..., sp)∈ Kp
+vérifiant simultanément chaque équation du système.Si tous lesbi sont
+nuls, on dit que le système est homogène.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 48/231
+<<<PAGE>>>
+Matrice associée à un système
+Définition
+Soit (S) un système linéaire :
+
+
+
+a1,1 x1 + a1,2 x2 +··· + a1,p xp = b1
+a2,1 x1 + a2,2 x2 +··· + a2,p xp = b2
+...
+an,1 x1 + an,2 x2 +··· + an,p xp = bn.
+On appelle matrice associée au système(S) le tableau de nombres :
+
+
+a1,1 a1,2 a1,p
+a2,1 a2,2 a2,p
+an,1 an,2 an,p
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 49/231
+<<<PAGE>>>
+Matrice augmentée
+Définition
+Soit (S) un système linéaire de matriceA et notons B le vecteur colonne
+formé par le second membre :
+A =
+
+
+a1,1 a1,p
+an,1 an,p
+
+, B =
+
+
+b1
+bn
+
+.
+On appelle matrice augmentée du système(S) la matrice obtenue en
+juxtaposant A et B :
+
+
+a1,1 a1,p b1
+an,1 an,p bn
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 50/231
+<<<PAGE>>>
+Exemple
+Soit le système de 5 équations à 3 inconnues :
+
+
+
+3x1 +2x2 +5x3 = 7
+2x1 +2x3 =−4
+−x1 + x2−3x3 = 2
+4x1−2x2 = 3
+2
+3x2 +5x3 = 4.
+La matrice associéeA et la matrice augmentéeM sont :
+A =
+
+
+3 2 5
+2 0 2
+−1 1 −3
+4 −2 0
+0 3 5
+
+
+, M =
+
+
+3 2 5 7
+2 0 2 −4
+−1 1 −3 2
+4 −2 0 3/2
+0 3 5 4
+
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 51/231
+<<<PAGE>>>
+Contenu
+2 Systèmes linéaires
+Définitions
+Systèmes équivalents
+Algorithme de Gauss
+Résolution d’un système linéaire
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 52/231
+<<<PAGE>>>
+Opérations élémentaires
+Définition
+On appelle opération élémentaire sur les lignes d’un système (ou d’une
+matrice) l’une des opérations suivantes :
+1 Li↔ Lj : échanger les lignesLi et Lj.
+2 Li←λLi (λ̸= 0) : multiplication de la ligneLi par un scalaireλ∈ K∗.
+3 Li← Li +λLj (i̸= j) : ajouterλLj à la ligneLi.
+Remarque. Les opérations élémentaires sont inversibles :
+1 Li↔ Lj est son propre inverse.
+2 L’inverse de Li←λLi est Li← 1
+λ Li.
+3 L’inverse de Li← Li +λLj est Li← Li−λLj.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 53/231
+<<<PAGE>>>
+Équivalence en lignes
+Définition
+On dit que deux systèmes sont équivalents si on peut passer de l’un à
+l’autre par une suite finie d’opérations élémentaires sur les lignes.
+On dit que deux matricesM et M′ sont équivalentes en lignes si on
+peut passer de l’une à l’autre par une suite finie d’opérations
+élémentaires sur les lignes.Dans ce cas, on note :M∼
+L
+M′.
+Remarques.
+1 Si on passe d’un système(S1) à un système(S2) par une suite
+d’opérations élémentaires O1, O2,..., Om, alors on passe de(S2) à
+(S1) par la suiteO−1
+m ,..., O−1
+2 , O−1
+1 . Ainsi, si (S1) est équivalent à
+(S2), alors (S2) est équivalent à(S1). L’équivalence en lignes est une
+relation d’équivalence.
+2 Effectuer des opérations élémentaires sur un système revient à les
+effectuer sur sa matrice augmentée.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 54/231
+<<<PAGE>>>
+Équivalence et ensemble de solutions
+Lemme
+Si (S1) est un système linéaire et(S2) est le système obtenu à partir de
+(S1) après une opération élémentaire, alors les solutions de(S1) sont des
+solutions de (S2).
+Démonstration.
+Soit s = (s1,..., sp) une solution de(S1).
+Si l’opération élémentaire pour passer à(S2) est un échange de lignes
+ou la multiplication d’une ligne par une constante non nulle, il est
+évident que s est solution de(S2).
+Si l’opération élémentaire estLi← Li +λLj, alors puisques est
+solution de Li et de Lj, il est aussi solution deλLj et de Li +λLj,
+donc s est solution de(S2).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 55/231
+<<<PAGE>>>
+Équivalence et ensemble de solutions
+Proposition
+Deux systèmes équivalents ont le même ensemble de solutions.
+Démonstration.
+Soient (S1) et (S2) des systèmes linéaires équivalents.Puisqu’on passe de
+(S1) à (S2) par des opérations élémentaires, les solutions de(S1) sont des
+solutions de (S2) d’après le lemme précédent.Réciproquement, des
+opérations élémentaires permettent de passer de(S2) à (S1), donc les
+solutions de (S2) sont aussi des solutions de(S1). Les systèmes (S1) et
+(S2) ont donc les mêmes solutions.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 56/231
+<<<PAGE>>>
+Contenu
+2 Systèmes linéaires
+Définitions
+Systèmes équivalents
+Algorithme de Gauss
+Résolution d’un système linéaire
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 57/231
+<<<PAGE>>>
+Matrice échelonnée en lignes
+Définition
+Une matrice est échelonnée en lignes si elle vérifie les deux propriétés
+suivantes :
+1 Si une ligne est nulle, toutes les lignes suivantes le sont aussi.
+2 À partir de la 2e ligne, dans chaque ligne non nulle, le premier
+coefficient non nul (à partir de la gauche) est situé strictement à
+droite du premier coefficient non nul de la ligne précédente.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 58/231
+<<<PAGE>>>
+Matrice échelonnée en lignes
+Exemple
+1 La matrice
+
+
+1 2 3
+0 0 0
+2 1 3
+
+ n’est pas échelonnée en lignes.
+2 La matrice
+
+
+1 2 3 4 5
+0 6 7 8 9
+0 0 0 1 2
+
+ est échelonnée en lignes.
+3 La matrice
+
+
+1 2 3 4 5
+0 0 4 5 6
+0 7 8 9 1
+
+ n’est pas échelonnée en lignes.
+4 La matrice
+
+
+1 2 0 0 3
+0 0 4 5 6
+0 0 7 8 0
+0 0 0 0 9
+
+ n’est pas échelonnée en lignes.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 59/231
+<<<PAGE>>>
+Pivots
+Définition
+Dans une matrice échelonnée en lignes, on appelle pivot le premier
+coefficient non nul de chaque ligne non entièrement nulle.
+Exemple
+Dans la matrice échelonnée :
+
+
+2 1 2 0 3
+0 1 4 5 6
+0 0 0 −3 7
+0 0 0 0 −2
+0 0 0 0 0
+
+
+,
+les pivots sont dans l’ordre :2, 1,−3,−2.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 60/231
+<<<PAGE>>>
+Algorithme du pivot de Gauss
+Proposition (admise)
+Toute matrice est équivalente en lignes à une matrice échelonnée en lignes.
+La démonstration repose sur l’algorithme du pivot de Gauss, qui
+consiste à effectuer des opérations élémentaires sur les lignes d’une
+matrice pour mettre à zéro petit à petit des coefficients jusqu’à
+obtenir une matrice échelonnée équivalente.
+Le système associé à une matrice échelonnée en lignes peut ensuite
+être résolu facilement par « remontée ».
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 61/231
+<<<PAGE>>>
+Exemple
+On considère le système de 3 équations à 4 inconnues :
+
+
+
+2x1 +7x2 +11x3 +15x4 = 19
+3x1 +5x2 + 8x3 +11x4 = 14
+x1 + x2 + 2x3 + 3x4 = 4.
+(S)
+La matrice augmentée de(S) est :
+M =
+
+
+2 7 11 15 19
+3 5 8 11 14
+1 1 2 3 4
+
+.
+On commence par échanger les lignes 1 et 3 car il est plus facile d’effectuer
+les calculs avec un pivot qui vaut 1 ou−1.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 62/231
+<<<PAGE>>>
+M∼
+L
+
+
+1 1 2 3 4 L1↔L3
+3 5 8 11 14
+2 7 11 15 19 L1↔L3
+
+
+∼
+L
+
+
+1 1 2 3 4
+0 2 2 2 2 L2←L2−3L1
+0 5 7 9 11 L3←L3−2L1
+
+
+∼
+L
+
+
+1 1 2 3 4
+0 1 1 1 1 L2←1
+2 L2
+0 5 7 9 11
+
+
+∼
+L
+
+
+1 1 2 3 4
+0 1 1 1 1
+0 0 2 4 6 L3←L3−5L2
+
+
+∼
+L
+
+
+1 1 2 3 4
+0 1 1 1 1
+0 0 1 2 3 L3←1
+2 L3
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 63/231
+<<<PAGE>>>
+Le système (S) est donc équivalent au système
+
+
+
+x1 + x2 +2x3 +3x4 = 4
+x2 + x3 + x4 = 1
+x3 +2x4 = 3.
+(S′)
+On passe l’inconnuex4 dans le second membre et on la traite comme un
+paramètre. Le système est alors triangulaire enx1, x2, x3, on le résout par
+« remontée » : la dernière équation donne la valeur dex3, ce qui permet de
+trouver la valeur dex2 dans la 2e équation, ce qui permet de trouver la
+valeur de x1 dans la 1re équation.
+
+
+
+x1 + x2 +2x3 = 4−3x4
+x2 + x3 = 1− x4
+x3 = 3−2x4
+⇐⇒
+
+
+
+x1 + x2 +2x3 = 4−3x4
+x2 =−2 + x4
+x3 = 3−2x4
+⇐⇒
+
+
+
+x1 = 0
+x2 =−2 + x4
+x3 = 3−2x4.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 64/231
+<<<PAGE>>>
+Finalement, on obtient une description paramétrique des solutions du
+système :on a exprimé les inconnuesx1, x2, x3 en fonction de l’inconnuex4
+qui n’est pas contrainte et peut prendre n’importe quelle valeur dansR. Les
+solutions de (S) sont donc tous les vecteurs de la forme :
+(0,−2 + x4, 3−2x4, x4),
+avec x4∈ R une variable libre.L’ensemble des solutions s’écrit :
+S =
+
+(0,−2 + x4, 3−2x4, x4) : x4∈ R
+	
+.
+Remarque. Géométriquement, on interprèteS comme la droite dans un
+espace à 4 dimensions(!) passant par le point de coordonnées(0,−2,3,0)
+et dirigée par le vecteur de coordonnées(0,1,−2,1).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 65/231
+<<<PAGE>>>
+Lignes nulles d’une matrice échelonnée
+Soit M la matrice augmentée échelonnées en lignes d’un système linéaire.
+Les lignes entièrement nulle deM correspondent à des équations
+« 0= 0 ».Elles peuvent être supprimées du système sans changer les
+solutions.
+Après avoir enlever les lignes nulles, si le pivot de la dernière lignes est
+dans la dernière colonne, alors le système contient une équation de la
+forme « 0= b » avec b̸= 0 le pivot.Dans ce cas, le système n’a pas
+de solutions.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 66/231
+<<<PAGE>>>
+Contenu
+2 Systèmes linéaires
+Définitions
+Systèmes équivalents
+Algorithme de Gauss
+Résolution d’un système linéaire
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 67/231
+<<<PAGE>>>
+Rang d’une matrice/d’un système linéaire
+Proposition (admise)
+Soient M1 et M2 deux matrices échelonnées en lignes.Si M1 et M2 sont
+équivalentes en lignes, alors le nombre de pivots deM1 est égal au nombre
+de pivots deM2.
+Cette proposition implique que peu importe la façon d’échelonner en lignes
+une matrice, le nombre de pivots est toujours le même.
+Définition
+On appelle rang d’une matriceM, et on noterg(M), le nombre de
+pivots obtenus après avoir échelonné en lignesM.
+On appelle rang d’un système linéaire le rang de sa matrice associée.
+Remarque. Le rang est toujours plus petit que le nombre de lignes et le
+nombre de colonnes de la matrice.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 68/231
+<<<PAGE>>>
+Inconnues principales/secondaires
+Définition
+Soit (S) un système linéaire àp inconnues, de rangr et dont la matrice
+associée est échelonnée en lignes.
+On appelle inconnues principales lesr inconnues correspondant aux
+colonnes contenant les pivots.
+On appelle inconnues secondaires lesp− r inconnues restantes.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 69/231
+<<<PAGE>>>
+Système compatible/incompatible
+Définition
+On dit qu’un système est incompatible s’il n’admet aucune solution.
+On dit qu’il est compatible s’il admet au moins une solution.
+Exemple
+Soit (Sα,β) le système linéaire :
+
+
+
+x1−3x2 +5x3 =−4
+2x1 + x2−4x3 =−1
+3x1−2x2 + x3 =α
+4x1−5x2 +6x3 =β
+(Sα,β)
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 70/231
+<<<PAGE>>>
+Exemple
+Sa matrice augmentée est :
+Mα,β =
+
+
+1 −3 5 −4
+2 1 −4 −1
+3 −2 1 α
+4 −5 6 β
+
+.
+En appliquant l’algorithme du pivot de Gauss, on obtient la matrice
+échelonnée :
+M′
+α,β =
+
+
+1 −3 5 −4
+0 1 −2 1
+0 0 0 α +5
+0 0 0 β +9
+
+.
+Le système est compatible si et seulement siα =−5 etβ =−9. Dans ce
+cas, le système est de rang2, les inconnues principales sontx1, x2 et
+l’inconnue secondaire estx3.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 71/231
+<<<PAGE>>>
+Existence et unicité des solutions en fonction du rang
+Proposition
+Soit un système den équations à p inconnues, de rangr, et soit(A| B) sa
+matrice augmentée.
+Si r = n, alors le système est compatible quel que soitB.
+Si r < n, toute forme échelonnée deA contient n− r lignes nulles. Le
+système est compatible ssi ces lignes sont entièrement nulles dans la
+forme échelonnée de la matrice augmentée.
+Dans le cas où le système est compatible :
+Si r = p, alors le système admet une unique solution.
+Si r < p, alors le système admet une infinité de solutions dépendant
+de p− r paramètres.
+Corollaire
+Si r = n = p, alors quel que soitB, le système admet une unique solution.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 72/231
+<<<PAGE>>>
+Structure de l’ensemble des solutions
+Proposition (admise)
+Les solutions d’un système linéaire s’obtiennent en faisant la somme d’une
+solution particulière du système avec toutes les solutions du système
+homogène associé.
+solution générale
+du système
+
+=
+ une solution
+particluière du système
+
++
+solution générale
+du sys. homogène
+
+Remarque. L’ensemble des solutions d’un système linéaire homogène est
+un espace vectoriel, voir chapitre suivant.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 73/231
+<<<PAGE>>>
+Exemple
+Soit un système linéaire à 5 inconnues, compatible et de rang 3.Supposons
+qu’après résolution (et après suppression des lignes « 0= 0 »), on obtienne
+le système : 
+
+
+x2 = 3 +2x1 + x3
+x4 = 2 + x1 +2x3
+x5 =−2 +2x1− x3.
+On a 3 inconnues principales :x2, x4 et x5, et 2 inconnues secondaires :x1
+et x3. L’ensemble des solutions s’écrit :
+S =
+
+(x1, 3 +2x1 + x3, x3, 2 + x1 +2x3,−2 +2x1− x3) : x1, x3∈ R
+	
+.
+Tout éléments∈ S peut s’écrire :
+s = ( 0,3,0,2,−2)| {z }
+solution particulière
++ x1(1,2,0,1,2) + x3(0,1,1,2,−1)| {z }
+solution générale du sys. homogène
+, avec x1, x3∈ R.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 74/231
+<<<PAGE>>>
+Espaces vectoriels
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 75/231
+<<<PAGE>>>
+Contenu
+3 Espaces vectoriels
+Espaces et sous-espaces vectoriels
+Familles de vecteurs
+Dimension d’un espace vectoriel
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 76/231
+<<<PAGE>>>
+Contenu
+3 Espaces vectoriels
+Espaces et sous-espaces vectoriels
+Familles de vecteurs
+Dimension d’un espace vectoriel
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 77/231
+<<<PAGE>>>
+Vecteurs géométriques (rappels de lycée)
+Dans le plan ou l’espace, on définit deux opérations sur les vecteurs :
+1 l’addition vectorielle;
+2 la multiplication par un scalaire.
+Pour additionner deux vecteurs de même origine, on utilise la règle du
+parallélogramme.
+O
+⃗u
+⃗v
+⃗u +⃗v
+O
+⃗u
+λ⃗u
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 78/231
+<<<PAGE>>>
+Vecteurs géométriques (rappels de lycée)
+Fixons un repère de l’espace. On associe à tout vecteur un triplet
+(x, y, z) de nombres réels appelés coordonnées du vecteur.
+⃗ȷ
+⃗k
+⃗ı
+z
+y
+x
+⃗u
+Si ⃗u et ⃗v ont pour coordonnées(x, y, z) et (x′, y′, z′), alors⃗u +⃗v et
+λ⃗u (où λ∈ R) ont pour coordonnées :
+(x + x′, y + y′, z + z′) et (λx, λy, λz).
+On définit ainsi deux opérations surR3 :
+▶ une loi de composition interne+ (addition vectorielle);
+▶ une loi de composition externe· (multiplication par un scalaire).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 79/231
+<<<PAGE>>>
+L’espace Rn
+Généralisons les opérations+ et· précédentes à Rn et étudions leurs
+propriétés algébriques.
+Définition
+Sur Rn, on définit une loi de composition interne+ par :
+∀⃗x = (x1,..., xn)∈ Rn, ∀⃗y = (y1,..., yn)∈ Rn,
+⃗x +⃗y = (x1 + y1,..., xn + yn).
+Proposition (à vérifier chez vous)
+(Rn, +) est un groupe commutatif,d’élément neutre⃗0 = (0,..., 0), et le
+symétrique d’un n-uplet (x1,..., xn) est le n-uplet (−x1,..., −xn).
+Remarque. On définit l’addition de la même façon surCn, avec les mêmes
+propriétés.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 80/231
+<<<PAGE>>>
+Définition
+Sur Rn, on définit une loi de composition externe· (application de R× Rn
+dans Rn) par :
+∀λ∈ R, ∀⃗x = (x1,..., xn)∈ Rn, λ ·⃗x = (λx1,...,λ xn).
+En pratique, le symbole de la multiplication est omis : on noteλ⃗x =λ·⃗x.
+Proposition (à vérifier chez vous)
+La loi· de Rn vérifie :
+1 ∀⃗x∈ Rn, 1⃗x =⃗x.
+2 ∀λ,µ∈ R,∀⃗x∈ Rn, λ(µ⃗x) = (λµ)⃗x.
+3 ∀λ∈ R,∀⃗x,⃗y∈ Rn, λ(⃗x +⃗y ) = λ⃗x +λ⃗y.
+4 ∀λ,µ∈ R,∀⃗x, (λ +µ)⃗x =λ⃗x +µ⃗x.
+Remarque. On définit la multiplication par un nombre complexe de la
+même façon surCn, avec les mêmes propriétés.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 81/231
+<<<PAGE>>>
+D’autres exemples de « vecteurs »
+On connait d’autres objets mathématiques pour lesquels des opérations
+d’addition et de multiplication par un nombre sont définies et vérifient les
+mêmes propriétés que dansRn. Par exemple :
+les fonctions définies sur un même intervalle[a, b];
+les polynômes à coefficients réels;
+les suites numériques réelles;
+... (cherchez si vous connaissez d’autres exemples).
+Les ensembles Rn,F ([a, b], R), R[X ],F (N, R), etc, sont des exemples
+d’espaces vectoriels (réels).
+Plus généralement, on appelle espace vectoriel n’importe quel ensemble
+dans lequel sont définies des lois+ et· satisfaisant les mêmes propriétés
+algébriques que dansRn.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 82/231
+<<<PAGE>>>
+Scalaires
+Jusqu’à présent, on a toujours utilisé les nombres réels comme scalaires
+dans le calcul vectoriel, mais rien n’empêche d’utiliser les nombres
+complexes à la place.
+Définition
+Dans ce chapitre,K désigne soit R, soit C. Les éléments deK sont appelés
+les scalaires.
+Remarque. Plus généralement, dans la plupart des énoncés de ce cours,K
+peut être n’importe quel corps.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 83/231
+<<<PAGE>>>
+Espace vectoriel
+Définition
+On appelle K–espace vectoriel (K–e.v.) un ensembleE dont les éléments
+sont appelés vecteurs,muni d’une loi de composition interne+ et d’une loi
+de composition externe· (application de K× E dans E) telles que :
+1 (E, +) est un groupe commutatif.De plus :
+▶ l’élément neutre est noté 0E et est appelé vecteur nul deE.
+▶ le symétrique d’un vecteuru est noté−u et est appelé vecteur opposé
+de u.
+2 La loi de composition externe vérifie :
+1 ∀u∈ E, 1· u = u.
+2 ∀λ,µ∈ K,∀u∈ E, λ· (µ· u) = (λ×µ)· u.
+3 ∀λ∈ K,∀u, v∈ E, λ· (u + v ) = (λ· u) + (λ· v ).
+4 ∀λ,µ∈ K,∀u∈ E, (λ +µ)· u = (λ· u) + (µ· u).
+Lorsqu’il n’y a pas d’ambiguïté sur les lois utilisées, on note simplementE
+l’espace vectoriel, sinon on le note(E, +,·).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 84/231
+<<<PAGE>>>
+Espace vectoriel
+Remarque. Dans un espace vectoriel, le vecteur nul est unique et l’opposé
+d’un vecteur est unique.
+Proposition
+Soit E un K–espace vectoriel. Pour toutu∈ E, on a :
+1 0· u = 0E.
+2 (−1)· u =−u.
+Démonstration.
+Soit u∈ E.
+1 0· u = (0 +0)· u = (0· u) + (0· u), donc en ajoutant−(0· u) à
+chaque membre, on obtient 0E = 0· u.
+2 u + ((−1)· u) = (1· u) + ((−1)· u) = (1 + (−1))· u = 0· u = 0E,
+donc (−1)· u =−u par unicité du vecteur opposé deu.
+Notation. À partir de maintenant, on noteλu + v le vecteur (λ· u) + v.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 85/231
+<<<PAGE>>>
+Espace vectoriel
+Exemple
+R, R2 et R3 sont des R–e.v.
+Plus généralement, Kn est un K–e.v. Le vecteur nul deKn est le
+n-uplet (0,..., 0).
+C est à la fois unR–e.v. et unC–e.v. Le vecteur nul deC est le
+nombre 0.
+K[X ] et K(X ) sont des K–e.v. Le vecteur nul deK[X ] et de K(X ) est
+le polynôme nul.
+Si A est un ensemble, alorsF (A, K) est un K–e.v. pour les opérations
+d’addition d’applications et de multiplication d’une application par un
+scalaire. Le vecteur nul deF (A, K) est l’application nulle (application
+constante égale à 0). En particulier :
+▶ l’ensemble des fonctions définies sur un même intervalle est unK–e.v.
+▶ l’ensemble des suites numériques (réelles ou complexes) est unK–e.v.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 86/231
+<<<PAGE>>>
+Espace vectoriel produit
+Proposition (à vérifier chez vous)
+Soient (E1, +1,·1),..., (En, +n,·n) des K–e.v. et soitE = E1×···× En.
+On définit surE :
+une loi de composition interne+ par (loi produit) :
+(u1,..., un) + (v1,..., vn) = ( u1 +1 v1, ..., un +n vn);
+une loi de composition externe· par :
+λ· (u1,..., un) = (λ·1 u1, ..., λ·n un);
+où ui, vi∈ Ei et λ∈ K. Alors (E, +,·) est un K–e.v.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 87/231
+<<<PAGE>>>
+Combinaisons linéaires
+Définition
+Soit E un K–espace vectoriel. On appelle famille finie de vecteurs deE tout
+n-uplet (u1,..., un)∈ E n.
+Remarque. Une famille peut comporter plusieurs fois le même vecteur et
+l’ordre des vecteurs dans la famille est important.
+Définition
+Soit E un K–espace vectoriel et soit(u1,..., un) une famille de vecteurs.
+On dit queu∈ E est une combinaison linéaire de la famille(u1,..., un) s’il
+existe des scalairesλ1,...,λ n∈ K tels que :
+u =
+nX
+i=1
+λi ui =λ1u1 +··· +λnun.
+Cette écriture est appelée décomposition deu sur la famille(u1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 88/231
+<<<PAGE>>>
+Combinaisons linéaires
+Exemple
+Dans R3, soient⃗u1 = (1,−1,0), ⃗u2 = (3,1,1) et ⃗u3 = (−1,−3,−1). Alors
+le vecteur⃗v = (5,3,2) est combinaison linéaire de(⃗u1,⃗u2,⃗u3). En effet, on
+a par exemple⃗v =⃗u1 +⃗u2−⃗u3, ou encore⃗v =−⃗u1 +2⃗u2 +0⃗u3.
+Remarque. La décomposition d’un vecteur sur une famille n’est pas unique
+en général.
+Proposition (combinaison linéaire de combinaisons linéaires)
+Soit E un K–espace vectoriel et soit(u1,..., un) une famille de vecteurs.Si
+v1,..., vp∈ E sont des combinaisons linéaires de(u1,..., un), alors toute
+combinaison linéaire de(v1,..., vp) est une combinaison linéaire de
+(u1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 89/231
+<<<PAGE>>>
+Combinaisons linéaires
+Démonstration.
+Par hypothèse, il existes des scalairesλi,k∈ K tels que :
+∀i∈ J1, pK, vi =
+nX
+k=1
+λi,k uk.
+Soit u =Pp
+i=1αi vi une combinaison linéaire de(v1,..., vp). Alors on a :
+u =
+pX
+i=1
+αi
+ nX
+k=1
+λi,k uk
+!
+=
+pX
+i=1
+nX
+k=1
+αiλi,k uk
+=
+nX
+k=1
+pX
+i=1
+αiλi,k uk =
+nX
+k=1
+ pX
+i=1
+αiλi,k
+!
+uk =
+nX
+k=1
+βk uk,
+où βk =Pn
+i=1αiλi,k pour tout k∈ J1, nK.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 90/231
+<<<PAGE>>>
+Sous-espace vectoriel
+Définition
+Soit (E, +,·) un K–espace vectoriel.On dit queF est un sous-espace
+vectoriel (s.e.v.) deE si :
+1 F⊂ E ;
+2 (F, +,·) est un K–espace vectoriel.
+Exemple
+Dans un espace vectorielE, les ensembles{0E} et E sont des s.e.v. deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 91/231
+<<<PAGE>>>
+Caractérisation d’un sous-espace vectoriel
+Proposition
+Soit E un K–espace vectoriel.Une partie F de E est un sous-espace
+vectoriel de E si et seulement si :
+1 0E∈ F ;
+2 F est stable par combinaisons linéaires :
+∀u, v∈ F,∀λ,µ∈ K, λu +µv∈ F.
+Remarques.
+Noter la ressemblance avec le critère pour montrer qu’un ensemble est
+un sous-groupe (cf. chapitre 1).
+Si 0E /∈ F, alors F ne peut pas être un sous-espace vectoriel (tout
+s.e.v. de E contient nécessairement le vecteur nul).
+En général, pour montrer qu’un ensembleF est un espace vectoriel,
+on montre que c’est un s.e.v. d’un espace vectorielE connu.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 92/231
+<<<PAGE>>>
+Exemple
+Montrons que D =
+
+(x, y )∈ R22x− y = 0
+	
+est un s.e.v. deR2.
+1 (2×0)−0 = 0 donc (0,0)∈ D.
+2 Soient ⃗u = (x, y )∈ D, ⃗v = (x′, y′)∈ D et λ,µ∈ R, alors x, y, x′, y′
+vérifient 2x− y = 0 et 2x′− y′ = 0.
+Montrons queλ⃗u +µ⃗v∈ D. Les composantes de ce vecteur sont
+λ⃗u +µ⃗v = (λx +µx′,λ y +µy′). Calculons :
+2(λx +µx′)− (λy +µy′) =λ(2x− y| {z }
+=0
+) +µ(2x′− y′
+| {z }
+=0
+) = 0,
+donc λ⃗u +µ⃗v∈ D.
+Par conséquent D est un s.e.v. deR2.
+Remarque. Géométriquement, D est une droite passant par l’origine du
+repère. Plus généralement, toutes les droites et les plans passant par
+l’origine sont des s.e.v. deR3.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 93/231
+<<<PAGE>>>
+Intersection de sous-espaces vectoriels
+Proposition
+L’intersection de deux s.e.v. d’unK–espace vectoriel E est un s.e.v. deE.
+Démonstration.
+Soient F et G des s.e.v. d’unK–espace vectoriel E.
+1 0E∈ F et 0E∈ G car F et G sont des s.e.v. deE, donc 0E∈ F∩ G.
+2 Soient u, v∈ F∩ G et λ,µ∈ K. Montrons queλu +µv∈ F∩ G :
+▶ λu +µv∈ F par stabilité deF par combinaisons linéaires.
+▶ λu +µv∈ G par stabilité deG par combinaisons linéaires.
+Donc λu +µv∈ F∩ G.
+Par conséquent, F∩ G est un s.e.v. deE.
+Proposition
+Toute intersection (finie ou infinie) de s.e.v. d’unK–espace vectoriel E est
+un s.e.v. deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 94/231
+<<<PAGE>>>
+Sous-espace vectoriel engendré par une famille
+Proposition
+Soit E un K–espace vectoriel et soit(u1,..., un) une famille de vecteurs.
+L’ensemble des combinaisons linéaires de cette famille est un s.e.v. deE,
+appelé sous-espace vectoriel engendré par la famille(u1,..., un). On note
+cet ensemble Vect(u1,..., un).
+Démonstration.
+Notons F = Vect(u1,..., un).
+1 On a 0E = 0u1 +··· +0un donc 0E∈ F.
+2 Si u, v∈ F et λ,µ∈ K, alorsλu +µv∈ F d’après une proposition
+précédente (combinaison linéaire de combinaisons linéaires).
+Par conséquent, F est un s.e.v. deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 95/231
+<<<PAGE>>>
+Sous-espace vectoriel engendré par une famille
+Proposition
+Soit E un K–espace vectoriel et soit(u1,..., un) une famille de vecteurs.
+Alors Vect(u1,..., un) est le plus petit espace vectoriel (au sens de
+l’inclusion) contenant les vecteursu1,..., un. On a alors :
+Vect(u1,..., un) =
+\
+F s.e.v. de E
+u1,...,un∈F
+F.
+Démonstration.
+Soit F un s.e.v. deE contenant les vecteursu1,..., un. Montrons que
+Vect(u1,..., un)⊂ F.
+Soit u∈ Vect(u1,..., un), alors il existeλ1,...,λ n∈ K tels que
+u =λ1u1 +··· +λnun. Puisque u1,..., un∈ F et que F est un s.e.v.,on a
+u∈ F (stabilité par combinaisons linéaires).Par conséquent, on a montré
+que Vect(u1,..., un)⊂ F.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 96/231
+<<<PAGE>>>
+Sous-espace vectoriel engendré par une partie
+Définition
+Soient E un K–espace vectoriel etA une partie deE. L’intersection de tous
+les sous-espaces deE qui contiennent A est un sous-espace vectoriel deE.
+On l’appelle le sous-espace vectoriel engendré parA et on le noteVect(A).
+Remarque. Si A ={u1,..., un}, alors Vect(A) = Vect( u1,..., un).
+Proposition
+Soient E un K–espace vectoriel etA une partie deE. Alors Vect(A) est le
+plus petit s.e.v. deE contenant A.
+Démonstration.
+Par définition, Vect(A) est un s.e.v. deE. De plus, siF est un s.e.v. qui
+contient A, alors Vect(A)⊂ F puisque Vect(A) est l’intersection deF avec
+d’autres sous-espaces.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 97/231
+<<<PAGE>>>
+Sous-espace vectoriel engendré par une partie
+Proposition
+Soit E un K–espace vectoriel et soientA et B des parties deE. Si A⊂ B
+alors Vect(A)⊂ Vect(B).
+Démonstration.
+On a A⊂ B⊂ Vect(B). Ainsi, Vect(B) est un espace vectoriel qui
+contient A,donc Vect(A)⊂ Vect(B).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 98/231
+<<<PAGE>>>
+Somme de sous-espaces vectoriels
+Si F et G sont des s.e.v. d’un espace vectorielE, alors F∪ G n’est pas un
+s.e.v. en général (il n’est pas stable pour l’addition).
+Exemple
+Dans R2, soient F =
+
+(x, y )∈ R2 y = 0
+	
+et G =
+
+(x, y )∈ R2 x = 0
+	
+.
+Alors F et G sont des s.e.v. deR2, mais pasF∪ G : on a
+⃗u = (1,0)∈ F∪ G et ⃗v = (0,1)∈ F∪ G, mais⃗u +⃗v = (1,1) /∈ F∪ G.
+Proposition
+Soit E un K–e.v. et soientF et G des s.e.v. deE. L’ensemble :
+F + G ={u + v : u∈ F et v∈ G},
+est le plus petit s.e.v. qui contientF∪ G. Ce sous-espace est appelé la
+somme des sous-espacesF et G.
+Remarque. Autrement dit, on aF + G = Vect(F∪ G ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 99/231
+<<<PAGE>>>
+Démonstration.
+Notons S = F + G. Montrons queS est un s.e.v. deE.
+1 On a 0E = 0E +0E avec 0E∈ F et 0E∈ G, donc 0E∈ S.
+2 Soient w, w′∈ S et λ,µ∈ K. Alors il existeu, u′∈ F et v, v′∈ G tels
+que w = u + v et w′ = u′ + v′. Alors :
+λw +µw′ =λ(u + v ) +µ(u′ + v′) = λu +µu′
+| {z }
+∈F
++λv +µv′
+| {z }
+∈G
+∈ S.
+Ainsi, on a montré queS est un s.e.v. deE.
+Montrons à présent queF + G est le plus petit s.e.v. contenantF∪ G,
+c’est-à-dire que F + G = Vect(F∪ G ). On procède par double inclusion :
+On a clairementF + G⊂ Vect(F∪ G ).
+Puisque F⊂ F + G et G⊂ F + G, on aF∪ G⊂ F + G. Ainsi,
+F + G est un espace vectoriel qui contientF∪ G, donc
+Vect(F∪ G )⊂ F + G.
+Par conséquent, F + G = Vect(F∪ G ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 100/231
+<<<PAGE>>>
+Sous-espaces vectoriels en somme directe
+Définition
+Soit E un K–e.v. et soientF et G des s.e.v. deE. On dit queF et G sont
+en somme directesi tout élément deF + G se décompose de manière
+unique comme somme d’un élément deF et d’un élément deG. Dans ce
+cas, on noteF⊕ G la somme deF et de G.
+Exemple (contre-exemple)
+Dans R3, soient F =
+
+(x, y )∈ R3 x = y
+	
+et G =
+
+(x, y )∈ R3 y = z
+	
+.
+Le vecteur⃗u = (1,3,2) se décompose de 2 façons différentes surF + G :
+⃗u = (1,1,0) + (0,2,2) = (2,2,1) + (−1,1,1).
+Proposition
+Soit E un K–e.v. et soientF et G des s.e.v. deE. Alors F et G sont en
+somme directe si et seulement siF∩ G ={0E}.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 101/231
+<<<PAGE>>>
+Sous-espaces vectoriels en somme directe
+On démontre la proposition par double implication.
+Démonstration ( =⇒ ).
+Supposons que F et G sont en somme directe.Soit u∈ F∩ G, alors on a
+les décompositions :
+u = u|{z}
+∈F
++ 0E|{z}
+∈G
+= 0E|{z}
+∈F
++ u|{z}
+∈G
+.
+Par unicité de la décomposition, on au = 0E. Ainsi, F∩ G ={0E}.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 102/231
+<<<PAGE>>>
+Sous-espaces vectoriels en somme directe
+Démonstration (⇐= ).
+Supposons que F∩ G ={0E}. Soit u∈ F + G, montrons que la
+décomposition de u comme somme de vecteurs deF et G est unique.
+Soient v, v′∈ F et w, w′∈ G tels que u = v + w = v′ + w′. Alors :
+v− v′
+| {z }
+∈F
+= w′− w| {z }
+∈G
+,
+donc v− v′ et w′− w appartiennent à F∩ G ={0E}. Par conséquent,
+v− v′ = 0E et w′− w = 0E, c’est-à-dire v = v′ et w = w′.Ainsi, la
+décomposition de u est unique.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 103/231
+<<<PAGE>>>
+Sous-espaces supplémentaires
+Définition
+Soit E un K–e.v. et soientF et G des s.e.v. deE. On dit queF et G sont
+supplémentaires dans E si tout vecteur deE se décompose de manière
+unique comme la somme d’un vecteur deF et d’un vecteur deG :
+∀u∈ E, ∃!(v, w )∈ F× G, u = v + w.
+Proposition
+Soit E un K–e.v. et soientF et G des s.e.v. deE. Alors F et G sont
+supplémentaires dans E si et seulement si :
+1 F + G = E ;
+2 F et G sont en somme directe.
+Dans ce cas, on noteF⊕ G = E.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 104/231
+<<<PAGE>>>
+Sous-espaces supplémentaires
+Démonstration.
+Le point 1 est équivalent à l’existence d’une décomposition des vecteurs de
+E comme somme de vecteurs deF et de G, et le point 2 est équivalent à
+l’unicité d’une telle décomposition.
+Exemple
+Dans R3, tout planF passant par (0,0,0) et toute droiteG non contenue
+dans F passant par (0,0,0) sont supplémentaires.
+F
+⃗0
+G
+⃗u
+⃗v
+⃗w
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 105/231
+<<<PAGE>>>
+Contenu
+3 Espaces vectoriels
+Espaces et sous-espaces vectoriels
+Familles de vecteurs
+Dimension d’un espace vectoriel
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 106/231
+<<<PAGE>>>
+Familles génératrices
+Définition
+Soit E un K–e.v. et soit(u1,..., un) une famille de vecteurs deE. On dit
+que (u1,..., un) est une famille génératrice deE (ou que u1,..., un
+engendrent E) si tout vecteur deE est combinaison linéaire des vecteurs
+u1,..., un, c’est-à-dire si Vect(u1,..., un) = E.
+Exemple
+Les vecteurs (1,0,0), (0,1,0) et (0,0,1) engendrent R3, de même que les
+vecteurs (1,0,0), (1,1,0) et (1,1,1).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 107/231
+<<<PAGE>>>
+Familles génératrices
+Proposition
+Soit E un K–e.v. Toute sur-famille d’une famille génératrice deE est
+génératrice.
+Démonstration.
+Si un vecteur est combinaison linéaire d’une famille(u1,..., un), il est à
+fortiori combinaison linéaire de la famille(u1,..., un, un+1,..., un+p).
+Proposition
+Soit E un K–e.v. et soit(u1,..., un) une famille génératrice deE. Alors
+(u1,..., up−1, up+1,..., un) est une famille génératrice deE si et
+seulement si up∈ Vect(u1,..., up−1, up+1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 108/231
+<<<PAGE>>>
+Familles génératrices
+Démonstration.
+On procède par double implication.
+( =⇒ ) Supposons que (u1,..., up−1, up+1,..., un) est génératrice.
+Puisque up∈ E, alors up est combinaison linéaire de
+(u1,..., up−1, up+1,..., un) par définition d’une famille génératrice.
+(⇐= ) Supposons que up est combinaison linéaire de
+(u1,..., up−1, up+1,..., un). Les vecteurs u1,..., un sont combinaisons
+linéaires de (u1,..., up−1, up+1,..., un), donc toute combinaison linéaire
+de (u1,..., un), c.-à-d. tout élément deE, est combinaison linéaire de
+(u1,..., up−1, up+1,..., un) d’après une proposition précédente
+(combinaison linéaire de combinaisons linéaires).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 109/231
+<<<PAGE>>>
+Familles liées
+Proposition
+Soit E un K–e.v. et soit(u1,..., un) une famille de vecteurs deE. Les
+assertions suivantes sont équivalentes :
+1 L’un des vecteursui est combinaison linéaire des autres.
+2 Il existeλ1,...,λ n∈ K non tous nuls tels queλ1u1 +··· +λnun = 0E.
+Dans ce cas, on dit que la famille(u1,..., un) est liée.
+Remarques.
+1 Toute famille contenant le vecteur nul est liée.
+2 Une famille (u, v ) est liée si et seulement siu et v sont colinéaires.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 110/231
+<<<PAGE>>>
+Familles liées
+Démonstration de (1 =⇒ 2).
+Supposons que ui0∈ Vect({ui : i̸= i0}). Alors il existe des scalairesλi∈ K
+tels que :
+ui0 =
+nX
+i=1
+i̸=i0
+λi ui.
+Par conséquent :
+λ1u1 +··· +λi0−1ui0−1 + (−1)ui0 +λi0+1ui0+1 +··· +λnun = 0E.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 111/231
+<<<PAGE>>>
+Familles liées
+Démonstration de (2 =⇒ 1).
+Supposons qu’il existeλ1,...,λ n∈ K non tous nuls tels que :
+λ1u1 +··· +λnun = 0E.
+Soit i0 tel queλi0̸= 0, alors on a :
+λi0ui0 =
+nX
+i=1
+i̸=i0
+(−λi )ui, donc ui0 =
+nX
+i=1
+i̸=i0
+
+−λi
+λi0
+
+ui.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 112/231
+<<<PAGE>>>
+Familles libres
+Définition
+Soit E un K–e.v. et soit(u1,..., un) une famille de vecteurs deE. On dit
+que la famille est libre si elle n’est pas liée.On dit alors que les vecteurs
+u1,..., un sont linéairement indépendants.
+Proposition
+Soit E un K–e.v. et soit(u1,..., un) une famille de vecteurs deE. Les
+assertions suivantes sont équivalentes :
+1 La famille (u1,..., un) est libre.
+2 Aucun vecteur de la famille n’est combinaison linéaire des autres.
+3 ∀λ1,...,λ n∈ K, (λ1u1 +··· +λnun = 0E =⇒ λ1 =··· =λn = 0).
+Démonstration.
+Prendre la négation des assertions de la proposition précédente.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 113/231
+<<<PAGE>>>
+Familles libres
+Exemple
+Dans R4, soient⃗u1 = (1,1,0,2), ⃗u2 = (1,2,−2,1) et ⃗u3 = (2,0,−1,1).
+Cherchons si (⃗u1,⃗u2,⃗u3) est libre.Soient λ1,λ 2,λ 3∈ R tels que :
+λ1⃗u1 +λ2⃗u2 +λ3⃗u3 =⃗0.
+Cette égalité est équivalente au système linéaire :
+
+
+
+λ1 + λ2 +2λ3 = 0
+λ1 +2λ2 = 0
+−2λ2− λ3 = 0
+2λ1 + λ2 + λ3 = 0.
+En résolvant ce système (p. ex. pivot de Gauss),on trouve que l’unique
+solution estλ1 =λ2 =λ3 = 0. Ainsi, la famille(⃗u1,⃗u2,⃗u3) est libre.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 114/231
+<<<PAGE>>>
+Familles libres
+Proposition (à faire chez vous)
+Toute sous-famille d’une famille libre est libre.
+Proposition
+Soit E un K–e.v. et soit(u1,..., un) une famille libre.Soit u∈ E, alors la
+famille (u1,..., un, u) est libresi et seulement siu /∈ Vect(u1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 115/231
+<<<PAGE>>>
+Familles libres
+Démonstration.
+On procède par double implication.
+( =⇒ ) Par contraposée, siu∈ Vect(u1,..., un) alors la famille
+(u1,..., un, u) est liée.
+(⇐= ) Par contraposée, supposons que(u1,..., un, u) est liée.Alors
+il existeλ1,...,λ n,λ∈ K non tous nuls tels que :
+λ1u1 +··· +λnun +λu = 0E. (∗)
+Si on avaitλ = 0, alors (∗) serait une combinaison linéaire nulle de la
+famille (u1,..., un), donc par liberté de cette famille, tous lesλi
+seraient nuls,contradiction. Par conséquent,λ̸= 0 et on a :
+u =
+nX
+i=1
+
+−λi
+λ
+
+ui∈ Vect(u1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 116/231
+<<<PAGE>>>
+Bases
+Définition
+Soit E un K–e.v. et soit(u1,..., un) une famille de vecteurs deE. On dit
+que (u1,..., un) est une base deE si c’est famille à la fois libre et
+génératrice.
+Exemple
+1 Dans Kn, les vecteurs :
+⃗e1 = (1,0..., 0), ⃗e2 = (0,1,0,..., 0), ... , ⃗en = (0,..., 0,1),
+forment une base appelée la base canonique deKn.
+2 Dans Kn[X ], les polynômes 1, X, X 2,..., X n forment une base appelée
+la base canonique deKn[X ].
+Si a∈ K, alors les polynômes 1, X− a, (X− a)2,..., (X− a)n forment
+également une base deKn[X ] (formule de Taylor).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 117/231
+<<<PAGE>>>
+Bases
+Exemple
+Dans R4, soit F =
+
+(x, y, z, t)∈ R42x− y + z +3t = 0
+	
+. Alors F est
+un s.e.v. deR4. Cherchons une base deF. Soit ⃗u = (x, y, z, t)∈ R4, on a :
+⃗u∈ F ⇐⇒ 2x− y + z +3t = 0
+⇐⇒ y = 2x + z +3t
+⇐⇒ ⃗u = (x, 2x + z +3t, z, t)
+⇐⇒ ⃗u = x⃗u1 + z⃗u2 + t⃗u3,
+avec ⃗u1 = (1,2,0,0), ⃗u2 = (0,1,1,0) et ⃗u3 = (0,3,0,1). Ainsi, on a
+F = Vect(⃗u1,⃗u2,⃗u3), c.-à-d. la famille(⃗u1,⃗u2,⃗u3) est génératrice deF. On
+vérifie facilement qu’elle est libre (le vérifier!), donc c’est une base deF.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 118/231
+<<<PAGE>>>
+Coordonnées d’un vecteur dans une base
+Théorème
+Soit E un K–e.v. et soit(u1,..., un) une base deE. Alors tout vecteur de
+E s’écrit de manière unique comme combinaison linéaire de(u1,..., un) :
+∀u∈ E, ∃!(λ1,...,λ n)∈ Kn, u =λ1u1 +··· +λnun.
+Cet unique n-uplet (λ1,...,λ n)∈ Kn est appelé les coordonnées deu dans
+la base (u1,..., un).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 119/231
+<<<PAGE>>>
+Coordonnées d’un vecteur dans une base
+Démonstration.
+Une base est une famille génératrice, donc tout vecteur deE s’écrit comme
+combinaison linéaire de(u1,..., un). Il reste à montrer l’unicité de cette
+combinaison. Soit u∈ E et soientλ1,...,λ n,µ 1,...,µ n∈ K tels que :
+u =λ1u1 +··· +λnun =µ1u1 +··· +µnun.
+Alors on a(λ1−µ1)u1 +··· + (λn−µn)un = 0E. Puisque la famille
+(u1,..., un) est libre, tous les coefficients de cette combinaison linéaire
+sont nuls,c.-à-d. λi =µi pour tout i, d’où l’unicité.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 120/231
+<<<PAGE>>>
+Familles infinies de vecteurs
+Définition
+Soit E un K–e.v.
+Une famille infinie de vecteurs deE est une famille(ui )i∈I où I est un
+ensemble infini.
+On dit qu’un vecteuru∈ E est combinaison linéaire de(ui )i∈I si u est
+combinaison linéaire d’une sous-famille finie de(ui )i∈I, c.-à-d. s’il
+existe i1,..., in∈ I tels que u est combinaison linéaire de(ui1,..., uin ).
+Attention!
+En algèbre linéaire, on ne manipule que des sommes finies de vecteurs.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 121/231
+<<<PAGE>>>
+Familles infinies de vecteurs
+Définition
+Soit E un K–e.v. et soit(ui )i∈I une famille infinie de vecteurs deE.
+On dit que(ui )i∈I est une famille génératricesi tout vecteur deE est
+combinaison linéaire de(ui )i∈I, c’est-à-dire si :
+∀u∈ E, ∃i1,..., in∈ I, u∈ Vect(ui1,..., uin ).
+On dit que(ui )i∈I est une famille libresi toute sous-famille finie de
+(ui )i∈I est libre, c’est-à-dire si :
+∀i1,..., in∈ I, (ui1,..., uin ) est libre.
+Exemple
+Dans K[X ], la famille(X n)n∈N est libre et génératrice : c’est une base de
+K[X ] appelée la base de canonique deK[X ].
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 122/231
+<<<PAGE>>>
+Contenu
+3 Espaces vectoriels
+Espaces et sous-espaces vectoriels
+Familles de vecteurs
+Dimension d’un espace vectoriel
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 123/231
+<<<PAGE>>>
+Espace vectoriel de dimension finie
+Définition
+Soit E un K–e.v. On dit queE est de dimension finie s’il existe une famille
+génératrice finie deE. Sinon, on dit queE est de dimension infinie.
+Lemme (admis)
+Soit E un K–e.v. Si E possède une famille libre dep vecteurs et une famille
+génératrice de m vecteurs, alors p≤ m (la taille d’une famille libre est
+toujours inférieure à la taille d’une famille génératrice).
+Exemple
+1 Kn est dimension finie.
+2 Kn[X ] est de dimension finie.
+3 K[X ] est dimension infinie (car il possède une famille libre infinie, donc
+aucune famille génératrice ne peut être finie d’après le lemme).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 124/231
+<<<PAGE>>>
+Existence de bases
+Théorème (de la base incomplète)
+Soit E un K–e.v. de dimension finie.Si (u1,..., up) est une famille libreet
+si (vi )i∈I est une famille génératrice (finie ou infinie) deE, alors il existe
+une base deE de la forme :
+(u1,..., up, vi1,..., vin ),
+(avec n = 0 si (u1,..., up) est déjà une base deE).
+Corollaire
+Soit E un K–e.v. non nul de dimension finie.
+1 Il existe une base deE.
+2 De toute famille génératrice(vi )i∈I de E, on peut extraire une base
+(vi1,..., vin ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 125/231
+<<<PAGE>>>
+Existence de bases
+Démonstration du théorème de la base incomplète.
+On construit par récurrence une suite de familles libres par ajouts successifs
+de vecteurs de la famille(vi )i∈I, en s’arrêtant quand on obtient une base.
+PosonsL0 = (u1,..., up). C’est une famille libre par hypothèse.
+Soit n∈ N. Supposons queLn = (u1,..., up, vi1,..., vin ) est libre.Si
+Ln est génératrice, alors c’est une base; le théorème est démontré.
+Sinon, il existein+1∈ I tel que vin+1 /∈ Vect(u1,..., up, vi1,..., vin ).
+PosonsLn+1 = (u1,..., up, vi1,..., vin, vin+1). Cette famille est libre
+d’après une proposition précédente.
+Montrons qu’il existen tel queLn soit une base deE. Par l’absurde, si ce
+n’était pas le cas, on aurait une suite(Ln)n∈N de familles libres de tailles
+strictement croissantes.Or d’après le lemme précédent, la taille d’une
+famille libre est toujours inférieure à la taille d’une famille génératrice deE.
+Puisque E est de dimension finie, la taille des familles libres est majorée,
+donc elle ne peut pas croître indéfiniment; contradiction.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 126/231
+<<<PAGE>>>
+Dimension d’un espace vectoriel
+Théorème
+Si E est un K–e.v. non nul de dimension finie,alors toutes les bases deE
+ont le même nombre de vecteurs.Ce nombre est appelé la dimension deE
+et on le notedim(E ). Si E ={0E}, on convient quedim(E ) = 0.
+Démonstration.
+SoientB etB′ deux bases deE, de tailles respectivesn et n′. PuisqueB
+est une famille libre et queB′ est une famille génératrice,on a n≤ n′. En
+échangeant les rôles deB etB′, on obtient l’inégalité contrairen′≤ n. Par
+conséquent, n = n′.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 127/231
+<<<PAGE>>>
+Dimension d’un espace vectoriel
+Exemple
+1 dim(Kn) = n.
+2 dim(Kn[X ]) = n +1.
+3 dim(C) = 2 si C est vu comme unR–e.v.mais dim(C) = 1 si C est vu
+comme un C–e.v.
+Proposition
+Soit E un K–e.v. de dimensionn et soitF une famille dep vecteurs de E.
+1 SiF est libre alorsp≤ n, avec égalité si et seulement siF est une
+base de E.
+2 SiF est génératrice alorsp≥ n, avec égalité si et seulement siF est
+une base deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 128/231
+<<<PAGE>>>
+Dimension d’un sous-espace vectoriel
+Proposition (admis)
+Soit E un K–e.v. de dimension finie.Si F est un s.e.v. deE, alors F est de
+dimension finie etdim(F )≤ dim(E ). De plus, dim(F ) = dim( E ) si et
+seulement si F = E.
+Définition
+Soit E un K–e.v. de dimensionn et soit F un s.e.v. deE.
+Si dim(F ) = 1, on dit queF est une droite vectorielle deE.
+Si dim(F ) = 2, on dit queF est un plan vectoriel deE.
+Si dim(F ) = n−1, on dit queF est un hyperplan vectoriel deE.
+Exemple
+Dans R4, soit F =
+
+(x, y, z, t)∈ R42x− y + z +3t = 0
+	
+. On a vu
+précédemment que F possède une base de 3 vecteurs, doncdim(F ) = 3.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 129/231
+<<<PAGE>>>
+Rang d’une famille de vecteurs
+Définition
+Soit E un K–e.v. et soient(u1,..., un) une famille de vecteurs.On appelle
+rang de (u1,..., un), et on noterg(u1,..., un), la dimension (finie) du
+s.e.v. Vect(u1,..., un).
+Remarque. Le rang d’une famille est le nombre maximal de vecteurs
+linéairement indépendants de cette famille.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 130/231
+<<<PAGE>>>
+Dimension d’une somme
+Théorème (formule de Grassmann)
+Soient F et G des s.e.v. de dimensions finies d’unK–e.v. Alors :
+dim(F + G ) = dim( F ) + dim(G )− dim(F∩ G ).
+Corollaire
+Soient F et G des s.e.v. de dimensions finies d’unK–e.v. Alors :
+dim(F + G )≤ dim(F ) + dim(G ),
+avec égalité si et seulement siF et G sont somme directe.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 131/231
+<<<PAGE>>>
+Caractérisation des supplémentaires en dimension finie
+Proposition
+Soit E un K–e.v. de dimension finie et soientF et G des s.e.v. deE. Les
+assertions suivantes sont équivalentes :
+1 E = F⊕ G (c.-à-d. F et G sont supplémentaires dansE).
+2 dim(E ) = dim( F ) + dim(G ) et F∩ G ={0E}.
+3 dim(E ) = dim( F ) + dim(G ) et E = F + G.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 132/231
+<<<PAGE>>>
+Caractérisation des supplémentaires en dimension finie
+Démonstration.
+On montre que 1=⇒ 2 =⇒ 3 =⇒ 1.
+(1 =⇒ 2) Si E = F⊕ G, alors dim(E ) = dim( F ) + dim(G ) d’après la
+formule de Grassmann.De plus, F et G sont en somme directe donc
+F∩ G ={0E}.
+(2 =⇒ 3) Si dim(E ) = dim( F ) + dim(G ) et F∩ G ={0E}, alors d’après
+la formule de Grassmann, on adim(E ) = dim( F + G ), donc E = F + G.
+(3 =⇒ 1) Si dim(E ) = dim( F ) + dim(G ) et E = F + G, alors d’après la
+formule de Grassmann, on adim(F∩ G ) = 0, donc F∩ G ={0E}. Par
+conséquent F et G sont en somme directe, d’oùE = F⊕ G.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 133/231
+<<<PAGE>>>
+Existence de supplémentaires
+Proposition
+Soit E un K–e.v. de dimension finie et soitF un s.e.v. deE. Alors il existe
+un s.e.v. G tel que F et G sont supplémentaires dansE.
+Démonstration.
+Posons n = dim(E ). Soit (e1,..., ep) une base deF, que l’on complète
+avec des vecteursep+1,..., en tels que (e1,..., en) soit une base deE.
+Posons G = Vect(ep+1,..., en). On a doncdim(F ) = p et
+dim(G ) = n− p, d’où dim(E ) = dim( F ) + dim(G ). Enfin, pour tout
+vecteur u∈ E, il existeλ1,...,λ n∈ K tels que :
+u =λ1e1 +··· +λpep| {z }
+∈F
++λp+1ep+1 +··· +λnen| {z }
+∈G
+,
+donc E = F + G. D’après la proposition précédente,E = F⊕ G.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 134/231
+<<<PAGE>>>
+Applications linéaires
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 135/231
+<<<PAGE>>>
+Contenu
+4 Applications linéaires
+Définitions et propriétés
+Applications linéaires particulières
+Formes linéaires
+Endomorphisme
+Isomorphisme
+Automorphisme
+Noyau et image d’une application linéaire
+Feuille d’exercices-Espaces vectoriels et sous-espaces vectoriels
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 136/231
+<<<PAGE>>>
+Contenu
+4 Applications linéaires
+Définitions et propriétés
+Applications linéaires particulières
+Formes linéaires
+Endomorphisme
+Isomorphisme
+Automorphisme
+Noyau et image d’une application linéaire
+Feuille d’exercices-Espaces vectoriels et sous-espaces vectoriels
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 137/231
+<<<PAGE>>>
+Définitions
+Définition
+Soient (E, +,. ) et (F, +,. ) deux K-espaces vectoriels.
+On dit quef : E→ F est linéaire (ou est un morphisme d’espace vectoriel)
+si :
+(1) ∀x, y∈ E, on af (x + y ) = f (x) + f (y );
+(2) ∀λ∈ K,∀x∈ E, on af (λx) = λf (x).
+On note L (E, F ) l’ensemble des applications deE dans F.
+Proposition (Caractérisation usuelle des applications linéaires)
+Soit f : E→ F. L’application f est linéaire, si et seulement si ,∀λ,∈ K,
+∀x, y∈ E, f (λx + y ) = λf (x) + f (y ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 138/231
+<<<PAGE>>>
+Exemple
+Soit f : E→ F définie par f : x7→ 0F. L’application f est linéaire.
+Proposition
+Soient E, E1,... En, (n∈ N∗) des K espaces vectoriels. L’application
+f : E → E1×···× En
+x 7→ (f1(x),..., fn(x)).
+f est linéaire deE dans E1×···× En, si et seulement si,f1,..., fn sont des
+applications linéaires de respectivement deE dans E1,..., de E dans En.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 139/231
+<<<PAGE>>>
+Exemple
+Montrons que f : R2→ R3 définie par f (x, y ) = ( x + y, x− y,2y ) est une
+application linéaire. Soientλ,∈ R, et a = (x, y ), b = (x′, y′)∈ R2,
+f (λa + b) = f (λx + x′,λ y + y′)
+= ( λx + x′ +λy + y′,λ x + x′−λy− y′,2λy +2y′)
+= λ(x + y, x− y,2y ) + (x′ + y′, x′− y′,2y′)
+= λf (a) + f (b).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 140/231
+<<<PAGE>>>
+Proposition
+Soient (E, +,. ), (F, +,. ), (G, +,. ) des K- espaces vectoriels.
+(1) Si l’application f : E→ F est linéaire alorsf (0E ) = 0F ;
+(2) Si f : E→ F et g : F→ G sont linéaires alorsg◦ f : E→ G est
+linéaire.
+(3) Si u1,..., un sont des vecteurs deE alors∀λ1,...,λ n∈ K :
+f
+ nX
+k=1
+λk uk
+!
+=
+nX
+k=1
+λk f (uk ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 141/231
+<<<PAGE>>>
+Contenu
+4 Applications linéaires
+Définitions et propriétés
+Applications linéaires particulières
+Formes linéaires
+Endomorphisme
+Isomorphisme
+Automorphisme
+Noyau et image d’une application linéaire
+Feuille d’exercices-Espaces vectoriels et sous-espaces vectoriels
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 142/231
+<<<PAGE>>>
+Formes linéaires
+Définition
+On appelle forme linéaire sur unK-espace vectoriel E, toute application
+linéaire de E dans K. On noteE∗, au lieu deL (E, K), l’ensemble des
+formes linéaires surE.
+Exemple
+Pour a1,..., an∈ K fixé, l’application f : Kn→ K définie par
+f : (x1,..., xn)7→ a1x1 +··· + anxn est une forme linéaire surKn. En effet,
+c’est une application deKn vers K et c’est aussi une application linéaire car
+on vérifie aisement que∀λ,∈ K,∀x, y∈ Kn, on a
+f (λx + y ) = λf (x) + f (y ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 143/231
+<<<PAGE>>>
+Endomorphisme
+Définition
+On appelle endomorphisme deE, toute applicatin linéaire deE dans lui
+même. On noteL (E ) ou End(E ), au lieu deL (E, E ), l’ensemble des
+endomorphismes de E.
+Exemple
+L’application identité IdE : E→ E est un endomorphisme deE.
+Proposition
+Si f et g deux endomorphismes deE, alors g◦ f est aussi un
+endomorphisme de E.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 144/231
+<<<PAGE>>>
+Isomorphisme
+Définition
+On appelle isomorphisme d’unK espace vectoriel E vers un K-espace
+vectoriel F toute application linéaire bijective deE vers F. On note
+iso(E, F ) l’ensemble des isomorphismes deE dans F.
+Exemple
+L’application f : R2→ C définie par f (a, b) = a + ib est un isomorphisme
+de R-espace vectoriel. En effet, cette application estR-linéaire et bijective.
+Proposition
+Si f : E→ F et g : F→ G sont des isomorphismes alors la composée
+g◦ f : E→ G est un isomorphisme.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 145/231
+<<<PAGE>>>
+Proposition
+Si f : E→ F est un isomorphisme alors son application réciproque
+f−1 : F→ E est un isomorphisme.
+Exemple
+L’application g : C→ R2 définie par g : z7→ (ℜ(z),ℑ(z)) est
+l’isomorphisme réciproque de l’applicationf : (a, b)∈ R27→ a + ib∈ C.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 146/231
+<<<PAGE>>>
+Automorphisme
+Définition
+On appelle automorphisme deE, tout endomorphisme bijectif deE. On
+note Gl(E ) l’ensemble d’automorphisme deE.
+Proposition
+Si f : E→ E et g : E→ E sont des automorphismes deE alors la
+composée g◦ f : E→ E est un automorphisme.
+Proposition
+Si f : E→ E est un automorphisme alors son application réciproque
+f−1 : E→ E est un automorphisme.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 147/231
+<<<PAGE>>>
+Contenu
+4 Applications linéaires
+Définitions et propriétés
+Applications linéaires particulières
+Formes linéaires
+Endomorphisme
+Isomorphisme
+Automorphisme
+Noyau et image d’une application linéaire
+Feuille d’exercices-Espaces vectoriels et sous-espaces vectoriels
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 148/231
+<<<PAGE>>>
+Théorème
+Soit f : E→ F une application linéaire.
+1 Si V est un sous-espace vectoriel deE alors f (V ) est un sous-espace
+vectoriel de F.
+2 Si W est un sous-espace vectoriel deF alors f−1(W ) est un
+sous-espace vectoriel deE.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 149/231
+<<<PAGE>>>
+Noyau et image d’une application linéaire
+Définition
+Soit f : E→ F une application linéaire.
+(1) On appelleimage de f l’espace Im f = f (E ) ={f (x), x∈ E}.
+(2) On appellenoyau de f l’espace
+ker f = f−1({0F}) ={x∈ E| f (x) = 0F}.
+Proposition
+(1) Im f est un sous-espace vectoriel deF.
+(2) ker f est un sous-espace vectoriel deE.
+Théorème
+Si f : E→ F est une application linéaire alors
+(1) f est surjective, si et seulement si,Im f = F
+(2) f est injective, si et seulement si,ker f ={0E}.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 150/231
+<<<PAGE>>>
+Remarque
+(1) Pour déterminer l’image d’une application linéairef, on détermine les
+valeurs prises parf, i.e., lesy∈ F tels qu’il existex∈ E pour lequel
+y = f (x). En pratique, l’image def est engendré par l’image d’une
+base de E. C’est-à-dire pour touteB = (u1,..., un) une base deE
+Im(f ) = Vect (f (u1),..., f (un))
+(2) Pour déterminer le noyau d’une application linéairef, on résout
+l’equation f (x) = 0F d’inconnue x∈ E.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 151/231
+<<<PAGE>>>
+Rang
+Définition
+Soient E et F deux K-espaces vectoriels etf∈ L (E, F ). On appelle Rang
+de f la dimension du sous-espaces vectorielIm(f ). On le noterg (f ).
+Corollaire
+Pour toute application linéairef de L (E, F ). On arg (f ) ⩽ dim(E ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 152/231
+<<<PAGE>>>
+Exemple
+Déterminons le noyau et l’image de l’application linéairef : R2→ R2
+définie par f : (x, y )7→ (x− y, x + y ). On a :
+ker f ={(0,0)}
+Im f ={(x, x) + (−y, y )| x, y∈ R} = Vect ((1,1), (−1,1)) = R2.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 153/231
+<<<PAGE>>>
+Théorème du rang
+Théorème (Théorème du rang)
+Soient E et F deux K-espaces vectoriels etf de E dans F linéaire. On a
+dim(E ) = dim(ker( f )) + rg (f )
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 154/231
+<<<PAGE>>>
+Exercice 1.
+Soit E un R-espace vectoriel.
+On munit le produit cartésienE× E de l’addition usuelle :
+(x, y ) + (x′, y′) = ( x + x′, y + y′) et de la multiplication externe∗ par les
+complexes définie par :(a + i.b)∗ (x, y ) = ( a.x− b.y, a.y + b.x).
+Montrer que E× E est alors unC-espace vectoriel.
+Celui-ci est appelé complexifié deE.
+Exercice 2. Soit R∗
++ muni de la loi interne définie par
+a⊕ b = a.b,∀a, b∈ R∗
++ et de la loi externe⊗ telle que :
+λ⊗ a = aλ,∀a∈ R∗
++,∀λ∈ R.
+Montrer que (R∗
++,⊕,⊗) est un R-espace vectoriel.
+Exercice 3. Sur R2, on définit les deux lois suivantes : pour tous
+(x, y ), (x′, y′)∈ R2 et∀λ∈ R, on pose
+(x, y ) + (x′, y′) = ( x + x′, y + y′) et λ⋆ (x, y ) = (λx,0).
+Le triplet (R2, +,⋆ ) est-il un espace vectorielsurR?
+Exercice 4. Les parties suivantes sont-elles des sous-espaces vectoriels de
+R2?
+(a) {(x, y )∈ R2| x ⩽ y};
+(b) {(x, y )∈ R2| xy = 0};
+(c) {(x, y )∈ R2| x = y};
+(d) {(x, y )∈ R2| x + y = 1}.
+Exercice 5. Soient F ={(x, y, z)∈ R3| x + y− z = 0} et
+G ={(a− b, a + b, a−3b)| a, b∈ R}.
+(a) Montrer que F et G sont des sous-espaces vectoriels deR3.
+(b) Déterminer F∩ G.
+Exercice 6. Les parties suivantes sont-elles des sous-espaces vectoriels de
+RN?
+(a) {(un)∈ RN| (un) bornée};
+(b) {(un)∈ RN| (un) monotone};
+(c) {(un)∈ RN| (un) convergente};
+(d) {(un)∈ RN| (un) arithmétique}.
+Exercice 7. Soient u1,..., un des vecteurs d’unK-espace vectoriel E.
+Montrer que l’ensembleF ={λ1u1 +··· +λnun|λ1,...,λ n∈ K} est un
+sous-espace vectoriel deE = Vect(u1,..., un).
+Exercice 8. Soient F et G des sous-espaces vectoriels deE.
+Montrer que F∩ G = F + GLeftrightarrowF = G.
+Exercice 9. Soient F et G deux sous-espaces vectoriels d’unK-espace
+vectoriel E.
+Montrer que F∪ G est un sous-espace vectoriel deE, si et seulement si,
+F⊂ G ou G⊂ F.
+Exercice 10. Comparer Vect(A∩ B) et Vect(A)∩ Vect(B).
+Exercice 11. Soient A et B deux parties d’unK-espace vectoriel E.
+Montrer que Vect(A∪ B) = Vect( A) + Vect(B).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 155/231
+<<<PAGE>>>
+Matrices et inverses de matrices
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 156/231
+<<<PAGE>>>
+Contenu
+5 Matrices et inverses de matrices
+Définition
+(Mn,p(K), +, .) est un K-espace vectoriel
+Opérations
+Dimension
+Sous-espaces des matrices diagonales et triangulaires
+Propriétés du produit matriciel
+Puissance d’une matrice
+Matrices inversibles
+Détermination pratique de l’inverse d’une matrice carrée inversible
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 157/231
+<<<PAGE>>>
+Définition
+Définition
+Soient n, p∈ N∗. On appellematrice à n lignes et p colonnes à coefficients
+dans K, un tableau àn lignes et p colonnes d’éléments deK. On note une
+telle matrice
+M = (aij ) 1≤i≤n
+1≤j≤p
+=
+
+
+a11 a12 ··· a1P
+a21 a22 ··· a2p
+... ... ... ...
+an1 an2 ··· anp
+
+.
+• On dit queM est unematrice colonnesi p = 1.
+• On dit queM est unematrice lignesi n = 1.
+• On dit queM est unematrice carréesi n = p.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 158/231
+<<<PAGE>>>
+Notation :
+• On noteMn,p(K) l’ensemble des matrices àn lignes et p colonnes à
+coefficients dans K.
+• Si p = n, on noteMn(K) l’ensemble des matrices carrées àn lignes et
+à n colonnes.
+• Un élément deMn(K) est dit matrice carrée de taillen.
+• Soit M = (aij ) 1≤i≤n
+1≤j≤p
+, alors aij est le coefficient situé sur laiième
+ligne et lajième colonne de la matriceM.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 159/231
+<<<PAGE>>>
+Matrice triangulaire supérieure
+Définition
+Soit M = (aij )1≤i,j≤n une matrice carrée de taillen. On dit que :
+M est unematrice triangulaire supérieure(resp. triangulaire strictement
+supérieure) si aij = 0 pour touti > j (resp. i≥ j). C’est-à-dire :
+M =
+
+
+a11 a12 ··· a1n
+0 a22 ··· a2n
+... ... ... ...
+0 ··· 0 ann
+
+, (resp.M =
+
+
+0 a12 ··· a1n
+... ... ... ...
+... ... an−1,n
+0 ··· ··· 0
+
+
+).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 160/231
+<<<PAGE>>>
+Matrice triangulaire inférieure
+Définition
+Soit M = (aij )1≤i,j≤n une matrice carrée de taillen. On dit que :
+M est unematrice triangulaire inférieure(resp. triangulaire strictement
+inférieure) si aij = 0 pour touti < j (resp. i≤ j). C’est-à-dire :
+M =
+
+
+a11 0 ··· 0
+a21 a22 ··· 0
+... ... ... ...
+an1 ··· an,n−1 ann
+
+, (resp.M =
+
+
+0 0 ··· 0
+a21
+... ... ...
+... ... 0
+an1 ··· an,n−1 0
+
+
+).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 161/231
+<<<PAGE>>>
+Matrice diagonale
+Définition
+Soit M = (aij )1≤i,j≤n une matrice carrée de taillen. On dit que :
+M est unematrice diagonalesi aij = 0 pour touti̸= j. C’est-à-dire :
+M =
+
+
+a11 0 ··· 0
+0 ... ... ...
+... ... an−1,n−1 0
+0 ··· ... ann
+
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 162/231
+<<<PAGE>>>
+Matrice symétrique/ antisymétrique
+Définition
+Soit M = (aij )1≤i,j≤n une matrice carrée de taillen. On dit que :
+M est symétrique (resp. antisymétrique) siaij = aji (resp. aij− aji) pour
+tout 1≤ i, j≤ n. C’est-à-dire :
+M =
+
+
+a11 a12 ··· a1n
+a12 a22 ··· a2n
+... ... ... ...
+a1n a2n ··· ann
+
+, ( resp. M =
+
+
+a11 a12 ··· a1n
+−a12 a22 ··· a2n
+... ... ... ...
+−a1n −a2n ··· ann
+
+).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 163/231
+<<<PAGE>>>
+Matrice transposée
+Définition
+Soit M = (aij )1≤i,j≤n une matrice carrée de taillen. On dit que :
+Soit M = (aij ) 1≤i≤n
+1≤j≤p
+∈M n,p(K). On appelletransposée de M la matrice
+tM = (bij ) 1≤i≤p
+1≤j≤n
+∈M p,n(K) où bij = aij. c’est-à-dire :
+tM =
+
+
+a11 a21 ··· an1
+a12 a22 ··· an2
+... ... ... ...
+a1p a2p ··· anp
+
+.
+Autrement dit, lesn lignes de M sont les n colonnes de tM et les p
+colonnes de M sont les p lignes de tM.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 164/231
+<<<PAGE>>>
+Remarque
+(1) Une matrice carréeM est symétrique, si et seulement si,tM = M.
+(2) Une matrice carréeM est antisymétrique, si et seulement si,
+tM =−M.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 165/231
+<<<PAGE>>>
+Somme de matrices
+Définition
+Soit A = (aij ) 1≤i≤n
+1≤j≤p
+∈M n,p(K) et B = (bij ) 1≤i≤n
+1≤j≤p
+∈M n,p(K). On
+définit la matriceA + B∈M n,p(K) de la façon suivante :
+A + B = (aij + bij ) 1≤i≤n
+1≤j≤p
+∈M n,p(K). Ainsi
+A + B =
+
+
+a11 a12 ··· a1P
+a21 a22 ··· a2p
+... ... ... ...
+an1 an2 ··· anp
+
+ +
+
+
+b11 b12 ··· b1P
+b21 b22 ··· b2p
+... ... ... ...
+bn1 bn2 ··· bnp
+
+
+=
+
+
+a11 + b11 a12 + b12 ··· a1P + b1p
+a21 + b21 a22 + b22 ··· a2p + b2p
+... ... ... ...
+an1 + bn1 an2 + bn2 ··· anp + bnp
+
+.
+Remarque On ne somme que des matrices de même types.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 166/231
+<<<PAGE>>>
+Multiplication par un scalaire
+Définition
+Soit M = (aij ) 1≤i≤n
+1≤j≤p
+∈M n,p(K) et soitλ∈ K. On définit la matriceλA
+deMn,p(K) parλA = (λaij ) 1≤i≤n
+1≤j≤p
+. Ainsi
+λA =
+
+
+λa11 λa12 ··· λa1P
+λa21 λa22 ··· λa2p
+... ... ... ...
+λan1 λan2 ··· λanp
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 167/231
+<<<PAGE>>>
+Théorème
+(Mn,p(K), +,. ) est un K-espace vectoriel d’élément nul
+0 = 0Mn,p(K) =
+
+
+0 ··· 0
+... ···
+0 ··· 0
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 168/231
+<<<PAGE>>>
+Définition
+Soit 1≤ i≤ n et 1≤ j≤ p.
+On appelle matrice élémentaire d’indice(i, j) deMn,p(K) la matrice Eij,
+dont tous les coefficients sont nuls sauf à laiième ligne et lajième colonne
+qui vaut 1.
+Exemple
+DansM2(K), les matrices élémentaires sont
+E11 =
+ 1 0
+0 0
+
+E12 =
+ 0 1
+0 0
+
+E21 =
+ 0 0
+1 0
+
+E22 =
+ 0 0
+0 1
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 169/231
+<<<PAGE>>>
+Exemple
+DansMn,1(K) les matrices élémentaires sont :
+E11 =
+
+
+1
+0
+...
+0
+
+,..., En1 =
+
+
+0
+...
+0
+1
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 170/231
+<<<PAGE>>>
+Théorème
+La famille B = (Eij,1 ⩽ i≤ n,1 ⩽ j ⩽ p) est une base deMn,p(K).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 171/231
+<<<PAGE>>>
+Démonstration.
+Pour toute matriceX = (aij ) 1⩽i⩽n
+1⩽j⩽p
+∈M n,p(K), on aX =
+X
+1⩽i⩽n
+1⩽j⩽p
+aij Eij. Donc B
+est une famille génératrice deMn,p(K). Montrons maintenant queB est libre.
+Soient λij∈ K, 1 ⩽ i ⩽ n et 1 ⩽ j ⩽ p tel que
+X
+1⩽i⩽n
+1⩽j⩽p
+λij Eij = 0Mn,p (K) et
+montrons queλij = 0,∀1 ⩽ i ⩽ n et 1 ⩽ j ⩽ p. On a
+X
+1⩽i⩽n
+1⩽j⩽p
+λij Eij = 0Mn,p (K) est
+équivalent à 
+
+λ11 ··· λ1p
+... ...
+λn1 ··· λnp
+
+ =
+
+
+0 ··· 0
+... ...
+0 ··· 0
+
+.
+Par identification on obtient le résultatλij = 0,∀1 ⩽ i ⩽ n,1 ⩽ j ⩽ p.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 172/231
+<<<PAGE>>>
+Corollaire
+La dimension de l’espace vectorielMn,p(K) est m× p. En particulier
+dimMn(K) = n2 et dimMn,1(K ) = dimM1,n(K) = n.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 173/231
+<<<PAGE>>>
+Exemple
+Soient A1, A2, A3, A4 les matrices deM2(R) suivantes :
+A1 =
+ 1 0
+0 1
+
+A2 =
+ 1 0
+0 −1
+
+A3 =
+ 1 1
+1 1
+
+A4 =
+ 0 −1
+1 0
+
+.
+Montrons que B = (A1, A2, A3, A4) est une base deM2(R).
+Nous remarquons queCard(B) = 4 = dimM2(R).
+Donc pour queB soit une base deM2(R) il suffit queB soit libre sur
+M2(R).
+Soient λ1,...,λ 4∈ R, tel queλ1A1 +λ2A2 +λ3A3 +λ4A4 = 0. Montrons
+que λ1 =··· =λ4 = 0.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 174/231
+<<<PAGE>>>
+Exemple
+On aλ1A1 +λ2A2 +λ3A3 +λ4A4 = 0 est équivalent à
+ λ1 +λ2 +λ3 λ3−λ4
+λ3 +λ4 λ1−λ2 +λ3
+
+=
+ 0 0
+0 0
+
+.
+Qui est équivalent à 
+
+
+λ1 +λ2 +λ3 = 0,
+λ3−λ4 = 0,
+λ3 +λ4 = 0,
+λ1−λ2 +λ3 = 0.
+On déduit facilement queλ1 =λ2 =λ3 =λ4 = 0.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 175/231
+<<<PAGE>>>
+Exemple
+Montrons que :
+F =
+ a + b −a− b
+2a + b −a +2b
+
+| a, b∈ K
+
+est un sous-espace vectoriel deM2(K). On a
+F =
+ a −a
+2a −a
+
++
+ b −b
+b 2b
+
+| a, b∈ K
+
+=
+
+a
+ 1 −1
+2 −1
+
++ b
+ 1 −1
+1 2
+
+| a, b∈ K
+
+= vect
+ 1 −1
+2 −1
+
+,
+ 1 −1
+1 2
+
+.
+Par suite F est un sous-espace vectoriel deM2(K).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 176/231
+<<<PAGE>>>
+Exemple
+Soit H =
+ a b
+c d
+
+| a + b + c + d = 0, avec a, b, c, d∈ K
+
+.
+Montrons que H est un sous-espace vectoriel deM2(K).
+Soit f l’application suivante
+f : M2(K) → K a b
+c d
+
+7→ a + b + c + d.
+Il est facile à vérifier quef est une application linéaire, c’est-à-dire, pour
+tous λ, b∈ K, A, B∈M 2(K) on a f (λA + bB) = λf (A) + bf (B).
+On a
+ker f = {M∈M 2(K )| f (M) = 0}
+=
+ a b
+c d
+
+| a + b + c + d = 0
+
+On remarque queker f = H et on sait que le noyau d’une application
+linéaire est un sous-espace vectoriel. On déduit alors queH est un
+sous-espace vectoriel deM2(K).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 177/231
+<<<PAGE>>>
+Sous-espaces des matrices diagonales et triangulaires
+Proposition
+Dn(K) l’ensemble des matrices diagonales deMn(K) est un sous-espace
+vectoriel deMn(K) de dimension n.
+Remarque Une base de
+Dn(K) =
+
+
+
+M∈M n(K)| M =
+
+
+a11 0
+...
+0 ann
+
+, aij∈ K
+
+
+
+est
+B1 = (E11,..., Enn).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 178/231
+<<<PAGE>>>
+Proposition
+(1) L’ensemble des matrices triangulaires supérieures (resp. triangulaires
+inférieures) est un sous-espace vectoriel deMn(K) de dimension
+n(n+1)
+2 .
+(2) L’ensemble des matrices traingulaires strictement supérieures (resp.
+triangulaires strictement inférieures) est un sous-espace vectoriel de
+Mn(K) de dimension n(n−1)
+2 .
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 179/231
+<<<PAGE>>>
+Remarque
+(1) vect(Eij,∀1≤ i≤ j≤ n) est l’ensemble des matrices triangulaires
+supérieures.
+(2) vect(Eij,∀1≤ i < j≤ n) est l’ensemble des matrices traingulaires
+strictement supérieures
+(3) vect(Eij,∀1≤ j≤ i≤ n) est est l’ensemble des matrices triangulaires
+inféreiures.
+(4) vect(Eij,∀1≤ j < i≤ n) est l’ensemble des matrices traingulaires
+strictement strictement inférieures.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 180/231
+<<<PAGE>>>
+Exercice
+Montrer que :
+(1) T ⩾
+n (K)⊕T <
+n (K) =Mn(K).
+(2) T ⩽
+n (K)⊕T >
+n (K) =Mn(K).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 181/231
+<<<PAGE>>>
+Propriétés du produit matriciel
+Définition
+Soient A = (aij ) 1⩽i⩽n
+1⩽j⩽p
+∈M n,p(K), B = (bij ) 1⩽i⩽p
+1⩽j⩽q
+∈M p,q(K). On définit
+la matrice C = A× B = AB = (cij ) 1≤i≤n
+1≤j≤q
+∈M n,q(K), par
+∀1≤ i≤ n,∀1≤ j≤ q, cij =Pp
+k=1 aik bkj.
+Exemple Vérifier que pour tousEij, Ekl∈M n(K), on aEij Ekl =δjk Eil.
+Attention : Pour que cette multiplication matricielle soit possible il est
+necessaire que le nombre de colonnes deA soit egal au nombre de ligne de
+B. On apprend : “type(n,p)× type(p,q)=type(n,q).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 182/231
+<<<PAGE>>>
+Exemple
+ 1 2
+−1 1
+ 1 0 0
+2 1 −1
+
+=
+ 1×1 +2×2 0 +2×1 0 +2×−1
+−1×1 +1×2 0 +1×1 0 +1×−1
+
+=
+ 5 2 −2
+1 1 −1
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 183/231
+<<<PAGE>>>
+Remarque Si les types deA et B permettent de calculerAB et BA, alors
+en général on n’a pasAB = BA. Par exemple :
+ 1 0
+0 0
+ 0 1
+0 0
+
+=
+ 0 1
+0 0
+
+ 0 1
+0 0
+ 1 0
+0 0
+
+=
+ 0 0
+0 0
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 184/231
+<<<PAGE>>>
+Proposition
+(1) Pour tout A∈M n,p(K), B∈M p, q(K), C∈M q, m, on a
+(AB)C = A(CB);
+(2) pour tous A, B∈M n,p(K) et C∈M p, q(K), on a
+(A + B)C = AC + BC ;
+(3) pour tous A∈M n,p(K) et B, C∈M p, q(K), on a
+A(B + C ) = AB + AC ;
+(4) Pour tout A∈M n,p(K), B∈M p, q(K), et pour toutλ∈ K, on a
+λ(AB) = (λA)B = A(λB).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 185/231
+<<<PAGE>>>
+Remarque Dans l’ensemble des matricesMn(K) des matrices carrées, la
+multiplications est une loi de composition interne. Elle admet comme
+élément neutre la matrice diagonale
+In =
+
+
+1 0
+...
+0 1
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 186/231
+<<<PAGE>>>
+Puissance d’une matrice
+Définition
+Soit A∈M n(K), on note
+A0 = In, A1 = A, A2 = A× A,..., Am = A×···× A (m termes).
+Attention : (A + B)2 = A2 + AB + BA + B 2̸= A2 +2AB + B 2
+(A + B)3 = A3 + A2B + ABA + BA2 + AB 2 + BAB + B 2.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 187/231
+<<<PAGE>>>
+Contenu
+5 Matrices et inverses de matrices
+Définition
+(Mn,p(K), +, .) est un K-espace vectoriel
+Opérations
+Dimension
+Sous-espaces des matrices diagonales et triangulaires
+Propriétés du produit matriciel
+Puissance d’une matrice
+Matrices inversibles
+Détermination pratique de l’inverse d’une matrice carrée inversible
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 188/231
+<<<PAGE>>>
+Matrices inversibles
+Définition
+Une matrice A∈M n(K) est dite inversible s’il existeB∈M n(K) vérifiant
+AB = BA = In.
+Cette matrice B est alors unique, c’est l’inverse deA noté A−1.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 189/231
+<<<PAGE>>>
+Exemple
+La matrice In est inversible etI−1
+n = In.
+Proposition
+Soient A, B∈M n(K).
+(1) Si A et B sont inversibles alors(AB)−1 = B−1A−1.
+(2) Si A est inversible alorsA−1 est inversible et(A−1)−1 = A.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 190/231
+<<<PAGE>>>
+Définition
+On note GLn(K) l’ensemble des matrices inversibles deMn(K).
+Proposition
+(GLn(K),×) est un groupe.
+Exemple
+Soit A =
+ 1 2
+3 4
+
+. On vérifie par le calcul queA2−5A = 2I2. Par suite
+A( 1
+2 A− 5
+2 I2) = I2. On conclut alors queA−1 = 1
+2 A− 5
+2 I2.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 191/231
+<<<PAGE>>>
+Remarque La somme de deux matrice inversible n’est pas toujours une
+matrice inversible. Par example :
+ 1 0
+0 1
+
++
+−1 0
+0 −1
+
+=
+ 0 0
+0 0
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 192/231
+<<<PAGE>>>
+Lemme
+Soient A, B∈M n,p(K) si AX = BX,∀X∈M p,1(K) alors A = B.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 193/231
+<<<PAGE>>>
+Comment chercher l’inverse d’une matrice carrée
+A∈ GLn(K) :
+Soit A = (aij ) 1⩽i⩽n
+1⩽j⩽n
+∈ GLn(K). On introduitX =
+
+
+x1
+...
+xn
+
+∈M n,1(K) et
+Y =
+
+
+y1
+...
+yn
+
+ = AX∈M n,1(K). On a
+
+
+y1
+...
+yn
+
+ =
+
+
+a11 ··· a1n
+... ...
+an1 ··· ann
+
+
+
+
+x1
+...
+xn
+
+.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 194/231
+<<<PAGE>>>
+Le système est équivalent à
+
+
+
+y1 = a11x1 + a12x2 +··· + a1nxn
+... ... ...
+yn = an1x1 + an2x2 + annxn.
+Si cela est possible, on résout ce système dont les inconnues sontx1,..., xn
+et on obtient :
+(S) :
+
+
+
+x1 = b11y1 + b12y2 +··· + b1nyn
+... ... ...
+xn = bn1y1 + bn2y2 +··· + bnnyn.
+Soit B = (bij ) 1≤i≤n
+1≤j≤n
+∈ GLn(K).
+Le système (S) est équivalent àX = BY. Ainsi
+InX = BAX,∀X∈M n,1(K), on a doncIn = BA donc A−1 = B
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 195/231
+<<<PAGE>>>
+Exemple
+Soit A =
+
+
+0 1 1
+1 0 1
+1 1 0
+
+∈M 3(R). Déterminons A−1. Soient
+X =
+
+
+x1
+x2
+x2
+
+, Y =
+
+
+y1
+y2
+y3
+
+∈M 3,1(R) tel que Y = AX. On a :
+
+
+
+y1 = x2 + x3
+y2 = x1 + x3
+y3 = x1 + x2
+⇔
+
+
+
+x2 = y1− x3
+x3 = 1
+2 (y2− y3 + y1)
+x1 = y3− y1 + x3
+⇔
+
+
+
+x2 = 1
+2 (y1− y2 + y3)
+x3 = 1
+2 (y1 + y2− y3)
+x1 = 1
+2 (−y1 + y2 + y3)
+On déduit alors queA−1 = 1
+2
+
+
+−1 1 1
+1 −1 1
+1 1 −1
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 196/231
+<<<PAGE>>>
+Algorithme de Gauss Jordan
+Proposition
+(Algorithme de Gauss-Jordan) SoitA une matrice carrée de taillen
+inversible. L’inverse A−1 de A se calcule de la manière suivante :
+1 On forme la matrice augmentéen×2n suivante B = (A|In).
+2 On applique l’algorithme de Gauss àB.
+3 Une fois le système échelonné obtenu, on continue sur le même
+principe que l’algorithme de Gauss afin d’obtenir une matrice de la
+forme (In|C ).
+4 L’inverse est A−1 = C.
+Démonstration. Admis.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 197/231
+<<<PAGE>>>
+Exemple
+Inverser la matriceA :
+A =
+
+
+1 2 3
+2 3 4
+3 4 6
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 198/231
+<<<PAGE>>>
+
+
+1 2 3 1 0 0
+2 3 4 0 1 0
+3 4 6 0 0 1
+
+
+
+
+1 2 3 1 0 0
+0 −1 −2 −2 1 0
+0 −2 −3 −3 0 1
+
+ L2← L2−2L1
+L3← L3−3L1
+
+
+1 2 3 1 0 0
+0 1 2 2 −1 0
+0 0 1 1 −2 1
+
+ L2←− L2
+L3← L3 +2L2
+
+
+1 2 0 −2 6 −3
+0 1 0 0 3 −2
+0 0 1 1 −2 1
+
+
+L1← L1−3L3
+L2← L2−2L3
+
+
+1 0 0 −2 0 1
+0 1 0 0 3 −2
+0 0 1 1 −2 1
+
+
+L1← L1−2L2
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 199/231
+<<<PAGE>>>
+L’inverse de A est donc
+A−1 =
+
+
+−2 0 1
+0 3 −2
+1 −2 1
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 200/231
+<<<PAGE>>>
+Déterminants
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 201/231
+<<<PAGE>>>
+Dans cette section, on suppose queA = (aij ) est une matrice carrée de
+taille n× n
+Définition (Mineure d’une matrice)
+Pour tout couple(i, j)∈ [ [1; n] ]2, on appellemineure d’indice i, j la matrice
+de taille (n−1)× (n−1) obtenue en supprimant lai e ligne et laj e colonne
+de A.
+Exemple
+Soit A =
+
+
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+
+.
+La mineure d’indice 2,3 est :A2,3 =
+
+
+1 2 4
+9 10 12
+13 14 16
+
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 202/231
+<<<PAGE>>>
+Définition (Déterminant d’une matrice carrée)
+Pour tout (i, j)∈ [ [1; n] ]2, Aij la matrice obtenue en supprimant lai e ligne
+et la j e colonne de A. On appelledéterminant de A le nombre défini par :
+Si n = 2, det(A) =
+
+a11 a12
+a21 a22
+ = a11a22− a21a12
+Si n> 2, det(A) =
+nP
+i=1
+(−1)i+1ai1 det (Ai1)
+Exemple
+
+2 −5
+5 −2
+ =−4− (−25) = 21
+
+1 1 2
+−2 3 1
+1 2 5
+
+= 1
+
+3 1
+2 5
++2
+
+1 2
+2 5
++1
+
+1 2
+3 1
+ = (15−2)+2(5−4)+(1−6) = 10
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 203/231
+<<<PAGE>>>
+Proposition
+1 det (A⊺) = det( A)
+2 Soit Bj la matrice obtenue en intervertissant la première et laj e
+colonne (ou ligne) deA. Alors
+det (Bj ) =− det(A)
+3 Échanger deux colonnes (ou deux lignes) deA a pour effet de
+multiplier le déterminant par(−1).
+4 Le déterminant d’une matrice ayant deux colonnes (ou deux lignes)
+égales est nul.
+5 Multiplier une colonne (ou une ligne) d’une matrice parλ∈ R,
+multiplie son déterminant parλ.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 204/231
+<<<PAGE>>>
+Proposition
+6 Soit A et B deux matrice de taillen× n et λ∈ R. Alors
+det (λA) = λn det(A)
+det(AB) = det( A)× det(B)
+det
+ 
+A−1
+= 1
+det(A) si (A inversible )⇔ (det(A)̸= 0)
+7 Ajouter à une colonne (ou une ligne) une combinaison linéaire des
+autres colonnes (ou ligne) ne modifie par le déterminant.
+8 Développement selon une ligne et une colonne
+det(A) =
+nX
+k=1
+(−1)k+j akj det (Akj )(développement selon la colonnej)
+det(A) =
+nX
+k=1
+(−1)i+k aik det (Aik )(développement selon la lignei)
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 205/231
+<<<PAGE>>>
+Exemple
+développement selon la première ligne
+1 0 2
+3 4 5
+5 6 7
+
+= 1
+
+4 5
+6 7
+ +2
+
+3 4
+5 6
+ = (28−30) +2(18−20) =−6
+combinaison linéaire des lignes
+1 1 1
+2 −1 −1
+−4 5 6
+
+=
+
+1 1 1
+3 0 0
+−4 5 6
+
+= (−1)1+2×3
+
+1 1
+5 6
+ =−3(6−5) =−3
+deux lignes identiques
+1 1 6
+3 −2 5
+2 2 12
+
+= 2
+
+1 1 6
+3 −2 5
+1 1 6
+
+= 0
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 206/231
+<<<PAGE>>>
+Proposition
+9 Le déterminant d’une matrice triangulaire/diagonale est égal au
+produit des coefficients de la diagonale.
+10 Soit A la matrice définie par
+A =
+
+
+B C
+0 D
+
+
+ici, B, C, D sont des matrices carrés. Alorsdet(A) = det( B)× det(D)
+Exemple
+A =
+
+1 2 3 4 5
+6 7 8 9 10
+0 0 a b c
+0 0 d e f
+0 0 0 0 g
+
+=
+
+1 2
+6 7
+×
+
+a b c
+d e f
+0 0 g
+
+=−5g (ae− bd ).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 207/231
+<<<PAGE>>>
+Définition (Déterminant den vecteurs)
+SoitB ={e1, e2,··· , en} une base deRn. Soit u1 =
+
+
+a11
+a21
+...
+an1
+
+, u2 =
+
+
+a12
+a22
+...
+an2
+
+,
+..., un =
+
+
+a1n
+a2n
+...
+ann
+
+, n vecteurs de Rn dont les coordonnées sont données
+dans la baseB. Soit A = (aij ) la matrice n× n construites à partir des
+vecteurs ui. On définit le déterminant de la famille{u1, u2,··· , un} dans la
+baseB par
+detB{u1, u2,··· , un} = det(A)
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 208/231
+<<<PAGE>>>
+Proposition (Caractérisation d’une famille liée)
+Soit{u1, u2,··· , un} une famille den vecteurs de Rn. Il y a équivalence
+entre les assertions suivantes :
+1 La famille{u1, u2,··· , un} est liée.
+2 Pour toutes basesB de Rn, on adetB{u1, u2,··· , un} = 0
+3 Il existe une baseB de Rn telle que detB{u1, u2,··· , un} = 0
+Proposition (Caractérisation d’une base)
+Soit{u1, u2,··· , un} une famille den vecteurs de Rn. Il y a équivalence
+entre les assertions suivantes :
+1 La famille{u1, u2,··· , un} est une base.
+2 Pour toutes basesB de Rn, on adetB{u1, u2,··· , un}̸ = 0
+3 Il existe une baseB de Rn telle que detB{u1, u2,··· , un}̸ = 0
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 209/231
+<<<PAGE>>>
+Proposition (Formules de Cramer)
+Soit B une matrice (colonne) de taillen×1. Alors le système linéaire
+AX = B possède une unique solution dont les composantes sont données
+par :
+∀i∈ [ [1; n] ], xi = det (C1,..., Ci−1, B, Ci+1,..., Cn)
+det(A)
+où{C1, C2,··· , Cn} sont les colonnes deA.
+Exemple
+Résoudre
+
+
+
+2x− y + z = 0
+x−2y− z = 3
+3x + y +2z = 1
+On a det(A) =
+
+2 −1 1
+1 −2 −1
+3 1 2
+
+= 6. D’où
+x =
+
+0 −1 1
+3 −2 −1
+1 1 2
+
+6 = 2; y =
+
+2 0 1
+1 3 −1
+3 1 2
+
+6 = 1; z =
+
+2 −1 0
+1 −2 3
+3 1 1
+
+6 =−3
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 210/231
+<<<PAGE>>>
+Représentation matricielle et changements de bases
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 211/231
+<<<PAGE>>>
+Dans cette section, on suppose queE est un K-espace vectoriel de
+dimension finie n, F est un espace vectoriel de dimension fini
+Définition (Matrice d’une famille finie de vecteurs dans une base finie)
+SoitB ={e1, e2,··· , en} une base deE etX ={X1, e2,··· , Xp} une
+famille finie de vecteurs deE. Pour toutj∈ [ [1; p] ]on note (a1j,..., anj )
+les coordonnées deXj dans la baseB. La matrice(aij )1≤i≤n
+1≤j≤p
+, notée
+MatB(X ), est appeléematrice deX dans la baseB.
+MatB(X ) =
+X1 Xj Xp
+↓ ↓ ↓
+
+
+
+a11 ... a1j ... a1p ← e1
+... ... ...
+ai1 ... aij ... aip ← ei
+... ... ...
+an1 ... anj ... anp ← en
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 212/231
+<<<PAGE>>>
+Théorème (Bases et matrices inversibles)
+SoitB une base deE etF une famille den vecteurs de E. AlorsF est une
+base de E si et seulement siMatB(F ) est inversible.
+Proposition
+Soit E̸={0E},B une base deE etX une famille de vecteurs deE. Alors
+rg(X ) = rg (MatB(X ))
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 213/231
+<<<PAGE>>>
+Définition (Matrice d’une application linéaire dans des bases finies)
+Soit dim(E ) = p et dim(F ) = n,B ={e1, e2,··· , ep} une base deE,
+C ={κ1,κ 2,··· ,κ n} une base deF et f∈L (E, F ). On appellematrice de
+f dansB etC et on noteMatB,C(f ) la matrice de la famille
+f (B) = ( f (e1),..., f (ep)) dans la baseC.
+Si E = F etB =C, la matriceMatB,B(f ) est simplement notéeMatB(f ).
+MatB,C(f ) = MatC(f (B)) =
+f (e1) f (ej ) f (ep)
+↓ ↓ ↓
+
+
+
+a11 ... a1j ... a1p ← κ1
+... ... ...
+ai1 ... aij ... aip ← κi
+... ... ...
+an1 ... anj ... anp ← κn
+Coordonnées de f (ej ) dansC écrites en colonnes
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 214/231
+<<<PAGE>>>
+Exemple
+SiB est une base deE, alors MatB(IdE ) = In.
+Soit T l’endomorphisme P7→ X 2P′′ + P(1) de R3[X ] et
+B3 ={1, X, X 2, X 3} la base canonique deR3[X ]. Alors
+T (1) = 1 T (X ) = 1
+T (X 2) = 2X 2 +1 T (X 3) = 6X 3 +1
+MatB3(T ) =
+T (1) T (X ) T (X 2) T (X 3)
+↓ ↓ ↓ ↓
+
+
+
+1 1 1 1 ← 1
+0 0 0 0 ← X
+0 0 2 0 ← X 2
+0 0 0 6 ← X 3
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 215/231
+<<<PAGE>>>
+Proposition (Rang d’une application linéaire)
+SoitB une base deE,C une base deF et f∈L (E, F ). Alors
+rg(f ) = rg (MatB,C(f ))
+Démonstration.
+rg (MatB,C(f )) = rg (MatC (f (B)))
+= rg (f (B)) = dim Vect( f (B)) = dim Im f = rg(f )
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 216/231
+<<<PAGE>>>
+Théorème (Calcul matriciel de l’image d’un vecteur par une
+application linéaire)
+Soit E̸={0E} et F̸={0F} deux K-espace vectoriels de dimension finie,B
+une base deE,C une base deF, u∈L (E, F ) et x∈ E. Alors
+MatC (u(x)) = MatB,C(u)× MatB(x)
+Démonstration.
+SoitB ={e1, e2,··· , ep},C ={f1, f2,··· , fn}. Posons X = MatB(x) et
+U = MatB,C(u).
+u(x) = u
+
+
+pX
+j=1
+xj ej
+
+ =
+pX
+j=1
+xj u(ej ) =
+pX
+j=1
+xj
+nX
+i=1
+uij fi =
+nX
+i=1
+
+
+pX
+j=1
+uij xj
+
+ fi
+Donc les coordonnées deu(x) dansC sont
+ pX
+j=1
+u1jxj,...,
+pX
+j=1
+unj xj
+
+,
+c’est-à-dire le produitU× X.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 217/231
+<<<PAGE>>>
+Proposition (Lien entreL(E , F ) etMn,p(K ))
+Soit E et F deux K-espaces vectoriels de dimensions finies respectivesp et
+n,B une base deE etC une base deF. L’application f7→ MatB,C(f ) est
+un isomorphisme deL(E, F ) surMn,p(K ).
+Proposition (Matrice d’une composée)
+Soit E, F, G trois K-espaces vectoriels de dimensions finies non nulles de
+bases respectivesB,C,D et f∈L (E, F ) et g∈L (F, G ). Alors,
+MatB,D(g◦ f ) = MatC,D(g )× MatB,C(f )
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 218/231
+<<<PAGE>>>
+Proposition (Matrice d’un isomorphisme)
+Soit E et F deux K-espaces vectoriels de mêmes dimensions finies non
+nulles de bases respectivesB,C et f∈L (E, F ). Alors f est un
+isomorphisme de E sur F si et seulement siMatB,C(f ) est inversible. Dans
+ce cas,
+MatC,B
+ 
+f−1
+= (MatB,C(f ))−1
+Démonstration.
+⇒ Si f est bijective et si on posen = dim(F ), on a
+MatB,C(f )× MatC,B(f−1) = MatC(IdF ) = In.
+⇐ si A = MatB,C(f ) est inversible, notonsg l’unique application linéaire
+de F dans E pour laquelle MatC,B(g ) = A−1. Dans ces conditions,
+MatB(g◦ f ) = MatC,B(g )× MatBC(f ) = A−1A = In. De même,
+MatC,B = In. Donc g◦ f = IdE et f◦ g = IdF et f est bijective deE
+sur F.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 219/231
+<<<PAGE>>>
+Changement de base
+Définition (Matrice de passage)
+SoitB = (e1, e2,..., en) etB′ = (e′
+1, e′
+2,..., e′
+n) deux bases deE. On
+appelle matrice de passage de la baseB à la baseB′ la matrice de
+l’application IdE relativement aux basesB′ etB. On la note :
+PB
+ 
+B′
+= MatB(B′) = MatB′,B(IdE )
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 220/231
+<<<PAGE>>>
+Exemple
+Soit E = R2[X ],B =
+ 
+1, X, X 2
+etB′ =
+ 
+1, X−1, (X−1)2
+. On a alors
+1 = 1 donc IdE (1) = 1 +0X +0X 2
+X−1 =−1 + X, donc IdE (X−1) =−1 +1X +0X 2
+(X−1)2 = 1−2X + X 2 donc IdE ((X−1)2) = 1−2X +1X 2
+La matrice de passage deB àB′ est donc :
+PB
+ 
+B′
+=
+ !1 −1 1 ← 1
+0 1 −2 ← X
+0 0 1 ← X 2
+↑ ↑ ↑
+1 X−1 (X−1)2
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 221/231
+<<<PAGE>>>
+Proposition
+Si P = PB (B′), alors P est inversible etP−1 = PB′ (B)
+Proposition
+Une matrice P est inversible si et seulement si il existe deux basesB etB′
+de E telles que P = PB(B′) = MatB′,B(IdE ).
+Proposition
+SoitB,B′ etB′′ trois bases deE. Alors PB (B′′) = PB (B′)× PB′ (B′′).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 222/231
+<<<PAGE>>>
+Proposition (Matrice de passage et coordonnées)
+Soit vecteur x∈ E,B etB′ deux bases deE, et P = PB (B′). On noteXB
+la matrice colonne des coordonnées dex dans la baseB et X′
+B′ la matrice
+colonne des coordonnées dex dans la baseB′. Alors :
+XB = PX′
+B′
+Démonstration.
+x = IdE (x), donc le résultat découle simplement de la définition de la
+matrice de passage.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 223/231
+<<<PAGE>>>
+Exemple
+Soit X = (1,2,3) dans la base canoniqueBc, soit
+B′ ={e1, e1 + e2, e3− e2−3e1} est une base deR3. Déterminer les
+coordonnées de X dans la baseB′.
+Sans utiliser la formule.
+
+
+
+ε1 = e1
+ε2 = e1 + e2
+ε3 = e3− e2−3e1
+⇔
+
+
+
+e1 =ε1
+e2 =ε2−ε1
+e3 =ε3 +ε2 +2ε1
+Ainsi, de X = e1 +2e2 +3e3, nous arrivons àX = 5ε1 +5ε2 +3ε3
+En utilisant la formule de changement de bases. Nous avons
+XBc = PXB′, d’où XB′ = P−1XBc. Il faut donc calculer l’inverse deP
+P−1 =
+
+
+1 1 −3
+0 1 −1
+0 0 1
+
+
+−1
+=
+
+
+1 −1 2
+0 1 1
+0 0 1
+
+. Et on retrouve
+XB′ = (5,5,3).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 224/231
+<<<PAGE>>>
+Matrices équivalentes
+Définition
+Soit A, B∈M n,p (K). On dit queB est équivalente àA s’il existe deux
+matrices carrées inversiblesQ∈ GLn (K), P∈ GLp (K) telles que :
+B = Q−1AP
+Proposition
+La relation « est équivalente à » surMn,p(K) est une relation
+d’équivalence.
+Démonstration.
+Réflexivité : Nous avons simplementA = I−1
+n AIp.
+Symétrie : Nous avonsB = Q−1AP, donc A = QBP−1. En posant
+Q′ = Q−1 et P′ = P−1, on a bienA = Q′−1BP′.
+Transitivité : Nous avonsC = Q−1BP et B = Q′−1AP′. En posant
+Q′′ = Q′Q et P′′ = P′P nous obtenons C = Q′′−1AP′′.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 225/231
+<<<PAGE>>>
+Proposition
+Soit A et B deux matrices deMn,p (K). Les matricesA et B sont
+équivalentes si et seulement sirg(A) = rg( B).
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 226/231
+<<<PAGE>>>
+Matrices semblables
+Définition
+Soit A, B∈M n (K). On dit queB est semblable à A s’il existe une matrice
+inversible P∈ GLn (K) telle que
+B = P−1AP
+Proposition
+La relation « est semblable à » surMn(K) est une relation d’équivalence.
+Démonstration.
+Réflexivité : Nous avons simplementA = I−1
+n AIn.
+Symétrie : Nous avonsB = P−1AP, donc A = PBP−1. En posant
+P′ = P−1, on a bienA = P′−1BP′.
+Transitivité : Nous avonsC = P−1BP et B = P′−1AP′. En posant
+P′′ = P′P nous obtenons C = P′′−1AP′′.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 227/231
+<<<PAGE>>>
+Proposition
+Si deux matricesA et B sont semblables alors elles sont équivalentes
+(semblables⇒ équivalentes).
+Attention!! La réciproque est fausse.
+Exemple
+In est la seule matrice semblable àIn alors que toute matrice inversible est
+équivalente à In.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 228/231
+<<<PAGE>>>
+Proposition (Matrices de passage et matrices semblables)
+Soit f une application linéaire deE dans E,B etB′ deux bases deE. On
+note :
+P = PB
+ 
+B′
+Soit A la matrice def relativement à la baseB et B la matrice def
+relativement à la baseB′. On a alors :
+B = P−1AP
+Proposition
+Soit A, B∈M n(K). Alors A et B sont semblables si et seulement siA et B
+sont les deux matrices d’une même application linéaire dans deux bases
+différentes.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 229/231
+<<<PAGE>>>
+Proposition (Invariance du déterminant et de la trace)
+Deux matrices carrées semblables ont le même déterminant et la même
+trace. Pour toute matrice carréeA et toute matrice carrée inversibleP, on
+a :
+det
+ 
+P−1AP
+
+= det(A)
+Tr
+ 
+P−1AP
+
+= Tr(A)
+Démonstration.
+Nous allons utiliser les deux propriétédet(AB) = det( A) det(B) et
+Tr(AB) = Tr(BA)
+Attention! La réciproque est fausse
+Exemple
+1 1
+0 1
+
+et
+1 0
+0 1
+
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 230/231
+<<<PAGE>>>
+Définition (Trace d’un endomorphisme)
+Soit E̸={0E} et f∈L (E ). On appelletrace de f et l’on note Tr(f ) la
+trace d’une matrice def dans une base deE.
+Proposition (trace)
+Pour tout f, g∈L (E ),
+Pour toutλ∈ K, Tr(λf + g ) = λTr(f ) +Tr(g ).
+Tr(f◦ g ) = Tr(g◦ f )
+Démonstration.
+Il suffit de revenir aux matrices et utiliser les propriétés précédentes.
+Debyaoui, Dussap, Nguyen (CYU) CM Algèbre 2 Pré-Ing 1 – 2023-2024 231/231

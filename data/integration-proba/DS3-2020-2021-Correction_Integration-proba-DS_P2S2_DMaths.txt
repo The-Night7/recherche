@@ -1,0 +1,260 @@
+Département de Mathématiques
+PréING2 - Intégration et probabilités
+31 Mai 2021
+1h30
+Correction DS3 - Intégration et probabilités
+Consignes
+• Appareils électroniques et documents interdits
+• Il sera tenu compte de la qualité de la rédaction et de la précision des justiﬁcations.
+• Le sujet comporte cinq exercices. L’ordre dans lequel ceux-ci sont traités n’est pas imposé.
+Exercice 1 : On noteE l’ellipse d’équationx2
+a2 + y2
+b2 = 1, avec (a,b )∈ R2, a >0, b >0, etD la
+partie de R2 déﬁnie par
+x2
+a2 + y2
+b2− 1≤ 0.
+1. Calculer l’intégrale double
+I =
+∫∫
+D
+(x2 +y2) dx dy.
+2. Calculer l’intégrale curviligne
+J =
+∫
+E
+(y3 dx−x3 dy).
+Indication : on peut utiliser les deux formules de linéarisation suivantes :
+cos4(t) = 1
+8 (cos(4t) + 4 cos(2t) + 3) et sin4(t) = 1
+8 (cos(4t)− 4 cos(2t) + 3).
+3. Quelle est la relation qui existe entreI etJ ? Est-elle conforme à la formule de Green-Riemann?
+Solution 1
+1. Soit le changement de variables { x =aρ cos(θ)
+y =bρ sin(θ)
+La matrice jacobienne du changement de variable est
+(a cos(θ) −aρ sin(θ)
+b sin(θ) bρ cos(θ)
+)
+Le déterminant est alorsJ =abρ. Ainsi, après changement de variable,
+I =
+∫ 1
+ρ=0
+∫ 2π
+θ=0
+(a2ρ2 cos2(θ) +b2ρ2 sin2(θ))abρ dρ dθ
+= ab
+(∫ 1
+0
+ρ3 dρ
+)
+×
+(∫ 2π
+0
+(a2 cos2(θ) +b2 sin2(θ)) dθ
+)
+= ab
+[ρ4
+4
+]1
+0
+×
+[
+a2
+(sin(2a)
+4 + 1
+2
+)
++b2
+(1
+2− sin(2a)
+4
+)]2π
+0
+= ab
+4 × (a2 +b2)π.
+1
+<<<PAGE>>>
+2. Par le paramétrage direct { x(t) =a cos(t) t∈ [0, 2π]
+y(t) =b sin(t)
+On obtient
+J =
+∫ 2π
+0
+(−ab3 sin4(t)−a3b cos4(t)) dt.
+En utilisant la linéarisation, on obient
+J = −ab
+8
+∫ 2π
+0
+((b2 +a2) cos(4t) + 4(a2−b2) cos(2t) + 3(a2 +b2)) dt
+= −ab
+8 (a2 +b2)
+[sin(4t)
+4 + 3t
+]2π
+0
+− ab
+2 (a2−b2)
+[sin(2t)
+2
+]2π
+0
+= −3ab(a2 +b2)π
+4 .
+3. Nous remarquons queJ =−3I ce qui est conforme à la formule de Green-Riemann. En eﬀet, en
+posanty3 dx−x3 dy =P (x,y ) dx+Q(x,y ) dy,nousavonsbien ∂Q
+∂x (x,y )−∂P
+∂y (x,y ) =−3(x2+y2).
+Exercice 2 : Soit Γ la courbe orientée dans le sens trigonométrique, constituée de la portion de
+la droite y = x et de la portion de la parabole d’équationy = x2, comprises entre les points
+d’intersection.
+1. Calculer
+I =
+∫
+Γ
+(y +xy) dx.
+2. En utilisant la formule de Green-Riemann, retrouver la valeur de cette intégrale.
+Solution 2
+1. Les deux points d’intersection sont en (0;0) et (1;1). La première portion (sur la parabole) est
+paramétrée parx =t et y =t2 pour t variant de 0 à 1. La seconde portion (sur la droite) est
+paramétrée parx =y =t pour t variant de 1 à 0 (attention!). Nous obtenons ainsi :
+I =
+∫ 1
+0
+(t2 +t3) dt−
+∫ 1
+0
+(t +t2) dt =−1
+4.
+2. PosonsP (x,y ) =y +xy et Q(x,y ) = 0. Ainsi, ∂Q
+∂x (x,y )− ∂P
+∂y (x,y ) =−(1 +x) et
+−
+∫∫
+D
+(1 +x) dx dy,
+avecD ={(x,y )∈ R2| 0≤x≤ 1,x 2≤y≤x}. D’où,
+I = −
+∫ 1
+0
+(∫ x
+x2
+(1 +x) dy
+)
+dx
+= −
+∫ 1
+0
+(1 +x)(x−x2) dx
+= −1
+4.
+2
+<<<PAGE>>>
+Exercice 3 : On jette trois fois un dé à 6 faces et on notea, b et c les résultats successivement
+obtenus. On noteP (X) =aX2 +bX +c. Déterminer la probabilité pour que le polynômeP ait :
+1. deux racines réelles distinctes,
+2. une racine réelle double.
+Solution 3 Il y a63 possibilités.
+1. Les racines sont réelles et distinctes si et seulement si∆> 0, c’est-à-direb2 > 4ac.
+• b = 1 : Impossible (poura et c).
+• b = 2 : b2 = 4, impossible (poura et c).
+• b = 3 : b2 = 9, (a,c ) = (1, 1), (1, 2), (2, 1).
+• b = 4 : b2 = 16, (a,c ) = (1, 1), (1, 2), (1, 3), (2, 1), (3; 1).
+• b = 5:b2 = 25, (a,c )=(1,1),(1,2),(1,3),(1;4),(1;5),(1;6),(2,1),(2;2),(2;3),(3;1),(3;2),(4;1),
+(5;1),(6;1).
+• b = 6:b2 = 36, (a,c )=(1,1),(1,2),(1,3),(1;4),(1;5),(1;6),(2,1),(2;2),(2;3),(2;4),(3;1),(3;2),
+(4;1), (4;2), (5;1),(6;1).
+Au total, nous avons 38 cas possibles :
+P = 19× 2
+62× 3× 2 = 19
+22× 33.
+2. Il y a une racine double si et seulement si∆ = 0 =b2−4ac, c’est-à-direb2 = 4ac, soitb = 2√ac.
+Ainsi, seuls lesb pairs peuvent convenir.
+• b = 2 : (a,c ) = (1, 1).
+• b = 4 : doncac = 4, donc (a,c ) = (1, 4), (4, 1), (2, 2).
+• b = 6 : doncac = 9, donc (a,c ) = (3, 3).
+Au total, nous avons 5 cas possibles :
+P = 5
+33× 23.
+Exercice 4 : Des études statistiques ont permis d’estimer que s’il fait beau un jour, la probabilité
+qu’il fasse beau le lendemain est 0,7. En revanche, s’il ne fait pas beau un jour, la probabilité qu’il
+fasse beau le lendemain n’est que 0,4.
+1. Un mercredi, il fait beau. Quelle est la probabilité qu’il fasse beau le vendredi suivant?
+2. Quelle est la probabilité qu’il fasse beau un vendredi s’il n’a pas fait beau le mercredi précédent?
+3. Quelle est la probabilitéPn qu’il fasse beau len-ième jour après un jour où il a fait beau?
+4. Quelle est la limite dePn lorsque n tend vers +∞?
+Solution 4 Nous avonsP(B2|B1) = 0.7 et P(B2|B1) = 0, 4.
+1.
+P(BJ ) = P( BJ|BM ) P(BM )| {z }
+=1
++P(BJ|BM ) P(BM )| {z }
+=0
+(car il fait beau mercredi)
+= P( BJ|BM ) = 0.7.
+Donc
+P(BV ) = P(BV|BJ )P(BJ ) + P(BV|BJ )P(BJ ) = 0.7× 0.7 + 0.4× (1− 0.7) = 0.61.
+3
+<<<PAGE>>>
+2. P(BJ ) = 0.4, P(BJ ) = 0.6, donc P(BV ) = 0.7× 0.4 + 0.4× 0.6 = 0.52.
+3. Nous avonsP0 = 1, P1 = 0.7, P2 = 0.61.
+Pn = P( Bn|Bn−1)Pn−1 + P(Bn|Bn−1)Pn−1 = 0.7Pn−1 + 0.4× (1−Pn−1)
+= 0 .4 + 0.3Pn−1 = 0.4 + 0.3(0.4 + 0.3Pn−2)
+= ...
+= 0 .4
+n−1∑
+k=0
+0.3k + 0.33P0
+= 0 .4× 1− 0.3n
+0.7 + 0.3n
+= 4
+7(1− 0.3n) + 0.3n.
+4. Puisque 0 < 0.3 < 1, il est clair que la limite vaut4
+7.
+Exercice 5 : Dans la forêt equatoriale, chaque naissance de gorilles donne un gorille gaucher avec
+une probabilité égale à 0.3. Un gorille gaucher sur trois a les yeux bleus, un gorille droitier sur quatre
+a les yeux bleus.
+1. Calculer la probabilité pour qu’un gorille pris au hasard ait les yeux bleus.
+2. Calculer la probabilité qu’un gorille ayant les yeux bleus soit gaucher.
+3. Calculer la probabilité que pour six naissances, il y ait au moins un gorille gaucher aux yeux
+bleus.
+Solution 5
+1. Nous avons
+P(B) = P( B|G)P(G) + P(B|D)P(D) = 1
+3× 0.3 + 1
+4× 0.7 = 1
+10 + 7
+40 = 11
+40.
+2. Nous avons
+P(G|B) = P(G∩B)
+P(B) = P(B|G)× P(G)
+P(B) =
+1
+3× 0.3
+11
+40
+= 4
+11.
+3. Soit E l’événement ‘pour six naissances, au moins un gorille gaucher aux yeux bleus’. Tout
+d’abord, la probabilité qu’un gorille soit gaucher et qu’il ait les yeux bleus est égale à
+P(G∩B) = 3
+10× 1
+3 = 1
+10.
+La probabilité qu’il n’ait pas ces deux caractéristiques simultanément est
+P(G∩B) = 9
+10.
+Par suite,
+P(E) =
+(
+P(G∩B)
+)6
+=
+( 9
+10
+)6
+= 0.531.
+Donc, P(E) = 1− 0.531441 = 0.469.
+Autre méthode: on peut considérer une variable aléatoire qui suit la loi binomiale.
+4

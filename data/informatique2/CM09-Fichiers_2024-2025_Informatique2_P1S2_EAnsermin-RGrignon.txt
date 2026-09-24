@@ -1,0 +1,829 @@
+Informatique II
+Gestion de fichiers
+
+<<<PAGE>>>
+Rappels et objectifs 
+• Un programme permet de traiter des données (texte, signaux, images, 
+videos, input, etc...)
+• Problèmes
+• Données de résultats: Les variables et données traitées sont stockées
+temporairement dans la mémoire vive de la machine (RAM). Elles ne 
+sont plus accessibles une fois l'execution terminée.
+• Donnée d'entrés: jusqu'ici principalement saisies au clavier. Comment 
+recupérer des données plus grandes / compliquées?
+• Les fichiers sont des données stockées sur de la mémoire non-volatile 
+(mémoire permanente).
+• Objectif : pouvoir récupérer/enregistrer des données via des fichiers à 
+partir d'un programme C.
+<<<PAGE>>>
+Les fichiers
+• Un fichier est caractérisé par ses metadonnées :
+• Son nom
+• Sa catégorie (image, son, exécutable, texte), son extension
+• Sa taille
+• Son emplacement
+• Ses permissions (lecture, écriture, exécution)
+• ….
+• On peut distinguer :
+• Les fichiers textes (codes sources, fichiers de configuration, fichiers de 
+logs, …) qui sont souvent encodés en ASCII (8 bits = 1 caractère)
+• Les fichiers binaires dont le contenu correspond à un format précis 
+(image, musique, traitement de texte, exécutable, …).
+<<<PAGE>>>
+Fichiers et langage C 
+• Les accès à un fichier se font par l'intermédiaire d'une mémoire-tampon
+(buffer), ce qui permet de réduire le nombre d'accès aux périphériques.
+• Il existe deux grandes manières d'accéder/ de modifier des fichiers en
+langage C :
+• Une méthode bas niveau utilisant des appels systèmes et des 
+descripteurs de fichiers qui permettent de lire ou écrire des 
+fichiers:
+• Rapide
+• Dépendante du système
+• Plus compliquée à utiliser.
+• Une méthode haut niveau se basant sur la manipulation d'une
+structure et des fonctions de la bibliothèque stdio.h.
+• Lente à l'accès
+• Indépendante du système
+• Plus pratique d'utilisation
+<<<PAGE>>>
+La structure FILE
+• Pour manipuler un fichier, nous avons besoin de:
+• son adresse dans le buffer
+• son mode d'accès
+• la position de la tête de lecture / d'écriture
+• …
+• Ces informations sont rassemblées dans une structure FILE (définie dans 
+stdio.h).
+• Pour accéder à un fichier, on utilise un pointeur sur une structure de type 
+FILE. Ce type de variable est appellée stream ou flux.
+• Les champs de cette structure sont automatiquement remplis à l'aide de 
+fonctions de stdio.h : il ne faut pas les modifier soit-même ! Les 
+fonctions de haut niveau d'accès aux fichiers se chargent de le faire !
+FILE* f ;
+<<<PAGE>>>
+Accès à un fichier
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• Le mot clef const avant la décalaration d'une variable permet d'en faire une
+constante programmable : sa première affectation fixe sa valeur et sa
+modification sera interdite par le compilateur.
+Exemples :
+const int a=10;
+int b = 5;
+b=a+b;
+a=2;
+const int a=10;
+int* p;
+p = &a; // génère un warning...
+*p = 2 // ...et modifie a malgré tout
+a=2; // toujours interdit en direct
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• nomFichier est une chaîne de caractères representant:
+• Le nom du fichier auquel on veut accéder s'il est dans le repertoire 
+courant.
+• Chemin d'accès + nom du fichier sinon
+Exemple : "dossier1/dossier2/fichier_texte.txt"
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• modeAcces désigne le mode d'accès au fichier. Pour ouvrir un fichier en
+mode ASCII :
+• "r": accès en lecture. Le fichier doit exister au préalable.
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• modeAcces désigne le mode d'accès au fichier. Pour ouvrir un fichier en
+mode ASCII :
+• "r": accès en lecture. Le fichier doit exister au préalable.
+• "w" : accès en écriture. Le fichier est crée s'il n'existe pas.
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• modeAcces désigne le mode d'accès au fichier. Pour ouvrir un fichier en
+mode ASCII :
+• "r": accès en lecture. Le fichier doit exister au préalable.
+• "w" : accès en écriture. Le fichier est crée s'il n'existe pas.
+• "a": mode ajout, on écrit dans le fichier en partant de la fin. 
+Fichier créé s'il n'existe pas.
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• modeAcces désigne le mode d'accès au fichier. Pour ouvrir un fichier en
+mode ASCII :
+• "r": accès en lecture. Le fichier doit exister au préalable.
+• "w" : accès en écriture. Le fichier est crée s'il n'existe pas.
+• "a": mode ajout, on écrit dans le fichier en partant de la fin. 
+Fichier créé s'il n'existe pas.
+• "r+" "w+" "a+" accès en lecture et écriture avec les 
+caractéristiques de "r", "w", a".
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• modeAcces désigne le mode d'accès au fichier. Pour ouvrir un fichier en
+mode binaire :
+• "rb": accès en lecture. Le fichier doit exister au préalable.
+• "wb" : accès en écriture. Le fichier est crée s'il n'existe pas.
+• "ab": mode ajout, on écrit dans le fichier en partant de la fin. 
+Fichier créé s'il n'existe pas.
+• "rb+" "wb+" "ab+" accès en lecture et écriture avec les 
+caractéristiques de "rb", "wb", ab".
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• Exemple:
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en mode lecture et écriture
+fichier = fopen("test.txt", "r+");
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• Exemple:
+int main ( int argc, char ** argv){
+FILE* fichier = NULL;
+fichier = fopen(argv[1], "a");
+...
+}
+• Pour accéder à un fichier, il faut l'ouvrir. La fonction fopen retourne un 
+pointeur sur FILE et permet d'accéder à un fichier:
+FILE* fopen( const char* nomFichier, const char* modeAcces )
+<<<PAGE>>>
+Accès à un fichier
+• Le pointeurfichier devrait contenir l'adresse de la structure de 
+typeFILE qui sert de descripteur de fichier.
+• Il est possible que l'ouverture échoue. Toujours vérifier que le fichier est 
+bien accessible via le flux* :
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en lecture/écriture
+fichier = fopen("test.txt", "r+");
+if (fichier == NULL){
+printf("Ouverture du fichier impossible\n");
+printf("code d'erreur = %d \n", errno );
+printf("Message d'erreur = %s \n", strerror(errno) );
+exit(1);
+}
+*toujours vérifier les retours de fonctions ET vérifier les pointeurs avant d'utilisation
+<<<PAGE>>>
+Accès à un fichier
+• Pour l'ensemble des fonctions de haut niveau de gestion de fichiers (ici la 
+fonction fopen, mais aussi toutes celles qui vont suivre, et celles qui ne 
+seront pas forcément explicitées dans ce document) il faudra utiliser la 
+variable globale errno pour connaître la raison précise d'un 
+dysfonctionnement
+• Si l'on souhaite afficher le message d'erreur précis, associé au code d'erreur 
+stocké dans errno, il existe une fonction strerror() qui prend en entrée le 
+code errno et qui renvoie une chaîne de caractères
+printf("code d'erreur = %d \n", errno );
+printf("Message d'erreur = %s \n", strerror(errno) );
+<<<PAGE>>>
+Fermeture d'un fichier
+• Une fois qu'on a travaillé avec le fichier, il faut fermer la connexion avec ce 
+dernier : cela libèrera la mémoire tampon utilisée.
+• Pour fermer un fichier:
+• Exemple
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en lecture/écriture
+fichier = fopen("test.txt", "r+");
+if (fichier == NULL){
+printf("Ouverture du fichier impossible");
+exit(1);
+}
+…
+fclose(fichier);
+int fclose(FILE* flux);
+<<<PAGE>>>
+Lecture d'un fichier
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fgetc permet de récupérer un caractère.
+int fgetc( FILE* pointeurDeFichier)
+<<<PAGE>>>
+Lecture d'un fichier
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fgetc permet de récupérer un caractère.
+int fgetc( FILE* pointeurDeFichier)
+• Retourne un caractère ou EOF (si le fichier est vide ou que l'on est à la fin). 
+Le retour peut donc prendre 256 valeurs pour l'octet récupéré + 1 valeur
+EOF en cas d'erreur : 257 valeurs ne peuvent pas tenir sur 1 octet donc un 
+type int est retourné :
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+int a;
+// a prend la valeur de la première lettre du fichier
+a = fgetc(fichier);
+<<<PAGE>>>
+Lecture d'un fichier
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fgets permet de récupérer plusieurs caractères à la suite :
+char* fgets(char *ChaineAremplir, int nmb_lettre, FILE * fichier )
+• /!\ la lecture s'arrete lorsque l'on rencontre un saut de ligne ('\n' tel que défini
+dans la table ASCII) ou lorque l'on arrive à la fin du fichier (le premier des 2).
+• Retourne un pointeur sur la chaîne et NULL en cas d'échec.
+• Ajoute automatiquement '\0' à la fin de la chaîne.
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+char phrase[200];
+//récupère la première ligne ou les 200 premiers 
+caractères du fichier
+fgets(phrase, 199, fichier);
+<<<PAGE>>>
+Lecture d'un fichier
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fscanf est l'équivalent de scanf mais va analyser une chaîne
+venant d'un fichier plutot que venant des entrées clavier:
+int fscanf(FILE * fichier, "%format", &Variable )
+• Lit le fichier, traduit au format désiré et place les valeurs dans les variables
+• Retourne le nombre de variables mises à jour si la lecture s'est bien passée, 
+EOF sinon.
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+int a;
+fscanf(fichier, "%d", &a);
+<<<PAGE>>>
+Lecture d'un fichier
+15 20 18
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+int a;
+fscanf(fichier, "%d", &a);
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fscanf est l'équivalent de scanf mais va analyser une chaîne
+venant d'un fichier plutot que venant des entrées clavier:
+int fscanf(FILE * fichier, "%format", &Variable )
+• L'utilisation de cette fonction nécessite de bien connaître le contenu du
+fichier à lire (avoir une spécification précise) et surtout être certain que ce
+fichier est un fichier encodé en ASCII !
+• Ex:
+<<<PAGE>>>
+Lecture d'un fichier
+15 20 18
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+int a;
+fscanf(fichier, "%d", &a);
+a <= 15
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fscanf est l'équivalent de scanf mais va analyser une chaîne
+venant d'un fichier plutot que venant des entrées clavier:
+int fscanf(FILE * fichier, "%format", &Variable )
+• L'utilisation de cette fonction nécessite de bien connaître le contenu du
+fichier à lire (avoir une spécification précise) et surtout être certain que ce
+fichier est un fichier encodé en ASCII !
+• Ex:
+<<<PAGE>>>
+Lecture d'un fichier
+15.20 18
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+float a;
+fscanf(fichier, "%f", &a);
+a <= 15.2
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fscanf est l'équivalent de scanf mais va analyser une chaîne
+venant d'un fichier plutot que venant des entrées clavier:
+int fscanf(FILE * fichier, "%format", &Variable )
+• L'utilisation de cette fonction nécessite de bien connaître le contenu du
+fichier à lire (avoir une spécification précise) et surtout être certain que ce
+fichier est un fichier encodé en ASCII !
+• Ex:
+<<<PAGE>>>
+Lecture d'un fichier
+152018
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+int a;
+fscanf(fichier, "%d", &a);
+a <= 152018
+• La lecture d'un fichier ouvert en ASCII permet de récupérer un ou plusieurs
+caractères en début de fichier.
+• La fonction fscanf est l'équivalent de scanf mais va analyser une chaîne
+venant d'un fichier plutot que venant des entrées clavier:
+int fscanf(FILE * fichier, "%format", &Variable )
+• L'utilisation de cette fonction nécessite de bien connaître le contenu du
+fichier à lire (avoir une spécification précise) et surtout être certain que ce
+fichier est un fichier encodé en ASCII !
+• Ex:
+<<<PAGE>>>
+Lecture d'un fichier en mode binaire
+• La lecture d'un fichier ouvert en binaire permet de récupérer un ou plusieurs
+octets en début de fichier.
+intfread(void *ptr, int taille, int nombre, FILE *flux);
+• fread lit nombre éléments de taille octets depuis le flux flux et les 
+stockent dans la zone mémoire pointée par ptr.
+• Pour récupérer un int :
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "rb+");
+int a;
+fread(&a, sizeof(int),1, fichier);
+<<<PAGE>>>
+Lecture d'un fichier en mode binaire
+FILE* fichier = NULL;
+fichier = fopen("test", "rb+");
+float tab[TAILLE]
+fread(tab, sizeof(float),TAILLE, fichier);
+• La lecture d'un fichier ouvert en binaire permet de récupérer un ou plusieurs
+octets en début de fichier.
+intfread(void *ptr, int taille, int nombre, FILE *flux);
+• fread lit nombre éléments de taille octets depuis le flux flux et les 
+stockent dans la zone mémoire pointée par ptr.
+• Pour récupérer un tableau:
+<<<PAGE>>>
+Ecriture dans un fichier ASCII
+• L'ouverture d'un fichier au format ASCII permet d'y écrire du texte.
+• On a :
+• Ajoute un caractère à l'endroit où se situe le pointeur d'écriture (au début 
+ou à la fin du fichier selon le mode d'ouverture).
+• Retourne le caractère ajouté ou la valeur EOF en cas d'échec.
+• Le caractère en argument est de type int pour être cohérent avec le retour 
+de fgetc (rappelez-vous, on peut retourner 257 valeurs distinctes)
+int fputc( int caractere, FILE * flux );
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en lecture/écriture
+fichier = fopen("test.txt", "r+");
+// ajoute le caractère A en début de fichier.
+fputc('A', fichier);
+<<<PAGE>>>
+Ecriture dans un fichier ASCII
+• L'ouverture d'un fichier au format ASCII permet d'y écrire du texte.
+• On a :
+• Ecrit une chaîne de caractères au début ou à la fin du fichier selon le mode 
+d'ouverture.
+• Retourne une valeur non-negative en cas de succès ou EOF en cas d'échec.
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en lecture/écriture
+fichier = fopen("test.txt", "r+");
+// ajoute la phrase en début de fichier.
+fputs("je suis dans le fichier", fichier);
+int fputs( const char * chaine, FILE * flux );
+<<<PAGE>>>
+Ecriture dans un fichier ASCII
+• L'ouverture d'un fichier au format ASCII permet d'y écrire du texte.
+• On a :
+• Ecrit une chaîne de caractères au début ou à la fin du fichier selon le mode 
+d'ouverture.
+• Retourne une valeur non-negative en cas de succès ou EOF en cas d'échec.
+FILE* fichier = NULL;
+// ouverture du fichier test.txt en lecture/écriture
+fichier = fopen("test.txt", "r+");
+// ajoute la chaine mot en début de fichier.
+char * mot= "je suis dans le fichier";
+fputs(mot, fichier);
+int fputs( const char * chaine, FILE * flux );
+<<<PAGE>>>
+Ecriture dans un fichier ASCII
+• L'ouverture d'un fichier au format ASCII permet d'y écrire du texte.
+• On a :
+• Ecrit une chaîne de caractères formatée au début ou à la fin du fichier
+selon le mode d'ouverture.
+• Retourne le nombre de caractères écrits en sortie en cas de succès ou EOF 
+en cas d'échec.
+• Préférer fputs plutot que fprintf pour des chaines non formatées (pour des 
+raisons évidentes de performances)
+int age , ans;
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+printf("quel est ton age : ");
+scanf("%d", &age);
+ans = 2022-age;
+// ajoute la phrase en début de fichier.
+fprintf( fichier, "Tu es née en %d \n", ans);
+int fprintf(FILE * flux, const char * chaine, );
+<<<PAGE>>>
+Ecriture dans un fichier ASCII
+• L'ouverture d'un fichier au format ASCII permet d'y écrire du texte.
+• Attention:
+• Ajoute val au fichier comme une chaîne de caractères.
+Ex: val =15 
+• ajoute au fichier les caractères '1' et '5' et non pas l'équivalent binaire
+de 15 (0x0F).
+• fprintf doit être utilisé avec des fichiers ouverts en mode ASCII
+int val;
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r+");
+scanf("%d", &val );
+// ajoute la phrase en début de fichier.
+fprintf( fichier, "%d", val);
+<<<PAGE>>>
+Ecriture dans un fichier binaire
+• L'ouverture d'un fichier au format binaire permet d'y ajouter des octets, donc
+des valeurs binaires .
+• La fonction fwrite permet d'écrire un certains nombre d'octets à un fichier
+binaire :
+int fwrite(void* ptr, int taille, int nmb_elements, FILE* fichier)
+<<<PAGE>>>
+Ecriture dans un fichier binaire
+int val;
+FILE* fichier = NULL;
+fopen("fichier_test","rb+");
+scanf("%d",&val);
+// ajoute la variable en début de fichier.
+fwrite( &val, sizeof(int), 1, fichier);
+• L'ouverture d'un fichier au format binaire permet d'y ajouter des octets, donc
+des valeurs binaires .
+• La fonction fwrite permet d'écrire un certains nombre d'octets à un fichier
+binaire :
+int fwrite(void* ptr, int taille, int nmb_elements, FILE* fichier)
+• Exemple 1 :
+<<<PAGE>>>
+Ecriture dans un fichier binaire
+int val;
+FILE* fichier = NULL;
+fopen("fichier_test","rb+");
+double tab[10]=…;
+// ajoute la variable en début de fichier.
+fwrite(tab, sizeof(double), 10, fichier);
+• L'ouverture d'un fichier au format binaire permet d'y ajouter des octets, donc
+des valeurs binaires .
+• La fonction fwrite permet d'écrire un certains nombre d'octets à un fichier
+binaire :
+int fwrite(void* ptr, int taille, int nmb_elements, FILE* fichier)
+• Exemple 2 :
+<<<PAGE>>>
+Ecriture dans un fichier binaire vs ASCII
+• Lorsque l'on souhaite sauvegarder des variables complexes, fwrite est plus 
+pratique que fprintf.
+• Exemple: la sauvegarde de structure:
+typedef struct {
+int age;
+char nom[30];
+char prenom[30];
+char adresse[60];
+int nombreFreres;
+}Personne ;
+Personne gens; 
+<<<PAGE>>>
+Ecriture dans un fichier binaire vs ASCII
+• Lorsque l'on souhaite sauvegarder des variables complexes, fwrite est plus 
+pratique que fprintf.
+• Exemple: la sauvegarde de structure:
+typedef struct {
+int age;
+char nom[30];
+char prenom[30];
+char adresse[60];
+int nombreFreres;
+}Personne ;
+Personne gens; 
+Stockage de gens dans un 
+fichier ascii
+fprintf(fichier , "%d\n" , 
+gens.age);
+fprintf( fichier , "%s\n" , 
+gens.nom);
+fprintf( fichier , "%s\n" , 
+gens.prenom);
+fprintf( fichier , "%s\n" , 
+gens.adresse);
+fprintf( fichier , "%d\n" , 
+gens.nombreFreres);
+<<<PAGE>>>
+Ecriture dans un fichier binaire vs ASCII
+• Lorsque l'on souhaite sauvegarder des variables complexes, fwrite est plus 
+pratique que fprintf.
+• Exemple: la sauvegarde de structure:
+typedef struct {
+int age;
+char nom[30];
+char prenom[30];
+char adresse[60];
+int nombreFreres;
+}Personne ;
+Personne gens; 
+Stockage de gens dans un 
+fichier binaire
+fwrite( &gens ,
+sizeof(Personne) , 1 , fichier);
+<<<PAGE>>>
+Déplacement dans un fichier
+• Le mode d'accès permet d'écrire au début ("w" "r+") ou à la fin "a+" d'un 
+fichier.
+• Comment accéder au reste du fichier ? Lire ou valeur particulière ou bien le 
+fichier entier ?
+• Exemple : comment stocker les valeurs du fichier suivant dans un tableau 
+pour pouvoir les traiter?
+5
+10
+100
+48
+8
+23
+45
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier);
+c2 = fgetc(fichier);
+c3 = fgetc(fichier);
+abcd
+test.txt
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier);
+c2 = fgetc(fichier);
+c3 = fgetc(fichier);
+abcd
+test.txt
+Le fichier est ouvert en mode r+ : 
+le curseur est au début
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier);
+c2 = fgetc(fichier);
+c3 = fgetc(fichier);
+abcd
+test.txt
+Le fichier est ouvert en mode r+ : 
+le curseur est au début
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier); // c1 = 'a'
+c2 = fgetc(fichier);
+c3 = fgetc(fichier);
+abcd
+test.txt
+Déplacement du curseur de 1 
+caractère
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier); // c1 = 'a'
+c2 = fgetc(fichier); // c2 = 'b'
+c3 = fgetc(fichier);
+abcd
+test.txt
+Déplacement du curseur de 1 
+caractère
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+<<<PAGE>>>
+Déplacement dans un fichier : déplacement par la 
+lecture
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char c1, c2, c3;
+c1 = fgetc(fichier); // c1 = 'a'
+c2 = fgetc(fichier); // c2 = 'b'
+c3 = fgetc(fichier); // c3 = 'c'
+abcd
+test.txt
+Déplacement du curseur de 1 
+caractère
+• Comme lorsque l'on ouvre "normalement" un fichier, un curseur (ou têtes de 
+lecture/écriture) indique l'emplacement où le se trouve dans ce fichier. Il est
+possible de le déplacer.
+• Lorsque l'on lit un ou plusieurs caractères avec une des fonctions de lecture,
+le curseur de lecture se déplace après les caractères lus.
+<<<PAGE>>>
+Déplacement dans un fichier : lecture
+• Pour récupérer l'ensemble des caractères d'un fichier, on lit le fichier jusqu'à
+arriver à la fin du fichier qui sera connue en regardant le retour de la fonction
+de lecture : elle retourne la valeur EOF
+int main(){
+FILE* fichier = NULL;
+int caractereActuel = EOF+1;
+fichier = fopen("test.txt", "r");
+if (fichier != NULL)
+{
+// Boucle de lecture des caractères un à un
+while (caractereActuel != EOF)
+{
+caractereActuel = fgetc(fichier); // On lit le caractère
+printf("%c", caractereActuel); // On l'affiche
+} ; 
+// On continue tant que fgetc n'a pas retourné EOF
+// et on ferme l'accès au fichier
+fclose(fichier);
+}
+<<<PAGE>>>
+Déplacement dans un fichier : retour au début
+• Il existe des fonctions spécifiques pour déplacer le curseur dans un fichier.
+• La procedure rewind remet le curseur au début du fichier
+void rewind (FILE * flux);
+int main(){
+FILE* fichier = NULL;
+int caractereActuel = 0;
+fichier = fopen("test.txt", "r");
+if (fichier != NULL)
+{
+// Boucle de lecture des caractères un à un
+do
+{
+caractereActuel = fgetc(fichier);
+} while (caractereActuel != EOF);
+rewind (fichier); // retour du curseur au début
+}
+}
+<<<PAGE>>>
+Déplacement dans un fichier : retour au début
+• Exemple d'utilisation: compter le nombre de caractères d'un fichier pour 
+déclarer un tableau de la bonne taille contenant ces caractères:
+FILE* fichier = NULL;
+fichier = fopen("test.txt", "r");
+char * texte;
+int nmbCaractere=0;
+if (fichier == NULL){
+exit(1);
+}
+while(fgetc(fichier)!=EOF){
+nmbCaractere++;
+} 
+// retour du curseur au début
+rewind (fichier);
+// tableau de taille nmbCaractere
+texte=malloc(nmbCaractere*sizeof(char)+1);
+// parcours du fichier
+for(int i=0; i<nmbCaractere; i++){
+texte[i]=fgetc(fichier);
+}
+texte[nmbCaractere] = '\0'
+fclose(fichier);
+Rmq : ici on ajoute manuellement le caractère '\0'
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction ftell retourne la position du curseur (numéro de 
+caractère dépendant de l'encodage pour les ouvertures en mode texte,et
+numéro d'octet pour fichier binaire)
+• La position du début de fichier vaut 0.
+• Pour le retour de ftell suivant l'encodage du fichier, il n'aura de sens que pour 
+la fonction inverse fseek. Pour de l'ascii, cela correspondra au nombre de 
+caractères codés sur 1 octet
+long ftell(FILE* pointeurSurFichier);
+FILE *fichier = 
+fopen("texte.txt","r+");
+printf("%ld ",ftell(fichier));
+fgetc(fichier);
+printf("%ld ",ftell(fichier));
+fgetc(fichier);
+printf("%ld ",ftell(fichier));
+affiche : "0 1 2"​
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction fseek permet de deplacer le curseur d'un certain nombre de 
+caractères / octets à partir de la position origine.
+• Les modes de déplacements :
+• modeDeplacement = 0 : on se déplace depuis le début du fichier. 
+deplacement doit être positif (SEEK_SET)
+• modedeplacement = 1 : on se déplace depuis la position actuelle. 
+deplacement peut être positif ou negatif. (SEEK_CUR)
+• modeDeplacement = 2 : on se déplace depuis la fin du fichier.
+deplacement doit être negatif. (SEEK_END)
+• Retourne 0 si tout se passe bien, une valeur non-nulle sinon (rappel : voir la 
+variable globale errno pour le détail de l'erreur).
+int fseek(FILE* flux, long deplacement, int modeDeplacement);
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+int fseek(FILE* flux, long deplacement, int modeDeplacement);
+FILE *fichier = fopen("texte.txt","r+");
+fseek(fichier, 4, SEEK_SET);
+printf("%c",fgetc(fichier));
+Tu es un sorcier Harry
+texte.txt
+Le caractère 's' est affiché
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction fseek permet de deplacer le curseur d'un certain nombre de 
+caractères / octets à partir de la position origine.
+• Exemple : qu'affiche le code suivant ?
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+int fseek(FILE* flux, long deplacement, int modeDeplacement);
+FILE *fichier = fopen("texte.txt","r+");
+fgetc(fichier);
+fgetc(fichier);
+fseek(fichier, 4, SEEK_CUR);
+printf("%c",fgetc(fichier));
+Tu es un sorcier Harry
+texte.txt
+Le caractère ‘u' est affiché
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction fseek permet de deplacer le curseur d'un certain nombre de 
+caractères / octets à partir de la position origine.
+• Exemple : qu'affiche le code suivant ?
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+int fseek(FILE* flux, long deplacement, int modeDeplacement);
+FILE *fichier = fopen("texte.txt","r+");
+fgetc(fichier);
+fgetc(fichier);
+fseek(fichier, 4, SEEK_SET);
+printf("%c",fgetc(fichier));
+Tu es un sorcier Harry
+texte.txt
+Le caractère 's' est affiché
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction fseek permet de deplacer le curseur d'un certain nombre de 
+caractères / octets à partir de la position origine.
+• Exemple : qu'affiche le code suivant ?
+<<<PAGE>>>
+Déplacement dans un fichier : fonction
+int fseek(FILE* flux, long deplacement, int modeDeplacement);
+FILE *fichier = fopen("texte.txt","r+");
+fgetc(fichier);
+fgetc(fichier);
+fseek(fichier, -4, SEEK_END);
+printf("%c",fgetc(fichier));
+Tu es un sorcier Harry
+texte.txt
+Le caractère 'a' est affiché
+• Il existe des fonctions specifiques pour déplacer le curseur dans un fichier.
+• La fonction fseek permet de deplacer le curseur d'un certain nombre de 
+caractères / octets à partir de la position origine.
+• Exemple : qu'affiche le code suivant ?
+<<<PAGE>>>
+Entrées / Sorties : des fichiers aussi ?
+• Il existe des pointeurs de structures FILE* qui sont déjà définies et accessibles
+globalement : ce sont celles des entrées et sorties standards
+• stdin : entrée standard (terminal)
+• stdout : sortie standard (terminal)
+• stderr : erreur standard (terminal)
+• Partout où vous pouvez utiliser une variable de type FILE*, vous pouvez utiliser
+les pointeurs définis ci-dessus pour lire/écrire comme si ils étaient des fichiers
+physiques (d'ailleurs sous UNIX tout est considéré comme fichier)
+• Vous pouvez donc facilement créer un exécutable qui va lire sur l'entrée
+standard ou écrire sur l'une des deux sorties
+• Attention au fait que ce ne sont pas de vrais fichiers physiques, il est donc
+impossible d'utiliser fseek pour revenir au début puisque ce sont de véritables
+flux continus
+<<<PAGE>>>
+Conclusion et résumé
+• Il est possible de récupérer/enregistrer des données depuis/dans des fichiers depuis 
+un programme C.
+• Cela permet, entre autres, de sauvegarder des résultats ou de traiter des données 
+stockées sur l'ordinateur.
+• La structure FILE permet de gérer les flux de fichiers indépendamment du système.
+• Il faut distinguer les fichiers ASCII contenant du texte et les fichiers binaires, leur 
+utilisation est différente
+• Il existe de nombreuses fonctions pour lire/écrire/gérer des fichiers. Nous avons vu 
+les principales, mais d'autres existent ! Consulter la documentation officielle pour 
+plus d'informations.
+• Les entrée / sortie / erreur standards sont vus comme des fichiers et peuvent être 
+manipulés comme n'importe quel fichier physique à l'aide des mêmes fonctions

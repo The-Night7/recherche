@@ -1,0 +1,371 @@
+Préing 1
+Devoir Surveillé 1
+Algèbre II
+Date: Jeudi 24 Janvier 2022
+L ’usage de tout appareil électronique est interdit Durée: 1h30
+Nombre de pages: 2
+Il sera tenu compte de la qualité de la rédaction et de la précision des justiﬁcations.
+Le sujet comporte 5 exercices. L ’ordre dans lequel ceux-ci sont traités n’est pas imposé.
+⋄ ⋄ ⋄
+Exercice 1 [5 points]
+1. Soit ( G, ⋆) un groupe. Montrer que H est un sous-groupe de (G, ⋆), si et seulement si, H est non vide
+et pour tout x, y éléments de H, x−1 ⋆ y ∈ H. 2.5 points
+2. On note U l’ensemble deC suivant :
+U = {z ∈ C; |z| = 1}
+Montrer que (U , .) est un sous-groupe de (C,.). 2.5 points
+Solution
+1. Soit H une partie de G. Supposons que H est un sous-groupe de ( G, ⋆). Alors H est un groupe. Soit
+(x; y) ∈ H 2 alors x−1 ∈ H,(car H est un groupe) et donc x ⋆ y −1 ∈ H car H est stable. De plus e ∈ H.
+Réciproquement, supposons que pour tout (x; y) ∈ H 2, x ⋆ y −1 ∈ H et H non vide. Alors
+Soit x ∈ H, alors xx −1 ∈ H donc e ∈ H et ex −1 = x−1 ∈ H. On en déduit que x y = x y−1−1
+∈ H donc H est
+stable.
+On a donc un ensemble non vide, stable par l’opération, qui contient l’élément neutre, les inversibles
+et la loi est associative donc (H, ⋆) est un groupe donc un sous-groupe.
+2. Soit ( x, y) ∈ U , alors l’inverse dey est 1
+y
+On vériﬁe si x y−1 appartient à U:
+⏐⏐x y−1⏐⏐ =
+⏐⏐⏐⏐
+x
+y
+⏐⏐⏐⏐ = |x|
+|y| = 1
+1 = 1
+donc x y−1 ∈ U donc U est un sous-groupe de C
+Autre méthode: 1 appartient U car |1|=1.
+1
+<<<PAGE>>>
+U est stable car pour (x, y) ∈ U , |x y| = |x||y| = 1 × 1 = 1
+De plus l’inverse dey, 1
+y est tel que
+⏐⏐⏐⏐
+1
+y
+⏐⏐⏐⏐ = 1
+|y| = 1 donc y −1 ∈ U .
+Donc U est un sous-groupe de C, ×)
+Autre méthode: module: C → R∗
+x 7→ |z| est un morphisme de groupe et U est le noyau de ce morphisme.
+Exercice 2 [2 points]
+Soit (G, ⋆) un groupe et soit a ∈ G, tel qu’il existe un entier n, tel que an+1 = a ⋆ a ⋆ a · · ·⋆ a = e, avec e
+l’élément neutre de (G, ⋆). On note A l’ensemble
+A =
+{
+e, a, a2,. .. , an}
+Montrer que (A, ⋆) est un groupe commutatif.
+Solution
+Soit (c, d) ∈ G2, soit (m, p) ∈ 0, n2 tels que c = am et d = ap
+alors d −1 = an+1−p en effet d an+1−p = ap an+1−p = an+1 = e = an+1−p d
+On a donc cd −1 = am an+1−p = am+n+1−p
+Or 0 É m É n et 0 É p É n donc 0 É n − p É n donc 0 É m + n − p É 2n
+Soit k = m + n − p É n et cd −1 = ak avec k ∈ 0, n
+Soit m + n − p > n et alors k =(m + n − p) − n = m − p ∈ 0, n
+Dans les deux cas cd −1 ∈ A
+Enﬁn A est commutatif car am ap = am+p = ap+m = ap am
+Exercice 3 [6 points]
+On note G l’ensemble deR1[X ] suivant
+G = {a X + b ∈ R1[X ]; a ⁄= 0}
+Pour tous P = a X + b et Q = c X + d, éléments de G, on note
+P ⋆Q = ac X + (ad + b)
+1. Montrer que ⋆ est une LCI sur G. 1 points
+2. Montrer que ( G, ⋆) est un groupe. 2.5 points
+3. ( G, ⋆) est-il commutatif? 1 points
+4. L ’objectif de cette question est de construire un sous-groupe commutatif de (G, ⋆). On ﬁxe k ∈ R et on
+déﬁnit
+Ak = {a X + k(a − 1) ∈ G}.
+Montrer que Ak est un sous-groupe commutatif de (G, ⋆). 1 points
+2
+<<<PAGE>>>
+Solution
+1. P ⋆G est évidemment un opération interne de R1[X ].
+La loi est interne sur G car si a ⁄= 0 et c ⁄= 0, alors ac ⁄= 0 donc (a X + b) ⋆ (c X + d) ∈ G
+2. Associativité...
+(a X + b) ⋆ ((c X + d) ⋆ (e X + f )) = (a X + b) ⋆ (ce X + (c f + d)) = ace X + a(c f + d) + b
+= ace X + ac f + ad + b
+((a X + b) ⋆ (c X + d)) ⋆ (e X + f ) = (ac X + ad + b) ⋆ (e X + f ) = ace X + ac f + ad + b
+= ace X + ac f + ad + b
+Donc la loi est associative.
+Neutre (a X + b) ⋆ (c X + d) = a X + b ⇔ ac X + ad + b = a X + b ⇔ c = 1 et d = 0
+Le neutre semble être X . A droite c’est le cas par l’équivalence précédente.
+On vériﬁe à gauche: ( X ) ⋆ (c X + d) = c X + 1d + 0 = c X + d
+Donc X est le neutre.
+Recherche du symétrique:
+(a X + b) ⋆ (c X + d) = X ⇔ ac = 1 et ad + b = 0 ⇔ c = 1
+a et d = − b
+a
+On vériﬁe que
+( 1
+a X − b
+a
+)
+⋆ (a X + b) = 1
+a a X + 1
+a b − b
+a = X
+donc 1
+a X − b
+a est le symétrique de a X + b
+G est donc un groupe.
+3. On a (2 X + 1) ⋆ (X + 2) = 2X + 5 et (X + 2) ⋆ (2X + 1) = 2X + 3
+donc le groupe n’est pas commutatif.
+4. Soit x = a X + k(a − 1) et y = b X + k(b − 1)
+x ⋆ y −1 = (a X + k(a − 1)) ⋆
+( 1
+b X − k(b − 1)
+b
+)
+= a
+b X − ak (b − 1)
+b + k(a − 1)
+= a
+b X + −ak (b − 1) + kb (a − 1)
+b = a
+b X + −akb + ak + kba − kb
+b = a
+b X + k(a − b)
+b
+= a
+b X + k
+( a
+b − 1
+)
+∈ Ak
+Donc Ak est un sous-groupe de H
+Exercice 4 ( 7 points)
+3
+<<<PAGE>>>
+1. Déterminer, selon la valeur du paramètre m ∈ R et en utilisant le pivot de Gauss, l’ensemble des solu-
+tions du système :
+
+
+
+x + y + mz = 1
+3x + y − z = 1
+x − 2y + 2z = m
+2. En déduire de la résolution précédente le rang de la matrice:
+
+
+1 1 m
+3 1 −1
+1 −2 2
+
+
+Solution
+Notons (S ) le système.
+On procède par pivot de gauss sur x, puis y.
+Alors
+(S ) ⇐ ⇒
+
+
+
+x + y + mz = 1
+−2y + − z(1 + 3m) = − 2 L2 ← L2 − 3L1
+−3y + (2 − m)z = m − 1 L3 ← L3 − L1
+⇐ ⇒
+
+
+
+x + y + mz = 1
+−2y + − z(1 + 3m) = − 2
+z(3(1 + 3m) + 2(2 − m)) = 6 + 2(m − 1) L2 ← −3L2 + 2L3
+⇐ ⇒
+
+
+
+x + y + mz = 1
+−2y + − z(1 + 3m) = − 2
+z(3 + 9m + 4 − 2m) = 2(m + 2) L2 ← −3L2 + 2L3
+⇐ ⇒
+
+
+
+x + y + mz = 1
+−2y + − z(1 + 3m) = − 2
+7z(m + 1) = 2(m + 2) L2 ← −3L2 + 2L3
+On peut alors discuter suivant les valeurs de m :
+• Si m + 1 ⁄= 0, c’est-à-dire sim ⁄= −1, le système n’admet pas de solutions car équivalent à 0 = 4 (3ème
+équation)
+• Sinon, on a z = 2(m + 2)
+7(m + 1) puis y = 1 − x − mz = 5 − 3m2
+7(m + 1)
+L ’ensemble des solutions est alors
+{( m + 7
+2 , 5 − 3m2
+7(m + 1) , 2(m + 2)
+7(m + 1)
+)}
+.
+Autre méthode:
+On procède par pivot de gauss sur y, puis z.
+Alors
+(S ) ⇐ ⇒
+
+
+
+x + y + mz = 1
+2x − (m + 1)z = 0 L2 ← L2 − L1
+3x + 2(m + 1)z = m + 2 L3 ← L3 + 2L1
+4
+<<<PAGE>>>
+⇐ ⇒
+
+
+
+y + mz + x = 1
+−(m + 1)z + 2x = 0
+7x = m + 2 L3 ← 2L2 + L3
+⇐ ⇒
+
+
+
+y + mz + x = 1
+(m + 1)z = 2(m + 2)
+7
+x = m + 2
+7
+On peut alors discuter suivant les valeurs de m :
+• Si m + 1 ⁄= 0, c’est-à-dire sim ⁄= −1, le système n’admet pas de solutions car équivalent à 0 = 1
+7 (2ème
+équation)
+• Sinon, on a x = m + 2
+7 et z = 2(m + 2)
+7(m + 1) puis y = −2(m + 2)(1 + 3m)
+14(m + 1) + 1 = −6m2 + 10
+14(m + 1) = 5 − 3m2
+7(m + 1)
+et x = 1 − m 2(m + 2)
+7(m + 1) + 3m2 − 5
+7(m + 1) = m + 7
+2
+L ’ensemble des solutions est alors
+{( m + 7
+2 , 5 − 3m2
+7(m + 1) , 2(m + 2)
+7(m + 1)
+)}
+.
+5
+<<<PAGE>>>
+Exercice 5 [3.5 points]
+Pour tout a ∈ R on déﬁnit le système
+
+
+
+ax + (1 − a)y + (1 − a)z = a2
+ax + (1 + a)y + (1 + a)z = a − a2
+x + y + 2z = 1 − a
+1. Déterminer en fonction de a les solutions du système. 3 points
+2. Pour quelles valeurs de a le sytème est-il de Cramer? 0.5 points
+Solution
+Notons (S) ce système, et appliquons la méthode du pivot de Gauss en choisissant la troisième ligne
+comme pivot:
+(S) ⇐ ⇒
+
+
+
+x + y + 2z = 1 − a L 3
+y + (1 − a)z = 0 L2 − aL 3
+(1 − 2a)y + (1 − 3a)z = 2a2 − a L 1 − aL 3
+⇐ ⇒
+
+
+
+x + y + 2z = 1 − a
+y + (1 − a)z = 0
+[(1 − 3a) − (1 − 2a)(1 − a)]z = 2a2 − a L 3 − (1 − 2a)L2
+⇐ ⇒
+
+
+
+x + y + 2z = 1 − a
+y + (1 − a)z = 0
+−2a2z = 2a2 − a
+On distingue alors plusieurs cas.
+Si a ⁄= 0, on obtient ⇐ ⇒
+
+
+
+x = 3
+2 − 1
+2a
+y = 3
+2 − 1
+2a − a
+z = − 1 + 1
+2a
+donc S =
+{( 3
+2 − 1
+2a ; 3
+2 − 1
+2a − a; −1 + 1
+2a
+)}
+Donc le système est de Cramer.
+Si a = 0, le système est équivalent à { x + y + 2z = 1
+y + z = 0
+et donc l’ensemble des solutions est
+{(
+1 + y, y, −y
+)
+; y ∈ R
+}
+.
+6
+<<<PAGE>>>
+Remarque:
+On peut également simpliﬁer le système en effectuant la somme et la différence des deux premières
+lignes:
+
+
+
+ax + (1 − a)y + (1 − a)z = a2
+ax + (1 + a)y + (1 + a)z = a − a2
+x + y + 2z = 1 − a
+
+
+
+2ax + 2y + 2z = a L 1 → L1 + L2
+x + y + 2z = 1 − a
+2a y + 2az = a − 2a2 L2 → L2 − L1
+Donc le système est de Cramer.
+Si a = 0, le système est équivalent à { x + y + 2z = 1
+y + z = 0
+et donc l’ensemble des solutions est
+{(
+1 + y, y, −y
+)
+; y ∈ R
+}
+.
+Sinon,
+
+
+
+ax + y + z = a
+2 L1 → L1/2
+y + z = 1
+2 − a L 2 → L2 − L1
+x + y + 2z = 1 − a
+
+
+
+y + z = 1
+2 − a L 1 → L3
+x + z = 1
+2 L2 → L3 − L2
+ax = 3a − 1
+2 L3 → L1 − L2
+
+
+
+x = 3
+2 − 1
+2a
+z = − 1 + 1
+2a
+y = 3
+2 − 1
+2a − a
+7

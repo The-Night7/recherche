@@ -17,6 +17,8 @@ Usage:
     python3 build_index.py
 """
 import json
+from collections import Counter
+from pathlib import Path
 
 import numpy as np
 
@@ -24,7 +26,7 @@ from text_utils import tokenize
 
 
 def main(chunks_path="chunks.json", out_index="index.npz", out_vocab="vocab.json"):
-    chunks = json.load(open(chunks_path, encoding="utf-8"))
+    chunks = json.loads(Path(chunks_path).read_text(encoding="utf-8"))
     # le titre de section est indexé avec le texte : "Règle d'Alembert" est
     # souvent seulement dans le titre, pas dans le corps du passage
     docs_tokens = [tokenize(c.get("section", "") + " " + c["text"]) for c in chunks]
@@ -40,31 +42,36 @@ def main(chunks_path="chunks.json", out_index="index.npz", out_vocab="vocab.json
     print(f"{N} documents, vocabulaire de {V} mots")
 
     # --- TF (comptage brut par document) ---
-    tf = np.zeros((N, V), dtype=np.float32)
+    rows, cols, values = [], [], []
+    df = np.zeros(V, dtype=np.int64)
     for i, toks in enumerate(docs_tokens):
-        for w in toks:
-            tf[i, vocab[w]] += 1.0
+        for word, count in Counter(toks).items():
+            col = vocab[word]
+            rows.append(i)
+            cols.append(col)
+            values.append(count)
+            df[col] += 1
+    rows = np.asarray(rows, dtype=np.int32)
+    cols = np.asarray(cols, dtype=np.int32)
 
     # --- DF puis IDF ---
-    df = (tf > 0).sum(axis=0)                        # (V,)
     idf = np.log((1.0 + N) / (1.0 + df)) + 1.0        # lissage type sklearn
 
     # --- TF-IDF puis normalisation L2 ---
-    tfidf = tf * idf[np.newaxis, :]
-    norms = np.linalg.norm(tfidf, axis=1, keepdims=True)
+    tfidf = np.asarray(values, dtype=np.float64) * idf[cols]
+    norms = np.sqrt(np.bincount(rows, weights=tfidf ** 2, minlength=N))
     norms[norms == 0] = 1.0
-    tfidf_norm = tfidf / norms
+    tfidf_norm = tfidf / norms[rows]
 
     # stockage creux (lignes, colonnes, valeurs non nulles) : la matrice
     # dense N x V dépasserait vite les 40 Mo avec plusieurs cours
-    rows, cols = np.nonzero(tfidf_norm)
     np.savez_compressed(
         out_index,
         rows=rows.astype(np.int32), cols=cols.astype(np.int32),
-        vals=tfidf_norm[rows, cols].astype(np.float32),
+        vals=tfidf_norm.astype(np.float32),
         shape=np.array([N, V], dtype=np.int64), idf=idf.astype(np.float32),
     )
-    json.dump(vocab, open(out_vocab, "w", encoding="utf-8"), ensure_ascii=False)
+    Path(out_vocab).write_text(json.dumps(vocab, ensure_ascii=False), encoding="utf-8")
     print(f"Index sauvegardé dans {out_index} et {out_vocab}")
 
 

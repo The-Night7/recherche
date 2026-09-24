@@ -1,0 +1,358 @@
+Projet numérique en physique
+moderne
+Présentation
+Lorsqu’une boule de billard rencontre un obstacle, celle-ci peut « rebondir sur
+l’obstacle » si son énergie est trop faible, ou le franchir dans le cas contraire
+(on suppose que la boule ne se brise pas durant le choc).
+En mécanique quantique, une particule ne peut plus être vue comme une
+boule de billard précisément localisée dans l’espace à tout instant : l’évolution
+de l’état de la particule n’est plus déterminé grâce à la deuxième loi de
+Newton, mais grâce à l’équation deSchrödinger. Cette dernière, ne porte
+plus directement sur la position et la quantité de mouvement, mais sur la
+fonction d’onde qui en définitive permettra de déterminer la probabilité qu’a
+la particule d’être dans une région donnée de l’espace. La fonction d’onde
+présente certaines propriétés qui n’existent pas pour une particule décrite
+par la mécanique classique. Ainsi, lorsqu’une particule rencontre un obstacle
+(une autre particule par exemple) elle a la possibilité de le franchir, même si
+classiquement son énergie n’était pas suffisante, c’est ce qu’on appelle l’« effet
+tunnel ».
+Dans ce projet, nous allons étudier l’effet tunnel. Pour simplifier les calculs, à
+la fois analytiques et numériques, nous étudierons le cas d’une particule se
+déplaçant à une dimension d’espace et rencontrant un obstacle modélisé par
+une barrière rectangulaire de potentiel. La détermination des états station-
+naires n’est pas suffisante pour analyser ce problème, puisque ces derniers ont
+des propriétés en contradiction avec la nature d’une particule (voir partie 2
+Ondes planes). Dans la partie 3, nous verrons qu’un paquet d’ondes sera plus
+à même de rendre compte du comportement d’une particule libre. Dans un
+cas bien précis, on sait calculer l’évolution d’un tel paquet d’ondes. Dans un
+dernier temps, nous verrons comment résoudre numériquement l’équation de
+Schrödingerpour étudier l’évolution d’un paquet d’ondes rencontrant une
+barrière de potentiel.
+En plus des différentes étapes de la démarche générale, l’objectif du projet
+sera de déterminer le temps que met la particule pour franchir cette barrière
+(partie 4).
+Progression indicative — Séance :
+1. Ondes planes
+1
+<<<PAGE>>>
+2. Paquets d’ondes
+3. Résolution numérique de l’équation deSchrödinger
+La partie 4 relative au temps de traversée sera à réaliser en dehors des séances
+de TD. Des indications seront néanmoins données.
+Esprit du projet
+Le projet est à la fois un complément au cours et aussi une initiation aux
+outils numériques et la recherche. Le plus important n’est pas de terminer le
+projet, mais d’être sûr et certain que les étapes intermédiaires sont justes et
+que les éventuelles approximations sont maitrisées. Le travail à fournir est
+très dense.
+Travail préparatoire
+Réfléchissez à une démarche générale pour résoudre le problème à la fois de
+manière analytique (éventuellement avec des approximations) et numérique.
+2
+<<<PAGE>>>
+Utilisation de l’IA
+Rappel duRèglement des examens:« Le plagiat consiste à présenter
+comme une production personnelle tout ou partie d’un travail de créa-
+tion (par exemple, de manière non exhaustive, un texte, une analyse,
+un développement d’idée, une enquête, un document graphique, une
+image, etc.) dont on n’est pas l’auteur.
+Le plagiat peut intervenir soit par l’appropriation active d’un travail
+de création d’autrui ou autrement dit par une reprise d’éléments non
+personnels, soit par l’omission de la référence correcte de ce travail
+et/ou de leurs sources.
+Toute production de l’étudiant destinée à être évaluée peut être soumise
+à un outil de détection de plagiat.
+Les travaux universitaires individuels ou collectifs (devoir, exposé, mé-
+moire, thèse...) doivent revêtir un caractère personnel, ce qui exclut
+tout plagiat y compris à partir de documents issus de sites internet, ou
+bien générés par des outils conversationnels ou rédactionnels à partir
+d’une intelligence artificielle.
+Tout recours à l’intelligence artificielle, quand il n’est pas expressément
+interdit, devra être mentionné de façon explicite en tant qu’emprunt
+ou citation d’une source externe. Le non respect de cette règle sera
+considéré comme une fraude, en effet, présenter comme sien un travail
+que l’on n’a pas rédigé soi même est une fraude que le rédacteur soit
+un tiers humain ou une intelligence artificielle. »
+Vous pouvez donc utiliser des ressources externes (autres que l’IA) à
+condition de les citer et de maîtriser les résultats utilisés. En revanche,
+l’IA ne peut servir qu’à relire votre travail (texte, calculs ou code),
+et non pour produire une quelconque partie. Si des notions ne sont
+maîtrisées par aucun membre du groupe, il sera reconnu que vous avez
+utilisé l’IA.
+1 Ondes planes
+1.1 Généralités
+1.Notions physiques
+a. Rappeler l’expression d’une onde plane à trois dimensions d’es-
+pace ainsi que la signification, la dimension physique et l’unité
+de # «ketω.
+b. En déduire son expression à une dimension d’espace et détermi-
+3
+<<<PAGE>>>
+ner sa partie réelle et sa partie imaginaire. Nous travaillerons
+désormais à une dimension d’espace uniquement.
+c. On suppose que la fonction d’onde d’une particule est une onde
+plane. Quelle est la dimension et l’unité du terme «d’amplitude»
+devant l’exponentielle.
+d. Montrer que cette fonction d’onde est solution de l’équation de
+Schrödinger, si la particule est libre.
+e. Déterminer la relation de dispersion, la vitesse de phase et la
+vitesse de groupe.
+f. Comparer ces vitesses à la vitesse obtenue en prenantv=p/m.
+g. Écrire la condition de normalisation de cette fonction d’onde
+en précisant les bornes. Quelles seraient les bornes pour une
+particule dans un puits de profondeur infinie?
+h. Montrer que ces fonctions d’onde (pour une particule libre) ne
+sont pas des solutions physiquement acceptables.
+2.Un peu de python
+Créer un programme :OndePlane1dXY.py avec X votre groupe de TD
+et Y la lettre de votre groupe de projet. Ajouter au début du code la
+ligne ci-dessous qui permet d’utiliser des fonction ou des constantes
+de la libraire (bibliothèque)numpy dédiées aux outils mathématiques
+pour les sciences
+from numpy import pi, exp, sqrt, real, imag, zeros, linspace
+a. Définir une fonctionPlaneWave prenant en argument les quatre
+paramètres amp (amplitude), k, omega, x, t et renvoyant une
+onde plane à 1d.
+b. Tester cette fonction puis représenter les parties réelle et ima-
+ginaire de cette onde planeΨ(x,t )en fonction de x, à l’instant
+t.
+Pour ce faire, vous pouvez utiliser la librairiematplotlib dédiée
+à l’affichage de graphiques.
+import matplotlib.pyplot as plt
+Signification : vous importez la librairiematplotlib.pyplot en
+tant que
+pltpour éviter d’écrirematplotlib.pyplotdès que vous utiliser
+une fonction de cette librairie.
+Pour afficher une liste de pointsy en fonction dex, il faut écrire :
+fig, ax = plt.subplots()
+4
+<<<PAGE>>>
+Signification : vous appelez la fonctionsubplots de la biblio-
+thèque plt.Cette fonction renvoie deux éléments, un que vous
+choisissez de nommerfig (mais que vous n’utilisez pas pour le
+fonctionnement de base), un autre que vous appelezax indispen-
+sable pour la suite.
+ax.plot(x, y)
+Signification : vous demandez que soient représentésy en fonction
+de x. Attention, ils doivent être de même longueur (on dirait
+taille en C).
+plt.show()
+Signification : pour afficher le graphique précédent... plus pra-
+tique.
+1.2 Superposition d’ondes planes
+1.Notions physiques
+a. Justifier qu’une superposition d’ondes planes reste solution de
+l’équation deSchrödinger.
+b. On considère à présent trois ondes planes au même instantt = 0,
+de nombre d’ondesk0,k0−∆k/2et k0 +∆k/2. La deuxième et la
+troisième ont une amplitude deux fois plus petite que la première.
+Déterminer l’expression de l’onde résultant de la somme de ces
+trois ondes planes.
+c. En déduire la densité de probabilité de présence au même instant.
+d. Représenter graphiquement les parties réelles de ces trois ondes
+et la partie réelle de leur somme sur l’intervalle[−π/ ∆k,π/ ∆k].
+Sur le même graphique, représenter l’enveloppe.
+2. Un peu de python : réutiliser le programme précédent pour qu’il
+permette d’afficher les graphiques tracés précédemment.
+2 Paquets d’ondes
+2.1 Généralités
+L’équation deSchrödingerétant linéaire, si deux fonctions d’ondes sont
+solutions (pour un même potentiel), leur somme reste solution et constitue
+un état possible (superposition d’état qui amène à l’expérience du chat de
+Schrödinger). À trois dimensions d’espace, l’expression la plus générale
+5
+<<<PAGE>>>
+d’une telle superposition est unpaquet d’ondesd’expression :
+Ψ( # «r,t) = [2π] −3/2
+˚
+g( # «k) exp
+[
+i # «r· # «k−iωt
+]
+d3 # «k(1)
+où # «k est le vecteur d’onde et # «r le vecteur position (ou rayon vecteur).
+Analysons cette expression :
+• le pré-facteur[2π]−3/2 est ajouté de manière à ce queΨsoit normalisable
+• la fonctiong est une fonction de trois variables, à savoir les trois compo-
+santes # «k
+•le terme en exponentiel correspond à l’onde plane
+• l’expression générale fait intervenir une intégrale triple sur les trois
+coordonnées du vecteur # «k.
+Dans une base cartésienne( # «ex, # «ey, # «ez), où # «r = x # «ex +y # «ey +x # «ez et # «k =
+kx
+# «ex +k y
+# «ey +k z
+# «ez ce paquet d’ondes peut s’écrire
+Ψ(x,y,z,t) = [2π] −3/2
+˚
+g(kx,k y,k z) exp
+[
+i # «r· # «k−iωt
+]
+dkx dky dkz
+avec # «r· # «k=xk x +yk y +zk z.
+Remarque sur les notations
+Bien souvent, en physique vous verrez l’expression condensée
+Ψ( # «r,t) = [2π] −3/2
+ˆ
+g( # «k) exp
+[
+i # «r· # «k−iωt
+]
+d3k(2)
+ou encore si on notek= # «k:
+Ψ(r,t) = [2π] −3/2
+ˆ
+g(k) exp [ir·k−iωt] dk.(3)
+2.2 Paquets d’ondes gaussien
+Un cas particulier de paquet d’ondes est celui pour lequel la fonctiong est une
+gaussienne (loi normale). Ce cas particulier est assez important notamment
+parce que les calculs sont plus simples et parce que ce type de paquet d’ondes
+est réalisable en laboratoire.
+En dimension une
+g(k) =√a[2π]−1/4 exp
+[
+−a2(k−k 0)2/4
+]
+,(4)
+oùaest une grandeur qui sera interprétée par la suite.
+6
+<<<PAGE>>>
+1.Notions physiques
+a. Donner l’expression générale d’un paquet d’ondes pour une par-
+ticule libre se déplaçant selon l’axe(Ox)de manière à ce queω
+n’intervienne pas.
+b. Donner l’expression générale d’un paquet d’ondes gaussien.
+c. Encalculantl’intégrale,déterminerl’expressiondupaquetd’ondes
+gaussien à l’instantt.
+Le calcul de l’intégrale donne :
+Ψ(x,t) =
+[1
+8π3
+]1/4√
+4πma
+ma2 + 2i¯htexp
+[
+m
+4
+[a2k0 + 2ix]2
+ma2 + 2i¯ht− a2k2
+0
+4
+]
+(5)
+d. Vérifier que ce paquet d’ondes est normalisé.
+e. En utilisant les « Outils mathématiques » relatifs à la transfor-
+mation deFourierou avec les notions vus en Ondes, exprimer
+g(k)en fonction deΨ(x,t= 0).
+2.Un peu de python
+Nommezceprogramme: PaquetOndeGauss1dXY.pyavec Xvotregroupe
+de TD etYla lettre de votre groupe de projet.
+a. Définir des constanteshbar et m (pour la masse de l’électron par
+exemple).
+b. Définir une fonctionGaussWP (pour «Gaussian Wave Packet»)
+prenant en argument les quatre paramètresk0, a, x, t et ren-
+voyant le paquet d’ondes gaussienΨ(x,t).
+c. Tester cette fonction puis représenter les parties réelle et ima-
+ginaire du paquet d’ondes gaussienΨ(x,t )en fonction de x, à
+l’instantt= 0.
+d. Quelle difficulté rencontrez-vous?
+e. Proposer une solution/astuce.
+7
+<<<PAGE>>>
+3 Résolutionnumériquedel’équationdeSchrö-
+dinger
+L’objectif de cette dernière étape va être d’élaborer un premier algorithme
+de résolution de l’équation deSchrödingerqui permettra de déterminer
+l’évolution du paquet d’ondes initial. Pour une particule libre et une paquet
+d’ondes gaussien à l’instant initial, l’évolution du paquet d’ondes est connu
+(partie 2). Si notre l’algorithme élaborée est correcte, il donnera les mêmes
+résultats que la théorie.
+C’est dans un dernier temps, que nous étudierons l’évolution d’un paquet
+d’ondes qui rencontre une barrière de potentiel. Le traitement rigoureux du
+problème est relativement complexe et la résolution numérique constituera la
+voie privilégiée dans ce projet.
+3.1 Algorithme de dérivation
+La fonction d’onde à un instant donné peut être vue comme un tableau
+1d (numpy.array en Python avec la librairie numpy) et contenant autant
+d’éléments que de nombre de pointsnpts utilisés pour l’intervalle d’espace (x
+dans les codes précédents).
+1.Dérivée première
+a. Rappeler la définition de la dérivée d’une fonction réelle en un
+point.
+b. Si cette fonction est un tableau 1d denpts éléments, écrire un
+algorithme (pseudo-code ou python) calculant cette dérivée.
+c. Écrire en Python une fonction renvoyant le carréx2 d’un nombre
+xet une autre renvoyant2x.
+d. À l’aide de votre algorithme, calculer numériquement la dérivée
+de la fonctionx2 et comparer les valeurs obtenues avec celles
+renvoyées pas la fonction2x. Vous pouvez, par exemple, regarder
+l’erreur relative commise pas votre algorithme.
+2. Reprendre les questions précédentes, mais pour la dérivée seconde.
+3.2 Algorithme pour l’équation de Schrödinger
+L’équation deSchrödingerdécrit l’évolution de la fonction d’onde dans le
+temps et l’espace. Dès lors, la fonction d’onde ne peut pas être stockée dans
+un tableau 1d, mais un tableau 4d! Dans la mesurer où nous n’étudions que
+des problèmes à une dimension d’espace, des tableaux 2d seront suffisants.
+8
+<<<PAGE>>>
+1. Rappeler l’équation deSchrödingerà une dimension d’espace pour
+une particule dans un potentiel constantV0.
+2. Définir une fonction d’onde (tableau 2d) contenantnx lignes et nt
+colonnes. La première ligne doit contenir un paquet d’ondes gaussien à
+instant donné et le reste du tableau doit contenir des zéros (ou mieux
+des nombres aléatoiresempty).
+3. Définir (numpy.linspace) des tableaux 1d pour les intervalles d’espace
+xet de tempst.
+4. Écrire un algorithme combinant les dérivées première par rapport
+au temps et seconde pas rapport à l’espace pour décrire l’évolution
+de la fonction d’ondes initiale (paquet d’ondes dans notre cas) selon
+l’équation deSchrödinger.
+5. Confronter les résultats de l’algorithme (dans le casV0 = 0avec le
+programme PaquetOndes.py. La comparaison peut, dans un premier
+temps, se faire sans représenter les paquets d’ondes.
+9
+<<<PAGE>>>
+4 Projet
+4.1 Objectif
+Comme expliqué dans la partie «Présentation», le projet consistera à détermi-
+ner le temps nécessaire à une particule pour franchir une barrière rectangulaire
+de potentiel de hauteurV0 > 0pareffet tunnel. L’état initial de la particule
+sera supposé être gaussien (paquet d’ondes gaussien). L’approche se fera
+numériquement et analytiquement. Voici quelques étapes clés pour étudier le
+problème :
+1.Aspects numériques
+a. Écrireunprogrammederésolutiondel’équationdeSchrödinger
+à une dimension d’espace pour une barrière de potentiel dans
+le but d’observer la propagation du paquet d’ondes et ce qu’il
+devient au moment où il rencontre la barrière
+b. Déterminer numériquement le tempsτ0,num que met la particule
+libre (V0 = 0) pour parcourir une distancea
+c. déterminer le tempsτt,num que met la particule pour franchir la
+barrière
+d. Étudier l’influence de la longueura de la barrière surτ0,num et
+τt,num
+e. Étudier l’influence deV0 surτ t,num
+2. Comparer au cas classique (E > V0 et0 < E < V0 si la distance
+parcourue esta)
+3.Aspects analytiques
+a. Déterminer les états stationnaires et les probabilités de transmis-
+sion et de réflexion pour ces états.
+b. Déterminer la vitesse de phase et de groupe du paquet d’ondes
+gaussien.
+c. Déterminer le tempsτ0,th que met la particule libre (V0 = 0)
+pour parcourir une distancea. On suppose que la particule libre
+est dans un état gaussien.
+d. Étudier l’influence deasurτ 0,th.
+e. Déterminer l’expression du paquet d’ondes transmis.
+f. Déterminer le tempsτt,th que met la particule pour franchir la
+barrière de potentiel.
+g. Étudier l’influence deasurτ t,th.
+10
+<<<PAGE>>>
+4.2 Soutenance
+Lors de la soutenance, vous présenterez et analyserez les différents résultats
+obtenus. Il n’est pas obligatoire de présenter toutes les étapes de calcul
+durant la soutenance, mais vous devez être capable de démontrer les résultats
+présentés. Une grille de compétences sera déposée prochainement sur Moodle.
+11

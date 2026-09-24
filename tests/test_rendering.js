@@ -79,10 +79,12 @@ test('uncertain intermediate steps are collapsed beside the readable calculation
 test('computer science excerpts preserve code without interpreting math or HTML', () => {
   const result = {
     course: 'informatique3', course_name: 'Informatique 3', doc_label: 'TD2', section: 'Exercice 1', score: 1,
+    curriculum_label: 'Préing 2 — semestre 1',
     blocks: [{type:'text', text:'int n = 2;\n    p->next = NULL;\n#include <stdio.h>\n$x$'}]
   };
   const html = context.renderCard(result, 0, ['int']);
   assert.match(html, /<pre class="text-excerpt">int n = 2;\n    p-&gt;next = NULL;/);
   assert.match(html, /#include &lt;stdio.h&gt;\n\$x\$<\/pre>/);
   assert.doesNotMatch(html, /math-block|<mark>|<stdio/);
+  assert.match(html, /class="context-tag">Préing 2 — semestre 1<\/span>/);
 });

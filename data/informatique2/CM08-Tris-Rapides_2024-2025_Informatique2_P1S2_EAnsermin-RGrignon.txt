@@ -1,0 +1,809 @@
+Informatique II
+Tris rapides
+
+<<<PAGE>>>
+Rappel 
+⚫ Les tris vus au cours précédents étaient d’ordre de complexité 𝑂 𝑛2 .
+https://fr.wikipedia.org/wiki/Algorithme_de_tri
+
+<<<PAGE>>>
+Rappel 
+⚫ De meilleurs algorithme de tris? 
+https://fr.wikipedia.org/wiki/Algorithme_de_tri
+
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64 | 
+⚫ Diviser pour mieux régner!
+⚫ Constat : il est facile d’obtenir un tableau trié à partir de 
+deux tableaux déjà triés:
+10| 15 | 60| 63 | 75 | 
+| | | | |    | |    |   
+A[n] B[n]
+T[2n]
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75 
+| | | | |    | |    |   
+Le plus petit élément est forcement ici
+Case à remplir
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75 
+10 | | | | |    | |    |   |    
+Le plus petit élément est forcement ici
+Case à remplir
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | | | | |    | |    |    |  
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | | | |    | |    |   
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | | |    | |    |   
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | |    | |    |   |    | 
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | 45 |    | |    |    | 
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | 45 | 53 | |    |    |  
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | 45 | 53 | |    |   | 
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | 45 | 53 | 60 |    |   
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75  
+10 | 15 | 27 | 32 | 45 | 53 | 60 | 63  | 64 |  
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64
+⚫ Diviser pour mieux régner!
+⚫ Il est facile d’obtenir un tableau trié à partir de deux tableaux 
+déjà triés:
+10| 15 | 60| 63 | 75
+10 | 15 | 27 | 32 | 45 | 53 | 60 | 63  | 64 | 75  
+i
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+⚫ Algorithme de fusion de deux tableaux triés: 
+PROCEDURE fusion_2tab(A[n], B[n], C[2n] :Tableau de T)
+Variable
+indexA, indexB, i : ENTIER
+DEBUT
+indexA ← 0
+indexB ← 0
+POUR i de 0 à 2n FAIRE
+SI(A[indexA]<B[indexB]) ALORS
+C[i] ← A[indexA]
+indexA ← indexA +1
+SINON
+C[i] ← B[indexB]
+indexB ← indexB+1
+FIN SI
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri fusion 
+⚫ Algorithme de fusion de deux tableaux triés: 
+Parcours et remplissage du tableau final
+PROCEDURE fusion_2tab(A[n], B[n], C[2n] :Tableau de T)
+Variable
+indexA, indexB, i : ENTIER
+DEBUT
+indexA ← 0
+indexB ← 0
+POUR i de 0 à 2n FAIRE
+SI(A[indexA]<B[indexB]) ALORS
+C[i] ← A[indexA]
+indexA ← indexA +1
+SINON
+C[i] ← B[indexB]
+indexB ← indexB+1
+FIN SI
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri fusion 
+⚫ Algorithme de fusion de deux tableaux triés: 
+Parcours des tableaux
+PROCEDURE fusion_2tab(A[n], B[n], C[2n] :Tableau de T)
+Variable
+indexA, indexB, i : ENTIER
+DEBUT
+indexA ← 0
+indexB ← 0
+POUR i de 0 à 2n FAIRE
+SI(A[indexA]<B[indexB]) ALORS
+C[i] ← A[indexA]
+indexA ← indexA +1
+SINON
+C[i] ← B[indexB]
+indexB ← indexB+1
+FIN SI
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri fusion 
+⚫ Algorithme de fusion de deux tableaux triés: 
+Exercice : rajouter les 
+conditions sur les indices !
+PROCEDURE fusion_2tab(A[n], B[n], C[2n] :Tableau de T)
+Variable
+indexA, indexB, i : ENTIER
+DEBUT
+indexA ← 0
+indexB ← 0
+POUR i de 0 à 2n FAIRE
+SI(A[indexA]<B[indexB]) ALORS
+C[i] ← A[indexA]
+indexA ← indexA +1
+SINON
+C[i] ← B[indexB]
+indexB ← indexB+1
+FIN SI
+FIN POUR
+FIN
+<<<PAGE>>>
+Tri fusion 
+⚫ Principe :
+⚫ Séparer les tableaux en deux
+⚫ Recommencer sur chaque partie jusqu’à avoir des 
+tableau de 1 cases.
+⚫ Fusionner les tableaux
+<<<PAGE>>>
+Tri fusion 
+⚫ Principe :
+Séparations
+Fusions
+<<<PAGE>>>
+Tri fusion 
+⚫ Principe :
+⚫ Séparer les tableaux en deux
+⚫ Recommencer sur chaque partie jusqu’à avoir des 
+tableau de 1 cases.
+⚫ Fusionner les tableaux
+⚫ La separation et la fusion se font par recursivité
+⚫ En pratique, pas besoin de plusieurs tableaux différents : 
+on travaille sur les sous-tableaux.
+<<<PAGE>>>
+Tri fusion 
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+<<<PAGE>>>
+Tri fusion 
+Initialise les paramètres de triFusionRec
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+<<<PAGE>>>
+Tri fusion 
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+Indice du milieu du tableau
+<<<PAGE>>>
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+Tri fusion 
+Recursivité sur les deux moitié du tableaux 
+<<<PAGE>>>
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+Tri fusion 
+Division du tableau par la gauche
+<<<PAGE>>>
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+Tri fusion 
+Division du tableau par la droite
+<<<PAGE>>>
+PROCEDURE triFusion(A[n] : Tableau de T)
+Début
+triFusionRec(A, 0, n-1)
+Fin
+PROCEDURE triFusionRec(A[n] :Tableau de T; debut, fin : Entier)
+VARIABLE
+milieu : ENTIER
+DEBUT
+SI debut < fin ALORS
+milieu ← (deb+fin) DIV 2
+triFusionRec(A, debut, milieu)
+triFusionRec(A, milieu+1, fin)
+fusionner(A, debut, milieu, fin)
+FIN SI
+FIN
+Tri fusion 
+Fusion des sous tableau
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+début finmillieu
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+début finmillieu
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+<<<PAGE>>>
+Tri fusion 
+27 | 32 | 45 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+i
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+10 | 32 | 45 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+i
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+10 | 15 | 45 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+i
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+10 | 15 | 27 | 53 | 64 |10| 15 | 60| 63 | 75 | A
+i
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+indexA indexB
+<<<PAGE>>>
+Tri fusion 
+10 | 15 | 27 | 32 | 45 |53| 60 | 63| 64 | 75 | A
+i
+27 | 32 | 45 | 53 | 64 |75| 63 | 60 | 15 | 10 | AUX
+indexB
+indexA
+<<<PAGE>>>
+Tri fusion 
+PROCEDURE fusionner(A[n] :Tableau de T debut, milieu, fin : Entier)
+VARIABLE
+indexA, indexB, i : Entier  
+aux[n] :Tableau de T
+DEBUT
+indexA ← début
+indexB ← fin
+POUR i de debut à milieu+1 FAIRE 
+aux[i] ← A[i] 
+FIN POUR
+POUR i de milieu+1 à fin+1 FAIRE 
+aux[i] ← A[fin-i+milieu+1] 
+FIN POUR
+POUR i de debut à fin+1 FAIRE
+SI aux[indexA] <= aux[indexB] ALORS
+A[i] ← aux[indexA]
+indexA ← indexA + 1
+SINON
+A[i] ← aux[indexB]
+indexB ← indexB - 1
+Fin Si
+FinPour
+Fin
+<<<PAGE>>>
+Tri fusion 
+Recopie du tableau. La 
+seconde partie est
+recopiée “ à lenvers”
+PROCEDURE fusionner(A[n] :Tableau de T debut, milieu, fin : Entier)
+VARIABLE
+indexA, indexB, i : Entier  
+aux[n] :Tableau de T
+DEBUT
+indexA ← début
+indexB ← fin
+POUR i de debut à milieu+1 FAIRE 
+aux[i] ← A[i] 
+FIN POUR
+POUR i de milieu+1 à fin+1 FAIRE 
+aux[i] ← A[fin-i+milieu+1] 
+FIN POUR
+POUR i de debut à fin+1 FAIRE
+SI aux[indexA] <= aux[indexB] ALORS
+A[i] ← aux[indexA]
+indexA ← indexA + 1
+SINON
+A[i] ← aux[indexB]
+indexB ← indexB - 1
+Fin Si
+FinPour
+Fin
+<<<PAGE>>>
+Tri fusion 
+PROCEDURE fusionner(A[n] :Tableau de T debut, milieu, fin : Entier)
+VARIABLE
+indexA, indexB, i : Entier  
+aux[n] :Tableau de T
+DEBUT
+indexA ← début
+indexB ← fin
+POUR i de debut à milieu+1 FAIRE 
+aux[i] ← A[i] 
+FIN POUR
+POUR i de milieu+1 à fin+1 FAIRE 
+aux[i] ← A[fin-i+milieu+1] 
+FIN POUR
+POUR i de debut à fin+1 FAIRE
+SI aux[indexA] <= aux[indexB] ALORS
+A[i] ← aux[indexA]
+indexA ← indexA + 1
+SINON
+A[i] ← aux[indexB]
+indexB ← indexB - 1
+Fin Si
+FinPour
+Fin
+Fusion/ tris du tableau
+<<<PAGE>>>
+Tri fusion : complexité 
+⚫ Le nombre d’operation ne dépend pas de l’état du tableau 
+( pas de meilleur ou de pire cas).
+⚫ Complexité de la fusion:  
+⚫ Comparaison de TriFusionRec:
+𝐶(0) =
+𝐶 𝑛 =
+<<<PAGE>>>
+Tri fusion : complexité 
+⚫ Le nombre d’operation ne dépend pas de l’état du tableau 
+( pas de meilleur ou de pire cas).
+⚫ Complexité de la fusion: O(n) 
+⚫ Comparaison de TriFusionRec:
+Complexité en 𝑂(𝑛 ∗ log(𝑛))
+𝐶(0) = 1
+𝐶 𝑛 = 𝑛 + 2 ∗ 𝐶(𝑛/2)
+<<<PAGE>>>
+Tri rapide (quicksort)
+• La méthode de tri la plus utilisée (voir algorithme)
+• Principe:
+• Partitionner le tableau en deux parties séparées par un 
+pivot :
+• Les éléments à la gauche du pivot doivent lui être
+inférieurs
+• Les éléments à sa droite doivent lui être supérieurs.
+• Appliquer récursivement l’algorithme sur les deux sous 
+parties.
+<<<PAGE>>>
+• Principe:
+• Partitionner le tableau en deux parties séparées par un 
+pivot :
+• Les éléments à la gauche du pivot doivent lui être
+inférieurs
+• Les éléments à sa droite doivent lui être supérieurs.
+Tri rapide (quicksort)
+Exemple :
+4 | 23 | 3 | 42 | 2 | 14 | 45 | 18 | 38 | 16
+4 | 14 | 3 | 2 | 16 | 23 | 45 | 18 | 38 | 42
+<<<PAGE>>>
+Tri rapide (quicksort)
+• Principe:
+• Partitionner le tableau en deux parties séparées par un 
+pivot :
+• Les éléments à la gauche du pivot doivent lui être
+inférieurs
+• Les éléments à sa droite doivent lui être supérieurs.
+• Appliquer récursivement l’algorithme sur les deux sous 
+parties.
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ 1. Parcourir de gauche à droite jusqu’à trouver un élément supérieur au pivot.
+<= >
+On isole le pivot en début du tableau
+<=
+<<<PAGE>>>
+Tri rapide : partitionnement 
+1. Parcourir de gauche à droite jusqu’à trouver un élément supérieur au pivot.
+<= >
+2. Parcourir de droite à gauche jusqu’à trouver un élément inférieur au pivot
+<= > < >=
+≤
+≤ ≥
+<<<PAGE>>>
+Tri rapide : partitionnement 
+1. Parcourir de gauche à droite jusqu’à trouver un élément supérieur au pivot.
+<= >
+2. Parcourir de droite à gauche jusqu’à trouver un élément inférieur au pivot
+<= > < >=
+≤
+≤ ≥
+3. Echanger les deux elements
+<= < > >=≤ ≥
+4 . Recommencer jusqu’à obtenir les deux parties (croisement des indices de 
+recherche)
+<<<PAGE>>>
+Tri rapide : partitionnement 
+1. Parcourir de gauche à droite jusqu’à trouver un élément supérieur au pivot.
+2. Parcourir de droite à gauche jusqu’à trouver un élément inférieur au pivot
+3. Echanger les deux elements
+<= < > >=≤ ≥
+4 . Recommencer jusqu’à obtenir les deux parties (croisement des indices de 
+recherche) 
+<= >=≤ ≤
+5 . Placer le pivot au croisement. 
+<= >=≤ ≤
+><
+><
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 72 | 64 | 58 | 14 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 72 | 64 | 58 | 14 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 72 | 64 | 58 | 14 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 72 | 64 | 58 | 14 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 14 | 64 | 58 | 72 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 14 | 64 | 58 | 72 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 14 | 64 | 58 | 72 | 63
+inf sup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+27 | 9 | 1 | 14 | 64 | 58 | 72 | 63
+infsup
+<<<PAGE>>>
+Tri rapide : partitionnement 
+⚫ Exemple:
+27 | 63 | 1 | 72 | 64 | 58 | 14 | 9
+14 | 9 | 1 | 27 | 64 | 58 | 72 | 63
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut])
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut]) 
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN
+Ici le pivot est la première case du tableau 
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut]) 
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN
+Gestion des indices inf et sup 
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut]) 
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN
+Echange des éléments
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut]) 
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN
+Placement du pivot
+<<<PAGE>>>
+Tri rapide
+FONCTION partition(A[n] Tableau de T; debut, fin : Entier) : ENTIER
+VARIABLE
+inf, sup, tmp : ENTIER
+DEBUT
+inf ← debut+1
+sup ← fin
+TANT QUE inf<=sup FAIRE
+TANT QUE(A[sup] > A[debut]) 
+sup ← sup-1
+FIN TANT QUE
+TANT QUE (A[inf] < A[debut])
+inf ← inf+1
+FIN TANT QUE
+SI inf<sup ALORS
+tmp ← A[sup]; A[sup] ← A[inf]; A[inf] ← tmp
+FIN SI
+FIN TANT QUE
+tmp ← A[debut]; A[debut] ← A[sup]; A[sup] ← tmp
+RETOURNER sup
+FIN On retourne l’emplacement du pivot
+<<<PAGE>>>
+Tri rapide
+PROCEDURE triRapide(Tableau de T)
+Début
+triRapideRec(A, 0, n-1)
+Fin
+PROCEDURE triRapideRec(Tableau de T; debut, fin : ENTIER)
+VARIABLE
+pivot : ENTIER
+DEBUT
+SI debut < fin ALORS
+pivot ← partition(A, debut, fin)
+triRapideRec(A, debut, pivot-1)
+triRapideRec(A, pivot+1, fin)
+FIN SI
+FIN
+<<<PAGE>>>
+Tri rapide : complexité 
+• Cas moyen 
+➢ Complexité : O(n*log(n))
+• Meilleur cas (pivot est la valeur médianne):
+• Complexité : O(n*log(n))
+• Pire cas (le pivot choisit est la plus grande valeur)
+• Nombre de comparaisons : (n-1)+(n-2)+…+1 = n(n-1)/2
+• Complexité : O(n²)
+<<<PAGE>>>
+Tris : comparaison
+
+<<<PAGE>>>
+Tris : comparaison
+
+<<<PAGE>>>
+https://fr.wikipedia.org/wiki/Algorithme_de_tri

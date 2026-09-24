@@ -1,0 +1,691 @@
+Introduction
+Logique et Raisonnement
+Ensemble
+Alg` ebre-Premier semestre 2021
+1 Introduction
+2 Logique et Raisonnement
+3 Ensemble
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Alg` ebre-Premier semestre 2021
+Th` emes
+Logique et raisonnement
+Ensembles
+Relations binaires
+Applications
+Nombres complexes
+Polynˆ omes
+Fractions rationnelles
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Introduction ` a la th´ eorie des ensembles :
+D´ eﬁnition et exemples.
+Inclusion, ´Egalit´ e.
+Ensemble des parties
+Op´ eration sur les ensembles :
+Intersection, Union.
+Diﬀ´ erence, Compl´ ementaire.
+Partition d’un ensemble.
+Produit Cart´ esien.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+D´ eﬁnition (Ensemble)
+Un ensemble E est une collection ou un groupement d’objets distincts.
+Les objets x de E s’appellent les ´ el´ ementsde E .
+Si E est un ensemble et si x est un ´ el´ ement deE , on dit que x
+appartient ` aE ou que x est dans E et on ´ ecrit
+x∈ E .
+Dans le cas contraire, si x n’est pas un ´ el´ ement deE , on dit que x
+n’appartient pas ` aE ou que x n’est pas dans E et on ´ ecrit
+x /∈ E .
+Remarque :
+Il existe un unique ensemble ne contenant aucun ´ el´ ement.C’est
+l’ensemble vide not´ e∅.
+Un ensemble qui ne contient qu’un seul ´ el´ ement est appel´ e
+singleton.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Pour d´ eﬁnir un ensemble, on peut le d´ ecrire :
+Par extension : en donnant la liste compl` ete explicite de tous ses
+´ el´ ements.On note cette liste entre accolades, l’ordre des ´ el´ ements
+list´ es n’ayant aucune importance.
+Exemple :
+{1},{1, 4},{1, 4, 9} et
+{1, 4, 9, 11} ={9, 4, 11, 1}.
+2N ={0, 2, 4,···} : L’ensemble des entiers naturels pairs.
+2N + 1 ={1, 3, 5,···} : L’ensemble des entiers naturels impairs.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Par compr´ ehension: en donnant une propri´ et´ eP que ses ´ el´ ements
+v´ eriﬁent et sont seuls ` a v´ eriﬁer.On note
+{x∈ E : P(x)} ou {x∈ E| P(x)}
+l’ensemble des ´ el´ ements deE qui v´ eriﬁentP.
+Exemple :
+2N ={n∈ N :∃k∈ N, n = 2k} : L’ensemble des entiers naturels
+pairs.
+2N + 1 ={n∈ N :∃k∈ N, n = 2k + 1} : L’ensemble des entiers
+naturels impairs.
+Q =
+{
+x∈ R :∃p∈ Z,∃q∈ N∗, x = p
+q
+}
+: L’ensemble des rationnels.
+[a, b[ ={x∈ R : a≤ x < b} : l’intervalle semi-ouvert ` a droite.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+D´ eﬁnition (Inclusion)
+Soient E et F deux ensembles. On dit que E est inclus dans F , ou que F contient
+E, ou que E est une partie de F , ce qu’on note
+E⊂ F
+si tout ´ el´ ement deE est ´ el´ ement deF , c’est-` a-dire
+∀x, (x∈ E =⇒ x∈ F )
+Exemple :
+On a la suite d’inclusions
+{1}⊂{ 1, 4}⊂{ 1, 4, 9}⊂{ 1, 4, 9, 11}.
+On a
+2N⊂ N et 2 N + 1⊂ N.
+On a la suite d’inclusions
+N⊂ Z⊂ Q⊂ R⊂ C.
+On a
+[a, b[ ⊂ R.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Attention ! : Ne pas confondre appartenance et inclusion.
+On a bien
+0∈ N
+mais
+0⁄⊂ N.
+N´ eanmoins
+{0}⊂ N.
+Un ´ el´ ement appartient ` a un ensemble.
+Par rapport ` aN, 0 est donc une bille dans un sac et non un sac dans un
+sac.
+On a bien
+N⊂ Z
+mais
+N /∈ Z.
+Un ensemble est contenu dans un ensemble .
+Par rapport ` aZ, N est donc un sac dans un sac et non une bille dans un
+sac.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Quand on veut montrer une inclusion :
+E⊂ F ,
+on ´ ecritsans r´ eﬂ´ echir :
+Soit x∈ E . Montrons que x∈ F est vraie.
+...
+}
+Preuve que x∈ F .
+Exemple : Montrer que
+{x∈ R :∃y∈ R+, x≥ y}⊂ R+.
+Preuve : Soit x∈ R. On suppose qu’il existe y∈ R+ tel que x≥ y. Montrons
+que x∈ R+. Or y≥ 0 par hypoth` ese etx≥ y, donc
+x≥ 0.
+Ainsi,{x∈ R :∃y∈ R+, x≥ y}⊂ R+.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Exemple :
+Montrer que
+E ={k(k + 1) : k∈ N}⊂ 2N.
+Preuve : Soit n∈ E , alors
+n = k(k + 1) pour un certain k∈ N.
+Montrons que n∈ 2N. On peut aﬃrmer que k est pair ou impair , et si k est
+impair alors k + 1 est pair. Dans tous les cas
+k ou k + 1 est pair .
+Par produit, n = k(k + 1) l’est aussi , donc n∈ 2N.
+`A faire chez soi :
+Soit E l’ensemble des entiers naturels multiples de 6 et F l’ensemble des
+entiers naturels pairs. Montrer que E⊂ F .
+Soit E = [2, 3] et F ={x∈ R : x 2− 3x− 10 < 0}. Montrer que E⊂ F .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+D´ eﬁnition (´Egalit´ e)
+Soient E et F deux ensembles. Les ensembles E et F sont ´ egauxs’ils ont
+exactement les mˆ emes ´ el´ ements, i.e. si :
+∀x, (x∈ E ⇐⇒ x∈ F ).
+Exemples :
+Nous avons
+{x∈ R : x 2− 3x− 10 < 0} = ]− 2, 5[.
+Nous avons
+{0, 1} = {n∈ N : n2 = n}.
+Th´ eor` eme
+Soient E et F deux ensembles. Alors :
+E = F si et seulement si E⊂ F et F⊂ E .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Pour montrer une ´ egalit´ e d’ensembles :
+E = F ,
+on a deux possibilit´ es :
+Soit on raisonne par double inclusion :
+En montrant d’abord E⊂ F :
+Soit x∈ E . Montrons que x∈ F est vraie.
+...
+}
+Preuve que x∈ F .
+Puis, en montrant F⊂ E :
+Soit x∈ F . Montrons que x∈ E est vraie.
+...
+}
+Preuve que x∈ E .
+Soit on raisonne directement par ´ equivalence :
+∀x : x∈ E⇐⇒···⇐⇒···⇐⇒ x∈ F .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Exemple : Montrer que
+R− ={x∈ R :∀y∈ R+ x≤ y}.
+Preuve : On raisonne par double inclusion
+Montrons
+R−⊂{ x∈ R :∀y∈ R+ x≤ y}.
+Soit x∈ R−. Nous devons montrer que ∀y∈ R+, x≤ y
+soit y∈ R+ on a y≥ 0 mais par hypoth` esex≤ 0. Donc
+x≤ 0≤ y et x≤ y
+Montrons
+{x∈ R :∀y∈ R+ x≤ y}⊂ R−.
+Soit x∈ R tel que∀y∈ R+, x≤ y. Alors en particulier, pour y = 0
+on a x≤ 0. C’est-` a-direx∈ R−.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+D´ eﬁnition (Ensemble des parties d’un ensemble)
+Soit E un ensemble. On note P(E ) l’ensemble des parties de E
+P(E ) ={A : A⊂ E}.
+Remarque : Pour tout ensemble A :
+A∈ P(E ) ⇐⇒ A⊂ E . i.e. la notation A⊂ E a la mˆ eme signiﬁcation
+que la notation A∈ P(E ).
+a∈ E⇐⇒{ a}⊂ E⇐⇒{ a}∈ P(E ).
+∅∈ P(E ) et E∈ P(E ).
+Exemple : D´ eterminer l’ensemble des parties deE lorsque E ={a, b}
+P(E ) ={∅,{a},{b},{a, b}}.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Ensembles
+Exemple : D´ eterminer l’ensemble des parties deE lorsque E ={a, b, c} :
+P(E ) ={∅,{a},{b},{c},{a, b},{a, c},{b, c},{a, b, c}}.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+´Etudions certaines op´ erations sur les ensembles.
+D´ eﬁnition (Intersection)
+Soit E un ensemble, et soient A et B deux sous-ensembles de E .
+L’intersection de A et B est l’ensemble, not´ eA∩ B, d´ eﬁni par :
+A∩ B ={x∈ E : x∈ A et x∈ B}.
+En d’autres termes , l’intersection de A et de B est l’ensemble des
+´ el´ ements qui sont ` a la fois dansA et dans B.
+Diagramme de Venn :
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+Exemple :
+{1, 4, 7}∩{ 3, 5, 7, 11} ={7}.
+Z∩ Q = Z.
+([−1, 5]∩ ]0, 7[)∩ ]4, 9[ = ]0, 5]∩ ]4, 9[ = ]4, 5].
+-1 5
+0 7
+4 9
+On a
+{(x, y)∈ R2 : x 2 + y 2 = 1}∩{ (x, y)∈ R2 : x = y} =
+{(
+−
+√
+2
+2 ,−
+√
+2
+2
+)
+,
+(√
+2
+2 ,
+√
+2
+2
+)}
+.
+R+∩ R− ={0}.
+2N∩ (2N + 1) =∅.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ eﬁnition (Ensembles disjoints)
+Soient A et B deux ensembles. On dit que A et B sont disjoints si
+A∩ B =∅.
+Autrement dit si A et B n’ont aucun ´ el´ ement commun.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ eﬁnition (Union)
+Soit E un ensemble, et soient A et B deux sous-ensembles de E .
+L’union de A et B est l’ensemble, not´ eA∪ B, d´ eﬁni par :
+A∪ B ={x∈ E : x∈ A ou x∈ B}.
+En d’autres termes, l’union de A et de B est l’ensemble des ´ el´ ements qui
+appartiennent ` aA ou ` aB. Le ”ou” utilis´ e ici est inclusif : x est un
+´ el´ ement deA ou un ´ el´ ement deB ou un ´ el´ ement deA et de B.
+Diagramme de Venn :
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+Exemple :
+{3, 4, 7, 9}∪{ 2, 7, 9, 10, 21, 84} ={2, 3, 4, 7, 9, 10, 21, 84}.
+R+∪ R− = R.
+Q∪ I = R.
+{1,−1}∪ ]1,−1[ = [−1, 1].
+Remarque :
+Si A⊂ B. Alors
+A∩ B = A et A∪ B = B.
+Soient A et B deux ensembles. Alors on a toujours les inclusions
+suivantes :
+A∩ B⊂ A⊂ A∪ B et A∩ B⊂ B⊂ A∪ B.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+Remarque : L’union et l’intersection se g´ en´ eralisent facilement au cas de
+plus de deux ensembles : Soit E un ensemble, et consid´ erons
+{Ai : i∈ I}
+une famille de sous-ensembles de E , cela veut dire que I est un ensemble
+(on l’appelle ensemble d’indices), et que
+∀i∈ I , Ai est un sous-ensemble de E .
+Union : ⋃
+i∈I
+Ai ={x∈ E :∃i∈ I , x∈ Ai}.
+i.e. l’ensemble des objets qui appartiennent ` a l’un des Ai .
+Intersection :
+⋂
+i∈I
+Ai ={x∈ E :∀i∈ I , x∈ Ai}.
+i.e. l’ensemble des objets qui appartiennent ` a tous les Ai .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+L’union et l’intersection satisfont les propri´ et´ es suivantes.
+Th´ eor` eme
+Soit E un ensemble, et consid´ erons trois sous-ensemblesA, B, C de E .
+L’intersection et l’union sont commutatives :
+A∩ B = B∩ A et A∪ B = B∪ A.
+L’intersection et l’union sont associatives :
+A∩ (B∩ C ) = (A∩ B)∩ C = A∩ B∩ C ,
+A∪ (B∪ C ) = (A∪ B)∪ C = A∪ B∪ C .
+Pour tout sous-ensemble A de E on a
+A∩ E = A.
+Pour tout sous-ensemble A de E on a
+A∪∅ = A.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+Th´ eor` eme
+Soit E un ensemble, et consid´ erons trois sous-ensemblesA, B, C de E .
+L’intersection et la r´ eunion sontdistributives l’une par rapport ` a
+l’autre :
+A∩ (B∪ C ) = ( A∩ B)∪ (A∩ C ),
+A∪ (B∩ C ) = ( A∪ B)∩ (A∪ C ).
+D´ emonstration.
+Montrons que A∩ (B∪ C ) = (A∩ B)∪ (A∩ C ). On a :
+x∈ A∩ (B∪ C ) ⇐⇒ x∈ A et x∈ B∪ C
+⇐⇒ x∈ A et (x∈ B ou x∈ C )
+⇐⇒ (x∈ A et B) ou ( x∈ A et C )
+⇐⇒ (x∈ A∩ B) ou ( x∈ A∩ C )
+⇐⇒ x∈ (A∩ B)∪ (A∩ C ).
+On montre de mˆ eme l’´ egalit´ eA∪ (B∩ C ) = (A∪ B)∩ (A∪ C ).
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ eﬁnition (Diﬀ´ erence)
+Soit E un ensemble, et soient A et B deux sous-ensembles de E .
+La diﬀ´ erencede A avec B, not´ eA\ B, est l’ensemble de tous les
+´ el´ ements deA qui ne sont pas dans B.
+A\ B ={x∈ E : x∈ A et x /∈ B}.
+Diagramme de Venn :
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ eﬁnition (Diﬀ´ erence Sym´ etrique)
+Soit E un ensemble, et soient A et B deux sous-ensembles de E .
+La diﬀ´ erence sym´ etriquede A avec B, not´ eA∆B, est l’ensemble
+des ´ elements qui sont dans un et un seul des 2 ensembles A et B.
+A∆B = (A∪ B)\ (A∩ B) = (A\ B)∪ (B\ A).
+Diagramme de Venn :
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ eﬁnition (Compl´ ement)
+Soient E un ensemble et A une partie de E.
+Le compl´ ementairede A dans E est l’ensemble, not´ eC E
+A , de tous les
+´ el´ ements deE qui ne sont pas dans A.
+C E
+A ={x : x∈ E et x /∈ A} = E\ A.
+Diagramme de Venn :
+Remarque : S’il n’y a pas d’ambig¨ uit´ e sur l’ensembleE , on privil´ egiera la
+notation Ac pour C E
+A .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+La diﬀ´ erence et le compl´ ementaire satisfont les propri´ et´ es suivantes.
+Th´ eor` eme
+Soient A et B deux parties de E .
+1 (Ac)c = A et ∅c = E et E c =∅.
+2 Si A⊂ B, alors B c⊂ Ac.
+3 Lois de Morgan :
+(A∩ B)c = Ac∪ B c et (A∪ B)c = Ac∩ B c .
+D´ emonstration.
+1 Par d´ eﬁnition
+x∈ Ac⇐⇒ x /∈ A.
+Il en r´ esulte donc par n´ egation :
+x∈ (Ac)c⇐⇒x /∈ Ac⇐⇒ x∈ A.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ emonstration.
+2 Supposons que A⊂ B. Alors par d´ eﬁnition
+x∈ A =⇒ x∈ B.
+Cette proposition est ´ equivalente ` a sa contrapos´ ee :
+x /∈ B =⇒ x /∈ A,
+qui est ´ equivalente ` a
+x∈ B c =⇒ x∈ Ac .
+On a ainsi montr´ e que siA⊂ B, alors B c⊂ Ac.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Op´ erations sur les ensembles
+D´ emonstration.
+3 Montrons ( A∩ B)c = Ac∪ B c. On a, par d´ eﬁnition,
+x∈ A∩ B ⇐⇒ (x∈ A) et ( x∈ B).
+Il en r´ esulte par n´ egation
+x∈ (A∩ B)c ⇐⇒ x /∈ A∩ B ⇐⇒ (x /∈ A) ou ( x /∈ B)
+⇐⇒ (x∈ Ac) ou ( x∈ B c),
+ce qui s’´ ecrit
+x∈ (A∩ B)c⇐⇒ x∈ Ac∪ B c .
+Pour montrer ( A∪ B)c = Ac∩ B c,
+on pose C = Ac , D = B c. D’apr` es la premi` ere ´ egalit´ e :
+(C∩ D)c = C c∪ D c ⇐⇒ C∩ D = ( C c∪ D c)c .
+D’o` u en rempla¸ cant
+Ac∩ B c = (( Ac)c∪ (B c)c)c = ( A∪ B)c .
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Partition d’un ensemble
+D´ eﬁnition (Partition)
+Une partition d’un ensemble E est un ensemble
+{A1, A2, ··· , An}
+constitu´ e de parties deE v´ eriﬁant :
+Pour tout k∈{ 1,··· , n}, Ak⁄=∅, i.e. aucun Ak ne doit ˆ etre vide
+⋃n
+k=1 Ak = E , i.e. la r´ eunion desAk est ´ egale ` aE .
+Pour tout couple Ai , Aj avec Ai⁄= Aj on a Ai∩ Aj =∅, i.e. les Ai sont
+deux ` a deux disjoints.
+Diagramme de Venn :
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Partition d’un ensemble
+Exemples :
+L’ensemble{2N, 2N + 1} d´ eﬁnit une partition deN.
+L’ensemble{Q, I} d´ eﬁnit une partition deR.
+L’ensemble{
+[
+0, 1
+2
+]
+,
+] 1
+2 , 3
+2
+]
+,
+] 3
+2 , 2
+]
+} d´ eﬁnit une partition de [0, 2].
+L’ensemble{2N, 3N} n’est pas une partition de N.
+Exercice : Donner toutes les partitions de l’ensemble
+E ={a, b, c}.
+Solution :
+P1 ={{a},{b},{c}}
+P2a ={{a},{b, c}} et P2b ={{b},{a, c}} et P2c ={{a, b},{c}}.
+P3 ={{a, b, c}} ={E}
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Produit Cart´ esien
+D´ eﬁnition
+Soient A et B deux parties de E . Le produit cart´ esiende A et B est
+l’ensemble, not´ e
+A× B,
+constitu´ e de tous les couples(x, y) o` u
+x∈ A et y∈ B.
+On a donc :
+A× B ={(x, y) : x∈ A et y∈ B}.
+Exemple : Soit A ={a, b} et B ={1, 2}, alors
+A× B = {(a, 1), (a, 2), (b, 1), (b, 2)}
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Produit Cart´ esien
+Exemple :
+Avec
+C ={1, 2} et D ={1, 2, 3}
+on a
+C× D ={(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)}
+Remarque : On ne confond pas les couples ( a, b) et ( b, a) qui d´ esignent
+deux objets diﬀ´ erents, alors que {a, b} et{b, a} d´ esignent lemˆ eme
+ensemble.
+L’exemple montre que le premier et le deuxi` eme terme du couple
+n’appartiennent pas au mˆ eme ensemble.
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Produit Cart´ esien
+Remarque :
+La d´ eﬁnition pr´ ec´ edente se g´ en´ eralise.Soient n un entier sup´ erieur ou
+´ egale ` a 2 et
+A1, A2,··· , An une famille de n sous-ensembles de E .
+Alors le produit cart´ esien deA1, A2, ··· , An est l’ensemble d´ eﬁni par
+A1× A2×···× An =
+{
+(x1, x2,··· , xn) : ∀i∈{ 1,··· , n}, xi∈ Ai
+}
+.
+L’´ element (x1, x2, ··· , xn) est appel´ e unn-tuple de composants x1, x2,
+··· , xn.
+Lorsque A = B, on note
+A× A = A2.
+et on g´ en´ eralise cette notation pour l’ensemble
+An = A× A×···× A.
+(produit cart´ esien de n facteurs ´ egaux ` aA).
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Produit Cart´ esien
+Le produit cart´ esien satisfait les propri´ et´ es suivantes.
+Proposition
+Soient A, B, C , D des parties d’un ensemble E .
+(A× C )∪ (A× D) = A× (C∪ D).
+(A× C )∩ (B× D) = (A∩ B)× (C∩ D).
+D´ emonstration.
+On montre le premier point
+(x, y)∈ (A× C )∪ (A× D)⇐⇒ (x, y)∈ A× C ou (x, y)∈ A× D
+⇐⇒ (x∈ A et y∈ C ) ou ( x∈ A et y∈ D)
+⇐⇒ x∈ A et (y∈ C ou y∈ D)
+⇐⇒ (x, y)∈ A× (C∪ D).
+Le deuxi` eme point se montre de la mˆ eme fa¸ con (remplacer ”et” par ”ou”)
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Cardinal d’un ensemble ﬁni
+D´ eﬁnition
+On dit qu’un ensemble ﬁni E est de cardinal (ou taille) n∈ N s’il a n
+´ el´ ements.
+Proposition
+Le cardinal d’un ensemble ﬁni est unique.
+D´ eﬁnition
+Pour ensemble tout ensemble ﬁni E de cardinal n, on note
+Card(E ) = #(E ) =|E|
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Cardinal d’un ensemble
+Proposition
+Pour deux ensembles A et B ﬁnis.
+A⊂ B⇒ card(A)≤ card(B) ⁄⇐
+A⊂ B et card(A) = card(B)⇔ A = B
+card(A∪ B) + card(A∩ B) = card(A) + card(B)
+Remarque : Cela revient aux formules
+card(A∪ B) = card(A) + card(B)− card(A∩ B)
+ou
+card(A∩ B) = card(A) + card(B)− card(A∪ B)
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Cardinal d’un ensemble ﬁni
+Proposition
+Soit E un ensemble ﬁni de cardinal n∈ N.
+card(P(E )) = 2n
+Exemple
+A ={a, b, c,}
+P(A) ={∅,{a},{b},{c},{a, b},{a, c},{b, c},{a, b, c}}
+On a bien
+card(P(A)) = 23
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Cardinal d’un ensemble
+Proposition
+Soient E et F deux ensembles ﬁnis,
+card(E× F ) = card(E )× card(F )
+N. Arancibia - relu par D. Cransac Alg` ebre
+<<<PAGE>>>
+Introduction
+Logique et Raisonnement
+Ensemble
+Fonction caract´ eristique d’un ensemble
+D´ eﬁnition
+Soit E un ensemble et A un sous-ensemble de E.
+La fonction caract´ erstique de A, not´ ee1A est la fonction d´ eﬁnie sur E
+dans{0, 1} par :
+1A : E→ { 0; 1}
+x→
+{1 si x∈ A
+0 si x /∈ A
+Proposition
+Soit E un ensemble et A et B deux sous-ensembles de E.
+A ={x∈ E , 1A(x) = 1}
+1A∩B = 1A· 1B
+1A = 1− 1A
+1A∪B = 1A + 1B− 1A1B
+N. Arancibia - relu par D. Cransac Alg` ebre

@@ -8,7 +8,7 @@ Ajout de documents de cours (Séries, Analyse dans ℝⁿ…) en une commande.
         puis reconstruit l'index. Les sous-dossiers sont parcourus.
 
     python3 ingest.py add <fichiers ou dossiers>...
-        pareil à partir de fichiers locaux (PDF, .md, .txt), par exemple un
+        pareil à partir de fichiers locaux (PDF, .md, .txt, .docx), par exemple un
         dossier Drive téléchargé et dézippé à la main.
 
     python3 ingest.py status <fichiers ou dossiers>...
@@ -23,7 +23,9 @@ Le cours est déduit du nom de fichier, au format du dossier partagé :
     DS1-2023-2024-V4-Correction_Series-DS_P2S1_EMasnada.pdf
     DS2-2024-2025-V1_Analyse-dans-RN-DS_P2S1_DMaths.pdf
 Un fichier déjà indexé (même nom, tirets et majuscules ignorés, ou même
-contenu) n'est pas réajouté. Les autres cours du dossier sont ignorés.
+contenu dans la même matière et le même semestre) n'est pas réajouté.
+Les dossiers PREING1-S1, PREING1-S2, PREING2-S1 et PREING2-S2 permettent
+de classer les documents par sous-dossier de matière, même sans nom normalisé.
 
 PDF scanné (aucun texte extractible) : il est signalé « à transcrire ».
 Mettre la transcription Markdown + LaTeX dans
@@ -36,14 +38,16 @@ import os
 import re
 import sys
 import zipfile
+import xml.etree.ElementTree as ET
+from pathlib import Path
 
 from clean_extraction import clean_text, strip_control_chars
-from courses import COURSES, CURRICULUM, detect_course, ensure_meta
+from courses import COURSES, PLAIN_TEXT_COURSES, course_context, source_course, ensure_meta
 
 DATA_ROOT = "data"
 DRIVE_DIR = os.path.join(DATA_ROOT, "_drive")
 PAGE_SEP = "\n<<<PAGE>>>\n"
-SOURCE_EXTS = (".pdf", ".md", ".txt")
+SOURCE_EXTS = (".pdf", ".md", ".txt", ".docx", ".png")
 
 # documents volontairement ignorés, par cours (noms comparés sans tirets ni casse)
 SKIP = {
@@ -88,6 +92,15 @@ def skip_reason(course, stem):
 # --------------------------------------------------------------------------
 
 def extract_file(path):
+    if str(path).lower().endswith('.docx'):
+        with zipfile.ZipFile(path) as archive:
+            root = ET.fromstring(archive.read('word/document.xml'))
+        ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+        # Conserver les paragraphes, tableaux et retours à la ligne du document.
+        return '\n\n'.join(''.join(
+            node.text or '' if node.tag.endswith('}t') else '\n' if node.tag.endswith('}br') else '\t'
+            for node in para.iter() if node.tag.rsplit('}', 1)[-1] in ('t', 'br', 'tab')
+        ) for para in root.findall('.//w:p', ns))
     raw = open(path, "rb").read()
     if raw[:2] == b"PK":  # export "zip" (pages .txt + images) du dossier partagé
         z = zipfile.ZipFile(path)
@@ -146,7 +159,7 @@ class Library:
 
     def _load_hashes(self, course):
         try:
-            return json.load(open(self._hash_file(course), encoding="utf-8"))
+            return json.loads(Path(self._hash_file(course)).read_text(encoding="utf-8"))
         except (OSError, ValueError):
             return {}
 
@@ -161,45 +174,76 @@ class Library:
 def cmd_add(paths, dry_run=False):
     """Retourne le nombre de documents ajoutés."""
     lib = Library()
-    added, report = 0, {"déjà là": 0, "autre cours": 0}
+    added, report = 0, {"déjà là": 0, "autre cours": 0, "doublon": 0, "à transcrire": 0, "erreur": 0}
+    details = []
+    def record(path, status, course=None, **extra):
+        details.append(dict(source=str(path), status=status, course=course, **extra))
     for path in collect(paths):
         stem, ext = os.path.splitext(os.path.basename(path))
-        course = detect_course(stem)
+        course = source_course(path)
         if course is None:
             report["autre cours"] += 1
+            record(path, "matière inconnue")
             continue
         tag = f"[{course}]"
         reason = skip_reason(course, stem)
         if reason:
             print(f"  ignoré        {tag} {stem} ({reason})")
+            record(path, "ignoré", course, reason=reason)
             continue
         if key(stem) in lib.known[course]:
             report["déjà là"] += 1
+            record(path, "déjà là", course)
             continue
-        text = extract_file(path).replace("\r\n", "\n")
+        if ext.lower() == '.png':
+            report["à transcrire"] += 1
+            record(path, "à transcrire", course)
+            print(f"  à transcrire  {tag} {stem} (image)")
+            continue
+        try:
+            text = extract_file(path).replace("\r\n", "\n")
+        except Exception as error:
+            report["erreur"] += 1
+            record(path, "erreur", course, reason=str(error))
+            print(f"  erreur        {tag} {stem}: {error}")
+            continue
         # empreinte du texte (et non du fichier) : deux exports du même PDF comptent comme un doublon
         digest = hashlib.sha256(re.sub(r"\s+", " ", text).strip().encode("utf-8")).hexdigest()
         if digest in lib.hashes[course]:
+            report["doublon"] += 1
+            record(path, "doublon", course, duplicate_of=lib.hashes[course][digest])
             print(f"  doublon       {tag} {stem} (même texte que {lib.hashes[course][digest]})")
             continue
         letters = sum(ch.isalpha() for ch in text.replace(PAGE_SEP, ""))
         if letters < 150:
+            report["à transcrire"] += 1
+            record(path, "à transcrire", course)
             print(f"  à transcrire  {tag} {stem}  (PDF scanné -> data/{course}/transcriptions/{stem}.md)")
             continue
         print(f"  {'à ajouter' if dry_run else 'ajouté':<13} {tag} {stem} ({letters} lettres)")
         lib.known[course][key(stem)] = stem
         lib.hashes[course][digest] = stem
         added += 1
+        record(path, "ajouté", course)
         if not dry_run:
             os.makedirs(course_dir(course), exist_ok=True)
             out_ext = ".md" if ext.lower() == ".md" else ".txt"
             with open(os.path.join(course_dir(course), stem + out_ext), "w", encoding="utf-8") as f:
                 f.write(text)
+            meta_path = Path(course_dir(course)) / 'source_meta.json'
+            source_meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+            extra = {"source": str(path)}
+            if any(re.search(r'(?:^|-)projets?$', p, re.I) for p in Path(path).parts[:-1]):
+                extra['kind'] = 'projet'
+            source_meta[stem] = extra
+            meta_path.write_text(json.dumps(source_meta, ensure_ascii=False, indent=2), encoding='utf-8')
 
     print(f"\n  {added} {'à ajouter' if dry_run else 'ajouté(s)'}, {report['déjà là']} déjà indexé(s), "
-          f"{report['autre cours']} fichier(s) d'autres matières ignoré(s)")
+          f"{report['doublon']} doublon(s), {report['à transcrire']} à transcrire, "
+          f"{report['erreur']} erreur(s), {report['autre cours']} matière(s) inconnue(s)")
     if not dry_run:
         lib.save()
+        Path(DATA_ROOT, 'import-report.json').write_text(json.dumps(details, ensure_ascii=False, indent=2), encoding='utf-8')
     return added
 
 
@@ -245,6 +289,7 @@ COURSE_TITLES = {  # début du nom (sans tirets, minuscules) -> titre
 
 def parse_meta(stem, course):
     name = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", stem)  # préfixe de date des notes .md
+    name = re.sub(r'^ORIGINAL-', '', name, flags=re.I)
     year = None
     for m in YEAR_RE.finditer(stem):
         a, b = int(m.group(1)), int(m.group(2))
@@ -261,10 +306,14 @@ def parse_meta(stem, course):
         kind = "cc"
     elif upper.startswith("TD"):
         kind = "td"
+    elif upper.startswith("TP"):
+        kind = "tp"
+    elif course.startswith('projet') or upper.startswith(('PROJET', 'SUITE_PROJET')):
+        kind = "projet"
     else:
         kind = "cours"
 
-    corrige = "correction" in name.lower()
+    corrige = bool(re.search(r'correction|corrig[eé]', name, re.I))
     author = None
     m = AUTHOR_RE.search(stem)
     if m and m.group(2) not in ("Maths", "Inconnu"):
@@ -286,7 +335,8 @@ def parse_meta(stem, course):
         if m and re.search(r"rat+rapage", name, re.I):
             title += " rattrapage"
     elif kind == "qcm":
-        title = "QCM" + re.match(r"QCM(\d)", name).group(1)
+        number = re.match(r"QCM[-_]?(\d+)", name, re.I)
+        title = "QCM" + (number[1] if number else '')
     else:
         raw_prefix = name.split("_")[0]
         prefix = key(raw_prefix)
@@ -297,7 +347,9 @@ def parse_meta(stem, course):
     years_txt = f"{year}-{year + 1}" if year else "année inconnue"
     return {
         "course": course,
-        "curriculum": CURRICULUM["id"],
+        "curriculum": course_context(course)["id"],
+        "study_year": course_context(course)["study_year"],
+        "semester": course_context(course)["semester"],
         "kind": kind,
         "corrige": corrige,
         "year": year,
@@ -506,13 +558,16 @@ def sections_markdown(text):
 def chunk_document(path, course):
     stem, ext = os.path.splitext(os.path.basename(path))
     meta = parse_meta(stem, course)
+    meta_path = Path(course_dir(course)) / 'source_meta.json'
+    if meta_path.exists():
+        meta.update(json.loads(meta_path.read_text(encoding='utf-8')).get(stem, {}))
     with open(path, encoding="utf-8") as source:
         raw = source.read()
     fmt = "md" if ext == ".md" else "pdf"
     if fmt == "md":
         secs = sections_markdown(raw)
     else:
-        if course in ("informatique3", "shs"):
+        if course in PLAIN_TEXT_COURSES or meta.get('source', '').lower().endswith('.docx'):
             # Garder le code, ses indentations et les textes de SHS : les
             # heuristiques de fractions/indices sont propres aux maths.
             fmt = "text"

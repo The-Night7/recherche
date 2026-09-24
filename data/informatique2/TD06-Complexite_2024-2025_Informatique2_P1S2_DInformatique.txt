@@ -1,0 +1,136 @@
+Pré-ING1
+Semestre 2 - 2024/2025
+Informatique II
+TD 6 : Complexité
+Les exercices de ce TD (mise à part l’exercice 1), sont résolvables par le calcul direct ou la programmation.
+Exercice 1
+Soit le jeu suivant consistant à tirer au sort un "vainqueur" parmi un groupe d’enfants, au moyen d’une pièce de monnaie :
+1. S’il n’y a qu’un enfant, il est évidemment vainqueur.
+2. S’il y en a plusieurs, on lance la pièce. Si c’est face qui sort, on élimine au hasard (par un jeu de type "chaises musicales"
+par exemple) un des enfants; si c’est pile on en élimine deux (à moins qu’il n’en reste que deux, auquel cas on n’en
+élimine qu’un).
+3. Le gagnant est le dernier enfant non éliminé.
+Si l’on considère le lancer d’une pièce comme opération fondamentale :
+1. Trouver l’équation de récurrence correspondant à ce jeu dans le cas moyen.
+2. Montrer par récurrence, à partir de cette équation, que l’algorithme précédent est en O(n), où n est le nombre initial
+d’enfants (considerer le pire cas, c’est à dire maximiser le nombre d’opérations à effectuer).
+Exercice 2
+On considère le code suivant :
+PROGRAMME Test5
+VARIABLES
+i,s,j : Entier
+DEBUT
+i ← 5
+Tant que (i > 0)
+s ← 0
+Pour j de 0 à i
+s ← s + 1
+Fin pour
+i ← i – 1
+Fin de tant que
+FIN
+Calculer sa complexité en nombre de comparaisons, d’affectations et d’opérations arithmétiques. Vérifier votre réponse
+par la programmation.
+Exercice 3
+On considère la fonction suivante :
+FONCTION ex(n : Entier) : Entier
+VARIABLES
+a, b : Entier
+DEBUT
+a ← 2 b ← 1
+Tant que a < n
+a ← a*2
+b ← b + 1
+Fin de tant que
+retourner b
+FIN
+1. Que vaut ex(n) si n est une puissance de 2? Que vaut ex(n) Pour un argument n quelconque?
+2. Quelle est la complexité de cette fonction en nombre de comparaisons, de multiplications et d’affectations en fonction
+de n.
+1
+<<<PAGE>>>
+Exercice 4
+Donner l’ordre de complexité des algorithmes suivants (en fonction des variables n et m) :
+a) DEBUT
+x ← 1
+Pour i de 0 à n faire
+Pour j de 0 à m faire
+x ← x+1
+Fin pour
+Fin pour
+FIN
+b) DEBUT
+x ← 1
+Pour i de 0 à n faire
+x ← x+1
+Fin pour
+Pour j de 0 à m faire
+x ← x+1
+Fin pour
+FIN
+c) DEBUT
+x ← 1
+Pour i de n à n+7 faire
+Pour j de m à m+4 faire
+x ← x+1
+Fin pour
+Fin pour
+FIN
+d) DEBUT
+x ← 1
+i ← 1
+j ← 1
+Tant que (i<=n et j<=m) faire
+x ← x+1
+i ← i+1
+j ← j+1
+Fin de tant que
+Tant que (i<=n) faire
+x ← x+1
+i ← i+1
+Fin de tant que
+Tant que (j<=m) faire
+x ← x+1
+j ← j+1
+Fin de tant que
+FIN
+2
+<<<PAGE>>>
+Exercice 5
+1. Quel est le nombre d’additions réalisées par l’algorithme suivant dans
+(a) le meilleur cas
+(b) le pire cas
+(c) le cas moyen, en supposant que les valeurs de T sont aléatoires equiprobables entre 1 et 100 inclus.
+Fonction foo( T tableau d’entier de taille N) : entier
+VARIABLES
+i,s : entier
+DEBUT
+s ← 0
+Pour i de 0 à N faire
+Si(T[i]*T[i]>100) alors
+s←s + T[i]
+Fin si
+Fin pour
+retourner s
+FIN
+2. Voici deux versions différentes permettant de calculernk.
+Comparer leur ordre de complexité (il suffira de s’intéresser à un seul type d’opération élémentaire) :
+Fonction puissance(n,k : entier) : entier
+DEBUT
+Si(k=0) alors
+retourner 1
+Sinon
+puissance ← n*puissance(n,k-1)
+Fin si
+FIN
+Fonction puissanceV2(n,k : entier) : entier
+DEBUT
+Si(k=0) alors
+retourner 1
+Sinon Si (k mod 2 = 0)
+retourner puissanceV2(n*n, k DIV 2)
+Sinon Si
+retourner x * puissanceV2(n,k-1)
+Fin si
+FIN
+3

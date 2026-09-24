@@ -1,0 +1,192 @@
+Algèbre 2
+Préing 1
+2024 – 2025
+TD5 – Déterminants
+Exercice 1. Calculer le déterminant des matrices suivantes.
+1. A :=
+µ2 −5
+5 −2
+¶
+.
+2. B :=
+µ 7 11
+−8 5
+¶
+.
+3. C :=
+µ1/4 2
+−1 8
+¶
+.
+4. D :=
+µ−7 14
+1 0
+¶
+.
+5. E :=
+
+
+1 0 6
+3 4 15
+5 6 21
+
+.
+6. F :=
+
+
+1 0 −1
+2 3 5
+4 1 3
+
+.
+7. G :=
+
+
+1 1 1
+2 −1 −1
+−4 5 6
+
+.
+8. H :=
+
+
+0 1 2 3
+1 2 3 0
+2 3 0 1
+3 0 1 2
+
+.
+9. J :=
+
+
+0 1 1 0
+1 0 0 1
+1 1 0 1
+1 1 1 0
+
+.
+Exercice 2. Dans R3 muni de sa base canonique B, on considère les vecteurs u1 := (1, 1, 1),u2 := (1, 2, 3) et
+u3 := (1, 4,m).
+1. Calculer detB(u1, u2, u3).
+2. En déduire pour quels valeurs de m la famille ( u1, u2, u3) est une base de R3.
+Exercice 3. Soit m ∈ R et soit la matrice :
+A(m) :=
+
+
+1 m2 1
+m2 1 1
+1 1 m
+
+.
+1. Calculer det A(m) sous forme d’un polynôme m factorisé.
+2. Pour quelles valeurs de m les vecteurs (1, m2,1), ( m2, 1,1) et (1, 1,m) forment-ils une base de R3 ?
+3. À l’aide de la formule de la comatrice, calculer l’inverse de A(m) lorsqu’il existe.
+Exercice 4. Soient a, b, c, d ∈ R et soit :
+M :=
+
+
+a a a a
+a b b b
+a b c c
+a b c d
+
+.
+1. À l’aide d’opérations élémentaires sur les lignes et les colonnes de M, calculer det( M). On donnera le
+résultat sous la forme d’un produit de formes linéaires en a, b, c, d.
+2. En déduire pour quelles valeurs de a, b, c, d la matrices M n’est pas inversible.
+Exercice 5. Soit x ∈ R et soient les déterminants :
+D2(x) :=
+ﬂﬂﬂﬂ
+x 1
+1 x
+ﬂﬂﬂﬂ, D3(x) :=
+ﬂﬂﬂﬂﬂﬂ
+x 1 1
+1 x 1
+1 1 x
+ﬂﬂﬂﬂﬂﬂ
+, Dn(x) :=
+ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ
+x 1 1
+1
+1
+1 1 x
+ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ
+.
+1. Calculer D2(x) et D3(x) et donner le résultat sous forme d’un polynôme en x factorisé.
+2. Faire de même avec Dn(x).
+Indication : effectuer l’opération élémentaire L 1 ← P
+i Li .
+1
+<<<PAGE>>>
+Exercice 6. Soient A ∈ Mk(K), B ∈ Mk,n−k(K) et D ∈ Mn−k(K). On considère la la matrice par blocs :
+M :=
+µ A B
+0 D
+¶
+.
+1. Montrer que M =
+µ Ik 0
+0 D
+¶
+×
+µ A B
+0 In−k
+¶
+.
+2. En déduire que det( M) = det(A) × det(D).
+3. Soit C ∈ Mn−k,k(K), on considère à présent la matrice M ′ :=
+µ A B
+C D
+¶
+.
+a. On suppose que A est inversible. Montrer que :
+µ Ik 0
+−C A−1 In−k
+¶
+×
+µ A B
+C D
+¶
+=
+µ A B
+0 −C A−1B + D
+¶
+.
+b. En déduire que si A et C commutent, alors det( M ′) = det(AD −C B).
+c. Cette formule est-elle encore vraie si A et C ne commutent pas ?
+Exercice 7. Soit n ≥ 2 et α1, ... ,αn ∈ C. On appelle déterminant de Vandermonde le déterminant suivant :
+Vn(α1,. .. ,αn) := det(M), M :=
+
+
+1 1 · · · 1
+α1 α2 · · · αn
+α2
+1 α2
+2 · · · α2
+n
+... ... ...
+αn−1
+1 αn−1
+2 · · · αn−1
+n
+
+
+.
+1. Calculer V2(α1, α2).
+2. Montrer que s’il existe i ̸= j tels que αi = α j , alors Vn(α1, .. .,αn) = 0.
+3. On suppose que les αi sont tous distincts.
+a. Montrer que les lignes de la matrice M sont linéairement indépendantes.
+Indication : soient λ1,. .. ,λn ∈ C tels que λ1L1 + · · · +λnLn = 0Cn où L i est la i -ième ligne de M ,
+étudier le polynôme P (X ) := λn X n−1 + · · · +λ2X + λ1.
+b. En déduire que ∀k ∈ {1,. .. ,n}, Vk(α1, .. .,αk) ̸= 0.
+c. Soit f (x) := Vn(α1,. .. ,αn−1, x). Montrer que f est une fonction polynomiale de degré n − 1, de
+coefficient dominant Vn−1(α1,. .. ,αn−1).
+d. Montrer que α1,. .. ,αn−1 sont les racines de f , et en déduire que :
+Vn(α1,. .. ,αn) = Vn−1(α1, .. .,αn−1)
+n−1Y
+k=1
+(αn − αk).
+e. En déduire l’expression de V3(α1, α2, α3).
+f. Quelle est l’expression générale de Vn(α1,. .. ,αn) ?
+2

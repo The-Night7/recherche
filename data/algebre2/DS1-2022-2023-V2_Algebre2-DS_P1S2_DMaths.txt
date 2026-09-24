@@ -1,0 +1,214 @@
+Préing 1
+Devoir Surveillé 1
+Algèbre II
+Date: Vendredi 21 Janvier 2022
+L ’usage de tout appareil électronique est interdit Durée: 1h30
+Nombre de pages: 2
+Il sera tenu compte de la qualité de la rédaction et de la précision des justiﬁcations.
+Le sujet comporte 5 exercices. L ’ordre dans lequel ceux-ci sont traités n’est pas imposé.
+⋄ ⋄ ⋄
+Exercice 1 (4 points)
+Déterminer, selon la valeur du paramètre m ∈ R et en utilisant le pivot de Gauss, l’ensemble des solu-
+tions du système :
+
+
+
+x + y + mz = 1
+3x + y − z = 1
+x − 2y + 2z = m
+Solution
+Notons (S ) le système.
+Alors (S ) ⇐ ⇒
+
+
+
+x +y −y = 1
+−2y + 2z = −2 L2 ← L2 − 3L1
+−3y + 3z = m − 1 L3 ← L3 − L1
+⇐ ⇒
+
+
+
+x + y − z = 1
+y − z = 1 L2 ← L2/ − 2
+−3y + 3z = m − 1 L3
+⇐ ⇒
+
+
+
+x + y − z = 1
+y − z = 1
+0 = m + 2 L3 ← L3 + 3L2
+On peut alors discuter suivant les valeurs de m :
+• Si m + 2 ⁄= 0, c’est-à-dire sim ⁄= −2, le système n’admet pas de solutions.
+• Si m = −2, alors le système est équivalent à
+{ x = 0
+y = 1 + z
+L ’ensemble des solutions est alors {(0,z + 1, z); z ∈ R}.
+1
+<<<PAGE>>>
+Exercice 2
+Discuter suivant la valeur du paramètre a ∈ R le système
+
+
+
+ax + (1 − a)y + (1 − a)z = a2
+ax + (1 + a)y + (1 + a)z = a − a2
+x + y + z = 1 − a
+Solution
+Notons (S) ce système, et appliquons la méthode du pivot de Gauss en choisissant la troisième ligne
+comme pivot:
+(S) ⇐ ⇒
+
+
+
+x + y + z = 1 − a L 3
+y + z = 0 L2 − aL 3
+(1 − 2a)y + (1 − 2a)z = 2a2 − a L 1 − aL 3
+⇐ ⇒
+
+
+
+x + y + z = 1 − a
+y + z = 0
+a(2a − 1) = 0
+On distingue alors plusieurs cas. Si a ∉ {0,1/2}, le système n’est pas compatible et n’admet donc pas de
+solutions. Si a = 0, le système est équivalent à
+{ x + y + z = 1
+y + z = 0
+et donc l’ensemble des solutions est {(1,y, −y); y ∈ R}. Si a = 1/2, le système devient
+{
+x + y + z = 1/2
+y + z = 0
+et donc l’ensemble des solutions est {(1/2,y, −y); y ∈ R}.
+Exercice 3 Montrer que les lois suivantes munissent l’ensemble G indiqué d’une structure de groupe,
+et préciser s’il est abélien :
+1. x ⋆ y = x+y
+1+x y sur G =] − 1, 1[;
+2. ( x, y) ⋆
+(
+x′, y ′)
+=
+(
+x + x′, ye x′
++ y ′e−x
+)
+sur G = R2;
+Solution
+1. ( G, ⋆) est un groupe car
+2
+<<<PAGE>>>
+• ⋆ est une loi de composition interne surG : en effet, si x, y ∈ G, alors x ⋆ y ∈ G. Pour prouver cela,
+étudions la fonction déﬁnie sur [ −1, 1] par
+f (t) = t + y
+1 + t y
+Elle est dérivable sur [−1, 1], et sa dérivée vériﬁe
+f ′(t) = 1 − y 2
+(1 + t y)2 > 0 sur
+]
+− 1, 1[.
+f est donc strictement croissante sur [−1, 1] et on a
+f (−1) < x ⋆ y = f (x) < f (1).
+Comme f (−1) = (−1 + y)/(1 − y) = −1 et f (1) = (1 + y)/(1 + y) = 1, on obtient bien que x ⋆ y ∈ G.
+• la loi est associative : pour tout ( x, y, z) ∈ G3,
+x ⋆ (y ⋆ z) = x + (y ⋆ z)
+1 + x(y ⋆ z)
+=
+x + y+z
+1+y z
+1 + x y+z
+1+y z
+= x + y + z + x y z
+1 + x y + xz + y z
+et un calcul similaire donne le même résultat pour (x ⋆ y) ⋆ z.
+• 0 est un élément neutre pour la loi ⋆. En effet,
+x ⋆ 0 = 0 ⋆ x = x + 0
+1 + 0 = x.
+• Tout élément x ∈ G est inversible, d’inverse−x. En effet, on a
+x ⋆ (−x) = (−x) ⋆ x = x − x
+1 − x2 = 0
+De plus, le groupe est clairement abélien.
+2. Il est clair que ⋆ est une loi de composition interne sur R2. De plus, - cette loi est associative :
+(x, y) ⋆
+((
+x′, y ′)
+⋆
+(
+x′′, y ′′))
+= (x, y) ⋆
+(
+x′ + x′′, y ′e x′′
++ y ′′e−x′)
+=
+(
+x + x′ + x′′, ye x′+x′′
++ y ′e x′′
+e−x + y ′′e−x′
+e−x
+)
+=
+(
+x + x′ + x′′, ye x′+x′′
++ y ′e−x+x′′
++ y ′′e−x−x′)
+De même, (
+(x, y) ⋆
+(
+x′, y ′))
+⋆
+(
+x′′, y ′′)
+=
+(
+x + x′, ye x′
++ y ′e−x
+)
+⋆
+(
+x′′, y ′′)
+=
+(
+x + x′ + x′′,
+(
+ye x′
++ y ′e−x
+)
+e x′′
++ y ′′e−x−x′)
+=
+(
+x + x′ + x′′, ye x′+x′′
++ y ′e−x+x′′
++ y ′′e−x−x′)
+3
+<<<PAGE>>>
+et donc on a bien (x, y) ⋆
+((
+x′, y ′)
+⋆ (0, 0) est un élément neutre deG :
+(x, y) ⋆ (0, 0)=
+(
+x + 0, ye 0 + 0e−x )
+= (x, y)
+(0, 0)⋆ (x, y) =
+(
+0 + x,0 e x + ye −0)
+= (x, y)
+- Tout élément (x, y) ∈ G admet un inverse donnée par (−x, −y). En effet,
+(x, y) ⋆ (−x, −y) =
+(
+x − x, ye −x − ye −x )
+= (0, 0),
+(−x, −y) ⋆ (x, y) =
+(
+−x + x, −ye x + ye x )
+= (0, 0).
+De plus, le groupe n’est pas abélien, car
+(1, 0)⋆ (0, 1)=
+(
+1, e−1)
+tandis que (0, 1)⋆ (1, 0)=
+(
+1, e1)
+.
+4

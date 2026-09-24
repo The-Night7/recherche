@@ -1,0 +1,131 @@
+Synthèse Complète : Trigonalisation & Espaces Préhilbertiens
+
+Ce document rassemble les fiches de cours, méthodes pratiques, exemples détaillés et propriétés fondamentales pour la trigonalisation et les espaces préhilbertiens.
+
+Fiche 1 : Méthode Pratique de Trigonalisation
+
+1. Cadre Théorique & Critère Fondamental
+
+Soit E un K-espace vectoriel de dimension finie n, et u ∈ L(E) (ou A ∈ Mn(K)).
+
+Définition : u est dit trigonalisable s'il existe une base de E dans laquelle sa matrice est triangulaire supérieure.
+
+Théorème fondamental : u est trigonalisable sur K si et seulement si son polynôme caractéristique χu(X) est scindé sur K.
+
+Cas complexe : Tout endomorphisme d'un espace vectoriel sur ℂ est trigonalisable (car tout polynôme y est scindé).
+
+2. Algorithme Général Pas à Pas
+
+Calcul du polynôme caractéristique : Calculer χA(X) = det(XI - A) et déterminer toutes les valeurs propres λi avec leur multiplicité algébrique mi.
+
+Sous-espaces propres : Résoudre (A - λiI)X = 0 pour obtenir une base de chaque sous-espace propre Eλi.
+
+Complétion de base : Si ∑ dim(Eλi) < n, la matrice n'est pas diagonalisable. On complète la famille libre de vecteurs propres par des vecteurs issus des noyaux itérés ker((A - λI)2)... ou en résolvant Avk = λvk + vk-1.
+
+Matrice de passage : Poser P = [v1 | ... | vn]. La matrice triangulaire est obtenue par T = P-1AP.
+
+3. Exemple Pratique Détaillé dans M3(ℝ)
+
+Soit la matrice A suivante :
+
+-2
+
+2
+
+-1
+
+-1
+
+1
+
+-1
+
+-1
+
+2
+
+-2
+
+Spectre : χA(X) = (X + 1)3 ⇒ λ = -1 (multiplicité 3).
+
+Sous-espace propre E-1 : Résolution de (A + I)X = 0 ⇒ -x + 2y - z = 0 ⇒ dim(E-1) = 2. Base : v1 = (2, 1, 0)T et v2 = (-1, 0, 1)T.
+
+Vecteur complémentaire : v3 = (1, 0, 0)T ∉ E-1. On vérifie que Av3 = (-2, -1, -1)T = -v1 - v2 - v3.
+
+Matrice triangulaire :
+
+-1
+
+0
+
+-1
+
+0
+
+-1
+
+-1
+
+0
+
+0
+
+-1
+
+Fiche 2 : Espaces Préhilbertiens Réels
+
+1. Définitions Fondamentales
+
+Un produit scalaire sur un ℝ-espace vectoriel E est une forme bilinéaire symétrique, définie et positive :
+
+Bilinéaire et symétrique : ⟨x, y⟩ = ⟨y, x⟩
+
+Définie positive : ∀ x ≠ 0, ⟨x, x⟩ > 0
+
+Un espace vectoriel muni d'un produit scalaire est un espace préhilbertien réel (et espace euclidien si la dimension est finie).
+
+2. Norme et Inégalités Majeures
+
+Norme associée : ||x|| = √⟨x, x⟩
+
+Inégalité de Cauchy-Schwarz : |⟨x, y⟩| ≤ ||x|| · ||y|| (égalité si et seulement si x et y sont colinéaires).
+
+Inégalité de Minkowski (triangulaire) : ||x + y|| ≤ ||x|| + ||y|| (égalité si et seulement si x et y sont positivement liés).
+
+Théorème de Pythagore : x ⊥ y ⇔ ||x + y||2 = ||x||2 + ||y||2
+
+Identité du Parallélogramme : ||x + y||2 + ||x - y||2 = 2(||x||2 + ||y||2)
+
+Identité de Polarisation : ⟨x, y⟩ = ¼ (||x + y||2 - ||x - y||2)
+
+3. Orthogonalité
+
+Deux vecteurs sont orthogonaux si ⟨x, y⟩ = 0. Pour tout sous-espace F de dimension finie dans E :
+
+E = F ⊕ F⊥
+
+(F⊥)⊥ = F
+
+Fiche 3 : Procédé de Gram-Schmidt & Bases Orthonormales
+
+1. Théorème d'Orthonormalisation de Gram-Schmidt
+
+Toute famille libre (v1, ..., vp) d'un espace préhilbertien engendre une unique famille orthonormale (e1, ..., ep) telle que pour tout k, Vect(e1, ..., ek) = Vect(v1, ..., vk) avec ⟨vk, ek⟩ > 0.
+
+2. Formules Récurrentes
+
+Orthogonalisation :
+u1 = v1
+uk = vk - ∑i=1k-1 (⟨vk, ui⟩ / ||ui||2) ui
+
+Normalisation : ek = uk / ||uk||
+
+3. Exemple Concret dans ℝ3
+
+Soit la base libre : v1 = (1, 1, 0), v2 = (1, 0, 1), v3 = (0, 1, 1).
+
+Vecteur 1 : u1 = (1, 1, 0), ||u1|| = √2 ⇒ e1 = (1/√2)(1, 1, 0).
+
+Vecteur 2 : ⟨v2, u1⟩ = 1 ⇒ u2 = (1, 0, 1) - 1/2(1, 1, 0) = (1/2, -1/2, 1). ||u2|| = √6/2 ⇒ e2 = (1/√6)(1, -1, 2).
+
+Vecteur 3 : ⟨v3, u1⟩ = 1, ⟨v3, u2⟩ = 1/2 ⇒ u3 = (-2/3, 2/3, 2/3). ||u3|| = 2√3/3 ⇒ e3 = (1/√3)(-1, 1, 1).

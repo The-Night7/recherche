@@ -1,0 +1,861 @@
+INFORMATIQUE 2
+Eva ANSERMIN & Romuald GRIGNON
+1
+I I I .  P O I N T E U R S &
+T A B L E A U X D Y N A M I Q U E S
+<<<PAGE>>>
+Rappel
+• Les valeurs d’un tableau sont à la suite dans la mémoire.
+• Lorsqu’un tableau est déclaré :
+• Un espace mémoire de la bonne taille est réservé
+• Un pointeur constant (lecture seule) portant le nom du tableau est 
+créé. Il pointe sur la première case du tableau.
+Adresse Valeur 
+1154 1
+3
+0
+0
+0
+…
+…
+…
+…
+22 222 1154
+tab[0]
+tab[1]
+tab[2]
+tab[3]
+tab[4]
+tab
+2
+<<<PAGE>>>
+Un petit test 
+• Que devrait afficher le code suivant ?
+// Programme d'exemple 
+int main(){
+int tab[10]={0}; // déclaration du tableau 
+printf("&tab[0] =%p \n", &tab[0]);
+printf("&tab[1] =%p \n", &tab[1]);
+printf("&tab[2] =%p \n", &tab[2]); 
+return 0;
+}
+4 numéros d’adresse d’écart entre chaque case !
+3
+<<<PAGE>>>
+Un petit test 
+• Que devrait afficher le code suivant ?
+// Programme d'exemple 
+int main(){
+char tab[10]={0}; // déclaration du tableau 
+printf("&tab[0] =%p \n", &tab[0]);
+printf("&tab[1] =%p \n", &tab[1]);
+printf("&tab[2] =%p \n", &tab[2]); 
+return 0;
+}
+1 numéro d’adresse d’écart entre chaque case !
+4
+<<<PAGE>>>
+Un petit test 
+• Que devrait afficher le code suivant ?
+// Programme d'exemple 
+int main(){
+double tab[10]={0}; // déclaration du tableau 
+printf("&tab[0] =%p \n", &tab[0]);
+printf("&tab[1] =%p \n", &tab[1]);
+printf("&tab[2] =%p \n", &tab[2]); 
+return 0;
+}
+8 numéros d’adresse d’écart entre chaque case !
+5
+<<<PAGE>>>
+• Une variable peut être stockée sur plusieurs cases mémoire selon son type.
+• Une adresse mémoire contient 1 octet.  
+Type Taille (octet)
+char 1
+short (entier) 2
+int/ float 4
+long/double 8
+… …
+• Rmq : ces valeurs sont valables pour des processeur 64 bits. En fonction de la 
+cible certaines de ces valeurs peuvent varier.
+Stockage des variables
+6
+<<<PAGE>>>
+• Une variable peut être stockée sur plusieurs cases mémoire selon son type.
+• Une adresse mémoire contient 1 octet.  
+Type Taille (octet)
+char 1
+short (entier) 2
+int/ float 4
+long/double 8
+… …
+• La fonction sizeof() donne le nombre d’octet du type passé en argument :
+• Exemple : sizeof(int) retourne 4.
+Stockage des variables
+7
+<<<PAGE>>>
+• Une variable peut être stockée sur plusieurs cases mémoire selon son type.
+• Une adresse mémoire contient 1 octet.  
+Stockage des variables
+int a = 1000;
+char b = ‘b’; //98
+Adresse Valeur
+1154 0000 0000
+1155 0000 0000
+1156 0000 0011
+1157 1110 1000
+…
+10 028 0110 0010
+a
+b
+8
+<<<PAGE>>>
+• Un tableau en mémoire :
+int tab[5]={1,2,3,4,5};
+Adresse Valeur 
+1154 0000 0000
+1155 0000 0000
+1156 0000 0000
+1157 0000 0001
+1158 0000 0000
+1159 0000 0000
+1160 0000 0000
+1161 0000 0010
+1162 0000 0000
+1163 0000 0000
+1164 0000 0000
+1165 0000 0011
+…. ….
+tab[0]
+tab[1]
+tab[2]
+Stockage des variables
+9
+<<<PAGE>>>
+• Nous avons vu que :
+Gestion des pointeurs
+tab[i] <=> *(tab+i)
+Adresse Valeur 
+1154 0000 0000
+1155 0000 0000
+1156 0000 0000
+1157 0000 0001
+1158 0000 0000
+1159 0000 0000
+1160 0000 0000
+1161 0000 0010
+1162 0000 0000
+1163 0000 0000
+1164 0000 0000
+1165 0000 0011
+…. ….
+tab 1554
+tab[0]
+tab[1]
+tab[2]
+• &tab[0]+1 = tab+1 (ici 1155) n’est pas 
+l’adresse de tab[1] !!!
+• Il y a une opération cachée derrière 
+l'arithmétique des pointeurs
+10
+<<<PAGE>>>
+• Un pointeur n’indique pas simplement  une adresse mais un espace mémoire. 
+• Le type donné au pointeur indique la taille de l’espace sur lequel il pointe.
+• Exemple : Adresse Valeur 
+1154
+…
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222
+int a;
+char b;
+int* p1; // pointeur sur int
+char* p2; // pointeur sur char
+a = 5;
+p1 = &a; // prend l'adresse de a
+b = A; //65
+p2 = &b; // prend l'adresse de b
+Arithmétique du pointeur
+11
+<<<PAGE>>>
+• Les pointeurs sont des variables entières (adresses mémoire).
+• On peut donc lui appliquer un certain nombre d’opérateurs arithmétiques classiques : 
+Arithmétique du pointeur
+1. L’addition (+) d’un entier à un pointeur. Le résultat est un pointeur de même
+type que le pointeur de départ.
+2. lLa soustraction (-) d’un entier à un pointeur .Le résultat est un pointeur de
+même type que le pointeur de départ.
+3. La différence (-) de deux pointeurs pointant tous deux vers des données de
+même type. Le résultat est un entier.
+4. Les opérateurs de comparaison.
+12
+<<<PAGE>>>
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Le décalage du bon nombre d’adresse s’effectue automatiquement.
+Arithmétique du pointeur : addition
+13
+<<<PAGE>>>
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+Adresse Valeur 
+1100
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222
+14
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+Adresse Valeur 
+1100 1
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222
+a
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+15
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+Adresse Valeur 
+1100 1
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222 1100
+a
+p
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+16
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+Adresse Valeur 
+1100 1
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222 1104
+a
+p
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+17
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+Adresse Valeur 
+1100 1
+…
+…
+…
+10 028
+…
+15 000
+…
+22 222 1112
+a
+p
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+18
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int a = 1;
+int *p = NULL;
+p = &a;
+p = p+1;
+p = p+2;
+*p= 10;
+> On ne modifie pas a ! mais une donnée plus loin!
+> Une Erreur de segmentation est possible, et c'est
+d'ailleurs la meilleure chose qu'il puisse arriver.
+> Si l'instruction *p=10; n'échoue pas, il sera
+peut-être difficile de trouver d'où vient le 
+problème lorsque le symptôme se manifestera.
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Exemple : 
+19
+<<<PAGE>>>
+Arithmétique du pointeur : addition
+int tab[10]; // tableau d’entier
+int *p; 
+p = tab; // &tab[0] adresse première case
+p = p+1; // ajoute sizeof(int) -> 2eme case du tableau.
+p = p+2; // adresse de la quatrième case.
+On a donc bien : tab[i] <=> *(tab+i)
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Application au tableaux :
+20
+<<<PAGE>>>
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p + ( i * sizeof(type) )
+• Application au tableaux : 
+Arithmétique du pointeur : addition
+On a donc bien : tab[i] <=> *(tab+i)
+int tab[10]; // tableau d’entier
+int *p = NULL;
+for(p=&tab[0]; p<&tab[10]; p++){ //parcours du tableau
+*p=0;
+}
+21
+<<<PAGE>>>
+Arithmétique du pointeur : soustraction
+int tab[10]; // tableau d’entier
+int *p; 
+p = &tab[6]; // adresse 5eme case
+p = p-1; // adresse 4eme case
+p = p-3; // adresse 1ere case
+• Si i est un entier et p est un pointeur sur un objet de type type, l’expression p+i désigne un 
+pointeur de valeur :
+p + i <=> p - ( i * sizeof(type) )
+• Exemple : 
+22
+<<<PAGE>>>
+• La différence de deux pointeurs portant tous deux vers des objets de même type. Le résultat est
+un entier.
+• Pertinent que si les pointeurs pointent sur des éléments d’un même tableau.
+• La différences indique 
+p1-p2  nombre d’éléments du tableau entre p1 et p2
+• Exemple
+int tab[10]; // tableau d’entier
+int *p1,*p2;
+p1=&tab[2];
+p2=&tab[4];
+p2-p1=   p1-p2=   p1-p1=   (p2+3)-p1=   
+Arithmétique du pointeur : différence
+23
+<<<PAGE>>>
+int tab[10]; // tableau d’entier
+int *p1,*p2;
+p1=&tab[2];
+p2=&tab[4];
+p2-p1= 2  p1-p2= -2  p1-p1= 0  (p2+3)-p1= 5  
+Arithmétique du pointeur : différence
+• La différence de deux pointeurs portant tous deux vers des objets de même type. Le résultat est
+un entier.
+• Pertinent que si les pointeurs pointent sur des éléments d’un même tableau.
+• La différences indique 
+p1-p2  nombre d’éléments du tableau entre p1 et p2
+• Exemple
+24
+<<<PAGE>>>
+• La comparaison entre deux pointeurs équivaut à comparer les adresses 
+contenues par ces pointeurs.
+p1==p2 indiquent si les pointeurs pointent sur la même adresse mémoire.
+Arithmétique du pointeur : comparaison
+• Question : quelle différence entre p1 == p2 et *p1==*p2
+25
+<<<PAGE>>>
+• La comparaison entre deux pointeurs équivaut à comparer les adresses 
+contenues par ces pointeurs.
+p1==p2 indiquent si les pointeurs pointent sur la même adresse mémoire.
+Arithmétique du pointeur : comparaison
+• La comparaison de deux pointeurs qui pointent dans le même tableau est équivalente à la 
+comparaison des indices correspondants.
+• On peut utiliser =!,  ==, <, >, <=, >=  
+26
+<<<PAGE>>>
+Rappel :
+• La taille d’un tableau doit être connue lors de sa déclaration. On peut écrire :
+• int tab[10] : directement le nombre de cases
+• int tab[CONST] : utiliser une constante
+Mais :
+• La taille d’un tableau n’est pas forcement connue lors de la compilation.
+• La taille peut-être passée en paramètre ou donnée par l’utilisateur.
+• La taille d’une chaîne de caractère dépend de son contenu.
+Jusqu’à maintenant : On déclare des tableaux très (trop) grands.
+Allocation dynamique
+27
+<<<PAGE>>>
+• Il est possible d ’allouer (réserver) un espace mémoire d’un nombre souhaité d’octets grâce à 
+la fonction malloc . C’est l’allocation dynamique.
+• Exemple :
+malloc(nombre_d’octets)
+malloc(3); //alloue l’espace mémoire de 3 octets
+Adresse Valeur 
+1100
+1101
+1102
+…
+10 028
+Espace alloué !
+Allocation dynamique : malloc
+28
+<<<PAGE>>>
+• Il est possible d ’allouer (réserver) un espace mémoire d’un nombre souhaité d’octets grâce à la 
+fonction malloc . C’est l’allocation dynamique.
+• La fonction retourne l’adresse de la première case mémoire de l’espace alloué (donc un 
+pointeur).
+• Le pointeur retourné n’a pas de type. C’est un pointeur universel . 
+• Le prototype de la fonction malloc s’écrit :
+• On peut donc attribuer au retour de la fonction un pointeur de n’import quel type :
+malloc(nombre_d’octets)
+Allocation dynamique : malloc
+void * malloc(nombre_d’octets)
+float* p2;
+p2=malloc(…);
+int* p1;
+p1=malloc(…);
+char* p3;
+p3=malloc(…);
+29
+<<<PAGE>>>
+• Il est possible que l’allocation échoue. Il y a deux possibilités :
+• 1. Si l'allocation a marché, le pointeur retourné contient une adresse.
+• 2. Si l’allocation a échoué le pointeur retourné contient NULL.
+• Il faut donc toujours vérifier que l’allocation a fonctionné avant d’utiliser la mémoire allouée :
+#include<sdtlib.h> // malloc et exit
+int main(){
+int* p1;
+p=malloc(nmb_octet_souhaites);
+\\test
+if(p==NULL){
+printf("Allocation échouée !")
+exit(1); // On quitte le programme
+}
+}
+Allocation dynamique : test
+30
+<<<PAGE>>>
+• On peut allouer dynamiquement l’espace pour un tableau :
+Exemple :
+int* tab=NULL;
+int nb;
+//on demande la taille
+printf("Taille du tableau ? ");
+//on récupère la taille
+scanf("%d",&nb);
+//on alloue la place pour nb int
+tab = malloc(nb*sizeof(int));
+Adresse Valeur 
+1154
+1155
+1156
+1157
+1158
+1159
+1160
+1161
+…
+?
+…. ….
+tab 1554
+Allocation dynamique : tableau
+31
+<<<PAGE>>>
+• On peut allouer dynamiquement l’espace pour un tableau :
+Exemple :
+int* tab=NULL;
+int nb;
+//on demande la taille
+printf("Taille du tableau ? ");
+//on récupère la taille
+scanf("%d",&nb);
+//on alloue la place pour nb int
+tab = malloc(nb*sizeof(int));
+Allocation dynamique : tableau
+Adresse Valeur 
+1154 tab[0]
+1155 tab[0]
+1156 tab[0]
+1157 tab[0]
+1158 tab[1]
+1159 tab[1]
+1160 tab[1]
+1161 tab[1]
+…
+1154+nb*sizeof(in)
+…. ….
+tab 1554
+➢ Ici tab +1 = 1158, plus généralement &tab[1] 
+➢ Ici tab +2 = ici 1562, plus généralement &tab[2] 
+32
+<<<PAGE>>>
+• On peut allouer dynamiquement l’espace pour un tableau de type type et de taille taille . 
+C’est l’allocation dynamqiue .
+• Le pointeur obtenu pointe sur la première case du tableau. Le tableau peut être géré 
+comme un tableau à déclaration statique . 
+tab = malloc(taille*sizeof(type))
+Allocation dynamique : tableau
+• Points importants :
+• Le type du pointeur doit être du même type que les éléments du 
+tableau.
+• Toujours vérifier que l’allocation mémoire a été réalisée
+• Une fois l’allocation faite, la taille de la mémoire allouée est fixée : 
+on ne peut pas modifier la taille du tableau à postériori. 
+• malloc appartient à la bibliothèque stdlib !
+33
+<<<PAGE>>>
+• La fonction calloc permet également d’allouer un espace mémoire et de retourner un 
+pointeur sur la première adresse de cet espace.
+• Contrairement à malloc , la fonction calloc demande le nombre d’élément et la taille de 
+chaque élément à allouer :
+• Exemple :
+calloc(nombre_elements, taille_element)
+float *p;
+//allocation mémoire pour 10 réels
+p = calloc(10, sizeof(float));
+Allocation dynamique : calloc
+34
+<<<PAGE>>>
+• La fonction calloc permet également d’allouer un espace mémoire et de retourner un 
+pointeur sur la première adresse de cet espace.
+• Contrairement à malloc , la fonction calloc demande le nombre d’élément et la taille de 
+chaque élément à allouer :
+• En plus d’allouer l’espace mémoire, la fonction calloc initialise tous les elements de cet 
+espace à 0. (peut prendre du temps!)
+• calloc appartient également à stdlib .
+calloc(nombre_elements, taille_element)
+Allocation dynamique : calloc
+35
+<<<PAGE>>>
+• Une bonne pratique pour éviter une utilisation inutile de l’espace mémoire est de libérer
+la mémoire allouée lorsqu’on en a plus besoin. 
+• La procédure free permet de libérer l’espace alloué : il peut donc être utilisé à nouveau 
+pour stocker d’autres données. Elle prend en paramètre le pointeur pointant sur la zone 
+allouée.
+• Exemple :
+float *p;
+// allocation de l’espace mémoire.
+p=malloc(10*sizeof(float));
+…
+free(p); // restitution de l’espace mémoire.
+Allocation dynamique : free
+36
+<<<PAGE>>>
+• Une bonne pratique pour éviter une utilisation inutile de l’espace mémoire est de libérer 
+la mémoire allouée lorsqu’on en a plus besoin. 
+• La procédure free permet de libérer l’espace alloué : il peut donc être utilisé à nouveau 
+pour stocker d’autres données. Elle prend en paramètre le pointeur pointant sur la zone 
+allouée.
+• Points importants :
+• On ne peut libérer qu’un espace qui a, au préalable, été alloué 
+dynamiquement (avec malloc ou calloc ).
+• Ne pas libérer l’espace mémoire c’est risquer une fuite mémoire.
+Allocation dynamique : free
+37
+<<<PAGE>>>
+• Il est possible de déclarer un pointeur qui pointe sur un autre pointeur. La déclaration se fait avec le 
+double caractère *.
+• Exemple :
+Type **nomPointeur; 
+int a = 5;
+int *pa;
+int **ppa;
+pa = &a;
+ppa = &pa;
+Adresse Valeur 
+1100 5
+…
+…
+…
+10 028 &a (1100)
+…
+…
+…
+22 222 &pa (10 028)
+a
+pa
+ppapa= &a            ppa=  &pa **ppa=  *(&a)=5
+*pa=  5         *ppa= &a
+Les doubles pointeurs
+38
+<<<PAGE>>>
+• Il est possible de déclarer un pointeur qui pointe sur un autre pointeur. La déclaration se fait avec le 
+double caractère *.
+• Exemple :
+Type **nomPointeur; 
+int a = 5;
+int *pa;
+int **ppa;
+pa = &a;
+ppa = &pa;
+Adresse Valeur 
+1100 5
+…
+…
+…
+10 028 &a (1100)
+…
+…
+…
+22 222 &pa (10 028)
+a
+pa
+ppapa=             ppa=                   **ppa=  
+*pa=           *ppa= 
+Les doubles pointeurs
+39
+<<<PAGE>>>
+• Les doubles pointeurs permettent de créer des tableaux de tableaux .
+• Rappel : 
+• Les tableaux à 2 (ou plus) dimensions peuvent être vu comme des tableaux 
+contenant des sous -tableaux.
+• Exemple : int tab[3][5] peut être visualisé comme un tableau contenant 3 sous tableau 
+de 5 cases.
+[  [0,0,0,0,0],[1,1,1,1,1],[2,2,2,2,2] ]
+0 0 0 0 0
+1 1 1 1 1
+2 2 2 2 2
+Les doubles pointeurs : applications
+40
+<<<PAGE>>>
+• Les doubles pointeurs permettent de créer des tableaux de tableaux .
+• Rappel :  
+• Les tableaux à 2 (ou plus) dimensions peuvent être vu comme des tableaux contenant des sous -
+tableau. 
+• En pratique, tous les éléments sont à la suite dans la mémoire.
+• On ne peux pas construire des sous -tableaux qui auraient des tailles différentes. (ex : un 
+tableau de chaîne de caractère de différentes tailles). 
+• La solution est de créer différents tableau et d’indiquer leur emplacement (leur adresse) dans un 
+tableau de pointeur.
+• Le pointeur sur la première case d’un tableau de pointeur sera un double pointeur (un pointeur sur 
+pointeur).
+Les doubles pointeurs : applications
+41
+<<<PAGE>>>
+• Les doubles pointeurs permettent de créer des tableau de tableau .
+• Illustration : 
+int tab1[5], tab2[10], tab3[3];
+int* t2t[3];
+t2t[0]=tab1;
+t2t[1]=tab2;
+t2t[2]=tab3;
+Adresse Valeur 
+1000 tab1[0]
+1004 tab1[1]
+… …
+1016 tab1[4]
+1500 1000
+1700 tab2[0]
+…
+tab2 1700
+A quoi sont équivalentes les commandes suivantes?
+**(t2t)= tab1[0]
+*(*(t2t+2)+1)= *( tab3 +1 ) = tab3[1]
+t2t[1][9]= tab2[9]
+Adresse Valeur 
+2500 tab3[0]
+…
+3000 2500
+3700 1000
+1700
+2500
+4000 3700
+tab1
+tab1[0]
+tab2[0]
+tab3[0]
+tab3
+t2t[0]
+t2t[1]
+t2t[2]
+t2t
+Les doubles pointeurs : applications
+42
+<<<PAGE>>>
+• Les doubles pointeurs permettent de créer des tableau de tableau .
+• Remarque : 
+int tab1[5], tab2[10], tab3[3];
+int *tab2tab[3];
+<=>
+int tab1[5], tab2[10], tab3[3];
+int **tab2tab;
+tab2tab=malloc(3*sizeof(int*));
+Les doubles pointeurs : applications
+43
+<<<PAGE>>>
+• Révélation : la fonction main() peux prendre des arguments!
+• On peut communiquer au programme des arguments lors de l’exécution.
+• Exemples :
+Les doubles pointeurs : applications
+44
+<<<PAGE>>>
+• Révélation : la fonction main() peux prendre des arguments!
+• On peut communiquer au programme des arguments lors de l’exécution.
+• Ces arguments seront traités comme des chaînes de caractères .
+• Le prototype de la fonction main :
+• argc est le nombre d’argument +1 
+• argv est un tableau de chaines de caractères contenant les différents 
+argument. 
+int main(int argc, char **argv)
+Les doubles pointeurs : applications
+45
+<<<PAGE>>>
+• Le prototype de la fonction main :
+• argc est le nombre d’arguments +1
+• argv est un tableau de chaines de caractères contenant les différents arguments.
+• On peut donc récupérer les différents arguments grâce au tableau argv.
+• Attention :
+• Les nombres passés en arguments sont considérés comme des chaînes de 
+caractères!
+• argv[0] est la commande d’exécution.
+int main(int argc, char **argv)
+Les doubles pointeurs : applications
+46
+<<<PAGE>>>
+• Le prototype de la fonction main :
+• argc est le nombre d’arguments +1
+• argv est un tableau de chaines de caractères contenant les différents arguments.
+• Exemple :
+int main(int argc, char **argv)
+Les doubles pointeurs : applications
+./prog zoro sanji 42
+47
+<<<PAGE>>>
+• Le prototype de la fonction main :
+• argc est le nombre d’arguments +1
+• argv est un tableau de chaines de caractères contenant les différents arguments.
+• Exemple :
+int main(int argc, char **argv)
+Les doubles pointeurs : applications
+./prog zoro sanji 42
+nom
+executable argument 1
+argument 2 argument 3
+48
+<<<PAGE>>>
+• Le prototype de la fonction main :
+• argc est le nombre d’arguments +1
+• argv est un tableau de chaines de caractères contenant les différents arguments.
+• Exemple :
+int main(int argc, char **argv)
+Les doubles pointeurs : applications
+./prog zoro sanji 42
+▪ argv[0] <= > "./prog"
+▪ argv[1] <= > "zoro"
+▪ argv[2] <= > "sanji "
+▪ argv[3] <=> "42"
+▪ argc <=> 4
+49
+<<<PAGE>>>
+• Exemple d’application :
+Les doubles pointeurs : applications
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char **argv){  // obligatoire  
+int a,b;
+printf("Il y a %d arguments \n", argc-1);
+printf("Le premier argument est %s\n", argv[0]);
+a = atoi(argv[2]);//converti une chaîne en entier
+b = atoi(argv[3]);
+printf("Somme des deux arguments = %d \n", a+b);
+return 0;
+}
+50
+<<<PAGE>>>
+• Exemple d’application :
+Les doubles pointeurs : applications
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char **argv){  // obligatoire  
+int a,b;
+printf("Il y a %d arguments \n", argc-1);
+printf("Le premier argument est %s\n", argv[0]);
+a = atoi(argv[2]);//converti une chaîne en entier
+b = atoi(argv[3]);
+printf("Somme des deux arguments = %d \n", a+b);
+return 0;
+}
+> Il y a 3 arguments
+Le premier argument est coucou
+Somme des deux arguments = 35
+./prog coucou 15 20
+51
+<<<PAGE>>>
+• Les pointeurs sont très utiles et leurs applications nombreuses.
+• Le type de pointeur indique l’espace mémoire total sur lequel il pointe. Il permet d’effectuer le 
+bon « saut » de mémoire pour passer d’une variable à l’autre. 
+• Il est possible de réserver manuellement un espace mémoire dont la première case sera 
+indiquée par un pointeur : c’est l’ allocation dynamique. Cela permet (entre autres) de créer 
+des tableaux dont la taille n’est pas connue à l’avance.
+• On peut utiliser des pointeurs de pointeurs. Cela offre une plus grande liberté de gestion de 
+tableau, notamment pour des tableaux de chaînes de caractères. Ce concept est à la base de 
+l’exploitation des arguments de la fonction main().
+Conclusion
+52
+<<<PAGE>>>
+• La fonction atoi (dans stdlib ) permet de convertir une chaîne de caractère en int. Cependant 
+si la chaîne est vide, elle ne renvoie pas une erreur mais 0. Il faut donc faire attention lors de 
+son utilisation.
+• Certaines fonctions permettent de gérer les erreurs et peuvent traduire une chaîne en d’autre 
+types :
+• strtol : permet de convertir une chaîne vers un long
+• strtod : permet de convertir une chaîne vers un double
+• strtof : permet de convertir une chaîne vers un f l o a t
+• …
+• La fonction sprintf fait l’inverse : elle peut convertir n’importe quel type en chaîne de caractères 
+(comme le ferait printf).
+Bonus : conversion d’une chaîne vers un 
+nombre
+53

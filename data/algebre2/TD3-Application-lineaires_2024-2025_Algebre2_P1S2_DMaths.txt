@@ -1,0 +1,105 @@
+Algèbre 2
+Préing 1
+2024 – 2025
+TD3 – Applications linéaires
+Exercice 1. Dans chaque cas, dire si l’application f : R3 → R3 est linéaire.
+1. f (x, y, z) := (x − 2z, 3 z, x + y + z).
+2. f (x, y, z) := (x + y, z, 1 + y + z).
+3. f (x, y, z) := (z + y, x y, x).
+Exercice 2. Dans chacun des cas suivants, déterminer si l’application f : E → F est linéaire.
+1. E := F (R, R), F := R et pour tout u ∈ E, f (u) := u(1).
+2. E := C 0([0,1], R), F := C 1([0,1], R) et pour tout u ∈ E, f (u) est la fonction x 7→
+R x
+0 u(t)d t.
+3. E := C 0([0,1], R), F := R et pour tout u ∈ E, f (u) :=
+R 1
+0 u(t)2 dt.
+4. E := C 0([0,1], R), F := R et pour tout u ∈ E, f (u) := maxt ∈[0,1] u(t).
+5. E := C 2(R, R), F := R3 et pour tout u ∈ E, f (u) :=
+¡
+u(0), u′(0), 1
+2 u′′(0)
+¢
+.
+6. E :=
+'
+u ∈ RN ﬂﬂ(un)n∈N converge
+“
+, F := R et pour tout u ∈ E, f (u) := limn→∞ un.
+7. E := Rn[X ], F = Rn[X ] et pour tout P ∈ E, f (P) := P + X P′.
+8. E := R[X ], F := R1[X ] et pour tout P ∈ E, f (P) est le reste de la division euclidienne de P par X 2 + 1.
+Exercice 3. Soient a, b, c ∈ R, on considère le système linéaire :
+
+
+
+x − y + z + t = a
+x + 2z − t = b
+x + y + 3z − 3t = c.
+(Sa,b,c)
+Posons f : R4 → R3 l’application linéaire définie pour tout ( x, y, z, t) ∈ R4 par :
+f (x, y, z, t) := (x − y + z + t, x + 2z − t, x + y + 3z − 3t).
+1. Échelonner le système ( Sa,b,c) par la méthode du pivot de Gauss.
+2. En déduire une base de Ker f . L ’applicationf est-elle injective ?
+3. Déterminer une condition nécessaire et suffisante sur a, b, c pour que le système ( Sa,b,c) soit compa-
+tible.
+4. En déduire une base de Im f . L ’applicationf est-elle surjective ?
+5. Vérifier la validité du théorème du rang sur cet exemple.
+Exercice 4. Soit f : R4 → R3 l’application linéaire définie pour tout ( x, y, z, t) ∈ R4 par :
+f (x, y, z, t) := (x + 2y + 2t, −x + y + z, 2 x + y + z + t).
+1. À l’aide du théorème du rang, montrer sans calculs que f n’est pas injective.
+2. Déterminer une base de ker f .
+3. En déduire que f est surjective.
+Exercice 5. Pour chaque application, vérifier qu’elle est linéaire, déterminer son noyau et son image, puis
+en déduire si elle est injective/surjective/bijective.
+1. f : R3 → R3 définie par f (x, y, z) := (x + y + z, 2 x + y, 2 x + z).
+1
+<<<PAGE>>>
+2. f : R3 → R2 définie par f (x, y, z) := (y − z, z − x, x − y).
+3. f : C 1(R, R) → C 0(R, R) définie par f (u) := u′.
+4. f : R5[X ] → R définie par f (P) := P(1).
+5. f : Rn[X ] → R3 définie par f (P) :=
+¡
+P(−1), P(0), P(1)
+¢
+, pour n = 2, puis pour n = 3.
+6. f : R[X ] → R[X ] définie par f (P) := aP + P ′, où a ∈ R (discuter selon la valeur de a).
+Exercice 6. Soient E et F des K–espaces vectoriels respectivement de dimensions finies n et p, et soit
+f : E → F une application linéaire. À l’aide du théorème du rang, déterminer une condition nécessaire sur
+les entiers n et p pour que :
+1. f soit injective. 2. f soit surjective. 3. f soit bijective.
+Exercice 7. Soit n ∈ N, on considère l’application :
+f : Rn[X ] − → Rn−1[X ]
+P 7− → P(X + 1) − P(X ).
+1. Montrer que f est bien à valeurs dans Rn−1[X ] et que f est linéaire.
+2. L ’applicationf est-elle injective ?
+3. Déterminer Ker f et Im f .
+Exercice 8. Soit E un espace vectoriel de dimension 3 et soit B := (e1, e2, e3) une base de E. On considère
+f l’endomorphisme de E défini par :
+f (e1) = e2 + e3, f (e2) = e3 + e1, f (e3) = e1 + e2.
+Soit x := x1e1 + x2e2 + x3e3 avec (x1, x2, x3) ∈ R3.
+1. Déterminer les coordonnées de f (x) dans la base B.
+2. L ’applicationf est-elle un automorphisme de E ?
+Exercice 9. Soient E, F et G des K–espaces vectoriels de dimensions finies et soit f ∈ L (E , F ).
+1. Si g ∈ L (G, E) est surjective, montrer que rg( f ◦ g ) = rg( f ).
+2. Si h ∈ L (F,G) est injective, montrer que rg( h ◦ f ) = rg( f ).
+Exercice 10. L ’objectif de cet exercice est de démontrer la formule de Grassmann à partir du théorème
+du rang. Soit E un K–espace vectoriel de dimension finie, et soient F et G des s.e.v. de E. On considère
+l’application :
+f : F ×G − → E
+(u, v) 7− → u + v.
+1. Exprimer dim(F ×G) en fonction de dim( F ) et dim(G).
+2. Vérifier que f est linéaire.
+3. Déterminer Im f .
+4. Montrer que Ker f est isomorphe à F ∩G.
+5. Appliquer le théorème du rang et en déduire la formule de Grassmann.
+Exercice 11. L ’objectif de cet exercice est de démontrer le théorème du rang. Soient E et F des K–espaces
+vectoriels et soit f : E → F une application linéaire.
+1. Soit G un sous-espace vectoriel de E. Notons g := f|G la restriction de f à G.
+a. Montrer que g est linéaire de G dans F .
+b. Montrer que Ker g = Ker f ∩G.
+2. On suppose à présent que E est de dimension finie. Soit S un supplémentaire de Ker f dans E, et
+appelons g la restriction de f à S.
+a. Montrer que g est injective.
+b. Montrer que Im g = Im f .
+c. En déduire que S et Im f sont isomorphes, et établir le théorème du rang.
+2

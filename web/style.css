@@ -113,6 +113,8 @@ fieldset{ border:none; margin:0 0 22px; padding:0; min-width:0; }
 legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; padding:0; }
 
 .courses{ display:flex; flex-direction:column; gap:6px; }
+.course-group{ font-size:12px; color:var(--ink-soft); margin:12px 0 2px; font-weight:600; }
+.context-tag{ border:1px solid var(--rule); padding:3px 7px; border-radius:5px; color:var(--ink); font-weight:500; }
 .course{
   display:flex; align-items:center; gap:12px; width:100%; text-align:left;
   padding:8px 10px; border-radius:10px; border:1.5px solid transparent;
@@ -130,7 +132,7 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .course[aria-pressed="true"] .sym{ background:var(--c, var(--ink)); color:var(--sheet); }
 .course[data-id="analyse-rn"]{ --c:var(--rn); }
 .course[data-id="series"]{ --c:var(--series); }
-.course[data-id="informatique3"], .card[data-course="informatique3"]{ --c:var(--info); }
+.course[data-id^="informatique"], .card[data-course^="informatique"]{ --c:var(--info); }
 .course[data-id="electromagnetisme"], .card[data-course="electromagnetisme"]{ --c:var(--physics); }
 .course[data-id="shs"], .card[data-course="shs"]{ --c:var(--shs); }
 
@@ -211,7 +213,7 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .source-excerpt summary:hover{ color:var(--ink); }
 .source-excerpt pre, .code-block{ margin:10px 0 0; padding:12px 14px; background:var(--sheet2); border-radius:6px; overflow:auto; max-height:20em; font-family:var(--mono); font-size:13.5px; line-height:1.7; white-space:pre; }
 .text-excerpt{ margin:0; white-space:pre-wrap; overflow-wrap:anywhere; font-family:var(--serif); font-size:16px; line-height:1.7; }
-.card[data-course="informatique3"] .text-excerpt{ font-family:var(--mono); font-size:13.5px; tab-size:4; }
+.card[data-course^="informatique"] .text-excerpt{ font-family:var(--mono); font-size:13.5px; tab-size:4; }
 
 .formula{
   margin:12px 0; padding:12px 16px; background:var(--sheet2);

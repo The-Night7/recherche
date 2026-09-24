@@ -1,0 +1,757 @@
+Cycle Pr´e-ingenieur
+Premi`ere Ann´ee
+Ag`ebre II - 2023/2024
+Corrig´ e TD2 : Syst` emes Lin´ eaires
+1. Syst` emes Lin´ eaires
+Exercice 1
+1. Par substitution
+(
+2x +y = 1
+3x + 7y =−2 ⇔
+(
+y = 1− 2x
+3x + 7(1− 2x) =−2 ⇔
+(
+x = 9
+11
+y =− 7
+11
+Par pivot de Gauss
+(
+2x +y = 1 (L1)
+3x + 7y =−2 (L2) ⇔
+(
+2x +y = 1
+3x− 7(2x) =−2− 7× 1 (L2) - 7(L1)
+⇔
+(
+2x +y = 1
+−11x =−9 ⇔
+(
+x = 9
+11
+y =− 7
+11
+2. (a) Utilisons la m´ ethode par substitution
+(
+ax +y = 2
+(a2 + 1)x + 2ay = 1 ⇔
+(
+y = 2−ax
+(a2 + 1)x + 2a(2−ax) = 1 ⇔
+(
+y = 2−ax
+(1−a2)x = 1− 4a
+Si a2 = 1, 1− 4a̸= 0 donc le syst` eme n’a pas de solution.
+Si a2̸= 1,
+S =
+1− 4a
+1−a2, 2a2−a + 2
+1−a2
+
+(b) On r´ esout en effectuant la somme et la diff´ erence
+(
+(a + 1)x + (a− 1)y = 1
+(a− 1)x + (a + 1)y = 1 ⇔
+(
+ax +ay = 1
+x−y = 0
+Si a = 0, la premi` ere ´ equation est ´ equivalente ` a 0 = 1 donc il n’y a pas de solution.
+S =∅
+Si a̸= 0, on effectuera ` a nouveau somme et diff´ erence :
+(
+x +y = 1
+a
+x−y = 0 ⇔
+(
+x = 1
+2a
+y = 1
+2a
+1
+<<<PAGE>>>
+S =
+ 1
+2a, 1
+2a
+
+Exercice 2
+a)
+
+
+
+x +y−z = 0 (I)
+x−y = 0 (II)
+x + 4y +z = 0 (III)
+⇔
+
+
+
+x +y−z = 0
+x =y
+2x + 5y = 0 (III) + (I)
+En rempla¸ canty par x dans la derni` ere ´ equation, on obtientx =y = 0 et z = 0 avec la premi` ere
+´ equation.
+S ={(0, 0, 0)}
+b)
+
+
+
+3x−y + 2z =a (I)
+−x + 2y− 3z =b (II)
+x + 2y +z =c (III)
+⇔
+
+
+
+3x−y + 2z =a (I)
+5x +z =b + 2a (II) + 2(I)
+7x + 5z =c + 2a (III) + 2(I)
+⇔
+
+
+
+3x−y + 2z =a (I)
+−18z = 7(b + 2a)− 5(c + 2a) 7(II) − 5(III)
+−18x =c + 2a− 5(b + 2a) (III) − 5(II)
+⇔
+
+
+
+3x−y + 2z =a
+z = −4a−7b+5c
+18
+x = 8a+5b−c
+18
+⇔
+
+
+
+x = 8a+5b−c
+18
+y = 2a−b−7c
+18
+z = −4a−7b+5c
+18
+c)
+
+
+
+x +y + 2z = 5 (I)
+x−y−z = 1 (II)
+x +z = 3 (III)
+⇔
+
+
+
+y +z = 2 (I) − (III)
+−y− 2z =−2 (II) − (III)
+x +z = 3
+⇔
+
+
+
+y +z = 2
+−z = 0 (I) + (II)
+x +z = 3
+2
+<<<PAGE>>>
+⇔
+
+
+
+x = 3
+y = 2
+z = 0
+S ={(3, 2, 0)}
+Exercice 3
+
+
+
+x1 +x2 +x3 +x4 = 1 (I)
+x1 +x2−x3−x4 =−1 (II)
+x1−x2 +x3−x4 = 1 (III)
+x1−x2−x3 +x4 =−1 (IV)
+— On peut utiliser le pivot de Gauss sur la premi` ere ´ equation.
+— On peut ´ egalement effectuer les demi-sommes ou les demi-diff´ erences des ´ equations 2 ` a 2 pour
+obtenir des simplifications importantes.
+— Plus rapidement, si on effectue la somme de toutes les ´ equations, on obtient : 4x1 = 0
+Ensuite (I) + (II ) permet de conclure que x2 = 0
+Puis (I) + (IV ) permet de conclure que x4 = 0
+Et enfin avec n’importe quelle ´ equation on obtientx3 = 1
+On v´ erifie que (0, 0, 1, 0) est bien solution donc S ={(0, 0, 1, 0)}
+Exercice 4
+On applique la m´ ethode du pivot de Gauss :
+
+
+
+x + 2y + 3z + 2t = 0 L1
+−2x + 3y− 5z + t = 0 L2
+3x− 4y + 7z− 3t =−5 L3
+2x + 3y + 8z + 2t =−6 L4
+⇔
+
+
+
+x + 2 y + 3z + 2t = 0 L1
+7y + z + 5t = 0 = 0 L2 ← 2L1 +L2
+10y + 2z + 9t = 5 L3 ← 3L1−L3
+y− 2z + 2t = 6 L4 ← 2L1−L4
+⇔
+
+
+
+x + 2y + 3 z + 2 t = 0 L1
+7y + z + 5 t = 0 = 0 L2
+4z + 13t = 35 L3 ← 7L3− 10L2
+15z− 9t =−42 L4 ←L2− 7L4
+⇔
+
+
+
+x + 2y + 3z + 2 t = 0 L1
+7y + z + 5 t = 0 = 0 L2
+4z + 13 t = 35 L3
+231t = 693 L4 ← 15L3−L4
+D’o` u l’ensemble solution r´ eduit ` a un ´ el´ ement :S ={(1;−2;−1; 3)}.
+3
+<<<PAGE>>>
+Exercice 5
+On applique la m´ ethode du pivot de Gauss :
+
+
+
+x + 2y− z + 3t =−1 L1
+3x + y + z + 2t = 6 L2
+x− 3y + 3z− t = 5 L3
+5x + 5y− z + 7t = 5 L4
+⇔
+
+
+
+x + 2y− z + 3t =−1 L1
+5y− 4z + 7t =−9 L2 ← 3L1−L2
+5y− 4z + 4t =−6 L3 ←L1−L3
+5y− 4z + 8t =−10 L4 ← 5L1−L4
+⇔
+
+
+
+x + 2y− z + 3t =−1 L1
+5y− 4z + 7t =−9 L2
+3t =−3 L3 ←L2−L3
+t =−1 L4 ←L4−L2
+⇔
+
+
+
+x + 2y− z = 2
+5y− 4z =−2
+t =−1
+⇔
+
+
+
+2y− z =−x + 2 L1
+5y− 4z =−2 L2
+t =−1 L3
+⇔
+
+
+
+z =x + 2y− 2 L1
+3y =−4x + 10 L2 ← 4L1−L2
+t =−1 L3
+En r´ esolvant ce syst` eme, on trouve l’ensemble infini de solutions :
+S ={x;−4
+3x + 10
+3 ;−5
+3x + 14
+3 ;−1|x∈ C}
+Exercice 6
+1. On applique la m´ ethode du pivot de Gauss :
+
+
+
+x− y +z =m L 1
+x +my−z = 1 L2
+x− y−z = 1 L3
+⇔
+
+
+
+x− y + z =m L 1
+(m + 1)y− 2z = 1−m L 2 ←L2−L1
+2z =m− 1 L3 ←L1−L3
+⇔
+
+
+
+x =y + m + 1
+2
+(m + 1)y = 0
+z = m−1
+2
+1er cas : m =−1. Le syst` eme admet une solution infinie :
+S ={(y,y,−1)|y∈ C}
+2nd cas : m̸=−1. Le syst` eme admet une solution unique :
+S =
+m + 1
+2 , 0,m− 1
+2
+
+4
+<<<PAGE>>>
+2. 
+
+
+x + y +mz +t =m + 1 L1
+x +my + z +t =m L 2
+mx + y + z +t = 1 L3
+
+
+
+x + y + mz + t =m + 1 L1
+(m− 1)y + (1 −m)z = 1 L2 ←L− 2−L1
+(1−m)y + (1−m2)z + (1−m)t =−m2−m + 1 L3 ←L− 3−mL1
+1er cas : m = 1. Le syst` eme ´ equivaut alors ` a :
+
+
+
+x + y + z + t = 2
+0y + 0z = 1
+0y + 0z + 0t = 1
+L’ensemble des solutions est alors vide.
+2nd cas : m̸= 1. Le syst` eme ´ equivaut alors ` a :
+
+
+
+x +y + mz +t =m + 1
+y− z = 1
+m− 1
+y + (m + 1)z +t = m2 +m− 1
+m− 1
+Ce qui donne le syst` eme final :
+
+
+
+x +y +t =−mz +m + 1
+y =z + 1
+m− 1
+t = m(m+1)
+m−1 − (m + 2)z
+L’ensemble des solutions est alors infini :
+S =
+
+z− m
+m− 1,z− 1
+m− 1,z, m(m + 1)
+m− 1 − (m + 2)z|z∈ C
+
+Exercice 7
+1. On applique Pivot de Gauss
+
+
+
+ax + by + z = 1 L1
+x +aby + z =b L 2
+x + by +az = 1 L3
+⇔
+
+
+
+x + by + az = 1 L1
+b(a− 1)y + (1 −a)z =b− 1 L2 ←L2−L1
+b(1−a)y + (1−a2)z = 1−a L 3 ←L3−aL1
+⇔
+
+
+
+x + by + az = 1 L1
+b(a− 1)y + (1 −a)z =b− 1 L2
+(1−a)(2 +a)z =b−a L 3 ←L3 +L2
+5
+<<<PAGE>>>
+— 1er cas : a /∈{− 2, 1}. Deux nouveaux cas se pr´ esentent :
+— Si b̸= 0, l’ensemble des solutions est r´ eduit ` a un unique ´ el´ ement :
+S =
+ a−b
+(a− 1)(a + 2), ab +b− 2
+b(a− 1)(a + 2), a−b
+(a− 1)(a + 2)
+
+— Si b = 0, le syst` eme ´ equivaut ` a :
+
+
+
+x + az = 1
+(1−a)z =−1
+(1−a)(2 +a)z =b−a
+Le syst` eme n’a alors de solutions que lorsquea =a + 2, ce qui n’est jamais v´ erifi´ e. Donc
+dans ce cas, l’ensemble solution est vide.
+— 2e cas : a = 1. Deux nouveaux cas se pr´ esentent :
+— Si b̸= 1, l’ensemble des solutions est vide.
+— Si b = 1, alors S ={(x,y, 1−x−y)| (x,y )∈ C2}.
+— 3e cas : a =−2. Le syst` eme est alors ´ equivalent ` a :
+
+
+
+x + by− 2z = 1
+− 3by + 3z =b− 1
+0z =b + 2
+Deux nouveaux cas se pr´ esentent :
+— Si b̸=−2, l’ensemble des solutions est vide.
+— Si b =−2, alors le syst` eme est ´ equivalent ` a :
+
+
+
+x− 2y− 2z = 1
+2y + z =−1
+0z = 0
+L’ensemble des solutions est alors l’ensemble infini :
+S ={(−1− 2y,y,−1− 2y)|y∈ C}
+2.
+
+
+x +ay +bz =a L 1
+x +by +az =b L 2
+ax + y +bz =a L 3
+bx + y +az =b L 4
+⇔
+
+
+
+x + ay + bz =a L 1
+(b−a)y− (b−a)z =b−a L 2 ←L2−L1
+ax + y + bz =a L 3
+(b−a)x − (b−a)z =b−a L 4 ←L4−L3
+— 1er cas : a̸=b. Le syst` eme ´ equivaut alors ` a :
+
+
+
+(a +b + 1)z =−1
+y =z + 1
+x =z + 1
+Deux nouveaux cas se pr´ esentent :
+6
+<<<PAGE>>>
+— Si a +b̸=−1, l’ensemble des solutions est r´ eduit ` a un ´ el´ ement :
+S =
+ a +b
+a +b + 1, a +b
+a +b + 1,− 1
+a +b + 1
+
+— Si a +b =−1, l’ensemble des solutions est vide.
+— 2nd cas : a =b. Le syst` eme ´ equivaut alors ` a :
+(
+x +ay +az =a
+ax + y +az =a ⇔
+(
+x +ay =a(1−z)
+ax + y =a(1−z)
+Trois nouveaux cas se pr´ esentent :
+— Si a = 1, l’ensemble des solutions est l’ensemble infiniS ={(x,y, 1−x−y)| (x,y )∈ C2}.
+— Si a =−1, le syst` eme ´ equivaut ` a :
+(
+x =y,
+z = 1
+L’ensemble des solutions est l’ensemble infini S ={(x,x, 1)|x∈ C}.
+— Si a /∈{− 1, 1}, l’ensemble des solutions est l’ensemble infini :
+S =
+ a
+a + 1(1−z), a
+a + 1(1−z),z
+
+Exercice 8
+R´ esoudre le syst` eme den ´ equations suivant, d’inconnue (x1,...,x n)∈ Cn :
+
+
+
+x1 + x2 + x3 + ... + xn = 1, L 1
+x1 + 2 x2 + 2 x3 + ... + 2 xn = 1, L 2
+x1 + 2 x2 + 3 x3 + ... + 3 xn = 1, L 3
+...
+x1 + 2 x2 + 3 x3 + ... + nxn = 1, L n
+On applique la m´ ethode du pivot de Gauss :
+
+
+
+x1 + x2 + x3 + ... + xn = 1, L 1
+x2 + x3 + ... + xn = 1, L 2←L2−L1
+x3 + ... + xn = 1, L 2←L3−L2
+...
+xn−1 + xn = 1, L n−1←Ln−1−Ln−2
+xn = 1. L n←Ln−Ln−1
+Il en r´ esulte imm´ ediatement que l’ensemble solution est r´ eduit ` a un ´ el´ ement :S ={(1, 0, 0,..., 0)}.
+7
+<<<PAGE>>>
+1 Rang d’une matrice
+Exercice 1
+A =
+
+
+−1 1 2
+−2 2 4
+−1 1 2
+
+
+I
+II
+III
+∼
+
+
+−1 1 2
+0 0 0
+0 0 0
+
+
+I
+II− 2I
+III−I
+Une seule ligne ne contient pas que des 0 donc le rang de la matrice est 1
+B =
+
+
+4 0 2 2
+2 3 4 1
+6 0 3 3
+
+
+I
+II
+III
+∼
+
+
+2 0 1 1
+2 3 4 1
+2 0 1 1
+
+
+I/2
+II
+III/ 3
+∼
+
+
+2 0 1 1
+0 3 3 0
+0 0 0 0
+
+
+I
+II−I
+III−I
+Le rang de la matrice est 2.
+∀t∈ R, C=
+
+
+1 t 1
+t 1 1
+1 t 1
+
+
+I
+II
+III
+∼
+
+
+1 t 1
+t− 1 1 −t 0
+0 0 0
+
+
+I
+II−I
+III−I
+∼
+
+
+1 t 1
+0 −(t− 1)2 0
+0 0 0
+
+
+I
+II−I(t− 1)
+III
+Si t = 1, le rang est 1.
+Si t̸= 1, le rang est 2.
+D =
+
+
+1 2 1 2
+−2 −3 0 −5
+4 9 6 7
+1 −1 −5 5
+
+
+I
+II
+III
+IV
+∼
+
+
+1 2 1 2
+0 1 2 −1
+0 1 2 3
+0 −3 −6 3
+
+
+I
+II +I
+III− 4I
+IV −I
+∼
+
+
+1 2 1 2
+0 1 2 −1
+0 0 0 4
+0 0 0 0
+
+
+I
+II
+III−II
+IV + 3II
+Il y a une seule ligne de 0 et 3 lignes non compl` etement nulles donc le rang est 3.
+E =
+
+
+1 1 1
+b +c c +a a +b
+bc ca ab
+
+
+I
+II
+III
+∼
+
+
+1 1 1
+0 a−b a −c
+0 ca−bc ab−bc
+
+
+I
+II− (b +c)I
+III−bcI
+∼
+
+
+1 1 1
+0 a−b a −c
+0 0 ( b−c)(a−c)
+
+
+I
+II
+III−cII
+Si a =b =c, le rang est 1 (2 lignes de 0).
+Si a̸=b et a̸=b et a̸=c, le rang est 3.
+Sinon : si a =b, c̸=a, le rang est 2 car a̸=c.
+Si a =c, b̸=a, le rang est 2 car a̸=c.
+Si b =c, a̸=b, le rang est 2 car a̸=c.
+F =
+
+
+1 cos( x) cos(2 x)
+cos(x) cos(2 x) cos(3 x)
+cos(2x) cos(3 x) cos(4 x)
+
+
+I
+II
+III
+∼
+
+
+1 cos( x) cos(2 x)
+0 cos(2 x)− cos2x cos(3x)− cosx cos(2x)
+0 cos(3 x)− cosx cos 2x cos(4x)− cos(2x)2
+
+
+I
+II− cos(x)I
+III− cos(2x)I
+8
+<<<PAGE>>>
+∼
+
+
+1 cos( x) cos(2 x)
+0 − sin2x − sinx sin(2x)
+0 − sinx sin 2x − sin2 2x
+
+
+I
+II
+III
+∼
+
+
+1 cos( x) cos(2 x)
+0 − sin2x −2 sin2x cosx
+0 −2 sin2x cosx −4 sin2x cos2x
+
+
+I
+II
+III
+∼
+
+
+1 cos( x) cos(2 x)
+0 − sin2x −2 sin2x cosx
+0 0 0
+
+
+I
+II
+III− 2 cos(x)II
+Si x≡π [2π] alors rang(F ) = 1
+Si x̸≡π [2π] alors sinx̸= 0 donc rang(F ) = 2
+Exercice 2
+On applique pivot de Gauss
+
+
+1 a a 2 a3
+a a 2 a3 1
+a2 a3 1 a
+a3 1 a a 2
+
+∼
+
+
+1 a a 2 a3
+0 1 −a4 a−a5
+0 0 1 −a4 a−a5
+0 1 −a4 a−a5 a2−a6
+
+∼
+
+
+1 a a 2 a3
+0 1 −a4 a−a5
+0 0 1 −a4 a−a5
+0 0 0 1 −a4
+
+
+Si a4 = 1 le rang est 1 car les lignes 2, 3 et 4 sont nulles. Dans tous les autres cas, le rang est 4.
+On peut ´ egalement proc´ eder de la mani` ere suivante : on soustrait ` a une ligne a fois la ligne
+pr´ ec´ edente. On obtient plus rapidement le mˆ eme r´ esultat :
+
+
+1 a a 2 a3
+0 1 −a4 a−a5
+0 0 1 −a4 a−a5
+0 0 0 1 −a4
+
+
+9

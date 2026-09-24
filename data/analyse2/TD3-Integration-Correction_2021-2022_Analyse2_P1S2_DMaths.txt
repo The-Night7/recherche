@@ -1,0 +1,3538 @@
+Cycle Pr´eparatoire - Premi`ere Ann´ee
+Analyse II - 2021/2022
+Int´ egration
+Exercice 1
+Soit f la fonction d´ eﬁnie sur [0, 4] par
+f(x) =
+
+
+
+−1 si x = 0
+1 si 0 <x< 1
+3 si x = 1
+−2 si 1 <x ⩽ 2
+4 si 2 <x ⩽ 4.
+1. Calculer
+∫ 4
+0
+f(t)dt.
+2. Soit x∈ [0, 4], calculer F (x) =
+∫ x
+0
+f(t)dt.
+3. Montrer que F est une fonction continue sur [0, 4]. La fonction F est-elle d´ erivable
+sur [0, 4] ?
+Solution
+1. Notons que pour la subdivision de [0, 4] d´ eﬁnie par{x0 = 0, x1 = 1, x2 = 2, x3 =
+4}, nous avons f est constante sur ]xi,xi+1[.
+Ainsi, f est une fonction en escalier. Par cons´ equent
+∫ 4
+0
+f(t)dt = 1 · (1− 0) + ( −2)· (2− 1) + 4 · (4− 2) = 7 .
+2. En utilisant la relation de Chasles nous pouvons conclure :
+— si 0 ⩽x ⩽ 1
+F (x) =
+∫ x
+0
+f(t) dt = 1 · (x− 0) = x.
+— si 1 <x ⩽ 2
+F (x) =
+∫ x
+0
+f(t) dt =
+∫ 1
+0
+f(t) dt +
+∫ x
+1
+f(t) dt
+= 1 · (1− 0) + ( −2)· (x− 1) = 3 − 2x.
+— si 2 <x ⩽ 4
+F (x) =
+∫ x
+0
+f(t) dt =
+∫ 1
+0
+f(t) dt +
+∫ 2
+1
+f(t) dt +
+∫ x
+2
+f(t) dt
+= 1 · (1− 0) + ( −2)· (2− 1) + 4 · (x− 2)
+= 4 x− 9.
+<<<PAGE>>>
+3. D’apr` es la question pr´ ec´ edente, nous avons
+F (x) =
+
+
+
+x si 0 ⩽x ⩽ 1
+3− 2x si 1 <x ⩽ 2
+4x− 9 si 2 <x ⩽ 4.
+De plus lim
+x→1−
+F (x) = lim
+x→1−
+x = 1 = lim
+x→1+
+3− 2x = lim
+x→1+
+F (x).
+et lim
+x→2−
+F (x) = lim
+x→2−
+3− 2x = −1 = lim
+x→2+
+4x− 9 = lim
+x→2+
+F (x). Ainsi, F est
+continue sur [0, 4].
+Par contre F n’est pas d´ erivable enx = 1. En eﬀet
+lim
+x→1−
+F (x)−F (1)
+x− 1 = lim
+x→1−
+x− 1
+x− 1 = 1⁄=−2 = lim
+x→1+
+3− 2x− 1
+x− 1 = lim
+x→1+
+F (x)−F (1)
+x− 1 .
+F n’est pas non plus d´ erivable enx = 2. En eﬀet
+lim
+x→2−
+F (x)−F (2)
+x− 2 = lim
+x→2−
+3− 2x− (−1)
+x− 2 =−2⁄= 4 = lim
+x→2+
+4x− 9− (−1)
+x− 2
+= lim
+x→2+
+F (x)−F (2)
+x− 2 .
+Exercice 2
+Calculer les int´ egrales suivantes :∫ 3
+1
+|2t− 5| dt, a)
+∫ π
+0
+√
+E(t) dt, (E partie enti` ere) b)
+∫ π
+0
+min(2,t ) dt, c)
+∫ 2
+−1
+t|t| dt. d)
+Solution
+1. Notons que
+|2t− 5| =
+
+
+
+5− 2t si 1 ⩽t ⩽ 5
+2,
+2t− 5 si 5
+2 ⩽t ⩽ 3.
+Ainsi, d’apr` es larelation de Chasles, nous pouvons ´ ecrire
+∫ 3
+1
+|2t− 5| dt =
+∫ 5
+2
+1
+|2t− 5| dt +
+∫ 3
+5
+2
+|2t− 5| dt
+=
+∫ 5
+2
+1
+5− 2t dt +
+∫ 3
+5
+2
+2t− 5 dt.
+— une primitive de f(t) = 5 est 5t. En eﬀet (5t)′ = 5
+— une primitive de f(t) = 2t est t2. En eﬀet (t2)′ = 2 t
+<<<PAGE>>>
+Par cons´ equent
+∫ 3
+1
+|2t− 5| dt =
+∫ 5
+2
+1
+5− 2t dt +
+∫ 3
+5
+2
+2t− 5 dt
+=
+[
+5t−t2] 5
+2
+1 +
+[
+t2− 5t
+]3
+5
+2
+=
+(25
+2 − 25
+4
+)
+− (5− 1) + (9 − 15)−
+(25
+4 − 25
+2
+)
+= 25
+2 − 10
+= 5
+2
+2. On a
+√
+E(t) =
+
+
+
+0 si 0 ⩽t< 1,
+1 si 1 ⩽t< 2,√
+2 si 2 ⩽t< 3,√
+3 si 3 ⩽t<π.
+Ainsi, d’apr` es larelation de Chasles, nous pouvons ´ ecrire
+∫ π
+0
+√
+E(t) dt =
+∫ 1
+0
+√
+E(t) dt +
+∫ 2
+1
+√
+E(t) dt +
+∫ 3
+2
+√
+E(t) +
+∫ π
+3
+√
+E(t)
+=
+∫ 1
+0
+0 dt +
+∫ 2
+1
+1 dt +
+∫ 3
+2
+√
+2 +
+∫ π
+3
+√
+3
+= 0 · (1− 0) + 1 · (2− 1) +
+√
+2· (3− 2) +
+√
+3· (π− 3)
+= 1 +
+√
+2− 3
+√
+3 +
+√
+3π.
+3. Notons que
+min(2,t ) =
+{ t si 0 ⩽t ⩽ 2,
+2 si 2 <t ⩽π.
+Ainsi, d’apr` es larelation de Chasles, nous pouvons ´ ecrire
+∫ π
+0
+min(2,t ) dt =
+∫ 2
+0
+min(2,t ) dt +
+∫ π
+2
+min(2,t ) dt
+=
+∫ 2
+0
+t dt +
+∫ π
+2
+2 dt.
+Or une primitive de f(t) =t est t2
+2 . En eﬀet
+(t2
+2
+)′
+= t
+<<<PAGE>>>
+Par cons´ equent
+∫ π
+0
+min(2,t ) dt =
+∫ 2
+0
+t dt +
+∫ π
+2
+2 dt
+=
+[t2
+2
+]2
+0
++ 2· (π− 2)
+=
+(4
+2− 0
+)
++ 2· (π− 2)
+= 2 π− 2.
+4. Notons que
+t|t| =
+{−t2 si − 1 ⩽t ⩽ 0,
+t2 si 0 ⩽t ⩽ 2.
+Ainsi, d’apr` es larelation de Chasles, nous pouvons ´ ecrire
+∫ 2
+−1
+t|t| dt =
+∫ 0
+−1
+t|t| dt +
+∫ 2
+0
+t|t| dt
+=
+∫ 0
+−1
+−t2 dt +
+∫ 2
+0
+t2 dt.
+Or, une primitive de f(t) =t2 est t3
+3 . En eﬀet
+(t3
+3
+)′
+= t2.
+Par cons´ equent
+∫ 2
+−1
+t|t| dt =
+∫ 0
+−1
+−t2 dt +
+∫ 2
+0
+t2 dt
+=
+[
+−t3
+3
+]0
+−1
++
+[t3
+3
+]2
+0
+= −
+(
+0−−1
+3
+)
++
+(8
+3− 0
+)
+= 7
+3.
+Exercice 3∫ x
+1 +x2dxa)
+∫
+3x
+√
+1 +x2dxb)
+∫ 1
+x lnxdxc)
+∫ e3x
+1 +e3xdxd)
+∫
+cos(x) sin2(x)dxe)
+∫ 1−x2
+(x3− 3x + 1)3dxf)
+∫ x− 1√
+x(x− 2)
+dxg)
+∫ 1
+x ln (x2)dxh)
+∫
+(3x−1)
+(
+3x2− 2x + 3
+)
+dxi)
+∫ lnx
+x dxj)
+∫
+(1− cos(3x))dxk)
+∫
+x sin
+(
+x2)
+dxl)
+∫ √
+lnx
+x dxm)
+<<<PAGE>>>
+Solution∫ x
+1 +x2dx = 1
+2 ln(x2 + 1) a)
+∫
+x
+√
+1 +x2dx = 1
+3(1 +x2)
+3
+2b)
+∫ 1
+x lnxdx = ln(lnx) c)
+∫ e3x
+1 +e3xdx = 1
+3 ln(1 +e3x) d)
+∫
+cos(x) sin2(x)dx = 1
+3(sinx)3e)
+∫ 1−x2
+(x3− 3x + 1)3dx =− 1
+6(x3− 3x + 1)2f)
+∫ x− 1√
+x(x− 2)
+dx =
+√
+x(x− 2) g)
+∫ 1
+x ln (x2)dx = 1
+2 ln(lnx2) h)
+∫
+(3x− 1)
+(
+3x2− 2x + 3
+)
+dx = 1
+4(3x2− 2x + 3)2i)
+∫ lnx
+x dx = (ln(x))2j)
+∫
+(1− cos(3x))dx =x− 1
+3 sin(3x) k)
+∫
+x sin
+(
+x2)
+dx =−1
+2 cos(x2) l)
+∫ √
+lnx
+x dx = 2
+3(lnx)
+3
+2m)
+<<<PAGE>>>
+Exercice 4 (Int´ egration par parties)
+Calculer les primitives suivantes :∫
+ex cosxdxa)
+∫ lnx
+xn dx avecn> 1 b)
+∫
+x arctanxdxc)
+∫ (
+x2 +x + 1
+)
+exdxd)
+∫
+e−x sinxdxe)
+∫
+(lnx)2dxf)
+∫
+arctanxdxg)
+∫
+x3 sinxdxh)
+Solution
+1.
+∫
+ex cosxdx : Utilisons la m´ ethode d’int´ egrations par parties. Pour cela, posons
+u(x) = ex
+v(x) = sin x
+u′(x) = ex
+v′(x) = cos x
+Ainsi
+∫
+ex cosxdx = ex· sinx −
+∫
+ex sinx dx.
+Pour calculer cette derni` ere int´ egrale, utilisons une fois de plus la m´ ethode d’
+int´ egrations par parties. Cette fois-ci posons
+u(x) = ex
+v(x) = − cosx
+u′(x) = ex
+v′(x) = sin x
+D’o` u
+∫
+ex sinx dx = −ex· cosx −
+∫
+ex(− cosx)dx
+= −ex· cosx +
+∫
+ex cosx dx
+Par cons´ equent
+∫
+ex cosxdx = ex· sinx −
+∫
+ex sinx dx
+= ex· sinx −
+(
+−ex· cosx +
+∫
+ex cosx dx
+)
+= ex (sinx + cos x) −
+∫
+ex cosx dx.
+Ce qui nous permet de conclure l’´ egalit´ e
+2
+∫
+ex cosx dx = ex (sinx + cos x) = ⇒
+∫
+ex cosx dx = ex
+2 (sinx + cos x).
+<<<PAGE>>>
+2.
+∫ lnx
+xn dx n∈ N, n⁄= 1 : Utilisons la m´ ethode d’int´ egrations par parties.
+Pour cela, posons
+u(x) = ln x
+v(x) = 1
+−n + 1·x−n+1
+u′(x) = 1
+x
+v′(x) = x−n
+Ainsi
+∫ lnx
+xn dx = lnx
+(1−n)xn−1 − 1
+1−n
+∫ x−n+1
+x dx
+= lnx
+(1−n)xn−1 − 1
+1−n
+∫
+x−ndx
+= lnx
+(1−n)xn−1 − 1
+(1−n)· 1
+(1−n)xn−1
+= (1−n) lnx− 1
+(1−n)2xn−1
+3.
+∫
+x arctanxdx : Utilisons la m´ ethode d’int´ egrations par parties. Pour cela,
+posons
+u(x) = arctan x
+v(x) = x2
+2
+u′(x) = 1
+1 +x2
+v′(x) = x
+Ainsi
+∫
+x arctanxdx = x2
+2 · arctanx − 1
+2
+∫ x2
+1 +x2dx
+= x2
+2 · arctanx − 1
+2
+∫ 1 +x2− 1
+1 +x2 dx
+= x2
+2 · arctanx − 1
+2
+∫
+1dx + 1
+2
+∫ 1
+1 +x2dx
+= x2 arctanx
+2 − x
+2 + arctanx
+2 + cte
+= (x2 + 1) arctanx−x
+2 + cte.
+4.
+∫
+(x2 +x + 1)exdx : Nous avons
+∫
+(x2 +x + 1)exdx =
+∫
+x2exdx +
+∫
+xexdx +
+∫
+exdx.
+D’abord
+∫
+exdx = ex
+<<<PAGE>>>
+Maintenant, pour calculer les int´ egrales
+∫
+xexdx et
+∫
+x2exdx utilisons la m´ ethode
+d’int´ egrations par parties. On commence avec
+∫
+xexdx. Posons
+u(x) = x
+v(x) = ex
+u′(x) = 1
+v′(x) = ex
+Ainsi
+∫
+xexdx = xex −
+∫
+exdx
+= xex − ex
+Finalement, pour calculer
+∫
+x2exdx, posons
+u(x) = x2
+v(x) = ex
+u′(x) = 2 x
+v′(x) = ex
+Ainsi
+∫
+x2exdx = x2ex − 2
+∫
+xexdx
+= x2ex − 2xex + 2ex
+Par cons´ equent
+∫
+(x2 +x + 1)exdx =
+∫
+x2exdx +
+∫
+xexdx +
+∫
+exdx
+= x2ex − 2xex + 2ex + xex − ex + ex
+= x2ex − xex + 2ex
+=
+(
+x2 − x + 2
+)
+ex
+5.
+∫
+e−x sinxdx
+On a u(x) = sin x
+v(x) = −e−x et u′(x) = cos x
+v′(x) = e−x
+∫
+e−x sinxdx =− sinxe−x −
+∫
+−e−x cosxdx =− sinxe−x +
+∫
+e−x cosxdx
+On a u(x) = cosx
+v(x) = −e−x et u′(x) = − sinx
+v′(x) = e−x
+∫
+e−x cosxdx =− cosxe−x −
+∫
+e−x sinxdx
+On a donc
+∫
+e−x sinxdx =− sinxe−x − cosxe−x −
+∫
+e−x sinxdx
+Donc
+∫
+e−x sinxdx =−1
+2e−x(sinx + cosx)
+<<<PAGE>>>
+6.
+∫
+(lnx)2dx
+On a u(x) = (ln x)2
+v(x) = x et u′(x) = 2
+x lnx
+v′(x) = 1∫
+(lnx)2dx =x(lnx)2 −
+∫
+2 lnxdx =x(lnx)2 + 2x(lnx− 1)
+7.
+∫
+arctanxdx
+On a u(x) = arctan x
+v(x) = x et u′(x) = 1
+1 +x2
+v′(x) = 1∫
+arctanxdx =x arctanx −
+∫ x
+1 +x2dx =x arctanx− 1
+2 ln
+(
+1 +x2)
+8.
+∫
+x3 sinxdx
+On a u(x) = x3
+v(x) = − cosx et u′(x) = 3 x2
+v′(x) = sin x∫
+x3 sinxdx =−x3 cosx − 3
+∫
+−x2 cosxdx
+On a u(x) = x2
+v(x) = sin x et u′(x) = 2 x
+v′(x) = cos x∫
+x2 cosxdx =x2 sinx− 2
+∫
+x sinxdx
+On a u(x) = x
+v(x) = − cosx et u′(x) = 1
+v′(x) = sin x∫
+x sinxdx =−x cosx−
+∫
+− cosxdx =−x cosx + sinx
+Donc∫
+x3 sinxdx =−x3 cosx + 3
+(
+x2 sinx− 2(−x cosx + sinx)
+)
+=−x3 cosx + 3x2 sinx + 6x cosx− 6 sinx
+Exercice 5
+Calculer les primitives suivantes :∫ 1√2 +x +
+3√2 +xdx, (t =
+6√
+2 +x) a)
+∫
+(arcsinx)2dxb)
+∫
+x2√
+1 +x3dx.c)
+∫ ex
+(3 +ex)√ex− 1dxd)
+∫
+cos√xdx. e)
+∫ 1 +e
+√x
+√x dxf)
+∫ etanx
+(cosx)2dxg)
+∫ x3
+√
+1 +x2dxh)
+<<<PAGE>>>
+Solution
+1.
+∫ 1√2 +x +
+3√2 +xdx, (t =
+6√
+2 +x) :
+Comme indiqu´ e, posons
+t =
+6√
+2 +x =⇒ x = t6− 2 = ⇒ dx = 6 t5dt.
+De plus
+√
+2 +x =
+(
+6√
+2 +x
+)3
+=⇒
+√
+2 +x =t3.
+De mˆ eme
+3√
+2 +x =
+(
+6√
+2 +x
+)2
+=⇒
+3√
+2 +x =t2.
+Ainsi
+∫ 1√2 +x +
+3√2 +xdx =
+∫ 6t5
+t2 +t3dt = 6
+∫ t3
+1 +tdt.
+D’o` u
+∫ 1√2 +x +
+3√2 +xdx = 6
+∫ t3
+1 +tdt
+= 6
+∫ t3 + 1− 1
+1 +t dt
+= 6
+∫ t3 + 1
+1 +t − 1
+1 +tdt
+= 6
+∫ (t + 1)(t2−t + 1)
+1 +t dt− 6
+∫ 1
+1 +tdt
+= 6
+∫
+(t2−t + 1)dt− 6
+∫ 1
+1 +tdt
+= 6
+(t3
+3− t2
+2 +t
+)
+− 6 ln(|1 +t|) + cte
+= 2 t3− 3t2 + 6t− 6 ln(|1 +t|) + cte
+= 2
+√
+2 +x− 3
+3√
+2 +x + 6
+6√
+2 +x− 6 ln
+(⏐⏐⏐1 +
+6√
+2 +x
+⏐⏐⏐
+)
++ cte
+2.
+∫
+(arcsinx)2dx : Utilisons la m´ ethode d’ int´ egrations par parties. Pour cela,
+posons
+u(x) = (arcsin x)2
+v(x) = x
+u′(x) = 2 arcsinx√
+1−x2
+v′(x) = 1
+Ainsi
+∫
+(arcsinx)2dx = x(arcsinx)2 − 2
+∫ x arcsinx√
+1−x2 dx.
+Pour calculer cette derni` ere int´ egrale, utilisons une fois de plus la m´ ethode d’
+int´ egrations par parties. Cette fois-ci posons
+u(x) = arcsin x
+v(x) = −
+√
+1−x2
+u′(x) = 1√
+1−x2
+v′(x) = x√
+1−x2
+<<<PAGE>>>
+D’o` u
+∫ x arcsinx√
+1−x2 dx = − arcsinx
+√
+1−x2 −
+∫
+−
+√
+1−x2
+√
+1−x2dx
+= − arcsinx
+√
+1−x2 +
+∫
+1 dx
+= − arcsinx
+√
+1−x2 + x + cte.
+Par cons´ equent
+∫
+(arcsinx)2dx = x(arcsinx)2 − 2
+∫ x arcsinx√
+1−x2 dx
+= x(arcsinx)2 − 2
+(
+− arcsinx
+√
+1−x2 + x + cte
+)
+= x(arcsinx)2 + 2 arcsin x
+√
+1−x2 − 2x + cte.
+3.
+∫
+x2√
+1 +x3dx : `A l’aide du changement de variable
+1 +x3 =u =⇒ 3x2dx = du =⇒ x2dx = du
+3
+nous pouvons ´ ecrire
+∫
+x2√
+1 +x3dx =
+∫ 1
+3
+√u du
+= 1
+3
+∫ √u du
+= 1
+3
+u
+3
+2
+3
+2
++ cte
+= 2
+9u
+3
+2 + cte
+= 2
+9(1 +x3)
+3
+2 + cte.
+4. On eﬀectue un changement de variables : u =
+√
+ex− 1 il vient u2 = ex− 1 et
+ex =u2 + 1 d o` u 2udu =exdx∫ ex
+(3 +ex)√ex− 1dx =
+∫ 2udu
+(3 +u2 + 1)u =
+∫ 2du
+4 +u2 = 2 arctanu
+2 = arctan
+(√
+ex− 1
+2
+)
+5.
+∫
+cos√xdx on pose w =√x donc w2 =x donc 2wdw =dx
+∫
+cos√xdx = 2
+∫
+w coswdw
+On eﬀectue une int´ egration par partie :
+On a u(w) = w
+v(w) = sin w et u′(w) = 1
+v′(w) = cos w∫
+w coswdw =w sinw−
+∫
+sinwdw =w sinw + cosw
+On a donc
+∫
+cos√xdx = 2√x sin√x + 2 cos√x
+<<<PAGE>>>
+6.
+∫ 1 +e
+√x
+√x dx =
+∫ 1√xdx +
+∫ e
+√x
+√xdx = 2√x + 2e
+√x
+7.
+∫ etanx
+(cosx)2dx =
+∫
+etan(x) tan′(x)dx =etan(x)
+8.
+∫ x3
+√
+1 +x2dx
+On a u(x) = x2
+v(x) =
+√
+1 +x2 et
+u′(x) = 2 x
+v′(x) = x√
+1 +x2
+∫ x3
+√
+1 +x2dx =x2√
+1 +x2 − 2
+∫
+x
+√
+1 +x2dx =x2√
+1 +x2− 2
+3
+(
+1 +x2) 3
+2
+Exercice 6
+Calculer les int´ egrales suivantes :∫ 1
+0
+t√
+1−t2 dta)
+∫ a
+0
+√
+a2−t2 dtb)
+∫ π
+0
+t2 sint dtc)
+∫ 1
+1−π2
+4
+cos
+√
+1−t dtd)
+∫ 1
+−1
+t− 1
+1 +t2dte)
+∫ π
+2
+0
+dt
+2 + sintf)
+∫ 4
+1
+1−
+√
+t√
+t dtg)
+∫ 4
+1
+dt
+1 +eth)
+∫ 1
+0
+t(arctant)2dti)
+Solution
+a)
+∫ 1
+0
+t√
+1−t2 dt : `A l’aide du changnement de variable :
+1−t2 = u =⇒ − 2tdt = du,
+nous pouvons ´ ecrire
+∫ 1
+0
+t√
+1−t2 dt =
+∫ 0
+1
+−1
+2√u du
+=
+∫ 1
+0
+1
+2√u du
+=
+[√u
+]1
+0
+= 1 .
+b)
+∫ a
+0
+√
+a2−t2 dt : Nous avons
+∫ a
+0
+√
+a2−t2 dt =
+∫ a
+0
+a
+√
+1−
+(t
+a
+)2
+dt = a
+∫ a
+0
+√
+1−
+(t
+a
+)2
+dt.
+Ainsi, ` a l’aide du changement de variable :
+t
+a = u =⇒ dt
+a = du,
+<<<PAGE>>>
+nous pouvons donc ´ ecrire
+∫ a
+0
+√
+a2−t2 dt = a
+∫ a
+0
+√
+1−
+(t
+a
+)2
+dt
+= a2
+∫ 1
+0
+√
+1−u2 du.
+Maintenant, en eﬀectuant le changement de variable
+u = sin x =⇒ du = cos x dx
+on obtient
+∫ 1
+0
+√
+1−u2 du =
+∫ π
+2
+0
+√
+1− sin2x cosx dx
+=
+∫ π
+2
+0
+cos2x dx =
+∫ π
+2
+0
+cos(2x) + 1
+2 dx
+Par cons´ equent
+∫ a
+0
+√
+a2−t2 dt = a2
+∫ 1
+0
+√
+1−u2 du
+= a2
+∫ π
+2
+0
+cos(2x) + 1
+2 dx
+= a2
+[sin(2x)
+4 + x
+2
+]π
+2
+0
+= a2π
+2 .
+c)
+∫ π
+0
+t2 sint dt: Utilisons la m´ ethode d’int´ egrations par parties. Pour cela, posons
+u(t) = t2
+v(t) = − cost
+u′(t)u = 2 t
+v′(t) = sin t
+Ainsi
+∫ π
+0
+t2 sint dt =
+[
+−t2· cost
+]π
+0 + 2
+∫ π
+0
+t cost dt
+= π2 + 2
+∫ π
+0
+t cost dt.
+Pour calculer cette derni` ere int´ egrale, utilisons une fois de plus la m´ ethode d’int´ egrations
+par parties. Cette fois-ci posons
+u = t
+dv = cos t dt =⇒ du = dt
+v = sin t
+<<<PAGE>>>
+D’o` u
+∫ π
+0
+t cost dt = [ t· sint]π
+0 −
+∫ π
+0
+sint dt = [cos t]π
+0 = −2.
+Par cons´ equent
+∫ π
+0
+t2 sint dt = π2 + 2
+∫ π
+0
+t cost dt = π2− 4.
+d)
+∫ 1
+1−π2
+4
+cos
+√
+1−t dt: En eﬀectuant le changement de variable
+x =
+√
+1−t =⇒ t = 1 −x2 =⇒ dt = −2xdx
+nous pouvons ´ ecrire
+∫ 1
+1−π2
+4
+cos
+√
+1−t dt =
+∫ 0
+π
+2
+cosx· (−2x) dx
+= 2
+∫ π
+2
+0
+x cosx dx
+=|{z}
+IPP = voir point pr´ ec´ edent
+2 [x· sinx]
+π
+2
+0 − 2
+∫ π
+2
+0
+sinx dx
+= π + 2 [− cosx]
+π
+2
+0
+= π − 2.
+e)
+∫ 1
+−1
+t− 1
+1 +t2dt =
+∫ 1
+−1
+t
+1 +t2dt−
+∫ 1
+−1
+1
+1 +t2dt =−2 arctan 1 =−π
+2
+f)
+∫ π
+2
+0
+dt
+2 + sint =
+∫ 1
+0
+2dx
+(1 +x2)
+(
+2 + 2x
+1+x2
+) =
+∫ 1
+0
+2dx
+2x2 + 2x + 2 =
+∫ 1
+0
+dx
+(
+x + 1
+2
+)2
++ 3
+4
+= 2√
+3
+[
+arctan
+( 2√
+3
+(
+x + 1
+2
+))]1
+0
+= 2√
+3
+(
+arctan
+(√
+3
+)
+− arctan
+√
+3
+3
+)
+= 2√
+3
+(π
+3− π
+6
+)
+= 2√
+3
+(π
+6
+)
+= π
+3
+√
+3
+g)
+∫ 4
+1
+1−
+√
+t√
+t dt =
+[
+2
+√
+t
+]4
+1
+− 3 = 4− 2− 3 =−1
+h)
+∫ 4
+1
+dt
+1 +et =
+∫ 4
+1
+e−tdt
+1 +e−t =
+[
+− ln
+(
+1 +e−t)]4
+1 = ln(1 +e−1)-ln
+(
+1 +e−4)
+i) On a∫
+t(arctant)2dx = t2
+2 (arctant)2 −
+∫ ( t2
+1 +t2
+)
+arctant dt=
+= t2
+2 (arctant)2−
+∫
+arctant dt+
+∫ ( 1
+1 +t2
+)
+arctant dt
+= t2
+2 (arctant)2−
+∫
+arctant dt+ 1
+2(arctant)2
+<<<PAGE>>>
+On a u(t) = arctan t
+v(t) = t et u′(t) = 1
+1 +t2
+v′(t) = 1
+= t2
+2 (arctant)2− t arctant +
+∫ t
+1 +t2 dt + 1
+2(arctant)2
+= t2
+2 (arctant)2− t arctant + 1
+2 ln
+(
+1 +t2)
++ 1
+2(arctant)2
+Donc
+∫ 1
+0
+t(arctant)2dx = π2
+16− π
+4 + 1
+2 ln 2
+Exercice 7
+Consid´ erons l’int´ egraleI =
+∫ ln 2
+0
+√
+ex− 1dx
+Eﬀectuer le changement de variables u =
+√
+ex− 1 et calculer I.
+Solution
+Solution : Comme indiqu´ e, on fait le changement de variable
+u =
+√
+ex− 1 = ⇒ u2 =ex− 1 = ⇒ x = ln
+(
+u2 + 1
+)
+.
+D’o` udx = 2u
+u2 + 1du
+Ainsi
+∫ ln 2
+0
+√
+ex− 1dx =
+∫ 1
+0
+u· 2u
+u2 + 1du
+= 2
+∫ 1
+0
+u2
+u2 + 1du
+= 2
+∫ 1
+0
+u2 + 1− 1
+u2 + 1 du
+= 2
+∫ 1
+0
+u2 + 1
+u2 + 1− 1
+u2 + 1du.
+Ce qui nous permet d’´ ecrire
+∫ ln 2
+0
+√
+ex− 1dx = 2
+∫ 1
+0
+u2 + 1
+u2 + 1− 1
+u2 + 1du
+= 2
+∫ 1
+0
+1 du− 2
+∫ 1
+0
+1
+u2 + 1du
+= 2
+[
+u
+]1
+0− 2
+∫ 1
+0
+1
+u2 + 1du = 2 − 2
+∫ 1
+0
+1
+u2 + 1du.
+On connait une primitive de 1
+u2 + 1
+En eﬀet (arctan(u))′ = 1
+1 +u2
+<<<PAGE>>>
+Par cons´ equent
+∫ ln 2
+0
+√
+ex− 1dx = 2 − 2
+∫ 1
+0
+1
+u2 + 1du
+= 2 − 2
+[
+arctan(u)
+]1
+0
+= 2 − 2 arctan(1) + 2 arctan(0) = 2 − 2π
+4 + 2· 0 = 2 − π
+2.
+Exercice 8
+1. Soit f : [a,b ]→ R une fonction continue.
+Montrer que
+∫ b
+a
+f(x)dx =
+∫ b
+a
+f(a +b−x)dx
+En d´ eduire le valeur de l’int´ egrale
+∫ π
+4
+0
+ln(1 + tan(x))dx
+2. Montrer que ∫ a
+1
+a
+(
+1 + 1
+x2
+)
+arctanxdx = π
+2
+(
+a− 1
+a
+)
+pour a> 1, (Indication : utiliser la formule arctan x + arctan 1
+x = π
+2 , pour x> 0 ).
+Solution
+On eﬀectue le changement de variables : u =a +b−x d’o` udu =−dx∫ b
+a
+f(a +b−x)dx =
+∫ a
+b
+f(u)(−du) =−
+∫ a
+b
+f(u)du =
+∫ b
+a
+f(u)du
+∫ π
+4
+0
+ln(1 + tanx)dx =
+∫ π
+4
+0
+ln(cosx + sinx)dx−
+∫ π
+4
+0
+ln(cosx)dx
+=
+∫ π
+4
+0
+ln
+(
+√
+2
+(√
+2
+2 cosx +
+√
+2
+2 sinx
+))
+dx−
+∫ π
+4
+0
+ln(cosx)dx
+=
+∫ π
+4
+0
+ln
+√
+2dx +
+∫ π
+4
+0
+ln
+(
+cos
+(
+x− π
+4
+))
+dx−
+∫ π
+4
+0
+ln(cosx)dx
+=
+∫ π
+4
+0
+ln
+√
+2dx +
+∫ π
+4
+0
+ln
+(
+cos
+(π
+4 + 0−x
+))
+dx−
+∫ π
+4
+0
+ln(cosx)dx
+= π ln 2
+8∫ a
+1
+a
+(
+1 + 1
+x2
+)
+arctanxdx on eﬀectue le changement de variable : u = 1
+x donc du =−dx
+x2
+∫ a
+1
+a
+(
+1 + 1
+x2
+)
+arctanxdx =
+∫ 1
+a
+a
+(
+1 +u2)(
+arctan 1
+u
+)(
+−du
+u2
+)
+=
+∫ 1
+a
+a
+(
+1 +u2)(
+arctan 1
+u
+)(
+−du
+u2
+)
+=
+∫ a
+1
+a
+(
+1 + 1
+u2
+)(π
+2− arctanu
+)
+du
+<<<PAGE>>>
+Il vient
+∫ a
+1
+a
+(
+1 + 1
+x2
+)
+arctanxdx = π
+4
+∫ a
+1
+a
+(
+1 + 1
+u2
+)
+= π
+4
+((
+a− 1
+a
+)
++
+(
+−1
+a +a
+))
+=
+π
+2
+(
+a− 1
+a
+)
+Exercice 9
+D´ ecomposer les fractions rationnelles suivantes ; en calculer les primitives.
+x3
+x2− 4. a) 4x
+(x− 2)2 . b) 3t + 1
+t2− 2t + 10. c)
+1
+t3 + 1. d) x3 + 2
+(x + 1)2 . e) x + 1
+x(x− 2)2 . f)
+x2− 2x
+(x− 1)2 (x2 + 1)g) 3x4− 9x3 + 12x2− 11x + 7
+(x− 1)3(x2 + 1) . h)
+Solution
+1. On commence par donner la d´ ecomposition en ´ el´ ements simples de x3
+x2− 4, nous
+avons
+x3
+x2− 4 = x + 2
+x− 2 + 2
+x + 2.
+Par cons´ equent
+∫ x3
+x2− 4 dx =
+∫
+x + 2
+x− 2 + 2
+x + 2 dx
+= x2
+2 + 2 ln(|x− 2|) + 2 ln(|x + 2|) + cte
+= x2
+2 + ln
+(
+(x2− 4)2)
++ cte.
+2. On commence par donner la d´ ecomposition en ´ el´ ements simples de 4x
+(x− 2)2 , nous
+avons
+4x
+(x− 2)2 = 4
+x− 2 + 8
+(x− 2)2.
+Par cons´ equent
+∫ 4x
+(x− 2)2 dx =
+∫ 4
+x− 2 + 8
+(x− 2)2 dx = 4 ln|x− 2|− 8
+x− 2 + cte.
+<<<PAGE>>>
+3. Notons que 3t + 1
+t2− 2t + 10 est un ´ el´ ement simple. Calculons sa primitive. Nous avons
+∫ 3t + 1
+t2− 2t + 10 dt =
+∫ 3t
+t2− 2t + 10 dt +
+∫ 1
+t2− 2t + 10 dt
+= 3
+2
+∫ 2t− 2 + 2
+t2− 2t + 10 dt +
+∫ 1
+(t2− 2t + 1) + 9dt
+= 3
+2
+∫ 2t− 2
+t2− 2t + 10 dt +
+∫ 4
+(t2− 2t + 1) + 9dt
+= 3
+2
+∫ 2t− 2
+t2− 2t + 10 dt + 4
+∫ 1
+(t− 1)2 + 9 dt
+= 3
+2
+∫ 2t− 2
+t2− 2t + 10 dt + 4
+9
+∫ 1(t−1
+3
+)2
++ 1
+dt
+= 3
+2 ln(t2− 2t + 10) + 4
+3 arctan
+(t− 1
+3
+)
++ cte.
+4. On commence par donner la d´ ecomposition en ´ el´ ements simples de 1
+t3 + 1, nous
+avons
+1
+t3 + 1 = 1
+3(t + 1)− t− 2
+3(t2−t + 1).
+Par cons´ equent
+∫ 1
+t3 + 1 dx =
+∫ 1
+3(t + 1)− t− 2
+3(t2−t + 1) dx
+= 1
+3 ln|t + 1|− 1
+6 ln(t2−t + 1) + 1√
+3 arctan
+(2t− 1√
+3
+)
++ cte.
+5. R(x) = x3 + 2
+(x + 1)2 = P (x)
+Q(x)
+La division euclidienne donne : x3 + 2 = (x− 2)
+(
+x2 + 2x + 1
+)
++ (3x + 4)
+Le coeﬃcient de 1
+(x + 1)2 est 1 (on remplace x par−1 dans le num´ erateur).
+On calcule 3x + 4
+(x + 1)2− 1
+(x + 1)2 = 3
+x + 1
+Donc x3 + 2
+(x + 1)2 =x− 2 + 3
+x + 1 + 1
+(x + 1)2
+Donc une primitive est x2
+2 − 2x + 3 ln(x + 1)− 1
+x + 1
+6. Primitive de x + 1
+x(x− 2)2
+Le coeﬃcient de 1
+x est 1
+4 (on remplace x par−1 dans x + 1
+(x− 2)2 ).
+Le coeﬃcient de 1
+(x− 2)2 est 3
+2 (on remplace x par−1 dans x + 1
+x ).
+<<<PAGE>>>
+x + 1
+x(x− 2)2− 1
+4x− 3
+2(x− 2)2 = 4x + 4−x2 + 4x− 4− 6x
+4x(x− 2)2 = −x + 2
+4(x− 2)2 =− 1
+4(x− 2)
+Donc x + 1
+x(x− 2)2 = 1
+4x + 3
+2(x− 2)2− 1
+4(x− 2)
+Une primitive est 1
+4 lnx− 3
+2(x− 2)− 1
+4 ln(x− 2)
+7. x2− 2x
+(x− 1)2 (x2 + 1) Le coeﬃcient de 1
+(x− 1)2 est−1
+2 (on remplace x par−1 dans
+x2− 2x
+(x2 + 1)).
+Le coeﬃcient de 1
+x−i est −1− 2i
+(i− 1)22i =−1 + 2i
+4 (on remplacex pari dans x2− 2x
+(x− 1)2(x +i)).
+Donc− 1 + 2i
+4(x−i)− 1− 2i
+4(x +i) =−(1 + 2i)(x +i) + (1− 2i)(x−i)
+x2 + 1 =− x− 2
+2 (x2 + 1)
+Enﬁn
+x2− 2x
+(x− 1)2 (x2 + 1) + 1
+2(x− 1)2 + x− 2
+2 (x2 + 1)
+= 2x2− 4x +x2 + 1 + (x− 2) (x2− 2x + 1)
+2(x− 1)2 (x2 + 1)
+= 2x2− 4x +x2 + 1 +x3− 4x2 + 5x− 2
+2(x− 1)2 (x2 + 1)
+= x3−x2 +x− 1
+2(x− 1)2 (x2 + 1) = (x2 + 1)x− (x2 + 1)
+2(x− 1)2 (x2 + 1) = (x2 + 1) (x− 1)
+2(x− 1)2 (x2 + 1) = 1
+4(x− 1)
+Donc
+x2− 2x
+(x− 1)2 (x2 + 1) =− 1
+2(x− 1)2− x− 2
+2 (x2 + 1) + 1
+4(x− 1)
+=− 1
+2(x− 1)2− x
+2 (x2 + 1) + 1
+x2 + 1 + 1
+4(x− 1)
+Une primitive est 1
+2(x− 1)− 1
+4 ln
+(
+x2 + 1
+)
++ arctanx + 1
+4 ln(x− 1)
+Exercice 10
+Soit In =
+∫ 1
+0
+(1−t2)ndt.
+1. ´Etablir une relation de r´ ecurrence entreIn et In+1.
+2. Calculer In.
+3. En d´ eduire
+n∑
+k=0
+(−1)k
+2k + 1
+(n
+k
+)
+.
+Solution
+1. Utilisons la m´ ethode d’int´ egrations par parties. Pour cela, posons
+u(t) = (1 −t2)n+1
+v(t) = t
+u′(t) = −2(n + 1)t(1−t2)n
+v′(t) = 1
+<<<PAGE>>>
+Ainsi
+∫ 1
+0
+(1−t2)n+1dt =
+[
+t(1−t2)n+1]1
+0 + 2(n + 1)
+∫ 1
+0
+t2(1−t2)ndt
+= 0 + 2( n + 1)
+∫ 1
+0
+(t2− 1 + 1)(1−t2)ndt
+= 2( n + 1)
+∫ 1
+0
+−(1−t2)n+1 + (1 −t2)ndt.
+D’o` u
+∫ 1
+0
+(1−t2)n+1dt = 2( n + 1)
+∫ 1
+0
+−(1−t2)n+1 + (1 −t2)ndt
+= −2(n + 1)
+∫ 1
+0
+(1−t2)n+1 dt + 2(n + 1)
+∫ 1
+0
+(1−t2)ndt
+= −2(n + 1)In+1 + 2(n + 1)In.
+Par cons´ equent
+In+1 = −2(n + 1)In+1 + 2(n + 1)In =⇒ In+1 = 2n + 2
+2n + 3In.
+2. Calculer In : `A l’aide de l’identit´ e pr´ ec´ edente, nous pouvons ´ ecrire
+In = 2(n− 1) + 2
+2(n− 1) + 3In−1 = 2n
+2n + 1In−1
+= 2n
+2n + 1· 2n− 2
+2n− 1In−2
+...
+= 2n
+2n + 1· 2n− 2
+2n− 1· ··· ·4
+5· 2
+3I0
+Finalement
+I0 =
+∫ 1
+0
+(1−t2)0dt =
+∫ 1
+0
+1dt = (1 − 0)· 1 = 1 .
+Par cons´ equent
+In = 2n
+2n + 1· 2n− 2
+2n− 1· ··· ·4
+5· 2
+3.
+3. En d´ eduire
+n∑
+k=0
+(−1)k
+2k + 1
+(n
+k
+)
+: D’apr` es le binome de Newton, nous pouvons ´ ecrire
+(1−t2)n =
+n∑
+k=0
+(n
+k
+)
+(−1)kt2k.
+<<<PAGE>>>
+Ainsi
+∫ 1
+0
+(1−t2)ndt =
+∫ 1
+0
+n∑
+k=0
+(n
+k
+)
+(−1)kt2kdt
+=
+n∑
+k=0
+(n
+k
+)
+(−1)k
+∫ 1
+0
+t2kdt
+=
+n∑
+k=0
+(n
+k
+)
+(−1)k
+[ t2k+1
+2k + 1
+]1
+0
+=
+n∑
+k=0
+(n
+k
+)
+(−1)k 1
+2k + 1.
+Par cons´ equent
+n∑
+k=0
+(n
+k
+)
+(−1)k 1
+2k + 1 =
+∫ 1
+0
+(1−t2)ndt
+= In
+= 2n
+2n + 1· 2n− 2
+2n− 1· ··· ·4
+5· 2
+3.
+Exercice 11 Int´ egrales de Wallis
+Soit In =
+∫ π
+2
+0
+sinntdt.
+1. ´Etablir une relation de r´ ecurrence entreIn et In+2.
+2. En d´ eduireI2p et I2p+1.
+3. Montrer que (In)n∈N est d´ ecroissante et strictement positive.
+4. En d´ eduire queIn∼In+1.
+5. Calculer nInIn+1.
+6. Donner alors un ´ equivalent simple deIn.
+Solution
+1. Utilisons la m´ ethode d’int´ egrations par parties. Pour cela, posons
+u(t) = sin n+1t
+v(t) = − cost
+u′(t) = ( n + 1) sinnt cost dt
+v′(t) = sin t
+Ainsi
+∫ π
+2
+0
+sinn+2tdt =
+[
+− sinn+1t· cost
+]π
+2
+0 + (n + 1)
+∫ π
+2
+0
+sinnt cos2t dt
+= 0 + ( n + 1)
+∫ π
+2
+0
+sinnt
+(
+1− sin2t
+)
+dt
+= ( n + 1)
+∫ π
+2
+0
+sinnt dt− (n + 1)
+∫ π
+2
+0
+sinn+2t dt.
+D’o` u
+In+2 = ( n + 1)In − (n + 1)In+2 =⇒ In+2 = n + 1
+n + 2In.
+<<<PAGE>>>
+2. En d´ eduireI2p etI2p+1 : En utilisant l’´ egalit´ eIn+2 = n + 1
+n + 2In, nous pouvons ´ ecrire
+I2p = 2p− 1
+2p ·I2p−2
+= 2p− 1
+2p · 2p− 3
+2p− 2·I2p−4
+...
+= 2p− 1
+2p · 2p− 3
+2p− 2····· 3
+4· 1
+2·I0.
+De mˆ eme
+I2p+1 = 2p
+2p + 1·I2p−1
+= 2p
+2p + 1· 2p− 2
+2p− 1·I2p−3
+...
+= 2p
+2p + 1· 2p− 2
+2p− 1····· 4
+5· 2
+3·I1.
+Or
+I0 =
+∫ π
+2
+0
+1 dt = π
+2 et I1 =
+∫ π
+2
+0
+sint dt = 1 .
+Par cons´ equent
+I2p = (2p− 1)· (2p− 3)· ··· ·3· 1
+2p· (2p− 2)· ··· ·4· 2 · π
+2
+I2p+1 = 2p· (2p− 2)· ··· ·4· 2
+(2p + 1)· (2p− 1)· ··· ·5· 3· 1.
+Maintenant
+2p· (2p− 2)· ··· ·4· 2 = 2 p·p· (p− 1)· ··· ·2· 1
+= 2 p·p!
+et
+(2p− 1)· (2p− 3)· ··· ·3· 1 = (2p)!
+2p· (2p− 2)· ··· ·4· 2
+= (2p)!
+2p·p!.
+Donc
+I2p = (2p)!
+22p(p!)2· π
+2 et I2p+1 = 22p(p!)2
+(2p + 1)!.
+<<<PAGE>>>
+3. Montrer que (In)n∈N est d´ ecroissante et strictement positive : Pour toutx∈
+[
+0,π
+2
+]
+,
+nous avons
+sinx≥ 0 = ⇒ ∀n∈ N, sinnx≥ 0
+=⇒ ∀n∈ N,
+∫ π
+2
+0
+sinnx dx> 0
+=⇒ ∀n∈ N, In > 0.
+De plus, pour tout x∈
+[
+0,π
+2
+]
+0 ⩽ sinx ⩽ 1 =⇒ ∀n∈ N, sinnx≥ sinn+1x
+=⇒ ∀n∈ N,
+∫ π
+2
+0
+sinnx dx≥
+∫ π
+2
+0
+sinn+1x dx> 0
+=⇒ ∀n∈ N, In≥In+1 > 0
+=⇒ (In)n∈N est d´ ecroissante.
+4. En d´ eduire queIn∼In+1 : D’apr` es la question pr´ ec´ edente, nous avons
+0<I n+2 ⩽In+1 ⩽In =⇒ In+2
+In
+⩽ In+1
+In
+⩽ 1
+Or In+2
+In
+= n + 1
+n + 2. Donc
+n + 1
+n + 2 ⩽ In+1
+In
+⩽ 1 =⇒ 1 = lim
+n→+∞
+n + 1
+n + 2 ≤ lim
+n→+∞
+In+1
+In
+≤ 1
+=⇒ lim
+n→+∞
+In+1
+In
+= 1
+=⇒ In∼In+1.
+5. Calculer nInIn+1 : D’apr` es la question 2, nous avons
+I2p = (2p)!
+22p(p!)2· π
+2 et I2p+1 = 22p(p!)2
+(2p + 1)!.
+Donc
+(2p− 1)·I2p−1·I2p = 2p− 1
+2p · π
+2, et 2 p·I2p·I2p+1 = 2p
+2p + 1· π
+2.
+C’est-` a-dire
+nIn·In+1 = n
+n + 1· π
+2.
+6. Donner alors un ´ equivalent simple deIn : D’apr` es la question pr´ ec´ edente, nous avons
+nIn·In+1 = n
+n + 1· π
+2 =⇒ In·In+1 = 1
+n + 1· π
+2
+<<<PAGE>>>
+De plus
+In∼In+1 =⇒ I2
+n∼In·In+1 = 1
+n + 1· π
+2
+=⇒ I2
+n ∼ 1
+n + 1· π
+2
+=⇒ In ∼
+√ π
+2(n + 1)
+=⇒ In ∼
+√ π
+2n.
+Exercice 12
+Soit In =
+∫ 1
+0
+xn
+1 +xdx.
+1. En majorant la fonction int´ egr´ ee, montrer que (In)n∈N→ 0.
+2. Calculer In +In+1.
+3. D´ eterminer lim
+n→+∞
+n∑
+k=1
+(−1)k+1
+k .
+Solution
+1. En majorant la fonction int´ egr´ ee, montrer que (In)n∈N→ 0 : Pour tout x≥ 0, on a
+1 ⩽ x + 1 = ⇒ 1
+1 +x ⩽ 1 = ⇒ ∀n∈ N, xn
+1 +x ⩽ xn.
+Donc
+In =
+∫ 1
+0
+xn
+1 +xdx ⩽
+∫ 1
+0
+xndx
+=
+[ 1
+n + 1xn+1
+]1
+0
+= 1
+n + 1.
+Par cons´ equent
+∀n∈ N, In ⩽ 1
+n + 1 =⇒ lim
+n→+∞
+In = 0 .
+<<<PAGE>>>
+2. Calculer In +In+1 : Nous avons :
+In + In+1 =
+∫ 1
+0
+xn
+1 +x dx +
+∫ 1
+0
+xn+1
+1 +x dx =
+∫ 1
+0
+xn
+1 +x + xn+1
+1 +x dx
+=
+∫ 1
+0
+xn +xn+1
+1 +x dx
+=
+∫ 1
+0
+xn· 1 +x
+1 +xdx
+=
+∫ 1
+0
+xndx
+=
+[xn+1
+n + 1
+]1
+0
+= 1
+n + 1.
+3. D´ eterminer lim
+n→+∞
+n∑
+k=1
+(−1)k+1
+k : Par la question pr´ ec´ edente, nous pouvons ´ ecrire
+n∑
+k=1
+(−1)k+1
+k = 1 − 1
+2 + 1
+3− 1
+4 +···± 1
+n
+= ( I0 +I1)− (I1 +I2) + (I2 +I3)−···± (In−1 +In)
+=|{z}
+somme t´ elescopique
+I0 + (I1−I1) + (I2−I2) +··· + (In−1−In−1)±In
+= I0 ± In.
+Par cons´ equent
+lim
+n→+∞
+n∑
+k=1
+(−1)k+1
+k = lim
+n→+∞
+I0 ± In
+= I0 ± lim
+n→+∞
+In
+= I0 + 0
+=
+∫ 1
+0
+dx
+1 +x
+= [ln( x + 1)]1
+0
+= ln 2 .
+Exercice 13 S´ eries de Riemann
+Calculer :
+lim
+n→∞
+n∏
+k=1
+(
+1 +k2
+n2
+) 1
+n
+a) lim
+n→∞
+n
+n∑
+k=1
+e−n
+k
+k2b)
+lim
+n→∞
+n∑
+k=1
+n +k
+n2 +k2c) lim
+n→∞
+n−1∑
+k=1
+1√
+n2−k2.d)
+<<<PAGE>>>
+Solution
+1. On a ln
+n∏
+k=1
+(
+1 +k2
+n2
+) 1
+n
+= 1
+n
+∑
+ln
+(
+1 +k2
+n2
+)
+On reconnaˆ ıt une somme de Riemann pour la fonctionf :x↦→ ln
+(
+1 +x2)
+donc la
+somme tend vers
+∫ 1
+0
+ln
+(
+1 +x2)
+dx
+On eﬀectue une int´ egration par partie :
+On a u(x) = ln
+(
+1 +x2)
+v(x) = x et u′(t) = 2x
+1 +x2
+v′(t) = 1∫ 1
+0
+ln
+(
+1 +x2)
+dx =
+[
+x ln
+(
+1 +x2)]1
+0−
+∫ 1
+0
+2x2
+1 +x2dx = ln 2− 2
+(∫ 1
+0
+1dx−
+∫ 1
+0
+1
+1 +x2dx
+)
+= ln 2− 2(1 + arctan 1) = ln 2− 2 +π
+2
+Donc par composition lim
+n→∞
+n∏
+k=1
+(
+1 +k2
+n2
+) 1
+n
+=eln 2−2+π
+2
+2. On a n
+n∑
+k=1
+e−n
+k
+k2 = 1
+n
+n∑
+k=1
+e−n
+k
+(k
+n
+)2
+On reconnaˆ ıt une somme de Riemann qui tend donc vers∫ 1
+0
+e− 1
+x
+x2 dx =
+[
+e− 1
+x
+]1
+0
+=e−1
+3. On a
+n∑
+k=1
+n +k
+n2 +k2 = 1
+n
+n∑
+k=1
+1 + k
+n
+1 +
+(k
+n
+)2
+On reconnaˆ ıt une somme de Riemann qui tend donc vers∫ 1
+0
+1 +x
+1 +x2dx =
+∫ 1
+0
+x
+1 +x2dx +
+∫ 1
+0
+1
+1 +x2dx =
+[1
+2 ln
+(
+1 +x2)]1
+0
++ [arctanx]1
+0 =
+1
+2 ln 2 +π
+4
+4. lim
+n→∞
+n−1∑
+k=1
+1√
+n2−k2
+n−1∑
+k=1
+1√
+n2−k2 = 1
+n
+n−1∑
+k=1
+1√
+1−
+(k
+n
+)2
+On reconnaˆ ıt une somme de
+Riemann qui tend donc vers
+∫ 1
+0
+1√
+1−x2dx = [arctanx]1
+0 = π
+4
+Exercice 14
+Calculer les limites suivantes :
+1. lim
+n→∞
+1 +
+√
+2 +
+√
+3 +··· +√n
+n√n .
+2. lim
+n→∞
+n∑
+p=1
+n
+n2 +p2 .
+<<<PAGE>>>
+Solution
+1. lim
+n→∞
+1 +
+√
+2 +
+√
+3 +··· +√n
+n√n : On commence par noter que :
+1 +
+√
+2 +
+√
+3 +··· +√n
+n√n = 1
+n
+n∑
+k=1
+√
+k√n = 1
+n
+n∑
+k=1
+√
+k
+n
+= 1− 0
+n
+n∑
+k=1
+√
+0 +k(1− 0)
+n .
+En posant f(x) =√x nous venons d’´ ecrire la somme de Riemann correspondant ` a∫ 1
+0
+f(x)dx. Cette int´ egrale se calcule facilement :
+∫ 1
+0
+f(x)dx =
+∫ 1
+0
+√x dx =
+[
+x
+3
+2
+3
+2
+]1
+0
+= 2
+3.
+Maintenant, la somme de Riemann 1
+n
+n∑
+k=1
+√
+k√n converge vers
+∫ 1
+0
+f(x)dx, ainsi
+lim
+n→∞
+1 +
+√
+2 +
+√
+3 +··· +√n
+n√n = 2
+3.
+2. lim
+n→∞
+n∑
+p=1
+n
+n2 +p2 : On commence par noter que :
+n∑
+p=1
+n
+n2 +p2 = 1
+n
+n∑
+p=1
+1
+1 +
+(p
+n
+)2 = (1− 0)
+n
+n∑
+p=1
+1
+1 +
+(
+0 +p (1−0)
+n
+)2.
+En posantf(x) = 1
+1 +x2 nous venons d’´ ecrire la somme de Riemann correspondant
+` a
+∫ 1
+0
+f(x)dx. Cette int´ egrale se calcule facilement :
+∫ 1
+0
+f(x)dx =
+∫ 1
+0
+dx
+1 +x2 =
+[
+arctanx
+]1
+0 = π
+4.
+Maintenant, la somme de Riemann 1
+n
+n∑
+p=1
+1
+1 +
+(p
+n
+)2 converge vers
+∫ 1
+0
+f(x)dx, ainsi
+lim
+n→∞
+n∑
+p=1
+n
+n2 +p2 = π
+4.
+<<<PAGE>>>
+Exercice 15
+Sans calculer les int´ egrales, montrer que
+∫ π/2
+0
+sinnx dx=
+∫ π/2
+0
+cosnx dx.
+Solution
+`A l’aide du changement de variable
+x = π
+2−u =⇒ dx =−du,
+nous pouvons ´ ecrire
+∫ π/2
+0
+sinnx dx =
+∫ 0
+π/2
+sinn
+(π
+2−u
+)
+(−du)
+= −
+∫ 0
+π/2
+sinn
+(π
+2−u
+)
+du
+=
+∫ π/2
+0
+sinn
+(π
+2−u
+)
+du
+Maintenant
+sin
+(π
+2−u
+)
+= cos u.
+Donc
+∫ π/2
+0
+sinnx dx =
+∫ π/2
+0
+sinn
+(π
+2−u
+)
+du =
+∫ π/2
+0
+cosnu du =
+∫ π/2
+0
+cosnx dx.
+Exercice 16
+Soit f∈C0(R). On d´ eﬁnitg : R∗→ R, x↦→ 1
+x
+∫ x
+0
+f(t)dt.
+1. Montrer que g se prolonge par continuit´ e en 0.
+2. On suppose f T-p´ eriodique. Montrer que :∀k∈ N,
+∫ (k+1)T
+kT
+f(t)dt =
+∫ T
+0
+f(t)dt.
+3. Ecrire g(x) sous la forme 1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt pour un entier n bien choisi,
+et en d´ eduire queg admet une limite en +∞.
+Exercice 17
+Soit f : R→ R une fonction continue sur R et F (x) =
+∫ x
+0
+f(t)dt.
+R´ epondre par vrai ou faux aux aﬃrmations suivantes :
+1. F est continue sur R.
+<<<PAGE>>>
+2. F est d´ erivable surR de d´ eriv´ eef.
+3. Si f est croissante sur R alors F est croissante sur R.
+4. Si f est positive sur R alors F est positive sur R.
+5. Si f est positive sur R alors F est croissante sur R.
+6. Si f est T -p´ eriodique surR alors F est T -p´ eriodique surR.
+7. Si f est paire alors F est impaire.
+Solution
+1. F est continue sur R. Vrai : F est continue sur R car F est d´ erivable surR de
+d´ eriv´ eef. Pour plus de d´ etails voir cours.
+2. F est d´ erivable surR de d´ eriv´ eef. Vrai : Voir cours.
+3. Si f est croissante sur R alors F est croissante sur R. Faux : En eﬀet, posons
+f(x) =x. Alors
+F (x) =
+∫ x
+0
+t dt =
+[t2
+2
+]x
+0
+= x2
+2 − 0 = x2
+2 .
+qui est d´ ecroissante sur ]−∞, 0] et croissante sur [0, +∞[.
+4. Si f est positive sur R alorsF est positive sur R. Faux : En eﬀet, posonsf(x) =x2.
+Alors
+F (x) =
+∫ x
+0
+t2dt = x3
+3 .
+qui est n´ egative sur ]−∞, 0] et positive sur [0, +∞[.
+5. Si f est positive sur R alorsF est croissante sur R. Vrai : En eﬀet, soit x<y , alors
+F (y)−F (x) =
+∫ y
+0
+f(t)dt −
+∫ x
+0
+f(t)dt
+=
+∫ x
+0
+f(t)dt +
+∫ y
+x
+f(t)dt −
+∫ x
+0
+f(t)dt
+=
+∫ y
+x
+f(t)dt.
+Maintenant
+∀t∈ [x,y ], f (t)≥ 0 =⇒
+∫ y
+x
+f(t)dt≥ 0
+=⇒ F (y)−F (x)≥ 0
+=⇒ F est croissante.
+Deuxi` eme m´ ethode: Nous avons
+∀x∈ R, F ′(x) = f(x) ≥ 0.
+Donc F est croissante.
+<<<PAGE>>>
+6. Si f estT -p´ eriodique surR alorsF estT -p´ eriodique surR. Faux : En eﬀet, posons
+f(x) = 1 + cos(x). Alors
+F (x) =
+∫ x
+0
+1 + cos(t) dt = [t + sin(t)]x
+0 = x + sin(x)− (0 + sin(0)) = x + sin(x).
+qui n’est pas p´ eriodique.
+7. Si f est paire alors F est impaire. Vrai : En eﬀet, nous avons
+F (−x) =
+∫ −x
+0
+f(t)dt.
+En faisant le changement de variable
+t =−u =⇒ dt =−du
+nous pouvons donc ´ ecrire
+F (−x) =
+∫ −x
+0
+f(t)dt
+=
+∫ x
+0
+f(−u)(−du)
+=|{z}
+f est paire
+−
+∫ x
+0
+f(u)du
+= −F (x).
+De plus F (0) = 0. F est donc impaire.
+Exercice 18
+D´ eterminer les fonctionsf continues sur [a,b ] telles que
+∫ b
+a
+f(t)dt = (b−a) sup
+[a,b]
+|f|.
+Solution
+Tout d’abord, notons que
+b−a =
+∫ b
+a
+1 dt.
+La linearit´ e de l’int´ egrale, nous permet donc d’ecrire
+(b−a) sup
+[a,b]
+|f| = sup
+[a,b]
+|f|
+∫ b
+a
+1 dt
+=
+∫ b
+a
+sup
+[a,b]
+|f| dt.
+<<<PAGE>>>
+Ainsi
+∫ b
+a
+f(t)dt = ( b−a) sup
+[a,b]
+|f| ⇐⇒
+∫ b
+a
+sup
+[a,b]
+|f| =
+∫ b
+a
+f(t)dt
+⇐⇒
+∫ b
+a
+sup
+[a,b]
+|f|−
+∫ b
+a
+f(t)dt = 0
+⇐⇒
+∫ b
+a
+sup
+[a,b]
+|f|− f(t)dt = 0 .
+Or
+∀t∈ [a,b ], sup
+[a,b]
+|f|≥ f(t).
+La fonction
+t ↦−→ sup
+[a,b]
+|f| −f(t),
+est donc continue et positive sur [a,b ], d’int´ egale nulle sur [a,b ]. Par cons´ equent
+∀t∈ [a,b ], sup
+[a,b]
+|f|− f(t) = 0 .
+D’o` u on conclut
+∫ b
+a
+f(t)dt = ( b−a) sup
+[a,b]
+|f| ⇐⇒ ∀t∈ [a,b ], f (t) = sup
+[a,b]
+|f|
+⇐⇒ f est constante.
+Exercice 19
+Soit f∈C0(R). On d´ eﬁnitg : R∗→ R, x↦→ 1
+x
+∫ x
+0
+f(t)dt.
+1. Montrer que g se prolonge par continuit´ e en 0.
+2. On suppose f T-p´ eriodique. Montrer que :∀k∈ N,
+∫ (k+1)T
+kT
+f(t)dt =
+∫ T
+0
+f(t)dt.
+3. Ecrire g(x) sous la forme 1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt pour un entier n bien choisi,
+et en d´ eduire queg admet une limite en +∞.
+Solution
+1. Montrer que g se prolonge par continuit´ e en 0 : On doit montrer que la limite
+lim
+x→0
+g(x) = lim
+x→0
+1
+x
+∫ x
+0
+f(t)dt
+<<<PAGE>>>
+existe. Posons
+F (x) =
+∫ x
+0
+f(t)dt =⇒ F (0) =
+∫ 0
+0
+f(t)dt = 0 .
+Alors
+lim
+x→0
+g(x) = lim
+x→0
+F (x)
+x = lim
+x→0
+F (x)−F (0)
+x− 0
+= F′(0) = f(0).
+Par cons´ equent, on peut prolongerg en posant
+g(0) = f(0).
+2. On suppose f T-p´ eriodique. Montrer que :
+∀k∈ N,
+∫ (k+1)T
+kT
+f(t)dt =
+∫ T
+0
+f(t)dt.
+`A l’aide du changement de variable
+t =u +kT =⇒ dt = du.
+nous pouvons ´ ecrire
+∫ (k+1)T
+kT
+f(t)dt =
+∫ T
+0
+f(u +kT )du
+=|{z}
+f est T−p´ eriodique
+∫ T
+0
+f(u)du
+=
+∫ T
+0
+f(t)dt.
+3. Ecrire g(x) sous la forme 1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt pour un entier n bien choisi,
+et en d´ eduire queg admet une limite en +∞.
+L’id´ ee, c’est de choisirn de sorte d’avoir
+nT ≤ x < nT +T.
+Pour cela, posons
+n = E
+(x
+T
+)
+.
+Alors
+n ≤ x
+T < n + 1 = ⇒ nT ≤ x < nT +T.
+<<<PAGE>>>
+Maintenant
+g(x) = 1
+x
+∫ x
+0
+f(t)dt = 1
+x
+(∫ nT
+0
+f(t)dt +
+∫ x
+nT
+f(t)dt
+)
+= 1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt
+et
+lim
+x→+∞
+g(x) = lim
+x→+∞
+1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt.
+´Etudions donc les limites
+lim
+x→+∞
+1
+x
+∫ nT
+0
+f(t)dt et lim
+x→+∞
+1
+x
+∫ x
+nT
+f(t)dt.
+On commence par noter que
+⏐⏐⏐⏐
+∫ x
+nT
+f(t)dt
+⏐⏐⏐⏐ ≤
+∫ x
+nT
+|f(t)|dt ≤|{z}
+car |f|≥0
+∫ nT +T
+nT
+|f(t)|dt
+=|{z}
+d’apr` es le point 2.
+∫ T
+0
+|f(t)|dt = cte.
+Par cons´ equent
+lim
+x→+∞
+1
+x
+⏐⏐⏐⏐
+∫ x
+nT
+f(t)dt
+⏐⏐⏐⏐ ≤ lim
+x→+∞
+1
+x
+∫ T
+0
+|f(t)|dt = 0 .
+Ce qui nous permet de conclure
+lim
+x→+∞
+1
+x
+∫ x
+nT
+f(t)dt = 0 .
+Par ailleurs
+∫ nT
+0
+f(t)dt =
+∫ T
+0
+f(t)dt +
+∫ 2T
+T
+f(t)dt + ··· +
+∫ nT
+(n−1)T
+f(t)dt
+=|{z}
+d’apr` es le point 2.
+∫ T
+0
+f(t)dt +
+∫ T
+0
+f(t)dt + ··· +
+∫ T
+0
+f(t)dt
+= n
+∫ T
+0
+f(t)dt.
+Maintenant,n =E
+(x
+T
+)
+, donc
+x
+T− 1 ≤ n ≤ x
+T.
+<<<PAGE>>>
+D’o` u
+x−T
+T
+∫ T
+0
+f(t)dt ≤ (ou ≥) n
+∫ T
+0
+f(t)dt ≤ (ou ≥) x
+T
+∫ T
+0
+f(t)dt
+Ainsi
+x−T
+x·T
+∫ T
+0
+f(t)dt ≤ (ou ≥) n
+x
+∫ T
+0
+f(t)dt ≤ (ou ≥) x
+x·T
+∫ T
+0
+f(t)dt.
+De plus lim
+x→+∞
+x−T
+x·T = 1
+T , donc
+lim
+x→+∞
+n
+x
+∫ T
+0
+f(t)dt = 1
+T
+∫ T
+0
+f(t)dt.
+Par cons´ equent
+lim
+x→+∞
+g(x) = lim
+x→+∞
+1
+x
+∫ nT
+0
+f(t)dt + 1
+x
+∫ x
+nT
+f(t)dt
+= lim
+x→+∞
+1
+x
+∫ nT
+0
+f(t)dt + lim
+x→+∞
+1
+x
+∫ x
+nT
+f(t)dt
+= 1
+T
+∫ T
+0
+f(t)dt + 0
+= 1
+T
+∫ T
+0
+f(t)dt.
+Exercice 20
+Si(n,p )∈ N2, on d´ eﬁnit
+I(n,p ) =
+∫ 1
+0
+tn(1−t)p dt
+1. Si p∈ N∗ et n∈ N, exprimer I(n,p ) en fonction de I(n + 1,p− 1).
+2. Calculer I(n,p ) pour n,p∈ N.
+Solution
+1. On utilise une int´ egration par parties avec u : t↦→ tn+1
+n + 1 et v : t↦→ (1−t)p qui
+sont de classe C1 sur [0, 1].
+I(n,p ) =
+[ tn+1
+n + 1(1−t)p
+]1
+0
++ p
+n + 1
+∫ 1
+0
+tn+1(1−t)p−1 dt
+donc I(n,p ) = p
+n + 1I(n + 1,p− 1).
+2. On note pour n ∈ N,Hn : ∀p ∈ N,I (n,p ) = p!n!
+(n +p + 1)! et on raisonne par
+r´ ecurrence.
+<<<PAGE>>>
+— Initialisation
+I(0,p ) =
+∫ 1
+0
+(1−t)p dt
+I(0,p ) =
+[−(1−t)p+1
+p + 1
+]1
+0
+= 1
+p + 1
+I(0,p ) = 0!p!
+(p + 1)!
+Donc H0 est vraie.
+— H´ er´ edit´ e
+On suppose que Hn est vraie.
+On utilise la formule de la question 1 en repla¸ cantp par p + 1.
+I(n,p + 1) = p + 1
+n + 1I(n + 1,p )
+I(n + 1,p ) = n + 1
+p + 1
+I(n,p + 1) puis avec Hn : I(n + 1,p ) = n + 1
+p + 1
+(p + 1)!n!
+(n +p + 1 + 1)!
+I(n + 1,p ) = p!(n + 1)!
+(n +p + 2)! ce qui prouve Hn+1.
+— La propri´ et´ e a ´ et´ e d´ emontr´ ee par r´ ecurrence.
+En particulier, I(n,n ) = (n!)2
+(2n + 1)!.
+Exercice 21
+Si a<b et n,p∈ N, calculer
+J(n,p ) =
+∫ b
+a
+(t−a)n(b−t)p dt
+Solution
+— Recherche : On cherche un changement de variable de la formet = αu +β tel que
+t =a⇔u = 0 et t =b⇔u =b. On r´ esout donc le syst` eme
+{ β =a
+α +β =b ssi β =a,α =b−a
+On obtient
+t = (b−a)u +a
+— R´ edaction
+ϕ : [0, 1]→ [a,b ],u↦→ (b−a)u +a
+ϕ est de classe C1 et
+J(n,p ) =
+∫ ϕ(1)
+ϕ(0)
+f(t)dt
+<<<PAGE>>>
+donne par le th´ eor` eme de changement de variable :
+J(n,p ) =
+∫ 1
+0
+f(ϕ(u))ϕ′(u)du
+t−a = (b−a)u et b−t = (b−a)(1−u)
+J(n,p ) =
+∫ 1
+0
+(b−a)nun(b−a)p(1−u)p(b−a)du
+J(n,p ) = (b−a)n+p+1I(n,p )
+J(n,p ) = (b−a)n+p+1 p!n!
+(n +p + 1)!
+Exercice 22
+Soit n,p∈ N. Calculer
+K(n,p ) =
+∫ π/2
+0
+cos2n+1(θ) sin2p+1(θ)dθ
+Solution
+La fonction ϕ :| 0,π/ 2] → [0, 1],θ ↦→ cos2(θ) est une bijection de classe C1. Par le
+th´ eor` eme de changement de variableI(n,p ) =
+∫ ϕ(0)
+ϕ(π/2)
+f(t)dt
+I(n,p ) =
+∫ 0
+π/2
+f(ϕ(θ))ϕ′(θ)dθ f(ϕ(θ)) = cos2n(θ)
+(
+1− cos2(θ)
+)p
+f(ϕ(θ)) = cos2n(θ) sin2p(θ)
+ϕ′(θ) =−2 sin(θ) cos(θ).
+f(ϕ(θ))ϕ′(θ) =−2 cos2n+1(θ) sin2p+1(θ)
+I(n,p ) =−2
+∫ 0
+π/2
+cos2n+1(θ) sin2p+1 dθ
+I(n,p ) = 2K(n,p ) doncK(n,p ) = p!n!
+2(n +p + 1)!.
+Exercice 23
+Soit n∈ N. En d´ eduire la valeur de
+∫ π/2
+0
+sin2n+1(u)du
+Solution
+: K(n,n ) =
+∫ π/2
+0
+cos2n+1(θ) sin2n+1 K(n,n ) = 1
+22n+1
+∫ π/2
+0
+sin2n+1(2θ)dθ en utilisant le
+changement de variable u = 2θ, 22n+1K(n,n ) =
+∫ π
+0
+sin2n+1(u)1/2 du 22n+2K(n,n ) =
+∫ π
+0
+sin2n+1(u)du Puis par le changement de variable v = π−u :
+∫ π
+π/2
+sin2n+1(u)du =
+∫ 0
+π/2
+sin2n+1(π−v)(−1)dv
+∫ π
+π/2
+sin2n+1(u)du =
+∫ π/2
+0
+sin2n+1(v)dv et par la relation de
+<<<PAGE>>>
+Chasles : 2 2n+2K(n,n ) = 2
+∫ π/2
+0
+sin2n+1(u)du donc
+∫ π/2
+0
+sin2n+1(u)du = 22n+1K(n,n )
+∫ π/2
+0
+sin2n+1(u)du = 22n(n!)2
+(2n + 1)!
+Exercice 24
+Si(p,n )∈ N2, calculer
+p∑
+k=0
+( p
+k
+) (−1)k
+n +k + 1.
+Solution
+Si (p,n )∈ N2,I (n,p ) =
+∫ 1
+0
+tn(1−t)p dtI (n,p ) = p!n!
+(n +p + 1)! Par le binˆ ome de Newton :
+tn(1−t)p =tn
+p∑
+k=0
+( p
+k
+)
+(−1)ktk
+tn(1−t)p =
+pk=0
+∑
+k=0
+( p
+k
+)
+(−1)ktk+n
+Par lin´ earit´ e de l’int´ egrale :
+I(n,p ) =
+p∑
+k=0
+( p
+k
+)[ (−1)ktn+k+1
+n +k + 1
+]1
+0
+.
+soit
+p∑
+k=0
+( p
+k
+) (−1)k
+n +k + 1 = p!n!
+(n +p + 1)!

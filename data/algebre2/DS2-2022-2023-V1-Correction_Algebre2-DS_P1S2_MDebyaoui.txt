@@ -1,0 +1,321 @@
+Cycle Pr´e-ingenieur
+Premi`ere Ann´ee
+Ag`ebre I - 2022/2023
+D. Mohamed Ali
+Correction DS2 Alg` ebre
+Exercice 1 ( 5 pts)
+Soit E un R-espace vectoriel ainsi que deux sous-espaces vectoriels F⊆E et G⊆E.
+Soit γ une famille de vecteurs de E.
+1. Rappeler la d´ efinition d’unR-espace vectoriel (1 pt).
+2. Rappeler la d´ efinition du sous-espace vectoriel engendr´ e par une famille de vecteursγ (1 pt).
+3. Rappeler la d´ efinition de la sommeF +G (1 pt).
+4. Montrer que F +G = Vect(F∪G) (2 pts).
+Correction
+Toutes les r´ eponses se trouvent dans votre cours
+Exercice 2 ( 6 pts)
+Consid´ erons la famille de vecteursβ ={v1,v 2,v 3,v 4,v 5} de R5 telle que v1 = (1, 2, 1, 2, 1), v2 =
+(2, 1, 2, 1, 2), v3 = (1, 0, 1, 1, 0), v4 = (0, 1, 0, 0, 1) et v5 = (1, 0, 1, 0, 1).
+1. La famille β est-elle li´ ee ? Dans le cas positif, fournir les relations de d´ ependance lin´ eaire (2
+pts).
+2. D´ eterminer une base Ω pour le sous-espace vectoriel Vect(β). Vous pr´ eciserez la dimension
+de Vect(β) (2 pts).
+3. Consid´ erons la familleγ ={e4,e 5}, avece4 = (0, 0, 1, 0, 0) et e5 = (0, 0, 0, 0, 1). Montrer que
+la famille γ∪ Ω forme une base pour R5 (2 pts).
+Correction
+1. Pour v´ erifier si la familleβ est li´ ee, on cherche ` a savoir s’il existe des scalairesλ1,λ 2,λ 3,λ 4,λ 5,
+pas tous nuls, tels que :
+λ1v1 +λ2v2 +λ3v3 +λ4v4 +λ5v5 = 0
+1
+<<<PAGE>>>
+o` u 0 est le vecteur nul deR5. En d’autres termes, on cherche ` a savoir s’il existe une solution
+non triviale du syst` eme lin´ eaire homog` ene suivant :
+
+
+1 2 1 0 1
+2 1 0 1 0
+1 2 1 0 1
+2 1 1 0 0
+1 2 0 1 1
+
+
+
+
+λ1
+λ2
+λ3
+λ4
+λ5
+
+
+=
+
+
+0
+0
+0
+0
+0
+
+
+Pour r´ esoudre le syst` eme, on peut appliquer la m´ ethode de pivot de Gauss qui permet
+d’obtenir sa forme ´ echelonn´ ee r´ eduite :
+
+
+1 2 1 0 1
+0 −3 −2 1 −2
+0 0 1 −1 0
+0 0 0 0 0
+0 0 0 0 0
+
+
+
+
+λ1
+λ2
+λ3
+λ4
+λ5
+
+
+=
+
+
+0
+0
+0
+0
+0
+
+
+Le rang de la matrice est 3, donc la dimension de l’espace vectoriel engendr´ e par β est
+inf´ erieure ` a 5. Commeβ contient 5 vecteurs, la famille β est li´ ee
+(−λ4 +λ5)v1− (λ4 + 2λ5)v2 + 3λ4v3 + 3λ4v4 + 3λ5v5 = 0
+2. Pour d´ eterminer une base Ω pour le sous-espace vectoriel Vect(β), on peut voir que d’apr` es
+la question pr´ ec´ edente, la matrice des coefficients indique que les trois premiers vecteurs de
+β sont lin´ eairement ind´ ependants. Par cons´ equent, on peut prendre Ω ={v1,v 2,v 3} comme
+base de Vect(β). La dimension de Vect(β) est donc 3.
+3. Pour montrer que γ∪ Ω forme une base pour R5, on doit montrer qu’elle est libre et qu’elle
+engendre tout R5. Comme Ω est une base pour Vect( β), tout vecteur w∈ Vect(β) peut
+s’´ ecrire comme une combinaison lin´ eaire dev1, v2, et v3 :
+w =λ1v1 +λ2v2 +λ3v3
+De mˆ eme, tout vecteur deR5 peut s’´ ecrire comme une combinaison lin´ eaire dee4 et e5 :
+u =b1e4 +b2e5
+Alors, tout vecteur de R5 peut s’´ ecrire comme une combinaison lin´ eaire deγ∪ Ω :
+u +w =λ1v1 +λ2v2 +λ3v3 +b1e4 +b2e5
+Par cons´ equent,γ∪ Ω engendre tout R5.
+Montrons maintenant que γ∪ Ω est libre. Supposons qu’il existe des coefficients λ1, λ2, λ3,
+b1, et b2 tels que
+λ1v1 +λ2v2 +λ3v3 +b1e4 +b2e5 = 0
+En ´ ecrivant les coordonn´ ees de chaque vecteur et en r´ esolvant ce syst` eme, on trouve que
+λ1 =λ2 =λ3 =b1 =b2 = 0. Par cons´ equent,γ∪ Ω est une famille libre de 5 vecteurs dans
+un espace de dimension 5, donc c’est une base pour R5.
+2
+<<<PAGE>>>
+Exercice 3 ( 7 pts)
+Soient E⊆ R3 et F ⊆ R3 deux parties de R3 telles que : E ={(x,y,z )∈ R3/x +y−z = 0 et
+x−y−z = 0} etF ={(x,y,z )∈ R3/x+y−2z = 0} ainsi que les vecteursu = (1, 0, 1),v = (1, 1, 1)
+et w = (0, 2, 1).
+1. Montrer que les parties E et F sont des sous-espaces vectoriels de R3 (2 pts).
+2. D´ eterminer une base du sous-espace vectorielE. Vous pr´ eciserez la dimension deE (1 pt).
+3. Montrer que la famille {v,w} est une base de F . Vous pr´ eciserez la dimension deF (1 pt).
+4. Montrer que la famille β ={u,v,w} est une base de R3 (1 pt).
+5. Montrer que E∩F ={0R3} (1 pt).
+6. Soit σ = (x,y,z )∈ R3, alors exprimer σ dans la base β (1 pt).
+Correction
+1. Pour montrer que E est un sous-espace vectoriel de R3, il faut v´ erifier que :
+— 0R3∈E ;
+— si u, v∈E, alors u + v∈E ;
+— si u∈E et k∈ R, alors ku∈E.
+On v´ erifie facilement que0R3∈E, car 0 + 0− 0 = 0 et 0− 0− 0 = 0.
+Soient u = (x1,y 1,z 1) et v = (x2,y 2,z 2) deux vecteurs de E. Alors on a x1 +y1−z1 = 0,
+x1−y1−z1 = 0 et x2 +y2−z2 = 0, x2−y2−z2 = 0. En additionnant ces ´ equations, on
+obtient (x1 +x2) + (y1 +y2)− (z1 +z2) = 0 et (x1 +x2)− (y1 +y2)− (z1 +z2) = 0, ce qui
+montre que u + v∈E.
+Soit maintenant u = (x,y,z )∈E et k∈ R. Alors on a x +y−z = 0 et x−y−z = 0. En
+multipliant les deux ´ equations park, on obtient kx +ky−kz = 0 et kx−ky−kz = 0, donc
+ku∈E.
+On peut proc´ eder de la mˆ eme fa¸ con pour montrer queF est un sous-espace vectoriel de R3.
+Deuxi` eme m´ ethode :
+On a E ={u∈ R3| u = (x,y,z ) avec x +y−z = 0 et x−y−z = 0}. En r´ esolvant
+ce syst` eme d’´ equations, on trouvex = z et y = 0, donc E ={λ(1, 0, 1)| λ∈ R}. Ainsi,
+E = Vect{(1, 0, 1)} ce qui implique que E est un sous espace vectoriel de R3. De la mˆ eme
+mani` ere, on aF ={u∈ R3| u = (x,y,z ) avec x+y−2z = 0}. On peut r´ e´ ecrire cette ´ equation
+sous la forme z = 1
+2(x +y), ce qui montre que tout vecteur de F peut s’´ ecrire comme une
+combinaison lin´ eaire de (1, 0, 1
+2) et (0, 1, 1
+2). Par cons´ equentF = Vect{(1, 0, 1
+2), (0, 1, 1
+2)} ce
+qui implique que F est un sous espace vectoriel de R3.
+2. On a montr´ e dans la question pr´ ecedente queE = Vect{(1, 0, 1)}, alors {(1, 0, 1)} est une
+base de E, et dimE = 1.
+3. On peut remarquer que w = 2(0, 1, 1
+2), que v = (1, 0, 1
+2) + (0, 1, 1
+2). De plus v et w sont
+lin´ eairement ind´ ependants (ne sont pas colin´ eaires), donc{v,w} est une base de F , et
+dimF = 2.
+4. La famille β =u,v,w est une base de R3 si et seulement siβ est une famille libre et engendre
+R3. On peut v´ erifier facilement queβ est une famille libre de 3 vecteurs dans un espace de
+dimension 3, donc c’est une base pour R3.
+3
+<<<PAGE>>>
+5. Supposons qu’il existe un vecteur non nul u ∈ E∩F . Alors u ∈ E, donc u est de la
+forme u = λ(1, 0, 1) pour un certain λ∈ R. D’autre part, u∈ F , donc u est de la forme
+u = (x,y,z ) avec x +y− 2z = 0. En combinant ces deux expressions pour u, on obtient
+λ(1, 0, 1) = (x,y,z ) avec x +y− 2z = 0, ce qui implique λ + 0− 2λ = 0, donc λ = 0 et
+u = 0R3. Ainsi, E∩F = 0R3, o` u0R3 est le vecteur nul de R3.
+6. Soit u = (x,y,z )∈ R3. On a montr´ e dans la question 4 que β ={u,v,w} est une base
+de R3, donc il existe des scalaires a,b,c ∈ R tels que u = au +bv +cw. En utilisant les
+coordonn´ ees des vecteursu, v et w dans la base canonique de R3, on peut exprimer u sous
+la forme (x,y,z ) =a(1, 0, 1) +b(1, 1, 1) +c(0, 2, 1), avec
+
+
+
+a =−x−y + 2z
+b = 2x +y− 2z
+c =−x−y + 2z
+.
+Exercice 4 ( 5 pts)
+Soit le syst` eme lin´ eaire suivant : (S) :
+
+
+
+x + 2y + 2z + 5t = 0
+−x−y +z + 2t = 0
+2x + 3y +z + 3t = 0
+y + 3z + 7t = 0
+1. R´ esoudre le syst` eme lin´ eaire (S) et d´ eterminer son rang (3 pts).
+2. Soit E l’ensemble des solutions de ce syst` eme. Montrer queE est un sous-espace vectoriel
+de R4 (1 pt).
+3. D´ eterminer une base du sous-espace vectorielE. Pr´ eciser la dimension deE (1 pt).
+Correction
+1. En utilisant la m´ ethode du pivot de Gauss, on peut r´ eduire la matrice augment´ ee du syst` eme
+(S) :
+
+1 2 2 5 0
+−1 −1 1 2 0
+2 3 1 3 0
+0 1 3 7 0
+
+−→
+
+
+1 2 2 5 0
+0 1 3 7 0
+0 −1 −3 −7 0
+0 1 3 7 0
+
+−→
+
+
+1 0 −4 −9 0
+0 1 3 7 0
+0 0 0 0 0
+0 0 0 0 0
+
+
+Le syst` eme lin´ eaire r´ eduit nous donne deux ´ equations ind´ ependantes :(
+x + 2y + 2z + 5t = 0
+y + 3z + 7t = 0
+On peut ´ ecrire la solution g´ en´ erale de (S) sous la forme :
+
+
+x
+y
+z
+t
+
+ =
+
+
+4z + 9t
+−3z− 7t
+z
+t
+
+
+4
+<<<PAGE>>>
+On a donc une infinit´ e de solutions (x,y,z,t ) = (4z + 9t,−3z− 7t,z,t ), ce qui montre que le
+syst` eme (S) admet une solution pour tout choix des scalaires z et t. Le rang de la matrice
+augment´ ee est donc 2 (il y a deux pivots).
+2. Soit E l’ensemble des solutions du syst` eme (S). Tout vecteur u = (x,y,z,t ) de E peut ˆ etre
+exprim´ e sous la forme suivante :
+
+
+x
+y
+z
+t
+
+ =
+
+
+4z + 9t
+−3z− 9t
+z
+t
+
+ =z
+
+
+4
+−3
+1
+0
+
+ +t
+
+
+9
+−7
+0
+1
+
+
+Ainsi E = Vect{(4,−3, 1, 0), (9,−7, 0, 1)}. On en d´ eduit queE est un sous-espace vectoriel
+de R4 de dimension 2.
+Autre m´ ethode :
+Pour montrer que E est un sous-espace vectoriel de R4, il faut montrer que E contient le
+vecteur nul, que E est stable par addition et par multiplication par un scalaire.
+Le vecteur nul est solution du syst` eme (S), donc appartient ` a E. Soient (x1,y 1,z 1,t 1) et
+(x2,y 2,z 2,t 2) deux solutions de (S) et soit λ∈ R. Alors, (x1 +x2,y 1 +y2,z 1 +z2,t 1 +t2) est
+solution de (S), car :
+— (x1+x2)+2(y1+y2)+2(z1+z2)+5(t1+t2) = (x1+2y1+2z1+5t1)+(x2+2y2+2z2+5t2) =
+0 + 0 = 0,
+— (y1 +y2) + 3(z1 +z2) + 7(t1 +t2) = (y1 + 3z1 + 7t1) + (y2 + 3z2 + 7t2) = 0 + 0 = 0.
+Ainsi, E est stable par addition. De plus, pour tout ( x,y,z,t )∈ E et tout λ∈ R, on a
+λ(x,y,z,t ) = (λx,λy,λz,λt ), qui est solution de (S) car :
+— λx + 2λy + 2λz + 5λt =λ(x + 2y + 2z + 5t) =λ× 0 = 0,
+— λy + 3λz + 7λt =λ(y + 3z + 7t) =λ× 0 = 0.
+Ainsi, E est stable par multiplication par un scalaire. Donc, E est un sous-espace vectoriel
+de R4.
+3. On a d´ emontr´ e dans la question 2 que la famille de vecteurs{(4,−3, 1, 0), (9,−7, 0, 1)} en-
+gendreE. De plus, comme ces deux vecteurs sont lin´ eairement ind´ ependants, ils forment une
+base du sous-espace vectoriel E. Ainsi, la base de E est donn´ ee par :
+
+
+
+
+
+4
+−3
+1
+0
+
+,
+
+
+9
+−7
+0
+1
+
+
+
+
+
+La dimension de E est donc 2.
+5

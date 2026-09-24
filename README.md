@@ -1,9 +1,9 @@
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
 
-Cours de **Préing 2 — semestre 1** : **Analyse dans ℝⁿ**, **Séries**,
-**Informatique 3**, **Électromagnétisme** et **SHS** (CM, TD, DS, CC, QCM, corrigés).
-L'interface web permet de choisir où chercher : un cours ou tous, le type de
-document, énoncés et/ou corrigés, les années. À pertinence proche, les
+Cours de **Préing 1 et Préing 2, semestres 1 et 2** (CM, TD, TP, DS, CC, QCM, projets, corrigés).
+L'interface web distingue **l'année de Préing**, **le semestre**, **la matière** et
+**l'année scolaire du document**. Chaque résultat rappelle sa formation et sa matière.
+À pertinence proche, les
 documents les plus récents passent devant.
 
 Contrairement à `ml_project/` (réseau de neurones génératif), celui-ci
@@ -72,6 +72,7 @@ pip install numpy --break-system-packages
 python3 build_index.py          # à refaire seulement si chunks.json change
 python3 search.py "définition d'une norme"
 python3 search.py "règle d'Alembert" --cours series --type td,ds --annees 2024,2023
+python3 search.py "matrice" --preing 1 --semestre 2 --cours algebre2
 python3 ask.py                  # mode interactif (terminal)
 python3 server.py               # interface web sur http://localhost:8000
 ```
@@ -96,14 +97,41 @@ Depuis la racine du projet, importer un fichier ou un dossier complet :
 python3 ingest.py add /chemin/vers/le/dossier
 ```
 
-L'import reconnaît les noms contenant `Series`, `Analyse-dans-RN`,
-`Informatique3`, `Electromagnetisme` ou `SHS`, suivis du repère `_P2S1_`.
-Les suffixes `-DS` et `-CC` sont acceptés. Les cinq matières du corpus actuel
-sont rattachées à Préing 2, semestre 1, dans les métadonnées et l'interface.
+L'import accepte les PDF, Markdown, textes et Word (`.docx`). Les matières sont
+déclarées dans `courses.py`, avec un rattachement à l'un des quatre semestres.
+
+| Année de Préing | Semestre | Matières |
+| --- | --- | --- |
+| Préing 1 | S1 | Algèbre 1, Analyse 1, CEF 1, IC 1, Informatique 1, Physique 1, Projet 1 |
+| Préing 1 | S2 | Algèbre 2, Analyse 2, Informatique 2, Mécanique du point, Projet 1 |
+| Préing 2 | S1 | Analyse dans ℝⁿ, Séries, Informatique 3, Électromagnétisme, SHS |
+| Préing 2 | S2 | Algèbre linéaire, Informatique 4, Intégration et probabilités, Ondes, Physique moderne |
+
+Pour importer des dossiers complets :
+
+```bash
+python3 ingest.py add PREING1-S1 PREING1-S2 PREING2-S2
+```
+
+La structure `PREING1-S2/Analyse2/…` indique explicitement l'année, le semestre
+et la matière, même pour un fichier au nom libre. Elle prime sur les noms de fichiers
+mal étiquetés. Hors de cette structure, utiliser le format
+`TD1_2024-2025_Analyse2_P1S2_DMaths.pdf` : les repères `_P1S1_`, `_P1S2_`,
+`_P2S1_` et `_P2S2_` sont reconnus, ainsi que les suffixes `-DS`, `-CC`, `-PROJET`.
+Les deux « Projet 1 » sont stockés séparément (`projet1-s1`, `projet1-s2`).
+Une matière sans document exploitable n'est pas proposée : les deux sujets
+d'Éthique sont des scans à transcrire et le dossier
+`PREING2-S2/Histoire-du-design-DS` est actuellement vide. Leur rattachement est
+déjà déclaré dans le registre pour les prochains imports ou transcriptions.
+
 L'index est reconstruit automatiquement ; redémarrer ensuite `python3 server.py`.
-Les doublons sont ignorés et les scans sans texte sont signalés pour transcription.
-Les PDF d'informatique et de SHS conservent leur texte et leurs retours à la ligne ;
+Les doublons sont ignorés au sein de la même matière et du même semestre.
+Les scans sans texte et les images sont signalés pour transcription ;
+le bilan détaillé du dernier import se trouve dans `data/import-report.json`.
+Les PDF d'informatique et de sciences humaines conservent leur texte et leurs retours à la ligne ;
 les notes Markdown conservent leurs blocs de code.
+L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
+de matrice dense de plusieurs gigaoctets.
 
 Pour reconstruire après une modification d'un texte ou d'une transcription :
 

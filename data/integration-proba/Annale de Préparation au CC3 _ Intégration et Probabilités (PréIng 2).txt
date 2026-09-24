@@ -1,0 +1,138 @@
+Annale de Préparation au CC3 : Intégration et Probabilités (PréIng 2)
+
+1. Introduction et Stratégie d'Épreuve
+
+Le Contrôle Continu 3 (CC3) représente l'aboutissement de votre semestre en mathématiques. Son enjeu stratégique réside dans la fusion de l'analyse et de l'aléatoire. Cette épreuve évalue votre capacité à mobiliser des outils d'analyse fine (théorèmes de convergence dominée, intégrales multiples) pour résoudre des problèmes de modélisation probabiliste complexes. En CPGE, la réussite ne dépend pas seulement du résultat, mais de la  concision  et de la  rigueur  des justifications.Consignes de l'épreuve :
+
+Durée :  1h30.
+
+Matériel :  Aucun document ni support électronique (calculatrice incluse) n'est autorisé.
+
+Notation :  La qualité de la rédaction, la précision de l'énoncé des théorèmes et la vérification systématique des hypothèses (notamment les conditions de domination et de régularité) constituent 50 % de l'évaluation.
+
+Structure :  Le sujet respecte un équilibre strict entre l'Intégration et les Probabilités.La rigueur analytique est le préalable indispensable à toute modélisation ; abordons ainsi la première partie consacrée à l'intégration.
+
+2. Partie I : Intégration (10 points)
+
+2.1. Exercice 1 : Intégrales Généralisées et Nature (3 pts)
+
+Question de cours :  Énoncer le théorème d'intégration par parties pour un intervalle de type  $]0; +\infty[$ . On précisera les classes de régularité requises pour les fonctions  $u$  et  $v$  ainsi que la condition nécessaire sur le "crochet" pour garantir la validité de la formule.
+
+Calcul de nature :  Étudier la convergence de l'intégrale de Bertrand  $I = \int_2^{+\infty} \frac{dt}{t \ln(t)^2}$  en calculant explicitement une primitive.
+
+Changement de variable :  Montrer que l'intégrale  $J = \int_0^{+\infty} \frac{e^{-\sqrt{t}}}{\sqrt{t}} dt$  converge et calculer sa valeur exacte.Conseil du Correcteur :  L'usage des équivalents ( $f \sim g$ ) est l'outil le plus efficace pour déterminer une nature. Cependant, pour un calcul de valeur, privilégiez toujours une primitive immédiate ou un changement de variable fluide.
+
+2.2. Exercice 2 : Intégrales à Paramètres (3 pts)
+
+Soit la fonction  $F$  définie sur  $\mathbb{R}$  par :  $$F(x) = \int_0^{+\infty} \frac{e^{-t} \sin(xt)}{t} dt$$  On rappelle que la fonction sinus cardinal  $sinc : y \mapsto \frac{\sin(y)}{y}$  est prolongeable par continuité en  $0$  et est bornée sur  $\mathbb{R}$  par une constante  $K > 0$ .
+
+Justifier la continuité de  $F$  sur  $\mathbb{R}$  en proposant une fonction de domination  $g \in L^1([0, +\infty[)$ .
+
+Montrer que  $F$  est de classe  $C^1$  sur  $\mathbb{R}$  en énonçant précisément le théorème de dérivation sous le signe intégral.
+
+Calculer  $F'(x)$  et en déduire une expression simplifiée de  $F'(x)$  (on pourra utiliser la partie réelle d'une exponentielle complexe ou une double IPP).
+
+2.3. Exercice 3 : Intégrales Multiples et Green-Riemann (4 pts)
+
+On s'intéresse au domaine  $D$  correspondant au quart d'ellipse défini par :  $$D = \left\{ (x, y) \in \mathbb{R}^2 \mid x \ge 0, y \ge 0, \frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1 \right\} \text{ avec } a, b > 0$$
+
+Méthode 1 :  Calculer l'aire de  $D$  par une intégration en "piles" ou "tranches".
+
+Méthode 2 :  En utilisant la formule de Green-Riemann sous sa forme symétrique :  $$\text{Aire}(D) = \frac{1}{2} \oint_{\partial D} (x dy - y dx)$$  Retrouver le résultat précédent. On détaillera le paramétrage de la frontière  $\partial D = \Gamma_1 \cup \Gamma_2 \cup \Gamma_3$ .
+
+3. Partie II : Probabilités (10 points)
+
+3.1. Exercice 4 : Probabilités Conditionnelles et Bayes (3 pts)
+
+Un lot de 100 dés contient 25 dés pipés pour lesquels la probabilité d'obtenir un "6" est  $p_1 = 0,5$ . Les 75 autres dés sont équilibrés ( $p_2 = \frac{1}{6}$ ).
+
+On tire un dé au hasard et on le lance. Quelle est la probabilité d'obtenir un "6" ?
+
+Le résultat du lancer est un "6". Quelle est la probabilité que le dé utilisé soit pipé ?
+
+Dénombrement :  On tire simultanément 5 dés du lot. Déterminer le nombre de tirages contenant exactement 2 dés pipés.
+
+3.2. Exercice 5 : Variables Aléatoires Discrètes Usuelles (3,5 pts)
+
+Soit  $X \sim \mathcal{P}(\lambda)$  une variable de Poisson. Redémontrer que  $E(X) = \lambda$ .
+
+Démonstration de cours :  Soit  $Y \sim \mathcal{G}(p)$  une variable suivant une loi géométrique sur  $\mathbb{N}^*$ . En utilisant la dérivée seconde de la série géométrique  $\sum_{k=0}^{+\infty} q^k$ , démontrer que  $V(Y) = \frac{1-p}{p^2}$ .
+
+Pourquoi la loi de Poisson est-elle qualifiée de "loi des événements rares" par rapport à la loi Binomiale ?
+
+3.3. Exercice 6 : Variables Continues et Loi Exponentielle (3,5 pts)
+
+La durée de vie  $X$  d'un composant électronique suit une loi exponentielle  $\mathcal{E}(\lambda)$  avec  $\lambda = \frac{1}{1500}$ .
+
+Donner l'expression de la fonction de répartition  $F_X(x)$ .
+
+Propriété fondamentale :  Démontrer la propriété de "perte de mémoire" :  $$P(X > s+t \mid X > s) = P(X > t), \quad \forall s, t \ge 0$$
+
+Si  $Z \sim \mathcal{N}(0, 1)$ , quelle transformation permet d'obtenir  $Y \sim \mathcal{N}(m, \sigma^2)$  ?
+
+4. Corrigé Détaillé et Barème Indicatif
+
+Solution 1 (3 pts)
+
+Q1 (1 pt) :  Soient  $u, v \in C^1(]0, +\infty[)$ . Si  $\lim_{t \to 0} u(t)v(t)$  et  $\lim_{t \to +\infty} u(t)v(t)$  existent et sont finies, alors  $\int_0^{+\infty} u'v$  et  $\int_0^{+\infty} uv'$  sont de même nature et  $\int_0^{+\infty} u'v = uv_0^{+\infty} - \int_0^{+\infty} uv'$ .
+
+Q2 (1 pt) :   $\int \frac{dt}{t \ln(t)^2} = \int \frac{u'}{u^2} dt$  avec  $u = \ln(t)$ . Primitive :  $-\frac{1}{\ln(t)}$ . Sur  $[2, +\infty[$ , la limite en  $+\infty$  est  $0$ .  $I = \frac{1}{\ln(2)}$ . Converge.
+
+Q3 (1 pt) :  Posons  $u = \sqrt{t} \implies du = \frac{1}{2\sqrt{t}} dt$ .  $J = \int_0^{+\infty} 2 e^{-u} du = 2 -e^{-u}_0^{+\infty} = 2$ .
+
+Solution 2 (3 pts)
+
+Q1 (1 pt) :   $| \frac{e^{-t} \sin(xt)}{t} | = e^{-t} |sinc(xt)| \le K e^{-t}$ . La fonction  $g(t) = K e^{-t}$  est intégrable sur  $[0, +\infty[$ . Par le théorème de continuité sous le signe intégral,  $F$  est continue sur  $\mathbb{R}$ .
+
+Q2 (1 pt) :  La dérivée partielle  $\frac{\partial f}{\partial x} = e^{-t} \cos(xt)$  est continue. Domination :  $|\frac{\partial f}{\partial x}| \le e^{-t}$ .  $g(t) = e^{-t}$  est intégrable. Donc  $F$  est  $C^1$ .
+
+Q3 (1 pt) :   $F'(x) = \int_0^{+\infty} e^{-t} \cos(xt) dt$ . Par intégration complexe ou double IPP :  $F'(x) = \frac{1}{1+x^2}$ .
+
+Solution 3 (4 pts)
+
+Q1 (1 pt) :  En piles :  $\text{Aire} = \int_0^a (\int_0^{b\sqrt{1-x^2/a^2}} dy) dx = \int_0^a b\sqrt{1-\frac{x^2}{a^2}} dx$ . Pose  $x = a \sin \theta \implies \text{Aire} = \frac{\pi ab}{4}$ .
+
+Q2 (3 pts) :  Frontière  $\partial D$ . Sur  $\Gamma_2$  ( $x=0$ ) et  $\Gamma_3$  ( $y=0$ ), l'intégrale est nulle. Sur  $\Gamma_1$  :  $x = a \cos t, y = b \sin t$  pour  $t \in 0, \pi/2$ .  $dx = -a \sin t dt$ ,  $dy = b \cos t dt$ .  $\frac{1}{2} \int_0^{\pi/2} (a \cos t (b \cos t) - b \sin t (-a \sin t)) dt = \frac{1}{2} \int_0^{\pi/2} ab (\cos^2 t + \sin^2 t) dt = \frac{ab}{2} t_0^{\pi/2} = \frac{\pi ab}{4}$ .
+
+Solution 4 (3 pts)
+
+Q1 (1 pt) :  Probabilités totales :  $P(6) = P(6|P)P(P) + P(6|E)P(E) = (0,5 \times 0,25) + (\frac{1}{6} \times 0,75) = \frac{1}{8} + \frac{1}{8} = \frac{1}{4}$ .
+
+Q2 (1 pt) :  Bayes :  $P(P|6) = \frac{P(6|P)P(P)}{P(6)} = \frac{1/8}{1/4} = 0,5$ .
+
+Q3 (1 pt) :  Dénombrement :  $\binom{25}{2} \binom{75}{3}$  combinaisons.
+
+Solution 5 (3,5 pts)
+
+Q2 (2 pts) :   $E(Y(Y-1)) = \sum_{k=2}^{+\infty} k(k-1) p q^{k-1} = pq \sum_{k=2}^{+\infty} k(k-1) q^{k-2} = pq \frac{2}{(1-q)^3} = \frac{2q}{p^2}$ .  $V(Y) = E(Y(Y-1)) + E(Y) - E(Y)^2 = \frac{2(1-p)}{p^2} + \frac{1}{p} - \frac{1}{p^2} = \frac{2-2p+p-1}{p^2} = \frac{1-p}{p^2}$ .
+
+5. Synthèse de Révision
+
+Les 5 Compétences Clés
+
+Domination Locale :  Savoir borner la dérivée sous l'intégrale sur tout segment  $-A, A$  pour prouver le caractère  $C^1$  sur  $\mathbb{R}$ .
+
+Réflexe Green-Riemann :  Utiliser la formule symétrique pour les domaines elliptiques ou circulaires.
+
+Choix du Modèle :  Poisson pour les flux (n grand, p petit), Géométrique pour le premier succès (temps d'attente).
+
+Inversion Bayes :  Toujours remonter à la cause (pipé/sain) sachant l'effet (résultat du dé).
+
+Rigueur des Bornes :  Vérifier la convergence aux bornes ouvertes ( $0$  ou  $+\infty$ ) avant tout calcul de valeur.
+
+Tableau Récapitulatif des Lois
+
+Loi,Paramètres,Espérance  $E(X)$,Variance  $V(X)$
+
+Binomiale,"$(n, p)$",$np$,$np(1-p)$
+
+Poisson,$\lambda$,$\lambda$,$\lambda$
+
+Géométrique,$p$,$\frac{1}{p}$,$\frac{1-p}{p^2}$
+
+Exponentielle,$\lambda$,$\frac{1}{\lambda}$,$\frac{1}{\lambda^2}$
+
+Normale,"$(m, \sigma^2)$",$m$,$\sigma^2$
+
+Conseil Stratégique :  Commencez par les questions de probabilités (Exercices 4 et 5) pour sécuriser des points rapides. En intégration, une domination oubliée ou mal rédigée (absence de mention de  $L^1$ ) invalide l'application du théorème. Soyez précis.
+

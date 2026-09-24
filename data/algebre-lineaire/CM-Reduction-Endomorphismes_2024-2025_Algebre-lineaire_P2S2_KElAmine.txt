@@ -1,0 +1,946 @@
+Réduction des endomorphismes
+Khalid El Amine I.
+Department of Mathematics and Finance
+⋆⋆⋆
+K désigne le corps R ou le corps C
+1 Eléments propres d'un endomorphisme
+1.1 Valeur propre et vecteur propre
+Dans cette section, E désigne un espace vectoriel sur K, de dimension quelconque.
+Dénition 1.1 (Valeur propre)
+Soit f∈L (E) et λ∈ K. On dit que λ est une valeur propre de f , s'il existe v∈E\{ 0E} tel que :
+f (v) = λv
+▶ Le vecteur v est alors appelé vecteur propre de f associé à la valeur propre λ.
+Dénition 1.2 (Spectre)
+Soit f∈L (E). L'ensemble des valeurs propres de f s'appelle le spectre de f , on le note SpK(f ) ou
+Sp(f ).
+Dénition 1.3 (Vecteur propre)
+Soit f∈L (E) et v∈E\{ 0E}. On dit que v est un vecteur propre de f , s'il existe λ∈ K tel que :
+f (v) = λv
+▶ Le scalaire λ est alors appelé valeur propre de f associé au vecteur propre v.
+Remarque : un vecteur propre est non nul, par dénition.
+Dénition 1.4 (Eléments propres)
+Soit f∈L (E)
+ Les valeurs propres et vecteurs propres de f sont appelés éléments propres de f .
+ Soit λ∈ K et v∈E. On dit que λ et v sont des éléments propres associés si :
+v⁄= 0E et f (v) = λv
+Exemple 1 : Considérons l'endomorphisme f : R2−→ R2 dénie par
+f (x,y ) = (x−y/2,−x/2 +y)
+a) Vérier que v1 = (1, 1) est un vecteur propre de f associé à la valeur propre λ1 = 1/2.
+b) Vérier que v2 = (1,−1) est un vecteur propre de f associé à la valeur propre λ2 = 3/2.
+Solution :
+1
+<<<PAGE>>>
+2 Réduction des endomorphismes
+1.2 Sous-espace propre
+Proposition 1.5 Soit f∈L (E) et λ∈ K. L'ensemble Eλ déni par :
+Eλ ={x∈E :f (x) = λx}
+est un sous-espace vectoriel de E, et
+Eλ =Ker (f−λ idE)
+Preuve :
+Dénition 1.6 (Sous-espace propre)
+Soit f∈L (E) et λ∈ K une valeur propre de f . Le sous-espace vectoriel de E
+Eλ =Ker (f−λ idE)
+est appelé le sous-espace propre de f associé à la valeur propre λ.
+Proposition 1.7 Soit f∈L (E) et λ∈ K.
+λ∈Sp(f ) ⇔ Eλ⁄={0E} ⇔ (f−λ idE) non injectif
+Preuve :
+Proposition 1.8 Soit f∈L (E). Soit v1,v 2 deux vecteurs propres de f associés respectivement aux
+valeurs propres λ1,λ 2.
+Si λ1⁄=λ2 alors la famille {v1,v 2} est libre dans E
+Preuve :
+Théorème 1.9 Soit f ∈ L(E). Soit {v1,...,v p} une famille de vecteurs propres de A associés
+respectivement aux valeurs propres λ1,...,λ p.
+Si les λi sont distinctes deux à deux, alors la famille {v1,...,v p} est libre dans E
+Preuve :
+Sommes directes (rappel)
+Dénition 1.10 Soit E un espace vectoriel sur K. Soit E1 et E2 deux sous-espaces vectoriels de E.
+On dit que E1 et E2 sont supplémentaires dans E si les deux conditions suivantes sont vériées
+(1) E =E1 +E2
+(2) E1∩E2 ={0E}
+Remarque : Si E et F sont deux espaces vectoriels sur K de dimension nie, alors
+dim(E +F ) = dim(E) +dim(F )−dim(F∩F )
+Théorème 1.11 Soit E un K-ev de dimension nie . Soit E1 et E2 deux sous-espaces vectoriels de
+E.
+<<<PAGE>>>
+K. El Amine 3
+E1 et E2 sont supplémentaires dans E si l'une des propositions suivantes est vériée :
+ ∀x∈E, ∃! (x1,x 2)∈E1×E2 :x =x1 +x2
+ dim(E1) +dim(E2) = dim(E) et E1∩E2 ={0E}
+ dim(E1) +dim(E2) = dim(E) et E =E1 +E2
+Dénition 1.12 Soit E un espace vectoriel sur K ; {F1,...,F p} une famille de sous-espaces vectoriels
+de E. On dit que la famille {F1,...,F p} est en somme directe si :
+∀(x1,...,x p)∈F1×... ×Fp, x 1 +... +xp = 0 ⇒ x1 =... =xp = 0
+Dans ce cas, le sous espace vectoriel (de E), F = F1 +... +Fp est appelé la somme directe des
+F1,...,F p. On écrit :
+F =F1⊕... ⊕Fp
+Proposition 1.13 Soit E un espace vectoriel sur K ; {F1,...,F p} une famille de sous-espaces vec-
+toriels de E. La somme
+n∑
+i=1
+Fi est directe si et seulement si
+∀i∈ J2,n K, Fi∩
+
+
+i−1∑
+j=1
+Fj
+
+ ={0}
+Théorème 1.14 Soit f∈L (E). Soit λ1,...,λ p∈ K des valeurs propres de f .
+Si les λi sont distinctes deux à deux, alors les sous-espace propres Eλ1,...,E λp sont en somme directe.
+Preuve :
+2 Eléments propres d'une matrice carrée
+2.1 Valeur propre et vecteur propre
+Dans cette section :
+• n∈ N∗.
+• 0Mn,1(K) sera noté 0n,1, pour simplier.
+Remarque : Une matrice carrée A∈M n(K) peut être considérée comme un endomorphisme de
+Mn,1(K).
+Dénition 2.1 (Valeur propre)
+Soit A∈M n(K) et λ∈ K. On dit que λ est une valeur propre de A, s'il existe V ∈M n,1(K)\{ 0n,1}
+tel que :
+AV =λV
+▶ Le vecteur V est alors appelé vecteur propre de A associé à la valeur propre λ.
+Dénition 2.2 (Spectre)
+L'ensemble des valeurs propres de A∈M n(K) s'appelle le spectre de A, on le note Sp(A) ou SpK(A).
+<<<PAGE>>>
+4 Réduction des endomorphismes
+Dénition 2.3 (Vecteur propre)
+Soit A∈M n(K) et V ∈M n,1(K)\{ 0n,1}. On dit que V est un vecteur propre de A, s'il existe λ∈ K
+tel que :
+AV =λV
+▶ Le scalaire λ est alors appelé valeur propre de A associé au vecteur propre V .
+Dénition 2.4 (Eléments propres)
+• Les valeurs propres et vecteurs propres d'une matrice A∈M n(K) sont appelés éléments propres de
+A.
+• Soit λ∈ K et V ∈M n,1(K). On dit que λ et V sont des éléments propres associés si :
+V ⁄= 0n,1 et AV =λV
+Exemple : Considérons la matrice A∈M 3(R) suivante :
+A =
+
+
+1 −1 −1
+−1 1 −1
+−1 −1 1
+
+
+et les trois vecteurs de M3,1(R) suivants :
+V1 =
+
+
+1
+1
+1
+
+, V 2 =
+
+
+1
+0
+−1
+
+, V 3 =
+
+
+0
+1
+−1
+
+
+Vérier que V1, V2 et V3 sont des vecteurs propres de A et trouver les valeurs propres associées.
+Solution :
+2.2 Sous-espace propre
+Proposition 2.5 Soit A∈M n(K) et λ∈ K. L'ensemble Eλ déni par :
+Eλ ={X∈M n,1(K) : AX =λX}
+est un sous-espace vectoriel de Mn,1(K), et alors
+Eλ =Ker (A−λ In)
+Preuve :
+Dénition 2.6 (Sous-espace propre)
+Soit A∈M n(K) et λ∈ K une valeur propre de A. Le sous-espace vectoriel de Mn,1(K)
+Eλ =Ker (A−λ In)
+est appelé le sous-espace propre de A associé à la valeur propre λ.
+Proposition 2.7 Soit A∈M n(K) et λ∈ K. Alors :
+λ∈Sp(A) ⇔ Eλ⁄={0n,1} ⇔ (A−λ In) non inversible
+Preuve :
+Théorème 2.8 Soit A∈M n(K). Soit {V1,...,V p} une famille de vecteurs propres de A associés
+respectivement aux valeurs propres λ1,...,λ p.
+Si les λi sont distinctes deux à deux, alors la famille {V1,...,V p} est libre dans Mn,1(K).
+Preuve : La démonstration est la même que pour les endomorphismes (à faire en exercice).
+Théorème 2.9 Soit A∈M n(K). Soit λ1,...,λ p des valeurs propres de A.
+Si les λi sont distinctes deux à deux, alors les sous-espace propres Eλ1,...,E λp sont en somme directe.
+Preuve : La démonstration est la même que pour les endomorphismes (à faire en exercice).
+<<<PAGE>>>
+K. El Amine 5
+3 Polynôme caractéristique
+Dans cette section, n∈ N∗ et les K-espaces vectoriels sont de dimension nie.
+3.1 Préliminaire
+⋄ Si E est un K-ev de dimension nie n et B = (e1,...,e n) une base de E, tout vecteur x∈E admet
+alors une décomposition unique :
+x =
+n∑
+i=1
+xiei
+Les scalaires xi∈ K sont les composantes du vecteur x dans la base B.
+Lorsqu'une base est xée, on peut identier E à Mn,1(K) (ou bien identier E à Kn). Dans ce cas,
+on identie aussi tout vecteur x∈ E au vecteur X = [x1...x n]T ∈M n,1(K), matrice unicolonne
+constituée des composantes de x dans la base B.
+⋄ Pour f∈L (E), on notera A = MB(f ) = [ aij]1≤i,j≤n, la matrice de f relativement à une base B
+quelconque de E.
+Dans ce cadre, nous avons :
+▶ λ est valeur propre de f si et seulement si λ est valeur propre de A. Autrement dit :
+Sp(f ) = Sp(A)
+▶ x est vecteur propre de f si et seulement si X est vecteur propre de A.
+Nous pouvons donc, dans le cadre de la dimension nie, choisir la formulation vectorielle
+f (x) = λx
+ou la formulation matricielle
+AX =λX
+pour le calcul des éléments propres.
+Nous choisirons cette dernière, le plus souvent, pour toute la suite du chapitre.
+Remarque : La formulation vectorielle est indispensable pour la recherche des éléments propres
+lorsque l'on travaille en dimension innie.
+Note : On confondra souvent un polynôme P (X)∈ Kn[X] avec la fonction polynômiale associée
+P (x)∈ Kn[x] avec x∈ K.
+3.2 Polynôme caractéristique
+Dénition 3.1 Soit A∈M n(K).
+• On appelle polynôme caractéristique de A et on note PA(λ), le determinant de la matrice (A−λIn).
+PA(λ) = det(A−λIn)
+• L'équation algébrique PA(λ) = 0 s'appelle équation caractéristique de A.
+Proposition 3.2 Deux matrices (de Mn(K)) semblables ont le même polynôme caractéristique.
+Preuve :
+<<<PAGE>>>
+6 Réduction des endomorphismes
+▶ Comme deux matrices semblables diérentes représentent le même endomorphisme dans deux bases
+diérentes, cette proposition nous permet donc de donner la dénition :
+Dénition 3.3 Soit f∈L (E). On appelle polynôme caractéristique de f et on note Pf (λ), le deter-
+minant de la matrice MB(f−λidE).
+Pf (λ) = det(MB(f−λidE))
+Où B est une base quelconque de E.
+Proposition 3.4 Soit A∈M n(K) et λ∈ K. Alors :
+λ est valeur propre de A si et seulement si PA(λ) = 0
+Preuve : λ est une valeur propre de A⇔ (A−λIn) non inversible ⇔det(A−λIn) = 0⇔PA(λ) = 0 .
+Remarque : Nous avons PA(0) = det(A). D'où :
+0 est une valeur propre de A si et seulement si A est non inversible.
+Note : En pratique, pour calculer les valeurs propres d'un endomorphisme f∈L (E), on détermine
+sa matrice A dans une base quelconque B de E ( A =MB(f )) et on cherche les valeurs propre de A.
+Exemple : Soit f∈L (R3) ayant pour matrice dans la base canonique de R3 :
+A =
+
+
+0 0 4
+1 2 1
+2 4 −2
+
+
+1) Déterminer le spectre de f .
+2) En déduire que f n'est pas bijectif.
+Solution :
+Théorème 3.5 Soit A∈M n(K) avec n≥ 2. Alors :
+PA(λ) = (−1)nλn + (−1)n−1Tr (A)(λ)n−1 +··· + det(A)
+• Le polynôme PA(λ) a ses coecients dans K et deg(PA) = n.
+Preuve : Cela résulte de la formule du determinant :
+PA(λ) = det(A−λIn) =
+⏐⏐⏐⏐⏐⏐⏐⏐⏐
+a11−λ a 12 ··· a1n
+a21 a22−λ ··· a2n
+... ... . . . ...
+an1 an2 ··· ann−λ
+⏐⏐⏐⏐⏐⏐⏐⏐⏐
+Cependant, la preuve est loin d'être facile.
+Remarque : Le terme de degré 0 dans PA est PA(0) = det(A), par dénition de PA.
+Exemple : Si A =
+[
+a b
+c d
+]
+∈M 2(K) alors :
+PA(λ) = λ2−Tr (A)λ + det(A) = λ2− (a +d)λ + (ad−bc)
+Corollaire 3.6 Une matrice A∈M n(K) admet au plus n valeurs propres.
+Preuve : Les valeurs propres de A sont les racines du polynôme PA. Comme PA est de degré n, il a
+au plus n racines. A admet donc au plus n valeurs propres.
+<<<PAGE>>>
+K. El Amine 7
+Si a est une racine d'un polynôme P , alors P peut être divisible par (X−a)2 ou (X−a)3...
+Dénition 3.7 Soit P∈ K[X].
+• On appelle ordre de multiplicité d'une racine a de P , le plus grand entier m tel que P soit divisible
+par (X−a)m.
+• On appelle racine double une racine d'ordre 2, racine triple une racine d'ordre 3, etc.
+Dénition 3.8 Soit A∈M n(K) et λ une valeur propre de A.
+• On appelle ordre de multiplicité de λ, et on note mλ ou mult(λ), l'ordre de multiplicité de λ en tant
+que zéro du polynôme caractéristique PA.
+Dénition 3.9 (Polynôme scindé)
+Un polynôme P∈ K[X] est dit scindé dans K, si c'est un produit de polynômes de degré 1. Autrement
+dit, P est scindé dans K s'il s'écrit sous la forme
+P (X) = c
+p∏
+i=1
+(X−ai)mi
+avec :
+a1,...,a p des éléments de K deux à deux distincts, appelés racines de P .
+m1,...,m p des éléments de N∗ ; mi est appelé ordre de multiplicité de la racine ai.
+c∈ K une constante.
+Remarque :
+1) Le degré de P est donc deg(P ) =
+p∑
+i=1
+mi.
+2) Un polynôme P∈ K[X] de degré n (n≥ 1) est scindé si et seulement si il possède exactement n
+racines dans K comptées chacune avec son ordre de multiplicité (c'est-a-dire plus précisément, si la
+somme des ordres de multiplicité de ses racines est n).
+Exemples :
+1) P =X 2− 5X + 6 = (X− 2)(X− 3).
+P est scindé dans R, car deg(P ) = 2 et a 2 racines dans R.
+2) P =X 3− 4X 2 + 5X− 2 = (X− 1)2(X− 2) = (X− 1)(X− 1)(X− 2).
+P est scindé dans R car deg(P ) = 3 et a trois racines dans R, comptées chacune avec son ordre de
+multiplicité {1, 1, 2}. 1 est une racine double et 2 est une racine simple.
+3) P =X 2 + 1 n'est pas scindé dans R. Cependant il est scindé dans C puisque P = (X−i)(X +i).
+Théorème 3.10 (de d'Alembert-Gauss)
+Tout polynôme de C[X] est scindé dans C.
+Preuve : (Admis)
+Remarque : Un polynôme de R[X] est donc toujours scindé dans C ; il est scindé dans R si toutes
+ses racines complexes sont réelles (la partie imaginaire est nulle).
+Corollaire 3.11 .
+• Si E est un C-e.v. de dimension n alors f admet exactement n valeurs propres, comptées avec leur
+ordre de multiplicité.
+• Si E est un R-e.v. de dimension n alors f admet au plus n valeurs propres, comptées avec leur
+ordre de multiplicité.
+Preuve : (Admis)
+Exemple : Soit A =
+[ 0 1
+−1 0
+]
+.
+On a PA(λ) = λ2 + 1. Le polynôme P = X 2 + 1 n'est pas scindé dans R. Cependant, il est scindé
+dans C. On a donc SpR(A) =∅ et SpC(A) ={−i,i}.
+<<<PAGE>>>
+8 Réduction des endomorphismes
+Rappel : La trace de A = [aij]∈M n(K) est dénie par : tr(A) =
+n∑
+i=1
+aii.
+Proposition 3.12 Soit A∈M n(K) dont le polynôme caractéristique est scindé dans K et λ1,...,λ n
+ses valeurs propres (non nécessairement distinctes ). Alors
+n∑
+i=1
+λi =tr(A),
+n∏
+i=1
+λi =det(A)
+Preuve : Nous avons :
+PA(λ) = (−1)nλn + (−1)n−1Tr (A)(λ)n−1 +··· + det(A)
+Comme PA est scindé, on peut aussi écrire :
+PA(λ) = (−1)n
+n∏
+i=1
+(λ−λi)
+En identiant les termes de degré n− 1 et 0 dans les deux expressions de PA(λ), on obtient le résultat.
+Remarque : A∈M n(R) ou A∈M n(C), on a toujours :
+tr(A) =
+∑
+λ∈SpC(A)
+λ et det(A) =
+∏
+λ∈SpC(A)
+λ
+Autrement dit :
+▶ La trace d'un endomorphisme (ou d'une matrice carrée) est la somme de ses valeurs propres com-
+plexes.
+▶ Le déterminant d'un endomorphisme (ou d'une matrice carrée) est le produit de ses valeurs propres
+complexes.
+Théorème 3.13 Soit A∈M n(K) et λ∈Sp(A) de multiplicité mλ. Alors
+1≤dim(Eλ)≤mλ
+Preuve :
+Remarque : En pratique,
+▶ pour calculer la dimension de Eλ, on applique le théorème du rang à A−λIn.
+dim(Eλ) = n−rg(A−λIn)
+▶ pour déterminer une base de Eλ, on résout le système linéaire
+AX =λX
+Corollaire 3.14 Si λ est une valeur propre simple de A∈M n(K) alors dimEλ = 1.
+Preuve : λ est valeur propre simple de A⇔mλ = 1⇒ 1≤dim(Eλ)≤ 1⇔dim(Eλ) = 1 .
+<<<PAGE>>>
+K. El Amine 9
+4 Diagonalisation
+4.1 Diagonalisation d'un endomorphisme
+Dénition 4.1 Soit f∈L (E) ( ici E est un K-ev de dimension quelconque ).
+• On dit que f est diagonalisable s'il existe une base de E formée de vecteurs propres de f .
+• Diagonaliser f , c'est trouver une telle base.
+Exemple : Reconsidérons l'endomorphisme f : R2−→ R2 dénie par
+f (x,y ) = (x−y/2,−x/2 +y)
+Montrer que f est diagonalisable.
+Solution :
+Proposition 4.2 Soit E un K-ev de dimension nie et f∈L (E). Alors
+f est diagonalisable si et seulement si, il existe une base B de E telle que MB(f ) soit diagonale
+Preuve :
+4.2 Diagonalisation d'une matrice carrée
+Dénition 4.3 Soit A∈M n(K).
+• On dit que A est diagonalisable s'il existe une base de Mn,1(K) formée de vecteurs propres de A.
+• Diagonaliser A, c'est trouver une telle base.
+Dénition 4.4 (bis) Soit A∈M n(K).
+• On dit que A est diagonalisable si elle est semblable à une matrice diagonale. Autrement dit,
+A est diagonalisable ⇔∃ D∈M n(K) diagonale et ∃ P∈M n(K) inversible telles que :
+A =PDP−1
+• Diagonaliser A, c'est trouver D et P .
+Théorème 4.5 (condition susante)
+Si A∈M n(K) admet n valeurs propres distinctes deux à deux alors A est diagonalisable.
+Preuve :
+Exemple 1 : Une matrice triangulaire (supérieure ou inférieure) à coecients diagonaux distincts
+deux à deux est diagonalisable. En eet, si
+A =
+
+
+a11 a12 ··· a1n
+0 a22
+. . . ...
+... . . . . . . an−1 n
+0 ··· 0 ann
+
+
+alors
+PA(λ) =
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+a11−λ a 12 ··· a1n
+0 a22−λ . . . ...
+... . . . . . . an−1 n
+0 ··· 0 ann−λ
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+=
+n∏
+i=1
+(aii−λ)
+PA admet n racines distinctes deux à deux ⇔A admet n valeurs propres distinctes deux à deux ⇒A
+est diagonalisable dont le spectre est Sp(A) ={aii}n
+i=1.
+<<<PAGE>>>
+10 Réduction des endomorphismes
+Exemple 2 : Soit A∈M 2(R) la matrice carrée suivante :
+A =
+[ 3 1
+−2 0
+]
+Montrer que la matrice A est diagonalisable et la diagonaliser.
+Solution :
+Remarque : Attention, l'ordre de placement des vecteurs propres dans la matrice P doit respective-
+ment suivre l'ordre de placement des valeurs propres dans la matrice D.
+Théorème 4.6 Une matrice A∈M n(K) est diagonalisable si et seulement si la somme des dimen-
+sions de ses sous-espaces propres est égale à n.
+Preuve :
+Théorème 4.7 Une matrice A∈M n(K) est diagonalisable si et seulement si Mn,1(K) est somme
+directe des sous-espaces propres de A.
+Preuve :
+Remarque Importante : En pratique, on utilise souvent le polynôme caractéristique.
+Le théorème suivant est une caractérisation fondamentale de la diagonalisabilité d'une matrice carrée.
+Théorème 4.8 (condition nécessaire et susante)
+Une matrice A∈M n(K) est diagonalisable si et seulement si
+1. PA est scindé dans K,
+2. ∀λ∈Sp(A), dim (Eλ) = mλ.
+Preuve :
+Exemple : La matrice A∈M 3(R) est-elle diagonalisable ?
+A = 1
+2
+
+
+0 1 1
+1 0 1
+1 1 0
+
+
+Solution :
+Diagonalisation - Synthèse
+Soit A∈M n(K).
+▶ A admet n valeurs propres distinctes deux à deux ⇒A diagonalisable.
+▶ PA scindé dans K et ∀ λ∈Sp(A), dim(Eλ) = mλ⇔ A diagonalisable.
+▶
+∑
+λ∈Sp(A)
+dim(Eλ) = n⇔ A diagonalisable.
+▶
+⨁
+λ∈Sp(A)
+Eλ =Mn,1(K)⇔ A diagonalisable.
+▶ PA non scindé dans K⇒ A non diagonalisable.
+▶∃ λ∈Sp(A), dim(Eλ)<m λ⇒ A non diagonalisable.
+<<<PAGE>>>
+K. El Amine 11
+5 Trigonalisation
+5.1 Matrice triangulaire
+• Une matrice A∈M n(K) est dite triangulaire supérieure si elle est de la forme :
+A =
+
+
+a11 a12 ··· a1n
+0 a22
+. . . ...
+... . . . . . . an−1 n
+0 ··· 0 ann
+
+
+L'ensemble des matrices triangulaires supérieures se note Un(K) (U pour upper triangular matrix).
+On note aussi Tn,s(K).
+▶ Soit A∈U n(K). Si les coecients diagonaux de A sont nuls ( aii = 0 ), alors on dit que A est
+triangulaire supérieure stricte.
+• Une matrice A∈M n(K) est dite triangulaire inférieure si elle est de la forme :
+A =
+
+
+a11 0 ··· 0
+a21 a22
+. . . ...
+... . . . . . . 0
+an1 ··· ann−1 ann
+
+
+L'ensemble des matrices triangulaires inférieures se note Ln(K) (L pour lower triangular matrix). On
+note aussi Tn,i(K).
+▶ Soit A∈L n(K). Si les coecients diagonaux de A sont nuls ( aii = 0 ), alors on dit que A est
+triangulaire inférieure stricte.
+• On dit qu'une matrice est triangulaire, si elle est triangulaire supérieure ou triangulaire inférieure.
+Proposition 5.1 Toute matrice triangulaire inférieure est semblable à une matrice triangulaire supérieure.
+Preuve : Notons
+P =
+
+
+0 0 ··· 0 1
+0 0 ··· 1 0
+...
+... . . . ...
+...
+0 1 ··· 0 0
+1 0 ··· 0 0
+
+
+une matrice carrée d'ordre n. On peut vérier que PP =In et donc P−1 =P .
+Soit L∈L n(K), une matrice triangulaire inférieure, avec
+L =
+
+
+a11 0 ··· 0
+a21 a22
+. . . ...
+... . . . . . . 0
+an1 ··· ann−1 ann
+
+
+On a PLP−1 =PLP =U , avec
+U =
+
+
+ann an n−1 ··· an1
+0 an−1 n−1
+. . . ...
+... . . . . . . a21
+0 ··· 0 a11
+
+
+qui est une matrice triangulaire supérieure, U ∈U n(K). La matrice L et la matrice U sont donc
+semblables.
+<<<PAGE>>>
+12 Réduction des endomorphismes
+Remarque Le lien entre la matrice L et la matrice U est le suivant :
+si f est un endomorphisme ayant pour matrice L dans une base B = (e1,...,e n), en renvesrant cette
+base on obtient une nouvelle base B′ = (en,...,e 1). U n'est rien d'autre que la matrice de f dans
+cette nouvelle base. C'est-à-dire, si L = [f (e1) ... f (en)] alors U = [f (en) ... f (e1)]
+Note : Conformément à l'usage, nous adopterons les matrices triangulaires supérieures dans la suite
+et, pour simplier, nous les appellerons matrices triangulaires.
+5.2 Trigonalisation
+Dénition 5.2 .
+• Soit A∈M n(K). On dit que A est trigonalisable, s'il existe une matrice triangulaire T∈M n(K)
+semblable à A.
+• Soit f∈L (E). On dit que f est trigonalisable, s'il existe une base B de E telle que MB(f ) soit
+triangulaire.
+Théorème 5.3 .
+• Soit A∈M n(K). Les deux propriétés suivantes sont équivalentes :
+1. A est trigonalisable.
+2. PA est scindé dans K.
+• Soit f∈L (E). Les deux propriétés suivantes sont équivalentes :
+1. f trigonalisable.
+2. Pf est scindé dans K.
+Preuve :
+Remarque : Si A est trigonalisable, alors, les éléments de la diagonale de la matrice triangulaire T
+semblable à A sont les valeurs propres de A.
+Exemple : Trigonaliser dans M3(R) la matrice A =
+
+
+−2 2 −1
+−1 1 −1
+−1 2 −2
+
+.
+Solution :
+Corollaire 5.4 Toute matrice A∈M n(C) est semblable à une matrice triangulaire T∈M n(C).
+Preuve : Tout polynôme P de C[X] est scindé dans C, PA est donc scindé dans C⇒A est trigonal-
+isable.
+En pratique : Trigonalisation d'une matrice de M3(K)
+Soit A∈M 3(K). Si A est trigonalisable mais non diagonalisable, alors on a 3 cas classés comme suit:
+Cas 1 : PA(λ) = (λ1−λ)(λ2−λ)2, avec λ1⁄=λ2. Sp(A) ={λ1,λ 2}.
+• Si dim(Eλ2 ) = 1 alors A est semblable à une matrice de la forme :
+T =
+
+
+λ1 0 0
+0 λ2 a
+0 0 λ2
+
+ avec a⁄= 0
+Cas 2 : PA(λ) = (λ1−λ)3. Sp(A) ={λ1}.
+• Si dim(Eλ1 ) = 2 alors A est semblable à une matrice de la forme :
+T =
+
+
+λ1 0 a
+0 λ1 b
+0 0 λ1
+
+ avec (a,b )⁄= (0, 0)
+<<<PAGE>>>
+K. El Amine 13
+Cas 3 : PA(λ) = (λ1−λ)3. Sp(A) ={λ1}.
+• Si dim(Eλ1 ) = 1 alors A est semblable à une matrice de la forme :
+T =
+
+
+λ1 a b
+0 λ1 c
+0 0 λ1
+
+ avec ac⁄= 0
+T rigonalisation - Synthèse
+Soit A∈M n(K).
+▶ PA est scindé dans K⇔ A trigonalisable dans Mn(K).
+▶ K = C⇒ A trigonalisable dans Mn(K).
+<<<PAGE>>>
+14 Réduction des endomorphismes
+6 Applications de la réduction d'une matrice carrée
+6.1 Calcul des puissances d'une matrice
+Rappel : Soit A∈M n(K). Si λ est une valeur propre de A, alors :
+• λ2 est une valeur propre de A2, et plus généralement
+∀k∈ N, λk est une valeur propre de Ak
+• si A est inversible alors 1/λ est une valeur propre de A−1, et plus généralement
+∀k∈ N, λ−k est une valeur propre de A−k
+6.1.1 Puissances d'une matrice
+Dénition 6.1 Soit A∈M n(K) et k∈ N. On appelle puissance k-ième de A et on note Ak, la
+matrice dénie par
+Ak =A×... ×A| {z }
+k fois
+où par convention
+A0 =In
+• Si A est inversible d'inverse A−1, alors A−k est déni par
+A−k = (A−1)k
+Remarque : On peut avoir Ak =On alors que A⁄=On. Par exemple
+A =
+[1 −1
+1 −1
+]
+mais A2 =
+[0 0
+0 0
+]
+Propriétés 6.2 Soit A∈M n(K).
+•∀ i,k∈ N :
+Ai×Ak =Ai+k et (Ai)k =Aik
+• Si A est inversible, alors ∀ i,k∈ Z :
+Ai×Ak =Ai+k et (Ai)k =Aik
+Preuve :
+Proposition 6.3 Soit D∈M n(K) diagonale ; U∈M n(K) triangulaire supérieure et L∈M n(K)
+triangulaire inférieure. Notons λ1,...,λ n les coecients diagonaux de ces trois matrices, i.e. :
+D =
+
+
+λ1 0 ··· 0
+0 λ2
+. . . ...
+... . . . . . . 0
+0 ··· 0 λn
+
+
+; U =
+
+
+λ1 u12 ··· u1n
+0 λ2
+. . . ...
+... . . . . . . un−1 n
+0 ··· 0 λn
+
+
+; L =
+
+
+λ1 0 ··· 0
+l21 λ2
+. . . ...
+... . . . . . . 0
+ln1 ··· lnn−1 λn
+
+
+Alors ∀k∈ N :
+Dk =
+
+
+λk
+1 (0)
+. . .
+(0) λk
+n
+
+ ; Uk =
+
+
+λk
+1 (∗)
+. . .
+(0) λk
+n
+
+ ; Lk =
+
+
+λk
+1 (0)
+. . .
+(∗) λk
+n
+
+
+où (∗) sont des éléments de K.
+Preuve :
+<<<PAGE>>>
+K. El Amine 15
+6.1.2 F ormule du binôme
+Dénition 6.4 Une matrice A∈M n(K) est dite nilpotente, s'il existe p∈ N∗ tel que
+Ap =On et Ap−1⁄=On
+L'entier p est unique et s'appelle l'ordre de nilpotence de la matrice A.
+Exemples :
+1) La matrice A =
+[0 1
+0 0
+]
+est nilpotente, d'ordre de nilpotence 2.
+2) La matrice A =
+
+
+0 1 0
+0 0 1
+0 0 0
+
+ est nilpotente, d'ordre de nilpotence 3.
+Remarque : Plus généralement, on peut montrer que toute matrice de Mn(K) triangulaire supérieure
+stricte ou triangulaire inférieure stricte est nilpotente, d'ordre de nilpotence ≤n.
+Théorème 6.5 (Formule du binôme)
+Soit A,B∈M n(K). Si A et B commutent (AB =BA) alors ∀k∈ N :
+(A +B)k =
+k∑
+i=0
+(k
+i
+)
+Ak−iBi
+Preuve :
+Remarque : Cette formule est fausse si A et B ne commutent pas.
+Exercice : Calculer Ak pour tout k∈ N, des matrices suivantes :
+a) A =
+[
+1 2
+0 1
+]
+; b) A =
+[
+1 0
+−3 1
+]
+;
+Solution :
+Exercice : Calculer Tk pour tout k∈ N, de la matrice suivante :
+T =
+
+
+−1 0 0
+0 3 1
+0 0 3
+
+
+Solution :
+6.1.3 Puissances de matrices semblables
+Proposition 6.6 Soit A,B∈M n(K) et P∈M n(K) inversible telles que
+A =PBP−1
+Alors
+∀ k∈ N Ak =PBkP−1
+Preuve : (Par récurrence)
+• Initialisation : Si k = 0 la propriété est vraie car A0 =In =PInP−1 =PB 0P−1.
+<<<PAGE>>>
+16 Réduction des endomorphismes
+• Hérédité : Supposons que la propriété est vraie jusqu'au rang k, ( k∈ N) i.e. : Ak =PBkP−1.
+On a alors
+Ak+1 =AkA =PBkP−1PBP−1 =PBk(P−1P )BP−1 =P (BkB)P−1 =PBk+1P−1.
+Ce qui prouve la propriété au rang k + 1.
+Remarque : Soit A =PBP−1. A est inversible ⇔ B est inversible et on a :
+A−1 =PB−1P−1
+En eet : A−1 = (PBP−1)−1 = (P−1)−1B−1P =PB−1P−1
+Corollaire 6.7 Soit A,B,P ∈M n(K) inversibles telles que
+A =PBP−1
+Alors
+∀ k∈ Z Ak =PBkP−1
+Preuve :
+• Nous avons ∀ k∈ N Ak =PBkP−1
+• Soit k∈ Z∗−⇔m =−k∈ N∗
+Ak =A−m = (A−1)m = (PB−1P−1)m =P (B−1)mP−1 =PB−mP−1 =PBkP−1. Et ainsi
+∀ k∈ Z Ak =PBkP−1
+A) Calcul des puissances d'une matrice diagonalisable
+Corollaire 6.8 Soit A∈M n(K) ; P∈M n(K) inversible et D∈M n(K) diagonale telles que
+A =PDP−1
+Alors
+∀ k∈ N Ak =PDkP−1
+Si A est inversible alors
+∀ k∈ Z Ak =PDkP−1
+Preuve :
+Remarque :
+D =
+
+
+λ1 (0)
+. . .
+(0) λn
+
+⇒Dk =
+
+
+λk
+1 (0)
+. . .
+(0) λk
+n
+
+
+Par conséquent
+Ak =P
+
+
+λk
+1 (0)
+. . .
+(0) λk
+n
+
+P−1
+Exemple : Soit
+A =
+
+
+0 −8 6
+−1 −8 7
+1 −14 11
+
+
+Montrer que A est inversible et calculer Ak pour tout k∈ Z.
+Solution :
+<<<PAGE>>>
+K. El Amine 17
+B) Calcul des puissances d'une matrice trigonalisable
+Corollaire 6.9 Soit A∈M n(K) ; P∈M n(K) inversible et T∈M n(K) triangulaire telles que
+A =PTP −1
+Alors
+∀ k∈ N Ak =PT kP−1
+Si A est inversible alors
+∀ k∈ Z Ak =PT kP−1
+Preuve :
+C) Calcul des puissances d'une matrice diagonale par blocs
+Proposition 6.10 (puissance de matrice diagonale par blocs)
+Soit A∈M n(K) une matrice diagonale par blocs, i.e. de la forme :
+A =
+
+
+A1 0 ··· 0
+0 A2
+. . . ...
+... . . . . . . 0
+0 ··· 0 Ap
+
+
+où les Ai sont des matrices carrés. Alors ∀k∈ N :
+Ak =
+
+
+Ak
+1 0 ··· 0
+0 Ak
+2
+. . . ...
+... . . . . . . 0
+0 ··· 0 Ak
+p
+
+
+Preuve :
+Corollaire 6.11 Soit T∈M n(K) une matrice triangulaires supérieure de la forme :
+T =
+
+
+T1 0 ··· 0
+0 T2
+. . . ...
+... . . . . . . 0
+0 ··· 0 Tp
+
+
+où les Ti sont des matrices triangulaires supérieure. Alors ∀k∈ N :
+Tk =
+
+
+Tk
+1 0 ··· 0
+0 Tk
+2
+. . . ...
+... . . . . . . 0
+0 ··· 0 Tk
+p
+
+
+Preuve .
+Exemple .
+Solution .
+<<<PAGE>>>
+18 Réduction des endomorphismes
+6.2 Suites récurrentes linéaires
+Rappel . Suite numérique arithmético-géométrique
+Dénition 6.12 Une suite (un)n∈N à valeurs dans K est dite arithmético-géométrique, s'il existe
+(a,b )∈ K tels que la suite vérie la relation de récurrence suivante :
+∀n∈ N , u n+1 =aun +b
+Cas a = 1 : La suite est arithmétique, donc
+∀n∈ N , u n =u0 +nb
+ Si b⁄= 0, alors la suite est divergente.
+ Si b = 0, la suite est constante : ∀n∈ N , un =u0.
+Cas a⁄= 1 : Le terme général de la suite est donné par :
+∀n∈ N , u n =an(u0−u) +u avec u = b
+1−a
+Si |a|< 1, la suite est convergente un −→
+n→∞
+u.
+6.2.1 Suites récurrentes linéaires du premier ordre
+Proposition 6.13 Soit A ∈ Mn(R) et B ∈ Mn,1(R). Soit (Xn)n∈N une suite de matrices de
+Mn,1(R) dénie pour tout n∈ N par
+Xn+1 =AXn +B où X0 est donnée
+Si (Xn)n∈N est convergente,alors sa limite X est solution de
+X =AX +B
+Preuve :
+Proposition 6.14 Soit A∈M n(R) et B∈M n,1(R).
+1) Si In−A est inversible alors, pour tout B, il existe une seule matrice X∈M n,1(R) solution de
+X =AX +B
+2) Si In−A n 'est pas inversible alors, deux cas sont possibles
+• soit il n 'existe aucune matrice X∈M n,1(R) solution de
+X =AX +B
+• soit il existe une innité de matrices X∈M n,1(R) solution de
+X =AX +B
+Preuve :
+Exemple . Soit (un)n∈N, (vn)n∈N et (wn)n∈N des suites réelles dénies par u0 = 0 , v0 = 22 , w0 = 22
+et
+∀n∈ N
+
+
+
+un+1 = 1
+4 (2un +vn +wn)
+vn+1 = 1
+3 (un +vn +wn) ( S)
+wn+1 = 1
+4 (un +vn + 2wn)
+Calculer un, vn, wn en fonction de n et étudier la convergence de ces trois suites.
+Solution .

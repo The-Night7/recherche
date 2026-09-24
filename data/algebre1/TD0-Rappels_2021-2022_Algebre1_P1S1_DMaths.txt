@@ -1,0 +1,2709 @@
+Cycle Préparatoire - Première Année
+Remédiation - 2021/2022
+Suites Numériques
+Démonstra tion p ar récurrence
+Exercice 1 (Suites géométriques)
+Soit la suite géométrique de premier termev0 = 3 et de raison 2.
+1. Démontrer par récurrence que∀n∈ N,v n = 3× 2n.
+2. Généraliser pour une suite géométrique de raisonq et de premier termev0.
+Solution
+(Déﬁnition de la propriété)
+Pour toutn∈ N soit la propriétéPn :un = 1
+2(5− 3n)
+(Vériﬁcation au premier rang)
+• 1
+2(5− 30) = 1
+2(5− 1) = 2 =u0 donc P0 est vraie.
+(Hérédité)
+• Soit n∈ N. On suppose quePn est vraie. C’est à direun = 1
+2(5− 3n).
+On veut montrer que pour toutn∈ N, siPn est vraie, on aPn+1 vraie. On choisit donc unn quelconque, on
+suppose quePn est vraie et on va essayer de montrer quePn+1 est vraie. Puisquen était quelconque, on a
+bien démontré que pour toutn∈ N, siPn est vraie,Pn+1 est vraie.
+On veut montrer quePn+1 est vraie, c’est à direun+1 = 3× 2n+1
+On aun+1 = 2un = 2× 2n = 2n+1
+Donc Pn+1 est vraie.
+On a montréP (n)⇒P (n + 1)
+Conclusion
+• Donc par récurrence,∀n∈ N, un = 1
+2(5− 3n).
+Exercice 2 (Démontrer une formule)
+Soit la suite(un)n∈N déﬁnie par :u0 = 2 et∀n∈ N,u n+1 = 3un− 5.
+Démontrer par récurrence que∀n∈ N,u n = 1
+2(5− 3n)
+Solution
+Pour toutn∈ N soit la propriétéPn :un = 3× 2n
+• 1
+2(5− 30) = 1
+2(5− 1) = 2 =u0 donc P0 est vraie.
+• Soit n∈ N. On suppose quePn est vraie. C’est à direun = 1
+2(5− 3n).
+On veut montrer quePn+1 est vraie, c’est à direun+1 = 1
+2(5− 3n+1)
+On aun+1 = 3un− 5 = 3
+(1
+2(5− 3n)
+)
+− 5 = 15
+2 − 3n+1
+2 − 5 = 5
+2− 3n+1
+2
+Donc Pn+1 est vraie.
+• Donc par récurrence,∀n∈ N, un = 1
+2(5− 3n).
+Exercice 3 (Démontrer une formule)
+Démontrer que∀n∈ N∗, 12 + 22 + 32 +... +n2 = n(n + 1)(2n + 1)
+6Solution
+• On déﬁnit P :∀n∈ N, Pn : 12 + 22 + 32 +... +n2 = n(n + 1)(2n + 1)
+6
+<<<PAGE>>>
+• Initialisation
+On a 1(1 + 1)(2 + 1)
+6 = 1 = 12, DoncP1 est vraie.
+• Hérédité
+Soit k∈ N, k> 1, supposons quePk est vraie, c’est à dire que
+12 + 22 + 32 +... +k2 = k(k + 1)(2k + 1)
+6
+On veut montrer quePk+1 est vraie c’est à dire
+12 + 22 + 32 +... +k2 + (k + 1)2 = (k + 1)(k + 2)(2k + 3)
+6 .
+On a
+12 + 22 + 32 +... +k2 + (k + 1)2
+= (12 + 22 + 32 +... +k2) + (k + 1)2
+= k(k + 1)(2k + 1)
+6 + (k + 1)2
+= (k + 1)k(2k + 1) + 6(k + 1)
+6
+= (k + 1)2k2 +k + 6k + 6
+6
+= (k + 1)(2k2 + 7k + 6)
+6 ... a-t-on Pk+1?
+Or (k + 2)(2k + 3) = 2k2 + 3k + 4k + 6 = 2k2 + 7k + 6
+On obtient bien la formule attendue.
+Donc la propriétéPk+1 est vériﬁée.
+• On a vériﬁé l’initialisation et l’hérédité donc on peut conclure que∀n∈ N,n > 1, 12 + 22 + 32 +... +n2 =
+n(n + 1)(2n + 1)
+6
+Exercice 4 (Initialisation)
+Soit la suite(un)n∈N déﬁnie paru0 =−1 et∀n∈ N, un+1 =u2
+n.
+Que peut-on dire de la suite? Qu’y a-t-il à démontrer?
+Solution
+En calculant les premiers termes on obtient :u0 =−1,u 1 = 1,u 2 = 1,u 3 = 1,...
+On peut émettre l’hypothèse que∀n > 1,u n = 1 mais il faut le démontrer par récurrence.
+Exercice 5 (Initialisation)
+Soit la suite(un)n∈N déﬁnie par∀n∈ N,u n = 1 + 3n
+1. Pour toutn∈ N, calculerun+1−un.
+En supposant queun est un multiple de 3, démontrer queun+1 est un multiple de 3.
+2. Peut-on en déduire que∀n∈ N, un = 1 + 3n est un multiple de 3?
+Solution
+Si un est un multiple de 3, alorsun = 3k alors un+1 = 1 + 3(n + 1) = 1 + 3n + 3 =un + 3 comme un et 3 sont
+des multiples de 3 alorsun+1 est un multiple de 3.
+On ne peut en déduire que∀n∈ N,u n est un multiple de 3 car la propriété est fausse pouru1 = 1, ce qui
+constitue un contre-exemple : l’initialisation n’est pas vériﬁée.
+Exercice 6 (Déﬁnition d’une suite)
+1. Peut-on déﬁnir la suitev, pour toutn∈ N, parvn+1 = vn
+1 +vn
+avecv0 =−1
+4 ?
+2. Peut-on déﬁnir la suiteu par,∀n∈ N, un+1 = 1
+1 +un
+avecu0 = 1
+2 ?
+Solution
+1. v0 =−1
+4 v1 = − 1
+4
+1− 1
+4
+= 1
+−3 v2 = − 1
+3
+1− 2
+3
+=−1
+2 v3 = −1/2
+1− 1/2 =−1
+On ne peut pas calculerv4 donc la formule ne déﬁnit pas une suite.
+2. Par récurrence, on démontre que la suite est déﬁnie :
+• On déﬁnitP :∀n∈ N,P n :un existe etun > 0
+• On au0 existe etu0 > 0 donc P0 est vraie.
+<<<PAGE>>>
+• Soit k∈ N, on supposePk : uk = (k + 1)3 + 1 vraie on va montrer quePk+1 : uk existe etuk > 0 est
+vraie.
+On auk existe etuk > 0 donc 1
+1 +uk
+est déﬁni (c’estuk+1) etuk+1 > 0 donc Pk+1 est vraie.
+• Donc puisque l’initialisation et l’hérédité sont vériﬁées,
+on a
+Pour toutn∈ N,u n est déﬁni et la suite est déﬁnie.
+Exercice 7 (Sens de variation et monotonie)
+Soit la suite(un)n>1 déﬁnie par récurrence par :u1 =
+√
+2 et pour tout entiern > 1, un+1 =
+√
+2 +un.
+1. Calculer u2,u 3,u 4 .
+2. Montrer par récurrence que(un)n∈N est croissante et que pour toutn∈ N∗, 0 ⩽un ⩽ 2.
+3. Etudier la convergence de la suite(un)n>1.
+Solution
+1. On au1 =
+√
+2,u 2 =
+√
+2 +
+√
+2,u 3 =
+√
+2 +
+√
+2 +
+√
+2, u4 =
+√
+2 +
+√
+2 +
+√
+2 +
+√
+2.
+2. Pour montrer que(un) est croissante, il suﬃt de montrer que
+∀n∈ N,un<u n+1
+• On va donc démontrer par récurrence P telle que
+∀n∈ N,P n : 0≤un≤un+1≤ 2
+On déﬁnitP :∀n∈ N,P n :un =
+√
+n + 9
+• On a 0≤
+√
+2≤
+√
+2 +
+√
+2 car 2≤ 2 +
+√
+2 et la fonction racine carré est croissante surR+ donc P1 est
+vraie.
+• Soitk∈ N, on supposePk : 0≤uk≤uk+1≤ 2 vraie on va montrer quePk+1 : 0≤uk+1≤uk+2≤ 2 est
+vraie.
+On a 0≤uk≤uk+1≤ donc 2≤ 2 +uk≤ 2 +uk+1≤ 2 +
+√
+2.
+On applique la fonction racine carré qui est strictement croissante surrplus, 2≤
+√
+2 +uk≤
+√
+2 +uk+1≤√
+2 +
+√
+2. donc 2≤uk+1≤uk+2≤
+√
+2 +
+√
+2.
+Or 2> 0 et
+√
+2 +
+√
+2≤
+√
+2 + 2≤ 2. En utilisant à nouveau la croissance de la fonction racine carré.
+Donc Pk+1 est vraie.
+• Donc puisque l’initialisation et l’hérédité sont vériﬁées, on a
+∀n∈ N, 0≤un≤un+1≤ 2
+La suite est donc croissante.
+3. La suite est coissante et majorée donc elle est convergente.
+Soit f :x↦→
+√
+2 +x, f est continue donc la limite de la suitel vériﬁel2 = 2 +l avecl> 0
+On résoutl2−l− 2 = 0. -1 est solution (évidente). L’autre solution est 2 (le produit des solutions est
+−2 = c
+a). 2 est bien solution de l’équationf(l) =l et c’est la seule solution possible de(un) converge vers
+2.
+Exercice 8 (Démontrer un encadrement)
+Soit la suite(un)n∈N déﬁnie par :u0 = 0.4 et∀n∈ N,u n+1 = 4un(1−un).
+1. Calculer u1,u 2 et des valeurs approchées deu3,u 4
+2. Démontrer que∀n∈ N, 0<u n < 1
+3. La suite est-elle monotone?
+Solution
+1. On au1 = 0.96,u 2 = 0.1536,u 3 = 0.52002816,u 4 = 0.9983950491228058,u 5≈ 0.00641
+• On déﬁnit P par∀P (n) :n∈ N, 0<u n < 1
+• On a bienP (0) vraie car 0<u 0 < 1
+• Soit n∈ N, on suppose0<u n < 1 alors 4un > 0 et 1−un > 0 donc le produit est strictement positif
+donc un+1 > 0 donc P (n + 1) est vraie.
+<<<PAGE>>>
+• Donc∀n∈ N, 0<u n < 1
+2. On observe queu3 <u 4 et u4 >u 5 donc la suite n’est pas monotone.
+Exercice 9
+On considère la suite(un)n∈N déﬁnie paru0 = 1 et∀n∈ N,u n+1 =un + 2n + 3.
+1. Etudier la monotonie de la suite(un)n∈N.
+2. Démontrer que∀n∈ N,u n >n 2
+3. Conjecturer une expression deun en fonction den puis démontrer la propriété conjecturée.
+4. Quelle est la limite de la suite(un)n∈N?
+Solution
+1. ∀n∈ N,u n+1−un = 2n + 3> 0 donc la suite est strictement croissante.
+2. Par récurrence :
+• On déﬁnit P :∀n∈ N,u n >n 2.
+• On au0 = 1 donc u0 > 0 donc P (0) est vraie.
+• Soit n∈ N, on suppose queun >n 2.
+On aun+1 =un + 2n + 3>n 2 + 2n + 3 > (n + 1)2 + 2> (n + 1)2 Donc P (n + 1) est vraie.
+• Donc, par le principe de récurrence,∀n∈ N,u n >n 2.
+3. Les premiers termes de la suite sont 1, 4, 9, 16
+On conjectureun = (n + 1)2
+On le démontre par une récurrence facile : calcul pour l’hérédité : La formule à obtenir estun+1 =
+(n + 2)2 =n2 + 4n + 4
+un+1 =un + 2n + 3 = (n + 1)2 + 2n + 3 =n2 + 2n + 1 + 2n + 3 =n2 + 4n + 4. CQFD
+4. La limite de(un) est +∞ (produit de limite).
+<<<PAGE>>>
+Pour aller plus loin ...
+Exercice 10 (Démontrer une formule)
+Dans chacun des cas suivants calculer les premiers termes de la suiteu, conjecturer pour tout réeln une formule
+explicite deun et la démontrer par récurrence :
+1. u0 = 3 et∀n∈ N un+1 =
+√
+un2 + 1.
+2. u0 = 1 et∀n∈ N un+1 =un + 3n2 + 9n + 7.
+3. u0 = 1 et∀n∈ N un+1 =un + 3n2 + 3n + 1.
+Solution
+1. On au0 = 3,u 1 =
+√
+10,u 2 =
+√
+11,u 3 =
+√
+12.
+On "devine" que la formule est enn puisque on gagne 1 à chaque pas. On cherche doncun =
+√
+n +... ,
+puis on proposeun =
+√
+n + 9.
+On va donc démontrer par récurrence que∀n∈ N,u n =
+√
+n + 9
+• On déﬁnitP :∀n∈ N,P n :un =
+√
+n + 9
+• On a
+√
+0 + 9 = 3 =u0 donc P0 est vraie.
+• Soit k∈ N, on supposePk :uk =
+√
+k + 9 vraie on va montrer quePk+1 :uk+1 =
+√
+k + 10 est vraie.
+On auk+1 =
+√
+u2
+k + 1 =
+√
+n + 9 + 1 =
+√
+n + 10
+Donc Pk+1 est vraie.
+• Donc puisque l’initialisation et l’hérédité sont vériﬁées, on a∀n∈ N,u n =
+√
+n + 9
+2. On au0 = 1, u1 = 2, u2 = 9, u3 = 28. On conjecture que∀n∈ N,u n =n3 + 1
+• On déﬁnitP :∀n∈ N,P n :un =n3 + 1
+• On a 03 + 1 = 1 =u0 donc P0 est vraie.
+• Soit k∈ N, on supposePk :uk =k3 + 1 vraie on va montrer quePk+1 :uk+1 = (k + 1)3 + 1 est vraie.
+On auk+1 =uk + 3k2 + 3k + 1 =k3 + 1 + 3k2 + 3k + 1 = (k + 1)3 + 1
+Donc Pk+1 est vraie.
+• Donc puisque l’initialisation et l’hérédité sont vériﬁées,
+on a∀n∈ N,u n =n3 + 1
+3. On au0 = 1, u1 = 8, u2 = 27. On conjecture que∀n∈ N,u n = (n + 1)3 + 1
+• On déﬁnitP :∀n∈ N,P n :un = (n + 1)3 + 1
+• On a (0 + 1)3 + 1 =u0 donc P0 est vraie.
+• Soit k∈ N, on supposePk :uk = (k + 1)3 + 1 vraie on va montrer quePk+1 :uk+1 = (k + 2)3 + 1 est
+vraie.
+On auk+1 =uk +3k2+9k+7 = (k+1) 3+3k2+9k+7 = k3+3k2+3k+1+3k2+9k+7 = k3+6k2+12k+8
+Or (k + 2)3 =k3 + 6k2 + 12k + 8
+Donc Pk+1 est vraie.
+• Donc puisque l’initialisation et l’hérédité sont vériﬁées,
+on a∀n∈ N,u n = (n + 1)3 + 1
+Exercice 11 (Démontrer une formule*)
+On pose pour toutn∈ N∗ Sn = 13 + 23 + 33 +... +n3.
+Montrer par récurrence que pour toutn∈ N∗ , Sn = n2(n + 1)
+2
+4 .
+Solution
+•∀n∈ N soit la propriétéPn :Sn = n2(n + 1)2
+4
+• On a 22× 32
+4 = 9 = 13 + 23 =S2 donc P2 est vraie.
+• Soientn∈ N, on veut montrer que siPn est vraie alorsPn+1 est vraie.
+Supposons quePn est vraie, c’est à direSn = n2(n + 1)2
+4 = n4 + 6n3 + 13n2 + 12n + 4
+4
+Alors
+Sn+1 =Sn + (n + 1)3 = n2(
+n2 + 2n + 3
+)
++n3 + 3n2 + 3n + 1
+4
+= n4 + 3n3 + 6n2 + 3n + 1
+4
+=
+(
+n2 + 2n + 1
+)(
+n2 + 4n + 4
+)
+4
+= n4 + 6n3 + 13n2 + 12n + 4
+4
+<<<PAGE>>>
+Donc Sn+1 = (n + 1)2(n + 2)2
+4 donc Pn+1 est vraie.
+• Donc∀n∈ N,S n = n2(n + 1)2
+4
+Exercice 12 (Démontrer une formule)
+Soit (un)n>1 la suite déﬁnie par récurrence par :
+u1 = 1
+3 et pour toutn∈ N∗, un+1 = n + 1
+3n un.
+Montrer par récurrence que, pour tout entiern > 1, un =n
+(1
+3
+)n
+.
+Solution
+• On déﬁnit P :∀n∈ N∗un =n
+(1
+3
+)n
+.
+• On au1 = 1
+(1
+3
+)1
+donc P (1) est vraie.
+• Soit n∈ N, on suppose queun =n
+(1
+3
+)n
+.
+On aun+1 = n + 1
+n × 1
+3un = n + 1
+n × 1
+3×n×
+(1
+3
+)n
+= (n + 1)
+(1
+3
+)n+1
+Donc P (n + 1) est vraie.
+• Donc, par le principe de récurrence,un =n
+(1
+3
+)n
+.
+Exercice 13 (Nombre d’opérations pour calculer un terme)
+La suite (xn) est déﬁnie pour toutn∈ N par x0 = 3 et xn+1 = 2xn− 1.
+La suite (yn) est déﬁnie pour toutn∈ N par y0 = 1 et yn+1 = 2yn + 3.
+1. Pour calculerx50 combien faut-il d’opérations?
+2. Démontrer par récurrence quexn = 2n+1 + 1.
+3. Pour calculerx50 avec la formule du 2), combien faut-il d’opérations?
+4. Démontrer par récurrence que2xn−yn = 5 et en déduire l’expression deyn en fonction den.
+Solution
+1. La réponse dépend de ce que l’on appelle opération. On supposera que+,∗,−, %,x n est une opération.
+Dans ce cas on a besoin de 2 opérations pour calculerxn+1 en fonction dexn. Donc pourx50, on a besoin
+de 100 opérations.
+2. • On déﬁnit P :∀n∈ N,P n :xn = 2n+1 + 1.
+• On a 20+1 + 1 = 3 =x0 donc P0 est vraie.
+• Soit n∈ N, on suppose quexn = 2n+1 + 1 est vraie.
+On axn+1 = 2xn− 1 = 2× 2n+1 + 2− 1 = 2n+1 + 1.
+Donc P (n + 1) est vraie.
+• Donc, par le principe de récurrence,xn = 2n+1 + 1.
+3. Avec la formule du 2, il faut 3 opérations.
+4. • On déﬁnit P :∀n∈ N,P n : 2xn−yn = 5.
+• On a 2x0−y0 = 6− 1 = 5 donc P0 est vraie.
+• Soit n∈ N, on suppose que2xn−yn = 5 est vraie.
+On calcule :
+2xk+1−yn+1
+=2 (2x4− 1)− (2y2 + 3)
+=4x2− 2y1− 2− 3
+=2 (2x2−y2)− 5
+=2× 5− 5
+=5
+Donc P (n + 1) est vraie.
+• Donc, par le principe de récurrence,2xn−yn = 5.
+Donc∀n∈ N,y n = 2n+2− 3
+<<<PAGE>>>
+Exercice 14 (Sens de variations)
+Soit la suite(un) déﬁnie par :u0 = 1 et∀n∈ N un+1 =−2
+5un + 1.
+1. Montrer que∀n∈ N, 0 ⩽un ⩽ 1.
+2. Cette suite est-elle monotone?
+Solution
+1. Par récurrence :
+• On déﬁnit P par∀P (n) :n∈ N, 0<u n < 1
+• On a bienP (0) vraie car 0<u 0 < 1
+• Soit n ∈ N, on suppose 0 < un < 1 alors 0 > −2
+5un > −2
+5 et 1 > −2
+5un + 1 > 1− 2
+5 donc
+0< 3
+5 <u n+1 < 1 donc P (n + 1) est vraie.
+• Donc∀n∈ N, 0<u n < 1
+2. u0 = 1 et u1 = 3
+5 = 0.6 et u2 = 19
+25 = 0.76
+donc cette suite n’est pas monotone mais semble convergente.
+Exercice 15 (Encadrement et monotonie)
+Soit la suite(un)n>0 déﬁnie par récurrence par :
+u0 = 2 et pour toutn > 0, un+1 = 1
+2un + 3.
+1. Montrer que cette suite n’est ni une suite arithmétique, ni une suite géométrique.
+2. Montrer par récurrence que, pour∀n∈ N, 0 ⩽un ⩽ 6.
+3. Etudier la monotonie de la suite(un)n∈N.
+4. Etuder la convergence de la suite(un)n∈N
+Solution
+1. On au0 = 2, u1 = 4 et u2 = 5 donc u1−u2⁄=u1−u0 donc la suite n’est pas arithmétique etu1
+u0
+⁄= u2
+u1
+donc la suite n’est pas géométrique.
+2. Par récurrence :
+• On déﬁnit P par∀P (n) :n∈ N, 0<u n < 6
+• On a bienP (0) vraie car 0<u 0 < 6
+• Soit n∈ N, on suppose0<u n < 6 alors 0< 1
+2un < 3 et 3< 1
+2un + 3> 6 donc 0< 3<u n+1 < 6 donc
+P (n + 1) est vraie.
+• Donc∀n∈ N, 0<u n < 6
+3. ∀n∈ N,u n+1−un =−1
+2un + 3 = 6−un
+2 Comme 0 < un < 6,6−un
+2 > 0 donc (un) est strictement
+croissante.
+4. La suite étant monotone et bornée, elle converge vers une solution dex = 1
+2x + 3. Cette équation a une
+seule solution qui est donc la limite 6.
+Exercice 16 (Suites de fonctions)
+Pour tout entiern∈ N\{ 0, 1} démontrer que la fonctionfn :x→xn est dérivable surR et que
+∀x∈ R,f′
+n(x) =nxn−1
+Solution
+Pour tout entier natureln > 2, on déﬁnit la propriété
+Pn :fn :x↦→xn est dérivable et∀x∈ R,f′
+n(x) =nxn−1
+• Initialisation pourn = 2
+<<<PAGE>>>
+On veut montrer
+P2 :f2 est dérivable et∀x∈ R,f′
+2(x) = 2x2−1 = 2x
+P2 est vériﬁée carf2 est la fonction carré.
+• Hérédité
+Soit n∈ N tel quen > 2.
+On veut montrer que siPn est vraie alorsPn+1 c’est à dire,
+si fn est dérivable et∀x∈ R,f′
+n(x) =nxn−1
+alors fn+1 est dérivable et∀x∈ R,f′
+n+1(x) = (n + 1)xn
+On suppose que fn est dérivable et∀x∈ R,f′
+n(x) =nxn−1
+Alors∀x∈ R,f n+1(x) = xfn(x) donc commef1 :x↦→x et fn sont dérivables, alorsfn+1 est dérivable comme
+produit de fonctions dérivables.
+De plus∀x∈ R,f′
+n+1(x) = 1×fn(x) +x×f′
+n(x) =xn +xnxn−1 = (n + 1)xn
+Donc la propriétéPn+1 est vériﬁée.
+• Donc∀n∈ N,f n est dérivable et∀x∈ R,f′
+n(x) =nxn−1
+<<<PAGE>>>
+Cycle Préparatoire - Première Année
+Remédiation - 2021/2022
+Suites Numériques
+Etudes de Convergence des suites
+Exercice 17 (calcul de limites)
+Déterminer les limites des suites suivantes (déﬁnies pour pour tout entiern non nul) :
+un = (1− 2n)
+(
+n2 + 3
+)
+a) un = 3
+3 + 2nb) un = 4n− 1 + 5√nc)
+un =
+(
+2 + 1
+n
+)2
+d)
+Solution
+lim
+n→+∞
+1− 2n =−∞ et lim
+n→+∞
+n2 + 3 = +∞.
+Donc par produit de limites lim
+n→+∞
+un =−∞
+a) lim
+n→+∞
+un = 0b)
+n
+lim
+n→+∞
+−1 + 5√n =−1 donc lim
+n→+∞
+un = +∞c) lim
+n→+∞
+2 + 1
+n = 2 donc lim
+n→+∞
+un = 4 par produit. d)
+Exercice 18 (calcul de limites)
+un =−n2 +√na) un =−3n2 + 6nb) un = 3n + 5
+n2− 4c)
+un =−2n2 + 3n + 1
+3n2 + 5nd) un = n3 + 4
+2n2 + 5e) un = 1√n(−3n + 5)f)
+Solution
+a) un =−n2 +√n =−n2
+(
+1−
+√n
+n2
+)
+=−n2
+(
+1− 1
+n√n
+)
+.
+On a lim
+n→+∞
+1− 1
+n√n = 1 et lim
+n→+∞
+−n2 =−∞.
+Par produit de limites lim
+n−1+∞
+un =−∞
+b) un =−3n2 + 6n =−3n2
+(
+1− 6n
+3n2
+)
+=−3n2
+(
+1− 3
+n
+)
+.
+On a lim
+n→+∞
+1− 3
+n = 1 et lim
+n→+∞
+−3n3 =−∞
+c) un = 3n + 5
+n2− 4 = n
+(
+3 + 5
+n
+)
+n2(
+1− 4
+n2
+) = 3 + 5
+n
+n
+(
+1− 4
+n2
+) lim
+n→+∞
+3 + 5
+n = 3
+et lim
+n→+∞
+1− 4
+n2 = 1 Par quotient et produit de limites lim
+n→+∞
+un = 0
+d) un =−2n2 + 3n + 1
+3n2 + 5n = n2(
+−2 + 3
+n + 1
+n
+)
+n2(
+3 + 5
+n
+) =−2 + 3
+n + 1
+n2
+3 + 5
+n
+or lim
+n→+∞
+−2 + 3
+n + 1
+n2 =−2 lim
+n→+∞
+3 + 5
+n = 3
+Donc par quotient de limites : lim
+n→+∞
+un =−2
+3
+e) un = n3(
+1 + 4
+n3
+)
+n2(
+2 + 5
+n2
+) = n
+(
+1 + 4
+n3
+)
+2 + 5
+n2
+On a lim
+n→+∞
+1 + 4
+n3 = 1 et lim
+n→+∞
+2 + 5
+n2 = 2. Donc lim
+n→+∞
+un = +∞
+f) un = n√n
+(
+−3 + 5
+n
+)
+=√n
+(
+−3 + 5
+n
+)
+lim
+n→+∞
+√n = +∞ et lim
+n→+∞
+−3 + 5
+n =−3
+Donc par produit de limites, lim
+n→+∞
+un =−∞
+<<<PAGE>>>
+Exercice 19 (calcul de limites)
+Calculer, si cette limite existe.
+lim
+n→+∞
+√n−n + 1
+2√n +n + 2
+Solution
+Il s’agit d’une forme indéterminée, on mettre en facteur, au numérateur et au dénominateur les termes qui
+tendent le plus vite vers l’inﬁni
+√n−n + 1
+2√n +n + 2 =
+n
+(
+1√n− 1 + 1
+n
+)
+n
+(
+2√n + 1 + 2
+n
+) =
+1√n− 1 + 1
+n
+2√n + 1 + 2
+n
+lim
+n→+∞
+√n−n + 1
+2√n +n + 2 = lim
+n→+∞
+1√n− 1 + 1
+n
+2√n + 1 + 2
+n
+=−1
+1 =−1
+Exercice 20 (calcul de limites)
+Soit (un)n∈N∗ déﬁnie par
+un = n−
+√
+n2 +n
+1−
+√
+n2 + 1
+Montrer que la suite(un)n∈N∗ converge et déterminer sa limite.
+Solution
+un = n−
+√
+n2 +n
+1−
+√
+n2 + 1
+=
+n−n
+√
+1 + 1
+n
+1−n
+√
+1 + 1
+n2
+=
+n
+(
+1−
+√
+1 + 1
+n
+)
+n
+(
+1
+n−
+√
+1 + 1
+n2
+) =
+1−
+√
+1 + 1
+n
+1
+n−
+√
+1 + 1
+n2
+−→
+n→+∞
+0
+Deuxième méthode (moins bonne)
+un = n−
+√
+n2 +n
+1−
+√
+n2 + 1
+= n−
+√
+n2 +n
+1 × 1
+1−
+√
+n2 + 1
+= n2−
+(
+n2 +n
+)
+n +
+√
+n2 +n
+× 1 +
+√
+n2 + 1
+12− (n2 + 1)
+= −n
+n +
+√
+n2 +n
+× 1 +
+√
+n2 + 1
+−n2 =− 1
+n× 1 +
+√
+n2 + 1
+n +
+√
+n2 +n
+=− 1
+n×
+1 +
+√
+n2(
+1 + 1
+n2
+)
+n +
+√
+n2(
+1 + 1
+n
+)
+=− 1
+n×
+1 +n
+√
+1 + 1
+n2
+n +n
+√
+1 + 1
+n
+=− 1
+n×
+n
+(
+1
+n +
+√
+1 + 1
+n2
+)
+n
+(
+1 +
+√
+1 + 1
+n
+) =− 1
+n×
+1
+n +
+√
+1 + 1
+n2
+1 +
+√
+1 + 1
+n
+−→
+n→+∞
+0
+Exercice 21 (Suite monotone)
+Soit (un) la suite déﬁnie pour toutn∈ N par :
+{ u0 = 1, 01
+un+1 =u2
+n
+1. Montrer par récurrence que cette suite est croissante.
+2. On suppose que la suite est majorée, en déduire alors qu’elle est convergente et déterminer sa limite
+éventuelle.
+3. Conclure sur l’absurdité de l’hypothèse. En déduire la limite de la suite(un)n∈N.
+Solution
+1. Raisonnement par récurrence :
+(a) On déﬁnit pour toutn∈ N, P (n) : 0<u n <u n+1
+(b) Initialisation :u1 =u2
+0 = 1.01u0 comme u0 = 1.01> 0, 0<u 0 <u 1 donc P (0) est vraie.
+(c) Hérédité : soit un entierp∈ N, supposons que0<u p <u p+1
+On élève au carré par la fonction carré strictement croissante sur[0; +∞[ donc 0<u 2
+p <u 2
+p+1 donc
+0<u p+1 <u p+2 donc P (p) est vraie.
+(d) Donc∀n∈ N,u n <u n+1 et (un)n∈N est strictement croissante.
+2. D’après le théorème de la convergence monotone, si(un)n∈N est bornée, comme elle est croissante, elle
+converge. Soitl sa limite. En passant à la limite,l =l2 donc l = 0 ou l = 1.
+<<<PAGE>>>
+3. Or u0 = 1.01 et (un) est croissante doncl > 1.01. Aucune des deux limites nécessaires ne convient donc
+(un) n’est pas bornée.
+Comme (un) n’est pas bornée et qu’elle est croissante, elle est divergente et tend vers+∞ (propriété).
+Exercice 22 (suite monotone)
+On considère la suite(un)n∈N déﬁnie paru0 = 0 et par la relation de récurrence
+un+1 = 1
+6u2
+n + 3
+2
+1. Montrer que pour toutn∈ N∗,u n > 0
+2. Si la suite(un)n∈N admet une limitel, quelle peut être la valeur del?
+3. Montrer que pour toutn∈ N,u n < 3.
+4. Montrer que la suite est croissante, que peut-on en conclure?
+Solution
+1. u1 = 1
+6u2
+0 + 3
+2 = 3
+2
+On admet que∀n∈ N,u n est déﬁni. Dans ce cas, commeun+1 = 1
+6u2
+n + 3
+2 > 3
+2 > 0, un+1 est positif.
+Donc pour toutn∈ N∗,u n > 0
+2. Si la suite(un)n∈R admet une limitel alors
+l = 1
+6l2 + 3
+2⇔l2− 6l + 9 = 0⇔ (l− 3)2 = 0⇔l = 3
+3. Eﬀectuons un raisonnement par récurrence,u0 = 0< 3,
+On ne rédige que les calculs de l’hérédité (en devoir rédaction complète exigée).
+Montrons queun < 3 entraine queun+1 < 3
+On aun < 3 donc u3
+n < 9 car la fonction carré est strictement croissante surrplus.
+Donc 1
+6u2
+n + 3
+2 < 1
+6× 9 + 3
+2 = 3
+2 + 3
+2 = 3
+Donc pour toutn∈ N,u n < 3
+4. Calculons un+1−un
+un+1−un = 1
+6u2
+n + 3
+2−un = 1
+6
+(
+u2
+n− 6un + 9
+)
+= 1
+6 (un− 3)2 > 0
+La suite (un)n∈N est strictement croissante, comme elle est bomée par 3, elle convergente vers la seule
+valeur qui vériﬁel = 1
+6l2 + 3
+2, c’est-à-direl = 3
+Exercice 23 (calcul de limites)
+Etudier la suite(un)n∈N de nombres réels déﬁnie par la donnée de :
+0<u 0 < 1 et un =un−1− (un−1)2
+Solution
+Si (un)n∈N admet une limitel, celle-ci vériﬁel =l−l2⇔l = 0
+Regardons si la suite est monotone, pour toutn > 1
+∀n∈ N∗,u n−un−1 =− (un−1)2 ⩽ 0 Donc la suite est décroissante.
+Montrons par récurrence que pour toutn > 0<u n < 1
+• On déﬁnit P par∀n∈ N,P n : 0<u n < 1
+• On a bienP (0) vraie car 0<u 0 < 1
+• Soit n∈ N∗, on suppose0<u n−1 < 1 alors un =un−1− (un−1)2 =un−1 (1−un−1)
+donc 0<u n−1 < 1 entraîneun =un−1(1−un−1)> 0 car produit de deux réels positifs donc0< 3<u n+1 < 6
+donc Pn est vraie.
+• Donc∀n∈ N, 0<u n < 1
+En particulier(un)n∈N est minorée par 0 , comme elle est décroissante, elle converge vers la seule limite possible
+l = 0.
+<<<PAGE>>>
+Exercice 24 (suite monotone)
+Soit (un)n>0 la suite de nombres réels déﬁnie paru0∈]1; 2]et par la relation de récurrence
+un+1 = (un)2
+4 + 3
+4
+1. Montrer que :∀n∈ N,u n > 1
+2. Montrer que :∀n∈ N,u n ⩽ 2
+3. Montrer que la suite est monotone. En déduire que la suite est convergente.
+4. Déterminer la limite de la suite(un)n>0
+Solution
+(éléments)
+1. Par un raisonnement par récurrence (à rédiger) :u0∈]1, 2] donc u0 > 1.
+Montrons queun > 1 entraine queun+1 > 1 (on utilise le sens de variation de la fonction carré comme
+dans l’exercice 22)
+un+1 = (un)2
+4 + 3
+4 > 1
+4 + 3
+4 = 1
+Donc pour toutn∈ N,u n > 1
+2. Par un raisonnement par récurrence (à rédiger) :u0∈]1, 2] donc u0 ⩽ 2.
+Montrons queun ⩽ 2 entraine queun+1 ⩽ 2
+un+1 = (un)2
+4 + 3
+4 ⩽ (2)2
+4 + 3
+4 = 7
+4 ⩽ 2
+Donc pour toutn∈ N,u n ⩽ 2
+3. Calculons
+un+1−un = (un)2
+4 + 3
+4−un = 1
+4
+(
+u2
+n− 4un + 3
+)
+= 1
+4 (un− 1) (un− 3)
+Comme 1<u n ⩽ 2, on aun− 1> 0 et un− 2≤− 1< 0, par conséquent
+un+1−un = 1
+4 (un− 1) (un− 3)< 0
+Ce qui montre que la suite est strictement décroissante. De plus elle est minorée par 1 donc elle converge.
+Autre méthode, comme la suite est à valeur strictement positive, on peut regarder le quotient deun+1
+par un :
+un+1
+un
+=
+(un)2
+4 + 3
+4
+un
+= un
+4 + 3
+4un
+Il faut alors étudier la fonctionf :]1, 2]→ R déﬁnie parf(x) = x
+4 + 3
+4x
+on af′(x) = 1
+4− 3
+4x2 = x2− 3
+4
+x
+signe
+de f′
+variation
+de f
+1 √
+3 2
+− 0 +
+11 √
+2
+2
+√
+2
+2
+Cela montre que
+∀un∈] 1, 2],f (un)< 1
+Et que donc∀n∈ N, un+1
+un
+< 1 (à justiﬁer comme exercice précédent)
+Ce qui montre aussi que la suite est strictement décroissante. De plus elle est minorée par 1 donc elle
+converge.
+4. On notel cette limite, elle appartient à[1, 2] et cette valeur vériﬁe
+l = l2
+4 + 3
+4⇔ 0 = l2
+4−l + 3
+4⇔l2− 4l + 3 = 0⇔
+
+
+
+l = 1
+ou
+l = 2
+Par conséquentl = 1 car (un) est décroissante.
+<<<PAGE>>>
+Exercice 25 (suite géométrique associée)
+Soit (un)n∈N déﬁnie paru0 = 1 et la relation de récurrence
+un+1 = un + 8
+2un + 1
+(vn)n∈N déﬁnie par
+vn = un− 2
+un + 2
+1. Montrer que (vn)n∈N est une suite géométrique de raison−3
+5
+2. Exprimer vn en fonction den.
+3. Exprimer un en fonction den.
+4. Montrer que (un)n∈N converge et déterminer sa limite.
+Solution
+1.
+vn+1 = un+1− 2
+un+1 + 2 =
+un+8
+2un+1− 2
+un+8
+2un+1 + 2 = un + 8− 2 (2un + 1)
+un + 8 + 2 (2un + 1) =−3un + 6
+5un + 10 =−3
+5× un− 2
+un + 2 =−3
+5vn
+Donc (vn)n∈A est une suite géométrique de raison−3
+5
+2.
+vn =
+(
+−3
+5
+)n
+v0 =
+(
+−3
+5
+)n
+× u0− 2
+u0 + 2 =
+(
+−3
+5
+)n
+× 1− 2
+1 + 2 =−1
+3×
+(
+−3
+5
+)n
+3. Pour toutn∈ N
+vn = un− 2
+un + 2⇔vn (un + 2) =un− 2⇔vnun + 2vn =un− 2⇔vnun−un =−2− 2vn
+⇔un (vn− 1) =−2− 2vn⇔un =−2 + 2vn
+vn− 1 =− 2− 2
+3×
+(
+− 3
+5
+)n
+− 1
+3×
+(
+− 3
+5
+)n
+− 1
+4.
+Comme − 1<−3
+5 < 1
+lim
+n→+∞
+(
+−3
+5
+)n
+= 0 lim
+n→+∞
+un =− 2
+−1 = 2
+Exercice 26 (calcul de limites)
+Calculer, si elle existe, la limite, lorsquen tend vers l’inﬁni, de l’expression
+√
+n2 +n + 1−
+√
+n2−n + 1
+Solution
+√
+n2 +n + 1−
+√
+n2−n + 1 = n2 +n + 1−
+(
+n2−n + 1
+)
+√
+n2 +n + 1 +
+√
+n2−n + 1
+= 2n√
+n2(
+1 + 1
+n + 1
+n2
+)
++
+√
+n2(
+1− 1
+n + 1
+n2
+)
+= 2
+n
+√
+1 + 1
+n + 1
+n2 +n
+√
+1− 1
+n + 1
+n2
+= 2√
+1 + 1
+n + 1
+n2 +
+√
+1− 1
+n + 1
+n2
+Donc cette expression admet une limite et
+lim
+n→+∞
+(√
+n2 +n + 1−
+√
+n2−n + 1
+)
+= lim
+n→+∞
+2√
+1 + 1
+n + 1
+n2 +
+√
+1− 1
+n + 1
+n2
+= 2
+2 = 1
+<<<PAGE>>>
+Exercice 27 (*)
+Montrer que la suite(un)n∈N de terme généralun déﬁnie par :
+un = 2n + 1
+3n2 + 1 + 2n + 1
+3n2 + 2 +··· + 2n + 1
+3n2 +n =
+k∑
+1
+2n + 1
+3n2 +k
+est convergente et déterminer sa limite.
+Solution
+Pour toutk∈{ 1, 2,...,n }
+1
+3n2 +n ⩽ 1
+3n2 +k ⩽ 1
+3n2 + 1
+Donc 2n + 1
+3n2 +n + 2n + 1
+3n2 +n +··· + 2n + 1
+3n2 +n ⩽ 2n + 1
+3n2 + 1 + 2n + 1
+3n2 + 2 +··· + 2n + 1
+3n2 +n
+⩽ 2n + 1
+3n2 + 1 + 2n + 1
+3n2 + 1 +··· + 2n + 1
+3n2 + 1
+Les n termes dans le premier membre sont tous égaux à2n + 1
+3n2 +n. Lesn termes dans le dernier membre sont
+tous égaux à 2n + 1
+3n2 + 1, on en déduit que
+n× 2n + 1
+3n2 +n ⩽un ⩽n× 2n + 1
+3n2 + 1
+lim
+n→+∞
+n× 2n + 1
+3n2 +n = lim
+n→+∞
+2n2 +n
+3n2 +n = 2
+3
+lim
+n→+∞
+n× 2n + 1
+3n2 + 1 = lim
+n→+∞
+2n2 +n
+3n2 + 1 = 2
+3
+On en déduit que
+lim
+n→+∞
+un = 2
+3
+Exercice 28 (série télescopique)
+1. Montrer que pour toutk∈ N∗
+1
+k(k + 1) = 1
+k− 1
+k + 1
+2. Soit (un)n∈N∗ la suite réelle déﬁnie pour toutn> 0 par
+un =
+n∑
+k=1
+1
+k(k + 1) = 1
+1× 2 + 1
+2× 3 +··· + 1
+n(n + 1)
+A l’aide de la question 1. Montrer que(un)n∈N∗ est convergente et déterminer sa limite.
+Solution
+1. 1
+k− 1
+k + 1 = k + 1−k
+k(k + 1) = 1
+k(k + 1)
+2. Première méthode
+un =
+n∑
+k=1
+1
+k(k + 1) =
+n∑
+k=1
+( 1
+k− 1
+k + 1
+)
+=
+n∑
+k=1
+1
+k−
+n∑
+k=1
+1
+k + 1
+Dans la seconde somme on posek′ =k + 1, alorsk = 1⇒k′ = 2 et k =n⇒k′ =n + 1
+un =
+n∑
+k=1
+1
+k−
+n+1∑
+k′=2
+1
+k′
+Ensuite on changek′ en k
+un =
+n∑
+k=1
+1
+k−
+n+1∑
+k=2
+1
+k = 1− 1
+n + 1
+Car tous les autres termes se simpliﬁent
+<<<PAGE>>>
+Par conséquent(un)n∈N∗ converge et sa limite est 1 .
+Deuxième méthode
+un = 1
+1× 2 + 1
+2× 3 +··· + 1
+n(n + 1) =
+(1
+1− 1
+2
+)
++
+(1
+2− 1
+3
+)
++··· +
+( 1
+n− 1− 1
+n
+)
++
+( 1
+n− 1
+n + 1
+)
+= 1− 1
+n + 1
+Car tous les autres termes se simpliﬁent Par conséquent(un)n∈M converge et sa limite est 1 .
+Exercice 29 (*)
+On considère la suite de nombres réels déﬁnie par son premier termeu0 = 11
+4 et par la relation de récurrence :
+un+1 = 5
+2 +
+√
+un− 7
+4
+Montrer que la suite(un)n∈N est bien déﬁnie, convergente et déterminer sa limite.
+Solution
+Si la suite de terme généralun converge vers une limitel alors
+l = 5
+2 +
+√
+l− 7
+4
+Il est clair qu’il va falloir élever au carré que lque chose, mais si on élève au carré ces deux expressions on va
+avoir un double produit où ily aura encore une racine alors il faut modiﬁer légèrement cette égalité
+l− 5
+2 =
+√
+l− 7
+4
+On y va (
+l− 5
+2
+)2
+=l− 7
+4
+Mais attention, il faudra faire une réciproque car on n’a pas travaillé par équivalence (l− 5
+2 négatif es possible).
+l2− 5l + 25
+4 =l− 7
+4⇔l2− 6l + 8 = 0
+Cette équation du second degré a pour discriminant
+∆ = 36− 4× 8 = 4
+Et donc comme racines
+l1 = 6− 2
+2 = 2 et l2 = 6 + 2
+2 = 4
+La solutionl = 2 ne convient pas car
+2− 5
+2⁄=
+√
+2− 7
+4
+La solutionl = 4 est la seule possible.
+Comme u0 < 4, ce qui nous arrangerait maintenant c’est que la suite de terme généralun soit croissante et
+majorée par 4, on pourrait alors conclure que la suite de terme généralun est convergente et de limite 4.
+Montrons ce résultat par récurrence. Pouru0 = 11
+4 c’est clair11
+4 < 4 Montrons que un < 4 entraine que
+un+1 < 4
+un+1 = 5
+2 +
+√
+un− 7
+4 < 5
+2 +
+√
+4− 7
+4 = 5
+2 +
+√
+9
+4 = 5
+2 + 3
+2 = 4
+La suite(un)n∈A est majorée par 4 . Pour montrer que la suite(un)n∈N est croissante on aura besoin de montrer,
+au préalable que pour tout∈ Nun > 5
+2, pour ce genre de récurrence on peut dire que c’est trivial, on vériﬁe
+au passage que la suite de terme généralun est déﬁnie pour toutn∈ N car un > 5
+2⇒un− 7
+4 > 0 Regardons
+<<<PAGE>>>
+maintenant si la suite est monotone :
+un+1−un = 5
+2 +
+√
+un− 7
+4−un = 5
+2−un +
+√
+un− 7
+4 =
+(
+5
+2−un +
+√
+un− 7
+4
+)(
+5
+2−un−
+√
+un− 7
+4
+)
+5
+2−un−
+√
+un− 7
+4
+=
+( 5
+2−un
+)2
+−
+(
+un− 7
+4
+)
+5
+2−un−
+√
+un− 7
+4
+= u2
+n− 6un + 8
+5
+2−un−
+√
+un− 7
+4
+= (un− 2) (un− 4)
+5
+2−un−
+√
+un− 7
+4
+5
+2 <u n⇒un− 2> 0
+un < 4⇒un− 4< 0
+5
+2 <u n⇒ 5
+2−un < 0⇒ 5
+2−un−
+√
+un− 7
+4 < 0
+Par conséquentun+1−un > 0, la suite est croissante C’est fait, la suite(un)n∈N est croissante et majorée donc
+elle converge vers la seule limite possiblel = 4
+<<<PAGE>>>
+Exercice 30 (*)
+Pour tout entiern> 0, on considère la fonctionfn : [0, 1]→ R déﬁnie parfn(x) =xn− (1−x)2
+1. Dans cette question, l’entiern est ﬁxé.
+(a) La fonctionfn est-elle strictement monotone?
+(b) Montrer qu’il existe un uniqueαn∈] 0, 1 [ tel quefn (αn) = 0.
+(c) Quel est le signe defn+1 (αn)?
+2. On considère la suite de terme général(αn)n>1.
+3. Montrer à l’aide de la question précédente que la suite(αn)n>1 est croissante.
+4. En déduire que la suite est convergente, on noteraα sa limite.
+5. Supposons queα< 1
+(a) Montrer qu’alors
+lim
+n→+∞
+(αn)n = 0
+(b) A l’aide de la relationfn (αn) = 0, en déduire que1−α = 0, conclure.
+Solution
+1. (a) fn est déﬁnie, continue et dérivable à dérivée continue sur[0, 1].
+f′
+n(x) =nxn−1− 2(1−x)(−1) =nxn−1 + 2(1−x)
+Pourx∈]0, 1
+[
+,x n−1 > 0 et 1−x> 0 donc fn est strictement croissante.
+(b) fn(0) = −1 et fn(1) = 1 , d’après 1.a)fn est une bijection croissante de ]0, 1[ sur ]− 1, 1[, donc
+0∈]− 1, 1 [ admet un unique antécédentαn∈] 0, 1 [, c’est-à-dire tel quefn (αn) = 0.
+(c) fn (αn) = 0⇔αn
+n− (1−αn)2 = 0⇔αn
+n = (1−αn)2
+fn+1 (αn) =αn+1
+n − (1−αn)2 =αn+1
+n −αn
+n =αn
+n (αn− 1)< 0 car αn
+n > 0 et 1−αn < 0
+2. (a) La fonction fn+1 est une bijection croissante donc
+0 =fn+1 (αn+1)>f n+1 (αn)⇔αn+1 >α n
+Par conséquent la suite(αn)n∈N est croissante.
+(b) la suite est croissante et majorée par 1, donc elle converge.
+(c) i. La suite est croissante alors
+0<α n ⩽α
+Cela entraine que
+0<α n
+n ⩽αn
+Or, si0 ⩽α< 1 alors la limite deαn est nulle, on en déduit, d’après le théorème des gendarmes
+que
+lim
+n→+∞
+αn
+n = 0
+ii. On a vu au1.c ) que
+fn (αn) = 0⇔αn
+n = (1−αn)2
+Ce qui entraine, d’après2.c ) i) que
+lim
+n→+∞
+(1−αn)2 = 0
+Autrement dit que
+lim
+n→+∞
+αn = 1
+Ce qui signiﬁe queα = 1, (comme 0 < αn < 1 et que (αn)n→+∞ admet une limiteα entraine
+que 0 ⩽α ⩽ 1 ), il y a une contradiction avec l’hypothèseα< 1, par conséquentα = 1.
+Exercice 31
+Soit (un)n∈N∗ la suite de nombres réels déﬁnie par
+un =n
+(√
+1 + 1
+n− 1
+)
+Montrer que la suite(un)n∈N∗ converge et que sa limite est1
+2.
+Solution
+<<<PAGE>>>
+un =
+√
+1 + 1
+n− 1
+1
+n
+=f
+( 1
+n
+)
+Avec
+f(x) =
+√1 +x− 1
+x
+Si f admet une limite lorsquex→ 0, avecx⁄= 0 alors cette limite est la même que celle deun. Il s’agit d’une
+forme indéterminée.
+Première méthode
+On observe queun =n
+(√
+1 + 1
+n− 1
+)
+=
+√
+1 + 1
+n− 1
+1
+n
+= g
+( 1
+n
+)
+−g(0)
+1
+n− 0 , en posantg(x) =
+√
+1 +x
+Il s’agit du taux de variation, en 0, de la fonctiong, sa limite est g′(0). Comme g′(x) = 1
+2√1 +x on a
+lim
+x→0
+x⁄=0
+√1 +x− 1
+x =g′(0) = 1
+2
+Or lim
+n→+∞
+1
+n = 0, comme lim
+x→0
+x⁄=0
+√1 +x− 1
+x = 0, par composition lim
+n→+∞
+un = 1
+2
+Deuxième méthode
+∀n∈ N∗n
+(√
+1 + 1
+n− 1
+)
+=n
+(√
+1 + 1
+n− 1
+)(√
+1 + 1
+n + 1
+)
+√
+1 + 1
+n + 1
+=n 1 + 1
+n− 1√
+1 + 1
+n + 1
+=n
+1
+n√
+1 + 1
+n + 1
+= 1√
+1 + 1
+n + 1
+lim
+n→+∞
+un = lim
+n→+∞
+1√
+1 + 1
+n + 1
+= 1
+2
+Exercice 32 (Convergence d’une somme)
+On déﬁnit pour toutn ∈ N strictement positif, la suite (un)n∈N de nombres réels strictement positifs par
+un = n2
+2n.
+1. Pour tout entier natureln> 0, on posevn = un+1
+un
+.
+(a) Montrer que lim
+n→+∞
+vn = 1
+2
+(b) Montrer que pour toutn> 0 :vn > 1
+2
+(c) Trouver le plus petit entierN tel que sin >N, alorsvn < 3
+4.
+(d) En déduire que sin >N, alorsun+1 < 3
+4un
+2. On pose pour toutn > 5,S n = u5 +u6 +... +un On se propose de montrer que la suite(Sn)n>5 est
+convergente.
+(a) Montrer par récurrence que pour toutn > 5 :
+un ⩽
+(3
+4
+)n−5
+u5
+(b) Montrer que, pour toutn > 5 :
+Sn ⩽
+[
+1 + 3
+4 +
+(3
+4
+)2
++... +
+(3
+4
+)n−5]
+u5
+(c) En déduire que pour toutn > 5 :Sn ⩽ 4u5.
+3. Montrer que la suite(Sn)n>5 est croissante, puis qu’elle converge.
+Solution
+1. (a) vn = (n + 1)2
+2n2 = 1
+2 + 1
+n + 1
+2n2 On a donc lim
+n→+∞
+vn = 1
+2
+<<<PAGE>>>
+(b) D’après le calcul devn :vn > 1
+2.
+vn− 3
+4 = (n + 1)2
+2n2 − 3
+4 = 4n2 + 8n + 4− 6n2
+4n2 =−2n2 + 8n + 4
+4n2 =−2n2− 4n− 2
+4n2 = 26− (n− 2)2
+4n2
+Or la fonctionx↦→ 6− (n− 2)2 est décroissante sur[2; +∞[ et 6− (5− 2)2 =−3. Donc pourn > 5,
+vn− 3
+4 <−3 donc vn < 3
+4.
+(c) Pourn >N,v n < 3
+4 soit un+1
+un
+< 3
+4 donc un+1 < 3
+4un
+2. Raisonnement par récurrence :
+(a) Initialisation :u5 ⩽u5
+(3
+4
+)5−5
+.
+(b) Hérédité : supposons qu’il existe un entierp tel que :
+up ⩽u5
+(3
+4
+)p−5
+Alors en multipliant par3
+4, on obtient3
+4up ⩽u5
+(3
+4
+)p−4
+. Orup+1 < 3
+4up d’oùup+1 ⩽u5
+(3
+4
+)p−4
+.
+(c) On additionne les diﬀérentes inégalités précédentes.
+(d) 1 + 3
+4 +
+(3
+4
+)2
++... +
+(3
+4
+)n−5
+= 4
+(
+1−
+(3
+4
+)n−4)
+⩽ 4
+D’où en multipliant paru5 :Sn ⩽ 4u5.
+3. Sn+1−Sn =un+1 > 0 donc (Sn) est croissante. Comme elle majorée (par4u5 ), elle converge (théorème
+de la convergence monotone).
+<<<PAGE>>>
+Cycle Préparatoire - Première Année
+Remédiation - 2021/2022
+Fonctions
+Limites, Continuité, Dériv a tion
+Exercice 33 (calcul de limites)
+Déterminer les limites de la fonctionf déﬁnie parf :x↦→ 2x2 + 1
+x + 3 en−∞, en−3(x< −3), en−3(x> −3), en
+0 et en+∞.
+Solution
+On a lim
+x→−∞
+f (x) = lim
+x→−∞
+2x2
+x = lim
+x→−∞
+2x =−∞.
+De même, lim
+x→+∞
+f (x) = +∞
+On a également lim
+x→−3
+x + 3 = 0
+et lim
+x→3
+2x2 + 1 = 10
+f(x) au voisinage de -3 est du signe dex + 3 donc
+lim
+x→−3
+x<−3
+f(x) =−∞ et lim
+x→−3
+x>−3
+f(x) = +∞
+Exercice 34 (continuité)
+Soit une fonction continue de [0;1] dans [0;1]. On suppose que f([0; 1]) = [0; 1]. Démontrer que l’équation
+f(x) =x admet au moins une solution sur [0;1].
+Solution
+On poseg telle queg(x) =f(x)− 1.
+On ag(0) =f(0)− 0 =f(0) or f(0)∈ [0; 1]donc f(0) > 0 et g(1) =f(1)− 1 or f(1)∈ [(0; 1]donc f(1) ⩽ 0
+g est continue commef sur [0; 1]et 0∈ [f(1);f(0)]
+D’apres le théorème des valeurs intermédiaires, il existe un réelα de [0; 1]tel queg(α) = 0
+donc f(α) =α
+Exercice 35 (continuité)
+Soit la fonctionf déﬁnie sur [0;2] parf(x) = 3−x3.
+1. Justiﬁer quef est strictement décroissante sur[0; 2].
+2. Démontrer que l’équationf(x) = 1 a une et une seule solution dans[0; 2].
+3. Donner un encadrement d’amplitude0, 01 de cette solution.
+Solution
+1. f est dérivable sur[0; 2]comme fonction polynôme.
+∀x∈ R, f ′(x) =−3x2
+Donc f′(x)< 0 donc f est strictement décroissante sur[0; 2].
+2. on f(0) = 3 et f(2) =−5 donc 2∈ [f(2);f(0)], de plusf continue et strictement décroissante.
+D’après le corollaire du théorème des valeurs intermédiaires, l’équationf(x) = 1 admet une solution
+unique dans [0; 2]
+3. On af(1.44) = 0.014 et f(1.45) =−0.486 donc la solution est comprise entre 1.44 et 1.45.
+Exercice 36 (continuité)
+Démontrer que l’équation−x3 + 3x + 3 = 0 admet une seule solution surR.
+Solution
+On déﬁnit la fonctionf sur R par f(x) =−x3 + 3x + 3.
+<<<PAGE>>>
+f est dérivable surR et∀x∈ R,f′(x) =−3x2 + 3 = 3(1−x)(1 +x).
+On dresse le tableau de variations def :
+x
+signe
+f′(x)
+variation
+de f
+−∞ −1 1 +∞
+− 0 + 0 − 0
++∞+∞
+11
+55
+−∞−∞
+On constate sur]−∞ ; 1] que f décroissante puis croissante et admet pour minimum 1, donc elle ne s’annule
+pas.
+Sur [1; +∞[,f est continue, strictement décroissante etf(1)> 0 et lim
+x→+∞
+f(x) =−∞. Donc d’après le théorème
+de la bijection, 0 admet un unique antécédent parf donc l’équationf(x) = 0 admet une solution unique sur
+[1; +∞[.
+Finalement, sur R, f(x) = 0 admet une solution unique surR.
+Exercice 37 (calcul de limites et de dérivées)
+1. Déterminer, si elle existe, la limite en+∞ des fonctionsf suivantes :
+f(x) =
+√
+2x + 1a) f(x) = 1
+(−x + 1)3b) f(x) = 1
+(x2 + 1)4c)
+f(x) = cos(
+√
+x2 + 1)d) f(x) = ln(
+√
+2x + 1)e) f(x) =e− x2
+2f)
+2. Déterminer les expressions des fonctions dérivéef′ de chacune des fonctions.
+Solution
+a) lim
+x→+∞
+x + 1 = +∞ et lim
+U→+∞
+√
+U = +∞ donc par composition lim
+x→+∞
+√
+x + 1 = +∞
+b) lim
+x→+∞
+−x + 1 =−∞ et lim
+U→+∞
+1
+U 3 = 0 donc par composition lim
+x→+∞
+1
+(−x + 1)3 = 0
+c) lim
+x→+∞
+x2 + 1 = +∞ et lim
+U→+∞
+1
+U 4 = 0 donc par composition lim
+x→+∞
+1
+(x2 + 1)4 = 0
+d) Pas de limite....
+e) lim
+x→+∞
+2x + 1 = +∞ et lim
+U→+∞
+√
+U = +∞ donc par composition lim
+x→+∞
+√
+2x + 1 = +∞
+et lim
+V→+∞
+lnV = +∞
+donc par composition lim
+x→+∞
+ln(
+√
+2x + 1) = +∞
+f) lim
+x→+∞
+−x2
+2 =−∞ et lim
+U→−∞
+eU = 0 donc par composition lim
+x→+∞
+e
+−
+x2
+2 = 0
+Exercice 38 (Etude de fonction)
+f est la fonction déﬁnie surI = R par f(x) =
+√
+x2 + 2x + 3. On notef′ sa fonction dérivée.
+1. Justiﬁer quef est déﬁnie sur I.
+2. Déterminer les limites def aux bornes de son ensemble de déﬁnition.
+3. Déterminer l’expression def′(x) en fonction dex.
+4. Dresser le tableau de variation def sur I.
+Solution
+1.
+2. lim
+x→+∞
+x2 + 2x + 3 = +∞ et lim
+u→+∞
+√
+U = +∞
+Donc par composition de limites, lim
+x→+∞
+√
+x2 + 2x + 3 = +∞.
+De même en−∞, lim
+x→−∞
+√
+x2 + 2x + 3 = +∞.
+3. f′ (x) = 2x + 2
+2
+√
+x2 + 2x + 3
+= 2 (x + 1)√
+x2 + 2x + 3
+donc f′(x) est du signe dex + 1.
+<<<PAGE>>>
+4. On a le tableau de variation suivant :
+x
+signe
+f′(x)
+variation
+de f
+−∞ −1 +∞
+− 0 +
++∞+∞
+√
+2
+√
+2
++∞+∞
+Exercice 39 (Etude de fonction)
+On considère la fonctionf :x↦→ 1
+x2 + 1. Démontrer quef(R) =]0; 1]
+Solution
+f est une fonction rationnelle dont le dénominateur ne s’annule pas donc elle est déﬁnie et dérivable surR.
+∀x∈ R,f′(x) =− 2x
+(x2 + 1)2
+f′ est du signe de−2x
+On détermine aisément que lim
+x→+∞
+f(x) = lim
+x→−∞
+f(x) = 0
+On peut dresser son tableau de variations :
+x
+signe
+f′(x)
+variation
+de f
+−∞ −1 +∞
++ 0 −
+00
+11
+00
+En remarquant quef est paire, il suﬃt d’étudierf sur [0; +∞[.
+f étant croissante sur[0; +∞[, f(R)⊂]0; 1].
+On souhaite montrer que]0; 1]⊂f(R) Soity∈]0; 1[, on ay∈] lim
++∞
+f;f(0)], de plusf est continue sur] lim
++∞
+f;f(0)]
+donc il existe un réelx sur ] lim
++∞
+f;f(0)] tel quef(x) =y.
+Donc ]0; 1]⊂f(R) et ]0; 1] =f(R)
+Exercice 40 (Fonction auxiliaire)
+Soit f la fonction déﬁnie surI = [0; 1]par f(x) = 3x + 2
+x + 4 .
+1. Montrer que pour toutx de I,f(x) appartient à I.
+2. Soit un la suite déﬁnie paru0 = 0 et un+1 =f(un).
+Montrer par récurrence que∀n∈ N,u n∈I
+3. On va étudier le sens de variation de(un)n>0 de deux manières diﬀérentes. Première approche dans cette
+question :
+(a) Etudier le signe de−x2−x + 2 sur I
+(b) Etudier le sens de variation de la suiteu.
+4. Deuxième approche : Etudier le sens de variation de(un)n>0 par récurrence.
+Solution
+1. La fonctionf est une fonction rationnelle, déﬁnie et donc dérivable sur I.
+On déﬁnit les fonctionsu et v par :
+pour tout réelx, u(x) = 3x + 2 et v(x) =x + 4.
+∀x∈ R,f′(x) = u(x)v(x)−u(x)v′(x)
+v(x)2 = 3(x + 4)− 1(3x + 2)
+(x + 4)2 = 10
+(x + 4)2
+Donc∀x∈I,f′(x)> 0
+Donc f est une fonction strictement croissante sur I.
+Pour x∈ I, 0 ⩽ x ⩽ 1, donc, commef est strictement croissante sur I,f(0) ⩽f(x) ⩽f(1) donc 1
+2 ⩽
+f(x) ⩽ 5
+5 comme 0 ⩽ 1
+2, f(x)∈I.
+<<<PAGE>>>
+2. On déﬁnit la propriété P, pour tout entier natureln > 0, Pn :un∈I
+• Initialisation
+On au0 = 0 donc P0 :u0∈I est vraie.
+• Hérédité
+Soit k∈ N
+On veut montrer que siPk :uk∈I est vraie alorsPk+1 :uk+1∈I
+On suppose que uk∈I. D’après la propriété de la question 1) on af(uk)∈I donc uk+1∈I donc Pk+1
+est vraie.
+Donc∀n∈ N, un∈I
+3. (a) On reconnaît un trinôme aveca =−1, b =−1 et c = 2. 1 est une racine évidente :−x2−x + 2−
+(−12− 1 + 2) = (−x2 + 1) + (−x + 1) = (1−x)(x + 1 + 1) = (1−x)(x + 2). Ce trinôme a deux
+racines : 1 et -2. Commea< 0 ce trinôme est positif sur[−2; 1]donc positif sur I.
+Donc∀x∈I,−x2−x + 2 > 0
+(b) ∀n∈ N,u n+1−un = 3un + 2
+un + 4 −un =−u2
+n−un + 2
+un + 4
+D’après 3) a),−u2
+n−un + 2 > 0 et un + 4> 0 donc un+1−un > 0 donc u est croissante.
+4. On déﬁnit la propriété P, pour tout entier natureln > 0, Pn :un+1 >un
+• Initialisation
+On au0 = 0 et u1 = 1
+2donc P0 :u1 >u0 est vraie.
+• Hérédité
+Soit k∈ N
+On veut montrer que siPk :uk+1 >uk est vraie alorsPk+1 :uk+2 >uk+1
+On suppose queuk+1 >uk. Commef est croissante,f(uk+1) >f(uk) doncuk+2 >uk+1 doncPk+1 est
+vraie.
+Donc∀n∈ N, un+1 >un donc u est croissante.
+<<<PAGE>>>
+Pour aller plus loin ...
+Exercice 41 (Fonction auxiliaire)
+Soit la suite(un) déﬁnie par :u0 = 2 et∀n∈ N un+1 = 2 + 1
+un
+.
+1. Soit la fonctionf déﬁnie parf :x↦→ 2 + 1
+x. Montrer que pour toutx de I = [2; 3],f (x) est dans I.
+2. Montrer que pour toutn∈ N, 2 ⩽un ⩽ 3.
+3. Cette suite est-elle monotone?
+Solution
+1. f est dérivable sur I comme somme de fonction dérivable et∀x∈I,f′(x) =− 1
+x2 donc f′(x)< 0 sur I et
+f est strictement décroissante sur I donc∀x∈I, 2 ⩽x ⩽ 3 donc f(2) >f(x) >f(3) donc 7
+3 ⩽f(x) ⩽ 5
+2
+donc 2 ⩽f(x) ⩽ 3 car 2< 7
+3 et 5
+2 < 3
+donc f(x)∈I
+2. On déﬁnit la propriété P, pour tout entier natureln > 0, Pn :un∈I
+• Initialisation
+On au0 = 2 donc u0∈I donc P0 est vraie.
+• Hérédité
+Soit k∈ N
+On suppose que uk∈I.
+D’après la propriété de la question 1,f(uk)∈I or uk+1 =f(uk)
+donc uk+1∈I
+donc Pk+1 est vraie.
+• Donc∀n∈ N,u n∈I
+3. On au1 = 5
+2 et u2 = 12
+5 donc u1 > u2 et u1 > u0 donc la suite n’est ni croissante, ni décroissante. Elle
+n’est pas monotone.
+Exercice 42
+(Position relative) Soitf(x) = x2 + 1
+x− 3 .
+Déterminer une asymptote deCf la courbe représentative def en−∞ et déterminer la position relative deCf
+par rapport à l’asymptote surR\{ 3}.
+Solution
+On a∀x∈ R\{ 0; 3}f(x)
+x = x2 + 1
+x2− 3
+lim
+x→+∞
+f(x)
+x = lim
+x→+∞
+x2
+x2 = lim
+x→+∞
+1 = 1
+On af(x)−x = x2 + 1−x2 + 3x
+x− 3 = 1 + 3x
+x− 3
+lim
+x→+∞
+f(x)−x = lim
+x→+∞
+3x
+x = lim
+x→+∞
+3 = 3
+Donc lim
+x→+∞
+f(x)− (x + 3) = 0
+Donc la droite d’équationy =x + 3 est une asymptote à la courbe def.
+De plusf(x)− (x− 3) = 1 + 3x
+x− 3 − 3 = 10
+x− 3 est du signe dex− 3
+donc sur ]−∞; 3[, la courbe est au dessous de l’asymptote, sinon, elle est au-dessous.
+Exercice 43
+Montrer que les fonctions suivantes ne sont pas dérivables en 0 : fonction racine carrée, valeur absolue.
+Solution
+1. Fonction racine carré
+On construit le taux de variation de la fonction racine carré entre 0 eth
+T0(h) =
+√
+h−
+√
+0
+h− 0 = 1√
+h
+Orlimx→0T0(h) = +∞ donc la limite du taux n’est pas ﬁnie donc la fonction√ n’est pas dérivable en 0.
+<<<PAGE>>>
+2. Fonction valeur absolue.
+On construit le taux de variation de la fonction valeur absolue entre 0 eth.
+T0(h) =|h|− 0
+h− 0 =|h|
+h
+Si h> 0, T0(h) = 1 donc la limite est 1.
+Si h< 0, T0(h) =−1 donc la limite est -1. Donc le taux n’admet de limite en 0
+Donc la fonction valeur absolue n’est pas dérivable en 0.
+Exercice 44
+Soit la fonctionf déﬁnie pour tout réelx∈ [0; +∞[ parf(x) =x√x. Démontrer que la fonctionf est continue
+et dérivable sur[0; +∞[
+Solution
+Exercice 45
+Soit la fonctionf déﬁne par
+
+
+
+Pourx⁄= 0,f (x) = 1−
+√
+x2 + 1
+x
+Pourx = 0,f (0) =m
+1. Déterminer m pour quef soit continue en 0.
+2. f est-elle dérivable surR?
+3. Déterminer la dérivée def sur R.
+Solution
+<<<PAGE>>>
+Exercice 46
+Soit la fonctionf :x↦→ (1−x)
+√
+1−x2.
+1. Etudier la dérivabilité def sur son ensemble de déﬁnition.
+2. Déterminer la dérivée def.
+Solution
+<<<PAGE>>>
+Exercice 47
+Démontrer la dérivabilité des fonctions suivantes, déterminer leur nombre dérivé et une équation de la tangente
+au point d’abscisse 1.
+1. f déﬁnie parf(x) =
+√
+−x2 + 2x + 3
+2. h déﬁnie parh(x) = 1
+(x2 + 2)3
+<<<PAGE>>>
+3. g déﬁnie parg(x) = x2− 1√
+x2 +x
+4. k déﬁnie park(x) = cos
+√
+x2 + 1
+Solution
+Exercice 48
+Les aﬃrmations suivantes sont fausses. Trouver un contre-exemple à chacune d’elle.
+1. Sif est une fonction est déﬁnie surR et que lim
+x→−∞
+f(x) =−∞. et lim
+x→+∞
+f(x) = +∞ alorsf est croissante
+sur R.
+2. Si f est une fonction strictement croissante surR alors limf(x) = +∞.
+3. Si f est une fonction déﬁnie sur[0; +∞[ telle que f(0) = 0 et limf(x) = +∞ alors f est positive sur
+[0; +∞[.
+Solution
+1. FAUX :f :x↦→x3− 2x, f(−1) = 1 et f(0) = 0 donc f n’est pas croissante.
+<<<PAGE>>>
+2. FAUX :f déﬁnit sur[2; +∞[ par f(x) = x
+x + 1
+et f impaire.
+f′(x) = 1
+x2 > 0 donc f est croissante surR.
+3. FAUX :h :x↦→x2− 2x
+x
+signe
+f′(x)
+variation
+de f
+−∞ 1 +∞
+− 0 +
+-1-1
+0
+0
+<<<PAGE>>>
+Cycle Préparatoire - Première Année
+Remédiation - 2021/2022
+Trigonométrie
+Fonctions Sinus et Cosinus
+Exercice 49
+Placer sur le cercle trigonométrique les angles suivants :
+5π,−5π
+2 , 11π
+3 ,−11π
+4 , 13π
+4 , 13π
+6 ,−5π
+3 ,−534π,−99π
+2Solution
+−99π
+2
+5π
+−5π
+2
+−534π
+13π
+6 =−5π
+3
+11π
+3
+−11π
+4 = 13π
+4
+Exercice 50
+On pose sin π
+10 =m. Exprimer en fonction dem :
+a. sin 9π
+10 b. sin 11π
+10 c. cos 4π
+10 d. cos 6π
+10
+Solution
+sin 9π
+10 = sin
+(
+π− 9π
+10
+)
+= sin π
+10 =ma) sin 11π
+10 = sin
+(
+π + π
+10
+)
+=− sin π
+10 =−mb)
+cos 4π
+10 = cos
+(π
+2− π
+10
+)
+= sin π
+10 =mc) cos 6π
+10 = cos
+(π
+2 + π
+10
+)
+=− sin π
+10 =−md)
+Exercice 51
+Exprimer en fonction decosx ou sinx
+cos(x + 3π)a) cos
+(7π
+2 −x
+)
+b) cos
+(
+x− π
+2
+)
+c) cos(−x−π)d)
+cos
+(
+x− 3π
+2
+)
+e) sin
+(
+x− π
+2
+)
+f) cos(x− 5π)g) sin
+(
+x− 3π
+2
+)
+h)
+sin(x + 3π)i) sin
+(7π
+2 −x
+)
+j) sin(x− 5π)k)
+Solution
+cos(x + 3π) = cos(x + 2π +π) = cos(x +π) = cosxa)
+cos
+(7π
+2 −x
+)
+= cos
+(
+2π− π
+2−x
+)
+= cos
+(
+−π
+2−x
+)
+= cos
+(π
+2 +x
+)
+=− sinxb)
+cos
+(
+x− π
+2
+)
+= cos
+(π
+2−x
+)
+= sinxc)
+cos(−x−π) = cos(x +π) =− cosxd)
+<<<PAGE>>>
+cos
+(
+x− 3π
+2
+)
+= cos
+(
+x + 2π− 3π
+2
+)
+= cos
+(
+x + π
+2
+)
+=− sinxe)
+sin
+(
+x +−π
+2
+)
+= cosxf)
+cos(x− 5π) = cos(x−π) =− cosxg)
+sin
+(
+x− 3π
+2
+)
+= sin
+(
+x + 2π− 3π
+2
+)
+= sinx + π
+2 = cosxh)
+sin(x + 3π) = sin (x +π) =− sinxi)
+sin
+(7π
+2 −x
+)
+= sin
+(π
+2−x
+)
+= cosxj)
+sin(x− 5π) =− sinxk)
+Exercice 52
+Démontrer que pour tout réelx : sinx + cos
+(
+x + π
+2
+)
++ cosx− sin
+(
+x + π
+2
+)
+= 0
+Solution
+sinx + cos
+(
+x + π
+2
+)
++ cosx− sin
+(
+x + π
+2
+)
+= sinx− sinx + cosx− cosx = 0
+Exercice 53 1. Résoudre dans ]-π;π ] l’équationsinx = sin 2π
+3 .
+2. Résoudre dans ]−π;π] l’équationcosx = cos
+(3π
+4
+)
+.
+3. Résoudre dans ]0; 2π] l’équationcosx =−1
+2.
+4. Résoudre dans [0; 2π] l’équationsinx = sin
+(
+−2π
+3
+)
+Solution
+1. sinx = sin 2π
+3 ⇔x = 2π
+3 + 2kπ,k ∈ Z ou x = π
+3 + 2kπ,k ∈ Z
+On a doncS =
+{2π
+3 ,π
+3
+}
+2. cosx = cos
+(3π
+4
+)
+⇔x = 3π
+4 + 2kπ,k ∈ Z ou x =−3π
+4 + 2kπ,k ∈ Z
+On a doncS =
+{
+−π
+4,π
+4
+}
+3. cosx =−1
+2⇔x = 2π
+3 + 2kπ,k ∈ Z ou x =−2π
+3 + 2kπ,k ∈ Z
+Or−2π
+3 /∈ [0; 2π[
+On a doncS =
+{4π
+3 , 2π
+3
+}
+4. sinx = sin
+(
+−2π
+3
+)
+⇔x =−2π
+3 + 2kπ,k ∈ Z ou x =−π
+3 + 2kπ,k ∈ Z
+On a doncS =
+{4π
+3 , 5π
+3
+}
+Exercice 54
+Transformer chacune des équations suivantes en utilisant les formules des angles associées, puis les résoudre
+dans R.
+cosx = sinxa) sin 2x = cosxb) cos 3x = sinxc)
+sin
+(π
+4 +x
+)
++ cos
+(π
+4−x
+)
+= 1d) sin 3x =− sin 2xe)
+Solution
+<<<PAGE>>>
+cosx = sinx⇔ cosx = cos
+(π
+2−x
+)
+⇔x = π
+2−x + 2kπ,k ∈ Z ou x =−π
+2 +x + 2kπ,k ∈ Z
+⇔ 2x = π
+2 + 2kπ,k ∈ Z ou π
+2 = 2kπ,k ∈ Z⇔x = π
+4 +kπ,k ∈ Z
+S =
+{π
+4 +kπ,k ∈ Z
+}
+a)
+sin 2x = cosx⇔ sin 2x = sin
+(π
+2−x
+)
+⇔ 2x = π
+2−x + 2kπ,k ∈ Z ou 2x = π− π
+2 +x + 2kπ,k ∈ Z
+⇔ 3x = π
+2 + 2kπ,k ∈ Z ou x = π
+2 + 2kπ,k ∈ Z⇔x = π
+6 +k 2π
+3 ,k∈ Z ou x = π
+2 + 2kπ,k ∈ Z
+Donc S =
+{π
+6 +k 2π
+3 ,x = π
+2 + 2kπ,k ∈ Z
+}
+b)
+cos 3x = sin x⇔ cos 3x = cos
+(π
+2−x
+)
+⇔ 3x = π
+2−x + 2kπ,k ∈ Z ou 3x =−π
+2 +x + 2kπ,k ∈ Z
+⇔ 4x = π
+2 + 2kπ,k ∈ Z ou 2x =−π
+2 + 2kπ,k ∈ Z⇔x = π
+8 +kπ
+2,k∈ Z ou x =−π
+4 +kπ,k ∈ Z
+Donc S =
+{π
+8 +kπ
+2,−π
+4 +kπ,k ∈ Z
+}
+c)
+sin
+(π
+4 +x
+)
++ cos
+(π
+4−x
+)
+= 1d)
+sin 3x =− sin 2xe)
+Exercice 55
+f est la fonction déﬁnie surR par f(x) = 1
+2 + cosx
+1. (a) Exprimer f(−x) et f(x + 2π) en fonction def(x).
+(b) Expliquer pourquoi il suﬃt d’étudierf sur I = [0;π].
+2. Déterminer l’expression def′(x) en fonction dex, et étudier son signe sur I.
+3. Dresser le tableau de variation def sur I, puis tracer la courbe représentative def sur I et la compléter
+sur [−π; 0], puis sur[π; 3π]
+Solution
+1. (a) f(−x) = 1
+2 + cos(−x) = 1
+2 + cosx =f(x).
+(b) Donc on peut étudier sur[0; +∞[ et en déduire les variations sur]−∞ ; 0]par symétrie.
+f(x + 2π) = 1
+2 + cos(x + 2π) = 1
+2 + cosx =f(x)
+Donc on peut étudierf sur une période, por exemple[−π;π] et par symétrie sur[0;π].
+2. On a 2 + cosx > 1 donc f est déﬁnie et dérivable sur I comme quotient de fonction dérivables.f′(x) =
+− sinx
+(2 + cosx)2 donc [0;π],f′(x) > 0 donc f croissante avecf(x) = 0⇔x = 0 ou x =π.
+3.
+Exercice 56
+Etudier le sens de variations def sur R. g(x) = 2− cosx
+2 + cosx Solution
+On ag(x + 2π) =g(x) et g(−x) =g(x)
+On peut étudierg sur [0;π].
+g est dérivable sur[0;π] comme quotient de fonctions dérivables.
+∀x∈ [0;π],g′(x) = (2 + cosx)(sinn)− (2− cosx)(− min)
+(2 + cosx)2 donc g′(x) = 4 sinx
+(2 + cosx)2
+x
+signe
+de g′(x)
+variation
+de g
+0 π
+0 + 0
+1
+3
+1
+3
+33
+<<<PAGE>>>
+Pour aller plus loin ...
+Exercice 57
+Résoudre dans ]−π;π] les inéquations suivantes :
+a) 2 sinx−
+√
+3 > 0 b) 2 cosx +
+√
+3 ⩽ 0 c) 1− 2 sinx > 0 d) 1 + 2 cosx > 0
+Solution
+a) 2 sinx−
+√
+3 > 0⇔ sinx >
+√
+3
+2 ⇔ sinx > sinπ
+3
+S =
+[π
+3 ; 2π
+3
+]
+b) 2 cosx +
+√
+3 ⩽ 0⇔ cosx ⩽−
+√
+3
+2 ⇔ cosx ⩽ cos 5π
+6
+S =
+]
+−π;−5π
+6
+]
+∪
+[5π
+6 ;π
+]
+c) 1− 2 sinx > 0⇔ sinx ⩽ 1
+2⇔ sinx ⩽ sinπ
+6
+S =
+]
+−π;π
+6
+]
+∪
+[5π
+6 ;π
+]
+d) 1 + 2 cosx > 0⇔ cosx >−1
+2⇔ cosx > cos 2π
+3
+S =
+]
+−π;−2π
+3
+]
+∪
+[2π
+3 ;π
+]

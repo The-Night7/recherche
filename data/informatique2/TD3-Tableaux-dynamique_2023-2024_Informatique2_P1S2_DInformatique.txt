@@ -1,0 +1,115 @@
+Pré-ING1
+Semestre 2 - 2022/2023
+Informatique II
+TD 5 : T ableaux dynamiques
+Ne pas oublier de créer un répertoire pour placer les codes de ce TP!
+T outes les fonctions écrites doivent être testées dans le programme principal !
+Exercice 1 (lecture de code : double pointeur )
+Qu’affiche le code suivant?
+#include<stdio.h>
+int main(){
+int a,b,c;
+int *pa,*pb;
+int **ppa;
+pa=&a;
+pb=&b;
+ppa=&pa;
+*pa=10;
+*pb=-2;
+c=b*2;
+**ppa=*pb+5;
+*ppa=&c;
+*pa=*pb+a;
+printf("%d, %d, %d \n",a,b,c);
+return 0;
+}
+Exercice 2 (Tableaux dynamiques 1D)
+— Écrire une fonction randTab qui prend trois arguments entiersn, x, y et qui renvoie l’adresse d’un tableau ayantn
+cases, et contenant des entiers aléatoires entrex et y.
+— Tester la fonction dans le programme principal. Les valeurx, n et y seront saisies par l’utilisateur. Afficher le tableau
+obtenu.
+— Écrire une fonction tabPair qui prend un tableau en paramètre, et qui renvoie l’adresse d’un tableau contenant
+uniquement les valeurs paires du tableau passé en paramètre.
+— Écrire une fonctionnoDouble qui prend un tableau en paramètre, et qui renvoie un tableau ayant supprimé toutes les
+valeurs identiques contiguës.
+Exemple : [1,1, 1, 8, 2, 7, 7, 8, 9, 2] devient [1, 8, 2, 7, 8, 9, 2].
+Exercice 3 (Tableau de Prénom) Dans cet exercice, nous allons stocker une liste de prénom dans un tableau. Puisqu’une
+chaîne de caractère est un tableau, il s’agira donc d’un tableau de tableau.
+1. Déclarer un double pointeur de type chartabPrenom pointant sur NULL. Ce pointeur servira comme pointeur sur un
+tableau contenant les adresses des chaîne de caractères à stocker.
+2. Demander à l’utilisateur combient de prénoms il souhaite stocker. Allouer l’espace necessaire sur lequel devra pointer
+tabPrenom.
+3. Remplir ce tableau de chaîne de caractères. Pour chaque prénom à saisir :
+— Demander d’abord à l’utilisateur le nombre de lettres du prénom.
+— Allouer un tableau de caractère en fonction du nombre de lettres saisi précédement (attention, il faut penser au
+caractèredefinajoutéautomatiquementenfindeschaînesdecaractères,ilfautdoncajouterunecasesupplémentaire
+par rapport au nombre de lettres).
+— Saisir le prénom à stocker.
+1
+<<<PAGE>>>
+4. Écrire une procédureaffichePrenom prenant un tableau de caractère en paramètre et qui affiche la liste des prénoms
+stockés.
+5. Modifier le tableau de prénom pour que les premières lettres de chaque prénom soit des majuscules si ce n’est pas le
+cas (regarder la table ASCII).
+Exercice 4 (Calculatrice)
+On rappelle que pour la fonction main peut prendre des arguments et que sa version complète estint main(int argc,
+char **argv) avec
+— argc le nombre de paramètres passés à l’execution +1
+— argv un tableau contenant les chaînes de caractères correspondant aux différents paramètre (le premier paramètre est
+*argv[1]).
+1. Écrire un programme qui affiche le résultat de l’addition de deux nombres passé en paramètre lors de l’execution.
+2. Modifier ce programme pour qu’il affiche le résultat d’une opération (+ - * ou /) entre deux nombres entiers passés
+en paramètres. (la fonctionatoi appartenant à la bibliothèquestdlib permet de transformer une chaîne de caractère
+en entier).
+3. Modifier le programme précédent pour gerer des opération sur les nomnbres réel.(la fonctionatof appartenant à la
+bibliothèque stdlib permet de transformer une chaîne de caractère en réel).
+Exercice 5 (Triangle de Pascal)
+Les coefficients binomiaux
+n
+k
+
+sont des coefficients entiers très utiles en mathématiques, notament en statistique.
+Le triangle de Pascal est une méthode graphique qui permet de trouver facilement le résultat de coefficients binomiaux
+sans avoir besoin de calculer des factorielles. Il s’agit d’un tableau dont chaque "case" représente le résultat d’un coefficient
+binomial avecn representant les lignes, etk les colonnes. Puisquek ≤ n, ce tableau est en réalité un triangle (voir le schéma).
+Le calcul des coefficients se base sur la relation récursive suivante :n
+k
+
+=
+n − 1
+k − 1
+
++
+n − 1
+k
+
+et se construit comme indiqué sur l’exemple suivant :
+Une "case" d’un triangle de Pascal se calcul donc en additionnant la case du dessus et la case au dessus à gauche (sachant
+que
+0
+0
+
+= 1).
+Dans cet exercice nous representerons le triangle de Pascal parun ensemble de tableaux donc chacun represente une
+ligne du triangle . Nous allons donc utiliser un tableau de tableaux.
+1. Coder une fonction/procédurechoixNMax(...)(à vous de choisir les arguments) qui va demander à l’utilisateur de
+saisir un nombren_max représentant l’argument n maximum du coefficient binomial qu’il souhaite calculer (sachant
+que n_max doit être un entier strictement positif).
+2. Combien de lignes doit faire le triangle de Pascal souhaité?
+2
+<<<PAGE>>>
+3. Coder une fonction/procédure créerT riangle(...)(à vous de choisir les arguments) qui va retourner une variable
+contenant les adresses de chacun des tableaux répresentant les lignes. Cette fonction va construire le triangle de Pascal
+contenant le bon nombre de lignes souhaitées et les bonnes valeurs dans chaque case. Toutes les cases du triangle
+doivent pouvoir être accessibles via la variable retournée.
+4. Écrire une procédurevoid affichePascal(int **tab, int n_max)permettant d’afficher le triangle de Pascal re-
+presenté par tab avec le coefficientn allant jusqu’à n_max. L’affichage doit être conforme avec l’exemple qui suit
+(n_max = 7) :
+5. Dans leprogramme principal, en utilisant, entre autres, les fonctions codées précédemment, demander à l’utilisateur
+de saisir un nmax puis des coefficients n et k (en respectant toutes les règles que doivent respecter ces coefficients),
+créer et afficher le triangle de pascal correspondant, et afficher la valeur du résultat de
+n
+k
+
+grace au triangle créé.
+3

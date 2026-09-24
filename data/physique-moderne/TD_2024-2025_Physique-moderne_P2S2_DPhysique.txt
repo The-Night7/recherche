@@ -1,0 +1,423 @@
+CY Cergy Paris Université 2024–2025
+CY Tech
+PréIng 2
+Travaux dirigés
+Introduction à la physique moderne
+Version élève du mercredi 5 mars 2025 à 22h50.
+Ce document est disponible sur Moodle.
+Merci de ne pas le diffuser en dehors de CY Cergy Paris Université.
+— 1/15 —
+<<<PAGE>>>
+Contact
+Enseignants chargés du cours magistral :
+• PanayotisAkridas–Morel pakridas@cyu.fr (ne pas passer par Teams)
+• Lucie Desplat lucie.desplat@cyu.fr à Pau
+Enseignants chargés des travaux dirigés :
+• PanayotisAkridas–Morel
+• Abdelaziz Boumiz abdelaziz.boumiz@cyu.fr
+• Émilie Dupont emilie.dupont@cyu.fr
+• FabienPiguet fabien.piguet@cyu.fr
+Bureau : Bâtiment Cauchy — 2e étage — CY 308
+— 2/15 —
+<<<PAGE>>>
+Références indicatives
+[A] Mécanique quantique 1, Claude Aslangul, De Boeck supérieur (2007) [Cerclades :
+530.12 ASL].
+[Ber] Physique quantique — Berkeley : cours de physique — Volume 4, Eyvind H.
+Wichmann, Librairie Armand Colin (1974) [Cerclades : 530 BER (édition de 1998)].
+[BasDa] Mécanique Quantique, Jean-Louis Basdevant et Jean Dalibard, Éditions de
+l’École Polytechnique (2008) [Cerclades : 530.12 BAS].
+[H] Physique, Eugene Hecht, De Boeck supérieur (1999) [Cerclades : 530.12 BAS].
+[K] Modern Physics, Kenneth S.Krane, 4e édition, Wiley (2020).
+[LL] Physique théorique : théorie des champs, LevLandau et EvgueniLifchitz, MIR-
+Ellipses (1994).
+[LeBa] Quantique : rudiments, Jean-Marc Lévy-Leblond et Françoise Balibar, Éditions
+Dunod (1997) [Cerclades : 530.12 LEV (éd. Masson)].
+[SiA] Cours de physique générale — Tome 5 Physique atomique et nucléaire — Première
+partie, D. Sivoukhine, Éditions Mir (1982).
+[SiE] Cours de physique générale — Tome 3 Électricité, D. Sivoukhine, Éditions Mir
+(1983).
+[Zu] Quantum Mechanics for Beginners : With Applications to Quantum Communication
+and Quantum Computing, Oxford University Press (2020) [BU de Toulouse].
+— 3/15 —
+<<<PAGE>>>
+Données
+Constantes fondamentales
+« La Conférence générale des poids et mesures (CGPM), à sa 26e réunion, [... ] décide
+qu’à compter du 20 mai 2019, le Système International d’unités, le SI, est le système
+d’unités selon lequel » :
+• la vitesse des ondes électromagnétiques dans le vide vaut
+c = 299 792 458 m· s−1;
+• la constante de Planck vauth = 6,626 070 15× 10−34 J· s;
+• la charge élémentaire vaute = 1,602 176 634× 10−19 C;
+• la constante de Boltzmann vautkB = 1,380 649× 10−23 J· K−1;
+• la constante d’ A vogadrovaut NA = 6,022 140 76× 1023 mol−1
+Autres constantes usuelles
+Constante dePlanck réduite (ou deDirac) ℏ =h/2π
+Masse (au repos) d’un nucléon (proton ou neutron)M≈ 1,67× 10−27 kg
+Masse (au repos) de l’électronm≈ 9,109× 10−31 kg
+Constante gravitationnelleG≈ 6,674 30× 10−11 m3· kg−1· s−2
+1 eV = 1,602 176 634× 10−19 J
+Perméabilité (magnétique) du vide
+µ0 = 4παℏ
+e2c ≈ 1,257× 10−6 N· A−2
+Permittivité (diélectrique) du vide
+ε0 = 1
+µ0c2≈ 8,854× 10−12 F· m−1
+Constante de structure fine
+α = e2
+4πε0ℏc≈ 7,297× 10−3
+— 4/15 —
+<<<PAGE>>>
+Table des matières
+1 Débuts de la mécanique quantique 7
+2 Modèles de l’atome 10
+3 Relations d’Heisenberg 13
+— 5/15 —
+<<<PAGE>>>
+Repères historiques
+avant • 1632 Galilée (1564–1642) publie leDialogue sur les deux grands systèmes
+du monde ;
+• 1687 IsaacNewton (1642–1727) publie desPrincipia (Philosophiae naturalis
+principia mathematica);
+XIXe • v. 1865 James ClerkMaxwell (1831–1879) publie les 20 équations de l’élec-
+tromagnétisme (réécrite sous forme différentielle par OliverHeaviside (1850–
+1925))
+• 1862 LéonFoucault(1819–1868) mesure la vitesse de la lumière (dans l’air)
+• 1887 expérience deMichelson et Morley
+• 1895 WilhelmRöntgen (1845–1923) découvre les rayons X
+• 1897 Joseph JohnThomson (1856–1940) découvre l’électron
+XXe • 1901 MaxPlanck (1858–1947) donne une justification théorique et à l’échelle
+microscopique du rayonnement du corps noir
+• 1905 AlbertEinstein (1879–1955) publie quatre articles dont un explique
+l’effet photoélectrique (deux autres articles concernent la relativité restreinte
+et le quatrième porte sur le mouvement brownien)
+• 1908 JeanPerrin (1870–1942) mesure la constante d’Avogadro(1776–1856)
+de six manières différentes (déterminée pour la première fois par Johann
+Loschmidt en 1865)
+• 1909 ErnestRutherford (1871–1937) (assisté de HansGeiger et Ernest
+Marsden) met en évidence la structure de l’atome
+• 1913 Robert AndrewsMillikan (1868–1953) mesure la charge de l’électron
+• 1914 Millikan mesure la constante dePlanck
+• 1922 expérience deStern et Gerlach
+• 1928 Paul A. M. Dirac (1902–1984) prédit l’existence du positon (anti-
+particule de l’électron)
+• 1932 Carl D.Anderson (1905–1991) met en évidence le positon
+• 1947 Bardeen, Schockley et Brattainobtiennent le premier transistor
+(transfer resistor)
+— 6/15 —
+<<<PAGE>>>
+1 Débuts de la mécanique quantique
+Points importants du chapitre
+Pré-requis : concept d’énergie vu en Mécanique du point.
+Savoirs :
+• relation dePlanck–Einstein;
+• relation de deBroglie pour une particule non relativiste;
+• spectre des ondes EM (radio, IR, visible, UV, X,γ);
+• vitesse approchée de la lumière dans le vide;
+• expliquer l’effet photoélectrique.
+Savoir-faire :
+• décrire une expérience mettant en évidence la notion de photons;
+• déterminer la constante dePlanck à partir de données expérimentales.
+Exercice — Effet photoélectrique : aspects expérimentaux
+En plus du cours, consulter [SiA].
+1. Qu’appelle-t-on « travail d’extraction »?
+2. Représenter un montage expérimental permettant de mettre en évidence l’effet
+photoélectrique et de faire les mesures nécessaires à la détermination du travail
+d’extraction et l’énergie des photoélectrons.
+3. Réaliser les graphiques suivants :
+— l’énergie cinétique des photoélectrons en fonction de l’intensité de la source
+de lumière pourν <νS, ν =νS et ν >νS.
+— l’énergie cinétique des photoélectrons en fonction de la longueur d’onde pour
+une intensité donnée.
+— l’intensité du courant électriquei en fonction de l’intensité lumineuseI pour
+une fréquence donnéeν >νS.
+— l’intensité du courant électriquei en fonction de la longueur d’onde (pour
+ν >νS).
+4. Expliquer comment déterminer la constante dePlanck à partir des données
+expérimentales.
+— 7/15 —
+<<<PAGE>>>
+Exercice — Flux de photons [BasDa]
+1. Une antenne radio émet sur la fréquenceν = 1 MHz avec une puissanceP = 1 kW.
+Quel est le nombre de photons émis par cette antenne en une seconde?
+2. La Terre reçoit d’une étoile un flux lumineuxΦ = 1,6× 10−10 W· m−2 de longueur
+d’onde moyenneλm = 556 nm. Déterminer un ordre de grandeur du nombre de
+photons traversant la pupille de l’œil durant une seconde.
+Exercice 1 — Effet photoélectrique
+À l’aide d’une lampe à vapeur de mercure, on envoie sur une photocathode en potassium
+une radiation ultraviolette de longueur d’ondeλ1 = 254 nm. On constate alors que
+l’énergie des photoélectrons estE1 = 3,14 eV. Si l’on envoie une raie visible de longueur
+d’onde λ2 = 589 nm, l’énergie de ces électrons est deE2 = 0,36 eV.
+1. Laquelle de ces radiations est la plus énergétique?
+2. Qu’appelle-t-on photoélectrons?
+3. Retrouver une valeur approximative de la constante dePlanck h.
+4. Calculer le travail d’extraction du potassium.
+5. En déduire la longueur d’onde maximaleλmax des radiations pouvant produire un
+effet photoélectrique sur le potassium.
+6. Déterminer l’énergie cinétique maximale des photoélectrons lorsque le potassium
+est éclairé avec une lumière verte de longueur d’ondeλ3 = 540 nm.
+7. Dans le modèle ondulatoire de la lumière, combien de temps un laser bleu d’inten-
+sité I = 1× 10−2 W/m2 doit-il éclairer un atome de potassium pour lui arracher
+un électron? Le rayon d’un atome est de l’ordre de l’angstrom. Commenter ce
+résultat.
+Exercice 2 — Longueur d’onde dede Broglie
+1. Donner l’expression de la longueur d’onde dede Broglied’une particule non
+relativiste.
+2. Calculer la longueur d’onde dede Broglie
+2.a. d’un électron d’énergie cinétique10 eV;
+2.b. d’un chat de5 kget courant à3,31 m· s−1;
+3. Pour quelle raison ne peut-on pas calculer la longueur d’onde dede Broglie
+d’un photon?
+Exercice 3 — Action typique d’un système (HP) [LeBa]
+Un système physique peut être caractérisé par différentes grandeurs, comme son énergie,
+sa masse ou encore sa quantité de mouvement. À un tel système, on peut également
+— 8/15 —
+<<<PAGE>>>
+associer une grandeur appelée « action » qui joue un rôle fondamental dans la mesure
+où la connaissance de l’action du système et l’application du principe de « moindre
+action » permettent de déterminer l’évolution de ce système (équations du mouvement
+en mécanique, les équations deMaxwell, etc.).
+Pour un système donné, la comparaison d’une valeur typique de l’action avec la constante
+de Planck permet de déterminer s’il est pertinent d’étudier ce système dans le cadre de
+la physique quantique.
+1. Rappeler l’unité et la dimension physique de la constante dePlanck.
+2. Pour les différents systèmes considérés dans la suite, déterminer une valeur typique
+de l’action et en déduire si le système doit être étudié dans le cadre de la physique
+quantique.
+2.a. Le mécanisme d’une montre est constitué d’un ensemble d’engrenages de
+taille typiqued≈ 0,1 mmet de masse typiquem≈ 0,1 g.
+2.b. Un circuit électrique traversé par un courant d’intensitéI = 1 mA est composé
+d’un condensateur de capacitéC ≈ 0,1 nF et d’une bobine d’inductance
+L≈ 0,1 mH.
+2.c. Les mesures expérimentales effectuées avant l’élaboration de la mécanique
+quantique, ont montré que l’énergie d’ionisation de l’atome d’hydrogène est
+E = 13,6 eV et que son spectre est constitué d’une raie de longueur d’onde
+minimale λ = 100 nm.
+2.d. En dessous de T = 2,18 K, la viscosité de l’hélium 4 devient nulle, lui
+conférant ainsi la possibilité de s’écouler à travers un récipient. On dit alors
+qu’il est dans un état superfluide. La masse volumique de l’hélium 4 vaut
+ρ = 1,46× 102 kg· m−3.
+— 9/15 —
+<<<PAGE>>>
+2 Modèles de l’atome
+Exercice — Rayon classique de l’électron [LL, p. 37]
+L’énergie électrique d’un système de charges est
+U =
+ˆ ε0
+2E2 dV,
+où # »E est le champ électrique créé par ce système.
+1. Déterminer l’énergie d’une sphère de rayonr0 et de charge totaleq.
+2. D’après l’expression précédente, quelle serait l’énergie d’une particule élémentaire?
+Le fait qu’une particule élémentaire (rayon nul) ait une énergie infinie dans le
+cadre de l’électrodynamique classique suggère que cette théorie n’est pas valable en
+dessous d’une certaine échelle que nous nous proposons d’évaluer. Nous supposons
+que l’énergie électrique d’un électron de rayonR est égale à son énergie propre
+(ou au repos) :E =mc2.
+3. Montrer que le « rayon classique » (déterminé sans considération de la physique
+quantique) de l’électron est :
+R = 1
+4πε0
+e2
+mc2.
+4. R≈ 3× 10−15 m = 3 fm
+Exercice 4 — Ordre de grandeur du rayon d’un atome
+Trouver un ordre de grandeur de la taillea d’un atome de fer de masse molaireM =
+56 g· mol−1. La masse volumique du fer estρ = 7,8 g· cm−3.
+Exercice 5 — Modèle deRutherford
+Au début du XX e siècle, Jean Perrin, Hantaro Nagaoka (1865–1950) et Ernest
+Rutherford proposent successivement un même modèle planétaire de l’atome dans
+lequel le noyau de l’atome, chargé positivement, jouerait le rôle du Soleil autour duquel
+tourneraient des électrons dont la charge totale serait exactement l’opposée de celle du
+noyau. Pour étudier les limites de ce modèle, nous considérons un atome d’hydrogène
+constitué d’un électron en mouvement circulaire uniforme autour du proton.
+— 10/15 —
+<<<PAGE>>>
+1. Cadre de la mécanique du point
+Dans cette question, on étudie le mouvement de l’électron dans le cadre de la
+mécanique classique. On choisit pour référentiel celui du proton lié à un repère
+cartésien.
+1.a. Pourquoi peut-on supposer que le référentiel du proton est galiléen?
+1.b. Quelles forces s’exercent sur l’électron? Laquelle de ces forces est prédomi-
+nante?
+1.c. Exprimer le vecteur accélération de l’électron en fonction de la normev de sa
+vitesse et du rayonr de son orbite.
+1.d. En appliquant la deuxième loi de Newton à l’électron, exprimerv2 en fonction
+der, de la vitesse de la lumière dans le vide et du rayon classique de l’électron
+(voir exercice facultatif).
+1.e. Exprimer la périodeT du mouvement circulaire de l’électron en fonction de
+c, r et R.
+1.f. Exprimer l’énergie mécaniqueE de l’électron en fonction der, R, c et m.
+2. Prise en compte de l’électrodynamique
+L’électrodynamique classique permet de montrer qu’une charge ne se déplaçant
+pas en mouvement rectiligne uniforme (par rapport à un référentiel galiléen),
+rayonne de l’énergie. La puissance rayonnée par un électron ayant une accélération
+de normea est donnée par la formule [SiE] deLarmor (1857–1942) :
+PE = e2
+6πε0c3a2.
+2.a. Expliquer en quoi ce rayonnement a un effet sur l’orbite de l’électron et
+donner l’expression du vecteur accélération de l’électron.
+2.b. On suppose à présent que l’accélération est toujours donnée par :a =v2/r.
+Exprimer la puissance rayonnée par l’électron.
+2.c. À l’aide d’un raisonnement énergétique, montrer que la distancer séparant
+l’électron du proton vérifie :˙r =−K/r2 avecK une constante positive qui
+s’exprime en fonction deR et c. Donner l’expression de la constanteK.
+2.d. En supposant qu’à l’instant initial l’électron est à une distancer0 du proton,
+exprimer la duréeτ de la chute de l’électron sur le proton. Faire l’application
+numérique en prenant pourr0 l’ordre de grandeur déterminé à l’exercice
+précédent.
+2.e. Comparer ce temps de chute à la périodeT0 de révolution de l’électron autour
+du proton si son mouvement était circulaire et de rayonr0.
+3. Rayonnement d’un corps*
+3.a. Dans le cadre de la mécanique classique une masse de charge nulle en rotation
+rayonne-t-elle?
+3.b. Qu’en est-il dans le cadre de la relativité générale? Comment se nomme cette
+forme de rayonnement?
+3.c. En relativité générale on peut montrer qu’un système de deux corps (de
+masse m1 et m2) tournant l’un autour de l’autre émet un rayonnement de
+— 11/15 —
+<<<PAGE>>>
+puissance :
+PG = 32 G
+5c2 µ2D4ω6,
+avecµ = m1m2
+m1+m2
+la masse réduite du système,D la distance entre les deux
+corps etω la fréquence angulaire du système. Si le rayonnement de nature
+électromagnétique est négligé, déterminer la puissance rayonnée par un atome
+d’hydrogène puis exprimer la durée nécessaire pour que l’électron et le proton
+entrent en collision.
+Exercice 6 — Modèle deBohr
+En 1913, NielsBohr propose un nouveau modèle d’atome permettant de concilier le
+spectre d’émission discret d’un atome avec la structure lacunaire de l’atome mise en
+évidence par Rutherford deux ans plus tôt. Dans ce nouveau modèle, les électrons sont
+sur des orbites circulaires dont le rayon ne peut prendre que certaines valeurs précises
+(souvent appelées « couches électroniques ») contrairement au modèle planétaire de
+Rutherford. Par ailleurs, il reprend l’idée d’Einstein, en supposant qu’un électron
+qui change d’orbite pour se rapprocher du noyau émet de la lumière de fréquenceν sous
+la forme d’un quantum d’énergiehν.
+Dans cet exercice, on se propose de reprendre une partie de son raisonnement.
+1. Montrer que la dimension de la constante dePlanck est celle d’un moment
+cinétique :
+# »L O = # »r∧ # »p.
+2. Pour justifier son modèle,Bohr suppose que le moment cinétique de l’électron est
+quantifié,c’est-à-direquecelui-cinepeutprendrequecertainesvaleursdépendantes
+d’un entiern strictement positif
+Ln =mrnvn =nℏ (2.2)
+oùrn désigne le rayon de l’orbite en question etvn la vitesse de l’électron sur cette
+orbite.
+2.a. Justifier que la norme du moment cinétique vautLO =mrv et déduire de sa
+quantification les expressions devn et rn en fonction den.
+2.b. Déterminer v1 et r1, les expressions devn et rn pour n = 1. Exprimervn et
+rn en fonction dev1, r1 et n. Faire les applications numériques pourr1 et v1.
+Commenter.
+2.c. En déduire l’expression de l’énergie mécaniqueEn en fonction deE1 et n.
+Donner l’expression et la valeur numérique deE1. Commenter.
+3. En quoi ce modèle n’est pas cohérent avec la description d’un système quantique
+à l’aide d’une fonction d’onde?
+— 12/15 —
+<<<PAGE>>>
+3 Relations d’Heisenberg
+Exercice — Moyenne, ecart-type et variance d’une grandeur
+1. V ariable aléatoire discrète On considère une grandeurg (note, salaire, nombre
+d’habitants, etc.) aléatoire. Celle-ci est supposée discrète :g ne peut prendre que
+N valeurs précises notéesgi, aveci∈ [1,N ].
+1.a. Exprimer la valeur moyenne deg en fonction desgi. Cette valeur moyenne
+sera notée⟨g⟩.
+On veut à présent caractériser la dispersion desgi autour de la valeur moyenne.
+1.b. Montrer que la moyenne des écarts à la moyenne1
+N
+∑
+i(gi−⟨g⟩) n’est pas
+pertinente pour caractériser cette dispersion.
+1.c. La varianceV =⟨(g−⟨g⟩)2⟩ est-elle directement pertinente pour caractériser
+cette dispersion?
+1.d. La grandeur réellement pertinente est l’écart-type (à la moyenne)
+∆g =
+√
+⟨(g−⟨g⟩)2⟩ . (3.1)
+Montrer que
+(∆g)2 =⟨(g−⟨g⟩)2⟩ =⟨g2⟩−⟨ g⟩2. (3.2)
+2. Variable aléatoire continue
+On considère à présent une variable aléatoire continuey c’est-à-dire une variable
+dont les valeurs sont réparties sur un intervalle (énergie, position,etc.). La répar-
+tition de cette variable aléatoire est caractérisée par une fonctionρ(y) nommée
+« distribution de probabilité » de la variabley.
+Une distribution probabilité. très courante est la loi normale ou distribution de
+Gauss (ou gaussienne) d’une variable aléatoirey∈ R
+ρ(y) = 1
+σ
+√
+2π exp
+
+−
+(
+y−m
+σ
+√
+2
+)2
+ (3.3)
+où m =⟨y⟩ est la valeur moyenne/espérance dey (moment d’ordre 1) etσ
+l’écart-type (carré du moment centré d’ordre 2).
+— 13/15 —
+<<<PAGE>>>
+2.a. Dans le cas de la loi normale que vaut l’intégrale ci-dessous?
+ˆ ∞
+−∞
+ρ(y) dy
+2.b. Représenter graphiquement la distribution de Gauss. Indiquerm et approxi-
+mativementσ.
+2.c. On considère une aiguille posée horizontalement et capable de tourner. On re-
+père la position de cette aiguille grâce à un angleθ. Représenter la distribution
+de probabilité deθ si toutes les directions sont équiprobables.
+2.d. Quelle grandeur joue le rôle de distribution de probabilité en physique quan-
+tique? À quelle variable aléatoire est-elle associée?
+2.e. En déduire comment calculer la position moyenne⟨x⟩ et l’écart-type de la
+position d’une particule dont l’état est décrit par la fonction d’ondeΨ.
+Exercice 7 — Particule dans un puits de potentiel infini
+On considère une particule de massemenfermée dans un puits de potentiel de profondeur
+infinie et de largeurL. L’objectif est d’utiliser les inégalités deHeisenberg pour montrer
+que l’énergie cinétiqueE minimale de la particule n’est pas nulle.
+1. Énergie minimale
+1.a. À partir de la relation deHeisenberg spatiale, déterminer une inégalité
+vérifiée par ∆p et L.
+1.b. Exprimer⟨E⟩ en fonction de⟨p2⟩.
+1.c. En utilisant les résultats de l’exercice précédent, en déduire l’énergie cinétique
+minimale de la particule.
+1.d. Comparer ce résultat avec le cas d’une boule de billard dans une boite.
+2. Calculer ∆x en sachant que les états stationnaires d’une particule dans un puits
+infini de potentiel sont
+ψn =
+√
+2
+L sin
+[
+nπx
+L
+]
+, (3.4)
+avecn∈ N∗.
+3. L’inégalité deHeisenbergserait-elle vérifiée pour une particule dont la probabilité
+de présence serait uniforme sur[0;L]?
+Exercice 8 — Électron dans un piège harmonique
+On considère un électron de massem et de quantité de mouvementp piégé dans un
+potentiel de type oscillateur harmonique. Son énergie potentielle est alorsEP = 1
+2mω2x2,
+avecω = 6× 108 rad· s−1 la pulsation propre de l’oscillateur.
+1. Écrire l’énergie mécanique de l’électron en fonction dem, x, p et ω.
+2. Pour un piège harmonique la position moyenne et la quantité de mouvement
+moyenne sont nulles. Exprimer⟨p2⟩ en fonction de⟨x2⟩.
+— 14/15 —
+<<<PAGE>>>
+3. Montrer que l’énergie mécanique de l’électron est bornée inférieurement.
+Exercice 9 — Électron dans l’atome d’hydrogène
+On considère un atome d’hydrogène de taille caractéristiquea.
+1. Donner l’expression générale de l’énergie mécanique de l’électron.
+2. Trouver une borne inférieure à l’énergie de l’électron en fonction de constantes
+fondamentales eta. Celle-ci sera notéeE0.
+3. Déterminer a0 la valeur minimale dea qui minimiseE0.
+4. Comparer a0 au rayonr1 déterminé dans le modèle deBohr.
+5. Expliquer en quoi les inégalités deHeisenberg justifient la stabilité de la matière.
+6. Enquoilemodèlede Bohrest-ilencontradictionaveclesinégalitésde Heisenberg?
+— 15/15 —

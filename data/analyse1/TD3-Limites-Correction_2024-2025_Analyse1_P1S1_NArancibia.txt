@@ -1,0 +1,1275 @@
+Analyse-Premier semestre 2024 - 2025
+CY Tech
+TD Analyse
+Limites et Continuit´ e.
+Analyse
+<<<PAGE>>>
+Exercice 1
+Soit f une fonction d´ eﬁnie deR vers R. ´Ecrire ` a l’aide de quantiﬁcateurs et
+symboles logiques les propositions suivantes :
+(1) f n’est pas constante.
+Solution :
+∃x∈ R, ∃y∈ R, f (x)⁄= f (y).
+(2) 2 n’est pas l’image d’un r´ eel par f .
+Solution :
+∀x∈ R, f (x)⁄= 2 ⇐⇒ f−1({2}) =∅.
+(3) f prend toujours la mˆ eme valeur pour des r´ eels oppos´ es.
+Solution :
+∀x∈ R, f (x) = f (−x).
+(4) Aucun r´ eel n´ egatif n’est ´ egal ` a son image.
+Solution :
+∀x∈ R∗
+−, f (x)⁄= x.
+Analyse
+<<<PAGE>>>
+Exercice 2
+(1) Soit la fonction
+f (x) = cos(x) + 2
+x 2 + 1 .
+Est-elle born´ ee surDf (on ne cherchera pas ` a ´ etudier les variations
+de f ) ? D´ eterminer la position relative du graphe de f par rapport ` a
+celui de la fonction
+g(x) = 1
+x 2 + 1.
+(2) Soit la fonction
+f (x) = ln
+( 1− 4x 2
+2
+)
+.
+Pour quelles valeurs de x les points du graphe de f d’abscisse x
+sont-il au dessus de l’axe des abscisses ?
+Analyse
+<<<PAGE>>>
+Exercice 2
+(1) f (x) = cos(x)+2
+x2+1 : Nous avons :
+Le domaine de d´ eﬁnition def est Df = R. En eﬀet :
+∀x∈ R, x 2 + 1> 0 =⇒ ∀x∈ R, 1
+x 2 + 1 est bien d´ eﬁnie
+=⇒ ∀x∈ R, cos(x) + 2
+x 2 + 1 est bien d´ eﬁnie.
+f est une fonction born´ ee.En eﬀet, pour tout x∈ R, nous avons
+1≤ cos(x) + 2≤ 3 =⇒|{z}
+x2+1>0
+1
+x 2 + 1≤ cos(x) + 2
+x 2 + 1 ≤ 3
+x 2 + 1
+=⇒ 0< 1
+1 + x 2≤ cos(x) + 2
+x 2 + 1 ≤ 3
+x 2 + 1≤ 3
+=⇒ 0< f (x)≤ 3.
+Analyse
+<<<PAGE>>>
+Exercice 2
+Finalement, soit g(x) = 1
+x 2+1 . Alors d’apr` es la premi` ere implication du
+point pr´ ec´ edent, nous avons
+g(x)≤ f (x),
+avec
+f (x) = g(x)
+si et seulement si x =π + 2kπ, k∈ Z. Ainsi, les deux courbes se croisent
+seulement pour x =π + 2kπ, k∈ Z, dans le cas contraire la courbe de f
+est au dessus de celle de g.
+Analyse
+<<<PAGE>>>
+Exercice 2
+(2) f (x) = ln
+(
+1−4x 2
+2
+)
+: Nous avons :
+Nous avons :
+ln
+( 1− 4x 2
+2
+)
+est bien d´ eﬁnie ⇐⇒ 1− 4x 2
+2 > 0
+⇐⇒ 1− 4x 2 > 0
+⇐⇒ 1
+4 > x 2
+⇐⇒ − 1
+2 < x < 1
+2.
+Ainsi, le domaine de d´ eﬁnition def est
+Df =
+]
+− 1
+2 ; 1
+2
+[
+.
+Analyse
+<<<PAGE>>>
+Exercice 2
+Pour tout x∈ Df =
+]
+− 1
+2 ; 1
+2
+[
+, nous avons
+0≤ x 2 < 1
+4 =⇒ 0≥− x 2 >− 1
+4
+=⇒ 0≥− 4x 2 >−1
+=⇒ 1≥ 1− 4x 2 > 0
+=⇒ 1
+2≥ 1− 4x 2
+2 > 0
+=⇒ 0> ln
+( 1
+2
+)
+≥ ln
+( 1− 4x 2
+2
+)
+.
+Ainsi, le graphe de f n’est jamais au dessus l’axe des abscisses.
+Analyse
+<<<PAGE>>>
+Exercice 3
+Soit f : R\{1/3}→ R telle que f (x) = 2x+3
+3x−1. Pour tout ϵ> 0 d´ eterminerδ tel
+que,
+(x⁄= 1/3 et|x|≤ δ) = ⇒ | f (x) + 3|≤ ϵ.
+Que peut-on en conclure ?
+Solution : Soit ϵ> 0. Nous allons trouver δ satisfaisant la proposition. Nous
+avons
+|f (x) + 3| =
+⏐⏐⏐⏐
+2x + 3
+3x− 1 + 3
+⏐⏐⏐⏐ =
+⏐⏐⏐⏐
+11x
+3x− 1
+⏐⏐⏐⏐
+Ainsi
+|f (x) + 3|≤ ϵ ⇐⇒ 11|x|
+|3x− 1|≤ϵ ⇐⇒ |x|≤ ϵ·| 3x− 1|
+11 .
+Comme nous voulons ´ eviter les probl` emes enx = 1
+3 pour lequel la fonction f
+n’est pas d´ eﬁnie, nous allons nous placer ≪ loin ≫ de 1
+3 . Consid´ erons seulement
+les x∈ R tel que|x|< 1
+6 . Nous avons :
+|x|< 1
+6 =⇒ − 1
+6 < x < 1
+6 =⇒ − 3
+2 < 3x− 1<− 1
+2
+=⇒ 1
+2 <|3x− 1|.
+Analyse
+<<<PAGE>>>
+Exercice 3
+Par cons´ equent, si on prend
+δ = min
+( 1
+6, ϵ
+22
+)
+,
+alors pour tout |x|<δ nous avons
+|x|<δ ≤ϵ· 1
+2· 1
+11 < ϵ·| 3x− 1|
+11 =⇒ |f (x) + 3|<ϵ.
+On conclut donc que
+∀ϵ> 0, ∃δ >0, |x|<δ =⇒ | f (x)− (−3)|<ϵ.
+Autrement dit la limite de f en 0 est −3. Comme f (0) =−3 alors cela
+montre aussi que f est continue en 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+Montrer, en revenant ` a la d´ eﬁnition, que :
+1 lim
+x→3
+√x + 1 = 2.
+2 lim
+x→0
+(
+x 2 cos( 1
+x )
+)
+= 0.
+3 lim
+x→2
+x+1
+|x−2| = +∞.
+4 lim
+x→+∞
+1
+ex +1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(1) lim
+x→3
+√x + 1 = 2. Solution : Soit ϵ> 0. Montrons qu’il existe δ >0
+tel que pour tout |x− 3|≤ δ nous avons
+|
+√
+x + 1− 2|≤ ϵ.
+On commence par noter que
+⏐⏐⏐
+√
+x + 1− 2
+⏐⏐⏐≤ϵ ⇐⇒
+⏐⏐⏐⏐
+(√x + 1− 2)· (√x + 1 + 2)√x + 1 + 2
+⏐⏐⏐⏐<ϵ
+⇐⇒
+⏐⏐⏐⏐
+x− 3√x + 1 + 2
+⏐⏐⏐⏐<ϵ.
+Maintenant
+√
+x + 1 + 2≥ 2 =⇒ 1√x + 1 + 2≤ 1
+2
+=⇒ |x− 3|√x + 1 + 2≤|x− 3|
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 4
+Ainsi pour avoir
+|
+√
+x + 1− 2|≤ ϵ,
+il suﬃt d’avoir
+|x− 3|
+2 ≤ϵ ⇐⇒ | x− 3|≤ 2ϵ.
+On peut donc prendre
+δ = 2ϵ,
+pour conclure
+∀x∈ [−1, +∞[, |x− 3|<δ =⇒ |
+√
+x + 1− 2|≤ ϵ.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(2) lim
+x→0
+(
+x 2 cos( 1
+x )
+)
+= 0.
+Solution : Soit ϵ> 0. Montrons qu’il existe δ >0, tel que pour tout
+x∈ R∗, avec|x|≤ δ, nous avons
+⏐⏐⏐⏐x 2 cos
+( 1
+x
+)⏐⏐⏐⏐≤ϵ.
+Pour tout x∈ R∗ on a
+0≤
+⏐⏐⏐⏐cos
+( 1
+x
+)⏐⏐⏐⏐≤ 1 =⇒
+⏐⏐⏐⏐x 2 cos
+( 1
+x
+)⏐⏐⏐⏐≤ x 2.
+Ainsi pour avoir
+⏐⏐⏐⏐x 2 cos
+( 1
+x
+)⏐⏐⏐⏐≤ϵ,
+il suﬃt d’avoir
+x 2≤ϵ =⇒ | x|≤ √ϵ
+Analyse
+<<<PAGE>>>
+Exercice 4
+On peut donc prendre
+δ =√ϵ,
+pour conclure
+∀x∈ R∗, |x|≤ δ =⇒
+⏐⏐⏐⏐x 2 cos
+( 1
+x
+)⏐⏐⏐⏐≤ x 2≤δ2 =ϵ.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(3) lim
+x→2
+x+1
+|x−2| = +∞.
+Solution : Soit A> 0. Montrons qu’il existe δ >0 tel que pour tout
+x⁄= 2, avec|x− 2|≤ δ, nous avons
+A≤ x + 1
+|x− 2|.
+Maintenant, puisque on s’interesse ` a la limite quand x tend vers 2 , nous
+allons nous concentrer sur des r´ eels proches de 2. Nous pouvons donc
+supposer
+|x− 2|≤ 1 =⇒ 1≤ x≤ 3 =⇒ 2≤ x + 1
+=⇒ 2
+|x− 2|≤ x + 1
+|x− 2|.
+Or
+A≤ 2
+|x− 2| ⇐⇒ |x− 2|≤ 2
+A.
+Analyse
+<<<PAGE>>>
+Exercice 4
+Ainsi pour avoir
+A≤ x + 1
+|x− 2|.
+Il suﬃt d’avoir
+|x− 2|≤ 2
+A.
+On peut donc prendre
+δ = min
+(
+1, 2
+A
+)
+,
+pour conclure
+∀x⁄= 2, |x− 2|≤ δ =⇒ |x− 2|≤ 2
+A
+=⇒ A≤ 2
+|x− 2|
+=⇒ A≤ 2
+|x− 2|≤ x + 1
+|x− 2|.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(4) lim
+x→+∞
+1
+ex +1 = 0.
+Solution : Soit ϵ> 0. Montrons qu’il existe A∈ R, tel que pour tout x∈ R,
+avec x > A, nous avons :
+⏐⏐⏐⏐
+1
+e x + 1
+⏐⏐⏐⏐≤ϵ.
+Pour tout x∈ R on a
+⏐⏐⏐⏐
+1
+e x + 1
+⏐⏐⏐⏐≤ϵ ⇐⇒ 1
+ϵ≤| e x + 1| = e x + 1
+⇐⇒ 1
+ϵ− 1≤ e x.
+Maintenant, si ϵ≥ 1, alors la derni` ere in´ egalit´ e est vraie pour toutx∈ R, en
+eﬀet
+1
+ϵ− 1≤ 0 =⇒ ∀x∈ R, 1
+ϵ− 1≤ 0≤ e x
+=⇒ ∀x∈ R,
+⏐⏐⏐⏐
+1
+e x + 1
+⏐⏐⏐⏐≤ϵ.
+On peut donc prendre pour A n’importe quelle valeur , par exemple A = 1.
+Analyse
+<<<PAGE>>>
+Exercice 4
+Si 0 <ϵ< 1, alors
+0< 1
+ϵ− 1≤ ex ⇐⇒ ln
+( 1
+ϵ− 1
+)
+≤ x.
+Ainsi pour avoir
+⏐⏐⏐⏐
+1
+ex + 1
+⏐⏐⏐⏐≤ϵ,
+il suﬃt d’avoir
+ln
+( 1
+ϵ− 1
+)
+≤ x.
+On peut donc choisir
+A = ln
+( 1
+ϵ− 1
+)
+,
+pour conclure
+∀x∈ R, x > A =⇒
+⏐⏐⏐⏐
+1
+ex + 1
+⏐⏐⏐⏐≤ϵ.
+Analyse
+<<<PAGE>>>
+Exercice 5
+Soit f une fonction d´ eﬁnie sur un intervalleI contenant x0 dans son
+int´ erieur. On suppose que
+lim
+x→x0
+f (x) = u> 0.
+D´ emontrer qu’il existeα> 0 tel que si 0 <|x− x0|<α , alors|f (x)|≥ u
+2 .
+Solution : D’apr` es la d´ eﬁnition de la limite, pour toutϵ> 0, nous avons
+∃α> 0, ∀x∈ I, 0<|x− x0|<α =⇒ | f (x)− u|≤ ϵ.
+Ceci entraine que
+−ϵ≤ f (x)− u≤ϵ =⇒ u−ϵ≤ f (x)≤ u +ϵ
+Ainsi, si on pose par exemple
+ϵ = u
+2,
+alors on peut conclure
+u
+2 = u− u
+2 ≤ f (x)≤ u + u
+2 = 3u
+2 =⇒ 0 < u
+2 ≤ f (x).
+Analyse
+<<<PAGE>>>
+Exercice 5
+Par cons´ equent
+∀x∈ I, |x− x0|≤ α, =⇒ | f (x)| = f (x)≥ u
+2.
+Analyse
+<<<PAGE>>>
+Exercice 6
+Soit f : R→ R p´ eriodique, qui admet une limite ﬁnie en +∞.
+Montrer que f est constante.
+Solution : Soit T > 0 une p´ eriode def . Pour tout x∈ R, nous avons
+lim
+n→+∞
+x + nT = +∞.
+Maintenant, puisque f admet une limite L∈ R en +∞, on d´ eduit de la
+caract´ erisation s´ equentielle de la limiteque
+∀x∈ R, lim
+n→+∞
+f (x + nT ) = L.
+Or, par T -p´ eriodicit´ e, nous pouvons ´ ecrire
+∀x∈ R, ∀n∈ N, f (x + nT ) = f (x).
+Ainsi, (f (x + nT ))n∈N est une suite constante de valeur f (x), donc
+∀x∈ R, lim
+n→+∞
+f (x + nT ) = f (x)
+Par cons´ equent
+∀x∈ R, f (x) = L =⇒ f est une fonction constante.
+Analyse
+<<<PAGE>>>
+Exercice 7
+Soit f, g : R→ R, et 𝓁, 𝓁′∈ R tels que :
+lim
+x→0
+f (x) =𝓁 et lim
+x→0
+g(x) =𝓁′.
+Montrer que
+lim
+x→0
+max(f (x), g(x)) = max(𝓁,𝓁′).
+Solution : Notons d’abord que pour tout couple ( a, b)∈ R2, nous avons
+max(a, b) = (a + b) +|a− b|
+2 .
+Ainsi
+max(f (x), g(x)) = (f (x) + g(x)) +|f (x)− g(x)|
+2 .
+et
+lim
+x→0
+max(f (x), g(x)) = lim
+x→0
+(f (x) + g(x)) +|f (x)− g(x)|
+2
+Analyse
+<<<PAGE>>>
+Exercice 7
+Or, nous avons le r´ esultat suivant :
+Proposition
+Soit f : I→ R, L∈ R et a∈ I = I∪{ extr´ emit´ es deI}. Alors
+lim
+x→a
+f (x) = L =⇒ lim
+x→a
+|f (x)| =|L|.
+Puisque
+lim
+x→0
+f (x) =𝓁 et lim
+x→0
+g(x) =𝓁′.
+Nous avons
+lim
+x→0
+f (x)− g(x)
+2 = 𝓁−𝓁′
+2 .
+Le r´ esultat pr´ ec´ edent nous permet donc de conclure
+lim
+x→0
+|f (x)− g(x)|
+2 =|𝓁−𝓁′|
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 7
+Ainsi
+lim
+x→0
+max(f (x), g(x)) = lim
+x→0
+(f (x) + g(x)) +|f (x)− g(x)|
+2
+= lim
+x→0
+(f (x) + g(x))
+2 + lim
+x→0
+|f (x)− g(x)|
+2
+= (𝓁 +𝓁′)
+2 +|𝓁−𝓁′|
+2
+= (𝓁 +𝓁′) +|𝓁−𝓁′|
+2
+= max(𝓁,𝓁′).
+Analyse
+<<<PAGE>>>
+Exercice 8
+Est-il vrai que si f et g sont deux fonctions positives sur R+, et si f et g
+ont mˆ eme limite en +∞, alors lim
+x→+∞
+f (x)
+g(x) = 1.
+Solution : La proposition est fausse. En eﬀet, soit
+f (x) = ex et g(x) = x α, α∈ R∗
++.
+Alors
+lim
+x→+∞
+f (x) = +∞ = lim
+x→+∞
+g(x),
+mais
+lim
+x→+∞
+f (x)
+g(x) = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(1) Soit f une fonction d´ eﬁnie surR, telle que :
+lim
+x→+∞
+f (x) = l∈ R.
+Montrer la propri´ et´ e suivante :
+(P) ∀ϵ> 0, ∃A∈ R, ∀x, x′∈ R,
+(
+x > A et x′ > A =⇒ | f (x)− f (x′)|<ϵ
+)
+.
+Solution : Soit ϵ> 0. Alors d’apr` es la d´ eﬁnition de la limite, il existe A∈ R tel que
+∀x∈ R, x > A =⇒ | f (x)− l|< ϵ
+2.
+Ainsi, pour tout x, x′∈ R avec x > A et x′ > A, nous avons
+|f (x)− f (x′)| = |(f (x)− l) + (l− f (x′))|
+≤ |f (x)− l| +|l− f (x′)|
+≤ ϵ
+2 + ϵ
+2 =ϵ.
+(2) ´Ecrire la n´ egation de la propri´ et´ e (P).
+Solution :
+∃ϵ> 0, ∀A∈ R, ∃x, x′∈ R,
+(
+x > A et x′ > A et |f (x)− f (x′)|≥ ϵ
+)
+.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(3) Montrer que la n´ egation de (P) est vraie pour la fonction f (x) = sin(x) (on
+pourra penser ` a prendrex = 2nπ, x′ = 2nπ + π
+2 ). Conclure.
+Solution : On commence par noter que :
+∀n∈ N,
+⏐⏐⏐sin(2nπ)− sin
+(
+2nπ + π
+2
+)⏐⏐⏐ =|0− 1| = 1.
+Ainsi, si on prend ϵ = 1 et pour tout A> 0 on choisit :
+x = 2(E(A) + 1)π et x′ = 2(E(A) + 1)π + π
+2.
+on aura
+x > A et x′ > A et |sin(x)− sin(x′)|≥ 1 =ϵ.
+La negation de (P) est donc vrai pour sin( x). Maintenant, dans la question 1 nous
+avons vu que :
+f admet une limite ﬁnie en + ∞ =⇒ f satisfait (P)
+Par contrapose,
+f satisfait non P =⇒ f n’admet pas de limite ﬁnie en + ∞.
+Ainsi, lim
+x→+∞
+sin(x) n’existe pas.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(4) Quelles sont les fonctions p´ eriodiques admettant une limite ﬁnie en +∞ ?
+Solution : On commece par noter que toute fonction p´ eriodique constante admet une
+limite ﬁnie en +∞. Soit f une fonction p´ eriodique non constante, de p´ eriodeT .
+Puisque f est non constante , il existe x0, x′
+0∈ R+ avec x0⁄= x′
+0 tel que
+f (x0)⁄= f (x′
+0).
+On peut donc raissoner comme dans le point pr´ ec´ edentpour conclure que f satisfait la
+n´ egation de (P) et donc que f n’admet pas de limite ﬁnie en + ∞. En eﬀet, notons
+que :
+∀n∈ N,
+⏐⏐f (x0 + nT )− f (x′
+0 + nT )
+⏐⏐ =|f (x0)− f (x′
+0)|> 0.
+Ainsi, si on prend ϵ =|f (x0)− f (x′
+0)| et pour tout A> 0 on choisit :
+x = x0 +
+(
+E
+( A
+T
+)
++ 1
+)
+T et x′ = x′
+0 +
+(
+E
+( A
+T
+)
++ 1
+)
+T.
+on aura
+x > A et x′ > A et |f (x)− f (x′)|≥| f (x0)− f (x′
+0)| =ϵ.
+La negation de (P) est donc vrai pour f , d’o` un on d´ eduit quef n’admet pas de limite
+ﬁnie en +∞. Les seules fonctions p´ eriodiques admettant une limite ﬁnie en +∞ sont
+donc les fonctions constantes.
+Analyse
+<<<PAGE>>>
+Exercice 10
+Soit f et g deux fonctions d´ eﬁnies surR+ telles que
+∀x∈ R+, g(x)> 0 et lim
+x→+∞
+f (x)
+g(x) = L⁄= 0.
+1 Montrer que
+lim
+x→+∞
+f (x) = 0 ⇐⇒ lim
+x→+∞
+g(x) = 0.
+2 Montrer que si L> 0,
+lim
+x→+∞
+f (x) = +∞ ⇐⇒ lim
+x→+∞
+g(x) = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 10
+Montrer que
+lim
+x→+∞
+f (x) = 0 ⇐⇒ lim
+x→+∞
+g(x) = 0.
+• limx→+∞ f (x) = 0 =⇒ limx→+∞ g(x) = 0 : Puisque L⁄= 0, nous avons que
+lim
+x→+∞
+f (x)
+g(x) = L⁄= 0 =⇒ ∃ A> 0, ∀x > A, f (x)
+g(x)⁄= 0 et lim
+x→+∞
+g(x)
+f (x) = 1
+L.
+Ainsi
+∀ϵ> 0, ∃B∈ R, x > B =⇒
+⏐⏐⏐⏐
+⏐⏐⏐⏐
+g(x)
+f (x)
+⏐⏐⏐⏐− 1
+|L|
+⏐⏐⏐⏐≤ϵ
+=⇒ 0≤
+⏐⏐⏐⏐
+g(x)
+f (x)
+⏐⏐⏐⏐≤ 1
+|L| +ϵ
+=⇒ 0≤| g(x)|≤| f (x)|
+( 1
+|L| +ϵ
+)
+=⇒ 0≤ lim
+x→+∞
+|g(x)|≤ lim
+x→+∞
+|f (x)|
+( 1
+|L| +ϵ
+)
+= 0
+=⇒ lim
+x→+∞
+g(x) = 0.
+Analyse
+<<<PAGE>>>
+• limx→+∞ g(x) = 0 =⇒ limx→+∞ f (x) = 0 : Nous avons
+∀ϵ> 0, ∃A∈ R, x > A =⇒
+⏐⏐⏐⏐
+⏐⏐⏐⏐
+f (x)
+g(x)
+⏐⏐⏐⏐−| L|
+⏐⏐⏐⏐≤ϵ
+=⇒ 0≤
+⏐⏐⏐⏐
+f (x)
+g(x)
+⏐⏐⏐⏐≤| L| +ϵ
+=⇒ 0≤| f (x)|≤| g(x)| (|L| +ϵ)
+Ainsi
+0≤ lim
+x→+∞
+|f (x)|≤ lim
+x→+∞
+|g(x)| (|L| +ϵ) = 0
+D’o` u
+lim
+x→+∞
+f (x) = 0.
+Analyse
+<<<PAGE>>>
+Exercice 10
+Montrer que
+lim
+x→+∞
+f (x) = +∞ ⇐⇒ lim
+x→+∞
+g(x) = +∞.
+• limx→+∞ f (x) = +∞ =⇒ limx→+∞ g(x) = +∞ : Puisque L> 0, nous
+avons que
+lim
+x→+∞
+f (x)
+g(x) = L> 0 =⇒ lim
+x→+∞
+g(x)
+f (x) = 1
+L > 0.
+Ainsi
+∃B, ∀x∈ R, x > B =⇒
+⏐⏐⏐⏐
+g(x)
+f (x)− 1
+L
+⏐⏐⏐⏐≤ 1
+2L
+=⇒ 1
+2L≤ g(x)
+f (x)≤ 3
+2L
+=⇒ f (x)
+2L ≤ g(x)
+=⇒ +∞ = lim
+x→+∞
+f (x)
+2L ≤ lim
+x→+∞
+g(x)
+=⇒ lim
+x→+∞
+g(x) = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 10
+• limx→+∞ g(x) = +∞ =⇒ limx→+∞ f (x) = +∞ : Nous avons
+∃A, ∀x∈ R, x > A =⇒
+⏐⏐⏐⏐
+f (x)
+g(x)− L
+⏐⏐⏐⏐≤ L
+2
+=⇒ L
+2≤ f (x)
+g(x)≤ 3L
+2
+=⇒ g(x)· L
+2 ≤ f (x)
+Ainsi
++∞ = lim
+x→+∞
+g(x)· L
+2 ≤ lim
+x→+∞
+f (x)
+D’o` u
+lim
+x→+∞
+f (x) = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 11
+Calculer les limites suivantes :
+(1) lim
+x→0
+x· sin
+( 1
+x
+)
+. Solution : Nous avons
+0≤
+⏐⏐⏐⏐sin
+( 1
+x
+)⏐⏐⏐⏐≤ 1 =⇒ 0≤| x|·
+⏐⏐⏐⏐sin
+( 1
+x
+)⏐⏐⏐⏐≤| x|
+=⇒ 0≤ lim
+x→0
+⏐⏐⏐⏐x· sin
+( 1
+x
+)⏐⏐⏐⏐≤ lim
+x→0
+|x| = 0
+=⇒ lim
+x→0
+⏐⏐⏐⏐x· sin
+( 1
+x
+)⏐⏐⏐⏐ = 0
+=⇒ lim
+x→0
+x· sin
+( 1
+x
+)
+= 0.
+(2) lim
+x→+∞
+x cos(ex )
+x2+1 . Solution : Nous avons
+−1≤ cos (ex )≤ 1 =⇒|{z}
+x>0
+− x
+x2 + 1≤ x cos(ex )
+x2 + 1 ≤ x
+x2 + 1
+=⇒ 0 = lim
+x→∞
+− x
+x2 + 1≤ lim
+x→∞
+x cos(ex )
+x2 + 1 ≤ lim
+x→∞
+x
+x2 + 1 = 0
+=⇒ lim
+x→∞
+x cos(ex )
+x2 + 1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 11
+(3) lim
+x→+∞
+ex−sin(x). Solution : Nous avons
+−1≤− sin (x)≤ 1 =⇒ x− 1≤ x− sin (x)≤ x + 1
+=⇒ ex−1≤ ex−sin(x)≤ ex+1
+=⇒ +∞ = lim
+x→∞
+ex−1≤ lim
+x→∞
+ex−sin(x)≤ lim
+x→∞
+ex+1 = +∞
+=⇒ lim
+x→+∞
+ex−sin(x) = +∞.
+(4) lim
+x→0
+x· E
+( 1
+x
+)
+. Solution : Pour tout x∈ R∗
++ nous avons
+1
+x− 1≤ E
+( 1
+x
+)
+≤ 1
+x =⇒|{z}
+car x>0
+1− x≤ x· E
+( 1
+x
+)
+≤ 1
+=⇒ 1 = lim
+x→0+
+1− x≤ lim
+x→0+
+x· E
+( 1
+x
+)
+≤ 1
+=⇒ lim
+x→0+
+x· E
+( 1
+x
+)
+= 1
+De mˆ eme, pour toutx∈ R∗
+− nous avons
+1
+x− 1≤ E
+( 1
+x
+)
+≤ 1
+x =⇒|{z}
+car x<0
+1− x≥ x· E
+( 1
+x
+)
+≥ 1 =⇒ lim
+x→0−
+x· E
+( 1
+x
+)
+= 1
+Analyse
+<<<PAGE>>>
+Exercice 11
+Ainsi
+lim
+x→0
+x· E
+( 1
+x
+)
+= 1.
+(5) lim
+x→+∞
+x· E
+( 1
+x
+)
+. Solution : Nous avons
+∀x > 1, 1
+x < 1 =⇒ ∀ x > 1, E
+( 1
+x
+)
+= 0 =⇒ ∀x > 1, x· E
+( 1
+x
+)
+= 0
+=⇒ lim
+x→+∞
+x· E
+( 1
+x
+)
+= 0.
+Analyse
+<<<PAGE>>>
+Exercice 12
+(1) D´ eterminer la limite suivante : lim
+x→1
+(
+3
+x 3−1− 2
+x 2−1
+)
+.
+Solution : Nous avons
+3
+x 3− 1− 2
+x 2− 1 = 3
+(x− 1)(x 2 + x + 1)− 2
+(x− 1)(x + 1)
+= 3(x + 1)− 2(x 2 + x + 1)
+(x− 1)(x + 1)(x 2 + x + 1)
+= 3x + 3− 2x 2− 2x− 2
+(x− 1)(x + 1)(x 2 + x + 1)
+= −2x 2 + x + 1
+(x− 1)(x + 1)(x 2 + x + 1)
+= (x− 1)(−2x− 1)
+(x− 1)(x + 1)(x 2 + x + 1)
+= −2x− 1
+(x + 1)(x 2 + x + 1)
+Analyse
+<<<PAGE>>>
+Exercice 12
+Par cons´ equent:
+lim
+x→1
+( 3
+x 3− 1− 2
+x 2− 1
+)
+= lim
+x→1
+−2x− 1
+(x + 1)(x 2 + x + 1)
+=
+lim
+x→1
+(−2x− 1)
+lim
+x→1
+(x + 1)(x 2 + x + 1)
+= −3
+2· 3
+= − 1
+2.
+Analyse
+<<<PAGE>>>
+Exercice 12
+(2) D´ eterminer la limite suivante : lim
+x→+∞
+(√
+x 2 + 2x− 1− x
+)
+.
+Solution : Pour tou x > 0, nous avons
+√
+x 2 + 2x− 1− x =
+(√
+x 2 + 2x− 1− x
+)(√
+x 2 + 2x− 1 + x
+)
+√
+x 2 + 2x− 1 + x
+= x 2 + 2x− 1− x 2
+√
+x 2 + 2x− 1 + x
+= 2x− 1
+x
+√
+1 + 2
+x− 1
+x2 + x
+= x· (2− 1
+x )
+x·
+(√
+1 + 2
+x− 1
+x2 + 1
+)
+Par cons´ equent
+lim
+x→+∞
+(√
+x 2 + 2x− 1− x
+)
+= lim
+x→+∞
+2− 1
+x√
+1 + 2
+x− 1
+x2 + 1
+= 2
+2 = 1.
+Analyse
+<<<PAGE>>>
+Exercice 12
+(3) D´ eterminer la limite suivante : lim
+x→+∞
+g(x) avec
+g(x) =
+(√
+x +
+√
+x + 1−
+√
+x +
+√
+x− 1
+)
+.
+Solution : Pour tou x > 1, nous avons
+g(x) =
+(√
+x +√x + 1−
+√
+x +√x− 1
+)(√
+x +√x + 1 +
+√
+x +√x− 1
+)
+√
+x +√x + 1 +
+√
+x +√x− 1
+= x +√x + 1−
+(
+x +√x− 1
+)
+√
+x +√x + 1 +
+√
+x +√x− 1
+=
+√x + 1−√x− 1√
+x +√x + 1 +
+√
+x +√x− 1
+=
+(√x + 1−√x− 1
+)(√x + 1 +√x− 1
+)
+(√
+x +√x + 1 +
+√
+x +√x− 1
+)(√x + 1 +√x− 1
+)
+= x + 1− x + 1(√
+x +√x + 1 +
+√
+x +√x− 1
+)(√x + 1 +√x− 1
+).
+Analyse
+<<<PAGE>>>
+Exercice 12
+Par cons´ equent
+lim
+x→+∞
+g(x) = lim
+x→+∞
+2(√
+x +√x + 1 +
+√
+x +√x− 1
+)(√x + 1 +√x− 1
+)
+= 0.
+Analyse
+<<<PAGE>>>
+Continuit´ e
+D´ eﬁnition
+Soient f : I→ R une fonction et a∈ I . On dit que
+f est continue ` a gauche ena si f (a) est la limite ` a gauche def en a :
+lim
+x→a−
+f (x) = f (a).
+f est continue ` a droite ena si f (a) est la limite ` a droite def en a :
+lim
+x→a+
+f (x) = f (a).
+Remarque : Une fonction f est continue en a si et seulement si f est
+continue ` a droite et ` a gauche ena :
+lim
+x→a−
+f (x) = f (a) = lim
+x→a+
+f (x).
+Analyse
+<<<PAGE>>>
+Continuit´ e
+Proposition
+Soit a∈ I et f : I\{ a}→ R une fonction. La fonction f est prolongeable
+par continuit´ e ena si et seulement si f admet une limite ﬁnie L en a.
+Dans ce cas, un tel prolongement ˜f : I→ R est unique, donn´ e par :
+˜f : x↦→
+{ f (x) si x⁄= a
+L si x = a.
+On l’appelle le prolongement par continuit´ e de f en a (qu’on notera
+souvent f sans distinction par abus de notation).
+Analyse
+<<<PAGE>>>
+Continuit´ e
+Proposition (Op´ erations sur les fonctions continues)
+Soient f et g des fonctions continues sur I et λ, µ∈ R.
+1 Les fonctions λf +µg, f· g sont continue sur I .
+2 Si de plus, g ne s’annule pas sur I , f
+g est continue sur I .
+Proposition
+Soient f : I→ R continue sur I et g : J→ R continue sur J avec
+f (I )⊂ J. Alors, la fonction g◦ f est continue sur I .
+Analyse
+<<<PAGE>>>
+Exercice 13
+(1) Soit f la fonction d´ eﬁnie par
+{
+e3x−1
+x si x < 0
+x 2+2x+3
+x 3+1 si x≥ 0
+f est-elle continue sur R ?
+Solution : On commence par noter que les fonctions
+1
+x et e3x− 1
+sont continues sur R∗
+−. Ainsi, leur produit e3x−1
+x d´ eﬁnit une fonction
+continue sur R∗
+−. De mˆ eme, les fonctions
+1
+x 3 + 1 et x 2 + 2x + 3
+sont continues sur R+. Ainsi, leur produit x 2+2x+3
+x 3+1 d´ eﬁnit une fonction
+continue sur R+. Par cons´ equent, pour montrer que f est continue sur R
+il ne nous reste qu’` a v´ eriﬁer l’´ egalit´ e :
+lim
+x→0−
+e3x− 1
+x
+?
+= f (0) = 02 + 2· 0 + 3
+03 + 1 = 3.
+Analyse
+<<<PAGE>>>
+Exercice 13
+Calculons cette derni` ere limite.Nous avons :
+lim
+x→0−
+e3x− 1
+x = lim
+x→0−
+e3x− e3·0
+x− 0
+=
+(
+e3x)′
+|x=0
+= 3e0
+= 3 = f (0).
+La fonction f est donc continue sur R.
+Analyse

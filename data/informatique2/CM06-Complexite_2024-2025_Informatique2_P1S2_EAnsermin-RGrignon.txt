@@ -1,0 +1,746 @@
+Algorithmiqueprocédurale 
+Complexité
+
+<<<PAGE>>>
+Question
+Deux algorithmes qui pour les mêmes données d’entrée
+donnent le même résultat sont-ils équivalents?
+
+<<<PAGE>>>
+Notion de complexité
+• La complexité algorithmique permet de mesurer les
+performances d’un algorithme et de le comparer avec 
+d’autres algorithmes réalisant les mêmes fonctionnalités.
+• Un bon algorithme :
+• répond correctement au problème posé
+• est rapide (complexité temporelle)
+• utilise peu de mémoire (complexité spatiale)
+• On s'intéresse surtout à la complexité temporelle (ce qui
+n'était pas forcément le cas quand les mémoires coutaient
+cher).
+<<<PAGE>>>
+Complexitétemporellevs. spatiale
+Règle de l'espace-temps informatique :
+Pour gagner du temps de calcul, on doit dépenser de 
+l’espace mémoire.
+Exemple 1: stockage de calcul intermédiaire
+x, y: REEL;
+x -> 3.7;
+y -> sin(x)*sin(x);
+Cette méthode n‘a pas de variable 
+supplémentaire et calcule sin(x) 
+deux fois.
+x, y, z: REEL;
+x -> 3.7;
+z -> sin(x); 
+y -> z*z;
+Cette méthode investit une variable 
+pour stocker sinus(x).
+<<<PAGE>>>
+Complexitétemporellevs. spatiale
+Règle de l'espace-temps informatique :
+Pour gagner du temps de calcul, on doit dépenser de 
+l’espace mémoire.
+Exemple 2: échange de deux variables entières
+x, y: ENTIER;
+X ->0 y->1
+x -> y-x
+x -> y-x
+x -> y+x
+Cette méthode n‘a pas de variable 
+supplémentaire mais réalise 3 
+opérations arithmétiques.
+x, y, z: ENTIER;
+x ->0 y ->1
+z -> x
+x -> y
+x -> z
+Cette méthode investit une variable z 
+et réalise uniquement 3 affectations.
+<<<PAGE>>>
+Opérations élémentaires
+• Toute opération élémentaire s’exécute en temps  
+constant (ou presque):
+• opérations arithmétiques
+• affectations
+• comparaisons
+• La performance d’un algorithme dépend typiquement de
+la taille des données en entrée.
+• Plus la taille de l’entrée est grande, plus il faudra du
+temps pour trouver la solution.
+<<<PAGE>>>
+Exemple 1
+Comment ouvrir un cadenas de N chiffres
+dont on ne connait pas la combinaison?
+
+<<<PAGE>>>
+Exemple 1
+Comment ouvrir un cadenas de N chiffres
+dont on ne connait pas la combinaison?
+a) Tester toutes les combinaisons
+b) Trouver chaque molette independement
+c) Le casser
+
+<<<PAGE>>>
+Exemple 1
+Comment ouvrir un cadenas de N chiffres
+dont on ne connait pas la combinaison?
+a) Tester toutes les combinaisons
+Meilleur des cas :  1  essais
+Pire cas : 10𝑁 essais
+Esperance : 5 ∗ 10𝑁−1 essais
+-> lien exponentiel entre le nombre de 
+chiffres du cadenas et ne nombre d’essais
+
+<<<PAGE>>>
+Exemple 1
+Comment ouvrir un cadenas de N chiffres
+dont on ne connait pas la combinaison?
+b) Trouver chaque molette independament
+Meilleur des cas :  1 essais
+Pire cas : 10 ∗ 𝑁 essais
+Esperance : 5 ∗ 𝑁 essais
+-> lien linéaire entre le nombre de chiffres
+du cadenas et ne nombre d’essais
+
+<<<PAGE>>>
+Exemple 1
+Comment ouvrir un cadenas de N chiffres
+dont on ne connait pas la combinaison?
+c)Casser le cadenas
+Nombre d’essais : 1
+Pas de lien entre N et le nombre d’essais ! 
+Mais le cadenas est cassé …
+
+<<<PAGE>>>
+Exemple 2
+Quel est le temps estimatif pour trouver un mot 
+dans un dictionnaire d’un million de mots, en 
+supposant qu’une comparaison prend une 
+milliseconde ?
+<<<PAGE>>>
+Exemple 2
+Quel est le temps estimatif pour trouver un mot 
+dans un dictionnaire d’un million de mots, en 
+supposant qu’une comparaison prend une 
+milliseconde ?
+a) Recherche séquentielle:
+On regarde tous les mots un par un dans 
+l’ordre.
+b) Recherche dichotomique:
+On regarde « au milieu » du dictionnaire, en 
+fonction de la lettre au recommence sur la 
+bonne moitié du dictionnaire.  
+<<<PAGE>>>
+Exemple 2
+Quel est le temps estimatif pour trouver un mot 
+dans un dictionnaire d’un million de mots, en 
+supposant qu’une comparaison prend une 
+milliseconde ?
+a) Recherche séquentielle:
+Meilleur cas: 1 𝑚𝑠
+Pire cas :10−3 ∗ 106 = 103𝑠 > 16 𝑚𝑖𝑛
+Esperance : 500 𝑠 > 8 𝑚𝑖𝑛
+Lien linéaire entre nombre de mots et temps 
+de recherche. 
+<<<PAGE>>>
+Exemple 2
+Quel est le temps estimatif pour trouver un mot dans un dictionnaire d'un 
+million de mots, en supposant qu'une comparaison prend 1 milliseconde ?
+b) Recherche dichotomique
+• Le nombre de mots à vérifier est divisé par deux à chaque tour : 106/2𝑘(k 
+nombre de tours de recherche)
+• Meilleur cas : 1 tour
+• Dans le pire cas, on ne trouve le mot que lorsque l'on a terminé de diviser
+l'ensemble des mots restants par 2 et qu'il ne reste plus qu'un seul mot à 
+comparer:
+1 ≤ 106
+2𝑘
+𝑘 ≤ log2 106 ≃ 20 ms
+<<<PAGE>>>
+Exemple 2
+Quel est le temps estimatif pour trouver un
+mot dans un dictionnaire d’un million de mots,
+en supposant qu’une comparaison prend
+une milliseconde ?
+a) Recherche séquentielle : < 16 min
+b) Recherche dichotomique: < 20 ms
+<<<PAGE>>>
+Configurations caractéristiques
+• Soit d une donnée de taille n et C(i) un nombre
+d'opérations élémentaires pour exécuter l'algorithme sur i.
+• On distingue
+• Le pire des cas:
+• Le cas moyen :
+Max C(i)
+i donn éede taille n
+i donnée de taille n
+• Le meilleur des cas : Min C(i)
+i donnée de taille n
+où p(i) est la probabilité d’avoir en entrée la donnée i
+Rmq: Le calcul du meilleur casn’est pas très utile dans la pratique. 
+Le cas moyen est souvent difficile à calculer.
+Ons’intéresse surtout au pire cas car on
+souhaite borner le temps d'exécution.
+p(i )C(i)
+<<<PAGE>>>
+Calcul des opérations élémentaires
+Pour déterminer la complexité d’un
+algorithme, on recense toutes les opérations
+élémentaires:
+• opérations arithmétiques
+• affectations
+• comparaisons
+On distingue deux types d’algorithme:
+• algorithme itératif
+• algorithme récursif
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+1 affectation
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+1 affectation
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+1 affectation
+1 addition 
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+1 affectation     * n
+1 addition          * n
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+addiction : n+1   affectation : 1 stockage de n+1   
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+addiction : 1: n+1
+n : incrementation i
+affectation : 1 stockage de n+1
+n+1 affectation de i
+<<<PAGE>>>
+Exemple: Algorithmeitératif
+FONCTION somme(n : ENTIER) : ENTIER
+VARIABLES i, s : ENTIER
+DEBUT
+s ← 0
+POUR i DE 1 A n+1 FAIRE
+(1)
+(2)
+(3)
+(4)
+(5)
+s ← s + i
+FIN POUR
+RETOURNER (s)
+FIN
+comparaison : n+1 (i<n+1)   
+<<<PAGE>>>
+• Nombre d'affectations
+• 1
+• 1
+• n + 1
+• n
+• 1
+ligne 1
+ligne 2 : stockage de n
+dans une variable 
+ligne 2 : gestion de compteur
+ligne 3 : boucle exécutée n fois
+ligne 5
+• Nombre de comparaisons
+• n + 1 ligne 2 : gestion de compteur
+• Nombre d'additions
+• n
+• n
+• 1
+ligne 2 : gestion de compteur
+ligne 3 : boucle exécutée n fois
+Ligne 2: n+1
+Exemple: Algorithmeitératif
+<<<PAGE>>>
+Exercice
+Combien d’opérations élémentaires
+• opérations arithmétiques
+• affectations
+• comparaisons
+sont effectuées dans ces calculs (x2n) ?
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+Op. arithm. (+,*) 1
+Affectations 1 1
+Comparaisons
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+Op. arithm. (+,*) 2N 1+N
+Affectations 1+2N 1+N
+Comparaisons
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1 FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+Op. arithm. (+,*) 2N+2 1+N+1
+Affectations 1+2N+1 1+N+1
+Comparaisons
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+Op. arithm. (+,*) 2N+2+2N 1+N+1+N
+Affectations 1+2N+1 +2N+1 1+N+1+N+1
+Comparaisons 2N+1 N+1
+<<<PAGE>>>
+Exercice
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← 1
+POUR I DE 1 A 2*N+1 FAIRE
+X2 ← X2*X
+FIN POUR
+FIN
+VARIABLES 
+i, X2, X : ENTIER
+DEBUT
+X2 ← X*X;
+POUR  i DE  1  A  N +1  FAIRE
+X2 ← X2*X2
+FIN POUR
+FIN
+2*N tours de boucle N tours de boucle
+Op. arithm. (+,*) 2+2N+2N = 4N+2 2+N+N = 2N+2
+Affectations 1+1+(2N+1)+2N = 4N+3 2+(N+1)+N = 2N+3
+Comparaisons 2N+1 N+1
+<<<PAGE>>>
+Exercice
+(1)
+Quelle est la complexité de cet algorithme 
+en nombre d'additions et de divisions ?
+resultat← 0
+POUR i DE 1 à n+1 FAIRE
+POUR  j DE i A i + 3 FAIRE 
+resultat ← resultat +i/(i+j)
+FIN POUR
+FIN POUR
+(2)
+(3)
+(4)
+<<<PAGE>>>
+Exercice
+Quelle est la complexité de cet algorithme 
+en nombre d'additions et de divisions ?
+resultat← 0
+POUR i DE 1 à n+1 FAIRE
+POUR  j DE i A i + 3 FAIRE 
+resultat ← resultat +i/(i+j)
+FIN POUR
+FIN POUR
+(1)
+(2)
+(3)
+(4)
+2 additions 1 division : 3 opérations
+<<<PAGE>>>
+Exercice
+Quelle est la complexité de cet algorithme 
+en nombre d'additions et de divisions ?
+resultat← 0
+POUR i DE 1 à n+1 FAIRE
+POUR  j DE i A i + 3 FAIRE 
+resultat ← resultat +i/(i+j)
+FIN POUR
+FIN POUR
+(1)
+(2)
+(3)
+(4)
+2 additions 1 division : 3 operation 
+Boucle (2) est exécutée 3 fois (i à i+2 inclus):
+3*3 operations
+3 additions (j+1) + 1 additions (i+3)
+= 13
+<<<PAGE>>>
+Exercice
+Quelle est la complexité de cet algorithme 
+en nombre d'additions et de divisions ?
+resultat← 0
+POUR i DE 1 à n+1 FAIRE
+POUR  j DE i A i + 3 FAIRE 
+resultat ← resultat +i/(i+j)
+FIN POUR
+FIN POUR
+(1)
+(2)
+(3)
+(4)
+2 additions 1 division : 3 operation 
+Boucle (2) est exécutée 3 fois (i à i+2 inclus):
+12 opération
+Boucle (1) exécutée n fois
+13 *n operation
++ n addition (i+1) + 1 addition (n+1)
+->    13*n+n+1=14n+1 operations arithmétiques !
+<<<PAGE>>>
+Déterminer une équation de récurrence en fonction du nombre
+d'opérations élémentaires et résoudre cette équation.
+FONCTION fact(n : ENTIER) :ENTIER
+DEBUT
+SI (n = 1) ALORS
+RETOURNER 1
+SINON
+RETURNER( n * fact(n-1))
+FIN SI
+FIN
+Exemple: Algorithmerécursif
+<<<PAGE>>>
+Déterminer une équation de récurrence en fonction du nombre
+d'opérations élémentaires et résoudre cette équation.
+FONCTION fact(n : ENTIER) :ENTIER
+DEBUT
+SI (n = 1) ALORS
+RETOURNER 1
+SINON
+RETURNER( n * fact(n-1))
+FIN SI
+FIN
+Exemple: Algorithmerécursif
+⚫Nombre d'affectations (A)
+<<<PAGE>>>
+Déterminer une équation de récurrence en fonction du nombre
+d'opérations élémentaires et résoudre cette équation.
+FONCTION fact(n : ENTIER) :ENTIER
+DEBUT
+SI (n = 1) ALORS
+RETOURNER 1
+SINON
+RETURNER( n * fact(n-1))
+FIN SI
+FIN
+Exemple: Algorithmerécursif
+⚫Nombre de comparaisons (C)
+<<<PAGE>>>
+Déterminer une équation de récurrence en fonction du nombre
+d'opérations élémentaires et résoudre cette équation.
+FONCTION fact(n : ENTIER) :ENTIER
+DEBUT
+SI (n = 1) ALORS
+RETOURNER 1
+SINON
+RETURNER( n * fact(n-1))
+FIN SI
+FIN
+Exemple: Algorithmerécursif
+⚫Nombre d’opérations arithmétiques (OP)
+<<<PAGE>>>
+⚫Nombre d'affectations (A)
+• 𝑛 = 1 ∶ 𝐴 1 = 1
+• 𝑛 > 1 ∶ 𝐴 𝑛 = 1 + 𝐴 𝑛 − 1 = 1 + 1 +
+𝐴 𝑛 − 2 = ⋯ = 𝑛
+⚫Nombre de comparaisons (C)
+• 𝑛 = 1 ∶ 𝐶 1 = 1
+• 𝑛 > 1 ∶ 𝐶 𝑛 = 1 + 𝐶 𝑛 − 1 = 1 + 1 +
+𝐶 𝑛 − 2 = ⋯ = 𝑛
+⚫Nombre d’opérations arithmétiques (OP)
+• 𝑛 = 1 ∶ 𝑂𝑃 1 = 0
+• 𝑛 > 1 ∶ 𝑂𝑃 𝑛 = 2 + 𝑂𝑃 𝑛 − 1 = 2 + 2 +
+𝐶 𝑛 − 2 = ⋯ = 2 ∗ (𝑛 − 1)
+Exemple: Algorithmerécursif
+<<<PAGE>>>
+Ordres de complexité
+• Dans la pratique, il n’est souvent pas
+nécessaire de comptabiliser chaque opération
+élémentaire d’un algorithme pour avoir une
+idée de sa complexité.
+• Il suffira de trouver un ordre de complexité qui
+classifie la performance de l’algorithme en
+fonction de la taille des données d’entrée.
+<<<PAGE>>>
+Notation de Landau
+On dit qu'une fonction g est d'ordre f noté
+g(n)= O( f (n)) ou gO( f )
+si et seulement si :
+
+<<<PAGE>>>
+Exemples
+f (n)= n3
+g(n)= n2 +12n 
+h(n)= 5n3
+Prouvez que
+f O(h),hO( f )
+gO( f ), gO(n2 )
+f O(g)
+<<<PAGE>>>
+Classes de complexité
+• O(1) : temps constant
+• O(log n) : logarithmique
+• O(n) : linéaire
+• O(n * log n) : quasi-linéaire
+• O(na) : polynomial
+• O(2n) : exponentiel
+• …
+<<<PAGE>>>
+Classes de complexité
+En pratique
+• Les algorithmes à complexité quasi-linéaire et en dessous  sont
+très efficaces.
+• Sur des données réduites, les algorithmes polynomiaux O(n^p) sont
+encore applicables.
+• Un algorithme à complexité exponentielle est inutilisable.
+
+<<<PAGE>>>
+Classes de complexité:  exemple
+• Tester toutes les combinaisons:
+10𝑁 essais : complexité exponentielle O(10^n)
+• Trouver chaque molette independement
+10*N essais : complexité linéaire O(n)
+• Le casser:
+1 essais : complexité à temps constant O(1)
+
+<<<PAGE>>>
+Un algorithme à complexité exponentielle?
+FONCTION fibo(n: ENTIER) :ENTIER
+DEBUT
+SI (n<2) ALORS 
+RETOURNER nSINON 
+RETOURNER ( fibo (n-1) + fibo (n-2)
+FIN SI 
+FIN 
+𝐹𝑖𝑏𝑜 𝑛 = ቐ
+0 𝑠𝑖 𝑛 = 0
+1 𝑠𝑖 𝑛 = 1
+𝐹𝑖𝑏𝑜 𝑛 − 1 + 𝐹𝑖𝑏𝑜 𝑛 − 2 𝑠𝑖𝑛𝑜𝑛
+<<<PAGE>>>
+Un algorithme à complexité exponentielle?
+Arbre de récursivité de fibo(5):
+fibo(3)+fibo(2) 
+fibo(2)+fibo(1) 
+fibo(1)+fibo(0) 1
+1 0
+fibo(2)+fibo(1) 
+fibo(1)+fibo(0) 
+1 0
+fibo(1)+fibo(0) 
+1 0
+Plus l’argument est grand, plus l’arbre va être large !
+1
+<<<PAGE>>>
+Choisissons l’affectation comme opération élémentaire. 
+On note A(n) le nombre d’affectations au rang n
+A(0) = 0
+A(1) = 0
+A(n) = 1 + A(n-1) + A(n-2)
+<= 1 + 2*A(n-1)
+= 1 + 2*(1 + 2*A(n-2)) = 2n-1
+On peut montrer
+Un algorithme à complexité exponentielle?
+Estimation  
+simplifiée
+
+<<<PAGE>>>
+Complexité : conclusion
+• La notion de complexité permet de classer des algorithmes en
+fonction de leur perfomance.
+• La complexité temporelle indique le nombre d’operations à effectuer
+en fonction de la donnée d’entrée
+• On s’interesse à l’ordre des complexités (exponentielle, linéaire ect.)
+• Objectifs :
+• Banir la complexité exponentielle ! 
+• Choisir l’algorithme avec la meilleure complexité.

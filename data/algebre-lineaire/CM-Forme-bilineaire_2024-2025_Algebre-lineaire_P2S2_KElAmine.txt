@@ -1,0 +1,392 @@
+Forme bilinéaire
+Khalid El Amine I.
+Department of Mathematics and Finance
+⋆⋆⋆
+Notations et conventions :
+• K désigne le corps R ou le corps C.
+• E désigne un espace vectoriel sur R.
+1 Forme
+Dénition 1.1 (Forme)
+Soit V un K-ev. On appelle forme sur V toute application ϕ de V dans K. i.e. :
+ϕ :V −→ K
+Remarque .
+• En général, on appelle forme, toute application d'un espace vectoriel dans son corps de base.
+• En analyse, une application d'un K-espace vectoriel V à valeurs dans R est appelée fonctionnelle.
+L'espace sous-jacent V est souvent un espace de fonctions.
+Dénition 1.2 (Forme symétrique et antisymétrique)
+Soit V un K-ev. Soit ϕ :V×V −→ K une forme. On dit que :
+ ϕ est symétrique si
+∀ x,y∈V ϕ (x,y ) = ϕ(y,x )
+ ϕ est antisymétrique si
+∀ x,y∈V ϕ (x,y ) =−ϕ(y,x )
+Exemple . Soit ϕ la forme sur R2× R2 dénie pour tout x = (x1,x 2)∈ R2 et y = (y1,y 2)∈ R2 par
+ϕ(x,y ) = x1y2 +x2y1
+Montrer que ϕ est symétrique.
+Solution . ∀x = (x1,x 2)∈ R2 et ∀y = (y1,y 2)∈ R2
+ϕ(x,y ) = x1y2 +x2y1 =y1x2 +y2x1 =ϕ(y,x )
+ϕ est bien symétrique.
+Exemple . Soit ϕ la forme sur R2× R2 dénie pour tout x = (x1,x 2)∈ R2 et y = (y1,y 2)∈ R2 par
+ϕ(x,y ) = x1y2−x2y1
+Montrer que ϕ est antisymétrique.
+Solution . ∀x = (x1,x 2)∈ R2 et ∀y = (y1,y 2)∈ R2
+ϕ(x,y ) = x1y2−x2y1 =y2x1−y1x2 =−(y1x2−y2x1) =−ϕ(y,x )
+ϕ est bien antisymétrique.
+1
+<<<PAGE>>>
+2 K. El Amine
+2 Forme linéaire
+2.1 Dénition
+Dénition 2.1 (Forme linéaire)
+Soit V un K-ev. On appelle forme linéaire sur V toute application linéaire ϕ de V dans K, i.e.
+ϕ∈L (V, K)
+Exemple . Soit a1,a 2∈ R xés. Soit ϕ l'application dénie sur R2 par
+ϕ(x) = a1x1 +a2x2, ∀x = (x1,x 2)∈ R2
+Montrer que ϕ est une forme linéaire sur R2.
+Solution .
+(1) ∀x = (x1,x 2)∈ R2, a1x1 +a2x2∈ R, car somme nie de nombres réels.
+D'où ∀x∈ R2, ϕ(x)∈ R⇒ ϕ est une forme sur R2.
+(2) ∀x = (x1,x 2)∈ R2 et ∀x′ = (x′
+1,x′
+2)∈ R2 ; ∀α∈ R et ∀β∈ R
+ϕ(αx +βx′) = ϕ(α(x1,x 2) +β(x′
+1,x′
+2))
+=ϕ((αx1 +βx′
+1,αx 2 +βx′
+2))
+=a1(αx1 +βx′
+1) +a2(αx2 +βx′
+2)
+=α(a1x1 +a2x2) +β(a1x′
+1 +a2x′
+2)
+=αϕ(x) +βϕ(x′)
+Ainsi ϕ est linéaire.
+Par (1) et (2), on conclut que ϕ est une forme linéaire sur R2.
+Remarque . A vec a1,...,a n∈ R xés. Toute forme linéaire ϕ sur Rn s'écrit :
+ϕ(x) = a1x1 +··· +anxn, ∀x = (x1,...,x n)∈ Rn
+• [a1...a n] est la matrice de ϕ relativement aux bases canoniques de Rn et R.
+Exercice . Soit ϕ l'application dénie sur Mn(R) par
+ϕ(A) = tr(A), ∀A∈M n(R)
+Montrer que ϕ est une forme linéaire sur Mn(R).
+Solution .
+(1) Mn(R) est un R-ev.
+(2) ∀A = [aij]∈M n(R), ϕ(A) =
+n∑
+i=1
+aii⇒ ϕ(A)∈ R car il s'agit d'une somme nie de nombres
+réels. ϕ est donc une forme sur Mn(R).
+(3) ∀A = [aij]∈M n(R) et ∀B = [bij]∈M n(R) ; ∀α∈ R et ∀β∈ R
+αA +βB = [αaij +βbij]
+Ainsi
+ϕ(αA +βB ) = tr(αA +βB ) =
+n∑
+i=1
+(αaii +βbii) = α
+n∑
+i=1
+aii +β
+n∑
+i=1
+bii =αtr (A) +βtr (B)
+=αϕ(A) +βϕ(B)
+L'application trace est donc une forme linéaire sur Mn(R).
+<<<PAGE>>>
+Forme Bilinéaire 3
+2.2 Hyperplan
+Dénition 2.2 (Hyperplan)
+Soit V un K-ev. On appelle hyperplan de V , le noyau d'une forme linéaire non nulle sur V .
+Exemple . Soit ϕ la forme linéaire sur R2 dénie par
+ϕ(x) = x1 +x2 ∀x = (x1,x 2)∈ R2
+Déterminer H l'hyperplan de R2 associé à la forme linéaire ϕ.
+Solution . ϕ est non nulle. ∀x = (x1,x 2)∈ R2
+x∈H⇔x∈ker(ϕ)⇔ϕ(x) = 0⇔x1 +x2 = 0⇔x1 =−x2⇔x = (−x2,x 2) = x2(−1, 1)
+Ainsi H =Vect{(−1, 1)}.
+Remarque . Un hyperplan de V est un s.e.v. de V , car c'est le noyau d'une application linéaire.
+Théorème 2.3 Soit V un K-ev et H un s.e.v. de V . Alors
+H est un hyperplan de V , si et seulement si, il existe une droite vectorielle D de V telle que :
+V =H⊕D
+Preuve .
+Corollaire 2.4 Soit V un K-ev de dimension n, (n≥ 1) et H un s.e.v. de V . Alors
+H est un hyperplan de V , si et seulement si, H est de dimension n− 1
+Preuve .
+3 Forme bilinéaire
+3.1 Cas d'un espace vectoriel de dimension quelconque
+Dans cette sous-section : E est un R-ev de dimension quelconque.
+3.1.1 F orme bilinéaire
+Dénition 3.1 (Forme bilinéaire)
+On appelle forme bilinéaire sur E toute application ϕ :E×E−→ R vériant :
+1) ϕ est linéaire par rapport à la première place (ou au premier argument ) :
+∀ x,x′,y∈E et ∀α,β ∈ R ϕ(αx +βx′,y ) = αϕ(x,y ) +βϕ(x′,y )
+2) ϕ est linéaire par rapport à la deuxième place (ou au deuxième argument ) :
+∀ x,y,y ′∈E et ∀α,β ∈ R ϕ(x,αy +βy′) = αϕ(x,y ) +βϕ(x,y′)
+• On notera L2(E×E; R) le R-espace vectoriel des formes bilinéaires sur E.
+• On abrègera souvent forme bilinéaire en : f.b.
+Remarque . Attention L2(E×E; R)⁄=L(E×E; R).
+<<<PAGE>>>
+4 K. El Amine
+Exemple . Donner un contre exemple pour illustrer cette remarque.
+Solution .
+Propriété 3.2 Si ϕ est une forme bilinéaire sur E, alors ∀x∈E :
+ϕ(x, 0E) = ϕ(0E,x ) = 0
+Preuve . ∀x∈E :
+• ϕ(x, 0E) = ϕ(x, 0E + 0E) = ϕ(x, 0E) +ϕ(x, 0E), par linéarité à droite. Ainsi
+ϕ(x, 0E) = 2ϕ(x, 0E)
+Comme ϕ(x, 0E)∈ R, car ϕ est une forme, on a nécessairement ϕ(x, 0E) = 0 .
+• ϕ(0E,x ) = 0 se démontre de la même manière, en utilisant la linéarité à gauche de ϕ.
+Proposition 3.3 Soit ϕ une forme bilinéaire sur E.
+∀p,q∈ N∗∀α1,...,α p∈ R et ∀β1,...,β q∈ R ; ∀x1,...,x p∈E et ∀y1,...,y q∈E
+ϕ
+
+
+p∑
+i=1
+αixi,
+q∑
+j=1
+βjyj
+
+ =
+p∑
+i=1
+q∑
+j=1
+αiβjϕ(xi,y j)
+Preuve .
+3.1.2 F orme bilinéaire symétrique/antisymétrique
+Proposition 3.4 (Forme bilinéaire symétrique)
+Pour qu'une forme ϕ :E×E−→ R soit une forme bilinéaire symétrique, il faut et il sut que l'on
+ait :
+(1) ϕ est symétrique.
+(2) ϕ est linéaire par rapport à la première place.
+• On notera L2,s(E×E; R) le R-espace vectoriel des formes bilinéaires symétrique sur E.
+• On abrègera souvent forme bilinéaire symétrique en : f.b.s.
+Preuve . Simple vérication.
+Exemple . La forme ϕ : R× R→ R dénie par : ϕ(x,y ) = xy est une f.b.s. sur R.
+1) Symétrie : ∀x,y∈ R
+ϕ(x,y ) = xy =yx =ϕ(y,x )
+2) Bilinéarité : ∀x,x′,y∈ R et ∀α,β ∈ R
+ϕ(αx +βx′,y ) = (αx +βx′)y =αxy +βx′y =αϕ(x,y ) +βϕ(x′,y )
+ϕ est donc linéaire par rapport au premier argument et, par symétrie, elle est linéaire par rapport
+au deuxième argument. ϕ est donc bilinéaire.
+ϕ est bien une f.b.s.
+<<<PAGE>>>
+Forme Bilinéaire 5
+Proposition 3.5 (Forme bilinéaire antisymétrique)
+Pour qu'une forme ϕ : E×E−→ R soit une forme bilinéaire antisymétrique, il faut et il sut que
+l'on ait :
+(1) ϕ est antisymétrique.
+(2) ϕ est linéaire par rapport à la première place.
+• On notera L2,a(E×E; R) le R-espace vectoriel des formes bilinéaires antisymétrique sur E.
+• On abrègera souvent forme bilinéaire antisymétrique en : f.b.a.
+Preuve . Simple vérication.
+Exercice . Montrer que l'application déterminant sur R2 est une forme bilinéaire antisymétrique.
+Solution .
+Proposition 3.6 Les deux s.e.v. L2,s(E×E; R) et L2,a(E×E; R) sont supplémentaires dans
+L2(E×E; R), i.e :
+L2,s(E×E; R)⊕L 2,a(E×E; R) =L2(E×E; R)
+Preuve .
+3.1.3 F orme bilinéaire symétrique positive/dénie
+Dénition 3.7 (f.b.s. positive)
+Une forme bilinéaire symétrique ϕ :E×E−→ R est dite positive si :
+∀ x∈E ϕ (x,x )≥ 0
+Dénition 3.8 (f.b.s. dénie)
+Une forme bilinéaire symétrique ϕ :E×E−→ R est dite dénie si :
+∀ x∈E ϕ (x,x ) = 0 ⇒ x = 0 E
+Dénition 3.9 (f.b.s. positive dénie)
+Une forme bilinéaire symétrique ϕ :E×E−→ R est dite positive dénie si elle est positive et elle est
+dénie, i.e. :
+∀x∈E\{0E} ϕ(x,x )> 0
+Exemple . Soit ϕ : R2× R2→ R dénie par : ∀x = (x1,x 2)∈ R2 et ∀y = (y1,y 2)∈ R2
+ϕ(x,y ) = x1y1−x2y2
+Montrer que ϕ est une f.b.s. sur R2. Est-elle positive ? dénie ?
+Solution .
+3.2 Cas d'un espace vectoriel de dimension nie
+Dans cette sous-section : n∈ N∗ et E est un R-ev de dimension nie avec dim(E) = n.
+<<<PAGE>>>
+6 K. El Amine
+3.2.1 Matrice d'une forme bilinéaire
+On suppose que dim(E) = n. Soit B = (e1,...,e n) une base de E. Pour x∈E, on note
+X =MB(x) =
+
+
+x1
+x2
+...
+xn
+
+ le vecteur colonne des composantes de x dans la base B.
+Dénition 3.10 Soit ϕ une f.b. sur E et B = (e1,...,e n) une base de E. On appelle matrice de ϕ
+dans la base B, la matrice carrée d'ordre n :
+MB(ϕ) = [ϕ(ei,e j)]1≤i,j≤n =
+
+
+ϕ(e1,e 1) ... ϕ (e1,e n)
+... . . . ...
+ϕ(en,e 1) ... ϕ (en,e n)
+
+
+Exemple . Soit E = R2 muni de sa base canonique B = (e1,e 2). Soit a,b,c,d ∈ R, et
+ϕ : R2× R2 −→ R
+((x1,x 2), (y1,y 2)) ↦−→ ax1y1 +bx1y2 +cx2y1 +dx2y2
+Il est clair que ϕ est une forme bilinéaire sur R2 et on a :
+MB(ϕ) =
+[ ϕ(e1,e 1) ϕ(e1,e 2)
+ϕ(e2,e 1) ϕ(e2,e 2)
+]
+=
+[ a b
+c d
+]
+Proposition 3.11 Soit ϕ une f.b. sur E, B = (e1,...,e n) une base de E et A =MB(ϕ). Alors
+∀ x,y∈E ϕ (x,y ) = X TAY
+où X =MB(x) et Y =MB(y).
+Preuve .
+Remarque . Réciproquement, toute matrice A de Mn(R) dénit une forme bilinéaire sur E via la
+formule :
+ϕ(x,y ) = X TAY
+Précisément, on a la proposition
+Proposition 3.12 Soit B une base de E. L'application
+MB : L2(E×E; R) −→ Mn(R)
+ϕ ↦−→ MB(ϕ)
+est un isomorphisme d'espaces vectoriels.
+Preuve .
+Remarque . Soit ϕ une application dénie sur E×E. Alors
+ϕ est une f.b. sur E⇐⇒∃A∈M n(R) telle que ∀x,y∈E, ϕ(x,y ) = X TAY .
+Donc, en particulier :
+ϕ est une f.b. sur Rn⇐⇒∃ (aij)1≤i,j≤n∈ Rn2
+tels que ∀x,y∈ Rn ϕ(x,y ) =
+∑
+1≤i,j≤n
+aijxiyj
+<<<PAGE>>>
+Forme Bilinéaire 7
+Exemple . Soit A =
+[−1 3
+2 5
+]
+.
+Dénir la f.b. ϕayant pour matrice A dans la base canonique B de R2.
+Solution . Soit x = (x1,x 2),y = (y1,y 2)∈ R2. Notons X =MB(x) et Y =MB(y). On a
+ϕ(x,y ) = X TAY = [x1 x2]
+[−1 3
+2 5
+][y1
+y2
+]
+= [x1 x2]
+[−y1 + 3y2
+2y1 + 5y2
+]
+=−x1y1 + 3x1y2 + 2x2y1 + 5x2y2
+Proposition 3.13 (Changement de base)
+Soit ϕ une f.b. sur E, B et B′ deux bases de E et P =P(B,B′) la matrice de passage de B à B′.
+Si A =MB(ϕ) et A′ =MB′(ϕ) alors :
+A′ =P TAP
+Preuve . Pour x∈E on note X =MB(x) et X′ =MB′(x). On sait que X =PX′.
+Pour tout x,y∈E on a :
+ϕ(x,y ) = X TAY = (PX′)TA(PY′) = (X′)T (P TAP )Y′
+ce qui signie exactement que A′ =P TAP du fait de l'unicité de la matrice de ϕ dans la base B′.
+Exemple . Soit A =
+[0 0
+1 1
+]
+, la matrice d'une f.b.ϕ dans la base canonique B de R2. Soit B′ = (v1,v 2)
+avec v1 = (1, 1) et v2 = (−1, 1). Déterminer la matrice de ϕ dans la base B′.
+Solution . Notons P la matrice de passage de B à B′. On a P =
+[1 −1
+1 1
+]
+.
+La matrice A′ de ϕ dans la base B′ est donc
+A′ =P TAP =
+[ 1 1
+−1 1
+][ 0 0
+1 1
+][ 1 −1
+1 1
+]
+=
+[
+2 0
+2 0
+]
+Dénition 3.14 Une matrice M de Mn(R) est dite congrue à une matrice M′ de Mn(R), s'il existe
+P∈M n(R) inversible telles que :
+M′ =P TMP
+Remarque . Cette dénition indique que deux matrices de Mn(R) sont congrues si elles représentent
+la même forme bilinéaire dans deux bases diérentes.
+3.2.2 Matrice d'une forme bilinéaire symétrique/antisymétrique
+Proposition 3.15 Soit E un R-ev de dimension nie. Soit ϕ une forme bilinéaire sur E.
+Dans n 'importe quelle base de E :
+ ϕ est symétrique si et seulement si sa matrice est symétrique.
+ ϕ est antisymétrique si et seulement si sa matrice est antisymétrique.
+Preuve .
+Exercice .
+1) Construire une forme bilinéaire symétrique ϕ sur R2.
+2) Construire une forme bilinéaire antisymétrique ψ sur R2.
+<<<PAGE>>>
+8 K. El Amine
+Solution .
+1) Une f.b. ϕest symétrique ssi sa matrice (dans une base quelconque) est symétrique.
+Exemple : A =
+[1 1
+1 1
+]
+est symétrique. Cela nous permet de construire une f.b.s. sur R2.
+ϕ(x,y ) = X TAY =x1y1 +x1y2 +x2y1 +x2y2
+2) Une f.b. ψ est antisymétrique ssi sa matrice (dans une base quelconque) est antisymétrique.
+Exemple : A =
+[ 0 1
+−1 0
+]
+est antisymétrique. Cela nous permet de construire une f.b. anti-
+symétrique sur R2.
+ψ(x,y ) = X TAY =x1y2−x2y1
+Notation : On note :
+ Sn(R) le s.e.v. (de Mn(R)) des matrices symétriques.
+ An(R) le s.e.v. (de Mn(R)) des matrices antisymétriques.
+Proposition 3.16 Les deux s.e.v. Sn(R) et An(R) sont supplémentaires dans Mn(R), i.e. :
+Sn(R)⊕A n(R) =Mn(R)
+De plus, les dimensions des R-ev Sn(R) et An(R) sont :
+dim(Sn(R)) = n(n + 1)
+2 et dim(An(R)) = n(n− 1)
+2
+Preuve .
+Corollaire 3.17 Soit E un R-ev de dimension nie n. Alors
+ L2,s(E×E; R) est isomorphe à Sn(R)
+ L2,a(E×E; R) est isomorphe à An(R)
+et donc
+dim(L2,s(E×E; R)) = n(n + 1)
+2 et dim(L2,s(E×E; R)) = n(n− 1)
+2
+Preuve .
+3.3 Matrice d'une forme bilinéaire symétrique positive/dénie
+Dénition 3.18 Soit A∈M n(R) symétrique.
+ On dit que la matrice symétrique A est positive, si
+∀X∈M n,1(R) , X TAX≥ 0
+ On dit que la matrice symétrique A est dénie, si
+∀X∈M n,1(R) , X TAX = 0 ⇔ X = 0
+<<<PAGE>>>
+Forme Bilinéaire 9
+Remarque . Une matrice symétrique A est positive dénie si : ∀X∈M n,1(R)\{On,1}, X TAX >0.
+Dénition 3.19 Soit A∈M n(R). On appelle sous-matrice principale de A d'ordre k, la matrice
+Ak =
+
+
+a11 ... a 1k
+... ... ...
+ak1 ... a kk
+
+ , 1 ≤k≤n
+Théorème 3.20 Soit A∈M n(R) symétrique. Alors les propositions suivantes sont équivalentes :
+1) A est positive dénie.
+2) Les déterminants des n sous-matrices principales de A sont strictement positifs.
+3) Toutes les valeurs propres (dans C) de A sont réelles et strictement positives.
+Preuve .
+Remarque . Si A est une matrice symétrique positive dénie, alors elle est inversible.
+Théorème 3.21 Soit E un R-ev de dimension nie, ϕ une forme bilinéaire sur E et A la matrice de
+ϕ (dans une base quelconque ). Alors
+ϕ est symétrique positive dénie, si et seulement si, A est symétrique positive dénie.
+Preuve .

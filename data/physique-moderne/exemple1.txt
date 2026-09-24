@@ -1,0 +1,300 @@
+• L’effet Ramsauer-Townsend  est un phénomène physique qui 
+provoque la diffusion (déviation de la direction initial) des 
+électrons a faible énergie d’un atome de gaz Rare.
+• Cet effet quantique montre que si l’on envoie un électron sur un 
+atome surtout un atome de gaz rare il a une chance de le traversé 
+comme si il n’existé pas aux lieux d’être réfléchis 
+
+<<<PAGE>>>
+• Cet effet sert à l’étude des interactions entre atomes pour avancé 
+sur la détection des particules. 
+• La différence entre physique classique et quantique est bien 
+visible avec cet effet:
+• Il montre que, contrairement à l’intuition classique , une 
+particule peut traverser un obstacle (ici un atome) sans être 
+diffusée, grâce aux interférences constructives de sa fonction 
+d’onde. C’est un exemple marquant de la transparence 
+quantique et de la non-intuition des phénomènes 
+microscopiques. 
+<<<PAGE>>>
+I- Méthode des différences finies
+𝑖ℏ 𝜕𝜓 𝑥; 𝑡
+𝜕𝑡 = −ℏ2
+2𝑚
+𝜕2𝜓
+𝜕𝑥2 𝑥; 𝑡 + 𝑉 𝑥; 𝑡 𝜓 𝑥; 𝑡
+Objectif : trouver psi pour certaines valeurs de x et t
+- Maillage de taille constante (dx, dt)
+- On notera ෠𝜓𝑖𝑗 ≈ 𝛹 𝑥𝑖; 𝑡𝑖 , avec 𝑥𝑖; 𝑡𝑖  les valeurs pouvant être 
+prises par x et t dans le maillage.
+
+<<<PAGE>>>
+• En utilisant notamment la formule de Taylor on obtient : 
+ⅈℏ ×
+෡𝜓𝑖𝑗+1− ෡𝜓𝑖𝑗−1
+2 ⅆ𝑡 =
+−ℏ2
+2𝑚 ×
+෡𝜓ⅈ−1𝑗+ ෡𝜓𝑖+1𝑗−2 ෡𝛹𝑖𝑗
+ⅆ𝑥2 + 𝑉 𝑥𝑖; 𝑡𝑗 ෠𝜓𝑖𝑗,
+ ∀ 𝑖; 𝑗 ∈ ⟦1; nx⟧ × ⟦1;nt⟧
+En séparant partie réelle et imaginaire on a alors la formule utilisée 
+dans le code :
+𝐼𝑖
+𝑗+1 = 𝐼𝑖
+𝑗 + 𝑠 𝑅ⅈ+1
+𝑗 + 𝑅ⅈ−1
+𝑗 − 2𝑅𝑖
+𝑗 − 𝑑𝑡𝑉𝑖𝑅𝑖
+𝑗
+𝑅𝑖
+𝑗+1 = 𝑅𝑖
+𝑗 − 𝑠 𝐼𝑖+1
+𝑗 + 𝑅ⅈ−1
+𝑗 − 2𝑅𝑖
+𝑗 + 𝑑𝑡𝑉𝑖𝑅𝑖
+𝑗
+Avec pour condition initiales un paquet d’ondes gaussien centré 
+autour de xc de largeur sigma.
+<<<PAGE>>>
+Résultats
+• Paquet d'onde 
+avec V0 = -50
+Une partie du 
+paquet d'onde est 
+diffusée.
+
+<<<PAGE>>>
+Cas d'une transmission 
+quasi-totale Cas d'une réflexion majoritaire
+<<<PAGE>>>
+II- Etats stationnaires liés
+- Puit de potentiel autour de a et b → changement de 
+variable nécessaire pour simplifier les calculs : y = x 
+– (a+b)/2 et pour simplifier les notation / 
+l'algorithme on pose : U(y) = V(y) + V0 
+- D’après conditions de normalisations et après avoir 
+séparé les solution paires et impaires, on a :  
+Solutions paires Solutions impaires
+V(x)
+x0
+0,8 0,9
+E
+<<<PAGE>>>
+• En appliquant les conditions de continuité et de normalisation, en 
+posant    , on a : 
+- Pour les solutions paires : 
+ et
+- Pour les solutions impaires : 
+ 
+ 
+ et
+
+<<<PAGE>>>
+Résultat
+<<<PAGE>>>
+III – Etats de diffusions
+• On centre le puit de potentiel autour de 0 (y = x – 
+(a+b)/2 ). D'après l'équation de Schrodinger 
+indépendance du temps, on obtient  :
+Avec 
+V(x)
+x
+0
+-a a
+-V0
+E
+
+<<<PAGE>>>
+En appliquant les conditions de continuités de phi et sa dérivée, on 
+obtient B1,A2,B2, A3 et on déduit : 
+et
+On remarque de plus que T + R = 1
+
+<<<PAGE>>>
+L'effet Ramsauer–Townsend correspond à une annulation de la 
+section efficace, dans notre cas c’est-à-dire que la probabilité de 
+réflexion R=0, on en déduit des énergies vérifiant ceci. 
+On s'intéressera en particulier à E1
+<<<PAGE>>>
+Résultat
+
+<<<PAGE>>>
+On retrouve des minima de section efficace  typiques de l’effet 
+Ramsauer–Townsend.
+On parle ici d'onde plane et non de paquet d'onde (pas 
+normalisable)
+<<<PAGE>>>
+IV – Comparaisons expérimentales
+D'après [1], pour l'expérience, on peut prendre V0 
+= 11K (=1,52 E-22 J) et L=3Å (=3 E-10 m).
+On peut faire l'analogie à la mécanique classique : 
+E= Ec + Ep = Ec + V(y) , 
+, avec 
+la masse réduite et v la vitesse relative des atomes 
+He. 
+
+<<<PAGE>>>
+On cherche les vitesses pour lesquels on observe l'effet Ramsauer–
+Townsend, ie : R=0
+Pour les énergies des états de diffusions trouvés avec l'équation de 
+Schrodinger indépendante du temps, on a
+AN : , au lieu de 133 m/s par lecture 
+graphique (différence de 20%).
+
+<<<PAGE>>>
+V – Paquet d’ondes
+• On a
+• Description du paquet d’ondes initial : 
+• On a 𝐴 𝑘 = 𝐴₀ 𝑒−(𝑘−𝑘₀)2 
+2𝜎2   . 
+• Cela donne : Ψ 𝑥, 0 =׬−∞
++∞
+𝐴0  𝑒−(𝑘−𝑘₀)2 
+2𝜎2 𝑒𝑖𝑘𝑥
+
+<<<PAGE>>>
+• On cherche : Ψ 𝑥, 0
+Ψ 𝑥, 0 =׬−∞
++∞
+𝐴0  𝑒−(𝑘−𝑘₀)2 
+2𝜎2 𝑒𝑖𝑘𝑥𝑑𝑘 ֜
+ 
+Ψ 𝑥, 0 =׬−∞
++∞
+ 𝑒− 𝑘−𝑘0 2 
+2𝜎2 +𝑖𝑘𝑥𝐴0𝑑𝑘
+                ֜
+ 
+Ψ 𝑥, 0 = 𝐴0׬−∞
++∞
+𝑒− 𝑘−𝑘0 2 
+2𝜎2 +𝑖𝑘𝑥𝑑𝑘
+                ֜
+ 
+Ψ 𝑥, 0 = 𝐴0 2𝜋𝜎2𝑒
+−𝜎2𝑥2
+2
+Grace à cela, on va pouvoir calculer 𝐴0 :
+En normalisant la probabilité de présence de la particule : 
+׬−∞
++∞
+Ψ 𝑥, 0 2𝑑𝑥 = 1 ֜
+ 
+𝐴0
+22𝜋𝜎2׬−∞
++∞
+𝑒
+−𝜎2𝑥2
+2 𝑑𝑥 = 1
+    ֜
+ 
+𝐴0
+22𝜋𝜎2 2𝜋
+𝜎 = 1 
+    ֜
+ 
+𝐴0
+2(2𝜋)
+3
+2𝜎 = 1 
+    ֜
+ 
+𝐴0 = ((2𝜋)
+3
+2𝜎)−1
+2
+<<<PAGE>>>
+• On utilise l’approximation gaussienne qui nous permet de prendre les 
+résultats obtenus précédemment pour avoir Ψ𝑘(𝑥) tels que :
+   Ψ𝑘 𝑥 =
+• Maintenant on peut reconstituer le paquet d’ondes :
+Comme Ψ est constitué d’onde plane ω(k) = 
+𝐸(𝑘)
+ℏ   
+
+<<<PAGE>>>
+• On ne peut pas résoudre sans ordi le paquet d’onde reconstitué.
+• Néanmoins, on peut observé :
+ -Une traversé du paquet d'ondes presque sans aucune perte, T≈1
+ -Un léger décalage de position au moment de passer sur le puits 
+ -Un léger décalage au niv du temps par rapport au puits 
+ lⅈm
+𝑥→−∞
+Ψ 𝑥, 0 2 = lⅈm
+𝑥→−∞
+2𝜋𝜎2((2𝜋)
+3
+2𝜎)−1
+2 𝑒
+−𝜎2𝑥2
+2
+On a  : 2𝜋𝜎2((2𝜋)
+3
+2𝜎)−1
+2 = 𝑐𝑠𝑡
+Et lⅈm
+𝑥→−∞
+𝑒
+−𝜎2𝑥2
+2 = 0 
+Donc par multiplication :
+ lⅈm
+𝑥→−∞
+Ψ 𝑥, 0 2 = 0
+La proba de présence de l’onde vers -∞ 
+est presque nul, il n’y a donc pas d’ondes réfléchis 
+
+<<<PAGE>>>
+VI  - Autre potentiel
+potentiel de Lennards Johnes 
+Très réaliste mais résolution plus complexe.
+Potentiel de Pöschl–Teller
+Suffisament réaliste, résolution complexe mais 
+possible
+
+<<<PAGE>>>
+Etats stationnaires :
+On définit le potentiel :
+On posant et
+Et en faisant le changement de variable,
+On obtient l'équation :
+(1)
+<<<PAGE>>>
+Etats liés
+Dans le cas E<0, les solutions générales de cette équation sont 
+celles correspondantes à l'équation du polynôme de Legendre  (1):
+Donc en prenant 
+et
+Avec et
+On peut écrire 
+avec P le polynôme de Legendre
+
+<<<PAGE>>>
+Etats de diffusion
+Les calculs suivants n'ont pas été fait, les résultats de pages de cours d'une 
+autre école ont été pris
+On peut faire apparaitre l'équation hypergéométrique à partir de (1):
+Et obtenir : 
+Avec et 
+
+<<<PAGE>>>
+Conclusion :
+Utilisation du puit fini :
+- Permet d'observer globalement le même comportement que ce qui à 
+été fait expérimentalement
+- Divergence dû à une grosse approximation
+- Différences paquets d'ondes et ondes planes.
+modèle de Pöschl–Teller : 
+- continu
+- Possède solution analytique (états liés)
+- Plus réaliste mais pas tout à fait représentatif de la réalité
+<<<PAGE>>>
+CyberGraphie :
+• [1] : "Physica A Statistical Mechanics and its Application" p32-39, 
+01/12/2017, Éderson D’M. Costa, Nelson H.T . Lemes, João P . 
+Braga, https://doi.org/10.1016/j.physa.2017.06.017,  
+https://www.sciencedirect.com/science/article/pii/S0378437117
+306581
+• Pour le détail des calculs voir 
+https://github.com/AugustinAveline/projet_num3A

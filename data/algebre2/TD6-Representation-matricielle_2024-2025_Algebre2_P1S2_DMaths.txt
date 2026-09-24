@@ -1,0 +1,254 @@
+Algèbre 2
+Préing 1
+2024 – 2025
+TD6 – Représentation matricielle et changements de base
+1 Matrices représentatives
+Exercice 1. Soient E et E ′ des espaces vectoriels de dimension 2 et soient B := (e1, e2) et B′ := (e′
+1, e′
+2)
+des bases de E et E ′ respectivement. Soit f : E → E ′ l’application linéaire telle que f (e1) = 3e′
+1 + 2e′
+2 et
+f (e2) = −e′
+1 + e′
+2.
+1. Soit x := x1e1 + x2e2 un vecteur quelconque de E. Exprimer f (x) dans la base B′.
+2. Notons X =
+¡ x1
+x2
+¢
+la matrice des coordonnées de x dans la base B et soit Y la matrice des coordonnées
+de f (x) dans la base B′. Écrire une égalité matricielle Y = AX avec A une matrice à déterminer.
+3. Soit g : E ′ → E l’application linéaire dont la matrice représentative dans la paire de bases ( B′, B) est
+B :=
+¡ −1 1
+2 −1
+¢
+. Soit y := y1e′
+1 + y2e′
+2 ∈ E ′, déterminer l’expression de g (y) dans la base B.
+4. Appliquer g au résultat de f (x1e1 + x2e2) pour déterminer l’expression de g
+¡
+f (x1e1 + x2e2)
+¢
+dans la
+base B.
+5. En déduire C , la matrice représentative de l’endomorphisme f ◦ g dans la base B. Quelle relation y
+a-t-il entre les matrices A, B et C ?
+Exercice 2. Soit E un espace vectoriel de dimension 2 et soit B := (e1, e2) une base de E. Soient f et g des
+endomorphismes de E tels que :
+f (e1) = e1 − e2, f (e2) = 2e1 + 3e2, g (e1) = 4e1 + 7e2, g (e2) = 5e1.
+1. Déterminer A := MatB( f ) et B := MatB(g ).
+2. Déterminer les matrices représentatives de f + g et f ◦ g dans la base B.
+3. Calculer ( f + g )(2e1 + e2) et ( f ◦ g )(2e1 + e2) de deux façons différentes : par un calcul matriciel et par
+un calcul direct à partir de la définition de f et g .
+Exercice 3. Déterminer les matrices dans les bases canonique de R2 et R3 des applications linéaires sui-
+vantes.
+1. f : R2 → R3 définie par f (x, y) := (x − y, 2 x, 3 x + 2y).
+2. g : R3 → R2 définie par g (x, y, z) := (x − y + z, 2 x − z).
+3. f ◦ g et g ◦ f .
+Exercice 4. Soit f ∈ L (R2, R3) dont la matrice représentative dans les bases canoniques de R2 et R3 est :
+A :=
+
+
+1 2
+3 0
+−1 1
+
+.
+Soit g ∈ L (R3, R2) définie par g (x, y, z) := (x − 2y + z, z − x).
+1. Déterminer l’image du vecteur u := (2, −3) par f .
+2. Donner la matrice de g dans les bases canoniques de R3 et R2.
+3. Les applications f ◦ g et g ◦ f sont-elles définies ? Si oui, donner leurs matrices dans les bases cano-
+niques.
+4. Déterminer l’expression analytique de f ◦ g .
+1
+<<<PAGE>>>
+Exercice 5. Soit E un espace vectoriel de dimension 4. Soit g un endomorphisme de E dont la matrice
+dans une base B := (e1, e2, e3, e4) de E est :
+M :=
+
+
+1 1 0 0
+0 −1 0 1
+2 0 2 2
+2 1 0 1
+
+.
+1. Calculer le déterminant de M.
+2. L ’applicationg est-elle injective ?
+3. Calculer le rang de g .
+2 Changements de base
+Exercice 6. Soit E un espace vectoriel de dimension 2 et soit B := (e1, e2) une base de E. Soient e′
+1 := e1 +e2
+et e′
+2 = e1 − e2.
+1. Montrer que B′ := (e′
+1, e′
+2) est une base de E.
+2. Soit x := x′
+1e′
+1 + x′
+2e′
+2 un vecteur quelconque de E exprimée dans la base B′. Déterminer les coordon-
+nées de x dans la base B.
+3. Exprimer e1 et e2 en fonction de e′
+1 et e′
+2.
+4. Soit x := x1e1 +x2e2 un vecteur quelconque de E exprimé dans la base B. Déterminer les coordonnées
+de x dans la base B′.
+5. Soient X et X ′ les matrices des coordonnées de x dans les bases B et B′ respectivement. Écrire une
+relation matricielle entre X et X ′.
+Exercice 7. Soit E un espace vectoriel de dimension 3 et soit B := (e1, e2, e3) une base de E. On considère
+les vecteurs :
+u1 := e1 − 2e2 + e3, u2 := −e1 + 3e2 + e3, u3 := e1 + e2 + e3.
+1. Soit P := MatB(u1, u2, u3). Montrer que P est inversible et calculer son inverse.
+2. En déduire que B′ := (u1, u2, u3) est une base de E et donner l’expression de e1, e2 et e3 dans cette
+base.
+3. Déterminer les coordonnées de u1 + 2u2 + 3u3 dans la base B.
+4. Déterminer les coordonnées de e1 + 2e2 + 3e3 dans la base B′.
+Exercice 8. On se place dans l’espace vectoriel R2[X ].
+1. Rappeler ce qu’est la base canonique de R2[X ].
+2. Montrer que B′ := (1 − 3X 2,2 + X − 5X 2,1 + 2X ) est une base de R2[X ].
+3. Déterminer la matrice de passage de la base canonique à B′.
+Exercice 9. Soit E un espace vectoriel de dimension 2 et soit B := (e1, e2) une base de E. Soit f ∈ L (E)
+dont la matrice dans la base B est A :=
+¡ 1 2
+1 5
+¢
+. Déterminer la matrice de f dans la base :
+1. B1 := (e2, e1). 2. B2 := (e1 + e2, e1 − e2). 3. B3 := (2e1 + 5e2, −e1 − 3e2).
+Exercice 10. Soit f : R2[X ] → R2[X ] définie par f (P) := P + P ′.
+1. Écrire la matrice représentative de f dans la base B := (1, X , X 2).
+2. Quel est le rang de f ? L ’applicationf est-elle inversible ?
+3. Déterminer la matrice de passage P de B à la base B′ := (1, 2X + 1, (X − 1)2).
+4. Déterminer la matrice représentative de f dans la paire de bases ( B′, B).
+5. Vérifier que Mat B′,B( f ) = MatB( f ) × P.
+2
+<<<PAGE>>>
+Exercice 11. Soit f l’endomorphisme de R3 dont la matrice dans la base canonique est :
+A :=
+
+
+2 0 1
+1 1 1
+−2 0 −1
+
+.
+1. Déterminer l’expression analytique de f .
+2. Déterminer des bases de Ker f et Im f .
+3. On considère les vecteurs u1 := (1, 1,−2), u2 := (0, 1, 0) etu3 := (−1, 0, 1).
+a. Montrer que B′ := (u1, u2, u3) est une base de R3.
+b. Calculer f (u1), f (u2) et f (u3). En déduire la matrice D représentative de f dans la base B′.
+c. Calculer la matrice P de passage de B à B′, et calculer son inverse.
+d. Écrire une relation entre A, D, P et P −1 et la vérifier.
+Exercice 12. Soit f ∈ L (R3) dont la matrice dans la base canonique est :
+A :=
+
+
+2 2 −1
+0 2 −2
+1 −1 2
+
+,
+et soient u1 := (1, 1, 0),u2 := (1, 2, 1) etu3 := (−1, −2, −1).
+1. Montrer que B′ := (u1, u2, u3) est une base de R3.
+2. Calculer f (u1), f (u2) et f (u3) dans la base B puis dans la base B′.
+3. En déduire la matrice représentative de f dans la base B′.
+Exercice 13. On se place dans l’espace vectoriel R3[X ] muni de sa base canonique B. Pour tout P ∈ R3[X ],
+on pose f (P) := (1 − X )P ′ + 3P.
+1. Montrer que f est un endomorphisme de R3[X ] et déterminer sa matrice A dans la base B.
+2. Déterminer une base et la dimension de Ker f et Im f .
+3. Le noyau et l’image de f sont-ils supplémentaires dans R3[X ] ?
+4. Soient P0 := 1, P1 := 1 − X , P2 := (1 − X )2 et P3 := (1 − X )3. Montrer que B′ := (P0, P1, P2, P3) est une base
+de R3[X ].
+5. Détermine la matrice représentative D de f dans la base B′ et calculer D n pour tout n ∈ N.
+6. Déterminer la matrice de passage de B à B′ et calculer P 2. Qu’en déduit-on ?
+7. Déterminer f n pour tout n ∈ N.
+Exercice 14. Dans R3, on considère le plan F d’équation 2 x − y + z = 0 et la droite D engendrée par le
+vecteur (1, 1, 1). On note B la base canonique de R3.
+1. a. Montrer que F et D sont supplémentaires dans R3.
+b. Déterminer une base ( u1, u2) de F .
+c. Posons u3 = (1, 1, 1) ; justifier queB′ = (u1, u2, u3) est une base de R3.
+Puisque R3 = F ⊕ D, alors pour tout vecteur u ∈ R3, il existe des uniques vecteurs v ∈ F et w ∈ D tels que
+u = v + w. Le vecteur v est appelé le projeté de u sur F parallèlement à D ; on le note p(u). On définit
+ainsi une application p : R3 → R3 qui à tout vecteur associe son projeté. L ’application p est appelée la
+projection sur F parallèlement à D. On admet que c’est une application linéaire. L ’objectif de l’exercice
+est de calculer l’expression de p(x, y, z) pour tout ( x, y, z) ∈ R3.
+2. a. Si u ∈ F , que vaut p(u) ?
+b. Si u ∈ D, que vaut p(u) ?
+c. En déduire la matrice de p dans la base B′.
+3. a. Calculer P la matrice de passage de B à B′, ainsi que son inverse.
+b. En déduire la matrice de p dans la base canonique.
+3
+<<<PAGE>>>
+c. Donner l’expression de p(x, y, z) pour tout ( x, y, z) ∈ R3.
+Exercice 15. Les matrices suivantes sont-elles équivalentes ? semblables ?
+A :=
+
+
+1 2 3
+−1 4 1
+1 8 7
+
+, B :=
+
+
+0 1 1
+1 2 3
+−2 1 −1
+
+.
+Exercice 16. Montrer que les matrices suivantes sont semblables.
+A :=
+
+
+1 1 −1
+−3 −3 3
+−2 −2 2
+
+, B :=
+
+
+0 1 0
+0 0 0
+0 0 0
+
+.
+Indication : Soit f l’endomorphisme de R3 dont la matrice dans la base canonique est A. Si B est la matrice
+de f dans une base (u1, u2, u3), chercher une base de Ker f et de Im f en exprimant les vecteurs dans la base
+(u1, u2, u3).
+3 Un peu de géométrie
+Exercice 17. Soit E un K–espace vectoriel.
+1. Soient F et G des sous-espaces vectoriels supplémentaires de E. Pour tout vecteur u ∈ E, il existe un
+unique couple de vecteurs ( v, w) ∈ F × G tels que u = v + w. Posons p : E → E l’application qui à tout
+u ∈ E associe le vecteur v dans la décomposition précédente, et posons s : E → E l’application qui à
+tout u ∈ E associe le vecteur u − v. L ’applicationp est appelée la projection sur F parallèlement à G,
+et s est appelée la symétrie par rapport à F parallèlement à G.
+a. Montrer que p et s sont des endomorphismes de E.
+b. Déterminer Ker p, Im p, Ker(s − idE ) et Ker( s + idE ).
+c. Montrer que p ◦ p = p et s ◦ s = idE .
+d. Montrer que s = 2p + idE .
+2. Soit p : E → E une application linéaire telle que p ◦ p = p.
+a. Monter que Ker p et Im p sont supplémentaires dans E.
+b. En déduire que p est la projection sur Im p parallèlement à Ker p.
+3. Soit s : E → E une application linéaire telle que s ◦ s = idE .
+a. Montrer que Ker(s − idE ) et Ker( s + idE ) sont supplémentaires dans E.
+b. En déduire que s est la symétrie par rapport à ker( s − idE ) parallèlement à ker( s + idE ).
+Exercice 18. On se place dans C vu comme un R–espace vectoriel et on note B := (1, i) une base de C.
+Soient fθ et gθ les applications de C dans C définies par fθ(z) := eiθ × z et gθ(z) := eiθ × z, où θ ∈ R.
+1. Montrer que fθ et gθ sont des endomorphismes de C.
+2. a. Déterminer la matrice Rθ représentative de fθ dans la base B.
+b. Exprimer | fθ(z)| et arg( fθ(z)) en fonction de |z| et arg(z).
+c. Décrire géométriquement l’application fθ.
+d. Montrer de deux façons différentes que Rθ × Rθ′ = Rθ+θ′.
+3. a. Déterminer la matrice Sθ représentative de gθ dans la base B.
+b. Déterminer, s’ils existent, des complexes z1 et z2 tels que g (z1) = z1 et g (z2) = −z2.
+c. Montrer que (z1, z2) est une base C et donner la matrice de gθ dans cette base.
+d. Décrire géométriquement l’application gθ.
+Exercice 19. Soit E := F (R, R) l’espace vectoriel des fonctions réelles. On note P l’ensemble des fonctions
+paires et I l’ensemble des fonctions impaires.
+1. Montrer que P et I sont supplémentaires dans E.
+2. Soit σ: E → E l’application définie par σ( f )(x) := f (−x). Montrer que σ est la symétrie par rapport à P
+parallèlement à I .
+4

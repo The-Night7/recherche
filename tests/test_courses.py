@@ -1,9 +1,12 @@
 import tempfile
 import unittest
+import json
+import zipfile
+from unittest.mock import patch
 from pathlib import Path
 
 import ingest
-from courses import COURSES, CURRICULUM, detect_course, ensure_meta
+from courses import COURSES, CURRICULUM, CURRICULA, course_context, detect_course, source_course, ensure_meta
 from references import annotate, match, parse_reference
 from search import filter_mask
 
@@ -27,13 +30,61 @@ class CourseImportTests(unittest.TestCase):
                 self.assertIsNotNone(meta['year'])
         self.assertIsNone(detect_course('CM_2024-2025_Inconnu_P2S1_Test'))
 
-    def test_current_and_legacy_content_share_the_study_context(self):
+    def test_legacy_context_and_new_curricula_are_distinct(self):
         self.assertEqual((CURRICULUM['study_year'], CURRICULUM['semester']), (2, 1))
-        for course in COURSES:
+        for course in ('analyse-rn', 'series', 'informatique3', 'electromagnetisme', 'shs'):
             self.assertEqual(ensure_meta({'course': course})['curriculum'], CURRICULUM['id'])
         legacy = ensure_meta({'label': 'TD1 : Normes', 'text': 'Exercice 1'})
         self.assertEqual(legacy['course'], 'analyse-rn')
         self.assertEqual(legacy['curriculum'], CURRICULUM['id'])
+        for course in COURSES:
+            chunk = ensure_meta({'course': course})
+            self.assertEqual((chunk['study_year'], chunk['semester']),
+                             (course_context(course)['study_year'], course_context(course)['semester']))
+        self.assertEqual(len(CURRICULA), 4)
+
+    def test_folder_context_disambiguates_projects_and_corrects_mislabeled_filename(self):
+        for semester in (1, 2):
+            filename = f'TD1_2024-2025_Projet1_P1S{semester}_DProjet'
+            self.assertEqual(detect_course(filename), f'projet1-s{semester}')
+        source = 'PREING1-S2/Mecanique-du-point/2024-02-01-CM_2023-2024_Mecanique-du-point_P2S1_FPiguet.md'
+        self.assertEqual(source_course(source), 'mecanique-du-point')
+        self.assertEqual(ingest.parse_meta(Path(source).stem, source_course(source))['curriculum'], 'preing-1-s2')
+        self.assertIsNone(detect_course('CM_2024-2025_Analyse1_P2S2_DMaths'))
+        self.assertEqual(source_course('PREING2-S2/Fiche de Révision Algèbre.docx'), 'algebre-lineaire')
+        self.assertEqual(source_course('PREING2-S2/Physique-moderne-PROJET/exemple1.pdf'), 'physique-moderne')
+
+    def test_study_year_semester_and_academic_year_filters_intersect(self):
+        chunks = [ingest.parse_meta('TD1_2024-2025', c) for c in
+                  ('analyse1', 'analyse2', 'series', 'integration-proba')]
+        self.assertEqual(filter_mask(chunks, study_years={1}, semesters={2}, years={2024}).tolist(),
+                         [False, True, False, False])
+        self.assertFalse(filter_mask(chunks, study_years={1}, semesters={2}, courses={'series'}).any())
+        self.assertEqual(filter_mask(chunks, semesters={1}).tolist(), [True, False, True, False])
+        self.assertFalse(filter_mask(chunks, study_years={1}, years={2023}).any())
+
+    def test_docx_import_and_projects_survive_a_rebuild_without_cross_semester_deduplication(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            data = root / 'data'
+            inputs = []
+            body = ('Préparer la présentation du projet et expliquer la démarche. ' * 8)
+            for semester in (1, 2):
+                path = root / f'PREING1-S{semester}' / 'Projet1' / 'Projet.docx'
+                path.parent.mkdir(parents=True)
+                with zipfile.ZipFile(path, 'w') as archive:
+                    archive.writestr('word/document.xml', '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>' + body + '</w:t></w:r></w:p></w:body></w:document>')
+                inputs.append(str(path.parent.parent))
+            with patch.object(ingest, 'DATA_ROOT', str(data)):
+                self.assertEqual(ingest.cmd_add(inputs), 2)
+                for semester in (1, 2):
+                    course = f'projet1-s{semester}'
+                    chunks = ingest.chunk_document(str(data / course / 'Projet.txt'), course)
+                    self.assertEqual(chunks[0]['semester'], semester)
+                    self.assertEqual(chunks[0]['kind'], 'projet')
+                    self.assertIn(body.strip(), chunks[0]['text'])
+                self.assertEqual(ingest.cmd_add(inputs), 0)
+                self.assertEqual(len(json.loads((data / 'import-report.json').read_text())), 2)
 
     def test_continuous_assessment_and_resits_are_searchable(self):
         cc = ingest.parse_meta('CC2-2023-2024-Correction_Electromagnetisme-CC_P2S1_DPhysique', 'electromagnetisme')

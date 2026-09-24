@@ -1,0 +1,1958 @@
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration
+1 Intégrale d'une fonction en escalier
+2 Intégrale d'une fonction continue (par morceaux)
+3 Calcul Intégral
+Primitives
+Étude de x↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+4 Recherche de primitives
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+5 Approximations d'intégrales, sommes de Riemann
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégrale d'une fonction en escalier
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Subdivision
+Dénition
+On appelle subdivision d'un segment [a, b] toute suite nie
+s = (x0 , x1 ,..., xn) de nombres réels tels que :
+a = x0 < x1 <··· < xn = b.
+x
+a
+x0 x1 x2 x3 x4 x5 . . .
+b
+xn
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Fonction en escalier
+Dénition (Fonction en escalier, subdivision adaptée)
+On dit qu'une fonction f : [a, b]−→ C est en escalier si pour une
+certaine subdivision (x0 ,..., xn) de [a, b], dite adaptée à f on a
+Pour tout i∈ J0 , n− 1 K, f est constante sur ]xi, xi+1 [ .
+y1
+y2
+y3
+y4
+y5
+y
+x
+a = x0 x1 x2 x3 x4 x5 . . . xn = b
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Notation Au besoin on utilisera la notation
+E[a;b] ={φ : [a; b]→ R en escalier sur [a; b]}
+Théorème (Propriétés élémentaires des fonctions en escalier)
+Soient f : [a, b]−→ C et g : [a, b]−→ C en escalier.
+Lorsqu'on ajoute un nombre ni de points à une subdivision de [a, b]
+adaptée à f , le résultat est encore une subdivision de [a, b] adaptée à
+f .
+A fortiori, la réunion d'une subdivision de [a, b] adaptée à f et d'une
+subdivision de [a, b] adaptée à g est une subdivision de [a, b]
+adaptée à f ET à g .
+Pour tous λ,µ∈ C,λ f +µg est une fonction en escalier sur [a, b],
+de même que |f|, Re(f ), Im(f ) et fg .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Théorème (Intégrale d'une fonction en escalier)
+Soit f : [a, b]−→ en escalier.
+Soit en outre (x0 ,..., xn) une subdivision de [a, b] adaptée à f .
+Si pour tout i∈ [0 , n− 1 ], on note yi la valeur de f sur ]xi, xi+1 [, alors le
+nombre complexe :
+n−1∑
+i=0
+yi (xi+1 − xi ) ne dépend pas de la subdivision
+(x0 ,..., xn) choisie.
+y1
+y2
+y3
+y4
+y5
+x0 x1 x2 x3 x4 x5
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Dénition
+La valeur du théorème précédent est appelée intégrale de f sur [a, b],
+notée :
+∫
+[a,b]
+f ou
+∫
+[a,b]
+f (t)d t ou
+∫ b
+a
+f (t)d t.
+y1
+y2
+y3
+y4
+y5
+x0 x1 x2 x3 x4 x5
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Théorème (Propriétés de l'intégrale d'une fonction en escalier)
+Soient f : [a, b]−→ C et g : [a, b]−→ C en escalier.
+1 Linéarité : Pour tous
+λ,µ∈ C :
+∫
+[a,b]
+(λf +µg) =λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g .
+2 Inégalité triangulaire :
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+f
+⏐⏐⏐⏐⏐ ⩽
+∫
+[a,b]
+|f|.
+3 Relation de Chasles : Pour tout
+c∈ [a, b] :
+∫
+[a,b]
+f =
+∫
+[a,c]
+f +
+∫
+[c,b]
+f .
+4 Lien avec les parties réelles et imaginaires :∫
+[a,b]
+f =
+∫
+[a,b]
+Re(f ) + i
+∫
+[a,b]
+Im(f ).
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+Donnons-nous λ,µ∈ C, c∈ [a, b] et une subdivision (x0 ,..., xn) de [a, b]
+adaptée à f ET à g - mais donc aussi à λf +µg,|f|, Re(f ) et Im(f ).
+1
+∫
+[a,b]
+(λf +µg) =
+n−1∑
+i=0
+Valeur de λf +µg
+z }| {
+(λf +µg)
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=λ
+n−1∑
+i=0
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi ) +µ
+n−1∑
+i=0
+g
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+2 D'après l'inégalité triangulaire sur C :
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+f
+⏐⏐⏐⏐⏐ =
+⏐⏐⏐⏐⏐
+n−1∑
+i=0
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+⏐⏐⏐⏐⏐
+⩽
+n−1∑
+i=0
+⏐⏐⏐f
+( xi + xi+1
+2
+)⏐⏐⏐ (xi+1 − xi ) =
+∫
+[a,b]
+|f|.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+3 Quitte à ajouter le point c à la subdivision (x0 ,..., xn), on peut supposer
+que : xk = c pour un certain k∈ [0 , n].
+La fonction f[a,c] est alors en escalier sur [a, c] de subdivision adaptée
+(x0 ,..., xk ), et la fonction f[c,b] l'est sur [c, b] de subdivision adaptée
+(xk,..., xn).
+Enn : ∫
+[a,b]
+f =
+n−1∑
+i=0
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=
+k−1∑
+i=0
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi ) +
+n−1∑
+i=k
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=
+∫
+[a,c]
+f +
+∫
+[c,b]
+f
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+4 Cela découle de la linéarité de l'intégrale pour λ = 1 et µ = i.
+On peut aussi le démontrer directement :
+∫
+[a,b]
+f =
+n−1∑
+i=0
+f
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=
+n−1∑
+i=0
+Re(f )
+( xi + xi+1
+2
+)
+(xi+1 − xi ) + i
+n−1∑
+i=0
+Im(f )
+( xi + xi+1
+2
+)
+(xi+1 − xi )
+=
+∫
+[a,b]
+Re(f ) + i
+∫
+[a,b]
+Im(f )
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégrale d'une fonction continue
+(par morceaux)
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Théorème
+Soient f : [a, b]→ R continue sur [a, b] et ε> 0 .
+Alors il existe θ : [a, b]→ R en escalier telle que
+∀x∈ [a, b],|f (x)−θ(x)| ⩽ϵ
+Démonstration.
+Admis.
+ϵ = 0.2
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Proposition
+Soit f : [a, b]→ R continue sur [a, b].
+Pour tout ε> 0 , il existe deux fonctions ϕ,ψ∈E ([a, b], R) telles que :
+ϕ ⩽ f ⩽ψ et 0 ⩽ψ−ϕ ⩽ε.
+ϵ = 0.2
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+ϵ = 0.2
+Démonstration.
+D'après le théorème précédent, on a θ en escaliers telle que
+∀x∈ [a, b],|f (x)−θ(x)| ⩽ ϵ
+2 . θ(x)− ϵ
+2 ⩽ f (x) ⩽θ(x) + ϵ
+2 . On pose
+alors les fonctions en escalier ϕ =θ− ϵ
+2 et ψ =θ + ϵ
+2 pour obtenir le
+résultat.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+On suppose à présent que f : [a, b]→ R est une fonction bornée
+quelconque.
+Théorème
+Si f : [a, b]→ R est continue, alors :
+1 A−
+[a,b](f ) =
+{∫ b
+a
+φ(x)dx|φ en escalier et φ ⩽ f
+}
+admet une borne
+supérieure,
+2 A+
+[a,b](f ) =
+{∫ b
+a
+ψ(x)dx|ψ en escalier et f ⩽ψ
+}
+admet une
+borne inférieure, et ces deux bornes sont égales.
+Notation Au besoin on utilisera les notations
+E−
+[a;b](f ) ={φ en escalier sur [a; b] telle que φ ⩽ f}
+E +
+[a;b](f ) ={ψ en escalier sur [a; b] telle que f ⩽ψ}
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+La fonction f étant continue sur le segment [a, b], elle est bornée sur
+[a, b].
+Posons m = inf
+x∈[a,b]
+f (x) et M = sup
+x∈[a,b]
+f (x).
+A−
+[a,b](f ) est non vide puisqu'il contient la fonction constante m.
+Ainsi A−
+[a,b](f ) est une partie non vide de R.
+De plus pour tout ϕ∈A−
+[a,b](f ), on a ϕ ⩽ f ⩽ M.
+Donc : ∫
+[a,b]
+ϕ ⩽
+∫
+[a,b]
+M = M(b− a).
+L'ensemble A−
+[a,b](f ) est donc une partie non vide de R et majorée
+(par M(b− a) ). Il possède donc une borne supérieure que l'on note
+α.
+De même, A+
+[a,b](f ) est une partie non vide de R et minorée par
+m(b− a). Il possède donc une borne inférieure que l'on note β.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+Supposons β <α.
+Alors, comme α est la borne sup de A−, il existe φ en escalier tel
+que φ ⩽ f et β <
+∫
+[a,b]
+ϕ<α .
+Alors pour toute fonction ψ en escalier tel que f ⩽ψ, on a
+ϕ ⩽ f ⩽ψ
+donc ∫
+[a,b]
+ϕ ⩽
+∫
+[a,b]
+ψ
+Donc
+∫
+[a,b]
+ϕ ⩽β Ce qui est contradictoire avec β <
+∫
+[a,b]
+ϕ. Donc
+α ⩽β
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Autre démonstration
+Démonstration.
+Puisque pour tout ϕ en escalier telle que ϕ ⩽ f et ψ en escalier telle
+que f ⩽ψ, on a ϕ ⩽ψ, on a
+∫
+[a,b]
+ϕ ⩽
+∫
+[a,b]
+ψ.
+Ainsi
+∫
+[a,b]
+ψ est un majorant de A−(f ), la borne supérieure α de
+A−(f ) est donc plus petite que
+∫
+[a,b]
+ψ.
+On obtient :
+Pour toute fonction en escalier ψ telle que f ⩽ψ, α ⩽
+∫
+[a,b]
+ψ
+De même, α est un minorant de A+
+[a,b](f ), et β est le plus grand des
+minorants de cette partie. Donc α ⩽β.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+Soit ϵ> 0.
+On sait qu'il existe ϕ∈E−
+[a;b](f ) et ψ∈E−
+[a;b](f ) telles que
+φ ⩽ f ⩽ψ telles que pour tout x∈ [a, b], ψ(x)−ϕ(x) ⩽ϵ.
+On a alors : ∫
+[a,b]
+ψ−
+∫
+[a,b]
+ϕ ⩽ϵ(b− a)
+Or par dénition de α et β, on a :
+∫
+[a,b]
+ϕ ⩽α ⩽β ⩽
+∫
+[a,b]
+ψ
+D'où pour tout ε> 0,
+on a
+0 ⩽β−α ⩽
+∫
+[a,b]
+ψ−
+∫
+[a,b]
+ϕ ⩽ϵ(b− a)
+Finalement, on a bien α =β.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Dénition
+Soit f : [a, b]→ R une fonction continue.
+On appelle intégrale de f sur [a, b] le nombre réel noté
+∫
+[a,b]
+f déni par :
+∫
+[a,b]
+f = sup
+{∫
+[a,b]
+ϕ|ϕ∈E−
+[a,b](f )
+}
+= inf
+{∫
+[a,b]
+ψ|ψ∈E +
+[a,b](f )
+}
+Proposition (Linéarité)
+Soient f, g : [a, b]→ R continues et (λ,µ )∈ R2 .
+∫
+[a,b]
+(λf +µg) =λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Proposition (Lemme)
+Soit ε> 0 .
+Si f : [a, b]→ R continue et θ∈E [a,b] telles que |f−θ| ⩽ε, alors
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+f−
+∫
+[a,b]
+θ
+⏐⏐⏐⏐⏐ ⩽ (b− a)ε
+Démonstration.
+On a θ−ε ⩽ f ⩽θ +ε, d'où (par dénition de l'intégrale) :
+∫
+[a,b]
+(θ−ε) ⩽
+∫
+[a,b]
+f ⩽
+∫
+[a,b]
+(θ +ε)
+Par linéarité de l'intégrale des fonctions en escalier :
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+f−
+∫
+[a,b]
+θ
+⏐⏐⏐⏐⏐ ⩽
+∫
+[a,b]
+ε ⩽ (b− a)ε.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+On dénit
+θ1 tel que |f−θ1|<ϵ
+θ2 tel que |g−θ2|<ϵ
+h =λf +µg
+θ =λθ1 +µθ2
+I =
+∫
+[a,b]
+θ =λ
+∫
+[a,b]
+θ1 +µ
+∫
+[a,b]
+θ2 (par linéarité pour les fonctions
+en escalier).
+On a :
+|h−θ| ⩽|λ(f−θ1 ) +µ(g−θ2| ⩽ (|λ| +|µ|)ε
+Par le lemme :
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+h− I
+⏐⏐⏐⏐⏐ ⩽
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+h−
+∫
+[a,b]
+θ
+⏐⏐⏐⏐⏐ ⩽ (b− a)(|λ| +|µ|)ε
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+On a : ⏐⏐⏐⏐⏐λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g− I
+⏐⏐⏐⏐⏐
+⩽
+⏐⏐⏐⏐⏐λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g−λ
+∫
+[a,b]
+θ1 −µ
+∫
+[a,b]
+θ2
+⏐⏐⏐⏐⏐
+⩽
+⏐⏐⏐⏐⏐λ
+(∫
+[a,b]
+f−
+∫
+[a,b]
+θ1
+)
++µ
+(∫
+[a,b]
+g−
+∫
+[a,b]
+θ2
+)⏐⏐⏐⏐⏐
+⩽ |λ|(b− a)ε +|µ|(b− a)ε
+⩽ (b− a)(|λ| +|µ|)ε
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+Finalement on obtient :
+∆ =
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+(λf +µg)−
+(
+λ
+∫
+[a,b]
+f +µ
+∫
+[a,b]
+g
+)⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+(λf +µg)− I +
+(
+I−λ
+∫
+[a,b]
+f−µ
+∫
+[a,b]
+g
+)⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐
+∫
+[a,b]
+(λf +µg)− I
+⏐⏐⏐⏐⏐ +
+⏐⏐⏐⏐⏐I−λ
+∫
+[a,b]
+f−µ
+∫
+[a,b]
+g
+)⏐⏐⏐⏐⏐
+⩽ 2 (b− a)(|λ| +|µ|)ε.
+Comme c'est vrai quelque soit ε> 0, on en déduit ∆ = 0, et donc la
+linéarité de l'intégrale.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Proposition (Relation de Chasles)
+Soient f : [a, b]→ R continues et c∈ [a, b].
+∫
+[a,b]
+f =
+∫
+[a,c]
+f +
+∫
+[c,b]
+f.
+Démonstration.
+Soit ϕ∈E−
+[a,b](f ).
+On a alors :
+ϕ[a,c]∈E−
+[a,c](f ) et ϕ[c,b]∈E−
+[c,b](f ).
+Par dénition de l'intégrale, on obtient :
+∫
+[a,b]
+ϕ =
+∫
+[a,c]
+ϕ +
+∫
+[c,b]
+ϕ ⩽
+∫
+[a,c]
+f +
+∫
+[c,b]
+f
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+Ainsi
+∫
+[a,c]
+f +
+∫
+[c,b]
+f est un majorant de A−
+[a,b](f ).
+Par dénition de la borne supérieure :
+∫
+[a,b]
+f ⩽
+∫
+[a,q]
+f +
+∫
+[c,b]
+f
+En appliquant (linéarité) ce résultat à −f , on en déduit l'inégalité
+inverse, et donc : ∫
+[a,b]
+f =
+∫
+[a,c]
+f +
+∫
+[c,b]
+f
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Notation.
+Soient a et b deux réels quelconques (en particulier on ne suppose plus
+nécessairement a< b).
+Soit f une fonction continue entre a et b.
+On dénit le réel
+∫ b
+a
+f (x)dx par :
+si a< b,
+∫ b
+a
+f (x)dx =
+∫
+[a,b]
+f (x)dx ;
+si a = b,
+∫ b
+a
+f (x)dx = 0 ;
+si b< a,
+∫ b
+a
+f (x)dx =−
+∫
+[b,a]
+f (x)dx.
+La relation de Chasles et la linéarité sont alors vraies pour a, b, c
+quelconques.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Proposition
+Soient f, g : I→ R continues sur un intervalle I et a, b∈ I .
+1 f > 0 et a ⩽ b⇒
+∫ b
+a
+f (x)dx > 0 (positivité de l'intégrale)
+2 f ⩽ g et a ⩽ b⇒
+∫ b
+a
+f (x)dx ⩽
+∫ b
+a
+g(x)dx (passage aux inégalités)
+3 a ⩽ b⇒
+⏐⏐⏐⏐⏐
+∫ b
+a
+f (x)dx
+⏐⏐⏐⏐⏐ ⩽
+∫ b
+a
+|f (x)|dx (inégalité de la norme)
+4 Si a ⩽ b et m ⩽ f ⩽ M entre a et b, alors
+m(b− a) ⩽
+∫ b
+a
+f (x)dx ⩽ M(b− a)
+.
+Attention Bien vérier a< b.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+1 Puisque f > 0, alors ϕ = 0 est une fonction en escalier sur [a, b]
+telle que ϕ ⩽ f .
+Par dénition de l'intégrale de f sur [a, b], on en déduit que
+∫ b
+a
+f (x)dx >
+∫ b
+a
+ϕ(x)dx = 0 .
+2 On applique le point précédent à la fonction h = g− f > 0 :
+∫ b
+a
+h(x)dx > 0 ⇒
+∫ b
+a
+g(x)dx >
+∫ b
+a
+f (x)dx
+par linéarité de l'intégrale.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+3 On a pour tout x∈ [a, b],−|f (x)| ⩽ f (x) ⩽|f (x)|. D'où par
+croissance de l'intégrale :
+−
+∫ b
+a
+|f (x)|dx ⩽
+∫ b
+a
+f (x)dx ⩽
+∫ b
+a
+|f (x)|dx
+Ainsi, on obtient
+⏐⏐⏐⏐⏐
+∫ b
+a
+f (x)dx
+⏐⏐⏐⏐⏐ ⩽
+∫ b
+a
+|f (x)|dx.
+4 Il sut de prendre l'intégrale dans les inégalités m ⩽ f ⩽ M.
+Remarque . La majoration suivante, vraie également si b< a, peut être
+utile : ⏐⏐⏐⏐⏐
+∫ b
+a
+f (x)dx
+⏐⏐⏐⏐⏐≤
+⏐⏐⏐⏐⏐
+∫ b
+a
+|f (x)| dx
+⏐⏐⏐⏐⏐
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Dénition
+La valeur moyenne d'une fonction f : [a, b]→ R continue est :
+µ = 1
+b− a
+∫
+[a,b]
+f
+Remarque. La valeur moyenne est la constante µ qui vérie
+∫
+[a,b]
+f =
+∫
+[a,b]
+µ
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Proposition
+Soit f : [a, b]→ R une fonction continue sur [a, b] et positive alors
+∫
+[a,b]
+f = 0 si et seulement si f est nulle sur [a, b].
+Démonstration.
+⇐ Si f est nulle, son intégrale est nulle.
+⇒ Par contraposition, supposons que f n'est pas nulle sur [a, b] :∃c∈ [a, b] tel que
+f (c)> 0.
+D'après la dénition de la continuité de f en c avec ε = f (c)
+2 :
+∃a ⩽α<β ⩽ b,∀x∈ [a, b], x∈ [α,β ]⇒| f (x)− f (c)| ⩽ε
+Ainsi pour tout x∈ [α,β ], on a f (x) ⩽ 𝓁(c)
+2 .
+En prenant l'intégrale, on en déduit donc que :
+∫ b
+a
+f (x)dx >
+∫ β
+α
+f (x)dx >
+∫ β
+α
+εdx = (β−α)ε> 0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Remarque. Si f n'est pas supposée continue, le résultat est faux : par
+exemple f (x) = 0 sur ]0 , 1 [ et f (0 ) = f (1 ) = 1 est positive, non nulle
+mais
+∫ 1
+0
+f = 0.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Calcul intégral
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Dénition
+Soient I un intervalle et f : I↦→ K une fonction continue.
+On appelle primitive de f sur I toute fonction F de classe C1 sur I dont
+la dérivée est f .
+Proposition (Lien entre deux primitives d'une même fonction)
+Deux primitives d'une même fonction sur un intervalle dièrent d'une
+constante c'est à dire :
+Si F1 et F2 sont des primitives de f alors
+∃C∈ K, F1 − F2 = C
+Démonstration.
+Si F1 et F2 sont deux primitives de la fonction F sur I , alors
+(F1 − F2 )′ = F′
+1 − F′
+2 = f− f = 0 donc la fonction F1 − F2 est constante
+sur I .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Proposition (Théorème fondamental de l'analyse)
+Soient I un intervalle de R, f : I→ K une fonction continue, et a∈ I .
+1 La fonction F :
+I → K
+x ↦→
+∫ x
+a
+f (t)dt est l'unique primitive de f
+s'annulant en a.
+2 Pour toute primitive F : I→ K de f , on a
+∫ x
+a
+f (t)dt = F (x)− F (a)
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Démonstration.
+1 La fonction F est dénie pour tout x∈ I car f est continue sur [a, x]
+ou [x, a] (selon que x > a ou x ⩽ a).
+Soit x0 ∈ I , montrons que F est dérivable en x0 et que
+F′ (x0 ) = f (x0 ).
+On a pour tout x∈ I :
+F (x)− F (x0 )
+x− x0
+− f (x0 ) = 1
+x− x0
+∫ x
+x0
+f (t)dt− f (x0 )
+= 1
+x− x0
+∫ x
+x0
+f (t)− f (x0 ) dt
+D'où avec l'inégalité de la moyenne (on vérie que cette inégalité est
+aussi vraie si x < x0 ) :
+⏐⏐⏐⏐
+F (x)− F (x0 )
+x− x0
+− f (x0 )
+⏐⏐⏐⏐ = 1
+x− x0
+∫ x
+x0
+|f (t)− f (x0 )| dt
+A suivre
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Démonstration.
+1 (suite) Or f est continue en x0 , donc :
+∀ε> 0 ,∃α> 0 ,∀t∈ I,|t− x0| ⩽α⇒| f (t)− f (x0 )| ⩽ε.
+Alors pour tout x∈ I,|x− x0| ⩽α, on a pour tout
+t∈ [x0 , x],|f (t)− f (x0 )| ⩽ε et en reportant :
+⏐⏐⏐⏐
+F (x)− F (x0 )
+x− x0
+− f (x0 )
+⏐⏐⏐⏐ = 1
+x− x0
+∫ x
+x0
+εdt ⩽ε.
+Ainsi on a montré que lim
+x→x0
+F (x)− F (x0 )
+x− x0
+= f (x0 ). Donc F est
+dérivable en x0 et F′ (x0 ) = f (x0 ). Puisque c'est vrai pour tout
+x0 ∈ I et que f est continue, on en déduit nalement que F est de
+classe C1 et que F′ = f .
+A suivre
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Démonstration.
+1 (suite)
+Reste à montrer que F est l'unique primitive de f qui s'annule en a.
+Si G satisfait aussi ces propriétés, alors on a vu qu'il existe C∈ K
+tel que F = G + C .
+En évaluant en x = a, on obtient C = 0, et donc F = G .
+2 Soit h : x↦→ F (x)− F (a). Alors h est dérivable sur I comme
+combinaison linéaire de fonctions qui le sont, et pour
+x∈ I, h′(x) = F′(x) = f (x). De plus h(a) = 0, donc h est une
+primitive de f s'annulant en a. D'après l'unicité du point précédent,
+on a pour tout x∈ I, h(x) =
+∫ x
+a
+f (t)dt. D'où le résultat.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Notations.
+Le symbole
+∫
+f (x)dx (introduit par Leibniz) désigne une primitive
+quelconque de f . Elle est donc dénie à une constante additive près.
+La fonction x↦→
+∫ x
+a
+f (t) dt est la primitive de f s'annulant en a.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Proposition
+Soient I, J deux intervalles de R, u, v : I→ R de classe C1 telles que
+u(I ), v(I )⊂ J et f : J→ K continue. Alors la fonction
+g : x↦→
+∫ v (x)
+u(x)
+f (t)dt est dénie sur I , de classe C1 et
+∀x∈ I, g′(x) = f (v(x))v′(x)− f (u(x))u′(x).
+Démonstration.
+Pour tout x∈ I , on a u(x), v (x)∈ J et J est un intervalle. Donc [u(x), v (x)]⊂ J et
+g (x) existe pour tout x∈ I .
+La fonction f : J→ K étant continue sur J, elle admet une primitive F de classe C1
+sur J. On a alors pour tout x∈ I ,
+g (x) = F (v (x))− F (u(x))
+La fonction g est donc de classe C1 en tant que diérence et composées de fonctions
+de classe C1 , et pour tout x∈ I , on a :
+g′(x) = v′(x)f (v (x))− u′(x)f (u(x))
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Proposition (Intégration par parties)
+Soient f et g sont deux fonctions de classe C1 sur [a, b] à valeur dans K.
+∫ b
+a
+f′(t)g(t)dt = [f (t)g(t)]b
+a−
+∫ b
+a
+f (t)g′(t)dt
+Démonstration.
+On a
+∫ b
+a
+f′(t)g(t)dt +
+∫ b
+a
+f (t)g′(t)dt =
+∫ b
+a
+(f′(t)g(t) + f (t)g′(t)) dt
+=
+∫ b
+a
+(fg)′(t)dt = [f (t)g(t)]b
+a
+puisque fg est C1 comme produit de fonctions qui le sont.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Démonstration.
+(suite) On a
+∫ b
+a
+f′(t)g(t)dt +
+∫ b
+a
+f (t)g′(t)dt =
+∫ b
+a
+(f′(t)g(t) + f (t)g′(t)) dt
+=
+∫ b
+a
+(fg)′(t)dt = [f (t)g(t)]b
+a
+puisque fg est C1 comme produit de fonctions qui le sont.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+Proposition (Changement de variable)
+Soient I un intervalle de R et f : I→ K une fonction continue sur I .
+Soient ϕ : [a, b]→ I une fonction de classe C1 sur [a, b]. Alors
+∫ ϕ(b)
+ϕ(a)
+f (x)dx =
+∫ b
+a
+f (ϕ(t))ϕ′(t)dt .
+On dit qu'on a eectué le changement de variables x =ϕ(t).
+Démonstration.
+Si F est une primitive de f , alors F◦ϕ est une primitive de f◦ϕ×ϕ′ et on a :
+∫ ϕ(b)
+ϕ(a)
+f (x)dx = [F (x)]ϕ(b)
+ϕ(a) = F (ϕ(b))− F (ϕ(a)).
+∫ b
+a
+f◦ϕ(t)ϕ′(t)dt = [F◦ϕ(t)]b
+a = F (ϕ(b))− F (ϕ(a)).
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Primitives
+Étude de x ↦→
+∫ v (x)
+u(x)
+f (t)dt
+Intégration par partie
+Changement de variables
+En pratique, il faut modier trois éléments
+la variable x =φ(t),
+l'élément diérentiel dx =φ′(t)dt,
+les bornes de l'intégrale : si t varie entre a et b, x =φ(t) doit varier
+entre φ(a) et φ(b).
+Proposition
+Soit f : R→ K une fonction continue.
+1 si f est périodique de période T , alors pour tous a, b∈ R :
+∫ b
+a
+f (t)dt =
+∫ b+T
+a+T
+f (t)dt,
+∫ a+T
+a
+f (t)dt =
+∫ b+T
+b
+f (t)dt
+2 si f est une fonction paire, alors pour tout a∈ R :∫ a
+−a
+f (t)dt = 2
+∫ a
+0
+f (t)dt.
+3 si f est une fonction impaire, alors pour tout a∈ R :
+∫ a
+−a
+f (t)dt = 0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Recherche de primitives
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Rappelons au cas où que nous savons primitiver aisément un certain
+nombre de fonctions classiques :
+les fonctions de la forme x↦−→ e ax cos(bx) ou x↦−→ e ax sin(bx) avec
+a, b∈ R∗ grâce à l'exponentielle complexe,
+les fonctions de la forme x↦−→sinm x cosn x avec m, n∈ N par
+linéarisation,
+les fonctions rationnelles par décomposition en éléments simples.
+Les tableaux ci-dessous donnent enn la liste des quelques primitives qu'il
+faut connaitre à tout prix.
+Fonction Primitive
+e x e x
+ln x x ln x− x
+1
+x ln|x|
+xα(α⁄=−1 ) xα+1
+α + 1
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des éléments simples
+Soit P(x)
+Q(x) une fraction rationnelle, où P(x), Q(x) sont des polynômes à
+coecients réels.
+Alors la fraction P(x)
+Q(x) s'écrit comme somme d'un polynôme E (x)∈ R[x]
+(la partie entière) et d'éléments simples d'une des formes suivantes :
+γ
+(x− x0 )k ou αx +β
+(ax 2 + bx + c)k avec b2 − 4 ac < 0
+où α,β,γ, a, b, c∈ R et k∈ N\{0}.
+1 Intégration du polynôme E (x). On sait faire.
+2 Intégration de l'élément simple γ
+(x− x0 )x
+3 Intégration de l'élément simple ax +β
+(ax 2 + bx + c)x .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des éléments simples
+2 Intégration de l'élément simple γ
+(x− x0 )x .
+1 Si k = 1 alors
+∫ γdx
+x− x0
+=γ ln|x− x0| + c0 (sur ]−∞, x0 [ ou
+]x0 , +∞[ ).
+2 Si k > 2 alors∫ γdx
+(x− x0 )k =γ
+∫
+(x− x0 )−k dx = γ
+−k + 1 (x− x0 )−k+1 + c0 (sur
+]−∞, x0 [ ou ]x0 , +∞[).
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des éléments simples
+3 Intégration de l'élément simple ax +β
+(ax 2 + bx + c)x . On écrit cette fraction
+sous la forme
+αx +β
+(ax 2 + bx + c)k =γ 2 ax + b
+(ax 2 + bx + c)k +δ 1
+(ax 2 + bx + c)k
+a) Pour le terme 2 ax + b
+(ax 2 + bx + c)k
+1 Si k = 1, calcul de
+∫ 2 ax + b
+ax 2 + bx + c dx =
+∫ u′(x)
+u(x) dx =
+ln|u(x)| + c0 = ln
+⏐⏐ax 2 + bx + c
+⏐⏐ + c0 .
+2 Si k > 2, calcul de
+∫ 2 ax + b
+(ax 2 + bx + c)2 dx =
+∫ u′(x)
+u(x)k dx =
+1
+−k + 1 u(x)−k+1 + c0 = 1
+−k + 1
+(
+ax 2 + bx + c
+)−k+1 + c0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des éléments simples
+b) Pour le terme 1
+(ax 2 + bx + c)k
+1 Si k = 1, calcul de
+∫ 1
+ax 2 + bx + c dx. Par un changement de
+variable u = px + q on se ramène à calculer une primitive du type∫ du
+u2 + 1 = arctan u + c0 .
+2 Si k > 2, calcul de
+∫
+(ax 2 +bx+c)k
+dx. On eectue le changement de
+variable u = px + q pour se ramener au calcul de Ik =
+∫ du
+(u2 + 1 )2 .
+Une intégration par parties permet de passer de Ik à Ik−1 .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Exemple Calculons I2 . Partant de I1 =
+∫ du
+u2 + 1 on pose f = 1
+u2 + 1 et
+g′ = 1. La formule d'intégration par parties
+∫
+fg′ = [fg]−
+∫ ′
+f′g donne
+(avec f′ =− 2 u
+(u2 + 1 )2 et g = u )
+I1 =
+∫ du
+u2 + 1 =
+[ u
+u2 + 1
+]
++
+∫ 2 u2 du
+(u2 + 1 )2 =
+[ u
+u2 + 1
+]
++ 2
+∫ u2 + 1 − 1
+(u2 + 1 )2 du
+=
+[ u
+u2 + 1
+]
++ 2
+∫ du
+u2 + 1 − 2
+∫ du
+(u2 + 1 )2 =
+[ u
+u2 + 1
+]
++ 2 I1 − 2 I2
+On en déduit I2 = 1
+2 I1 + 1
+2
+u
+u2 + 1 + c0 . Mais comme I1 = arctan u alors
+I2 =
+∫ du
+(u2 + 1 )2 = 1
+2 arctan u + 1
+2
+u
+u2 + 1 + c0
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des fonctions trigonométriques
+On peut aussi calculer les primitives de la forme
+∫
+P(cos x, sin x)dx ou
+de la forme
+∫ P(cos x, sin x)
+Q(cos x, sin x) dx quand P et Q sont des polynômes, en se
+ramenant à intégrer une fraction rationnelle. Il existe deux méthodes :
+les règles de Bioche sont assez ecaces mais ne fonctionnent pas
+toujours ;
+le changement de variable t = tan x
+2 fonctionne tout le temps mais
+conduit à davantage de calculs.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Intégration des fonctions trigonométriques
+Les règles de Bioche.
+On note ω(x) = f (x)dx. On a alors ω(−x) = f (−x)d(−x) =−f (−x)dx
+et ω(π− x) = f (π− x)d(π− x) =−f (π− x)dx.
+Si ω(−x) =ω(x) alors on eectue le changement de variable
+u = cos x.
+Si ω(π− x) =ω(x) alors on eectue le changement de variable
+u = sin x.
+Si ω(π + x) =ω(x) alors on eectue le changement de variable
+u = tan x.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Exemple
+Calcul de la primitive
+∫ cos xdx
+2 − cos2 x On note ω(x) = cos xdx
+2 − cos2 x .
+Comme ω(π− x) = cos(n− x)d(π− x)
+2 − cos2 (π− x) = (− cos x)(−dx)
+2 − cos2 x =ω(x) alors le
+changement de variable qui convient est u = sin x pour lequel du = cos xdx.
+Ainsi :
+∫ cos xdx
+2 − cos2 x =
+∫ cos xdx
+2 −
+(
+1 − sin2 x
+) =
+∫ du
+1 + u2 = [arctan u] = arctan(sin x)+c.
+Le changement de variable t = tan x
+2 . Les formules de la  tangente de l'arc
+moitié " permettent d'exprimer sinus, cosinus et tangente en fonction de tan
+x
+2 .
+Avec t = tan x
+2 on a
+cos x = 1 − t 2
+1 + t 2 sin x = 2 t
+1 + t 2 tan x = 2 t
+1 − t 2
+et dx = 2 dt
+1 + t 2 .
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Intégration des éléments simples
+Intégration des fonctions trigonométriques
+Exemple
+Calcul de l'intégrale
+∫ 0
+−π/2
+dx
+1 − sin x .
+Le changement de variable t = tan x
+2 dénit une bijection de
+[
+−π
+2 , 0
+]
+vers [−1 , 0 ] (pour x =−π
+2 , t =−1 et pour x = 0, t = 0 ). De plus on a
+sin x = 2 t
+1 + t 2 et dx = 2 dt
+1 + t 2 .
+∫ 0
+− π
+2
+dx
+1 − sin x =
+∫ 0
+−1
+2 dt
+1 +t 2
+1 − 2 t
+1 +t2
+= 2
+∫ 0
+−1
+dt
+1 + t 2 − 2 t
+= 2
+∫ 0
+−1
+dt
+(1 − t)2 = 2
+[ 1
+1 − t
+]0
+−1
+= 2
+(
+1 − 1
+2
+)
+= 1
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Recherche de primitives
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Dénition
+Soit f : [a, b]→ R une fonction continue et n∈ N∗. On appelle somme
+de Riemann d'ordre n associée à f la somme :
+Rn = b− a
+n
+n−1∑
+k=0
+f (a + k b− a
+n| {z }
+=ak
+)
+Remarque. Cette somme de Riemann est l'intégrale de la fonction en
+escalier ϕ qui vaut f (ak) sur ] ak, ak+1 | pour tout 0 ⩽ k ⩽ n− 1. Cela
+correspond à l'aire en bleu dans le dessin ci-dessous.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Démonstration.
+On fait la preuve dans le cas où f est lipschitzienne (ce qui est en particulier le
+cas si f est de classe C1 sur[a, b]
+)
+. Notons K la constante de lipschitz associée
+à f sur [a, b].
+⏐⏐⏐⏐
+∫ b
+a
+f (x)dx− Rn
+⏐⏐⏐⏐ =
+⏐⏐⏐⏐⏐
+n−1∑
+k=0
+∫ ak+1
+ak
+f (x)dx− b− a
+n
+n−1∑
+k=0
+f (ak )
+⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐
+n−1∑
+k=0
+∫ ak+1
+ak
+f (x)− f (ak ) dx
+⏐⏐⏐⏐⏐ ⩽
+n−1∑
+k=0
+⏐⏐⏐⏐
+∫ ak+1
+ak
+f (x)− f (ak ) dx
+⏐⏐⏐⏐ par inégalité
+triangulaire ⩽
+n−1∑
+k=0
+∫ ak+1
+ak
+|f (x)− f (ak )| dx ⩽
+n−1∑
+k=0
+∫ ak+1
+ak
+K|x− ak| dx car f est
+lipschitzienne ⩽
+n−1∑
+k=0
+∫ ak+1
+ak
+K (ak+1 − ak ) dx car f est lipschitzienne
+⩽ K
+n−1∑
+k=0
+(ak+1 − ak )2 = K
+n−1∑
+k=0
+(b− a)2
+n2 = K (b− a)2
+n Comme enn lim
+K (b− a)2
+n = 0, on obtient par théorème d'encadrement lim
+Rn =
+∫ b
+a
+f (x)dx.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Remarque :
+On reconnait la méthode des rectangles. En particulier, ce résultat
+signie qu'une somme de Riemann constitue une bonne
+approximation de l'intégrale pourvu que le pas soit petit.
+On a le même résultat avec R′
+n = b− a
+n
+n∑
+k=1
+f
+(
+a + k b− a
+n
+)
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Intégrale d'une fonction en escalier
+Intégrale d'une fonction continue (par morceaux)
+Calcul Intégral
+Recherche de primitives
+Approximations d'intégrales, sommes de Riemann
+Remarque. Méthode des trapèzes. La vitesse de convergence de la
+somme de Riemann vers l'intégrale est en 1
+n . On peut améliorer la
+précision en utilisant la méthode des trapèzes.
+On approche alors
+∫
+[a,b]
+f par
+Tn(f ) = b− a
+n
+n−1∑
+k=0
+f (ak) + f (ak+1 )
+2
+On obtient alors une approximation en 1
+n2 : Si f est de classe C2 sur
+[a, b], on peut montrer que
+⏐⏐⏐⏐⏐
+∫ b
+a
+f (x)dx− Tn(f )
+⏐⏐⏐⏐⏐ ⩽ M2
+(b− a)3
+12 n2
+où M2 = sup
+x∈[a,b]
+|f′′(x)|.
+D. Cransac Analyse
