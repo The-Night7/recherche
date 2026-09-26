@@ -84,7 +84,7 @@ def main():
 
     # petite démo de génération
     import json
-    with open("vocab.json", "w", encoding="utf-8") as f:
+    with open("vocab_char.json", "w", encoding="utf-8") as f:
         json.dump({"stoi": vocab.stoi, "itos": {str(k): v for k, v in vocab.itos.items()}},
                    f, ensure_ascii=False)
 

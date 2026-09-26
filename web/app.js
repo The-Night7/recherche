@@ -16,7 +16,15 @@ const COURSE_SYM = {
   "traitement-signal": "∿", "economie": "€", "compressive-sensing": "ℓ₁", "design-decision": "◆",
   "edp": "∂", "ia": "AI", "methodes-agiles": "⟲", "programmation-parallele": "∥", "series-temporelles": "t",
 };
-const courseSym = id => COURSE_SYM[id.replace(/^(?:ing-1-s\d-(?:gm|info|data)|ing-\d(?:-s\d)?)-/, "")] || "·";
+const DOMAINS = {
+  math: "algebre1 algebre2 algebre-lineaire algebre analyse1 analyse2 analyse-rn series integration-proba complement-maths mesures-integration probabilites optimisation optimisation-deterministe analyse-numerique equations-differentielles statistique-inferentielle modele-lineaire edp series-temporelles compressive-sensing data-exploration data-mining",
+  info: "informatique1 informatique2 informatique3 informatique4 algorithmique bdd programmation-procedurale programmation-fonctionnelle programmation-parallele unix systeme-exploitation theorie-graphes theorie-langages decidabilite-complexite architecture-reseau ia methodes-agiles",
+  physics: "physique1 mecanique-du-point electromagnetisme ondes physique-moderne traitement-signal",
+};
+const DOMAIN_OF = Object.fromEntries(Object.entries(DOMAINS).flatMap(([d, ids]) => ids.split(" ").map(id => [id, d])));
+const baseId = id => id.replace(/^(?:ing-1-s\d-(?:gm|info|data)|ing-\d(?:-s\d)?)-/, "");
+const courseSym = id => COURSE_SYM[baseId(id)] || "·";
+const courseDomain = id => DOMAIN_OF[baseId(id)] || "shs";
 const DEFAULT = () => ({ program: "all", study_year: "all", semester: "all", track: "all", course: "all", kinds: [], versions: [], years: [], k: 5, recent: true });
 let META = null;
 let state = DEFAULT();
@@ -114,8 +122,9 @@ function renderFilters(){
     }
     const b = document.createElement("button");
     b.className = "course"; b.dataset.id = c.id;
+    if (c.id !== "all") b.dataset.domain = courseDomain(c.id);
     b.setAttribute("aria-pressed", state.course === c.id ? "true" : "false");
-    b.innerHTML = `<span class="sym">${c.id === "all" ? "∗" : courseSym(c.id)}</span>
+    b.innerHTML = `<span class="sym" data-len="${c.id === "all" ? 1 : [...courseSym(c.id)].length}">${c.id === "all" ? "∗" : courseSym(c.id)}</span>
       <span class="name">${escapeHtml(c.name)}<small>${c.count} passages</small></span>`;
     b.onclick = () => {
       state.course = c.id;
@@ -316,7 +325,7 @@ function renderCard(r, i, tokens){
   const tip = (r.score >= 1 ? 'Référence exacte (1 + cosinus des autres mots)' : 'Similarité cosinus')
             + (state.recent ? ' × bonus de récence' : '');
   return `
-    <article class="card" data-course="${r.course}">
+    <article class="card" data-course="${r.course}" data-domain="${courseDomain(r.course)}">
       <div class="card-head">
         <div class="doc">
           <span class="badge" aria-hidden="true">${courseSym(r.course)}</span>

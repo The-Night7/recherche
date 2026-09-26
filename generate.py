@@ -12,7 +12,7 @@ from vocab import CharVocab
 from model import CharMLP
 
 
-def load_vocab(path="vocab.json"):
+def load_vocab(path="vocab_char.json"):
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     v = CharVocab("")  # vocabulaire vide, on le remplit à la main

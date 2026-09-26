@@ -130,6 +130,11 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
 .course .name small{ display:block; color:var(--ink-soft); font-size:12px; font-weight:400; }
 .course[aria-pressed="true"]{ background:var(--sheet); border-color:var(--c, var(--ink)); }
 .course[aria-pressed="true"] .sym{ background:var(--c, var(--ink)); color:var(--sheet); }
+.course[data-domain="math"], .card[data-domain="math"]{ --c:var(--rn); }
+.course[data-domain="info"], .card[data-domain="info"]{ --c:var(--info); }
+.course[data-domain="physics"], .card[data-domain="physics"]{ --c:var(--physics); }
+.course[data-domain="shs"], .card[data-domain="shs"]{ --c:var(--shs); }
+.course .sym:not([data-len="1"]){ font-size:15px; font-style:normal; letter-spacing:-.02em; }
 .course[data-id="analyse-rn"]{ --c:var(--rn); }
 .course[data-id="series"]{ --c:var(--series); }
 .course[data-id^="informatique"], .card[data-course^="informatique"]{ --c:var(--info); }
@@ -143,7 +148,7 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
   transition:color .12s, border-color .12s;
 }
 .chip:hover:not(:disabled){ color:var(--ink); border-color:var(--ink-soft); }
-.chip[aria-pressed="true"]{ background:var(--ink); color:var(--sheet); border-color:var(--ink); }
+.chip[aria-pressed="true"], .chip[aria-pressed="true"]:hover:not(:disabled){ background:var(--ink); color:var(--sheet); border-color:var(--ink); }
 .chip:disabled{ opacity:.35; cursor:default; }
 
 .switch{ display:flex; align-items:flex-start; gap:10px; font-size:13.5px; cursor:pointer; line-height:1.35; }

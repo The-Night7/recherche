@@ -37,6 +37,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -382,8 +383,32 @@ GLYPHS = {
 }
 
 
+ACCENT_MARKS = {"´": "\u0301", "`": "\u0300", "ˆ": "\u0302", "¨": "\u0308"}
+
+
+ACCENT_RE = re.compile(r"([A-Za-zÀ-ÿ]?)([´`ˆ¨]) ?([aeiouyıAEIOUY])")
+GRAVE_RE = re.compile(r"[A-Za-zÀ-ÿ]` ?[aeiouAEIOU]|(?<=\s)` a(?=\s)")
+
+
+def fix_accents(text):
+    """Recompose les accents séparés par les PDF LaTeX : « Th´ eorie » -> « Théorie »."""
+    def fix_line(line):
+        # un accent grave n'est recomposé que si tous les backticks de la ligne en sont (pas de code inline)
+        grave_ok = line.count("`") == len(GRAVE_RE.findall(line))
+
+        def compose(m):
+            before, mark, vowel = m.groups()
+            if mark == "`" and not (before and grave_ok):
+                return m[0]
+            return before + unicodedata.normalize("NFC", vowel.replace("ı", "i") + ACCENT_MARKS[mark])
+        line = ACCENT_RE.sub(compose, line)
+        return re.sub(r"(?<=\s)` a(?=\s)", "à", line) if grave_ok else line
+    return "\n".join(fix_line(line) for line in text.split("\n"))
+
+
 def fix_glyphs(text):
     """À appliquer AVANT clean_text (qui supprime les caractères de contrôle)."""
+    text = fix_accents(text)
     text = re.sub(r"(?<=[A-Za-zé])\x1c(?=[a-zé])", "fi", text)
     for k, v in GLYPHS.items():
         text = text.replace(k, v)
@@ -584,6 +609,8 @@ def chunk_document(path, course):
             # heuristiques de fractions/indices sont propres aux maths.
             fmt = "code" if meta.get('source_format') == 'code' else "text"
             text = strip_control_chars(raw.replace(PAGE_SEP, "\n\n"))
+            if fmt == "text":
+                text = fix_accents(text)
         else:
             pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
             text = fix_sums(clean_text("\n\n".join(pages)))
