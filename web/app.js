@@ -181,13 +181,15 @@ function update(){
 // sépare le texte en morceaux maths ($$…$$, $…$, \(…\), \[…\]) et texte ordinaire
 const MATH_RE = /(\$\$[\s\S]+?\$\$|\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|\$(?:\\\$|[^$\n])+?\$)/g;
 
+const ACCENT_CLASS = { a: "aàâä", e: "eéèêë", i: "iîï", o: "oôö", u: "uùûü", c: "cç", y: "yÿ" };
+const accentInsensitive = s => [...s].map(ch => ACCENT_CLASS[ch.toLowerCase()] ? "[" + ACCENT_CLASS[ch.toLowerCase()] + "]" : reEscape(ch)).join("");
 function highlightPlain(text, terms){
   let html = escapeHtml(text);
   terms.forEach(t => {
     if (t.length < 3) return;
     const re = /\d$/.test(t)
-      ? new RegExp('(' + reEscape(t).replace(/ /g, '\\s+') + ')(?!\\d)', 'gi')   // "exercice 2" ≠ "exercice 21"
-      : new RegExp('(' + reEscape(t) + '[\\wÀ-ÿ]*)', 'gi');
+      ? new RegExp('(' + accentInsensitive(t).replace(/ /g, '\\s+') + ')(?!\\d)', 'gi')   // "exercice 2" ≠ "exercice 21"
+      : new RegExp('(' + accentInsensitive(t) + '[\\wÀ-ÿ]*)', 'gi');
     html = html.replace(re, '<mark>$1</mark>');
   });
   return html;
@@ -314,14 +316,19 @@ function renderMath(el){
   }
 }
 
-function renderCard(r, i, tokens){
-  const body = r.blocks.map(b => {
+function renderBlocks(blocks, tokens){
+  return blocks.map(b => {
     if (b.type === "md") return renderMd(b.text, tokens);
     if (b.type === "text") return `<pre class="text-excerpt">${escapeHtml(b.text)}</pre>`;
+    if (b.type === "slides") return `<pre class="text-excerpt">${highlightPlain(b.text, tokens)}</pre>`;
     if (b.type === "code") return `<pre class="code-block">${escapeHtml(b.text)}</pre>`;
     if (b.type === "formula") return `<div class="formula"><pre>${escapeHtml(b.text)}</pre></div>`;
     return `<p class="prose">${highlightPlain(b.text, tokens)}</p>`;
   }).join('');
+}
+function renderCard(r, i, tokens){
+  const body = renderBlocks(r.blocks, tokens);
+  const alt = r.alt ? renderBlocks(r.alt, tokens) : "";
   const pct = Math.round(Math.min(1, r.score) * 100);
   const tip = (r.score >= 1 ? 'Référence exacte (1 + cosinus des autres mots)' : 'Similarité cosinus')
             + (state.recent ? ' × bonus de récence' : '');
@@ -333,6 +340,7 @@ function renderCard(r, i, tokens){
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
+          ${alt ? '<button type="button" class="view-toggle" aria-pressed="false" title="Reconstruit les formules à partir du texte extrait : peut se tromper">Mettre en forme</button>' : ''}
         </div>
         <h3 class="section">${escapeHtml(cleanTitle(r.section || r.label))}</h3>
         <div class="score" title="${tip}">
@@ -340,6 +348,7 @@ function renderCard(r, i, tokens){
         </div>
       </div>
       <div class="card-body">${body}</div>
+      ${alt ? `<div class="card-body" hidden>${alt}</div>` : ''}
     </article>`;
 }
 
@@ -462,6 +471,17 @@ $("toggle-filters").onclick = () => {
   const open = $("aside").classList.toggle("open");
   $("toggle-filters").setAttribute("aria-expanded", open);
 };
+
+$("results").addEventListener("click", e => {
+  const button = e.target.closest(".view-toggle");
+  if (!button) return;
+  const bodies = button.closest(".card").querySelectorAll(".card-body");
+  const formatted = button.getAttribute("aria-pressed") !== "true";
+  button.setAttribute("aria-pressed", formatted);
+  button.textContent = formatted ? "Texte d’origine" : "Mettre en forme";
+  bodies[0].hidden = formatted;
+  bodies[1].hidden = !formatted;
+});
 
 fetch('/api/meta').then(r => r.json()).then(meta => {
   META = meta;

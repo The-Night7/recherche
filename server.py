@@ -60,9 +60,21 @@ def md_blocks(text):
     return [{"type": "md", "text": text}]
 
 
+def is_ing_pdf(chunk):
+    return chunk.get("fmt") == "pdf" and chunk.get("program") == "ing"
+
+
+def alt_blocks(chunk):
+    """Version reformatée (formules reconstruites), proposée à la demande."""
+    return to_md_blocks(chunk["text"]) if is_ing_pdf(chunk) else None
+
+
 def content_blocks(chunk):
     if chunk.get("fmt") == "md":
         return md_blocks(chunk["text"])
+    # PDF Ing : texte fidèle par défaut, la mise en forme des formules est devinée (voir alt_blocks).
+    if is_ing_pdf(chunk):
+        return [{"type": "slides", "text": chunk["text"]}]
     if chunk.get("fmt") == "text":
         return [{"type": "text", "text": chunk["text"]}]
     if chunk.get("fmt") == "code":
@@ -166,7 +178,7 @@ class Handler(BaseHTTPRequestHandler):
                         "program": c["program"], "track": c["track"],
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
                         "score": score,
-                        "blocks": content_blocks(c),
+                        "blocks": content_blocks(c), "alt": alt_blocks(c),
                     }
                     for c, score in results
                 ],
