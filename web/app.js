@@ -36,6 +36,7 @@ try {
 } catch (e) {}
 function save(){ try { localStorage.setItem("tuteur-filtres", JSON.stringify(state)); } catch (e) {} }
 
+const cleanTitle = s => (s || "").replace(/\s*·\s*année inconnue\s*$/, "").replace(/\s+--?\s+/g, " — ").replace(/[_\s]+/g, " ").trim();
 function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function reEscape(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
@@ -234,10 +235,10 @@ function renderMd(text, terms){
       const source = sourceBlock(line);
       if (source){
         const {language, value} = sources[Number(source[1])];
-        const pdfSource = language === 'pdf' || language === 'pdf-steps';
+        const pdfSource = language === 'pdf' || language === 'pdf-steps' || language === 'pdf-matrix';
         const summary = language === 'pdf-steps' ? 'Étapes intermédiaires à vérifier' : 'Afficher l’expression d’origine';
         out.push(pdfSource
-          ? `<details class="source-excerpt"><summary>${summary}</summary><pre>${escapeHtml(value)}</pre></details>`
+          ? `<details class="source-excerpt"${language === 'pdf-matrix' ? " open" : ""}><summary>${summary}</summary><pre>${escapeHtml(value)}</pre></details>`
           : `<pre class="code-block">${escapeHtml(value)}</pre>`);
         i++; continue;
       }
@@ -330,10 +331,10 @@ function renderCard(r, i, tokens){
         <div class="doc">
           <span class="badge" aria-hidden="true">${courseSym(r.course)}</span>
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
-          <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(r.doc_label)}</span>
+          <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
         </div>
-        <h3 class="section">${escapeHtml(r.section || r.label)}</h3>
+        <h3 class="section">${escapeHtml(cleanTitle(r.section || r.label))}</h3>
         <div class="score" title="${tip}">
           <span class="meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}
         </div>

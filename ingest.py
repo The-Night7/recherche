@@ -383,6 +383,13 @@ GLYPHS = {
 }
 
 
+LIGATURES = {"ﬀ": "ff", "ﬁ": "fi", "ﬂ": "fl", "ﬃ": "ffi", "ﬄ": "ffl", "ﬅ": "st", "ﬆ": "st"}
+
+
+def fix_ligatures(text):
+    return text.translate(str.maketrans(LIGATURES))
+
+
 ACCENT_MARKS = {"´": "\u0301", "`": "\u0300", "ˆ": "\u0302", "¨": "\u0308"}
 
 
@@ -406,9 +413,14 @@ def fix_accents(text):
     return "\n".join(fix_line(line) for line in text.split("\n"))
 
 
+def fix_spacing(text):
+    """« deA », « matriceA » : l'extraction a collé un mot et le nom d'une variable."""
+    return re.sub(r"(?<=[a-zéèêàâîôûç]{2})([A-Z][a-z]?)(?=[\s.,;:)=∈∼≤≥<>])", r" \1", text)
+
+
 def fix_glyphs(text):
     """À appliquer AVANT clean_text (qui supprime les caractères de contrôle)."""
-    text = fix_accents(text)
+    text = fix_spacing(fix_accents(text))
     text = re.sub(r"(?<=[A-Za-zé])\x1c(?=[a-zé])", "fi", text)
     for k, v in GLYPHS.items():
         text = text.replace(k, v)
@@ -599,7 +611,7 @@ def chunk_document(path, course):
     if meta_path.exists():
         meta.update(json.loads(meta_path.read_text(encoding='utf-8')).get(stem, {}))
     with open(path, encoding="utf-8") as source:
-        raw = source.read()
+        raw = fix_ligatures(source.read())
     fmt = "md" if ext == ".md" else "pdf"
     if fmt == "md":
         secs = sections_markdown(raw)
@@ -610,7 +622,7 @@ def chunk_document(path, course):
             fmt = "code" if meta.get('source_format') == 'code' else "text"
             text = strip_control_chars(raw.replace(PAGE_SEP, "\n\n"))
             if fmt == "text":
-                text = fix_accents(text)
+                text = fix_spacing(fix_accents(text))
         else:
             pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
             text = fix_sums(clean_text("\n\n".join(pages)))

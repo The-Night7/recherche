@@ -543,6 +543,15 @@ def readable_integral_steps(lines):
     return (kept, True) if omitted else (lines, False)
 
 
+NUMBER_RE = re.compile(r"[-−]?\d+(?:[/.,]\d+)?")
+
+
+def matrix_row(s):
+    """« 1 1 », « x2 0 1 0 3 » : une ligne de matrice ou de tableau, pas une fraction."""
+    tokens = s.split()
+    return sum(bool(NUMBER_RE.fullmatch(t)) for t in tokens) >= 2 and not any(t in "+−-=×·/" for t in tokens)
+
+
 def display_math(lines):
     """Restituer les fractions empilées dans un calcul isolé de la prose.
 
@@ -588,6 +597,7 @@ def display_math(lines):
         while den.endswith(")") and den.count(")") > den.count("("):
             den, closers = den[:-1].rstrip(), ")" + closers
         if "$" not in cur + den and is_math_line(cur, 28) and is_math_line(den, 32) \
+                and not (matrix_row(cur) or matrix_row(den)) \
                 and (not re.fullmatch(r"d[txu]", den) or re.fullmatch(r"d[A-Za-z]", cur)) \
                 and not OPERATOR_END_RE.search(cur) and not OPERATOR_END_RE.search(den):
             value = r"\dfrac{" + tex(cur) + "}{" + tex(den) + "}"
@@ -642,6 +652,15 @@ def display_math(lines):
     return "\\begin{aligned}\n" + " \\\\\n".join(aligned) + "\n\\end{aligned}"
 
 
+def is_matrix_block(lines):
+    """Matrice ou vecteur colonne : les colonnes ont disparu à l'extraction, les lignes restent lisibles."""
+    if sum(matrix_row(line) for line in lines) >= 2:
+        return True
+    singles = [line for line in lines if NUMBER_RE.fullmatch(line)]
+    return len(singles) >= 3 and all(
+        NUMBER_RE.fullmatch(line) or re.fullmatch(r"[\w′']{1,3}\s*=|[.,;()]", line) for line in lines)
+
+
 def ambiguous_formula(lines):
     """Repérer les extractions dont la géométrie manque pour choisir le LaTeX.
 
@@ -649,6 +668,8 @@ def ambiguous_formula(lines):
     syntaxique d'un LaTeX inventé ne prouve pas que la formule est correcte.
     """
     if not balanced("".join(lines)) or "!" in lines:
+        return True
+    if is_matrix_block(lines):
         return True
     for i, line in enumerate(lines[:-1]):
         following = lines[i + 1]
@@ -724,7 +745,8 @@ def reflow(text):
                 return
             if ambiguous_formula(formula):
                 flush_prose()
-                out.append("\n".join(indent + line for line in source_formula(formula).split("\n")))
+                language = "pdf-matrix" if is_matrix_block(formula) else "pdf"
+                out.append("\n".join(indent + line for line in source_formula(formula, language).split("\n")))
                 formula.clear()
                 return
             # Réparer seulement ce calcul : aucune opération ne peut consommer
@@ -758,7 +780,7 @@ def reflow(text):
             title = line[:heading.start(2)].rstrip(" .:") if heading.group(2) else line.rstrip(" .:")
             title = re.sub(r"^Ex\.\s*", "Exercice ", title, flags=re.I)
             out.append("#### " + title)
-            prose = heading.group(2)
+            prose = "" if heading.group(2).strip() in {"-", "—", "–"} else heading.group(2)
             continue
         item = LIST_RE.match(line)
         bullet = BULLET_RE.match(line)
