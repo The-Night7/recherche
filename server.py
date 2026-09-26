@@ -10,9 +10,11 @@ Usage:
     python3 server.py
     -> ouvre http://localhost:8000 dans le navigateur
 """
+import hashlib
 import html
 import json
 import os
+import subprocess
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
@@ -53,6 +55,35 @@ def build_meta():
 
 
 META = build_meta()
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+PAGE_CACHE = os.path.join(ROOT, ".pagecache")
+# PDF d'origine, seulement pour les documents indexés dont le fichier est présent sur cette machine
+SOURCES = {}
+for _chunk in CHUNKS:
+    if _chunk.get("pages") and _chunk.get("doc") and _chunk.get("source"):
+        _path = os.path.join(ROOT, _chunk["source"])
+        if os.path.isfile(_path):
+            SOURCES.setdefault(_chunk["doc"], _path)
+
+
+def render_page(doc, number):
+    """JPEG de la page `number` (à partir de 1) du PDF de `doc`, mis en cache ; None si impossible."""
+    if doc not in SOURCES or not 1 <= number <= 5000:
+        return None
+    out = os.path.join(PAGE_CACHE, f"{hashlib.sha1(doc.encode()).hexdigest()[:16]}-{number}.jpg")
+    if not os.path.isfile(out):
+        os.makedirs(PAGE_CACHE, exist_ok=True)
+        base = f"{out[:-4]}.{os.getpid()}"
+        try:
+            subprocess.run(["pdftoppm", "-jpeg", "-jpegopt", "quality=85", "-r", "110", "-f", str(number),
+                            "-l", str(number), "-singlefile", SOURCES[doc], base],
+                           check=True, capture_output=True, timeout=60)
+            os.replace(base + ".jpg", out)
+        except (subprocess.SubprocessError, OSError):
+            return None
+    with open(out, "rb") as f:
+        return f.read()
 
 
 def md_blocks(text):
@@ -113,9 +144,11 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass  # silence les logs par défaut, un peu bruyants
 
-    def send(self, body, ctype):
+    def send(self, body, ctype, cache=None):
         self.send_response(200)
         self.send_header("Content-Type", ctype)
+        if cache:
+            self.send_header("Cache-Control", cache)
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -133,6 +166,17 @@ class Handler(BaseHTTPRequestHandler):
                 with open(path, "rb") as f:
                     self.send(f.read(), STATIC_TYPES[os.path.splitext(path)[1]])
                 return
+
+        if parsed.path == "/api/page":
+            qs = parse_qs(parsed.query)
+            number = qs.get("n", [""])[0]
+            image = render_page(qs.get("doc", [""])[0], int(number)) if number.isdigit() else None
+            if image is None:
+                self.send_response(404)
+                self.end_headers()
+            else:
+                self.send(image, "image/jpeg", cache="public, max-age=86400")
+            return
 
         if parsed.path == "/api/meta":
             self.send_json(META)
@@ -179,6 +223,7 @@ class Handler(BaseHTTPRequestHandler):
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
                         "score": score,
                         "blocks": content_blocks(c), "alt": alt_blocks(c),
+                        "pdf": {"doc": c["doc"], "pages": c["pages"]} if c.get("doc") in SOURCES and c.get("pages") else None,
                     }
                     for c, score in results
                 ],

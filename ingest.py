@@ -604,6 +604,41 @@ def sections_markdown(text):
     return secs
 
 
+def norm_words(text):
+    folded = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
+    return re.findall(r"[a-z0-9]+", folded)
+
+
+def word_grams(text):
+    words = norm_words(text)
+    return {tuple(words[i:i + 3]) for i in range(len(words) - 2)}
+
+
+def page_index(raw):
+    """gram de 3 mots -> pages du PDF où il apparaît (les pages sont séparées par PAGE_SEP)."""
+    index = {}
+    for number, page in enumerate(raw.split(PAGE_SEP), 1):
+        for gram in word_grams(page):
+            index.setdefault(gram, []).append(number)
+    return index
+
+
+def locate_pages(text, index, limit=6):
+    grams = word_grams(text)
+    hits = {}
+    for gram in grams:
+        for number in index.get(gram, ()):
+            hits[number] = hits.get(number, 0) + 1
+    if not hits:
+        return []
+    floor = min(2, len(grams)) if len(grams) < 10 else max(2, 0.2 * len(grams))
+    kept = sorted(n for n, h in hits.items() if h >= floor)
+    if not kept:
+        best = max(hits, key=hits.get)
+        kept = [best] if hits[best] >= 2 else []
+    return kept[:limit]
+
+
 def chunk_document(path, course):
     stem, ext = os.path.splitext(os.path.basename(path))
     meta = parse_meta(stem, course)
@@ -632,6 +667,7 @@ def chunk_document(path, course):
     secs = [(l, t) for l, t in secs if t.strip()]
     if meta["kind"] == "cours":
         secs = merge_small(secs)
+    pages_of_pdf = page_index(raw) if ext == ".txt" and meta.get("source", "").lower().endswith(".pdf") and PAGE_SEP in raw else None
     chunks = []
     for label, body in secs:
         # Un corrigé reste entier, même si ses calculs dépassent MAX_CHARS.
@@ -653,13 +689,18 @@ def chunk_document(path, course):
             if sub_label.startswith("Diapos"):  # pas de titres : 1re ligne parlante
                 first = next((l.strip() for l in sub.split("\n") if len(l.strip()) > 12), "")
                 sub_label = first[:70] + ("…" if len(first) > 70 else "")
-            chunks.append({
+            chunk = {
                 **meta,
                 "fmt": fmt,
                 "section": sub_label,
                 "label": f"{meta['doc_label']} — {sub_label}",
                 "text": sub.strip(),
-            })
+            }
+            if pages_of_pdf:
+                pages = locate_pages(chunk["text"], pages_of_pdf)
+                if pages:
+                    chunk["pages"] = pages
+            chunks.append(chunk)
     return chunks
 
 

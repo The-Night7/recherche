@@ -326,12 +326,26 @@ function renderBlocks(blocks, tokens){
     return `<p class="prose">${highlightPlain(b.text, tokens)}</p>`;
   }).join('');
 }
+function renderPages(pdf){
+  const figure = n => `<figure class="pdf-page"><img loading="lazy" decoding="async" alt="Page ${n} du document"
+    src="/api/page?doc=${encodeURIComponent(pdf.doc)}&n=${n}"><figcaption>page ${n}</figcaption></figure>`;
+  const shown = pdf.pages.slice(0, 3).map(figure).join('');
+  const rest = pdf.pages.slice(3);
+  return shown + (rest.length ? `<details class="more-pages"><summary>Autres pages (${rest.length})</summary>${rest.map(figure).join('')}</details>` : '');
+}
 function renderCard(r, i, tokens){
-  const body = renderBlocks(r.blocks, tokens);
-  const alt = r.alt ? renderBlocks(r.alt, tokens) : "";
+  const views = [];
+  if (r.pdf) views.push(["Page d’origine", renderPages(r.pdf), "La page du PDF, exactement comme dans le document"]);
+  views.push(["Texte", renderBlocks(r.blocks, tokens), "Texte extrait du document, mots cherchés surlignés"]);
+  if (r.alt) views.push(["Formules mises en forme", renderBlocks(r.alt, tokens), "Formules reconstruites à partir du texte extrait : peut se tromper"]);
   const pct = Math.round(Math.min(1, r.score) * 100);
   const tip = (r.score >= 1 ? 'Référence exacte (1 + cosinus des autres mots)' : 'Similarité cosinus')
             + (state.recent ? ' × bonus de récence' : '');
+  const tabs = views.length > 1
+    ? `<div class="view-tabs" role="group" aria-label="Affichage">${views.map(([label, , hint], k) =>
+        `<button type="button" class="view-tab" data-view="${k}" aria-pressed="${k === 0}" title="${escapeHtml(hint)}">${label}</button>`).join('')}</div>`
+    : '';
+  const bodies = views.map(([, html], k) => `<div class="card-body" data-view="${k}"${k === 0 ? '' : ' hidden'}>${html}</div>`).join('');
   return `
     <article class="card" data-course="${r.course}" data-domain="${courseDomain(r.course)}">
       <div class="card-head">
@@ -340,15 +354,13 @@ function renderCard(r, i, tokens){
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
-          ${alt ? '<button type="button" class="view-toggle" aria-pressed="false" title="Reconstruit les formules à partir du texte extrait : peut se tromper">Mettre en forme</button>' : ''}
         </div>
         <h3 class="section">${escapeHtml(cleanTitle(r.section || r.label))}</h3>
         <div class="score" title="${tip}">
           <span class="meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}
         </div>
       </div>
-      <div class="card-body">${body}</div>
-      ${alt ? `<div class="card-body" hidden>${alt}</div>` : ''}
+      ${tabs}${bodies}
     </article>`;
 }
 
@@ -473,14 +485,11 @@ $("toggle-filters").onclick = () => {
 };
 
 $("results").addEventListener("click", e => {
-  const button = e.target.closest(".view-toggle");
-  if (!button) return;
-  const bodies = button.closest(".card").querySelectorAll(".card-body");
-  const formatted = button.getAttribute("aria-pressed") !== "true";
-  button.setAttribute("aria-pressed", formatted);
-  button.textContent = formatted ? "Texte d’origine" : "Mettre en forme";
-  bodies[0].hidden = formatted;
-  bodies[1].hidden = !formatted;
+  const tab = e.target.closest(".view-tab");
+  if (!tab) return;
+  const card = tab.closest(".card");
+  card.querySelectorAll(".view-tab").forEach(t => t.setAttribute("aria-pressed", t === tab));
+  card.querySelectorAll(".card-body").forEach(b => { b.hidden = b.dataset.view !== tab.dataset.view; });
 });
 
 fetch('/api/meta').then(r => r.json()).then(meta => {
