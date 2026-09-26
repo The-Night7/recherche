@@ -21,6 +21,7 @@ C'est une heuristique : le texte indexé (chunks.json) n'est pas modifié.
 """
 import re
 
+ANSWER_RE = re.compile(r"^(R[ée]ponses?|Corrig[ée]|Solutions?)\s*[.:]\s*(.*)$", re.I)
 HEADING_RE = re.compile(
     r"^(Exercice|Ex\.|R[ée]ponse|Question|Partie|Probl[èe]me)\s*\d+[a-z]?\b\s*[.:]?\s*(.*)$", re.I
 )
@@ -772,6 +773,16 @@ def reflow(text):
             formula.clear()
 
     for line_number, line in enumerate(lines):
+        answer = ANSWER_RE.match(line)
+        if answer:
+            # « Réponse. 1. On reconnait… » : la correction commence ici, sa liste repart de 1.
+            flush_formula()
+            flush_prose()
+            indent = ""
+            out.append("#### " + answer.group(1).capitalize())
+            line = answer.group(2)
+            if not line:
+                continue
         heading = HEADING_RE.match(line)
         if heading:
             flush_formula()

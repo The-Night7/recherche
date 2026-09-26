@@ -13,6 +13,14 @@ class ReadabilityTests(unittest.TestCase):
     def markdown(self, text):
         return to_md_blocks(text)[0]['text']
 
+    def test_answer_after_statement_starts_its_own_section(self):
+        text = ('Exercice 2\n1. Déterminer la nature.\n2. Calculer la somme.\n'
+                'Réponse. 1. On reconnait une série de Riemann.\n2. Le résultat vaut 9.')
+        md = self.markdown(text)
+        self.assertRegex(md, r'2\.\n\n   Calculer la somme\.\n\n#### Réponse\n\n1\.\n\n   On reconnait')
+        self.assertNotIn('Réponse.', md)
+        self.assertEqual(self.markdown('Réponse 4\nOui.'), '#### Réponse 4\n\nOui.')
+
     def test_repeated_formula_parts_survive_import(self):
         pages = ['Université Exemple\nk=1\nn + 1\nun =\n1 −\n' + str(i)
                  for i in range(1, 6)]
