@@ -7,6 +7,25 @@ vm.createContext(context);
 vm.runInContext(fs.readFileSync('web/app.js', 'utf8').split('/* ---------- recherche ---------- */')[0], context);
 const render = (text, terms = []) => context.renderMd(text, terms);
 
+test('transcription tables preserve formulas, escaped pipes and safe text', () => {
+  const html = render('Valeurs\n| $x$ | Valeur |\n| --- | --- |\n| $|x|$ | **maximum** |\n| a\\|b | <script>x</script> |');
+  assert.match(html, /<p class="prose">Valeurs<\/p><div class="md-table"><table>/);
+  assert.equal((html.match(/<tr>/g) || []).length, 3);
+  assert.equal((html.match(/<td>/g) || []).length, 4);
+  assert.match(html, /<td>\$\|x\|\$<\/td>/);
+  assert.match(html, /<td>a\|b<\/td>/);
+  assert.match(html, /<strong>maximum<\/strong>/);
+  assert.match(html, /&lt;script&gt;/);
+  assert.doesNotMatch(html, /<script>/);
+});
+
+test('ordinary pipes and fenced tables remain text', () => {
+  assert.doesNotMatch(render('a | b\nc | d'), /<table>/);
+  const html = render('```text\n| a | b |\n| --- | --- |\n```');
+  assert.doesNotMatch(html, /<table>/);
+  assert.match(html, /<pre class="code-block">/);
+});
+
 test('paragraphs and calculations belong to their numbered question', () => {
   const html = render('1. Première étape\n\n   $$x=1$$\n\n   Explication.\n\n   - Détail\n\n2. Suite');
   assert.equal((html.match(/<ol /g) || []).length, 1);

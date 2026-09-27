@@ -241,6 +241,12 @@ function renderMd(text, terms){
   const listType = marker => /^[a-z]/.test(marker) ? 'a' : /^\d/.test(marker) ? '1' : null;
   const listValue = marker => listType(marker) === 'a' ? marker.charCodeAt(0) - 96 : parseInt(marker, 10);
   const sourceBlock = line => line.trim().match(/^\u0001(\d+)\u0001$/);
+  // Les formules sont déjà protégées : leurs barres verticales ne coupent pas les cellules.
+  const tableCells = line => line.trim().replace(/^\|/, '').replace(/(?<!\\)\|$/, '')
+    .split(/(?<!\\)\|/).map(cell => cell.trim().replace(/\\\|/g, '|'));
+  const tableStart = (lines, i) => i + 1 < lines.length && lines[i].includes('|')
+    && lines[i + 1].includes('|') && tableCells(lines[i + 1]).every(cell => /^:?-{3,}:?$/.test(cell))
+    && tableCells(lines[i]).length === tableCells(lines[i + 1]).length;
   const display = line => {
     const m = line.trim().match(/^\u0000(\d+)\u0000$/);
     return m && /^(\$\$|\\\[)/.test(maths[Number(m[1])]);
@@ -275,6 +281,18 @@ function renderMd(text, terms){
       }
       const h = line.match(/^#{1,6}\s+(.+)$/);
       if (h){ out.push(`<h4>${inline(h[1])}</h4>`); i++; continue; }
+      if (tableStart(lines, i)){
+        const headings = tableCells(line);
+        const row = (cells, tag) => '<tr>' + headings.map((_, col) =>
+          `<${tag}>${inline(cells[col] || '')}</${tag}>`).join('') + '</tr>';
+        out.push('<div class="md-table"><table><thead>' + row(headings, 'th') + '</thead><tbody>');
+        i += 2;
+        while (i < lines.length && lines[i].trim() && lines[i].includes('|')){
+          out.push(row(tableCells(lines[i++]), 'td'));
+        }
+        out.push('</tbody></table></div>');
+        continue;
+      }
       // « > … » : remarque d'une transcription (erreur corrigée, complément rédigé)
       if (/^\s*>/.test(line)){
         const note = [];
@@ -310,7 +328,7 @@ function renderMd(text, terms){
       const para = [line.trim()];
       i++;
       while (i < lines.length && lines[i].trim() && !item(lines[i])
-             && !/^#{1,6}\s/.test(lines[i]) && !/^\s*>/.test(lines[i]) && !display(lines[i]) && !sourceBlock(lines[i])){
+             && !/^#{1,6}\s/.test(lines[i]) && !/^\s*>/.test(lines[i]) && !display(lines[i]) && !sourceBlock(lines[i]) && !tableStart(lines, i)){
         para.push(lines[i++].trim());
       }
       out.push(`<p class="prose">${inline(para.join(' '))}</p>`);
