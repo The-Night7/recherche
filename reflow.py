@@ -85,7 +85,8 @@ GREEK = {
     "∞": r"\infty ", "−": "-", "×": r"\times ", "·": r"\cdot ", "≤": r"\le ", "≥": r"\ge ",
     "∼": r"\sim ", "≈": r"\approx ", "≠": r"\neq ", "∈": r"\in ", "→": r"\to ", "∂": r"\partial ",
     "⇔": r"\Leftrightarrow ", "⇒": r"\Rightarrow ", "√": r"\surd ", "ᐟ": "/", "!": "!", "∗": "^*",
-    "∑": r"\sum ", "∏": r"\prod ", "∫": r"\int ",
+    "∑": r"\sum ", "∏": r"\prod ", "∫": r"\int ", "‖": r"\| ", "′": "'", "″": "''", "‴": "'''",
+    "⊂": r"\subset ", "∀": r"\forall ", "∃": r"\exists ",
 }
 SETS = {"N": r"\mathbb{N}", "Z": r"\mathbb{Z}", "R": r"\mathbb{R}", "C": r"\mathbb{C}", "Q": r"\mathbb{Q}"}
 
@@ -131,7 +132,7 @@ def sub_index(idx):
 
 SAFE_SUB_RE = re.compile(r"(?<![\w$\\_])([fgvwxyhSRP])([nk])(?![\w(])")
 UN_OP_RE = re.compile(r"(?<![\w$])([uab])([nk])(?=\s*[=∼<>≤≥→])|(?<=[=∼<>≤≥⇔]\s)([uab])([nk])(?![\w(])")
-SET_RE = re.compile(r"(?<![\w$\\{])(R|(?<=[∈⊂(] )[NZ]|(?<=[∈⊂(])[NZ]|(?<=\bsur )[NZ]|(?<=\bdans )[NZ])"
+SET_RE = re.compile(r"(?<![\w$\\{])(?<![=<>≤≥] )(R(?!\s*[=<>≤≥]|\)(?<=, R\)))|(?<=[∈⊂(] )[NZ]|(?<=[∈⊂(])[NZ]|(?<=\bsur )[NZ]|(?<=\bdans )[NZ])"
                     r"(?![A-Za-zÀ-ÿ0-9'’])(\s*∗)?(\s*\+(?![\w∞(]))?")
 NORM_RE = re.compile(r"(?<![A-Za-z])k([a-zA-Z·]{1,3})k(?:(\d|∞)|(?=[\s,.;:)=≤≥<>+−-]|$))")
 BRA_RE = re.compile(r"(?<![A-Za-z])h([a-zA-Z]{1,2})\|([a-zA-Z]{1,2})i(?![A-Za-z])")  # hu|vi = ⟨u|v⟩
@@ -210,14 +211,17 @@ def inline_math(line):
     for i in range(0, len(parts), 2):
         p = SAFE_SUB_RE.sub(lambda m: m.group(1) + SUBS_U[m.group(2)], parts[i])
         p = BRA_RE.sub(r"⟨\1|\2⟩", p).replace("vuut", "√")
-        p = NORM_RE.sub(lambda m: "‖" + m.group(1) + "‖" + SUBDIGIT.get(m.group(2) or "", m.group(2) or ""), p)
+        # « kick » n'est pas ‖ic‖ : deux lettres entre les k seulement près d'une vraie norme.
+        p = NORM_RE.sub(lambda m: m.group(0) if len(re.findall(r"[a-zA-Z]", m.group(1))) > 1
+                        and not NORM_SIGNATURE_RE.search(p)
+                        else "‖" + m.group(1) + "‖" + SUBDIGIT.get(m.group(2) or "", m.group(2) or ""), p)
         p = SET_RE.sub(lambda m: SETS_U[m.group(1)] + ("∗" if m.group(2) else "") + ("₊" if m.group(3) else ""), p)
         parts[i] = p
     return merge_math("".join(parts))
 
 
 # ---------- recollage des lignes ----------
-SUM_LOW_RE = re.compile(r"^([a-z](?:0{1,3}|⁰{1,3}|'{1,3})?)\s*=\s*(\S{1,6})$")
+SUM_LOW_RE = re.compile(r"^([a-z](?:0{1,3}|⁰{1,3}|'{1,3}|[′″‴])?)\s*=\s*(\S{1,6})$")
 
 
 def big_sums(lines):
@@ -421,15 +425,17 @@ def restore_large_parentheses(text):
 def wrap_equation(row, width=50):
     """Couper une longue égalité entre ses termes, jamais dans une fraction."""
     brace_depth = paren_depth = 0
+    in_norm = False
     cuts = []
     for i, char in enumerate(row):
         if i and row[i - 1] == "\\":
+            in_norm ^= char == "|"
             continue
         brace_depth += char == "{"
         brace_depth -= char == "}"
         paren_depth += char in "(["
         paren_depth -= char in ")]"
-        if char in "+-" and brace_depth == paren_depth == 0 and i and row[i - 1].isspace():
+        if char in "+-" and brace_depth == paren_depth == 0 and not in_norm and i and row[i - 1].isspace():
             cuts.append(i)
     def measure(part):
         return len(re.sub(r"\\[A-Za-z]+|[{}]", "", part))
@@ -715,7 +721,43 @@ def source_formula(lines, language="pdf"):
     return "\n".join([fence + language, *lines, fence])
 
 
+NORM_SIGNATURE_RE = re.compile(r"(?<![a-zà-ÿα-ωϵ])(?<![A-Za-z]{2})k(?:·|\s·\s|[a-zA-Zλ])k(?![a-zà-ÿ])")
+PDF_NORM_RE = re.compile(r"(?<![a-zà-ÿα-ωϵ\d])(?<![A-Za-z]{2})k(\s?·\s?|[^\sk=<>≤≥,;:!+)\n][^k=<>≤≥,;:!\n]{0,22}?(?<=\S))k"
+                         r"(?:([12∞p])|(?![a-zà-ÿ]))")
+PRIMES = {1: "′", 2: "″", 3: "‴"}
+
+
+def latex_font_artifacts(text):
+    """Artefacts des polices LaTeX dans l'extraction PDF.
+
+    ‖·‖ y devient k·k, la prime devient 0 ou ⁰ (r″ -> r00) et ⇔ devient ⇐⇒.
+    Deux zéros ou plus après une lettre isolée sont des primes ; un seul zéro
+    seulement si la même lettre porte aussi des primes multiples (r0, r00, r000).
+    """
+    text = text.replace("⇐⇒", "⇔").replace("=⇒", "⇒").replace("⇐=", "⇐")
+    if NORM_SIGNATURE_RE.search(text):
+        def norm(m):
+            inner = m.group(1).strip()
+            if re.search(r"[A-Za-zÀ-ÿ]{3,}", inner) or inner.isdigit() or not balanced(inner):
+                return m.group(0)
+            return "‖" + inner + "‖" + SUBDIGIT.get(m.group(2) or "", m.group(2) or "")
+        text = PDF_NORM_RE.sub(norm, text)
+    # prime seule sur la ligne suivante : "r" / "00/α"
+    text = re.sub(r"(?m)(?<![\w'’])([a-zA-Z])\n(0{2,3}|⁰{2,3})(?=[\s/=),]|$)", r"\1\2", text)
+    multi = set(re.findall(r"(?<![\w'’])([a-zA-Z])(?:0{2,3}|⁰{2,3})(?![\w⁰-⁹])", text))
+    zeros = r"0{2,3}|⁰{2,3}" + (r"|(?<=[" + "".join(multi) + r"])[0⁰]" if multi else "")
+    return re.sub(r"(?<![\w'’])([a-zA-Z])(" + zeros + r")(?![\w⁰-⁹])",
+                  lambda m: m.group(1) + PRIMES[len(m.group(2))], text)
+
+
+def page_number_tail(text):
+    """Numéro de page collé en fin d'extrait : « ⊂ A²² », « r²¹ » ou une dernière ligne « 23 »."""
+    text = re.sub(r"(?<=\S)[⁰¹²³⁴⁵⁶⁷⁸⁹]{2,3}\s*$", "", text)
+    return re.sub(r"(?<=[A-Za-zÀ-ÿ).])\n\d{1,3}\s*$", "", text)
+
+
 def reflow(text):
+    text = page_number_tail(latex_font_artifacts(text))
     text = restore_large_parentheses(text)
     text = text.replace("̸=", "≠").replace("̸∼", "≁").replace("̸∈", "∉").replace("\u0338", "").replace("$", "＄")
     # La police PDF code parfois les primes par des zéros. Ne les restituer
@@ -865,7 +907,7 @@ def reflow(text):
 
 
 KNOWN_CMDS = set(FUNCTION_TEX.values()) | set("""begin end setminus sqrt dfrac sum prod int lim limits to infty in mathbb le ge sim approx neq partial times cdot
-Leftrightarrow Rightarrow sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
+Leftrightarrow Rightarrow subset forall exists sin cos tan exp ln log arctan surd alpha beta gamma delta varepsilon theta
 lambda mu pi rho sigma tau varphi psi omega Omega""".split())
 
 
@@ -895,6 +937,8 @@ def detex(t):
     """repli lisible quand la formule reconstruite n'est pas du LaTeX valide"""
     t = re.sub(r"\\dfrac\s*\{([^{}]*)\}\s*\{([^{}]*)\}", r"(\1)/(\2)", t)
     t = re.sub(r"\\mathbb\{(\w)\}", lambda m: UNTEX.get(m.group(0), m.group(1)), t)
+    t = re.sub(r"\\\|\s?", "‖", t)
+    t = re.sub(r"_\{?([0-9nk])\}?", lambda m: {"n": "ₙ", "k": "ₖ"}.get(m.group(1), chr(0x2080 + int(m.group(1))) if m.group(1).isdigit() else m.group(1)), t)
     t = re.sub(r"\\([A-Za-z]+)\s?", lambda m: UNTEX.get("\\" + m.group(1), m.group(1)), t)
     return t.replace("{", "").replace("}", "")
 

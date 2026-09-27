@@ -281,6 +281,20 @@ class ReadabilityTests(unittest.TestCase):
         self.assertNotIn('$$', text)
         self.assertNotIn('}{0}', text)
 
+    def test_latex_font_artifacts(self):
+        # ‖·‖ extrait en k·k, r″ en r00 (parfois coupé à la ligne), ⇔ en ⇐⇒, page 22 collée en exposant.
+        md = self.markdown('x0 ∈ Bk·k2(a, r00) ⇐⇒ kx0 − ak2 < r00\nAinsi le rayon est r\n00/α\n'
+                           '(puisque R = r\n00/α, r00 = αR).\nDonc ∃R > 0 et x ∈ R ⊂ A²²')
+        self.assertIn(r'\Leftrightarrow', md)
+        self.assertIn(r"\| x0 - a\| _{2} < r''", md)
+        self.assertIn('(puisque R = r″/α, r″ = αR).', md)
+        self.assertIn('∃R > 0', md)
+        self.assertIn('x ∈ ℝ', md)
+        self.assertNotIn('```pdf', md)
+        self.assertNotIn('²²', md)
+        self.assertEqual(self.markdown('Il donne un coup de pied (kick) et 11h00 sur Zoom.'),
+                         'Il donne un coup de pied (kick) et 11h00 sur Zoom.')
+
 
 if __name__ == '__main__':
     unittest.main()
