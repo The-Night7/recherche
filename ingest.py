@@ -710,6 +710,62 @@ def chunk_document(path, course):
     return chunks
 
 
+SUPERSCRIPT_DIGITS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
+COURSE_BLOCK_RE = re.compile(r"\n(?=(?:D[ée]finition|Propri[ée]t[ée]|Th[ée]or[èe]me|Proposition|Exemple|"
+                             r"Remarque|D[ée]monstration|M[ée]thode)s?\b)")
+
+
+def strip_page_numbers(pages):
+    """Numéro de page en fin de page : ligne « 23 » ou exposant collé (« ⊂ A²² »).
+    Seulement s'il suit la numérotation : « r² » en fin de page 21 est un carré."""
+    out, last = [], None
+    for page in pages:
+        page = page.rstrip()
+        m = re.search(r"\n(\d{1,3})$", page) or re.search(r"(?<=\S)([⁰¹²³⁴⁵⁶⁷⁸⁹]{2,3})$", page)
+        if m:
+            number = int(m.group(1).translate(SUPERSCRIPT_DIGITS))
+            if (last is None and number <= 300) or (last is not None and last < number <= last + 12):
+                page, last = page[:m.start()].rstrip(), number
+        out.append(page)
+    return out
+
+
+def resplit_legacy(chunks):
+    """Les passages de l'ancien format (poly et TD d'Analyse dans ℝⁿ, sans
+    fichier source) étaient coupés par page ou par taille, au milieu des
+    phrases et des calculs. On recolle chaque document et on le redécoupe
+    comme les autres : un passage par exercice, par section pour le cours.
+    Un document déjà redécoupé (« resplit ») est gardé tel quel."""
+    docs, done = {}, []
+    for chunk in chunks:
+        if chunk.get("resplit"):
+            done.append(chunk)
+            continue
+        docs.setdefault(chunk["doc_label"], []).append(chunk)
+    out = done
+    for doc_label, parts in docs.items():
+        first = parts[0]
+        title = first["section"].split(" › ")[0] if first["kind"] == "cours" else ""
+        text = "\n".join(strip_page_numbers([part["text"] for part in parts]))
+        if first["kind"] == "cours":
+            # Les longues sections se coupent entre deux définitions, jamais dans une preuve.
+            secs = merge_small(sections_course_pdf(COURSE_BLOCK_RE.sub("\n\n", text)))
+            secs = [piece for label, body in secs for piece in split_long(label, body)]
+        else:
+            secs = sections_exercises(text)
+        for label, body in secs:
+            if not body.strip():
+                continue
+            if label.startswith("Diapos"):
+                label = (title or doc_label) + label[len("Diapos"):]
+            elif title and not label.startswith(title):
+                label = f"{title} › {label}"
+            meta = {k: v for k, v in first.items() if k not in ("label", "section", "text")}
+            out.append({**meta, "section": label, "label": f"{doc_label} — {label}", "text": body.strip(),
+                        "resplit": True})
+    return out
+
+
 def cmd_build():
     new_chunks = []
     for course in COURSES:
@@ -732,7 +788,7 @@ def cmd_build():
 
     chunks = json.load(open("chunks.json", encoding="utf-8"))
     # passages de l'ancien format, sans fichier source dans data/ (poly et TD d'Analyse dans ℝⁿ)
-    legacy = [c for c in chunks if not c.get("doc")]
+    legacy = resplit_legacy([ensure_meta(c) for c in chunks if not c.get("doc")])
     merged = [ensure_meta(c) for c in legacy + new_chunks]
     json.dump(merged, open("chunks.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"\n{len(new_chunks)} passages depuis data/ + {len(legacy)} anciens = {len(merged)}")
