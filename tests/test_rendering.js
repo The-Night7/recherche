@@ -103,3 +103,15 @@ test('a located PDF block shows the printed formula, with the extracted text fol
   assert.match(html, /<details class="source-excerpt"><summary>Texte extrait<\/summary><pre>H = ∪n∈Z\nB∞<\/pre>/);
   assert.doesNotMatch(render('```pdf\nx\n```'), /source-crop/);
 });
+
+test('notes of a transcription are framed and keep their formulas', () => {
+  const html = render('Texte.\n\n> **Erreur corrigée :** il manque un facteur $2$.\n> Suite de la note.\n\nAprès.');
+  assert.match(html, /<div class="note"><p class="prose"><strong>Erreur corrigée :<\/strong> il manque un facteur \$2\$\. Suite de la note\.<\/p><\/div>/);
+  assert.match(html, /<p class="prose">Après\.<\/p>/);
+});
+
+test('bold text may contain a formula', () => {
+  const html = render('**1. $A = [0, 1[$ : ni ouvert, ni fermé.** Suite.');
+  assert.match(html, /<strong>1\. \$A = \[0, 1\[\$ : ni ouvert, ni fermé\.<\/strong> Suite\./);
+  assert.doesNotMatch(html, /\*\*/);
+});

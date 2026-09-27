@@ -4,7 +4,7 @@ from pathlib import Path
 
 from document_sources import find_source
 
-from ingest import align_legacy, resplit_legacy, strip_page_numbers
+from ingest import align_legacy, resplit_legacy, strip_page_numbers, superseded_removed
 from references import annotate, match, parse_reference
 
 
@@ -44,6 +44,12 @@ class LegacyChunksTests(unittest.TestCase):
             pdf.write_bytes(b"%PDF")
             self.assertEqual(find_source("PREING2-S1/Analyse-dans-RN/TD.pdf", root), str(pdf))
             self.assertIsNone(find_source("PREING2-S1/absent.pdf", root))
+
+    def test_transcribed_exercises_replace_the_old_correction(self):
+        old = [{"section": "Exercice 3", "current": {"td": 2, "exercise": 2, "partial": False}},
+               {"section": "Exercice 1"}]
+        new = [{"doc": "TD2-Correction_2025-2026_Analyse-dans-RN_P2S1_EMasnada", "section": "Exercice 2 : Ouverts"}]
+        self.assertEqual(superseded_removed(old, new), [{"section": "Exercice 1"}])
 
 
 if __name__ == "__main__":

@@ -886,6 +886,23 @@ def attach_pdf_pages(chunks, root="."):
     return chunks
 
 
+TRANSCRIBED_TD_RE = re.compile(r"TD(\d+)-Correction_2025-2026_Analyse-dans-RN")
+
+
+def superseded_removed(legacy, new_chunks):
+    """Retire les exercices d'une ancienne correction qu'une transcription
+    (data/analyse-rn/transcriptions/TDn-Correction_2025-2026_…md) remplace :
+    sinon la recherche renverrait deux corrigés du même exercice."""
+    transcribed = set()
+    for chunk in new_chunks:
+        doc = TRANSCRIBED_TD_RE.match(chunk.get("doc", ""))
+        exercise = re.match(r"Exercice (\d+)", chunk.get("section", ""))
+        if doc and exercise:
+            transcribed.add((int(doc[1]), int(exercise[1])))
+    return [c for c in legacy
+            if not (c.get("current") and (c["current"]["td"], c["current"]["exercise"]) in transcribed)]
+
+
 def cmd_build():
     new_chunks = []
     for course in COURSES:
@@ -910,6 +927,7 @@ def cmd_build():
     # passages de l'ancien format, sans fichier source dans data/ (poly et TD d'Analyse dans ℝⁿ)
     # (reconnus à « resplit » une fois redécoupés : ils reçoivent alors le « doc » de leur PDF)
     legacy = align_legacy(resplit_legacy([ensure_meta(c) for c in chunks if c.get("resplit") or not c.get("doc")]))
+    legacy = superseded_removed(legacy, new_chunks)
     merged = attach_pdf_pages([ensure_meta(c) for c in legacy + new_chunks])
     json.dump(merged, open("chunks.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"\n{len(new_chunks)} passages depuis data/ + {len(legacy)} anciens = {len(merged)}")

@@ -233,7 +233,10 @@ function renderMd(text, terms){
     return `\u0000${id}\u0000`;
   });
   const restore = s => s.replace(/\u0000(\d+)\u0000/g, (_, i) => maths[Number(i)]);
-  const inline = s => richText(restore(s), terms);
+  // Le gras peut entourer une formule (« **1. $A = [0, 1[$ : ouvert.** ») : on le repère
+  // avant de rendre les formules, sinon chaque morceau de texte serait traité séparément.
+  const inline = s => s.split(/\*\*(?=\S)([^*]*?\S)\*\*/).map((part, i) =>
+    i % 2 ? `<strong>${richText(restore(part), terms)}</strong>` : richText(restore(part), terms)).join('');
   const item = line => line.match(/^(\s*)([-*]|\d+[.)]|[a-z]\))(?:\s+(.*)|$)/);
   const listType = marker => /^[a-z]/.test(marker) ? 'a' : /^\d/.test(marker) ? '1' : null;
   const listValue = marker => listType(marker) === 'a' ? marker.charCodeAt(0) - 96 : parseInt(marker, 10);
@@ -272,6 +275,13 @@ function renderMd(text, terms){
       }
       const h = line.match(/^#{1,6}\s+(.+)$/);
       if (h){ out.push(`<h4>${inline(h[1])}</h4>`); i++; continue; }
+      // « > … » : remarque d'une transcription (erreur corrigée, complément rédigé)
+      if (/^\s*>/.test(line)){
+        const note = [];
+        while (i < lines.length && /^\s*>/.test(lines[i])) note.push(lines[i++].replace(/^\s*> ?/, ''));
+        out.push(`<div class="note">${blocks(note)}</div>`);
+        continue;
+      }
       const first = item(line);
       if (first){
         const type = listType(first[2]);
@@ -300,7 +310,7 @@ function renderMd(text, terms){
       const para = [line.trim()];
       i++;
       while (i < lines.length && lines[i].trim() && !item(lines[i])
-             && !/^#{1,6}\s/.test(lines[i]) && !display(lines[i]) && !sourceBlock(lines[i])){
+             && !/^#{1,6}\s/.test(lines[i]) && !/^\s*>/.test(lines[i]) && !display(lines[i]) && !sourceBlock(lines[i])){
         para.push(lines[i++].trim());
       }
       out.push(`<p class="prose">${inline(para.join(' '))}</p>`);
