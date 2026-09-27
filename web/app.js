@@ -223,10 +223,11 @@ function renderMd(text, terms){
   const maths = [];
   const sources = [];
   // Protéger le texte source avant les maths : aucun symbole n'y est interprété.
-  const protectedText = text.replace(/^([ \t]*)(`{3,})([\w-]*)[^\S\n]*\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/gm,
-    (_, indent, fence, language, source) => {
+  // « ```pdf crop=doc=…&n=…&box=… » : zone de la page PDF où se trouve ce bloc (voir pdf_crops.py).
+  const protectedText = text.replace(/^([ \t]*)(`{3,})([\w-]*)(?:[^\S\n]+crop=(\S+))?[^\S\n]*\n([\s\S]*?)\n[ \t]*\2[ \t]*(?=\n|$)/gm,
+    (_, indent, fence, language, crop, source) => {
       const value = source.split('\n').map(line => line.startsWith(indent) ? line.slice(indent.length) : line).join('\n');
-      return indent + `\u0001${sources.push({language, value}) - 1}\u0001`;
+      return indent + `\u0001${sources.push({language, value, crop}) - 1}\u0001`;
     }).replace(MATH_RE, value => {
     const id = maths.push(value) - 1;
     return `\u0000${id}\u0000`;
@@ -249,10 +250,18 @@ function renderMd(text, terms){
       if (!line.trim()){ i++; continue; }
       const source = sourceBlock(line);
       if (source){
-        const {language, value} = sources[Number(source[1])];
+        const {language, value, crop} = sources[Number(source[1])];
         const pdfSource = language === 'pdf' || language === 'pdf-steps' || language === 'pdf-matrix';
         const summary = language === 'pdf-steps' ? 'Étapes intermédiaires à vérifier' : 'Afficher l’expression d’origine';
-        out.push(pdfSource
+        if (pdfSource && crop){
+          // La formule telle qu'imprimée ; le texte extrait reste consultable.
+          // Taille à l'échelle du texte : 1,6 px par point PDF (le PNG est rendu à 200 dpi pour rester net).
+          const box = (new URLSearchParams(crop).get('box') || '').split(',').map(Number);
+          const width = box.length === 4 && box.every(Number.isFinite) ? Math.round((box[2] - box[0]) * 1.6) : 0;
+          out.push(`<figure class="source-crop"><img loading="lazy" decoding="async"${width ? ` style="width:${width}px"` : ''} src="/api/crop?${escapeHtml(crop)}"`
+            + ` alt="${escapeHtml(value.replace(/\s+/g, ' '))}"><figcaption>formule du document d’origine</figcaption></figure>`
+            + `<details class="source-excerpt"><summary>Texte extrait</summary><pre>${escapeHtml(value)}</pre></details>`);
+        } else out.push(pdfSource
           ? `<details class="source-excerpt"${language === 'pdf-matrix' ? " open" : ""}><summary>${summary}</summary><pre>${escapeHtml(value)}</pre></details>`
           : `<pre class="code-block">${escapeHtml(value)}</pre>`);
         i++; continue;

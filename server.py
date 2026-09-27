@@ -21,6 +21,7 @@ from urllib.parse import urlparse, parse_qs
 
 from reflow import to_md_blocks
 from document_sources import find_source
+from pdf_crops import with_crops
 from courses import COURSES, CURRICULA, PROGRAMS, KINDS, course_context
 from search import filter_mask, load_index, recency, search
 
@@ -88,6 +89,38 @@ def render_page(doc, number):
         return f.read()
 
 
+CROP_DPI = 200
+
+
+def render_crop(doc, number, box):
+    """PNG d'une zone (en points PDF : x0, y0, x1, y1) de la page `number`, mis en cache ; None si impossible."""
+    if doc not in SOURCES or not 1 <= number <= 5000:
+        return None
+    try:
+        x0, y0, x1, y1 = (float(v) for v in box.split(","))
+    except ValueError:
+        return None
+    if not (0 <= x0 < x1 <= 2000 and 0 <= y0 < y1 <= 3000):
+        return None
+    scale = CROP_DPI / 72
+    key = hashlib.sha1(f"{doc}|{number}|{box}".encode()).hexdigest()[:20]
+    out = os.path.join(PAGE_CACHE, f"crop-{key}.png")
+    if not os.path.isfile(out):
+        os.makedirs(PAGE_CACHE, exist_ok=True)
+        base = f"{out[:-4]}.{os.getpid()}"
+        try:
+            subprocess.run(["pdftoppm", "-png", "-r", str(CROP_DPI), "-f", str(number), "-l", str(number),
+                            "-x", str(int(x0 * scale)), "-y", str(int(y0 * scale)),
+                            "-W", str(int((x1 - x0) * scale) + 1), "-H", str(int((y1 - y0) * scale) + 1),
+                            "-singlefile", SOURCES[doc], base],
+                           check=True, capture_output=True, timeout=60)
+            os.replace(base + ".png", out)
+        except (subprocess.SubprocessError, OSError):
+            return None
+    with open(out, "rb") as f:
+        return f.read()
+
+
 def clean_md(text):
     """Retire ce qui n'est pas du contenu : balises Jekyll, iframes, ancres, enveloppes <p>."""
     text = re.sub(r"\{%.*?%\}", "", text, flags=re.S)
@@ -108,9 +141,17 @@ def is_ing_pdf(chunk):
     return chunk.get("fmt") == "pdf" and chunk.get("program") == "ing"
 
 
+def cropped(chunk, blocks):
+    """Formules non reconstruites : image découpée dans la page du PDF, quand il est là."""
+    if chunk.get("doc") not in SOURCES or not chunk.get("pages"):
+        return blocks
+    return [{**b, "text": with_crops(b["text"], chunk["doc"], SOURCES[chunk["doc"]], chunk["pages"])}
+            if b.get("type") == "md" and "```pdf" in b["text"] else b for b in blocks]
+
+
 def alt_blocks(chunk):
     """Version reformatée (formules reconstruites), proposée à la demande."""
-    return to_md_blocks(chunk["text"]) if is_ing_pdf(chunk) else None
+    return cropped(chunk, to_md_blocks(chunk["text"])) if is_ing_pdf(chunk) else None
 
 
 def content_blocks(chunk):
@@ -123,7 +164,7 @@ def content_blocks(chunk):
         return [{"type": "text", "text": chunk["text"]}]
     if chunk.get("fmt") == "code":
         return [{"type": "code", "text": chunk["text"]}]
-    return to_md_blocks(chunk["text"])
+    return cropped(chunk, to_md_blocks(chunk["text"]))
 
 
 def csv_param(qs, name):
@@ -189,6 +230,17 @@ class Handler(BaseHTTPRequestHandler):
                 self.end_headers()
             else:
                 self.send(image, "image/jpeg", cache="public, max-age=86400")
+            return
+
+        if parsed.path == "/api/crop":
+            qs = parse_qs(parsed.query)
+            number = qs.get("n", [""])[0]
+            image = render_crop(qs.get("doc", [""])[0], int(number), qs.get("box", [""])[0]) if number.isdigit() else None
+            if image is None:
+                self.send_response(404)
+                self.end_headers()
+            else:
+                self.send(image, "image/png", cache="public, max-age=86400")
             return
 
         if parsed.path == "/api/meta":

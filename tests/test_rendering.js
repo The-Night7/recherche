@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const { test } = require('node:test');
-const context = { document: { getElementById: () => null }, localStorage: { getItem: () => null } };
+const context = { document: { getElementById: () => null }, localStorage: { getItem: () => null }, URLSearchParams };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync('web/app.js', 'utf8').split('/* ---------- recherche ---------- */')[0], context);
 const render = (text, terms = []) => context.renderMd(text, terms);
@@ -95,4 +95,11 @@ test('markdown images and links become elements, unsafe schemes stay text', () =
   assert.doesNotMatch(html, /src="[^"]*<mark>/);
   assert.match(html, /<a href="https:\/\/exemple\.fr\/c\?a=1&amp;b=2" target="_blank" rel="noopener noreferrer">le <mark>cours<\/mark><\/a>|<a href="https:\/\/exemple\.fr\/c\?a=1&amp;b=2" target="_blank" rel="noopener noreferrer">le cours<\/a>/);
   assert.doesNotMatch(html, /href="javascript:|src="http:\/\//);
+});
+
+test('a located PDF block shows the printed formula, with the extracted text folded', () => {
+  const html = render('Ainsi\n\n```pdf crop=doc=TD&n=29&box=10,20,110,40\nH = ∪n∈Z\nB∞\n```');
+  assert.match(html, /<figure class="source-crop"><img [^>]*style="width:160px" src="\/api\/crop\?doc=TD&amp;n=29&amp;box=10,20,110,40"/);
+  assert.match(html, /<details class="source-excerpt"><summary>Texte extrait<\/summary><pre>H = ∪n∈Z\nB∞<\/pre>/);
+  assert.doesNotMatch(render('```pdf\nx\n```'), /source-crop/);
 });
