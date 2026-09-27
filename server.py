@@ -20,6 +20,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 from reflow import to_md_blocks
+from document_sources import find_source
 from courses import COURSES, CURRICULA, PROGRAMS, KINDS, course_context
 from search import filter_mask, load_index, recency, search
 
@@ -62,10 +63,10 @@ PAGE_CACHE = os.path.join(ROOT, ".pagecache")
 # PDF d'origine, seulement pour les documents indexés dont le fichier est présent sur cette machine
 SOURCES = {}
 for _chunk in CHUNKS:
-    if _chunk.get("pages") and _chunk.get("doc") and _chunk.get("source"):
-        _path = os.path.join(ROOT, _chunk["source"])
-        if os.path.isfile(_path):
-            SOURCES.setdefault(_chunk["doc"], _path)
+    if _chunk.get("pages") and _chunk.get("doc") and _chunk.get("source") and _chunk["doc"] not in SOURCES:
+        _path = find_source(_chunk["source"], ROOT)
+        if _path:
+            SOURCES[_chunk["doc"]] = _path
 
 
 def render_page(doc, number):

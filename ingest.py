@@ -36,6 +36,7 @@ import inspect
 import json
 import os
 import re
+import subprocess
 import sys
 import unicodedata
 import zipfile
@@ -44,7 +45,8 @@ from pathlib import Path
 
 from clean_extraction import clean_text, strip_control_chars
 from courses import COURSES, PLAIN_TEXT_COURSES, course_context, source_course, ensure_meta
-from document_sources import CODE_EXTS, OFFICE_EXTS, IMAGE_EXTS, ReadableHTML, extract_office, source_metadata, storage_stem
+from document_sources import (CODE_EXTS, OFFICE_EXTS, IMAGE_EXTS, SOURCE_DIRS, ReadableHTML, extract_office,
+                              source_metadata, storage_stem)
 
 DATA_ROOT = "data"
 DRIVE_DIR = os.path.join(DATA_ROOT, "_drive")
@@ -820,6 +822,70 @@ def align_legacy(chunks):
     return chunks
 
 
+def pdf_pages_text(path):
+    """Texte de chaque page d'un PDF (pdftotext sépare les pages par \\f), ou None."""
+    try:
+        out = subprocess.run(["pdftotext", "-enc", "UTF-8", path, "-"], capture_output=True, timeout=120, check=True)
+    except (subprocess.SubprocessError, OSError):
+        return None
+    return out.stdout.decode("utf-8", "replace").split("\f")
+
+
+def attach_pdf_pages(chunks, root="."):
+    """Relie à leurs pages PDF les passages qui n'en ont pas : documents
+    extraits sans séparateur de pages, et anciens passages sans fichier source.
+    Le PDF est cherché par nom de document ; pour un ancien document, parmi les
+    PDF du même cours, celui dont les pages contiennent le plus de ses mots."""
+    pdfs = {}
+    for folder in SOURCE_DIRS[1:]:
+        base = Path(root, folder)
+        for path in sorted(base.rglob("*.pdf")) if base.is_dir() else ():
+            pdfs.setdefault(path.stem, (folder, path))
+    docs = {}
+    for chunk in chunks:
+        if not chunk.get("pages") and chunk.get("fmt") == "pdf":
+            docs.setdefault(chunk.get("doc") or "legacy:" + chunk["doc_label"], []).append(chunk)
+    indexes = {}
+
+    def index_of(stem):
+        if stem not in indexes:
+            pages = pdf_pages_text(str(pdfs[stem][1]))
+            indexes[stem] = page_index(PAGE_SEP.join(pages)) if pages else None
+        return indexes[stem]
+
+    for key, parts in docs.items():
+        first = parts[0]
+        if first.get("doc"):
+            candidates = [s for s in (first["doc"], first.get("original_stem")) if s in pdfs]
+        else:
+            # Un énoncé n'est pas illustré par la page d'une correction, et les
+            # énoncés 2025-2026 n'ont pas leur PDF (les anciennes feuilles sont numérotées autrement).
+            candidates = [s for s, (_, path) in pdfs.items()
+                          if source_course(str(path)) == first["course"] and s not in docs
+                          and (first.get("corrige") or "Correction" not in s)]
+            if first["kind"] == "td" and not first.get("corrige"):
+                candidates = []
+        best, best_hits = None, 0
+        for stem in candidates[:40]:
+            index = index_of(stem)
+            if not index:
+                continue
+            hits = sum(1 for part in parts for gram in word_grams(part["text"]) if gram in index)
+            if hits > best_hits:
+                best, best_hits = stem, hits
+        grams = sum(len(word_grams(part["text"])) for part in parts)
+        if not best or best_hits < 0.5 * grams:
+            continue
+        folder, path = pdfs[best]
+        for part in parts:
+            pages = locate_pages(part["text"], index_of(best))
+            if pages:
+                part["pages"] = pages
+                part["source"] = str(path.relative_to(Path(root, folder)))
+                part["doc"] = part.get("doc") or best
+    return chunks
+
+
 def cmd_build():
     new_chunks = []
     for course in COURSES:
@@ -842,8 +908,9 @@ def cmd_build():
 
     chunks = json.load(open("chunks.json", encoding="utf-8"))
     # passages de l'ancien format, sans fichier source dans data/ (poly et TD d'Analyse dans ℝⁿ)
-    legacy = align_legacy(resplit_legacy([ensure_meta(c) for c in chunks if not c.get("doc")]))
-    merged = [ensure_meta(c) for c in legacy + new_chunks]
+    # (reconnus à « resplit » une fois redécoupés : ils reçoivent alors le « doc » de leur PDF)
+    legacy = align_legacy(resplit_legacy([ensure_meta(c) for c in chunks if c.get("resplit") or not c.get("doc")]))
+    merged = attach_pdf_pages([ensure_meta(c) for c in legacy + new_chunks])
     json.dump(merged, open("chunks.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"\n{len(new_chunks)} passages depuis data/ + {len(legacy)} anciens = {len(merged)}")
 

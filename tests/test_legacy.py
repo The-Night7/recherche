@@ -1,4 +1,8 @@
+import tempfile
 import unittest
+from pathlib import Path
+
+from document_sources import find_source
 
 from ingest import align_legacy, resplit_legacy, strip_page_numbers
 from references import annotate, match, parse_reference
@@ -32,6 +36,14 @@ class LegacyChunksTests(unittest.TestCase):
         self.assertIn("= TD2 2025-2026, exercice 2", chunks[2]["label"])
         ref, _ = parse_reference("td2 exercice 1 corrigé")
         self.assertEqual([c["section"] for c in chunks if match(c, ref)], ["Exercice 2"])
+
+    def test_sources_are_found_in_the_course_folder(self):
+        with tempfile.TemporaryDirectory() as root:
+            pdf = Path(root, "Synthèses de Cours", "PREING2-S1", "Analyse-dans-RN", "TD.pdf")
+            pdf.parent.mkdir(parents=True)
+            pdf.write_bytes(b"%PDF")
+            self.assertEqual(find_source("PREING2-S1/Analyse-dans-RN/TD.pdf", root), str(pdf))
+            self.assertIsNone(find_source("PREING2-S1/absent.pdf", root))
 
 
 if __name__ == "__main__":

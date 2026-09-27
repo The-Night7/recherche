@@ -1,5 +1,6 @@
 """Lecture passive des supports Ing et métadonnées de leur arborescence."""
 import hashlib
+import os
 import re
 import zipfile
 import unicodedata
@@ -142,3 +143,16 @@ def extract_office(path, page_sep):
                     rows.append(' | '.join(cells))
             parts.append(sheet.get('name', '') + '\n' + '\n'.join(rows))
         return page_sep.join(parts)
+
+
+# Dossiers où sont rangés les fichiers d'origine (chemins « source » des passages)
+SOURCE_DIRS = (".", "Synthèses de Cours", os.path.join("data", "_drive"))
+
+
+def find_source(relative, root="."):
+    """Chemin du fichier d'origine sur cette machine, ou None."""
+    for folder in SOURCE_DIRS:
+        path = os.path.join(root, folder, relative)
+        if os.path.isfile(path):
+            return path
+    return None
