@@ -21,6 +21,19 @@ class ReadabilityTests(unittest.TestCase):
         self.assertNotIn('Réponse.', md)
         self.assertEqual(self.markdown('Réponse 4\nOui.'), '#### Réponse 4\n\nOui.')
 
+    def test_math_typography_follows_the_sentence(self):
+        text = ('Exercice 2\nPour n ≥ 2 on considère la série de terme général un =\n2n + 3\nn(n2 − 1).\n'
+                'Réponse. 1. On en déduit que un ∼\n2n\nn3 =\n2\nn2\nqui converge. La série un converge.\n'
+                '2. Le dénominateur se factorise : n(n\n2 − 1) = (n + 1)n(n − 1), d’où la décomposition de un en éléments simples.')
+        md = self.markdown(text)
+        self.assertIn(r'$u_n = \dfrac{2n + 3}{n(n^{2} - 1)}$.', md)
+        self.assertIn(r'$u_n \sim \dfrac{2n}{n^{3}} = \dfrac{2}{n^{2}}$', md)
+        self.assertIn('La série $u_n$ converge', md)
+        self.assertIn('décomposition de $u_n$ en éléments', md)
+        self.assertIn('n(n² − 1)', md)
+        self.assertNotIn('.}', md)
+        self.assertEqual(self.markdown('Il y a un enfant et un chat.'), 'Il y a un enfant et un chat.')
+
     def test_repeated_formula_parts_survive_import(self):
         pages = ['Université Exemple\nk=1\nn + 1\nun =\n1 −\n' + str(i)
                  for i in range(1, 6)]

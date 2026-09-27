@@ -330,6 +330,19 @@ def repair_lines(lines):
     return out
 
 
+SUPERSCRIPT = str.maketrans("23456789", "²³⁴⁵⁶⁷⁸⁹")
+RELATION_ENDS = ("∼", "≃", "≈", "=", "≤", "≥", "<", ">", "⇒", "⇔")
+
+
+SEQUENCE_TERM_RE = re.compile(
+    r"\b(série|suite|général|décomposition de|somme de) ([uvw])n(?=\s+(?:converge|diverge|est|en|tend|vérifie)\b|\s*[.,;]|$)")
+
+
+def sequence_terms(text):
+    """« la série un converge » -> « la série $u_n$ converge » (seulement après un mot qui exclut l'article « un »)."""
+    return SEQUENCE_TERM_RE.sub(lambda m: f"{m[1]} ${m[2]}_n$", text)
+
+
 def glue(prev, frag):
     if not prev:
         return frag
@@ -644,6 +657,8 @@ def display_math(lines):
     if current:
         rows.append(current)
     rows = [part for row in rows for part in wrap_equation(row)]
+    if len(rows) == 2 and rows[1].startswith("=") and len(rows[0]) + len(rows[1]) <= 70:
+        return rows[0] + " " + rows[1]
     if len(rows) == 1:
         return rows[0]
     aligned = []
@@ -729,7 +744,8 @@ def reflow(text):
     def flush_prose():
         nonlocal prose
         if prose:
-            out.append(indent + inline_math(prose))
+            prose = re.sub(r"\(([a-z])\s+([2-9])(?=\s*[−+-])", lambda m: "(" + m[1] + m[2].translate(SUPERSCRIPT), prose)
+            out.append(indent + sequence_terms(inline_math(prose)))
             prose = ""
 
     def flush_formula(inline=False):
@@ -763,7 +779,8 @@ def reflow(text):
             scalar = len(formula) == 1 and re.fullmatch(r"[\wℝℕℤℂℚ⁰-⁹¹²³ⁿᵖ]+", formula[0])
             inline_expression = not any(command in value for command in (r"\begin", r"\sum", r"\prod", r"\lim"))
             embedded_expression = embedded and not any(command in value for command in (r"\begin", r"\int", r"\lim"))
-            if embedded_expression or (inline and inline_expression) or (scalar and prose):
+            after_relation = inline_expression and prose.rstrip().endswith(RELATION_ENDS)
+            if embedded_expression or (inline and inline_expression) or (scalar and prose) or after_relation:
                 prose = glue(prose, "$" + value + "$")
             else:
                 flush_prose()
@@ -882,7 +899,17 @@ def detex(t):
     return t.replace("{", "").replace("}", "")
 
 
+BRACED = r"(?:[^{}]|\{[^{}]*\})*"
+
+
+def move_punctuation_out(md):
+    """« \\dfrac{a}{b.} » -> « \\dfrac{a}{b}. » et « $x.$ » -> « $x$. » : le point ferme la phrase, pas la formule."""
+    md = re.sub(r"\\dfrac\{(" + BRACED + r")\}\{(" + BRACED + r")([.,;])\}", r"\\dfrac{\1}{\2}\3", md)
+    return re.sub(r"(?<!\$)\$([^$\n]+?)\s*([.,;])\$(?!\$)", r"$\1$\2", md)
+
+
 def sanitize(md):
+    md = move_punctuation_out(md)
     return re.sub(r"(\$\$|\$)([^$]+)\1", lambda m: m.group(0) if valid_tex(m.group(2)) else detex(m.group(2)), md)
 
 
