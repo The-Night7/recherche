@@ -121,6 +121,15 @@ def annotate(chunks):
             if m else None
         )
 
+        if c.get("resplit") and c.get("corrige") and c.get("kind") == "td":
+            # Ancienne correction : on la trouve par la numérotation des feuilles
+            # 2025-2026 ; un exercice sans équivalent n'a plus de numéro.
+            current = c.get("current")
+            c["_doc"] = ("td", current["td"], None, None) if current else None
+            c["_ex"] = {current["exercise"]} if current else set()
+            prev_label, current = c.get("label"), None
+            continue
+
         sec_nums = {int(n) for n in SECTION_EX_RE.findall(c.get("section", ""))}
         if sec_nums:
             c["_ex"] = sec_nums

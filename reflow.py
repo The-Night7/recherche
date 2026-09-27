@@ -106,6 +106,10 @@ def tex(s):
     s = re.sub(r"√\s*(\([^()]*\)|[A-Za-z0-9]+)", lambda m: r"\sqrt{" + m.group(1) + "}", s)
     s = re.sub("[" + "".join(SUP_CHARS) + "]+", lambda m: "^{" + "".join(SUP_CHARS[c] for c in m.group(0)) + "}", s)
     s = re.sub("[" + "".join(SUB_CHARS) + "]+", lambda m: "_{" + "".join(SUB_CHARS[c] for c in m.group(0)) + "}", s)
+    # ensembles : R² / N* / « ∈ Z » (« E = N » est traité dans reflow)
+    # (N² peut être le carré d'une norme N : seul R prend un exposant ici)
+    s = re.sub(r"(?<![\w\\])(R(?=\^)|[NZRQ](?=\s*∗))|(?<=[∈⊂] )([NZRQ])(?![\w(])", lambda m: SETS[m[1] or m[2]], s)
+    s = s.replace("ℝ", SETS["R"] + " ").replace("ℕ", SETS["N"] + " ").replace("ℤ", SETS["Z"] + " ")
     functions = "|".join(sorted(MATH_FUNCTIONS, key=len, reverse=True))
     s = re.sub(r"\b(" + functions + r")(\d+)(?=\(|\s+[a-z(])",
                lambda m: "\\" + FUNCTION_TEX[m.group(1)] + "^{" + m.group(2) + "}", s)
@@ -132,7 +136,7 @@ def sub_index(idx):
 
 SAFE_SUB_RE = re.compile(r"(?<![\w$\\_])([fgvwxyhSRP])([nk])(?![\w(])")
 UN_OP_RE = re.compile(r"(?<![\w$])([uab])([nk])(?=\s*[=∼<>≤≥→])|(?<=[=∼<>≤≥⇔]\s)([uab])([nk])(?![\w(])")
-SET_RE = re.compile(r"(?<![\w$\\{])(?<![=<>≤≥] )(R(?!\s*[=<>≤≥]|\)(?<=, R\)))|(?<=[∈⊂(] )[NZ]|(?<=[∈⊂(])[NZ]|(?<=\bsur )[NZ]|(?<=\bdans )[NZ])"
+SET_RE = re.compile(r"(?<![\w$\\{])(?<![=<>≤≥] )(R(?!\s*[=<>≤≥]|\)(?<=, R\)))|(?<=[∈⊂] )[NZ]|(?<=[∈⊂])[NZ]|(?<=\()[NZ](?=\s*[)∗*])|(?<=\bsur )[NZ]|(?<=\bdans )[NZ])"
                     r"(?![A-Za-zÀ-ÿ0-9'’])(\s*∗)?(\s*\+(?![\w∞(]))?")
 NORM_RE = re.compile(r"(?<![A-Za-z])k([a-zA-Z·]{1,3})k(?:(\d|∞)|(?=[\s,.;:)=≤≥<>+−-]|$))")
 BRA_RE = re.compile(r"(?<![A-Za-z])h([a-zA-Z]{1,2})\|([a-zA-Z]{1,2})i(?![A-Za-z])")  # hu|vi = ⟨u|v⟩
@@ -735,6 +739,14 @@ def latex_font_artifacts(text):
     seulement si la même lettre porte aussi des primes multiples (r0, r00, r000).
     """
     text = text.replace("⇐⇒", "⇔").replace("=⇒", "⇒").replace("⇐=", "⇐")
+    text = re.sub(r"(?<=\s)6=(?=[\s(])", "≠", text)
+    # « 4. E = N » : un ensemble donné seul sur sa ligne
+    text = re.sub(r"(?m)^((?:\d{1,2}[.)] )?[A-Z] = )([NZQR])$", lambda m: m[1] + SETS_U.get(m[2], m[2]), text)  # « x 6= y » : la barre du ≠ lue comme un 6
+    # exposant d'un ensemble rejeté à la ligne : « ∈ R » / « 2/ x2 + y2 < 4 »
+    text = re.sub(r"(?<![\w])([RNZC])\n([2-9n])(?=[/\s,)}]|$)", lambda m: m[1] + SUP_OF[m[2]], text)
+    # « x2 + y2 » : deux carrés, pas deux indices (x1 + x2 garde ses indices)
+    text = re.sub(r"(?<![\w])([xyzt])([2²]) ?\+ ?(?!\1)([xyzt])([2²])(?![\w\d])",
+                  lambda m: f"{m[1]}² + {m[3]}²", text)
     if NORM_SIGNATURE_RE.search(text):
         def norm(m):
             inner = m.group(1).strip()

@@ -766,6 +766,49 @@ def resplit_legacy(chunks):
     return out
 
 
+# Les anciennes corrections d'Analyse dans ℝⁿ ne suivent pas la numérotation
+# des feuilles 2025-2026 : l'exercice 2 du TD2 actuel est l'exercice 3 de
+# l'ancien TD2, le TD6 actuel reprend l'ancien TD8... Table vérifiée à la main
+# (énoncés comparés un à un) : (ancien TD, ancien exercice) -> (TD, exercice
+# 2025-2026, correction partielle). Un ancien exercice absent n'a pas
+# d'équivalent dans les feuilles actuelles.
+LEGACY_ALIGNMENT = {
+    ("TD1 1", 1): (1, 1, False), ("TD1 1", 3): (1, 2, False), ("TD1 1", 4): (1, 3, False),
+    ("TD1 1", 8): (1, 4, False), ("TD1 1", 9): (1, 5, False),
+    ("TD2", 2): (2, 1, False), ("TD2", 3): (2, 2, False), ("TD2", 4): (2, 3, False),
+    ("TD3", 1): (3, 1, False), ("TD3", 2): (3, 2, False), ("TD3", 3): (3, 3, False), ("TD3", 5): (3, 4, False),
+    ("TD4", 3): (4, 1, False), ("TD4", 2): (4, 2, False), ("TD4", 4): (4, 3, False),
+    ("TD5", 6): (5, 1, False), ("TD5", 1): (5, 2, False), ("TD5", 2): (5, 3, False), ("TD5", 4): (5, 4, True),
+    ("TD5", 7): (5, 5, False), ("TD6 − 7", 1): (5, 6, False), ("TD5", 3): (5, 7, False),
+    ("TD8", 3): (6, 1, False), ("TD8", 4): (6, 2, False), ("TD8", 7): (6, 3, False), ("TD8", 5): (6, 4, False),
+    ("TD8", 6): (6, 5, False), ("TD8", 9): (6, 6, False), ("TD8", 10): (6, 7, False),
+    ("TD9 − 10", 1): (7, 1, True), ("TD9 − 10", 6): (7, 3, False), ("TD9 − 10", 8): (7, 4, False),
+    ("TD9 − 10", 9): (7, 5, True),
+    ("TD11 − 12", 2): (8, 1, False), ("TD11 − 12", 3): (8, 2, False), ("TD11 − 12", 6): (8, 3, False),
+    ("TD11 − 12", 7): (8, 4, False), ("TD11 − 12", 8): (8, 5, False), ("TD11 − 12", 9): (8, 6, False),
+    ("TD11 − 12", 10): (9, 1, False), ("TD11 − 12", 11): (9, 2, False),
+}
+
+
+def align_legacy(chunks):
+    """Indique sur chaque exercice d'une ancienne correction l'exercice des
+    feuilles 2025-2026 qu'il corrige (champ « current »)."""
+    for chunk in chunks:
+        chunk.pop("current", None)
+        m = re.fullmatch(r"Exercice (\d+)", chunk.get("section", ""))
+        if not (chunk.get("resplit") and chunk.get("corrige") and m):
+            continue
+        chunk["label"] = f"{chunk['doc_label']} — {chunk['section']}"
+        target = LEGACY_ALIGNMENT.get((chunk["doc_label"].split(":")[0].strip(), int(m[1])))
+        if target:
+            td, exercise, partial = target
+            chunk["current"] = {"td": td, "exercise": exercise, "partial": partial}
+            chunk["label"] += f" · {'en partie ' if partial else ''}= TD{td} 2025-2026, exercice {exercise}"
+        else:
+            chunk["label"] += " · hors feuilles 2025-2026"
+    return chunks
+
+
 def cmd_build():
     new_chunks = []
     for course in COURSES:
@@ -788,7 +831,7 @@ def cmd_build():
 
     chunks = json.load(open("chunks.json", encoding="utf-8"))
     # passages de l'ancien format, sans fichier source dans data/ (poly et TD d'Analyse dans ℝⁿ)
-    legacy = resplit_legacy([ensure_meta(c) for c in chunks if not c.get("doc")])
+    legacy = align_legacy(resplit_legacy([ensure_meta(c) for c in chunks if not c.get("doc")]))
     merged = [ensure_meta(c) for c in legacy + new_chunks]
     json.dump(merged, open("chunks.json", "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"\n{len(new_chunks)} passages depuis data/ + {len(legacy)} anciens = {len(merged)}")

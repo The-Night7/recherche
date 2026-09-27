@@ -295,6 +295,15 @@ class ReadabilityTests(unittest.TestCase):
         self.assertEqual(self.markdown('Il donne un coup de pied (kick) et 11h00 sur Zoom.'),
                          'Il donne un coup de pied (kick) et 11h00 sur Zoom.')
 
+    def test_set_exercise_statement(self):
+        md = self.markdown('Exercice 2 :\nDéterminer si les ensembles suivants sont ouverts.\n'
+                           '4. E = N\n5. F = {(x, y) ∈ R\n2/ x2 + y2 < 4}\n6. f(x, y) 6= (0, 0)')
+        self.assertIn(r'E = \mathbb{N}', md)
+        self.assertIn(r'\mathbb{R} ^{2}/ x^{2} + y^{2} < 4', md)
+        self.assertIn(r'\neq', md)
+        self.assertNotIn('dfrac', md)
+        self.assertIn('d(Z, Y)', self.markdown('On a d(X, Y) ≤ d(X, Z) + d(Z, Y) pour tout X.'))
+
 
 if __name__ == '__main__':
     unittest.main()
