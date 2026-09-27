@@ -657,6 +657,11 @@ def chunk_document(path, course):
         raw = fix_ligatures(source.read())
     fmt = "md" if ext == ".md" else "pdf"
     if fmt == "md":
+        # « corrections: rédigées » dans l'en-tête : transcription d'un énoncé dont
+        # chaque exercice est suivi d'une correction, à trouver aussi parmi les corrigés
+        front = re.match(r"---\n(.*?)\n---\n", raw, re.S)
+        if front and re.search(r"(?m)^corrections:\s*r[ée]dig[ée]es\s*$", front.group(1)):
+            meta["with_correction"] = True
         secs = sections_markdown(raw)
     else:
         if course in PLAIN_TEXT_COURSES or meta.get('source_format') in ('code', 'text') or meta.get('source', '').lower().endswith(('.docx', '.pptx', '.txt')):

@@ -385,7 +385,7 @@ function renderCard(r, i, tokens){
           <span class="badge" aria-hidden="true">${courseSym(r.course)}</span>
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
-          ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
+          ${r.corrige ? '<span class="tag">corrigé</span>' : r.with_correction ? '<span class="tag" title="Correction absente du document d’origine, rédigée pour cette transcription">correction rédigée</span>' : ''}
         </div>
         <h3 class="section">${escapeHtml(sectionTitle(r))}</h3>
         <div class="score" title="${tip}">

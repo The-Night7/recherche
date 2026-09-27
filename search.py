@@ -87,7 +87,8 @@ def filter_mask(chunks, courses=None, kinds=None, versions=None, years=None,
             mask[i] = False
         elif kinds and c["kind"] not in kinds:
             mask[i] = False
-        elif versions and ("corrige" if c["corrige"] else "enonce") not in versions:
+        elif versions and not ({"corrige", "enonce"} if c.get("with_correction")
+                               else {"corrige" if c["corrige"] else "enonce"}) & set(versions):
             mask[i] = False
         elif years and (c["year"] if c["year"] else "none") not in years:
             mask[i] = False

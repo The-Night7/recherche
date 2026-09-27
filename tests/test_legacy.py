@@ -51,6 +51,26 @@ class LegacyChunksTests(unittest.TestCase):
         new = [{"doc": "TD2-Correction_2025-2026_Analyse-dans-RN_P2S1_EMasnada", "section": "Exercice 2 : Ouverts"}]
         self.assertEqual(superseded_removed(old, new), [{"section": "Exercice 1"}])
 
+    def test_statement_with_written_corrections_answers_both_filters(self):
+        import json
+        import numpy as np
+        from ingest import chunk_document
+        from references import annotate, match, parse_reference
+        from search import filter_mask
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root, "TD4_20242025_Series_P2S1_DMaths.md")
+            path.write_text("---\ncorrections: rédigées\n---\n\n# TD4\n\n## Exercice 1 : Nature\n\n"
+                            "**Énoncé.** Étudier $\\sum \\frac{1}{n^2}$.\n\n**Correction.** Riemann.\n", encoding="utf-8")
+            chunks = [dict(c, curriculum="x", program="preing", track=None, study_year=2, semester=1)
+                      for c in chunk_document(str(path), "series")]
+        self.assertTrue(chunks[0]["with_correction"])
+        self.assertFalse(chunks[0]["corrige"])
+        for versions in ({"corrige"}, {"enonce"}):
+            self.assertTrue(filter_mask(chunks, versions=versions).all())
+        annotate(chunks)
+        ref, _ = parse_reference("td4 exercice 1 corrigé")
+        self.assertTrue(match(chunks[0], ref))
+
 
 if __name__ == "__main__":
     unittest.main()

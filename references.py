@@ -152,7 +152,9 @@ def annotate(chunks):
 
 
 def match(chunk, ref, use_exercises=True):
-    if ref.get("corrige") is not None and bool(chunk.get("corrige")) != ref["corrige"]:
+    # un énoncé transcrit avec ses corrections rédigées répond aux deux demandes
+    if ref.get("corrige") is not None and bool(chunk.get("corrige")) != ref["corrige"] \
+            and not chunk.get("with_correction"):
         return False
     d = chunk.get("_doc")
     if ref["kind"]:

@@ -287,6 +287,7 @@ class Handler(BaseHTTPRequestHandler):
                         "study_year": c["study_year"], "semester": c["semester"],
                         "program": c["program"], "track": c["track"],
                         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
+                        "with_correction": bool(c.get("with_correction")),
                         "score": score,
                         "blocks": content_blocks(c), "alt": alt_blocks(c),
                         "pdf": {"doc": c["doc"], "pages": c["pages"]} if c.get("doc") in SOURCES and c.get("pages") else None,
