@@ -14,6 +14,7 @@ import hashlib
 import html
 import json
 import os
+import re
 import subprocess
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -86,9 +87,20 @@ def render_page(doc, number):
         return f.read()
 
 
+def clean_md(text):
+    """Retire ce qui n'est pas du contenu : balises Jekyll, iframes, ancres, enveloppes <p>."""
+    text = re.sub(r"\{%.*?%\}", "", text, flags=re.S)
+    text = re.sub(r"<iframe\b.*?</iframe>", "", text, flags=re.S | re.I)
+    text = re.sub(r"<div\s+id=\"[^\"]*\"\s*></div>", "", text, flags=re.I)
+    text = re.sub(r"<a\s+[^>]*href=\"(https?://[^\"]+)\"[^>]*>(.*?)</a>", r"[\2](\1)", text, flags=re.S | re.I)
+    text = re.sub(r"<br\s*/?>", "\n", text, flags=re.I)
+    text = re.sub(r"</?p>", "", text, flags=re.I)
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
 def md_blocks(text):
     # un seul bloc : le rendu Markdown côté page gère paragraphes, listes et $…$
-    return [{"type": "md", "text": text}]
+    return [{"type": "md", "text": clean_md(text)}]
 
 
 def is_ing_pdf(chunk):

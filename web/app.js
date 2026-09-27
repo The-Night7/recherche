@@ -199,9 +199,22 @@ function inlineMd(html){
              .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>');
 }
 // texte + surlignage, sans toucher aux formules (KaTeX les rend ensuite)
+const escapeAttr = s => escapeHtml(s).replace(/"/g, '&quot;');
+// ![alt](https://…) et [texte](https://…) : protégés avant le surlignage, sinon <mark> casserait l'adresse
+function linkify(part, terms){
+  const stash = [];
+  const keep = html => `\u0002${stash.push(html) - 1}\u0002`;
+  const text = part
+    .replace(/!\[([^\]]*)\]\((https:\/\/[^\s)]+)\)/g, (_, alt, url) => keep(
+      `<a class="md-image" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer"><img loading="lazy" referrerpolicy="no-referrer" alt="${escapeAttr(alt)}" src="${escapeAttr(url)}"></a>`))
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label, url) => keep(
+      `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`));
+  return inlineMd(highlightPlain(text, terms)).replace(/\u0002(\d+)\u0002/g, (_, i) => stash[Number(i)]);
+}
+// texte + surlignage, sans toucher aux formules (KaTeX les rend ensuite)
 function richText(text, terms){
   return text.split(MATH_RE).map((part, i) =>
-    i % 2 ? escapeHtml(part) : inlineMd(highlightPlain(part, terms))
+    i % 2 ? escapeHtml(part) : linkify(part, terms)
   ).join('');
 }
 // Mini-Markdown : les formules sont protégées avant le découpage en blocs.
@@ -483,6 +496,21 @@ $("toggle-filters").onclick = () => {
   const open = $("aside").classList.toggle("open");
   $("toggle-filters").setAttribute("aria-expanded", open);
 };
+
+// error ne remonte pas : capturé au niveau du document pour toutes les images de cartes
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (!(img instanceof HTMLImageElement) || !img.closest(".md-image, .pdf-page")) return;
+  const note = document.createElement("p");
+  note.className = "image-missing";
+  note.textContent = "Image indisponible" + (img.alt ? " (" + img.alt + ")" : "") + " : ";
+  if (img.closest(".md-image")) {
+    const link = document.createElement("a");
+    link.href = img.src; link.target = "_blank"; link.rel = "noopener noreferrer"; link.textContent = "ouvrir le lien";
+    note.appendChild(link);
+  } else note.textContent = note.textContent.replace(/ : $/, ".");
+  (img.closest(".md-image") || img).replaceWith(note);
+}, true);
 
 $("results").addEventListener("click", e => {
   const tab = e.target.closest(".view-tab");

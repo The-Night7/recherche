@@ -26,3 +26,11 @@ class SpacingTests(unittest.TestCase):
         self.assertEqual(fix_spacing("système linéaireAx =b, SoitA∈ M"), "système linéaire Ax =b, Soit A∈ M")
         for text in ["Le PDF et NASA", "iPhone 15", "GitHub et macOS", "LaTeX marche.", "un mot."]:
             self.assertEqual(fix_spacing(text), text)
+
+
+class BinaryNoiseTests(unittest.TestCase):
+    def test_octets_binaires_ecartes(self):
+        from ingest import is_binary_noise
+        self.assertTrue(is_binary_noise("\ufffd" * 60 + "abc" * 20))
+        self.assertFalse(is_binary_noise("Un texte normal avec un é et un \ufffd isolé. " * 20))
+        self.assertFalse(is_binary_noise("x\ufffd" * 10))

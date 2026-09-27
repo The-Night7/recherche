@@ -88,3 +88,11 @@ test('computer science excerpts preserve code without interpreting math or HTML'
   assert.doesNotMatch(html, /math-block|<mark>|<stdio/);
   assert.match(html, /class="context-tag">Préing 2 — semestre 1<\/span>/);
 });
+
+test('markdown images and links become elements, unsafe schemes stay text', () => {
+  const html = render('![page 1](https://exemple.fr/DS1-2023/p10.jpg)\n\nVoir [le cours](https://exemple.fr/c?a=1&b=2) et [x](javascript:alert(1)) ![y](http://exemple.fr/y.jpg)', ['page', 'cours']);
+  assert.match(html, /<img loading="lazy" referrerpolicy="no-referrer" alt="page 1" src="https:\/\/exemple\.fr\/DS1-2023\/p10\.jpg">/);
+  assert.doesNotMatch(html, /src="[^"]*<mark>/);
+  assert.match(html, /<a href="https:\/\/exemple\.fr\/c\?a=1&amp;b=2" target="_blank" rel="noopener noreferrer">le <mark>cours<\/mark><\/a>|<a href="https:\/\/exemple\.fr\/c\?a=1&amp;b=2" target="_blank" rel="noopener noreferrer">le cours<\/a>/);
+  assert.doesNotMatch(html, /href="javascript:|src="http:\/\//);
+});

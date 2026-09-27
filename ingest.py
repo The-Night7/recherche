@@ -604,6 +604,12 @@ def sections_markdown(text):
     return secs
 
 
+def is_binary_noise(text):
+    """Octets d'un fichier binaire (PDF brut, archive) lus comme du texte : plus de 5 % de caractères invalides."""
+    bad = sum(1 for ch in text if ch == "\ufffd" or (ord(ch) < 32 and ch not in "\n\r\t"))
+    return bad >= 20 and bad > 0.05 * len(text)
+
+
 def norm_words(text):
     folded = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
     return re.findall(r"[a-z0-9]+", folded)
@@ -684,7 +690,7 @@ def chunk_document(path, course):
         else:
             parts = split_long(label, body) if meta["kind"] in ('cours', 'infos') else [(label, body)]
         for sub_label, sub in parts:
-            if not sub.strip() or (meta["kind"] == "cours" and len(sub.strip()) < 40):
+            if not sub.strip() or (meta["kind"] == "cours" and len(sub.strip()) < 40) or is_binary_noise(sub):
                 continue
             if sub_label.startswith("Diapos"):  # pas de titres : 1re ligne parlante
                 first = next((l.strip() for l in sub.split("\n") if len(l.strip()) > 12), "")
