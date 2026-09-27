@@ -12,6 +12,8 @@ def page(label, text, kind="td", corrige=True):
 class LegacyChunksTests(unittest.TestCase):
     def test_page_numbers_follow_the_numbering(self):
         self.assertEqual(strip_page_numbers(["a\n21", "on a x < r²²", "fin r²"]), ["a", "on a x < r", "fin r²"])
+        # 29 égaré au milieu de la page par l'extraction
+        self.assertEqual(strip_page_numbers(["a\n28", "b\n29\n8. I", "c\n30"]), ["a", "b\n8. I", "c"])
 
     def test_pages_are_regrouped_by_exercise(self):
         doc = "TD2 : Ouverts et fermés (ancienne correction, avant réforme)"

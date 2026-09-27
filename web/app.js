@@ -368,13 +368,21 @@ function renderCard(r, i, tokens){
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : ''}
         </div>
-        <h3 class="section">${escapeHtml(cleanTitle(r.section || r.label))}</h3>
+        <h3 class="section">${escapeHtml(sectionTitle(r))}</h3>
         <div class="score" title="${tip}">
           <span class="meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}
         </div>
       </div>
       ${tabs}${bodies}
     </article>`;
+}
+
+// Ancienne correction : on nomme l'exercice comme dans la feuille 2025-2026.
+function sectionTitle(r){
+  const title = cleanTitle(r.section || r.label);
+  if (!r.current) return title;
+  return `TD${r.current.td} 2025-2026, exercice ${r.current.exercise}${r.current.partial ? ' (corrigé en partie)' : ''}`
+       + ` — ${title.toLowerCase()} de l’ancienne correction`;
 }
 
 /* ---------- recherche ---------- */

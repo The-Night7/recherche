@@ -227,6 +227,7 @@ class Handler(BaseHTTPRequestHandler):
                     {
                         "label": c["label"], "section": c.get("section", ""),
                         "doc_label": c.get("doc_label", ""), "course": c["course"],
+                        "current": c.get("current"),
                         "course_name": COURSES.get(c["course"], c["course"]),
                         "curriculum": c["curriculum"],
                         "curriculum_label": course_context(c["course"])["label"],

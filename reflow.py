@@ -697,6 +697,10 @@ def ambiguous_formula(lines):
         return True
     if is_matrix_block(lines):
         return True
+    # « ), » seul sur sa ligne : les grandes parenthèses d'un argument
+    # empilé (B∞((1/2, n/2), 1/2)) ont perdu leur hauteur.
+    if len(lines) > 3 and any(re.fullmatch(r"[)\]][,;]", line) for line in lines):
+        return True
     for i, line in enumerate(lines[:-1]):
         following = lines[i + 1]
         if line == "√" and re.search(r"[+−-]", following):
@@ -734,19 +738,42 @@ PRIMES = {1: "′", 2: "″", 3: "‴"}
 def latex_font_artifacts(text):
     """Artefacts des polices LaTeX dans l'extraction PDF.
 
-    ‖·‖ y devient k·k, la prime devient 0 ou ⁰ (r″ -> r00) et ⇔ devient ⇐⇒.
+    ‖·‖ y devient k·k, la prime devient 0 ou ⁰ (r″ -> r00), ⇔ devient ⇐⇒ et
+    les symboles barrés perdent leur barre (≠ -> 6=, ⊄ -> 6⊂, ∉ -> /∈ ou ∈/).
     Deux zéros ou plus après une lettre isolée sont des primes ; un seul zéro
-    seulement si la même lettre porte aussi des primes multiples (r0, r00, r000).
+    seulement si la même lettre porte aussi des primes (r0, r00, r000).
     """
     text = text.replace("⇐⇒", "⇔").replace("=⇒", "⇒").replace("⇐=", "⇐")
-    text = re.sub(r"(?<=\s)6=(?=[\s(])", "≠", text)
+    text = re.sub(r"(?<=\s)6=(?=[\s(])", "≠", text)  # « x 6= y » : la barre du ≠ lue comme un 6
+    text = re.sub(r"(?<=\s)6⊂", "⊄", text)
+    text = re.sub(r"\s?/∈|∈/", lambda m: " ∉" if m.group().startswith((" ", "\n")) else "∉", text)
+    # limite à droite posée sur trois lignes : « r −→ » / « r>0 » / « 0 »
+    text = re.sub(r"([a-z]) −→\n\1\s*>\s*(\S+)\n\2(?=[\s,.)])", r"\1 → \2⁺", text)
     # « 4. E = N » : un ensemble donné seul sur sa ligne
-    text = re.sub(r"(?m)^((?:\d{1,2}[.)] )?[A-Z] = )([NZQR])$", lambda m: m[1] + SETS_U.get(m[2], m[2]), text)  # « x 6= y » : la barre du ≠ lue comme un 6
+    text = re.sub(r"(?m)^((?:\d{1,2}[.)] )?[A-Z] = )([NZQR])$", lambda m: m[1] + SETS_U.get(m[2], m[2]), text)
     # exposant d'un ensemble rejeté à la ligne : « ∈ R » / « 2/ x2 + y2 < 4 »
     text = re.sub(r"(?<![\w])([RNZC])\n([2-9n])(?=[/\s,)}]|$)", lambda m: m[1] + SUP_OF[m[2]], text)
     # « x2 + y2 » : deux carrés, pas deux indices (x1 + x2 garde ses indices)
     text = re.sub(r"(?<![\w])([xyzt])([2²]) ?\+ ?(?!\1)([xyzt])([2²])(?![\w\d])",
                   lambda m: f"{m[1]}² + {m[3]}²", text)
+    # « F = » / « (x, y) ∈ R² / x² + y² < 4 » / « . » : les grandes accolades de l'ensemble ont disparu
+    text = re.sub(r"=\n(\([a-z], [a-z]\) ∈ [^\n{}]+?)\n(?=[.,])", r"= {\1}", text)
+    # « a » / « √ » / « 2 » : la racine et son argument, collés au coefficient qui les précède
+    text = re.sub(r"(?<=[\w,(])\n?√\n(\d+|[a-z])(?![\w])", r"√\1", text)
+    if NORM_SIGNATURE_RE.search(text) or re.search(r"⇔|≠|∉", text):
+        # « r/2 » empilé, lu comme un carré : « 2 + r² » / « , » ou « = » / « r² < r »
+        text = re.sub(r"(?<=[+−-] )([a-z])²\n(?=[,)])", r"\1/2", text)
+        text = re.sub(r"=\n([a-z])² < \1(?![\w²])", r"= \1/2 < \1", text)
+        # fraction empilée dans la prose : « ]3 » / « 2 » / « x, 1 » / « 2 » / « x[ » = ]3x/2, x/2[
+        text = re.sub(r"(?<=[\s\]\[(,<>=])(\d) ?\n([2-9])\n([a-z])(?=[\s,\[\]).])",
+                      lambda m: (m[3] if m[1] == "1" else m[1] + m[3]) + "/" + m[2], text)
+    # une ligne qui commence par une virgule continue la précédente
+    text = re.sub(r"(?<=[\w²³ⁿ])[ \t]*\n(?=,(?:\s|$))", "", text)
+    text = re.sub(r"\s*\n,\n", ", ", text)
+    if NORM_SIGNATURE_RE.search(text) or re.search(r"⇔|≠|∉", text):
+        # complémentaire : « CRA » = ∁ℝA, « CR2H » = ∁ℝ²H, « CEF » = ∁E F
+        text = re.sub(r"(?<![\w])C(R2?|E)([A-Z])?(?![\w])",
+                      lambda m: "∁" + ("ℝ²" if m[1] == "R2" else "ℝ" if m[1] == "R" else "E") + (" " + m[2] if m[2] else ""), text)
     if NORM_SIGNATURE_RE.search(text):
         def norm(m):
             inner = m.group(1).strip()
@@ -756,9 +783,11 @@ def latex_font_artifacts(text):
         text = PDF_NORM_RE.sub(norm, text)
     # prime seule sur la ligne suivante : "r" / "00/α"
     text = re.sub(r"(?m)(?<![\w'’])([a-zA-Z])\n(0{2,3}|⁰{2,3})(?=[\s/=),]|$)", r"\1\2", text)
-    multi = set(re.findall(r"(?<![\w'’])([a-zA-Z])(?:0{2,3}|⁰{2,3})(?![\w⁰-⁹])", text))
+    # I⁰ = (2, −r/2) : prime, pas une puissance 0 (C⁰([0, 1]) est une classe de fonctions)
+    single = set(re.findall(r"(?<![\w'’])([A-BD-Za-z])⁰(?=\s*[=,)∈]|\s*$)", text)) if "⁰" in text else set()
+    multi = set(re.findall(r"(?<![\w'’])([a-zA-Z])(?:0{2,3}|⁰{2,3})(?![\w⁰-⁹])", text)) | single
     zeros = r"0{2,3}|⁰{2,3}" + (r"|(?<=[" + "".join(multi) + r"])[0⁰]" if multi else "")
-    return re.sub(r"(?<![\w'’])([a-zA-Z])(" + zeros + r")(?![\w⁰-⁹])",
+    return re.sub(r"(?<![\w'’])([a-zA-Z])(" + zeros + r")(?![\w⁰-⁹(])",
                   lambda m: m.group(1) + PRIMES[len(m.group(2))], text)
 
 
@@ -887,7 +916,7 @@ def reflow(text):
             continue
         flush_formula(inline=bool(re.match(r"^(?:qui |où |avec |,|\.)", line)))
         if prose and (BLOCK_START_RE.match(line) or ARROW_START_RE.match(line)
-                      or re.match(r"^(?:On |En |Dans |Les .*sommes|Car |Donc |Ainsi )", line)):
+                      or re.match(r"^(?:On |En |Dans |Les .*sommes|Car |Donc |Ainsi |(?:Ouvert|Fermé|Borné|Compact) \?)", line)):
             flush_prose()
         # Une fraction commence parfois dans la prose et continue à la ligne :
         # « La fonction f(t) = 1 » / « t ln t » / « est décroissante… ».

@@ -304,6 +304,21 @@ class ReadabilityTests(unittest.TestCase):
         self.assertNotIn('dfrac', md)
         self.assertIn('d(Z, Y)', self.markdown('On a d(X, Y) ≤ d(X, Z) + d(Z, Y) pour tout X.'))
 
+    def test_struck_symbols_limits_and_complements(self):
+        # police LaTeX : ∉ -> /∈ ou ∈/, ⊄ -> 6⊂, ∁ℝA -> CRA, r → 0⁺ sur trois lignes, r/2 empilé lu r²
+        md = self.markdown('Alors ‖y‖ = 1, et ∀r > 0, y /∈ A. Donc B(0, r) 6⊂ CRA.\n'
+                           'Mais pour r −→\nr>0\n0, I0 ∈/ J et I⁰ =\n(2, 0). Le point y = 2 + r²\n, qui convient.\n'
+                           'On introduit B(x, −x/2) =] 3\n2\nx, 1\n2\nx[.')
+        for expected in ('y ∉ A', 'B(0, r) ⊄ ∁ℝ A', 'r → 0⁺', 'I′ ∉ J', 'y = 2 + r/2, qui', ']3x/2, x/2['):
+            self.assertIn(expected, md.replace('] 3x', ']3x'))
+        self.assertIn('C⁰([0, 1])', self.markdown('Soit E = C⁰([0, 1]) muni de ‖·‖. On note y ∉ A.'))
+
+    def test_lost_large_parentheses_keep_the_source(self):
+        md = self.markdown('Ainsi, on peut montrer que\nH = ∪n∈Z\nB∞\na = (1\n2,\nn²\n),\n1\n2\n'
+                           'Or une union infinie d’ouverts est un ouvert.')
+        self.assertIn('```pdf', md)
+        self.assertNotIn('dfrac', md)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -717,15 +717,26 @@ COURSE_BLOCK_RE = re.compile(r"\n(?=(?:D[ée]finition|Propri[ée]t[ée]|Th[ée]o
 
 def strip_page_numbers(pages):
     """Numéro de page en fin de page : ligne « 23 » ou exposant collé (« ⊂ A²² »).
-    Seulement s'il suit la numérotation : « r² » en fin de page 21 est un carré."""
-    out, last = [], None
+    Seulement s'il suit la numérotation : « r² » en fin de page 21 est un carré.
+    Un numéro sauté (28 puis 30) a été placé ailleurs par l'extraction : on
+    retire la ligne « 29 » seule restée dans les pages intermédiaires."""
+    out, last, since = [], None, 0
     for page in pages:
         page = page.rstrip()
         m = re.search(r"\n(\d{1,3})$", page) or re.search(r"(?<=\S)([⁰¹²³⁴⁵⁶⁷⁸⁹]{2,3})$", page)
-        if m:
-            number = int(m.group(1).translate(SUPERSCRIPT_DIGITS))
-            if (last is None and number <= 300) or (last is not None and last < number <= last + 12):
-                page, last = page[:m.start()].rstrip(), number
+        number = int(m.group(1).translate(SUPERSCRIPT_DIGITS)) if m else None
+        if number is not None and ((last is None and number <= 300) or (last is not None and last < number <= last + 12)):
+            page = page[:m.start()].rstrip()
+            out.append(page)
+            for missing in range(last + 1, number) if last is not None else ():
+                line = re.compile(r"(?m)^%d\n" % missing)
+                for k in range(len(out) - 1, since - 1, -1):
+                    found = list(line.finditer(out[k]))
+                    if found:
+                        out[k] = out[k][:found[-1].start()] + out[k][found[-1].end():]
+                        break
+            last, since = number, len(out)
+            continue
         out.append(page)
     return out
 
