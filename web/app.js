@@ -404,11 +404,12 @@ function renderCard(r, i, tokens){
           ${r.curriculum_label ? `<span class="context-tag">${escapeHtml(r.curriculum_label)}</span>` : ''}
           <span><b>${escapeHtml(r.course_name)}</b>, ${escapeHtml(cleanTitle(r.doc_label))}</span>
           ${r.corrige ? '<span class="tag">corrigé</span>' : r.with_correction ? '<span class="tag" title="Correction absente du document d’origine, rédigée pour cette transcription">correction rédigée</span>' : ''}
+          ${r.score !== null && r.doc_key ? `<button type="button" class="open-doc" data-doc="${escapeAttr(r.doc_key)}">Ouvrir le document</button>` : ''}
         </div>
         <h3 class="section">${escapeHtml(sectionTitle(r))}</h3>
-        <div class="score" title="${tip}">
+        ${r.score === null ? '' : `<div class="score" title="${tip}">
           <span class="meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}
-        </div>
+        </div>`}
       </div>
       ${tabs}${bodies}
     </article>`;
@@ -427,6 +428,7 @@ let searchSequence = 0;
 async function doSearch(){
   const q = $("q").value.trim();
   if (!q) return;
+  openDoc = null;
   const sequence = ++searchSequence;
   const p = new URLSearchParams({ q, k: state.k, recent: state.recent ? 1 : 0 });
   if (state.course !== "all") p.set("course", state.course);
@@ -508,6 +510,7 @@ function courseExamples(id){
 }
 function showWelcome(){
   ++searchSequence;
+  openDoc = null;
   const courses = coursesInScope();
   const examples = state.course === "all"
     ? [...new Set(courses.map(c => courseExamples(c.id)[0]).filter(Boolean))].slice(0, 8)
@@ -520,6 +523,129 @@ function showWelcome(){
   document.querySelectorAll(".example").forEach(b => b.onclick = () => { $("q").value = b.textContent; doSearch(); });
 }
 
+/* ---------- fenêtre « Parcourir les fichiers » ---------- */
+let TREE = null;
+let browseCourse = null;
+let openDoc = null;    // clé du document affiché en entier
+const kindLabel = k => META.kinds[k] || k;
+const yearLabel = y => y === null ? "" : `${y}-${String(y + 1).slice(2)}`;
+// l'année est souvent déjà dans le titre (« … · 2024-2025 ») : on ne la répète pas
+const docYear = d => d.year == null || /\d{4}-\d{4}/.test(d.label) ? "" : yearLabel(d.year);
+const docCourse = key => Object.keys(TREE).find(c => TREE[c].some(d => d.key === key));
+
+async function loadTree(){
+  if (!TREE) TREE = await (await fetch('/api/tree')).json();
+  return TREE;
+}
+
+async function openBrowser(){
+  try { await loadTree(); }
+  catch (e) { $("results").innerHTML = '<p class="empty">Le serveur ne répond pas. Lance <b>python3 server.py</b> puis recharge la page.</p>'; return; }
+  const courses = availableCourses().filter(c => TREE[c.id]);
+  const preferred = [openDoc && docCourse(openDoc), state.course, browseCourse];
+  browseCourse = preferred.find(id => id && courses.some(c => c.id === id)) || courses[0]?.id || null;
+  $("browser-filter").value = "";
+  renderBrowserCourses();
+  renderBrowserDocs();
+  if (!$("browser").open) $("browser").showModal();
+  $("browser-filter").focus();
+  $("browser-courses").querySelector('[aria-pressed="true"]')?.scrollIntoView({ block: "nearest" });
+}
+
+function renderBrowserCourses(){
+  const box = $("browser-courses"); box.innerHTML = "";
+  let group = null;
+  availableCourses().filter(c => TREE[c.id]).forEach(c => {
+    if (c.curriculum !== group) {
+      group = c.curriculum;
+      const heading = document.createElement("h3");
+      heading.className = "course-group"; heading.textContent = c.curriculum_label;
+      box.appendChild(heading);
+    }
+    const b = document.createElement("button");
+    b.className = "course"; b.dataset.id = c.id; b.dataset.domain = courseDomain(c.id);
+    b.setAttribute("aria-pressed", c.id === browseCourse ? "true" : "false");
+    b.innerHTML = `<span class="sym" data-len="${[...courseSym(c.id)].length}">${courseSym(c.id)}</span>
+      <span class="name">${escapeHtml(c.name)}<small>${TREE[c.id].length} documents</small></span>`;
+    b.onclick = () => {
+      browseCourse = c.id; $("browser-filter").value = "";
+      box.querySelectorAll(".course").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+      renderBrowserDocs();
+    };
+    box.appendChild(b);
+  });
+}
+
+function docItem(d){
+  const bits = [docYear(d), d.corrige && !/corrig/i.test(d.label) ? "corrigé" : "", `${d.count} passage${d.count > 1 ? "s" : ""}`].filter(Boolean);
+  return `<button type="button" class="doc-item" data-doc="${escapeAttr(d.key)}">
+    <span class="doc-name">${escapeHtml(cleanTitle(d.label))}</span><small>${bits.join(" · ")}</small></button>`;
+}
+
+function renderBrowserDocs(){
+  const filter = $("browser-filter").value.trim();
+  const box = $("browser-docs");
+  let groups = [];
+  if (filter) {
+    // filtre : dans toutes les matières de la sélection, mots dans n'importe quel ordre, sans accents
+    const words = filter.split(/\s+/).map(w => new RegExp(accentInsensitive(w), "i"));
+    groups = availableCourses().filter(c => TREE[c.id]).map(c => [c.name,
+      TREE[c.id].filter(d => words.every(re => re.test(`${cleanTitle(d.label)} ${kindLabel(d.kind)} ${yearLabel(d.year)}`)))])
+      .filter(([, docs]) => docs.length);
+  } else if (browseCourse) {
+    const byKind = {};
+    TREE[browseCourse].forEach(d => (byKind[d.kind] ||= []).push(d));
+    groups = Object.keys(META.kinds).filter(k => byKind[k]).map(k => [kindLabel(k), byKind[k]])
+      .concat(Object.keys(byKind).filter(k => !META.kinds[k]).map(k => [k, byKind[k]]));
+  }
+  box.innerHTML = groups.length
+    ? groups.map(([title, docs]) => `<h3 class="doc-group">${escapeHtml(title)} (${docs.length})</h3>${docs.map(docItem).join("")}`).join("")
+    : `<p class="empty">${filter ? "Aucun document ne correspond à ce filtre dans la sélection." : "Aucune matière dans la sélection : élargis les filtres."}</p>`;
+  box.scrollTop = 0;
+}
+
+async function showDoc(key){
+  ++searchSequence;
+  const sequence = searchSequence;
+  if ($("browser").open) $("browser").close();
+  $("results").innerHTML = '<p class="hint loading">Ouverture du document…</p>';
+  try {
+    await loadTree();
+    const data = await (await fetch('/api/doc?' + new URLSearchParams({ key }))).json();
+    if (sequence !== searchSequence) return;
+    openDoc = key;
+    const course = docCourse(key);
+    const docs = TREE[course] || [];
+    const i = docs.findIndex(d => d.key === key);
+    const d = docs[i];
+    const name = META.courses.find(c => c.id === course)?.name || course;
+    const nav = (target, label, title) => `<button type="button" ${target ? `data-doc="${escapeAttr(target.key)}" title="${escapeAttr(title + " : " + cleanTitle(target.label))}"` : "disabled"}>${label}</button>`;
+    $("results").innerHTML = `<div class="doc-nav">
+        <button type="button" id="back-to-files">← Fichiers</button>
+        <div class="doc-title">${escapeHtml(cleanTitle(d?.label || key))}
+          <small>${escapeHtml(name)} · ${escapeHtml(kindLabel(d?.kind))}${d && docYear(d) ? " · " + docYear(d) : ""} · document ${i + 1} sur ${docs.length}</small></div>
+        ${nav(docs[i - 1], "‹ Précédent", "Document précédent")}${nav(docs[i + 1], "Suivant ›", "Document suivant")}
+      </div>` + data.results.map((r, k) => renderCard(r, k, [])).join("");
+    renderMath($("results"));
+    window.scrollTo({ top: 0 });
+  } catch (e) {
+    if (sequence !== searchSequence) return;
+    $("results").innerHTML = '<p class="empty">Impossible d’ouvrir ce document. Vérifie que <b>python3 server.py</b> tourne.</p>';
+  }
+}
+
+$("browse").onclick = openBrowser;
+$("browser-close").onclick = () => $("browser").close();
+$("browser").addEventListener("click", e => {
+  if (e.target === $("browser")) { $("browser").close(); return; }   // clic sur le fond
+  const item = e.target.closest("[data-doc]");
+  if (item) showDoc(item.dataset.doc);
+});
+$("browser-filter").addEventListener("input", renderBrowserDocs);
+$("browser-filter").addEventListener("keydown", e => {
+  if (e.key === "Enter") $("browser-docs").querySelector(".doc-item")?.click();
+});
+
 $("theme").onclick = () => {
   const root = document.documentElement;
   const cur = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -530,7 +656,9 @@ if (!document.documentElement.dataset.theme)
   document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 document.addEventListener("keydown", e => {
-  if (e.key === "/" && document.activeElement !== $("q")) { e.preventDefault(); $("q").focus(); $("q").select(); }
+  if (e.target.closest?.("input, textarea") || $("browser").open) return;
+  if (e.key === "/") { e.preventDefault(); $("q").focus(); $("q").select(); }
+  if (e.key === "b" && META && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); openBrowser(); }
 });
 
 $("go").onclick = doSearch;
@@ -558,6 +686,9 @@ document.addEventListener("error", e => {
 }, true);
 
 $("results").addEventListener("click", e => {
+  if (e.target.closest("#back-to-files")) { openBrowser(); return; }
+  const target = e.target.closest("[data-doc]");
+  if (target) { showDoc(target.dataset.doc); return; }
   const tab = e.target.closest(".view-tab");
   if (!tab) return;
   const card = tab.closest(".card");

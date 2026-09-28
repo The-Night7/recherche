@@ -167,6 +167,50 @@ def content_blocks(chunk):
     return cropped(chunk, to_md_blocks(chunk["text"]))
 
 
+def doc_key(chunk):
+    return chunk.get("doc") or f"{chunk['course']}:{chunk.get('doc_label', '')}"
+
+
+# documents de chaque matière, dans l'ordre de l'index (pour la fenêtre « Parcourir »)
+DOCS = {}
+for _i, _chunk in enumerate(CHUNKS):
+    DOCS.setdefault(doc_key(_chunk), []).append(_i)
+
+
+def build_tree():
+    tree = {}
+    for key, ids in DOCS.items():
+        c = CHUNKS[ids[0]]
+        tree.setdefault(c["course"], []).append({
+            "key": key, "label": c.get("doc_label") or key, "kind": c["kind"],
+            "corrige": bool(c["corrige"]), "year": c["year"], "count": len(ids),
+        })
+    for docs in tree.values():
+        docs.sort(key=lambda d: (d["kind"], -(d["year"] or 0), d["corrige"], d["label"].lower()))
+    return tree
+
+
+TREE = build_tree()
+
+
+def result_json(c, score):
+    return {
+        "label": c["label"], "section": c.get("section", ""),
+        "doc_label": c.get("doc_label", ""), "course": c["course"],
+        "current": c.get("current"),
+        "course_name": COURSES.get(c["course"], c["course"]),
+        "curriculum": c["curriculum"],
+        "curriculum_label": course_context(c["course"])["label"],
+        "study_year": c["study_year"], "semester": c["semester"],
+        "program": c["program"], "track": c["track"],
+        "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
+        "with_correction": bool(c.get("with_correction")),
+        "score": score, "doc_key": doc_key(c),
+        "blocks": content_blocks(c), "alt": alt_blocks(c),
+        "pdf": {"doc": c["doc"], "pages": c["pages"]} if c.get("doc") in SOURCES and c.get("pages") else None,
+    }
+
+
 def csv_param(qs, name):
     raw = qs.get(name, [""])[0]
     return {x for x in raw.split(",") if x} or None
@@ -247,6 +291,19 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(META)
             return
 
+        if parsed.path == "/api/tree":
+            self.send_json(TREE)
+            return
+
+        if parsed.path == "/api/doc":
+            ids = DOCS.get(parse_qs(parsed.query).get("key", [""])[0])
+            if ids is None:
+                self.send_response(404)
+                self.end_headers()
+            else:
+                self.send_json({"results": [result_json(CHUNKS[i], None) for i in ids]})
+            return
+
         if parsed.path == "/api/search":
             qs = parse_qs(parsed.query)
             question = qs.get("q", [""])[0]
@@ -277,22 +334,7 @@ class Handler(BaseHTTPRequestHandler):
                 "highlight": info["highlight"] + [t for t in tokens if t != info["reference"]],
                 "searched": int(mask.sum()),
                 "results": [
-                    {
-                        "label": c["label"], "section": c.get("section", ""),
-                        "doc_label": c.get("doc_label", ""), "course": c["course"],
-                        "current": c.get("current"),
-                        "course_name": COURSES.get(c["course"], c["course"]),
-                        "curriculum": c["curriculum"],
-                        "curriculum_label": course_context(c["course"])["label"],
-                        "study_year": c["study_year"], "semester": c["semester"],
-                        "program": c["program"], "track": c["track"],
-                        "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
-                        "with_correction": bool(c.get("with_correction")),
-                        "score": score,
-                        "blocks": content_blocks(c), "alt": alt_blocks(c),
-                        "pdf": {"doc": c["doc"], "pages": c["pages"]} if c.get("doc") in SOURCES and c.get("pages") else None,
-                    }
-                    for c, score in results
+                    result_json(c, score) for c, score in results
                 ],
             })
             return

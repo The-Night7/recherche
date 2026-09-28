@@ -5,6 +5,8 @@ L'interface web distingue **l'année de Préing**, **le semestre**, **la matièr
 **l'année scolaire du document**. Chaque résultat rappelle sa formation et sa matière.
 À pertinence proche, les
 documents les plus récents passent devant.
+Le bouton **Fichiers** (raccourci `b`) ouvre une fenêtre pour parcourir les
+documents matière par matière et les lire en entier, avec document précédent/suivant.
 
 Contrairement à `ml_project/` (réseau de neurones génératif), celui-ci
 ne génère rien : il **retrouve le bon passage du cours** pour une

@@ -85,6 +85,60 @@ kbd{
 }
 #go:hover{ background:var(--accent); }
 
+.top-actions{ display:flex; gap:8px; }
+#browse{
+  height:40px; padding:0 13px; border-radius:10px; border:1.5px solid var(--rule);
+  background:var(--sheet); cursor:pointer; display:flex; align-items:center; gap:8px;
+  color:var(--ink-soft); font-size:13.5px; font-weight:500;
+}
+#browse:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+/* ---- fenêtre « Parcourir les fichiers » ---- */
+#browser{
+  width:min(980px, calc(100vw - 32px)); height:min(680px, calc(100vh - 48px));
+  padding:0; border:1px solid var(--rule); border-radius:12px;
+  background:var(--sheet); color:var(--ink); box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+#browser[open]{ display:flex; flex-direction:column; }
+#browser::backdrop{ background:rgba(10,20,35,.45); }
+.browser-head{ display:flex; align-items:center; gap:14px; padding:14px 18px; border-bottom:1px solid var(--rule); }
+.browser-head h2{ margin:0; font-family:var(--serif); font-size:19px; font-weight:600; white-space:nowrap; }
+#browser-filter{
+  flex:1; min-width:0; padding:8px 12px; border:1.5px solid var(--rule); border-radius:8px;
+  background:var(--paper); font-size:14px;
+}
+#browser-filter:focus{ outline:none; border-color:var(--accent); }
+#browser-close{
+  width:34px; height:34px; border-radius:8px; border:none; background:transparent;
+  font-size:22px; line-height:1; cursor:pointer; color:var(--ink-soft);
+}
+#browser-close:hover{ background:var(--sheet2); color:var(--ink); }
+.browser-body{ flex:1; min-height:0; display:grid; grid-template-columns:280px minmax(0,1fr); }
+#browser-courses{ overflow-y:auto; padding:8px 10px 16px; border-right:1.5px solid var(--margin); display:flex; flex-direction:column; gap:4px; }
+#browser-docs{ overflow-y:auto; padding:6px 18px 18px; }
+.doc-group{ margin:16px 0 6px; font-size:12px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+.doc-item{
+  display:flex; align-items:baseline; gap:10px; width:100%; text-align:left;
+  padding:7px 10px; border-radius:7px; border:none; background:transparent; cursor:pointer; font-size:14px;
+}
+.doc-item:hover, .doc-item:focus-visible{ background:var(--sheet2); }
+.doc-item .doc-name{ flex:1; min-width:0; overflow-wrap:anywhere; }
+.doc-item small{ color:var(--ink-soft); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+/* ---- lecture d'un document entier ---- */
+.doc-nav{
+  position:sticky; top:0; z-index:2; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  margin:0 0 16px; padding:10px 0; background:var(--paper);
+}
+.doc-nav .doc-title{ flex:1 1 220px; min-width:0; font-family:var(--serif); font-size:17px; font-weight:600; }
+.doc-nav .doc-title small{ display:block; font-family:var(--sans); font-size:12.5px; font-weight:400; color:var(--ink-soft); }
+.doc-nav button{
+  padding:6px 12px; border-radius:8px; border:1.5px solid var(--rule); background:var(--sheet);
+  cursor:pointer; font-size:13px; color:var(--ink-soft);
+}
+.doc-nav button:hover:not(:disabled){ color:var(--ink); border-color:var(--ink-soft); }
+.doc-nav button:disabled{ opacity:.35; cursor:default; }
+
 #theme{
   width:40px; height:40px; border-radius:10px; border:1.5px solid var(--rule);
   background:var(--sheet); cursor:pointer; display:grid; place-items:center; color:var(--ink-soft);
@@ -182,6 +236,7 @@ legend{ font-size:13px; font-weight:600; color:var(--ink); margin-bottom:9px; pa
   padding:3px 7px; border-radius:5px; background:var(--c, var(--ink-soft)); color:var(--sheet);
 }
 .doc b{ color:var(--ink); font-weight:600; }
+.open-doc{ margin-left:auto; padding:0; border:none; background:none; cursor:pointer; font-size:12.5px; color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
 .view-tabs{ display:flex; flex-wrap:wrap; gap:6px; padding:10px 26px 0; }
 .view-tab{
   padding:3px 11px; border-radius:999px; border:1px solid var(--rule); background:transparent;
@@ -298,5 +353,13 @@ mark{
   aside.open #filters{ display:block; }
   .card-head{ padding:14px 16px 12px 20px; }
   .card-body{ padding:14px 18px 18px 20px; }
+  #browse span{ display:none; }
+  #browser{ width:100vw; height:100dvh; max-width:none; max-height:none; border-radius:0; }
+  .browser-head h2{ display:none; }
+  .browser-body{ grid-template-columns:minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); }
+  #browser-courses{ flex-direction:row; overflow-x:auto; overflow-y:hidden; border-right:none; border-bottom:1.5px solid var(--margin); padding:8px 12px; }
+  #browser-courses .course{ width:auto; flex:none; }
+  #browser-courses .course .name small, #browser-courses .course-group{ display:none; }
+  #browser-docs{ padding:4px 12px 16px; }
   .prose, .md{ font-size:16px; }
 }
