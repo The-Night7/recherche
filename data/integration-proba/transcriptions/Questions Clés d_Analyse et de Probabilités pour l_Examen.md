@@ -1,0 +1,38 @@
+---
+source: PREING2-S2/Questions Clés d_Analyse et de Probabilités pour l_Examen.docx
+transcription: manuelle
+format_source: docx
+verification: lecture intégrale du texte et des tableaux Word
+---
+
+# Questions clés d’analyse et de probabilités pour l’examen
+
+## Sur la justification des intégrales semi-convergentes
+
+« Quelle est la rédaction type exigée au partiel pour prouver la convergence d'une intégrale qui change de signe mais qui n'est pas absolument convergente (semi-convergente) ? Faut-il systématiquement justifier par une intégration par parties, vu que les théorèmes de comparaison ne s'appliquent qu'aux signes constants ? »(Vous aviez soulevé cette excellente question lors de vos révisions, c'est le moment de demander la validation du professeur sur la rédaction exacte attendue).
+
+## Sur l'interversion Série-Intégrale (Exercice 7)
+
+« Pour la question 2.a de l'exercice sur l'intégrale de Poisson où l'on développe le logarithme en série, quel est le théorème exact au programme à invoquer pour justifier l'interversion de la somme infinie et de l'intégrale ? »(Sur vos notes manuscrites, vous aviez écrit « JSP » à cet endroit précis ; cela clarifiera si vous devez utiliser la convergence dominée adaptée aux séries ou un autre argument).
+
+## Sur les majorations pour le théorème des gendarmes (Exercice 8)
+
+« Pour calculer la limite d'une intégrale à paramètre via le théorème des gendarmes, comme pour l'intégrale de Gauss où l'on majore par e^(-x^2), suffit-il toujours de trouver un majorant indépendant de la variable d'intégration ? Comment faire si un tel majorant global est introuvable ? »(Cela vous aidera à savoir s'il faut s'attendre à des astuces plus complexes, comme découper l'intervalle avec la relation de Chasles).
+
+## Sur la fonction "chapeau" et l'espace L^1
+
+« Lors de l'application du théorème de dérivation sous le signe intégral, si la fonction de domination g(x) que l'on trouve correspond à une intégrale de Riemann convergente usuelle, suffit-il de mentionner “g \in L^1" 11, 12 ou exigez-vous de redémontrer sa convergence sur la copie ? »(En lien avec votre toute première question sur l'espace $L^1$ et l'exigence de rédaction type examen).
+
+## Sur la subtilité entre Covariance et Indépendance
+
+« Vous avez précisé qu'une covariance nulle n'implique pas l'indépendance pour un couple de variables aléatoires 14, 15. Cependant, existe-t-il des cas particuliers au programme (par exemple pour des couples de variables normales) où cette implication devient exceptionnellement vraie ? »(Issu de notre correction du TD5 où l'exercice 13 montrait ce piège algébrique).
+
+## Sur les sommes géométriques et le calcul d'espérance
+
+« Dans le cas du calcul de l'espérance de la loi Géométrique 16, est-il attendu que l'on redémontre la formule en dérivant la série géométrique entière sur notre copie, ou peut-on utiliser le résultat $E(X) = 1/p$ 16 directement comme une formule usuelle du cours ? »(Suite à notre échange sur le lien entre espérance et dérivation de séries géométriques).
+
+## Sur les approximations entre lois usuelles
+
+« Dans la synthèse, il est indiqué que la loi de Poisson est la limite de la loi Binomiale lorsque $n$ est grand et $p$ est petit 16. Le jour de l'examen, quelles sont les bornes numériques strictes (pour $n$ et $p$) que vous tolérez pour accepter cette approximation sans pénalité ? »
+
+> Les nombres de renvoi 11, 12, 14, 15 et 16 figurent dans le fichier Word ; aucune bibliographie correspondante n’y est fournie. Les questions et les commentaires entre parenthèses sont ceux du document, sans réponse ajoutée.

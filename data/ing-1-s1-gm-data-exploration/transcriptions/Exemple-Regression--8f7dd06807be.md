@@ -18,12 +18,12 @@ Le document donne la taille $X$ et le poids $Y$ de dix enfants. Les unités ne s
 | 4 | 118 | 24 | 22,3 | 1,67 |
 | 5 | 111 | 19 | 19,3 | −0,37 |
 | 6 | 109 | 18 | 18,5 | −0,53 |
-| 7 | 114 | 20 | 20,6 | −0,3… (fin peu lisible) |
+| 7 | 114 | 20 | 20,6 | −0,36 (lecture du manuscrit agrandi) |
 | 8 | 103 | 15 | 16,004 | −1,004 |
 | 9 | 110 | 20 | 18,96 | 1,04 |
 | 10 | 115 | 21 | 21,05 | −0,05 |
 
-La ligne imprimée « résidu centré et réduit » donne, dans l'ordre : $-1{,}23$ ; $-2{,}28$ ; $0{,}73$ ; $1{,}36$ ; $0{,}29$ (signe peu lisible) ; $-0{,}42$ ; $-0{,}5$ ; $-0{,}96$ ; $0{,}8$ ; $-0{,}04$. La deuxième valeur est surlignée.
+La ligne imprimée « résidu centré et réduit » donne, dans l'ordre : $-1{,}23$ ; $-2{,}28$ ; $0{,}73$ ; $1{,}36$ ; $[\text{signe masqué}]\,0{,}29$ ; $-0{,}42$ ; $-0{,}5$ ; $-0{,}96$ ; $0{,}8$ ; $-0{,}04$. La deuxième valeur est surlignée. Le début de la cinquième valeur est recouvert dans le scan : son signe ne peut pas être confirmé à partir de ce fichier. Aucune valeur recalculée ne lui est substituée.
 
 > **Incohérences de la source conservées :** les poids prédits du tableau ne correspondent pas tous à la droite affichée ci-dessous, et les arrondis des prédictions et résidus ne sont pas homogènes. Le premier résidu réduit est négatif dans la ligne imprimée alors que le résidu calculé en bas de page est positif. Ces nombres sont transcrits tels qu'ils figurent dans le document, sans les présenter comme un tableau recalculé.
 

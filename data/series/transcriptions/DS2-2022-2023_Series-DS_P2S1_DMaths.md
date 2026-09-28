@@ -1,14 +1,18 @@
 ---
-source: DS2-2022-2023_Series-DS_P2S1_DMaths.pdf, pages 1 et 2 (sujet scanné, sans corrigé)
+source: PREING2-S1/Series-DS/DS2-2022-2023_Series-DS_P2S1_DMaths.pdf
+pages: 2
+verification: lecture intégrale du scan et de son annotation manuscrite
 transcription: manuelle
 corrections: rédigées
 ---
 
 # Séries — Devoir surveillé 2 (décembre 2022) (corrigé)
 
-Devoir du jeudi 17 décembre 2022. Durée 1 h 30, appareils électroniques et documents interdits.
+L’en-tête indique « Jeudi 17 décembre 2022 ». Durée 1 h 30, appareils électroniques et documents interdits.
 
-> **Note :** l'en-tête du sujet porte « Devoir surveillé 1 », mais il s'agit du deuxième devoir (séries alternées et suites de fonctions, décembre 2022).
+Il sera tenu compte de la qualité de la rédaction et de la précision des justifications. Le sujet comporte cinq exercices. L’ordre dans lequel ceux-ci sont traités n’est pas imposé.
+
+> **Note sur la source :** l’en-tête porte « Devoir surveillé 1 », tandis que le nom du fichier indique DS2. La date est recopiée telle qu’imprimée ; le 17 décembre 2022 était un samedi. Le scan contient uniquement l’énoncé ; les corrections ci-dessous sont des compléments rédigés.
 
 ## Exercice 1 : Série de terme sin((−1)ⁿ/nᵃ)
 
@@ -114,23 +118,35 @@ qui tend vers $0$ si et seulement si $a < 1$. La convergence est **uniforme sur 
 
 ## Exercice 5 : Suite de fonctions à support dans [0 ; 1/n]
 
-**Énoncé.** (4 points) Soit $f_n : [0; 1] \to \mathbb{R}$ définie par :
-$$f_n(x) = \begin{cases} n^2x(1 - nx) & \text{si } x \in [0; \frac{1}{n}] \\ 0 & \text{sinon} \end{cases}$$
+**Énoncé.** (4 points) Soit $f_n : [0;1]\to\mathbb R$ définie par la formule du scan, avec l’annotation manuscrite :
 
-1. Montrer que la suite de fonctions $(f_n)_n$ converge simplement vers la fonction nulle sur $[0; 1]$.
-2. Calculer $\int_0^1 f_n(x)\,dx$. Y a-t-il convergence uniforme de $(f_n)_n$ sur $[0; 1]$ ?
-3. Étudier la convergence uniforme de $(f_n)_n$ sur $[\alpha; 1]$ avec $\alpha \in \,]0; 1[$.
+$$f_n(x)=\begin{cases}
+nx(1-nx)+nx & \text{si }x\in[0;1/n],\\
+0 & \text{sinon}.
+\end{cases}$$
 
-> **Note :** la formule du scan est en partie illisible : on lit « $nx(1-nx) + n\ldots$ » suivi d'un symbole peu net. On retient $f_n(x) = n^2x(1-nx)$ (même exercice que dans le DS2 2023-2024, version 2), seule lecture cohérente avec la question 1 (une constante $+n$ empêcherait la convergence vers $0$ en $x = 0$) et avec la question 2 (intégrale constante). Les résultats pour $f_n(x) = nx(1-nx)$ sont indiqués au passage.
+> **Lecture de la source vérifiée :** la formule imprimée est $nx(1-nx)+n$ ; un $x$ manuscrit est ajouté immédiatement après le dernier $n$. La formule transcrite ci-dessus inclut cette annotation. L’ancienne transcription $n^2x(1-nx)$ ne figure pas dans ce scan et a été retirée. Sans l’annotation, la question 1 serait fausse en $x=0$, puisque $f_n(0)=n$.
 
-**Correction.**
+1. Montrer que la suite de fonctions $(f_n)_n$ converge simplement vers la fonction nulle sur $[0;1]$.
+2. Calculer $\int_0^1 f_n(x)\,dx$. Y a-t-il convergence uniforme de $(f_n)_n$ sur $[0;1]$ ?
+3. Étudier la convergence uniforme de $(f_n)_n$ sur $[\alpha;1]$ avec $\alpha\in]0;1[$.
 
-**1.** $f_n(0) = 0$ pour tout $n$. Soit $x \in \,]0; 1]$ : dès que $n > \frac{1}{x}$, on a $x > \frac{1}{n}$ donc $f_n(x) = 0$. Ainsi $f_n(x) \to 0$ pour tout $x \in [0; 1]$ : $(f_n)$ converge simplement vers la **fonction nulle**.
+**Correction rédigée pour la formule annotée (absente du scan).**
 
-**2.**
-$$\int_0^1 f_n(x)\,dx = n^2\int_0^{1/n}(x - nx^2)\,dx = n^2\left(\frac{1}{2n^2} - \frac{n}{3n^3}\right) = n^2\cdot\frac{1}{6n^2} = \frac{1}{6}$$
-Si $(f_n)$ convergeait uniformément vers $0$ sur le segment $[0; 1]$, on pourrait intervertir limite et intégrale : $\int_0^1 f_n \to \int_0^1 0 = 0$. Or $\int_0^1 f_n = \frac{1}{6}$ pour tout $n$ : il n'y a **pas convergence uniforme** sur $[0; 1]$. (Directement : le maximum de $f_n$ est atteint en $x = \frac{1}{2n}$ et vaut $n^2\cdot\frac{1}{2n}\cdot\frac{1}{2} = \frac{n}{4} \to +\infty$.)
+**1.** Pour tout $n$, $f_n(0)=0$. Pour $x>0$ fixé, dès que $n>1/x$, on a $x>1/n$, donc $f_n(x)=0$. Ainsi, $(f_n)$ converge simplement vers la fonction nulle sur $[0;1]$.
 
-Avec la lecture $f_n(x) = nx(1-nx)$, on trouverait $\int_0^1 f_n = \frac{1}{6n} \to 0$, qui ne permet pas de conclure, mais $\|f_n\|_\infty = \frac{1}{4}$ ne tend pas vers $0$ : pas de convergence uniforme non plus.
+**2.** Sur $[0;1/n]$, $f_n(x)=2nx-n^2x^2$. Par conséquent,
 
-**3.** Soit $\alpha \in \,]0; 1[$. Pour $n > \frac{1}{\alpha}$, $\frac{1}{n} < \alpha$ donc $f_n$ est identiquement nulle sur $[\alpha; 1]$ : $\sup_{[\alpha;1]}|f_n| = 0$ à partir de ce rang. La convergence est **uniforme** sur $[\alpha; 1]$ (quelle que soit la lecture de la formule).
+$$\int_0^1 f_n(x)\,dx
+=\int_0^{1/n}(2nx-n^2x^2)\,dx
+=\left[nx^2-\frac{n^2x^3}{3}\right]_0^{1/n}
+=\frac{2}{3n}\longrightarrow0.$$
+
+La convergence des intégrales ne suffit pas à établir la convergence uniforme. Sur $[0;1/n]$,
+
+$$f'_n(x)=2n(1-nx)\geq0,\qquad
+\sup_{x\in[0;1]}|f_n(x)|=f_n(1/n)=1.$$
+
+Il n’y a donc **pas convergence uniforme** vers $0$ sur $[0;1]$.
+
+**3.** Pour $n>1/\alpha$, $1/n<\alpha$, donc $f_n$ est identiquement nulle sur $[\alpha;1]$. La convergence est **uniforme** sur $[\alpha;1]$.
