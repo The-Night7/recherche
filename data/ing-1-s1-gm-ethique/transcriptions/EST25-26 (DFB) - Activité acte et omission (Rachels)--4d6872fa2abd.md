@@ -1,0 +1,25 @@
+---
+source: "ING 1/S1 GM /ETHIQUE/COURS/EST25-26 (DFB) - Activité acte et omission (Rachels).pdf"
+pages: 1
+transcription: texte structuré et relu
+transcription_date: 2026-09-30
+verification: lecture intégrale du texte source
+---
+
+# Acte et omission
+
+Situation générale (idée extraite de J. Rachels, 1975, « Active and passive euthanasia ») : Robert, John et Peter sont des potentiels héritiers d’une forte fortune si leur cousin, l’actuel héritier qui est un jeune enfant, décède.
+
+Situation 1 : Robert noie l’enfant pendant qu’il prend son bain.
+
+Situation 2 : John s’introduit dans la salle de bain avec l’intention de le tuer, mais lorsque John rentre dans la pièce, l'enfant a accidentellement glissé sous l’eau, et est donc déjà en train de se noyer. John se contente de regarder la scène.
+
+Situation 3 : Peter apporte et branche un poste de radio dans la salle de bain. Une coupure de courant survient. Dans la panique de l’obscurité (c’est le soir), l’enfant se lève et fait tomber le poste dans la baignoire. L’électricité revient à ce moment-là et l’enfant meurt électrocuté rapidement.
+
+a) Quel rôle joue l'intentionnalité dans ces situations ?
+
+b) Du point de vue de l’enfant, observe-t-on une différence entre ces trois situations ?
+
+c) Quelles différences morales sont perceptibles entre agir et laisser faire ?
+
+*Source institutionnelle : Pôle Humanités & Design — Relations Humaines. Les citations, les attributions et les formulations du support sont conservées ; les logos et les pieds de page répétés sont omis.*

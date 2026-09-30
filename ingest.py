@@ -593,11 +593,15 @@ def sections_markdown(text):
         level = len(m.group(1))
         # "3\." (échappement Markdown) -> "3." ; les commandes LaTeX (\alpha) restent
         title = re.sub(r"\\([.\-#()\[\]!+])", r"\1", re.sub(r"[*_`]", "", m.group(2))).strip(" :")
-        if i == 0 and level == 1:  # titre du document ("CM Séries"), déjà dans doc_label
+        body = text[m.end(): marks[i + 1].start() if i + 1 < len(marks) else len(text)].strip()
+        if i == 0 and level == 1:
+            # Le titre figure déjà dans doc_label, mais son contenu peut être
+            # l'introduction, voire la totalité d'une transcription courte.
+            if body:
+                secs.append((title, body))
             continue
         path = {k: v for k, v in path.items() if k < level}
         path[level] = title
-        body = text[m.end(): marks[i + 1].start() if i + 1 < len(marks) else len(text)].strip()
         if not body:
             continue
         # chemin sans le numéro de niveau 1 trop long : "5. Règle d'Alembert… › Exemple"

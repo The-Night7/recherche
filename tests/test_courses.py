@@ -120,6 +120,24 @@ class CourseImportTests(unittest.TestCase):
         self.assertEqual([label for label, _ in sections], ['Exercice 1', 'Exercice 2'])
         self.assertIn('```shell\n# Afficher les fichiers\nls -l\n```', sections[0][1])
 
+    def test_single_heading_transcription_is_indexed_without_its_front_matter(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'Cas-ethique.md'
+            body = 'Gabriel doit choisir entre ses convictions et les besoins de sa famille.'
+            path.write_text('---\nsource: cas.pdf\n---\n\n# Cas de Gabriel\n\n' + body)
+            chunk, = ingest.chunk_document(str(path), 'ing-1-s1-gm-ethique')
+            self.assertEqual(chunk['fmt'], 'md')
+            self.assertEqual(chunk['text'], body)
+            self.assertEqual(chunk['section'], 'Cas de Gabriel')
+
+    def test_markdown_introduction_survives_before_nested_sections(self):
+        source = '# Cours\n\nHypothèses du cours.\n\n## Théorème\n\nÉnoncé.\n\n### Preuve\n\nDémonstration.'
+        self.assertEqual(ingest.sections_markdown(source), [
+            ('Cours', 'Hypothèses du cours.'),
+            ('Théorème', 'Énoncé.'),
+            ('Théorème › Preuve', 'Démonstration.'),
+        ])
+
 
 if __name__ == '__main__':
     unittest.main()
