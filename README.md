@@ -135,6 +135,8 @@ les notes Markdown conservent leurs blocs de code.
 L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
 de matrice dense de plusieurs gigaoctets.
 
+Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. Le [bilan des transcriptions](TRANSCRIPTIONS.md) indique l’avancement ; la priorité actuelle est **P2**.
+
 Pour reconstruire après une modification d'un texte ou d'une transcription :
 
 ```bash

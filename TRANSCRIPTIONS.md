@@ -8,6 +8,19 @@ Le rapprochement avec les fichiers déjà présents reconnaît aussi 29 transcri
 
 L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 564 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
+## Ordre de traitement demandé
+
+L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années ING suivantes dans l’ordre numérique.
+
+| Priorité | Année à terminer, tous semestres compris | Documents restants | État |
+| --- | --- | ---: | --- |
+| 1 | P2 — Préing 2 | 111 | En cours — priorité actuelle |
+| 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
+| 3 | ING 1 | 258 | En attente de la fin de P1 |
+| 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
+
+**Règle de reprise : terminer les transcriptions et vérifications de l’année courante avant de commencer le reliquat de l’année suivante.** Les semestres 1 et 2 sont inclus à chaque étape. Les fichiers déjà réalisés dans d’autres années sont conservés. Une extraction brute ou une lecture encore incertaine ne suffit pas à clôturer l’étape. Cet ordre doit être conservé lors de chaque mise à jour du bilan.
+
 ## Bilan actuel
 
 | État | Documents distincts par matière |
@@ -60,19 +73,26 @@ Le document transversal `Les notions de maths.docx` reste à classer et n’est 
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
 | --- | ---: | ---: | ---: |
-| Algèbre linéaire (`algebre-lineaire`) | 6 | 1 | 0 |
-| Algèbre 1 (`algebre1`) | 25 | 2 | 0 |
-| Algèbre 2 (`algebre2`) | 16 | 5 | 0 |
 | Analyse dans ℝⁿ (`analyse-rn`) | 6 | 11 | 0 |
-| Analyse 1 (`analyse1`) | 10 | 1 | 0 |
-| Analyse 2 (`analyse2`) | 17 | 1 | 0 |
-| CEF 1 (`cef1`) | 9 | 0 | 0 |
 | Électromagnétisme (`electromagnetisme`) | 26 | 7 | 0 |
+| Informatique 3 (`informatique3`) | 8 | 0 | 0 |
+| Séries (`series`) | 3 | 7 | 0 |
+| SHS (`shs`) | 4 | 0 | 0 |
+| Algèbre linéaire (`algebre-lineaire`) | 6 | 1 | 0 |
+| Informatique 4 (`informatique4`) | 3 | 0 | 0 |
+| Intégration et probabilités (`integration-proba`) | 8 | 0 | 0 |
+| Ondes (`ondes`) | 7 | 10 | 0 |
+| Physique moderne (`physique-moderne`) | 4 | 0 | 0 |
+| Algèbre 1 (`algebre1`) | 25 | 2 | 0 |
+| Analyse 1 (`analyse1`) | 10 | 1 | 0 |
+| CEF 1 (`cef1`) | 9 | 0 | 0 |
 | IC 1 (`ic1`) | 1 | 0 | 0 |
 | Informatique 1 (`informatique1`) | 12 | 1 | 0 |
+| Physique 1 (`physique1`) | 27 | 12 | 0 |
+| Algèbre 2 (`algebre2`) | 16 | 5 | 0 |
+| Analyse 2 (`analyse2`) | 17 | 1 | 0 |
 | Informatique 2 (`informatique2`) | 20 | 0 | 0 |
-| Informatique 3 (`informatique3`) | 8 | 0 | 0 |
-| Informatique 4 (`informatique4`) | 3 | 0 | 0 |
+| Mécanique du point (`mecanique-du-point`) | 19 | 1 | 0 |
 | Algèbre (`ing-1-s1-gm-algebre`) | 15 | 2 | 0 |
 | Algorithmique (`ing-1-s1-gm-algorithmique`) | 9 | 3 | 0 |
 | Bases de données (`ing-1-s1-gm-bdd`) | 15 | 0 | 0 |
@@ -115,13 +135,6 @@ Le document transversal `Les notions de maths.docx` reste à classer et n’est 
 | Méthodes agiles (`ing-2-s2-methodes-agiles`) | 1 | 0 | 0 |
 | Programmation parallèle (`ing-2-s2-programmation-parallele`) | 6 | 0 | 0 |
 | Séries temporelles (`ing-2-s2-series-temporelles`) | 9 | 4 | 0 |
-| Intégration et probabilités (`integration-proba`) | 8 | 0 | 0 |
-| Mécanique du point (`mecanique-du-point`) | 19 | 1 | 0 |
-| Ondes (`ondes`) | 7 | 10 | 0 |
-| Physique moderne (`physique-moderne`) | 4 | 0 | 0 |
-| Physique 1 (`physique1`) | 27 | 12 | 0 |
-| Séries (`series`) | 3 | 7 | 0 |
-| SHS (`shs`) | 4 | 0 | 0 |
 
 ## Vérification et limites
 
