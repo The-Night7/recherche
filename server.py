@@ -24,6 +24,7 @@ from document_sources import find_source
 from pdf_crops import with_crops
 from courses import COURSES, CURRICULA, PROGRAMS, KINDS, course_context
 from search import filter_mask, load_index, recency, search
+import videos
 
 # en local: http://localhost:8000 . En ligne (Render, Railway, etc.),
 # la plateforme fixe le port et l'hôte via la variable d'env PORT.
@@ -33,6 +34,7 @@ HOST = os.environ.get("HOST", "0.0.0.0")
 print("Chargement de l'index...")
 TFIDF, IDF, VOCAB, CHUNKS = load_index()
 RECENCY = recency(CHUNKS)
+videos.annotate(CHUNKS)
 print(f"{len(CHUNKS)} passages indexés, vocabulaire de {len(VOCAB)} mots.")
 
 
@@ -206,7 +208,7 @@ def result_json(c, score):
         "kind": c["kind"], "corrige": c["corrige"], "year": c["year"],
         "with_correction": bool(c.get("with_correction")),
         "score": score, "doc_key": doc_key(c),
-        "blocks": content_blocks(c), "alt": alt_blocks(c),
+        "blocks": content_blocks(c), "alt": alt_blocks(c), "videos": c.get("_videos", []),
         "pdf": {"doc": c["doc"], "pages": c["pages"]} if c.get("doc") in SOURCES and c.get("pages") else None,
     }
 

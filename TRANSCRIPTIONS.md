@@ -1,12 +1,12 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 770 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 763 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du 30 septembre 2026. Ce lot ajoute **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
+Mise à jour du 30 septembre 2026. Le premier lot ajoute **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement avec les fichiers déjà présents reconnaît aussi 29 transcriptions absentes du précédent bilan. Elles ne sont pas comptées comme des ajouts de ce lot. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 564 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 508 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -14,7 +14,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 111 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 104 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -25,11 +25,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 102 |
+| Transcription Markdown présente | 109 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 623 |
-| Aucun texte associé : à examiner et transcrire | 146 |
+| Extraction brute seulement : transcription à faire | 617 |
+| Aucun texte associé : à examiner et transcrire | 145 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -69,6 +69,18 @@ Le document transversal `Les notions de maths.docx` reste à classer et n’est 
 - [Synthèse de Cours _ Intégration et Probabilités (Préparation CC3)](data/integration-proba/transcriptions/Synth%C3%A8se%20de%20Cours%20_%20Int%C3%A9gration%20et%20Probabilit%C3%A9s%20%28Pr%C3%A9paration%20CC3%29.md)
 - [Synthèse de Cours _ Intégration et Probabilités](data/integration-proba/transcriptions/Synth%C3%A8se%20de%20Cours%20_%20Int%C3%A9gration%20et%20Probabilit%C3%A9s.md)
 
+## Suite P2 — 30 septembre 2026
+
+Ce lot ajoute **7 transcriptions P2**. Lecture visuelle intégrale, restitution des formules en LaTeX et signalement des erreurs ou lacunes des sources.
+
+- [TD1-EX27-Correction_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/TD1-EX27-Correction_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
+- [DS1-2018-2019-Correction_Algebre-lineaire-DS_P2S2_KFayad](data/algebre-lineaire/transcriptions/DS1-2018-2019-Correction_Algebre-lineaire-DS_P2S2_KFayad.md)
+- [DS3-2022-2023-Correction_Algebre-lineaire-DS_P2S2_DMaths](data/algebre-lineaire/transcriptions/DS3-2022-2023-Correction_Algebre-lineaire-DS_P2S2_DMaths.md)
+- [CM-Systemes-differentiels_2022-2023_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Systemes-differentiels_2022-2023_Algebre-lineaire_P2S2_KElAmine.md)
+- [CM-Forme-bilineaire_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Forme-bilineaire_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
+- [CM-Espace-Prehilbertien_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Espace-Prehilbertien_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
+- [CM-Reduction-Endomorphismes_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Reduction-Endomorphismes_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
+
 ## Travail restant par matière
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
@@ -78,7 +90,6 @@ Le document transversal `Les notions de maths.docx` reste à classer et n’est 
 | Informatique 3 (`informatique3`) | 8 | 0 | 0 |
 | Séries (`series`) | 3 | 7 | 0 |
 | SHS (`shs`) | 4 | 0 | 0 |
-| Algèbre linéaire (`algebre-lineaire`) | 6 | 1 | 0 |
 | Informatique 4 (`informatique4`) | 3 | 0 | 0 |
 | Intégration et probabilités (`integration-proba`) | 8 | 0 | 0 |
 | Ondes (`ondes`) | 7 | 10 | 0 |
@@ -146,6 +157,6 @@ L’exemple de régression conserve une lecture impossible à confirmer : le sig
 
 Les nouveaux fichiers Word conservent les formules natives, y compris les notations Unicode. Les limites ou erreurs des sources sont identifiées dans des notes : borne de la somme de Leibniz, variable de la dérivée d’argth, domination locale dans l’annale d’intégration, confusion entre convergence et intégrabilité, et distinction entre continuité et absolue continuité.
 
-Validation du lot : reconstruction avec `python3 ingest.py build`, 65 tests Python et 18 tests de rendu JavaScript réussis. La présence de chacun des 33 nouveaux documents en Markdown dans l’index est contrôlée. Le découpage Markdown conserve désormais le texte placé directement sous le titre principal, y compris pour les documents sans sous-titres.
+Validation du premier lot : reconstruction avec `python3 ingest.py build`, 65 tests Python et 18 tests de rendu JavaScript réussis. La présence de chacun des 33 nouveaux documents en Markdown dans l’index est contrôlée. Le découpage Markdown conserve désormais le texte placé directement sous le titre principal, y compris pour les documents sans sous-titres.
 
 Après chaque lot : mettre à jour les métadonnées des sources et ce bilan, vérifier les formules, puis reconstruire avec `python3 ingest.py build`.

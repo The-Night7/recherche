@@ -411,8 +411,16 @@ function renderCard(r, i, tokens){
           <span class="meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}
         </div>`}
       </div>
-      ${tabs}${bodies}
+      ${tabs}${bodies}${renderVideos(r.videos)}
     </article>`;
+}
+
+// Notions du passage : une recherche YouTube par notion (voir videos.py).
+function renderVideos(videos){
+  if (!videos || !videos.length) return '';
+  return `<div class="videos"><span class="videos-label">Vidéos</span>${videos.map(v =>
+    `<a class="video-link" href="${escapeAttr(v.url)}" target="_blank" rel="noopener noreferrer"
+        title="Chercher des vidéos sur YouTube : ${escapeAttr(v.notion)}">▶ ${escapeHtml(v.notion)}</a>`).join('')}</div>`;
 }
 
 // Ancienne correction : on nomme l'exercice comme dans la feuille 2025-2026.

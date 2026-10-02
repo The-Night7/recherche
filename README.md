@@ -66,6 +66,18 @@ python3 -m unittest discover -s tests
 node tests/test_rendering.js
 ```
 
+## Vidéos liées
+
+Sous chaque passage (exercice, partie de cours…), la ligne **Vidéos** donne
+jusqu'à trois notions traitées, chacune avec une recherche YouTube :
+« <notion> cours » pour un cours, « <notion> exercice corrigé » pour un
+TD/DS/CC/QCM. Les notions et leurs mots-clés sont dans `videos.py`. Un
+passage est relié aux notions dont les mots-clés apparaissent dans son texte
+ou son titre, les notions rares passant devant (pondération IDF). Les matières
+sans domaine maths/info/physique (SHS, éthique…) n'ont pas de vidéos. Après une
+modification de `videos.py`, il suffit de redémarrer `server.py` (pas de
+reconstruction de l'index).
+
 ## Utilisation
 
 ```bash
