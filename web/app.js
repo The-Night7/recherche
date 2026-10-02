@@ -415,12 +415,14 @@ function renderCard(r, i, tokens){
     </article>`;
 }
 
-// Notions du passage : une recherche YouTube par notion (voir videos.py).
+// Notions du passage : une vidéo Maths Adultes / E-learning physique, sinon une recherche YouTube (voir videos.py).
 function renderVideos(videos){
   if (!videos || !videos.length) return '';
-  return `<div class="videos"><span class="videos-label">Vidéos</span>${videos.map(v =>
-    `<a class="video-link" href="${escapeAttr(v.url)}" target="_blank" rel="noopener noreferrer"
-        title="Chercher des vidéos sur YouTube : ${escapeAttr(v.notion)}">▶ ${escapeHtml(v.notion)}</a>`).join('')}</div>`;
+  return `<div class="videos"><span class="videos-label">Vidéos</span>${videos.map(v => v.title
+    ? `<a class="video-link" href="${escapeAttr(v.url)}" target="_blank" rel="noopener noreferrer"
+        title="${escapeAttr(v.notion + " — chaîne " + v.channel)}">▶ ${escapeHtml(v.title)}</a>`
+    : `<a class="video-link search" href="${escapeAttr(v.url)}" target="_blank" rel="noopener noreferrer"
+        title="Pas de vidéo sur cette notion dans les chaînes suivies : recherche YouTube">${escapeHtml(v.notion)} <small>(recherche)</small></a>`).join('')}</div>`;
 }
 
 // Ancienne correction : on nomme l'exercice comme dans la feuille 2025-2026.

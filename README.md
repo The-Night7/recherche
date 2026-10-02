@@ -69,14 +69,21 @@ node tests/test_rendering.js
 ## Vidéos liées
 
 Sous chaque passage (exercice, partie de cours…), la ligne **Vidéos** donne
-jusqu'à trois notions traitées, chacune avec une recherche YouTube :
-« <notion> cours » pour un cours, « <notion> exercice corrigé » pour un
-TD/DS/CC/QCM. Les notions et leurs mots-clés sont dans `videos.py`. Un
-passage est relié aux notions dont les mots-clés apparaissent dans son texte
-ou son titre, les notions rares passant devant (pondération IDF). Les matières
-sans domaine maths/info/physique (SHS, éthique…) n'ont pas de vidéos. Après une
-modification de `videos.py`, il suffit de redémarrer `server.py` (pas de
-reconstruction de l'index).
+jusqu'à trois notions traitées. Chacune a une vidéo précise des chaînes
+[Maths Adultes](https://www.youtube.com/@mathsadultes) ou
+[E-learning physique](https://www.youtube.com/@e-learningphysique4910), quand
+l'une d'elles traite la notion (`VIDEOS` dans `videos.py`). Entre plusieurs
+vidéos d'une notion, c'est celle dont les mots-clés sont dans le passage qui est
+choisie (« module » → *Nombres complexes 4/12 : Module*). Sinon, le lien ouvre
+une recherche YouTube : « <notion> cours » pour un cours, « <notion> exercice
+corrigé » pour un TD/DS/CC/QCM.
+
+Les notions et leurs mots-clés sont aussi dans `videos.py`. Un passage est relié
+aux notions dont les mots-clés apparaissent dans son texte ou son titre, les
+notions rares passant devant (pondération IDF). Les matières sans domaine
+maths/info/physique (SHS, éthique…) n'ont pas de vidéos. Après une modification
+de `videos.py`, il suffit de redémarrer `server.py` (pas de reconstruction de
+l'index).
 
 ## Utilisation
 
