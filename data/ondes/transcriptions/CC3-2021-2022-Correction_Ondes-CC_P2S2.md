@@ -202,7 +202,7 @@ $$
 
 > **Erreur de facteur dans la source.** Le facteur extérieur $2/L$ a été oublié dans le second terme après intégration. À partir de l’intégrale affichée, le résultat est
 >
-> $$
-> a_n=-\frac L{n\pi}\cos\left(\frac{n\pi}2\right)
-> +\frac{2L}{n^2\pi^2}\sin\left(\frac{n\pi}2\right).
-> $$
+$$
+a_n=-\frac L{n\pi}\cos\left(\frac{n\pi}2\right)
++\frac{2L}{n^2\pi^2}\sin\left(\frac{n\pi}2\right).
+$$

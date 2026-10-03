@@ -1,12 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 763 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 741 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du 30 septembre 2026. Le premier lot ajoute **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
+Mise à jour du **3 octobre 2026**. Le nouveau lot ajoute **14 transcriptions P2** : les quatre documents restants de physique moderne et dix corrigés de contrôles d’ondes, soit **73 pages PDF et un document Word de 541 paragraphes**. Huit transcriptions d’intégration et probabilités déjà présentes sont aussi réintégrées dans le bilan ; elles ne sont pas comptées comme de nouveaux fichiers.
 
-Le rapprochement avec les fichiers déjà présents reconnaît aussi 29 transcriptions absentes du précédent bilan. Elles ne sont pas comptées comme des ajouts de ce lot. Les anciennes transcriptions n’ont pas toutes été relues.
+Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 508 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
+
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 277 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -14,7 +16,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 104 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 82 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -25,11 +27,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 109 |
+| Transcription Markdown présente | 131 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 617 |
-| Aucun texte associé : à examiner et transcrire | 145 |
+| Extraction brute seulement : transcription à faire | 604 |
+| Aucun texte associé : à examiner et transcrire | 136 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -81,6 +83,38 @@ Ce lot ajoute **7 transcriptions P2**. Lecture visuelle intégrale, restitution 
 - [CM-Espace-Prehilbertien_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Espace-Prehilbertien_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
 - [CM-Reduction-Endomorphismes_2024-2025_Algebre-lineaire_P2S2_KElAmine](data/algebre-lineaire/transcriptions/CM-Reduction-Endomorphismes_2024-2025_Algebre-lineaire_P2S2_KElAmine.md)
 
+## Suite P2 — 3 octobre 2026
+
+Les 14 nouveaux fichiers sont transcrits et leurs méthodes de vérification figurent dans les en-têtes. Les erreurs des corrigés originaux sont signalées ; les deux versions du CC1 d’ondes 2021–2022 restent distinctes, car leur calcul de discriminant diffère. Le PDF intitulé « CoursCY » est en réalité le CC2 de physique moderne du 7 mai 2026 : ses métadonnées sont rectifiées.
+
+- [CC1-2021-2022-Correction_Ondes-CC_P2S2_Inconnu](data/ondes/transcriptions/CC1-2021-2022-Correction_Ondes-CC_P2S2_Inconnu.md)
+- [CC1-2022-2023-Correction_Ondes-CC_P2S2_Inconnu](data/ondes/transcriptions/CC1-2022-2023-Correction_Ondes-CC_P2S2_Inconnu.md)
+- [CC1-2023-2024-Correction_Ondes-CC_P2S2_FPiguet](data/ondes/transcriptions/CC1-2023-2024-Correction_Ondes-CC_P2S2_FPiguet.md)
+- [CC1-2024-2025-Correction_Ondes-CC_P2S2_DPhysique](data/ondes/transcriptions/CC1-2024-2025-Correction_Ondes-CC_P2S2_DPhysique.md)
+- [CC2-2021-2022-Correction_Ondes-CC_P2S2_Inconnu](data/ondes/transcriptions/CC2-2021-2022-Correction_Ondes-CC_P2S2_Inconnu.md)
+- [CC2-2022-2023-Correction_Ondes-CC_P2S2_Inconnu](data/ondes/transcriptions/CC2-2022-2023-Correction_Ondes-CC_P2S2_Inconnu.md)
+- [CC2-2023-2024-Correction_Ondes-CC_P2S2_FPiguet](data/ondes/transcriptions/CC2-2023-2024-Correction_Ondes-CC_P2S2_FPiguet.md)
+- [CC3-2021-2022-Correction_Ondes-CC_P2S2](data/ondes/transcriptions/CC3-2021-2022-Correction_Ondes-CC_P2S2.md)
+- [CC3-2023-2024-Correction_Ondes-CC_P2S2_PAkridas](data/ondes/transcriptions/CC3-2023-2024-Correction_Ondes-CC_P2S2_PAkridas.md)
+- [ORIGINAL-CC1-2021-2022-Correction_Ondes-CC_P2S2_Inconnu](data/ondes/transcriptions/ORIGINAL-CC1-2021-2022-Correction_Ondes-CC_P2S2_Inconnu.md)
+- [Cours _ Introduction à la physique moderne _ CoursCY _ 2025-2026 (PROD)](data/physique-moderne/transcriptions/Cours%C2%A0_%20Introduction%20%C3%A0%20la%20physique%20moderne%20_%20CoursCY%20_%202025-2026%20%28PROD%29.md)
+- [TD3-4-Correction_2024-2025_Physique-moderne_P2S2_DPhysique](data/physique-moderne/transcriptions/TD3-4-Correction_2024-2025_Physique-moderne_P2S2_DPhysique.md)
+- [revision_physique_moderne_complet](data/physique-moderne/transcriptions/revision_physique_moderne_complet.md)
+- [Rattrapage-2022-2023-Correction_Physique-moderne-CC_P2S2_DPhysique](data/physique-moderne/transcriptions/Rattrapage-2022-2023-Correction_Physique-moderne-CC_P2S2_DPhysique.md)
+
+Les huit fichiers d’intégration et probabilités déjà présents, datés du 30 septembre ou du 2 octobre, représentent 158 pages PDF. Leurs vérifications antérieures sont reprises sans déclarer une nouvelle relecture :
+
+- [Fiche-Lois-Usuelles_2024-2025_Integration-proba_P2S2_LCesbron-FValet](data/integration-proba/transcriptions/Fiche-Lois-Usuelles_2024-2025_Integration-proba_P2S2_LCesbron-FValet.md)
+- [TD3-Correction_2021-2022_Integration-proba_P2S2_NArancibia](data/integration-proba/transcriptions/TD3-Correction_2021-2022_Integration-proba_P2S2_NArancibia.md)
+- [TD4-Correction_2021-2022_Integration-proba_P2S2_NArancibia](data/integration-proba/transcriptions/TD4-Correction_2021-2022_Integration-proba_P2S2_NArancibia.md)
+- [DS1-2021-2022-(DM1)-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS1-2021-2022-%28DM1%29-Correction_Integration-proba-DS_P2S2_DMaths.md)
+- [DS1-2024-2025-V1-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS1-2024-2025-V1-Correction_Integration-proba-DS_P2S2_DMaths.md)
+- [DS2-2024-2025-V1-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS2-2024-2025-V1-Correction_Integration-proba-DS_P2S2_DMaths.md)
+- [DS2-2024-2025-V2-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS2-2024-2025-V2-Correction_Integration-proba-DS_P2S2_DMaths.md)
+- [DS3-2020-2021-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS3-2020-2021-Correction_Integration-proba-DS_P2S2_DMaths.md)
+
+Le reliquat inventorié de physique moderne et d’intégration et probabilités est désormais nul. Ondes conserve six supports de cours PDF et un guide à transcrire. **P2 reste en cours avec 82 documents**, avant P1 puis ING 1 et ING 2.
+
 ## Travail restant par matière
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
@@ -91,9 +125,7 @@ Ce lot ajoute **7 transcriptions P2**. Lecture visuelle intégrale, restitution 
 | Séries (`series`) | 3 | 7 | 0 |
 | SHS (`shs`) | 4 | 0 | 0 |
 | Informatique 4 (`informatique4`) | 3 | 0 | 0 |
-| Intégration et probabilités (`integration-proba`) | 8 | 0 | 0 |
-| Ondes (`ondes`) | 7 | 10 | 0 |
-| Physique moderne (`physique-moderne`) | 4 | 0 | 0 |
+| Ondes (`ondes`) | 6 | 1 | 0 |
 | Algèbre 1 (`algebre1`) | 25 | 2 | 0 |
 | Analyse 1 (`analyse1`) | 10 | 1 | 0 |
 | CEF 1 (`cef1`) | 9 | 0 | 0 |
@@ -158,5 +190,7 @@ L’exemple de régression conserve une lecture impossible à confirmer : le sig
 Les nouveaux fichiers Word conservent les formules natives, y compris les notations Unicode. Les limites ou erreurs des sources sont identifiées dans des notes : borne de la somme de Leibniz, variable de la dérivée d’argth, domination locale dans l’annale d’intégration, confusion entre convergence et intégrabilité, et distinction entre continuité et absolue continuité.
 
 Validation du premier lot : reconstruction avec `python3 ingest.py build`, 65 tests Python et 18 tests de rendu JavaScript réussis. La présence de chacun des 33 nouveaux documents en Markdown dans l’index est contrôlée. Le découpage Markdown conserve désormais le texte placé directement sous le titre principal, y compris pour les documents sans sous-titres.
+
+Validation du 3 octobre : 72 tests Python et la suite des 18 tests de rendu JavaScript passent. Les 1 079 expressions mathématiques des 14 nouveaux fichiers sont acceptées par KaTeX 0.16.11, les 19 tableaux sont contrôlés et les 541 paragraphes du Word sont conservés. L’index est reconstruit avec `python3 ingest.py build` : les 14 nouveaux documents et les huit fichiers rapprochés produisent 330 passages Markdown, tous rattachés à leur source locale. Les formules sont également vérifiées après découpage en passages. L’index complet contient 15 319 passages.
 
 Après chaque lot : mettre à jour les métadonnées des sources et ce bilan, vérifier les formules, puis reconstruire avec `python3 ingest.py build`.

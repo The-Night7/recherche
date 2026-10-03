@@ -558,11 +558,11 @@ $$
 
 > **Erreurs de raccordement.** La dérivée de $A_2e^{qx}+B_2e^{-qx}$ est $q(A_2e^{qx}-B_2e^{-qx})$. Il faut donc $ik(A_1-B_1)=q(A_2-B_2)$ en zéro et $q(A_2e^{qa}-B_2e^{-qa})=ikA_3e^{ika}$ en $a$. Dans (4.17), les signes de la seconde ligne de la matrice de droite sont inversés. Dans (4.18), le vecteur doit contenir $A_2,B_2$ et les exponentielles doivent figurer aussi dans le raccordement des dérivées. Une écriture cohérente en $a$ est
 >
-> $$
-> A_3e^{ika}\begin{pmatrix}1\\ik\end{pmatrix}
-> =\begin{pmatrix}e^{qa}&e^{-qa}\\qe^{qa}&-qe^{-qa}\end{pmatrix}
-> \begin{pmatrix}A_2\\B_2\end{pmatrix}.
-> $$
+$$
+A_3e^{ika}\begin{pmatrix}1\\ik\end{pmatrix}
+=\begin{pmatrix}e^{qa}&e^{-qa}\\qe^{qa}&-qe^{-qa}\end{pmatrix}
+\begin{pmatrix}A_2\\B_2\end{pmatrix}.
+$$
 
 ### 4. Amplitudes $A_1$ et $B_1$ en fonction de $A_3$
 

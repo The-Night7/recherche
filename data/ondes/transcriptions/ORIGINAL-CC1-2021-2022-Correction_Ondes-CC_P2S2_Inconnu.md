@@ -3,7 +3,7 @@ source: "PREING2-S2/Ondes-CC/ORIGINAL-CC1-2021-2022-Correction_Ondes-CC_P2S2_Inc
 pages: 5
 transcription: manuelle
 transcription_date: 2026-10-03
-verification: lecture visuelle intégrale des cinq pages ; comparaison avec la version ORIGINAL et vérification des équations
+verification: lecture visuelle intégrale des cinq pages ; comparaison avec la version corrigée et vérification des équations
 ---
 
 # Ondes — CC1 2021–2022 — Corrigé original
