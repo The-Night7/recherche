@@ -1,0 +1,516 @@
+---
+source: "PREING2-S2/Informatique4/CM02-HTML-Markup-Language_2024-2025_Informatique4_P2S2_MZneika.pdf"
+pages: 34
+transcription: assistée puis relue
+transcription_date: 2026-10-04
+verification: texte natif confronté visuellement aux trente-quatre pages ; code remis en blocs ; arbre DOM et captures décrits
+---
+
+# Programmation Web — Langages de balisage
+
+> Transcription du support : les mentions « actuel », les logiciels cités et les présentations historiques sont conservés dans leur contexte d’origine. Les exemples anciens ne sont pas actualisés. Logos et éléments décoratifs ne sont pas reproduits.
+
+## Présentation (page 1)
+
+Programmation Web — Langages de balisage (Markup Languages).
+
+Mention latérale : « Course descriptions : semester 1, Data Science and Big Data. »
+
+## Plan (page 2)
+
+- Langages de balisage
+
+- Création de fichiers HTML
+
+- Page Layout
+
+## Le balisage de document (page 3)
+
+Un langage de balisage est un langage informatique qui utilise des balises(tags) pour définir des éléments dans un document.
+
+Les langages de balisage sont des moyens d'annoter un document électronique.
+
+le balisage spécifie comment quelque chose doit être affiché ou ce que quelque chose signifie.
+
+Certains langages de balisage populaires sont
+
+- le langage de balisage hypertexte (HTML),
+
+- le langage de balisage extensible (XML) et
+
+- le langage de balisage hypertexte extensible (XHTML).
+
+## HTML (page 4)
+
+Hypertexte désigne un texte stocké sous forme électronique avec des liens de renvoi entre les pages.
+
+Le langage de balisage hypertexte est utilisé pour faciliter la publication de pages Web en fournissant une structure qui définit des éléments tels que des tableaux, des formulaires, des listes et des en-têtes, et identifie où commencent et se terminent les différentes parties de notre contenu.
+
+Il peut être utilisé pour intégrer d'autres formats de fichiers tels que des vidéos, des fichiers audio, des documents tels que des PDF et des feuilles de calcul, entre autres.
+
+HTML est le langage le plus utilisé dans la création de sites Web.
+
+## HTML — Exemple (page 5)
+
+```html
+<html>
+   <head>
+   </head>
+   <body>
+    <p> This is a paragraph.</p>
+   </body>
+ </html>
+```
+
+## XML (page 6)
+
+XML est un Langage de description de documents structurés.
+
+Utilisation de balises (balisage structurel): En XML, les balises sont définies par la personne qui crée le contenu car elles sont généralement utilisées conjointement avec des sources de données et fournissent des informations.
+
+Il est utilisé pour stocker et transporter des données.
+
+Il peut être lisible par l'homme et par la machine.
+
+## XML — Exemple (page 7)
+
+```xml
+<Librairie>
+   <livre id= " lv1" >
+   <titre> Stillness is the Key </titre>
+   <auteur> Ryan Holiday </auteur>
+   <Langue>Anglais</Langue>
+   </livre>
+   <livre id= " lv2 " >
+   <titre> XML Developer's Guide </titre>
+   <auteur> Gambardella, Matthew </auteur>
+   <Langue>Anglais</Langue>
+   </livre>
+   </Librairie>
+```
+
+## XHTML (page 8)
+
+XHTML est un langage de balisage permettant de écrire des pages pour le Web et se fonde sur la syntaxe définie par XML.
+
+XHTML 1.0 reformule simplement HTML 4 en application de XML 1.0 Quelques différences clés par rapport au HTML:
+
+- `<!DOCTYPE>` est obligatoire
+
+- L'attribut xmlns dans `<html>` est obligatoire
+  Exemple : `<html xmlns="http://www.w3.org/1999/xhtml">`
+
+- `<html>`, `<head>`, `<title>` et `<body>` sont obligatoires
+
+- Les éléments doivent toujours être correctement imbriqués
+
+- `<b><i>Some text</b></i>` — faux
+
+- Les éléments doivent toujours être fermés
+
+- Les élément et Les noms d'attributs doivent toujours être en minuscules
+
+## XHTML — Exemple (page 9)
+
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ <title>Exemple XHTML 1.0</title>
+ </head>
+ <body>
+ <ul>
+ <li>Tous les éléments doivent être explicitement balisés. </li>
+ <li>Les balises fermantes ne sont pas optionnelles. </li>
+ <li>Les noms d'éléments et d'attributs <em class="important">doivent</em> être en minuscules.
+ </li>
+ <li>Tous les attributs doivent avoir une valeur explicite
+  <input type="checkbox" checked="checked" value="... " />. </li>
+ <li>Les guillemets sont <em class="important">toujours</em> obligatoires autour des valeurs
+ d'attribut.</li>
+ <li>Les éléments vides doivent être fermés <img src="img. png" alt="image"/>. </li>
+ </ul>
+ </body>
+ </html>
+```
+
+> Le retour à la ligne dans l’identifiant public et les espaces qui coupaient les deux URL du PDF sont supprimés dans cet exemple ; les autres espaces des chaînes sont conservés.
+
+## HTML5 — Histoire (page 10)
+
+Au début, aux premiers jours d'Internet et de l'ARPA, le but principal de la création d'une page était de partager des recherches et des informations.
+
+Les balises HTML étaient uniquement destinées à fournir la mise en page et le formatage d'une page.
+
+En tant que telles, les premières implémentations de HTML étaient quelque peu limitées car il y avait peu de demande pour des fonctionnalités au-delà des bases.
+
+Les en-têtes, les puces, les tableaux et les couleurs étaient à peu près tout ce que les développeurs devaient utiliser.
+
+Au fur et à mesure que les sites étaient créés pour d'autres usages plus commerciaux, les développeurs ont trouvé des moyens créatifs d'utiliser ces outils pour que leurs pages ressemblent davantage à des magazines, à des publicités et à ce qu'ils avaient dessiné sur papier.
+
+## HTML5 — État actuel dans le support (page 11)
+
+De nombreux navigateurs prennent déjà en charge un certain nombre de fonctionnalités proposées dans les brouillons de HTML5, notamment des éléments tels que la prise en charge de canevas et de médias Dans le passé, les sites qui utilisaient des lecteurs vidéo et audio devaient intégrer la prise en charge de nombreux lecteurs et devaient inclure les bibliothèques et les fichiers formatés pour ces systèmes dans leurs sites.
+
+En fournissant une solution à l'utilisation de ces formulaires multimédias dans HTML5, nous pouvons améliorer l'expérience utilisateur et réduire les efforts nécessaires pour les fournir.
+
+Dans ces langues, nous utilisons des balises pour attribuer une signification supplémentaire à notre texte, qui fournissent des instructions au navigateur sur la façon d'afficher le texte à l'écran, mais ne sont pas nécessairement affichées pour l'utilisateur.
+
+## W3C Standards (page 12)
+
+Le World Wide Web Consortium, ou W3C, est une communauté internationale qui soutient le développement Web par la création de normes ouvertes qui offrent la meilleure expérience utilisateur possible pour le plus grand nombre d'utilisateurs.
+
+Ce groupe de professionnels et d'experts se réunit pour déterminer comment CSS et HTML doivent fonctionner, quelles balises doivent être incluses en tant que fonctionnalités, etc.
+
+Le W3C est également votre meilleur point de référence pour déterminer l'accessibilité de votre site grâce à l'utilisation d'outils qui analysent votre code pour la conformité W3C.
+
+le W3C fournit également des tutoriels et des exemples.
+
+## CSS (page 13)
+
+CSS signifie feuille de style en cascade et est utilisé pour créer des règles concernant la couleur, la police et la mise en page de nos pages.
+
+Il détermine également quand ces règles doivent être utilisées, en fonction d'informations telles que l'appareil se connectant à la page, ou en réponse à l'action d'un utilisateur.
+
+CSS peut être utilisé non seulement par HTML, mais par n'importe quel langage basé sur XML.
+
+En séparant autant que possible l'apparence d'une page du HTML, nous séparons en fait le contenu de l'apparence.
+
+Cela permet de créer rapidement plusieurs versions différentes de l'apparence de notre site, sans recréer le contenu dans chaque version.
+
+À l'heure actuelle, la plupart des modules « actuels » sont à la version numéro 3.
+
+## Modèle d’objet de document (page 14)
+
+Notre capacité à manipuler et à créer des pages Web de manière cohérente dans tous les formats provient de l'API de modèle d'objet de document, généralement appelée DOM.
+
+Cette API définit l'ordre et la structure des fichiers de document ainsi que la façon dont le fichier est manipulé pour créer, modifier ou supprimer du contenu.
+
+Le DOM est conçu pour être indépendant du langage et de la plate-forme afin que tout logiciel ou langage de programmation puisse l'utiliser pour s'interfacer avec des documents.
+
+Il définit les méthodes d'interface et les types d'objets qui représentent des éléments de documents, la sémantique et le comportement des attributs de ces objets, et définit également comment ils sont liés les uns aux autres.
+
+Le DOM, en effet, est ce qui donne naissance aux balises que nous allons étudier ci-dessous. 14
+
+**Schéma du DOM :**
+
+```text
+document
+└── html (Root element)
+    ├── head (Element)
+    │   └── title (Element)
+    │       └── "My title" (Text)
+    └── body (Element)
+        ├── h1 (Element)
+        │   └── "A heading" (Text)
+        └── a (Element ; attribut href)
+            └── "Link text" (Text)
+```
+
+## Création de fichiers HTML — Format de fichier (page 15)
+
+Avant de pouvoir créer notre première page Web, nous devons créer un fichier que notre service reconnaîtra comme une page Web.
+
+Pour ce faire, nous pouvons ouvrir notre éditeur de texte choisi (voir une courte liste de potentiels dans la section sur les environnements de développement intégrés), et créer un nouveau document s'il n'a pas été créé automatiquement.
+
+Nous sélectionnerons immédiatement « Enregistrer sous » dans le menu Fichier de votre éditeur et donnerons son nom à votre nouvelle page.
+
+Quelques éditeurs HTML gratuits :
+
+- Notepad++
+
+- Brackets.io
+
+- Atom
+
+- Visual Studio Code
+
+- Sublime Text 3
+
+## Nom et extension du fichier (page 16)
+
+S'il s'agit de la page d'accueil ou de la première page que vous souhaitez qu'un utilisateur voie pour votre site, vous devez la nommer index.
+
+Index est le nom de fichier par défaut que la plupart des serveurs Web recherchent dans n'importe quel dossier de votre site Web ;
+
+Dans de nombreux éditeurs de texte, sous ou près de l'endroit où vous entrez le nom de fichier se trouve un autre sélecteur déroulant qui vous permet de choisir un type de fichier.
+
+Si votre éditeur n'a pas .htm ou .html dans sa liste, sélectionnez "Tous" et faites index.htm votre nom de fichier.
+
+Si jamais vous rencontrez une extension inconnue et que vous souhaitez en savoir plus, des sites comme filext.com peuvent vous aider à déterminer quels programmes peuvent l'ouvrir et à quoi elle sert.
+
+## Type de document (page 17)
+
+Chaque page HTML que nous créons doit déclarer son type de document (doctype) dans la première ligne.
+
+Cela identifiera quelle spécification de HTML est incluse afin que le navigateur sache comment interpréter les balises à l'intérieur.
+
+La version antérieure des spécifications HTML utilisait deux définitions pour HTML : HTML 4.01 et XHTML.
+
+Ces deux éléments contenaient deux propriétés supplémentaires de strict et de transition.
+
+## Doctype HTML5 (page 18)
+
+Avec HTML5, une grande partie de cela a été éliminée, laissant une déclaration de doctype générale de `<!DOCTYPE html>`.
+
+Cela devrait être la première ligne de code de toute page HTML que vous créez.
+
+Nous ne couvrirons pas les anciens formats de doctype car tous nos exemples se concentreront sur HTML5.
+
+Gardez à l'esprit, cependant, que les exemples de code que vous trouvez en ligne avec autre chose que la balise ci-dessus peuvent être des approches obsolètes de ce qui est affiché.
+
+## Balises et attributs (page 19)
+
+- Balises
+
+- Tag <> : Une commande HTML codée qui communique avec le
+navigateur et lui donne des instructions.
+
+- Balise d'ouverture. `<****>`
+
+- Balise de fermeture. `</****>`
+
+- La plupart des balises, mais pas toutes, ont une balise de fermeture.
+
+- Balises autonomes : aucune balise de fermeture requise.
+
+- Attributs :
+
+- Mots de code spéciaux utilisés à l'intérieur d'une balise HTML pour
+contrôler exactement ce que fait la balise.
+
+- un `< Balise >` indique au navigateur de faire quelque chose. Un
+ATTRIBUT va à l'intérieur du `< Balise >` et indique au navigateur
+comment le faire
+
+## Structure globale du document (page 20)
+
+```html
+<!DOCTYPE html>
+                         <html lang="en">
+                         <head>
+                         <title> Web progrming Class </title>
+                         </head>
+                         <body>
+                         Hello world
+                         </body>
+                         </html>
+```
+
+**Schéma :** le `doctype` précède le bloc `html`, qui contient un bloc `head` (avec `title` et `meta`) puis un bloc `body`.
+
+## Structure de base — Exemple (page 21)
+
+Afin d'ajouter du contenu à notre page, nous allons configurer notre fichier avec une structure de base.
+
+Nous utiliserons des balises pour identifier les informations sur le début et la fin des parties de notre page en utilisant le jeu de balises, `<html>` et `</html>`.
+
+(/) pour indiquer la fin de l’ ensemble de balises.
+
+Le fait de placer un ensemble de balises autour du contenu et d'autres codes est souvent appelé « envelopper » ce qui se trouve entre les balises.
+
+C'est un bon moyen de créer une image mentale de ce que vous faites.
+
+Nous allons ajouter quelques balises supplémentaires, puis enregistrer notre fichier et voir des résultats.
+
+Entre (généralement appelé "à l'intérieur") vos balises HTML, ajoutez un ensemble vide de balises étiquetées head et un autre body étiqueté.
+
+Créez ensuite deux autres ensembles intitulés en-tête et pied de page à l'intérieur de vos balises corporelles.
+
+Votre fichier résultant devrait ressembler à ceci :
+
+```html
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+    </header>
+    Hello World
+    <footer>
+    </footer>
+  </body>
+</html>
+```
+
+## Imbrication et affichage (page 22)
+
+Maintenant, nous pouvons mieux voir comment les éléments peuvent être placés les uns dans les autres, ce qu'on appelle l'imbrication.
+
+Si nous enregistrons à nouveau notre fichier et double-cliquez sur l'icône de notre fichier dans notre dossier de documents pour l'ouvrir, il devrait s'ouvrir dans le navigateur par défaut de votre ordinateur en tant que page blanche avec Hello World dans le coin supérieur gauche.
+
+Vous venez de créer votre première page Web. Avant de demander, cependant, à moins que vous n'ayez créé votre propre serveur, vous ne pourrez pas montrer votre page à quelqu'un à moins qu'il ne soit devant votre ordinateur ou que vous lui envoyiez le ou les fichiers que vous avez créés.
+
+Étant donné que seul le navigateur est nécessaire pour afficher la sortie des fichiers HTML, JavaScript et CSS, nous pourrons afficher nos pages sans serveur jusqu'aux exemples PHP plus tard.
+
+Certaines balises, comme celles permettant d'inclure des images, n'ont pas besoin de balise de fermeture pour fonctionner car aucun contenu n'est nécessaire à l'intérieur des balises.
+
+Dans ce cas, nous utilisons simplement la balise elle-même où nous le voulons. Dans les anciennes versions de HTML, l'une des différences entre les types de documents était la façon dont nous fermions les éléments de balise unique. HTML, par exemple, voulait une coupure écrite sous la forme `<br>` alors qu'un document XHTML voulait `<br/>`. HMTL5 reconnaîtra l'un ou l'autre.
+
+## Tête — Métadonnées (page 23)
+
+En revenant dans notre document, nous voyons que le premier ensemble de balises s'appelle head. C'est là que nous mettrons des informations sur la page elle-même (appelées métadonnées) et où nous nous connecterons à d'autres ressources telles que des scripts et des fichiers qui ne font pas partie de la page que nous utilisons.
+
+Remarque: Il est important que vos balises `<head>` soient toujours le premier ensemble de balises après `<html>`, car c'est l'ordre dans lequel les navigateurs attendent les informations.
+
+Pour fournir des informations de base sur notre page ou notre site, nous ajouterons des balises méta dans notre tête pour lui donner un titre, des mots-clés, une description et d'autres détails.
+
+Ces informations aident l'utilisateur et les robots à comprendre de quoi parle la page.
+
+## Tête — Exemple (page 24)
+
+Chacun de ces éléments fait partie de la balise meta (`<meta/>`).
+
+Certaines balises ont des fonctionnalités spéciales qui peuvent être ajoutées à leurs définitions ; ceux-ci sont appelés attributs.
+
+Les balises méta prennent en charge des attributs tels que le nom et le contenu.
+
+La façon dont nous définissons ces attributs aidera le navigateur à mieux comprendre notre page.
+
+Nous allons définir notre titre comme Notre première page, ajouter les mots-clés commençant par html, learning et CSIT-107, et pour une description, nous mettrons quelques lignes sur ce que nous faisons, et enfin, ajouterons notre nom :
+
+```html
+<head>
+     <title>Our First Page</title>
+     <meta name="keywords" content="beginning html,learning, CSIT-107" />
+     <meta name="description" content="A beginning web page for CSIT-107 SUNY Fredonia" />
+     <meta name="author" content="Your Name Here" />
+   </head>
+```
+
+> Les guillemets typographiques des attributs sont normalisés en guillemets droits. Le titre relève de `title`, et non de `meta`, comme le précise la page 25.
+
+## Tête — Rôle du titre (page 25)
+
+Il y a quelques éléments dans cet exemple que nous devons examiner.
+
+Tout d'abord, vous remarquerez que le titre a sa propre balise.
+
+Ce que vous mettez dans cette balise est ce qui apparaîtra comme titre dans la fenêtre de votre navigateur et sur l'onglet de votre navigateur pour cette page (vous ne pouvez avoir qu'un seul ensemble de ces balises dans un document).
+
+Gardez à l'esprit que ce titre n'apparaîtra pas sur la page elle-même. Si nous voulons l'inclure dans le contenu de notre page, nous le ferions à partir des balises body.
+
+```html
+<head>
+     <title>Our First Page</title>
+     <meta name="keywords" content="beginning html,learning, CSIT-107" />
+     <meta name="description" content="A beginning web page for CSIT-107 SUNY Fredonia" />
+     <meta name="author" content="Your Name Here" />
+   </head>
+```
+
+> Les guillemets typographiques des attributs sont normalisés en guillemets droits. Le titre relève de `title`, et non de `meta`, comme le précise la page 25.
+
+## Tête — Charset et http-equiv (page 26)
+
+Dans les spécifications HTML5, la balise meta peut également avoir des attributs nommés charset et http-equiv.
+
+Charset nous permet de spécifier un ensemble particulier de caractères que nous souhaitons utiliser pour la page, http-equiv prend en charge le type de contenu, le style par défaut et l'actualisation en tant qu'options.
+
+Cela nous permet de dire au navigateur quel type de page nous avons (dans notre cas, text/html), de nommer une feuille de style par défaut (nous y reviendrons plus tard) et de spécifier en termes de secondes à quelle fréquence nous voulons rafraîchir la page, si pas du tout.
+
+## Tête — Type de contenu et cache (page 27)
+
+Étant donné que notre contenu ne changera pas à moins que nous ne modifiions la page nous-mêmes et que nous n’avons pas encore de feuille de style, nous allons simplement ajouter notre déclaration de type de contenu pour le moment :
+
+```html
+<meta http-equiv="content-type" content="text/html" />
+```
+
+Meta is also where we will define cache items like how long our page can be cached before it expires, or if we even want content to expire, as in these examples:
+
+```html
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+```
+
+> Guillemets normalisés. Ces exemples sont ceux du support ; le contrôle du cache HTTP ne se déduit pas de leur seule présence dans le document HTML.
+
+## Corps — Body (page 28)
+
+Tout le contenu que nous souhaitons avoir à l'écran doit être englobé par un ensemble de balises corporelles.
+
+Les sections en-tête, contenu, pied de page et div (une balise polyvalente dérivée de « division ») sont des exemples de ce que nous pouvons mettre dans nos balises corporelles, que nous verrons dans l'exemple suivant.
+
+Gardez à l'esprit que l'utilisation de ces balises ne nous empêche pas de voir du contenu qui n'est pas dans le corps.
+
+Les balises sont utilisées pour guider l'interprète dans la façon d'afficher le document.
+
+À moins que ce ne soit spécifiquement dans les balises `<head>`, les navigateurs peuvent choisir d'afficher tout contenu qui n'est pas correctement imbriqué de différentes manières.
+
+## Attributs de Body (page 29)
+
+| Attribut | Signification dans le support |
+| --- | --- |
+| `BGCOLOR="..."` | Couleur de l’arrière-plan de la page ; exemple : `<body BGCOLOR="#9999ff">`. |
+| `BACKGROUND="..."` | Nom ou URL de l’image d’arrière-plan. |
+| `TEXT="..."` | Couleur du texte ; noir par défaut. |
+| `LINK="..."` | Couleur des liens non suivis ; bleu par défaut. |
+| `ALINK="..."` | Couleur des liens activés ; rouge par défaut. |
+| `VLINK="..."` | Couleur des liens visités ; violet par défaut. |
+
+> Le support présente ici des attributs de mise en forme hérités des anciennes versions de HTML.
+
+## Attributs de Body — Exemple (page 30)
+
+```html
+<!DOCTYPE html>
+ <html lang="en">
+<head> <title> Web progrming Class </title> </head>
+ <body bgcolor="blue" text="white" link="black">
+<a href="page2.html">Hello in Web progrming Class!</a>
+<p> Teacher: DR Mussab Zneika </p>
+ </body> </html>
+```
+
+**Capture du résultat :** fond bleu, lien noir souligné « Hello in Web progrming Class! », paragraphe blanc « Teacher: DR Mussab Zneika ». Le titre de l’onglet est « Web progrming Class ».
+
+## Formatage des caractères (page 31)
+
+| Balises | Effet indiqué |
+| --- | --- |
+| `<B>...</B>` | Texte en gras. |
+| `<STRONG>...</STRONG>` | Emphase plus forte, généralement en gras. |
+| `<I>...</I>` | Texte en italique. |
+| `<EM>...</EM>` | Emphase, généralement en italique. |
+| `<BIG>...</BIG>` | Texte légèrement plus grand que la normale. |
+| `<SMALL>...</SMALL>` | Texte légèrement plus petit que la normale. |
+
+## Formatage des caractères — Exemple (page 32)
+
+```html
+<B>Texte en gras.</B> <br>
+ <STRONG>Emphase plus forte (généralement en gras).</STRONG>
+ <br>
+ <I>Texte en italique.</I> <br>
+ <EM>Emphase (généralement en italique)</EM> <br>
+ <BIG>Le texte est légèrement plus grand que la normale.</BIG>
+ <br>
+ <SMALL>le texte est légèrement plus petit que la normale
+ </SMALL>
+```
+
+**Capture du résultat :** les deux premières lignes sont en gras, les deux suivantes en italique ; la ligne `BIG` est plus grande et la ligne `SMALL` plus petite.
+
+## Autres balises de formatage (page 33)
+
+| Balises | Effet indiqué |
+| --- | --- |
+| `<SUB>...</SUB>` | Subscript : indice. |
+| `<SUP>...</SUP>` | Superscript : exposant. |
+| `<U>...</U>` | Underlined text : texte souligné. |
+| `<STRIKE>...</STRIKE>` | Ligne barrée dans le texte. |
+| `<TT>...</TT>` | Chaque lettre utilise la même quantité d’espace horizontal. |
+
+## Autres balises — Exemple (page 34)
+
+```html
+Test<SUB>Subscript.</SUB> <br>
+Test <SUP>Superscript.</SUP> <br>
+<U>underlined text.</U> <br>
+<STRIKE>Met une ligne barrée dans le texte</STRIKE><br>
+<TT> Chaque lettre utilise la même quantité d'espace
+horizontal</TT>
+```
+
+**Capture du résultat :** « Subscript. » en indice de « Test », « Superscript. » en exposant, « underlined text. » souligné, la phrase suivante barrée et la dernière ligne en police à chasse fixe.

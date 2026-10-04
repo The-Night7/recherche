@@ -2,218 +2,257 @@
 source: "PREING2-S2/Ondes/CM-Chapitre3_2022-2023_Ondes_P2S2_ABoumiz.pdf"
 pages: 15
 transcription: manuelle
-transcription_date: 2026-10-03
-verification: lecture visuelle des quinze pages et comparaison des deux versions ; matrices, modes et erreurs de la source vérifiés
+transcription_date: 2026-10-04
+verification: lecture visuelle de toutes les pages ; matrices et formules vérifiées ; formule coupée et erreurs originales signalées
 ---
 
-# Ondes — Chapitre 3 : oscillations couplées et modes normaux — 2022–2023
+# Chapitre 3 — Oscillations couplées et modes normaux
 
-## I. Deux oscillateurs couplés (pages 1 à 4)
+## Section I — Deux oscillateurs couplés (page 1)
 
-Deux blocs de masses $m_1,m_2$ sont posés sur un plan horizontal et reliés par un ressort idéal de raideur $k$, de longueur au repos $L_0$. On néglige les frottements.
+Soient deux blocs de masses $m_1$ et $m_2$ posés sur un plan horizontal, liés par un ressort idéal de constante de raideur $k$ et de longueur au repos $L_0$. On néglige les forces de frottement.
 
+La page 1 ne comporte pas de schéma dans cette version.
 
+## Équations du mouvement (page 2)
 
-### Forces et équations du mouvement (page 2)
+Forces exercées sur les masses :
 
-$$\vec F_1=k(x_2-x_1)\vec u_x,\qquad \vec F_2=k(x_1-x_2)\vec u_x.$$
+$$
+\vec F_1=k(x_2-x_1)\vec u_x,
+\qquad \vec F_2=k(x_1-x_2)\vec u_x.
+$$
 
-La deuxième loi de Newton donne
+Deuxième loi de Newton :
 
-$$\begin{cases}m_1\ddot x_1=k(x_2-x_1),\\m_2\ddot x_2=k(x_1-x_2).\end{cases}$$
+$$
+\begin{cases}
+m_1\ddot x_1=k(x_2-x_1),\\
+m_2\ddot x_2=k(x_1-x_2).
+\end{cases}
+$$
 
-> Ces formules utilisent implicitement des déplacements mesurés par rapport à l’équilibre. Avec des abscisses absolues, l’allongement du ressort serait $x_2-x_1-L_0$.
+Posons $\omega_1^2=k/m_1$ et $\omega_2^2=k/m_2$ :
 
-En posant $\omega_1^2=k/m_1$ et $\omega_2^2=k/m_2$,
-
-$$\frac{d^2}{dt^2}\begin{pmatrix}x_1\\x_2\end{pmatrix}
-=\begin{pmatrix}-\omega_1^2&\omega_1^2\\\omega_2^2&-\omega_2^2\end{pmatrix}
-\begin{pmatrix}x_1\\x_2\end{pmatrix}.\tag{*}$$
-
-Pour résoudre le système, on cherche les modes propres, ou modes normaux.
-
-### Recherche des modes propres (page 3)
-
-$$\begin{pmatrix}x_1\\x_2\end{pmatrix}
-=e^{i\omega t}\begin{pmatrix}A\\B\end{pmatrix},\qquad
+$$
 \frac{d^2}{dt^2}\begin{pmatrix}x_1\\x_2\end{pmatrix}
-=-\omega^2\begin{pmatrix}x_1\\x_2\end{pmatrix}.$$
+=\begin{pmatrix}-\omega_1^2&\omega_1^2\\\omega_2^2&-\omega_2^2\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\end{pmatrix}.\tag{*}
+$$
 
-La source note
+Pour résoudre ce système d’équations différentielles, on cherche les modes propres, ou modes normaux.
 
-$$M=\begin{pmatrix}-\omega_1^2&\omega_1^2\\\omega_2^2&-\omega_2^2\end{pmatrix}.$$
+> Les forces écrites supposent que $x_1$ et $x_2$ désignent les déplacements par rapport à une configuration où le ressort est à sa longueur à vide. Pour des abscisses absolues, l’allongement serait $x_2-x_1-L_0$.
 
-On doit avoir
+## Recherche des modes propres (page 3)
 
-$$M\begin{pmatrix}A\\B\end{pmatrix}=-\omega^2\begin{pmatrix}A\\B\end{pmatrix}.$$
+$$
+\begin{pmatrix}x_1\\x_2\end{pmatrix}
+=e^{i\omega t}\begin{pmatrix}A\\B\end{pmatrix},
+\qquad
+\frac{d^2}{dt^2}\begin{pmatrix}x_1\\x_2\end{pmatrix}
+=-\omega^2\begin{pmatrix}x_1\\x_2\end{pmatrix}.
+$$
 
-Le vecteur non nul $(A,B)^T$ est donc un vecteur propre de $M$ de valeur propre $-\omega^2$, d’où $\det(M+\omega^2I)=0$.
+En notant $M=\begin{pmatrix}-\omega_1^2&\omega_1^2\\\omega_2^2&-\omega_2^2\end{pmatrix}$, l’équation (*) donne :
 
-> Attention aux notations : $M$ désigne ici la matrice dynamique. Dans la section suivante, la même lettre désigne la matrice des masses.
+$$
+-\omega^2\begin{pmatrix}x_1\\x_2\end{pmatrix}
+=M\begin{pmatrix}x_1\\x_2\end{pmatrix},
+\qquad M\begin{pmatrix}A\\B\end{pmatrix}
+=-\omega^2\begin{pmatrix}A\\B\end{pmatrix}.
+$$
 
-### Déterminant et pulsations (page 4)
+$\binom AB$ est un vecteur propre de $M$ de valeur propre $-\omega^2$. Il faut donc $\det(M+\omega^2I)=0$.
 
-$$\begin{aligned}
+## Pulsations et solution (page 4)
+
+$$
+\begin{aligned}
 0&=\det\begin{pmatrix}-\omega_1^2+\omega^2&\omega_1^2\\\omega_2^2&-\omega_2^2+\omega^2\end{pmatrix}\\
 &=(-\omega_1^2+\omega^2)(-\omega_2^2+\omega^2)-\omega_1^2\omega_2^2\\
 &=\omega^4-\omega_1^2\omega^2-\omega_2^2\omega^2\\
 &=\omega^2(\omega^2-\omega_1^2-\omega_2^2).
-\end{aligned}$$
+\end{aligned}
+$$
 
-Ainsi $\omega^2=0$ ou $\omega^2=\omega_1^2+\omega_2^2$.
+Ainsi, $\omega^2=0$ ou $\omega^2=\omega_1^2+\omega_2^2$.
 
-La diapositive commence ensuite une « solution générale » par
+Le bas de la page commence la solution générale :
 
-$$\begin{pmatrix}x_1\\x_2\end{pmatrix}
-=(A_+e^{i\omega_+t}+B_+e^{-i\omega_+t})\vec V_+
-+\bigl(A_-e^{i\omega_-t}+\cdots\bigr),$$
+$$
+\begin{pmatrix}x_1\\x_2\end{pmatrix}
+=\left(A_+e^{i\omega_+t}+B_+e^{-i\omega_+t}\right)\vec V_+
++\left(A_-e^{i\omega_-t}+\cdots\right).
+$$
 
-mais la ligne source s’arrête après le dernier signe $+$. Les points de suspension et la parenthèse fermante ci-dessus signalent cette interruption et ne restituent pas une partie lisible.
+> La formule originale est coupée après le signe $+$ suivant $A_-e^{i\omega_-t}$ : la suite n’est pas visible dans le PDF. De plus, le mode de pulsation nulle ne se décrit pas par deux exponentielles indépendantes. Pour ce mode, la solution générale comporte $(C+Dt)\binom11$. Le mode non nul a la pulsation $\sqrt{k/m_1+k/m_2}$ et un vecteur propre proportionnel à $\binom{m_2}{-m_1}$. Ces précisions sont des corrections explicatives, et non du texte visible au bas de la page.
 
-> **Mode nul à traiter séparément :** pour $\omega=0$, les deux exponentielles sont identiques. La coordonnée correspondante vérifie $\ddot\alpha=0$ et sa solution générale est $a+bt$. Une écriture complète peut donc utiliser $(a+bt)(1,1)^T$ pour la translation uniforme, plus un mode oscillant de pulsation $\sqrt{\omega_1^2+\omega_2^2}$ et de vecteur propre proportionnel à $(\omega_1^2,-\omega_2^2)^T$. Ce complément n’est pas imprimé sur la diapositive.
+## Section II — $n$ oscillateurs couplés (page 5)
 
-## II. N oscillateurs couplés (page 5)
+Plus généralement, les équations du mouvement de $n$ oscillateurs couplés linéairement sont de la forme :
 
-Les équations du mouvement de $n$ oscillateurs couplés linéairement sont
+$$
+M\frac{d^2\vec X}{dt^2}+K\vec X=\vec0,
+\qquad\vec X=(x_1,x_2,\ldots,x_n)^T.
+$$
 
-$$M\frac{d^2\vec X}{dt^2}+k\vec X=\vec0,
-\qquad\vec X=(x_1,x_2,\ldots,x_n)^T.$$
+**Couplage linéaire :** l’interaction peut être décrite par un potentiel $V(\vec X)$ qui est un polynôme d’ordre 2 en $x_1,x_2,\ldots$ :
 
-Le couplage linéaire provient d’un potentiel polynomial d’ordre 2 :
+$$
+V(\vec X)=\sum_{i,j}k^{i,j}x_ix_j.
+$$
 
-$$V(\vec X)=\sum_{i,j}k^{i,j}x_ix_j.$$
+Puisque $x_ix_j=x_jx_i$, le cours choisit $k$ symétrique. $M$ est ici la matrice de masse, symétrique, d’ordre $n$ :
 
-Puisque $x_ix_j=x_jx_i$, la source indique que $k$ est symétrique. La matrice de masse est la matrice diagonale symétrique d’ordre $n$,
+$$
+M=\begin{pmatrix}M_1&0&0\\0&M_2&0\\0&0&\ddots\end{pmatrix}.
+$$
 
-$$M=\begin{pmatrix}M_1&0&\cdots\\0&M_2&\cdots\\\vdots&\vdots&\ddots\end{pmatrix}.$$
+> La lettre $M$ désigne maintenant la matrice de masse, et non la matrice dynamique de la section I. La source emploie indifféremment $k$ et $K$ pour la matrice de raideur. Pour obtenir exactement la force $-K\vec X$, le potentiel est $V=\frac12\vec X^TK\vec X$ ; avec la somme écrite sans $1/2$, $K$ vaut deux fois la matrice symétrique des coefficients $k^{i,j}$. Seule la partie symétrique contribue à la forme quadratique.
 
-> La partie antisymétrique des coefficients ne contribue pas à la forme quadratique ; on peut donc choisir une matrice symétrique. Pour employer la même matrice de raideur dans l’équation et dans le potentiel, la convention usuelle est $V=\frac12\vec X^TK\vec X$. Le facteur $1/2$ manque dans la formule de la diapositive si son $k$ est la matrice de raideur.
+## Section II.1 — Méthodes générales (pages 6 et 7)
 
-## II.1. Méthodes générales (pages 6 et 7)
+L’équation du mouvement peut s’écrire :
 
-L’équation s’écrit
+$$
+\ddot{\vec X}+(M^{-1}K)\vec X=\vec0.\tag{*}
+$$
 
-$$\ddot{\vec X}+M^{-1}K\vec X=\vec0.$$
+La source introduit un ensemble complet de vecteurs propres orthonormés $\{\vec Y_i\}_{i=1,\ldots,n}$ de $M^{-1}K$ :
 
-Le cours suppose un ensemble complet de vecteurs propres orthonormés $(\vec Y_i)_{i=1}^n$ de $M^{-1}K$ :
+$$
+M^{-1}K\vec Y_i=\lambda_i\vec Y_i,
+\qquad \vec Y_i^T\vec Y_j=\delta_{ij}
+=\begin{cases}0&i\ne j,\\1&i=j.\end{cases}
+$$
 
-$$M^{-1}K\vec Y_i=\lambda_i\vec Y_i,\qquad
-\vec Y_i^{\,T}\vec Y_j=\delta_{ij}
-=\begin{cases}0&i\ne j,\\1&i=j.\end{cases}$$
+Il existe donc des coefficients $\alpha_i(t)$ tels que :
 
-Il existe alors des fonctions $\alpha_j(t)$ telles que
+$$
+\vec X=\sum_{j=1}^n\alpha_j\vec Y_j.
+$$
 
-$$\vec X=\sum_{j=1}^n\alpha_j\vec Y_j.$$
+En remplaçant dans (*) :
 
-En remplaçant dans l’équation,
+$$
+\sum_{j=1}^n\ddot\alpha_j\vec Y_j
++\sum_{j=1}^n\alpha_jM^{-1}K\vec Y_j=\vec0,
+$$
 
-$$\sum_{j=1}^n\ddot\alpha_j\vec Y_j+
-\sum_{j=1}^n\alpha_jM^{-1}K\vec Y_j=\vec0,$$
+$$
+\sum_{j=1}^n(\ddot\alpha_j+\alpha_j\lambda_j)\vec Y_j=\vec0
+\quad\Longrightarrow\quad
+\forall j,\quad\ddot\alpha_j+\lambda_j\alpha_j=0.
+$$
 
-puis
+Les $\alpha_j$ sont les **coordonnées normales**. Les coefficients se comportent comme des oscillateurs harmoniques simples de pulsation $\omega_j=\sqrt{\lambda_j}$.
 
-$$\sum_{j=1}^n(\ddot\alpha_j+\lambda_j\alpha_j)\vec Y_j=\vec0.$$
+Remarque 1 : $\{\vec Y_i\}_{i=1,\ldots,n}$ est une base de $\mathbb R^n$. Remarque 2 : on ne peut pas être certain que $\lambda_j>0$.
 
-Donc, pour tout $j$,
+> Rectification : $M^{-1}K$ n’est généralement pas symétrique pour le produit scalaire euclidien. Pour $M$ diagonale positive et $K$ symétrique, on peut choisir les modes **orthonormés pour la masse**, $\vec Y_i^TM\vec Y_j=\delta_{ij}$, ou diagonaliser la matrice symétrique $M^{-1/2}KM^{-1/2}$. Les projections euclidiennes de la source ne sont donc pas valables en général. L’interprétation harmonique suppose $\lambda_j>0$ ; $\lambda_j=0$ donne une fonction affine du temps et $\lambda_j<0$ des exponentielles réelles.
 
-$$\ddot\alpha_j+\lambda_j\alpha_j=0.$$
+## Section II.2 — Valeurs initiales (page 8)
 
-Les $\alpha_j$ sont les **coordonnées normales**. Pour $\lambda_j>0$, elles se comportent comme des oscillateurs harmoniques simples de pulsation $\omega_j=\sqrt{\lambda_j}$.
+On résout $\ddot{\vec X}+M^{-1}K\vec X=\vec0$, avec $\vec X(0)=\vec X_0$ et $\dot{\vec X}(0)=\vec V_0$.
 
-Remarques de la source : les $\vec Y_i$ forment une base de $\mathbb R^n$ ; on ne peut pas être certain que $\lambda_j>0$.
+En termes des $\alpha_j$, la source écrit $\alpha_j(t)=\vec Y_j^T\vec X(t)$.
 
-> **Hypothèse d’orthonormalité à préciser :** $M^{-1}K$ n’est pas généralement symétrique pour le produit scalaire euclidien, même si $M$ et $K$ sont symétriques. Pour des masses positives, on diagonalise la matrice symétrique $M^{-1/2}KM^{-1/2}$, ou on choisit les modes orthonormés pour le produit scalaire pondéré $u^TMv$. Les projections euclidiennes ci-dessous supposent donc une situation particulière, par exemple des masses égales, ou des coordonnées déjà normalisées.
+La source écrit ensuite :
 
-## II.2. Valeurs initiales (page 8)
+$$
+\alpha_j(t)=\vec Y_j^T\vec X_0,
+\qquad\dot\alpha_j(t)=\vec Y_j^T\vec V_0.
+$$
 
-On résout $\ddot{\vec X}+M^{-1}K\vec X=\vec0$ avec
+> Dans ces deux conditions **initiales**, lire $0$ à la place de $t$. Avec les modes orthonormés pour la masse, les projections correctes sont $\alpha_j(0)=\vec Y_j^TM\vec X_0$ et $\dot\alpha_j(0)=\vec Y_j^TM\vec V_0$.
 
-$$\vec X(0)=\vec X_0,\qquad\dot{\vec X}(0)=\vec V_0.$$
+## Section II.3 — Frottements (page 9)
 
-La source écrit $\alpha_j(t)=\vec Y_j^{\,T}\vec X(t)$.
+$$
+\ddot{\vec X}+\Gamma\dot{\vec X}+M^{-1}K\vec X=\vec0,\tag{**}
+$$
 
-La diapositive donne ensuite
+où $\Gamma$ est une matrice. Posons $\vec X(t)=e^{-i\omega t}\vec X(0)$, où $\vec X(0)$ est indépendant du temps :
 
-$$\alpha_j(t)=\vec Y_j^{\,T}\vec X_0,\qquad
-\dot\alpha_j(t)=\vec Y_j^{\,T}\vec V_0.$$
+$$
+\left(-\omega^2I-i\omega\Gamma+M^{-1}K\right)\vec X(0)=\vec0.
+$$
 
-> **Argument temporel erroné :** ces deux égalités définissent $\alpha_j(0)$ et $\dot\alpha_j(0)$, et non leurs valeurs à tout instant $t$. Avec des modes normalisés pour le produit scalaire de masse, les projections correspondantes comportent en outre le facteur $M$.
+$I$ est la matrice identité. Pour une solution non nulle, $\vec X(0)$ est un vecteur propre de valeur propre nulle de la matrice $-\omega^2I-i\omega\Gamma+M^{-1}K$.
 
-## II.3. Frottements (page 9)
+## Section II.4 — Oscillations entretenues (pages 10 et 11)
 
-Avec une matrice de frottement $\Gamma$,
+Soit $\vec F(t)$ une force externe appliquée au système :
 
-$$\ddot{\vec X}+\Gamma\dot{\vec X}+M^{-1}K\vec X=\vec0.\tag{**}$$
+$$
+\ddot{\vec X}+\Gamma\dot{\vec X}+M^{-1}K\vec X=M^{-1}\vec F(t).
+$$
 
-On pose $\vec X(t)=e^{-i\omega t}\vec X(0)$, où $\vec X(0)$ est indépendant du temps. On obtient
+On suppose $\vec F(t)=\vec F_0e^{-i\omega_dt}$. Si la force n’oscille pas dans la même direction sur toutes les composantes, on utilise le principe de superposition.
 
-$$(-\omega^2I-i\omega\Gamma+M^{-1}K)\vec X(0)=\vec0,$$
+Posons $\vec X(t)=\vec A e^{-i\omega_dt}$. La source donne :
 
-avec $I$ la matrice identité. Pour un mode non nul, $\vec X(0)$ est un vecteur propre de valeur propre nulle de $-\omega^2I-i\omega\Gamma+M^{-1}K$.
+$$
+\vec A=\left(-\omega^2I-i\omega\Gamma+M^{-1}K\right)^{-1}\vec F_0.
+$$
 
-## II.4. Oscillations entretenues (pages 10 et 11)
+Remarque 1 : si la matrice $-\omega^2I-i\omega\Gamma+M^{-1}K$ n’est pas inversible, le cours indique « résonance ».
 
-Sous l’action d’une force extérieure $\vec F(t)$,
+Remarque 2 : la solution générale est la somme de la solution générale de l’équation homogène et d’une solution particulière, par exemple $\vec X(t)=\vec A e^{-i\omega_dt}$.
 
-$$\ddot{\vec X}+\Gamma\dot{\vec X}+M^{-1}K\vec X=M^{-1}\vec F(t).$$
+> La source emploie $\omega$ à la place de $\omega_d$ dans cette formule. La formule de $\vec A$ omet le facteur $M^{-1}$ devant $\vec F_0$. Pour l’équation écrite page 10, il faut $\vec A=(-\omega_d^2I-i\omega_d\Gamma+M^{-1}K)^{-1}M^{-1}\vec F_0$. La non-inversibilité signale un mode propre à la fréquence considérée ; l’excitation résonante dépend aussi de la projection de la force sur ce mode.
 
-On suppose $\vec F(t)=\vec F_0e^{-i\omega_dt}$. Si la force n’oscille pas dans la même direction sur toutes les composantes, le cours propose d’utiliser le principe de superposition.
+## Rappel — Oscillateur harmonique simple (pages 11 et 12)
 
-En posant $\vec X(t)=\vec A e^{-i\omega_dt}$, la source affiche
+$$
+\ddot X+\omega^2X=0,
+\qquad X(t)=A\cos(\omega t)+B\sin(\omega t),
+$$
 
-$$\vec A=(-\omega^2I-i\omega\Gamma+M^{-1}K)^{-1}\vec F_0.\tag{source}$$
+où $\omega$ est la pulsation. Avec friction :
 
-> **Facteur manquant :** avec le second membre affiché à la page précédente, il faut
+$$
+\ddot X+\Gamma\dot X+\omega_0^2X=0.\tag{*}
+$$
 
-$$\vec A=(-\omega_d^2I-i\omega_d\Gamma+M^{-1}K)^{-1}M^{-1}\vec F_0.$$
+La solution générale est :
 
-> La formule source emploie ici $\omega$ alors que l’excitation est notée $\omega_d$.
+$$
+x(t)=e^{-\Gamma t/2}
+\begin{cases}
+Ae^{\omega t}+Be^{-\omega t},&\omega=\sqrt{\Gamma^2/4-\omega_0^2},\quad\text{surcritique (apériodique)},\\
+A+Bt,&\text{critique},\\
+A\cos(\omega t)+B\sin(\omega t),&\omega=\sqrt{\omega_0^2-\Gamma^2/4},\quad\text{sous-critique (pseudopériodique)}.
+\end{cases}
+$$
 
-**Remarque 1 de la source :** si $-\omega^2I-i\omega\Gamma+M^{-1}K$ n’est pas inversible, il y a résonance.
+## Rappel — Oscillateur entretenu (page 13)
 
-> Cette singularité caractérise une fréquence propre de l’opérateur considéré. La réponse forcée résonante dépend aussi du couplage de la force au mode ; avec amortissement, un maximum de réponse peut exister sans singularité pour une pulsation réelle.
+$$
+\ddot X+\Gamma\dot X+\omega_0^2X=F(t)/M.\tag{**}
+$$
 
-**Remarque 2 :** la solution générale est la somme de la solution générale de l’équation homogène et d’une solution particulière, par exemple $\vec A e^{-i\omega_dt}$ lorsqu’elle existe.
+Solution générale : $X_0(t)+X_F(t)$, où $X_0(t)$ est la solution générale de (*) et $X_F(t)$ une solution particulière de (**).
 
-## Rappels : oscillateurs simple, amorti et entretenu (pages 11 à 13)
+## Rappel — Système de $n$ oscillateurs (page 14)
 
-### Oscillateur harmonique simple
+$$
+M\frac{d^2\vec X}{dt^2}+K\vec X=\vec0,
+\qquad\vec X=(x_1,x_2,\ldots,x_n)^T.
+$$
 
-$$\ddot X+\omega^2X=0,\qquad X(t)=A\cos(\omega t)+B\sin(\omega t).$$
+$M$ est la matrice de masse. La source présente :
 
-$\omega$ est la pulsation.
+$$
+\vec X(t)=\sum_{j=1}^n\left(A_je^{i\omega_jt}+B_je^{-i\omega_jt}\right)\vec V_j,
+\qquad\vec X_j^{\,\pm}=e^{\pm i\omega_jt}\vec V_j.
+$$
 
-### Avec friction
+$\vec V_j$ est un vecteur propre de $M^{-1}K$ ; la source donne sa valeur propre comme $\omega_j$.
 
-$$\ddot X+\Gamma\dot X+\omega_0^2X=0.$$
+> Coquille : cette valeur propre est $\omega_j^2$. La formule exponentielle affichée suppose des modes de pulsation non nulle ; les modes nuls nécessitent des termes affines en $t$.
 
-Les trois formes données sont :
-
-| Régime | Solution $x(t)$ | Pulsation ou paramètre |
-| --- | --- | --- |
-| Surcritique, apériodique | $e^{-\Gamma t/2}(Ae^{\omega t}+Be^{-\omega t})$ | $\omega=\sqrt{\Gamma^2/4-\omega_0^2}$ |
-| Critique | $e^{-\Gamma t/2}(A+Bt)$ | $\Gamma^2/4=\omega_0^2$ |
-| Sous-critique, pseudo-périodique | $e^{-\Gamma t/2}[A\cos(\omega t)+B\sin(\omega t)]$ | $\omega=\sqrt{\omega_0^2-\Gamma^2/4}$ |
-
-### Oscillateur entretenu
-
-$$\ddot X+\Gamma\dot X+\omega_0^2X=\frac{F(t)}{M}.$$
-
-La solution générale est $X_0(t)+X_F(t)$, où $X_0$ est la solution générale de l’équation homogène et $X_F$ une solution particulière de l’équation avec force.
-
-## Rappel : système de N oscillateurs (page 14)
-
-$$M\frac{d^2\vec X}{dt^2}+k\vec X=\vec0,
-\qquad \vec X=(x_1,\ldots,x_n)^T.$$
-
-$M$ est la matrice de masse. Le cours affiche
-
-$$\vec X(t)=\sum_{j=1}^n(A_je^{i\omega_jt}+B_je^{-i\omega_jt})\vec V_j,$$
-
-et les modes propres
-
-$$\vec X_j^{\,\pm}=e^{\pm i\omega_jt}\vec V_j.$$
-
-> La diapositive appelle $\omega_j$ la valeur propre de $M^{-1}K$ ; il faut lire $\omega_j^2$, en accord avec la page 7. Cette écriture oscillante suppose les valeurs propres strictement positives. Les valeurs nulles ou négatives demandent respectivement des solutions affines ou exponentielles réelles.
+## Fin du document (page 15)
 
 La page 15 est blanche.
