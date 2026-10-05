@@ -1,14 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 726 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 713 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **5 octobre 2026**. Le nouveau lot ajoute **5 transcriptions P2** (205 pages PDF). Dix transcriptions déjà réalisées le 4 octobre (sept en ondes et trois en informatique 4) sont aussi réintégrées dans le bilan, sans être comptées comme de nouveaux fichiers.
+Mise à jour du **5 octobre 2026**. Le nouveau lot ajoute **18 transcriptions P2** (324 pages PDF). Dix transcriptions déjà réalisées le 4 octobre (sept en ondes et trois en informatique 4) sont aussi réintégrées dans le bilan, sans être comptées comme de nouveaux fichiers.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 22 877 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 22 758 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -16,7 +16,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 67 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 54 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -27,11 +27,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 146 |
+| Transcription Markdown présente | 159 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 591 |
-| Aucun texte associé : à examiner et transcrire | 134 |
+| Extraction brute seulement : transcription à faire | 587 |
+| Aucun texte associé : à examiner et transcrire | 125 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -198,13 +198,26 @@ Après chaque lot : mettre à jour les métadonnées des sources et ce bilan, v�
 
 ## Suite P2 — 5 octobre 2026
 
-5 nouveaux fichiers, couvrant 205 pages PDF. Les quatre supports SHS sont transcrits ; tableaux et contenus pédagogiques des captures sont restitués. La méthode de vérification de chaque document figure dans son en-tête.
+18 nouveaux fichiers, couvrant 324 pages PDF. Les quatre supports SHS sont transcrits ; tableaux et contenus pédagogiques des captures sont restitués. La méthode de vérification de chaque document figure dans son en-tête.
 
+- [CM-Chapitre3-Superposition-et-symetrie_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre3-Superposition-et-symetrie_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre3-Superposition-et-symetrie_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre3-Superposition-et-symetrie_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre4-Gauss_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre4-Gauss_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre4-Gauss_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre4-Gauss_2023-2024_Electromagnetisme_P2S1_EDupont.md)
 - [Fiche-Autre-Cas-Symetries_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/Fiche-Autre-Cas-Symetries_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [TD5-Correction_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD5-Correction_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [TD5-Correction_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD5-Correction_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [TD6-Correction_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD6-Correction_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [TD6-Correction_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD6-Correction_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [TD7-Correction_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD7-Correction_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [TD7-Correction_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/TD7-Correction_2024-2025_Electromagnetisme_P2S1_EDupont.md)
 - [CM1-Presentation_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM1-Presentation_2024-2025_SHS_P2S1_DH%26D.md)
 - [CM2-Activitee_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM2-Activitee_2024-2025_SHS_P2S1_DH%26D.md)
 - [CM3-Methodes_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM3-Methodes_2024-2025_SHS_P2S1_DH%26D.md)
 - [Guide-pour-la-recherche-documentaire-en-ligne_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/Guide-pour-la-recherche-documentaire-en-ligne_2024-2025_SHS_P2S1_DH%26D.md)
+- [DS3-2022-2023-Correction_Series-DS_P2S1__RayaneM](data/series/transcriptions/DS3-2022-2023-Correction_Series-DS_P2S1__RayaneM.md)
+- [DS3-2023-2024-Correction_Series-DS_P2S1__RayaneM](data/series/transcriptions/DS3-2023-2024-Correction_Series-DS_P2S1__RayaneM.md)
+- [DS3-2023-2024-Ratrapage-Correction_Series-DS_P2S1__RayaneM](data/series/transcriptions/DS3-2023-2024-Ratrapage-Correction_Series-DS_P2S1__RayaneM.md)
 
 Dix fichiers du 4 octobre étaient présents mais absents du bilan :
 
@@ -219,11 +232,11 @@ Dix fichiers du 4 octobre étaient présents mais absents du bilan :
 - [CM-Chapitre5_2022-2023_Ondes_P2S2_CM-Chapitre4](data/ondes/transcriptions/CM-Chapitre5_2022-2023_Ondes_P2S2_CM-Chapitre4.md)
 - [Physique_des_ondes___guide_complet](data/ondes/transcriptions/Physique_des_ondes___guide_complet.md)
 
-**P2 reste en cours : 67 documents à transcrire ou à vérifier.** Le reliquat inventorié est nul en SHS, ondes, informatique 4, physique moderne et intégration et probabilités.
+**P2 reste en cours : 54 documents à transcrire ou à vérifier.** Le reliquat inventorié est nul en SHS, ondes, informatique 4, physique moderne et intégration et probabilités.
 
 | Matière P2 | Documents restants |
 | --- | ---: |
 | analyse-rn | 17 |
-| electromagnetisme | 32 |
+| electromagnetisme | 22 |
 | informatique3 | 8 |
-| series | 10 |
+| series | 7 |
