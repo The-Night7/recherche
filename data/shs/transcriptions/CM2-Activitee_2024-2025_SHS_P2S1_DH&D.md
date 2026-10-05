@@ -1,0 +1,458 @@
+---
+source: "PREING2-S1/SHS/CM2-Activitee_2024-2025_SHS_P2S1_DH&D.pdf"
+pages: 50
+transcription: manuelle assistée par le texte natif
+transcription_date: 2026-10-05
+verification: lecture intégrale du texte natif des cinquante pages ; remise en paragraphes et listes ; tableau page 8 retranscrit ; contrôles visuels des pages de mise en page complexe
+---
+
+# Propositions de travaux pratiques pour l’évaluation — Introduction aux SHS
+
+Département Humanités & Design — Introduction aux SHS, année 2024–2025. Date des pages : 20 octobre 2024. Les pieds de page 1 à 44 mentionnent encore 2023–2024 ; ceux des pages 45 à 50 indiquent 2024–2025.
+
+## Page 1
+
+Présentation des propositions de travaux pratiques pour l’évaluation Introduction aux SHS – année 2024-2025
+
+## Page 2
+
+Le cahier des charges du rendu
+
+- Vous rendrez votre support en format PDF ou PowerPoint dans l’espace Teams (« devoir ») au plus tard 3 jours avant votre passage à l’oral.
+
+- Tout retard d’un jour vous fera perdre 1 points (4 jours de retard → -4 points, 0/20 au-delà de 4 jours). Il n’y aura pas de rappel de ma part, document non-rendu = 0/20. En cas de difficulté particulière justifiant un retard, contacter l’enseignant.e avant la date de rendu.
+
+- Document PDF à enregistrer de la manière suivante : `NOM1-NOM2-NOM3-NOM4_ISH_présentation`
+
+- Soigner la présentation, l’orthographe et la grammaire : des points en moins en cas de document mal présenté et comportant trop de fautes (jusqu’à 4 points).
+
+- Ne pas oublier de donner un titre au document et de présenter toutes les informations requises en première page (noms et prénoms, classe, école/université + logo, module, titre, enseignant référent, date)
+
+## Page 3
+
+Les critères généraux d’évaluation
+
+- Il n’est évidemment pas question pour les étudiants de maîtriser les méthodes de recueil et d’analyse, mais de manifester une réelle implication et un questionnement.
+
+- Ces critères se déclinent à chaque fois selon l’activité concernée.
+
+- **40 %** — Qualité du livrable, sur le fond et la forme. 
+
+- **30 %** — Qualité de la présentation orale : capacité à parler sans notes, avec clarté et conviction ; partage de la parole dans l’équipe ; respect du temps imparti (10 minutes) 
+
+- **30 %** — Qualité des réponses, lors des échanges après la présentation (10 minutes)
+
+## Page 4
+
+Les attentes sur le fond
+
+Votre présentation devra toujours présenter ces parties :
+
+1. Une mise en contexte étayée par un travail de documentation (avec bibliographie).
+
+2. La question que vous vous êtes posée : votre problématique.
+
+3. La description précise de la méthode mise en place.
+
+4. La présentation des principaux résultats obtenus : qu’est-ce votre travail vous a appris sur le sujet retenu ?
+
+5. Un retour d’expérience sur les choix méthodologiques et les difficultés rencontrées : quelles leçons tirer de cette expérience sur les SHS ?
+
+6. Vous placerez en annexes tous les documents que vous jugerez utiles : sources, documents produits ou utilisés, transcriptions d’entretiens (anonymisés), schémas, etc.
+
+## Page 5
+
+Les attentes sur la forme
+
+- Un document présenté sur support PowerPoint (ou équivalent) + si besoin un document Word ou autre
+
+- Un document correct du point de vue de la langue (orthographe, grammaire, etc.)
+
+- Un document clair, didactique.
+
+- Un document concis, allant à l’essentiel.
+
+- Un document variant les modalités de mise en valeur de l’information : infographie, représentations graphiques, tableaux, matériel multimédia, etc., selon les besoins.
+
+- Un document parfaitement approprié et connu.
+
+## Page 6
+
+Plagiat et IA : attention !!!
+
+- On sera vigilant à éviter tout plagiat,
+
+- en marquant les citations entre guillemets,
+
+- et pour chaque information ou argument, en indiquant ses sources dans le corps de texte et en bibliographie, avec des renvois bibliographiques systématiques dans le corps du document. Exemple fictif : « Il y a un enjeu générationnel majeur », comme l’écrit le chercheur Jean Dupont. En effet, les jeunes passent de plus en plus de temps sur Internet, en particulier sur les réseaux sociaux (Dupont, 2022). Dans cet exemple fictif, « (Dupont, 2022) » renvoie à une référence qui sera ensuite développée en bibliographie, par ex : Jean DUPONT, « Les jeunes et Internet : un tournant générationnel », Revue de sociologie du numérique, n° 223, 2022 `www.revuesociologienumérique/jkaklakzl.com` [dernière consultation : 20/09/2023]
+
+- Aucun passage ne devra être rédigé par l’IA.
+
+- Tout manquement à ces règles sera sanctionné par une note éliminatoire et un signalement à l’administration pour fraude.
+
+## Page 7
+
+Ethique et déontologie
+
+- Aucune information personnelle ne peut être recueillie / divulguée sans le consentement libre et éclairé des personnes concernées.
+
+- Pour toute expérimentation (voir en particulier l’activité 5), toute mise en danger ou manipulation des participant.e.s est formellement interdite. Ici encore, le consentement libre et éclairé est de rigueur.
+
+- Toute infraction à ces règles vous conduira en conseil de discipline.
+
+- En cas de doute, consultez préalablement votre enseignant.e.
+
+## Page 8
+
+Listes de propositions de travaux pratiques
+
+| N° | Proposition |
+| --- | --- |
+| 1 | Description du système sociotechnique d’un objet à forte composante technique (portable, ordinateur, etc.). |
+| 2 | Terrain d’observation d’un lieu urbain (station RER, etc.) ou promenade sociologique dans un lieu de votre choix. |
+| 3 | Observation participante d’un milieu professionnel, associatif, sportif ou tout autre espace de socialisation, avec entretiens. |
+| 4 | Enquête socio-historique à partir de témoignages et archives familiales. |
+| 5 | Petit protocole expérimental en psychologie empirique. |
+| 6 | Établissement et administration d’un questionnaire quantitatif, dont les résultats seront présentés. |
+| 7 | Enquête sur les fondations d’entreprise. |
+| 8 | Naissance du hip-hop et mouvements contestataires. Le RAP est-il une voix politique et populaire ? Le RAP est-il un descriptif de la condition humaine ? |
+
+## Page 9
+
+Proposition n° 1 : Présentation du système sociotechnique d’un objet (téléphone portable, ordinateur, etc.)
+
+## Page 10
+
+Présentation de l’activité
+
+- Un artefact à forte composante technique, comme le téléphone portable, n’est pas simplement un objet isolé, mais il se situe au cœur d’un ensemble de relations sociales.
+
+- Il est important, pour un ingénieur, de prendre conscience de cette complexité qui n’est pas uniquement d’ordre technique. L’objet concerné fonctionne en effet au sein d’un « système socio-technique ».
+
+- « En sociologie des techniques, un système socio-technique est constitué d'un ensemble de liens (économiques, culturels, sociaux) entre différents acteurs formant un réseau. Ces acteurs adoptent des stratégies économiques et techniques cohérentes entre elles, donnant au système une grande stabilité. L'ensemble des normes, des législations et des institutions qui permettent l'existence du système, par exemple à un niveau national, est appelé paysage socio-technique. » (Wikipédia).
+
+## Page 11
+
+- L’activité demandée aux étudiants consiste à choisir un objet à composante technique et à en déplier le plus clairement possible système sociotechnique.
+
+- On pensera aux aspects sociaux, économiques, juridiques.
+
+- Quels circuits économiques, que ce soit pour la production ou la consommation ? Quelles institutions de régulation, de réglementation ?
+
+## Page 12
+
+Enjeux méthodologiques
+
+- La méthode requise est essentiellement documentaire (voir le « Guide pour la recherche documentaire », (séance 1)).
+
+- On pourra également faire appel à des entretiens d’experts. Pour ce faire, il faudra identifier l’expert, le contacter et l’interroger. Le cas échéant, vous enregistrerez l’entretien après accord de l’interviewé et mettrez le lien vers l’enregistrement en annexe de votre support de présentation. Le recours à un entretien d’expert sera fortement valorisé.
+
+## Page 13
+
+Proposition n°2 : Terrain d’observation d’un lieu urbain (station RER, place, etc.)
+
+## Page 14
+
+Présentation de l’activité
+
+- La démarche emprunte ici à l’ethnographie et à la sociologie urbaine.
+
+- On ira soit vers un lieu qu’on connaît mal, ou alors on se « dé- familiarisera » d’un lieu qu’on connaît bien.
+
+- On ciblera un lieu public urbain, avec un fort passage : station de RER, rue passante, place publique, etc.
+
+- On se rendra le plus attentif aux différents publics qui l’empruntent, à leurs usages, à leurs déplacements, pour en tirer quelques enseignements.
+
+## Page 15
+
+La préparation
+
+- On préparera préalablement une grille d’observation. A quoi sera-t-on attentifs ? Qu’est-ce qu’il peut être pertinent d’observer ? Le terrain
+
+- On pourra, par exemple, se placer à l’entrée de la station de RER de Cergy à une heure d’affluence plusieurs jours de suite, pendant une demi-heure, pour effectuer ces observations. Mais on pourra tout à fait faire un travail d’observation similaire dans un quartier nettement moins bien connu.
+
+- Il peut être intéressant de produire des graphiques et schémas des déplacements des individus observés.
+
+## Page 16
+
+L’analyse
+
+- On essaiera de mettre en relation ces déplacements, leur amplitude, leur parcours, leur durée, avec d’autres paramètres : âge, sexe, catégorie socio-professionnelle (CSP), utilisation ou non d’un téléphone portable ou tout autre paramètre jugé pertinent.
+
+- On sera évidemment attentif à l’heure et au jour auxquels on effectue ces observations.
+
+- Quelles régularités et quelles singularités ? Une typologie se dégage-t- elle ? Qu’apprend-on ainsi sur le lieu observé ? Sur les publics qui le fréquentent ? Sur leurs usages ?
+
+- Il faudra ensuite synthétiser ces enseignements, afin d’en tirer une conclusion.
+
+## Page 17
+
+Proposition n°3 : Observation participante d’un milieu professionnel, associatif ou sportif ou de tout autre espace de socialisation
+
+## Page 18
+
+Présentation de l’activité
+
+- L’observation participante est une méthode fort usitée en ethnologie, psychosociologie et en sociologie.
+
+- Elle consiste à observer un groupe tout en participant à la vie de ce groupe. Le chercheur utilise généralement cette méthode pour découvrir un milieu social qu’il ne connaît pas. Mais ici, vous pourrez vous appuyer sur toute la connaissance dont vous disposez déjà.
+
+- On l’appliquera ici à un groupe social que vous fréquentez : club de sport, association, milieu professionnel, guide de joueurs en ligne, etc., ou tout autre groupe extérieur au cadre familial.
+
+## Page 19
+
+- La difficulté réside ici dans le fait de se défamiliariser d’un groupe qu’on connaît, pour en faire ressortir les valeurs, les normes explicites et implicites, les règles tacites de fonctionnement, les motivations des agents, etc., à savoir tout ce qui permet à un tiers d’en comprendre le fonctionnement social.
+
+- Dans le cas d’une observation participante, il est impératif de respecter certaines règles éthiques.
+
+- Obtenez le consentement libre et éclairé pour l'utilisation des informations recueillies
+
+- ou respectez toujours la confidentialité et l’anonymat.
+
+## Page 20
+
+- Pour se guider, on pourra se poser un ensemble de questions.
+
+- Qui compose le groupe ? Quelles sont les caractéristiques sociodémographiques de ses membres ? Leurs motivations à en faire partie ?
+
+- Quelles valeurs régissent le groupe ? Quelles règles ? Sont-elles implicites ou explicites ? Comment sont-elles respectées ? Comment y entre-t-on ? En sort-on ?
+
+- Comment est-il structuré ? Est-il fortement hiérarchisé ou pas ? Pour quelles raisons ?
+
+- Etc. N’hésitez pas à lister tout un ensemble de questions à vous poser, pour guider votre réflexion.
+
+- Cette observation doit être complétée par des entretiens semi-directifs (voir le cours pour une définition), devant être préparés par l’établissement d’un guide d’entretien.
+
+## Page 21
+
+Proposition n°4 : Enquête socio-historique à partir de témoignages et archives familiales : Identités, mémoire des familles, mémoire des conflits.
+
+## Page 22
+
+Présentation de l’activité Il conviendra d’articuler les méthodologies historique et sociologique en se basant sur des sources qui vous sont personnelles (photos anciennes, vidéos, stocks de documents anciens, de lettres ou différents écrits et objets) et que vous sortirez sans doute des greniers de vos maisons de famille ou des archives de vos grands-parents et aïeux. Après avoir déterminé le corpus de départ ainsi qu’identifié les personnes à sonder aujourd'hui, vous ferez par ce travail dialoguer le passé et le présent.
+
+## Page 23
+
+1-Vous interrogerez vos sources, poserez des questions et établirez une problématique
+
+2-Vous travaillerez la mise en perspective historique à travers les liens que vous privilégierez avec les contextes sociaux, politiques, géopolitiques et culturels englobant votre sujet d’étude
+
+3-Vous devrez analyser les phénomènes de continuité et de changement, de causes et de conséquences et mettrez en évidence les évolutions.
+
+4- Mettre en relation avec le pendant sociologique de votre étude (le présent) avec une perspective différente selon que vous ayez fait appel à des témoins ou à des individus non concernés par votre corpus=angle comparatif présent /passé à mettre en valeur
+
+5- Travail d’interprétation=votre touche personnelle=faites appel à votre imagination et à vos capacités d’analyse !!!
+
+## Page 24
+
+- Partie historique : établir un corpus des sources, rigoureusement réalisé avec descriptif et analyse détaillée de chacune des sources (photos, lettres, vidéos et autres documents) + étudier sérieusement les différents contextes dans lesquels s’inscrivent ces sources à travers une bibliographie complète. Que vous disent ces sources dans ces contextes ? = établir une problématique
+
+- Partie sociologique : choisir un échantillon de personnes concernées d’une manière ou d’une autre par le sujet et mener une étude qualitative sur la base d’entretiens ou quantitative sur la base d’envoi de questionnaires. Analyser les résultats.
+
+- Synthèse : adopter une perspective comparative passé/présent, en temps long=analyser et interpréter
+
+## Page 25
+
+Le support attendu devra comporter :
+
+- Un corpus contenant toutes les sources décrites et analysées + une bibliographie commentée
+
+- Présentation et résultats de la partie sociologique (portraits des répondants, temps forts des entretiens, schémas pour les études quantitatives)
+
+- Synthèse et interprétation.
+
+## Page 26
+
+Proposition n°5 : Petit protocole expérimental en psychologie empirique
+
+## Page 27
+
+Présentation de l’activité
+
+- Votre objectif sera de construire par vos propres moyens une expérience de Psychologie expérimentale de votre choix afin d’arriver à une vérité objective.
+
+- Vous devrez inclure au minimum une variable indépendante de votre choix (sauf l’âge et le sexe).
+
+- Vous devrez respecter les étapes de construction d’une expérience ou d’une étude en Psychologie.
+
+## Page 28
+
+- Exemples :
+
+- Etude de la corrélation entre la mémoire et la musique. Question de départ : est-ce que la musique dans les oreilles améliore significativement la concentration d’un sujet lors d’une tâche de mémorisation ?
+
+- Etude de l’impact du temps sur le souvenir des rêves.
+
+- Etude sur l’influence de la publicité dans l’évaluation du goût chez des sujets.
+
+- Etude sur le lien entre sommeil et performance mentale.
+
+- Autres thèmes possibles ?
+
+- La variable indépendante est celle manipulée par le chercheur dont- on se demande si elle a une influence sur la variable dépendante.
+
+## Page 29
+
+Exemple : Corrélation entre la musique et la capacité à se concentrer sur une tache simple. Variable indépendante choisie : Avec ou sans musique dans le casque pendant la réalisation d’une tâche de mémorisation simple. La variable dépendante est l’effet que je peux mesurer. Exemple : Nombres de mots ou de phrases dont je me souviens dans le texte à lire pendant l’expérience. Matériel =
+
+- Création d’un texte à lire et mémoriser dans des conditions particulières
+
+- Fournir des casques pendant l’expérience aux sujets présents
+
+- Choix de la musique
+
+- Petit matériel à prévoir
+
+## Page 30
+
+Vous avez le choix du thème de l’expérience, des sujets de l’expérience, le choix des variables, et le choix des hypothèses de travail. Vous devez rester dans le cadre du domaine de la Psychologie. Vous devez définir un protocole expérimental comprenant : un échantillon de sujets, la création de matériel, les tâches à réaliser, un espace adapté. Conseil : Conduire et réaliser le protocole expérimental avec un échantillon réel de minimum 10 personnes et maximum 20 personnes pour que vous résultats soient suffisamment significatifs. L’idée est de bien construire un protocole identique sur 2 échantillons et de faire varier seulement votre variable indépendante. Exemple 10 étudiants avec musique dans le casque, 10 étudiants sans musique dans le casque qui réalisent la tâche et d’observer les effets et les résultats de votre expérience par rapport à vos hypothèses de départ.
+
+## Page 31
+
+Enjeux méthodologiques
+
+- Travail préliminaire : l’introduction sur une page doit contextualiser votre étude présentant la thématique de recherche. L’introduction doit résumer et critiquer la littérature existante (trouver au moins 3 articles scientifiques qui traitent de votre sujet) qui est liée à votre problématique. Cette argumentation doit permettre de dégager l’intérêt de votre étude ainsi que vos hypothèses générales, vos variables et montrer pourquoi elles sont pertinentes. N’importe quel lecteur et pas forcément un spécialiste devrait pouvoir comprendre votre introduction et comprendre l’intérêt de votre étude.
+
+- Rédigez de façon claire et précise. Toutes les références citées doivent figurer dans la bibliographie.
+
+- Participants : Indiquez les caractéristiques des participants (nombre, âge, sexe) et tout autre renseignement pertinent pour votre étude.
+
+## Page 32
+
+- Matériel : Il faut décrire les stimuli utilisés. S’ils ont été conçus par vous, vous devez décrire les critères pris en compte pour leur création ou leur sélection. Si vous avez choisi des stimuli ou des taches existantes, vous devez citer la référence utilisée.
+
+- Procédure : Dans cette partie vous décrirez le déroulement chronologique de la passation. Les conditions dans lesquelles vous avez réalisé le test, l’installation des participants, le lieu, la consigne donnée aux participants, le déroulement de l’expérience, la durée de l’expérience.
+
+## Page 33
+
+- Variables indépendantes, variable dépendante et plan expérimental. Dans cette partie vous décrirez l’opérationnalisation de vos variables indépendantes ainsi que leur modalité. Vous décrirez également la variable dépendante, c’est-à-dire sur quelle mesure vous allez observer vos effets.
+
+- Hypothèses : Vous préciserez les hypothèses que vous avez construites en groupe par rapport à votre expérience. Exemple : Hypothèse 1 : La musique améliore la concentration. Hypothèse 2 : Nous pensons qu’il est plus facile de mémoriser des informations lorsque nous écoutons une musique (non familière mais calme) et avec des écouteurs dans les oreilles.
+
+- Résultats : Description des effets principaux et de l’interaction : On rédige les résultats de manière descriptive sans interprétations. On commente et on conclut sur chaque effet en fonction des hypothèses. On présente les calculs réalisés afin d’observer les possibles effets principaux ou globaux ainsi que celui de l’interaction (ou la corrélation). Il faudra ajouter un tableau de résultat, la présentation d’un graphique permet de mieux visualiser vos résultats. Veillez à réaliser un graphique qui est en cohérence avec l’objectif de votre étude.
+
+## Page 34
+
+- Discussion et conclusion : Dans cette section finale on réalise un résumé des résultats, on les commente et on les interprète. Cela veut dire qu’il faudra dire si vos hypothèses sont vérifiées ou non. Ensuite, on pourra comparer les résultats obtenus avec les études antérieures et avec les enjeux théoriques présentés dans l’introduction. On peut aussi discuter des limites de l’étude dues à différentes contraintes méthodologiques. On formule enfin des conclusions.
+
+- Références bibliographiques : Il faut indiquer dans cette partie la liste des références citées ou consultées dans le texte selon les normes APA.
+
+- Annexes : Stimuli, matériel
+
+- Attestation de non plagiat signée par tous les membres du groupe.
+
+## Page 35
+
+Alerte éthique
+
+- Il est formellement interdit de se mettre en situation de danger ou de mettre des camarades dans une situation de danger quelconque.
+
+- Le consentement doit être libre et éclairé : aucune manipulation psychologique doit être autorisée (tromperie sur l’objet de l’expérience).
+
+## Page 36
+
+Proposition n°6 : Etablissement et administration d’un questionnaire quantitatif, dont les résultats seraient présentés.
+
+## Page 37
+
+Présentation de l’activité Le questionnaire quantitatif est une des techniques importantes en sciences sociales. L’activité consiste à choisir un thème, un public cible, à rédiger un bref questionnaire, à le soumettre au public cible et à analyser les résultats.
+
+## Page 38
+
+La rédaction et l’administration d’un questionnaire n’est pas chose facile. On procèdera par étapes.
+
+1. On veillera à choisir un thème intéressant, pour tester une hypothèse dûment problématisée. Pour ce faire, une recherche bibliographique préalable est nécessaire. Des études/enquêtes sociologiques ont-elles déjà été menées sur le sujet ? Quel est l’état des connaissances sur la question ?
+
+2. On mènera une réflexion sur l’échantillonnage : quelle taille ? Quelle composition ?
+
+3. On distinguera bien les variables explicatives (correspondant aux informations signalétiques sur les répondants) des autres variables.
+
+4. On sera attentif au texte d’accompagnement du questionnaire, suffisamment clair et incitatif.
+
+## Page 39
+
+5. On veillera à la rédaction des questions (non biaisées, neutres, etc.) et à l’organisation logique du questionnaire. Les questions sont-elles compréhensibles pour toutes et tous, sans ambiguïté ? N’induisent-elles par une certaine réponse ? S’enchainent-elles de manière logique (du général au particulier, d’un thème à l’autre) ?
+
+6. On réfléchira au meilleur mode d’administration : en face-à-face, par téléphone, ou bien envoyé en ligne et auto-administré par les répondants. Attention au taux de réponse, pour un obtenir un nombre suffisant de réponses.
+
+7. On établira ensuite une analyse et une interprétation des résultats. Attention à la robustesse statistique, pour étayer vos analyses.
+
+8. En définitive, qu’est-ce que ce sondage nous apprend ? Nous apporte-t-il des connaissances nouvelles, par rapport à la littérature sociologique existante ?
+
+## Page 40
+
+Proposition n° 7 : Enquête sur les fondations des entreprises
+
+## Page 41
+
+Présentation de l’activité
+
+Total Energies, Groupe EDF, BNP Parisbas, l’Oréal etc.… sont des entreprises possédant des fondations. Choisissez la fondation d’une entreprise. Après avoir décrit les activités de l’entreprise, son implantation dans le monde (quel pays ? Quels enjeux politiques dont économiques ?) recherchez l’origine de la création de sa fondation (depuis quand ? Les premières motivations ? Pour qui ? Par qui ?) et regardez s’il y a un lien avec un événement historique ou social fort (ex : la fondation total Energies a été créée en 1992 au lendemain du sommet de la terre de Rio sur l’environnement et notamment sur la biodiversité marine...). Choisissez une action forte de la fondation (œuvres caritatives, formation, exposition, le mécénat...), étudiez sa mise en œuvre (comment ? Par quels moyens humains, technologiques ? Où ? Pour qui ? Par qui …), faites le lien avec un ODD et aussi, si possible, avec une situation sociale, politique et économique impactante du moment. Quelles conclusions ? Philanthropie ? Allez visiter les fondations dans Paris quand elles existent (dans la mesure du possible), prenez des photos pour illustrer vos propos.
+
+## Page 42
+
+Pour renforcer votre recherche, vous devez interroger (sous forme d’interview enregistré), chacun(e) une personne (dans votre entourage qui travaille depuis au moins 10 ans). L'objectif est “d’évaluer” la connaissance de cette personne sur l’existence et le rôle des fondations d’entreprise en lui posant des questions ouvertes que vous aurez définies ensemble. Vous mettrez en lumière vos résultats (réponses aux questions) en rédigez une note résumée des réponses. Cette activité vous permettra d’avoir une approche globale des enjeux sociopolitiques des activités des entreprises notamment à travers le rôle des fondations.
+
+## Page 43
+
+- Enjeux méthodologiques
+
+- Recherches documentées : La recherche effectuée doit être faites sur des sites officiels référencés. Au-delà de la documentation mise à disposition sur les sites des fondations des entreprises et des entreprises elles-mêmes, il est important pour comprendre leur rôle d’aller fouiller dans des articles universitaires (deux références attendues) et d’en extraire les informations pertinentes que vous aurez relevé (avec n° de la revue, titre, auteurs, date, pages). Cette recherche documentée doit être illustrées par des graphiques, des images, des liens de reportages (ARTE est une source formidable !). Pensez à utiliser ARTE CAMPUS
+
+- Cette recherche doit faire l’objet d’une organisation avec des parties et des sous- parties, des illustrations, une bibliographie ainsi que des références pour chaque source utilisée. Les illustrations doivent avoir une légende explicative ainsi qu’une source.
+
+- Glossaire : rédigés un glossaire avec les termes clés de votre recherche (ex : définition d’une entreprise, du CAC 40, etc.…)
+
+## Page 44
+
+- Choix de l’action de la fondation et problématique : le choix de l’action de la fondation oriente votre recherche, est clairement défini et doit faire l’objet d’une problématique. (Ex : Dans quelle mesure les actions de la fondation Total Energies sont orientées vers l’écologie ?)
+
+- Interview : après avoir rédigé une introduction rapide sur votre travail de recherche et le sujet vous rédigerez trois questions ouvertes que vous poserez à quelqu’un de votre entourage (qui travaille depuis au moins 10 ans). Cet interview ne devra pas durer plus de 15 min (entre 8 et 12 min idéalement) sera enregistré et transmise au format MP4/5 (attention à être dans un endroit calme pour la qualité de l’audio).
+
+- Les réponses de vos interviews feront l’objet d’une synthèse générale regroupant les réponses à vos questions.
+
+- Résultats : grâce à votre recherche et vos interviews vous rédigerez une réponse structurée à votre problématique
+
+## Page 45
+
+Proposition n° 8 : Naissance du hip-hop et mouvements contestataires. Le RAP est-il une voix politique et populaire ? Le RAP est-il un descriptif de la condition humaine ?
+
+## Page 46
+
+Présentation de l’activité “Le hip-hop a conquis le cœur de la jeunesse de notre pays. Au point que la France est devenue le deuxième marché mondial du rap après les États-Unis, où le genre est né dans la deuxième moitié des années 70”. Site de la SACEM. Après avoir fait une recherche sur la naissance du hip-hop aux Etats-Unis en mettant en évidence le contexte social (quelles conditions de vie ? Quelles catégories sociales ? Etc;) et politique (quel parti au pouvoir ? Quel orientation politique ? Quel contexte international (guerre ? Crise économique ? Catastrophe humanitaire ? Environnementale ? Etc.), vous expliquerez comment les Sciences Humaines et Sociales (SHS et non SCH😊 !) se sont emparées de ce sujet (quels sont les thèmes traités, quelles analyses, quels éléments sont corrélés...) Vous avez plusieurs choix (vous pouvez en proposer d’autres à valider avec votre enseignant) :
+
+## Page 47
+
+1° Étude comparative biographiques et textuelles Cette étude biographique comparative, doit montrer l’influence du contexte familiale et urbain (par exemple 2PAC avait des parents militants dans les rangs des Blacks Panthers...) d’un rappeur américain et français dans la création de leur texte, ils peuvent être de génération différente. Mettre en lumière les grands thèmes abordés et les expliquer (ex: justice sociale, sexisme, environnement, racisme...) Etude comparative de deux textes politiques : Comparer les textes de Fight the power de Public Enemy et No pasaran du collectif de Rappeurs 2024. Après avoir présenté les rappeurs de ces groupes, la comparaison doit mettre en lumière le contexte historique et politique ainsi que le champ lexical des textes des deux groupes. Qu’est-ce qui diffère ? Qu’est-ce qui est en commun ?
+
+## Page 48
+
+Une étude comparative de la naissance de deux groupes de Rap dans les années 1980: Vous pouvez comparer par exemple la naissance de NTM (Regardez la série “ Le monde de demain” / le film “Suprêmes”...) et de RUN DMC (regardez des documentaires type kings from queens...) décrivez le contexte précis personnel de ces rappeurs, leurs conditions de vie, relations avec la famille, décrivez le contexte politique de l’époque, faites des recherches sur la délinquance durant cette période, la condition sociale à Saint-Denis et dans le Queens... Complétez votre travail avec un questionnaire montrant le lien entre politique et musique (si vous avez d’autres idées parlez-en avec votre enseignant) ou un entretien semi-directif d’expert si vous pouvez.
+
+## Page 49
+
+Pour vous aider :
+
+- Paris 8, la fac HIP HOP (série ARTE, vous y découvrirez en autre Georges Lapassade! ) INCONTOURNABLE
+
+- ARTE, FRANCE CULTURE, RADIO FRANCE, INA, CNRS, CAIRN, ... (le web fourmille d’infos sur le RAP attention à bien sélectionner vos sources...) Booska-P, ...
+
+- Quelques spécialistes du HIP HOP dans divers domaines :
+
+- Oliver Cachin, Benjamine Weill, Céline M'sili, Mehdi Maïzi, Sophie Bramly, Karim Hammou, Anthony Pecqueux, Antoine « Wave » Garnier, Alain Milon...
+
+## Page 50
+
+Livrable attendu
+
+- Un dossier organisé avec parties, illustrations, bibliographie, résultat du questionnaire (introduction, sommaire, conclusion, pagination, références avec note de bas de pages)
+
+- Une présentation orale riche en images et en sons ! Votre auditoire doit avoir une bonne compréhension des enjeux politiques et sociétaux sur une population données (ici des rappeurs qui représentent une catégorie sociale) et doivent comprendre comment le RAP est instrumentalisé comme outil contestataire et descriptif de la condition humaine, des rapports de genre...
+
+## Notes sur le support
+
+- Les règles de rendu, d’évaluation et d’usage de l’IA sont celles reproduites dans ce support daté.
+- Page 18 : la source écrit « guide de joueurs en ligne », vraisemblablement pour « guilde ».
+- Page 30 : la taille de 10 à 20 personnes est une consigne du support ; elle ne garantit pas à elle seule la significativité des résultats.
+- Page 44 : la mention « MP4/5 » est reproduite telle quelle, sans corriger silencieusement le format demandé.
+- Les références fictives de la page 6 restent identifiées comme fictives.

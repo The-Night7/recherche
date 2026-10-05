@@ -1,14 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 741 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 726 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **3 octobre 2026**. Le nouveau lot ajoute **14 transcriptions P2** : les quatre documents restants de physique moderne et dix corrigés de contrôles d’ondes, soit **73 pages PDF et un document Word de 541 paragraphes**. Huit transcriptions d’intégration et probabilités déjà présentes sont aussi réintégrées dans le bilan ; elles ne sont pas comptées comme de nouveaux fichiers.
+Mise à jour du **5 octobre 2026**. Le nouveau lot ajoute **5 transcriptions P2** (205 pages PDF). Dix transcriptions déjà réalisées le 4 octobre (sept en ondes et trois en informatique 4) sont aussi réintégrées dans le bilan, sans être comptées comme de nouveaux fichiers.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 23 277 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 22 877 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -16,7 +16,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 82 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 67 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -27,11 +27,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 131 |
+| Transcription Markdown présente | 146 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 604 |
-| Aucun texte associé : à examiner et transcrire | 136 |
+| Extraction brute seulement : transcription à faire | 591 |
+| Aucun texte associé : à examiner et transcrire | 134 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -113,7 +113,7 @@ Les huit fichiers d’intégration et probabilités déjà présents, datés du 
 - [DS2-2024-2025-V2-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS2-2024-2025-V2-Correction_Integration-proba-DS_P2S2_DMaths.md)
 - [DS3-2020-2021-Correction_Integration-proba-DS_P2S2_DMaths](data/integration-proba/transcriptions/DS3-2020-2021-Correction_Integration-proba-DS_P2S2_DMaths.md)
 
-Le reliquat inventorié de physique moderne et d’intégration et probabilités est désormais nul. Ondes conserve six supports de cours PDF et un guide à transcrire. **P2 reste en cours avec 82 documents**, avant P1 puis ING 1 et ING 2.
+Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et probabilités est désormais nul. Ondes conservait six supports de cours PDF et un guide à transcrire. **P2 restait en cours avec 82 documents**, avant P1 puis ING 1 et ING 2.
 
 ## Travail restant par matière
 
@@ -194,3 +194,36 @@ Validation du premier lot : reconstruction avec `python3 ingest.py build`, 65 te
 Validation du 3 octobre : 72 tests Python et la suite des 18 tests de rendu JavaScript passent. Les 1 079 expressions mathématiques des 14 nouveaux fichiers sont acceptées par KaTeX 0.16.11, les 19 tableaux sont contrôlés et les 541 paragraphes du Word sont conservés. L’index est reconstruit avec `python3 ingest.py build` : les 14 nouveaux documents et les huit fichiers rapprochés produisent 330 passages Markdown, tous rattachés à leur source locale. Les formules sont également vérifiées après découpage en passages. L’index complet contient 15 319 passages.
 
 Après chaque lot : mettre à jour les métadonnées des sources et ce bilan, vérifier les formules, puis reconstruire avec `python3 ingest.py build`.
+
+
+## Suite P2 — 5 octobre 2026
+
+5 nouveaux fichiers, couvrant 205 pages PDF. Les quatre supports SHS sont transcrits ; tableaux et contenus pédagogiques des captures sont restitués. La méthode de vérification de chaque document figure dans son en-tête.
+
+- [Fiche-Autre-Cas-Symetries_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/Fiche-Autre-Cas-Symetries_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [CM1-Presentation_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM1-Presentation_2024-2025_SHS_P2S1_DH%26D.md)
+- [CM2-Activitee_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM2-Activitee_2024-2025_SHS_P2S1_DH%26D.md)
+- [CM3-Methodes_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/CM3-Methodes_2024-2025_SHS_P2S1_DH%26D.md)
+- [Guide-pour-la-recherche-documentaire-en-ligne_2024-2025_SHS_P2S1_DH&D](data/shs/transcriptions/Guide-pour-la-recherche-documentaire-en-ligne_2024-2025_SHS_P2S1_DH%26D.md)
+
+Dix fichiers du 4 octobre étaient présents mais absents du bilan :
+
+- [CM02-HTML-Markup-Language_2024-2025_Informatique4_P2S2_MZneika](data/informatique4/transcriptions/CM02-HTML-Markup-Language_2024-2025_Informatique4_P2S2_MZneika.md)
+- [CM03-HTML-Page-Text-Layout_2024-2025_Informatique4_P2S2_MZneika](data/informatique4/transcriptions/CM03-HTML-Page-Text-Layout_2024-2025_Informatique4_P2S2_MZneika.md)
+- [CM13-JQuery_2024-2025_Informatique4_P2S2_MZneika](data/informatique4/transcriptions/CM13-JQuery_2024-2025_Informatique4_P2S2_MZneika.md)
+- [CM-Chapitre1_2022-2023_Ondes_P2S2_ABoumiz](data/ondes/transcriptions/CM-Chapitre1_2022-2023_Ondes_P2S2_ABoumiz.md)
+- [CM-Chapitre1_2024-2025_Ondes_P2S2_ABoumiz](data/ondes/transcriptions/CM-Chapitre1_2024-2025_Ondes_P2S2_ABoumiz.md)
+- [CM-Chapitre3_2022-2023_Ondes_P2S2_ABoumiz](data/ondes/transcriptions/CM-Chapitre3_2022-2023_Ondes_P2S2_ABoumiz.md)
+- [CM-Chapitre3_2024-2025_Ondes_P2S2_ABoumiz](data/ondes/transcriptions/CM-Chapitre3_2024-2025_Ondes_P2S2_ABoumiz.md)
+- [CM-Chapitre4_2024-2025_Ondes_P2S2_ABoumiz](data/ondes/transcriptions/CM-Chapitre4_2024-2025_Ondes_P2S2_ABoumiz.md)
+- [CM-Chapitre5_2022-2023_Ondes_P2S2_CM-Chapitre4](data/ondes/transcriptions/CM-Chapitre5_2022-2023_Ondes_P2S2_CM-Chapitre4.md)
+- [Physique_des_ondes___guide_complet](data/ondes/transcriptions/Physique_des_ondes___guide_complet.md)
+
+**P2 reste en cours : 67 documents à transcrire ou à vérifier.** Le reliquat inventorié est nul en SHS, ondes, informatique 4, physique moderne et intégration et probabilités.
+
+| Matière P2 | Documents restants |
+| --- | ---: |
+| analyse-rn | 17 |
+| electromagnetisme | 32 |
+| informatique3 | 8 |
+| series | 10 |
