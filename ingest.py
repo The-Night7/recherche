@@ -55,9 +55,6 @@ SOURCE_EXTS = {".pdf", ".md", ".txt", ".docx", ".html"} | CODE_EXTS | OFFICE_EXT
 
 # documents volontairement ignorés, par cours (noms comparés sans tirets ni casse)
 SKIP = {
-    "series": {
-        "CM-Annotee_2022-2023_Series_P2S1_MX": "notes manuscrites, OCR illisible",
-    },
     "analyse-rn": {
         "CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX": "notes manuscrites, OCR illisible",
         # le poly et les corrections de TD sont déjà dans chunks.json (ancien

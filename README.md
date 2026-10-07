@@ -154,7 +154,43 @@ les notes Markdown conservent leurs blocs de code.
 L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
 de matrice dense de plusieurs gigaoctets.
 
-Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. Le [bilan des transcriptions](TRANSCRIPTIONS.md) indique l’avancement ; la priorité actuelle est **P2**.
+Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](TRANSCRIPTIONS.md) et le [rapport par source](data/transcription-report.json).
+
+### Avancement P2 — 7 octobre 2026
+
+**P2 n’est pas terminée : 32 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+
+| Matière | Documents restants |
+| --- | ---: |
+| series | 4 |
+| analyse-rn | 17 |
+| electromagnetisme | 3 |
+| informatique3 | 8 |
+
+Le lot en cours contient **20 nouveaux documents (587 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
+
+Documents terminés dans ce lot :
+
+- [CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat](data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat.md)
+- [CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
+- [Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
+- [CM-Annotee_2022-2023_Series_P2S1_MX](data/series/transcriptions/CM-Annotee_2022-2023_Series_P2S1_MX.md)
+- [CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac.md)
+- [CM-Derivation_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Derivation_2024-2025_Series_P2S1_DCransac.md)
 
 Pour reconstruire après une modification d'un texte ou d'une transcription :
 
