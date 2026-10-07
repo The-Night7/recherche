@@ -158,16 +158,16 @@ Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, to
 
 ### Avancement P2 — 7 octobre 2026
 
-**P2 n’est pas terminée : 32 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+**P2 n’est pas terminée : 30 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
 
 | Matière | Documents restants |
 | --- | ---: |
-| series | 4 |
+| series | 2 |
 | analyse-rn | 17 |
 | electromagnetisme | 3 |
 | informatique3 | 8 |
 
-Le lot en cours contient **20 nouveaux documents (587 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
+Le lot en cours contient **22 nouveaux documents (757 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
 
 Documents terminés dans ce lot :
 
@@ -191,6 +191,8 @@ Documents terminés dans ce lot :
 - [CM-Annotee_2022-2023_Series_P2S1_MX](data/series/transcriptions/CM-Annotee_2022-2023_Series_P2S1_MX.md)
 - [CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac.md)
 - [CM-Derivation_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Derivation_2024-2025_Series_P2S1_DCransac.md)
+- [CM_2022-2023_Series_P2S1_RDujol](data/series/transcriptions/CM_2022-2023_Series_P2S1_RDujol.md)
+- [TD1-Correction_2022-2023_Series_P2S1_Inconnu](data/series/transcriptions/TD1-Correction_2022-2023_Series_P2S1_Inconnu.md)
 
 Pour reconstruire après une modification d'un texte ou d'une transcription :
 
