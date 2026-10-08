@@ -1,14 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 676 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 674 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **8 octobre 2026**. Le lot courant ajoute **35 transcriptions P2** (1010 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **8 octobre 2026**. Le lot courant ajoute **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 21 714 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 21 322 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -16,7 +16,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 17 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 15 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -27,11 +27,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 196 |
+| Transcription Markdown présente | 198 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
 | Extraction brute seulement : transcription à faire | 560 |
-| Aucun texte associé : à examiner et transcrire | 115 |
+| Aucun texte associé : à examiner et transcrire | 113 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -119,7 +119,7 @@ Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
 | --- | ---: | ---: | ---: |
-| Analyse dans ℝⁿ (`analyse-rn`) | 1 | 5 | 0 |
+| Analyse dans ℝⁿ (`analyse-rn`) | 1 | 3 | 0 |
 | Électromagnétisme (`electromagnetisme`) | 3 | 0 | 0 |
 | Informatique 3 (`informatique3`) | 8 | 0 | 0 |
 | Séries (`series`) | 0 | 0 | 0 |
@@ -243,9 +243,10 @@ Dix fichiers du 4 octobre étaient présents mais absents du bilan :
 
 ## Suite P2 — 8 octobre 2026
 
-35 nouvelles transcriptions, couvrant 1010 pages PDF. Les pages, formules, tableaux et annotations ont été vérifiés visuellement ; les erreurs du document source sont distinguées du texte transcrit. Les pages laissées vides par les auteurs sont identifiées. Une image corrompue de la page 31 du support Biot–Savart 2024–2025 est signalée dans la transcription (deux moteurs de rendu donnent le même résultat).
+37 nouvelles transcriptions, couvrant 1402 pages PDF. Les pages, formules, tableaux et annotations ont été vérifiés visuellement ; les erreurs du document source sont distinguées du texte transcrit. Les pages laissées vides par les auteurs sont identifiées. Une image corrompue de la page 31 du support Biot–Savart 2024–2025 est signalée dans la transcription (deux moteurs de rendu donnent le même résultat).
 
 - [CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX](data/analyse-rn/transcriptions/CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX.md)
+- [CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
 - [DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](data/analyse-rn/transcriptions/DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
 - [DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu](data/analyse-rn/transcriptions/DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu.md)
 - [DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths](data/analyse-rn/transcriptions/DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
@@ -255,6 +256,7 @@ Dix fichiers du 4 octobre étaient présents mais absents du bilan :
 - [DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM](data/analyse-rn/transcriptions/DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM.md)
 - [DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](data/analyse-rn/transcriptions/DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
 - [TD-(6-7)-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine](data/analyse-rn/transcriptions/TD-%286-7%29-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine.md)
+- [slides_de_cours_MI_version_imprimable_2026_2027](data/analyse-rn/transcriptions/slides_de_cours_MI_version_imprimable_2026_2027.md)
 - [sujet_TD_2026_2027](data/analyse-rn/transcriptions/sujet_TD_2026_2027.md)
 - [CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont.md)
 - [CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz.md)
@@ -286,10 +288,10 @@ Deux transcriptions de potentiel déjà présentes sont rapprochées, sans nouve
 - [CM-Chapitre5-Potentiel_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre5-Potentiel_2022-2023_Electromagnetisme_P2S1_EDupont.md)
 - [CM-Chapitre5-Potentiel_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre5-Potentiel_2023-2024_Electromagnetisme_P2S1_EDupont.md)
 
-**P2 reste en cours : 17 documents à transcrire ou à vérifier.** La priorité P2 → P1 → ING 1 → ING 2 reste inchangée.
+**P2 reste en cours : 15 documents à transcrire ou à vérifier.** La priorité P2 → P1 → ING 1 → ING 2 reste inchangée.
 
 | Matière P2 | Documents restants |
 | --- | ---: |
-| analyse-rn | 6 |
+| analyse-rn | 4 |
 | electromagnetisme | 3 |
 | informatique3 | 8 |
