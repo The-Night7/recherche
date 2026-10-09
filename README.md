@@ -158,16 +158,16 @@ Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, to
 
 ### Avancement P2 — 9 octobre 2026
 
-**P2 n’est pas terminée : 14 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+**P2 n’est pas terminée : 12 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
 
 | Matière | Documents restants |
 | --- | ---: |
 | series | 0 |
-| analyse-rn | 3 |
+| analyse-rn | 1 |
 | electromagnetisme | 3 |
 | informatique3 | 8 |
 
-Le lot du 9 octobre ajoute **1 transcription (869 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement.
+Le lot du 9 octobre ajoute **3 transcriptions (1847 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). [CM_2023-2024_Analyse-dans-RN_P2S1](data/analyse-rn/transcriptions/CM_2023-2024_Analyse-dans-RN_P2S1.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement. Le [polycopié de cours](data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) (127 pages) est également transcrit et vérifié.
 
 Le lot du 8 octobre contient **37 nouveaux documents (1402 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
 
