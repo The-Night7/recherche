@@ -356,6 +356,12 @@ def chunk_document(path):
     with open(path, encoding="utf-8") as source:
         raw = source.read()
     fmt = "md" if ext == ".md" else "pdf"
+    title = re.match(r"#\s+(.+)", raw)
+    if fmt == "md" and stem.startswith("Fiche") and title:
+        # fiches de révision : le titre du fichier garde les accents (« Fiche 2 : Séries de référence »)
+        years_txt = f"{meta['year']}-{meta['year'] + 1}" if meta["year"] else "année inconnue"
+        meta["title"] = title.group(1).strip()
+        meta["doc_label"] = f"{meta['title']} · {years_txt}"
     if fmt == "md":
         secs = sections_markdown(raw)
     else:
