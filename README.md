@@ -156,20 +156,22 @@ de matrice dense de plusieurs gigaoctets.
 
 Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](TRANSCRIPTIONS.md) et le [rapport par source](data/transcription-report.json).
 
-### Avancement P2 — 8 octobre 2026
+### Avancement P2 — 9 octobre 2026
 
-**P2 n’est pas terminée : 15 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+**P2 n’est pas terminée : 14 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
 
 | Matière | Documents restants |
 | --- | ---: |
 | series | 0 |
-| analyse-rn | 4 |
+| analyse-rn | 3 |
 | electromagnetisme | 3 |
 | informatique3 | 8 |
 
-Le lot en cours contient **37 nouveaux documents (1402 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
+Le lot du 9 octobre ajoute **1 transcription (869 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement.
 
-Documents terminés dans ce lot :
+Le lot du 8 octobre contient **37 nouveaux documents (1402 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
+
+Documents terminés dans le lot du 8 octobre :
 
 - [CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX](data/analyse-rn/transcriptions/CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX.md)
 - [CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
