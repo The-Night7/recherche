@@ -327,7 +327,9 @@ def sections_course_pdf(text):
 MD_HEAD_RE = re.compile(r"(?m)^(#{1,4})\s+(.+?)\s*$")
 
 
-def sections_markdown(text):
+def sections_markdown(text, keep_intro=False):
+    """keep_intro : garde le texte entre le titre du document et le premier
+    sous-titre (la ligne de présentation des fiches de révision)."""
     text = re.sub(r"(?s)^---\n.*?\n---\n", "", text)  # front-matter
     marks = list(MD_HEAD_RE.finditer(text))
     if not marks:
@@ -338,6 +340,9 @@ def sections_markdown(text):
         # "3\." (échappement Markdown) -> "3." ; les commandes LaTeX (\alpha) restent
         title = re.sub(r"\\([.\-#()\[\]!+])", r"\1", re.sub(r"[*_`]", "", m.group(2))).strip(" :")
         if i == 0 and level == 1:  # titre du document ("CM Séries"), déjà dans doc_label
+            intro = text[m.end(): marks[1].start() if len(marks) > 1 else len(text)].strip()
+            if keep_intro and intro:
+                secs.append(("Présentation", intro))
             continue
         path = {k: v for k, v in path.items() if k < level}
         path[level] = title
@@ -357,13 +362,14 @@ def chunk_document(path):
         raw = source.read()
     fmt = "md" if ext == ".md" else "pdf"
     title = re.match(r"#\s+(.+)", raw)
-    if fmt == "md" and stem.startswith("Fiche") and title:
+    fiche = fmt == "md" and stem.startswith("Fiche") and title
+    if fiche:
         # fiches de révision : le titre du fichier garde les accents (« Fiche 2 : Séries de référence »)
         years_txt = f"{meta['year']}-{meta['year'] + 1}" if meta["year"] else "année inconnue"
         meta["title"] = title.group(1).strip()
         meta["doc_label"] = f"{meta['title']} · {years_txt}"
     if fmt == "md":
-        secs = sections_markdown(raw)
+        secs = sections_markdown(raw, keep_intro=bool(fiche))
     else:
         pages = drop_running_lines(fix_glyphs(raw).split(PAGE_SEP), whole_text=meta["kind"] == "cours")
         text = fix_sums(clean_text("\n\n".join(pages)))
