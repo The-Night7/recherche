@@ -186,6 +186,7 @@ def build_tree():
         tree.setdefault(c["course"], []).append({
             "key": key, "label": c.get("doc_label") or key, "kind": c["kind"],
             "corrige": bool(c["corrige"]), "year": c["year"], "count": len(ids),
+            "with_correction": any(CHUNKS[i].get("with_correction") for i in ids),
         })
     for docs in tree.values():
         docs.sort(key=lambda d: (d["kind"], -(d["year"] or 0), d["corrige"], d["label"].lower()))

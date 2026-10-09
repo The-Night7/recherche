@@ -527,10 +527,46 @@ function showWelcome(){
     : courseExamples(state.course);
   $("results").innerHTML = `<div class="hint">
     <p>Retrouve les cours et exercices de <b>${escapeHtml(courses.length === 1 ? courses[0].curriculum_label : scopeLabel())}</b>.</p>
-    <p>Choisis ton cycle, ton année, ton semestre et ta matière, puis tape une notion ou une référence comme « TD1 exercice 2 ».</p>
+    <p>Choisis ton cycle, ton année, ton semestre et ta matière, puis tape une notion ou une référence comme « TD1 exercice 2 », ou ouvre directement un document de la liste.</p>
     <div class="examples">${examples.map(e => `<button class="example">${escapeHtml(e)}</button>`).join('')}</div>
   </div>`;
   document.querySelectorAll(".example").forEach(b => b.onclick = () => { $("q").value = b.textContent; doSearch(); });
+  showFilteredDocs(searchSequence);
+}
+
+// mêmes règles que filter_mask (search.py), appliquées aux documents
+function docMatchesFilters(d){
+  const versions = d.with_correction ? ["enonce", "corrige"] : [d.corrige ? "corrige" : "enonce"];
+  return (!state.kinds.length || state.kinds.includes(d.kind))
+    && (!state.versions.length || versions.some(v => state.versions.includes(v)))
+    && (!state.years.length || state.years.includes(String(d.year ?? "none")));
+}
+
+// Barre de recherche vide : les documents de la sélection, à ouvrir directement
+async function showFilteredDocs(sequence){
+  try { await loadTree(); } catch (e) { return; }
+  if (sequence !== searchSequence) return;
+  const single = state.course !== "all";
+  const groups = coursesInScope().filter(c => TREE[c.id]).map(c => [c, TREE[c.id].filter(docMatchesFilters)])
+    .filter(([, docs]) => docs.length);
+  const total = groups.reduce((s, [, docs]) => s + docs.length, 0);
+  const section = document.createElement("section");
+  section.className = "filtered-docs";
+  if (!total) {
+    section.innerHTML = '<p class="empty">Aucun document ne correspond à ces filtres.</p>';
+  } else if (single) {
+    const byKind = {};
+    groups[0][1].forEach(d => (byKind[d.kind] ||= []).push(d));
+    section.innerHTML = `<p class="count"><b>${total}</b> document(s) dans la sélection</p>`
+      + Object.keys(byKind).sort((a, b) => Object.keys(META.kinds).indexOf(a) - Object.keys(META.kinds).indexOf(b))
+        .map(k => `<h3 class="doc-group">${escapeHtml(kindLabel(k))} (${byKind[k].length})</h3>${byKind[k].map(docItem).join("")}`).join("");
+  } else {
+    // une matière par bloc repliable : la liste complète peut compter des centaines de documents
+    const open = groups.length <= 3 ? " open" : "";
+    section.innerHTML = `<p class="count"><b>${total}</b> document(s) dans ${groups.length} matière(s)</p>`
+      + groups.map(([c, docs]) => `<details class="doc-course"${open}><summary>${escapeHtml(c.name)} <small>${docs.length}</small></summary>${docs.map(docItem).join("")}</details>`).join("");
+  }
+  $("results").appendChild(section);
 }
 
 /* ---------- fenêtre « Parcourir les fichiers » ---------- */
