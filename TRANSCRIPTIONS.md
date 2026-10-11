@@ -1,14 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 669 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 661 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **10 octobre 2026**. Le lot courant ajoute **2 transcription(s), 195 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **11 octobre 2026**. Le lot courant ajoute **10 transcription(s), 1203 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 19 280 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 18 272 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -16,7 +16,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 10 | En cours — priorité actuelle |
+| 1 | P2 — Préing 2 | 2 | En cours — priorité actuelle |
 | 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
 | 3 | ING 1 | 258 | En attente de la fin de P1 |
 | 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
@@ -27,10 +27,10 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 203 |
+| Transcription Markdown présente | 211 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 558 |
+| Extraction brute seulement : transcription à faire | 550 |
 | Aucun texte associé : à examiner et transcrire | 110 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
@@ -311,9 +311,17 @@ Les 3755 expressions mathématiques des deux diaporamas sont acceptées par KaTe
 - [Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) — 127 pages vérifiées visuellement ; démonstrations et exemples du polycopié restitués, 1782 expressions mathématiques validées. La copie 2024–2025 est identique.
 
 
-## Suite P2 — 10 octobre 2026
+## Suite P2 — 10–11 octobre 2026
 
-2 transcription(s), couvrant 195 pages PDF après dédoublonnage.
+10 transcription(s), couvrant 1203 pages PDF après dédoublonnage.
 
 - [TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
 - [CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [Cours_2001-2002_Electromagnetisme_P2S1_JFerreira](data/electromagnetisme/transcriptions/Cours_2001-2002_Electromagnetisme_P2S1_JFerreira.md)
+- [CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon](data/informatique3/transcriptions/CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon.md)
+- [CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
