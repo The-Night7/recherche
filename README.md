@@ -156,18 +156,38 @@ de matrice dense de plusieurs gigaoctets.
 
 Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](TRANSCRIPTIONS.md) et le [rapport par source](data/transcription-report.json).
 
-### Avancement P2 — 11 octobre 2026
+### Avancement P2 — 12 octobre 2026
 
-**P2 n’est pas terminée : 2 documents restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+**P2 n’est pas terminée : 2 document(s) restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
 
 | Matière | Documents restants |
 | --- | ---: |
-| series | 0 |
+| series | 1 |
 | analyse-rn | 0 |
 | electromagnetisme | 1 |
-| informatique3 | 1 |
+| informatique3 | 0 |
 
-Le lot des 10–11 octobre ajoute **10 transcription(s), couvrant 1203 pages PDF**. Les erreurs et réponses absentes des sources sont signalées.
+### Séries — documents mis à disposition en 2026–2027
+
+Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvelles transcriptions (32 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. Il reste **1 document(s)** de ce dossier à traiter. Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le travail est limité aux séries à la demande du 12 octobre.
+
+- [DS1-SujetB_2024-2025](data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS1-SujetC_2024-2025](data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetA_2024-2025](data/series/transcriptions/DS2-SujetA_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetB_2024-2025](data/series/transcriptions/DS2-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetC_2024-2025](data/series/transcriptions/DS2-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS3_2024-2025](data/series/transcriptions/DS3_2024-2025_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC1_2025-2026](data/series/transcriptions/CC1_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC1-Correction_2025-2026](data/series/transcriptions/CC1-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC2_2025-2026](data/series/transcriptions/CC2_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC2-Correction_2025-2026](data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC3_2025-2026](data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC3-Correction_2025-2026](data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
+- [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
+- [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
+- [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
+
+Le lot des 10–12 octobre ajoute **11 transcription(s), couvrant 1329 pages PDF**. Les erreurs et réponses absentes des sources sont signalées.
 
 - [TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
 - [CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
@@ -179,6 +199,7 @@ Le lot des 10–11 octobre ajoute **10 transcription(s), couvrant 1203 pages PDF
 - [CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 - [CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 - [CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 
 Le lot du 9 octobre ajoute **3 transcriptions (1847 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). [CM_2023-2024_Analyse-dans-RN_P2S1](data/analyse-rn/transcriptions/CM_2023-2024_Analyse-dans-RN_P2S1.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement. Le [polycopié de cours](data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) (127 pages) est également transcrit et vérifié.
 

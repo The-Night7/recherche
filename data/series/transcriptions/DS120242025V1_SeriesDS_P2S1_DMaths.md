@@ -84,4 +84,9 @@ Donc $\lambda = -\frac{1}{6}$.
 $$\ln(n^2u_n) = 2\ln n - \frac{n^\delta}{6}(1 + o(1)) = n^\delta\left(\frac{2\ln n}{n^\delta} - \frac{1}{6} + o(1)\right) \xrightarrow[n\to+\infty]{} -\infty$$
 car $\frac{\ln n}{n^\delta} \to 0$ (croissances comparées). Ainsi $n^2u_n \to 0$, c'est-à-dire $u_n = o\left(\frac{1}{n^2}\right)$ : par la règle de Riemann ($\alpha = 2 > 1$), la série **converge**.
 
-> **Note :** le cas $a = 2$, non demandé, donne $\ln(u_n) \to -\frac{1}{6}$, donc $u_n \to e^{-1/6} \neq 0$ et la série diverge grossièrement.
+> **Note :** le cas $a = 2$, non demandé dans le scan initial, donne $\ln(u_n) \to -\frac{1}{6}$, donc $u_n \to e^{-1/6} \neq 0$ et la série diverge grossièrement.
+
+
+## Version remise à disposition en 2026–2027
+
+Le fichier `PREING2-S1/Series/2627/Annales-20261012/2024-2025/CC1_SujetA_2425.pdf` reprend ce sujet. Comparaison visuelle effectuée le 12 octobre 2026 : les quatre exercices sont identiques, sauf la question 2 de l’exercice 4, qui demande cette fois **$a\le2$** au lieu de $a<2$. Le cas $a=2$ est traité dans la note ci-dessus : la série diverge grossièrement puisque $u_n\to e^{-1/6}$. La coquille « $+ +o$ » du nouvel export se lit $+o$. Cette variante réutilise la présente transcription, sans nouveau fichier.

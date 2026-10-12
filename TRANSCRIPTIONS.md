@@ -2,13 +2,13 @@
 
 **Le chantier global n’est pas terminé : 661 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **11 octobre 2026**. Le lot courant ajoute **10 transcription(s), 1203 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **12 octobre 2026**. Le lot courant ajoute **11 transcription(s), 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire conserve son périmètre : 988 sources, soit 937 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 802 pages avant dédoublonnage. Le reliquat représente 18 272 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 18 148 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Ordre de traitement demandé
 
@@ -27,11 +27,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 211 |
+| Transcription Markdown présente | 228 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 550 |
-| Aucun texte associé : à examiner et transcrire | 110 |
+| Extraction brute seulement : transcription à faire | 549 |
+| Aucun texte associé : à examiner et transcrire | 111 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -311,9 +311,9 @@ Les 3755 expressions mathématiques des deux diaporamas sont acceptées par KaTe
 - [Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) — 127 pages vérifiées visuellement ; démonstrations et exemples du polycopié restitués, 1782 expressions mathématiques validées. La copie 2024–2025 est identique.
 
 
-## Suite P2 — 10–11 octobre 2026
+## Suite P2 — 10–12 octobre 2026
 
-10 transcription(s), couvrant 1203 pages PDF après dédoublonnage.
+11 transcription(s), couvrant 1329 pages PDF après dédoublonnage.
 
 - [TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
 - [CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
@@ -325,3 +325,26 @@ Les 3755 expressions mathématiques des deux diaporamas sont acceptées par KaTe
 - [CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 - [CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 - [CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+
+
+### Séries — documents mis à disposition en 2026–2027
+
+Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvelles transcriptions (32 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. Il reste **1 document(s)** de ce dossier à traiter. Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le travail est limité aux séries à la demande du 12 octobre.
+
+- [DS1-SujetB_2024-2025](data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS1-SujetC_2024-2025](data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetA_2024-2025](data/series/transcriptions/DS2-SujetA_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetB_2024-2025](data/series/transcriptions/DS2-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetC_2024-2025](data/series/transcriptions/DS2-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS3_2024-2025](data/series/transcriptions/DS3_2024-2025_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC1_2025-2026](data/series/transcriptions/CC1_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC1-Correction_2025-2026](data/series/transcriptions/CC1-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC2_2025-2026](data/series/transcriptions/CC2_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC2-Correction_2025-2026](data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC3_2025-2026](data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC3-Correction_2025-2026](data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
+- [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
+- [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
+- [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
+
