@@ -354,6 +354,18 @@ class Handler(BaseHTTPRequestHandler):
             })
             return
 
+        if parsed.path == "/":
+            # API seule (pas de build du frontend trouvé) : mieux qu'un 404 muet.
+            self.send_response(404)
+            body = ("API en ligne, mais aucune interface à servir : "
+                    "le build du frontend est introuvable (WEB_DIR=%s). "
+                    "Voir docs/DEPLOYMENT.md.\n" % WEB_DIR).encode("utf-8")
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
         self.send_response(404)
         self.end_headers()
 
