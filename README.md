@@ -229,9 +229,9 @@ Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapa
 
 ### Finalisation globale — suite du soir, 13 octobre 2026
 
-P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **629 documents** : P1 — Préing 1 : 149, ING 1 : 258, ING 2 : 222.
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **628 documents** : P1 — Préing 1 : 148, ING 1 : 258, ING 2 : 222.
 
-Cette suite ajoute **7 transcription(s) de l’inventaire, couvrant 23 pages PDF** :
+Cette suite ajoute **8 transcription(s) de l’inventaire, couvrant 28 pages PDF** :
 
 - [Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique](backend/data/physique1/transcriptions/Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique.md)
 - [TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont](backend/data/physique1/transcriptions/TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont.md)
@@ -240,6 +240,7 @@ Cette suite ajoute **7 transcription(s) de l’inventaire, couvrant 23 pages PDF
 - [TD5-Matrice-Correction_2023-2024_Algebre2_P1S2_DMaths](backend/data/algebre2/transcriptions/TD5-Matrice-Correction_2023-2024_Algebre2_P1S2_DMaths.md)
 - [TD6-Inverser-une-matrice-Correction_2023-2024_Algebre2_P1S2_DMaths](backend/data/algebre2/transcriptions/TD6-Inverser-une-matrice-Correction_2023-2024_Algebre2_P1S2_DMaths.md)
 - [TD8-Representation-matricielle-Correction(10-12)_2023-2024_Algebre2_P1S2_DMaths](backend/data/algebre2/transcriptions/TD8-Representation-matricielle-Correction%2810-12%29_2023-2024_Algebre2_P1S2_DMaths.md)
+- [DS2-2022-2023-V1-Correction_Algebre2-DS_P1S2_MDebyaoui](backend/data/algebre2/transcriptions/DS2-2022-2023-V1-Correction_Algebre2-DS_P1S2_MDebyaoui.md)
 
 **13 transcriptions hors inventaire** (dossier `PREING1-S1/Analyse1-DS`). Ce sont des sujets de DS, ou des corrigés dont le nom de fichier ne contient pas « Correction ». L’inventaire, limité aux cours et corrigés identifiés par leur nom, ne les compte pas : le reliquat n’en est pas modifié. Plusieurs fichiers ont un titre interne différent de leur nom (« DS 4 », « Corrigé du DM 3 », « Devoir Surveillé 2 », « Examen ») ; l’écart est signalé dans chaque transcription. `DS1-2023-2024` et `DS1-2023-2024-V1` sont des copies binaires identiques.
 
