@@ -1,4 +1,4 @@
-# Structure du dépôt (branche `poc-pro`)
+# Structure du dépôt
 
 ```
 backend/    API Python (server.py, search.py, ingest.py…), données (data/, chunks.json, index.npz), tests, Dockerfile
