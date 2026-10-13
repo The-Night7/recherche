@@ -1,14 +1,14 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 655 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 636 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **12 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **13 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 18 010 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 17 845 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Finalisation globale — 12 octobre 2026
 
@@ -22,6 +22,32 @@ Cette suite ajoute **5 transcription(s), couvrant 136 pages PDF** ; le rattrapag
 - [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
 - [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
 
+## Finalisation globale — 13 octobre 2026
+
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **636 documents** : P1 — Préing 1 : 156, ING 1 : 258, ING 2 : 222.
+
+Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
+
+- [DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu](data/algebre1/transcriptions/DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu.md)
+- [DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo](data/analyse1/transcriptions/DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo.md)
+- [CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D.md)
+- [Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D](data/cef1/transcriptions/Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D.md)
+- [Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D.md)
+
 ## Ordre de traitement demandé
 
 L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années ING suivantes dans l’ordre numérique.
@@ -29,7 +55,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
 | 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
-| 2 | P1 — Préing 1 | 175 | En cours — priorité actuelle |
+| 2 | P1 — Préing 1 | 156 | En cours — priorité actuelle |
 | 3 | ING 1 | 258 | En attente |
 | 4 | ING 2 | 222 | En attente |
 
@@ -39,11 +65,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 234 |
+| Transcription Markdown présente | 253 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 545 |
-| Aucun texte associé : à examiner et transcrire | 109 |
+| Extraction brute seulement : transcription à faire | 528 |
+| Aucun texte associé : à examiner et transcrire | 107 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -131,16 +157,15 @@ Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
 | --- | ---: | ---: | ---: |
-| Algèbre 1 (`algebre1`) | 22 | 1 | 0 |
-| Analyse 1 (`analyse1`) | 10 | 1 | 0 |
-| CEF 1 (`cef1`) | 9 | 0 | 0 |
+| Algèbre 1 (`algebre1`) | 21 | 0 | 0 |
+| Analyse 1 (`analyse1`) | 10 | 0 | 0 |
 | IC 1 (`ic1`) | 1 | 0 | 0 |
 | Informatique 1 (`informatique1`) | 12 | 1 | 0 |
 | Physique 1 (`physique1`) | 27 | 12 | 0 |
 | Algèbre 2 (`algebre2`) | 16 | 5 | 0 |
 | Analyse 2 (`analyse2`) | 17 | 1 | 0 |
 | Informatique 2 (`informatique2`) | 20 | 0 | 0 |
-| Mécanique du point (`mecanique-du-point`) | 19 | 1 | 0 |
+| Mécanique du point (`mecanique-du-point`) | 12 | 1 | 0 |
 | Algèbre (`ing-1-s1-gm-algebre`) | 15 | 2 | 0 |
 | Algorithmique (`ing-1-s1-gm-algorithmique`) | 9 | 3 | 0 |
 | Bases de données (`ing-1-s1-gm-bdd`) | 15 | 0 | 0 |

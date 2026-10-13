@@ -179,6 +179,32 @@ Cette suite ajoute **5 transcription(s), couvrant 136 pages PDF** ; le rattrapag
 - [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
 - [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
 
+### Finalisation globale — 13 octobre 2026
+
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **636 documents** : P1 — Préing 1 : 156, ING 1 : 258, ING 2 : 222.
+
+Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
+
+- [DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu](data/algebre1/transcriptions/DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu.md)
+- [DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo](data/analyse1/transcriptions/DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo.md)
+- [CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D.md)
+- [Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D](data/cef1/transcriptions/Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D.md)
+- [Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D.md)
+
 ### Séries — documents mis à disposition en 2026–2027
 
 Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvelles transcriptions (34 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. **Tous les documents de ce dossier sont transcrits.** Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le lot Séries/2627 est terminé ; la reprise globale suit l’ordre P2 → P1 → ING 1 → ING 2.
