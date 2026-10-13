@@ -1,0 +1,8 @@
+# Blueprint Render : un seul service Docker (API + interface Angular).
+services:
+  - type: web
+    name: recherche
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health

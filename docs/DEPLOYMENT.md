@@ -10,6 +10,21 @@ docker compose logs -f backend   # le chargement de l'index prend quelques secon
 Seul `frontend` (nginx, port 8080) est exposé ; il relaie `/api/` vers `backend`.
 Le backend a une sonde de santé (`/api/health`).
 
+## Un seul service (Render)
+
+Le `Dockerfile` à la racine construit l'application Angular puis lance le backend, qui
+sert l'API **et** l'interface sur le même port (`PORT`, fixé par Render). C'est la
+configuration la plus simple : une seule URL, pas de CORS, pas de nginx.
+
+Sur Render : *New → Blueprint* (lit `render.yaml`), ou dans le service existant,
+*Settings* : **Runtime** `Docker`, **Root Directory** vide, **Dockerfile Path** `./Dockerfile`,
+**Branch** `poc-pro` (ou `main` après fusion), **Health Check Path** `/api/health`.
+Un service configuré avant la réorganisation (racine du dépôt, `python3 server.py`,
+`pip install -r requirements.txt`) ne fonctionne plus : ces fichiers sont dans `backend/`.
+
+Symptôme d'un backend lancé sans le build du front : `/api/*` répond, mais `/` renvoie
+une page 404 vide.
+
 ## Hébergeur
 
 Le backend est un **processus Python qui reste actif** : il charge un index d'environ
