@@ -226,6 +226,33 @@ Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapa
 - [Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D.md)
 - [Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D.md)
 
+
+### Finalisation globale — suite du soir, 13 octobre 2026
+
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **632 documents** : P1 — Préing 1 : 152, ING 1 : 258, ING 2 : 222.
+
+Cette suite ajoute **4 transcription(s) de l’inventaire, couvrant 10 pages PDF** :
+
+- [Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique](backend/data/physique1/transcriptions/Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique.md)
+- [TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont](backend/data/physique1/transcriptions/TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont.md)
+- [DS2-2018-2019-Correction_Algebre2-DS_P1S2_KFayad](backend/data/algebre2/transcriptions/DS2-2018-2019-Correction_Algebre2-DS_P1S2_KFayad.md)
+- [DM1-Continuite_2021-2022_Analyse2_P1S2_DMaths](backend/data/analyse2/transcriptions/DM1-Continuite_2021-2022_Analyse2_P1S2_DMaths.md)
+
+**13 transcriptions hors inventaire** (dossier `PREING1-S1/Analyse1-DS`). Ce sont des sujets de DS, ou des corrigés dont le nom de fichier ne contient pas « Correction ». L’inventaire, limité aux cours et corrigés identifiés par leur nom, ne les compte pas : le reliquat n’en est pas modifié. Plusieurs fichiers ont un titre interne différent de leur nom (« DS 4 », « Corrigé du DM 3 », « Devoir Surveillé 2 », « Examen ») ; l’écart est signalé dans chaque transcription. `DS1-2023-2024` et `DS1-2023-2024-V1` sont des copies binaires identiques.
+
+- [DS1-2024-2025-V3_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2024-2025-V3_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2024-2025-V1_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2024-2025-V1_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2024-2025-V2_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2024-2025-V2_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2023-2024-V2_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2023-2024-V2_Analyse1-DS_P1S1_DMaths.md)
+- [DS3-2021-2022_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS3-2021-2022_Analyse1-DS_P1S1_DMaths.md)
+- [DS3-2023-2024_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS3-2023-2024_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2020-2021-V3_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2020-2021-V3_Analyse1-DS_P1S1_DMaths.md)
+- [DS3-2020-2021-V2_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS3-2020-2021-V2_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2020-2021_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2020-2021_Analyse1-DS_P1S1_DMaths.md)
+- [DS3-2020-2021_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS3-2020-2021_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2021-2022_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2021-2022_Analyse1-DS_P1S1_DMaths.md)
+- [DS2-2023-2024_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS2-2023-2024_Analyse1-DS_P1S1_DMaths.md)
+- [DS1-2023-2024-V1_Analyse1-DS_P1S1_DMaths](backend/data/analyse1/transcriptions/DS1-2023-2024-V1_Analyse1-DS_P1S1_DMaths.md)
 ### Séries — documents mis à disposition en 2026–2027
 
 Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvelles transcriptions (34 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. **Tous les documents de ce dossier sont transcrits.** Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le lot Séries/2627 est terminé ; la reprise globale suit l’ordre P2 → P1 → ING 1 → ING 2.
