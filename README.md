@@ -158,18 +158,30 @@ Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, to
 
 ### Avancement P2 — 12 octobre 2026
 
-**P2 n’est pas terminée : 2 document(s) restent à transcrire ou à vérifier.** Une extraction brute ne compte pas comme une transcription achevée.
+**P2 est terminée dans le périmètre de l’inventaire : aucun document restant.** Une extraction brute ne compte pas comme une transcription achevée.
 
 | Matière | Documents restants |
 | --- | ---: |
-| series | 1 |
+| series | 0 |
 | analyse-rn | 0 |
-| electromagnetisme | 1 |
+| electromagnetisme | 0 |
 | informatique3 | 0 |
+
+### Finalisation globale — 12 octobre 2026
+
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **655 documents** : P1 — Préing 1 : 175, ING 1 : 258, ING 2 : 222.
+
+Cette suite ajoute **5 transcription(s), couvrant 136 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
+
+- [CM_2019-2020_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/CM_2019-2020_Electromagnetisme_P2S1_DPhysique.md)
+- [DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad](data/algebre1/transcriptions/DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad.md)
+- [DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel](data/algebre1/transcriptions/DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel.md)
+- [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
 
 ### Séries — documents mis à disposition en 2026–2027
 
-Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvelles transcriptions (32 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. Il reste **1 document(s)** de ce dossier à traiter. Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le travail est limité aux séries à la demande du 12 octobre.
+Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvelles transcriptions (34 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. **Tous les documents de ce dossier sont transcrits.** Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le lot Séries/2627 est terminé ; la reprise globale suit l’ordre P2 → P1 → ING 1 → ING 2.
 
 - [DS1-SujetB_2024-2025](data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
 - [DS1-SujetC_2024-2025](data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
@@ -183,6 +195,7 @@ Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvell
 - [CC2-Correction_2025-2026](data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
 - [CC3_2025-2026](data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
 - [CC3-Correction_2025-2026](data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
+- [Rattrapage_2025-2026](data/series/transcriptions/Rattrapage_2025-2026_Series_P2S1_DMaths.md) — 2 pages.
 - [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
 - [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
 - [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).

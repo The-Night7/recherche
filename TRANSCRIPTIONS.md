@@ -1,14 +1,26 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 661 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 655 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **12 octobre 2026**. Le lot courant ajoute **11 transcription(s), 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **12 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 18 148 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 18 010 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+
+## Finalisation globale — 12 octobre 2026
+
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **655 documents** : P1 — Préing 1 : 175, ING 1 : 258, ING 2 : 222.
+
+Cette suite ajoute **5 transcription(s), couvrant 136 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
+
+- [CM_2019-2020_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/CM_2019-2020_Electromagnetisme_P2S1_DPhysique.md)
+- [DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad](data/algebre1/transcriptions/DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad.md)
+- [DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel](data/algebre1/transcriptions/DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel.md)
+- [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
 
 ## Ordre de traitement demandé
 
@@ -16,10 +28,10 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
-| 1 | P2 — Préing 2 | 2 | En cours — priorité actuelle |
-| 2 | P1 — Préing 1 | 179 | En attente de la fin de P2 |
-| 3 | ING 1 | 258 | En attente de la fin de P1 |
-| 4 | ING 2 | 222 | En attente de la fin d’ING 1 |
+| 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
+| 2 | P1 — Préing 1 | 175 | En cours — priorité actuelle |
+| 3 | ING 1 | 258 | En attente |
+| 4 | ING 2 | 222 | En attente |
 
 **Règle de reprise : terminer les transcriptions et vérifications de l’année courante avant de commencer le reliquat de l’année suivante.** Les semestres 1 et 2 sont inclus à chaque étape. Les fichiers déjà réalisés dans d’autres années sont conservés. Une extraction brute ou une lecture encore incertaine ne suffit pas à clôturer l’étape. Cet ordre doit être conservé lors de chaque mise à jour du bilan.
 
@@ -27,11 +39,11 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 228 |
+| Transcription Markdown présente | 234 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 549 |
-| Aucun texte associé : à examiner et transcrire | 111 |
+| Extraction brute seulement : transcription à faire | 545 |
+| Aucun texte associé : à examiner et transcrire | 109 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -119,14 +131,7 @@ Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et
 
 | Matière (identifiant du dépôt) | Texte brut seulement | Sans texte associé | Lecture incertaine |
 | --- | ---: | ---: | ---: |
-| Analyse dans ℝⁿ (`analyse-rn`) | 0 | 1 | 0 |
-| Électromagnétisme (`electromagnetisme`) | 3 | 0 | 0 |
-| Informatique 3 (`informatique3`) | 8 | 0 | 0 |
-| Séries (`series`) | 0 | 0 | 0 |
-| SHS (`shs`) | 0 | 0 | 0 |
-| Informatique 4 (`informatique4`) | 0 | 0 | 0 |
-| Ondes (`ondes`) | 0 | 0 | 0 |
-| Algèbre 1 (`algebre1`) | 25 | 2 | 0 |
+| Algèbre 1 (`algebre1`) | 22 | 1 | 0 |
 | Analyse 1 (`analyse1`) | 10 | 1 | 0 |
 | CEF 1 (`cef1`) | 9 | 0 | 0 |
 | IC 1 (`ic1`) | 1 | 0 | 0 |
@@ -166,11 +171,11 @@ Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et
 | Data mining 2 (`ing-2-s1-data-mining`) | 5 | 25 | 0 |
 | Décidabilité et complexité (`ing-2-s1-decidabilite-complexite`) | 7 | 1 | 0 |
 | ECE (`ing-2-s1-ece`) | 12 | 0 | 0 |
-| Économie (`ing-2-s1-economie`) | 18 | 0 | 0 |
 | Modèle linéaire (`ing-2-s1-modele-lineaire`) | 15 | 11 | 0 |
 | Optimisation déterministe (`ing-2-s1-optimisation-deterministe`) | 7 | 2 | 0 |
 | Programmation fonctionnelle (`ing-2-s1-programmation-fonctionnelle`) | 11 | 0 | 0 |
 | Traitement du signal (`ing-2-s1-traitement-signal`) | 12 | 12 | 0 |
+| Économie (`ing-2-s1-economie`) | 18 | 0 | 0 |
 | Compressive sensing (`ing-2-s2-compressive-sensing`) | 14 | 1 | 0 |
 | Design de la décision (`ing-2-s2-design-decision`) | 4 | 0 | 0 |
 | Équations aux dérivées partielles (`ing-2-s2-edp`) | 5 | 4 | 0 |
@@ -181,7 +186,7 @@ Au 3 octobre, le reliquat inventorié de physique moderne et d’intégration et
 
 ## Vérification et limites
 
-Le [rapport JSON](data/transcription-report.json) donne pour chaque source son chemin, sa matière, son empreinte SHA-256, son fichier texte ou Markdown actuel, ses doublons exacts et ses pages PDF pauvres en texte extractible. Les 988 sources sont disponibles localement.
+Le [rapport JSON](data/transcription-report.json) donne pour chaque source son chemin, sa matière, son empreinte SHA-256, son fichier texte ou Markdown actuel, ses doublons exacts et ses pages PDF pauvres en texte extractible. Les 1005 sources inventoriées sont disponibles localement.
 
 Le périmètre hérité inclut certains sujets, programmes et jeux de données classés comme cours par le dépôt. Il n’a pas été réduit pour améliorer artificiellement le taux d’avancement. Les transcriptions de sujets hors de cet inventaire ne sont pas ajoutées au total.
 
@@ -330,7 +335,7 @@ Les 3755 expressions mathématiques des deux diaporamas sont acceptées par KaTe
 
 ### Séries — documents mis à disposition en 2026–2027
 
-Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvelles transcriptions (32 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. Il reste **1 document(s)** de ce dossier à traiter. Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le travail est limité aux séries à la demande du 12 octobre.
+Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvelles transcriptions (34 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. **Tous les documents de ce dossier sont transcrits.** Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le lot Séries/2627 est terminé ; la reprise globale suit l’ordre P2 → P1 → ING 1 → ING 2.
 
 - [DS1-SujetB_2024-2025](data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
 - [DS1-SujetC_2024-2025](data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
@@ -344,6 +349,7 @@ Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **15 nouvell
 - [CC2-Correction_2025-2026](data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
 - [CC3_2025-2026](data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
 - [CC3-Correction_2025-2026](data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
+- [Rattrapage_2025-2026](data/series/transcriptions/Rattrapage_2025-2026_Series_P2S1_DMaths.md) — 2 pages.
 - [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
 - [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
 - [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
