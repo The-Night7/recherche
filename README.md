@@ -14,6 +14,7 @@ docker-compose.yml
 - **Docker** : `docker compose up --build` puis http://localhost:8080 (nginx sert le front et relaie `/api/` vers le backend).
 - **Une seule commande sans Docker** : `cd frontend && npm run build`, puis `cd backend && python3 server.py` sert aussi le build sur http://localhost:8000.
 - Toutes les commandes Python ci-dessous se lancent **depuis `backend/`**.
+- **Intégration continue** : GitHub Actions (`.github/workflows/ci.yml`), voir [passation](docs/PASSATION.md).
 - **Tests** : `cd backend && python3 -m unittest discover -s tests` ; `cd frontend && npm test`.
 
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
