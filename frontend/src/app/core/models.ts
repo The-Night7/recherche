@@ -49,7 +49,8 @@ export interface DocInfo {
 /** Documents de chaque matière, indexés par identifiant de matière. */
 export type Tree = Record<string, DocInfo[]>;
 
-export type BlockType = 'md' | 'text' | 'slides' | 'code' | 'formula' | 'prose';
+/** Types de blocs produits par `content_blocks` (backend/server.py). */
+export type BlockType = 'md' | 'text' | 'slides' | 'code';
 
 export interface Block {
   type: BlockType;
@@ -59,20 +60,21 @@ export interface Block {
 export interface Video {
   notion: string;
   url: string;
-  /** Absent quand le lien ouvre une recherche YouTube. */
-  title?: string;
-  channel?: string;
+  /** `null` quand aucune vidéo ne traite la notion : le lien ouvre alors une recherche YouTube. */
+  title: string | null;
+  channel: string | null;
 }
 
 export interface PdfSource {
   doc: string;
+  /** Numéros des pages (à partir de 1) du PDF d'origine. */
   pages: number[];
 }
 
 export interface CurrentCorrection {
   td: number;
   exercise: number;
-  partial?: boolean;
+  partial: boolean;
 }
 
 export interface SearchResult {
@@ -102,7 +104,6 @@ export interface SearchResult {
 }
 
 export interface SearchResponse {
-  error?: string;
   tokens: string[];
   reference: string | null;
   relaxed: boolean;

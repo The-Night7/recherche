@@ -10,6 +10,7 @@ Ce qu'il faut savoir pour reprendre le projet. Le détail technique est dans
 - **Root Directory** : vide. **Build Command** :
   `pip install -r backend/requirements.txt && cd frontend && npm ci && npm run build`.
   **Start Command** : `cd backend && python3 server.py`.
+- Node.js est fourni par l'image Python de Render (v24 au dernier déploiement) : c'est ce qui permet de compiler Angular pendant le build.
 - Sonde : `/api/health`. Après une période d'inactivité (offre gratuite), le premier
   chargement prend environ une minute.
 - Le `Dockerfile` racine, `render.yaml` et `docker-compose.yml` sont prêts mais

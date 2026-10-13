@@ -274,10 +274,6 @@ export function renderBlocks(blocks: readonly Block[], terms: readonly string[])
           return `<pre class="text-excerpt">${highlightPlain(b.text, terms)}</pre>`;
         case 'code':
           return `<pre class="code-block">${escapeHtml(b.text)}</pre>`;
-        case 'formula':
-          return `<div class="formula"><pre>${escapeHtml(b.text)}</pre></div>`;
-        default:
-          return `<p class="prose">${highlightPlain(b.text, terms)}</p>`;
       }
     })
     .join('');

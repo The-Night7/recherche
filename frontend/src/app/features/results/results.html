@@ -5,9 +5,9 @@
   } @else if (v.kind === 'error') {
     <p class="empty" [innerHTML]="v.text | trustedHtml"></p>
   } @else if (v.kind === 'empty') {
-    @if (v.response && !v.response.tokens.length) {
+    @if (!v.response.tokens.length) {
       <p class="empty">Question trop courte : ajoute un mot du cours (3 lettres ou plus).</p>
-    } @else if (v.response) {
+    } @else {
       <p class="empty">Aucun passage trouvé pour <b>{{ v.response.tokens.join(', ') }}</b> avec ces filtres.
         Élargis la recherche (autre matière, plus de types ou d'années) ou reformule avec le vocabulaire du cours.</p>
     }

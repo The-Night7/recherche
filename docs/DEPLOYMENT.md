@@ -31,17 +31,18 @@ Réglages, **Root Directory vide** (le build lit `frontend/` et `backend/`) :
 - **Build Command** : `pip install -r backend/requirements.txt && cd frontend && npm ci && npm run build`
 - **Start Command** : `cd backend && python3 server.py`
 
-Ce mode suppose que Node.js est disponible dans l'image Python de Render (sinon l'étape
-`npm ci` échoue : voir les logs de build) et n'installe pas `pdftoppm` : les pages PDF
-d'origine ne s'affichent pas (sans effet si les PDF ne sont pas dans le dépôt).
+Ce mode est **vérifié en production** (octobre 2026) : l'image Python de Render fournit
+Node.js (version 24 au moment du test), donc `npm ci` et `ng build` s'exécutent pendant le
+build. Il n'installe pas `pdftoppm` : les pages PDF d'origine ne s'affichent pas (sans effet
+si les PDF ne sont pas dans le dépôt).
 
 Symptôme d'un backend lancé sans le build du front : `/api/*` répond, mais `/` renvoie
 une page 404 vide.
 
 ## Hébergeur
 
-Le backend est un **processus Python qui reste actif** : il charge un index d'environ
-40 Mo en mémoire au démarrage et appelle `pdftoppm` (outil système) pour afficher des
+Le backend est un **processus Python qui reste actif** : il charge en mémoire, au démarrage,
+environ 37 Mo de fichiers d'index (`chunks.json`, `index.npz`, `vocab.json`) et appelle `pdftoppm` (outil système) pour afficher des
 pages de PDF. Il lui faut donc un hébergeur de conteneurs ou de processus longs.
 
 | Option | Backend | Frontend | Commentaire |
