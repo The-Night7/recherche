@@ -1,0 +1,33 @@
+<dialog #dialog id="browser" aria-labelledby="browser-title"
+        (click)="onBackdrop($event)" (close)="search.browserOpen.set(false)">
+  <div class="browser-head">
+    <h2 id="browser-title">Parcourir les fichiers</h2>
+    <input #filterInput id="browser-filter" type="search" placeholder="Filtrer les documents…" aria-label="Filtrer les documents" autocomplete="off"
+           [value]="text()" (input)="text.set($any($event.target).value)" (keydown.enter)="firstDoc()">
+    <button id="browser-close" aria-label="Fermer" (click)="search.browserOpen.set(false)">×</button>
+  </div>
+  <div class="browser-body">
+    <nav id="browser-courses" aria-label="Matières">
+      @for (c of courses(); track c.id) {
+        @if (c.heading) {
+          <h3 class="course-group">{{ c.heading }}</h3>
+        }
+        <button class="course" [attr.data-id]="c.id" [attr.data-domain]="courseDomain(c.id)"
+                [attr.aria-pressed]="c.id === current()" (click)="choose(c.id)">
+          <span class="sym" [attr.data-len]="symLength(c.id)">{{ courseSym(c.id) }}</span>
+          <span class="name">{{ c.name }}<small>{{ c.count }} documents</small></span>
+        </button>
+      }
+    </nav>
+    <div id="browser-docs" aria-live="polite">
+      @for (g of groups(); track g.title) {
+        <h3 class="doc-group">{{ g.title }} ({{ g.docs.length }})</h3>
+        @for (d of g.docs; track d.key) {
+          <app-doc-item [doc]="d" (open)="search.showDoc($event)" />
+        }
+      } @empty {
+        <p class="empty">{{ text().trim() ? 'Aucun document ne correspond à ce filtre dans la sélection.' : 'Aucune matière dans la sélection : élargis les filtres.' }}</p>
+      }
+    </div>
+  </div>
+</dialog>

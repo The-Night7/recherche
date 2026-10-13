@@ -2,9 +2,9 @@
 """
 Petit serveur web local pour interroger l'index TF-IDF avec une
 interface propre, sans dépendance externe (juste la bibliothèque
-standard de Python + numpy pour la recherche). La page est dans
-web/ (index.html, style.css, app.js, theme.js) ; elle permet de choisir où chercher (cours, type de
-document, énoncés/corrigés, années).
+standard de Python + numpy pour la recherche). L'interface est
+l'application Angular de frontend/ ; elle permet de choisir où chercher (cours, type de
+document, énoncés/corrigés, années). Ce serveur n'en sert le build que si WEB_DIR existe.
 
 Usage:
     python3 server.py
@@ -222,8 +222,10 @@ def csv_param(qs, name):
 
 
 # En production (docker compose) le front est servi par nginx : WEB_DIR=none désactive le statique.
-# En local, `python3 server.py` sert encore ../frontend pour tout lancer d'une commande.
-WEB_DIR = os.environ.get("WEB_DIR") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+# En local, après `cd frontend && npm run build`, `python3 server.py` sert aussi ce build (une seule commande).
+# En développement, préférer `ng serve` (frontend/proxy.conf.json relaie /api vers ce serveur).
+WEB_DIR = os.environ.get("WEB_DIR") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "frontend", "dist", "tuteur", "browser")
 STATIC_TYPES = {
     ".html": "text/html; charset=utf-8",
     ".css": "text/css; charset=utf-8",

@@ -1,0 +1,93 @@
+<aside id="aside" [class.open]="open()">
+  <button id="toggle-filters" [attr.aria-expanded]="open()" (click)="open.set(!open())">
+    <span>Où chercher : <b id="scope-summary">{{ store.scopeSummary() }}</b></span>
+  </button>
+  <div id="filters">
+    <fieldset>
+      <legend>Cycle</legend>
+      <div class="chips">
+        @for (o of programOptions(); track o[0]) {
+          <button class="chip" [attr.aria-pressed]="store.filters().program === o[0]" (click)="change({ program: o[0] })">{{ o[1] }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Année dans le cycle</legend>
+      <div class="chips">
+        @for (o of studyYearOptions; track o[0]) {
+          <button class="chip" [attr.aria-pressed]="store.filters().study_year === o[0]" (click)="change({ study_year: o[0] })">{{ o[1] }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Semestre</legend>
+      <div class="chips">
+        @for (o of semesterOptions(); track o[0]) {
+          <button class="chip" [attr.aria-pressed]="store.filters().semester === o[0]" (click)="change({ semester: o[0] })">{{ o[1] }}</button>
+        }
+      </div>
+    </fieldset>
+    @if (store.availableTracks().length) {
+      <fieldset>
+        <legend>Parcours</legend>
+        <div class="chips">
+          @for (o of trackOptions(); track o[0]) {
+            <button class="chip" [attr.aria-pressed]="store.filters().track === o[0]" (click)="change({ track: o[0] })">{{ o[1] }}</button>
+          }
+        </div>
+      </fieldset>
+    }
+    <fieldset>
+      <legend>Matières</legend>
+      <div class="courses">
+        @for (c of courseEntries(); track c.id) {
+          @if (c.heading) {
+            <h2 class="course-group">{{ c.heading }}</h2>
+          }
+          <button class="course" [attr.data-id]="c.id" [attr.data-domain]="c.id === 'all' ? null : courseDomain(c.id)"
+                  [attr.aria-pressed]="store.filters().course === c.id" (click)="chooseCourse(c.id)">
+            <span class="sym" [attr.data-len]="symLength(c.id)">{{ c.id === 'all' ? '∗' : courseSym(c.id) }}</span>
+            <span class="name">{{ c.name }}<small>{{ c.count }} passages</small></span>
+          </button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Type de document</legend>
+      <div class="chips">
+        @for (k of kindOptions(); track k.id) {
+          <button class="chip" [disabled]="k.disabled" [attr.aria-pressed]="store.filters().kinds.includes(k.id)" (click)="toggle('kinds', k.id)">{{ k.label }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Énoncés ou corrigés</legend>
+      <div class="chips">
+        @for (o of versionOptions; track o[0]) {
+          <button class="chip" [attr.aria-pressed]="store.filters().versions.includes(o[0])" (click)="toggle('versions', o[0])">{{ o[1] }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Années scolaires</legend>
+      <div class="chips">
+        @for (y of store.yearsInScope(); track yearId(y)) {
+          <button class="chip" [attr.aria-pressed]="store.filters().years.includes(yearId(y))" (click)="toggle('years', yearId(y))">{{ yearText(y) }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Nombre de résultats</legend>
+      <div class="chips">
+        @for (k of counts; track k) {
+          <button class="chip" [attr.aria-pressed]="store.filters().k === k" (click)="change({ k })">{{ k }}</button>
+        }
+      </div>
+    </fieldset>
+    <fieldset>
+      <label class="switch"><input type="checkbox" [checked]="store.filters().recent" (change)="change({ recent: $any($event.target).checked })">
+        <span>Favoriser les plus récents<small>à pertinence proche, le document le plus récent passe devant</small></span></label>
+    </fieldset>
+    <button id="reset" (click)="reset()">Tout réinitialiser</button>
+  </div>
+</aside>

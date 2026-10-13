@@ -1,0 +1,67 @@
+@let r = result();
+<article class="card" [attr.data-course]="r.course" [attr.data-domain]="courseDomain(r.course)" appImageFallback>
+  <div class="card-head">
+    <div class="doc">
+      <span class="badge" aria-hidden="true">{{ courseSym(r.course) }}</span>
+      @if (r.curriculum_label) {
+        <span class="context-tag">{{ r.curriculum_label }}</span>
+      }
+      <span><b>{{ r.course_name }}</b>, {{ cleanTitle(r.doc_label) }}</span>
+      @if (r.corrige) {
+        <span class="tag">corrigé</span>
+      } @else if (r.with_correction) {
+        <span class="tag" title="Correction absente du document d’origine, rédigée pour cette transcription">correction rédigée</span>
+      }
+      @if (r.score !== null && r.doc_key) {
+        <button type="button" class="open-doc" (click)="openDoc.emit(r.doc_key)">Ouvrir le document</button>
+      }
+    </div>
+    <h3 class="section">{{ sectionTitle() }}</h3>
+    @if (r.score !== null) {
+      <div class="score" [title]="tip()">
+        <span class="meter"><i [style.width.%]="percent()"></i></span>{{ r.score.toFixed(3) }}
+      </div>
+    }
+  </div>
+
+  @if (views().length > 1) {
+    <div class="view-tabs" role="group" aria-label="Affichage">
+      @for (v of views(); track $index) {
+        <button type="button" class="view-tab" [attr.aria-pressed]="active() === $index" [title]="v.hint" (click)="active.set($index)">{{ v.label }}</button>
+      }
+    </div>
+  }
+  @for (v of views(); track $index) {
+    <div class="card-body" [hidden]="active() !== $index">
+      @if (v.label === 'Page d’origine') {
+        @if (pages(); as p) {
+          @for (n of p.shown; track n) {
+            <figure class="pdf-page"><img loading="lazy" decoding="async" [alt]="'Page ' + n + ' du document'" [src]="pageUrl(p.doc, n)"><figcaption>page {{ n }}</figcaption></figure>
+          }
+          @if (p.rest.length) {
+            <details class="more-pages"><summary>Autres pages ({{ p.rest.length }})</summary>
+              @for (n of p.rest; track n) {
+                <figure class="pdf-page"><img loading="lazy" decoding="async" [alt]="'Page ' + n + ' du document'" [src]="pageUrl(p.doc, n)"><figcaption>page {{ n }}</figcaption></figure>
+              }
+            </details>
+          }
+        }
+      } @else {
+        <div appKatex [innerHTML]="v.html | trustedHtml"></div>
+      }
+    </div>
+  }
+
+  @if (r.videos.length) {
+    <div class="videos"><span class="videos-label">Vidéos</span>
+      @for (v of r.videos; track v.url) {
+        @if (v.title) {
+          <a class="video-link" [href]="v.url" target="_blank" rel="noopener noreferrer" [title]="v.notion + ' — chaîne ' + v.channel">▶ {{ v.title }}</a>
+        } @else {
+          <a class="video-link search" [href]="v.url" target="_blank" rel="noopener noreferrer"
+             title="Pas de vidéo sur cette notion dans les chaînes suivies : recherche YouTube">{{ v.notion }} <small>(recherche)</small></a>
+        }
+      }
+    </div>
+  }
+</article>
