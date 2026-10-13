@@ -1,0 +1,78 @@
+<main id="results">
+  @let v = view();
+  @if (v.kind === 'loading') {
+    <p class="hint loading">{{ v.text }}</p>
+  } @else if (v.kind === 'error') {
+    <p class="empty" [innerHTML]="v.text | trustedHtml"></p>
+  } @else if (v.kind === 'empty') {
+    @if (v.response && !v.response.tokens.length) {
+      <p class="empty">Question trop courte : ajoute un mot du cours (3 lettres ou plus).</p>
+    } @else if (v.response) {
+      <p class="empty">Aucun passage trouvé pour <b>{{ v.response.tokens.join(', ') }}</b> avec ces filtres.
+        Élargis la recherche (autre matière, plus de types ou d'années) ou reformule avec le vocabulaire du cours.</p>
+    }
+  } @else if (v.kind === 'welcome') {
+    <div class="hint">
+      <p>Retrouve les cours et exercices de <b>{{ welcomeTitle() }}</b>.</p>
+      <p>Choisis ton cycle, ton année, ton semestre et ta matière, puis tape une notion ou une référence comme « TD1 exercice 2 », ou ouvre directement un document de la liste.</p>
+      <div class="examples">
+        @for (e of examples(); track e) {
+          <button class="example" (click)="store.query.set(e); store.search()">{{ e }}</button>
+        }
+      </div>
+    </div>
+    @if (filteredDocs(); as fd) {
+      <section class="filtered-docs">
+        @if (!fd.total) {
+          <p class="empty">Aucun document ne correspond à ces filtres.</p>
+        } @else if (fd.single) {
+          <p class="count"><b>{{ fd.total }}</b> document(s) dans la sélection</p>
+          @for (g of fd.byKind; track g.kind) {
+            <h3 class="doc-group">{{ g.label }} ({{ g.docs.length }})</h3>
+            @for (d of g.docs; track d.key) {
+              <app-doc-item [doc]="d" (open)="store.showDoc($event)" />
+            }
+          }
+        } @else {
+          <!-- une matière par bloc repliable : la liste complète peut compter des centaines de documents -->
+          <p class="count"><b>{{ fd.total }}</b> document(s) dans {{ fd.groups.length }} matière(s)</p>
+          @for (g of fd.groups; track g.course.id) {
+            <details class="doc-course" [open]="fd.open">
+              <summary>{{ g.course.name }} <small>{{ g.docs.length }}</small></summary>
+              @for (d of g.docs; track d.key) {
+                <app-doc-item [doc]="d" (open)="store.showDoc($event)" />
+              }
+            </details>
+          }
+        }
+      </section>
+    }
+  } @else if (v.kind === 'results') {
+    <p class="count"><b>{{ v.response.results.length }}</b> passage(s) sur {{ v.response.searched }} dans la sélection
+      @if (v.response.reference) {
+        , référence <b>{{ v.response.reference }}</b>
+        @if (v.response.relaxed) {
+          <span class="relaxed">(exercice introuvable, document entier)</span>
+        }
+      }
+    </p>
+    @for (r of v.response.results; track $index) {
+      <app-result-card [result]="r" [terms]="v.response.highlight || v.response.tokens"
+                       [recent]="filters.filters().recent" (openDoc)="store.showDoc($event)" />
+    }
+  } @else if (v.kind === 'doc') {
+    @let nav = docNav(v.key);
+        <div class="doc-nav">
+          <button type="button" (click)="store.browserOpen.set(true)">← Fichiers</button>
+          <div class="doc-title">{{ nav.title }}
+            <small>{{ nav.course }} · {{ nav.kind }}{{ nav.year ? ' · ' + nav.year : '' }} · document {{ nav.position }} sur {{ nav.total }}</small></div>
+          <button type="button" [disabled]="!nav.prev" [title]="nav.prev ? 'Document précédent : ' + cleanTitle(nav.prev.label) : ''"
+                  (click)="nav.prev && store.showDoc(nav.prev.key)">‹ Précédent</button>
+          <button type="button" [disabled]="!nav.next" [title]="nav.next ? 'Document suivant : ' + cleanTitle(nav.next.label) : ''"
+                  (click)="nav.next && store.showDoc(nav.next.key)">Suivant ›</button>
+        </div>
+        @for (r of v.results; track $index) {
+          <app-result-card [result]="r" [terms]="[]" [recent]="false" (openDoc)="store.showDoc($event)" />
+        }
+  }
+</main>

@@ -2,15 +2,19 @@
 
 ```
 backend/    API Python (server.py, search.py, ingest.py…), données (data/, chunks.json, index.npz), tests, Dockerfile
-frontend/   interface statique (index.html, app.js, style.css), nginx.conf, Dockerfile
+frontend/   application Angular (TypeScript), nginx.conf, Dockerfile
+docs/       ARCHITECTURE.md (architecture détaillée), DEPLOYMENT.md (déploiement)
 docker-compose.yml
 ```
 
-- Toutes les commandes Python ci-dessous se lancent **depuis `backend/`** (`cd backend`).
-- Local sans Docker : `cd backend && python3 server.py` (sert aussi `../frontend`).
-- Docker : `docker compose up --build` puis http://localhost:8080 (nginx sert le front et relaie `/api/` vers le backend).
-- Variables du backend : `PORT`, `WEB_DIR=none` (désactive le statique), `CORS_ORIGIN` (si le front est sur un autre domaine).
-- Les tests : `cd backend && python3 -m unittest discover -s tests && node tests/test_rendering.js`.
+- **Documentation** : [architecture](docs/ARCHITECTURE.md) · [déploiement](docs/DEPLOYMENT.md) ·
+  [frontend](frontend/README.md) · [backend](backend/README.md).
+- **Développement** (deux terminaux) : `cd backend && python3 server.py`, puis
+  `cd frontend && npm install && npm start` → http://localhost:4200.
+- **Docker** : `docker compose up --build` puis http://localhost:8080 (nginx sert le front et relaie `/api/` vers le backend).
+- **Une seule commande sans Docker** : `cd frontend && npm run build`, puis `cd backend && python3 server.py` sert aussi le build sur http://localhost:8000.
+- Toutes les commandes Python ci-dessous se lancent **depuis `backend/`**.
+- **Tests** : `cd backend && python3 -m unittest discover -s tests` ; `cd frontend && npm test`.
 
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
 
