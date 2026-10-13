@@ -1,3 +1,17 @@
+# Structure du dépôt (branche `poc-pro`)
+
+```
+backend/    API Python (server.py, search.py, ingest.py…), données (data/, chunks.json, index.npz), tests, Dockerfile
+frontend/   interface statique (index.html, app.js, style.css), nginx.conf, Dockerfile
+docker-compose.yml
+```
+
+- Toutes les commandes Python ci-dessous se lancent **depuis `backend/`** (`cd backend`).
+- Local sans Docker : `cd backend && python3 server.py` (sert aussi `../frontend`).
+- Docker : `docker compose up --build` puis http://localhost:8080 (nginx sert le front et relaie `/api/` vers le backend).
+- Variables du backend : `PORT`, `WEB_DIR=none` (désactive le statique), `CORS_ORIGIN` (si le front est sur un autre domaine).
+- Les tests : `cd backend && python3 -m unittest discover -s tests && node tests/test_rendering.js`.
+
 # Tuteur "from scratch" — recherche sémantique (TF-IDF)
 
 Cours de **Préing 1 et Préing 2, semestres 1 et 2** (CM, TD, TP, DS, CC, QCM, projets, corrigés).

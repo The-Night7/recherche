@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const context = { document: { getElementById: () => null }, localStorage: { getItem: () => null }, URLSearchParams };
 vm.createContext(context);
-vm.runInContext(fs.readFileSync('web/app.js', 'utf8').split('/* ---------- recherche ---------- */')[0], context);
+vm.runInContext(fs.readFileSync('../frontend/app.js', 'utf8').split('/* ---------- recherche ---------- */')[0], context);
 const render = (text, terms = []) => context.renderMd(text, terms);
 
 test('transcription tables preserve formulas, escaped pipes and safe text', () => {
