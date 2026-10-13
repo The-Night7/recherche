@@ -9,7 +9,7 @@ import { FiltersStore } from './filters.store';
 export type View =
   | { kind: 'loading'; text: string }
   | { kind: 'error'; text: string }
-  | { kind: 'empty'; response: SearchResponse | null; message?: string }
+  | { kind: 'empty'; response: SearchResponse }
   | { kind: 'welcome' }
   | { kind: 'results'; response: SearchResponse }
   | { kind: 'doc'; key: string; results: SearchResult[] };
@@ -71,8 +71,7 @@ export class SearchStore {
     this.api.search(this.searchParams(q)).subscribe({
       next: (data) => {
         if (sequence !== this.sequence) return;
-        if (data.error) this.view.set({ kind: 'error', text: data.error });
-        else if (!data.tokens.length || !data.results.length) this.view.set({ kind: 'empty', response: data });
+        if (!data.tokens.length || !data.results.length) this.view.set({ kind: 'empty', response: data });
         else this.view.set({ kind: 'results', response: data });
       },
       error: () => {

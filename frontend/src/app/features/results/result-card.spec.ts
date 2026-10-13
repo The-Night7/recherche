@@ -43,4 +43,19 @@ describe('ResultCard', () => {
     expect(bodies[0].hidden).toBeTrue();
     expect(bodies[1].hidden).toBeFalse();
   });
+
+  it('links a video directly, or to a YouTube search when none matches the notion', () => {
+    const el = show({
+      ...base,
+      videos: [
+        { notion: 'Normes', url: 'https://www.youtube.com/watch?v=abc', title: 'Les normes', channel: 'Maths Adultes' },
+        { notion: 'Arbres', url: 'https://www.youtube.com/results?search_query=arbres', title: null, channel: null },
+      ],
+    });
+    const links = el.querySelectorAll<HTMLAnchorElement>('.video-link');
+    expect(links[0].textContent).toContain('Les normes');
+    expect(links[0].classList.contains('search')).toBeFalse();
+    expect(links[1].classList.contains('search')).toBeTrue();
+    expect(links[1].textContent).toContain('(recherche)');
+  });
 });

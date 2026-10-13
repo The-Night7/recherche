@@ -127,7 +127,8 @@ Toutes les routes sont des `GET` et répondent en JSON, sauf les images.
 Les types TypeScript correspondants sont dans
 [`frontend/src/app/core/models.ts`](../frontend/src/app/core/models.ts) ; ce fichier est
 la copie du contrat côté frontend et doit être mis à jour avec `result_json` / `build_meta`
-de `server.py`.
+de `server.py`. Il a été comparé aux réponses réelles de l'API (champs, valeurs `null`,
+types de blocs) ; aucun test automatique ne détecte une divergence ultérieure.
 
 ### Configuration (variables d'environnement)
 
