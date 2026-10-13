@@ -7,7 +7,7 @@ docs/       ARCHITECTURE.md (architecture détaillée), DEPLOYMENT.md (déploiem
 docker-compose.yml
 ```
 
-- **Documentation** : [architecture](docs/ARCHITECTURE.md) · [déploiement](docs/DEPLOYMENT.md) ·
+- **Documentation** : [passation](docs/PASSATION.md) · [architecture](docs/ARCHITECTURE.md) · [déploiement](docs/DEPLOYMENT.md) ·
   [frontend](frontend/README.md) · [backend](backend/README.md).
 - **Développement** (deux terminaux) : `cd backend && python3 server.py`, puis
   `cd frontend && npm install && npm start` → http://localhost:4200.
@@ -80,8 +80,10 @@ Après une modification du nettoyage, reconstruire les données avec
 Vérifications du rendu et de l'import :
 
 ```bash
+# depuis backend/
 python3 -m unittest discover -s tests
-node tests/test_rendering.js
+# depuis frontend/ (rendu du Markdown, composants, filtres)
+npm test
 ```
 
 ## Vidéos liées
@@ -106,7 +108,7 @@ l'index).
 ## Utilisation
 
 ```bash
-pip install numpy --break-system-packages
+pip install -r requirements.txt   # depuis backend/
 
 python3 build_index.py          # à refaire seulement si chunks.json change
 python3 search.py "définition d'une norme"
@@ -117,8 +119,8 @@ python3 server.py               # interface web sur http://localhost:8000
 ```
 
 `server.py` ne dépend de rien d'autre que la bibliothèque standard de
-Python (`http.server`) + numpy pour la recherche : pas de Flask, pas
-de framework JS, page HTML/CSS/JS auto-contenue servie directement.
+Python (`http.server`) + numpy pour la recherche : pas de Flask. L'interface est
+l'application Angular de `frontend/` (voir [l'architecture](docs/ARCHITECTURE.md)).
 
 ## Limites
 - Ça ne répond qu'avec des passages existants du cours, mot pour mot
@@ -172,7 +174,7 @@ les notes Markdown conservent leurs blocs de code.
 L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
 de matrice dense de plusieurs gigaoctets.
 
-Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](TRANSCRIPTIONS.md) et le [rapport par source](data/transcription-report.json).
+Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](backend/TRANSCRIPTIONS.md) et le [rapport par source](backend/data/transcription-report.json).
 
 ### Avancement P2 — 12 octobre 2026
 
@@ -191,11 +193,11 @@ P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P
 
 Cette suite ajoute **5 transcription(s), couvrant 136 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
 
-- [CM_2019-2020_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/CM_2019-2020_Electromagnetisme_P2S1_DPhysique.md)
-- [DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad](data/algebre1/transcriptions/DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad.md)
-- [DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel](data/algebre1/transcriptions/DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel.md)
-- [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
-- [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
+- [CM_2019-2020_Electromagnetisme_P2S1_DPhysique](backend/data/electromagnetisme/transcriptions/CM_2019-2020_Electromagnetisme_P2S1_DPhysique.md)
+- [DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad](backend/data/algebre1/transcriptions/DS1-2018-2019-Correction_Algebre1-DS_P1S1_Kfayad.md)
+- [DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel](backend/data/algebre1/transcriptions/DS1-2020-2021-Correction_Algebre1-DS_P1S1_NArancibia-MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel.md)
+- [DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths](backend/data/algebre1/transcriptions/DS1-2021-2022-V2-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL](backend/data/algebre1/transcriptions/DS1-2024-2025-V3-Correction_Algebre1-DS_P1S1__LucienL.md)
 
 ### Finalisation globale — 13 octobre 2026
 
@@ -203,104 +205,104 @@ P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P
 
 Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapage de séries de 2 pages est compté dans le lot Séries/2627 ci-dessous.
 
-- [DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths](data/algebre1/transcriptions/DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths.md)
-- [DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu](data/algebre1/transcriptions/DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu.md)
-- [DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo](data/analyse1/transcriptions/DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo.md)
-- [CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [CM_2013-2014_Mecanique-du-point_P1S2_DPhysique](data/mecanique-du-point/transcriptions/CM_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
-- [Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D.md)
-- [Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D](data/cef1/transcriptions/Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D.md)
-- [Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D.md)
-- [Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D](data/cef1/transcriptions/Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D.md)
+- [DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths](backend/data/algebre1/transcriptions/DS2-2018-2019-Correction_Algebre1-DS_P1S1_DMaths.md)
+- [DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu](backend/data/algebre1/transcriptions/DS3-2019-2020-Correction_Algebre1-DS_P1S1_Inconnu.md)
+- [DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo](backend/data/analyse1/transcriptions/DS1-2024-2025-V3-Correction_Analyse1-DS_P1S1_PAfsharijoo.md)
+- [CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM1_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM2_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM3_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM4_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM5_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM6_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [CM_2013-2014_Mecanique-du-point_P1S2_DPhysique](backend/data/mecanique-du-point/transcriptions/CM_2013-2014_Mecanique-du-point_P1S2_DPhysique.md)
+- [Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme1-Normes-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme2-Definition-Communication_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme4-Ecrit-professionnel-Exercices_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme1-Faire-une-presentation-powerpoint_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme5-Technique-de-redac-resume_2023-2024_CEF1_P1S1_DH&D.md)
+- [Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Normes-Bibliographie_2024-2025_CEF1_P1S1_DH&D.md)
+- [Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme1-Communication-par-image_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme3-Normes-Etat-de-Art_2023-2024_CEF1_P1S1_DH&D.md)
+- [Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D](backend/data/cef1/transcriptions/Theme4-Ecrit-professionnel_2023-2024_CEF1_P1S1_DH&D.md)
 
 ### Séries — documents mis à disposition en 2026–2027
 
 Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvelles transcriptions (34 pages)** sont terminées ; **1 sujet déjà transcrit** est réutilisé sans duplication. **Tous les documents de ce dossier sont transcrits.** Les annales conservent leur année réelle (2024–2025 ou 2025–2026). Le lot Séries/2627 est terminé ; la reprise globale suit l’ordre P2 → P1 → ING 1 → ING 2.
 
-- [DS1-SujetB_2024-2025](data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
-- [DS1-SujetC_2024-2025](data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
-- [DS2-SujetA_2024-2025](data/series/transcriptions/DS2-SujetA_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
-- [DS2-SujetB_2024-2025](data/series/transcriptions/DS2-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
-- [DS2-SujetC_2024-2025](data/series/transcriptions/DS2-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
-- [DS3_2024-2025](data/series/transcriptions/DS3_2024-2025_Series_P2S1_DMaths.md) — 2 page(s).
-- [CC1_2025-2026](data/series/transcriptions/CC1_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
-- [CC1-Correction_2025-2026](data/series/transcriptions/CC1-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
-- [CC2_2025-2026](data/series/transcriptions/CC2_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
-- [CC2-Correction_2025-2026](data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
-- [CC3_2025-2026](data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
-- [CC3-Correction_2025-2026](data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
-- [Rattrapage_2025-2026](data/series/transcriptions/Rattrapage_2025-2026_Series_P2S1_DMaths.md) — 2 pages.
-- [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
-- [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
-- [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
+- [DS1-SujetB_2024-2025](backend/data/series/transcriptions/DS1-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS1-SujetC_2024-2025](backend/data/series/transcriptions/DS1-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetA_2024-2025](backend/data/series/transcriptions/DS2-SujetA_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetB_2024-2025](backend/data/series/transcriptions/DS2-SujetB_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS2-SujetC_2024-2025](backend/data/series/transcriptions/DS2-SujetC_2024-2025_Series_P2S1_DMaths.md) — 1 page(s).
+- [DS3_2024-2025](backend/data/series/transcriptions/DS3_2024-2025_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC1_2025-2026](backend/data/series/transcriptions/CC1_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC1-Correction_2025-2026](backend/data/series/transcriptions/CC1-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC2_2025-2026](backend/data/series/transcriptions/CC2_2025-2026_Series_P2S1_DMaths.md) — 1 page(s).
+- [CC2-Correction_2025-2026](backend/data/series/transcriptions/CC2-Correction_2025-2026_Series_P2S1_DMaths.md) — 4 page(s).
+- [CC3_2025-2026](backend/data/series/transcriptions/CC3_2025-2026_Series_P2S1_DMaths.md) — 2 page(s).
+- [CC3-Correction_2025-2026](backend/data/series/transcriptions/CC3-Correction_2025-2026_Series_P2S1_DMaths.md) — 7 page(s).
+- [Rattrapage_2025-2026](backend/data/series/transcriptions/Rattrapage_2025-2026_Series_P2S1_DMaths.md) — 2 pages.
+- [Fiche-Developpements-limites_2026-2027](backend/data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
+- [TD0_2026-2027](backend/data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
+- [TD1_2026-2027](backend/data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
 
 Le lot des 10–12 octobre ajoute **11 transcription(s), couvrant 1329 pages PDF**. Les erreurs et réponses absentes des sources sont signalées.
 
-- [TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
-- [CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
-- [Cours_2001-2002_Electromagnetisme_P2S1_JFerreira](data/electromagnetisme/transcriptions/Cours_2001-2002_Electromagnetisme_P2S1_JFerreira.md)
-- [CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon](data/informatique3/transcriptions/CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon.md)
-- [CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
-- [CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](data/informatique3/transcriptions/CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada](backend/data/analyse-rn/transcriptions/TD-Correction_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
+- [CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz](backend/data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [Cours_2001-2002_Electromagnetisme_P2S1_JFerreira](backend/data/electromagnetisme/transcriptions/Cours_2001-2002_Electromagnetisme_P2S1_JFerreira.md)
+- [CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon](backend/data/informatique3/transcriptions/CM1-Listes-Chainee_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon.md)
+- [CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM1-Listes-Chaines_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM2-Files-Piles_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM3-Arbres_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM3-Arbres_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM4-ABR_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM5-AVL_2024-2025_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
+- [CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin](backend/data/informatique3/transcriptions/CM6-Unix-Shell_2022-2023_Informatique3_P2S1_EAnsermin-RGrignon-RVerin.md)
 
-Le lot du 9 octobre ajoute **3 transcriptions (1847 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). [CM_2023-2024_Analyse-dans-RN_P2S1](data/analyse-rn/transcriptions/CM_2023-2024_Analyse-dans-RN_P2S1.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement. Le [polycopié de cours](data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) (127 pages) est également transcrit et vérifié.
+Le lot du 9 octobre ajoute **3 transcriptions (1847 pages PDF)** : [CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada](backend/data/analyse-rn/transcriptions/CM_2024-2025_Analyse-dans-RN_P2S1_EMasnada.md). [CM_2023-2024_Analyse-dans-RN_P2S1](backend/data/analyse-rn/transcriptions/CM_2023-2024_Analyse-dans-RN_P2S1.md). Les animations sont regroupées en sections avec renvois au PDF ; les variantes ont été vérifiées visuellement. Le [polycopié de cours](backend/data/analyse-rn/transcriptions/Feuille-Cours_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md) (127 pages) est également transcrit et vérifié.
 
 Le lot du 8 octobre contient **37 nouveaux documents (1402 pages)**. Deux transcriptions de potentiel déjà présentes ont également été réintégrées au bilan, sans nouvelle relecture. Les erreurs et lacunes des PDF sont signalées dans les transcriptions.
 
 Documents terminés dans le lot du 8 octobre :
 
-- [CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX](data/analyse-rn/transcriptions/CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX.md)
-- [CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada](data/analyse-rn/transcriptions/CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
-- [DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](data/analyse-rn/transcriptions/DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
-- [DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu](data/analyse-rn/transcriptions/DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu.md)
-- [DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths](data/analyse-rn/transcriptions/DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
-- [DS1-2023-2024-V2-Correction_Analyse-dans-RN-DS_P2S1_DMaths](data/analyse-rn/transcriptions/DS1-2023-2024-V2-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
-- [DS2-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths](data/analyse-rn/transcriptions/DS2-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
-- [DS3-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu](data/analyse-rn/transcriptions/DS3-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu.md)
-- [DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM](data/analyse-rn/transcriptions/DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM.md)
-- [DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](data/analyse-rn/transcriptions/DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
-- [TD-(6-7)-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine](data/analyse-rn/transcriptions/TD-%286-7%29-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine.md)
-- [slides_de_cours_MI_version_imprimable_2026_2027](data/analyse-rn/transcriptions/slides_de_cours_MI_version_imprimable_2026_2027.md)
-- [sujet_TD_2026_2027](data/analyse-rn/transcriptions/sujet_TD_2026_2027.md)
-- [CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont.md)
-- [CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz.md)
-- [CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
-- [CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont.md)
-- [CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat](data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat.md)
-- [CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz](data/electromagnetisme/transcriptions/CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
-- [CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont](data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont.md)
-- [CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
-- [Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique](data/electromagnetisme/transcriptions/Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
-- [CM-Annotee_2022-2023_Series_P2S1_MX](data/series/transcriptions/CM-Annotee_2022-2023_Series_P2S1_MX.md)
-- [CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac.md)
-- [CM-Derivation_2024-2025_Series_P2S1_DCransac](data/series/transcriptions/CM-Derivation_2024-2025_Series_P2S1_DCransac.md)
-- [CM_2022-2023_Series_P2S1_RDujol](data/series/transcriptions/CM_2022-2023_Series_P2S1_RDujol.md)
-- [TD1-Correction_2022-2023_Series_P2S1_Inconnu](data/series/transcriptions/TD1-Correction_2022-2023_Series_P2S1_Inconnu.md)
-- [TD2a-Correction_2022-2023_Series_P2S1_Inconnu](data/series/transcriptions/TD2a-Correction_2022-2023_Series_P2S1_Inconnu.md)
-- [TD2b-Correction_2022-2023_Series_P2S1_Inconnu](data/series/transcriptions/TD2b-Correction_2022-2023_Series_P2S1_Inconnu.md)
+- [CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX](backend/data/analyse-rn/transcriptions/CM-Annotee_2022-2023_Analyse-dans-RN_P2S1_MX.md)
+- [CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada](backend/data/analyse-rn/transcriptions/CM_2022-2023_Analyse-dans-RN_P2S1_EMasnada.md)
+- [DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](backend/data/analyse-rn/transcriptions/DS1-2020-2021-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
+- [DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu](backend/data/analyse-rn/transcriptions/DS1-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu.md)
+- [DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths](backend/data/analyse-rn/transcriptions/DS1-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
+- [DS1-2023-2024-V2-Correction_Analyse-dans-RN-DS_P2S1_DMaths](backend/data/analyse-rn/transcriptions/DS1-2023-2024-V2-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
+- [DS2-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths](backend/data/analyse-rn/transcriptions/DS2-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_DMaths.md)
+- [DS3-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu](backend/data/analyse-rn/transcriptions/DS3-2021-2022-Correction_Analyse-dans-RN-DS_P2S1_Inconnu.md)
+- [DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM](backend/data/analyse-rn/transcriptions/DS3-2022-2023-Correction_Analyse-dans-RN-DS_P2S1__RayaneM.md)
+- [DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada](backend/data/analyse-rn/transcriptions/DS3-2023-2024-Correction_Analyse-dans-RN-DS_P2S1_EMasnada.md)
+- [TD-(6-7)-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine](backend/data/analyse-rn/transcriptions/TD-%286-7%29-Correction_2024-2025_Analyse-dans-RN_P2S1_KElAmine.md)
+- [slides_de_cours_MI_version_imprimable_2026_2027](backend/data/analyse-rn/transcriptions/slides_de_cours_MI_version_imprimable_2026_2027.md)
+- [sujet_TD_2026_2027](backend/data/analyse-rn/transcriptions/sujet_TD_2026_2027.md)
+- [CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre1-Champ_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2023-2024_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre1_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre2-Biot-Savart_2024-2025_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre3-Maxwell_2024-2025_Electromagnetisme_P2S1_EDupont-LDesplat.md)
+- [CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz](backend/data/electromagnetisme/transcriptions/CM-BIS-Chapitre4_2024-2025_Electromagnetisme_P2S1_ABoumiz.md)
+- [CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre1-Force_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre1-champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre2-Champ_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2022-2023_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont](backend/data/electromagnetisme/transcriptions/CM-Chapitre6-Conducteurs_2023-2024_Electromagnetisme_P2S1_EDupont.md)
+- [CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique](backend/data/electromagnetisme/transcriptions/CM-Rappels_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
+- [Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique](backend/data/electromagnetisme/transcriptions/Fiche-Resume-Electrostatique_2022-2023_Electromagnetisme_P2S1_DPhysique.md)
+- [CM-Annotee_2022-2023_Series_P2S1_MX](backend/data/series/transcriptions/CM-Annotee_2022-2023_Series_P2S1_MX.md)
+- [CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac](backend/data/series/transcriptions/CM-Comparaison-locale_2024-2025_Series_P2S1_DCransac.md)
+- [CM-Derivation_2024-2025_Series_P2S1_DCransac](backend/data/series/transcriptions/CM-Derivation_2024-2025_Series_P2S1_DCransac.md)
+- [CM_2022-2023_Series_P2S1_RDujol](backend/data/series/transcriptions/CM_2022-2023_Series_P2S1_RDujol.md)
+- [TD1-Correction_2022-2023_Series_P2S1_Inconnu](backend/data/series/transcriptions/TD1-Correction_2022-2023_Series_P2S1_Inconnu.md)
+- [TD2a-Correction_2022-2023_Series_P2S1_Inconnu](backend/data/series/transcriptions/TD2a-Correction_2022-2023_Series_P2S1_Inconnu.md)
+- [TD2b-Correction_2022-2023_Series_P2S1_Inconnu](backend/data/series/transcriptions/TD2b-Correction_2022-2023_Series_P2S1_Inconnu.md)
 
 Pour reconstruire après une modification d'un texte ou d'une transcription :
 

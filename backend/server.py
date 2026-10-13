@@ -237,7 +237,7 @@ STATIC_TYPES = {
 
 
 def static_file(url_path):
-    """Chemin du fichier de web/ demandé, ou None (inexistant / hors de web/ / type inconnu)."""
+    """Chemin du fichier demandé dans WEB_DIR, ou None (inexistant / hors de WEB_DIR / type inconnu)."""
     rel = "index.html" if url_path == "/" else url_path.lstrip("/")
     full = os.path.realpath(os.path.join(WEB_DIR, rel))
     if not full.startswith(os.path.realpath(WEB_DIR) + os.sep):
@@ -273,7 +273,7 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if not parsed.path.startswith("/api/") and WEB_DIR != "none":
-            # relus à chaque requête : on peut modifier web/ sans relancer
+            # relus à chaque requête : un nouveau build du frontend est pris en compte sans relancer
             path = static_file(parsed.path)
             if path:
                 with open(path, "rb") as f:
