@@ -3,6 +3,14 @@
 Ce qu'il faut savoir pour reprendre le projet. Le détail technique est dans
 [ARCHITECTURE.md](ARCHITECTURE.md) ; le déploiement dans [DEPLOYMENT.md](DEPLOYMENT.md).
 
+## Intégration continue
+
+`.github/workflows/ci.yml` s'exécute à chaque push sur `main` et `poc-pro` et à chaque
+pull request : tests Python (`backend`), build + tests Angular (`frontend`), puis
+construction des images Docker et vérification que l'image racine démarre et sert l'API
+(`/api/health`) et l'interface (`/`). Le job Docker est le premier test réel des fichiers
+Docker : s'il échoue, lire son journal avant de corriger.
+
 ## Où tourne le site
 
 - **Render**, un service web Python natif (pas Docker), dépôt `The-Night7/recherche`,
@@ -14,7 +22,7 @@ Ce qu'il faut savoir pour reprendre le projet. Le détail technique est dans
 - Sonde : `/api/health`. Après une période d'inactivité (offre gratuite), le premier
   chargement prend environ une minute.
 - Le `Dockerfile` racine, `render.yaml` et `docker-compose.yml` sont prêts mais
-  **n'ont jamais été exécutés** : à valider (`docker compose up --build`) avant de s'y fier.
+  **n'ont jamais tourné sur une machine** : le job CI `docker` les construit et démarre l'image racine ; vérifier qu'il est vert avant de s'y fier.
 
 ## Tâches courantes
 
@@ -49,7 +57,6 @@ Ce qu'il faut savoir pour reprendre le projet. Le détail technique est dans
 
 ## Ce qui n'est pas fait
 
-- Docker / docker compose non testés.
-- Aucune intégration continue : rien n'exécute les tests à chaque push.
+- Docker / docker compose : testés uniquement par le job CI `docker` (pas encore exécuté au moment de la rédaction).
 - Aucune authentification ni limitation de débit sur l'API.
 - Pas de surveillance du service au-delà de la sonde `/api/health`.
