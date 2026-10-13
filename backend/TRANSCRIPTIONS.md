@@ -1,6 +1,6 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 628 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 627 documents restent à transcrire ou à vérifier.**
 
 Mise à jour du **13 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
@@ -8,7 +8,7 @@ Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 17 817 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 17 812 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
 ## Finalisation globale — 12 octobre 2026
 
@@ -50,9 +50,9 @@ Cette suite ajoute **19 transcription(s), couvrant 165 pages PDF** ; le rattrapa
 
 ## Finalisation globale — suite du soir, 13 octobre 2026
 
-P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **628 documents** : P1 — Préing 1 : 148, ING 1 : 258, ING 2 : 222.
+P2 est terminée dans le périmètre de l’inventaire. Priorité actuelle : **P1 — Préing 1**. Il reste **627 documents** : P1 — Préing 1 : 147, ING 1 : 258, ING 2 : 222.
 
-Cette suite ajoute **8 transcription(s) de l’inventaire, couvrant 28 pages PDF** :
+Cette suite ajoute **9 transcription(s) de l’inventaire, couvrant 33 pages PDF** :
 
 - [Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique](data/physique1/transcriptions/Fiche-Analyse-dimensionnelle_2024-2025_Physique1_P1S1_DPhysique.md)
 - [TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont](data/physique1/transcriptions/TD1-Prerequis-Correction-_2023-2024_Physique1_P1S1_EDupont.md)
@@ -62,6 +62,7 @@ Cette suite ajoute **8 transcription(s) de l’inventaire, couvrant 28 pages PDF
 - [TD6-Inverser-une-matrice-Correction_2023-2024_Algebre2_P1S2_DMaths](data/algebre2/transcriptions/TD6-Inverser-une-matrice-Correction_2023-2024_Algebre2_P1S2_DMaths.md)
 - [TD8-Representation-matricielle-Correction(10-12)_2023-2024_Algebre2_P1S2_DMaths](data/algebre2/transcriptions/TD8-Representation-matricielle-Correction%2810-12%29_2023-2024_Algebre2_P1S2_DMaths.md)
 - [DS2-2022-2023-V1-Correction_Algebre2-DS_P1S2_MDebyaoui](data/algebre2/transcriptions/DS2-2022-2023-V1-Correction_Algebre2-DS_P1S2_MDebyaoui.md)
+- [DS1-2020-2021-Correction_Algebre2-DS_P1S2_MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel](data/algebre2/transcriptions/DS1-2020-2021-Correction_Algebre2-DS_P1S2_MBahtiti-KGuezguez-AHajej-BLaquerriere-JMasereel.md)
 
 **13 transcriptions hors inventaire** (dossier `PREING1-S1/Analyse1-DS`). Ce sont des sujets de DS, ou des corrigés dont le nom de fichier ne contient pas « Correction ». L’inventaire, limité aux cours et corrigés identifiés par leur nom, ne les compte pas : le reliquat n’en est pas modifié. Plusieurs fichiers ont un titre interne différent de leur nom (« DS 4 », « Corrigé du DM 3 », « Devoir Surveillé 2 », « Examen ») ; l’écart est signalé dans chaque transcription. `DS1-2023-2024` et `DS1-2023-2024-V1` sont des copies binaires identiques.
 
@@ -86,7 +87,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
 | 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
-| 2 | P1 — Préing 1 | 148 | En cours — priorité actuelle |
+| 2 | P1 — Préing 1 | 147 | En cours — priorité actuelle |
 | 3 | ING 1 | 258 | En attente |
 | 4 | ING 2 | 222 | En attente |
 
@@ -96,10 +97,10 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 261 |
+| Transcription Markdown présente | 262 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 521 |
+| Extraction brute seulement : transcription à faire | 520 |
 | Aucun texte associé : à examiner et transcrire | 106 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
