@@ -30,6 +30,8 @@ import videos
 # la plateforme fixe le port et l'hôte via la variable d'env PORT.
 PORT = int(os.environ.get("PORT", 8000))
 HOST = os.environ.get("HOST", "0.0.0.0")
+# Origine autorisée si le front est servi depuis un autre domaine (ex. Vercel) ; vide = même origine.
+CORS_ORIGIN = os.environ.get("CORS_ORIGIN", "")
 
 print("Chargement de l'index...")
 TFIDF, IDF, VOCAB, CHUNKS = load_index()
@@ -219,7 +221,9 @@ def csv_param(qs, name):
     return {x for x in raw.split(",") if x} or None
 
 
-WEB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web")
+# En production (docker compose) le front est servi par nginx : WEB_DIR=none désactive le statique.
+# En local, `python3 server.py` sert encore ../frontend pour tout lancer d'une commande.
+WEB_DIR = os.environ.get("WEB_DIR") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
 STATIC_TYPES = {
     ".html": "text/html; charset=utf-8",
     ".css": "text/css; charset=utf-8",
@@ -248,6 +252,8 @@ class Handler(BaseHTTPRequestHandler):
     def send(self, body, ctype, cache=None):
         self.send_response(200)
         self.send_header("Content-Type", ctype)
+        if CORS_ORIGIN:
+            self.send_header("Access-Control-Allow-Origin", CORS_ORIGIN)
         if cache:
             self.send_header("Cache-Control", cache)
         self.send_header("Content-Length", str(len(body)))
@@ -260,7 +266,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
 
-        if not parsed.path.startswith("/api/"):
+        if parsed.path == "/api/health":
+            self.send_json({"status": "ok"})
+            return
+
+        if not parsed.path.startswith("/api/") and WEB_DIR != "none":
             # relus à chaque requête : on peut modifier web/ sans relancer
             path = static_file(parsed.path)
             if path:
