@@ -164,6 +164,8 @@ $$\sum_{n \geq 0}^{}\frac{n^{2} - 2}{n!} = 0$$
 
 ## Exercice 4 :
 
+> **Rectification du 14 octobre 2026.** Le développement de $\ln(1+2/n)$ contient $-2/n^2$, et non $-1/n^2$. Le coefficient correct est donc $\gamma=-(a+4b)/2$. Les conditions $a=-2$, $b=1$ et la somme $-\ln2$ restent inchangées. L’indice de la somme partielle a également été rectifié.
+
 ### 1\.
 
 $$u_{n} = \ln(n) + a\ln(n + 1) + b\ln(n + 2)$$
@@ -172,11 +174,11 @@ $$u_{n} = \ln(n) + a\left( \ln(n) + \ln\left( 1 + \frac{1}{n} \right) \right) + 
 
 $$u_{n} = (1 + a + b)\ln(n) + a\ln\left( 1 + \frac{1}{n} \right) + b\ln\left( 1 + \frac{2}{n} \right)$$
 
-$$u_{n} = (1 + a + b)\ln(n) + a\left( \frac{1}{n} - \frac{1}{2n^{2}} + o\left( \frac{1}{n^{2}} \right) \right) + b\left( \frac{2}{n} - \frac{1}{n^{2}} + o\left( \frac{1}{n^{2}} \right) \right)$$
+$$u_{n} = (1 + a + b)\ln(n) + a\left( \frac{1}{n} - \frac{1}{2n^{2}} + o\left( \frac{1}{n^{2}} \right) \right) + b\left( \frac{2}{n} - \frac{2}{n^{2}} + o\left( \frac{1}{n^{2}} \right) \right)$$
 
-$$u_{n} = (1 + a + b)\ln(n) + \frac{a + 2b}{n} - \frac{a + 2b}{2n^{2}} + o\left( \frac{1}{n^{2}} \right)$$
+$$u_{n} = (1 + a + b)\ln(n) + \frac{a + 2b}{n} - \frac{a + 4b}{2n^{2}} + o\left( \frac{1}{n^{2}} \right)$$
 
-$$\text{On pose}\ \alpha = 1 + a + b,\ \beta = a + 2b,\ \gamma = - \frac{a + 2b}{2}$$
+$$\text{On pose}\ \alpha = 1 + a + b,\ \beta = a + 2b,\ \gamma = - \frac{a + 4b}{2}$$
 
 $$u_{n} = \alpha\ln(n) + \frac{\beta}{n} + \frac{\gamma}{n^{2}} + o\left( \frac{1}{n^{2}} \right)$$
 
@@ -189,7 +191,7 @@ série.
 
 $$\sum_{}^{}u_{n} = \beta\sum_{}^{}\frac{1}{n} + \gamma\sum_{}^{}\frac{1}{n^{2}} + \sum_{}^{}{o\left( \frac{1}{n^{2}} \right)}$$
 
-$$\sum_{}^{}\frac{1}{n^{2}}\ \text{converge car série de Riemann avec}\ \alpha > 1,\ \text{donc}\ \sum_{}^{}{o\left( \frac{1}{n^{2}} \right)}\ \text{converge aussi}$$
+$$\sum_{}^{}\frac{1}{n^{2}}\ \text{converge car série de Riemann d’exposant}\ 2 > 1,\ \text{donc}\ \sum_{}^{}{o\left( \frac{1}{n^{2}} \right)}\ \text{converge aussi}$$
 
 $$\sum_{}^{}\frac{1}{n}\ \text{diverge car série harmonique}$$
 
@@ -210,7 +212,7 @@ $$u_{n} = \ln(n) - 2\ln(n + 1) + \ln(n + 2)$$
 
 $$u_{n} = \left( \ln(n) - \ln(n + 1) \right) + \left( \ln(n + 2) - \ln(n + 1) \right)$$
 
-$$S_{N} = \sum_{n = 1}^{N}u_{N} = \sum_{n = 1}^{N}\left( \ln(n) - \ln(n + 1) \right) + \sum_{n = 1}^{N}\left( \ln(n + 2) - \ln(n + 1) \right)$$
+$$S_{N} = \sum_{n = 1}^{N}u_{n} = \sum_{n = 1}^{N}\left( \ln(n) - \ln(n + 1) \right) + \sum_{n = 1}^{N}\left( \ln(n + 2) - \ln(n + 1) \right)$$
 
 $$S_{N} = - \ln(N + 1) + \ln(N + 2) - \ln(2)$$
 

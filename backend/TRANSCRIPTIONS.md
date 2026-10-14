@@ -2,13 +2,28 @@
 
 **Le chantier global n’est pas terminé : 626 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **13 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **14 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries dans son périmètre : 1005 sources, soit 954 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 837 pages avant dédoublonnage. Le reliquat représente 17 807 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 807 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+
+## Finalisation des corrigés de DS et CC P2 — 14 octobre 2026
+
+**Six corrigés supplémentaires (35 pages) sont transcrits et vérifiés sur leurs PDF.** Ils avaient été omis car leur nom ne contenait pas « Correction ». Ils sont désormais inclus dans l’inventaire et classés comme corrigés pour la recherche.
+
+- [analyse-rn — DS2-2023-2024-V2](data/analyse-rn/transcriptions/DS2-2023-2024-V2_Analyse-dans-RN-DS_P2S1_DMaths.md) — 6 pages.
+- [analyse-rn — DS2-2023-2024-V3](data/analyse-rn/transcriptions/DS2-2023-2024-V3_Analyse-dans-RN-DS_P2S1_DMaths.md) — 3 pages.
+- [electromagnetisme — CC2-2021-2022](data/electromagnetisme/transcriptions/CC2-2021-2022_Electromagnetisme-CC_P2S1_DPhysique.md) — 8 pages.
+- [integration-proba — DS2-2020-2021](data/integration-proba/transcriptions/DS2-2020-2021_Integration-proba-DS_P2S2_DMaths.md) — 6 pages.
+- [physique-moderne — CC1-2022-2023](data/physique-moderne/transcriptions/CC1-2022-2023_Physique-moderne-CC_P2S2_DPhysique.md) — 7 pages.
+- [physique-moderne — CC2-2022-2023-V1](data/physique-moderne/transcriptions/CC2-2022-2023-V1_Physique-moderne-CC_P2S2_DPhysique.md) — 5 pages.
+
+Deux corrigés de Séries sont également repris : **DS1 2023–2024 V1**, dont les exercices 1 à 3 dépendaient d’images distantes, dispose maintenant de solutions textuelles reprises du sujet corrigé local et d’une conclusion complète à l’exercice 4 ; **V2** corrige le coefficient du développement logarithmique. Les images distantes indisponibles ne sont pas présentées comme transcrites. Les erreurs des PDF et les compléments rédigés sont signalés dans chaque document.
+
+L’inventaire couvre désormais **1011 sources, 960 documents distincts par matière et 25 872 pages PDF avant dédoublonnage**. Le reliquat global reste **626 documents** (P1 : 146 ; ING 1 : 258 ; ING 2 : 222). Cette reprise ne vaut pas certification de tous les anciens fichiers Markdown.
 
 ## Finalisation globale — 12 octobre 2026
 
@@ -98,7 +113,7 @@ L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années I
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 263 |
+| Transcription Markdown présente | 269 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
 | Extraction brute seulement : transcription à faire | 519 |
