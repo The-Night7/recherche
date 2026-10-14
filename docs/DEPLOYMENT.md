@@ -61,9 +61,17 @@ pages de PDF. Il lui faut donc un hébergeur de conteneurs ou de processus longs
   Sur Render, remplacer cette cible par l'URL interne du service backend
   (par exemple via un `nginx.conf` dédié ou une variable injectée au démarrage).
 
-### Vercel pour le front
+### Vercel pour le front (backend sur Render)
 
-Si le front passe sur Vercel : *Framework Preset* Angular, dossier racine `frontend`,
-sortie `dist/tuteur/browser`. Ajouter dans `frontend/vercel.json` une réécriture
-`/api/:path*` vers l'URL publique du backend, ce qui évite le CORS ; sinon définir
-`CORS_ORIGIN` côté backend et préfixer les appels dans `ApiService`.
+Vercel détecte deux dossiers dans le dépôt (`frontend`, `backend`) : **n'importer que
+`frontend`**. Le backend reste sur Render (processus long, index en mémoire : voir le
+tableau ci-dessus).
+
+- *Root Directory* : `frontend` ; le reste est lu dans `frontend/vercel.json`
+  (installation, build, sortie `dist/tuteur/browser`).
+- `frontend/vercel.json` réécrit `/api/*` vers `https://recherche-du60.onrender.com/api/*` :
+  le navigateur ne parle qu'à Vercel, donc **pas de CORS** et aucune variable à définir.
+  Si l'URL du backend change, modifier cette ligne.
+- Le premier appel après une période d'inactivité réveille le service Render (offre
+  gratuite) et peut durer environ une minute : l'interface affiche « Recherche… » pendant ce temps.
+- Render continue de servir aussi sa propre copie de l'interface ; elle peut être ignorée.
