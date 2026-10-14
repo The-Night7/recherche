@@ -98,16 +98,16 @@ Cette suite ajoute **10 transcription(s) de l’inventaire, couvrant 38 pages PD
 
 ## Ordre de traitement demandé
 
-L’ordre est **P2 → P1 → ING 1 → ING 2**, puis les éventuelles années ING suivantes dans l’ordre numérique.
+**Nouvelle priorité du 15 octobre 2026 : ING 1, en commençant par FISA (formation en apprentissage).** Cette demande remplace l’ordre précédent P2 → P1 → ING 1 → ING 2. P1 est mis en attente.
 
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
 | 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
-| 2 | P1 — Préing 1 | 146 | En cours — priorité actuelle |
-| 3 | ING 1 | 258 | En attente |
+| 2 | ING 1 | 258 | En cours — FISA en priorité |
+| 3 | P1 — Préing 1 | 146 | En attente |
 | 4 | ING 2 | 222 | En attente |
 
-**Règle de reprise : terminer les transcriptions et vérifications de l’année courante avant de commencer le reliquat de l’année suivante.** Les semestres 1 et 2 sont inclus à chaque étape. Les fichiers déjà réalisés dans d’autres années sont conservés. Une extraction brute ou une lecture encore incertaine ne suffit pas à clôturer l’étape. Cet ordre doit être conservé lors de chaque mise à jour du bilan.
+Les documents explicitement destinés à l’apprentissage sont traités en premier. Aucun dossier local ne porte le nom FISA ; la correspondance de l’ensemble du dossier S1 INFO avec FISA reste à préciser. Une extraction brute ou une lecture encore incertaine ne suffit pas à déclarer une transcription terminée. Après ING 1, reprendre P1 puis ING 2.
 
 ## Bilan actuel
 

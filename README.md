@@ -175,7 +175,7 @@ les notes Markdown conservent leurs blocs de code.
 L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
 de matrice dense de plusieurs gigaoctets.
 
-Ordre de finalisation des transcriptions : **P2 → P1 → ING 1 → ING 2**, tous semestres compris. Terminer une année avant de passer à la suivante. **Dans P2, priorité aux mathématiques, en commençant par les séries.** Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](backend/TRANSCRIPTIONS.md) et le [rapport par source](backend/data/transcription-report.json).
+Priorité des transcriptions mise à jour le **15 octobre 2026** : **ING 1, en commençant par FISA (formation en apprentissage)**. P1 est mis en attente à la demande de l’utilisateur ; P2 est terminé dans le périmètre inventorié. Après ING 1, reprendre P1 puis ING 2. Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](backend/TRANSCRIPTIONS.md) et le [rapport par source](backend/data/transcription-report.json).
 
 ### Finalisation des corrigés de DS et CC P2 — 14 octobre 2026
 
