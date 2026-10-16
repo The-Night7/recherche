@@ -180,9 +180,9 @@ Priorité des transcriptions mise à jour le **15 octobre 2026** : **ING 1, en c
 <!-- reprise-2026-10-16:start -->
 ### Reprise ING 1 — 16 octobre 2026
 
-**10 transcriptions ajoutées**, couvrant 97 pages PDF comptées par matière (59 pages après regroupement des copies entre matières). Texte natif comparé au rendu de toutes les pages ; code, tableaux et schémas restitués. Les commandes et versions historiques des cours sont conservées.
+**27 transcriptions ajoutées**, couvrant 230 pages PDF comptées par matière (192 pages après regroupement des copies entre matières). Texte natif comparé au rendu de toutes les pages ; code, tableaux et schémas restitués. Les commandes et versions historiques des cours sont conservées.
 
-Il reste **616 documents** : ING 1 — 248, P1 — 146, ING 2 — 222. P2 reste terminé dans le périmètre inventorié. La priorité FISA reste fondée sur les mentions explicites d’apprentissage ; l’ensemble de S1 INFO n’est pas assimilé à FISA.
+Il reste **599 documents** : ING 1 — 231, P1 — 146, ING 2 — 222. P2 reste terminé dans le périmètre inventorié. La priorité FISA reste fondée sur les mentions explicites d’apprentissage ; l’ensemble de S1 INFO n’est pas assimilé à FISA.
 
 - [CM5-Docker_Systeme-Exploitation — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/CM5-Docker_Systeme-Exploitation--3282c14814b6.md) — 28 pages.
 - [Fiche1-Intro_Systeme-Exploitation — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/Fiche1-Intro_Systeme-Exploitation--7d5c5c0cc38f.md) — 2 pages.
@@ -194,6 +194,23 @@ Il reste **616 documents** : ING 1 — 248, P1 — 146, ING 2 — 222. P2 reste 
 - [Examen de SE 2023_sessionRattrapage_Corrige — ing-1-s2-data-systeme-exploitation](backend/data/ing-1-s2-data-systeme-exploitation/transcriptions/Examen%20de%20SE%202023_sessionRattrapage_Corrige--9f8f0cfe269f.md) — 9 pages.
 - [DS-2017-2018-GI-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2017-2018-GI-Correction_Systeme-Exploitation-DS--eedd38f5345d.md) — 5 pages.
 - [DS-2017-2018-GM-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2017-2018-GM-Correction_Systeme-Exploitation-DS--da229f7d1b45.md) — 5 pages.
+- [DS-2019-2020-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2019-2020-Correction_Systeme-Exploitation-DS--a345b96c905e.md) — 6 pages.
+- [Rattrapage-2017-2018-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/Rattrapage-2017-2018-Correction_Systeme-Exploitation-DS--4850d4dcef61.md) — 5 pages.
+- [DS-2020-2021-GIM-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2020-2021-GIM-Correction_Systeme-Exploitation-DS--41eca8a55076.md) — 8 pages.
+- [Rattrapage-2018-2019-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/Rattrapage-2018-2019-Correction_Systeme-Exploitation-DS--8b6ef42511d0.md) — 7 pages.
+- [DS-2023-2024-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2023-2024-Correction_Systeme-Exploitation-DS--6637690e9a27.md) — 10 pages.
+- [Rattrapage-2020-2021-GIM-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](backend/data/ing-1-s1-info-systeme-exploitation/transcriptions/Rattrapage-2020-2021-GIM-Correction_Systeme-Exploitation-DS--4c3d61a66380.md) — 8 pages.
+- [Solutions TP4 partie2 — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Solutions%20TP4%20partie2--131054ce241d.md) — 0 pages.
+- [Solutions TP4 partie3 — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Solutions%20TP4%20partie3--29ce474582ab.md) — 0 pages.
+- [05_Docker — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/05_Docker--a086fea0d8f8.md) — 28 pages.
+- [05_IntroDocker — ing-1-s2-data-systeme-exploitation](backend/data/ing-1-s2-data-systeme-exploitation/transcriptions/05_IntroDocker--3bd2741d3e58.md) — 26 pages.
+- [TP6_Solutions_Shell — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/TP6_Solutions_Shell--e4d66501db6e.md) — 3 pages.
+- [Corrige_DS-2017-2018_Unix-DS — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Corrige_DS-2017-2018_Unix-DS--246cd7a83669.md) — 3 pages.
+- [Unix_DS_2017_2018_sans_correction — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Unix_DS_2017_2018_sans_correction--3046331a084e.md) — 2 pages.
+- [Resume SE_1 — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Resume%20SE_1--0b5363e2f34a.md) — 2 pages.
+- [Corrige_Examen_Unix_2024-2025 — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/Corrige_Examen_Unix_2024-2025--0d6cc19a1f12.md) — 5 pages.
+- [td1-correction — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/td1-correction--b0059725c561.md) — 11 pages.
+- [td2-correction — ing-1-s1-gm-unix](backend/data/ing-1-s1-gm-unix/transcriptions/td2-correction--294cb8fc6c13.md) — 9 pages.
 
 **5 TP supplémentaires hors inventaire**, couvrant 23 pages. Les énoncés sans corrigé ne modifient pas le reliquat historique des cours et corrigés. Les réponses absentes des sources ne sont pas inventées.
 
