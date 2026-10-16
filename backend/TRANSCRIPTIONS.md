@@ -1,14 +1,42 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 626 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 616 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **14 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **16 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 807 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 710 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+
+<!-- reprise-2026-10-16:start -->
+## Reprise ING 1 — 16 octobre 2026
+
+**10 transcriptions ajoutées**, couvrant 97 pages PDF comptées par matière (59 pages après regroupement des copies entre matières). Texte natif comparé au rendu de toutes les pages ; code, tableaux et schémas restitués. Les commandes et versions historiques des cours sont conservées.
+
+Il reste **616 documents** : ING 1 — 248, P1 — 146, ING 2 — 222. P2 reste terminé dans le périmètre inventorié. La priorité FISA reste fondée sur les mentions explicites d’apprentissage ; l’ensemble de S1 INFO n’est pas assimilé à FISA.
+
+- [CM5-Docker_Systeme-Exploitation — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/CM5-Docker_Systeme-Exploitation--3282c14814b6.md) — 28 pages.
+- [Fiche1-Intro_Systeme-Exploitation — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/Fiche1-Intro_Systeme-Exploitation--7d5c5c0cc38f.md) — 2 pages.
+- [DS-2022-2023-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2022-2023-Correction_Systeme-Exploitation-DS--d17788c28aab.md) — 10 pages.
+- [Rattrapage-2022-2023-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/Rattrapage-2022-2023-Correction_Systeme-Exploitation-DS--4a0ea115959c.md) — 9 pages.
+- [Examen de SE 2023_sessionNormale_AvecCorrige — ing-1-s1-gm-unix](data/ing-1-s1-gm-unix/transcriptions/Examen%20de%20SE%202023_sessionNormale_AvecCorrige--c858446a141e.md) — 10 pages.
+- [Examen de SE 2023_sessionNormale_AvecCorrige — ing-1-s2-data-systeme-exploitation](data/ing-1-s2-data-systeme-exploitation/transcriptions/Examen%20de%20SE%202023_sessionNormale_AvecCorrige--3182ff171d7c.md) — 10 pages.
+- [Examen de SE 2023_sessionRattrapage_Corrige — ing-1-s1-gm-unix](data/ing-1-s1-gm-unix/transcriptions/Examen%20de%20SE%202023_sessionRattrapage_Corrige--0eb02eb1b31b.md) — 9 pages.
+- [Examen de SE 2023_sessionRattrapage_Corrige — ing-1-s2-data-systeme-exploitation](data/ing-1-s2-data-systeme-exploitation/transcriptions/Examen%20de%20SE%202023_sessionRattrapage_Corrige--9f8f0cfe269f.md) — 9 pages.
+- [DS-2017-2018-GI-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2017-2018-GI-Correction_Systeme-Exploitation-DS--eedd38f5345d.md) — 5 pages.
+- [DS-2017-2018-GM-Correction_Systeme-Exploitation-DS — ing-1-s1-info-systeme-exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/DS-2017-2018-GM-Correction_Systeme-Exploitation-DS--da229f7d1b45.md) — 5 pages.
+
+**5 TP supplémentaires hors inventaire**, couvrant 23 pages. Les énoncés sans corrigé ne modifient pas le reliquat historique des cours et corrigés. Les réponses absentes des sources ne sont pas inventées.
+
+- [TP1-Processus_Systeme-Exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/TP1-Processus_Systeme-Exploitation--48e6f2659260.md) — 3 pages.
+- [TP2-Ordonnanceur_Systeme-Exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/TP2-Ordonnanceur_Systeme-Exploitation--9e285e0af182.md) — 4 pages.
+- [TP3-Memoire_Systeme-Exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/TP3-Memoire_Systeme-Exploitation--0712770d63b6.md) — 3 pages.
+- [TP4-Installation_Systeme-Exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/TP4-Installation_Systeme-Exploitation--e9dead9c5a11.md) — 8 pages.
+- [TP5-Docker_Systeme-Exploitation](data/ing-1-s1-info-systeme-exploitation/transcriptions/TP5-Docker_Systeme-Exploitation--0467610f4115.md) — 5 pages.
+
+<!-- reprise-2026-10-16:end -->
 
 ## Finalisation des corrigés de DS et CC P2 — 14 octobre 2026
 
@@ -103,7 +131,7 @@ Cette suite ajoute **10 transcription(s) de l’inventaire, couvrant 38 pages PD
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
 | 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
-| 2 | ING 1 | 258 | En cours — FISA en priorité |
+| 2 | ING 1 | 248 | En cours — FISA en priorité |
 | 3 | P1 — Préing 1 | 146 | En attente |
 | 4 | ING 2 | 222 | En attente |
 
@@ -113,10 +141,10 @@ Les documents explicitement destinés à l’apprentissage sont traités en prem
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 269 |
+| Transcription Markdown présente | 279 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 519 |
+| Extraction brute seulement : transcription à faire | 509 |
 | Aucun texte associé : à examiner et transcrire | 106 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
