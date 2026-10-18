@@ -177,6 +177,23 @@ de matrice dense de plusieurs gigaoctets.
 
 Priorité des transcriptions mise à jour le **15 octobre 2026** : **ING 1, en commençant par FISA (formation en apprentissage)**. P1 est mis en attente à la demande de l’utilisateur ; P2 est terminé dans le périmètre inventorié. Après ING 1, reprendre P1 puis ING 2. Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](backend/TRANSCRIPTIONS.md) et le [rapport par source](backend/data/transcription-report.json).
 
+<!-- reprise-2026-10-18:start -->
+### Suite ING 1 — 18 octobre 2026
+
+**7 transcriptions ajoutées, couvrant 192 pages PDF.** Texte comparé aux sources, pages PDF contrôlées visuellement et erreurs des supports signalées séparément.
+
+Il reste **593 documents** : ING 1 — 224, P1 — 146, ING 2 — 222. P2 reste terminé dans le périmètre inventorié.
+
+- [td3-correction](backend/data/ing-1-s1-gm-unix/transcriptions/td3-correction--25c26e952e1e.md) — 9 pages.
+- [td4-correction](backend/data/ing-1-s1-gm-unix/transcriptions/td4-correction--ea9fd980a564.md) — 7 pages.
+- [td5-correction](backend/data/ing-1-s1-gm-unix/transcriptions/td5-correction--f1fe06cb8490.md) — 10 pages.
+- [02_Cycle_de_vie_des_processusOrdonnanceur](backend/data/ing-1-s1-gm-unix/transcriptions/02_Cycle_de_vie_des_processusOrdonnanceur--343838dda17d.md) — 40 pages.
+- [02-processus_ordonnanceur](backend/data/ing-1-s2-data-systeme-exploitation/transcriptions/02-processus_ordonnanceur--db714e0aa1ce.md) — 44 pages.
+- [03_Mémoire](backend/data/ing-1-s1-gm-unix/transcriptions/03_M%C3%A9moire--50caa6e72e6f.md) — 41 pages.
+- [03-Memoire](backend/data/ing-1-s2-data-systeme-exploitation/transcriptions/03-Memoire--ff77017387fe.md) — 41 pages.
+
+<!-- reprise-2026-10-18:end -->
+
 <!-- reprise-2026-10-16:start -->
 ### Reprise ING 1 — 16 octobre 2026
 

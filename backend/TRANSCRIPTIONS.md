@@ -1,14 +1,31 @@
 # État des transcriptions des cours et corrigés
 
-**Le chantier global n’est pas terminé : 599 documents restent à transcrire ou à vérifier.**
+**Le chantier global n’est pas terminé : 593 documents restent à transcrire ou à vérifier.**
 
-Mise à jour du **16 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
+Mise à jour du **18 octobre 2026**. Le précédent lot des 10–12 octobre ajoutait **11 transcriptions, 1329 pages PDF**.  Trois nouveaux documents d’analyse (1847 pages PDF) sont transcrits : deux diaporamas et un polycopié ; les animations sont regroupées avec leurs renvois source. Le lot du 8 octobre ajoutait **37 transcriptions P2** (1402 pages PDF). Deux transcriptions de potentiel déjà présentes sont réintégrées dans le bilan sans être comptées comme de nouveaux fichiers. Le lot du 5 octobre avait ajouté 18 transcriptions (324 pages) et rapproché dix fichiers du 4 octobre.
 
 Le premier lot du 30 septembre ajoutait **33 transcriptions** : 20 supports d’éthique, 8 PDF d’algèbre, d’analyse et de séries, et 5 documents Word de mathématiques. Les méthodes de vérification sont indiquées dans les fichiers. Les tableaux, matrices, formules et cases de QCM ont été restitués ; les erreurs relevées dans les sources sont signalées séparément.
 
 Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bilan antérieur, indépendamment des huit fichiers rapprochés le 3 octobre. Ces rapprochements ne sont pas comptés comme de nouveaux fichiers. Les anciennes transcriptions n’ont pas toutes été relues.
 
-L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 577 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 388 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
+
+<!-- reprise-2026-10-18:start -->
+## Suite ING 1 — 18 octobre 2026
+
+**7 transcriptions ajoutées, couvrant 192 pages PDF.** Texte comparé aux sources, pages PDF contrôlées visuellement et erreurs des supports signalées séparément.
+
+Il reste **593 documents** : ING 1 — 224, P1 — 146, ING 2 — 222. P2 reste terminé dans le périmètre inventorié.
+
+- [td3-correction](data/ing-1-s1-gm-unix/transcriptions/td3-correction--25c26e952e1e.md) — 9 pages.
+- [td4-correction](data/ing-1-s1-gm-unix/transcriptions/td4-correction--ea9fd980a564.md) — 7 pages.
+- [td5-correction](data/ing-1-s1-gm-unix/transcriptions/td5-correction--f1fe06cb8490.md) — 10 pages.
+- [02_Cycle_de_vie_des_processusOrdonnanceur](data/ing-1-s1-gm-unix/transcriptions/02_Cycle_de_vie_des_processusOrdonnanceur--343838dda17d.md) — 40 pages.
+- [02-processus_ordonnanceur](data/ing-1-s2-data-systeme-exploitation/transcriptions/02-processus_ordonnanceur--db714e0aa1ce.md) — 44 pages.
+- [03_Mémoire](data/ing-1-s1-gm-unix/transcriptions/03_M%C3%A9moire--50caa6e72e6f.md) — 41 pages.
+- [03-Memoire](data/ing-1-s2-data-systeme-exploitation/transcriptions/03-Memoire--ff77017387fe.md) — 41 pages.
+
+<!-- reprise-2026-10-18:end -->
 
 <!-- reprise-2026-10-16:start -->
 ## Reprise ING 1 — 16 octobre 2026
@@ -148,7 +165,7 @@ Cette suite ajoute **10 transcription(s) de l’inventaire, couvrant 38 pages PD
 | Priorité | Année à terminer, tous semestres compris | Documents restants | État |
 | --- | --- | ---: | --- |
 | 1 | P2 — Préing 2 | 0 | Terminé dans le périmètre inventorié |
-| 2 | ING 1 | 231 | En cours — FISA en priorité |
+| 2 | ING 1 | 224 | En cours — FISA en priorité |
 | 3 | P1 — Préing 1 | 146 | En attente |
 | 4 | ING 2 | 222 | En attente |
 
@@ -158,11 +175,11 @@ Les documents explicitement destinés à l’apprentissage sont traités en prem
 
 | État | Documents distincts par matière |
 | --- | ---: |
-| Transcription Markdown présente | 296 |
+| Transcription Markdown présente | 302 |
 | Source déjà en Markdown | 65 |
 | Transcription avec lecture incertaine | 1 |
-| Extraction brute seulement : transcription à faire | 492 |
-| Aucun texte associé : à examiner et transcrire | 106 |
+| Extraction brute seulement : transcription à faire | 485 |
+| Aucun texte associé : à examiner et transcrire | 107 |
 
 Le document transversal `Les notions de maths.docx` reste à classer et n’est pas inclus dans ce total. Les extractions brutes ne sont pas considérées comme des transcriptions terminées.
 
@@ -471,4 +488,3 @@ Le dossier `PREING2-S1/Series/2627` contient **17 PDF (35 pages)**. **16 nouvell
 - [Fiche-Developpements-limites_2026-2027](data/series/transcriptions/Fiche-Developpements-limites_2026-2027_Series_P2S1_DMaths.md) — 2 page(s).
 - [TD0_2026-2027](data/series/transcriptions/TD0_2026-2027_Series_P2S1_DMaths.md) — 1 page(s).
 - [TD1_2026-2027](data/series/transcriptions/TD1_2026-2027_Series_P2S1_DMaths.md) — 3 page(s).
-
