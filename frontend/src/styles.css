@@ -51,10 +51,9 @@ button,input,select{ font:inherit; color:inherit; }
   padding:26px 28px 22px; max-width:1180px; margin:0 auto;
 }
 .brand{ display:flex; align-items:center; gap:12px; margin:0; font-weight:400; }
-.brand .glyph{
-  font-family:var(--serif); font-style:italic; font-size:58px; line-height:.8;
-  color:var(--rn); margin-top:-6px; flex:none;
-}
+.brand .glyph{ display:block; width:58px; height:auto; flex:none; }
+:root[data-theme="dark"] .brand .glyph{ filter:brightness(1.7); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .brand .glyph{ filter:brightness(1.7); } }
 .brand .title{ font-family:var(--serif); font-size:21px; font-weight:600; line-height:1.15; letter-spacing:-.01em; }
 .brand small{ display:block; font-family:var(--sans); font-size:12.5px; font-weight:400; color:var(--ink-soft); margin-top:4px; letter-spacing:0; }
 
@@ -350,7 +349,7 @@ mark{
 @media (max-width: 860px){
   .top{ grid-template-columns:minmax(0,1fr) auto; gap:16px; padding:18px 16px 14px; }
   #searchbar{ grid-column:1 / -1; grid-row:2; max-width:none; }
-  .brand .glyph{ font-size:46px; }
+  .brand .glyph{ width:46px; }
   .brand .title{ font-size:19px; }
   kbd{ display:none; }
   .layout{ grid-template-columns:minmax(0,1fr); padding:0 16px 60px; }
