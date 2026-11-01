@@ -10,6 +10,27 @@ Le rapprochement du 30 septembre avait reconnu 29 transcriptions absentes du bil
 
 L’inventaire inclut les 17 nouveaux PDF de séries et les six corrigés P2 retrouvés le 14 octobre dans son périmètre : 1011 sources, soit 960 documents après regroupement des copies binaires identiques au sein de chaque matière. Les PDF représentent 25 872 pages avant dédoublonnage. Le reliquat représente 17 266 pages PDF après dédoublonnage, auxquelles s’ajoutent les autres formats.
 
+## CC 2025–2026 — P2 S1 et S2 — 1er novembre 2026
+
+**16 transcriptions ajoutées, couvrant les 33 pages de l’archive `Synthèses de Cours/cc 2025 2026.zip`.** Les PDF ont été classés par matière et semestre, puis transcrits et comparés au rendu des pages. Le TD0 de séries porte l’année 2026–2027. Les lacunes et reformulations présentes dans les PDF retapés sont signalées ; les photographies d’origine ne sont pas dans l’archive.
+
+- P2 S1 — [CC1 Analyse Rn refait](data/analyse-rn/transcriptions/CC1_Analyse_Rn_refait.md) — 1 page(s).
+- P2 S1 — [CC1 Electromagnetisme refait](data/electromagnetisme/transcriptions/CC1_Electromagnetisme_refait.md) — 5 page(s).
+- P2 S2 — [CC1 Physique Moderne retape](data/physique-moderne/transcriptions/CC1_Physique_Moderne_retape.md) — 2 page(s).
+- P2 S2 — [CC2 Algebre lineaire bilineaire refait](data/algebre-lineaire/transcriptions/CC2_Algebre_lineaire_bilineaire_refait.md) — 2 page(s).
+- P2 S2 — [CC2 Integration Probabilites retape](data/integration-proba/transcriptions/CC2_Integration_Probabilites_retape.md) — 1 page(s).
+- P2 S2 — [CC2 Ondes refait](data/ondes/transcriptions/CC2_Ondes_refait.md) — 2 page(s).
+- P2 S2 — [CC2 Physique moderne refait](data/physique-moderne/transcriptions/CC2_Physique_moderne_refait.md) — 2 page(s).
+- P2 S2 — [CC3 Algebre lineaire bilineaire refait](data/algebre-lineaire/transcriptions/CC3_Algebre_lineaire_bilineaire_refait.md) — 3 page(s).
+- P2 S2 — [CC3 Integration Probabilites retape](data/integration-proba/transcriptions/CC3_Integration_Probabilites_retape.md) — 2 page(s).
+- P2 S2 — [CC3 Ondes retape](data/ondes/transcriptions/CC3_Ondes_retape.md) — 2 page(s).
+- P2 S1 — [DS1 Informatique III refait](data/informatique3/transcriptions/DS1_Informatique_III_refait.md) — 2 page(s).
+- P2 S1 — [DS2 Informatique III refait](data/informatique3/transcriptions/DS2_Informatique_III_refait.md) — 2 page(s).
+- P2 S1 — [DS3 Informatique III retape](data/informatique3/transcriptions/DS3_Informatique_III_retape.md) — 2 page(s).
+- P2 S2 — [Rattrapage Ondes retape](data/ondes/transcriptions/Rattrapage_Ondes_retape.md) — 1 page(s).
+- P2 S2 — [Session2 Physique Moderne retape](data/physique-moderne/transcriptions/Session2_Physique_Moderne_retape.md) — 2 page(s).
+- P2 S1 — [TD0 Rappels Series refait](data/series/transcriptions/TD0_Rappels_Series_refait.md) — 2 page(s).
+
 <!-- reprise-2026-10-18:start -->
 ## Suite ING 1 — 18 octobre 2026
 

@@ -175,6 +175,27 @@ les notes Markdown conservent leurs blocs de code.
 L'index reste creux en mémoire : le chargement de plusieurs semestres ne crée pas
 de matrice dense de plusieurs gigaoctets.
 
+## CC 2025–2026 — P2 S1 et S2 — 1er novembre 2026
+
+**16 transcriptions ajoutées, couvrant les 33 pages de l’archive `Synthèses de Cours/cc 2025 2026.zip`.** Les PDF ont été classés par matière et semestre, puis transcrits et comparés au rendu des pages. Le TD0 de séries porte l’année 2026–2027. Les lacunes et reformulations présentes dans les PDF retapés sont signalées ; les photographies d’origine ne sont pas dans l’archive.
+
+- P2 S1 — [CC1 Analyse Rn refait](backend/data/analyse-rn/transcriptions/CC1_Analyse_Rn_refait.md) — 1 page(s).
+- P2 S1 — [CC1 Electromagnetisme refait](backend/data/electromagnetisme/transcriptions/CC1_Electromagnetisme_refait.md) — 5 page(s).
+- P2 S2 — [CC1 Physique Moderne retape](backend/data/physique-moderne/transcriptions/CC1_Physique_Moderne_retape.md) — 2 page(s).
+- P2 S2 — [CC2 Algebre lineaire bilineaire refait](backend/data/algebre-lineaire/transcriptions/CC2_Algebre_lineaire_bilineaire_refait.md) — 2 page(s).
+- P2 S2 — [CC2 Integration Probabilites retape](backend/data/integration-proba/transcriptions/CC2_Integration_Probabilites_retape.md) — 1 page(s).
+- P2 S2 — [CC2 Ondes refait](backend/data/ondes/transcriptions/CC2_Ondes_refait.md) — 2 page(s).
+- P2 S2 — [CC2 Physique moderne refait](backend/data/physique-moderne/transcriptions/CC2_Physique_moderne_refait.md) — 2 page(s).
+- P2 S2 — [CC3 Algebre lineaire bilineaire refait](backend/data/algebre-lineaire/transcriptions/CC3_Algebre_lineaire_bilineaire_refait.md) — 3 page(s).
+- P2 S2 — [CC3 Integration Probabilites retape](backend/data/integration-proba/transcriptions/CC3_Integration_Probabilites_retape.md) — 2 page(s).
+- P2 S2 — [CC3 Ondes retape](backend/data/ondes/transcriptions/CC3_Ondes_retape.md) — 2 page(s).
+- P2 S1 — [DS1 Informatique III refait](backend/data/informatique3/transcriptions/DS1_Informatique_III_refait.md) — 2 page(s).
+- P2 S1 — [DS2 Informatique III refait](backend/data/informatique3/transcriptions/DS2_Informatique_III_refait.md) — 2 page(s).
+- P2 S1 — [DS3 Informatique III retape](backend/data/informatique3/transcriptions/DS3_Informatique_III_retape.md) — 2 page(s).
+- P2 S2 — [Rattrapage Ondes retape](backend/data/ondes/transcriptions/Rattrapage_Ondes_retape.md) — 1 page(s).
+- P2 S2 — [Session2 Physique Moderne retape](backend/data/physique-moderne/transcriptions/Session2_Physique_Moderne_retape.md) — 2 page(s).
+- P2 S1 — [TD0 Rappels Series refait](backend/data/series/transcriptions/TD0_Rappels_Series_refait.md) — 2 page(s).
+
 Priorité des transcriptions mise à jour le **15 octobre 2026** : **ING 1, en commençant par FISA (formation en apprentissage)**. P1 est mis en attente à la demande de l’utilisateur ; P2 est terminé dans le périmètre inventorié. Après ING 1, reprendre P1 puis ING 2. Mettre à jour ce README après chaque document terminé, ainsi que le [bilan détaillé](backend/TRANSCRIPTIONS.md) et le [rapport par source](backend/data/transcription-report.json).
 
 <!-- reprise-2026-10-18:start -->
