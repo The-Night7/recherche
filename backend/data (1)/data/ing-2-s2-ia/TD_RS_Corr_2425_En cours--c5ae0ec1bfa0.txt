@@ -1,0 +1,109 @@
+import pandas as pn
+import numpy as np
+import math
+import random
+
+#Distance entre deux villes
+def distance(p1,p2):
+    return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
+
+
+#Energie totale : fonction à minimiser
+def energieTotale(trajet_coords):
+    energie = 0.0
+    N = len(trajet_coords)
+    for numv in range(N-1): # on calcule la distance en fermant la boucle
+      energie += distance(trajet_coords[numv],\
+      trajet_coords[numv+1])
+    energie += distance(trajet_coords[N-1],\
+    trajet_coords[0])
+    return energie
+
+
+
+
+
+
+
+
+
+
+
+#Trouver un voisin
+def perturbation(trajet):
+  N = len(trajet)
+  i = np.random.randint(N)
+  j = i
+  while (i==j):
+    j = np.random.randint(N)
+  nv = trajet[:]
+  temp = nv[i]
+  nv[i] = nv[j]
+  nv[j] = temp
+  
+  return nv
+
+	
+def initialiser(nbVilles):
+    return list(np.random.permutation(nbVilles))
+
+	
+df_villes = pn.read_csv('14.tsp')
+nbVilles = len(df_villes)
+trajet = initialiser(nbVilles)
+trajet_coords = [(df_villes['x'][numville], df_villes['y'][numville])\
+       for numville in trajet]
+energie = energieTotale(trajet_coords)
+
+T0 = 1000000
+Tmin = 1
+alpha = 0.99
+nbIterations = 10000000
+T = T0
+numiter = 1
+Palier = 5
+
+trajet_min = trajet
+energie_min = energie
+while((T>Tmin) and (numiter<nbIterations)):
+  iterPalier = Palier
+  while (iterPalier>0):
+    iterPalier = iterPalier-1
+
+#Début de la mise à jour de la solution
+    trajet_vois = perturbation(trajet)
+    trajet_vois_coord = [(df_villes['x'][numville], df_villes['y'][numville]) for numville in trajet_vois]
+    energie_vois = energieTotale(trajet_vois_coord)
+	
+    Delta_energie = energie_vois-energie
+    if (Delta_energie<0):
+      trajet = trajet_vois
+      trajet_coords = trajet_vois_coord
+      energie = energie_vois
+	  
+      if (energie<energie_min):
+        trajet_min = trajet
+        energie_min = energie
+    else:
+      metropol = math.exp(-Delta_energie/T)
+      val = np.random.random()
+	  
+      if (val<metropol):
+        trajet = trajet_vois
+        trajet_coords = trajet_vois_coord
+        energie = energie_vois
+#Fin de la mise à jour de la solution
+
+  T = alpha*T
+  print(T)
+  numiter = numiter+1
+  
+  #Affichage de la solution
+  print('Circuit proposé: ',trajet)
+  print('Longueur du circuit: ',energie)
+  
+#Affichage de la solution finale
+print('Meilleur circuit trouvé: ',trajet_min)
+print('Longueur du meilleur circuit: ',energie_min)
+
+

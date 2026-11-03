@@ -1,0 +1,343 @@
+2023/2024
+Semestre 1 – PréIng 2
+Mercredi 25 Octobre
+Séries
+Devoir Surveillé 1
+/ Consignes .
+Durée : 60 mn
+I Les documents et les supports électroniques sont interdits.
+I L’épreuve est composée d’exercices indépendants.
+I Le barème est à titre indicatif.
+I La qualité de la rédaction et la rigueur des justifications seront prises en compte dans la notation.
+/ Sujet de l’épreuve .
+Exercice 1 (2pts)
+Énoncer la définition d’une série alternée et le Théorème Spécial des Séries Alternées.
+Exercice 2 (6pts)
+Pour n ≥ 2 on considère la série de terme général un =
+2n + 3
+n(n2 − 1).
+1. Déterminer la nature de la série X
+n≥2
+un.
+2. Pour n ≥ 2 donner la décomposition de un en éléments simples.
+3. Calculer la somme de la série X
+n≥2
+un.
+Réponse. 1. On reconnait une fraction rationnelle. On en déduit que un ∼
+2n
+n3 =
+2
+n2 qui est de signe
+constant et sommable car série de Riemann avec α = 2 > 1. On conclut donc avec le théorème
+d’équivalence que la série un converge.
+2. Le dénominateur se factorise : n(n
+2 − 1) = (n + 1)n(n − 1), d’où la décomposition en éléments simples
+un =
+1
+2
+n + 1
++
+−3
+n
++
+5
+2
+n − 1
+.
+3. Pour tout n ≥ 2, la somme partielle peut s’écrire
+Xn
+k=2
+uk =
+1
+2
+Xn
+k=2
+1
+k + 1
+− 3
+Xn
+k=2
+1
+k
++
+5
+2
+Xn
+k=2
+1
+k + 1
+=
+1
+2
+nX+1
+k=3
+1
+k
+− 3
+Xn
+k=2
+1
+k
++
+5
+2
+nX−1
+k=1
+1
+k
+=
+1
+2
+
+1
+n
++
+1
+n + 1
+− 3
+
+1
+2
++
+1
+n
+
++
+5
+2
+
+1 +
+1
+2
+
+=
+9
+4
++ O
+
+1
+n
+
+.
+En passant à la limite n → +∞ on en déduit que
+X
++∞
+n=2
+un =
+9
+4
+.
+1
+<<<PAGE>>>
+Exercice 3 (9pts)
+Déterminer la nature des séries suivantes
+1. X
+n∈N
+(−1)n√
+n
+n2 + 1
+2. X
+n≥1
+a
+n+1
+n
+, a ∈ R 3. X
+n≥2
+(−1)nln 
+n + 1
+n − 1
+
+Réponse. On notera un le terme général des séries.
+1. On remarque que |un| =
+√
+n
+n2 + 1
+∼
+1
+n3/2
+qui est sommable car série de Riemann avec α =
+3
+2 > 1. On
+en déduit que la série à termes positifs X
+n∈N
+|un| converge par le Théorème d’équivalence. On conclut
+que la série X
+n∈N
+un converge absolument.
+On aurait aussi pu utiliser le théorème spécial des séries alternées en justifiant rigoureusement que la
+suite (|un|) est monotone décroissante vers 0.
+2. Pour a = 0 on reconnait la série nulle qui est convergente. Pour tout a 6= 0 et n ≥ 1 : un 6= 0. On
+peut donc utiliser la règle de d’Alembert :
+
+
+
+
+un+1
+un
+
+
+
+ = |a|
+n
+n + 1
+→ |a|. On distingue quatre cas :
+• Si |a| < 1 alors la série est absolument convergence
+• Si |a| > 1 alors la série diverge grossièrement.
+• Si a = 1 on reconnait la série harmonique qui est divergente.
+• Si a = −1 on reconnait la série harmonique alternée qui est convergente.
+3. Pour tout n ≥ 2 on peut réécrire un = (−1)nln 1 +
+2
+n − 1
+
+où 1+
+2
+n − 1
+> 1 d’où ln 1 +
+2
+n − 1
+
+> 0
+donc X
+n≥1
+un est une série alternée.
+De plus la suite (vn)n≥1 =
+
+1 + 2
+n−1
+
+n≥1
+est monotone décroissante de limite 1 puisque pour tout
+n ≥ 1
+vn+1 − vn = 1 +
+2
+n
+−
+
+1 +
+2
+n − 1
+
+= 2 
+1
+n
+−
+1
+n − 1
+
+< 0
+et lim n→+∞
+2
+n − 1
+= 0. La fonction ln étant monotone sur R
+∗
++, on en déduit que la suite (|un|) est
+monotone décroissante de limite 0.
+On peut donc utiliser le théorème spéciale des séries alternées et conclure que la série converge.
+Exercice 4 (4pts)
+On considère la série de terme général un = n
+2
+et on note (Sn) sa suite de sommes partielles : Sn =
+Xn
+k=1
+uk.
+1. Montrer que pour tout n ≥ 1,
+Z n
+0
+t
+2 dt ≤ Sn ≤
+Z n+1
+1
+t
+2 dt.
+2. En déduire que Sn est équivalent à 1
+3
+n
+3
+lorsque n → +∞.
+Réponse. 1. La fonction x → x
+2
+est croissante sur R+. On en déduit que pour tout k ≥ 1 :
+Z k
+k−1
+x
+2 dx ≤ uk ≤
+Z k+1
+k
+x
+2 dx
+On encourage à faire un dessin rapide sur votre copie pour illustrer cet encadrement.
+On peut alors sommer pour k allant de 1 à n et obtenir avec la relation de Chasles :
+Xn
+k=1
+Z k
+k−1
+x
+2 dx =
+Z n
+0
+x
+2 dx ≤ Sn ≤
+Xn
+k=1
+Z k+1
+k
+x
+2 dx =
+Z n+1
+1
+x
+2 dx.
+2
+<<<PAGE>>>
+2. On calcule les intégrales :
+Z n
+0
+x
+2 dx =
+
+1
+3
+x
+3
+n
+0
+=
+1
+3
+n
+3
+, et Z n+1
+1
+x
+2 dx =
+
+1
+3
+x
+3
+n+1
+1
+=
+1
+3
+
+(n + 1)3 − 1
+
+.
+De plus, quand n → +∞ on a 1
+3
+
+(n + 1)3 − 1
+
+∼
+1
+3
+n
+3
+. On en déduit par encadrement que Sn ∼
+1
+3
+n
+3
+.
+3

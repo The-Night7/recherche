@@ -1,0 +1,204 @@
+D´ epartement de Math´ ematiques
+ING2-MI
+Introduction aux s´ eries temporelles
+TP3: Lissage par Moyenne mobile
+January 29, 2025
+Rappel et d´ efinitions
+On consid` ere un mod` ele additif de la s´ erie (Xt)1≤t≤T :
+Xt =mt +St +ϵt, 1≤t≤T, (1)
+o` u :
+• mt repr´ esente la tendance,
+• St est la composante saisonni` ere,
+• ϵt est une suite de variables al´ eatoires i.i.d., appel´ ee bruit blanc.
+D´ efinition d’une moyenne mobile
+La s´ erie filtr´ eeYt = Pm2
+i=−m1θiXt+i est une moyenne mobile d’ordrem1+m2+1, o` um1,m 2∈
+N∗, et θi∈ R sont les coefficients de pond´ eration.
+Propri´ et´ es associ´ ees :
+• Op´ erateurs retard et avance :
+– B(Xt) =Xt−1 (op´ erateur retard),
+– F (Xt) =Xt+1 (op´ erateur avance).
+• Op´ erateur moyenne mobile :M = Pm2
+i=−m1θiB−i.
+– M est dit centr´ esi m1 =m2,
+– M est dit sym´ etriquesi m1 =m2 et θi =θ−i∀i.
+Moyennes mobiles simples
+1. Pour p = 2m + 1 (impair) :
+Yt = 1
+p
+mX
+i=−m
+Xt+i. (2)
+2. Pour p = 2m (pair) :
+Yt = 1
+p
+"
+1
+2Xt−m +
+m−1X
+i=−m+1
+Xt+i + 1
+2Xt+m
+#
+. (3)
+1
+<<<PAGE>>>
+Facteur de r´ eduction du bruit :
+V (M(ϵt))
+V (ϵt) =
+m2X
+i=−m1
+θ2
+i. (4)
+Les moyennes mobiles simples permettent d’´ eliminer une saisonnalit´ e de p´ eriode ´ egale ` a leur
+ordre.
+Exercice 1. On consid` ere la s´ erie (Yt) d´ efinie par :
+Yt =M(Xt) = 1
+2 [Xt−1 +Xt]. (5)
+1. Expression avec les op´ erateurs de retard :
+(a) `A l’aide de l’op´ erateur retardB, ` ecrireM(Xt). En d´ eduire son polynˆ ome car-
+act´ eristique.
+2. Moyenne de M(Xt) et M(Xt+1) :
+(a) Donner l’expression de M2(Xt), la moyenne de M(Xt) et M(Xt+1), en fonction
+des termes de la s´ erie{Xt}.
+(b) Quel est l’int´ erˆ et pratique deM2(Xt) ?
+(c) `A l’aide des op´ erateurs de retard, ` ecrireM2(Xt). En d´ eduire son polynˆ ome
+caract´ eristique.
+3. Application ` a une s´ erie particuli` ere :On consid` ere la s´ erie :
+Xt =a +bt + (−1)t +ϵt, (6)
+o` u (ϵt) est un bruit blanc centr´ e de varianceσ2.
+(a) Calculer M2(Xt). Commenter le r´ esultat.
+(b) Calculer V (M2(Xt)). Commenter le r´ esultat.
+(c) Illustration avec un tableur :
+c1) Simuler la s´ erie{Xt} aveca = 1, b = 0.25, et ϵt∼U ([−1, 1]).
+c2) Repr´ esenter la s´ erie liss´ eeM2(Xt) et la s´ erie{Xt} sur un mˆ eme graphique.
+Ajouter la courbe polynomiale lin´ eaire ` aM2(Xt). Est-ce que les graphiques
+confirment vos conclusions de la question 3.a ?
+c3) Calculer la s´ eriezt = M2(Xt)− (a +bt). Pourquoi V (zt) = V (M2(Xt)) ?
+Montrer avec le tableur que le facteur de r´ eduction du bruit est celui trouv´ e
+` a la question 3.b.
+Exercice 2. Reconnaissance de Moyennes Mobiles .
+Reconnaˆ ıtre les moyennes mobiles suivantes, donner la s´ erie filtr´ ee associ´ ee et calculer le
+facteur de r´ eduction du bruit blanc.
+2
+<<<PAGE>>>
+a) M = [5; 1
+2, 1, 1]
+b) M = [13; 1
+2, 1, 1, 1, 1, 1, 1]
+Exercice 3. . D´ ecomposition saisonni` ere d’une s´ erie ”Lissage moyenne mobile”
+ Partie 1- Tableur. L’objectif de cette partie est d’utiliser un tableur pour d´ eterminer
+la tendance et les coefficients saisonniers d’une s´ erie temporelles en utilisant la m´ ethode
+de lissage par moyennes mobiles. Le tableau 1 donne les valeurs observ´ ees de la s´ erie des
+”Indices des d´ epenses des touristes ´ etrangers en France, base 2005 ”
+Trimestre T1 T2 T3 T4 Moyenne annuelle
+Ann´ ee 2003 75,0 83,1 105,4 74,0 84,4
+2004 81,7 96,5 114,4 78,9 92,9
+2005 88,9 104,4 123,8 82,9 100,0
+2006 90,0 105,7 125,3 83,9 101,2
+2007 91,1 107,0 128,1 86,3 103,1
+Moyenne Trimestrielle 106,7 124,2 149,3 101,5 Moyenne g´ en´ erale:120,4
+Tableau 1–Indices des d´ epenses des touristes ´ etrangers en France, base 2005. Source :
+Minist` ere du Tourisme
+1) Donner le graphique de la s´ erie et commenter
+2) Quel mod` ele peut on envisager pour mod´ eliser cette s´ erie ?
+3) CalculerM(Xt) la s´ erie liss´ ee par une moyenne mobile appropri´ ee selon les ´ etapes suiv-
+antes:
+- Calculer la s´ erie diff´ erenceDt =Xt−M(Xt)
+- En d´ eduire les coefficients saisonniers tels que somme=0
+- Calculer la s´ erie CVS
+- Calculer la tendance par la m´ ethode des MC
+- Reconstruire la s´ erie tendance + saison et comparer avec la s´ erie brute
+- Quel montant de d´ epenses peut-on pr´ evoir pour l’ann´ ee 2008 ?
+Partie 2- R (voire le code R en annexe)
+- Importer les donn´ ees et les transformer dans la classe ts
+- La d´ ecomposition de la s´ erie en tendance + saison + bruit se fait grˆ ace ` a la fonction
+decompose. V´ erifier que les r´ esultats sont identiques ` a ceux obtenus avec le tableur.
+- Calculer la tendance par la m´ ethode des MC
+- Reconstruire la s´ erie tendance + saison et comparer avec la s´ erie brute
+3
+<<<PAGE>>>
+Exercice 4. (` a faire en autonomie) Une entreprise a relev´ e pendant quatre ans ses ventes
+trimestrielles (en milliers d’euros)
+T1 T2 T3 T4
+1987 102 100 104 108
+1988 110 106 113 115
+1989 117 115 120 122
+1990 128 123 127 131
+1991 134 130 − −
+1. Montrer qu’il existe un mouvement saisonnier
+2. Ce mouvement est-il additif ou multiplicatif ?
+3. Calculer les ´ ecarts saisonniers par la m´ ethode des moyennes mobiles.
+4. D´ esaisonnaliser la s´ erie
+5. Calculer la tendance par la m´ ethode des moindres carr´ es
+6. Effectuer le calcul ” ternd+´ ecarts saisonniers ” et comparer le r´ esultat avec la s´ erie
+brute.
+7. Quel montant de vente peut-on pr´ evoir respectivement pour le troisi` eme et le qua-
+tri` eme trimestre 1991 ?
+Exercice 5. (` a faire en autonomie). On consid` ere la s´ erie Airpassenger.
+1) Construction du mod` ele sur les 10 ` eres ann´ ees
+- Utiliser un mod` ele additif sur le log des donn´ ees
+- D´ eterminer les coefficients saisonniers
+- D´ eterminer la tendance par la m´ ethode MC
+2) Pr´ evision pour 1960
+- Calculer les pr´ evisions pour l?ann´ ee 1960
+- Comparer avec les valeurs r´ eelles.
+4
+<<<PAGE>>>
+Annexe: Code R de l’exercice 3
+1 Objectif
+L’objectif de ce TP est de d´ ecomposer une s´ erie temporelle pour analyser ses composantes.
+2 Importation des donn´ ees
+Question 1 : Charger les donn´ ees de la s´ erie ”Indice” depuis un fichier texte et afficher
+son contenu.
+SerieIndice <- read.table("SerieIndices2005.txt", header = FALSE, dec = ",")
+print(SerieIndice)
+Question 2 : Transformer la s´ erie en un objet de type ts et v´ erifier qu’il s’agit bien
+d’une s´ erie temporelle.
+SerieIndice_ts <- ts(SerieIndice, frequency = 4, start = c(2003, 1))
+print(SerieIndice_ts)
+is.ts(SerieIndice_ts) # Doit renvoyer TRUE
+3 Visualisation et D´ ecomposition
+Question 3 : Repr´ esenter graphiquement la s´ erie temporelle.
+plot(SerieIndice_ts, main = "S´ erie temporelle des indices (2003 - ...)",
+xlab = "Trimestres", ylab = "Indices", col = "blue")
+Question 4 : D´ ecomposer la s´ erie temporelle en tendance, composante saisonni` ere et
+bruit.
+decomp <- decompose(SerieIndice_ts, type = "additive")
+print(decomp)
+plot(decomp, main = "D´ ecomposition additive de la s´ erie temporelle")
+4 Comparaison avec un tableur
+Question 5 : Comparer les coefficients saisonniers obtenus avec ceux d’un tableur.
+print(decomp$seasonal)
+Observation : Les coefficients saisonniers obtenus sont identiques ` a ceux du tableur.
+5
+<<<PAGE>>>
+5 Estimation de la tendance par moyenne mobile
+Question 6 : Appliquer une moyenne mobile pour estimer la tendance.
+filt <- rep(1/4, 3)
+filt <- c(1/8, filt, 1/8)
+Z <- filter(SerieIndice_ts, filter = filt, sides = 2)
+Z <- ts(Z, frequency = 4, start = c(2003, 1))
+print(Z)
+Question 7 : Comparer graphiquement la s´ erie brute et la s´ erie liss´ ee.
+ts.plot(SerieIndice_ts, Z, col = c("blue", "red"), lwd = c(1, 2),
+main = "S´ erie brute et s´ erie liss´ ee (moyenne mobile)",
+xlab = "Trimestres", ylab = "Valeurs")
+Observation : La s´ erie liss´ ee montre une tendance plus r´ eguli` ere.
+6 Pr´ evision pour 2008
+Question 8 : Pr´ evoir les valeurs pour l’ann´ ee 2008 en utilisant la r´ egression lin´ eaire.
+t <- 1:20
+SVC_non_manquantes <- SVC[!is.na(SVC)]
+SVC_lm <- lm(SVC_non_manquantes ~ t[!is.na(SVC)])
+N <- 2008
+X1 <- numeric(4)
+for (i in 1:4) {
+X1[i] <- coef(SVC_lm)[1] + coef(SVC_lm)[2] * ((N - 2003) * 4 + i) + s[i]
+}
+X_comb <- c(as.vector(SerieIndice_ts), X1)
+X_final <- ts(X_comb, start = 2003, frequency = 4)
+ts.plot(X_final, col = "black", lwd = 2,
+main = "S´ erie temporelle avec pr´ evisions pour 2008",
+xlab = "Ann´ ee", ylab = "Valeurs")
+Observation : Les pr´ evisions suivent bien la tendance observ´ ee.
+6

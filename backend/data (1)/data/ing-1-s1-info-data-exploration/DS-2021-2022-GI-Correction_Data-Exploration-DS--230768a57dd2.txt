@@ -1,0 +1,142 @@
+ 
+ING1 -GI 
+EXAMEN DE DATA EXPLORATION  
+2021-2022 
+2h  
+Examen papier 
+2 feuilles R/V manuscrites autorisées 
+Calculatrice autorisée 
+ 
+Exercice 1 
+On a interrogé une partie des élèves d’un collège pour connaitre la distance qu’ils doivent parcourir pour se rendre à 
+l’établissement scolaire et qui représente la variable X regroupée selon trois catégories courte , moyenne  et longue  (i.e.  
+distance domicile/collège). 
+ On s’intéresse de plus à la variable Y qui représente le niveau scolaire de l’élève.  L’objectif est d’étudier l’éventuel 
+impact de la distance domicile/collège sur les résultats. On obtient ainsi le tableau suivant : 
+ Faible  Moyenne  Elevé  
+Courte  23  25  79  
+Moyenne  83  85  55  
+Longue  102  21  27  
+1)  Préciser les variables étudiées ainsi que leur type. Quelle est la population étudiée ? Quelle est la taille de 
+l’échantillon ? 
+Les deux variables sont : la distance parcourue par l’élève pour se rendre à l’établissement scolaire X et son 
+niveau scolaire Y.  
+Les deux variables sont qualitatives.  
+La taille de l’échantillon est : 500 élèves. 
+ 
+2)  Etablir le tableau complet des effectifs observés en ajoutant les effectifs marginaux.  
+ 
+ Faible  Moyenne  Elevé  Total  
+Courte  23  25  79  127  
+Moyenne  83  85  55  223  
+Longue  102  21  27  150  
+Total  208  131  161  500  
+3)  Calculer le tableau des fréquences observées.   
+ 
+ Faible  Moyenne  Elevé  Total  
+Courte  0.046  0.05  0.158  0.254  
+Moyenne  0.166  0.17  0.11  0.446  
+Longue  0.204  0.042  0.054  0.3  
+Total  0.416  0.262  0.322  1 
+4)  Donner le tableau des profils lignes. 
+ 
+ Faible  Moyenne  Elevé  Total  
+Courte  0.1811  0.1 96  0.622  1 
+Moyenne  0.372  0.381  0.246  1 
+Longue  0.68  0.14  0.18  1 
+ 
+5)  Comparer le tableau de profils lignes avec le profil moyen ligne. Que pouvez-vous en conclure sur le lien entre 
+les deux variables ? Justifiez votre réponse. 
+ 
+Il faut comparer les lignes de tableau des profils lignes avec le profil moyen ligne suivant : 
+ 
+0.416  0.262  0.322  
+ 
+<<<PAGE>>>
+On peut remarquer que les profils lignes s'écartent du profil moyen ligne. Par exemple toutes distances 
+confondues, on constate qu’il y a 41,6% d’élève ayant un niveau faible. Or pour les distances courtes, ce 
+pourcentage tombe à 18,11% ,et a contrario, pour les distances longues, il augmente à 68% . Ce qui nous laisse 
+conclure que les deux variables sont liées. Conclusion à confirmer avec le test de X². 
+6)  Quelle est la probabilité que : 
+a)  un élève parcourt une distance longue ? 
+0.3 
+b)  un élève qui parcourt une longue distance ait un niveau faible ? 
+0.68 (Tableau des profils lignes) 
+c)  un élève ait un niveau faible et parcourt une distance moyenne ? 
+83/208 = 0.39 
+0.166 (Tableau des fréquences) 
+ 
+7)  En supposant que les deux variables sont indépendantes, calculer l’effectif théorique des élèves de niveau faible 
+et qui parcourent une distance courte. Détailler vos calculs. 
+ 
+L’effectif théorique est : (208*127)/500 = 52.832 
+ 
+8)   La distance du chi-deux entre le tableau des effectifs observés et celui des effectifs théoriques est 114.74. Peut-
+on conclure que les variables sont liées ? 
+Voici le tableau de seuils de décision 
+d.d.l.  4 5 6 7 8 9 10 15 
+Seuil 9.49  11.075  12.59  14.07  15.51  16.92  18.31  24.99  
+ 
+Le d.d.l est : (3-1)*(3-1)=4 donc le seuil est 9.49.. X²=114.74 >> 9.49 alors les variables sont fortement liées. 
+Attention, les résultats de ce test ne sont valables que si les effectifs théoriques sont >5 (ce qui doit être le cas car tous 
+les effectifs marginaux sont élevés) 
+ 
+Exercice 2 
+Le tableau ci-après présente une partie des offres locatives de 31 appartements rennais proposés sur le site leboncoin.fr  
+au 02/01/2017.   
+A- Modèle de prévision du loyer en fonction de la surface  
+En premier temps, on s’intéresse à étudier la relation entre le loyer Y de ces appartements et leur surface X. Avec le 
+logiciel R nous avons obtenu ce résultat : 
+ 
+1)  Donner une estimation du coefficient de corrélation entre le loyer et la surface d’un appartement. Est-ce que la 
+surface joue un rôle sur le prix de location des appartements ? Considérez-vous ce rôle comme important ? 
+ 
+Le coefficient de détermination est 0.5808, alors le coefficient de corrélation est ±0.762, les variables sont donc 
+fortement corrélées entre elles. Logiquement, on peut dire que le coefficient de corrélation est 0.762  ( et pas -
+0.762) car les deux variables Surface et Prix de location sont souvent corrélé de sens positive. 
+ 
+2)  Proposer un modèle permettant de donner la relation entre le loyer des appartements et leur surface. 
+X : Surface 
+Y : Loyer 
+ 
+<<<PAGE>>>
+Y=7.282 X+244.296 + ε (ou bien Y^)  
+Loyer = 7.282*Surface+244.296 + ε 
+ 
+3)  Donner le coefficient de détermination. Interpréter. 
+R²=0.5808, alors 58% de la variabilité de Loyer est expliqué par la droite de régression. 
+ 
+4)   Un ami qui est en location à Rennes dans un appartement de 30 m² m’affirme qu’il paye un loyer de 410 euros. 
+Si je cherche à louer sur Rennes un appartement de même surface : 
+a)  Calculer la valeur prédite du prix de location. 
+Pour Surface X=30 m², la valeur de Loyer prédite par le modèle est : 7.282*30+244.296= 462.756 
+ 
+b)  Calculer en détaillant la valeur du résidu dans ce cas. 
+ 
+Résidu =  Vrai valeur – Valeur prédite = 410-462.756=-52.756 
+ 
+ 
+B- Classification  des appartement s en fonction de leur loyer et leur surface  
+On s’intéresse à une classification des appartements à partir de leur loyer et leur surface. Avec le logiciel R, on obtient le 
+dendrogramme suivant : 
+<<<PAGE>>>
+ 
+ 
+ 
+ 
+1)  De quelle méthode s’agit-il et quelle est la distance utilisée ? 
+Classification Ascendante Hiérarchique (CAH), la distance utilisée est celle de Ward. 
+2)  Quels découpages peut-on envisager d’après ce dendrogramme ? Expliquer votre choix ? 
+4 classes – ou 3 classes pas évident – On peut accepter les deux réponses. 
+3)  Proposer une autre méthode de classification et donner la différence entre les deux méthodes 
+ 
+Méthode de K-means. Avec la méthode de K-means on précise dès début le nombre des classes voulu. De plus 
+la méthode K-means est stochastique et on doit l’itérer plusieurs fois avec des initialisations différentes. La 
+méthode CAH est basée sur une distance entre clusters alors que la méthode k-means est basée sur une 
+distance entre points. 
+4)  Est-ce que les clusters correspondent aux types de appartements ? Justifier votre réponse. Quelle méthode 
+statistique pouvez-vous utiliser pour confirmer votre réponse ? 
+ 
+Les clusters ne correspondent pas aux types de appartements, car dans chaque classe on peut trouver des 
+appartements de différents Types.  On peut utiliser l’ACP pour confirmer notre réponse. 
+On peut utiliser un test du chi-deux entre la variable types d’appartement et le variable classes. 

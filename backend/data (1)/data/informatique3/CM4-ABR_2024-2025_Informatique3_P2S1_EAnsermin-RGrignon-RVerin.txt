@@ -1,0 +1,3739 @@
+INFORMATIQUE 3
+I V .  A R B R E S B I N A I R E S D E  
+R E C H E R C H E
+Eva ANSERMIN & Renaud VERIN & Romuald GRIGNON
+v1.1
+<<<PAGE>>>
+Rappel : arbre binaire
+• Une arbre binaire de recherche est un arbre dont les nœuds ont au maximum 2 fils.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+2
+<<<PAGE>>>
+Principe de l’ ABR
+• Une arbre binaire est un arbre dont les nœuds ont au maximum 2 fils.
+• Un arbre peut permettre de stocker des données. Si ces données ne sont pas organisées, la recherche 
+d’élément n’est pas plus rapide que pour une liste.
+• Dans un arbre quelconque les opérations de recherches sont en O(n) : tous les éléments doivent être 
+parcourus.
+• Dans un tableau, on peut trier les données pour faciliter la recherche. Comment faire pour un arbre ? 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+3
+<<<PAGE>>>
+ABR : définition 
+• Un arbre binaire a est appelé Arbre Binaire de Recherche (ABR) si et seulement si :
+• les valeurs du sous-arbre de gauche sont < racine(a)
+• les valeurs du sous-arbre de droite sont > racine(a) 
+• tout sous-arbre de a est un ABR
+• Remarque : selon la mise en œuvre de l’ABR, on interdit ou non des nœuds contenant des éléments de 
+valeur égale.
+On travaillera dans notre cours avec des arbres à éléments uniques.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+4
+<<<PAGE>>>
+ABR : définition 
+• Compléter cet arbre :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+5
+<<<PAGE>>>
+ABR : définition 
+• Compléter cet arbre : une possibilité
+E.ANSERMIN | R.VERIN | R.GRIGNON
+6
+<<<PAGE>>>
+ABR : opération de recherche
+• Les ABR facilitent grandement les opérations de recherche : on sait quel sous-arbre 
+explorer en fonction de la valeur du nœud sur lequel on se trouve.
+• Principe:
+• Comparaison avec la racine du nœud :
+• s’il est inférieur, recherche dans le sous-arbre gauche 
+• s’il est supérieur, recherche dans le sous-arbre droit 
+• Fin lorsque :
+• racine égale à la valeur cherchée 
+• le sous-arbre gauche (ou droit) n’existe pas : la valeur n’est pas dans 
+l’arbre
+E.ANSERMIN | R.VERIN | R.GRIGNON
+7
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+???
+SINON SI (element(a) EST EGAL A e) Alors
+???
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+???
+SINON
+???
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+8
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+9
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,40)
+ a
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+10
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,40)
+aFONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+11
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,40)
+a
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+12
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,40)
+a
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+13
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,40)
+a
+=> La fonction va retourner VRAI.
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+14
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,14)
+ a
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+15
+<<<PAGE>>>
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,14)
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+16
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,14)
+a
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+17
+<<<PAGE>>>
+ABR : opération de recherche
+• Algorithme : exemple : recherche (a,14)
+a          NULL
+=> La fonction va retourner FAUX 
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : booleen
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER FAUX
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER VRAI
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+18
+<<<PAGE>>>
+ABR : opération de recherche
+• Compléxité :
+• Meilleur des cas :
+• Pire cas : 
+• Cas moyen :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+19
+<<<PAGE>>>
+ABR : opération de recherche
+• Compléxité :
+• Meilleur des cas : élément trouvé de suite : O(1)
+• Pire cas : Tous les éléments à parcourir : O(n)
+(question : a quoi ressemble l’arbre dans ce cas?)
+• Cas moyen : O(𝒍𝒐𝒈𝟐(𝒏))
+E.ANSERMIN | R.VERIN | R.GRIGNON
+20
+<<<PAGE>>>
+ABR : opération d’insertion
+• L ’insertion d’un nouvel élément dans l’arbre doit respecter les règles de l’ABR : il ne peut 
+pas être inséré n’importe où. 
+• Principe:
+On ajoute un nouvel élément en feuille, en respectant les propriétés d’un ABR :
+• L ’ élément est déjà dans l’arbre, pas d’ajout 
+• On descend au bout de l’unique branche pour rajouter l’élément
+E.ANSERMIN | R.VERIN | R.GRIGNON
+21
+<<<PAGE>>>
+ABR : opération d’insertion
+• L ’insertion d’un nouvel élément dans l’arbre doit respecter les règles de l’ABR : il ne peut 
+pas être inséré n’importe où. 
+• Principe:
+On ajoute un nouvel élément en feuille, en respectant les propriétés d’un ABR :
+• L ’ élément est déjà dans l’arbre, pas d’ajout 
+• On descend au bout de l’unique branche pour rajouter l’élément
+E.ANSERMIN | R.VERIN | R.GRIGNON
+22
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : 
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+23
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+24
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+25
+<<<PAGE>>>
+ABR : opération d’insertion
+a
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+26
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+27
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+28
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+29
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+30
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+31
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+32
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+33
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+34
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+35
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+36
+<<<PAGE>>>
+ABR : opération d’insertion
+a        NULL
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+37
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a        NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+38
+<<<PAGE>>>
+ABR : opération d’insertion
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a        NULL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+39
+<<<PAGE>>>
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+ABR : opération d’insertion
+a        11
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+40
+<<<PAGE>>>
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+ABR : opération d’insertion
+a        11
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+41
+<<<PAGE>>>
+ABR : opération d’insertion
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+42
+<<<PAGE>>>
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+ABR : opération d’insertion
+11
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+43
+<<<PAGE>>>
+ABR : opération d’insertion
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+44
+<<<PAGE>>>
+ABR : opération d’insertion
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+45
+<<<PAGE>>>
+ABR : opération d’insertion
+a
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+46
+<<<PAGE>>>
+ABR : opération d’insertion
+a
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+47
+<<<PAGE>>>
+ABR : opération d’insertion
+11
+• Algorithme : Exemple : insertionABR(a, 11)
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+48
+<<<PAGE>>>
+ABR : opération de suppression
+• La suppression d’un nœud dans un arbre binaire consiste à supprimer uniquement le nœud ciblé : 
+ses fils doivent rester dans l’arbre.
+• Il faut maintenir la relation d’ordre imposée par l’ABR !
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+E.ANSERMIN | R.VERIN | R.GRIGNON
+49
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• Aucune réorganisation de l’arbre est nécessaire : 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+50
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+E.ANSERMIN | R.VERIN | R.GRIGNON
+51
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• On remplace le nœud par son fils unique :
+E.ANSERMIN | R.VERIN | R.GRIGNON
+52
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+E.ANSERMIN | R.VERIN | R.GRIGNON
+53
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• On remplace le nœud par son prédécesseur (ou son successeur) en valeur, dans son sous-arbre 
+gauche (ou droit)
+3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+54
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• On remplace le nœud par son prédécesseur (ou son successeur) dans son sous-arbre gauche (ou 
+droit)
+• Version #1 : le prédécesseur dans le sous-arbre gauche est la feuille la plus à droite (plus grand 
+élément du sous-arbre)
+• Version #2 : le successeur dans le sous-arbre droit est la feuille la plus à gauche (plus petit 
+élément du sous-arbre)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+55
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• On remplace le nœud par son prédécesseur (ou son successeur) dans son sous-arbre gauche (ou
+droit)
+• Version #1 : le prédécesseur dans le sous-arbre gauche est la feuille la plus à droite (plus grand 
+élément du sous-arbre)
+• Version #2 : le successeur dans le sous-arbre droit est la feuille la plus à gauche (plus petit 
+élément du sous-arbre)
+3
+E.ANSERMIN | R.VERIN | R.GRIGNON
+56
+<<<PAGE>>>
+ABR : opération de suppression
+• Il y a plusieurs cas à considérer:
+• Suppression d’une feuille 
+• Le nœud à supprimer a un fils
+• Le nœud à supprimer a deux fils
+• On remplace le nœud par son prédécesseur (ou son successeur) dans son sous-arbre gauche (ou 
+droit)
+• Version #1 : le prédécesseur dans le sous-arbre gauche est la feuille la plus à droite (plus grand 
+élément du sous-arbre)
+• Version #2 : le successeur dans le sous-arbre droit est la feuille la plus à gauche (plus petit 
+élément du sous-arbre)
+• Principe : 
+• On recherche le nœud à supprimer
+• S’il n’a pas de fils gauche, on le remplace par son fils droit (fils unique)
+• Sinon on cherche la plus grande valeur du sous-arbre gauche (valeur la plus à droite) et on 
+échange sa valeur avec la valeur du nœud à supprimer. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+57
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme :
+FONCTION suppression(a: pointeur sur Arbre, e: element) : pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre 
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+…
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+58
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme :
+FONCTION suppression(a: pointeur sur Arbre, e: element) : pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+…
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+59
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme :
+FONCTION suppression(a: pointeur sur Arbre, e: element) : pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+60
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme :
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+61
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+62
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ E.ANSERMIN | R.VERIN | R.GRIGNON
+63
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+64
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+65
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+66
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+67
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+68
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+69
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+70
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+71
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+72
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+73
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+74
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+75
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+76
+<<<PAGE>>>
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+77
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+78
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+79
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+80
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+81
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+82
+<<<PAGE>>>
+ABR : opération de suppression
+tmp
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+83
+<<<PAGE>>>
+ABR : opération de suppression
+a            NULL
+tmp
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+84
+<<<PAGE>>>
+ABR : opération de suppression
+a            NULL
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+85
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+86
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+87
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+88
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+89
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+90
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 8)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+91
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+92
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+93
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+94
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+95
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+96
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+97
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+98
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+99
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+100
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+101
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+102
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+103
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+104
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+105
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+106
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a        NULL
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+107
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a        NULL
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+108
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a        NULL
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+109
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+110
+<<<PAGE>>>
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+ABR : opération de suppression
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+111
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+112
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+113
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+114
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 6)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+115
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50) 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+116
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+117
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+118
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+119
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+120
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+121
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+122
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+123
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+124
+<<<PAGE>>>
+ABR : opération de suppression
+a
+a
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+125
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+126
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+127
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+128
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+129
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+130
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+131
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+132
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+133
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+134
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+135
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+136
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+137
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+138
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+139
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+140
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+a
+pe
+a
+a
+tmp
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+141
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+a       NULL
+ tmp
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+142
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+a       NULL
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+tmp
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+143
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+144
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+145
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+a
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+146
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a,50) 
+a
+pe
+FONCTION suppMax(a: arbre, pe:  Ptr sur Element) :  
+ptr sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// on rappelle la fonction avec le fils droit
+SI (existeFilsDroit(a)) Alors
+fd(a) ← suppMax(fd(a), pe)
+// Si plus de fils droit, on a le successeur 
+SINON
+*pe ← element(a)
+tmp ← a
+a ← fg(a)
+libérer(tmp)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+147
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+148
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+149
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+150
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN
+a
+a
+E.ANSERMIN | R.VERIN | R.GRIGNON
+151
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+152
+<<<PAGE>>>
+ABR : opération de suppression
+a
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+153
+<<<PAGE>>>
+ABR : opération de suppression
+• Algorithme : suppression (a, 50)
+FONCTION suppression(a: pointeur sur Arbre, e: element) : 
+pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+// element non présent dans l’arbre
+SI (a EST EGAL A NULL) Alors
+RETOURNER a
+// parcours récursif de l’arbre
+SINON SI (e SUP. STRICT. A element(a))
+fd(a) ← suppression(fd(a), e)
+SINON SI (e INF. STRICT. A element(a)) 
+fg(a) ← suppression(fg(a), e)
+// élément trouvé : remplacement par fils unique
+SINON SI NON (existeFilsGauche(a))
+tmp ← a
+a ← fd(a)
+libérer(tmp)
+// élément trouvé : remplacement par prédécesseur
+SINON
+fg(a) ← suppMax(fg(a), adresse(element(a))
+FIN SI
+RETOURNER a
+FIN E.ANSERMIN | R.VERIN | R.GRIGNON
+154
+<<<PAGE>>>
+Résumé
+• Les arbres binaires de recherche sont des arbres binaires dont les éléments respectent une relation d’ordre :
+• tout élément d’un sous-arbre gauche doit être inférieur strictement à la racine
+• tout élément d’un sous-arbre droit doit être supérieur strictement à la racine
+• Dans notre cours, nous imposons un cas particulier : l’arbre ne contient que des valeurs distinctes d’éléments 
+• Cette structure permet d’accélérer les opérations de recherche (O(𝑙𝑜𝑔2) plutôt que O(n) pour les arbres binaires 
+classiques.
+• Les opérations d’insertions et de suppressions doivent maintenir la relation d’ordre. 
+• Il existe encore d’autres moyens d’optimiser la recherche dans un ABR : c’est le sujet du prochain cours !
+E.ANSERMIN | R.VERIN | R.GRIGNON
+155

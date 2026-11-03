@@ -1,0 +1,222 @@
+ARP 
+Routage 
+Topologie 
+<<<PAGE>>>
+Introduction 
+• Toute machine reliée sur un réseau se charge d’aiguiller les 
+paquets à émettre en fonction de leur destination : 
+• Si le destinataire est sur le réseau local, le datagramme est 
+directement envoyé à la machine cible. 
+• Si le destinataire est sur un réseau différent, les données sont 
+envoyées au routeur du réseau local. 
+<<<PAGE>>>
+Nécessité de la résolution d’adresse 
+• la transmission doit se faire en utilisant le service de 
+la couche hôte-réseau (réseau physique) 
+•  la couche hôte-réseau (niveau trame) n'utilise pas 
+les adresses IP (niveau réseau) mais des adresses 
+physiques (adresses MAC) 
+• la résolution d'adresse est le mécanisme permettant 
+à une station d'obtenir l'adresse physique (de 
+l'interface/carte réseau) d'une station possédant 
+une certaine adresse IP dans le même réseau 
+ 
+<<<PAGE>>>
+Méthode possibles pour la résolution 
+d’adresse 
+
+<<<PAGE>>>
+Résolution dynamique par ARP 
+(Address Resolution Protocol) 
+
+<<<PAGE>>>
+Principe de résolution par ARP 
+
+<<<PAGE>>>
+Format du datagramme ARP 
+
+<<<PAGE>>>
+Datagramme ARP : Adresse 
+
+<<<PAGE>>>
+Format de la trame Ethernet V2 
+• Préambule : (8 octets) Annonce le début de la trame et permet la synchronisation. 
+Il contient 8 octets dont la valeur est 10101010 
+• Adresse Destination : (6 octets) Adresse physique de la carte Ethernet destinataire 
+de la trame. Exemple : 08:00:07:5c:10:0a 
+• Adresse Source : (6 octets) Adresse physique de la carte Ethernet émettrice de la 
+trame 
+• EtherType : ou type de trame (2 octets) Indique quel protocole est concerné par le 
+message  
+– 0x0600 : Xerox Network Systems,  
+– 0x0800 : IP (Internet Protocol) 
+– 0x8100 : 802.1q (encapsulation vlan) 
+– 0x0806 : ARP (Address Resolution Protocol) 
+– 0x8035 : RARP (Reverse ARP) 
+– 0x8137 et 0x8138 : Novell. 
+• Données : (46 à 1500 octets)Les données véhiculées par la trame. 
+• CRC: (Cyclic Redundancy Code) Champ de contrôle de la redondance cyclique 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+Requête ARP sur Ethernet V2 
+
+<<<PAGE>>>
+Réponse ARP pour IP sur Ethernet v2 
+
+<<<PAGE>>>
+Optimisation d’ ARP 
+
+<<<PAGE>>>
+Quelques commandes 
+• Linux 
+– arp  (affichage de la table arp) 
+– ping (interroge une carte réseau et exprime le temps aller-retour en mili 
+secondes) 
+    ping localhost 
+    ping @ip 
+    ping -v nom-hôte-distant 
+– route (programme de gestion de la table de routage IP) 
+– ifconfig (programme de configuration des interfaces réseaux, c'est à dire des 
+cartes réseaux) 
+– netstat (affiche les informations sur les connexions réseaux) 
+– nslookup ("name server", programme d'interogation des serveurs de noms de 
+domaines) 
+• Windows 
+– ipconfig –all 
+– arp –a 
+– ping IP 
+<<<PAGE>>>
+ 
+ 
+ 
+Routage 
+<<<PAGE>>>
+Rôles des routeurs 
+• Les routeurs actuels sont pour la plupart des matériels dédiés à la tâche 
+de routage, se présentant généralement sous la forme de serveurs.  
+• On envoie la requête au routeur le plus proche, c'est-à-dire à la 
+passerelle réseau sur lequel il se trouve. Ce routeur va ainsi déterminer 
+la prochaine machine à laquelle les données vont être acheminées de 
+manière à ce que le chemin choisi soit le meilleur.   
+• Pour y parvenir, les routeurs tiennent à jour des tables de routage, 
+véritable cartographie des itinéraires à suivre en fonction de l'adresse 
+visée. Il existe de nombreux protocoles dédiés à cette tâche.  
+• les routeurs permettent de manipuler les données circulant sous forme 
+de datagrammes afin d'assurer le passage d'un type de réseau à un autre 
+• les routeurs sont chargés de fragmenter les paquets de données pour 
+permettre leur libre circulation 
+<<<PAGE>>>
+Routeur 
+• Un routeur est un élément 
+intermédiaire dans un réseau 
+informatique assurant le 
+routage des paquets. Son 
+rôle est de faire transiter des 
+paquets d'une interface 
+réseau vers une autre, au 
+mieux, selon un ensemble de 
+règle (Wikipedia) 
+Les premiers routeurs étaient de simples 
+ordinateurs ayant plusieurs cartes réseau, dont 
+chacune était reliée à un réseau différent. 
+<<<PAGE>>>
+Algorithme de routage 
+
+<<<PAGE>>>
+Test d’appartenance au même réseau 
+
+<<<PAGE>>>
+Exemple 
+Un routeur possède plusieurs interfaces réseau, chacune connectée sur un réseau différent. 
+Il possède ainsi autant d'adresses IP que de réseaux différents sur lesquels il est connecté 
+<<<PAGE>>>
+Test d’appartenance au même réseau 
+
+<<<PAGE>>>
+Remise indirecte 
+• Méthode 
+1. déterminer l’adresse IP du routeur à solliciter par 
+consultation de la table de routage 
+2. transmettre le datagramme au routeur 
+a. Déterminer son adresse physique (résolution d’adresse) 
+b. Utiliser le service du réseau pour lui transmettre le datagramme 
+
+<<<PAGE>>>
+Test d’appartenance au même réseau 
+
+<<<PAGE>>>
+Traitement du datagramme reçu 
+• Traitement par un routeur 
+– Si le datagramme est destiné au routeur, l’accepter 
+– Sinon le routeur est utilisé comme nœud de transfert 
+et doit relayer le datagramme (si aucun route , 
+message ICMP renvoyé) 
+• Traitement par une station 
+– Si le datagramme est destiné à la station , l’accepter 
+– Sinon le datagramme est détruit et un message ICMP 
+est envoyé 
+Remarque : une station, même disposant de plusieurs 
+interfaces, n’assure pas systématiquement  la fonction de 
+routeur, il faut qu’elle soit configurée 
+<<<PAGE>>>
+Table de routage 
+• chaque station ou routeur dispose de sa propre table de routage 
+• une table contient autant d'entrées que de destinations (réseaux) 
+connues de l'hôte 
+• une entrée est un couple (adresse réseau, adresse du saut 
+suivant (routeur)) 
+• pour une destination donnée, la table n'indique pas le chemin à 
+suivre, seulement le routeur à qui confier le datagramme 
+ le chemin est une information répartie 
+• ce routeur doit être directement accessible (situé sur un réseau 
+commun) et c'est son adresse dans ce réseau qui est utilisée 
+• une destination dont l'adresse de réseau ne figure pas dans la 
+table est inaccessible 
+ 
+ 
+<<<PAGE>>>
+Exemple 
+Un routeur possède plusieurs interfaces réseau, chacune connectée sur un réseau différent. 
+Il possède ainsi autant d'adresses IP que de réseaux différents sur lesquels il est connecté 
+<<<PAGE>>>
+Table de routage  
+
+<<<PAGE>>>
+Table de routage 
+
+<<<PAGE>>>
+Table de routage 
+
+<<<PAGE>>>
+Table de routage 
+
+<<<PAGE>>>
+Algorithme de routage 
+• La couche réseau doit acheminer les paquets de la machine 
+source vers la machine destination. 
+• L’interconnexion des routeurs permet de disposer de 
+plusieurs routes possibles. 
+• En mode datagramme, le choix de la route est effectué 
+pour chaque paquet. 
+• Dans le cas d’un circuit virtuel, la route est déterminée au 
+moment de l’établissement de la connexion. 
+• Quelques algorithmes : 
+– Plus court chemin (Djikstra) 
+– Routage fondé sur le flux 
+– Routage par inondation 
+– Routage à vecteur de distance (Ex: RIP) 
+<<<PAGE>>>
+Sources 
+Slides sont tirés du : 
+• Cours de C. Pain-Barre 
+• Cours Initiation à l’architecture réseau de P . 
+Ducrot 
+• Livre de Guy Pujolle «  Cours réseaux et 
+télécom » 
+• Wikepedia 

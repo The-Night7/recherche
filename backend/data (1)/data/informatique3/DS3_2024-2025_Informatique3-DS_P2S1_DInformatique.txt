@@ -1,0 +1,229 @@
+Pré-ING2
+Semestre 1 - 2024/2025
+DS n ° 3 Informa tique III
+Calculatrice et documents non autorisés
+Le langage utilisé doit être le langage C ou le shell obligatoirement
+Attention à la robustesse du programme
+Vous pouvez définir autant de fonctions que vous le souhaitez dans chaque exercice.
+Il n’y a pas nécessairement l’équivalence : une question <=> une fonction.
+Exercice 1 (Recherche d’un mot dans un arbre ) (5 pts)
+— On considère qu’un arbre tel que celui présent sur la figure suivante, peut permettre de stocker des mots. La première
+lettre d’un mot sera un noeud (pas forcément la racine) et les lettres suivantes seront accessibles en parcourant les
+enfants successifs.
+— Dans cet arbre, il n’y a que des lettres distinctes. C’est à dire que les mots présents dans cet arbre ne contiennent
+jamais plusieurs fois la même lettre
+— Par exemple, l’arbre suivant contient les mots : "ma", "mal", "mai", "mais", "ais", "me", "met", "et", "menu", "en",
+"nu".
+1. Ecrire la structure permettant de construire un arbre contenant un caractère.
+2. Ecrire une fonction int motExistant (Arbre *a, char *mot) qui va retourner 1 si la chaîne de caractèresmot est
+dans l’arbre, et qui va retourner 0 sinon.
+Note : Toutes les fonctions jugées nécessaires et qui seraient appelées par la fonctionmotExistant doivent être écrites.
+Exercice 2 (Arbre Modulobinaire (4pt))
+L’objectif de cet exercice est de mettre en œuvre un arbre binaire particulier, respectant des règles de placement spéci-
+fiques. Chaque noeud de l’arbre doit contenir une valeur entière.
+Règles de placement :
+— Si l’arbre est vide, le premier noeud devient la racine.
+— Si la racine n’a pas d’enfant, placez un nouveau noeud à gauche si sa valeur est un multiple de 2, sinon à droite.
+— À chaque changement de profondeur, incrémentez le diviseur. Pour la valeur à ajouter, à cette profondeur, placez-la
+à gauche si c’est une valeur multiple du diviseur, sinon à droite.
+1
+<<<PAGE>>>
+[ETAPE 1] ajout de 5 [ETAPE 2] ajout de 6
+l'arbre est vide, on créé la racine divisible par 2, donc on créé le fils gauche.
+[5] [5]
+/ \ / \
+[6]
+/ \
+[ETAPE 3] ajout de 8 [ETAPE 4] ajout de 12
+divisible par 2, on parcourt le fils gauche, divisible par 2, on parcourt le fils gauche
+puis non divisible par 3, on créé le fils puis divisible par 3 : on créé le fils gauche
+droit
+[5] [5]
+/ \ / \
+[6] [6]
+/ \ / \
+[8] [12] [8]
+/ \ / \ / \
+[ETAPE 5] ajout de 7 [ETAPE 6] ajout de 9
+non divisible par 2 : non divisible par 2, on parcourt le fils droit
+on créé le fils droit divisible par 3, on créé le fils gauche
+__[5]__ ____[5]____
+/ \ / \
+[6] [7] [6] [7]
+/ \ / \ / \ / \
+[12] [8] [12] [8] [9]
+/ \ / \ / \ / \ / \
+[ETAPE 7] ajout de 25 [ETAPE 8] ajout de 16
+non divisible par 2, on parcourt le fils droit divisible par 2, on parcourt le fils gauche
+non divisible par 3, on créé le fils droit non divisible par 3, on parcourt le fils droit
+divisible par 4, on créé le fils gauche
+__[5]__ __[5]__
+/ \ / \
+[6] [7] [6] [7]
+/ \ / \ / \ / \
+[12] [8] [9] [25] [12] [8] [9] [25]
+/
+[16]
+1. Ecrire la fonctionCreationArbre(valeur) qui crée un noeud d’un arbre contenant une valeur passée en paramètre et
+renvoie son adresse.
+2. Ecrire la fonctionAjoutNoeud(arbre, valeur) qui prend en paramètre l’adresse d’un noeud de l’arbre, ainsi qu’une
+valeur entière à ajouter dans cet arbre. Elle va ajouter un noeud dans l’arbre contenant cet entier en respectant les
+règles de placement de l’arbre Modulobinaire
+3. Où se trouvera un noeud contenant un nombre premier dans un tel arbre?
+2
+<<<PAGE>>>
+Exercice 3 (A VL : Suppression de noeud (5 pt) )
+Soit la structure d’un arbre de type AVL :
+typedef struct _node{
+int elt;
+struct _node* fg;
+struct _node* fd;
+int eq;
+} Arbre;
+Coder la fonction de suppression d’un noeud d’un arbre de type AVL.
+Le prototype de cette fonction est le suivant :Arbre* removeAVL(Arbre* pArbre, int value, int* h) .
+Cette fonction doit en plus de supprimer le noeud recherché, mettre à jour les équilibres des noeuds impactés.
+En cas de noeud à supprimer ayant deux enfants, la fonction doitaller chercher le remplaçant dans le sous-arbre
+droit.
+On supposera que la fonctionArbre* equilibrageAVL(Arbre* pArbre); existe et donc peut être appelée.
+Exercice 4 ( Shell : Débit d’attractions d’un fameux parc Allemand (6 pt) )
+Un parc d’attraction souhaite faire le point sur le débit horaire (nombre de personnes/heure à embarquer dans une
+attraction) de ses montagnes russes.
+L’objectif de cet exercice est d’écrire un script shell permettant d’analyser les statistiques de fréquentation des attractions
+qui sont reportées dans un fichierattractions.txt. Chacune des lignes de ce fichier est au format suivant :
+<nom_attraction>-<nombre_personnes>-<heures_ouvertes>
+Exemple de fichierattractions.txt :
+Voltron-14400-8
+SilverStar-15300-9
+BlueFire-9600-8
+Poseidon-0-0
+Wodan-14000-10
+À partir de ce fichier, écrire un script Shell qui prendra en paramètre le nom d’un fichier au format indiqué ci-dessus.
+Une documentation de différentes commandes est disponible à la fin de ce sujet.
+1. Vérifier le nombre d’arguments et la validité de ceux-ci. Afficher des messages d’erreur appropriés en cas de problème.
+Si le fichier n’existe pas ou n’est pas accessible, signaler l’erreur et arrêter le script.
+2. Afficher uniquement le nom de toutes les attractions listées dans le fichier.
+Aide pour la suite : l’instruction suivante
+for ligne in $(cat "fichier")
+permet de parcourir chaque ligne defichier.
+3. Afficher la ligne complète de l’attraction ayant accueilli le plus de personnes.
+4. Identifier les attractions ayant0 en nombre de personnes et en heures ouvertes (les attractions fermées). Générer un
+nouveau fichier coasters_fonctionnels.txt comportant uniquement les informations des attractions ouvertes.
+5. Générer un nouveau fichierdebit.txt contenant les informations complètes des attractions ouvertes, accompagnées
+du débit horaire entier (calculé commenombre_personnes / heures_ouvertes ), formaté comme suit :
+<nom_attraction>;<nombre_personnes>;<heures_ouvertes>;<debit_horaire>
+6. Parmis les attraction fonctionnelles, afficher les deux attractions ayant le meilleur débit horaire et les deux attractions
+ayant le moins bon débit horaire.
+3
+<<<PAGE>>>
+DOCUMENT A TION
+-
+cut - remove sections from each line of files
+SYNOPSIS
+cut OPTION... [FILE]...
+DESCRIPTION top
+Print selected parts of lines from each FILE to standard output. With no FILE, or when
+FILE is -, read standard input. Mandatory arguments to long options are mandatory for
+short options too.
+-b, --bytes=LIST
+select only these bytes
+-c, --characters=LIST
+select only these characters
+-d, --delimiter=DELIM
+use DELIM instead of TAB for field delimiter
+-f, --fields=LIST
+select only these fields; also print any line that contains no delimiter
+character, unless the -s option is specified
+--output-delimiter=STRING use STRING as the output delimiter
+the default is to use the input delimiter
+————————————————-
+head - Print the first 10 lines of each FILE to standard output.
+Usage: head [OPTION]... [FILE]...
+With more than one FILE, precede each with a header giving the file name.
+With no FILE, or when FILE is -, read standard input.
+Mandatory arguments to long options are mandatory for short options too.
+-c, --bytes=[-]NUM print the first NUM bytes of each file;
+with the leading '-', print all but the last
+NUM bytes of each file
+-n, --lines=[-]NUM print the first NUM lines instead of the first 10;
+with the leading '-', print all but the last
+NUM lines of each file
+————————————————-
+tail - Print the last 10 lines of each FILE to standard output.
+Usage: tail [OPTION]... [FILE]...
+With more than one FILE, precede each with a header giving the file name.
+With no FILE, or when FILE is -, read standard input.
+Mandatory arguments to long options are mandatory for short options too.
+-c, --bytes=[+]NUM output the last NUM bytes; or use -c +NUM to
+output starting with byte NUM of each file
+-n, --lines=[+]NUM output the last NUM lines, instead of the last 10;
+or use -n +NUM to output starting with line NUM
+--max-unchanged-stats=N
+with --follow=name, reopen a FILE which has not
+changed size after N (default 5) iterations
+to see if it has been unlinked or renamed
+(this is the usual case of rotated log files);
+with inotify, this option is rarely useful
+--pid=PID with -f, terminate after process ID, PID dies
+4
+<<<PAGE>>>
+————————————————-
+grep - print lines that match patterns
+SYNOPSIS
+grep [OPTION...] PATTERNS [FILE...]
+grep [OPTION...] -e PATTERNS ... [FILE...]
+grep [OPTION...] -f PATTERN_FILE ... [FILE...]
+DESCRIPTION
+grep searches for PATTERNS in each FILE. PATTERNS is one or patterns separated by
+newline characters, and grep prints each line that matches a pattern.
+OPTIONS
+Matching Control
+-f FILE, --file=FILE
+Obtain patterns from FILE, one per line. If this option is used multiple times
+or is combined with the -e (--regexp) option, search for all patterns given.
+The empty file contains zero patterns, and therefore matches nothing.
+-i, --ignore-case
+Ignore case distinctions, characters that differ only in case match each other.
+-v, --invert-match
+Invert the sense of matching, to select non-matching lines.
+Output Line Prefix Control
+-n, --line-number
+Prefix each line of output with the 1-based line number
+within its input file.
+————————————————-
+sort - sort lines of text files
+DESCRIPTION
+-d, --dictionary-order
+consider only blanks and alphanumeric characters
+-f, --ignore-case
+fold lower case to upper case characters
+-g, --general-numeric-sort
+compare according to general numerical value
+-n, --numeric-sort
+compare according to string numerical value
+-r, --reverse
+reverse the result of comparisons
+--sort=WORD
+sort according to WORD: general-numeric -g, human-numeric
+-h, month -M, numeric -n, random -R, version -V
+————————————————-
+tr - translate or delete characters
+SYNOPSIS
+tr [OPTION]... STRING1 [STRING2]
+DESCRIPTION
+Translate, squeeze, and/or delete characters from standard input,
+writing to standard output. STRING1 and STRING2 specify arrays
+of characters ARRAY1 and ARRAY2 that control the action.
+-d, --delete
+delete characters in ARRAY1, do not translate
+-s, --squeeze-repeats
+replace each sequence of a repeated character that is
+listed in the last specified ARRAY, with a single
+occurrence of that character
+[:digit:]
+all digits
+[:lower:]
+all lower case letters
+[:upper:]
+all upper case letters
+5

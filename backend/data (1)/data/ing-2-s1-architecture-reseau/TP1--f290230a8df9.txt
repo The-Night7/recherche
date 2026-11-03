@@ -1,0 +1,270 @@
+TP1 : Exercice Packet Tracer : Configuration de base d’un 
+commutateur 
+ 
+ 
+Objectifs pédagogiques 
+ Se connecter au commutateur à l’aide d’une connexion de console (Tâche 1) 
+ Parcourir divers modes CLI (Tâche 2) 
+ Supprimer une configuration existante sur un commutateur (Tâche 3) 
+ Vérification de la configuration par défaut du commutateur (Tâche 4) 
+ Créer une configuration de base du commutateur (Tâche 5) 
+ Gérer la table d’adresses MAC (Tâche 6) 
+ 
+ 
+Présentation  
+ 
+La gestion de base du commutateur est le point de départ pour configurer les commutateurs. Cet 
+exercice porte principalement sur la navigation dans les modes de l’interface de commande en ligne, 
+sur l’utilisation des fonctions d’aide, sur l’accès à l’historique des commandes, ainsi que sur la gestion 
+de la table d’adresses MAC et du fichier de configuration du commutateur.  
+ 
+
+<<<PAGE>>>
+Tâche 1 : connexion au commutateur : Connexion du commutateur Comm1 
+et du PC1  
+Sur packet tracer, réaliser le diagramme de topologie à l’aide d’un switch 2950-24 et d’un PC, puis 
+connecter les à l’aide d’un câble droit. 
+ À l’aide d’un câble de console, connectez l’interface RS 232 sur PC1 à l’interface de console 
+sur le commutateur (switch) Comm1.  
+ Cliquez sur PC1 puis sélectionnez l’onglet Desktop. Sélectionnez Terminal dans l’onglet 
+Desktop.  
+  Vous êtes désormais connecté au commutateur Comm1. Appuyez sur Entrée pour afficher 
+l’invite du commutateur.  
+ 
+Tâche 2 : parcours de divers modes CLI  
+Étape 1 : en mode d’exécution utilisateur, tapez ?. Prenez note de la liste de commandes 
+disponibles.  
+Tant que vous êtes en mode d’exécution utilisateur, seules les commandes de surveillance de base sont 
+disponibles.  
+ 
+Étape 2 : utilisation de la commande enable pour passer en mode d’exécution privilégié 
+Switch>enable  
+Switch#  
+L’invite passe de > à #.  
+ 
+Étape 3 : en mode d’exécution privilégié, tapez ?  
+Prenez note de la liste de commandes disponibles.  
+Vous disposez de commandes supplémentaires par rapport au mode d’exécution utilisateur. Outre les 
+commandes de surveillance de base, vous pouvez également accéder aux commandes de configuration 
+et de gestion. 
+ 
+Étape 4 : passage au mode de configuration globale  
+Switch#configure terminal  
+Switch(config)#  
+ 
+Étape 5 : en mode de configuration globale, tapez ? 
+Prenez note de la liste de commandes disponibles.  
+ 
+<<<PAGE>>>
+Étape 6 : configuration du commutateur Comm1 en tant que nom d’hôte 
+Switch(config)#hostname Comm1  
+ 
+Étape 7 : passage au mode de configuration d’interface pour VLAN99  
+La commande interface vlan 99 crée l’interface et passe en mode de configuration d’interface pour 
+VLAN99.  
+Comm1(config)#interface vlan 99  
+Comm1(config-if)#  
+ 
+Étape 8 : configuration de VLAN99 avec 172.17.99.11/24 et activation de l’interface  
+Utilisez les commandes ip address et no shutdown pour affecter l’adresse IP / le masque de sous-
+réseau approprié et pour activer l’interface.  
+Comm1(config-if)#ip address 172.17.99.11 255.255.255.0  
+Comm1(config-if)#no shutdown  
+ 
+Étape 9 : passage au mode de configuration d’interface pour Fa0/18  
+Comm1(config-if)#interface fa0/18  
+Comm1(config-if)# 
+ 
+Étape 10 : configuration du mode de port sur le mode d’accès  
+Passez au mode d’accès pour le mode de commutation grâce à la commande switchport mode access 
+pour permettre l’envoi et la réception de trames depuis l’interface.  
+Comm1(config-if)#switchport mode access  
+ 
+Étape 11 : affectation de VLAN99 au port  
+Exécutez la commande switchport access vlan 99 pour permettre à l’interface Fa0/18 d’intervenir en 
+tant que membre du VLAN 99. 
+ Comm1(config-if)#switchport access vlan 99  
+ 
+Étape 12 : sortie du mode de configuration d'interface  
+Exécutez la commande exit pour quitter le mode de configuration d’interface et passez en mode de 
+configuration globale.  
+ 
+Étape 13 : passage au mode de configuration pour la ligne de console  
+Comm1(config)#line console 0  
+Comm1(config-line)# 
+ 
+<<<PAGE>>>
+Étape 14 : retour au mode d’exécution privilégié à l’aide de la commande end  
+Comm1(config-line)#end  
+Comm1# 
+ 
+ 
+Tâche 3 : suppression d’une configuration existante sur un commutateur  
+Étape 1. Suppression du fichier d’informations de la base de données VLAN  
+Dans Flash, les informations de la base de données VLAN sont stockées séparément des fichiers de 
+configuration dans vlan.dat. Pour supprimer le fichier VLAN, exécutez la commande delete 
+flash:vlan.dat  
+Comm1#delete flash:vlan.dat  
+Delete filename [vlan.dat]? [Entrée]  
+Delete flash:vlan.dat? [confirm] [Entrée]  
+ 
+Étape 2. Suppression du fichier de configuration initiale du commutateur de la mémoire vive 
+non volatile (NVRAM)  
+Comm1#erase startup-config 
+Erasing the nvram filesystem will remove all configuration files! Continue?  
+[confirm] [Entrée]  
+[OK]  
+Erase of nvram: complete  
+ 
+Étape 3. Vérification de la suppression des informations du réseau local virtuel  
+Vérifiez que la configuration VLAN a été supprimée à l’aide de la commande show vlan.  
+Comm1#show vlan brief  
+Les informations du réseau local virtuel vlan 99 sont encore sur le commutateur. Suivez la prochaine 
+étape pour les supprimer. 
+Étape 4. Rechargement du commutateur  
+À l’invite du mode d’exécution privilégié, entrez la commande reload pour commencer le processus.  
+Comm1#reload  
+Proceed with reload? [confirm] [Entrée]  
+%SYS-5-RELOAD: Reload requested by console. Reload Reason: Reload Command. <résultat omis> 
+Press RETURN to get started! [Entrée]  
+Switch>  
+ 
+ 
+<<<PAGE>>>
+Tâche 4 : vérification de la configuration par défaut du commutateur  
+Étape 1. Passage en mode privilégié  
+Vous pouvez accéder à toutes les commandes du commutateur en mode privilégié. Ceci dit, l’accès 
+privilégié doit être protégé par un mot de passe pour empêcher toute utilisation non autorisée, dans la 
+mesure où de nombreuses commandes privilégiées configurent les paramètres d’exploitation. Parmi 
+les commandes du mode privilégié, on retrouve celles du mode d’exécution utilisateur, ainsi que la 
+commande configure qui donne accès aux autres modes de commande.  
+Switch>enable  
+Switch# 
+Remarquez de nouveau que l’invite a changé dans la configuration pour représenter le mode 
+d’exécution privilégié.  
+ 
+Étape 2. Examen de la configuration en cours d'exécution du commutateur  
+Examinez la configuration en cours d'exécution en exécutant la commande show running-config.  
+Combien d’interfaces Fast Ethernet le commutateur possède-t-il ?  
+Quelle est la plage de valeurs affichée pour les lignes vty ?  
+Examinez les caractéristiques de l’interface virtuelle VLAN1 en exécutant la commande show 
+interface vlan1.  
+ 
+Étape 3. Examen des interfaces Fast Ethernet  
+Examinez les propriétés par défaut de l’interface Fast Ethernet utilisée par PC1 à l’aide de la 
+commande show interface fastethernet 0/18.  
+Switch#show interface fastethernet 0/18  
+L’interface est elle activée ou désactivée ?  
+ 
+Étape 4. Examen des informations du réseau local virtuel  
+Examinez les paramètres du réseau local virtuel par défaut pour le commutateur à l’aide de la 
+commande show vlan.  
+Quel est le nom de VLAN1 ?  
+Quels ports se trouvent dans ce VLAN  
+Le VLAN1 est-il actif ?  
+ 
+Tâche 5 : création d’une configuration de base du commutateur  
+Étape 1. Définition des mots de passe d’accès  
+Passez en mode de configuration de ligne pour la console. Définissez le mot de passe de connexion sur 
+la valeur cisco. Configurez également les lignes vty 0 à 15 en utilisant le mot de passe cisco.  
+<<<PAGE>>>
+Switch#configure terminal  
+Switch(config)#line console 0  
+Switch(config-line)#password cisco  
+Switch(config-line)#login  
+Switch(config-line)#line vty 0 15  
+Switch(config-line)#password cisco  
+Switch(config-line)#login  
+Switch(config-line)#exit  
+Switch(config)#  
+ 
+Étape 2. Définition des mots de passe du mode de commande  
+Définissez le mot de passe secret actif sur class.  
+Switch(config)#enable secret class  
+ 
+Étape 3. Configuration de l’adresse de la couche 3 du commutateur  
+Définissez l’adresse IP du commutateur sur 172.17.99.11 avec 255.255.255.0 comme masque de sous-
+réseau sur le VLAN 99 d’interface virtuel interne. Vous devez créer le réseau local virtuel sur le 
+commutateur avant d’affecter l’adresse. 
+ Switch(config)#vlan 99  
+Switch(config-vlan)#exit  
+Switch(config)#interface vlan99  
+Switch(config-if)#ip address 172.17.99.11 255.255.255.0  
+Switch(config-if)#no shutdown  
+Switch(config-if)#exit 
+ 
+Étape 4. Affectation des ports sur le réseau local virtuel du commutateur  
+Affectez Fastethernet 0/1, 0/8 et 0/18 aux ports sur VLAN 99.  
+Switch(config)#interface fa0/1  
+Switch(config-if)#switchport access vlan 99  
+Switch(config-if)#exit  
+ 
+Étape 5. Définition de la passerelle par défaut du commutateur  
+Le commutateur Comm1 est de couche 2. Il transmet des décisions en fonction de l’en-tête de la 
+couche 2. Si plusieurs réseaux sont connectés à un commutateur, vous devez spécifier son mode de 
+transfert des trames interréseau car ce chemin doit être spécifié au niveau de la couche 3. Pour ce faire, 
+spécifiez une adresse de passerelle par défaut qui pointe vers un routeur ou un commutateur de couche 
+3. Bien que cet exercice ne comporte pas de passerelle IP externe, supposons que vous connecterez un 
+<<<PAGE>>>
+réseau local à un routeur pour un accès externe. En supposant que l’interface du réseau local soit 
+172.17.99.1 sur le routeur, définissez la passerelle par défaut pour le commutateur.  
+Switch(config)#ip default-gateway 172.17.99.1 
+Switch(config)#exit 
+ 
+Étape6. Configuration de l’adresse IP et de la passerelle par défaut pour PC1  
+Définissez l’adresse IP de PC1 sur 172.17.99.21, avec 255.255.255.0 pour masque de sous-réseau. 
+Configurez 172.17.99.11 comme passerelle par défaut. Cliquez sur PC1, sélectionnez l’onglet Desktop 
+puis la configuration IP pour entrer les paramètres d’adressage.  
+ 
+Étape 7. Enregistrement de la configuration  
+Vous avez terminé la configuration de base du commutateur. Sauvegardez le fichier de configuration 
+en cours sur la mémoire vive non volatile (NVRAM) pour vous assurer que les modifications ne soient 
+pas perdues en cas de redémarrage du système ou d’une coupure de courant.  
+Switch#copy running-config startup-config  
+Destination filename [startup-config]?[Entrée] Building configuration...  
+[OK]  
+Switch#  
+ 
+Tâche 6 : gestion de la table d’adresses MAC  
+Étape 1. Enregistrement des adresses MAC des hôtes Déterminez et enregistrez les adresses 
+(physiques) de couche 2 pour les cartes réseau PC en procédant comme suit :  
+ Cliquez sur PC.  
+ Sélectionnez l’onglet Desktop.  
+ Cliquez sur l’invite de commande.  
+ Tapez ipconfig /all.  
+ 
+Étape 2. Identification des adresses MAC apprises par le commutateur  
+Affichez les adresses MAC à l’aide de la commande show mac-address-table en mode d’exécution 
+privilégié.  
+Switch#show mac-address-table  
+ 
+Étape 3. Effacement de la table d’adresses MAC  
+Pour supprimer les adresses MAC existantes, utilisez la commande clear mac-address-table dynamic 
+en mode d’exécution privilégié.  
+Switch#clear mac-address-table dynamic  
+<<<PAGE>>>
+ 
+ 
+Étape 4. Nouvel examen de la table d’adresses MAC  
+Vérifiez une nouvelle fois la table d’adresses MAC en mode d’exécution privilégié. La table n’a pas 
+changé ; envoyez la requête ping au commutateur Comm1 depuis PC1 et vérifiez une nouvelle fois.  
+ 
+Étape 5. Configuration d’une adresse MAC statique  
+Pour spécifier à quels ports un hôte peut se connecter, créez un mappage statique de l’adresse MAC 
+hôte à un port. Configurez une adresse MAC statique sur l’interface Fast Ethernet 0/18 à l’aide de 
+l’adresse enregistrée pour PC1 à l’étape 1 de cette tâche, 0002.16E8.C285.  
+Switch(config)#mac-address-table static 0002.16E8.C285 vlan 99 interface fastethernet 0/18  
+ 
+Étape 6. Vérification des résultats Vérifiez les entrées de la table d’adresses MAC.  
+Switch#show mac-address-table  
+ 
+Étape 7. Suppression de l’entrée MAC statique  
+Passez en mode de configuration et supprimez l’entrée MAC statique en insérant no au début de la 
+chaîne de commande. 
+Switch(config)#no mac-address-table static 0002.16E8.C285 vlan 99 interface fastethernet 0/18  
+ 
+Étape 8. Vérification des résultats  
+Assurez-vous que l’adresse MAC statique a été supprimée à l’aide de la commande show mac-
+address-table static.  
+ 
+ 

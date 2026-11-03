@@ -1,0 +1,49 @@
+Automate à pile 
+1. Définition : 
+Automate M = (Q , Σ, Γ, Δ, Z, S, F) 
+Q = (ensemble fini d’états)  
+Σ = (alphabet d’entrée)  
+Γ = (alphabet de pile) → Σ ∩ Γ = ø  
+Δ C ((Q x Σ* x Γ*) x (Q x Γ*) = (relation de transition)  
+ Transition : (qi, a, A, AABA, qf) 
+ qi : état de départ 
+ a : symbole de Σ 
+ A : symbole de Γ 
+ AABA : mot sur Γ 
+ qf : état d’arrivée 
+Z ∈ Γ = (symbole initial de pile) 
+S ∈ Q = q0 (état initial) 
+F 
+  Q = (ensemble d’états finaux) 
+ 
+Important : λ = Ɛ 
+Exemple 1 : 
+ 
+Figure 1. Automate à pile non-déterministe 
+ 
+ 
+<<<PAGE>>>
+Exemple 2 : 
+ 
+ 
+Figure 2. Automate à pile déterministe 
+Q = {q0, q1, q2} (ensemble fini d’états)  
+Σ = {a, b} (alphabet d’entrée)  
+Γ = {A, B, C} (alphabet de pile)  
+Δ C ((Q x Σ* x Γ*) x (Q x Γ*) (relation de transition) = {(qo, a, A, AABA, q1) 
+                                                                                                (qo, Ɛ, C, CA, q2) 
+                                                                                                (q2, b, A, Ɛ, q1)} 
+Z ∈ Γ = A (symbole initial de pile) 
+S ∈ Q = q0 (état initial) 
+F 
+  Q = {q1, q2} (ensemble d’états finaux) 
+ 
+2. Reconnaissance d’un mot : 
+• Par pile vide (pas besoin d’un état final) 
+• Par état final (automate fini) 
+• Par pile vide et état final 
+ 
+Un langage est reconnaissable par un automate à pile, ssi il est 
+reconnaissable par une grammaire algébrique.  
+ 
+Les automates à pile ne reconnaissent pas tous les langages algébriques.  

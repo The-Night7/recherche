@@ -1,0 +1,577 @@
+Correction Complète avec Cours
+Questions 10-19 (Suite)
+ING1 GM-MIM
+CY Tech - Examen 22 décembre 2023
+Contents
+1 Analyse Bivariée : Room Type Ö Neighbourhood 2
+1.1 Question 10 : Eectifs marginaux . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Question 11 : Fréquences n·1 et f2|2 . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.3 Question 12 : Prols colonnes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.4 Question 13 : Eectifs théoriques manquants . . . . . . . . . . . . . . . . . . . . . 9
+1.5 Question 14 : Calcul de la distance du χ2 . . . . . . . . . . . . . . . . . . . . . . . 11
+1
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1 Analyse Bivariée : Room Type Ö Neighbourhood
+Contexte
+On étudie le lien entre deux variables qualitatives :
+ Room Type : Type de chambre (3 modalités : Entire home/apt, Private room, Shared
+room)
+ Neighbourhood : Arrondissement (5 modalités : Bronx, Brooklyn, Manhattan, Queens,
+Staten Island)
+Table de contingence observée
+Entire home/apt Private room Shared room
+Bronx 3 4 0
+Brooklyn 139 98 0
+Manhattan 139 86 4
+Queens 10 12 0
+Staten Island 0 5 0
+2
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1.1 Question 10 : Eectifs marginaux
+RAPPEL DE COURS
+T able de contingence :
+Une table de contingence croise deux variables qualitatives. Pour I lignes et J colonnes, elle
+contient :
+1. Eectifs observés : nij = nombre d'individus dans la cellule (ligne i, colonne j)
+2. Eectifs marginaux :
+FORMULES CLÉS
+Eectif marginal ligne i :
+ni· =
+JX
+j=1
+nij
+(total de la ligne i)
+Eectif marginal colonne j :
+n·j =
+IX
+i=1
+nij
+(total de la colonne j)
+Eectif total :
+n =
+IX
+i=1
+JX
+j=1
+nij =
+IX
+i=1
+ni· =
+JX
+j=1
+n·j
+Notation :
+ Le point " · " remplace l'indice sur lequel on somme
+ ni· : on a sommé sur j (colonnes)
+ n·j : on a sommé sur i (lignes)
+T able complète :
+Col 1 Col 2 · · · T otal ligne
+Ligne 1 n11 n12 · · · n1·
+Ligne 2 n21 n22 · · · n2·
+... ... ... . . . ...
+T otal col n·1 n·2 · · · n
+3
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+SOLUTION
+Calcul des eectifs marginaux par ligne (Neighbourhood) :
+Bronx :
+n1· = 3 + 4 + 0 = 7
+Brooklyn :
+n2· = 139 + 98 + 0 = 237
+Manhattan :
+n3· = 139 + 86 + 4 = 229
+Queens :
+n4· = 10 + 12 + 0 = 22
+Staten Island :
+n5· = 0 + 5 + 0 = 5
+Calcul des eectifs marginaux par colonne (Room Type) :
+Entire home/apt :
+n·1 = 3 + 139 + 139 + 10 + 0 = 291
+Private room :
+n·2 = 4 + 98 + 86 + 12 + 5 = 205
+Shared room :
+n·3 = 0 + 0 + 4 + 0 + 0 = 4
+Eectif total :
+Par les lignes : n = 7 + 237 + 229 + 22 + 5 = 500
+Par les colonnes : n = 291 + 205 + 4 = 500
+T able complète avec marges :
+Entire Private Shared T otal
+Bronx 3 4 0 7
+Brooklyn 139 98 0 237
+Manhattan 139 86 4 229
+Queens 10 12 0 22
+Staten Island 0 5 0 5
+T otal 291 205 4 500
+Interprétation des marges :
+Distribution des arrondissements :
+ Brooklyn domine (237/500 = 47.4%)
+ Manhattan suit de près (229/500 = 45.8%)
+ Bronx, Queens, Staten Island sont minoritaires
+Distribution des types de chambres :
+ Entire home/apt : 291/500 = 58.2% (majorité)
+ Private room : 205/500 = 41%
+ Shared room : 4/500 = 0.8% (très rare)
+4
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1.2 Question 11 : Fréquences n·1 et f2|2
+RAPPEL DE COURS
+Types de fréquences dans une table de contingence :
+1. F réquence conjointe :
+fij = nij
+n
+Proportion d'individus dans la cellule (i,j ) par rapport au total.
+2. F réquences marginales :
+FORMULES CLÉS
+F réquence marginale ligne :
+fi· = ni·
+n
+F réquence marginale colonne :
+f·j = n·j
+n
+3. F réquences conditionnelles :
+FORMULES CLÉS
+F réquence de la ligne i sachant la colonne j :
+fi|j = nij
+n·j
+F réquence de la colonne j sachant la ligne i :
+fj|i = nij
+ni·
+Interprétation :
+ fi|j : Parmi les individus de la colonne j, quelle proportion est dans la ligne i ?
+ fj|i : Parmi les individus de la ligne i, quelle proportion est dans la colonne j ?
+Propriété :
+IX
+i=1
+fi|j = 1 et
+JX
+j=1
+fj|i = 1
+5
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+SOLUTION
+Calcul de n·1 :
+n·1 désigne l'eectif marginal de la colonne 1 (Entire home/apt).
+n·1 = 291
+Interprétation :
+Il y a 291 logements de type "Entire home/apt" dans l'échantillon, soit 58.2% du total.
+Calcul de f2|2 :
+f2|2 désigne la fréquence de Brooklyn (ligne 2) sachant Private room (colonne 2).
+FORMULES CLÉS
+f2|2 = n22
+n·2
+Où :
+ n22 = 98 (Brooklyn Ö Private room)
+ n·2 = 205 (total Private room)
+f2|2 = 98
+205 = 0.478 = 47.8%
+Interprétation détaillée :
+Que signie f2|2 = 47.8% ?
+ Population de référence : Tous les logements avec chambre privée (205 logements)
+ Question : Parmi ces logements avec chambre privée, quelle proportion se trouve à
+Brooklyn ?
+ Réponse : 47.8% d'entre eux
+F ormulation alternative :
+"Si on choisit au hasard un logement avec chambre privée, il y a 47.8% de chances qu'il soit
+situé à Brooklyn."
+Contexte :
+Brooklyn représente :
+ 47.8% des chambres privées
+ 47.4% de l'échantillon total
+Ces proportions sont très proches, ce qui suggère que pour les chambres privées, Brooklyn
+a une représentation proportionnelle à sa taille dans l'échantillon (pas de sur- ou sous-
+représentation particulière).
+6
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1.3 Question 12 : Prols colonnes
+RAPPEL DE COURS
+Prols dans une table de contingence :
+1. Prol colonne j :
+C'est la distribution conditionnelle des lignes pour une colonne donnée.
+FORMULES CLÉS
+Prol colonne j = (f1|j,f 2|j,...,f I|j)
+où fi|j = nij
+n·j
+et PI
+i=1fi|j = 1
+Interprétation : Pour chaque colonne, comment se répartissent les lignes ?
+2. Prol ligne i :
+C'est la distribution conditionnelle des colonnes pour une ligne donnée.
+Prol ligne i = (f1|i,f 2|i,...,f J|i)
+où fj|i = nij
+ni·
+3. Prol moyen :
+FORMULES CLÉS
+Prol moyen colonne :
+(f1·,f 2·,...,f I·)
+où fi· = ni·
+n (distribution marginale des lignes)
+Prol moyen ligne :
+(f·1,f·2,...,f ·J )
+où f·j = n·j
+n (distribution marginale des colonnes)
+T est d'indépendance graphique :
+Si les deux variables sont indépendantes , tous les prols colonnes sont égaux au prol
+moyen colonne (et réciproquement pour les prols lignes).
+Diérence Dépendance : Des écarts signicatifs entre les prols et le prol moyen
+suggèrent une liaison entre les variables.
+7
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+SOLUTION
+Calcul des prols colonnes :
+Pour chaque colonne, on calcule la proportion de chaque arrondissement.
+Prol colonne 1 : Entire home/apt ( n·1 = 291)
+ Bronx : 3
+291 = 0.010 = 1.0%
+ Brooklyn : 139
+291 = 0.478 = 47.8%
+ Manhattan : 139
+291 = 0.478 = 47.8%
+ Queens : 10
+291 = 0.034 = 3.4%
+ Staten Island : 0
+291 = 0.000 = 0.0%
+Total : 1.0 + 47.8 + 47.8 + 3.4 + 0.0 = 100%
+Prol colonne 2 : Private room ( n·2 = 205)
+ Bronx : 4
+205 = 0.020 = 2.0%
+ Brooklyn : 98
+205 = 0.478 = 47.8%
+ Manhattan : 86
+205 = 0.420 = 42.0%
+ Queens : 12
+205 = 0.059 = 5.9%
+ Staten Island : 5
+205 = 0.024 = 2.4%
+Total : 2.0 + 47.8 + 42.0 + 5.9 + 2.4 = 100%
+Prol colonne 3 : Shared room ( n·3 = 4)
+ Bronx : 0
+4 = 0.000 = 0.0%
+ Brooklyn : 0
+4 = 0.000 = 0.0%
+ Manhattan : 4
+4 = 1.000 = 100.0%
+ Queens : 0
+4 = 0.000 = 0.0%
+ Staten Island : 0
+4 = 0.000 = 0.0%
+Total : 0 + 0 + 100 + 0 + 0 = 100%
+Prol moyen colonne :
+C'est la distribution marginale des arrondissements (lignes) :
+ Bronx : 7
+500 = 0.014 = 1.4%
+ Brooklyn : 237
+500 = 0.474 = 47.4%
+ Manhattan : 229
+500 = 0.458 = 45.8%
+ Queens : 22
+500 = 0.044 = 4.4%
+ Staten Island : 5
+500 = 0.010 = 1.0%
+T ableau récapitulatif des prols colonnes :
+Arrondissement Entire Private Shared Prol moyen
+Bronx 1.0% 2.0% 0.0% 1.4%
+Brooklyn 47.8% 47.8% 0.0% 47.4%
+Manhattan 47.8% 42.0% 100.0% 45.8%
+Queens 3.4% 5.9% 0.0% 4.4%
+Staten Island 0.0% 2.4% 0.0% 1.0%
+T otal 100% 100% 100% 100%
+Comparaison avec le prol moyen :
+Colonne "Entire home/apt" :
+ Brooklyn : 47.8% 47.4% (prol moyen)  conforme
+ Manhattan : 47.8% 45.8%  légèrement sur-représenté
+ Autres : valeurs proches du prol moyen
+ Conclusion : Prol très similaire au prol moyen
+Colonne "Private room" :
+ Brooklyn : 47.8% 47.4%  conforme
+ Manhattan : 42.0% < 45.8%  sous-représenté (-3.8 points)
+ Queens : 5.9% > 4.4%  légèrement sur-représenté
+ Staten Island : 2.4% > 1.0%  sur-représenté ( Ö 2.4)
+ Conclusion : Prol relativement similaire, quelques diérences
+Colonne "Shared room" :
+ Manhattan : 100% vs 45.8%  énorme diérence !
+ Tous les autres : 0% au lieu de leur proportion attendue
+ Conclusion : Prol totalement diérent du prol moyen
+Prédiction sur le lien entre les variables :
+Observation 1 : Les prols pour "Entire home" et "Private room" sont relativement
+proches du prol moyen.
+Observation 2 : Le prol pour "Shared room" est radicalement diérent du prol moyen
+(100% Manhattan vs 45.8% attendu).
+Prédiction :
+Il semble exister un lien entre Room Type et Neighbourhood , principalement dû à :
+1. La concentration exclusive des chambres partagées à Manhattan
+2. Quelques diérences mineures pour les autres types
+Hypothèse explicative :
+Les "Shared rooms" (chambres partagées en dortoir) sont typiques des auberges de jeunesse
+et logements étudiants, plus fréquents à Manhattan (centre touristique et universitaire). Les
+autres arrondissements, plus résidentiels, n'orent pas ce type de logement.
+Attention : L'eectif très faible des "Shared rooms" (4 sur 500 = 0.8%) limite la robustesse
+de cette conclusion. Il faudra vérier avec le test du χ2.
+8
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1.4 Question 13 : Eectifs théoriques manquants
+RAPPEL DE COURS
+Eectifs théoriques sous l'hypothèse d'indépendance :
+Si les deux variables sont indépendantes , l'eectif théorique de la cellule (i,j ) est :
+FORMULES CLÉS
+nth
+ij = ni· ×n·j
+n
+Justication :
+Sous l'indépendance :
+P (ligne i et colonne j) = P (ligne i) ×P (colonne j)
+En termes d'eectifs :
+nth
+ij
+n = ni·
+n × n·j
+n
+D'où la formule.
+Propriétés :
+ Les marges théoriques sont identiques aux marges observées :
+X
+j
+nth
+ij =ni· et
+X
+i
+nth
+ij =n·j
+ La somme totale est conservée :
+X
+i
+X
+j
+nth
+ij =n
+Utilité :
+Les eectifs théoriques servent de référence pour le test du χ2. On compare les eectifs
+observés aux eectifs théoriques pour mesurer l'écart à l'indépendance.
+9
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+SOLUTION
+F ormule à appliquer :
+nth
+ij = ni· ×n·j
+n
+V aleur manquante 1 : Brooklyn Ö Shared room
+Position : ligne 2 (Brooklyn), colonne 3 (Shared room)
+Données :
+ n2· = 237 (total Brooklyn)
+ n·3 = 4 (total Shared room)
+ n = 500 (total général)
+Calcul :
+nth
+23 = 237 × 4
+500 = 948
+500 = 1.896
+Interprétation :
+Si Room Type et Neighbourhood étaient indépendants, on s'attendrait à avoir 1.896
+logements "Brooklyn Ö Shared room".
+Or, on observe nobs
+23 = 0 (aucun logement de ce type).
+Écart : 0 − 1.896 = −1.896 (sous-représentation)
+V aleur manquante 2 : Staten Island Ö Private room
+Position : ligne 5 (Staten Island), colonne 2 (Private room)
+Données :
+ n5· = 5 (total Staten Island)
+ n·2 = 205 (total Private room)
+ n = 500
+Calcul :
+nth
+52 = 5 × 205
+500 = 1025
+500 = 2.05
+Interprétation :
+Sous indépendance, on attendrait 2.05 logements "Staten Island Ö Private room".
+On observe nobs
+52 = 5.
+Écart : 5 − 2.05 = 2.95 (sur-représentation de +144% !)
+T able complète des eectifs théoriques :
+Entire Private Shared
+Bronx 4.074 2.87 0.056
+Brooklyn 137.934 97.17 1.896
+Manhattan 133.278 93.89 1.832
+Queens 12.804 9.02 0.176
+Staten Island 2.910 2.05 0.04
+T otal 291 205 4
+Vérication des marges :
+Colonne Shared room : 0.056 + 1.896 + 1.832 + 0.176 + 0.04 = 4.000
+Ligne Staten Island : 2.910 + 2.05 + 0.04 = 5.000
+Analyse des écarts importants :
+Cellule Observé Théorique Écart
+Manhattan Ö Shared 4 1.832 +2.168 (+118%)
+Brooklyn Ö Shared 0 1.896 -1.896 (-100%)
+Staten Island Ö Private 5 2.05 +2.95 (+144%)
+Staten Island Ö Entire 0 2.910 -2.910 (-100%)
+Ces écarts importants conrment visuellement qu'il existe probablement un lien entre les
+deux variables.
+10
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+1.5 Question 14 : Calcul de la distance du χ2
+RAPPEL DE COURS
+La statistique du χ2 (khi-deux) :
+La distance du χ2 mesure l'écart global entre les eectifs observés et les eectifs théoriques
+sous l'hypothèse d'indépendance.
+FORMULES CLÉS
+χ2 =
+IX
+i=1
+JX
+j=1
+(nobs
+ij −nth
+ij )2
+nth
+ij
+Interprétation de la formule :
+Pour chaque cellule (i,j ) :
+1. On calcule l'écart : nobs
+ij −nth
+ij
+2. On élève au carré : (nobs
+ij −nth
+ij )2 (pour éviter les compensations)
+3. On divise par nth
+ij (pour pondérer selon la taille attendue)
+4. On somme sur toutes les cellules
+Propriétés :
+ χ2 ≥ 0 (toujours positif)
+ χ2 = 0 si et seulement si nobs
+ij =nth
+ij pour tout (i,j ) (indépendance parfaite)
+ Plus χ2 est grand, plus les variables sont liées
+Contributions individuelles :
+La contribution de la cellule (i,j ) au χ2 est :
+cij =
+(nobs
+ij −nth
+ij )2
+nth
+ij
+Les cellules avec les écarts les plus importants contribuent le plus au χ2.
+Loi du χ2 :
+Sous H0 (indépendance) et pour n grand, χ2 suit approximativement une loi du χ2 à (I −
+1)(J − 1) degrés de liberté.
+11
+<<<PAGE>>>
+Correction complète avec cours - Suite ING1-GM/MIM
+SOLUTION
+F ormule :
+χ2 =
+X
+i,j
+(nobs
+ij −nth
+ij )2
+nth
+ij
+Calcul cellule par cellule :
+Je vais calculer la contribution de chaque cellule.
+Ligne 1 : Bronx
+Entire : (3−4.074)2
+4.074 = (−1.074)2
+4.074 = 1.153
+4.074 = 0.283
+Private : (4−2.87)2
+2.87 = (1.13)2
+2.87 = 1.277
+2.87 = 0.445
+Shared : (0−0.056)2
+0.056 = 0.003
+0.056 = 0.056
+Ligne 2 : Brooklyn
+Entire : (139−137.934)2
+137.934 = (1.066)2
+137.934 = 1.136
+137.934 = 0.008
+Private : (98−97.17)2
+97.17 = (0.83)2
+97.17 = 0.689
+97.17 = 0.007
+Shared : (0−1.896)2
+1.896 = 3.594
+1.896 = 1.896
+Ligne 3 : Manhattan
+Entire : (139−133.278)2
+133.278 = (5.722)2
+133.278 = 32.741
+133.278 = 0.246
+Private : (86−93.89)2
+93.89 = (−7.89)2
+93.89 = 62.252
+93.89 = 0.663
+Shared : (4−1.832)2
+1.832 = (2.168)2
+1.832 = 4.700
+1.832 = 2.566
+Ligne 4 : Queens
+Entire : (10−12.804)2
+12.804 = (−2.804)2
+12.804 = 7.862
+12.804 = 0.614
+Private : (12−9.02)2
+9.02 = (2.98)2
+9.02 = 8.880
+9.02 = 0.984
+Shared : (0−0.176)2
+0.176 = 0.031
+0.176 = 0.176
+Ligne 5 : Staten Island
+Entire : (0−2.910)2
+2.910 = 8.468
+2.910 = 2.910
+Private : (5−2.05)2
+2.05 = (2.95)2
+2.05 = 8.702
+2.05 = 4.245
+Shared : (0−0.04)2
+0.04 = 0.0016
+0.04 = 0.040
+Somme totale :
+χ2 = 0.283 + 0.445 + 0.056
++ 0.008 + 0.007 + 1.896
++ 0.246 + 0.663 + 2.566
++ 0.614 + 0.984 + 0.176
++ 2.910 + 4.245 + 0.040
+= 15.139
+χ2 = 15.139
+T ableau des contributions :
+Entire Private Shared T otal ligne
+Bronx 0.283 0.445 0.056 0.784
+Brooklyn 0.008 0.007 1.896 1.911
+Manhattan 0.246 0.663 2.566 3.475
+Queens 0.614 0.984 0.176 1.774
+Staten Island 2.910 4.245 0.040 7.195
+T otal col 4.061 6.344 4.734 15.139
+Analyse des contributions :
+Cellules contribuant le plus au χ2 :
+1. Staten Island Ö Private : 4.245 (28.0% du χ2 total)
+ Observé : 5, Théorique : 2.05
+ Sur-représentation importante
+2. Staten Island Ö Entire : 2.910 (19.2%)
+ Observé : 0, Théorique : 2.91
+ Absence totale au lieu de 2.91
+3. Manhattan Ö Shared : 2.566 (16.9%)
+ Observé : 4, Théorique : 1.832
+ Concentration des Shared rooms à Manhattan
+4. Brooklyn Ö Shared : 1.896 (12.5%)
+ Observé : 0, Théorique : 1.896
+ Absence de Shared rooms à Brooklyn
+Ces 4 cellules représentent 4.245 + 2.910 + 2.566 + 1.896 = 11.617 sur 15.139, soit 76.7% du
+χ2 total .
+Interprétation :
+Le χ2 élevé provient principalement de :
+1. La spécicité de Staten Island (peu d'Entire home, beaucoup de Private rooms)
+2. La concentration exclusive des Shared rooms à Manhattan
+3. L'absence de Shared rooms dans les autres arrondissements
+12

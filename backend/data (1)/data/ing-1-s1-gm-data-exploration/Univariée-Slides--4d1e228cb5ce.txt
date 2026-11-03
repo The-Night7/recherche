@@ -1,0 +1,461 @@
+CM 1 : Arbres de décision et forêts aléatoires 
+30h TD/TP 
+Évaluation (1 ère et 2 nde session) : Examen 2h sur machine / Etude préalable d’un ou plusieurs jeux de données 
+Supports pédagogiques :  Support de présentation et énoncé de TD/TP à chaque séance 
+Tutoriel sur l’ensemble du programme 
+L’objectif de ce module est d’introduire les méthodes permettant d’extraire de l’information 
+pertinente de corpus de données. 
+A l’issue de cette formation, vous serez capables de : 
+• faire apparaitre des comportements particuliers des objets observés (détecter les 
+individus ayant un comportement atypique, trouver des ensemble d’individus ayant un 
+comportement similaire),
+• trouver des liens entre les variables étudiées (ex: est-ce que le PIB d’un pays est lié à 
+l’investissement en R&D, est-ce qu’un médicament a un impact sur le taux de guérison?),
+• utiliser le langage dédié aux statistiques R (pas programmer mais utiliser).
+Seules les méthodes descriptives seront abordées dans ce module. Il se complète avec les 
+modules de 2 ème année : IA (modèles de prévision/machine learning) et statistiques (gestion 
+de l’incertitude) 
+Data exploration
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+Corpus/jeu de données 
+Sur l’exemple ci-dessous les individus sont les incidents survenus dans la ville de Chicago depuis 2001 et les variables sont ladate, le type 
+d’incident, la position géographique, etc… 
+Pour tirer de l’information pertinente et compréhensible par tout le monde à partir de ce genre de tableau 
+il faut produite : 
+– une présentation la plus synthétique possible 
+– une représentation graphique appropriée 
+– un résumé numérique 
+Un jeu de données est un tableau avec 
+– en ligne les individus/instances observés (unité  statistique) 
+– en colonne les variables/attributs étudiées 
+2
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+Population et échantillon
+– Population : Ensemble des individus 
+– Echantillon : Sous-ensemble de la population 
+Individus Echantillon 
+Population 
+– Recensement : Etude de tous les individus d’une population 
+– Sondage : Etude d’une partie de la population 
+Remarque : la population peut être infinie et le recensement impossible. 
+Les statistiques inférentielles (ING2) permettent d’extrapoler des résultats observés sur un 
+échantillon à toute une population. 
+3
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+ Analyse exploratoire: 
+– Présentation synthétique des données (tableau de contingence,…) 
+– Description à travers des résumés chiffrés : moyennes, médianes, écarts-types, 
+corrélations, … 
+– Description à travers des résumés graphiques : histogrammes, diagrammes en bâton ou 
+circulaire, … 
+– Recherche de sous-groupes homogènes (clustering)
+ Statistique inférentielle : 
+– Trouver des estimateurs non biaisés et efficients pour passer de l'échantillon à la 
+population.
+– L'outil mathématique sous jacent est la théorie des probabilités 
+Population Echantillon Caractéristiques 
+Echantillonnage 
+aléatoire 
+Analyse 
+exploratoire 
+Statistiques inférentielle 
+Analyse exploratoire et 
+statistique inférentielle
+4
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+5
+Chaque individu est décrit par un ensemble de caractéristiques appelées 
+variables (ou attributs)
+Les variables sont classées suivant leur nature : 
+Quantitatives 
+(Echelle numérique)
+Qualitatives 
+(modalités)
+Discrètes : nombre d’enfants, nombre de 
+pièces défectueuses,… 
+Continues : Taille, température,… 
+Nominales : couleurs, catégories socio-
+professionnelles,… 
+Dichotomiques : présence/absence d’un caractère 
+Ordinales : Mentions au bac, catégories de 
+résistance (fort, moyen, faible) 
+Nature des variables 
+Passage du quantitatif 
+au qualitative ordinal 
+(regroupement par 
+intervalle)
+Perte d’information 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+6
+ Les statistiques univariées : On ne s'intéresse qu'à une seule variable. 
+Ex : Les salaires en Europe, nombre d'enfants par ménage, Temps de visite sur un site, Etude de l'âge des 
+habitants d'un pays par classe d'âge. 
+ Les statistiques bivariées : On s'intéresse à l'étude simultanée  de deux variables pour 
+mesurer leur dépendance. 
+Ex : le vote est-il différent d'une CSP à l'autre ?
+ Les statistiques multivariées : On s'intéresse à l'étude simultanée de pvariables. 
+Même problématique que pour le bidimensionnel mais avec passez grand. 
+Ex : Etude du bien-être par département à travers de critères géo-socio-économiques (ensoleillement, 
+nombre de théâtres, taux de suicides, infrastructure routière, …) 
+A chaque type de variable (qualitatif nominal, 
+quantitatif continu,…) correspond un traitement 
+spécifique. 
+Différents types d’analyse
+Vu au lycée 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+7
+Etape 1 : Définir précisément le problème étudié : 
+1) Quels sont les objectifs de l'étude ? 
+ recensement des différentes questions posées 
+ déduction des différentes études statistiques à opérer 
+ définition des variables étudiées avec leur type 
+2) Quelle est la population étudiée  ? 
+ définition précise de l'unité statistique 
+ définition du périmètre spatio-temporel 
+3) Comment récupérer et stocker l'information? 
+ Enquête ou données existantes ou un mixte 
+ Choix de la technique d'échantillonnage 
+ Récupération des données et validation des données récupérées 
+Etape 2 : Exécution des études statistiques avec les logiciels appropriés 
+Etape 3 : Rédaction du document de synthèse 
+1) Rappel du contexte : objectifs de l'étude, périmèt re de l'étude, définitions des études statistiques 
+2) Insertion par étude des résumés chiffrés et graphiques
+3) Interprétation des résultats en cohérence avec le pé rimètre et les résumés 
+Méthodologie d'étude statistique
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+8
+Analyse univariée
+(Rappels et compléments) 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+9
+Effectif: Pour chaque variable, il s’agit de compter le nombre d’individus ayant la même   
+valeur/modalité x i. On utilisera le terme effectif de la valeur/modalité i. On notera 
+cet effectif n i.
+Fréquence : Quand on aura besoin de ramener les effectifs en pourcentage. On parlera alors 
+de fréquences. On notera cette fréquence f i,
+fi= n i/ n 
+où n est l'effectif total. 
+La fréquence permet de comparer des échantillons 
+de tailles différentes 
+Taux de chômage 
+[4,4;9,6[ 9
+[9,6;14,8[ 7
+[14,8;19,9[ 1
+[19,9;25,1[ 2
+Total 20 
+Une présentation synthétique des données 
+commence par un tableau de contingence . 
+Zone Euro (avant 2010) 
+Pas Euro 35% 
+Zone Euro 65% 
+Total 100% 
+Zone Euro (avant 2010) 
+Pas Euro 7
+Zone Euro 13 
+Total 20 
+Pays 
+Taux de 
+chômage PIB 
+Zone Euro 
+(avant 2010) 
+Allemagne 5,5 37430,1 Zone Euro 
+Autriche 4,4 40064,8 Zone Euro 
+Belgique 7,6 37727,8 Zone Euro 
+Danemark 7,5 40189,9 Pas Euro 
+… … … … N.B. Le tableau de contingence des variables continues 
+nécessite une regroupement des valeurs (cf. histogramme) 
+Représentation synthétique
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+10 
+Variables quantitatives : 
+Représentation graphique
+Représentation graphique d’une variable discrète 
+Diagramme en bâtons 
+Représentation graphique d’une variable continue 
+Histogramme 
+• bâton par valeur discrète 
+• hauteur du bâton proportionnelle 
+à l’effectif de la valeur 
+0
+2
+4
+6
+8
+10 
+12 
+35 36 37 38 39 40 41 42 43 44 45 46 
+Pointuresde chaussures 
+0
+0,005 
+0,01 
+0,015 
+0,02 
+0,025 
+0,03 
+0,035 
+130 150 170 190 210 
+Taille 
+• regroupement des valeurs par intervalle (classe) 
+• nombre de classes  ≈E[1+10 × log 10 (n)/3] 
+• base du rectangle proportionnelle à la longueur 
+de l’intervalle 
+• hauteur du rectangle proportionnelle à l’effectif 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+11 
+Variables quantitatives : 
+Résumés numériques 
+On distingue deux types de résumés numériques : 
+• Les indicateurs de position (moyenne, mode, médiane, quartiles). Ils 
+positionnent la série des valeurs observées autour d’une tendance 
+centrale. 
+• Les indicateurs de dispersion (variance, écart-type, étendue inter-
+quartile). Ils indiquent la fluctuation des valeurs de la série autour 
+d’une tendance centrale en général. 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+12 
+Variables quantitatives : 
+Indicateurs de position (1/3) 
+ Le mode est la valeur observée d'effectif 
+maximum. 
+Il sert notamment à détecter si la population est 
+homogène ou éventuellement constituée de 
+deux ou plusieurs sous-populations. 
+Dans le cas du type quantitatif continu il faut 
+tenir compte des classes adjacentes. 
+le mode 
+ La moyenne 
+!!! Cet indicateur est très sensible aux valeurs 
+extrêmes de la série!!! 
+=
+i
+iixnn
+1x
+Garde les mêmes 
+propriétés que 
+l’espérance 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+13 
+Variables quantitatives : 
+Indicateurs de position (2/3) 
+ Les quartiles :
+-La médiane est la valeur qui sépare la population en deux groupes d’effectifs égaux. Elle n’a 
+de sens que sur une série rangée par ordre croissant. 
+-Le 1er quartile Q 1est la valeur qui sépare la série en ¼  inférieur et ¾  supérieur. 
+-Le 3ème quartile Q 3est la valeur qui sépare la série en ¾ inférieur et ¼  supérieur. 
+La représentation graphique des ces indicateurs est la boite de Tukey. Elle permet d’avoir une 
+aperçu graphique rapide de la distribution des valeurs de la série et permet beaucoup 
+d’interprétation. 
+Les valeurs extrêmes de cette représentation sont les « moustaches » définies en général par 
+m=Q 1-1,5 × (Q 3-Q1)     et     M=Q 3+1,5 × (Q 3-Q1) 
+Toutes valeurs de la série en dehors des moustaches est considérée comme atypique 
+
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+14 
+Variables quantitatives : 
+Indicateurs de position (3/3) 
+Note 1 2 3 4 5 6 7
+Elève L 9 10 8 7 10 9 11 
+Elève P 14 2 16 5 6 5 16 
+Elève L 7 8 9 9 10 10 11 
+Elève P 2 5 5 6 14 16 16 
+Série ordonnée 
+Moyenne Médiane Q1 Q3 m M
+Elève L 9,1 9 8 10 5 13 
+Elève P 9,1 6 5 14 0 27,5 
+Différence de fluctuation des notes indicateurs de dispersion 
+Elève P 
+Elève L 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+15 
+Variables quantitatives : 
+Indicateurs de dispersion
+ La variance mesure l’écart au carré entre les valeurs de la série et leur moyenne 
+Afin de garder la même unité que la variable, on utilise l’écart-type 
+Tout comme la moyenne ces deux indicateurs sont sensibles aux valeurs extrêmes de la 
+série. 
+ L’écart-médian mesure l’écart entre les valeurs de la série et leur médiane 
+( ) −=
+i
+2
+ii
+2
+xxnn
+1s
+2
+ss =
+ −=
+i
+ii medxnn
+1em
+On peut aussi utiliser l’étendue de la série                                              ou l’écart inter-
+quartiles 
+{ } { }ii xminxmax −
+13 QQ −
+Variance Ecart-type em Q3-Q1 
+Elève L 1,81 1,34 1 8
+Elève P 35,48 5,96 4,85 5
+Garde les mêmes 
+propriétés que la 
+variance théorique 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+16 
+Variables quantitatives : 
+Variables centrées-réduites 
+On définit la série centrée-réduite de la façon suivante :
+
+
+
+
+
+ −=
+x
+i
+i
+s
+xxx~
+La série est dite : 
+• centrée car de moyenne nulle 
+• réduite car de variance égale à 1 
+Pays 
+Taux de 
+chômage PIB 
+Allemagne 5,5 37430,1 
+Autriche 4,4 40064,8 
+Belgique 7,6 37727,8 
+Danemark 7,5 40189,9 
+Espagne 25,1 31903,8 
+Estonie 10,1 20393,3 
+… … …
+Moyenne 10,6 34851,6 
+Ecart-type 5,77 14203,93 
+Pays 
+Taux de 
+chômage PIB 
+Allemagne -0,88 0,18 
+Autriche -1,08 0,37 
+Belgique -0,52 0,20 
+Danemark -0,54 0,38 
+Espagne 2,51 -0,21 
+Estonie -0,09 -1,02 
+… … …
+Moyenne 0 0
+Ecart-type 1 1
+normalisation 
+( ) ( ) xxs
+1xxn
+1
+s
+1xxn
+1
+s
+1
+s
+xx
+n
+1x~
+n
+1x~
+x
+n
+1 k
+k
+x
+n
+1 k
+k
+x
+n
+1 k x
+k
+n
+1 k
+k −=
+
+
+
+
+ −=−=−== 
+====
+( ) ( ) 1s
+s
+1xxn
+1
+s
+1
+s
+xx
+n
+1x~
+n
+1x~x~
+n
+1s 2
+x2
+x
+n
+1 k
+2
+k2
+x
+2n
+1 k x
+k
+n
+1 k
+2
+n
+1 k
+2
+k
+2
+x~ ==
+
+
+
+
+ −=
+
+
+
+
+ −==−= 
+====
+Démonstration 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+17 
+Variables qualitatives 
+Les observations d’une variable qualitative sont des modalités et ne sont pas numériques.
+Les traitements précédents n’ont donc pas lieu d’être (moyenne, variance,…) sauf le mode.
+On se contente de faire des tableaux de contingenceet des représentations graphiques.
+Temps passé sur 
+Internet 
+Représentation des variables nominales 
+diagramme en secteurs ou en barre  
+Représentation des variables ordinales 
+diagramme en bâtons 
+<<<PAGE>>>
+CM 1 : Arbres de décision et forêts aléatoires 
+18 
+Résumé des représentations graphiques 
+EISTI : Département Mathématique : Introduction à la statistique 
+descriptive 
+18 
+18 
+Variables qualitatives Variables quantitatives 
+nominales ordinales discrètes continues 

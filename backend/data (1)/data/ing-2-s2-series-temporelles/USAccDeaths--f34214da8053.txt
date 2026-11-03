@@ -1,0 +1,355 @@
+
+ 25-Janvier-2021
+
+###https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html
+
+####TP3 : lissage exponentiel
+
+ L�objectif de ce TP est de comprendre l�utilisation de la fonction "ets(") du package forecast
+ pour estimer les param�tres d�un mod�le de lissage exponentiel. 
+ Nous illustrerons son fonctionnement sur les donn�es "USAccDeaths" 
+ donnant le nombre mensuel de d�c�s accidentels aux Etats-Unis entre 1973 et 1978.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%�
+
+library("forecast")
+help(ets)
+help("USAccDeaths")
+
+############################################
+    Observation et pr�-traitement des donn�es
+    Nous commen�ons par tracer les donn�es :
+
+ plot(USAccDeaths)
+ monthplot(USAccDeaths)
+
+##Commetaire: 
+     Les trac�s du chronogramme et du "diagramme par mois" montrent un motif saisonnier global 
+     avec une "tendance � l�augmentation" du nombre de d�c�s entre "f�vrier et juillet", 
+     suivie d�une baisse jusqu�en septembre.
+     ##############################
+
+### Nous allons tester diff�rentes m�thodes de lissage exponentiel. Pour �valuer leurs 
+    performances pr�dictives, nous allons estimer les param�tres du mod�le sur la s�rie allant 
+    de janvier 1973 jusqu�� d�cembre 1977 et garder les observations de l�ann�e 1978 pour les 
+    comparer avec les pr�visions.
+    #############################
+
+USAccDeaths.7377 <- window(USAccDeaths,start=1973,end=c(1977,12))
+USAccDeaths.78 <- window(USAccDeaths,start=1978)
+
+########## Nous commen�ons par le lissage 
+            "exponentiel simple". 
+
+La commande :
+
+ fitLES <- ets(USAccDeaths.7377,model="ANN")
+
+Resets <- ets(USAccDeaths.7377,model="ANN")
+
+
+# "estime les param�tres" du "mod�le de lissage exponentiel simple" avec erreur "additive" .########
+
+La commande: 
+
+summary(fitLES)
+
+ETS(A,N,N) 
+
+Call:
+ ets(y = USAccDeaths.7377, model = "ANN") 
+
+  Smoothing parameters:
+    alpha = 0.9999 
+
+  Initial states:
+    l = 9004.7861 
+
+  sigma:  737.0449
+
+     AIC     AICc      BIC 
+1041.944 1042.373 1048.227 
+
+Training set error measures:
+                    ME     RMSE      MAE        MPE     MAPE     MASE
+Training set -3.481199 724.6567 628.8554 -0.3827685 7.218633 1.305526
+                   ACF1
+Training set 0.01311593
+#####
+ nous donne une estimation par maximum de vraisemblance des param�tres du mod�le (a, l1 et s), 
+ les valeurs des crit�res AIC, AICc et BIC ainsi que diff�rentes mesures d�erreurs.
+
+### La fonction forecast() permet de pr�dire � l�aide du mod�le g�n�r� par la fonction ets().
+
+predLES <- forecast(fitLES,h=12)
+plot(predLES)
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2)
+legend('top',c("Valeurs observ�es","Pr�dictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = rep(2,2))
+
+###Commentaire 
+  Nous remarquons que le mod�le est trop basique dans notre cas pour pr�dire � l�horizon 12 et 
+  que l�intervalle de confiance � 80%, bien que tr�s large, ne contient pas les vraies valeurs 
+  de la s�rie.
+  #####################
+      
+############      Lissage exponentiel double ################
+fitLED <- ets(USAccDeaths.7377,model="AAN")
+summary(fitLED)
+ETS(A,Ad,N) 
+
+Call:
+ ets(y = USAccDeaths.7377, model = "AAN") 
+
+  Smoothing parameters:
+    alpha = 0.9988 
+    beta  = 1e-04 
+    phi   = 0.8 
+
+  Initial states:
+    l = 9212.0691 
+    b = 218.529 
+
+  sigma:  758.2216
+
+     AIC     AICc      BIC 
+1048.157 1049.742 1060.723 
+
+Training set error measures:
+                    ME     RMSE     MAE        MPE     MAPE     MASE       ACF1
+Training set -21.53153 725.9419 632.545 -0.5806431 7.267033 1.313185 0.01930589
+> 
+
+predLED <- forecast(fitLED,h=12)
+plot(predLED)
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2)
+legend('top',c("Valeurs observ�es","Pr�dictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = rep(2,2))
+
+##### Commentaire:
+  Le mod�le �tant plus g�n�ral, l�erreur moyenne est n�cessairement inf�rieure mais cette m�thode 
+  ne semble pas pr�f�rable � la pr�c�dente, le param�tre � estim� est tr�s petit, 
+ l�AIC, l�AICc et le BIC sont plus grands et l�erreur moyenne relative est � peu pr�s du m�me ordre.
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+##############    M�thode de Holt-Winters ####################
+Nous prenons maintenant en compte la composante saisonni�re.
+
+fitHW <- ets(USAccDeaths.7377,model="AAA")
+summary(fitHW)
+
+## ETS(A,A,A) 
+## 
+## Call:
+##  ets(y = USAccDeaths.7377, model = "AAA") 
+## 
+##   Smoothing parameters:
+##     alpha = 0.5691 
+##     beta  = 1e-04 
+##     gamma = 0.0031 
+## 
+##   Initial states:
+##     l = 9922.1856 
+##     b = -21.818 
+##     s=-61.4333 -252.2644 208.4148 -77.8913 1043.66 1626.069
+##            771.4102 324.1323 -507.4611 -708.1016 -1473.645 -892.8896
+## 
+##   sigma:  266.5008
+## 
+##      AIC     AICc      BIC 
+## 949.9059 964.4773 985.5098 
+## 
+## Training set error measures:
+##                    ME     RMSE      MAE         MPE     MAPE      MASE
+## Training set 2.733903 266.5008 210.7843 -0.02286331 2.443577 0.4375955
+##                      ACF1
+## Training set -0.004056209
+
+
+
+predHW <- forecast(fitHW,h=12)
+plot(predHW)
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2)
+legend('top',c("Valeurs observ�es","Pr�dictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = rep(2,2))
+
+### Commentaire: On am�liore ici grandement la pr�diction.
+
+
+               ##################################
+################     Choix d�un mod�le
+
+Mais peut-�tre un mod�le de lissage exponentiel sans tendance pourrait �tre plus simple tout en ayant
+ des propri�t�s pr�dictives similaires ? Peut-�tre faut-il consid�rer une saisonnalit� additive ?
+ Une erreur multiplicative ? Pour tester d�autres mod�les, nous pouvons modifier 
+ le param�tre model de la fonction qui est cod� en 3 lettres :
+
+	>premi�re lettre d�signe la nature de l�erreur :
+  - A erreur additive,
+  - M erreur multiplicative,
+  - Z si l�on veut que la fonction s�lectionne automatiquement la nature de l�erreur;
+
+	>la deuxi�me lettre d�signe la tendance :
+  - N pas de tendance (premi�re ligne du tableau du poly),
+  - A tendance additive (deuxi�me ligne du tableau du poly),
+  - M tendance multiplicative (quatri�me ligne du tableau du poly),
+  - Z s�lection automatique;
+
+     >enfin, la troisi�me lettre d�signe la saisonnalit� :
+
+  - N pas de saisonnalit� (premi�re colonne du tableau du poly),
+  - A saisonnalit� additive (deuxi�me colonne du tableau du poly),
+  - M saisonnalit� multiplicative (quatri�me colonne du tableau du poly),
+  - Z s�lection automatique.
+
+
+#### Il est possible aussi de consid�rer des mod�les "amortis" (troisi�me et cinqui�me ligne du tableau) 
+       � l�aide de l�option damped ("damped=TRUE" saisonnalit� amortie, damped=FALSE saisonnalit� 
+       non amortie, damped=NULL� par d�faut � s�lection automatique).
+
+### Pour une s�lection "automatique" � l�aide des crit�res d�information, 
+    il suffit de ne rien sp�cifier dans l�option model.
+
+
+fit <- ets(USAccDeaths.7377)
+summary(fit)
+
+
+
+#ETS(M,N,M) 
+
+Call:
+ ets(y = USAccDeaths.7377) 
+
+  Smoothing parameters:
+    alpha = 0.5758 
+    gamma = 1e-04 
+
+  Initial states:
+    l = 9185.5202 
+    s = 0.9976 0.9696 1.028 0.9806 1.1033 1.1821
+           1.0894 1.0353 0.9443 0.9217 0.8346 0.9134
+
+  sigma:  0.036
+
+     AIC     AICc      BIC 
+949.9315 960.8406 981.3467 
+
+Training set error measures:
+                    ME     RMSE      MAE       MPE     MAPE      MASE
+Training set -13.93735 273.0557 213.8886 -0.227433 2.459003 0.4440401
+                    ACF1
+Training set -0.01003205
+#################################
+
+
+predfit <- forecast(fit,h=12)
+plot(predfit)
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2)
+legend('top',c("Valeurs observ�es","Pr�dictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = rep(2,2))
+
+######### Le mod�le s�lectionn� est le mod�le sans tendance et avec erreur et saisonnalit� 
+          multiplicatives. Notons que l�AIC de ce mod�le est plus �lev� que celui du mod�le
+          avec tendance consid�r� pr�cedemment alors que l�AICc et le BIC sont moins �lev�s.
+
+ #################################################################
+
+  > Nous pouvons sp�cifier quel crit�re doit �tre utilis� pour s�lectionner le mod�le. 
+    Par exemple, pour minimiser l�AIC :
+
+fitAIC <- ets(USAccDeaths.7377,ic="aic")
+summary(fitAIC)
+
+## ETS(M,Ad,M) 
+## 
+## Call:
+##  ets(y = USAccDeaths.7377, ic = "aic") 
+## 
+##   Smoothing parameters:
+##     alpha = 0.4687 
+##     beta  = 1e-04 
+##     gamma = 1e-04 
+##     phi   = 0.9745 
+## 
+##   Initial states:
+##     l = 9941.5507 
+##     b = -60.4594 
+##     s=0.9927 0.9673 1.0271 0.9854 1.1132 1.1926
+##            1.0941 1.0348 0.9392 0.9158 0.8313 0.9064
+## 
+##   sigma:  0.0295
+## 
+##      AIC     AICc      BIC 
+## 947.6278 964.3107 985.3260 
+## 
+## Training set error measures:
+##                    ME     RMSE      MAE       MPE     MAPE      MASE
+## Training set 20.02429 252.3848 200.8253 0.1743219 2.310405 0.4169203
+##                    ACF1
+## Training set 0.01102017
+
+           ########################################
+
+predfitAIC <- forecast(fitAIC,h=12)
+plot(predfitAIC)
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2)
+legend('top',c("Valeurs observ�es","Pr�dictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = rep(2,2))
+
+>> Le crit�re AIC seul s�lectionne le mod�le avec erreur et saisonnalit� multiplicative et 
+   tendance amortie.
+
+  ########################################
+   
+  Nous allons maintenant comparer les diff�rents mod�les en terme de pr�diction. 
+  Pour cela, nous tra�ons les pr�dictions donn�es par les diff�rentes m�thodes pour les comparer 
+  aux vraies valeurs.
+
+plot(USAccDeaths.78,col="darkgreen",lwd=2,ylab="Nombre de d�c�s accidentels",xlab="Temps")
+points(predLES$mean,col="chocolate",lwd=2,type='l')
+points(predLED$mean,col="pink",lwd=2,type='l')
+points(predHW$mean,col="blue",lwd=2,type='l')
+points(predfit$mean,col="cadetblue",lwd=2,type='l')
+points(predfitAIC$mean,col="blueviolet",lwd=2,type='l')
+legend("topleft",c("Vraies valeurs","LES","LED","Holt Winters","MNM","MAdM"),col=c("darkgreen","chocolate","pink","blue","cadetblue","blueviolet"),lty=rep(1,6),lwd=rep(2,6),cex=0.7)
+
+>>Nous constatons toujours que les deux m�thodes qui ne prennent pas en compte la saisonnalit� 
+  (LES, LED) donnent des pr�dictions tr�s �loign�es de la r�alit� pour cette s�rie. 
+   Les trois autres m�thodes semblent tr�s proches, le mod�le sans tendance et avec saisonnalit�
+    et bruit multiplicatifs semble toutefois donner de meilleurs pr�dictions � long terme.
+
+  #########################################################################################
+
+>> Nous s�lectionnons donc ce dernier mod�le et appliquons la m�thode d�estimation 
+  � l�ensemble de la s�rie pour pr�dire l�ann�e 1979 (non observ�e).
+   
+fittotal <- ets(USAccDeaths,model="MNM")
+summary(fittotal)
+  
+
+## ETS(M,N,M) 
+## 
+## Call:
+##  ets(y = USAccDeaths, model = "MNM") 
+## 
+##   Smoothing parameters:
+##     alpha = 0.5612 
+##     gamma = 2e-04 
+## 
+##   Initial states:
+##     l = 9188.1943 
+##     s=1.003 0.9678 1.0229 0.9889 1.1063 1.1868
+##            1.0895 1.0381 0.9417 0.9167 0.8251 0.9131
+## 
+##   sigma:  0.0305
+## 
+##      AIC     AICc      BIC 
+## 1142.376 1150.948 1176.526 
+## 
+## Training set error measures:
+##                     ME     RMSE      MAE         MPE     MAPE     MASE
+## Training set -3.098497 264.2929 207.9705 -0.09407356 2.386312 0.475633
+##                     ACF1
+## Training set 0.008456416
+     ################################
+
+predfittotal <- forecast(fittotal,h=12)
+plot(predfittotal)
+
+

@@ -1,0 +1,911 @@
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Th´ eorie des Langages
+Machine de Turing
+Yannick Le Nir Gaspard F´ erey Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+13 octobre 2024
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Historique
+Probl` emes de Hilbert
+▶ David Hilbert :
+1862-1943
+▶ Liste de 23 probl` emes
+(Exposition universelle de
+1900 ` a Paris)
+▶ Probl` eme num´ ero 10 :
+”Trouver un algorithme
+d´ eterminant si une
+´ equation diophantienne a
+des solutions.”
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Historique
+Machine de Turing
+▶ Alan Matheson Turing :
+1912-1954
+▶ Rˆ ole actif pour d´ ecrypter
+la machine Enigma
+pendant la seconde
+guerre mondiale.
+▶ Inventeur de la machine
+de Turing (1936)
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+G´ en´ eralit´ es
+▶ Tout algorithme peut ˆ etre traduit en un programme
+pour la machine de Turing.
+▶ Mod` ele th´ eorique de l’ordinateur (r´ ealisations physiques
+d` es 1940).
+Description
+▶ Ruban infini : suite de cases portant chacune un
+´ el´ ement d’un alphabet.
+▶ Semblable aux automates finis, sauf qu’elle peut lire,
+´ ecrire et se d´ eplacer sur le ruban.
+▶ D´ eplacement d’une seule case (droite ou gauche) ` a la
+fois.
+▶ Diagramme de transition pour mod´ eliser son
+comportement.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Historique
+▶ En 1935, Turing essaye de r´ esoudre la question pos´ ee
+par Hilbert, reformul´ ee par :
+”Existe-t-il, au moins th´ eoriquement, une m´ ethode ou
+un processus moyen duquel toutes les questions
+math´ ematiques peuvent ˆ etre d´ ecid´ ees ?”
+▶ Th` ese de Church-Turing :”Aucune proc´ edure de calcul
+ne peut ˆ etre consid´ er´ ee comme un algorithme, ` a moins
+qu’on puisse la repr´ esenter comme une machine de
+Turing.”
+▶ Th` ese de Turing :”Tout ce qui est calculable peut ˆ etre
+calcul´ e par une machine de Turing.”
+▶ Vrai, si calculer signifie manipuler un nombre fini
+de symboles et produire une r´ eponse apr` es un
+nombre fini d’´ etapes.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Repr´ esentation de la ”m´ emoire”
+1 1 0 1 1 0 1 ···
+↑
+M´ ecanisme de contrˆ ole : nombre d’´ etats fini
+▶ La tˆ ete de lecture
+▶ commence ` a gauche du ruban
+▶ se d´ eplacable librement dans les deux sens
+▶ Le ruban
+▶ contient le mot en entr´ ee (canal d’entr´ ee)
+▶ est r´ einscriptible ` a volont´ e (m´ emoire)
+▶ contient le mot de retour (canal de sortie)
+▶ R` egles de transitions :
+▶ ´ etat initial
+▶ caract` ere lu
+▶ ´ etat final
+▶ caract` ere ´ ecrit
+▶ d´ eplacement
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Fonctionnement
+▶ Initialisation :
+▶ le mot d’entr´ ee est inscrit sur le ruban.
+▶ la tˆ ete de lecture est positionn´ ee sur le caract` ere le plus
+` a gauche.
+▶ A chaque ´ etape, la machine de Turing :
+▶ lit le symbole sous la tˆ ete de lecture.
+▶ ´ ecrit un symbole sous la tˆ ete de lecture.
+▶ d´ eplace la tˆ ete de lecture vers la droite ou vers la
+gauche.
+▶ effectue une transition d’´ etat.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Etats et Transitions
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de turing
+Exemple de transition
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Arrˆ et
+▶ La machine s’arrˆ ete s’il n’y a plus de transition possible.
+Acceptation et Langage
+▶ Mot accept´ e si la machine s’arrˆ ete dans un ´ etat final.
+▶ Mot rejet´ e si la machine
+▶ s’arrˆ ete dans un ´ etat non final.
+▶ ne s’arrˆ ete pas (boucle).
+▶ L’ensemble des mots accept´ es constitue le langage de la
+machine de Turing.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de Machine de Turing
+Soit la machine suivante qui accepte le langage L = a∗ :
+T = 0
+T = 1
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de Machine de Turing
+T = 2
+T = 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de Machine de Turing
+T = 4
+T = 5... : ´ etat final ; arrˆ et et acceptation.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de rejet
+T = 0
+T = 1
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de rejet
+T = 2 : pas de transition possible ; arrˆ et et rejet.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de boucle infinie
+T = 0
+T = 1
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de boucle infinie
+T = 2
+T = 3
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de boucle infinie
+T = 4
+T = 5... : boucle infinie.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Exemple de boucle infinie
+T =
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+D´ efinition formelle
+M = (Q, Σ, Γ,δ, q0,⋄, F )
+avec
+▶ Q : Etats
+▶ Σ : Alphabet d’entr´ ee
+▶ Γ : Alphabet du ruban
+▶ δ : Fonction de transition (ex : δ(q1, a) = (q2, b, R))
+▶ q0 : Etat initial
+▶ ⋄ : Blanc
+▶ F : Etat final
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Utilisation
+Une machine de Turing peut-ˆ etre utilis´ ee de deux mani` ere
+diff´ erentes :
+▶ Comme machine ` a reconna ˆ ıtre des langages
+▶ Seul importe l’´ etat de la machine ` a l’arrˆ et.
+▶ Comme transformateur (ou calculateur)
+▶ Le mot ´ ecrit sur le ruban quand la machine termine est
+interpr´ et´ e comme le r´ esultat d’une fonction calcul´ ee par
+la machine.
+▶ Le rejet est interpr´ et´ e comme une exception/erreur.
+▶ Plusieurs machines de Turing peuvent ˆ etre utilis´ ees
+successivement. Semblable ` a la programmation usuelle.
+▶ Attention : la position finale de la tˆ ete peut-ˆ etre
+importante.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Langage accept´ e
+Pour toute machine de Turing M,
+L(M) ={w : q0 w7→∗ x1 qf x2}
+avec
+▶ q0 w : configuration initiale (´ etatq0 et tˆ ete sur
+premi` ere lettre dew)
+▶ q1 xv7→ x q 2v : d´ eplacement de la tˆ ete en lisant la
+lettre x et en passant de l’´ etatq1 ` a l’´ etatq2
+▶ 7→∗ : occurrence multiple du d´ eplacement7→
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine de Turing
+Soit L un langage.
+D´ ecidabilit´ e
+▶ Langage d´ ecidable :L est d´ ecidable ssi il existe un
+algorithme qui permet de reconna ˆ ıtre en un temps fini si
+un mot w appartient ou non ` aL.
+▶ L est d´ ecid´ e par une machine de TuringM si
+▶ M accepte L
+▶ M n’a pas d’ex´ ecution infinie
+Semi-d´ ecidabilit´ e
+▶ Si M peut avoir des ex´ ecutions infinies mais accepte L,
+alors L est dit semi-d´ ecidable ou recursivement
+´ enum´ erable.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine ´ equivalentes
+Extensions
+▶ La d´ efinition d’une machine de Turing peut-ˆ etre
+´ etendue pour des raisons pratiques.
+▶ On peut prouver que les machines de Turing ´ etendues
+ne permettent pas de calculer plus de choses.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Machine ´ equivalentes
+Exemples
+Les machine abstraites suivantes sont ´ equivalentes aux
+machines de Turing :
+▶ Machine de Turing autorisant les transitions avec
+lectures multiples
+▶ Machine de Turing autorisant les transitions sans
+d´ eplacement de la tˆ ete de lecture
+▶ Machine de Turing ` a ruban infini dans les deux
+directions
+▶ Machine de Turing ` a 2 rubans (et 2 tˆ etes de lectures
+ind´ ependantes)
+▶ Machine de Turing ` an rubans
+▶ Machine de Turing ` ak tˆ etes de lectures
+▶ Machine de Turing multidimensionnelles
+▶ Machine de Turing non d´ eterministes
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires g´ en´ erales
+Exemple
+S→ TZ T → 0T 1C T →ε
+C 1→ 1C CZ → Z 2 1 Z→ 1
+Langage engendr´ e :
+0i1i2i
+Langage non alg´ ebrique, non analysable via les automates ` a
+piles.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires g´ en´ erales
+Exemple
+S→ TZ T → 0T 1C T →ε
+C 1→ 1C CZ → Z 2 1 Z→ 1
+Langage engendr´ e : 0i1i2i
+Langage non alg´ ebrique, non analysable via les automates ` a
+piles.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires g´ en´ erales
+Exemple
+S→ TZ T → 0T 1C T →ε
+C 1→ 1C CZ → Z 2 1 Z→ 1
+Langage engendr´ e : 0i1i2i
+Langage non alg´ ebrique, non analysable via les automates ` a
+piles.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires g´ en´ erales
+Th´ eor` eme (Chomsky 1959)
+Le langage L est engendr´ e par une grammaire g´ en´ erale si et
+seulement si il est accept´ e par une machine de Turing
+(automate ` a deux piles).
+Utilisation pratique
+Nous verrons l’an prochain (cours de d´ ecidabilit´ e), que
+malheureusement, ces langages sont en g´ en´ eral ind´ ecidables,
+donc inexploitables dans la pratique.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires contextuelles
+Restriction des grammaires g´ en´ erales, en contraignant les
+parties droites des r` egles ` a ˆ etre au moins aussi long que les
+parties gauches. Ceci exclu ´ evidemment le mot vide.
+Exemple
+S→ TZ T → 0U1 T→ 01
+U→ 0U1C U → 01C
+C 1→ 1C CZ → Z 2 1 Z→ 12
+Langage engendr´ e :
+0i1i2i
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Grammaires contextuelles
+Restriction des grammaires g´ en´ erales, en contraignant les
+parties droites des r` egles ` a ˆ etre au moins aussi long que les
+parties gauches. Ceci exclu ´ evidemment le mot vide.
+Exemple
+S→ TZ T → 0U1 T→ 01
+U→ 0U1C U → 01C
+C 1→ 1C CZ → Z 2 1 Z→ 12
+Langage engendr´ e :0i1i2i
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Propri´ et´ e des grammaires contextuelles
+Propri´ et´ es
+▶ Soit une grammaire contextuelle et un mot de longueur
+n. Il est possible de v´ erifier si ce mot est engendr´ e par la
+grammaire : fabrication de toutes les d´ erivations ` a partir
+de l’axiome.
+Probl` eme dit ”PSPACE-complet”.
+▶ Reconnaissance des langages contextuels via les
+machine de Turing lin´ eairement born´ ees : machine de
+Turing non d´ eterministe qui n’utilise de sa m´ emoire
+infinie qu’une portion d´ ependant lin´ eairement de la
+taille du mot test´ e.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Propri´ et´ e des grammaires contextuelles (suite)
+Th´ eor` eme
+Un langage est contextuel si et seulement si il est accept´ e
+par une machine de Turing lin´ eairement born´ ee.
+Limitations
+▶ On ne sait pas si l’on peut se passer de l’hypoth` ese de
+non d´ eterminisme
+▶ Beaucoup de probl` emes ind´ ecidables, notamment pour
+d´ eterminer si un langage contextuel est vide.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Machine de Turing
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Representation et
+fonctionnement
+d’une machine de
+Turing
+Description
+formelle d’une
+machine de Turing
+Hi´ erarchie de
+Chomsky
+Hi´ erarchie de Chomsky
+Outils algorithmique
+Manipulation des langages de type 0 et 1 via les machines de
+Turing :
+Langages Grammaires Machine abstraite
+Langages quelconque
+Langages r´ ecursivement Type 0 Machine de Turing
+´ enum´ erables
+Langages d´ ecidables Machine de Turing
+terminante
+Langages contextuels Type 1 Machine de Turing
+lin´ eairement born´ ee
+Langages hors contexte Type 2 Automate ` a pile
+Automate ` a pile
+d´ eterministe
+Langages rationnels Type 3 Automate d’´ etats finis

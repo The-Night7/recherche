@@ -1,0 +1,124 @@
+  
+TP 5 : DOM 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+1 
+EXERCICE 1 :  
+ 
+1. Écrire une fonction JavaScript min_majv1(str1) qui prend une chaîne des caractères en 
+paramètre (ne contient que des caractères alphabétiques) et convertir la première lettre 
+de chaque mot en majuscule et les autres lettres en minuscule.  
+ 
+Testez cela avec : document.write(min_majv1("wELCome pRenOm NoM ")); 
+Résultat attendu : Welcome Prenom Nom 
+ 
+2. Écrire une fonction JavaScript min_majv2(str1) qui prend une chaîne des caractères 
+avec des lettres minuscules et majuscules en tant que paramètre, et convertit les lettres 
+majuscules en minuscules et les minuscules en majuscules. 
+ 
+Testez cela avec : document.write(min_majv2("wELCome pRenOm NoM  ")); 
+Résultat attendu : WelcOME PrENoM nOm 
+ 
+3. Écrire une fonction JavaScript freqvoyelles(str1) qui prend une chaîne des caractères 
+en paramètre (ne contient que des caractères alphabétiques) et qui indique combien de 
+fois sont présentes chacune des voyelles a, e, i, o, u ou y, que celles-ci soient écrites en 
+majuscules ou en minuscules.  
+Testez cela avec le code suivant : 
+ 
+var voyelles =freqvoyelles("AAEEee iiIIAA YY uY Naya"); 
+for(var lettr  in voyelles ) 
+{ 
+var value = voyelles [lettr]; 
+document.write(lettr + " = " + value + '<br>'); 
+} 
+Résultat attendu :  
+a = 6 
+o = 0 
+e = 4 
+i = 4 
+u = 1 
+y = 4 
+EXERCICE 2:  
+ 
+1. Écrire un code HTML pour afficher le formulaire HTML suivant : 
+<<<PAGE>>>
+  
+TP 5 : DOM 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+2 
+ 
+2. Écrire une fonction Javascript pour cacher tous les tags « input », sauf input du type de 
+bouton (utiliser la propriété CSS  : visibility), et associez -le au bouton «  hide » pour 
+l'événement de clic. 
+ 
+3. Écrire une fonction Javascript pour afficher tous les tags «  input » et associez -le au 
+bouton « show » pour l'événement de clic. 
+EXERCICE 3 :  
+ 
+1. Créer une page HTML et ajouter 4 boutons radio permettant de choisir la couleur 
+d'arrière-plan de la page (rouge, vert, bleu, jaune clair). 
+ 
+2. Ajoutez le code JavaScript nécessaire permettant de changer l'arrière -plan de la page 
+en fonction du bouton radio. 
+ 
+3. Ajouter un bouton "Calculer" qui, à chaque clic, va afficher combien de temps est 
+écouler après le changement de l'arrière-plan de la page. 
+EXERCICE 4 :  
+ 
+Supposons que vous avez le code HTML ci-dessous. 
+ 
+Écrire les codes JavaScript pour : 
+1. addRow () fonction qui ajoute une ligne dans la table "myTable". 
+ 
+2. deleteRow () fonction  qui supprime une ligne de la table "myTable". 
+ 
+3. deleteAll () fonction qui supprime tous les éléments de la page actuelle. 
+ 
+4. addRows () fonction qui ajoute n lignes au lieu d’une ligne (le nombre de lignes n est 
+donnée par l’utilisateur). 
+ 
+Note : pour supprimer un élément x, vous vous pouvez utiliser x.remove (),  pou r 
+supprimer l'enfant i de l'élément x, vous pouvez utiliser : x.removeChild (x.childNodes 
+[i]); 
+ 
+
+<<<PAGE>>>
+  
+TP 5 : DOM 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+3 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta charset=utf-8 /> 
+    <title>Create a table</title> 
+    <style type="text/css"> 
+        table { background-color: lightyellow; } 
+    </style> 
+</head> 
+<body> 
+    <form id="form1"> 
+        <table id="myTable" border="2"> 
+            <tr> 
+                <td>PreNom1: <input type="text"></td> 
+                <td>Nom1: <input type="text"></td> 
+        </table> 
+        <input type="button" onclick="addRow()" value="Add Row"> 
+        <input type="button" onclick="deleteRow()" value="delete row"> 
+        <input type="button" onclick="deleteAll()" value="delete all"> 
+        <input type="button" onclick="addRows()" value="Add rows"> 
+    </form> 
+</body> 
+</html> 
+ 
+ 
+ 

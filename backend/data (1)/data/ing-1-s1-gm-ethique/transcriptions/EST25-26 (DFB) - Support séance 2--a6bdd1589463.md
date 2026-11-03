@@ -1,0 +1,49 @@
+---
+source: "ING 1/S1 GM /ETHIQUE/COURS/EST25-26 (DFB) - Support séance 2.pdf"
+pages: 3
+transcription: texte structuré et relu
+transcription_date: 2026-09-30
+verification: lecture intégrale du texte source ; tableaux et colonnes rétablis après contrôle visuel
+---
+
+# Support séance 2
+
+## Page 1 — (B) Les courants d’éthique normative
+
+### B1. L’arétisme (éthique des vertus)
+
+#### B1.1 Origine
+
+« Commettre l’injustice est un bien, subir l’injustice est un mal. Seulement, il s’y trouve une inégalité : il y a plus de mal à subir l’injustice qu’il n’y a de bien à commettre l’injustice. [...] Ceux qui la [justice] cultivent le font par incapacité à commettre l’injustice. Pour simplifier la démarche, inventons un scénario. Nous donnerons séparément à deux individus le pouvoir de faire tout ce qu’ils veulent, au juste et à l’injuste, et puis nous les suivrons, en observant où le désir les pousse l’un et l’autre.[...] Supposons maintenant deux bagues analogues, à la main du juste, à la main de l’injuste : personne, vraisemblablement, n’aura la résistance d’acier qu’il faudrait pour rester dans les limites de la justice ; personne n’aura le courage d’épargner le bien d’autrui sans y toucher, quand il aurait tout loisir, au marché, de prendre tranquillement ce qu’il voudrait, d’entrer chez les gens pour forniquer avec qui il voudrait, d’exécuter ou de délivrer qui il voudrait, bref d’agir parmi les hommes à l’instar d’une divinité. Sa conduite ne le distinguerait pas du méchant. Ils prendraient tous les deux la même direction. Ce serait la preuve éclatante que personne n’est juste de son plein gré, et que c’est une forme de nécessité. La justice n’est pas un bien en soi pour le sujet lui-même, car la simple idée qu’on est en mesure de commettre l’injustice suffit pour commettre l’injustice. »
+
+Platon, La République
+
+Pour Aristote, être vertueux permet d’atteindre le bonheur qui est le but de la vie humaine.
+
+## Page 2 — (B) Les courants d’éthique normative
+
+### B1. L’arétisme (éthique des vertus)
+
+#### B1.2 De l’hybris à la sophrosynè
+
+« dans tout sentiment de plaisir et de peine, on rencontre du trop et du trop peu, lesquels ne sont bons ni l’un ni l’autre ; au contraire, ressentir ces émotions au moment opportun, dans les cas et à l’égard des personnes qui conviennent, pour les raisons et de la façon qu’il faut, c’est à la fois moyen et excellence, caractère qui appartient précisément à la vertu. [...] La vertu est donc une sorte de juste milieu en ce sens qu’elle vise le moyen. [...] Et c’est ce qui fait que le vice a pour caractéristiques l’excès et le défaut, et la vertu le juste milieu : l’honnêteté n’a qu’une seule forme, mais le vice en a de nombreuses. » Aristote, Ethique à Nicomaque
+
+« L’homme courageux est inébranlable, mais en tant qu’homme ; ce qui ne veut pas dire qu’il ne craindra pas les dangers que l’homme sage doit redouter. […] l’homme courageux souffre et agit par une saine appréciation des choses, et conformément aux ordres de la raison. […] Le courage est un juste milieu à l’égard des choses qui peuvent inspirer à l’homme, ou la crainte, ou l’assurance » Aristote, Ethique à Nicomaque
+
+#### B1.3 La justice
+
+« La justice ainsi entendue est donc la vertu complète. Mais elle ne l’est pas en soi, mais par rapport à autrui, et c’est là ce qui fait que bien souvent elle semble être la plus importante des vertus […] celui qui la possède peut appliquer sa vertu relativement aux autres, et non pas seulement pour lui-même. Bien des gens peuvent être vertueux pour ce qui les regarde individuellement, qui sont incapables de vertu en ce qui concerne les autres »
+
+Aristote, Ethique à Nicomaque
+
+## Page 3 — (B) Les courants d’éthique normative
+
+### B1. L’arétisme (éthique des vertus)
+
+#### B1.4 Phronèsis et praxis
+
+« De l'avis général, le propre d'un homme prudent c'est d'être capable de délibérer correctement sur ce qui est bon et avantageux pour lui-même, non pas sur un point partiel (par exemple quelles sortes de choses sont favorables à la santé ou à la vigueur du corps), mais d'une façon générale, quelles sortes de choses par exemple conduisent à la vie heureuse. [...] En effet, les principes de nos actions consistent dans la fin à laquelle tendent nos actes ; mais à l'homme corrompu par l'attrait du plaisir ou la crainte de la douleur, le principe n'apparaît pas immédiatement, et il est incapable de voir en vue de quelle fin et pour quel motif il doit choisir et accomplir tout ce qu'il fait, car le vice est destructif du principe. [...] Or la prudence a rapport aux choses humaines et aux choses qui admettent la délibération : car le prudent, disons-nous, a pour œuvre principale de bien délibérer ; mais on ne délibère jamais sur les choses qui ne peuvent être autrement qu'elles ne sont, ni sur celles qui ne comportent pas quelque fin à atteindre, fin qui consiste en un bien réalisable. Le bon délibérateur au sens absolu est l'homme qui s'efforce le meilleur des biens réalisables pour l'homme, et qui le fait par raisonnement. La prudence n'a pas non plus seulement pour objet les universels mais elle doit aussi avoir la connaissance des faits particuliers, car elle est de l'ordre de l'action, et l'action a rapport aux choses singulières. C'est pourquoi aussi certaines personnes ignorantes sont plus qualifiées pour l'action que d'autres qui savent, c'est le cas notamment des gens d'expérience. »
+
+Aristote, Ethique à Nicomaque
+
+*Source institutionnelle : Pôle Humanités & Design — Relations Humaines. Les citations, les attributions et les formulations du support sont conservées ; les logos et les pieds de page répétés sont omis.*

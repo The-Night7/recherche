@@ -1,0 +1,89 @@
+ 
+IINNGG22  ::  EEXXAAMMEENN  PPRROOGG--PPAARR  ::  MMII++GGSSII  DDUURREEEE  33HH  
+EEXXAAMMEENN  PPAAPPIIEERR  
+AAUUCCUUNN  DDOOCCUUMMEENNTT  NN’’EESSTT  AAUUTTOORRIISSEE  
+ 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR 
+A l’intention de : Etudiants d’ING2 GSI + MI Créé le : 10/12/2013 
+ 
+ 
+Page 1 sur 2 
+ 
+Exercice 1 :  
+Imaginons que l’on souhaite faire l’addition de deux chiffres x et y en virgule flottante, et affecter le 
+résultat à z (z = x+y). En notation scientifique, les chiffres en virgule flottante sont représentés par 
+une mantisse de la forme 0,126543… multiplié par une puissance de 10 (l’exposant). 
+1. Donner les différentes étapes pour additionner 2 nombres flottants et mettre le résultat dans 
+une variable à valeur flottante 
+2. Si chaque étape nécessite un cycle d’horloge, combien faudrait-il pour exécuter toute 
+l’opération 
+3. Imaginer maintenant faire la somme de 2 vecteurs de taille N à composantes flottantes, 
+proposez une architecture pour optimiser le calcul. Commenta appelle-t-on ce genre de 
+processeur ? 
+Exercice 2 
+Dans le cas d'une séquence d'ADN, le "texte" es t une suite formée généralement  de 4 lettres 
+correspondant aux quatre nucléotides formant l'enchainement de l'ADN :  
+A pour Adénine,  
+G pour Guanine,  
+T pour Thymine, 
+C pour Cytosine 
+De temps en temps on peut trouver d’autres lettres telles que (R et W) qu’on va remplacer par : 
+R peut être remplacé par A ou G 
+W peut être remplacé par A ou T 
+ 
+Ecrire un programme qui initialise un vecteur de taille L contenant une suite aléatoire de 
+nucléotides (A, G, T, C, R, W). Ce programme va repartir ce tableau sur N processus. 
+1. Le remplissage du tableau initial va se faire par le processus maitre (TID=0). 
+2. Le processus maitre distribue équitablement des tranches de tableau à chacun des N 
+processus 
+3. Chaque processus parcourt sa tranche de tableau est fait les remplacemen ts si nécessaire, 
+puis calcule le nombre des nucléotides A dans sa tranche et renvoie les résultats au 
+processus maitre (tranche modifiée et le nombre de A) 
+4. Le processus maitre collecte les données et affiche tout le tableau mis-à jour (uniquement les 
+lettre (A, G, T, C) et le nombre global de nucléotides A dans le tableau 
+ 
+<<<PAGE>>>
+ 
+IINNGG22  ::  EEXXAAMMEENN  PPRROOGG--PPAARR  ::  MMII++GGSSII  DDUURREEEE  33HH  
+EEXXAAMMEENN  PPAAPPIIEERR  
+AAUUCCUUNN  DDOOCCUUMMEENNTT  NN’’EESSTT  AAUUTTOORRIISSEE  
+ 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR 
+A l’intention de : Etudiants d’ING2 GSI + MI Créé le : 10/12/2013 
+ 
+ 
+Page 2 sur 2 
+ 
+Exercice 3 : la résolution numérique de l'équation de Laplace (ou équation de la chaleur).  
+Imaginons nous une barre métallique illimitée à laquelle on applique une source de chaleur sur une 
+section d’un bord . La chaleur va se propager le long de la barre en  suivant une dynamique décrite 
+par l'équation différentielle partielle suivante:  
+∂tρ(x,t) = ∇2ρ(x,t) 
+où “ρ” est la température. Si la température aux bords est maintenue constante, la  distribution de 
+chaleur dans la plaque tend vers un état stationnaire. Dans ce cas, la dérivée temporelle dans  
+l'équation précédente disparait, et on se retrouve avec l'équation de Laplace:  
+∇2ρ(x,t)=0 
+On se propose de résoudre l'équation de Laplace en s imulant l'équation de la chaleur. En 
+commençant par une distribution de chaleur identiquement nulle, on applique une température à un 
+des bords et fait évoluer l'équation de la chaleur jusqu'à ce que la dynamique se stabilise. Voici un 
+schéma numérique qui permet de résoudre l'équation de la chaleur itérativement:  
+ρ(i,t+1) = 0.25( ρ(i+1,t) + ρ(i-1,t) + 2 * ρ(i,t)) 
+L’ indice “i” sert à numéroter les points de l'espace discret. On considère un maillage (ou grille de 
+calcul) composé de N + 1 points xi pour i = 0….N régulièrement espacés avec un pas Δx. Les points 
+xi = iΔx sont appelés les nœuds du maillage. 
+ 
+Questions 
+ 
+1. Ecrivez un programme en C ou en C++ qui résoud le problème de l'équation de la chaleur  à 
+une dimension, on choisi une discétisation sur l’axe x de N et une discritisation temporelle 
+de T. Les condition aux limites 
+  t ρ(0)=0 et ρ(L)=1  
+ 
+2. OpenMP 
+1. Parallélisez le programme par des directives OpenMP 
+ 
+3. MPI 
+1. Donnez l’algorithme parallèle, en supposant que le nombre de processus est égal au 
+nombre du subdivisions le long de la barre. 
+2. Donnez le code de cette parallélisation avec MPI.  
+3. Comparer et discuter la parallélisation openMP et MPI 

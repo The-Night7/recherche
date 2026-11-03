@@ -1,0 +1,149 @@
+ING1
+Semestre 1 - 2024/2025
+Session #2 - Programma tion procédurale
+Durée : 2h
+Calculatrice et documents non autorisés
+Exercice 1(Makefile & Co.)[7.5 pts]
+Soit l’arborescence de fichiers d’un programme C suivant :
+[module]
+|
++--------------------+--------------------+-----------------------+
+| | | |
++---[src] +---[inc] +---[obj] +---Makefile
+| | |
++---alloc.c +---alloc.h +---alloc.o
++---arrays.c +---arrays.h +---arrays.o
+| +---constants.h |
++---internal.c | +---internal.o
+| | +---libmodule.so
++---matrix.c +---matrix.h +---matrix.o
++---module.c | +---module.o
+| +---parameters.h |
++---sort.c +---sort.h +---sort.o
++---trigo.c +---trigo.h +---trigo.o
+1. Ecrire le contenu du fichier Makefile présent dans cette arborescence.
+Ce Makefile va générer chaque fichier objet depuis chaque fichier C présent.
+Puis il va générer dans la foulée une bibliothèque dynamique à partir de ces fichiers objets.
+Le contenu du Makefile devra respecter l’ensemble des règles suivantes :
+— Ecrire le contenu avec leminimum de règles
+— Les fichiers C compilés doivent êtrerécupérés automatiquementpour ne pas avoir à les redéfinir à chaque chan-
+gement (ajout/suppression/renommage)
+— Les fichiers H utilisés pour la compilation doivent êtrerécupérés automatiquementégalement. On part du principe
+que tous les fichiers H sont utiles pourchaque fichier C afin de simplifier le traitement.
+— Les objets générés le seront dans le sous-dossierobj. Le dossierobj devra être créé si il n’existe pas.
+— Il existera une règleclean qui va supprimer le dossierobj
+— Une bibliothèque dynamique appelée libmodule.so sera créée une fois que tous les objets auront été créés. Elle
+incluera l’ensemble des fichiers objets. La bibliothèque sera stockée dans le dossierobj également.
+— Si l’utilisateur se trouve dans un terminal de commandes dans le dossiermodule, et qu’il tape la commandemake,
+la bibliothèquelibmodule.so doit être générée entièrement.
+— Les noms des cibles et dépendences ne doivent pas être réécrits dans les commandes : il faudra utiliser au maximum
+les variables prédéfinies.
+— Les cibles non-physiques doivent êtredéclarées comme telles,explicitement.
+— Les valeurs fixes, comme des noms de dossiers par exemple, et qui ne sont pas censées changer au fil du temps, doivent
+être obligatoirement stockées dans desvariables utilisateur.
+1
+<<<PAGE>>>
+Exercice 2(Compression de matrice 2D) [13.0 pts.]
+Les réponses de code sont obligatoirement en Langage C.
+Le code doit être robuste pour ne pas se terminer de manière intempestive.
+Il est conseillé de lire l’ensemble de l’énoncé avant de démarrer la composition.
+On souhaite effectuer un programme qui va compresser une matrice 2D en mémoire. Le type de matrice visé est un type
+qui contient beaucoup de valeurs à 0 et très peu de valeurs différentes de 0.
+On souhaite donc, pour économiser la place, ne stocker en mémoire QUE les valeurs différentes de 0 ainsi que leurs
+coordonnées. Stocker les coordonnées nous fait perdre de la place, mais comme il y a peu de valeurs, au total le nombre
+d’octets utilisés sera moindre.
+Le format compressé d’une matrice est un tableau d’entiers, à une seule dimension. Chaque case de ce tableau contiendra
+une valeur encodée sur 4 octets. Ci-dessous se trouve le format attendu d’un tel tableau :
+ENTETE
+- taille du tableau (nb de cases y compris la case actuelle)
+- nombre de lignes dans la matrice
+- nombre de colonnes dans la matrice
+DONNEES
+> plusieurs triplets à la suite (1 pour chaque valeur différente de 0)
+- numéro de ligne (commençant à 0)
+- numéro de colonne (commençant à 0)
+- valeur entière différente de 0 (sinon elle ne serait pas présente dans ce tableau)
+Ci-dessous se trouvent des exemples de matrices et leurs tableaux compressés associés :
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0 <==> [ 3, 4,7 ]
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 9
+0 1 0 0 0 <==> [ 18, 4,5, 0,4,9, 1,1,1, 2,3,-3, 3,0,10, 3,4,-4 ]
+0 0 0 -3 0
+10 0 0 0 -4
+1 0 0 0 0 4
+0 0 5 6 0 0 <==> [ 21, 3,6, 0,0,1, 0,5,4, 1,2,5 1,3,6 2,1,7 2,4,8 ]
+0 7 0 0 8 0
+1. [0.5 pt]Pour une matrice de 12 lignes et 4 colonnes, quel nombre maximal de valeurs différentes de 0 peut-on stocker
+dans cette matrice pour que la taille du tableau au format compressé ne dépasse pas la taille de la matrice originale en
+octets.
+2. [0.75 pt]Définir une structureMatrix permettant de stocker une matrice sachant que cette stucture :
+— contient le nombre de lignes de la matrice
+— contient le nombre de colonnes de la matrice
+— contient un double pointeur pour permettre d’accéder à chaque case plus facilement en utilisant les 2 dimensions.
+On souhaite que toutes les données de la matrice soient contiguës dans la mémoire. On souhaite donc avoir une
+seule allocation d’un tableau pour la zone qui sert à stocker les données de la matrice, mais on veut y accéder via
+le double pointeur pour avoir la facilité de gérer les 2 dimensions séparément. Seul le double pointeur sera présent
+dans la structure mais les 2 allocations devront être faites.
+Le schéma suivant vous permettra de mieux comprendre le besoin :
+vecteur alloué contenant toutes les cases de la matrice, avec les lignes à la suite
+[ 0,0,0,0,9, 0,1,0,0,0, 0,0,0,-3,0, 10,0,0,0,-4 ]
+| | | |
+| _______/ | |
+| | ________________/ |
+| | | __________________________/
+| | | |
+[ @1, @2, @3, @4 ]
+vecteur alloué pour stocker les adresses des lignes de la matrice (double pointeur)
+2
+<<<PAGE>>>
+3. [0.5 pt]Ecrire une fonction/procédurecreateArray(...) permettant de créer dynamiquement en mémoire un tableau
+classique d’entiers signés (4 octets) à 1 dimension, et dont la taille est passée en paramètre. Cette fonction renvoie
+l’adresse de ce tableau ou la valeurNULL si une erreur survient.
+4. [4.25 pts] Ecrire une fonction/procédure createMatrix(...) qui va créer en mémoire une structureMatrix telle
+qu’elle est définie précédemment dans l’exercice. Cette fonction prend en paramètre les dimensions de la matrice à
+créer.
+Si une erreur survient, la valeurNULL sera renvoyée, sinon l’adresse de la structure sera renvoyée.
+Si un problème survient et que des allocations mémoires ont déjà été faites, il faudra libérer ces allocations avant de
+retourner la valeurNULL;
+Toutes les cases de la matrice seront initialisées à 0.
+5. [4.25 pts]Ecrire une fonction/procédurecompress(...) qui va prendre en entrée une matrice et va fournir en sortie
+un tableau compressé tel qu’il est décrit précédemment dans l’exercice.
+Si un problème survient, la valeurNULL sera renvoyée.
+6. [2.75 pts]Ecrire une fonction/procéduredecompress(...) qui va prendre en entrée un tableau compressé, et fournir
+en sortie une matrice correctement remplie.
+Si un problème est rencontré, la valeurNULL sera retournée.
+DOCUMENTATION pour le Makefile
+— $(addprefix prefix,names...)
+The argument names is regarded as a series of names, separated by whitespace.
+prefix is used as a unit. The value ofprefix is prepended to the front of each individual name and the resulting
+larger names are concatenated with single spaces between them.
+— $(dir names...)
+Extracts the directory-part of each file name innames.
+The directory-part of the file name is everything up through (and including) the last slash in it. If the file name
+contains no slash, the directory part is the string./.
+— $(notdir names...)
+Extracts all but the directory-part of each file name innames.
+If the file name contains no slash, it is left unchanged. Otherwise, everything through the last slash is removed from
+it.
+A file name that ends with a slash becomes an empty string. This is unfortunate, because it means that the result
+does not always have the same number of whitespace-separated file names as the argument had; but we do not see
+any other valid alternative.
+— $(subst from,to,text)
+Performs a textual replacement on the texttext.
+Each occurrence offrom is replaced byto. The result is substituted for the function call.
+— Substitution References
+A substitution reference substitutes the value of a variable with alterations that you specify.
+It has the form$(var:a=b) or ${var:a=b} and its meaning is to take the value of the variablevar, replace everya
+at the end of a word withb in that value, and substitute the resulting string.
+When we say “at the end of a word”, we mean that a must appear either followed by whitespace or at the end of the
+value in order to be replaced; other occurrences ofa in the value are unaltered.
+— $(wildcard pattern...)
+The argumentpattern is a file name pattern, typically containing wildcard characters (as in shell file name patterns).
+The result of wildcard is a space-separated list of the names of existing files that match the pattern.
+This string, is replaced by a space-separated list of names of existing files that match one of the given file name
+patterns.
+If no existing file name matches a pattern, then that pattern is omitted from the output of the wildcard function.
+The results of the wildcard function are sorted.
+3

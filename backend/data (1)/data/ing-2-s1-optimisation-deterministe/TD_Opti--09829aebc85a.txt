@@ -1,0 +1,37 @@
+
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy.linalg import inv
+from numpy.linalg import norm
+
+A=np.array([1,1],[-1,2],[3,1])
+B=np.array([1,1],[-1,2],[3,1])
+beta=np.array([2,3,1])
+b=np.array([1,-1,5])
+x0=np.array([0,0])
+eps=0.0001
+iterMax=100
+
+def exo1():
+    test=True
+    k=0
+    while(test and k<iterMax):
+        d=np.dot(A,x0)-b
+        rho=(norm(d)**2/np.dot(d.T,A@d))
+        x1 = x0 + rho*d
+        test=norm(x1-x0)>esp*norm(x1)
+        k+=1
+        x0=x1
+    return (x0,k)
+
+def exo2():
+    test=True
+    k=0
+    while(test and k<iterMax):
+        d=np.dot(B.T*B,x0)-B*Beta
+        rho=(norm(d)**2/np.dot(d.T,A@d))
+        x1 = x0 + rho*d
+        test=norm(x1-x0)>esp*norm(x1)
+        k+=1
+        x0=x1
+    return (x0,k)

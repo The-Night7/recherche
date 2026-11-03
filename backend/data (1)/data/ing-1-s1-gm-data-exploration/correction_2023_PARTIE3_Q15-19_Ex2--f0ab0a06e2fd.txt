@@ -1,0 +1,168 @@
+Correction Finale
+Questions 15-19 + Exercice 2
+ING1 GM-MIM - CY Tech
+Examen 22 décembre 2023
+Contents
+1 Question 15 : T est du χ2 1
+2 Question 16 : Fiabilité du test 1
+3 Question 17 : T est avec données complètes 2
+4 Questions 18-19 : AFC 2
+5 Exercice 2 - Climat F rance (ACP) 2
+5.1 Q1 : Nombre d'axes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+5.2 Q2 : Choix des axes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+5.3 Q3 : Contributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.4 Q4 : Interprétation des axes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.5 Q5 : Qualité de représentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.6 Q6 : Caractéristiques des villes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1 Question 15 : Test du χ2
+COURS
+T est du χ2 d'indépendance
+Hypothèses :
+ H0 : Les deux variables sont indépendantes
+ H1 : Les deux variables sont liées (dépendantes)
+FORMULES
+Statistique de test :
+χ2
+obs =
+X
+i,j
+(nobs
+ij −nth
+ij )2
+nth
+ij
+Degrés de liberté :
+ddl = (I− 1)(J− 1)
+Règle de décision : On rejette H0 si χ2
+obs>χ 2
+α(ddl)
+1
+<<<PAGE>>>
+SOLUTION
+Données : χ2
+obs = 15.139, ddl = (5− 1)(3− 1) = 8
+Table : χ2
+0.05(8) = 15.51
+Décision : 15.139< 15.51⇒ On ne rejette pas H0
+Conclusion : Pas de lien signicatif au seuil 5% (mais très limite !
+2 Question 16 : Fiabilité du test
+COURS
+Conditions d'application du test du χ2 :
+ Tous les eectifs théoriques ≥ 5 (règle stricte)
+ OU 80% des eectifs ≥ 5 et aucun < 1 (règle souple)
+SOLUTION
+Analyse : Sur 15 cellules, 9 ont nth< 5 (60%) et 3 ont nth< 1.
+Conclusion : NON , conditions non respectées. Test non able.
+Raison : Colonne Shared room avec eectifs très faibles (4 observations seulement).
+3 Question 17 : Test avec données complètes
+SOLUTION
+Résultat : χ2 = 675.85, p-value < 2.2× 10−16
+OUI, la réponse change ! Lien très signicatif avec n = 28590.
+Explication : Plus de puissance statistique avec échantillon complet.
+4 Questions 18-19 : AFC
+COURS
+Analyse F actorielle des Correspondances (AFC)
+L'AFC visualise les associations entre modalités de deux variables qualitatives.
+Inertie totale : Itot =χ2/n
+Les axes capturent l'inertie : Pλk =Itot
+SOLUTION
+Q18 : Les pourcentages = part d'inertie expliquée par chaque axe.
+Dim1 (95.76%) + Dim2 (4.24%) = 100% car min(I− 1,J− 1) = 2 axes max.
+Q19 : Shared room très proche de Manhattan (association forte).
+Private room associé à Bronx/Queens. Entire home/apt : distribution équilibrée.
+2
+<<<PAGE>>>
+5 Exercice 2 - Climat France (ACP)
+5.1 Q1 : Nombre d'axes
+COURS
+En ACP sur p variables, il y a exactement p axes (composantes principales).
+SOLUTION
+11 axes au total (11 variables climatiques).
+5.2 Q2 : Choix des axes
+COURS
+Critère de Kaiser : Retenir les axes avec λ> 1
+Somme des valeurs propres : En ACP normalisée, Pλk =p
+SOLUTION
+Axes à retenir : 2 ou 3
+ 2 axes : 69.47% variance (visualisation 2D simple)
+ 3 axes : 81.65% variance (critère Kaiser : λ1,λ 2,λ 3> 1)
+Somme valeurs propres = 11 (nombre de variables)
+5.3 Q3 : Contributions
+COURS
+Contribution moyenne : 100/p = 100/11 = 9.09%
+Variables avec contribution > 9.09% contribuent plus que la moyenne.
+SOLUTION
+V ariables contribuant à Dim.2 (> 9.09%) :
+1. altitude : 27.38% (dominante)
+2. t_mean : 15.87%
+3. t_max : 12.46%
+4. t_min : 11.53%
+5. lat : 10.42%
+Axe 2 = gradient altitudinal/thermique
+3
+<<<PAGE>>>
+5.4 Q4 : Interprétation des axes
+SOLUTION
+Axe 1 (42.71%) : Gradient pluviométrie/ensoleillement
+Opposition climat sec ensoleillé (Sud) vs humide pluvieux (Ouest)
+Axe 2 (26.75%) : Gradient altitudinal/thermique
+Opposition altitude (montagne froide) vs plaine (chaude)
+Liaisons :
+ Pluie ↔ Ensoleillement : corrélation négative
+ Altitude ↔ Températures : corrélation négative
+ Températures entre elles : corrélation positive
+5.5 Q5 : Qualité de représentation
+COURS
+Qualité = cos2 (somme sur Dim.1 + Dim.2)
+Bien représentée si cos2> 0.7
+SOLUTION
+V ariables mal représentées en 2D :
+1. p_mean : cos2 = 0.134 en 2D
+Mais bien représentée sur Dim.3 ( cos2 = 0.719)
+2. lon : cos2 = 0.342 en 2D
+Répartie sur plusieurs axes
+9/11 variables sont bien représentées en 2D.
+4
+<<<PAGE>>>
+5.6 Q6 : Caractéristiques des villes
+SOLUTION
+Brest (Dim.1 négatif, Dim.2 positif) :
+ Climat océanique très pluvieux
+ Humidité élevée, peu d'ensoleillement
+ Températures douces modérées par l'océan
+Lyon (proche du centre) :
+ Climat continental tempéré
+ Caractéristiques moyennes/équilibrées
+ Position géographique centrale
+Pic-du-Midi (Dim.2 très négatif) :
+ Climat alpin haute montagne (2877 m)
+ Températures très froides
+ Bon ensoleillement (au-dessus nuages)
+ Point extrême illustrant eet altitude
+Synthèse comparative :
+Brest Lyon Pic-du-Midi
+Climat Océanique Continental Alpin
+Pluie Très élevée Moyenne Faible
+Soleil Faible Moyen Élevé
+Altitude Basse Basse Très élevée
+Température Douce Moyenne Très froide
+Ces trois villes illustrent la diversité climatique française captée par l'ACP.
+Conclusion générale
+Points clés Exercice 1
+ Prix médian Airbnb : 125$ (asymétrie positive)
+ 15.6% variance prix expliquée par arrondissement
+ Lien Type Ö Région signicatif avec données complètes
+ Shared rooms concentrés à Manhattan (100%)
+Points clés Exercice 2
+ 2 axes capturent 69% de variabilité climatique
+ Axe 1 : pluviométrie/ensoleillement (Méd vs Atlantique)
+ Axe 2 : altitude/température (montagne vs plaine)
+5
+<<<PAGE>>>
+ Diversité climatique française bien capturée
+Leçons méthodologiques
+1. Importance taille d'échantillon pour tests statistiques
+2. Vérier conditions d'application (eectifs théoriques)
+3. Complémentarité analyses univariées/bivariées/multivariées
+4. Interpréter résultats dans contexte (géographie, économie)
+6

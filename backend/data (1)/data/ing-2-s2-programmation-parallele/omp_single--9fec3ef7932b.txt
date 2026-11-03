@@ -1,0 +1,19 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+   #pragma omp parallel num_threads(3)
+   {
+      #pragma omp single
+      // Only a single thread can read the input.
+      printf("read input TID= %d\n", omp_get_thread_num());
+      
+      // Multiple threads in the team compute the results.
+      printf("compute results,TID= %d\n", omp_get_thread_num());
+
+      #pragma omp single
+      // Only a single thread can write the output.
+      printf("write output TID= %d\n", omp_get_thread_num());
+    }
+}

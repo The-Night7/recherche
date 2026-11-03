@@ -1,0 +1,349 @@
+Cours réseaux 
+DHCP-DNS-HTTP 
+<<<PAGE>>>
+DHCP 
+Dynamic Host Conguration Protocol 
+(RFC 2131 mise à jour par les RFC 3396 et 4361) 
+<<<PAGE>>>
+Prochains cours 
+• Protocole DHCP signifie Dynamic Host 
+Configuration Protocol. Il s'agit d'un protocole qui 
+permet à un ordinateur qui se connecte sur un 
+réseau d'obtenir dynamiquement (c'est-à-dire 
+sans intervention particulière) sa configuration 
+(principalement, sa configuration réseau). 
+ 
+<<<PAGE>>>
+Introduction 
+• Il existe donc deux méthodes pour obtenir une 
+adresse IP.  
+– Soit c'est vous qui la configurez (méthode manuelle),  
+– soit c'est un serveur qui vous la donne (méthode 
+dynamique) 
+<<<PAGE>>>
+Configuration manuelle 
+• Connaître : 
+• l’adresse du réseau 
+• L’adresse d’un routeur (passerelle) 
+• S’assurer que l’adresse est unique sur le réseau local 
+ il faut un mécanisme fiable, d’où l’utilisation 
+d’un serveur dynamique d’adresses 
+• Configuration de la carte réseau pour se 
+connecter à un serveur DHCP et recevoir une 
+adresse IP automatiquement 
+<<<PAGE>>>
+La configuration dynamique par DHCP 
+• DHCP rend possible l'allocation dynamique 
+d'adresses : 
+– l'administrateur fournit au serveur DHCP un 
+ensemble d'adresses IP que le serveur gérera seul  
+– lorsqu'une station demande une adresse, le serveur 
+lui alloue une adresse parmi celles prévues et qui 
+n’est pas encore attribuée 
+<<<PAGE>>>
+Les différentes allocations de DHCP 
+• DHCP prend en charge simultanément trois types d'allocation : 
+– l'allocation statique : un client obtiendra toujours la même adresse, 
+spécifiée par l'administrateur (attribution de type BOOTP) 
+– l'allocation dynamique temporaire : une adresse est allouée 
+dynamiquement mais pour une durée limitée. On dit que l'adresse est 
+louée avec un bail. Le client peut ensuite demander le 
+renouvellement du bail. S'il ne le fait pas, l'adresse pourra être 
+attribuée a un autre client quand le bail expire 
+– l'allocation dynamique permanente : une adresse peut être allouée 
+dynamiquement mais de façon permanente à un ordinateur qui se 
+connecte pour la première fois. Une requête de cet ordinateur après 
+un redémarrage se traduira par une allocation statique. Ce cas est mis 
+en œuvre par l'utilisation d'un bail infini.  
+– En pratique, un serveur n'attribue qu'un bail très grand pour vérifier 
+que le client est toujours connecté. 
+<<<PAGE>>>
+Comment se connecter à un serveur DHCP 
+• Votre machine n’a pas encore d’adresse IP => utilisation 
+du protocole ARP (adresse MAC) 
+• La trame permettant de trouver un serveur DHCP est une 
+trame "DHCPDISCOVER", comme c'est un broadcast, elle 
+est envoyée à l'adresse MAC ff:ff:ff:ff:ff:ff 
+1. Emission d’un le DHCPDISCOVER en brodcast (il peut 
+demander l’adresse obtenue précédemment) 
+2. DHCP reçoit le DHCPDISCOVER, il va renvoyer une ou 
+plusieurs propositions, c'est un DHCPOFFER. Il propose 
+–  une adresse IP , 
+–  un masque  
+– une passerelle par défaut et 
+– parfois un serveur DNS. 
+<<<PAGE>>>
+Comment se connecter à un serveur DHCP 
+3. Le client (votre machine) répond par un 
+DHCPREQUEST en broadcast et sert à prévenir 
+quelle offre est acceptée.  
+4. Le serveur DHCP dont l'offre a été acceptée valide la 
+demande et envoie un DHCPACK qui valide 
+l'allocation du bail. 
+ 
+Remarque : avant d'envoyer un DHCPOFFER, le 
+serveur peut vérifier par un ping que l'adresse 
+proposée n'est pas déjà utilisée. . . 
+Lorsqu'un client n'a plus besoin d'une adresse il doit 
+la résilier par envoie  envoyer un message 
+DHCPRELEASE en unicast au serveur, 
+<<<PAGE>>>
+Comment se connecter à un serveur DHCP 
+ 
+Remarque : avant 
+d'envoyer un 
+DHCPOFFER, le 
+serveur peut 
+vérifier par un ping 
+que l'adresse 
+proposée n'est pas 
+déjà utilisée. . . 
+Lorsqu'un client n'a 
+plus besoin d'une 
+adresse il doit la 
+résilier par envoi  
+d’un message 
+DHCPRELEASE en 
+unicast au serveur, 
+
+<<<PAGE>>>
+Renouvellement du bail par le client 
+Une fois une adresse affectée, le client devra renouveler le bail 
+avant son expiration s'il souhaite continuer à l'utiliser.  
+1. À 50% de la durée du bail, émission d'un DHCPREQUEST 
+(unicast) contenant l'adresse attribuée 
+2. 3 cas possibles : 
+– le serveur ne répond pas : la demande devra être réémise en 
+broadcast à 87,5% de la durée du bail 
+– le serveur répond défavorablement (message DHCPNAK) : le 
+client doit cesser d'utiliser cette adresse mais peut 
+recommencer le processus d'obtention 
+– le serveur répond favorablement (message DHCPACK) : ce 
+message indique une nouvelle durée du bail 
+3. la demande à 87,5% de la durée du bail diffère de la 
+précédente par la destination (broadcast). Si aucun serveur 
+ne répond aucune nouvelle demande ne doit être émise et 
+le client devra cesser d'utiliser l'adresse à expiration du bail 
+<<<PAGE>>>
+Situation de DHCP dans TCP/IP 
+• DHCP est un protocole d'application 
+• DHCP utilise les mêmes ports UDP 
+DHCP 
+IP 
+UDP 
+Client : Port 68 Serveur : Port 67 
+<<<PAGE>>>
+DNS 
+ Domain Name System 
+ (RFC 1034 et 1035) 
+cours tiré des slides de C. Pain-Barre  
+<<<PAGE>>>
+Introduction 
+• Se rappeler d'une adresse IP est assez difficile, ex : 
+212.27.48.10 Mais alors de plusieurs (209.85.137.99, 
+139.124.187.4, . . . ), c'est franchement pénible ! 
+• En revanche, retenir des noms comme www.free.fr, 
+www.google.com, c'est bien plus facile 
+• C'est pourquoi le DNS existe : il permet de nommer 
+des ordinateurs et de "résoudre" des noms en 
+adresses IP : 
+– www.free.fr en 212.27.48.10 
+– www.google.com en 209.85.137.99 
+• et inversement : résolution inverse 
+<<<PAGE>>>
+Origine 
+• Au début d'internet, l'espace de noms était "plat" et 
+admettait des noms de type : 
+– serveur 
+– capucine 
+– gandalf 
+• . . . 
+• et centralisé : géré par le NIC (Network Information Center) 
+puis plus tard par l'INTERNIC (Internet Information Center) 
+• mais la multiplicité des ordinateurs connectés et nommés a 
+rendu la gestion trop lourde 
+• et un nom pris ne pouvait plus être utilisé 
+• ce qui s'est traduit par l'utilisation de noms de plus en plus 
+obscurs : serveurbis, gandalfsecond, etc. 
+<<<PAGE>>>
+DNS : espace de noms hiérarchisé et décentralisé 
+• Avec le DNS, l'espace de noms est organisé en 
+une hiérarchie au sommet de laquelle figure la 
+racine et immédiatement en dessous les TLD 
+(Top-Level Domain) ou domaines de niveau 
+supérieurs : 
+racine (.) 
+fr org edu com uk us 
+<<<PAGE>>>
+DNS 
+• L'ICANN (Internet Corporation for Assigned Names and 
+Numbers) a en charge la création des TLD et a créé 
+notamment les TLD suivants : 
+– com : entreprises commerciales 
+– edu : établissements d'enseignement 
+– org : organisations diverses 
+– un TLD par code pays sur 2 lettres (norme ISO 3166) : 
+• fr : France 
+• uk : Royaume-Uni 
+• de : Allemagne 
+• L'ICANN est responsable de la gestion des 13 serveurs DNS 
+qui gèrent la racine du DNS. Ces 13 serveurs connaissent 
+les adresses IP des serveurs DNS gérant les TLD  
+<<<PAGE>>>
+DNS 
+
+<<<PAGE>>>
+DNS : délégation de gestion de (sous-) domaine 
+• L'ICANN a ensuite délégué la gestion des sous-domaines des TLD à des 
+entreprises ou organisations gouvernementales : 
+– com et net à la societe VeriSign 
+– edu, org et autres à l'INTERNIC 
+– À RIPE pour l’Europe qui délègue lui-même à l'AFNIC (Association Française 
+pour le Nommage Internet en Coopération) avec fr et re (île de la réunion)  
+– etc. 
+• Ces gestionnaires vendent (parfois via des registrars) les sous-domaines de 
+leurs TLD et en délèguent la gestion à leurs acheteurs : 
+– google.com 
+– free.fr 
+– gouv.fr 
+• Le propriétaire d'un sous-domaine peut ensuite le décliner à sa guise afin 
+de nommer des ordinateurs et/ou de créer des sous-sous-domaines : 
+– www.free.fr (ordinateur) 
+– smtp.free.fr (ordinateur) 
+– hd.free.fr (sous-sous-domaine) 
+<<<PAGE>>>
+Achat/Dépôt d'un sous-domaine 
+• Se fait généralement pour une durée limitée (1 à 10 ans) 
+auprès d'un registrar 
+• Doit être associé à l'identité et l'adresse postale d'une 
+personne qui doit fournir 3 types d'informations : 
+– responsable du sous-domaine 
+– payeur du sous-domaine 
+– responsable technique du sous-domaine 
+• Ces informations sont publiques et consultables par tout le 
+monde : 
+– sous Unix, en utilisant la commande whois 
+– sur le Web, grâce a des serveurs WHOIS (http://www.whois.net) 
+<<<PAGE>>>
+DNS : terminologie 
+• Le terme domaine désigne à la fois un domaine, un sous-
+domaine, etc : 
+fr et eisti.fr sont des domaines 
+• Le nom d'un domaine ne doit pas dépasser 63 caractères 
+• Au début, caractères ASCII (lettres a-z, chiffres 0-9, tiret -), 
+puis extension Punycode (RFC 3490) 
+• Le DNS est insensible à la casse : 
+eisti.fr ≡ EISTI.fr 
+• Les points séparent des labels : eisti.fr est compose des 2 
+labels eisti et fr 
+• www.eisti.fr, www peut être un sous-domaine de eisti.fr, 
+mais dans ce cas il pourrait y avoir encore d’autres machines 
+à ce domaine, soit le nom d’une machine 
+<<<PAGE>>>
+DNS : base de données repartie, efficace et fiable 
+• Un dépositaire de domaine doit mettre à disposition au 
+moins 2 serveurs de noms (sur des réseaux en principe 
+différents) charges de répondre aux requêtes concernant les 
+noms locaux 
+• Les serveurs de noms d'un domaine doivent connaitre les 
+serveurs de noms racines, du domaine parent et des 
+domaines fils (délégation de zone) 
+• Les relations (non physiques) entre les différents serveurs 
+peuvent être illustrées ainsi (en ne prenant qu'un serveur 
+par domaine) : 
+<<<PAGE>>>
+DNS : base de données repartie, efficace et fiable 
+• Un serveur de noms peut gérer un domaine 
+ainsi que plusieurs sous-domaines 
+• Par exemple, un registrar peut gérer lui-même 
+les domaines qu'il vend 
+<<<PAGE>>>
+DNS : la résolution de noms 
+• Tout hôte doit connaître au moins un serveur de noms (en 
+principe de son domaine mais ce n'est pas une obligation) 
+• Sur un hôte, le client DNS effectuant la résolution de noms 
+est appelé solveur de noms 
+• Pour résoudre un nom (ou autre requête), le solveur 
+s'adresse à son serveur de noms. Deux possibilités : 
+– résolution récursive : s'il ne connaît pas la réponse, le serveur 
+est chargé de la trouver. Il contactera un autre serveur, etc., et 
+la réponse reviendra 
+– résolution itérative : s'il ne connaît pas la réponse, le serveur 
+peut indiquer quel serveur est susceptible de la connaître. Le 
+solveur doit ensuite effectuer la recherche seul en contactant 
+ce serveur, etc., jusqu'à contacter un serveur en mesure de lui 
+répondre 
+<<<PAGE>>>
+Situation du DNS dans TCP/IP 
+• Le DNS est un protocole 
+d'application 
+• DNS peut utiliser 
+indépendamment UDP ou TCP 
+• Pour la quasi-totalité des 
+requêtes DNS, c'est UDP qui est 
+utilise car il est rapide 
+• Mais certaines requêtes 
+engendrent des réponses 
+longues (supérieures a 512 
+octets) : dans ce cas, TCP est 
+utilise (notamment pour les 
+transferts de zone entre 
+serveurs) 
+• Les serveurs DNS ont un port 
+réservé en UDP et TCP : le 53 
+DNS 
+IP 
+UDP TCP 
+<<<PAGE>>>
+Utilisation de caches DNS 
+• Lorsqu'un serveur DNS a réalisé une résolution 
+récursive, il enregistre la réponse obtenue dans un 
+cache 
+• Si un autre client lui pose la même question, il 
+utilisera son cache pour répondre mais indiquera 
+dans la réponse qu'il n'avait pas autorité pour 
+répondre et précisera auprès de quel serveur le client 
+peut espérer une réponse ferme 
+• Une entrée dans le cache a une durée de vie (TTL) 
+qui a été indiquée dans la réponse reçue par le 
+serveur 
+• Elle sera enlevée du cache lorsque sa durée de vie 
+expirera 
+<<<PAGE>>>
+Format des messages du protocole DNS 
+ 
+• Les messages des requêtes et des réponses DNS utilisent un 
+format uniforme.  
+• Les messages des requêtes et des réponses DNS sont de taille 
+fixe de 512 octets (sont tronqués si le message est long)  
+• Ces messages peuvent être transportés dans des 
+datagrammes UDP par le port 53 ou des datagrammes TCP 
+par le port 53.  
+ 
+<<<PAGE>>>
+Format des messages du protocole DNS 
+Entête (12 bytes) 
+Question (variable) 
+Réponse (variable) 
+Autorité (variable) 
+Additionnelle (variable) 
+Nom de section Description 
+Entête Contient des champs qui décrivent le type de message. Contient également 
+des champs qui indiquent le nombre d'entrées dans les autres sections 
+Question Effectue un ou plusieurs «questions», c'est-à-dite des requêtes pour l'envoi 
+d'informations à un serveur de nom DNS 
+Réponse Effectue un ou plusieurs enregistrements de ressources qui répondent à la 
+question (s) indiqué dans la section question 
+Autorité Contient un ou plusieurs enregistrements de ressources qui pointent vers les 
+serveurs de noms d'autorité pour poursuivre le processus de résolution. 
+Additionnelle Transporte un ou plusieurs enregistrements de ressources qui contiennent des 
+informations supplémentaires relatives à la requête 
+<<<PAGE>>>
+Sources 
+Slides sont tirés du : 
+• Cours de C. Pain-Barre 
+• Cours Initiation à l’architecture réseau de P . 
+Ducrot 
+• Livre de Guy Pujolle «  Cours réseaux et 
+télécom » 
+• Wikepedia 

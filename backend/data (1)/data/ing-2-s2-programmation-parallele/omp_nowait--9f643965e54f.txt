@@ -1,0 +1,40 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd>
+
+#define SIZE 30
+
+void test(int *a, int *b, int *c, int size) 
+{
+    int i;
+    #pragma omp parallel 
+    {
+        #pragma omp for nowait
+        for (i = 0; i < size; i++){
+            b[i] = a[i] * a[i] + 2*a[i];
+			sleep(5);
+			}
+  
+        #pragma omp for
+        for (i = 0; i < size; i++)
+            c[i] = b[i];
+
+    }	
+	for (i=0; i<SIZE; i++)
+        printf("%d, %d, %d\n", a[i], b[i], c[i]);
+}
+
+int main( ) 
+{
+    int a[SIZE], b[SIZE], c[SIZE];
+    int i;
+
+    for (i=0; i<SIZE; i++)
+        a[i] = i;
+   
+    test(a,b,c, SIZE);
+	//for (i=0; i<SIZE; i++)
+        //printf("%d, %d, %d\n", a[i], b[i], c[i]);
+    
+}

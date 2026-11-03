@@ -1,0 +1,73 @@
+Jeux en IA
+S´ erie d’exercices 1
+29 aoˆ ut 2023
+Objet du TD : Jeux ` a deux joueurs, Arbre de jeux, Minimax, Alpha-
+Beta.
+Exercice 1
+On consid` ere l’arbre d’un jeu (` a deux joueurs) d´ efini comme suit :
+— Il comporte 3 niveaux (racine=niveau 1 → feuilles=niveau 3).
+— La racine correspond au joueur M ax.
+— Chaque noeud non terminal poss` ede 3 fils.
+— Les feuilles sont ´ etiquet´ ees par les valeurs suivantes (de gauche ` a droite) :
+9, 8, 7, 6, 5, 4, 3, 2, 1.
+Travail demand´ e :
+1. Construire l’arbre.
+2. Appliquer l’algorithme MiniMax puis donner la signification de la va-
+leur de la racine.
+3. Appliquer l’algorithme MiniMax avec ´ elagage Alpha-Beta.
+4. Reprendre les questions pr´ ec´ edentes en ordonnant les feuilles dans le
+sens croissant des valeurs. Que constatez-vous?
+Exercice 2
+On consid` ere l’arbre de jeu ` a deux joueurs de la figure 1, dont le niveau
+4 donne l’´ evaluation d’une heuristique.
+Travail demand´ e :
+1
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Figure 1 –
+1. Appliquer l’algorithme Minimax pour d´ eterminer la strat´ egie ` a adopter.
+2. Appliquer la coupure Alpha-beta.
+Exercice 3
+On consid` ere l’arbre d’un jeu (` a deux joueurs) d´ efini comme suit :
+— Il comporte 4 niveaux (racine=niveau 1 → feuilles=niveau 4).
+— La racine correspond au joueur M ax.
+— Chaque noeud non terminal poss` ede 3 fils.
+— Les feuilles sont ´ etiquet´ ees par les valeurs suivantes (de gauche ` a droite) :
+10, 13, 5, 16, 1, 0, 7, 18, 9, 9, 5, 14, 16, 17, 2, 11, 13, 14, 18, 12, 7, 8,
+9, 10, 2, 8, 3.
+Travail demand´ e :
+1. Construire l’arbre.
+2. Expliquer la signification des valeurs des feuilles et la mani` ere dont elles
+ont pu ˆ etre obtenues.
+3. Appliquer l’algorithme MiniMax puis donner la signification de la va-
+leur de la racine.
+4. Montrez les premi` eres it´ erations de l’algorithme MiniMax avec ´ elagage
+Alpha-Beta.
+2
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Exercice 4
+Dans cet exercice, nous nous int´ eressons au jeu dumorpion. Une ´ ebauche
+de l’arbre complet de ce jeu (extraite du cours) est rappel´ e figure 2.
+1. Quelle est la profondeur de cet arbre ?
+2. Quelle est la profondeur des feuilles les moins profondes ?
+`A chaque configuration du jeu, nous associons, pour n ∈ { 1, 2, 3} les deux
+indicateurs suivants :
+ Xn=le nombre de colonnes, lignes ou diagonales ayant n Xs et aucun
+O.
+ On=le nombre de colonnes, lignes ou diagonales ayant n Os et aucun
+X.
+3. Caract´ erisez les ´ etats finals ` a l’aide de ces deux indicateurs.
+Au lieu de construire l’arbre entier, nous nous limitons ` a la profondeur 2
+(c’est-` a-dire le niveau contenant unX et un O), et on ´ evalue chaque feuille
+` a l’aide de la fonction d’utilit´ e suivante :
+Eval = X1 - O1.
+4. Montrez qu’` a l’aide des sym´ etries de la grille, on peut regrouper les
+configurations des niveaux 1 et 2 de l’arbre en, respectivement, 3 et 12
+groupes.
+5. ´Evaluez les feuilles puis appliquez l’algorithme Minimax.
+3
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Figure 2 –
+4

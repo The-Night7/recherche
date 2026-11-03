@@ -1,0 +1,56 @@
+#include "omp.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#define CHUNKSIZE   10
+
+int sumVector(int n, int* v){
+    int i, tid, chunk;
+    int sum = 0;
+	chunk = 256;//CHUNKSIZE/2;
+     #pragma omp parallel private(tid)
+	{ 
+	  tid = omp_get_thread_num();
+	  #pragma omp for schedule(static,chunk) reduction(+:sum)
+      for ( i = 0 ; i < n ; i ++ ){ 
+        sum += v [ i ];
+	    printf("La somme du vecteur: %d est sum = %d\n",tid, sum);
+      }
+
+	}
+    return sum;
+}
+
+
+
+int main(){  
+    
+    // SumVecteur
+    int n = 2048;
+	int i;
+	double start, stop;
+    int* v = (int *) malloc(n * sizeof(int));
+    for (i = 0; i < n; ++i){
+        v[i] = i;
+    }
+
+	start=omp_get_wtime();
+    printf("La somme du vecteur: %d\n",sumVector(n,v));
+	stop = omp_get_wtime();
+    printf("%lf   \n", stop - start);
+}
+
+
+
+/* main
+    int x = 9;
+    #ifdef _OPENMP
+    #pragma omp parallel shared(x) num_threads (2)
+    {
+        x++;
+        #pragma omp single
+        printf("je suis le thread:%d x= %d\n",omp_get_thread_num(), x);
+    }
+    #endif
+    printf(x vaut maintenant %d\n", x);
+ */

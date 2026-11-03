@@ -1,0 +1,446 @@
+Cycle Pr´eparatoire - Premi`ere Ann´ee
+Analyse II - 2021/2022
+Devoir D´ erivabilit´ e
+Exercice 1
+On appelle arcsin,arccos,arctan les fonctions r´ eciproques des fonctionssin,cos,tan .
+D´ eterminer les ensembles de d´ epart et d’arriv´ ee pour pourvoir d´ eﬁnir ces fonctions r´ eciproques
+et en tout r´ eel pour lesquelles ces fonctions sont d´ erivables, exprimer la d´ eriv´ ee de la fonction
+r´ eciproque sous une forme qui n’utilise pas sin ou cos.
+Indication : on obtiendra arctan′(x) = 1
+1 +x2
+Solution
+1. Fonction sin :
+Tout d’abord, la fonction sin prend ses valeurs dans R , et ses images se situent dans
+l’intervalleJ = [−1; 1] .
+On restreint la fonction sin ` a l’ensemble de d´ eﬁnitionI = [−π
+2 ;π
+2 ] et l’ensemble d’arriv´ ee
+J = [−1; 1].
+La fonction sin est d´ erivable de d´ eriv´ ee cos. Donc la d´ eriv´ ee est strictement positive sur I
+(sauf en deux r´ eels) donc la fonction est strictement croissante. Comme elle est continue,
+elle est bijective de I sur J.
+d’o` uf :
+{[
+−π
+2,π
+2
+]
+→ [−1, 1]
+x→ sinx
+On a donc
+f−1 :
+{
+[−1, 1]→
+[
+−π
+2,π
+2
+]
+x→ arcsinx
+Cherchons ` a pr´ esent une ´ ecriture de la d´ eriv´ ee de arcsin :
+On utilise la le¸ con et on obtient
+(arcsinx)′ = 1
+cosx(arcsinx)
+On utilise la formule trigonom´ etrique :cos2x + sin2x = 1
+=⇒ cosx2(arcsinx) = 1− sin2(arcsinx) et
+√
+cosx2(arcsinx) =
+√
+1− sin(arcsinx)2
+=⇒ cosx(arcsinx) =
+√
+1−x2
+d’o` u en revenant ` a l’expression : (arcsinx)′ = 1
+cosx(arcsinx) = 1√
+1−x2
+2. Fonction cos :
+Tout d’abord, la fonction cos prend ses valeurs dans R , et ses images se situent dans
+l’intervalleJ = [−1; 1] .
+On restreint la fonction sin ` a l’ensemble de d´ eﬁnitionI = [0;π] et l’ensemble d’arriv´ ee
+J = [−1; 1].
+La fonction cos est d´ erivable de d´ eriv´ ee− sin. Donc la d´ eriv´ ee est strictement n´ egative sur
+I (sauf en deux r´ eels) donc la fonction est strictement croissante. Comme elle est continue,
+elle est bijective de I sur J.
+d’o` uf :
+{[0,π ]→ [−1, 1]
+x→ cosx
+On a donc
+f−1 :
+{[−1, 1]→ [0,π ]
+x→ arccosx
+Cherchons ` a pr´ esent une ´ ecriture de la d´ eriv´ ee de arccos :
+<<<PAGE>>>
+On utilise la le¸ con et on obtient
+(arccosx)′ = 1
+sinx(arccosx)
+On utilise la formule trigonom´ etrique :cos2x + sin2x = 1
+=⇒ sinx2(arccosx) = 1− cos2(arccosx) et
+√
+sinx2(arccosx) =
+√
+1− cos(arccosx)2
+=⇒ sinx(arccosx) =
+√
+1−x2
+d’o` u en revenant ` a l’expression : (arccosx)′ = 1
+− sinx(arccosx) =− 1√
+1−x2
+3. Etude de la fonction tan
+Tout d’abord rappelons que tan x = sinx
+cosx
+donc le domaine de d´ eﬁnition de tan estR\{x/ cosx⁄= 0}
+cosx = 0 =⇒
+
+
+
+x = π
+2 + [2kπ], avec k∈ Z
+x =−π
+2 + [2kπ], avec k∈ Z
+donc la fonction tan est d´ eﬁnie surR\
+{π
+2 + [kπ] avec k∈ Z
+}
+On pose f :
+{
+I =]− π
+2 ;π
+2 ]→ R
+x→ tanx
+,
+Cette fonction est d´ erivable sur I de d´ eriv´ ee :f′(x) = 1 + tan 2x > 0 donc elle est
+strictement croissante sur I.
+De plus lim
+x→π
+2
+−
+tanx = +∞ et lim
+x→−π
+2
++
+tanx =−∞ (car quotient de sin et cos
+Comme f est continue sur I, elle r´ ealise une bijection de I surf(I)
+On peut donc d´ eﬁnir :arctan :
+{
+R→]− π
+2 ;π
+2 ]
+x→ arctanx
+On peut utiliser la propri´ et´ e du cours ou bien utiliser l’expression :x = tan(arctan(x))
+x′ = (tan arctanx)′ =⇒ 1 = (arctan)′
+(
+1 + tan2 arctanx
+)
+=⇒ 1 = (arctan)′
+(
+1 +x2)
+=⇒ (arctanx)′ = 1
+1 +x2
+Exercice 2
+On d´ eﬁnit deux fonctionssh et ch de R dans R par
+shx = ex−e−x
+2 et chx = ex +e−x
+2
+1. D´ emontrer quech est paire et sh est impaire.
+2. D´ eterminer les d´ eriv´ ees dech et sh et les exprimer en fonction de ch et sh.
+3. D´ emontrer quech2x−sh2x = 1
+4. (a) D´ emontrer que ch permet de d´ eﬁnir une bijection de R+ dans un ensemble E que
+l’on d´ eterminera.
+(b) On appelle argch la fonction r´ eciproque dech d´ eﬁnie deE dans R+. Etudier la
+d´ erivabilit´ e dearcsh surE. Et exprimer argch′(x) en fonction de x (sans utiliser sh
+ou ch).
+(c) Soit g :x↦→ ln(x +
+√
+x2− 1). En utilisant la d´ erivation, montrer queg =argcosh.
+5. (a) D´ emontrer que sh permet de d´ eﬁnir une bijection deR dans R.
+(b) On appelle argsh la fonction r´ eciproque desh d´ eﬁnie deR dans R+. Etudier la
+d´ erivabilit´ e dearcsh sur R.
+(c) Soit f :x↦→ ln(x +
+√
+x2 + 1). En utilisant la d´ erivation, montrer quef =argsh.
+<<<PAGE>>>
+6. On appelle th la fonction th = sh
+ch. Etudier la fonction th, d´ eterminer sa d´ eriv´ ee et son
+sens de variation.
+7. (a) D´ emontrer que th permet de d´ eﬁnir une bijection de R+ dans un ensemble F que
+l’on d´ eterminera.
+(b) On appelle argth la fonction r´ eciproque deth d´ eﬁnie deF dans R+. Etudier la
+d´ erivabilit´ e deargth surF . Et exprimer argth′(x) en fonction de x (sans utiliser sh
+ou ch ou th).
+(c) Soit h :x↦→ 1
+2 ln 1 +x
+1−x. En utilisant la d´ erivation, montrer queh =argth(x).
+Solution
+1. La fonction ch est-elle paire ?
+∀x∈ R,ch (−x) = e−x +e−(−x)
+2 = e−x +ex
+2 =ch(x),donc la fonction ch est paire.
+∀x∈ R,sh (−x) = e−x−e−(−x)
+2 = e−x−ex
+2 =−sh(x),donc la fonction sh est paire.
+2. D´ eriv´ ee dech(x) :ch′(x) =
+(ex +e−x
+2
+)
+′ = ex−e−x
+2 =sh(x)
+D´ eriv´ ee de sh( x) :sh′(x) =
+(ex−e−x
+2
+)
+′ = ex−e−x(−1)
+2 = ex +e−x
+2 =ch(x)
+3. On ´ ecrit :
+ch2x−sh2x =
+(ex +e−x
+2
+)2
+−
+(ex−e−x
+2
+)2
+= (ex +e−x)2
+4 − (ex−e−x)2
+4
+= e2x + 2exe−x +e−2x− (e2x− 2exe−x +e−2x)
+4
+= e2x + 2exe−x +e−2x− (e2x− 2exe−x +e−2x)
+4 = e2x + 2 +e−2x− (e2x− 2 +e−2x)
+4
+= e2x + 2 +e−2x−e2x + 2−e−2x
+4
+= 4
+4 = 1
+Donc ch2 x−sh2 x = 1.
+4. (a) Soit ch :x→ ex +e−x
+2
+ch est continue sur R et d´ erivable surR de d´ eriv´ eech′(x) =sh(x) = e2x− 1
+2ex > 0⇔
+x> 0
+Donc ch est strictement croissante sur R+, comme ch(0) = e0 +e0
+2 = 1 + 1
+2 = 1 et
+lim
+x→+∞
+ch(x) = +∞ on peut appliquer le th´ eor` eme de la bijection ` a cette fonction
+continue et ch r´ ealise une bijection deR+ dans [1; +∞[
+(b) On observe que sh ne s’annule pas sur ]0; +∞[ doncargch est d´ erivable sur [1; +∞[,
+de d´ eriv´ ee :
+arccosh′(x) = 1
+sharccosh(x) = 1√
+sh2arccosh(x)− 1
+= 1√
+x2− 1
+(c) On a
+g′(x) =
+1 + 2x
+2
+√
+x2−1
+x +
+√
+x2− 1 = 1 + 2x
+2
+√
+x2− 1
+1
+x +
+√
+x2− 1
+= 2
+√
+x2− 1 + 2x
+2
+√
+x2− 1
+1
+x +
+√
+x2− 1 = 2
+(√
+x2− 1 +x
+)
+2
+√
+x2− 1
+1
+x +
+√
+x2− 1 = 1√
+x2− 1
+On observe que g′(x) =arcosh′(x) or g(1) = 0 et argcosh(1) = 0 donc g =arcosh
+<<<PAGE>>>
+On peut aussi remarquer que cosh(x) = ex +e−x
+2
+On r´ esoutx = coshz⇔ 2x =y + 1
+y et y =ez⇔y2− 2xy + 1 = 0 et y =ez
+∆′ =x2− 1 et y1 =x +
+√
+x2− 1 et y2 =x−
+√
+x2− 1
+Donc z = ln
+(
+x +
+√
+x2− 1
+)
+ou z = ln
+(
+x−
+√
+x2− 1
+)
+Orx−
+√
+x2− 1 = 1
+x +
+√
+x2− 1 et pourx > 1, x+
+√
+x2− 1 > 1 doncx−
+√
+x2− 1< 1
+donc la arccoshx = ln
+(
+x +
+√
+x2− 1
+)
+5. (a) Soit sh :x→ ex−e−x
+2
+sh est continue sur R et d´ erivable surR de d´ eriv´ eesh′(x) =ch(x) = ex +e−x
+2ex > 0⇔
+x> 0
+Donc sh est strictement croissante sur R.
+lim
+x→−∞
+sh(x) =−∞ et lim
+x→+∞
+sh(x) = +∞ on peut appliquer le th´ eor` eme de la bijec-
+tion ` a cette fonction continue etsh r´ ealise une bijection deR dans R
+(b) On observe que ch ne s’annule pas sur R doncargsh est d´ erivable surR, de d´ eriv´ ee :
+arcsinh′(x) = 1
+ch arcsh(x) = 1√
+sh2arcsh(x) + 1
+= 1√
+x2 + 1
+(c) On a
+f′(x) =
+1 + 2x
+2
+√
+x2+1
+x +
+√
+x2 + 1 = 1 + 2x
+2
+√
+x2 + 1
+1
+x +
+√
+x2 + 1
+= 2
+√
+x2 + 1 + 2x
+2
+√
+x2 + 1
+1
+x +
+√
+x2 + 1 = 2
+(√
+x2 + 1 +x
+)
+2
+√
+x2 + 1
+1
+x +
+√
+x2 + 1 = 1√
+x2 + 1
+On observe que f′(x) =arcsh′(x) or f(0) = 0 et sh(0) = 0 donc f =arcsh
+On peut aussi remarquer que sh(x) = ex−e−x
+2
+On r´ esoutx = coshz⇔ 2x =y− 1
+y et y =ez⇔y2− 2xy− 1 = 0 et y =ez
+∆′ =x2 + 1 et y1 =x +
+√
+x2 + 1 et y2 =x−
+√
+x2 + 1
+Or
+√
+x2 + 1>|x| donc x−
+√
+x2 + 1< 0
+Donc z = ln
+(
+x +
+√
+x2 + 1
+)
+donc la arcshx = ln
+(
+x +
+√
+x2 + 1
+)
+6. (a) La fonction th est d´ erivable comme quotient de fonctions d´ erivables.
+on a th′ x = ch x ch x−shx shx
+ch2x = 1
+ch2x > 0 donc la fonction th est strictement
+croissante
+th x=
+ex−e−x
+2
+ex+e−x
+2
+=
+(ex−e−x
+2
+) 2
+ex +e−x = ex−e−x
+ex +e−x donc
+lim
+x→−∞
+thx = lim
+x→−∞
+e2x−e0
+e2x +e0 =−1 et lim
+x→+∞
+thx = lim
+x→+∞
+e0−e2x
+e0 +e2x = 1
+Comme th est continue sur R et strictement croissante, elle r´ ealise une bijection de
+R dans ]− 1; 1[
+(b) La fonction th ´ etant bijective et de d´ eriv´ ee nulle,argth′(x) = 1
+1−th2(arcth(x)) =
+1
+1−x2
+<<<PAGE>>>
+(c) h(x) = 1
+2(ln(1 +x)− ln(1−x))
+donc h′(x) = 1
+2
+( 1
+1 +x + 1
+1−x
+)
+= 1
+1−x2
+On obtient la mˆ eme d´ eriv´ ee queargth orh(0) = 0 etarcth(0) = 0 donch =arcth(0)
+h(x) = 1
+x(ln(1 +x)− ln(1−x))
+Remarque : y = th(x)⇔ y = ex−e−x
+ex +e−x ⇔ y = e2x− 1
+e2x + 1 ⇔ e2x = 1 +y
+1−y ⇔ x =
+1
+2 ln 1 +y
+1−y

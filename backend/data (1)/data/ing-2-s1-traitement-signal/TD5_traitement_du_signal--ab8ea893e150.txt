@@ -1,0 +1,116 @@
+CY Tech ING2 S1 Traitement du Signal 2024/2025
+TD5
+Exercice 1 : Exo/cours filtrage par le circuit RC
+Un filtre en ´ electrocin´ etique ne laissera passer que certains signaux sinuso¨ ıdaux caract´ eris´ es par une
+pulsation ω (= 2πf , avec f la fr´ equence du signal).
+A l’entr´ ee du filtre, on applique par exemple une tension de pulsation ω ;
+— si, ` a la sortie du filtre, la tension n’est pas att´ enu´ ee, on consid` ere que le filtre laisse passer la pulsation
+ω ;
+— si au contraire, la tension est att´ enu´ ee, on consid` ere que le filtre ne laisse pas passer la pulsationω.
+Soit un circuit form´ e d’un conducteur ohmique R et d’un condensateur de capacit´ e C, soumis ` a une
+tension sinuso¨ ıdaleue(t) :
+1. D´ eterminer la fonction de transfertH du filtre RC : H(ω) = us
+ue
+.
+2. On ´ ecrit la fonction de transfert de la fa¸ con suivante :H(ω) = A
+1 +j ω
+ωc
+avecj2 =−1, A : le gain et
+ωc : la pulsation de coupure. Identifier A et ωc.
+3. D´ eduire la fr´ equence de coupure not´ eefc.
+4. Calculer le gain GdB en dB ` a la fr´ equence de coupure. On rappelle queGdB = 20log(|H|).
+5. Repr´ esenter le diagramme de Bode de ce filtre.
+6. D´ eduire la nature de ce filtre.
+Rappels :
+Le diagramme de Bode d’un filtre se compose de deux trac´ es :
+— Le gain en d´ ecibels (dB) en fonction de ω donn´ e parGdB = 20log(|H(ω)|).
+— la phase en degr´ e en fonction de ω, donn´ ee pararg(H(ω))
+Exercice 2 : Filtrage et spectre
+La figure ci-dessous repr´ esente les spectres de Fourier du signal de commande envoy´ e par un g´ en´ erateur
+basse fr´ equence (GBF) ` a un ´ emetteur d’ultrasons (grande amplitude, gris fonc´ e) et de celui recueilli par un
+r´ ecepteur plac´ e quelques dizaines de centim` etre plus loin (faible amplitude, gris clair).
+Page 1/4
+<<<PAGE>>>
+CY Tech ING2 S1 Traitement du Signal 2024/2025
+1. Quelle est la nature du filtrage r´ ealis´ e entre le signal du GBF et sa r´ eception ?
+2. Donner sa fr´ equence centrale et estimer le facteur de qualit´ eQ du filtre.
+3. Identifier les diff´ erentes ´ etapes de transformation/propagation du signal.`A votre avis, o` u se produit
+le filtrage observ´ e ?
+Rappels concernant les filtres passe-bande du second ordre :
+— Frequence centrale f0. Pour un filtre passe-bande, l’amplitude de la fonction de transfert est maximale
+(=Hmax) ` a la fr´ equence centrale.
+— Largeur de bande ∆f = fc2−fc1 : C’est la largeur de la bande passante (` a −3dB). ωc1 = 2πfc1 et
+ωc2 = 2πfc2 sont les pulsations de coupure pour lesquelles le gain vaut |H|=Hmax/
+√
+2.
+— Facteur de qualit´ eQ : C’est le rapport entre la frequence centrale et la largeur de la bande passante.
+On a : Q = f0
+∆f
+Exercice 3 : Conception d’un filtre de signaux acoustiques
+Un dispositif de traitement de signaux acoustiques n´ ecessite la s´ eparation de composantes sonores et ul-
+trasonores. On souhaite ´ eliminer les composantes ultrasonores : il faut donc r´ ealiser un filtre passe-bas. Le
+cahier des charges du dispositif indique les caract´ eristiques suivantes :
+— Fr´ equence de coupure 20 kHz ;
+— Gain nominal 0 dB ;
+— L’att´ enuation des fr´ equences comprises entre 0 et 20 kHz doit ˆ etre inf´ erieure ` a 3 dB ;
+— L’att´ enuation des fr´ equences sup´ erieures ` a 40 kHz doit ˆ etre sup´ erieure ` a 10 dB.
+Page 2/4
+<<<PAGE>>>
+CY Tech ING2 S1 Traitement du Signal 2024/2025
+1. Tracer le gabarit (qui synth´ etise les contraintes de la r´ eponse fr´ equentielle du filtre en gain) de ce filtre
+sur le diagramme semi logarithmique ci-dessous.
+2. Le filtre le plus simple serait un passe-bas du premier ordre de fr´ equence de coupurefc = 20 kHz. On
+rappelle que la fonction de transfert d’un tel filtre s’´ ecrit sous forme r´ eduite :
+H(x) = 1
+1 +jx avecj2 =−1 et x = f
+fc
+a) Rappeler ou retrouver la pente des asymptotes du diagramme de Bode en gain de ce filtre et calculer
+son gain ` a la fr´ equence de coupure.
+b) Montrer qu’il ne peut satisfaire au cahier des charges impos´ e. Justifier qu’il est n´ ecessaire d’utiliser
+un filtre d’ordre plus ´ elev´ e.
+Exercice 4 : Filtre num´ erique
+Soit le syst` eme discret :
+y[n] =x[n] +x[n− 1]
+1. D´ eterminer la r´ eponse en fr´ equence du syst` eme.
+2. Calculer la r´ eponse impulsionelleh[n] du syst` eme.
+3. Tracer le diagramme de Bode de h[n].
+4. Donner la bande passante ` a -3 dB du syst` eme.
+Exercice 5 : Filtre Butterworth - Python
+Un filtre de Butterworth est un type de filtre lin´ eaire, con¸ cu pour poss´ eder un gain aussi constant que
+possible dans sa bande passante. Le gain d’un filtre de Butterworth est le plus constant possible dans la
+bande passante et tend vers 0 dans la bande de coupure.
+On consid` ere un signal d’entr´ eee d´ efini comme suit :e(t) = 2 +sin(3∗ 2πt) + 0.4sin(500∗ 2πt).
+1. Repr´ esentere et son spectre.
+2. Appliquer le filtre Butterworth ` ae. Vous pouvez commencer votre code par :
+from scipy.signal import butter, lfilter
+Page 3/4
+<<<PAGE>>>
+CY Tech ING2 S1 Traitement du Signal 2024/2025
+from scipy.signal import freqs.
+Vous pouvez ´ egalement vous renseigner sur :
+https ://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html
+3. Afficher s.
+4. Comparer le spectre de s avec celui dee. Faire ce travail avec diff´ erentes valeurs de param` etres d’entr´ ee
+du filtre.
+Exercice 6 : Analyse spectrale - Python
+Le fichier ConsoGazElec.csv contient la consommation horaire en gaz (deuxi` eme colonne, en MW) et en
+´ electricit´ e (troisi` eme colonne, en MW).
+1. Afficher la consommation ´ electrique. Utiliser numpy.loadtxt pour charger le fichier.
+2. Afficher la TFD du signal pour d´ eterminer les principales fr´ equences.
+3. Identifier quel ph´ enom` ene correspond aux principales fr´ equences.
+Exercice 6 : Filtre num´ eriquePython
+Soit un filtre num´ erique, appel´ e filtre moyenneur, qui calcule la moyenne arithm´ etique de deux valeurs
+cons´ ecutives :
+yn = 1
+2(xn−1 +xn)
+1. Tracer le module de sa r´ eponse fr´ equentielle.
+2. Quel type de filtre est-ce ?
+On se propose d’appliquer ce filtre ` a un signal d’entr´ ee comme suit :
+e = 2cos(2πt) +cos(3πt + π
+2 ) + 0.5cos(5πt + π
+4 )
+Au moment d’´ echantillonner le signal d’entr´ ee, on ajoutera un bruit gaussien (import random).
+3. Repr´ esenter le spectre du signal discret.
+4. Tracer le signal discret filtr´ e (r´ esultat de la convolution avec la r´ eponse impulsionnelle).
+Note : Pour r´ eduire plus efficacement le bruit d’un signal, on utilise un filtre passe-bas gaussien.
+Page 4/4

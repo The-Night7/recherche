@@ -1,0 +1,178 @@
+
+ l
+Exercice 4. TD3-Modèle Linéaire et extension- 2023-2024
+Date de Création: 17-10-2023
+###############################################
+
+1. Pour représenter le nuage de points $(x_i, y_i)$, vous pouvez utiliser la fonction plot() en R. 
+   Commentez les observations.
+
+  # Données
+xi <- c(-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5)
+yi <- c(12.89, 10.12, 5.00, 1.59, 1.55, 3.96, 6.42, 7.00, 10.71, 14.32, 15.91)
+
+# Nuage de points
+plot(xi, yi, xlab = "xi", ylab = "yi", main = "Nuage de points")
+
+# Commentaire : Le nuage de points semble montrer une relation  parabolique  entre xi et yi.
+  la régression linéaire de   yi sur xi  simple ne semble pas convenir 
+   en raison de la forme parabolique du nuage de points. 
+ 
+2. Complétez le tableau des données datapoly en y ajoutant la colonne $x_i^2$.
+# Calcul de x2i
+x2i <- xi^2
+
+# Création du dataframe datapoly
+  datapoly <- data.frame(yi,xi,  x2i)
+
+3. Modèle de régression linéaire simple :
+(a) Utilisez la fonction lm() pour estimer les coefficients du modèle de régression linéaire simple R.
+
+# Modèle de régression linéaire simple
+lm_model <- lm(yi ~ xi)
+
+# Affichage des coefficients
+summary(lm_model)
+....................................
+Call:
+lm(formula = yi ~ xi)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-5.995 -3.242 -1.369  4.086  7.698 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.1336     1.4616   5.565  0.00035 ***
+xi            0.5884     0.4622   1.273  0.23493    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.848 on 9 degrees of freedom
+Multiple R-squared:  0.1526,    Adjusted R-squared:  0.05842 
+F-statistic:  1.62 on 1 and 9 DF,  p-value: 0.2349
+........................................................;
+
+
+b)    Le coefficient de détermination (0.1526)  est très faible et le coefficient $a_1$ n'est pas
+     significatif, p-avue= 0.23493 >5%. Ce modèle n'est pas approprié pour ajuster ces données.
+
+############################################
+
+4. Modèle de régression polynomiale :
+(a) Utilisez la fonction lm() pour estimer les coefficients du modèle de régression polynomiale.
+
+# Modèle de régression polynomiale
+  poly_model <- lm(yi ~ xi + x2i)
+
+# Affichage des coefficients
+summary(poly_model)
+.......................
+Call:
+lm(formula = yi ~ xi + x2i)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5693 -1.3506  0.4891  1.1564  1.8944 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   3.4709     0.8045   4.314  0.00257 ** 
+xi            0.5884     0.1684   3.494  0.00815 ** 
+x2i           0.4663     0.0603   7.732 5.57e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.766 on 8 degrees of freedom
+Multiple R-squared:    0.9,     Adjusted R-squared:  0.875 
+F-statistic:    36 on 2 and 8 DF,  p-value: 1e-04
+...................................................
+
+b)  Significativité du modèle et qualité  de l'ajustement.
+     La p-valeur  associée au test de Fisher (p=10^{-4}) est infiérieur à 5%, donc le modèle 
+est  hautement significatif. de plus $R^2=90%$.  
+
+
+5. Pour calculer la p-valeur du test de significativité globale du modèle de régression polynomiale, 
+    on peut utilisez la fonction anova().
+      anova(poly_model)
+
+    OU BIEN
+# Coefficients du modèle
+R2 <- 0.9 # Coefficient de détermination
+p <- 2    # Nombre de prédicteurs
+n <- 11   # Taille de l'échantillon
+
+# Calcul de la statistique de Fisher
+F_stat <- (R2 / p) / ((1 - R2) / (n - p - 1))
+
+# Degrés de liberté
+num_df <- p
+denom_df <- n - p - 1
+
+# Calcul de la p-valeur
+p_value <- 1 - pf(F_stat, df1 = num_df, df2 = denom_df)
+
+# Affichage de la p-valeur
+cat("Statistique de Fisher (F) :", F_stat, "\n")
+cat("Degrés de liberté (numérateur, dénominateur) :", num_df, denom_df, "\n")
+cat("P-valeur :", p_value, "\n")
+
+## On trouve $p=10^{-4}$ c'est la même  que summary(poly_model) nous a donné. 
+
+
+6. Pour construire un intervalle de confiance de niveau de confiance 95% pour $a_2$, 
+   on utiliser  la fonction "confint()" 
+confint(poly_model, "x2i")
+
+> confint(poly_model, "x2i")
+        2.5 %    97.5 %          
+x2i   0.3272181  0.6053227
+
+            # 2.5 %   signifie qu'on a  2.5 % de probabilité que le véritable coefficient de régression 
+                       pour "x2i" soit inférieur à la valeur indiquée (0.3272181).
+
+             #97.5 % signifie qu'ona  vous avez 2.5% de probabilité que le véritable coefficient de
+                      régression pour "x2i" soit supérieur à la valeur i (0.6053227).
+
+#########################
+7. Déterminer la p-valeur du test de nullité de a2
+
+# Coefficients du modèle
+p <- 2    # Nombre de prédicteurs
+n <- 11   # Taille de l'échantillon
+
+# Estimation de a2 et de la variance de l'estimation
+a2_hat <- 0.4663
+ecartype_a2_hat <- 0.0603
+
+# Calcul de la statistique de Student
+T_Student <- a2_hat / ecartype_a2_hat
+
+# Degrés de liberté
+num_df <- 1  # Degré de liberté pour le numérateur
+denom_df <- n - p - 1  # Degré de liberté pour le dénominateur
+
+# Calcul de la p-valeur (test bilatéral)
+p_value <- 2 * pt(-abs(T_Student), df = denom_df)  #la fonction pt()  est utilisée pour calculer
+                                                   # la fonction de distribution cumulative d'une 
+                                                   # distribution de Student t
+
+# Affichage de la p-valeur
+
+> p_value
+[1] 5.570833e-05
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+

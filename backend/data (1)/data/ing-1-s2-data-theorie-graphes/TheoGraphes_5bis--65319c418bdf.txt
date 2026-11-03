@@ -1,0 +1,1187 @@
+Théorie des graphes
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc
+CY T/e.sc/c.sc/h.sc– ING1-MA
+Maria M/a.sc/l.sc/e.sc/k.sc, RomainD/u.sc/j.sc/o.sc/l.sc 1
+<<<PAGE>>>
+Graphes orientés : chemins optimaux
+Recherche de chemin optimal
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 132
+<<<PAGE>>>
+Recherche de chemin optimal
+Recherche de chemin optimal
+Définition
+Problème à source unique
+Problème à sources multiples
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 133
+<<<PAGE>>>
+Chemin optimal dans un graphe orienté valué
+Définition (Valeur d’un cheminC de G = (V, A, w))
+Valeur de C : w(C) = ∑
+a∈C
+w(a)
+Définition (Chemin optimal de s à t)
+Chemin reliant s à t dont la valeur est minimale parmi tous
+les chemins reliant s à t
+Définition (Circuit absorbant de G = (V, A, w))
+Circuit de valeur négative
+Théorème (Condition d’existence de chemin
+optimal)
+Soit G = (V, A, w) un graphe orienté valué et (s, t)∈ V2. Si :
+▶ ∃ chemin reliant s à t
+▶
+∀C chemin reliant s à t , C n’admet aucun circuit absorbant
+alors il existe un chemin optimal de s à t
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 134
+<<<PAGE>>>
+Chemin optimal dans un graphe orienté valué
+Lien avec l’optimisation linéaire
+On note V ={v1, v2, . . . ,vn}, ainsi que wij =
+{
+w(vivj) si vivj∈ A
+0 sinon .
+xij : appartenance (ou non) de vivj au chemin optimal de v1 à
+vn
+=⇒
+
+
+
+min
+n
+∑
+i=1
+n
+∑
+i=1
+wijxij
+∀i∈ J1, nK ,
+n
+∑
+k=1
+xki−
+n
+∑
+k=1
+xik =
+
+
+
+1 si i = 1
+0 si i∈ J2, n− 1K
+−1 si i = n
+∀(i, j)∈ J1, nK2 , xij∈{ 0,1}
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 135
+<<<PAGE>>>
+Chemin optimal dans un graphe orienté valué
+Lors de la recherche d’un chemin optimal des à t. . .
+. . . on trouve également tous les chemins optimaux des aux
+sommets intermédiaires
+⇒ Recherche de chemins optimaux à « source unique »
+Deux types de problématiques
+Recherche de chemins optimaux à « source unique »v0
+Chemins optimaux de v0 à v pour tout v∈ V
+=⇒ Algorithmes de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc, de B/e.sc/l.sc/l.sc/m.sc/a.sc/n.sc-F/o.sc/r.sc/d.sc
+Recherche de chemins optimaux à « sources multiples »
+Chemins optimaux de v1 à v2 pour tout
+(v1, v2)∈ V2
+=⇒ Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 136
+<<<PAGE>>>
+Recherche de chemin optimal à source unique
+v0
+Propriété (Structure de l’ensemble des chemins
+optimaux)
+Arborescence couvrante de racine v 0
+Première solution : recherche exhaustive
+▶ Recenser tous les chemins depuis v0
+▶ Calculer leurs valeurs et trouver ceux de valeur minimale
+=⇒ Complexité exponentielle
+=⇒ Beaucoup trop coûteux, donc inutilisable
+Deuxième solution : algorithme glouton
+▶ Initialisation : tous les sommets sont à distance infinie de
+v0
+▶ Tant qu’il reste des sommets non visités,
+▶ visiter un sommet non visité de distance minimale ;
+▶ mettre à jour les distances de ses successeurs.
+=⇒ Algorithmes de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc, B/e.sc/l.sc/l.sc/m.sc/a.sc/n.sc-F/o.sc/r.sc/d.sc
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 137
+<<<PAGE>>>
+Recherche de chemin optimal à source unique
+v0
+Algorithmes
+D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc(1959)
+Algorithme le plus adapté aux valuations
+positives
+Non-adapté à l’existence de circuit absorbant
+Peu adapté aux graphes de grande taille
+B/e.sc/l.sc/l.sc/m.sc/a.sc/n.sc-F/o.sc/r.sc/d.sc(1956)
+Algorithme adapté aux valuations quelconques
+Adapté à l’existence de circuit absorbant
+(détection)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 138
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+Calcul de l’arborescence des chemins optimaux
+préconditions : G = (V, A, w) graphe orienté valué et v0∈ V
+postconditions : G(B) est l’arborescence des chemins optimaux depuisv0
+postconditions : ∀v∈ V, d[v] est la valeur du chemin optimal de v0 à v
+d : Tableau associatif de<Sommet> de réel
+pour v∈ V\{v0} faire
+d[v]← +∞
+fin pour
+d[v0]← 0
+V c← ∅
+B← ∅
+tant que V c⁄= V faire
+s est choisi dans argmin{d[v], v /∈ V c}
+V c← V c∪{ s}
+pour v /∈ V c successeur de s faire
+si d[v] > d[s] +w(sv) alors
+B← B\{v′v, v′v∈ B}∪{ sv}
+d(v)← d(s) +w(sv)
+fin si
+fin pour
+fin tant que
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 139
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+Propriété (Convergence sur G = (V, A, w))
+Si w≥ 0 et G n’admet aucun circuit absorbant, alors
+l’algorithme deD/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.scconverge pour tout v 0∈ V.
+Sa complexité est O
+(
+card E+ (card V)· log(card V)
+)
+.
+Recherche du chemin optimal de v0 à v∗
+Possibilité d’anticiper la terminaison en s’arrêtant dès que
+v∗∈ V c
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 140
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+Initialisation
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans ∞
+150 (CY Tech Cergy)
+Tours ∞
+269 (Orléans)
+Poitiers ∞
+377 (Tours)
+Limoges ∞
+423 (Orléans)
+Angoulême ∞
+497 (Poitiers)
+Brive-la-G. ∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon ∞
+646644 (Limoges)(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ CY Tech Cergy}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours ∞
+269 (Orléans)
+Poitiers ∞
+377 (Tours)
+Limoges ∞
+423 (Orléans)
+Angoulême ∞
+497 (Poitiers)
+Brive-la-G. ∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon ∞
+646644 (Limoges)(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Orléans}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers ∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême ∞
+497 (Poitiers)
+Brive-la-G. ∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon ∞
+646644 (Limoges)(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Tours}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême ∞
+497 (Poitiers)
+Brive-la-G. ∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon ∞
+646644 (Limoges)(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Poitiers}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G. ∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon ∞
+646644 (Limoges)(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Limoges}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux ∞
+632 (Angoulême)
+Langon
+∞
+646
+644
+(Limoges)
+(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Angoulême}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban ∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Brive-la-Gaillarde}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Bordeaux}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau ∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Langon}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch ∞
+854 (Montauban)
+CY Tech Pau
+∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Montauban}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch
+∞
+854 (Montauban)
+CY Tech Pau
+∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ CY Tech Pau}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch
+∞
+854 (Montauban)
+CY Tech Pau
+∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+V c← V c∪{ Auch}
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch
+∞
+854 (Montauban)
+CY Tech Pau
+∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Algorithme de D/i.sc/j.sc/k.sc/s.sc/t.sc/r.sc/a.sc
+Terminaison
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120 96
+150
+108
+89
+CY Tech Cergy 0
+Orléans
+∞
+150 (CY Tech Cergy)
+Tours
+∞
+269 (Orléans)
+Poitiers
+∞
+377 (Tours)
+Limoges
+∞
+423 (Orléans)
+Angoulême
+∞
+497 (Poitiers)
+Brive-la-G.
+∞
+519 (Limoges)
+Bordeaux
+∞
+632 (Angoulême)
+Langon
+∞646
+644
+(Limoges)
+(Angoulême)
+Montauban
+∞
+765 (Brive-la-G.)
+Auch
+∞
+854 (Montauban)
+CY Tech Pau
+∞
+794 (Langon)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 141
+<<<PAGE>>>
+Recherche de chemin optimal à source
+multiples
+Première solution : recherche exhaustive
+▶ Recenser tous les chemins
+▶ Calculer leurs valeurs et trouver ceux de valeur minimale
+=⇒ Complexité exponentielle
+=⇒ Beaucoup trop coûteux, donc inutilisable
+Deuxième solution : algorithme glouton
+▶ Initialisation : matrice d’adjacence
+▶ Pour chaque sommet, on met à jour les distances des
+chemins passant par ce sommet
+=⇒ Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 142
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Calcul des distances optimales
+préconditions : M est la matrice d’adjacence deG = (V, A, w)
+postconditions : M contient les distances optimales
+pour k∈ J1, nK faire
+pour i∈ J1, nK faire
+pour j∈ J1, nK faire
+si Mij > Mik + Mkj alors
+Mij← Mik + Mkj
+si Mii < 0 alors
+/* Existence de circuit absorbant * /
+fin si
+fin si
+fin pour
+fin pour
+fin pour
+... et les chemins ?
+On crée une matrice des prédecesseurs P de G = (V, A, w) :
+∀(i, j)∈ J1, nK2 , Pij = vi si vivj∈ A
+Les cases restantes étant indéfinies.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 143
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Calcul des distances optimales
+préconditions : M est la matrice d’adjacence deG = (V, A, w)
+postconditions : M contient les distances optimales
+pour k∈ J1, nK faire
+pour i∈ J1, nK faire
+pour j∈ J1, nK faire
+si Mij > Mik + Mkj alors
+Mij← Mik + Mkj
+si Mii < 0 alors
+/* Existence de circuit absorbant * /
+fin si
+fin si
+fin pour
+fin pour
+fin pour
+... et les chemins ?
+On crée une matrice des prédecesseurs P de G = (V, A, w) :
+∀(i, j)∈ J1, nK2 , Pij = vi si vivj∈ A
+Les cases restantes étant indéfinies.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 143
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Calcul des distances optimales
+préconditions : M est la matrice d’adjacence deG = (V, A, w)
+préconditions : P est la matrice des prédecesseurs deG = (V, A, w)
+postconditions : M contient les distances optimales
+postconditions : P contient prédecesseurs optimaux
+pour k∈ J1, nK faire
+pour i∈ J1, nK faire
+pour j∈ J1, nK faire
+si Mij > Mik + Mkj alors
+Mij← Mik + Mkj
+Pij← Pkj
+si Mii < 0 alors
+/* Existence de circuit absorbant * /
+fin si
+fin si
+fin pour
+fin pour
+fin pour
+... et les chemins ?
+On crée une matrice des prédecesseurs P de G = (V, A, w) :
+∀(i, j)∈ J1, nK2 , Pij = vi si vivj∈ A
+Les cases restantes étant indéfinies.
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 143
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Exemple
+Poitiers Limoges
+Bordeaux Langon
+CY Tech Cergy
+Orléans
+Tours
+Angoulême Brive-la-Gaillarde
+Montauban
+CY Tech Pau
+Auch
+150
+273
+119
+135 147 246
+120
+118
+107 96
+223
+48
+150
+108
+89
+107
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 144
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Matrice des distances
+Ordre des sommets : CY Tech Cergy, Orléans, Tours, Poitiers,
+Limoges, Angoulême, Brive-la-Gaillarde, Bordeaux, Langon,
+Montauban, Auch et CY Tech Pau
+
+
+C O T P L A B-G B La M Au Pa
+C 0 150 ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+O ∞ 0 119 ∞ 273 ∞ ∞ ∞ ∞ ∞ ∞ ∞
+T ∞ ∞ 0 108 ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞
+P ∞ ∞ ∞ 0 118 120 ∞ ∞ ∞ ∞ ∞ ∞
+L ∞ ∞ ∞ ∞ 0 107 96 ∞ 223 ∞ ∞ ∞
+A ∞ ∞ ∞ ∞ ∞ 0 ∞ 135 147 ∞ ∞ ∞
+B-G ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 246 ∞ ∞
+B ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 48 ∞ ∞ ∞
+La ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 150
+M ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 89 ∞
+Au ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 107
+Pa ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0
+
+
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 145
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Matrice des distances
+Ordre des sommets : CY Tech Cergy, Orléans, Tours, Poitiers,
+Limoges, Angoulême, Brive-la-Gaillarde, Bordeaux, Langon,
+Montauban, Auch et CY Tech Pau
+
+
+C O T P L A B-G B La M Au Pa
+C 0 150 269 377 423 497 519 632 644 765 854 794
+O ∞ 0 119 227 273 347 369 482 494 615 704 644
+T ∞ ∞ 0 108 226 228 322 363 375 568 657 525
+P ∞ ∞ ∞ 0 118 120 214 255 267 460 549 417
+L ∞ ∞ ∞ ∞ 0 107 96 242 223 342 431 373
+A ∞ ∞ ∞ ∞ ∞ 0 ∞ 135 147 ∞ ∞ 297
+B-G ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 246 335 442
+B ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 48 ∞ ∞ 198
+La ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 ∞ ∞ 150
+M ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 89 196
+Au ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0 107
+Pa ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ ∞ 0
+
+
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 145
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Matrice des prédecesseurs
+
+
+C O T P L A B-G B La M Au Pa
+C C
+O O O
+T T
+P P P
+L L L L
+A A A
+B-G B-G
+B B
+La La
+M M
+Au Au
+Pa
+
+
+Lecture des chemins optimaux
+▶ Orléans→ Angoulème : A← P← T← O (valeur : 347)
+▶ Cergy@Pau : Pa← La← A← P← T← O← C (valeur : 794)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 146
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Matrice des prédecesseurs
+
+
+C O T P L A B-G B La M Au Pa
+C C O T O P L A A B-G M La
+O O T O P L A A B-G M La
+T T P P L A A B-G M La
+P P P L A A B-G M La
+L L L A L B-G M La
+A A A La
+B-G B-G M Au
+B B La
+La La
+M M Au
+Au Au
+Pa
+
+
+Lecture des chemins optimaux
+▶ Orléans→ Angoulème : A← P← T← O (valeur : 347)
+▶ Cergy@Pau : Pa← La← A← P← T← O← C (valeur : 794)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 146
+<<<PAGE>>>
+Algorithme de F/l.sc/o.sc/y.sc/d.sc-W/a.sc/r.sc/s.sc/h.sc/a.sc/l.sc/l.sc
+Matrice des prédecesseurs
+
+
+C O T P L A B-G B La M Au Pa
+C C O T O P L A A B-G M La
+O O T O P L A A B-G M La
+T T P P L A A B-G M La
+P P P L A A B-G M La
+L L L A L B-G M La
+A A A La
+B-G B-G M Au
+B B La
+La La
+M M Au
+Au Au
+Pa
+
+
+Lecture des chemins optimaux
+▶ Orléans→ Angoulème : A← P← T← O (valeur : 347)
+▶ Cergy@Pau : Pa← La← A← P← T← O← C (valeur : 794)
+Maria M/a.sc/l.sc/e.sc/k.sc, Romain D/u.sc/j.sc/o.sc/l.sc 146

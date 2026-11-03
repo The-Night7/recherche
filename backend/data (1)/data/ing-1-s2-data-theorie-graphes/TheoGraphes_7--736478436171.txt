@@ -1,0 +1,443 @@
+Théorie des graphes
+Maria Malek, Romain Dujol
+CY Tech – ING1-MA
+2025 – 2026
+Maria Malek, Romain Dujol 1
+<<<PAGE>>>
+Réseaux de transports
+Définitions
+Réseau de transport
+Flot
+Coupe
+Recherche de flot maximal
+Flot et couplage
+Théorème flot-max/coupe-min
+Algorithme de Ford-Fulkerson
+Lien avec l’optimisation linéaire
+Maria Malek, Romain Dujol 168
+<<<PAGE>>>
+Définitions
+<<<PAGE>>>
+Réseau de transport
+Définition (Réseau de transport)
+Graphe orienté simple et valué N = (V, A, c) tel que :
+▶ ∃!(s, t) tel que s est une source et t est un puits
+▶ ∃ chemin de s à t
+▶ c : A→ R+ : capacité de N.
+▶ ∀vv′∈ A, v′v /∈ A
+Exemple
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+Maria Malek, Romain Dujol 170
+<<<PAGE>>>
+Flot dans un réseau de transport
+Définition (Flot sur N = (V, A, c))
+Valuation w sur (V, A) telle que :
+▶ ∀(v, v′)∈ V2, 0≤ w(vv′)≤ c(vv′)
+v′v
+w(vv′)/c(vv′)
+▶ ∀v∈ V\{s, t}, ∑
+av∈A
+w(av) = ∑
+vb∈A
+w(vb) (loi de Kirchhoff)
+Définition (Valeur d’un flot w sur N = (V, A, c))
+Valeur de w : ∑
+sx∈A
+v(sx) = ∑
+xt∈A
+v(xt).
+Définition (Flot maximal sur N = (V, A, c))
+Flot dont la valeur est maximale parmi tous les flots sur N
+Maria Malek, Romain Dujol 171
+<<<PAGE>>>
+Flot dans un réseau de transport
+Exemple
+s
+v1
+v3
+v2 v4
+t
+1/2
+1/1
+0/3
+1/1
+1/1
+1/1
+2/2
+2/3
+0/2
+Valeur du flot : 2
+▶ w(sv1) +w(sv3) = 1 + 1 = 2
+▶ w(v4t) +w(v3t) = 2 + 0 = 2
+Maria Malek, Romain Dujol 172
+<<<PAGE>>>
+Coupe
+Définition (Coupe de G = (V, A))
+▶ Partition{X1, X2} des sommets de V
+▶ OU ensemble des arcs dont l’origine est dans X1 et la
+destination dans X2.
+Coupe s− t sur G≡ coupe{X1, X2} telle que s∈ X1 et t∈ X2.
+Définition (Poids d’une coupe C ={X1, X2} de
+G = (V, A, w))
+Poids de C : w(C ) = ∑
+(v1,v2)∈X1×X2
+w(v1v2) = ∑
+a∈C
+w(a).
+Définition (Coupe s− t minimale de G = (V, A, w))
+Coupe s− t dont le poids est minimal parmi toutes les coupes
+s− t sur G.
+Maria Malek, Romain Dujol 173
+<<<PAGE>>>
+Coupe
+Exemple
+s
+v1
+v3
+v2 v4
+t
+1
+1
+0
+1
+1
+1
+22
+0
+▶ C ={{s, v1, v2},{v4, v3, t}} est une coupe s− t.
+▶ C ={v1v4, v2v3, sv3} représente la même coupe s− t.
+▶ poids de C : w(v1v4) +w(v2v3) +w(sv3) = 1 + 1 + 1 = 3
+Maria Malek, Romain Dujol 174
+<<<PAGE>>>
+Recherche de flot maximal
+<<<PAGE>>>
+Recherche de couplage maximal
+Réseau de transport associé à G = (V1, V2, E)
+1. On ajoute deux sommets s et t.
+2. Pour tout v1∈ V1, on ajoute un arc de s vers v1.
+3. Pour tout v2∈ V2, on ajoute un arc de v2 vers t.
+4. On remplace toute arête de G entre v1∈ V1 et v2∈ V2, par
+un arc de v1 vers v2.
+5. Tout arc a une capacité de 1.
+Théorème
+Rechercher un couplage maximal dans un graphe biparti
+revient à rechercher un flot maximal dans le réseau de
+transport associé.
+Remarque
+Couplage maximal = arcs de valeur 1
+Maria Malek, Romain Dujol 176
+<<<PAGE>>>
+Recherche de couplage maximal
+Exemple
+A
+D
+E
+B
+C
+K3,2
+s
+A
+B
+C
+t
+D
+E
+1
+1
+1
+1
+1 1
+11
+1
+1
+1
+Réseau de transport associé
+Maria Malek, Romain Dujol 177
+<<<PAGE>>>
+Recherche de flot maximal
+Théorème (Flot-max/coupe-min)
+Soit N = (V, A, c) un réseau de transport de source s et de
+puits t.
+Alors la valeur d’un flot maximal sur N est égal au poids
+d’une coupe minimale s− t sur le graphe orienté valué
+(V, A, c).
+Algorithmes
+Ford-Fulkerson (1956)
+Algorithme adapté aux capacités à valeurs
+entières
+Peu adapté pour des flots de grande valeur
+Edmonds-Karp (1972)
+Modification de l’algorithme précédent en
+forçant une recherche en largeur d’abord du
+chemin
+etc...
+Maria Malek, Romain Dujol 178
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson
+Calcul d’un flot maximal
+Soit N = (V, A, c) un réseau de transport de source s et de
+puits t.
+0. On part de deux graphes :
+▶ un graphe d’écart (ou résiduel) R, initialement égal à N;
+▶ du graphe N muni d’un flot w, i.e. w(vv′) = 0,∀vv′∈ A.
+1. Tant qu’il existe un chemin P de s à t dans R tel que
+c(P) = min
+(x,y)∈P
+c(x, y) > 0, on met à jour w et R :
+Pour toute arête xy∈ P :
+▶ Si xy∈ N, w(xy)← w(xy) +c(P) dans N
+Si yx∈ N, w(yx)← w(yx)− c(P) dans N
+▶ c(xy)← c(xy)− c(P) dans R
+▶ c(yx)← c(yx) +c(P) dans R [si yx n’existait pas, on le crée]
+2. Si un tel chemin n’existe pas, w est un flot maximal et
+l’algorithme s’arrête.
+Maria Malek, Romain Dujol 179
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson
+Itération no 0
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+R
+s
+v1
+v3
+v2 v4
+t
+0/2
+0/1
+0/3
+0/1
+0/1
+0/1
+0/2
+0/3
+0/2
+N avec w
+Maria Malek, Romain Dujol 180
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Itération no 1 : P = sv1v2v3v4t, c(P) = 1
+s
+v1
+v3
+v2 v4
+t
+1
+1
+2
+1
+0
+1
+12
+21
+1
+1 1 1
+R
+s
+v1
+v3
+v2 v4
+t
+1/2
+0/1
+1/3
+0/1
+1/1
+0/1
+1/2
+1/3
+0/2
+N avec w
+Maria Malek, Romain Dujol 181
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Itération no 2 : P = sv1v4t, c(P) = 1
+s
+v1
+v3
+v2 v4
+t
+0
+1
+2
+0
+0
+1
+02
+22
+1
+1 1 2
+1
+R
+s
+v1
+v3
+v2 v4
+t
+2/2
+0/1
+1/3
+1/1
+1/1
+0/1
+2/2
+1/3
+0/2
+N avec w
+Maria Malek, Romain Dujol 182
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Itération no 3 : P = sv3t, c(P) = 1
+s
+v1
+v3
+v2 v4
+t
+0
+0
+2
+0
+0
+1
+02
+12
+1
+1 1 2
+1
+1 1 R
+s
+v1
+v3
+v2 v4
+t
+2/2
+1/1
+1/3
+1/1
+1/1
+0/1
+2/2
+1/3
+1/2
+N avec w
+Maria Malek, Romain Dujol 183
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Recherche de coupe minimale
+La valeur du flot maximal trouvé est 3, donc toute coupe
+minimale a un poids égal à 3.
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+Maria Malek, Romain Dujol 184
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Recherche de coupe minimale
+La valeur du flot maximal trouvé est 3, donc toute coupe
+minimale a un poids égal à 3.
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+{sv1, sv3} est une coupe minimale de poids 3
+Maria Malek, Romain Dujol 184
+<<<PAGE>>>
+Algorithme de Ford-Fulkerson : exemple
+Recherche de coupe minimale
+La valeur du flot maximal trouvé est 3, donc toute coupe
+minimale a un poids égal à 3.
+s
+v1
+v3
+v2 v4
+t
+2
+1
+3
+1
+1
+1
+23
+2
+{v1v4, v2v3, sv3} est une coupe minimale de poids 3
+Maria Malek, Romain Dujol 184
+<<<PAGE>>>
+Recherche de flot maximal
+Lien avec l’optimisation linéaire
+Soit N = (V, A, c) un réseau de transport.
+On note V ={v1, v2, . . . ,vn} avec v1 = s et vn = t, ainsi que
+cij =
+(
+c(vivj) si vivj∈ A
+0 sinon .
+Pour tout flot w sur N, wij =
+(
+w(vivj) si vivj∈ A
+0 sinon .
+Alors la recherche de flot maximal sur N se ramène au
+problème :
+
+
+
+max
+n
+∑
+i=2
+w1i =
+n−1
+∑
+i=1
+win
+∀(i, j)∈ J1, nK2 , 0≤ wij≤ cij
+∀i∈ J2, n− 1K ,
+n
+∑
+k=1
+wki−
+n
+∑
+k=1
+wik = 0 (loi de Kirchhoff)
+Maria Malek, Romain Dujol 185

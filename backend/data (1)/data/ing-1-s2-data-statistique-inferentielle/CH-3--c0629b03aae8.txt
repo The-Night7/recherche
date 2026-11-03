@@ -1,0 +1,1498 @@
+Tests d'hypothèses
+I Notions générales sur les tests statistiques
+Un test est un mécanisme qui permet de trancher entre 2 hypothèses au vu des résultats d'un échantillon.
+Soint H0 et H1 les hypothèses, dont une et une seule est vraie. La décision aboutira à choisir H0 ou H1.
+Il y a 4 cas possibles schématisés dans le tableau suivant avec les probabilités correspondantes.
+XXXXXXXXXXDécision
+Vérité H0 H1
+H0 1−α OK β erreur
+H1 α erreur 1−β OK
+α et β sont les probabilités d'erreur de première et deuxième espèce :
+ α est la probabilité de choisir H1 alors que H0 est vraie.
+ β est la probabilité de choisir H0 alors que H1 est vraie.
+Dans la pratique des tests statistiques, il est de régle de se xer α comme donné, sa valeur standard
+est de 5%; ce qui fait jouer à H0 un rôle prééminant. H0 est aussi appelé hypothèse nulle et H1 hypothèse
+alternative.
+Construire un test consiste à dénir une régle de décision qui va associer une décision à un échantillon
+observé ( X1,...,X n) de la loi de X, Pθ qui dépend d'un paramètre θ qui varie dans un sous ensemble donné Θ
+de R. On suppose que cet ensemble est partitionné en 2 sous-ensemble Θ0 et Θ1, auxquels vont être associés
+les 2 hypothèses : H0 : θ∈ Θ0 et H1 : θ∈ Θ1. Les 2 décisions possibles étant D0 : accepter H0 et
+D1 : accepter H1. A chaque décision correspond une région de Rn, qui va être partitionné en 2 sous-ensemble
+W et W , c.a.d; si la réalisation de l'échantillon est un point (x1,...,x n) de W on décide D1, donc on rejette
+H0. Dans le cas contraire, c.a.d. si la réalisation de l'échantillon (x1,...,x n)∈ W , on décide D0, donc on
+accepte H0.
+Dénition. La région W de rejet de l'hypothèse nulle H0 se nomme la région critique du test et la région
+W région d'accéptation.
+La construction d'un test va donc consister à déterminer cette région critique. La méthode pour l'obtenir
+dépendra des conséquences que l'on attribue à chacune des 2 erreurs qui sont associées aux 2 décisions
+possibles.
+Dénition. L'erreur de première espèce consiste à décider D1 alors que H0 est vraie, soit rejeter à tord
+l'hypothèse nulle H0. L'erreur de seconde espèce consiste à décider D0 alors que H1 est vraie, soit accepter
+à tort l'hypothèse nulle.
+1
+<<<PAGE>>>
+II Méthode Neyman et Pearson
+II.1 Principe de la régle de Neyman et Pearson
+On privilégie l'une des 2 hypothèses, par exemple celle que l'on considère comme la plus vraisemblable, et on
+la choisit comme hypothèse nulle H0. Cette hypothèse sera celle dont le rejet à tort est le plus préjudiciable.
+L'autre hypothèse H1 est l'hypothèse alternative.
+Dénition. On appelle risque de première espèce , la probabilité de rejeter à tord l'hypothèse nulle, soit :
+α =Pθ(D1|H0) =Pθ(H1|H0) =Pθ(W|θ∈ Θ0)
+On appelle risque de 2ème espèce la probabilité d'accepter à tort l'hypothèse nulle, soit :
+β =Pθ(D0|H1) =Pθ(H0|H1) =Pθ(W|θ∈ Θ1)
+Dénition. On appelle puissance d'un test la probabilité de refuser H0 avec raison c.a.d. lorsque H1 est
+vraie, soit :
+η =Pθ(D1|H1) =Pθ(H1|H1) =Pθ(W|θ∈ Θ1) = 1−β
+II.2 Hypothèses simples
+On dit qu'une hypothèse est simple si la loi de la v.a. X est totalement spéciée quand cette hypothèse est
+réalisée. Dans le cas contraire elle est dite multiple. Examinons le cas où le paramètre θ ne peut prendre
+que 2 valeurs θ0 et θ1 ce qui conduit au choix entre les 2 hypothèses simples :
+ H0 :θ =θ0
+H1 :θ =θ1
+La forme de la région critique est déterminée par le théorème suivant :
+Théorème (de Neyman et Pearson) . Pour un risque de première espèce xé à α0, le test de puissance
+maximum entre les hypothèses simples ci dessus est déni par la région critique :
+W ={ (x1,...,x n) | L(x1,...,x n,θ 0)
+L(x1,...,x n,θ 1)≤k}
+où la valeur de la constante k est déterminée par le risque xé α0 =Pθ(W|θ =θ0).
+Exemple. Application de ce théorème au cas de la loi exponentielle de paramètre 1
+θ . (X v.a. qui a pour
+densité f(x,θ ) = 1
+θe−x
+θ si x>0 et 0 sinon )
+On a vu que L(x1,...,x n,θ )= 1
+θne
+−1
+θ
+nX
+i=1
+xi
+avec xi > 0.
+Supposons par exemple que θ1 >θ 0 alors L(x1,...,x n,θ 0)
+L(x1,...,x n,θ 1) = (θ1
+θ0
+)n e
+( 1
+θ1
+− 1
+θ0
+)
+nX
+i=1
+xi
+La région critique est dénie par : L(x1,...,x n,θ 0)
+L(x1,...,x n,θ 1)≤k⇒e
+( 1
+θ1
+− 1
+θ0
+)
+nX
+i=1
+xi
+≤k1
+en prenant le logarithme, on obtient ( 1
+θ1
+− 1
+θ0
+)
+nX
+i=1
+xi≤k2 puisque θ1 >θ 0⇒
+nX
+i=1
+xi≥c
+2
+<<<PAGE>>>
+La valeur de la constante c, qui va totalement préciser la région critique, est déterminée par la condition
+α0 =P (
+nX
+i=1
+Xi≥c|θ =θ0)
+On sait que 2Sn
+θ suit la loi du χ2
+2n où Sn =
+nX
+i=1
+Xi d'où la condition précédente se réécrit :
+α0 =P (2Sn
+θ0
+≥ 2c
+θ0
+)
+c.a.d. 1−P (2Sn
+θ0
+< 2c
+θ0
+) =α0
+c.a.d. P (2Sn
+θ0
+< 2c
+θ0
+) = 1−α0
+⇒Fχ2
+2n
+(2c
+θ0
+) = 1−α0⇒ 2c
+θ0
+=χ2
+2n,1−α0
+χ2
+2n,1−α0 est le fractile d'ordre 1−α0 de la loi du χ2
+2n
+ainsi on a : c = θ0
+2 χ2
+2n,1−α0
+La puissance du test est ensuite calculé par :
+η =P (W|θ =θ1) =P (
+nX
+i=1
+Xi≥c|θ =θ1)
+=P (2Sn
+θ1
+≥ 2c
+θ1
+)
+II.3 Exemples
+II.3.1 T est de l'espérance d'une loi normale
+a) σ connu
+Considérons une v.a. X qui suit une loi normale N(m,1), un echantillon de taille 16, de moyenne empirique
+xn = 2, 6 ; soit α = 0, 05 et on veut tester les hypothèses :
+ H0 :m =m0 = 2
+H1 :m =m1 = 4
+Nous allons résoudre ce problème dans le cas général :
+X⇝N(m,σ 2) ; σ connu
+( X1,...,X n) un echantillon et on veut tester :
+
+
+
+H0 :m =m0
+H1 :m =m1
+m0̸=m1
+On sait que la fonction de vraisemblance est :
+L(x1,...,x n,m ) = 1
+(σ
+√
+2π)n e
+− 1
+2σ2
+nX
+i=1
+(xi−m)2
+3
+<<<PAGE>>>
+Détermination de la forme de la zone de rejet W :
+W ={(x1,...,x n) : L(x1,...,x n,m 0)
+L(x1,...,x n,m 1)≤k}
+et L(x1,...,x n,m 0)
+L(x1,...,x n,m 1)≤k⇔e
+1
+2σ2
+ nX
+i=1
+(xi−m1)2−
+nX
+i=1
+(xi−m0)2
+!
+≤k
+⇔
+nX
+i=1
+(xi−m1)2−
+nX
+i=1
+(xi−m0)2≤ln(k)× 2σ2
+⇔ 2
+nX
+i=1
+xi(m0−m1)≤ 2σ2ln(k) +n(m0−m1)(m0 +m1) ( ∗)
+2 cas se présentent :
+α. m0−m1 > 0 c.a.d. m 0 >m 1 alors
+(∗) =>
+nX
+i=1
+xi≤ σ2ln(k)
+m0...m1
++n(m0 +m1)
+ou Xn≤ σ2ln(k)
+n(m0−m1) +m0 +m1
+| {z }
+K
+On a donc la zone de rejet de la forme :
+W ={x∈ Rn tq xn≤K}
+Détermination de K : on ecrit
+α =P (W|m =m0) =P (Xn≤K|m =m0)
+Or Xn suit N (m, ( σ√n)2)
+Sous l'hypothèse H0 : m =m0 on a donc :
+Xn suit N (m0, ( σ√n)2)
+α =P (Xn≤K)⇔α =P (√n Xn−m0
+σ ≤√n K−m0
+σ )
+(√n K−m0
+σ ) est le fractile Uα de la loi normale centrée réduite, fractile dont la valeur est lue sur la table
+ainsi √n K−m0
+σ =Uα⇒ K =m0 +Uα σ√n
+La région critique est donc W ={(x1,...,x n) tq xn≤m0 +Uα σ√n}
+β. De façon analogue, on aurait trouvé pour le cas m0 < m1,
+W ={(x1,...,x n) tq xn≥m0 +U1−α
+σ√n}
+Puissance du test, on calcule :
+η =P (W|m =m1)
+4
+<<<PAGE>>>
+Sous l'hypothèse H1 :m =m1 la loi de la v.a. Xn suit N(m1, σ√n)
+Alors 1−β =P (Xn≤K| m =m1)
+c.a.d. 1−β =P (√n Xn−m1
+σ ≤√n K−m1
+σ )
+Puis on lit la table de la loi N(0,1).
+Application numérique : m0 = 2, m1 = 4, n= 16 et σ= 1.
+Sous l′hypothse H0, Xn ,→N(2, (1
+4)2)
+0, 05 =P (Xn >K )⇔ 0, 05 =P (
+√
+16 Xn− 2
+1 ≥
+√
+16 K− 2
+1 )
+c.a.d 0, 05 =P (N(0, 1) ≥ 4(K− 2))
+⇒P (N(0, 1) ≤ 4(K− 2)) = 0, 95
+⇒ 4(K− 2) = 1, 645 ⇒K = 2, 411
+La région critique est W ={(x1,...,x n) tq xn≥ 2, 411}
+Dans l'exemple, on a une moyenne empirique xn = 2, 6. On se trouve dans la région critique ou de rejet
+c.a.d. on va refuser l'hypothèse nulle H0 :m = 2 avec un risque d'erreur de 1re espèce de 5%.
+La puissance du test est :
+1−β =P (W| m =m1)
+Sous l'hypothèse H1 : m =m1 Xn →N(4, ( 1
+4)2)
+D'où 1−β = P (Xn >K | m =m1)
+= P (4 Xn− 4
+1 ≥ 4(K− 4)
+1 )
+= P (N(0, 1) ≥ −6, 36) ≈ 1
+⇒ β = 0 c.a.d. P(accepter m= 2| m = 4) ≈ 0
+Remarque importante : la procédure qu'on vient de voir suppose la donnée de α et de la taille de n de
+l'échantillon. Le risque β de seconde espèce (ou la puissance du test) s'en déduit. On pourrait adopter une
+démarche diérente qui consiste à se donner α, mais également à se xer une valeur admissible pour le risque
+de seconde espèce, l'inconnue devient alors la taille n de l'échantillon.
+Ainsi dans le cas général avec m0 >m 1, par exemple, si α et β sont donnés on a :
+√n
+σ (K−m0) = Uα d'après la détermination de W
+√n
+σ (K−m1) = U1−β d'après le calcul de la puissance
+⇒K =m0 +Uα
+σ√n = m1 +U1−β
+σ√n
+5
+<<<PAGE>>>
+Alors n = σ2 (U1−β−Uα)2
+(m0−m1)2
+De même, si m0 <m 1 on trouve :
+n = σ2 (U1−α−Uβ)2
+(m1−m0)2
+b) σ inconnu
+Exemple  H0 :m = 30
+H1 :m> 30
+Un échantillon de 15 observations a donné Xn = 37, 2 et Sn = 6, 42.
+On a toujours la zone de rejet :
+W ={x ∈ Rn| xn≥k}
+Détermination de K : on ecrit P (W| m =m0) =α
+c.a.d. P (Xn≥K| m =m0) =α
+On avait ecrit : P (√n Xn−m0
+σ ≥√n K−m0
+σ ) =α
+or σ est inconnue ⇒ on la remplace par Sn =
+vuut 1
+n−1
+nX
+i=1
+(Xi−Xn)2
+Alors P (√n Xn−m0
+Sn
+≥√n K−m0
+Sn
+) =α
+On a vu que √n Xn−m0
+Sn
+suit une loi de Student à n-1 degrés de liberté, qu'on note ici Tn−1
+Alors P (Tn−1≥√n K−m0
+Sn
+) =α ⇒ 1−P (Tn−1≤√nK−m0
+Sn
+)
+⇒P (Tn−1≤√nK−m0
+Sn
+) = 1−α
+Si on poste tn−1,1−α le fractile d'ordre 1−α de la loi de Student à n-1 degrés de liberté alors on obtient :
+√n K−m0
+Sn
+=tn−1,1−α ⇒K =m0 + Sn tn−1,1−α√n
+Ainsi
+W ={x∈ Rn tq xn≥m0 + Sn tn−1,1−α√n }
+Application
+m0 + Sn tn−1,1−α√n = 30 + 6.42× 1.761√
+15 ≃ 33
+On a
+xn = 37.2≥ 33 =⇒ l'hypothèse H0 est rejetée.
+6
+<<<PAGE>>>
+II.3.2 T est de l'écart type d'une loi normale
+a) m connu (cas peut fréquent)
+On veut tester au niveau α les hypothèses :
+
+
+
+H0 :σ =σ0
+H1 :σ =σ1
+σ0̸=σ1
+La fonction de vraissemblance est :
+L(x1,...,x n,σ ) = 1
+(σ
+√
+2π)n e
+− 1
+2σ2
+nX
+i=1
+(xi−m)2
+Détermination de la forme de la zone de rejet W :
+W ={(x1,...,x n) : L(x1,...,x n,σ 0)
+L(x1,...,x n,σ 1)≤k}
+or L(x1,...,x n,σ 0)
+L(x1,...,x n,σ 1)≤k⇔
+σ1
+σ0
+n
+e
+
+
+1
+2σ2
+1
+nX
+i=1
+(xi−m)2− 1
+2σ2
+0
+nX
+i=1
+(xi−m)2
+
+
+≤k
+=⇒n lnσ1
+σ0
++ 1
+2
+nX
+i=1
+(xi−m)2
+ 1
+σ1
+− 1
+σ0
+ 1
+σ1
++ 1
+σ0
+
+≤ln(k)
+=⇒ (σ0−σ1)
+nX
+i=1
+(xi−m)2≤k′ (∗∗)
+2 cas se présentent :
+α. σ0−σ1 > 0 c.a.d. σ 0 >σ 1 alors
+(∗∗) =>
+nX
+i=1
+(xi−m)2≤k
+On a donc la zone de rejet de la forme :
+W ={x∈ Rn tq
+nX
+i=1
+(xi−m)2≤k}
+β. De façon analogue, on aurait trouvé pour le cas σ0 < σ1,
+W ={x∈ Rn tq
+nX
+i=1
+(xi−m)2≥k}
+Détermination de K : on ecrit
+α =P (W|σ =σ0)
+7
+<<<PAGE>>>
+Supposons σ0 >σ 1, puisque
+nX
+i=1
+(Xi−m)2
+σ2 suit la loi de χ2
+n alors
+α =P
+
+
+nX
+i=1
+(Xi−m)2
+σ2
+0
+≤ K
+σ2
+0
+
+
+=⇒α =P (χ2
+n≤ K
+σ2
+0
+)
+Posons χ2
+n,α le fractile d'ordre α de la loi de χ2
+n alors on aura :
+k
+σ2
+0
+=χ2
+n,α =⇒k =χ2
+n,ασ2
+0
+La région critique est donc :
+W ={(x1,...,x n) tq
+nX
+i=1
+(xi−m)2≤χ2
+n,ασ2
+0}
+Dans le cas où σ0 <σ 1 on trouve :
+W ={(x1,...,x n) tq
+nX
+i=1
+(xi−m)2≥χ2
+n,1−ασ2
+0}
+Puissance du test:
+• Cas σ0 >σ 1
+On a η =P (W|σ =σ1) = 1−β
+d'où 1−β =P (
+nX
+i=1
+(Xi−m)2≤χ2
+n,ασ2
+0 |σ =σ1)
+Sous l'hypothèse H1 :σ =σ1,
+nX
+i=1
+(xi−m)2
+σ2
+1
+suit la loi de χ2
+n
+Alors 1−β =P
+
+χ2
+n≤χ2
+n,α
+σ2
+0
+σ2
+1
+
+c.a.d. 1−β =F(χ2
+n,α
+σ2
+0
+σ2
+1
+) où F est la fonction de répartition de la loi de χ2
+n.
+• Cas σ0 <σ 1
+On a η =P (W|σ =σ1) = 1−β
+d'où 1−β =P (
+nX
+i=1
+(Xi−m)2≥χ2
+n,1−ασ2
+0 |σ =σ1)
+8
+<<<PAGE>>>
+d'où 1−β =P (χ2
+n≥χ2
+n,1−α
+σ2
+0
+σ2
+1
+)
+et donc 1−β = 1−F (χ2
+n,1−α
+σ2
+0
+σ2
+1
+)
+b) m inconnue
+Exemple  H0 :σ = 3
+H1 :σ >3
+Un échantillon de 20 observations a donné Sn = 3, 59 et S
+2
+n = 12, 89.
+On a toujours la zone de rejet :
+W ={x ∈ Rn|
+nX
+i=1
+(xi−m)2≥k}
+Où m est inconnue donc on la remplace par xn.
+La région de rejet devient :
+W ={x ∈ Rn|
+nX
+i=1
+(xi−xn)2≥k}
+Détermination de K : on ecrit P (W| σ =σ0) =α
+On a vu que (n− 1)S
+2
+n
+σ2 suit la loi χ2
+n−1 où S
+2
+n = 1
+n− 1
+nX
+i=1
+(Xi−Xn)2; d'où
+α =P (W|σ =σ0) =⇒P
+ nX
+i=1
+(Xi−Xn)2≥k|σ =σ0
+!
+=α
+=⇒ P
+ 
+(n− 1)S
+2
+n
+σ2
+0
+≥ k
+σ2
+0
+!
+=α
+=⇒ P
+
+χ2
+n−1≥ k
+σ2
+0
+
+=α
+=⇒ P
+
+χ2
+n−1≤ k
+σ2
+0
+
+= 1−α
+Si on poste χ2
+n−1,1−α le fractile d'ordre 1−α de la loi de χ2 à n -1 degrés de liberté alors on obtient :
+k
+σ2
+0
+=χ2
+n−1,1−α =⇒ k =σ2
+0χ2
+n−1,1−α
+Ainsi
+W ={x∈ Rn tq
+nX
+i=1
+(xi−xn)2≥σ2
+0χ2
+n−1,1−α}
+Application
+n = 20, S
+2
+n = 12.89 et on détermine χ2
+19, 0.95≃ 30.144 d'où K = 32× (30.144)≃ 271.29
+alors que la valeur observée
+20X
+i=1
+(xi−xn)2 = 12.89× 19≃ 245 est inférieur à K =⇒ on ne rejette pas H0
+au seuil choisi de 0.05.
+9
+<<<PAGE>>>
+III Hypothèses multiples
+Dénition. Un test est uniformément le plus puissant (U.P.P.) si, quelle que soit la valeur θ appartenant
+a l'hypothèse alternative, sa puissance 1−β(θ) est supérieure à la puissance de tout autre test.
+exemple dans le test 
+
+
+H0 :m =m0
+H1 :m =m1
+avec m1 >m 0
+On a vu que la région critique W ne dépend pas explicitement de m1 et donc cette région critique est la
+même pour n'importe quel m1 >m 0. Le test précédent est donc U.P.P. pour
+
+H0 :m =m0
+H1 :m>m 1
+III.1 Test de 2 hypothèses multiples ou composites
+On veut tester le problème suivant :  H0 :θ≤θ0
+H1 :θ>θ 0
+On suppose que la loi Pθ de la v. a. r. X est à rapport des vraissemblances monotone (R VM) celà signie qu'il
+existe une statistique Tn = Tn(x1,··· ,xn) tq. le rapport des vraissemblances L(x1,··· ,xn,θ′)
+L(x1,··· ,xn,θ ) s'exprime
+comme une fonction croissante de Tn pour toutes les valeurs de θ et θ′ qui vérient θ′ >θ . l'existence d'un
+test U.P.P. est assuré par le théorème de LEHMANN suivant :
+Théorème (de Lehmann) . Il existe un test U.P.P. pour le problème :
+ H0 :θ≤θ0
+H1 :θ>θ 0
+Dont la région critique W est donnée par :
+W ={(x1,··· ,xn)∈ Rn tq. T n(x1,··· ,xn)>K}
+Où la constante K est déterminée par le risque xé : α =Pθ(W|θ =θ0).
+Remarque 1) Si le problème de test est :
+ H0 :θ≥θ0
+H1 :θ<θ 0
+Il sut de changer le sens de l'inégalité dans la dénition de W c-a-d on prend
+W ={(x1,··· ,xn)∈ Rn tq. T n(x1,··· ,xn)<K}.
+2) Dans le cas où le paramètre testé a une interprétation : espérance, variance ··· , on préviligiera la statistique
+d'échantillonnage qui estime de façon optimale le paramètre : moyenne empirique, variance empirique, ···
+exemples : ♣ Espérance d'une loi normale
+Disposant de n observations indépendantes d'une loi N(m,σ 2), on veut tester au niveau α :
+
+
+
+H0 :m≤m0
+H1 :m>m 0
+avec σ connu
+10
+<<<PAGE>>>
+La loi normale est à rapport de vraissemblances monotone en eet :
+L(x1,··· ,xn,θ ) = 1
+(σ
+√
+2π)ne
+− 1
+2σ2
+nX
+i=1
+(xi−θ)2
+d'où L(x,θ′)
+L(x,θ ) =e
+1
+2σ2
+ nX
+i=1
+(xi−θ)2−
+nX
+i=1
+(xi−θ′)2
+!
+=e
+1
+2σ2
+"
+n(θ2−θ′ 2) + (2θ′− 2θ)
+nX
+i=1
+xi
+#
+=enθ2−θ′ 2
+2σ2 e
+θ′−θ
+σ2 Tn
+où Tn(x1,··· ,xn) =
+nX
+i=1
+xi
+Le rapport L(x,θ′)
+L(x,θ ) est une fonction croissante de Tn pour toutes les valeurs de θ et θ′ qui vérient θ′ >θ .
+On applique le théorème de Lehmann : il existe un test U.P.P. de région critique W dénie par :
+W ={(x1,··· ,xn)∈ Rn|Tn =
+nX
+i=1
+xi≥K)}
+K est déterminée par :
+α =P (W|m =m0) d'où
+α =P
+Tn
+n ≥ K
+n |m =m0
+
+=P
+√nXn−m0
+σ ≥
+√n
+σ
+K
+n −m0
+
+d'où P
+
+N(0, 1)≥
+√n
+σ
+K
+n −m0
+
+=α
+=⇒ P
+
+N(0, 1)≤
+√n
+σ
+K
+n −m0
+
+= 1−α
+Posons U1−α le fractile d'ordre 1−α de N(0, 1) on a alors :
+√n
+σ
+K
+n −m0
+
+=U1−α =⇒K =nm0 +σU1−α
+√n
+Remarque Si on avait utilisé Tn =Xn on aurait trouvé :
+K =m0 + σ√nU1−α
+W ={x∈ Rn|Xn≥m0 + σ√nU1−α}.
+Puissance du test :
+η = 1−β =P (W|H1)
+=⇒ 1−β =P
+
+Xn≥m0 + σ√nU1−α|H1
+
+11
+<<<PAGE>>>
+Sous l'hypothèse H1 :m>m 0, Xn ,→N(m, ( σ√n)2) d'où
+1−β = 1−ϕ(U1−α +
+√n
+σ (m0−m))
+ϕ étant la fonction de répartition de la loi N(0, 1).
+Application numérique : n = 16; m0 = 3; σ = 1; α = 5%; U0.95 = 1.645 alors :
+W ={x∈ Rn|xn≥ 3.411}
+1−β = 1−ϕ(13.645− 4m).
+♣ Ecart type d'une loi normale
+On dispose d'un échantillon de taille n extrait d'une loi normale N(0,σ 2); l'espérance est donc supposée
+connue. On veut tester au niveau α les hypothèses :
+ H0 :σ2≤σ2
+0
+H1 :σ2 >σ 2
+0
+Montrons que la loi normale N(0,σ 2) est à rapport de vraissemblances monotone :
+L(x1,··· ,xn,σ′ 2)
+L(x1,··· ,xn,σ 2) =
+σ
+σ′
+n
+e( 1
+σ2− 1
+σ′ 2 )
+nX
+i=1
+x2
+i
+2
+Si σ′ > σ alors σ′ 2 > σ2 et donc 1
+σ′ 2 < 1
+σ2 donc L(x,σ′ 2)
+L(x,σ 2) est une fonction croissante de Tn(x) =
+nX
+i=1
+x2
+i
+pour toutes les valeurs de σ′ et σ vériant σ′ >σ. On en déduit l'existence d'un test U.P.P. de niveau α de
+région critique W dénie par :
+W ={x∈ Rn|
+nX
+i=1
+x2
+i≥K}
+K est déterminée par :
+α =P (W|H0)
+Sous l'hypothèse H0,
+nX
+i=1
+X 2
+i
+σ2
+0
+suit la loi de χ2
+n d'où :
+P (W|H0) =α =⇒P
+ nX
+i=1
+X 2
+i ≥K|H0
+!
+=α
+=⇒α =P
+
+
+nX
+i=1
+X 2
+i
+σ2
+0
+≥ K
+σ2
+0
+
+
+= 1−P
+
+χ2
+n≤ K
+σ2
+0
+
+=⇒P
+
+χ2
+n≤ K
+σ2
+0
+
+= 1−α
+12
+<<<PAGE>>>
+Posons C1−α le fractile d'ordre 1−α de la loi χ2
+n on a alors K
+σ2
+0
+=C1−α d'où K =σ2
+0C1−α et la région
+de rejet est donnée par ;
+W ={x∈ Rn|
+nX
+i=1
+x2
+i≥σ2
+0C1−α}
+La puissance du test :
+1−β =P (W|H1) =P
+ nX
+i=1
+X 2
+i ≥σ2
+0C1−α|H1
+!
+1−β =P
+
+
+nX
+i=1
+X 2
+i
+σ2 ≥ σ2
+0
+σ2C1−α
+
+
+1−β =P
+
+χ2
+n≥ σ2
+0
+σ2C1−α
+
+Application numérique : n = 10; σ0 = 2; α = 10%;
+10X
+i=1
+X 2
+i
+22 ,→χ2
+10
+P (χ2
+10 > K
+4 ) = 0.10 =⇒P (χ2
+10≤ K
+4 ) = 0.90
+=⇒ K
+4 ≃ 16 =⇒K≃ 64
+d'où :
+W ={x∈ Rn|
+nX
+i=1
+x2
+i > 64}.
+IV Tests de comparaison
+Il est fréquent d'avoir à comparer entre elles 2 populations diérentes. Nous allons supposer que l'on désire
+comparer une même v.a.r. X, normale sur 2 populations :
+Hypothèses et notations :
+Population I Population II
+Loi N(m1,σ 2
+1) N(m2,σ 2
+2)
+Taille de l'échantionn n1 n2
+Moyenne empirique x1 x2
+Variance empirique s2
+1 s2
+2
+13
+<<<PAGE>>>
+IV.1 Test de Fisher de l'égalité des variances
+On se place dans le cas général où les éspérances m1 et m2 sont inconnues; α est donné; et on veut tester :
+ H0 :σ2
+1 =σ2
+2
+H1 :σ2
+1̸=σ2
+2
+On sait que :
+(n1− 1)S
+2
+1
+σ2
+1
+,→χ2
+n1−1 et (n2− 1)S
+2
+2
+σ2
+2
+,→χ2
+n2−1
+(∗)
+S
+2
+1
+σ2
+1
+S
+2
+2
+σ2
+2
+suit la loi de Fisher-Snedecor Fn1−1,n2−1
+avec les notations :
+S
+2
+1 = 1
+n1− 1
+n1X
+i=1
+(Xi−X 1)2 et S2
+1 = 1
+n1
+n1X
+i=1
+(Xi−X 1)2
+Sous l'hypothèse H0 :σ2
+1 =σ2
+2, on peut interpreter le rapport (∗) comme le rapport des 2 estimateurs de σ2
+1
+et de σ2
+2 respectivement. Si σ1 = σ2 ce rapport ne doit pas diérer signicativement de 1. Le rapport (∗)
+sera la variable de décision. Dans la pratique on met toujours au numérateur la plus grande des 2 quantités
+:
+S
+2
+1 et S
+2
+2.
+et la région critique W sera de la forme :
+W ={(x1,··· ,xn)∈ Rn|F >K avec K >1}
+La constante K est déterminé par :
+P (W|H0) =α =⇒P
+ 
+S
+2
+1
+S
+2
+2
+>K
+!
+=α
+=⇒P (Fn1−1,n2−1 >K ) =α ⇐⇒P (Fn1−1,n2−1≤K) = 1−α
+Si on pose f1−α le fractile d'ordre 1−α de la loi de Fisher Fn1−1,n2−1 on aura K =f1−α; d'où
+W ={(x1,··· ,xn)∈ Rn|F >f1−α}
+Application numérique : n1 = 25; n2 = 13; S2
+1 = 0.05; S2
+2 = 0.07; α = 5%;
+On a ♠S
+2
+1 = n1S2
+1
+n1− 1 = 25× 0.05
+24 ≃ 0.052
+♠S
+2
+2 = n2S2
+2
+n2− 1 = 13× 0.07
+12 ≃ 0.076
+On calcule alors S
+2
+2
+S
+2
+1
+qui suit la loi de Fisher F12,24 et on lit f1−α qui est le fractile d'ordre 0.95 de la loi de
+Fisher F12,24, on trouve f0.95 = 2.18 et donc la région de rejet est alors :
+W ={(x1,··· ,xn)∈ Rn|F >2.18}
+Dans notre cas on a trouvé S
+2
+2
+S
+2
+1
+= 0.076
+0.052≃ 1.46
+14
+<<<PAGE>>>
+On n'est pas dans la zone de rejet donc on accepte l'hypothèse H0 :σ1 =σ2.
+Remarque : Si les deux échantillons ont la même taille c-a-d n1 =n2 alors le calcule se simplie un peu et
+on a alors
+Fn−1,n−1 = S
+2
+1
+S
+2
+2
+= S2
+1
+S2
+2
+IV.2 Test de Student de l'égalité des espérances
+♣ V ariances connues
+On teste :  H0 :m1 =m2
+H1 :m1̸=m2
+On a X 1 ,→N
+
+m1, ( σ1
+√n1
+)2
+
+et X 2 ,→N
+
+m2, ( σ2
+√n2
+)2
+
+. Si on pose Y =X 1−X 2 alors
+la v. a .r. Y ,→N
+
+m1−m2,
+
+
+s
+σ2
+1
+n1
++ σ2
+2
+n2
+
+
+2
+
+Si on pose θ =m1−m2 alors le test devient :
+ H0 :θ = 0
+H1 :θ̸= 0
+Il existe un test U.P.P. de niveau α de région critique W ={(y1,··· ,yn)∈ Rn tq.|Y|>K}.
+La constante K est déterminée par : P (W|H0) =α.
+Sous l'hypothèse H0, Y ,→N
+
+0,
+
+
+s
+σ2
+1
+n1
++ σ2
+2
+n2
+
+
+2
+ d'où :
+α =P (|Y|>K )⇐⇒α = 1−P (|Y|≤ K)
+=⇒P
+
+ −Kq
+σ2
+1
+n1
++ σ2
+2
+n2
+≤ Yq
+σ2
+1
+n1
++ σ2
+2
+n2
+≤ Kq
+σ2
+1
+n1
++ σ2
+2
+n2
+
+ = 1−α
+ϕ
+
+ Kq
+σ2
+1
+n1
++ σ2
+2
+n2
+
+ = 1− α
+2
+où ϕ est la fonction de répartition de la loi N(0, 1). Si on pose U1−α
+2 alors :
+Kq
+σ2
+1
+n1
++ σ2
+2
+n2
+=U1−α
+2 =⇒ K =
+s
+σ2
+1
+n1
++ σ2
+2
+n2
+·U1−α
+2
+La région de rejet est :
+W ={|x1−x2| >
+s
+σ2
+1
+n1
++ σ2
+2
+n2
+·U1−α
+2 }
+♣ V ariances inconnues et égales
+Cette hypothèse revient à supposer que l'on a, au préalable, eectué le test d'égalité des variances et que
+l'on a retenu σ2
+1 =σ2
+2. On pose alors σ2 =σ2
+1 =σ2
+2
+15
+<<<PAGE>>>
+On sait que :
+(n1− 1)S
+2
+1
+σ2 ,→χ2
+n1−1 et (n2− 1)S
+2
+2
+σ2 ,→χ2
+n2−1
+On a X 1 ,→N
+
+m1, ( σ√n1
+)2
+
+et X 2 ,→N
+
+m2, ( σ√n2
+)2
+
+.
+de même la v. a. Y ,→N
+ 
+m1−m2,
+
+σ
+r
+1
+n1
++ 1
+n2
+2!
+et (n1− 1)S
+2
+1 + (n2− 1)S
+2
+2
+σ2 ,→ χ2
+n1+n2−2
+Par dénition de la variable de Student :
+Tn1+n2−2 =
+(X 1−X 2)− (m1−m2)
+σ
+q
+1
+n1
++ 1
+n2
+s
+(n1− 1)S
+2
+1 + (n2− 1)S
+2
+2
+σ2(n1 +n2− 2)
+= (X 1−X 2)− (m1−m2)r
+(n1− 1)S
+2
+1 + (n2− 1)S
+2
+2
+
+( 1
+n1
++ 1
+n2
+)
+√
+n1 +n2− 2
+Il existe un test U.P.P. de niveau α déni par la région critique W ={| T| > K}, la constante K est
+déterminée par le risque α:
+α =P (W|H0) =P (|T|>K |H0)
+=⇒ P (|Tn1+n2−2|>K ) =α
+=⇒ 1−P (|Tn1+n2−2|≤ K) =α
+=⇒ P (−K≤Tn1+n2−2≤K) = 1−α
+Si on pose t1−α
+2 le fractile d'ordre 1− α
+2 de la loi de Student à n1 +n2− 2 degrés de liberté alors K =t1−α
+2
+alors la région de rejet est :
+W ={|T|>t 1−α
+2 }.
+V Le test du χ2
+V.1 Exemple introductif
+On jette un dé 300 fois. On obtient les résultats suivants :
+face obtenue 1 2 3 4 5 6
+nombre de lancers 42 43 56 55 43 61
+Peut-on en conclure que le dé est équilibré?
+Remarque : Si le dé est équilibré alors la v. a. r. associée à cette expérience suit une loi uniforme discréte
+de paramètre 1
+6 .
+Une idée naturelle est de dire que, si le est dé équilibré, on devrait avoir à peu prés 300
+6 = 50 fois chaque
+face. Si le résultat s'élogne trop de 50 pour quelques unes des faces, on peut douter du fait que le dé est
+16
+<<<PAGE>>>
+équilibré. On peut donc penser à rejeter l'hypothèse que le dé est équilibré si la "distance" entre les vecteurs
+(42, 43, 56, 55, 43, 61) et (50, 50, 50, 50, 50, 50) est "trop grande". Il reste à choisir une distance appropriée.
+Plus généralement, on s'intéresse à une expérience qui a r issues possibles. On sait que, sous une certaine
+hypothèse H0, les probabilités d'apparition de ces r issues sont respectivement p1,··· ,pr (avec
+rX
+j=1
+pj = 1.)
+On fait n expériences identiques et indépendantes et on compte les nombres nj de fois où l'issue j s'est
+produite. on a forcément
+rX
+j=1
+nj =n. Le problème est de décider si l'observation des n1,··· ,nr est compatible
+avec l'hypothèse H0 que les probabilités des isuues sont p1,··· ,pr.
+Dans l'exemple r = 6,∀j∈{ 1,··· , 6}, pj = 1
+6 et n = 300.
+Sous l'hypothèse H0 on s'attend à observer en moyenne npj fois l'issue j (50 fois chaque face dans l'exemple.)
+Il s'agit alors de déterminer si les observations nj de l'issue j sont signicativement proches ou élognées de
+l'eectif théorique npj de l'issue j. On peut alors penser à une région critique de la forme :
+W =
+
+
+
+rX
+j=1
+(nj−npj)2 >l α
+
+
+
+Pour déterminer lα, il faut connaitre la loi de probabilité sous l'hypothèse H0 de
+rX
+j=1
+(nj−npj)2 ou d'une
+v. a. analogue.
+Il est clair que pour chaque j, Nj est de loi binomiale B(n,pj); on dit que le vecteur (N1,··· ,Nr) est de loi
+multinomiale M(n;p1,··· ,pr). Le test du χ2 est basé sur le théorème suivant :
+Théorème (de Pearson) . Si (N1,··· ,Nr) est de loi loi multinomiale M(n;p1,··· ,pr) alors
+∆2
+n =
+rX
+j=1
+(Nj−npj)2
+npj
+loi
+−−−−−→
+n→+∞
+χ2
+r−1
+Dénition. On appelle test du χ2 le test de H0 : les probabilités des r issues sont p1,··· ,pr contre
+H1 = ¯H0 déni par la région critique :
+W =
+
+
+
+rX
+j=1
+(nj−npj)2
+npj
+>χ 2
+r−1,α
+
+
+
+Dans l'exemple du dé, l'hypothèse que le dé est équilibré s'écrit : H0 :∀j∈{ 1,··· , 6}, pj = 1
+6. Alors la
+statistique de décision vaut δ2
+n = (42− 50)2
+50 +··· (61− 50)2
+50 = 6.88. Au seuil α = 0.05,χ 2
+5,0.05 = 11.07.
+On a 6.88 est inférieur à 11.07, donc on ne rejette pas l'hypothèse H0.
+V.2 Le test d'adéquation du χ2 à une loi donnée
+Soit X une v. a. r. On dispose d'un n−échantillon de valeurs (x1,··· ,xn). On veut savoir si ces observations
+peuvent être considérées comme des réalisations de v. a. r. X1,··· ,Xn indépendantes et de même loi donnée.
+Un tel test est appelé test d'adéquation ou test d'ajustement. Soit F la fonction de répartition inconnue
+des v. a. Xi, il s'agit de tester
+H0 :F =F0 contre H1 :F̸=F0
+où F0 est la fonction de répartition de la loi dont on souhaite tester que les observations sont issues.
+17
+<<<PAGE>>>
+Si les v. a. observées sont discrétes, les n observations x1,··· ,xn ont pris r valeurs diérentes e1,··· ,er.
+Soit nj le nombre d'observations égales à ej. On peut calculer les pj =P (X =ej). (N1,··· ,Nr) est de loi
+multinomiale M(n;p1,··· ,pr), on peut alors appliquer le théorème de Pearson et utiliser le test du χ2 pour
+tester l'adéquation de l'échantion à la loi de X.
+Si les v. a. observées sont continues, il faut regrouper les observations en classes. On partitionne le support
+de la loi à tester en r intervalles de [aj−1,aj[ et on compte le nombre d'observations appartenant à chaque
+classe nj. Sous l'hypothèse H0 :F =F0, la probabilité qu'une observation appartienne à j est :
+pj =P (aj−1 <X ≤aj) = F0(aj)−F0(aj−1). On se trouve alors dans le cadre du théorème de Pearson
+et on peut appliquer le test du χ2.
+Remarque
+✠ Le résultat du théorème de Pearson n'est qu'asymptotique, donc il n'est valable que pour n assez grand
+( n≥ 50), de plus chaque classe doit contenir au moins 5 observations.
+✠ Si F0 dépend de k paramètres inconnus, on estime ces derniers à partir de l'échantillon et donc la statistique
+∆2
+n suivra asymptotiquement une loi du χ2 à r−k− 1 degrés de liberté.
+VI Le test d'indépendance
+Soient X et Y 2 caractères quelconques dénis sur une population et un échantillon de taille n issu de cette
+population. On dispose d'observations réparties en r (r> 1) classes ou modalités pour le caractère X et en
+s (s > 1) classes ou modalités pour le caractère Y . On veut tester l'hypothèse nulle H0 : "les caractères X
+et Y sont statistiquement indépendants" contre l'hypothèse alternative H1 : "les caractères X et Y ne sont
+pas statistiquement indépendants"
+Dénition. En munissant l'échantillon de l'équiprobabilité, on dénit la propriété d'indépendance statistique
+de la façon suivante : les deux caractères X et Y sont statistiquement indépendants si, et seulement si, pour
+tout i allant de 1 jusqu'à r et pour tout j allant de 1 jusqu'à s on doit avoir :
+P ((X∈Ci)∩ (Y ∈Cj)) =P (X∈Ci)×P (Y ∈Cj)
+où Ci est la ième classe (ou modalité) du premier caractère et Cj est la jème classe (ou modalité) du second
+caractère.
+Notation et propriétés
+On note nij le nombre d'observations, parmi les n de l'échantillon, appartenant à Ci et à Cj, puis ni• =
+sX
+j=1
+nij
+et n•j =
+rX
+i=1
+nij. On rappelle que n =
+rX
+i=1
+ni• =
+sX
+j=1
+n•j (les eectifs marginaux).
+Si X et Y sont deux caractères sont statistiquement indépendants dont les distributions sont dénies respec-
+tivement par les eectifs (ni•)1≤i≤r et (n•j)1≤j≤s alors les eectifs théoriques des observations appartenant
+à la ième classe du premier caractère et à la jème classe du second sont égaux à :
+n′
+ij = ni•n•j
+n
+On construit alors le test d'indépendance à partir de la distance du χ2 entre les eectifs théoriques et les
+eectifs observés; On a la statistique :
+D2
+n =
+rX
+i=1
+sX
+j=1
+(nij−n′
+ij)2
+n′
+ij
+La région critique de ce test est de la forme :
+W =
+
+
+d2
+n =
+rX
+i=1
+sX
+j=1
+(nij−n′
+ij)2
+n′
+ij
+>C
+
+
+
+18
+<<<PAGE>>>
+Pour un risque de première espèce α = P (D2
+n > C)|H0, la valeur de la constante C est approximé par le
+fractile d'ordre 1−α de la loi χ2
+(r−1)(s−1).
+Exemple Une enquête sur le tabagisme a donné les résultats suivants :
+Hommes Femmes
+Fumeurs 420 75
+Non fumeurs 280 225
+On désigne par X le caractère qui spécie si une personne est fumeur ou non et par Y le caractère qui spécie
+son sexe. X est un caractère à r = 2 modalités :  fumeurs ,  non fumeurs  et Y est un caractère à s = 2
+modalités :  homme ,  femme . Les caractères X et Y sont-ils statistiquement indépendants?
+On calcule les eectifs marginaux : n1• = 420 + 75 = 495, n2• = 280 + 225 = 505, n•1 = 420 + 280 = 700,
+n•2 = 75 + 225 = 300.
+Puis les eectifs théoriques, pour i de 1 à 2 et pour j de 1 à 2 par la formule n′
+ij = ni•n•j
+nLes calculs sont eectués dans le tableau suivant :
+Hommes Femmes ni•
+Fumeurs n′
+11 = 700×495
+1000 = 346.5 n′
+12 = 300×495
+1000 = 148.5 495
+Non fumeurs n′
+21 = 700×505
+1000 = 353.5 n′
+22 = 300×505
+1000 = 151.5 505
+n•j 700 300 n = 1000
+On calcule la valeur de la statistique d2
+n =
+rX
+i=1
+sX
+j=1
+(nij−n′
+ij)2
+n′
+ij
+d2
+n = (420− 346.5)2
+346.5 + (75− 148.5)2
+148.5 + (280− 353.5)2
+353.5 + (225− 151.5)2
+151.5 ≃ 102.91
+Pour tester H0 : X et Y sont statistiquement indépendants contre H1 : X et Y ne sont pas statistiquement
+indépendants, au risque α = 0.05, on lit le fractile d'ordre 1−α de la loi du χ2 à 1 degré de liberté et on
+trouve que χ2
+0.95 = 3.84.
+Puisque d2
+n >χ 2
+0.95, on rejette donc l'hypothèse nulle.
+19

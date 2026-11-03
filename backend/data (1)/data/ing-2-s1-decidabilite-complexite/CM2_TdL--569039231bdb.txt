@@ -1,0 +1,472 @@
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Th´ eorie des Langages
+Automates
+Yannick Le Nir Gaspard F´ erey
+Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+18 septembre 2024
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Automates
+Concepts
+▶ Un automate est une proc´ edure effective (un
+algorithme) permettant de d´ eterminer si un mot donn´ e
+appartient ` a un langage.
+▶ Notion d’´ etat : description du syst` eme ` a un instant
+donn´ e.
+▶ Notion d’´ ev` enement : communication avec l’ext´ erieur.
+▶ Notion de transitions d’´ etats : mod´ elisent l’´ evolution du
+syst` emeei
+evt−−→ef
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Exemple d’automate
+Figure – Automate
+Etats :{q0, q1, q2, q3} Ev` enements :{a, b} Transitions :
+{q0 a− →q1, q1 a− →q3, q3 a− →q2, q2 b− →q1, q3 b− →q0}
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Automate fini
+D´ efinition
+Un automate fini est un quintuplet < Et, F , Ev , Ψ, q0 > tel
+que :
+▶ Et est un ensemble fini, non vide d’´ etats
+▶ Ev est un ensemble fini, non vide d’´ ev` enements
+▶ Ψ⊂ Et× Ev× Et est une relation de transitions
+▶ F⊂ Et est un ensemble d’´ etats finaux
+▶ q0∈ Et est l’´ etat initial
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Transitions
+Mod´ elisation
+Les transitions entre ´ etats peuvent mod´ eliser des probl` emes
+autres que li´ es ` a l’axe du temps.
+Non-´ ev` enement
+Une transition associ´ ee ` a un non-´ ev` enement, not´ eε est
+appel´ eeε-transition (exemple : attente d’un message qui
+n’arrive pas).
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+D´ eterminisme
+D´ efinition
+▶ Un automate est dit d´ eterministe si pour tout ´ etat
+eti∈ Et et pour tout ´ ev` enementev∈ Ev, il existe au
+plus un ´ etatetf∈ Et tel que ( eti , ev , etf )∈ Ψ.
+▶ C’est-` a-dire qu’il a un seul ´ etat initial et que, pour
+chaque ”´ etat de d´ epart” il existe une seule transition
+possible avec le mˆ eme ´ ev` enement.
+▶ Un automate qui n’est pas d´ eterministe est dit non
+d´ eterministe.
+Repr´ esentation
+Si < Et, F , Ev , Ψ, q0 > est d´ eterministe, on peut choisir de
+mod´ eliser les transitions par une fonction partielle
+Ψ : Et× Ev→ Et
+et de la repr´ esenter par une table de transitions.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Exemple d’automate fini non d´ eterministe
+Figure – Automate fini non d´ eterministe
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Langage
+Ensemble de motifs
+Soit G un ensemble et C une condition portant sur les
+´ el´ ements deG . On d´ efinit l’ensemble de motifs de G
+associ´ es ` aC par :
+MC (G ) ={g∈ G /C (g) est vraie}
+D´ efinition d’un langage
+Comment d´ efinir un langage sur un alphabet A ?
+▶ D´ efinition ensembliste {anbn}
+▶ Par l’ensemble des motifs associ´ es ` a un condition sur les
+mots de A {w∈ A∗/|w| = 6}
+▶ Par une grammaire G = < T , N, S, P > dont les
+symboles terminaux sont dans A (T⊂ A)
+▶ Par un automate !
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Langage
+Ensemble de motifs
+Soit G un ensemble et C une condition portant sur les
+´ el´ ements deG . On d´ efinit l’ensemble de motifs de G
+associ´ es ` aC par :
+MC (G ) ={g∈ G /C (g) est vraie}
+D´ efinition d’un langage
+Comment d´ efinir un langage sur un alphabet A ?
+▶ D´ efinition ensembliste {anbn}
+▶ Par l’ensemble des motifs associ´ es ` a un condition sur les
+mots de A {w∈ A∗/|w| = 6}
+▶ Par une grammaire G = < T , N, S, P > dont les
+symboles terminaux sont dans A (T⊂ A)
+▶ Par un automate !
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Langage reconnaissable
+Soit A = < Et, F , Ev , Ψ, q0 > un automate fini.
+Definition
+Le langage L(A) reconnu par A est l’ensemble des mots
+u1· u2· ...· un tels qu’il existe au moins une configuration o` u
+l’automate apr` es avoir ´ et´ e initialis´ e ` a l’´ etat initialq0 puis
+soumis successivement aux ´ ev´ enementsu1, u2, ..., un se
+trouve dans un ´ etat terminal deF .
+u1· u2· ...· un∈ L(A) ⇔ q0
+u1
+−→q1
+u2
+−→... un
+−→qn∈ F
+Remarque
+L’alphabet du langage L(A) est inclut dans Ev : L(A)⊂ Ev∗
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Exemple d’automate
+Figure – Automate fini d´ eterministe
+q0 = ´ etat initial F ={ q1}
+Cha ˆ ınes reconnues : a, aaba, aaab, ...
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Exemple d’automate (2)
+Exemple
+Soit G l’ensemble des suites finies de nombres binaires (0 ou
+1) et C la condition d´ efinie parC (g) : g contient un nombre
+pair de 0. L’automate fini suivant reconna ˆ ıt les nombres
+respectant la condition C :
+▶ Et ={Pair, Impair}
+▶ F ={Pair}
+▶ Ev ={0, 1}
+▶ Ψ est d´ efinie par les transitions
+Ev` enement 0 1
+Etat
+Pair Impair Pair
+Impair Pair Impair
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+D´ eterminisation
+Th´ eor` eme
+Pour tout automate A, il existe un automate d´ eterministeA′
+reconaissant le mˆ eme langage :L(A) = L(A′).
+Preuve
+On d´ efinira plus tard un algorithme dit de d´ eterminisation
+permettant de construire A′ ` a partir deA.
+Autres propri´ et´ es
+Soit A un automate fini.
+▶ Il existe A′ complet tel que L(A′) = L(A).
+▶ Il existe A′ sans ε-transitions tel que L(A′) = L(A).
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Rappel
+D´ efinition
+Une grammaire G =< T , N, S, P > est de type 3 si les
+r` egles deP sont toutes de la forme
+▶ X→ a
+▶ X→ bY ou X→ Yb
+▶ X→ ε
+avec X , Y∈ N, a, b∈ T .
+Une telle grammaire est aussi dite r´ eguli` ere ou rationnelle.
+D´ efinition
+Un langage est de type 3 (on dit aussi r´ egulier ou rationnel)
+s’il peut ˆ etre engendr´ e par une grammaire de type 3.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Langages r´ eguliers et AFD
+Th´ eor` eme de Kleene
+Tout langage reconnu par un automate fini est de type 3.
+Th´ eor` eme de Kleene
+Tout langage de type 3 est reconnu par un automate fini.
+Corollaire
+Les grammaires de type 3 et les automates finis
+d´ eterministes permettent de d´ efinir la mˆ eme classe de
+langages : les langages r´ eguliers.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Construction d’un automate fini ` a partir d’une
+grammaire de type 3
+Soit G =< T , N, S, P > une grammaire de type 3 sur
+l’alphabet T.
+On peut transformer la grammaire G en une grammaire
+G′ =< T , N′, S, P′ > qui g´ en` ere le mˆ eme langage que G,
+mais en transformant toutes r` egles de la forme X→ a, avec
+a∈ T en X→ a V, et en ajoutant la r` egleV→ ε.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Construction d’un automate fini ` a partir d’une
+grammaire de type 3
+On d´ efinit ensuite un automate finiA =< Et, F , Ev , Ψ, q0 >
+comme suit :
+▶ Ev = T
+▶ Et = N′ avec V∈ F
+▶ q0 = S
+▶ Pour toute r` egleX→ aY∈ P′ :
+G´ en´ erer une transitionX a− →Y∈ Ψ.
+▶ Pour toute r` egleY→ ε∈ P′ :
+D´ efinirY comme ´ etat final :Y∈ F
+▶ Pour toute r` egleX→ a∈ P′ :
+G´ en´ erer une transitionX a− →V∈ Ψ.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Automates et grammaires
+De la mˆ eme fa¸ con, on peut ´ egalement construire une
+grammaire g´ en´ erant exactement le langage reconnu par un
+automate fini A.
+Remarque
+L’automate g´ en´ er´ e ` a partir d’une grammaireG est en
+g´ en´ eral non d´ eterministe cependant d’apr` es le th´ eor` eme de
+d´ eterminisation, il existe ´ egalement un automate
+d´ eterministe reconnaissant le langage g´ en´ er´ e parG .
+On peut mˆ eme en trouver un complet et sans ε-transition.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Exemple d’application
+Analyse lexicale de l’affectation num´ erique de type 3
+Une grammaire G =< T , N, mot, P > peut ˆ etre d´ efinie par :
+▶ T = lettre∪ chiffre∪{ +,−,∗, /, =, .}
+▶ N ={mot, chaine, entier , reel, point}
+▶ P =
+
+
+
+mot→ +|−|∗| / chaine→ lettre chaine
+mot→= chaine→ chiffre chaine
+mot→ chiffre entier chaine → ε
+mot→ lettre chaine
+entier→ chiffre entier | ε point→ chiffre reel
+entier→ . point reel → chiffre reel | ε
+
+
+
+Langage reconnaissable par l’automate suivant :
+a..z A..Z 0..9 + - / * = .
+lettre chiffre
+mot chaine entier operateur affectation
+chaine chaine chaine
+entier entier point
+point r´ eel
+r´ eel r´ eel
+op´ erateur
+affectation
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Automates
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Automates finis
+Langage reconnu
+par un automate
+Langage r´ eguliers
+Analyse lexicale pour l’affectation num´ erique
+Figure – Automate fini d´ eterministe

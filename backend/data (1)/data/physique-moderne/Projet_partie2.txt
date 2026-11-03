@@ -1,0 +1,52 @@
+3Résolution numérique de l’équation de Schrö-
+dinger
+L’objectif de cette dernière étape va être d’élaborer un premier algorithme
+de résolution de l’équation deSchrödingerqui permettra de déterminer
+l’évolution du paquet d’ondes initial. Pour une particule libre et une paquet
+d’ondes gaussien à l’instant initial, l’évolution du paquet d’ondes est connu
+(partie 2). Si notre l’algorithme élaborée est correcte, il donnera les mêmes
+résultats que la théorie.
+C’est dans un dernier temps, que nous étudierons l’évolution d’un paquet
+d’ondes qui rencontre une barrière de potentiel. Le traitement rigoureux du
+problème est relativement complexe et la résolution numérique constituera la
+voie privilégiée dans ce projet.
+3.1 Algorithme de dérivation
+La fonction d’onde à un instant donné peut être vue comme un tableau
+1d (numpy.arrayen Python avec la librairie numpy) et contenant autant
+d’éléments que de nombre de pointsnptsutilisés pour l’intervalle d’espace (x
+dans les codes précédents).
+1.Dérivée première
+a.Rappeler la déﬁnition de la dérivée d’une fonction réelle en un
+point.
+b.Si cette fonction est un tableau 1d denptséléments, écrire un
+algorithme (pseudo-code ou python) calculant cette dérivée.
+c.Écrire en Python une fonction renvoyant le carré x2d’un nombre
+xet une autre renvoyant2x.
+d.À l’aide de votre algorithme, calculer numériquement la dérivée
+de la fonctionx2et comparer les valeurs obtenues avec celles
+renvoyées pas la fonction2x. Vous pouvez, par exemple, regarder
+l’erreur relative commise pas votre algorithme.
+2.Reprendre les questions précédentes, mais pour la dérivée seconde.
+3.2 Algorithme pour l’équation de Schrödinger
+L’équation deSchrödingerdécrit l’évolution de la fonction d’onde dans le
+temps et l’espace. Dès lors, la fonction d’onde ne peut pas être stockée dans
+un tableau 1d, mais un tableau 4d ! Dans la mesurer où nous n’étudions que
+des problèmes à une dimension d’espace, des tableaux 2d seront su!sants.
+8
+<<<PAGE>>>
+1.Rappeler l’équation deSchrödingerà une dimension d’espace pour
+une particule dans un potentiel constantV0.
+2.Déﬁnir une fonction d’onde (tableau 2d) contenant nxlignes etnt
+colonnes. La première ligne doit contenir un paquet d’ondes gaussien à
+instant donné et le reste du tableau doit contenir des zéros (ou mieux
+des nombres aléatoiresempty).
+3.Déﬁnir (numpy.linspace) des tableaux 1d pour les intervalles d’espace
+xet de tempst.
+4.Écrire un algorithme combinant les dérivées première par rapport
+au temps et seconde pas rapport à l’espace pour décrire l’évolution
+de la fonction d’ondes initiale (paquet d’ondes dans notre cas) selon
+l’équation deSchrödinger.
+5.Confronter les résultats de l’algorithme (dans le cas V0=0avec le
+programmePaquetOndes.py. La comparaison peut, dans un premier
+temps, se faire sans représenter les paquets d’ondes.
+9

@@ -1,0 +1,2529 @@
+Deuxi` eme Semestre 2021-2022
+CY Tech
+TD Int´ egration & Probabilit´ es
+Int´ egrales Multiples.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 00
+Soit D le domaine
+D =
+{
+(x, y)∈ R2, x≥ 0, y≥ 0, x + y≤ 1
+}
+.
+Calculer
+∫ ∫
+D
+f (x, y)dxdy dans les cas suivants :
+f (x, y) = x 2 + y 2 et f (x, y) = xy· (x + y).
+Solution : On commence par d´ ecrire le domaine d’int´ egration.Nous avons
+D =
+{
+(x, y)∈ R2, x≥ 0, y≥ 0, x + y≤ 1
+}
+=
+{
+(x, y)∈ R2, x≥ 0, 0≤ y≤ 1− x
+}
+=
+{
+(x, y)∈ R2, 0≤ x≤ 1, 0≤ y≤ 1− x
+}
+.
+Ainsi pour f (x, y) = x 2 + y 2, on a
+∫ ∫
+D
+f (x, y)dxdy =
+∫ 1
+0
+∫ 1−x
+0
+x 2 + y 2 dydx.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 0
+Maintenant
+∫ 1
+0
+∫ 1−x
+0
+x 2 + y 2 dydx =
+∫ 1
+0
+[
+x 2y + y 3
+3
+]1−x
+0
+dx
+=
+∫ 1
+0
+x 2(1− x) + (1− x)3
+3 dx
+=
+∫ 1
+0
+− 4x 3
+3 + 2x 2− x + 1
+3 dx
+=
+[
+− 4x 4
+12 + 2 x 3
+3 − x 2
+2 + x
+3
+]1
+0
+= − 1
+3 + 2
+3− 1
+2 + 1
+3
+= 1
+6.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 0
+De mˆ eme, pourf (x, y) = xy(x + y), on a
+∫ ∫
+D
+f (x, y)dxdy =
+∫ 1
+0
+∫ 1−x
+0
+xy(x + y) dydx
+=
+∫ 1
+0
+∫ 1−x
+0
+x 2y + xy 2 dydx
+=
+∫ 1
+0
+[ x 2y 2
+2 + xy 3
+3
+]1−x
+0
+dx
+=
+∫ 1
+0
+x 2(1− x)2
+2 + x(1− x)3
+3 dx
+... ` a vous de faire les calculs
+= 1
+30.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 00
+Calculer l’int´ egrale double
+∫ ∫
+D
+1
+(x + y)3 dxdy
+avec
+D =
+{
+(x, y)∈ R2 : 1 < x < 3, y > 2, x + y < 5
+}
+.
+Solution : On commence par d´ ecrire le domaine d’int´ egration.Nous avons
+D =
+{
+(x, y)∈ R2 : 1 < x < 3, y > 2, x + y < 5
+}
+=
+{
+(x, y)∈ R2 : 1 < x < 3, 2< y < 5− x
+}
+.
+Ainsi, nous avons
+∫ ∫
+D
+1
+(x + y)3 dxdy =
+∫ 3
+1
+∫ 5−x
+2
+1
+(x + y)3 dydx
+=
+∫ 3
+1
+[
+− 1
+2(x + y)2
+]5−x
+2
+dx
+=
+∫ 3
+1
+− 1
+2
+( 1
+25− 1
+(x + 2)2
+)
+dx = 2
+75.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 1
+Soit a> 0 et soit K l’ensemble limit´ e par les cˆ ot´ es du triangleOAB avec
+A = (2a, a) et B = (3a, 3a). Calculer :
+∫ ∫
+K
+x· y dxdy .
+Solution : Le triangle sur lequel on integre est donn´ e par l’union des deux
+triangles :
+K1 =
+{ 0 ≤ x ≤ 2a
+x
+2 ≤ y ≤ x et K2 =
+{ 2a ≤ x ≤ 3a
+2x− 3a ≤ y ≤ x
+Ainsi∫ ∫
+K
+x· y dxdy =
+∫ ∫
+K1
+x· y dxdy +
+∫ ∫
+K2
+x· y dxdy
+=
+∫ 2a
+0
+(∫ x
+x
+2
+x· y dy
+)
+dx +
+∫ 3a
+2a
+(∫ x
+2x−3a
+x· y dy
+)
+dx
+=
+∫ 2a
+0
+x·
+(∫ x
+x
+2
+y dy
+)
+dx +
+∫ 3a
+2a
+x·
+(∫ x
+2x−3a
+y dy
+)
+dx
+=
+∫ 2a
+0
+x·
+[ y 2
+2
+]x
+x
+2
+dx +
+∫ 3a
+2a
+x·
+[ y 2
+2
+]x
+2x−3a
+dx.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 1
+Par cons´ equent
+∫ ∫
+K
+x· y dxdy =
+∫ 2a
+0
+x·
+[ y 2
+2
+]x
+x
+2
+dx +
+∫ 3a
+2a
+x·
+[ y 2
+2
+]x
+2x−3a
+dx
+=
+∫ 2a
+0
+x 3
+2 − x 3
+8 dx +
+∫ 3a
+2a
+x 3
+2 − x· (2x− 3a)2
+2 dx
+= 3
+8
+∫ 2a
+0
+x 3dx +
+∫ 3a
+2a
+(
+− 3
+2 x 3 + 6ax 2− 9
+2 a2x
+)
+dx
+= 31
+8 a4.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 2
+Soit 0 < a< b. Posons
+K =
+{
+(x, y)∈ R2 : a≤ x + y≤ b et 1
+3≤ y
+x ≤ 3
+}
+Calculer : ∫ ∫
+K
+exp(−(x + y))√xy dxdy.
+On pourra eﬀectuer le changement de variables :
+x′ = x + y et y′ = y
+x + y
+Solution : Posons{ x′ = x + y
+y′ = y
+x+y
+=⇒
+{ x = x′(1− y′)
+y = x′y′
+Alors
+a≤ x + y≤ b =⇒ a≤ x′≤ b,
+et
+y′ = y
+x + y =⇒ 1
+y′ = x + y
+y = 1 + x
+y.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 2
+Or
+1
+3≤ y
+x≤ 3 =⇒ 1
+3≤ x
+y ≤ 3
+=⇒ 4
+3≤ 1 + x
+y ≤ 4
+=⇒ 4
+3≤ 1
+y′≤ 4.
+D’o` u
+1
+4≤ y′≤ 3
+4.
+Maintenant
+⏐⏐⏐⏐⏐⏐
+∂x
+∂x ′
+∂x
+∂y ′
+∂y
+∂x ′
+∂y
+∂y ′
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+1− y′ −x′
+y′ x′
+⏐⏐⏐⏐⏐⏐
+= x′.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 2
+Ainsi∫ ∫
+K
+exp(−(x + y))√xy dxdy =
+∫ ∫
+K ′
+exp(−x′)
+x′
+√
+(1− y′)y′
+x′dx′dy′
+=
+∫ b
+a
+exp(−x′)
+(∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′
+)
+dx′
+=
+(∫ b
+a
+exp(−x′)dx′
+)
+·
+(∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′
+)
+=
+[
+−e−x ′]b
+a
+·
+(∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′
+)
+=
+(
+e−a− e−b
+)
+·
+(∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′
+)
+.
+Or
+(1− y′)y′ = y′− (y′)2 = 1
+4−
+(
+y′− 1
+2
+)2
+= 1
+4
+(
+1−
+(
+2y′− 1
+)2)
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 2
+Ce qui nous permet d’´ ecrire
+∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′ =
+∫ 3
+4
+1
+4
+dy′
+1
+2
+√
+1− (2y′− 1)2.
+Posons
+u = 2y′− 1 =⇒ 2dy′ = du.
+Alors
+∫ dy′
+1
+2
+√
+1− (2y′− 1)2
+=
+∫ du√
+1− u2
+= arcsin(u)
+= arcsin(2y′− 1).
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 2
+Finalement
+∫ ∫
+K
+exp(−(x + y))√xy dxdy =
+(
+e−a− e−b
+)
+·
+(∫ 3
+4
+1
+4
+dy′
+√
+(1− y′)y′
+)
+=
+(
+e−a− e−b
+)
+·
+[
+arcsin(2y′− 1)
+] 3
+4
+1
+4
+=
+(
+e−a− e−b
+)
+·
+(
+arcsin
+( 6
+4− 1
+)
+− arcsin
+( 2
+4− 1
+))
+=
+(
+e−a− e−b
+)
+·
+(
+arcsin
+( 1
+2
+)
+− arcsin
+(
+− 1
+2
+))
+= 2
+(
+e−a− e−b
+)
+· arcsin
+( 1
+2
+)
+Par cons´ equent
+∫ ∫
+K
+exp(−(x + y))√xy dxdy = 2
+(
+e−a− e−b
+)
+· π
+6
+=
+(
+e−a− e−b
+)
+· π
+3.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 3
+Soit D le domaine d´ elimit´ e par les deux courbes d’´ equations :
+y 2 = 4x + 4 et y 2 =−4x + 4.
+a) Repr´ esenter graphiquementD.
+b) Calculer l’aire du domaine D.
+Solution :
+a) Pour repr´ esenter graphiquementD, commen¸ cons par ´ etudier les courbes :
+y 2 = 4x + 4 et y 2 =−4x + 4.
+D’abord
+y 2≥ 0 =⇒
+{ 4x + 4 = y 2 ≥ 0
+−4x + 4 = y 2 ≥ 0 =⇒
+{ x ≥ −1
+x ≤ 1
+Ainsi
+∀x≥− 1, y 2 = 4x + 4 ⇐⇒ y =±2
+√
+x + 1,
+et
+∀x≤ 1, y 2 =−4x + 4 ⇐⇒ y =±2
+√
+1− x.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 3
+Par cons´ equent, la region ` a l’interieur de la courbe y 2 = 4x + 4 est donn´ ee par :
+D1 =
+{
+(x, y)∈ R2 : −1≤ x, −2
+√
+x + 1≤ y≤ 2
+√
+x + 1
+}
+.
+Et la la region ` a l’interieur de la courbe y 2 =−4x + 4 est donn´ ee par :
+D2 =
+{
+(x, y)∈ R2 : x≤ 1, −2
+√
+1− x≤ y≤ 2
+√
+1− x
+}
+.
+Le domaine D, d´ elimit´ e par ces deux courbes est donn´ e donc par l’intersection
+D1∩ D2. Maintenant
+∀x∈ [−1, 0], 2
+√
+x + 1≤ 2
+√
+1− x.
+De mˆ eme
+∀x∈ [0, 1], 2
+√
+1− x≤ 2
+√
+x + 1.
+Ainsi, nous avons
+D = D1∩ D2 = U1∪ U2,
+o` u
+U1 =
+{
+(x, y)∈ R2 : −1≤ x≤ 0, −2
+√
+x + 1≤ y≤ 2
+√
+x + 1
+}
+,
+U2 =
+{
+(x, y)∈ R2 : 0 ≤ x≤ 1, −2
+√
+1− x≤ y≤ 2
+√
+1− x
+}
+.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 3
+b) Calculer l’aire du domaine D.
+Solution : Nous avons
+∫ ∫
+D
+1 dxdy =
+∫ ∫
+U1
+1 dxdy +
+∫ ∫
+U2
+1 dxdy
+=
+∫ 0
+−1
+(∫ 2√x+1
+−2√x+1
+1 dy
+)
+dx +
+∫ 1
+0
+(∫ 2√1−x
+−2√1−x
+1 dy
+)
+dx
+=
+∫ 0
+−1
+4
+√
+x + 1dx +
+∫ 1
+0
+4
+√
+x− 1dx
+= 4
+[ 2
+3 (x + 1)
+3
+2
+]0
+−1
+− 4
+[ 2
+3 (1− x)
+3
+2
+]1
+0
+= 8
+3 (1 + 1) = 16
+3 .
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+On se propose dans cet exercice de calculer
+∫ +∞
+−∞
+e−x2
+dx.
+1.) Justiﬁer la convergence de cette int´ egrale.
+2.) Soit a> 0. On note Ka le carr´ e de centre 0 de cˆ ot´ e 2a et Ca le disque de centre
+O et de rayon a. On d´ eﬁnit une fonctionf sur R2 par
+f (x, y) = e−x2−y 2
+.
+Justiﬁer que
+∫
+Ca
+e−x2−y 2
+dxdy ≤
+∫
+Ka
+e−x2−y 2
+dxdy≤
+∫
+Ca
+√
+2
+e−x2−y 2
+dxdy
+3.) En eﬀectuant un changement de variables en coordonn´ ees polaires, calculer
+∫
+Ca
+e−x2−y 2
+dxdy.
+4.) D´ eduire des questions pr´ ec´ edentes la valeur de
+∫ +∞
+−∞
+e−x2
+dx.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+1.) Justiﬁer la convergence de cette int´ egrale.
+Solution :On commence par noter que , x↦−→ e−x 2
+est pair :
+e−(−x)2
+= e−x 2
+.
+Donc
+∫ +∞
+−∞
+e−x 2
+dx = 2 ·
+∫ +∞
+0
+e−x 2
+dx.
+Pour d´ ecrire la nature de cette derni` ere int´ egrale, on commence par ´ ecrire
+∫ +∞
+0
+e−x 2
+dx =
+∫ 1
+0
+e−x 2
+dx +
+∫ +∞
+1
+e−x 2
+dx.
+Maintenant, la fonction x↦−→ e−x 2
+est continue et positive sur [0 , +∞[.
+En particulier elle est continue sur [0 , 1]. Par cons´ equent
+∫ 1
+0
+e−x 2
+dx est ﬁnie.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+Finalemet, pour v´ eriﬁer la convergence ou divergence de
+∫ +∞
+1 e−x 2
+dx,
+nous allons comparer x↦−→ e−x 2
+avec la fonction x↦→ 1
+x 2 en +∞. Nous
+avons
+e−x 2
+1
+x 2
+= x 2
+ex 2 =⇒ lim
+x→+∞
+e−x 2
+1
+x 2
+= lim
+x→+∞
+x 2
+ex 2 = 0 .
+Par cons´ equent
+exp(−x 2) =
+V (+∞)
+o
+( 1
+x 2
+)
+.
+Maintenant
+∫ +∞
+1
+1
+x 2 dx converge =⇒
+∫ +∞
+1
+e−x 2
+dx converge.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+2.) Nous avons
+Ca ⊂ Ka ⊂ Ca
+√
+2.
+Maintenant, f est positive , donc
+∫
+Ca
+e−x2−y 2
+dxdy ≤
+∫
+Ka
+e−x2−y 2
+dxdy≤
+∫
+Ca
+√
+2
+e−x2−y 2
+dxdy.
+3.) En utilisant les coordon´ ees polaires :
+{ x = r cosθ
+y = r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂r
+∂x
+∂θ
+∂y
+∂r
+∂y
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+cosθ −r sinθ
+sinθ r cosθ
+⏐⏐⏐⏐⏐⏐
+= r,
+nous pouvons ´ ecrire
+∫
+Ca
+e−x2−y 2
+dxdy =
+∫ a
+0
+∫ 2π
+0
+e−r 2
+r d θdr =
+(∫ 2π
+0
+dθ
+)(∫ a
+0
+e−r 2
+r dr
+)
+= 2π·
+[
+− e−r 2
+2
+]a
+0
+= π
+(
+1− e−a2)
+.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+4.) On fait d’abord remarquer que :
+Ka =
+{
+(x, y)∈ R2 :−a≤ x≤ a, −a≤ y≤ a
+}
+.
+Donc
+∫
+Ka
+e−x2−y 2
+dxdy =
+∫ a
+−a
+∫ a
+−a
+e−x2
+e−y 2
+dxdy
+=
+(∫ a
+−a
+e−x2
+dx
+)(∫ a
+−a
+e−y 2
+dy
+)
+=
+(∫ a
+−a
+e−x2
+dx
+)2
+.
+Ainsi, d’apr` es le point 2.), nou avons
+∫
+Ca
+e−x2−y 2
+dxdy ≤
+(∫ a
+−a
+e−x2
+dx
+)2
+≤
+∫
+Ca
+√
+2
+e−x2−y 2
+dxdy.
+Et du point 3.) , on conclut
+π
+(
+1− e−a2)
+≤
+(∫ a
+−a
+e−x2
+dx
+)2
+≤ π
+(
+1− e−2a2)
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 4
+Par cons´ equent
+lim
+a→+∞
+π
+(
+1− e−a2)
+≤
+(∫ ∞
+−∞
+e−x 2
+dx
+)2
+≤ lim
+a→+∞
+π
+(
+1− e−2a2)
+D’o` u
+(∫ ∞
+−∞
+e−x 2
+dx
+)2
+= π.
+Ce qui implique
+∫ ∞
+−∞
+e−x 2
+dx = √π.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 5
+Soit
+D ={(x, y)∈ R2 : x 2 + y 2− 2x≤ 0}
+1. Montrer que D est un disque.
+2. Calculer
+∫ ∫
+D
+√
+x 2 + y 2dxdy.
+Solution :
+1. Nous avons
+x 2 + y 2− 2x = (x− 1)2 + y 2− 1.
+Donc
+x 2 + y 2− 2x≤ 0 ⇐⇒ (x− 1)2 + y 2≤ 1.
+Ainsi, D est le disque de centre (1 , 0) et de rayon 1.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 5
+2. Si on utilise les coordon´ ees polaires :
+{ x = r cosθ
+y = r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂r
+∂x
+∂θ
+∂y
+∂r
+∂y
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+cosθ −r sinθ
+sinθ r cosθ
+⏐⏐⏐⏐⏐⏐
+= r,
+l’´ equation du disque donne :
+(r cos(θ)− 1)2 + (r sin(θ))2≤ 1 =⇒ r 2− 2r cos(θ)≤ 0
+=⇒ 0≤ r≤ 2 cos(θ).
+Ainsi
+0≤ r≤ 2 cos(θ) et θ∈
+[
+−π
+2,π
+2
+]
+, imperatif pour avoir cos( θ)≥ 0.
+D’o` u
+∫ ∫
+D
+√
+x 2 + y 2dxdy =
+∫ π
+2
+− π
+2
+∫ 2 cos(θ)
+0
+√
+r 2 rdrdθ
+=
+∫ π
+2
+− π
+2
+∫ 2 cos(θ)
+0
+r 2 drdθ
+=
+∫ π
+2
+− π
+2
+8 cos3θ
+3 dθ.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 5
+Pour calculer cette derni` ere int´ egrale, lin´ earisons cos3(θ). Pour cela on utilise
+l’identit´ e
+cos(3x) = 4 cos 3(x)− 3 cos(x).
+Identit´ e qui nous permet d’´ ecrire:
+cos3(x) = 1
+4 (3 cos(x) + cos(3x)).
+Par cons´ equent
+∫ ∫
+D
+√
+x 2 + y 2dxdy =
+∫ π
+2
+− π
+2
+8 cos3θ
+3 dθ
+=
+∫ π
+2
+− π
+2
+2
+3 (3 cos(x) + cos(3x)) dθ
+= 32
+9 .
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Calculer
+∫∫
+∆ f (x, y)dxdy dans les cas suivants.
+a) f (x, y) = (x+y)2
+x2+y 2+1 et
+∆ =
+{
+(x, y)∈ R2 : x 2 + y 2≤ 1
+}
+.
+Solution : Pour calculer l’int´ egrale, nous allons utiliser les coordon´ ees polaires :
+{ x = r cosθ
+y = r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂r
+∂x
+∂θ
+∂y
+∂r
+∂y
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+cosθ −r sinθ
+sinθ r cosθ
+⏐⏐⏐⏐⏐⏐
+= r.
+Ainsi∫ ∫
+∆
+(x + y)2
+x 2 + y 2 + 1 dxdy =
+∫ 1
+0
+∫ 2π
+0
+r 2(cosθ + sinθ)2
+r 2 cos2θ + r 2 sin2θ + 1 r· dθdr
+=
+∫ 1
+0
+∫ 2π
+0
+r 3(cos2θ + 2 cosθ sinθ + sin2θ)
+r 2 + 1 dθdr
+=
+(∫ 1
+0
+r 3
+r 2 + 1 dr
+)
+·
+(∫ 2π
+0
+1 + 2 cosθ sinθ dθ
+)
+=
+(∫ 1
+0
+r 3
+r 2 + 1 dr
+)
+·
+(∫ 2π
+0
+1 + sin(2θ) dθ
+)
+.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Par cons´ equent
+∫ ∫
+∆
+(x + y)2
+x 2 + y 2 + 1 dxdy =
+(∫ 1
+0
+r 3
+r 2 + 1 dr
+)
+·
+(∫ 2π
+0
+1 + sin(2θ) dθ
+)
+=
+(∫ 1
+0
+r(r 2 + 1− 1)
+r 2 + 1 dr
+)
+·
+[
+θ− cos(2θ)
+2
+]2π
+0
+= 2π·
+∫ 1
+0
+r− r
+r 2 + 1 dr
+= 2π·
+([ r 2
+2
+]1
+0
+− 1
+2
+∫ 1
+0
+1
+u + 1 du
+)
+= π
+(
+1−
+[
+ln(u + 1)
+]1
+0
+)
+= π−π· ln(2).
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+b) f (x, y) = xy 2 et ∆ le disque d´ elimit´ e par le cercle d’´ equation :
+x 2 + y 2− 2Rx = 0, R > 0.
+Solution : Nous avons
+x 2 + y 2− 2Rx = ( x− R)2 + y 2− R2.
+D’o` u, l’´ equation du cercle peut s’´ ecrire:
+(x− R)2 + y 2 = R2.
+Posons
+{ x− R = u
+y = v =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂u
+∂x
+∂v
+∂y
+∂u
+∂y
+∂v
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+1 0
+0 1
+⏐⏐⏐⏐⏐⏐
+= 1 .
+Alors ∫ ∫
+∆
+xy 2 dxdy =
+∫ ∫
+∆′
+(u + R)v 2 dudv,
+o` u ∆′ est le disque d´ elimit´ e par le cercle d’´ equation :
+u2 + v 2 = R2.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Ainsi, ` a l’aide des coordon´ ees polaires
+{
+u = r cosθ
+v = r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂u
+∂r
+∂u
+∂θ
+∂v
+∂r
+∂v
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+cosθ −r sinθ
+sinθ r cosθ
+⏐⏐⏐⏐⏐⏐
+= r
+nous pouvons ´ ecrire
+∫ ∫
+∆
+xy 2 dxdy =
+∫ ∫
+∆′
+(u + R)v 2 dudv
+=
+∫ R
+0
+∫ 2π
+0
+(R + r cosθ)· r 2 sin2θ· r d θdr.
+Notons que on aurait pu, depuis le debut, utiliser le changement de
+variable :
+{ x− R = r cosθ
+y = r sinθ
+pour obtenir le mˆ eme r´ esultat.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Maintenant, nous avons
+∫ ∫
+∆
+xy 2 dxdy =
+∫ R
+0
+∫ 2π
+0
+(R + r cosθ)· r 2 sin2θ· r d θdr
+= R
+∫ R
+0
+r 3
+(∫ 2π
+0
+sin2θ dθ
+)
+dr +
+∫ R
+0
+r 4
+(∫ 2π
+0
+cosθ sin2θ dθ
+)
+dr
+= R·
+∫ r
+0
+r 3 dr·
+∫ 2π
+0
+sin2θ dθ +
+∫ r
+0
+r 4dr·
+∫ 2π
+0
+cosθ sin2θ dθ
+= R·
+[ r 4
+4
+]R
+0
+·
+∫ 2π
+0
+1− cos(2θ)
+2 dθ +
+[ r 5
+5
+]R
+0
+·
+∫ 2π
+0
+cosθ sin2θ dθ
+= R5
+4 ·
+[θ
+2− sin(2θ)
+4
+]2π
+0
++ R5
+5 ·
+∫ 2π
+0
+cosθ sin2θ dθ
+= πR5
+4 + R5
+5 ·
+∫ 2π
+0
+cosθ sin2θ dθ
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Finalement, si on pose
+sinθ = w =⇒
+∫
+cosθ sin2θ dθ =
+∫
+w 2dw = w 3
+3 = sin3θ
+3 .
+D’o` u on obtient
+∫ ∫
+∆
+xy 2 dxdy = πR5
+4 + R5
+5 ·
+∫ 2π
+0
+cosθ sin2θ dθ
+= πR5
+4 + R5
+5 ·
+[ sin3θ
+3
+]2π
+0
+= πR5
+4 .
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+c) f (x, y) = x 2 + y 2 et
+∆ =
+{
+(x, y)∈ R2 : x 2
+a2 + y 2
+b2≤ 1
+}
+.
+Solution : Posons
+{ x
+a = u
+y
+b = v =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂u
+∂x
+∂v
+∂y
+∂u
+∂y
+∂v
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+a 0
+0 b
+⏐⏐⏐⏐⏐⏐
+= a· b.
+Alors
+∫ ∫
+∆
+x 2 + y 2 dxdy =
+∫ ∫
+∆′
+(
+a2· u2 + b2· v 2)
+a· b dudv,
+o` u ∆′ est le disque d´ elimit´ e par le cercle d’´ equation :
+u2 + v 2 = 1.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Ainsi, ` a l’aide des coordon´ ees polaires
+{ u = r cosθ
+v = r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂u
+∂r
+∂u
+∂θ
+∂v
+∂r
+∂v
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+cosθ −r sinθ
+sinθ r cosθ
+⏐⏐⏐⏐⏐⏐
+= r
+nous pouvons ´ ecrire
+∫ ∫
+∆
+x 2 + y 2 dxdy =
+∫ ∫
+∆′
+a2· u2 + b2· v 2 a· b dudv
+=
+∫ 1
+0
+∫ 2π
+0
+(
+a2· r 2 cos2θ + b2· r 2 sin2θ
+)
+a· b· r d θdr.
+Notons que on aurait pu, depuis le debut, utiliser les coordon´ ees elliptiques :
+{ x = a· r cosθ
+y = b· r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂r
+∂x
+∂θ
+∂y
+∂r
+∂y
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+a· cosθ −a· r sinθ
+b· sinθ b· r cosθ
+⏐⏐⏐⏐⏐⏐
+= a· b· r.
+pour obtenir le mˆ eme r´ esultat.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 6
+Maintenant, nous avons
+∫ ∫
+∆
+x 2 + y 2 dxdy =
+∫ 1
+0
+∫ 2π
+0
+(
+a2· r 2 cos2θ + b2· r 2 sin2θ
+)
+a· b· r d θdr
+= a· b
+∫ 1
+0
+r 3dr·
+∫ 2π
+0
+a2 cos2θ + b2 sin2θ dθ
+= a· b
+4 ·
+(∫ 2π
+0
+a2 cos2θ dθ +
+∫ 2π
+0
+b2 sin2θ dθ
+)
+= a· b
+4 ·
+(
+a2
+∫ 2π
+0
+1 + cos(2θ)
+2 dθ + b2
+∫ 2π
+0
+1− cos(2θ)
+2 dθ
+)
+= a· b
+4 ·
+(
+a2
+[θ
+2 + sin(2θ)
+4
+]2π
+0
++ b2
+[θ
+2− sin(2θ)
+4
+]2π
+0
+)
+= a· b
+4 ·
+(
+a2π + b2π
+)
+= abπ
+4 · (a2 + b2).
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+a) Calculer ∫
+∆
+xy dxdy
+o` u ∆ est la partie du plan limit´ ee par :
+y = x 2 et x = y 2.
+Solution : La r´ egion limit´ ee par :
+y = x 2 et x = y 2
+est
+∆ =
+{
+(x, y)∈ R2 : 0 ≤ x≤ 1, x 2≤ y≤√x
+}
+Ainsi
+∫
+∆
+xy dxdy =
+∫ 1
+0
+∫ √x
+x2
+xy dxdy =
+∫ 1
+0
+x
+[ y 2
+2
+]√x
+x2
+dx
+=
+∫ 1
+0
+x 2
+2 − x 5
+2 dx
+=
+[ x 3
+6
+]1
+0
+−
+[ x 6
+12
+]1
+0
+= 1
+6− 1
+12 = 1
+12.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+b) Calculer l’aire de la surface limit´ ee par l’ellipse :
+x 2
+a2 + y 2
+b2 = 1, avec a> 1, b> 1.
+Solution : La r´ egion limit´ ee par l’ellipse est
+∆ =
+{
+(x, y)∈ R2 : x 2
+a2 + y 2
+b2≤ 1
+}
+.
+Ainsi
+Aire limit´ ee par l’ellipse =
+∫ ∫
+∆
+1 dxdy
+Pour calculer cette derni` ere int´ egrale, utilisons les coordon´ ees elliptiques :
+{ x = a· r cosθ
+y = b· r sinθ =⇒
+⏐⏐⏐⏐⏐⏐
+∂x
+∂r
+∂x
+∂θ
+∂y
+∂r
+∂y
+∂θ
+⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐
+a· cosθ −a· r sinθ
+b· sinθ b· r cosθ
+⏐⏐⏐⏐⏐⏐
+= a· b· r.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+D’o` u
+Aire ∆ =
+∫ ∫
+∆
+1 dxdy =
+∫ 1
+0
+∫ 2π
+0
+a· b· r drd θ
+= a· b
+∫ 1
+0
+r dr ·
+∫ 2π
+0
+dθ
+= a· b
+[ r 2
+2
+]1
+0
+·
+[
+θ
+]2π
+0
+= a· b·π.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+c) Calculer le volume limit´ e par l’ellipso ¨ ıde d´ eﬁni par :
+x 2
+a2 + y 2
+b2 + z2
+c2 = 1, avec a> 1, b> 1, c > 1.
+Solution : La r´ egion limit´ ee par l’ellipso ¨ ıde est
+∆ =
+{
+(x, y, z)∈ R3 : x 2
+a2 + y 2
+b2 + z2
+c2≤ 1
+}
+.
+Ainsi
+Volume limit´ e par l’ellipso ¨ ıde =
+∫ ∫ ∫
+∆
+1 dxdydz
+Pour calculer cette derni` ere int´ egrale, on commence par le changement
+de variable
+
+
+
+x
+a = u
+y
+b = v
+z
+c = w
+=⇒
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+∂x
+∂u
+∂x
+∂v
+∂x
+∂w
+∂y
+∂u
+∂y
+∂v
+∂y
+∂w
+∂z
+∂u
+∂z
+∂v
+∂z
+∂w
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+=
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+a 0 0
+0 b 0
+0 0 c
+⏐⏐⏐⏐⏐⏐⏐⏐⏐⏐
+= a· b· c.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+D’o` u
+∫ ∫ ∫
+∆
+1 dxdydz =
+∫ ∫ ∫
+∇
+a· b· c dudvdw ,
+avec
+∇ =
+{
+(u, v, w)∈ R3 : u2 + v 2 + w 2≤ 1
+}
+.
+Pour calculer cette derni` ere int´ egrale utilisons les coordon´ ees sph´ eriques :
+
+
+
+u = r sinϕ cosθ
+v = r sinϕ sinθ
+w = r cosϕ.
+avec
+
+
+
+0 ≤ r ≤ 1
+−π ≤ θ ≤π
+0 ≤ ϕ ≤π
+O` u on rappelle que le Jacobien est donn´ e par
+D(u, v, w)
+D(r,θ,ϕ ) = r 2 sinϕ> 0 car ϕ∈ [0,π ].
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+D’o` u
+Volume ∆ =
+∫ ∫ ∫
+∇
+a· b· c dudvdw
+=
+∫ 1
+0
+∫ π
+−π
+∫ π
+0
+a· b· c· r 2 sinϕ dϕdθdr
+= a· b· c
+∫ 1
+0
+r 2 dr·
+∫ π
+−π
+dθ·
+∫ π
+0
+sinϕ dϕ
+= a· b· c·
+[ r 3
+3
+]1
+0
+·
+[
+θ
+]π
+−π·
+[
+− cosϕ
+]π
+0
+= a· b· c· 4π
+3 .
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+d) Calculer le volume du secteur sph´ erique, limit´ e par la sph` ere de centreO et de
+rayon R et le demi-cˆ one sup´ erieur de sommetO et d’angle 2α (0<α< π
+2 ).
+Solution : Rappelons que le cˆ one de sommet O et d’angle 2α, est donn´ e par
+l’ensemble des points :
+{
+(x, y, z)∈ R3 : x2 + y 2 = z2 tan2(α)
+}
+.
+D’o` u on d´ eduit que le demi-cˆ one sup´ erieur de sommetO et d’angle 2α, est donn´ e par
+l’ensemble des points :
+{
+(x, y, z)∈ R3 : x2 + y 2 = z2 tan2(α), z≥ 0
+}
+.
+Maintenat, si on utilise les coordon´ ees sph´ eriques :
+
+
+
+x = r sinϕ cosθ
+y = r sinϕ sinθ
+z = r cosϕ.
+avec
+
+
+
+0 ≤ r
+−π ≤ θ ≤π
+0 ≤ ϕ ≤π
+l’´ equation du demi-cˆ one sup´ erieur de sommetO et d’angle 2α donne :
+r 2 sin2(ϕ)(cos2(θ) + sin2(θ)) = r 2 cos2(θ) tan2(α) =⇒ r 2 sin2(ϕ) = r 2 cos2(ϕ) tan2(α)
+=⇒ tan2(ϕ) = tan2(α)
+=⇒ ϕ =α.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+Ainsi, le demi-cˆ one sup´ erieur a pour ´ equation sph´ erique :
+r≥ 0 ; −π≤θ≤π ; ϕ =α.
+Par cons´ equent, en coordon´ ees sph´ eriques, la zone delimit´ e par le demi-cˆ one
+sup´ erieur de sommetO et d’angle 2αest :
+r≥ 0; −π≤θ≤π ; 0 ≤ϕ≤α.
+Maintenant, la sph` ere d’´ equation cart´ esienne:
+x 2 + y 2 + z 2 = R2,
+a pour ´ equation sph´ erique:
+r = R ; −π≤θ≤π ; 0 ≤ϕ≤π.
+Ainsi, la r´ egion limit´ e par la sph` ere de centreO et de rayon R est
+0≤ r≤ R ; −π≤θ≤π ; 0 ≤ϕ≤π.
+Par cons´ equent, la r´ egion limit´ e par la sph` ere de centreO et de rayon R et le
+demi-cˆ one sup´ erieur de sommetO et d’angle 2α est donn´ ee en coordon´ ees
+sph´ eriques par:
+∆ ={0≤ r≤ R; −π≤θ≤π ; 0 ≤ϕ≤α}
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 7
+D’o` u
+Volume ∆ =
+∫ ∫ ∫
+∆
+dxdydz
+=
+∫ R
+0
+∫ π
+−π
+∫ α
+0
+r 2 cos(ϕ)dϕdθdr
+=
+(∫ R
+0
+r 2dr
+)(∫ π
+−π
+dϕ
+)(∫ α
+0
+sinϕ dϕ
+)
+= 2πR3
+3 (1− cos(α)).
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 8
+Calculer ∫
+Ω
+f (x, y, z) dxdydz
+dans le cas suivants :
+a) f (x, y, z) = 1
+(x+y+z+1)3 et
+Ω =
+{
+(x, y, z)∈ R3 : x≥ 0, y≥ 0, z≥ 0, x + y + z≤ 1
+}
+.
+Solution : Nous avons
+Ω =
+{
+(x, y, z)∈ R3 : x≥ 0, y≥ 0, z≥ 0, x + y + z≤ 1
+}
+=
+{
+(x, y, z)∈ R3 : x≥ 0, y≥ 0, 0≤ z≤ 1− x− y et x + y≤ 1
+}
+=
+{
+(x, y, z)∈ R3 : 0≤ x≤ 1, 0≤ y≤ 1− x, 0≤ z≤ 1− x− y
+}
+.
+Ainsi
+∫
+Ω
+f (x, y, z) dxdydz =
+∫ 1
+0
+∫ 1−x
+0
+∫ 1−x−y
+0
+1
+(x + y + z + 1)3 dzdydx
+=
+∫ 1
+0
+∫ 1−x
+0
+[ −1
+2(x + y + z + 1)2
+]1−x−y
+0
+dydx
+= 1
+2
+∫ 1
+0
+∫ 1−x
+0
+1
+(x + y + 1)2− 1
+4 dydx
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 8
+D’o` u
+∫
+Ω
+f (x, y, z) dxdydz = 1
+2
+∫ 1
+0
+∫ 1−x
+0
+1
+(x + y + 1)2− 1
+4 dydx
+= 1
+2
+∫ 1
+0
+[ −1
+x + y + 1− y
+4
+]1−x
+0
+dx
+= 1
+2
+∫ 1
+0
+1
+x + 1− 1
+2− 1− x
+4 dx
+= 1
+2
+[
+ln(x + 1)− x
+2 + (1− x)2
+8
+]1
+0
+= 1
+2
+(
+ln(2)− 1
+2− 1
+8
+)
+= ln(2)
+2 − 5
+16
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 8
+b) f (x, y, z) = 1
+x2+y 2+z2 et
+Ω =
+{
+(x, y, z)∈ R3 : x 2 + y 2 + z 2≤ R2
+}
+.
+Solution : Utilisons les coordon´ ees sph´ eriques :
+
+
+
+x = r sinϕ cosθ
+y = r sinϕ sinθ
+z = r cosϕ.
+avec
+
+
+
+0 ≤ r ≤ R
+−π ≤ θ ≤π
+0 ≤ ϕ ≤π
+O` u on rappelle que le Jacobien est donn´ e par
+D(x, y, z)
+D(r,θ,ϕ ) = r 2 sinϕ> 0 car ϕ∈ [0,π ].
+Ainsi
+∫
+Ω
+1
+x 2 + y 2 + z 2 dxdydz =
+∫ R
+0
+∫ π
+−π
+∫ π
+0
+1
+r 2· r 2 sinϕ dϕdθdr
+=
+∫ R
+0
+∫ π
+−π
+∫ π
+0
+sinϕ dϕdθdr
+=
+[
+r
+]R
+0·
+[
+θ
+]π
+−π·
+[
+− cosϕ
+]π
+0
+= 4 πR.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 8
+c) f (x, y, z) = x2y et
+Ω =
+{
+(x, y, z)∈ R3 : 0 ≤ y≤ 1− x2, |x + y + z|≤ 1
+}
+.
+Solution : Nous avons
+|x + y + z|≤ 1 ⇐⇒ −1≤ x + y + z≤ 1
+Le domaine Ω est donc limit´ e par les deux plans d’´ equations :
+x + y + z = 1 ; x + y + z =−1.
+Sa projection sur les plan xOy est le domaine :
+Ω1 =
+{
+(x, y)∈ R2 :−1≤ x≤ 1, 0≤ y≤ 1− x2}
+.
+Ainsi
+∫
+Ω
+x2y dxdydz =
+∫ ∫
+Ω1
+∫ 1−x−y
+−1−x−y
+x2y dzdydx
+=
+∫ 1
+−1
+∫ 1−x2
+0
+∫ 1−x−y
+−1−x−y
+x2y dzdydx
+=
+∫ 1
+−1
+∫ 1−x2
+0
+[
+x2yz
+]1−x−y
+−1−x−y dydx
+=
+∫ 1
+−1
+∫ 1−x2
+0
+x2y· [(1− x− y)− (−1− x− y)] dydx.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 8
+D’o` u
+∫
+Ω
+x2y dxdydz =
+∫ 1
+−1
+∫ 1−x2
+0
+x2y· [(1− x− y)− (−1− x− y)] dydx
+=
+∫ 1
+−1
+∫ 1−x2
+0
+2· x2y dydx
+=
+∫ 1
+−1
+[ 2· x2y 2
+2
+]1−x2
+0
+dx
+=
+∫ 1
+−1
+x2(1− x2)2 dx
+=
+∫ 1
+−1
+x2− 2x4 + x6 dx
+= 2 ·
+( 1
+3− 2
+5 + 1
+7
+)
+= 16
+105.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 9
+Calculer ∫ ∫ ∫
+D
+xyz dxdydz.
+o` uD est le domaine limit´ e par les plans d’´ equation
+x = 0 ; y = 0 ; z = 0
+et la sph` ere de centreO et de rayon 1, dont les points ont des coordonn´ ees positives.
+Solution : Nous avons
+D =
+{
+(x, y, z)∈ R3 : x≥ 0, y≥ 0, z≥ 0 et x2 + y 2 + z2≤ 1
+}
+Maintenant, la projection sur les plan xOy du domaine D est le domaine situ´ e dans le
+quart de plan :
+x≥ 0 ; y≥ 0, limit´ e par les axes
+et le cercle d’´ equation
+x2 + y 2 = 1.
+Par cons´ equent
+D =
+{
+(x, y, z)∈ R3 : x≥ 0, y≥ 0, z≥ 0 et x2 + y 2 + z2≤ 1
+}
+=
+{
+(x, y, z)∈ R3 : 0 ≤ x, 0≤ y, x2 + y 2≤ 1 et 0 ≤ z≤
+√
+1− x2− y 2
+}
+=
+{
+(x, y, z)∈ R3 : 0 ≤ x≤ 1, 0≤ y≤
+√
+1− x2, 0≤ z≤
+√
+1− x2− y 2
+}
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 9
+Ainsi
+∫ ∫ ∫
+D
+xyz dxdydz =
+∫ 1
+0
+∫√
+1−x2
+0
+∫√
+1−x2−y 2
+0
+xyz dzdydx
+=
+∫ 1
+0
+∫√
+1−x2
+0
+xy
+[ z 2
+2
+]√
+1−x2−y 2
+0
+dydx
+=
+∫ 1
+0
+∫√
+1−x2
+0
+xy(1− x 2− y 2)
+2 dydx
+=
+∫ 1
+0
+x
+2
+∫√
+1−x2
+0
+(1− x 2)y− y 3dydx
+=
+∫ 1
+0
+x
+2
+[
+(1− x 2) y 2
+2 − y 4
+4
+]√
+1−x2
+0
+dx
+=
+∫ 1
+0
+x
+2
+( (1− x 2)2
+2 − (1− x 2)2
+4
+)
+dx
+=
+∫ 1
+0
+x(1− x 2)2
+8 dx.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 9
+D’o` u
+∫ ∫ ∫
+D
+xyz dxdydz =
+∫ 1
+0
+x(1− x 2)2
+8 dx
+=
+[
+− (1− x 2)3
+48
+]1
+0
+= 1
+48.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 10
+Calculer le volume limit´ e par la sph` ere de centreO et de rayon 1 et le cylindre
+d’´ equation
+x2 + y 2− x = 0.
+Solution : Param´ etrons la r´ egion ` a l’aide de coordonn´ ees cylindriques :
+
+
+
+x = r cosθ
+y = r sinθ
+z = z.
+avec
+
+
+
+0 ≤ r
+−π ≤ θ ≤π
+−∞ < z <∞
+O` u on rappelle que le Jacobien est donn´ e par
+D(x, y, z)
+D(r,θ, z) = r > 0.
+Notons que la sph` ere d’´ equation cart´ esienne :
+x2 + y 2 + z2 = 1
+a pour ´ equation cylindrique :
+r 2 + z2 = 1.
+Ainsi, en coordonn´ ees cylindriques, la r´ egion limit´ e par la sph` ere de centreO et de
+rayon 1 est
+0≤ r≤ 1 ; −π≤θ≤π ; −
+√
+1− r 2≤ z≤
+√
+1− r 2.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 10
+De plus le cylindre d’´ equation cart´ esienne
+x2 + y 2− x = 0, z∈ R ⇐⇒
+(
+x− 1
+2
+)2
++ y 2 = 1
+4, z∈ R
+a pour ´ equation cylindrique :
+r 2− r cos(θ) = 0 =⇒ r = cos(θ).
+Ainsi, en coordonn´ ees cylindriques, la r´ egion limit´ e par le le cylindre d’´ equation
+x2 + y 2− x = 0 est :
+0≤ r≤ cos(θ) ; −π
+2≤θ≤ π
+2, imperatif pour avoir cos( θ)≥ 0 ; z∈ R.
+Par cons´ equent, en coordonn´ ees cylindriques, la r´ egion limit´ e par la sph` ere de centre
+O et de rayon 1 et le cylindre d’´ equationx2 + y 2− x = 0 est :
+∆ =
+{
+−π
+2≤θ≤ π
+2 ; 0 ≤ r≤ cos(θ) ; −
+√
+1− r 2≤ z≤
+√
+1− r 2
+}
+D’o` u
+Volume ∆ =
+∫ ∫ ∫
+∆
+dxdydz =
+∫ π
+2
+− π
+2
+∫ cos(θ)
+0
+∫√
+1−r 2
+−
+√
+1−r 2
+r dzdrd θ.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 10
+Donc
+Volume ∆ =
+∫ ∫ ∫
+∆
+dxdydz =
+∫ π
+2
+− π
+2
+∫ cos(θ)
+0
+∫√
+1−r 2
+−
+√
+1−r 2
+r dzdrd θ
+=
+∫ π
+2
+− π
+2
+∫ cos(θ)
+0
+r
+[
+z
+]√
+1−r 2
+−
+√
+1−r 2 drdθ.
+=
+∫ π
+2
+− π
+2
+∫ cos(θ)
+0
+2r·
+√
+1− r 2drdθ
+=
+∫ π
+2
+− π
+2
+[
+− 2
+3 (1− r 2)
+3
+2
+]cos(θ)
+0
+dθ
+= 2
+3
+∫ π
+2
+− π
+2
+(
+1− (1− cos2(θ))
+3
+2
+)
+dθ
+= 2
+3
+∫ π
+2
+− π
+2
+(
+1− (sin2(θ))
+3
+2
+)
+dθ
+= 2
+3
+∫ π
+2
+− π
+2
+1−
+⏐⏐sin3(θ)
+⏐⏐ dθ
+= 2π
+3 − 4
+3
+∫ π
+2
+0
+sin3(θ)dθ.
+Int´ egration & Probabilit´ es
+<<<PAGE>>>
+Exercice 10
+Maintenant
+∫ π
+2
+0
+sin3(θ)dθ =
+∫ π
+2
+0
+sin(θ)(1− cos2(θ))dθ
+=
+∫ π
+2
+0
+sin(θ)− cos2(θ) sin(θ)dθ
+=
+[
+− cos(θ)
+] π
+2
+0 −
+[
+− cos3(θ)
+3
+] π
+2
+0
+= 1− 1
+3 = 2
+3.
+Donc
+Volume ∆ = 2π
+3 − 8
+9.
+Int´ egration & Probabilit´ es

@@ -1,0 +1,258 @@
+Un Corrigé des Exercices 1 & 3
+Yalçin Aktar
+01.02.26
+Rappel Méthode (Notations du cours):
+Pour résoudre une équation linéairey′(t) +a(t)y(t) =b(t)avect 0 = 0:
+1. On calcule lefacteur intégrant:µ(t) = exp
+Z t
+0
+a(s)ds
+
+.
+2. Lasolution homogèneest :v h(t) = K
+µ(t).
+3. Lasolution particulièreest :v p(t) = 1
+µ(t)
+Z t
+0
+µ(s)b(s)ds.
+4. Solution générale :v(t) =v h(t) +vp(t).
+Exercice 1 : Oscillateur et Masse Variable
+1. Cas de la masse constante (m)
+Équation :mv′ +kv=λcost⇐⇒v ′ + k
+mv= λ
+m cost. Ici,a(t) = k
+m (constante) etb(t) = λ
+m cost.
+Step 1 : Calcul deµ(t)
+µ(t) = exp
+Z t
+0
+k
+mds
+
+= exp
+ k
+ms
+t
+0
+!
+=e
+k
+mt
+Step 2 : Solution homogènev h
+vh(t) = K
+µ(t) = K
+e
+k
+mt =Ke− k
+mt
+Step 3 : Solution particulièrev p
+On applique la formule intégrale :
+vp(t) = 1
+µ(t)
+Z t
+0
+µ(s)b(s)ds=e − k
+mt
+Z t
+0
+e
+k
+msλ
+m cossds
+Note : Pour le calcul effectif de cette intégrale, on peut procéder par double IPP ou Partie réelle d’une
+intégrale complexe ou identification (formeAcost+Bsint). Par identification (vu en TD), on trouve :
+vp(t) = λ
+k2 +m 2 (kcost+msint)
+1
+<<<PAGE>>>
+CY TECH– ING1 GMCorrigé TD1 - Groupe 1 et Groupe 3
+2. Cas de la masse variable :m(t) =m 0(1−t)surI= [0,1[
+L’équation devient :m0(1−t)v ′ +kv=λcost. Forme normalisée :
+v′ + k
+m0(1−t)| {z }
+a(t)
+v= λ
+m0(1−t) cost
+| {z }
+b(t)
+Step 1 : Calcul deµ(t)
+µ(t) = exp
+Z t
+0
+k
+m0(1−s) ds
+
+Primitive de 1
+1−s est−ln(1−s). Donc :
+Z t
+0
+k
+m0(1−s) ds=
+
+− k
+m0
+ln(1−s)
+t
+0
+=− k
+m0
+ln(1−t) = ln
+
+(1−t) − k
+m0
+
+D’où le facteur intégrant :
+µ(t) = exp
+
+ln
+
+(1−t) − k
+m0
+
+= (1−t) − k
+m0
+Step 2 : Solution homogènev h
+vh(t) = K
+µ(t) = K
+(1−t) − k
+m0
+=K(1−t)
+k
+m0
+Step 3 : Solution particulièrev p
+On applique la formule avecµ(t):
+vp(t) = 1
+µ(t)
+Z t
+0
+µ(s)b(s)ds
+vp(t) = (1−t)
+k
+m0
+Z t
+0
+(1−s) − k
+m0
+| {z }
+µ(s)
+· λ
+m0(1−s) coss
+| {z }
+b(s)
+ds
+On simplifie le terme dans l’intégrale :(1−s)− k
+m0·(1−s) −1 = (1−s) −(1+ k
+m0
+).
+v(t) =K(1−t)
+k
+m0 + λ
+m0
+(1−t)
+k
+m0
+Rt
+0 (1−s) −(1+ k
+m0
+) cossds
+2
+<<<PAGE>>>
+CY TECH– ING1 GMCorrigé TD1 - Groupe 1 et Groupe 3
+Exercice 3 : Équation Logistique (x ′ =ax−bx 2)
+Question 1 : Interprétation des constantes
+L’équation modélise une dynamique de population :
+—a >0:T aux de croissance intrinsèque(naissances - morts naturelles). Sans limitation, la
+population croîtrait exponentiellement (x′≈ax).
+—b>0:T aux de limitation(compétition pour les ressources, prédation). Le terme−bx 2 freine
+la croissance quandxdevient grand.
+Question 2 : Résolution par Variables Séparées
+On cherchex(t)tel que dx
+dt =x(a−bx). On sépare les variables pourx /∈{0,a/b}:
+dx
+x(a−bx) =dt
+Décomposition en éléments simples :On chercheA,Btels que 1
+x(a−bx) = A
+x + B
+a−bx.
+1 =A(a−bx) +Bx=⇒
+(
+x= 0→1 =Aa=⇒A= 1/a
+x=a/b→1 =B(a/b) =⇒B=b/a
+L’intégrale devient :
+1
+a
+Z  1
+x + b
+a−bx
+
+dx=
+Z
+dt
+!Attention :Ne pas écrire+ ln|a−bx|! La dérivée deln(u)estu ′/u. Iciu(x) =a−bx, donc
+u′ =−b. La primitive de b
+a−bx est donc−ln|a−bx|(à cause du signe−dans la dérivée interne).
+1
+a (ln|x|−ln|a−bx|) =t+K=⇒ln
+
+x
+a−bx
+ =at+aK
+En passant à l’exponentielle et en isolantx:
+x(t) = a
+b+Ce−at (avecC∈R)
+Question 3 : Résolution type Bernoulli
+L’équationx′−ax+bx 2 = 0est une équation de Bernoulli (r= 2).
+1.Changement de variable :On posez(t) =x(t) 1−2 = 1
+x(t). Alorsx= 1/zetx ′ =−z′/z2.
+2.Équation en z :
+−z′
+z2−a 1
+z +b 1
+z2 = 0⇐⇒z ′ +az=b
+3.Résolution linéaire :
+— Facteur intégrantµ(t) =e at. Solution homogènezh =Ke−at.
+— Solution particulière constante :zp =b/a.
+z(t) =Ke −at + b
+a
+4.Retour à x :
+x(t) = 1
+z(t) = 1
+Ke−at + b
+a
+= a
+aKe−at +b
+3
+<<<PAGE>>>
+CY TECH– ING1 GMCorrigé TD1 - Groupe 1 et Groupe 3
+Question 4 : Comportement Asymptotique
+On suppose une condition initialex 0 >0. La solution estx(t) = a
+b+Ce−at. Puisquea >0, on a
+limt→+∞e−at = 0.
+lim
+t→+∞
+x(t) = a
+b+ 0 = a
+b
+Conclusion :Quelle que soit la population initiale (positive), elle tend vers la capacité d’accueil limite
+du milieuKlim =a/b.
+Question 5 : Équilibres et Stabilité
+Les points d’équilibre sont les solutions stationnaires (x(t) =Cte), c’est-à-dire les racines def(x) =
+ax−bx 2 = 0.
+x(a−bx) = 0⇐⇒x eq1 = 0oux eq2 = a
+b
+Étude de la stabilité :On étudie le signe de la dérivéef ′(x)aux points d’équilibre (Critère de
+stabilité linéaire). Icif′(x) =a−2bx.
+1.Enx eq1 = 0:
+f′(0) =a>0
+La dérivée est positive, donc une petite perturbation va s’amplifier (la solution s’éloigne de 0).
+L’équilibrex= 0est INST ABLE.
+2.Enx eq2 = a
+b :
+f′(a/b) =a−2b( a
+b ) =a−2a=−a<0
+La dérivée est négative, donc une petite perturbation va s’amortir (la solution revient vers
+l’équilibre).
+L’équilibrex=a/best ST ABLE (Asymptotiquement).
+4

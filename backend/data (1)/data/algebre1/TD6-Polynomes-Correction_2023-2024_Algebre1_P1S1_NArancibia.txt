@@ -1,0 +1,1657 @@
+Alg` ebre-Premier semestre 2023-2024
+CY Tech
+TD Alg` ebre
+Polynˆ omes.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+R´ esoudre les ´ equations suivantes :
+(1) Q(X )2 = X· P(X )2 d’inconnues P et Q dans C[X ].
+(2) P◦ P = P d’inconnue P dans C[X ].
+(3) P(X 2) = (X 2 + 1)P(X ) d’inconnue P dans C[X ].
+Solution : Nous allons r´ esoudre chaque ´ equation ` a l’aide du degr´ e des
+polynˆ omes.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+(1) Q(X )2 = X· P(X )2 d’inconnues P et Q dans C[X ].
+Solution : Supposons qu’il existe un couple de polynˆ omes (P, Q) solution de la
+´ equation
+Q(X )2 = X· P(X )2.
+On s´ epare le probl` eme en trois cas :
+P⁄= 0 et Q⁄= 0 : L’´ egalit´ eQ(X )2 = X· P(X )2 implique que
+deg
+(
+Q(X )2
+)
+= deg
+(
+X· P(X )2
+)
+=⇒ 2 deg(Q) = 1 + 2 deg(P)
+=⇒ 1 = 2(deg( Q)− deg(P)),
+ce qui implique que 1 est un entier pair : c’est absurde. Donc, si P et Q
+sont solution de l’equation , alors il faut qu’au moins un des deux
+polynomes soit le polynome nul.
+P = 0 : Alors
+Q(X )2 = X· P(X )2 = 0 =⇒ Q2(X ) = 0 =⇒ Q(X ) = 0.
+Ainsi Q = P = 0. Il est imm´ ediat queP = Q = 0 est solution de
+l’´ equation.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+Q = 0 : Alors
+X· P(X )2 = Q(X )2 = 0 =⇒ X· P(X )2 = 0
+=⇒ P(X )2 = 0
+=⇒ P = 0.
+Ainsi P = Q = 0. Donc le couple de polynˆ ome nul est la seule
+solution possible.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+(2) R´ esoudre l’´ equationP◦ P = P d’inconnue P dans C[X ].
+Solution : Le polynˆ ome nul est ´ evidemment solution.Supposons qu’il
+existe un polynˆ ome non nulP solution. Nous avons
+P◦ P = P =⇒ deg(P◦ P) = (deg(P))
+=⇒ deg(P)2 = deg P
+=⇒ deg(P) = 0 ou deg( P) = 1
+=⇒ P(X ) = aX + b avec a, b∈ C.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+Maintenant
+P◦ P = P =⇒ P(P(X )) = P(X )
+=⇒ a (aX + b) + b = aX + b
+=⇒ a2X + ab + b = aX + b
+=⇒ (a2− a)X + ab = 0
+=⇒ a(a− 1) = 0 et ab = 0
+=⇒ (a = 1 et b = 0) ou ( a = 0 et b∈ C)
+=⇒ P(X ) = X ou P(X ) = b avec b∈ C.
+On peut conclure que les polynˆ omes P solutions sont les polynˆ omes
+constants et celui d´ eﬁni parP(X ) = X . Il est clair en eﬀet que
+r´ eciproquement, ces polynˆ omes sont bien solutions.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+(3) R´ esoudre l’´ equationP(X 2) = (X 2 + 1)P(X ) d’inconnue P dans C[X ].
+Solution : Le polynˆ ome nul est ´ evidemment solution.Supposons qu’il
+existe un polynˆ ome non nulP solution. Nous avons
+P(X 2) = (X 2 + 1)P(X ) =⇒ deg(P(X 2)) = (deg((X 2 + 1)P))
+=⇒ 2 deg(P) = 2 + deg P
+=⇒ deg(P) = 2
+=⇒ P(X ) = aX 2 + bX + c
+avec a∈ C∗ et b, c∈ C.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.1
+Et on obtient alors
+P(X 2) = (X 2 + 1)P(X ) =⇒ aX 4 + bX 2 + c = (X 2 + 1)(aX 2 + bX + c)
+=⇒ aX 4 + bX 2 + c = aX 4 + bX 3 + (c + a)X 2 + bX + c
+=⇒ bX 2 + c = bX 3 + (c + a)X 2 + bX + c
+=⇒ b = 0 et a + c = b
+=⇒ c =−a et b = 0
+=⇒ P(X ) = aX 2− a avec a∈ C∗.
+Les seuls polynˆ omesP pouvant ˆ etre solutionsont donc ﬁnalement ceux
+s’exprimant sous la forme P(X ) = a(X 2− 1), avec a∈ C. R´ eciproquement, soit
+P un tel polynˆ ome, alors :
+P(X 2) = a(X 4− 1) = a(X 2 + 1)(X 2− 1) = (X 2 + 1)P(X ).
+Conclusion : les solutions sont les polynˆ omesP s’exprimant sous la forme
+a(X 2− 1), avec a∈ C.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.2
+R´ esoudre les ´ equations suivantes d’inconnueP∈ C[X ] :
+(1) ( P′(X ))2 = 4P(X ).
+(2) P(X )− XP′(X ) = X.
+Solution :
+(1) (P′(X ))2 = 4P(X ) : Le polynˆ ome nul est ´ evidemment solution.
+Notons que tout autre polynome constant n’est pas solution de
+l’equation. Soit donc P solution de l’equation avec
+deg(P)≥ 1.
+Alors
+(P′(X ))2 = 4P(X ) =⇒ deg(4P) = deg
+(
+(P′)2)
+=⇒ deg(P) = 2 deg(P′) = 2(deg(P)− 1)
+=⇒ deg(P) = 2
+=⇒ P(X ) = aX 2 + bX + c
+avec a∈ C∗ et b, c∈ C.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.2
+Et on obtient alors
+(P′(X ))2 = 4P(X ) =⇒ (2aX + b)2 = 4(aX 2 + bX + c)
+=⇒ 4a2X 2 + 4abX + b2 = 4aX 2 + 4bX + 4c
+=⇒ 4a2 = 4a ; 4 ab = 4b ; b2 = 4c
+=⇒ a(a− 1) = 0 ; b(a− 1) = 0 ; c = b2/4
+=⇒ a = 1 ; b∈ C ; c = b2/4
+=⇒ P = X 2 + bX + b2
+4 avec b∈ C.
+Les seules solutions possibles sont donc le polynˆ ome nul et les polynˆ omes
+P de la forme
+X 2 + bX + b2
+4 , b∈ C.
+On v´ eriﬁe r´ eciproquement que tous les polynˆ omes de ce type sont bien
+solutions.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.2
+(2) P(X )− XP′(X ) = X : Supposons que
+P =
+n∑
+k=0
+ak X k∈ C[X ]
+est solution de l’equation. Alors
+P(X )− XP′(X ) = X =⇒
+n∑
+k=0
+ak X k− X
+n∑
+k=1
+kak X k−1 = X
+=⇒
+n∑
+k=0
+ak X k−
+n∑
+k=1
+kak X k = X
+=⇒ a0 +
+n∑
+k=1
+(ak− kak)X k = X
+=⇒ a0 = 0 ; ( a1− a1) = 1 ; ∀k > 1, ak(1− k) = 0
+=⇒ a0 = 0 ; 0 = 1 ; ∀k > 1, ak = 0.
+Ce qui est absurde. Donc le probl` eme n’a pas de solution.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.3
+Eﬀectuer la division euclidienne de : ( X 4− X 3 + X− 2) par
+(X 2− 2X + 4).
+Solution : On pose une division de polynˆ omes comme on pose une
+division euclidienne de deux entiers. En eﬀet
+X 4 - X 3 + X - 2 X 2− 2X + 4
+- X 4 - 2 X 3 + 4 X 2 X 2+X−2
+X 3 - 4 X 2 + X - 2
+- X 3 - 2 X 2 + 4 X
+-2X 2 - 3 X - 2
+- -2 X 2 + 4 X - 8
+- 7 X + 6
+Alors on trouve
+Q = X 2 + X− 2 (Quotient) et R =−7X + 6 (Reste).
+On n’oublie pas de v´ eriﬁer qu’eﬀectivementA = BQ + R.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.3
+Eﬀectuer la division euclidienne de : (3 X 5 + 2X 4− X 2 + 1) par
+(X 3 + X + 2).
+Solution : On pose une division de polynˆ omes comme on pose une
+division euclidienne de deux entiers. En eﬀet
+3X 5 + 2 X 4 − X 2 + + 1 X 3 + X + 2
+− 3X 5 + 3 X 3 + 6 X 2 3X 2+2X −3
+2X 4 − 3X 3 − 7X 2 + + 1
+− 2X 4 + 2 X 2 + 4 X
+−3x3 − 9X 2 − 4X + 1
+- −3x3 − 3X − 6
+−9X 2 + X + 7
+Alors on trouve
+Q = 3X 2 + 2X− 3 (Quotient) et R =−9X 2− X + 7 (Reste).
+On n’oublie pas de v´ eriﬁer qu’eﬀectivementA = BQ + R.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.4
+Eﬀectuer les divisions euclidiennes de :
+(3X 5 + 4X 2 + 1) par ( X 2 + 2X + 3) : Solution :
+(3X 5 + 4X 2 + 1) = (X 2 + 2X + 3)(3X 3− 6X 2 + 3X + 16) + (−41X− 47).
+(X 5− 7X 4− X 2− 9X + 9) par ( X 2− 5X + 4) : Solution :
+(X 5−7X 4−X 2−9X +9) = (X 2−5X +4)(X 3−2X 2−14X−63)+(−268X +261)
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.5
+D´ emontrer les divisibilit´ es suivantes et d´ eterminer les quotients
+correspondants :
+1 (X− 1)|(X 3− 2X 2 + 3X− 2).
+2 (X− 2)|(X 3− 3X 2 + 3X− 2).
+3 (X + 1)|(X 3 + 3X 2− 2).
+Solution : Il suﬃt dans chaque cas d’eﬀectuer la division euclidienne et
+d’observer que le reste de cette division est le polynˆ ome nul. Nous avons :
+1 (X 3− 2X 2 + 3X− 2) = (X− 1)(X 2− X + 2).
+2 (X 3− 3X 2 + 3X− 2) = (X− 2)(X 2− X + 1).
+3 (X 3 + 3X 2− 2) = (X + 1)(X 2 + 2X− 2).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.6
+Soit (a; b)∈ C2 tel que a⁄= b et soit P∈ C[X ].
+(a) Sachant que le reste de la division euclidienne de P par X− a est 1
+et celui de la division euclidienne de P par X− b est−1, quel est le
+reste de la division euclidienne de P par (X− a)(X− b).
+(b) G´ en´ eralisation: D´ eterminer le reste de la division euclidienne de P
+par (X− a)(X− b) en fonction de P(a), P(b), a et b.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.6
+(1) Sachant que le reste de la division euclidienne de P par X− a est 1 et celui
+de la division euclidienne de P par X− b est−1, quel est le reste de la division
+euclidienne de P par (X− a)(X− b).
+Solution : Soit P un polynome satisfaisant les hypoth` eses.Le Th´ eor` eme de la
+division euclidienne, nous dit qu’il existe Q(X ) et R(X )∈ C[X ], tels que
+P(X ) = (X− a)(X− b)Q(X ) + R(X ), deg(R)< deg((X− a)(X− b)) = 2.
+Comme deg( R)< 2, on d´ eduit queR(X ) = cX + d avec c, d∈ C. Nous allons
+d´ eterminerc et d. Maintenant :
+puisque le reste de la division euclidienne de P par X− a est 1, il existe
+Q1∈ C[X ] tel que
+P(X ) = (X− a)Q1(X ) + 1 =⇒ P(a) = 1.
+puisque le reste de la division euclidienne de P par X− b est -1, il existe
+Q2∈ C[X ] tel que
+P(X ) = (X− b)Q2(X )− 1 =⇒ P(b) =−1.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.6
+D’o` u on en d´ eduit
+{
+1 = P(a) = R(a) = ac + d
+− 1 = P(b) = R(b) = bc + d =⇒
+{
+1 = ac + d
+−1 = bc + d
+=⇒
+{ c = 2
+a−b
+d = a+b
+b−a
+Le reste est donc
+R(X ) = cX + d
+= 2
+a− b X + a + b
+b− a.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.6
+(b) G´ en´ eralisation: D´ eterminer le reste de la division euclidienne de P par
+(X− a)(X− b) en fonction de P(a), P(b), a et b.
+Solution : Soit P∈ C[X ]. Le Th´ eor` eme de la division euclidienne, nous dit
+qu’il existe Q(X ) et R(X )∈ C[X ], tels que
+P(X ) = (X− a)(X− b)Q(X ) + R(X ), deg(R)< deg((X− a)(X− b)) = 2.
+Comme deg(R)< 2, on d´ eduit queR(X ) = cX + d avec c, d∈ C. Nous allons
+d´ eterminerc et d. Nous avons :
+{ P(a) = R(a) = ac + d
+P(b) = R(b) = bc + d =⇒
+{ P(a) = ac + d
+P(b) = bc + d
+=⇒
+{
+c = P(b)−P(a)
+b−a
+d = bP(a)−aP(b)
+b−a
+Le reste est donc
+R(X ) = P(b)− P(a)
+b− a X + bP(a)− aP(b)
+b− a .
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.7
+D´ eterminer une condition n´ ecessaire et suﬃsante sur (a; b)∈ C2 pour
+que le polynˆ ome (X 2 + 2) divise ( X 4 + X 3 + aX 2 + bX + 2).
+Solution : Eﬀectuons la division euclidienne de
+(X 4 + X 3 + aX 2 + bX + 2) par ( X 2 + 2).
+Nous avons
+X 4 + X 3 + aX 2 + bX + 2 X 2 + 2
+- X 4 + 2 X 2 X 2+X +(a-2)
+X 3 + ( a − 2)X 2 + bX + 2
+- X 3 + 2 X
+(a − 2)X 2 + ( b − 2)X + 2
+- ( a − 2)X 2 + + 2( a − 2)
++ ( b − 2)X + (6 − 2a)
+Par cons´ equent
+(X 4 + X 3 + aX 2 + bX + 2) = (X 2 + 2)(X 2 + X + (a− 2)) + [(b− 2)X + (6− 2a)].
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.7
+Ainsi, le polynˆ ome (X 2 + 2) divise ( X 4 + X 3 + aX 2 + bX + 2) si et
+seulement si
+(b− 2)X + (6− 2a) = 0 ⇐⇒ b = 2 et a = 3.
+La condition n´ ecessaire et suﬃsante est donc
+b = 2 et a = 3
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.8
+D´ eterminer tous les polynˆ omes deR3[X ] divisibles par ( X− 1) et ayant
+le mˆ eme reste dans les divisions euclidiennes par (X− 2), (X− 3) et
+(X− 4).
+Notation :
+R3[X ] = ensemble des polynˆ omes ` a coeﬃcients r´ eels de degr´ e inf´ erieur
+ou ´ egal ` a 3
+Solution : Soit P un polynome de degr´ e au plus 3 dans R[X ], v´ eriﬁant
+toutes ces propri´ et´ es.Nous avons
+(X− 1) divise P. Donc il existe un polynome de degre au plus 2
+Q(X ) = aX 2 + bX + c
+tel que
+P(X ) = (X− 1)Q(X ) = (X− 1)(aX 2 + bX + c).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.8
+Aussi
+puisque le reste dans la divisions euclidiennes de P par (X− 2),
+(X− 3) et (X− 4) est le mˆ eme, on conclut qu’il existe
+Q1, Q2, Q3∈ R[X ] et R un polynome constante
+tel que
+P = ( X− 2)Q1(X ) + R,
+P = ( X− 3)Q2(X ) + R,
+P = ( X− 4)Q3(X ) + R.
+D’o` u on en d´ eduit,
+P(2) = (2− 2)Q1(2) + R = R,
+P(3) = (3− 3)Q2(3) + R = R,
+P(4) = (4− 4)Q3(4) + R = R.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.8
+Ainsi, ` a l’aide de l’´ egalit´ eP(X ) = (X− 1)(aX 2 + bX + c), on conclut
+R = P(2) = 4a + 2b + c,
+R = P(3) = 18a + 6b + 2c,
+R = P(4) = 48a + 12b + 3c.
+La r´ esolution de ce syst` eme fournit
+
+
+
+R = 4 a + 2b + c
+R = 18 a + 6b + 2c
+R = 48 a + 12b + 3c
+=⇒
+
+
+
+b = −8a
+c = 18 a
+R = 6 a
+avec a∈ R.
+Par cons´ equent, P doit nec´ essairement satisfaire l’´ egalit´ e
+P(X ) = a(X− 1)(X 2− 8X + 18)
+= aX 3− 9aX 2 + 26aX− 18a, avec a∈ R.
+On v´ eriﬁe r´ eciproquement que tous les polynˆ omes de cette forme sont
+bien solutions.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.9
+Montrer que le polynˆ ome
+P(X ) = 1 + X + X 2
+2! +··· + X n
+n!
+ne poss` ede que des racines simples dans C.
+Solution : Utilisons un raissonement par l’absurde. Supposons donc α∈ C est
+une racine au moins double de P. Ainsi, α est une racine au moins simple de
+P′. Or
+P′(X ) = 1 + X + 3X 2
+3! +··· + nX n−1
+n!
+= 1 + X + X 2
+2! +··· + X n−1
+(n− 1)!.
+Ceci implique que
+P(X )− P′(X ) = X n
+n! =⇒ αn
+n! = P(α)− P′(α) = 0− 0 = 0
+(α est racine de P et P ′)
+=⇒ α = 0.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.9
+Or
+P(0) = 1 + 0 + 02
+2! +··· + 0n
+n!
+= 1⁄= 0.
+Contradiction ! car on a suppos´ e queα est une racine. Donc P ne
+poss` ede que des racines simples.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.10
+Soit n∈ N. On consid` ere un r´ eela ﬁx´ e et un polynˆ omeP∈ Rn[X ] tel que
+P(a)> 0 et que :
+∀k∈ N, 0≤ k≤ n, P(k)(a)≥ 0.
+D´ emontrer queP ne s’annule pas sur [ a, +∞[.
+Solution : En utilisant la formule de Taylor en a, on obtient :
+P(X ) =
+n∑
+k=0
+P(k)(a)
+k! (X− a)k.
+Ainsi, pour tout x∈ [a, +∞[, nous avons
+P(x) =
+n∑
+k=0
+P(k)(a)
+k! (x− a)k = P(a) +
+n∑
+k=1
+P(k)(a)
+k! (x− a)k
+≥|{z}
+car x≥a et P(k)(a)≥0
+P(a)> 0.
+C’est-` a-dire, pour tout x∈ [a, +∞[, P(x)> 0. On a bien montr´ e ainsi queP
+ne s’annule pas sur [ a, +∞[.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.11
+D´ eterminer tous les polynˆ omes deC[X ] divisibles par leur polynˆ ome
+d´ eriv´ e.
+Solution : Soit P∈ C[X ] une ´ eventuelle solution.Si deg( P)≤ 0, alors la
+seule solution est clairement
+P = 0.
+Supposons donc que
+deg(P) = n≥ 1.
+Comme par hypoth` eseP′ divise P, on conclut qu’il existe un polynome
+Q∈ C[X ] tel que
+P(X ) = P′(X )Q(X ).
+Or
+deg(P′) = deg(P)− 1 =⇒ deg(Q) = 1
+=⇒ Q(X ) =λ(X−α).
+Par cons´ equent
+P(X ) =λ(X−α)P′(X ).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.11
+Maintenant, si on applique la formule de Taylor ` a P en α, on obtient
+P(X ) =
+n∑
+k=0
+P(k)(α)
+k! (X−α)k.
+Formule qui nous permet d’´ ecrire
+P′(X ) =
+n∑
+k=1
+P(k)(α)
+k! k(X−α)k−1 =⇒ P(X ) = λ(X−α)P′(X )
+=
+n∑
+k=1
+P(k)(α)
+k! λk(X−α)k.
+Ainsi
+n∑
+k=0
+P(k)(α)
+k! (X−α)k =
+n∑
+k=1
+P(k)(α)
+k! λk(X−α)k.
+Par identiﬁcation, on conclut pour tout k∈ N, 0≤ k≤ n, l’´ egalit´ e :
+P(k)(α)
+k! = P(k)(α)
+k! λk =⇒ P(k)(α)
+k! (λk− 1) = 0.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.11
+Finalement, puisque P(n)(α)⁄= 0 (En eﬀet
+deg P = n =⇒ P(n)(X ) = n!· (coeﬃcient dominant de P)),
+on conclut
+P(n)(α)
+n! (λn− 1) = 0 =⇒ λ = 1
+n
+=⇒ ∀k < n, P(k)(α)
+k! = 0.
+Par cons´ equent
+P(X ) = P(n)(α)
+n! · (X−α)n.
+Ce qui prouve que P(X ) est de la forme K (X−α)n avec K∈ C.
+R´ eciproquement, on v´ eriﬁe imm´ ediatement que tous les polynˆ omes de la
+forme pr´ ec´ edente sont solution.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.12
+Justiﬁer les divisibilit´ es suivantes :
+(1) Pour tout n∈ N, X 2 divise ( X + 1)n− nX− 1.
+(2) Pour tout n∈ N∗ (X− 1)3 divise nX n+2− (n + 2)X n+1 + (n + 2)X− n.
+Solution :
+(1) Soit P(X ) = (X + 1)n− nX− 1. Commen¸ cons par noter que
+X 2 divise P ⇐⇒ 0 est une racine de multiplicite au moins 2.
+Montrons donc que 0 est une racine au moins double de P. Si n = 0, alors P est
+le polynome nul et P est divisible par X 2. Supposons n≥ 1, alors nous avons
+P(0) = (0 + 1)n− n· 0− 1 = 1− 1 = 0.
+Ainsi 0 est une racine de P. De plus
+P′(X ) = n(X + 1)n−1− n =⇒ P′(0) = n(0 + 1)n−1− n = 0.
+Ainsi 0 est une racine de P′. Par cons´ equent, 0 est une racine au moins double
+de P. Donc X 2 divise P.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.12
+(2) Soit P(X ) = nX n+2− (n + 2)X n+1 + (n + 2)X− n. Commen¸ cons par noter
+que
+(X− 1)3 divise P ⇐⇒ 1 est une racine de multiplicite au moins 3.
+Montrons donc que 1 est une racine au moins triple de P. Nous avons
+P(1) = n− (n + 2) + (n + 2)− n = 0
+Ainsi 1 est une racine de P. De plus
+P′(X ) = n(n + 2)X n+1 − (n + 2)(n + 1)X n + (n + 2)
+=⇒ P′(1) = n(n + 2)− (n + 2)(n + 1) + (n + 2) = 0.
+et
+P′′(X ) = n(n + 1)(n + 2)X n − (n + 2)(n + 1)nX n−1
+=⇒ P′′(1) = n(n + 1)(n + 2)− n(n + 2)(n + 1) = 0.
+Ainsi 1 est une racine de P′ et de P′′. Par cons´ equent, 1 est une racine au
+moins triple de P. Donc ( X− 1)3 divise P.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.13
+D´ eterminer les polynˆ omesP qui v´ eriﬁent :
+(1) P(0) = P(1) = P(2) =··· jusqu’` a l’inﬁni.
+(2) P(X + 1) = P(X ).
+(3) La fonction polynomiale associ´ ee ` aP est p´ eriodique.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.13
+(1) P(0) = P(1) = P(2) =··· jusqu’` a l’inﬁni.
+Solution : Soit
+Q(X ) = P(X )− P(0).
+Alors
+0 = Q(0) = Q(1) = Q(2) =··· =⇒ ∀ n∈ N, Q(n) = 0.
+Par cons´ equent, Q poss` ede une inﬁnit´ e des racines, c’est donc le
+polynˆ ome nul
+0 = Q(X ) = P(X )− P(0) =⇒ P(X ) = P(0).
+Ainsi P est un polynome constante. R´ eciproquement, les polynˆ omes
+constants ´ etant solutions, les solutions sont les polynˆ omes constants.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.13
+(2) P(X + 1) = P(X ).
+Solution : Si P(X ) = P(X + 1), alors
+P(0) = P(1) = P(2) = P(3) =··· .
+Nous sommes donc dans le cas pr´ ec´ edent.Les solutions sont donc les
+polynˆ omes constants.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.13
+(3) La fonction polynomiale associ´ ee ` aP est p´ eriodique.
+Solution : Soit T la p´ eriode de P.Nous avons :
+P(X ) = P(X + T ) =⇒ P(0) = P(T ) = P(2T ) = P(3T ) =··· .
+Ainsi, si nous posons Q(X ) = P(X )− P(0), on conclut
+∀n∈ N, Q(nT ) = 0 =⇒ Q admet une inﬁnit´ e des racines.
+=⇒ Q(X ) = 0
+=⇒ P(X ) = P(0)
+=⇒ P est un polynˆ ome constant.
+Les solutions sont donc les polynˆ omes constants.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.14
+D´ emontrer qu’il existe un unique polynˆ omeP de degr´ e inf´ erieur ou ´ egal ` a 3,
+que l’on d´ eterminera, tel que
+(X− 1)2 divise ( P(X )− 1) et ( X + 1)2 divise ( P(X ) + 1).
+Solution : Supposons que P = aX 3 + bX 2 + cX + d v´ eriﬁe les hypoth` eses.Alors
+(X− 1)2 divise ( P(X )− 1) =⇒ 1 est une racine au moins double de P(X )− 1
+=⇒ 1 est une racine au moins simple de
+(P(X )− 1)′ = P′(X )
+=⇒ P(1) = 1 et P′(1) = 0
+De mˆ eme
+(X + 1)2 divise ( P(X ) + 1) =⇒ −1 est une racine au moins double de P(X ) + 1
+=⇒ −1 est une racine au moins simple de
+(P(X ) + 1)′ = P′(X )
+=⇒ P(−1) =−1 et P′(−1) = 0.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.14
+D’o` u on conclut
+
+
+
+P(1) = 1
+P(−1) = −1
+P′(1) = 0
+P′(−1) = 0
+⇐⇒
+
+
+
+a + b + c + d = 1
+−a + b− c + d = −1
+3a + 2b + c = 0
+3a− 2b + c = 0
+E3+E4
+=⇒
+E1−E2
+{ 3a + c = 0
+2a + 2c = 2
+Ceci implique que
+a =− 1
+2 et c = 3
+2.
+D’o` u
+2b = 3a + c =− 3
+2 + 3
+2 = 0.
+Donc b = 0. Puis
+d = 1− a− b− c = 1 + 1
+2− 3
+2 = 0.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.14
+Donc l’unique posibilit´ e pourP est
+P(X ) =− 1
+2 X 3 + 3
+2 X.
+On v´ eriﬁe facilement que ce polynˆ ome est bien solution.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.15
+D´ eterminer tous les polynˆ omesP de R5[X ] tels que ( X + 2)3 divise
+(P(X ) + 10) et que ( X− 2)3 divise ( P(X )− 10)
+Solution : Supposons que P(X ) v´ eriﬁe les hypoth` eses.Alors
+(X + 2)3 divise ( P(X ) + 10) =⇒ −2 est une racine au moins triple de
+P(X ) + 10
+=⇒ −2 est une racine au moins double de
+(P(X ) + 10)′ = P′(X )
+=⇒ (X + 2)2 divise P′(X )
+De mˆ eme
+(X− 2)3 divise ( P(X )− 10) =⇒ 2 est une racine au moins triple de P(X )− 10
+=⇒ 2 est une racine au moins double de
+(P(X )− 10)′ = P′(X )
+=⇒ (X− 2)2 divise P′(X )
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.15
+Ainsi
+(X− 2)2|P′(X ) et ( X + 2)2|P′(X )
+Par cons´ equent
+∃Q(X )∈ R[X ], P′(X ) = (X− 2)2(X + 2)2Q(X ).
+Or
+deg(P′) = deg( P)− 1≤ 5− 1 = 4 et
+deg(P′) = deg((X− 2)2(X + 2)2Q(X ))
+= 4 + deg(Q(X )).
+Par cons´ equent,deg(P′) = 4, d’o` u on conclut
+deg(Q(X )) = 0 = ⇒ Q(X ) =λ∈ C.
+Ainsi
+P′(X ) = λ(X− 2)2(X + 2)2 = λ(X 4− 8X 2 + 16)
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.15
+Maintenant, nous savons que :
+A′(X ) =λX n ⇐⇒ ∃µ∈ C, A(X ) = 1
+n + 1·λX n+1 +µ.
+Par cons´ equent, comme P′(X ) =λ(X 4− 8X 2 + 16), on conclut qu’il existe
+µ∈ C et λ∈ C tel que
+P(X ) =λ
+( X 5
+5 − 8 X 3
+3 + 16X
+)
++µ.
+Finalement, puisque−2 est une racine de P(X ) + 10 et 2 est une racine de
+P(X )− 10, on conclut que
+P(2) = 10 et P(−2) =−10.
+D’o` u on d´ eduit que
+λ = 75
+128 et µ = 0
+(` a vous de veriﬁer, il suﬃt d’´ evaluerP en 2 et en -2 pour ensuite r´ esoudre le
+syst` eme de 2 ´ equations ` a 2 inconnues).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.15
+Donc l’unique posibilit´ e pourP est
+P(X ) = 5
+128
+(
+3X 5− 40X 3 + 240X
+)
+.
+On v´ eriﬁe reciproquement que ce polynˆ ome est solution.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.16
+Pour quelles valeurs de a∈ R le polynˆ omeP d´ eﬁni par
+P(X ) = (X + 1)7− X 7− a admet-il une racine multiple r´ eelle.
+Solution : Le polynˆ omeP admet une racine multiple r´ eeller si et
+seulement si
+P(r) = P′(r) = 0,
+c’est-` a-dire si seulement si
+{ (r + 1)7− r 7− a = 0
+7(r + 1)6− 7r 6 = 0 ⇐⇒
+{ (r + 1)7− r 7− a = 0
+(r + 1)6− r 6 = 0
+Or
+(r + 1)6− r 6 = 0 ⇐⇒ (r + 1)6 = r 6
+⇐⇒ (r + 1)3 = r 3 ou ( r + 1)3 =−r 3
+⇐⇒ r + 1 = r ou r + 1 =−r
+⇐⇒ r =− 1
+2.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.16
+Par cons´ equent, P admet une racine multiple r´ eellesi et seulement si
+{ r = − 1
+2
+a =
+(
+− 1
+2 + 1
+)7
+−
+(
+− 1
+2
+)7 ⇐⇒
+{ r = − 1
+2
+a = 1
+64
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.17
+Soit P = anX n +··· + a0 un polynˆ ome ` a coeﬃcients entiers tel que
+a0an⁄= 0. Montrer que si r = p
+q avec p et q premiers entre eux, est une
+racine rationnelle de P alors p divise a0 et q divise an.
+Solution : Soir r = p
+q avec p et q premiers entre eux. Par hypoth` ese
+nous avons
+P(r) = 0 ⇐⇒ an
+pn
+qn + an−1
+pn−1
+qn−1 +··· + a1
+p
+q + a0 = 0
+⇐⇒ anpn + an−1pn−1q +··· + a1pq n−1 + a0qn = 0.
+Posons
+S = anpn + an−1pn−1q +··· + a1pq n−1 =⇒ S + a0qn = 0
+=⇒ S =−a0qn,
+et
+T = an−1pn−1q +··· + a1pq n−1 + a0qn =⇒ anpn + T = 0
+=⇒ T =−anpn.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.17
+Maintenant
+p|S =⇒ p|(−a0qn) or q et p sont premiers entre eux =⇒ p|a0.
+q|T =⇒ q|(−anpn) or q et p sont premiers entre eux =⇒ q|an.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.18
+Soit le polynˆ omeP = X 8 + 2X 6 + 3X 4 + 2X 2 + 1.
+(1) Montrer que j est racine de ce polynˆ ome. D´ eterminer son ordre de
+multiplicit´ e.
+(2) Quelle cons´ equence peut-on tirer de la parit´ e deP ?
+(3) D´ ecomposerP en facteurs irr´ eductibles dansC[X ] et dans R[X ].
+Solution :
+(1) Comme¸ cons par rappeler quej correspond ` a la racine cubique de
+l’unit´ e:
+j = e
+2iπ
+3 =− 1
+2 + i
+√
+3
+2 .
+Quelques relations ` a conna ˆ ıtre
+j 3 = 1, j = j 2, 1 + j + j 2 = 0.
+C’est-` a-direj et j son les racines du polynˆ ome:
+X 2 + X + 1 = (X− j)(X− j ).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.18
+Maintenant, puisque j 3 = 1, on d´ eduit
+P(j) = j 8 + 2j 6 + 3j 4 + 2j 2 + 1
+= j 2 + 2 + 3j + 2j 2 + 1
+= 3(j 2 + j + 1) = 0.
+Pour trouver son ordre de multiplicit´ e, nous allons calculer les d´ eriv´ ees de
+P. On a
+P′(X ) = 8 X 7 + 12X 5 + 12X 3 + 4X
+=⇒ P′(j) = 8 j 7 + 12j 5 + 12j 3 + 4j
+= 8 j + 12j 2 + 12 + 4j
+= 12( j 2 + j + 1) = 0.
+Ainsi j est une racine au moins double de P.
+Alg` ebre
+<<<PAGE>>>
+Exercuce 6.18
+´Etudions sa deuxi` eme d´ eriv´ ee
+P′′(X ) = 56X 6 + 60X 4 + 36X 2 + 4
+=⇒ P′′(j) = 56j 6 + 60j 4 + 36j 2 + 4
+= 56 + 60 j + 36j 2 + 4
+= 36( j 2 + j + 1) + 24(j + 1)
+= 24( j + 1)⁄= 0.
+Ainsi j est une racine double de P. Notons aussi que , puisque P est un
+polynome ` a coeﬃcient r´ eels, nous avons
+P
+(
+j
+)
+= P(j) = 0.
+Ainsi,
+j est aussi une racine double de P.
+Alg` ebre
+<<<PAGE>>>
+Exercuce 6.18
+(2) Quelle cons´ equence peut-on tirer de la parit´ e deP ?
+Solution : Nous avons
+P est pair =⇒ P(−j) = P(j) = 0 et P
+(
+− j
+)
+= P
+(
+j
+)
+= 0.
+Maintenant, notons que :
+P′(−X ) = 8(−X )7 + 12(−X )5 + 12(−X )3 + 4(−X )
+= −
+(
+8X 7 + 12X 5 + 12X 3 + 4X
+)
+= −P′(X ).
+Ainsi, P′ est impair. D’o` u on conclut
+P′ est impair =⇒ P′(−j) =−P′(j) = 0 et P′(
+− j
+)
+=−P′(
+j
+)
+= 0.
+Ainsi−j et− j sont de racines au moins doubles de P.De plus, vous
+pouvez rapidement v´ eriﬁer queP′′(−j)⁄= 0 et P′′(− j )⁄= 0. Par
+cons´ equent,−j et− j sont de racines doubles de P.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.18
+(3) D´ ecomposerP en facteurs irr´ eductibles dansC[X ] et dans R[X ].
+Solution : D’apr` es les deux questions pr´ ec´ edents, nous avons que
+j, −j, j et− j sont de racines de P de multiplicit´ e deux. Le
+polynˆ ome ´ etant dedegr´ e huit, nous avons toutes les racines. Ainsi sur
+C[X ] la d´ ecompositon deP est
+P(X ) = ( X− j)2(X + j)2(X− j )2(X + j )2
+Pour la d´ ecomposition dansR[X ], on regroupe les termes conjugu´ es
+P(X ) = ( X− j)2(X + j)2(X− j )(X + j )2
+= (( X− j)(X− j ))2((X + j)(X + j ))2
+= ( X 2 + X + 1)2(X 2− X + 1)2.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.19
+Soit P = (X 2− X + 1)2 + 1.
+(1) V´ eriﬁer quei est racine de P.
+(2) En d´ eduire alors la d´ ecomposition en produit de facteurs
+irr´ eductibles deP sur R[X ]
+(3) Factoriser sur C[X ] et sur R[X ] les polynˆ omes suivants en produit de
+polynˆ omes irr´ eductibles
+(a) R = X 6− X 5 + X 4− X 3 + X 2− X + 1.
+(b) S = X 5− 13X 4 + 67X 3− 171X 2 + 216X− 108. (on cherchera les
+racines doubles de S)
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.19
+Solution :
+(1) Nous avons
+P(i) = ( i 2− i + 1)2 + 1
+= (−1− i + 1)2 + 1
+= −1 + 1 = 0.
+(2) Comme P est un polynome ` a coeﬃcient r´ eelset i est une racine de
+P, nous pouvons conclure que i =−i est une racine de P. Ainsi
+(X− i)(X + i) = X 2 + 1 divise P
+En eﬀectuant la division euclidienne de P par X 2 + 1, on trouve
+P(X ) = (X 2 + 1)(X 2− 2X + 2).
+Ce dernier polynˆ ome ne poss` ede que de racines complexes, en eﬀet ,
+le discriminant de X 2− 2X + 2 est negatif. Nous avons donc trouv´ e
+la d´ ecomposition en facteurs irr´ eductibles deP sur R[X ].
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.19
+(3)(a) R = X 6− X 5 + X 4− X 3 + X 2− X + 1
+Solution : Nous avons
+R = X 6− X 5 + X 4− X 3 + X 2− X + 1 =
+6∑
+k=0
+(−X )k = 1 + X 7
+1 + X .
+Les racines de R sont donc celles de X 7 + 1 sauf−1. Ainsi :
+R(X ) =
+(
+X− ei π
+7
+)(
+X− e−i π
+7
+)(
+X− ei 3π
+7
+)(
+X− e−i 3π
+7
+)
+·
+(
+X− ei 5π
+7
+)(
+X− e−i 5π
+7
+)
+.
+C’est la d´ ecomposition deP dans C[X ]. Pour trouver la d´ ecomposition
+de P dans R[X ], on regroupe les termes conjugu´ es
+R(X ) =
+(
+X 2− 2 cos
+(π
+7
+)
+X + 1
+)(
+X 2− 2 cos
+( 3π
+7
+)
+X + 1
+)
+·
+(
+X 2− 2 cos
+( 5π
+7
+)
+X + 1
+)
+.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.19
+3(b) S = X 5− 13X 4 + 67X 3− 171X 2 + 216X− 108. (on cherchera les
+racines doubles de S)
+Solution : D´ eterminons les racines ´ evidentes deS en remarquant que les
+racines r´ eelles sont n´ ecessairement positives.En eﬀet, si α< 0, alors
+S(α) = (α)5− 13(α)4 + 67(α)3− 171(α)2 + 216(α)− 108
+= (−|α|)5− 13(−|α|)4 + 67(−|α|)3− 171(−|α|)2 + 216(−|α|)− 108
+= −(|α|)5− 13(|α|)4− 67(|α|)3− 171(|α|)2− 216(|α|)− 108
+= −
+(
+(|α|)5 + 13(|α|)4 + 67(|α|)3 + 171(|α|)2 + 216(|α|) + 108
+)
+< 0.
+De plus, d’apr` es l’exercice6.17, si α = p
+q est une racines rationnelle de
+S, alors
+p divise 108 et q divise 1.
+Ainsi, les racines rationnelle de S sont forc´ ement des enti` eres positifset
+divisent 108. Maintenant
+108 = 22· 33 =⇒ α∈{ 1, 2, 3, 4, 6, 9, 12, 18, 27, 36, 54, 108}.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.19
+On constate que S(2) = 0, de plus
+S′(2) = 5(2)4− 52(2)3 + 201(2)2− 342(2) + 216
+= 80− 416 + 804− 684 + 216 = 0 et S′′(2)⁄= 0.
+Donc 2 est une racine double. De mˆ eme, vous pouvez v´ eriﬁer que
+S(3) = S′(3) = S′′(3) = 0 et S (4)⁄= 0.
+Ainsi, 3 est une racine triple. Le polynˆ omeS ´ etant dedegr´ e cinq, nous
+avons toutes les racines. Sur R[X ] la d´ ecompositon deS est donc
+S(X ) = (X− 2)2(X− 3)3.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+Dans chacun des cas suivants, factoriser le polynˆ ome P dans C[X ] et
+dans R[X ] :
+(1) P(X ) = X 4− 1
+(2) P(X ) = (X 2− X + 1)2 + 1
+(3) P(X ) = X 4 + X 2 + 1
+(4) P(X ) = X 8 + X 4 + 1
+(5) P(X ) = X 6 + 1
+(6) P(X ) = X 12− 1
+(7) P(X ) = X 9 + X 6 + X 3 + 1
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(1) P(X ) = X 4− 1 : Nous avons
+X 4− 1 = 0 ⇐⇒ X 4 = 1.
+Ainsi, les racines de P sont les racines quatri` eme de l’unit´ e, donc
+P(X ) = ( X− 1)(X + 1)(X− i)(X + i) D´ ecomposition dansC[X ]
+= ( X− 1)(X + 1)(X 2 + 1) D´ ecomposition dans R[X ].
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(2) P(X ) = (X 2− X + 1)2 + 1 : L’identit´ e remarquable
+a2− b2 = (a− b)(a + b),
+nous permet d’´ ecrire
+(X 2− X + 1)2 + 1 = (X 2− X + 1)2− i 2
+= (X 2− X + 1− i)· (X 2− X + 1 + i)
+= (X 2 + 1− (X + i))· (X 2 + 1− (X− i))
+= ((X + i)(X− i)− (X + i))· ((X− i)(X + i)− (X− i))
+= (X + i)(X− i− 1)(X− i)(X + i− 1)| {z }
+D´ ecomposition dansC[X ]
+Pour trouver la d´ ecomposition dansR[X ], on regroupe les termes conjugu´ es :
+P(X ) = ( X + i)(X− i)(X− 1− i)(X− 1 + i)
+= ( X 2 + 1)(X 2− 2X + 2).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(3) P(X ) = X 4 + X 2 + 1 : C’est un polynˆ omebicarr´ eet nous savons que
+les racines de
+1 + X + X 2
+sont les racines troisi` emes de l’unit´ ej et j = j 2 avec
+j = ei 2π
+3 .
+Ainsi, ` a l’aide de l’identit´ e (a2− b2) = (a− b)(a + b), nous pouvons ´ ecrire
+X 4 + X 2 + 1 =
+(
+X 2− ei 2π
+3
+)(
+X 2− ei 4π
+3
+)
+=
+(
+X− ei π
+3
+)(
+X + ei π
+3
+)(
+X− ei 2π
+3
+)(
+X + ei 2π
+3
+)
+.
+Ce qui nous donne la d´ ecomposition de P dans C[X ].
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+Pour trouver la d´ ecomposition dansR[X ], on regroupe les termes
+conjugu´ es :
+X 4 + X 2 + 1 =
+(
+X− ei π
+3
+)(
+X + ei π
+3
+)(
+X− ei 2π
+3
+)(
+X + ei 2π
+3
+)
+=
+(
+X− ei π
+3
+)(
+X− eiπei π
+3
+)(
+X− ei 2π
+3
+)(
+X− eiπei 2π
+3
+)
+=
+(
+X− ei π
+3
+)(
+X− ei 4π
+3
+)(
+X− ei 2π
+3
+)(
+X− ei 5π
+3
+)
+=
+(
+X− ei π
+3
+)(
+X− e−i 2π
+3
+)(
+X− ei 2π
+3
+)(
+X− e−i π
+3
+)
+=
+(
+X− ei π
+3
+)(
+X− e−i π
+3
+)(
+X− ei 2π
+3
+)(
+X− e−i 2π
+3
+)
+= (X 2− X + 1)(X 2 + X + 1).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(4) P(X ) = X 8 + X 4 + 1 : Nous avons
+X 8 + X 4 + 1 = (X 4)2 + (X 4) + 1
+On utilise donc la mˆ eme m´ ethode que pr´ ec´ edemment.Ainsi
+X 8 + X 4 + 1 =
+(
+X 4− ei 2π
+3
+)(
+X 4− ei 4π
+3
+)
+=
+(
+X 2− ei π
+3
+)(
+X 2 + ei π
+3
+)(
+X 2− ei 2π
+3
+)(
+X 2 + ei 2π
+3
+)
+=
+(
+X 2− ei π
+3
+)(
+X 2− eiπei π
+3
+)(
+X 2− ei 2π
+3
+)(
+X 2− eiπei 2π
+3
+)
+=
+(
+X 2− ei π
+3
+)(
+X 2− ei 4π
+3
+)(
+X 2− ei 2π
+3
+)(
+X 2− ei 5π
+3
+)
+=
+(
+X 2− ei π
+3
+)(
+X 2− e−i 2π
+3
+)(
+X 2− ei 2π
+3
+)(
+X 2− e−i π
+3
+)
+=
+(
+X− ei π
+6
+)(
+X + ei π
+6
+)(
+X− e−i π
+3
+)(
+X + e−i π
+3
+)
+·
+(
+X− ei π
+3
+)(
+X + ei π
+3
+)(
+X− e−i π
+6
+)(
+X + e−i π
+6
+)
+.
+Ce qui nous donne la d´ ecomposition de P dans C[X ].
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+Pour trouver la d´ ecomposition dansR[X ], on regroupe les termes conjugu´ es :
+X 8 + X 4 + 1 =
+(
+X− e i π
+6
+)(
+X + e i π
+6
+)(
+X− e−i π
+3
+)(
+X + e−i π
+3
+)
+·
+(
+X− e i π
+3
+)(
+X + e i π
+3
+)(
+X− e−i π
+6
+)(
+X + e−i π
+6
+)
+=
+(
+X− e i π
+6
+)(
+X− e−i π
+6
+)(
+X− e i π
+3
+)(
+X− e−i π
+3
+)
+·
+(
+X− e i 2π
+3
+)(
+X− e−i 2π
+3
+)(
+X− e i 5π
+6
+)(
+X− e−i 5π
+6
+)
+=
+(
+X 2 +
+√
+3X + 1
+)
+(X 2− X + 1)(X 2 + X + 1)
+(
+X 2−
+√
+3X + 1
+)
+.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(5) P(X ) = X 6 + 1 : Nous avons
+X 6 + 1 = 0 ⇐⇒ X 6 =−1 ⇐⇒ X 6 = eiπ.
+Les racines de P sont donc les racines 6 es de−1 :
+e
+iπ
+6 + 2kiπ
+6 , 0≤ k≤ 5.
+Donc
+X 6 + 1 =
+5∏
+k=0
+(
+X− e
+iπ
+6 + 2kiπ
+6
+)
+=
+(
+X− ei π
+6
+)(
+X− e−i π
+6
+)(
+X− ei π
+2
+)(
+X− e−i π
+2
+)
+·
+(
+X− ei 5π
+6
+)(
+X− e−i 5π
+6
+)
+.
+Ainsi la d´ ecomposition deP dans C[X ] est :
+X 6 + 1 = ( X− i)(X + i)
+(
+X− ei π
+6
+)(
+X− e−i π
+6
+)(
+X− ei 5π
+6
+)(
+X− ei −5π
+6
+)
+.
+et la d´ ecomposition deP dans R[X ] est :
+X 6 + 1 = ( X 2 + 1)(X 2 +
+√
+3X + 1)(X 2−
+√
+3X + 1).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(6) P(X ) = X 12− 1 : Nous avons
+X 12− 1 = 0 ⇐⇒ X 12 = 1.
+Les racines de P sont donc les racines 12 es de l’unit´ e :
+e
+2ikπ
+12 , 0≤ k≤ 11.
+Donc
+X 12− 1 =
+11∏
+k=0
+(
+X− e
+2ikπ
+12
+)
+= (X− 1) (X + 1) (X− i) (X + i)
+(
+X− e−i 2π
+3
+)(
+X− e i 2π
+3
+)(
+X− e−i π
+3
+)
+·
+(
+X− e i π
+3
+)(
+X− e i π
+6
+)(
+X− e−i π
+6
+)(
+X− e−i 5π
+6
+)(
+X− e i 5π
+6
+)
+Ce qui corresponds ` a la d´ ecomposition deP dans C[X ]. Pour trouver la
+d´ ecomposition dansR[X ], on regroupe les termes conjugu´ es
+X 12− 1 = ( X− 1)(X + 1)(X 2 + 1)(X 2 + X + 1)(X 2− X + 1)
+·(X 2 +
+√
+3X + 1)(X 2−
+√
+3X + 1)
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+(7) P(X ) = X 9 + X 6 + X 3 + 1 : Nous avons
+X 9 + X 6 + X 3 + 1 =
+(
+X 3
+)3
++
+(
+X 3
+)2
++ X 3 + 1
+=
+(
+X 3
+)2
+(X 3 + 1) + (X 3 + 1)
+= (X 3 + 1)(X 6 + 1).
+Maintenant
+X 3 + 1 = (X + 1)(X 2− X + 1)
+= (X + 1)
+(
+X− e i π
+3
+)(
+X− e−i π
+3
+)
+(racines cubiques de − 1)
+De plus, en utilisant la question 5, nous pouvons ´ ecrire
+(X 6 + 1) = (X + 1)(X 2 + 1)(X 2− X + 1)(X 2 +
+√
+3X + 1)(X 2−
+√
+3X + 1)
+= (X− i)(X + i)
+(
+X− e i π
+6
+)(
+X− e−i π
+6
+)(
+X− e i 5π
+3
+)(
+X− e−i 5π
+3
+)
+.
+Ainsi la d´ ecomposition deP dans R[X ] est
+X 9 + X 6 + X 3 + 1 = ( X + 1)(X 2 + 1)(X 2− X + 1)(X 2 +
+√
+3X + 1)
+·(X 2−
+√
+3X + 1).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.20
+Finalement, la d´ ecomposition deP dans C[X ] est
+X 9 + X 6 + X 3 + 1 = ( X + 1)(X− i)(X + i)
+(
+X− ei π
+6
+)(
+X− e−i π
+6
+)
+·
+(
+X− ei π
+3
+)(
+X− e−i π
+3
+)(
+X− ei 5π
+3
+)(
+X− e−i 5π
+3
+)
+.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.21
+Soit P = X 4− 5X 3 + 9X 2− 15X + 18∈ C[X ]. D´ eterminer toutes les
+racines complexes de P sachant que deux d’entre elles ont 6 pour produit.
+Solution : Soient a, b, c et d les racines complexes de P. Nous avons
+P = X 4− 5X 3 + 9X 2− 15X + 18
+= (X− a)(X− b)(X− c)(X− d)
+= X 4− (a + b + c + d)X 3 + ( ab + ac + ad + bc + bd + cd)X 2
+− (abc + abd + acd + bcd )X + abcd
+Ainsi
+
+
+
+a + b + c + d = 5
+ab + ac + ad + bc + bd + cd = 9
+abc + abd + acd + bcd = 15
+abcd = 18
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.21
+Supposons que ab = 6. Le syst` eme devient alors
+
+
+
+a + b + c + d = 5
+ac + ad + bc + bd + cd = 3
+6(c + d) + acd + bcd = 15
+cd = 3
+=⇒
+
+
+
+a + b + c + d = 5
+ac + ad + bc + bd = 0
+6(c + d) + 3(a + b) = 15
+cd = 3
+=⇒
+
+
+
+a + b + c + d = 5
+(a + b)(c + d) = 0
+(a + b) + 2(c + d) = 5
+cd = 3
+D’o` u on conclut
+
+
+
+a + b + c + d = 5
+(a + b)(c + d) = 0
+(a + b) + 2(c + d) = 5
+cd = 3
+=⇒
+{ a + b = 5
+c + d = 0
+Ainsi
+{ a + b = 5
+ab = 6 et
+{ c + d = 0
+cd = 3
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.21
+Par cons´ equent, les racines de P satisfont
+a et b sont racines de X 2− 5X + 6 =⇒ {a, b} ={2, 3}
+c et d sont racines de X 2 + 3 =⇒ {c, d} =
+{
+i
+√
+3,−i
+√
+3
+}
+Ce qui nous permet de trouver la d´ ecomposition en facteurs irr´ eductibles
+de P en C[X ]
+P(X ) = (X− 2)(X− 3)(X− i
+√
+3)(X + i
+√
+3).
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.22
+Soit x1, x2, x3 les racines de X 3− 2X 2 + X + 3. Calculer x 3
+1 + x 3
+2 + x 3
+3 .
+Solution : Comme x1, x2, x3 sont les racines de X 3− 2X 2 + X + 3, nous avons
+X 3− 2X 2 + X + 3 = (X− x1)(X− x2)(X− x3)
+= X 3− (x1 + x2 + x3)X 2 + (x1x2 + x1x3 + x2x3)X− x1x2x3.
+Donc par identiﬁcation , nous avons
+
+
+
+x1 + x2 + x3 = 2
+x1x2 + x1x3 + x2x3 = 1
+x1x2x3 = −3.
+De plus
+
+
+
+x 3
+1 = 2 x 2
+1− x1− 3
+x 3
+2 = 2 x 2
+2− x2− 3
+x 3
+3 = 2 x 2
+3− x3− 3.
+En additionnant ces 3 derni` eres ´ equations, on obtient
+x 3
+1 + x 3
+2 + x 3
+3 = 2(x 2
+1 + x 2
+2 + x 2
+3 )− (x1 + x2 + x3)− 9
+= 2(x 2
+1 + x 2
+2 + x 2
+3 )− 2− 9
+= 2(x 2
+1 + x 2
+2 + x 2
+3 )− 11.
+Alg` ebre
+<<<PAGE>>>
+Exercice 6.22
+Pour trouver la valeur de x 2
+1 + x 2
+2 + x 2
+3 , il suﬃt de noter que
+(x1 + x2 + x3)2 = (x 2
+1 + x 2
+2 + x 2
+3 ) + 2(x1x2 + x1x3 + x2x3)
+Par cons´ equent
+x 2
+1 + x 2
+2 + x 2
+3 = (x1 + x2 + x3)2− 2(x1x2 + x1x3 + x2x3) = 4− 2 = 2.
+Ainsi
+x 3
+1 + x 3
+2 + x 3
+3 = 4− 11 =−7.
+Alg` ebre

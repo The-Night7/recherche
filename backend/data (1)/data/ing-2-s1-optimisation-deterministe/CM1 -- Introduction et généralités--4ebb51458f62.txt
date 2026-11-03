@@ -1,0 +1,810 @@
+Ingénieurs 2ème année : Mathématiques et Informatique
+Méthodes itératives d’optimisation déterministe
+CM1 – Introduction et généralités
+Nisrine FORTIN CAMDAVANT
+
+<<<PAGE>>>
+1 Introduction et généralités
+Classification générale des méthodes d’optimisation
+Principe des méthodes déterministes
+Optima locaux et globaux
+2 Outils et notions fondamentales
+Développement de Taylor-Young
+Dérivée directionnelle
+3 Forme quadratique
+4 Convexité
+<<<PAGE>>>
+Motivations et généralités
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Introduction
+Objectif :l’optimisation non linéaire, comme son nom l’indique, s’attache
+à résoudre des problèmes d’optimisation dont le critère et les contraintes
+sont non linéaires.
+L’optimisation sans contraintes consiste à rechercher les optimums d’une
+fonction d’une ou plusieurs variables.
+Domaines d’application de l’optimisation :minimiser le coût, minimiser
+la distance, maximiser le bénéfice, maximiser le profit,... , en gestion de
+ressources, rentabilisation des investissements, transport,... .
+L’optimisation est essentiellement un outil d’aide à la décision.
+4/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Terminologie
+Un problème d’optimisation est défini par
+min
+x∈K
+f (x)
+↝ K est un sous-ensemble non vide deRn qu’on appelle ensemble
+ou domaine des contraintes
+↝ Tout élément de K est appelé un point admissible ou point
+réalisable.
+↝ La fonction f ∶ Rn→ R est appelée fonction coût, fonction
+objectif ou encore critère.
+En général,
+5/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Classification générale des méthodes d’optimisation
+Les problèmes d’optimisation peuvent être classés en plusieurs grandes familles,
+deux grandes classes sont à différencier de façon générale :
+1 l’optimisation numérique oùX ⊂ Rn,
+2 l’optimisation discrète oùX est fini ou dénombrable.
+Optimisation numérique
+On peut distinguer deux cas :
+1 Cas linéaire
+2 cas non linéaire
+avec méthodes globales et méthodes
+locales.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Optimisation discrète
+On peut distinguer deux cas :
+1 Cas des méthodes exactes
+2 Cas des méthodes approchées
+6/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optimisation numérique
+Cas linéaire
+∎ Résoudre des problèmes
+d’optimisation dont le critère et les
+contraintes sont linéaires.
+∎ En désignant par⟨.∣.⟩ le produit
+scalaire euclidien, la forme standard
+est exprimée comme suit :
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+minimiser⟨c∣x⟩
+sous les contraintes Ax = b, x ≥0
+La programmation linéaire avec la méthode
+du simplexe et la méthode des tableaux de
+Dantzig ont déjà été vues en 1ère année du
+cycle ingénieur.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Cas non linéaire
+∎ Résoudre des problèmes d’optimisation dont le
+critère et les contraintes ne sont pas
+forcément linéaires.
+∎ S’intéresser au problème d’optimisation
+suivant :
+⎧⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎩
+min
+x∈D
+(f (x1,⋯, xn) )
+avec les contraintes :
+⎧⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎩
+g1 (x1, . . . ,xn) = b1
+g2 (x1, . . . ,xn) = b2
+⋮
+gm (x1, . . . ,xn) = bm
+⎫⎪⎪⎪⎪⎪⎬⎪⎪⎪⎪⎪⎭
+bi ∈ R, ∀i ∈ {1, . . . ,m}
+où D ⊂ Rn et m< n.
+7/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optimisation numérique
+Cas non linéaire avec méthodes globales
+∎ Sous des conditions de régularité de la
+fonction objectif et des fontions contraintes,
+on peut distinguer des méthodes de résolution
+globales (recherche d’un optimum global).
+∎ En l’absence des conditions de régularité, on
+peut distinguer des méthodes globales dans un
+cadre métaheuristique.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Cas non linéaire avec méthodes locales
+∎ L’exploitation du gradient d’une fonction
+(Méthodes avec gradient) s’efforce à diminuer
+la valeur de la fonction objectif dans une
+direction choisie mais nous amène souvent à
+des minima locaux.
+∎ Ces méthodes sont très efficaces mais ont
+l’inconvénient de ne pas fournir un minimum
+global.
+∎ D’autres méthodes qui n’utilisent pas le
+gradient (Méthodes sans gradient) amènent à
+des minima locaux
+8/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optimisation discrète
+Cas des méthodes exactes
+∎ lorsque l’ensemble des solutions d’un problème
+d’optimisation est fini, il est possible d’énumérer toutes
+ces solutions et de prendre celle qui nous arrange.
+∎ L’inconvénient principal est le nombre prohibitif du
+nombre de solutions car il n’est pas évident d’effectuer
+cette énumération.
+∎ L’une des méthodes utilisées est la procédure par
+évaluation et séparation progressive (branch and
+bound) qui repose sur une méthode arborescente de
+recherche d’une solution optimale par séparations et
+évaluations.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Cas des méthodes approchées
+Ces méthodes sont basées sur des
+métaheuristiques, elles seront explorées
+pendant le cours d’IA et Application du 2nd
+semestre.
+9/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optimisation sans contraintes
+Étudier le problème d’optimisationsans contraintesoù on effectue une
+minimisation ou une maximisation de la fonctionf ∶ Rn→ R∪{+∞} sur tout
+l’espace.
+Formulation du problème
+(PSC) min
+x∈Rn f (x)
+On va présenter quelques algorithmes permettant de calculer (de manière ap-
+prochée) la ou les solution(s) du problème(PSC) sans contraintes.
+De ce module.
+10/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optimisation sous contraintes
+Étudier le problème d’optimisationavec contraintesoù on effectue une
+minimisation ou une maximisation de la fonctionf ∶ Rn→ R∪{+∞} sur
+l’ensemble des contraintes.
+Formulation du problème
+(PC)
+⎧⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎩
+min
+Rn f (x)
+Sous les contraintes
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+g(x) ≤ 0 (1)
+h(x) = 0 (2)
+⎫⎪⎪⎪⎬⎪⎪⎪⎭
+où les fonctionsf , g et h sont des fonctions généralement non linéaires.
+↝ L’inéquation (1) désigne des contraintes d’inégalité.
+↝ L’équation (2) des contraintes d’égalité.
+Les problèmes d’optimisation avec contrainte(PC) seront abordés avec des
+techniques amenant à résoudre un problème d’optimisation sans contrainte.
+De ce module.
+11/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Principe des méthodes déterministes
+∎ Les méthodes déterministes conduisent, pour une solution initiale donnée,
+toujours au même résultat final.
+∎ Elles s’appuient sur une direction de recherche qui peut être fournie par
+les dérivées de la fonction objectif.
+∎ La plupart de ces algorithmes exploitent les conditions d’optimalité.
+∎ La question de la détermination de minima globaux est difficile.
+∎ Ces méthodes ont la réputation d’être efficaces lorsque la solution initiale
+est proche de l’optimum recherché.
+∎ Inconvénients :
+le cas d’une fonction objectif possédant plusieurs optimums,
+peuvent converger vers un optimum local,
+faire l’hypothèse de différentiabilité de la fonction objectif...
+12/46
+<<<PAGE>>>
+Articulation du cours
+Le cours d’optimisation déterministe sera présenté dans une durée de 22,5
+heures et sera articulé autour de cinq thématiques :
+1 Une introduction à l’optimisation et une présentation des outils nécessaires
+pour traiter les problématiques d’optimisation dans le cadre déterministe.
+2 Une présentation des conditions d’optimalité.
+3 Une présentation de l’algorithme des méthodes de descente.
+4 La présentation des différentes méthodes de descente et variantes selon les
+directions de descente dans le cas de problème sans contraintes.
+5 La présentation de quelques de descente dans le cas de problème sous
+contraintes.
+<<<PAGE>>>
+Optima locaux et globaux
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Soient X ⊂ Rn l’ensemble des contraintes etf un critère à optimiser surX. On
+cherche à résoudre le problème(P) en cherchant des solutions locales au sens
+des définitions qui suivent.
+∎ :::::::Minimum:::::local :: x∗ ∈ X réalise un minimumlocal de f sur X si et
+seulement si il existe une boule ouverteB centrée en x∗ telle que
+∀x ∈ B∩ X, f (x)≥ f (x∗)
+∎ :::::::Minimum::::::global :: x∗ ∈ X réalise un minimumglobal de f sur X si et
+seulement si
+∀x ∈ X, f (x)≥ f (x∗)
+15/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Optima locaux et globaux
+Figure 1 – Plusieurs minima locaux et un minimum global
+16/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Les notions de maximum local et global peuvent être définies de façon
+équivalente dans le sens où
+max
+x∈X
+f (x)=− min
+x∈X
+(− f (x)) ou min
+x∈X
+f (x)=− max
+x∈X
+(− f (x)).
+De façon standard, nous porterons la suite de ce cours sur des problèmes
+de minimisation.
+De façon standard.
+17/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Fonction unimodale: On appelle fonctionunimodale une fonction
+présentant un seul maximum ou un seul minimum local. Si elle présente
+plusieurs maxima ou minima locaux, elle est ditemultimodale.
+Exemple : La fonction de Schwefel d’équation
+f (x, y)=−x sin(
+√
+∣x∣)− y sin(
+√
+∣y∣)
+illustre bien le caractère multimodal.
+18/46
+<<<PAGE>>>
+Outils et notions fondamentales
+↝ Présenter quelques rappels utiles.
+↝ Unifier les notations et le vocabulaire.
+Soit f ∶ (x1, x2,..., xn)↦ f (x1,..., xn) une fonction réelle. Dans la suite, on
+note
+x = (x1,..., xn), y = (y1,..., yn) et a= (a1,..., an).
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+↝ Un vecteur x de Rn sera noté x = (x1,..., xn), sa représentation
+matricielle est x =
+⎛
+⎜
+⎝
+x1
+⋮
+xn
+⎞
+⎟
+⎠
+.
+↝ La transposée du vecteurx ∈ Rn est une matrice ligne :
+x T = (x1 ... xn).
+▸ ::::::Produit ::::::scalaire::::::::canonique::: ⟨x, y⟩= x T y =
+n
+∑
+i=1
+xi yi.
+▸ :::::Norme:::::::::euclidienne::::::::canonique::: ∥x∥=
+√
+x T x =
+⌟roo⟪⟪op
+⌟roo⟪mo⟨⌟roo⟪mo⟨⌟roo⟪⟨o⟪
+n
+∑
+i=1
+x 2
+i .
+▸ ::::Boule:::::::ouverte ::::::centrée ::en::x ::et ::de:::::rayon:r::
+Br(x)= {z ∈ Rn,∥x− z∥< r}.
+▸ :::::Ouvert:::de ::Rn
+::: X ⊂ Rn est ensemble ouvert si
+∀x ∈ X,∃ε>0 tel queBε(x)⊂ X.
+On notera dans tout ce cours :
+20/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Gradient et hessien d’une fonction
+∎ Supposons que f admet des dérivées partielles d’ordre 1 ena∈ Rn. On
+appelle gradient de f en a, le vecteur défini par
+∇T f (a)= (∂f
+∂x1
+(a), ∂f
+∂x2
+(a),..., ∂f
+∂xn
+(a))
+∎ Si f admet des dérivées partielles d’ordre 2 ena. On appellehessien de f
+en a la matrice n× n donnée par
+∇2f (a)=
+⎛
+⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜⎜
+⎝
+∂2f
+∂x 2
+1
+(a) ∂2f
+∂x1∂x2
+(a) ...... ∂2f
+∂x1∂xn
+(a)
+∂2f
+∂x2∂x1
+(a) ∂2f
+∂x 2
+2
+(a) ...... ∂2f
+∂x2∂xn
+(a)
+⋮ ⋮ ⋮ ⋮
+∂2f
+∂xn∂x1
+(a) ∂2f
+∂xn∂x2
+(a) ...... ∂2f
+∂x 2n
+(a)
+⎞
+⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟⎟
+⎠
+Le hessien (ou la matrice hessienne) def en a est couramment noté
+Hf(a).
+21/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Définition
+Une matrice carrée A symétrique d’ordren est dite semi-définie positive et on
+note A≥0 si
+hTAh ≥0, ∀h∈ Rn.
+On dit que A est une matrice définie positive et on note A>0 si
+hTAh >0, ∀h∈ Rn/{0Rn}.
+Soit A une matrice symétrique d’ordren et symétrique. On a les équivalences
+suivantes :
+1 A≥0 si et seulement si Sp(A)⊂ R+.
+2 A>0 si et seulement si Sp(A)⊂ R∗
++.
+Sp(A) désigne le spectre de la matrice A, ensemble des valeurs propres de A.
+Propriété 1.
+Démonstration.
+22/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Dérivée de composition
+Soient x et d deux vecteurs dansRn, soit
+g ∶t↦ f (x+td)
+où t est un réel. On note queg(t)= f ○ u(t) où
+u( t⌟⟨⟨⟪rl⟫
+réel
+)= x+td⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+vecteur de Rn
+.
+g est donc une composition de deux fonctionsf et u. Si g est dérivable etf est
+différentiable alors
+g
+′
+(t)= ⟨u
+′
+(t),∇f (u(t))⟩.
+∎ u
+′
+(t)= d (on dérive par rapport à la variable réelle t)
+∎ ∇f (u(t))=∇f (x+td)
+g
+′
+(t)= ⟨d,∇f (x+td)⟩.
+23/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Exemple
+Sur R3, on considère la fonctionf définie pour(x1, x2, x3)∈ R3 par
+f (x1, x2, x3)= x 2
+1 + x1x2+ x 2
+2 + 1
+2 x 2
+3.
+La fonction f est de classeC2 sur R3. On notex = (x1, x2, x3).
+:::::::::::::::::::::::Calcul du gradient def en x.
+⎧⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎩
+∂f
+∂x1
+(x) = 2x1+ x2,
+∂f
+∂x2
+(x) = x1+2x2
+∂f
+∂x3
+(x) = x3
+Donc ∇f (x)=
+⎛
+⎜⎜⎜⎜⎜
+⎝
+2x1+ x2
+x1+2x2
+x3
+⎞
+⎟⎟⎟⎟⎟
+⎠
+.
+24/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Exemple
+::::::::::::::::::::::::::Calcul du hessien de f en x.
+⎧⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎩
+∂2f
+∂x2
+1
+(x) = 2, ∂2f
+∂x1∂x2
+(x) = 1, ∂2f
+∂x1∂x3
+(x) = 0
+∂2f
+∂x2∂x1
+(x) = 1, ∂2f
+∂x2
+2
+(x) = 2, ∂2f
+∂x2∂x3
+(x) = 0
+∂2f
+∂x3∂x1
+(x) = 0, ∂2f
+∂x3∂x2
+(x) = 0, ∂2f
+∂x2
+3
+(x) = 1
+Le Hessien de la fonctionf en tout x ∈ R3 est donné par
+Hf =
+⎛
+⎜
+⎝
+2 1 0
+1 2 0
+0 0 1
+⎞
+⎟
+⎠
+.
+25/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Exemple
+::::::::::::::::::::::::::::::::::::::Nature de la matrice hessienne de f en x. La matrice hessienne
+est symétrique donc elle est diagonalisable et son ensemble des
+valeurs propres est
+Sp (f )= {1;3} .
+Les valeurs propres sont strictement positives donc la matrice Hf est
+définie positive.
+26/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+:::::::::::::Autre méthode : Soit h= (h1, h2, h3). On étudie le signe du réelhTHf h.
+hTHf h = (h1 h2 h3)
+⎛
+⎜
+⎝
+2 1 0
+1 2 0
+0 0 1
+⎞
+⎟
+⎠
+⎛
+⎜
+⎝
+h1
+h2
+h3
+⎞
+⎟
+⎠
+= 2h2
+1+2h2
+2+ h2
+3+2h1h2
+= 2(h2
+1+ h1h2+ 1
+4 h2
+2)+ 3
+2 h2
+2+ h2
+3
+= 2(h1+ 1
+2 h2)
+2
++ 3
+2 h2
+2+ h2
+3
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+≥0
+La matrice hessienne est donc semi définie positive. De plus,
+hTHf h=0⇐⇒
+⎧⎪⎪⎪⎪⎨⎪⎪⎪⎪⎩
+h1+ 1
+2 h2 = 0
+h2 = 0
+h3 = 0
+⇐⇒h=0R3
+Hf est donc une matrice positive.
+27/46
+<<<PAGE>>>
+Développement de Taylor-Young
+↝ On peut avoir besoin d’approcher localement une fonction par un
+polynôme de degré arbitraire.
+↝ On va s’intéresser en particulier au développement de Taylor-Young
+jusqu’à l’ordre 2.
+↝ Soient U un ouvert deRn, x et y deux points de U etf ∶U→ R.
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Développement de Taylor-Young
+À l’ordre 1 :
+Supposons que f est une fonction de classeC1 sur U alors
+f (y)= f (x)+(y − x)
+T
+∇f (x)+∥y − x∥ϵ(y)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+lim
+y−x→0
+ϵ(y )=0
+(1)
+À l’ordre 2 :
+Supposons que f est une fonction de classeC2 sur U alors
+f (y)= f (x)+(y − x)
+T
+∇f (x)+ 1
+2(y − x)
+T
+Hf(x)(y − x)+∥y − x∥2ϵ(y)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+lim
+y−x→0
+ϵ(y )=0
+(2)
+29/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Développement de Taylor-Young – Lemme
+Lemme 1.
+Soient f une fonction de classeC1 sur un ouvert U deRn, x ∈U et d ∈ Rn alors
+lim
+θ→0
+f (x+θd)− f (x)
+θ =∇f (x)T d.
+::::::::::Démonstration :
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+30/46
+<<<PAGE>>>
+Dérivée directionnelle
+Pour un vecteur donnéd ∈ Rn, qu’on appelera direction, si on se place en
+x ∈ Rn, on souhaite se déplacer dex vers un autre vecteurx
+′
+.
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Dérivée directionnelle
+On dit quef ∶ Rn→ R admet une dérivée directionnelle au pointa∈ Rn dans la
+direction de d ∈ Rn si
+lim
+θ→0
+f (a+θd)− f (a)
+θ existe.
+Notation : Cette limite est notéeDd f (a) et on peut écrire
+Dd f (a)=∇f (a)T.d
+On dira qu’on se déplacera dans la direction ded vers
+x
+′
+= x+θd
+avecθ >0.θ seraappelélepasdeladescenteetonimposeralacondition
+θ >0.
+Remarque.
+32/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Dérivée directionnelle
+Fonction différentiable
+Soit f ∶ Rn→ R une fonction continue. Si pour toutd ∈ Rn, la dérivée
+directionnelle Dd f existe en tout point deRn alors la fonction est dite
+différentiable sur Rn.
+Lorsqu’elle existe, la dérivée directionnelle donne des informations sur la pente
+de la fonction dans la direction d :
+si f′(x).d >0 alors f est croissante dans la directiond.
+si f′(x).d <0 alors f est décroissante dans la directiond.
+Remarque : Lorsque la directiond ∈ Rn est telle que∥d∥=1 alors la dérivée
+directionnelle (si elle existe) au pointa∈ Rn dans la direction ded est le taux
+d’accroissement de f dans la directiond au point a.
+33/46
+<<<PAGE>>>
+Fonction quadratique
+La forme quadratique joue surRn le même rôle que joue la fonction
+x↦ ax 2+ bx+ c dans R.
+Elle a son intérêt en optimisation car si une fonction n’est pas quadratique
+mais de classeC2, on peut penser à l’approcher par une fonction
+quadratique au voisinage d’un vecteura.
+On utilise la formule de Taylor Young à l’ordre 2 :
+f (x)= f (a)+(x− a)
+T
+∇f (a)+ 1
+2(x− a)
+T
+Hf(a)(x− a)+∥x− a∥2ϵ(x)
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+lim
+x−a→0
+ϵ(x)=0.
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Dans plusieurs problèmes d’optimisation, on peut être ramené à résoudre un
+problème de minimisation des moindres carrés et donc à optimiser un critère
+sous une une forme particulière qu’on appelleforme quadratique.
+Forme quadratique.
+Soient A une matricesymétrique d’ordre n, b ∈ Rn un vecteur etc un réel. On
+définit la forme quadratiquepar
+f ∶ Rn → R
+x ↦ c+ bTx+ 1
+2 x TAx
+Lorsque cette fonction vérifie des propriétés particulières, nous pourrons en
+déduire des propriétés importantes en optimisation. C’est pour cela qu’on
+s’intéresse dans ce paragraphe au caractère positif, diagonalisable, ... de
+la matrice A.
+35/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Fonction quadratique – Remarque
+Si f est de classeC2 au voisinage de a alors pourx ∈ V(a)
+f (x) = f (a)+ (x− a)T ∇f (a)+ 1
+2 (x− a)T Hf (a) (x− a)+ ∥x− a∥2 ε (x)
+= f (a)− aT∇f (a)+ 1
+2 aTHf (a)a+ x T∇f (a)+ 1
+2 x THf (a)x− aTHf (a)x+ ∥x− a∥2 ε (x)
+= (f (a)− aT∇f (a)+ 1
+2 aTHf (a)a)+ x T (∇f (a)−Hf (a)a)+ 1
+2 x THf (a)x+ ∥x− a∥2 ε(x)
+On pose
+⎧⎪⎪⎪⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎪⎪⎪⎩
+c = f (a)− aT∇f (a)+ 1
+2 aTHf(a)a
+b = ∇f (a)−Hf(a)a
+A = Hf(a)
+On pourra donc au voisinage dea approcher la fonctionf par la fonction
+quadratique x↦ c+ bT x+ 1
+2 x T Ax.
+36/46
+<<<PAGE>>>
+Propriétés des formes quadratiques définies positives
+Soit f la fonction quadratique de matrice A. Lorsque la matrice A est définie
+positive (resp. semi définie positive), on dira quef est une fonction
+quadratique définie positive (resp. semi-définie positive).
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Soit A une matrice symétrique définie positive,b ∈ Rn, c ∈ R et
+f ∶ x↦ c+ bTx+ 1
+2 x TAx
+une forme quadratique. Soitˆx l’unique vecteur vérifiant Aˆx+ b =0n alors ˆx
+réalise le minimum global def.
+Propriété 2.
+::::::::::::Démonstration.
+Soit A une matrice symétrique définie positive,b ∈ Rn, c ∈ R et
+f ∶ x↦ c+ bTx+ 1
+2 x TAx
+une forme quadratique. La fonctionf est deux fois différentiable surRn et
+∀x ∈ Rn,
+∇f (x)= Ax+ b, Hf(x)= A.
+Propriété 3.
+::::::::::::Démonstration. Voir TD1.
+38/46
+<<<PAGE>>>
+Convexité
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Ensemble convexe
+Une partie A⊂ Rn est dite convexe si∀x ∈A, ∀y ∈A, ∀α∈ [0,1],
+αx+(1−α)y ∈A.
+Cela revient à dire que le segment qui relie deux points de A reste dans A.
+∀xi ∈ A, ∀λi ∈ [0;1] telle que
+n
+∑
+i=1
+λi =1,
+n
+∑
+i=1
+αi xi ∈ A.
+Cette définition se généralise de la façon suivante,
+Figure 2 – Objet non convexe
+40/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+1 Rn et ∅ sont des convexes.
+2 Sur R, les intervalles sont des convexes.
+L’intersection d’un nombre quelconque d’ensembles convexes est convexe.
+Proposition.
+Remarque :La réunion de deux parties convexes n’est pas en général convexe.
+41/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Convexité d’une fonction
+Une fonction f définie sur unconvexe Ω de Rn dans R est convexe si et
+seulement si
+∀x ∈ Ω, ∀y ∈ Ω, ∀α∈ [0,1], f (αx+(1−α)y)≤αf (x)+(1−α)f (y).
+Lorsque l’inégalité est stricte, on dit quef est strictement convexe surΩ.
+On dit quef est concave lorsque−f est convexe.
+1 Toute fonction numérique affine est convexe.
+2 La fonction constante est convexe et concave à la fois.
+42/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Enveloppe convexe
+On appelleenveloppe supérieure f (resp. enveloppe inférieure) d’une famille de
+fonctions {fi}i∈J et on notesup
+i∈J
+{fi}= f (resp. inf
+i∈J
+{fi}= f ) la fonctionf ∶ I→ R
+définie par :∀x ∈ E, f (x)= sup
+i∈J
+{fi(x)}.
+Toute combinaison linéaire de fonctions convexes (à coefficients positifs)
+est une fonction convexe.
+Toute limite simple de fonctions convexes est une fonction convexe.
+Toute enveloppe supérieure finie de fonctions convexes est convexe.
+Soit f ∶ Ω→ R une fonction convexeavec f (Ω)⊂ I et soit g ∶ I→ R, une
+fonction convexe croissantealors la fonction composée :g ○ f est
+convexe.
+Soit f ∶ I→ R une fonction continuesur I. f est convexe si pour tout
+(a, b)∈ I 2 on a f ( a+ b
+2 )≤ 1
+2(f (a)+ f (b))
+Proposition.
+43/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Épigraphe
+L’epigraphe d’une fonctionf est l’ensemble des points qui se trouventau
+dessus du graphe G de la fonctionf est appelé épigraphe def.
+Γ+(f )= {(x, y)∈ Ω× R, y ≥ f (x)}.
+Figure 3 –Épigraphe de la fonction carrée
+44/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Caractérisation différentielle de la convexité
+Soit f ∶ Ω→ R une fonction différentiable oùΩ est une partie convexe deRn.
+Les propriétés suivantes sont équivalentes :
+1 f est convexe.
+2 ∀(x, y)∈ Ω× Ω, f (y)≥ f (x)+⟨∇f (x), y − x⟩.
+✓ On dit que les hyperplans tangants sont des minorants.
+3 ∀(x, y)∈ Ω× Ω, ⟨∇f (y)−∇ f (x), y − x⟩≥0.
+✓ On dit que l’opérateur gradient est croissant.
+Propriété 4. Caractérisation de la convexité du1er ordre
+::::::::::::Démonstration. Voir TD1.
+Soit f ∶ Ω→ R une fonction de classeC2 où Ω est une partie convexe deRn. f
+est convexe si et seulement si
+∀x ∈ Rn, la matrice hessienne Hf(x) de f en x est semi-définie positive.
+Propriété 4. Caractérisation de la convexité du2nd ordre
+45/46
+<<<PAGE>>>
+Introduction et généralités Outils et notions fondamentales Forme quadratique Convexité
+Bibliographie :
+Méthodes numériques et optimisation, Jean Pierre Corriou, LAVOISIER
+2010
+Linear and Nonlinear Programming, David G.LUENBERGER, Second
+Edition Springer 2005
+Introduction à l’optimisation, Jean Christophe Culioli, ellipses,1994.
+Introduction à l’analyse numérique matricielle et à l’optimisation PG.
+CIARLET MASSON 1990
+Inverse Problem Theory and Methods for Model Parameter Estimation
+Albert Tarantola SIAM 2005.
+Convexité et optimisation Guy Cohen Ecole Nationale des Ponts et
+Chaussées et INRIA 2000.
+Optimisation sans contraintes M. Bergounioux http ://www.univ-
+orleans.fr/mapmo/membres/maitine/MASTER2/FAP/optimFAP.pdf
+Introduction à l’analyse numérique
+http ://www.math.uvsq.fr/jaisson/ENSAE cours45.pdf
+Algorithmes d’optimisation non-linéaire sans contrainte
+http ://www.math.u-bordeaux1.fr/ bergmann/PDF/These/annexeC.pdf
+46/46

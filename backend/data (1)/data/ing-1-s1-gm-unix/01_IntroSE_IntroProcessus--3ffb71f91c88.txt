@@ -1,0 +1,779 @@
+Système d’Exploitation
+Introductionaux SE 
+Programmationde processus
+Juan Angel Lorenzodel Castillo
+Contributions de : ThierryGarcia, FlorentDevinet Taisa Guidini Gonçalves
+2024-2025
+1
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+2
+<<<PAGE>>>
+Introduction
+Introduction
+3
+<<<PAGE>>>
+Introduction
+Motivation
+❑ Systèmed’exploitation: lien entrele matériel,le logiciel
+et l’utilisateur.
+▪ Commentun programme(i.e. du logiciel) peut être transposéau plan
+physique?
+▪ Commentutiliser un ordinateurde façon efficace?
+❑ Discipline fondamentale et transversale pour l’Ingénierie
+Informatique.
+❑ Essentiellepour comprendred’autresmatières:
+▶ ArchitecturedesOrdinateurs(ING1)
+▶ ProgrammationSystèmeet Réseau(ING2)
+▶ Architectureet ProgrammationParallèleet Distribuée(ING2)
+▶ Architectureréseau(ING2)
+▶ Projets ING2
+▶ etc.
+4
+<<<PAGE>>>
+Introduction
+Objectifs
+❑ ConnaîtrelesfonctionnalitésdesSE
+▪ Structure
+▪ Gestiondesressourcesmatérielles
+▪ Administration desprogrammes
+▪ Interfaceavecl’utilisateur
+❑ Du point devue del’utilisateur, del’administrateur et aussi 
+du designer.
+❑ En mettantl’accentsur Linux/Unix.
+5
+<<<PAGE>>>
+Introduction
+Thèmesà aborder
+❑ Processuset cyclede vie 
+❑ L’ordonnanceurd’un SE 
+❑ Gestion dela mémoire
+❑ Systèmedesfichiers
+❑ Processusdedémarrage d’un SE
+❑ Installationet configurationd’un SE
+❑ Docker 
+6
+<<<PAGE>>>
+Introduction
+Bibliographie
+7
+<<<PAGE>>>
+Introduction
+Évaluation
+❑ Examenfinal papier
+❑ 2 heures
+❑ Calculatriceautorisée
+❑ Examensdesannéesprécédentesdisponiblessur Teams
+8
+<<<PAGE>>>
+Le Systèmed’Exploitation
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+9
+<<<PAGE>>>
+Le Systèmed’Exploitation
+Le Systèmed’Exploitation
+10
+<<<PAGE>>>
+Le Systèmed’Exploitation
+L’ordinateurmoderne,un systèmecomplexe
+❑ Composants:
+▪ Un ou plusieursmicroprocesseurs
+▪ Mémoires
+▪ Disques
+▪ Clavier
+▪ Souris
+▪ Displays(écran)
+▪ Interfacesréseau
+▪ D’autres périphériquesd’entrées/ sorties
+▪ Etc.
+11
+<<<PAGE>>>
+Le Systèmed’Exploitation
+L’ordinateurmoderne,un systèmecomplexe
+❑ Composants:
+▪ Programmes systèmes qui permettent le fonctionnement de
+l’ordinateur(le systèmed’exploitation)
+⋆ Exécutésen mode kernel(aussiappelémodesystèmeou superviseur) :
+accèstotalau matérielet à touteslesinstructionsdu processeur.
+▪ Programmesd’applicationdesutilisateurs
+⋆ Exécutés en mode utilisateur : restreintl’accès aux ressourcesde
+l’ordinateur. Seulementun sous-ensembledesinstructionsduprocesseur
+sont disponibles(Exemple : instructionsd’E/S interditeset accès
+mémoireprotégé).
+▪ Matériel (Hardware)
+12
+<<<PAGE>>>
+Le Systèmed’Exploitation
+L’ordinateurmoderne,un systèmecomplexe
+❑ Problème: L’administration et l’utilisation efficace deviennent 
+difficile
+▪ Commentun programmepeut accéderaux périphériques?
+▪ Ou à la mémoire(physiquement) ?
+▪ Comment gérer des erreurs?
+❑ Ces problèmesfont partiedu rôle d’un SE
+Systèmed’exploitation
+Couchelogicielqui s’occupede :
+▪ fournir aux programmesd’applicationun modèleplussimpleet proprede 
+l’ordinateur (présentation).
+▪ gérerl’utilisation de toutes lesressourcesde l’ordinateur (gestion).
+13
+<<<PAGE>>>
+Le Systèmed’Exploitation
+Fonctionsdu Systèmed’Exploitation
+❑ Présentation : Fournir un ensemble abstrait des
+ressourcesauxprogrammes/développeurs.
+▪ Lesprogrammesd’applicationinteragissentavecle SE.
+▪ Les utilisateursinteragissentavecl’interface utilisateur (Shell ou GUI
+- GraphicalUserInterface).
+▪ Abstraction plus simpleet plus agréableque le matériel.
+14
+<<<PAGE>>>
+Le Systèmed’Exploitation
+Fonctionsdu Systèmed’Exploitation
+❑ Gestiondesressources matérielles. Le SE doit connaître endétail 
+le matérielde l’ordinateur.
+▪ Ordonneet contrôle l’allocation desressourcesaux programmes.
+▪ Résolutiondesconflits entre programmesou entre utilisateurs.
+▪ Gestiondesentrées/ sorties.
+▪ Gestiondesprocessus(charger,exécuter,terminer).
+▪ Gestionde la mémoirecentrale.
+▪ Utilisationpartagée(multiplexing ) : entemps(Ex. CPU - processeur) et en
+space(Ex. mémoire).
+15
+<<<PAGE>>>
+Le Systèmed’Exploitation
+Le "Zoo" des Systèmesd’Exploitation
+❑ Mainframe : Data centers de haute performance. Capacité E/S très
+élevée.UNIX/Linux .
+❑ Serveur: Servicesà plusieursutilisateurs. Partagedesressourcesmatérielset
+logiciels. Linux, WindowsServer,Solaris,FreeBSD.
+❑ Multiprocesseur : Plusieurs CPUs connectées. Ordinateurs personnels
+deviennentmultiprocesseurs. Linux, Windows.
+❑ SE d’ordinateurpersonnel: Fournit un bon support à un seul utilisateur.
+Linux, Windows,Apple OS X.
+❑ Mobile : Téléphones,appareilsphoto numériques. Android, Apple iOS.
+❑ Embarqué : TVs, DVDs, voitures, reproducteurs MP3. Android, QNX,
+VxWorks.
+❑ Noeud-capteur : Réseauxdes capteurs minuscules. Météo, défense,etc. SE
+petit et simple. TinyOS.
+❑ Temps réel : Temps comme paramètre essentiel. Systèmes de contrôle,
+systèmesmultimedia. RTLinux, eCos.
+16
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+Révision du Matériel
+17
+<<<PAGE>>>
+Révision du Matériel
+Révisiondu Matériel
+18
+<<<PAGE>>>
+Révision du Matériel
+19
+
+<<<PAGE>>>
+Révision du Matériel
+Le processeur
+❑ CPU (Central ProcessingUnit ) : Le “cerveau” de l’ordinateur.
+❑ Exécutedesinstructions en langageassembleurdesprogrammesplacés
+en mémoirecentrale.
+❑ Répertoirefixé d’instructions,normalementincompatibleaveccelui d’autre
+famille de processeurs(Ex. Intel x86 vs. ARM).
+❑ Registrespour stockerdesvariablesou desrésultatstemporaires(accèsà
+mémoire très long).
+20Source : https://www.napsis.fr/cloud-lexique/cpu-et-vcpu/
+<<<PAGE>>>
+Révision du Matériel
+Le processeur
+❑ Quelquesregistressont accessiblesaux programmeurs:
+▪ Compteur ordinal (PC) : contient l’adresse en mémoire de la
+prochaineinstruction à charger.
+▪ Pointeur de pile : contient l’adressesupérieurede la pile de mémoire (à
+revoir plus tard).
+▪ PSW (Program Status Word ) : contient des informations-clés sur le
+fonctionnementdu processeur
+⋆ Valeurdu compteurordinal
+⋆ Informationssur lesinterruptions (masquéesou non)
+⋆ Mode du processeur(user ou kernel)
+⋆ Priorités
+⋆ Etc. . .(format spécifiqueà un processeur)
+21
+<<<PAGE>>>
+Révision du Matériel
+Le processeur
+Architecture du processeur Intel x86
+22
+Mémoire
+Processeur
+<<<PAGE>>>
+Révision du Matériel
+Le processeur
+❑ Systèmesmulti-thread
+▪ Programmesavecplusieursfils/threads d’exécution(processus“légers”) qui 
+partagent les ressources d’un unique Coeur.
+▪ Multiplexagetemporeldesthreads.
+▪ Le SE verra plusieursCPUs.
+❑ Systèmesmulti-noyau (multi-core) :
+▪ Plusieurs coeurs physiques. 
+▪ Quad-core avec partage de mémoire cache L2(a) 
+vs. L2 intégrée (b).
+▪ Intel Xeon Phi 60 cores !!
+▪ GPUs(GraphicsProcessingUnits).
+23
+
+<<<PAGE>>>
+Révision du Matériel
+La Mémoire
+❑ La mémoirecentralecontientles instructionset données
+des applicationsou desprogrammesà exécuter.
+❑ Avec le disque,la mémoirecache, elle constitueun système
+de hiérarchie demémoire qui permet derapprocher la vitesse 
+dela mémoirecentralede celledu processeur.
+❑ Conditionsrequises: rapide,grandeet pas chère.
+▪ Approche: hiérarchiedescouches
+24
+<<<PAGE>>>
+Révision du Matériel
+La Mémoire
+❑ Mémoiresecondaire(disquesdurs)
+▪ Disquemagnétique : dispositif mécanique,avecdesplateauxtournants 
+(5400, 7200, 10.800RPMs)
+▪ Dispositifsd’état solide(SSDs,Solid State Disks) : Sanspiècesmobiles.
+Donnéesstockéesen mémoireflash.
+25
+<<<PAGE>>>
+Révision du Matériel
+Dispositifsd’Entrée/Sortie
+❑ Deux parties:
+▪ Contrôleur : chip qui contrôle le dispositif et acceptelescommandesdu 
+systèmed’exploitation.
+▪ Dispositif d’E/S.
+❑ Chaquecontrôleurest different. Un logicieldifférentpour chacun:
+pilote(driver) du dispositif.
+▪ Exécutésen mode kernel.
+▪ Peuventêtre chargésdynamiquement(Linux) ou aprèsle démarrage(MS 
+Windows).
+❑ Trois manièresde faireE/S (exemplelecturedonnées) :
+▪ LeSEappellele driver, qui requiert defaçoncontinue le dispositif pour 
+vérifier s’il y a desnouvellesdonnées(polling).
+▪ Lecontrôleur génèreuneinterruption lorsqueil y a desnouvellesdonnéesà lire.
+▪ En utilisant un matériel spécifique: le DMA (Direct Memory Access).
+26
+<<<PAGE>>>
+Révision du Matériel
+Buses
+❑ Dispositif de communication de données partagés entreles
+différentscomposantsd’un systèmenumérique. 
+27
+Small Computer 
+System Interface
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+Élémentsde base d’unSE
+28
+<<<PAGE>>>
+Élémentsdebased’unSE
+Élémentsde base d’un SE
+29
+<<<PAGE>>>
+Élémentsdebased’unSE
+Élémentsde base d’unSE
+❑ Processus
+❑ Système de Fichiers
+❑ Entrée/Sortie
+❑ Mémoire
+❑ Protection
+❑ L’interprètedescommandes
+30
+<<<PAGE>>>
+❑ Processus: Programmequi s’exécute
+▪ Toute l’informationnécessairepour l’exécution
+▪ Programme, données, pile
+▪ Compteurordinal
+▪ Pointeur de pile d’appelde fonction
+▪ État desregistres
+▪ Etc.
+❑ Multiprogrammation: Exécutionde plusieursprocessusen
+mêmetemps.
+▪ Arrêt/reprisedesprocessus: sauvegardede toute l’informationsur
+le processus.
+▪ Tabledesprocessus.
+▪ Plusieurspriorités.
+Élémentsde base d’unSE Processuset threads
+Processus
+Anneauxde privilègespour les processeursIntel x86
+disponiblesen mode protégé(source: Wikipedia).
+31
+<<<PAGE>>>
+Élémentsdebased’unSE Processuset threads
+Processusvs code
+ATTE NTION
+Ne pas confondreprocessus(aspectdynamique)aveccodesource
+d’un programme(aspectstatique).
+32
+<<<PAGE>>>
+Élémentsde base d’unSE Plagesd’adressage
+Plagesd’adressage
+❑ Un programmes’exécuteen mémoireprincipale.
+▪ Plusieursprogrammesen mémoireen mêmetemps.
+▪ Interférencesà éviter en utilisant desmécanismesde protection.
+❑ Mémoirevirtuelle
+▪ Adressesmémoired’un processusdistribuéesen mémoireet en disque.
+▪ Découplela plaged’adressagedu processusde la mémoirephysique.
+▪ Géréepar le SE.
+▪ À voir plus tard…
+33
+<<<PAGE>>>
+Élémentsde base d’unSE Protection
+Protection
+❑ Le SE gèrela sécuritédu système
+❑ Exemple: fichiers
+▪ Codede protection de 9 bits : 3 champsde 3 bits (rwx)
+▪ Utilisateur(propriétaire), groupe,autres
+▪ Exemplede codede protection : rwx r-x −−x
+▪ Représentationoctale :
+rwx r-x - -x ⇒ 111 101 001bin ⇒ 751octal
+34
+<<<PAGE>>>
+Élémentsde base d’unSE L’interprète des commandes
+L ’interprètedes commandes(Shell)
+❑ Ne fait paspartiedu SE.
+❑ Plusieursshellsexistent: sh, csh, bash,zsh,ksh... (selonle SE).
+❑ Exécutiondescommandespour le SE.
+❑ C’est un exempled’utilisationdesappelssystème.
+35
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+AppelsSystème
+36
+<<<PAGE>>>
+AppelsSystème
+AppelsSystème
+37
+<<<PAGE>>>
+AppelsSystème
+Appelssystème
+❑ Rappel : SE fournit abstractionsaux programmesd’utilisateur et
+gèrelesressourcesmatérielles.
+▶ Exemple: Lectured’un fichier.
+count = read(fd, buffer, nbytes);
+❑ Similaire à un appel à une procédure,mais l’appel système
+entre dansle kernel.
+▪ Librairiesavecplusieursfonctions
+❑ Mécanismetransparentà l’utilisateur.
+Ensemble d’instructions étendues, spécifiques d’un SE, qui
+constituel’interfaceentreun SE et les programmesutilisateurs.
+38
+<<<PAGE>>>
+AppelsSystème
+Appelssystème
+❑ Exemplesd’actionspossibles
+▪ Créationd’un processus(fils) par un processusactif : fork
+▪ Attendrela fin d’un processusfils :wait
+▪ Destructiond’un processus:kill
+▪ Mise en attente,réveild’un processus: sleep, wait
+▪ Suspensionet reprised’un processusgrâceà l’ordonnanceurde 
+processus(scheduler)
+▪ Demandede mémoiresupplémentaireou restitutionde mémoire
+inutilisée:allocation dynamique, malloc, free .
+▪ etc.
+Ensemble d’instructions étendues, spécifiques d’un SE, qui
+constituel’interfaceentreun SE et les programmesutilisateurs.
+39
+<<<PAGE>>>
+AppelsSystème Interruptions
+❑ Évènementextérieurs: Requêted’un périphérique,appui sur
+un boutonpoussoir,passaged’un objetdevantun capteur, ...
+❑ À chacunde ces événementscorrespondunetâche à exécuterpar
+le processeur. Cette tâche est codéesousformed’une procédure
+(appel système).
+Puisquele processeurest en permanenceprêtà exécuterdes
+instructions...
+Commentpeut-il prendreen compteles évènementsextérieurs?
+Interruptions
+40
+<<<PAGE>>>
+AppelsSystème Interruptions
+❑ Pour pouvoirexécutercette procédureil faut quese produiseune 
+rupturede séquence. Cette rupturedoit avoirlieu dansun délai
+assez court.
+❑ Le processeurdispose d’une entréespéciale, appeléeIRQ (Interrupt
+ReQuest), associéeà un bit appelébit d’interruption. Avant de 
+passerà l’instructionsuivante,le processeurtestel’état de ce bit.
+S’il est à 1 le processeurest informéd’unedemanded’interruption.
+À voir plus tard … AdO
+Puisquele processeurest en permanenceprêtà exécuterdes
+instructions...
+Commentpeut-il prendreen compteles évènementsextérieurs?
+Interruptions
+41
+<<<PAGE>>>
+AppelsSystème Interruptions
+Gestiondesinterruptions
+1
+2
+❑ Déroulement:
+1)Arrêt du processusen coursà la fin de l’instruction courante. 
+2)Sauvegardede l’état présentdu processeur: le contexte(copiede l’état des
+registres hardwareau PCB (Bloc de Contrôle de Processus) , une
+structure logicielle qui représente l’état courantdu processus).
+3) Exécutiond’un sousprogrammedépendantde la naturedel’interruption.
+4) Restaurationdu contexteou état du processeur.
+❑ Interruption(1) ⇒ exécutiond’un sousprogramme(interruption handlerou
+gestionnairede l’interruption(2) )
+42
+<<<PAGE>>>
+AppelsSystème Interruptions
+Gestiondesinterruptions
+1) L’UE (unité d’échange)envoieun signald’interruption : INTR 
+2) La CPU acquitte avecle signalINTA
+3) L’UE transmet un numérod’interruption (IRQ)
+CeIRQ indexeenmémoirecentralele vecteurd’interruption,
+une table qui pour chaque numéro d’interruption donne
+l’adressedela routine associéeen mémoirecentrale.
+43
+INTA - Signal d'accusé de réception d'interruption. RESET IN est utilisé pour réinitialiser le
+microprocesseur en mettant le compteur de programme à zéro. RESET OUT est utilisé pour
+réinitialiser tous les périphériques connectés lorsque le microprocesseur est réinitialisé.
+<<<PAGE>>>
+AppelsSystème Interruptions
+❑ Interruptionsexternes:
+▪ Matérielles: panne,interventionde l’opérateur,duesaux
+périphériques ou à des dispositifs extérieurs, ...
+▪ Logicielles: déclencherune interruptionà l’aide d’une instruction
+spéciale.
+❑ Interruptionsinternes:
+▪ Déroutementsqui proviennentd’une situationexceptionnelleou d’une
+erreur liée à l’instruction en cours d’exécution (division par 0,
+débordement,dépassementde capacité,erreurd’adressage, ...)
+▪ Ces déroutementsgénèrentdesinterruptions(TRAP) pour passerde
+mode utilisateur à mode kernel, normalementliées à des erreurs
+irrécouvrables.
+ClassificationdesInterruptions
+44
+<<<PAGE>>>
+AppelsSystème Interruptions
+T raitementeffectifdesinterruptions
+❑ Affectation d’un numérodeprioritépar niveaud’interruption.
+❑ Permetd’ordonnerlestraitementslors descascades
+d’interruptions.
+❑ Nécessitéderetarderou d’annulerla prise encompte d’un signal.
+❑ Techniques :masquage et désarmement
+▪ Masquagede signaux
+⋆ Ignoretemporairementla priseen compte desinterruptions d’un niveau
+⋆ Pour cela, on positionneun indicateur spécifiquedansle PSW
+⋆ Possibilitéde masquerd’autresniveaux
+⋆ Démasquagedessignaux
+⋆ Prise en compte desinterruptions survenuespendant ce temps
+▪ Désarmementdesignaux
+⋆ Supprimerla priseen compte du niveaud’interruption
+⋆ Reactivation: réarmement
+45
+<<<PAGE>>>
+AppelsSystème Interruptions
+Exemple: Interruptionhorloge
+46
+<<<PAGE>>>
+AppelsSystème Interruptions
+Exemple: Interruptionhorloge
+47
+<<<PAGE>>>
+AppelsSystème Interruptions
+Exemple: Interruptionhorloge
+48
+<<<PAGE>>>
+AppelsSystème Interruptions
+Exemple: Interruptionhorloge
+49
+signal d’horloge
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+Structuredes SE
+50
+<<<PAGE>>>
+Structuredes SE
+Structuredes SE
+51
+<<<PAGE>>>
+Structuredes SE
+Catégoriesde SE
+❑ Systèmesmonolithiques
+❑ Micro-noyau
+❑ Autres
+52
+Source : Wikipédia
+<<<PAGE>>>
+Structuredes SE
+Systèmesmonolithiques
+❑ Tout le SE s’exécutecommeun seulprogrammeen mode
+kernel.
+❑ Le SE est un ensemblede procédurescompilésdansun
+seule programmeexécutable(et assezgrand).
+❑ Chaqueprocéduredansle systèmepeut appelerles autres
+sans restrictions.Inconvénients:
+▪ Systèmepeu maniable,difficileà comprendre.
+▪ Si une procédures’écrase,cela écraseratout le SE.
+❑ Structurela pluscommune.
+53
+<<<PAGE>>>
+Structuredes SE
+Systèmesmonolithiques
+❑ Démarched’un appelà procéduredansun systèmemonolithique:
+1) Appels systèmes: servicesoffertspar le SE aux applications
+utilisateurs. 
+2) Les paramètresde l’appel son récupérésde la pile (stack en
+anglais).
+3) Dépôtsdansun registreles paramètres.
+4) Passageen mode kernel(superviseur).
+5) SE analyseet exécutela procédureéquivalenteà l’appel
+système. 
+6) Commutationdansle modeutilisateur.
+1
+2
+3
+4
+5
+6
+❑ Peut inclurefacilementdesservicesspécifiques:
+▪ Chargementde moduledynamique(Par exemple,pilotes).
+▪ En Unix : librairiespartagées
+▪ En Windows: DLLs (Dynamic-Link Libraries)
+54
+<<<PAGE>>>
+Structuredes SE
+Micro-noyau (Microkernels)
+❑ Systèmesmonolithiques: volumineux(un servicerare, doit être présent)⇒ Source 
+d’erreurs.
+❑ Micro-noyau ⇒ Réductiondu noyau aux procéduresessentielles.
+❑ Objectif : réduirela taille du noyauet obtenir unefiabilité plusgrande.
+❑ Servicesreportésdansdesprogrammesexternes(modules).
+❑ Servicesà l’extérieur du noyau(dans l’espaceutilisateur).
+Source : Wikipedia
+55
+<<<PAGE>>>
+Structuredes SE
+Autres
+❑ Systèmes en couche, commele THE OS (Technische
+Hogeschool Eindhoven / Eindhoven University of
+Technology) par DIJKSTRA
+❑ Modèle Client-Serveur:
+▪ 2 typesde processus: clients et serveurs.
+⋆ Serveurs: dont chacunfournit un service.
+⋆ Clients: qui utilisent ces services.
+⋆ Communicationpar passagede messages.
+❑ Virtual machines: à voir plus tard dansce module.
+❑ Exokernels:
+▪ Chaqueutilisateurreçoit un sous-ensembledesressources(disk,
+mémoire,etc.)
+▪ L’Exokernel est un processus qui, s’exécutant en mode
+superviseur,gèrela répartitiondesressources.
+56
+<<<PAGE>>>
+Plan
+1. Introduction
+2. Le Système d’Exploitation
+3. Révision du Matériel
+4. Éléments de base d’un SE
+▪ Processus et threads 
+▪ Système de Fichiers  
+▪ Entrée/Sortie  
+▪ Plages d’adressage 
+▪ Protection
+▪ L’interprète des commandes
+5. AppelsSystème
+▪ Interruptions
+6. Structure des SE
+7. Programmation de processus
+Programmationde processus
+57
+<<<PAGE>>>
+Programmationde processus
+Programmationde processus
+58
+<<<PAGE>>>
+Programmationde processus
+Les processus
+❑ Informationssur les processusUNIX / Linux
+▪ Notion de père/fils
+▪ pid : identifiantuniquedu processus.Chaqueprocessusest identifié 
+par son PID unique
+▪ ppid : identificationdu processuspère
+▪ Propriétaire
+▪ Priorité
+▪ etc.
+❑ Hiérarchiedesprocessus
+▪ Lorsqu’unprocessuscréeun autreprocessus,les processuspèreet
+fils continuent d’être associésd’une certaine manière.Chaque 
+processus connaît le PPID de son parent.
+▪ Le processusenfantpeut lui mêmecréerplusieursprocessus,
+formant une hiérarchiede processus.
+▪ Un processusa un seulparentmais peut avoir aucunou plusieurs
+fils.
+59
+<<<PAGE>>>
+Programmationde processus
+Créationd’unprocessus
+❑ Appel à l’appel système– fonction fork() enlangageC. Création
+par clonage(mitose): un processus(le père) demande,enappelant la 
+primitive fork(), la créationdynamiqued’un nouveauprocessus(le
+fils). Le fils s’exécute ensuitede façonconcurrenteavecle père.
+❑ pid_t fork (void)
+▪ Processusfils
+⋆ partagele segmentde texte du père
+⋆ disposed’une copiede son segmentde données
+⋆ hérite du terminal de contrôle
+⋆ hérite d’une copiedesfile descriptorouverts
+⋆ n’hérite pasdu temps d’exécution,ni de la priorité
+⋆ n’hérite pasdessignauxen suspend
+▪ Appel
+⋆ Retourne0 au fils
+⋆ Retournele PID du fils au père,ou -1 si échec
+❑ Un processusavectous sesdescendantsformentun groupe
+de processusreprésentépar un arbrede processus.
+60
+<<<PAGE>>>
+Programmationde processus
+Créationd’unprocessus
+61
+<<<PAGE>>>
+Programmationde processus
+Exemple
+1 # include <st dio . h>
+2 # include <sys/ types . h>
+3 # include <unist d . h>  
+4
+5  int main ( )
+6 {
+7 pid_ t p;  
+8
+9 p = fork ( ) ;
+10
+11 switch ( p) {
+12 case 0 :
+13 print f ( " J e suis le f i l s : mon P ID est %d et mon PP ID est %d\n" , getpid ( ) , getppid ( ) ) ;
+14 break ;  
+15
+16 case − 1 :
+17 perror ( " E rreur de creat ion de processus avec fork " ) ;
+18 break ;  
+19
+20 default :
+21 print f ( " J e suis le pere : mon P ID est %d et mon PP ID est %d\n" , getpid ( ) , getppid ( ) ) ;
+22 break ;
+23 }
+24    ret urn 0;
+25 }
+Compilation: gcc -o useoffork useoffork.c 62
+PPID
+PID
+<<<PAGE>>>
+Programmationde processus
+Synchronisation
+❑ exit(int etat))
+▪ Termine un processusnormalement,etat est un octet (donc valeurs 
+possibles: 0 à 255) renvoyédansune variabledu typeint au processuspère.
+▪ Usage de la variableetat : 0 → ok ;  ≠ 0 → code erreur
+▪ Constantesstdlib.h : EXIT_SUCCESS,EXIT_FAILURE
+❑ pid_t wait(int *status)
+❑ pid_t waitpid (pid_t pid, int *status, int options)
+▶ Suspendle processusjusqu’à la terminaisonde l’un de sesfils de fils
+▶ Achèvementdu père: fils pris en chargepar le processus init
+(processus de PID = 1)
+▶ status : valeur de exit ou autre (dans le cas d’un signal)
+▶ wait attend la fin de n’importe quel fils et renvoieson PID ou -1 dansle cas 
+où il n’y a pas(ou plus) de fils
+▶ waitpid pour attendre un processusparticulier dont on connaît sonpid
+63
+<<<PAGE>>>
+Programmationde processus
+Exemple: Synchronisation
+Compilation: gcc -o useofwait useofwait.c
+ 64
+<<<PAGE>>>
+Code équipe TEAMS :
+f4kcv83
+65

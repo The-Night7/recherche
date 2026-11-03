@@ -1,0 +1,1117 @@
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Compressive Sensing
+CM2 : Algorithmes de codage parcimonieux
+CY TECH
+2022-2023
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+1 Introduction
+2 Relaxation convexe
+3 Algorithmes gloutons MP et OMP
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Section 1
+Introduction
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel
+• On sait que notre signal x poss` ede une repr´ esentationα, avec
+tr` es peu de composantes non nulles, dans un dictionnaire D.
+Autrement dit : x = Dα.
+• Mais le dictionnaire D est redondant avec beaucoup de
+colonnes.
+• Le syst` eme lin´ eairex = Dα, poss` ede donc une inﬁnit´ e de
+solutions α.
+• Nous devons donc reformuler notre probl` eme, avec comme
+objectif la parcimonie.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0
+´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe,
+utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,
+ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne :
+MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Reformulation
+Nous introduisons la pseudo-norme ‖α‖0 ´ egale au nombre de
+composantes non nulles de α.
+Le probl` eme devient alors
+min‖α‖0 sous contrainte Dα = x
+En tenant compte du bruit, ce probl` eme devient :
+min‖α‖0 sous contrainte‖x− Dα‖2 ⩽ϵ
+Plusieurs techniques sont utilis´ ees pour le r´ esoudre :
+Relaxation convexe, utilisant l’optimisation lin´ eaire,ou la
+m´ ethode LASSO.
+Algorithmes de poursuite gloutonne : MP et OMP en
+particulier.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Section 2
+Relaxation convexe
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Relaxation convexe
+La diﬃcult´ e ` a manier la pseudo-norme‖.‖0 nous oblige ` a la
+remplacer par une norme ‖.‖p avec p > 1.
+On obtient alors un probl` eme d’optimisation convexe :
+min‖α‖p sous contrainte Dα = x
+ou min‖α‖p sous contrainte‖x− Dα‖2 ⩽ϵ
+On dispose dans cette situation de diﬀ´ erentes m´ ethodes
+d’optimisation convexe pour le r´ esoudre.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Relaxation convexe
+La diﬃcult´ e ` a manier la pseudo-norme‖.‖0 nous oblige ` a la
+remplacer par une norme ‖.‖p avec p > 1.
+On obtient alors un probl` eme d’optimisation convexe :
+min‖α‖p sous contrainte Dα = x
+ou min‖α‖p sous contrainte‖x− Dα‖2 ⩽ϵ
+On dispose dans cette situation de diﬀ´ erentes m´ ethodes
+d’optimisation convexe pour le r´ esoudre.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Relaxation convexe
+La diﬃcult´ e ` a manier la pseudo-norme‖.‖0 nous oblige ` a la
+remplacer par une norme ‖.‖p avec p > 1.
+On obtient alors un probl` eme d’optimisation convexe :
+min‖α‖p sous contrainte Dα = x
+ou min‖α‖p sous contrainte‖x− Dα‖2 ⩽ϵ
+On dispose dans cette situation de diﬀ´ erentes m´ ethodes
+d’optimisation convexe pour le r´ esoudre.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Relaxation convexe
+La diﬃcult´ e ` a manier la pseudo-norme‖.‖0 nous oblige ` a la
+remplacer par une norme ‖.‖p avec p > 1.
+On obtient alors un probl` eme d’optimisation convexe :
+min‖α‖p sous contrainte Dα = x
+ou min‖α‖p sous contrainte‖x− Dα‖2 ⩽ϵ
+On dispose dans cette situation de diﬀ´ erentes m´ ethodes
+d’optimisation convexe pour le r´ esoudre.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Relaxation convexe
+La diﬃcult´ e ` a manier la pseudo-norme‖.‖0 nous oblige ` a la
+remplacer par une norme ‖.‖p avec p > 1.
+On obtient alors un probl` eme d’optimisation convexe :
+min‖α‖p sous contrainte Dα = x
+ou min‖α‖p sous contrainte‖x− Dα‖2 ⩽ϵ
+On dispose dans cette situation de diﬀ´ erentes m´ ethodes
+d’optimisation convexe pour le r´ esoudre.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒
+α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒
+α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Rappel de quelques m´ ethodes
+On sait r´ esoudre le probl` eme aux moindres carr´ es :
+α∗ = arg min‖x− Dα‖2
+2 =⇒ α∗ = (D T D)−1D T x
+Avec la r´ egression RIDGE, on obtient :
+α∗ = arg min‖x−Dα‖2
+2+λ‖α‖2
+2 =⇒α∗ = (D T D+λIk)−1D T x
+La m´ ethode LASSO quant ` a elle revient ` a :
+α∗ = arg min 1
+2‖x− Dα‖2
+2 +λ‖α‖1
+Le choix de la norme 1, pour α, est le plus judicieux, comme
+on va le voir.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Choix de la norme 1
+Revenons ` a notre probl` eme sans bruit :
+min‖α‖p sous contrainte Dα = x
+G´ eom´ etriquement, cela revient ` a chercher, dans un
+sous-espace aﬃne, celui des solutions de Dα = x, le vecteur le
+plus proche de l’origine, pour la norme p.
+Parmi les normes convexes, c’est bien la 1 qu’il faut retenir.
+C’est celle qui donne des solutions parcimonieuses (avec des
+composantes nulles).
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Choix de la norme 1
+Revenons ` a notre probl` eme sans bruit :
+min‖α‖p sous contrainte Dα = x
+G´ eom´ etriquement, cela revient ` a chercher, dans un
+sous-espace aﬃne, celui des solutions de Dα = x, le vecteur le
+plus proche de l’origine, pour la norme p.
+Parmi les normes convexes, c’est bien la 1 qu’il faut retenir.
+C’est celle qui donne des solutions parcimonieuses (avec des
+composantes nulles).
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Choix de la norme 1
+Revenons ` a notre probl` eme sans bruit :
+min‖α‖p sous contrainte Dα = x
+G´ eom´ etriquement, cela revient ` a chercher, dans un
+sous-espace aﬃne, celui des solutions de Dα = x, le vecteur le
+plus proche de l’origine, pour la norme p.
+Parmi les normes convexes, c’est bien la 1 qu’il faut retenir.
+C’est celle qui donne des solutions parcimonieuses (avec des
+composantes nulles).
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Choix de la norme 1
+Revenons ` a notre probl` eme sans bruit :
+min‖α‖p sous contrainte Dα = x
+G´ eom´ etriquement, cela revient ` a chercher, dans un
+sous-espace aﬃne, celui des solutions de Dα = x, le vecteur le
+plus proche de l’origine, pour la norme p.
+Parmi les normes convexes, c’est bien la 1 qu’il faut retenir.
+C’est celle qui donne des solutions parcimonieuses (avec des
+composantes nulles).
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Choix de la norme 1
+Revenons ` a notre probl` eme sans bruit :
+min‖α‖p sous contrainte Dα = x
+G´ eom´ etriquement, cela revient ` a chercher, dans un
+sous-espace aﬃne, celui des solutions de Dα = x, le vecteur le
+plus proche de l’origine, pour la norme p.
+Parmi les normes convexes, c’est bien la 1 qu’il faut retenir.
+C’est celle qui donne des solutions parcimonieuses (avec des
+composantes nulles).
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Optimisation lin´ eaire
+Autre m´ ethode, avec le choix de la norme 1 : ´ ecrire min‖α‖p sous
+contrainte Dα = x comme un probl` eme d’optimisation lin´ eaire :
+Et lui appliquer la m´ ethode du simplexe vue l’ann´ ee derni` ere.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Optimisation lin´ eaire
+Autre m´ ethode, avec le choix de la norme 1 : ´ ecrire min‖α‖p sous
+contrainte Dα = x comme un probl` eme d’optimisation lin´ eaire :
+Et lui appliquer la m´ ethode du simplexe vue l’ann´ ee derni` ere.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Optimisation lin´ eaire
+Autre m´ ethode, avec le choix de la norme 1 : ´ ecrire min‖α‖p sous
+contrainte Dα = x comme un probl` eme d’optimisation lin´ eaire :
+Et lui appliquer la m´ ethode du simplexe vue l’ann´ ee derni` ere.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Section 3
+Algorithmes gloutons MP et OMP
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0,
+les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe du MP(Matching Pursuit)
+Puisque le but est d’´ ecrirex comme combinaison lin´ eaire des
+atomes : x =α1d1 +... +αk dk, avec le moins de coefs αj⁄= 0, les
+m´ ethodes de la poursuite adaptative consistent ` a :
+1 Trouver, it´ erativement, dans le dictionnaireD, l’atome le plus
+corr´ el´ e avec le signal,
+2 ˆOter la contribution de cet atome au signal, et regarder le
+r´ esidu,
+3 Tant que le r´ esidu n’est pas assez faible, recommencer le
+processus jusqu’au crit` ere d’arrˆ et.
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Etapes du MP(Matching Pursuit)
+1 On initialise x = 0 + R (0).
+2 A l’´ etapek, on a : x = zm1dm1 +... + zmk dmk + R (k).
+3 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante. Ce sera la direction dm qui
+contribue le plus ` a ce r´ esidu.
+4 On calcule la contribution zm de cet atome ` aR (k).
+5 On actualise la repr´ esentationα en ajoutant zm, puis
+R (k+1) = R (k)− zmdm.
+6 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Algorithme MP
+Entr´ ees :x signal, D dico, ε (pr´ ecision),N max it´ erations,
+Sorties : α (repr´ es. parcimonieuse),R r´ esidu,k nombre it´ erations
+α← 0
+R← x
+k← 0
+Tant que‖R‖>ε et k < N
+m← argmax
+1⩽j⩽n
+|d T
+j R|
+‖dj‖2
+z← d T
+m R
+‖dm‖2
+2
+αm←αm + z
+R← R− zdm
+k← k + 1
+Fin Tant que
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Algorithme MP
+Entr´ ees :x signal, D dico, ε (pr´ ecision),N max it´ erations,
+Sorties : α (repr´ es. parcimonieuse),R r´ esidu,k nombre it´ erations
+α← 0
+R← x
+k← 0
+Tant que‖R‖>ε et k < N
+m← argmax
+1⩽j⩽n
+|d T
+j R|
+‖dj‖2
+z← d T
+m R
+‖dm‖2
+2
+αm←αm + z
+R← R− zdm
+k← k + 1
+Fin Tant que
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Principe de l’OMP(Orthogonal Matching Pursuit)
+MP converge exponentiellement et a un grand d´ efaut, un mˆ eme
+atome peut ˆ etre s´ electionn´ e plusieurs fois.
+Pour y rem´ edier, on va faire en sorte que le r´ esidu soit toujours
+orthogonal aux directions s´ electionn´ ees pr´ ec´ edemment.
+1 Le d´ ebut est le mˆ eme que pour MP, tout comme la s´ election
+d’une nouvelle direction.
+2 A chaque ´ etape, on rep` ere l’atome sur lequel la projection du
+r´ esiduR (k) est la plus importante.
+3 Mais ensuite, on recalcule les contributions de tous les atomes
+s´ electionn´ es ` ax, en r´ esolvant un pb. aux moindres carr´ es.
+4 On actualise alors la repr´ esentationα, puis le r´ esiduR (k+1).
+5 On s’arrˆ ete d` es que‖R (k)‖<ϵ .
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Algorithme OMP
+Entr´ ees :x signal, D dico, ε (pr´ ecision),N max it´ erations,
+Sorties : α, R, k, Index : indices atomes retenus
+α← 0 R← x Index ← [ ] k← 0 A← [ ]
+Tant que‖R‖>ε et k < N
+m← argmax
+1⩽j⩽n
+d T
+j R
+‖dj‖2
+Index← [Index, m]
+A← [A, dm]
+αIndex← pinv(A)x
+R← x− AαIndex
+k← k + 1
+Fin Tant que
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux
+<<<PAGE>>>
+Introduction
+Relaxation convexe
+Algorithmes gloutons MP et OMP
+Algorithme OMP
+Entr´ ees :x signal, D dico, ε (pr´ ecision),N max it´ erations,
+Sorties : α, R, k, Index : indices atomes retenus
+α← 0 R← x Index ← [ ] k← 0 A← [ ]
+Tant que‖R‖>ε et k < N
+m← argmax
+1⩽j⩽n
+d T
+j R
+‖dj‖2
+Index← [Index, m]
+A← [A, dm]
+αIndex← pinv(A)x
+R← x− AαIndex
+k← k + 1
+Fin Tant que
+CY TECH Compressive Sensing CM2 : Algorithmes de codage parcimonieux

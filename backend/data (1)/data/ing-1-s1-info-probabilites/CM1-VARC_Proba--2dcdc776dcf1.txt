@@ -1,0 +1,856 @@
+Variables aléatoires réelles continues
+Khalid El Amine I.
+Department of Mathematics
+⋆⋆⋆
+Dans tout ce chapitre :
+ Ω est un univers.
+ (Ω,A) est un espace probabilisable.
+ (Ω,A,P ) est un espace probabilisé.
+ R sera toujours muni de la tribu de Borel , B(R).
+ Toutes les variables aléatoires sont dénies sur un espace probabilisé (Ω,A,P ) et à valeurs dans
+l'espace probabilisable (R,B(R)).
+ On considère les variables aléatoires réelles X telles que X(Ω) est non discret.
+1 Variable aléatoire réelle
+Dénition 1.1 (Variable aléatoire réelle)
+On appelle variable aléatoire réelle (v.a.r. en abrégé ) sur (Ω,A) toute fonction
+X : (Ω,A)−→(R,B(R))
+vériant :
+X−1(B)∈A, ∀B∈B (R)
+• X(Ω) est appelé univers image de Ω par X.
+Proposition 1.2 Soit X : (Ω,A)−→(R,B(R)) une fonction. Alors
+X est une v.a.r. sur (Ω,A), si et seulement si, X−1(]−∞,x ])∈A, ∀x∈ R
+Preuve .
+1.1 Loi d'une variable aléatoire réelle
+Dénition 1.3 (Loi d'une v.a.r.)
+Soit X : (Ω,A)→ (R,B(R)) une v.a.r.. Soit P une probabilité sur (Ω,A). La fonction
+PX : B(R) −→ R
+B ↦−→ PX(B) =P (X−1(B))
+est appelée probabilité image de P par X, ou loi de X sous P .
+Remarque . PX est parfois notée L(X) et simplement appelée loi de X.
+1
+<<<PAGE>>>
+2 K. El Amine
+Proposition 1.4 Soit X : (Ω,A)→ (R,B(R)) une v.a.r.. Soit P une probabilité sur (Ω,A). Alors
+PX est une probabilité sur (R,B(R))
+i.e
+(R,B(R),PX) est un espace probabilisé.
+Proof .
+Remarque . Dans la suite, on notera simplement X : Ω−→ R au lieu de X : (Ω,A)−→(R,B(R)).
+1.2 Fonction de répartition d'une variable aléatoire réelle
+Dénition 1.5 (Fonction de répartition d'une v.a.r.)
+Soit X une v.a.r.. La fonction
+FX : R −→ R
+x ↦−→ FX(x) =PX(]−∞,x ])
+est appelée fonction de répartition de X, (abrégée en f.r. ).
+Remarque .
+•∀ x∈ R, FX(x)∈ [0, 1].
+• FX(x) représente la probabilité de toutes les réalisations inférieures ou égales au réel x.
+• La f.r. FX est aussi appelée fonction de distribution cumulative de X, (abrégée en f.d.c.).
+Proposition 1.6 Soit X une v.a.r. et FX sa f.r.. Alors :
+1) FX est croissante sur R
+2) lim
+x→−∞
+FX(x) = 0 et lim
+x→+∞
+FX(x) = 1
+3) FX est continue à droite sur R
+Preuve .
+Remarque . Comme FX est monotone et bornée, elle admet une limite (nie) à gauche en tout point
+de R.
+On rappelle le théorème suivant
+Théorème 1.7 Si une fonction est monotone sur un intervalle de R, alors l'ensemble des points où
+elle n 'est pas continue est ni ou dénombrable.
+Remarque . Toute f.r. est donc continue sur R, sauf éventuellement sur une partie discrète.
+Proposition 1.8 Soit F : R→ R une fonction.
+Si
+1) F est croissante sur R
+2) lim
+x→−∞
+F (x) = 0 et lim
+x→+∞
+F (x) = 1
+3) F est continue à droite sur R
+Alors, F est la f.r. d'une certaine v.a.r..
+Proof .
+<<<PAGE>>>
+v.a.r. continues 3
+Notations . Pour alléger les notations, on écrira :
+ {X∈B} pour l'ensemble X−1(B) où B∈B (R), i.e. :
+{X∈B} =X−1(B) ={ω∈ Ω :X(w)∈B}
+De même :
+ {X =x} =X−1({x}) ={ω∈ Ω :X(w) =x}, où x∈ R.
+ {X≤x} =X−1(]−∞,x ]) ={ω∈ Ω :X(ω)≤x}
+ {X <x} =X−1(]−∞,x [) ={ω∈ Ω :X(ω)<x}
+ {a<X ≤b} =X−1(]a,b ]) ={ω∈ Ω :a<X (ω)≤b}
+ etc.
+ ∀a∈ R
+FX(a−) = lim
+x→a−
+FX(x) and FX(a+) = lim
+x→a+
+FX(x)
+Proposition 1.9 Soit X une v.a.r. et FX sa f.r.. Soit a,b∈ R avec a<b . Alors :
+1) P ({X≤a}) =FX(a)
+2) P ({X >a}) = 1−FX(a)
+3) P ({a<X ≤b}) =FX(b)−FX(a)
+4) P ({X =a}) =FX(a+)−FX(a−)
+Preuve .
+Proposition 1.10 Soit X et Y deux v.a.r. sur le même (Ω,A,P ). Alors
+FX =FY , si et seulement si, PX =PY
+Preuve .
+Remarque . La fonction de répartition FX d'une v.a.r. caractérise complètement sa loi PX .
+1.3 Indépendance de variables aléatoires réelles
+1.3.1 Indépendance de deux variables aléatoires réelles
+Dénition 1.11 (Indépendance de deux v.a.rs)
+Sot X et Y deux v.a.rs sur le même (Ω,A,P ). X et Y sont dites indépendantes, si et seulement si,
+∀B,B′∈B (R) les événement X−1(B) et Y−1(B′) sont indépendants
+Notation . Notons I, l'ensemble des intervalles de R.
+Proposition 1.12 Soit X et Y deux v.a.rs sur le même (Ω,A,P ).
+Les assertions suivantes sont équivalentes
+1) X et Y sont indépendantes.
+2) ∀(B,B′)∈ (B(R))2 , P ({X∈B}∩{ Y ∈B′}) =P ({X∈B})P ({Y ∈B′})
+3) ∀(I,I′)∈ (I)2 , P ({X∈I}∩{ Y ∈I′}) =P ({X∈I})P ({Y ∈I′})
+4) ∀(x,y )∈ R2 , P ({X≤x}∩{ Y ≤y}) =P ({X≤x})P ({Y ≤y})
+Preuve .
+<<<PAGE>>>
+4 K. El Amine
+Rappel . Si A est un événement, alors sa fonction indicatrice IA est une v.a.r..
+Proposition 1.13 Deux événements A et A′ sont indépendant, si et seulement si, leurs fonctions
+indicatrices IA et IA′ sont indépendantes.
+Proof .
+1.3.2 Indépendance d'une suite de variables aléatoires réelles
+Dénition 1.14 (Indépendance d'une suite nie de v.a.rs)
+Soit n∈ N avec n> 1. Soit (X1,...,X n) une suite nie de n v.a.rs sur le même (Ω,A,P ).
+La suite (X1,...,X n) est dite indépendante, si et seulement si,
+∀(B1,...,B n)∈ (B(R))n, la suite d'événements (X−1
+1 (B1),...,X −1
+n (Bn)) est indépendante
+Proposition 1.15 Soit n∈ N avec n> 1. Soit (X1,...,X n) une suite nie de n v.a.rs sur (Ω,A,P ).
+Les assertions suivantes sont équivalentes
+1) (X1,...,X n) est une suite indépendante
+2) ∀(B1,...,B n)∈ (B(R))n , P({X1∈B1}∩...∩{Xn∈Bn}) =P ({X1∈B1})··· P ({Xn∈Bn})
+3) ∀(I1,...,I n)∈ (I)n , P({X1∈I1}∩ ... ∩{Xn∈In}) =P ({X1∈I1})··· P ({In∈Bn})
+4) ∀(x1,...,x n)∈ Rn , P({X1≤x1}∩ ... ∩{Xn≤xn}) =P ({X1≤x1})...P ({Xn≤xn})
+Proof .
+Proposition 1.16 Soit n∈ N avec n> 1. Soit (X1,...,X n) une suite nie de n v.a.rs sur (Ω,A,P ).
+Pour chaque i∈ [ [1,n ] ], soit fi : R→ R une fonction quelconque. Alors
+(X1,...,X n) est indépendante =⇒ (f1(X1),...,f n(Xn)) est indépendante
+Preuve .
+Dénition 1.17 (Indépendance d'une suite innie de v.a.rs)
+Soit (Xn)n∈N∗ une suite de v.a.rs sur (Ω,A,P ). La suite (Xn)n∈N∗ est dite indépendante, si et
+seulement si, pour toute partie nie I de N∗, avec |I|> 1, la suite nie (Xi)i∈I est indépendante.
+<<<PAGE>>>
+v.a.r. continues 5
+2 Variable aléatoire réelle continue
+Dénition 2.1 (v.a.r. continue)
+Une v.a.r. X est dite continue, si et seulement si, sa f.r. FX est continue sur R.
+Proposition 2.2 Soit X une v.a.r.. Alors
+X est continue, si et seulement si, P ({X =x}) = 0, ∀x∈ R
+Preuve .
+Remarque . Soit a∈ R. P ({X =a}) = 0 n'implique pas que l'événement {X =a} est impossible. Si
+c'était le cas, alors pour tout x∈ R, l'événement {X =x} serait impossible et X ne pourrait prendre
+aucune valeur.
+Proposition 2.3 Soit X une v.a.r. continue. Alors, ∀B∈B (R),
+B est discret =⇒ P ({X∈B}) = 0
+Preuve .
+Exercice . Supposons que X soit une v.a.r. continue.
+1) Que vaut P ({X∈ Q}) ?
+2) Que vaut P ({X∈ [0, 1]∩ Q})?
+Solution .
+Proposition 2.4 Soit X une v.a.r. continue de f.r. FX . Pour tout a,b∈ R avec a<b :
+• P ({X <a}) =P ({X≤a}) =FX(a)
+• P ({X≥a}) =P ({X >a}) = 1−FX(a)
+• P ({a<X <b }) =P ({a≤X <b}) =P ({a≤X≤b}) =P ({a<X ≤b}) =FX(b)−FX(a)
+Preuve . Par application de de l'égalité P ({X =x}) = 0, ∀x∈ R et de la dénition d'une f.r. d'une
+v.a.r..
+3 Variable aléatoire réelle absolument continue
+3.1 Fonction de densité de probabilité
+Dénition 3.1 (Fonction de densité de probabilité)
+Soit f : R−→ R une fonction.
+On dit que f est une fonction de densité de probabilité (f.d.p. en abrégé) sur R, si et seulement si,
+(1) f(x)≥ 0, ∀x∈ R
+(2) f est continue sur R sauf sur une partie nie.
+(3)
+∫ +∞
+−∞
+f(x)dx = 1
+<<<PAGE>>>
+6 K. El Amine
+Exemple . Soit f : R−→ R la fonction dénie par
+f(x) =|x|I[−1,1]
+Vérier que f est une fonction de densité de probabilité.
+Solution .
+Remarque . Soit f une fonction de densité de probabilité.
+ f peut ne pas être bornée.
+ ( f ≥ 0 sur R et
+∫
+R
+f(x)dx = 1 ) ⇏ ( f ≤ 1 sur R) ; contrairement à la fonction de masse de
+probabilité. f(x) ne correspond pas à une valeur de probabilité.
+Exemple . Soit f : R−→ R dénit par
+f(x) =
+{ 1
+4
+√
+|x|
+si 0<|x|≤ 1
+0 sinon
+Montrer que f est fonction de densité de probabilité.
+Solution .
+3.2 Variable aléatoire réelle absolument continue
+Dénition 3.2 (v.a.r. absolument continue)
+Une v.a.r. X est dite absolument continue (ou de loi absolument continue ), si et seulement si,
+il existe une f.d.p. noté fX , telle que :
+∀B∈B (R) P ({X∈B}) =
+∫
+B
+fX(x)dx
+Dans ce cas
+• fX est alors appelée fonction de densité de probabilité de X.
+• SX ={x∈ R : fX(x)⁄= 0} est appelé support de la loi de X.
+Rappel . La loi de probabilité d'une v.a.r. X, noté PX , est une probabilité sur (R,B(R)). Elle est
+dénit par
+∀B∈B (R) PX(B) =P ({X∈B})
+Remarque . Il n'y a pas d'unicité de la f.d.p. pour une v.a.r. X.
+Si fX est une f.d.p. de X, alors n'importe quelle f.d.p. f égale à fX sauf (par exemple) sur un
+ensemble ni de points est aussi une f.d.p. de X. Par exemple
+f1(x) =I[0,1] ; f2(x) =I]0,1] ; f3(x) =I[0,1[ ; f4(x) =I]0,1[
+sont des f.d.p. de la même v.a.r..
+Exemple . Si X est une v.a.r. absolument continue de f.d.p. fX , alors :
+P ({X∈ [1, 3]}) =
+∫
+[1,3]
+fX(x)dx =
+∫ 3
+1
+fX(x)dx
+On rappelle que {X∈ [1, 3]} se note {1≤X≤ 3}.
+Proposition 3.3 Soit X une v.a.r..
+Si X est absolument continue, alors X est continue
+Preuve . ∀a∈ R
+P ({X =a}) =P ({X∈{a}}) =
+∫
+{a}
+fX(x)dx =
+∫ a
+a
+fX(a)dx =fX(a)
+∫ a
+a
+1dx =fX(a)× 0 = 0
+<<<PAGE>>>
+v.a.r. continues 7
+3.3 Fonction de répartition d'une variable aléatoire réelle absolument con-
+tinue
+Théorème 3.4 Soit X une v.a.r. absolument continue, de f.d.p. fX . La f.r. de X, notée FX est
+donnée par :
+FX(x) =
+∫ x
+−∞
+fX(t)dt ∀x∈ R
+Preuve . Vient de la formule de la loi d'une v.a.r. absolument continue.
+FX(x) =P ({X≤x}) =P ({X∈]−∞,x ]}) =
+∫ x
+−∞
+fX(t)dt
+Graphe de FX :
+Exemple . Soit f : R−→ R la fonction dénie par f(x) =c(1−x)I[0,1](x), où c∈ R.
+1) Déterminer la constante c pour que f soit une f.d.p.. Tracer la courbe de f .
+2) Supposons que X soit une v.a.r. absolument continue ayant f pour f.d.p..
+Déterminer FX , la f.r. de X et dessiner sa courbe.
+Solution .
+Proposition 3.5 Soit X une v.a.r. absolument continue de f.d.p. fX et de f.r. FX .
+Pour tout a,b∈ R avec a<b :
+• P ({X <a}) =P ({X≤a}) =FX(a) =
+∫ a
+−∞
+fX(t)dt
+• P ({X≥a}) =P ({X >a}) = 1−FX(a) =
+∫ +∞
+a
+fX(t)dt
+• P ({a<X ≤b}) =FX(b)−FX(a) =
+∫ b
+a
+fX(t)dt
+• P ({a<X <b }) =P ({a≤X <b}) =P ({a≤X≤b}) =P ({a<X ≤b})
+Preuve . Par application de de l'égalité P ({X = x}) = 0 , ∀x∈ R ; de la dénition d'une f.r. d'une
+v.a.r. et de la dénition de la loi d'une v.a.r. absolument continue.
+Représentations graphique de P ({X <a}), P ({X≥a}) et P ({a<X <b }) :
+<<<PAGE>>>
+8 K. El Amine
+Proposition 3.6 Soit X une v.a.r. et FX sa f.r..
+Si X est absolument continue de f.d.p. fX , alors
+1) FX est continue sur R.
+2) FX est de classe C 1 sur R, sauf sur une partie nie.
+3) Si fX est continue en x0∈ R, alors FX est dérivable en ce point et on a :
+F
+′
+X(x0) =fX(x0)
+Preuve .
+La réciproque du résultat ci-dessus est donnée par le
+Théorème 3.7 Soit X une v.a.r. de f.r. FX .
+Si FX vérie :
+(1) FX est continue sur R.
+(2) FX est de classe C 1 sur R, sauf en un nombre ni de points.
+Alors
+1) X est une v.a.r. absolument continue.
+2) Toute fonction f : R→ R telle que
+{
+f≥ 0 sur R
+f(x) =F
+′
+X(x) en tout point x où FX est dérivable
+est une f.d.p. de X.
+Preuve .
+Remarque Importante . Si X est une v.a.r. absolument continue de f.r. FX , alors FX est dérivable
+presque partout (théorème de diérentiation de Lebesgue ). Ceci permet d'associer à X une f.d.p.
+fX de façon canonique . Dans la pratique on prendra
+fX(x) =
+{
+F′
+X(x) en tout point x où FX est dérivable
+0 ailleurs
+Exemple . Soit X une v.a.r. dont la f.r. FX est dénit par
+FX(x) =
+
+
+
+0 if x≤ 0
+x if 0≤x≤ 1
+1 if 1≤x
+Montrer que X est absolument continue et proposer une f.d.p. de X.
+Solution .
+<<<PAGE>>>
+v.a.r. continues 9
+Figure 1: Fonction de Cantor
+Discussion. Existence de v.a.r. continue mais non absolument continue.
+Dans tous les cas raisonnables, une v.a.r. continue aura une f.d.p. ; c'est-à-dire qu'elle sera absolument
+continue. Toutefois, il est possible d'établir l'existence de v.a.rs qui sont continues mais pas absolument
+continues. Un exemple remarquable est la loi de Cantor . La f.r. F de la loi de Cantor est continue
+sur R et dérivable (de dérivée nulle) presque partout, mais elle n'est pas absolument continue.
+La loi de Cantor est une loi de probabilité singulière dont le support est l'ensemble de Cantor. Sa
+f.r. est représentée par l'escalier de Cantor , aussi appelé escalier du diable (voir gure 1).
+La loi de Cantor a les propriétés suivantes :
+ Elle n'est pas absolument continue (par rapport à la mesure de Lebesgue), car elle n'admet pas
+de fonction de densité de probabilité.
+ Elle n'est pas discrète, car elle n'admet pas de fonction de masse de probabilité.
+ Elle n'est pas non plus une loi mixte (des deux lois citées ci-dessus).
+ Son support est non discret et de mesure de Lebesgue nulle.
+4 Moments d'une variable aléatoire réelle absolument continue
+On abrégera souvent variable aléatoire réelle absolument continue en v.a.r.a.c..
+4.1 Espérance
+Dénition 4.1 (Espérance)
+Soit X une v.a.r.a.c. de f.d.p. fX . On dit que X admet une espérance, si est seulement si,
+∫ +∞
+−∞
+|x|fX(x)dx< +∞
+Dans ce cas, l'espérance de X est notée E(X) et elle est dénie par :
+E(X) =
+∫ +∞
+−∞
+xfX(x)dx
+<<<PAGE>>>
+10 K. El Amine
+Remarque .
+∫ +∞
+−∞
+|x|fX(x)dx existe toujours, c'est un élément de [0, +∞].
+La nitude de cette intégrale garantie que l'espérance E(X) est bien dénie.
+Exemple . Loi de Cauchy standard
+Soit X une v.a.r.a.c. de f.d.p.
+fX(x) = 1
+π
+1
+1 +x2 ∀x∈ R
+Montrer que X n'admet pas d'espérance.
+Solution .
+4.2 Propriétés de l'espérance
+Théorème 4.2 (Théorème de transfert)
+Soit X : Ω→ R une v.a.r.a.c. de f.d.p. fX .
+Soit g : R−→ R une fonction continue par morceaux ( g mesurable sut). Alors
+• La v.a.r. g(X) est absolument continue.
+• Si
+∫ +∞
+−∞
+|g(x)|fX(x)dx< ∞, alors, g(X) admet une espérance. Elle est donnée par
+E(g(X)) =
+∫ +∞
+−∞
+g(x)fX(x)dx
+Preuve .
+Exemple . Soit X une v.a.r.a.c. de f.d.p.
+fX(x) = 3x2I[0,1](x)
+Que vaut (a) E(X) ? (b) E(X 2) ? (c) E(X +X 2) ?
+Solution .
+Corollaire 4.3 Soit X une v.a.r.a.c. admettant une espérance. Soit a,b∈ R. Alors la v.a.r. aX +b
+est absolument continue et admet un espérance donnée par
+E(aX +b) =aE(X) +b
+Preuve .
+Remarque . En paticulier
+E(aX) =aE(X) ; E(a) =a
+Proposition 4.4 (Croissance de l'espérance)
+Soit X et Y deux v.a.r.a.cs. sur le même (Ω,A,P ), chacune admettant une espérance. Alors
+Y ≤X =⇒ E(Y )≤E(X)
+En particulier :
+0≤X =⇒ 0≤E(X)
+et pour a,b∈ R :
+a≤X≤b =⇒ a≤E(X)≤b
+Preuve .
+<<<PAGE>>>
+v.a.r. continues 11
+Théorème 4.5 (Linéarité de l'espérance)
+Soit X et Y deux v.a.r.a.cs. sur le même (Ω,A,P ), chacune admettant une espérance. Soit a,b∈ R.
+Alors, la v.a.r. aX +bY admet une espérance et :
+E(aX +bY ) =aE(X) +bE(Y )
+En particulier
+E(X +Y ) =E(X) +E(Y )
+Preuve .
+Note . Même si X et Y sont absolument continues, rien ne garantie que la v.a.r. aX +bY soit
+absolument continue.
+4.3 Variance & Ecart-type
+Dénition 4.6 (Variance & Ecart-type)
+Soit X une v.a.r.a.c. de f.d.p. fX et admettant une espérance E(X).
+ La variance de X est dénit par :
+V (X) =E((X−E(X))2) =
+∫ +∞
+−∞
+(x−E(X))2fX(x)dx
+sous réserve de convergence de l'intégrale.
+ L'écart-type de X est dénit par :
+σ(X) =
+√
+V (X)
+sous réserve d'existence de V (X).
+Remarque .
+• V (X) est l'écart quadratique moyen de la variable aléatoire X par rapport à sa valeur moyenne.
+• V (X) est donc un indicateur mesurant la dispersion des valeurs x de X autour de leurs moyenne
+pondérée E(X). Plus précisément, c'est σ(X) =
+√
+V (X) qui mesure l'étendue de cette dispersion.
+Une petite variance signie que X est fortement concentré et une grande variance signie que X est
+dispersée.
+Dénition 4.7 (v.a.r. centrée (resp. centrée réduite))
+Soit X une v.a.r.a.c.. On dit que :
+ X est centrée, si elle admet une espérance nulle, (i.e. E(X) = 0).
+ X est centrée réduite, si elle admet une espérance nulle et une variance égale à 1,
+(i.e. E(X) = 0 et V (X) = 1).
+Théorème 4.8 Soit X une v.a.r.a.c..
+ Si X admet une espérance, alors X−E(X) est centrée.
+ Si X admet une variance non nulle, alors X∗ = X−E(X)
+σ(X) est centrée réduite.
+Preuve .
+<<<PAGE>>>
+12 K. El Amine
+4.4 Moments d'ordre supérieur
+Dénition 4.9 (Moments)
+Soit X une v.a.r.a.c. de f.d.p. fX . Soit m∈ N∗. Sous réserve de convergence absolue de l'intégrale :
+ Le moment d'ordre m de X est déni par
+E(Xm) =
+∫ +∞
+−∞
+xmfX(x)dx
+ Le moment centré d'ordre m de X est déni par
+E((X−E(X))m) =
+∫ +∞
+−∞
+(x−E(X))mfX(x)dx
+Proposition 4.10 Soit X une v.a.r.. Si X admet un moment d'ordre m∈ N∗ alors X admet des
+moments de tout ordre j∈ J1,m K.
+Preuve .
+Théorème 4.11 (Formule de Köenig-Huyghens )
+Soit X une v.a.r.. Si E(X 2) existe, alors V (X) existe et elle est donné par :
+V (X) =E(X 2)−E2(X)
+Preuve .
+Proposition 4.12 Soit X une v.a.r. admettant une variance. Alors :
+ V (X)≥ 0
+ V (aX +b) =a2V (X), ∀a,b∈ R
+Preuve .
+Exemple . Soit X une v.a.r.a.c. telle que
+E(X) = 3
+4 et E(X 2) = 3
+5
+1) Calculer V (X).
+2) Soit Y une nouvelle v.a.r. dénie par Y = 3X− 2. Calculer (a) E(Y ) et (b) V (Y ).
+Solution .
+4.5 Cas de deux v.a.r.a.cs indépendantes
+Proposition 4.13 Soit X et Y deux v.a.rs admettant chacune un moment d'ordre 2.
+Si X et Y sont indépendantes, alors :
+E(XY ) =E(X)E(Y )
+and
+V (X +Y ) =V (X) +V (Y )
+Preuve .
+<<<PAGE>>>
+v.a.r. continues 13
+5 Lois continues usuelles
+ Toutes les v.a.rs absolument continues ci-après sont dénies sur un espace probabilisé (Ω,A,P ).
+ v.a.r. absolument continue sera abrégée en v.a.r.a.c..
+5.1 Loi continue uniforme
+Dénition 5.1 Soit a et b deux réels, avec a < b. On dit qu'une v.a.r.a.c. X suit une loi continue
+uniforme sur [a,b ], si et seulement si, elle admet pour f.d.p.
+fX(x) = 1
+b−aI[a,b](x)
+On note alors
+X∼U ([a,b ])
+Modélisation . La distribution uniforme U([a,b ]) est utiliser pour modéliser une v.a.r. pouvant se
+produire équitablement entre a et b.
+Interprétation . X∼U ([a,b ]) signie : ∀ [u,v ]⊂ [a,b ] et ∀ [u′,v′]⊂ [a,b ]
+v−u =v′−u′ =⇒ P (X∈ [u,v ]) =P (X∈ [u′,v′])
+i.e. si [u,v ] et [u′,v′] sont deux segments de même longueur, alors les événements {X ∈ [u,v ]} et
+{X∈ [u′,v′]} sont équiprobable.
+Exemple . Un nombre représenté par X est choisie au hasard entre a et b. X est supposé être
+uniformément distribuée veut dire que la probabilité que X tombe dans un intervalle de longueur l ne
+dépend que de l, pas de la position de l'intervalle dans [a,b ].
+Exercice . Soit X∼U ([a,b ]). Vérier que fX est une f.d.p..
+Solution .
+Proposition 5.2 Si X∼U ([a,b ]), alors :
+E(X) = a +b
+2 et V (X) = (b−a)2
+12
+Preuve .
+Proposition 5.3 Si X∼U ([a,b ]), alors sa f.r. est donnée par :
+FX(x) =
+
+
+
+0 si x<a
+x−a
+b−a si a≤x≤b
+1 si b<x
+Preuve .
+<<<PAGE>>>
+14 K. El Amine
+1
+b−a
+a b x
+fX(x)
+Figure 2: f.d.p. de X∼U ([a,b ])
+1
+a b x
+FX(x)
+Figure 3: f.r. de X∼U ([a,b ])
+Exercice . Soit c∈ R∗. Soit f : R→ R la fonction dénie par :
+f(x) =
+{
+c si x∈ [0, 1]
+0 sinon
+1) Déterminer c pour que f soit une f.d.p.. Représenter graphiquement f .
+2) Soit X une v.a.r.a.c. ayant f pour f.d.p..
+a) Reconnaitre la loi de X.
+b) Déterminer FX , la f.r. de X.
+c) Calculer E(X) et V (X).
+Solution .
+Proposition 5.4 Soit X une v.a.r.a.c.. Soit a,b∈ R tels que a<b . Alors :
+X∼U ([0, 1])⇐⇒a + (b−a)X∼U ([a,b ])
+et
+X∼U ([a,b ])⇐⇒X−a
+b−a X∼U ([0, 1])
+Preuve .
+5.2 Loi exponentielle
+Dénition 5.5 Soit λ∈ R∗
++. On dit qu'une v.a.r.a.c. X suit une loi exponentielle de paramètre λ,
+si et seulement si, elle admet pour f.d.p.
+fX(x) =λe−λxI[0,+∞[(x)
+On note alors
+X∼E (λ)
+Modélisation . (a faire).
+<<<PAGE>>>
+v.a.r. continues 15
+Exercice . Soit X∼E (λ). Vérier que fX est une f.d.p..
+Solution .
+Proposition 5.6 Si X∼E (λ), alors :
+E(X) = 1
+λ and V (X) = 1
+λ2
+Preuve .
+Proposition 5.7 Si X∼E (λ), alors sa f.r. est donnée par
+FX(x) = (1−e−λx)I[0,+∞[(x)
+i.e.
+FX(x) =
+{
+0 si x< 0
+1−e−λx si 0≤x
+Preuve .
+−1 1 2 3 4 5
+−0.5
+0.5
+1
+1.5
+x
+fX(x)
+Figure 4: f.d.p. de X∼E (1)
+−1 1 2 3 4 5
+−0.5
+0.5
+1
+1.5
+x
+FX(x)
+Figure 5: f.r. de X∼E (1)
+Exercice . La durée de vie d'un atome d'un élément radioactif, représentée par X, est une v.a.r.a.c.
+ayant pour f.d.p. la fonction fX dénie sur R par :
+fX(t) =
+{
+0 si t< 0
+0.2e−0.2t si 0≤t
+1) Déterminer la loi de X et donner sa f.r. FX .
+2) Représenter graphiquement fX et FX .
+3) On mesure t en seconde.
+a) Calculer E(X) et V (X).
+b) Quelle est la probabilité pour qu'un atome ait une durée de vie supérieure à 4 secondes ?
+c) Quelle est la probabilité pour qu'un atome ait une durée de vie comprise entre 1 et 3
+secondes ?
+<<<PAGE>>>
+16 K. El Amine
+Solution .
+Proposition 5.8 Soit X une v.a.r.a.c.. Soit λ∈ R∗
++. alors :
+X∼E (1)⇐⇒ 1
+λX∼E (λ)
+et
+X∼E (λ)⇐⇒λX∼E (1)
+Preuve .
+5.3 Loi normale ou loi de Gauss
+La distribution normale joue un rôle central dans la théorie des probabilités et les statistiques. Une
+de ses premières applications était due à C.F. Gauss , qui l'utilisa en 1809 pour modéliser les erreurs
+d'observation en astronomie.
+5.3.1 Loi Normale
+Dénition 5.9 Soit µ∈ R et σ∈ R∗
++. On dit qu'une v.a.r.a.c. X suit une loi normale (ou loi de
+Gauss ) de paramètres (µ,σ 2), si et seulement si, elle admet pour f.d.p.
+fX(x) = 1
+σ
+√
+2πe− 1
+2(x−µ
+σ )
+2
+On note alors
+X∼N (µ,σ 2)
+Remarque . Il n'existe pas d'expression analytique simple d'une primitive de la fonction x↦→e−x2
+.
+On admettra que ∫ +∞
+−∞
+e− 1
+2x2
+dx =
+√
+2π
+Exercice . Soit X∼N (µ,σ 2). Vérier que fX est une f.d.p.. Représenter graphiquement fX .
+Solution .
+Propriété 5.10 Si X∼N (µ,σ 2), alors sa f.d.p. vérie les propriétés suivantes :
+1) fX est symétrique par rapport au point µ : fX(µ−x) =fX(µ +x), ∀x∈ R.
+2) fX est maximale au point µ : fX(x)≤fX(µ), ∀x∈ R.
+3) lim
+x→−∞
+fX(x) = lim
+x→+∞
+fX(x) = 0.
+Preuve .
+Proposition 5.11 Si X∼N (µ,σ 2), sa f.r. est donnée par
+FX(x) =
+∫ x
+−∞
+1
+σ
+√
+2πe− 1
+2(t−µ
+σ )
+2
+dt ∀x∈ R
+Preuve . C'est simplement la dénition d'une f.r..
+<<<PAGE>>>
+v.a.r. continues 17
+Remarque . Soit X∼N (µ,σ 2).
+Puisque fX est de classe C∞ sur R, FX est aussi de classe C∞ sur R et
+F′
+X(x) =fX(x) ∀x∈ R
+Proposition 5.12 Si X∼N (µ,σ 2), alors
+E(X) =µ et V (X) =σ2
+Preuve . Voir la sous-section sur la loi normale standard.
+Proposition 5.13 (Transformation ane)
+Soit a,b∈ R avec a⁄= 0. Alors
+X∼N (µ,σ 2) =⇒ Y =aX +b∼N (aµ +b, (|a|σ)2)
+Preuve .
+Corollaire 5.14 Soit X une v.a.r.a.c.. soit µ∈ R et σ∈ R∗
++. Alors :
+X∼N (µ,σ 2)⇐⇒X∗ = X−µ
+σ ∼N (0, 1)
+et
+X∼N (0, 1)⇐⇒σX +µ∼N (µ,σ 2)
+Preuve .
+Remarque . L'intérêt de ce résultat est de ramener tous les calculs sur les lois normales à des calculs
+sur la loi normale standard (voir ci-après).
+5.3.2 Loi normale Standard
+Dénition 5.15 La loi normale N (µ,σ 2) où µ = 0 et σ = 1 est appelée loi normale standard, et est
+notée donc N (0, 1).
+• La f.d.p. de la loi normale standard est souvent noté par la lettre grecque ϕ, i.e.
+ϕ(x) = 1√
+2πe− 1
+2x2
+∀x∈ R
+• La f.r. de la loi normale standard est souvent noté par la lettre grecque Φ, i.e.
+Φ(x) =
+∫ x
+−∞
+ϕ(t)dt ∀x∈ R
+Proposition 5.16 Si X∼N (0, 1), alors :
+E(X) = 0 et V (X) = 1
+Preuve .
+Corollaire 5.17 Si X∼N (µ,σ 2), alors
+E(X) =µ et V (X) =σ2
+Preuve .
+<<<PAGE>>>
+18 K. El Amine
+Propriété 5.18 (f.d.p. de N (0, 1))
+1) ϕ est paire: ϕ(−x) =ϕ(x), ∀x∈ R
+2) ϕ est maximale en 0.
+3) lim
+x→−∞
+ϕ(x) = lim
+x→+∞
+ϕ(x) = 0
+Preuve .
+Proposition 5.19 (f.r. de N (0, 1))
+Φ(−x) = 1− Φ(x) ∀x∈ R
+Preuve .
+Exercice . Soit X∼N (0, 1). Montrer que −X∼N (0, 1).
+Solution .
+−4 −2 0 2 4
+0.1
+0.2
+0.3
+0.4
+0.5
+µ = 0
+ϕ(x)
+1√
+2π
+σ = 1
+Figure 6: f.d.p. de X∼N (0, 1)
+−4 −2 0 2 4
+1/2
+1
+x
+Φ(x)
+Figure 7: f.r. de X∼N (0, 1)
+5.3.3 Règle de 68-95-99%
+Propriété 5.20 Si X∼N (µ,σ 2) alors
+• P ({µ−σ≤X≤µ +σ})≃ 0.68
+• P ({µ− 2σ≤X≤µ + 2σ})≃ 0.95
+• P ({µ− 3σ≤X≤µ + 3σ})≃ 0.99
+Preuve .
+<<<PAGE>>>
+v.a.r. continues 19
+68.2%
+95%
+99.7%
+34.1% 34.1% 13.6%13.6% 2.1%2.1%
+−3 −2 −1 0 1 2 3
+Score
+Fréquence
+Figure 8: Règle de 68-95-99 % pour X∼N (0, 1)
+5.3.4 T able de la loi normale standard
+La f.r. Φ de la loi normale standard N (0, 1) est
+Φ(x) =
+∫ x
+−∞
+1√
+2πe− 1
+2t2
+dt ∀xR
+Comme il n'existe pas d'expression analytique simple pour la fonction de distribution Φ autre que sa
+formulation intégrale, les valeurs de la fonction Φ pour x entre 0 et 4, par incréments de 0.01, sont
+rassemblées dans une table appelée table de la loi normale standard ( cf n de ce document).
+V aleurs pour la loi normale standard :
+• Cas 0≤x≤ 4.
+La valeur de Φ(x) est lu sur la table à l'intersection de la ligne et de la colonne dont la somme vaut x.
+Par exemple, Φ(1.37) = 0.914657
+• Cas −4≤x≤ 0.
+On utilise la relation Φ(−x) = 1− Φ(x).
+Par exemple, Φ(−1.37) = 1− Φ(1.37) = 0, 085343
+• Approximation de Φ(x). Dans certains calculs très précis, on a besoin des valeurs de Φ(x) pour
+x> 4. La formule suivante donne une très bonne approximation :
+Φ(x)≃ 1− 1
+xe− 1
+2x2
+Par exemple, Φ(5) = 1− 7.45× 10−7 = 0.999999255.
+V aleurs pour une loi normale non-standard :
+Par transformation ane, on peut toujours se ramener à loi loi normale standard.
+Proposition 5.21 Si X∼N (µ,σ 2), alors sa f.r. FX satisfait la relation
+FX(x) = Φ
+(x−µ
+σ
+)
+∀x∈ R
+Preuve .
+Remarque . Cette relation permet de ramener tous les calculs sur les loi normales aux calculs sur la
+loi normale standard.
+<<<PAGE>>>
+20 K. El Amine
+Exemple . Soit X∼N (µ,σ 2) =N (6, 22). Calculer FX(3).
+Solution . On a
+FX(3) = Φ
+(3−µ
+σ
+)
+= Φ
+(3− 6
+2
+)
+= Φ(−1.5) = 1− Φ(1.5)≃ 1− 0.933193
+≃ 0, 066807
+<<<PAGE>>>
+z 0.00 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09
+0.00 0.5000000.5039890.5079780.5119660.5159530.5199390.5239220.5279030.5318810.535856
+0.10 0.5398280.5437950.5477580.5517170.5556700.5596180.5635590.5674950.5714240.575345
+0.20 0.5792600.5831660.5870640.5909540.5948350.5987060.6025680.6064200.6102610.614092
+0.30 0.6179110.6217200.6255160.6293000.6330720.6368310.6405760.6443090.6480270.651732
+0.40 0.6554220.6590970.6627570.6664020.6700310.6736450.6772420.6808220.6843860.687933
+0.50 0.6914620.6949740.6984680.7019440.7054010.7088400.7122600.7156610.7190430.722405
+0.60 0.7257470.7290690.7323710.7356530.7389140.7421540.7453730.7485710.7517480.754903
+0.70 0.7580360.7611480.7642380.7673050.7703500.7733730.7763730.7793500.7823050.785236
+0.80 0.7881450.7910300.7938920.7967310.7995460.8023370.8051050.8078500.8105700.813267
+0.90 0.8159400.8185890.8212140.8238140.8263910.8289440.8314720.8339770.8364570.838913
+1.00 0.8413450.8437520.8461360.8484950.8508300.8531410.8554280.8576900.8599290.862143
+1.10 0.8643340.8665000.8686430.8707620.8728570.8749280.8769760.8790000.8810000.882977
+1.20 0.8849300.8868610.8887680.8906510.8925120.8943500.8961650.8979580.8997270.901475
+1.30 0.9032000.9049020.9065820.9082410.9098770.9114920.9130850.9146570.9162070.917736
+1.40 0.9192430.9207300.9221960.9236410.9250660.9264710.9278550.9292190.9305630.931888
+1.50 0.9331930.9344780.9357450.9369920.9382200.9394290.9406200.9417920.9429470.944083
+1.60 0.9452010.9463010.9473840.9484490.9494970.9505290.9515430.9525400.9535210.954486
+1.70 0.9554350.9563670.9572840.9581850.9590700.9599410.9607960.9616360.9624620.963273
+1.80 0.9640700.9648520.9656200.9663750.9671160.9678430.9685570.9692580.9699460.970621
+1.90 0.9712830.9719330.9725710.9731970.9738100.9744120.9750020.9755810.9761480.976705
+2.00 0.9772500.9777840.9783080.9788220.9793250.9798180.9803010.9807740.9812370.981691
+2.10 0.9821360.9825710.9829970.9834140.9838230.9842220.9846140.9849970.9853710.985738
+2.20 0.9860970.9864470.9867910.9871260.9874550.9877760.9880890.9883960.9886960.988989
+2.30 0.9892760.9895560.9898300.9900970.9903580.9906130.9908630.9911060.9913440.991576
+2.40 0.9918020.9920240.9922400.9924510.9926560.9928570.9930530.9932440.9934310.993613
+2.50 0.9937900.9939630.9941320.9942970.9944570.9946140.9947660.9949150.9950600.995201
+2.60 0.9953390.9954730.9956040.9957310.9958550.9959750.9960930.9962070.9963190.996427
+2.70 0.9965330.9966360.9967360.9968330.9969280.9970200.9971100.9971970.9972820.997365
+2.80 0.9974450.9975230.9975990.9976730.9977440.9978140.9978820.9979480.9980120.998074
+2.90 0.9981340.9981930.9982500.9983050.9983590.9984110.9984620.9985110.9985590.998605
+3.00 0.9986500.9986940.9987360.9987770.9988170.9988560.9988930.9989300.9989650.998999
+3.10 0.9990320.9990650.9990960.9991260.9991550.9991840.9992110.9992380.9992640.999289
+3.20 0.9993130.9993360.9993590.9993810.9994020.9994230.9994430.9994620.9994810.999499
+3.30 0.9995170.9995340.9995500.9995660.9995810.9995960.9996100.9996240.9996380.999651
+3.40 0.9996630.9996750.9996870.9996980.9997090.9997200.9997300.9997400.9997490.999758
+3.50 0.9997670.9997760.9997840.9997920.9998000.9998070.9998150.9998220.9998280.999835
+3.60 0.9998410.9998470.9998530.9998580.9998640.9998690.9998740.9998790.9998830.999888
+3.70 0.9998920.9998960.9999000.9999040.9999080.9999120.9999150.9999180.9999220.999925
+3.80 0.9999280.9999310.9999330.9999360.9999380.9999410.9999430.9999460.9999480.999950
+3.90 0.9999520.9999540.9999560.9999580.9999590.9999610.9999630.9999640.9999660.999967
+4.00 0.9999680.9999700.9999710.9999720.9999730.9999740.9999750.9999760.9999770.999978
+α 0.25 0.1 0.05 0.025 0.01 0.005 0.001 0.0005
+z_α  0.6744901.2815521.6448541.9599642.3263482.5758293.0902323.290527
+z_α/2  1.1503491.6448541.9599642.2414032.5758292.8070343.2905273.480756
+Fonction de r´ epartition deZ⇠N(0,1): (z)= 1p
+2⇡
+zR
+ 1
+e t2
+2dt
+Quantilez↵d´ eﬁni parP(Z>z↵)=↵avecZ⇠N(0,1)

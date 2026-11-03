@@ -1,0 +1,381 @@
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+Data exploration
+Statistiques descriptives bivariées
+ Observer simultanément des individus d'une population sur deux 
+caractères 
+ Mesurer un lien éventuel entre deux caractères en utilisant un 
+résumé chiffré qui traduit l'importance de ce lien 
+ Qualifier ce lien : 
+– en cherchant une relation numérique approchée entre deux caractères quantitatifs 
+– en cherchant des correspondances entre les modalités de deux caractères qualitatifs 
+•qualitatif × qualitatif 
+2 types de variables   3 types de croisements :     •qualitatif × quantitatif 
+•quantitatif × quantitatif 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+2
+Croisement Quantitatif -Quantitatif 
+Nuage de points 
+OnconsidèreXetYdeuxvariablesquantitativessurunéchan tillondetaillen.Lesobjectifssont:
+• Déterminers’ilyaunlien(corrélation) entrelesdeuxvari ables.
+• Construireunmodèlepermettantd’expliquerYparX(ouvice -versa)s’ilyaunlien.
+Le modèle pourra alors servir à faire de la prévision, c-a-d prévoir des valeurs de Y pour de 
+nouvellesvaleursdeX.
+La première étape consiste à constater visuellement 
+si ce lien existe. La représentation graphique 
+appropriéeestle nuagedepoints.
+On cherche à repérer une forme particulière dans le 
+nuagequitraduirailelienentreXetY.Enparticulier, 
+une forme allongée traduit une relation de droite 
+entrelesdeuxvariables.
+Enfant 1 2 3 4 5 6 7 8 9 10 
+Taille 121 123 108 118 111 109 114 103 110 115 
+Poids 25 22 19 24 19 18 20 15 20 21 
+Etude du lien entre la taille (X) et le 
+poids (Y) chez les enfants de 6 ans 
+
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+Croisement Quantitatif -Quantitatif 
+Droite de régression
+3
+Onnote{x i}i=1,…,n lasérieobservéepourXet{y i}i=1,…,n lasérieobservéepourY.
+L’objectifestdetrouverunefonctionftelleque 
+yi =f(x i) + εi
+où εreprésente l’erreur.
+On se restreint aux fonctions affines : 
+f(x) = ax+ b 
+Et on cherche les coefficients a et b qui
+minimisent l’erreurquadratiquemoyenne 
+ , = 1
+	
+
+
+
+
+= 
+∑  − ( +  ²
+
+εi
+N.B. L’erreur quadratique moyenne est aussi appelée fonction de coût en machine learninget peut prendre d’autres formes. 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+4
+Parminimisationdel’erreurquadratiquemoyenne,onobtie ntlescoefficients:
+  =
+ 
+ et    =   −  ̅
+où  !" = 
+∑  − ̅  −  
+ estla covariance entreXetY.
+ =   +  est appelée droitederégression de Y en X. Elle traduit les variations de Y qui peuvent 
+être expliquées par X. Attention la droite de régression de Xen Yn'est nécessairement la même 
+quecelledeYenX
+Exemple: Etude du lien entre l'âge et le poids chez les enfants de 6 ans 
+̅   #! #"  !" 
+113,20 20,30 38,62 8,46 16,27 
+L’équation de la droite de Y en X :   y=0,42 x –27, 38 
+L’équation de la droite de X en Y :   y=1,92 x –74, 15 
+Le « chapeau » au dessus de a et b 
+signifie que la valeur obtenue est une 
+estimation sur un échantillon 
+Croisement Quantitatif -Quantitatif 
+Coefficients de la droite de régression
+On résout le système : 
+$
+$%EQ(a,b)=0 et 
+$
+$&EQ(a,b)=0 
+La covariance empirique garde les mêmes 
+propriétés que la covariance théorique 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+5
+Croisement Quantitatif -Quantitatif 
+Covariance et coefficient de corrélation
+• |r|estprochede1alorsXetYsonttrèsliésentreeuxparunedro iteaffine.
+• r<0:globalementXetYvarientensensinverse.
+• r>0:globalementXetYvarientdanslemêmesens.
+• |r| ≅0:onnepeutriendiresurunlienéventuelentreXetY.
+Lacovarianceestunindicateurnumériquedu lienentreXetY: plusilestéloignéde0,plusles 
+variablessontliées.
+L’inconvénient est qu’il n’est par normé. Pour pallier ce problème, on définit le coefficientde 
+corrélationlinéaire (coefficientdePearson)àvaleursdans[-1,1]
+’!" =
+ 
+ 
+.
+Onaalors 
+  =
+ 
+
+   = ’!" 
+
+
+.
+Le coefficient de corrélation correspond à la covariance 
+des séries centrées et réduites 
+Exemple: Etude du lien entre l'âge et le poids chez les enfants de 6 ans 
+On trouve 
+rxy =0,90 
+• rxy ≅1   L’équation de droite est donc pleinement justifiée 
+• rxy >0  plus la taille est grande et plus le poids est important (et vice-versa) 
+Le coefficient directeur de la droite est proportionnel à la covariance 
+!!! Cela ne signifie pas qu’il 
+n’y a pas de lien entre X et Y 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+6
+On appelle prévisions les valeurs données par la droite de régression. Pour chaquepoint xide la série 
+observée,onpeutcalculerlaprévision( i.e.unevaleurapprochéedey iparladroitederégression) 
+  =   + 
+Propriétés:
+La variable Y et la partie de cette variable 
+expliquée par la droite de régression ont la 
+mêmemoyenne:
+  =  
+maispaslamêmevariance:
+#"
+ = #"
+ ×’!" 
+LavariancedeYexpliquéeladroitederégression estpluspetit equelavariancedeY
+La variance de Y expliquée la droite de régression est d'autant meilleure que le coefficient 
+dePearsonestprochede1envaleurabsolue.
++= bˆx aˆyˆ 2
+yxy
+2
+x
+2
+x
+y
+xy
+2
+x
+22
+yˆ srss
+srs ) aˆ(s =
+
+
+
+
+==
+y = 0,42x -27,38 
+15 
+17 
+19 
+21 
+23 
+25 
+100 105 110 115 120 125 
+Poids (kg) 
+Taille (cm) 
+xi
+iyˆ
+Démonstration en TD 
+Croisement Quantitatif -Quantitatif 
+Prévisions 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+7
+Croisement Quantitatif -Quantitatif 
+Résidus 
+L'erreur globaleestproportionnelleàlavariancedelavari ableY
+L'erreur estd'autantpluspetitequelecoefficientestproch ede1envaleurabsolue 
+Oncalculealorsl’erreurglobale 
+  , = 1
+	)
+
+
+
+= #" 1 − ’!" 
+On appelle résidus l’écart entre la valeur observée  et la 
+valeurprédite  
+) =  −   =  − (  + )
+Validitédumodèle:
+Unmodèleestexplicatifs’ilneresteplus«d’information»dan slesrésiduspouvantexpliquéey.
+Onvérifie(graphiquement)lestroispointssuivants:
+• Lamoyennedesrésidusestnulle 
+• Lesrésidusnesontpascorrélés 
+• Lavariancedesrésidusestconstante 
+xi
+iyˆ
+yi
+ei
+y = 0,42x -27,38 
+ii ou x  yˆ
+ei
+Variance non constante 
+ii ou x  yˆ
+Résidus corrélés 
+ei
+{ } ) r1 ( s) r s s (s
+sr 2ss
+srsC aˆ2s ) aˆ(ssssEQ 2
+xy
+2
+yxy y x
+x
+y
+xy
+2
+x
+2
+x
+y
+xy
+2
+yxy
+2
+x
+22
+y
+2
+x aˆy
+2
+) bˆx aˆ( y
+2
+e −=
+
+
+
+
+−
+
+
+
+
++=−+==== −+−
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+8
+Croisement Quantitatif -Quantitatif 
+Décomposition de la variance
+{ { {
+résiduelle
+ variance
+expliquée
+variance
+totale
+variance
+2
+e
+2
+yˆ
+2
+y sss +=
+Nous avons vu que la variance de la variable Y n’est pas égale àla variance des valeurs prédites.
+Cependantellepeutsedécomposercommesuit:
+En divisant cette égalité par la variance totale, on obtientle pourcentage de variance de y
+expliquéeparlemodèle,cequ’onappelleencorelecoeffici entdedétermination, 
++ =
+#"
+
+#" = ’!"  ∈ 0,1
+Dansl’exempleprécédent,onaladécompositiondelavarianc esuivante:
+Variances 
+Régression 6,17 
+Résidus 1,44 
+Total 7,61 
+D’où R²=6,17/7,61=0,81. Cela signifie 
+que 81% de la variation des poids 
+observés est expliquée par la droite de 
+régression : poids=0,42 × taile-27,38 
+Démonstration en TD 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+9
+Croisement Quantitatif -Quantitatif 
+Outliers 
+9
+Un modèle peut s’avérer très précis pour ajuster les valeurs observées mais très mauvais en ce qui 
+concerne la prévision de nouvelles valeurs. 
+Détection des observations influentes ( atypiques/outliers )
+• On retire la ième observation de l’ensemble des données 
+• On ajuste un nouveau modèle sans la ième donnée 
+• On calcule  y (-i) la prévision de y iavec le nouveau modèle 
+• On calcule le résidus , e (-i)= yi-y(-i) 
+On a                          où 
+Observation est influente si une faible variation  entraine une modification importante des 
+caractéristiques du modèle. 
+ii
+i
+(-i) h-1
+ee =
+
+==
+− ==
+n
+1i ii
+2
+i
+n
+1i
+2
+i)(
+h-(1
+e
+n
+1en
+1PRESS 2)
+Le PRESS (predictedresidual sumof squares) 
+donne  une indication sur les qualités 
+prédictives du modèle 
+Sous l’hypothèse de normalité des 
+résidus, les résidus standardisés ,
+doivent être compris (IDC) entre ±2
+ii
+i
+i h1
+e
+−σ=δ ˆ
+2
+x
+2
+i
+ii
+s
+) x(x
+1)(n
+1
+n
+1h −
+−+=
+Un résidus important signale une observation influente 
+Un levier
+1/n ≤hii≤1
+proche de 1 indique une 
+observation influente 
+<<<PAGE>>>
+CM 2 : Analyse bivariéequantitatif-quantitatif 
+10 
+Croisement Quantitatif -Quantitatif 
+transformation
+• Les droites de régression n'explique que les liaisons linéaires. 
+• Si Xet Ysont liées par une relation de la forme Y=aX² alors rXY =0 
+Le coefficient de corrélation linéaire de Pearson ne peut pas détecter cette liaison. 
+• Il n'existe pas de mesure universelle pour détecter des relations quelconques 
+• On essaie par des transformations de se ramener à une droite affine 
+Famille Fonctions Transformation Forme affine 
+exponentielle 
+puissance 
+inverse 
+logistique 
+bx 
+eay .= )log( ' yy = xbay .)log( ' +=
+b
+ax y = )log( ' )log( ' xxyy == '.)log( ' xbay +=
+x
+bay += xx 1'= '.' xbay +=
+). (
+1
+1
+bx a
+ey +−
++= 
+
+
+
+
+
+−= y
+yy 1log ' bxay += .'

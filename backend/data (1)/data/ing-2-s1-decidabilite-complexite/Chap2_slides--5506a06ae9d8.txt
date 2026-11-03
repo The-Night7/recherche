@@ -1,0 +1,295 @@
+Problèmes décidables *
+*Ce chapitre est adapté d’un cours déposé par Houcine Senoussi
+ING2 MI
+2022-2023
+<<<PAGE>>>
+1. Définitions
+2. Propriétés
+3. Machine de Turing universelle
+4. Le problème de l’arrêt
+Plan
+ING2 GI Problèmes décidables
+<<<PAGE>>>
+Définition
+s
+Définition 1 :
+Une machine de Turing M décide un langage si
+∀x ∈ L M (x ) = qs
+∀x ∉ L M (x ) = qe
+Définition 2 :
+Un langage est dit décidable ou récursif s’il existe une 
+machine  de Turing qui le décide.
+ING2 MI
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidables
+<<<PAGE>>>
+Définition
+s
+Définition 3:
+Une machine de Turing M accepte un langage si
+∀x ∈ L M (x ) = qs
+∀x ∉ L M (x )=↗
+Définition 4 :
+Un langage est dit récursivement énumérables’il existe une  
+machine de Turing qui l’accepte.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 1 :
+Si un langage est récursif alors il est récursivement énumérable.
+Demonstration
+Soit L un langage récursif. Soit M une machine qui le décide.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Démonstration
+Soit L un langage récursif. Soit M une machine qui le décide.
+∀x ∈ L M(x ) = qs
+∀x ∉ L M(x ) = qe
+Soit M' une machine dont le fonctionnement est le suivant : 
+Lorsqu'elle reçoit un mot x en entrée, elle imite le fonctionnement de 
+M jusqu’à l'avant dernière étape. 
+A la dernière étape, si M passe à l’état qs, M' fait de même, mais si
+M passe à l’état qe, M' se met à se déplacer indéfiniment vers la 
+droite. Nous avons donc
+∀x ∈ L     M’(x ) = qs
+∀x ∉ L    M’(x ) = ↗
+M' accepte donc L qui est donc récursivement énumerable.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 1 :
+Propriété 2 :
+Si un langage L est récursif alors son complémentaireL est aussi
+récursif.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 1 :
+Propriété 2 :
+Si un langage L est récursif alors son complémentaireL est aussi
+récursif.
+Démonstration 
+Un langage est récursif, cela signifie qu'il existe une machine de 
+Turing M qui le décide, 
+On obtient une machine qui décide    tout simplement en 
+inversant les rôles de qs et de qe.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 3 :
+Un langage L est récursif si et seulement si L et son  
+complémentaire L sont récursivement énumérables.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 3 :
+Un langage L est récursif si et seulement si L et son  
+complémentaire L sont récursivement énumérables.
+Démonstration
+⇒
+Si L est récursif alors est récursif (propriété 2). L et étant
+récursifs, ils sont récursivement énumerables (propriété 1).
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Démonstration (suite)
+⇐
+Supposons maintenant que L et soient récursivement énumerables.
+Cela signifie qu'il existe deux machines de Turing M et tque
+∀x ∈ L     M(x ) = qs
+∀x ∉ L    M(x ) = ↗
+Considérons la machine M' qui fonctionne comme suit : Quand elle
+reçoit en entrée un mot x, elle imite alternativement le comportement
+de M et celui de . Donc M' termine lorsque M ou termine. 
+Plus précisement :
+{ Si x ∈ L , M' termine comme M dans l'etat qs.
+{ Si x ∉ L , M' termine lorsque s’arrête, cet état final de M' sera
+appelé qe.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidables
+∀x ∉ L (x ) = qs
+∀x ∈ L  (x ) = ↗
+ING2 MI
+<<<PAGE>>>
+Définition
+Définition :
+la machine de Turing universelle est une machine de Turing à
+deux bandes qui :
+interprète ce qu’elle reçoit en entrée comme la concaténation
+d’une description M d’une machine de Turing et d’un mot x  
+fourni à l’entrée de M,
+imite (simule) le comportment de M lorsque M reçoit en
+entrée x .
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Fonctionnement
+Notons B1 et B2 les bandes deU.
+Sur B1 sera inscrite la description de la machine de TuringM (càd
+le quadruplet (K ,Σ ,δ, q0)) et le motx . Nous noteronsM le mot
+contenant la description de la machineM .
+La bandeB2 contiendra laconfiguration de M à tout instant
+:s o né t a tq et la position de la tête de lecture.
+La position de la tête de lecture sera représentée par un
+couple (u, v) tel que :
+x est la concaténation deu et v.
+La tête de lecture deM est positionnée sur le premier symbôle de
+v.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Fonctionnement-2
+Pour simuler M, U procède comme suit :
+Elle récupère l’état en cours q (lecture de B2).  
+Elle récupère le symbôle lu s (lecture de B2).
+Elle récupère la transition associée au couple (q, s) (lecture de
+B1).
+Soit (q′, s′, d ) le triplet définissant cette transition.
+Elle écrit le symbôles′  (écriture sur B2).
+Elle effectue le déplacement d (écriture sur B2).  
+Elle simule le passage à l’étatq′  (écriture sur B2).
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Formulation
+Formulation du problème H  (Halting) :
+Etant donné une machine de Turing M,
+étant donné un mot x ,
+est-ce que M s’arrête lorsqu’elle reçoitx en entrée ?  
+Autrement dit,
+avons nous M (x ) ≠↗ ?
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Formulation-2
+Langage associé :
+Pour étudier le problème d’arrêt nous lui associons le langage LH
+défini comme suit :
+LH  {X = (M, x ) M (x ) ≠↗ }.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 1 :
+LH est récursivement énumérable.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Propriété 1 :
+LH est récursivement énumérable.
+Propriété 2 :
+LH n’est pas récursif.
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidablesING2 MI
+<<<PAGE>>>
+Propriétés
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidables
+Démonstration
+Il nous faut démontrer qu’il n’existe pas de machine de 
+Turing qui décide LH. Pour ce faire supposons qu’il en existe 
+une et nous allons aboutir à une contradiction. 
+Soit donc une machine de Turing MH qui décide LH.
+Nous avons donc 
+– X = (M, x) LH MH(X) = qs
+– X = (M, x) ∉ LH MH(X) = qe
+ING2 MI
+<<<PAGE>>>
+Propriétés
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidables
+Démonstration (suite)  
+Soit D la machine de Turing dont le fonctionnement est le suivant : 
+– D reçoit en entrée un mot M représentant la description d’une 
+machine de Turing. 
+– D  imite MH lorsque MH reçoit en entrée le couple (M, M) jusqu’à 
+l’avant dernière étape, ensuite :
+–S i  MH termine en qs D se déplace indéfiniment vers la droite. 
+–S i  MH termine en qe D termine en qs. 
+Autrement dit, 
+–S i  MH (M, M) = qs alors D(M) =↗. 
+–S i  MH(M, M) = qe alors D(M) = qs. 
+ING2 MI
+<<<PAGE>>>
+Propriétés
+Définitions
+Propriétés
+Machine de Turing universelle
+Le problème de l’arrêt
+Problèmes décidables
+Démonstration (suite)
+Nous nous posons la question : comment se comporte D lorsqu’elle 
+reçoit en entrée sa propre description. Deux possibilités :
+– Soit D(D) =↗ ce qui signifie que MH(D, D) = qs donc puisque MH
+décide LH, (D, D) LH ce qui signifie compte tenu de la définition de 
+LH que D(D) = qs. Contradiction.
+– Soit D(D) = qs ce qui signifie que MH(D, D) = qe donc puisque MH
+décide LH, (D, D) ∉ LH ce qui signifie compte tenu de la définition de 
+LH que D(D) = ↗. Contradiction. 
+Supposer qu’il existe une machine de Turing qui décide LH conduit 
+donc à une contradiction. Il n’existe donc aucune machine de Turing 
+qui décide LH et LH est donc indécidable.
+ING2 MI

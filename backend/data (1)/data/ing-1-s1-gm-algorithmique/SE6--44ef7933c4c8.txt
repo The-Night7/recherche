@@ -1,0 +1,101 @@
+S´ erie d’exercices No5
+4 novembre 2016
+Objet de la s´ erie: R´ ecursivit´ e, Diviser pour r´ egner.
+1 Algorithmes r´ ecursifs simples
+´Ecrire des algorithmes r´ ecursifs pour les probl` emes suivants :
+1. Calcul de la suite de Fibonacci.
+2. Inversion des ´ el´ ements d’un tableau.
+3. Recherche dans un tableau non tri´ e.
+4. Recherche dans un tableau tri´ e.
+2 R´ ecursivit´ es terminale et non terminale
+´Ecrire des algorithmes r´ ecursifs terminaux pour les probl` emes suivants :
+1. Calcul de la suite de Fibonacci.
+2. Approximation du nombre Π par la formule d’Euler d´ eﬁnie comme
+suit :
+Π2
+6 = 1+ 1
+22 + 1
+32 +...+ 1
+n2 .
+3 Analyse du tri rapide(d’apr` es [1])
+Dans cet exercice nous analysons l’algorithme du tri rapide (quicksort)
+pr´ esent´ e en annexe.
+1. Faites tourner l’algorithme sur le tableau A ={2, 8, 7, 1, 3, 5, 6, 4}.
+2. Prouvez la proc´ edure Partition ` a l’aide de l’invariant de boucle sui-
+vant :
+1
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+— Au d´ ebut de chaque it´ eration de la boucle (Pour j de p ` ar− 1)
+nous avons :
+— Pour k = p, ..., i, A[k]≤ x.
+— Pour k = i + 1, ..., j− 1, A[k] > x.
+— A[r] = x.
+3. Calculez la complexit´ e de la proc´ edure Partition.
+4. Donnez la r´ ecurrence d´ eﬁnissant la complexit´ e du tri rapide dans les
+trois cas suivants :
+(a) `A chaque ´ etape la partition conduit ` a ranger tous les ´ elements du
+mˆ eme cot´ e du pivot. On admettra que ce cas est le plus d´ efavorable.
+(b) `A chaque ´ etape la partition est ´ equilibr´ ee : elle range un nombre
+quasi-´ egal d’´ el´ ements des deux cot´ es du pivot. On admettra que
+ce cas est le plus favorable.
+(c) `A chaque ´ etape la partition conduit ` a ranger9
+10 des ´ el´ ements d’un
+cot´ e et1
+10 de l’autre.
+5. ´Evaluez le nombre d’op´ erations du tri rapide dans chacun des 3 cas
+donn´ es ci-dessus.
+6. Quelle est la complexit´ e au pire des cas de cet algorithme ?
+7. `A quelle complexit´ e moyenne devons-nous nous attendre ? Pourquoi
+?
+4 Annexe : Description du tri rapide
+Le tri rapide est bas´ e sur le paradigme ’Diviser pour r´ egner’. Pour un
+sous-tableau A[p..r] son fonctionnement est le suivant :
+Diviser : A[p..r] est arrang´ e de mani` ere ` a avoir un indiceq tel que chaque
+´ el´ ement deA[p..q− 1] est inf´ erieur ou ´ egal ` a un ´ element donn´ eA[q]
+qui lui mˆ eme est strictement inf´ erieur ` a chaque ´ el´ ement deA[q + 1..r].
+A[q] s’appelle le pivot.
+R´ egner :les deux tableaux A[p..q−1] et A[q+1..r] sont tri´ es r´ ecursivement.
+Combiner : Les deux sous-tableaux A[p..q− 1] et A[q + 1..r] ´ etant tri´ es,
+le tableau A[p..r] l’est aussi. Il n’y a rien de plus ` a faire.
+L’algorithme peut donc s’´ ecrire de la mani` ere suivante :
+2
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+Algorithme Algo-Tri-Rapide
+Variables
+..........
+D´ ebut
+..........
+Tri-Rapide(A, 1, n)
+Fin
+Procedure Tri-Rapide(E/S A, p, r)
+D´ ebut
+Si (p < r) Alors
+q = Partition(A, p, r)
+Tri-Rapide(A, p, q-1)
+Tri-Rapide(A, q+1, r)
+Fin
+Fonction Partition(A, p, r) :Entier
+Variables
+..........
+D´ ebut
+x = A[r]
+i = p− 1
+Pour j de p ` ar− 1
+Si A[j]≤xAlors
+D´ ebut
+i = i + 1
+permuter(A[i],A[j])
+Fin
+FinPour
+permuter(A[i + 1],A[r])
+Retourner i + 1
+Fin
+3
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+R´ ef´ erences
+[1] Cormen T.H., Leiserson C.E., Rivest R.L. et Stein C. Algorithmique.
+Dunod. 2010, 1188 pages.
+4

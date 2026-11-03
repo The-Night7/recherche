@@ -1,0 +1,240 @@
+Ingénieurs 2ème année : Mathématiques et Informatique
+Méthodes itératives d’optimisation déterministe
+CM2 – Conditions d’optimalité
+Nisrine FORTIN CAMDAVANT
+
+<<<PAGE>>>
+1 Introduction et généralités
+2 Théorèmes généraux d’existence
+3 Unicité
+4 Conditions nécessaires et suffisantes d’optimalité dans le cas sans
+contraintes
+<<<PAGE>>>
+Introduction
+<<<PAGE>>>
+On peut scinder les conditions d’optimalité en deux catégories :
+Les conditions nécessaires : des propriétés, équations ou inéquations que
+vérifient les solutions du problème(P);
+Les conditions suffisantes : des propriétés qui assurent à un point d’être
+solution du problème(P).
+Ces résultats ne peuvent pas toujours être appliqués directement pour résoudre
+le problème(P),
+↝ ils permettront en revanche devérifier l’optimalité éventuelle d’un pointx ∈ K,
+↝ de calculer analytiquement des solutions du problème(P) ou
+↝ de définir des tests d’arrêts des itérations dans des algorithmes de résolution.
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+On considère le problème d’optimisation
+(PC) ∶ min
+x∈K
+f (x),
+où K est l’ ensemble des contraintes considéré non vide.
+↝ On présentera deux résultats très généraux d’existence d’une
+solution au problème(PC).
+↝ L’unicité sera vue dans le cadre de convexité.
+↝ On abordera les conditions nécessaire d’optimalité en l’absence
+des contraintes.
+Articulation du cours
+5/22
+<<<PAGE>>>
+Théorèmes généraux d’existence
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Cas où l’ensemble des contraintes est un compact de Rn
+Une partie K⊂ Rn est dite un compact deRn si K est un fermé deRn et borné.
+Le résultat suivant sera admis.
+Soit K un compact de Rn. Si f ∶ K→ R est continue alors le problème(PC)
+admet une solution optimaleˆx ∈ K au sens de la définition suivante :
+f (ˆx)≤ f (x), ∀x ∈ K.
+Théorème 1. CasK compact
+7/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Cas où l’ensemble des contraintes K = Rn
+Soit f ∶ Rn→ R une fonction continue. Si
+lim
+∥x∥→+∞
+f (x)=+∞
+alors le problème(PSC) admet une solution optimale.
+Théorème 2. CasK= Rn
+::::::::::::Démonstration. Admise
+8/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Cas où l’ensemble des contraintes K est un convexe
+Soit f ∶ Rn→ R une application différentiable etK un sous-ensemble convexe
+de Rn. Si x∗ un minimum local du problème(P) alors
+∀x ∈ K, ⟨∇f (x∗), x− x∗⟩≥0. (1)
+Théorème 3. Condition nécessaire du premier ordre et convexité
+::::::::::::Démonstration.
+9/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Cas où l’ensemble des contraintes K est un convexe
+Soit f ∶ Rn → R une application différentiable etconvexe sur le convexe K,
+alors la condition (1) est suffisante pour quex∗ soit un minimumglobal de f
+sur K.
+Théorème 4. Condition suffisante du premier ordre et convexité
+::::::::::::Démonstration.
+10/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Interprétation géométrique
+La condition⟨∇f (x∗), x− x∗⟩≥0 s’interprète en disant que l’angle entre le
+vecteur ∇f (x∗) et le vecteurx− x∗ est dans l’intervalle[−π
+2 ;π
+2].
+11/22
+<<<PAGE>>>
+Unicité
+L’unicitédelasolutionoptimalerésulteengénéraldepropriétésdeconvexité
+du critère f et l’ensemble des contraintesK.
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Soit f ∶ K→ R une fonction strictement convexe sur le convexeK ⊂ Rn. Le
+minimum de f sur K, s’il existe, est unique.
+Théorème 5. Stricte convexité et unicité
+::::::::::Démonstration.
+13/22
+<<<PAGE>>>
+Conditions nécessaires et suffisantes d’optimalité
+Cas sans contraintes
+On se place dans le cas oùK= Rn. On considère le problème d’optimisation
+sans contraintes
+(PSC)
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+min f (x)
+x ∈ Rn
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Définition 1. Point critique
+Soit f ∶ Rn→ R une fonctiondifférentiable sur Rn. Un pointx∗ de Rn vérifiant
+∇f (x∗)=0 est appelé point critique.
+Exemples :
+1 Déterminer les points critiques de f,f (x, y )= x3+ y3−3x−3a2y (a est un paramètre).f
+est différentiable et le gradient def vaut :
+/leftr⫯g⊸tl⫯ne →∇
+T
+f = ( ∂f
+∂x , ∂f
+∂y )= (3x2−3,3y2−3a2)
+L’équation/leftr⫯g⊸tl⫯ne →∇
+T
+f =02 possède alors quatre solutions :
+(1, a); (1,−a), (−1, a) et (−1,−a)
+Quatre points stationnaires!
+2 Soit f telle que f (x, y )= x+ y2. f est différentiable et/leftr⫯g⊸tl⫯ne →∇
+T
+f (x, y )= (1,2y ).
+/leftr⫯g⊸tl⫯ne →∇
+T
+f =02 n’admet pas de solutions doncf ne possède pas de points critiques.
+15/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Soit f ∶ Rn→ R une fonction différentiable etˆx ∈ Rn vérifiant
+f (ˆx)≤ f (x), ∀x ∈ Rn
+alors on a nécessairement∇f (ˆx)=0.
+Théorème 6.
+::::::::::Démonstration.
+16/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+La condition∇T f (ˆx)=0 devient suffisante dans le cas où la fonctionf est
+convexe.
+Soit f ∶ Rn → R une fonction différentiable etconvexe. Si ˆx est un point
+critique de f, alors on a
+∀x ∈ Rn, f (ˆx)≤ f (x).
+Théorème 7. Condition nécessaire et suffisante
+::::::::::Démonstration.
+17/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Lorsque la fonctionf n’est pas convexe, on ne peut donner qu’une condition
+nécessaire et suffisante d’optimalité locale.
+Définition 2. Minimum local
+On appellera x∗ minimum local def , s’il existeδ >0 tel que pour toutx ∈ Rn,
+∥x− x∗∥≤δ/Leftr⫯g⊸tl⫯ne⇒f (x∗)≤ f (x).
+Soit f ∶ Rn→ R une fonction deux fois différentiable au voisinage dex∗. Si
+∇f (x∗)=0Rn et H f (x∗)>0
+alors x∗ est un minimum locallocal de f.
+Théorème 8.
+18/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Optimisation sans contraintes : en pratique
+Soit f une fonction définie sur un ouvertS ⊂ Rn et deux fois différentiable et
+soit Hf le hessien def. Soit x∗ un point critique def alors :
+1 Si la matrice Hf est définie positive alorsf est localement convexe enx∗
+et x∗ est un minimum localpour f.
+2 Si la matrice Hf est définie négative alorsf est localement concave enx∗
+et x∗ est un maximum localpour f.
+3 Si Hf est non définie alorsx∗ est un point selle.
+4 Si Hf est semi-définie positive (ou négative)on n’a pas de conclusion, et
+une étude plus fine doit être réalisée.
+19/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Optimisation sans contraintes
+Exemple
+Déterminer les valeurs optimales de
+f (x, y)= x 3+ y 3−3x−3a2y
+(discussion selon le paramètrea).
+Le gradient def vaut :
+/leftr⫯g⊸tl⫯ne →∇
+T
+f = (∂f
+∂x,∂f
+∂y )= (3x 2−3,3y 2−3a2)
+La condition/leftr⫯g⊸tl⫯ne →∇
+T
+f =0 impose a2 ≥0, soit a∈ R.
+L’équation possède alors quatre solutions :
+(1, a);(1,−a),(−1, a) et (−1,−a)
+Quatre points stationnaires!
+20/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Optimisation sans contraintes
+La matrice hessienne def est
+∇2f (x, y)=
+⎛
+⎜⎜⎜⎜⎜
+⎝
+∂2f
+∂x 2
+∂2f
+∂y∂x
+∂2f
+∂x∂y
+∂2f
+∂y 2
+⎞
+⎟⎟⎟⎟⎟
+⎠
+= ( 6x 0
+0 6 y )
+Pour que la forme quadratique soit définie, il faut quexy ≥0.
+Bilan : un minimum, un maximum et deux “points selles”.
+21/22
+<<<PAGE>>>
+Introduction et généralités Théorèmes généraux d’existence Unicité Conditions nécessaires et suffisantes d’optimalité dans le cas sans contraintes
+Bibliographie :
+Méthodes numériques et optimisation, Jean Pierre Corriou, LAVOISIER
+2010
+Linear and Nonlinear Programming, David G.LUENBERGER, Second
+Edition Springer 2005
+Introduction à l’optimisation, Jean Christophe Culioli, ellipses,1994.
+Introduction à l’analyse numérique matricielle et à l’optimisation PG.
+CIARLET MASSON 1990
+Inverse Problem Theory and Methods for Model Parameter Estimation
+Albert Tarantola SIAM 2005.
+Convexité et optimisation Guy Cohen Ecole Nationale des Ponts et
+Chaussées et INRIA 2000.
+Optimisation sans contraintes M. Bergounioux http ://www.univ-
+orleans.fr/mapmo/membres/maitine/MASTER2/FAP/optimFAP.pdf
+Introduction à l’analyse numérique
+http ://www.math.uvsq.fr/jaisson/ENSAE cours45.pdf
+Algorithmes d’optimisation non-linéaire sans contrainte
+http ://www.math.u-bordeaux1.fr/ bergmann/PDF/These/annexeC.pdf
+22/22

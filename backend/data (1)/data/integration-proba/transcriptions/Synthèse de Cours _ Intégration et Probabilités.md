@@ -1,0 +1,322 @@
+---
+source: "PREING2-S2/Synthèse de Cours _ Intégration et Probabilités.docx"
+transcription: texte structuré et relu
+transcription_date: 2026-09-30
+verification: lecture intégrale des paragraphes et formules natives ; tableaux reconstitués depuis le Word
+---
+
+# Synthèse de Cours : Intégration et Probabilités
+
+## Synthèse de Cours : Intégration et Probabilités
+
+### Partie 1 : Théorie de l'Intégration
+
+#### 1.1. Intégrales Généralisées (Impropres)
+
+Le concept d'intégrale généralisée, ou impropre, étend le calcul intégral classique à des situations où les bornes d'intégration ne sont pas finies ou lorsque la fonction à intégrer n'est pas définie à l'une des bornes. Il s'agit d'un outil fondamental pour analyser le comportement asymptotique des fonctions et pour de nombreuses applications en physique et en probabilités.
+
+Définition et Convergence
+
+Une intégrale est dite impropre si au moins une de ses bornes est infinie ou si la fonction n'est pas définie à l'une des bornes finies. Sa convergence est définie par le passage à la limite.
+
+- Sur un intervalle [a, +∞[ : L'intégrale de f sur [a, +∞[ est définie comme la limite, si elle existe et est finie, de l'intégrale sur un intervalle borné [a, b] lorsque b tend vers +∞.
+
+- ∫[a,+∞[ f(x) dx = lim(b→+∞) ∫[a,b] f(x) dx
+
+- Sur un intervalle ]-∞, b] : De manière symétrique, l'intégrale est définie par la limite lorsque la borne inférieure tend vers -∞.
+
+- Sur un intervalle quelconque (a, b) : Pour une fonction continue sur (a, b), on dit que ∫[a,b] f(x) dx converge si, pour un point c choisi dans (a, b), les deux intégrales ∫[a,c] f(x) dx et ∫[c,b] f(x) dx convergent.
+
+Remarque 1.1 : "Donner la nature" d'une intégrale généralisée consiste à déterminer si elle est convergente (la limite est finie) ou divergente.
+
+Propriétés Fondamentales
+
+- Linéarité (Propriété 1.2) : Si les intégrales de f et g convergent, alors pour tous réels α et β, l'intégrale de (αf + βg) converge et est égale à α∫f + β∫g.
+
+- Attention : La réciproque est fausse. L'intégrale d'une somme peut converger même si les intégrales des termes divergent.
+
+- Relation de Chasles (Propriété 1.7) : Si l'intégrale de f sur (a, b) converge, alors pour tout c ∈ (a, b), on a ∫[a,b] f(x) dx = ∫[a,c] f(x) dx + ∫[c,b] f(x) dx.
+
+Critères de Convergence pour les Fonctions à Signe Constant
+
+Pour les fonctions positives, des critères puissants permettent de déterminer la nature d'une intégrale sans en calculer la valeur.
+
+| Critère | Description |
+| --- | --- |
+| Intégrales de Riemann | (Théorème 1.1) Les intégrales de référence sont :<br>• ∫[1,+∞[ dx/x^p converge si et seulement si p > 1.<br>• ∫]0,1] dx/x^p converge si et seulement si p < 1 (Propriété 1.4).<br>• ∫[e,+∞[ dx/(x(ln x)^p) converge si et seulement si p > 1 (Propriété 1.5).<br>• ∫[0,+∞[ e^(ax) dx converge si et seulement si a < 0 (Propriété 1.6). |
+| Comparaison | (Théorème 1.2) Soient f et g deux fonctions continues et positives sur [a, +∞[ telles que 0 ≤ f(x) ≤ g(x).<br>• Si ∫g converge, alors ∫f converge.<br>• Si ∫f diverge, alors ∫g diverge. |
+| Équivalence | (Théorème 1.3) Si f et g sont continues, de signe constant au voisinage de la borne problématique, et si f(x) ~ g(x), alors ∫f et ∫g sont de même nature. |
+
+Techniques de Calcul
+
+- Changement de variable (Propriété 1.8) : Si φ est une bijection de classe C¹, alors les intégrales ∫ f(φ(t))φ'(t) dt et ∫ f(x) dx sont de même nature. Si elles convergent, leurs valeurs sont égales.
+
+- Intégration par parties (Propriété 1.9) : La formule classique ∫ u(x)v'(x) dx = [u(x)v(x)] - ∫ u'(x)v(x) dx s'applique aux intégrales généralisées, à condition que les termes impliqués convergent.
+
+Pour garantir la convergence, notamment pour les fonctions qui ne sont pas de signe constant, le concept de fonction intégrable, lié à la convergence absolue, est essentiel.
+
+#### 1.2. Fonctions Intégrables
+
+La simple convergence d'une intégrale ne garantit pas toujours des propriétés analytiques robustes. Nous distinguons ici le concept d'intégrabilité de la condition plus forte de convergence absolue, cette dernière s'avérant un outil d'analyse beaucoup plus puissant.
+
+Définition et Propriétés Clés
+
+- Définition (Intégrabilité) (Définition 1.5) : Une fonction continue f est dite intégrable sur un intervalle I si l'intégrale généralisée ∫[I] f(x) dx converge.
+
+- Convergence Absolue : Une intégrale ∫[I] f(x) dx est dite absolument convergente si l'intégrale de la valeur absolue de la fonction, ∫[I] |f(x)| dx, converge.
+
+- Relation Fondamentale (Remarque 1.4) : La convergence absolue implique la convergence. Autrement dit, si ∫ |f(x)| dx converge, alors f est intégrable. La réciproque est cependant fausse : une fonction peut être intégrable sans que son intégrale soit absolument convergente (on parle alors de semi-convergence).
+
+Les outils suivants sont fondamentaux pour établir la convergence absolue, et donc l'intégrabilité.
+
+- Inégalité Triangulaire (Propriété 1.10) : Si f est telle que ∫[I] |f(x)| dx converge, alors |∫[I] f(x) dx| ≤ ∫[I] |f(x)| dx.
+
+- Théorème de comparaison par domination (Théorème 1.4) : Soient f et g deux fonctions continues sur I. Si |f(x)| ≤ g(x) pour tout x dans I et si g est intégrable sur I, alors ∫ |f(x)| dx converge, et par conséquent f est intégrable sur I.
+
+Ce dernier théorème de domination, qui permet de contrôler une famille de fonctions par une seule fonction intégrable, devient la pierre angulaire de l'étude des intégrales à paramètre, où la convergence uniforme est souvent garantie par une telle domination.
+
+#### 1.3. Intégrales à Paramètre
+
+Les intégrales à paramètre sont des fonctions dont la valeur est définie par une intégrale, où l'intégrande dépend d'une variable supplémentaire appelée paramètre. L'étude de leur continuité et de leur dérivabilité repose sur les puissants théorèmes de convergence dominée.
+
+Définition
+
+Une intégrale à paramètre se présente sous la forme générale : F(λ) = ∫[I] f(x, λ) dx (Définition 2.1) Le domaine de définition de F est l'ensemble des valeurs du paramètre λ pour lesquelles cette intégrale converge.
+
+Théorèmes de Convergence Dominée
+
+Ces théorèmes permettent d'intervertir les opérations de limite/dérivation et d'intégration sous certaines conditions de domination.
+
+- Théorème de la Limite (Théorème 2.1) :
+
+- Hypothèses :
+
+- Pour tout λ, la fonction x ↦ f(x, λ) est continue.
+
+- Domination : Il existe une fonction g intégrable sur I (g ∈ L¹(I)) telle que |f(x, λ)| ≤ g(x) pour tous x et λ.
+
+- Convergence ponctuelle : Pour tout x, f(x, λ) tend vers f₀(x) lorsque λ tend vers λ₀.
+
+- Conclusion : On peut intervertir la limite et l'intégrale : lim(λ→λ₀) ∫[I] f(x, λ) dx = ∫[I] f₀(x) dx.
+
+- Théorème de Dérivation (Théorème 2.2) :
+
+- Hypothèses :
+
+- Pour tout λ dans un intervalle J, la fonction x ↦ f(x, λ) est intégrable sur I.
+
+- La dérivée partielle ∂f/∂λ existe pour tout (x, λ).
+
+- Pour tout x, la fonction λ ↦ ∂f(x, λ)/∂λ est continue sur J.
+
+- Domination de la dérivée : Il existe une fonction g intégrable sur I telle que |∂f(x, λ)/∂λ| ≤ g(x) pour tous x et λ.
+
+- Conclusion : On peut dériver sous le signe intégral : F'(λ) = ∫[I] ∂f(x, λ)/∂λ dx.
+
+Après avoir étudié les fonctions d'une variable réelle dépendant d'un paramètre, il est naturel d'étendre le concept d'intégration à des fonctions dépendant intrinsèquement de plusieurs variables, nous conduisant ainsi aux intégrales doubles.
+
+#### 1.4. Intégrales Doubles
+
+L'intégrale double est l'extension de l'intégrale simple à des fonctions de deux variables définies sur un domaine du plan. Elle permet de calculer le volume sous une surface. Les théorèmes de Fubini et du changement de variables sont les outils principaux pour leur calcul pratique.
+
+Définition et Calcul
+
+- Notation et Interprétation (Définition 3.1) : L'intégrale double d'une fonction f(x, y) sur un domaine borné D ⊂ R² est notée ∬[D] f(x, y) dx dy. Elle représente le volume algébrique de la région située entre la surface z = f(x, y) et le plan (x, y).
+
+- Théorème de Fubini (piles) (Théorème 3.1) : Ce théorème permet de transformer une intégrale double en deux intégrales simples successives. Si le domaine D est décrit par a ≤ x ≤ b et φ(x) ≤ y ≤ ψ(x), alors : ∬[D] f(x, y) dx dy = ∫[a,b] (∫[φ(x),ψ(x)] f(x, y) dy) dx
+
+Changement de Variables
+
+- Théorème Général (Théorème 3.2) : Pour simplifier le calcul sur des domaines complexes, on peut effectuer un changement de variables (x, y) = Φ(u, v). La formule de transformation inclut le déterminant de la matrice Jacobienne JΦ : ∬[D'] f(x, y) dx dy = ∬[D] f(Φ(u, v)) |det JΦ(u, v)| du dv
+
+- Application aux Coordonnées Polaires (Propriété 3.1) : Un changement de variables très courant est le passage en coordonnées polaires, où x = r cos(θ) et y = r sin(θ). Le Jacobien de cette transformation est |det JΦ| = r. La formule devient : ∬[D] f(x, y) dx dy = ∬ f(r cos(θ), r sin(θ)) r dr dθ
+
+Le calcul intégral, dans toutes ses formes, constitue le langage mathématique indispensable pour modéliser les phénomènes continus, au premier rang desquels se trouve la théorie des probabilités.
+
+### Partie 2 : Théorie des Probabilités
+
+#### 2.1. Concepts Fondamentaux
+
+La théorie des probabilités fournit un cadre rigoureux pour modéliser et quantifier l'incertitude. Elle repose sur la définition d'un univers des possibles (Ω), l'identification des événements d'intérêt (des sous-ensembles de Ω), et l'assignation d'une mesure de probabilité à ces événements pour évaluer leur vraisemblance.
+
+Dénombrement et Espace de Probabilité
+
+- Univers (Ω) (Définition 4.1) : L'ensemble de toutes les issues (ou résultats) possibles d'une expérience aléatoire.
+
+- Événement (Définition 4.4) : Un sous-ensemble A de l'univers Ω. Il correspond à un ensemble de résultats auxquels on s'intéresse.
+
+- Formules de dénombrement (Propriété 4.1) : Pour k tirages parmi n objets :
+
+| Type de tirage | Formule |
+| --- | --- |
+| Avec remise et avec ordre | n^k |
+| Sans remise et avec ordre | A_k^n = n! / (n-k)! |
+| Sans remise et sans ordre | (n choose k) = n! / (k!(n-k)!) |
+
+Mesure de Probabilité et Propriétés
+
+- Définition (Définition 4.5) : Une probabilité P sur un univers fini Ω est une fonction qui associe à chaque événement un nombre dans [0, 1], telle que P(Ω) = 1 et la probabilité de l'union d'événements incompatibles est la somme de leurs probabilités.
+
+- Probabilité Uniforme (Propriété 4.3) : Si toutes les issues élémentaires sont équiprobables, la probabilité d'un événement A est le rapport du nombre de cas favorables au nombre de cas possibles : P(A) = |A| / |Ω|.
+
+- Propriétés de base (Propriété 4.4) :
+
+- Probabilité de l'événement contraire : P(A^c) = 1 - P(A).
+
+- Formule d'addition : P(A ∪ B) = P(A) + P(B) - P(A ∩ B).
+
+Probabilités Conditionnelles et Indépendance
+
+- Probabilité Conditionnelle (Définition 4.6) : La probabilité de A sachant que B s'est réalisé est P(A|B) = P(A ∩ B) / P(B), pour P(B) > 0.
+
+- Théorème des Probabilités Totales (Théorème 4.1) : Si les événements (Bᵢ) forment un système complet d'événements, alors P(A) = Σ P(A|Bᵢ)P(Bᵢ).
+
+- Théorème de Bayes (Théorème 4.2) : Permet d'inverser le conditionnement : P(Bⱼ|A) = (P(Bⱼ)P(A|Bⱼ)) / (Σᵢ P(Bᵢ)P(A|Bᵢ)).
+
+- Indépendance (Définition 4.7) : Deux événements A et B sont indépendants si P(A ∩ B) = P(A)P(B).
+
+Pour analyser numériquement les résultats des expériences aléatoires, on introduit le concept de variable aléatoire.
+
+#### 2.2. Variables Aléatoires
+
+Une variable aléatoire est une fonction qui associe une valeur numérique à chaque issue d'une expérience aléatoire. Elle permet de traduire un problème probabiliste en un problème d'analyse de fonctions. On distingue principalement les variables discrètes (prenant un nombre fini ou dénombrable de valeurs) et les variables continues (prenant leurs valeurs dans un intervalle).
+
+Variables Aléatoires Discrètes
+
+- Définition (Définition 5.1) : Une variable aléatoire X est dite discrète si l'ensemble de ses valeurs X(Ω) est fini ou dénombrable.
+
+- Loi de probabilité (Définition 5.2) : C'est la fonction qui donne la probabilité de chaque valeur possible : pX(x) = P(X = x).
+
+- Espérance (Définition 5.3) : La valeur moyenne pondérée des résultats, notée E(X). E(X) = Σ xᵢ P(X = xᵢ).
+
+- Variance (Définition 5.4) : Mesure la dispersion des valeurs autour de l'espérance, notée Var(X). Var(X) = E[(X - E(X))²].
+
+- Propriétés Clés :
+
+- Linéarité de l'espérance (Propriété 5.1) : E(aX + bY) = aE(X) + bE(Y).
+
+- Théorème de Koenig-Huygens (Théorème 5.1) : Var(X) = E(X²) - (E(X))².
+
+Couple de Variables Aléatoires
+
+- Indépendance (Définition 6.2) : Deux variables X et Y sont indépendantes si pour toutes valeurs x et y, P(X=x, Y=y) = P(X=x)P(Y=y).
+
+- Espérance du produit (Propriété 6.1) : Si X et Y sont indépendantes, E(XY) = E(X)E(Y).
+
+- Covariance (Définition 6.3) : Mesure le lien linéaire entre deux variables : Cov(X, Y) = E[(X - E(X))(Y - E(Y))].
+
+- Cov(X, Y) = E(XY) - E(X)E(Y) (Propriété 6.2).
+
+- Si X et Y sont indépendantes, leur covariance est nulle. La réciproque est fausse.
+
+Variables Aléatoires Continues
+
+- Fonction de densité (Définition 7.1) : Une fonction f positive telle que l'aire totale sous sa courbe vaut 1 (∫[-∞,+∞] f(x) dx = 1). La probabilité que X appartienne à un intervalle [a, b] est ∫[a,b] f(x) dx.
+
+- Fonction de répartition (Définition 7.2) : Notée F(x), elle donne la probabilité cumulative P(X ≤ x). Elle est définie par F(x) = ∫[-∞,x] f(t) dt.
+
+- Propriétés de F(x) (Propriété 7.1) : F est une fonction croissante et continue, avec lim(x→-∞) F(x) = 0 et lim(x→+∞) F(x) = 1.
+
+De nombreux phénomènes aléatoires peuvent être modélisés à l'aide d'un ensemble restreint de lois de probabilité standards.
+
+#### 2.3. Lois de Probabilité Usuelles
+
+Les lois de probabilité usuelles sont des modèles mathématiques qui décrivent le comportement de nombreux phénomènes aléatoires récurrents. Connaître leurs propriétés (espérance, variance, contexte d'application) est essentiel pour la modélisation. Cette section sert de formulaire de référence rapide.
+
+Lois Discrètes
+
+- Loi Uniforme U{a₁,...,aₙ}
+
+- Contexte : Toutes les n issues sont équiprobables.
+
+- Probabilité : P(X = aᵢ) = 1/n pour tout i.
+
+- Pour le cas spécifique où les valeurs sont les entiers de 1 à n (X ↪→ UJ1,nK) :
+
+- Espérance : E(X) = (n+1)/2.
+
+- Variance : Var(X) = (n²-1)/12.
+
+- Loi de Bernoulli B(p)
+
+- Contexte : Expérience aléatoire à deux issues : "succès" (valeur 1) ou "échec" (valeur 0).
+
+- Probabilité : P(X=1) = p et P(X=0) = 1-p.
+
+- Espérance : E(X) = p.
+
+- Variance : Var(X) = p(1-p).
+
+- Loi Binomiale B(n, p)
+
+- Contexte : Compte le nombre de succès dans n répétitions indépendantes d'une épreuve de Bernoulli.
+
+- Probabilité : P(X=k) = (n choose k) p^k (1-p)^(n-k).
+
+- Espérance : E(X) = np.
+
+- Variance : Var(X) = np(1-p).
+
+- Loi Géométrique G(p)
+
+- Contexte : Compte le rang (numéro de l'essai) du premier succès dans une série d'épreuves de Bernoulli indépendantes.
+
+- Probabilité : P(X=k) = p(1-p)^(k-1) pour k ≥ 1.
+
+- Espérance : E(X) = 1/p.
+
+- Variance : Var(X) = (1-p)/p².
+
+- Loi de Poisson P(λ)
+
+- Contexte : Compte le nombre d'occurrences d'un événement rare sur un intervalle de temps ou d'espace donné. C'est la limite de la loi binomiale B(n, p) lorsque n est grand, p est petit, et np tend vers λ.
+
+- Probabilité : P(X=k) = (e^(-λ) λ^k) / k!.
+
+- Espérance : E(X) = λ.
+
+- Variance : Var(X) = λ.
+
+Lois Continues
+
+- Loi Uniforme U(a, b)
+
+- Densité : f(x) = 1/(b-a) si x ∈ [a, b], et 0 sinon.
+
+- Espérance : E(X) = (a+b)/2.
+
+- Variance : Var(X) = (b-a)²/12.
+
+- Loi Exponentielle E(λ)
+
+- Contexte : Modélise une durée de vie ou un temps d'attente.
+
+- Densité : f(x) = λe^(-λx) si x ≥ 0, et 0 sinon.
+
+- Espérance : E(X) = 1/λ.
+
+- Variance : Var(X) = 1/λ².
+
+- Propriété : Elle est "sans mémoire" : P(X > s+t | X > s) = P(X > t).
+
+- Loi Normale N(µ, σ²)
+
+- Contexte : Loi centrale des probabilités (Théorème Central Limite), modélise de très nombreux phénomènes naturels (erreurs de mesure, etc.).
+
+- Densité : f(x) = (1 / (σ√(2π))) exp(-(x-µ)² / (2σ²)).
+
+- Espérance : E(X) = µ.
+
+- Variance : Var(X) = σ².
+
+- Propriétés :
+
+- La loi normale centrée réduite N(0, 1) est la référence.
+
+- Stabilité affine : Si X ~ N(µ, σ²), alors aX + b ~ N(aµ + b, a²σ²).
+
+## Notes de transcription — Précisions sur la source
+
+La section 1.2 emploie « intégrable » au sens de « d’intégrale impropre convergente ». Cette convention contredit l’usage $L^1$ des théorèmes de domination cités ensuite. Dans cet usage, l’intégrabilité signifie $\int_I|f|<+\infty$ ; une intégrale peut converger sans que sa fonction soit intégrable (semi-convergence). Les énoncés originaux sont conservés ci-dessus pour rendre cette différence explicite.
+
+L’égalité des probabilités ponctuelles utilisée pour caractériser l’indépendance concerne ici les variables **discrètes** ; elle ne suffit pas pour des variables continues. Les propriétés des espérances, variances et covariances supposent les moments correspondants finis. Les changements de variables supposent des bornes correspondantes et une orientation cohérente.

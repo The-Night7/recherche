@@ -1,0 +1,902 @@
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Comparaison locale de fonctions réelles
+9 septembre 2024
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+1 Négligeabilité
+2 Domination
+3 Equivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+4 Lien entre négligeabilité, domination et équivalence
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Négligeabilité
+Définition : Voisinage
+Soit a ∈ R = R ∪ {±∞}. On appelle voisinage de a toute partie de
+R contenant un intervalle de la forme :
+• ]a − ε, a + ε[ avec ε > 0 si a ∈ R
+• ]A, +∞[ si a = +∞
+• ] − ∞, A[ si a = −∞.
+Dans la suite V(a) désigne un voisinage de a.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Définition
+Soit a ∈ R = R ∪ {±∞} et f et g deux fonctions V(a) −→ R. On
+suppose que g ne s’annule pas sur V(a) sauf éventuellement en a,
+avec dans ce cas f (a) = 0.
+On dit que f est négligeable devant g au voisinage de a si
+lim
+x→a
+f (x)
+g(x)
+= 0.
+On note dans ce cas f =
+a
+o(g) et on lit « f est un petit o de g au
+voisinage de a ».
+Une autre notation possible est : f <<
+a
+g
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Exemples
+x
+2 =
++∞
+o(x
+4
+), x
+4 =
+0
+o(x
+2
+),
+1
+x
+2
+=
++∞
+o
+
+1
+x
+
+,
+1
+x
+=
+0
+o
+
+1
+x
+2
+
+.
+Remarque
+Dans la suite, pour alléger les énoncés, on notera parfois tout court
+f =
+a
+o(g) et on supposera dans ce cas que les hypothèes dans la
+définition précédente sont satisfaites.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Definition
+Soit (un)n et (vn)n deux suites réelles telles que (vn)n ne s’annule
+pas à partir d’un certain rang. On dit que (un)n est négligeable
+devant (vn)n si
+lim
+n→+∞
+un
+vn
+= 0.
+On note dans ce cas un = o(vn) et on lit »un est un petit o de vn.
+Une autre notation possible est : un << vn.
+Exemples
+2
+n = o(3n
+), n
+2 = o(2n
+), ln(n) = o(n)
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Proposition
+Soit f : V(a) −→ R et ℓ ∈ R. On a :
+lim
+x→a
+f (x) = ℓ ⇔ f =
+a
+ℓ + o(1).
+En particulier, lim
+x→a
+f (x) = 0 ⇔ f =
+a
+o(1). Ainsi, o(1) est une
+fonction de limite nulle en a.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Proposition : Opérations sur les petits o
+1 Transitivité :
+Si g = o(g) et g = o(h), alors f = o(h).
+2 Multiplication par un réel non nul :
+Si f = o(g), alors pour tout λ ∈ R
+∗
+, f = o(λg) et λf = o(g).
+3 Somme de petits o d’une même fonction :
+Si f1 = o(g) et f2 = o(g), alors f1 + f2 = o(g).
+4 Produit :
+Si f1 = o(g1) et f2 = o(g2), alors f1f2 = o(g1g2).
+Si f = o(g), alors fh = o(gh).
+5 Composition à droite :
+Si f =
+a
+o(g) et lim
+x→b
+h(x) = a, alors f ◦ h =
+b
+o(g ◦ h).
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Remarque
+La composition à droite s’interprètre comme un changement de
+variables. Voici deux exemples :
+• Pour comparer √
+ln x et ln x au voisinage de +∞, on pose
+u = h(x) = ln x :
+on a lim
+x→+∞
+h(x) = +∞ et √
+x =
++∞
+o(x), alors √ln x =
++∞
+o(ln x).
+• Pour comparer e
+1
+x et
+1
+x
+au voisinage de 0+, on pose
+u = h(x) = 1
+x
+:
+on a lim
+x→0+
+h(x) = +∞ et x =
++∞
+o(e
+x
+), alors 1
+x
+=
+0+
+o(e
+1
+x ).
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Opérations interdites !
+1 Il est interdit d’additionner des relations de négligeabilité
+membre à membre. Les égalités f1 = o(g1) et f2 = o(g2)
+n’entrainent pas que f1 + f2 = o(g1 + g2).
+Par exemple, x − 1 =
++∞
+o(x
+2
+) et 1 =
++∞
+o(1 − x
+2
+), mais
+x ̸=
++∞
+o(1).
+2 Il est interdit de composer une relation de négligeabilité par la
+gauche. Si f = o(g), on n’a pas forcément f ◦ f = o(h ◦ g).
+Par exemple, ln x =
++∞
+o(x), mais 1
+ln x
+̸=
++∞
+o
+
+1
+x
+
+. Ainsi, on
+ne peut pas composer par x 7→
+1
+x
+par la gauche.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Théorème :Croissances comparées usuelles
+Soit (a, b) ∈ R
+2
+.
+Au voisinage de +∞ :
+1 Si a < b, alors x
+a =
++∞
+o(x
+b
+).
+2 Si 0 < a < b, alors a
+x =
++∞
+o(b
+x
+).
+3 Si a > 0, alors (ln x)
+b =
++∞
+o(x
+a
+).
+4 Si a > 0, alors x
+b =
++∞
+o(e
+ax ).
+Au voisinage de 0 :
+1 Si a < b, alors x
+b =
+0
+o(x
+a
+).
+2 Si a > 0, alors x
+a =
+0
+o(|ln x|
+b
+).
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Domination
+Definition
+Soit a ∈ R = R ∪ {±∞} et f et g deux fonctions V(a) −→ R. On
+suppose que g ne s’annule pas sur V(a) sauf éventuellement en a,
+avec dans ce cas f (a) = 0.
+On dit que f est dominée par g au voisinage de a si la fonction f /g
+est bornée au voisinage de a.
+On note dans ce cas f =
+a
+O(g) et on lit « f est un grand O de g
+au voisinage de a ».
+Exemples
+sin 
+1
+x
+
+=
+0
+O(1), x
+2 =
+0
+O(x), 2x
+2 =
++∞
+O(x
+2
+), x
+2 =
+0
+O(x).
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Remarque
+f =
+a
+O(1) ⇔ f est bornée au voisinage de a.
+Proposition : Opérations sur les grand O
+Toutes les opérations énoncées pour les petits o restent valables
+pour les grands O.
+Opérations interdites !
+Les opérations interdites pour les petits o (additionner membre
+à membre et composition par la gauche) restent interdites pour les
+grands O.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Equivalence
+Definition
+Soit a ∈ R = R ∪ {±∞} et f et g deux fonctions V(a) −→ R. On
+suppose que g ne s’annule pas sur V(a) sauf éventuellement en a,
+avec dans ce cas f (a) = 0.
+On dit que f est équivalente à g au voisinage de a si
+lim
+x→a
+f (x)
+g(x)
+= 1.
+On note dans ce cas f ∼
+a
+g.
+Remarque importante
+Ne jamais écrire f ∼ 0 car la fonction nulle ne vérifie pas les
+conditions de la définition.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Remarque
+Dans la suite, pour alléger les énoncés, on notera parfois tout court
+f ∼
+a
+g et on supposera dans ce cas que les hypothèses dans la
+définition précédente sont satisfaites.
+Exemples
+x + x
+2 ∼
+0
+x, x
+3 + x2 + 1 ∼
++∞
+x
+3
+.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Definition
+Soit (un)n et (vn)n deux suites réelles qui ne s’annulent pas à partir
+d’un certain rang. On dit que (un)n est équivalente à (vn)n si
+lim
+n→+∞
+un
+vn
+= 1.
+On note dans ce cas un ∼ vn.
+Exemples
+1
+n
++
+1
+n
+2
+∼
+1
+n
+, 3n + 2
+n ∼ 3n
+.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Proposition : Equivalents usuels
+• Tout polynôme est équivalent à son terme de plus haut degré au
+voisinage de ±∞.
+• Tout polynôme est équivalent à son terme de plus petit degré au
+voisinage de 0.
+• Si f admet un développement limité au voisinage de 0, alors f est
+équivalente au terme non nul de plus faible ordre au voisinage de 0.
+1/ e
+x − 1 ∼
+0
+x 2/ ln(1 + x) ∼
+0
+x
+3/ (1 + x)
+α − 1 ∼
+0
+αx 4/ sin x ∼
+0
+x
+5/ 1 − cos x ∼
+0
+x
+2
+2
+6/ tan x ∼
+0
+x
+7/ arcsin x ∼
+0
+x 8/ arctan x ∼
+0
+x
+9/ sh x ∼
+0
+x 10/ ch x − 1 ∼
+0
+x
+2
+2
+11/ th x ∼
+0
+x
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Proposition
+La relation "est équivalente à " est une relation d’équivalence :
+pour toutes fonctions f , g et h, on a
+• Réflexivité : f ∼
+a
+f
+• Symétrie : si f ∼
+a
+g, alors g ∼
+a
+f
+• Transitivité : si f ∼
+a
+g et g ∼
+a
+h, alors f ∼
+a
+h.
+Il s’agit d’une vérification directe.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Proposition
+1 Lien limites/équivalence :
+• Pour tout ℓ ∈ R
+∗
+, lim
+x→a
+= ℓ ⇔ f ∼
+a
+ℓ.
+• Si f ∼
+a
+g, alors soit f et g ont toutes les deux une limite en
+a, en l’occurence la màªme, soit aucune de ces deux fonctions
+ne possà¨de de limite en a.
+2 Lien négligeabilité/équicalence :
+• f ∼
+a
+g ⇔ f =
+a
+g + o(g).
+• f =
+a
+o(g) ⇔ f + g ∼
+a
+g.
+3 Signe et équivalence :
+• Si f ∼
+a
+g, alors f et g sont de màªme signe au voisinage de
+a.
+• Si f ne s’annule pas au voisinage de a et f ∼
+a
+g, alors g ne
+s’annule pas au voisinage de a.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Proposition : Opérations sur les équivalences
+1 Produit :
+Si f ∼
+a
+f1 et g ∼
+a
+g1, alors fg ∼
+a
+f1g1.
+2 Inverse :
+Si f ∼
+a
+g et f ne s’annule pas au voisinage de a, alors 1
+f
+∼
+a
+1
+g
+.
+3 Puissance :
+Si f ∼
+a
+g et f est strictement posistive au voisinage de a, alors
+pour tout réel α, f
+α ∼
+a
+g
+α.
+Attention : α ne dépend pas de la variable x.
+4 Composition à droite :
+Si f ∼
+a
+g et lim
+x→b
+h(x) = a, alors f ◦ h ∼
+b
+g ◦ g.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Opérations interdites !
+1 Il est interdit d’additionner des équivalents : si f ∼
+a
+f1 et
+g ∼
+a
+g1, on n’a pas nécessairement f + g ∼
+a
+f1 + g1.
+Par exemple, x + 1 ∼
++∞
+x et −x + 3 ∼
++∞
+−x + 1, mais on n’a
+clairement pas 4 ∼
++∞
+1.
+2 Il est interdit de composer un équivalent par la gauche : si
+f ∼
+a
+g, on n’a pas forcément h ◦ f ∼
+a
+h ◦ g.
+Par exemple, x ∼
++∞
+x + ln x, mais on n’a pas e
+x ∼
++∞
+xexen
+composant par x 7→ e
+x par la gauche.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Exercice : Calculer les limites suivantes en utilisant les
+équivalences :
+1 lim
+x→0
+5
+√
+1 + 6x −
+3
+√
+1 + x
+3 sin(x) − ln(1 + x)
+2 ∀a, b > 0 lim
+x→+∞
+ 
+a
+1
+x + b
+1
+x
+2
+!x
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Equivalence et exponentielle
+Remarque importante
+On ne peut pas composer un équivalent à gauche par
+l’exponentielle : si f ∼
+a
+g, on n’a pas forcément e
+f ∼
+a
+e
+g
+.
+Par exemple, x ∼
++∞
+x + 1 mais on n’a pas e
+x ∼
++∞
+e
+x+1
+car
+lim
+x→+∞
+e
+x + 1
+e
+x
+= e ̸= 1.
+Toutefois, sous certaines hypothèses, on peut composer à gauche
+par l’exponentielle :
+Proposition
+On a :
+e
+f ∼
+a
+e
+g ⇔ lim
+x→a
+(f − g) = 0.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+En effet, si e
+f ∼
+a
+e
+g
+, alors lim
+x→a
+e
+f (x)
+e
+g(x)
+= 1, d’ou lim
+x→a
+e
+f (x)−g(x) = 1.
+En utilisant la continuité de la fonction x 7→ ln x en 1, on a :
+lim
+x→a
+(f (x)−g(x)) = lim
+x→a
+
+ln e
+f (x)−g(x)
+
+= ln lim
+x→a
+e
+f (x)−g(x)
+
+= ln 1 = 0
+Réciproquement, si lim
+x→a
+(f (x) − g(x)) = 0, en utilisant la continuité
+de la fonction x 7→ e
+x
+en 0, on a :
+lim
+x→a
+e
+f (x)
+e
+g(x)
+= lim
+x→a
+e
+f (x)−g(x) = elim(f (x)−g(x)) = e0 = 1.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Equivalences et logarithme
+Remarque importante
+On ne peut pas composer un équivalent à gauche par le
+logarithme : si f ∼
+a
+g et f est strictement positive au voisinage de
+a, an n’a pas forcément ln f ∼
+a
+ln g.
+Par exemple, 1 + x ∼
+0
+1 + 2x mais on n’a pas
+ln(1 + x) ∼
+0
+ln(1 + 2x) car lim
+x→0
+ln(1 + 2x)
+ln(1 + x)
+= 2 ̸= 1.
+Toutefois, sous certaines conditions, on peut composer à gauche
+par le logarithme :
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Equivalences et exponentielle
+Equivalences et logarithme
+Proposition
+Si f ∼
+a
+g, avec f strictement positive au voisinage de a, et si la
+fonction x 7→
+1
+ln g(x)
+est bornée au voisinage de a (en particulier,
+si lim
+x→a
+g(x) ̸= 1), alors ln f ∼
+a
+ln g.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Lien entre négligeabilité, domination et équivalence
+Proposition
+• La négligeabilité entraine la domination :
+f =
+a
+o(g) ⇒ f =
+a
+O(g).
+• L’équivalence entraine la domination :
+f ∼
+a
+g ⇒ f =
+a
+O(g).
+En effet, il est clair que si la limite en a d’une fonction (ici f /g)
+vaut 0 ou 1, alors cette fonction est bornée au voisinage de a.
+Comparaison locale de fonctions réelles
+<<<PAGE>>>
+Négligeabilité
+Domination
+Equivalence
+Lien entre négligeabilité, domination et équivalence
+Exemple :
+e
+x =
+0
+1 + x +
+x
+2
+2 +
+x
+3
+6 + o(x
+3
+), alors e
+x =
+0
+1 + x +
+x
+2
+2 + O(x
+3
+)
+cos(x) =
+0
+1 −
+x
+2
+2 + o(x
+2
+), alors cos(x) =
+0
+1 + O(x
+2
+)
+Exercice :
+Montrer que Xn
+k=1
+1
+k
+=
++∞
+ln(n) + O(1) ou encore Xn
+k=1
+1
+k
+∼
++∞
+ln(n)
+Indication :
+1-Rappelons que ∀x > −1, ln(1 + x) ≤ x
+2-Posons les deux suites suivantes :
+un =
+Xn
+k=1
+1
+k
+− ln(n + 1) et vn =
+Xn
+k=1
+1
+k
+− ln(n),
+montrer que les deux suites un et vn sont adjacentes.
+Comparaison locale de fonctions réelles

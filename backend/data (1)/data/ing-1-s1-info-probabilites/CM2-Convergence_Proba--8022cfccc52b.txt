@@ -1,0 +1,809 @@
+Suites de variables aléatoires réelles
+Convergence
+Khalid El Amine I.
+Department of Mathematics
+⋆⋆⋆
+Dans tout ce chapitre :
+• Ω est un ensemble non vide.
+• (Ω,A) est un espace probabilisable.
+• (Ω,A,P ) est un espace probabilisé.
+• R sera toujours muni de la tribu deBorel,B(R).
+• Toutes les variables aléatoires sont définies sur un espace probabilisé(Ω,A,P )
+et à valeurs dans l’espace probabilisable(R,B(R)).
+1 Inégalités de Markov et Chebyshev
+Les inégalités de cette section fournissent des majorations sur la probabilité qu’une variable aléatoire
+prenne une valeur «extrême» dans la queue droite et/ou gauche d’une distribution.
+Théorème 1.1 (Inégalité de Markov)
+Soit X une v.a.r.. SiX admet une espérance, alors :
+∀a∈ R+∗, P (|X|>a )≤ E(|X|)
+a
+Preuve. bigbreak
+Théorème 1.2 (Inégalité de Markov)
+Soit X une v.a.r.. SiX admet un moment d’ordrem∈ N∗ alors :
+∀a∈ R+∗, P (|X|>a )≤ E(|X|m)
+am
+Preuve.
+Théorème 1.3 (Inégalité de Chebyshev)
+Soit X une v.a.r.. SiX admet une variance, alors :
+∀a∈ R+∗, P (|X−E(X)|>a )≤ V (X)
+a2
+Preuve.
+1
+<<<PAGE>>>
+2 Variables aléatoires réelles
+2 Convergence en loi
+Définition 2.1 (Convergence en loi)
+Soit (Xn)n∈N∗ une suite de v.a.rs et(FXn)n∈N∗ la suite des fonctions de répartition associées.
+Soit X une v.a.r. etFX sa fonction de répartition.
+On dit que(Xn)n∈N∗ converge en loi versX, si et seulement si,(FXn)n∈N∗ converge simplement vers
+FX en tout point de continuité deFX.
+Notation :
+Xn
+L
+−−−→X
+Remarque. NotonsC(FX) ={x∈ R : FX est continue enx}. Alors
+Xn
+L
+−−−→X ⇐⇒ FXn(x)−−−−−→
+n→+∞
+FX(x) , ∀x∈C(FX)
+⇐⇒ P (Xn≤x)−−−−−→
+n→+∞
+P (X≤x) , ∀x∈C(FX)
+Exemple. Soit (Xn)n≥1 une suite de v.a.r. discrètes tel que∀n∈ N∗,
+Xn(Ω) ={0, 1}
+et de fonction de masse de probabilité
+pXn(x) =
+
+
+
+1/n si x = 0
+1− 1/n si x = 1
+0 si non
+i.e
+pXn = 1
+n·I{0} + (1− 1
+n)·I{1}
+Montrer que la suite(Xn)n≥1 converge en loi vers la v.a.r. constante égale à 1.
+Solution.
+Théorème 2.2 Soit g : R−→ R une fonction continue.
+Si une suite de v.a.rs(Xn)n∈N∗ converge en loi vers une v.a.r.X, alors la suite de v.a.r.(g(Xn))n∈N∗
+converge en loi vers la v.a.r.g(X).
+Preuve.
+3 Convergence en probabilité
+Définition 3.1 (Convergence en probabilité)
+Soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r.. On dit que(Xn)n∈N∗ converge en probabilité vers
+X, si et seulement si,
+∀ϵ∈ R+∗, P (|Xn−X|>ϵ )−−−−−→
+n→+∞
+0
+Notation :
+Xn
+P
+−−−→X
+Remarque.
+P (|Xn−X|>ϵ )−−−−−→
+n→+∞
+0 ⇐⇒ P (|Xn−X|≤ ϵ)−−−−−→
+n→+∞
+1
+Notons que (P (|Xn−X|>ϵ ))n∈N∗ est une suite de nombre réels.
+<<<PAGE>>>
+Convergence 3
+Exemple. Suite de v.a.rs discrètes
+Soit X une v.a.r. discrète avecX(Ω) ={0, 1} et f.m.p.pX définie par :
+pX(x) =
+
+
+
+2/3 si x = 0
+1/3 si x = 1
+0 sinon
+Soit (Xn)n∈N∗ une suite de v.a.rs discrètes de terme général
+Xn =
+
+1 + 1
+n
+
+X
+Montrer queXn
+P
+−−−→X.
+Solution.
+Exemple. Suite de v.a.rs absolument continues
+Soit (Xn)n∈N∗ une suite de v.a.rs absolument continues. Supposons que pour toutn∈ N∗,Xn suit une
+distribution exponentielle de paramètren, i.e. Xn∼E (n). Montrer queXn converge en probabilité
+vers 0.
+Solution.
+Théorème 3.2 Soit g : R−→ R une fonction continue.
+Si une suite de v.a.rs (Xn)n∈N∗ converge en probabilité vers une v.a.r.X, alors la suite de v.a.rs
+(g(Xn))n∈N∗ converge en probabilité vers la v.a.r.g(X).
+Preuve.
+Proposition 3.3 Si (Xn)n∈N∗ converge en probabilité versX, alors elle converge en loi versX.
+Preuve.
+4 Convergence en moyenne
+4.1 Espace Lr
+Définition 4.1 (Lr space)
+Soit r∈ [1, +∞[ et X une v.a.r..
+• On dit queX est r-intégrable, si et seulement si,E(|X|r)<∞.
+• On appelle espaceLr, l’ensemble des v.a.rsr-intégrable, i.e
+Lr ={X : Ω→ R ; E(|X|r)<∞}
+En particulier, siX est une v.a.r., alors
+• On dit queX est intégrable, et on noteX∈L1, siX admet un moment d’ordre1. i.e. :
+X∈L1 ⇐⇒ E(|X|)< +∞
+• On dit queX est de carré intégrable, et on noteX∈L2, siX admet un moment d’ordre2. i.e. :
+X∈L2 ⇐⇒ E(|X|2)< +∞
+<<<PAGE>>>
+4 Variables aléatoires réelles
+4.2 Convergence en moyenne et en moyenne quadratique
+Définition 4.2 (Convergence en moyenne)
+Soit (Xn)n∈N∗ une suite de v.a.rs intégrables etX une v.a.r. intégrable.
+On dit que(Xn)n∈N∗ converge en moyenne(ou converge dansL1) vers X, si et seulement si,
+E(|Xn−X|)−−−−−→
+n→+∞
+0
+Notation :
+Xn
+L1
+−−−→X
+Remarque. Notons que pour la convergence en moyenne, il est nécessaire queE(|Xn−X|)< +∞,
+ce qui est généralement assuré en exigeant queXn et X soient intégrables.
+Définition 4.3 (Convergence en moyenne quadratique)
+Soit (Xn)n∈N∗ une suite de v.a.rs de carré intégrable etX une v.a.r. de carré intégrable.
+On dit que(Xn)n∈N∗ converge en moyenne quadratique(ou converge dansL2) versX, si et seulement
+si,
+E(|Xn−X|2)−−−−−→
+n→+∞
+0
+Notation :
+Xn
+L2
+−−−→X
+Remarque. Notons que pour la convergence en moyenne quadratique, il est nécessaire queE(|Xn−
+X|2)< +∞, ce qui est généralement assuré en exigeant queXn et X soient de carré intégrable.
+Exemple 1. Soit (Xn)n≥1 une suite de v.a.rs discrètes telle que pour toutn∈ N∗
+Xn(Ω) ={0,n}
+et f.m.p.
+pXn(x) =
+
+
+
+1− 1
+n3 si x = 0
+1
+n3 si x =n
+0 sinon
+Montrer que (Xn)n≥1 convergence en moyenne quadratique et en moyenne vers la v.a.r.X = 0.
+Solution.
+Exemple 2. Soit (Xn)n≥1 une suite de v.a.rs discrètes telle que pour toutn∈ N∗
+Xn(Ω) ={0,n}
+et f.m.p.
+pXn(x) =
+
+
+
+1− 1
+n2 if x = 0
+1
+n2 if x =n
+0 otherwise
+La suite (Xn)n≥1 converge-elle en moyenne quadratique vers la v.a.r.X = 0 ? et en moyenne ?
+Solution.
+<<<PAGE>>>
+Convergence 5
+Théorème 4.4 Soit g : R−→ R une fonction continue.
+soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r..
+• Si (Xn)n∈N∗ converge en moyenne quadratique versX, alors la suite de v.a.rs(g(Xn))n∈N∗ converge
+en moyenne quadratique versg(X).
+• Si (Xn)n∈N∗ converge en moyenne versX, alors la suite de v.a.rs(g(Xn))n∈N∗ converge en moyenne
+vers g(X).
+Preuve.
+Proposition 4.5 Soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r.
+• Si (Xn)n∈N∗ converge en moyenne quadratique versX, alors elle converge en moyenne versX.
+• Si (Xn)n∈N∗ converge en moyenne versX, alors elle converge en probabilité versX.
+Preuve.
+4.3 Convergence en moyenne d’ordre r
+Définition 4.6 (Convergence en moyenne d’ordre r)
+Soit r∈ [1, +∞[. Soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r. telles que E(|Xn|r) <∞ et
+E(|X|r)<∞.
+On dit que(Xn)n∈N∗ converge en moyenne d’ordrer (ou converge dansLr) vers X, si et seulement
+si,
+E(|Xn−X|r)−−−−−→
+n→+∞
+0
+Notation :
+Xn
+Lr
+−−−→X
+Exemple 1. Soit (Xn)n≥1 une suite de v.a.rs discrètes telle que pour toutn∈ N∗
+Xn(Ω) ={−1, 0, 1}
+et f.m.p.
+pXn(x) =
+
+
+
+1
+2n si x =−1
+1− 1
+n si x = 0
+1
+2n si x = 1
+0 sinon
+Montrer que, pour toutr∈ [1, +∞[, Xn
+Lr
+−−−→0.
+Solution.
+Exemple 2. Soit (Xn)n≥1 une suite de v.a.rs absolument continues telle queXn∼U
+
+0, 1
+n
+
+.
+Montrer queXn
+Lr
+−−−→0 pour toutr∈ [1, +∞[.
+Solution.
+Théorème 4.7 Soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r.. Alors pour touts>r ≥ 1
+Xn
+Ls
+−−−→X =⇒ Xn
+Lr
+−−−→X
+Preuve.
+<<<PAGE>>>
+6 Variables aléatoires réelles
+5 Convergence presque sûre
+Définition 5.1 (Convergence presque sûre)
+Soit (Xn)n∈N∗ une suite de v.a.rs etX une v.a.r.. On dit que(Xn)n∈N∗ converge presque sûrement
+vers X, si et seulement si,
+existe un événementM tel que :
+
+
+
+(1) P (M) = 1
+(2)∀ω∈M, X n(ω)−−−−−→
+n→+∞
+X(ω)
+Notation :
+Xn
+p.s.
+−−−−→X
+Remarque. On dit aussi que(Xn) converge versX avec probabilité 1.
+Xn
+p.s.
+−−−−→X ⇐⇒ P ({ω∈ Ω : Xn(ω)−−−−−→
+n→+∞
+X(ω)}) = 1
+⇐⇒ existe un événementN tel que :
+
+
+
+(1) P (N) = 0
+(2)∀ω∈Nc, X n(ω)−−−−−→
+n→+∞
+X(ω)
+• La convergence presque sûre est la version probabilistique de la convergence simple des suites de
+fonctions en analyse réelle.
+Exemple. On travaille dans l’espace probabilisé(R,B(R),P ) où P est la probabilité uniforme sur le
+segment [0, 1], i.e :
+P (B) =
+Z
+B
+I[0,1](x)dx =
+Z
+B∩[0,1]
+dx , ∀B∈B (R)
+Soit (Xn)n≥1 une suite de v.a.r. sur(R,B(R)).
+1. Si Xn =I]0, 1
+n ]. Montrer que(Xn)n≥1 converge simplement surR vers la variable certaineX = 0.
+2. Si Xn =I[0, 1
+n ]. Montrer que(Xn)n≥1 converge presque sûrement vers la variable certaineX = 0.
+Solution.
+Théorème 5.2 Soit g : R−→ R une fonction continue.
+Si une suite de v.a.rs(Xn)n∈N∗ converge presque sûrement vers une v.a.r.X, alors la suite de v.a.rs
+(g(Xn))n∈N∗ converge presque sûrement vers la v.a.r.g(X).
+Preuve.
+Proposition 5.3 Si (Xn)n∈N∗ converge presque sûrement versX, alors elle converge en probabilité
+vers X.
+Preuve.
+Theorem 5.1 Soit (Xn)n∈N∗ une suite de v.a.rs.
+si la suite converge
+• presque sûrement ;
+• ou en probabilité ;
+• ou en moyenne d’ordrer ;
+<<<PAGE>>>
+Convergence 7
+• ou en loi ;
+alors, la variable aléatoire limite est unique.
+Preuve.
+Diagramme des convergences
+Le diagramme ci-dessous récapitule les liens entre les divers modes de convergence.
+Convergence L2
+Convergence L1
+Convergence p.s. Convergence enprobabilité Convergence en loi
+Composition et convergences
+Soit g : R−→ R une fonction continue. Alors :
+• Xn
+L
+−−−→X =⇒ g(Xn)
+L
+−−−→g(X) • Xn
+P
+−−−→X =⇒ g(Xn)
+P
+−−−→g(X)
+• Xn
+L1
+−−−→X =⇒ g(Xn)
+L1
+−−−→g(X) • Xn
+L2
+−−−→X =⇒ g(Xn)
+L2
+−−−→g(X)
+• Xn
+p.s.
+−−−−→X =⇒ g(Xn)
+p.s.
+−−−−→g(X)
+6 V.A.Rs Indépendantes et Identiquement Distribuées
+La f.r. (ou f.d.p./f.m.p.) d’une v.a.r. caractérise complètement sa distribution. En d’autres termes,
+elle contient tout ce que nous devons savoir sur la loi du caractère aléatoire de cette variable aléatoire.
+Si deux variables aléatoires donnent la même f.r., alors elles ont la même distribution.
+Définition 6.1 Soit X et Y deux v.a.rs.
+• On dit queX et Y sont identiquement distribuées(i.d. en abrégé),
+si et seulement si, elles ont même distribution(i.e. même f.r ou même f.d.p./f.m.p.).
+• On dit queX et Y sont indépendantes identiquement distribuées,(i.i.d. en abrégé),
+si et seulement si, elles sont indépendantes et elles ont même distribution (loi).
+Note. On généralise cette définition pour une suite finie de v.a.rs(Xi)n
+i=1.
+Définition 6.2 Soit (Xn)n∈N∗ une suite de v.a.rs.
+• On dit que(Xn)n∈N∗ est identiquement distribuée(i.d. en abrégé),
+si et seulement si, lesXn ont même distribution(i.e. même f.r ou même f.d.p./f.m.p.).
+• On dit que(Xn)n∈N∗ est indépendante identiquement distribuée,(i.i.d. en abrégé),
+si et seulement si, lesXn sont indépendantes et elles ont même distribution.
+Définition 6.3 Soit (Xn)n∈N∗ une suite de v.a.rs.
+<<<PAGE>>>
+8 Variables aléatoires réelles
+Pour toutn≥ 1, on pose
+Sn =
+nX
+i=1
+Xi et Mn = Sn
+n = 1
+n
+nX
+i=1
+Xi
+ Sn est appelée somme partielle d’ordre n de la suite(Xn)n∈N∗.
+ Mn est appelée moyenne arithmétique d’ordre n de la suite(Xn)n∈N∗.
+Note. Notons queSn etMn, étant des sommes de variables aléatoires, sont elles-mêmes des variables
+aléatoires.
+Remarque. En statistique,Mn est notéeXn et est appelée moyenne empirique.
+Propriété 6.4 Soit (Xn)n∈N∗ une suite de v.a.rs.
+• Si (Xn)n∈N∗ est identiquement distribuée etE(|X1|)<∞, alors,∀n∈ N∗
+E(Sn) =nE(X1) et E(Mn) =E(X1)
+• Si (Xn)n∈N∗ indépendante identiquement distribuée etE(|X1|2)<∞, alors,∀n∈ N∗
+V (Sn) =nV (X1) et V (Mn) = V (X1)
+n
+Preuve.
+7 Loi des grands nombres
+7.1 Loi faible des grands nombres
+Théorème 7.1 (Loi faible des grands nombres (LfGN))
+Soit (Xn)n∈N∗ une suite de v.a.r.-i.i.d.. SiE(|X1|2)<∞, alors
+Mn
+P
+−−−→E(X1)
+Preuve. On applique l’inégalité deChebyshev.∀ϵ> 0
+P (|Mn−E(X1)|>ϵ ) =P (|Mn−E(Mn)|>ϵ )≤ V (Mn)
+ϵ2 = V (X1)
+nϵ2 −−−−−→
+n→+∞
+0
+La limite du terme à droite existe puisqueV (X1) est finie (carE(|X1|2) est finie).
+Remarque.
+P (|Mn−E(X1)|>ϵ )−−−−−→
+n→+∞
+0 ⇐⇒ P (|Mn−E(X1)|≤ ϵ)−−−−−→
+n→+∞
+1
+La LfGN dit que lorsquen augmente, la probabilité de l’événement "Mn est à moins deϵ autour de
+la moyenneE(X1)" tend vers1. Nous pouvons considérerϵ comme une petite tolérance d’erreur par
+rapport à la moyenneE(X1).
+Application de la LfGN.
+Exemple 1. Considérons l’expérience aléatoire qui consiste à lancer une pièce de monnaien fois. Si
+Sn représente le nombre de faces observées dans cesn lancers, alorsSn/n représente la proportion de
+faces dans cesn lancers.
+La loi des grands nombres prédit que les résultats de la variable aléatoireSn/n seront, pour les grands
+n, proches de1/2.
+Rigoureusement, cela signifie que pour toutϵ> 0 arbitrairement petit, la probabilité de l’événement
+"la proportion de faces diffère de1/2 de plus deϵ" tend vers0 lorsque n tend vers∞.
+<<<PAGE>>>
+Convergence 9
+En effet. Soit (Xi)i∈N∗ la suite de v.a.rs définie par
+Xi =
+(
+1 si lei-ème lancer est face
+0 sinon
+Soit
+Sn =X1 +X2 +··· +Xn
+La v.a.r.Sn compte le nombre de faces obtenues lors desn lancers.
+Les v.a.rsXi sont i.i.d.,Xi∼B (1/2) et nous avons
+E(Xi) =E(X1) = 1
+2 et E(|Xi|2) =E((X1)2) = 1
+2
+Puisque E(|X1|2) = 1
+2 <∞, par la LfGN, il vient
+Sn
+n =Mn
+P
+−−−→1
+2
+Exemple 2. Considérons l’expérience aléatoire qui consiste à lancer un dé honnête à six face,n fois.
+Notons Xi le résultat dui-ème lancer. AlorsSn =X1 +X2 +··· +Xn est la somme des nombre de
+points obtenus lors desn lancers. Nous savons que
+E(X1) = 7/2
+Les v.a.rsXi sont i.i.d. avecE(|X1|2) =E((X1)2) = 91/6<∞. Ainsi par la LfGN,
+Sn
+n =Mn
+P
+−−−→7
+2
+7.2 Loi forte des grands nombres
+Théorème 7.2 (Loi forte des grands nombres (LFGN)[Kolmogorov-Khintchine])
+Soit (Xn)n≥1 est une suite de v.a.r.-i.i.d.. Alors
+Mn converge presque sûrement⇐⇒E(|X1|)<∞
+En cas de convergence :
+Mn
+p.s.
+−−−−→E(X1)
+Preuve.
+Application de la LFGN.
+Soit (Xn)n∈N∗ une suite de v.a.rs indépendantes
+1) Si pour toutn∈ N∗, Xn∼B (α), alorsE(X1) =α.
+Puisque E(|X1|) =α< ∞, la suite(Mn)n≥1 converge presque sûrement. Donc
+Mn
+p.s.
+−−−−→α
+2) Si pour toutn∈ N∗, Xn∼P (λ), alorsE(X1) =λ.
+Puisque E(|X1|) =λ< ∞, la suite(Mn)n≥1 converge presque sûrement. Donc
+Mn
+p.s.
+−−−−→λ
+3) Si pour toutn∈ N∗, Xn∼N (0, 1), alorsE(X1) = 0.
+Puisque
+E(|X1|) = 1√
+2π
+Z +∞
+−∞
+|x|e− 1
+2x2
+= 2√
+2π
+Z +∞
+0
+xe− 1
+2x2
+=
+r
+2
+π <∞
+la suite (Mn)n≥1 converge presque sûrement. Donc
+Mn
+p.s.
+−−−−→0
+<<<PAGE>>>
+10 Variables aléatoires réelles
+Remarque. Comme la convergence presque sûr implique la convergence en probabilité, nous avons,
+1) Si pour toutn∈ N∗, Xn∼B (α), alorsMn
+P
+−−−→α
+2) Si pour toutn∈ N∗, Xn∼P (λ), alorsMn
+P
+−−−→λ
+3) Si pour toutn∈ N∗, Xn∼N (0, 1), alorsMn
+P
+−−−→0
+8 Central Limit Theorem
+Étant donné une v.a.r.X d’espérance E(X) et d’écart typeσ(X), nous définissons sa standardisée
+comme la nouvelle v.a.r.
+X∗ = X−E(X)
+σ(X)
+X∗ est donc obtenue en soustrayant deX son espérance et en divisant par son écart-type. On dit
+qu’on centre et on réduit. Rappelons queX∗ a pour espérance0 et pour variance1.
+Rappelons aussi que siX suit une distribution normale, alors sa standardiséeX∗ suit une distribution
+normale standard et donc a pour espérance0 et variance1.
+Notons maintenantS∗
+n la v.a.r. standardisée deSn, i.e.
+S∗
+n = Sn−E(Sn)
+σ(Sn)
+Nous avons le théorème fondamental
+Théorème 8.1 (Central Limit Theorem (CLT))
+Soit (Xn)n≥1 une suite de v.a.r.-i.i.d.. SiE(|X1|2)<∞ et V (X1)> 0, alors
+• la suite de terme général
+S∗
+n = Sn−E(Sn)
+σ(Sn) = Sn−nE(X1)p
+nV (X1)
+converge en loi vers une v.a.r.Z∗ suivant une loi normale standardN (0, 1). i.e. :
+S∗
+n
+L
+−−−→Z∗
+• En notant Φ la fonction de répartition deZ∗, il vient
+lim
+n→+∞
+FS∗n(z) = Φ(z) , ∀z∈ R
+Preuve.
+Corollaire 8.2 Soit (Xn)n∈N∗ une suite de v.a.r-i.i.d.. SiE(|X1|2)<∞ et V (X1)> 0, alors
+M∗
+n
+d
+−−→Z∗ avec Z∗∼N (0, 1)
+Preuve. La v.a.r.M∗
+n, standardisée de,Mn vérifie
+M∗
+n = Mn−E(Mn)
+σ(Mn) = Sn−E(Sn)
+σ(Sn) =S∗
+n
+On peut par conséquent appliquer le CLT à la suite de v.a.rs de terme généraleM∗
+n.
+<<<PAGE>>>
+Convergence 11
+9 Application du Central Limit Theorem
+9.1 Préliminaires
+Notations:
+• Le symbol≃ est lu "est égal approximativement".
+• Le symbol≈ est lu "suit approximativement".
+Définition 9.1 (Échantillon aléatoire)
+Une suite finie(Xi)n
+i=1 de n v.a.r-i.i.d. est appelée échantillon aléatoire de taillen (ou n-échantillon
+aléatoire).
+Proposition 9.2 (Formule de transformation affine)
+Soit a∈ R∗,b∈ R. Alors
+X∼N (µ,σ 2)⇐⇒Y =aX +b∼N (aµ +b,a 2σ2)
+Preuve.
+9.2 Approximation normale standard pour la somme partielle standardisée
+et la moyenne arithmétique standardisée
+Proposition 9.3 Soit (Xi)n
+i=1 un n-échantillon aléatoire avec0<V (X1)<∞. Pourn assez grand
+FS∗n(z)≃ Φ(z) , ∀z∈ R
+et
+FM ∗n(z)≃ Φ(z) , ∀z∈ R
+Preuve.
+Interprétation. Pourn assez grand,
+S∗
+n et M∗
+n suivent approximativement une loi normale standard, i.e.
+S∗
+n≈N (0, 1) et M∗
+n≈N (0, 1)
+En pratique. En général, pourn≥ 30, on utilise les approximations ci-dessus.
+9.3 Approximation normale pour la moyenne arithmétique
+Proposition 9.4 Soit (Xi)n
+i=1 un n-échantillon aléatoire avec0<V (X1)<∞. Pourn assez grand
+Mn≈N (E(Mn),V (Mn))
+i.e
+Mn≈N
+
+E(X1),V (X1)
+n
+
+Interprétation. Pourn assez grand,
+Mn suit approximativement une loi normale de paramètresµ =E(X1) et σ2 =V (X1)/n.
+Preuve.
+Exemple. Soit (Xn)n∈N∗ une suite de v.a.r.-i.i.d. deBernoulli de paramètreα = 1/2.
+Utilisez le CLT pour déterminer une distribution approximative de la moyenne arithmétique des100
+premiers termes de la suite.
+Solution.
+<<<PAGE>>>
+12 Variables aléatoires réelles
+9.4 Approximation normale pour la somme partielle
+Proposition 9.5 Soit (Xi)n
+i=1 un n-échantillon aléatoire avec0 < V(X1) <∞. Alors pourn assez
+grand
+Sn≈N (E(Sn),V (Sn))
+i.e
+Sn≈N (nE(X1),nV (X1))
+Interprétation. Pourn assez grand,
+Sn suit approximativement une loi normale de paramètresµ =nE(X1) et σ2 =nV (X1).
+Preuve.
+Exemple. Une pièce de monnaie équilibrée est lancée400 fois. Utilisez le CLT pour calculer une
+approximation de la probabilité d’obtenir au moins205 faces.
+Solution.
+Algorithme. Comment appliquer le CLT.
+1) Écrire la v.a.r.X qui nous intéresse comme la somme den v.a.r.-i.i.d. Xi :
+X =X1 +··· +Xn
+2) Calculer E(X) et V (X) en utilisant les formules
+E(X) =nE(X1) et V (X) =nV (X1)
+3) pour n assez grand
+L(X)≃N (E(X),V (X))
+Ou bien, utiliser la standardisée deX.
+X∗ = X−E(X)p
+V (X)
+suit approximativement une loi normale standard.
+FX ∗≃ Φ
+Exemple. Uncaissierdebanquesertunparunlesclientsdeboutdanslafiled’attente. Supposonsque
+le temps de service (en minutes)Xi pour le clientia pour moyenneE(Xi) = 2minetV (Xi) = 1min2.
+Supposons que les délais de service pour les différents clients de la banque sont indépendants. SoitX
+le temps total que le caissier de banque passe à servir les50 clients. TrouvezP (90<X ≤ 110).
+Solution.
+<<<PAGE>>>
+Convergence 13
+9.5 Approximation normale pour la loi binomiale
+Définition 9.6 Soit α ∈ ]0, 1[. On dit qu’une v.a.r. discrète X suit une loi de Bernoulli de
+paramètreα, si et seulement si, sa fonction de masse de probabilité est
+pX(k) =
+
+
+
+1−α si k = 0
+α si k = 1
+0 sinon
+Notation:
+X∼B (α)
+• Une v.a.r. qui suit une loi deBernoulli est dite v.a.r. deBernoulli.
+Proposition 9.7 Soit α∈]0, 1[. Soit (Xi)n
+i=1 un n-échantillon aléatoire avecX1∼B (α). Alors
+Sn =
+nX
+i=1
+Xi∼B (n,α )
+Preuve.
+Proposition 9.8 Soit X∼B (n,α ). Alors pourn assez grand
+X≈N (nα,nα (1−α))
+Preuve.
+En pratique. Lorsque (n≥ 30 et nα≥ 5 et n(1−α)≥ 5) ou bien (nα≥ 15 et n(1−α)≥ 15), on
+utilise l’approximation
+B(n,α )≃N (nα,nα (1−α))
+Preuve. Pourn assez grand, le CLT nous permet d’approcher la loi deSn par une loi normale, i.e :
+B(n,α )≃N (nE(X1),nV (X1))
+Comme E(X1) =α et V (X1) =α(1−α)), il vient
+B(n,α )≃N (nα,nα (1−α))
+Exemple. Soitn∈ N∗ et c∈ R. SoitX une v.a.r. discrète telle que :X∼B (n, 0.6). On donne
+pX(0) = 10−39 et P (E[X]−c<X ≤E[X] +c) = 0.95
+1) a) Donner la f.m.p. de X.
+b) Calculer approximativement la valeur den.
+2) a) Par quelle loi peut-on approcher la loi deX ? Justifier.
+b) Calculer approximativement la valeur dec.
+Solution.
+<<<PAGE>>>
+14 Variables aléatoires réelles
+9.6 Approximation normale pour la loi de Poisson
+Définition 9.9 Soit λ∈ R∗+. On dit qu’une v.a.r.X suit une loi dePoisson de paramètreλ, si et
+seulement si, sa fonction de masse de probabilité est
+pX(k) =
+
+
+
+e−λλk
+k! , ∀k∈ N
+0 sinon
+où k! est le factoriel dek.
+Notation :
+X∼P (λ)
+• Une v.a.r. qui suit une loi dePoisson est dite v.a.r. dePoisson.
+Proposition 9.10 Soit α∈ R∗+. Soit (Xi)n
+i=1 un n-échantillon aléatoire avecX1∼P (α). Alors
+Sn =
+nX
+i=1
+Xi∼P (nα)
+Preuve.
+Proposition 9.11 Soit X∼P (λ). Alors, pourλ assez grand
+X≈N (λ,λ )
+Preuve.
+En pratique. Lorsqueλ≥ 15, on utilise l’approximation
+P(λ)≃N (λ,λ )
+En posantλ =nα, la valeur minimale den sera fixé par la valeur deα. On doit avoirn≥ 15/α.
+Preuve. Pourn assez grand, le CLT nous permet d’approcher la loi deSn par une loi normale, i.e :
+P(nα)≃N (nE(X1),nV (X1))
+Comme E(X1) =α et V (X1) =α, il vient
+P(nα)≃N (nα,nα )
+Exemple. Le nombre d’étudiantsX qui s’inscrivent à un cours de statistique est une variable aléatoire
+de Poisson de moyenne100. Le professeur responsable du cours a décidé que si le nombre d’inscrits
+est de120 ou plus, il enseignera le cours en deux sections distinctes, alors que si moins de120 étudiants
+s’inscrivent, il enseignera à tous les étudiants ensemble dans une seule section. Quelle est la probabilité
+que le professeur doive enseigner deux sections ?
+1) Donnez la solution exacte.
+2) Donnez une solution approximative.
+Solution.
+Résumé
+<<<PAGE>>>
+Convergence 15
+CLTen théorie.
+• FS∗
+n(z)−−−−−→
+n→+∞
+Φ(z) , ∀z∈ R
+• FM ∗n(z)−−−−−→
+n→+∞
+Φ(z) , ∀z∈ R
+CLTen pratique. Pourn assez grand
+• S∗
+n≈N (0, 1). i.e. FS∗n(z)≃ Φ(z) , ∀z∈ R.
+• M∗
+n≈N (0, 1). i.e. FM ∗n(z)≃ Φ(z) , ∀z∈ R.
+• Sn≈N (E(Sn),V (Sn)) =N (nE(X1),nV (X1)).
+• Mn≈N (E(Mn),V (Mn)) =N
+
+E(X1),V (X1)
+n
+
+.
+9.7 Correction de continuité pour les v.a.rs discrètes
+Lorsqu’onapprocheuneloidiscrèteparuneloicontinue, danslebutdefairedescalculsdeprobabilités,
+le résultat est parfois peu satisfaisant. Afin d’améliorer la précision des calculs, un ajustement, connu
+sous le nom de correction de continuité, est parfois nécessaire.
+Supposons queX soit une v.a.r. qui ne prend que des valeurs entières et telles que
+X≈N (E(X),V (X))
+Pour tenir compte du caractère discret deX, nous écrivons la probabilité P (X = k) (qui serait
+exactement 0 sous l’approximation par la loi normale) commeP (k− 1/2< X≤k + 1/2) (pour que
+X prenne ses valeurs dans un intervalle de longueur non nulle) et appliquer l’approximation normale
+à ce dernier. Ainsi
+• Pourk∈X(Ω), on obtient
+P (X =k) =P (k− 1/2<X ≤k + 1/2)
+≃ Φ
+ 
+k + 1/2−E(X)p
+V (X)
+!
+− Φ
+ 
+k− 1/2−E(X)p
+V (X)
+!
+• Pouri,j ∈X(Ω) aveci≤j, on obtient
+P (i≤X≤j) =P (i− 1/2<X ≤j + 1/2)
+≃ Φ
+ 
+j + 1/2−E(X)p
+V (X)
+!
+− Φ
+ 
+i− 1/2−E(X)p
+V (X)
+!
+Application à la loi binomiale.
+Si X∼B (n,α ), alors pourn assez grand,
+X≈N (E(X),V (X)) =N (nα,nα (1−α))
+et donc
+P (X =k) =P (k− 1/2<X ≤k + 1/2)
+≃ Φ
+ 
+k + 1/2−npp
+np(1−p)
+!
+− Φ
+ 
+k− 1/2−npp
+np(1−p)
+!
+Exemple. Supposons queX∼B (50, 0.4). CalculerP (X = 20).
+1) Donner la solution exacte.
+2) Donner une solution approchée.
+<<<PAGE>>>
+16 Variables aléatoires réelles
+Solution.
+Application à la loi dePoisson. SiX∼P (λ), alors pourλ assez grand,
+X≈N (E(X),V (X)) =N (λ,λ )
+et donc
+P (X =k) =P (k− 1/2<X ≤k + 1/2)
+≃ Φ
+k + 1/2−λ√
+λ
+
+− Φ
+k− 1/2−λ√
+λ
+
+Exemple. Supposons queX∼P (25). CalculesP (X = 20).
+1) Donner la solution exacte.
+2) Donner une solution approchée.
+Solution.
+Free Online Statistical Table:
+http://stattrek.com/online-calculator/binomial.aspx (loi binomiale)
+http://stattrek.com/online-calculator/normal.aspx (loi normale)

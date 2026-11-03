@@ -1,0 +1,266 @@
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 1 sur 6 
+ 
+Vérifier que la bibliothèque mpi est installée sur votre machine, sinon vous la téléchargez,  
+ 
+su (entrez le password root) 
+apt-get install mpich2 
+ 
+Gestion de l’environnement de MPI 
+ 
+Exercice 1 :  
+Ecrire un programme qui_suis_je.c qui affiche son rang parm i le les processus actifs  (sortie ci -
+dessous) 
+mpicc qui_suis_je.c –o qui_suis_je 
+mpirun –np 4 path/qui_je_suis 
+ 
+Je suis le processus 3 parmi 4 
+Je suis le processus 0 parmi 4 
+Je suis le processus 1 parmi 4 
+Je suis le processus 2 parmi 4 
+ 
+Exercice 2 : Ecrire un programme qui affiche un message par chacun des  processus, mais différent 
+selon qu’ils sont de rang pair ou impair 
+ 
+Exercice 3 :  
+Utiliser MPI_ANY_SOURCE et MPI_ANY_TAG pour écrire le programme suivant collecteur : 
+1. chaque processus envoi son rang au processus 0 
+2. le processus 0 reçoit le numéro et l'affiche 
+ 
+mpicc collecteur.c –o collecteur –std=c99 
+mpirun –np 7 path/collecteur 
+ 
+Exercice 4 : passage de tableau à un processus (source d’un code séquentiel en ligne) 
+Ecrire un programme qui initialise un vect eur de taille L et repartit ce tableau sur N processus. 
+Chaque processus va recevoir une tranche de ce tableau égale à la taille N divisée par le nombre de 
+processus.  
+1. Le remplissage du tableau initial va se faire par le processus maitre (TID=0). 
+2. Le proces sus maitre distribue équitablement des tranches de tableau à chacun des N 
+processus 
+3. Chaque processus calcule chaque élément de la tranche du tableau reçu selon une formule 
+donnée, puis calcule la somme des éléments de sa tranche et renvoie les résultats au  
+processus maitre 
+4. Le processus maitre collecte les données et affiche tout le tableau mis -à jour et la somme 
+globale 
+<<<PAGE>>>
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 2 sur 6 
+ 
+Exercice 5 : chaine biologique 
+Dans le cas d'une séquence d'ADN, le "texte" est une suite formée généralement de 4 lettres 
+correspondant aux quatre nucléotides formant l'enchainement de l'ADN : 
+A pour Adénine, 
+G pour Guanine, 
+T pour Thymine, 
+C pour Cytosine 
+De temps en temps on peut trouver d’autres lettres telles que (R et W) qu’on va remplacer par : 
+R peut être remplacé par A ou G 
+W peut être remplacé par A ou T 
+H peut être remplacé par A ou C 
+ 
+Ecrire un programme qui initialise un vecteur de taille L contenant une suite aléatoire de 
+nucléotides (A, G, T, C, R, W, H). Ce programme va repartir ce tableau sur N processus. 
+1. Le remplissage du tableau initial va se faire par le processus maitre (TID=0). 
+2. Le processus maitre distribue équitablement des tranches de tableau à chacun des N processus 
+3. Chaque processus parcourt sa tranche de tableau est fait les remplacements si nécessaire, puis 
+calcule le nombre des nucléotides A dans sa tranche et renvoie les résultats au processus maitre 
+(tranche modifiée et le nombre de A) 
+4. Le processus maitre collecte les données et affiche tout le tableau mis -à jour (uniquement les 
+lettre (A, G, T, C) et le nombre global de nucléotides A dans le tableau 
+ 
+Exercice 6 : différences finies 1D 
+La résolution numérique de l'équation de Laplace (ou équation de la chaleur).  
+Imaginons-nous une barre métallique illimitée à laquelle on applique une source de chaleur su r une 
+section d’un bord. La chaleur va se propager le long de la barre en suivant une dynamique décrite 
+par l'équation différentielle partielle suivante :  
+∂tρ(x,t) = ∇2ρ(x,t) 
+où “ρ” est la température. Si la température aux bords est maintenue constante, la distribution de 
+chaleur dans la barre tend vers un état stationnaire. Dans ce cas, la dérivée temporelle dans 
+l’équation précédente disparait, et on se retrouve avec l'équation de Laplace:  
+∇2ρ(x,t)=0 
+On se propose de résoudre l'équation de Laplace en s imulant l'équation de la chaleur. En 
+commençant par une distribution de chaleur identiquement nulle, on applique une température à un 
+des bords et fait évoluer l'équation de la chaleur jusqu'à ce que la dynamique se stabilise. Voici un 
+schéma numérique qui permet de résoudre l'équation de la chaleur itérativement :  
+ρ(i,t+1) = 0.25( ρ(i+1,t) + ρ(i-1,t) + 2 * ρ(i,t)) 
+<<<PAGE>>>
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 3 sur 6 
+ 
+L’indice “i” sert à numéroter les points de l'espace discret. On considère un maillage (ou grille de 
+calcul) composé de N + 1 points xi pour i = 0….N régulièrement espacés avec un pas Δx. Les points 
+xi = iΔx sont appelés les nœuds du maillage. 
+ 
+ 
+Questions 
+ 
+1. Ecrivez un programme en C ou en C++ qui résout le problème de l'équation de la chaleur à 
+une dimension, on choisit une discrétisation sur l’axe x de N et une discrétisation temporelle 
+de T. Les conditions aux limites  t ρ(0)=0 et ρ(L)=1  
+ 
+2. OpenMP 
+1. Parallélisez le programme par des directives OpenMP 
+ 
+3. MPI 
+1. Donnez l’algorithme parallèle, en supposant que le nombre de processus est égal au 
+nombre du subdivisions le long de la barre. 
+2. Donnez le code de cette parallélisation avec MPI.  
+3. Comparer et discuter la parallélisation OpenMP et MPI 
+Exercice 7 : Calcul de  par les rectangles centrés 
+Il s’agit de calculer  par intégration numérique sachant que : 
+ 
+Le calcul de la valeur de  par la méthode des rectangles. Soit 
+  la fonction à inté grer et 
+N et  h = 1 /n respectivement le nombr e de points et le pas de discré tisation de l’intervalle  
+d’intégration [0, 1]. Dans notre cas : 
+ 
+<<<PAGE>>>
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 4 sur 6 
+ 
+Le calcul de  est simple, il ne s’agit que d’une intégrale calculée par la méth ode des rectangles. Le 
+calcul est réalisé par une boucle sur un grand nombre d’éléments 
+Écrivez un algorithme permettant de calculer  de manière séquentielle en utilisant ces équations. 
+ 
+1. Écrivez un algorithme permettant de calculer  de manière séquentiel le en utilisant ces 
+équations. 
+2. Rédigez un programme séquentiel correspondant à votre algorithme. Vous comparerez le rapport 
+précision/vitesse en utilisant d’abord des doubles, puis des long double.  
+3. Modifiez votre programme afin de calculer  de manière parallélisée en utilisant la bibliothèque 
+MPI.  
+4. Estimez le gain en utilisant la loi d’Amdahl puis déterminez le gain réel obtenu en fonction du 
+nombre de processeurs utilisés.  
+ 
+Aide à la parallélisation 
+ 
+: 3,141592653589793238462643383279502884197169399375105820974944592307816406286 
+208998628034825342117067982148086513282306647093844609550582231725359408128481 
+117450284102701938521105559644622948954930381964428810975665933446128475648233 
+786783165271201909145648566923460348610454326648213393607260249141273724587006 
+606315588174881520920962829254091715364367892590360011330530548820466521384146 
+951941511609433057270365759591953092186117381932611793105118548074462379962749 
+567351885752724891227938183011949129833673362440656643086021394946395224737190 
+702179860943702770539217176293176752384674818467669405132000568127145263560827 
+785771342757789609173637178721468440901224953430146549585371050792279689258923 
+542019956112129021960864034418159813629774771309960518707211349999998372978049 
+951059731732816096318595024459455346908302642522308253344685035261931188171010 
+003137838752886587533208381420617177669147303598253490428755468731159562863882 
+353787593751957781857780532171226806613001927876611195909216420198938095257201 
+065485863278865936153381827968230301952035301852968995773622599413891249721775 
+283479131515574857242454150695950829533116861727855889075098381754637464939319 
+255060400927701671139009848824012858361603563707660104710181942955596198946767 
+837449448255379774726847104047534646208046684259069491293313677028989152104752 
+162056966024058038150193511253382430035587640247496473263914199272604269922796 
+782354781636009341721641219924586315030286182974555706749838505494588586926995 
+690927210797509302955321165344987202755960236480665499119881834797753566369807 
+426542527862551818417574672890977772793800081647060016145249192173217214772350 
+141441973568548161361157352552133475741849468438523323907394143334547762416862 
+518983569485562099219222184272550254256887671790494601653466804988627232791786 
+085784383827967976681454100953883786360950680064225125205117392984896084128488 
+626945604241965285022210661186306744278622039194945047123713786960956364371917 
+ 
+ 
+ 
+<<<PAGE>>>
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 5 sur 6 
+ 
+Exercice 8 : automate cellulaire 
+ 
+Soit une ligne de M cases blanches. Pour générer la ligne suivante, on définit des règles pour  
+déterminer la couleur d' une cellule suivante en fonction des couleurs de ses voisines sur la ligne  
+actuelle. On définit un état initial (première ligne). Si on affiche la ligne à chaque étape du  
+traitement, en fonction des règles et de l'état initial choisis, on obtient des motifs  plus ou moins  
+complexes, qui peuvent être répétitifs, présenter des régularités ou ne plus évoluer du tout. 
+ 
+Cas initial une seule case noir au milieu de la ligne 
+             
+             
+ 
+ 
+Règle : 
+ si une case est noire, elle reste noire. 
+ si elle est blanche, elle devient noire si elle possède au moins une voisine noire. 
+ 
+1. Représenter cette règle graphiquement, combien de cas possibles 
+2. Donnez le code séquentiel permettant de simuler ce phénomène, on arrête le processus lorsqu'il  
+ne reste plus de case blanche sur la ligne 
+3. Paralléliser ce code en utilisant l’API OpenMP 
+4. Donner le code MPI 
+a) Création de N taches, une par cellule 
+b) Les tâches i disposent de leurs valeurs état de l'automate condition initiale 
+c) Chaque tâche envoie sa donnée Xi(t) à ses voisins situés à gauche et à droite (attention aux 
+bords) 
+d) Point de RDV avec une barrière (une fois que toutes les taches ont reçu et envoyer les 
+données 
+e) correspondantes 
+f) Chaque tâche i utilise ces données pour calculer Xi(t+1) 
+g) Condition d’arrêt est atteinte stabilité des automates ou un certain nombre d'itérations on sort 
+le résultat sinon on reboucle sur la position 3 
+ 
+Ecrire 9 : Token Ring 
+Ecrire un programme qui permet de définir une topologie de réseau en anneau: 
+Le processus 0 envoi un message qui contient une valeur numérique au processus 1, le processus 1 
+envoie la valeur reçu au processus 2 et ains i de suite, jusqu'à réception de la valeur  par le dernier 
+processus. 
+ 
+Evolution 
+<<<PAGE>>>
+ 
+IINNGG22  ::  TTPP  PPRROOGG--PPAARR  ::  MMPPII  
+SSEERRIIEE  22 
+Rédigé par : équipe pédagogique du cours de prog parallèle. Ref : ING2-PROGPAR-TP-MPI 
+A l’intention de : Etudiants d’ING2  Créé le : 05/3/2024 
+ 
+ 
+Page 6 sur 6 
+ 
+Exercice 10 : Ecrire un programme qui fait  la même chose que l'exercice 2, mais cette fois ci le 
+message est un vecteur, et est envoyé en pipeline (découpé en plusieurs morceaux). 
+ 
+Exercice 11  : Ecrire un programme qui calcule racine carrée de la somme des carrés d’un vecteur 
+V de longueur  n 
+ 
+sommeCarre= (Sum(xi * xi))1/2 
+ 
+a- sur une communication point à point 
+b- sur une architecture en anneau 
+ 
+Exercice 1 é : Ecrire un programme qui calcule la distance entre deux point s dans l’espace à n 
+dimensions 
+ 
+Distance = (Sum(xi - yi)²)1/2 
+ 
+c- sur une communication point à point 
+d- sur une architecture en anneau 
+ 

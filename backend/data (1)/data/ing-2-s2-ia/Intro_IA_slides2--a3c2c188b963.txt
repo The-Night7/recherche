@@ -1,0 +1,374 @@
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+R´ esolution de probl` emes
+(Planification)
+Houcine Senoussi
+11 septembre 2023
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+D´ efinition d’un probl` eme
+Pour d´ efinir un probl` eme nous avons besoin des ´ el´ ements
+suivants :
+Un ensemble d’´ etatsS.
+Un ´ etat initiale0∈ S.
+Un ensemble d’´ etats finalsF⊂ S.
+Une fonction de transition T d´ efinie par un ensemble d’actions
+{Aij}.
+La notation Aij signifie que cette action permet de passer de
+l’´ etatei ` a l’´ etatej.
+Les diff´ erentes actions peuvent avoir des coˆ uts diff´ erents.
+R´ esoudrele probl` eme signifie trouver unesuite d’actions
+conduisant de l’´ etat initial ` a un ´ etat final.
+On peut exiger certaines propri´ et´ es d’une telle suite d’actions :
+par exemple avoir un coˆ ut minimal.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Un premier exemple
+Consid´ erons 3 pi` eces de monnaie dont les deux premi` eres
+montrent ’pile’ et l’autre ’face’. On veut que toutes les pi` eces
+montrent la mˆ eme face. Nous avons donc la d´ efinition
+suivante du probl` eme :
+Un ´ etat est un tripletC1C2C3 dont chaque ´ el´ ement repr´ esente
+le cot´ e montr´ e par une pi` ece. Autrement ditCi vaut P ou F .
+L’ensemble S contient donc 8 ´ el´ ements.
+L’´ etat initiale0 est ´ egal ` aPPF .
+L’ensemble des ´ etats finalsF est ´ egal ` a{PPP, FFF}.
+`A partir de chaque ´ etat, trois actions sont possibles :
+retourner chacune des pi` eces.
+Les ´ etats et les actions sont r´ esum´ es dans le graphe ci-dessous.
+Ce probl` eme peut ˆ etre g´ en´ eralis´ e au cas den pi` eces.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Probl` eme des trois pi` eces
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+R´ esolution d’un probl` eme
+R´ esoudre un probl` eme (trouver une suite d’actions allant de
+l’´ etat initial ` a un ´ etat final) se fait viaune recherche dans
+l’espace des ´ etats.
+Cela signifie qu’on part de l’´ etat initial :
+constater que ce n’est pas un ´ etat final.
+g´ en´ ererd’autres ´ etats obtenus ` a l’aide des actions qui
+conviennent.
+Pour chacun de ces ´ etats refaire la mˆ eme chose :
+Est-ce un ´ etat final ?
+Si oui, s’arrˆ eter.
+Si non, g´ en´ erer de nouveaux ´ etats et continuer.
+L’ordre dans lequel on consid` ere les ´ etats, est d´ efinie par une
+strat´ egie de recherche.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+R´ esolution d’un probl` eme-2
+Ce processus revient ` a construire un arbre, appel´ earbre de
+recherche d´ efini comme suit :
+La racine de l’arbre est l’´ etat initial e0.
+Une feuille correspond ` a un ´ etat qui n’a pas de successeurs :
+Soit parce que l’algorithme ne l’a pas encore consid´ er´ e.
+Soit parce que l’algorithme l’a consid´ er´ e mais qu’aucun autre
+noeud n’a ´ et´ e g´ en´ er´ e ` a partir de lui.
+Pour chaque noeud-´ etatei , les successeurs sont ceux atteints
+par une action ` a partir deei .
+A chaque ´ etape, l’algorithme choisit une feuille et g´ en` ere de
+nouveaux ` a partir d’elle, s’il y a lieu.
+Exercice 1 : Montrer les premi` eres ´ etapes de la construction
+l’arbre de recherche pour le probl` eme des trois pi` eces.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Algorithme de construction de l’arbre de recherche
+Initialiser l’arbre en utilisant l’´ etat initial en tant que racine.
+Faire
+Si aucune feuille n’a de successeurs sortir en Echec.
+Choisir une feuille selon la strat´ egie de recherche.
+Si le noeud est un ´ etat final Alors le retourner ( Succ` es).
+Sinon d´ evelopper l’arbre en ajoutant les successeurs de ce
+noeud.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Exercice 2
+Appliquer ce qui pr´ ec` ede pour mod´ eliser les deux probl` emes
+suivants :
+1 La loup, la ch` evre et le chou.
+2 Les missionnaires et les cannibales.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche aveugle
+Plusieurs strat´ egies existent pour parcourir l’arbre de
+recherche.
+Les deux principales sont :
+la recherche en largeur d’abord.
+On visite d’abord la racine, ensuite tous ses successeurs,
+ensuite les successeurs de ses successeurs, ...
+Autrement dit : les neouds sont visit´ es par ”niveau”.
+la recherche en profondeur d’abord.
+Apr` es un noeud, on visite un de ses fils (par exemple le plus ` a
+gauche) avant de passer aux autres.
+Il en r´ esulte, qu’on pousse aussi loin que possible une branche
+et on ne la quitte que lorsqu’elle s’arrˆ ete.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche aveugle-2
+Ce type de recherche est qualifi´ e d’aveugle car il n’utilise
+aucune information concernant le probl` eme et visite tous les
+noeuds de l’arbre :
+On visite donc les mˆ emes ´ etats plusieurs fois.
+Il y a des boucles, des retours en arri` ere,···
+Il en r´ esulte des complexit´ es spatiales et temporelles tr` es
+´ elev´ ees (voir exercice ci-dessous).
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche guid´ ee
+Compte tenu des faiblesses de la recherche aveugle que nous
+avons soulign´ ees, nous avons besoin d’un nouveau type de
+recherche qui utilise les informations disponibles au sujet des
+´ etats (la recherche est diteinform´ eeou guid´ ee).
+Pour cela, nous associons ` a chaque ´ etate une valeur h(e) qui
+caract´ erise saqualit´ e.
+La qualit´ e d’un ´ etat traduit sa proximit´ e avec un ´ etat final.
+Notre recherche utilisera cette information pour privil´ egier les
+”bons” ´ etats et ´ eviter les autres.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche guid´ ee-2
+La qualit´ e des ´ etats est donc d´ efinie par une fonction :
+h : S−→ N
+Une telle fonction s’appelle une heuristique.
+Puisque une heuristique doit caract´ eriser la proximit´ e d’un
+´ etat final, elle doit v´ erifier la propri´ et´ e :
+Plus l’´ etate est proche d’un ´ etat final, plush(e) est faible.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche guid´ ee-3
+Avant d’´ etudier les propri´ et´ es des heuristiques, nous allons
+introduire quelques notations en rapport avec le coˆ ut des
+actions Aij.
+k(ei , ej) est le coˆ ut de l’action la moins ch` ere conduisant deei
+` aej (ej est un successeur de ei ).
+k∗(ei , ej) est le coˆ ut de la s´ equence d’actions la moins ch` ere
+conduisant de ei ` aej.
+g(ei ) = k∗(e0, ei ) est le coˆ ut de la s´ equence d’actions la moins
+ch` ere conduisant dee0 ` aei .
+h∗(ei ) = mink∗(ei , ef ) avec ef∈ F , est le coˆ ut de la s´ equence
+d’actions la moins ch` ere conduisant deei ` a un ´ etat final.
+f (ei ) = g(ei ) + h∗(ei ) est le coˆ ut de la s´ equence la moins
+ch` ere allant de l’´ etat initial ` a un ´ etat final en passant parei .
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Recherche guid´ ee-4
+Les principales propri´ et´ es d’une ’bonne’ heuristique sont les
+suivantes :
+Elle est coincidente si elle reconna ˆ ıt les ´ etats finals.
+Autrement dit :
+∀ ef∈ F h (ef ) = 0
+Elle est consistante si pour toute paire d’´ etatsei , ej nous
+avons :
+h(ei)− h(ej)≤ k∗(ei , ej).
+Elle est monotone si pour toute paire d’´ etatsei , ej telle que ej
+est un successeur de ei , nous avons :
+h(ei)− h(ej)≤ k(ei , ej).
+Elle est minorante si elle sous estime syst´ ematiquement le
+coˆ ut du chemin restant ` a parcourir :
+h(ei)≤ h∗(ei).
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Exercice 3
+D´ emontrez les deux propri´ et´ es suivantes des heuristiques :
+Une heuristique h est monotone si et seulement si elle est
+consistante.
+Si une heuristique est monotone et coincidente alors elle est
+minorante.
+Etudier, dans le cas du jeux du taquin les propri´ et´ es des deux
+heuristiques suivantes :
+h1(ei ) = nombre de cases pleines mal plac´ ees par rapport ` a
+l’objectif.
+h1(ei ) = somme des distances entre les cases pleines mal
+plac´ ees et leurs positions dans l’objectif.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Algorithme A∗
+Id´ ee principale :`A chaque ´ etape de la recherche, cet
+algorithme privil´ egie l’´ etat (le noeud de l’arbre de recherche)
+qui minimise la grandeur suivante :
+f (e) = g(e) + h(e).
+Rappelons que :
+g(e) repr´ esente le coˆ ut pour aller de l’´ etat initiale0 ` a l’´ etate.
+h(e) repr´ esente une estimation du coˆ ut restant pour atteindre
+un ´ etat final.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Algorithme A∗-2
+Structure de donn´ ees : nous allons utiliser deux files appel´ ees
+Actif et Inacfif dont les rˆ oles respectifs sont les suivants :
+Actif : Dans laquelle nous mettons les ´ etats ’candidats’ ` a ˆ etre
+consid´ er´ es par l’algorithme. En particulier le premier ´ el´ ement
+de la file est celui qui a la meilleure valeur de f , donc celui qui
+sera consid´ er´ e en premier par l’algorithme.
+Inactif : contenant les ´ etats d´ ej` a utilis´ es.
+Les op´ erations sur les files sont les suivantes :
+FileVide : retourne un bool´ een si la file est vide.
+Ajouter : ajoute un ´ el´ ement ` a la file.
+Supprimer : supprime le premier ´ el´ ement de la file.
+AjouterTrier : ajoute un ´ el´ ement et trie l’ensemble des
+´ el´ ements (´ etats) de la file de mani` ere ` a mettre en premi` ere
+position celui qui a la meilleure valeur de f .
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Algorithme A∗-3
+D´ eclaration des variables et initialisation :
+e, e′ : Etat.
+Actif, Inactif : File.
+Actif = [e0].
+Inactif = [].
+g(e0) = 0.
+e = e0.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Algorithme A∗-3
+Tantque (FileVide(Actif )==Faux) ET ( e /∈ F ) Faire
+supprimer(Actif ).
+ajouter(Inactif, e).
+PourTout e′∈ Succ(e) Faire
+Si ((e′ /∈ Actif ) ET ( e′ /∈ Inactif )) OU ( g(e′) > g(e) +
+k(e, e′) Alors
+g(e′) = g(e) + k(e, e′).
+f (e′) = g(e′) + h(e′).
+p` ere(e′) = e.
+AjouterTrier(Actif, e′).
+FinSi
+FinPour
+Si (FileVide(Actif)==Faux) Alors
+e = premier(Actif ).
+FinSi
+FinTantque
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Exercice 4
+Appliquez l’algorithme au probl` eme du Taquin.
+Houcine Senoussi R´ esolution de probl` emes (Planification)
+<<<PAGE>>>
+Formulation d’un probl` eme
+R´ esolution d’un probl` eme
+Recherche aveugle
+Recherche guid´ ee
+Algorithme A∗
+Conclusion
+Conclusion
+Un premier exemple classique de probl` eme d’IA : la planification.
+Houcine Senoussi R´ esolution de probl` emes (Planification)

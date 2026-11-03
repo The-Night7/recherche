@@ -1,0 +1,955 @@
+TD1 1 : Normes, distances et boules
+Exercice 1 : Normes deRn
+Soit E = Rn. Pour∀x = (x1,...,x n)∈ Rn, on pose
+‖x‖1 =
+n∑
+i=1
+|xi| ‖ x‖2 =
+vuu√
+n∑
+i=1
+x2
+i ‖x‖∞ = max
+1≤i≤n
+(|xi|)
+1. Démontrer que‖·‖1,‖·‖2 et‖·‖∞ sont des normes.
+Indication :pour‖·‖2, on utilisera l’inégalité de Schwarz admise ici
+|⟨u|v⟩|≤‖ u‖2‖v‖2
+où⟨u|v⟩ =∑n
+i=1uivi avecu = (u1,...,u n) et v = (v1,...,v n).
+2. Démontrer que pour∀a,b≥ 0 :
+√
+a +b≤√a +
+√
+b.
+3. Généralisation : montrer que
+∀a1,...,a n≥ 0,
+vuu√
+n∑
+i=1
+ai≤
+n∑
+i=1
+√ai
+4. En déduire que pour∀x,‖x‖2≤‖x‖1
+5. Démontrer que
+∀x,‖x‖∞≤‖x‖2≤‖x‖1≤n‖x‖∞
+6. Les 3 normes sont-elles équivalentes?
+7. Représenter, pour R2, la boule fermée unitéB
+(
+a = (0, 0),r = 1
+)
+pour chacune de ces normes.
+1. Les sujets de TD sont en grande partie issus des TD de Jean-Michel Masereel. De
+plus les TD de M. Masereel contiennent un plus grand nombre d’exercices, n’hésitez donc
+pas à vous en procurer les énoncés.
+1
+<<<PAGE>>>
+Exercice 2 : Norme surRn
+Soit E = Rn. Soita1, a2,..., an∈ R. SoitN une application deE−→ R
+déﬁnit par
+∀x = (x1,...,x n)∈ Rn, N(x) =a1|x1| +a2|x2| +... +an|xn|
+Donner une condition nécessaire et suﬃsante sur lesak pour queN soit une
+norme sur Rn?
+Exercice 3 : Norme sur l’espace des matrices carrées
+Soit a∈M n(R). Pour∀a, on déﬁnit les deux applications
+N1 :Mn(R)−→ R
+a−→N1(a) = max
+1≤i≤n
+( n∑
+j=1
+|aij|
+)
+et
+N2 :Mn(R)−→ R
+a−→N2(a) =
+√
+Tr(taa)
+1. Montrer que ces deux applications sont des normes.
+2. Sont-elles équivalentes?
+Exercice 4 : Norme sur l’espace des fonctions continues sur
+[0, 1]
+Soit E l’ensemble des fonctions continues sur[0, 1]−→ R. On déﬁnit les
+applications suivantes∀f∈E :
+‖f‖1 =
+∫ 1
+0
+|f(x)|dx ‖f‖2 =
+√∫ 1
+0
+f 2(x)dx ‖f‖∞ = sup
+x∈[0,1]
+(|f(x)|)
+1. Montrer que‖·‖1 et‖·‖∞ sont des normes (on admettra que‖·‖2 est
+bien une norme).
+2. Ces trois normes sont-elles équivalentes?
+3. Déduire queE n’est pas un espace de dimension ﬁnie.
+2
+<<<PAGE>>>
+Exercice 5 : Norme surR2
+Soienta,b> 0. On pose pour∀X = (x,y )∈ R2
+N(X) =N(x,y ) =
+√
+a2x2 +b2y2
+1. Montrer queN(x,y ) = N(X), avecX = (x,y )∈ R2, est une norme
+sur R2. (utiliser l’inégalité de Schwarz donnée dans l’exercice 1 de ce
+TD)
+2. Dessiner la boule fermée unitéB
+(
+a = (0, 0),r = 1
+)
+(cette question
+est à traiter si la notion de boule a déjà été déﬁnie en cours).
+3. Trouver le plus grand réelq et le plus petit réelp tels que
+q‖·‖1≤N≤p‖·‖2
+Exercice 6 : Norme sur l’espace des polynômes
+Soit n un entier naturel non nul etE = Rn[X] (espace des polynômes de
+degré n). On déﬁnit
+‖·‖ : E−→ R
+P−→‖P‖ = sup
+k∈J0,nK
+|P (k)(0)|
+où P (k) est la dérivéekème deP, et
+N : E−→ R
+P−→N(P ) = sup
+x∈R
+|P (x)|
+1 +|x|n
+1. Montrer queN est bien déﬁnie.
+2. Montrer que ces deux applications sont des normes.
+3. Montrer qu’il existeC >0 tel que
+∀P∈E,‖P‖≤ CN (p)
+Exercice 7 : "3ème inégalité triangulaire"
+Soit (E,‖·‖) un espace vectoriel normé. Montrer que pour∀x,y∈E, on a
+‖x‖ +‖y‖≤‖ x−y‖ +‖x +y‖
+3
+<<<PAGE>>>
+Exercice 8 : Autre norme
+Soit l’applicationN de R2−→ R qui à tout (x,y )∈ R2 associe N(x,y ) =
+4|x| +|y|.
+1. N est-elle une norme?
+2. Dessiner la boule fermée de centre(0, 0) et de rayon1. Quelles sont
+ses symétries?
+3. En toute généralité quelle est la symétrie d’une boule fermée.
+Exercice 9 : A propos des distances
+Dans cet exercice on déﬁnit des applicationsdi de R× R−→ R. Dans la
+suite x,y∈ R.
+d1 : ( x,y )−→d1(x,y ) = (x−y)2
+d2 : ( x,y )−→d2(x,y ) =
+√
+|x−y|
+d3 : ( x,y )−→d3(x,y ) =|x2−y2|
+d4 : ( x,y )−→d4(x,y ) =|x− 2y|
+d5 : ( x,y )−→d5(x,y ) = |x−y|
+1 +|x−y|
+d6 : ( x,y )−→d6(x,y ) =|x3−y3|
+Ces applications sont-elles des distances? Sont-elles associées à des normes?
+4
+<<<PAGE>>>
+TD2 : Ouverts et fermés
+Exercice 1 : Normes équivalentes et notions d’ouvert et fermé
+Soit E un espace vectoriel muni de deux normes équivalentes‖·‖1 et‖·‖2.
+1. Soit B‖·‖1(a,r ) ={x∈ E/‖x−a‖1 < r}. Montrer qu’il exister′ tel
+que
+B‖·‖1(a,r )⊂B‖·‖2(a,r′)
+où B‖·‖2(a,r′) ={x∈E/‖x−a‖2<r′}.
+2. Soit B‖·‖2(a,r′′) ={x∈ E/‖x−a‖2 < r′′}. Montrer qu’il exister′′′
+tel que
+B‖·‖2(a,r′′)⊂B‖·‖1(a,r′′′)
+où B‖·‖1(a,r′′′) ={x∈E/‖x−a‖1<r′′′}.
+3. En déduire qu’un ouvert de(E,‖·‖1) est un ouvert de (E,‖·‖2) et
+réciproquement.
+4. Même question pour les fermées.
+Exercice 2 :
+Soit (E,‖·‖) un espace vectoriel normé.
+1. Montrer qu’une boule fermée n’est pas un ouvert.
+2. Montrer qu’une boule ouverte n’est pas un fermé.
+5
+<<<PAGE>>>
+Exercice 3 :
+Déterminer si les ensembles suivants sont des ouverts, des fermés, les deux
+ou aucun des deux.
+1. A = [0, 1[
+2. C = [0, +∞[
+3. D =]0, 1[∪{2}
+4. E = N
+5. F ={(x,y )∈ R2/ x2 +y2< 4}
+6. G ={(x,y )∈ R2/ x2 +y2≤ 2}
+7. H ={(x,y )∈ R2/ 0<|x− 1|< 1}
+8. I ={(x,y )∈ R2/|x|< 1 et|y|≤ 1}
+9. J ={(x,y )∈ R2/ 0≤y≤x et 0≤x≤ 3}
+Exercice 4 : Ensemble ouvert et majoré
+Soit A un ouvert majoré de (R,|·| ). Montrer queA ne contient pas son
+majorant.
+Exercice 5 : Somme d’ensembles
+Soit A⊂ R et B⊂ R. On introduit l’ensemble
+A +B ={x∈ R /∃(a,b )∈A×B, x =a +b}
+1. Montrer que siA ou B est ouvert alorsA +B est ouvert.
+2. La réciproque est-elle vraie?
+Exercice 6 : Produit cartésien
+Soit (E,‖·‖E)et (F,‖·‖F )deuxespacesvectorielsnormés.Onnote ‖·‖E×F
+l’application déﬁnie surE×F par
+‖(x,y )‖E×F = max (‖x‖E,‖y‖F )
+1. Montrer que‖·‖E×F est une norme.
+2. Montrer que siA⊂E et B⊂F sont des ouverts alorsA×B est un
+ouvert.
+3. Montrer que siA⊂E et B⊂F sont des fermés alorsA×B est un
+fermé.
+6
+<<<PAGE>>>
+TD3 : Intérieur et Adhérence
+Exercice 1 :
+Soit (E,‖·‖) un espace vectoriel normé. SoientA et B deux ensembles tels
+que
+A⊂B⊂E et B fermé
+1. Montrer alors que pour∀x∈CEB
+∃r> 0 / B(x,r )∩A =∅
+2. Peut-on alors avoirA =B et si oui sous quelles conditions?
+Exercice 2 :
+Soit (E,‖·‖) un espace vectoriel normé. SoientA et B deux ensembles tels
+que
+B⊂A⊂E et B ouvert
+1. Montrer alors que pour∀x∈B
+∃r> 0 / B(x,r )⊂A
+2. Peut-on alors avoir
+◦
+A =B et si oui sous quelles conditions?
+Exercice 3 :
+Soit (E,‖·‖) un espace vectoriel normé. Déterminer l’intérieur et l’adhérent
+de
+1. l’ensembleA qui est la boule fermée de rayonr et de centrea
+2. l’ensembleA qui est la boule ouverte de rayonr et de centrea
+7
+<<<PAGE>>>
+Exercice 4 :
+Soit (E,‖·‖) un espace vectoriel normé. SoientA etB deux ensembles deE.
+Montrer que
+1. A∪B =A∪B
+2. A∩B⊂A∩B
+3.
+˚⌢
+A∩B =
+◦
+A∩
+◦
+B
+4.
+◦
+A∪
+◦
+B⊂
+˚⌢
+A∪B
+Exercice 5 :
+Déterminer l’adhérent et l’intérieur des ensembles donnés dans l’exercice 3
+du TD2.
+8
+<<<PAGE>>>
+TD4 : Suites
+Exercice 1 :
+Donner un exemple de suite complexezn =xn +iyn n’ayant aucune valeur
+d’adhérence dansC mais telle que les suitexn et yn en aient dansR.
+Exercice 2 :
+Soit un et vn deux suites réelles telles queun−vn converge vers0. Montrer
+que un et vn ont les mêmes valeurs d’adhérences.
+Exercice 3 :
+Donner des exemples de suites ayant :
+1. aucune valeur d’adhérence.
+2. une unique valeur d’adhérence.
+3. deux valeurs d’adhérence.
+4. trois valeurs d’adhérence.
+5. une unique valeur d’adhérence mais la suite ne converge pas.
+Exercice 4 :
+Déterminer si les ensembles suivants sont des ouverts, des fermés, les deux
+ou aucun des deux. Déterminer également leur adhérence.
+1. A = [0, 1[
+2. C = [0, +∞[
+3. D =]0, 1[∪{2}
+4. E = N
+5. H ={(x,y )∈ R2/ 0<|x− 1|< 1} (que fermé)
+6. I ={(x,y )∈ R2/|x|< 1 et|y|≤ 1}
+7. J ={(x,y )∈ R2/ 0≤y≤x et 0≤x≤ 3} (que ouvert)
+9
+<<<PAGE>>>
+TD5 : Limites et Continuités
+Exercice 1 :
+1. Montrer que six et y sont des réels alors2|xy|≤ x2 +y2
+2. Soit f l’application deA = R2\{(0, 0)} dans R déﬁnie par
+f(x,y ) = 3x2 +xy√
+x2 +y2
+(a) Montrer que pour tout(x,y )∈A, on a :
+|f(x,y )|≤ 7
+2‖(x,y )‖2 avec 7
+2‖(x,y )‖2 =
+√
+x2 +y2
+(b) En déduire quef admet une limite en(0, 0).
+Exercice 2 :
+Etudier les limites en(0, 0) des fonctions suivantes
+1. f(x,y ) = (x +y) sin( 1
+x2+y2 )
+2. f(x,y ) = 1
+x−y
+3. f(x,y ) = x2−y2
+x2+y2
+4. f(x,y ) = x2+xy+y2
+x2+y2
+5. f(x,y ) = x2y
+x2+y2
+6. f(x,y ) = x2y2
+x2+y2
+7. f(x,y ) = x3
+y
+8. f(x,y ) = x+3y
+x2−y2
+9. f(x,y ) = x2+y2
+|x|+|y|
+10. f(x,y ) = xy√
+x2+y2
+11. f(x,y ) = sin(xy)√
+x2+y2
+12. f(x,y ) =xy
+13. f(x,y ) =
+(
+x2+y2−1
+x sin(x) , sin(x2)+sin(y2)√
+x2+y2
+)
+10
+<<<PAGE>>>
+Exercice 3 :
+Soit f la fonction déﬁnie surR2 par
+f(x,y ) =
+{ 1
+2x2 +y2− 1 pour x2 +y2> 1
+− 1
+2x2 pour x2 +y2≤ 1
+Montrer quef est continue.
+Exercice 4 :
+1. On considère la fonctionf1 déﬁnie par
+f1 : R× R∗−→ R
+(x,y )−→ 1 +x2 +y2
+y sin(y)
+Déterminer sif1 admet une limite en(0, 0).
+2. On noteD ={(x,y )∈ R2/x2−y2⁄= 0}. On considère la fonction
+f2 : D−→ R
+(x,y )−→ 1 +x +y
+x2−y2
+Déterminer sif2 admet une limite en(0, 0).
+Exercice 5 :
+La fonction suivante est-elle continue?
+f(x,y ) =
+{ 2x2 +y2− 1 pour x2 +y2> 1
+x2 pour x2 +y2≤ 1
+Exercice 6 :
+On considère la fonctionf déﬁnie par
+f(x,y ) =
+{ |y|
+x2e−|y|/x2
+pour x⁄= 0
+0 pour x = 0
+1. Soit λ un réel etAλ ={(x,λx )/x∈ R}. On notefλ la restriction de
+f à Aλ. Calculer la limite defλ en (0, 0).
+2. SoitB ={(x,x 2)/x∈ R}. On noteg la restriction def àB. Calculer
+la limite deg en (0, 0).
+3. Que peut-on dire de la continuité def en (0, 0).
+11
+<<<PAGE>>>
+Exercice 7 :
+Pour chacune des fonctions, étudier sa continuité en(0, 0).
+12
+<<<PAGE>>>
+TD6− 7 : Limites, Continuités et Compacité
+Exercice 1 :
+Les fonctions suivantes sont-elles prolongeables en(0, 0) sur leur domaine de
+déﬁnitionD?
+1. D ={(x,y )∈ R2/xy >0}, f(x,y ) = 1−cos(√xy)
+y
+2. D ={(x,y )∈ R2/x⁄=y}, f(x,y ) = cos(x)−cos(y)
+x−y
+3. D ={(x,y )∈ R2/x⁄=±y}, f(x,y ) = sin(x2)+sin(y2)
+x2−y2
+4. D = R2\{(0, 0)}, f(x,y ) = xy2
+x2+y4
+Exercice 2 :
+Etudier les limites en(0, 0) des fonctions suivantes
+1. f(x,y ) = x+2y
+x2−y2
+2. f(x,y ) = xy
+x−y
+Exercice 3 :
+Soit (E,||·|| ) un espace vectoriel normé. Montrer que l’application||·|| est
+1-lipschitzienne de (E,||·|| ) dans (R,|·| ).
+Exercice 4 :
+Soit E =C0([0, 1], R) muni de||·|| 1 déﬁnie par
+||f||1 =
+∫ 1
+0
+|f(t)|dt
+Etudier la continuité de la forme linéaireφ de E dans R déﬁnie par
+φ(f) =
+∫ 1
+0
+tf(t)dt
+13
+<<<PAGE>>>
+Exercice 5 :
+1. Rappeler la déﬁnition de la continuité uniforme.
+2. Quelle est la négation de la continuité uniforme.
+3. Soit a,b deux réels positifs tels quea < b. Montrer que la fonction
+f(x) =x2 est uniformément continue sur[a,b ].
+4. Montrer que la fonctionf(x) = x2 n’est pas uniformément continue
+sur R.
+5. Montrer que la fonctionf(x) = 1/x n’est pas uniformément continue
+sur ]0, 1].
+6. Montrer que la fonction ln(x) n’est pas uniformément continue sur
+R+.
+Exercice 6 :
+Soit (E,‖·‖) un espace vectoriel normé. Soit l’applicationf :E−→E déﬁnie
+par
+f(x) = x
+max(1,‖x‖)
+1. Dessiner le graphe de f pour(R,|·| ).
+2. Montrer quef est bornée surE.
+3. Montrer quef est continue surE.
+4. Montrer quef est 2-lipschitzienne surE.
+Exercice 7 :
+Pour chaque sous-ensemble suivant, indiquer si il s’agit de compact ou non.
+1. A1 ={(x,y )∈ R2/x2 +y4 = 1}
+2. A2 ={(x,y )∈ R2/x2 +y5 = 1}
+3. A3 ={(x,y )∈ R2/x2 +xy +y2≤ 1}
+4. A4 ={(x,y )∈ R2/x2 + 8xy +y2≤ 1}
+5. A5 ={(x,y )∈ R2/y2 =x(1− 2x)}
+14
+<<<PAGE>>>
+Exercice 8 :
+Soit K un compact non vide d’un espace vectoriel norméE etf :K−→K
+telle que
+∀(x,y )∈K2, x⁄=y =⇒||f(x)−f(y)||<||x−y||
+1. Montrer que f possède au plus un point ﬁxe.
+2. Justiﬁer qu’il existec∈K tel que
+∀x∈K, ||f(x)−x||≥|| f(c)−c||
+3. En déduire quef admet un point ﬁxe.
+15
+<<<PAGE>>>
+TD8 : Fonctions de plusieurs variables
+Exercice 1 :
+Calculer les dérivées partielles premières des fonctions suivantes :
+1. f(x,y ) =ex cos(y)
+2. f(x,y ) = (x2 +y2) cos(xy)
+3. f(x,y ) =
+√
+1 +x2y2
+Exercice 2 : Calculs bêtes et méchants
+Soit un gaz de molécules. Ce gaz, de volumeV, de températureT et soumis
+à la pressionP, contientn moles.
+1. Oncommence pardécrirece gazpar laloi desgaz parfait: PV =nRT
+où R est la constance des gaz parfaits. Montrer alors que
+∂P
+∂V
+∂V
+∂T
+∂T
+∂P =−1 T∂P
+∂T
+∂V
+∂T =nR
+2. Une meilleur approximation des gaz a été proposé à la ﬁn du 19ième
+siècle par Van Der Waals
+(
+P + n2a
+V 2
+)(
+V−nb
+)
+=nRT
+où a, bsont deux constantes positives. Calculer∂T
+∂P et ∂P
+∂V .
+Exercice 3 :
+Calculer toutes les dérivées partielles d’ordre 1 sans se préoccuper de leur
+domaine de déﬁnition
+16
+<<<PAGE>>>
+Exercice 4 :
+Soientf etg deuxfonctionsd’unevariableréeleàvaleursdans Retdérivables
+sur R. Pour chacune des fonctions de deux variablesFi suivantes, déterminer
+les dérivées partielles en fonction des dérivéesf′ et g′
+1. F1(x,y ) =f(x) +g(y)
+2. F2(x,y ) =f(x)g(y)
+3. F3(x,y ) = f (x)
+g(y)
+Exercice 5 :
+Soit f la fonction deR2 dans R déﬁnie par
+f(x,y ) =
+{ xy
+|x|+|y|, si (x,y )⁄= (0, 0).
+0, sinon.
+(1)
+1. Justiﬁer quef est continue surR
+2. Etudier les dérivées partielles def en (0, 0).
+Exercice 6 :
+Calculer les dérivées partielles def(x,y ) = min(x,y 2) avecx,y≥ 0.
+Exercice 7 :
+Etudier la continuité des fonctions suivantes ainsi que l’existence et la conti-
+nuité de leurs dérivées partielles premières
+17
+<<<PAGE>>>
+1.
+f1(x,y ) =
+{ (x+y)2
+x2+y2, si (x,y )⁄= (0, 0).
+0, sinon.
+(2)
+2.
+f2(x,y ) =
+
+
+
+(x2 +y2) sin 1√
+x2+y2, si (x,y )⁄= (0, 0).
+0, sinon.
+(3)
+3.
+f3(x,y ) =
+{x siny−y sinx
+x2+y2 , si (x,y )⁄= (0, 0).
+0, sinon.
+(4)
+Exercice 8 : Interprétation de la diﬀérentielle
+Le but de cet exercice est de montrer le lien qui existe entre la diﬀérentielle
+d’une fonction et ses variations. Pour cela, nous allons introduire le calcul
+d’incertitude.
+On considère une résistanceR traversée par le courant électriqueI. On sait
+que la puissance dissipée sous forme de chaleurEJ par cette résistance est
+donnée par
+EJ =RI 2
+1. Considérons tout d’abord que l’on connait parfaitement la résistance
+R mais que l’intensité n’est connue qu’à une incertitude près∆I (où
+∆I est considéré comme très petit devantI). Déterminer l’incertitude
+∆EJ surEJ. Relier cela à la diﬀérentielle d’une fonction deR−→ R.
+2. On considère maintenant que l’on a également une incertitude∆R sur
+la résistance en plus de l’incertitude∆I sur l’intensitéI. Déterminer
+l’incertitude surEJ.
+Exercice 9 :
+1. Soit a un réel non nul. Etudier la diﬀérentiabilité au point(a, 0) de
+la fonctionf déﬁnie surR2\{(0, 0)} par
+f(x,y ) = x2y
+x2 +|y| (5)
+18
+<<<PAGE>>>
+2. Discuter selon la valeur du réelα de la diﬀérentiabilité au point(0, 0)
+de
+g(x,y ) =
+{ xαy
+x2+|y|, si (x,y )⁄= (0, 0).
+0, sinon.
+(6)
+Exercice 10 :
+Étudier la continuité et la diﬀérentiabilité puis calculer le gradient (lorsqu’il
+existe) des fonctions suivantes
+19
+<<<PAGE>>>
+TD9− 10 :
+Exercice 1 :
+1. Soit f : R2−→ R une applicationC1 sur R2. On poseg : R−→ R
+déﬁnie parg(t) =f(2t, 1+t2). Exprimerg′(t) en fonction des dérivées
+partielles def.
+2. Soitf(x,y ) =xy une fonction dépendant des variablesx ety qui sont
+paramétrées part :
+x(t) = cos(t) y(t) = sin(t) (7)
+Détemriner g′(t) où g(t) = f
+(
+x(t),y (t)
+)
+explicitement puis en utili-
+sant la relation donnée dans la Prop D1 du cours.
+3. Soit (x1,...,x n,h 1,...,h n)∈ R2n, f ∈C 1(Rn, R) et t∈ R. On pose
+alors
+g(t) =f(x1 +th1,...,x n +thn) (8)
+Calculer g′(t)
+Exercice 2 :
+Soitf une application diﬀérentiable deR2 dans R. Soit la fonctiong déﬁnie
+par
+g(u,v ) =f(u2 +v2,uv ) (9)
+1. Justiﬁer queg est diﬀérentiable.
+2. Exprimer les dérivées partielles deg (par rapport àu etv) en fonction
+des dérivées partielles def (par rapport àx et y).
+Exercice 3 :
+Soitf : (x,y )−→f(x,y )diﬀérentiableetg : (ρ,θ )−→f(ρ cos(θ),ρ sin(θ)).
+1. Justiﬁer queg est diﬀérentiable.
+2. Exprimer les dérivées partielles deg en fonction de celles def.
+3. En déduire les dérivées partielles def en fonction de celles deg.
+4. Vériﬁer les résultats des deux questions précédentes sur la fonction
+f(x,y ) =x2 +y2 +x.
+20
+<<<PAGE>>>
+Exercice 4 :
+Soitf : R2−→ R diﬀérentiable. On suppose que pour∀t∈ R,∀(x,y )∈ R2
+f(x +t,y +t) =f(x,y ) (10)
+Montrer que∀(x,y )∈ R2
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
++ ∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+= 0
+Exercice 5 :
+Soitf : R2−→ R diﬀérentiable. On suppose que pour∀t∈ R,∀(x,y )∈ R2
+f(xt,yt ) =f(x,y ) (11)
+Montrer que∀(x,y )∈ R2
+x∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
++y ∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+= 0 (12)
+Exercice 6 :
+On considère l’applicationf de R2 dans R2 déﬁnie par
+f(x,y ) =
+(
+x
+√
+1 +y2 +y
+√
+1 +x2; (x +
+√
+1 +x2)(y +
+√
+1 +y2)
+)
+(13)
+1. Montrer quef est de classeC1 sur R2.
+2. Calculer le jacobien def en tout point(x,y )∈ R2. Qu’en déduit-on
+pour f ?
+Exercice 7 :
+Soit f une fonction deR2 dans R admettant des dérivées partielles en tout
+point, θ un réel etg : R2−→ R2 la fonction déﬁnie par
+g(x,y ) =
+(
+x cos(θ)−y sin(θ) ; x sin(θ)+y cos(θ)
+)
+=
+(
+u(x,y ) ; v(x,y )
+)
+(14)
+1. Montrer que la fonctionF = f◦g admet des dérivées partielles en
+tout point.
+2. Calculer ∂F
+∂x et ∂F
+∂y en (a,b )∈ R2 en fonction des dérivées partielles
+de f.
+21
+<<<PAGE>>>
+Exercice 8 :
+On cherche toutes les fonctionsf de R2 dans R,C1 sur R2, telles que
+(E) : ∀(x,y )∈ R2, ∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
++ 2x ∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+= 0 (15)
+On considère l’applicationϕ qui associe à(u,v )∈ R2 ϕ(u,v ) = (u,v +u2).
+1. Montrer queϕ est bijective de classeC1 sur R2.
+2. Montrer queϕ−1 est de classeC1 sur R2.
+3. Que peut-on en déduire pourϕ?
+4. On introduit maintenant la fonction déﬁnie parg =f◦ϕ
+(a) Montrer queg est de classeC1 sur R2.
+(b) Montrer quef est solution de(E) si et seulement si
+∂g
+∂u
+⏐⏐⏐⏐
+(u,v)
+= 0 (16)
+5. En déduire quef(x,y ) = h(y−x2), oùh estC1 sur R, est solution
+de (E).
+Exercice 9 :
+Résoudre les équations aux dérivées partielles du premier ordre suivantes
+d’inconnuef : U−→ R à l’aide du changement de variables fourni
+1. U = R∗
++× R; x∂f
+∂x +y∂f
+∂y = 0 ; changement de variables :(u,v ) =
+(x,y/x ).
+2. U = R∗
++× R; x∂f
+∂x +y∂f
+∂y =
+√
+x4 +y4; changement de variables :
+(u,v ) = (y/x,x 2 +y2).
+3. U = R∗
++× R; x∂f
+∂x−y∂f
+∂y = xy2; changement de variables :(u,v ) =
+(x,yx ).
+4. U = R∗
++× R; x∂f
+∂x +y∂f
+∂y = af ; a∈ R; changement de variables :
+coordonnées polaires.
+Exercice 10 :
+Soit f : Rn−→ R une application. Dire si les aﬃrmations suivantes sont
+vraies ou fausses
+22
+<<<PAGE>>>
+Exercice 11 :
+On cherche toutes les fonctions deg de R2 dans R vériﬁant,∀(x,y∈ R2
+∂g
+∂x
+⏐⏐⏐⏐
+(x,y)
+− ∂g
+∂y
+⏐⏐⏐⏐
+(x,y)
+=a
+où a est un réel.
+1. Soitf la fonction déﬁnie surR2 parf(u,v ) =g
+(
+u+v
+2 , v−u
+2
+)
+. En utili-
+sant le théorème de composition, montrer que
+∂f
+∂u
+⏐⏐⏐⏐
+(u,v)
+= a
+2
+2. Intégrer cette équation pour en déduire l’expression def.
+3. En déduire les solutions de l’équation initiale.
+Exercice 12 :
+Déterminer toutes les fonctionsf de R2 dans R vériﬁant les équations sui-
+vantes
+1. ∀(x,y )∈ R2, 2 ∂f
+∂x
+⏐⏐⏐
+(x,y)
+− ∂f
+∂y
+⏐⏐⏐
+(x,y)
+= 0
+Indication : On utilisera le changement de variablesu = x +y et
+v =x + 2y.
+2. ∀(x,y )∈ R2, x ∂f
+∂x
+⏐⏐⏐
+(x,y)
++y ∂f
+∂y
+⏐⏐⏐
+(x,y)
+=
+√
+x2 +y2 sur V ={(x,y )∈
+R2/x> 0}
+Indication : On passera en coordonnées polaires.
+23
+<<<PAGE>>>
+Exercice 13 :
+Résoudre sur R2 les équations aux dérivées partielles suivantes
+24
+<<<PAGE>>>
+TD11− 12 :
+Exercice 1 :
+Déterminer les fonctionsf solutions des systèmes suivants
+1. {∂f
+∂x =xy2
+∂f
+∂y =x2y (17)
+2. 
+
+
+∂f
+∂x = x√
+x2+y2
+∂f
+∂y = y√
+x2+y2
+(18)
+3. {∂f
+∂x = x
+x2+y2
+∂f
+∂y =− y
+x2+y2
+(19)
+Exercice 2 :
+Pour toutes les fonctions suivantes, calculer l’expression de toutes les dérivées
+secondes en précisant les domaines d’existance
+1. f(x,y ) =x2y +x√y
+2. f(x,y ) = sin(x +y) + cos(x−y)
+3. f(x,y ) =
+(
+x2 +y2
+)3/2
+4. f(x,y ) = cos2(5x + 2y)
+5. f(x,y ) =x2(x +y)
+6. f(x,y ) = cos(xy)
+Exercice 3 :
+Pour chaque fonction déterminer la dérivée partielle indiquée
+1. ∂3f
+∂x3 : f(x,y ) =x2y4 + 2x4y
+2. ∂3f
+∂x2∂y : f(x,y ) =exy2
+3. ∂3f
+∂z∂y∂x : f(x,y,z ) =x5 + 4x4y4z3 +yz 2
+4. ∂3f
+∂y∂z∂y : f(x,y,z ) =exyz
+5. ∂3f
+∂x∂y∂z : u(x,y,z ) = ln(x + 2y2 + 3z2)
+25
+<<<PAGE>>>
+Exercice 4 :
+Vériﬁer le théorème de Schwarz sur les fonctions suivantes
+1. f(x,y ) =x5y4− 3x2y3 + 2x2
+2. f(x,y ) = sin2(x) cos(y)
+Exercice 5 :
+Soit f une application de classeC2 sur un ouvertU⊂ R2 à valeurs réelles.
+On déﬁnit le laplacien def comme étant l’application déﬁnie surU par
+∆f(x,y ) = ∂2f
+∂x2 + ∂2f
+∂y 2 (20)
+Déterminer le laplacien de chacune des fonctions suivantes
+1. U = R2 : f(x,y ) =x2−y2
+2. U = R2 : f(x,y ) =x2 +y2
+3. U = R2\{(0, 0)} : f(x,y ) = ln(
+√
+x2 +y2)
+4. U = R2\{(0, 0)} : f(x,y ) = x
+x2+y2
+Exercice 6 :
+Soit f la fonction déﬁnie surR2 par
+f(x,y ) =
+{ xy3
+x2+y2, si (x,y )⁄= (0, 0).
+0, sinon.
+(21)
+1. Montrer quef estC1 sur R2
+2. Montrer que ∂2f
+∂x∂y et ∂2f
+∂y∂x sont déﬁnies en(0, 0) mais n’ont pas même
+valeur.
+3. Que peut-on en déduire?
+Exercice 7 :
+1. Soit f la fonction déﬁnie surR2 par
+f(x,y ) =
+{ y4
+x2+y2, si (x,y )⁄= (0, 0).
+0, sinon.
+(22)
+(a) Montrer quef estC1 en (0, 0)
+26
+<<<PAGE>>>
+(b) Montrer que ∂2f
+∂x∂y et ∂2f
+∂y∂x sont déﬁnies en(0, 0) et ont même va-
+leur.
+(c) Que peut-on en déduire?
+2. Mêmes questions pour
+f(x,y ) =
+{xy2
+x+y, si x +y⁄= 0.
+0, sinon.
+(23)
+Exercice 8 :
+Déterminer la classe exacte des applications suivantes
+1.
+f(x,y ) =
+{ (x2−y2)2
+x2+y2 , si (x,y )⁄= (0, 0).
+0, sinon.
+(24)
+2.
+f(x,y ) =
+{ xy2
+x2+(y−x2)2, si (x,y )⁄= (0, 0).
+0, sinon.
+(25)
+3.
+f(x,y ) =
+
+
+
+(ex2
+−1)(ey2
+−1)
+x2+y2 , si (x,y )⁄= (0, 0).
+0, sinon.
+(26)
+Exercice 9 :
+Résoudre les EDP du second d’ordre d’inconnuef : U−→ R de classeC2 à
+l’aide du changement de variables fourni
+1. U = R2 : ∂2f
+∂x2− ∂2f
+∂y 2 = 0; (u,v ) = (x +y,x−y)
+2. U = R∗
++× R : x2∂2f
+∂x2 + 2xy ∂2f
+∂x∂y +y2∂2f
+∂y 2 = 0; (u,v ) = (x,y/x )
+3. U = R∗
++× R∗
++ : x2∂2f
+∂x2−y2∂2f
+∂y 2−x∂f
+∂x +y∂f
+∂y = 0; (u,v ) = (xy,y/x )
+4. U = R∗
++× R∗
++ :x2∂2f
+∂x2−y2∂2f
+∂y 2 +x∂f
+∂x−y∂f
+∂y = 0; (u,v ) = (ln(x), ln(y))
+5. U = R∗
++× R : ∂2f
+∂x2− 4x2∂2f
+∂y 2− 1
+x
+∂f
+∂x = 0; (u,v ) = (x2−y,x 2 +y)
+6. U = R2 : ∂2f
+∂x2− 2 ∂2f
+∂x∂y + ∂2f
+∂y 2 = 0; (u,v ) = (x,x +y)
+7. U = R∗
++× R∗
++ : x2∂2f
+∂x2−y2∂2f
+∂y 2 = 0; (u,v ) = (xy,x/y )
+27
+<<<PAGE>>>
+Exercice 10 :
+Déterminer les points critiques et les extrema des fonctionsf : R2−→ R
+suivantes
+1. f(x,y ) =x2 +xy +y2− 3x− 6y
+2. f(x,y ) =x2 + 2y2− 2xy− 2y + 5
+3. f(x,y ) =x3 +y3
+4. f(x,y ) = (x−y)2 + (x +y)3
+5. f(x,y ) =x3 +y3− 3xy
+6. f(x,y ) =x
+(
+ln2(x) +y2
+)
+(sur le demi-plan> 0)
+Exercice 11 :
+Déterminer les extrema locaux et globaux des applications suivantes.
+Exercice 12 :
+28
+<<<PAGE>>>
+29

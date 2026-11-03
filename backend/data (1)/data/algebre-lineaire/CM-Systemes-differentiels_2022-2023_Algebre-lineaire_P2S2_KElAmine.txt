@@ -1,0 +1,390 @@
+Systèmes diﬀérentiels linéaires
+Khalid El Amine I.
+Department of Mathematics and Finance
+⋆⋆⋆
+1 Équation diﬀérentielle linéaire du premier ordre
+1.1 Équation diﬀérentielle linéaire homogène du premier ordre
+Déﬁnition 1.1Soit I⊂ R un intervalle ouvert eta∈C (I, R).
+• On appelle équation diﬀérentielle linéaire homogène du premier ordre, une équation diﬀérentielle de
+la forme :
+x′(t) = a(t)x(t) ( EH )
+• On dit qu’une fonctionf est solution de(EH ) sur l’intervalleI, sif est dérivable surI et si :
+f′(t) = a(t)f (t) ∀t∈I
+Remarques :
+1) La fonction nulle est solution de l’équation(EH ).
+2) (EH ) peut admettre une inﬁnité de solutions.
+Proposition 1.2 L’ensembleEh des solutions de l’équation diﬀérentielle(EH ) est un espace vectoriel
+sur R.
+Preuve :
+Théorème 1.3 L’ensembleEh des solutions de l’équation diﬀérentielle(EH ) est donné par :
+Eh ={f :t∈I↦→ceA(t) ; c∈ R}
+où A désigne une primitive dea sur I.
+• Eh est un R-ev de dimension1.
+▶ L’applicationx :t∈I↦→x(t) = ceA(t) est appelée solution générale de(EH ).
+Preuve :
+Exemple 1: La solution générale surR (ou sur n’importe quel intervalle ouvertI⊂ R) de l’équation
+diﬀérentielle homogène
+x′(t) =−2x(t) ( EH )
+est
+x(t) = ce−2t, c ∈ R
+1
+<<<PAGE>>>
+2 Systèmes diﬀérentiels linéaires
+1.2 Équation diﬀérentielle linéaire non homogène du premier ordre
+1.2.1 Solution générale
+Déﬁnition 1.4Soit I⊂ R un intervalle ouvert eta,b∈C (I, R).
+• On appelle équation diﬀérentielle linéaire non homogène du premier ordre, une équation diﬀérentielle
+de la forme :
+x′(t) = a(t)x(t) +b(t) ( E)
+On dit qu’une fonctionf est solution de(E) sur l’intervalleI, sif est dérivable surI et si :
+f′(t) = a(t)f (t) +b(t) ∀t∈I
+• On appelle équation diﬀérentielle homogène associée à(E), l’équation diﬀérentielle :
+x′(t) = a(t)x(t) ( EH )
+Théorème 1.5 Soit fp une solution particulière surI de l’équation diﬀérentielle(E) et A une prim-
+itive dea sur I. L’ensembleE des solutions de l’équation diﬀérentielle(E) est :
+E ={f :t∈I↦→ceA(t) +fp(t) ; c∈ R}
+où A désigne une primitive dea sur I.
+Preuve :
+Méthode de la variation de la constante
+La Méthode de la variation de la constante est un moyen calculatoire qui permet de déterminer une
+solution particulière fp de l’équation diﬀérentielle(E). On cherche une solution particulière de la
+forme :
+fp :t∈I↦→c(t)eA(t)
+où la fonction inconnuec est déterminée en exprimant quefp doit satisfaire l’équation diﬀérentielle
+(E). Nous avons alors pour toutt∈I
+fp est solution de (E) ⇔f′
+p(t) = a(t)fp(t) +b(t)
+⇔ (c(t)eA(t))′ =a(t)c(t)eA(t) +b(t)
+⇔c′(t)eA(t) +c(t)a(t)eA(t) =a(t)c(t)eA(t) +b(t)
+⇔c′(t)eA(t) =b(t)
+⇔c′(t) = b(t)e−A(t)
+⇔c(t) =
+∫
+b(t)e−A(t)dt
+ce qui établit quefp(t) =
+(∫
+b(t)e−A(t)dt
+)
+eA(t) est bien une solution particulière de(E).
+On peut alors reformuler le théorème précédent de la manière suivante :
+Proposition 1.6 L’ensembleE des solutions de l’équation diﬀérentielle(E) est :
+E =
+{
+f :t∈I↦→
+(
+c +
+∫
+b(t)e−A(t)dt
+)
+eA(t) ; c∈ R
+}
+où A(t) désigne une primitive dea(t) sur I i.e. :
+A(t) =
+∫
+a(t)dt
+<<<PAGE>>>
+K. El Amine 3
+▶ L’applicationx : t∈ I↦→ x(t) =
+(
+c +
+∫
+b(t)e−A(t)dt
+)
+eA(t) est appelée solution générale de(E).
+On décompose souvent x sous la forme :
+x(t) = xh(t) +xp(t) où xh(t) = ceA(t) et xp(t) =
+(∫
+b(t)e−A(t)dt
+)
+eA(t)
+▶ Les courbes représentatives des solutions de(E) sont appelées courbes intégrales de(E).
+Preuve :
+Exemple : Déterminer la solution générale surR de l’équation diﬀérentielle non homogène :
+x′(t) = 2x(t)− 2t (E)
+Solution :
+1.2.2 Problème a valeur initiale : Existence et unicité
+Théorème 1.7 (Cauchy-Lipschitz [Fr] |Picard-Lindelöf [En] | existence et unicité)
+Soit I⊂ R un intervalle ouvert eta,b∈C (I, R).
+∀t0∈I et∀x0∈ R ; il existe une unique solution surI au problème a valeur initiale (PVI) :
+
+
+
+x′(t) = a(t)x(t) +b(t) ( E)
+x(t0) = x0
+x(t0) = x0 est appelée condition initiale.
+Preuve :
+2 Système diﬀérentiel linéaire du premier ordre
+2.1 Solution générale
+Déﬁnition 2.1Soit I⊂ R un intervalle ouvert. On appelle système diﬀérentiel linéaire du premier
+ordre (sur I), un système de la forme
+X′(t) = A(t)X(t) +B(t) ( S)
+Où :
+•A(t) = [aij(t)]∈M n(R) est une matrice donnée dont les coeﬃcientsaij sont des fonctions continues
+de la variable réellet∈I.
+• B(t) = [bi(t)]∈M n,1(R) est un vecteur donné, appelé second membre, dont les composantesbi sont
+des fonctions continues de la variable réellet∈I.
+• X(t) = [xi(t)]∈M n,1(R) est le vecteur inconnu, oùX′(t) = [x′
+i(t)].
+▶ On dit que le système est à coeﬃcients constants si la matriceA ne dépend pas de la variablet.
+▶ On dit que le système est homogène siB(t) = 0, ∀t∈I, i.e. :
+X′(t) = A(t)X(t) ( SH )
+<<<PAGE>>>
+4 Systèmes diﬀérentiels linéaires
+Théorème 2.2 (Solution générale du système diﬀérentiel non-homogène)
+Soit Xh la solution générale surI du système diﬀérentiel homogène(SH )
+X′(t) = A(t)X(t) ( SH )
+Soit Xp une solution particulière surI du système diﬀérentiel non-homogène(S)
+X′(t) = A(t)X(t) +B(t) ( S)
+La solution générale surI du système diﬀérentiel non-homogène(S) est alors :
+X(t) = Xh(t) +Xp(t)
+Preuve :
+2.2 Problème a valeur initiale : Existence et unicité
+Théorème 2.3 (Cauchy-Lipschitz [Fr] |Picard-Lindelöf [En] | existence et unicité)
+Soit I⊂ R un intervalle ouvert. SoitA∈C (I,Mn(R)) et B∈C (I,Mn,1(R)).
+∀t0∈I et∀X0∈M n,1(R) ; il existe une unique solution surI au problème a valeur initiale (PVI) :
+
+
+
+X′(t) = A(t)X(t) +B(t) ( S)
+X(t0) = X0
+X(t0) = X0 est appelée condition initiale.
+Preuve :
+2.3 Résolution des systèmes diﬀérentiels linéaires du premier ordre
+On considère dans cette sous-section uniquement des systèmes diﬀérentiels linéaires du premier ordre
+à coeﬃcients constants. La matriceA ne dépend donc pas de la variable réellet, i.e. les systèmes du
+type
+X′(t) = AX(t) +B(t) ( S)
+2.3.1 Résolution par réduction de matrice
+Cas d’une matrice A diagonalisable
+Supposons queA =PDP−1 ; oùD est diagonale. On a
+X′(t) = AX(t) +B(t) ⇐⇒ X′(t) = PDP−1X(t) +B(t)
+⇐⇒ P−1X′(t) = DP−1X(t) +P−1B(t)
+⇐⇒ (P−1X(t))′ =D(P−1X(t)) + (P−1B(t))
+⇐⇒ Y′(t) = DY (t) + (P−1B(t)) avec Y (t) = P−1X(t)
+Le système enY obtenu est découplé. On résout ce système enY (t) puis on en déduitX(t) = PY (t)
+Remarque : On ne calcul pasP−1 si B(t) = 0.
+Algorithme - Pour résoudre le système diﬀérentiel :X′(t) = AX(t) +B(t)) où A =PDP−1 :
+1) On pose :Y (t) = P−1X(t).
+2) On résout le système :Y′(t) = DY (t) + (P−1B(t)).
+<<<PAGE>>>
+K. El Amine 5
+3) On en déduitX(t) = PY (t).
+Proposition 2.4 Soit A∈M n(R). Si A =PDP−1 avecD =diag(λ1,...,λ n) et P = [V1 ... Vn],
+alors la solution générale système diﬀérentiel homogène
+X′(t) = AX(t) ( SH )
+est donnée par
+X(t) =
+n∑
+i=1
+cieλitVi avec ci∈ R
+• La famille{eλ1tV1,...,e λntVn]} est appelée système fondamental de solutions.
+• Toute solution de(DH ) est combinaison linéaire de cette famille.
+Exemple 1: Résoudre le système diﬀérentiel :X′(t) = AX(t). Avec :
+X(t) =
+[
+x1(t)
+x2(t)
+]
+et A =
+[
+2 0
+0 3
+]
+Solution :
+Exemple 2: Résoudre le système diﬀérentiel :X′(t) = AX(t). Avec :
+X(t) =
+[ x1(t)
+x2(t)
+]
+et A =
+[ 1 −1
+2 4
+]
+Solution :
+Exemple 3: Résoudre le système diﬀérentiel :X′(t) = AX(t) +B(t). Avec :
+X(t) =
+[ x1(t)
+x2(t)
+]
+et A =
+[ 1 −1
+2 4
+]
+et B(t) =
+[ t
+2t
+]
+Solution :
+Cas d’une matrice A trigonalisable
+Supposons queA =PTP −1 ; oùT est triangulaire supérieure
+X′(t) = AX(t) +B(t) ⇐⇒ X′(t) = PTP −1X(t) +B(t)
+⇐⇒ P−1X′(t) = TP−1X(t) +P−1B(t)
+⇐⇒ (P−1X(t))′ =T (P−1X(t)) + (P−1B(t))
+⇐⇒ Y′(t) = TY (t) + (P−1B(t)) avec Y (t) = P−1X(t)
+Lesystèmeobtenuen Y n’estpastotalementdécouplé. Onrésoutcesystèmeen Y (t)parunedémarche
+rétrograde (on commence par la dernière équation), puis on en déduitX(t) = PY (t)
+Remarque : On ne calcul pasP−1 si B(t) = 0.
+Algorithme - Pour résoudre le système diﬀérentiel :X′(t) = AX(t) +B(t)) où A =PTP −1 :
+1) On pose :Y (t) = P−1X(t).
+2) On résout par démarche rétrograde le système :Y′(t) = TY (t) + (P−1B(t)).
+3) On en déduitX(t) = PY (t).
+Exemple 1: Résoudre le système diﬀérentiel
+(S)
+{ x′
+1(t) = 2 x1(t) +x2(t) (1)
+x′
+2(t) = −x2(t) (2)
+Solution :
+<<<PAGE>>>
+6 Systèmes diﬀérentiels linéaires
+Exemple 2: Résoudre le système diﬀérentielX′(t) = AX(t).
+X(t) =
+[ x1(t)
+x2(t)
+]
+et A =
+[ 1 1
+−1 3
+]
+Solution :
+2.3.2 Résolution par exponentielle de matrice
+Exponentielle de matrice
+Proposition 2.5 Soit n∈ N∗.∀A∈M n(K), la série de matrices
+∑
+k≥0
+Ak
+k! =In +A + A2
+2! + A3
+3! +...
+est absolument convergente dansMn(K) (donc convergente).
+Preuve :
+Déﬁnition 2.6(Exponentielle de matrice)
+Soit n∈ N∗ et A∈M n(K). On déﬁnit l’exponentielle deA par :
+eA =
++∞∑
+k=0
+Ak
+k!
+Exemple : SoitD =
+[3 0
+0 −2
+]
+. CalculereD. CalculeretD pour toutt∈ R.
+Solution :
+Exercice : SoitN =
+[0 1
+0 0
+]
+. CalculereN et etN pour toutt∈ R.
+Solution :
+Exercice : CalculereN et etN pour toutt∈ R.
+N =
+
+
+0 1 0
+0 0 1
+0 0 0
+
+
+Proposition 2.7 Soit n∈ N∗. SoitA,B,D,P ∈M n(K) où P est inversible etD est diagonale.
+1) eOn =In
+2) eIn =eIn
+3) Si D =diag(λ1,...,λ n) alors eD =diag(eλ1,...,e λn )
+4) Si A =PBP−1 alors eA =PeBP−1
+5) Si AB =BA alors eA+B =eAeB
+6) eA est toujours inversible et(eA)−1 =e−A
+Preuve :
+<<<PAGE>>>
+K. El Amine 7
+Propriété 2.8 Soit A∈M n(R).∀s,t∈ K
+1) esAetA =e(s+t)A
+2) (etA)(e−tA) = In
+3) d
+dt (etA) = AetA
+4) AetA =etAA
+Preuve :
+Proposition 2.9 (exponentielle de matrice diagonale par blocs)
+Soit A∈M n(K) diagonale par blocs, i.e. de la forme :
+A =
+
+
+A1 0 ··· 0
+0 A2
+... ...
+... ... ... 0
+0 ··· 0 Ap
+
+
+où lesAi sont des matrices carrés. Alors :
+eA =
+
+
+eA1 0 ··· 0
+0 eA2
+... ...
+... ... ... 0
+0 ··· 0 eAp
+
+
+Résolution par exponentielle
+Théorème 2.10 Soit I⊂ R un intervalle ouvert ett0∈I. SoitA∈M n(R).
+• La solution générale surI du système diﬀérentiel(SH ) :
+X′(t) = AX(t) ( SH )
+est donnée par :
+X(t) = etAC où C∈M n,1(R)
+• La solution unique surI du (PVI) :
+
+
+
+X′(t) = AX(t) ( SH )
+X(t0) = X0
+est donnée par :
+X(t) = e(t−t0)AX0
+Remarque : Pour un (PVI),C est obtenue par
+C =e−t0AX0
+Preuve :
+<<<PAGE>>>
+8 Systèmes diﬀérentiels linéaires
+Remarque : Pour la résolution d’un (PVI), on ne calcule pas explicitement la matriceetA. On écrit
+la matrice etA = PBP−1 et on ne calcule pas le produit de ces trois matrice. On écritetAX0 =
+PBP−1X0 et on eﬀectue les produits successivement de droite à gauche, aﬁn d’économiser le nombre
+de multiplications et d’additions.
+Théorème 2.11 Soit I⊂ R un intervalle ouvert ett0∈I. SoitA∈M n(R) et B∈C (I,Mn,1(R)).
+• La solution générale surI du système diﬀérentiel(S) :
+X′(t) = AX(t) +B(t) ( S)
+est donnée par :
+X(t) = Xh(t) +Xp(t)
+=etAC +etA
+∫
+e−tAB(t)dt
+=etA
+(
+C +
+∫
+e−tAB(t)dt
+)
+avec C∈M n,1(R)
+• La solution unique surI du (PVI) :
+(PVI )
+
+
+
+X′(t) = AX(t) +B(t) ( S)
+X(t0) = X0
+est donnée par :
+X(t) = Xh(t) +Xp(t)
+=e(t−t0)AX0 +e(t−t0)A
+∫ t
+t0
+e−(s−t0)AB(s)ds
+=e(t−t0)AX0 +etA
+∫ t
+t0
+e−sAB(s)ds
+Preuve :
+Théorème 2.12 (Couple propre conjugué)
+Soit A∈M n(R). Si A admet un couple propre complexe{λ,v} alors le couple complexe conjugué
+{λ,v} est aussi un couple propre deA.
+Preuve :
+Remarque : Les racines complexes des polynômesP à coeﬃcients réels (P ∈ Rn[x]) apparaissent
+par paires conjuguées.

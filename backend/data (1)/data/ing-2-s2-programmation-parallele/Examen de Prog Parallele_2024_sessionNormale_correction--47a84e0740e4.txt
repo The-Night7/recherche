@@ -1,0 +1,255 @@
+ 
+1 
+ 
+ 
+ 
+Architecture et Programmation Parallèle 
+Examen Session Normale Correction 
+Exercice 1 : Questions de cours (5 points) 
+1. Citer deux différences entre OpenMP et MPI 
+Le OpenMP (multithreading) est basé sur la communication par mémoire partagée entre 
+les threads par contre MPI (multiprocessing) est basé sur la communication par passage 
+de message (ou envoi et la réception de messages) entre les processus 
+ OpenMP est souvent utilisé pour accélérer les calculs sur les processeurs multicœurs, 
+par contre le MPI est utilisé pour des architectures distribuées.   
+ 
+2. Donner au moins deux aspects à considérer pour améliorer le passage à l'échelle 
+(Scalability) d'un code parallèle. 
+ Minimiser communications, exploiter la localité des données, équilibrage de charge, 
+minimisation des synchronisations 
+ 
+3. citer deux  avantages et deux inconvénients de l’utilisation des barrières de 
+synchronisation? 
+Avantages 
+ Coordination des Threads/Processus : Les barrières de synchronisation permettent de 
+coordonner l'exécution de plusieurs threads ou processus en garantissant qu'ils 
+atteignent tous un point commun avant de continuer 
+ Ordonnancement et Planification : Les  barrières de synchronisation peuvent être 
+utilisées pour contrôler l'ordre d'exécution des threads ou processus, ce qui peut être 
+utile dans certains cas pour garantir un comportement spécifique de l'application 
+Inconvénients 
+ Coût de Performance : L'utili sation de barrières de synchronisation peut entraîner un 
+surcoût de performance, car les threads ou processus doivent attendre que tous les 
+autres atteignent la barrière avant de pouvoir continuer. Cela peut entraîner des temps 
+d'attente et réduire l'efficacité du parallélisme. 
+ Possibilité de Blocage : Si un thread ou un processus échoue pour atteindre la barrière, 
+cela peut entraîner un blocage (mais non pas l' interblocage ou deadlock) de tous les 
+autres threads ou processus qui attendent à la barrière 
+ 
+
+<<<PAGE>>>
+ 
+2 
+4. Nous allons paralléliser le calcul d’un produit matrice -vecteur. La matrice est creuse 
+(peu dense, avec beaucoup de zéros). Quelle sera la stratégie de scheduling en OpenMP 
+qui donnera une meilleure performance ? Expliquer. 
+Dynamic, parce que les blocs de données seront attribués aux threads à fur et à mesure 
+qu’ils sont disponibles. Cela assurera que tous les threads recevront en moyenne la 
+même quantité de travail, ce qui n’est pas probable avec une matrice creuse et une 
+distribution statique par blocs. Le guided prend trop de temps pour re-diviser à chaque 
+fois les segments alors que c'est inutile pour le calcul d'une matrice creuse 
+. 
+5. Expliquer ce qu'est un Communicateur en MPI. 
+ MPI regroupe dans les communicateurs tous les processus impliqués dans une 
+exécution parallèle. Un communicateur regroupe les processus qui peuvent échanger 
+des messages. 
+ 
+Exercice 2 : Évaluation de la performance (5 points) 
+1. Un programme parallèle passe 6% de son temps d’exécution dans les opérations 
+exécutées sur un seul processeur. Quel est le nombre minimal de processeurs pour que 
+le programme parallèle produise une accélération de 10 par rapport au programme 
+sequentiel? 
+Speedup= T1/Tp , avec Tp= (0.06+(1-0.06)/p) *T1 = (0.06+0.94/p)*T1  
+speedup= 1/(0.06+0.94/p)= 10  donc 0.4*p= 9.6  il résulte p=24 processeurs 
+ 
+2. Un programme a une accélération de 8 sur 12 processeurs. Quelle est la fraction du 
+temps d’exécution séquentiel qu i peut correspondre à des opérations purement 
+séquentielles ? 
+On a p=12,   Speedup=8 
+Soit f la fraction de temps d’exécution séquentiel 
+Speedup= T1/Tp , avec Tp= (f+(1-f)/p) *T1 donc 
+speedup= 1/(f+(1-f)/12)= 8  donc 88*f= 4  il résulte f=0.045 (4.5%) 
+ 
+3. Supposant que vous avez deux applications qui doivent tourner en même temps sur une 
+machine avec 4 cœurs. La première application requiert 65% des ressources et la 
+seconde 35%. 
+<<<PAGE>>>
+ 
+3 
+a. Si on suppose que La première application s’exécute en séquentielle par contre 
+80% de la deuxième s’exécute en parallèle calculer l’accélération et l’efficacité 
+si les deux applications tournent en même temps. 
+L’accélération(speedup) 
+Speedup= T1/Tp , avec Tp= 0.65*1+0.35*(0.2+0.8/4)=0.79 donc 
+speedup= 1/0.79= 1.26 
+Efficacité 
+E=S/p= 1.26/4=0.31 
+ 
+b. Considérons maintenant que 60% de la première application est parallélisable 
+et on fait tourner les deux applications en même temps. Si on suppose que  le 
+temps d’exécution avant l’amélioration de la première application est 30 
+secondes, quel sera le nouveau temps d'exécution (après l’amélioration de la 
+première application)? 
+Speedup= T1/Tp, avec  
+Tp= (0.65*(0.4+0.6/4)+0.35*(0.2+0.8/4))*T1=0.4975=0.5*T1  
+donc  speedup= 1/0.5= 2 
+Speedup= T1/Tp  donc Tp= T1/Speedup= 30/2=15 secondes 
+Exercice 3 : OpenMP (5 points) 
+Répondre aux questions suivantes :  
+a. Expliquer ce que ce code est censé faire et afficher dans le printf à la fin (2 points). 
+1 . calculer l'addition des éléments de la matrice dans la variable sum (On a 2 threads et 
+une matrice c[R][C] à 2 lignes. Chaque thread identifié par son id calcule l’addition des 
+éléments de sa ligne en utilisant le modulo '%'. Donc on a 2 threads et 2 lignes)  
+2. Compter le nombre d'itérations de chaque thread dans la variable a (privée).  
+À la fin de la région parallèle, sum aura l’addition de tous les éléments de la matrice, et la 
+variable a aura le nombre d’itérations traités par thread plus 2 (la valeur initiale de a, a=2). 
+ 
+b. Pourtant, le programme parallèle n’affiche pas le résultat correct. Modifier le code 
+pour qu’il marche correctement (3 points). 
+- La variable sum est partagé entre les threads et elle n'est pas protégée contre les accès 
+concurrents reduction(+, sum) 
+- La variable a n'est pas initialisée à l'intérieur de la boucle, donc on la déclare 
+(firtsprivate) 
+- On doit exporter la valeur de la variable a après la boucle on la déclare aussi 
+(lastprivate) 
+<<<PAGE>>>
+ 
+4 
+Exercice 4 
+a) 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <mpi.h> 
+#define LETAG 1 
+ 
+int main(int argc, char *argv[]) { 
+ int rang, np; 
+ MPI_Status status; 
+ 
+ MPI_Init(&argc, &argv); 
+ MPI_Comm_rank(MPI_COMM_WORLD, &rang); 
+ MPI_Comm_size(MPI_COMM_WORLD, &np); 
+ 
+ if (np != 5) { 
+      printf("Erreur: Ce programme nécessite exactement 5 processus.\n"); 
+      MPI_Abort(MPI_COMM_WORLD, 1); 
+ } 
+ 
+ int a, b, op; 
+ if (rang == 0) { 
+     // Initialisation des nombres et de l'opérateur 
+     a = atoi(argv[1]); 
+     b =  atoi(argv[2]); 
+     op = atoi(argv[3]); 
+ 
+     // Envoi des nombres et de l'opérateur aux autres machines 
+     for (int i = 1; i < np; ++i) { 
+         MPI_Send(&a, 1, MPI_INT, i, LETAG, MPI_COMM_WORLD); 
+         MPI_Send(&b, 1, MPI_INT, i, LETAG, MPI_COMM_WORLD); 
+         MPI_Send(&op, 1, MPI_INT, i, LETAG, MPI_COMM_WORLD); 
+     } 
+ }  
+
+<<<PAGE>>>
+ 
+5 
+else { 
+     // Réception des nombres et de l'opérateur 
+     MPI_Recv(&a, 1, MPI_INT, 0, LETAG, MPI_COMM_WORLD, &status);  
+     MPI_Recv(&b, 1, MPI_INT, 0, LETAG, MPI_COMM_WORLD, &status);  
+     MPI_Recv(&op, 1, MPI_INT, 0, LETAG, MPI_COMM_WORLD, &status); 
+ 
+     // Calcul local en fonction de l'opérateur 
+     int result; 
+     switch (op) { 
+         case 1: 
+             result = a + b; // Addition 
+             break; 
+         case 2: 
+             result = a - b; // Soustraction 
+             break; 
+         case 3: 
+             result = a * b; // Multiplication 
+             break; 
+         case 4: 
+             if (b == 0) { 
+                  printf("Erreur: Division par zéro.\n"); 
+                  MPI_Abort(MPI_COMM_WORLD, 1); 
+             } 
+             result = a / b; // Division 
+             break; 
+         default: 
+             printf("Erreur: Opérateur non valide.\n"); 
+             MPI_Abort(MPI_COMM_WORLD, 1); 
+     } 
+ 
+     // Envoi du résultat au processus 0 
+     MPI_Send(&result, 1, MPI_INT, 0, LETAG, MPI_COMM_WORLD); 
+ } 
+ 
+ if (rang == 0) { 
+     // Réception des résultats des autres machines 
+     int total = 0; 
+     for (int i = 1; i < np; ++i) { 
+         int partial_result; 
+         MPI_Recv(&partial_result, 1, MPI_INT, i, LETAG, MPI_COMM_WORLD, &status); 
+         total += partial_result; 
+     } 
+     printf("Résultat final de l'opération : %d\n", total); 
+ } 
+ 
+ MPI_Finalize(); 
+ return 0; 
+} 
+ 
+  
+<<<PAGE>>>
+ 
+6 
+ 
+b)  
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <time.h> 
+#include <mpi.h> 
+ 
+#define MAX_ITERATIONS 5 
+ 
+int main(int argc, char *argv[]) { 
+ int rang, np; 
+ MPI_Init(&argc, &argv); 
+ MPI_Comm_rank(MPI_COMM_WORLD, &rang); 
+ MPI_Comm_size(MPI_COMM_WORLD, &np); 
+ MPI_Status status; 
+ 
+ int value = 1; 
+ 
+ for (int iter = 0; iter < MAX_ITERATIONS; ++iter) { 
+     int sum = 0; 
+ 
+     // Échange des valeurs entre les processus 
+     for (int i = 0; i < np; ++i) { 
+         if (i != rang) { 
+             int received_value; 
+             MPI_Send(&value, 1, MPI_INT, i, 0, MPI_COMM_WORLD); 
+             MPI_Recv(&received_value,1, MPI_INT, i, 0, MPI_COMM_WORLD, &status); 
+             sum += received_value; 
+         } 
+    } 
+ 
+    // Mise à jour de la valeur en fonction de la somme des valeurs partagées 
+     value += sum; 
+ 
+     // Synchronisation des processus avant l'échange de valeurs 
+     MPI_Barrier(MPI_COMM_WORLD); 
+ 
+     // Affichage de la valeur mise à jour 
+     printf("Processus %d, Itération %d : valeur = %d\n", rang, iter, value); 
+ } 
+ 
+ MPI_Finalize(); 
+ return 0; 
+} 
+ 
+ 
+ 

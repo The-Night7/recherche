@@ -1,0 +1,141 @@
+Apprentissage par renforcement
+TD
+26 janvier 2022
+Objet du TD : Apprentissage par renforcement, processus de Markov,
+Q-learning.
+1 Mod` eles d’optimalit´ e (d’apr` es la r´ ef´ erence
+[3])
+On consid` ere le probl` eme d´ eﬁni comme suit :
+1. ´Etats : S ={s0,s 11,s 12,s 21,s 22,s 23,s 24,s 25,s 31,s 32,s 33,s 34,s 35,s 36}.
+2. Actions :
+(a) `A partir de s0 : trois actions possibles conduisant ` as11,s21 ets31.
+(b) `A partir des12,s25 ets36 : une seule action possible qui fait boucler
+sur le mˆ eme ´ etat.
+(c) Pour les autres ´ etats : une seule action possiblesij→ sij+1.
+3. Reward :
+(a) Pour s12→ s12, r = 2.
+(b) Pour s25→ s25, r = 10.
+(c) Pour s36→ s36, r = 11.
+(d) r=0 pour toutes les autres actions.
+1. Faites un sch´ ema r´ ecapitulatif de ce probl` eme.
+2. Comparer les 3 mod` eles d’optimalit´ e en prenant les valeurs suivantes
+pour les param` etresh et γ :
+(a) h = 5 et γ = 0.9.
+(b) h = 1000 et γ = 0.2.
+1
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+2 Processus de Markov (d’apr` es la r´ ef´ erence
+[1])
+On consid` ere un jeu ` a un seul joueur dans lequel ` a chaque tour il n’y a
+que deux possibilit´ es :
+— Gagner un point → probabilit´ e =p.
+— Perdre un point → probabilit´ e = 1−p.
+Le jeu s’arrˆ ete d` es que le nombre de points atteint 0,M.
+1. V´ eriﬁez que ce jeux peut ˆ etre mod´ elis´ e par une chaˆ ıne de Markov et
+donnez sa matrice de transition.
+2. En prenant p=0.25 et M=7 et en supposant que le nombre initial de
+points x0 est obtenu en jettant un d´ e, calculer les probabilit´ es des
+suites de nombre de points suivantes :
+(a) 1, 2, 3, 4, 5, 6, 7.
+(b) 6, 7.
+(c) 6, 5, 4, 3, 2, 1, 0.
+3 Processus de Markov 2 (d’apr` es la r´ ef´ erence
+[2])
+On consid` ere un graphe d´ ecrivant la soir´ ee de r´ evision d’un ´ etudiant sous
+la forme d’un ensemble d’activit´ es et de transitions (probabilistes) entre ces
+derni` eres.
+— Les activit´ es sont les suivante :
+S ={Cours1,Cours 2,Cours 3,Pause,Dormir,Sortir,Facebook }.
+— Les probabilit´ es des transitions sont les suivantes :
+— `A partir de Cours1 → Cours2 ou Facebook avec une probabilit´ e
+de 0.5.
+— `A partir de Cours2→ Cours3 (0.8) ou Dormir (0.2).
+— `A partir de Cours3→ Pause (0.4) ou Sortir (0.6).
+— `A partir de Pause→ Cours1 (0.2), Cours2 (0.4) ou Cours3 (0.4).
+— `A partir de Dormir→ Aucune transition.
+— `A partir de Sortir→ Dormir (1.0).
+— `A partir de Facebook→ Cours1 (0.1) ou Facebook (0.9).
+1. Donnez la matrice de transisition de la chaˆ ıne de Markov associ´ ee ` a
+ce graphe.
+2. Donnez quelques suites d’´ etats possibles en partant de l’´ etatCours1
+et ´ evaluez leurs probabilit´ es.
+2
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+3. Compl´ etez le probl` eme en associant une r´ ecompense ` a chaque ´ etat et
+expliquez comment on peut calculer la valeur de chaque ´ etat.
+4. ´Ecrivez un programme python permettant de calculer ces valeurs pour
+diﬀ´ erentes valeurs du facteur d’actualisationγ.
+4 Un premier ’Gridworld’
+On consid` ere un agent qui se d´ eplace ` a gauche, ` a droite, vers le haut et
+vers le bas sur le gridworld de la ﬁgure 1. Sur cette ﬁgure nous avons indiqu´ e
+les ´ etats, les principales actions possibles et les r´ ecompenses correspondantes.
+Pr´ ecisons pour compl´ eter cette ﬁgure que :
+— le d´ eplacement diagonals4→ s1 signiﬁe que quelque soit le mouve-
+ment eﬀectu´ e par l’agent ens4, il se retrouve en s1.
+— L’agent peut ’tenter’ de sortir du gridwold et que dans ce cas il est
+remis ` a son ´ etat de d´ epart (il se heurte ` a un mur !) et re¸ coit une
+punition de -1.
+Il vous est demand´ e de :
+1. Donner le processus de d´ ecision markovien d´ ecrivant ce probl` eme.
+2. Trouver une strat´ egie non optimaleπ et calculer les valeurs Vπ des
+´ etats pour cette strat´ egie.
+3. Faites tourner ’` a la main’ l’algorithme Value Iteration pour quelques
+´ etapes.
+4. Ecrire un programme Python pour calculer la valeur optimale des
+´ etats et d´ eduire une strat´ egie optimale (on essaiera plusieurs valeurs
+de γ).
+5 Q-learning, cas d´ eterministe
+On consid` ere un agent qui se d´ eplace sur le gridworld de la ﬁgure ﬁgure 2.
+La case rouge est une case interdite et l’atteindre provoque une punition de
+-1. La case verte est l’objectif et l’atteindre permet ` a l’agent d’obtenir une
+r´ ecompense de +1. L’agent peut se d´ eplacer dans les 4 directions. S’il tente
+de sortir du gridwold il est tout simplement remis dans sa case de d´ epart.
+1. Donnez le processus de d´ ecision markovien d´ ecrivant ce probl` eme.
+2. ´Ecrire un programme Python permettant d’appliquer le Q-learning
+pour trouver une strat´ egie optimale. On prendraγ=0.9, α=0.2 et on
+essaiera plusieurs valeurs de ϵ.
+3. Quel sont les cons´ equences des changements de la valeur deϵ ?
+3
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+Figure 1 –
+4
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+Figure 2 –
+5
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+6 Q-learning, cas non d´ eterministe, (d’apr` es
+la r´ ef´ erence [4])
+On consid` ere un agent qui se d´ eplace sur le gridworld de la ﬁgure ﬁgure 3.
+La case rouge est une case interdite et l’atteindre provoque une punition de
+-1. La case verte est l’objectif et l’atteindre permet ` a l’agent d’obtenir une
+r´ ecompense de +1. La case noire est inaccessible. L’agent peut se d´ eplacer
+dans les 4 directions. S’il tente de sortir du gridwold ou acc´ eder ` a la case
+noire, il est remis dans sa case de d´ epart.
+Chaque d´ eplacement coˆ ute -0.04.
+Lorsque l’agent prend une direction d, il y r´ eussit avec une probabilit´ e
+0.8 et prend la direction situ´ ee ` a sa droite ou celle situ´ ee ` a gauche avec une
+probabilit´ e de 0.1.
+1. Donnez le processus de d´ ecision markovien d´ ecrivant ce probl` eme.
+2. ´Ecrire un programme Python permettant d’appliquer le Q-learning
+pour trouver une strat´ egie optimale. On prendra =0.9, α=0.2 et on
+essaiera plusieurs valeurs de ϵ et de γ.
+3. ´Etudiez les cons´ equences des changements de la valeur deϵ et de γ.
+R´ ef´ erences
+[1] S.M. Ross. Initiation aux probabilit´ es.Presses polytechniques et univer-
+sitaires romandes, 1996.
+[2] D. Silver. UCL Course on RL. Lecture 2. http://www0.cs.ucl.ac.uk/
+staff/d.silver/web/Teaching.html. 2015.
+[3] L. P. Kaelbling,M. L. Littman and A. W. Moore.Reinforcement Lear-
+ning : a Survey. J. Artif. Intell. Res. Volume 4. pages 237–285. 1996
+[4] Jacob Schrum. Reinforcement learning. https://www.youtube.com/
+watch?v=XrxgdpduWOU.
+6
+<<<PAGE>>>
+ING2-GI-MI 2018-19 cours d’Intelligence artiﬁcielle
+Figure 3 –
+7

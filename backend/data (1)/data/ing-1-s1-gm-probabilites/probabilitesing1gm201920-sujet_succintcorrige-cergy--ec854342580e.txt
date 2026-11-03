@@ -1,0 +1,228 @@
+EISTI, ING1 GM, Examen de Probabilités – 7 janvier 2020
+Règles
+Les calculatrices et les documents sont interdits. Il est très important de rédiger proprement et de montrer
+rigoureusement chaque étape d’un raisonnement.
+Notations et quelques rappels de formules : Pour toute variable aléatoire réelle X la fonction FX désigne sa
+fonction de répartition et φX , déﬁnie sur R par φX(u)= E[eiuX ]∶= E[cos(uX)]+i E[sin(uX)] avec i2=−1, désigne
+sa fonction caractéristique et f X une densité de X si elle en admet. Dans tous les exercices K désigne un espace
+de probabilité (Ω,F, P).
+Exercice 1 [3 points] Soit X une v.a.r. déﬁnie sur K. On suppose que X suit une loi de Poisson de paramètre 1.
+On pose Y = cos( X). Calculer φX(u) pour tout u∈R.
+Montrer que Y ∈L2(K) et en déduire, en justiﬁant rigoureusement, les expressions simpliﬁes de E[Y]et Var(Y).
+Solution : X est une v.a.r. discrète à valeurs N et cos est continu sur R, donc Y est une v.a.r. discrète à valeurs
+E′= {cos(k), k∈N}. Soit u∈R. Rappelons que d’après le cours φX(u) existe avec sa partie réelle et sa partie
+imaginaire qui sont ﬁnies. Sachant que, pour tout u∈R, les v.a.r. cos(uX) et sin(uX) sont des v.a.r. discrètes et
+bornées, on obtient donc d’après le coursE[cos(uX)]=∑k∈N cos(uk)P( X = k)=∑+∞
+k=0 cos(uk) e−11k
+k! et E[sin(uX)]=
+e−1∑+∞
+k=0 sin(uk) 1
+k! qui sont deux sommes ﬁnies, donc φX(u)= e−1∑+∞
+k=0
+cos(uk)+isin(uk)
+k! = e−1∑+∞
+k=0
+eiuk
+k! ,
+i.e. φX(u)= exp(−1+exp( iu)), en effet pour tout c∈C et b∈R on a∑+∞
+k=0
+ck
+k! = ec et ecb =( ec)b
+Comme Y ≤1 d’où Y k ∈L1 pour tout k ∈R+, en l’occurrence Y ∈L2, donc Y admet une variance (donc Y k ad-
+met une espérance et elle est ﬁnie) et d’après le cours E[Y]=∑+∞
+k=0
+cos(k)
+k! = Re(φX(1)) = e−1+cos(1) cos(sin(1))
+et Var(Y) = E[Y 2]−E[Y]2. Sachant que E[Y 2]=∑+∞
+k=0 cos(k)2 e−1
+k! = e−1∑+∞
+k=0
+1+cos(2k)
+2
+1
+k! = 1
+2(1+ Re(φX(2))) =
+1
+2(1+ e−1+cos(2) cos(sin(2))), d’où la variance deY .
+<<<PAGE>>>
+Exercice 2 [5 points] Soit (Ω,F, P) un espace de probabilité que l’on note par E. Soit T une v.a.r. déﬁnie sur
+E admettant une densité fT donnée par fT = Ct(1−t)1[0,1]( t) pour tout t∈R, où C ∈R est une constante non
+aléatoire.
+1. Quelle est la valeur de C ?
+Solution : fT étant une fonction de densité, on a ∫R fT( t) dt = 1, i.e. C∫
+1
+0 t(1−t) dt = 1, et donc C/parenleft.alt11
+2−1
+3/parenright.alt1= 1, i.e.
+C= 6.
+2. Montrer que T est de carré intégrable. En déduire, en justiﬁant, que T admet une espérance E[T] et une
+variance Var(T) que vous déterminerez.
+Solution : Sachant que P(T ∈[0,1])=∫[0,1] fT( t) dt = 1 d’où 0≤T ≤1 p.s. et donc T2 ≤1 d’où T2 est de carré
+intégrable, et donc la variance est bien déﬁnie, d’après la déﬁnition de cette dernière, d’oùT admet une espérance
+également, qui est ﬁnie. En utilisant le théorème de transfert avec[0,1]∋t /uni21A6hk( t)= tk∈R+ qui est continue (donc
+mesurable) et positive pour tout k∈{1,2}et T qui admet une densité, on a E[T2]= E[h2(T)]=∫R h2( t) fT( t) dt =
+6∫
+1
+0 t3(1−t) dt= 6/parenleft.alt11
+4−1
+5/parenright.alt1= 6
+20 et E[T]= E[h1(T)]= 6∫
+1
+0 t2(1−t) dt= 6/parenleft.alt11
+3−1
+4/parenright.alt1= 1
+12, i.e. E[T]= 1
+12, et donc Var(T)=
+3
+10−1
+22 , i.e. Var(T)= 1
+20
+3. Donner l’expression deFT( t) pour tout t∈R.
+Solution : Soit t ∈R. On a FT( t) = P(T ≤t) =∫
++∞
+−∞Ca(1−a)1]−∞,t]∩[0,1](a) da = 1[0,1]( t)∫
+t
+0 Ca(1−a) da+
+1]1,+∞[( t), i.e. FT( t)=(3−2t)t21[0,1]( t)+ 1]1,+∞[( t)
+4. Soit Y la v.a.r. déﬁnie sur E telle que Y =
+√
+T2+1. Montrer que Y admet une densité fY et donner une
+expression de fY explicitement.
+Solution : Soit y ∈R. On a FY( y) = P(
+√
+T2+1 ≤y) = 1[0,+∞[( y)P(T2 ≤y2−1) = 1[0,+∞[( y)1[1,+∞[( y)P(T ≤/radical.alt1
+y2−1), donc FY( y)= 1[0,+∞[( y)1[1,+∞[( y)/parenleft.alt1(3−2
+/radical.alt1
+y2−1)( y2−1)1[0,
+√
+2]( y)+ 1]
+√
+2,+∞[( y)/parenright.alt1, et donc on obtient
+FY( y) = (3−2
+/radical.alt1
+y2−1)( y2−1)1[1,
+√
+2]( y)+ 1]
+√
+2,+∞[( y), où on a FY dérivable sur [1,
+√
+2]; cela implique que Y
+admet une densité fY donnée par fY( y) = C/parenleft.alt2d
+dt /parenleft.alt2t2
+2 −t3
+3 /parenright.alt2/parenright.alt2/divides.alt2
+t=
+/radical.alt1
+y2−1
+/parenleft.alt2d
+dy
+/radical.alt1
+y2−1/parenright.alt21[1,
+√
+2]( y), c’est-à-dire qu’on a
+fY( y)= C y(1−
+/radical.alt1
+y2−1)1[1,
+√
+2]( y).
+2
+<<<PAGE>>>
+Exercice 3 [4 points] Soit ( X k)k∈N∗une suie de v.a.r. indépendantes et identiquement distribuées de loi expo-
+nentielle de paramètre λ> 0. On rappelle que une densité d’une loi exponentielle de paramètre λ est donnée par
+f X( x)= λ e−λ x1R+( x) pour tout x∈R. On a E[X]= 1
+λ et Var( X)= 1
+λ2 . On considère un entier n≥100 et on note
+X n= 1
+n∑n
+k=1 X k la moyenne des n premiers X k.
+1. La suite ( X m)m≥1 converge vers quelle variable aléatoire ? et quels sont les types convergences valables
+pour cette limite ?
+Solution : On peut utiliser la loi forte des grands nombres, avec ( X n)n∈N∗qui est bien une suite de v.a.r. i.i.d. de
+carré intégrable avec µ= E[X1]= 1
+λ et σ2= 1
+λ2 <∞; et on obtient que ( X m)m≥1 converge p.s. et converge dans L2
+vers µ (cela implique convergence dans L2 aussi).
+On aurait pu utiliser la loi faible des grands nombres, en utilisant i.i.d. et X1∈L1, avec convergence p.s. et dans
+L1.
+2. On suppose que λ= 1
+2 et n= 100.
+Estimer à l’aide du Théorème Limite Centrale la probabilitéP(1,9≤X n≤2,1).
+Solution : Ici on peut utiliser le Théorème limite centrale, en effet on réutilise les hypothèses utilisées dans la loi
+forte des grands nombres, et on a(( nX n−nµ)/slash.leftσ√n)n converge en loi vers une v.a. X ∼N(0,1), i.e. limn→∞P(a≤√n( X n−2)/slash.left2≤b)= P(a≤X ≤b), i.e. a et b sont tels que 2a/slash.left√n+2= 1,9 et 2b/slash.left√n+2= 2,1, i.e. a= 5(1,9−2)=−0,5
+et b= 5(2,1−2)= 0,5. Or P(a≤X ≤b)= φ(0.5)−φ(−0.5)= 2φ(0.5)−1= 2×0,69146... −1= 0,38292...
+3. Déterminer αn et βn (ne dépendant que de n) tels que P(αn≤λX n≤βn)≈0.99.
+Solution : Da façon analogue, on obtient 2 a/slash.left√n+ 2= αn/slash.leftλ et 2 b/slash.left√n+ 2= βn/slash.leftλ, i.e. a = 2(αn−1)√n et b =
+2(βn−1)√n, comme il y a une inﬁnité de cas de(a, b) tels que P(a≤X ≤b)= 0,99... prenons comme précédemment
+a=−b et b positif, i.e. que 2φ(b)−1= 0.99, i.e. φ(b)= 0.995, i.e. b= 2.57, d’oùαn= 2λ(a/slash.left√n+1)= 1+2.57/slash.left√n et
+βn= 1−2.57/slash.left√n.
+3
+<<<PAGE>>>
+Exercice 4 [8 points] Soit X une v.a.r. de loi exponentielle de paramètre λ> 0.
+1. Calculer FX( x) pour tout x∈R.
+Solution : Soit x∈R. On a FX( x)= P( X ≤x)=∫
++∞
+−∞1]−∞,x]∩[0,+∞[(u)λe−λ u du, donc FX( x)=(1−e−λx)1R+( x).
+2. Soit k∈N∗. Justiﬁer que X k∈L1(K) et calculer E[X k].
+Solution : Comme X ≥0 p.s. on a donc X k ≥0 p.s. i.e. X k qui admet une espérance, et par conséquent on
+peut utiliser le théorème de transfert avec hk déﬁnie par hk( x)= xk sur R+, en effet X admet une densité; d’où
+E[/divides.alt0X k/divides.alt0]= E[X k]=∫R+ xkλe−λx dx, par une IPP et une petite récurrence (à détailler rigoureusement !) on obtient
+que E[X k]= k!
+λk , et donc on a bien X k∈L1.
+3. Déterminer φX( x) pour tout x∈R.
+Solution : Soit x ∈R. D’après le cours (c’était justiﬁé) on peut utiliser le théorème de transfert et donc on
+obtient Re(φX( x)) =∫R+ cos( xu)λe−λu du = λ
+λ2+x2 /bracketleft.alt1e−λu( xsin( xu)−λcos( xu))/bracketright.alt
++∞
+0 = λ2
+λ2+x2 (on justiﬁe ces limites !
+en bornant par exemple), et de même (en justiﬁant encore les limites ! ça prend une ou deux minutes) on obtient
+Im(φX( x))= λx
+λ2+x2 , d’oùφX( x)= λ
+λ2+x2(λ+i x)
+4. Soient x, y deux réels strictement positifs. Calculer P({X > x+ y}/divides.alt0{X > x}).
+Solution : Sachant que x > 0 d’où en utilisant la question 2. on a P( X > x) = 1−(1−e−λx) = e−λx > 0, d’où
+P({X > x+ y}/divides.alt0{X > x})= P( X > x+ y et X > x)/slash.leftP( X > x) = P( X > x+ y)/slash.leftP( X > x) = e−λ( x+y)/slash.lefte−λx, i.e. P({X >
+x+ y}/divides.alt0{X > x})= e−λy, on dit qu’il n’y a pas de dépendance du passé.
+5. Déterminer la loi de p( X) où p( x) désigne la partie entière de x∈R.
+Solution : X ≥0 p.s. et pour tout ω ∈Ω on a ( p( X))( ω) ∈N par déﬁnition de la partie entière, donc p( X)
+est une variable aléatoire discrète à valeurs entiers positifs, donc d’après le cours la loi de p( X) est l’ensemble
+{P( p( X)= k), k∈N}. Or pour k∈N, on a P( p( X)= k)= P(k≤X < k+1)= FX(( k+1)−)−FX(k−)= FX(k+1)−FX(k)
+car FX est continue, alors on a P( p( X)= k)= e−λk−e−λ(k+1). Vériﬁcation se fait par ∑+∞
+k=0 P( X = k)=∑+∞
+k=0 e−λk−
+e−λ(k+1)= e−λ×0−e−λ(+∞)= 1−0= 1
+6. Déterminer la loi de Z où Z= X−p( X).
+Solution : Sachant que Z ∈[0,1[ p.s. (partie fractionnaire) on a donc pour tout t ∈R, FZ( t) = P( Z ≤t) =
+1[0,1[( t)P( X−p( X) ≤t)+ 1[1,+∞[( t), donc pour 0 ≤t< 1 on a P( Z ≤t) = P( X−p( X) ≤t) = P( X−p( X) ≤t, X ∈
+∪k∈N[k, k+ 1[)= P/parenleft.alt1/uni22C3k∈N{X−p( X) ≤t, X ∈[k, k+ 1[}/parenright.alt1, comme il s’agit d’une union d’événements disjoints, d’où
+grâce à la σ-additivité de P, on obtient P( Z ≤t) =∑+∞
+k=0 P(k ≤X < k+ 1, X−k ≤t) =∑+∞
+k=0 P(k ≤X ≤t+ k) =
+(1−e−λt)∑+∞
+k=0 e−λk=(1−e−λt) 1
+1−e−λ , en effet 0< e−λ< 1 grâce à λ> 0. FZ est aussi dérivable sur [0,1[, et donc Z
+admet une densité f Z donnée par f Z( z)= λ e−λz
+1−e−λ 1[0,1[( z), et on a aussi FZ( z)= 1−e−λz
+1−e−λ 1[0,1[( z)+ 1[1,+∞[( z).
+7. Montrer que Z est de carré intégrable. Calculer Var( Z).
+Solution : Comme Z∈[0,1[ p.s. d’oùZ2≤1 p.s. et donc Z2∈L1, i.e. Z est bien de carré intégrable, donc Var( Z)
+existe et on a avec le théorème de transfert bien justiﬁé Var ( Z) = λ
+1−e−λ∫
+1
+0 z2 e−λz d z− λ2
+(1−e−λ)2 /parenleft.alt2∫
+1
+0 ze−λz d z/parenright.alt2
+2
+=
+1
+1−e−λ E[X 2]− 1
+(1−e−λ)2 E[X]2, ﬁnalement Var( Z)= 1
+1−e−λ
+2
+λ2− 1
+(1−e−λ)2
+1
+λ2 , i.e. Var( Z)= 1−2e−λ
+λ2(1−e−λ)2 .
+4

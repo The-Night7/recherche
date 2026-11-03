@@ -1,0 +1,372 @@
+Programmation C
+Structure d’un programme, Compilation
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 36
+<<<PAGE>>>
+Structure d’un programme
+ING1 Programmation C CY Tech 2 / 36
+<<<PAGE>>>
+Pr´ eambule
+Plusieurs approches de programmation (parmi les languages de 3` eme
+g´ en´ eration)
+▶ fonctionnelle : appel de fonction math´ ematiques (Caml, Scheme)
+▶ proc´ edurale : suite d’instructions ou d’appel de fonctions ⇒ automate
+(C, Pascal, C++)
+▶ logique : utilisation de formule logique ; utilis´ e en IA (Prolog)
+▶ objet : ensemble d’objets communiquant ensemble (Java, C++)
+L’algorithmique est souvent plus intuitive pour la programmation
+proc´ edurale
+Type abstrait : approche programmation objet
+ING1 Programmation C CY Tech 3 / 36
+<<<PAGE>>>
+Algorithmes et Programmes
+Algorithme
+Pr´ ecis
+▶ Comportement d´ ecrit ` a partir d’actions ´ el´ ementaires
+Complet
+▶ Tous les cas de figures doivent ˆ etre pris en compte
+Non ambigu
+▶ Face ` a une situation : un seul comportement
+ING1 Programmation C CY Tech 4 / 36
+<<<PAGE>>>
+Algorithmes et Programmes
+L’´ ecriture d’un algorithme est une ´ etape de la conception de
+programme
+Probl` eme
+` a r´ esoudre Algorithme Programme
+Analyse Code
+La programmation est une autre ´ etape de la conception de programme
+ING1 Programmation C CY Tech 5 / 36
+<<<PAGE>>>
+D´ efinitions
+Un algorithme est une s´ equence finie d’actions, dont le d´ eroulement
+suit un ordre pr´ evu ` a l’avance.
+Un programme est la traduction (codage) d’un algorithme dans un
+langage de programmation afin de pouvoir ˆ etre ex´ ecut´ e sur un
+ordinateur.
+ING1 Programmation C CY Tech 6 / 36
+<<<PAGE>>>
+Processus de programmation en C
+´Ecriture de code source (traduction de l’algorithme) dans un fichier
+portant comme extension : .c
+Compilation du code source : traduction du code source vers un
+fichier ex´ ecutable par la machine
+Ex´ ecution du fichier g´ en´ er´ e
+ING1 Programmation C CY Tech 7 / 36
+<<<PAGE>>>
+Programme C
+Ensemble de fonctions
+Une seule doit s’appeler : main
+Ex´ ecution d’un programme : ex´ ecution dela fonction main
+ING1 Programmation C CY Tech 8 / 36
+<<<PAGE>>>
+Fonctions
+Description
+Nom de la fonction
+Param` etres
+Corps
+Type de r´ esultat
+ING1 Programmation C CY Tech 9 / 36
+<<<PAGE>>>
+Fonctions
+int main (int argc, char** argv) {
+.../...
+}
+Type de retour
+Nom de la fonction
+Param` etre
+D´ ebut de la fonction
+Corps de la fonction
+Fin de la fonction
+ING1 Programmation C CY Tech 10 / 36
+<<<PAGE>>>
+Algorithme minimum
+Affichage d’un message
+programme Hello
+´ ecrire”Hello World !”
+fin programme
+ING1 Programmation C CY Tech 11 / 36
+<<<PAGE>>>
+Programme minimum
+Affichage d’un message (en C) : hello world.c
+i n t main ( void ) {
+p r i n t f ( ” H e l l o World ! ” ) ;
+return ( 0 ) ;
+}
+`A taper dans un ´ editeur de texte
+N´ ecessite une compilation
+Puis doit ˆ etre ex´ ecut´ e
+Affiche : Hello World ! sur la ligne de commande
+ING1 Programmation C CY Tech 12 / 36
+<<<PAGE>>>
+Remarques
+Programme syntaxiquement correct
+Mauvais programme
+▶ Pas de commentaire de programme
+▶ Mauvaise d´ eclaration du main
+▶ Que fait le code ?
+▶ ...
+ING1 Programmation C CY Tech 13 / 36
+<<<PAGE>>>
+Programme minimum correct
+Affichage d’un message (en C) : hello world.c
+/ ∗ ! Commentaire de f i c h i e r ( doxygen ) ∗/
+/∗ I n c l u s i o n d e s e n t e t e s de l i b r a i r i e s ∗/
+#i n c l u d e<s t d i o . h>
+/ ∗ ! Commentaire de l a f o n c t i o n main ( doxygen ) ∗/
+i n t main ( i n t argc , char ∗∗ a r g v ) {
+// A f f i c h a g e d ’ un message
+p r i n t f ( ” H e l l o World ! ” ) ;
+// F i n du programme : t o u t e s t OK.
+return ( 0 ) ;
+}
+ING1 Programmation C CY Tech 14 / 36
+<<<PAGE>>>
+Commentaires
+Types de commentaires
+Commentaires C
+Commentaires doxygen
+Rˆ ole, utilit´ e, justification
+Annote le code que vous faites
+Permet de comprendre rapidement le code
+Permet une v´ erification plus rapide
+Peut permettre de g´ en´ erer une documentation technique
+Vous oblige ` a une rigueur
+Fait gagner du temps
+ING1 Programmation C CY Tech 15 / 36
+<<<PAGE>>>
+Commentaires C
+Notation
+// : Indique un commentaire jusqu’` a la fin de la ligne (mais n’est pas
+accept´ e par les normes ANSIa)
+/* : Indique un d´ ebut de bloc de commentaires (une ou plusieurs
+lignes)
+*/ : Indique une fin de bloc de commentaires
+Attention ` a ne pas imbriquer plusieurs blocs de commentaires
+a. American National Standards Institute
+Se positionne juste avant le code (ou bloc de code) ` a commenter
+Doit rester dans la mˆ eme langue
+ING1 Programmation C CY Tech 16 / 36
+<<<PAGE>>>
+Commentaires doxygen
+Permet de r´ ealiser une documentation automatiquement
+Commentaires de fichier : d´ ecrit l’utilit´ e du fichier
+Commentaires de fonction : d´ ecrit l’utilit´ e de la fonction, ses
+param` etres, ses valeurs de retour, pr´ e-condition, post-condition, ...
+Plus beaucoup d’autres !
+▶ http://www.doxygen.nl/manual/
+ING1 Programmation C CY Tech 17 / 36
+<<<PAGE>>>
+Commentaires doxygen
+Notation
+/* ! ou /** : Indique un d´ ebut de bloc de commentaires doxygen
+*/ : Indique une fin de bloc de commentaires
+Utilisation de balises :
+▶ \version num description : version en cours, ainsi qu’une br` eve
+description
+▶ \author nom : qui a ´ ecrit le fichier ou la fonction (une balise par
+auteur)
+▶ \date date : date de cr´ eation/modification
+▶ \brief description : description courte
+▶ Description longue
+▶ \remarks description : ´ eventuellement des remarques g´ en´ erales
+ING1 Programmation C CY Tech 18 / 36
+<<<PAGE>>>
+Commentaires doxygen
+Notation
+Utilisation de balises pour les commentaires de fichiers :
+▶ \file nom fichier : indique le fichier qui est concern´ e
+Utilisation de balises pour les commentaires de fonctions :
+▶ \fn prototype fonction : indique la fonction qui est concern´ ee
+(type de retour, nom de la fonction et les param` etres)
+▶ \param nom parametre : description du param` etre (autant de balises
+que de param` etres)
+▶ \return description : description du retour de la fonction (balise
+non pr´ esente le commentaire est pour une proc´ edure)
+ING1 Programmation C CY Tech 19 / 36
+<<<PAGE>>>
+Commentaires doxygen
+Commentaire de fichier (fichier tp1.c)
+/ ∗ !
+\ f i l e tp1 . c
+\ a u t h o r E l i s a b e t h R a n i s a v l j e v i c < e r c @ e i s t i . eu>
+\ v e r s i o n 0 . 1 P r e m i e r j e t
+\ d a t e 3 s e p t e m b r e 2017
+\ b r i e f P r e m i e r c o n t a c t a v e c l a programmation C
+∗/
+ING1 Programmation C CY Tech 20 / 36
+<<<PAGE>>>
+Commentaires doxygen
+Commentaire de fonction (la fonction main)
+/ ∗ !
+\ f n i n t main ( i n t argc , c h a r ∗∗ a r g v )
+\ a u t h o r E l i s a b e t h R a n i s a v l j e v i c < e r c @ e i s t i . eu>
+\ v e r s i o n 0 . 1 P r e m i e r j e t
+\ d a t e 3 s e p t e m b r e 2017
+\ b r i e f H e l l o w o r l d !
+\param a r g c nombre d ’ arguments en e n t r e e
+\param a r g v v a l e u r d e s arguments en e n t r e e
+\ r e t u r n 0 s i t o u t c ’ e s t b i e n p a s s e
+∗/
+i n t main ( i n t argc , char ∗∗ a r g v ) {
+. . . / . . .
+return ( 0 ) ;
+}
+ING1 Programmation C CY Tech 21 / 36
+<<<PAGE>>>
+Aspect g´ en´ eral
+Structure d’un fichier .c
+/*! Commentaires de fichiers */
+Macro-pr´ eprocesseur
+/*! Commentaires de la fonction 1 */
+Fonction 1
+/*! Commentaires de la fonction 2 */
+Fonction 2
+...
+/*! Commentaires de la fonction main */
+main
+ING1 Programmation C CY Tech 22 / 36
+<<<PAGE>>>
+Types de donn´ ees
+Type de donn´ ees basique
+entier : char, int
+r´ eel :float, double
+caract` ere :char
+Chaque type poss` ede un codage diff´ erent sur machine
+Extension des types
+Deux notions orthogonales :
+Taille : short, long
+▶ Uniquement pour les int et double
+Signe : unsigned, signed par d´ efaut
+▶ Uniquement pour les char, int, float
+ING1 Programmation C CY Tech 23 / 36
+<<<PAGE>>>
+Constantes
+Constantes
+Invariable pendant l’ex´ ecution
+Poss` ede un type
+Constantes num´ eriques
+▶ 14, 3.14, Oxbfabcdd0, ...
+Constantes de type caract` ere
+▶ ’A’, ’z’, ’1’, ...
+S´ equences d’´ echappement
+▶ Caract` ere provoquant un ”affichage” particulier
+▶ \n, \t, \v, \b, \r, \f, \’, \”, \\, \nnn, \xnnn, ...
+Constantes de type cha ˆ ıne de caract` eres
+▶ ”Coucou”, ”Aujourd \’hui”, ”Hello \nWorld !”, ””, ...
+ING1 Programmation C CY Tech 24 / 36
+<<<PAGE>>>
+Table ASCII
+American Standard Code for Information Interchange
+Codage de 128 caract` eres
+Equivalence entre un nombre (en base 2, 8, 10 ou 16) et un caract` ere
+Exemples :
+Nb Char Signification
+13 \n Retour chariot
+33 ! Point d’exclamation
+49 1 Chiffre un
+65 A Lettre latine capitale A
+97 a Lettre latine minuscule a
+ING1 Programmation C CY Tech 25 / 36
+<<<PAGE>>>
+Variables
+Variables
+Valeur peut changer
+N´ ecessite un nom et un type
+D´ eclaration :type nom ;
+R` egles de programmation : commentaires de variables et nom
+explicite !
+Pas d’accent, ni ponctuation
+▶ Seul les caract` eres alphanum´ eriques et le
+Commence obligatoirement par une lettre
+Affectation ⇔ =
+ING1 Programmation C CY Tech 26 / 36
+<<<PAGE>>>
+Variables
+Exemple ` a ne pas faire
+int i; int a, b, c;
+Exemple ` a faire
+int i; // Variable de boucle
+int int coeff a; // Premier terme de l’´ equation
+int coeff a = 5; /* Initialisation du premier terme de
+l’´ equation */
+char reponse = ’o’;
+str reponse = "oui"; /* Ne fonctionne pas */
+ING1 Programmation C CY Tech 27 / 36
+<<<PAGE>>>
+Compilation
+ING1 Programmation C CY Tech 28 / 36
+<<<PAGE>>>
+Compilation
+Convertir un fichier texte en un fichier binaire, ex´ ecutable.
+Commande : gcc [options] fichiers
+gcc tp . c
+Ex´ ecution (par d´ efaut, l’ex´ ecutable s’appellea.out)
+. / a . out
+Options gcc :
+▶ -Wall : Affiche tous les warnings par le compilateur
+▶ -Werror : Transforme tous les warnings en erreurs
+▶ -o nomFichier : Pr´ ecise le nom du fichier en sortie
+▶ Pour plus d’options, voir le manuel de gcc
+gcc −Wall tp . c −o monProgramme
+ING1 Programmation C CY Tech 29 / 36
+<<<PAGE>>>
+Compilation
+4 phases
+1 Pr´ e-processing : passage au pr´ e-processeur
+2 Compilation : compilation en langage assembleur
+3 Assemblage : conversion du langage assembleur en code machine
+4 ´Edition des liens : liens vers les biblioth` eques
+toto.c toto.i toto.s toto.o toto1 2 3 4
+ING1 Programmation C CY Tech 30 / 36
+<<<PAGE>>>
+Compilation
+Pr´ e-processing
+gcc −E t o t o . c −o t o t o . i
+Transformation textuelle uniquement : op´ eration de substitution
+▶ supression des commentaires
+▶ inclusion des fichiers .h dans le fichier .c : #include
+▶ traitement des directives de compilation qui commencent par un # :
+define, ifndef, endif, include , ...
+toto.i est un fichier texte en langage C, lisible
+Contrˆ ole lasyntaxe du programme
+ING1 Programmation C CY Tech 31 / 36
+<<<PAGE>>>
+Compilation
+Compilation
+gcc −S t o t o . i −o t o t o . s
+Le code C est transform´ e en assembleur
+toto.s est un fichier texte lisible, mais difficilement compr´ ehensible
+ING1 Programmation C CY Tech 32 / 36
+<<<PAGE>>>
+Compilation
+Assemblage
+gcc −c t o t o . s −o t o t o . o
+Le code assembleur est transform´ e en code machine binaire
+toto.o est un fichier binaire
+ING1 Programmation C CY Tech 33 / 36
+<<<PAGE>>>
+Compilation
+´Edition des liens
+gcc t o t o . o −o t o t o
+toto.o est incomplet : il ne contient pas le code les fonctions inclues
+▶ #include<...> n’inclue que le prototype des fonctions, pas leurs
+codes
+R´ eunir le fichierobjet (toto.o) et les fonctions contenues dans les
+biblioth` eques pour produire un programme ex´ ecutable
+ING1 Programmation C CY Tech 34 / 36
+<<<PAGE>>>
+Doxygen
+ING1 Programmation C CY Tech 35 / 36
+<<<PAGE>>>
+Documentation doxygen
+N´ ecessite un fichier de configuration :Doxyfile ou doxyfile
+▶ peut se g´ en´ erer avec la commandedoxygen
+doxygen −g
+Configuration adapt´ ee par rapport au cas d’utilisation
+▶ PROJECT NAME, PROJECT NUMBER, OUTPUT DIRECTORY, ...
+Compilation de la documentation
+▶ g´ en` ere ce qui a ´ et´ e demand´ e : LATEX, HTML, ...
+doxygen D o x y f i l e
+ING1 Programmation C CY Tech 36 / 36

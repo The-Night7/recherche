@@ -1,0 +1,79 @@
+CY Tech: ING2 MI
+TP1-bis: Caract´ erisation d’une s´ erie temporelle
+Mesures de d´ ependances et simulations
+January 14, 2025
+Exercice 1- Donn´ ees de varicelle(Fichier: varicelle.dat)
+1. Cr´ eer un objet de type s´ erie temporelle contenant cette s´ erie et donnez sa Repr´ esentation
+graphique. en R.)
+2. Analyser qualitativement cette s´ erie, c’est-` a-dire rep´ erer d’´ eventuelles tendances et/ou saison-
+nalit´ es (changer d’´ echelle si besoin).
+3. Quel est le nombre de cas de varicelle mensuel moyen ?
+4. Tracer les 25 premi` eres auto-corr´ elations. Interpr´ eter ces r´ esultats.
+5. Tracer sur un mˆ eme graphique, les ´ evolutions mensuelles du nombre de cas de varicelle pour
+chaque ann´ ee (une courbe pour chaque ann´ ee, ce qui nous donnera un certain nombre de
+courbes superpos´ ees).
+6. Tracer sur un graphique l’´ evolution annuelle du nombre de cas de varicelle.
+7. Ces deux derni` eres questions vous permettent-elles d’am´ eliorer vos conclusions de la question
+2 ?
+Exercice 2. Simulations de s´ eries temporelles
+On appelle bruit blanc gaussien une suite de variables al´ eatoires ind´ ependantes et identiquement
+distribu´ ees (ϵt)t∈N de loi normale centr´ ee r´ eduite.
+1. Quelle est la fonction d’auto-corr´ elation d’un bruit blanc ?
+2. Simuler un bruit blanc gaussien de taille 100, et repr´ esenter le graphiquement.
+3. Tracer la fonction d’auto-corr´ elation.
+4. Recommencer les deux questions pr´ ec´ edentes et observer la variabilit´ e des r´ esultats. Jouer
+sur la longueur de la s´ erie.
+5. Simuler maintenant la s´ erie temporelleX(t) = 0.5t + 2ϵt avecϵt∼N (0, 1) (taille 100).
+6. Repr´ esenter graphiquement la s´ erie et interpr´ eter-la qualitativement.
+7. Faites de mˆ eme pourX(t) = 0.5t +ϵt + 3 cos(tπ) avec ϵt∼N (0, 1).
+Exercice 3 [Autocovariance d’une Moyenne Mobile] . Soit Mt = 1
+3(ϵt−1 +ϵt +ϵt+1), la
+moyenne mobile construit ` a partir d’un bruit blancϵt,
+1. Montrer que :
+γM(s,t ) =
+
+
+
+3
+9σ2
+ϵ s =t,
+2
+9σ2
+ϵ |s−t| = 1,
+1
+9σ2
+ϵ |s−t| = 2,
+0 |s−t|> 2.
+(1)
+1
+<<<PAGE>>>
+2. En d´ eduire la fonction d’auto-corr´ elationρM(s,t ).
+Exercice 4 [Marche al´ eatoire avec d´ erive].Une marche al´ eatoire avec d´ erive est d´ efinie
+par:
+Xt =δ +Xt−1 +ϵt, t = 1, 2,..., X 0 = 0, (2)
+o` uϵt est un bruit blanc.
+1. Montrer que Xt =δt + Pt
+j=1ϵj, t = 1, 2,....
+2. Supposons que δ = 0. Montrer que :
+γX(s,t ) = min(s,t )σ2
+ϵ et var( Xt) =γX(t,t ) =tσ2
+ϵ.
+ Rappel: Sic1,c 2,...,c m etd1,d 2,...,d n sont des constantes, ett1,t 2,...,t m ets1,s 2,...,s n
+sont des points temporels, alors :
+Cov
+
+
+mX
+i=1
+ciXti,
+nX
+j=1
+djXsj
+
+ =
+mX
+i=1
+nX
+j=1
+cidjCov(Xti,Xsj). (3)
+2

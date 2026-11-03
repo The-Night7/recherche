@@ -1,0 +1,110 @@
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+1 
+ 
+TP1 - Présentation de Cisco Packet Tracer et des 
+Commandes IOS 
+ 
+ 
+ 
+Choisir le Type de matériel 
+• Selon le type, la liste du matériel change de  
+manière dynamique. 
+• Cliquer sur le matériel souhaité  puis cliquer à 
+nouveau dans l’espace de travail  pour placer le 
+matériel sur l’espace e travail. 
+ 
+Mise en place des connexions 
+• Choisir le type de connexion 
+• Cliquer sur le premier équipement 
+• Choisir le connecteur désiré 
+• Cliquer ensuite sur le deuxième 
+équipement et choisir le connecteur désiré. 
+• Les points de couler aux extrémités de la 
+connexion informe de 
+l’état de la liaison. Ils peuvent être rouges, 
+orange ou vert. 
+ 
+Exercice : Connecter deux PC directement et configurer leurs adresses IP dans le même réseau. 
+Assurer-vous que les deux PC peuvent  se pinger. 
+
+<<<PAGE>>>
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+2 
+ 
+Commandes IOS Cisco 
+ 
+ 
+ 
+Commandes pour changer de mode d'exécution et de configuration  
+Router> enable  
+Router# configure terminal  
+Router(config)#  
+Router(config)# exit | end | Ctrl+C | Ctrl+Z  
+Router# disable  
+Router>  
+Router# ? 
+Outils de diagnostic  
+Router# ping ip-address  
+Router# traceroute ip-address 
+Visualisation et sauvegarde de la configuration  
+Router# show running-config  
+Router# show startup-config  
+Router# copy running-config startup-config  
+Router# copy running-config tftp:  
+Switch# copy running-config tftp:[[[//location ]/directory ]/filename ]  
+Switch# copy startup-config tftp:[[[//location ]/directory ]/filename ] 
+Configuration de base d'un équipement CISCO :  
+Router(config)# hostname router-name  
+  
+Router(config)# enable secret password  
+ 
+Router(config)# banner motd # message #  
+Router(config)# banner login # message # 
+ 
+Configuration de la console et du terminal virtuel :  
+Router(config)# line console 0  
+Router(config-line)# password password  
+Router(config-line)# login  
+ 
+Router(config)# line vty 0 4  
+Router(config-line)# password password  
+Router(config-line)# login  
+ 
+ 
+Exercice: Ajouter un switch a la topologie précédente. Il faut sécuriser l’accès au switch et au mode 
+privilégier par un mot de passe. Assurer vous que la config est sauvegardée. 
+ 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+3 
+ 
+Switch> 
+Switch>enable 
+Switch#configure terminal 
+Enter configuration commands, one per line. End with CNTL/Z. 
+Switch(config)#enable secret cisco123 
+Switch(config)#line console 0 
+Switch(config-line)#password cisco123 
+Switch(config-line)#login 
+Switch(config-line)#exit 
+Switch#copy running-config startup-config  
+Destination filename [startup-config]?  
+Building configuration... 
+[OK] 
+Switch# 

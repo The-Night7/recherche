@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include <mpi.h>
+#include<string>
+
+int main(int argc, char *argv[])
+{
+ // int msg = 99; // message to circulate
+  char msg[100];
+  int rank, size, tag, next, previous;
+  MPI_Status status;// MPI_ANY_STATUS
+  //begining 
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+ 
+  tag = 232; // any tag or random tag
+  next = (rank + 1) % size; //my neighbour modulo size (why?)
+  previous = (rank + size - 1) % size; // previous neighbour
+
+  // process 0 starts
+  if (rank == 0) {
+	sprintf(msg, "Hello from %d!", rank);
+	printf("Process %d send %s to %d\n", rank, msg, next);
+    MPI_Send(msg, strlen(msg)+1, MPI_CHAR, next, tag, MPI_COMM_WORLD);
+  }
+  // each process is waiting to receive message
+  MPI_Recv(msg, 100, MPI_CHAR, previous, tag,MPI_COMM_WORLD, &status);
+  printf("Process %d, receive %s\n", rank, msg);
+  
+  // all processes except the process 0 wait, if we arrive to P0, we stop
+  if(rank == 0) {
+      printf("The tour is terminated\n"); 
+  }
+  else {
+  	sprintf(msg, "Hello from %d!", rank);
+    // on passe le message
+    MPI_Send(msg, strlen(msg)+1, MPI_CHAR,next, tag, MPI_COMM_WORLD);
+ }
+  // finalisation
+  MPI_Finalize();
+  return 0;
+}

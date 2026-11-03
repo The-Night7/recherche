@@ -1,0 +1,428 @@
+BROUILLON UNIX/SHELL - COMMANDES + THÉORIE
+1. QUESTIONS DE COURS (THÉORIE)
+ CHEMINS:
+ ~ = home directory (/home/user)
+ / = racine système
+ . = répertoire courant
+ .. = répertoire parent
+ Chemin absolu: /home/user/file (depuis racine)
+ Chemin relatif: ../file (depuis courant)
+PIPE |:
+ Redirige sortie cmd1 vers entrée cmd2
+ Ex: ls | wc -l (compte fichiers)
+ Communication inter-processus
+FIND vs GREP:
+ find: cherche NOMS de fichiers/répertoires
+ grep: cherche CONTENU dans fichiers
+MAN:
+ man cmd: affiche manuel commande
+ man -k mot: cherche dans manuels
+ q pour quitter, / pour rechercher
+RÉPERTOIRE:
+ Dossier contenant liste/description fichiers
+ Traité comme fichier spécial (type d)
+SHELL:
+ Interpréteur de commandes
+ Affiche prompt, analyse, exécute commandes
+ Crée processus
+ echo $SHELL pour voir shell actuel
+BASHRC:
+ Fichier config shell (~/.bashrc)
+ Lu à chaque démarrage terminal
+ Contient alias, variables, config perso
+ source ~/.bashrc pour recharger
+ALIAS:
+ Surnom pour commande longue
+ alias ll='ls -la'
+ unalias ll pour supprimer
+ Définir dans .bashrc pour permanence
+LIENS SYMBOLIQUES:
+ Pointeur vers fichier/rép
+ ln -s cible lien
+ Si cible supprimée, lien cassé
+ Économise espace disque
+2. NAVIGATION & FICHIERS
+ pwd                    # Répertoire courant
+cd /path ou cd ~ ou cd # Change rép (home)
+cd ..                  # Répertoire parent
+ls                     # Liste fichiers
+ls -l                  # Liste détaillée
+ls -a                  # Affiche cachés
+ls -la                 # Détaillé + cachés
+ls -lt                 # Tri date récent→ancien
+ls -ltr                # Tri date ancien→récent
+ls -R                  # Récursif sous-rép
+ls -F                  # Indicateurs (/ @ *)
+ls *.txt               # Que fichiers .txt
+mkdir rep              # Crée répertoire
+mkdir -p a/b/c         # Crée hiérarchie
+touch file             # Crée vide/màj date
+rm file                # Supprime fichier
+rm -rf rep/            # Supprime rép FORCE
+rmdir rep              # Supprime rép VIDE
+cp src dest            # Copie fichier
+cp -r rep1/ rep2/      # Copie rép récursif
+mv old new             # Renomme/déplace
+cat file               # Affiche contenu
+cat -n file            # Avec n° lignes
+more file              # Page/page (espace)
+less file              # + navigation
+head file              # 10 1ères lignes
+head -n5 file          # 5 1ères lignes
+tail file              # 10 dernières
+tail -n5 file          # 5 dernières
+wc file                # lignes/mots/chars
+wc -l file             # Compte lignes
+wc -w file             # Compte mots
+3. REDIRECTIONS & PIPES
+ cmd > file             # Sortie→file (écrase)
+cmd >> file            # Sortie→file (ajoute)
+cmd < file             # Entrée←file
+cmd 2> file            # Erreurs→file
+cmd 2>> file           # Erreurs→file (ajoute)
+cmd > file 2>&1        # Sortie+erreurs→file
+cmd 2>/dev/null        # Ignore erreurs
+cmd1 | cmd2            # Sortie cmd1→entrée cmd2
+echo 'txt' > file      # Écrit texte
+echo 'txt' >> file     # Ajoute texte
+date > hoy             # Date dans fichier
+4. RECHERCHE (find, grep)
+ find . -name 'file'         # Cherche nom
+find . -name '*.txt'        # Par extension
+find . -type f              # Fichiers
+find . -type d              # Répertoires
+find . -name 'f' -exec cmd {} \;  # Exec
+find . -name 'f' -exec ls -l {} \;
+grep 'mot' file             # Cherche mot
+grep -i 'mot' file          # Insensible casse
+grep -n 'mot' file          # N° lignes
+grep -c 'mot' file          # Compte occur.
+grep -v 'mot' file          # SANS mot
+grep -r 'mot' rep/          # Récursif
+grep -R 'mot' /etc/ 2>/dev/null
+grep --color 'mot' file     # Colore
+grep '^deb' file            # Début ligne
+grep 'fin$' file            # Fin ligne
+grep '^$' file              # Lignes vides
+grep -v '^$' file           # NON vides
+grep '[0-9]' file           # Avec chiffres
+grep '^[A-Z]' file          # Début majusc
+grep -wi 'mot' file         # Mot entier
+5. DROITS (r=4, w=2, x=1)
+ chmod 755 file        # rwxr-xr-x
+chmod 644 file        # rw-r--r--
+chmod 777 file        # rwxrwxrwx
+chmod 700 file        # rwx------
+chmod 744 file        # rwxr--r--
+chmod u+x file        # +exec proprio
+chmod g+w file        # +write groupe
+chmod o-r file        # -read autres
+chmod -R 755 rep/     # Récursif
+# Calcul: 7=rwx, 6=rw-, 5=r-x, 4=r--
+# Ex: 754 = rwxr-xr--
+# 1er chiffre: proprio
+# 2e chiffre: groupe
+# 3e chiffre: autres
+6. TRI & TRAITEMENT
+ sort file              # Tri alpha
+sort -r file           # Tri inverse
+sort -n file           # Tri numérique
+sort -k2 file          # Tri col 2
+sort -k2n file         # Tri num col 2
+sort -k2nr file        # Décroissant col 2
+sort -t',' -k2 file    # Délim , col 2
+cut -d',' -f1 file     # Extrait col 1
+cut -d' ' -f1,3 file   # Col 1 et 3
+uniq file              # Suppr doublons
+sort | uniq            # Tous doublons
+tr 'a' 'A' < file      # a→A
+tr [:lower:] [:upper:] # Min→Maj
+tr -d 'a' < file       # Supprime 'a'
+7. SED (édition)
+ sed 's/old/new/' file      # 1ère/ligne
+sed 's/old/new/g' file     # Toutes
+sed 's/old/new/gi' file    # Insens casse
+sed '2,4d' file            # Suppr L2-4
+sed '/mot/d' file          # Suppr lignes
+sed -n '5,10p' file        # Affiche L5-10
+sed 's/^m/M/' file         # m début→M
+sed 's/fin$/END/' file     # fin fin→END
+sed -e 's/a/A/' -e 's/b/B/' # Multiple
+sed 's/;/!/g' file         # ; → !
+sed 's/ \// ,/' file      # / → ,
+8. PROCESSUS & JOBS
+ ps                    # Process terminal
+ps -ef                # Tous process
+ps aux                # Tous détaillés
+ps -u user            # Process user
+top                   # Temps réel (q)
+kill PID              # Tue process
+kill -9 PID           # Force kill
+./script &            # Background
+Ctrl+Z                # Suspend
+bg                    # Reprend bg
+fg                    # Reprend fg
+jobs                  # Liste jobs
+kill %1               # Tue job 1
+9. LIENS & ARCHIVES
+ ln -s cible lien       # Lien symb
+tar -cvf a.tar rep/    # Crée tar
+tar -xvf a.tar         # Extrait
+tar -czvf a.tar.gz r/  # Compressé
+tar -xzvf a.tar.gz     # Extrait gz
+du -h file             # Taille
+du -hs rep/            # Taille rép
+df -h                  # Espace disque
+10. RÉSEAU (SSH)
+ ssh user@host         # Connexion
+ssh user@ssh.pau.eisti.fr
+scp file user@host:~  # Copie→dist
+scp -r rep/ user@h:~  # Rép→distant
+scp user@h:file .     # Copie←dist
+who                   # Users co
+who -b                # Dernier boot
+11. DIVERS UTILES
+ man cmd               # Manuel
+man -k mot            # Cherche
+history               # Historique
+date                  # Date/heure
+clear                 # Efface term
+passwd                # Change mdp
+which cmd             # Chemin cmd
+whereis cmd           # Localise
+echo $VAR             # Affiche var
+echo $SHELL           # Shell actif
+echo $HOME            # Home dir
+export VAR=val        # Def var env
+env                   # Vars env
+alias ll='ls -la'     # Crée alias
+unalias ll            # Suppr alias
+source ~/.bashrc      # Recharge
+12. WILDCARDS & REGEX
+ *          # N'importe quoi
+?          # 1 caractère
+[abc]      # a ou b ou c
+[0-9]      # Chiffre
+[a-z]      # Minuscule
+[A-Z]      # Majuscule
+^          # Début ligne (regex)
+$          # Fin ligne (regex)
+.          # 1 car (regex)
+.*         # N'importe quoi (regex)
+
+<<<PAGE>>>
+PROGRAMMATION SHELL - SCRIPTS BASH
+13. STRUCTURE SCRIPT
+ #!/bin/bash                # Shebang OBLIGATOIRE
+# Ceci est un commentaire
+echo 'Hello World'         # Affiche texte
+read var                   # Lit entrée
+read -p 'Msg: ' var        # Avec prompt
+# Exécution:
+chmod +x script.sh         # Rend exécutable
+./script.sh                # Exécute
+bash script.sh             # Ou via bash
+sh script.sh               # Ou via sh
+14. VARIABLES
+ var='valeur'               # Définit (PAS d'espaces)
+echo $var                  # Affiche
+echo ${var}                # Idem (explicite)
+# Variables prédéfinies:
+$0              # Nom script
+$1, $2, ...$9  # Arguments (paramètres)
+$#              # Nombre arguments
+$*              # Tous arguments (chaîne)
+$@              # Tous arguments (tableau)
+$$              # PID processus
+$?              # Code retour (0=OK, ≠0=erreur)
+# Commandes dans variables:
+result=`ls -l`             # Ancien (backticks)
+result=$(ls -l)            # Moderne (PRÉFÉRÉ)
+# Arithmétique:
+n=5
+n=$((n+1))                 # n = 6
+let n++                    # n = 7
+n=$(($n * 2))              # n = 14
+n=$((n-3))                 # n = 11
+15. TESTS & CONDITIONS
+ # Syntaxe IF:
+if [ condition ]; then
+    commandes
+elif [ autre_condition ]; then
+    commandes
+else
+    commandes
+fi
+# IMPORTANT: espaces autour [ ]
+# if [ $a -eq 5 ]; then  ← OK
+# if [$a -eq 5]; then   ← ERREUR
+# Tests ENTIERS:
+[ $a -eq $b ]      # Égal (equal)
+[ $a -ne $b ]      # Différent (not equal)
+[ $a -lt $b ]      # < (less than)
+[ $a -le $b ]      # ≤ (less or equal)
+[ $a -gt $b ]      # > (greater than)
+[ $a -ge $b ]      # ≥ (greater or equal)
+# Tests CHAÎNES:
+[ "$s1" = "$s2" ]  # Égal (TOUJOURS entre "")
+[ "$s1" != "$s2" ] # Différent
+[ -z "$s" ]        # Chaîne vide
+[ -n "$s" ]        # Chaîne NON vide
+# Tests FICHIERS:
+[ -e file ]        # Existe
+[ -f file ]        # Est fichier
+[ -d rep ]         # Est répertoire
+[ -r file ]        # Lisible (read)
+[ -w file ]        # Modifiable (write)
+[ -x file ]        # Exécutable
+# Opérateurs LOGIQUES:
+[ cond1 ] && [ cond2 ]  # ET logique
+[ cond1 ] || [ cond2 ]  # OU logique
+[ ! cond ]              # Négation (NON)
+[ $a -eq 5 ] && [ $b -gt 3 ]  # Exemple
+16. BOUCLES
+ # Boucle FOR:
+for i in 1 2 3 4 5; do
+    echo $i
+done
+for i in {1..10}; do       # Séquence 1→10
+    echo $i
+done
+for i in $(seq 1 10); do   # Avec seq
+    echo $i
+done
+for file in *.txt; do      # Tous .txt
+    echo $file
+done
+for i in $*; do            # Tous arguments
+    echo $i
+done
+for i in $@; do            # Idem
+    echo $i
+done
+# Boucle WHILE:
+while [ condition ]; do
+    commandes
+done
+i=1
+while [ $i -le 10 ]; do
+    echo $i
+    i=$((i+1))
+done
+# Boucle UNTIL (inverse while):
+until [ condition ]; do
+    commandes
+done
+# Boucle INFINIE:
+while true; do             # ou while [ 1 ]
+    sleep 2
+done
+# BREAK & CONTINUE:
+for i in {1..10}; do
+    [ $i -eq 5 ] && continue  # Skip 5
+    [ $i -eq 8 ] && break     # Stop à 8
+    echo $i
+done
+17. CASE (menu)
+ read -p "Choix: " choix
+case $choix in
+    1) echo "Option 1" ;;
+    2) echo "Option 2" ;;
+    3) echo "Option 3" ;;
+    *) echo "Invalide" ;;
+esac
+18. EXEMPLES TYPES EXAM
+ # Vérif nb arguments:
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <fic>"
+    exit 1
+fi
+# Vérif si fichier:
+if [ ! -f "$1" ]; then
+    echo "Pas fichier"
+    exit 2
+fi
+# Vérif si répertoire:
+if [ ! -d "$1" ]; then
+    echo "Pas rép"
+    exit 2
+fi
+# Parcours fichiers rép:
+for file in $1/*; do
+    if [ -f $file ]; then
+        echo $file
+    fi
+done
+# Compte exécutables:
+count=0
+for file in $1/*; do
+    if [ -x $file ] && [ -f $file ]; then
+        count=$((count+1))
+    fi
+done
+echo "Total: $count"
+# Cherche & déplace:
+mkdir -p Partiel
+find . -name $1 -exec mv {} Partiel \;
+# Tri fichier notes:
+head -n 1 $1           # Entête
+tail -n +2 $1 | sort   # Trie reste
+# Menu interactif:
+echo "1. Option 1"
+echo "2. Quitter"
+read -p "Choix: " c
+case $c in
+    1) date ;;
+    2) exit 0 ;;
+    *) echo "Err" ;;
+esac
+# Vérif login existe:
+while true; do
+    read -p "Login: " login
+    [ "$login" = "quit" ] && break
+    if id $login >/dev/null 2>&1; then
+        groups $login
+    else
+        echo "Inexistant"
+    fi
+done
+19. ÉDITEUR VI
+ vi file        # Ouvre
+i              # Mode INSERTION
+ESC            # Mode COMMANDE
+:w             # Sauvegarde
+:q             # Quitte
+:wq ou :x      # Save + quit
+:wq!           # Force save + quit
+:q!            # Quit SANS save
+/mot           # Cherche
+n              # Suivant
+dd             # Suppr ligne
+yy             # Copie ligne
+p              # Colle
+u              # Undo
+20. ASTUCES EXAM
+ # Combos utiles:
+ls -l | grep '^d'           # Que rép
+ls -l | grep '^-'           # Que fic
+find . -name '*.txt' | wc -l
+grep -c 'mot' file          # Compte
+sort file | uniq            # Doublon
+cat f | tr [:lower:] [:upper:]
+# Supprime lignes vides:
+grep -v '^$' file
+sed '/^$/d' file
+# Extraction colonnes:
+sort -t',' -k2 f | cut -d',' -f2
+# Compte lignes fichiers:
+ls -l | wc -l
+# Affiche que noms:
+ls -1
+# Erreurs courantes:
+ Oublier espaces: [ $a -eq 5 ]
+ Oublier "" pour strings
+ Oublier #!/bin/bash
+ Oublier chmod +x
+ Utiliser = au lieu de -eq
+Brouillon Unix/Shell COMPLET - CY Tech ING1 - Bon courage ! ■
+man <commande> est ton meilleur ami !

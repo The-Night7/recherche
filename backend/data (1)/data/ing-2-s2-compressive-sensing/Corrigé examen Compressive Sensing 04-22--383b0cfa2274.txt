@@ -1,0 +1,191 @@
+Corrigé examen Compressive Sensing 04-22
+1. EXERCICE 1 (Questions de cours) 
+1. Expliquer le principe général du procédé du compressive sensing.
+Le principe est de réduire la taille du signal dès l'acquisition, grâce à une matrice de 
+mesure , puis d'utiliser un dictionnaire  adapté pour avoir une représentation 𝛷 D
+parcimonieuse  de ce signal.𝛼
+Les choix de ces deux matrices sont faits pour faciliter d'une part l'obtention de  et 𝛼
+d'autre part la reconstruction du signal à partir de .𝛼
+2. Expliquer l’intérêt d’un dictionnaire dans le procédé du compressive sensing.
+Le choix du dictionnaire est essentiel pour espérer obtenir une représentation 
+parcimonieuse. Il y a des dictionnaires déjà connus pour être adaptés à certains types 
+de signaux (Fourier discret, cosinus discret,..) et il y a des dictionnaires que l'on 
+construit (que l'on apprend) à partir d'une famille de signaux donnés.
+3. Donner la définition de la cohérence mutuelle. Comment choisir la matrice de mesure 
+Φ relativement à la cohérence mutuelle avec le dictionnaire D.
+La cohérence mutuelle de 2 matrices  et  est :𝛷 D
+𝜇 𝛷,D =  ( ) Nmax
+i, j
+|< 𝛷 ,D >|
+‖𝛷 ‖ ‖ D ‖
+i,. ., j
+i,. ., j
+    Le choix de  est fait de manière à avoir la plus petite cohérence mutuelle possible.𝛷
+4. Démontrer qu’à chaque itération  de la méthode de la poursuite gloutonne OMP, k ⩾1
+l’algorithme ne sélectionne pas un atome déjà sélectionné à l’itération k − 1.
+A l'étape , le signal s'écrit : k
+x= z d +z d +... +z d +Rk- 1
+1
+( )
+m1
+k- 1
+2
+( )
+m2
+k- 1
+k- 1
+( )
+mk- 1
+k- 1( )
+La 1ère partie est la projection orthogonale de  sur .x F= Vect d ,d ,...,d{ m1 m2 mk- 1}
+x= Proj x +RF( ) k- 1( )
+Par conséquent,   est orthogonal à , et donc à tous les R = x-Proj xk- 1( ) F( ) F
+vecteurs . d ,d ,...,dm1 m2 mk- 1
+Autrement dit :  pour < d,R > =0j k- 1( ) j= m ,m ,..,m .1 2 k- 1
+Le choix de l'atome suivant  se fait en cherchant le maximum suivant :dmk
+m = Arg  max k j
+|< d ,R |
+‖ d ‖
+T
+j
+k- 1( )
+j
+Ce maximum ne sera jamais atteint pour  puisque les numérateurs j= m ,m ,..,m1 2 k- 1
+sont nuls.
+Conclusion :  sera différent de tous les  déjà sélectionnés.mk mi
+2. EXERCICE 2 (Apprentissage d’un dictionnaire )
+1. Rappeler la définition de la pseudo-norme  qu’on note communément  . ℓ0 ‖. ‖0
+ 
+ 
+<<<PAGE>>>
+Pourquoi   n’est pas une norme?‖. ‖0
+nbre de composantes non nulles de .ℓ x = ‖ x ‖ =0( ) 0 x
+Ce n'est pas une norme car .ℓ 2 x = ℓ x0( ) 0( )
+2. Que signifie  dans la contrainte   du problème (1) ?s ℓ 𝛼 ⩽ s0( )
+Cela signifie que l'on recherche une représentation -paricimonieuse : avec au s
+maximum  composantes non nulles.s
+3. Pour , on note la -ème ligne de la matrice et on écrit : i=1,...,K 𝛬i,. i 𝛬
+D 𝛬= d 𝛬∑
+K
+i=1
+i() i,.
+(a) Montrer que rang  .d 𝛬 ⩽1i()
+i,.
+Cette matrice est obtenue en multipliant une colonne par une ligne. Le résultat est une 
+matrice dont toutes les colonnes sont des multiples de  et toutes les lignes des d i()
+multiples de . Ce sera donc une matrice de rang .𝛬i,. ⩽1
+(b) Établir une condition nécessaire et suffisante pour que rang .d 𝛬 =1i()
+i,.
+La seule chose qui peut l'empêcher d'avoir un rang  est qu'elle soit nulle. Comme =1
+ est un vecteur unitaire, il ne peut pas être nul. Ce serait donc à cause de  qui d i() 𝛬i,.
+serait nul.
+Il suffit donc que la ligne  contienne une seule composante non nulle pour que le 𝛬i,.
+rang soit égal à .1
+(c) Montrer que  où  est l’erreur sur les  signaux ‖ X-D 𝛬‖ = ‖ E -d 𝛬 ‖F i i() i,. F Ei ℓ
+lorsqu’on ne tient plus compte de la contribution de .d i()
+‖ X-D 𝛬‖ = ‖ X- D 𝛬 ‖ = ‖X- D 𝛬 -D 𝛬 ‖ = ‖E -D 𝛬 ‖F ∑
+k
+q =1
+., q q ,. F ∑
+k
+q =1, q ≠ i
+., q q ,. ., i i,. F i ., i i,. F
+ 
+4. (a) Expliquer le principe général de l’apprentissage d’un dictionnaire .D
+On part d'une famille de signaux et d'un dictionnaire initial donné. On construit de 
+manière itérative un dico adapté à nos signaux.
+(b) Présenter les deux étapes majeurs de l’apprentissage du dictionnaire.
+Phase1 : on fixe le dictionnaire  et on construit la représentation parcimonieuse de D
+tous les signaux. Phase 2 : on fixe la représentation parcimonieuse et on met à jour le 
+dictionnaire colonne par colonne.
+(c) Donner 2 façons différentes pour initialiser le dictionnaire.
+ On peut partir d'un dico construit de manière aléatoire ou d'un dico construit à partir 
+de certains signaux normalisés.
+(d) Supposons que le dictionnaire initial  est connu. Comment déterminer ?D0 𝛬
+On utilise un algo. de représentation parcimonieuse, comme OMP, pour obtenir les 
+repérsentations de tous les signaux dans le dictionnaire . Ces repréesentations D0
+constitueront les colonnes de la matrice .𝛬
+ 
+ 
+<<<PAGE>>>
+5. Pour que la condition établie  à la question 3.(b) soit vérifiée, on s’intéresse au 
+problème de minimisation de  où  et  ‖ E -D 𝛬 ‖R
+i ., i
+R
+i,. F 𝛬 = 𝛬 𝛺R
+i,. i,. i E = E 𝛺R
+i i i
+(a) Quel est le rôle de la matrice  ?𝛺i
+La matrice  sert à ne conserver que les composantes non  nulles de .𝛺i 𝛬i,.
+ ne contient que des composantes non nulles, toutes celles de 𝛬R
+i,. 𝛬i,.
+(b) Quelle est la meilleure approximation de  au sens de la norme de Frobenius? ER
+i
+Justifier.
+D 'après le théorème d'Ekhart-Young, c'est la décomposition en valeurs singulières de 
+ qui va nous donner :   et qui permet de déterminer la matrice de ER
+i E = U  𝛥 VR
+i
+T
+rang  la plus proche de  qui est: 1 ER
+i
+U  𝛥  V.,1 1,1( .,1)T
+(c) Comment fait-on la mise à jour des vecteurs et  ?d i() 𝛬R
+i,.
+d Ui() ← .,1
+𝛬 𝛥  VR
+i,. ← 1,1( .,1)T
+ 
+3. Exercice 3
+1. Quelle est la taille du dictionnaire appris ?
+La taille de  sera .D 6×10
+2. Quelle condition doit-on imposer sur les atomes du dictionnaire initial?
+Les atomes du dictionnaire initial doivent être normalisés (norme ).=1
+3. Ci-dessous les résultats partiels du dictionnaire initial:
+À l’issue de cette initialisation, on applique la méthode gloutonne Orthogonal Matching 
+Pursuit sur les  et on obtient la matrice . x , j=1,...,24j() 𝛬
+Ci-dessous quelques résultats partiels:
+ 
+ 
+<<<PAGE>>>
+Transposée de la 1ère colonne de  :𝛬
+1.73 , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. , 0. ( )
+3ème  ligne de  :𝛬
+0  0  9.3  0  0  0  0  0  0  0  0  0  0  0  0  0  -2.4  0  0  0  0  0  0  0( )
+(a) Que représente la 1ère colonne de  relativement à  ?𝛬 X
+La première colonne de  est la représentation parcimonieuse du 1er signal (1ère 𝛬
+colonne de ) dans le dictionnaire courant.X
+(b) Que représente la 3ème ligne de  relativement à  ?𝛬 X
+La 3ème ligne de  représente la contribution de l'atome n°3 du dictionnaire actuel à 𝛬
+la représentation parcimonieuse de tous les signaux.
+(c) Afin de mettre à jour l’atome , on calcule le support de la -ème ligne i, i=1,...,10 i
+de  qu’on note :𝛬
+w = k, 1 ⩽ k ⩽24  𝛬 ≠0i tel que i, k
+Calculer .w3
+Ensemble des indices des composantes non nulles de 𝛬3,.
+w = 3 ;173 { }
+4. Le dictionnaire a été entrainé  fois. On note  et  la cinquième et la quinzième L C5 C15
+colonne respectivement de la matrice .  et  désignent les produits 𝛬 DC5 DC15
+matriciels en utilisant le dictionnaire résultant de la mise à jour KSVD.
+Ci-dessous des résultats pour deux valeurs différentes de  :L
+Donner une analyse des résultats du tableau (Table 1): Le choix de , la parcimonie, la L
+reconstruction du signal. . .
+Attention au décalage lié à la numérotation de Python !!
+A l'itération , le dictionnaire initial est constitué des 10 premiers signaux normalisés.L=1
+Il est donc normal que  : représentation du signal de la 6ème colonne de  n'ait C5 X
+qu'une seule composante, égale à la norme de cette colonne. La reconstruction de ce 
+signal, par  est donc parfaite.DC15
+ 
+ 
+<<<PAGE>>>
+Le signal de la colonne  de  possède une représentation -parcimonieuse et est 16 X 6
+bien reconstitué à environ  près.10- 13
+A l'itération , les 2 signaux ont une représentation -parcimonieuse et sont bien L=2 6
+reconstitués à environ  près.10- 13
+Si ça ne tenait quà ces 2 signaux, on pourrait s'arrêter à la 1ère itération. Mais il faut 
+tenir compte des 24 signaux formant , ou plutôt de leur représentation parcimonieuse, X
+pour décider.
+ 
+ 
+ 
+ 

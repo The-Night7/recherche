@@ -1,0 +1,713 @@
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Th´ eorie des Langages
+Introduction
+Yannick Le Nir Gaspard F´ erey
+Contributions de :
+Taisa Guidini Goncalves
+CY TECH
+24 mars 2026
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Introduction
+Historique
+▶ La Th´ eorie des Langages (TdL) est issue de la
+linguistique
+▶ La TdL ´ etudie les aspects syntaxiques des langages
+▶ Objectif : D´ efinir un langage formel
+▶ Analogie : langage de programmation, langage naturel
+(langages, alphabet, mot, grammaire)
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Introduction
+Historique
+▶ Tentative de mod´ elisation des langues naturelles
+(optimisme IA) ... Relatif ´ echec (fin de l’optimisme)
+▶ Utilisation pour la description des langages de
+programmation
+▶ Lambda-Calcul (1930) : ”un premier” langage de
+programmation (plutˆ ot mod´ elisation/algorithme)
+▶ Plankalkul (1940) : ”le premier” langage de
+programmation, pas connu
+▶ Fortran (d´ ebut ann´ ees 1950/IBM) : ”le premier”
+langage de programmation de haut niveau, calcule
+num´ erique
+▶ Algol (fin ann´ ees 1950/UNESCO) : langage de
+programmation ”universel” (langage hors contexte)
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Introduction
+Description de la th´ eorie
+▶ D´ efinir les concepts et th´ eor` emes permettant d’´ etablir
+qu’un source est bien ´ ecrit dans un langage donn´ e :
+▶ Concepts de langage et de grammaire
+▶ Classification des langages et grammaires
+▶ Propri´ et´ es des diff´ erentes classes de langages
+▶ Concepts algorithmiques permettant de chercher et/ou
+valider les mots et phrases d’un langage (automates)
+▶ Application aux langages de programmation
+▶ Analyse lexicale
+▶ Analyse syntaxique
+▶ Analyse s´ emantique
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Analyse de sources
+Description
+▶ Ex´ ecution de programmes en langage machine
+▶ Langages plus ´ evolu´ es utilis´ es par les programmeurs
+▶ Processus de transformation :
+1. Compilation puis ex´ ecution
+Source écrit en
+Compilation
+Exécution directe
+des instructions
+Source écrit en
+llangage évolué langage machine
+2. Interpr´ etation lors de l’ex´ ecution
+llangage évolué
+Source écrit en
+Interprétation et
+exécution
+instruction par instruction
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Analyse des instructions
+3 ´ etapes principales
+1. Analyse lexicale :
+D´ ecomposition de l’instruction en mots du langage de
+programmation (lex` eme ou token). Attribution de
+cat´ egories syntaxiques aux mots.
+2. Analyse syntaxique :
+V´ erification de la validit´ e de la succession des cat´ egories
+syntaxiques (exemple : D´ eterminant Nom Verbe
+D´ eterminant Nom)
+3. Analyse s´ emantique :
+Signification d’une phrase valide, sens des lex` emes et de
+leur association
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Concepts de langage
+D´ efinitions
+▶ Enum´ eration des mots sur un alphabet
+▶ R` egles de productions pour d´ efinir les mots valides de
+ce langage
+▶ Notion de grammaire et de langage d´ ecidable
+Th´ eorie
+▶ D´ efinition de grammaires engendrant des langages
+▶ Classification de ces grammaires
+▶ Propri´ etes des diff´ erentes classes de grammaires
+▶ Etude des automates servant de support algorithmique
+aux grammaires
+▶ Probl` emes d’ind´ ecidabilit´ e de certains langages
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+D´ efinitions
+D´ efinitions
+▶ Alphabet ou vocabulaire
+Un alphabet A d’un langage formel est un ensemble fini
+non vide de symboles, lettres ou lex` emes. Si les
+symboles sont d´ ej` a des suites de caract` eres, on peut
+alors parler aussi de vocabulaire.
+▶ Mots ou phrases
+Un mot associ´ e ` a un alphabetA est une suite finie,
+´ eventuellement vide, de symboles de cet alphabet.
+Dans le cas o` uA est un vocabulaire, on ne parlera pas
+de mots mais de phrase.
+▶ Mot vide
+On note ε ou parfois 1 (ou encore Λ) le mot vide :
+suite vide de symboles.
+▶ Langage
+Un langage formel est un ensemble de mots de A.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Op´ erations sur les mots
+Soit A un alphabet.
+D´ efinitions
+▶ Longueur d’un mot
+On d´ efinit la longueur d’un motw comme le nombre de
+symboles contenus dans w.
+On note cette longueur |w| et on a |w|≥ 0.
+Note : seul ε, le mot vide, a pour longueur 0.
+▶ Concat´ enation de deux mots
+Soient u et v deux mots de A.
+On d´ efinit la concat´ enation deu et v par la suite
+form´ ee deu et v mis bout ` a bout.
+On la note uv, u.v, u· v ou encore u v .
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Propri´ et´ es des mots
+Soit A un alphabet. Soient u, v et w trois mots sur A.
+Propri´ et´ es
+▶ Associativit´ e : (uv)w = u(vw)
+On note donc souvent ce mot uvw.
+▶ Neutralit´ e deε : εu = uε = u
+▶ Attention : uv̸= vu en g´ en´ eral
+▶ Longueur du mot vide : |ε| = 0
+▶ Lin´ earit´ e de la taille :|uv| =|u| +|v|
+▶ Mots unitaires : ∀a∈ A,|a| = 1
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Langages
+Soit A un alphabet.
+▶ Langage A∗
+On d´ efinitA∗ comme l’ensemble des mots associ´ es ` aA.
+Mot vide inclus . Tout langage sur A est un
+sous-ensemble de A∗.
+▶ Langage A+
+On d´ efinitA+ comme l’ensemble des mots w de A∗ tels
+que|w|> 0. C’est le langage des mots non vides.
+▶ Langage An
+Pour n∈ N, on d´ efinitAn ={w∈ A∗|| w| = n}.
+C’est le langage des mots de taille n.
+▶ Langage A
+On note A le langage des mots constitu´ e d’un unique
+symbole de A.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Op´ erations sur les langages
+Soit A un alphabet. Soient K et L deux langages sur A.
+▶ Op´ erations ensemblistes
+K∪ L, K∩ L et K sont des langages.
+▶ Langage concat´ en´ e
+K· L ={u· v| u∈ K et v∈ L} est un langage.
+Propri´ et´ es
+▶ A = ∅ le langage vide, l’ensemble vide
+▶ A0 ={ε} le langage contenant le seul mot vide
+▶ A1 = A
+▶ An+1 = A· An = An· A
+▶
+A+ =
+[
+n>0
+An A∗ =
+[
+n≥0
+An
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Concept de Grammaire
+Pr´ esentation
+Une grammaire permet de g´ en´ erer les mots d’un langage ` a
+l’aide de r` egles de production.
+D´ efinition
+Une grammaire est un quadruplet G = <T, N, S, P> tel
+que :
+▶ T est un ensemble fini terminal.
+▶ N est un ensemble fini non terminal.
+▶ S∈ N est le symbole de d´ epart ou axiome de la
+grammaire.
+▶ P est un ensemble de r` egles de production. Une r` egle de
+production est de la forme :
+X→ Y o` uX∈ (T∪ N)+ et Y∈ (T∪ N)∗
+∗ Mot vide inclus + Langage des mots non vides
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Langage d´ eduit de la grammaire
+Construction
+Combinaison successives des r` egles dites de production
+▶ L’ensemble T repr´ esente l’alphabet sur lequel est d´ efini
+le langage.
+▶ Les ´ el´ ements de N sont appel´ es non terminaux car ils
+repr´ esentent desmots interm´ ediairesqui ne font pas
+partie des mots du langage, mais qui servent ` a leur
+construction par combinaisons successives des r` egles de
+production. Cat´ egorie syntaxique.
+▶ Dans chaque combinaison de r` egles pour former un
+mot, S repr´ esente le membre gauche de la premi` ere
+r` egle de la combinaison.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Exemple de grammaire
+Grammaire
+G = <T, N, S, P>
+▶ T = {identifiant, op´ erateur, nombre}
+▶ N = {expression, op´ erande}
+▶ S = expression
+▶ P = {expression -> op´ erande,
+op´ erande -> identifiant | nombre,
+expression -> expression op´ erateur expression}
+Notation
+La notation ”|” est utilis´ ee pour simplifier l’´ ecriture des
+r` egles.
+A -> B | C est juste un raccourci syntaxique pour
+A -> B et A -> C
+Le symbole ”->” est une abr´ eviation de “peut ˆ etre compos´ e
+de”.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Langage
+Langage
+La suite ”identifiant op´ erateur nombre”est un mot
+(plutˆ ot une phrase du langage) d´ efini par cette grammaire
+car on peut la produire ` a partir de l’axiome :
+1. expression (Axiome S)
+2. expression op´ erateur expression(par la r` egle 3)
+3. op´ erandeop´ erateur expression (par la r` egle 1)
+4. op´ erande op´ erateurop´ erande(par la r` egle 1)
+5. op´ erande op´ erateurnombre (par la r` egle 2)
+6. identifiant op´ erateur nombre (par la r` egle 2)
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+G´ en´ eration de mots par d´ erivation
+Soit G = <T, N, S, P> une grammaire
+R` egle terminale
+R∈ P est une r` egle terminale si son membre ` a droite est un
+´ el´ ement deT ∗.
+D´ erivation directe
+u∈ (T∪ N)∗ se d´ erive directement env∈ (T∪ N)∗ selon
+G, si et seulement si u = u1Mu2, v = u1Nu2 et M→ N est
+une r` egle de production. On notera la d´ erivation directe de u
+en v par l’expression u→ v.
+D´ erivation
+Soit G = <T, N, S, P> une grammaire, u∈ (T∪ N)∗ se
+d´ erive env∈ (T∪ N)∗ selon G, si et seulement si :
+∃ k > 0 et ( ui) avec 0≤ i≤ k tels que
+u = u1→ u2→...→ uk = v.
+(i.e. u1 = u, uk = v et∀ i < k, ui→ ui+1).
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Langage engendr´ e par une grammaire
+D´ efinition
+Soit G = <T, N, S, P> une grammaire. On appelle
+langage engendr´ e par G en partant de S, le langage d´ efini
+par LG (S) ={u∈ T ∗/S−→u}
+Langage de notre grammaire
+LG (S) =
+(identifiant|nombre)(operateur (identifiant|nombre))∗
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+G´ en´ eration de mots par arbre syntaxique
+D´ efinition
+Une d´ erivation de r` egles de production pour g´ en´ erer un mot
+peut ˆ etre repr´ esent´ ee par un arbre :
+▶ La racine contient l’axiome de la grammaire.
+▶ Chaque noeud qui n’est pas une feuille est le
+membre gauche d’une r` egle de production. Ses fils
+sont les diff´ erents membres droits de cette mˆ eme r` egle
+et ceux-ci apparaissent dans le mˆ eme ordre que dans la
+r` egle.
+▶ Chaque noeud feuille est un ´ el´ ement terminal de la
+grammaire.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+G´ en´ eration de mots par arbre syntaxique
+Th´ eor` eme
+Un mot d’un langage est un arbre syntaxique.
+Soit G = <T, N, S, P> une grammaire et Ar un arbre
+syntaxique d´ eduit de cette grammaire. Le mot obtenu en
+prenant de gauche ` a droite les diff´ erentes feuilles de cet
+arbre Ar est un mot du langage associ´ e ` a la grammaire G.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+La classification de Chomsky
+Langages d´ ecidables et hi´ erarchie de classes
+▶ Les langages de type 3 : rationnels ou r´ eguliers
+▶ Les langages de type 2 : alg´ ebriques ou hors contexte
+▶ Les langages de type 1 : sensibles au contexte
+▶ Les langages de type 0 : tous les autres d´ ecidables
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Grammaire de type 3
+D´ efinition
+Une grammaire G =< T, N, S, P > est de type 3 si les
+r` egles de production sont de la forme :
+A→ a o` uA∈ N et a∈ T
+A→ε o` uA∈ N
+A→ B a (ou a B ) o` uA, B∈ N et a∈ T
+Langage associ´ e
+Un langage est de type 3 s’il peut ˆ etre engendr´ e par une
+grammaire de type 3.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Utilisation des grammaires de type 3
+Domaines
+▶ Occurrence de motifs dans une cha ˆ ıne (Recherche
+d’informations)
+▶ Expressions r´ eguli` eres (Shell, C, emacs)
+▶ S´ equence de l’ADN (G´ enˆ ome)
+▶ Apprentissage de grammaires pour l’IA
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Exemple de grammaire
+Affectation num´ erique
+La grammaire G = <T, N, S, P> pour l’analyse lexicale de
+l’affectation num´ erique est de type 3 :
+▶ T = lettre∪ chiffre∪{ +,−,∗,/, =,.}
+▶ N ={mot, suitereel, suitenb, suiteid}
+▶ S = mot
+▶ P =
+
+
+mot→ +|−|∗| /| =,
+mot→ chiffre|lettre|chiffre suitenb|lettre suiteid,
+suitenb→ chiffre|chiffre suitenb|. suitereel,
+suitereel→ chiffre|chiffre suitereel,
+suiteid→ lettre suiteid|chiffre suiteid
+
+
+
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Grammaire de type 2
+D´ efinition
+Une grammaire G =< T, N, S, P > est de type 2 si les
+r` egles de production sont de la forme :
+A→α o` uA∈ N et α∈ (N∪ T )∗
+Langage associ´ e
+Un langage est de type 2 s’il peut ˆ etre engendr´ e par une
+grammaire de type 2.
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Grammaires de type 2
+Exemple de grammaire
+Le langage anbn peut ˆ etre engendr´ e par la grammaire hors
+contexte suivante :
+▶ T ={a, b}
+▶ N ={S}
+▶ S = S
+▶ P =
+ S→ a S b,
+S→ a b
+
+Domaines d’application
+▶ Langages de programmation
+▶ La plupart des constructions des langues naturelles
+<<<PAGE>>>
+Th´ eorie des
+Langages
+Introduction
+Yannick Le Nir,
+Gaspard F´ erey
+Contributions de :
+Taisa Guidini
+Goncalves
+Introduction
+Langages et
+grammaires
+Hi´ erarchie de
+Grammaires
+Autres grammaires
+Grammaires de type 1
+Une grammaire G =< T, N, S, P > est de type 1 si les
+r` egles de production sont de la forme :
+u A v → u w v o` uA∈ N, u, v∈ T ∗ et w∈ (N∪ T )∗
+Grammaires de type 0
+Une grammaire G =< T, N, S, P > est de type 0 si les
+r` egles de production sont quelconques.
+Th´ eor` emes
+▶ Une grammaire n’engendre qu’un seul langage. La
+r´ eciproque est fausse.
+▶ Les diff´ erentes familles de langages sont incluses les
+unes dans les autres : L3⊂ L2⊂ L1⊂ L0

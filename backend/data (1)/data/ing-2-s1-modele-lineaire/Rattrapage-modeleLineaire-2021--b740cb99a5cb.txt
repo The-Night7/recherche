@@ -1,0 +1,89 @@
+Département de Mathématiques
+Ing2-MI - Génie Mathématiques
+2 heures
+18 Mars 2021
+Examen de Rattrapage de Modèle Linéaire
+2 feuilles manuscrites R/V et calculatrices ÉCOLE autorisées
+Les tables statistiques ne sont pas attachées au sujet et sont distribuées à part
+Toutes les réponses doivent être justiﬁées, et tous les calculs détaillés
+Exercice 1. On considère le modèle de régression suivant :
+yi =a +bxi1 +cxi2 +ϵi i = 1,...,n
+où ϵi sont des variables aléatoires centrées, non corrélées et de variance constante.
+1. Quelles sont les tailles deX la matrice du modèle et deY le vecteur des réponses. Écrire ce modèle
+sous la forme matricielle :Y =Xβ +ϵ. On donne
+tXX =
+
+
+50 20 0
+20 20 0
+0 0 20
+
+,
+(tXX
+)−1
+=
+
+
+0.02 −0.02 0
+−0.02 0 .05 0
+0 0 0 .05
+
+, et tXY =
+
+
+50
+30
+20
+
+
+2 Peut-on trouver (calculer au lieu de trouver)? un estimateurˆβ de β à l’aide de la méthode des
+moindres carrées? Expliquer.
+3. En déduire
+a) n le nombre d’observations ayant servies à ajuster le modèle,
+b) les moyennesx1 et x2 de x1 et x2
+c) les variancess2
+1 et s2
+2 de x1 et x2
+d) et le coeﬃcient de corrélation entrex1 et x2. Commenter.
+4. Calculerˆa,ˆb etˆc les estimateurs des moindres carrées dea,b et c.
+5. Compléter le tableau de la décomposition de la variance ci-dessous
+Sources de variation Sommes des carrés d.d.l. Carrés moyens
+Régression ? ? ?
+Résiduelle 21 ? ?
+Totale 49.5 ?
+6. En déduire le coeﬃcient de déterminationR2. Conclure
+7. Donner la statistiqueF de Ficher et en déduire sa valeur observéef. Conclure pour un risque
+α = 5%.
+8. Rappeler la formule de l’estimateurˆσ2 de la variance résiduelleσ2. Calculer sa valeur observée.
+9. Calculer la valeur préditeˆy sachant quex1 = 3 et x2 = 0.5
+10. En déduire l’intervalle de prévision deˆy et commenter.
+Exercice 2. On s’intéresse à la relation liant l’accélération d’une voiture(Y ), aux variables indépen-
+dantes X1 (nombre de cylindres),X2 (la cylindrée du moteur),X3 (la puissance) etX4 (le poids).
+1
+<<<PAGE>>>
+Un total den observations est disponible. On postule le modèle linéaire avec constante sous sa forme
+matricielle
+Y =Xβ +ϵ.
+Les résidusϵi, i = 1,...,n vériﬁant les hypothèses d’indépendance, d’homogénéité et suivent une loi
+normale centrée.
+Le résumé de la régression linéaire multiple est disponible dans la sortie du logiciel R ci-dessous :
+Estimate Std.Error t-value Pr(>|t|)
+(Intercept) 17.4463939 0.7670010 22.746 <2e-16
+X1 -0.2143686 0.2116059 -1.013 0.312
+X2 -0.0055016 0.0046541 -1.182 0.238
+X3 -0.0776404 0.0068477 -11.338 <2e-16 ***
+X4 0.0027983 0.0003581 7.815 2.09e-13 ***
+Residual standard error : 1.679 on 225 degrees of freedom
+Multiple R-squared: 0.6028, Adjusted R-squared: 0.5958
+F-statistic: 85.38 on 4 and 225 DF, p-value:<2.2e-16
+1. Interprétez et commentez ces résultats (qualité de l’ajustement, signiﬁcativité du modèle, si-
+gniﬁcativté de chaque variable,...).
+2. Préciser les éléments du test correspondant à la ligne "X1" du tableau (H0, H1, la statistique
+de test, sa loi sous H0, la règle de décision). Quelle est votre conclusion?
+3. Quel est le nombre d’observationsn? Justiﬁer votre réponse.
+4. Le calcul du facteur d’inﬂation de la variance des endogènes est résumé dans le tableau ci-
+dessous :
+‘ Endogène X1 X2 X3 X4
+VIF 10.901047 19.482102 5.774521 7.588083
+Commenter ces résultats.
+2

@@ -1,0 +1,105 @@
+TP6 - Programmation en Shell : Solutions
+1. Tri d’un fichier de notes (sans trier l’entête)
+ #!/bin/bash
+head -n 1 "$1"
+tail -n +2 "$1" | sort
+2. Répartir les fichiers par extension
+ #!/bin/bash
+for file in *.*; do
+    ext="${file##*.}"
+    mkdir -p "$ext"
+    mv "$file" "$ext/"
+done
+3. Ajout des options (-h, -d, -v) avec getopts
+ #!/bin/bash
+verbose=0
+rep="."
+usage() {
+    echo "Usage: $0 [-h] [-d repertoire] [-v]"
+    exit 1
+}
+while getopts "hd:v" opt; do
+    case $opt in
+        h) usage ;;
+        d) rep=$OPTARG ;;
+        v) verbose=1 ;;
+        *) usage ;;
+    esac
+done
+for file in "$rep"/*.*; do
+    ext="${file##*.}"
+    [ $verbose -eq 1 ] && echo "Déplacement de $file vers $ext/"
+    mkdir -p "$rep/$ext"
+    mv "$file" "$rep/$ext/"
+done
+4. Traitement avec sed
+ # Remplacer ';' par '!'
+sed 's/;/!/g' fichier.txt
+# Remplacer 't' en début de ligne par 'T'
+sed 's/^t/T/' fichier.txt
+# Remplacer ' /' par ','
+sed 's/ \/,/' fichier.txt
+# Remplacer '/' par '+' et ';' par '@'
+sed -e 's/\//+/g' -e 's/;/@/g' fichier.txt
+# Supprimer lignes 2 à 4
+sed '2,4d' fichier.txt
+# Commandes données
+sed -e 's/^\(\.\)/\1\1/g' fichier.txt
+sed -e 's/^\(\.\)/\1\1\1\1/g' fichier.txt
+
+<<<PAGE>>>
+5. Vérifier un login et afficher ses groupes
+ #!/bin/bash
+while true; do
+    read -p "Entrez un login (ou 'quit' pour arrêter): " login
+    [ "$login" = "quit" ] && break
+    if id "$login" >/dev/null 2>&1; then
+        groups "$login"
+    else
+        echo "Login inexistant"
+    fi
+done
+6. Informations sur un fichier
+ #!/bin/bash
+file=$1
+echo "Nom : $file"
+echo "Taille : $(stat -c%s "$file")"
+echo "md5sum : $(md5sum "$file" | awk '{print $1}')"
+echo "cksum : $(cksum "$file" | awk '{print $1}')"
+7. Informations sur tous les fichiers d’un répertoire
+ #!/bin/bash
+for f in "$1"/*; do
+    ./exo6.sh "$f"
+done
+8. Appliquer un script à tous les sous-répertoires
+ #!/bin/bash
+script=$1
+dir=$2
+for sub in "$dir"/*; do
+    [ -d "$sub" ] && $script "$sub"
+done
+9. Informations sur tous les fichiers d’une arborescence
+ #!/bin/bash
+find . -type f | while read f; do
+    ./exo6.sh "$f"
+done
+10. Détection de doublons
+ #!/bin/bash
+tmpfile=$(mktemp)
+find . -type f | while read f; do
+    size=$(stat -c%s "$f")
+    md5=$(md5sum "$f" | awk '{print $1}')
+    cksumv=$(cksum "$f" | awk '{print $1}')
+    echo "$f|$size|$md5|$cksumv"
+done | sort -t'|' -k2,4 > "$tmpfile"
+awk -F"|" '
+{
+    key=$2 FS $3 FS $4
+    if (seen[key] != "")
+
+<<<PAGE>>>
+        print "Doublon trouvé : " $1 " et " seen[key]
+    else
+        seen[key]=$1
+}' "$tmpfile"
+rm "$tmpfile"

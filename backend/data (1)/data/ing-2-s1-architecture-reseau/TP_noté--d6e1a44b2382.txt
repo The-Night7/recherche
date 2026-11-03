@@ -1,0 +1,168 @@
+Exercice Packet Tracer : configuration avancée de 
+réseaux locaux virtuels 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2014-2015                                         UVSQ                       M1-Infrastructure des Réseaux 
+ 
+ 
+ 
+
+<<<PAGE>>>
+Configuration avancée de réseaux locaux virtuels 
+ 
+ 
+Objectifs pédagogiques 
+ Exécuter des tâches de configuration de base sur un commutateur 
+ Créer des réseaux locaux virtuels 
+  Affecter des ports de commutateur à un réseau local virtuel 
+ Ajouter, déplacer et modifier des ports 
+ Vérifier la configuration des réseaux locaux virtuels 
+ Activer l’agrégation sur des connexions entre commutateurs 
+ Vérifier la configuration d’agrégation 
+ Enregistrer la configuration des réseaux locaux virtuels 
+ 
+Tâche 1 : configuration de base des commutateurs 
+Configurez les commutateurs en suivant les instructions ci-dessous. Packet Tracer évalue 
+uniquement les noms d’hôtes. 
+ Configurez les noms d’hôte du commutateur. 
+ Désactivez la recherche DNS. 
+ Configurez un mot de passe class pour le mode d’exécution. 
+  Configurez un mot de passe cisco pour les connexions de console. 
+ Configurez un mot de passe cisco pour les connexions vty. 
+ 
+Tâche 2 : configuration et activation des interfaces Ethernet 
+Étape 1. Configuration des ordinateurs. 
+Configurez les interfaces Ethernet des six ordinateurs avec les adresses IP et les 
+passerelles par défaut de la table d’adressage, que vous trouverez au début de cet exercice. 
+L’adresse IP pour PC1 est considérée comme incorrecte pour le moment. Vous la modifierez 
+ultérieurement. 
+ 
+Étape 2. Activation des ports d’utilisateur pour un accès sur les commutateurs Comm2 et 
+Comm3. 
+ 
+Tâche 3 : configuration des réseaux locaux virtuels sur le commutateur 
+Étape 1. Création et attribution de noms des réseaux locaux virtuels sur le commutateur 
+Comm1 
+Les ID et les noms de VLAN sont répertoriés dans la table Affectations de ports au début de 
+cet exercice. 
+Utilisez la commande vlan id-vlan en mode de configuration globale pour ajouter un réseau 
+local virtuel pour le commutateur Comm1. Quatre réseaux locaux virtuels sont configurés 
+pour ces travaux pratiques : VLAN 10 (Faculty/Staff) ; VLAN 20 (Students) ; VLAN 30 
+(Guest(Default)) et VLAN 56 (Mangement). Après avoir créé le réseau local virtuel, vous 
+pouvez utiliser le mode de configuration vlan pour nommer le réseau local virtuel via la 
+commande name nom vlan. 
+Étape 2. Vérification des réseaux locaux virtuels créés sur le commutateur Comm1 
+Étape 3. Création, attribution de noms et vérification des réseaux locaux virtuels sur les 
+commutateurs Comm2 et Comm3 
+<<<PAGE>>>
+Configuration avancée de réseaux locaux virtuels 
+ 
+Étape 4. Affectation des ports du commutateur aux réseaux locaux virtuels 10, 20 et 30 sur 
+les commutateurs Comm2 et Comm3 
+Remarque : le port Fa0/11 de Comm2 est considéré comme incorrect pour le moment. 
+Reportez-vous au tableau d’affectation des ports de la page 1. Les ports sont affectés aux 
+réseaux locaux virtuels en mode de configuration d’interface, via la commande switchport 
+access vlan id-vlan. Vous pouvez affecter chaque port individuellement ou utiliser la 
+commande interface range pour simplifier cette tâche, comme indiqué ici. Les commandes 
+sont indiquées pour Comm3 uniquement mais vous devez configurer Comm2 et Comm3 de 
+la même façon.  
+Sauvegardez le fichier de configuration en cours sur la mémoire vive non volatile (NVRAM) 
+pour vous assurer que les modifications ne soient pas perdues en cas de redémarrage du 
+système ou d’une coupure de courant. 
+Étape 5. Détermination des ports ajoutés au VLAN 10 sur le commutateur Comm2 
+Étape 6. Configuration du VLAN 56 de gestion sur chaque commutateur 
+Un réseau local virtuel de gestion est un réseau local virtuel que vous configurez pour 
+accéder aux fonctions de gestion d’un commutateur. Si vous ne définissez aucun autre 
+réseau local virtuel, le VLAN 1 fait office de réseau local virtuel de gestion. Étant donné que 
+la première configuration d’un commutateur Cisco présente le VLAN 1 comme réseau local 
+virtuel par défaut, il n’est pas recommandé d’utiliser le VLAN 1 comme réseau local virtuel de 
+gestion. Vous ne souhaitez pas qu’un utilisateur arbitraire se connectant à un commutateur 
+soit dirigé par défaut vers le réseau local virtuel de gestion.  
+ 
+En mode de configuration d’interface, utilisez la commande ip address pour affecter 
+l’adresse IP de gestion aux commutateurs.  
+ 
+L’affectation d’une adresse de gestion permet la communication IP entre les commutateurs, 
+ainsi que la connexion aux commutateurs de n’importe quel hôte connecté à un port affecté 
+au VLAN 99. (Étant donné que le VLAN 56 est configuré en tant que réseau local virtuel de 
+gestion, tout port affecté à ce réseau local virtuel est considéré comme un port de gestion et 
+devrait être sécurisé pour contrôler les périphériques autorisés à se connecter à ce port.)  
+ 
+Étape 7. Configuration de l’agrégation et du réseau local virtuel natif pour les ports 
+d’agrégation sur les trois commutateurs. Assurez-vous que les agrégations ont effectivement 
+été configurées. 
+ 
+Les agrégations sont des connexions entre les commutateurs leur permettant d’échanger 
+des informations pour tous les réseaux locaux virtuels. Par défaut, un port agrégé appartient 
+à tous les réseaux locaux virtuels, contrairement à un port d’accès qui ne peut appartenir 
+qu’à un seul réseau local virtuel.  
+Utilisez la commande interface range en mode de configuration globale pour simplifier la 
+configuration de l’agrégation. 
+Vérifiez que les agrégations ont été configurées via la commande show interface trunk. 
+ 
+Étape 8. Vérification de la communication entre les commutateurs Comm1, Comm2 et 
+Comm3 
+À partir de Comm1, envoyez une requête ping à l’adresse de gestion sur Comm2 et Comm3.  
+Étape 9. Envoi d’une requête ping à plusieurs hôtes depuis PC2. Quel est le résultat ? 
+<<<PAGE>>>
+Configuration avancée de réseaux locaux virtuels 
+ 
+Envoyez une requête ping de l’hôte PC2 à l’hôte PC1 (192.168.10.21). La tentative de 
+requête ping a-t-elle abouti ?  
+Envoyez une requête ping de l’hôte PC2 à l’adresse IP 192.168.56.12 du commutateur 
+VLAN 56, la tentative de requête ping a-t-elle abouti ?  
+Envoyez une requête ping de l’hôte PC2 à l’hôte PC5. La tentative de requête ping a-t-elle 
+abouti ?   
+ 
+Étape 10. Déplacement de PC1 sur le même VLAN que PC2. PC1 peut-il envoyer une 
+requête ping à PC2 ? 
+ 
+Le port connecté à PC2 (S2 Fa0/18) est affecté au VLAN 20, et le port connecté à PC1 (S2 
+Fa0/11) est affecté au VLAN 10. Affectez de nouveau le port S2 Fa0/11 au VLAN 20. Vous 
+n’avez pas besoin de supprimer un port d’un réseau local virtuel pour modifier son 
+appartenance au réseau local virtuel. Après avoir réaffecté le port à un nouveau réseau local 
+virtuel, il est automatiquement supprimé de son ancien réseau local virtuel. 
+Envoyez une requête ping de l’hôte PC2 à l’hôte PC1. La tentative de requête ping a-t-elle 
+abouti ?  
+ 
+Étape 11. Modification de l’adresse IP sur PC1 en la remplaçant par 192.168.20.21. PC1 
+peut-il envoyer une requête ping à PC2 ? 
+ 
+Remplacez l’adresse IP de PC1 par 192.168.20.21.  Le masque de sous-réseau et la 
+passerelle par défaut peuvent rester identiques. Envoyez de nouveau une requête ping de 
+l’hôte PC2 à l’hôte PC1, en utilisant la nouvelle adresse IP affectée.  
+La tentative de requête ping a-t-elle abouti ? Pourquoi ?  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

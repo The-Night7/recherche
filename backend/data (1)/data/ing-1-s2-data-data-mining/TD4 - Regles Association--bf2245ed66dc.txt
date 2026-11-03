@@ -1,0 +1,98 @@
+Ingénieurs 1ère année                                                                                                                                                                                  
+                                                                                                                                                                                                           Règles d’association               
+ 
+1 
+ 
+                           
+               Règles d’association  
+ 
+Durée  : 6h 
+ 
+L’objectif de ce TP est l’étude de la méthode des règles d’association. 
+L’algorithme Apriori est mis en œuvre à la main pour bien comprendre son 
+fonctionnement. Le package arules de R est ensuite utilisé pour construire des 
+règles sur des jeux de données réels.   
+ 
+ 
+Exercice 1 : Algorithme APriori 
+Considérons les transactions d’une épicerie suivantes 
+Transactions items 
+T1 HotDogs, Buns, Ketchup 
+T2 HotDogs, Buns 
+T3 HotDogs, Coca, Chips 
+T4 Chips, Coca 
+T5 Chips, Ketchup 
+T6 HotDogs, Coca, Chips 
+1) Combien y a-t-il de sous-ensembles candidats ? 
+2) On fixe une fréquence minimale à S0=30%. Calculer la fréquence des items. Doit-on tous les 
+garder pour la suite de l’algorithme ? 
+3) Combien y a-t-il de sous-ensembles candidats de cardinal 2.  Quels sont ceux qui ont une 
+fréquence supérieure à 30% ? 
+4) Combien y a-t-il de sous-ensembles candidats de cardinal 3. Quels sont ceux qui ont une 
+fréquence supérieure à 30% ? 
+5) Etablir les règles d’association de confiance supérieure à 60%. 
+6) Calculer leur lift. 
+ 
+ 
+Exercice 2 : le format large transaction 
+Il s’agit maintenant d’extraire des règles d’un vrai jeu de données à l’aide du logiciel R. On commence 
+à transformer un tableau de données de la classe data.frame pour le mettre dans la classe large transaction 
+afin de pouvoir créer des règles d’association. 
+ 
+Attention, il faut bien entendu qu’il n’y ait que des variables qualitatives dans le 
+data.frame !!! 
+
+<<<PAGE>>>
+Ingénieurs 1ère année                                                                                                                                                                                  
+                                                                                                                                                                                                           Règles d’association               
+ 
+2 
+ 
+ Partie 1 : Résumé du jeu de données 
+1) Mettre le jeu de données « Titanic » sous la forme transaction. 
+2)  Combien y-a-t-il d’items ? de transactions ? 
+3) Afficher la première et la septième transaction. 
+4) Afficher les noms des items et les variables associées. 
+5) Donne la fréquence de chaque item. 
+6) Afficher le graphique des items de support supérieur à 0.2 puis afficher les 5 items les plus 
+fréquents. 
+ 
+Partie 2 : Calcul des règles  
+7) Construire toutes les règles de support supérieur à 10% et de confiance supérieure à 50%. 
+8) Afficher toutes les règles trouvées, puis en particulier le 7éme règle. 
+ 
+Partie 3 : Trier les règles  
+9) Afficher les règles par confiance décroissante puis par lift décroissant. 
+10) Afficher les règles ayant comme item de sortie « survivant » ? Pourquoi n’y-a-t-il aucune règle 
+avec les enfants ?  
+11) Affiche les règles ayant comme item de sortie « survivant » et lift supérieur à 1. 
+ 
+ 
+Exercice 3 : Packages arules 
+Le but de cet exercice est d’extraire des règles du jeu de données «  Mushroom ». Pour cela, nous 
+allons installer et utiliser le package arules.  
+ 
+« The Mushroom data set includes descriptions of hypothetical samples corresponding to 23 species of 
+gilled mushrooms in the Agaricus and Lepiota Family. It contains information about 8124 mushrooms 
+(transactions). 4208 (51.8%) are edible and 3916 (48.2%) are poisonous. The data contains 22 nominal 
+features plus the class attribute (edible or not). These features were translated into 114 items » 
+Mushroom est déjà formatté dans la classe large transaction spécifique aux règles d’association. 
+ 
+Question 1 :  
+a) Combien y a-t-il d’items ? De transactions ?  
+b)  Afficher le graphique des items de support supérieur à 0.2 
+c)  Afficher les 20 items les plus fréquents ? 
+ 
+Question 2 :  
+a) Construire les régles dont le support est supérieur à 50% et la confidence à 70%.  
+b) Combien y-a-t-il de règles construites ? Combien y-a-t-il d’items par règles ? 
+c) Afficher les 7 premiers régles. 
+d) Faire varier les seuils du support et la confiance et regarder l’évolution du nombre de règles et 
+d’items par règles. 
+ 
+Question 3 :  
+a) Afficher les règles par lift décroissant puis par confiance décroissante. 
+b) Afficher les règles avec l’item « poisonous » en conclusion. 
+c) Un nouveau champignon est répertorié avec les caractéristiques suivantes : RingNumber=one 
+et VeilColor=white. Déterminer les règles le concernant.  
+ 

@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define M 41  //taille du tableau
+#define N 20   //nombre iterations
+#define CHUNKSIZE   10
+
+void afficherTab(char Tab[], int size);
+void traitement(char Tabin[], char Tabout[],int size);
+void Remplace (char Tabin[], char Tabout[],int size);
+
+int main(int argc, char *argv[])
+{
+  char Tab[M];
+  char Tabtemp[M];
+  int i,j;
+  //initialisation
+  for (i = 0; i < M; i++) /* boucle << classique >> pour le parcours d'un tableau */
+  {
+    Tab[i] = 'B';  //toutes les cases sont blanches
+  }
+  Tab[M/2]='N';  //sauf celle ci qui est noir 
+  afficherTab(Tab,M);
+  Remplace(Tab, Tabtemp, M);
+  for (j = 0; j < N; j++){
+     traitement(Tab, Tabtemp,M);
+     afficherTab(Tabtemp,M);
+     Remplace(Tabtemp, Tab, M);
+  }
+  
+  return 0;
+}
+
+void afficherTab(char Tab[], int size){
+   int i;
+   for (i = 0; i < size; i++) /* boucle << classique >> pour le parcours d'un tableau */
+   {
+     printf("%c ", Tab[i]);
+   } 
+   printf("\n");
+ }
+ 
+ void Remplace(char Tabin[], char Tabout[],int size){
+   int i;
+   for (i = 0; i < size; i++) /* boucle << classique >> pour le parcours d'un tableau */
+   {
+     Tabout[i]=Tabin[i];
+   } 
+ }
+ 
+ void traitement(char Tabin[], char Tabout[],int size){
+     int i;
+	 int chunk;
+	 chunk = CHUNKSIZE;
+	
+     for (i = 0; i < size; i++) /* boucle << classique >> pour le parcours d'un tableau */
+     {
+        if(Tabin[i]=='B'){
+            Tabout[i] = Tabin[i]; 
+            if (i==0){
+               if(Tabin[i+1]=='N') Tabout[i]='N';   
+            }
+            else if (i==(size-1)){
+               if(Tabin[size-2]=='N') Tabout[i]='N';
+            }
+            else{
+                 if((Tabin[i-1]=='N') || (Tabin[i+1]=='N')) Tabout[i]='N';
+            }   
+        }
+       if(Tabin[i]=='N'){
+           if ((i!=0) && (i!=size-1)){
+             if ((Tabin[i-1]=='B') && (Tabin[i+1]=='B')) Tabout[i]='B'; 
+            }   
+        }
+     }
+ }

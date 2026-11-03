@@ -1,0 +1,15 @@
+
+# Exercice 2 : Sous R
+
+x <- c(65,43,44,59,60,50,52,38,42,40)
+y <- c(12,32, 36,18, 17,20,21,40,30,24)
+plot(y~x, pch=2, cex=0.5)
+
+modele <- lm(y~x) # Creer le mod�le
+modele
+summary(modele) # donne resum� sur le mod�le
+fitted(modele) # donne les valeurs estim�s
+abline(modele, lwd = 4, lty = 1, col = 'red') # trace la droite des moindres carr�es
+residuals(modele) # Donne les r�sidus
+sum(residuals(modele)) # Donne la somme des r�sidus qui est proche de 0
+

@@ -1,0 +1,118 @@
+Pré-ING1
+Semestre 2 - 2022/2023
+DS n ° 2 Informa tique II
+Calculatrice et documents non autorisés
+Les réponses pour la partie code doivent être données en C
+Le barème est donné à titre indicatif et pourra être modifié si necessaire.
+Exercice 1 (Démineur) (15 pts)
+> Si vous ne parvenez pas à répondre à une question, vous pouvez passer à la suivante en supposant que la réponse
+précédente a été fournie correctement).
+> Les fonctions déjà écrites peuvent être ré-utilisées dans les questions suivantes.
+> Dans cet exercice on ne vous demande de programmer que certaines fonctionnalités et pas l’entièreté du jeu.
+> Votre code doit être robuste !
+> Concernant la saisie utilisateur, exceptionnellement il n ’est pas obligatoire de tester le retour de la fonction scanf : on
+part du principe que l’utilisateur va saisir le bon type de données !
+Le démineur est un jeu-vidéo se déroulant sur unplateau carré . Des bombes cachées sont placées aléatoirement sur
+les cases de ce tableau. Lorsqu’on choisi une case, si cette case contient une bombe, la partie est finie, sinon cette case est
+révélée. Une case révélée indique le nombre de bombes dans les 8 cases adjacentes. Si ce nombre est égal à 0 (aucune bombe
+dans les 8 cases autour) alors ces 8 cases sont révélées. Ce qui peut entrainer une réaction en chaîne dans les zones où les
+bombes sont absentes jusqu’à ce qu’une case révélée contienne au moins une bombe dans ses cases voisines.
+Dans cet exercice, nous allons écrire quelques fonctionnalités pour pouvoir programmer un démineur en C qui s’afficherait
+sur un terminal.
+Figure 1 – Exemple d’interface de démineur
+1. Une case d’un plateau de démineur possède plusieurs informations : si elle a été révélée ou non, si elle contient une
+bombe ou non, et le nombre de bombes dans ses cases voisines.
+Définir une structureCase dont les champs contiendront les informations suivantes :
+— L’état de la case (révélée ou non).
+— Le nombre de bombes dans les cases voisines.
+Pour simplifier, on considère que le deuxième champs d’uneCase vaudra -1 si elle contient une bombe, et sinon elle
+contiendra une valeur entre 0 et 8 correspondant au nombre de bombes sur les cases voisines.
+Définir la structureCase. (0.50 pts)
+1
+<<<PAGE>>>
+2. Écrire la procédure void affichePlateau(Case **plateau, int dim) qui prend en paramètre :
+— plateau : le tableau 2D de Case du jeu
+— dim : la taille d’un des côtés du plateau
+Cette fonction va afficher l’état du plateau de jeu. Si une case n’a pas été révélée on affichera ’?’, sinon on affichera le
+nombre de bombes de ses cases voisines.(1.75 pts)
+3. Quelle est la compléxité de la procédure précédente en fonction dedim? (0.75 pts)
+4. L’utilisateurpeutchoisirlatailleduplateaudejeuendébutdepartie.Écrireune fonction ... creationplateau(...)
+dans laquelle :
+— l’utilisateur choisi la taille du côté du plateau (dont la valeur doit être comprise entre 5 et 20).
+— le tableau de jeu doit être créé.
+— ce tableau ainsi que sa dimension doivent pouvoir être communiqués au reste du programme.
+Attention : on ne demande pas dans cette question d’intitaliser le plateau (de placer les bombes, de calculer le
+nombre de bombes des cases voisines etc), simplement de ledéclarer. (3,75 pts)
+5. Écrire une fonction int dsGrille(...) qui prendra (entre autre) en paramètre un couple de int représentant des
+coordonnées du plateau et retournera 1 si ce couple de coordonnée est valide (appartient bien au plateau), 0 sinon.
+(0.75 pts)
+6. On suppose que les cases du plateau de jeu ont été correctement initialisées (les cases sont de base non révélées, les
+bombes sont placées etc.).
+Écrire une fonction/procédure ...choixCase(...) qui demande à l’utilisateur les indices de la case qu’il souhaite
+révéler. Ces indices doivent être récupérés par le reste du programme. Attention : l’utilisateur ne peux pas choisir une
+case en dehors du plateau ou une case déjà révélée.(2 pts)
+7. Nous allons maintenant écrire la fonction permettant de révéler la ou les cases du plateau en fonction du choix de
+l’utilisateur :
+— void decouvrir(Case** tab, int x, int y, int dim)
+— avec tab le plateau de jeu, x et y les coordonnées de la case à découvrir (qu’on peut supposer valide ici) et dim la
+dimension du plateau.
+— Cette procédure modifie la case choisie pour la révéler
+— Si cette dernière ne contient pas de bombe et n’a aucune bombe voisine, alors la procédure va effectuer un appel
+récursif pour découvrir les cases adjacentes.
+— Avec la récursivité, si une des cases adjacentes n’a également pas de bombe autour d’elle, alors le procédé est repété
+jusqu’à ce que la zone entière soit révélée.(3,75 pts)
+Écrire cette procédure.
+8. Le joueur a gagné s’il a révélé toute les cases sauf celles contenant des bombes. Écrire une fonction qui retourne 1 si le
+joueur a gagné, -1 si il a perdu, et 0 sinon.(1.75 pts)
+2
+<<<PAGE>>>
+/ !\CETTE FEUILLE EST A RENDRE A VEC VOTRE COPIE : indiquez bien vos noms et groupes
+Exercice 2 ( Correction et analyse de code ) (5 pts)
+1. Le programme sur cette page comporte des fautes sur7 lignes. Indiquez-les et proposez une correction adaptée. Par
+ligne trouvée :(0.25 pts) pour indiquer quelle faute,(0.25 pts) pour la correction proposée.
+2. Pourquoi init est déclaré comme un tableau de 3 caractères?(0.5 pts)
+3. Quelle taille en octets prend la structure en mémoire?(1.0 pts)
+#include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+typedef struct{
+int essais;
+char init[3];
+float score;
+}Jeu;
+void tourJeu(Jeu *j1){
+if(j1 == NULL){
+exit(10);
+}
+*j1.essais = 5;
+while(rand()%10 =! 0){
+*(j1.essais)--;
+}
+if(j1->essais<=0){
+*(j1).score = j1->score - 0.1;
+}
+else{
+(*j1).score = j1->score + 0.1;
+}
+}
+int main(){
+Jeu j1;
+Jeu *pj1 = NULL;
+pj1 = &j1;
+srand(time(NULL));
+printf("Saisir vos initiales : ");
+if( scanf("%s", &j1.init) != 1){
+exit(20);
+}
+if( strlen(j1.init) != 2 ){
+exit(30);
+}
+printf("Saissisez votre score precedent\n");
+if( scanf("%f", &j1.score) != 1){
+exit(40);
+}
+tourJeu(*pj1);
+printf("Le score est de %f", pj1<-score );
+return 0;
+}
+3

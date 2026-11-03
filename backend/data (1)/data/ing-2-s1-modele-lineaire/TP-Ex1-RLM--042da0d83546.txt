@@ -1,0 +1,64 @@
+
+#Lire le jeu de donn?es
+
+Rat<- read.table("rat.test.txt", header=T,row.names = 1)
+
+
+# Creer le modele de regression 
+reg=lm(ResiduMedi~.,data=Rat)
+summary(reg)
+
+# On commence ? faire une ?valuation globale pour le mod?le et tester les 
+# deux hypotheses H0: tous les parametres sont nuls, contre l'hypothese
+# H1 : Il existe au moins un parametre non nuls.
+
+# On realise le test de Fisher, on compare la valeur obbserv? F-statistic=2.86
+# avec la valeur de Fisher theorique F(3,15)=3.29.. Comme Fobs< Ftheo
+# alors, on accepte H0 et on conclut que le modele n'est pas significatif
+# et tous les parametres sont nuls.
+
+# Par contre, si on va tester la significativit? de chaque variable ? part
+# Il faut regarder le t-value en valeur absolu et le comparer avec la valeur de Student 
+# calcul? ? partir de table de Student, ici t(15;0.05)=2.1315..
+
+# Pour la variable 'Poids', on test alors H0:a1=0, contre H1:a1#0, 
+# pour cette variable p-value= 0.0177<0.05, donc on accepte H1, donc la 
+# variable Poids est significatif et le parametre de regression de cette 
+#variable ne peut pas etre 0, ce qui est en contradiction avec le test de Fisher
+# fait avant et qui nous dit que toutes les variables sont non-significatives
+
+# Alors, pour savoir d'ou vient cette contradiction, on trace le boxplot pour savoir s'il ya des rats 
+# des rats qui ont des residus different des autres. 
+
+
+boxplot(Rat$ResiduMedi)
+# On remarque que j'ai une valeur abberante, pour savoir s'appartient à qui onn
+#trace le plot
+
+plot(Rat$Poids,Rat$ResiduMedi) 
+text(Rat$Poids,Rat$Residu,row.names(Rat),cex=0.7) #j'ajoutes les numeros des rats
+
+# On remarque que le rat 3 a un residuMedi qui a une valeur superieur des autre
+# on va le supprimer de l'etude pour voire ce que va donner, et si on calcule
+# un mod?le sans cette observation, si on aura toujours ce m?me contradiction.
+
+Rat1=Rat[-3,] # On supprime le troisieme rat
+
+reg1=lm(ResiduMedi~.,data=Rat1)
+summary(reg1)
+
+#F-statistic=Fobs=0.1004 ? comparer avec F(3,14)=3.34, on accepte toujours 
+# l'hypothese de non significativit? des variables.
+
+# si on teste chaque variable à part, les p-value des variavles sont 
+# superieur à 0.05 donc ici pour les deux variables poids et dose on accepte 
+# l'hypotese de nulité de parametre, c'est qui n'est pas en contradiction avec test de Fisher.
+
+
+# Remarque : Pour les deux modéles construit avant, la valeur de R² est tres 
+#faible, ce qui nous dit des debut que le modele est faible et que la 
+# variabilité de la variable residuMed ne depend pas trop des variables 
+# explicatives Poids, Foie et Dose.
+
+# Conclusion finale : Il n'ya de rélation linéaire entre le Residu du medicament 
+# d'un coté et le dose et poids du foie d'autre coté.

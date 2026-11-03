@@ -1,0 +1,59 @@
+TD01 – Théorie des Langages 
+ 
+Exercice 4. 
+ 
+Langages binaires 
+ 
+Soit A = {a, b} un alphabet binaire. 
+ 
+Question 1. Proposer une grammaire formelle définissant chacun des langages suivants : 
+ 
+Solution : 
+On suppose : T = A, S = S et N contient tous les symboles introduits par les règles de production. 
+ 
+Les règles de production des grammaires. 
+ 
+1. Le langage des mots de taille 6 : A6 
+ 
+S → LLLLLL 
+L → a | b 
+ 
+2. Le langage de tous les mots : A* 
+ 
+S → ε | aS | bS 
+ 
+3. Le langage des mots commencant par le symbole a et finissant par le symbole b : {a·u·b | u ∈ A*} 
+ 
+S → aKb 
+K → ε | aK | bK 
+ 
+4. Le langage des palindromes : {ε, a, b, aa, bb, aba, bab, …} 
+ 
+S → ε | a | b | aSa | bSb 
+ 
+5. Le langage des mots tels que le symbole a n’est jamais suivi d’un autre symbole a : 
+{ε, a, ab, ba, bb, aba, abb, bab, bba, bbb, …} 
+ 
+S → ε | a | abS | bS 
+ 
+ 
+ 
+6. L’intersection des deux langages précédents 
+ 
+S → ε | a | b | aba | abSba | bSb 
+ 
+7. Le langage des mots contenant autant de a que de b 
+ 
+S → ε | SS | aSb | bSa 
+ 
+Il existe toujours plusieurs grammaires pour représenter un langage. 
+<<<PAGE>>>
+ 
+Ici, les propositions ne sont que des exemples de grammaires solutions. 
+ 
+Pour prouver que ces grammaires produisent bien le langage voulu il faut raisonner en deux 
+temps : 
+(a) Soit u un mot du langage. Quelle forme peut avoir u ? Comment produire u à partir de la 
+grammaire ? 
+(b) Soit u un mot produit par la grammaire. Quelle forme peut avoir u ? Pourquoi u appartient-il 
+bien au langage ? 

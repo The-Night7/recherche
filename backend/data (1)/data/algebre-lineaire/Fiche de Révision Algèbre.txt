@@ -1,0 +1,130 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- UNIVERSAL PREAMBLE BLOCK ---
+\usepackage[a4paper, top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{fontspec}
+
+\usepackage[french, bidi=basic, provide=*]{babel}
+
+\babelprovide[import, onchar=ids fonts]{french}
+\babelprovide[import, onchar=ids fonts]{english}
+
+% Set default/Latin font to Sans Serif in the main (rm) slot
+\babelfont{rm}{Noto Sans}
+
+% Add because main language is not English
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+% --------------------------------
+
+\usepackage{amsmath, amssymb}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+
+% Définition de couleurs douces pour les blocs de la fiche
+\definecolor{block1}{HTML}{E8F0FE} % Bleu clair
+\definecolor{block2}{HTML}{E6F4EA} % Vert clair
+\definecolor{block3}{HTML}{FEF7E0} % Jaune/Orange pastel
+\definecolor{block4}{HTML}{FCE8E6} % Rouge/Rose pastel
+
+% Configuration du style des boîtes "Fiche de révision"
+\tcbset{
+    revisionbox/.style={
+        enhanced,
+        boxrule=0.8pt,
+        arc=5pt,
+        boxsep=2pt,
+        left=8pt, right=8pt, top=8pt, bottom=8pt,
+        fonttitle=\bfseries\large,
+        coltitle=black,
+        attach boxed title to top left={xshift=15pt, yshift=-12pt},
+        boxed title style={colback=white, boxrule=0.8pt, arc=3pt},
+        % Mise en italique du texte pour simuler le style "notes personnelles"
+        fontupper=\itshape
+    }
+}
+
+\begin{document}
+
+\begin{center}
+    \Huge \textbf{Fiche de Révision} \\[0.2cm]
+    \Large \textit{Algèbre Linéaire et Bilinéaire}
+\end{center}
+\vspace{0.4cm}
+
+% --- BLOC 1 ---
+\begin{tcolorbox}[revisionbox, colback=block1, title={1. Algèbre Linéaire : Réduction d'Endomorphismes}]
+\textbf{A. Éléments propres et Polynôme Caractéristique}
+\begin{itemize}
+    \item \textbf{Polynôme caractéristique} : Pour une matrice $A \in \mathcal{M}_n(\mathbb{K})$, il est défini par $P_A(\lambda) = \det(A - \lambda I_n)$. Ses racines sont exactement les valeurs propres de $A$.
+    \item \textbf{Sous-espace propre} : Associé à la valeur propre $\lambda$, c'est $E_\lambda = \ker(A - \lambda I_n)$.
+    \item \textbf{Propriétés de la trace et du déterminant} : Si le polynôme caractéristique est scindé, la trace de $A$ est la somme des valeurs propres (avec multiplicité) et le déterminant est leur produit.
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{B. Diagonalisation et Trigonalisation}
+\begin{itemize}
+    \item \textbf{Condition suffisante} : Si une matrice de taille $n$ admet $n$ valeurs propres distinctes, elle est diagonalisable.
+    \item \textbf{Condition Nécessaire et Suffisante (CNS) de diagonalisation} : Une matrice est diagonalisable si et seulement si son polynôme caractéristique $P_A$ est scindé \textbf{ET} pour chaque valeur propre $\lambda$, la dimension de l'espace propre est égale à la multiplicité algébrique de $\lambda$ ($\dim(E_\lambda) = m_\lambda$).
+    \item \textbf{Trigonalisation} : Une matrice est trigonalisable si et seulement si son polynôme caractéristique est scindé. \textbf{Conséquence} : Dans $\mathbb{C}$, toute matrice est trigonalisable.
+\end{itemize}
+\end{tcolorbox}
+
+% --- BLOC 2 ---
+\begin{tcolorbox}[revisionbox, colback=block2, title={2. Applications de la Réduction}]
+\begin{itemize}
+    \item \textbf{Puissances de matrices} : Si $A = P D P^{-1}$, alors pour tout entier $k$, \textbf{$A^k = P D^k P^{-1}$}.
+    \item \textbf{Formule du binôme matricielle} : $(A+B)^k = \sum_{i=0}^k \binom{k}{i} A^{k-i} B^i$. 
+    
+    \textbf{Attention} : Cette formule n'est valable \textbf{que si $A$ et $B$ commutent} ($AB = BA$). Elle est extrêmement utile pour calculer les puissances en décomposant une matrice $A$ sous la forme $A = \lambda I_n + N$, où $N$ est une matrice nilpotente ($N^p = 0$).
+    \item \textbf{Systèmes Différentiels Linéaires ($X'(t) = AX(t)$)} : La résolution passe par un changement de variable. On pose $Y(t) = P^{-1}X(t)$, ce qui amène à résoudre un système plus simple $Y'(t) = D Y(t)$ (ou $T Y(t)$ si trigonalisée). La solution générale utilise l'exponentielle $e^{\lambda t}$, ou directement l'exponentielle de matrice $e^{tA}$.
+\end{itemize}
+\end{tcolorbox}
+
+% --- BLOC 3 ---
+\begin{tcolorbox}[revisionbox, colback=block3, title={3. Algèbre Bilinéaire : Formes Bilinéaires}]
+\textbf{A. Définitions}
+\begin{itemize}
+    \item \textbf{Forme bilinéaire} : Une application $\phi : E \times E \to \mathbb{R}$ linéaire par rapport à chacune de ses deux variables.
+    \item Elle est \textbf{symétrique} si $\forall x,y \in E, \phi(x,y) = \phi(y,x)$, et \textbf{antisymétrique} si $\phi(x,y) = -\phi(y,x)$.
+    \item Elle est \textbf{définie positive} si $\forall x \in E, \phi(x,x) \geq 0$ (positive) et $\phi(x,x) = 0 \implies x = 0$ (définie).
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{B. Représentation Matricielle}
+\begin{itemize}
+    \item Soit une base $B$. Si $X$ et $Y$ sont les vecteurs colonnes des coordonnées de $x$ et $y$, alors \textbf{$\phi(x,y) = X^T A Y$}.
+    \item \textbf{Congruence (Changement de base)} : Si $P$ est la matrice de passage d'une base $B$ à une base $B'$, la nouvelle matrice de $\phi$ est \textbf{$A' = P^T A P$}. \textit{(Ne pas confondre avec la similitude $A' = P^{-1} A P$ utilisée en réduction !)}.
+    \item \textbf{Critère de Sylvester} : Une matrice symétrique $A$ est définie positive si et seulement si les déterminants de toutes ses sous-matrices principales (extraites depuis le coin supérieur gauche) sont strictement positifs.
+\end{itemize}
+\end{tcolorbox}
+
+% --- BLOC 4 ---
+\begin{tcolorbox}[revisionbox, colback=block4, title={4. Espaces Préhilbertiens et Euclidiens}]
+\textbf{A. Produit Scalaire et Norme}
+\begin{itemize}
+    \item \textbf{Produit scalaire (p.s.)} : C'est une forme bilinéaire symétrique, positive et définie. On le note souvent $\langle x, y \rangle$.
+    \item Un \textbf{espace euclidien} est un espace vectoriel de dimension \textbf{finie} muni d'un produit scalaire.
+    \item \textbf{Norme associée} : $\|x\| = \sqrt{\langle x, x \rangle}$. Elle caractérise un produit scalaire en vérifiant \textbf{l'identité du parallélogramme} : $\|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2)$.
+    \item \textbf{Inégalité de Cauchy-Schwarz} : Absolument incontournable. \textbf{$|\langle x, y \rangle| \leq \|x\| \|y\|$}. L'égalité a lieu si et seulement si $x$ et $y$ sont colinéaires (liés).
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{B. Orthogonalité}
+\begin{itemize}
+    \item Deux vecteurs sont \textbf{orthogonaux} ($x \perp y$) si $\langle x, y \rangle = 0$.
+    \item \textbf{Théorème de Pythagore} : $x \perp y \iff \|x+y\|^2 = \|x\|^2 + \|y\|^2$.
+    \item \textbf{Orthogonal d'un sous-espace $F$ ($F^\perp$)} : C'est l'ensemble des vecteurs orthogonaux à \textit{tous} les vecteurs de $F$. En dimension finie, $F$ et $F^\perp$ sont supplémentaires : \textbf{$E = F \oplus F^\perp$}. Par conséquent, $F \cap F^\perp = \{0_E\}$ et $\dim(F) + \dim(F^\perp) = \dim(E)$.
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{C. Bases Orthonormales et Gram-Schmidt}
+\begin{itemize}
+    \item Toute famille orthogonale de vecteurs non nuls est libre.
+    \item \textbf{Procédé de Gram-Schmidt} : Il permet de fabriquer une base orthogonale $(q_1, \dots, q_p)$ à partir d'une base libre $(v_1, \dots, v_p)$. 
+    La formule de récurrence à retenir est : \textbf{$q_k = v_k - \sum_{i=1}^{k-1} \frac{\langle v_k, q_i \rangle}{\|q_i\|^2} q_i$}. Pour la rendre orthonormale, il suffit ensuite de diviser chaque $q_k$ par sa norme.
+    \item Dans une base orthonormale, le calcul du produit scalaire redevient "usuel" : $\langle x, y \rangle = X^T Y = \sum_{i} x_i y_i$.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

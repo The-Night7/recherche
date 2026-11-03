@@ -1,0 +1,1657 @@
+INFORMATIQUE 3
+V .  A V L
+Eva ANSERMIN & Renaud VERIN & Romuald GRIGNON
+v1.2
+<<<PAGE>>>
+I. Optimisation de la recherche dans un ABR
+E.ANSERMIN | R.VERIN | R.GRIGNON
+2
+<<<PAGE>>>
+ABR : Rappel
+• L ’arbre binaire de recherche est un type arbre binaire permettant d’optimiser la recherche 
+d’élément dans l’arbre. Il obéit à des règles de construction.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+3
+<<<PAGE>>>
+Configuration de l’ ABR
+• Construire un ABR  en insérant les éléments suivant dans l’ordre : 1 , 3 , 5 ,  8,  9 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+4
+<<<PAGE>>>
+Configuration de l’ ABR
+• Construire un ABR  en insérant les éléments suivant dans l’ordre : 1 , 3 , 5 ,  8,  9
+E.ANSERMIN | R.VERIN | R.GRIGNON
+5
+<<<PAGE>>>
+Configuration de l’ ABR
+• Construire un ABR  en insérant les éléments suivant dans l’ordre : 1 , 3 , 5 ,  8,  9
+• Dans un arbre filiforme, la complexité de l’algorithme de recherche est en O(n)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+6
+<<<PAGE>>>
+Complexité et équilibre
+• Complexité: Le nombre d’appels récursifs pour la recherche ou les autres opérations dépend de 
+la configuration de l’ABR.
+• Dans le pire des cas, l’arbre est filiforme, l’opération est en O(n).
+• Dans le meilleur des cas, l’arbre est équilibré entre sa partie droite et gauche (O(log2(𝑛))
+Meilleur cas
+ Pire cas
+E.ANSERMIN | R.VERIN | R.GRIGNON
+7
+<<<PAGE>>>
+Arbre équilibré
+• Un arbre équilibré est un arbre qui maintient une profondeur équilibrée entre ses branches. 
+Chaque nœud interne a le nombre maximum de fils. 
+Arbre équilibré Arbre non-équilibré ou dégénéré
+E.ANSERMIN | R.VERIN | R.GRIGNON
+8
+<<<PAGE>>>
+II. AVL : introduction
+E.ANSERMIN | R.VERIN | R.GRIGNON
+9
+<<<PAGE>>>
+AVL : définition
+• Un AVL, arbre binaire de recherche automatiquement équilibré, est un arbre binaire de 
+recherche « auto-équilibré »: il reste équilibré après opération.  
+• Une série d’ajouts ou de suppressions dans un ABR peut déséquilibrer l’arbre et conduire à 
+des opérations de complexité O(n) dans le pire des cas. Les arbres AVL utilisent des 
+algorithmes de rééquilibrage pour éviter cela.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+10
+<<<PAGE>>>
+Facteur d’équilibrage
+Arbre équilibré Arbre non-équilibré ou dégénéré
+• Pour chaque nœud, on considère la hauteur du nœud.
+• Lors d’une opération de transformation, la hauteur d’un nœud peut être modifiée On calcule alors 
+un facteur d’équilibre de l’arbre :
+hauteur du sous arbre droit - hauteur du sous arbre gauche 
+• Il est recalculé après chaque opération 
+• Il permet de définir si un rééquilibrage est nécessaire
+E.ANSERMIN | R.VERIN | R.GRIGNON
+11
+<<<PAGE>>>
+Facteur d’équilibrage
+Arbre équilibré Arbre non-équilibré ou dégénéré
+Facteur d’équilibre = 2
+• Pour chaque nœud, on considère la hauteur du nœud
+• Lors d’une opération de transformation, la hauteur d’un nœud peut être modifiée On calcule alors 
+un facteur d’équilibre de l’arbre :
+hauteur du sous arbre droit - hauteur du sous arbre gauche 
+• Il est recalculé après chaque opération 
+• Il permet de définir si un rééquilibrage est nécessaire
+Facteur d’équilibre = 1
+E.ANSERMIN | R.VERIN | R.GRIGNON
+12
+<<<PAGE>>>
+Facteur d’équilibrage
+• Pour chaque nœud, on considère la hauteur du nœud
+• Lors d’une opération de transformation, la hauteur d’un nœud peut être modifiée On calcule alors 
+un facteur d’équilibre de l’arbre :
+hauteur du sous arbre droit - hauteur du sous arbre gauche 
+• Il est recalculé après chaque opération 
+• Il permet de définir si un rééquilibrage est nécessaire
+• Un arbre est équilibré  | facteur d’équilibre |  < 2 pour tous les nœuds.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+13
+<<<PAGE>>>
+Construction d’un AVL
+• Structure d’un nœud d’un AVL: 
+Structure Arbre :
+elmt : Element // contenu du nœud 
+fg, fd : pointeur sur structure Arbre // fils gauche et droit
+equilibre : entier  // facteur d’équilibre du nœud = hauteur sous arbre droit 
+– hauteur sous-arbre gauche. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+14
+<<<PAGE>>>
+Construction d’un AVL
+• Déclaration et initialisation d’un nœud 
+FONCTION creerArbre(r: Element) : ptr sur Arbre
+VARIABLE
+noeud : ptr sur Arbre
+DEBUT
+noeud ← reserverMemoire(Arbre)
+elmt(noeud) ← r
+fg(noeud) ← ??
+fd(noeud) ← ??
+equilibre(noeud) ← ??
+RETOURNER noeud
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+15
+<<<PAGE>>>
+Construction d’un AVL
+• Déclaration et initialisation d’un nœud 
+FONCTION creerArbre(r: Element) : ptr sur Arbre
+VARIABLE
+noeud : ptr sur Arbre
+DEBUT
+noeud ← reserverMemoire(Arbre)
+elmt(noeud) ← r
+fg(noeud) ← NULL // Le noeud n’a pas de fils à sa création
+fd(noeud) ← NULL
+equilibre(noeud) ← 0 // Le noeud n’a pas de fils: son equilibre est 0
+RETOURNER noeud
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+16
+<<<PAGE>>>
+III. AVL : opérations
+E.ANSERMIN | R.VERIN | R.GRIGNON
+17
+<<<PAGE>>>
+Opération de recherche
+• Puisque l’AVL respecte les propriétés d’un ABR, l’algorithme de recherche ne 
+change pas : 
+• Recherche dans le sous-arbre gauche si la valeur recherchée est 
+inférieure au nœud
+• Recherche dans le sous-arbre droit si la valeur recherchée est 
+supérieure au nœud
+• L ’opérationde recherche ne modifie pas l’arbre : pas besoin de rééquilibrage. 
+FONCTION recherche(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) Alors
+RETOURNER NULL
+SINON SI (element(a) EST EGAL A e) Alors
+RETOURNER a
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+RETOURNER recherche(fg(a),e)
+SINON
+RETOURNER recherche(fd(a),e)
+FIN SI
+Fin
+E.ANSERMIN | R.VERIN | R.GRIGNON
+18
+<<<PAGE>>>
+Insertion
+• 1ère étape : l’insertion se déroule de la même manière que pour un ABR : 
+10
+5
+2 8
+15
+12 18
+• Algorithme :
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+Exemple : insertionABR(A, 9)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+19
+<<<PAGE>>>
+Insertion
+• 1ère étape : l’insertion se déroule de la même manière que pour un ABR : 
+10
+5
+2 8
+15
+12 18
+9
+• Algorithme :
+FONCTION insertionABR(a: pointeur sur Arbre, e: Element) : 
+pointeur sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+RETOURNER creerArbre(e) 
+SINON SI (e EST INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionABR(fg(a), e)
+SINON SI (e SUP. STRICT. A element(a)) Alors
+fd(a) ← insertionABR(fd(a), e)
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+20
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+10
+5
+2 8
+15
+12 18
+9
+10
+5
+2 8
+15
+12 18
+00 00
+0 0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+21
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+• Seuls les nœuds ancètres ont un facteur d’équilibre modifé.
+10
+5
+2 8
+15
+12 18
+9
+10
+5
+2 8
+15
+12 18
+00 00
+0 0
+0
+0 1
+0
+1
+-1
+0
+0 0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+22
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+• Dans ce cas, pas besoin de rééquilibrer l’arbre. 
+10
+5
+2 8
+15
+12 18
+9
+10
+5
+2 8
+15
+12 18
+00 00
+0 0
+0
+0 1
+0
+1
+-1
+0
+0 0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+23
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+Principes : 
+• Le nœud inséré est une feuille : son équilibre est à 0. 
+10
+5
+2 8
+15
+12 18
+00 00
+0 0
+0
+9
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+24
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+Principes : 
+• Le nœud inseré est une feuille : son équilibre est à 0. 
+• L ’ insertion d’un enfant induit un changement dans l’équilibre du nœud parent.
+• -1 si le nouveau nœud est à gauche
+• +1 si le nouveau nœud est à droite 
+10
+5
+2 8
+15
+12 18
+01 00
+0 0
+0
+9
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+25
+<<<PAGE>>>
+Insertion
+• 2ème étape : il faut mettre à jour l’équilibre des nœuds.
+Principes : 
+• Le nœud inseré est une feuille : son équilibre est à 0. 
+• L ’ insertion d’un enfant induit un changement dans l’équilibre du nœud parent.
+• -1 si le nouveau nœud est à gauche
+• +1 si le nouveau nœud est à droite 
+• Ce changement est effectué sur tous les ancêtres
+10
+5
+2 8
+15
+12 18
+01 00
+1 0
+-1
+9
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+26
+<<<PAGE>>>
+Insertion
+• 3ème étape : le rééquilibrage.
+• Algorithme :
+FONCTION insertionAVL(a: ptr Arbre, e: Element, h: ptr
+sur entier) : ptr sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+*h=1
+RETOURNER creerArbre(e)
+SINON Si (e INF. STRICT. A element(a)) ALORS
+fg(a) ← insertionAVL(fg(a), e, h)
+*h ← -*h   
+SINON Si (e SUP. STRICT. A element(a)) ALORS
+fd(a) ← insertionAVL(fd(a), e, h)
+SINON
+*h= 0
+RETOURNER a
+FIN SI
+SI (*h DIFFERENT DE 0)  ALORS
+equilibre (a) ← equilibre(a) + *h
+a ← equilibrageAVL(a)
+SI (equilibre(a) EST EGAL A 0) ALORS 
+*h ← 0
+SINON
+*h ← 1
+FIN SI
+FIN SI 
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+101
+<<<PAGE>>>
+Suppression
+• Ensuite, un ou plusieurs rééquilibrages peuvent être nécessaires après opération .
+• 1. L ’opération de suppression fonctionne comme avec les ABR :
+• Si le nœud à supprimer est une feuille ou n’a qu’un fils, on supprime le nœud / on le remplace par son 
+fils.
+• Sinon on doit échanger les valeurs du nœud à supprimer avec la valeur min du sous arbre droit ou la 
+valeur max du sous arbre gauche.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+102
+<<<PAGE>>>
+Suppression
+• 2. Comme pour l’insertion, on met à jour l’équilibre des nœuds en remontant à partir du nœud supprimé :
+• 3. On rééquilibre l’AVL si nécessaire (cf. plus bas, fonction equilibrageAVL) 
+10
+5
+2 8
+15
+12 18
+00 00
+0 0
+0
+10
+5
+2
+15
+12 18
+000
+-1 0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+103
+<<<PAGE>>>
+Suppression • Algorithme:
+E.ANSERMIN | R.VERIN | R.GRIGNON
+104
+FONCTION suppressionAVL(a: ptr sur Arbre, e: element, h: ptr sur Element) : pointeur sur Arbre
+VARIABLE
+tmp : ptr sur Arbre
+DEBUT
+SI (a EST EGAL A NULL) ALORS
+*h ← 0
+RETOURNER a
+SINON SI (e SUP. STRICT. A element(a)) ALORS // parcours pour trouver le noeud
+fd(a) ← suppressionAVL(fd(a), e)
+SINON SI (e INF. STRICT. A element(a))  ALORS
+fg(a) ← suppressionAVL(fg(a), e)
+*h ← -*h
+SINON SI (existeFilsDroit(a)) ALORS // si il y a un fils droit…
+fd(a) ← suppMinAVL( fd(a), h, adresse(element(a)) ) // … on cherche le minimum dedans 
+SINON
+tmp ← a // le noeud n’a qu’un fils gauche ou aucun fils
+a ← fg(a) // échange avec le fils gauche et suppression
+libérer(tmp)
+*h ← -1
+RETOURNER a
+FIN SI
+SI (*h DIFFERENT DE 0) ALORS
+equilibre(a) ← equilibre (a) + *h
+SI (equilibre(a) EST EGAL A 0) ALORS
+*h ← -1
+SINON
+*h ← 0
+FIN SI
+FIN SI
+RETOURNER a
+FIN
+a ← equilibrageAVL(a)
+<<<PAGE>>>
+Suppression • Algorithme:
+FONCTION suppMinAVL(a: Arbre; h: pointeur sur entier, pe: ptr sur  Element) : ptr sur Arbre
+VARIABLE 
+tmp : ptr sur Arbre
+DEBUT
+SI (fg(a) EST EGAL A NULL) ALORS // Si il n’y a plus de fils gauche… 
+*pe ← element(a) // … alors on a trouvé la plus petite valeur de l’arbre
+*h ← -1
+tmp ← a
+a ← fd(a) // on remplace le noeud actuel par le fils droit…
+liberer(tmp) // … et on libère la mémoire du noeud
+RETOURNER a
+SINON
+fg(a) ← suppMinAVL(fg(a), h, pe) // appel récursif sur le sous-arbre de gauche
+*h ← -*h
+FIN SI
+SI (*h DIFFERENT DE 0) ALORS
+equilibre(a) ← equilibre(a) + *h // mise à jour du facteur d’équilibrage
+SI (equilibre(a) EST EGAL A 0) ALORS
+*h ← -1
+SINON
+*h ← 0
+FIN SI
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+105
+a ← equilibrageAVL(a)
+<<<PAGE>>>
+IV. Equilibrage d’un AVL
+E.ANSERMIN | R.VERIN | R.GRIGNON
+143
+<<<PAGE>>>
+Rotation simple
+• L ’opération de rééquilibrage dépend de la structure de l’arbre après une opération d’insertion/suppression.
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre. 
+10
+5
+2 8
+15
+12 18
+10 00
+0 1
+1
+20
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+144
+<<<PAGE>>>
+Rotation simple 
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre. 
+10
+5
+2 8
+15
+12 18
+10 00
+0 1
+1
+20
+0 +1
+21 0
+La modification de l ’équilibre 
+des nœuds se fait en 
+remontant les parents
+E.ANSERMIN | R.VERIN | R.GRIGNON
+145
+<<<PAGE>>>
+10
+5
+2 8
+15
+12 18
+1+10 00
+0 1
+1
+20
+1
+21 0
+La modification de l ’équilibre 
+des nœuds se fait en 
+remontant les parents
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+146
+<<<PAGE>>>
+Rotation simple 
+10
+5
+2 8
+15
+12 18
+20 00
+0 1
+1
+20
+1
+21 0
+Il faut rééquilibrer
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+147
+<<<PAGE>>>
+Rotation simple
+10
+5
+2 8
+15
+12 18
+20 00
+0 1
+1
+20
+1
+21 0
+On modifie ce sous-arbre
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre. 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+148
+<<<PAGE>>>
+Rotation simple
+10
+5
+2 8
+15
+12 18
+20 00
+0 1
+1
+20
+1
+21 0
+10
+5
+2 8
+15
+12 20
+00 00
+0 1
+1
+18
+0
+21
+0
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche 
+E.ANSERMIN | R.VERIN | R.GRIGNON
+149
+<<<PAGE>>>
+Rotation simple
+a
+2
+p
+1
+c 0
+pivot
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• L ’elementintermédiaire doit devenir la racine du sous-arbre équilibré ; l’arbre doit
+tourner autour de cet élément : c’est le pivot.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+150
+<<<PAGE>>>
+Rotation simple
+a
+2
+p
+1
+c 0
+pivot
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• L ’elementintermédiaire doit devenir la racine du sous-arbre équilibré ; l’arbre doit
+tourner autour de cet élément : c’est le pivot.
+a
+2
+p
+1
+c 0
+On tourne le sous arbre vers la gauche
+autour du pivot.
+E.ANSERMIN | R.VERIN | R.GRIGNON
+151
+<<<PAGE>>>
+Rotation simple
+a
+2
+p
+1
+c 0
+pivot
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• L ’elementintermédiaire doit devenir la racine du sous-arbre équilibré ; l’arbre doit
+tourner autour de cet élément : c’est le pivot.
+a
+2
+p
+1
+c 0
+On tourne le sous arbre vers la gauche
+autour du pivot.
+p
+a c
+Arbre équilibré
+0
+00
+E.ANSERMIN | R.VERIN | R.GRIGNON
+152
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Schema general de la rotation gauche : 
+a 1
+2
+p
+< <
+E.ANSERMIN | R.VERIN | R.GRIGNON
+153
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Schema general de la rotation gauche : 
+Exemple :
+a 1
+2
+p
+a
+p
+E.ANSERMIN | R.VERIN | R.GRIGNON
+154
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Schema general de la rotation gauche : 
+p
+a
+a 1
+2
+p
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+155
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Schema general de la rotation gauche : 
+p
+a
+a 1
+2
+p
+0
+0
+a 0
+2
+p
+E.ANSERMIN | R.VERIN | R.GRIGNON
+156
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Schema general de la rotation gauche : 
+p
+a
+a 1
+2
+p
+0
+0
+a 0
+2
+p
+p
+a
+-1
+1
+E.ANSERMIN | R.VERIN | R.GRIGNON
+157
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Algorithme: 
+p
+a
+a 1
+2
+p
+0
+0
+FONCTION rotationGauche(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot ← ???
+…
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+158
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Algorithme: 
+FONCTION rotationGauche(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot     ← fd(a)
+fd(a)     ← fg(pivot)
+fg(pivot) ← a
+…
+a ← pivot
+RETOURNER a
+FIN
+p
+a
+a 1
+2
+p
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+159
+<<<PAGE>>>
+Rotation simple
+• Cas 1 : L ’ élément ajouté est tout à droite de l’arbre rotation simple à gauche
+• Algorithme: 
+FONCTION rotationGauche(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot     ← fd(a)
+fd(a)     ← fg(pivot)
+fg(pivot) ← a
+eq_a ← equilibre(a)
+eq_p ← equilibre(pivot)
+equilibre(a)     ← eq_a - max(eq_p, 0) - 1
+equilibre(pivot) ← min( eq_a-2, eq_a+eq_p-2, eq_p-1 )
+a ← pivot
+RETOURNER a
+FIN
+p
+a
+a 1
+2
+p
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+160
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre. 
+10
+5
+4 8
+15
+12 18
+00 0-1
+0 0
+0
+3
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+161
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre. 
+10
+5
+4 8
+15
+12 18
+00 0-2
+0 0
+0
+3
+2
+-1
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+162
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre. 
+10
+5
+4 8
+15
+12 18
+00 0-2
+0 0
+0
+3
+2
+-1
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+163
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite  
+10
+5
+4 8
+15
+12 18
+00 0-2
+0 0
+0
+3
+2
+-1 0
+10
+5
+3 8
+15
+12 18
+00 00
+-1 0
+-1
+2 4
+0
+pivot
+E.ANSERMIN | R.VERIN | R.GRIGNON
+164
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Schema general rotation droite :  
+a-1
+-2
+p
+E.ANSERMIN | R.VERIN | R.GRIGNON
+165
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Schema general rotation droite :  
+a-1
+-2
+p
+p
+a
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+166
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Schema general rotation droite :  
+a-1
+-2
+p
+p
+a
+0
+0
+a0
+-2
+p
+E.ANSERMIN | R.VERIN | R.GRIGNON
+167
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Schema general rotation droite :  
+a-1
+-2
+p
+p
+a
+0
+0
+a0
+-2
+p
+p
+a
+1
+-1
+E.ANSERMIN | R.VERIN | R.GRIGNON
+168
+<<<PAGE>>>
+Rotation simple 
+a-1
+-2
+p
+p
+a
+0
+0
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Algorithme:
+FONCTION rotationDroite(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot     ← ???
+…
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+169
+<<<PAGE>>>
+Rotation simple 
+a-1
+-2
+p
+p
+a
+0
+0
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Algorithme:
+FONCTION rotationDroite(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot     ← fg(a)
+fg(a)     ← fd(pivot)
+fd(pivot) ← a
+…
+a ← pivot
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+170
+<<<PAGE>>>
+Rotation simple 
+• Cas 2 : L ’ élément ajouté est tout à gauche de l’arbre : rotation simple à droite
+• Algorithme:
+a-1
+-2
+p
+p
+a
+0
+0
+FONCTION rotationDroite(a: ptr sur Arbre) : ptr sur Arbre
+VARIABLE 
+pivot : ptr sur Arbre
+eq_a, eq_p : entier
+DEBUT
+pivot     ← fg(a)
+fg(a)     ← fd(pivot)
+fd(pivot) ← a
+eq_a ← equilibre(a)
+eq_p ← equilibre(pivot)
+equilibre(a)     ← eq_a - min(eq_p, 0) + 1
+equilibre(pivot) ← max( eq_a+2, eq_a+eq_p+2, eq_p+1 )
+a ← pivot
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+171
+<<<PAGE>>>
+Rotation simple 
+• Autre exemple de rotation simple avec la suppression :
+10
+5
+3
+20
+15 26
+100
+0-1
+13
+0
+17
+0
+1
+29
+0
+10
+5 20
+15 26
+10
+00
+13
+0
+17
+0
+2
+29
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+172
+<<<PAGE>>>
+Rotation simple 
+• Autre exemple de rotation simple avec la suppression :
+10
+5 20
+15 26
+10
+00
+13
+0
+17
+0
+2
+29
+0
+20
+-1
+10
+5
+0
+15
+13 17
+0
+26
+1
+29
+0
+0
+0
+1
+pivot
+Rotation gauche
+pivot     ← fd(a)
+fd(a)     ← fg(pivot)
+fg(pivot) ← a
+…
+a ← pivot
+E.ANSERMIN | R.VERIN | R.GRIGNON
+173
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : 
+10
+5
+3
+20
+15 26
+000
+-1-1
+13
+0
+17
+0
+1
+E.ANSERMIN | R.VERIN | R.GRIGNON
+174
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+Rotation gauche
+E.ANSERMIN | R.VERIN | R.GRIGNON
+175
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : 
+10
+5 20
+15 26
+00
+0
+13
+0
+17
+0
+20
+10
+5 15
+26
+0
+13
+0
+17
+0
+0
+pivot     ← fd(a)
+fd(a)     ← fg(pivot)
+fg(pivot) ← a
+…
+a ← pivot
+Rotation gauche
+-1
++2
++1
+-2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+176
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
++2 La rotation à gauche ne fonctionne pas !
+20
+10
++1
+-2
+5 15
+26
+0
+13
+0
+17
+0
+0
+pivot     ← fd(a)
+fd(a)     ← fg(pivot)
+fg(pivot) ← a
+…
+a ← pivot
+Rotation gauche
+E.ANSERMIN | R.VERIN | R.GRIGNON
+177
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+15
+10
+5
+0
+13
+20
+17
+0
+26
+0
+0
+0
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+178
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : double rotation gauche 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+15
+10
+5
+0
+13
+20
+17
+0
+26
+0
+0
+0
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+179
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : double rotation gauche 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+15
+10
+5
+0
+13
+20
+17
+0
+26
+0
+0
+0
+0
+0
+10
+5
+0
+15
+20
+26
+0
+17
+0
+13
+0
+Rotation droite
+pivot
+0
++1
++2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+180
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : double rotation gauche
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+15
+10
+5
+0
+13
+20
+17
+0
+26
+0
+0
+0
+0
+0
+10
+5
+0
+15
+20
+26
+0
+17
+0
+13
+0
+Rotation droite
+pivot
+Rotation gauche
+0
++1
++2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+181
+<<<PAGE>>>
+Rotation double
+• Cas  3 : élément supprimé dans le sous-arbre gauche suivant : double rotation gauche
+A.K.A. : rotation droite gauche 
+10
+5 20
+15 26
+00
+-10
+13
+0
+17
+0
+2
+15
+10
+5
+0
+13
+20
+17
+0
+26
+0
+0
+0
+0
+0
+10
+5
+0
+15
+20
+26
+0
+17
+0
+13
+0
+Rotation droite
+Rotation gauche
+pivot
+0
++1
++2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+182
+<<<PAGE>>>
+Rotation double
+• Cas  3 : hauteur trop importante dans la partie gauche du sous-arbre droit: double rotation 
+gauche 
+A 1
+2
+B
+< <
+P
+<
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+183
+<<<PAGE>>>
+Rotation double
+• Cas  3 : hauteur trop importante dans la partie gauche du sous-arbre droit: double rotation 
+gauche 
+A -1
+2
+B
+P
+A +1
+2
+B
+P
+rotationDroite(fd(A))
+0
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+184
+<<<PAGE>>>
+• Cas  3 : hauteur trop importante dans la partie gauche du sous-arbre droit: double rotation 
+gauche 
+Rotation double
+A -1
+2
+B
+P
+A +1
+2
+B
+P
+rotationDroite(fd(A))
+0
+0
+ A
+ B
+P
+0
+0
+0
+rotationGauche(A)
+E.ANSERMIN | R.VERIN | R.GRIGNON
+185
+<<<PAGE>>>
+• Cas  3 : hauteur trop importante dans la partie gauche du sous-arbre droit: double rotation 
+gauche 
+Rotation double
+A -1
+2
+B
+P-1
+A -1
+2
+B
+P1
+A
+ B
+P
+0
+0
+1
+A
+ B
+P
+-1
+0
+0
+Double rotation gauche
+Double rotation gauche
+E.ANSERMIN | R.VERIN | R.GRIGNON
+186
+<<<PAGE>>>
+• Cas  3 : hauteur trop importante dans la partie gauche du sous-arbre droit: double rotation 
+gauche 
+Rotation double
+• Algorithme :
+FONCTION doubleRotationGauche(a: ptr sur Arbre) : 
+ptr sur Arbre
+DEBUT 
+fd(a) ← rotationDroite(fd(a))
+RETOURNER rotationGauche(a)
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+187
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+A
+B
+P
+-2
+1
+0
+E.ANSERMIN | R.VERIN | R.GRIGNON
+188
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+A
+B
+P
+A
+B
+P
+-2
+1
+0
+-1
+0rotationGauche(fg(A))
+-2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+189
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+A
+B
+P
+A
+A
+B
+P
+P
+B
+-2
+1
+0
+-1
+0
+0
+0
+0
+rotationDroite(A)rotationGauche(fg(A))
+-2
+E.ANSERMIN | R.VERIN | R.GRIGNON
+190
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+A
+B
+P
+A
+A
+B
+P
+P
+B
+-2
+1
+0
+-1
+0
+0
+0
+0
+rotationDroite(A)rotationGauche(fg(A))
+-2
+A.K.A. : rotation gauche droite
+E.ANSERMIN | R.VERIN | R.GRIGNON
+191
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+A
+B
+P
+-2
+1
+-1
+ A
+P
+B
+0
+0
+1
+A
+B
+P
+-2
+1
+1
+A
+P
+B
+-1
+0
+0
+Double rotation droite
+E.ANSERMIN | R.VERIN | R.GRIGNON
+192
+<<<PAGE>>>
+• Cas  4 : hauteur trop importante dans la partie droite du sous-arbre gauche: double rotation droite
+Rotation double
+• Algorithme :
+FONCTION doubleRotationDroite(a: ptr sur Arbre) : 
+ptr sur Arbre
+DEBUT 
+fg(a) ← rotationGauche(fg(a))
+RETOURNER rotationDroite(a)
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+193
+<<<PAGE>>>
+Choix de la rotation
+• La rotation à effectuer dépend de la structure de l’arbre (de quel côté se situe le déséquilibre).
+• Pour connaître la rotation à effectuer, il suffit de regarder l’équilibre de la racine
+(nœud dont l’équilibre vaut +2 ou -2) et de ses fils :
+• SI equilibre(racine) EST EGAL A -2  
+• → rotation droite 
+• SI equilibre(racine) EST EGAL A +2 →   rotation gauche
+• → rotation gauche
+E.ANSERMIN | R.VERIN | R.GRIGNON
+194
+<<<PAGE>>>
+• La rotation à effectuer dépend de la structure de l’arbre (de quel côté se situe le déséquilibre).
+• Pour connaître la rotation à effectuer, il suffit de regarder l’équilibre de la racine
+(nœud dont l’équilibre vaut +2 ou -2) et de ses fils :
+• SI equilibre(racine) EST EGAL A -2  
+• → rotation droite 
+• SI equilibre(fg(racine)) EST INF . OU EGAL A 0
+• → rotation simple
+• SINON
+• → rotation double
+• SI equilibre(racine) EST EGAL A +2 →   rotation gauche
+• → rotation gauche
+• SI equilibre(fd(racine)) EST SUP . OU EGAL A 0
+• → rotation simple
+• SINON
+• → rotation double
+Choix de la rotation
+E.ANSERMIN | R.VERIN | R.GRIGNON
+195
+<<<PAGE>>>
+Choix de la rotation
+• Algorithme :
+FONCTION equilibrerAVL(a: ptr sur Arbre) : ptr sur Arbre
+DEBUT
+SI (equilibre(a) EST SUP. OU EGAL A 2) ALORS // sous-arbre droit plus profond
+SI (equilibre(fd(A)) SUP. OU EGAL A 0) ALORS
+RETOURNER rotationGauche(a)
+SINON
+RETOURNER doubleRotationGauche(a)
+FIN SI
+SINON SI (equilibre(a) EST INF. OU EGAL A -2) ALORS // sous-arbre gauche plus profond
+SI (equilibre(fg(a)) INF. OU EGAL A 0) ALORS
+RETOURNER rotationDroite(a)
+SINON
+RETOURNER doubleRotationDroite(a)
+FIN SI 
+FIN SI
+RETOURNER a
+FIN
+E.ANSERMIN | R.VERIN | R.GRIGNON
+196
+<<<PAGE>>>
+Complexité de l’ AVL
+• Les opérations de rotations sont à complexité constante O(1)
+• L ’opérationd’insertion ajoute une hauteur de 1 sur la branche où est inséré l’élément : une
+rotation suffit pour rééquilibrer l’arbre.
+• L ’opération de suppression peut exécuter une rotation sur chaque ancêtre du nœud supprimé. 
+Mais celles-ci étant en temps constant, le nombre de rotations dépend de la hauteur de l’arbre.
+• Donc, pour un arbre AVL de n nœuds, la complexité d’ajout ou suppression est en 𝑶(𝐥𝐨𝐠𝟐(𝒏))
+E.ANSERMIN | R.VERIN | R.GRIGNON
+197
+<<<PAGE>>>
+Résumé 
+• Le facteur d’équilibre d’un arbre représente la différence de hauteur entre le sous-arbre 
+gauche et droit : il permet de quantifier l’équilibre de l’arbre.
+• Les AVL sont des arbres auto-équilibrés garantissant une structure de l’arbre permettant 
+d’optimiser les opérations de recherche, d’insertion et de suppression.
+• L ’ AVL exploite des opérations de rotation autour d’un nœud pivot pour rééquilibrer un arbre.
+• Il existe d’autre types d’arbres auto-équilibrés comme les arbres rouge-noirs!
+E.ANSERMIN | R.VERIN | R.GRIGNON
+198

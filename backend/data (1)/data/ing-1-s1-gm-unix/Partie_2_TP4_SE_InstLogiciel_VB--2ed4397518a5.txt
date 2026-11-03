@@ -1,0 +1,48 @@
+Systèmes d’exploitation 
+TP – Installation des logiciels – VirtualBox 
+ING1 Informatique - Mathématiques appliquée  
+Année 2024–2025 
+ 
+1- Création d’un dossier partagé disque local et machine virtuelle 
+ 
+Dans VirtualBox, démarrer sa machine virtuelle : 
+ 
+- Aller dans Périphériques (Devices) dans le menu en haut 
+- Choisir Dossier partagé puis Réglages 
+- Ajouter un nouveau dossier avec le bouton à droite (+) 
+- Choisir un chemin sur le disque dur local (Exemple : /Data/download ou 
+/home/cytech/Téléchargement) 
+- Mettre comme nom de dossier : shared (ou autre nom) ← attention (voir plus bas) 
+- Cocher Configuration permanente  
+- Valider (OK) 
+ 
+Dans un terminal de la machine virtuelle, se mettre dans le dossier principal (cd .. ou cd $HOME 
+ou  cd ~). 
+Créer un répertoire avec le même nom que celui donné ci-dessus (voir attention) : sudo mkdir shared  
+- Aller dans Périphériques (Devices) dans le menu en haut 
+- Choisir réseau puis réglages 
+- Choisir le premier adaptateur et cliquer sur avancé 
+- Créer une redirection de port avec le bouton à droite (+) : Nom : ssh, Protocole : TCP, IP hôte : 
+laisser vide, Port hôte : 2222, IP invité : laisser vide, Port invité : 22 
+- OK 
+ 
+Dans le terminal taper sudo mount -t vboxsf -o uid=1000, gid=1000 shared ~/shared 
+En cas d’erreur, il faut peut-être installer : 
+ sudo apt install virtualbox-guest-utils   
+ sudo apt install virtualbox-guest-dkms 
+ 
+2- Connexion en SSH1 de la machine locale vers la machine virtuelle 
+ 
+Dans VirtualBox, démarrer sa machine virtuelle et dans le terminal de commande taper :  
+ 
+sudo apt install ssh OU sudo apt install openssh-client 
+sudo ufw allow 22 
+systemctl start ssh 
+systemctl status ssh (vérifier si le service est actif) 
+   Enfin dans de la machine locale, lancer un terminal de commande puis taper : 
+ ssh -p 2222 user@127.0.0.1 (avec user = votre login de la machine virtuelle) 
+Valider par yes si un message s’affiche. 
+Vous avez accès via ssh à la machine virtuelle et vous pouvez faire des copier-coller par exemple. 
+                                                      
+1 SSH - Secure Socket Shell, est un protocole réseau qui permet aux administrateurs d'accéder à distance à un 
+ordinateur, en toute sécurité. 

@@ -1,0 +1,704 @@
+Département de Mathématiques
+Préing 2 - Intégration et Probabilité
+2021 - 2022
+TD Revision - Intégrales Généralisées
+Exercice 1. Étudier la nature des intégrales :
+a)
+∫+∞
+1
+1−cosx
+x2 dx.
+b)
+∫0
+−1
+dx
+x(x + 2).
+c)
+∫+∞
+0
+x2
+x
+17
+5 + 1
+dx.
+d)
+∫−1
+−∞
+ecosx
+x dx.
+e)
+∫+∞
+3
+arctan(x)
+x2 + 2x + 7dx.
+f)
+∫+∞
+2
+dx
+x(ln(x))2.
+Solution :
+a) Posons f (x) = 1−cosx
+x2 . Cette fonction est continue sur R∗donc sur [1; +∞[. Pour étudier
+la convergence de l’intégrale, il suﬃt donc d’étudier le comportement au voisinage de l’inﬁni.
+Maintenant|cosx|≤1, donc
+⏐⏐⏐⏐
+1−cosx
+x2
+⏐⏐⏐⏐≤|1−cosx|
+x2 ≤1 +|cosx|
+x2 ≤2
+x2,
+avec
+∫+∞
+1
+dx
+x2 convergente (c’est une intégrale de Riemann
+∫+∞
+1
+dx
+xx avecα= 2 > 1 ), donc, par
+comparaison,
+∫+∞
+1
+1−cosx
+x2 dx est convergente.
+b) Posonsf (x) = 1
+x(x + 2).La fonctionf est continue surR\{−2, 0}donc sur [−1; 0[. Pour étudier
+la convergence de l’intégrale, il suﬃt donc de regarder ce qui se passe au voisinage de 0. Soit
+−1<ε<0, on doit étudier ∫ε
+−1
+dx
+x(x + 2).
+Cherchonsλet µtels que 1
+x(x + 2) = λ
+x + µ
+x + 2 :
+1
+x(x + 2) = λ
+x + µ
+x + 2⇐⇒1
+x(x + 2) = λ(x + 2) +µx
+x(x + 2) = (λ+µ)x + 2λ
+x(x + 2)
+⇐⇒
+{λ+µ= 0
+2λ= 1 ⇐⇒λ= 1
+2 et µ=−1
+2
+1
+<<<PAGE>>>
+Ainsi, 1
+x(x + 2) = 1
+x +−1
+2
+1
+x + 2 et donc :
+∫ε
+−1
+dx
+x(x + 2) = 1
+2
+∫ε
+−1
+dx
+x −1
+2
+∫ε
+−1
+dx
+x + 2 = 1
+2 [ln|x|]ε
+−1−1
+2 [ln|x + 2|]ε
+−1
+= 1
+2 (ln|ε|−ln 1)−1
+2 (ln|ε+ 2|−ln 1) = 1
+2 ln|ε|−1
+2 ln|ε+ 2| →
+ε→0
+−∞,
+donc l’intégrale
+∫0
+−1
+dx
+x(x + 2) dx diverge.
+AUTRE MÉTHODE: Si−1≤x≤0, on a1≤x + 2≤2 d’où1
+2≤1
+x+2≤1 et donc
+⏐⏐⏐⏐
+1
+x(x + 2)
+⏐⏐⏐⏐≥1
+2
+1
+|x|
+Puisque l’intégrale
+∫0
+−1
+dx
+|x|est divergente (c’est une intégrale de Riemann), on en déduit que
+∫0
+−1
+dx
+x(x + 2) diverge par comparaison
+c) Posonsf (x) = x2
+x17/5 + 1. Cette fonction est continue sur]0; +∞[. De plus, six> 0, on a
+x17/5 + 1> 1
+donc le dénominateur ne s’annule jamais. Pour étudier la convergence de l’intégrale, il suﬃt donc
+d’étudier le comportement au voisinage de+∞. On a, puisque
+x17/5 + 1≥x17/5
+que
+1
+x17/5 + 1≤1
+x17/5.
+Donc ⏐⏐⏐⏐
+x2
+x17/5 + 1
+⏐⏐⏐⏐= x2
+x17/5 + 1≤x2
+x17/5 = 1
+x
+17
+5−2 = 1
+x
+17
+5−10
+5
+= 1
+x7/5,
+avec
+∫+∞
+1
+dx
+x7/5 convergente (c’est une intégrale de Riemann
+∫+∞
+1
+dx
+xa avec α= 7
+5 > 1 ) donc,
+par comparaison, l’intégrale
+∫+∞
+0
+x2
+x17/5 + 1 dx converge.
+d) Posons f (x) = ecosx
+x . Cette fonction est continue surR∗donc sur ]−∞;−1]. Pour étudier la
+convergence de l’intégrale, il suﬃt donc d’étudier le comportement au voisinage de−∞. Puisque
+−1≤cosx≤1, on ae−1≤ecosx≤e. Pour toutx< −1, nous avons donc
+e−1
+x ≥ecosx
+x ≥e
+x,
+avec
+∫−1
+−∞
+e
+x·dx divergente (c’est une intégrale de Riemann
+∫−1
+−∞
+dx
+xαavecα= 1 qui n’est pas >
+1) donc, par comparaison, l’intégrale
+∫−1
+−∞
+ecosxx
+x dx diverge.
+2
+<<<PAGE>>>
+e) Le polynômex2 + 2x + 7 n’est jamais nul. De plus
+⏐⏐⏐⏐
+arctan(x)
+x2 + 2x + 7
+⏐⏐⏐⏐≤
+π
+2
+x2 = π
+2x2
+avec
+∫+∞
+3
+π
+2x2dx convergente (c’est une intégrale de Riemann
+∫+∞
+3
+dx
+xa avecα= 2 > 1). Donc
+∫+∞
+3
+arctan(x)
+x2 + 2x + 7dx converge absolument.
+f) En eﬀectuant le changement de variableu = ln(x), nous pouvons écrire
+∫ dx
+x(ln(x))2 =
+∫du
+u2 =−1
+u =−1
+ln(x) =⇒
+∫+∞
+2
+dx
+x(ln(x))2 =
+[
+−1
+ln(x)
+]+∞
+2
+= 1
+ln(2).
+Donc
+∫+∞
+2
+dx
+x(ln(x))2 converge.
+Exercice 2. Étudier pour quelles valeurs de n∈N, l’intégrale
+I(n) =
+∫+∞
+1
+lnx
+xn dx
+converge et calculer I(n) dans ce cas.
+Solution : Rappelons que l’intégrale de Bertrand
+∫∞
+1
+dx
+xα(lnx)βconverge si et seulement siα >1
+ou α= 1 et β >1. Ainsi
+∫∞
+1
+dx
+xn(lnx)−1 qui converge si et seulement sin≥2.
+Si n≥2, intégrons par parties
+∫lnx
+xn dx. On a
+∫lnx
+xn dx = x−n+1
+−n + 1 lnx−
+∫x−n+1
+−n + 1
+1
+xdx = x−n+1
+−n + 1 lnx−x−n+1
+(n−1)2,
+et donc
+I(n) =
+[x−n+1
+−n + 1 lnx−x−n+1
+(n−1)2
+]∞
+1
+= 1
+(n−1)2.
+Exercice 3. Étudier la nature des intégrales :
+I =
+∫+∞
+2
+(
+1−cos
+(1
+t
+))
+dt ; J =
+∫1
+0
+sin
+(1
+t
+)
+dt ; K =
+∫+∞
+2
+π
+ln
+(
+cos
+(1
+t
+))
+dt.
+Solution :
+I =
+∫+∞
+2
+(
+1−cos
+(1
+t
+))
+dt : Il y a un problème en+∞. En eﬀectuant un développement limite en
++∞, nous avons
+1−cos
+(1
+t
+)
+= 1−
+(
+1−
+(1
+t
+)2
+2! +o
+( 1
+t2
+)(
+= 1
+2t2 +o
+( 1
+t2
+)
+∼1
+2t2.
+Or
+∫+∞
+2
+1
+2t2dt est une intégrale de Riemann avecα= 2 > 1. L’intégraleI converge.
+3
+<<<PAGE>>>
+J =
+∫1
+0
+sin
+(1
+t
+)
+dt : Il y a un problème en0, mais attention on ne peut pas faire de développement
+limité det→sin
+(1
+t
+)
+car la variable 1
+t tend vers l’inﬁni. Pout tout0 < ϵ <1, on poseJ(ϵ) =
+∫1
+ϵ
+sin
+(1
+t
+)
+dt, puis on fait le changement de variable
+u = 1
+t⇐⇒t = 1
+u, dt =−du
+u2. De plust =ϵ=⇒u = 1
+ϵet t = 1 =⇒u = 1
+Ainsi
+J(ϵ) =
+∫1
+ϵ
+sin
+(1
+t
+)
+dt =
+∫1
+ϵ
+1
+sin(u)
+(
+−du
+u2
+)
+=−
+∫1
+ϵ
+1
+sin(u)
+u2 du.
+Maintenant, 1
+ϵ→+∞, il s’agit donc de voir si la fonctionu→sin(u)
+u2 est intégrable en+∞. Nous
+avons ⏐⏐⏐⏐
+sin(u)
+u2
+⏐⏐⏐⏐≤1
+u2
+Or
+∫+∞
+2
+1
+u2du est une intégrale de Riemann avecα= 2 > 1. Donc la fonctionu→sin(u)
+u2 est
+absolument intégrable en+∞donc intégrable etJ converge.
+K =
+∫+∞
+2
+π
+ln
+(
+cos
+(1
+t
+))
+dt : Attention il y a deux problèmes, un en 2
+πparce que cos
+( 2
+2
+π
+)
+=
+cos
+(π
+2
+)
+= 0 et un autre en+∞. Soita> 2
+π, en 2
+πon pose
+u =t−2
+π⇐⇒t =u + 2
+π, dt =du De plust = 2
+π=⇒u = 0 et t =a =⇒u =a−2
+π
+alors
+ln
+(
+cos
+(1
+t
+))
+= ln
+(
+cos
+( 1
+u + 2
+π
+))
+= ln
+(
+cos
+(
+1
+2
+π
+(
+1 + π
+2u
+)
+((
+= ln
+(
+cos
+(π
+2
+1
+1 + π
+2u
+))
+= ln
+(
+cos
+(π
+2
+(
+1−π
+2u +o(u)
+)))
+= ln
+(
+cos
+(π
+2−π2
+4 u +o(u)
+))
+= ln
+(
+sin
+(π2
+4 u +o(u)
+))
+= ln
+(π2
+4 u +o(u)
+)
+= ln
+(π2
+4
+)
++ ln(u +o(u))∼ln(u)
+Or pour touta> 2
+π, nous avons
+∫a−2
+π
+0
+ln(u)du =
+[
+u ln(u)−u
+]a−2
+π
+0
+= ( a−2
+π) ln
+(
+a−2
+π
+)
+−(a−2
+π).
+Donc
+∫a
+2
+π
+ln
+(
+cos
+(1
+t
+))
+dt converge. Finalement, en+∞, nous avons
+ln
+(
+cos
+(1
+t
+))
+= ln
+(
+1−
+(1
+t
+)2
+2! +o
+( 1
+t2
+)(
+=−1
+2t2 +o
+( 1
+t2
+)
+∼−1
+2t2
+Or pour touta > 2
+πnous avons que
+∫+∞
+a
+−1
+t2dt est une intégrale de Riemann avecα= 2 > 1.
+Par conséquent,K converge.
+4
+<<<PAGE>>>
+Exercice 4. Déterminer pour quelles valeurs du couple (α,β)∈R2 les intégrales suivantes sont conver-
+gentes :
+∫+∞
+0
+dx
+xα(1 +xβ) ;
+∫+∞
+0
+ln(1 +xα)
+xβ dx.
+Solution :
+∫+∞
+0
+dx
+xα(1 +xβ) : Cherchons un équivalent simple en 0 et en+∞de la fonctionf déﬁnie sur]0,∞[
+par
+f (x) = 1
+xα(1 +xβ)
+Le résultat dépend du signe deβ. On peut résumer ce que l’on obtient dans le tableau suivant :
+L’ensemble des couples(α,β) pour lesquels l’intégrale
+∫∞
+0
+f (x)dx est le domaine du plan limité
+par les droites d’équationα+β= 1 et α= 1 (exclues). On ne peut jamais avoirβ= 0.
+∫+∞
+0
+ln(1 +xα)
+xβ dx : Mêmeméthode.Leséquivalentsdépendentdusignede αcettefois.Remarquons
+que siα>0,xαtend vers 0 en 0 donc
+ln (1 +xα)∼xα
+et siα<0, on peut écrire
+ln (1 +xα) = ln (xα) + ln
+(
+1 +x−α)
+=αlnx
+(
+1 + ln (1 +x−α)
+αlnx
+)
+et donc
+ln (1 +xα)∼αlnx.
+On a des résultats inversés en+∞. On peut résumer ce que l’on obtient dans le tableau suivant :
+5
+<<<PAGE>>>
+L’ensemble des couples(α,β) pour lesquels l’intégrale
+∫∞
+0
+f (x)dx est le domaine du plan limité
+par les droites d’équationβ−α= 1 et β= 1 (exclues). On ne peut jamais avoirα= 0.
+Exercice 5. Étudier la nature des intégrales :
+I =
+∫1
+0
+dx
+1−√x ; J =
+∫+∞
+0
+e−x−e−2x
+x dx.
+Solution :
+I =
+∫1
+0
+dx
+1−√x : Lafonction 1
+1−√x estcontinuesur [0, 1[.Leproblèmedeconvergencedel’intégrale
+est donc en 1. Pour étudier ce problème, on fait un développement limité en 1 en posantx = 1 +u.
+Lorsque x tend vers 1, u tend vers 0. De plus,
+1−√x = 1−
+√
+1 +u = 1−(1 + u
+2 +o(u)) =−u
+2 +o(u)
+et donc
+1−√x∼1−x
+2 .
+La fonction est donc équivalente en 1 à 2
+1−x. Cette dernière fonction n’est pas intégrable (c’est
+une intégrale de Riemann divergente), on en déduit que
+∫1
+0
+dx
+1−√x est divergente.
+J =
+∫+∞
+0
+e−x−e−2x
+x dx : En eﬀectuant un développement limité en 0 , on a
+e−t−e−2t = 1−t−(1−2t) +◦(t) = t +◦(t)
+donc
+lim
+t→0
+e−t−e−2t
+t = 1
+et la fonction se prolonge par continuité en 0 . Il en résulte que l’intégrale
+∫1
+0
+e−t−e−2t
+t dt
+converge. D’autre part, sit≥1, on a
+0≤e−t
+t ≤e−t et 0≤e−2t
+t ≤e−2t
+6
+<<<PAGE>>>
+etpuisquelesintégrales
+∫∞
+1
+e−tdtet
+∫∞
+1
+e−2tdtconvergent,lesintégrales
+∫∞
+1
+e−t
+t dtet
+∫∞
+1
+e−2t
+t dt
+convergent également. Donc l’intégrale
+∫∞
+1
+e−t−e−2t
+t dt converge.
+7

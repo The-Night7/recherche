@@ -1,0 +1,194 @@
+   Exercice 1 : Makefile « inutile » 
+Objectif : une seule règle qui compile si nécessaire. 
+  Solution 
+toto: main.c score.c gui.c ia.c 
+ gcc main.c score.c gui.c ia.c -o toto 
+Il recompile seulement si un des fichiers sources est plus récent que toto. 
+ 
+   Exercice 2 : Compilation séparée 
+  Solution 
+PROG = toto 
+ 
+OBJ = main.o score.o gui.o ia.o 
+ 
+$(PROG): $(OBJ) 
+ gcc $^ -o $@ 
+ 
+%.o : %.c 
+ gcc -c $< 
+ 
+   Exercice 3 : Ajout du nettoyage 
+  Solution 
+PROG = toto 
+OBJ = main.o score.o gui.o ia.o 
+ 
+$(PROG): $(OBJ) 
+ gcc $^ -o $@ 
+<<<PAGE>>>
+ 
+%.o: %.c 
+ gcc -c $< 
+ 
+clean: 
+ rm -f $(OBJ) $(PROG) *~ * .bak * .old \#*\# 
+Astuce : ne jamais supprimer un fichier sans option -f. 
+ 
+   Exercice 4 : Variables 
+  Solution 
+CC    = gcc -Wall 
+RM    = rm -f 
+PROG  = toto 
+ 
+SRC   = main.c score.c gui.c ia.c 
+HEAD  = main.h score.h gui.h ia.h 
+OBJ   = $(SRC:.c=.o) 
+ 
+$(PROG): $(OBJ) 
+ $(CC) $^ -o $@ 
+ 
+%.o: %.c 
+ $(CC) -c $< -o $@ 
+ 
+clean: 
+ $(RM) $(OBJ) $(PROG) *~ * .bak * .old \#*\# 
+<<<PAGE>>>
+ 
+   Exercice 5 : wildcards, substitutions, suffix rules 
+  Solution 
+CC    = gcc -Wall 
+RM    = rm -f 
+PROG  = toto 
+ 
+SRC   = $(wildcard * .c) 
+HEAD  = $(wildcard * .h) 
+OBJ   = $(SRC:.c=.o) 
+ 
+$(PROG): $(OBJ) 
+ $(CC) $^ -o $@ 
+ 
+%.o: %.c 
+ $(CC) -c $< -o $@ 
+ 
+clean: 
+ $(RM) $(OBJ) $(PROG) *~ * .bak * .old \#*\# 
+ 
+   Exercice 6 : Vérification + PHONY 
+Créer un fichier clean dans le répertoire → il ne doit pas perturber la règle clean. 
+  Solution 
+.PHONY: clean 
+ 
+   À partir d’ici : gestion des répertoires 
+<<<PAGE>>>
+(src/, bin/, doc/, save/) 
+ 
+   Exercice 7 : Version structurée 
+  Solution 
+CC      = gcc -Wall 
+RM      = rm -f 
+PROG    = toto 
+ 
+srcdir  = src/ 
+bindir  = bin/ 
+docdir  = doc/ 
+savedir = save/ 
+ 
+SRC     = $(wildcard $(srcdir)* .c) 
+HEAD    = $(wildcard $(srcdir)* .h) 
+OBJ     = $(subst $(srcdir),$(bindir),$(SRC:.c=.o)) 
+ 
+all: $(bindir)$(PROG) 
+ 
+$(bindir)$(PROG): $(OBJ) 
+ $(CC) $^ -o $@ 
+ 
+$(bindir)%.o: $(srcdir)%.c 
+ $(CC) -c $< -o $@ 
+ 
+.PHONY: clean 
+<<<PAGE>>>
+clean: 
+ $(RM) $(bindir)* .o $(bindir)$(PROG) *~ $(srcdir)*~ $(srcdir)* .bak $(srcdir)* .old \#*\# 
+ 
+   Exercice 8 : Sauvegarde 
+  Solution 
+CP = cp 
+ 
+save: 
+ $(CP) $(srcdir)* .c $(savedir) 
+ $(CP) $(srcdir)* .h $(savedir) 
+ 
+   Exercice 9 : Restauration + archive 
+  Solution 
+restore: 
+ $(CP) $(savedir)* .c $(srcdir) 
+ $(CP) $(savedir)* .h $(srcdir) 
+ 
+give: 
+ tar -czf $(PROG).tar.gz Makefile $(srcdir) $(bindir) $(docdir) $(savedir) 
+ 
+       EXERCICE 10 : Makefile parent (optionnel) 
+Un Makefile dans la matière : 
+SUBDIRS = tp1 tp2 tp3 tp4 tp5 
+ 
+all: 
+ for d in $(SUBDIRS); do $(MAKE) -C $$d; done 
+<<<PAGE>>>
+ 
+    Makefile FINAL COMPLET (corrigé officiel) 
+Voici le Makefile rassemblant toutes les exigences, prêt à être utilisé : 
+############################################################ 
+# Makefile complet – Solution TP 
+############################################################ 
+ 
+CC      = gcc -Wall 
+RM      = rm -f 
+CP      = cp 
+PROG    = toto 
+ 
+srcdir  = src/ 
+bindir  = bin/ 
+docdir  = doc/ 
+savedir = save/ 
+ 
+SRC     = $(wildcard $(srcdir)* .c) 
+HEAD    = $(wildcard $(srcdir)* .h) 
+OBJ     = $(subst $(srcdir),$(bindir),$(SRC:.c=.o)) 
+ 
+############################################################ 
+ 
+all: $(bindir)$(PROG) 
+ 
+$(bindir)$(PROG): $(OBJ) 
+<<<PAGE>>>
+ $(CC) $^ -o $@ 
+ 
+$(bindir)%.o: $(srcdir)%.c 
+ $(CC) -c $< -o $@ 
+ 
+############################################################ 
+ 
+.PHONY: clean 
+ 
+clean: 
+ $(RM) $(bindir)* .o $(bindir)$(PROG) 
+ $(RM) *~ $(srcdir)*~ $(srcdir)* .bak $(srcdir)* .old \#*\# 
+ 
+############################################################ 
+ 
+doc: 
+ doxygen Doxyfile 2>/dev/null || true 
+ 
+save: 
+ $(CP) $(srcdir)* .c $(savedir) 
+ $(CP) $(srcdir)* .h $(savedir) 
+ 
+restore: 
+ $(CP) $(savedir)* .c $(srcdir) 
+ $(CP) $(savedir)* .h $(srcdir) 
+ 
+<<<PAGE>>>
+give: 
+ tar -czf $(PROG).tar.gz Makefile $(srcdir) $(bindir) $(docdir) $(savedir) 
+ 
+############################################################ 
+ 

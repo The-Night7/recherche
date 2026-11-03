@@ -1,0 +1,581 @@
+Eva ANSERMIN & Romuald GRIGNON
+v1.00
+PROGRAMMATION
+PROCEDURALE
+6 A .  C O M P I L A T I O N  S E P A R E E   
+__
+<<<PAGE>>>
+• Code trop long : compliqué de rechercher les différentes 
+parties qui nous intéressent / que l’on souhaite modifier
+• Code long : compilation lente tout le code va être inspecté 
+même les parties qui ne sont pas utilisées
+• Gestion des fonctions : les différentes fonctions doivent être 
+écrites dans le bon ordre si elles s’appellent entre elles
+Problématiques
+E. ANSERMIN | R. GRIGNON
+2
+<<<PAGE>>>
+• S’il existe un appel croisé de fonctions, chacune doit être écrite avant 
+l'autre pour que le compilateur puisse les utiliser : ce n'est pas possible 
+implicitement.
+void funcA(…){
+…
+funcB(…); // déclaration implicite !
+…
+}
+void funcB(…){
+…
+funcA(…); // appel croisé
+…
+}
+Problématique : appel croisé
+E. ANSERMIN | R. GRIGNON
+3
+<<<PAGE>>>
+// déclaration explicite des prototypes de fonctions !
+void funcA(…);
+void funcB(…);
+void funcA(…){
+…
+funcB(…); // pas d'erreur à la compilation
+…
+}
+void funcB(…){
+…
+funcA(…); // pas d'erreur à la compilation
+…
+}
+Solution : déclaration explicite
+E. ANSERMIN | R. GRIGNON
+4
+<<<PAGE>>>
+• Il est possible d’écrire un code en plusieurs parties ou modules
+• Chaque module peut être compilé séparément. Cependant séparer le 
+code en modules doit s’accompagner d’un moyen pour chacun des 
+modules d’interagir avec les autres sans conflit
+• Si l’on souhaite fournir un module de code compilé sans les sources, il 
+faut pouvoir au moins fournir les prototypes des fonctions à appeler, 
+les constantes utilisées, ou les types redéfinis (comme les structures 
+par exemple)
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+5
+<<<PAGE>>>
+• Il existe 2 grands types de fichiers lorsque l’on écrit un code séparé 
+en modules en langage C
+• Les fichiers contenant des instructions classiques, du code. Dans 
+notre cas des fichiers *.c (exemple : main.c, tris.c, …)
+• Les fichiers d’entête, ou headers. Ce sont les fichiers *.h. ils 
+permettent de rassembler les “entêtes” communs à plusieurs 
+fichiers sources et/ou autres fichiers d’entête.
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+6
+<<<PAGE>>>
+• Le fichier d'entête :
+• est généralement nommé comme le fichier *.c qu'il accompagne
+• contient les inclusions d'autres fichiers d'entête nécessaires
+• contient les déclarations de fonctions (prototypes)
+• contient les définitions de constantes (#define …)
+• contient les variables globales utilisées
+• contient les redéfinitions de types (typedef) notamment celles pour 
+les structures
+• ne contient pas la déclaration de la fonction main !
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+7
+<<<PAGE>>>
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+8
+void triSelection(int tab[]);
+void triRapide( int tab[],
+int debut,
+int fin);
+int partition(…);
+tris.h
+#include<stdio.h>
+#define TAILLE 1000
+main.c
+int main(){
+int tab[TAILLE];
+triSelection(tab);
+…
+return 0;
+}
+functions_tri.c
+void triRapide(…){
+…
+pivot=partition(…);
+…
+}
+int partition(…){
+…
+…
+}
+void triSelection(…){
+…
+}
+Problème : comment communiquent
+les fichiers entre eux ?
+<<<PAGE>>>
+Les directives de pré-processeur
+E. ANSERMIN | R. GRIGNON
+9
+• Certaines commandes ne sont pas exécutées lors de l’exécution
+mais lors de la première phase de compilation. Ce sont les directives
+de préprocesseurs.
+• Les directives de préprocesseurs sont précédées de #
+• Elles effectuent des modifications textuelles sur le fichier source:
+• Exemple :
+• #define permet de remplacer une expression par une autre 
+(définition de constante ou de macro)
+• #include permet d'incorporer dans le fichier source le texte 
+figurant dans un autre fichier. (#include<stdio.h> permet d’inclure
+le code de la bibliothèque stdio au code)
+<<<PAGE>>>
+Les directives de pré-processeur
+E. ANSERMIN | R. GRIGNON
+10
+• Il est possible d’obtenir le fichier intermédiaire après la phase de préprocessing
+avec l’option –E dans gcc.
+• Par défaut cette commande renvoie le résultat sur la sortie standard. Il est possible 
+de stocker cette sortie dans un fichier toujours avec l‘option -o
+main.c
+// constante
+#define TAILLE 15
+// macro
+#define COUCOU() printf("Coucou")
+int main(){
+int tab[TAILLE]
+for(int i=0; i<TAILLE; i++){
+…
+}
+COUCOU();
+return 0 ;
+}
+main.i
+int main(){
+int tab[15]
+for(int i=0; i<15; i++){
+…
+} 
+printf("Coucou");
+return 0 ;
+}
+gcc -E main.c -o main.i
+<<<PAGE>>>
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+11
+• Différents modules doivent pouvoir s’échanger des informations : il faut 
+notamment que les fichiers .c puisse avoir accès aux information des 
+fichiers .h
+• La directive de préprocesseur #include : permet d'inclure un fichier dans 
+un autre. Cela permet de fusionner le contenu de plusieurs fichiers de 
+manière dynamique et de fournir le résultat à la phase de compilation.
+#include "fichierHeader.h"
+• Il faut donc inclure, entre autres, les fichiers .h utiles dans les fichiers.c
+<<<PAGE>>>
+Problématique : modules
+E. ANSERMIN | R. GRIGNON
+12
+main.c
+#include "tris.h"
+int main(){
+int tab[TAILLE];
+triSelection(tab);
+…
+return 0;
+}
+void triSelection(int tab[]);
+void triRapide(int tab[],int 
+debut, int fin);
+int partition(…);
+void triRapide(…){
+…
+pivot=partition(…);
+…
+}
+int partition(…){
+…
+…
+}
+void triSelection(…){
+…
+}
+tris.h
+#include<stdio.h>
+#define TAILLE 1000
+functions_tri.c
+#include "tris.h"
+<<<PAGE>>>
+Solution : fichiers d’entête
+E. ANSERMIN | R. GRIGNON
+13
+#include "functions.h"
+int main(){
+funcA(…);
+return 0;
+}
+void funcA(…);
+void funcB(…);
+#include "functions.h"
+void funcA(…){
+…
+funcB(…);
+…
+}
+void funcB(…){
+…
+funcA(…);
+…
+}
+functions.h functions.c
+main.c
+<<<PAGE>>>
+Solution : fichiers d’entête
+E. ANSERMIN | R. GRIGNON
+14
+• Il faut donc pouvoir être capable de compiler chaque fichier C 
+indépendemment des autres. L'option –c de gcc permet cette opération :
+gcc –c functions.c -o functions.o
+gcc –c main.c -o main.o
+• Les fichiers issus de cette compilation sont des fichiers objets (*.o) c’est à 
+dire des fichiers intermédiaires dans le processus de compilation
+• Il faut maintenant réunir/fusionner tous les "objets" (morceaux de codes 
+compilés) en un seul exécutable : toujours grâce à gcc mais cette fois-ci, 
+les fichiers d'entrée ne sont plus les fichiers *.c mais les fichiers *.o 
+générés précédemment :
+gcc functions.o main.o -o myExec
+<<<PAGE>>>
+Solution : fichiers d’entête
+E. ANSERMIN | R. GRIGNON
+15
+functions.h
+functions.c
+main.c
+functions.o
+main.o
+gcc –c …
+gcc –c …
+gcc …
+<<<PAGE>>>
+Problématique : inclusions circulaires
+E. ANSERMIN | R. GRIGNON
+16
+• Maintenant que nous pouvons compiler indépendamment les différents fichiers C 
+de notre application, il apparait un nouveau problème
+• Il est possible que deux modules s'incluent respectivement : création d'une boucle 
+d'inclusion infinie
+• Ces inclusions mutuelles ne sont pas forcément directes
+• le Module A est inclus par le module B
+• le module B est inclus par le module C
+• le module C est inclus par le module A
+• Il va donc falloir se prémunir des multiples inclusions en utilisant les instructions de 
+compilation conditionnelle
+• Ces instructions permettent de "désactiver" des portions de code en fonction de 
+paramètres statiques (configuration du programme)
+<<<PAGE>>>
+Problématique : inclusions circulaires (ex. #1)
+E. ANSERMIN | R. GRIGNON
+17
+moduleA.h
+#include "moduleC.h"
+void funcA(…);
+moduleB.h
+#include "moduleA.h"
+void funcB(…);
+moduleC.h
+#include "moduleB.h"
+void funcC(…);
+#include "moduleA.h"
+int main(){
+funcA(…);
+return 0;
+}
+main.c
+<<<PAGE>>>
+Solution : compilation conditionnelle
+E. ANSERMIN | R. GRIGNON
+18
+• Idée: introduire un « ordre » d’inclusion grâce à des conditions.
+• Rappel : #define : permet de définir une macro, qui est une chaine de caractères 
+servant à remplacer, soit des constantes, soit des suites d'instructions
+• Les directives préprocesseurs #ifdef / #ifndef … #elif … #else … #endif : ces 
+instructions conditionnelles testent l'existence de macros définies (ou non), et 
+incluent (ou non) la portion de code C associée.
+#define CONST 15
+#ifdef CONST
+// Instructions
+// compilées
+…
+#endif
+#define CONST 15
+#ifndef CONST
+// Instructions
+// NON compilées
+…
+#endif
+<<<PAGE>>>
+Solution : compilation conditionnelle
+E. ANSERMIN | R. GRIGNON
+19
+#ifndef MODULE_A_H
+#define MODULE_A_H
+#include "moduleB.h"
+…
+#endif
+moduleA.h
+#ifndef MODULE_B_H
+#define MODULE_B_H
+#include "moduleA.h"
+…
+#endif
+moduleB.h
+• Le fait de définir une constante MODULE_A_H (nom totalement arbitraire dans 
+l'absolu, mais dans la pratique on reprend le nom du fichier) la 1ère fois que le 
+fichier moduleA.h est inclus, va permettre, lors des prochaines inclusions, de 
+"masquer" l'ensemble du contenu du fichier
+• Cette méthode permet d'inclure les différentes dépendances dans un ordre 
+quelconque et simplifie grandement le développement
+<<<PAGE>>>
+Problématique : inclusions circulaires (ex. #1)
+E. ANSERMIN | R. GRIGNON
+20
+#ifndef MODULE_C_H
+#define MODULE_C_H
+#include "moduleB.h"
+#endif
+void funcA(…);
+#include "moduleA.h"
+int main(){
+funcA(…);
+return 0;
+}
+main.c
+moduleA.h
+#ifndef MODULE_A_H
+#define MODULE_A_H
+#include "moduleC.h"
+#endif
+void funcA(…);
+moduleB.h
+#ifndef MODULE_B_H
+#define MODULE_B_H
+#include "moduleA.h"
+#endif
+void funcA(…);
+moduleC.h
+<<<PAGE>>>
+Problématique : inclusions multiples (ex. #2)
+E. ANSERMIN | R. GRIGNON
+21
+moduleA.h
+void funcA(…);
+#include "functions.h"
+#include "functions.h"
+int main(){
+funcA(…);
+return 0;
+}
+main.c
+...
+void funcA(…);
+void funcA(…);
+...
+...
+int main(){
+funcA(…);
+return 0;
+}
+main.i
+• gcc –E main.c -o main.i
+ERREUR
+<<<PAGE>>>
+Problématique : inclusions multiples (ex. #2)
+E. ANSERMIN | R. GRIGNON
+22
+functions.h
+#include "functions.h"
+#include "functions.h"
+int main(){
+funcA(…);
+return 0;
+}
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+void funcA(…);
+#endif
+main.c
+…
+void funcA(…);
+...
+...
+...
+int main(){
+funcA(…);
+return 0;
+}
+main.i
+• gcc –E main.c -o main.i
+OK
+<<<PAGE>>>
+Problématique : code conditionnel (ex. #3)
+E. ANSERMIN | R. GRIGNON
+23
+#include "parameters.h"
+#if OS == WINDOWS
+...
+#elif OS == LINUX
+...
+#elif OS == MACOS
+...
+#else
+#error Bad value for 'OS'
+#endif
+system.h parameters.h
+#define WINDOWS 1
+#define LINUX 2
+#define MACOS 3
+#define OS LINUX
+#include "system.h"
+int main(){
+… 
+return 0;
+}
+main.c
+<<<PAGE>>>
+GCC : phases de compilation
+E. ANSERMIN | R. GRIGNON
+24
+• Maintenant nous allons voir les différentes phases de l’exécutable gcc et les options 
+associées :
+PREMIERE ETAPE :
+gcc –E main.c -o main.i
+L'option –E de gcc (pré-traitement) permet de voir en sortie le programme C qui 
+sera effectivement compilé
+• Le code non compilé entre les instructions #ifndef / #ifdef ne va plus 
+apparaître
+• Toutes les macros ont été remplacées par leurs valeurs
+• L ’ensembledes fichiers inclus par le fichier C est fusionné dans l’ordre 
+d’inclusion : il n’y a donc plus qu’un seul fichier à compiler
+<<<PAGE>>>
+GCC : phases de compilation
+E. ANSERMIN | R. GRIGNON
+25
+• Maintenant nous allons voir les différentes phases de l’exécutable gcc et les options 
+associées :
+DEUXIEME ETAPE :
+gcc –S main.i -o main.s
+L'option –S de gcc (compilation), permet de transformer le code C précédent en 
+code assembleur (toujours lisible par l'humain… )
+• C’est cette phase qui va donc interpréter la syntaxe du code Cet qui écrit 
+régulièrement sur la console que vous avez oublié un point-virgule, qu’un 
+symbole n’est pas déclaré ou qu’il y a un souci dans l’organisation des 
+accolades
+• Un compilateur est spécifique à une cible physique (ou une famille de 
+cibles) : le code assembleur généré est donc spécifique à un composant 
+physique particulier
+<<<PAGE>>>
+GCC : phases de compilation
+E. ANSERMIN | R. GRIGNON
+26
+• Maintenant nous allons voir les différentes phases de l’exécutable gcc et les options 
+associées :
+TROISIEME ETAPE :
+gcc –c main.s -o main.o
+L'option –c de gcc (compilation) permet de transformer le code assembleur en 
+code machine, c’est à dire en un code que seul le composant cible peut interpréter
+• Il est donc difficile ici de pouvoir lire le code généré d’une manière fluide 
+comme on pourrait le faire en C
+• C’est donc une partie de notre exécutable qui se trouve dans ce fichier, avec 
+certains symboles qui n’ont pas encore été résolus (telles que les fonctions 
+appelées qui sont situées dans d’autres modules (d’autres fichiers C) qui ne 
+sont pas forcément encore compilés)
+<<<PAGE>>>
+GCC : phases de compilation
+E. ANSERMIN | R. GRIGNON
+27
+• Maintenant nous allons voir les différentes phases de l’exécutable gcc et les options 
+associées :
+QUATRIEME ETAPE:
+gcc main.o -o main.exe
+L ’exécutable gcc sans option (édition de liens) permet de fusionner les différents 
+codes machines (fichiers objets) dans un seul exécutable que notre machine 
+pourra alors exécuter
+• Ici gcc cherche à résoudre tous les symboles pour relier les morceaux de 
+code entre eux. Il va “coller” bout à bout l’ensemble des fonctions et va 
+déterminer l’adresse de code pour chacune d’entre elles: ensuite lors d’un 
+appel de fonction, le code effectue un “saut” de code à la bonne adresse
+• C’est à cette étape que gcc écrit sur le terminal qu’il n’a pas trouvé telle ou 
+telle fonction (quand on utilise la bibliothèque math et que l’on ne met pas 
+l’option -lm par exemple)
+<<<PAGE>>>
+Quelques directives du pré-processeur
+E. ANSERMIN | R. GRIGNON
+28
+• #include : permet d'inclure un fichier dans un autre. Cela permet de fusionner le 
+contenu de plusieurs fichiers de manière dynamique et de fournir le résultat à la 
+phase de compilation
+• #define : permet de définir une macro (terme consacré), qui est une chaine de 
+caractères servant à remplacer, soit des constantes, soit des suites d'instructions 
+verbeuses et nombreuses. Le but est de fournir le moyen d'écrire un code plus 
+concis et lisible
+• #undef : permet "d'oublier" une macro définie précédemment
+• #ifdef / #ifndef … #elif … #else … #endif : ces instructions conditionnelles testent 
+l'existence de macros définies (ou non), et permet d’inclure (ou non) la portion de 
+code C associée. Nous avons vu leur utilisation lors de la résolution de la 
+problématique d'inclusions multiples, mais ces directives servent aussi à fournir 
+différentes versions de code en fonction de paramètres utilisateurs
+<<<PAGE>>>
+Quelques directives du pré-processeur
+E. ANSERMIN | R. GRIGNON
+29
+• #if defined(…) : effectue la même action que la directive #ifdef … à la 
+différence que la seconde ne peut tester que la définition d’une macro, alors 
+que la première peut effectuer plusieurs comparaisons, combinées ensemble 
+grâce à des opérateurs logiques :
+#if defined(LINUX) || defined (ANDROID)
+.
+• #if !defined(…) : effectue la même action que la directive #ifndef … avec la 
+même spécificité qu’énoncée au pragraphe précédent
+• #if … == … : permet d'effectuer des comparaisons entre des valeurs de 
+macros et/ou des valeurs entières, pour construire conditionnellement un 
+programme. Fonctionne aussi avec les opérateurs == , != , < , > , <= , >=
+• #error : stoppe la compilation et affiche le message qui suit la directive. 
+Permet d'indiquer une mauvaise configuration du programme
+<<<PAGE>>>
+Quelques directives du pré-processeur
+E. ANSERMIN | R. GRIGNON
+30
+• Macros prédéfinies : il existe des macros qui permettent de récupérer toutes 
+sortes d'informations sur votre programme :
+⚫ __FILE__ : chemin du fichier courant (chaîne)
+⚫ __LINE__ : numéro de ligne du fichier courant (entier)
+⚫ __DATE__ : date de compilation (chaîne "Feb 23 2022")
+⚫ __TIME__ : heure de compilation (chaîne "23:59:59")
+• Ces macros peuvent être utilisées pour afficher des détails sur le programme 
+notamment en cas d’erreur par exemple
+• Pour les utiliser comme paramètres de fonctions comme printf, il faudra bien 
+entendu indiquer le type adéquat (%d ou %s)
+• Bien évidemment ces valeurs sont des constantes pour le fichier actuellement 
+compilé et d’un fichier C à un autre, les valeurs de __DATE__ et __TIME__
+peuvent changer par exemple
+<<<PAGE>>>
+Conclusion :
+E. ANSERMIN | R. GRIGNON
+31
+• La modularité impose de créer des fichiers d’entête qui contiennent les prototypes 
+des fonctions, les constantes, les types redéfinis, structures nécessaires à la bonne 
+utilisation du module. 
+• Chaque module peut être compilé indépendemment des autres à partir du moment 
+où les interfaces sont prévues (fichiers d’entête)
+• Les fichiers d’entête doivent être protégés contre les multiples inclusions : cela
+permet de coder les fonctions dans n’importe quel ordre et d’inclure les modules 
+dans n’importe quel ordre
+• Travail en équipe plus facile
+• Gestion de version facilitée (git merge)
+• La compilation séparée est obligatoire
+• Compiler manuellement n’est pas une solution
+→ Il faut automatiser

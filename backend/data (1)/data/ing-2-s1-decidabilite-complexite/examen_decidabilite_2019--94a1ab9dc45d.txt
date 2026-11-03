@@ -1,0 +1,91 @@
+EISTI - Département Informatique : Décidabilité 20 décembre 2019
+Examen de décidabilité
+Modalités
+• Durée : 1h 30 minutes
+• Toutes vos aaires (sacs, vestes, trousse, etc.) doivent être placées à l'avant de la salle.
+• Aucun document n'est autorisé.
+• Aucune machine électronique ne doit se trouver sur vous ou à proximité, même éteinte.
+• Aucun déplacement n'est autorisé.
+• Aucune question au professeur n'est autorisé. Si vous pensez avoir détecté une erreur d'énoncé,
+expliquez les hypothèses que vous êtes amené à prendre pour continuer.
+• Aucun échange, de quelque nature que ce soit, n'est autorisé.
+• Le barème est donné à titre indicatif.
+• Veuillez répondre sur la feuille d'énoncé.
+• La clarté et la précision de la rédaction seront prises en compte dans l'évaluation.
+Exercice 1. Questions de cours (3,5 points)
+Répondre par vrai ou faux
+1. N'importe quel algorithme peut être représenté par une machine de Turing.
+2. Une machine de Turing ne peut représenter que des problèmes de décision.
+3. Une machine de Turing est un formalisme théorique pour étudier les propriétés des algorithmes.
+4. Un problème est indécidale s'il existe un algorithme qui le résout.
+5. Pour résoudre tous les problèmes NP-complets, il sut de trouver un algorithme ecace pour
+résoudre au moins un d'entre eux.
+6. Le problème 2-SAT n'est pas dans la classe P.
+7. Le problème 3-SAT exact est dans les classes P et NP.
+Exercice 2. Exercice 1 (4,5 points)
+Soit la machine de Turing déterministe M dont la fonction de transition est décrite comme suit :
+δ 0 1 ⊔
+q0 (q0, 0,→) (q1, 1,→) (no,⊔,−)
+q1 (q1, 0,→) (q0, 1,→) (yes,⊔,−)
+1. Compléter Σ = { } , K ={ } et q0 est ... , où Σ est l'alphabet et K
+l'ensemble des états.
+1
+<<<PAGE>>>
+2. En partant de la conguration initiale (q0, 0, 01⊔), donner la conguration nale obtenue et le
+nombre de pas qui permettent de l'atteindre.
+• Conguration nale :
+• Nombre de pas :
+3. Donner le langage décidé par cette machine de Turing ? Est-il récursif ?
+• L=
+• Récursif (Oui/non ) :
+4. Donner la complexité au meilleur des cas de cette machine, puis au pire des cas.
+• Complexité au meilleur des cas :
+• Complexité au pire des cas :
+5. Le problème résolu par cette machine de Turing est-il dans la classe P ?
+• Classe P (Oui/non) :
+Exercice 3. Exercice 2 (4 points)
+En théorie des graphes, la coloration de graphe consiste à attribuer une couleur à chacun de ses
+sommets de manière que deux sommets reliés par une arête soient de couleur diérente. Dans ce qui
+suit, nous dénissons une machine de Turing non déterministe N1 qui génère un coloriage potentiel
+des noeuds d'un graphe en bleu, rouge et vert. N1 accepte une chaine X k, avec k le nombre de noeuds
+du graphe à colorer. Elle retourne une chaine appartenant à {b,r,j}k ( r pour rouge, b pour bleu et j
+pour jaune).
+Par exemple, pour colorer les noeuds d'un graphe comportant 2 noeuds, N1 est appliquée à la chaine
+XX et pourrait retourner la chaine rb. Cette dernière signie que le noeud 1 est coloré en rouge et le
+noeud 2 bleu.
+La relation de transition ∆ de N1 est dénie comme suit :
+∆ X r b j ⊔
+q0 (q0,r,→) (q1,⊔,←)
+(q0,b,→)
+(q0,j,→)
+q1 (q1,r,←) (q1,b,←) (q1,j,←) (q2,⊔,→)
+q2
+1. Compléter la séquence suivante jusqu'à l'obtention d'une conguration nale :
+(q0,X,X⊔)→... .
+2. Donner le nombre de congurations nales possibles que l'on peut atteindre à partir de la con-
+guration initiale (q0,X,X⊔). On rappelle qu'aucune règle de la relation de transition ne peut
+être appliquée à une conguration nale.
+3. Donner la complexité de N1.
+2
+<<<PAGE>>>
+Exercice 4. Exercice 3 (4 points)
+• On admet que le problème d'arrêt est indécidable et on considère le langage suivant :
+Halt = {(M;x)|M estunemachinedeTuring etxuninputt.q.M (x) =↗}.
+1. Montrer que Halt n'est pas un langage récursif.
+2. Formuler le problème posé en langage naturel.
+• On considère deux langages récursifs L1 et L2. Que peut-on dire du langage L1∨L2 ? Justier
+votre réponse.
+3
+<<<PAGE>>>
+Exercice 5. Exercice 4 (4 points)
+Dans le problème de la semi-décidabilité 3-SAT, on a une formule 3-SAT φ à n variables et m
+clauses, avec m pair. On veut savoir s'il existe une assignation de vérité pour les variables de φ telle
+que la moitié exactement des clauses aient une évaluation 0 et l'autre moitié une évaluation 1. Prouver
+que le problème de la semi-décidabilité 3-SAT est NP-complet.
+Vous pourrez construire une formule φ
+′
+à partir de la formule φ possédant les 4∗m clauses suivantes :
+• les m clauses de φ
+• m clauses toujours vraies
+• 2∗m clauses soit toutes vraies soit toute fausses
+4

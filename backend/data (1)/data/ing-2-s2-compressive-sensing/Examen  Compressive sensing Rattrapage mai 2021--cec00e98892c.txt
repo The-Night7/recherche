@@ -1,0 +1,398 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen de rattrapage: Compressive sensing
+Donné le 19-05-2021 (Durée 2h00)
+Ordinateurs, téléphones portables et tout document sont interdits
+EXERCICE 1 (Questions de cours – 5 points)
+1. Soit α une solution du problème de minimisation (𝓁0) avec ‖α‖0 = s. On note
+Σs =
+{
+t ∈ RK, ‖t ‖0 ≤ s
+}
+.
+Montrer l’équivalence entre les assertions suivantes :
+(a) α est l’unique solution du problème de minimisation(𝓁0).
+(b)
+(
+α + ker(D)
+)
+∩ Σs = {α}.
+2. Donner la déﬁnition de 𝓁0 (α), α ∈ RK.
+3. Que représente une matrice d’apprentissage X ∈ MN×𝓁(R)?
+4. Donner la déﬁnition d’un vecteur admettant une représentation s-parcimonieuse sur un dictio-
+nnaire D.
+5. Rappeler la déﬁnition d’une représentation parcimonieuse d’un vecteur x dans un dictionnaire
+D.
+6. Expliquer le principe de la relaxation convexe pour résoudre le problème de minimisation (𝓁0).
+7. Expliquer le principe des méthodes de poursuite gloutonne.
+8. Rappeler le processus complet du Compressive Sensing.
+EXERCICE 2 (Problème d’optimisation – 7 points) L ’algorithme de la poursuite gloutonneOrthogonal
+Matching Pursuit (OMP) consiste à la sélection d’un atome à chaque itération et de mettre à jour le
+résiduel. On décompose itérativement le signal x ∈ RN dans le dictionnaire D ∈ MN×K (R) par sélection
+d’un atome à chaque itération:
+x = α(n)
+1 d1 + α(n)
+2 d2 + .. . + α(n)
+K dK
+|                                 {z                                 }
+Approximation de x après n itérations
++ R(n)
+|   {z   }
+Résiduel après n itérations
+.
+d j désigne la j ème colonne de la matrice D. L ’OMP s’initialise comme suit:
+α(0) = 0K,1, R(0) = x; R : le résiduel; Φ0 = ;; P0 = [ ].
+L ’OMP suit les quatre étapes principales suivantes:
+<<<PAGE>>>
+EXAMEN DE RATTRAPAGE : C OMPRESSIVE SENSING
+Tant que le critère d’arrêt n’est pas satisfait faire,k ≥ 1,
+1. ::La:::::::::sélection: Sélectionner un atome dmk tel que mk = arg max
+j =1,...,K
+⏐⏐⟨
+d j ,R (k−1)⟩⏐⏐
+‖‖d j
+‖‖ .
+Mettre à jour la liste des positions des atomes séléctionnés: Pk = [m1, .. .,mk].
+2. ::::Mise::à::::jour:::du::::::::::::dictionnaire :::::actif: Φk =
+[
+Φk−1|dmk
+]
+.
+3. :::::::::::Estimation: Utiliser la méthode des moindres carrés pour estimer α(k)
+Pk
+.
+4. ::::Mise::à::::jour:::du::::::::résiduel: R(k) = x − Φk α(k)
+Pk
+;
+On se propose à chaque itération k ≥ 1, étant données une liste de positions d’atomes sélection-
+nés Pk et une matrice d’atomes actifs sélectionnésΦk =
+[
+dm1 dm2 . .. dmk
+]
+de calculer le vecteur
+α(k)
+Pk
+=
+
+
+α(k)
+m1
+α(k)
+m2
+...
+α(k)
+mk
+
+
+solution du problème de minimisation des moindres carrés suivant:
+α(k)
+Pk
+= arg min
+αk ∈Rk
+‖‖x − Φk αk
+‖‖2
+2 .
+1. Montrer que si la matrice Φ
+′
+k Φk est inversible alors α(k)
+Pk
+=
+(
+Φ
+′
+k Φk
+)−1
+Φ
+′
+k x. ( Φ
+′
+k désigne la transposée
+de la matrice Φk.)
+2. Montrer que Φk α(k)
+Pk
+= ProjF(x) où ProjF est la projection orthogonale sur F et F= Vect{dm1,. .. ,dmk }.
+3. En déduire qu’à l’itérationk+1, l’atomedmk+1 séléctionné est différent des atomesd j , j ∈ {m1,. .. ,mk}.
+4. Que peut-on dire sur la convergence de cet algorithme?
+5. On considère D =
+
+
+−1 −1 0 −1 0
+0 1 1 −1 1
+0 1 1 0 0
+
+ et x =
+
+
+2
+−1
+1
+
+.
+(a) Déterminer m1.
+(b) Déterminer la première approximation α(1) de α.
+EXERCICE 3 (Codage parcimonieux – 8 points) On considère le vecteur x =
+
+
+−1
+0.5
+2.1
+5.1
+0.9
+
+
+et le dictionnaire
+D =
+
+
+−1 −1 −1 −1 0 1 0 0 0 0 1 1
+0 1 1 1 0 1 0 1 1 1 1 −1
+−1 1 1 1 1 0 1 0 1 1 1 1
+−1 0 1 1 1 0 0 0 1 0 0 0
+0 1 1 1 1 0 0 0 0 1 −1 −1
+
+
+.
+CY-Tech 2/5
+<<<PAGE>>>
+EXAMEN DE RATTRAPAGE : C OMPRESSIVE SENSING
+On se propose de déterminer une représentation parcimonieuse α de x dans le dictionnaire D à l’aide
+de deux méthodes de poursuite gloutonne.
+1. ::::::::::::::::::Algorithme StOMP: (Voir Annexe page 5)
+On a ﬁxé les paramètres suivants : la tolérance ε = 10−6, le nombre maximum des itérations =
+200. Les résulats des premières itérations de l’algorithme StOMP sont résumés dans le tableau
+suivant:
+k 1 2
+Vecteur des contributions
+
+
+3.5795717
+2.25
+4.2932505
+4.2932505
+4.6765372
+0.3535534
+2.1
+0.5
+4.4455971
+2.0207259
+0.35
+0.15
+
+
+
+
+3.333D − 15
+0.9785714
+4.419D − 15
+4.419D − 15
+4.423D − 15
+1.2929953
+1.0428571
+0.9142857
+4.615D − 15
+1.6578201
+0.9785714
+0.0642857
+
+
+Seuillage S(k) 2.4677925 1.1799667
+Norme de résiduel ‖R(k)‖ 2.7250164 9.113D − 15
+α(k)
+Pk
+
+
+−0.8612245
+0.4734694
+0.4734694
+0.8673469
+0.4673469
+
+
+
+
+−0.75
+1.2
+1.2
+1.5
+0.65
+0.45
+−3.
+
+
+Table 1: Premières sorties de l’algorithme StOMP
+En utilisant les résultats de la Table 1:
+(a) L ’algorithme StOMP converge-t-il au bout de combien d’itérations? justiﬁer.
+(b) Quels sont les atomes sélectionnés à la première itération?
+(c) Quels sont les atomes sélectionnés à la seconde itération?
+(d) Exprimer une estimation du vecteur α à l’itération k=1,
+CY-Tech 3/5
+<<<PAGE>>>
+EXAMEN DE RATTRAPAGE : C OMPRESSIVE SENSING
+(e) Exprimer une estimation ﬁnale du vecteur α par l’algorithme StOMP .
+2. ::::::::::::::::Algorithme OMP: (Voir exercice2)
+On a ﬁxé les mêmes paramètres que l’algorithme StOMP , ε = 10−6 et le nombre maximum des
+itérations = 200. Les résultats obtenus par l’algorithme OMP sont résumés dans le tableau suivant:
+k 1 2 3 4 5
+Contribution
+
+
+3.5795717
+2.25
+4.2932505
+4.2932505
+4.6765372
+0.3535534
+2.1
+0.5
+4.4455971
+2.0207259
+0.35
+0.15
+
+
+
+
+0.4618802
+0.45
+0.6708204
+0.6708204
+1.026D − 15
+0.3535534
+0.6
+0.5
+1.3279056
+1.0969655
+0.35
+0.15
+
+
+
+
+0.0692820
+0.91
+0.0536656
+0.0536656
+4.487D − 16
+1.3293607
+1.06
+0.88
+1.154D − 15
+1.6281278
+1.03
+0.15
+
+
+
+
+0.7670511
+0.5
+0.5941552
+0.5941552
+2.051D − 15
+0.4747717
+0.6571429
+0.3285714
+8.653D − 16
+9.615D − 17
+0.8285714
+1.1571429
+
+
+
+
+0.1280211
+0.1478261
+0.0991648
+0.0991648
+1.538D − 15
+0.2613221
+0.1478261
+0.0739130
+1.026D − 15
+5.128D − 16
+0.0739130
+1.110D − 15
+
+
+‖Rk ‖ 3.2572995 2.726903 1.3250337 0.3544745 4.733D − 15
+α(k)
+Pk
+(
+2.7
+)
+
+
+1.78
+1.38
+
+
+
+
+2.5857143
+2.1857143
+−2.0142857
+
+
+
+
+2.7869565
+2.3869565
+−2.5173913
+−0.7043478
+
+
+
+
+2.58
+2.52
+−2.34
+−0.66
+−0.34
+
+
+Table 2: Premières sorties de l’algorithme OMP
+En utilisant les résultats de la Table 2:
+(a) L ’algorithme OMP converge-t-il au bout de combien d’itérations? justiﬁer.
+(b) Quels sont les atomes sélectionnés à chaque itération? justiﬁer soigneusement.
+(c) Exprimer une estimation du vecteur α à l’itération k=1.
+(d) Exprimer une estimation du vecteur α à l’itération k=2.
+(e) Exprimer la solution parcimonieuse du problème de minimisation par OMP .
+(f) Comparer l’ordre de parcimonie des deux solutions obtenues par StOMP et OMP .
+(g) Laquelle devons-nous priviligier dans ce contexte.
+CY-Tech 4/5
+<<<PAGE>>>
+EXAMEN DE RATTRAPAGE : C OMPRESSIVE SENSING
+Annexe
+• Le StOMP et l’OMP s’arrêtent lorsqu’on dépasse le nombre maximum des itérations mis en paramètre
+ou lorsque la norme du résiduel est inférieure ou égale à la tolérance.
+• Le StOMP s’initialise suivant les mêmes critères que l’OMP (voir exercice2).
+À l’itérationk ≥ 1, l’algorithme StOMP procède selon les étapes suivantes:
+1. Calcul du vecteur des contributions de tous les atomes d j , j = 1, .. .,K au résiduel courant,
+C j =
+⏐⏐〈d j , R(k−1)〉
+⏐⏐
+‖d j ‖2
+.
+2. La séléction:
+(a) On calcule le seuillage S(k): S(k) = t ‖R(k−1)‖2
+p
+K
+, 2 ≤ t ≤ 3.
+(b) On sélectionne l’ensemble Λk des indices des atomes dont la contribution est
+supérieure au seuillage S(k)
+Λk =
+{
+j ∈ {1,. .. ,K}, C j > S(k)
+}
+.
+3. La mise à jour: On met à jour l’ensemble des indicesPk = Pk−1 ∪ Λk.
+4. On construit la matrice Φk en considérant les colonnes dp, p ∈ Pk.
+Φk = [dp, p ∈ Pk].
+5. On résout le problème d’optimisation α(k)
+Pk
+= argmin ‖x −Φk αPk ‖2 par la méthode des moin-
+dres carrées.
+6. On met à jour le résiduel, R (k) = x − Φk α(k)
+Pk
+.
+CY-Tech 5/5

@@ -1,0 +1,32 @@
+import numpy as np
+import soundfile as sf
+import  sounddevice as sd
+import matplotlib.pyplot as plt
+
+# Etape 2 :
+# sur le fichier bruité, on souhaite retrouver le message
+
+
+nom="fournis-notice"
+# fichier wav possible :
+# fournis-notice ; lair-idiote ;
+
+data, fs = sf.read(nom+"-bruite.wav", dtype='float32')
+n=len(data)
+data=data[0:,0]
+fourier=np.fft.fft(data)
+plt.figure(1)
+plt.stem(np.linspace(0,n,n),np.absolute(fourier))
+plt.show()
+fourier[10000:-10000]=0
+plt.figure(2)
+plt.stem(np.linspace(0,n,n),np.absolute(fourier))
+plt.show()
+data=np.real(np.fft.ifft(fourier))
+data2=np.zeros([n,2])
+data2[0:,0]=300*data
+data2[0:,1]=300*data
+sf.write(nom+"-voix.wav",data2,fs)
+
+# fin étape 2
+# le bip est gommé, on retrouve le message initial

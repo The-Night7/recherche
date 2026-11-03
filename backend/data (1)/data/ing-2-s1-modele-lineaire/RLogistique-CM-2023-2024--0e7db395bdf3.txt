@@ -1,0 +1,402 @@
+Régression Logistique
+Zahraa Maatouk
+Département de Mathématiques
+ING2-Génie Mathématiques
+CYtech Cergy Paris Université
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 1/29
+<<<PAGE>>>
+Plan I
+1 Introduction
+2 Spécification du modèle
+3 Interprétation des coefficients
+4 Estimation et test du modèle
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 2/29
+<<<PAGE>>>
+Plan
+1 Introduction
+2 Spécification du modèle
+3 Interprétation des coefficients
+4 Estimation et test du modèle
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 3/29
+<<<PAGE>>>
+Introduction à la Régression Logistique
+1 La régression logistique s’applique au cas où :
+Y est qualitative à 2 modalités
+Xp qualitatives ou quantitatives
+2 Le plus souvent appliquée à la santé :
+Identification des facteurs liés à une maladie
+Recherche des causes de décès ou de survie de
+patients
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 4/29
+<<<PAGE>>>
+Plan
+1 Introduction
+2 Spécification du modèle
+3 Interprétation des coefficients
+4 Estimation et test du modèle
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 5/29
+<<<PAGE>>>
+Spécification du modèle
+Contexte
+Y est une variable binaire :
+0 en cas de non occurrence de l’évènement.
+1 si occurrence.
+Y aléatoire et Xi non aléatoires.
+On cherche à expliquer la survenue d’un évènement.
+On cherche la probabilité de succès.
+On travaille en terme d’espérance.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 6/29
+<<<PAGE>>>
+Spécification du modèle
+Notations
+On note
+(Y,X 1,X 2,...,X p) les variables de la population dont on extrait un
+échantillon den individus i.
+(yi,x i) est le vecteur des réalisations de(Yi,X i).
+p variables explicatives.
+Objectif
+Décrire la liaison entreY et les (X1,...,X p) et prédire les valeurs prises par
+Y.
+Régression logistique simple (p = 1)
+Régression logistique multiple (p> 1)
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 7/29
+<<<PAGE>>>
+Spécification du modèle
+Contexte
+Le but est de prédire la valeur de Y par 0 ou 1. On définit la probabilité
+p =p(x) = P (Y = 1/X =x). Sip> 0.5 alors ˆY = 1 et sip< 0.5 donc
+ˆY = 0.
+Pour calculer la valeur dep qui nous permet de prédire la valeur deY, on
+utilise la fonction logistique définie par :
+logit(p(x)) = ln p(x)
+1−p(x) =β0 +β1x.
+Donc,
+p(x)
+1−p(x) = exp(β0 +β1x).
+et
+p(x) = exp(β0 +β1x)
+1 + exp(β0 +β1x) = 1
+1 + exp(−(β0 +β1x)).
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 8/29
+<<<PAGE>>>
+Plan
+1 Introduction
+2 Spécification du modèle
+3 Interprétation des coefficients
+4 Estimation et test du modèle
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 9/29
+<<<PAGE>>>
+Interprétation des coefficients
+Cas d’une seule variable exogène binaire
+Définition 1 (Odds ou Côte)
+Soit p une probabilité. L’odds (chance ou côte) ou rapport de chances est
+défini comme un rapport de probabilités dans un groupe. L’odds est défini
+par :
+Oddsp = p(x)
+1−p(x) = P(Y = 1|X =x)
+P(Y = 0|X =x).
+Par exemple, si un étudiant a 3 chances sur 4 d’être reçu, contre 1 chance sur
+4 d’être collé, son Odds est de “ 3 contre 1”, soit
+Odds = 3/4
+1/4 = 3.
+Règles d’affectation
+Si odds > 1 alorsˆY = 1.
+Si odds < 1 alorsˆY = 0.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 10/29
+<<<PAGE>>>
+Interprétation des coefficients
+Définition 2 (Odds Ratio)
+L’odds ratio (rapport des chances) entre deux individus x et x′ est
+RC =OR(x,x′) = Oddsx
+Oddsx′
+=
+p(x)
+1−p(x)
+p(x′)
+1−p(x′)
+C’est le rapport entre l’odds du groupe exposé et l’odds du groupe témoin.
+Exemple
+C’est le rapport des odds des probabilités d’avoir la maladie pour ceux qui ont un
+symptôme X d’une part et de ceux qui ne l’ont pas d’autre part.
+OR=1, la maladie estindépendante du symptôme.
+OR>1, la maladie est plus fréquente pour les individus quiont le symptôme.
+OR<1, la maladie est plus fréquente pour les individus quin’ont pasle symptôme.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 11/29
+<<<PAGE>>>
+Interprétation des coefficients
+Cas d’une seule variable exogène binaire X de valeurs 0 et 1
+RC =OR =
+P(Yi=1|X=1)
+1−P(Yi=1|X=1)
+P(Yi=1|X=0)
+1−P(Yi=1|X=0)
+= exp(β0 +β1)
+exp(β0) = exp(β1).
+X = 0 : symptôme absent.
+X = 1 : symptôme présent.
+Y = 0 : la maladie est absente.
+Y = 1 : la maladie est présente.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 12/29
+<<<PAGE>>>
+Interprétation des coefficients
+Cas d’une seule variable exogène binaire X de valeurs 0 et 1
+Avec l’estimateur deβ1 : OR = exp(β1), permet de comparer les individus
+qui possèdent le symptôme X avec ceux qui ne le possède pas. Pour cela, on
+compare le OR à 1.
+Avec l’estimateur deβ0 : On peut calculer
+P(Yi = 1|X = 0) = exp(β0)
+1 + exp(β0).
+C’est-à-dire la proportion observée de malades n’ayant pas le symptôme.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 13/29
+<<<PAGE>>>
+Interprétation des coefficients
+Cas d’une seule variable exogène quantitative
+X une variable quantitative (ex : âge).
+Y = 0 : la maladie est absente.
+Y = 1 : la maladie est présente.
+On a encore :
+Logit[P(Yi = 1|X =x)] = β0 +β1x.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 14/29
+<<<PAGE>>>
+Interprétation des coefficients
+Modèle logistique multiple
+Dans le cas où on a plusiers variables exogèneX1,...,X p binaires ou quantitatives.
+Le modèle devient :
+logit(p(x)) = ln p(x)
+1−p(x) =β0 +β1X1 +β2X2 +... +βpXp.
+Donc,
+p(x)
+1−p(x) = exp(β0 +β1X1 +β2X2 +... +βpXp).
+Exemple :
+Logit[P(Maladie = 1|Age,fume )] = β0 +β1×Age +β2×fume,
+avec ˆβ0 = 1.3982, ˆβ1 = 0.4118 et ˆβ2 = 0.6708.
+L’interprétation deβ0 n’a pas de sens.
+OR = exp(β1) = 1.5068> 1 : Si l’âge augmente d’une unité, le risque de
+contracter la maladieaugmente.
+OR = exp(β2) = 1.9558> 1 : Le risque de contracter la maladie estplus
+élevé si l’individu est fumeur.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 15/29
+<<<PAGE>>>
+Plan
+1 Introduction
+2 Spécification du modèle
+3 Interprétation des coefficients
+4 Estimation et test du modèle
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 16/29
+<<<PAGE>>>
+Estimation et test du modèle
+Maximum de vraisemblance
+Estimateurs des paramètres sans biais et de faible variance.
+n variables aléatoiresYi iid qui suivent une loi deB(pi).
+La vraisemblance d’un n-échantillony1,y 2,...,y n est définie comme la
+probabilité d’observer cet échantillon.
+P(Yi =yi) = pyi
+i (1−pi)1−yi, avec pi = P(Y =yi|X =xi).
+Les variablesYi étant indépendantes :
+L(β,y 1,...,y n) =
+n∏
+i=1
+P(Y =yi|X =xi) =
+n∏
+i=1
+pyi
+i × (1−pi)1−yi.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 17/29
+<<<PAGE>>>
+Estimation et test du modèle
+Maximum de vraisemblance
+On chercheˆβ = (ˆβ0,..., ˆβp) qui maximise la vraisemblance du modèle. Or,
+selon le modèle logistique
+pi = P(Y = 1|X =xi) = exp(β0 +β1xi)
+1 + exp(β0 +β1xi).
+Cela implique que
+L(β) =
+n∏
+i=1
+[ eβ0+β1xi
+1 +eβ0+β1xi
+]yi[
+1− eβ0+β1xi
+1 +eβ0+β1xi
+]1−yi
+.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 18/29
+<<<PAGE>>>
+Estimation et test du modèle
+Maximum de vraisemblance
+On noteL(β) = log(L(β)) := LL(β) Log-vraisemblance.
+Objectifs : trouverβ0 et β1 qui maximisent la probabilité d’observer
+l’échantillon (i.e. maximisation de la vraisemblance) :
+max
+β0,β1
+(L(β)) ⇔ max
+β0,β1
+L(β).
+ˆβ obtenu est un estimateur :
+asymptotiquement sans biais;
+de variance minimale;
+asymptotiquement normal (important pour l’inférence).
+On manipule souvent la quantité[−2LL] que l’on appelleDEVIANCE.
+Donc
+max
+β
+L(β) ⇔ min
+β
+DM (β).
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 19/29
+<<<PAGE>>>
+Estimation et test du modèle
+La déviance donne la «distance» entre le modèle et les observations. Elle est utile
+pour comparer des modèles en particulier le modèle basique ne contenant aucune
+variable explicative et le modèle complet où on a toutes nos variables.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 20/29
+<<<PAGE>>>
+Estimation et test du modèle
+Définition 3 (Déviance)
+Déviance résiduelle : on définit la déviance résiduelle par
+D(ˆβ) := DM = −2LL(ˆβ0,ˆβ1,..., ˆβp).
+Déviance nulle : on définit la déviance nulle (null deviance) par
+Dnul :=D0 = −2LL(ˆβnul
+0 ),
+oùˆβnull
+0 a été calculé dans le modèle sans covariable, donc avec l’intercepte seul.
+▶ La déviance nulle ( D0) est calculée sur le modèle uniquement composée de la
+constante.
+DM est positive, et mesure l’écart entre les données et le modèle.
+Permet de quantifier la qualité d’ajustement du modèle, et la comparaison de modèles
+emboîté.
+Remarque
+DM peut être comparer à la somme des carrés des résidus de la régression multiple.
+D0 correspondrait alors à la somme des carrés totaux.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 21/29
+<<<PAGE>>>
+Estimation et test du modèle
+Test 1 : Test de significativité globale
+Les variables explicatives influencent-elles simultanément le risque de
+survenue de l’événement?
+On va effectuer un test du rapport de vraisemblance...
+M1 : Modèle sans variables
+M2 : Modèle avec toutes les variables
+On teste :
+{H0 : M1⇒Logit[P(Y = 1)] = β0
+H1 : M2⇒Logit[P(Y = 1)] = β0 +β1x1 +... +βpxp
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 22/29
+<<<PAGE>>>
+Estimation et test du modèle
+Comme si on teste la nullité simultanée des p coefficients(β1,...,β p) :
+H0 : β1 =... =βp = 0
+On utilise la statistique du rapport de vraisemblance
+LR =D(ˆβnul)−D(ˆβ),
+qui suit, sousH0, sin est grand, une loi duχ2(p)
+on rejetteH0 au niveauα si
+LR>q α,
+où qα est la quantile de la loi deχ2(p).
+Remarque
+C’est l’équivalent du test de Fisher.
+Ce test revient àcomparer la vraisemblance du modèle complet avec
+celle du modèle trivial constitué uniquement de la constante.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 23/29
+<<<PAGE>>>
+Estimation et test du modèle
+Test 2 : Test sur les modèles emboîtés
+Compare 2 modèles emboités :
+▶ M1 :k paramètres
+▶ M2 :p paramètres (p>k ) qui contient toutes les paramètres de M1.
+Les hypothèses de test sont :
+H0 : on choisit M1 (meilleure qualité prédictive que le 2 mais moins de
+paramètres) VS
+H1 : on choisit M2 (meilleure qualité prédictive).
+La statistique de test est :
+LR =−2 ln
+(L(M1)
+L(M2)
+)
+=−2LL(M1)− (−2LL(M2)) = DM 1−DM 2,
+où LL(M ) est la log-vraisemblance,D la déviance.
+Sous l’hypothèseH0, les coefficients des variables supplémentaires que l’on
+retrouve dans M2 sont tous nuls. La statistiqueLR suit une loi duKhi-deux
+à p − k degrés de libertés.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 24/29
+<<<PAGE>>>
+Estimation et test du modèle
+Test 3 : Tester la nullité deq (q <p) coefficients
+La démarche est toujours la même si nous souhaitons tester la nullité deq
+coefficients. On test
+H0 : β1 =... =βq = 0
+On compare
+▶ le modèle complet avecp variables
+▶ au sous modèle emboîté avecβq+1,β q+2,...,β p coefficients, soit (p −q)
+variables.
+Le rapport de vraisemblance suit une loi duχ2 à (p − (p − q) = q) degrés
+de liberté.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 25/29
+<<<PAGE>>>
+Estimation et test du modèle
+Test 4 : Test de significativité d’un seul coefficientβj avec le test de
+rapport de vraisemblance
+M1 : Modèlesans la variable testéeβj
+M2 : Modèleavec la variable testéeβj
+On teste :
+
+
+
+H0 : M1⇒Logit[P(Y = 1)] = β0 +β1x +... +βj−1xj−1
++βj+1xj+1 +... +βpxp
+H1 : M2⇒Logit[P(Y = 1)] = β0 +β1x +... +βpxp
+C’est-à-dire {
+H0 : βj = 0
+H1 : βj̸= 0
+Pour tester la significativité d’unβj, il suffit de comparer la déviance du modèle
+complet (avecβj) et la déviance du modèle sansβj.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 26/29
+<<<PAGE>>>
+Estimation et test du modèle
+Test 5 : Test de significativité d’un seul coefficientβj avec le test du Ward
+On teste l’hypothése :H0 βj = 0. Le test s’appuie sur la statistique de Wald
+Wj =
+ˆβ2
+j
+ˆσ2
+ˆβj
+,
+oùˆσ2
+ˆβj
+est la variance du coefficientˆβj.
+Sous H0, Wj suit une loi duχ2 à 1 degré de liberté.
+Remarque
+Si n est assez grand, on peut utiliser la loi normale :
+▶ Asymptotiquement, pour toute observationXj, sousH0
+Zj =
+ˆβ2
+j
+ˆσ2
+ˆβj
+∼N (0, 1).
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 27/29
+<<<PAGE>>>
+Modèle avec interaction
+Dans un modèle statistique classique, on fait l’hypothèse implicite que chaque
+variable explicative est indépendante des autres. Cependant, cela ne se vérifie pas
+toujours. Par exemple, l’effet de l’âge peut varier en fonction du genre. Il est donc
+parfois nécessaire de prendre en compte dans un modèle les effets d’interaction.
+Dans le cas d’un modèle logistique multiple, le modèle avec interaction peut
+s’ecrire :
+logit(p(x)) = β0 +β1X1 +β2X2 +... +βpXp +...β12X1X2 +.. +βp−1pXp−1Xp
+Si on accepteH0 alors on retire l’interaction.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 28/29
+<<<PAGE>>>
+Estimation et test du modèle
+Tester l’interaction
+On considère le modèle suivant avec les deux variables explicativesX1 etX2 :
+Logit[P(Y = 1|X1,X 2)] = β0 +β1X1 +β2X2 +β3X1X2.
+Si β3 est significative, alorsX2 modifie l’effet deX1. En effet, dans ce cas :
+Si X2 = 0 alors l’effet deX1 est β1
+Si X2 = 1 alors l’effet deX1 est β1 +β3.
+On teste par le test du rapport de vraisemblance :
+{
+H0 : β3 = 0
+H1 : β3̸= 0
+Si on rejetteH0 alors il y a modification d’effet et on laisse l’interaction dans
+le modèle.
+Si on accepteH0 alors on retire l’interaction.
+Zahraa Maatouk / CYtech Cergy Modèle Linéaire ING2-GMA 2023/2024 29/29

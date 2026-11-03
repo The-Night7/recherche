@@ -1,0 +1,106 @@
+Examen de Décidabilité - Complexité
+14 décembre 2020
+La clarté et la précision de la rédaction seront prises en compte dans
+l'évaluation.
+Le barème est indicatif.
+Aucune question ne pourra être posée durant l'examen.
+En cas de doute concernant le sujet,
+vous poursuivrez votre réponse en expliquant vos hypothèses.
+Si vous devez rendre votre travail par mail, merci d'utiliser comme sujet:
+[examen décidabilité] NOM Prénom groupe
+Durée : 1h30
+Execice 1 /7 pt
+Soit M une machine de Turing 2-string (K; Σ;δ;q0), où K est l'ensemble
+des états, Σ l'alphabet, δ les règles de transition et q0 l'état intial. Nous
+supposons que Σ ={0, 1}. Pour décrire les règles de δ, nous utilisons deux
+ensembles Σ1 et Σ2 tels que Σ1 = Σ 2 = Σ ; Σ1 et Σ2 font référence respec-
+tivement aux rubans 1 et 2. Nous utilisons aussi x,y ∈ Σ, avec x⁄= y.
+On suppose que, initialement, le ruban 1 contient la donnée à analyser et le
+ruban 2 est vide (contenant que des blancs). Les règles de δ sont dénies
+comme suit ( dep1 et dep2 modélisant respectivement les déplacement sur le
+ruban 1 et le ruban 2):
+1
+<<<PAGE>>>
+p∈K s1∈ Σ1 s2∈ Σ2 δ(p,s 1,dep 1,s 2,dep 2)
+q0 ⊔ ⊔ δ(yes,⊔,−,⊔,−)
+q0 x ⊔ δ(q1,x,→,x,→)
+q1 ⊔ ⊔ δ(no,⊔,−,⊔,−)
+q1 x ⊔ δ(q2,x,→,x,←)
+q2 ⊔ x δ(yes,⊔,−,x,−)
+q2 x y δ(no,x,−,y,−)
+q2 x x δ(q3,x,→,x,→)
+q3 x y δ(no,x,−,y,−)
+q3 x x δ(q2,x,→,x,←)
+1. Trouver trois entiers naturels c,k 1,k 2 tels que quelle que soit l'entrée
+w∈ Σ∗, M s'arrête avec un nombre de "steps" (règles δ appliquées)
+borné par c∗|w|k1 +k2. En déduire, la complexité de M .
+c =
+k1 =
+k2 =
+Complexité de M :
+2. Soit une conguation dénie par le quintuplet
+(état courant ,
+valeur sous la tête de lecture du ruban 1 ,
+suite des valeurs du ruban 1 ,
+valeur sous la tête de lecture du ruban 2 ,
+suite des valeurs du ruban 2 ).
+Considérons une conguration initiale σ = (q0,a 1,a 2...a n,⊔,⊔). On
+suppose que σ mène à un état acceptant. Donner la conguration nale
+σ′, en fonction de a1...a n, obtenue à partir de σ.
+σ′ =
+3. Trouver une dénition formelle du langage décidé par la MT M , noté
+LM .
+LM =
+2
+<<<PAGE>>>
+4. Soit Pb le problème traduisant LM . Répondre par oui ou non :
+ LM est récursif mais non décidable.
+ LM n'est pas récursivement énumerable mais décidable.
+ Pb est un problème d'optimisation.
+ Pb∈P
+ Pb∈NP
+ Pb est NP -complet.
+Exercice 2 /6 pt
+Dans cet exercice nous nous intéressons aux formules bien formées mises sous
+forme normale conjonctive (FNC), dans lesquelles chaque clause a exactement
+deux littéraux. Autrement dit, nos formules sont de la forme : C1∧... ∧Cm
+où chaque clause Ci est une disjonction de deux littéraux. On rappelle qu'un
+littéral est une variable ou sa négation. Une instanciation d'une formule φ
+est une application de l'ensemble des variables propositionnelles de φ dans
+{0, 1}.
+On construit un graphe orienté G(φ) = (S,E ), avec S l'ensemble des variables
+{x1,...,x n} de φ et de leurs négations {x1,..., xn}, et E l'ensemble des
+arêtes dirigées, avec (xi,x j)∈ E, si et seulement si la disjonction (xi∨xj)
+est l'une des clauses de φ.
+1. Montrer que (xi,x j)∈E ssi (xj,xi)∈E
+2. Montrer qu'il existe un chemin xi→... →xj sur G(φ), ssi il existe un
+chemin xj→... →xi sur G(φ)
+3
+<<<PAGE>>>
+3. Supposons qu'il existe un chemin xi→ ... → xi sur G(φ). Montrer
+que si I est une instanciation rendant φ satisfaisable, alors I(xi) = 0 .
+En déduire que si φ est satisfaisable, alors pour tout 1≤ i≤ n, si xi
+est accessible depuis xi, alors xi n'est pas accessible depuis xi.
+4. Réciproquement, montrer que s'il n'existe aucune variable telle que xi
+soit accessible depuis xi, et xi depuis xi, alors φ est satisfaisable.
+5. En déduire que le problème 2-SAT est dans la classe P .
+Exercice 3 /6 pt
+Un ensemble indépendant d'un graphe G = (S,E ) est un sous-ensemble
+S′⊆ S de sommets, tel que chaque arrête de E soit incidente à au plus un
+sommet de S′. On rappelle qu'un sommet d'un graphe est incident à une
+arête ou un arc s'il est situé à l'une des deux extrémités de cette arête ou
+de cet arc. Le problème de l'ensemble indépendant consiste à trouver un
+ensemble indépendant de taille maximale.
+Indication : étant donnée une instance de 3-SAT, c-à-d une formule φ avec
+n clauses à 3 littéraux, construisez un graphe G(φ) avec 3n sommets comme
+suit :
+ Prévoir un sommet pour chaque littéral de chaque clause.
+ Relier en triangle les sommets associés à chaque clause.
+4
+<<<PAGE>>>
+ Étant donnés deux sommets x et y ne representant pas une même
+clause, prévoir l'arête (x,y ) que si le littéral x est la négation de y.
+1. Formuler un problème de décision correspondant au problème de l'ensemble
+indépendant.
+2. Démontrer que le problème formulé est NP-complet.
+5

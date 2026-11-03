@@ -1,0 +1,222 @@
+Chapitre I. L’offre et la demande
+— Exercice 5 —
+Le march´ e des masques
+A partir d’un tracker de prix disponible sur internet, nous avons relev´ e le prix des masques depuis
+fin mars 2020 jusqu’` a octobre 2020 (graphique 1). On peut ainsi remarquer que :
+• le prix est fortement instable jusqu’en mai, avant de d´ ecroˆ ıtre et de converger vers le prix de
+6 dollars les 50 masques.
+• jusqu’en mai, le prix semble osciller de fa¸ con r´ eguli` ere autour d’une valeur de 25 dollars les
+50 masques, en alternant plusieurs phases au-dessus puis au-dessous de ce prix.
+L’objectif de cet exercice est de mod´ eliser le prix des masques depuis la crise du Covid-19 en f´ evrier
+2020. Vous devez r´ epondre aux questions en vous appuyant ´ egalement sur l’article de C´ edric Math-
+iot paru dans Lib´ erationen septembre 2020 et disponible en annexe.
+Figure 1: Evolution du prix des masques (boˆ ıte de 50)
+Partie 1 : un mod` ele statique
+1
+<<<PAGE>>>
+Exercice 5. Le march´ e des masques
+1. Au d´ ebut du confinement, les fabricants de masques ´ etaient dans l’incapacit´ e de produire
+davantage lorsque le prix de march´ e augmentait, ` a cause de capacit´ es de production limit´ ees.
+Quelle ´ etait selon vous la forme de la courbe d’offre ` a tr` es court terme ? Vers quelle valeur
+tendait l’´ elasticit´ e-prix de l’offre ?
+2. La fonction de demande de masques a-t-elle ´ et´ e modifi´ ee en mars 2020 suite ` a l’annonce des
+gouvernements du port g´ en´ eralis´ e du masque ? La demande de masques est-elle devenue
+plus ou moins sensible au prix selon vous ? Vers quelle valeur tendait l’´ elasticit´ e-prix de la
+demande ?
+3. Au moment o` u la d´ ecision du port g´ en´ eralis´ e du masque a ´ et´ e prise, quel a ´ et´ e l’effet sur les
+prix et les quantit´ es d’´ equilibre ?
+4. Indiquer si les ´ el´ ements ci-dessous (relev´ es pour certains dans l’article) influencent la courbe
+d’offre ou de demande de masques, et les ´ eventuels d´ eplacements de ces courbes :
+• le gouvernement d´ ecide du port g´ en´ eralis´ e du masque dans l’espace public.
+• de nouvelles entreprises fran¸ caises se lancent dans la production de masques.
+• les entreprises mettent leurs salari´ es en t´ el´ etravail.
+• un vaccin efficace contre le coronavirus est mis sur le march´ e.
+• les salari´ es sont moins vigilants sur les consignes sanitaires.
+• l’Etat lance une grande commande publique de masques.
+• les normes sur les masques (environnementales, qualit´ e...) sont plus strictes.
+A l’issue de cette premi` ere partie, nous avons trouv´ e des explications permettant de comprendre
+les variations du prix des masques. Cependant nous n’arrivons pas encore ` a expliquer le caract` ere
+oscillatoire du prix jusqu’au mois de mai. Une des explications possibles est que les ajustements
+des prix et des quantit´ es sur le march´ e ne sont pas instantan´ es. Nous proposons d’am´ eliorer notre
+mod` ele en le rendant dynamique, ce qui est l’objet de la section suivante.
+Partie 2 : Un mod` ele dynamique
+Dans le mod` ele pr´ ec´ edent, nous avons suppos´ e que les quantit´ es offertes par les entreprises s’adaptent
+instantan´ ementau prix de march´ e. Or dans la r´ ealit´ e, ce n’est pas cr´ edible, ` a cause de contraintes
+sur la main d’œuvre et sur le capital. Les entreprises anticipent en g´ en´ eral un niveau de production
+pour les jours (semaines ou mois) suivants, et le r´ ealisent sans savoir le prix auquel elles pourront
+effectivement vendre leurs produits une fois disponibles sur le march´ e. Pour tenir compte de ce
+ph´ enom` ene, nous mod´ elisons la fonction d’offre de masques de la fa¸ con suivante :
+qs
+t = c + dpa
+t ,
+avec pa
+t le prix anticip´ e par les producteurs de masque ` a la datet, et a, b, c et d quatre constantes
+positives, avec a > c .
+On suppose que les producteurs anticipent que le prix ` a la p´ eriode t sera le prix de la p´ eriode
+pr´ ec´ edente, c’est-` a-direpa
+t = pt−1. A la p´ eriode t − 1, les producteurs d´ ecident de la quantit´ eqS
+t
+mise sur le march´ e ` a la datet, et cette d´ ecision est irr´ evocable. On suppose qu’` a chaque p´ eriode,
+l’offre et la demande de masques sont ´ egales, c’est-` a-direqt = qs
+t = qd
+t (il n’y a pas de stockage ou
+de d´ estockage de masques de la part des producteurs entre les p´ eriodes).
+2
+<<<PAGE>>>
+Exercice 5. Le march´ e des masques
+On suppose que la fonction de demande en masques ` a la p´ eriodet est donn´ ee par :
+ qd
+t = a − bpt si 0 ≤ pt ≤ a
+b
+= 0 sinon,
+1. Repr´ esenter sur un mˆ eme graphique les fonctions d’offre et de demande de masques, avec la
+quantit´ e en abscisses et le prix en ordonn´ ees, et avec la contrainteb > d .
+2. Rep´ erer graphiquement le prix et la quantit´ e d’´ equilibre.
+3. Supposons qu’initialement, le prix p0 est inf´ erieur au prix d’´ equilibre.
+(a) A la p´ eriode 0, quelle est l’anticipation des entreprises concernant le prix de vente des
+masques ` a la p´ eriode 1 ? Quelle quantit´ e d´ ecident-ils de produire ` a la p´ eriode 0 de
+mani` ere irr´ evocable pour la mettre sur le march´ e ` a la p´ eriode 1 ? Repr´ esenter cette
+d´ ecision sur le graphique.
+(b) Les producteurs ayant d´ ecid´ e de mettre sur le march´ e la quantit´ eq1, quel sera le prix de
+vente des masques ` a la p´ eriode 1, not´ ep1 ? Les anticipations de prix des entreprises ` a
+la p´ eriode 0 pour la p´ eriode 1 ´ etaient-elles correctes ? Compl´ eter le graphique.
+(c) Continuer le raisonnement pour les p´ eriodes 2, 3,... et placer sur le graphique q2, p2, q3,
+p3, q4, p4...
+4. Sur un autre graphique, repr´ esenter l’´ evolution du prix des masques en fonction du temps.
+Que remarquez-vous ?
+5. Donner l’expression de p∗ en fonction de a, b, c et d.
+6. En ´ egalisant offre et demande, d´ eterminer une expression du prixpt en fonction du prix pt−1.
+7. D´ eterminerpt en fonction de p0, t et des diff´ erentes constantes du mod` ele.
+8. Expliquer math´ ematiquement le ph´ enom` ene observ´ e ` a la question 4 (on rappelle queb > d ).
+9. Quelle est la valeur de l’elasticit´ e-prix de la demande au point d’´ equilibre ? De l’´ elasticit´ e-prix
+de l’offre au point d’´ equilibre ?
+10. Conclure.
+3
+<<<PAGE>>>
+Exercice 5. Le march´ e des masques
+Annexe
+Covid : que devient la fili` ere des masques textiles “made
+in France” pouss´ ee par le gouvernement ?
+C´ edric Mathiot, Lib´ eration
+Au plus fort de la crise, les entreprises fran¸ caises fabriquaient plus de 5 millions de
+masques r´ eutilisables par jour. Aujourd’hui, on en est loin. La faute ` a la baisse de la
+demande et ` a la concurrence. Les acteurs comptent sur la commande publique pour
+relancer la production.
+Fin mars, alors que la pol´ emique enflait sur la p´ enurie de masques et l’impr´ eparation des autorit´ es,
+le gouvernement annonce sa volont´ e de cr´ eer – ou relancer – une fili` ere de masques sanitaires
+fran¸ cais (les masques chirurgicaux et FFP2). Dans le mˆ eme temps, le gouvernement annonce aussi
+la mise en place, ` a marche rapide, d’une production fran¸ caise de masques textiles, ` a usage non
+sanitaire. Le 29 mars est publi´ ee une note d’information d´ efinissant un cadre pour la production de
+ces masques made in France, dits “masques grand public”. L’objectif : des masques homologu´ es,
+respectant des performances en termes de filtration, et reconnaissables ` a des logos.
+Sous l’impulsion du comit´ e strat´ egique de la fili` ere mode et luxe (CSF) et en lien avec la Direction
+g´ en´ erale des entreprises (DGE), un groupement (devenu association) baptis´ e “Savoir faire ensemble”
+est cr´ e´ e, avec comme objectif de centraliser les demandes, de mettre en relation les confectionneurs
+avec les fabricants de mati` ere premi` ere. Au plus fort de l’´ epid´ emie, le groupement a rassembl´ e
+jusqu’` a 1 400 entreprises textiles, qui ont produit jusqu’` a 5 millions de masques par jour, et ont
+trouv´ e pour certaines dans cette activit´ e un moyen opportun de compenser l’effondrement de leur
+activit´ e li´ e au Covid. Au total, “entre 150 et 200 millions de masques grand public fran¸ cais ont ´ et´ e
+fabriqu´ es”, avance Guillaume Gibault, PDG du Slip fran¸ cais et pr´ esident de “Savoir faire ensemble”.
+Et aujourd’hui ? Paradoxalement, alors que le port du masque est aujourd’hui quasi g´ en´ eralis´ e
+dans les espaces publics et dans les entreprises, on est tr` es loin du rythme printanier. Le groupe-
+ment, devenu association, est retomb´ e ` a environ 500 entreprises dont 10% seulement produisent
+actuellement, estime Yves Dubief, pr´ esident de l’Union des industries textiles (UIT) : “les ateliers
+ont ´ et´ e mis en sommeil, les CDD recrut´ es pour les faire tourner n’ont pas ´ et´ e reconduits”. “ On
+doit recevoir entre 10 et 20 commandes par jour sur la plateforme, soit 50 000 masques par jour ”,
+confirme Guillaume Gibault. Mˆ eme en ajoutant les commandes qu’honorent les entreprises directe-
+ment (sans passer par la plateforme commune), le total des masques textiles produits par la fili` ere
+fran¸ caise est aujourd’hui probablement 10 voire 20 fois moins ´ elev´ e que la capacit´ e th´ eorique de
+production, qui est de 25 millions de masques par semaine.
+D´ ebut juin, un stock de 40 millions de masques sur les bras
+Premier ´ el´ ement d’explication : tout le monde, d´ esormais, a des masques. “ La population est
+´ equip´ ee depuis longtemps, les grandes surfaces ont du stock, et les entreprises et collectivit´ es ont
+d´ ej` a beaucoup command´ e, voire surcommand´ e, explique Yves Dubief. Une entreprise qui estimait
+son besoin ` a 100 000 masques, elle en aura re¸ cu 200 000. Mais en raison du t´ el´ etravail, elle en
+aura finalement consomm´ e 50 000, deux fois moins que pr´ evu. . . Une grande banque me disait
+ces derniers jours qu’ils avaient des masques jusqu’` a mai de l’ann´ ee prochaine.” D` es le d´ ebut de
+l’´ et´ e, les fabricants de la fili` ere ont ´ et´ e confront´ es ` a une baisse de la demande, se retrouvant avec
+des millions de masques sur les bras. “ D´ ebut juin, explique Guillaume Gibault, on avait estim´ e ` a
+4
+<<<PAGE>>>
+Exercice 5. Le march´ e des masques
+40 millions le stock de masques qui posait probl` eme pour la fili` ere, concernant principalement une
+trentaine d’entreprises. Une mission a ´ et´ e men´ ee pour ´ evaluer, et traiter, ce stock.” Pour all´ eger
+ces invendus, la secr´ etaire d’Etat ` a l’Economie, Agn` es Pannier-Runacher (depuis nomm´ ee ministre
+d´ el´ egu´ ee ` a l’Industrie), a exhort´ e les grandes entreprises ` a acheter fran¸ cais, d´ eplorant sur RTL,
+le 8 juin : “ C’est quand mˆ eme incroyable. On a un produit qui est ´ ecologique, qui a un rapport
+qualit´ e-prix imbattable, pour plus d’une dizaine d’utilisations par comparaison avec les masques ` a
+usage unique, et n´ eanmoins on n’arrive pas ` a convertir les grandes entreprises ` a utiliser ce masque,
+on pr´ ef` ere le masque chirurgical qui, lui, est import´ e de Chine.” Yves Dubief estime que le stock,
+qui est retomb´ e ` a 20 millions fin juillet, doit ˆ etre compris entre 14 et 15 millions aujourd’hui. “Et
+peut-ˆ etre mˆ eme un peu plus. Certains peuvent ˆ etre tent´ es de ne pas trop communiquer, vu que c’est
+jamais bien vu par les banquiers d’avoir trop de stock. ”
+Effondrement de la demande et explosion de l’offre
+A l’effondrement de la demande s’est ajout´ ee l’explosion de l’offre. Les masques textiles doivent
+faire face ` a la concurrence des masques chirurgicaux, y compris made in France (pr` es de 60 millions
+sont produits chaque semaine sur le territoire) qui sont d´ esormais partout apr` es avoir fait un temps
+l’objet de p´ enuries. Sans compter les masques textiles import´ es d’Asie ou fabriqu´ es, parfois par
+des entreprises fran¸ caises, au Maghreb. Ce sur´ equipement, doubl´ e de la concurrence, a eu pour
+effet de faire logiquement baisser les prix des masques en g´ en´ eral. Celui des masques chirurgicaux
+a d´ egringol´ e depuis quelques mois, annulant l’argument ´ economique dont pouvait se pr´ evaloir le
+masque r´ eutilisable. Ne restent plus au tissu made in France que l’argument ´ ecologique, celui de la
+fibre nationale, et l’argument esth´ etique, sur lequel certains fabricants tentent de jouer, notamment
+en visant le haut de gamme. Globalement, le tarif des masques en tissu a suivi le mouvement ` a la
+baisse, ce qui n’incite pas non plus des entreprises fran¸ caises ` a se remettre ` a la production. “Cer-
+tains ont pu gagner de l’argent au pic de la crise. C’est beaucoup plus dur maintenant. Du coup,
+si elles en ont la possibilit´ e, les entreprises pr´ ef` erent se concentrer sur leurs march´ es habituels.
+Et puis ` a terme, nul n’ignore que d` es qu’un vaccin est trouv´ e, le march´ e du masque, c’est fini”,
+explique un acteur.
+La g´ en´ eralisation du port du masque en entreprises, d´ ebut septembre, n’a pas offert de r´ eel
+d´ ebouch´ e. Parce que les entreprises ont du stock, mais aussi parce que quand ce n’est pas le
+cas, elles se tournent plus volontiers vers le masque chirurgical, en d´ epit du volontarisme affich´ e
+du gouvernement. Le protocole sanitaire recommande explicitement le masque en tissu pour la
+majorit´ e des salari´ es, r´ eservant le masque chirurgical pour les personnes ` a risque ou le personnel
+m´ edical. Probl` eme : comme CheckNews l’´ ecrivait, si l’employeur – tenu de fournir les masques aux
+salari´ es opte pour le r´ eutilisable, la charge du nettoyage lui incombera. “C ¸ a laisse deux possibilit´ es,
+dit Yves Dubief : collecter les masques chaque jour, les nettoyer, et les redistribuer le lendemain,
+ce qui veut dire que vous pouvez vous retrouver avec le masque d’un coll` egue, ce qui ne plaˆ ıt pas
+` a tout le monde. . . Ou alors laisser le nettoyage ` a la charge de chaque salari´ e, ce qui implique
+de l’indemniser du coup du lavage. Ce qui ne revient pas cher, quelques euros en passant par un
+forfait, mais ce qui est compliqu´ e ` a mettre en œuvre.”
+La commande publique, planche de salut ?
+Reste la commande publique. En l’absence de production nationale, l’Etat et les r´ egions avaient
+commenc´ e par se fournir en Asie au d´ ebut de la crise, essentiellement en masques jetables, mais
+aussi en masques textiles, qu’on retrouve encore parfois dans les stocks publics. L’Etat a ainsi
+livr´ e en juillet en Mayenne 650 000 masques en tissus. . . made in Vietnam. Un d´ estockage de
+masques command´ es au d´ ebut de la crise, mais qui a fait jaser. Dans les Yvelines, les 160 000
+5
+<<<PAGE>>>
+Exercice 5. Le march´ e des masques
+masques textiles livr´ es ` a la rentr´ ee aux coll´ egiens viennent d’Afrique du Nord : “On a puis´ e dans le
+stock qu’on avait constitu´ e pendant le confinement, ` a un moment o` u il ´ etait impossible de trouver
+des masques fran¸ cais”, se justifie la communication du d´ epartement. Mˆ eme provenance pour les
+masques des coll´ egiens de Creuse, mais pour des raisons diff´ erentes : “ Pour les masques tissus,
+on s’est d’abord fournis aupr` es de fournisseurs produisant dans le d´ epartement ou en en Savoie,
+mais on a opt´ e derni` erement, pour des raisons de prix, pour une entreprise fran¸ caise qui produit
+au Maghreb”, explique-t-on au conseil d´ epartemental.
+Mais ces cas semblent toutefois des exceptions. La commande publique s’est largement orient´ ee ces
+derniers mois vers de la production fran¸ caise, au moins concernant les masques tissu. Nombreux
+d´ epartements et r´ egions ont ainsi fait savoir par exemple qu’elles avaient fait appel ` a des entreprises
+tricolores pour fournir des masques aux coll´ egiens et lyc´ eens. C’est le cas du conseil d´ epartemental
+de Saˆ one-et-Loire, qui a command´ e 100 000 masques aupr` es de l’usine de Dim ` a Autun, dans le
+d´ epartement. L’Allier, les Hautes-Alpes et l’Ain se sont aussi fournis dans la mˆ eme entreprise. Le
+d´ epartement de l’Oise s’est fourni aupr` es du groupe Kindy. En Corr` eze aussi, les masques textiles
+ont ´ et´ e command´ es essentiellement aupr` es de producteurs du d´ epartement ou fran¸ cais. Au niveau
+r´ egional, Jean Rottner, pr´ esident de la r´ egion Grand Est, a annonc´ e la distribution de deux masques
+par ´ el` eve, produits localement pr` es de Troyes, dans le Haut-Rhin ou dans les Vosges. La r´ egion
+Hauts-de-France s’est fournie en masques jetables (33 millions de masques command´ es) aupr` es de
+producteurs asiatiques, mais a fait dans le local pour les 9 millions de masques textiles. Idem en
+Paca ou en Auvergne-Rhˆ one-Alpes, comme en Occitanie, o` u les 7 millions de masques tissu que
+s’est procur´ es depuis le d´ ebut de l’´ epid´ emie la r´ egion sont tous de provenance locale.
+Mais un relais de croissance plus substantiel pourrait venir d’une commande massive de l’Etat,
+que les acteurs de la fili` ere appellent de leurs vœux. Yves Dubief : “ L’activit´ e de la fili` ere peut se
+poursuivre un peu dans le temps s’il y a une commande publique qui s’´ etale sur une douzaine de
+mois, avec constitution d’un stock strat´ egique.” Comme il en existe pour les masques sanitaires.
+Contact´ e par CheckNews, le minist` ere confirme que des “r´ eflexions sont en cours” sur le sujet.
+Sans ˆ etre capable de donner des pr´ ecisions sur le volume, la date, ni les contours de ce march´ e
+public. L’enjeu sera aussi de faire profiter les industriels fran¸ cais en respectant les r` egles de la
+concurrence. “ Il faudra que ce soit une commande strat´ egique”, dit-on a Bercy. Comprendre : se
+d´ ebrouiller, en jouant par exemple sur les clauses environnementales, pour que la commande profite
+aux entreprises tricolores. Le tout, insistent les acteurs de la fili` ere France, ` a un prix qui permette
+aux industriels de s’y retrouver.
+6

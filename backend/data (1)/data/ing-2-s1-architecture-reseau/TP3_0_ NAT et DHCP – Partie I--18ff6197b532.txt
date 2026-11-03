@@ -1,0 +1,65 @@
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+1 
+ 
+TP4 – NAT et DHCP – Partie I 
+ 
+ 
+ 
+Dans ce TP, vous serez en charge de mettre en service le réseau ci-dessous. Il s’agit de connecter une 
+entreprise au réseau Internet et de rendre accessible leur serveur Web pour les clients. En première 
+étape, il faudrait réaliser les opérations suivantes : 
+ 
+ Créer la topologie en question et interconnecter les équipements (Dans Packet Tracer) 
+ Affecter les adresses IP selon le plan d’adressage propo sé dans le schéma (se refaire aux TP 
+précédents pour les instructions) 
+ Configurer un serveur DHCP sur le routeur Router0 afin affecter des adresses IP automatiques 
+aux machines. On suppose que Server0 et un Serveur Web et DNS. Aussi, il faudrait exclure 
+les adresses de 1 à 10 et de 250 à 254. 
+ Configurer un routage statique entre le routeur de l’entreprise (Router0) et l’ISP (Router1) 
+ 
+ 
+ 
+ 
+ 
+ 
+Router0 - Instructions DHCP 
+ip dhcp excluded-address 192.168.1.1 192.168.1.10 
+ip dhcp excluded-address 192.168.1.250 192.168.1.254 
+! 
+ip dhcp pool POOL1 
+network 192.168.1.0 255.255.255.0 
+default-router 192.168.1.254 
+dns-server 172.16.100.5 
+ 
+ 
+ 
+
+<<<PAGE>>>
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+2 
+ 
+ 
+ 
+ 
+Routage – Router0 :  
+ip route 0.0.0.0 0.0.0.0 10.10.10.1 
+ 
+Routage – Router1 :  
+ip route 192.168.1.0 255.255.255.0 10.10.10.2  
+ip route 172.16.100.0 255.255.255.0 10.10.10.2 
+ 
+ 
+A partir de là, le NAT n’a pas été encore  configuré (ça aurait été très facile ). Nous verrons dans la 
+partie II que l’ISP va attribuer une plage d’adresse IPs publique que l’entreprise va utiliser pour faire 
+le NAT dynamique (partage de connexion), et publier son site web en utilisant le NAT statique.  
+ 
+ 
+ 

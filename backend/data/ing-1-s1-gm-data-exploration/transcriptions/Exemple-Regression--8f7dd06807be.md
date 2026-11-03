@@ -1,10 +1,6 @@
----
-source: ING 1/S1 GM /DATA EXPLORATION/Chapitre 2 - Quantitative x Quantitative/Exemple-Regression.pdf
-pages: 1
-transcription: manuelle
----
+# Exemple-Regression.pdf
 
-# Data exploration — Exemple de régression taille-poids
+[Ouvrir l’original](https://drive.google.com/open?id=1C3kliIOljjiRLq4Iaoy5eI7Qx8Xf5yt7) · Tableau comparé au rendu et à la couche texte du PDF original.
 
 ## Données du tableau
 
@@ -23,7 +19,7 @@ Le document donne la taille $X$ et le poids $Y$ de dix enfants. Les unités ne s
 | 9 | 110 | 20 | 18,96 | 1,04 |
 | 10 | 115 | 21 | 21,05 | −0,05 |
 
-La ligne imprimée « résidu centré et réduit » donne, dans l'ordre : $-1{,}23$ ; $-2{,}28$ ; $0{,}73$ ; $1{,}36$ ; $[\text{signe masqué}]\,0{,}29$ ; $-0{,}42$ ; $-0{,}5$ ; $-0{,}96$ ; $0{,}8$ ; $-0{,}04$. La deuxième valeur est surlignée. Le début de la cinquième valeur est recouvert dans le scan : son signe ne peut pas être confirmé à partir de ce fichier. Aucune valeur recalculée ne lui est substituée.
+La ligne imprimée « résidu centré et réduit » donne, dans l'ordre : $-1{,}23$ ; $-2{,}28$ ; $0{,}73$ ; $1{,}36$ ; $-0{,}29$ ; $-0{,}42$ ; $-0{,}5$ ; $-0{,}96$ ; $0{,}8$ ; $-0{,}04$. La deuxième valeur est surlignée. Le signe du cinquième résidu réduit est partiellement recouvert sur le rendu. Le texte incorporé dans le PDF original donne explicitement « −0.29 ».
 
 > **Incohérences de la source conservées :** les poids prédits du tableau ne correspondent pas tous à la droite affichée ci-dessous, et les arrondis des prédictions et résidus ne sont pas homogènes. Le premier résidu réduit est négatif dans la ligne imprimée alors que le résidu calculé en bas de page est positif. Ces nombres sont transcrits tels qu'ils figurent dans le document, sans les présenter comme un tableau recalculé.
 

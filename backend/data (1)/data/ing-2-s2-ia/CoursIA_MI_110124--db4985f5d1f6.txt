@@ -1,0 +1,57 @@
+Résolution d'un problème
+
+Partir de l'état initial e0
+À chaque itération, soit e l'état courant
+  Si e est un état final: nous avons trouvé une solution
+  Sinon
+    générer tous les états possibles obtenus à partir de e en appliquant une 
+     action
+	 
+	 
+Cela revient à construire un arbre dont les caractéristiques sont:
+  racine = e0
+  chaque noeud de l'arbre = état e
+  fils d'un noeud e = successeurs e' de e au sens e (action) ----> e'
+  Feuilles : états final ou des noeuds dont on n'a pas encore développé
+      la branche
+	  
+=====================================
+Recherche guidée:
+
+Heuristique h : e ----> h(e)
+
+h(e) caractérise la qualité de l'état e
+   qualité de e lié à sa proximité d'un état final
+   
+Exemples d'heuristiques
+
+Jeu du taquin 2*2
+
+Etat e     c1  c2
+           c3  c4
+		   
+Les 4 cases du jeu ont les valeurs 1, 2, 3, blanc
+
+Etat final 
+
+   ef  =    1   2
+            3   bl
+			
+Actions: intervertir la case bl avec sa voisine horizontale ou sa voisine
+           verticale
+		   
+Par exemple:
+
+e1 =  3  1
+      2  bl 
+	 
+---->  e'1 = 3  1        ou e'2 = 3   bl
+             bl 2                 2   1 
+			 
+heuristiques:
+
+  h1(e) = nombre de cases pleines mal placées par rapport à l'état final
+  
+h1(ef) = 0
+h(e1) = 3
+  

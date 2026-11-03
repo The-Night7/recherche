@@ -1,0 +1,693 @@
+Ingénieurs 2ème année : Parcours Mathématique & Informatique
+Modèle linéaire et extensions
+Réduction de la dimension dans les modèles linéaires
+CM 6 : Régression régularisée :Pénalisation Ridge et Lasso
+Nisrine FORTIN & Naamane LAIB
+
+<<<PAGE>>>
+1 Introduction
+2 La régression Ridge
+Estimateur Ridge
+Algorithme de calcul deλ optimal
+λ optimal par validation croisée K-Fold
+3 La régression LASSO
+Algorithme de descente par coordonnées
+Algorithme Stagwise
+<<<PAGE>>>
+Introduction
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Pour un échantillon de taille n, on cherche les paramètres estimés
+ˆa= (ˆa0, ˆa1, ... , ˆap)
+qui minimise l’erreur quadratique moyenne MSE : MSE= 1
+n ∥Y−Xa∥2.
+↝ Estimateur des moindres carrés ordinaires : ˆaMCO = (X′X)−1X′Y.
+↝ Variance de l’estimateur des MCO :Var (ˆaj)= ˆσ2
+n VIFj.
+4/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Estimateur MCO
+Si p>n, la matrice X′X n’est pas inversible donc l’estimateur des moindres
+carrés ne sera pas unique.Problème de dimensionnalité!
+Facteur d’inflation VIF
+VIFj = 1
+1−R2
+j
+R2
+j : coefficient de détermination de la régression de Xj sur les p-1 autres
+exogènes. Problème : R2
+j ≈1⇒VIFj ≈+∞ . (Colinéarité) Variances instables!
+Variance estimée de l’erreur
+ˆσ2 = SCR
+n−p−1
+Indicateur de qualité de la régression, divisé par les degrés de liberté.
+Problème : p≈n⇒ ˆσ2 ≈+∞. p>n (dimensionnalité!)
+5/41
+<<<PAGE>>>
+Motivations
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Motivations
+♠ Rechercher des modèles parcimonieux→ réduire le nombre des variables
+explicatives, réduire la multicolinéarité et rendre le modèle facile à
+interpréter. (Régression LASSO)
+♠ Contrôler la variance→ ajouter une contrainte sur les coefficients pour
+réduire la variance et la rendre stable au détriment du biais.(Régression
+Ridge)
+♠ Rechercher un modèle parcimonieux avec une variance stable.
+7/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+On peut distinguer 2 types de régularisation
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+∎ ::::::::Régression:::::Ridge
+∎ Ajouter une contrainte sur les coefficients pour maitriser l’amplitude
+de leurs valeurs (Éviter qu’elles partent dans tous les sens!)
+(Ridge)
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+min ∥Y−Xa∥2
+sous la contrainte ∥a∥2 ≤ c
+∎ Accepter une légère augmentation du biais pour obtenir une réduction
+plus que proportionnelle de la variance.
+∎ ::::::::Régression::::::LASSO:
+∎ Similaire à la Ridge mais on utilise la norme 1. (La parcimonie - Voir
+cours Compressive Sensing Semestre2.)
+(Lasso)
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+min ∥Y−Xa∥2
+sous la contrainte ∥a∥1 ≤ c
+∎ Dispositif de sélection de variables en annulant certains coefficients
+(méthode parcimonieuse). Intérêt : facilité d’interprétation.
+8/41
+<<<PAGE>>>
+La régression Ridge
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression Ridge
+2 Rétrécir les plages de valeurs que peuvent prendre les paramètres
+estimés ˆaj, on parle alors de "shrinkage".
+⎧⎪⎪⎪⎨⎪⎪⎪⎩
+c→0 ⇒ aj/leftr⫯g⊸tl⫯ne→0
+c→+∞ ⇒ aRidge/leftr⫯g⊸tl⫯ne→aMCO
+2 Les variables doivent être centrées et réduites pour éviter que les
+variables à forte variance aient trop d’influence.
+2 La variable Y doit être centrée pour évacuer la constante de la
+régression.
+Principe général
+10/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression Ridge
+Formalisme
+Résoudre un problème sans contrainte, en pénalisant la contrainte. (Introduire
+une fonction de pénalité).
+(Ridge) : min
+a1,...,ap
+n
+∑
+i=1
+⎛
+⎝yi−
+p
+∑
+j=1
+ajxij
+⎞
+⎠
+2
++λ
+p
+∑
+j=1
+a2
+j
+λ est un paramètre positif (coefficient de pénalité) qui permet de contrôler
+l’impact de la pénalité.
+11/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression Ridge
+2 L’inclusion deλ rend le problème non singulier même si X′X n’est pas
+inversible. Motivation initiale de la régression Ridge.
+2 Il faut ajuster le paramètre de régularisation 0<λ<∞.
+; λ→0 : Régression MCO.
+; λ→+∞ : Modèle nul.
+2 Si deux prédicteurs sont fortement corrélés, leurs coefficients seront
+similaires.
+; Utile si le but est la sélection de groupe de variables exogènes
+redondantes.
+; Pas utile pour faire de la sélection d’une variable dans un groupe de
+variables redondantes.
+12/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Estimateur Ridge
+Déterminerdesestimationssolutionsduproblèmenoncontraint(Ridge).
+Le problème de la régression Ridge
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+On travaille avec des variables centrées et réduites et on se propose alors
+de chercher
+ˆa= arg min
+a∈Rp f (a)
+où a= (a1,..., ap) et f (a)= ∥Y−Xa∥2
+2+λ∥a∥2
+2.
+13/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Estimateur Ridge et propriétés
+:::::::::Estimateur :::::Ridge
+ˆa= (X′X+λIp)
+−1
+X′Y.
+::::::::Espérance::de::::::::::l’estimateur
+E(ˆa)= (Ip−λ (X′X+λIp)
+−1
+)a
+Le biais est donc égal à
+E(ˆa)−a=−λ (X′X+λIp)−1a
+::::::::Variance:::de :::::::::::l’estimateur:::
+Var(ˆa)=σ2 (X′X+λIp)
+−1
+X′X (X′X+λIp)
+−1
+On remarque que lorsqueλ
+devient plus grand,
+↝ La variance diminue,
+↝ Le biais augmente.
+1 Quel biais sommes-nous prêts à accepter pour diminuer la
+variance?
+2 Quelle est la valeur optimale pourλ?
+Questions :
+14/41
+<<<PAGE>>>
+Packages sur R
+♣ La fonction lm.ridge du package MASS.
+♣ La fonction glmnet avec l’option alpha=0 du package glmnet.
+♣ Vérifier si les variables explicatives et la variables à expliquer sont
+centrées et/normalisées
+Dans glmnet, par défaut, les variables explicatives et à expliquer sont
+toutes recentrées et renormalisées, mais les coefficients en sortie sont
+bien dans l’échelle d’origine.
+Différents packages sur R
+<<<PAGE>>>
+Algorithme de calcul de λ optimal
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Détermination de la constanteλ
+Le calcul de la constanteλ dépend des estimateurs des coefficients.
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+∎ Hoerl, Kennard, Baldwin (1975) :λHKB = (p−2)ˆσ2
+p
+∑
+j=1
+ˆa2
+j
+.
+∎ Lawless, Wang (1976) :λL W= n(p−2)ˆσ2
+n
+∑
+j=1
+ˆy2
+i
+.
+Les paramètres (ˆσ2, ˆaj, ˆyi) sont issus de MCO.
+Ces approches ont pour principal défaut de ne pas tenir
+compte concrètement de la qualité de prédiction du modèle
+sur les données étudiées avecˆaRidge.
+17/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Chemin de régularisation Ridge
+On appelle chemin de régularisation de la régression ridge l’ensemble des
+fonctions λ↦ ˆaj,Ridge(λ) pour j=1,..., p.
+On peut faire varierλ et regarder l’évolution (de la stabilité) des coefficients
+(Ridge coefficients paths). On peut
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+1 Utiliser la méthode graphique pour déterminerλ, chercher une plage
+de valeurs où les variations sont stables.
+2 Utiliser la performance prédictive du modèle pour déterminerλ.
+18/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Détermination de la constanteλ
+1. Utiliser la méthode graphique pour déterminer λ
+1 Fixer une plage de valeurs deλ.
+2 Construire le modèle avec différentes valeurs deλ.
+Cette méthode consiste à tracer un diagramme
+d’évolution des coefficientsˆaRidge en fonction deλ
+♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠
+On remarquera que plus la valeur du
+paramètre de pénalisation grandit, plus les
+valeurs des coefficients à estimer s’annulent.
+La valeur deλ peut être choisie comme la
+valeur la plus petite avant laquelle tous les
+coefficients « plongent » vers 0. (Les
+coefficients commencent à se stabiliser)
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+19/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Détermination de la constanteλ
+2. Utiliser la performance prédictive pour déterminer λ
+1 Fixer une plage de valeurs deλ.
+2 Construire le modèle sur un échantillon d’apprentissageΩapp.
+3 L’évaluer sur un échantillon testΩtest.
+4 Choisir le paramètreλ qui minimise le critère d’erreur en test.
+20/41
+<<<PAGE>>>
+λ optimal par validation croisée
+K-Fold
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Algorithme de VC K-Fold pour le calcul deλ optimal
+Algorithme 1 Algorithme général du calcul deλ par K-Fold
+Données : Partitionner Ω= Ω1∪ Ω2∪... ∪ ΩK
+Choisir un ensemble de m valeurs deλ à tester
+Début Pourℓ=1∶ m
+Début Pour i=1∶K
+Poser Ωtest = Ωi
+Pourλ=λℓ, estimer ˆaRidge(λ) sur Ωapp = Ω∣Ωi
+Calculer les prédictions surΩtest : ˆytest =xtestˆa(λ)
+Calculer le résidu des prévisions
+ˆεi = 1
+card(Ωi) ∑
+j∈Ωi
+(yj− ˆytestj )
+2
+Fin Pour i
+Calculer la moyenne des résidus des groupes :ˆεKF(λ)= 1
+K
+K
+∑
+i=1
+ˆεi
+Fin Pour ℓ
+Choisir la valeur optimale pour λ : λoptimal = arg min
+λ
+ˆεKF
+22/41
+<<<PAGE>>>
+On calcule ˆεKF(λ1)= 1
+K
+K
+∑
+i=1
+ˆεi(λ1)
+<<<PAGE>>>
+On calcule ˆεKF(λ2)= 1
+K
+K
+∑
+i=1
+ˆεi(λ2)
+<<<PAGE>>>
+On continue les calculs avec les m valeurs deλ puis on sélectionne la valeur de
+λ qui nous donne le plus petit résidu des tests.
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Remarques
+Le schéma de validation croisée pour choisir la valeur "optimale" deλ,
+nécessite donc une série de calculs pour évaluer les performances en validation
+croisée. Calculs a priori très lourds.
+∎ Pour chaque valeur deλ=λ1,...,λ m, on doit calculer K estimateurs ridge
+→ K × m calculs "fastidieux" et couteux pour l’inverse de la matriceZℓj.
+Pourℓ=1,..., m
+Pour i=1,..., K
+ˆa(λℓ)= (X′
+appiXappi +λℓIp
+⌟⟨⟨⟪rl⟫l⟩⟩⟪⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫m⟩⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟪⟨⟨⟪rl⟫mo⟨⌟⟨⟨⟪rl⟫r⟩⟩⟩⟪
+Zℓi
+)
+−1
+X′
+appiY
+∎ Pour chaque valeurλ=λℓ,
+Utiliser m fois le même groupe d’apprentissage et le même groupe de
+test,
+la seule chose qui change estλ.
+Utiliser une décomposition en valeurs singulières de Xappi :
+Xappi =UiΣV′
+i
+Ui matrice orthogonale, n × p.
+Vi matrice orthogonale, p × p.
+Σ matrice des valeurs singulières dj de X′X, p × p
+26/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+Zℓi = X′
+app i Xapp i +λℓIp
+= (UiΣiV′
+i )′UiΣiV′
+i +λℓIp
+= (ViΣ′
+iU′
+i )′UiΣiV′
+i +λℓIp
+= ViΣ′
+i U′
+iUi
+⌟⟨⟨⟪rl⟫⌟⟨l⟪3
+=Ip
+ΣiV′
+i +λℓIp ♯ car U i est orthogonale
+= ViΣ′
+i ΣiV′
+i +λℓ Ip
+⌟⟨⟨⟪rl⟫
+=Vi V′
+i
+♯ car V i est orthogonale
+= Vidiag (d2
+1,..., d2
+p)V′
+i +λℓViV′
+i ♯ car Σi matrice des valeurs singulières
+= Vi (diag (d2
+1,..., d2
+p)+λℓIp)V′
+i ♯ Factorisation à droite et à gauche
+= Vi (diag (d2
+1,..., d2
+p)+diag (λℓ,...,λ ℓ) )V′
+i
+= Vidiag (d2
+j +λℓ)V′
+i, j=1,..., p
+27/41
+<<<PAGE>>>
+Comme le paramètreλℓ est strictement positif alorsd2
+j +λℓ >0. Par
+conséquent, la matrice diag(d2
+j +λℓ) est inversible et
+(diag (d2
+j +λℓ))
+−1
+=diag ( 1
+d2
+j +λℓ
+)
+Il s’en suit que
+Z−1
+ℓi = (Vidiag (d2
+j +λℓ)V′
+i )
+−1
+= (V′
+i )−1diag ( 1
+d2
+j +λℓ
+)V−1
+i .
+↝ V est orthogonale donc V−1
+i =V′
+i.
+↝ V est orthogonale donc(V′
+i )−1 =Vi
+Donc
+Z−1
+ℓi =Vidiag ( 1
+d2
+j +λℓ
+)V′
+i.
+<<<PAGE>>>
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+ˆaRidge(λℓ) = Z−1
+ℓi X′
+app i y
+= Vidiag ( 1
+d2
+j +λℓ
+)V′
+i (UiΣiV′
+i )′ y
+= Vidiag ( 1
+d2
+j +λℓ
+)V′
+iVi
+⌟⟨⟨⟪rl⟫⌟⟨l⟪3
+Ip
+Σ′
+iU′
+i y
+= Vidiag ( 1
+d2
+j +λℓ
+)diag (dj)U′
+i y
+= Vidiag ( dj
+d2
+j +λℓ
+)U′
+i y
+Ui, Vi et ∆λℓ sont
+calculés une seule fois à
+partir de Zℓi.
+L’obtention des
+différentes estimations
+ˆaRidge(λ) pour
+différentes valeurs deλ
+revient à effectuer de
+simples produits
+matriciels.
+Facile et rapide.
+↝ On note ∆λℓ =diag ⎛
+⎝
+dj
+d2
+j +λℓ
+⎞
+⎠
+↝ On en déduit que
+ˆaRidge(λℓ)=Vi∆λℓU′
+i y.
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression LASSO
+30/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression LASSO
+2 Même principe que la régression Ridge, sauf que la régularisation
+utilise cette fois-ci la norme L1 .
+2 Avantages par rapport à la régression Ridge :
+1 LASSO peut faire office de dispositif de sélection de
+variables en annulant certains coefficients aj.
+2 Les variables associées à aj =0 sont exclues du modèle
+prédictif.
+2 Les variables doivent être centrées et réduites pour éviter que les
+variables à forte variance aient trop d’influence.
+2 La variable y doit être centrée pour évacuer la constante de la
+régression.
+Principe général
+31/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression LASSO
+Formalisme
+Résoudre un problème sans contrainte, en pénalisant la contrainte. (Introduire
+une fonction de pénalité).
+(LASSO) : min
+a1,...,ap
+n
+∑
+i=1
+⎛
+⎝yi−
+p
+∑
+j=1
+ajxij
+⎞
+⎠
+2
++λ
+p
+∑
+j=1
+∣aj∣
+32/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+La régression LASSO
+⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪⌟⎥rro⟪⟪⟩r⟪
+2 Les variables Xj n’étant pas toutes pertinentes, l’objectif est d’éliminer les
+variables inutiles et uniquement celles-ci.
+2 L’idée du LASSO est donc non pas de faire une régression linéaire classique
+(multiple), mais une régression régularisée qui rend nuls certains coefficients
+de l’estimation de a.
+2 Cette méthode d’estimation introduite par Tibshirani (1996) est définie
+comme étant un minimiseur du critère des moindres carrés pénalisés par la
+normeℓ1 du vecteur. On parle de pénalitéℓ1 ou de pénalité LASSO.
+g ∶a↦ ∥Y−Xa∥2
+2+λ∥a∥1
+La fonction g est convexe mais non différentiable!
+La fonction g n’admet pas nécessairement une solution unique!
+L’estimateur LASSO n’a pas de forme explicite.
+33/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+L’existence d’une solution est garantie par la convexité de la normeℓ2 et la
+normeℓ1. Mais comme la fonctionℓ1 n’est pas différentiable alors la fonctiong
+ne l’est pas, la solution n’est pas nécessairement unique.
+Le problème de régression LASSO n’a pas de solution analytique. Des
+méthodes numériques sont utilisées afin d’optimiser le critère. Dans ce cours,
+on s’intéresse à deux algorithmes :
+1 Descente par coordonnées.
+2 Forward Stagewise regression.
+34/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Propriétés :
+1 ˆa minimise g si et seulement si, pour j=1,..., p,
+X
+′
+j (Y−Xˆa)=λsigne(ˆaj) si ˆaj ≠0 (1)
+et
+∣X
+′
+j (Y−Xˆa)∣≤λ si ˆaj =0 (2)
+Conséquences. Ceci implique que :
+↝ Pour les variables actives associées à unˆaj ≠0,
+∣X
+′
+j (Y−Xˆa)∣=λ (3)
+↝ Pour les variables non actives, associées à unˆaj =0, l’inégalité (2)
+est vérifiée.
+2 En supposant que chaque variable Xj est centrée réduite, la j-ème
+coordonnée ˆaj de la solution Lasso s’exprime en fonction des autres
+coordonnées de la façon suivante :
+ˆaj =
+⎧⎪⎪⎪⎪⎪⎪⎪⎪⎨⎪⎪⎪⎪⎪⎪⎪⎪⎩
+0 si ∣Rj∣≤λ
+Rj−λ si Rj >λ
+Rj+λ si Rj <−λ
+où Rj =X
+′
+j
+⎛
+⎝Y− ∑
+k≠j
+Xkˆak
+⎞
+⎠
+35/41
+<<<PAGE>>>
+Algorithme de descente par coordonnées
+↝ Utiliser la propriété 2) si on connait toutes les coordonnées deˆa sauf la
+j-ème coordonnée, ˆaj.
+↝ On initialise ˆa avec une certaine valeurˆa(0), puis on met à jour chaque
+coordonnée itérativement jusqu’à convergence, autrement dit jusqu’à ce
+que la fonctiong ne décroit plus avec une tolérance fixée.
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Algorithme de descente par coordonnées pour la régression LASSO
+1 Pour j=1,..., p, on calculeRj =X
+′
+j
+⎛
+⎝Y− ∑
+k≠j
+Xkˆak
+⎞
+⎠ et on met à jourˆaj.
+2 Si ∣g (ˆa)− g (ˆa(0))∣<ε, la convergence est atteinte et l’algorithme s’arrête,
+sinon, on retourne à 1 avecˆa(0)← ˆa.
+Puisque g est convexe alors la descente par coordonnées converge
+nécessairement vers un minimum global. Il s’agit de la méthode utilisée dans
+glmnet pour la résolution LASSO.
+La fonction aj↦ g (a) réalise son minimum en aj = Rj
+⎛
+⎝1− λ
+2∣Rj∣
+⎞
+⎠
++
+avec
+Rj =X
+′
+j
+⎛
+⎝Y− ∑
+k≠j
+Xkak
+⎞
+⎠ et ⎛
+⎝1− λ
+2∣Rj∣
+⎞
+⎠
++
+= sup ⎛
+⎝1− λ
+2∣Rj∣,0⎞
+⎠
+Proposition :
+37/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Algorithme 2 Algorithme de descente de coordonnées
+Variables : X, Y,λ>0
+Début
+Initialiser a=ainit
+Répéter
+Pour j allant de 1 à p
+Calculer Rj =X
+′
+j
+⎛
+⎝Y− ∑
+k≠j
+Xkak
+⎞
+⎠
+Calculer aj = Rj
+⎛
+⎝1− λ
+2∣Rj∣
+⎞
+⎠+
+Fin Pour j
+Jusque Convergence de a
+Retourner a
+Fin j
+38/41
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+On fait une évaluation sur une grilleΛ= (λ1,...,λ m) de valeurs rangées
+par ordre décroissant.
+On initialise avec ainit =0p et λ=λ1 et on réitère l’algorithme 2 pour
+k=2,..., m en considérantλ=λk et ainit =ak−1
+coin UseR : package glmnet
+fit=glmnet(x,y)
+plot(fit)
+coef(fit,s=1) # affiche les coefficients pour unλ
+39/41
+<<<PAGE>>>
+Algorithme Stagewise
+Cette méthode se déroule de la façon suivante :
+1 Effectuer la régression avec la variable la plus corrélée avec Y.
+2 Calculer le résidu obtenu avec cette régression.
+3 Considérer ensuite ce résidu comme une nouvelle variable dépendante
+(joue le rôle de Y) et sélectionner, parmi les variables explicatives
+restantes, celle qui est la plus corrélée avec ce résidu.
+4 Réitérer le processus jusqu’à ce que plus aucune variables explicative ne
+soit corrélée significativement avec le résidu mis à jour.
+<<<PAGE>>>
+Introduction La régression Ridge La régression LASSO
+Algorithme 3 Algorithme Forward Stagewise
+Variables : X, Y,λ>0, τ >0.
+Initialisation : ainit =0p, Résidu :r =Y
+Tant que le critère d’arrêt n’est pas satisfait,
+Trouver le prédicteur Xj, (j=1,..., p) le plus corrélé avec r
+Xm = arg max∣⟨Xj, r ⟩∣
+Mise à jour :
+Du coefficient : am←am+δm, δm =τ ×signe (⟨Xm, r ⟩)
+Du résidu :r← r −δmXm,
+Fin Tant que
+L’algorithme Stgaewise est une procédure de petits pas.
+41/41

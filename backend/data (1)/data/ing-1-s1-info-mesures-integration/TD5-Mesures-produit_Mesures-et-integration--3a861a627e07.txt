@@ -1,0 +1,228 @@
+CY-Tech - Département Mathématiques
+1ère année Ingénieurs - Génie Mathématique
+Mesure & intégration
+TD5 – Produit de mesures
+Soient µ1 et µ2 deux mesures σ-finies. Si f : Ω1 × Ω2 → [0, +∞] est T1 ⊗ T2-mesurable, alors les
+fonctions ϕ et ψ définies respectivement sur Ω1 et Ω2 par
+ϕ : x1 7→
+Z
+Ω2
+f (x1, x2) d µ2 (x2) et ψ : x2 7→
+Z
+Ω1
+f (x1, x2) d µ1 (x1)
+sont mesurables. et
+Z
+Ω1×Ω2
+f d µ =
+Z
+Ω1
+µZ
+Ω2
+f (x1, x2) d µ2 (x2)
+¶
+d µ1 (x1)
+=
+Z
+Ω2
+µZ
+Ω1
+f (x1, x2) d µ1 (x1)
+¶
+d µ2 (x2).
+Théorème de Fubini-Tonelli – Rappel 1.
+EXERCICE 1 Soit R = [1, 2] × [0, 2] et f : R → R définie par f
+¡
+x, y
+¢
+= y exp
+¡
+x y
+¢
+.
+1. Justifier que le calcul de I =
+Z
+R
+f
+¡
+x, y
+¢
+d xd y est possible.
+2. Montrer que I = 1
+2 e4 − e2 + 1
+2 .
+EXERCICE 2 Sur R2 muni de la tribu borélienne et de la mesure µ produit des mesures de Lebesgue, on
+considère la fonction définie pour tout (x, y) ∈ R2
++ par f (x, y) = 1
+(1 + y)(1 + x2 y) .
+1. Peut-on appliquer le théorème de Fubini-Tonelli pour évaluer I =
+Z
+R2
++
+f (x, y)d xd y? justifier.
+2. Montrer que
+Z
+R+
+f (x, y)d x = π
+2
+1
+py
+¡
+1 + y
+¢ .
+3. Montrer que I = π2
+2 .
+4. Montrer que
+Z
+R+
+f (x, y)d y = 2 ln(x)
+x2 − 1 et en déduire
+Z +∞
+0
+ln(x)
+x2 − 1 d x.
+Soient µ1 et µ2 deux mesures σ-finies. Si f : Ω1 × Ω2 → R est µ-intégrable, alors
+1. Pour presque tout x1 ∈ Ω1, la fonction x2 7→ f (x1, x2) est intégrable sur Ω2 et la fonction ϕ
+définie presque partout sur Ω1 par
+ϕ : x1 7→
+Z
+Ω2
+f (x1, x2) d µ2 (x2)
+Théorème de Fubini – Rappel 2.
+<<<PAGE>>>
+Mesure et intégration
+est µ1-intégrable sur Ω1.
+2. Pour presque tout x2 ∈ Ω2, la fonction x1 7→ f (x1, x2) est intégrable sur Ω1 et la fonction ψ
+définie presque partout sur Ω2 par
+ψ : x2 7→
+Z
+Ω1
+f (x1, x2) d µ1 (x1)
+est µ2-intégrable sur Ω2.
+3. Z
+Ω1×Ω2
+f d µ =
+Z
+Ω1
+µZ
+Ω2
+f (x1, x2) d µ2 (x2)
+¶
+d µ1 (x1)
+=
+Z
+Ω2
+µZ
+Ω1
+f (x1, x2) d µ1 (x1)
+¶
+d µ2 (x2).
+EXERCICE 3 On considère sur
+¡
+[0,1], B([0,1])
+¢
+la mesure de Lebesgue λ et la mesure de dénombrement
+µd . Soit D un sous-ensemble de [0, 1]2 défini par
+D =
+n
+(x, x); x ∈ [0,1] 2
+o
+.
+1. Vérifier que la fonction 1D est borélienne.
+2. Calculer
+Z 1
+0
+µZ 1
+0
+1D(x, y)d x
+¶
+d µd (y) et
+Z 1
+0
+µZ 1
+0
+1D(x, y)d µd (y)
+¶
+d x.
+Ce résultat est-il compatible avec le théorème de Fubini ?
+EXERCICE 4 Calculer les intégrales
+I =
+Z 1
+0
+ˆZ 1
+0
+x2 − y 2
+¡
+x2 + y 2¢2 d x
+!
+d y,
+J =
+Z 1
+0
+ˆZ 1
+0
+x2 − y 2
+¡
+x2 + y 2¢2 d y
+!
+d x,
+K =
+Z
+]0,1[2
+|x2 − y 2|
+¡
+x2 + y 2¢2 d xd y.
+Expliquer ces résultats.
+EXERCICE 5 On considère la fonction f définie sur ] − 1, 1[2 par
+f (x, y) =
+
+
+
+x y
+¡
+x2 + y 2¢2 si ( x, y) , (0, 0)
+0 sinon.
+1. Vérifier que f est borélienne.
+2. Calculer I =
+Z 1
+−1
+µZ 1
+−1
+f (x, y)d x
+¶
+d y et J =
+Z 1
+−1
+µZ 1
+−1
+f (x, y)d y
+¶
+d x.
+ING1 GM – TD5 2/3
+<<<PAGE>>>
+Mesure et intégration
+3. f est-elle intégrable sur ] − 1, 1[2?
+EXERCICE 6 Sur R2 muni de la tribu borélienne et de la mesure λ ⊗ λ produit des mesures de Lebesgue.
+On considère la fonction définie pour tout (x, y) ∈ R2 par
+f (x, y) = e−y sin
+¡
+2x y
+¢
+.
+Soit U = [0;1] × [0, +∞[.
+1. Montrer que f est intégrable pour la mesure produit de Lebesgue sur U .
+2. Peut-on appliquer le théorème de Fubini pour évaluer I =
+Z
+U
+f (x, y)d xd y? Justifier.
+3. Montrer que
+Z
+U
+f (x, y)d λ ⊗ λ = ln(5)
+4 .
+4. En déduire la valeur de l’intégrale
+Z +∞
+0
+1
+y sin2(y)e−y d y.
+ING1 GM – TD5 3/3

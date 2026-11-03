@@ -1,0 +1,328 @@
+Programmation C
+Pointeurs
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 28
+<<<PAGE>>>
+Introduction
+ING1 Programmation C CY Tech 2 / 28
+<<<PAGE>>>
+Pr´ ec´ edement
+Acc` es ` a la variable via son nom
+▶ int a = int b;
+▶ Recherche de la valeur de int b
+⋆ Conna ˆ ıtre o` u est stock´ eint b en m´ emoire
+⋆ Aller chercher la valeur stock´ ee dans cette case m´ emoire
+⋆ Savoir o` u on doit stocker cette valeur (ici dans int a)
+⋆ Copier la valeur obtenue au bon endroit
+▶ Possibilit´ e d’acc´ eder diff´ eremment utilisation d’un type particulier pour
+m´ emoriser l’adresse d’une variable : pointeurs.
+ING1 Programmation C CY Tech 3 / 28
+<<<PAGE>>>
+D´ efinition
+Pointeur : variable qui m´ emorise une adresse m´ emoire
+Notion de r´ ef´ erence
+Pointeur pointe une case m´ emoire
+Parfois appel´ e indirection
+Existence de pointeur constant : d´ ebut d’un vecteur 1
+1. cf diapositive 23
+ING1 Programmation C CY Tech 4 / 28
+<<<PAGE>>>
+Variables et adresses
+Op´ erateur & : donne l’adresse d’une variable
+Utilis´ e par la fonctionscanf
+▶ permet de sp´ ecifier o` u ranger la valeur lue
+▶ choix de l’adresse laiss´ e au libre choix du compilateur
+Possibilit´ e d’afficher une adresse en utilisant : %x, %X ou %p ⇔
+valeur hexad´ ecimale 
+i n t b = 5 ;
+p r i n t f ( ” V a l e u rde b : %d \n” , i n t b ) ;
+p r i n t f ( ” A d r e s s ede b : %p \n” , &i n t b ) ;
+ 
+ING1 Programmation C CY Tech 5 / 28
+<<<PAGE>>>
+D´ eclaration
+ING1 Programmation C CY Tech 6 / 28
+<<<PAGE>>>
+D´ eclaration de pointeurs
+Pointeurs : r´ ef´ erence tous types de donn´ ees2
+N´ ecessit´ e d’indiquer le type de donn´ ee point´ ee
+Adresse : identique quelque soit le type
+Utile pour l’arithm´ etique
+D´ eclaration 
+t y p e∗ nom ;
+t y p e ∗ nom ;
+t y p e ∗nom ;
+ 
+D´ efinit un pointeur de typetype ayant pour nom nom
+2. Exception faite des variables register, et champs de bits
+ING1 Programmation C CY Tech 7 / 28
+<<<PAGE>>>
+Op´ erateur *
+D´ efinition d’un nouvel op´ erateur :*
+Selon le contexte (lors de la d´ eclaration)
+Peut ˆ etre traduit par :est un pointeur vers 
+i n t∗ p i n t a ;
+ 
+pint a est un pointeur vers un int
+Valeur de pint a ind´ efinie lors de la d´ eclaration
+Besoin d’initialiser le pointeur avant utilisation
+ING1 Programmation C CY Tech 8 / 28
+<<<PAGE>>>
+Op´ erateur *
+Deuxi` eme contexte (en utilisation)
+Peut ˆ etre traduit par :ce qui est point´ e par 
+i n t i n t a ; // V a r i a b l e
+i n t∗ p i n t a ; // P o i n t e u r s u r un e n t i e r
+// A f f e c t a t i o n du p o i n t e u r
+p i n t a = &i n t a ;
+// I n i t i a l i s a t i o n de a
+∗ p i n t a = 5 ;
+// Maintenant a v a u t 5
+ 
+ING1 Programmation C CY Tech 9 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 10 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 11 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 12 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+(0,0)1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 13 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+(0,0)
+5
+1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 14 / 28
+<<<PAGE>>>
+Sch´ ema explicatif
+int int a ; // Variable
+int* pint a ; // Pointeur sur un entier
+// Affectation du pointeur
+pint a = &int a ;
+// Initialisation de a
+*pint a = 5 ;
+// Maintenant a vaut 5
+(0,0)
+5
+1
+0
+0 1 2 3 4 5 6 7
+M´ emoire
+int a pint a
+ING1 Programmation C CY Tech 15 / 28
+<<<PAGE>>>
+Premi` ere utilisation
+ING1 Programmation C CY Tech 16 / 28
+<<<PAGE>>>
+´Echange de deux valeurs
+Sans pointeur : impossible ` a faire dans une fonction
+Avec pointeur :
+▶ void swap (int* a, int* b)
+▶ Appel avec deux pointeurs qui contiennent les adresses dont le contenu
+est ` a ´ echanger
+▶ Lors de l’appel de fonction : appel par valeur
+▶ Copie la valeur de l’adresse
+⋆ R´ ef´ erence de la mˆ eme case m´ emoire
+▶ Aussi appel´ e abusivement passage par r´ ef´ erence
+ING1 Programmation C CY Tech 17 / 28
+<<<PAGE>>>
+Arithm´ etique
+ING1 Programmation C CY Tech 18 / 28
+<<<PAGE>>>
+Addition
+ 
+i n t t i n t t a b [ 6 ] ; // Tableau d ’ e n t i e r
+i n t∗ p i n t c a s e ; // P o i n t e u r s u r un e n t i e r
+/∗ A f f e c t a t i o n du p o i n t e u r a l a p r e m i e r e c a s e
+du t a b l e a u ∗/
+p i n t c a s e = &t i n t t a b [ 0 ] ;
+// A f f e c t a t i o n de t i n t t a b [ 1 ] a 3
+∗( p i n t c a s e +1) = 3 ;
+ 
+Ici l’adresse est augment´ e de 1*taille de la donn´ ee point´ ee
+Attention au risque de ”d´ ebordement”
+Possibilit´ e d’incr´ ementerpint case++
+ING1 Programmation C CY Tech 19 / 28
+<<<PAGE>>>
+Parcours de tableau
+Exemple 
+i n t t i n t t a b [ 6 ] ; // Tableau d ’ e n t i e r
+i n t∗ i ; // I n d i c e de b o u c l e
+f o r ( i=&t i n t t a b [ 0 ] ; i <&t i n t t a b [ 6 ] ; i ++) {
+∗ i = 0 ;
+}
+ 
+ING1 Programmation C CY Tech 20 / 28
+<<<PAGE>>>
+Soustraction de pointeurs
+ 
+i n t t i n t t a b [ 6 ] ; // Tableau d ’ e n t i e r
+i n t∗ p i n t d e b u t ; // P o i n t e u r s u r l e debut du t a b l e a u
+i n t∗ p i n t f i n ; // P o i n t e u r s u r l a f i n
+i n t i n t t a i l l e ; // T a i l l e du t a b l e a u
+/∗ A f f e c t a t i o n du p o i n t e u r a l a p r e m i e r e c a s e
+du t a b l e a u ∗/
+p i n t d e b u t=&t i n t t a b [ 0 ] ;
+// Idem pour l a f i n
+p i n t f i n = &t i n t t a b [ 5 ] ;
+i n t t a i l l e = p i n t f i n − p i n t d e b u t + 1 ;
+ 
+ING1 Programmation C CY Tech 21 / 28
+<<<PAGE>>>
+Autoris´ e ou non ?
+Op´ erations autoris´ ees
+▶ Addition, Incr´ ementation
+▶ Soustraction, D´ ecr´ ementation,
+▶ Comparaison, Affectation
+Op´ erations interdites
+▶ Multiplication, Division
+▶ D´ ecalage
+▶ Op´ erations logiques
+Op´ erations possibles
+▶ Conversion de type (cast)
+ING1 Programmation C CY Tech 22 / 28
+<<<PAGE>>>
+Tableaux statiques
+Parcours possible avec pointeur
+Besoin du d´ ebut du tableau :&tab[0]
+Besoin de la taille : connue ` a l’avance (tableau statique)
+Listing 1 – Parcours d’un tableau avec un pointeur 
+p i n t p = &t i n t t a b [ 0 ] ;
+f o r ( i =0; i <N; i ++) {
+∗( p i n t p+i ) = 0 ;
+}
+ 
+Raccourcis syntaxique : &tab[0] ⇔ tab
+ING1 Programmation C CY Tech 23 / 28
+<<<PAGE>>>
+Tableaux dynamiques
+int* : permet de parcourir un tableau
+Peut ˆ etre ”vu” comme un tableau, ` a condition
+▶ d’avoir une adresse de d´ epart
+▶ de conna ˆ ıtre la taille du tableau
+▶ d’avoir ”la jouissance” de la zone m´ emoire concern´ ee
+Probl´ ematique :
+▶ Comment r´ ealiser une allocation dynamique ?
+▶ Comment allouer un tableau sans conna ˆ ıtre la taille ` a l’avance.
+ING1 Programmation C CY Tech 24 / 28
+<<<PAGE>>>
+Allocation dynamique
+Principe
+▶ r´ eservation d’une partie de la m´ emoire
+▶ utilisation de cette partie
+▶ lib´ eration de la zone
+Fonction : void *malloc(site t size)
+▶ size : la taille souhait´ ee
+▶ Retourne l’adresse de d´ ebut de zone allou´ ee
+▶ NULL si allocation impossible
+ING1 Programmation C CY Tech 25 / 28
+<<<PAGE>>>
+Exemple
+ 
+i n t∗ p i n t t a b ; // Tableau dynamique
+// R e s e r v a t i o n de l ’ e s p a c e memoire
+p i n t t a b = m a l l o c (15 ∗ s i z e o f( i n t ) ) ;
+// s i l ’ a l l o c a t i o n a echouee
+i f ( p i n t t a b = = NULL) {
+// On i n d i q u e e t on q u i t t e
+f p r i n t f ( . . . ) ;
+e x i t (ERREUR ALLOCATION ) ;
+}
+. . . / . . .
+// L i b e r a t i o n de l ’ e s p a c e memoire
+f r e e ( p i n t t a b ) ;
+ 
+ING1 Programmation C CY Tech 26 / 28
+<<<PAGE>>>
+Tableaux
+D´ eclaration dynamique
+int* : Tableau d’entier
+int** : Tableau de tableaux d’entiers
+Taille non fixe : peut avoir des nombres diff´ erents de colonnes par
+ligne
+ING1 Programmation C CY Tech 27 / 28
+<<<PAGE>>>
+Tableaux
+Exemple 
+i n t ∗∗ p p i n t m a t r i c e ;
+. . . / . . .
+p p i n t m a t r i c e = m a l l o c (15 ∗ s i z e o f( i n t ∗ ) ) ;
+. . . / . . .
+f o r ( i =0; i <15; + +i ) {
+p p i n t m a t r i c e [ i ] = m a l l o c (10 ∗ s i z e o f( i n t ) ) ;
+. . . / . . .
+}
+. . . / . . .
+p r i n t f ( ”%d” , p p i n t m a t r i c e [ 2 ] [ 4 ] ) ;
+. . . / . . .
+f o r( i =0; i <15; + +i ) {
+f r e e ( p p i n t m a t r i c e [ i ] ) ;
+}
+f r e e ( p p i n t m a t r i c e ) ;
+ 
+ING1 Programmation C CY Tech 28 / 28

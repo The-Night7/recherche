@@ -1,0 +1,261 @@
+CY TECH (EISTI)
+2 ` eme Ann´ ee P ARCOURS MA TH INFORMA TIQUE 2020-2021
+Preparation pour le TP: EDP et Diﬀ´ erences Finies
+R´ esolution num´ erique des ´ equations paraboliques
+Partie 1 Conditions aux limites de Dirichlet
+L’´ equation et les conditions aux limites de Dirichlet s’ecrit de la forme:
+
+
+
+ut =u xx +t 2
+u(t= 0, x) = cos(πx) + sin(πx)
+u(t, x= 0) = 1−10 sin(10t)
+u(t, x= 1) =−1 + 20t
+(1)
+Impl´ ementation(notations du cours th´ eorique).
+Discr´ etisons les variables: spatiale et temporelle:
+x:x 0 = 0, ...xi, ...xN+1 =L.
+t:t 0 = 0, ...tn, ...tM+1 =T.
+Donc
+
+
+
+i= 0,1,2, ...N+ 1
+n= 0,1,2, ...M+ 1
+Δx= L
+N+1
+Δt= T
+M+1
+u(tn, xi)≡u n
+i
+(2)
+Conditions aux limites : 
+
+
+un
+0 = 1−10 sin(10t(n)))
+un
+N+1 =−1 + 20t(n)
+n= 1, ..., M+ 1.
+(3)
+Conditions initiales :
+
+u0
+i = cos(πx(i)) + sin(πx(i))i= 0,1,2..., N+ 1 (4)
+1
+<<<PAGE>>>
+Pour discr´ etiser l’´ equation (1) on utilise:
+pour ∂u
+∂t la d´ eriv´ ee avanc´ ee,
+pour ∂2u
+∂x2 la seconde d´ eriv´ ee, centr´ ee,
+On obtient
+un+1
+i = Δt
+(Δx)2 un
+i−1 + Δt
+(Δx)2 un
+i+1 +u n
+i (1− 2Δt
+(Δx)2 ) + (Δt)t(n)2
+et on commence les calculs parn= 0.
+IMPLEMENTATION EN MATLAB
+•Discr ´tiser l’espace-temps et d´ eﬁnir les vecteurs:
+◦x= (0 :N+ 1)·Δx ou x=linspace(0, L, N+ 2)
+Par cons´ equent les coordonn´ ees du vecteurxportent les vraies valeurs :
+x(1) = 0,
+x(2) =Δx,
+x(3) = 2Δx, ...,
+x(N+ 2) = (N+ 1)Δx≡L
+Il y aN+ 2 composantes:i=1 : N+2
+◦t= (0 :M+ 1)·Δt ou t=linspace(0, T, M+ 2)
+Par cons´ equent les coordonn´ ees du vecteurtportent les vraies valeurs :
+t(1) = 0,
+t(2) =Δt,
+t(3) = 2Δt, ...,
+t(M+ 2) = (M+ 1)Δt≡T
+Il y aM+ 2 composantes.
+•Programmation structur´ ee
+1. D´ eﬁnir dans Editor les conditions initiales et programmer la fonctionCondition initiale(x)
+function[f]=Condition initiale(x)
+f= cos(πx) + sin(πx)
+end
+Sauvegarder cette fonction semarement dans un repertoire cree.
+2. D´ eﬁnir dans Editor les conditions aux limites et programmer la fonctionCondition1 limite
+(t), Condition2 limite (t)
+function[f]=Condition1 limite (t)
+f= 1−10 sin(10t)
+end
+function[f]=Condition2 limite (t)
+f=−1 + 20t
+end
+2
+<<<PAGE>>>
+3. Creer une fonction principaleEquation1 Euler()
+•Commencer l’indexation de 1 (d´ eplacer de 1 tout les indicesﬁxes tho´ eriques)
+function[] =Equation1 Euler()=
+Pouri= 1 :N+ 2
+u(1, i)=condition initiale(x(i))=
+Fin Pour
+ﬁgure;
+plot(x,u(1,:));
+title(’condition initiale’)
+Pourn= 2 :M+ 2
+u(n,1)=Condition1 limite(t(n))
+u(n, N+ 2))=Condition2 limite(t(n))
+Fin Pour
+ﬁgure;
+plot(t,u(:, N+2),t,u(:, 1));
+title(’conditions aux limites’) . . .
+end
+Le sch´ ema est stable si Δt
+(Δx)2 ≤1
+•Programme principal
+Ajouter dans la fonction principaleEquation1 Euler()les codes suivants:
+for n=1 : 1+M
+for i=2 : N+1
+u(n+1,i)=...
+end
+end
+1) Visualisez la fonctionu(x, t) aux instantstdiﬀ´ erents (t= 0, t=T /2, t=T)
+ﬁgure;
+plot(x,u(M+2,:));
+plot(x,u(T/(2*Δt) +1 , :));
+title(’solution t=T et T/2’)
+2) Visualisez la surfaceu(x, t)
+ﬁgure;
+mesh(x,t,u); ou surf(x,t,u);
+xlabel(’coordonnee x’)
+ylabel(’coordonnee t’)
+zlabel(’fonction u’)
+title(’solution U t =U xx+t2’);
+3
+<<<PAGE>>>
+Pour obtenir la surface color´ ee avec surf(x,t,u) on r´ eduit le nombre de points trac´ es: on trace un
+point parmi cent points temporels.
+for j=1:51
+W(j,:)=u((j-1)*100+1,:); end
+tnew=(0:50)*T/(50);
+ﬁgure
+surf(x,tnew,W);
+Utilisez les valeurs suivantes: 
+
+
+L= 1
+T= 1
+M= 4999
+N= 19
+Solution
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+20
+−10
+10
+−5
+5
+15
+coordonneé x
+coordonneé t
+fonction u
+solution U_t=U_xx +t^2
+0
+0 0
+1
+1
+3) PrenezM= 99 (Δt= 10 −3) et observez la divergence de l’algorithme.
+Partie 2 Conditions aux limites de Neumann
+L’´ equation et les conditions aux limites de Neumann s’´ ecrit de la forme:
+
+
+
+ut =u xx + 200·t·cos(8πx)
+u(t= 0, x) = (x−1) 3
+∂u
+∂x (t, x= 0) = 3
+∂u
+∂x (t, x= 1) = 0
+(5)
+Impl´ ementation num´ erique.
+Discr´ etisons les variables: spatiale et temporelle:
+x:x 0 = 0, ...xi, ...xN+1 =L.
+t:t 0 = 0, ...tn, ...tM+1 =T.
+Donc
+4
+<<<PAGE>>>
+
+
+
+i= 0,1,2, ...N+ 1
+n= 0,1,2, ...M+ 1
+Δx= L
+N+1
+Δt= T
+M+1
+u(tn, xi)≡u n
+i
+(6)
+Conditions aux limites : 
+
+
+un
+0 =u n
+1 −3Δx
+un
+N+1 =u n
+N
+n= 1, ..., M+ 1
+(7)
+Conditions initiales : 
+u0
+i = (x(i)−1) 3 i= 0,1,2..., N+ 1 (8)
+Pour discr´ etiser l’´ equation (1) on utilise:
+pour ∂u
+∂t la d´ eriv´ ee avanc´ ee,
+pour ∂2u
+∂x2 la seconde d´ eriv´ ee, centr´ ee.
+Obtenir l’´ equation discrete.
+Utilisez les valeurs suivantes: 
+
+
+L= 1
+T= 1
+M= 4999
+N= 19
+•Programme principal
+for n=1 : 1+M
+for i=2 : N+1
+u(n+ 1, i) =...
+end
+u(n+ 1,1) =u(n+ 1,2)−Δx·condition limite1Neuman(t(n+ 1))
+u(n+ 1, N+ 2) =u(n+ 1, N+ 1) +Δx·condition limite2Neuman(t(n+ 1))
+end
+1) Visualisez la fonctionu(x, t) aux instantstdiﬀ´ erents (t= 0, t=T /2, t=T)
+2) Visualisez la surfaceu(x, t)
+Solution
+0.2
+0.4
+0.6
+0.8
+0.20.4
+coordonné t
+0.60.8
+−10
+−12
+−8
+−6
+−4
+coordonné x
+fonction u
+solution U_t=U_xx + 200*t*cos(8pi*x)
+0
+00
+−2
+1
+1
+5

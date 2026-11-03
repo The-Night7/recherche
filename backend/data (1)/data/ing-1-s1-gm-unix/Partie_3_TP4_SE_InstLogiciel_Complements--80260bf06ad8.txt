@@ -1,0 +1,51 @@
+Systèmes d’exploitation 
+TP – Installation des logiciels – Compléments 
+ING1 Informatique - Mathématiques appliquée  
+ 
+Un paquet est une archive comprenant des fichiers informatiques, les informations et procédures 
+nécessaires à l’installation d’un logiciel sur un système d’exploitation, en s’assurant de la cohérence 
+fonctionnelle du système ainsi modifié. 
+ 
+Un gestionnaire de paquets est un (ou plusieurs) outil(s) automatisant le processus d’installation, 
+désinstallation, mise à jour de logiciels installés sur un système informatique. 
+ 
+Ce gestionnaire de paquets permet d’effectuer différentes opérations sur les paquets disponibles   
+comme l’installation, la mise à jour et la désinstallation. Il permet d’utiliser des paquets provenant de 
+différents supports (CD ou DVD d’installation, dépôts sur internet, partage réseau …). Il vérifie 
+l’intégrité des applications à installer et des dépendances logicielles. 
+ 
+On trouve deux grands types de système de paquets : 
+- rpm (redhat package manager) : Redhat Enterprise Linux, Fedora, Centos, … 
+- deb (debian) : Debian, Ubuntu, Mint,  … 
+ 
+Les gestionnaires de paquets : 
+ 
+→ dpkg est utilisé pour installer, supprimer et fournir des informations à propos des paquets *.deb 
+qui sont supportés par les distributions basées Debi an. C’est un outil de bas niveau et on préfère 
+utiliser des outils plus avancés comme aptitude ou apt-get, apt-cache ou apt. 
+ 
+Remarque : Pour reconfigurer un paquet installé, il arrive qu’on soit obligé d’utiliser la commande 
+dpkg-reconfigure. 
+ 
+→ rpm permet d’installer, mettre à jour, désinstaller, vérifier et rechercher des paquets, avec les droits 
+de l’utilisateur root. 
+ 
+Un gestionnaire de paquet avancé comme apt ou yum gère des sources de logiciels (la plupart du 
+temps déjà compilés) et leur authenticité . Le lieu où sont placés ces sources est appelé dépôt de 
+paquet. Cette source est la plupart du temps une source locale comme un CD ou un DVD, un serveur 
+Internet HTTP/FTP ou encore un miroir de dépôt local. Certains concepteurs de logiciels fabriquent 
+eux-mêmes les binaires d’installation pour les distributions et hébergent leurs propres dépôts de 
+paquets. 
+ 
+→ apt simplifie l’installation, la mise à jour et la désinstallation de logiciels en automatisant la 
+récupération de paquets à partir de sources (sur Internet, le réseau local, des CD-ROM, etc.), la gestion 
+des dépendances et parfois la compilation. Il est recommandé officiellement par le projet Debian. Les 
+sources à partir desquelles apt va chercher les paquets sont définies dans le fichier /etc/apt/sources.list. 
+Ubuntu maintient officiellement les paquets main (logiciels libres) et restricted (logiciels non-libres) 
+et la communauté Ubuntu fournit les paquets universe (libres) et multiverse (non-libres). 
+ 
+→ snap et flatpak sont des systèmes d'empaquetage et de déploiement de logiciels. 
+ 
+Plus d’informations détaillées sur : https://linux.goffinet.org/administration/installation-
+logiciels/paquets-linux/ 
+ 

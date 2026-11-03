@@ -1,0 +1,101 @@
+D´ epartement de Math´ ematiques
+ING2-G´ enie Math´ ematiques
+2024 - 2025
+TD - R´ egression Lin´ eaire Multiple
+Exercice 1 On examine l’´ evolution d’une variabley en fonction de deux variables explicatives
+x et z. On dispose de n observations de ces variables. On note X = [1 x z], o` u1 est le vecteur
+constant et x, z sont les vecteurs des variables explicatives.
+1. Nous avons obtenu les r´ esultats suivants:
+X′X =
+
+
+25 0 0
+? 9 .3 5 .4
+? ? 12 .7
+
+ (X′X)−1 =
+
+
+0.04 0 0
+0 0 .1428 −0.0607
+0 −0.0607 0 .1046
+
+
+(a) Donner les valeurs manquantes.
+(b) Que vaut n.
+(c) Calculer le coefficient de corr´ elation lin´ eaire empirique entrex et z.
+2. La r´ egression lin´ eaire dey sur [1 x z ] donne
+y =−1.61× 1 + 0.61x + 0.46z + bϵ, SCR =∥bϵ∥ = 0.3.
+(a) D´ eterminer la moyenne empirique ¯y.
+(b) Calculer la somme des carr´ es expliqu´ ee (SCE), la somme des carr´ es totale (SCT) et
+le coefficient de d´ etermination.
+Exercice 2 On s’int´ eresse ` a la relation liant la demande pour la bi` ere, y, aux variables
+ind´ ependantesX1 (le prix de celle-ci), X2 (le revenu disponible) et X3 (la demande de l’ann´ ee
+pr´ ec´ edente). Un total de 20 observations sont disponibles. Vous postulez le mod` ele
+yi =β0 +β1Xi1 +β2Xi2 +β3Xi3 +ϵi,
+o` u E[ϵi] = 0 et Cov(ϵi,ϵ j) = 0 pour i̸=j.
+Les r´ esultats de cette r´ egression, tels que calcul´ es dans ‘R’, sont fournis ci-dessous.
+> fit <- lm(Y~X1+X2+X3, data = biere)
+> summary(fit)
+call: lm(formula = Y ~ X1 + X2 + X3, data = biere)
+Residuals:
+Min 1st Qu. Median 3rd Qu. Max.
+-1.014e+04 -5.193e-03 -2.595e-03 4.367e-03 2.311e-02
+Coefficients:
+Value Std.Error t value Pr(>|t|)
+(Intercept) 1.5943 1.0138 1.5726 0.1354
+X1 -0.0480 0.1479 -0.3243 0.7499
+X2 0.0549 0.0306 1.7950 0.0916
+X3 0.8130 0.1160 7.0121 2.933e-06
+1
+<<<PAGE>>>
+Rsidual standard error: 0.0098 on 16 degrees of freedom
+Multiple R-Squared: 0.9810 Adjusted R-squared : 0.9774
+F-statistic: 275.49 on 3 and 16 degrees of freedom,
+the p-value is 7.160e-14
+(a) Indiquer les dimensions des matrices et vecteurs dans la repr´ esentation matricielle y =
+Xβ +ϵ du mod` ele.
+(b) La r´ egression est-elle significative ? Expliquer.
+(c) On porte une attention plus particuli` ere au param` etreβ. Est-il significativement diff´ erent
+de z´ ero ? Quelle est l’interpr´ etation du testH0 :β2 = 0 versus H1 :β2̸= 0 ?
+(d) Quelle est la valeur et l’interpr´ etation deR2, le coefficient de d´ etermination ?
+Exercice 3 Un bureau de conseil en ressources humaines a effectu´ e une ´ etude sur le niveau
+d’anixi´ et´ eY mesur´ e sur une ´ echelle de 1 ` a 150 de cadre d’entreprises au cours d’une p´ eriode de
+deux semaines. Nous voulons examiner si les facteurs suivants peuvent influencer sur le niveau
+d’anixi` ete des cadres :
+• X1 : pression art´ erielle systolique
+• X2 : test ´ evaluant les capacit´ es manag´ eriales
+• X3 : niveau de satisfaction du poste occup´ e.
+Le tableau d’analyse de la variance indique l’apport de chaque variable introduite dans l’ordre
+indiqu´ e et ceci pour 22 cadres.
+Source de variation Somme des carr´ es ddl
+R´ egression due ` aX1 981.326 1
+R´ egression due ` aX2 190.232 1
+R´ egression due ` aX3 129.431 1
+R´ esiduelle 442.292 18
+Totale 1743.281 21
+1. Quelle est la somme des carr´ es due ` a la r´ egression pour l’ensemble des trois variables
+explicatives ?
+2. Quelle proportion de la variation dans le niveau d’anxi´ et´ e est expliqu´ ee par les trois
+variables explicatives ?
+3. Pouvons-nous conclure que dans l’ensemble les trois variables explicatives ont un effet
+significatif sur le niveau d’anxi´ et´ e ? Utiliser un seuil de significationα = 5%. Pr´ eciser les
+hypoth` eses que nous souhaitons tester.
+4. Si nous ne tenons compte que de la variable explicative X1, quel serait alors le tableau
+d’analyse de la variance correspondant ?
+Source de variation Somme des carr´ es ddl
+R´ egression due ` aX1 981.326
+R´ esiduelle
+Totale
+2
+<<<PAGE>>>
+5. Tester les hypoth` eses nulles suivantes, au seuil de signification α = 5%, en utilisant un
+rapport F appropri´ e :
+(a) H0 : β1 = 0 dans le mod` eleY =β0 +β1X1 +ϵ,
+(b) H0 : β2 = 0 dans le mod` eleY =β0 +β1X1 +β2X2 +ϵ,
+(c) H0 : β3 = 0 dans le mod` eleY =β0 +β1X1 +β2X2 +β3X3 +ϵ.
+6. Quelle est la valeur du coefficient de d´ eterminationR2 associ´ ee ` a l’estimation de chaque
+mod` ele sp´ ecifi´ e ` a la question 5. ?
+7. Lequel des trois mod` eles semble le mieux appropri´ e pour expliquer les fluctuations du
+niveau d’anxi´ et´ e des cadres d’entreprises ?
+3

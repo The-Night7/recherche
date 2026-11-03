@@ -1,0 +1,183 @@
+Rattrapage
+Data Exploration - ING1 Mathématiques
+Appliquées
+Date : 2025
+2 feuilles R/V manuscrites autorisées, Calculatrice autorisée Durée : 2h
+Nombre de pages : 4
+Il sera tenu compte de la qualité de la rédaction et de la précision des
+justications.
+⋄ ⋄ ⋄
+Partie I
+Considérons les données des valeurs nutritionnelles de 34 légumes enregistrées dans un data-frame
+sur R nommé tab, dont voici un extrait pour 9 légumes :
+legumes
+(Pour 100g)
+energie
+kcal
+eau
+g
+bres
+g
+glucides
+g
+protides
+g
+lipides
+g famille
+· · · · · · · · · · · · · · · · · · · · · · · ·
+Petit pois 80 74 6 12.3 6 0.7 graine
+Pissenlit 40 85.5 3.5 5.7 2.7 0.7 feuilles
+Poireau 27 90.5 3.5 4 2 0.3 feuilles
+Poivron 21 91 2 3.5 1.1 0.3 fruit
+Pomme de terre 85 77 2.1 19 2 0.1 racine
+Potiron 20 92.8 1.3 4.1 0.8 0.1 fruit
+Radis 15 94.5 1.5 3 0.6 0.1 tige
+Salsis 30 79 4 5 1.4 0.4 racine
+Topinambour 31 79 7.6 4.5 2.4 0.4 racine
+Légende : kcal : kilocalorie. g : gramme
+La dernière colonne concerne une classication selon la partie de la plante que l'on consomme.
+A Analyse univariée
+1. Combien y a-t-il d'individus et de variables ?
+2. Donner le type de chacune des variables.
+3. On donne la commande suivante sur R :
+> summary(tab$energie)
+Min. 1st Qu. Median Mean 3rd Qu. Max.
+10.00 18.00 25.00 34.47 38.25 135.00
+Calculer l'ecart inter-quartiles et les valeurs des moustaches. Représenter graphiquement la boîte
+de Tuckey. Y a-t-il des valeurs atypiques ?
+4. Rappeler la formule du calcul de la variance dans R.
+5. Pour toutes les quantités dénies ou abordées dans les deux questions précédentes, préciser si
+ce sont des indicateurs de position ou des indicateurs de dispersion.
+1
+<<<PAGE>>>
+B ACP - Analyse en composantes principales
+Dans le but d'eectuer une analyse par composante principale, on entre sur R les commandes
+suivantes :
+>tab[,1:6]=apply(tab[,1:6],MARGIN=2,scale)
+>cov(tab[,1:6])
+energie eau fibres glucides protides lipides
+energie 1.000 -0.909 0.295 0.976 0.702 0.380
+eau -0.909 1.000 -0.566 -0.856 -0.737 -0.380
+fibres 0.295 -0.566 1.000 0.165 0.631 0.236
+glucides 0.976 -0.856 0.165 1.000 0.556 0.262
+protides 0.702 -0.737 0.631 0.556 1.000 0.273
+lipides 0.380 -0.380 0.236 0.262 0.273 1.000
+1. Pourquoi faut-il centrer et réduire les valeurs ? Appuyez votre réponse à l'aide du data-frame.
+2. Existe-t-il un couple de variables linéairement corrélées ? Y a-t-il un couple de variables très
+peu liées ? Donner des exemples.
+On eectue les commandes sur R pour réaliser une ACP. Ces résultats sont enregistrés dans res.pca.
+On obtient les résultats suivants :
+De plus, on donne les lignes de commande ainsi que les sorties suivants :
+>res.pca$eig
+eigenvalue % of variance cumulative % of variance
+comp 1 3.810 63.499 63.499
+comp 2 1.032 17.207 80.707
+comp 3 0.834 13.902 94.609
+comp 4 0.275 4.587 99.196
+comp 5 0.048 0.802 99.999
+comp 6 0.000 0.001 100.000
+2
+<<<PAGE>>>
+>res.pca$var$contrib
+Dim.1 Dim.2 Dim.3 Dim.4 Dim.5
+energie 23.384 10.082 0.075 0.062 8.576
+eau 24.475 0.075 0.584 11.380 63.475
+fibres 8.548 57.885 2.269 18.808 12.488
+glucides 19.609 22.102 0.993 3.342 14.955
+protides 18.240 8.339 4.457 65.977 0.439
+lipides 5.745 1.517 91.621 0.431 0.068
+>sort(res.pca$ind$contrib[,1])
+Betterave Artichaut Fenouil Brocoli Haricot_vert Celeri-rave
+0.001 0.005 0.032 0.069 0.084 0.133
+Poireau Chou Carotte Salsifis Pissenlit epinard
+0.135 0.148 0.152 0.178 0.491 0.496
+Chou fleur Asperge Poivron Persil Bette Cresson
+0.532 0.716 0.982 1.137 1.189 1.385
+Topinambour Gingembre Aubergine Navet Potiron Endive
+1.493 1.530 1.652 1.682 1.943 2.155
+Laitue Radis Courgette Cornichon Pomme de terre Concombre
+2.329 2.787 2.998 3.157 4.061 4.119
+Feve Petit pois Mais Ail
+6.139 13.754 13.897 28.439
+3. Combien d'axes faut-il garder dans la représentation pour avoir au moins 70% de l'inertie totale ?
+Et pour au moins 90% ?
+4. Grâce au cercle de corrélation, donner un couple de variables négativement corrélées. Retrouvez
+vos résultats prédits à la question 2 sur le cercle de corrélation.
+5. Quelles variables contribuent les plus à la construction du deuxième axe principal ?
+6. Que peut-on dire sur la variable "lipides" dans cette ACP ?
+7. Quelle est la contribution moyenne d'un individu ? Comparer avec les contributions des individus
+à la construction du premier axe. Commenter.
+On réalise à présent une ACP sans l'individu "Ail". On ajoute de plus la variable "famille" au nuage
+de points des individus. On obtient le nuage de points et le cercle de corrélation suivants
+8. Comparer les positions des diérentes modalités de la variable "famille" par rapport aux quan-
+tités d'eau et aux quantités d'énergie.
+3
+<<<PAGE>>>
+Partie II
+Dans cette partie, on souhaite savoir s'il existe un lien entre le niveau d'étude de l'ensemble des
+élèves-étudiants français en fonction de la décennie. Les données suivantes sont issues de Depp ; SIES-
+MESR. La population est constitué de tous les élèves et étudiants en France. La première variable
+correspond au niveau d'étude actuel de chaque élève-étudiant, et la seconde variable correspond à
+l'année à laquelle on a eectué ce décompte. Au total, on a dénombré 74669.3 étudiants (en milliers).
+On obtient le tableau de contingence suivant concernant le nombre d'étudiants pour chaque paire de
+modalités (en milliers) :
+Niveau d'études
+Année 1980 1990 2000 2010 2020
+Premier degré 7396.3 6953.4 6552 6664.2 6616.8
+Second degré 5670.4 6067.6 6090.6 5825.2 6125.3
+Enseignement du supérieur 1181.1 1717.1 2160.3 2349.2 2895.5
+Établissements de santé 96.2 88.2 81.4 71.5 67
+C Analyse bivariée : deux variables qualitatives
+1. Donner les valeurs et expliquer les quantités n2·, f21, f4|5.
+2. Calculer le prol moyen ligne ainsi que les prols lignes associés aux modalités "Second degré"
+et "Enseignement supérieur". Que peut-on observer ?
+3. Quel type de test permet de quantier la dépendence entre deux variables ? Rappeler la formule.
+4. Combien y a-t-il de degrés de liberté ?
+5. On donne le tableau de correspondance entre degrés de liberté et seuil :
+degrés de liberté 6 7 8 9 10 11 12 13 14 15 16
+Valeur du seuil 12.59 14.07 15.50 16.92 18.3 19.67 21.03 22.36 23.69 25.00 26.30
+Après calcul, on trouve une distance de 859.04. Que peut-on en conclure ?
+D AFC- Analyse factorielle des correspondances
+1. Rappeler la formule pour calculer la distance entre les deux prols lignes, et puis calculer la
+distance entre deux modalités "Second degré" et "Enseignement supérieur".
+2. Quelle(s) matrice(s) est utile pour l'étude d'une AFC ? Expliquer la méthode pour obtenir les
+axes factoriels.
+Les données sont stockées dans un data-frame appelé tab. Après avoir tapé en R la commande suivante,
+on obtient la sortie suivante :
+> res_tab = CA(tab)
+> res_tab$row$contrib
+Dim 1 Dim 2 Dim 3
+Premier degre 19.2122864 34.898148 0.1107784
+Second degre 0.1771251 58.092405 1.8491533
+Enseignement du superieur 79.4444374 5.823921 0.9331992
+Etablissements de sante 1.1661510 1.185526 97.1068691
+> res_tab$row$cos2
+Dim 1 Dim 2 Dim 3
+Premier degre 0.9553041 0.044695372 4.870226e-07
+Second degre 0.1058359 0.894066426 9.769155e-05
+Enseignement du superieur 0.9981143 0.001884646 1.036627e-06
+Etablissements de sante 0.9675413 0.025335140 7.123541e-03
+4
+<<<PAGE>>>
+> res_tab$col$contrib
+Dim 1 Dim 2 Dim 3
+1980 51.062769 18.478522 10.627133
+1990 6.791429 22.280677 39.647596
+2000 1.373091 37.540498 29.808587
+2010 5.470964 13.517182 17.007499
+2020 35.301748 8.183121 2.909186
+> res_tab$col$cos2
+Dim 1 Dim 2 Dim 3
+1980 0.9907471 0.009234710 1.823080e-05
+1990 0.9216439 0.077880364 4.757186e-04
+2000 0.5861241 0.412750872 1.125027e-03
+2010 0.9399262 0.059815483 2.583459e-04
+2020 0.9940576 0.005935153 7.242993e-06
+3. Quelles modalités participent le plus à la construction du premier axe ?
+4. Donner en justiant un exemple de :
+(a) modalité éloignée du prol moyen (on précisera prol moyen ligne ou prol moyen colonne).
+(b) modalité proche du prol moyen (on précisera prol moyen ligne ou prol moyen colonne).
+(c) deux modalités qui s'attirent.
+(d) deux modalités qui se repoussent.
+(e) deux modalités qui n'interagissent pas.
+5

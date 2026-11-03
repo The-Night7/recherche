@@ -1,0 +1,365 @@
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+1 
+EXERCICE 1 : AJAX AVEC FICHIER TE XTE  
+ 
+1. Créez une page html « page0.html », copiez et collez le code suivant : 
+ 
+<html>  
+<body>  
+<div id="div1">  
+<h1> XMLHttpRequest Object</h1>  
+<button type="button" onclick="loadDoc()">Changer le contenu</button>  
+</div>  
+<script>  
+function loadDoc() { 
+ var xhttp = new XMLHttpRequest(); xhttp.onreadystatechange = function() {  
+if (this.readyState == 4 && this.status == 200)  
+{ document.getElementById("div1").innerHTML = this.responseText; } };  
+xhttp.open("GET", "file1.txt", true);  
+xhttp.send(); }  
+</script>  
+</body>  
+</html> 
+ 
+2. Testez le code. Que se passe-t-il ? 
+ 
+3. Créez un fichier txt nommé "file1.txt" et placez-le dans le même dossier que la page 
+précédente. 
+Ajoutez le texte suivant à ce fichier : 
+« AJAX n'est pas un langage de programmation. 
+AJAX utilise simplement une combinaison de : HTML, CSS, JavaScript, DOM, 
+L'objet XMLHttpRequest » 
+ 
+4. Testez le code. Que se passe-t-il ? 
+ 
+5. Modifiez le code en ajoutant trois images. Lorsque vous déplacez la souris sur l'une de 
+ces images, l'application doit afficher un texte décrivant l’image à l'aide de AJAX. 
+ 
+Important : N'oubliez pas de créer les trois fichiers texte contenant les descriptions 
+correspondantes de chaque image. 
+ 
+6. Créez une page html « page1.html », copiez et collez le code suivant : 
+ 
+<html> 
+<body> 
+<div id="div1"> 
+<h1> XMLHttpRequest Object</h1> 
+<button type="button" onclick="loadDoc()">Changer le contenu</button> 
+</div> 
+ 
+ 
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+2 
+ 
+<script> 
+function loadDoc() { 
+  var xhttp = new XMLHttpRequest(); 
+  xhttp.onreadystatechange = function() { 
+    if (this.readyState == 4 && this.status == 200) { 
+      document.getElementById("div1").innerHTML = 
+      this.getAllResponseHeaders(); 
+    } 
+  }; 
+  xhttp.open("GET", "file1.txt", true); 
+  xhttp.send(); 
+} 
+</script> 
+</body> 
+</html> 
+ 
+8. Testez le code. Que se passe-t-il ? 
+EXERCICE 2  : AJAX AVEC PHP  
+ 
+1. Créez une page html « page2.html », copiez et collez le code suivant : 
+<html> 
+<body> 
+Votre nom: 
+<input type="text" id="txt1"> 
+<button type="button" onclick="loadDoc()">Envoyer</button> 
+<p>: <div id="div1"></div></p>  
+<script>  
+function loadDoc() { 
+var str= document.getElementById("txt1").value; 
+ var xhr = new XMLHttpRequest(); xhr.onreadystatechange = function() {  
+if (this.readyState == 4 && this.status == 200)  
+{ document.getElementById("div1").innerHTML =  this.responseText;} };  
+xhr.open("POST", "page2.php",true);  
+$s="nom="+str; 
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+xhr.send($s); }  
+</script>  
+</body> 
+</html> 
+ 
+2. Créez une page php « page2.php », copiez et collez le code suivant : 
+ 
+<?php  
+$var1 = $_POST["nom"];  
+echo "Bonjour $var1"; 
+?> 
+ 
+3. Testez le code. Que se passe-t-il ? 
+4. Créez une page html « page4.html », copiez et collez le code suivant : 
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+3 
+ 
+<html> 
+<body> 
+<h1>AJAX avec PHP</h1> 
+<h3>Saisir le nom d’un pays</h3> 
+Pays: <input type="text" id="txt1" onkeyup="Suggestions(this.value)"> 
+<p>Suggestions: <div id="div1"></div></p>  
+<script> 
+function Suggestions(str) { 
+  var xhttp; 
+  if (str.length == 0) {  
+    document.getElementById("div1").innerHTML = ""; 
+    return; 
+  } 
+  xhttp = new XMLHttpRequest(); 
+  xhttp.onreadystatechange = function() { 
+    if (this.readyState == 4 && this.status == 200) { 
+      document.getElementById("div1").innerHTML =this.responseText ; 
+    } 
+  }; 
+  xhttp.open("GET", "page4.php?q="+str, true); 
+  xhttp.send();    
+} 
+</script> 
+</body> 
+</html> 
+ 
+5. Créez la page php « page4.php », copiez et collez le code suivant : 
+ 
+<?php  
+  
+$countries = 
+["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & 
+Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Baham
+as","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Berm
+uda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British 
+Virgin Islands","Brunei","Bulgaria","Burkina 
+Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman 
+Islands","Central Arfrican 
+Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa 
+Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech 
+Republic","Denmark","Djibouti","Dominica","Dominican 
+Republic","Ecuador","Egypt","El Salvador","Equatorial 
+Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe 
+Islands","Fiji","Finland","France","French Polynesia","French West 
+Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Green
+land","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea 
+Bissau","Guyana","Haiti","Honduras","Hong 
+Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of 
+Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","
+Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Li
+beria","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Mad
+agascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall 
+Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mong
+olia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Naur
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+4 
+o","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New 
+Zealand","Nicaragua","Niger","Nigeria","North 
+Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New 
+Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto 
+Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & 
+Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi 
+Arabia","Senegal","Serbia","Seychelles","Sierra 
+Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South 
+Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St 
+Lucia","St 
+Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan",
+"Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & 
+Tobago","Tunisia","Turkey","Turkmenistan","Turks & 
+Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United 
+Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican 
+City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]; 
+ 
+$q = $_REQUEST["q"]; 
+ 
+$res = ""; 
+ 
+if ($q !== "") { 
+    $q = strtolower($q); 
+    $len=strlen($q); 
+    foreach($countries as $name) { 
+      if (stristr($q, substr($name, 0, $len))) { 
+            if ($res === "") { 
+                $res = $name; 
+            }  
+ else { 
+                $res .= ", $name"; 
+            } 
+        } 
+    } 
+} 
+ 
+echo $res === "" ? "no suggestion" : $res; 
+?> 
+ 
+6. Quel est l’objectif du code précédent ? 
+ 
+7. Supposons une autre page php «  page5.php » que contienne les pays avec leurs 
+capitales. Modifiez le code précédent, de sort qu’après la saisie du nom du pays, il affichera 
+la capitale de ce pays (comme la figure ci-dessous). 
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+5 
+ 
+ 
+$capitales = array( "Italy"=>"Rome", "Luxembourg"=>"Luxembourg", "Belgium"=> "Brussels", 
+"Denmark"=>"Copenhagen", "Finland"=>"Helsinki", "France" => "Paris", "Slovakia"=>"Bratislava", 
+"Slovenia"=>"Ljubljana", "Germany" => "Berlin", "Greece" => "Athens", "Ireland"=>"Dublin", 
+"Netherlands"=>"Amsterdam", "Portugal"=>"Lisbon", "Spain"=>"Madrid", "Sweden"=>"Stockholm", 
+"United Kingdom"=>"London", "Cyprus"=>"Nicosia", "Lithuania"=>"Vilnius", "Czech Republic"=>"Prague", 
+"Estonia"=>"Tallin", "Hungary"=>"Budapest", "Latvia"=>"Riga","Malta"=>"Valetta", "Austria" => "Vienna", 
+"Poland"=>"Warsaw") ; 
+EXERCI CE  3 : AJAX AVEC FICHIER XM L 
+ 
+1. Créez un fichier xml « page1.xml », copiez et collez le texte suivant dans le fichier : 
+<inventaire> 
+<produit code="AZ320"> 
+ <nom>Ordinateur</nom> 
+<prix>750</prix> 
+</produit> 
+<produit code="LM208"> 
+<nom>Chaise</nom> 
+<prix>63</prix> 
+</produit>  
+<produit code="LM209"> 
+<nom>livre</nom> 
+<prix>63</prix> 
+</produit>  
+</inventaire> 
+ 
+2. Créez une page html « page5.html », copiez et collez le code suivant : 
+ 
+
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+6 
+<html> 
+<body> 
+<h1>XML Ajax</h1> 
+<p id="demo"></p> 
+<script> 
+var xhttp, xmlDoc, txt, x, i; 
+xhttp = new XMLHttpRequest(); 
+xhttp.onreadystatechange = function() { 
+if (this.readyState == 4 && this.status == 200) { 
+  xmlDoc = this.responseXML; 
+  txt = ""; 
+  x = xmlDoc.getElementsByTagName("nom"); 
+  for (i = 0; i < x.length; i++) { 
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>"; 
+  } 
+  document.getElementById("demo").innerHTML = txt; 
+  } 
+}; 
+xhttp.open("GET", "page1.xml", true); 
+xhttp.send(); 
+</script> 
+</body> 
+</html> 
+ 
+3. Qu'affiche le code précédent ? 
+4. Modifiez le code précédent pour avoir les résultats comme l'image suivante. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<<<PAGE>>>
+  
+TP 7 : AJAX 
+ 
+L’équipe enseignante INFO4 
+PréING2 Année 2023-2024 
+ 
+7 
+EXERCICE 4  : AJAX AVEC FICHIER JS ON 
+ 
+1. Créez un fichier json « page1.json », copiez et collez le texte suivant : 
+{ "produits":[ 
+  { "code": "AZ320", 
+    "nom": "Ordinateur", 
+    "prix": "750" }, 
+  { "code": "LM208", 
+    "nom": "Chaise", 
+    "prix": "63" } 
+  ] 
+} 
+ 
+2. Créez une page html « page6.html », copiez et collez le code suivant : 
+<html> 
+<body> 
+ 
+<div id="demo"> 
+<h1>The XMLHttpRequest Object</h1> 
+<button type="button" onclick="loadDoc()">Change Content</button> 
+</div> 
+ 
+<script> 
+function loadDoc() { 
+  var xhttp = new XMLHttpRequest(); 
+  xhttp.onreadystatechange = function() { 
+    if (this.readyState == 4 && this.status == 200) { 
+    var reponse = JSON.parse(xhttp.responseText); 
+    var txt=""; 
+    for( var i in reponse.produits) 
+    { txt=txt+reponse.produits[i].nom; 
+    } 
+      document.getElementById("demo").innerHTML =txt; 
+    } 
+  }; 
+  xhttp.open("GET", "page1.json", true); 
+  xhttp.send(); 
+} 
+</script> 
+ 
+</body> 
+</html> 
+ 
+3. Qu'affiche le code précédent ? 
+4. Ajoutez au moins trois produits supplémentaires au fichier json avec des prix différents. 
+5. Modifiez le code précédent (item 2) de sort que seuls les noms des produits ayant un prix 
+supérieur à la valeur entrée par l'utilisateur seront affichés.  

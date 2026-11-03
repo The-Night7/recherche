@@ -1,0 +1,102 @@
+Jeux en IA
+S´ erie d’exercices 1
+11 septembre 2023
+Objet du TD : Planification, Jeux ` a 1 joueur, Heuristiques, Algorithme
+A∗.
+Exercice 1 : Le probl` eme des 3 pi` eces
+Nous avons 3 pi` eces de monnaie dont deux montrent ‘pile’ et l’autre ‘face’.
+Nous voulons qu’` a l’issue de 3 mouvements au plus les 3 pi` eces montrent le
+mˆ eme cot´ e (‘pile’ ou ‘face’). Il vous est demand´ e de :
+1. Mod´ eliser les ´ etats et les mouvements de ce probl` eme en pr´ ecisant l’´ etat
+de d´ epart et le(s) ´ etat(s) d’arriv´ ee.
+2. ´Etablir le graphe des mouvements, c’est-` a-dire un graphe dont les som-
+mets sont les ´ etats et les arcs les transitions entre ´ etats.
+3. Construire l’arbre complet de la solution du probl` eme.
+Exercice 2 : Le probl` eme du chou, de la ch` evre
+et du loup
+Un berger doit faire traverser un chou, une ch` evre et un loup d’une rive ` a
+l’autre d’un fleuve. Le bateau qu’il doit utiliser n’a que deux places (la sienne
+et une autre). Il ne doit pas laisser la ch` evre seule avec le chou ni le loup seul
+avec la ch` evre. Il vous est demand´ e de :
+1. Mod´ eliser le probl` eme.
+2. Entamer la construction de son arbre de recherche.
+1
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Exercice 3 : Le probl` eme des cannibales et des
+missionnaires
+Trois missionnaires et trois cannibales doivent passer d’une rive ` a l’autre d’un
+fleuve. Le bateau qu’ils doivent utiliser n’a que deux places. Les cannibales
+ne doivent jamais ˆ etre en sup´ eriorit´ e num´ erique sur l’une ou l’autre des deux
+rives. Il vous est demand´ e de :
+1. Mod´ eliser le probl` eme.
+2. Entamer la construction de son arbre de recherche.
+Exercice 4 : Recherche/Parcours d’un arbre
+On consid` ere un arbre ayant les caract´ eristiques suivantes :
+— Il a nb niveaux.
+— Chaque noeud qui n’est pas une feuille a exactement nf fils.
+— Toutes les feuilles ont la mˆ eme probabilit´ e d’ˆ etre le ‘but’. Nous appelons
+le ‘but’ la feuille o` u la recherche doit s’arrˆ eter.
+Il vous est demand´ e, dans ce cadre, de calculer la complexit´ e spatiale et la
+complexit´ e temporelle des parcours en profondeur d’abord et largeur d’abord.
+Exercice 5 : Heuristiques
+1. Mod´ elisez le jeu du taquin 3× 3.
+2. Etudier, dans le cas de ce jeu les propri´ et´ es des deux heuristiques sui-
+vantes :
+— h1(ei) = nombre de cases pleines mal plac´ ees par rapport ` a l’ob-
+jectif (distance de Hamming entre un ´ etat et l’´ etat final).
+— h2(ei) = somme des distances entre les cases pleines mal plac´ ees
+et leurs positions dans l’objectif (distance de Manhattan entre un
+´ etat et l’´ etat final).
+3. Appliquez l’algorithme A∗ en prenant comme heuristqiue h1. On pren-
+dra comme ´ etats initial et final les ´ etats de la figure 1.
+2
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Figure 1 – Taquin 3 × 3.
+3
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Figure 2 – (Labyrinthe).
+Exercice 6 : Labyrinthe
+On consid` ere le labyrinthe d´ efini ci-dessous (Figure 2). Le d´ epart se situe en
+haut du labyrinthe et l’arriv´ ee en bas.
+1. Appliquer l’algorithme A* avec comme heuristique la distance de Man-
+hattan, pour trouver le chemin optimal permettant de sortir de ce la-
+byrinthe. Vous d´ etaillerez toutes les cases visit´ ees, en sp´ ecifant pour
+chacune, les valeurs des fonctions g et h et d´ efinies dans le cours.
+2. Si on avait utilis´ e la distance euclidienne comme heuristique, celle-ci
+aurait-elle ´ et´ eadmissible (justifez votre r´ eponse) ?
+Exercice 7 : Retour sur le probl` eme du taquin
+On consid` ere ` a nouveau le probl` eme du taquin 3× 3 8-puzzle (dans lequel
+nous avons une grille 3 ×3 dont une case est vide et les 8 autres occup´ ees par
+les entiers 1 ` a 8. Le but est de r´ earranger les cases de la grille de mani` ere ` a
+passer d’une configuration initiale (par exemple celle de la figure 3 (a)) ` a la
+configuration finale (celle de la figure 3 (b)). Les seuls mouvements autoris´ es
+sont ceux qui consistent ` a ´ echanger la position de la case vide avec celle de
+l’une de ses voisines verticales ou horizontales.
+1. Donnez une mod´ elisation du probl` eme. On pr´ ecisera au passage le
+nombre total d’´ etats.
+2. Pour chaque case de la grille, quel est le nombre d’´ etats pour lesquels
+cette case est blanche ?
+3. Rappelez la d´ efinition du facteur du branchement (moyen) et son uti-
+lit´ e. Calculez sa valeur dans ce probl` eme.
+4
+<<<PAGE>>>
+ING2-GI-MI cours d’Intelligence artificielle
+Figure 3 – (8-puzzle).
+On consid` ere l’heuristiqueh d´ efinie comme suit :
+h(e) = nombre de cases pleines qui ne sont pas situ´ ees sur la ‘bonne’
+colonne + nombre de cases pleines qui ne sont pas situ´ ees sur la ‘bonne’
+ligne.
+On entend par ‘bonne’ ligne ou colonne celle de la case dans l’´ etat final.
+4. Montrez que h est coincidente, monotone et minorante (on dit aussi
+admissible).
+5. Expliquez bri` evement (3 phrases au maximum) pourquoi on qualifie la
+recherche effectu´ ee par l’algorithmeA∗ de recherche guid´ ee.
+6. Lorsque l’algorithme A∗ a le choix entre plusieurs ´ etats, quel crit` ere
+utilise-t-il pour choisir l’´ etat qu’il va consid´ erer (c’est-` a-dire la branche
+de l’arbre qu’il va suivre) ?
+7. Montrez les 3 premiers niveaux (en comptant la racine) de l’arbre
+construit par A∗.
+5

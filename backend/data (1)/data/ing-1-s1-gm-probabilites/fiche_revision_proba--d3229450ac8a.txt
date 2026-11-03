@@ -1,0 +1,96 @@
+Fiche de Révision : Probabilités (ING1 GM)
+Basée sur les annales 2019-2024
+1 1. Probabilités Conditionnelles (L'Incontournable)
+Tombe systématiquement en Exercice 1 (Tests, Alarmes, Usines).
+Formules Clés
+ Probabilité Conditionnelle :
+P (A|B) = P (A∩B)
+P (B)
+ F ormule des Probabilités T otales : Si (An) est une partition de Ω :
+P (B) =
+X
+n
+P (B∩An) =
+X
+n
+P (B|An)P (An)
+ F ormule de Bayes (Inversion du conditionnement) :
+P (Ak|B) = P (B|Ak)P (Ak)P
+nP (B|An)P (An)
+Astuce Examen :
+ Dénis clairement tes événements (ex: M : Malade, T : Test positif).
+ Fais un arbre si nécessaire pour visualiser P (B).
+ Indépendance : A et B indépendants ⇐⇒ P (A∩B) =P (A)P (B).
+2 2. Variables Aléatoires à Densité
+Le c÷ur de l'examen. Savoir manipuler une fonction f(x) avec une constante C.
+2.1 Les Outils de Base
+Soit X une v.a. de densité f .
+ Condition de densité :
+R +∞
+−∞ f(x)dx = 1 (Sert à trouver la constante C).
+ F onction de Répartition (F.R.) : FX(x) =P (X≤x) =
+Rx
+−∞f(t)dt.
+ Espérance : E[X] =
+R +∞
+−∞ xf(x)dx.
+ V ariance (Koenig-Huygens) : Var (X) =E[X 2]− (E[X])2 =
+R +∞
+−∞ x2f(x)dx− (E[X])2.
+1
+<<<PAGE>>>
+2.2 Méthode : Changement de Variable (Crucial)
+Comment trouver la loi de Y =ϕ(X) (ex: Y =X 2, Y =eX ) ?
+1. Passer par la Fonction de Répartition de Y :
+FY (y) =P (Y ≤y) =P (ϕ(X)≤y)
+2. Isoler X dans l'inégalité (ex: P (X≤√y)).
+3. Réexprimer en fonction de FX (ex: FX(√y)).
+4. Dériver le résultat par rapport à y pour obtenir la densité fY (y).
+3 3. Lois Usuelles à Connaître Par C÷ur
+Loi Densité f(x) Espérance V ariance
+Uniforme U([a,b ]) 1
+b−a· ⊮[a,b](x) a+b
+2
+(b−a)2
+12
+Exponentielle E(λ) λe−λx· ⊮R+(x) 1
+λ
+1
+λ2
+Normale N (µ,σ 2) 1
+σ
+√
+2πe− (x−µ)2
+2σ2 µ σ2
+Notes importantes :
+ Loi Exponentielle : "Sans mémoire" =⇒ P (X >t +s|X >t) =P (X >s).
+ Loi Normale Centrée Réduite ( Z∼N (0, 1)) : Si X∼N (µ,σ 2), alors Z = X−µ
+σ ∼N (0, 1).
+4 4. Convergences et Théorèmes Limites
+Pour les questions d'approximation et de taille d'échantillon.
+Inégalités
+ Markov (si X≥ 0) : P (X≥a)≤ E[X]
+a
+ Bienaymé-T chebychev (Incontournable pour trouver n) :
+P (|X−E[X]|≥ ε)≤ Var (X)
+ε2
+Souvent utilisé avec la moyenne empirique ¯Xn :
+P (| ¯Xn−µ|≥ ε)≤ σ2
+nε2
+4.1 Théorème Central Limite (TCL)
+Si (Xn) i.i.d avec E[X] =µ et Var (X) =σ2, alors pour n grand :
+Zn =
+¯Xn−µ
+σ/√n
+L− →N(0, 1)
+Utilisation : P (a≤ ¯Xn≤b)≈ Φ( b−µ
+σ/√n)− Φ( a−µ
+σ/√n).
+2
+<<<PAGE>>>
+5 5. Statistiques d'Ordre (Le Max)
+Soient X1,...,X n i.i.d. On pose Mn = max(X1,...,X n).
+ Fonction de répartition du Max :
+FMn(t) =P (Mn≤t) =P (X1≤t∩...∩Xn≤t) = [FX(t)]n
+ Pour obtenir la densité du max, on dérive [FX(t)]n.
+3

@@ -1,0 +1,74 @@
+Programme en C — Menu et Fonctions
+Ce programme en langage C propose un menu permettant d’appeler plusieurs fonctions : affichage
+d’un sapin, rang de la factorielle, test du nombre d’Armstrong, affichage binaire et coefficients
+binômiaux.
+#include <stdio.h>
+#include <math.h>
+void affichageSapin(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = i; j < n; j++) printf(" ");
+        for (int j = 1; j <= 2 * i - 1; j++) printf("*");
+        printf("\n");
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) printf("@");
+        printf("\n");
+    }
+}
+int maxFact(int k) {
+    int n = 1; long fact = 1;
+    while (fact * (n + 1) <= k) { n++; fact *= n; }
+    return n;
+}
+void estArmstrong(int n) {
+    int original = n, somme = 0, nbChiffres = 0, temp = n;
+    while (temp != 0) { nbChiffres++; temp /= 10; }
+    temp = n;
+    while (temp != 0) {
+        int chiffre = temp % 10;
+        somme += pow(chiffre, nbChiffres);
+        temp /= 10;
+    }
+    if (somme == original)
+        printf("%d est un nombre d’Armstrong.\n", original);
+    else
+        printf("%d n’est pas un nombre d’Armstrong.\n", original);
+}
+void binaire(int n) {
+    if (n == 0) { printf("0\n"); return; }
+    int bits[32], i = 0;
+    while (n > 0) { bits[i] = n % 2; n /= 2; i++; }
+    printf("Représentation binaire : ");
+    for (int j = i - 1; j >= 0; j--) printf("%d", bits[j]);
+    printf("\n");
+}
+int coefBin(int n, int p) {
+    if (p == 0 || p == n) return 1;
+    else return coefBin(n - 1, p - 1) + coefBin(n - 1, p);
+}
+int main() {
+    int choix, n, p, k;
+    do {
+        printf("\n=== MENU ===\n");
+        printf("1. Affichage d’un sapin\n");
+        printf("2. Rang de la factorielle\n");
+        printf("3. Nombre d’Armstrong\n");
+        printf("4. Affichage binaire\n");
+        printf("5. Coefficients binômiaux\n");
+        printf("0. Quitter\n");
+        printf("Votre choix : ");
+        scanf("%d", &choix);
+        switch (choix) {
+            case 1: printf("Taille du sapin n = "); scanf("%d", &n); affichageSapin(n); break;
+            case 2: printf("Entrer k = "); scanf("%d", &k); printf("Le plus grand n tel que n! <= %d est : %d\n", k, maxFact(k)); break;
+            case 3: printf("Entrer un nombre : "); scanf("%d", &n); estArmstrong(n); break;
+            case 4: printf("Entrer un nombre : "); scanf("%d", &n); binaire(n); break;
+
+<<<PAGE>>>
+            case 5: printf("Entrer n et p : "); scanf("%d%d", &n, &p); printf("C(%d,%d) = %d\n", n, p, coefBin(n, p)); break;
+            case 0: printf("Fin du programme.\n"); break;
+            default: printf("Choix invalide.\n");
+        }
+    } while (choix != 0);
+    return 0;
+}

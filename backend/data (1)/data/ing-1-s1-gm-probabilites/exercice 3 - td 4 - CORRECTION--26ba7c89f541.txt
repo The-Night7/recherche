@@ -1,0 +1,44 @@
+Exercice 1.SoientXetYdeux variables aléatoires réelles indépendantes telles queX+Y=α, oùα∈R
+est une constante (presque sûrement). Montrer queXetYsont des variables aléatoires constantes presque
+sûrement.
+Solution :On suppose queXetYsont indépendantes et queX+Y=α, oùα∈Rest une constante
+(presque sûrement). On veut prouver queXest une variable aléatoire constante p.s.
+1. Stratégie de la preuve
+Rappel (Exercice 2): Nous avons prouvé qu’une v.a.Xest constante p.s. si et seulement si sa
+fonction de répartitionFX(c)ne prend que les valeurs 0 ou 1 (c’est-à-dire∀c∈R,FX(c)∈{0,1}).
+Notre but est donc de prouver que pour unc∈Rquelconque,F X(c) = (F X(c))2. Cette équation
+(p=p 2) n’admet que0et1comme solutions, ce qui prouvera le résultat.
+2. Utilisation de l’indépendance
+De l’hypothèseX+Y=α, on tireY=α−X. L’hypothèse d’indépendance devient :Xet(α−X)
+sont indépendantes.
+Par le lemme de l’indépendance (ou lemme de transformation), cela signifie que pour toutes
+fonctionsfetg(deRdansR) mesurables et bornées :
+E[f(X)g(α−X)] =E[f(X)]E[g(α−X)]
+3. Choix des fonctionsfetg
+Soitc∈Rfixé. Nous voulons obtenirF X(c) =P(X≤c) =E[1 {X≤c}].
+— Posonsf c =1 [c,+∞[. Cette fonction est mesurable car l’ensemble]−∞,c]est un borélien (un fermé
+deR). Elle est bornée par1.
+— Nous avons besoin d’une fonctiongc telle quefc(X)etg c(α−X)soient lamêmevariable aléatoire.
+On cherche doncgc telle quegc(α−X) =f c(X) =1 {X≤c}.
+Pour trouverg c(y), posonsy=α−x, ce qui donnex=α−y. La conditionx≤cdevient
+α−y≤c, ce qui est équivalent àα−c≤y.
+— On choisit doncgc =1 [α−c,+∞[. Cette fonction est mesurable (car[α−c,+∞[est un borélien) et
+bornée par 1.
+4. Application et Calcul
+Puisquef c etg c sont mesurables et bornées, on peut appliquer la formule d’indépendance :
+E[fc(X)gc(α−X)] =E[f c(X)]E[gc(α−X)]
+Calculons rigoureusement chaque terme de cette égalité :
+—Terme de gauche :Par notre choix deg c, on agc(α−X) =1 {α−X≥α−c} =1{X≤c}.
+E[fc(X)gc(α−X)] =E[1 {X≤c}·1{X≤c}] =E[1 {X≤c}] =P(X≤c) =F X(c)
+—Terme de droite :On calcule chaque espérance séparément.
+E[fc(X)] =E[1 {X≤c}] =F X(c)
+E[gc(α−X)] =E[1 {α−X≥α−c}] =E[1 {X≤c}] =F X(c)
+Le produit est doncFX(c)·F X(c) = (FX(c))2.
+5. Conclusion
+L’égalité d’indépendance devient donc :
+FX(c) = (FX(c))2
+Cette équation est vraie pour n’importe quelc∈Rfixé. La seule solution àp=p 2 estp= 0oup= 1.
+On a donc bien∀c∈R,F X(c)∈{0,1}.
+D’après le résultat de l’Exercice 2, cela implique queXest constante presque sûrement.
+(PuisqueY=α−X,Yest aussi constante p.s.)
+1

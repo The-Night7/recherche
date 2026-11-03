@@ -1,0 +1,251 @@
+Corrigé Exam Optim Déter déc 22
+Exercice 1
+1. On sait que lorsque  est différentiable et convexe, on a : f
+∀x,y∈R,      f y⩾f x+ <∇f x,  y - x>( ) n ( ) ( ) ( )
+En remplaçant  par  et  par n'impoirte quel élément  de , on obtient :x x * y x H
+.∀x∈H,      f x⩾f x+ <∇f x,  x - x>⩾f x( ) * * * *
+Donc  est un minimum global de .x* PC( )
+2. a) avec  et .H=x∈R,  Ax=b3 A= 1 1-1
+2-1 0 b= 1
+3
+ b) Si  et , alors x1 x∈H2
+.∀𝜆 ∈0, 1 ,  A𝜆x+ 1-𝜆x=𝜆Ax+ 1-𝜆Ax=b[ ] ( 1 ( ) 2) 1 ( ) 2
+      Donc . 𝜆x+ 1-𝜆x∈H1 ( ) 2
+c) On a bien , donc  est admissible.Ax=b* x*
+d) On a  , et  ∇f x=⟹ ∇f x=( )
+2x1
+2x2
+2x3
+*
+18
+7
+-6
+7
+-2
+7
+.x∈H ⟹ x+x - x1 2 3 = 1
+2x - x1 2 = 3
+    On en déduit :
+<∇f x,x - x> =x - - x+- x+* * 18
+71
+9
+7
+6
+72
+3
+7
+2
+73
+1
+7
+= 9x -3x - x -=x+x - x+ 8x -4x -2
+7( 1 2 3 ) 26
+7
+2
+7( 1 2 3 1 2) 26
+7
+.=x+x - x+ 4 2x - x -= 1 + 4 × 3-= 02
+7( 1 2 3 ( 1 2 )) 26
+7
+2
+7( ) 26
+7
+     Donc d'après la question 1),  est bien un optimum global de .x* P( )
+e) est non nul alors que  est un optimum global. Ceci est dû au fait qu'il ∇f x * x*
+s'agit d'un problème d'optimisation sous contraintes. 
+<<<PAGE>>>
+Exercice 2 
+1)  est strictement convexe puisque sa hessienne est  qui est définie positive.f A
+ et  inversible puisque ∇f x=Ax+b( )A
+définie .⟹ ∃!x,  Ax=- b ⟹ ∇f x= 0* * *
+Conclusion :  est l'unique optimum global.x*
+2) (a)  et  sont -conjugués si . On a alors : dk dk-1 A<d,Ad> = 0 k k-1
+0 =<-∇f x+𝛽d,Ad> =-<∇f x,Ad> +𝛽<d,Ad>( k) k k-1k-1 ( k) k-1k k-1k-1
+⟺ 𝛽= .k
+<∇f x,Ad>
+<d,Ad>
+( k) k-1
+k-1k-1
+(b) On sait que l'optimum de la fonction  a lieu pour  tel que : g t=f x+td( ) (k k )t=𝜌
+<∇f x+𝜌d,d> = 0⟺<A x+𝜌d+b,d> = 0( k k ) k ( k k ) k
+⟺<Ax+b+𝜌Ad,d> = 0⟺<∇f x+𝜌Ad,d> = 0k k k ( k) k k
+⟺<∇f x,d> +𝜌<Ad,d> = 0 ⟺ 𝜌=-( k) k k k
+∇f x,d>
+<Ad,d>
+( k) k
+k k
+3) (a)  On vérfie immédiatement que .AX+b= 0*
+(b) .X=0
+0
+1
+i. d=-∇f X=- AX - b=0 ( 0) 0
+-1
+1
+ii. .𝜌=-=⟹ X=X+d=0
+<∇f X,d>
+<Ad,d>
+( 0) 0
+0 0
+1
+2 1 0
+1
+20
+-1
+2
+3
+2
+iii.    et   .d=-∇f X=- AX - b=1 ( 1) 1
+1
+2
+1
+2
+𝜌=-=1
+<∇f X,d>
+<Ad,d>
+( 1) 1
+1 1
+1
+2
+        Et donc :  .X=X+𝜌d=2 1 1 1
+-1
+4
+7
+4
+<<<PAGE>>>
+(c) . Méthode du gradient conjugué. La 1ère itération est la même que X=0
+0
+1
+celle du gradient à pas optimal avec : X=X+d=1 0
+1
+20
+-1
+2
+3
+2
+i.  et donc .𝛽= =1
+<∇f X,Ad>
+<d,Ad>
+( 1) 0
+0 0
+1
+4 d=-∇f X+𝛽d=1 ( 1) 1 0
+1
+4
+3
+4
+ii. .𝜌=-=-=1
+<∇f X,d>
+<Ad,d>
+( 1) 1
+1 1
+< , >
+< , >
+1
+2
+1
+2
+1
+4
+3
+4
+3
+4
+3
+4
+1
+4
+3
+4
+2
+3
+iii. .X=X+d= =X2 1
+2
+31
+-1
+3
+2
+*
+(d) La méthode du gradient conjugué à pas optimal converge vars la solution exacte 
+en 2 itérations comme prévu en dimension 2 pour une fonction quadratique. La 
+méthode du gradient à pas optimal semble également se rapprocher au fur et à 
+mesure de la solution.
+Exercice 3
+1) (a)  direction de descente en .d x ⟺<∇f x,d>⩽0 ( )
+(b) Si , alors  et .f x=c+ <B,x> + <Ax,x>( ) 1
+2 ∇f x=Ax+b( )H x=Af( )
+Par suite : d=- A AX+b=- X - A b0 ( )-1 0 ( ) 0 ( )-1
+et donc :   .X=X+d=- A b=X1 ( ) 0 ( ) 0 ( )-1 *
+(c)  Il faut que la fonction soit 2 fois différentiable, calculer la matrice hessienne et 
+l'inverser ou au minimum résoudre un système linéaire la concernant.
+2) .f x,y=x+ 2y+z -2x+y - z( ) 4 4 4
+<<<PAGE>>>
+(a)  .  ∇f X= =⟺( )
+4x -23
+8y+ 13
+4z -13
+0
+0
+0
+x= 1
+∛2
+y= -1
+2
+z= 1
+∛4
+Donc  unique point critiqueX=*
+1
+∛2
+-1
+2
+1
+∛4
+(b)  .  existe à condition que  soit H X=f( )
+12x2 0 0
+0 24y 2 0
+0 0 12z 2
+d k( ) H Xf
+k( )
+inversible.
+Il faut donc que les 3 coordonnées de  soient non nulles. Et dans ce cas : X=k( )
+x
+y
+z
+.d=- H X∇f X=-k( )
+f
+k( )-1 k( )
+4x -2
+12x
+3
+2
+8y+ 1
+24y
+3
+2
+4z -1
+12z
+3
+2
+(c)  Avec , on obtient  :  Et par suite :X=0 ( )
+1
+1
+1
+d=-= .0 ( )
+2
+12
+9
+24
+3
+12
+-1
+6
+-3
+8
+-1
+4
+X=X+d=1 ( ) 0 ( ) 0 ( )
+5
+6
+5
+8
+3
+4

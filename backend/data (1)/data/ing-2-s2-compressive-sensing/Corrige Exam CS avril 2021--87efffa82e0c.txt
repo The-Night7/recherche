@@ -1,0 +1,178 @@
+Corrige Exam Compressive Sensing 2021
+1. Exercice 1 
+Voir cours - TDs
+2. Exercice 2 
+1. En posant:
+f𝛼=‖x -𝛷 𝛼‖=<x -𝛷 𝛼,x -𝛷 𝛼> =x -𝛷 𝛼x -𝛷 𝛼( ) k
+2
+k k ( k )T( k )
+=x -𝛼 𝛷x -𝛷 𝛼=x x -𝛼 𝛷x - x𝛷 𝛼+𝛼 𝛷 𝛷 𝛼T T T
+k ( k ) T T T
+k
+T
+k
+T T
+k k
+Les 2ème et troisième termes sont transposés l'un de l'autre. Comme ce sont des 
+réels, ils sont égaux. On peut donc écrire : 
+f𝛼=‖x‖-2𝛼 𝛷x+𝛼 𝛷 𝛷 𝛼( ) 2T T
+k
+T T
+k k
+La variable étant ,  est constant. Le calcul du gradient (voit cours d'optimisation 𝛼x
+déterministe) donne : 
+∇f𝛼=-2𝛷x+ 2𝛷 𝛷 𝛼( ) T
+k
+T
+k k
+Le minimim est atteint là où le gradient est nul, c à d là où on a : 
+-2𝛷x+ 2𝛷 𝛷 𝛼= 0   ⟺ 𝛷 𝛷 𝛼=𝛷x  ⟺ 𝛼=𝛷 𝛷 𝛷x T
+k
+T
+k k
+T
+k k
+T
+k
+T
+k k
+-1 T
+k
+2. On sait que pour , on a  : 𝛼 ∈R k
+𝛷 𝛼=𝛼 dk ∑
+k
+i=1
+i m i
+Autrement dit :       𝛷 𝛼 ∈ F=Vect d,...,dk { m1 mk }
+La recherche de      revient à la recherche de   .‖x -𝛷 𝛼‖min
+𝛼∈Rk
+k
+2
+2
+‖x - y‖min
+y∈F
+2
+2
+ étant un sous-espace vectoriel, on sait que la solution est donnée par :F
+ : projection orthogonale de  sur .y=Proj xF( ) x F
+On a donc bien :  
+𝛷 𝛼=Proj xk
+k
+P
+( )
+k F( )
+3. A l'étape , on part de l'écriture : k+ 1 ( )
+x=𝛷 𝛼+Rk
+k
+P
+( )
+k
+k( )
+Dans cette écriture, le résidu  est évidemment orthogonal à .R=x - Proj xk( )
+F( ) F
+Donc il est orthogonal à tous les vecteurs  pour .dmi i= 1,..,k
+Conséquence : les rapports   seront nuls pour tous les vecteurs déjà 
+| <d,R> |
+‖d‖
+j
+k( )
+j
+sélectionnés  pour .dmi i= 1,..,k
+Lorsqu'on va chercher le maximum :   
+<<<PAGE>>>
+m=k+1 arg max
+j=1,..,K
+|<d,R>|
+‖d‖
+j
+k( )
+j
+on est sûr que cet indice sera différent de ceux qui ont déjà été sélectionnés 
+précédemment.
+4. Etant donné que l'on choisit, à chaque itération, un atome différent des précédents, on 
+est sûr que l'algo converge en un maximum de  itérations.K
+5. Avec  et , on commence par préciser que  et D=
+1 1 0 1 0
+0 1 1-1 1
+0 1 1 0 0
+x=
+2
+1
+1
+R=x0 ( )
+on calcule les 5 rapports dont il faut chercher le maximum :
+j 1 2 2 4 5
+|<d,R>|
+‖d‖
+j
+0 ( )
+j
+2 4
+3
+2
+2
+1
+2
+1
+(a) Le maximum est atteint pour , donc .j= 2m= 2 1
+(b) .𝛷=d=⟹ 𝛼=𝛷 𝛷 𝛷x= 3 =1 ( 2)
+1
+1
+1
+1 ( ) T
+1 1
+-1 T
+1 ( ) -1 1 1 1
+2
+1
+1
+4
+3
+La 1ère approximation parcimonieuse de  dans ce dictionnaire est donc : x
+0
+4 / 3
+0
+0
+0
+3. Exercice 3 
+1. La représentation parcimonieuse d'un vecteur  dans un dictionnaire  est l'écriture x D
+de  comme une combinaison linéaire d'atomes (colonnes) de  avec très très peu x D
+de composantes non nulles.
+2. Le principe de la relaxation convexe est de remplacer le problème de représentation 
+parcimonieuse :
+  sous contrainte ‖𝛼‖min
+𝛼 0 D𝛼=x
+ minimisation à l'aide de la pseudo-norme  par une minimisation d'une norme ℓ(0) ‖.‖ p
+avec  en utilisant des solveurs convexes.p⩾1
+Le problème devient : 
+  sous contrainte ‖𝛼‖min
+𝛼 p D𝛼=x
+3. Le principe des méthodes gloutonnes est de sélectionner à chaque étape l'atome qui 
+contribue le plus au signal résiduel , d'ôter sa contribution et de recommencer si le R
+<<<PAGE>>>
+nouveau résidu n'est pas assez petit.
+4. (a) L'algo s'arrêt à litération  car la norme du résidu est de k= 2 6, 429.10≪ 𝜖-15
+(b) A la première itération, on sélectionne les atomes dont la contribution est 
+supérieure au seuil : . ce seront donc les atomes n° .2, 579 2, 3, 4
+(c) A la deuxième itération, on sélectionne les atomes dont la contribution est 
+supérieure au seuil : . ce seront donc les atomes n° .1, 266 5; 6; 7; 9
+(d) A l'itération , .k= 0𝛼= 0
+(e) A l'itération , .k= 1𝛼= 0 0, 44 1, 20-0, 32 0 0 0 0 0 0 0 0
+T
+(f) L'estimation finale de  est donnée par : 𝛼
+.𝛼= 0-0, 74 3, 13-0, 43 0, 75-8, 74 11, 67 2, 01 0 0 0 0
+T
+5. (a) L'algo s'arrête à litération  car la norme du résidu est de k= 6 2, 631.10≪ 𝜖-14
+(b) A chaque itération, on sélectionne l'atome dont la contribution est la plus grande. 
+Un seul atome à chaquie itération. Soit dans l'ordre, les atomes n° .3; 6; 7; 11; 12; 5
+(c) A l'itération , .k= 1𝛼= 0 0 1, 313 0 0 0 0 0 0 0 0 0
+T
+(d) A l'itération , .k= 2𝛼= 0 0 1, 437 0 0 4, 654 0 0 0 0 0 0
+T
+(e) La représentation parcimonieuse donnée par OMP est : 
+𝛼= .0 0 1, 92 0-4, 52 6, 09-1, 09 0 0 0 0, 84 0, 14
+T
+(f) L'algo. StOMP est très rapide, donne une réprésentation 7-parcimonieuse.
+OMP donne une représentation 6-parcimonieuse mais au bout de 6 itérations. De plus 
+le résidu de la méthode StOMP est plus petit.
+Il faut donc choisir StOMP.

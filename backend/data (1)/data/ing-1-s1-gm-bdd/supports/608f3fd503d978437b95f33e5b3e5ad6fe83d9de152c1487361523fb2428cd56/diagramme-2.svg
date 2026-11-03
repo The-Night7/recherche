@@ -1,0 +1,103 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- JEU Entity (center) -->
+                        <rect class="entity" x="480" y="350" width="240" height="140" rx="5"/>
+                        <text class="entity-text" x="600" y="375" text-anchor="middle">JEU</text>
+                        <line x1="480" y1="385" x2="720" y2="385" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="490" y="403">#id_jeu</text>
+                        <text class="attribute-text" x="490" y="423">nom</text>
+                        <text class="attribute-text" x="490" y="443">genre</text>
+                        <text class="attribute-text" x="490" y="463">date_sortie</text>
+                        
+                        <!-- DEVELOPPEUR Entity (top left) -->
+                        <rect class="entity" x="50" y="50" width="200" height="100" rx="5"/>
+                        <text class="entity-text" x="150" y="75" text-anchor="middle">DEVELOPPEUR</text>
+                        <line x1="50" y1="85" x2="250" y2="85" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="60" y="103">#id_dev</text>
+                        <text class="attribute-text" x="60" y="123">nom</text>
+                        <text class="attribute-text" x="60" y="143">prénom</text>
+                        
+                        <!-- SOCIETE Entity (top right) -->
+                        <rect class="entity" x="950" y="50" width="200" height="100" rx="5"/>
+                        <text class="entity-text" x="1050" y="75" text-anchor="middle">SOCIETE</text>
+                        <line x1="950" y1="85" x2="1150" y2="85" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="960" y="103">#id_societe</text>
+                        <text class="attribute-text" x="960" y="123">nom</text>
+                        <text class="attribute-text" x="960" y="143">adresse</text>
+                        
+                        <!-- SITE Entity (bottom left) -->
+                        <rect class="entity" x="50" y="650" width="200" height="100" rx="5"/>
+                        <text class="entity-text" x="150" y="675" text-anchor="middle">SITE</text>
+                        <line x1="50" y1="685" x2="250" y2="685" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="60" y="703">#id_site</text>
+                        <text class="attribute-text" x="60" y="723">nom</text>
+                        <text class="attribute-text" x="60" y="743">url</text>
+                        
+                        <!-- JOUEUR Entity (bottom right) -->
+                        <rect class="entity" x="950" y="650" width="200" height="100" rx="5"/>
+                        <text class="entity-text" x="1050" y="675" text-anchor="middle">JOUEUR</text>
+                        <line x1="950" y1="685" x2="1150" y2="685" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="960" y="703">#email</text>
+                        <text class="attribute-text" x="960" y="723">date_naissance</text>
+                        <text class="attribute-text" x="960" y="743">niveau</text>
+                        
+                        <!-- PLATEFORME Entity (middle right) -->
+                        <rect class="entity" x="950" y="380" width="200" height="80" rx="5"/>
+                        <text class="entity-text" x="1050" y="405" text-anchor="middle">PLATEFORME</text>
+                        <line x1="950" y1="415" x2="1150" y2="415" stroke="#1976d2" stroke-width="1"/>
+                        <text class="attribute-text primary-key" x="960" y="433">#id_plateforme</text>
+                        <text class="attribute-text" x="960" y="453">nom (iOS, Android)</text>
+                        
+                        <!-- DEVELOPPE Association -->
+                        <path class="association" d="M 300 200 L 360 180 L 420 200 L 360 220 Z"/>
+                        <text class="association-text" x="360" y="205" text-anchor="middle">DEVELOPPE</text>
+                        
+                        <!-- GERE Association -->
+                        <path class="association" d="M 820 200 L 880 180 L 940 200 L 880 220 Z"/>
+                        <text class="association-text" x="880" y="205" text-anchor="middle">GERE</text>
+                        
+                        <!-- DISPONIBLE_SUR Association -->
+                        <path class="association" d="M 300 580 L 360 560 L 420 580 L 360 600 Z"/>
+                        <text class="association-text" x="360" y="575" text-anchor="middle">DISPONIBLE</text>
+                        <text class="association-text" x="360" y="590" text-anchor="middle">_SUR</text>
+                        <text class="attribute-text" x="285" y="620" style="font-style: italic; font-size: 10px;">nb_téléchargements</text>
+                        
+                        <!-- JOUE Association -->
+                        <path class="association" d="M 820 580 L 880 560 L 940 580 L 880 600 Z"/>
+                        <text class="association-text" x="880" y="585" text-anchor="middle">JOUE</text>
+                        
+                        <!-- COMPATIBLE Association -->
+                        <path class="association" d="M 775 420 L 835 400 L 895 420 L 835 440 Z"/>
+                        <text class="association-text" x="835" y="425" text-anchor="middle">COMPATIBLE</text>
+                        
+                        <!-- Relations lines -->
+                        <line class="relation-line" x1="150" y1="150" x2="360" y2="180"/>
+                        <text class="cardinality-text" x="160" y="145">(1,n)</text>
+                        
+                        <line class="relation-line" x1="360" y1="220" x2="520" y2="350"/>
+                        <text class="cardinality-text" x="500" y="330">(1,n)</text>
+                        
+                        <line class="relation-line" x1="1050" y1="150" x2="880" y2="180"/>
+                        <text class="cardinality-text" x="1030" y="145">(1,n)</text>
+                        
+                        <line class="relation-line" x1="880" y1="220" x2="680" y2="350"/>
+                        <text class="cardinality-text" x="690" y="330">(1,1)</text>
+                        
+                        <line class="relation-line" x1="150" y1="650" x2="360" y2="580"/>
+                        <text class="cardinality-text" x="160" y="645">(1,n)</text>
+                        
+                        <line class="relation-line" x1="360" y1="560" x2="520" y2="490"/>
+                        <text class="cardinality-text" x="500" y="510">(1,n)</text>
+                        
+                        <line class="relation-line" x1="1050" y1="650" x2="880" y2="600"/>
+                        <text class="cardinality-text" x="1030" y="645">(0,n)</text>
+                        
+                        <line class="relation-line" x1="880" y1="560" x2="680" y2="490"/>
+                        <text class="cardinality-text" x="690" y="510">(0,n)</text>
+                        
+                        <line class="relation-line" x1="720" y1="420" x2="775" y2="420"/>
+                        <text class="cardinality-text" x="725" y="415">(1,n)</text>
+                        
+                        <line class="relation-line" x1="895" y1="420" x2="950" y2="420"/>
+                        <text class="cardinality-text" x="900" y="415">(1,n)</text>
+                    </svg>
+                

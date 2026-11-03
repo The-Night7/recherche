@@ -1,0 +1,155 @@
+Filière ingénieur - ING2 : MI
+Fouille de Données T.P. N o 2
+Etude du classeur bayésien et des algorithmes de
+clustering
+17 septembre 2024
+1 Application du théorème de Bayes
+Exercice 1 Soit P la population des champignons. Il y a deux classes
+de champignons : vénéneux et comestible. on s’intéresse à l’attribut binaire
+volve. Soit le tableau suivant :
+classe k 1 : vénéneux 2 : comestible
+P(k) 0.05 0.95
+P(volve|k) 0.9 0.2
+On ramasse les champignons si la règle de Bayes détermine leur classe
+comme comestible. Est ce qu’on ramasse les champignons ayant une volve.
+Exercice 2 Les anglais et les américains orthographient le mot rigueur
+respectivement rigour et rigor.
+Un homme ayant pris une chambre dans un hotel a écrit ce mot sur un
+bout de papier. Une lettre est prise au hasard dans ce mot : c’est un voyelle.
+Quelle la probabilité que cet homme soit anglais?
+1
+<<<PAGE>>>
+Data Mining
+Répéter la mÍme question sachant que l’hotel héberge 60% d’américains, les
+autres étant des anglais.
+2 Classifieur bayésien naif
+Soit l’ensemble d’apprentissage suivant
+Exercice 3 Quel est votre pronostic pour le match de samedi sachant qu’il
+est à domicile, que la balance est positive, les conditions climatiques seront
+bonnes et le match précédent a été gagné?
+3 Etude pratique en utilisant Weka
+Exercice 4 En utilisant le classeur Bayésien , ainsi que la base d’exemples
+Weather. Tester le classeur sur la base de test contenant les trois exemples
+positifs suivants :
+— la journée est ensoleillée et le vent est faible.
+— la journée est ensoleillée, le vent est faible, la temperature est de 23
+degrés et l’humidité est de 70 %.
+— la temperature est de 23 degrés.
+Exercice 5 Effectuer une étude comparative, en mode validation croisée,
+des algorithmes k-plus proche voisin, arbres de décision( ID3 ou J48) et le
+classeur bayésien sur la base de données IRIS. Commenter les résultats.
+2
+<<<PAGE>>>
+Data Mining
+4 Etude pratique avec R
+Le but de cette section est d’appliquer le classifieur bayésien sur le dataset
+IRIS :
+1. Exploration de l’ensemble des données IRIS:
+Caractéristiques :
+dim(iris)
+names(iris)
+str(iris)
+attributes(iris)
+Contenu par ligne ou par colonne:
+iris[1:5,]
+head(iris)
+tail(iris)
+iris$Sepal.Length[1:10]
+Statistiques :
+summary(iris)
+var(iris$Sepal.Length)
+hist(iris$Sepal.Length)
+quantile(iris$Sepal.Length)
+quantile(iris$Sepal.Length, c(.1, .3, .65))
+table(iris$Species)
+pie(table(iris$Species))
+Plot :
+plot(density(iris$Sepal.Length))
+barplot(table(iris$Species))
+boxplot(Sepal.Length~Species, data=iris)
+with(iris, plot(Sepal.Length, Sepal.Width, col=Species, pch=as.numeric(Species)))
+library(scatterplot3d)
+scatterplot3d(iris$Petal.Width, iris$Sepal.Length, iris$Sepal.Width)
+library(MASS)
+parcoord(iris[1:4], col=iris$Species)
+2. Devision en train et test
+set.seed(1234)
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.7, 0.3))
+3
+<<<PAGE>>>
+Data Mining
+trainData <- iris[ind==1,]
+testData <- iris[ind==2,]
+trainData
+testData
+3. Classifiieur bayésien
+library(e1071)
+model=naiveBayes(Species ~ .,data=trainData)
+attributes(model)
+model$apriori
+4. Prédictions et matrices de confusion
+trainPredBayes <- predict(model, newdata = trainData)
+trainPredBayes
+table(trainPredBayes, trainData$Species)
+testPredBayes <-predict(model,newdata=testData)
+table(testPredBayes, testData$Species)
+Exercice 6 Parmi les attributs du modèle bayésien : nous retrouvons les
+attributs apriori et tables. Que représentent ces attributs et à quoi servent-
+ils?
+Exercice 7 En examinant la matrice de confusion sur l’ensemble de test,
+donnerlaprécisionetlerappeldechaqueclasseainsiquel’erreursurl’ensemble
+de test.
+Exercice 8 Ecrire une fonction Evaluator qui prend en paramètre trois
+argument : un modèle, un ensemble de test ainsi que le nombre de colonnes
+et qui affiche la matrice de confusion, la précision et le rappel de chaque
+classe ainsi que l’erreur.
+Exercice 9 : étude du clustering
+1. Appliquer l’algorithme K-means avec k=7
+iris2 <- iris
+iris2$Species <- NULL
+(kmeans.result <- kmeans(iris2, 7))
+2. ReleverlesattributsdumodèleK-Meansetleursvaleurs.Quereprésente
+ces attributs.
+3. Trouver la matrice de correspondance classe cluster.
+4
+<<<PAGE>>>
+Data Mining
+4. représenter graphique les résultats :
+plot(iris2[c("Sepal.Length", "Sepal.Width")], col = kmeans.result$cluster)
+# plot cluster centers
+points(kmeans.result$centers[,c("Sepal.Length", "Sepal.Width")],
+col = 1:3, pch = 8, cex=2)
+5. Appliquer la technique du coude pour déterminer la meilleur valeur du
+paramètre k. Pour cela nous allons créer un plot, qui affiche les ratios
+entre l’inertie intra-cluster et l’inertie totale pour plusieurs valeurs
+prédéterminées de k. Il s’agit ici de repérer visuellement le "coude" du
+graphique,quisesitueraaunombreidéaldeclusters.Àcetemplacement,
+l’ajout d’un cluster supplémentaire n’apportera pas une diminution
+de ratio assez intéressante pour compenser la perte d’information
+apportée par un cluster supplémentaire.
+ratio_ss <- data.frame(cluster = seq(from = 1, to = 9, by = 1))
+for (k in 1:9) {
+km_model <- kmeans(iris2, k)
+ratio_ss$ratio[k] <- km_model$tot.withinss / km_model$totss
+}
+ggplot(ratio_ss, aes(cluster, ratio)) +
+geom_line() +
+geom_point()
+Quel sera la meilleur valeur du paramètre k?
+6. Appliquerlaméthodeclassificationhiérarchiqueascendantsur40exemples:
+idx <- sample(1:dim(iris)[1], 40)
+irisSample <- iris[idx,]
+irisSample$Species <- NULL
+hc <- hclust(dist(irisSample), method="ave")
+7. Représenter graphiquement es résultas avec une coupure permettant
+d’obtenir 3 clusters
+plot(hc, labels=iris$Species[idx])
+# cut tree into 3 clusters
+rect.hclust(hc, k=3)
+groups <- cutree(hc, k=3)
+5
+<<<PAGE>>>
+Data Mining
+Exercice 10 Refaire le même travail sur le datasetPimaIndiansDiabetes
+de la librairemlbench
+6

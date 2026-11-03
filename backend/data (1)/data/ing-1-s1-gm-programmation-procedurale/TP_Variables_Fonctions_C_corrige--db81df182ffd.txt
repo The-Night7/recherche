@@ -1,0 +1,108 @@
+TP – Variables et Fonctions (Corrigé en C)
+1. Saisie d’un entier
+Objectif : écrire une fonction saisieEntier(void) qui lit et retourne un entier valide saisi par
+l’utilisateur. Si la saisie est incorrecte, le programme affiche une erreur et se termine avec exit().
+#include <stdio.h>
+#include <stdlib.h>
+int saisieEntier(void) {
+    int n;
+    printf("Entrez un entier : ");
+    if (scanf("%d", &n) != 1) {
+        printf("Erreur : saisie invalide.\n");
+        exit(EXIT_FAILURE);
+    }
+    return n;
+}
+int main() {
+    int nb = saisieEntier();
+    printf("Vous avez saisi : %d\n", nb);
+    return 0;
+}
+2. Portée d’une variable
+Cet exercice montre que les variables locales ne sont visibles que dans leur bloc de déclaration.
+Deux variables portant le même nom dans des blocs différents sont indépendantes.
+#include <stdio.h>
+void bidon() {
+    int n = 0;
+    printf("Dans bidon(), n = %d\n", n);
+    scanf("%d", &n);
+    printf("Dans bidon(), n = %d\n", n);
+}
+int main() {
+    int n = 0;
+    printf("Dans main(), n = %d\n", n);
+    scanf("%d", &n);
+    printf("Dans main(), n = %d\n", n);
+    bidon();
+    printf("De retour dans main(), n = %d\n", n);
+    return 0;
+}
+3. Problème d’appel de fonction
+Les paramètres sont passés par valeur en C : les modifications dans la fonction n’affectent pas les
+variables d’origine.
+#include <stdio.h>
+void echange(int nb1, int nb2) {
+
+<<<PAGE>>>
+    int tmp = nb1;
+    nb1 = nb2;
+    nb2 = tmp;
+    printf("Après échange (dans la fonction) : nb1 = %d, nb2 = %d\n", nb1, nb2);
+}
+int main() {
+    int a = 5, b = 7;
+    printf("Avant echange : a = %d, b = %d\n", a, b);
+    echange(a, b);
+    printf("Après echange (dans main) : a = %d, b = %d\n", a, b);
+    return 0;
+}
+4. Programme complet avec menu
+Ce programme propose un menu avec trois fonctions : affichage d’un triangle, table de
+multiplication et vérification d’un nombre d’Armstrong.
+#include <stdio.h>
+#include <math.h>
+void affichageTriangle(int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - i - 1; j++) printf(" ");
+        for (int j = 0; j < 2 * i + 1; j++) printf("*");
+        printf("\n");
+    }
+}
+void tableMultiplication(int n) {
+    printf("Table de multiplication de %d :\n", n);
+    for (int i = 1; i <= 10; i++)
+        printf("%d x %d = %d\n", i, n, i * n);
+}
+void estArmstrong(int n) {
+    int original = n, somme = 0, p = 0, temp = n;
+    while (temp) { p++; temp /= 10; }
+    temp = n;
+    while (temp) {
+        int digit = temp % 10;
+        somme += pow(digit, p);
+        temp /= 10;
+    }
+    if (somme == original)
+        printf("%d est un nombre d’Armstrong.\n", n);
+    else
+        printf("%d n’est pas un nombre d’Armstrong.\n", n);
+}
+int main() {
+    int choix, n;
+    do {
+        printf("\n1. Triangle\n2. Table de multiplication\n3. Nombre d’Armstrong\n4. Quitter\nChoix : ");
+        scanf("%d", &choix);
+        if (choix >= 1 && choix <= 3) {
+            printf("Entrez un entier : ");
+            scanf("%d", &n);
+        }
+        switch (choix) {
+
+<<<PAGE>>>
+            case 1: affichageTriangle(n); break;
+            case 2: tableMultiplication(n); break;
+            case 3: estArmstrong(n); break;
+        }
+    } while (choix != 4);
+    return 0;
+}

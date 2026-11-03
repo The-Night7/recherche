@@ -1,0 +1,94 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Modèle linéaire et extensions
+Donné le 15-12-2022 (Durée 2h00)
+Téléphones portables et tout document sont interdits – Calculatrice standard autorisée
+EXERCICE 1 (4 points) On considère le modèle linéaire
+Yi = a0 + a1Xi1 + .. . + apXip + εi, i = 1, .. ., n
+On suppose que les résidus sont i.i.d, de loi normale N (0, σ2) et non corrélés. Soit ˆY0 la prévision de la
+variable dépendante correspondant aux valeurs du vecteur ligne x0 = (1, X01,. .. ,X0p) des p variables in-
+dépendantes.
+1. Montrer que E[ˆY0] = E[Y0].
+2. Montrer que l’erreur dans la prévision de la valeur moyenne de Y0 est
+E
+h¡ˆY0 − E[Y0]
+¢2i
+= σ2x0(X′X)−1x′
+0
+3. Construire un intervalle de confiance de niveau 1 − α pour E[Y0].
+EXERCICE 2 (5 points) On souhaite expliquer la variable Y à l’aide du prédicteur X1 où
+Y 5.1 2.2 0.9 1.9 5.2
+X1 1 2 X3,1 4 5
+1. La matrice de schéma du modèle d’ajustement de Y par Yi = a0 + a1Xi ,1 + ϵi , a fourni les résultats
+partiels suivants: X′X =
+µ ∗ 15
+∗ 55
+¶
+(a) Compléter la matrice X′X.
+(b) Déterminer X3,1, l’observation de X1 pour l’individu i = 3.
+(c) Interpréter et commenter les résultats partiels de la sortie R de cet ajustement :
+Multiple R-squared: 6.455e-05, Adjusted R-squared: -0.3332
+F-statistic: 0.0001937 on 1 and 3 DF, p-value: 0.9898
+2. On ajuste cette fois-ci le modèle yi = a0 + a1Xi ,1 + a2X2
+i ,1 + ϵi pour expliquer Y et on obtient
+Residual standard error: 0.1673 on 2 degrees of freedom
+Multiple R-squared: 0.9964, Adjusted R-squared: 0.9928
+F-statistic: 275.6 on 2 and 2 DF, p-value: 0.003615
+(a) Quelle est la taille de la matrice de schéma de ce modèle?
+(b) Le modèle est-il linéaire?
+(c) Interpréter ces résultats et commenter ?
+3. Que peut en conclure sur le prédicteur X1 dans les deux ajustements proposés dans les questions 1.
+et 2. ? Justifier votre réponse.
+<<<PAGE>>>
+EXAMEN : M ODÈLE LINÉAIRE ET EXTENSIONS
+EXERCICE 3 (7 points) On considère le modèle de régression linéaire avec constante etp variables explica-
+tives
+Y = Xa + ε (1)
+On note ˜Y la variable centrée réduite obtenue de Y, ˜X la matrice du schéma du modèle de régression de
+˜Y sur les variables centrées et réduites ˜X j obtenues de X j , j = 1, .. ., p et bY l’ajustement de Y à partir du
+modèle (1).
+1. Soit b˜a un estimateur du coefficient de la régression de ˜Y en utilisant la matrice de schéma ˜X. Montrer
+que
+bY = Y1n + σY ˜Xb˜a.
+2. Soit λ > 0. On considère le problème de la régression Ridge:
+Ridge: min
+a∈Rp
+¡ °°˜Y − ˜Xa
+°°2
+2 + λ∥a∥2
+2
+¢
+(2)
+(a) Montrer que la matrice ˜X′ ˜X + λIp est inversible.
+(b) Montrer que l’estimateur Ridge b˜aridge, solution de (2), est donné par b˜aridge =
+‡
+˜X
+′
+˜X + λIp
+·−1
+˜X
+′
+˜Y.
+(c) Montrer que σY ˜X′ ˜Y = ˜X′ Y.
+3. Application: On postule le modèle de régression simple
+Y = a01n + a1X1 + ϵ
+et on note Z la variable centrée réduite obtenue de X1.
+X1 -1 0 1 3 0 2 -4 -1
+Y 35 40 36 38 40 43 45 43
+(a) Calculer Z .
+(b) On considère λ = 2. Montrer que l’ajustement de la solution Ridge est bY = 401n − 1.1Z .
+(c) En déduire que bY = 401n − 0.55X1.
+EXERCICE 4 (4 points) On considère une suite de v.a. réelles ( Xi ), i = 1, .. .,n indépendantes et identique-
+ment distribuées de fonction de répartition notée F .
+1. Montrer qu’un estimateur de F est donné pour tout x ∈ R par cFn(x) = 1
+n
+nX
+i =1
+1{Xi ≤x}.
+2. Montrer que cFn est un estimateur sans biais de F .
+3. Montrer que Var
+¡cFn(x)
+¢
+≤ 1
+4n .
+CY-Tech 2/2

@@ -1,0 +1,4243 @@
+Analyse-Premier semestre 2024 - 2025
+CY Tech
+TD Analyse
+Suites.
+Analyse
+<<<PAGE>>>
+Exercice 1
+Donner un exemple de suite :
+1 Croissante et major´ ee.
+2 Ni croissante, ni d´ ecroissante.
+3 Ni major´ ee, ni minor´ ee.
+Solution : Pour chaque point nous allons donner un exemple , mais ces exemples ne
+sont pas les seuls. Essaye de trouver des autres exemples de suites satisfaisant les
+propri´ et´ es demand´ ees.
+1 Croissante et major´ ee :Pour tout n∈ N, soit
+un = 1− 1
+n + 1.
+Alors
+un+1− un =
+(
+1− 1
+n + 2
+)
+−
+(
+1− 1
+n + 1
+)
+= 1
+n + 1− 1
+n + 2 = 1
+(n + 1)(n + 2) > 0.
+Donc un est croissant. De mˆ eme
+∀n∈ N, − 1
+n + 1 < 0 =⇒ 1− 1
+n + 1 < 1.
+Donc un est major´ ee.
+Analyse
+<<<PAGE>>>
+Exercice 1
+2 Ni croissante, ni d´ ecroissante :Pour tout n∈ N, soit
+un = sin
+( nπ
+2
+)
+.
+Notons que
+un =
+
+
+
+1 si n = 1 + 4k, k∈ N
+0 si n = 2k, k∈ N
+−1 si n = 3 + 4k, k∈ N
+Alors un n’est ni croissante, ni d´ ecroissante.
+3 Ni major´ ee, ni minor´ ee :Pour tout n∈ N, soit
+un =
+{ n si n est pair,
+−n si n est impair.
+Notons que
+lim
+k→+∞
+u2k = +∞ et lim
+k→+∞
+u2k+1 =−∞.
+Alors un n’est ni major´ ee, ni minor´ ee.
+Analyse
+<<<PAGE>>>
+Exercice 2
+´Ecrire ` a l’aide de quantiﬁcateurs les propri´ et´ es suivantes :
+1 La suite ( un) est positive ` a partir d’un certain rang.
+2 La suite ( un) est constante ` a partir d’un certain rang.
+3 La suite ( un) est croissante ` a partir d’un certain rang.
+Solution :
+1 La suite ( un) est positive ` a partir d’un certain rang :
+∃N∈ N, ∀n≥ N, un≥ 0.
+2 La suite ( un) est constante ` a partir d’un certain rang :
+∃N∈ N, ∀n≥ N, un = uN.
+3 La suite ( un) est croissante ` a partir d’un certain rang :
+∃N∈ N, ∀n≥ N, un+1≥ un.
+Analyse
+<<<PAGE>>>
+Exercice 3
+D´ eterminer les limites des suites ci-apr` es en revenant ` a la d´ eﬁnition (avec
+les quantiﬁcateurs) :
+a) un = n + 1
+n + 2 b) vn = n2 + 1
+n + 1 c) wn =−3× 2n+1
+Analyse
+<<<PAGE>>>
+Exercice 3
+(a) un = n+1
+n+2 : Nous avons
+lim
+n→∞
+n + 1
+n + 2 = lim
+n→∞
+n(1 + 1
+n )
+n(1 + 2
+n ) = lim
+n→∞
+1 + 1
+n
+1 + 2
+n
+=
+lim
+n→∞
+1 + 1
+n
+lim
+n→∞
+1 + 2
+n
+= 1.
+Maintenant, pour montrer l’´ egalit´ e pr´ ec´ edente en revenant ` a la d´ eﬁnition de la
+limite, on doit v´ eriﬁer
+∀ϵ> 0, ∃N∈ N, ∀n∈ N, (n≥ N =⇒ |un− 1|<ϵ ).
+Soit ϵ> 0, on cherche N∈ N, tel que
+∀n≥ N, |un− 1|<ϵ.
+C’est-` a-dire, on cherche N∈ N, tel que
+∀n≥ N,
+⏐⏐⏐⏐
+n + 1
+n + 2− 1
+⏐⏐⏐⏐<ϵ ⇐⇒ ∀n≥ N,
+⏐⏐⏐⏐
+n + 1− (n + 2)
+n + 2
+⏐⏐⏐⏐<ϵ
+⇐⇒ ∀n≥ N, 1
+n + 2 <ϵ
+⇐⇒ ∀n≥ N, 1
+ϵ < n + 2
+⇐⇒ ∀n≥ N, 1
+ϵ− 2< n.
+Analyse
+<<<PAGE>>>
+Exercice 3
+Ainsi
+|un− 1|<ϵ ⇐⇒ 1
+ϵ− 2≤ n.
+Posons N = E
+( 1
+ϵ− 2
+)
++ 1. Alors pour tout n≥ N, nous avons
+n≥ N > 1
+ϵ− 2 =⇒ | un− 1|<ϵ =⇒ lim
+n→+∞
+un = 1.
+Analyse
+<<<PAGE>>>
+Exercice 3
+(b) v n = n2+1
+n+1 : Nous avons
+lim
+n→∞
+n2 + 1
+n + 1 = lim
+n→∞
+n(n + 1
+n )
+n(1 + 1
+n ) = lim
+n→∞
+n + 1
+n
+1 + 1
+n
+=
+lim
+n→∞
+n + 1
+n
+lim
+n→∞
+1 + 1
+n
+= +∞.
+Maintenant, pour montrer l’´ egalit´ e pr´ ec´ edente en revenant ` a la d´ eﬁnition de la
+limite, on doit v´ eriﬁer
+∀M > 0, ∃N∈ N, ∀n∈ N, (n≥ N =⇒ vn > M).
+Soit M > 0, on cherche N∈ N, tel que
+∀n≥ N, vn > M.
+Or on sait que
+n2 + 1> n2− 1 =⇒ n2 + 1
+n + 1 > n2− 1
+n + 1 = (n− 1)(n + 1)
+n + 1 = n− 1
+Donc il suﬃt de garantir
+n− 1> M pour obtenir n2 + 1
+n + 1 > M.
+Analyse
+<<<PAGE>>>
+Exercice 3
+Sachant que
+n− 1> M ⇐⇒ n> M + 1,
+il suﬃt de poser
+N = E (M + 1) + 1.
+Alors pour tout n≥ N, nous avons
+n> M + 1 =⇒ n2 + 1
+n + 1 > M =⇒ lim
+n→+∞
+vn = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 3
+(c) w n =−3· 2n+1 : Nous avons
+lim
+n→∞
+−3· 2n+1 =−3 lim
+n→∞
+2· 2n =−6 lim
+n→∞
+2n =−6· (+∞) =−∞.
+Maintenant, pour montrer l’´ egalit´ e pr´ ec´ edente en revenant ` a la d´ eﬁnition de la
+limite, on doit v´ eriﬁer
+∀m< 0, ∃N∈ N, ∀n∈ N, (n≥ N =⇒ wn < m).
+Soit m< 0, on cherche N∈ N, tel que
+∀n≥ N, wn < m.
+C’est-` a-dire, on cherche N∈ N, tel que pour tout n> N, nous avons
+−3· 2n+1 < m ⇐⇒ 2n+1 >− m
+3 ⇐⇒ ln
+(
+2n+1
+)
+> ln
+(−m
+3
+)
+⇐⇒ (n + 1) ln(2)> ln
+(−m
+3
+)
+⇐⇒ (n + 1)> ln
+(−m
+3
+)
+ln(2)
+⇐⇒ n> ln
+(−m
+3
+)
+ln(2) − 1.
+Analyse
+<<<PAGE>>>
+Exercice 3
+Ainsi
+wn < m ⇐⇒ n> ln
+(−m
+3
+)
+ln(2) − 1.
+Posons N = E
+(
+ln(−m
+3 )
+ln(2) − 1
+)
++ 1. Alors pour tout n≥ N, nous avons
+n≥ N > ln
+(−m
+3
+)
+ln(2) − 1 =⇒ wn < m =⇒ lim
+n→+∞
+wn =−∞.
+Analyse
+<<<PAGE>>>
+Exercice 4
+D´ eterminer si elles existent les limites des suites d´ eﬁnies par :
+a) 1092n2
+n + n3 b)
+√
+n + 2−√n c )
+√n sin n
+n +√n
+d)
+√
+n +√n−√n e )
+√
+n2 + n + 1−
+√
+n2 + 1 f ) (−1)n + n
+n + 7√n
+g) (−3)n + 7n
+2n + 5n h) n2 + cos n
+sin(n)− 3n2 i) 1
+n2 + 2
+n2 +... n
+n2
+`A faire chez soi :
+j)
+√
+n + 1−√n k )
+√n− 1√n + 1 l) 2n− 3n+1
+52n
+m)
+√
+n2 + 2n + 3−
+√
+n2 + n + 1
+Solution :
+a) un = 1092n2
+n+n3 : Nous avons
+lim
+n→∞
+1092n2
+n + n3 = lim
+n→∞
+n3
+n3· 1092 1
+n
+1
+n2 + 1 = 1092 lim
+n→∞
+1
+n
+1
+n2 + 1 = 1092·
+lim
+n→∞
+1
+n
+lim
+n→∞
+1
+n2 + 1 = 0
+1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+b) un =√n + 2−√n : Nous avons
+√
+n + 2−√n =
+(√
+n + 2−√n
+)
+·
+√n + 2 +√n√n + 2 +√n
+= n + 2− n√n + 2 +√n = 2√n + 2 +√n
+Donc
+lim
+n→∞
+√
+n + 2−√n = lim
+n→∞
+2√n + 2 +√n
+= 2
+lim
+n→∞
+√n + 2 +√n = 2
++∞ = 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+c) un =
+√n·sin(n)
+n+√n : Nous avons
+√n sin n
+n +√n = n
+n·
+(√n
+n · sin(n)
+)
+(
+1 +
+√n
+n
+) =
+√n
+n · sin(n)
+1 +
+√n
+n
+=
+1√n· sin(n)
+1 + 1√n
+Donc
+lim
+n→∞
+√n· sin(n)
+n +√n = lim
+n→∞
+1√n· sin(n)
+1 + 1√n
+=
+lim
+n→∞
+1√n· sin(n)
+lim
+n→∞
+1 + 1√n
+= 0
+1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+d) un =
+√
+n +√n−√n : Nous avons
+√
+n +√n−√n =
+(√
+n +√n−√n
+)
+·
+√
+n +√n +√n√
+n +√n +√n
+= n +√n− n√
+n +√n +√n
+=
+√n√
+n
+(
+1 +
+√n
+n
+)
++√n
+=
+√n
+√n·
+√
+1 + 1√n +√n
+= 1√
+1 + 1√n + 1
+.
+Donc
+lim
+n→∞
+√
+n +√n−√n = lim
+n→∞
+1√
+1 + 1√n + 1
+= 1
+lim
+n→∞
+√
+1 + 1√n + 1
+= 1
+2.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(e) un =
+√
+n2 + n + 1−
+√
+n2 + 1 : Nous avons
+√
+n2 + n + 1−
+√
+n2 + 1 = (
+√
+n2 + n + 1−
+√
+n2 + 1)·
+√
+n2 + n + 1 +
+√
+n2 + 1√
+n2 + n + 1 +
+√
+n2 + 1
+= n2 + n + 1− (n2 + 1)√
+n2 + n + 1 +
+√
+n2 + 1
+= n√
+n2 + n + 1 +
+√
+n2 + 1
+.
+Donc
+lim
+n→∞
+√
+n2 + n + 1− (
+√
+n2 + 1) = lim
+n→∞
+n√
+n2 + n + 1 +
+√
+n2 + 1
+= lim
+n→∞
+n√
+n2·
+(
+1 + 1
+n + 1
+n2
+)
++
+√
+n2·
+(
+1 + 1
+n2
+)
+= lim
+n→∞
+n
+n·
+√
+1 + 1
+n + 1
+n2 + n·
+√
+1 + 1
+n2
+= lim
+n→∞
+1√
+1 + 1
+n + 1
+n2 +
+√
+1 + 1
+n2
+= 1
+2.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(f) un = (−1)n+n
+n+7√n : Nous avons
+lim
+n→+∞
+(−1)n + n
+n + 7√n = lim
+n→+∞
+n
+n·
+(−1)n
+n + 1
+1 + 7
+√n
+n
+= lim
+n→+∞
+(−1)n
+n + 1
+1 + 7 1√n
+=
+lim
+n→+∞
+(−1)n
+n + 1
+lim
+n→+∞
+1 + 7 1√n
+= 1
+1 = 1.
+(g) un = (−3)n+7n
+2n+5n : Nous avons
+lim
+n→+∞
+(−3)n + 7n
+2n + 5n = lim
+n→+∞
+7n
+5n·
+(
+− 3
+7
+)n
++ 1( 2
+5
+)n
++ 1 =
+(
+lim
+n→+∞
+7n
+5n
+)
+·
+(
+lim
+n→+∞
+(
+− 3
+7
+)n
++ 1( 2
+5
+)n
++ 1
+)
+= (+∞)· (1) = +∞.
+(h) un = n2+cos n
+sin(n)−3n2 : Nous avons
+lim
+n→+∞
+n2 + cos n
+sin(n)− 3n2 = lim
+n→+∞
+n2
+n2· 1 + cos n
+n2
+sin(n)
+n2 − 3
+= lim
+n→+∞
+1 + cos n
+n2
+sin(n)
+n2 − 3
+=− 1
+3
+Analyse
+<<<PAGE>>>
+Exercice 4
+(i) un = 1
+n2 + 2
+n2 +... n
+n2 : Nous avons
+un = 1
+n2 + 2
+n2 +... n
+n2
+= 1 + 2 +··· + n
+n2
+= n(n + 1)
+2n2
+= n + 1
+2n .
+Par cons´ equent
+lim
+n→+∞
+un = lim
+n→+∞
+n + 1
+2n = lim
+n→+∞
+n
+n· 1 + 1
+n
+2 = lim
+n→+∞
+1 + 1
+n
+2 = 1
+2.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(j) un =√n + 1−√n : Nous avons
+√
+n + 1−√n =
+(√
+n + 1−√n
+)
+·
+√n + 1 +√n√n + 1 +√n
+= n + 1− n√n + 1 +√n = 1√n + 1 +√n
+Donc
+lim
+n→∞
+√
+n + 1−√n = lim
+n→∞
+1√n + 1 +√n = 1
+lim
+n→+∞
+√n + 1 +√n = 0
++∞ = 0.
+(k) un =
+√n−1√n+1 : Nous avons
+lim
+n→+∞
+√n− 1√n + 1 = lim
+n→+∞
+√n + (1− 2)√n + 1 = lim
+n→+∞
+√n + 1√n + 1− 2√n + 1
+= 1− lim
+n→+∞
+2√n + 1 = 1− 0 = 1.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(l) un = 2n−3n+1
+52n : Nous avons
+lim
+n→+∞
+2n− 3n+1
+52n = lim
+n→+∞
+( 3
+25
+)n
+·
+(( 2
+3
+)n
+− 3
+)
+= lim
+n→+∞
+( 3
+25
+)n
+· lim
+n→+∞
+(( 2
+3
+)n
+− 3
+)
+= 0· 0 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 4
+(m) un =
+√
+n2 + 2n + 3−
+√
+n2 + n + 1 : Nous avons
+√
+n2 + 2n + 3−
+√
+n2 + n + 1 = (
+√
+n2 + 2n + 3−
+√
+n2 + n + 1)
+·
+√
+n2 + 2n + 3 +
+√
+n2 + n + 1√
+n2 + 2n + 3 +
+√
+n2 + n + 1
+= n2 + 2n + 3− (n2 + n + 1)√
+n2 + 2n + 3 +
+√
+n2 + n + 1
+= n + 2√
+n2 + 2n + 3 +
+√
+n2 + n + 1
+= n(1 + 2
+n )
+n
+√
+1 + 2 1
+n + 3
+n2 + n
+√
+1 + 1
+n + 1
+n2
+.
+Donc
+lim
+n→+∞
+√
+n2 + 2n + 3−
+√
+n2 + n + 1 = lim
+n→+∞
+1 + 2
+n√
+1 + 2 1
+n + 3
+n2 +
+√
+1 + 1
+n + 1
+n2
+=
+lim
+n→+∞
+1 + 2
+n
+lim
+n→+∞
+√
+1 + 2 1
+n + 3
+n2 +
+√
+1 + 1
+n + 1
+n2
+= 1
+2.
+Analyse
+<<<PAGE>>>
+Exercice 5
+´Etudier les suites de terme g´ en´ eral :
+1 un = an− bn
+an + bn , avec a, b> 0
+2 un = 1 + a + a2 +··· + an , avec a> 0
+Solution :
+(1) un = an− bn
+an + bn : Nous avons trois cas ` a ´ etudier.Si a = b, alors
+∀n∈ N, an− bn = 0 =⇒ ∀ n∈ N, un = 0 =⇒ lim
+n→+∞
+un = 0.
+Si a> b, alors on ´ ecrit
+an− bn
+an + bn = an
+an· 1−
+( b
+a
+)n
+1 +
+( b
+a
+)n.
+Puisque 0 < b
+a < 1 on en d´ eduit
+lim
+n→+∞
+( b
+a
+)n
+= 0 =⇒ lim
+n→+∞
+an− bn
+an + bn = lim
+n→+∞
+1−
+( b
+a
+)n
+1 +
+( b
+a
+)n =
+lim
+n→+∞
+1−
+( b
+a
+)n
+lim
+n→+∞
+1 +
+( b
+a
+)n = 1
+1 = 1.
+Analyse
+<<<PAGE>>>
+Exercice 5
+Si b> a, alors on ´ ecrit
+an− bn
+an + bn = bn
+bn·
+( a
+b
+)n
+− 1( a
+b
+)n
++ 1.
+Puisque 0 < a
+b < 1 on en d´ eduit
+lim
+n→+∞
+( a
+b
+)n
+= 0 =⇒ lim
+n→+∞
+an− bn
+an + bn = lim
+n→+∞
+( a
+b
+)n
+− 1( a
+b
+)n
++ 1 =
+lim
+n→+∞
+( a
+b
+)n
+− 1
+lim
+n→+∞
+( a
+b
+)n
++ 1 =−1.
+Analyse
+<<<PAGE>>>
+Exercice 5
+(2) un = 1 + a + a2 +··· + an, avec a> 0 : Nous avons
+1 + a + a2 +··· + an =
+{ n + 1 si a = 1,
+an+1−1
+a−1 si a⁄= 1.
+Par cons´ equent
+lim
+n→∞
+1 + a + a2 +··· + an =
+
+
+
+lim
+n→∞
+n + 1 = +∞ si a = 1,
+lim
+n→∞
+an+1−1
+a−1 =
+lim
+n→+∞
+an+1−1
+a−1 si a⁄= 1.
+Maintenant
+lim
+n→∞
+an =
+{ +∞ si a> 1
+0 si 0 ≤ a< 1 =⇒ lim
+n→∞
+1+··· +an =
+{ +∞ si a≥ 1,
+1
+1−a si 0≤ a< 1.
+Analyse
+<<<PAGE>>>
+Exercice 6
+D´ eterminer si elles existent les limites des suites d´ eﬁnies par :
+1 lim
+n→+∞
+(
+1 + x
+n
+)n
+, x∈ R
+Indication : lim
+t→0
+ln(1 + t)
+t = 1
+2 lim
+n→+∞
+n√
+n2
+3 lim
+n→+∞
+sin
+( n2 + 2n + 3
+n + 1 π
+)
+`A faire chez soi :
+a) n
+1
+n b) ln
+( 1 + n
+n2
+)
+Analyse
+<<<PAGE>>>
+Exercice 6
+(1) lim
+n→+∞
+(
+1 + x
+n
+)n, x∈ R : Si x = 0, alors∀n∈ N,
+(
+1 + 0
+n
+)n = 1, donc
+lim
+n→+∞
+(
+1 + 0
+n
+)n
+= 1.
+Supposons x∈ R∗, nous pouvons ´ ecrire(
+1 + x
+n
+)n
+= exp
+(
+ln
+(
+1 + x
+n
+)n)
+= exp
+(
+n ln
+(
+1 + x
+n
+))
+= exp
+( x
+x· n ln
+(
+1 + x
+n
+))
+= exp
+(
+x· ln
+(
+1 + x
+n
+)
+x
+n
+)
+.
+Maintenant
+Pour tout x∈ R, lim
+n→+∞
+x
+n = 0.
+lim
+t→0
+ln(1+t)
+t = 1.
+Le Theor` eme de Composition ` a gauche par une fonction, avec
+f (t) = ln(1 + t)
+t et un = x
+n,
+nous permet donc de conclure
+lim
+n→+∞
+(
+ln
+(
+1 + x
+n
+)
+x
+n
+)
+= 1 =⇒ lim
+n→+∞
+(
+x· ln
+(
+1 + x
+n
+)
+x
+n
+)
+= x.
+Analyse
+<<<PAGE>>>
+Exercice 6
+Finalement, notons que
+lim
+t→x
+exp(t) = exp(x).
+Le Theor` eme de Composition ` a gauche par une fonction, avec
+f (t) = exp(t) et un = x· ln
+(
+1 + x
+n
+)
+x
+n
+,
+nous permet donc de conclure
+lim
+n→+∞
+exp
+(
+x· ln
+(
+1 + x
+n
+)
+x
+n
+)
+= exp(x) =⇒ lim
+n→+∞
+(
+1 + x
+n
+)n
+= exp(x).
+Analyse
+<<<PAGE>>>
+Exercice 6
+(2) lim
+n→+∞
+n√
+n2 : Commen¸ cons par noter que
+n√
+n2 = n
+2
+n = exp
+(
+ln
+(
+n
+2
+n
+))
+= exp
+( 2
+n ln(n)
+)
+.
+Notons maintenant que
+quand x tend vers 0, l’application e x tends vers 1.
+Par cons´ equent, en d´ emontrant que
+lim
+n→+∞
+2
+n ln(n) = 0,
+le Th´ eor` eme de composition ` a gauche, avec
+f (x) = exp(x) et un = 2
+n ln(n),
+nous permet donc de conclure
+lim
+n→+∞
+n√
+n2 = lim
+n→+∞
+exp
+( 2
+n ln(n)
+)
+= 1.
+Analyse
+<<<PAGE>>>
+Exercice 6
+Montrons donc que
+lim
+n→+∞
+1
+n ln(n) = 0.
+Pour cela, on commence par noter que
+∀x∈ R∗
++, x < e x =⇒ ln(x)< x.
+∀n∈ N∗, n = (√n)2 =⇒ ln(n) = ln
+(
+(√n)2
+)
+= 2 ln(√n).
+Grˆ ace au point pr´ ec´ edent on obtient donc l’in´ egalit´ e
+ln(n) = 2 ln(√n)< 2√n.
+D’o` u on conclut
+∀n∈ N∗, 0≤ ln(n) = 2 ln
+(√n
+)
+< 2√n =⇒ 0≤ ln(n)
+n < 2√n
+n = 2√n.
+D’apr` es leTh´ eor` eme d’Encadrementnous pouvons donc ´ ecrire
+0≤ lim
+n→+∞
+ln(n)
+n ≤ lim
+n→+∞
+2√n = 0 =⇒ lim
+n→+∞
+ln(n)
+n = 0.
+Analyse
+<<<PAGE>>>
+Exercice 6
+Puisque
+lim
+n→+∞
+ln(n)
+n = 0
+du Theor` eme de Composition ` a gauche par une fonction, on conclut
+lim
+n→+∞
+n√
+n2 = lim
+n→+∞
+exp
+( 2
+n ln(n)
+)
+= 1.
+Analyse
+<<<PAGE>>>
+Exercice 6
+(3) lim
+n→+∞
+sin
+(
+n2+2n+3
+n+1 π
+)
+: Nous avons
+sin
+( n2 + 2n + 3
+n + 1 π
+)
+= sin
+(
+(n + 1)π + 2π
+n + 1
+)
+= cos((n + 1)π) sin
+( 2π
+n + 1
+)
+.
+Donc
+lim
+n→+∞
+sin
+( n2 + 2n + 3
+n + 1 π
+)
+= lim
+n→+∞
+cos((n + 1)π) sin
+( 2π
+n + 1
+)
+.
+Maintenant
+lim
+n→+∞
+2π
+n+1 = 0.
+Quand x tend vers 0 , l’application sin( x) tend vers 0.
+Le Theor` eme de Composition ` a gauche par une fonction, avec
+f (x) = sin(x) et un = 2π
+n + 1,
+nous permet donc de conclure
+lim
+n→+∞
+sin
+( 2π
+n + 1
+)
+= 0.
+Analyse
+<<<PAGE>>>
+Exercice 6
+Finalement, puisque pour tout n∈ N nous avons
+−1≤ cos((n + 1)π)≤ 1.
+Nous pouvons ´ ecrire
+− sin
+( 2π
+n + 1
+)
+≤ cos((n + 1)π) sin
+( 2π
+n + 1
+)
+≤ sin
+( 2π
+n + 1
+)
+.
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+0 =− lim
+n→+∞
+sin
+( 2π
+n + 1
+)
+≤ lim
+n→+∞
+cos((n + 1)π) sin
+( 2π
+n + 1
+)
+≤ lim
+n→+∞
+sin
+( 2π
+n + 1
+)
+= 0.
+Ainsi
+lim
+n→+∞
+sin
+( n2 + 2n + 3
+n + 1 π
+)
+= lim
+n→+∞
+cos((n + 1)π) sin
+( 2π
+n + 1
+)
+= 0.
+Analyse
+<<<PAGE>>>
+Exercice 6
+(a) lim
+n→+∞
+n
+1
+n : Nous avons
+n
+1
+n = exp
+(
+ln
+(
+n
+1
+n
+))
+= exp
+( ln(n)
+n
+)
+.
+Maintenant
+lim
+n→+∞
+ln(n)
+n = 0.
+Quand x tend vers 0 par la droite , l’application exp( x) tend vers 1.
+Le Theor` eme de Composition ` a gauche par une fonction, avec
+f (x) = exp(x) et un = ln(n)
+n ,
+nous permet donc de conclure
+lim
+n→+∞
+n
+1
+n = lim
+n→+∞
+exp
+( ln(n)
+n
+)
+= 1.
+Analyse
+<<<PAGE>>>
+Exercice 6
+(b) lim
+n→+∞
+ln
+( 1+n
+n2
+)
+: Notons que
+lim
+n→+∞
+1+n
+n2 = 0.
+Quand x tend vers 0 par la droite , l’application ln( x) tend vers −∞.
+Le Theor` eme de Composition ` a gauche par une fonction, , avec
+f (x) = ln(x) et un = 1 + n
+n2 ,
+nous permet donc de conclure
+ln
+( 1 + n
+n2
+)
+−→
+n→+∞
+−∞.
+Analyse
+<<<PAGE>>>
+Exercice 7
+D´ eterminer si elles existent les limites des suites d´ eﬁnies par :
+a) ne−n b) 1
+n + 1
+n +
+√
+1
++··· + 1
+n +√n
+c) E (nx)
+n d)
+(√n + 1−√n
+)
+cos (en)
+e) n!
+nn
+Analyse
+<<<PAGE>>>
+Exercice 7
+(a) un = n
+en : On commence par noter que
+∀x∈ R∗
++, x < e x =⇒ ∀n∈ N, n
+2 < e
+n
+2
+=⇒ ∀n∈ N, n2
+4 <
+(
+e
+n
+2
+)2
+= e n.
+Ce qui entraine que
+∀n∈ N, 1
+e n < 4
+n2 =⇒ ∀n∈ N, 0< n
+e n < 4
+n.
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+0≤ lim
+n→+∞
+n
+e n≤ lim
+n→+∞
+4
+n = 0 =⇒ lim
+n→+∞
+n
+e n = 0.
+Analyse
+<<<PAGE>>>
+Exercice 7
+(b) un = 1
+n + 1
+n+
+√
+1 +··· + 1
+n+√n : On commence par noter que
+∀k∈ N, 0≤ k≤ n, 1
+n +√n≤ 1
+n +
+√
+k
+≤ 1
+n.
+Ainsi n + 1
+n +√n≤ 1
+n + 1
+n +
+√
+1
++··· + 1
+n +√n≤ n + 1
+n .
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+1 = lim
+n→+∞
+n + 1
+n +√n≤ lim
+n→+∞
+1
+n + 1
+n +
+√
+1
++... + 1
+n +√n≤ lim
+n→+∞
+n + 1
+n = 1.
+D’o` u on conclut
+1
+n + 1
+n +
+√
+1
++... + 1
+n +√n −→
+n→+∞
+1.
+Analyse
+<<<PAGE>>>
+Exercice 7
+(c) un = E(nx)
+n : Pour tout n∈ N, on a
+nx− 1< E (nx)≤ nx =⇒ nx− 1
+n < E (nx)
+n ≤ nx
+n = x
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+x = lim
+n→+∞
+nx− 1
+n ≤ lim
+n→+∞
+E (nx)
+n ≤ x.
+D’o` u on conclut
+lim
+n→+∞
+E (nx)
+n = x.
+Analyse
+<<<PAGE>>>
+Exercice 7
+(d) un =
+(√n + 1−√n
+)
+cos (e n). Pour tout n∈ N, nous avons
+−1≤ cos (e n)≤ 1.
+Ce qui implique que
+−
+(√
+n + 1−√n
+)
+≤
+(√
+n + 1−√n
+)
+cos(e n)≤
+√
+n + 1−√n.
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+− lim
+n→∞
+(√
+n + 1−√n
+)
+≤ lim
+n→∞
+(√
+n + 1−√n
+)
+cos(e n)≤ lim
+n→∞
+√
+n + 1−√n.
+Maintenant
+lim
+n→∞
+√
+n + 1−√n = 0.
+D’o` u on conclut :
+lim
+n→+∞
+(√
+n + 1−√n
+)
+cos (e n) = 0.
+Analyse
+<<<PAGE>>>
+Exercice 7
+Autre M´ ethode :Nous avons le r´ esultat suivant :
+Th´ eor` eme (Produit d’une suite born´ ee et d’une suite de limite nulle)
+Soient (un)n∈N et (vn)n∈N deux suites r´ eelles.Si (un)n∈N est born´ eeet si :
+lim
+n→+∞
+vn = 0,
+alors :
+lim
+n→+∞
+un· vn = 0.
+Puisque
+(cos (en))n∈N est born´ ee(En eﬀet−1≤ cos(en)≤ 1).
+limn→∞
+√n + 1−√n = 0.
+Le th´ eor` eme nous permet donc de conclure :
+lim
+n→+∞
+(√
+n + 1−√n
+)
+cos (en) = 0.
+Analyse
+<<<PAGE>>>
+Exercice 7
+(e) un = n!
+nn : Pour tout n∈ N, n> 2 on a
+n! = 1× 2× 3× 4× ··· ×n< 1× 2× n× n× ··· ×n| {z }
+n−2 fois
+= 2nn−2.
+D’o` u on obtient
+∀n∈ N, n!≤ 2nn−2 =⇒ 0< n!
+nn < 2nn−2
+nn = 2
+n2
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+0≤ lim
+n→+∞
+n!
+nn≤ lim
+n→+∞
+2
+n2 = 0 =⇒ lim
+n→+∞
+n!
+nn = 0.
+Analyse
+<<<PAGE>>>
+Exercice 8
+Soit x un r´ eel.
+1 D´ eterminer la limite deun = E(x) + E(2x) +... + E(nx)
+n2
+2 En d´ eduire queQ est dense dans R
+(1) D´ eterminer la limite deun.
+Solution : Pour tout k∈ N, on a
+kx− 1< E(kx)≤ kx.
+Par cons´ equent
+x + 2x +··· + nx− n
+n2 < E(x) + E(2x) +··· + E(nx)
+n2 ≤ x + 2x +··· + nx
+n2
+Maintenat
+x + 2x +··· + nx− n
+n2 = x(1 + 2 +··· + n)− n
+n2 = x· n(n + 1)
+2n2 − 1
+n
+x + 2x +··· + nx
+n2 = x(1 + 2 +··· + n)
+n2 = x n(n + 1)
+2n2 .
+Analyse
+<<<PAGE>>>
+Exercice 8
+D’o` u on obtient
+x n(n + 1)
+2n2 − 1
+n < un≤ x n(n + 1)
+2n2 .
+Le Th´ eor` eme d’Encadrementnous permet donc de conclure
+x
+2 = lim
+n→+∞
+x n(n + 1)
+2n2 − 1
+n≤ lim
+n→+∞
+un≤ lim
+n→+∞
+x n(n + 1)
+2n2 = x
+2.
+Ainsi
+lim
+n→+∞
+un = x
+2.
+Analyse
+<<<PAGE>>>
+Exercice 8
+(2) En d´ eduire queQ est dense dans R. Solution : On commence par donner
+le r´ esultat suivant.
+Th´ eor` eme (Caract´ erisation s´ equentielle de la densit´ e)
+Soit A une partie de R. Alors
+A est dense dans R ⇐⇒ Tout r´ eel est la limite d’une suite d’´ el´ ements deA
+Pour tout x∈ R d´ eﬁnissons la suite (vn) par
+∀n∈ N, vn = 2un = 2 E(x) + E(2x) +... + E(nx)
+n2 .
+Alors pour tout n∈ N
+vn∈ Q,
+et d’apr` es la partie (1) de l’exercice
+lim
+n→+∞
+vn = 2· lim
+n→+∞
+un = 2· x
+2 = x.
+Ainsi Q est dense dans R.
+Analyse
+<<<PAGE>>>
+Exercice 9
+D´ emontrer la propri´ et´ e si elle est vrai, donner un contre exemple sinon.
+1 Si∀n∈ N, un < vn et lim
+n→+∞
+vn = 0 alors lim
+n→+∞
+un = 0.
+2 Une suite non major´ ee tend vers +∞.
+3 Si la suite ( un) converge vers l, alors∀p∈ N, lim
+n→+∞
+un+p− un = 0.
+4 Si les suites ( xn) et ( yn) divergent alors la suite ( xn + yn) diverge.
+5 Si les suites ( xn) et ( yn) divergent alors la suite ( xnyn) diverge.
+6 Pour toute suite de r´ eels (yn), si lim
+n→∞
+xn = 0 alors lim
+n→∞
+xnyn = 0.
+7 Si lim
+n→∞
+xnyn = 0 alors soit lim
+n→∞
+xn = 0 soit lim
+n→∞
+yn = 0. (Indication :
+consid´ erer l’exemplexn = (1 + (−1)n)/2, yn = (1− (−1)n)/2 ).
+8 Si (un) est convergente et les un sont strictement positifs, alors la
+limite de ( un) est strictement positive.
+9 Si (un) est une suite croissante et un≤ 7 alors lim
+n→∞
+un = 7.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(1) Si∀n∈ N, un < vn et lim
+n→+∞
+vn = 0 alors lim
+n→+∞
+un = 0 : Faux. En
+eﬀet, il suﬃt pour tout n∈ N de choisir
+un≤ a< 0, a∈ R∗
+−.
+Par exemple, soit un =−2 + 1
+n et vn = 1
+n . Alors
+un < vn mais lim
+n→+∞
+un =−2< 0.
+(2) Une suite non major´ ee tend vers+∞ : Faux. En eﬀet, pour tout
+n∈ N, soit
+un =
+
+
+
+n si n pair,
+−n si n impair.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(3) Si la suite (un) converge vers l, alors∀p∈ N, un+p− un →
++∞
+0. Vrai. Soit
+ϵ> 0. Par d´ eﬁnition de la limite
+∃N∈ N, n∈ N, n> N =⇒| un− l|< ϵ
+2.
+Donc pour tout n> N, on a n + p> N et
+|un+p− un| =|un+p + (l− l)− un|≤| un+p− l| +|l− un|< ϵ
+2 + ϵ
+2 =ϵ
+Ce qui montre que lim
+n→+∞
+un+p− un = 0.
+(4) Si les suites (xn) et (yn) divergent alors la suite (xn + yn) diverge. Faux.
+En eﬀet, pour tout n∈ N, choisissons
+yn =−xn =⇒ xn + yn = 0 =⇒ lim
+n→+∞
+xn + yn = 0.
+Par exemple, soit un = n et vn =−n. Alors
+lim
+n→+∞
+un = +∞ et lim
+n→+∞
+vn =−∞ mais un + vn = 0.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(5) Si les suites (xn) et (yn) divergent alors la suite (xnyn) diverge. Faux. En
+eﬀet, pour tout n∈ N, soit
+xn =
+
+
+
+1 si n pair,
+−1 si n impair.
+et yn =
+
+
+
+−1 si n pair,
+1 si n impair.
+Donc
+xn· yn =−1 =⇒ lim
+n→+∞
+xn· yn =−1.
+(6) Pour toute suite de r´ eels(yn), si lim
+n→∞
+xn = 0 alors lim
+n→∞
+xnyn = 0. Faux.
+En eﬀet, pour tout n∈ N, soit
+xn = 1
+n et yn = na avec a> 1 =⇒ lim
+n→+∞
+xn· yn = lim
+n→+∞
+na−1 = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 9
+(7) Si lim
+n→∞
+xnyn = 0 alors soit lim
+n→∞
+xn = 0 soit lim
+n→∞
+yn = 0. Faux. En eﬀet,
+pour tout n∈ N, soit
+xn = (1 + (−1)n)
+2 et yn = (1− (−1)n)
+2 =⇒ xn·yn = (1− (−1)2n)
+4 = 0.
+mais les limites lim
+n→∞
+xn et lim
+n→∞
+yn n’existent pas.
+(8) Si (un) est convergente et les un sont strictement positifs, alors la
+limite de (un) est strictement positive. Faux. En eﬀet, pour tout n∈ N, soit
+un = 1
+n =⇒ lim
+n→+∞
+un = 0.
+(9) Si (un) est une suite croissante et un≤ 7 alors lim
+n→∞
+un = 7. Faux. En
+eﬀet, pour tout n∈ N, soit
+un = m− 1
+n, m< 7 =⇒ lim
+n→+∞
+un = m< 7.
+Analyse
+<<<PAGE>>>
+Exercice 10
+D´ emontrer la propri´ et´ e si elle est vrai, donner un contre exemple sinon.
+1 Toute suite d’entiers convergente est stationnaire ` a partir d’un certain
+rang.
+2 Toute suite ` a termes positifs qui converge vers 0 est d´ ecroissante.
+3 Si la suite (|un|) converge alors ( un) converge. Formuler et ´ etudier sa
+r´ eciproque.
+4 Si pour tout p∈ N, u2p est positif et u2p+1 est n´ egatif, alors la suite (un)
+diverge.
+5 Si lim
+n→+∞
+nun = 1 alors la suite ( un) converge.
+6 Si (un) est croissante, alors ( un) tends vers +∞.
+7 Si lim
+n→∞
+un = 1
+2 alors la suite ( un) est positive ` a partir d’un certain rang.
+8 Toute suite monotone est convergente.
+9 Toute suite croissante et major´ ee est born´ ee.
+10 Si la suite ( un) est d´ ecroissante et∀n u n≥ 0, alors ( un) tends vers 0
+quand n tends vers +∞.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(1)Toute suite d’entiers convergente est stationnaire ` a partir d’un
+certain rang : Vrai. En eﬀet, soit lim
+n→+∞
+un = L. Alors d’apr` es la
+d´ eﬁnition de la limite, pour ϵ = 1
+2 , nous avons
+∃N∈ N, ∀n∈ N, n≥ N =⇒| un− L|< 1
+2.
+Ainsi, pour tout n≥ N, on a
+L− 1
+2 < un < L + 1
+2 =⇒ un∈
+]
+L− 1
+2, L + 1
+2
+[
+.
+Maintenant, dans l’intervalle
+]
+L− 1
+2, L + 1
+2
+[
+il existe au plus un entier .
+Or pour tout n∈ N, un est un entier , donc
+∀n≥ N, un∈
+]
+L− 1
+2, L + 1
+2
+[
+∩ Z =⇒ ∀ n≥ N, un = uN.
+La suite ( un)n∈N est donc stationnaire (au moins) ` a partir de N, et
+lim
+n→+∞
+un = L = uN.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(2) Toute suite ` a termes positifs qui converge vers 0 est
+d´ ecroissante :Faux. En eﬀet, pour tout n∈ N, soit
+un =
+
+
+
+1
+n si n pair,
+1
+n2 si n impair.
+=⇒ u2n > u2n+1 et u2n+1 < u2n+2.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(3) Si la suite (|un|) converge alors (un) converge. Formuler et
+´ etudier sa r´ eciproque :Faux. En eﬀet, pour tout n∈ N, soit
+un =
+
+
+
+1 si n pair,
+−1 si n impair.
+=⇒ | un| = 1.
+Montrons la proposition r´ eciproque :Supposons que ( un)n∈N converge
+vers L et montrons que (|un|)n∈N converge vers|L|. Soit ϵ> 0. Alors
+∃N∈ N, ∀n∈ N, n> N =⇒ | un− L|<ϵ.
+Maintenant, ` a l’aide de l’in´ egalit´ e triangulaire, nous pouvons d’´ ecrire
+∀n∈ N, n> N,||un|−| L|| < |un− L| < ϵ =⇒ lim
+n→+∞
+|un| =|L|.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(4) Si pour tout p∈ N, u2p est positif et u2p+1 est n´ egatif, alors la
+suite (un) diverge : Faux. En eﬀet, pour tout n∈ N, soit
+un =
+
+
+
+1
+n si n pair,
+− 1
+n si n impair.
+=⇒ lim
+n→+∞
+un = 0.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(5) Si lim
+n→+∞
+nun = 1 alors la suite (un) converge. Vrai. En eﬀet, soit
+ϵ> 0. Alors existe N∈ N tel que pour tout n∈ N, n> N, nous avons
+|nun− 1|<ϵ =⇒ 1−ϵ< nun < 1 +ϵ =⇒ 1−ϵ
+n < un < 1 +ϵ
+n .
+Le Th´ eor` eme d’Encadrementnous permet donc de conclure
+0 = lim
+n→+∞
+1−ϵ
+n ≤ un≤ lim
+n→+∞
+1 +ϵ
+n = 0 =⇒ lim
+n→+∞
+un = 0.
+(6) Si (un) est croissante, alors (un) tends vers +∞ : Faux. En eﬀet,
+pour tout n∈ N, soit
+un = 2− 1
+n + 1 =⇒ lim
+n→+∞
+un = 2.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(7) Si lim
+n→∞
+un = 1
+2 alors la suite (un) est positive ` a partir d’un certain
+rang : Vrai. En eﬀet, soit ϵ = 1
+2 . Alors
+∃N∈ N, ∀n∈ N, n> N =⇒
+⏐⏐⏐⏐un− 1
+2
+⏐⏐⏐⏐< 1
+2 =⇒ − 1
+2 < un− 1
+2 < 1
+2
+=⇒ 0< un < 1.
+Par cons´ equent,∀n> N on a un > 0.
+(8) Toute suite monotone est convergente : Faux. En eﬀet, pour tout n∈ N,
+soit
+un = n =⇒ lim
+n→+∞
+un = +∞.
+(9) Toute suite croissante et major´ ee est born´ ee :Vrai. En eﬀet, on sait que
+toute suite croissante et major´ ee converge vers sa borne sup´ erieure.De plus
+toute suite convergente est born´ ee.
+Analyse
+<<<PAGE>>>
+Exercice 10
+(10) Si la suite (un) est d´ ecroissante et∀n u n≥ 0, alors (un) tends
+vers 0 quand n tends vers +∞ :Faux. En eﬀet, pour tout n∈ N, soit
+un = 2 + 1
+n + 1 =⇒ lim
+n→+∞
+un = 2.
+Analyse
+<<<PAGE>>>
+Exercice 11
+Montrer que les suites suivants divergent :
+(1) an = n sin( nπ
+2 ).
+(2) bn = (−1)nn3+3n2+5
+2−5n3 .
+(3) cn = (−1)n n
+1+n cos
+( nπ
+7
+)
+.
+Analyse
+<<<PAGE>>>
+Exercice 11
+Montrer que la suite
+an = n sin
+( nπ
+2
+)
+.
+diverge.
+Solution : Notons que si on choisit
+φ1(n) = 2n et φ2(n) = 1 + 4n.
+Nous avons
+aφ1(n) = 2n sin
+( 2nπ
+2
+)
+= 2n sin(nπ) = 0
+aφ2(n) = (1 + 4n) sin
+( (1 + 4n)π
+2
+)
+= (1 + 4n) sin
+(π
+2 + 2nπ
+)
+= (1 + 4n).
+Ce qui nous permet de conclure
+lim
+n→∞
+aφ1(n) = 0.
+lim
+n→∞
+aφ2(n) = +∞.
+Nous avons donc trouv´ e deux suites extraites de (an)n∈N qui ne convergent pas
+vers la mˆ eme limite.Ce qui implique que ( an)n∈N diverge.
+Analyse
+<<<PAGE>>>
+Exercice 11
+Montrer que la suite
+bn = (−1)nn3 + 3n2 + 5
+2− 5n3 .
+diverge.
+Solution : Notons que si on choisit
+φ1(n) = 2n et φ2(n) = 2n + 1.
+Nous avons
+bφ1(n) = (−1)2n(2n)3 + 3(2n)2 + 5
+2− 5(2n)3 = (2n)3 + 3(2n)2 + 5
+2− 5(2n)3 .
+bφ2(n) = (−1)2n+1(2n + 1)3 + 3(2n + 1)2 + 5
+2− 5(2n + 1)3 =−(2n + 1)3 + 3(2n + 1)2 + 5
+2− 5(2n + 1)3 .
+Ce qui nous permet de conclure
+lim
+n→∞
+bφ1(n) = − 1
+5.
+lim
+n→∞
+bφ2(n) = 1
+5.
+Nous avons donc trouv´ e deux suites extraites de (bn)n∈N qui ne convergent pas
+vers la mˆ eme limite.Ce qui implique que ( bn)n∈N diverge.
+Analyse
+<<<PAGE>>>
+Exercice 11
+Montrer que la suite
+cn = (−1)n n
+1 + n cos
+( nπ
+7
+)
+.
+diverge.
+Solution : Notons que si on choisit
+φ1(n) = 7n et φ2(n) = 14n + 1.
+Nous avons
+cφ1(n) = (−1)7n 7n
+1 + 7n cos (nπ) = (−1)7n 7n
+1 + 7n (−1)n = (−1)8n7n
+1 + 7n = 7n
+1 + 7n
+cφ2(n) = (−1)14n+1 14n + 1
+2 + 14n cos
+(π
+7 + 2nπ
+)
+=− 14n + 1
+2 + 14n cos
+(π
+7
+)
+.
+Ce qui nous permet de conclure
+lim
+n→∞
+cφ1(n) = 1
+lim
+n→∞
+cφ2(n) = − cos
+(π
+7
+)
+.
+Nous avons donc trouv´ e deux suites extraites de (cn)n∈N qui ne convergent pas
+vers la mˆ eme limite.Ce qui implique que ( cn)n∈N diverge.
+Analyse
+<<<PAGE>>>
+Exercice 12
+On suppose que ( un)n∈N est une suite telle que ( u2n)n∈N, (u3n)n∈N et (u2n+1)n∈N
+convergent. Montrer que ( un)n∈N converge.
+Solution : Soit
+lim
+n→+∞
+u2n =𝓁 ; lim
+n→+∞
+u2n+1 =𝓁′ ; lim
+n→+∞
+u3n =𝓁′′.
+Notons que :
+(u6n)n est une suite extraite de ( u2n)n et de ( u3n)n. Puisque toute suite
+extraite d’une suite convergente de limite L, converge vers L, on
+conclut :
+lim
+n→+∞
+u6n = lim
+n→+∞
+u2n =𝓁 et lim
+n→+∞
+u6n = lim
+n→+∞
+u3n =𝓁′′
+Ceci implique que 𝓁 =𝓁′′.
+(u6n+3)n est une suite extraite de ( u2n+1)n et de ( u3n)n. Puisque toute
+suite extraite d’une suite convergente de limite L, converge vers L, on
+conclut :
+lim
+n→+∞
+u6n+3 = lim
+n→+∞
+u2n+1 =𝓁′ et lim
+n→+∞
+u6n+3 = lim
+n→+∞
+u3n =𝓁′′
+Ceci implique que 𝓁′ =𝓁′′.
+Analyse
+<<<PAGE>>>
+Exercice 12
+Ainsi
+lim
+n→+∞
+u2n =𝓁 =𝓁′′ =𝓁′ = lim
+n→+∞
+u2n+1.
+Pour ﬁnir rappellons le r´ esultat suivant
+Th´ eor` eme
+Soit (vn)n∈N une suite telle que les suites extraites (v2n)n∈N et (v2n+1)n∈N
+convergent vers la mˆ eme limite𝓁∈ R. Alors
+lim
+n→+∞
+vn =𝓁.
+D’apr` es le th´ eor` eme pr´ ec´ edent on conclut que (un)n∈N converge.
+Analyse
+<<<PAGE>>>
+Exercice 13
+Soit (un)n∈N une suite de r´ eels strictement positifs. On suppose que
+lim
+n→+∞
+un+1
+un
+= l avec l∈ [0, +∞].
+1 Montrer que, si l < 1, alors lim
+n→+∞
+un = 0.
+2 Montrer que, si l > 1, alors lim
+n→+∞
+un = +∞.
+3 Peut-on conclure si l = 1 ?
+4 Appliquer ces r´ esultats aux exemples suivants :
+1 un = an
+n! , avec a∈ R∗
++
+2 vn = nn
+n!
+3 wn = an
+np avec a∈ ]1, +∞[ et p∈ N.
+4 zn = n√a, a∈ R.
+Analyse
+<<<PAGE>>>
+Exercice 13
+Montrer que, si lim
+n→+∞
+un+1
+un
+=𝓁< 1, alors lim
+n→+∞
+un = 0.
+Preuve : Supposons 𝓁< 1. Possonsϵ = 1−𝓁
+2 . Alorsϵ> 0, et d’apr` es la
+d´ eﬁnition de la limite, il existe N∈ N tel que
+∀n∈ N, n≥ N =⇒
+⏐⏐⏐⏐
+un+1
+un
+−𝓁
+⏐⏐⏐⏐≤ 1−𝓁
+2 .
+L’inegalit´ e triangulaire nous permet donc, pour tout n≥ N, d’´ ecrire
+⏐⏐⏐⏐
+un+1
+un
+⏐⏐⏐⏐− l≤
+⏐⏐⏐⏐
+un+1
+un
+−𝓁
+⏐⏐⏐⏐≤ 1−𝓁
+2 =⇒
+⏐⏐⏐⏐
+un+1
+un
+⏐⏐⏐⏐≤ 1−𝓁
+2 + l = 1 +𝓁
+2 < 1.
+Maintenant, pour tout n≥ N nous avons
+un = uN
+uN
+· uN+1
+uN+1
+· ··· ·un−1
+un−1
+· un = uN· uN+1
+uN
+· uN+2
+uN+1
+· ··· · un
+un−1
+= uN
+n−1∏
+k=N
+uk+1
+uk
+.
+´Egalit´ e qui nous permet, pour tout n> N, de conclure
+|un| =|uN|
+⏐⏐⏐⏐⏐
+n−1∏
+k=N
+uk+1
+uk
+⏐⏐⏐⏐⏐ =|uN|
+n−1∏
+k=N
+⏐⏐⏐⏐
+uk+1
+uk
+⏐⏐⏐⏐≤| uN|
+n−1∏
+k=N
+1 +𝓁
+2 =|uN|
+( 1 +𝓁
+2
+)n−N
+.
+Analyse
+<<<PAGE>>>
+Exercice 13
+C’est-` a-dire
+−|uN|
+( 1 +𝓁
+2
+)n−N
+≤ un≤| uN|
+( 1 +𝓁
+2
+)n−N
+Or 1+𝓁
+2 < 1. Donc
+lim
+n→+∞
+( 1 +𝓁
+2
+)n−N
+= 0.
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+0 =− lim
+n→+∞
+|uN|
+( 1 +𝓁
+2
+)n−N
+≤ lim
+n→+∞
+un≤ lim
+n→+∞
+|uN|
+( 1 +𝓁
+2
+)n−N
+= 0
+D’o` u on obtient
+lim
+n→+∞
+un = 0.
+Analyse
+<<<PAGE>>>
+Exercice 13
+Montrer que, si lim
+n→+∞
+un+1
+un
+=𝓁> 1, alors lim
+n→+∞
+un = +∞.
+Preuve : Supposons 𝓁> 1. Possonsϵ = 𝓁−1
+2 . Alorsϵ> 0, et d’apr` es la
+d´ eﬁnition de la limite, il existe N∈ N tel que
+∀n∈ N, n> N =⇒
+⏐⏐⏐⏐
+un+1
+un
+− l
+⏐⏐⏐⏐≤ l− 1
+2 .
+Ce qui est ´ equivalent ` a
+1−𝓁
+2 ≤ un+1
+un
+−𝓁≤ 𝓁− 1
+2 =⇒ 1< 1 +𝓁
+2 ≤ un+1
+un
+≤ 3𝓁− 1
+2 .
+Maintenant, pour tout n≥ N nous avons
+un = uN
+uN
+· uN+1
+uN+1
+· ··· ·un−1
+un−1
+· un = uN· uN+1
+uN
+· uN+2
+uN+1
+· ··· · un
+un−1
+= uN
+n−1∏
+k=N
+uk+1
+uk
+.
+´Egalit´ e qui nous permet, pour tout n> N, de conclure
+|un| =|uN|
+⏐⏐⏐⏐⏐
+n−1∏
+k=N
+uk+1
+uk
+⏐⏐⏐⏐⏐ =|uN|
+n−1∏
+k=N
+⏐⏐⏐⏐
+uk+1
+uk
+⏐⏐⏐⏐≥| uN|
+n−1∏
+k=N
+1 +𝓁
+2 =|uN|
+( 1 +𝓁
+2
+)n−N
+.
+Analyse
+<<<PAGE>>>
+Exercice 13
+C’est-` a-dire
+un≥| uN|
+( 1 +𝓁
+2
+)n−N
+Or 1+𝓁
+2 > 1. Donc
+lim
+n→+∞
+( 1 +𝓁
+2
+)n−N
+= +∞.
+Le Th´ eor` eme d’Encadrementnous permet donc d’´ ecrire
+lim
+n→+∞
+un≥ lim
+n→+∞
+|uN|
+( 1 + l
+2
+)n−N
+= +∞
+D’o` u on obtient
+lim
+n→+∞
+un = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 13
+Peut-on conclure si 𝓁 = 1 ? Si 𝓁 = 1, on ne peut pas conclure : par
+exemple,
+Pour tout n∈ N, soit un = n. Alors
+lim
+n→+∞
+un+1
+un
+= lim
+n→+∞
+n + 1
+n = 1
+et la suite ( un)n∈N diverge.
+Pour tout n∈ N, soit vn = 1
+n+1 . Alors
+lim
+n→+∞
+vn+1
+vn
+= lim
+n→+∞
+n
+n + 1 = 1,
+et la suite ( vn)n∈N converge vers 0.
+Analyse
+<<<PAGE>>>
+Exercice 13
+(1) Calculer la limite de un = an
+n! , avec a∈ R∗
++ :Nous avons
+un+1
+un
+= an+1
+(n + 1)!× n!
+an = a
+n + 1 −→
+n→+∞
+0< 1.
+Le point 1 de la question 13 nous permet donc de conclure : un→ 0
+lorsque n tend vers +∞.
+(2) Calculer la limite de vn = nn
+n! : Nous avons
+vn+1
+vn
+= (n + 1)n+1
+(n + 1)!
+n!
+nn =
+( n + 1
+n
+)n
+× n + 1
+n + 1 =
+(
+1 + 1
+n
+)n
+−→
+n→+∞
+e > 1.
+Le point 2 de la question 13 nous permet donc de conclure : vn→ +∞
+lorsque n tend vers +∞.
+Analyse
+<<<PAGE>>>
+Exercice 13
+(3) Calculer la limite de wn = an
+np avec a∈ ]1, +∞[ et p∈ N : Nous avons
+wn+1
+wn
+= an+1
+(n + 1)p× np
+an = a
+( n
+n + 1
+)p
+Maintenant, le Theor` eme de Composition ` a gauche par une fonction, avec
+f (x) = x p et un = n
+n + 1,
+nous permet donc de conclure
+lim
+n→+∞
+( n
+n + 1
+)p
+= 1.
+Ainsi
+wn+1
+wn
+= a
+( n
+n + 1
+)p
+−→
+n→+∞
+a> 1.
+Le point 2 de la question 13 nous permet donc de conclure : wn tend vers +∞
+lorsque n tend vers +∞.
+Analyse
+<<<PAGE>>>
+Exercice 13
+(4) Calculer la limite de zn = n√a, a∈ R∗
++ : Nous avons
+zn+1
+zn
+=
+n+1√a
+n√a = a1/(n+1)
+a1/n = a
+1
+n+1− 1
+n = a
+−1
+n(n+1) −→
+n→+∞
+1.
+Il faut donc trouver une autre m´ ethode pour calculer la limite de zn
+lorsque n tend vers +∞. Notons que
+n√a = a
+1
+n = exp
+(
+ln
+(
+a
+1
+n
+))
+= exp
+( 1
+n ln (a)
+)
+Le Theor` eme de Composition ` a gauche par une fonction, avec
+f (x) = exp(x) et un = ln(a)
+n ,
+nous permet donc de conclure
+lim
+n→+∞
+n√a = lim
+n→+∞
+exp
+( 1
+n ln(a)
+)
+= 1.
+Analyse
+<<<PAGE>>>
+Exercice 14
+On d´ eﬁnit les deux suites :
+un =
+n∑
+k=1
+1√
+k
+− 2
+√
+n + 1 et vn =
+n∑
+k=1
+1√
+k
+− 2√n.
+Montrer que ces deux suites convergent vers la mˆ eme limite.
+Solution : Nous allons montrer que les deux suites sont adjacentes. Ce qui aura
+comme cons´ equence qu’elles ont la mˆ eme limite.Nous allons donc v´ eriﬁer
+(un)n est croissante et ( vn)n est d´ ecroissante.
+vn− un −→
+n→+∞
+0.
+Nous avons
+un+1− un =
+n+1∑
+k=1
+1√
+k
+− 2
+√
+n + 2−
+( n∑
+k=1
+1√
+k
+− 2
+√
+n + 1
+)
+= 1√n + 1− 2
+√
+n + 2 + 2
+√
+n + 1
+= 1− 2
+√
+(n + 2)(n + 1) + 2(n + 1)√n + 1
+= 2n + 3− 2
+√
+(n + 2)(n + 1)√n + 1 > 0.
+Analyse
+<<<PAGE>>>
+Exercice 14
+En eﬀet
+2n + 3− 2
+√
+(n + 2)(n + 1)√n + 1 > 0 ⇐⇒ 2n + 3− 2
+√
+(n + 2)(n + 1)> 0
+⇐⇒ 2n + 3> 2
+√
+(n + 2)(n + 1)
+⇐⇒ 4n2 + 12n + 9> 4n2 + 12n + 8.
+Donc, ( un)n est croissante. De mˆ eme
+vn+1− vn =
+n+1∑
+k=1
+1√
+k
+− 2
+√
+n + 1−
+( n∑
+k=1
+1√
+k
+− 2√n
+)
+= 1√n + 1− 2
+√
+n + 1 + 2√n
+= 1− 2(n + 1) + 2
+√
+n(n + 1)√n + 1 =−1− 2n + 2
+√
+n(n + 1)√n + 1 < 0.
+Analyse
+<<<PAGE>>>
+Exercice 14
+En eﬀet
+−1− 2n + 2
+√
+n(n + 1)√n + 1 < 0 ⇐⇒ −1− 2n + 2
+√
+n(n + 1)< 0
+⇐⇒ 2
+√
+n(n + 1)< 1 + 2n
+⇐⇒ 4n2 + 4n< 4n2 + 4n + 1.
+Donc, ( vn)n est d´ ecroissante.Finalement
+vn− un =
+n∑
+k=1
+1√
+k
+− 2√n−
+( n∑
+k=1
+1√
+k
+− 2
+√
+n + 1
+)
+= 2(
+√
+n + 1−√n) −→
+n→+∞
+0.
+Ainsi, (un)n et (vn)n sont deux suites adjacentes. Elles convergent donc vers la
+mˆ eme limite.
+Analyse
+<<<PAGE>>>
+Exercice 15
+Soit un =
+n∑
+k=1
+(−1)k−1
+k . Montrer que ( u2n) et ( u2n+1) sont adjacentes.
+En d´ eduire queun converge.
+Solution : Nous allons v´ eriﬁer que :
+(u2n)n∈N est croissante et (u2n+1)n∈N est d´ ecroissante.
+u2n− u2n+1 −→
+n→+∞
+0.
+Nous avons
+u2n+2− u2n =
+2n+2∑
+k=1
+(−1)k−1
+k −
+2n∑
+k=1
+(−1)k−1
+k
+= (−1)2n+1 1
+2n + 2 + (−1)2n 1
+2n + 1
+= − 1
+2n + 2 + 1
+2n + 1 > 0.
+Donc u2n+2 > u2n et (u2n)n∈N est croissante.
+Analyse
+<<<PAGE>>>
+Exercice 15
+De mˆ eme
+u2n+3− u2n+1 =
+2n+3∑
+k=1
+(−1)k−1
+k −
+2n+1∑
+k=1
+(−1)k−1
+k
+= (−1)2n+2 1
+2n + 3 + (−1)2n+1 1
+2n + 2
+= 1
+2n + 3− 1
+2n + 2 < 0.
+Donc u2n+3 < u2n+1 et (u2n+1)n∈N est d´ ecroissante. Finalement
+u2n+1− u2n =
+2n+1∑
+k=1
+(−1)k−1
+k −
+2n∑
+k=1
+(−1)k−1
+k
+= (−1)2n 1
+2n + 1 = 1
+2n + 1.
+Donc
+lim
+n→+∞
+u2n+1− u2n = lim
+n→+∞
+1
+2n + 1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 15
+Ainsi, (u2n)n∈N et (u2n+1)n∈N sont deux suites adjacentes. Elles
+convergent donc vers la mˆ eme limite.Par cons´ equent, (un)n∈N est une
+suite convergent.
+Analyse
+<<<PAGE>>>
+Exercice 16
+On consid` ere les deux suites r´ eelles d´ eﬁnies par
+u0 = 1, v0 = 12 et ∀n∈ N, un+1 = un + 2vn
+3 , vn+1 = un + 3vn
+4 .
+(1) Pour tout n∈ N, on pose wn = vn− un. Calculer wn en fonction de n et
+montrer que la suite ( wn) converge. Quelle est sa limite ?
+(2) Montrer que pour tout n∈ N, un≥ 0 et vn≥ 0, puis montrer que ( un) est
+croissante, ( vn) est d´ ecroissante et que pour tout n∈ N, un≤ vn.
+(3) En d´ eduire que les suites (un) et ( vn) convergent et qu’elles ont la mˆ eme
+limite.
+(4) Pour tout n∈ N on pose tn = 3un + 8vn. Calculer tn pour tout n∈ N. En
+d´ eduire que (tn) converge vers une limite que l’on pr´ ecisera.
+(5) D´ eduire la limite commune de (un) et ( vn).
+Analyse
+<<<PAGE>>>
+Exercice 16
+(1) On commence par noter que pour tout n∈ N, nous avons
+wn+1 = vn+1− un+1 = un + 3vn
+4 − un + 2vn
+3
+= vn− un
+12
+= 1
+12 wn.
+Ainsi,
+wn+1 = 1
+12· wn =
+( 1
+12
+)2
+· wn−1 =··· =
+( 1
+12
+)n+1
+· w0 = 11
+12n+1.
+(la suite ( wn)n∈N est une suite g´ eom´ etriquede raison q = 1
+12 .) D’o` u on
+conclut
+lim
+n→+∞
+wn = lim
+n→+∞
+qnw0 = lim
+n→+∞
+11
+12n = 0.
+Analyse
+<<<PAGE>>>
+Exercice 16
+(2) Nous avons
+un+1 = un + 2vn
+3 = un + 2(wn + un)
+3
+= 3un + 2wn
+3 = un + 2wn
+3
+= un + 22
+3· 12n.
+Ainsi
+un+1− un = 22
+3· 12n > 0.
+La suite ( un)n∈N est donc croissante. Le mˆ eme raissonement nous permet de
+d´ emontrer que
+vn+1− vn =− 11
+4· 12n < 0.
+La suite ( vn)n∈N est donc d´ ecroissante.Finalement, ´ etant donn´ e que pour tout
+n∈ N, nous avons
+vn− un = wn = 11
+12n≥ 0,
+on conclut que vn≥ un pour tout n∈ N.
+Analyse
+<<<PAGE>>>
+Exercice 16
+(3) D’apr` es les deux question pr´ ec´ edentes, les suites ( un)n∈N et (vn)n∈N
+sont adjacentes. En eﬀet
+(un)n∈N est croissante et (vn)n∈N est d´ ecroissante.
+vn− un = wn −→
+n→+∞
+0.
+Du Th´ eor` eme sur les suites adjacents, on en d´ eduit donc que (un)n∈N
+et (vn)n∈N convergent vers la mˆ eme limite.
+Analyse
+<<<PAGE>>>
+Exercice 16
+(4) Pour tout n∈ N, soit tn = 3un + 8vn. Dans la question 2 nous avons
+montr´ e 
+
+
+un = un+1− 22
+3·12n
+vn = vn+1 + 11
+4·12n.
+Ce qui nous permet, pour tout n∈ N, d’´ ecrire
+tn = 3un + 8vn = 3un+1− 22
+12n + 8vn+1 + 22
+12n = 3un+1 + 8vn+1 = tn+1.
+Ainsi, ( tn)n∈N est une suite constante et
+tn = t0 = 3u0 + 8v0 = 3 + 8· 12 = 99.
+La suite ( tn)n∈N converge donc vers 99.
+Analyse
+<<<PAGE>>>
+Exercice 16
+(5) ´Etant donn´ e que (un)n∈N et (vn)n∈N sont adjacentes, leur limite
+commune est 𝓁. D’apr` es la question pr´ ec´ edente, nous avons
+99 = lim
+n→+∞
+tn = lim
+n→+∞
+3un + 8vn = 3𝓁 + 8𝓁 = 11𝓁 =⇒ 99 = 11𝓁.
+Donc
+lim
+n→+∞
+un = lim
+n→+∞
+vn = 9.
+Analyse
+<<<PAGE>>>
+Exercice 17
+Soient (un) une suite convergente, l sa limite, a un r´ eel, sia< l montrer
+qu’il existe N∈ N tel que :
+∀n∈ N, n≥ N =⇒ un > a
+Solution : Puisque a< l, on peut choisir ϵ> 0 tel que
+ϵ< l− a =⇒ a< l−ϵ.
+Maintenant, d’apr` es la d´ eﬁnition de la limite
+∃N∈ N, ∀n∈ N, n> N, =⇒ | un− l|≤ ϵ
+Ceci entraine que
+l−ϵ≤ un≤ l +ϵ.
+Mais a< l−ϵ, donc
+a< l−ϵ≤ un.
+Analyse
+<<<PAGE>>>
+Exercice 18
+´Etudier la suite ( un)n∈N d´ eﬁnie par :
+(1) un+1 =√un + 1 avec u0 = 0, puis u0 = 2. On se placera sur I = [0; +∞[.
+Solution : Soit
+f : [0, +∞[ −→ R
+x ↦−→
+√
+x + 1
+Alors :
+f est une fonction croissante ( f′(x) = 1
+2√x+1 > 0) sur I .
+L’intervalle [0, +∞[ est stable par f .
+Le point ﬁxe de f sur [0, +∞[ est 1+
+√
+5
+2 . En eﬀet, sur [0, +∞[ nous avons
+f (x) = x ⇐⇒
+√
+x + 1 = x ⇐⇒ x 2− x− 1 = 0
+⇐⇒|{z}
+x≥0
+x = 1 +
+√
+5
+2 .
+Maintenant, puisque f est croissante, le Th´ eor` eme sur les suites r´ ecurrentes
+nous permet de conclure que
+(un)n∈N est une suite monotone.
+´Etudions ` a pr´ esent la convergence de cette suite.
+Analyse
+<<<PAGE>>>
+Exercice 18
+Si u0 = 0 : Alors
+f (0)− 0 =
+√
+0 + 1− 0 = 1> 0 =⇒ un est croissant.
+De plus, puisque f est croissante et f
+(
+1+
+√
+5
+2
+)
+= 1+
+√
+5
+2 , on conclut que
+u0 = 0< 1 +
+√
+5
+2 =⇒ u1 = f (u0)< 1 +
+√
+5
+2 =⇒ u2 = f (u1)< 1 +
+√
+5
+2
+=⇒ ··· =⇒ un = f (un−1)< 1 +
+√
+5
+2 .
+Ainsi
+∀n, un < 1 +
+√
+5
+2 .
+Par cons´ equent, (un)n∈N est une suite croissante et major´ ee, donc convergent.
+Le Th´ eor` eme des suites r´ ecurrentesnous dit donc que sa limite est un point
+ﬁxe de f . Puisque 1+
+√
+5
+2 est l’unique point ﬁxe de f dans [0, +∞[, on conclut :
+lim
+n→+∞
+un = 1 +
+√
+5
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 18
+Si u0 = 2 : Alors
+f (2)− 2 =
+√
+2 + 1− 2< 0 =⇒ un est d´ ecroissant.
+De plus, puisque f est croissante et f
+(
+1+
+√
+5
+2
+)
+= 1+
+√
+5
+2 on conclut que
+u0 = 2> 1 +
+√
+5
+2 =⇒ u1 = f (u0)> 1 +
+√
+5
+2 =⇒ u2 = f (u1)> 1 +
+√
+5
+2
+=⇒ ··· =⇒ un = f (un−1)> 1 +
+√
+5
+2 .
+Ainsi
+∀n, un > 1 +
+√
+5
+2 .
+Par cons´ equent, (un)n∈N est une suite d´ ecroissanteet minor´ ee, donc
+convergent. Le Th´ eor` eme des suites r´ ecurrentesnous dit donc que sa limite
+est un point ﬁxe de f . Puisque 1+
+√
+5
+2 est l’unique point ﬁxe de f dans [0, +∞[,
+on conclut :
+lim
+n→+∞
+un = 1 +
+√
+5
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 18
+´Etudier la suite ( un)n∈N d´ eﬁnie par :
+(2) un+1 = 1
+un
++ 1 avec u0 = 1, puis u0 = 2. On se placera sur I =]0, +∞[.
+Solution : Soit
+f :]0, +∞[ −→ R
+x ↦−→ 1
+x + 1
+Alors :
+f est une fonction d´ ecroissante (f′(x) =− 1
+x2 < 0) sur I .
+L’intervalle ]0, +∞[ est stable par f .
+Le Th´ eor` eme de suites r´ ecurrentsnous permet donc de conclure que
+(u2n)n∈N et ( u2n+1)n∈N
+sont monotones de monotonie contraire. ´Etudions ` a pr´ esent la convergence
+de ces deux suites. Pour cela notons que pour tout n≥ 0, nous avons
+u2n+2 = f (u2n+1) = f (f (u2n)) = (f◦ f )(u2n)
+u2n+3 = f (u2n+2) = f (f (u2n+1)) = (f◦ f )(u2n+1).
+Les suites ( u2n)n∈N et (u2n+1)n∈N sont donc r´ ecurrentes associ´ ees ` a la fonction
+f◦ f .
+Analyse
+<<<PAGE>>>
+Exercice 18
+Maintenant
+(f◦ f )(x) = 1
+f (x) + 1 = 1
+1
+x + 1 + 1 = x
+x + 1 + 1 = 2x + 1
+x + 1 .
+La fonction f◦ f est donc continue et croissante sur [0 , +∞[ :
+f d´ ecroissante =⇒ f◦ f croissante.
+De plus, pour tout x∈ [0, +∞[, nous avons
+(f◦ f )(x) = x ⇐⇒ 2x + 1
+x + 1 = x ⇐⇒ x 2− x− 1 = 0
+⇐⇒|{z}
+x≥0
+x = 1 +
+√
+5
+2 .
+Ainsi, 1+
+√
+5
+2 est le unique point ﬁxe de f◦ f dans [0, +∞[.
+Analyse
+<<<PAGE>>>
+Exercice 18
+Si u0 = 1. Alors nous avons :
+u2− u0 =
+( 1
+2 + 1
+)
+− 1> 0 =⇒ u2n est croissante
+=⇒ u2n+1 est d´ ecroissante.
+Finalement, puisque f◦ f est croissante et ( f◦ f )
+(
+1+
+√
+5
+2
+)
+= 1+
+√
+5
+2 , on conclut
+que
+u0 = 1< 1 +
+√
+5
+2 < 2 = u1 =⇒ u2 = (f◦ f )(u0)< 1 +
+√
+5
+2 < (f◦ f )(u1) = u3
+=⇒ u4 = (f◦ f )(u2)< 1 +
+√
+5
+2 < (f◦ f )(u3) = u5
+...
+=⇒ ∀ n∈ N, u2n≤ 1 +
+√
+5
+2 ≤ u2n+1
+Ainsi, (u2n)n∈N est une suite croissante et major´ ee, donc convergent. De
+mˆ eme, (u2n+1)n∈N est une suite d´ ecroissanteet minor´ ee, donc convergent.
+Analyse
+<<<PAGE>>>
+Exercice 18
+Le Th´ eor` eme sur les suites r´ ecurrentesnous dit donc que la valeur de
+leurs limites est un point ﬁxe de f◦ f . Puisque 1+
+√
+5
+2 est l’unique point
+ﬁxe de f◦ f dans ]0, +∞[, on conclut :
+lim
+n→+∞
+u2n = 1 +
+√
+5
+2
+lim
+n→+∞
+u2n+1 = 1 +
+√
+5
+2 .
+Ce qui nous permet de conclure
+lim
+n→+∞
+un = 1 +
+√
+5
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 18
+Si u0 = 2. Alors nous avons :
+u2− u0 =
+( 2
+3 + 1
+)
+− 2< 0 =⇒ u2n est d´ ecroissante
+=⇒ u2n+1 croissante.
+Finalement, puisque f◦ f est croissante et ( f◦ f )
+(
+1+
+√
+5
+2
+)
+= 1+
+√
+5
+2 , on conclut
+que
+u1 = 3
+2 < 1 +
+√
+5
+2 < 2 = u0 =⇒ u3 = (f◦ f )(u1)< 1 +
+√
+5
+2 < (f◦ f )(u0) = u2
+=⇒ u5 = (f◦ f )(u3)< 1 +
+√
+5
+2 < (f◦ f )(u2) = u4
+...
+=⇒ ∀ n∈ N, u2n+1≤ 1 +
+√
+5
+2 ≤ u2n
+Ainsi, (u2n)n∈N est une suite d´ ecroissanteet minor´ ee, donc convergent. De
+mˆ eme, (u2n+1)n∈N est une suite croissante et major´ ee, donc convergent.
+Analyse
+<<<PAGE>>>
+Exercice 18
+Le Th´ eor` eme sur les suites r´ ecurrentesnous dit donc que la valeur de
+leurs limites est un point ﬁxe de f◦ f . Puisque 1+
+√
+5
+2 est l’unique point
+ﬁxe de f◦ f dans ]0, +∞[, on conclut :
+lim
+n→+∞
+u2n = 1 +
+√
+5
+2
+lim
+n→+∞
+u2n+1 = 1 +
+√
+5
+2 .
+Ce qui nous permet de conclure
+lim
+n→+∞
+un = 1 +
+√
+5
+2 .
+Analyse
+<<<PAGE>>>
+Exercice 19
+On consid` ere la suite d´ eﬁnie par :u0 = 0 et un+1 = 3−√ un
+2 .
+On pose f (x) = 3−√ x
+2 .
+(1) Montrer que pour tout n∈ N, un∈ [0; 3].
+(2) D´ eterminer le(s) point(s) ﬁxe(s) de f dans cet intervalle.
+(3) Montrer que la suite ( u2n)n est croissante et la suite ( u2n+1)n d´ ecroissante.
+(4) On admet que f◦ f poss` ede les mˆ emes points ﬁxes quef dans l’intervalle
+[0; 3]. Montrer que les deux suites extraites convergent vers la mˆ eme
+limite et conclure.
+Analyse
+<<<PAGE>>>
+Exercice 19
+Solution : Soit
+f :]0, +∞[ −→ R
+x ↦−→ 3−
+√
+x
+2
+Alors :
+f est une fonction d´ ecroissante (f′(x) =− 1
+4
+√ x
+2
+< 0) sur I .
+Puisque f est d´ ecroissante, pour tout x∈ [0, 3], nous avons
+0< 3−
+√
+3
+2 = f (3)≤ f (x)≤ f (0) = 3 =⇒ f ([0, 3])⊂ [0, 3].
+C’est-` a-dire [0, 3] es stable par f .
+Sur l’intervalle [0, 3], nous avons :
+3−
+√
+x
+2 = x ⇐⇒ x 2− 13
+2 x + 9 = 0 ⇐⇒|{z}
+x∈[0,3]
+x = 2.
+Ainsi 2 est l’unique point ﬁxe de f dans [0, 3].
+Analyse
+<<<PAGE>>>
+Exercice 19
+Maintenant, u0 = 0∈ [0, 3], puis comme [0, 3] est stable par f , on conclut que
+u0∈ [0, 3] =⇒ u1 = f (u0)∈ f ([0, 3])⊂ [0, 3] =⇒ u2 = f (u1)∈ f ([0, 3])⊂ [0, 3]
+=⇒ ··· =⇒ ∀ n∈ N, un∈ [0, 3] =⇒ ∀ n∈ N, 0≤ un≤ 3.
+Ainsi, (un)n∈N est une suite born´ ee. De plus, puisque f est d´ ecroissant, le
+Th´ eor` eme sur les suites r´ ecurrentsnous dit que
+(u2n)n∈N et ( u2n+1)n∈N
+sont monotones de monotonie contraire. Pour d´ eterminer leur sens de
+variation, on compute
+u2− u0 =
+(
+3−
+√
+3
+2
+)
+− 0> 0 =⇒ (u2n)n∈N est croissante
+=⇒ (u2n+1)n∈N est d´ ecroissante.
+Ainsi
+(u2n)n∈N est une suite croissante et born´ ee, donc convergent. Disons vers
+𝓁.
+(u2n+1)n∈N est une suite d´ ecroissanteet born´ ee, donc convergent. Disons
+vers 𝓁′.
+Analyse
+<<<PAGE>>>
+Exercice 19
+Nous allons montrer que 𝓁 =𝓁′, ce qui aura comme cons´ equence que
+lim
+n→+∞
+un =𝓁.
+Notons que pour tout n≥ 0, nous avons
+u2n+2 = f (u2n+1) = f (f (u2n)) = (f◦ f )(u2n)
+u2n+3 = f (u2n+2) = f (f (u2n+1)) = (f◦ f )(u2n+1).
+Les suites ( u2n) et ( u2n+1) sont donc r´ ecurrentes associ´ ees ` a la fonction
+continue f◦ f . Le Th´ eor` eme de suites r´ ecurrentsnous dit donc que leur
+limites 𝓁 et 𝓁′ sont des points ﬁxes de f◦ f . Maintenant, le unique point ﬁxe
+de f◦ f dans [0, 3] est 2 (admis, donn´ e dans l’enonc´ e).Donc
+lim
+n→+∞
+u2n = 2.
+lim
+n→+∞
+u2n+1 = 2.
+´Etant donn´ e que les suites (u2n) et ( u2n+1) convergent vers 2 , on en d´ eduit que
+lim
+n→+∞
+un = 2.
+Analyse
+<<<PAGE>>>
+Exercice 20
+On consid` ere la fonction
+f : ]0; +∞[ −→ ]0; +∞[
+x ↦−→ 1 + 2
+x
+et la suite r´ ecurrente (un)n≥0 v´ eriﬁantun+1 = f (un) et u0 = 1.
+1 Montrez que l’intervalle [1, 3] est stable par f . Que peut-on en
+d´ eduire surun ? Quel est le sens de variation de f sur [1, 3] ? Soient
+vn et wn les suites d´ eﬁnies parvn = u2n et wn = u2n+1.
+2 Montrez que ( vn)n≥0 est croissante et que ( wn)n≥0 est d´ ecroissante.
+3 En d´ eduire que (vn)n≥0 et (wn)n≥0 sont convergentes. D´ eterminez
+leur limite respective.
+4 Finalement, quelle est la nature de la suite ( un)n≥0 ?
+Analyse
+<<<PAGE>>>
+Exercice 20
+Solution : Soit
+f :]0, +∞[ −→ R
+x ↦−→ 1 + 2
+x
+Alors :
+f est une fonction d´ ecroissante (f′(x) =− 2
+x2 < 0) sur I .
+Puisque f est d´ ecroissante, pour tout x∈ [1, 3], nous avons
+1 + 2
+3 = f (3)≤ f (x)≤ f (1) = 3 = ⇒ f ([1, 3])⊂ [1, 3].
+C’est-` a-dire [1, 3] es stable par f .
+Maintenant, u0 = 1∈ [1, 3], puis comme [1, 3] est stable par f , on conclut que
+1≤ u0≤ 3 =⇒ 1≤ f (u0) = u1≤ 3 =⇒ 1≤ f (u1) = u2≤ 3
+=⇒ ··· =⇒ ∀ n∈ N, 1≤ un≤ 3.
+Ainsi, ( un) est une suite born´ ee.De plus, puisque f est d´ ecroissant, le Th´ eor` eme de
+suites r´ ecurrents nous dit que
+(vn) = (u2n) et ( wn) = (u2n+1)
+sont monotones de monotonie contraire. Pour d´ eterminer leur sens de variation, on
+compute
+u2− u0 = 5
+3− 1> 0 =⇒ (vn) est croissante =⇒ (wn) est d´ ecroissante.
+Analyse
+<<<PAGE>>>
+Exercice 20
+Ainsi
+(vn) est une suite croissante et born´ ee, donc convergent. Disons vers L.
+(wn) est une suite d´ ecroissante et born´ ee, donc convergent. Disons vers L′.
+Nous allons montrer que L = L′, ce qui aura comme cons´ equence que
+lim
+n→+∞
+un = L.
+Notons que pour tout n≥ 0, nous avons
+vn+1 = u2n+2 = f (u2n+1) = f (f (u2n)) = (f◦ f )(u2n) = (f◦ f )(vn)
+wn+1 = u2n+3 = f (u2n+2) = f (f (u2n+1)) = (f◦ f )(u2n+1) = (f◦ f )(wn).
+Les suites ( vn) et ( wn) sont donc r´ ecurrentes associ´ ees ` a la fonction continuef◦ f . Le
+Th´ eor` eme de suites r´ ecurrentsnous dit donc que leur limites L et L′ sont des points
+ﬁxes de f◦ f . Maintenant
+(f◦ f )(x) = 2
+f (x) + 1 = 2
+2
+x + 1
++ 1 = 2x
+x + 2 + 1 = 3x + 2
+x + 2
+et vous pouvez montrer facilement que l’intervalle [1 , 3] est stable par f◦ f . Ainsi, sur
+l’intervalle [1, 3], nous avons :
+(f◦ f )(x) = x ⇐⇒ 3x + 2
+x + 2 = x ⇐⇒ x2− x− 2 = 0 ⇐⇒ x = 2.
+L’unique point ﬁxe de f◦ f dans [1, 3] est donc 2.
+Analyse
+<<<PAGE>>>
+Exercice 20
+Par cons´ equent,
+lim
+n→+∞
+vn = 2
+lim
+n→+∞
+wn = 2 .
+´Etant donn´ e que les suites (vn) = (u2n) et ( wn) = (u2n+1) convergent
+vers 2, on en d´ eduit que
+lim
+n→+∞
+un = 2.
+Analyse
+<<<PAGE>>>
+Exercice 21
+´Etudier les suites ( un) ` a termes r´ eels v´ eriﬁant
+un+1 = 1
+2 un(u2
+n− 3un + 4), pour tout n≥ 0.
+On pourra ´ etudier les variation de la fonction f d´ eﬁnissant cette suite,
+d´ eterminer ses points ﬁxes, ´ etudier le signe def (x)− x puis distinguer
+plusieurs cas selon la valeur de u0.
+Analyse
+<<<PAGE>>>
+Exercice 21
+Solution : Soit
+f : R −→ R
+x ↦−→ 1
+2 x(x 2− 3x + 4)
+Alors :
+f est une fonction croissante , en eﬀet f′(x) = 3
+2 x 2− 3x + 2, qui est un
+polynˆ ome de discriminant negatif surR, donc f′(x) = 3
+2 x 2− 3x + 2> 0.
+Le point ﬁxe de f sont 0, 1 et 2. En eﬀet
+f (x) = x ⇐⇒ 1
+2 x(x 2− 3x + 4) = x ⇐⇒ x
+( 1
+2 x 2− 3
+2 x + 1
+)
+= 0
+⇐⇒ x = 0, 1 ou 2 .
+Notons que f (x)− x = x
+( 1
+2 x 2− 3
+2 x + 1
+)
+satisfait les in´ egalit´ es suivants:
+f (x)− x ≤ 0, si x∈ ]−∞, 0]∪ [1, 2]
+et f (x)− x ≥ 0, si x∈ [0, 1]∪ [2, +∞].
+Analyse
+<<<PAGE>>>
+Exercice 21
+Puisque f est croissante et les points ﬁxes de f sont 0, 1 et 2 , on conclut
+que
+∀x∈]−∞, 0], −∞< f (x)< f (0) = 0 =⇒ f (]−∞, 0])⊂ ]−∞, 0].
+∀x∈ [0, 1], 0 = f (0)< f (x)< f (1) = 1 =⇒ f ([0, 1])⊂ [0, 1].
+∀x∈ [1, 2], 1 = f (1)< f (x)< f (2) = 2 =⇒ f ([1, 2])⊂ [1, 2].
+∀x∈ [2, +∞[, 2 = f (2)< f (x) =⇒ f ([2,∞[)⊂ [2, +∞[.
+Les distinctions qui suivent sont justiﬁ´ ees par le fait que les ensembles
+]−∞, 0[ ; {0} ; ]0, 1] ; [1 , 2[ ; {2} ; ]2, +∞[
+sont tous stables par f .
+Cas o` uu0∈ ]−∞, 0[ : l’intervalle ]−∞, 0[ est stable par f et
+f (x)≤ x, pour tout x∈ ]−∞, 0[.
+En particulier f (u0)− u0≤ 0. Ainsi, (un) est d´ ecroissante d’apr` es le
+Th´ eor` eme sur les suites r´ ecurrents. De plus, (un) poss` ede une limite𝓁
+d’apr` es leTh´ eor` eme de la limite monotone. Comme f ne poss` ede pas
+de point ﬁxe dans ] −∞, 0[, il en d´ ecoule que :𝓁 =−∞. Conclusion :
+lim
+n→+∞
+un =−∞.
+Analyse
+<<<PAGE>>>
+Exercice 21
+Cas o` uu0 = 0 : Cette fois , (un) est constante de valeur 0 , donc
+lim
+n→+∞
+un = 0.
+Cas o` uu0∈]0, 1] : l’intervalle ]0, 1] est stable par f et :
+f (x)≥ x, pour tout x∈ ]0, 1].
+En particulier f (u0)− u0≥ 0. Donc (un) est ` a la fois born´ ee entre 0
+et 1 et croissante d’apr` es leTh´ eor` eme sure les suites r´ ecurrents.
+Par cons´ equent, (un) poss` ede une limite𝓁∈]0, 1] d’apr` es le
+Th´ eor` eme de la limite monotone. Puisque f est continue, le
+Th´ eor` eme sur les suites r´ ecurrentsnous dit que 𝓁 est un pointe
+ﬁxe de f dans ]0, 1]. Ainsi, 𝓁 = 1. Conclusion :
+lim
+n→+∞
+un = 1.
+Analyse
+<<<PAGE>>>
+exercice 21
+Cas o` uu0∈ [1, 2[ : l’intervalle [1, 2[ est stable par f et
+f (x)≤ x, pour tout x∈ [1, 2[.
+En particulier f (u0)− u0≤ 0. Donc (un) est ` a la fois born´ ee entre 1
+et 2 et d´ ecroissante d’apr` es leTh´ eor` eme sur les suites r´ ecurrents.
+Par cons´ equent, (un) poss` ede une limite𝓁∈ [1, 2[ d’apr` es le
+Th´ eor` eme de la limite monotone. Puisque f est continue, le
+Th´ eor` eme des suites r´ ecurrents nous dit donc quel est un pointe
+ﬁxe de f dans [1, 2[. Ainsi, 𝓁 = 1. Conclusion :
+lim
+n→+∞
+un = 1.
+Cas o` uu0 = 2 : Cette fois , (un) est constante de valeur 2 , donc
+lim
+n→+∞
+un = 2.
+Analyse
+<<<PAGE>>>
+exercice 21
+Cas o` uu0∈]2, +∞[ : l’intervalle ]2, +∞[ est stable par f et
+f (x)≥ x, pour tout x∈]2, +∞[.
+En particulier f (u0)− u0≥ 0. Ainsi, (un) est croissante d’apr` es le
+Th´ eor` eme sur les suites r´ ecurrents. De plus, (un) poss` ede une
+limite l d’apr` es leTh´ eor` eme de la limite monotone. Comme f ne
+poss` ede pas de point ﬁxe dans ]2, +∞[, il en d´ ecoule que :𝓁 = +∞.
+Conclusion :
+lim
+n→+∞
+un = +∞.
+Analyse
+<<<PAGE>>>
+Suites Complexes
+L’´ etude des suites complexes se ram` ene ` a l’´ etude des suites r´ eels :
+Proposition
+Soit (un)n∈N une suite complexe (∀n∈ N, un∈ C). Alors (un)n∈N converge si et
+seulement si
+(Re(un))n∈N et (Im(un))n∈N
+convergent, et on a alors
+lim
+n→+∞
+un = lim
+n→+∞
+Re(un) + i
+(
+lim
+n→+∞
+Im(un)
+)
+.
+Proposition
+Soit (un)n∈N une suite complexe . Alors
+lim
+n→+∞
+un = l
+si et seulement si
+lim
+n→+∞
+|un− l| = 0.
+En particulier, lim
+n→+∞
+un = 0 si et seulement si lim
+n→+∞
+|un| = 0.
+Analyse
+<<<PAGE>>>
+Exercice 22
+´Etudier les suites suivantes :
+(1) un = n2i n
+n3+1 : Nous avons
+⏐⏐⏐⏐
+n2i n
+n3 + 1
+⏐⏐⏐⏐ =
+⏐⏐⏐⏐
+n2
+n3 + 1
+⏐⏐⏐⏐·| i n| =
+⏐⏐⏐⏐
+n2
+n3 + 1
+⏐⏐⏐⏐·| i|n = n2
+n3 + 1.
+Par cons´ equent
+lim
+n→+∞
+⏐⏐⏐⏐
+n2i n
+n3 + 1
+⏐⏐⏐⏐ = lim
+n→+∞
+n2
+n3 + 1 = 0
+Ainsi
+lim
+n→+∞
+n2i n
+n3 + 1 = 0.
+Analyse
+<<<PAGE>>>
+Exercice 22
+(2) un = 1
+n + (−1)ni : Nous avons
+Re(un) = 1
+n =⇒ lim
+n→+∞
+Re(un) = 0.
+Im(un) = (−1)n =⇒ Im(un) =
+{ 1 si n = 2k, k∈ N
+− 1 si n = 2k + 1, k∈ N
+=⇒ (Im(un))n∈N ne converge pas.
+Puisque la partie imaginaire de ( un)n∈N ne converge pas , on conclut que
+la limite de ( un)n∈N n’existe pas, c’est-` a-dire (un)n∈N diverge.
+Analyse
+<<<PAGE>>>
+Exercice 22
+(3) n
+n+3i− in
+n+1 : Nous avons
+n
+n + 3i− in
+n + 1 = n(n− 3i)
+n2 + 9 − in
+n + 1
+= n2− 3in
+n2 + 9 − in
+n + 1
+= n2
+n2 + 9− i
+( 3n
+n2 + 9 + n
+n + 1
+)
+Ainsi
+lim
+n→+∞
+un = lim
+n→+∞
+n2
+n2 + 9− i
+(
+lim
+n→+∞
+3n
+n2 + 9 + n
+n + 1
+)
+= 1− i.
+Analyse
+<<<PAGE>>>
+Exercice 22
+(4) n2i−in+1−3i
+(2n+4i−3)(n−i) : Nous avons
+n2i− in + 1− 3i
+(2n + 4i− 3)(n− i) = (n2− n− 3)i + 1
+2n2− 2ni + 4ni + 4− 3n + 3i
+= (n2− n− 3)i + 1
+2n2− 3n + 4 + (2n + 3)i
+= ((n2− n− 3)i + 1)(2n2− 3n + 4− (2n + 3)i)
+(2n2− 3n + 4)2 + (2n + 3)2
+= 2n3− 12n− 5 + i(2n4− 5n3 + n2 + 3n− 15)
+(2n2− 3n + 4)2 + (2n + 3)2
+Ainsi
+lim
+n→+∞
+n2i− in + 1− 3i
+(2n + 4i− 3)(n− i) = lim
+n→+∞
+2n3− 12n− 5
+(2n2− 3n + 4)2 + (2n + 3)2 +
+i
+(
+lim
+n→+∞
+2n4− 5n3 + n2 + 3n− 15
+(2n2− 3n + 4)2 + (2n + 3)2
+)
+= 0 + i
+2 = i
+2.
+Analyse
+<<<PAGE>>>
+Exercice 23
+´Etudier la suite d´ eﬁnie par la donn´ ee dez0∈ C et la relation de r´ ecurrence :
+zn+1 = 1
+3 (2zn− z n).
+Solution : Nous avons
+zn+1 = 1
+3 (2zn− z n) = 1
+3 (zn + (zn− z n)).
+Si on s´ eparezn en partie r´ eel et partie imaginaire, on obtient
+zn = xn + iyn.
+Ainsi
+xn+1 + iyn+1 = 1
+3 ((xn + iyn) + 2iyn) = 1
+3 (xn + 3iyn) = 1
+3 xn + iyn.
+Ceci implique que
+xn+1 = 1
+3 xn =⇒ xn+1 = 1
+3 xn =
+( 1
+3
+)2
+xn−1 =
+( 1
+3
+)3
+xn−2 =··· =
+( 1
+3
+)n+1
+x0
+=⇒ ∀ n∈ N, xn =
+( 1
+3
+)n
+x0.
+yn+1 = yn =⇒ yn+1 = yn = yn−1 = yn−2 =··· = y0
+=⇒ ∀ n∈ N, yn = y0.
+Analyse
+<<<PAGE>>>
+Exercice 23
+Par cons´ equent
+lim
+n→+∞
+zn = lim
+n→+∞
+xn + i
+(
+lim
+n→+∞
+yn
+)
+= lim
+n→+∞
+( 1
+3
+)n
+x0 + i
+(
+lim
+n→+∞
+y0
+)
+= 0 + iy0 = iy0.
+Analyse
+<<<PAGE>>>
+Exercice 24
+Soient (xn)n≥0 et (yn)n≥0 deux suites r´ eelles telles que :
+{
+xn+1 = xn−yn
+2
+yn+1 = xn+yn
+2 .
+On introduit la suite complexe de terme g´ en´ eral
+zn = xn + iyn.
+(1) ´Etablir une relation de r´ ecurrence entrezn et zn+1.
+Solution : Nous avons
+∀n∈ N, zn+1 = xn+1 + iyn+1
+= xn− yn
+2 + i xn + yn
+2
+= 1
+2 (xn + iyn) + 1
+2 (−yn + ixn)
+= 1
+2 zn + 1
+2 (i 2yn + ixn)
+= 1
+2 zn + i
+2 zn = 1
+2 (1 + i)zn.
+Analyse
+<<<PAGE>>>
+Exercice 24
+Par cons´ equent
+zn+1 = 1
+2 (1 + i)zn = 1
+4 (1 + i)2zn−1
+= 1
+8 (1 + i)3zn−2
+...
+= 1
+2n+1 (1 + i)n+1z0.
+Ainsi
+∀n∈ N, zn = 1
+2n (1 + i)nz0.
+Analyse
+<<<PAGE>>>
+Exercice 24
+(2) En d´ eduire que les deux suites r´ eelles sont convergentes et donner leur
+limite.
+Solution : Commen¸ cons par noter que
+lim
+n→+∞
+|zn| = lim
+n→+∞
+⏐⏐⏐⏐
+1
+2n (1 + i)n
+⏐⏐⏐⏐·| z0|
+= lim
+n→+∞
+1
+2n|1 + i|n·| z0|
+= lim
+n→+∞
+(√
+2
+2
+)n
+·| z0|
+= |z0| lim
+n→+∞
+( 1√
+2
+)n
+= 0.
+Ceci implique que
+lim
+n→+∞
+zn = 0 =⇒ lim
+n→+∞
+xn + iyn = 0
+=⇒ lim
+n→+∞
+xn + i· lim
+n→+∞
+yn = 0
+=⇒ lim
+n→+∞
+xn = 0 et lim
+n→+∞
+yn = 0.
+Analyse
+<<<PAGE>>>
+Exercice 15 - Th´ eor` eme de Ces` aro
+Soit (un)n∈N∗ une suite r´ eelle. Pour tout∀n∈ N∗, on pose
+vn = u1 +··· + un
+n = 1
+n
+n∑
+k=1
+uk.
+(vn est la moyenne arithm´ etique desn premiers termes de la suite u).
+1 On suppose lim
+n→+∞
+un = l avec l∈ R. Montrer qu’alors on a aussi
+lim
+n→+∞
+vn = l.
+´Etudier la r´ eciproque.
+2 Que peut-on dire si lim
+n→+∞
+un = +∞ ?
+Analyse
+<<<PAGE>>>
+Exercice 25 - Th´ eor` eme de Ces` aro
+On suppose lim
+n→+∞
+un = l avec l∈ R. Montrons lim
+n→+∞
+vn = l. Soit ϵ> 0. Comme
+(un) converge vers l il existe N0∈ N tel que
+∀n∈ N, n> N0, =⇒ |un− l|≤ ϵ
+2.
+Soit n> N0. Nous avons
+|vn−l| =
+⏐⏐⏐⏐⏐
+1
+n
+n∑
+k=1
+uk− l
+⏐⏐⏐⏐⏐ =
+⏐⏐⏐⏐⏐
+1
+n
+n∑
+k=1
+uk− n
+n· l
+⏐⏐⏐⏐⏐ =
+⏐⏐⏐⏐⏐
+1
+n
+n∑
+k=1
+uk− 1
+n
+n∑
+k=1
+l
+⏐⏐⏐⏐⏐ = 1
+n
+⏐⏐⏐⏐⏐
+n∑
+k=1
+(uk− l)
+⏐⏐⏐⏐⏐.
+L’in´ egalit´ e triangulaire(|a1 + a2 +··· + an|≤| a1| +|a2| +··· +|an|) nous permets
+d’´ ecrire
+|vn− l| = 1
+n
+⏐⏐⏐⏐⏐
+n∑
+k=1
+(uk− l)
+⏐⏐⏐⏐⏐≤ 1
+n
+n∑
+k=1
+|uk− l| = 1
+n
+N0−1∑
+k=1
+|uk− l| + 1
+n
+n∑
+k=N0
+|uk− l|.
+Ainsi pour tout n> N0 :
+|vn− l| ≤ 1
+n
+N0−1∑
+k=1
+|uk− l| + 1
+n
+n∑
+k=N0
+|uk− l|≤ 1
+n
+N0−1∑
+k=1
+|uk− l| + 1
+n
+n∑
+k=N0
+ϵ
+2
+= 1
+n
+N0−1∑
+k=1
+|uk− l| + ϵ(n− N0 + 1)
+2n .
+Analyse
+<<<PAGE>>>
+Exercice 25 - Th´ eor` eme de Ces` aro
+Puis comme n−N0+1
+n < 1, on peut ´ ecrire
+|vn− l|≤ 1
+n
+N0−1∑
+k=1
+|uk− l| + ϵ(n− N0 + 1)
+n ≤ 1
+n
+N0−1∑
+k=1
+|uk− l| + ϵ
+2. (1)
+Or
+lim
+n→+∞
+1
+n
+N0−1∑
+k=1
+|uk− l| =
+
+
+N0−1∑
+k=1
+|uk− l|
+
+· lim
+n→+∞
+1
+n = 0.
+Donc, d’apr` es la d´ eﬁnition de la limite
+∃N1∈ N, n> N1 =⇒ 1
+n
+N1−1∑
+k=1
+|uk− l|≤ ϵ
+2.
+On pose N = max(N0, N1). En combinant ce dernier r´ esultat ` a l’in´ egalit´ e (1), on
+obtient
+∀n∈ N, n> N =⇒ |vn− l|≤ 2· ϵ
+2 =ϵ.
+On a donc d´ emontr´ e que
+∃N∈ N, n> N =⇒ |vn− l|≤ ϵ.
+Cela permet d’aﬃrmer que ( vn) converge vers l.
+Analyse
+<<<PAGE>>>
+Exercice 25 - Th´ eor` eme de Ces` aro
+La r´ eciproque du Th´ eor` eme de Ces` aro est fausse.En eﬀet, consid´ erons la
+suite (un) d´ eﬁnie par
+∀n∈ N∗, un = (−1)n+1.
+Alors pour tout n∈ N∗
+0≤ vn≤ 1
+n.
+Par le Th´ eor` eme d’Encadrement, on en d´ eduit que la suite (vn) converge
+vers 0. En revanche, la suite un est une suite divergente. La r´ eciproque du
+Th´ eor` eme de Ces` aro est donc fausse.
+Analyse
+<<<PAGE>>>
+Exercice 25 - Th´ eor` eme de Ces` aro
+Que peut-on dire si lim
+n→+∞
+un = +∞ ? Montrons que lim
+n→+∞
+vn = +∞. Puisque
+lim
+n→+∞
+un = +∞. Pour tout A∈ R+ il existe N0∈ N tel que
+n> N0 =⇒ un > 4A.
+Par cons´ equent,si n> N0 nous avons
+vn = u1 +··· + uN0−1
+n + uN0 +··· + un
+n ≥ u1 +··· + uN0−1
+n + 4A
+( n− N0 + 1
+n
+)
+.
+Maintenant, comme lim
+n→+∞
+n−N0+1
+n = 1, il existe N1∈ N tel que
+n> N1 =⇒
+⏐⏐⏐⏐
+n− N0 + 1
+n − 1
+⏐⏐⏐⏐< 1
+2 =⇒ n− N0 + 1
+n > 1
+2.
+Et comme lim
+n→+∞
+u1+···+uN0−1
+n = 0, on conclut
+∃N2∈ N, n> N2 =⇒
+⏐⏐⏐⏐
+u1 +··· + uN0−1
+n
+⏐⏐⏐⏐< A =⇒ u1 +··· + uN0−1
+n >−A.
+Ainsi, en posant N = max(N0, N1, N2), on obtient que
+∀n∈ N, n> N =⇒ vn > u1 +··· + uN0−1
+n + 4A
+( n− N0 + 1
+n
+)
+>−A + 4· A
+2 = A.
+Cela permet d’aﬃrmer que lim n→+∞ vn = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 26 - constante d’Euler
+Soit :
+Hn = 1 + 1
+2 +... + 1
+n
+(1) Montrer que pour tout n∈ N∗, on a :
+1
+n + 1≤ ln(n + 1)− ln(n)≤ 1
+n
+(2) En d´ eduire que :
+ln(n + 1)≤ Hn≤ ln(n) + 1
+(3) En d´ eduire la limite deHn lorsque n tend vers +∞
+(4) Montrer que la suite ( un)n>0 d´ eﬁnie par :
+un = Hn− ln(n)
+est d´ ecroissante et positive.
+(5) Conclure (La limite de ( un) souvent not´ eeγ est appel´ ee la constante
+d’Euler, du nom du math´ ematicien Suisse Leonhard Euler, 1707-1783.
+Cette limite vaut environ 0.5772156649... mais on ne sait toujours pas si
+ce r´ eel est rationnel ou irrationnel. La question est toujours ouverte !)
+Analyse
+<<<PAGE>>>
+Exercice 26 - constante d’Euler
+Solution :
+(1) Consid´ erons la fonctionf : R\{ 0} d´ eﬁnie par
+x↦→ 1
+x.
+La fonction f est une fonction continue et d´ ecroissante sur ]0, +∞[.
+Ainsi,
+(n + 1− n)f (n + 1) = 1
+n + 1≤
+∫ n+1
+n
+f (x)dx
+= ln( n + 1)− ln(n)≤ (n + 1− n)f (n) = 1
+n.
+D’o` u le r´ esultat.
+Analyse
+<<<PAGE>>>
+Exercice 21 - constante d’Euler
+(2) On a pour k≥ 1, 1
+k≥
+∫ k+1
+k
+1
+x dx et pour k≥ 2, 1
+k≤
+∫ k
+k−1
+1
+x dx. Ainsi,
+pour n≥ 1,
+Hn =
+n∑
+k=1
+1
+k≥
+n∑
+k=1
+∫ k+1
+k
+1
+x dx =
+∫ n+1
+1
+1
+x dx = ln(n + 1).
+Pour n≥ 2,
+Hn =
+n∑
+k=1
+1
+k = 1 +
+n∑
+k=2
+1
+k≤ 1 +
+n∑
+k=2
+∫ k
+k−1
+1
+k = 1 +
+∫ n
+1
+1
+x dx = 1 + ln(n),
+cette derni` ere in´ egalit´ e restant vraie quandn = 1. Donc,
+∀n∈ N∗, ln(n + 1)≤ Hn≤ 1 + ln(n).
+(3) D’apr` es le th´ eor` eme de gendarme, lim
+n→+∞
+Hn = +∞.
+Analyse
+<<<PAGE>>>
+Exercice 26 - constante d’Euler
+(4) On a un+1 = Hn+1− ln(n + 1) = Hn + 1
+n+1− ln(n + 1). Donc,
+un+1− un = Hn + 1
+n + 1− ln(n + 1)− Hn + ln(n)
+= 1
+n + 1− (ln(n + 1)− ln(n))
+≤|{z}
+d’apr` es 1.
+0.
+Ainsi, ( un) est d´ ecroissante. Pour toutn∈ N∗, montrons que un≥ 0. En eﬀet,
+u1 = H1 = 1> 0. On suppose que l’hypoth` ese est vraie jusqu’au rang ( n) et on
+va la d´ emontrer au rang (n + 1) :
+un+1 = Hn+1− ln(n + 1) = Hn + 1
+n + 1− ln(n + 1) >|{z}
+car Hn≥ ln(n + 1)
+0.
+D’o` u le r´ esultat.
+(5) La suite ( un)n>0 est d´ ecroissante et minor´ ee par 0, donc (un)n converge
+vers γ≥ 0.
+Analyse
+<<<PAGE>>>
+Exercice 27
+Soit zn = an est une suite complexe de raison a∈ C.
+(1) ´Etudier cette suite dans le cas |a|< 1, puis dans le cas |a|> 1. Solution :
+Si|a|< 1 : Alors
+lim
+n→+∞
+|zn| = lim
+n→+∞
+|an| = lim
+n→+∞
+|a|n = 0 =⇒ lim
+n→+∞
+zn = 0.
+Si|a|> 1 : Alors
+lim
+n→+∞
+|zn| = lim
+n→+∞
+|an| = lim
+n→+∞
+|a|n = +∞ =⇒ (zn) diverge .
+(2) Dans le cas |a| = 1, on notera a = eiθ. Que se passe t-il si θ
+2π∈ Z ?
+Solution : Si θ
+2π∈ Z, alors il existe k∈ Z tel que
+θ
+2π = k =⇒ θ = 2kπ =⇒ eiθ = e2kiπ = 1
+=⇒ ∀ n∈ N, zn =
+(
+eiθ
+)n
+= 1n = 1.
+=⇒ (zn) est une suite constante de valeur 1
+=⇒ lim
+n→+∞
+zn = 1.
+Analyse
+<<<PAGE>>>
+Exercice 27
+(3) Supposons|a| = 1. Montrer que si θ
+2π∈ Q\Z, la suite est p´ eriodique et
+donc divergente. Dans les autres cas, c’est-` a-dire lorsque θ
+2π⁄∈ Q, on montre
+que la suite est ´ egalement divergente.
+Solution :
+Si θ
+2π∈ Q\Z, alors il existe p, q∈ Z, avec p et q premiers entre eux , et q⁄= 0,
+tel que
+θ
+2π = p
+q =⇒ θ = 2pπ
+q =⇒ ∀ n∈ N, zn =
+(
+e
+2ipπ
+q
+)n
+= e
+2ipnπ
+q
+=⇒ ∀n∈ N, zn+q = e
+2ip(n+q)π
+q = e
+2ipnπ
+q e2ipπ = zn.
+Ainsi, (zn) est une suite p´ eriodique et donc divergente. Nous pouvons aussi
+noter que, pour tout n∈ N nous avons :
+zn =
+
+
+
+1 si n = kq, k∈ Z
+e
+2ipπ
+q si n = 1 + kq, k∈ Z
+e
+4ipπ
+q si n = 2 + kq, k∈ Z
+...
+e
+2ip(q−1)π
+q si n = (q− 1) + kq, k∈ Z
+Analyse
+<<<PAGE>>>
+Exercice 27
+Si θ
+2π /∈ Q, alors pour tout n, m∈ N, nous avons
+zn⁄= zm.
+En eﬀet, s’il existe n, m∈ N tel que zn = zm, alors
+eiθn = eiθm =⇒ θn =θm + 2kπ, k∈ Z =⇒ θ = 2kπ
+n− m
+=⇒ θ
+2π = k
+n− m∈ Q.
+Par contrapos´ ee, on conclut donc que pour tout n, m∈ N, nous avons zn⁄= zm. Ceci a
+comme cons´ equence le r´ esultat suivant :
+Proposition
+Supposons θ
+2π /∈ Q, alors l’ensemble
+{einθ : n∈ N}
+est dense dans le cercle unit´ eU.
+Maintenant, d’apr` es la proposition pr´ ec´ edente pour tout ´ el´ ementu∈ U, il existe une
+suite extraite ( un) de ( zn), tel que lim
+n→+∞
+un = u. Ainsi, (zn) admet des suites extraites
+avec des limites diﬀ´ erents.Donc ( zn) diverge.
+Analyse

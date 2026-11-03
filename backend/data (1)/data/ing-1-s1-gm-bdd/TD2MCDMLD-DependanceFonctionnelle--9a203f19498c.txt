@@ -1,0 +1,139 @@
+ING1
+Bases de données
+TD 02
+Du MCD au MLD
+Dépendance fonctionnelle
+ Il s'agit de se familiariser avec le passage d'une description d'informations
+en langage naturel vers un modèle logique de données à travers les étapes
+suivantes :
+1. Recenser les informations du système ;
+2. Elaboration d'un modèle conceptuel de données en utilisant le modèle
+entités/associations ;
+3. Passage du modèle conceptuel de données au modèle logique de données.
+ Il est important de noter que ce travail est un préalable indispensable à
+la conception d'une base de données bien pensée. Voici la démarche pour
+élaborer un MCD :
+ Recenser les propriétés du système
+ Regrouper des propriétés par entité pour établir un dictionnaire de don-
+nées
+ Construire des entités
+ Rechercher des associations
+ Rechercher des cardinalités entre association
+ vérier et valider le modèle avec le CDC
+Partie I : MCD - MLD
+Exercice 1 : Gestion d'un hôpital
+On se propose de modéliser la base de données d'un hôpital. L'analyse de
+l'existant a dégagé les informations suivantes :
+ L'hôpital a un ensemble d'employés qui sont des docteurs et des inrmières.
+Chaque employé possède un numéro d'employé, un nom, un prénom, une
+adresse et un numéro de téléphone.
+ L'hôpital est composé de plusieurs services, pour lesquels on connaît le code,
+le nom, le bâtiment et le directeur, qui est en fait un docteur.
+Équipe pédagogique 1 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+ Chaque service contient plusieurs salles. Une salle est représentée par un
+numéro, un surveillant et le nombre de lits qu'elle possède. Le numéro de
+salle est local à un service (i.e., chaque service possède une salle numéro 1).
+Un surveillant est un inrmier.
+ Un inrmier est aecté à un service et à un seul.
+ Les docteurs ne sont pas aectés à un service particulier, mais on connaît
+sa spécialité.
+ On connaît aussi pour chaque inrmier sa rotation.
+ Les patients ont un nom et une adresse. Le suivi médical de chaque patient
+est décrit dans un dossier. Ce dossier est sous la responsabilité d'un unique
+médecin ; il contient la liste des diérentes maladies du patient, ainsi que la
+date de début de chaque maladie. Une même maladie peut toucher le même
+patient à deux dates diérentes.
+Question 1 : Dénir le MLD du MCD que vous avez réalisé lors de la séance
+précédente.
+Exercice 2 : Pokémon Go, partie 2
+On voudrait modéliser Pokémon Go, un jeu multi-joueurs de réalité augmentée.
+Pour simplier, nous allons gérer seulement les éléments suivants : des joueurs,
+des personnages, des équipes, des Pokémons et des arènes.
+Chaque joueur a un pseudonyme unique, et son niveau évolue en fonction de
+temps. Il incarne un personnage féminin ou masculin personnalisé et nommable.
+Il possède un nombre limité de Pokémons.
+Chaque Pokémon a un nom, un type et appartient à une espèce. Il peut apparaître
+aux emplacements aléatoires, avec un temps d'apparition. Plus le Pokémon est
+rare, plus ce temps est court. Chacun a un point de combat.
+Les joueurs peuvent former des équipes avec une couleur et un nom diérent.
+Le choix d'une équipe se fait à partir d'un certain niveau. Chaque arène dont
+on connaît l'emplacement est défendue par une équipe qui en a pris le contrôle
+en mettant un ou plusieurs Pokémons en défense. Le joueur peut alors aronter
+les membres des autres équipes dans les arènes an de récupérer le contrôle de
+celles-ci ou défendre celles déjà protégées par son équipe en y ajoutant un de ses
+Pokémons.
+Question 1 : Dénir le MCD de ce jeu.
+Question 2 : Etablir le MLD du MCD ci-dessus.
+Équipe pédagogique 2 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+Partie II : Normalisation
+Exercice 1
+On considère le schéma R(A, B, C, D, E, F) et les dépendances fonctionnelles
+suivantes :
+1. A → B
+2. A → C
+3. A → E
+4. F → E
+5. B, C, D → E
+6. B, C → F
+Toute autre dépendance non triviale ou non obtenue à partir des précédentes est
+considérée comme fausse.
+Question 1 : Donner le numéro des dépendances élémentaires.
+Question 2 : Donner le numéro des dépendances directes.
+Exercice 2 : Gestion de séjours dans une chaîne d'hôtels
+Soit une chaîne d'hôtel désirant gérer les consommations des clients par séjour
+dans tous ses hôtels. Le but de cette gestion est d'établir une facture par séjour
+des consommations. Sur cette facture, doivent gurer les données suivantes :
+Éléments de facturation
+ Numéro client
+ Nom client
+ Prénom client
+ Adresse client (n ° , rue, cp, ville)
+ Numéro du séjour
+ Date début séjour
+ Durée séjour
+ Nom de l'hôtel
+A vec pour chaque consommation
+ Désignation consommation
+Équipe pédagogique 3 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+ Quantité consommée
+ Tarif consommation
+ Montant consommation ( = quantité consommée * tarif consommation )
+ Montant total des consommations ( = somme (montant consommation))
+La direction nous précise que
+ Un séjour est associé à un hôtel
+ Chaque hôtel propose un ensemble de consommations
+ Certains hôtels n'ont pas de bar ni de minibar
+ Chaque hôtel gère ses propres tarifs de consommation
+ Une consommation est décrite par sa désignation et son volume
+ Chaque consommation demandée par un client est comptabilisée par séjour
+ Chaque client peut eectuer un ou plusieurs séjours
+ Un séjour est eectué par un client et un seul. On mémorise la date du début
+de séjour et la durée du séjour.
+ Ce cahier des charges a été traduit par un MCD.
+Équipe pédagogique 4 2021-2022
+<<<PAGE>>>
+ING1
+Bases de données
+Question 1 : Dans un premier temps, procédons à quelques vérications par
+rapport au cahier des charges. Modier éventuellement le MCD :
+(a) Quelle est la partie du MCD qui traduit la phrase Certains hôtels n'ont
+pas de bar ni de minibar ?
+(b) Quelle est la partie du MCD qui traduit la phrase Chaque consommation
+demandée par un client est comptabilisée par séjour ?
+(c) Quelle est la partie du MCD qui traduit la phrase Un séjour est associé
+à un hôtel ?
+(d) L'information Quantité consommée n'apparaît pas dans ce MCD. Il est
+donc incomplet. Où doit-on la faire apparaître ?
+(e) Les deux informations duree et date_debut apparaissent dans l'associa-
+tion eectueSejour . Qu'en pensez-vous ?
+(f) Donner le MLD correspondant au MCD corrigé.
+Équipe pédagogique 5 2021-2022

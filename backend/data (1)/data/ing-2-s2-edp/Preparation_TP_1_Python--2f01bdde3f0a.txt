@@ -1,0 +1,43 @@
+from numpy import linspace, zeros, meshgrid
+import matplotlib.pyplot as plt
+from math import  pi, cos
+T=1.0
+L=1.0
+N=49
+print N+1
+M=4999
+deltax=L/(N+1)
+print deltax
+deltat=T/(M+1)
+X=linspace(0, L, N+2)
+t=linspace(0, T, M+2)
+u=zeros((M+2,N+2))
+Surx,Surt=meshgrid(X,t)
+"""
+print u
+print X
+"""
+def Conditions_init(x):
+    f=(x-1)*(x-1)*(x-1)
+    return f
+def Conditions_lim_1N(t):
+    f=3
+    return f
+for i in range(0,N+2):
+    u[0,i]=Conditions_init(X[i])
+C=deltat/(deltax*deltax)  
+for n in range(0,M+1):
+    for i in range(1,N+1):
+        u[n+1,i]=
+fig=plt.figure()
+plt.plot(X,u[M+1,:],X,u[0,:])
+fig=plt.figure() 
+plt.plot(t,u[:,N+1],t, u[:,0])  
+fig=plt.figure(figsize=(14,8)) 
+ax = fig.gca(projection='3d')
+surf=ax.plot_surface(Surx,Surt,u,cstride=1,linewidth=0, cmap='jet')
+for angle in range(0, 360):
+   ax.view_init(30, 40)
+ 
+fig.colorbar(surf, shrink=0.5, aspect=5)
+plt.show()

@@ -1,0 +1,114 @@
+karam.fayad@eisti.eu
+Corrigé DS1 Algèbre (12/10/2018)
+Exercice 1 .
+1. Soit les propositions :
+A : l’étudiant reçoit une bourse,B : l’étudiant est bon,C : l’étudiant est pauvre.
+L’énoncé exprime l’équivalence :A⇔B∧C. On a ainsi :A⇔B∧C⇔B∨C.
+Les étudiants qui ne reçoivent pas de bourse sont donc les étudiants qui ne sont pas bons ou qui ne sont
+pas pauvres.
+2. Soit les propositions :
+A : ils parlent B : ils savent.
+Les deux aﬃrmations de l’énoncé expriment respectivement les implicationsA⇒ B et B⇒ A . Ces
+deux implications sont équivalentes, car elles sont contraposées l’une de l’autre. Les deux aﬃrmations de
+l’énoncé veulent donc dire la même chose.
+3. La suite (un)n≥0 n’est pas convergente si :
+∀ L∈ R, ∃ ε> 0, ∀ n0∈ N, ∃ n∈ N, (n≥n0 et|un−L|≥ ε).
+4. Cet ensemble contient deux éléments (qui sont{a,{⊿,◦},α} et ⋆).
+Exercice 2 .
+1.(a) Construisons une table de vérité :
+P Q P⊕Q P∨Q P∧Q P∧Q (P∨Q)∧ (P∧Q)
+V V F V V F F
+V F V V F V V
+F V V V F V V
+F F F F F V F
+On a bien :(P⊕Q)⇔ (P∨Q)∧ (P∧Q).
+(b) On a :
+P⊕Q⇔ (P∨Q)∧ (P∧Q)
+⇔ (P∨Q)∧ (P∨Q)
+⇔ (P∧P )| {z }
+Faux
+∨(P∧Q)∨ (Q∧P )∨ (Q∧Q)| {z }
+Faux
+⇔ (P∧Q)∨ (Q∧P )
+2.(a) - P⊕P⇔ (P∨P )∧ (P∧P )⇔P∧P⇔ Faux
+- P⊕Faux⇔ (P∨Faux)∧ (P∧Faux)⇔P∧Vrai⇔P
+- P⊕Vrai⇔ (P∨Vrai)∧ (P∧Vrai)⇔ Vrai∧P⇔P
+- D’après la table de vérité ci-dessus, on remarque que(P⊕Q)⊕Q⇔P.
+(b) Remarquons d’abord queP⊕Q⇔ (P∨Q)∧ (Q∨P )⇔ (P∧Q)∨ (P∧Q).
+(P⊕Q)⊕R⇔ ((P⊕Q)∧R)∨ (P⊕Q∧R)
+⇔
+(
+((P∧Q)∨ (Q∧P ))∧R
+)
+∨
+(
+((P∧Q)∨ (P∧Q))∧R
+)
+⇔ (P∧Q∧R)∨ (Q∧P∧R)∨ (P∧Q∧R)∨ (P∧Q∧R)
+Dans la proposition précédente, on remarque que si on remplaceP par Q, Q par R et R par P, on
+obtient une proposition équivalente.
+Ainsi (P⊕Q)⊕R⇔ (Q⊕R)⊕P. Or, par commutativité (évidente) du⊕, (Q⊕R)⊕P⇔P⊕(Q⊕R).
+Conclusion : (P⊕Q)⊕R⇔P⊕ (Q⊕R).
+1
+<<<PAGE>>>
+3. À l’aide d’une table de vérité, on remarque que(P⊕Q)⊕ (P∧Q)⇔ (P∨Q).
+Deuxième méthode :
+(P⊕Q)⊕ (P∧Q)⇔ ((P⊕Q)∨ (P∧Q))∧ ((P⊕Q)∧ (P∧Q))
+Or
+(P⊕Q)∨ (P∧Q)⇔ ((P∨Q)∧ (P∧Q))∨ (P∧Q)
+⇔ ((P∨Q)∨ (P∧Q))∧ ((P∧Q)∨ (P∧Q))
+⇔ (P∨Q)∧Vrai
+⇔P∨Q
+et
+(P⊕Q)∧ (P∧Q)⇔ (P∨Q)∨ (P∧Q)∨ (P∧Q)| {z }
+Vrai
+⇔ Vrai
+Conclusion : (P⊕Q)⊕ (P∧Q)⇔ (P∨Q).
+Exercice 3 .
+Pourn∈ N, on notePn la propriété :un = (−2)n + 3n.
+On va procéder par récurrence double.
+Initialisation : Montrons queP0 et P1 sont vraies :
+On a bien :(−2)0 + 30 = 2 = u0 et (−2)1 + 31 = 1 = u1.
+Attention : On ne commence pas par écrireu0 = (−2)0 + 30, car c’est ce qu’on doit montrer!
+Hérédité : Soitn∈ N, supposons quePn et Pn+1 dont vraies et montrons quePn+2 est vraie.
+En eﬀet,
+un+2 =un+1 + 6un d’après l’énoncé
+= (−2)n+1 + 3n+1 + 6((−2)n + 3n) par hypothèse de récurrence
+= (−2)n(−2 + 6) + 3 n(3 + 6)
+= (−2)n× 4 + 3n× 9
+= (−2)n+2 + 3n+2
+Conclusion : pour tout entier natureln, on aun = (−2)n + 3n.
+Exercice 4 .
+1. Montrons que
+A∩B =A∩C⇔A∩B =A∩C.
+⇒)
+Supposons queA∩B =A∩C, et montrons (par double inclusion) queA∩B =A∩C.
+Soit a∈A∩B, alorsa∈A et a /∈B.
+Montrons quea∈A∩C. Par l’absurde, sia∈C, alorsa∈A∩C =A∩B, alorsa∈B. Contradiction.
+Donc a /∈C, d’oùa∈A∩C.
+Conclusion :A∩B⊂A∩C.
+L’autre inclusion se montre de la même façon, en échangeant les rôles deB et C.
+⇐)
+On utilise le résultat de la première implication, en remplaçantB par B et C par C. Autrement dit :
+si A∩B =A∩C alors d’après la première implicationA∩B =A∩C, d’oùA∩B =A∩C.
+Deuxième méthode :
+⇒)
+2
+<<<PAGE>>>
+Supposons queA∩B =A∩C, alorsA rB =A r (A∩B) = A r (A∩C) = A rC
+Idem pour la deuxième implication en remplaçantB par B et C par C.
+2. ⇒)
+Supposons queA⊂B et montrons queP(A)⊂P (B).
+Soit X∈P (A), alorsX⊂A, orA⊂B, alorsX⊂B, d’oùX∈P (B).
+⇐)
+Supposons queP(A)⊂P (B) et montrons queA⊂B.
+Soit x∈A, alors{x}∈P (A), orP(A)⊂P (B), d’où{x}∈P (B), ainsix∈B.
+Deuxième méthode : On aA∈P (A) orP(A)⊂P (B), ainsiA∈P (B), d’oùA⊂B.
+3. Pour tout couple(x,y )∈E×E :
+(x,y )∈ (A∪B)×C⇔x∈A∪B et y∈C
+⇔ (x∈A ou x∈B) et y∈C
+⇔ (x∈A et y∈C) ou (x∈B et y∈C)
+⇔ (x,y )∈A×C ou (x,y )∈B×C
+⇔ (x,y )∈ (A×C)∪ (B×C)
+Conclusion : (A∪B)×C = (A×C)∪ (B×C).
+3

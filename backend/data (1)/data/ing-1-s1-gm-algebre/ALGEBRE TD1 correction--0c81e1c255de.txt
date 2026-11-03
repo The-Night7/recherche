@@ -1,0 +1,561 @@
+Correction des Exercices
+Exercice 1 : Calcul de Normes Vectorielles
+Énoncé :Calculer les normes 1, 2, et∞du vecteurx= (1,0,1,−4) T.
+Rappel de Cours : Normes Vectorielles
+Une norme sur un espace vectoriel est une fonction qui associe à chaque vecteur une
+longueur. Pour un vecteurv= (v 1,v 2,...,v n)∈R n, les normes usuelles sont :
+•La norme 1 (∥·∥ 1): C’est la somme des valeurs absolues des composantes du
+vecteur.
+∥v∥1 =
+nX
+i=1
+|vi|
+•La norme 2 (∥·∥ 2): C’est la norme euclidienne, qui correspond à la longueur
+"habituelle" du vecteur.
+∥v∥2 =
+vuut
+nX
+i=1
+v2
+i
+•La norme infinie (∥·∥ ∞): C’est la plus grande des valeurs absolues des com-
+posantes.
+∥v∥∞ = max
+i=1,...,n
+|vi|
+Solution de l’Exercice 1
+Soit le vecteurx=
+
+
+1
+0
+1
+−4
+
+.
+1.Calcul de la norme 1 :On somme les valeurs absolues des composantes dex.
+∥x∥1 =|1|+|0|+|1|+|−4|= 1 + 0 + 1 + 4 = 6
+Le résultat est donc∥x∥1 = 6.
+2.Calcul de la norme 2 :On calcule la racine carrée de la somme des carrés des
+composantes.
+∥x∥2 =
+p
+12 + 02 + 12 + (−4)2 =
+√
+1 + 0 + 1 + 16 =
+√
+18
+On peut simplifier la racine :
+√
+18 =√9×2 = 3
+√
+2.
+Le résultat est donc∥x∥2 = 3
+√
+2.
+1
+<<<PAGE>>>
+3.Calcul de la norme infinie :On cherche la plus grande valeur absolue parmi les
+composantes.
+∥x∥∞ = max(|1|,|0|,|1|,|−4|) = max(1,0,1,4) = 4
+Le résultat est donc∥x∥∞ = 4.
+Exercice 2 : Calcul de Normes Matricielles
+Énoncé :Calculer la norme deI n pour les normes matricielles|||·||| 1,|||·||| 2,|||·||| ∞
+et∥·∥ F.
+Rappel de Cours : Normes Matricielles
+Pour une matriceA∈R m×n avec des coefficientsaij, les normes principales sont :
+•La norme 1 (|||·||| 1): Maximum de la somme des valeurs absolues des éléments
+de chaquecolonne.
+|||A|||1 = max
+j=1,...,n
+mX
+i=1
+|aij|
+•La norme infinie (|||·||| ∞): Maximum de la somme des valeurs absolues des
+éléments de chaqueligne.
+|||A|||∞ = max
+i=1,...,m
+nX
+j=1
+|aij|
+•La norme 2 ou spectrale (|||·|||2): Racine carrée de la plus grande valeur propre
+deA TA.
+|||A|||2 =
+p
+λmax(ATA)
+•La norme de Frobenius (∥·∥F): Racine carrée de la somme des carrés de tous
+les éléments.
+∥A∥F =
+vuut
+mX
+i=1
+nX
+j=1
+|aij|2
+Solution de l’Exercice 2
+On considère la matrice identitéIn.
+1.Calcul de la norme 1 :Chaque colonne deIn contient un seul ’1’. La somme des
+valeurs absolues pour chaque colonne est donc 1.
+|||In|||1 = max
+j
+X
+i
+|(In)ij|= max(1,1,...,1) = 1
+2
+<<<PAGE>>>
+2.Calcul de la norme infinie :Chaque ligne deIn contient un seul ’1’. La somme
+des valeurs absolues pour chaque ligne est donc 1.
+|||In|||∞ = max
+i
+X
+j
+|(In)ij|= max(1,1,...,1) = 1
+3.Calcul de la norme 2 (spectrale) :On calculeIT
+nIn =I n×In =I n. Les valeurs
+propres deI n sont toutes égales à 1. La plus grande valeur propre,λmax(In), est
+donc 1.
+|||In|||2 =
+p
+λmax(IT
+nIn) =
+p
+λmax(In) =
+√
+1 = 1
+4.Calcul de la norme de Frobenius :La matriceI n anéléments égaux à 1 sur
+sa diagonale et des 0 partout ailleurs.
+∥In∥F =
+vuut
+nX
+i=1
+nX
+j=1
+|(In)ij|2 =
+s
+12 + 12 +···+ 1 2
+| {z }
+nfois
+=√n
+Exercice 3 : Calcul de Normes Matricielles
+Énoncé :Calculer les normes|||·||| 1,|||·||| 2,|||·||| ∞ de la matrice
+A=
+
+
+2 1 1
+2 3 2
+1 1 2
+
+
+Solution de l’Exercice 3
+1.Calcul de la norme 1 (|||A|||1)
+Cette norme est la somme maximale des valeurs absolues parcolonne.
+•Colonne 1 :|2|+|2|+|1|= 5
+•Colonne 2 :|1|+|3|+|1|= 5
+•Colonne 3 :|1|+|2|+|2|= 5
+Le maximum de ces sommes est 5.
+|||A|||1 = max(5,5,5) = 5
+2.Calcul de la norme infinie (|||A|||∞)
+Cette norme est la somme maximale des valeurs absolues parligne.
+•Ligne 1 :|2|+|1|+|1|= 4
+•Ligne 2 :|2|+|3|+|2|= 7
+•Ligne 3 :|1|+|1|+|2|= 4
+Le maximum de ces sommes est 7.
+|||A|||∞ = max(4,7,4) = 7
+3
+<<<PAGE>>>
+3.Calcul de la norme 2 (|||A|||2)
+La norme 2 (norme spectrale) est|||A|||2 =
+p
+λmax(ATA). Cependant, la matrice
+Aestsymétrique(A=A T). Dans ce cas particulier, la norme 2 est simplement
+égale aurayon spectraldeA, notéρ(A), qui est le maximum des valeurs absolues
+de ses valeurs propres.
+Nous devons donc calculer les valeurs propres deAen résolvant l’équation carac-
+téristiquedet(A−λI) = 0.
+det
+
+
+2−λ1 1
+2 3−λ2
+1 1 2−λ
+
+ = 0
+En développant le déterminant :
+0 = (2−λ) [(3−λ)(2−λ)−2]−1 [2(2−λ)−2] + 1 [2−(3−λ)]
+= (2−λ)(λ 2−5λ+ 4)−(4−2λ−2) + (2−3 +λ)
+= (2−λ)(λ−1)(λ−4)−(2−2λ) + (λ−1)
+= (2−λ)(λ−1)(λ−4) + 2(λ−1) + (λ−1)
+= (λ−1) [(2−λ)(4−λ) + 2 + 1]
+= (λ−1)
+
+8−6λ+λ 2 + 3
+
+= (λ−1)(λ 2−6λ+ 11)Erratum dans le calcul manuel, reprenons :
+= (λ−1) [(2−λ)(4−λ) + 3] = (λ−1)[λ 2−6λ+ 8 + 3]̸= 0
+Correction du développement :
+= (λ−1) [−(λ−2)(λ−4) + 3]
+= (λ−1)[−(λ 2−6λ+ 8) + 3] = (λ−1)(−λ 2 + 6λ−5)
+=−(λ−1)(λ 2−6λ+ 5) =−(λ−1)(λ−1)(λ−5) =−(λ−1) 2(λ−5)
+L’équation caractéristique est donc−(λ−1) 2(λ−5) = 0. Les valeurs propres deA
+sontλ 1 = 5(multiplicité 1) etλ 2 = 1(multiplicité 2).
+Lerayonspectralestρ(A) = max(|λ i|) = max(|5|,|1|) = 5. PuisqueAestsymétrique,
+sa norme 2 est égale à son rayon spectral.
+|||A|||2 = 5
+Exercice 4 : Démonstration de la Norme Infinie
+Énoncé :Démontrer le résultat :|||A||| ∞ = maxi=1,...,m
+Pn
+j=1|aij|.
+Démonstration
+Par définition, la norme matricielle induite par la norme vectorielle infinie est :
+|||A|||∞ = sup
+x̸=0
+∥Ax∥∞
+∥x∥∞
+= sup
+∥x∥∞=1
+∥Ax∥∞
+La preuve se fait en deux temps.
+4
+<<<PAGE>>>
+Étape 1 : Montrer que|||A|||∞≤max i
+P
+j|aij|Soitx∈R n tel que∥x∥∞ = 1. Soit
+y=Ax. Lai-ème composante deyesty i =Pn
+j=1aijxj. Regardons la norme dey=Ax:
+∥Ax∥∞ = max
+i=1,...,m
+|yi|= max
+i
+
+nX
+j=1
+aijxj
+
+Par l’inégalité triangulaire :
+
+nX
+j=1
+aijxj
+≤
+nX
+j=1
+|aijxj|=
+nX
+j=1
+|aij||xj|
+Puisque∥x∥∞ = 1, on a|xj|≤1pour toutj. Ainsi :
+nX
+j=1
+|aij||xj|≤
+nX
+j=1
+|aij|×1 =
+nX
+j=1
+|aij|
+Donc, pour n’importe quelle lignei:|y i|≤ Pn
+j=1|aij|. Le maximum de|y i|est donc
+majoré par le maximum de ces sommes :
+∥Ax∥∞ = max
+i
+|yi|≤max
+i
+nX
+j=1
+|aij|
+Comme ceci est vrai pour tout vecteurxde norme 1, le supremum l’est aussi :
+|||A|||∞ = sup
+∥x∥∞=1
+∥Ax∥∞≤max
+i
+nX
+j=1
+|aij|
+Étape 2 : Montrer qu’il existe un vecteurx 0 qui atteint cette borneNous
+devons maintenant prouver que l’égalité est possible. SoitM= maxi
+Pn
+j=1|aij|. Soiti 0
+l’indice de la ligne où ce maximum est atteint :
+nX
+j=1
+|ai0j|=M
+Construisons un vecteur spécifiquex0∈R n dont les composantes sont définies par :
+(x0)j =sgn(a i0j) =
+(
+1sia i0j≥0
+−1sia i0j <0
+Par construction,∥x 0∥∞ = maxj|(x0)j|= 1. Calculons lai 0-ème composante du vecteur
+Ax0 :
+(Ax0)i0 =
+nX
+j=1
+ai0j(x0)j =
+nX
+j=1
+ai0jsgn(ai0j)
+Par définition de la fonction signe,a×sgn(a) =|a|. Donc :
+(Ax0)i0 =
+nX
+j=1
+|ai0j|=M
+5
+<<<PAGE>>>
+La norme∥Ax 0∥∞ est le maximum des valeurs absolues des composantes deAx0. Elle est
+donc au moins aussi grande que la valeur absolue de sai0-ème composante :
+∥Ax0∥∞≥|(Ax 0)i0|=M
+En combinant avec le résultat de l’Étape 1 (|||A|||∞≤M), nous avons :
+M≤∥Ax 0∥∞≤|||A|||∞≤M
+Cela implique que toutes ces valeurs sont égales.
+|||A|||∞ =M= max
+i=1,...,m
+nX
+j=1
+|aij|
+Ce qui conclut la démonstration.
+Exercice 5 : Démonstration d’une Propriété de Norme
+Énoncé :Démontrer le résultat suivant pour toute matriceA∈R m×n :
+|||A|||1 =|||A T|||∞
+Démonstration
+La preuve repose sur la simple application des définitions des normes matricielles1et∞.
+1.Définition de la norme 1 pour A
+La norme 1 d’une matriceA∈R m×n est le maximum de la somme des valeurs
+absolues des éléments de chaquecolonne.
+|||A|||1 = max
+1≤j≤n
+mX
+i=1
+|aij|(∗)
+2.Définition de la norme infinie pourAT
+SoitB=A T.Best une matrice de taillen×moù l’élémentb ij est égal àaji. La
+norme infinie deBest le maximum de la somme des valeurs absolues des éléments
+de chaqueligne.
+|||B|||∞ =|||A T|||∞ = max
+1≤i≤n
+mX
+j=1
+|bij|
+En remplaçantbij para ji, on obtient :
+|||AT|||∞ = max
+1≤i≤n
+mX
+j=1
+|aji|(∗∗)
+6
+<<<PAGE>>>
+3.Comparaison
+L’expression(∗∗)calcule la somme sur l’indicejdes termes|a ji|. Pour unifixé,
+cela correspond à la somme des éléments de lai-ème colonne de la matriceA. On
+prend ensuite le maximum sur toutes les colonnes (indexées ici pari).
+L’expression(∗)calcule la somme sur l’indiceides termes|a ij|. Pour unjfixé, cela
+correspond à la somme des éléments de laj-ème colonne de la matriceA. On prend
+ensuite le maximum sur toutes les colonnes (indexées parj).
+Les deux expressions calculent donc exactement la même chose : le maximum de la
+somme des valeurs absolues des colonnes deA.
+Par conséquent,|||A||| 1 =|||A T|||∞.
+Exercice 6 : Vrai ou Faux
+1.Affirmation :Si A et B sont deux matrices carrées de même taille, on a|||A|||1·
+|||B|||1 =|||AB||| 1.
+Réponse : FAUXLes normes matricielles induites sontsous-multiplicatives,
+ce qui signifie que la propriété générale est|||AB|||1≤|||A||| 1·|||B||| 1. L’égalité
+n’est pas toujours vraie.
+Contre-exemple :Soit la matriceA=
+0 2
+0 0
+
+. Calculons sa norme 1 :
+|||A|||1 = max(|0|+|0|,|2|+|0|) = max(0,2) = 2
+CalculonsA 2 :
+A2 =A·A=
+0 2
+0 0
+ 0 2
+0 0
+
+=
+0 0
+0 0
+
+=O
+La norme de la matrice nulle est :
+|||A2|||1 = 0
+Comparons les deux termes :
+|||A|||1·|||A||| 1 = 2×2 = 4
+On a bien|||A2|||1 = 0̸= 4 = (|||A||| 1)2. L’affirmation est donc fausse.
+2.Affirmation :Si A et B sont deux matrices carrées de même taille, on a|||AB|||2≤
+|||A|||2·|||B||| 2.
+Réponse : VRAIC’est la propriété desous-multiplicativitéqui est vraie pour
+toutes les normes matricielles induites, y compris la norme 2.
+7
+<<<PAGE>>>
+Démonstration:Pardéfinition,|||M||| 2 = supx̸=0
+∥Mx∥ 2
+∥x∥2
+. Ainsi, pourtoutvecteur
+y, on a∥My∥ 2≤|||M||| 2·∥y∥ 2.
+Appliquons cette propriété deux fois :
+∥ABx∥2 =∥A(Bx)∥ 2≤|||A||| 2·∥Bx∥ 2
+Et de même :
+∥Bx∥2≤|||B||| 2·∥x∥ 2
+En combinant ces deux inégalités :
+∥ABx∥2≤|||A||| 2·(|||B||| 2·∥x∥ 2) = (|||A||| 2·|||B||| 2)·∥x∥ 2
+Pour toutx̸= 0, on peut diviser par∥x∥ 2 :
+∥ABx∥2
+∥x∥2
+≤|||A||| 2·|||B||| 2
+Puisque cette majoration est valable pour toutx̸= 0, elle est aussi valable pour le
+supremum :
+|||AB|||2 = sup
+x̸=0
+∥ABx∥2
+∥x∥2
+≤|||A||| 2·|||B||| 2
+3.Affirmation :Pour toute matrice A deR n×n, il existe unx∈R n et une norme
+vectorielle notée∥·∥tels que|||A||| F = ∥A.x∥
+∥x∥ .
+Réponse : FAUXL’affirmation sous-entend que la norme de Frobenius∥·∥ F
+est unenorme induitepar une norme vectorielle. Ce n’est pas le cas.
+Argument :Une propriété fondamentale de toute norme matricielle|||·|||induite
+par une norme vectorielle est que la norme de la matrice identitéIn vaut 1.
+|||In|||= sup
+x̸=0
+∥Inx∥
+∥x∥ = sup
+x̸=0
+∥x∥
+∥x∥ = 1
+Or, comme nous l’avons vu dans l’exercice 2, la norme de Frobenius de la matrice
+identité est :
+∥In∥F =√n
+Pour toute dimensionn>1, on a√n̸= 1. Puisque la norme de Frobenius ne vérifie
+pas la condition|||In|||F = 1pourn >1, elle ne peut pas être une norme induite
+par une norme vectorielle. L’affirmation est donc fausse.
+Correction de l’Exercice 7
+Énoncé :Pour tout réelα, on noteA α la matrice
+Aα =
+
+
+α1 0
+1α1
+0 1α
+
+
+8
+<<<PAGE>>>
+1. Quelles sont les valeurs propres de la matriceAα ?
+2. Pour quelles valeurs deα, la matriceAα est-elle inversible ?
+3. Calculer les normes|||Aα|||1,|||Aα|||2 et|||A α|||∞.
+Solution
+1.Calcul des valeurs propres deAα
+Lesvaleurspropresλsontlesracinesdupolynômecaractéristique, définipardet(A α−
+λI) = 0.
+det(Aα−λI) =
+
+α−λ1 0
+1α−λ1
+0 1α−λ
+
+En développant par rapport à la première ligne :
+det = (α−λ)
+
+α−λ1
+1α−λ
+−1
+
+1 1
+0α−λ
+ + 0
+= (α−λ)
+
+(α−λ) 2−1
+
+−1 [(α−λ)−0]
+= (α−λ)
+ 
+(α−λ) 2−1−1
+
+= (α−λ)
+ 
+(α−λ) 2−2
+
+On cherche les racines de(α−λ) ((α−λ) 2−2) = 0.
+•Soitα−λ= 0 =⇒λ 1 =α.
+•Soit(α−λ) 2−2 = 0 =⇒(α−λ) 2 = 2 =⇒α−λ=±
+√
+2. Cela nous donne
+deux autres valeurs propres :λ2 =α−
+√
+2etλ 3 =α+
+√
+2.
+Les valeurs propres deAα sont donc :
+λ1 =α, λ 2 =α−
+√
+2, λ 3 =α+
+√
+2
+2.Condition d’inversibilité deA α
+Une matrice est inversible si et seulement si aucune de ses valeurs propres n’est
+nulle. Nous devons donc avoirλ1̸= 0,λ 2̸= 0etλ 3̸= 0.
+•λ 1̸= 0 =⇒α̸= 0.
+•λ 2̸= 0 =⇒α−
+√
+2̸= 0 =⇒α̸=
+√
+2.
+•λ 3̸= 0 =⇒α+
+√
+2̸= 0 =⇒α̸=−
+√
+2.
+La matriceA α est donc inversible si et seulement siαn’est pas une de ces trois
+valeurs.
+Aα est inversible pourα∈R\{−
+√
+2,0,
+√
+2}
+3.Calcul des normes matricielles deAα
+•Norme 1 (|||Aα|||1): Maximum de la somme des valeurs absolues par colonne.
+9
+<<<PAGE>>>
+–Colonne 1 :|α|+|1|+|0|=|α|+ 1
+–Colonne 2 :|1|+|α|+|1|=|α|+ 2
+–Colonne 3 :|0|+|1|+|α|=|α|+ 1
+|||Aα|||1 = max(|α|+ 1,|α|+ 2,|α|+ 1) =|α|+ 2
+•Norme infinie (|||Aα|||∞): Maximum de la somme des valeurs absolues par
+ligne. La matriceAα étant symétrique (Aα =A T
+α), sa norme∞est égale à sa
+norme 1.
+|||Aα|||∞ =|||A α|||1 =|α|+ 2
+•Norme 2 (|||Aα|||2): Norme spectrale. Puisque la matriceAα est symétrique,
+sa norme 2 est égale à son rayon spectralρ(Aα), qui est le maximum des valeurs
+absolues de ses valeurs propres.
+|||Aα|||2 =ρ(A α) = max(|λ 1|,|λ 2|,|λ 3|)
+|||Aα|||2 = max
+
+|α|,|α−
+√
+2|,|α+
+√
+2|
+
+Les deux valeurs propresα−
+√
+2etα+
+√
+2sont les plus éloignées deα. Le
+maximum de leurs valeurs absolues est|α|+
+√
+2. Comme
+√
+2>0, on a|α|+√
+2>|α|. Le maximum est donc déterminé par les deux valeurs propres
+extrêmes.
+|||Aα|||2 = max(|α−
+√
+2|,|α+
+√
+2|) =|α|+
+√
+2
+10

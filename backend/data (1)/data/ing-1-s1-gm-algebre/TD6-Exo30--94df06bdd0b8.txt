@@ -1,0 +1,49 @@
+## Auteur : Nelly BARRAU
+## 2021-2022 - ING1 MI
+## Analyse Numérique
+## Serie de TD7 - EXERCICE 7.2
+
+# Packages utiles
+from math import *
+import numpy as np
+
+l1=np.array([1.0, 2.0, 3.0])
+l2=np.array([2.0, 4.0, 6.0])
+
+A = np.array([ l1, l2])
+
+# print('A = ',A)
+
+
+U, s, Vh = np.linalg.svd(A, full_matrices=True)
+print('U=',U)
+print('s=',s)
+print('Vh=',Vh)
+
+# # Dimension des matrices
+n1,n2 =U.shape
+m1,m2=Vh.shape
+#
+# # s est un vecteur, on reconstruit une matrice diagonale S
+S = np.zeros((n1,m1))
+S[:n1,:n1] = np.diag(s)
+print('S=',S)
+
+
+
+
+# At=np.conj(A).transpose()  #A* = conjuguee transposee
+# print('A* = ',At)
+# #
+# AAt=A.dot(At)
+# print('AA* = ',AAt)
+# D1=np.linalg.eigvalsh(AAt)    # renvoie valp d'une mat symetrique (reelle ou hermitienne)
+# V1=np.linalg.eigh(AAt)   # renvoie valp et vectp unitaires (couple) pour mat symetrique
+# print('D1 = ',D1)
+# print('V1 = ',V1)
+# #
+# # AtA=At.dot(A)
+# # print('A*A = ',AtA)
+# # D2, V2 = np.linalg.eig(AAt)
+# # print('D2 = ',D2)
+# # print('V2 = ',V2)

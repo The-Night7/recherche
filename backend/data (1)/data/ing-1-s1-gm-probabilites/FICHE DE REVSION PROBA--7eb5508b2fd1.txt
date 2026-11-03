@@ -1,0 +1,511 @@
+FICHE DE RÉVISION
+Probabilités
+ING1 - Génie Mathématique
+TD1 - PROBABILITÉS ET INDÉPENDANCE
+Propriétés de base
+1. Sous-additivité :
+P
+ n[
+i=1
+Ai
+!
+≤
+nX
+i=1
+P (Ai)
+2. Identité de Poincaré :
+P
+ n[
+i=1
+Ai
+!
+=
+X
+P (Ai)−
+X
+i<j
+P (Ai∩Aj) +
+X
+i<j<k
+P (Ai∩Aj∩Ak)−···
+Inégalités de Bonferroni
+P
+ n[
+i=1
+Ai
+!
+≥
+nX
+i=1
+P (Ai)−
+X
+i<j
+P (Ai∩Aj)
+Indépendance
+Événements : A et B indépendants si P (A∩B) =P (A)P (B)
+V ariables : X et Y indépendantes si :
+P (X∈A,Y ∈B) =P (X∈A)P (Y ∈B) pour tous A,B
+A TTENTION
+Indépendance 2 à 2 ̸= Indépendance mutuelle
+Exemple : X,Y indépendantes, Z =XY . Alors X,Y,Z sont 2 à 2 indépendantes MAIS PAS mutuel-
+lement indépendantes.
+F ormule de Bayes
+P (A|B) = P (B|A)P (A)
+P (B)
+F ormule des probabilités totales :
+P (B) =
+nX
+i=1
+P (B|Ai)P (Ai)
+où (Ai) est une partition de Ω.
+ASTUCE
+Pour montrer l'indépendance :
+1. Calculer P (X∩Y ) et vérier si =P (X)P (Y )
+2. Pour des v.a. : vérier si fX,Y (x,y ) =fX(x)fY (y)
+1
+<<<PAGE>>>
+3. Pour des v.a. gaussiennes : vérier si Cov (X,Y ) = 0
+TD2 - ESPÉRANCE ET V ARIANCE
+F ormules F ondamentales
+V ariance :
+Var (X) =E[X 2]−E[X]2
+Conséquence : E[X]2≤E[X 2] (Cauchy-Schwarz)
+Pour X∈ N :
+E[X] =
+∞X
+n=0
+P (X >n)
+E[X 2] =
+∞X
+k=0
+(2k + 1)P (X >k)
+* Inégalités Importantes
+1. Inégalité de Markov :
+P (|X|≥ a)≤ E[|X|]
+a
+Généralisation : Pour g croissante :
+P (|X|≥ a)≤ E[g(|X|)]
+g(a)
+2. Inégalité de Bienaymé-T chebychev :
+P (|X−E[X]|≥ ε)≤ Var (X)
+ε2
+Lois Discrètes Classiques
+ Bernoulli B(p) : P (X = 1) =p, E[X] =p, Var (X) =p(1−p)
+ Binomiale B(n,p ) :
+P (X =k) =
+n
+k
+
+pk(1−p)n−k
+E[X] =np, Var (X) =np(1−p)
+ Géométrique G(p) : P (X =k) =p(1−p)k
+E[X] = 1−p
+p , Var (X) = 1−p
+p2
+ Poisson P(λ) :
+P (X =k) = λke−λ
+k!
+E[X] =λ, Var (X) =λ
+ASTUCE
+Astuces Binomiale :
+ Probabilité que X soit paire : 1
+2(1 + (1− 2p)n)
+2
+<<<PAGE>>>
+ Approximation de Poisson : Si n grand et p petit avec np =λ :
+B(n,p )≈P (λ)
+ASTUCE
+Pour Poisson :
+ Moment factoriel : E[X(X− 1)··· (X−r + 1)] =λr
+ Somme de Poisson indépendantes : X∼P (λ1), Y ∼P (λ2) indépendantes
+X +Y ∼P (λ1 +λ2)
+TD3 - ESPÉRANCE ET MESURES
+Convergence et Espérance
+Si (An) avec P (An)→ 0, alors pour X∈L1 :
+lim
+n→∞
+E[X1An] = 0
+Changement de Mesure
+Si X≥ 0 p.s. et E[X] = 1, dénir Q(A) =E[X1A] donne une probabilité.
+Relation :
+EQ[Y ] =EP [XY ]
+pour toute v.a. Y ≥ 0 ou bornée.
+A TTENTION
+Loi de Cauchy :
+fX(x) = 1
+π
+1
+1+x2 pour tout x∈ R
+N'admet PAS d'espérance !
+R
+|x|fX(x)dx = +∞
+ASTUCE
+Pour montrer que E[XY ] =E[X]E[Y ] n'implique pas l'indépendance :
+Prendre X∼U([−1, 1]) et Y =X 2
+On a E[XY ] =E[X 3] = 0 =E[X]E[Y ] mais X et Y ne sont pas indépendantes.
+TD4 - TRANSFORMATIONS ET DENSITÉS
+F onction de Répartition
+Si FX(x)∈{ 0, 1} pour tout x, alors X est constante p.s.
+3
+<<<PAGE>>>
+* Changement de V ariable (Théorème)
+Si Y =g(X) où g strictement monotone sur I1,...,I n (partition de R), alors :
+fY (y) =
+nX
+i=1
+fX(g−1
+i (y))
+
+d
+dyg−1
+i (y)
+ 1gi(Ii)(y)
+T ransformations Classiques
+ Si X∼N(0, 1) :
+ Y =X 2∼χ2
+1 (chi-deux à 1 degré de liberté)
+ Z =σX +µ∼N(µ,σ 2)
+ W =eX∼ Log-normale
+ Si X∼U([a,b ]) :
+fX(x) = 1
+b−a 1[a,b](x)
+Inégalité de Jensen
+Si g convexe et X admettant une espérance :
+E[g(X)]≥g(E[X])
+ASTUCE
+Pour trouver la densité de Y =g(X) :
+Méthode 1 (fonction de répartition) :
+1. Calculer FY (y) =P (Y ≤y) =P (g(X)≤y)
+2. Dériver : fY (y) =F′
+Y (y)
+Méthode 2 (théorème de changement de variable) :
+1. Identier les intervalles où g est monotone
+2. Sur chaque intervalle : fY (y) =fX(g−1(y))|((g−1)′(y)|
+3. Sommer sur tous les intervalles
+Loi Gamma γ(a
+fX(x) = ba
+Γ(a)xa−1e−bx1R+(x)
+E[X] = a
+b , Var (X) = a
+b2
+Propriété additive : Si X1∼γ(a1,b ) et X2∼γ(a2,b ) indépendantes :
+X1 +X2∼γ(a1 +a2,b )
+Lien avec χ2 : χ2
+n =γ(n/2, 1/2)
+ASTUCE
+Pour Y ∼N(0, 1) :
+Y 2∼χ2
+1 =γ(1/2, 1/2)
+Donc : Γ(1/2) =√π
+4
+<<<PAGE>>>
+Pour n v.a. i.i.d. Xi∼N(0, 1) :
+nX
+i=1
+X 2
+i ∼χ2
+n
+TD5 - CONVERGENCES
+Types de Convergence
+1. Convergence p.s. (presque sûre) :
+P ( lim
+n→∞
+Xn =X) = 1
+2. Convergence en probabilité :
+∀ε> 0, lim
+n→∞
+P (|Xn−X|>ε ) = 0
+3. Convergence en loi :
+lim
+n→∞
+FXn(x) =FX(x) pour tout x de continuité
+4. Convergence dans Lp :
+lim
+n→∞
+E[|Xn−X|p] = 0
+Hiérarchie des Convergences
+p.s. ⇒ prob. ⇒ loi
+Lp⇒ prob. ⇒ loi
+Les réciproques sont F AUSSES en général
+* Loi F aible des Grands Nombres
+Si (Xn) i.i.d. avec E[X1] =µ et Var (X1)<∞ :
+1
+n
+nX
+i=1
+Xi
+L2,prob.
+−−−−−→µ
+* Loi F orte des Grands Nombres
+Si (Xn) i.i.d. avec E[X1] =µ :
+1
+n
+nX
+i=1
+Xi
+p.s.
+−−→µ
+* Théorème Central Limite
+Si (Xn) i.i.d. avec E[X1] =µ et Var (X1) =σ2<∞ :
+Pn
+i=1Xi−nµ
+σ√n
+loi−→N(0, 1)
+5
+<<<PAGE>>>
+Équivalent : Sn−nµ
+σ√n
+loi−→N(0, 1)
+ASTUCE
+Pour montrer la convergence en probabilité :
+Utiliser Bienaymé-Tchebychev :
+P (|Xn−X|>ε )≤ E[(Xn−X)2]
+ε2
+Si E[(Xn−X)2]→ 0, alors Xn
+prob.
+−−−→X
+A TTENTION
+Attention aux contre-exemples :
+ Convergence en probabilité ̸⇒ convergence dans L1
+Exemple : P (Xn =n2) = 1/n, P (Xn = 0) = 1− 1/n
+Alors Xn
+prob.
+−−−→0 mais E[Xn] =n→∞
+ASTUCE
+Pour appliquer le TCL :
+1. Vérier : (Xn) i.i.d., µ =E[X1], σ2 = Var (X1)<∞
+2. Former : Zn = Sn−nµ
+σ√n
+3. Conclure : Zn
+loi−→N(0, 1)
+4. Pour n grand : Sn≈N(nµ,nσ 2)
+TD6 - VECTEURS ALÉATOIRES
+Densité Conjointe et Marginales
+Si (X,Y ) admet une densité fX,Y , les densités marginales sont :
+fX(x) =
+Z
+R
+fX,Y (x,y )dy
+fY (y) =
+Z
+R
+fX,Y (x,y )dx
+* Indépendance
+X et Y sont indépendantes si et seulement si :
+fX,Y (x,y ) =fX(x)fY (y) pour tout (x,y )
+T ransformation de V ecteurs
+Si (U,V ) = (g1(X,Y ),g 2(X,Y )) avec g bijective, alors :
+fU,V (u,v ) =fX,Y (x,y )|J|−1
+6
+<<<PAGE>>>
+où J est le jacobien :
+J =
+
+∂x
+∂u
+∂x
+∂v∂y
+∂u
+∂y
+∂v
+
+et (x,y ) =g−1(u,v )
+ASTUCE
+Pour montrer l'indépendance :
+Méthode 1 : Vérier que fX,Y (x,y ) =fX(x)fY (y)
+Méthode 2 : Montrer que le support se factorise : {(x,y ) :fX,Y (x,y )> 0} =A×B
+Attention : Indépendance 2 à 2 ̸= indépendance mutuelle !
+Loi de Student
+Si X∼N(0, 1) et Y ∼χ2
+n indépendantes :
+T =
+√nX√
+Y
+∼tn (loi de Student)
+TD7 - VECTEURS GAUSSIENS
+* V ecteur Gaussien
+X = (X1,...,X n)T est gaussien si :
+X∼N n(m, Σ)
+où m =E[X] et Σ = Cov (X)
+Densité (si Σ inversible) :
+fX(x) = 1
+(2π)n/2|Σ|1/2 exp
+
+−1
+2(x−m)T Σ−1(x−m)
+
+Propriétés Gaussiennes
+1. Combinaison linéaire : Si X∼N n(m, Σ) et Y =AX +b :
+Y ∼N p(Am +b,A ΣAT )
+2. Indépendance : Pour vecteurs gaussiens :
+Cov (X,Y ) = 0⇔X et Y indépendantes
+Propriété SPÉCIFIQUE aux vecteurs gaussiens !
+Matrice de Covariance
+Σij = Cov (Xi,Xj) =E[(Xi−mi)(Xj−mj)]
+Propriétés :
+ Symétrique : Σ = ΣT
+ Semi-dénie positive : xT Σx≥ 0 pour tout x
+7
+<<<PAGE>>>
+ASTUCE
+Pour montrer l'indépendance de gaussiennes :
+1. Calculer Cov (X,Y )
+2. Si Cov (X,Y ) = 0 : X et Y sont indépendantes !
+Pour trouver la loi de Y =AX +b :
+1. E[Y ] =AE[X] +b
+2. Cov (Y ) =ACov (X)AT
+3. Y ∼N (E[Y ], Cov (Y ))
+Loi Conditionnelle
+Si (X,Y ) gaussien avec X∈ Rp, Y ∈ Rq :
+X|Y =y∼N (µX|Y, ΣX|Y )
+où :
+µX|Y =mX + ΣXY Σ−1
+Y (y−mY )
+ΣX|Y = ΣX− ΣXY Σ−1
+Y ΣYX
+TD8 - ESPÉRANCE CONDITIONNELLE
+* Dénition
+E[X|G] est une v.a. G-mesurable telle que :
+∀A∈G ,
+Z
+A
+E[X|G]dP =
+Z
+A
+XdP
+Propriétés F ondamentales
+1. Linéarité : E[aX +bY|G] =aE[X|G] +bE[Y|G]
+2. T our d'espérance : E[E[X|G]] =E[X]
+3. Sortie des constantes : Si Y est G-mesurable :
+E[XY|G] =YE [X|G]
+4. Indépendance : Si X indépendante de G :
+E[X|G] =E[X]
+Espérance Conditionnelle pour V ecteurs
+Si (X,Y ) a une densité conjointe fX,Y :
+E[X|Y =y] =
+Z
+R
+xfX|Y (x|y)dx
+où :
+fX|Y (x|y) = fX,Y (x,y )
+fY (y)
+8
+<<<PAGE>>>
+ASTUCE
+Pour calculer E[X|Y ] :
+Cas discret :
+E[X|Y =y] =
+X
+x
+xP (X =x|Y =y)
+Cas continu :
+1. Trouver la loi de (X,Y )
+2. Calculer la densité conditionnelle : fX|Y (x|y) = fX,Y (x,y)
+fY (y)
+3. Intégrer : E[X|Y =y] =
+R
+xfX|Y (x|y)dx
+Cas gaussien : Utiliser la formule directe !
+Cas Gaussien
+Si (X,Y ) gaussien :
+E[X|Y ] =E[X] + Cov (X,Y )
+Var (Y ) (Y−E[Y ])
+V ariance conditionnelle :
+Var (X|Y ) = Var (X)− Cov (X,Y )2
+Var (Y )
+A TTENTION
+Pièges courants :
+ E[X|Y ] =Y et E[Y|X] =X n'impliquent PAS forcément X =Y p.s.
+ Mais si en plus E[X 2] =E[Y 2], alors X =Y p.s.
+FONCTIONS CARACTÉRISTIQUES
+Dénition
+φX(t) =E[eitX] =
+Z
+R
+eitxfX(x)dx
+Propriétés
+1. Linéarité : φaX+b(t) =eitbφX(at)
+2. Indépendance : Si X et Y indépendantes :
+φX+Y (t) =φX(t)φY (t)
+3. Moments :
+E[Xn] = 1
+inφ(n)
+X (0)
+4. Unicité : φX =φY⇔X et Y ont même loi
+F onctions Caractéristiques Classiques
+ Gaussienne N(µ,σ 2) :
+φX(t) =eiµt−σ2t2
+2
+9
+<<<PAGE>>>
+ Poisson P(λ) :
+φX(t) =eλ(eit−1)
+ Uniforme U([−a,a ]) :
+φX(t) = sin(at)
+at
+ASTUCE
+Pour identier une loi via la fonction caractéristique :
+1. Calculer φX(t)
+2. Comparer avec les fonctions caractéristiques connues
+3. Si égalité : les lois sont identiques !
+ASTUCES ET TECHNIQUES
+ASTUCE
+1. Pour montrer qu'une v.a. est constante p.s. :
+ Montrer que Var (X) = 0
+ Montrer que FX(x)∈{ 0, 1}
+ Si X +Y constante p.s. et X,Y indépendantes : alors X et Y constantes p.s.
+ASTUCE
+2. Lemme de Borel-Cantelli :
+ BC1 : Si PP (An)<∞, alors P (lim supAn) = 0
+ BC2 : Si (An) indépendants et PP (An) =∞, alors P (lim supAn) = 1
+Interprétation : Il y a p.s. une innité de An réalisés si PP (An) =∞ (et indép.)
+ASTUCE
+3. Pour calculer P (X =Y ) où X,Y continues :
+Utiliser la densité conjointe :
+P (X =Y ) =
+Z
+R
+fX,Y (t,t )dt· (facteur correctif)
+Souvent : P (X =Y ) = 0 pour des v.a. continues !
+ASTUCE
+4. Sommes de v.a. indépendantes :
+Pour trouver fX+Y :
+fX+Y (z) =
+Z
+R
+fX(x)fY (z−x)dx = (fX∗fY )(z)
+C'est le produit de convolution !
+10
+<<<PAGE>>>
+CHECKLIST POUR LES EXERCICES
+Pour montrer l'indépendance
+V ariables discrètes :
+□ Vérier P (X =x,Y =y) =P (X =x)P (Y =y) pour tous x,y
+V ariables continues :
+□ Vérier fX,Y (x,y ) =fX(x)fY (y) pour tous x,y
+□ Ou vérier que le support se factorise
+V ariables gaussiennes :
+□ Vérier Cov (X,Y ) = 0
+Pour trouver une densité
+Méthode de la fonction de répartition :
+□ Calculer FY (y) =P (Y ≤y)
+□ Dériver : fY (y) =F′
+Y (y)
+Changement de variable :
+□ Identier les intervalles de monotonie
+□ Appliquer : fY (y) =fX(g−1(y))|(g−1)′(y)|
+□ Sommer sur tous les intervalles
+V ecteurs :
+□ Trouver la transformation (U,V ) = (g1(X,Y ),g 2(X,Y ))
+□ Calculer le jacobien |J|
+□ Appliquer : fU,V (u,v ) =fX,Y (x,y )|J|−1
+A TTENTION
+ERREURS FRÉQUENTES
+1. Confondre indépendance 2 à 2 et indépendance mutuelle
+2. Croire que E[XY ] =E[X]E[Y ] implique l'indépendance (F AUX !)
+3. Pour gaussiennes : Cov = 0⇔ indép. (vrai UNIQUEMENT pour gaussiennes)
+4. Oublier la valeur absolue dans le changement de variable : |J| ou |(g−1)′|
+5. Pour convergence en loi : utiliser le TCL SEULEMENT si variance nie
+6. Pour v.a. continues : P (X =a) = 0 toujours !
+7. Pour espérance conditionnelle : penser à vérier la mesurabilité
+11

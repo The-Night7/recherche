@@ -1,0 +1,88 @@
+CY Cergy Paris Université Analyse numérique avec python
+ING1 Mathématiques 2025-2023
+Programmation python
+Exercice 1. Phénomène de Runge.
+1.a. Définir une fonction Base qui prend en entrée un entier 0≤ j≤ N, une liste de
+coefficients X = [x0,...,x N ]etunnombreréel x,etrenvoielavaleuraupoint xdupolynôme
+ℓj(X) =
+Y
+1≤k̸=j≤N
+X−xk
+xj−xk
+.
+b. Définir une fonctionLagrange1 qui prend en entrée une fonction de la variable réellef,
+une liste de coefficientsX = [x0,...,x N ] et un nombre réelx, et renvoie la valeur au point
+x du polynôme d’interpolation de LagrangePf(X) aux pointsx0, ... , etxN,
+Pf(X) =
+NX
+j=0
+f (xj)ℓj(X).
+2.a. Définir une fonctionRepartie qui prend en entrée un entierN≥ 0, et renvoie la liste
+des N + 1 points équirépartis dans le segment[−1, 1].
+b. Soit
+∀x∈ R, f(x) = 1
+1 + 5x2.
+À l’aide de la fonction Lagrange1, tracer sur le segment[−1, 1] les courbes représentatives
+de la fonctionf et de son polynôme d’interpolation de Lagrange aux11 points équirépartis
+du segment [−1, 1].
+c. Définir une fonctionTchebychev qui prend en entrée un entierN≥ 0, et renvoie la liste
+des N + 1 points de Tchebychev du segment[−1, 1]
+∀0≤j≤ N, tN
+j = cos
+ (2j + 1)π
+2N + 2
+
+.
+d. Compléter le tracé de la question 2.b avec le tracé, à l’aide de la fonction Lagrange1, de
+la courbe représentative du polynôme d’interpolation de Lagrange de la fonctionf aux 11
+points de Tchebychev du segment[−1, 1].
+3.a. Considérons la valeur absolue
+∀x∈ R, g(x) =|x|.
+À l’aide de la fonction Lagrange1, tracer sur le segment[−1, 1] les courbes représentatives
+delafonction g,etdesespolynômesd’interpolationdeLagrangeaux 11pointséquirépartis,
+puis aux 11 points de Tchebychev, du segment[−1, 1].
+b. Considérons la fonction de Heaviside
+∀x∈ R, h(x) =
+
+
+
+1, si x> 0,
+1
+2, si x = 0,
+0, si x< 0.
+1
+<<<PAGE>>>
+À l’aide de la fonction Lagrange1, tracer sur le segment[−1, 1] les courbes représentatives
+delafonction h,etdesespolynômesd’interpolationdeLagrangeaux 11pointséquirépartis,
+puis aux 11 points de Tchebychev, du segment[−1, 1].
+Exercice 2. Algorithme des différences divisées
+1.a.Définirunefonction DifferenceDiviseequiprendenentréeunefonctiondelavariable
+réelle f et une liste de coefficients X = [x0,...,x N ], et renvoie la table des différences
+divisées successives de la fonctionf aux pointsx0, ... , etxN, définies par les formules de
+récurrence
+∀0≤k≤N, f[xk] = f(xk),
+et
+∀0≤j <k≤N, f[xj,...x k] = f[xj+1,...,x k]− f[xj,...,x k−1]
+xk−xj
+.
+b. Définir une fonction Horner qui prend en entrée une fonction de la variable réellef
+et une liste de coefficientsX = [x0,...,x N ], et renvoie la liste croissante des coefficients
+du polynôme d’interpolation de LagrangePf(X) aux points x0, ... , et xN, à l’aide de
+l’algorithme de Hörner
+QN (X) = f[x0,...,x N ] et∀0≤j≤N− 1, Qj(X) = f[x0,...,x N ] + (X−xj)Qj+1(X),
+au terme duquelQ0(X) = Pf(X).
+c. Définir une fonction Lagrange2 qui prend en entrée une fonction de la variable réelle
+f, une liste de coefficientsX = [x0,...,x N ] et un nombre réelx, et renvoie le calcul par
+la méthode de Hörner de la valeur au pointx du polynôme d’interpolation de Lagrange
+Pf(X) aux pointsx0, ... , etxN.
+2. Application. Soity0 = 1
+4, y1 = 1
+2, y2 = 2 et y3 = 4, et
+∀y∈ R∗, u(y) = 1
+y.
+a. Donner la liste des coefficients du polynôme d’interpolation de LagrangePu aux points
+y0, ... et y3.
+b.Tracersurlesegment [0.2, 5]lesgraphesdelafonction uetdespolynômesd’interpolation
+de LagrangePu obtenus par les fonctionsLagrange1 et Lagrange2.
+3. Comparer numériquement la rapidité des algorithmesLagrange1 et Lagrange2.
+2

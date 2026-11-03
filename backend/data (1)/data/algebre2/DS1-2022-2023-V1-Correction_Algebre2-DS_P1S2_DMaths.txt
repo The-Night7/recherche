@@ -1,0 +1,348 @@
+Cycle Pr´e-ingenieur
+Premi`ere Ann´ee
+Ag`ebre I - 2022/2023
+Correction DS1 Alg` ebre
+Exercice 1
+Partie 1
+Soit le syst` eme lin´ eaire suivant :
+(S1) :
+
+
+
+x + 2y + 3z = a
+x + 2y + 4z = b
+x + 2y + 2z = c
+1. Le syst` eme lin´ eaire peut ˆ etre ´ ecrit sous forme matricielle comme suit :
+
+
+1 2 3
+1 2 4
+1 2 2
+
+
+
+
+x
+y
+z
+
+
+
+
+a
+b
+c
+
+
+ou bien on peut simplement aligner les coefficients de chaque variable dans une matrice et
+ajouter une colonne pour les termes constants
+
+
+1 2 3 a
+1 2 4 b
+1 2 2 c
+
+
+2. Pour ´ echelonner la matrice, on peut utiliser les op´ erations ´ el´ ementaires sur les lignes de la
+matrice. On peut soustraire la premi` ere ligne de la deuxi` eme et troisi` eme lignes pour ´ eliminer
+les coefficients de x :
+
+
+1 2 3 a
+0 0 1 b− a
+0 0 −1 c− a
+
+
+Ensuite, on peut additionner la deuxi` eme et la troisi` eme ligne
+
+
+1 2 3 a
+0 0 1 b− a
+0 0 0 2a− c− b
+
+
+On a ainsi obtenu une matrice ´ echelonn´ ee.
+1
+<<<PAGE>>>
+3. Pour que le syst` eme lin´ eaire soit compatible, il faut que la matrice augment´ ee obtenue lors
+de l’´ echelonnement n’ait pas de ligne de la forme [0 0 ... 0 — non z´ ero]. Autrement dit, il
+ne faut pas que la derni` ere ligne de la matrice augment´ ee soit de la forme [0 0 ... 0 — non
+z´ ero]. Cela revient ` a dire que la derni` ere ligne de la matrice ´ echelonn´ ee doit ˆ etre de la forme
+[0 0 ... 0], ce qui se produit si et seulement si 2 a− c− b = 0. Autrement dit, le syst` eme est
+compatible si et seulement si a = b + c
+2 .
+Si a̸= b + c
+2 , alors la derni` ere ligne de la matrice ´ echelonn´ ee sera de la forme [0 0 ... 0 —
+non z´ ero], ce qui signifie que le syst` eme est incompatible.
+4. Lorsque le syst` eme est compatible, on peut le r´ esoudre en remontant la matrice ´ echelonn´ ee
+` a partir de la derni` ere ligne non nulle. Dans ce cas, la deuxi` eme ligne est de la forme :
+0x + 0y + 1z = b− a
+Cela donne z = b− a = b− c
+2 . On peut ensuite utiliser cette valeur pour remonter ` a la
+premi` ere ligne de la matrice ´ echelonn´ ee :
+x + 2y + 3(b− c
+2 ) = b + c
+2
+Cela donne x =−b + 2c− 2y. Ainsi, la solution g´ en´ erale du syst` eme est :
+S =
+n
+−b + 2c− 2y, y, b− c
+2
+
+, y ∈ R
+o
+Ainsi, le rang de la matrice ´ echelonn´ ee est 2, ce qui signifie qu’il y a deux variables ind´ ependantes
+dans la solution g´ en´ erale, ce qui est coh´ erent avec le fait que le syst` eme a trois ´ equations et
+trois inconnues.
+Partie 2 :
+Soit le syst` eme lin´ eaire suivant :
+(Sm) :
+(
+x + (m + 1)y = 2
+mx + (m + 4)y = 4
+1. En appliquant la m´ ethode de pivot de Gauss pour r´ esoudre le syst` eme lin´ eaire (Sm), on
+obtient la matrice ´ echelonn´ ee suivante :
+1 m + 1 2
+0 −m2 + 4 4 − 2m
+
+— Si m2̸= 4, c’est-` a-direm̸=±2, le syst` eme (Sm) est compatible et admet une unique
+solution et dans ce cas l’ensemble de solutions est
+S =
+n
+( 2
+2 + m , 2
+2 + m)
+o
+.
+2
+<<<PAGE>>>
+— Si m = 2, le syst` eme (Sm) est compatible et admet une infinit´ e de solutions et dans ce
+cas l’ensemble de solutions est donn´ e par
+S =
+n
+(2− (m + 1)y, y), y∈ R
+o
+.
+— Si m =−2, le syst` eme (Sm) est incompatible et n’admet donc pas de solutions.
+2. Si le syst` eme est compatible, alors son rang est ´ egal au nombre de pivots dans la matrice
+´ echelonn´ ee, qui est 2 sim̸=±2, et 1 si m =±2.
+Partie 3 :
+Soit le syst` eme lin´ eaire suivant :
+(S2) :
+
+
+
+−x + 2y + 3z + t = 2
+x + z + t = 0
+x + 2y + 2z + 2t = 0
+x + 2y− 3z + 2t = 1
+1. ´Ecriture du syst` eme lin´ eaire sous forme matricielle :
+
+
+−1 2 3 1
+1 0 1 1
+1 2 2 2
+1 2 −3 2
+
+
+
+
+x
+y
+z
+t
+
+ =
+
+
+2
+0
+0
+1
+
+
+2. ´Echelonnement de la matrice : Pour ´ echelonner la matrice obtenue, nous allons utiliser la
+m´ ethode de pivot de Gauss. Tout d’abord, nous cherchons le premier coefficient non nul
+dans la premi` ere colonne (c’est-` a-dire la premi` ere ligne). Dans ce cas, c’est le coefficient−1.
+Nous allons utiliser cette ligne comme ligne pivot et ´ eliminer les coefficients sous ce pivot.
+Nous obtenons :
+
+
+−1 2 3 1
+0 2 4 2
+0 4 5 3
+0 4 0 3
+
+
+
+
+x
+y
+z
+t
+
+ =
+
+
+0
+2
+2
+3
+
+
+L2← L1 + L2
+L3← L1 + L3
+L4← L1 + L4
+Ensuite, nous cherchons le premier coefficient non nul dans la deuxi` eme colonne sous le pivot
+pr´ ec´ edent. Dans ce cas, c’est le coefficient 2 dans la deuxi` eme ligne. Nous utilisons cette ligne
+comme ligne pivot et ´ eliminons les coefficients sous le pivot. Nous obtenons :
+
+
+−1 2 3 1
+0 2 4 2
+0 0 −3 −1
+0 0 −8 −1
+
+
+
+
+x
+y
+z
+t
+
+ =
+
+
+0
+2
+−2
+−1
+
+ L3← L3− 2L2
+L4← L4− 2L2
+3
+<<<PAGE>>>
+Enfin, nous cherchons le premier coefficient non nul dans la troisi` eme colonne sous le dernier
+pivot trouv´ e. Dans ce cas, c’est le coefficient−3 dans la troisi` eme ligne. Nous utilisons cette
+ligne comme ligne pivot et ´ eliminons les coefficients sous le pivot. Nous obtenons :
+
+
+−1 2 3 1
+0 2 4 2
+0 0 −3 −1
+0 0 0 5
+
+
+
+
+x
+y
+z
+t
+
+ =
+
+
+0
+2
+−2
+13
+
+
+L4← 3L4− 8L2
+La matrice est maintenant ´ echelonn´ ee.
+3. Le syst` eme est compatible et admet une unique solution, donc on peut le r´ esoudre directe-
+ment ` a partir de la matrice ´ echelonn´ ee :
+S =
+n
+(−12
+5 ,−6
+5 ,−1
+5 , 13
+5
+o
+.
+Le rang de la matrice est ´ egal au nombre de pivots dans la matrice ´ echelonn´ ee, donc
+rang(A) = 4.
+Exercice 2
+1. Pour montrer que A∩B est un sous-groupe de G, il faut v´ erifier les trois propri´ et´ es suivantes :
+— 1. A∩ B⊂ G ce qui est ´ evident.
+— 2. A∩ B contient l’´ element neutre deG.
+— 3. Pour tout x, y∈ A∩ B, x ⋆ y −1∈ A∩ B.
+• 2. Puisque A et B sont des sous-groupes de G, ils contiennent tous deux l’´ el´ ement neutre
+de G, not´ eeG. Ainsi, eG∈ A et eG∈ B, ce qui implique que eG∈ A∩ B. Donc, A∩ B
+est non vide.
+• 3. Soit x, y∈ A∩ B. Cela signifie que x, y∈ A et x, y∈ B. Puisque A et B sont des
+sous-groupes de G, alors x ⋆ y −1∈ A et x ⋆ y −1∈ B. Ainsi, x ⋆ y −1∈ A∩ B.
+Par cons´ equent, puisque les trois propri´ et´ es sont v´ erifi´ ees, on a montr´ e queA∩ B est un
+sous-groupe de G.
+2. (a) Soit x∈ E1. On veut montrer que f(x−1) = (f(x))−1.
+Remarquons tout d’abord que x−1 existe dans le groupe E1 car E1 est un groupe.
+Puisque f est un morphisme de groupes, on a f(e1) = e2, o` ue1 et e2 sont les ´ el´ ements
+neutres de E1 et E2 respectivement.
+Maintenant, observons que :
+f(x)⊥ f(x−1) = f(x ⋆ x−1) (car f est un morphisme de groupes)
+= f(e1) (car x ⋆ x−1 = e1, l’´ el´ ement neutre deE1)
+= e2 (car f(e1) = e2)
+4
+<<<PAGE>>>
+De mˆ eme, on a :
+f(x−1)⊥ f(x) = f(x−1 ⋆ x) (car f est un morphisme de groupes)
+= f(e1) (car x−1 ⋆ x = e1)
+= e2 (car f(e1) = e2)
+Ainsi, on a montr´ e quef(x)⊥ f(x−1) = e2 = f(x−1)⊥ f(x), ce qui signifie que f(x−1)
+est l’inverse de f(x) dans le groupe E2.
+Par cons´ equent, on a bien montr´ e que∀x∈ E1, f(x−1) = (f(x))−1.
+(b) Pour montrer que H ={x∈ E1| f(x) = g(x)} est un sous-groupe de E1, il faut v´ erifier
+les trois propri´ et´ es suivantes :
+i. H⊂ E1 ce qui est ´ evident.
+ii. H est non vide.
+iii. Pour tout x, y∈ H, x ⋆ y −1∈ H.
+• ii. Puisque f et g sont deux morphismes de E1 dans E2, on a f(e1) = g(e1) = e2, o` u
+e1 et e2 sont les ´ el´ ements neutres deE1 et E2 respectivement. Ainsi, e1∈ H et donc
+H est non vide.
+• iii. Soit x, y∈ H. Cela signifie que f(x) = g(x) et f(y) = g(y). On a alors :
+f(x ⋆ y −1) = f(x)⊥ f(y−1) (car f est un morphisme de groupes)
+= f(x)⊥ f(y)−1 (car f(y−1) = f(y)−1)
+= g(x)⊥ g(y)−1 (car f(x) = g(x) et f(y) = g(y))
+= g(x)⊥ g(y−1) (car g(y)−1 = g(y−1))
+= g(x ⋆ y −1) (car g est un morphisme de groupes)
+Ainsi, f(x ⋆ y −1) = g(x ⋆ y −1), ce qui implique que x ⋆ y −1∈ H.
+Par cons´ equent, puisque les trois propri´ et´ es sont v´ erifi´ ees, on a montr´ e queH est un
+sous-groupe de E1.
+Exercice 3
+1. Montrons que ( I, ⋆) est un groupe commutatif :
+(a) ⋆ est une loi de composition interne sur I car∀(x1, y1, r1), (x2, y2, r2)∈ I, on a
+(x1, y1, r1) ⋆ (x2, y2, r2) = (x1 + x2, y1 + y2, r1· r2)∈ I.
+(b) ⋆ est associative car∀(x1, y1, r1), (x2, y2, r2), (x3, y3, r3)∈ I, on a [(x1, y1, r1)⋆(x2, y2, r2)]⋆
+(x3, y3, r3) = (x1 + x2 + x3, y1 + y2 + y3, r1· r2· r3) = (x1, y1, r1) ⋆[(x2, y2, r2) ⋆(x3, y3, r3)].
+(c) (0 , 0, 1) est l’´ el´ ement neutrede ⋆ car∀(x, y, r)∈ I, on a (0, 0, 1) ⋆ (x, y, r) = (0 +x, 0 +
+y, 1· r) = (x, y, r) et ( x, y, r) ⋆ (0, 0, 1) = (x + 0, y + 0, r· 1) = (x, y, r).
+5
+<<<PAGE>>>
+(d) Tout ´ el´ ement (x, y, r)∈ I admet un inverse (¯x, ¯y, ¯r) tel que (x, y, r)⋆(¯x, ¯y, ¯r) = (¯x, ¯y, ¯r)⋆
+(x, y, r) = (0 , 0, 1), o` u ¯x =−x, ¯y =−y et ¯r = r−1 (l’inverse de r dans R∗
++). En effet,
+¯r∈ R∗
++ car r∈ R∗
++ et ¯r· r = r−1· r = 1 ∈ R∗
++. De plus, (¯x, ¯y, ¯r)∈ I car ¯r∈ R∗
++ et
+¯x, ¯y∈ Z.
+(e) ⋆ est commutative car∀(x1, y1, r1), (x2, y2, r2) ∈ I, on a ( x1, y1, r1) ⋆ (x2, y2, r2) =
+(x1 + x2, y1 + y2, r1· r2) = ( x2 + x1, y2 + y1, r2· r1) = ( x2, y2, r2) ⋆ (x1, y1, r1) et ⋆ est
+commutative.
+Ainsi, (I, ⋆) est un groupe commutatif.
+2. Montrons que H est un sous-groupe de ( I, ⋆) :
+(a) H⊂ I car x, y∈ Z et 5−x· 3−y∈ R∗
++.
+(b) H est non vide car (0 , 0, 1)∈ H.
+(c) Soit ( x1, y1, r1), (x2, y2, r2)∈ H, alors (x1, y1, r1)⋆(x2, y2, r2) = (x1+x2, y1+y2, r1·r2)∈ H
+car r1· r2 = 5−x1· 3−y1· 5−x2· 3−y2 = 5−(x1+x2)· 3−(y1+y2) et x1 + x2, y1 + y2∈ Z. Ainsi,
+H est stable par ⋆.
+(d) Soit ( x, y, r)∈ H, alors (¯x, ¯y, ¯r) = (−x,−y, 5−x· 3−y)∈ H car 5 x· 3y· 5−x· 3−y =
+5−x· 3−y· 5x· 3y = 1 et−x,−y∈ Z. De plus, ( x, y, r) ⋆ (¯x, ¯y, ¯r) = (0, 0, 1)∈ H. Ainsi, H
+admet un inverse pour tout ´ el´ ement.
+Donc, H est un sous-groupe de ( I, ⋆).
+6

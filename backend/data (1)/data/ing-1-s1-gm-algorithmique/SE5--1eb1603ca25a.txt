@@ -1,0 +1,96 @@
+S´ erie d’exercices No4
+28 octobre 2016
+Objet de la s´ erie: Analyse des algorithmes, Invariants de boucle, Com-
+plexit´ e.
+1 Invariants de boucle : exemples simples
+1. D´ emontrez la validit´ e des algorithmes suivants ` a l’aide d’un invariant
+de boucle :
+(a) Division euclidienne par la m´ ethode des soustractions.
+(b) Calcul (it´ eratif) de la factorielle.
+2 Complexit´ e : exemples simples
+1. Calculez la complexit´ e des algorithmes suivants :
+(a) Recherche d’un ´ el´ ement dans un tableau d’entiers (non tri´ e).
+(b) Calcul du maximum et du minimum dans un tableau d’entiers.
+(c) Multiplication de deux matrices.
+3 Analyse du crible d’Eratosth` ene
+Dans cet exercice nous ´ etudions le crible d’Eratosth` ene, algorithme ser-
+vant ` a trouver tous les nombres premiers inf´ erieurs ou ´ egaux ` a un entier
+donn´ eN. Le principe de cet algorithme est le suivant (on entend par cribler :
+cocher ou encore supprimer de la liste des nombres premiers) :
+1
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+— Pourp variant de 2 ` aN
+— Cribler tous les multiples de p inf´ erieurs ou ´ egaux ` aN.
+— FinPour
+1. En utilisant la syntaxe introduite en cours ´ ecrire cet algorithme en
+commen¸ cant par demander ` a l’utilisateur de saisir la valeur deN et
+en terminant par aﬃcher la liste des nombres premiers trouv´ es.
+2. D´ emontrer que dans la boucle externe on peut remplacer la condition
+”≤ N” par la condition ”≤
+√
+(N)”.
+3. D´ emontrez la validit´ e de l’algorithme.
+4. Calculez la complexit´ e (temporelle) de l’algorithme (on fera attention
+` a la d´ eﬁnition de la taille du probl` eme).
+(a) Cette complexit´ e change-t-elle lorsqu’on utilise la propri´ et´ e d´ emontr´ ee
+dans la question 2.
+5. Calculez la complexit´ e spatiale.
+4 Analyse du tri ` a bulle
+1. Rappelez l’algorithme du tri ` a bulles. On notera la structure de cet
+algorithme : deux boucles imbriqu´ ees que nous appellerons la boucle
+externe et la boucle interne.
+2. Soit A le tableau ` a trier, et A′ le tableau r´ esultat du tri ` a bulles.
+Quelles propri´ et´ esA′ doit-il v´ eriﬁer pour que nous puissions conclure
+que cet algorithme eﬀectue correctement la tˆ ache qu’il doit eﬀectuer ?
+3. D´ eduire un invariant de boucle pour la boucle interne et montrez qu’il
+est v´ eriﬁ´ e.
+4. En d´ eduire un autre invariant de boucle pour la boucle externe.
+5. En d´ eduire que l’algorithme est correct.
+6. Calculez la complexit´ e de cet algorithme.
+5 Analyse du tri par s´ election
+1. Reprendre les questions de l’exercice pr´ ec´ edent pour le tri par s´ election.
+2
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+6 R` egle de Horner (d’apr` es [1])
+´Etant donn´ e un polynˆ omeP d´ eﬁni par
+P (x) = ∑n
+k=0akxk
+La r` egle de Horner consiste ` a ´ ecrireP de la mani` ere suivante :
+P (x) = a0 +x(a1 +x(a2 +... +x(an−1 +xan)))
+Cela donne donc deux algorithmes pour le calcul des valeurs de P (x).
+1. ´Ecrire en pseudo-code ces deux algorithmes et calculez leur com-
+plexit´ e.
+2. D´ eﬁnissez un invariant de boucle pour le deuxi` eme algorithme (Hor-
+ner) et utilisez le pour d´ emontrer que cet algorithme ´ evalue bien les
+valeurs des polynˆ omes.
+7 Complexit´ e moyenne
+1. Rappelez la complexit´ e (au pire des cas) de la recherche d’un ´ el´ ement
+dans un tableau d’entiers (quelconque) de taille n.
+2. Calculez la complexit´ e moyenne de cet algorithme en supposant que :
+— la probabilit´ e que l’entier recherch´ e est pr´ esent dans le tableau est
+´ egale ` ap (0 ≤p≤ 1).
+— si l’entier est pr´ esent dans le tableau, alors toutes les positions sont
+´ equi-probables.
+8 Complexit´ e optimale
+Notre objectif dans cet exercice est de calculer la complexit´ e optimale
+du tri en admettant que les op´ erations de bases sont la comparaison et la
+permutation.
+1. Expliquez (bri` evement) pourquoi trier un tableau revient ` a appliquer
+une permutation σ ` a l’ensemble des indices des ´ el´ ements du tableau
+{1, 2,...,n}. rappelez le nombre de permutations sur cet ensemble.
+2. Expliquez comment on peut mod´ eliser la suite des op´ eration du tri
+(conduisant du tableau initial au tableau tri´ e) par unarbre binaire.
+3. Construisez un tel arbre dans le cas d’un tableau ` a 3 ´ el´ ements.
+3
+<<<PAGE>>>
+ING1-GI-2016-17 Cours d’Algorithmique proc´ edurale
+4. Quelle(s) relations y-a-t-il entre cet arbre et les permutations de la
+premi` ere question ?
+5. D´ eduisez-en le nombre de feuilles puis la hauteur de cet arbre.
+6. Que peut-on en d´ eduire concernant la complexit´ e du tri ?
+R´ ef´ erences
+[1] Cormen T.H., Leiserson C.E., Rivest R.L. et Stein C. Algorithmique.
+Dunod. 2010, 1188 pages.
+4

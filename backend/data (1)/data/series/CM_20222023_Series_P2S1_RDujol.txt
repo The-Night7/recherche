@@ -1,0 +1,10539 @@
+Cycle pré-ingénieur 2ème année
+Séries – Notes de cours
+Romain Dujol
+2022 – 2023
+<<<PAGE>>>
+Table des matières
+0 Comparaison locale des fonctions réelles 4
+0.1 Négligeabilité. Domination . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+0.2 Équivalence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+0.3 Développements limités au voisinage de 0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+Exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Correction des exercices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+I Séries numériques 18
+1 Généralités 19
+1.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+1.1.1 Série. Série numérique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+1.1.2 Structure algébrique de l’ensemble des séries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+1.2 Convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+1.2.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+1.2.2 Reste d’une série convergente . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+1.2.3 Condition nécessaire de convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+1.2.4 Structure algébrique de l’ensemble des séries convergentes . . . . . . . . . . . . . . . . . . . . . . 23
+2 Séries numériques à termes réels positifs 25
+2.1 Lemme fondamental . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+2.2 Théorèmes de comparaison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+2.2.1 Théorème de majoration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+2.2.2 Théorème de minoration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+2.2.3 Théorème d’équivalence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+2.3 Séries de référence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+2.3.1 Séries géométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+2.3.2 Séries de RIEMANN . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+2.3.3 Séries de BERTRAND . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+2.4 Règles de convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+2.4.1 Règle de D’ALEMBERT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+2.4.2 Règle de CAUCHY . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+2.4.3 Lien entre les deux règles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Romain Dujol 1
+<<<PAGE>>>
+3 Séries numériques à termes quelconques 33
+3.1 Convergence absolue. Semi-convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.2 Règles de convergence absolue . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+3.3 Règles de semi-convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.3.1 Condition de convergence de CAUCHY . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.3.2 Règle d’ABEL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+3.3.3 Séries numériques alternées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+3.4 Raisonnement par regroupement de termes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+4 Méthodes d’évaluation 39
+4.1 Calcul de la somme d’une série convergente . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4.1.1 Séries géométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4.1.2 Par « télescopage » . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4.2 Majoration du reste d’une série convergente . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.3 Comparaison série-intégrale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.3.1 Cas décroissant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.3.2 Cas croissant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+II Suites et séries d’applications 45
+5 Suites d’applications : convergences 46
+5.1 Convergence simple . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+5.2 Convergence uniforme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+6 Suites d’applications : théorèmes d’interversion 51
+6.1 Interversion limite-limite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+6.2 Interversion limite-intégrale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+6.3 Interversion limite-dérivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+6.3.1 Théorèmes d’interversion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+6.3.2 Nécessité des hypothèses du théorème . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+7 Séries d’applications : convergences 56
+7.1 Convergences . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+7.1.1 Convergence simple . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+7.1.2 Convergence absolue . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+7.1.3 Convergence uniforme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+7.1.4 Convergence normale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+7.2 Théorèmes d’interversion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+7.2.1 Interversion somme-limite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+7.2.2 Interversion somme-intégrale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+7.2.3 Interversion somme-dérivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+Romain Dujol 2
+<<<PAGE>>>
+III Séries entières. Séries de FOURIER 69
+8 Séries entières : rayon de convergence 70
+8.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 70
+8.1.1 Propriétés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 72
+8.1.2 Cas particuliers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 72
+8.2 Stabilités opératoires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+8.2.1 Structure vectorielle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+8.2.2 Produit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+8.2.3 Dérivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+8.3 Méthodes d’évaluation du rayon de convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+8.3.1 Théorèmes de comparaison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+8.3.2 Règles de calcul . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+A Démonstration du théorème 8.2 (non exigible) 77
+B Démonstration de la proposition 8.4 (non exigible) 79
+9 Séries entières : somme et développements 80
+9.1 Convergence et régularité de la somme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+9.1.1 Convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+9.1.2 Continuité . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+9.1.3 Dérivabilité . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81
+9.2 Développement en série entière . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 82
+9.2.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 82
+9.2.2 Structure algébrique de l’ensemble des fonctions développables en série entière . . . . . . 84
+9.2.3 Utilisation des équations différentielles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 85
+C Démonstration de la théorème 9.1 (non exigible) 87
+D Développements en série entière en 0 88
+10 Séries de FOURIER 90
+10.1 Séries trigonométriques réelles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+10.1.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+10.1.2 Convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+10.1.3 Développement en série de FOURIER réel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+10.2 Séries trigonométriques complexes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94
+10.2.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94
+10.2.2 Convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 94
+10.2.3 Développement en série de FOURIER complexe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 95
+10.3 Convergence du développement en série de FOURIER . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97
+10.3.1 Fonctions périodiques de classe C 1 par morceaux sur R . . . . . . . . . . . . . . . . . . . . . . . . 97
+10.3.2 Théorème de DIRICHLET . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+10.3.3 Théorème de PARSEVAL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+Romain Dujol 3
+<<<PAGE>>>
+Thème no 0
+Comparaison locale des fonctions réelles
+0.1 Négligeabilité. Domination
+0.1.1 Négligeabilité
+Définition 0.1 (Négligeabilité). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I telles que ϕ ne s’annule pas sur I \{a}.
+On dit que f est négligeable devant ϕ au voisinage de a si et seulement si il existe une fonction réelle
+ϵ définie sur I telle que
+limx→aϵ(x ) = 0 et ∀x ∈ I , f (x ) = ϵ(x )ϕ(x )
+Cette relation se note
+f = oa (ϕ) ou f (x ) = ox→a
+
+ϕ(x )
+
+(notation de LANDAU)
+ou
+f ≪aϕ ou f (x ) ≪x→aϕ(x ) (notation de HARDY)
+(Si il n’y a pas d’ambigüité, on omettra d’indiquer le point a.)
+Remarque. La notation f = oa (ϕ) est impropre, car plusieurs fonctions différentes peuvent être négligeables
+devant une même fonction ϕ au voisinage de a, c’est-à-dire
+f1 = oa (ϕ) , f2 = oa (ϕ) avec f1 ̸= f2
+Exemple. x = ox→+∞(x
+2
+) ,
+p
+x = ox→+∞(x
+2
+) , sin3x = ox→0(x )
+Proposition 0.1 (Négligeabilité devant une constante non nulle). Soit I un intervalle de R, a un point de I et
+f une fonction réelle définie sur I . Alors
+f = oa (1) ⇐⇒ limx→af (x ) = 0
+Proposition 0.2 (Caractérisation rapide). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I telles que ϕ ne s’annule pas sur I \{a}.
+f = oa (ϕ) ⇐⇒
+
+
+
+limx→a
+f (x )
+ϕ(x )
+= 0
+ϕ(a) = 0 =⇒ f (a) = 0
+Romain Dujol 4
+<<<PAGE>>>
+Proposition 0.3 (Règles opératoires de oa ). Soit I un intervalle de R et a un point de I .
+Soit f , g et ϕ, ψ des fonctions réelles définies sur I telles que ϕ et ψ ne s’annulent pas sur I \{a}.
+1. Si f = oa (ϕ) et g = oa (ϕ), alors f + g = oa (ϕ).
+2. Si f = oa (ϕ) alors pour tout réel λ, λf = oa (ϕ).
+3. Si f = oa (ϕ) et g = oa (ψ), alors f g = oa (ϕψ).
+4. Si f = oa (ϕ) et ϕ = oa (ψ), alors f = oa (ψ).
+5. Si h est une fonction réelle définie au voisinage de b ∈ R, alors :
+(
+lim
+x→b
+h(x ) = a
+f = oa (ϕ)
+=⇒ f ◦h = ob (ϕ ◦h)
+0.1.2 Domination
+Définition 0.2 (Domination). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I telles que ϕ ne s’annule pas sur I \{a}.
+On dit que f est dominée par ϕ au voisinage de a si et seulement si il existe une fonction réelle χ
+définie sur I telle que
+χ est bornée au voisinage de a et ∀x ∈ I , f (x ) = χ(x )ϕ(x )
+Cette relation se note
+f = Oa (ϕ) ou f (x ) = Ox→a
+
+ϕ(x )
+
+(notation de LANDAU)
+ou
+f ≼
+a
+ϕ ou f (x ) ≼
+x→a
+ϕ(x ) (notation de HARDY)
+(Si il n’y a pas d’ambigüité, on omettra d’indiquer le point a.)
+Remarque. La notation f = Oa (ϕ) est impropre, car plusieurs fonctions différentes peuvent être dominées par
+une même fonction ϕ au voisinage de a, c’est-à-dire
+f1 = Oa (ϕ) , f2 = Oa (ϕ) avec f1 ̸= f2
+Exemple. x = Ox→+∞(x
+2
+) , 2x
+2 = Ox→+∞(x2
+) , x
+2 = Ox→0
+(x )
+Proposition 0.4 (Domination devant une constante non nulle). Soit I un intervalle de R, a un point de I et f
+une fonction réelle définie sur I . Alors
+f = Oa (1) ⇐⇒ f est bornée au voisinage de a
+Proposition 0.5 (Caractérisation rapide). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I telles que ϕ ne s’annule pas sur I \{a}.
+f = Oa (ϕ) ⇐⇒
+
+
+
+f
+ϕ
+est bornée au voisinage de a
+ϕ(a) = 0 =⇒ f (a) = 0
+Romain Dujol 5
+<<<PAGE>>>
+Proposition 0.6 (Règles opératoires de Oa ). Soit I un intervalle de R et a un point de I .
+Soit f , g et ϕ, ψ des fonctions réelles définies sur I telles que ϕ et ψ ne s’annulent pas sur I \{a}.
+1. Si f = Oa (ϕ) et g = Oa (ϕ), alors f + g = Oa (ϕ).
+2. Si f = Oa (ϕ) alors pour tout réel λ, λf = Oa (ϕ).
+3. Si f = Oa (ϕ) et g = Oa (ψ), alors f g = Oa (ϕψ).
+4. Si f = Oa (ϕ) et ϕ = Oa (ψ), alors f = Oa (ψ).
+5. Si h est une fonction réelle définie au voisinage de b ∈ R, alors :
+(
+lim
+x→b
+h(x ) = a
+f = Oa (ϕ)
+=⇒ f ◦h = Ob (ϕ ◦h)
+Proposition 0.7 (Régles opératoires communes). Soit I un intervalle de R et a un point de I .
+Soit f , g et ϕ, ψ des fonctions réelles définies sur I telles que ϕ et ψ ne s’annulent pas sur I \{a}.
+1. Si f = oa (ϕ) alors f = Oa (ϕ).
+2. Si f = Oa (ϕ) et g = oa (ψ), alors f g = oa (ϕψ).
+3. Si f = oa (ϕ) et ϕ = Oa (ψ), alors f = oa (ψ).
+4. Si f = Oa (ϕ) et ϕ = oa (ψ), alors f = oa (ψ).
+0.1.3 Comparaisons de référence
+Proposition 0.8 (Puissances). Soit α et β deux nombres réels. Alors
+α < β ⇐⇒ x
+α = ox→+∞
+
+x
+β
+
+α > β ⇐⇒ x
+α = ox→0+
+
+x
+β
+
+Proposition 0.9 (Comparaisons logarithmes/puissances). Pour tout réel α, on a :
+∀β > 0,(ln x )
+α = ox→+∞
+
+x
+β
+
+∀γ < 0,(ln x )
+α = ox→0+
+
+x
+γ
+
+Proposition 0.10 (Comparaisons puissances/exponentielles). Pour tout réel α, on a :
+∀a ∈ ]1,+∞[, x
+α = ox→+∞
+
+a
+x
+
+∀a ∈ [0, 1[, a
+x = ox→+∞
+
+x
+α
+
+Romain Dujol 6
+<<<PAGE>>>
+0.2 Équivalence
+On rappelle ici l’intérêt des équivalents pour déterminer rapidement certaines limites dans le cas de formes
+indéterminées. . . à condition de les utiliser correctement !
+0.2.1 Définition
+Définition 0.3 (Équivalence). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I qui ne s’annulent pas sur I \{a}.
+On dit que f est équivalente à ϕ au voisinage de a si et seulement si il existe une fonction réelle η
+définie sur I telle que
+limx→aη(x ) = 1 et ∀x ∈ I , f (x ) = η(x )ϕ(x )
+Cette relation se note
+f ∼
+a
+ϕ ou f (x ) ∼
+x→a
+ϕ(x )
+(Si il n’y a pas d’ambigüité, on omettra d’indiquer le point a.)
+Exemple. x
+2 + x ∼
+x→+∞
+x
+2
+, sin x ∼
+x→0
+x
+Proposition 0.11 (Équivalence devant une constante non nulle). Soit I un intervalle de R, a un point de I et
+f une fonction réelle définie sur I . Alors
+∀ℓ ∈ R
+∗
+, f ∼
+a
+ℓ ⇐⇒ limx→af (x ) = ℓ
+Remarque. f ∼
+a
+0 impliquerait que f s’annule sur I , ce qui est impossible par hypothèse.
+f ∼
+a
+0 N’A AUCUN SENS !
+Proposition 0.12 (Caractérisation rapide). Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I qui ne s’annulent pas sur I \{a}.
+f ∼
+a
+ϕ ⇐⇒
+
+
+
+limx→a
+f (x )
+ϕ(x )
+= 1
+ϕ(a) = 0 =⇒ f (a) = 0
+0.2.2 Règles opératoires
+Cas général
+Proposition 0.13 (Règles opératoires de ∼
+a
+). Soit I un intervalle de R et a un point de I .
+Soit f , g et ϕ, ψ des fonctions réelles définies sur I qui ne s’annulent pas sur I \{a}.
+1. Si f ∼
+a
+ϕ et g ∼
+a
+ψ, alors f g ∼
+a
+ϕψ.
+2. Si f ∼
+a
+ϕ alors
+1
+f
+∼
+a
+1
+ϕ
+.
+3. Si f ∼
+a
+ϕ et g ∼
+a
+ψ, alors
+f
+g
+∼
+a
+ϕ
+ψ
+.
+Romain Dujol 7
+<<<PAGE>>>
+4. Si f ∼
+a
+ϕ et ϕ ∼
+a
+ψ, alors f ∼
+a
+ψ.
+5. Si f et ϕ sont positives sur I et f ∼
+a
+ϕ, alors f
+α ∼
+a
+ϕ
+α pour tout α ∈ R
+6. Si h est une fonction réelle définie au voisinage de b ∈ R, alors :
+(
+lim
+x→b
+h(x ) = a
+f ∼
+a
+ϕ
+=⇒ f ◦h ∼
+b
+ϕ ◦h
+Addition
+Remarque. « Si f ∼
+a
+ϕ et g ∼
+a
+ψ, alors f + g ∼
+a
+ϕ + ψ » est fausse dans le cas géneral.
+Exemple. Au voisinage de a = 0,
+
+
+
+x + x
+2 ∼
+0
+x
+−x + x
+2 ∼
+0
+−x
+. Mais
+(x + x
+2
+) + (−x + x
+2
+) = 2x
+2
+̸∼
+0
+0 = x + (−x )
+ON NE PEUT PAS ADDITIONNER DES ÉQUIVALENTS N’IMPORTE COMMENT !
+On peut toutefois isoler certains cas où cela est possible.
+Proposition 0.14 (Addition d’équivalents). Soit I un intervalle de R et a un point de I .
+Soit f , g et ϕ, ψ des fonctions réelles définies sur I telles que ϕ et ψ ne s’annulent pas sur I \{a} et que :
+f ∼
+a
+ϕ et g ∼
+a
+ψ
+1. Si ϕ et ψ sont de même signe constant au voisinage de a, alors f + g ∼
+a
+ϕ + ψ.
+2. Si ϕ : x 7→ λx
+α et ψ : x 7→ µxβ
+, alors f + g ∼
+a
+ϕ + ψ sauf si α = β et λ + µ = 0.
+Composition par la gauche
+(La propriété 5 de la proposition 0.13 assure qu’il est possible de composer les équivalences par la droite.)
+Remarque. La proposition
+« Si h est une fonction réelle définie au voisinage de ϕ(a), et f ∼
+a
+ϕ alors h ◦ f ∼
+a
+h ◦ ϕ. »
+est fausse en général.
+Exemple. Au voisinage de a = +∞, x + 1 ∼
+x→+∞
+x . Mais e
+x+1 ̸∼
+x→+∞
+e
+x
+.
+Proposition 0.15 (Composition à gauche par l’exponentielle).
+Soit I un intervalle de R et a un point de I .
+Soit f et ϕ deux fonctions réelles définies sur I qui ne s’annulent pas sur I \{a}. Alors
+exp◦f ∼
+a
+exp◦ϕ ⇐⇒ lima(f − ϕ) = 0
+Romain Dujol 8
+<<<PAGE>>>
+Proposition 0.16 (Composition à gauche par le logarithme).
+Soit I un intervalle de R et a un point de I et f et ϕ deux fonctions réelles définies sur I .
+Si ϕ est strictement positive sur I \{a} et admet une limite ℓ ∈ R+\{1}, alors
+f ∼
+a
+ϕ =⇒ ln◦f ∼
+a
+ln◦ϕ
+Exemple. Au voisinage de a = 0, 1 + x ∼
+x→0
+1 + 2x . Mais x ∼
+x→0
+ln(1 + x ) ̸∼
+x→0
+ln(1 + 2x ) ∼
+x→0
+2x .
+ON NE PEUT PAS PRENDRE LE LOGARITHME D’ÉQUIVALENTS N’IMPORTE COMMENT !
+0.2.3 Lien avec oa et Oa
+Proposition 0.17. Soit I un intervalle de R et a un point de I .
+Soit f , ϕ et ψ des fonctions réelles définies sur I qui ne s’annulent pas sur I \{a}.
+1. Si f = oa (ϕ) et ϕ ∼
+a
+ψ, alors f = oa (ψ).
+2. Si f ∼
+a
+ϕ et ϕ = oa (ψ), alors f = oa (ψ).
+3. f ∼
+a
+ϕ ⇐⇒ f − ϕ = oa (ϕ)
+4. Si f = Oa (ϕ) et ϕ ∼
+a
+ψ, alors f = Oa (ψ).
+5. Si f ∼
+a
+ϕ et ϕ = Oa (ψ), alors f = Oa (ψ).
+6. Si f ∼
+a
+ϕ alors f = Oa (ϕ) et ϕ = Oa (f ).
+Remarque. « Si f = Oa (ϕ) et ϕ = Oa (f ) alors f ∼
+a
+ϕ » est fausse en général.
+Exemple. Au voisinage de a = +∞, x = Ox→+∞(2x ) et 2x = Ox→+∞(x ). Mais 2x ̸∼
+x→+∞
+x .
+0.2.4 Équivalents usuels
+Proposition 0.18 (Cas simples de calcul d’équivalents).
+1. Tout polynôme est équivalent à son terme de plus haut degré en +∞ ou −∞.
+Tout polynôme est équivalent à son terme de plus bas degré en 0.
+2. Toute fraction rationnelle est équivalente au quotient de ses termes de plus haut degré en ±∞.
+Toute fraction rationnelle est équivalente au quotient de ses termes de plus bas degré en 0.
+3. Si f est dérivable en a et f
+′
+(a) ̸= 0, alors f (x ) − f (a) ∼
+x→a
+f
+′
+(a)· (x − a).
+4. Si f admet un développement limité au voisinage de 0, alors f est équivalente au terme non nul de plus
+faible ordre en 0.
+Exemple.
+1. x
+4 + x2 + 2x ∼
+x→+∞
+x
+4
+x
+4 + x2 + 2x ∼
+x→0
+2x
+2.
+x
+3 − x
+x 4 + x 2 + 2x
+∼
+x→+∞
+x
+3
+x 4
+=
+1
+x
+x
+3 − x
+x 4 + x 2 + 2x
+∼
+x→0
+−x
+2x
+= −
+1
+2
+3. Avec f = exp en a = 0, e
+x − 1 = exp(x ) − exp(0) ∼
+x→0
+exp′(0)· (x − 0) = x .
+4. sin x = x −
+x
+3
+6
++ ··· ∼
+x→0
+x
+Romain Dujol 9
+<<<PAGE>>>
+Théorème 0.1 (Équivalents des fonctions usuelles).
+e
+x − 1 ∼
+x→0
+x ln(1 + x ) ∼
+x→0
+x
+sin x ∼
+x→0
+x arcsin x ∼
+x→0
+x sh x ∼
+x→0
+x
+tan x ∼
+x→0
+x arctan x ∼
+x→0
+x th x ∼
+x→0
+x
+1 − cos x ∼
+x→0
+x
+2
+2
+ch x − 1 ∼
+x→0
+x
+2
+2
+Pour tout réel α fixé, (1 + x )
+α − 1 ∼
+x→0
+αx
+Remarque. La plupart des équivalents usuels sont exprimés au voisinage de 0. Pour obtenir des équivalents
+au voisinage d’une autre valeur finie a, il suffit d’effectuer un changement de variable du type x = a ± h avec
+h au voisinage de 0.
+Romain Dujol 10
+<<<PAGE>>>
+Exercice. Déterminer les limites suivantes :
+1. limx→0
+ln(1 + 2 tan x )
+sin x
+2. lim x→+∞
+
+1 +
+1
+x
+x
+3. lim
+x→π/4
+(tan x )
+cotan(4x )
+Solution.
+1. Comme limx→02 tan x = 0 et ln(1 + X ) ∼
+X →0
+X , on a ln(1 + 2 tan x ) ∼
+x→0
+2 tan x .
+Comme tan x ∼
+x→0
+x , il vient que ln(1 + 2 tan x ) ∼
+x→0
+2x .
+De plus sin x ∼
+x→0
+x : on conclut alors que
+ln(1 + 2 tan x )
+sin x
+∼
+x→0
+2x
+x
+= 2, puis que limx→0
+ln(1 + 2 tan x )
+sin x
+= 2 .
+2. Passons au logarithme : ln1 +
+1
+x
+x
+= x ln1 +
+1
+x
+
+.
+Comme lim x→+∞
+1
+x
+= 0 et ln(1 + X ) ∼
+X →0
+X , on a ln
+1 +
+1
+x
+
+∼
+x→+∞
+1
+x
+. Donc
+ln1 +
+1
+x
+x
+= x ln1 +
+1
+x
+
+∼
+x→+∞
+x ·
+1
+x
+= 1
+On conclut que lim x→+∞ln1 +
+1
+x
+x
+= 1, puis (exp étant continue en 1) lim x→+∞
+
+1 +
+1
+x
+x
+= e .
+3. On effectue le changement de variable x =
+π
+4
+− h et on passe au logarithme :
+ln(tan x )
+cotan(4x )
+
+=
+ln tan x
+tan(4x )
+=
+ln tanπ
+4
+− h
+
+tan(π − 4h)
+Étudions chacun des termes :
+· tanπ
+4
+− h
+
+=
+1 − tanh
+1 + tanh
+, donc ln tanπ
+4
+− h
+
+= ln(1 − tanh) − ln(1 + tanh). Or
+ln(1 − tanh) ∼
+h→0
+−tanh ∼
+h→0
+−h et − ln(1 + tanh) ∼
+h→0
+−tanh ∼
+h→0
+−h
+On est dans les conditions de la propriété 2 de la proposition 0.14, donc
+ln tanπ
+4
+− h
+
+= ln(1 − tanh) − ln(1 + tanh) ∼
+h→0
+−2h
+· tan(π − 4h) = tan(−4h) ∼
+h→0
+−4h
+Donc ln(tan x )
+cotan(4x )
+
+=
+ln tanπ
+4
+− h
+
+tan(π − 4h)
+∼
+h→0
+−2h
+−4h
+=
+1
+2
+.
+On conclut que lim
+x→π/4
+ln(tan x )
+cotan(4x )
+
+=
+1
+2
+, puis (exp étant continue en 1/2) :
+lim
+x→π/4
+(tan x )
+cotan(4x ) = e1/2 =
+p
+e
+Romain Dujol 11
+<<<PAGE>>>
+0.3 Développements limités au voisinage de 0
+e
+x = 1 +
+x
+1
+1!
++
+x
+2
+2!
++ ··· +
+x
+n
+n!
++ o
+
+x
+n
+
+ch x = 1 +
+x
+2
+2!
++
+x
+4
+4!
++ ··· +
+x
+2n
+(2n)!
++ o
+
+x
+2n+1
+
+sh x = x +
+x
+3
+3!
++
+x
+5
+5!
++ ··· +
+x
+2n+1
+(2n + 1)!
++ o
+
+x
+2n+2
+
+th x = x −
+x
+3
+3
++
+2x
+5
+15
+−
+17x
+7
+315
++ o
+
+x
+8
+
+cos x = 1 −
+x
+2
+2!
++
+x
+4
+4!
++ ··· + (−1)
+n
+x
+2n
+(2n)!
++ o
+
+x
+2n+1
+
+sin x = x −
+x
+3
+3!
++
+x
+5
+5!
++ ··· + (−1)
+n
+x
+2n+1
+(2n + 1)!
++ o
+
+x
+2n+2
+
+tan x = x +
+x
+3
+3
++
+2x
+5
+15
++
+17x
+7
+315
++ o
+
+x
+8
+
+1
+1 − x
+= 1 + x + x
+2 + ··· + xn + o
+
+x
+n
+
+1
+1 + x
+= 1 − x + x
+2 + ··· + (−1)n
+x
+n + o
+
+x
+n
+
+(1 + x )
+α = 1 + αx +
+α(α − 1)
+2!
+x
+2 + ··· +
+α(α − 1)···(α − n + 1)
+n!
+x
+n + o
+
+x
+n
+
+p
+1 + x = 1 +
+x
+2
+−
+x
+2
+8
++ ··· + (−1)
+n−1
+1 · 3 · 5···(2n − 3)
+2n n!
+x
+n + o
+
+x
+n
+
+p
+1 − x = 1 −
+x
+2
+−
+x
+2
+8
++ ··· −
+1 · 3 · 5···(2n − 3)
+2n n!
+x
+n + o
+
+x
+n
+
+1
+p
+1 + x
+= 1 −
+x
+2
++
+3x
+2
+8
++ ··· + (−1)
+n
+1 · 3 · 5···(2n − 1)
+2n n!
+x
+n + o
+
+x
+n
+
+−ln(1 − x ) = x +
+x
+2
+2
++
+x
+3
+3
++ ··· +
+x
+n
+n
++ o
+
+x
+n
+
+ln(1 + x ) = x −
+x
+2
+2
++
+x
+3
+3
++ ··· + (−1)
+n−1
+x
+n
+n
++ o
+
+x
+n
+
+arctan x = x −
+x
+3
+3
++
+x
+5
+5
++ ··· + (−1)
+n
+x
+2n+1
+2n + 1
++ o
+
+x
+2n+2
+
+arcsin x = x +
+1
+2
+·
+x
+3
+3
++
+3
+8
+·
+x
+5
+5
++ ··· +
+1 · 3 · 5 · ··· · (2n − 1)
+2n n!
+·
+x
+2n+1
+2n + 1
++ o
+
+x
+2n+2
+
+Romain Dujol 12
+<<<PAGE>>>
+Chapitre 0. Comparaison locale des fonctions réelles — TD
+Exercice 0.1. Calculer les limites suivantes :
+1. lim
+t →1
+t
+t − 1
+1 − t + ln(1 + t )
+2. lim
+t →1
+lnt
+t − 1
+3. lim x→+∞
+x
+p
+x
+p
+x
+x
+Exercice 0.2. Calculer les limites suivantes :
+1. limx→0+
+1
+1 − x x
++
+1
+x ln x
+2. lim x→+∞
+Æ
+x +
+p
+x −
+p
+x
+Exercice 0.3. Déterminer des équivalents simples de :
+1. x + sin x en 0, puis en +∞
+2. x − sin x en 0, puis en +∞
+3. ln(tan x ) en 0
++, puis en
+π
+4
+4.
+1
+x
+−
+1
+tan x
+en 0
+5. p
+x 2 + x −
+p3
+x 3 + 2x 2 en 0
++, puis en +∞
+Exercice 0.4. Déterminer les équivalents en 0 de :
+1. f1: x 7→
+ln(1 + x
+2
+)
+x arctan x
+2. f2: x 7→
+1 − ch x
+1 − cos x
+3. f3: x 7→
+e
+x − cos x − x
+x − ln(1 + x )
+4. f4: x 7→
+sin2x − x ln(1 + x )
+e
+x + cos x − sin x − 2
+Romain Dujol 13
+<<<PAGE>>>
+Exercice 0.5. Déterminer les équivalents en +∞ de :
+1. un =
+e
+1/n − cos
+1
+n
+1 −
+vt
+1 −
+1
+n2
+2. un =
+1
+p
+n
+−
+p
+n sin
+1
+n
+3. un =
+lncos
+a
+n
+
+lncos
+b
+n
+ avec a réel et b réel non nul
+4. un = e
+1/n − e1/(n+1)
+5. un = arctann − arccos
+1
+n
+6. un =
+ln
+n + 1
+n + 2
+
+sin
+n + 1
+n2 + 2
+
+7. un = e ·
+p
+n2 − n + 1 − n
+
+1 +
+1
+n
+n
+Exercice 0.6. Pour tout entier naturel supérieur ou égal à deux, on note un =
+
+ln(1 + n)
+lnn
+n lnn
+.
+1. Déterminer un équivalent de lnun en +∞.
+2. En déduire lim n→+∞un .
+Romain Dujol 14
+<<<PAGE>>>
+Chapitre 0. Comparaison locale des fonctions réelles — TD (Corrigé)
+Exercice 0.1.
+1.
+t
+t − 1
+1 − t + ln(1 + t )
+−−→t →1
+1
+1 − 1
+1 − 1 + ln(1 + 1)
+=
+0
+ln 2 = 0
+2.
+lnt
+t − 1
+=
+lnt − ln 1
+t − 1
+−−→t →1ln′(1) =
+1
+1
+= 1
+3. ln
+x
+p
+x
+p
+x
+x =
+p
+x ln x − x lnpx =
+p
+x ln x −
+x
+2
+ln x =
+p
+x −
+x
+2
+
+ln x ∼
+x→+∞
+−
+x
+2
+ln x
+Donc lim x→+∞ln
+x
+p
+x
+p
+x
+x = −∞ puis, par continuité de exp sur R, lim x→+∞
+x
+p
+x
+p
+x
+x = lim
+X →−∞
+e
+X = 0.
+Exercice 0.2.
+1.
+1
+1 − x x
++
+1
+x ln x
+=
+1
+1 − e
+x ln x
++
+1
+x ln x
+=
+1
+1 − e
+y
++
+1
+y
+avec y = x ln x
+Comme limx→0+x ln x = 0
+−
+, il vient que x 7→
+1
+1 − x x
++
+1
+x ln x
+admet une limite en 0+ si et seulement si y 7→
+1
+1 − e
+y
++
+1
+y
+admet une limite en 0− (auquel cas, leurs valeurs sont égales).
+On a
+1
+1 − e
+y
++
+1
+y
+=
+y + 1 − e
+y
+(1 − e
+y
+)y
+, puis :
+• y + 1 − e
+y = y + 1 −
+
+1 + y +
+y
+2
+2
++ o(y
+2
+)
+
+= −
+y
+2
+2
++ o(y
+2
+) ∼
+y →0−
+−
+y
+2
+2
+• (1 − e
+y
+)y ∼
+y →0−
+−y · y = −y
+2
+D’où
+1
+1 − e
+y
++
+1
+y
+∼
+y →0+
+−y
+2
+/2
+−y 2
+=
+1
+2
+puis limx→0+
+1
+1 − x x
++
+1
+x ln x
+= lim
+y →0−
+1
+1 − e
+y
++
+1
+y
+=
+1
+2
+.
+2. Æ
+x +
+p
+x −
+p
+x =
+vt
+x
+
+1 +
+1
+p
+x
+
+−
+p
+x =
+p
+x
+
+1 +
+1
+p
+x
+1/2
+−
+p
+x
+=
+p
+x
+
+1 +
+1
+p
+x
+1/2
+− 1
+
+∼
+x→+∞
+p
+x ·
+1
+2
+p
+x
+=
+1
+2
+. Donc lim x→+∞
+Æ
+x +
+p
+x −
+p
+x =
+1
+2
+.
+Remarque. On peut aussi passer par l’expression conjuguée.
+Exercice 0.3.
+1. En 0, x + sin x ∼
+x→0
+x + x = 2x .
+En +∞, x + sin x = x + o(x ) ∼
+x→+∞
+x .
+2. En 0, x − sin x = x −
+
+x −
+x
+3
+6
++ o(x
+3
+)
+
+=
+x
+3
+6
++ o(x
+3
+) ∼
+x→0
+x
+3
+6
+.
+En +∞, x − sin x = x − o(x ) ∼
+x→+∞
+x .
+3. En 0+, tan x ∼
+x→0+
+x , donc ln(tan x ) ∼
+x→0+
+ln x .
+En
+π
+4
+, on note f : x 7→ ln(tan x ). Alors f
+π
+4
+
+= 0 et f
+′
+(x ) =
+tan′(x )
+tan x
+=
+1 + tan2 x
+tan x
+.
+Donc f
+′
+π
+4
+
+=
+1 + 1
+2
+1
+= 2 ̸= 0 et ln(tan x ) = f (x ) − f
+π
+4
+
+∼
+x→π/4
+f
+′
+π
+4
+
+·
+
+x −
+π
+4
+
+= 2
+
+x −
+π
+4
+
+.
+Remarque. On peut aussi appliquer la formule de TAYLOR-YOUNG à l’ordre un pour ln◦tan en π/4
+Romain Dujol 15
+<<<PAGE>>>
+4. On a
+1
+x
+−
+1
+tan x
+=
+tan x − x
+x ·tan x
+, puis :
+• tan x − x =
+
+x +
+x
+3
+3
++ o(x
+3
+)
+
+− x =
+x
+3
+3
++ o(x
+3
+) ∼
+x→0
+x
+3
+3
+• x ·tan x ∼
+x→0
+x · x = x
+2
+D’où
+1
+x
+−
+1
+tan x
+∼
+x→0
+x
+3
+/3
+x 2
+=
+x
+3
+.
+5. En 0+,
+p
+x 2 + x −
+p3
+x 3 + 2x 2 ∼
+x→0+
+p
+x −
+p3
+2x 2 = x
+1/2 −
+p3
+2x
+2/3 ∼
+x→0+
+x
+1/2 =
+p
+x .
+En +∞,
+p
+x 2 + x −
+p3
+x 3 + 2x 2 =
+vt
+x 2 ·
+
+1 +
+1
+x
+
+−
+3
+vt
+x 3 ·
+
+1 +
+2
+x
+
+= x ·
+
+1 +
+1
+x
+1/2
+−
+
+1 +
+2
+x
+1/3
+
+= x ·
+1 +
+1
+2x
++ o
+
+1
+x
+ −
+1 +
+2
+3x
++ o
+
+1
+x
+ = x ·1
+2
+−
+2
+3
+
+1
+x
++ o
+
+1
+x
+
+= −
+1
+6
++ o(1) ∼
+x→+∞
+−
+1
+6
+Exercice 0.4.
+1. f1(x ) ∼
+x→0
+x
+2
+x · x
+= 1
+2. f2(x ) ∼
+x→0
+−x
+2
+/2
+x 2/2
+= −1
+3. • e
+x − cos x − x =
+
+1 + x +
+x
+2
+2
++ o(x
+2
+)
+
+−
+
+1 −
+x
+2
+2
++ o(x
+2
+)
+
+− x = x
+2 + o(x2
+) ∼
+x→0
+x
+2
+• x − ln(1 + x ) = x −
+
+x −
+x
+2
+2
++ o(x
+2
+)
+
+=
+x
+2
+2
++ o(x
+2
+) ∼
+x→0
+x
+2
+2
+D’où f3(x ) ∼
+x→0
+x
+2
+x 2/2
+= 2.
+4. • sin2x =
+
+x + o(x
+2
+)
+2
+= x
+2
+[1 + o(x )]
+2 = x
+2
+[1 + o(x )] = x
+2 + o(x3
+)
+x ln(1 + x ) = x ·
+
+x −
+x
+2
+2
++ o(x
+2
+)
+
+= x
+2 −
+x
+3
+2
++ o(x
+3
+)
+Donc sin2x − x ln(1 + x ) =
+x
+3
+2
++ o(x
+3
+) ∼
+x→0
+x
+3
+2
+.
+• e
+x + cos x − sin x − 2 =
+
+1 + x +
+x
+2
+2
++
+x
+3
+6
++ o(x
+3
+)
+
++
+
+1 −
+x
+2
+2
++ o(x
+3
+)
+
+−
+
+x −
+x
+3
+6
++ o(x
+3
+)
+
+− 2 =
+x
+3
+3
++ o(x
+3
+)
+D’où f4(x ) ∼
+x→0
+x
+3
+/2
+x 3/3
+=
+3
+2
+.
+Exercice 0.5. On utilisera le changement de variable h =
+1
+n
+: ainsi rechercher l’équivalent de un lorsque n
+tend vers l’infini revient à le chercher lorsque h tend vers 0+.
+ATTENTION. Il faut alors reconvertir le résultat obtenu en h en remplaçant h par son expression réelle, i.e.
+1
+n
+.
+1. • e
+h − cosh = [1 + h + o(h)] − [1 + o(h)] = h + o(h) ∼
+h→0+
+h
+• 1 −
+p
+1 − h2 = 1 − (1 − h
+2
+)
+1/2 ∼
+h→0+
+−
+1
+2
+(−h
+2
+) =
+h
+2
+2
+D’où un ∼
+h→0+
+h
+h2/2
+=
+2
+h
+, c’est-à-dire un ∼ 2n.
+Romain Dujol 16
+<<<PAGE>>>
+2. p
+h −
+1
+p
+h
+sinh =
+p
+h −
+1
+p
+h
+
+h −
+h
+3
+6
++ o(h
+3
+)
+
+=
+p
+h −
+p
+h −
+h
+5/2
+6
++ o(h
+5/2
+)
+
+=
+h
+5/2
+6
++ o(h
+5/2
+) ∼
+h→0+
+h
+5/2
+6
+. Donc un ∼
+1
+6n5/2
+.
+3. Comme lim
+h→0+
+cos(a h) = 1, il vient que ln(cos(a h)) ∼
+h→0+
+cos(a h) − 1 ∼
+h→0+
+(a h)
+2
+2
+.
+De même, ln(cos(b h)) ∼
+h→0+
+(b h)
+2
+2
+. D’où un ∼
+(a h)
+2
+/2
+(b h)
+2/2
+=
+a
+2
+b 2
+.
+4. e
+1/n − e1/(n+1) = e1/(n+1)
+
+e
+1/n−1/(n+1) − 1
+
+= e
+1/(n+1)
+
+e
+1
+n(n+1) − 1
+
+• lim n→+∞e
+1/(n+1) = 1, donc e
+1/(n+1) ∼ 1
+• e
+1
+n(n+1) − 1 ∼
+1
+n(n + 1)
+∼
+1
+n ·n
+=
+1
+n2
+D’où un ∼
+1
+n2
+.
+5. arctan
+1
+h
+− arccosh =
+π
+2
+− arctanh
+
+−
+π
+2
+− arcsinh
+
+= arcsinh − arctanh
+=
+
+h +
+h
+3
+6
++ o(h
+3
+)
+
+−
+
+h −
+h
+3
+3
++ o(h
+3
+)
+
+=
+h
+3
+2
++ o(h
+3
+) ∼
+h→0+
+h
+3
+2
+. Donc un ∼
+1
+2n3
+.
+6. • Comme lim n→+∞
+n + 1
+n + 2
+= 1, il vient que ln
+n + 1
+n + 2
+∼
+n + 1
+n + 2
+− 1 =
+−1
+n + 2
+∼ −
+1
+n
+.
+• Comme
+n + 1
+n2 + 2
+∼
+n
+n2
+=
+1
+n
+, on a lim n→+∞
+n + 1
+n2 + 2
+et sin
+n + 1
+n2 + 2
+∼
+n + 1
+n2 + 2
+∼
+1
+n
+.
+D’où un ∼
+−1/n
+1/n
+= −1.
+7. e ·
+p
+n2 − n + 1 = e ·
+vt
+n2
+
+1 −
+1
+n
++
+1
+n2
+
+= e n 1 −
+1
+n
++
+1
+n2
+1/2
+= e n 1 −
+1
+2n
++
+1
+2n2
+−
+1
+8
+
+−
+1
+n
++
+1
+n2
+2
++ o
+
+1
+n2
+
+= e n 1 −
+1
+2n
++
+3
+8n2
++ o
+
+1
+n2
+
+n
+
+1 +
+1
+n
+n
+= n expn ln1 +
+1
+n
+ = n exp
+n
+
+1
+n
+−
+1
+2n2
++
+1
+3n3
++ o
+
+1
+n3
+
+= n exp1 −
+1
+2n
++
+1
+3n2
++ o
+
+1
+n2
+ = e n exp
+−
+1
+2n
++
+1
+3n2
++ o
+
+1
+n2
+
+= e n 
+1 −
+1
+2n
++
+1
+3n2
++
+1
+2
+
+−
+1
+2n
++
+1
+3n2
+2
++ o
+
+1
+n2
+
+= e n 1 −
+1
+2n
++
+11
+24n2
++ o
+
+1
+n2
+
+D’où e ·
+p
+n2 − n + 1 − n
+
+1 +
+1
+n
+n
+= e n 
+−1
+12n2
++ o
+
+1
+n2
+ ∼ e n ·
+−1
+12n2
+=
+−e
+12n
+.
+Exercice 0.6.
+1. 1 + n ∼ n, donc ln(1 + n) ∼ lnn puis lim n→+∞
+ln(1 + n)
+lnn
+= 1 et :
+lnun = n lnn ln
+ln(1 + n)
+lnn
+
+∼ n lnn
+
+ln(1 + n)
+lnn
+− 1
+
+= n lnn ·
+ln(1 + n) − lnn
+lnn
+= n ln
+1 + n
+n
+
+= n ln1 +
+1
+n
+
+∼ n ·
+1
+n
+2. Donc lim n→+∞lnun = 1 puis, par continuité de exp en 1, lim n→+∞un = e
+1 = e .
+Romain Dujol 17
+<<<PAGE>>>
+Première partie
+Séries numériques
+Romain Dujol 18
+<<<PAGE>>>
+Thème no 1
+Généralités
+Dans tout le chapitre, (E ,∥ · ∥) désigne un K-espace vectoriel normé (avec K = R ou C).
+1.1 Définition
+1.1.1 Série. Série numérique
+Définition 1.1 (Série). Soit (un )n∈N une suite d’éléments de E .
+La série de terme général un , notée P
+n∈N
+un ou P
+n≥0
+un est le couple ((un )n∈N,(Sn )n∈N) où la suite (Sn )n∈N
+définie par :
+∀n ∈ N, Sn =
+Xn
+k=0
+uk
+un est le n
+ème terme ou terme général de P
+n∈N
+un . Sn est la somme partielle d’ordre n de P
+n∈N
+un .
+Si la suite (un )n≥n0
+est définie à partir d’un certain rang n0 ∈ N, on définit de la même manière la série
+numérique P
+n≥n0
+un avec Sn =
+Xn
+k=n0
+uk pour tout n ≥ n0.
+Définition 1.2 (Série numérique).
+Une série numérique est une série à valeurs dans E = K muni de la valeur absolue | · |.
+Exemple (Séries numériques réelles).
+1. P
+n∈N
+n est la série de terme général n. La n
+ème somme partielle est calculable : Sn =
+Xn
+k=0
+k =
+n(n + 1)
+2
+.
+2. Soit x un nombre réel. P
+n∈N
+x
+n est la série de terme général xn
+. La n
+ème somme partielle est calculable :
+Sn =
+Xn
+k=0
+x
+k =
+
+
+
+1 − x
+n+1
+1 − x
+si x ̸= 1
+n + 1 si x = 1
+3. P
+n≥1
+1
+n
+est la série de terme général
+1
+n
+et la n
+ème somme partielle est Sn =
+Xn
+k=1
+1
+k
+.
+Romain Dujol 19
+<<<PAGE>>>
+1.1.2 Structure algébrique de l’ensemble des séries
+Définition 1.3 (Opérations). On munit l’ensemble S des séries à valeurs dans E de deux lois :
+— la loi interne + : S × S → S
+ P
+n∈N
+un ,
+P
+n∈N
+vn
+
+7→
+P
+n∈N
+(un + vn )
+;
+— la loi externe · : K × S → S
+
+λ,
+P
+n∈N
+un
+
+7→
+P
+n∈N
+(λ· un )
+.
+Théorème 1.1 (Structure algébrique de l’ensemble des séries).
+L’ensemble des séries à valeurs dans E muni des lois + et · vues en définition 1.3 est un K-espace
+vectoriel.
+1.2 Convergence
+1.2.1 Définition
+Définition 1.4 (Série convergente).
+Une série P
+n∈N
+un à valeurs dans E converge si et seulement la suite (Sn )n∈N de ses sommes partielles
+converge dans (E ,∥ · ∥).
+Auquel cas, on définit la somme de la série P
+n∈N
+un , notée
++
+X∞
+n=0
+un , par
++
+X∞
+n=0
+un = lim n→+∞Sn .
+Une série diverge si et seulement si elle ne converge pas.
+Deux séries sont dites de même nature si et seulement si elles convergent toutes les deux ou si elles
+divergent toutes les deux.
+Exemple (avec E = R).
+• La suite des sommes partielles de P
+n∈N
+n a pour terme général Sn =
+Xn
+k=0
+k =
+n(n + 1)
+2
+.
+Donc (Sn )n∈N diverge et la série P
+n∈N
+n diverge.
+• La suite des sommes partielles de P
+n∈N
+x
+n a pour terme général Sn =
+
+
+
+1 − x
+n+1
+1 − x
+si x ̸= 1
+n + 1 si x = 1
+qui ne converge que si |x | < 1.
+Donc si |x | < 1, la série P
+n∈N
+x
+n
+converge et
++
+X∞
+n=0
+x
+n =
+1
+1 − x
+. Sinon, elle diverge.
+Romain Dujol 20
+<<<PAGE>>>
+Proposition 1.1 (Changement d’indice de départ).
+Soit P
+n∈N
+un une série à valeurs dans E et n0 un entier naturel. Alors P
+n≥0
+un et P
+n≥n0
+un sont de même nature.
+Si de plus, les deux séries convergent, alors
++
+X∞
+n=0
+un =
+nX0−1
+n=0
+un +
++
+X∞
+n=n0
+un .
+Démonstration. Pour tout entier n supérieur ou égal à n0,
+Xn
+k=0
+uk =
+nX0−1
+k=0
+uk +
+Xn
+k=n0
+uk.
+• Si P
+n≥0
+un converge, alors la suite de terme général Xn
+k=0
+uk converge. On en déduit que la suite de terme général
+Xn
+k=n0
+uk =
+Xn
+k=0
+uk −
+nX0−1
+k=0
+uk converge aussi, puis que P
+n≥n0
+un converge.
+• Si P
+n≥n0
+un converge, alors la suite de terme général Xn
+k=n0
+uk converge. On en déduit que la suite de terme général
+Xn
+k=0
+uk converge, puis que P
+n≥0
+un converge.
+Remarque. L’indice de départ n’a donc aucune influence sur la convergence d’une série numérique. Lorsque
+l’étude d’une série se réduit à celle de sa convergence, on pourra noter la série étudiée P
+n
+un ou Pun lorsqu’il
+n’y a pas d’ambigüité.
+IMPORTANT. Tous les résultats de convergence et/ou divergence de cette partie restent donc valables si on change
+l’indice de départ des séries numériques dans leur énoncé.
+1.2.2 Reste d’une série convergente
+Définition 1.5 (Reste d’ordre n). Soit P
+n∈N
+un une série à valeurs dans E convergente.
+On appelle reste d’ordre n de P
+n∈N
+un la somme de la série P
+k≥n+1
+uk, c’est-à-dire
++
+X∞
+k=n+1
+uk.
+ATTENTION. Il n’existe pas de reste pour une série divergente !
+Remarque. Pour simplifier l’écriture, on note souvent :
+— Sn la somme partielle d’ordre n ;
+— S la somme (lorsque la série numérique converge) ;
+— Rn le reste d’ordre n (lorsque la série numérique converge).
+On a alors Rn = S −Sn , c’est-à-dire
++
+X∞
+k=n+1
+uk =
++
+X∞
+k=0
+uk −
+Xn
+k=0
+uk
+Proposition 1.2 (Convergence du reste).
+Soit P
+n∈N
+un une série numérique convergente et (Rn )n∈N la suite de ses restes d’ordre n.
+Alors (Rn )n∈N converge vers 0E .
+Démonstration. Comme P
+n∈N
+un converge, la suite (Sn )n∈N des sommes partielles converge vers la somme S.
+Donc (Rn )n∈N = (S −Sn )n∈N converge vers S −S = 0E .
+Romain Dujol 21
+<<<PAGE>>>
+1.2.3 Condition nécessaire de convergence
+Théorème 1.2 (Condition nécessaire de convergence).
+Si la série P
+n∈N
+un à valeurs dans E converge, alors (un )n∈N converge vers 0E .
+Démonstration. Soit P
+n∈N
+un une série convergente et (Sn )n∈N la suite de ses sommes partielles.
+Alors (Sn )n∈N converge vers une limite notée S.
+∀n ≥ 1, un = Sn −Sn−1: donc (un )n∈N converge et lim n→+∞un = S −S = 0E .
+Corollaire (Condition nécessaire de convergence). Soit (un )n∈N une suite d’éléments de E .
+Si la suite (un )n∈N ne converge pas vers 0E , alors P
+n∈N
+un diverge.
+IMPORTANT. Dans un tel cas, on dit que P
+n∈N
+un diverge grossièrement.
+Exemple (Séries numériques réelles).
+1. Comme lim n→+∞n = +∞,
+P
+n∈N
+n diverge grossièrement.
+2. Soit x un nombre réel.
+— si |x | > 1, alors (x
+n
+)n∈N diverge : donc P
+n∈N
+x
+n diverge grossièrement ;
+— si x = −1, alors (x
+n
+)n∈N diverge : donc P
+n∈N
+x
+n diverge grossièrement ;
+— si x = 1, alors (x
+n
+)n∈N converge vers 1 : donc P
+n∈N
+x
+n diverge grossièrement ;
+— si |x | < 1, P
+n∈N
+x
+n
+converge et (x
+n
+)n∈N converge vers 0.
+Remarque. Il ne s’agit que d’une condition nécessaire de convergence.
+Il existe des séries P
+n∈N
+un divergentes telles que (un )n∈N converge vers zéro.
+Théorème 1.3 (Série harmonique). On appelle série harmonique la série numérique P
+n≥1
+1
+n
+.
+Pour tout entier naturel non nul n, on note Hn sa n
+ème somme partielle, c’est-à-dire Hn =
+Xn
+k=1
+1
+k
+.
+La série harmonique diverge.
+Démonstration. Supposons par l’absurde que P
+n≥1
+1
+n
+converge. Alors (Hn )n≥1 converge vers une limite H .
+Soit n un entier naturel non nul. Alors pour tout k ∈ Jn, 2nK,
+1
+2n
+≤
+1
+k
+≤
+1
+n
+. Donc :
+H2n −Hn =
+X2n
+k=n+1
+1
+k
+≥
+X2n
+k=n+1
+1
+2n
+= n
+1
+2n
+=
+1
+2
+En passant à la limite dans l’inégalité, il vient que 0 = H −H ≥
+1
+2
+, ce qui est impossible.
+On en conclut que donc P
+n≥1
+1
+n
+diverge.
+Romain Dujol 22
+<<<PAGE>>>
+1.2.4 Structure algébrique de l’ensemble des séries convergentes
+Cas général
+Théorème 1.4. L’ensemble Sc des séries à valeurs dans E convergentes est un sous-espace vectoriel de
+l’espace vectoriel des séries à valeurs dans E (cf. théorème 1.1).
+De plus, l’application Sc → E
+P
+n∈N
+un 7→
++
+X∞
+n=0
+un
+est une application linéaire sur Sc.
+Remarque. Donc :
+— la somme de deux séries convergentes est convergente ;
+— la somme d’une série convergente et d’une série divergente est divergente.
+ATTENTION. Il n’existe pas de résultat général pour la somme de deux séries divergentes. En effet :
+—
+P
+n∈N
+1 et P
+n∈N
+(−1) sont (grossièrement) divergentes et P
+n∈N
+[1 + (−1)] = P
+n∈N
+0 est convergente ;
+—
+P
+n∈N
+1 est (grossièrement) divergente et P
+n∈N
+(1 + 1) = P
+n∈N
+2 est (grossièrement) divergente.
++ conv. div.
+conv. conv. div.
+div. div. ? ? ?
+Cas des séries numériques
+Théorème 1.5 (Cas E = C).
+Une série numérique à valeurs complexes P
+n∈N
+un converge si et seulement si les séries réelles P
+n∈N
+(ℜeun )
+et P
+n∈N
+(ℑmun ) convergent toutes les deux. Auquel cas,
++
+X∞
+n=0
+un =
++
+X∞
+n=0
+(ℜeun ) + i
++
+X∞
+n=0
+(ℑmun ).
+IMPORTANT. Autrement dit, on ramène l’étude sur E = C à celle sur E = R.
+Définition 1.6 (Série-produit). On munit l’ensemble S des séries numériques de la loi :
+× : S × S → S
+ P
+n∈N
+un ,
+P
+n∈N
+vn
+
+7→
+P
+n∈N
+Xn
+k=0
+uk vn−k
+
+Théorème 1.6. L’ensemble des séries numériques muni des lois + et·(définition 1.3) et × (définition 1.6)
+est une K-algèbre vectorielle.
+Romain Dujol 23
+<<<PAGE>>>
+Cas des séries numériques réelles
+Proposition 1.3 (Positivité de la somme).
+Soit P
+n∈N
+un une série à valeurs dans E = R convergente telle que ∀n ∈ N, un ≥ 0. Alors
++
+X∞
+n=0
+un ≥ 0.
+Démonstration. On a donc pour tout entier naturel n,
+Xn
+k=0
+uk ≥ 0. On conclut en passant à la limite.
+Proposition 1.4 (Croissance de la somme).
+Soit P
+n∈N
+un et P
+n∈N
+vn deux séries à valeurs dans E = R convergentes telles que ∀n ∈ N, un ≤ vn .
+Alors
++
+X∞
+n=0
+un ≤
++
+X∞
+n=0
+vn .
+Démonstration. On a donc pour tout entier naturel n,
+Xn
+k=0
+uk ≤
+Xn
+k=0
+vk. On conclut en passant à la limite.
+Romain Dujol 24
+<<<PAGE>>>
+Thème no 2
+Séries numériques à termes réels positifs
+Dans tout le reste de cette partie, on considère le cas E = K.
+2.1 Lemme fondamental
+Proposition 2.1. Soit P
+n∈N
+un une série numérique à termes réels positifs.
+Alors la suite (Sn )n∈N de ses sommes partielles est croissante.
+Démonstration. Pour tout entier naturel n, Sn+1 −Sn = un+1 ≥ 0.
+Théorème 2.1 (Lemme fondamental des séries à termes positifs).
+Soit P
+n∈N
+un une série numérique à termes réels positifs. Alors P
+n∈N
+un est convergente si et seulement
+si la suite de ses sommes partielles est majorée :
+X
+n∈N
+un converge ⇐⇒ ∃M ∈ R+, ∀n ∈ N,
+Xn
+k=0
+uk ≤ M
+Démonstration. On note (Sn )n∈N la suite des sommes partielles de P
+n∈N
+un .
+(⇒) Comme P
+n∈N
+un converge, (Sn )n∈N converge, donc est majorée.
+(⇐) D’après la proposition 2.1, (Sn )n∈N est croissante.
+Elle est également majorée, donc (Sn )n∈N converge, puis P
+n∈N
+un converge.
+Proposition 2.2. Soit P
+n∈N
+un une série numérique à termes réels positifs.
+1. Si P
+n∈N
+un converge, alors ∀n ∈ N,
+Xn
+k=0
+uk ≤
++
+X∞
+n=0
+un .
+2. Si P
+n∈N
+un diverge, alors lim n→+∞
+Xn
+k=0
+uk = +∞.
+Romain Dujol 25
+<<<PAGE>>>
+Démonstration. On note (Sn )n∈N la suite des sommes partielles de P
+n∈N
+un : d’après la proposition 2.1, (Sn )n∈N est une suite
+croissante.
+1. P
+n∈N
+un converge, donc (Sn )n∈N converge vers la somme S. (Sn )n∈N est croissante, donc ∀n ∈ N, Sn ≤ lim n→+∞Sn = S.
+2. P
+n∈N
+un diverge donc, d’après le lemme fondamental des séries à termes positifs, (Sn )n∈N n’est pas majorée.
+(Sn )n∈N est croissante, donc lim n→+∞Sn = +∞.
+2.2 Théorèmes de comparaison
+2.2.1 Théorème de majoration
+Théorème 2.2 (Théorème de majoration des séries à termes positifs).
+Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que ∀n ∈ N, un ≤ vn .
+Si P
+n∈N
+vn converge, alors P
+n∈N
+un converge également.
+Démonstration. D’après la proposition 2.2, ∀n ∈ N,
+Xn
+k=0
+uk ≤
+Xn
+k=0
+vk ≤
+X+∞
+k=0
+vk.
+Donc P
+n∈N
+un converge d’après le lemme fondamental des séries à termes positifs.
+Corollaire. Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que un = On→+∞(vn ).
+Si P
+n∈N
+vn converge, alors P
+n∈N
+un converge également.
+Démonstration. un = On→+∞(vn ), donc ∃N ∈ N, ∃C ∈ R+, ∀n ≥ N , un ≤ C vn .
+P
+n∈N
+vn converge donc :
+1. P
+n≥N
+vn converge d’après la proposition 1.1;
+2. puis P
+n≥N
+(C vn ) = C ·
+P
+n≥N
+vn converge d’après le théorème 1.4;
+3. puis P
+n∈N
+(C vn ) converge d’après la proposition 1.1;
+4. enfin P
+n∈N
+un converge d’après le théorème de majoration des séries à termes positifs.
+Corollaire. Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que un = on→+∞(vn ).
+Si P
+n∈N
+vn converge, alors P
+n∈N
+un converge également.
+Démonstration. un = on→+∞(vn ), donc un = On→+∞(vn ). On conclut en utilisant le corollaire précédent.
+Romain Dujol 26
+<<<PAGE>>>
+2.2.2 Théorème de minoration
+Théorème 2.3 (Théorème de minoration des séries à termes positifs).
+Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que ∀n ∈ N, un ≤ vn .
+Si P
+n∈N
+un diverge, alors P
+n∈N
+vn diverge également.
+Démonstration. C’est la contraposition du théorème de majoration des séries à termes positifs.
+On peut donc formuler les contraposées des corollaires précédents.
+Corollaire. Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que un = On→+∞(vn ).
+Si P
+n∈N
+un diverge, alors P
+n∈N
+vn diverge également.
+Corollaire. Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques à termes réels positifs telles que un = on→+∞(vn ).
+Si P
+n∈N
+un diverge, alors P
+n∈N
+vn diverge également.
+2.2.3 Théorème d’équivalence
+Théorème 2.4 (Théorème d’équivalence des séries numériques).
+Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques réelles telles que un ∼
+n→+∞
+vn .
+Si la suite (vn )n∈N est de signe constant à partir d’un certain rang alors P
+n∈N
+un et P
+n∈N
+vn sont de même
+nature.
+Remarque. Ce théorème est en particulier applicable aux séries numériques à termes réels positifs et aux séries
+numériques à termes réels négatifs.
+Démonstration. On suppose ici que (vn )n est positive à partir d’un certain rang n0.
+lim n→+∞
+un
+vn
+= 1 donc ∃N ∈ N, ∀n ≥ N ,
+1
+2
+≤
+un
+vn
+≤
+3
+2
+puis ∀n ≥ max(N ,n0), un ≥ 0. un ∼
+n→+∞
+vn donc :
+— un = O(vn ) et P
+n∈N
+vn converge =⇒
+P
+n∈N
+un converge d’après le corollaire page 26;
+— vn = O(un ) et P
+n∈N
+un converge =⇒
+P
+n∈N
+vn converge d’après le corollaire page 26.
+Donc P
+n∈N
+un converge ⇐⇒ P
+n∈N
+vn converge.
+Si (vn )n∈N est négative à partir d’un certain rang n0, on applique le raisonnement précédent à (−vn )n∈N.
+ATTENTION.
+Le théorème n’est plus valable si l’hypothèse « (vn )n∈N est de signe constant à partir d’un certain
+rang » n’est plus vérifiée.
+Exemple. cf. TD
+Romain Dujol 27
+<<<PAGE>>>
+Proposition 2.3 (Sommation des équivalences). Soit P
+n∈N
+un et P
+n∈N
+vn deux séries numériques réelles de même
+signe constant à partir d’un certain rang telles que un ∼
+n→+∞
+vn .
+Si P
+n∈N
+vn converge, alors P
+n∈N
+un converge et leurs restes sont équivalents :
++
+X∞
+k=n+1
+un ∼
+n→+∞
++
+X∞
+k=n+1
+vn
+Si P
+n∈N
+vn diverge, alors P
+n∈N
+un diverge et leurs sommes partielles sont équivalentes :
+Xn
+k=0
+un ∼
+n→+∞
+Xn
+k=0
+vn
+2.3 Séries de référence
+2.3.1 Séries géométriques
+Théorème 2.5 (Série géométrique). Soit z un nombre complexe.
+Alors P
+n∈N
+z
+n
+converge si et seulement si |z | < 1 : auquel cas,
++
+X∞
+n=0
+z
+n =
+1
+1 − z
+.
+Démonstration. La démonstration dans le cas réel a été traitée dans l’exemple page 20.
+2.3.2 Séries de RIEMANN
+Théorème 2.6 (Série de RIEMANN). Soit α un nombre réel.
+Alors P
+n≥1
+1
+nα
+converge si et seulement si α > 1.
+Démonstration. On distingue deux cas selon la valeur de α.
+— Si α ≤ 1, alors pour tout entier naturel non nul n, on a 0 ≤
+1
+n
+≤
+1
+nα
+. En appliquant le théorème de minoration des
+séries à termes positifs, il vient que P
+n≥1
+1
+nα
+diverge.
+— Si α > 1, t 7→
+1
+t α
+est décroissante sur R∗
++
+. Donc pour tout entier k ≥ 2 :
+∀t ∈ [k − 1,k],
+1
+k α
+≤
+1
+t α
+puis, en intégrant sur [k − 1,k],
+1
+k α
+=
+Z k
+k−1
+1
+k α
+dt ≤
+Z k
+k−1
+1
+t α
+dt
+On en déduit alors que :
+∀n ≥ 2, Xn
+k=2
+1
+k α
+≤
+Xn
+k=2
+Z k
+k−1
+1
+t α
+dt =
+Z n
+1
+1
+t α
+dt =
+
+t
+1−α
+1 − α
+n
+1
+=
+n
+1−α − 11−α
+1 − α
+=
+1
+α − 1
+
+1 −
+1
+nα−1
+
+≤
+1
+α − 1
+Donc ∀n ≥ 2, Xn
+k=1
+1
+k α
+≤ 1 +
+1
+α − 1
+=
+α
+α − 1
+.
+D’après le lemme fondamental des séries à termes positifs,
+P
+n≥1
+1
+nα
+converge.
+Romain Dujol 28
+<<<PAGE>>>
+Proposition 2.4 (Règle « n
+αun »). Soit P
+n∈N
+un une série numérique à termes réels positifs. Alors :
+∃α > 1, lim n→+∞n
+αun = 0 =⇒
+X
+n∈N
+un converge
+∃α ≤ 1, lim n→+∞n
+αun = +∞ =⇒
+X
+n∈N
+un diverge
+Démonstration.
+• Donc lim n→+∞
+un
+1/nα
+= 0 puis un = o
+
+1
+nα
+
+. α > 1 donc X
+n≥1
+1
+nα
+converge puis P
+n∈N
+un converge d’après le corollaire
+page 26.
+• Donc lim n→+∞
+1/n
+α
+un
+= 0 puis
+1
+nα
+= o(un ). α ≤ 1 doncX
+n≥1
+1
+nα
+diverge puis P
+n∈N
+un diverge d’après le corollaire page 27.
+2.3.3 Séries de BERTRAND
+Théorème 2.7 (Série de BERTRAND).
+Soit α et β deux nombres réels. Alors P
+n≥2
+1
+nα(lnn)
+β
+converge si et seulement si
+(α > 1) ou (α = 1 et β > 1)
+Démonstration page 42.
+2.4 Règles de convergence
+2.4.1 Règle de D’ALEMBERT
+Théorème 2.8 (Règle de D’ALEMBERT).
+Soit P
+n∈N
+un une série numérique à termes réels strictement positifs telle que la suite 
+un+1
+un
+
+n∈N
+converge vers ℓ ∈ R+ = R+ ∪ {+∞}.
+— Si ℓ < 1, alors P
+n∈N
+un converge.
+— Si ℓ > 1 ou ℓ = +∞, alors P
+n∈N
+un diverge grossièrement.
+ATTENTION. Le cas ℓ = 1 est indéterminé.
+Exemple.
+• Si un =
+1
+n2
+, alors
+un+1
+un
+=
+n
+2
+(n + 1)
+2
+−−−−→ n→+∞1 et P
+n≥1
+un converge.
+• Si un =
+1
+n
+, alors
+un+1
+un
+=
+n
+n + 1
+−−−−→ n→+∞1 et P
+n≥1
+un diverge.
+Romain Dujol 29
+<<<PAGE>>>
+Démonstration. Traitons les trois cas ℓ < 1, ℓ > 1 et ℓ = +∞ séparément.
+• ℓ < 1 D’après la définition de la limite avec ϵ =
+1 − ℓ
+2
+> 0,
+∃N ∈ N, ∀n ≥ N ,
+
+
+
+
+un+1
+un
+− ℓ
+
+
+
+
+≤
+1 − ℓ
+2
+c’est-à-dire ∃N ∈ N, ∀n ≥ N ,
+3ℓ − 1
+2
+≤
+un+1
+un
+≤
+1 + ℓ
+2
+On en déduit que ∃N ∈ N, ∀n ≥ N , un+1 ≤ un ·
+
+1 + ℓ
+2
+
+.
+Montrons par récurrence que pour tout n ≥ N , un ≤ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+:
+— si n = N , alors uN ≤ uN = uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+N
+;
+— soit n ≥ N tel que un ≤ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+, alors
+un+1 ≤ un ·
+
+1 + ℓ
+2
+
+≤ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+·
+
+1 + ℓ
+2
+
+= uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n+1
+Comme
+1 + ℓ
+2
+< 1, la série géométrique P
+n∈N
+
+1 + ℓ
+2
+n
+converge, ainsi que la série P
+n≥N
+
+1 + ℓ
+2
+n
+.
+On en déduit par théorème de majoration des séries à termes positifs que P
+n≥N
+un puis P
+n∈N
+un convergent.
+• ℓ > 1 D’après la définition de la limite avec ϵ =
+ℓ − 1
+2
+> 0,
+∃N ∈ N, ∀n ≥ N ,
+
+
+
+
+un+1
+un
+− ℓ
+
+
+
+
+≤
+ℓ − 1
+2
+c’est-à-dire ∃N ∈ N, ∀n ≥ N ,
+1 + ℓ
+2
+≤
+un+1
+un
+≤
+3ℓ − 1
+2
+On en déduit que ∃N ∈ N, ∀n ≥ N , un+1 ≥ un ·
+
+1 + ℓ
+2
+
+.
+Montrons par récurrence que pour tout n ≥ N , un ≥ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+:
+— si n = N , alors uN ≥ uN = uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+N
+;
+— soit n ≥ N tel que un ≥ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+, alors
+un+1 ≥ un ·
+
+1 + ℓ
+2
+
+≥ uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n
+·
+
+1 + ℓ
+2
+
+= uN ·
+
+1 + ℓ
+2
+−N
+·
+
+1 + ℓ
+2
+n+1
+Comme
+1 + ℓ
+2
+> 1 et uN > 0, on en déduit par minoration que lim n→+∞un = +∞ puis que P
+n∈N
+un diverge grossièrement.
+• ℓ = +∞ D’après la définition de la limite, ∃N ∈ N, ∀n ≥ N ,
+un+1
+un
+≥ 2.
+Comme dans le cas précédent, on montre par récurrence que un ≥ uN · 2
+−N · 2n pour tout n ≥ N et
+on conclut de manière identique que P
+n∈N
+un diverge grossièrement.
+IMPORTANT. De manière générale, si un =
+1
+nα
+, alors
+un+1
+un
+=
+ n
+n + 1
+α
+−−−−→ n→+∞1 : donc cette règle ne fait pas la
+distinction entre les séries de RIEMANN convergentes et divergentes.
+Romain Dujol 30
+<<<PAGE>>>
+Remarque. Il ne s’agit pas d’une condition nécessaire de convergence ou de divergence :
+— si un =
+2 + (−1)
+n
+2n
+, alors
+un+1
+un
+=
+1
+2
+·
+2 − (−1)
+n
+2 + (−1)
+n
+est le terme général d’une suite non convergente ; comme
+0 ≤ un ≤
+3
+2n
+, il vient que P
+n∈N
+un converge par théorème de majoration des séries à termes positifs.
+— si un = 2+(−1)
+n
+, alors
+un+1
+un
+=
+2 − (−1)
+n
+2 + (−1)
+n
+est le terme général d’une suite non convergente ; comme un ≥ 1,
+il vient que P
+n∈N
+un diverge par théorème de minoration des séries à termes positifs.
+Exercice. Déterminer la nature (i.e. convergente ou non) de la série de terme général un =
+n!
+nn
+.
+Solution. P
+n∈N
+un est une série numérique à termes strictement positifs. De plus
+un+1
+un
+=
+(n + 1)!
+(n + 1)
+n+1
+·
+n
+n
+n!
+=
+(n + 1)!
+n!
+·
+n
+n
+(n + 1)
+n+1
+= (n + 1)
+n
+n
+(n + 1)
+n+1
+=
+ n
+n + 1
+n
+=
+
+1 +
+1
+n
+−n
+Comme ln1 +
+1
+n
+−n
+
+= −n ln1 +
+1
+n
+
+∼
+n→+∞
+−n ·
+1
+n
+= −1, il vient que
+lim n→+∞ln1 +
+1
+n
+−n
+
+= −1 puis lim n→+∞
+
+1 +
+1
+n
+−n
+= e
+−1 < 1
+D’après la règle de D’ALEMBERT,
+P
+n∈N
+un converge.
+2.4.2 Règle de CAUCHY
+Théorème 2.9 (Règle de CAUCHY).
+Soit P
+n∈N
+un une série numérique à termes réels positifs telle que la suite 
+np
+un
+
+n∈N∗
+converge vers
+ℓ ∈ R+ = R+ ∪ {+∞}.
+— Si ℓ < 1, alors P
+n∈N
+un converge.
+— Si ℓ > 1 ou ℓ = +∞, alors P
+n∈N
+un diverge grossièrement.
+Remarque. Comme dans le cas de la règle de D’ALEMBERT, le cas ℓ = 1 est aussi indéterminé.
+IMPORTANT. Si un =
+1
+nα
+, alors np
+un = e
+−α
+lnn
+n −−−−→ n→+∞
+1 : donc cette règle ne fait pas plus la distinction entre les
+séries de RIEMANN convergentes et divergentes que la règle de D’ALEMBERT.
+Démonstration. Traitons les trois cas ℓ < 1, ℓ > 1 et ℓ = +∞ séparément.
+• ℓ < 1 D’après la définition de la limite avec ϵ =
+1 − ℓ
+2
+> 0,
+∃N ∈ N, ∀n ≥ N ,
+
+
+pn un − ℓ
+
+ ≤
+1 − ℓ
+2
+c’est-à-dire ∃N ∈ N, ∀n ≥ N ,
+3ℓ − 1
+2
+≤
+pn un ≤
+1 + ℓ
+2
+On en déduit que ∃N ∈ N, ∀n ≥ N , un ≤
+
+1 + ℓ
+2
+n
+. Comme
+1 + ℓ
+2
+< 1, P
+n∈N
+
+1 + ℓ
+2
+n
+converge.
+On en déduit par théorème de majoration des séries à termes positifs que P
+n≥N
+un puis P
+n∈N
+un convergent.
+Romain Dujol 31
+<<<PAGE>>>
+• ℓ > 1 D’après la définition de la limite avec ϵ =
+ℓ − 1
+2
+> 0,
+∃N ∈ N, ∀n ≥ N ,
+
+
+pn un − ℓ
+
+ ≤
+ℓ − 1
+2
+c’est-à-dire ∃N ∈ N, ∀n ≥ N ,
+1 + ℓ
+2
+≤
+pn un ≤
+3ℓ − 1
+2
+On en déduit que ∃N ∈ N, ∀n ≥ N , un ≥
+
+1 + ℓ
+2
+n
+. Comme
+1 + ℓ
+2
+> 1 on en déduit par minoration que lim n→+∞un =
++∞ puis que P
+n∈N
+un diverge grossièrement.
+• ℓ = +∞ D’après la définition de la limite, ∃N ∈ N, ∀n ≥ N ,
+pn un ≥ 2.
+Comme dans le cas précédent, on montre que un ≥ 2
+n
+P
+pour tout n ≥ N et on conclut de manière identique que
+n∈N
+un diverge grossièrement.
+2.4.3 Lien entre les deux règles
+Proposition 2.5 (Lien entre les deux règles). Soit P
+n∈N
+un une série numérique à termes réels
+strictement positifs telle que la suite 
+un+1
+un
+
+n∈N
+converge vers ℓ ∈ R+.
+Alors la suite 
+np
+un
+
+n∈N
+converge vers ℓ.
+Remarque. La réciproque de la proposition 2.5 est fausse en général.
+Donc si la suite 
+un+1
+un
+
+n∈N
+n’a pas de limite, la suite 
+np
+un
+
+n∈N
+peut en avoir une.
+Remarque. De manière générale, si np
+un −−−−→ n→+∞ℓ, deux cas sont possibles :
+— la suite 
+un+1
+un
+
+n∈N
+n’a pas de limite dans R+ : la règle de D’ALEMBERT est donc inapplicable ;
+— la suite 
+un+1
+un
+
+n∈N
+admet une limite dans R+ : donc cette limite est égale à ℓ d’après la proposition 2.5
+et l’application de la règle de D’ALEMBERT ne donne aucune information supplémentaire.
+Donc la règle de D’ALEMBERT ne donne pas plus d’information que la règle de CAUCHY.
+Néanmoins, on priviégiera la règle de D’ALEMBERT si l’expression de un s’y prête.
+Exercice. Reprendre l’exercice page 31 avec la règle de CAUCHY.
+Solution. D’après la proposition 2.5, on sait que la limite de 
+np
+un
+
+n∈N
+existe et vaut e
+−1
+. Néanmoins, le calcul
+direct de cette limite est bien plus complexe que celle de 
+un+1
+un
+
+n∈N
+. . .
+Romain Dujol 32
+<<<PAGE>>>
+Thème no 3
+Séries numériques à termes quelconques
+Par « à termes quelconques », on entend « réels ou complexes ». L’une des stratégies possibles sera de revenir
+(lorsque cela est possible) dans le cadre des séries numériques à termes positifs.
+3.1 Convergence absolue. Semi-convergence
+Définition 3.1 (Convergence absolue).
+Une série numérique P
+n∈N
+un converge absolument si et seulement si P
+n∈N
+|un | converge.
+Théorème 3.1 (Convergence absolue et convergence).
+L’ensemble des séries numériques absolument convergentes est un sous-espace vectoriel de l’espace vectoriel des séries numériques convergentes (cf. théorème 1.4).
+De plus, pour toute série numérique absolument convergente P
+n∈N
+un , on a
+
+
+
+
+
++
+X∞
+n=0
+un
+
+
+
+
+
+≤
++
+X∞
+n=0
+|un |.
+ATTENTION. Il existe des séries numériques convergentes qui ne sont pas absolument convergentes.
+Exemple. La série P
+n≥1
+(−1)
+n
+n
+converge mais ne converge pas absolument.
+Démonstration. P
+n≥1
+
+
+
+
+(−1)
+n
+n
+
+
+
+
+=
+P
+n∈N
+1
+n
+est la série harmonique et est donc divergente d’après le théorème 1.3.
+Pour tout entier naturel non nul n, on note un =
+(−1)
+n
+n
+et Sn la n
+ème somme partielle de la série numérique P
+n≥1
+un .
+Montrons que les suites (S2n )n≥1 et (S2n+1)n≥0 sont adjacentes :
+— S2n+1 −S2n = u2n+1 =
+−1
+2n + 1
+, donc lim n→+∞S2n+1 −S2n = 0 ;
+— S2n+2 −S2n = u2n+1 + u2n+2 =
+−1
+2n + 1
++
+1
+2n + 2
+=
+−1
+(2n + 1)(2n + 2)
+≤ 0 : donc (S2n )n≥1 est une suite décroissante ;
+— S2n+3 −S2n+1 = u2n+2 + u2n+3 =
+1
+2n + 2
+−
+1
+2n + 3
+=
+1
+(2n + 2)(2n + 3)
+≥ 0 : donc (S2n+1
+)n≥0 est une suite croissante.
+D’après le théorème des suites adjacentes, (S2n )n≥1 et (S2n+1
+)n≥0 convergent : donc (Sn )n≥1 converge et P
+n≥1
+un converge.
+Romain Dujol 33
+<<<PAGE>>>
+Définition 3.2 (Série numérique semi-convergente).
+Une série numérique semi-convergente est une série numérique convergente qui n’est pas absolument
+convergente.
+Proposition 3.1. Si P
+n∈N
+un et P
+n∈N
+vn sont deux séries numériques convergentes dont l’une des deux converge
+absolument, alors leur série-produit converge a pour somme +
+X∞
+n=0
+un
+
+·
++
+X∞
+n=0
+vn
+
+.
+ATTENTION. L’hypothèse de convergence absolue pour une des deux séries numériques est indispensable.
+Exemple. cf. TD
+3.2 Règles de convergence absolue
+Théorème 3.2 (Règle de D’ALEMBERT). Soit P
+n∈N
+un une série numérique à termes non nuls à partir d’un
+certain rang telle que la suite 
+
+
+
+un+1
+un
+
+
+
+
+
+n∈N
+converge vers ℓ ∈ R+ = R+ ∪ {+∞}.
+— Si ℓ < 1, alors P
+n∈N
+un converge absolument.
+— Si ℓ > 1 ou ℓ = +∞, alors P
+n∈N
+un diverge grossièrement.
+Théorème 3.3 (Règle de CAUCHY). Soit P
+n∈N
+un une série numérique telle que la suite 
+np
+|un |
+
+n∈N
+converge
+vers ℓ ∈ R+ = R+ ∪ {+∞}.
+— Si ℓ < 1, alors P
+n∈N
+un converge absolument.
+— Si ℓ > 1 ou ℓ = +∞, alors P
+n∈N
+un diverge grossièrement.
+Démonstration des
+P
+théorèmes 3.2 et 3.3. On applique la règle pour les séries à termes positifs correspondante à la série
+n∈N
+|un |.
+— Si ℓ < 1, alors P
+n∈N
+|un | converge : donc P
+n∈N
+un converge absolument.
+— Si ℓ > 1 ou ℓ = +∞, alors P
+n∈N
+|un | diverge grossièrement. Donc (|un |)n∈N ne converge pas vers 0, et (un )n∈N ne
+converge donc pas vers 0. On en conclut que P
+n∈N
+un diverge grossièrement.
+IMPORTANT. Comme dans le cas des séries à termes positifs :
+— le cas ℓ = 1 est indéterminé pour les deux régles ;
+— la règle de D’ALEMBERT n’apporte pas plus d’information que la règle de CAUCHY, mais elle doit être
+préférée si l’expression de un s’y prête.
+Romain Dujol 34
+<<<PAGE>>>
+Exercice. Déterminer la nature de la série de terme général un = (−1)
+n
+lnn
+nn
+.
+Solution.
+• Utilisons la règle de D’ALEMBERT :
+
+
+
+
+un+1
+un
+
+
+
+
+=
+ln(n + 1)
+(n + 1)
+n+1
+·
+n
+n
+lnn
+=
+ln(n + 1)
+lnn
+·
+n
+n
+(n + 1)
+n+1
+=
+1
+n + 1
+ln(n + 1)
+lnn
+·
+ n
+n + 1
+n
+— On a lim n→+∞
+1
+n + 1
+= 0.
+— On a n + 1 ∼ n et lim n→+∞n + 1 = lim n→+∞n = +∞ : donc ln(n + 1) ∼ lnn et lim n→+∞
+ln(n + 1)
+lnn
+= 1.
+— On a vu dans l’exercice page 31 que lim n→+∞
+ n
+n + 1
+n
+=
+1
+e
+.
+On en conclut donc que lim n→+∞
+
+
+
+
+un+1
+un
+
+
+
+
+= 0 < 1 et que P
+n∈N
+un converge absolument.
+• Utilisons la règle de CAUCHY :
+n
+Æ
+|un | =
+np
+lnn
+n
+=
+1
+n
+exp
+ln(lnn)
+n
+
+Comme ln x = ox→+∞(x ), il vient par composition que ln(lnn) = o(lnn). De plus lnn = o(n), donc ln(lnn) =
+o(n) par transitivité de o(·) et lim n→+∞
+ln(lnn)
+n
+= 0, puis lim n→+∞exp
+ln(lnn)
+n
+
+= 1.
+Comme lim n→+∞
+1
+n
+= 0, on en conclut que lim n→+∞
+n
+Æ
+|un | = 0 < 1 et que P
+n∈N
+un converge absolument.
+• On a ∀n ≥ 2, |un | =
+lnn
+nn
+≤
+lnn
+n2
+.
+P
+n≥2
+lnn
+n2
+=
+P
+n≥2
+1
+n2(lnn)−1
+est une série de BERTRAND convergente d’après le théorème 2.7 donc, par théorème de majoration des séries à termes positifs,
+P
+n≥2
+un puis P
+n∈N
+un convergent absolument.
+• Par croissance comparée, n
+2
+|un | =
+lnn
+nn−2
+−−−−→ n→+∞0.
+D’après la ??,
+P
+n
+un converge absolument.
+3.3 Règles de semi-convergence
+3.3.1 Condition de convergence de CAUCHY
+Théorème 3.4 (Condition de convergence de CAUCHY).
+Une série numérique P
+n∈N
+un converge si et seulement si :
+∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N ,
+
+
+
+
+
+X
+q
+k=p+1
+uk
+
+
+
+
+
+< ϵ
+Démonstration. P
+n∈N
+un converge si et seulement si sa suite des sommes partielles (Sn )n∈N converge, c’est-à-dire si et
+seulement si (Sn )n∈N est une suite de CAUCHY.
+Romain Dujol 35
+<<<PAGE>>>
+Remarque. Un terme du type X
+q
+k=p+1
+uk est parfois appelé paquet de CAUCHY en référence à ce résultat.
+Corollaire. Soit P
+n∈N
+un une série numérique.
+Si il existe deux suites à valeurs entières (pn )n∈N et (qn )n∈N telles que :
+— ∀n ∈ N, pn ≤ qn ;
+— lim n→+∞pn = lim n→+∞qn = +∞;
+— la suite X
+qn
+k=pn
+uk
+!
+n∈N
+ne converge pas vers 0 ;
+alors P
+n∈N
+un diverge.
+Démonstration. C’est la contraposition de la condition de convergence de CAUCHY.
+3.3.2 Règle d’ABEL
+Théorème 3.5 (Règle d’ABEL). Soit (ϵn )n∈N et (vn )n∈N deux suites numériques telles que :
+— (ϵn )n∈N est une suite réelle positive, décroissante telle que lim n→+∞ϵn = 0 ;
+— la suite numérique Xn
+k=0
+vk
+
+n∈N
+est bornée.
+Alors P
+n∈N
+ϵn vn converge.
+Démonstration. Pour tout entier naturel n, on note Vn =
+Xn
+k=0
+vk et Sn =
+Xn
+k=0
+ϵk vk. Soit M = sup
+n∈N
+|Vn |. Alors :
+Sn =
+Xn
+k=0
+ϵk vk = ϵ0v0 +
+Xn
+k=1
+ϵk vk = ϵ0v0 +
+Xn
+k=1
+ϵk(Vk − Vk−1) = ϵ0v0 +
+Xn
+k=1
+ϵkVk −
+Xn
+k=1
+ϵkVk−1
+=
+Xn
+k=0
+ϵkVk −
+Xn−1
+k=0
+ϵk+1Vk = ϵnVn +
+Xn−1
+k=0
+(ϵk − ϵk+1)Vk
+· Comme la suite (ϵn )n converge vers 0 et que la suite (Vn )n est bornée, il vient que la suite (ϵnVn )n converge vers 0.
+· Pour tout n ∈ N,
+Xn−1
+k=0
+|(ϵk − ϵk+1)·Vk| =
+Xn−1
+k=0
+|(ϵk − ϵk+1)·Vk| =
+Xn−1
+k=0
+|ϵk − ϵk+1| · |Vk|
+≤ M
+Xn−1
+k=0
+|ϵk − ϵk+1| = M
+Xn−1
+k=0
+(ϵk − ϵk+1) = M (ϵ0 − ϵn ) ≤ M ϵ0
+D’après le
+P
+lemme fondamental des séries à termes positifs, il vient que la série numérique
+n∈N
+|(ϵn − ϵn+1·Vn | converge puis que P
+n∈N
+(ϵn − ϵn+1)·Vn converge.
+On en déduit que (Sn )n∈N converge puis que P
+n∈N
+ϵn vn converge.
+Romain Dujol 36
+<<<PAGE>>>
+3.3.3 Séries numériques alternées
+Définition 3.3. Une série numérique réelle P
+n≥n0
+un est dite alternée si et seulement si
+∀n ≥ n0, un = (−1)
+n
+|un | ou ∀n ≥ n0, un = −(−1)
+n
+|un |
+Remarque. Une série alternée est donc une série pour laquelle le terme général change de signe à chaque rang.
+Ainsi :
+un =
+
+
+
+1
+n
+si n est le carré d’un entier
+(−1)
+n
+n
+sinon
+n’est pas le terme général d’une série alternée et ce, à partir de n’importe quel rang.
+Théorème 3.6 (Théorème spécial à certaines séries alternées).
+Soit P
+n∈N
+un une série numérique alternée telle que (|un |)n∈N soit une suite réelle (positive) décroissante qui converge vers zéro. Alors P
+n∈N
+un converge.
+De plus, ∀n ∈ N, Rn est du signe de un+1 et |Rn | =
+
+
+
+
+
++
+X∞
+k=n+1
+uk
+
+
+
+
+
+≤ |un+1|.
+Démonstration. On suppose ici que ∀n ∈ N, un = (−1)
+n
+|un |.
+On note Sn la somme partielle d’ordre n de P
+n∈N
+un . Montrons que (S2n )n∈N et (S2n+1)n∈N sont adjacentes :
+— S2n+1 −S2n = u2n+1 = −|u2n+1|, donc lim n→+∞S2n+1 −S2n = 0 ;
+— S2n+2 −S2n = u2n+1 + u2n+2 = −|u2n+1| + |u2n+2| ≤ 0 : donc (S2n )n∈N est une suite décroissante ;
+— S2n+3 −S2n+1 = u2n+2 + u2n+3 = |u2n+2| − |u2n+3| ≥ 0 : donc (S2n+1)n∈N est une suite croissante.
+D’après le théorème des suites adjacentes, (S2n )n∈N et (S2n+1)n∈N convergent vers une limite commune S : donc (Sn )n∈N
+converge vers S et P
+n∈N
+un converge vers S.
+Les monotonies des deux suites partielles assurent que ∀n ∈ N, S2n+1 ≤ S ≤ S2n . Donc :
+— ∀n ∈ N, R2n = S −S2n ≤ 0, or u2n+1 = −|u2n+1| ≤ 0
+— ∀n ∈ N, R2n+1 = S −S2n+1 ≥ 0, or u2n+2 = +|u2n+1| ≥ 0.
+Donc, pour tout entier naturel n, Rn et un+1 sont de même signe. De plus :
+— ∀n ∈ N, |R2n | = S2n −S ≤ S2n −S2n+1 = −u2n+1 = |u2n+1|;
+— ∀n ∈ N, |R2n+1| = S −S2n+1 ≤ S2n+2 −S2n+1 = u2n+2 = |u2n+2|.
+Donc ∀n ∈ N, |Rn | ≤ |un+1|.
+Si ∀n ∈ N, un = −(−1)
+n
+|un |, on applique le raisonnement précédent à P
+n∈N
+(−un ), dont la suite des restes est (−Rn )n∈N,
+pour obtenir que :
+— pour tout entier naturel n, (−Rn ) et (−un+1) sont de même signe : donc il en est de même pour Rn et un+1;
+— ∀n ∈ N, | − Rn | ≤ | − un+1| : donc ∀n ∈ N, |Rn | ≤ |un+1|.
+Remarque. Le résultat de convergence de ce théorème est une application directe de la règle d’ABEL avec
+ϵn = |un | et vn = ±(−1)
+n
+.
+Romain Dujol 37
+<<<PAGE>>>
+Corollaire (Séries de RIEMANN alternées).
+Soit α un nombre réel. Alors P
+n≥1
+(−1)
+n
+nα
+converge si et seulement si α > 0.
+Démonstration. On distingue trois cas selon la valeur de α.
+• Si α ≤ 0, la suite de terme général
+(−1)
+n
+nα
+ne converge pas, donc P
+n≥1
+(−1)
+n
+nα
+diverge grossièrement.
+• Si α ∈]0, 1], alors
+
+
+
+
+(−1)
+n
+nα
+
+
+
+
+=
+1
+nα
+est le terme général d’une suite décroissante qui converge vers 0.
+Comme P
+n≥1
+(−1)
+n
+nα
+est une série altérnée, on conclut qu’elle converge d’après le théorème spécial à certaines séries
+alternées.
+• Si α > 1, alors
+
+
+
+
+(−1)
+n
+nα
+
+
+
+
+=
+1
+nα
+est le terme général d’une série convergente : donc P
+n≥1
+(−1)
+n
+nα
+converge absolument.
+3.4 Raisonnement par regroupement de termes
+Exemple. On considère la série de terme général un = (−1)
+n
+: il s’agit d’une série (grossièrement) divergente.
+Toutefois la série de terme général vn = u2n + u2n+1 = 0 est une série convergente.
+Donc la nature d’une série obtenue par regroupement de termes n’a rien à voir avec la nature de la série
+originale. Ces considérations font l’objet de résultats qui dépassent le cadre de ce cours. On retiendra que :
+Il ne faut pas regrouper les termes d’une série pour en déterminer la nature!
+Remarque. Après (et uniquement après) avoir établi qu’une série converge, on peut envisager de regrouper les
+termes d’une série pour déterminer la valeur de sa somme.
+Romain Dujol 38
+<<<PAGE>>>
+Thème no 4
+Méthodes d’évaluation
+4.1 Calcul de la somme d’une série convergente
+4.1.1 Séries géométriques
+On rappelle le théorème 2.5.
+Théorème 4.1 (Série géométrique). Soit z un nombre complexe.
+Alors P
+n∈N
+z
+n
+converge si et seulement si |z | < 1 : auquel cas,
++
+X∞
+n=0
+z
+n =
+1
+1 − z
+.
+4.1.2 Par « télescopage »
+Proposition 4.1. Soit (an )n≥n0
+une suite numérique.
+Alors P
+n≥n0
+(an+1 −an ) converge si et seulement si (an )n≥n0
+converge : auquel cas,
++
+X∞
+n=n0
+(an+1 −an ) = lim n→+∞an
+
+−
+an0
+.
+Démonstration. Soit n ≥ n0. Alors Sn =
+Xn
+k=n0
+(ak+1 − ak) = Xn
+k=n0
+ak+1 −
+Xn
+k=n0
+ak =
+Xn+1
+k=n0+1
+ak −
+Xn
+k=n0
+ak = an+1 − an0.
+Donc P
+n≥n0
+(an+1 − an ) converge si et seulement si (an+1 − an0)n≥n0converge, donc si et seulement si (an )n≥n0converge.
+Si (an )n≥n0converge vers ℓ, on en déduit que (Sn )n≥n0converge vers ℓ − an0, d’où le résultat annoncé.
+Exemple. On considère la série de terme général un =
+1
+n(n + 1)
+=
+1
+n
+−
+1
+n + 1
+.
+Avec an = −
+1
+n
+, il vient que ∀n ≥ 1, un = an+1 − an et ℓ = lim n→+∞an = 0.
+D’où
++
+X∞
+n=1
+1
+n(n + 1)
+= 0 − a1 = 0 −
+
+−
+1
+1
+
+= 1.
+Remarque. Ce résultat peut être étendu aux séries numériques à valeurs dans un espace vectoriel normé.
+Romain Dujol 39
+<<<PAGE>>>
+4.2 Majoration du reste d’une série convergente
+Il s’agit ici de borner le reste Rn par une expression plus simple. Cette borne pourra alors être utilisée pour
+déterminer la qualité de Sn comme approximation de S.
+Proposition 4.2 (Vitesse de convergence du reste d’une série « sous-géométrique »).
+Soit P
+n∈N
+un une série réelle strictement positive telle que :
+∃λ ∈ [0, 1[, ∃N ∈ N, ∀n ≥ N , 0 <
+un+1
+un
+≤ λ
+Alors P
+n∈N
+un converge et :
+∀n ≥ N , Rn ≤
+uN
+λN (1 − λ)
+λ
+n+1
+Démonstration. On montre aisément par récurrence que ∀n ≥ N , 0 < un ≤ λ
+n−N uN . Donc pour tout n ≥ N :
+0 < Rn =
+X+∞
+k=n+1
+uk ≤
+X+∞
+k=n+1
+λ
+k−N uN = λ−N uN
+X+∞
+k=n+1
+λ
+k = λ−N uN
+X+∞
+k=0
+λ
+k+n+1 = λn+1−N uN
+X+∞
+k=0
+λ
+k
+= λ
+n+1−N uN
+1 − λ
+Exemple. On considère la série de terme général un =
+1
+n!
+: on rappelle que
++
+X∞
+n=0
+un = e .
+Donner un ordre n assurant que Sn est une approximation de e à 10−6 près.
+∀n ≥ 1,
+un+1
+un
+=
+1
+n + 1
+≤
+1
+2
+. Donc d’après ce qui précède, Rn ≤
+u1
+(1/2)· (1/2)
+
+1
+2
+n+1
+=
+1
+2n−1
+.
+Donc il suffit que
+1
+2n−1
+≤ 10−6 ⇔ −(n − 1)ln 2 ≤ −6 ln 10⇔n − 1 ≥ 6
+ln 10
+ln 2 ≃ 19,9⇔n ≥ 21.
+Reste d’une série alternée On rappelle que si la série numérique P
+n∈N
+un vérifie les hypothèses du théorème
+spécial à certaines séries alternées, alors son reste Rn d’ordre n vérifie |Rn | ≤ |un+1|.
+4.3 Comparaison série-intégrale
+On présente dans cette section une méthode d’encadrement qui permet d’étudier le comportement de la
+série de terme général f (n) pour n ≥ n0.
+4.3.1 Cas décroissant
+Théorème 4.2 (Comparaison série-intégrale).
+Soit n0 un entier naturel et f : [n0,+∞[→ R+ une application décroissante.
+Alors pour tout n ≥ n0,
+Z n+1
+n0
+f (x )dx ≤
+Xn
+k=n0
+f (k) ≤ f (n0) + Z n
+n0
+f (x )dx .
+Romain Dujol 40
+<<<PAGE>>>
+Démonstration. Soit k ≥ n0
+. Alors :
+∀x ∈ [k,k + 1], f (k + 1) ≤ f (x ) ≤ f (k)
+Z k+1
+k
+f (k + 1)dx ≤
+Z k+1
+k
+f (x )dx ≤
+Z k+1
+k
+f (k)dx en intégrant sur [k,k + 1]
+f (k + 1) ≤
+Z k+1
+k
+f (x )dx ≤ f (k)
+Soit n ≥ n0. On note Sn =
+Xn
+k=n0
+f (k) et on somme la double inégalité pour k entre n0 et n :
+Xn
+k=n0
+f (k + 1) ≤
+Xn
+k=n0
+Z k+1
+k
+f (x )dx ≤
+Xn
+k=n0
+f (k)
+Xn+1
+k=n0+1
+f (k) ≤
+Z n+1
+n0
+f (x )dx ≤
+Xn
+k=n0
+f (k)
+Sn+1 − f (n0) ≤
+Z n+1
+n0
+f (x )dx ≤ Sn
+Considérons les deux inégalités séparément :
+— celle de gauche permet d’établir que Sn ≤ f (n0) + Z n
+n0
+f (x )dx pour tout n > n0
+(on notera que la relation est également vérifiée pour n = n0) ;
+— celle de droite permet d’établir que Z n+1
+n0
+f (x )dx ≤ Sn pour tout n ≥ n0.
+Finalement, pour tout n ≥ n0,
+Z n+1
+n0
+f (x )dx ≤
+Xn
+k=n0
+f (k) ≤ f (n0) + Z n
+n0
+f (x )dx .
+Remarque. C’est la technique utilisée pour démontrer le cas convergent du théorème 2.6.
+Exemple (f : x 7→ x
+−1
+). Soit n ≥ 1. On note Hn =
+Xn
+k=1
+1
+k
+.
+f : [1,+∞[→ R+ est décroissante donc :
+Z n+1
+1
+dx
+x
+≤
+Xn
+k=1
+1
+k
+≤ f (1) + Z n
+1
+dx
+x
+
+ln x
+n+1
+1
+≤ Hn ≤ 1 +
+
+ln x
+n
+1
+ln(n + 1) −✟ln 1✟≤ Hn ≤ 1 + (lnn −✟ln 1✟)
+ln(n + 1)
+lnn
+≤
+Hn
+lnn
+≤
+1 + (lnn)
+lnn
+Or lim n→+∞
+ln(n + 1)
+lnn
+= lim n→+∞
+1 + (lnn)
+lnn
+= 1 : donc d’après le théorème d’encadrement des limites, il vient que
+lim n→+∞
+Hn
+lnn
+= 1. Finalement, P
+n≥1
+1
+n
+diverge et Hn =
+Xn
+k=1
+1
+k
+∼
+n→+∞
+lnn.
+Romain Dujol 41
+<<<PAGE>>>
+Cette technique permet de démontrer certains cas du théorème 2.7.
+Théorème (Série de BERTRAND).
+Soit α et β deux nombres réels. Alors P
+n≥2
+1
+nα(lnn)
+β
+converge si et seulement si
+(α > 1) ou (α = 1 et β > 1)
+Démonstration. On note un =
+1
+nα(lnn)
+β
+et on distingue deux cas selon la valeur de α.
+• Si α ̸= 1, on note γ =
+1 + α
+2
+. Alors n
+γun = n(1−α)/2
+(lnn)
+−β
+:
+— si α > 1, alors γ > 1 et lim n→+∞n
+γun = 0 ; donc P
+n≥2
+un converge d’après la règle « n
+αun » ;
+— si α < 1, alors γ < 1 et lim n→+∞n
+γun = +∞; donc P
+n≥2
+un diverge d’après la règle « n
+αun ».
+• Si α = 1 et β ≤ 0, alors un ≥
+1
+n
+pour tout n ≥ 3 : donc P
+n≥2
+un diverge d’après le théorème de minoration des séries à
+termes positifs.
+• Si α = 1 et β > 0, alors x 7→
+1
+x (ln x )
+β
+est décroissante sur [2,+∞[. En appliquant la comparaison série-intégrale
+avec n0 = 2 :
+∀n ≥ 2, Z n+1
+2
+dx
+x (ln x )
+β
+≤
+Xn
+k=2
+uk ≤
+1
+2(ln 2)
+β
++
+Z n
+2
+dx
+x (ln x )
+β
+Calculons In =
+Z n
+2
+dx
+x (ln x )
+β
+en posant le changement de variable strictement croissant u = ln x : alors x = e
+u et
+dx = e
+u du. D’où In =
+Z n
+2
+dx
+x (ln x )
+β
+=
+Z lnn
+ln 2
+e
+u du
+e
+u uβ
+=
+Z lnn
+ln 2
+du
+uβ
+.
+Il faut alors distinguer deux cas selon la valeur de β :
+— si β ̸= 1, alors In =
+Z lnn
+ln 2
+u
+−β du =
+
+u
+−β+1
+−β + 1
+lnn
+ln 2
+=
+(lnn)
+−β+1
+−β + 1
+−
+(ln 2)
+−β+1
+−β + 1
+:
+· si β > 1, alorsXn
+k=2
+uk ≤
+1
+2(ln 2)
+β
++ In =
+1
+2(ln 2)
+β
++
+1
+β − 1
+
+1
+(ln 2)
+β−1
+−
+1
+(lnn)
+β−1
+
+≤
+1
+2(ln 2)
+β
++
+1
+β − 1
+1
+(ln 2)
+β−1
+donc P
+n≥2
+un converge d’après le lemme fondamental des séries à termes positifs ;
+· si β < 1, alorsXn
+k=2
+uk ≥ In+1 =
+[ln(n + 1)]1−β − [ln 2]
+1−β
+1 − β
+: donc lim n→+∞In+1 = +∞ et on en déduit par minoration que lim n→+∞
+Xn
+k=2
+uk = +∞ puis que P
+n≥2
+un diverge.
+— si β = 1, alors In =
+Z lnn
+ln 2
+du
+u
+=
+
+lnu
+lnn
+ln 2
+= ln(lnn) − ln(ln 2). DoncXn
+k=2
+uk ≥ In+1 = ln(ln(n + 1)) − ln(ln 2).
+Comme lim n→+∞In+1 = +∞et on en déduit par minoration que lim n→+∞
+Xn
+k=2
+uk = +∞puis que P
+n≥2
+un diverge.
+Romain Dujol 42
+<<<PAGE>>>
+4.3.2 Cas croissant
+Théorème 4.3 (Comparaison série-intégrale).
+Soit n0 un entier naturel et f : [n0,+∞[→ R+ une application croissante.
+Alors pour tout n ≥ n0, f (n0) + Z n
+n0
+f (x )dx ≤
+Xn
+k=n0
+f (k) ≤
+Z n+1
+n0
+f (x )dx .
+Démonstration. Soit k ≥ n0. Alors :
+∀x ∈ [k,k + 1], f (k) ≤ f (x ) ≤ f (k + 1)
+Z k+1
+k
+f (k)dx ≤
+Z k+1
+k
+f (x )dx ≤
+Z k+1
+k
+f (k + 1)dx en intégrant sur [k,k + 1]
+f (k) ≤
+Z k+1
+k
+f (x )dx ≤ f (k + 1)
+Soit n ≥ n0. On note Sn =
+Xn
+k=n0
+f (k) et on somme la double inégalité pour k entre n0 et n :
+Xn
+k=n0
+f (k) ≤
+Xn
+k=n0
+Z k+1
+k
+f (x )dx ≤
+Xn
+k=n0
+f (k + 1)
+Xn
+k=n0
+f (k) ≤
+Z n+1
+n0
+f (x )dx ≤
+Xn+1
+k=n0+1
+f (k)
+Sn ≤
+Z n+1
+n0
+f (x )dx ≤ Sn+1 − f (n0)
+Considérons les deux inégalités séparément :
+— celle de gauche permet d’établir que Sn ≤
+Z n+1
+n0
+f (x )dx pour tout n ≥ n0;
+— celle de droite permet d’établir que f (n0) + Z n
+n0
+f (x )dx ≤ Sn pour tout n > n0
+(on notera que la relation est également vérifiée pour n = n0).
+Finalement, pour tout n ≥ n0, f (n0) + Z n
+n0
+f (x )dx ≤
+Xn
+k=n0
+f (k) ≤
+Z n+1
+n0
+f (x )dx .
+Exemple (f : x 7→ ln x ). Soit n ≥ 1. On note Sn =
+Xn
+k=1
+lnk.
+f : [1,+∞[→ R+ est croissante donc f (1) + Z n
+1
+ln x dx ≤
+Xn
+k=1
+lnk ≤
+Z n+1
+1
+ln x dx , c’est-à-dire :
+Romain Dujol 43
+<<<PAGE>>>
+✟ln 1✟+
+
+x ln x − x ]
+n
+1 ≤ Sn ≤
+
+x ln x − x ]
+n+1
+1
+(n lnn − n) − (✘1 ln 1 ✘ − 1) ≤ Sn ≤ [(n + 1)ln(n + 1) − (n + 1)] − (✘1 ln 1 ✘ − 1)
+(n lnn) − (n − 1) ≤ Sn ≤ (n + 1)ln(n + 1) − n
+(n lnn) − (n − 1)
+n lnn
+≤
+Sn
+n lnn
+≤
+(n + 1)ln(n + 1) − n
+n lnn
+1 −
+1
+lnn
++
+1
+n lnn
+≤
+Sn
+n lnn
+≤
+
+1 +
+1
+n
+
+ln(n + 1)
+lnn
+−
+1
+lnn
+Or lim n→+∞1 −
+1
+lnn
++
+1
+n lnn
+= lim n→+∞
+
+1 +
+1
+n
+
+ln(n + 1)
+lnn
+−
+1
+lnn
+= 1 : donc d’après le théorème d’encadrement des
+limites, il vient que lim n→+∞
+Sn
+n lnn
+= 1. Finalement P
+n≥1
+lnn diverge etXn
+k=1
+lnk ∼
+n→+∞
+n lnn.
+Remarque. En remarquant queXn
+k=1
+lnk = lnYn
+k=1
+k
+
+= ln(n!), il vient que ln(n!) ∼
+n→+∞
+n lnn.
+Romain Dujol 44
+<<<PAGE>>>
+Deuxième partie
+Suites et séries d’applications
+Romain Dujol 45
+<<<PAGE>>>
+Thème no 5
+Suites d’applications : convergences
+Dans tout le chapitre, X est un ensemble non vide et K désigne R ou C.
+Définition 5.1 (Opérations). On munit l’ensemble E des suites d’applications de X dans K de :
+— la loi interne + : E × E → E
+
+(fn )n∈N,(gn )n∈N
+
+7→ (fn + gn )n∈N
+;
+— la loi interne × : E × E → E
+
+(fn )n∈N,(gn )n∈N
+
+7→ (fn · gn )n∈N
+;
+— la loi externe · : K × E → E
+
+λ,(fn )n∈N
+
+7→ (λ· fn )n∈N
+.
+Théorème 5.1 (Structure algébrique). L’ensemble E des suites d’applications de X dans K muni des lois
++, · et × vues en définition 5.1 est une K-algèbre vectorielle.
+5.1 Convergence simple
+Définition 5.2 (Convergence simple). Soit (fn )n∈N une suite d’applications de X dans K.
+Soit f une application de X dans K. On dit que (fn )n∈N converge simplement sur X vers f , ce que l’on
+note fn
+CS
+−−−−→ n→+∞f , si et seulement si la suite numérique 
+fn (x )
+
+n∈N
+converge vers f (x ) pour tout élement x
+de X , c’est-à-dire :
+fn
+CS
+−−−−→ n→+∞f ⇐⇒ ∀x ∈ X , lim n→+∞fn (x ) = f (x )
+⇐⇒ ∀x ∈ X , ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , |fn (x ) − f (x )| ≤ ϵ
+On dit alors que f est la limite simple de (fn )n∈N.
+On dit que (fn )n∈N converge simplement sur X si et seulement si il existe une application f de X dans
+K telle que (fn )n∈N converge simplement vers f .
+Romain Dujol 46
+<<<PAGE>>>
+Proposition 5.1. Si une suite d’applications converge simplement, alors il y a unicité de la limite simple.
+Démonstration. Pour tout x de X , il y a unicité de la limite f (x ) de la suite numérique fn (x )
+
+n∈N
+.
+Exemple. Pour tout n ∈ N∗, on définit fn : [0, 1] → R
+x 7→ max(1 − n x , 0) =
+
+
+
+1 − n x si x ∈
+
+0,
+1
+n
+
+0 si x ∈
+
+1
+n
+, 1
+.
+Calculons la limite simple f de (fn )n≥1(si elle existe). On distingue deux cas pour la valeur de x .
+— Si x = 0, alors fn (0) = 1, donc lim n→+∞fn (0) = 1.
+— Sinon ∃N , ∀n ≥ N ,
+1
+n
+< x . Donc pour tout n ≥ N , fn (x ) = 0 : on en déduit que lim n→+∞fn (x ) = 0.
+On en conclut que la limite simple de (fn )n≥1 est f : [0, 1] → R
+x 7→
+¨
+1 si x = 0
+0 si x ̸= 0
+.
+Remarque. La limite simple d’une suite de fonctions continues peut ne pas être continue.
+Proposition 5.2. Soit (fn )n∈N une suite d’applications de X dans K convergeant simplement sur X .
+Alors pour tout sous-ensemble X
+′ de X , (fn |X ′ )n∈N converge simplement sur X′
+.
+Définition 5.3 (Domaine de convergence). Soit (fn )n∈N une suite d’applications de X dans K.
+L’ensemble des élements x de X pour lesquels la suite numérique fn (x )
+
+n∈N
+converge est appelé domaine de convergence de (fn )n∈N.
+Exemple. Pour tout entier naturel n, on définit l’application fn : R+ → R
+x 7→
+n
+n x + 1
+.
+Déterminons le domaine de convergence de la suite d’applications (fn )n∈N :
+— Si x = 0, (fn (0))n∈N = (n)n∈N ne converge pas.
+— Si x > 0, fn (x ) ∼
+n→+∞
+n
+n x
+=
+1
+x
+. Donc (fn (x ))n∈N converge.
+Donc le domaine de convergence de (fn )n∈N est R∗
++
+et sa limite simple sur R∗
++
+est x 7→
+1
+x
+.
+Théorème 5.2 (Structure algébrique).
+L’ensemble des suites d’applications de X dans K qui convergent simplement sur X est une sousalgèbre vectorielle de l’ensemble des suites d’applications de X dans K.
+De plus, l’application qui à toute suite d’applications de X dans K convergeant simplement sur X
+associe sa limite simple est linéaire sur E .
+Proposition 5.3. Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K.
+Alors (fn )n∈N converge simplement sur X vers f si et seulement si (fn − f )n∈N converge simplement sur X
+vers la fonction nulle.
+Romain Dujol 47
+<<<PAGE>>>
+5.2 Convergence uniforme
+Définition 5.4 (Convergence uniforme). Soit (fn )n∈N une suite d’applications de X dans K.
+Soit f une application de X dans K. On dit que (fn )n∈N converge uniformément sur X vers f , ce que
+l’on note fn
+CU
+−−−−→ n→+∞f si et seulement si :
+fn
+CU
+−−−−→ n→+∞f ⇐⇒ ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , ∀x ∈ X , |fn (x ) − f (x )| ≤ ϵ
+On dit alors que f est la limite uniforme de (fn )n∈N.
+On dit que (fn )n∈N converge uniformément sur X si et seulement si il existe une application f de X
+dans K telle que (fn )n∈N converge uniformément vers f .
+Théorème 5.3 (Structure algébrique). L’ensemble des suites d’applications de X dans K qui convergent
+uniformément sur X est un sous-espace vectoriel de l’ensemble des suites d’applications de X dans K
+qui convergent simplement.
+De plus, l’application qui à toute suite d’applications de X dans K convergeant simplement sur X
+associe sa limite uniforme est une restriction de l’application qui associe sa limite simple.
+Démonstration. Comparons la convergence simple et la continuité uniforme de (fn )n∈N :
+— convergence uniforme de (fn )n∈N : ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , ∀x ∈ X , |fn (x ) − f (x )| ≤ ϵ
+— convergence simple de (fn )n∈N : ∀x ∈ X , ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , |fn (x ) − f (x )| ≤ ϵ
+Remarque. Donc, lorsque la convergence est uniforme, ϵ et N ne dépendent plus de x (mais N dépend toujours de ϵ).
+Proposition 5.4. Soit (fn )n∈N une suite d’applications de X dans K convergeant uniformément sur X .
+Alors pour tout sous-ensemble X
+′ de X , (fn |X ′ )n∈N converge uniformément sur X′
+.
+Théorème 5.4 (Caractérisation rapide de la convergence uniforme).
+Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K. Alors :
+fn
+CU
+−−−−→ n→+∞f ⇐⇒ ¨
+∃N ∈ N, ∀n ≥ N , fn − f est une application bornée
+lim n→+∞∥fn − f ∥∞ = 0
+Démonstration. fn
+CU
+−−−−→ n→+∞f ⇐⇒ ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , ∀x ∈ X , |fn (x ) − f (x )| ≤ ϵ
+⇐⇒ ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , sup
+x∈X
+|fn (x ) − f (x )| ≤ ϵ
+⇐⇒ ∀ϵ > 0, ∃N ∈ N, ∀n ≥ N , ∥fn − f ∥∞ ≤ ϵ ⇐⇒ lim n→+∞∥fn − f ∥∞ = 0
+Remarque. Soit B(X ,K) l’ensemble des applications de X dans K bornées.
+Alors la convergence uniforme sur X est la convergence dans l’espace vectoriel normé (B(X ,K), ∥ · ∥∞).
+Romain Dujol 48
+<<<PAGE>>>
+Exemple. On reprend l’exemple page 47.
+Pour tout entier naturel n, fn est bornée ainsi que f . Donc fn − f est bornée et :
+∥fn − f ∥∞ = supx∈[0,1]|fn (x ) − f (x )| ≥
+
+
+
+
+fn
+
+1
+2n
+
+− f
+
+1
+2n
+
+
+
+
+Or fn
+
+1
+2n
+
+=
+1
+2
+et f
+
+1
+2n
+
+= 0. Donc pour entier naturel non nul n, ∥fn − f ∥∞ ≥
+1
+2
+et ne peut donc pas être le
+terme général d’une suite convergente vers 0.
+Donc (fn )n≥1 ne converge pas uniformément sur X vers f .
+Remarque. La technique précédente pour montrer la non-convergence uniforme est à retenir.
+IMPORTANT. Il existe donc des suites d’applications qui convergent simplement sans converger uniformément.
+Corollaire. Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K.
+Alors (fn )n∈N converge uniformément sur X vers f si et seulement si (fn − f )n∈N converge uniformément
+sur X vers la fonction nulle.
+Proposition 5.5. Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K.
+Soit (un )n∈N une suite numérique telle que :
+∀n ∈ N, ∀x ∈ X , |fn (x ) − f (x )| ≤ un et lim n→+∞un = 0
+alors (fn )n∈N converge uniformément sur X vers f .
+Démonstration. Alors ∀n ∈ N, ∥fn − f ∥∞ = sup
+x∈X
+|fn (x ) − f (x )| ≤ un . On en déduit que lim n→+∞∥fn − f ∥∞ = 0 par théorème
+d’encadrement des limites.
+Exemple. Pour tout entier naturel non nul n, on définit l’application :
+gn : [0, 1] → R
+x 7→ max
+1
+n
+− x , 0=
+
+
+
+1
+n
+− x si x ∈
+
+0,
+1
+n
+
+0 si x ∈
+
+1
+n
+, 1
+.
+Pour tout entier naturel non nul n, pour tout x ∈ [0, 1], on a 0 ≤ gn (x ) ≤
+1
+n
+puis 0 ≤ |gn (x ) − 0| ≤
+1
+n
+. Donc
+(gn )n∈N converge uniformément sur [0, 1] vers la fonction nulle.
+Théorème 5.5 (Condition de convergence de CAUCHY).
+Soit (fn )n∈N une suite d’applications de X dans K. La suite d’applications (fn )n∈N converge uniformément sur X si et seulement si :
+∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N , ∀x ∈ X ,
+
+
+fp (x ) − fq (x )
+
+ ≤ ϵ
+Définition 5.5 (Convergence localement uniforme).
+Soit I un intervalle de R et (fn )n∈N une suite d’applications de I dans K.
+On dit que (fn )n∈N converge localement uniformément sur I si et seulement si (fn )n∈N converge uniformément sur tout segment inclus dans I .
+Romain Dujol 49
+<<<PAGE>>>
+Proposition 5.6. Soit I un intervalle de R et (fn )n∈N une suite d’applications de I dans K.
+• Si (fn )n∈N converge uniformément sur I , alors (fn )n∈N converge localement uniformément sur I .
+• Si I est un segment, alors (fn )n∈N converge uniformément localement sur I si et seulement si (fn )n∈N
+converge localement sur I .
+Démonstration.
+• Comme (fn )n∈N converge uniformément sur I , elle converge uniformément sur tout sous-ensemble de I , donc sur
+tout segment inclus dans I d’après la proposition 5.4.
+• Comme I est un segment inclus dans I , il vient alors que (fn )n∈N converge uniformément sur I .
+Proposition 5.7. Soit I un intervalle de R et (fn )n∈N une suite d’applications de I dans K.
+Si (fn )n∈N converge localement uniformément sur I , alors (fn )n∈N converge simplement sur I .
+Démonstration. Soit x ∈ I : alors il existe un segment [a,b ] inclus dans I contenant x .
+Or (fn )n∈N converge uniformément sur [a,b ] donc simplement sur [a,b ] et en particulier en x .
+On présente un plan pour l’étude de la convergence de (fn )n∈N (à adapter selon les besoins).
+Étape no 1 Étude de la convergence simple
+=⇒ domaine D de convergence de (fn )n∈N
+=⇒ limite simple f sur D
+Étape no 2 Calcul de ∥fn − f ∥∞ = sup
+x∈D
+|fn (x ) − f (x )|
+• ∥fn − f ∥∞ n’est pas définie à partir d’un certain rang
+=⇒ (fn )n∈N ne converge pas uniformément vers f sur D
+• (∥fn − f ∥∞)n∈N ne converge pas vers zéro
+=⇒ (fn )n∈N ne converge pas uniformément vers f sur D
+• (∥fn − f ∥∞)n∈N converge vers zéro
+=⇒ (fn )n∈N converge uniformément vers f sur D
+Romain Dujol 50
+<<<PAGE>>>
+Thème no 6
+Suites d’applications : théorèmes
+d’interversion
+6.1 Interversion limite-limite
+Théorème 6.1 (Théorème d’interversion des limites). Soit a ∈ X .
+Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K telles que :
+1. pour tout entier naturel n, fn admette une limite ℓn en a ;
+2. (fn )n∈N converge uniformément sur X vers f .
+Alors la suite (ℓn )n∈N est convergente, f admet une limite finie en a et lim n→+∞ℓn = limx→af (x ).
+Remarque. C’est-à-dire que lim n→+∞limx→afn (x ) = limx→alim n→+∞fn (x ).
+Démonstration. Comme (fn )n∈N converge uniformément sur X vers f , on utilise le théorème 5.5.
+∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N , ∀x ∈ X ,
+
+
+fp (x ) − fq(x )
+
+ ≤ ϵ
+⇒ ∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N , limx→a
+
+
+fp (x ) − fq(x )
+
+ ≤ ϵ
+⇒ ∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N , |ℓp − ℓq| ≤ ϵ
+Il vient que la suite (ℓn )n∈N est une suite de CAUCHY, puis qu’elle est convergente : on note ℓ sa limite.
+Soit ϵ un réel strictement positif. Alors :
+∃N1 ∈ N, ∀n ≥ N1, ∀x ∈ X , |fn (x ) − f (x )| ≤ ϵ
+3
+[convergence uniforme de (fn )n∈N]
+∃N2 ∈ N, ∀n ≥ N2, |ℓn − ℓ| ≤
+ϵ
+3
+[convergence de (ℓn )n∈N]
+∃η > 0, ∀x ∈ X ,
+
+|x − a| ≤ η ⇒ |fN (x ) − ℓN | ≤
+ϵ
+3
+
+[fN admet une limite en a pour N = max(N1,N2)]
+Donc il existe un réel strictement positif η tel que pour tout x vérifiant |x − a| ≤ η :
+|f (x ) − ℓ| ≤ |f (x ) − fN (x ) + fN (x ) − ℓN + ℓN − ℓ| ≤ |f (x ) − fN (x )| + |fN (x ) − ℓN | + |ℓN − ℓ| ≤ ϵ
+3
++
+ϵ
+3
++
+ϵ
+3
+= ϵ
+Finalement ∀ϵ > 0, ∃η > 0, ∀x ∈ X ,
+
+|x − a| ≤ η ⇒ |f (x ) − ℓ| ≤ ϵ
+
+: on en conclut que limx→af (x ) = ℓ = lim n→+∞ℓn .
+Romain Dujol 51
+<<<PAGE>>>
+Exemple. Pour tout entier naturel non nul n, on définit φn : ]0, 1/2] → R
+x 7→ −
+ln(1 − x )
+n x
+.
+Vérifions les hypothèses du théorème d’interversion des limites.
+1. ∀n ∈ N∗, φn (x ) = −
+ln(1 − x )
+n x
+∼
+x→0
+−
+−x
+n x
+=
+1
+n
+: donc ℓn = limx→0φn (x ) =
+1
+n
+.
+2. Comme φ1 admet une limite en 0, elle admet un prolongement par continuité φ1 en 0.
+Comme φ1 est continue sur [0, 1/2], elle y est bornée : donc φ1 est également bornée sur ]0, 1/2].
+∀n ∈ N∗, φn =
+1
+n
+φ1: donc ∥φn − 0∥∞ = ∥φn ∥∞ =
+1
+n
+∥φ1∥∞ −−−−→ n→+∞0.
+On en déduit que (φn )n∈N converge uniformément sur X vers φ = 0.
+Alors (ℓn )n≥1 converge lim n→+∞ℓn = 0
+
+, φ admet une limite en 0 (qui est 0) et limx→0φ(x ) = limx→00 = 0.
+Théorème 6.2. Soit a ∈ X .
+Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K telles que :
+1. pour tout entier naturel n, fn est continue en a ;
+2. (fn )n∈N converge uniformément sur X vers f .
+Alors f est continue en a.
+Démonstration. Vérifions les hypothèses du théorème d’interversion des limites.
+1. pour tout n ∈ N, fn est continue en a donc admet ℓn = fn (a) comme limite en a ;
+2. (fn )n∈N converge uniformément sur X vers f .
+On applique le théorème d’interversion des limites avec la suite (ℓn )n∈N = (fn (a))n∈N :
+— (fn )n∈N converge uniformément donc simplement sur X et donc en a : donc lim n→+∞fn (a) = f (a);
+— f admet une limite finie ℓ en a et ℓ = lim n→+∞fn (a) = f (a).
+On en conclut que limx→af (x ) = f (a) puis que f est continue en a.
+Remarque. Le cas traité dans l’exemple page 47 montre que la convergence simple n’est pas une condition
+suffisante de conservation de la continuité.
+Corollaire. Soit (fn )n∈N une suite d’applications de X dans K et f une application de X dans K telles que :
+1. pour tout entier naturel n, fn est continue sur X ;
+2. (fn )n∈N converge uniformément sur X vers f .
+Alors f est continue sur X .
+Démonstration. On applique le théorème précédent en tout point a de X .
+Remarque. On utilise régulièrement la contraposée de ce théorème pour établir une absence de convergence
+uniforme.
+Corollaire. Soit I un intervalle de R.
+Soit (fn )n∈N une suite d’applications de I dans K et f une application de I dans K telles que :
+1. pour tout entier naturel n, fn est continue sur I ;
+2. (fn )n∈N converge localement uniformément sur I vers f .
+Alors f est continue sur I .
+Démonstration. Tout point de I est inclus dans un segment inclus dans I .
+Donc on conclut en appliquant le corollaire précédent sur tout segment inclus dans I .
+Romain Dujol 52
+<<<PAGE>>>
+6.2 Interversion limite-intégrale
+Théorème 6.3 (Théorème d’interversion limite-intégrale). Soit a et b deux réels tels que a < b .
+Soit (fn )n∈N une suite d’applications de [a,b ] dans K et f une application de [a,b ] dans K telles que :
+1. pour tout entier naturel n, fn est continue sur [a,b ];
+2. (fn )n∈N converge uniformément sur [a,b ] vers f .
+Alors f est continue sur [a,b ] et la suite Z b
+a
+fn (x )dx
+
+n∈N
+converge vers Z b
+a
+f (x )dx .
+Remarque. C’est-à-dire que lim n→+∞
+Z b
+a
+fn (x )dx =
+Z b
+a
+h
+lim n→+∞fn (x )
+i
+dx .
+Démonstration. D’après le corrolaire page 52, f est continue sur[a,b ] comme limite uniforme d’une suite d’applications
+continues. Donc, pour tout entier naturel n, fn − f est continue sur [a,b ] et y est donc bornée :
+
+
+
+
+
+Z b
+a
+fn (x )dx −
+Z b
+a
+f (x )dx
+
+
+
+
+
+=
+
+
+
+
+
+Z b
+a
+(fn − f )(x )dx
+
+
+
+
+
+≤
+Z b
+a
+|fn − f |(x )dx ≤
+Z b
+a
+∥fn − f ∥∞ dx = (b − a)∥fn − f ∥∞
+Comme (fn )n∈N converge uniformément sur [a,b ] vers f , il vient que lim n→+∞∥fn − f ∥∞ = 0.
+Par théorème d’encadrement des limites, il vient que lim n→+∞
+
+
+
+
+
+Z b
+a
+fn (x )dx −
+Z b
+a
+f (x )dx
+
+
+
+
+
+= 0.
+6.3 Interversion limite-dérivation
+6.3.1 Théorèmes d’interversion
+Théorème 6.4 (Théorème d’interversion limite-dérivation). Soit a et b deux réels tels que a < b .
+Soit (fn )n∈N une suite d’applications de [a,b ] dans K et g une application de [a,b ] dans K telles que :
+1. pour tout entier naturel n, fn est de classe C 1sur [a,b ];
+2. (f
+′
+n
+)n∈N converge uniformément sur [a,b ] vers g ;
+3. il existe x0 de [a,b ] tel que fn (x0)
+
+n∈N
+converge.
+Alors :
+1. (fn )n∈N converge uniformément sur [a,b ] vers une application notée f ;
+2. f est une application de classe C 1sur [a,b ];
+3. f
+′ = g .
+Démonstration. On note C = lim n→+∞fn (x0) et on définit l’application f : [a,b ] → K
+x 7→ C +
+Z x
+x0
+g (t )dt
+.
+Comme (f
+′
+n
+)n∈N est une suite d’applications continues qui converge uniformément sur [a,b ] vers g , il vient que g est
+continue. Donc f est de classe C 1sur [a,b ] en tant que primitive de g et f
+′ = g .
+Romain Dujol 53
+<<<PAGE>>>
+Remarquons que pour tout élément x de [a,b ], fn (x ) = fn (x0
+) + Z x
+x0
+f
+′
+n
+(t )dt . Alors :
+∀n ∈ N, |fn (x ) − f (x )| =
+
+
+
+
+
+fn (x0) + Z x
+x0
+f
+′
+n
+(t )dt − C −
+Z x
+x0
+g (t )dt
+
+
+
+
+
+≤ |fn (x0) − C | +
+
+
+
+
+
+Z x
+x0
+f
+′
+n
+(t )dt −
+Z x
+x0
+g (t )dt
+
+
+
+
+
+≤ |fn (x0) − C | +
+
+
+
+
+
+Z x
+x0
+(f
+′
+n − g )(t )dt
+
+
+
+
+
+≤ |fn (x0) − C | +
+
+
+
+
+
+Z x
+x0
+|f
+′
+n − g |(t )dt
+
+
+
+
+
+≤ |fn (x0) − C | +
+
+
+
+
+
+Z x
+x0
+∥f
+′
+n − g ∥∞ dt
+
+
+
+
+
+= |fn (x0) − C | + |x − x0|∥f
+′
+n − g ∥∞
+≤ |fn (x0) − C | + (b − a)∥f
+′
+n − g ∥∞
+Comme lim n→+∞fn (x0) = C et limn→∞∥f
+′
+n − g ∥∞ = 0, il vient que limn→∞
+|fn (x0) − C | + (b − a)∥f
+′
+n − g ∥∞ = 0.
+D’après la proposition 5.5, on en conclut que (fn )n∈N converge uniformément sur [a,b ] vers f .
+Exemple. Pour tout entier naturel non nul n, on définit φn : [1/4, 3/4] → R
+x 7→ −
+ln(1 − x )
+n x
+.
+Vérifions les hypothèses du théorème d’interversion limite-dérivation.
+1. Pour tout entier naturel non nul n, φn est de classe C 1sur [1/4, 1/2].
+2. φ′
+1
+est continue sur [1/4, 3/4], donc bornée. On en déduit que ∥φ′
+n
+∥∞ =
+
+
+
+
+φ′
+1
+n
+
+
+
+∞
+=
+∥φ′
+1
+∥∞
+n
+−−−−→ n→+∞0 puis
+que (φ′
+n
+)n≥1 converge uniformément sur [1/4, 1/2] vers g = 0.
+3. ∀n ≥ 1, φn (1/2) = −
+ln(1/2)
+n/2
+=
+2 ln 2
+n
+: donc φn (1/2)
+
+n≥1
+converge (vers 0).
+Alors (φn )n≥1 converge uniformément sur[1/4, 1/2] vers une application φ de classe C 1sur[1/4, 1/2] telle que
+φ′ = 0 et φ
+
+1
+2
+
+= lim n→+∞φn
+
+1
+2
+
+= 0 : donc φ = 0.
+Théorème 6.5 (Théorème d’interversion limite-dérivation). Soit I un intervalle de R.
+Soit (fn )n∈N une suite d’applications de I dans K et g une application de I dans K telles que :
+1. pour tout entier naturel n, fn est de classe C 1sur I ;
+2. (f
+′
+n
+)n∈N converge localement uniformément sur I vers g ;
+3. il existe x0 de I tel que fn (x0)
+
+n∈N
+converge.
+Alors :
+1. (fn )n∈N converge localement uniformément sur I vers une application notée f ;
+2. f est une application de classe C 1sur I ;
+3. f
+′ = g .
+Démonstration. On applique le théorème 6.4 sur tout segment inclus dans I .
+ATTENTION. Si I n’est pas un segment, l’énoncé obtenu en enlevant « uniformémement » dans les hypothèses
+et dans la conclusion n’est pas valable.
+Romain Dujol 54
+<<<PAGE>>>
+6.3.2 Nécessité des hypothèses du théorème
+Convergence uniforme de la suite des dérivées
+L’hypothèse de convergence uniforme de la suite des dérivées est nécessaire.
+Exemple. Pour tout entier naturel non nul n, on définit fn : [−1, 1] → R
+x 7→
+vt
+x 2 +
+1
+n
+.
+— Pour tout entier naturel non nul n, fn est de classe C 1sur [a,b ] et f
+′
+n
+(x ) = x
+vt
+x 2 +
+1
+n
+.
+— lim n→+∞f
+′
+n
+(x ) =
+
+
+
+−1 si x < 0
+0 si x = 0
++1 si x > 0
+: donc la limite simple de (f
+′
+n
+)n∈N n’est pas continue en 0 et la convergence
+ne peut donc pas être uniforme sur X .
+Les hypothèses du théorème d’interversion limite-dérivation ne sont donc pas satisfaites.
+De plus lim n→+∞fn (x ) = |x | : donc la limite simple de (fn )n∈N n’est pas de classe C 1sur [−1, 1].
+Hypothèse de convergence simple de la suite d’applications en un point
+L’hypothèse de convergence simple de la suite d’applications en au moins un point de leur ensemble de
+définitions est nécessaire.
+Exemple. Pour tout entier naturel non nul n, on définit fn : [0, 1] → R
+x 7→ n
+.
+1. Pour tout entier naturel non nul n, fn est de classe C 1sur [0, 1].
+2. (f
+′
+n
+)n∈N = (0)n∈N converge uniformément sur [0, 1] vers la fonction nulle.
+3. (fn )n∈N ne converge simplement en aucun point de [0, 1].
+Comme la suite d’applications (fn )n∈N ne converge pas simplement sur [0, 1], elle n’y converge pas uniformément.
+Romain Dujol 55
+<<<PAGE>>>
+Thème no 7
+Séries d’applications : convergences
+Définition 7.1 (Série d’applications). Soit (fn )n∈N une suite d’applications de X dans K.
+La série d’applications de terme général fn , notée P
+n∈N
+fn ou P
+n≥0
+fn , le couple
+
+(fn )n∈N,(Sn )n∈N
+
+où la suite (Sn )n∈N définie par :
+∀n ∈ N, Sn =
+Xn
+k=0
+fk
+fn est le n
+ème terme ou terme général de P
+n∈N
+fn . Sn est la n
+ème somme partielle de P
+n∈N
+fn .
+Si la suite d’applications (fn )n≥n0
+est définie à partir d’un certain rang n0 ∈ N, on définit de la même
+manière la série d’applications P
+n≥n0
+fn avec Sn =
+Xn
+k=n0
+fk pour tout n ≥ n0.
+Définition 7.2 (Opérations). On munit l’ensemble E des séries d’applications de X dans K de :
+— la loi interne + : E × E → E
+ P
+n∈N
+fn ,
+P
+n∈N
+gn
+
+7→
+P
+n∈N
+(fn + gn )
+;
+— la loi interne × : E × E → E
+ P
+n∈N
+fn ,
+P
+n∈N
+gn
+
+7→
+P
+n∈N
+Xn
+k=0
+fk gn−k
+
+;
+— la loi externe · : K × E → E
+
+λ,
+P
+n∈N
+fn
+
+7→
+P
+n∈N
+(λ· fn )
+.
+Théorème 7.1. L’ensemble E des séries d’applications de X dans K muni des lois +, × et · vues en définition 7.2 est une K-algèbre vectorielle.
+Romain Dujol 56
+<<<PAGE>>>
+Tout comme les séries numériques sont des suites numériques particulières, les séries d’applications sont
+des suites d’applications particulières. On peut donc appliquer tous les résultats des thèmes précédents aux
+séries d’applications
+7.1 Convergences
+7.1.1 Convergence simple
+Généralités
+Définition 7.3 (Convergence simple).
+Une série P
+n∈N
+fn d’applications de X dans K converge simplement sur X si et seulement si la suite
+d’applications (Sn )n∈N de ses sommes partielles converge simplement sur X .
+Auquel cas, on définit la somme de la série P
+n∈N
+fn , notée
++
+X∞
+n=0
+fn comme la limite simple de (Sn )n∈N.
+Proposition 7.1 (Caractérisation rapide de la convergence simple).
+Soit (fn )n∈N une suite d’applications de X dans K.
+Alors P
+n∈N
+fn converge simplement sur X si et seulement si P
+n∈N
+fn (x ) convergente pour tout x ∈ X .
+Démonstration. X
+n∈N
+fn converge simplement sur X ⇐⇒ (Sn )n∈N converge simplement sur X
+⇐⇒ ∀x ∈ X , (Sn (x ))n∈N =
+Xn
+k=0
+fk(x )
+
+n∈N
+converge
+⇐⇒ ∀x ∈ X ,
+X
+n∈N
+fn (x ) converge
+Définition 7.4 (Domaine de convergence). Soit (fn )n∈N une suite d’applications de X dans K.
+L’ensemble des élements x de X pour lesquels la série numérique P
+n∈N
+fn (x ) converge est appelé domaine de convergence de P
+n∈N
+fn .
+Proposition 7.2. Soit P
+n∈N
+fn une série d’applications de X dans K convergeant simplement sur X .
+Alors pour tout sous-ensemble X
+′ de X ,
+P
+n∈N
+fn |X ′ converge simplement sur X
+′
+.
+Reste d’une série d’applications convergente
+Définition 7.5 (Reste d’ordre n).
+Soit (fn )n∈N une suite d’applications de X dans K convergeant simplement sur X .
+On appelle reste d’ordre n de P
+n∈N
+fn la somme de la série P
+k≥n+1
+fk, c’est-à-dire
++
+X∞
+k=n+1
+fk.
+ATTENTION. Il n’existe pas de reste pour une série d’applications qui ne converge pas simplement !
+Romain Dujol 57
+<<<PAGE>>>
+Remarque. Pour simplifier l’écriture, on note souvent :
+— Sn la somme partielle d’ordre n ;
+— S la somme (lorsque la série converge simplement) ;
+— Rn le reste d’ordre n (lorsque la série converge simplement).
+On a alors Rn = S −Sn , c’est-à-dire
++
+X∞
+k=n+1
+fk =
++
+X∞
+k=0
+fk −
+Xn
+k=0
+fk.
+Proposition 7.3 (Convergence du reste).
+Soit (fn )n∈N une suite d’applications de X dans K telle que P
+n∈N
+fn converge simplement sur X .
+Alors la suite (Rn )n∈N de ses restes d’ordre n converge simplement vers la fonction nulle.
+Condition nécessaire de convergence
+Proposition 7.4 (Condition nécessaire de convergence simple).
+Soit (fn )n∈N une suite d’applications de X dans K.
+Si P
+n∈N
+fn converge simplement sur X , alors (fn )n∈N converge simplement sur X vers la fonction nulle.
+Démonstration. On note (Sn )n∈N la suite des sommes partielles de P
+n∈N
+fn . Alors (Sn )n∈N converge simplement vers S =
+X+∞
+n=0
+fn .
+Or (fn )n≥1 = (Sn −Sn−1)n≥1. Comme (Sn )n≥1 et (Sn−1)n≥1 convergent simplement vers S, il vient d’après le théorème 5.2
+que (fn )n≥1 converge simplement vers S −S = 0.
+Théorème 7.2 (Structure algébrique).
+L’ensemble E des séries d’applications de X dans K convergeant simplement sur X est un sousespace vectoriel de l’ensemble des séries d’applications de X dans K (cf. théorème 7.1).
+De plus, l’application E → F(X ,K)
+P
+n∈N
+fn 7→
++
+X∞
+n=0
+fn
+est une application linéaire sur E .
+7.1.2 Convergence absolue
+Définition 7.6 (Convergence absolue).
+Une série P
+n∈N
+fn d’applications de X dans K converge absolument sur X si et seulement si P
+n∈N
+fn (x )
+converge absolument pour tout x ∈ X .
+Proposition 7.5. Soit P
+n∈N
+fn une série d’applications de X dans K convergeant absolument sur X .
+Alors pour tout sous-ensemble X
+′ de X ,
+P
+n∈N
+fn |X ′ converge absolument sur X
+′
+.
+Théorème 7.3 (Structure algébrique). L’ensemble des séries d’applications de X dans K convergeant
+absolument sur X est un sous-espace vectoriel de l’ensemble des séries d’applications de X dans K
+convergeant simplement sur X .
+Romain Dujol 58
+<<<PAGE>>>
+7.1.3 Convergence uniforme
+Définition 7.7 (Convergence uniforme).
+Une série P
+n∈N
+fn d’applications de X dans K converge uniformément sur X si et seulement si la suite
+d’applications (Sn )n∈N de ses sommes partielles converge uniformément sur X .
+Proposition 7.6. Soit (fn )n∈N une suite d’applications de X dans K.
+Alors P
+n∈N
+fn converge uniformément sur X si et seulement si P
+n∈N
+fn converge simplement sur X et que la
+suite d’applications (Rn )n∈N converge uniformément vers la fonction nulle.
+Proposition 7.7 (Condition nécessaire de convergence uniforme).
+Soit (fn )n∈N une suite d’applications de X dans K.
+Si P
+n∈N
+fn converge uniformément sur X , alors la suite d’applications (fn )n∈N converge uniformément sur
+X vers la fonction nulle.
+Démonstration. On note (Sn )n∈N la suite des sommes partielles de P
+n∈N
+fn . Alors (Sn )n∈N converge uniformément vers S.
+Or (fn )n≥1 = (Sn − Sn−1)n≥1. Comme (Sn )n≥1 et (Sn−1)n≥1 convergent uniformément vers S, il vient d’après le théorème 5.3 que (fn )n≥1 converge uniformément vers S −S = 0.
+Proposition 7.8. Soit P
+n∈N
+fn une série d’applications de X dans K convergeant uniformément sur X .
+Alors pour tout sous-ensemble X
+′ de X ,
+P
+n∈N
+fn |X ′ converge uniformément sur X
+′
+.
+Théorème 7.4 (Structure algébrique). L’ensemble des séries d’applications de X dans K convergeant
+uniformément sur X est un sous-espace vectoriel de l’ensemble des séries d’applications de X dans K
+convergeant simplement sur X .
+Théorème 7.5 (Condition de convergence de CAUCHY).
+Soit (fn )n∈N une suite d’applications de X dans K.
+La série d’applications P
+n∈N
+fn converge uniformément sur X si et seulement si :
+∀ϵ > 0, ∃N ∈ N, ∀p > N , ∀q > N , ∀x ∈ X ,
+
+
+
+
+
+X
+q
+k=p+1
+fk(x )
+
+
+
+
+
+≤ ϵ
+Définition 7.8 (Convergence localement uniforme). Soit I un intervalle de R.
+Une série P
+n∈N
+fn d’applications de I dans K converge localement uniformémement sur I si et seulement si P
+n∈N
+fn converge uniformément sur tout segment inclus dans I .
+Proposition 7.9. Soit I un intervalle de R et (fn )n∈N une suite d’applications de I dans K.
+Si P
+n∈N
+fn converge uniformément sur I , alors P
+n∈N
+fn converge localement uniformément sur I .
+Si P
+n∈N
+fn converge localement uniformément sur I , alors P
+n∈N
+fn converge simplement sur I .
+Romain Dujol 59
+<<<PAGE>>>
+7.1.4 Convergence normale
+Définition 7.9 (Convergence normale).
+Une série P
+n∈N
+fn d’applications de X dans K converge normalement sur X si et seulement si les deux
+conditions suivantes sont vérifiées :
+1. il existe un entier naturel N tel que fn soit bornée sur X pour tout n ≥ N ;
+2. la série numérique P
+n≥N
+∥fn ∥∞ converge.
+Proposition 7.10. Soit P
+n∈N
+fn une série d’applications de X dans K convergeant normalement sur X .
+Alors pour tout sous-ensemble X
+′ de X ,
+P
+n∈N
+fn |X ′ converge sur X
+′
+.
+Proposition 7.11. Soit (fn )n∈N une suite d’applications de X dans K.
+Soit (un )n∈N une suite numérique telle que :
+∀n ∈ N, ∀x ∈ X , |fn (x )| ≤ un et P
+n∈N
+un converge
+alors P
+n∈N
+fn converge normalement sur X .
+Démonstration. Remarquons tout d’abord que :
+∀n ∈ N, ∀x ∈ X , |fn (x )| ≤ un ⇐⇒ ∀n ∈ N, sup
+x∈X
+|fn (x )| ≤ un ⇐⇒ ∀n ∈ N, ∥fn ∥∞ ≤ un
+Or P
+n∈N
+un converge, donc d’après le théorème de minoration des séries à termes positifs, il vient que
+P
+n∈N
+∥fn ∥∞ converge. On conclut que P
+n∈N
+fn converge normalement.
+Théorème 7.6 (Structure algébrique). L’ensemble des séries d’applications de X dans K convergeant
+normalement sur X est un sous-espace vectoriel :
+— de l’ensemble des séries d’applications de X dans K convergeant absolument sur X ;
+— de l’ensemble des séries d’applications de X dans K convergeant uniformément sur X .
+Définition 7.10 (Convergence localement normale). Soit I un intervalle de R.
+Une série P
+n∈N
+fn d’applications de I dans K converge localement normalemement sur I si et seulement si P
+n∈N
+fn converge normalement sur tout segment inclus dans I .
+Proposition 7.12. Soit I un intervalle de R et (fn )n∈N une suite d’applications de I dans K.
+Si P
+n∈N
+fn converge normalement sur I , alors P
+n∈N
+fn converge localement normalement sur I .
+Romain Dujol 60
+<<<PAGE>>>
+On présente un plan pour l’étude de la convergence de P
+n∈N
+fn (à adapter selon les besoins).
+Étape no 1 Étude de la convergence simple et absolue =⇒ domaine D de convergence de P
+n∈N
+fn
+Étape no 2 Calcul de ∥fn ∥∞ = sup
+x∈D
+|fn (x )|
+•
+P
+n∈N
+∥fn ∥∞ converge =⇒
+P
+n∈N
+fn converge normalement sur D
+•
+P
+n∈N
+∥fn ∥∞ diverge grossièrement =⇒
+P
+n∈N
+fn ne converge pas uniformément sur D
+•
+P
+n∈N
+∥fn ∥∞ diverge non grossièrement =⇒ Étape no 3
+Étape no 3 Étude de la convergence uniforme de (Rn )n sur D vers la fonction nulle :
+• ∀x ∈ D,
+P
+n∈N
+fn (x ) vérifie les conditions du théorème spécial à certaines séries alternées
+=⇒
+P
+n∈N
+fn converge uniformément sur D (par majoration de |Rn | par |fn+1|)
+• Minoration d’un paquet de CAUCHY par une suite ne convergeant pas vers 0
+=⇒
+P
+n∈N
+fn ne converge pas uniformément sur D
+(par minoration de Rn par ce paquet de CAUCHY)
+Convergence
+absolue ?
+Convergence non normale
+Convergence
+simple ?
+STOP
+Aucune convergence
+Convergence
+normale ?
+STOP
+Toutes les convergences
+∥fn ∥∞ −−−−→ n→+∞0 ? STOP
+Convergence non uniforme
+Peut-on appliquer
+le TSCSA ?
+Minoration de Rn
+par un paquet de CAUCHY
+STOP
+Convergence non uniforme
+Majoration
+|Rn | ≤ |fn+1|
+STOP
+Convergence uniforme
+NON
+NON
+OUI
+OUI
+OUI
+NON
+NON
+OUI
+NON OUI
+FIGURE 7.1 – Plan d’étude de la convergence de la série d’applications P
+n∈N
+fn
+Romain Dujol 61
+<<<PAGE>>>
+Exercice. Étudier la convergence des séries d’applications P
+n∈N
+fn définies par :
+1. pour tout n ≥ 1 fn : R → R
+x 7→
+sin(n x )
+n2
+2. pour tout n ≥ 1, fn : R+ → R
+x 7→ n x e −n x
+3. pour tout n ≥ 1, fn : R+ → R
+x 7→ (−1)
+n
+ln1 +
+arctan x
+n
+
+4. pour tout n ≥ 1, fn : R+ → R
+x 7→
+1
+n + n3 x 2
+Solution.
+1. On a ∀n ≥ 1, ∀x ∈ R, |fn (x )| ≤
+1
+n2
+.
+P
+n≥1
+1
+n2
+converge donc P
+n≥1
+fn converge normalement sur R.
+2. Soit x ∈ R+.
+• Si x = 0, alors fn (0) = 0 pour tout n ≥ 1 : donc P
+n≥1
+fn (0) converge absolument.
+• Si x > 0, alors e
+−x < 1.
+lim n→+∞n
+2
+fn (x ) = lim n→+∞n
+3
+x e −n x = lim n→+∞n
+3
+x (e
+−x
+)
+n = 0 par croissance comparée
+D’après la règle « n
+αun », P
+n≥1
+fn (x ) converge absolument.
+On en conclut que P
+n≥1
+fn converge absolument sur R+.
+Soit n ≥ 1. fn est dérivable sur R+ comme produit de fonctions dérivables sur R+.
+∀x ∈ R+, f
+′
+n
+(x ) = n
+
+e
+−n x + x ·
+
+−ne −n x  = ne −n x [1 − n x ]
+Donc f
+′
+n
+(x ) ≥ 0 si et seulement si 1 − n x ≥ 0, i.e. x ≤
+1
+n
+.
+De plus fn (0) = 0 et lim x→+∞fn (x ) = lim x→+∞n x (e
+−n
+)
+x = 0 par croissance comparée.
+Enfin, fn
+
+1
+n
+
+=✚n ·
+1
+✚n
+· e
+−1 =
+1
+e
+. On en déduit le tableau de variations suivant :
+x
+f
+′
+n
+fn
+0
+1
+n +∞
++ 0 −
+0
+1
+e
+0
++
+fn est une fonction positive sur R+ donc ∥fn ∥∞ = sup
+x∈R+
+|fn |(x ) = sup
+x∈R+
+fn (x ) = fn
+
+1
+n
+
+=
+1
+e
+.
+(∥fn ∥∞)n≥1 ne converge pas vers 0 donc P
+n≥1
+fn ne converge ni uniformément ni normalement sur R+.
+Romain Dujol 62
+<<<PAGE>>>
+3. Soit x ∈ R+ : alors 1 +
+arctan x
+n
+≥ 1 puis ln1 +
+arctan x
+n
+
+≥ 0.
+Donc ∀n ≥ 1, |fn (x )| = ln1 +
+arctan x
+n
+
+≥ 0 et P
+n≥1
+fn (x ) est une série alternée.
+∀n ≥ 1,
+1
+n + 1
+≤
+1
+n
+=⇒
+arctan x
+n + 1
+≤
+arctan x
+n
+=⇒ 1 +
+arctan x
+n + 1
+≤ 1 +
+arctan x
+n
+.
+Donc |fn+1(x )| ≤ |fn (x )| pour tout n ≥ 1 : la suite (|fn (x )|)n≥1 est décroissante.
+De plus, |fn (x )| ∼
+n→+∞
+arctan x
+n
+: donc lim n→+∞|fn (x )| = 0. D’après le TSCSA,
+P
+n≥1
+fn (x ) converge.
+On en conclut que P
+n≥1
+fn converge simplement sur R+.
+Remarque. |fn (x )| ∼
+n→+∞
+arctan x
+n
+: donc P
+n≥1
+|fn (x )| diverge (sauf en x = 0).
+P
+n≥1
+fn ne converge donc pas absolument ni normalement sur R+.
+Soit n ≥ 1. |fn | est dérivable sur R+ comme composée de fonctions dérivables.
+∀x ∈ R+, |fn |
+′
+(x ) =
+1
+1 +
+arctan x
+n
+·
+
+1
+n
+·
+1
+1 + x 2
+
+≥ 0
+Donc |fn | est croissante sur R+. De plus, lim x→+∞arctan x =
+π
+2
+: donc lim x→+∞|fn (x )| = ln1 +
+π
+2n
+
+.
+Donc ∥fn ∥∞ = sup
+x∈R
+|fn |(x ) = lim x→+∞|fn |(x ) = ln1 +
+π
+2n
+
+.
+D’après le TSCSA, ∀n ≥ 1, ∀x ∈ R+, |Rn (x )| =
+
+
+
+
+
++
+X∞
+k=n+1
+fk(x )
+
+
+
+
+
+≤ |fn+1(x )| ≤ ∥fn+1∥∞ = ln1 +
+π
+2(n + 1)
+
+.
+lim n→+∞ln1 +
+π
+2(n + 1)
+
+= 0 donc (Rn )n≥1 converge uniformément sur R+ vers la fonction nulle puis
+P
+n≥1
+fn converge uniformément sur R+.
+4. Soit x ∈ R+.
+• Si x = 0, fn (0) =
+1
+n
+pour tout n ≥ 1 : donc P
+n≥1
+fn (0) diverge.
+• Si x > 0, fn (x ) ∼
+n→+∞
+1
+n3 x 2
+.
+P
+n≥1
+1
+n3 x 2
+converge donc, par théorème d’équivalence, P
+n≥1
+fn (x ) converge absolument.
+On en conclut que P
+n≥1
+fn converge absolument sur son domaine de convergence R∗
++
+.
+Soit n ≥ 1. Alors fn est dérivable sur R∗
++
+comme fraction rationnelle dont le dénominateur ne s’annule
+pas sur R∗
++
+et ∀x ∈ R∗
++
+, f
+′
+n
+(x ) =
+−2n
+3 x
+(n + n3 x 2)
+2
+< 0.
+Donc fn est décroissante et positive sur R∗
++
+et ∥fn ∥∞ = sup
+x∈R
+∗
++
+|fn (x )| = sup
+x∈R
+∗
++
+fn (x ) = limx→0fn (x ) =
+1
+n
+.
+On en déduit que P
+n≥1
+fn ne converge pas normalement sur R∗
++
+.
+Romain Dujol 63
+<<<PAGE>>>
+Soit n ≥ 1 et x ∈ R∗
++
+. Alors Rn (x ) =
++
+X∞
+k=n+1
+fk(x ) ≥
+X
+2n
+k=n+1
+fk(x ).
+Soit k ≥ 1, alors k ≤ k + 1 : donc k
+3 ≤ (k + 1)3 puis k3 x2 ≤ (k + 1)3 x2
+.
+D’où k + k
+3 x2 ≤ (k + 1) + (k + 1)3 x2 puis fk+1
+(x ) ≤ fk(x ).
+Donc Rn (x ) ≥
+X
+2n
+k=n+1
+fk(x ) ≥
+X
+2n
+k=n+1
+f2n (x ) = n f2n (x ) puis :
+∀n ≥ 1, ∥Rn ∥∞ = sup
+x∈R
+∗
++
+|Rn (x )| = sup
+x∈R
+∗
++
+Rn (x ) ≥ Rn
+
+1
+n
+
+≥ n f2n
+
+1
+n
+
+=
+n
+2n + 8n3 ·
+1
+n2
+=
+1
+10
+Donc (∥Rn ∥∞)n≥1 ne converge pas 0 puis (Rn )n≥1 ne converge pas uniformément sur R∗
++
+vers la fonction
+nulle. On en conclut que P
+n≥1
+fn ne converge pas uniformément sur R∗
++
+.
+Romain Dujol 64
+<<<PAGE>>>
+7.2 Théorèmes d’interversion
+7.2.1 Interversion somme-limite
+Théorème 7.7 (Théorème d’interversion somme-limite).
+Soit a ∈ X et P
+n∈N
+fn une série d’applications de X dans K telle que :
+1. pour tout entier naturel n, fn admette une limite ℓn en a ;
+2. P
+n∈N
+fn converge uniformément sur X .
+Alors P
+n∈N
+ℓn converge, S =
++
+X∞
+n=0
+fn admet une limite finie en a et limx→aS(x ) =
++
+X∞
+n=0
+ℓn .
+Remarque. C’est-à-dire que limx→a
+
++
+X∞
+n=0
+fn (x )
+
+=
++
+X∞
+n=0
+h
+limx→afn (x )
+i
+.
+Démonstration. Vérifions que (Sn )n∈N vérifie les hypothèses du théorème d’interversion des limites :
+1. Sn =
+Xn
+k=0
+fk admet une limite en a comme somme (finie) d’applications admettant une limite en a et
+σn = limx→aSn (x ) =Xn
+k=0
+limx→afn (x ) =Xn
+k=0
+ℓk;
+2. P
+n∈N
+fn converge uniformément sur X donc (Sn )n∈N converge uniformément sur X vers S.
+D’après ce théorème :
+1. (σn )n∈N =
+Xn
+k=0
+ℓk
+
+n∈N
+converge : donc P
+n∈N
+ℓn converge ;
+2. S = lim n→+∞Sn admet une limite fine en a ;
+3. limx→aS(x ) = lim n→+∞σn =
+X+∞
+n=0
+ℓn .
+Théorème 7.8. Soit a ∈ X et P
+n∈N
+fn une série d’applications de X dans K telle que :
+1. pour tout entier naturel n, fn est continue en a ;
+2. P
+n∈N
+fn converge uniformément sur X .
+Alors
++
+X∞
+n=0
+fn est continue en a.
+Démonstration. Vérifions les hypothèses du théorème d’interversion somme-limite.
+1. pour tout n ∈ N, fn est continue en a donc admet ℓn = fn (a) comme limite en a ;
+2. P
+n∈N
+fn converge uniformément sur X vers S.
+Romain Dujol 65
+<<<PAGE>>>
+On applique le théorème d’interversion somme-limite avec la suite (ℓn )n∈N = (fn (a))n∈N :
+—
+P
+n∈N
+fn converge uniformément donc simplement sur X et donc en a ;
+— S admet une limite finie σ en a et σ =
+X+∞
+n=0
+fn (a) = S(a).
+On en conclut que limx→aS(x ) = S(a) puis que S est continue en a.
+Corollaire. Soit P
+n∈N
+fn une série d’applications de X dans K telle que :
+1. pour tout entier naturel n, fn est continue sur X ;
+2. P
+n∈N
+fn converge uniformément sur X .
+Alors
++
+X∞
+n=0
+fn est continue sur X .
+Démonstration. On applique le théorème précédent en tout point a de X .
+Remarque. On utilise régulièrement la contraposée de ce théorème pour établir une absence de convergence
+uniforme.
+Corollaire. Soit I un intervalle de R et P
+n∈N
+fn une série d’applications de I dans K telle que :
+1. pour tout entier naturel n, fn est continue sur I ;
+2. P
+n∈N
+fn converge localement uniformément sur I .
+Alors
++
+X∞
+n=0
+fn est continue sur I .
+Démonstration. Tout point de I est inclus dans un segment inclus dans I .
+Donc on conclut en appliquant le corollaire précédent sur tout segment inclus dans I .
+7.2.2 Interversion somme-intégrale
+Théorème 7.9 (Théorème d’interversion somme-intégrale).
+Soit a et b deux réels tels que a < b et P
+n∈N
+fn une série d’applications de [a,b ] dans K telle que :
+1. pour tout entier naturel n, fn est continue sur [a,b ];
+2. P
+n∈N
+fn converge uniformément sur [a,b ].
+Alors S =
++
+X∞
+n=0
+fn est continue sur [a,b ] et la série P
+n∈N
+Z b
+a
+fn (x )dx converge vers Z b
+a
+S(x )dx .
+Démonstration. Vérifions que (Sn )n∈N vérifie les hypothèses du théorème d’interversion limite-intégrale :
+1. Sn =
+Xn
+k=0
+fk est continue sur [a,b ] comme somme (finie) d’applications continues sur [a,b ];
+2. P
+n∈N
+fn converge uniformément sur X donc (Sn )n∈N converge uniformément sur X vers S.
+Romain Dujol 66
+<<<PAGE>>>
+D’après ce théorème :
+1. S est continue sur [a,b ];
+2. Z b
+a
+Sn (x )dx
+
+n∈N
+=
+Z b
+a
+Xn
+k=0
+fk(x )dx
+
+n∈N
+=
+Xn
+k=0
+Z b
+a
+fk(x )dx
+
+n∈N
+converge versZ b
+a
+S(x )dx : donc P
+n∈N
+Z b
+a
+fn (x )dx
+converge vers Z b
+a
+S(x )dx .
+7.2.3 Interversion somme-dérivation
+Théorème 7.10 (Théorème d’interversion somme-dérivation).
+Soit a et b deux réels tels que a < b et P
+n∈N
+fn une série d’applications de [a,b ] dans K telle que :
+1. pour tout entier naturel n, fn est de classe C 1sur [a,b ];
+2. P
+n∈N
+f
+′
+n
+converge uniformément sur [a,b ] vers S1;
+3. il existe x0 de [a,b ] tel que P
+n∈N
+fn (x0) converge.
+Alors :
+1. P
+n∈N
+fn converge uniformément sur [a,b ] vers une application notée S ;
+2. S est une application de classe C 1sur [a,b ];
+3. S
+′
+1 = S.
+Démonstration. Vérifions que (Sn )n∈N vérifie les hypothèses du théorème d’interversion limite-dérivation :
+1. Sn =
+Xn
+k=0
+fk est de classe C 1sur [a,b ] comme somme (finie) d’applications de classe C 1sur [a,b ];
+2. P
+n∈N
+f
+′
+n
+converge uniformément sur [a,b ] donc Xn
+k=0
+f
+′
+k
+
+n∈N
+=
+Xn
+k=0
+fk
+′
+n∈N
+= (S
+′
+n
+)n∈N converge uniformément sur
+[a,b ] vers S1;
+3. P
+n∈N
+fn (x0) converge donc Xn
+k=0
+fk(x0)
+
+n∈N
+= (Sn (x0))n∈N converge.
+D’après ce théorème :
+1. (Sn )n∈N converge uniformément sur [a,b ] vers S donc P
+n∈N
+fn converge uniformément sur [a,b ] vers S ;
+2. S est de classe C 1sur [a,b ];
+3. S
+′ = S1
+.
+Romain Dujol 67
+<<<PAGE>>>
+Théorème 7.11 (Théorème d’interversion somme-dérivation).
+Soit I un intervalle de R et P
+n∈N
+fn une série d’applications de I dans K telles que :
+1. pour tout entier naturel n, fn est de classe C 1sur I ;
+2. P
+n∈N
+f
+′
+n
+converge localement uniformément sur I vers S1;
+3. il existe x0 de I tel que P
+n∈N
+fn (x0) converge.
+Alors :
+1. P
+n∈N
+fn converge localement uniformément sur I vers une application notée S ;
+2. S est une application de classe C 1sur I ;
+3. S
+′ = S1
+.
+Démonstration. On applique le théorème précédent sur tout segment inclus dans I .
+ATTENTION. Si I n’est pas un segment, l’énoncé obtenu en enlevant « uniformémement » dans les hypothèses
+et dans la conclusion n’est pas valable.
+Romain Dujol 68
+<<<PAGE>>>
+Troisième partie
+Séries entières. Séries de FOURIER
+Romain Dujol 69
+<<<PAGE>>>
+Thème no 8
+Séries entières : rayon de convergence
+Définition 8.1 (Série entière). Soit (an )n∈N une suite complexe.
+On appelle série entière de coefficient an la série d’applications de C dans C
+P
+n∈N
+(z 7→ an z
+n
+).
+Théorème 8.1 (Structure algébrique). L’ensemble des séries entières est une sous-algèbre vectorielle de
+l’ensemble des séries d’applications de C dans C.
+En effet, si P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) sont deux séries entières, alors :
+X
+n∈N
+(z 7→ an z
+n
+) +X
+n∈N
+(z 7→ bn z
+n
+) = X
+n∈N
+[z 7→ (an + bn )z
+n
+]
+X
+n∈N
+(z 7→ an z
+n
+) ×
+X
+n∈N
+(z 7→ bn z
+n
+) = X
+n∈N
+
+z 7→
+Xn
+k=0
+ak bn−k
+
+z
+n
+
+∀λ ∈ C,λ·
+X
+n∈N
+(z 7→ an z
+n
+) = X
+n∈N
+[z 7→ (λan )z
+n
+]
+8.1 Définition
+Lemme (Lemme d’ABEL). Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière et z0 un nombre complexe non nul tel que la
+suite (an z
+n
+0
+)n soit bornée. Alors :
+∀z ∈ C,
+
+|z | < |z0| =⇒
+X
+n∈N
+an z
+n
+converge absolument
+Démonstration. On note M un majorant de la suite (an z
+n
+0
+)n : ∀n ∈ N,
+
+an z
+n
+0
+
+ ≤ M . Alors :
+∀n ∈ N,
+
+an z
+n
+
+ =
+
+
+
+
+an z
+n
+0
+·
+z
+n
+z
+n
+0
+
+
+
+
+=
+
+an z
+n
+0
+
+
+·
+
+
+
+
+z
+n
+z
+n
+0
+
+
+
+
+≤ M
+
+|z |
+|z0|
+n
+Si |z | < |z0|, alors
+|z |
+|z0|
+< 1 et P
+n∈N
+
+|z |
+|z0|
+n
+est une série géométrique convergente. D’après le théorème de majoration des
+séries à termes positifs, il vient que P
+n∈N
+an z
+n
+converge absolument.
+Romain Dujol 70
+<<<PAGE>>>
+Théorème 8.2 (Rayon de convergence). Pour toute série entière P
+n∈N
+(z 7→ an z
+n
+), il existe un unique élement R ∈ [0,+∞] tel que :
+∀z ∈ C,
+
+
+
+|z | < R =⇒
+P
+n∈N
+an z
+n converge (absolument)
+|z | > R =⇒
+P
+n∈N
+an z
+n diverge (grossièrement)
+R est appelé le rayon de convergence de P
+n∈N
+(z 7→an z
+n
+).
+Le disque de convergence de P
+n∈N
+(z 7→an z
+n
+) le disque ouvert de centre 0 et de rayon R.
+L’intervalle de convergence de P
+n∈N
+(z 7→an z
+n
+) l’ensemble ] − R,R[.
+Démonstration page 77.
+Remarque.
+• Une série entière de rayon de convergence nul a un domaine de convergence réduit à {0}.
+• Une série entière de rayon de convergence infini converge en tout point de C.
+Remarque. Il est impossible d’énoncer un résultat général lorsque z = R. En effet, des séries entières de même
+rayon de convergence R peuvent se comporter de manière différente lorsque |z | = R.
+C’est pourquoi on appelle souvent cercle d’incertitude le cercle de centre 0 et de rayon R.
+Exemple. Les séries entières P
+n∈N
+(z 7→ z
+n
+),
+P
+n≥1
+
+z 7→
+z
+n
+n
+
+et P
+n≥1
+
+z 7→
+z
+n
+n2
+
+ont un rayon de convergence égal à 1.
+Pourtant :
+— la série numérique P
+n∈N
+z
+n diverge pour tout z ∈ C tel que |z | = 1 ;
+Démonstration. lim n→+∞|z
+n
+| = 1 donc (z
+n
+)n∈N ne tend pas vers zéro, et P
+n∈N
+z
+n diverge (grossièrement).
+— la série numérique P
+n≥1
+z
+n
+n
+est semi-convergente pour tout nombre complexe z tel que |z | = 1 sauf z = 1
+(où elle diverge).
+Démonstration.
+— Si z = 1, P
+n≥1
+z
+n
+n
+=
+P
+n≥1
+1
+n
+diverge.
+— Sinon, z = e
+iθ avec θ /∈ 2πZ et P
+n
+z
+n
+n
+=
+P
+n≥1
+cosnθ
+n
++ i
+P
+n≥1
+sinnθ
+n
+.
+Les deux séries sont (semi-)convergentes d’après la règle d’ABEL.
+— la série numérique P
+n≥1
+z
+n
+n2
+est absolument convergente pour tout z ∈ C tel que |z | = 1.
+Démonstration. ∀n ≥ 1,
+
+
+
+
+z
+n
+n2
+
+
+
+
+≤
+1
+n2
+: d’où la convergence (absolue) de P
+n≥1
+z
+n
+n2
+.
+Romain Dujol 71
+<<<PAGE>>>
+8.1.1 Propriétés
+Corollaire. Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R et z0 un nombre complexe non
+nul tel que la suite (an z
+n
+0
+)n soit bornée. Alors R ≥ |z0|.
+Démonstration. Supposons par l’absurde que R < |z0|. Soit z un nombre complexe tel que |z | ∈ ]R,|z0|[ :
+— comme |z | < |z0|, il vient d’après le lemme d’ABEL que P
+n∈N
+an z
+n converge (absolument) ;
+— comme |z | > R, il vient d’après la définition du rayon de convergence que P
+n∈N
+an z
+n diverge (grossièrement).
+Il y a contradiction : donc R ≥ |z0|.
+Corollaire. Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R. Alors :
+∀z ∈ C,
+
+
+
+P
+n∈N
+an z
+n converge =⇒ |z | ≤ R
+P
+n∈N
+an z
+n diverge =⇒ |z | ≥ R
+Démonstration. C’est la contraposée du théorème précédent.
+8.1.2 Cas particuliers
+Proposition 8.1. Soit a un nombre complexe non nul.
+Alors la série entière P
+n∈N
+(z 7→ a
+n
+z
+n
+) a pour rayon de convergence R =
+1
+|a|
+et
+∀z ∈ C,
+
+|z | <
+1
+|a|
+=⇒
++
+X∞
+n=0
+a
+n
+z
+n =
+1
+1 − a z 
+Démonstration. Soit z un nombre complexe.
+— Si |z | <
+1
+|a|
+, alors |a z | < 1 et P
+n∈N
+(a z )
+n =
+P
+n∈N
+a
+n
+z
+n converge (absolument).
+— Si |z | >
+1
+|a|
+, alors |a z | > 1 et P
+n∈N
+(a z )
+n =
+P
+n∈N
+a
+n
+z
+n diverge (grossièrement).
+On déduit de la définition du rayon de convergence que R =
+1
+|a|
+.
+Proposition 8.2. Soit α un nombre réel.
+Alors la série entière P
+n≥1
+
+z 7→
+z
+n
+nα
+
+a pour rayon de convergence R = 1.
+Démonstration. Soit z un nombre complexe.
+— Si |z | < 1, alors n
+2
+·
+
+
+
+
+z
+n
+nα
+
+
+
+
+= n
+2−α
+|z |
+n −−−−→ n→+∞
+0 par croissance comparée.
+D’après la règle « n
+αun », P
+n≥1
+z
+n
+nα
+converge (absolument).
+— Si |z | > 1, alors lim n→+∞
+|z |
+n
+nα
+= +∞par croissance comparée. Donc 
+
+
+
+z
+n
+nα
+
+
+
+
+
+n≥1
+ne converge pas vers zéro puis 
+z
+n
+nα
+
+n≥1
+ne converge pas vers zéro et P
+n≥1
+z
+n
+nα
+diverge (grossièrement).
+On déduit de la définition du rayon de convergence que R = 1.
+Romain Dujol 72
+<<<PAGE>>>
+8.2 Stabilités opératoires
+8.2.1 Structure vectorielle
+Théorème 8.3. Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R de somme S.
+Pour tout nombre complexe λ non nul, la série entière P
+n∈N
+(z 7→ λan z
+n
+) a pour rayon de convergence
+R et sa somme Sλ vérifie :
+∀z ∈ C,
+
+|z | < R =⇒ Sλ(z ) = λ·S(z )
+
+Théorème 8.4 (Domaine de convergence de la somme de deux séries entières).
+Soit P
+n∈N
+(z 7→ an z
+n
+) de rayon de convergence Ra et de somme Sa .
+Soit P
+n∈N
+(z 7→ bn z
+n
+) de rayon de convergence Rb et de somme Sb .
+On noteR le rayon de convergence etS la somme de leur série entière somme. AlorsR ≥ min(Ra ,Rb ) et
+∀z ∈ C,
+
+|z | < min(Ra ,Rb ) =⇒ S(z ) = Sa (z ) +Sb (z )
+
+De plus, si Ra ̸= Rb , alors R = min(Ra ,Rb ).
+Exemple. Soit a ∈ [0, 1[.
+Alors les séries entières coefficients an = 1 + a
+n et bn = −1 ont pour rayon de convergence 1.
+Mais leur série entière somme de coefficient an +bn = a
+n a pour rayon de convergence
+1
+a
+(ou +∞si a = 0).
+Définition 8.2 (Séries entières disjointes).
+Les séries entières P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) sont dites disjointes si et seulement si an bn = 0
+pour tout entier naturel n.
+Proposition 8.3 (Somme de deux séries disjointes).
+Soit P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) deux séries entières disjointes de rayons de convergence respectifs
+Ra et Rb . Alors leur série entière somme P
+n∈N
+[z 7→ (an + bn )z
+n
+] a pour rayon de convergence R = min(Ra ,Rb ).
+Exemple. Calcul du rayon de convergence de P
+n∈N
+
+z 7→ n
+(−1)
+n
+z
+n
+
+P
+n∈N
+
+z 7→ n
+(−1)
+n
+z
+n
+
+=
+P
+p∈N
+
+z 7→ 2p z 2p
+
++
+P
+p∈N
+
+z 7→
+z
+2p+1
+2p + 1
+
+est la somme de deux séries entières disjointes.
+Pour z ∈ C et p ∈ N, on note up = 2p z 2p.
+Si z = 0, alors P
+p∈N
+up =
+P
+p∈N
+0 converge.
+Si z ̸= 0, alors ∀p ≥ 1, up ̸= 0 et
+
+
+
+
+up+1
+up
+
+
+
+
+=
+
+
+
+
+(2p + 2)z
+2p+2
+2p z 2p
+
+
+
+
+=
+p + 1
+p
+· |z |
+2 −−−−→ p→+∞
+|z |
+2
+.
+Romain Dujol 73
+<<<PAGE>>>
+D’après la règle de D’ALEMBERT :
+— si |z |
+2 < 1 ⇒ |z | < 1, alors P
+p∈N
+up =
+P
+p∈N
+2p · z
+2p
+converge ;
+— si |z |
+2 > 1 ⇒ |z | > 1, alors P
+p∈N
+up =
+P
+p∈N
+2p · z
+2p diverge.
+Par unicité du rayon de convergence, R = 1.
+De même, le rayon de convergence de P
+p∈N
+
+z 7→
+z
+2p+1
+2p + 1
+
+vaut 1.
+Donc le rayon de convergence de P
+n∈N
+
+z 7→ n
+(−1)
+n
+z
+n
+
+est min(1, 1) = 1.
+8.2.2 Produit
+Théorème 8.5 (Domaine de convergence du produit de deux séries entières).
+Soit P
+n∈N
+(z 7→ an z
+n
+) de rayon de convergence Ra et de somme Sa .
+Soit P
+n∈N
+(z 7→ bn z
+n
+) de rayon de convergence Rb et de somme Sb .
+On note R le rayon de convergence et S la somme de leur série entière produit. Alors
+R ≥ min(Ra ,Rb ) et
+∀z ∈ C,
+
+|z | < min(Ra ,Rb ) =⇒ S(z ) = Sa (z )·Sb (z )
+
+8.2.3 Dérivation
+Définition 8.3
+P
+(Série entière dérivée). On appelle série entière dérivée de la série entière
+n∈N
+(z 7→an z
+n
+) la série entière P
+n∈N
+[z 7→ (n + 1)an+1z
+n
+].
+Proposition 8.4. Une série entière et sa série entière dérivée ont même rayon de convergence.
+Démonstration page 79.
+Corollaire. Une série entière et ses séries dérivées à tout ordre ont le même rayon de convergence.
+8.3 Méthodes d’évaluation du rayon de convergence
+8.3.1 Théorèmes de comparaison
+Théorème 8.6 (Théorème de majoration des séries entières).
+Soit P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) deux séries entières de rayons de convergence respectifs Ra et
+Rb tels que |an | ≤ |bn | pour tout entier naturel n. Alors Ra ≥ Rb .
+Romain Dujol 74
+<<<PAGE>>>
+Démonstration. Supposons par l’absurde que Ra < Rb
+. Soit z un nombre complexe tel que |z | ∈ ]Ra,Rb[ :
+— comme |z | < Rb, il vient que P
+n∈N
+bn z
+n
+converge (absolument) : donc P
+n∈N
+an z
+n
+converge (absolument) parthéorème
+de majoration des séries à termes positifs ;
+— comme |z | > Ra, il vient que P
+n∈N
+an z
+n diverge.
+Il y a contradiction : donc Ra ≥ Rb.
+Corollaire. Soit P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) deux séries entières de rayons de convergence respectifs Ra
+et Rb tels que an = O(bn ). Alors Ra ≥ Rb .
+Remarque. Le résultat est donc valable si an = o(bn ).
+Corollaire (Théorème d’équivalence des séries entières). Soit P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) deux séries
+entières de rayons de convergence respectifs Ra et Rb tels que |an | ∼ |bn |. Alors Ra = Rb .
+Démonstration. Comme |an | ∼ |bn |, alors an = O(bn ) et bn = O(an ). D’où le résultat.
+Exemple. Déterminer le rayon de convergence des séries entières suivantes :
+1. P
+n
+
+z 7→ e
+sinn
+z
+n
+
+2. P
+n
+
+z 7→
+§1 +
+1
+n
+n
+− e
+ª
+z
+n
+
+8.3.2 Règles de calcul
+Théorème 8.7 (Règle de D’ALEMBERT). Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R
+telle que il existe un entier naturel N tel que
+∀n ≥ N , an ̸= 0 et 
+
+
+
+an+1
+an
+
+
+
+
+
+n≥N
+converge vers ℓ ∈ [0,+∞]
+Alors R =
+1
+ℓ
+avec la convention
+1
+0
+= +∞ et
+1
++∞
+= 0.
+Démonstration. Pour z ∈ C et n ∈ N, on note un = an z
+n
+.
+Si z = 0, alors un = 0 et P
+n∈N
+un converge absolument. Sinon, pour tout n ≥ N , un ̸= 0 et :
+
+
+
+
+un+1
+un
+
+
+
+
+=
+
+
+
+
+an+1z
+n+1
+an z n
+
+
+
+
+=
+
+
+
+
+an+1
+an
+
+
+
+
+·
+
+
+
+
+z
+n+1
+z n
+
+
+
+
+=
+
+
+
+
+an+1
+an
+
+
+
+
+· |z |
+• ℓ ∈ ]0,+∞[ Alors lim n→+∞
+
+
+
+
+un+1
+un
+
+
+
+
+= ℓ|z |. D’après la règle de D’ALEMBERT pour les séries numériques :
+— si ℓ|z | < 1, c’est-à-dire |z | <
+1
+ℓ
+, alors la série numérique P
+n∈N
+un =
+P
+n∈N
+an z
+n
+converge absolument ;
+— si ℓ|z | > 1, c’est-à-dire |z | >
+1
+ℓ
+, alors la série numérique P
+n∈N
+un =
+P
+n∈N
+an z
+n diverge.
+Par unicité du rayon de convergence, R =
+1
+ℓ
+.
+Romain Dujol 75
+<<<PAGE>>>
+• ℓ = 0 Alors lim n→+∞
+
+
+
+
+un+1
+un
+
+
+
+
+= 0. D’après la règle de D’ALEMBERT pour les séries numériques, P
+n∈N
+un =
+P
+n∈R
+an z
+n
+converge.
+On déduit de la définition du rayon de convergence que R = +∞ est la seule valeur possible.
+• ℓ = +∞ Alors lim n→+∞
+
+
+
+
+un+1
+un
+
+
+
+
+= +∞. D’après la règle de D’ALEMBERT pour les séries numériques, P
+n∈N
+un =
+P
+n∈N
+an z
+n diverge. On déduit de la définition du rayon de convergence que R = 0 est la seule valeur possible.
+Remarque. Afin de différencier cette règle et son homonyme du chapitre précédent, on indiquera « règle de
+D’ALEMBERT pour les séries entières » ou « règle de D’ALEMBERT pour les séries numériques ».
+Théorème 8.8 (Règle de CAUCHY). Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R telle
+que 
+np
+|an |
+
+n≥1
+converge vers ℓ ∈ [0,+∞].
+Alors R =
+1
+ℓ
+avec la convention
+1
+0
+= +∞ et
+1
++∞
+= 0.
+Démonstration. Pour z ∈ C et n ∈ N, on note un = an z
+n
+.
+n
+Æ
+|un | =
+n
+Æ
+|an z n | =
+n
+Æ
+|an ||z |
+n =
+n
+Æ
+|an | · |z |
+• ℓ ∈ ]0,+∞[ Donc lim n→+∞
+n
+Æ
+|un | = ℓ|z |. D’après la règle de CAUCHY pour les séries numériques :
+— si ℓ|z | < 1, c’est-à-dire |z | <
+1
+ℓ
+, alors la série numérique P
+n∈N
+un =
+P
+n∈N
+an z
+n converge absolument ;
+— si ℓ|z | > 1, c’est-à-dire |z | >
+1
+ℓ
+, alors la série numérique P
+n∈N
+un =
+P
+n∈N
+an z
+n diverge.
+Par unicité du rayon de convergence, R =
+1
+ℓ
+.
+• ℓ = 0 Alors lim n→+∞
+n
+Æ
+|un | = 0. D’après la règle de CAUCHY pour les séries numériques, P
+n∈N
+un =
+P
+n∈N
+an z
+n
+converge. On
+déduit de la définition du rayon de convergence que R = +∞ est la seule valeur possible.
+• ℓ = +∞ Alors lim n→+∞
+n
+Æ
+|un | = +∞. D’après la règle de CAUCHY pour les séries numériques, P
+n∈N
+un =
+P
+n∈N
+an z
+n diverge.
+On déduit de la définition du rayon de convergence que R = 0 est la seule valeur possible.
+Remarque. Afin de différencier cette règle et son homonyme du chapitre précédent, on indiquera « règle de
+CAUCHY pour les séries entières » ou « règle de CAUCHY pour les séries numériques ».
+Exemple. Déterminer le rayon de convergence des séries entières suivantes :
+1. P
+n∈N
+
+z 7→
+e
+−n
+n
+z
+n
+
+2. P
+n∈N
+
+z 7→ n z 2n
+
+Romain Dujol 76
+<<<PAGE>>>
+Annexe A
+Démonstration du théorème 8.2 (non exigible)
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière.
+On note A l’ensemble des nombres complexes z0tels que la suite numérique (an z
+n
+0
+)n est bornée, puis on
+définit A = |A | = {|z0|, z0 ∈ A } l’ensemble des modules des éléments de A : remarquons que A est une partie
+de R+ par construction.
+Comme 0 est un élément de A , il vient que 0 = |0| est un élément de A : donc A est une partie non vide de R.
+Le lemme d’ABEL se formule alors de la manière suivante :
+z0 ∈ A =⇒
+
+∀z ∈ C, (|z | < |z0| ⇒ z ∈ A )
+
+(A.1)
+Soit r0 est un élément de A : alors il existe un nombre complexe z0 de module r0 qui appartient à A . Donc si
+r ∈ [0, r0[, alors il existe un nombre complexe z de module r < r0 = |z0| qui appartient à A . l’équation (A.1)
+permet de alors de déduire que z ∈ A , puis que r ∈ A. On vient de montrer que [0, r0[ ⊂ A. Finalement, on a
+l’implication suivante :
+r0 ∈ A =⇒ [0, r0[ ⊂ A (A.2)
+(Autrement dit : si un réel positif appartient à A, tous les réels positifs qui lui sont inférieurs y sont également.)
+Pour montrer que R existe, on distingue deux cas selon que A est une partie majorée ou non.
+• Supposons que A ne soit pas majorée : montrons que A = R+.
+Soit r ∈ R+ : comme A n’est pas majorée, il existe un élément r1 de A tel que r1 > r . D’après la relation (A.2), il vient que r ∈ [0, r1
+[⊂ A : donc r ∈ A. On en déduit que R+ ⊂ A : comme A est une partie de
+R+, on en conclut que A = R+.
+Soit z ∈ C∗ et z0 = 2·|z |. Comme z0 ∈ R+ = A, il vient que la suite (an z
+n
+0
+)n est bornée. Puisque |z | < 2·|z | =
+z0 = |z0|, le lemme d’ABEL permet de conclure que la série numérique P
+n∈N
+an z
+n
+converge absolument.
+Donc la série numérique P
+n∈N
+an z
+n converge pour tout nombre complexe z etR = +∞vérifie la condition
+demandée.
+Romain Dujol 77
+<<<PAGE>>>
+• Supposons que A est majorée : comme A est non vide, elle admet donc une borne supérieure. Montrons
+que supA est la valeur recherchée.
+· Soit z ∈ C tel que |z | > supA : alors |z | n’est pas un élément de A.
+Donc z n’est pas un élément de A et la suite (an z
+n
+)n n’est pas bornée et donc ne converge pas.
+On en déduit que la série numérique P
+n∈N
+an z
+n diverge grossièrement.
+· Soit z ∈ C tel que |z | < supA. Alors il existe un réel ϵ > 0 tel que |z | < supA − ϵ et tel que supA − ϵ
+soit un élément de A.
+Donc il existe un nombre complexe z0tel que |z0| = supA − ϵ et la suite (an z
+n
+0
+)n est bornée.
+On en déduit d’après le lemme d’ABEL, la série numérique P
+n∈N
+an z
+n
+converge absolument.
+R = supA est bien la valeur qui vérifie la valeur demandée.
+L’unicité de R vient directement de sa définition.
+Romain Dujol 78
+<<<PAGE>>>
+Annexe B
+Démonstration de la proposition 8.4 (non
+exigible)
+On note R le rayon de convergence de la série entière P
+n≥n0
+(z 7→ an z
+n
+) et R
+′
+le rayon de convergence de sa
+série entière dérivée P
+n≥n0
+[z 7→ (n + 1)an+1z
+n
+].
+Pour tout entier naturel n strictement ou égal à n0, on a |an+1| ≤ (n + 1)· |an+1|.
+Comme les rayons de convergence de P
+n≥n0
+(z 7→ an+1z
+n
+) et P
+n≥n0
+(z 7→ an z
+n
+) sont égaux, on en déduit d’après
+le théorème de majoration des séries entières que R ≥ R
+′
+.
+Soit z un nombre complexe que |z | < R : alors la série numérique P
+n≥n0
+an z
+n
+converge absolument.
+Soit r =
+|z | + R
+2
+∈
+
+|z |,R
+
+. Alors ∀n ≥ n0, (n + 1)an+1z
+n =
+(n + 1)
+r
+z
+n
+r
+n
+· an+1r
+n+1
+.
+Comme |z | < r , on a
+
+
+
+z
+r
+
+
+ =
+|z |
+|r |
+< 1 : donc lim n→+∞
+
+
+
+
+(n + 1)
+r
+z
+n
+r
+n
+
+
+
+
+= lim n→+∞
+(n + 1)
+r
+
+
+
+z
+r
+
+
+
+n
+= 0 par croissance comparée.
+Donc la suite 
+(n + 1)
+r
+z
+n
+r
+n
+
+n≥n0
+est bornée. On note M un majorant de cette suite et :
+∀n ≥ n0, |(n + 1)an+1z
+n
+| ≤ M |an+1|r
+n+1 = M |an+1rn+1
+|
+Comme les rayons de convergence de P
+n≥n0
+
+z 7→ an+1z
+n+1
+
+et P
+n≥n0
+(z 7→ an z
+n
+) sont égaux et que r < R, la série
+numérique P
+n≥n0
+M |an+1|r
+n+1 est convergente.
+P
+D’après le théorème de majoration des séries à termes positifs, il vient que la série numérique
+n≥n0
+|(n + 1)an+1z
+n
+| est également convergente.
+La définition du rayon de convergence permet alors d’en déduire que |z | ≤ R
+′
+.
+On vient donc de montrer que pour tout réel r strictement positif, (r < R) ⇒ (r ≤ R
+′
+), i.e. R ≤ R
+′
+.
+On en conclut donc que R = R
+′
+.
+Romain Dujol 79
+<<<PAGE>>>
+Chapitre 9
+Séries entières : somme et développements
+9.1 Convergence et régularité de la somme
+9.1.1 Convergence
+Théorème 9.1 (Convergence d’une série entière).
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R.
+Alors la série d’applications P
+n∈N
+(z 7→ an z
+n
+) converge normalement sur toute partie compacte
+incluse dans le disque ouvert de centre 0 et de rayon R.
+Démonstration page 87.
+9.1.2 Continuité
+Théorème 9.2 (Continuité de la somme).
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R et de somme S. Alors S est continue
+sur le disque ouvert de centre 0 et de rayon R.
+Démonstration. Pour tout entier naturel n, z 7→ an z
+n est continue.
+D’après le théorème précédent, la série d’applications P
+n∈N
+(z 7→ an z
+n
+) converge localement normalement, donc localement uniformément sur le disque ouvert de centre 0 et de rayon R. Donc sa somme S y est continue.
+Proposition 9.1 (Étude aux bornes de l’intervalle de convergence).
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R et de somme S.
+Si la série numérique P
+n∈N
+anR
+n converge absolument, alors la série entière converge normalement sur le
+disque fermé de centre 0 et de rayon R, et S y est continue (en particulier en −R et en R).
+Si la série numérique P
+n∈N
+anR
+n
+converge, alors la série entière converge uniformément sur [0,R] et S est
+continue en R.
+Si la série numérique P
+n∈N
+an (−R)
+n
+converge, alors la série entière converge uniformément sur [−R, 0] et S
+est continue en −R.
+Romain Dujol 80
+<<<PAGE>>>
+9.1.3 Dérivabilité
+Théorème 9.3 (Dérivabilité de la somme).
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R non nul et de somme S.
+Alors S est de classe C ∞ sur ] − R,R[ et
+∀p ∈ N, ∀x ∈ ] − R,R[, S
+(p)
+(x ) =
++
+X∞
+n=p
+n!
+(n − p)!
+an x
+n−p =
++
+X∞
+n=0
+(n + p)!
+n!
+an+p x
+n
+Exemple. On peut ainsi évaluer les dérivées de la série géométrique.
+En effet, pour tout x de ] − 1, 1[, S(x ) =
++
+X∞
+n=0
+1 · x
+n =
+1
+1 − x
+. Donc :
+1
+(1 − x )
+2
+= S
+′
+(x ) =
++
+X∞
+n=1
+n!
+(n − 1)!
+x
+n−1 =
++
+X∞
+n=1
+n x n−1 =
++
+X∞
+n=0
+(n + 1)x
+n
+2
+(1 − x )
+3
+= S
+′′(x ) =
++
+X∞
+n=2
+n!
+(n − 2)!
+x
+n−2 =
++
+X∞
+n=2
+n(n − 1)x
+n−2 =
++
+X∞
+n=0
+(n + 2)(n + 1)x
+n
+Corollaire. Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de de rayon de convergence non nul et de somme S.
+Alors pour tout entier naturel p, ap =
+S
+(p)
+(0)
+p!
+.
+Corollaire (Unicité du développement en série entière).
+Soit P
+n∈N
+(z 7→ an z
+n
+) et P
+n∈N
+(z 7→ bn z
+n
+) deux séries entières de rayons de convergence respectifs Ra et Rb non
+nuls tels que :
+∀z ∈ R,
+
+|z | < min(Ra ,Rb ) =⇒
++
+X∞
+n=0
+an z
+n =
++
+X∞
+n=0
+bn z
+n
+
+Alors an = bn pour tout entier naturel n.
+Corollaire (Développement en série entière de la somme).
+Soit P
+n∈N
+(z 7→ an z
+n
+) une série entière de rayon de convergence R non nul et de somme S.
+Alors ∀x ∈ ] − R,R[, S(x ) =
++
+X∞
+p=0
+S
+(p)
+(0)
+p!
+x
+p
+.
+Romain Dujol 81
+<<<PAGE>>>
+9.2 Développement en série entière
+9.2.1 Généralités
+Définition 9.1. Soit I un intervalle de R et f une application de I dans C.
+L’application f est dite développable en série entière en 0 si et seulement si 0 ∈ I et il existe une série
+entière P
+n∈N
+(z 7→ an z
+n
+) de rayon de convergence R non nul telle que :
+∀x ∈ I ∩] − R,R[, f (x ) =
++
+X∞
+n=0
+an x
+n
+Auquel cas, cette relation constitue le développement en série entière de f en 0.
+Soit x0 un élément de I . L’application f est dite développable en série entière en x0 si et seulement si
+x0 ∈ I et il existe une série entière P
+n∈N
+(z 7→ an z
+n
+) de rayon de convergence R non nul telle que :
+∀x ∈ I ∩]x0 − R, x0 + R[, f (x ) =
++
+X∞
+n=0
+an (x − x0)
+n
+Auquel cas, cette relation constitue le développement en série entière de f en x0.
+Théorème 9.4. Soit I un intervalle de R et f une application de I dans C développable en série entière
+en 0 avec le développement :
+∀x ∈ I ∩] − R,R[, f (x ) =
++
+X∞
+n=0
+an x
+n
+Alors f est de classe C ∞ sur I ∩] − R,R[ et an =
+f
+(n)
+(0)
+n!
+pour tout entier naturel n.
+ATTENTION. Toute fonction de classe C ∞ au voisinage de 0 n’est pas développable en série entière.
+Exemple. Soit f : t 7→ e
+−1/t
+2
+. Alors on montre que pour tout entier naturel n, f
+(n)
+(0) = 0 : donc si f était
+développable en série entière en 0, alors f serait nulle, ce qui n’est pas le cas.
+Proposition 9.2. Soit I un intervalle de R et f une application de I dans C développable en série entière en 0
+avec le développement :
+∀x ∈ I ∩] − R,R[, f (x ) =
++
+X∞
+n=0
+an x
+n
+Si f est paire, alors a2p+1 = 0 pour tout entier naturel p.
+Si f est impaire, alors a2p = 0 pour tout entier naturel p.
+Démonstration. ∀x ∈ I ∩] − R,R[, f (−x ) =X+∞
+n=0
+an (−x )
+n =
+X+∞
+n=0
+(−1)
+n
+an x
+n
+— Si f est paire, alors ∀x ∈ I ∩] − R,R[,
+X+∞
+n=0
+an x
+n = f (x ) = f (−x ) =X+∞
+n=0
+(−1)
+n
+an x
+n
+.
+Par unicité du développement en série entière, il vient que an = (−1)
+n an pour tout entier naturel n.
+En particulier, si n = 2p + 1 est impair, a2p+1 = −a2p+1i.e. a2p+1 = 0.
+— Si f est impaire, alors ∀x ∈ I ∩] − R,R[,
+X+∞
+n=0
+an x
+n = f (x ) = −f (−x ) =X+∞
+n=0
+−(−1)
+n
+an x
+n
+.
+Par unicité du développement en série entière, il vient que an = −(−1)
+n an pour tout entier naturel n.
+En particulier, si n = 2p est pair, a2p = −a2p i.e. a2p = 0.
+Romain Dujol 82
+<<<PAGE>>>
+Proposition 9.3 (avec le reste intégral).
+Soit I un intervalle de R et f une application de classe C ∞ de I dans C.
+Alors f est développable en série entière au voisinage de 0 si et seulement si il existe un réel strictement
+positif α tel que ] − α,α[ ⊂ I et
+∀x ∈] − α,α[, lim n→+∞
+Z x
+0
+(x − t )
+n
+n!
+f
+(n+1)
+(t )dt = 0
+Exemple (Développement en série entière de l’exponentielle).
+On note f : x 7→ e
+x
+: alors f
+′ = f et par suite f(n) = f pour tout entier naturel.
+Soit x un nombre réel quelconque. Alors :
+
+
+
+
+Z x
+0
+(x − t )
+n
+n!
+f
+(n+1)
+(t )dt
+
+
+
+
+=
+
+
+
+
+Z x
+0
+(x − t )
+n
+n!
+e
+t dt
+
+
+
+
+≤ max(1, e
+x
+)
+
+
+
+
+Z x
+0
+(x − t )
+n
+n!
+dt
+
+
+
+
+= max(1, e
+x
+)
+
+
+
+
+
+−
+(x − t )
+n+1
+(n + 1)!
+x
+0
+
+
+
+
+= max(1, e
+x
+)
+
+
+
+
+x
+n+1
+(n + 1)!
+
+
+
+
+= max(1, e
+x
+)
+|x |
+n+1
+(n + 1)!
+Or lim n→+∞
+|x |
+n
+n!
+= 0, puis lim n→+∞
+
+
+
+
+Z x
+0
+(x − t )
+n
+n!
+f
+(n+1)
+(t )dt
+
+
+
+
+= 0.
+Évaluons le rayon de convergence de la série P
+n∈N
+
+z 7→
+f
+(n)
+(0)
+n!
+z
+n
+
+=
+P
+n∈N
+
+z 7→
+1
+n!
+z
+n
+
+en utilisant la règle de
+D’ALEMBERT pour les séries entières :
+1
+(n + 1)!
+·n! =
+1
+n
+−−−−→ n→+∞0. Il vient donc le rayon de convergence est infini.
+On en conclut que la fonction exponentielle est développable en série entière en 0 et :
+∀x ∈ R, e
+x =
++
+X∞
+n=0
+x
+n
+n!
+Théorème 9.5 (Condition suffisante d’existence).
+Soit I un intervalle de R et f une application de classe C ∞ de I dans C telle que :
+∃M > 0, ∀n ∈ N, sup
+x∈I
+|f
+(n)
+(x )| ≤ M
+Alors f est développable en série entière en 0.
+Exemple (Développement en série entière du cosinus et du sinus).
+Pour tout nombre réel x , on a :
+cos′(x ) = −sin(x ) = cosx +
+π
+2
+
+et sin′(x ) = cos(x ) = sinx +
+π
+2
+
+Il vient alors par récurrence que :
+cos(n)
+(x ) = cosx + n
+π
+2
+
+et sin(n)(x ) = sinx + n
+π
+2
+
+Donc pour tout entier naturel n et tout réel x , |cos(n)(x )| ≤ 1 et | sin(n)(x )| ≤ 1. On en déduit que cos et sin sont
+développables en série entière en 0.
+Romain Dujol 83
+<<<PAGE>>>
+Calculons les coefficients du développpement en série entière :
+cos(n)(0) = cosn
+π
+2
+
+=
+¨
+(−1)
+n/2
+si n est pair
+0 si n est impair
+et sin(n)(0) = sinn
+π
+2
+
+=
+¨
+0 si n est pair
+(−1)
+(n−1)/2
+si n est impair
+On étudie la série entière P
+n∈N
+
+z 7→
+cos(n)(0)
+n!
+z
+n
+
+=
+P
+p∈N
+
+z 7→
+(−1)
+p
+(2p)!
+z
+2p
+
+.
+Pour z ∈ C et p ∈ N, on pose up =
+(−1)
+p
+(2p)!
+z
+2p
+. Si x = 0, alors up = 0 et P
+p
+up converge absolument.
+Sinon, up ̸= 0 et
+
+
+
+
+up+1
+up
+
+
+
+
+=
+|z |
+2p+2
+(2p + 2)!
+·
+(2p)!
+|z |
+2p
+=
+|z |
+2
+(2p + 1)(2p + 2)
+. Donc lim
+p→+∞
+
+
+
+
+up+1
+up
+
+
+
+
+= 0 < 1 et P
+p∈N
+up converge
+absolument.
+Par unicité du rayon de convergence, celui de la série entière P
+p
+
+z 7→
+(−1)
+p
+(2p)!
+z
+2p
+
+a un rayon de convergence
+infini. On montre de manière identique qu’il en est de même pour la série entière
+P
+p∈N
+
+z 7→
+(−1)
+p
+(2p + 1)!
+z
+2p+1
+
+. On en conclut que ∀x ∈ R, cos x =
++
+X∞
+n=0
+(−1)
+n x2n
+(2n)!
+et sin x =
++
+X∞
+n=0
+(−1)
+n x2n+1
+(2n + 1)!
+.
+9.2.2 Structure algébrique de l’ensemble des fonctions développables en série entière
+Théorème 9.6 (Somme et produit de fonctions développables en série entière).
+L’ensemble des fonctions développables en série entière en 0 une sous-algèbre de l’ensemble des
+fonctions de classe C ∞ sur un voisinage de 0.
+De plus, l’application qui à toute fonction développable en série entière en 0 associe son développement est un morphisme d’algèbres vectorielles.
+Exemple (Développement en série entière du cosinus et du sinus hyperbolique).
+La fonction x 7→ e
+−x est développable en série entière et ∀x ∈ R, e−x =
++
+X∞
+n=0
+(−1)
+n
+n!
+x
+n
+.
+Alors ch : x 7→
+e
+x + e−x
+2
+est développable en série entière en 0. Ce développement est valable sur R comme
+somme de développements valables sur R et dont le terme général du coefficient est :
+1
+2
+
+1
+n!
++
+(−1)
+n
+n!
+
+=
+1 + (−1)
+n
+2
+·
+1
+n!
+=
+
+
+
+1
+n!
+si n est pair
+0 si n est impair
+On montre de même que sh : x 7→
+e
+x − e−x
+2
+est développable en série entière en 0, que son développement
+est valable sur R et que le terme général du coefficient de son développement est :
+1
+2
+
+1
+n!
+−
+(−1)
+n
+n!
+
+=
+1 − (−1)
+n
+2
+·
+1
+n!
+=
+
+
+
+0 si n est pair
+1
+n!
+si n est impair
+∀x ∈ R, ch x =
++
+X∞
+n=0
+x
+2n
+(2n)!
+et sh x =
++
+X∞
+n=0
+x
+2n+1
+(2n + 1)!
+Romain Dujol 84
+<<<PAGE>>>
+Théorème 9.7. Soit I un intervalle de R et f une application de I dans C.
+Si f est une fonction développable en série entière en 0, alors f
+′ est développable en série entière
+en 0 et son développement est la série entière dérivée du développement de f .
+Si f est une fonction développable en série entière en 0, alors toute primitive de f est développable
+en série entière en 0 et son développement admet le développement de f pour série dérivée.
+Exemple (Développement en série entière du logarithme).
+On rappelle que x 7→
+1
+1 − x
+est développable en série entière en 0 et que son développement est valable
+sur ] − 1, 1[ :
+∀x ∈] − 1, 1[,
+1
+1 − x
+=
++
+X∞
+n=0
+x
+n
+Or x 7→ −ln(1 − x ) est la primitive de x 7→
+1
+1 − x
+qui s’annule en 0. Donc x 7→ −ln(1 − x ) est développable
+en série entière en 0 avec pour développement :
+∀x ∈] − 1, 1[, −ln(1 − x ) =
++
+X∞
+n=0
+x
+n+1
+n + 1
+=
++
+X∞
+n=1
+x
+n
+n
+En étudiant la série entière P
+n≥1
+
+z 7→
+z
+n
+n
+
+, on établit successivement que :
+— son rayon de convergence est égal à un en utilisant la règle de D’ALEMBERT pour les séries entières ;
+— elle converge uniformément sur [−1, 0] car la série numérique P
+n≥1
+(−1)
+n
+n
+est une série de RIEMANN alternée convergente.
+Donc la somme de la série entière est en continue en −1 et :
+∀x ∈ [−1, 1[, ln(1 − x ) = −
++
+X∞
+n=1
+x
+n
+n
+puis en appliquant le changement de variable x ↔ −x :
+∀x ∈] − 1, 1], ln(1 + x ) =
++
+X∞
+n=1
+(−1)
+n+1 xn
+n
+On en déduit alors que ln 2 = ln(1 + 1) =
++
+X∞
+n=1
+(−1)
+n+1
+n
+.
+9.2.3 Utilisation des équations différentielles
+Les équations différentielles et les séries entières peuvent interagir de deux manières différentes.
+• Étant donné une équation différentielle, trouver des solutions développables en série entière.
+• Étant donnée une fonction développable en série entière, trouver l’expression de son développement à
+l’aide d’une équation différentielle qu’elle vérifie.
+Romain Dujol 85
+<<<PAGE>>>
+Exemple. Soit α un nombre réel fixé et fα : ] − 1,+∞[ → R
+x 7→ (1 + x )
+α
+.
+Alors fα est de classe C ∞ sur ] − 1,+∞[ et ∀x ∈] − 1,+∞[, f
+′
+α
+(x ) = α(1 + x )
+α−1 = α
+(1 + x )
+α
+1 + x
+=
+α
+1 + x
+fα(x ).
+Donc fα est solution sur ] − 1,+∞[ de l’équation différentielle (1 + x )y
+′ − αy = 0 (E ).
+Soit y une solution de (E ) développable en série entière en 0. Alors il existe R > 0 tel que :
+∀x ∈] − 1,+∞[∩] − R,R[, y (x ) =
++
+X∞
+n=0
+an x
+n
+Alors y
+′
+(x ) =
++
+X∞
+n=0
+(n + 1)an+1 x
+n =
++
+X∞
+n=1
+nan x
+n−1
+. On réinjecte les expressions de y et y
+′ dans (E ) :
+0 = (1 + x )y
+′ − αy = y′ + x y ′ − αy
+=
++
+X∞
+n=0
+(n + 1)an+1 x
+n + x
++
+X∞
+n=1
+nan x
+n−1 − α
++
+X∞
+n=0
+an x
+n =
++
+X∞
+n=0
+(n + 1)an+1 x
+n +
++
+X∞
+n=1
+nan x
+n −
++
+X∞
+n=0
+αan x
+n
+=
++
+X∞
+n=0
+(n + 1)an+1 x
+n +
++
+X∞
+n=0
+nan x
+n −
++
+X∞
+n=0
+αan x
+n =
++
+X∞
+n=0
+
+(n + 1)an+1 + (n − α)an
+
+x
+n
+Par unicité du développement en série entière de x 7→ 0, on déduit que (n + 1)an+1 + (n − α)an = 0 pour tout
+entier naturel n, c’est-à-dire que
+an+1
+an
+=
+α − n
+n + 1
+.
+Montrons par récurrence que pour tout entier naturel n non nul, an =
+α(α − 1)···(α − n + 1)
+n!
+a0
+:
+— si n = 1, a1 =
+α − 0
+0 + 1
+a0 = αa0 =
+α
+1!
+a0;
+— si n est un entier naturel non nul tel que an =
+α(α − 1)···(α − n + 1)
+n!
+a0, alors d’après la relation de récurrence établie plus haut, an+1 =
+α − n
+n + 1
+an =
+α − n
+n + 1
+α(α − 1)···[α − (n − 1)]
+n!
+a0 =
+α(α − 1)···(α − n)
+(n + 1)!
+a0.
+On en déduit donc que an =
+α(α − 1)···(α − n + 1)
+n!
+a0 pour tout entier naturel non nul n.
+Comme lim n→+∞
+
+
+
+
+an+1
+an
+
+
+
+
+= lim n→+∞
+
+
+
+α − n
+n + 1
+
+
+ = 1, il vient d’après la règle de D’ALEMBERT pour les séries entières
+que le rayon de convergence de P
+n∈N
+(z 7→ an z
+n
+) est R = 1.
+Réciproquement, la somme S de cette série entière est de classe C ∞ sur ] − 1, 1[ et constitue une solution
+de l’équation différentielle (1 + x )y
+′ − αy = 0 sur ] − 1, 1[.
+La théorie des équations différentielles linéaires homogènes du premier ordre assure que toute solution
+de cette équation différentielle est de la forme x 7→ C e −g (x ) où C est une constante réelle quelconque et g une
+primitive de x 7→
+−α
+1 + x
+. Ainsi, toute solution est de la forme x 7→ C e αln(1+x ) = C · (1 + x )
+α
+.
+Il est en donc de même pour S : il existe une constante réelle C telle que
+∀x ∈] − 1, 1[, S(x ) = a0
+
+1 +
++
+X∞
+n=1
+α(α − 1)···(α − n + 1)
+n!
+x
+n
+
+= C · (1 + x )
+α
+En imposant a0 = 1, il vient que 1 = S(0) = C ·(1+0)
+α = C et ∀x ∈] − 1, 1[, (1 + x )
+α = 1 +
++
+X∞
+n=1
+α(α − 1)···(α − n + 1)
+n!
+x
+n
+.
+Romain Dujol 86
+<<<PAGE>>>
+Annexe C
+Démonstration de la théorème 9.1 (non
+exigible)
+Remarque. Cette démonstration utilise des notions traitées dans le module « Analyse dans Rn».
+Montrons d’abord que pour tout réel r de ]0,R[, la série d’applications P
+n∈N
+(z 7→ an z
+n
+) converge normalement sur le
+disque fermé Dr de centre 0 et de rayon r , i.e. Dr = {z ∈ C, |z | ≤ r }.
+Soit r ∈ ]0,R[. Comme r < R, la série numérique P
+n∈N
+an r
+n
+converge absolument.
+Soit alors z ∈ Dr: alors |z | ≤ r et |an z
+n
+| ≤ |an | · |z |
+n ≤ |an | · rn = |an rn
+| pour tout n.
+Chaque application z 7→ an z
+n est donc bornée sur Dr par un = an rn qui est le terme général d’une série absolument
+convergente : la série d’applications P
+n∈N
+(z 7→ an z
+n
+) converge normalement sur Dr
+.
+Soit K un compact inclus dans le disque ouvert de centre 0 et de rayon R. L’application | · | (module complexe) est
+continue sur K , donc elle y est bornée et y atteint ses bornes. C’est-à-dire que :
+
+∃zM ∈ K , sup
+z∈K
+|z | = |zM |
+
+⇐⇒ ∃zM ∈ K , ∀z ∈ K ,|z | ≤ |zM |
+
+⇐⇒ ∃zM ∈ K , K ⊂ D|zM |
+
+Comme zM est un élément de K , il vient que |zM | < R. D’après ce qui précède, la série d’applications P
+n
+(z 7→ an z
+n
+)
+converge normalement sur D|zM | et donc sur K .
+Romain Dujol 87
+<<<PAGE>>>
+Annexe D
+Développements en série entière en 0
+∀x ∈ R, e
+x =
++
+X∞
+n=0
+x
+n
+n!
+∀x ∈ R, ch x =
++
+X∞
+n=0
+x
+2n
+(2n)!
+∀x ∈ R, sh x =
++
+X∞
+n=0
+x
+2n+1
+(2n + 1)!
+∀x ∈ R, cos x =
++
+X∞
+n=0
+(−1)
+n x2n
+(2n)!
+∀x ∈ R, sin x =
++
+X∞
+n=0
+(−1)
+n x2n+1
+(2n + 1)!
+∀x ∈] − 1, 1[, (1 + x )
+α = 1 +
++
+X∞
+n=1
+α(α − 1)···(α − n + 1)
+n!
+x
+n
+(valable sur R si α ∈ N)
+∀x ∈] − 1, 1[,
+1
+1 − x
+=
++
+X∞
+n=0
+x
+n
+∀x ∈] − 1, 1[,
+1
+(1 − x )
+2
+=
++
+X∞
+n=0
+(n + 1)x
+n =
++
+X∞
+n=1
+n x n−1
+∀x ∈] − 1, 1[,
+2
+(1 − x )
+3
+=
++
+X∞
+n=0
+(n + 2)(n + 1)x
+n =
++
+X∞
+n=2
+n(n − 1)x
+n−2
+∀x ∈] − 1, 1[,
+1
+1 + x
+=
++
+X∞
+n=0
+(−1)
+n
+x
+n
+∀x ∈ [−1, 1[,−ln(1 − x ) =
++
+X∞
+n=1
+x
+n
+n
+∀x ∈] − 1, 1], ln(1 + x ) =
++
+X∞
+n=1
+(−1)
+n+1 xn
+n
+∀x ∈ [−1, 1], arctan x =
++
+X∞
+n=0
+(−1)
+n x2n+1
+2n + 1
+Romain Dujol 88
+<<<PAGE>>>
+∀x ∈] − 1, 1[, argth x =
+1
+2
+ln
+1 + x
+1 − x
+
+=
++
+X∞
+n=0
+x
+2n+1
+2n + 1
+∀x ∈ [−1, 1], arcsin x =
++
+X∞
+n=0
+1 · 3 · ··· · (2n − 1)
+2 · 4 · ··· · (2n)
+x
+2n+1
+2n + 1
+=
++
+X∞
+n=0
+(2n)!
+(2n n!)
+2
+x
+2n+1
+2n + 1
+∀x ∈ [−1, 1], argsh x =
++
+X∞
+n=0
+(−1)
+n
+1 · 3 · ··· · (2n − 1)
+2 · 4 · ··· · (2n)
+x
+2n+1
+2n + 1
+=
++
+X∞
+n=0
+(−1)
+n
+(2n)!
+(2n n!)
+2
+x
+2n+1
+2n + 1
+Romain Dujol 89
+<<<PAGE>>>
+Chapitre 10
+Séries de FOURIER
+Lors de l’étude de sytèmes analogiques (filtres, . . .), on se ramène souvent à l’étude de termes purement
+sinusoïdaux. Dans le cas où le système est linéaire, la stratégie est décomposer l’entrée en signaux sinusoïdaux,
+appliquer le système à chacun des termes de la décomposition et générer la sortie en sommant les termes
+obtenus (c’est la propriété dite « de superposition »).
+10.1 Séries trigonométriques réelles
+10.1.1 Définition
+Définition 10.1 (Série trigonométrique réelle).
+On appelle série trigonométrique (réelle) toute série d’applications de la forme
+X
+n∈N
+[t 7→ an cos(nωt ) + bn sin(nωt )]
+où (an )n∈N et (bn )n∈N sont deux suites numériques à valeurs réelles et ω un nombre réel strictement positif.
+10.1.2 Convergence
+Proposition 10.1. Soit α ∈ R tel que P
+n∈N
+[t 7→ an cos(nωt ) + bn sin(nωt )] converge simplement sur 
+α,α +
+2π
+ω
+
+.
+Alors elle converge simplement sur R et sa somme est une fonction à valeurs réelles
+2π
+ω
+-périodique.
+Démonstration. Pour n ∈ N, on définit fn : R → R
+t 7→ an cos(nωt ) + bn sin(nωt )
+et T =
+2π
+ω
+. Alors :
+∀t ∈ R, fn (t + T ) = an cos[nω(t + T )] + bn sin[nω(t + T )] = an cos(nωt + nωT ) + bn sin(nωt + nωT )
+= an cos(nωt + 2nπ) + bn sin(nωt + 2nπ) = an cos(nωt ) + bn sin(nωt ) = fn (t ).
+Donc fn est T -périodique pour tout n ∈ N. Soit t ∈ R, alors :
+— R est archimédien, donc il existe p ∈ N et η ∈ [0,T [ tel que t − α = p T + η;
+— alors fn (t ) = fn (p T + α + η) = fn (α + η) par T -périodicité.
+Comme α + η ∈ [α,α + T [,
+P
+n∈N
+fn (α + η) converge : donc P
+n∈N
+fn (t ) converge. Donc P
+n∈N
+fn converge simplement sur R.
+Romain Dujol 90
+<<<PAGE>>>
+Notons S la somme de P
+n∈N
+fn . Comme pour tout entier naturel n, fn est une fonction T -périodique, on a :
+∀t ∈ R, S(t + T ) =X+∞
+n=0
+fn (t + T ) =X+∞
+n=0
+fn (t ) = S(t )
+Donc S est T -périodique.
+Proposition 10.2. Soitα ∈ R tel que P
+n∈N
+[t 7→ an cos(nωt ) + bn sin(nωt )] converge uniformément sur 
+α,α +
+2π
+ω
+
+.
+Alors elle converge uniformément sur R et sa somme est une fonction à valeurs réelles
+2π
+ω
+-périodique.
+Démonstration. Pour n ∈ N, on définit fn : R → R
+t 7→ an cos(nωt ) + bn sin(nωt )
+et T =
+2π
+ω
+.
+D’après le théorème précédent,
+P
+n∈N
+fn converge simplement sur R et S =
+X+∞
+n=0
+fn est T -périodique.
+Soit n ∈ N. Alors Rn =
+X+∞
+k=n+1
+fk est la somme d’une série trigonométrique réelle. Donc, d’après le théorème précédent,
+Rn est T -périodique. Soit t ∈ R, alors :
+— R est archimédien, donc il existe p ∈ N et η ∈ [0,T [ tel que t − α = p T + η;
+— alors Rn (t ) = Rn (p T + α + η) = Rn (α + η) par T -périodicité.
+Comme α + η ∈ [α,α + T [, il vient que |Rn (t )| = |Rn (α + η)| ≤ sup
+x∈[α,α+T [
+|Rn (x )|.
+Comme P
+n∈N
+fn converge uniformément, (Rn )n∈N converge uniformément sur[α,α + T [ puis lim n→+∞
+
+sup
+x∈[α,α+T [
+|Rn (x )|
+
+=
+0. On conclut donc que P
+n∈N
+fn converge uniformément sur R.
+10.1.3 Développement en série de FOURIER réel
+Lemme. Soit n ∈ N, ω ∈ R∗
++
+et T =
+2π
+ω
+. Alors Z T
+0
+sin(nωt )dt = 0 et Z T
+0
+cos(nωt )dt =
+¨
+T si n = 0
+0 si n ̸= 0
+.
+Démonstration. Soit n ∈ N.
+• t 7→ cos(nωt ) est 2π-périodique et paire donc Z T
+0
+cos(nωt )dt =
+Z T /2
+−T /2
+cos(nωt )dt = 2
+Z T /2
+0
+cos(nωt )dt .
+· Si n = 0, alors Z T /2
+0
+cos(nωt )dt = 2
+Z T /2
+0
+dt = T .
+· Si n ̸= 0, alors Z T /2
+0
+cos(nωt )dt = 2
+
+sin(nωt )
+nω
+T /2
+0
+= 0.
+• t 7→ sin(nωt ) est T -périodique et impaire donc Z T
+0
+sin(nωt )dt =
+Z T /2
+−T /2
+sin(nωt )dt = 0.
+Lemme. Soit (n,m) ∈ N2, ω ∈ R∗
++
+et T =
+2π
+ω
+. Alors Z T
+0
+cos(nωt )· sin(mωt )dt = 0 et
+Z T
+0
+cos(nωt )· cos(mωt )dt =
+
+
+
+T si n = m = 0
+T/2 si n = m ̸= 0
+0 si n ̸= m
+et Z T
+0
+sin(nωt )· sin(mωt )dt =
+
+
+
+0 si n = m = 0
+T/2 si n = m ̸= 0
+0 si n ̸= m
+Romain Dujol 91
+<<<PAGE>>>
+Démonstration. Soit (n,m) ∈ N2
+.
+• t 7→ cos(nωt )·sin(mωt ) estT -périodique et impaire. DoncZ T
+0
+cos(nωt )·sin(mωt )dt =
+Z T /2
+−T /2
+cos(nωt )·sin(mωt )dt = 0.
+• t 7→ cos(nωt )· cos(mωt ) est T -périodique et paire. Donc :
+Z T
+0
+cos(nωt )· cos(mωt )dt =
+Z T /2
+−T /2
+cos(nωt )· cos(mωt )dt = 2
+Z T /2
+0
+cos(nωt )· cos(mωt )dt
+= ✁2
+Z T /2
+0
+cos[(n −m)ωt ] + cos[(n +m)ωt ]
+✁2
+dt
+=
+Z T /2
+0
+cos[(n −m)ωt ]dt +
+Z T /2
+0
+cos[(n +m)ωt ]dt =
+
+
+
+T si n = m = 0
+T/2 si n = m ̸= 0
+0 si n ̸= m
+• t 7→ sin(nωt )· sin(mωt ) est T -périodique et paire. Donc :
+Z T
+0
+sin(nωt )· sin(mωt )dt =
+Z T /2
+−T /2
+sin(nωt )· sin(mωt )dt = 2
+Z T /2
+0
+sin(nωt )· sin(mωt )dt
+= ✁2
+Z T /2
+0
+cos[(n −m)ωt ] − cos[(n +m)ωt ]
+✁2
+dt
+=
+Z T /2
+0
+cos[(n −m)ωt ]dt −
+Z T /2
+0
+cos[(n +m)ωt ]dt =
+
+
+
+0 si n = m = 0
+T/2 si n = m ̸= 0
+0 si n ̸= m
+Théorème 10.1. Soit P
+n∈N
+[t 7→ an cos(nωt ) + bn sin(nωt )] une série trigonométrique réelle qui converge
+uniformément sur R. On note S sa somme et T =
+2π
+ω
+sa période. Alors a0 =
+1
+T
+Z T
+0
+S(t )dt et
+∀n ≥ 1, an =
+2
+T
+Z T
+0
+S(t )cos(nωt )dt et bn =
+2
+T
+Z T
+0
+S(t ) sin(nωt )dt
+Démonstration. Pour n ∈ N, on définit fn : R → R
+t 7→ an cos(nωt ) + bn sin(nωt )
+: fn est continue sur R.
+De plus, P
+n∈N
+fn converge uniformément sur R, donc sur [0,T ]. Soit m un entier naturel :
+— pour tout n ∈ N, t 7→ fn (t )cos(mωt ) et t 7→ fn (t ) sin(mωt ) sont continues sur R;
+— ∀n ∈ N, ∀t ∈ R,
+
+
+
+
+
+X+∞
+k=n+1
+fk(t )cos(mωt )
+
+
+
+
+
+=
+
+Rn (t )cos(mωt )
+
+ ≤ |Rn (t )| ≤ ∥Rn ∥∞
+Comme (Rn )n∈N converge uniformément sur R vers la fonction nulle, il vient que lim n→+∞∥Rn ∥∞ = 0 puis que
+P
+n∈N
+[t 7→ fn (t )cos(mωt )] converge uniformément sur R.
+De même, on montre que P
+n∈N
+[t 7→ fn (t ) sin(mωt )] converge uniformément sur R.
+Romain Dujol 92
+<<<PAGE>>>
+On peut donc appliquer le théorème d’interversion somme-intégrale et les lemmes précédents :
+Z T
+0
+S(t )dt =
+Z T
+0
+¨X+∞
+n=0
+[an cos(nωt ) + bn sin(nωt )]«dt =
+X+∞
+n=0
+¨Z T
+0
+[an cos(nωt ) + bn sin(nωt )]«dt
+=
+X+∞
+n=0
+
+an
+Z T
+0
+cos(nωt )dt + bn
+✟✟✟
+Z T
+✟✟✟✟
+0
+sin(nωt )dt
+
+ = a0
+· T
+∀m ≥ 1, Z T
+0
+S(t )cos(mωt )dt =
+Z T
+0
+¨X+∞
+n=0
+[an cos(nωt )cos(mωt ) + bn sin(nωt )cos(mωt )]«dt
+=
+X+∞
+n=0
+¨Z T
+0
+[an cos(nωt )cos(mωt ) + bn sin(nωt )cos(mωt )]«dt
+=
+X+∞
+n=0
+
+an
+Z T
+0
+cos(nωt )cos(mωt )dt + bn
+✘
+Z
+✘
+T
+✘✘✘✘✘✘✘✘✘
+0
+sin(nωt )cos(mωt )dt
+
+= am ·
+T
+2
+∀m ≥ 1, Z T
+0
+S(t ) sin(mωt )dt =
+Z T
+0
+¨X+∞
+n=0
+[an cos(nωt ) sin(mωt ) + bn sin(nωt ) sin(mωt )]«dt
+=
+X+∞
+n=0
+¨Z T
+0
+[an cos(nωt ) sin(mωt ) + bn sin(nωt ) sin(mωt )]«dt
+=
+X+∞
+n=0
+
+an
+✘
+Z
+✘
+T
+✘✘✘✘✘✘✘✘✘
+0
+cos(nωt ) sin(mωt )dt + bn
+Z T
+0
+sin(nωt ) sin(mωt )dt
+
+= bm ·
+T
+2
+Remarque. Le coefficient a0 est donc égale à la valeur moyenne de S sur une période.
+Définition 10.2 (Développement en série de FOURIER réel).
+Soit T un réel strictement positif et f une application T -périodique sur R.
+On définit le développement en série de FOURIER (réel) de f comme la série trigonométrique
+P
+n∈N
+[t 7→ an cos(nωt ) + bn sin(nωt )] avec ω =
+2π
+T
+, a0 =
+1
+T
+Z T
+0
+f (t )dt et
+∀n ≥ 1, an =
+2
+T
+Z T
+0
+f (t )cos(nωt )dt et bn =
+2
+T
+Z T
+0
+f (t ) sin(nωt )dt
+Les suites (an )n∈N et (bn )n≥1 sont appelées coefficients de FOURIER (réels) de f .
+Proposition 10.3. Soit T un réel strictement positif et f une application T -périodique sur R.
+On note (an )n∈N et (bn )n≥1les coefficients de FOURIER réels de f .
+Si f est paire, alors a0 =
+2
+T
+Z T /2
+0
+f (t )dt et
+∀n ≥ 1, an =
+4
+T
+Z T /2
+0
+f (t )cos(nωt )dt et bn = 0
+Si f est impaire, alors a0 = 0 et
+∀n ≥ 1, an = 0 et bn =
+4
+T
+Z T /2
+0
+f (t ) sin(nωt )dt
+Romain Dujol 93
+<<<PAGE>>>
+Démonstration. Les fonctions f , t 7→ cos(nωt ) et t 7→ sin(nωt ) sont T -périodiques.
+• Si f est impaire, alors t 7→ f (t )cos(nωt ) est paire et t 7→ f (t ) sin(nωt ) est impaire :
+a0 =
+1
+T
+Z T
+0
+f (t )dt =
+1
+T
+Z T /2
+−T /2
+f (t )dt =
+2
+T
+Z T /2
+0
+f (t )dt
+∀n ≥ 1, an =
+2
+T
+Z T
+0
+f (t )cos(nωt )dt =
+2
+T
+Z T /2
+−T /2
+f (t )cos(nωt )dt =
+4
+T
+Z T /2
+0
+f (t )cos(nωt )dt
+∀n ≥ 1, bn =
+2
+T
+Z T
+0
+f (t ) sin(nωt )dt =
+2
+T
+Z T /2
+−T /2
+f (t ) sin(nωt )dt = 0
+• Si f est impaire, alors t 7→ f (t )cos(nωt ) est impaire et t 7→ f (t ) sin(nωt ) est paire :
+a0 =
+1
+T
+Z T
+0
+f (t )dt =
+1
+T
+Z T /2
+−T /2
+f (t )dt =
+2
+T
+Z T /2
+0
+f (t )dt
+∀n ≥ 1, an =
+2
+T
+Z T
+0
+f (t )cos(nωt )dt =
+2
+T
+Z T /2
+−T /2
+f (t )cos(nωt )dt = 0
+∀n ≥ 1, bn =
+2
+T
+Z T
+0
+f (t ) sin(nωt )dt =
+2
+T
+Z T /2
+−T /2
+f (t ) sin(nωt )dt =
+4
+T
+Z T /2
+0
+f (t ) sin(nωt )dt
+10.2 Séries trigonométriques complexes
+10.2.1 Définition
+Définition 10.3 (Série trigonométrique complexe).
+On appelle série trigonométrique complexe toute « série » d’applications de la forme P
+n∈Z
+
+t 7→ cn e
+i nωt
+
+où (cn )n∈Z est une suite complexe indexée sur Z et ω est un nombre réel strictement positif.
+10.2.2 Convergence
+Proposition 10.4. Soit α ∈ R tel que P
+n∈Z
+
+t 7→ cn e
+i nωt
+
+converge simplement sur α,α +
+2π
+ω
+
+.
+Alors elle converge simplement sur R et sa somme est une fonction
+2π
+ω
+-périodique.
+Démonstration. Pour n ∈ Z, on définit fn : R → C
+t 7→ cn e
+i nωt
+et T =
+2π
+ω
+. Alors :
+∀t ∈ R, fn (t + T ) = cn e
+i nω(t +T ) = cn ei nωt +i nωT = cn ei nωt +2i nπ = cn ei nωt
+e
+2i nπ = cn ei nωt = fn (t )
+Donc fn est T -périodique pour tout n ∈ N.
+Soit t ∈ R, alors :
+— R est archimédien, donc il existe p ∈ N et η ∈ [0,T [ tel que t − α = p T + η;
+— alors fn (t ) = fn (p T + α + η) = fn (α + η) par T -périodicité.
+Comme α + η ∈ [α,α + T [,
+P
+n∈N
+fn (α + η) converge : donc P
+n∈N
+fn (t ) converge. Donc P
+n∈N
+fn converge simplement sur R.
+Romain Dujol 94
+<<<PAGE>>>
+Notons S la somme de P
+n∈N
+fn . Comme pour tout entier naturel n, fn est une fonction T -périodique, on a :
+∀t ∈ R, S(t + T ) = X+∞
+n=−∞
+fn (t + T ) = X+∞
+n=−∞
+fn (t ) = S(t )
+Donc S est T -périodique.
+Proposition 10.5. Soit α ∈ R tel que P
+n∈Z
+
+t 7→ cn e
+i nωt
+
+converge uniformément sur α,α +
+2π
+ω
+
+.
+Alors elle converge uniformément sur R et sa somme est une fonction
+2π
+ω
+-périodique.
+Démonstration. Pour n ∈ N, on définit fn : R → R
+t 7→ cn e
+i nωt
+et T =
+2π
+ω
+.
+D’après le théorème précédent,
+P
+n∈N
+fn converge simplement sur R et S =
+X+∞
+n=0
+fn est T -périodique.
+Soit n ∈ N. Alors Rn =
+X+∞
+k=n+1
+fk est la somme d’une série trigonométrique complexe. Donc, d’après le théorème précédent, Rn est T -périodique. Soit t ∈ R, alors :
+— R est archimédien, donc il existe p ∈ N et η ∈ [0,T [ tel que t − α = p T + η;
+— alors Rn (t ) = Rn (p T + α + η) = Rn (α + η) par T -périodicité.
+Comme α + η ∈ [α,α + T [, il vient que |Rn (t )| = |Rn (α + η)| ≤ sup
+x∈[α,α+T [
+|Rn (x )|.
+Comme P
+n∈N
+fn converge uniformément, (Rn )n∈N converge uniformément sur[α,α + T [ puis lim n→+∞
+
+sup
+x∈[α,α+T [
+|Rn (x )|
+
+=
+0. On conclut donc que P
+n∈N
+fn converge uniformément sur R.
+10.2.3 Développement en série de FOURIER complexe
+Lemme. Soit (n,m) ∈ N2, ω ∈ R∗
++
+et T =
+2π
+ω
+. Alors Z T
+0
+e
+i nωt
+e
+−i mωt dt =
+¨
+T si n = m
+0 si n ̸= m
+.
+Démonstration. Soit (n,m) ∈ N2.
+• Si n = m, alors Z T
+0
+e
+i nωt
+e
+−i mωt dt =
+Z T
+0
+dt = T .
+• Si n ̸= m, alors Z T
+0
+e
+i nωt
+e
+−i mωt dt =
+
+e
+i(n−m)ωt
+(n −m)ω
+T
+0
+=
+e
+2i(n−m)π − 1
+(n −m)ω
+= 0.
+Théorème 10.2. Soit P
+n∈Z
+
+t 7→ cn e
+i nωt
+
+une série trigonométrique complexe qui converge uniformément sur R. On note S : t 7→
++
+X∞
+n=−∞
+cn e
+i nωt
+et T =
+2π
+ω
+sa période. Alors
+∀n ∈ Z, cn =
+1
+T
+Z T
+0
+S(t )e
+−i nωt dt
+Romain Dujol 95
+<<<PAGE>>>
+Démonstration. Pour n ∈ Z, on définit fn : R → R
+t 7→ cn e
+−i nωt
+: fn est continue sur R.
+De plus, P
+n∈Z
+fn converge uniformément sur R, donc sur [0,T ]. Soit m un entier naturel :
+— pour tout n ∈ Z, t 7→ fn (t )e
+−i mωt est continue sur R;
+— ∀n ∈ N, ∀t ∈ R,
+
+
+
+
+
+X+∞
+k=n+1
+fk(t )e
+−i mωt +
+−Xn−1
+k=−∞
+fk(t )e
+−i mωt
+
+
+
+
+
+=
+
+Rn (t )e
+−i mωt
+
+ ≤ |Rn (t )| ≤ ∥Rn ∥∞
+Comme (Rn )n∈N converge uniformément sur R vers la fonction nulle, il vient que lim n→+∞∥Rn ∥∞ = 0 puis que
+P
+n∈N
+
+t 7→ fn (t )e
+−i mωt
+
+converge uniformément sur R.
+On peut donc appliquer le théorème d’interversion somme-intégrale et les lemmes précédents :
+∀m ∈ Z,
+Z T
+0
+S(t )e
+−i mωt dt =
+Z T
+0
+X+∞
+n=−∞
+cn e
+i nωt
+e
+−i mωt dt =
+X+∞
+n=−∞
+cn
+Z T
+0
+e
+i nωt
+e
+−i mωt dt = cn · T
+Définition 10.4 (Développment en série de FOURIER).
+Soit T un réel strictement positif et f une application de R dans C T -périodique.
+On définit le développement en série de FOURIER complexe de f comme la série trigonométrique
+P
+n∈N
+
+t 7→ cn e
+i nωt
+
+avec ω =
+2π
+T
+et cn =
+1
+T
+Z T
+0
+f (t )e
+−i nωt dt pour tout n ∈ Z.
+La suite (cn )n∈Z est appelée coefficients de FOURIER complexes de f .
+Proposition 10.6. Soit T un réel strictement positif et f une application de R dans C T -périodique.
+On note (cn )n∈Z les coefficients de FOURIER complexes de f .
+Si f est exclusivement à valeurs réelles, alors c−n = cn pour tout entier relatif n.
+Démonstration. ∀n ∈ Z, c−n =
+1
+T
+Z T
+0
+f (t )e
+i nωt dt =
+1
+T
+Z T
+0
+f (t )e −i nωt dt =
+1
+T
+Z T
+0
+f (t )e
+−i nωt dt = cn
+Proposition 10.7 (Relations entre coefficients de FOURIER réels et complexes).
+Soit f une application T -périodique sur R. On note (an )n∈N et (bn )n≥1 ses coefficients de FOURIER réels et
+(cn )n∈Z ses coefficients de FOURIER complexes.
+• c0 = a0 et ∀n ≥ 1,
+
+
+
+cn =
+an − i bn
+2
+c−n =
+an + i bn
+2
+• a0 = c0 et ∀n ≥ 1, 
+an = cn + c−n = 2ℜe cn
+bn = i(cn − c−n ) = −2ℑmcn
+Romain Dujol 96
+<<<PAGE>>>
+Démonstration. Notons que c0 =
+1
+T
+Z T
+0
+f (t )e
+−i 0ωt dt =
+1
+T
+Z T
+0
+f (t )dt = a0
+• ∀n ∈ N, cn =
+1
+T
+Z T
+0
+f (t )e
+−i nωt dt =
+1
+T
+Z T
+0
+f (t )[cos(nωt ) − i sin(nωt )]dt
+=
+1
+T
+Z T
+0
+f (t )cos(nωt )dt − i
+1
+T
+Z T
+0
+f (t ) sin(nωt )dt =
+an
+2
+− i
+bn
+2
+c−n =
+1
+T
+Z T
+0
+f (t )e
+i nωt dt =
+1
+T
+Z T
+0
+f (t )[cos(nωt )i sin(nωt )]dt
+=
+1
+T
+Z T
+0
+f (t )cos(nωt )dt + i
+1
+T
+Z T
+0
+f (t ) sin(nωt )dt =
+an
+2
++ i
+bn
+2
+• ∀n ∈ N, an =
+2
+T
+Z T
+0
+f (t )cos(nωt )dt =
+✁2
+T
+Z T
+0
+f (t )
+e
+−i nωt + ei nωt
+✁2
+dt
+=
+1
+T
+Z T
+0
+f (t )e
+−i nωt dt +
+1
+T
+Z T
+0
+f (t )e
+−i nωt dt = cn + c−n
+bn =
+2
+T
+Z T
+0
+f (t ) sin(nωt )dt =
+✁2
+T
+Z T
+0
+f (t )
+−e
+−i nωt + ei nωt
+✁2i
+dt =
+i
+T
+Z T
+0
+f (t )(e
+−i nωt − ei nωt
+)dt
+=
+i
+T
+Z T
+0
+f (t )e
+−i nωt dt −
+i
+T
+Z T
+0
+f (t )e
+−i nωt dt = i(cn − c−n )
+10.3 Convergence du développement en série de FOURIER
+10.3.1 Fonctions périodiques de classe C
+1 par morceaux sur R
+Définition 10.5 (Discontinuité de première espèce).
+Soit I un intervalle ouvert de R, t0 un point de I et f une application définie sur I \{t0}.
+On dit que f possède une discontinuité de première espèce en t 0 si et seulement f admet une limite
+finie à gauche en t0 et une limite finie à droite en t0. Auquel cas, on note :
+f
+
+t
+−
+0
+
+= lim
+t →t
+−
+0
+f (t ) et f
+
+t
++
+0
+
+= lim
+t →t
++
+0
+f (t )
+Définition 10.6 (Fonction de classe C 1 par morceaux). Soit a et b deux réels tels que a < b .
+Une application f est dite C 1 par morceaux sur [a,b ] si et seulement si il existe une subdivision
+σ = {t0 = a,t1, . . . ,tn−1,tn = b } de [a,b ] telle que pour tout entier naturel i ∈ J1,nK :
+1. f est de classe C 1sur ]ti−1,ti[;
+2. la restriction de f à ]ti−1,ti[ se prolonge sur [ti−1,ti] en une application de classe C 1.
+Romain Dujol 97
+<<<PAGE>>>
+Proposition 10.8 (Caractérisation rapide). Soit a et b deux nombres réels tels que a < b .
+Une application f est C 1 par morceaux sur [a,b ] si et seulement si il existe une subdivision
+σ = {t0 = a,t1, . . . ,tn−1,tn = b } de [a,b ] telle que pour tout entier naturel i ∈ J1,nK :
+1. f est de classe C 1sur ]ti−1,ti[;
+2. f et f
+′ admettent une discontinuité de première espèce en ti
+.
+Exemple. Soit f : [0, 2π] → R
+t 7→
+¨
+t si x ∈ [0,π]
+2π − t si x ∈ ]π, 2π]
+Montrons que f est de classe C 1 par morceaux sur [0, 2π] :
+— sur les intervalles ]0,π[ et ]π, 2π[, f est polynômiale donc de classe C 1;
+— on a f (0
++) = f (2π−) = 0 et f (π−) = f (π+) = π : donc toutes les discontinuités de f sont de première
+espèce ;
+— on a f
+′
+(0
++) = f′
+(π
+−) = 1 et f′
+(π
++) = f′
+(2π
+−) = −1 : donc toutes les discontinuités de f′
+sont de première
+espèce.
+Donc f est de classe C 1 par morceaux sur [0, 2π]. (Notons que f est de plus continue sur [0, 2π].)
+Définition 10.7 (Fonction périodique de classe C 1 par morceaux).
+Soit T un réel strictement positif et f une application T -périodique sur R.
+f est dite périodique C 1 par morceaux sur R si et seulement si il existe un nombre réel α tel que f soit
+de classe C 1 par morceaux sur [α,α + T ].
+10.3.2 Théorème de DIRICHLET
+Théorème 10.3 (Théorème de DIRICHLET).
+Soit T un réel strictement positif et f une application T -périodique de classe C 1 par morceaux sur
+R. Alors les développements en série de FOURIER réel et complexe de f converge simplement sur R vers
+l’application Sf: R → R
+t 7→
+f (t
+−) + f (t+)
+2
+.
+IMPORTANT. f et Sf coïncident en tout point de continuité de f .
+10.3.3 Théorème de PARSEVAL
+Théorème 10.4 (Théorème de PARSEVAL).
+Soit T un réel strictement positif et f une application T -périodique de classe C 1 par morceaux
+sur R. On note (an )n∈N et (bn )n≥1 ses coefficients de FOURIER réels et (cn )n∈Z ses coefficients de FOURIER
+complexes. Alors :
+1
+T
+Z T
+0
+
+f (t )
+2
+dt = a
+2
+0 +
++
+X∞
+n=1
+a
+2
+n + b
+2
+n
+2
+=
++
+X∞
+n=−∞
+|cn |
+2
+Romain Dujol 98
+<<<PAGE>>>
+Rappels Comme cos(x + π) = −cos x et sin(x + π) = −sin x pour tout x ∈ R, on a par récurrence que :
+∀n ∈ N, cos(x + nπ) = (−1)
+n
+cos x et sin(x + nπ) = (−1)
+n
+sin x
+En particulier, en x = 0, cosnπ = (−1)
+n
+cos 0 = (−1)
+n et sinnπ = (−1)n
+sin 0 = 0.
+Soit n ∈ N. Pour calculer sin
+nπ
+2
+, on distingue deux cas :
+— si n est pair, alors n = 2p et sin
+nπ
+2
+= sin
+2pπ
+2
+= sinpπ = 0 ;
+— si n est impair, alors n = 2p + 1 et sin
+nπ
+2
+= sin
+(2p + 1)π
+2
+= sinpπ +
+π
+2
+
+= (−1)
+p
+sin
+π
+2
+= (−1)
+p
+.
+Autrement dit, sin
+nπ
+2
+
+n∈N
+= (0, 1, 0,−1, 0, 1, 0,−1, 0, 1, . . .).
+Interprétation physique
+Si f est T -périodique, continue et de classe C 1 par morceaux et que (an )n∈N et (bn )n≥1 sont ses coefficients
+de FOURIER réels, alors ∀t ∈ R, f (t ) = a0 +
++
+X∞
+n=1
+[an cos(nωt ) + bn sin(nωt )].
+En reprenant le vocabulaire utilisé en physique, f est un signal périodique avec :
+— sa période T , sa pulsation ω =
+2π
+T
+et sa fréquence
+1
+T
+=
+ω
+2π
+;
+— sa valeur moyenne a0 = 〈f 〉 =
+1
+T
+Z T
+0
+f (t )dt ;
+— son harmonique de rang n fn : t 7→ [an cos(nωt ) + bn sin(nωt )]; l’harmonique de rang un est appelé
+fondamental (car sa période est égale à celle de f ).
+Soit n un entier naturel. Si (an ,bn ) ̸= (0, 0), il existe un unique couple (An ,ϕn ) ∈ R∗
++ ×
+i
+−
+π
+2
+,
+π
+2
+h
+tel que :
+∀t ∈ R, an cos(nωt ) + bn sin(nωt ) = An cos(nωt − ϕn )
+Plus précisément :
+— si an = 0 et bn > 0, alors An = bn et ϕn =
+π
+2
+;
+— si an = 0 et bn < 0, alors An = −bn et ϕn = −
+π
+2
+;
+— si an ̸= 0, alors An =
+Æ
+a
+2
+n + b
+2
+n et ϕn = arctan
+bn
+an
+
+.
+Les valeurs An et ϕn sont respectivement l’amplitude et la phase de l’harmonique de rang n.
+La représentation graphique de n 7→ An est appelée spectre de fréquence du signal f .
+Remarque. La formule de PARSEVAL se réécrie
+1
+T
+Z T
+0
+
+f (t )
+2
+dt = a
+2
+0 +
+1
+2
++
+X∞
+n=1
+A
+2
+n
+.
+En remarquant que la puissance du signal fn : t 7→ [an cos(nωt ) + bn sin(nωt )] est égal à
+A
+2
+n
+2
+=
+a
+2
+n + b
+2
+n
+2
+, la formule de PARSEVAL traduit la conservation de la puissance : la puissance du signal est la
+seule somme des puissances de toutes les harmoniques qui la composent (il n’y a pas de termes croisés).
+Romain Dujol 99

@@ -1,0 +1,118 @@
+Synthèse de Révision pour le CC3 : Algèbre Linéaire et Bilinéaire
+
+1. Systèmes Différentiels Linéaires du Premier Ordre
+
+La résolution repose sur la réduction de l'opérateur linéaire associé pour découpler les équations du système.
+
+Mise sous forme matricielle
+
+Il convient d'écrire le système sous la forme X'(t) = AX(t) + B(t) , où :
+
+X(t) est le vecteur colonne des fonctions inconnues.
+
+A ∈ ℳn(ℝ) est la matrice des coefficients constants.
+
+B(t) est le vecteur second membre (système homogène si B(t) = 0 ).
+
+Résolution par changement de variable
+
+Si A est diagonalisable, il existe P ∈ GLₙ(ℝ) telle que A = PDP⁻¹ . On pose le changement de variable Y(t) = P⁻¹X(t) (soit X(t) = PY(t) ).
+
+Système découplé : Le système devient Y'(t) = DY(t) + P⁻¹B(t) .
+
+Cas homogène : La solution est Y(t) = (c1eλ₁t, ..., cneλₙt)T  .
+
+Matrice de passage : La matrice P est constituée des vecteurs propres en colonnes : P = (v₁ | v₂ | ... | vₙ) . Solution Générale (Cas homogène) : La solution s'exprime soit de façon compacte via l'exponentielle de matrice, soit comme combinaison linéaire des modes propres : X(t) = P etD C ⟺ X(t) = ∑i=1n ci eλᵢt vi  . Pour le cas non homogène, le candidat appliquera la méthode de variation de la constante . Note : La diagonalisation, moteur de cette résolution, constitue le cœur de l'étude algébrique suivante.
+
+2. Réduction des Endomorphismes : Fondements
+
+Avant tout calcul, le candidat doit s'assurer que le polynôme caractéristique est scindé sur 𝕂 .
+
+Définitions et outils de caractérisation
+
+Polynôme Caractéristique : χf(λ) = det(f - λ idE) . Ses racines constituent le spectre Sp(f) .
+
+Valeur propre : λ est valeur propre s'il existe v ≠ 0E  tel que f(v) = λv .
+
+Vecteur propre : Par définition, un vecteur propre est toujours non nul ( v ∈ E \ {0E} ).
+
+Sous-espace propre (Eλ) : Défini par Eλ = Ker(f - λ idE) . C'est l'ensemble des vecteurs propres associés à λ , augmenté du vecteur nul.
+
+Conditions impératives de diagonalisation
+
+Un endomorphisme f est diagonalisable si et seulement si :
+
+χf est scindé sur 𝕂 .
+
+Pour chaque λ ∈ Sp(f) , dim(Eλ) = mλ  (où mλ  est la multiplicité de la racine dans χf  ). Réflexe TD1 : 0 est valeur propre de f si et seulement si f n'est pas bijectif ( det(A) = 0 ).
+
+3. Formes Bilinéaires et Produits Scalaires
+
+Représentation matricielle
+
+Soit ϕ une forme bilinéaire sur E et ℬ une base de E . Il existe une unique matrice A ∈ ℳn(ℝ) telle que : ϕ(x, y) = XT A Y . Le candidat veillera à préciser la base ℬ utilisée, car la matrice A en dépend (piège classique du DS3).
+
+Check-list du Produit Scalaire
+
+Pour qu'une forme ⟨⋅, ⋅⟩ soit un produit scalaire sur un espace réel, elle doit être :
+
+  Bilinéaire  : Linéaire à gauche et à droite.
+
+ Symétrique : ⟨x, y⟩ = ⟨y, x⟩ (implique A = AT  ).
+
+ Positive : ∀x ∈ E, ⟨x, x⟩ ≥ 0 .
+
+ Définie : ⟨x, x⟩ = 0 ⟹ x = 0E .
+
+Exemples de référence
+
+Espace ℝ² (DS3 Ex 2) : ϕ(x, y) = (x1 + x2)(y1 + y2) + x1y1 + x2y2  .
+
+Espace ℝ2[X] (DS3 Ex 4) : ⟨P, Q⟩ = ∫01 x P(x) Q(x) dx .
+
+Norme associée : ‖x‖ = √⟨x, x⟩ .
+
+4. Espaces Euclidiens et Orthogonalité
+
+Un espace eucliden est un espace vectoriel de  dimension finie  muni d'un produit scalaire.
+
+Orthogonalité et Supplémentarité
+
+Déf : F⊥ = { x ∈ E | ∀y ∈ F, ⟨x, y⟩ = 0 } .
+
+Propriétés : F ∩ F⊥ = {0E} .
+
+Théorème fondamental : Dans un espace euclidien, E = F ⊕ F⊥ .
+
+Dimension : dim(F⊥) = dim(E) - dim(F) .
+
+Bases Orthonormales
+
+Une base (e1, ..., en) est orthonormale si ⟨ei, ej⟩ = δij (vecteurs de norme 1 et orthogonaux deux à deux). Si une base n'est pas orthonormale, on utilise le procédé d'orthonormalisation de Gram-Schmidt .
+
+5. Méthodologie et Points de Vigilance
+
+Tableau de Synthèse Rédactionnelle
+
+Erreur Classique (DS3/TD),Réflexe Correct
+
+Inclure 0E  dans les vecteurs propres.,Toujours préciser v ≠ 0E  pour une valeur propre.
+
+"Chercher les éléments propres ""à tâtons"".","Calculer χf(λ) , vérifier s'il est scindé ."
+
+Oublier la symétrie pour un produit scalaire.,Vérifier immédiatement si la matrice A est symétrique.
+
+Négliger la dimension finie pour F ⊕ F⊥ .,Mentionner explicitement que l'espace est euclidien.
+
+Utiliser ‖x‖ = √(∑ xᵢ²) par défaut.,La norme dépend du produit scalaire ϕ défini par l'énoncé.
+
+Astuces de vérification (Reflexes CPGE)
+
+Trace et Déterminant (TD1 Ex 15) : Pour une matrice A , Tr(A) = ∑in λi  et det(A) = ∏in λi  . C'est le test ultime pour valider vos valeurs propres.
+
+Théorème du rang : Pour trouver dim(Eλ) , on calcule rg(A - λI) et on applique : dim(Eλ) = n - rg(A - λI) .
+
+Détermination de F⊥
+
+Pour un sous-espace F = Vect(u1, ..., uk) , un vecteur x appartient à F⊥  si et seulement si : ∀i ∈ {1, ..., k}, ⟨x, ui⟩ = 0 . Cela conduit à un système d'équations linéaires sur les coordonnées de x . Si E = ℝn[X] , on traite les coefficients du polynôme comme des inconnues.
+

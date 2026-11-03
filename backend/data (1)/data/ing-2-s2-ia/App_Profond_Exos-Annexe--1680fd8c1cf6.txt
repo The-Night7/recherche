@@ -1,0 +1,58 @@
+Deep Learning-TP num´ ero 2-Notes au sujet de
+Keras
+14 d´ ecembre 2017
+1 Introduction
+Pour une description d´ etaill´ ee de la librairieKeras, on se r´ ef´ erera ` a la do-
+cumentation : https://keras.io/. Celle que nous donnons ici est forc´ ement
+tr` es sommaire.
+Les programmes manipulant les RNN avec Keras se composent de 5
+´ etapes :
+1. Lecture des donn´ ees.
+2. Construction du r´ eseau par des ajouts successifs de couches (la com-
+mande model.add).
+3. Compilation (pr´ eparation de l’apprentissage,model.compile).
+4. Apprentissage ( model.ﬁt).
+5. ´Evaluation (model.evaluate).
+2 D´ eﬁnition du r´ eseau
+1. Cette d´ eﬁnition commence par le choix du type de mod` ele. Ici nous
+consid´ erons uniquement le types´ equentiel(model = Sequential() ).
+2. Ensuite il faut ajouter les niveaux en commen¸ cant par le premier
+niveau cach´ e.
+3. Plusieurs types de niveaux peuvent ˆ etre utilis´ es. Citons notamment les
+niveaux Dense (ceux des r´ eseaux de neurons ordinaires), les niveaux
+Conv2D et MaxPooling2D qui comme leurs noms l’indiquent sont des
+niveaux des r´ eseaux convolutionnels. Les couchesFlatten sont utilis´ ees
+pour passer de la dimension 2 ` a la dimension 1.
+1
+<<<PAGE>>>
+4. Certains types de niveaux sont l` a pour aﬃner les r´ esultats. Exemple :
+les couches Dropout dont le rˆ ole est d’´ eviter le sur-apprentissage en
+mettant ` a 0 une fractionr des entr´ ees durant chaque ´ etape de l’ap-
+prentissage.
+5. Pour chaque niveau on pr´ ecise notamment les dimensions et la fonction
+d’activation (exemples : softmax, relu ou sigmoide).
+3 Compilation
+Cette phase fait appel aux librairies appel´ ees ’backend’ (Tensorﬂow dans
+notre cas). On notera qu’au moment de la compilation un message s’aﬃche
+qui nous dit que le programme utilise Tensorﬂow comme backend. L’objectif
+de la compilation est de pr´ eparer l’apprentissage. Pour ce faire le program-
+meur doit pr´ eciser la fa¸ con dont l’erreur est ´ evalu´ ee (exemple :categori-
+cal crossentropy ou binary crossentropy), l’algorithme utilis´ e pour l’appren-
+tissage (exemples : adam, une version de la descente du gradient ou Adadelta
+(voir documentation)) ainsi que le crit` ere pour ´ evaluer les performances du
+r´ eseau (exemple : la pr´ ecision (accuracy)).
+4 Apprentissage
+La commande model.ﬁt lance l’apprentissage. pour ce faire elle utilise les
+param` etres suivants :
+— L’ensemble d’apprentissage (le couple ( x train, y train) dans le cas
+de notre TP).
+— L’ensemble de test.
+— La taille des ’batchs’ : les exemples d’apprentissage sont utilis´ es ’par
+vague’. Les poids et les biais des neurones sont mis ` a jours apr` es chaque
+’vague’. C’est la taille de ces vagues que l’on appelle la ’batch size’.
+— Un param` etre nomm´ eepochs qui est en rapport avec le nombre d’it´ erations
+de l’algorithme de la descente du gradient dans sa version stochastique.
+5 ´Evaluation
+La fonction model.evaluate permet de r´ ecup´ erer le param` etre utilis´ e pour
+mesurer la performance du r´ eseau.
+2

@@ -1,0 +1,146 @@
+Correction de l’examen de Data Exploration de ING1 GI
+Exercice 1
+Question 1. 1pt
+Variables ´ etudi´ ees et les moyens de les rep´ esenter
+• Quantitatives discr` etes : Price ; Minimum nights; Number of reviews; Availability. Par un diagramme en bˆ atons.
+• Quantitatives continues : Latitudes, Longitudes; (Price). Par un histogramme.
+• Qualitatives ordinales : none.
+• Qualitatives nominales : Arrondissements; Room type. Par des diagrammes en secteurs.
+Question 2. 0.5pt
+Population ´ etudi´ ee : logements dans la ville.
+Taille de l’´ echantillon : 500 logements.
+Partie A : Analyse univari´ ee
+Question 3. 1pt
+1er quartile : 85. Un quart des logements a un prix en-dessous de 85 (dollars).
+M´ ediane : 125. La moiti´ e des logements a un prix en-dessous de 125 dollars.
+3eme quartile : 186; 3 logements sur 4 ont un prix en dessous de 186 dollars.
+(Maximum : 2000 dollars, prix du logement le plus cher. )
+Question 4. 0.5pt
+´Ecart inter-quartile : 186 - 85 =101 dollars.
+´Etendue : max-min=2000-33=1967 dollars.
+Question 5. 0.5pt
+Moyenne : 152 > Mediane, donc beaucoup de valeurs extrˆ emes, de logements tr` es chers.
+Valeurs des prix ne sont pas r´ eparties de mani` ere sym´ etrique par rapport ` a la m´ ediane et la moyenne est un indicateur
+sensible aux valeurs extrˆ emes.
+Question 6. 0.5pt
+Indicateurs de position : Q1, m´ ediane, Q3, moyenne, (min), (max).
+Indicateurs de dispersion : ´ etendue, ´ ecart inter-quartile.
+Question 7. 1.5pt
+a) Extr´ emit´ es des moustaches :
+max (Q1 - 1,5 x ´ ecart interquartile, min) =max( 85 - 1,5 x 101,33) =33
+min (Q3 + 1,5 x ´ ecart interquartile, max) =min( 186 + 1,5 x 101,2000) = 337,5
+b) On voit sur le boxplot qu’il y a au moins une valeur aberrante. Beaucoup de valeurs sont extrˆ emes (au-dessus du second
+de la deuxi` eme moustache), mais une valeur, le maximum, est tr` es ´ eloign´ ee du reste des donn´ ees. (On peut se demander, si
+en tra¸ cant un boxplot sans cette valeur, le nouveau maximum est aussi une valeur aberrante.)
+Partie B : Analyse bivari´ ee : Prix et Neighbourhood
+Question 8. 1pt
+Variance inter-groupe : vinter = 1253070 / 500 = 2506,14
+Variance intra-groupe : vintra = 6791083 / 500 = 13582,17
+Variance totale= vinter + vintra =16088,31
+Question 9. 0.5pt
+Rapport de corr´ elation:vinter
+vtotale
+= 0,156. Environ 16% de la variabilit´ e du prix est expliqu´ e par le quartier, ce qui est faible.
+Partie C : Analyse bivari´ ee : type de chambre et arrondissement
+Question 10. 1pt
+1
+<<<PAGE>>>
+2
+Entire Home; apt Private Room Shared room Somme
+Bronx 3 4 0 7
+Brooklyn 139 98 0 237
+Manhattan 139 86 4 229
+Queens 10 12 0 22
+Staten Island 0 5 0 5
+Somme 291 205 4 500
+Question 11. 1.5pt
+n·,1 = 291 : effectif de maisons ou appartements ` a louer en entier
+f2|2 = 98
+205 = 0, 478 proportion, parmi tous les private room, de ceux situ´ es ` a Brooklyn
+ou
+f2|2 = 98
+237 = 0, 414 Proportion de private room parmi tous les logements de Brooklyn
+Question 12. 1.5pt
+Tableau des profils colonnes
+Entire Home; apt Private Room Shared room Profil colonne moyen
+Bronx 0,01 0,02 0 0,01
+Brooklyn 0,48 0,48 0 0,47
+Manhattan 0,48 0,42 1 0,46
+Queens 0,03 0,06 0 0,04
+Staten Island 0 0,02 0 0,01
+Il y a un lien fort entre les deux variables. En effet, le profil colonne associ´ e ` a Shared room est tr` es ´ eloign´ e du profil colonne
+moyen. Cette remarque est ` a nuancer avec l’effectif tr` es faible de chambres partag´ ees. Les deux autres profils colonnes sont
+en revanche tr` es proches du profil moyen.
+Question 13. 1pt
+Effectif th´ eorique : Fr´ equence marginale de la ligne× Fr´ equence marginale de la colonne× Effectif total
+Shared room et Brooklyn : 237 × 4 1
+500 = 1, 896
+Staten Island et Private Room : 205 × 5 1
+500 = 2, 05
+Question 14. 0.5pt
+Calcul de la distance du khi-deux:
+Dχ2 =
+5X
+i=1
+3X
+j=1
+(ni,j − ti,j)2
+ti,j
+o` uni,j est l’effectif observ´ e etti,j est l’effectif th´ eorique
+Question 15. 1pt
+Nombre de degr´ es de libert´ es : (5− 1)(3 − 1) = 8 d.d.l, d’o` u un seuil de 16, 92. Puisque la distance du khi deux est plus
+petite que le seuil, cela signifie que les variables ne sont pas li´ ees. Ceci confirme l’observation des profils colonnes avec le
+faible effectif sur la modalit´ e shared room.
+Question 16. 0.5pt
+Dans le tableau des effectifs th´ eoriques, les valeurs des lignes Bronx et Staten Island et de la colonne Shared Room sont
+plus petites que 5, le r´ esultat n’est pas tr` es fiable.
+Partie D : AFC
+Questions 17 . 0.5pt
+Cette fois-ci, puisque l’effectif total est 28590 logements, les effectifs th´ eoriques devraient tous ˆ etre plus grands que 5. Le
+r´ esultat sera plus fiable. En particulier 675, 85 > 15, 51, donc les variables sont tr` es li´ ees.
+Question 18. 0.5pt
+Chaque axe contient le pourcentage de khi-deux expliqu´ e.
+Le nuage de points repr´ esnte les modalit´ es et vit dans un espace de dimension min(5 , 3) − 1 = 2. Toute l’information
+fournit par le khi-deux est donc repr´ esent´ ee par ces deux axes.
+Question 19. 0.5pt
+<<<PAGE>>>
+3
+L’attiranece entre modalit´ es est expliqu´ e par l’angle qu’elles forment avec 0. Par exemple, Manhattan et Entire Room/apt
+s’attirent; Brooklyn et Provate Room s’attirent; Queens et Shared room n’interagissent pas; Manhattan et Private room se
+repoussent.
+De plus le Bronx est ´ eloign´ e du profil moyen.
+Exercice 2
+Question 1. 0.5pt
+Il y a 11 colonnes, donc 11 axes. L’ACP consiste ` a projeter le nuage de 36 points (observations) dans un espace de
+dimension 11 (variables quantitatives).
+Question 2. 1pt
+Le pourcentage de variance nous donne le graphique de la variance sur chaque axe en fonction du num´ ero de la valeur
+propre : 1 2 3 4 5 6
+Il faut s’arrˆ eter au dernier grand saut de pente. Par la elbow rule, il faut s’arrˆ eter au troisi` eme axe.
+Les 3 premiers axes fournissent 81 , 6% de la variance cumul´ ee, donc 81 , 6% de l’inertie totale du nuage de points est
+expliqu´ ee par ces trois axes.
+La somme des trois premi` eres valeurs propres correspond ` a l’inertie du nuage de points projet´ e sur les 3 premiers axes.
+OU
+La somme des valeurs propres correspond ` a l’inertie totale du nuage de points.
+Question 3. 1pt
+Puisqu’elles ont toutes le mˆ eme poids, chaque variable contribue ` a1
+11 = 9% de la construction globale des axes.
+Le deuxi` eme axe est majoritairement construit par l’altitude (27%), le tmean (15), le tmax (12), le tmin (11) et la latitude
+(10).
+Question 4. 0.5pt
+On identifie trois groupes de variables corr´ el´ ees dans leur repr´ esentation dans le cercle de corr´ elation.
+Un premier groupe de variables corr´ el´ ees positivement est constitu´ e des trois variables de temp´ erature : en haut ` a droite
+on retrouve les villes les plus chaudes alors que les villes les plus froides sont situ´ ees en bas ` a gauche.
+Un second groupe de variables fortement corr´ el´ ees positivement est compos´ e de lat, relhumidity et rainydays. Le troisi` eme
+groupe est constitu´ e du nb d’heures d’ensoleillement, de pmax24h et dans une moindre mesure de la longitude. Ces deux
+derniers groupes sont corr´ el´ es n´ egativement.
+On en d´ eduit qu’en longeant le premier axe, on passe des villes pluvieuses et froides ` a des villes ensoleill´ ees et chaudes,
+alors que le long du second axe on passe des villes froides et ensoleill´ ees ` a des villes chaudes et pluvieuses.
+Question 5. 0.5pt
+La variable pmean est loin du cercle de corr´ elation et proche de 0. Elle est mal repr´ esent´ ee, mais elle contribue ` a 56% ` a la
+construction du troisi` eme axe.
+Question 6. 1pt
+Brest est une ville temp´ er´ ee et pluvieuse avec peu d’ensoleillement.
+La temp´ erature et l’ensolsillement ` a Lyon sont un peu plus ´ elev´ es que la moyenne.
+Pic-du-Midi est une ville en haute altitude o` u il fait froid. L’ensoleillement est dans la moyenne.
+On est en droit de se demander si Pic-du-Midi est une valeur aberrante.

@@ -1,0 +1,2648 @@
+Équations Différentielles aux
+Dérivées Partielles. Méthodes
+Numériques et Analytiques.
+Irina Kortchemski, EISTI
+5
+10
+15
+20
+0.10.20.30.40.5
+6
+8
+10
+12
+timestock
+Price of the Option
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+0
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 1/65
+<<<PAGE>>>
+Cours sur EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Modélisation mathématique et les Équations
+Différentielles.
+• Dynamique des structures
+• Mécanique des ﬂuides
+• Théories de la gravitation
+• Electromagnétisme (équations de Maxwell)
+• Finance et Economie
+• Simulation aéronautique
+• Synthèse d’images
+• Prévision météorologique.
+• Relativité générale
+• Mécanique quantique
+• Biologie, Medicine
+• Sociologie
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 2/65
+<<<PAGE>>>
+Cours sur EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Méthode aux Différences Finies pour les Équations
+Différentielles Ordinaires
+• Méthode de Runge-Kutta.
+• Méthodes d’Euler explicite
+• Méthode de Crank-Nicolson.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Méthode aux Différences Finies pour les Équations
+Différentielles aux Dérivées Partielles
+• Méthodes d’Euler explicite
+• Méthode de Crank-Nicolson.
+• Consistance, Stabilité, Convergences.
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 3/65
+<<<PAGE>>>
+Deﬁnitions des EDO, EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L On distingue deux grands groupes d’équations
+differentielles :
+• si u : R → R est une fonction d’une variable réelle
+alors l’équation
+F (x, u(x), du
+dx , ..., d(k)u
+dxk ) = 0
+s’appelle équation differentielle ordinaire.
+• si u : Rn → R est une fonction de plusieurs variables
+réelles alors l’equation
+F (x1, ..., xn, u(x1, ..., xn), du
+dx1
+, ..., ∂u
+∂xn
+, ∂(r)u
+∂xr1
+i1
+...∂xrk
+ik
+) = 0
+s’appelle équation en dérivées partielles.´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 4/65
+<<<PAGE>>>
+Deﬁnitions des EDP lineaire
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L On appelle ordre d’une équation differentielle l’ordre le
+plus élevé de dérivée apparaissant dans l’équation.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L On appelle équation aux dérivées partielles linéaire de
+second ordre en n dimensions une équation dont
+l’inconnue est une fonction u : D → R déﬁnie dans un
+domaine D ⊂ Rn. (TP1).
+Σ n
+i,j=1aij(x) ∂2u
+∂xi∂xj
++ Σ n
+i=1bi(x) ∂u
+∂xi
++ c(x)u(x1, ..., xn) = F (x)
+où les fonctions aij(x), bi(x), c(x) sont continues sur D.
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 5/65
+<<<PAGE>>>
+Formes canoniques des EDP à 2 variables
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Soit une équation déﬁnie sur un domaine D ⊂ R2
+a11(x, y) ∂2u
+∂x2 +2a12(x, y) ∂2u
+∂x∂y +a22(x, y) ∂2u
+∂y 2 +b1(x, y) ∂u
+∂x +b2(x, y) ∂u
+∂y +c(x, y)u = F (x, y)
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Appliquons un changement de variables:
+
+
+
+ξ = ξ(x, y)
+η = η(x, y)
+Après un tel changement l’équation se transforme en l’équation suivante
+ˆa11(ξ, η) ∂2u
+∂ξ 2 +2ˆa12(ξ, η) ∂2u
+∂ξ∂η +a22(ξ, η) ∂2u
+∂η 2 +ˆb1(ξ, η) ∂u
+∂ξ +ˆb2(ξ, η) ∂u
+∂η +c(ξ, η)u = F (ξ, η)
+avec les nouveaux coeffcients déﬁnis par
+ˆa11(ξ, η) = a11ξ2
+x + 2a12ξxξy + a22ξ2
+y
+ˆa12(ξ, η) = a11ξxηx + a12(ξxηy + ξyηx) + a22ξyηy
+ˆa22(ξ, η) = a11η2
+x + 2a12ηxηy + a22η2
+y ´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 6/65
+<<<PAGE>>>
+Formes canoniques des EDP à 2 variables
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Trois premières équations ci-dessus ont une interpréetation matricielle:
+ˆA =
+
+ ˆa11 ˆa12
+ˆa21 ˆa22
+
+ = J T ·A ·J J =
+
+ ξx ξy
+ηx ηy
+
+
+J est le Jakobien de l’application de changement de variables.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L il est possible de choisir la transformation J de telle sorte que la matrice ˆA soit diagonale et
+sous forme canonique possibles suivantes:
+C1 =
+
+ 1 0
+0 1
+
+ C2 =
+
+ 1 0
+0 − 1
+
+ C3 =
+
+ 1 0
+0 0
+
+
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L On partage l’ensemble d’équations en trois classes d’équivalence, chacune correspondant à
+l’une des formes canoniques de la matrice A de la partie principale de l’équation.
+• det(C1) > 0 alors l’équation est elliptique
+• det(C2) < 0 alors l’équation est hyperbolique
+• det(C3) = 0 alors l’équation est parabolique
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/ 2,j
+vi,j+1/ 2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Signe de det(A) est invariant par rapport aux transformations
+det( ˆA) = ( det(J))2 ·det(A)
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 7/65
+<<<PAGE>>>
+Classiﬁcation des EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Equations Paraboliques. det(A) = 0
+• Equation de la chaleur.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Equations Elliptiques. det(A) > 0
+• Equation de Poisson.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Equations Hyperboliques. det(A) < 0
+• Equation d’onde
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Equations non linéaires
+• Equation de Burgers.
+• Equation de Korteweg de Vries. Solitons
+• Equation de Sine-Gordon. Solitons
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 8/65
+<<<PAGE>>>
+Application des Différences Finies
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Application de la méthode aux Différences Finies à
+l’industrie et à la science
+• DF sont unique (presque) méthode qui permet de
+résoudre une équation complexe, dont la solution
+analytique n’exite pas.
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Application de la méthode aux Différences Finies (DF)
+à la ﬁnance
+• Méthodes de Monte-Carlo étaient plus populaires.
+• Méthodes de EDP sont plus rapides et donnent plus
+d’information sur la marché.
+• Recherches sur les EDP non linéaires pour prévoir
+Inﬂations, Crash market, Big trader, Risque de
+contrepartie, coût de transaction ...
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 9/65
+<<<PAGE>>>
+Les objectifs du Cours EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Quelles EDP sont de bons modèles pour le système?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Est-ce que le EDP a des solutions?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Quel type de "données" (Conditions initiales et aux
+limites) devons-nous spéciﬁer pour résoudre le EDP ?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Les solutions correspondant aux données sont-elles
+uniques?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Quelles sont les propriétés qualitatives basique de la
+solution?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L La solution contient-elle des singularités? Si oui, quelle
+est leur nature?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Que se passe-t-il si nous modiﬁons légèrement les
+données initiales? La solution varie-t-elle légèrement
+également ? (La stabilité)
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 10/65
+<<<PAGE>>>
+Les objectifs du Cours EDP
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Quels types d’estimations quantitatives peuvent être
+dérivées pour les solutions?
+PSfrag replacements
+L
+X
+Y
+⃗ v
+vx
+vy
+u0
+u(y, t)
+j
+j + 1
+j + 1/2
+j − 1/2
+j − 1
+i
+i + 1
+i + 1/2
+i − 1/2
+i − 1
+i + 3/2
+ui+1/2,j
+vi,j+1/2
+uN +1
+u1
+j = 1
+j = 2
+j = N + 1
+1/2∆ x
+1/2∆ y
+Pij
+Pression Pij
+Vitesse uij
+Vitesse vi,j
+u(x, tf ix)
+x
+2
+− 2
+− 1
+0
+N
+N + 1
+u(x, t)
+u(x, 0)
+x
+2
+− 2
+vs
+2
+4
+1
+p′ = 0
+v = 0
+u = 0
+u = 1
+x0
+x1
+T (t, x)
+x2
+xi
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+i
+un
+i−1
+un
+i+1
+un+1
+i
+un+1
+i−1
+un+1
+i+1
+Cond. initiales
+Cond. aux limites
+Cond. aux limites
+valeurs connues
+valeurs inconnues
+glace
+u = 0
+u = 50
+x = 0
+x = L Comment pouvons-nous déﬁnir la taille (c’est-à-dire "la
+norme") d’une solution?
+´Equations Diff´erentielles aux D´eriv´ees Partielles. M ´ethodes Num´eriques et Analytiques. – p. 11/65

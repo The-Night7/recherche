@@ -1,0 +1,156 @@
+ 
+ING2 MI : PROGRAMMATION PARALLELE DISTRIBUEE 
+METRIQUE ET LOI AMDAHL 
+SÉRIE D’EXERCICES 1  
+Rédigé par : Ref : ING2 MI 
+ Créé  : 06/01/2024 
+ 
+Page 1 sur 3 
+ 
+I performances et métriques 
+ 
+Exercice 1 :  
+Lors de l’exécution d’un programme donné, l’ordinateur A exécute 100 MIPS contre 5 MIPS pour l’ordinateur 
+B. en revanche, l’ordinateur A prend 60 secondes pour exécuter le programme, tandis que l’ordinateur B n’en 
+requiert que 45. 
+Comment cela est-il possible ? 
+ 
+Exercice 2  
+ Un programme exécuté sur un système donné requiert 1000 000 de cycles. Si le système réalise un CPI de  40, 
+combien d'instructions ont été exécutées pour faire tourner le programme ? 
+ 
+Exercice 3 :  
+Quel est l'IPC d'un programme qui exécute 35000 instructions et requiert 17000 cycles de temps d'exécution ? 
+ 
+Exercice 4 :  
+Soit un programme contenant 200 000 instructions dont 40% sont des opérations flottantes (p ossédants un 
+CPI de 10), et le reste d’instructions divers (possédants un CPI de 2). Quel sera le temps d’exécution du 
+programme sachant que le temps de cycle est de 10-6 secondes ? 
+ 
+Exercice 5 :  
+ Un ordinateur C obtient une note de 42 auprès d’un banc d’essai (les notes les plus élevées correspondant aux 
+meilleures performances). Un ordinateur D obtient la note 35 pour le même banc d’essai. Lorsque vous exécutez 
+votre programme, vous constatez pourtant que l’ordinateur C prend 20% de temps de plus que l’ordinateur D pour 
+l’exécution du programme. Comment cela est-il possible ? 
+ 
+II. Loi d'amdahl 
+ 
+Exercice 6 :  
+Supposons qu’un ordinateur prenne 90% de son temps à gérer un type particulier de calcul lorsqu’il exécut e 
+un programme donné et que son fabricant apporte une modification qui améliore sa performance sur ce type 
+de calcul en la multipliant par 10. 
+a) Si le programme prenait à l’origine 100 secondes pour s’exécuter, combien de temps lui faudra-t-il après la 
+modification ? 
+b) Quelle est l’accélération réalisée en passant de l’ancien au nouveau système ? 
+c) Quelle fraction de son temps d’exécution le nouveau système prend-il pour exécuter le type de calcul qui a 
+été amélioré ? 
+ 
+Exercice 7 :  
+a) L’amélioration de l’exécution des instructions non multiplicatrices doit être la plus avantageuse. Chaque 
+amélioration augmente la performance des capacités concernées à même proportion. Or, le système passe plus 
+de temps à exécuter des instructions non multiplicatrices qu’à traiter l’une ou l’autre des deux autres catégories 
+d’opérations. La loi d’Amdahl stipulant que l’impact global d’une amélioration augmente à mesure 
+qu’augmente la fraction de temps durant laquelle elle est utilisée, on en déduit que l’amélioration du traitement 
+des instructions non multiplicatrices fournira les meilleurs résultats en termes de performance.  
+<<<PAGE>>>
+ 
+ 
+Page 2 sur 3 
+ 
+ 
+b) En appliquant à la loi d’Amdahl les valeurs du pourcentage de temps d’util isation et de l’amélioration en 
+cours d’utilisation :  
+ 
+Exercice 8 :  
+Quelle amélioration permet de réduire le plus fortement le temps d’exécution : une amélioration utilisée 20% 
+du temps qui multiplie la performance par deux lorsqu’elle est utilisée ou une amélioration 70% du temps qui 
+multiplie la performance par 1.3 lorsqu’elle est utilisée. 
+ 
+Exercice 9 :  
+Un architecte d’ordinateur conçoit le système mémoire pour la nouvelle génération d’un processeur. Si dans sa 
+version courante, le processeur passe 40% de son temps à traiter des références mémoires, de combien 
+l’architecte doit-il accélérer le système mémoire pour proposer une accélération générale de 1.2 ?  
+Qu’en serait-il pour une accélération générale de 1.6 ? 
+ 
+Exercice 10 :  
+Considérez une architecture qui possède quatre types d’instruction : additions, multiplications, opérations 
+mémoire et branchements . Le tableau qui suit indique le nombre d’instructions associé à chaque type 
+d’opération pour le programme dont vous vous préoccupez, le nombre de cycles que prend ce programme 
+pour exécuter chaque type d’instruction et l’accélération de l’exécution du typ e d’instruction offerte par une 
+amélioration proposée (chaque amélioration n’affecte qu’un seul type d’instruction). 
+Classez les améliorations liées à chaque type d’instruction selon l’ordre de leur impact sur la performance 
+générale. 
+ 
+Pour résoudre ce problème, nous devons en premier lieu calculer le nombre de cycles nécessaires à l’exécution 
+de chaque type d’instruction avant que les améliorations ne soient apportées et la fraction du nombre de cycles 
+passée à exécuter chaque type d’instruction (Fraction utilisée pour chaque instruction).  
+ 
+Type 
+d’instruction 
+Nombre 
+d’instructions 
+Temps 
+d’exécution 
+Accélératio
+n pour le 
+type 
+Addition  10 millions  2 cycles  2.0  
+Multiplication  30 millions  20 cycles  1.3  
+Mémoire  35 millions  10 cycles  3.0  
+Branchement  15 millions  4 cycles  4.0  
+*Fraction de cycles = (nombre de cycles/ nombre total de cycles) x 100 
+ 
+III. Achat d'équipement d'un laboratoire 
+ 
+Exercice 11 : Achat de machines en laboratoire  
+ 
+Votre laboratoire vient d’acheter de nouvelles machines avec 4 cœurs et on vous demander d’optimiser vos 
+logiciels qui sont uniquement séquentiels pour l’instant. Deux applications doivent tourner en même temps 
+sur ces machines mais leurs besoins en ressources sont différents.  
+La première application requiert 60% des ressources et la seconde 40%.  
+ 
+1. En supposant que la première application est parallélisable à 80%, quel gain pourriez-vous obtenir si cette 
+application était exécutée seule sur le système ?  
+2. En supposant que la seconde application est parallélisable à 90%, quel gain pourriez-vous obtenir si cette 
+application était exécutée seule sur le système ?  
+3. En supposant toujours que la première application est parallélisable à 80%, quel gain global du système 
+pourriez-vous obtenir si cette application était parallélisée, mais pas la seconde application (mais en faisant 
+tourner les deux en même temps) ?  
+<<<PAGE>>>
+ 
+ 
+Page 3 sur 3 
+ 
+4. Quel gain global obtiendriez-vous si les deux applications étaient parallélisées et exécutées en même 
+temps (toujours avec une parallélisation de 80% pour la première et de 90% pour la seconde) ? Quelle en 
+serait l'efficacité ? 
+5. Refaire les 4 questions précédentes avec en  considérant un système avec 12 cœurs et après avec  24 
+cœurs. 
+Que pouvez-vous conclure à propos de l'augmentation  de nombre de cœurs 
+ 
+IV. Choix du nombre de processeur 
+ 
+Exercice 12 : Bien choisir le nombre de cœurs  
+Vous disposez d’un programme qui met 1000 unités de temps pour s’exécuter. Après analyse, vous 
+considérez que 70% de son code est parallélisable.  
+1. Considérant la loi d’Amdahl, quel est le speedup maximal possible ? 
+2. Chaque fois que l’on ajoute un cœur, le système perd un peu de temps pour la gestion du thread 
+supplémentaire. Vous estimez cette perte à 5 unités de temps par cœur.  
+a. Tracez une courbe représentant l’évolution du temps de calcul en fonction du nombre de cœurs.  
+b. Quelle est la valeur optimale du nombre de cœurs à utiliser ?  
+3. Sur le même graphique, ajoutez la courbe correspondant au code séquentiel. À partir de combien de cœurs 
+l’application parallèle deviendra-t-elle plus lente que la version séquentielle ?  
+ 
+V. La loi de Gustafson 
+ 
+Exercice 13. 
+Considérons un programme informatique qui traite les fichiers du disque. Une partie de ce programme peut 
+analyser le répertoire du disque et créer une liste de fichiers en interne en mémoire. Après cela, une autre 
+partie du programme transmet chaque fichier à un thread distinct pour traitement. La partie qui analyse le 
+répertoire et crée la liste des fichiers ne peut pas être accélérée sur un ordinateur parallèle, contrairement à la 
+partie qui traite les fichiers. 
+Soit le temps d'exécution total sur le système parallèle T = 1 seconde pour 10 processeurs. Nous décidons 
+d'attribuer 4 processeurs supplémentaires à notre système. De combien la charge de travail doit -elle varier si 
+l’on veut garder le temps d’exécution co nstant ? De combien varie l’accélération ? Considérez que la partie 
+du programme qui analyse le répertoire et crée la liste des fichiers représente 5 % de la charge de travail totale 
+d'exécution. 

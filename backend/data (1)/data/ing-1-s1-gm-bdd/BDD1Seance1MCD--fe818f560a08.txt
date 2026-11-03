@@ -1,0 +1,388 @@
+Base de données
+Séance 1
+Présentation générale
+Conception des bases de données
+<<<PAGE>>>
+Définition
+Le concept de base de données comprend
+essentiellement deux aspects :
+ un ensemble structuré d'information
+ un composant logiciel appelé système de
+gestion de bases de données et qui permet
+l’utilisation de ces données simultanément par
+plusieurs utilisateurs et programmes
+<<<PAGE>>>
+Structure du système
+• Données
+• Utilisateurs
+• Réseau
+• Logiciel
+• Matériel
+• Administration
+Réseau Base de 
+données
+SGBD
+
+<<<PAGE>>>
+Modèles de base de données 
+ Modélisation : processus de description 
+permettant de représenter l’information de 
+manière compréhensible 
+ On utilise un modèle de données
+ Les modèles les plus connus
+◼ Le modèle hiérarchique
+◼ Le modèle réseau
+◼ Le modèle relationnel
+◼ Le modèle objet
+◼ NoSQL
+<<<PAGE>>>
+Modèle relationnel
+◼ E. F. Codd (IBM, 1970) 
+◼ Principes de l'algèbre relationnelle 
+ indépendance de la structure de la base 
+de données avec sa mise en œuvre 
+physique
+ intégrité des données
+ redondance des données 
+◼ Modèle relationnel : 
+ relations + attributs + clés 
+◼ Base de données relationnelle : 
+ tables + colonnes + clés
+<<<PAGE>>>
+Système de gestion de bases de 
+données (SGBD) 
+ Programme gérant :
+◼ la définition des données
+◼ la manipulation des données
+◼ l’intégrité des données
+◼ la sécurité des données
+◼ la concurrence d’accès
+◼ la résistance aux pannes
+<<<PAGE>>>
+Système de gestion de bases de 
+données (SGBD) : suite
+ Programme gérant : 
+◼ … 
+◼ l'indépendance physique : 
+ la façon dont les données sont définies doit 
+être indépendante des structures de 
+stockage utilisées
+◼ l'indépendance logique
+ un même ensemble de données peut être 
+vu différemment par des utilisateurs 
+différents 
+<<<PAGE>>>
+Niveaux de description des 
+données ANSI/SPARC
+Niveau externe
+Vue utilisateur
+Niveau conceptuel
+Description des entités et 
+des relations
+Niveau interne
+Description de la façon dont 
+les données sont stockées
+Schéma 
+externe
+Schéma 
+externe
+Schéma 
+externe
+Schéma conceptuel
+Schéma interne
+<<<PAGE>>>
+Le marché SGBD
+
+<<<PAGE>>>
+Conception des bases de données 
+Modèle Entité–Association
+(Entity-Relationship Diagram)
+<<<PAGE>>>
+1. Étude préalable : on capte le contenu du 
+« projet » et on étudie sa faisabilité, sa 
+pertinence, ...
+2. Étude détaillée : on décrit en détail la 
+solution qui est à produire
+3. Réalisation : on écrit le code de la solution 
+et les ressources techniques.
+4. Mise en œuvre / livraison : on 
+empaquette la solution
+Démarche de réalisationANALYSEPRODUCTION
+<<<PAGE>>>
+ Recueil des besoins grâce à des entretiens / 
+documents … 
+◼ cerner le projet 
+◼ comprendre les besoins
+◼ identifier des concepts (règles de gestion, 
+règles d'organisation, …)
+◼ proposer une évaluation quantitative et 
+qualitative 
+ Produits :
+◼ modèle conceptuel des données
+1. L’étude préalable
+<<<PAGE>>>
+ But
+◼ Décrire complètement, au plan fonctionnel la 
+solution à réaliser
+◼ Identifier les difficultés techniques (objets 
+compliqués)
+◼ Identifier les endroits risqués (manque de 
+compétences disponibles, manque de visibilité)
+ Produits
+◼ Des spécifications détaillées qui constituent le 
+« plan de travail ».
+2. L’étude détaillée
+<<<PAGE>>>
+ Production du code informatique
+◼ Codage des tables
+◼ Codage des initialisations de données
+◼ Codage des transformations (requêtes et 
+procédures)
+◼ Codage des interfaces de manipulation
+ Codage des saisies (manuelles, imports)
+ Codage des états (sorties de données)
+◼ Codage des tests
+3. La réalisation
+<<<PAGE>>>
+ Mise en route, déploiement
+◼ Installation
+◼ Initialisation des données
+ Formation
+ Documentation
+4. La mise en œuvre
+<<<PAGE>>>
+◼ Entités  
+◼ Attributs (propriétés)
+◼ Identifiants (clefs)
+◼ Associations
+◼ Cardinalités
+Modèle entités-associations
+<<<PAGE>>>
+ Définition
+◼ Une entité représente un « objet identifiable et 
+nommable » du problème.
+◼ Une entité existe « en propre » (contrairement 
+à un qualificatif qui n’existe que par rapport à ce 
+qu’il qualifie)
+ Elles peuvent être :
+◼ un acteur : client, fournisseur
+◼ un « objet » : produit, document, message
+◼ un flux : livraison, commande, transport
+Les entités
+<<<PAGE>>>
+ Définition
+◼ Un attribut désigne une valeur qui 
+« qualifie » l’entité à laquelle il se rapporte.
+ Caractéristiques
+◼ Un nom qui désigne la propriété.
+◼ Une occurrence est une valeur particulière de 
+cette propriété
+◼ Le domaine de définition est l’ensemble des 
+valeurs possibles que peut prendre la propriété.
+Les attributs (propriétés) 
+<<<PAGE>>>
+Exemple : entité et attributs
+Personne
+nom
+prenom
+adresse
+<<<PAGE>>>
+ Définition
+◼ Propriété (ou ensemble de propriétés)  
+particulière qui permet d’identifier de façon 
+unique une occurrence de l’entité.
+Les identifiants (clés)
+<<<PAGE>>>
+ Définition
+◼ Propriété (ou ensemble de propriétés)  
+particulière qui permet d’identifier de façon 
+unique une occurrence de l’entité.
+ Exemple
+Les identifiants (clés)
+Personne
+id
+nom
+prenom
+adresse
+<<<PAGE>>>
+ Définition
+◼ Lien « sémantique » reliant des entités et 
+présentant un intérêt pour l’entreprise
+Les associations
+<<<PAGE>>>
+ Définition
+◼ Lien « sémantique » reliant des entités et 
+présentant un intérêt pour l’entreprise
+ Exemple
+Les associations
+Professeur
+id
+nom
+prenom
+adresse
+Matiere
+id
+libelle
+enseigner
+<<<PAGE>>>
+ Dimension d’une association
+◼ Association réflexive : lien de l’entité sur elle-
+même 
+◼ Association binaire : lien entre deux entités
+◼ Association ternaire : lien entre trois entités
+◼ Association n-aire : lien entre n entités
+ Association porteuse
+◼ Association qui porte des propriétés
+Les associations
+<<<PAGE>>>
+Exemple : association binaire et porteuse
+Personne
+numeroPersonne
+nom
+prenom
+adresse
+Livre
+numeroLivre
+titre
+auteur
+editeur
+emprunter
+dateEmprunt
+<<<PAGE>>>
+ Définition
+◼ Elles quantifient le nombre d’occurrences d’une 
+entité qui participent à une association.
+ Cardinalités limites
+◼ Combien d’occurrence au minimum? Typique : 0 
+ou 1.
+◼ Combien d’occurrence au maximum ? Typique : 
+1 ou n.
+Les cardinalités
+<<<PAGE>>>
+Exemple : cardinalité
+Personne
+numeroPersonne
+nom
+prenom
+adresse
+Livre
+numeroLivre
+titre
+editeur
+Ecrire
+0,n 1,1
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, français, 
+philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir plusieurs 
+cours de la même matière.
+3. Un cours est dispensé par un, et un seul, enseignant 
+et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, 
+français, philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir plusieurs 
+cours de la même matière.
+3. Un cours est dispensé par un, et un seul, enseignant 
+et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, 
+français, philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir plusieurs 
+cours de la même matière.
+3. Un cours est dispensé par un, et un seul, enseignant 
+et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, 
+français, philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir plusieurs 
+cours de la même matière.
+3. Un cours est dispensé par un, et un seul, enseignant 
+et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, 
+français, philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir 
+plusieurs cours de la même matière.
+3. Un cours est dispensé par un, et un seul, enseignant 
+et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Problème classique : étudiants, 
+cours, enseignants, salles …
+1. Il existe plusieurs matières (mathématiques, 
+français, philosophie, …).
+2. Plusieurs cours sont offerts et il peut y avoir 
+plusieurs cours de la même matière.
+3. Un cours est dispensé par un, et un seul, 
+enseignant et correspond à une matière.
+4. Un enseignant peut dispenser plusieurs cours dans la 
+même matière ou dans des matières différentes.
+5. Un étudiant peut s’inscrire à plusieurs cours.
+6. Un cours est toujours dispensé dans une même salle, 
+mais une salle peut recevoir plusieurs cours 
+(successivement).
+7. Chaque matière ne comporte qu’une seule évaluation.
+<<<PAGE>>>
+Modèle entité–association (MCD) 
+partiel
+Enseignant
+id
+nom
+prenom
+Matière
+id
+intitulé
+Cours
+id
+nom
+dispenser
+correspondre
+1,1 1,1 1,n
+1,n
+<<<PAGE>>>
+Exercice : compléter ce MCD !

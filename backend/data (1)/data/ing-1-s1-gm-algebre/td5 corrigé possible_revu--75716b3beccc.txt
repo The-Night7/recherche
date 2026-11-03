@@ -1,0 +1,499 @@
+Algèbre Linéaire Appliquée
+Corrigé Détaillé du TD5
+Méthodes directes (Correction Officielle)
+Pour les étudiants ING1-GM
+Année 2025-2026
+Exercice 22 : Résolution d’un système triangulaire inférieur
+Question :Écrire l’algorithme de résolution d’un système triangulaire inférieurLx=b.
+Rappel du Cours
+Un système est dittriangulaire inférieursi tous les coefficients au-dessus de la diagonale
+sont nuls (lij = 0sij >i). Le système s’écrit :
+
+
+l11 0...0
+l21 l22 ...0
+... ... ... ...
+ln1 ln2 ... l nn
+
+
+
+
+x1
+x2
+...
+xn
+
+ =
+
+
+b1
+b2
+...
+bn
+
+
+La méthode utilisée est ladescente(ou substitution avant).
+Solution Détaillée
+Écrivons la ligneidu système :
+li1x1 +li2x2 +···+l iixi =b i
+On cherche à calculerx i. On suppose quex 1,...,x i−1 ont déjà été calculés aux étapes
+précédentes. On isolexi :
+liixi =b i−
+i−1X
+j=1
+lijxj =⇒x i = 1
+lii
+
+bi−
+i−1X
+j=1
+lijxj
+
+
+Algorithme :
+Entrées :L(matricen×ntriangulaire inf.),b(vecteur taillen)
+Sortie :x(vecteur solution)
+x1←b 1/l11
+foriallant de 2 àndo
+S←0
+forjallant de 1 ài−1do
+S←S+l ij×xj ▷Somme des termes déjà connus
+end for
+iflii = 0then
+Erreur :Matrice non inversible (pivot nul)
+1
+<<<PAGE>>>
+else
+xi←(b i−S)/l ii
+end if
+end for
+Point Pédagogique (Le "Pourquoi")
+Il est important de prévoir le cas oùl ii = 0pour éviter une division par zéro, ce qui
+rendrait la matrice non inversible.
+Exercice 23 : Factorisation LU et Pivotage
+Question :RésoudreAx=bavecA=
+
+
+0 3 1
+4 1 1
+2 2 4
+
+ etb=
+
+
+1
+5
+6
+
+ par factorisation LU.
+Point Pédagogique (Le "Pourquoi")
+Problème critique :Regardez le coefficienta 11 = 0. La méthode du pivot de Gauss (et
+donc la factorisation LU standard) nécessite de diviser par le pivot pour éliminer les
+termes sous la diagonale. Ici, on ne peut pas diviser par 0.
+Solution :Il faut effectuer unpivotage partiel, c’est-à-dire échanger la ligne 1 avec une
+autre ligne pour amener un coefficient non nul (et idéalement le plus grand possible en
+valeur absolue) sur la diagonale.
+Solution Détaillée
+Étape 1 : Permutation (Pivotage)On regarde la 1ère colonne :|0|,|4|,|2|. Le maximum
+est 4 (ligne 2). On échangeL 1 etL 2.
+PA=
+
+
+4 1 1
+0 3 1
+2 2 4
+
+, Pb=
+
+
+5
+1
+6
+
+
+La matrice de permutation estP=
+
+
+0 1 0
+1 0 0
+0 0 1
+
+.
+Étape 2 : Élimination de Gauss (Factorisation LU de PA)
+—Colonne 1 :Pivot = 4.
+— On veut annuler le 2 en position (3,1). Multiplicateurl 31 = 2
+4 = 0.5.
+— Opération :L 3←L 3−0.5L 1 =⇒(2,2,4)−(2,0.5,0.5) = (0,1.5,3.5).
+— Matrice courante :
+
+
+4 1 1
+0 3 1
+0 1.5 3.5
+
+.
+—Colonne 2 :Pivot = 3.
+— On veut annuler le 1.5 en position (3,2). Multiplicateurl 32 = 1.5
+3 = 0.5.
+— Opération :L 3←L 3−0.5L 2 =⇒(0,1.5,3.5)−(0,1.5,0.5) = (0,0,3).
+Étape 3 : Construction de L et U
+U=
+
+
+4 1 1
+0 3 1
+0 0 3
+
+ (Matrice finale triangulaire sup.)
+2
+<<<PAGE>>>
+L=
+
+
+1 0 0
+0 1 0
+0.5 0.5 1
+
+ (Diagonale de 1 et multiplicateurs stockés)
+Étape 4 : Résolution deLUx=PbOn posey=Ux. On résout d’abordLy=Pb=
+(5,1,6) T (descente) :
+—y 1 = 5
+—y 2 = 1
+—y 3 = 6−0.5(5)−0.5(1) = 6−2.5−0.5 = 3
+On résout ensuiteUx=y= (5,1,3) T (remontée) :
+—3x 3 = 3 =⇒x 3 = 1
+—3x 2 +x 3 = 1 =⇒3x 2 + 1 = 1 =⇒3x 2 = 0 =⇒x 2 = 0
+—4x 1 +x 2 +x 3 = 5 =⇒4x 1 + 0 + 1 = 5 =⇒4x 1 = 4 =⇒x 1 = 1
+Conclusion
+La solution estx= (1,0,1) T .Vérification :A·x=
+
+
+0
+4
+2
+
+·1+
+
+
+3
+1
+2
+
+·0+
+
+
+1
+1
+4
+
+·1 =
+
+
+1
+5
+6
+
+ =b.
+Correct.
+Exercice 24 : Condition d’existence LU
+Question :Soitϵun réel quelconque etA=
+
+
+1 1−ϵ3
+2 2 2
+3 6 4
+
+.
+1. Déterminer les valeurs deϵpour lesquellesAadmet une factorisationLU.
+2. Déterminer les valeurs deϵpour lesquellesAn’est pas inversible. Pour ces valeurs,A
+admet-elle une factorisationLU?
+Rappel du Cours
+Théorème d’existence (Critère de Sylvester) :Une matrice carréeAadmet une facto-
+risationLU(unique siAest inversible) si et seulement si tous sesmineurs principaux
+d’ordre1àn−1sont non nuls.
+∆k = det(A1:k,1:k)̸= 0∀k∈{1,...,n−1}
+Solution Détaillée
+1. Existence de la factorisation LUCalculons les déterminants des sous-matrices princi-
+pales :
+—∆ 1 = det(A1) = 1̸= 0(Toujours vrai).
+—∆ 2 = det
+1 1−ϵ
+2 2
+
+= 1(2)−2(1−ϵ) = 2−2 + 2ϵ= 2ϵ.
+La condition d’existence est∆ 2̸= 0, soitϵ̸=0.
+Dans ce cas, on peut calculer explicitement les coefficients deLetUpar identification
+(algorithme de Doolittle) :
+L=
+
+
+1 0 0
+2 1 0
+3 3(1+ϵ)
+2ϵ 1
+
+, U=
+
+
+1 1−ϵ3
+0 2ϵ−4
+0 0−5 + 6 1+ϵ
+ϵ
+
+
+3
+<<<PAGE>>>
+2. Inversibilité et cas singulierLa matriceAest inversible si et seulement sidet(A)̸= 0.
+On peut calculer le déterminant via la factorisationLU(produit des éléments diagonaux
+deU) :
+det(A) = 1·2ϵ·
+
+−5 + 6 + 6ϵ
+ϵ
+
+=−10ϵ+ 12 + 12ϵ= 2ϵ+ 12
+An’est pas inversible (singulière) si2ϵ+ 12 = 0 =⇒ϵ=−6.
+Pour cette valeurϵ=−6:
+— La condition d’existenceLU(ϵ̸= 0) est bien vérifiée (−6̸= 0).
+— La factorisation existe donc, maisUaura un zéro sur sa diagonale. En remplaçant
+ϵpar−6dans les formules ci-dessus :
+L=
+
+
+1 0 0
+2 1 0
+3 1.25 1
+
+, U=
+
+
+1 7 3
+0−12−4
+0 0 0
+
+
+Conclusion
+—Aadmet une factorisationLUsi et seulement siϵ̸= 0.
+—Aest singulière (non inversible) siϵ=−6. Dans ce cas précis, la factorisationLU
+existe tout de même.
+Point Pédagogique (Le "Pourquoi")
+Notez la distinction importante : une matrice peut êtresingulière(déterminant nul) et
+pourtant admettre une factorisationLU(comme ici pourϵ=−6). Ce qui empêche la
+factorisationLUclassique, c’est un pivot nulen cours de route(ici∆ 2 = 0siϵ= 0), pas
+un pivot nul à la toute fin.
+4
+<<<PAGE>>>
+Exercice 25 : Complexité de la factorisation LU
+Question :Soitnun entier naturel non nul etAla matrice définie parA= (i j−1)1≤i,j≤n.
+1. Modifier l’algorithme de factorisation LU pour compter le nombre d’opérations arith-
+métiques.
+2. Calculer ce nombre pourn∈{10,20,30,40,50,60}et représenter le résultat graphique-
+ment.
+3. Retrouver l’ordre de complexité de la méthode.
+Point Pédagogique (Le "Pourquoi")
+Pourquoi cet exercice ?En théorie, la factorisation LU a une complexité deO(n 3), ce qui
+signifie que le temps de calcul augmente de façon cubique avec la taille de la matrice
+(sindouble, le temps est multiplié par 8). L’objectif est de vérifier cette loi théorique
+par l’expérience numérique. L’outil mathématique pour cela est le logarithme : siOps≈
+C·n k, alorslog(Ops)≈k·log(n) +constante. On cherche donc une droite de penteksur
+un graphique log-log.
+Solution Détaillée
+1. Implémentation et comptageDans l’algorithme de Doolittle (vu à l’exercice 23), les
+opérations arithmétiques principales se trouvent dans la triple boucle imbriquée. On
+insère un compteur ‘compt += 2‘ à chaque opération élémentaire de typeaik←a ik−aij·
+ajk (une multiplication et une soustraction).
+2. Résultats expérimentauxEn exécutant le script (par exemple
+TD5-Exo23-DecoLU.py) pour les valeurs dendemandées, on obtient un tableau de
+valeurs croissant très rapidement.
+3. Analyse de la complexitéPour retrouver l’ordre, on trace le graphique en échelle
+logarithmique:
+— Axe X :log(n)
+— Axe Y :log(Nombre d’opérations)
+On observe que les points sont alignés sur une droite.
+En effectuant une régression linéaire sur ces points (par exemple avec
+scipy.stats.linregressen Python), on obtient l’équation de la droite :
+Y=aX+b
+Le coefficient directeur (la pente)acalculé par le programme est3.
+Conclusion
+Puisque la pente de la droite en échelle log-log est 3, cela confirme expérimentalement
+que le nombre d’opérations croît commen 3. La complexité de la factorisation LU est
+donc bien d’ordrecubique:O(n 3).
+5
+<<<PAGE>>>
+Exercice 26 : Instabilité Numérique
+Question :SoitA=
+
+
+1 1 + 5·10 −16 3
+2 2 20
+3 6 4
+
+.
+1. Vérifier queAest inversible et admet une factorisation LU.
+2. Calculer la factorisation LU avec l’algorithme "naïf" (sans pivot). Vérifier queA−LU̸=
+0. Expliquer.
+3. Comparer avec le résultat obtenu via une bibliothèque robuste (Scipy).
+Point Pédagogique (Le "Pourquoi")
+Cet exercice illustre le danger despivots petits(proches de zéro). Même si une matrice
+est théoriquement inversible, diviser par un nombre minuscule (10−15 ou10−16) lors du
+calcul des pivots peut engendrer des erreurs d’arrondi catastrophiques. C’est pourquoi
+les algorithmes professionnels utilisent toujours des échanges de lignes (pivotage par-
+tiel) pour diviser par le plus grand nombre possible.
+Solution Détaillée
+1. Existence théorique :Le théorème d’existence requiert que les mineurs principaux
+soient non nuls.
+—∆ 1 = 1̸= 0.
+—∆ 2 = det
+1 1 + 5·10 −16
+2 2
+
+= 2−2(1 + 5·10 −16) = 2−2−10 −15 =−10−15.
+∆2̸= 0, donc mathématiquement, la factorisation LU existe.
+2. Résultat numérique (Algorithme sans pivot) :Le pivot à l’étape 2 est≈−10 −15. L’or-
+dinateur ne le considère pas comme nul (il est supérieur à l’epsilon machine≈10 −16),
+donc il effectue la division.
+Cependant, cela crée des termes gigantesques dansLetU. Le calcul numérique donne :
+L≈
+
+
+1 0 0
+2 1 0
+3−3.3·10 15 1
+
+, U≈
+
+
+1 1 3
+0−10 −15 14
+0 0 4.7·10 16
+
+
+Lorsqu’on vérifie le produit, on trouve une erreur massive sur le dernier coefficient :
+A−LU=
+
+
+0 0 0
+0 0 0
+0 04
+
+
+Le coefficient 4 a été "perdu" dans les erreurs d’arrondi face aux nombres en10 16.
+3. Résultat avec Scipy (Algorithme avec pivot) :La fonctionscipy.linalg.lueffec-
+tue un pivotage partiel (PA=LU). Elle échange la ligne 2 avec la ligne 3 pour utiliser le
+pivot 6 (au lieu de10 −15). On obtient des matricesLetUavec des coefficients de taille
+raisonnable, et l’erreur de reconstructionA−LUest proche de 0 (10 −16).
+Conclusion
+La factorisation LU "naïve" est numériquement instable pour cette matrice. L’utilisation
+du pivotage partiel est indispensable pour garantir la précision des résultats.
+6
+<<<PAGE>>>
+Exercice 27 : Calcul de l’inverse
+Question :SoitAune matrice inversible d’ordren.
+1. Montrer qu’il existe un algorithme de complexitéO(n 3)pour calculerA −1 en utilisant la
+factorisationLU.
+2. Est-ce toujours possible siAadmet une factorisationLUavec pivot partiel ?
+Rappel du Cours
+L’inverse d’une matriceA, notéeX=A −1, est l’unique matrice telle queAX=I n. Si on
+notexj laj-ème colonne deXete j laj-ème colonne de la matrice identitéI n (le vecteur
+avec un 1 à la lignejet 0 ailleurs), alors l’équation matricielleAX=I n se décompose en
+nsystèmes linéaires indépendants :
+Axj =e j pourj= 1,...,n
+Solution Détaillée
+1. Algorithme et Complexité (Cas LU standard)L’algorithme pour calculerA −1 se dé-
+roule en deux phases :
+—Phase 1 : Décomposition de la matrice (Faite 1 seule fois)On factoriseA=L·U.
+Coût :≈ 2
+3n3 opérations (terme dominant).
+—Phase 2 : Résolution des systèmes (Répétéenfois)Pour chaque colonnejde 1 à
+n, on cherche le vecteurxj solution deL(Ux j) =e j.
+— Descente : RésoudreLy=e j. Coût≈n 2 opérations.
+— Remontée : RésoudreUx j =y. Coût≈n 2 opérations.
+Le coût pour une colonne est donc enO(n 2). Pour lesncolonnes de l’inverse, le
+coût total de cette phase estn×O(n 2) =O(n 3).
+Coût Total :
+Total=O(n 3)| {z }
+Factorisation
++O(n 3)| {z }
+n Résolutions
+=O(n 3)
+2. Cas du pivot partiel (PA=LU)Si on utilise le pivotage, l’équation devientPAx j =
+Pej, soitLUx j =Pe j.
+— La factorisationPA=LUa la même complexitéO(n 3).
+— La permutation du vecteure j parPa un coût négligeable (O(n)).
+— La résolution des systèmes triangulaires reste enO(n 2).
+Conclusion :Oui, c’est toujours possible et cela conserve la même complexité globale de
+O(n3).
+Point Pédagogique (Le "Pourquoi")
+Ce résultat est important : il montre que calculer l’inverse d’une matrice coûte "aussi
+cher" (en ordre de grandeur) que de résoudre un seul système via Gauss-Jordan, ou que
+de multiplier deux matrices. Cependant, en pratique, si l’on a besoin de résoudreAx=b,
+on ne calculejamaisA −1 explicitement ; on préfère factoriserApuis résoudre, car c’est
+plus stable numériquement et 3 fois moins coûteux en opérations (le facteur constant
+devantn 3 est plus petit).
+7
+<<<PAGE>>>
+Exercice 28 : Matrices Creuses et Largeur de bande
+Question :SoitAla matrice suivante :
+A=
+
+
+1 0 0 0 1 0 0 0
+0 1 1 0 0 1 0 1
+0 1 1 0 1 0 0 0
+0 0 0 1 0 0 1 0
+1 0 1 0 1 0 0 0
+0 1 0 0 0 1 0 1
+0 0 0 1 0 0 1 1
+0 1 0 0 0 1 1 1
+
+
+1. Quelle est la largeur de bande deA?
+2. Quelle est la nouvelle largeur de bande après application de l’algorithme de Cuthill-
+McKee ?
+3. Même question pour Cuthill-McKee inversé.
+Rappel du Cours
+Lalargeur de bandeβd’une matriceAest l’écart maximal à la diagonale pour les coef-
+ficients non nuls :
+β= max
+aij̸=0
+|i−j|
+Pour les matrices creuses (contenant beaucoup de zéros), on cherche à réduireβpour op-
+timiser le stockage et la rapidité des algorithmes (comme Cholesky ou LU). L’algorithme
+deCuthill-McKeepermet de renuméroter les indices pour concentrer les coefficients
+non nuls près de la diagonale.
+Solution Détaillée
+1. Largeur de bande initialeOn examine les coefficients non nuls les plus éloignés de la
+diagonale :
+— Ligne 1 :a 1,5̸= 0 =⇒ |1−5|= 4.
+— Ligne 2 :a 2,8̸= 0 =⇒ |2−8|= 6.
+— Ligne 8 :a 8,2̸= 0 =⇒ |8−2|= 6.
+La largeur de bande initiale estβ=6.
+2. Algorithme de Cuthill-McKee (CM)On modélise la matrice par un graphe dont les
+sommets sont les indices de 1 à 8.
+Calcul des degrés (nombre de voisins) :
+— Degré 1 : Sommets 1 (voisin 5) et 4 (voisin 7).
+— Degré 2 : Sommets 3, 5, 6, 7.
+— Degré 3 : Sommets 2, 8.
+Parcours en largeur (BFS) :On part du sommet de degré minimal (disons 1).
+1.Niveau 0 :{1}. (On numérote 1→1).
+2.Niveau 1 :Voisins de 1→{5}. (On numérote 5→2).
+3.Niveau 2 :Voisins de 5 (non visités)→{3}. (On numérote 3→3).
+4.Niveau 3 :Voisins de 3→{2}. (On numérote 2→4).
+5.Niveau 4 :Voisins de 2→ {6,8}. On les trie par degré croissant : deg(6)=2,
+deg(8)=3. Ordre : 6 puis 8. (On numérote 6→5, 8→6).
+6.Niveau 5 :Voisins de 8 (non visités)→{7}. (On numérote 7→7).
+7.Niveau 6 :Voisins de 7 (non visités)→{4}. (On numérote 4→8).
+8
+<<<PAGE>>>
+Nouvelle numérotation (Ordre R) :1,5,3,2,6,8,7,4.
+Nouvelle largeur de bande :Calculons les écarts avec la nouvelle numérotation pour les
+arêtes les plus critiques :
+— L’arête (2,8) relie le 4ème et le 6ème sommet dans la nouvelle liste : écart|4−6|= 2.
+— L’arête (1,5) relie le 1er et le 2ème : écart 1.
+En vérifiant toutes les arêtes, l’écart maximal est 2. La nouvelle largeur de bande est
+βCM =2. (Gain considérable par rapport à 6).
+3. Cuthill-McKee Inversé (RCM)On inverse simplement l’ordre obtenu :
+4,7,8,6,2,3,5,1. La largeur de bande reste2, mais cette forme repousse souvent
+les coefficients vers le "bas" de la bande, ce qui est avantageux pour le profil de la
+matrice (stockage enveloppe).
+9

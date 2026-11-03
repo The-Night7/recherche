@@ -1,0 +1,546 @@
+CYT ech 2025-2026
+ING1 - GM : Probabilités
+TD 4
+Exercice 1 Soient X et Y deux v.a.r. indépendantes de loi P (X = 1) = P (Y = 1) = 1
+2 et
+P (X =−1) =P (Y =−1) = 1
+2 .
+Soit Z = XY . Montrer que X,Y,Z sont indépendantes deux à deux, mais qu'elles ne sont
+pas indépendantes.
+Correction :
+Loi de Z =XY :
+Calculons les valeurs possibles de Z :
+P (Z = 1)=P (X = 1,Y = 1) +P (X =−1,Y =−1)
+= 1
+2· 1
+2 + 1
+2· 1
+2 = 1
+2
+P (Z =−1)=P (X = 1,Y =−1) +P (X =−1,Y = 1)
+= 1
+2· 1
+2 + 1
+2· 1
+2 = 1
+2
+Donc Z a la même loi que X et Y .
+Indépendance deux à deux :
+ X et Y sont indépendantes : donné dans l'énoncé.
+ X et Z sont indépendantes :
+P (X = 1,Z = 1)=P (X = 1,XY = 1) =P (X = 1,Y = 1) = 1
+4
+P (X = 1)P (Z = 1)= 1
+2· 1
+2 = 1
+4
+De même, on vérie pour toutes les combinaisons. Donc X et Z sont indépendantes.
+ Y et Z sont indépendantes : par symétrie avec X et Z.
+X,Y,Z ne sont pas mutuellement indépendantes :
+Pour l'indépendance mutuelle, il faudrait :
+P (X =x,Y =y,Z =z) =P (X =x)P (Y =y)P (Z =z) pour tous x,y,z
+Or, considérons X = 1,Y = 1,Z =−1 :
+P (X = 1,Y = 1,Z =−1) =P (X = 1,Y = 1,XY =−1) = 0
+(car si X = 1 et Y = 1, alors Z =XY = 1̸=−1)
+Mais :
+P (X = 1)P (Y = 1)P (Z =−1) = 1
+2· 1
+2· 1
+2 = 1
+8̸= 0
+Donc X,Y,Z ne sont pas mutuellement indépendantes.
+Exercice 2 Soit X une v.a.r. t.q. FX(x)∈{ 0, 1}. Montrer que X est constante p.s.
+Indication : Utiliser x0 := inf{c∈ R,FX(c) = 1}.
+1
+<<<PAGE>>>
+Correction :
+Soit x0 = inf{c∈ R :FX(c) = 1}.
+Cas 1 : Si cet ensemble est vide, alors FX(x) = 0 pour tout x∈ R.
+Mais limx→+∞FX(x) = 1, contradiction. Donc l'ensemble n'est pas vide.
+Montrons que P (X =x0) = 1 :
+ Pour x<x 0 : par dénition de inf, FX(x) = 0 (sinon x0 ne serait pas l'inmum).
+Donc P (X <x0) = limx→x−
+0
+FX(x) = 0.
+ Pour x≥x0 : soit (xn) une suite décroissante vers x0 avec FX(xn) = 1.
+Par continuité à droite de FX :
+FX(x0) = lim
+n→∞
+FX(xn) = 1
+ Donc : P (X≤x0) =FX(x0) = 1 et P (X <x0) = 0.
+Par conséquent :
+P (X =x0) =P (X≤x0)−P (X <x0) = 1− 0 = 1
+Ainsi, X =x0 p.s.
+Exercice 3 Soient X et Y deux variables aléatoires indépendantes dénies sur (Ω,A,P ) un
+espace de probabilité. On suppose que X +Y est constante p.s.
+Montrer que X et Y sont constantes p.s.
+Correction :
+Soit c∈ R tel que X +Y =c p.s.
+Alors Y =c−X p.s.
+Calcul de la variance :
+Var (X +Y )= Var (c) = 0
+D'autre part, comme X et Y sont indépendantes :
+Var (X +Y )= Var (X) + Var (Y )
+Donc :
+Var (X) + Var (Y ) = 0
+Comme les variances sont positives :
+Var (X) = 0 et Var (Y ) = 0
+Or, Var (X) = 0⇔X est constante p.s.
+Donc X et Y sont constantes p.s.
+Exercice 4 Soit (Xn)n≥1 une suite de v.a.r. i.i.d. t.q. X1∼ Bernoulli (p) où p∈]0, 1[ : P (Xn =
+1) =p et P (Xn = 0) = 1−p =:q pour tout n∈ N∗.
+1. Montrer qu'il y a presque sûrement une innité de n tels que Xn = 1.
+2. Pour n∈ N∗, on dénit l'événement An ={Xn =Xn+1 =··· =X2n−1 = 1}. Montrer que
+p.s. il n'y a qu'un nombre ni de An qui sont réalisés.
+2
+<<<PAGE>>>
+Correction :
+1. Innité de succès p.s. :
+Soit Bn ={Xn = 1}. On veut montrer que P (lim supBn) = 1.
+Par le lemme de Borel-Cantelli 2 :
+ Les (Bn) sont indépendants (car les Xn le sont)
+ P∞
+n=1P (Bn) =P∞
+n=1p = +∞ (car p> 0)
+Donc P (lim supBn) = 1, ce qui signie qu'il y a p.s. une innité de n tels que Xn = 1.
+2. Nombre ni de séquences :
+On a An ={Xn =Xn+1 =··· =X2n−1 = 1}.
+Le nombre de termes dans cette séquence est 2n− 1−n + 1 =n.
+Donc :
+P (An) =pn
+Calculons : ∞X
+n=1
+P (An) =
+∞X
+n=1
+pn = p
+1−p <∞
+(car p< 1)
+Par le lemme de Borel-Cantelli 1 :
+P (lim supAn) = 0
+Cela signie que p.s., seul un nombre ni de An se réalisent.
+Exercice 5 Soit X une v.a.r. de loi N(0, 1), et Y =X 2.
+1. Utiliser le théorème du cours pour montrer que Y admet une densité fY et donner une
+expression de fY .
+2. En partant du calcul de la fonction de répartition de Y , FY , trouver le même résultat.
+Correction :
+1. Méthode par changement de variable :
+Soit g(x) =x2. On a Y =g(X).
+Sur I1 = [0, +∞[, g est strictement croissante avec g−1(y) =√y et (g−1)′(y) = 1
+2√y .
+Sur I2 =]−∞, 0], g est strictement décroissante avec g−1(y) =−√y et (g−1)′(y) =− 1
+2√y .
+Par le théorème de changement de variable :
+fY (y)=fX(√y)
+
+1
+2√y
+ +fX(−√y)
+− 1
+2√y
+
+= 1
+2√y [fX(√y) +fX(−√y)] 1]0,+∞[(y)
+Comme fX(x) = 1√
+2πe−x2/2 est paire :
+fY (y)= 1
+2√y· 2fX(√y)1]0,+∞[(y)
+= 1√y· 1√
+2πe−y/21]0,+∞[(y)
+= 1√
+2πy−1/2e−y/21]0,+∞[(y)
+3
+<<<PAGE>>>
+C'est la loi χ2
+1 =γ(1/2, 1/2).
+2. Méthode par fonction de répartition :
+Pour y≥ 0 :
+FY (y)=P (Y ≤y) =P (X 2≤y)
+=P (−√y≤X≤√y)
+=FX(√y)−FX(−√y)
+En dérivant par rapport à y :
+fY (y)=F′
+Y (y) =fX(√y)· 1
+2√y−fX(−√y)·
+
+− 1
+2√y
+
+= 1
+2√y [fX(√y) +fX(−√y)]
+= 1√2πye−y/21]0,+∞[(y)
+On retrouve le même résultat.
+Exercice 6 Soit X une v.a.r. t.q. X∼U([−1, 1]).
+1. Trouver une densité de la v.a.r. Y :=Xk que l'on note par fY , pour k∈ N∗, lorsque k est
+impair.
+2. Lorsque k est pair, donner l'expression de fY (y) pour tout y∈ R.
+Correction :
+On a fX(x) = 1
+2 1[−1,1](x).
+1. Cas k impair :
+Soit g(x) =xk. Pour k impair, g est strictement croissante sur R.
+Sur [−1, 1], g : [−1, 1]→ [−1, 1] bijectivement.
+On a g−1(y) =y1/k et (g−1)′(y) = 1
+ky(1/k)−1.
+Par changement de variable :
+fY (y)=fX(y1/k)
+
+1
+ky(1/k)−1
+ 1[−1,1](y)
+= 1
+2· 1
+k|y|(1/k)−11[−1,1](y)
+= 1
+2k|y|(1−k)/k1[−1,1](y)
+2. Cas k pair :
+Pour k pair, g(x) =xk n'est pas monotone sur [−1, 1].
+Décomposons : sur [−1, 0], g est décroissante ; sur [0, 1], g est croissante.
+Pour y∈ [0, 1] :
+FY (y)=P (Xk≤y) =P (|X|≤ y1/k)
+=P (−y1/k≤X≤y1/k)
+=
+Z y1/k
+−y1/k
+1
+2dx =y1/k
+4
+<<<PAGE>>>
+En dérivant :
+fY (y) = 1
+ky(1/k)−11[0,1](y) = 1
+ky(1−k)/k1[0,1](y)
+Pour y <0 : fY (y) = 0 (car Y =Xk≥ 0 toujours).
+Pour y >1 : fY (y) = 0 (car Y ∈ [0, 1]).
+Exercice 7 Soit X une variable aléatoire à valeurs dans ]a,b [ et admettant une espérance E[X].
+Soit g :]a,b [→ R une fonction convexe avec g∈C2(]a,b [; R).
+Montrer que E[g(X)]≥g(E[X]).
+Correction (Inégalité de Jensen) :
+Soit m =E[X]∈]a,b [.
+Méthode 1 (via la convexité) :
+Comme g est convexe, pour tout x∈]a,b [ :
+g(x)≥g(m) +g′(m)(x−m)
+En prenant l'espérance :
+E[g(X)]≥E[g(m) +g′(m)(X−m)]
+=g(m) +g′(m)E[X−m]
+=g(m) +g′(m)· 0 =g(E[X])
+Méthode 2 (via T aylor-Lagrange) :
+Par Taylor-Lagrange à l'ordre 2, pour tout x∈]a,b [ :
+g(x) =g(m) +g′(m)(x−m) +g′′(ξ)
+2 (x−m)2
+où ξ est entre m et x.
+Comme g est convexe, g′′≥ 0. En prenant l'espérance :
+E[g(X)]=g(m) +g′(m)E[X−m] +E
+g′′(ξ)
+2 (X−m)2
+
+=g(m) + 0 +E
+g′′(ξ)
+2 (X−m)2
+
+≥g(m) =g(E[X])
+Exercice 8 Soient X une variable aléatoire de loi normale standard et Z une variable aléatoire
+indépendante de X t.q. P (Z =−1) = 1
+2 =P (Z = 1).
+1. Montrer que X et −X suivent la même loi.
+2. Montrer que Y :=ZX est une v.a.r. qui suit la gaussienne standard.
+Correction :
+1. X et −X ont la même loi :
+La densité de X est fX(x) = 1√
+2πe−x2/2.
+Pour −X :
+f−X(y)=fX(−y) = 1√
+2πe−(−y)2/2 = 1√
+2πe−y2/2 =fX(y)
+5
+<<<PAGE>>>
+Donc X et −X ont la même loi.
+2. Y =ZX∼N(0, 1) :
+Méthode par fonction caractéristique :
+Calculons φY (t) =E[eitY ] =E[eitZX ].
+Par indépendance de X et Z :
+φY (t)=EZ[EX[eitZX|Z]]
+=EZ[φX(tZ)]
+=P (Z = 1)φX(t) +P (Z =−1)φX(−t)
+= 1
+2φX(t) + 1
+2φX(−t)
+Or, pour X∼N(0, 1) : φX(t) =e−t2/2.
+Donc :
+φY (t)= 1
+2e−t2/2 + 1
+2e−(−t)2/2
+= 1
+2e−t2/2 + 1
+2e−t2/2 =e−t2/2
+=φX(t)
+Par unicité de la fonction caractéristique, Y ∼N(0, 1).
+Exercice 9 Soit X∼ N(0, 1). Déterminer les lois des v.a. Y , Z et W dénies par W = X 2,
+Y =eX et Z =σX +µ, où σ∈ R∗ et µ∈ R.
+Correction :
+1. W =X 2 :
+D'après l'exercice 5, W∼χ2
+1 =γ(1/2, 1/2) avec densité :
+fW (w) = 1√
+2πwe−w/21]0,+∞[(w)
+2. Y =eX (loi log-normale) :
+Pour y >0 :
+FY (y)=P (eX≤y) =P (X≤ lny)
+=FX(lny) = Φ(lny)
+En dérivant :
+fY (y)=fX(lny)· 1
+y
+= 1√
+2πe−(lny)2/2· 1
+y 1]0,+∞[(y)
+= 1
+y
+√
+2πe−(lny)2/21]0,+∞[(y)
+3. Z =σX +µ :
+Transformation ane d'une gaussienne :
+Z∼N(µ,σ 2)
+6
+<<<PAGE>>>
+avec densité :
+fZ(z) = 1
+σ
+√
+2πe−(z−µ)2/(2σ2)
+Exercice 10 Une digue est haute de 4,5 mètres. On suppose que l'amplitude (en mètres) d'une
+vague est une variable aléatoire de loi uniforme sur [1, 5].
+1. Quelle est la probabilité qu'une vague dépasse la digue ?
+2. On observe trois vagues et l'on suppose que les amplitudes X1,X 2,X 3 sont indépendantes
+et identiquement distribuées. Quelle est la probabilité que de l'eau franchisse la digue ?
+3. Quelle devrait être la hauteur de la digue pour que cette probabilité soit de 10% ?
+4. Un repère enregistre l'amplitude maximale Y de trois vagues. Quelle est son espérance ?
+Correction :
+Soit X∼U([1, 5]), donc fX(x) = 1
+4 1[1,5](x).
+1. Probabilité qu'une vague dépasse 4,5 m :
+P (X >4.5) = 5− 4.5
+5− 1 = 0.5
+4 = 1
+8
+2. Probabilité que l'eau franchisse la digue :
+Il faut qu'au moins une des trois vagues dépasse 4,5 m :
+P (max(X1,X 2,X 3)> 4.5)= 1−P (max(X1,X 2,X 3)≤ 4.5)
+= 1−P (X1≤ 4.5,X 2≤ 4.5,X 3≤ 4.5)
+= 1−P (X1≤ 4.5)3
+= 1−
+4.5− 1
+5− 1
+3
+= 1−
+3.5
+4
+3
+= 1−
+7
+8
+3
+= 1− 343
+512 = 169
+512≈ 0.33
+3. Hauteur pour probabilité de 10% :
+Soit h la hauteur recherchée. On veut :
+P (max(X1,X 2,X 3)>h ) = 0.1
+Donc :
+1−
+h− 1
+4
+3
+= 0.1
+h− 1
+4
+3
+= 0.9
+h− 1
+4 = 0.91/3≈ 0.9654
+h = 1 + 4× 0.9654≈ 4.86 mètres
+4. Espérance du maximum :
+7
+<<<PAGE>>>
+Soit Y = max(X1,X 2,X 3). Sa fonction de répartition est :
+FY (y) =P (Y ≤y) =P (X1≤y)3 =
+y− 1
+4
+3
+1[1,5](y)
+La densité est :
+fY (y) = 3
+y− 1
+4
+2
+· 1
+4 1[1,5](y) = 3(y− 1)2
+64 1[1,5](y)
+L'espérance :
+E[Y ]=
+Z 5
+1
+y· 3(y− 1)2
+64 dy
+= 3
+64
+Z 5
+1
+y(y− 1)2dy
+= 3
+64
+Z 5
+1
+(y3− 2y2 +y)dy
+= 3
+64
+y4
+4 − 2y3
+3 + y2
+2
+5
+1
+= 3
+64
+625
+4 − 250
+3 + 25
+2
+
+−
+1
+4− 2
+3 + 1
+2
+
+= 3
+64· 64
+3 · 4 = 4
+Donc E[Y ] = 4 mètres.
+Exercices 11-15 : V oir page suivante
+8
+<<<PAGE>>>
+Exercice 11 (Loi γ (gamma), β (beta) et χ2 (khi-deux)).
+Cet exercice est très long. Voici les grandes étapes :
+1.a) fXa,b est une densité :
+Z +∞
+0
+ba
+Γ(a)xa−1e−bxdx = ba
+Γ(a)· Γ(a)
+ba = 1
+1.b) Espérance et variance :
+E[Xa,b] = a
+b, Var (Xa,b) = a
+b2
+1.c) F onction caractéristique :
+φXa,b(t) =
+
+1− it
+b
+−a
+2.a) Somme de Gamma :
+Si X1∼γ(a1,b ) et X2∼γ(a2,b ) indépendantes :
+X1 +X2∼γ(a1 +a2,b )
+3.a) Y 2 et valeur de Γ(1/2) :
+Si Y ∼N(0, 1), alors Y 2∼γ(1/2, 1/2) (cf. exercice 5).
+Donc Γ(1/2) =√π.
+3.b) Somme de carrés de gaussiennes :
+Si Xi∼N(0, 1) i.i.d., alors Pn
+i=1X 2
+i ∼χ2
+n =γ(n/2, 1/2).
+Exercice 13 Soient X∼N(0, 1), Y ∼ Poisson (λ) et Z∼U([−a,a ]), a∈ R∗.
+Calculer φA(t) pour A∈{X,Y,Z}.
+Correction :
+Pour X∼N(0, 1) :
+φX(t) =e−t2/2
+Pour Y ∼ Poisson (λ) :
+φY (t)=E[eitY ] =
+∞X
+k=0
+eitk· λke−λ
+k!
+=e−λ
+∞X
+k=0
+(λeit)k
+k!
+=e−λ·eλeit
+=eλ(eit−1)
+Pour Z∼U([−a,a ]) :
+φZ(t)=E[eitZ] =
+Z a
+−a
+eitx· 1
+2adx
+= 1
+2a
+eitx
+it
+a
+−a
+= 1
+2ait(eita−e−ita)
+= 1
+2ait· 2i sin(at) = sin(at)
+at
+9
+<<<PAGE>>>
+Exercice 15 Soient n variables aléatoires indépendantes X1,X 2,...,X n ayant chacune un mo-
+ment d'ordre 3 ni, et de moyenne nulle. Montrer que E
+h
+(Pn
+i=1Xi)3
+i
+=Pn
+i=1E[X 3
+i ].
+Correction :
+Posons S =Pn
+i=1Xi. On veut calculer E[S3].
+Méthode par fonction caractéristique :
+On sait que :
+E[Sk] = 1
+ikφ(k)
+S (0)
+Comme les Xi sont indépendantes :
+φS(t) =
+nY
+i=1
+φXi(t)
+En prenant le logarithme :
+lnφS(t) =
+nX
+i=1
+lnφXi(t)
+Développement de Taylor :
+lnφXi(t) =itE[Xi]− t2
+2E[X 2
+i ]−it3
+6E[X 3
+i ] +o(t3)
+Comme E[Xi] = 0 :
+lnφXi(t) =−t2
+2E[X 2
+i ]−it3
+6E[X 3
+i ] +o(t3)
+Donc :
+lnφS(t) =−t2
+2
+nX
+i=1
+E[X 2
+i ]−it3
+6
+nX
+i=1
+E[X 3
+i ] +o(t3)
+En dérivant trois fois et évaluant en t = 0 :
+E[S3] =
+nX
+i=1
+E[X 3
+i ]
+10

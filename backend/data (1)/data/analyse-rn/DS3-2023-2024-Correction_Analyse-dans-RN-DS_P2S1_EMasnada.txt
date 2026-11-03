@@ -1,0 +1,795 @@
+Préing 2 : Examen Final d’Analyse dans Rn
+L’usage d’appareil électronique est interdit.Date : Mercredi 24 Janvier 2024
+Aucun document n’est autorisé. Durée : 2h
+Le barème est donné à titre indicatif. Nombre de pages : 1 page recto-verso
+Exercice 1 : Système d’EDPs d’ordre 1 (4 points)
+Soit le système : 
+
+
+∂f
+∂x =y exp(xy +y2)− (y + 2x) sin(xy +x2)
+∂f
+∂y = 2y + (x + 2y) exp(xy +y2)−x sin(xy +x2)
+1. Préciser, en justiﬁant, sur quel domaine ce système est résolvable.
+2. Résoudre ce système.
+1. Posons
+g(x,y ) = y exp(xy +y2)− (y + 2x) sin(xy +x2)
+h(x,y ) = 2y + (x + 2y) exp(xy +y2)−x sin(xy +x2)
+Le système d’EDPs peut être résolu sur un domaine sur lequelg et h sontC1. Or g et h
+sont clairementC1 sur R2 comme somme, produit et composition de fonctionC1 sur R2. En
+eﬀet,exp(X) et sin(X) sontC1 sur R tandis quexy +y2 et xy +x2 sontC1 sur R2 comme
+polynome, d’où l’on déduit quesin(xy +x2) et exp(xy +y2) sontC1 sur R2. De plusy et
+y + 2x sont trivialementC1 sur R2. Ainsi g estC1 sur R2 comme somme et produit des
+fonctionsC1 précédente. Il en va de même deh.(0.5 point)
+2.
+Etape 1 :Vériﬁons que∂g
+∂y = ∂h
+∂x : (0.5 point)
+∂g
+∂y = exp(xy +y2) +y(2y +x) exp(xy +y2)− sin(xy +x2)− (y + 2x)x cos(xy +x2)
+∂h
+∂x = exp(xy +y2) +y(x + 2y) exp(xy +y2)− sin(xy +x2)−x(2x +y)x cos(xy +x2)
+Etape 2 :Intégrons l’une des deux EDPs : (1 point)
+Soit ∂f
+∂x =y exp(xy +y2)− (y + 2x) sin(xy +x2)
+alors
+f (x,y ) = exp(xy +y2) + cos(xy +x2) +K(y)
+où K estC2 sur R (car y∈ R).
+1
+<<<PAGE>>>
+Etape 3 :On dérivef par l’autre variable :
+Soit
+f (x,y ) = exp(xy +y2) + cos(xy +x2) +K(y)
+alors
+∂f
+∂y = (2y +x) exp(xy +y2)−x sin(xy +x2) + ∂K
+∂y
+= 2y + (x + 2y) exp(xy +y2)−x sin(xy +x2)
+d’où l’on déduit que
+∂K
+∂y = 2y (1 point)
+Etape 4 :On résoud l’équa diﬀ précédente (0.5 point)
+La solution de∂K
+∂y = 2y s’écrit
+K(y) = y2 +C
+avecC∈ R.
+Etape 5 :Solution : (0.5 point)
+f (x,y ) = exp(xy +y2) + cos(xy +x2) +y2 +C
+avecC∈ R.
+Exercice 2 : EDP d’ordre 1 (4.5 points)
+Soit D ={(x,y )∈ R2 / y⁄=±x, x⁄= 0} et ϕ le changement de variables deD déﬁni par
+ϕ(x,y ) = (u,v ) =
+(x +y
+x ; x−y
+)
+1. Montrer queϕ est unC1-diﬀéomorphisme entreD et V, en précisantV.
+2. Déterminer f de classeC1 sur D qui vériﬁe l’équation suivante :
+∀(x,y )∈D, x∂f
+∂x +y∂f
+∂y = exp(x +y)
+1. Montrons queϕ est unC1-diﬀéomorphisme deD dans V. Pour cela commençons par écrire
+proprement le changement de variables
+ϕ : D → V = R\{0; 2}× R\{0; 2}
+(x,y ) ↦→ (u,v ) = ϕ(x,y ) =
+(x+y
+x ; x−y
+)
+(a) ϕ estC1 sur D si et seulement siu et v sontC1 sur D. Oru(x,y ) = (x +y)/x estC1 sur
+D comme fraction rationnelle dont le dénominateur ne s’annulle jamais surD. De plus
+v(x,y ) = x−y est trivialementC1 sur D. (0.5 point).
+2
+<<<PAGE>>>
+(b) Nous allons maintenant montrer queϕ réalise bien une bijection deD dans V.
+{
+u = x+y
+x
+v =x−y ⇐⇒
+x⁄=0
+{
+x +y =ux
+v =x−y ⇐⇒
+{
+y = (u− 1)x
+v =x−y ⇐⇒
+{
+y = (u− 1)x
+v =x−ux +x
+⇐⇒
+{
+y = (u− 1)x
+v = (2−u)x ⇐⇒
+u⁄=2
+{
+y = (u−1)v
+2−u
+x = v
+2−u
+(0.5 point)
+Ainsi ϕ réalise bien une bijection deD dans V et de plus
+ϕ−1 : V → D
+(u,v ) ↦→ (x,y ) = ϕ−1(u,v ) =
+(
+v
+2−u ; (u−1)v
+2−u
+)
+(c) ϕ−1 estC1 surV si et seulement si les applications composantesx ety sontC1 surV. Or
+ces deux applications sontC1 sur V comme fraction rationnelle dont le dénominateur ne
+s’annule jamais surV. (0.5 point)
+2. Passons maintenant à la résolution de l’EDP.
+Introduisons la nouvelle fonctiong qui dépend des variablesu et v en posant
+f =g◦ϕ⇐⇒f (x,y ) = g
+(
+ϕ(x,y )
+)
+=g
+(x +y
+x ,x−y
+)
+(0.5 point)
+Calculons maintenant les dérivées partielles def en fonction de celles deg
+∂f
+∂x = ∂g
+∂u
+∂u
+∂x + ∂g
+∂v
+∂v
+∂x =− y
+x2
+∂g
+∂u + ∂g
+∂v (0.5 point)
+∂f
+∂y = ∂g
+∂u
+∂u
+∂y + ∂g
+∂v
+∂v
+∂y = 1
+x
+∂g
+∂u− ∂g
+∂v (0.5 point)
+Injectons maintenant ces expressions dans l’EDP
+exp(x +y) = x∂f
+∂x +y∂f
+∂y =−y
+x
+∂g
+∂u +x∂g
+∂v + y
+x
+∂g
+∂u−y∂g
+∂v = (x−y)∂g
+∂v
+on obtient donc
+(x−y)∂g
+∂v = exp(x +y)
+or v =x−y et x +y =uv/(2−u), donc
+v∂g
+∂v = exp
+( uv
+2−u
+)
+⇐⇒
+v⁄=0
+∂g
+∂v = 1
+v exp
+( uv
+2−u
+)
+(0.5 point)
+Notons alors
+H(u,v ) = K(u) +
+∫ 1
+v exp
+( uv
+2−u
+)
+dv (0.5 point)
+où K est C1 sur R\{0; 2}.
+Finalement
+f (x,y ) = g
+(x +y
+y ,x−y
+)
+=H
+(x +y
+x ,x−y
+)
++K
+(x +y
+x
+)
+(0.5 point)
+3
+<<<PAGE>>>
+Exercice 3 : Résolution d’une EDP d’ordre 2 (8 points)
+Soit ϕ le changement polaire dansA = R∗
++× R. Soitf une application de classe C2 sur A, etg
+l’application déﬁnie surϕ−1(A) par g(r,θ ) = f◦ϕ(r,θ ) = f (x,y ).
+1. Rappeler l’expression deϕ−1(x,y ) et l’ensembleB =ϕ−1(A).
+2. Calculer l’expression de∂g
+∂r, ∂g
+∂θ, ∂2g
+∂r 2, ∂2g
+∂θ 2 et ∂2g
+∂r∂θ en fonction de celles def et uniquement des
+variablesx et y.
+3. Déterminer f de classe C2 sur A qui vériﬁe l’équation
+∀(x,y )∈A, xy
+(∂2f
+∂y 2− ∂2f
+∂x2
+)
++ (x2−y2) ∂2f
+∂x∂y =y∂f
+∂x−x∂f
+∂y + (x2 +y2) cos
+(√
+x2 +y2
+)
+1. (0.5 point)
+ϕ−1 : A → B
+(x,y ) ↦→ (r,θ ) = ϕ−1(x,y ) =
+(√
+x2 +y2 ; Arctan
+(y
+x
+))
+2. Pour rappel : {
+x =r cos(θ)
+y =r sin(θ)
+Calcul des dérivées partielles deg :
+∂g/∂r : (0.5 point)
+∂g
+∂r = ∂f
+∂x
+∂x
+∂r + ∂f
+∂v
+∂v
+∂r = cos(θ)∂f
+∂x + sin(θ)∂f
+∂y
+= x√
+x2 +y2
+∂f
+∂x + y√
+x2 +y2
+∂f
+∂y
+∂g/∂θ : (0.5 point)
+∂g
+∂θ = ∂f
+∂x
+∂x
+∂θ + ∂f
+∂v
+∂v
+∂θ =−r sin(θ)∂f
+∂x +r cos(θ)∂f
+∂y
+=−y∂f
+∂x +x∂f
+∂y
+∂2g/∂r 2 : (1 point)
+∂2g
+∂r 2 = ∂
+∂r
+(
+cos(θ)∂f
+∂x + sin(θ)∂f
+∂y
+)
+= cos(θ) ∂
+∂r
+(∂f
+∂x
+)
++ sin(θ) ∂
+∂r
+(∂f
+∂y
+)
+= cos(θ)
+[
+cos(θ) ∂
+∂x + sin(θ) ∂
+∂y
+](∂f
+∂x
+)
++ sin(θ)
+[
+cos(θ) ∂
+∂x + sin(θ) ∂
+∂y
+](∂f
+∂y
+)
+= cos 2(θ)∂2f
+∂x2 + 2 cos(θ) sin(θ) ∂2f
+∂x∂y + sin2(θ)∂2f
+∂y 2
+= x2
+x2 +y2
+∂2f
+∂x2 + 2xy
+x2 +y2
+∂2f
+∂x∂y + y2
+x2 +y2
+∂2f
+∂y 2
+4
+<<<PAGE>>>
+∂2g/∂θ 2 : (1 point)
+∂2g
+∂θ 2 = ∂
+∂θ
+(
+−r sin(θ)∂f
+∂x +r cos(θ)∂f
+∂y
+)
+=−r cos(θ)∂f
+∂x−r sin(θ) ∂
+∂θ
+(∂f
+∂x
+)
+−r sin(θ)∂f
+∂y +r cos(θ) ∂
+∂θ
+(∂f
+∂y
+)
+=−r cos(θ)∂f
+∂x +r2 sin2(θ)∂2f
+∂x2− 2r2 sin(θ) cos(θ) ∂2f
+∂x∂y−r sin(θ)∂f
+∂y +r2 cos2(θ)∂2f
+∂y 2
+=−x∂f
+∂x +y2∂2f
+∂x2− 2xy ∂2f
+∂x∂y−y∂f
+∂y +x2∂2f
+∂y 2
+∂2g/∂r∂θ : (1 point)
+∂2g
+∂r∂θ = ∂
+∂r
+(∂g
+∂θ
+)
+= ∂
+∂r
+[
+−r sin(θ)∂f
+∂x +r cos(θ)∂f
+∂y
+]
+=− sin(θ)∂f
+∂x−r sin(θ) ∂
+∂r
+(∂f
+∂x
+)
++ cos(θ)∂f
+∂y +r cos(θ) ∂
+∂r
+(∂f
+∂y
+)
+=− sin(θ)∂f
+∂x−r sin(θ) cos(θ)∂2f
+∂x2−r sin2(θ) ∂2f
+∂x∂y
++ cos(θ)∂f
+∂y +r cos2(θ) ∂2f
+∂x∂y +r cos(θ) sin(θ)∂2f
+∂y 2
+=− y√
+x2 +y2
+∂f
+∂x− xy√
+x2 +y2
+∂2f
+∂x2 + x2−y2
+√
+x2 +y2
+∂2f
+∂x∂y + x√
+x2 +y2
+∂f
+∂y + xy√
+x2 +y2
+∂2f
+∂y 2
+3. Prenons la dernière expression est multiplions-la par
+√
+x2 +y2 (possible car⁄= 0). On obtient
+alors
+√
+x2 +y2 ∂2g
+∂r∂θ =xy
+(∂2f
+∂y 2− ∂2f
+∂x2
+)
++ (x2−y2) ∂2f
+∂x∂y +x∂f
+∂y−y∂f
+∂x
+Or, à droite, on reconnait une partie de l’EDP proposée. On a ainsi
+√
+x2 +y2 ∂2g
+∂r∂θ =xy
+(∂2f
+∂y 2− ∂2f
+∂x2
+)
++ (x2−y2) ∂2f
+∂x∂y +x∂f
+∂y−y∂f
+∂x = (x2 +y2) cos(
+√
+x2 +y2)
+on déduit donc que
+√
+x2 +y2 ∂2g
+∂r∂θ = (x2 +y2) cos(
+√
+x2 +y2)
+ce qui conduit à
+∂2g
+∂r∂θ =
+√
+x2 +y2 cos(
+√
+x2 +y2) = r cos(r)
+5
+<<<PAGE>>>
+Finalement, on a
+∂2g
+∂r∂θ =r cos(r) (2 points)
+qui a pour solution
+g(r,θ ) =
+[
+cos(r) +r sin(r)
+]
+×θ +C (1 point)
+avecC∈ R.
+Finalement
+f (x,y ) = g
+(√
+x2 +y2,Arctan(y/x)
+)
+=
+[
+cos(
+√
+x2 +y2) +
+√
+x2 +y2 sin(
+√
+x2 +y2)
+]
+×Arctan(y/x) +C (0.5 point)
+Exercice 4 : Classe C2 (8.5 points)
+Soit la fonctionf déﬁnie par
+f (x,y ) =
+{ x3y3
+x2+y2 si (x,y )⁄= (0, 0)
+0 sinon
+1. Montrer que la fonctionf est de classeC2 sur R2.
+2. Calculer le gradient et la matrice Hessienne def.
+1.
+Sur R2\{(0, 0)} : (0.5 point)
+l’applicationf est C1 sur R2\{(0, 0)} comme fraction rationnelle dont le dénominateur ne
+s’annule jamais.
+On doit maintenant calculer les dérivées partielles premières et secondes sur R2 et véri-
+ﬁer qu’elles sont bien continues.
+Dérivées partielles premières :
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= 3x2y3(x2 +y2)− 2x4y3
+(x2 +y2)2 = 3x4y3 + 3x2y5− 2x4y3
+(x2 +y2)2
+= x4y3 + 3x2y5
+(x2 +y2)2 = x2y3(x2 + 3y2)
+(x2 +y2)2 (0.5 point)
+Comme la fonctionf est symétrique par permutation desx et desy, on sait que l’on peut
+obtenir ∂f
+∂y
+⏐⏐⏐
+(x,y)⁄=(0,0)
+en changeant tous lesx en y et tous lesy en x
+∂f
+∂y
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= 3y2x3(x2 +y2)− 2y4x3
+(x2 +y2)2
+= y2x3(y2 + 3x2)
+(x2 +y2)2 (0.5 point)
+6
+<<<PAGE>>>
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f (t, 0)−f (0, 0)
+t = lim
+t→0
+0− 0
+t = 0 (0 .5 point)
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f (0,t )−f (0, 0)
+t = lim
+t→0
+0− 0
+t = 0 (0 .5 point)
+nous n’allons pas étudier la continuité de ces dérivées partielles en(0, 0) car d’après l’énoncé
+la fonction estC2 en (0, 0) ce qui implique bien la continuité des dérivées partielles premières.
+Dérivées partielles secondes :
+∂2f
+∂x2
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= (4x3y3 + 6xy5)(x2 +y2)2− 4x(x2 +y2)(x4y3 + 3x2y5)
+(x2 +y2)4
+= (4x3y3 + 6xy5)(x2 +y2)− 4x(x4y3 + 3x2y5)
+(x2 +y2)3
+= 6xy7− 2x3y5
+(x2 +y2)3 (0.5 point)
+Même si on peut encore une fois obtenir∂2f
+∂y 2
+⏐⏐⏐
+(x,y)⁄=(0,0)
+par simple symétrie, je pense que la
+plupart des élèves feront le calcul explicite
+∂2f
+∂y 2
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= (6x5y + 4x3y3)(x2 +y2)2− 4y(x2 +y2)(3x5y2 +x3y4)
+(x2 +y2)4
+= (6x5y + 4x3y3)(x2 +y2)− 4y(3x5y2 +x3y4)
+(x2 +y2)3
+= 6yx7− 2y3x5
+(x2 +y2)3 (0.5 point)
+∂2f
+∂y∂x
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= ∂2f
+∂x∂y
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+= x2y2(14x2y2 + 3x4 + 3y4)
+(x2 +y2)3 (0.5 point)
+Calcul des dérivées secondes en(0, 0) :
+∂2f
+∂x2
+⏐⏐⏐⏐
+(0,0)
+= ∂
+∂x
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+1
+t
+[
+∂f
+∂x
+⏐⏐⏐⏐
+(t,0)
+− ∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+]
+= 0 (0 .5 point)
+7
+<<<PAGE>>>
+∂2f
+∂y 2
+⏐⏐⏐⏐
+(0,0)
+= ∂
+∂y
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+1
+t
+[
+∂f
+∂y
+⏐⏐⏐⏐
+(0,t)
+− ∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+]
+= 0 (0 .5 point)
+∂2f
+∂x∂y
+⏐⏐⏐⏐
+(0,0)
+= ∂
+∂x
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+1
+t
+[
+∂f
+∂y
+⏐⏐⏐⏐
+(t,0)
+− ∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+]
+= 0 (0 .5 point)
+∂2f
+∂y∂x
+⏐⏐⏐⏐
+(0,0)
+= ∂
+∂y
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+1
+t
+[
+∂f
+∂x
+⏐⏐⏐⏐
+(0,t)
+− ∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+]
+= 0 (0 .5 point)
+Il ne reste plus qu’à vériﬁer que les 3 applications sont bien continues en(0, 0) c’est-à-dire
+que les applications dérivées secondes pour(x,y )⁄= (0, 0) tendent bien vers 0. Pour cela, on
+peut passer en coordonnées polaires en posantx =ρ cos(θ) et y =ρ sin(θ).
+∂2f
+∂x2
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+=ρ2
+[
+6 cos(θ) sin7(θ)− 2 cos3(θ) sin5(θ)
+]
+−→
+ρ→0
+0 = ∂2f
+∂x2
+⏐⏐⏐⏐
+(0,0)
+(0.5 point)
+donc ∂2f
+∂x2 est continue surR2.
+∂2f
+∂y 2
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+=ρ2
+[
+6 sin(θ) cos7(θ)− 2 sin3(θ) cos5(θ)
+]
+−→
+ρ→0
+0 = ∂2f
+∂y 2
+⏐⏐⏐⏐
+(0,0)
+(0.5 point)
+donc ∂2f
+∂y 2 est continue surR2.
+∂2f
+∂x∂y
+⏐⏐⏐⏐
+(x,y)⁄=(0,0)
+=ρ2
+[
+cos2(θ) sin2(θ)(14 cos2(θ) sin2(θ) + 3 cos4(θ) + 3 sin4(θ)
+]
+−→
+ρ→0
+0 = ∂2f
+∂x∂y
+⏐⏐⏐⏐
+(0,0)
+(0.5 point)
+donc ∂2f
+∂x∂y est continue surR2.
+Finalementf est bienC2 sur R2.
+2. C2 est une condition suﬃsante mais non nécessaire d’existence du gradient et de la matrice
+Hessienne. On peut donc calculer ces deux objets surR2.
+Pour le gradient :(0.5 point)
+∀(x,y )⁄= (0, 0), ⃗∇f (x,y ) =
+
+
+∂f
+∂x
+⏐⏐⏐
+(x,y)⁄=(0,0)
+∂f
+∂y
+⏐⏐⏐
+(x,y)⁄=(0,0)
+
+
+tandis que
+⃗∇f (0, 0) =
+(0
+0
+)
+8
+<<<PAGE>>>
+Pour la matrice Hessienne :(0.5 point)
+∀(x,y )⁄= (0, 0), Hf (x,y ) =
+
+
+∂2f
+∂x2
+⏐⏐⏐
+(x,y)⁄=(0,0)
+∂2f
+∂x∂y
+⏐⏐⏐
+(x,y)⁄=(0,0)
+∂2f
+∂x∂y
+⏐⏐⏐
+(x,y)⁄=(0,0)
+∂2f
+∂y 2
+⏐⏐⏐
+(x,y)⁄=(0,0)
+
+
+Tandis que
+Hf (0, 0) =
+(0 0
+0 0
+)
+9

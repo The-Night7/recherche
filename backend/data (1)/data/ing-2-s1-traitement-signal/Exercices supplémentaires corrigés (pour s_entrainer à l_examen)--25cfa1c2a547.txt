@@ -1,0 +1,440 @@
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD0
+Exercice 1
+Considérons les signaux s1 à s6 représentés sur la gure ci-dessous :
+1. Ces signaux sont-ils continus ?
+2. Ces signaux sont-ils discrets ?
+3. Ces signaux sont-ils quantiés ?
+4. Ces signaux sont-ils analogiques ?
+5. Ces signaux sont-ils numériques ?
+6. Parmi ces signaux, un seul est issu de l'échan-
+tillonnage d'un signal continu avec une période
+d'échantillonnage Te xe. Lequel ?
+7. Dessiner un chronogramme irréaliste ne représen-
+tant pas un signal.
+Exercice 2
+Considérons les signaux s1 à s6 représentés sur la gure ci-dessous :
+5
+On suppose que l'horizon de temps choisi en
+indique assez sur l'allure du signal.
+1. Quels sont les signaux périodiques ?
+2. Il y en a t-ils qui ne soient pas périodiques
+mais qui présentent une pseudo-période ?
+7
+<<<PAGE>>>
+Exercice 3
+Soit un signal x apériodique décrit par :
+/braceleft.alt4x(t) = x0e−t, ∀t> 0,
+x(t) = 0, ∀t< 0
+1. Dessiner le signal x=f(t).
+2. Calculer la moyenne de x sur tout l'horizon de temps. Commenter.
+3. Calculer la moyenne de x sur l'intervalle [0; 1].
+Exercice 4
+Soit un signal c carré impair d'amplitude A et de fréquence fp.
+1. Dessiner le signal c.
+2. Quel est son rapport cyclique ?
+3. Calculer la moyenne de c sur tout l'horizon de temps. Est-ce une surprise ?
+4. Calculer la moyenne sur l'intervalle [0;Tp/slash.left2] en appliquant la formule rigoureuse. Est-ce une
+surprise ?
+5. On ajoute une composante continue A0 à c. Que devient sa valeur moyenne ?
+6. Que devient sa moyenne sur [0;Tp/slash.left2]?
+Exercice 5 Conversion analogique numérique
+Soit la courbe analogique suivante et le résultat de sa conversion numérique :
+8
+<<<PAGE>>>
+1. Sur combien de bits travaille ce convertisseur A/N (amplitude) ?
+2. Combien de valeurs diérentes sont possibles (amplitude) ?
+3. Déterminer la période d'échantillonnage Te utilisée par ce convertisseur.
+4. Calculer la fréquence d'échantillonnage.
+5. Sachant que les valeurs max et min du signal analogique sont 2V et -2V, calculer le pas de ce
+convertisseur.
+6. Pour mémoriser le signal numérique correspondant à ces 4ms, combien de bits de données
+va-t-on avoir ?
+7. Si le signal total dure 5 minutes, combien de bits de données seront nécessaires pour mémoriser
+numériquement le signal ?
+8. Donner le résultat précédent en ko.
+9
+<<<PAGE>>>
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD1 - Analyse des signaux
+Exercice 6
+Un signal s est placé en entrée d'un analyseur de spectre. L'analyseur propose alors un graphe
+donné par la gure ci dessous :
+1. Que représente ce graphe ?
+2. Le signal est-il périodique ? Si oui, quelle est sa période notée T ?
+3. Le signal comporte-t-il des harmoniques ? Si oui, combien ?
+4. Donner son expression.
+5. Dessiner la représentation fréquentielle de : s(t)+ 2.
+Exercice 7
+Soit le signal s suivant :
+s(t) =Ssin(ωt)
+ainsi que les signaux c et d représentés sur la gure ci dessous :
+16
+<<<PAGE>>>
+1. Que représentent S et A ?
+2. Calculer le développement en série de Fourier de s, c et d (c'est-à-dire les coecients an et bn).
+Commenter.
+3. Déduire les coecients cn et ϕn de l'autre forme du développement pour s, c et d.
+4. Déterminer le développement des signaux s1(t) =−s(t), c1(t) =−c(t) et d1(t) =−d(t).
+5. Déterminer le développement des signaux s2(t) =−s(t), c2(t) = 2c(t) et d2(t) = 2d(t).
+6. Que faut il modier pour passer du développement de c (ou de d) à celui du même signal mais
+décalé vers le haut de A
+2 ?
+Exercice 8
+Soit r, un signal rectangulaire pair. Il est représenté sur la gure ci-dessous :
+Calculer les coecients du développement en série de Fourier de r.
+17
+<<<PAGE>>>
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD2 - Distributions
+Exercice 9 Exemples et contre-exemples de distributions
+Les applications suivantes dénie sur D(R) dans R sont-elles des distributions ? Si oui, préciser de
+quelle distribution il s'agit. Dans ce qui suit, ϕ désigne une fonction quelconque de D(R).
+1. T1(ϕ) = ∫
+1
+0 ϕ(t)dt
+2. T2(ϕ) = ∫
+1
+0 /divides.alt0ϕ(t)/divides.alt0dt
+3. T3(ϕ) = ∫
++∞
+0 t2ϕ(t)dt
+4. T6(ϕ) =ϕ(0)+ϕ′(1)
+Exercice 10 Dérivées d'ordre un et deux de la fonction "rampe"
+On rappelle que
+ La fonction de Heaviside : H(t) =
+/uni23A7/uni23AA/uni23AA/uni23A8/uni23AA/uni23AA/uni23A9
+0 sit ≤0
+1 sit > 0
+ La fonction rampe : t/uni21A6tH(t)
+Montrer que la fonction rampe R dénit une distribution. Déterminer R′et R′′au sens des distribu-
+tions.
+Exercice 11 Dérivées de la fonction de Heaviside et d'une porte.
+1. Vérier que la fonction de Heaviside H et la fonction porte Πa (pour a> 0 donné) dénissent
+des distributions de D′(R).
+2. Pour les deux fonctions de la question précédente, déterminer leur dérivée au sens des distri-
+butions.
+Exercice 12
+Soit S le système qui à tout signal u déni par une distribution associé le signal de sortie u′′.
+1. Déterminer le signal de sortie pour une entrée égale à δ0. Le signal de sortie est alors appelé
+réponse impulsionnelle.
+2. On considère la fonction u suivante :
+u(t) =
+/uni23A7/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23A8/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23AA/uni23A9
+0 sit < 0
+t si 0≤t≤1
+−t+ 2 si 1≤t≤2
+0 si t> 2.
+29
+<<<PAGE>>>
+(a) Vérier que u dénie bien une distribution.
+(b) Déterminer le signal de sortie S(u).
+3. Pour ϕ∈D(R), on note ϕu la fonction dénie par
+ϕu(x) = /integral.disp
++∞
+−∞
+u(t)ϕ(x+t)dt.
+On admet que ϕu est un élément de D(R).
+Vérier que S(u) est la distribution dénie par
+∀ϕ∈D(R), <S(u),ϕ >=< δ′′
+0,ϕu > .
+30
+<<<PAGE>>>
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD3 - Convolution
+Exercice 13 Calcul d'un produit de convolution de deux fonctions
+Soit f = Π2 et g = Π2a, avec a≥1.
+Déterminer f ∗g après en avoir justié l'existence.
+Exercice 14 Calcul d'un produit de convolution discret
+Soit a> 0. Eectuer le produit de convolution des deux signaux ci-dessous :
+x=−2δ−a+δ0+ 3δa−δ2a y = 3δa+ 2δ2a−δ3a.
+Exercice 15 EDO au sens des distributions
+1. Soit T une distribution sur R. Soit φ une fonction de classe C∞ sur R. On dénit le produit
+φT comme étant la distribution
+∀ϕ∈D(R), <φT,ϕ >=< T,φϕ >
+(on remarquera que si ϕ est dans D(R), il en est de même pour φϕ.
+Montrer que l'on a
+(φT)′=φT′+φ′T (au sens des distributions).
+2. On considère l'EDO suivante :
+τy′+y =κδ0
+où τ,κ ∈R∗.
+Montrer que la distribution dénie par la fonction h donnée par h(t) = κ
+τe−t/slash.leftτH(t), ou H est
+la fonction de Heaviside , est solution de l'EDO.
+3. On considère maintenant l'EDO :
+τy′+y =κT,
+où T est un distribution donnée. Vériez que y =h∗x est solution de cette EDO.
+Exercice 16 Calcul d'un produit de convolution au sens des distributions
+1. Vérier que la fonction de Heaviside H n'est pas une fonction de L1(R)∪L2(R), mais qu'elle
+dénie une distribution de D′(R).
+2. Justier l'existence du produit de convolution H∗δa et le déterminer.
+43
+<<<PAGE>>>
+3. Déterminer la convolution de la fonction u= 1
+2(t+ 1)I[−1,0]+ 1
+2(−t+ 1)I[0,1] par la distribution
+δ0+ 1
+2δ2+ 1
+4δ4
+Exercice 17 Approximation d'une dérivée par convolution
+Soit a∈R et h> 0.
+1. Soit ϕ∈D(R). Déterminer le produit de convolution ( 1
+2h(δ−h−δh)∗ϕ)(a).
+Vérer que ( 1
+2h(δ−h−δh)∗ϕ)(a) =< 1
+2h(δa+h−δa−h),ϕ > .
+2. Montrer que limh→0 1
+2h(δa+h−δa−h) existe dans D′(R) et déterminer cette limite.
+Exercice 18 Convolution discrète 2D
+Une image décrite en niveau de gris est résumée par la matrice A :
+A=
+/uni239B
+/uni239C/uni239C/uni239C
+/uni239D
+0 1 1 1
+0 1 1 1
+0 0 0 1
+0 0 0 1
+/uni239E
+/uni239F/uni239F/uni239F
+/uni23A0
+On souhaite réaliser la convolution 2D discrète de l'image A par la distribution résumé par la matrice
+de convolution
+/uni239B
+/uni239C
+/uni239D
+1 0 −1
+0 0 0
+−1 0 1
+/uni239E
+/uni239F
+/uni23A0
+.
+1. Eectuer cette convolution à la main.
+2. Vérier vos calculs en utilisant la fonction convolve2d de scipy.signal sous Python.
+44
+<<<PAGE>>>
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD4 - Transformée de Fourier
+Exercice 19 Transformée de Fourier de la fonction porte
+Soit a> 0. déterminer le transformée de Fourier de la fonction porte Π2a.
+Exercice 20 Transformée de Fourier d'une sinusoïde tronquée
+1. Rappeler la transformée de Fourier du signal x1 déni par
+x1(t) = 2cos(2πt×5).
+2. En utilisant le résultat de l'exercice précédent, déterminer la transformée de Fourier du signal
+x2 déni par
+x2(t) =
+/uni23A7/uni23AA/uni23AA/uni23A8/uni23AA/uni23AA/uni23A9
+x1(t) sit ∈[−2, 2]
+0 sinon .
+3. Donner le spectre d'amplitude de x1 et de x2.
+Exercice 21 Filtre passe bas d'ordre 1 de Butterworth
+1. On considère la fonction H de R dans C dénie par
+H(ν) = 1
+1+i ν
+νC
+,
+où νC > 0 est un réel donné.
+(a) Tracer le graphe de la fonction G ∶ν /uni21A620 log10(/divides.alt0H(ν)/divides.alt0)en fonction de log10(ν), pour
+ν ∈[0, 10000].
+(b) Quelle est la valeur de G(νC).
+2. On considère un ltre dont la fonction de transfert est H.
+(a) Rappelle ce que cela signie.
+(b) Quel sera l'eet de ce ltre sur un signal d'entrée x.
+(c) On note x et y respectivement les signaux d'entrée et de sortie de ce ltre. Déterminer la
+relation liant x et y.
+Remarque : Ce ltre est appelé ltre passe bas d'ordre 1 de Butterworth. On peut dénir des
+ltres de Butterworth d'ordre plus élevé en considérant des fonctions de transfert Hn ( n∈N∗)
+telles que
+/divides.alt0Hn(ν)/divides.alt0= 1/radical.alt2
+1+( ν
+νC
+)2n
+.
+Pour n= 3, par exemple, on considère la fonction
+H3(ν) = 1
+1+ 2i ν
+νC
++ 2(i ν
+νC
+)2+(i ν
+νC
+)3.
+Le graphe de la fonction G tracé à la question 1.a. est appelé diagramme de Bode du ltre.
+60
+<<<PAGE>>>
+3. Le chier coq-bruitee.wav contient, comme son nom l'indique, un chant de coq, auquel est
+venu se greer un siement aigü.
+(a) Écrire un programme Python qui permet de lire le chier audio et qui trace le graphe de
+ce signal ainsi que son spectre d'amplitude.
+(b) Mettre en oeuvre un ltre de Butterworth d'ordre 10 pour estomper les fréquences supé-
+rieures à 1500Hz. (On pourra utiliser la fonction butter du module signal de scipy )
+(c) Enregistrer le signal sonore ltré dans un nouveau chier .wav et comparer au chier
+initial.
+61
+<<<PAGE>>>
+CY Tech - Pau
+ING2 MI - Traitement du Signal
+TD5 : Filtrage
+Exercice 22 Exo/cours ltrage par le circuit RC
+Un ltre en électrocinétique ne laissera passer que certains signaux sinusoïdaux caractérisés par
+une pulsation ω (= 2πf , avec f la fréquence du signal).
+À l'entrée du ltre, on applique par exemple une tension de pulsation ω :
+ si, à la sortie du ltre, la tension n'est pas atténuée, on considère que le ltre laisse passer la
+pulsation ω ;
+ si au contraire, la tension est atténuée, on considère que le ltre ne laisse pas passer la pulsation
+ω.
+Soit un circuit formé d'un conducteur ohmique R et d'un condensateur de capacité C, soumis à
+une tension sinusoïdale ue(t) :
+1. Déterminer la fonction de transfert H du ltre RC : H(ω) = us
+ue
+.
+2. On écrit la fonction de transfert de la façon suivante : H(ω) = A
+1+j ω
+ωc
+avec j2 =−1, A : le gain
+et ωc : la pulsation de coupure. Identier A et ωc.
+3. Déduire la fréquence de coupure notée fc.
+4. Calculer le gain GdB en dB à la fréquence de coupure. On rappelle que GdB = 20log(/divides.alt0H /divides.alt0).
+5. Représenter le diagramme de Bode de ce ltre.
+6. Déduire la nature de ce ltre.
+Rappels : Le diagramme de Bode d'un ltre se compose de deux tracés :
+ Le gain en décibels (dB) en fonction de ω donné par GdB = 20log(/divides.alt0H(ω) /divides.alt0).
+ la phase en degré en fonction de ω, donnée par arg(H(ω))
+Exercice 23 Filtrage et spectre
+La gure ci-dessous représente les spectres de Fourier du signal de commande envoyé par un
+générateur basse fréquence (GBF) à un émetteur d'ultrasons (grande amplitude, gris foncé) et de
+celui recueilli par un récepteur placé quelques dizaines de centimètre plus loin (faible amplitude, gris
+clair).
+70
+<<<PAGE>>>
+1. Quelle est la nature du ltrage réalisé entre le signal du GBF et sa réception ?
+2. Donner sa fréquence centrale et estimer le facteur de qualité Q du ltre.
+3. Identier les diérentes étapes de transformation/propagation du signal. À votre avis, où se
+produit le ltrage observé ?
+Rappels concernant les ltres passe-bande du second ordre :
+ Fréquence centrale f0. Pour un ltre passe-bande, l'amplitude de la fonction de transfert est
+maximale ( =Hmax) à la fréquence centrale.
+ Largeur de bande ∆f =fc2−fc1 : C'est la largeur de la bande passante (à −3dB). ωc1 = 2πfc1
+et ωc2 = 2πfc2 sont les pulsations de coupure pour lesquelles le gain vaut /divides.alt0H /divides.alt0=Hmax/slash.left
+√
+2.
+ Facteur de qualité Q : C'est le rapport entre la frequence centrale et la largeur de la bande
+passante. On a : Q= f0
+∆f
+Exercice 24 Conception d'un ltre de signaux acoustiques
+Un dispositif de traitement de signaux acoustiques nécessite la séparation de composantes sonores
+et ultrasonores.
+On souhaite éliminer les composantes ultrasonores : il faut donc réaliser un ltre passe-bas. Le
+cahier des charges du dispositif indique les caractéristiques suivantes :
+71
+<<<PAGE>>>
+ Fréquence de coupure 20kHz ;
+ Gain nominal 0dB ;
+ L'atténuation des fréquences comprises entre 0 et 20kHz doit être inférieure à 3dB ;
+ L'atténuation des fréquences supérieures à 40kHz doit être supérieure à 10dB.
+1. Tracer le gabarit (qui synthétise les contraintes de la réponse fréquentielle du ltre en gain) de
+ce ltre sur le diagramme semi logarithmique ci-dessous.
+2. Le ltre le plus simple serait un passe-bas du premier ordre de fréquence de coupure fc = 20kHz .
+On rappelle que la fonction de transfert d'un tel ltre s'écrit sous forme réduite :
+H(x) = 1
+1+jx avec j2 =−1 et x= f
+fc
+(a) Rappeler où retrouver la pente des asymptotes du diagramme de Bode en gain de ce ltre
+et calculer son gain à la fréquence de coupure.
+(b) Montrer qu'il ne peut satisfaire au cahier des charges imposé. Justier qu'il est nécessaire
+d'utiliser un ltre d'ordre plus élevé.
+Exercice 25 Filtre Butterworth - Python
+Un ltre de Butterworth est un type de ltre linéaire, conçu pour posséder un gain aussi constant
+que possible dans sa bande passante. Le gain d'un ltre de Butterworth est le plus constant possible
+dans la bande passante et tend vers 0 dans la bande de coupure.
+On considère un signal d'entrée e déni comme suit : e(t) = 2+sin(3∗2πt)+ 0.4sin(500∗2πt).
+1. Représenter e et son spectre.
+2. Appliquer le ltre Butterworth à e. Vous pouvez commencer votre code par :
+from scipy.signal import butter, llter
+from scipy.signal import freqs .
+Vous pouvez également vous renseigner sur :
+https ://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html
+72
+<<<PAGE>>>
+3. Acher s.
+4. Comparer le spectre de s avec celui de e. Faire ce travail avec diérentes valeurs de paramètres
+d'entrée du ltre.
+Exercice 26 Analyse spectrale - Python
+Le chier ConsoGazElec.csv contient la consommation horaire en gaz (deuxième colonne, en MW)
+et en électricité (troisième colonne, en MW).
+1. Acher la consommation électrique. Utiliser numpy.loadtxt pour charger le chier.
+2. Acher la TFD du signal pour déterminer les principales fréquences.
+3. Identier quel phénomène correspond aux principales fréquences.
+Exercice 27 Filtre numérique Python
+Soit un ltre numérique, appelé ltre moyenneur, qui calcule la moyenne arithmétique de deux
+valeurs consécutives :
+yn = 1
+2(xn−1+xn)
+1. Tracer le module de sa réponse fréquentielle.
+2. Quel type de ltre est-ce ?
+On se propose d'appliquer ce ltre à un signal d'entrée comme suit :
+e= 2cos(2πt)+cos(3πt+π
+2)+ 0.5cos(5πt+π
+4)
+Au moment d'échantillonner le signal d'entrée, on ajoutera un bruit gaussien ( import random ).
+3. Représenter le spectre du signal discret.
+4. Tracer le signal discret ltré (résultat de la convolution avec la réponse impulsionnelle).
+Note : Pour réduire plus ecacement le bruit d'un signal, on utilise un ltre passe-bas gaussien.
+73
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+https://sti2d.ecolelamache.org/
+ii_exemple_et_calculs_pour_un_filtre_passebas_1er_ordre.html
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>

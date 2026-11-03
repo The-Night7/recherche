@@ -1,0 +1,189 @@
+Analyse bivariéequantitatif-qualitatif 
+Data exploration
+Statistiques descriptives bivariées
+ Observer simultanément des individus d'une population sur deux 
+caractères 
+ Mesurer un lien éventuel entre deux caractères en utilisant un 
+résumé chiffré qui traduit l'importance de ce lien 
+ Qualifier ce lien : 
+– en cherchant une relation numérique approchée entre deux caractères quantitatifs 
+– en cherchant des correspondances entre les modalités de deux caractères qualitatifs 
+•qualitatif × qualitatif 
+2 types de variables   3 types de croisements :     •qualitatif × quantitatif 
+•quantitatif × quantitatif 
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+Croisement Quantitatif -Qualitatif 
+Sous-populations 
+Pour étudier le lien entre une variable qualitative àpmodalités et un caractère quantitatif, 
+on partitionne la population p en sous-populations : une sous-population pour chaque 
+modalitédelavariablequalitative.
+Prenons l’exemple de l’étude comparative de la taille entre les 
+hommes et les femmes. 
+La variable qualitative est le genre. On divise donc la 
+population en deux sous-populations, celui des hommes et 
+celui des femmes. 
+Sur chaque sous-population, il est possible de calculer les 
+résumés numériques usuels. 
+Une comparaison des boites de Tukey permet d’avoir une 
+première idée du lien antre les variables 
+GENRE Effectifs Moyenne Écart-type 
+Hommes 23 162,30 14,21 
+Femmes 35 149,29 10,52 
+Total 58 154,45 13,61 
+130 
+140 
+150 
+160 
+170 
+180 
+190 
+200 
+HOMMES 
+130 
+140 
+150 
+160 
+170 
+180 
+190 
+200 
+FEMMES 
+L’idée estdedécomposerlamoyenneetlavariancesurlesdiff érentssous-populations.
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+3
+Croisement Quantitatif -Qualitatif 
+Décomposition de la moyenne
+Sous-population 
+bleue 
+Sous-population 
+verte 
+Sous-population 
+rouge 
+bleue y
+2
+verte s
+verte y
+2
+bleue s
+rouge y
+2
+rouge s
+Notons Y la variable quantitative et pour k=1,…,p 
+• nkl’effectif de la kèmesous-population 
+•   la moyenne de Y sur la kèmesous-population 
+• 
+ la variance de Y sur la kèmesous-population 
+La moyenne de la population est égale à la moyenne pondérée des moyennes des 
+sous-populations, 
+  =1
+ 	    
+
+
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+4
+Croisement Quantitatif -Qualitatif 
+Décomposition de la variance
+Sous-population 
+bleue 
+Sous-population 
+verte 
+Sous-population 
+rouge 
+Contrairementà la moyenne,la variance de la population n’estpas égale à la moyenne 
+pondérée des variances des sous-populations. Cette dernière s’appelle la variance 
+intragroupes ,
+  Y = 1
+ 	   
+
+
+
+bleue y
+2
+verte s
+verte y
+2
+bleue s
+rouge y
+2
+rouge s
+Variance de la sous-
+population k 
+Effectif de la sous-
+population k
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+5
+Croisement Quantitatif -Qualitatif 
+Décomposition de la variance
+Alavarianceintragroupes,onajoutela varianceintergroupes ,
+  Y = 1
+ 	  (  −  )²
+
+
+Sous-population 
+bleue 
+Sous-population 
+rouge 
+Individu virtuel 
+représentant la 
+population bleue 
+Individu virtuel 
+représentant la 
+population verte 
+Individu virtuel 
+représentant la 
+population rouge 
+Sous-population 
+verte 
+bleue y
+verte y
+rouge y
+• Pour chaque sous-population, on crée un individu virtuel dont la valeur sur Yest 
+égaleàlamoyennedesvaleursdeYdesindividusdelasous-po pulation.
+• On crée donc une nouvelle population formée de ces individusvirtuels. Chaque 
+individu auraunpoidsden k,l'effectif dechaque sous-population.
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+6
+Croisement Quantitatif -Qualitatif 
+Décomposition de la variance
+OnpeutdoncdéfinirtroisvariancessurvariableY.
+• unepremière quiexpliquelesvariationsdeYdanstoutelapo pulation:totale 
+• unedeuxièmequiexpliquelesvariationsdeYdanslessous-po pulations:intra 
+• unetroisièmequiexpliquelesvariationsdeYentrelessous-p opulations:inter 
+Nousavonsladécomposition delavariancesuivante :
+  () =    +   ()
+Onendéduitunemesuredulien entreXetYavecle rapport de corrélation 
+  
+  ()
+Le rapport de corrélation représente le pourcentage de variabilité de Y expliquée par X. Il varie entre 0
+et1.Si
+• S’il est nul alors la variance expliquée est nulle, il n’y a do nc aucun lien entre Y et X
+• S’il vaut 1 alors la variance expliquée est égale à la varianc e de Y donc Y est entièrement 
+expliquée par X.
+Variance 
+expliquée 
+Variance 
+résiduelle 
+<<<PAGE>>>
+Analyse bivariéequantitatif-qualitatif 
+7
+Croisement Quantitatif -Qualitatif 
+Exemple
+GENRE Effectifs Moyenne Variance Var intra 
+Hommes 23 162,0 193,3 23 × 193,3=4444,9 
+Femmes 35 149,3 107,6 35 × 107,6  =3765,1 
+Total 58 154,4 182,1 (4444,9+3765,1)/58 =141,5 
+Etude comparative de la taille entre les hommes et les femmes. 
+GENRE Effectifs Moyenne Variance Var inter 
+Hommes 23 162,3 193,3 23 × (162,3-154,4)² =1419,5 
+Femmes 35 149,3 107,6 35 × (149,3-154,4)² =932,8 
+Total 58 154,4 182,1 (1419,5+932,8)/58 = 40,6 
+Rapport de corrélation : 2201182
+640 ,,
+, =
+22% de la variabilité de la taille est expliquée par le genre 
+On vérifie la formule de la décomposition de la variance : 141,5+40,6=182,1 

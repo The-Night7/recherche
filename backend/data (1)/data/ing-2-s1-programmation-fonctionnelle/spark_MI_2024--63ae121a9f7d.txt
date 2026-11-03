@@ -1,0 +1,76 @@
+Project Spark
+October 7, 2024
+Objectif
+Ce projet vise ` a vous familiariser avec Apache Spark, ses concepts fondamen-
+taux, son installation et son utilisation pour le traitement de donn´ ees ` a grande
+´ echelle.
+Installation et configuration
+Cette partie consiste ` a :
+• Installez Apache Spark sur votre machine locale.
+• Configurez l’environnement n´ ecessaire (Scala, etc.).
+• V´ erifiez l’installation en lan¸ cant le shell Spark.
+Introduction ` a Spark et Scala
+• Introduction ` a Spark : Qu’est-ce que Spark, avantages et cas d’utilisation.
+• Introduction ` a Scala : Les bases de la programmation en Scala.
+• Installation de Spark et Scala sur un environnement local.
+RDD (Resilient Distributed Datasets)
+• Comprendre les RDD, l’unit´ e fondamentale de Spark.
+• Cr´ eation de RDD, transformations et actions.
+Spark SQL et DataFrames
+• Introduction ` a Spark SQL.
+• Utilisation de DataFrames pour le traitement de donn´ ees structur´ ees.
+• Requˆ etes SQL avec Spark.
+1
+<<<PAGE>>>
+Spark Streaming
+• Introduction ` a Spark Streaming pour le traitement de donn´ ees en continu.
+• Traitement de donn´ ees en temps r´ eel avec Spark Streaming.
+GraphX
+• Introduction ` a GraphX pour le traitement de donn´ ees en graphes.
+• Manipulation de graphes avec GraphX.
+Stockage et gestion de donn´ ees
+• Utilisation de Spark pour la lecture/´ ecriture de donn´ ees depuis/vers di-
+verses sources de donn´ ees (HDFS, Cassandra, etc.).
+• Gestion de donn´ ees massives avec Spark.
+Optimisation de performances
+• Techniques d’optimisation pour les jobs Spark.
+• Strat´ egies de tuning et de cache.
+Application: Analyse de sentiments en temps r´ eel
+sur Twitter
+D´ evelopper une application Spark qui analyse en temps r´ eel les sentiments ex-
+prim´ es sur Twitter ` a propos d’un sujet donn´ e.
+´Etapes du projet
+Collecte des donn´ ees
+Utiliser Spark Streaming pour se connecter ` a l’API Twitter et r´ ecup´ erer un flux
+continu de tweets sur un sujet sp´ ecifique.
+Pr´ etraitement des donn´ ees
+• Nettoyer les tweets (supprimer les URLs, mentions, hashtags, etc.)
+• Tokeniser le texte.
+2
+<<<PAGE>>>
+Analyse des sentiments
+• Supprimer les mots vides (stop words)
+• Analyse de sentiments Utiliser un mod` ele de machine learning pr´ e-entraˆ ın´ e
+ou entraˆ ıner un mod` ele simple avec Spark MLlib pour classifier les senti-
+ments (positif, n´ egatif, neutre).
+• Appliquer le mod` ele sur le flux de tweets en temps r´ eel.
+• Agr´ egation et visualisation Agr´ eger les r´ esultats par fenˆ etres temporelles
+(ex: toutes les 5 minutes).
+• Calculer des statistiques comme le pourcentage de tweets positifs/n´ egatifs
+• Stocker les r´ esultats dans une base de donn´ ees en temps r´ eel (ex: Cassan-
+dra)
+• Cr´ eer un dashboard interactif pour visualiser l’´ evolution des sentiments
+au fil du temps
+• Optimisation et mise ` a l’´ echelle Optimiser les performances de l’application
+Organisation du travail
+Pour ce projet, il est recommand´ e d’organiser le groupe en ´ equipes de 3 ` a 5
+´ el` eves afin d’assurer une r´ epartition efficace des tˆ aches. Chaque membre de-
+vra participer activement aux diff´ erentes ´ etapes du travail. Le rapport final
+devra ˆ etre bien d´ etaill´ e, comportant 20 pages qui incluront une description des
+m´ ethodologies, des r´ esultats obtenus, ainsi qu’une analyse approfondie. Les
+codes d´ evelopp´ es durant le projet devront ˆ etre d´ epos´ es sur GitHub pour assurer
+une tra¸ cabilit´ e et faciliter les r´ evisions. En fin de projet, une pr´ esentation sera
+exig´ ee de 20 minutes et 30 minutes durant laquelle le groupe d´ emontrera sa
+maˆ ıtrise de l’environnement Apache Spark ` a travers des exemples pratiques et
+des d´ emonstrations en temps r´ eel.
+3

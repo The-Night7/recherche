@@ -1,0 +1,67 @@
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+1 
+ 
+TP4 – NAT et DHCP – Partie II 
+ 
+ 
+ 
+L’ISP vient d’attribuer l a plage d’adresses publique 206.150.15 .0/29 (plage de 8 adresses mais 6 
+utilisables seulement). Pour le partage de connexion, l’entreprise décide d’utilise r 5 adresses 
+publiques pour faire le NAT dynamique. La dernière adresse dans la plage sera réservée au server Web 
+afin de le rendre accessible à partir de l’extérieur (NAT statique). Les opérations à effectuer sont : 
+ 
+ Configuration du NAT dynamique pour autoriser le réseau 192.168.1.0/24 à naviguer sur 
+Internet 
+ Configuration du NAT statique afin de rendre le server 172.16.100.5 accessible à partir 
+d’Internet  
+ 
+ 
+ 
+ 
+ 
+ 
+NAT Dynamique – Router0: 
+interface FastEthernet0/0 
+ip nat inside 
+! 
+interface Serial0/3/0 
+ip nat outside 
+! 
+ip nat pool PLAGE-NAT 206.150.15.1 206.150.15.5 netmask 255.255.255.248 
+ip nat inside source list 1 pool PLAGE-NAT 
+! 
+access-list 1 permit 192.168.1.0 0.0.0.255 
+ 
+ 
+
+<<<PAGE>>>
+UMBB, Faculté des Sciences 
+Département d’Informatique 
+ Master 1 
+Matière : R.P.C 
+ 
+2 
+ 
+NAT statique – Router0: 
+ip nat inside source static 172.16.100.5 206.150.15.6 
+ 
+NAT Statique - Routage – Router1 (ISP) : 
+ip route 206.150.15.0 255.255.255.248 10.10.10.2 
+ 
+Vérification : 
+Si tout a bien été configuré, vous serez en mesure de pinger l’adresse de l’ISP 10.10.10.1 à partir d’un 
+PC dans le réseau 192.168.1.0. Le routeur Router0 va replacer l’adresse source de la machine avec une 
+adresse publique dans le pool (plage) NAT.  
+Utiliser la commande : show ip nat translations pour vérifier la table NAT après avoir effectué le ping. 
+ 
+La vérification du NAT statique est simple. Il suffit de pouvoir pinger l’adresse publique du serveur 
+Web (206.150.15.6) à partir de l’ISP. 
+ 
+Exercice : Peut-on surfer sur Internet à partir du Serveur Web en utilisant seulement la configuration 
+ci-dessus ? Si non, quelles modifications faut-il faire ? 
+ 
+ 

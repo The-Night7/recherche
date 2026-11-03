@@ -1,0 +1,96 @@
+PROBLEMES D'AFFECTATION 
+(ALGORITHME DE KÜHN) 
+ 
+Cet algorithme, appelé aussi Méthode Hongroise, ser t à résoudre les problèmes d'affectation, 
+problèmes qu'on peut résumer de la manière suivante  : considérant une matrice (appelée 
+tableau de coûts), il faut choisir un seul élément par ligne et par colonne de façon à rendre la 
+somme minimale 
+  
+ 17 15 9 5 12 
+ 16 16 10 5 10 
+                         Exemple :  12 15 14 11 5 
+ 4 8 14 17 13 
+ 13 9 8 12 17 
+ 
+Nous allons exposer la méthode sous la forme d'une succession d'étapes : 
+ 
+ 
+ 
+ 
+On soustrait à chaque ligne du tableau initial, le plus petit élément de la ligne 
+On fait de même avec les colonnes. 
+ 
+ 12 10 4 0 7  12 9 4 0 7 
+ 11 11 5 0 5  11 10 5 0 5 
+Exemple : 7 10 9 6 0 /a2right/a2right /a2right/a2right 7 9 9 6 0 
+ 0 4 10 13 9  0 3 10 13 9 
+ 5 1 0 4 9  5 0 0 4 9 
+ 
+ 
+ 
+ 
+On cherche la ligne comportant le moins de zéros no n barrés (en cas d'égalité, choisir 
+arbitrairement la plus haute) 
+On encadre un des zéros de cette ligne (arbitrairement le plus à gauche) 
+On barre tous les zéros se trouvant sur la même lig ne ou sur la même colonne que le zéro 
+encadré 
+On recommence l'opération jusqu'à ce qu'on ne puisse plus encadrer, ni barrer de zéros : 
+ 
+  12 9 4 0 7 
+ 11 10 5 0  5 
+                             Exemple : 7 9 9 6 0 
+ 0 3 10 13 9 
+ 5 0 0 4 9 
+ 
+Si l'on a encadré un zéro par ligne et par colonne, c'est terminé, on a la solution optimale 
+Sinon, on passe à l'étape 2. 
+ETAPE 0 : REDUCTION DU TABLEAU INITIAL 
+ETAPE 1 : ENCADRER ET BARRER DES ZEROS 
+<<<PAGE>>>
+ 
+ 
+a) On marque d'une croix toutes les lignes ne contenant aucun zéro encadré 
+b) On marque toute colonne ayant un zéro barré sur une ligne marquée 
+c) On marque toute ligne ayant un zéro encadré dans une colonne marquée 
+ 
+On répète alternativement les opérations b) et c) jusqu'à ne plus pouvoir marquer de rangée 
+ 
+On trace alors un trait sur toute ligne non marquée et sur toute colonne marquée 
+ 
+ 
+    X2   
+ 12 9 4 0 7 X3 
+ 11 10 5 0 5 X1 
+                             Exemple :  7 9 9 6 0  
+ 0 3 10 13 9  
+ 5 0 0 4 9  
+ 
+ 
+ 
+ 
+ 
+Les cases non traversées par un trait constituent un tableau partiel 
+On retranche à toutes les cases de ce tableau partiel le plus petit élément de celui-ci 
+On ajoute ce même élément à toutes les cases du tableau initial barrées deux fois  
+On obtient alors un nouveau tableau sur lequel on pourra répéter la succession des étapes 1 à 3 
+ 
+ 
+  8 5 0 0 3 
+ 7 6 1 0 1 
+                             Exemple : 7 9 9 10 0 
+ 0 3 10 17 9 
+ 5 0 0 8 9 
+ 
+Ainsi, dans l'exemple, la valeur de l'affectation minimale est 9+5+5+4+9 =32 
+ 
+ 
+ 
+Remarquons, pour finir, que la méthode hongroise, telle qu'elle est décrite, permet de résoudre 
+les problèmes d'affectation minimale (on considère le tableau initial comme un tableau de 
+coûts). 
+ 
+Si l'on veut résoudre un problème d'affectation max imale (c'est à dire en considérant les 
+éléments du tableau comme des indices de satisfaction), il faudra transformer le tableau initial 
+en retranchant tous les éléments du tableau au plus élevé d'entre eux. 
+ETAPE 2 : MARQUER ET BARRER DES LIGNES ET DES COLONNES 
+ETAPE 3 : MODIFICATION DU TABLEAU 

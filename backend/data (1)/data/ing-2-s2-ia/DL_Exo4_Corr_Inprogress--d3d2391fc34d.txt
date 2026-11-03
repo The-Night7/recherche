@@ -1,0 +1,47 @@
+#TP DL Exo4 2020-21
+import keras
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+
+num_classes = 10
+
+# input image dimensions
+img_rows, img_cols = 28, 28
+# Récupération des données et réduction de la taille des ensembles 
+# (pour de pures raisons pédagogiques : faire tourner le programme en un temps raisonnable par rapport à la durée d'un TP)
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+x_train = x_train[:1000]
+y_train = y_train[:1000]
+x_test  = x_test[:100]
+y_test  = y_test[:100]
+
+#Transformation des ensembles d'images (test et apprentissage) en un tenseur de dimension 4
+
+x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
+x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
+input_shape = (28, 28, 1)
+#Normalisation des valeurs des pixels
+
+x_train = x_train.astype('float32')
+x_test = x_test.astype('float32')
+x_train /= 255
+x_test /= 255
+
+
+
+
+
+
+
+print('x_train shape:', x_train.shape)
+print(x_train.shape[0], 'train samples')
+print(x_test.shape[0], 'test samples')
+
+# convert class vectors to binary class matrices
+y_train = keras.utils.to_categorical(y_train, 10)
+y_test = keras.utils.to_categorical(y_test, 10)
+

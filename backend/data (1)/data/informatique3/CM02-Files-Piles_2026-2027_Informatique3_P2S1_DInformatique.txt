@@ -1,0 +1,2080 @@
+INFORMATIQUE 3
+II . LES F I L E S  E T  LES P I L E S
+Eva ANSERMIN & Romuald GRIGNON
+v1.1
+<<<PAGE>>>
+Rappel et objectifs
+• Nous avons vu au cours dernier les listes chaînées. 
+• Les listes chaînées permettent d’ajouter/ de supprimer des éléments n’importe où dans la liste.
+• Les piles et les files sont des objets informatiques qui permettent d’ajouter/ supprimer des éléments 
+dans une liste en répondant à des règles plus spécifiques que les listes chaînées.
+pliste
+10 2 25 103 NULL
+Eva ANSERMIN | Romuald GRIGNON
+2
+<<<PAGE>>>
+I. Piles
+Eva ANSERMIN | Romuald GRIGNON
+3
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés » :
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile 
+• On l’appelle aussi LIFO : « last in, first out »
+• Pensez à une pile d’assiettes !
+Eva ANSERMIN | Romuald GRIGNON
+4
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Exemple d’une pile d’entiers :  
+2
+15
+8
+120
+Eva ANSERMIN | Romuald GRIGNON
+5
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Ajout d’un nouvel élément : empilage
+2
+15
+8
+120 33
+Eva ANSERMIN | Romuald GRIGNON
+6
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Empilage : le nouvel élément va au sommet de la pile   
+2
+15
+8
+120
+33
+Eva ANSERMIN | Romuald GRIGNON
+7
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Suppression de deux éléments : dépilage 
+2
+15
+8
+120
+33
+Eva ANSERMIN | Romuald GRIGNON
+8
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Dépilage de deux éléments :
+2
+15
+8
+120
+33
+Eva ANSERMIN | Romuald GRIGNON
+9
+<<<PAGE>>>
+Piles : principe
+• Une pile est une liste d’éléments qui sont « empilés »:
+• Un élément est toujours ajouté en haut de la pile 
+• Un élément est toujours retiré en haut de la pile
+• Dépilage de deux éléments :
+2
+15
+8
+120
+Eva ANSERMIN | Romuald GRIGNON
+10
+<<<PAGE>>>
+Piles : utilisation
+• Les piles sont très utilisées en informatique. On en trouve notamment:
+▪ Pour permettre des retours en arrière à l’utilisateur : 
+o L ’action «undo » (ctrl+z) 
+o Retour arrière dans un navigateur web  
+▪ Pour la gestion des appels de fonctions récursives non-terminale
+▪ Dans les processeurs pour gérer, entre autre, l’appel à des fonctions quelconques. 
+▪ Et également pour simuler des problèmes mathématiques ou de la vie réelle! 
+Eva ANSERMIN | Romuald GRIGNON
+11
+<<<PAGE>>>
+Piles : Implémentation d’une pile 
+• Une pile peut être implémentée de deux manières:
+• A l’aide d’un tableau (pile statique)
+• A l’aide d’une liste chaînée (pile dynamique)
+• Pourquoi utiliser l’un ou l’autre ? 
+10 2 25 103
+10 2 25 103 NULL
+Eva ANSERMIN | Romuald GRIGNON
+12
+<<<PAGE>>>
+Piles : Implémentation statique
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+Structure PileStat :
+tabPile : tableau d’Element de taille ‘taille’ (constante)
+(taille : entier // taille du tableau)
+tete :entier // indice indiquant le haut de la pile 
+Structure PileStat :
+tabPile : pointeur sur Element // si allocation dynamique
+taille : entier // taille du tableau
+tete :entier // indice indiquant le haut de la pile 
+OU
+Eva ANSERMIN | Romuald GRIGNON
+13
+<<<PAGE>>>
+Piles : Implémentation statique
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).    
+• Exemple
+Ici tabPile est de taille 
+tete = 
+10 2 25 103 / / /
+Eva ANSERMIN | Romuald GRIGNON
+14
+<<<PAGE>>>
+Piles : Implémentation statique
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Exemple
+IcitabPile est detaille 7
+tete = 3
+10 2 25 103 ? ? ?
+tete
+Eva ANSERMIN | Romuald GRIGNON
+15
+<<<PAGE>>>
+Piles : Implémentation statique
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Exemple
+Ici tabPile est de taille 7
+tete = 3
+10 2 25 103 55 16 147
+tete
+Remarque : les cases situées après tête ne sont pas vides, mais on ne s’y intéresse pas
+Eva ANSERMIN | Romuald GRIGNON
+16
+<<<PAGE>>>
+Piles : Implémentation statique
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Dépiler: 
+10 2 25 103 55 16 147
+tete
+Eva ANSERMIN | Romuald GRIGNON
+17
+<<<PAGE>>>
+Piles : Implémentation statique
+10 2 25 103 55 16 147
+tete
+val ← tabPile[tete]
+tete <- tete-1
+retourner val
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Dépiler: 
+Eva ANSERMIN | Romuald GRIGNON
+18
+<<<PAGE>>>
+Piles : Implémentation statique
+10 2 25 103 55 16 147
+tete
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Empiler : Ajouter 40 
+Eva ANSERMIN | Romuald GRIGNON
+19
+<<<PAGE>>>
+• Une pile implémentée en statique (tableau) est une structure possédant trois variables :
+• Le tableau tabPile permettant de stocker les éléments de la pile. 
+• La taille maximale N du tableau
+• Un entier tete indiquant l’indice du haut de la pile (remplissage).  
+• Empiler : Ajouter 40 
+Piles : Implémentation statique
+tete ← tete+1
+tabPile[tete] ← 40
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+20
+<<<PAGE>>>
+Piles : Implémentation statique
+• Initialisation de la pile statique : 
+FONCTION creationPileStat(): PileStat
+VARIABLE 
+pile: PileStat
+DEBUT
+tete(pile) ← ???
+RETOURNER pile
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+21
+<<<PAGE>>>
+Piles : Implémentation statique
+• Initialisation de la pile statique : 
+10 2 25 40 55 16 147tabPile
+tete
+FONCTION creationPileStat(): PileStat
+VARIABLE 
+pile: PileStat
+DEBUT
+tete(pile) ← -1 // la pile est vide
+RETOURNER pile
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+22
+<<<PAGE>>>
+Piles : Implémentation statique
+• Vérification de l’intégrité de la structure PileStat : 
+• A chaque fois que nous allons utiliser une structure de type PileStat dans une fonction, il faudra 
+s’assurer qu’elle n’a pas été corrompue : 
+FONCTION verificationPileStat(pile : pointeur sur PileStat) : entier
+VARIABLE
+result ← 0 : entier // resultat (0 signifie OK)
+DEBUT
+SI (???) ALORS
+result ← -1 // données d’entrées invalides
+SINON SI (???) ALORS 
+result ← -2 // la structure est corrompue
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+23
+<<<PAGE>>>
+Piles : Implémentation statique
+• Vérification de l’intégrité de la structure PileStat : 
+• A chaque fois que nous allons utiliser une structure de type PileStat dans une fonction, il faudra 
+s’assurer qu’elle n’a pas été corrompue : 
+FONCTION verificationPileStat(pile : pointeur sur PileStat) : entier
+VARIABLE
+result ← 0 : entier // resultat (0 signifie OK)
+DEBUT
+SI (pile EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+SINON SI (???) ALORS 
+result ← -2 // la structure est corrompue
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+24
+<<<PAGE>>>
+Piles : Implémentation statique
+• Vérification de l’intégrité de la structure PileStat : 
+• A chaque fois que nous allons utiliser une structure de type PileStat dans une fonction, il faudra 
+s’assurer qu’elle n’a pas été corrompue : 
+FONCTION verificationPileStat(pile : pointeur sur PileStat) : entier
+VARIABLE
+result ← 0 : entier // resultat (0 signifie OK)
+DEBUT
+SI (pile EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+SINON SI (taille(pile) EST INF. OU EGAL A  0)
+OU (???) ALORS 
+result ← -2 // la structure est corrompue
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+25
+<<<PAGE>>>
+Piles : Implémentation statique
+• Vérification de l’intégrité de la structure PileStat : 
+• A chaque fois que nous allons utiliser une structure de type PileStat dans une fonction, il faudra 
+s’assurer qu’elle n’a pas été corrompue : 
+FONCTION verificationPileStat(pile : pointeur sur PileStat) : entier
+VARIABLE
+result ← 0 : entier // resultat (0 signifie OK)
+DEBUT
+SI (pile EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+SINON SI (taille(pile) EST INF. OU EGAL A  0)
+OU (tete(pile)   EST INF. STRICT. A -1)
+OU (???) ALORS 
+result ← -2 // la structure est corrompue
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+26
+<<<PAGE>>>
+Piles : Implémentation statique
+• Vérification de l’intégrité de la structure PileStat : 
+• A chaque fois que nous allons utiliser une structure de type PileStat dans une fonction, il faudra 
+s’assurer qu’elle n’a pas été corrompue : 
+FONCTION verificationPileStat(pile : pointeur sur PileStat) : entier
+VARIABLE
+result ← 0 : entier // resultat (0 signifie OK)
+DEBUT
+SI (pile EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+SINON SI (taille(pile) EST INF. OU EGAL A  0)
+OU (tete(pile)   EST INF. STRICT. A -1)
+OU (tete(pile)   EST SUP. STRICT. A taille(pile)-1) ALORS 
+result ← -2 // la structure est corrompue
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+27
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+28
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← ???
+SI (???) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+tete(pile) ← ???
+tabPile(pile)[tete] ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+29
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (???) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+tete(pile) ← ???
+tabPile(pile)[tete] ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+30
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (result EST EGAL A 0) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+tete(pile) ← ???
+tabPile(pile)[tete] ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+31
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A taille(pile)-1) ALORS
+result ← 1 // la liste est déjà pleine
+SINON 
+tete(pile) ← ???
+tabPile(pile)[tete] ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+32
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A taille(pile)-1) ALORS
+result ← 1 // la liste est déjà pleine
+SINON 
+tete(pile) ← tete(pile) + 1 // décalage de la tête 
+tabPile(pile)[tete] ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+tete
+10 2 25 40 55 16 147
+Eva ANSERMIN | Romuald GRIGNON
+33
+<<<PAGE>>>
+Piles : Implémentation statique
+• Empilage : 
+FONCTION empilagePileStat(pile : pointeur sur PileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A taille(pile)-1) ALORS
+result ← 1 // la liste est déjà pleine
+SINON 
+tete(pile) ← tete(pile) + 1 // décalage de la tête 
+tabPile(pile)[tete] ← elmt // stockage de l’élement
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+10 2 25 40 ’elmt’ 16 147
+tete Eva ANSERMIN | Romuald GRIGNON
+34
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete Eva ANSERMIN | Romuald GRIGNON
+35
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (???) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (???) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+*pelmt ← ???  
+tete(pile) ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+10 2 25 40 55 16 147
+tete Eva ANSERMIN | Romuald GRIGNON
+36
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (pelmt EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (???) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+*pelmt ← ???  
+tete(pile) ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+37
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (pelmt EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (result EST EGAL A 0) ALORS 
+SI (???) ALORS
+result ← 1
+SINON 
+*pelmt ← ???  
+tete(pile) ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+38
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (pelmt EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A -1) ALORS
+result ← 1 // la liste est déjà vide
+SINON 
+*pelmt ← ???  
+tete(pile) ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+39
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (pelmt EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A -1) ALORS
+result ← 1 // la liste est déjà vide
+SINON 
+*pelmt ← tabPile(pile)[tete] // récupération élement
+tete(pile) ← ???
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+40
+<<<PAGE>>>
+Piles : Implémentation statique
+• Dépilage : 
+10 2 25 40 55 16 147
+tete
+FONCTION depilagePileStat(pile : pointeur sur PileStat, pelmt : pointeur sur Element) : entier
+VARIABLE
+result ← 0 : entier // résultat de l’empilage (0 signifie OK) 
+DEBUT
+result ← verificationPileStat(pile)
+SI (pelmt EST EGAL A NULL) ALORS
+result ← -1 // données d’entrées invalides
+FIN SI
+SI (result EST EGAL A 0) ALORS 
+SI (tete(pile) EST EGAL A -1) ALORS
+result ← 1 // la liste est déjà vide
+SINON 
+*pelmt ← tabPile(pile)[tete] // récupération élement
+tete(pile) ← tete(pile) - 1 // décalage de la tête 
+FIN SI
+FIN SI
+RETOURNER result
+FIN 
+Eva ANSERMIN | Romuald GRIGNON
+41
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• La pile dynamique est une liste chaînée : 
+10 2 25 103 NULL
+Quel maillon est la tête de la pile? 
+Eva ANSERMIN | Romuald GRIGNON
+42
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• La pile dynamique est une liste chaînée :
+• La tête de la pile est un pointeur indiquant le premier chaînon de la liste chaînée. 
+10 2 25 103 NULL
+tete
+Eva ANSERMIN | Romuald GRIGNON
+43
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• La pile dynamique est une liste chaînée :
+10 2 25 103 NULL
+tete
+Structure Chainon :
+elmt : Element
+suivant : pointeur sur structure Chainon
+Fonction creationPileDyn(): pointeur sur Chainon
+VARIABLE
+tete : pointeur sur Chainon
+DEBUT
+tete <- NULL // pas encore d’element
+RETOURNER tete
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+44
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Empilage : 
+tete
+10 5 12 NULL
+NULL
+7
+Eva ANSERMIN | Romuald GRIGNON
+45
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Empilage : ajout d’un Chainon en début de liste (insertDebut)
+tete
+10 5 12 NULL
+NULL
+7
+Eva ANSERMIN | Romuald GRIGNON
+46
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Empilage : ajout d’un Chainon en début de liste (insertDebut).
+2. Dépilage : 
+10 2 25 103 NULL* * * *
+pliste
+Eva ANSERMIN | Romuald GRIGNON
+47
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Empilage : ajout d’un Chainon en début de liste (insertDebut).
+2. Dépilage : suppression d’un Chainon en début de liste (suppDebut) et on récupère de la valeur 
+de ce chaînon.
+1
+0
+2 25 103 NULL* * * *
+tetep1
+10
+Eva ANSERMIN | Romuald GRIGNON
+48
+<<<PAGE>>>
+Piles : Implémentation dynamique 
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Empilage : ajout d’un Chainon en début de liste (insertDebut).
+2. Dépilage : suppression d’un Chainon en début de liste (suppDebut) et on récupère de la valeur 
+de ce chaînon.
+➢ Une pile dynamique est une liste chaînée dont les éléments ne peuvent être ajoutés/retirés qu’en 
+début de chaîne.
+Eva ANSERMIN | Romuald GRIGNON
+49
+<<<PAGE>>>
+II. Files
+Eva ANSERMIN | Romuald GRIGNON
+50
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• On l’appelle aussi FIFO : « first in, first out »
+• Pensez à une file d’attente !
+Queue
+Entrée de la file
+Fin de la file 
+Tête
+Sortie de la file
+Début de la file 
+Eva ANSERMIN | Romuald GRIGNON
+51
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple
+Queue de la file 
+2
+15
+8
+120
+Tête de la file 
+Eva ANSERMIN | Romuald GRIGNON
+52
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple : ajouter un élément : enfiler 
+Queue de la file 
+2
+15
+8
+120
+Tête de la file 
+33
+Eva ANSERMIN | Romuald GRIGNON
+53
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple : enfiler : on place l’élément en bas de la file
+Queue de la file 
+2
+15
+8
+120
+Tête de la file 
+33
+Eva ANSERMIN | Romuald GRIGNON
+54
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple : supprimer un élément : défiler
+Queue de la file 
+2
+15
+8
+120
+Tête de la file 
+33
+Eva ANSERMIN | Romuald GRIGNON
+55
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple : défiler: l’élément est supprimé en haut de la file
+Queue de la file 
+2
+15
+8
+Tête de la file 
+33
+Eva ANSERMIN | Romuald GRIGNON
+56
+<<<PAGE>>>
+Files : principe
+• Une file est une liste d’éléments :
+• Un élément est toujours ajouté en bas de la file 
+• Un élément est toujours retiré en haut de la file 
+• Exemple : défiler : l’élément est supprimé en haut de la file
+Queue de la file 
+2
+15
+Tête de la file 
+33
+Eva ANSERMIN | Romuald GRIGNON
+57
+<<<PAGE>>>
+Files : utilisation
+• Dans l’ordinateur, les files sont principalement utilisées pour stocker des données qui doivent être 
+traitées dans l’ordre d’arrivée. 
+• Exemple : les tâches d’impression !
+• En algorithmie la File permet de simuler de nombreux problèmes comme la gestion de file d’attente.
+Eva ANSERMIN | Romuald GRIGNON
+58
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées. 
+10 2 25 103 NULL
+pliste
+Tête de la file Queue de la file
+Eva ANSERMIN | Romuald GRIGNON
+59
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Enfilage :
+10 2 25 103 NULL
+pliste
+Tête de la file Queue de la file
+Eva ANSERMIN | Romuald GRIGNON
+60
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Enfilage : ajout d’un élément en fin de liste (fin de la file / en queue)
+10 2 25 103 NULL
+pliste
+58
+Tête de la file Queue de la file
+Eva ANSERMIN | Romuald GRIGNON
+61
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Enfilage : ajout d’un élément en fin de liste (fin de la file / en queue)
+2. Défilage : 
+10 2 25 103 NULL
+pliste
+Tête de la file Queue de la file
+Eva ANSERMIN | Romuald GRIGNON
+62
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• A quelles opérations sur une liste chaînée sont équivalentes les opérations suivantes :
+1. Enfilage : ajout d’un élément en fin de liste (fin de la file / en queue)
+2. Défilage : suppression d’un élément en début de liste (début de file / en tête)
++ récupération de l’Element
+10 2 25 103
+pliste
+Tête de la file
+NULL
+NULL
+Queue de la file
+Eva ANSERMIN | Romuald GRIGNON
+63
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• Pour ne pas avoir besoin de parcourir la liste chaînée, la pile va exploiter deux pointeurs: 
+NULL
+tête queue
+Structure FileDyn :
+tete : pointeur sur Chainon
+Queue : pointeur sur Chainon
+Eva ANSERMIN | Romuald GRIGNON
+64
+<<<PAGE>>>
+Files dynamiques 
+• Les files dynamiques sont gérées à partir de listes chaînées.
+• Pour ne pas avoir besoin de parcourir la liste chaînée, la pile va exploiter deux pointeurs: 
+NULL
+queue tête
+L ’inverse est moins optimal !
+Eva ANSERMIN | Romuald GRIGNON
+65
+<<<PAGE>>>
+Files dynamiques 
+• Vérification de l’intégrité de la structure FileDyn
+NULL
+tête queue
+FONCTION verificationFileDyn(file: pointeur sur FileDyn) : entier
+VARIABLE 
+result ← 0 : entier // retour (0 signifie OK)
+DEBUT
+SI(???) ALORS
+result ← -1 // pointeur structure NULL
+SINON SI(???) ALORS
+result ← -2 // structure corrompue #1
+SINON SI(???) ALORS
+result ← -3 // structure corrompue #2
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+66
+<<<PAGE>>>
+Files dynamiques 
+• Vérification de l’intégrité de la structure FileDyn
+NULL
+tête queue
+FONCTION verificationFileDyn(file: pointeur sur FileDyn) : entier
+VARIABLE 
+result ← 0 : entier // retour (0 signifie OK)
+DEBUT
+SI(file EST EGAL A NULL) ALORS
+result ← -1 // pointeur structure NULL
+SINON SI(???) ALORS
+result ← -2 // structure corrompue #1
+SINON SI(???) ALORS
+result ← -3 // structure corrompue #2
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+67
+<<<PAGE>>>
+Files dynamiques 
+• Vérification de l’intégrité de la structure FileDyn
+NULL
+tête queue
+FONCTION verificationFileDyn(file: pointeur sur FileDyn) : entier
+VARIABLE 
+result ← 0 : entier // retour (0 signifie OK)
+DEBUT
+SI(file EST EGAL A NULL) ALORS
+result ← -1 // pointeur structure NULL
+SINON SI((tete(file) EGAL A NULL) DIFFERENT DE (queue(file) EGAL A NULL)) ALORS
+result ← -2 // structure corrompue #1
+SINON SI(???) ALORS
+result ← -3 // structure corrompue #2
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+68
+<<<PAGE>>>
+Files dynamiques 
+• Vérification de l’intégrité de la structure FileDyn
+NULL
+tête queue
+FONCTION verificationFileDyn(file: pointeur sur FileDyn) : entier
+VARIABLE 
+result ← 0 : entier // retour (0 signifie OK)
+DEBUT
+SI(file EST EGAL A NULL) ALORS
+result ← -1 // pointeur structure NULL
+SINON SI((tete(file) EGAL A NULL) DIFFERENT DE (queue(file) EGAL A NULL)) ALORS
+result ← -2 // structure corrompue #1
+SINON SI(suivant(queue(file)) DIFFERENT DE NULL) ALORS
+result ← -3 // structure corrompue #2
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+69
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+70
+NULL
+queuetête
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+71
+NULL
+queuetête
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- ???
+SI (???) ALORS
+nouveau ← ??? 
+elmt(nouveau) ← ???
+SI (???) // si la file est vide…
+???
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+72
+NULL
+queuetête
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (???) ALORS
+nouveau ← ??? 
+elmt(nouveau) ← ???
+SI (???) // si la file est vide…
+???
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+73
+NULL
+queuetête
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← ??? 
+elmt(nouveau) ← ???
+SI (???) // si la file est vide…
+???
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+74
+NULL
+queuetête
+elmt
+nouveau
+NULL
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← ???
+SI (???) // si la file est vide…
+???
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+75
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← elmt
+SI (queue(file) EST EGAL A NULL) // si la file est vide…
+???
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+elmt
+nouveau
+NULL
+tête
+queue
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+76
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← elmt
+SI (queue(file) EST EGAL A NULL) // si la file est vide…
+tete(file)  ← nouveau
+???
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+elmt
+nouveau
+NULL
+queue
+tête
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← elmt
+SI (queue(file) EST EGAL A NULL) // si la file est vide…
+tete(file)  ← nouveau
+queue(file) ← nouveau
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+77
+elmt
+nouveau
+NULL
+tête
+queue
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+78
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← elmt
+SI (queue(file) EST EGAL A NULL) // si la file est vide…
+tete(file)  ← nouveau
+queue(file) ← nouveau
+SINON
+??? 
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+NULL
+queuetête
+elmt
+nouveau
+NULL
+<<<PAGE>>>
+Files dynamiques 
+• Enfilage 
+Eva ANSERMIN | Romuald GRIGNON
+79
+FONCTION enfilerDyn(file: pointeur sur FileDyn, elmt : Element) : entier
+VARIABLE 
+nouveau    : pointeur sur Chainon
+result ← 0 : entier
+DEBUT
+result <- verificationFileDyn(file)
+SI (result EST SUP. STRICT. A -2) ALORS
+nouveau ← creationChainon()
+elmt(nouveau) ← elmt
+SI (queue(file) EST EGAL A NULL) // si la file est vide…
+tete(file)  ← nouveau
+queue(file) ← nouveau
+SINON
+suivant(queue(file)) ← nouveau
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+queuetête
+elmt
+nouveau
+NULL
+
+<<<PAGE>>>
+Files statiques
+• La file statique est une file réalisée avec un tableau.
+• Le tête et la queue de la file vont être représentées par des indices de ces tableaux indiquant leur 
+positions.
+• Exemple :
+10 15 87 6 8 65 13 87 55 87
+Structure FileStat :
+tabPile : tableau d’Element de taille N 
+tete :entier
+queue : entier  
+tete← 2
+queue ← 8
+Eva ANSERMIN | Romuald GRIGNON
+80
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+Eva ANSERMIN | Romuald GRIGNON
+81
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION enfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+???
+SI(???) ALORS
+SI(???) ALORS
+result ← 1
+SINON
+??? 
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+82
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION enfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(???) ALORS // données intègres
+SI(???) ALORS
+result ← 1
+SINON
+???
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+83
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION enfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(???) ALORS
+result ← 1
+SINON
+???
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+84
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION enfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(queue(file) EST EGAL A taille(file)-1) ALORS
+result ← 1 // file déjà pleine
+SINON
+???
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+85
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION enfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(queue(file) EST EGAL A taille(file)-1) ALORS
+result ← 1 // file déjà pleine
+SINON
+???
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+86
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 55 87
+FONCTION EnfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(queue(file) EST EGAL A taille(file)-1) ALORS
+result ← 1 // file déjà pleine
+SINON
+queue(file) ← queue(file) + 1// décalage queue
+???
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+87
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+10 15 87 6 8 65 13 72 elmt 87
+FONCTION EnfilerStat( file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur pile et du contenu de la structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(queue(file) EST EGAL A taille(file)-1) ALORS
+result ← 1 // file déjà pleine 
+SINON
+queue(file) ← queue(file) + 1// décalage queue
+tabFile(file)[queue] ← elmt // stockage élément
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+88
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+Eva ANSERMIN | Romuald GRIGNON
+89
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+???
+SI(???) ALORS
+SI(???) ALORS
+result ← 1
+SINON
+???
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+90
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(???) ALORS
+SI(???) ALORS
+result ← 1
+SINON
+???
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+91
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(???) ALORS
+result ← 1
+SINON
+???
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+92
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(tete(file) EST EGAL A queue(file) + 1) ALORS
+result ← 1 // file déjà vide
+SINON
+???
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tetequeue
+Eva ANSERMIN | Romuald GRIGNON
+93
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(tete(file) EST EGAL A queue(file) + 1) ALORS
+result ← 1 // file déjà vide
+SINON
+???
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+94
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(tete(file) EST EGAL A queue(file) + 1) ALORS
+result ← 1 // file déjà vide
+SINON
+*pElmt ← tete(file) // récupération élément 
+??? 
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+95
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+FONCTION defilerStat( file : pointeur sur FileStat, pElmt : pointeur sur 
+element) : entier
+DEBUT
+result ← vérification des pointeurs et contenu de structure
+SI(result EST EGAL A 0) ALORS // données intègres
+SI(tete(file) EST EGAL A queue(file) + 1) ALORS
+result ← 1 // file déjà vide
+SINON
+*pElmt ← tete(file) // récupération élément 
+tete(file) ← tete(file) + 1 // décalage tete
+FIN SI
+RETOURNER result
+FIN
+10 15 87 6 8 65 13 72 55 87
+tete queue
+Eva ANSERMIN | Romuald GRIGNON
+96
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+• Initialisation de la file
+Eva ANSERMIN | Romuald GRIGNON
+97
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+• Initialisation de la file
+10 15 87 6 8 65 13 87 55 87
+FONCTION initFileStat( file : pointeur sur FileStat) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+SI (???) ALORS 
+result ← ???
+FIN SI
+tete(file) ← ???
+queue(file) ← ???
+retourner result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+98
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+• Initialisation de la file
+10 15 87 6 8 65 13 87 55 87
+FONCTION initFileStat( file : pointeur sur FileStat) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+SI (file EST EGAL A NULL) ALORS 
+result ← ???
+FIN SI
+tete(file) ← ???
+queue(file) ← ???
+retourner result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+99
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+• Initialisation de la file
+10 15 87 6 8 65 13 87 55 87
+FONCTION initFileStat( file : pointeur sur FileStat) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+SI (file EST EGAL A NULL) ALORS 
+result ← -1
+FIN SI
+tete(file) ← ???
+queue(file) ← ???
+retourner result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+100
+<<<PAGE>>>
+Files statiques
+• Les opérations de la file statique : 
+• Enfiler 
+• Défiler 
+• Initialisation de la file
+10 15 87 6 8 65 13 87 55 87
+queue tete
+FONCTION initFileStat( file : pointeur sur FileStat) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+SI (file EST EGAL A NULL) ALORS 
+result ← -1
+FIN SI
+tete(file) ← 0
+queue(file) ← -1
+retourner result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+101
+<<<PAGE>>>
+Files statique : limites 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Exemple : 
+10 15 87 6 8 65 13 87 55 87
+queuetete
+Eva ANSERMIN | Romuald GRIGNON
+102
+<<<PAGE>>>
+Files statiques : limites 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Exemple : 
+10 15 87 6 8 65 13 87 55 15
+queuetete
+On ne peut pas rajouter de nouvel élément!
+Eva ANSERMIN | Romuald GRIGNON
+103
+<<<PAGE>>>
+Files statiques : limites 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Exemple : 
+• Les indices de tête et de queue se décale en fin de tableau avec les utilisations de la pile : on arrive 
+toujours à ce résultat au bout d’un certain nombres d’opérations!
+10 15 87 6 8 65 13 87 55 15
+queuetete
+On ne peut pas rajouter de nouvel élément!
+Eva ANSERMIN | Romuald GRIGNON
+104
+<<<PAGE>>>
+Files statiques cycliques 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Solution : utilisation d’une file cyclique.
+• Principe : les éléments de la file vont « reboucler » dans le tableau.
+10 15 87 6 8 65 13 87 55 15
+queuetete
+Eva ANSERMIN | Romuald GRIGNON
+105
+<<<PAGE>>>
+Files statiques cycliques 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Solution : utilisation d’une file cyclique.
+• Principe : les éléments de la file vont « reboucler » dans le tableau.
+L ’élément supplémentaire est rajouté au début du tableau !  
+30 15 87 6 8 65 13 87 55 15
+queue tete
+Eva ANSERMIN | Romuald GRIGNON
+106
+<<<PAGE>>>
+Files statiques cycliques 
+• Les opérations telles que celles définies précédemment peuvent mener à une impossibilité d’utiliser la 
+file même lorsque celle-ci n’est pas pleine.
+• Solution : utilisation d’une file cyclique.
+• Principe : les éléments de la file vont « reboucler » dans le tableau.
+L ’élément supplémentaire est rajouté au début du tableau !  
+30 72 87 6 8 65 13 87 55 15
+queue tete
+Eva ANSERMIN | Romuald GRIGNON
+107
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =7
+queue = 9
+10 15 87 6 8 65 13 87 55 15
+queuetete
+Eva ANSERMIN | Romuald GRIGNON
+108
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =7
+queue = 10
+15 15 87 6 8 65 13 87 55 15
+queue
+tete
+Eva ANSERMIN | Romuald GRIGNON
+109
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =7
+queue = 11
+15 20 87 6 8 65 13 87 55 15
+queue
+tete
+Eva ANSERMIN | Romuald GRIGNON
+110
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =8
+queue = 11
+15 20 87 6 8 65 13 87 55 15
+queue tete
+Eva ANSERMIN | Romuald GRIGNON
+111
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =9
+queue = 11
+15 20 87 6 8 65 13 87 55 15
+queue tete
+Eva ANSERMIN | Romuald GRIGNON
+112
+<<<PAGE>>>
+Files statiques cycliques 
+• Dans la file cyclique, les entiers tete et queue ne vont pas indiquer directement les indices des 
+tableaux.
+• tete et queue indiquent les positions du haut et du bas de la file s’il n’y avait pas de rebouclage 
+(comme si le tableau avait une taille infinie) 
+• Exemple : 
+tete =10
+queue = 11
+15 20 87 6 8 65 13 87 55 15
+queuetete
+Eva ANSERMIN | Romuald GRIGNON
+113
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+114
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DDEBUT
+result ← ???
+SI(???) ALORS // file pleine
+result ← ???
+SINON
+??? // décalage queue
+??? // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+115
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DDEBUT
+result ← vérification du pointeur de file et contenu de la structure
+SI(???) ALORS // file pleine
+result ← ???
+SINON
+??? // décalage queue
+??? // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+116
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DDEBUT
+result ← vérification du pointeur de file et contenu de la structure
+SI(queue(file)-tete(file) EGAL A taille(file)-1) ALORS // file pleine
+result ← ???
+SINON
+??? // décalage queue
+??? // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+117
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DDEBUT
+result ← vérification du pointeur de file et contenu de la structure
+SI(queue(file)-tete(file) EGAL A taille(file)-1) ALORS // file pleine
+result ← 1
+SINON
+??? // décalage queue
+??? // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+118
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DDEBUT
+result ← vérification du pointeur de file et contenu de la structure
+SI(queue(file)-tete(file) EGAL A taille(file)-1) ALORS // file pleine
+result ← 1
+SINON
+queue(file) ← queue(file) + 1 // décalage queue
+??? // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 87 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+119
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Enfilage 
+FONCTION enfilerStatCyclique(file : pointeur sur FileStat, elmt : Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification du pointeur de file et contenu de la structure
+SI(queue(file)-tete(file) EGAL A taille(file)-1) ALORS // file pleine
+result ← 1
+SINON
+queue(file) ← queue(file) + 1 // décalage queue
+tabFile(file)[queue(file) MOD taille(file)] ← elmt // stockage élément
+FIN SI
+RETOURNER result
+FIN
+15 20 elmt 6 8 65 13 87 55 15
+tetequeue Eva ANSERMIN | Romuald GRIGNON
+120
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+tetequeue
+15 20 87 6 8 65 13 87 55 15
+Eva ANSERMIN | Romuald GRIGNON
+121
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+15 20 87 6 8 65 13 87 55 15
+queue
+FONCTION defilerStatCyclique(file : ptr sur FileStat, pelmt : ptr sur Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+???
+SI(???)
+SI(???) ALORS // file vide
+result ← 1
+SINON
+??? // récupération
+??? // décalage
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete Eva ANSERMIN | Romuald GRIGNON
+122
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+15 20 87 6 8 65 13 87 55 15
+queue
+FONCTION defilerStatCyclique(file : ptr sur FileStat, pelmt : ptr sur Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification des pointeurs et contenus des structures
+SI(result EGAL A 0)
+SI(???) ALORS // file vide
+result ← 1
+SINON
+??? // récupération
+??? // décalage
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete Eva ANSERMIN | Romuald GRIGNON
+123
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+15 20 87 6 8 65 13 87 55 15
+queue
+FONCTION defilerStatCyclique(file : ptr sur FileStat, pelmt : ptr sur Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification des pointeurs et contenus des structures
+SI(result EGAL A 0)
+SI(queue(file)-tete(file) EGAL A -1) ALORS // file vide
+result ← 1
+SINON
+??? // récupération
+??? // décalage
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete Eva ANSERMIN | Romuald GRIGNON
+124
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+15 20 87 6 8 65 13 87 55 15
+queue
+FONCTION defilerStatCyclique(file : ptr sur FileStat, pelmt : ptr sur Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification des pointeurs et contenus des structures
+SI(result EGAL A 0)
+SI(queue(file)-tete(file) EGAL A -1) ALORS // file vide
+result ← 1
+SINON
+*pelmt ← tabFile(file)[tete(file) MOD taille(file)]// récupération
+??? // décalage
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+tete Eva ANSERMIN | Romuald GRIGNON
+125
+<<<PAGE>>>
+Files statiques cycliques 
+• Opérations dans une file cyclique :
+• Défilage
+15 20 87 6 8 65 13 87 55 15
+tetequeue
+FONCTION defilerStatCyclique(file : ptr sur FileStat, pelmt : ptr sur Element) : entier
+VARIABLE
+result ← 0 : entier
+DEBUT
+result ← vérification des pointeurs et contenus des structures
+SI(result EGAL A 0)
+SI(queue(file)-tete(file) EGAL A -1) ALORS // file vide
+result ← 1
+SINON
+*pelmt ← tabFile(file)[tete(file) MOD taille(file)]// récupération
+tete(file) ← tete(file) + 1 // décalage
+FIN SI
+FIN SI
+RETOURNER result
+FIN
+Eva ANSERMIN | Romuald GRIGNON
+126
+<<<PAGE>>>
+Résumé
+• Les piles et les files sont des objets algorithmiques permettant de stocker des données en répondant à 
+des critères d’insertion et de suppression précis. 
+• Pile : dernier entré, premier sorti (last IN, first OUT → LIFO). 
+• File : premier entré, premier sorti (First In, First Out → FIFO).
+• Il existe plusieurs manières d’implémenter les piles et les files selon les résultats souhaités (statique, 
+dynamique, cyclique).
+• Les piles et les files sont très utilisées par l’ordinateur pour son fonctionnement, mais elles sont 
+également régulièrement présentes dans certains algorithmes classiques (voir cours suivant !). 
+Eva ANSERMIN | Romuald GRIGNON
+127

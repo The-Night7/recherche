@@ -1,0 +1,805 @@
+Guide de Révision
+Bases de Données
+SQL  Modélisation  Normalisation
+Analyse des examens 2020-2025
+CY Tech - ING1 GM
+Année 2024-2025
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+Contents
+1 Patterns SQL Récurrents (10-12 points) 2
+1.1 Pattern #1 : SELECT Simple avec WHERE (5/5 examens) . . . . . . . . . . . . . . 2
+1.2 Pattern #2 : LIKE avec Wildcards (5/5 examens) . . . . . . . . . . . . . . . . . . . . 2
+1.3 Pattern #3 : Agrégations (COUNT, MAX, MIN, A VG) (5/5 examens) . . . . . . . . 3
+1.4 Pattern #4 : INNER JOIN (5/5 examens) . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.5 Pattern #5 : GROUP BY avec COUNT/SUM (5/5 examens) . . . . . . . . . . . . . 4
+1.6 Pattern #6 : HA VING (Filtrer après GROUP BY) (5/5 examens) . . . . . . . . . . . 4
+1.7 Pattern #7 : LEFT JOIN (inclure tous) (4/5 examens) . . . . . . . . . . . . . . . . . 5
+1.8 Pattern #8 : Sous-requêtes avec NOT IN (5/5 examens) . . . . . . . . . . . . . . . . 6
+1.9 Pattern #9 : Sous-requêtes avec MAX/MIN (5/5 examens) . . . . . . . . . . . . . . . 7
+1.10 Pattern #10 : DIVISION RELATIONNELLE (4/5 examens) DIFFICILE . . . . . . . 7
+1.11 Pattern #11 : UPDATE (3/5 examens) . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.12 Pattern #12 : CREATE TABLE (3/5 examens) . . . . . . . . . . . . . . . . . . . . . 10
+1.13 Pattern #13 : INSERT INTO (2/5 examens) . . . . . . . . . . . . . . . . . . . . . . . 10
+2 Récapitulatif : Ordre d'une requête SQL 12
+2.1 Ordre d'écriture (syntaxe) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.2 Ordre d'exécution (logique) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3 Modélisation : MCD et MLD (5-7 points) 13
+3.1 Concepts clés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.2 Relations N:M avec attributs (5/5 examens) . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.3 Cardinalités importantes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.4 Checklist MCD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.5 Checklist MLD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4 Normalisation : 3FN et BCNF (3-4 points) 15
+4.1 Dénitions essentielles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.2 Les 3 formes normales . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.3 BCNF (Forme Normale de Boyce-Codd) . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.4 Méthode pour lister les DF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.5 Exemple : CINEMA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.6 Exemple : Ville/Location . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+5 Pièges F réquents et Erreurs à Éviter 17
+5.1 Erreurs SQL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5.2 Erreurs Modélisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5.3 Erreurs Normalisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+6 Stratégie d'Examen 18
+6.1 Répartition du temps (2h = 120 minutes) . . . . . . . . . . . . . . . . . . . . . . . . . 18
+6.2 Ordre de traitement recommandé . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+6.3 Points à vérier en relecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+7 Récapitulatif : Les 20 Points Clés 19
+8 Exemples Complets d'Examens 20
+8.1 Exemple 1 : Mario Kart (2021) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+8.2 Exemple 2 : Commandes (2022-2023) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+1
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+9 Annexe : Aide-mémoire SQL 21
+9.1 Fonctions d'agrégation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+9.2 Opérateurs de comparaison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+9.3 Opérateurs logiques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+9.4 Fonctions de chaînes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+1 Patterns SQL Récurrents (10-12 points)
+1.1 Pattern #1 : SELECT Simple avec WHERE (5/5 examens)
+EXEMPLE
+Questions types :
+ Sanctuaires commençant par la lettre T
+ Usines de Marseille
+ Vendeurs de Paris
+1 SELECT colonne1 , colonne2 , ...
+2 FROM Table
+3 WHERE co ndi ti on ;
+4
+5 -- Exemple
+6 SELECT nom , niveau
+7 FROM S a n c t u a i r e
+8 WHERE nom LIKE 'T % ';
+Listing 1: Template SELECT avec WHERE
+1.2 Pattern #2 : LIKE avec Wildcards (5/5 examens)
+IMPOR T ANT
+À maîtriser ABSOLUMENT - T ombe dans 100% des examens !
+1 -- 1. Commence par ( ex : commence par 'T ')
+2 WHERE nom LIKE 'T % '
+3
+4 -- 2. Se termine par ( ex : termine par 'Z ')
+5 WHERE nom LIKE '% Z '
+6
+7 -- 3. Contient ( ex : contient ' citron ')
+8 WHERE d e s c r i p t i o n LIKE '% citron % '
+9
+10 -- 4. Longueur fixe ( ex : 6 caracteres , commence par DEF , termine par Z )
+11 WHERE nom LIKE ' DEF___Z ' -- 3 u n d e r s c o r e s = 3 c a r a c t e r e s
+Listing 2: Les 4 patterns LIKE essentiels
+EXEMPLE
+Exemples des examens :
+1 -- Clients avec nom de 6 c a r a c t e r e s c o m m e n c a n t par DEF et te rm in ant par Z
+2 SELECT *
+3 FROM Client
+4 WHERE nom LIKE ' DEF___Z ' AND LENGTH ( nom ) = 6;
+5
+6 -- P a t i s s e r i e s dont la d e s c r i p t i o n contient le mot " sale "
+7 SELECT nom
+8 FROM P a t i s s e r i e
+9 WHERE d e s c r i p t i o n LIKE '% sale % ';
+3
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+1.3 Pattern #3 : Agrégations (COUNT, MAX, MIN, A VG) (5/5 examens)
+1 -- COUNT : Compter le nombre de lignes
+2 SELECT COUNT (*) AS n o m b r e _ t o t a l
+3 FROM Table ;
+4
+5 -- MAX : Valeur maximale
+6 SELECT MAX ( attribut ) AS maximum
+7 FROM Table ;
+8
+9 -- MIN : Valeur minimale
+10 SELECT MIN ( attribut ) AS minimum
+11 FROM Table ;
+12
+13 -- AVG : Moyenne
+14 SELECT AVG ( attribut ) AS moyenne
+15 FROM Table ;
+16
+17 -- SUM : Somme
+18 SELECT SUM ( attribut ) AS total
+19 FROM Table ;
+Listing 3: Les 5 fonctions d'agrégation essentielles
+EXEMPLE
+Questions types des examens :
+1 -- 1. Compter le nombre de combats
+2 SELECT COUNT (*) AS n b _ c o m b a t s
+3 FROM C om bat tr e ;
+4
+5 -- 2. Note la plus elevee
+6 SELECT MAX ( note ) AS note_max
+7 FROM Client ;
+8
+9 -- 3. Niveau de s a n c t u a i r e le plus bas
+10 SELECT MIN ( niveau ) AS n i v e a u _ m i n
+11 FROM S a n c t u a i r e ;
+12
+13 -- 4. Moyenne de temps de cuisson
+14 SELECT AVG ( t e m p s C u i s s o n ) AS t e m p s _ m o y e n
+15 FROM P a t i s s e r i e ;
+1.4 Pattern #4 : INNER JOIN (5/5 examens)
+1 SELECT a . colonne1 , b . colonne2
+2 FROM Table1 a
+3 INNER JOIN Table2 b ON a . id = b . fk_id
+4 WHERE co ndi ti on ;
+Listing 4: Template INNER JOIN
+4
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+EXEMPLE
+Exemples des examens :
+1 -- 1. Nom du monde de la creature divine " Vah Medoh "
+2 SELECT m . nom
+3 FROM C r e a t u r e D i v i n e cd
+4 INNER JOIN Monde m ON cd . idMonde = m . idMonde
+5 WHERE cd . nom = ' Vah Medoh ';
+6
+7 -- 2. Voitures a p p a r t e n a n t a Mario
+8 SELECT p . nom AS joueur , v . nom AS voiture , v . vitesse
+9 FROM Voiture v
+10 INNER JOIN P e r s o n n a g e p ON v . idPerso = p . id
+11 WHERE p . nom = ' Mario ';
+12
+13 -- 3. C o m m i s s i o n des vendeurs a Paris
+14 SELECT vendeur_id , nom , c o m m i s s i o n
+15 FROM Vendeur
+16 WHERE ville = ' Paris ';
+1.5 Pattern #5 : GROUP BY avec COUNT/SUM (5/5 examens)
+IMPOR T ANT
+Règle d'or : Si vous utilisez COUNT/SUM/A VG avec d'autres colonnes, GROUP BY est
+OBLIGA TOIRE !
+1 SELECT colonne_groupe , COUNT (*) AS compteur
+2 FROM Table
+3 GROUP BY c o l o n n e _ g r o u p e ;
+Listing 5: Template GROUP BY
+EXEMPLE
+Questions types :
+1 -- 1. Note la plus elevee par ville
+2 SELECT ville , MAX ( note ) AS note_max
+3 FROM Client
+4 GROUP BY ville ;
+5
+6 -- 2. Nombre total de plats co nso mm es par joueur
+7 SELECT j . pseudo , COUNT ( m . idPlat ) AS nb_plats
+8 FROM Joueur j
+9 LEFT JOIN Manger m ON j . idJoueur = m . idJoueur
+10 GROUP BY j . idJoueur , j . pseudo
+11 ORDER BY nb_plats DESC ;
+12
+13 -- 3. Nombre de produits delivres par f o u r n i s s e u r
+14 SELECT NumF , COUNT (*) AS n b _ p r o d u i t s
+15 FROM PUF
+16 GROUP BY NumF ;
+1.6 Pattern #6 : HA VING (Filtrer après GROUP BY) (5/5 examens)
+A TTENTION
+Piège fréquent : WHERE ltre A V ANT le regroupement, HA VING ltre APRÈS !
+5
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+1 -- WHERE : filtre les lignes AVANT le r e g r o u p e m e n t
+2 SELECT ville , COUNT (*) AS n b _ c l i e n t s
+3 FROM Client
+4 WHERE note > 3
+5 GROUP BY ville ;
+6
+7 -- HAVING : filtre les groupes APRES le r e g r o u p e m e n t
+8 SELECT ville , COUNT (*) AS n b _ c l i e n t s
+9 FROM Client
+10 GROUP BY ville
+11 HAVING COUNT (*) > 5;
+Listing 6: WHERE vs HA VING
+EXEMPLE
+Exemples des examens :
+1 -- Montant max > 2000 euros par client
+2 SELECT client_id , date , MAX ( m o n t a n t _ a c h a t ) AS m o n t a n t _ m a x
+3 FROM Commande
+4 GROUP BY client_id , date
+5 HAVING MAX ( m o n t a n t _ a c h a t ) > 2000;
+6
+7 -- P a t i s s e r i e avec le plus d ' i n g r e d i e n t s
+8 SELECT p . nom
+9 FROM Plat p
+10 JOIN Composer c ON p . idPlat = c . idPlat
+11 GROUP BY p . idPlat , p . nom
+12 HAVING COUNT (*) = (
+13 SELECT MAX ( n b _ i n g r e d i e n t s )
+14 FROM (
+15 SELECT COUNT (*) AS n b _ i n g r e d i e n t s
+16 FROM Composer
+17 GROUP BY idPlat
+18 ) AS temp
+19 ) ;
+1.7 Pattern #7 : LEFT JOIN (inclure tous) (4/5 examens)
+ASTUCE
+Indice : Utilisez LEFT JOIN quand la question dit "y compris ceux qui..." ou "même ceux qui
+n 'ont pas..."
+1 SELECT a . nom , COUNT ( b . id ) AS compteur
+2 FROM T a b l e P r i n c i p a l e a
+3 LEFT JOIN T a b l e S e c o n d a i r e b ON a . id = b . fk_id
+4 GROUP BY a . id , a . nom ;
+Listing 7: LEFT JOIN pour inclure tous les enregistrements
+6
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+EXEMPLE
+Questions types :
+1 -- 1. Joueurs y compris ceux qui n ' ont rien consomme
+2 SELECT j . pseudo , COUNT ( m . idPlat ) AS nb_plats
+3 FROM Joueur j
+4 LEFT JOIN Manger m ON j . idJoueur = m . idJoueur
+5 GROUP BY j . idJoueur , j . pseudo
+6 ORDER BY nb_plats DESC ;
+7
+8 -- 2. Clients avec ou sans commande
+9 SELECT c . nom , COUNT ( cmd . n o _ c o m m a n d e ) AS n b _ c o m m a n d e s
+10 FROM Client c
+11 LEFT JOIN Commande cmd ON c . cl ie nt _id = cmd . cl ie nt _id
+12 GROUP BY c . client_id , c . nom
+13 ORDER BY n b _ c o m m a n d e s DESC ;
+14
+15 -- 3. P e r s o n n a g e s avec nombre de courses ( meme 0)
+16 SELECT p . nom , COUNT ( r . d a t e C o u r s e ) AS n b _ c o u r s e s
+17 FROM P e r s o n n a g e p
+18 LEFT JOIN R e a l i s e r U n e C o u r s e r ON p . id = r . idPerso
+19 GROUP BY p . id , p . nom ;
+1.8 Pattern #8 : Sous-requêtes avec NOT IN (5/5 examens)
+IMPOR T ANT
+Question type : "Quels sont ceux qui n'ont JAMAIS..."  NOT IN
+1 SELECT colonne
+2 FROM Table1
+3 WHERE id NOT IN (
+4 SELECT fk_id
+5 FROM Table2
+6 ) ;
+Listing 8: Template NOT IN
+EXEMPLE
+Exemples des examens :
+1 -- 1. Joueurs qui n ' ont jamais mange de plat
+2 SELECT pseudo
+3 FROM Joueur
+4 WHERE idJoueur NOT IN (
+5 SELECT idJoueur
+6 FROM Manger
+7 ) ;
+8
+9 -- 2. Usines qui ne r eco iv en t aucun produit rouge d ' un f o u r n i s s e u r parisien
+10 SELECT NumU
+11 FROM Usine
+12 WHERE NumU NOT IN (
+13 SELECT DISTINCT puf . NumU
+14 FROM PUF puf
+15 JOIN Produit p ON puf . NumP = p . NumP
+16 JOIN F o u r n i s s e u r f ON puf . NumF = f . NumF
+17 WHERE p . Couleur = ' rouge ' AND f . VilleF = ' Paris '
+18 ) ;
+7
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+1.9 Pattern #9 : Sous-requêtes avec MAX/MIN (5/5 examens)
+1 -- Methode 1 : Sous - requete
+2 SELECT nom
+3 FROM Table
+4 WHERE attribut = ( SELECT MAX ( attribut ) FROM Table ) ;
+5
+6 -- Methode 2 : ORDER BY + LIMIT
+7 SELECT nom
+8 FROM Table
+9 ORDER BY attribut DESC
+10 LIMIT 1;
+Listing 9: Template pour trouver le maximum/minimum
+EXEMPLE
+Exemples des examens :
+1 -- 1. Joueur qui a consomme le plus de plats ( sans doublon )
+2 SELECT DISTINCT j . pseudo
+3 FROM Joueur j
+4 JOIN Manger m ON j . idJoueur = m . idJoueur
+5 GROUP BY j . idJoueur , j . pseudo
+6 HAVING COUNT (*) = (
+7 SELECT MAX ( nb_plats )
+8 FROM (
+9 SELECT COUNT (*) AS nb_plats
+10 FROM Manger
+11 GROUP BY idJoueur
+12 ) AS temp
+13 ) ;
+14
+15 -- 2. Produit le plus leger
+16 SELECT NumP
+17 FROM Produit
+18 WHERE Poids = ( SELECT MIN ( Poids ) FROM Produit ) ;
+19
+20 -- 3. Circuit realise le plus rec em me nt
+21 SELECT c . nom , r . dateCourse , p . nom
+22 FROM Circuit c
+23 JOIN R e a l i s e r U n e C o u r s e r ON c . id = r . i dC ir cui t
+24 JOIN P e r s o n n a g e p ON r . idPerso = p . id
+25 WHERE r . d a t e C o u r s e = ( SELECT MAX ( d a t e C o u r s e ) FROM R e a l i s e r U n e C o u r s e ) ;
+1.10 Pattern #10 : DIVISION RELATIONNELLE (4/5 examens) DIFFICILE
+IMPOR T ANT
+Question magique : Dès que vous voyez le mot "TOUS"  Division relationnelle !
+Exemples : "tous les circuits", "tous les vendeurs", "toutes les usines"
+1 -- Template general
+2 SELECT a . nom
+3 FROM TableA a
+4 WHERE NOT EXISTS (
+5 SELECT *
+6 FROM T ab leT ou s t
+7 WHERE NOT EXISTS (
+8 SELECT *
+9 FROM T a b l e R e l a t i o n r
+10 WHERE r . fk_a = a . id AND r . fk_t = t . id
+8
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+11 )
+12 ) ;
+Listing 10: Méthode 1 : Double NOT EXISTS (recommandée)
+EXEMPLE
+Exemple 1 : Joueurs qui ont réalisé TOUS les circuits
+1 SELECT p . nom
+2 FROM P e r s o n n a g e p
+3 WHERE NOT EXISTS (
+4 SELECT *
+5 FROM Circuit c
+6 WHERE NOT EXISTS (
+7 SELECT *
+8 FROM R e a l i s e r U n e C o u r s e r
+9 WHERE r . idPerso = p . id AND r . i dC irc ui t = c . id
+10 )
+11 ) ;
+1 -- Template general
+2 SELECT a . nom
+3 FROM TableA a
+4 JOIN T a b l e R e l a t i o n r ON a . id = r . fk_a
+5 GROUP BY a . id , a . nom
+6 HAVING COUNT ( DISTINCT r . fk_t ) = ( SELECT COUNT (*) FROM T ab le To us ) ;
+Listing 11: Méthode 2 : COUNT avec HA VING
+EXEMPLE
+Exemple 2 : Clients qui ont commandé à TOUS les vendeurs
+1 SELECT c . nom
+2 FROM Client c
+3 JOIN Commande cmd ON c . c lie nt _i d = cmd . c li ent _i d
+4 GROUP BY c . client_id , c . nom
+5 HAVING COUNT ( DISTINCT cmd . v e n d e u r _ i d ) = ( SELECT COUNT (*) FROM Vendeur ) ;
+EXEMPLE
+Exemple 3 : F ournisseurs qui approvisionnent TOUTES les usines
+1 SELECT f . NumF
+2 FROM F o u r n i s s e u r f
+3 JOIN PUF puf ON f . NumF = puf . NumF
+4 GROUP BY f . NumF
+5 HAVING COUNT ( DISTINCT puf . NumU ) = ( SELECT COUNT (*) FROM Usine ) ;
+9
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+EXEMPLE
+Exemple 4 : Usines qui achètent TOUS les produits du fournisseur 3
+1 -- Methode 1 : Double NOT EXISTS
+2 SELECT u . NumU
+3 FROM Usine u
+4 WHERE NOT EXISTS (
+5 SELECT *
+6 FROM PUF puf1
+7 WHERE puf1 . NumF = 3
+8 AND NOT EXISTS (
+9 SELECT *
+10 FROM PUF puf2
+11 WHERE puf2 . NumU = u . NumU
+12 AND puf2 . NumF = 3
+13 AND puf2 . NumP = puf1 . NumP
+14 )
+15 ) ;
+16
+17 -- Methode 2 : COUNT avec HAVING
+18 SELECT puf . NumU
+19 FROM PUF puf
+20 WHERE puf . NumF = 3
+21 GROUP BY puf . NumU
+22 HAVING COUNT ( DISTINCT puf . NumP ) = (
+23 SELECT COUNT ( DISTINCT NumP )
+24 FROM PUF
+25 WHERE NumF = 3
+26 ) ;
+1.11 Pattern #11 : UPDATE (3/5 examens)
+1 UPDATE Table
+2 SET colonne = n o u v e l l e _ v a l e u r
+3 WHERE co ndi ti on ;
+Listing 12: Template UPDATE
+A TTENTION
+A TTENTION : Toujours mettre un WHERE sauf si vous voulez modier TOUTES les lignes
+!
+10
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+EXEMPLE
+Exemples des examens :
+1 -- 1. A ugm en te r la c o m m i s s i o n des vendeurs de Paris de 1%
+2 UPDATE Vendeur
+3 SET c o m m i s s i o n = c o m m i s s i o n * 1.01
+4 WHERE ville = ' Paris ';
+5
+6 -- 2. Changer la ville du f o u r n i s s e u r 7
+7 UPDATE F o u r n i s s e u r
+8 SET VilleF = ' Lyon '
+9 WHERE NumF = 7;
+10
+11 -- 3. Changer le niveau de d i f f i c u l t e des p a t i s s e r i e s c on ten an t " citron "
+12 UPDATE P a t i s s e r i e
+13 SET d i f f i c u l t e = ' Di ffi ci le '
+14 WHERE nom LIKE '% citron % ';
+1.12 Pattern #12 : CREATE TABLE (3/5 examens)
+1 CREATE TABLE NomTable (
+2 id INT PRIMARY KEY ,
+3 at tr ib ut 1 VARCHAR (50) NOT NULL ,
+4 at tr ib ut 2 INT ,
+5 at tr ib ut 3 DATE ,
+6 fk_id INT ,
+7 FOREIGN KEY ( fk_id ) R E F E R E N C E S A u t r e T a b l e ( id )
+8 ) ;
+Listing 13: Template CREATE TABLE complet
+EXEMPLE
+Exemples des examens :
+1 -- 1. Creer la table Commande
+2 CREATE TABLE Commande (
+3 n o _ c o m m a n d e INT PRIMARY KEY ,
+4 m o n t a n t _ a c h a t DECIMAL (10 ,2) ,
+5 date DATE ,
+6 cl ie nt _i d INT ,
+7 v e n d e u r _ i d INT ,
+8 FOREIGN KEY ( cl ie nt _id ) R E F E R E N C E S Client ( c li en t_ id ) ,
+9 FOREIGN KEY ( v e n d e u r _ i d ) R E F E R E N C E S Vendeur ( v e n d e u r _ i d )
+10 ) ;
+11
+12 -- 2. Creer la table PUF ( cle primaire co mp os it e )
+13 CREATE TABLE PUF (
+14 NumP INT ,
+15 NumU INT ,
+16 NumF INT ,
+17 Quantite INT ,
+18 PRIMARY KEY ( NumP , NumU , NumF ) ,
+19 FOREIGN KEY ( NumP ) R E F E R E N C E S Produit ( NumP ) ,
+20 FOREIGN KEY ( NumU ) R E F E R E N C E S Usine ( NumU ) ,
+21 FOREIGN KEY ( NumF ) R E F E R E N C E S F o u r n i s s e u r ( NumF )
+22 ) ;
+1.13 Pattern #13 : INSERT INTO (2/5 examens)
+11
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+1 INSERT INTO Table ( colonne1 , colonne2 , ...)
+2 VALUES ( valeur1 , valeur2 , ...) ;
+3
+4 -- Inserer pl us ie urs lignes
+5 INSERT INTO Table ( colonne1 , colonne2 )
+6 VALUES
+7 ( valeur1a , valeur2a ) ,
+8 ( valeur1b , valeur2b ) ,
+9 ( valeur1c , valeur2c ) ;
+Listing 14: Template INSERT INTO
+EXEMPLE
+Exemple :
+1 -- Ajouter des donnees dans la table Contenir
+2 INSERT INTO Contenir ( idRecette , idIngredient , quantite )
+3 VALUES
+4 (3 , 1 , 300) ,
+5 (3 , 5 , 150) ,
+6 (3 , 6 , 200) ,
+7 (3 , 7 , 3) ;
+12
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+2 Récapitulatif : Ordre d'une requête SQL
+IMPOR T ANT
+Ordre d'écriture vs Ordre d'exécution
+2.1 Ordre d'écriture (syntaxe)
+1 SELECT colonne1 , colonne2 , ...
+2 FROM table1
+3 JOIN table2 ON con di ti on
+4 WHERE co ndi ti on
+5 GROUP BY colonne
+6 HAVING c o n d i t i o n _ a g r e g a t i o n
+7 ORDER BY colonne ASC / DESC
+8 LIMIT nombre ;
+Listing 15: Ordre dans lequel vous ÉCRIVEZ la requête
+2.2 Ordre d'exécution (logique)
+1. FROM : Identier les tables sources
+2. JOIN : Joindre les tables
+3. WHERE : Filtrer les lignes A V ANT agrégation
+4. GROUP BY : Regrouper les données
+5. HA VING : Filtrer les groupes APRÈS agrégation
+6. SELECT : Sélectionner les colonnes
+7. ORDER BY : Trier les résultats
+8. LIMIT : Limiter le nombre de résultats
+13
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+3 Modélisation : MCD et MLD (5-7 points)
+3.1 Concepts clés
+ASTUCE
+Pattern le plus fréquent (4/5 examens) : Distinction Type vs Instance
+ Type = Catalogue, référence (données stables)
+ Instance = Occurrence réelle (données dynamiques)
+3.2 Relations N:M avec attributs (5/5 examens)
+EXEMPLE
+Règle : Une relation N:M devient une table d'association avec :
+ Clé primaire composite (les deux FK)
+ Les attributs de la relation
+1 MCD :
+2 T Y P E _ P R O D U I T (1 , N ) -- COMPOSE ( quantite ) -- (1 , N ) T Y P E _ C O M P O S A N T
+3
+4 MLD :
+5 COMPOSE ( ref_type_produit , r ef _ty pe _c om po san t , quantite )
+6 PK : ( ref_type_produit , r e f _ t y p e _ c o m p o s a n t )
+7 FK : r e f _ t y p e _ p r o d u i t R E F E R E N C E S T Y P E _ P R O D U I T
+8 FK : r e f _ t y p e _ c o m p o s a n t R E F E R E N C E S T Y P E _ C O M P O S A N T
+Listing 16: Exemple : COMPOSE
+3.3 Cardinalités importantes
+Cardinalité T raduction en MLD
+(1,N) (1,1) FK dans la table du côté (1,1)
+(1,N) (1,N) Table d'association avec PK composite
+(N,1) (1,N) FK dans la table du côté (N,1)
+3.4 Checklist MCD
+✓ Identier toutes les entités (noms)
+✓ Distinguer les types des instances
+✓ Repérer les relations N:M et leurs attributs
+✓ Vérier les cardinalités
+✓ Identier les acteurs (expert, correspondant, etc.)
+✓ Ajouter tous les attributs descriptifs
+14
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+3.5 Checklist MLD
+✓ Transformer les relations N:M en tables d'association
+✓ Ajouter les FK pour les relations (N,1)
+✓ Souligner toutes les PK
+✓ Préxer toutes les FK avec #
+✓ Vérier les REFERENCES
+✓ Identier les attributs nullable (exemple : code_entrepot NULL)
+15
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+4 Normalisation : 3FN et BCNF (3-4 points)
+4.1 Dénitions essentielles
+ Dépendance fonctionnelle (DF) : X → Y signie que Y est déterminé par X
+ DF élémentaire : Y est atomique (un seul attribut)
+ DF transitive : X → Y et Y → Z donc X → Z
+ DF partielle : Dans une clé composite AB, si A → C (violation 2FN)
+4.2 Les 3 formes normales
+1. 1FN : Tous les attributs sont atomiques (pas de listes)
+2. 2FN : 1FN + Pas de dépendances partielles (par rapport à la clé)
+3. 3FN : 2FN + Pas de dépendances transitives
+4.3 BCNF (Forme Normale de Boyce-Codd)
+IMPOR T ANT
+BCNF : Pour toute DF X → Y , X doit être une clé candidate
+4.4 Méthode pour lister les DF
+1. Identier la ou les clés primaires candidates
+2. Pour chaque attribut non-clé, déterminer de quoi il dépend
+3. Chercher les dépendances transitives ( X → Y → Z)
+4. Si clé composite, vérier les dépendances partielles
+5. Éliminer les DF redondantes
+4.5 Exemple : CINEMA
+1 CINEMA ( NumSalleCinema , a dr ess eS al le Ci nem a , nomSalleCinema ,
+2 NumFilm , titreFilm , NumCategorieFilm , i n t i t u l e C a t e g o r i e F i l m ,
+3 d a t e D b u t P r o j e c t i o n F i l m , d u r e P r o j e c t i o n F i l m )
+4
+5 D e p e n d a n c e s f o n c t i o n n e l l e s :
+6 - N u m S a l l e C i n e m a -> a dr es se Sal le Ci ne ma , n o m S a l l e C i n e m a
+7 - NumFilm -> ti tre Fi lm
+8 - N u m C a t e g o r i e F i l m -> i n t i t u l e C a t e g o r i e F i l m
+9 - NumFilm -> N u m C a t e g o r i e F i l m ( t r a n s i t i v e !)
+10 - ( NumSalleCinema , NumFilm ) -> d a t e D e b u t P r o j e c t i o n F i l m , d u r e e P r o j e c t i o n F i l m
+11
+12 Probleme : DF t r a n s i t i v e s ( NumFilm -> N u m C a t e g o r i e F i l m -> i n t i t u l e C a t e g o r i e F i l m )
+13
+14 D e c o m p o s i t i o n en 3 FN :
+15 SALLE ( NumSalleCinema , ad re ss eSa ll eC in em a , n o m S a l l e C i n e m a )
+16 FILM ( NumFilm , titreFilm , N u m C a t e g o r i e F i l m )
+17 CA TE GO RI E ( NumCategorieFilm , i n t i t u l e C a t e g o r i e F i l m )
+18 P R O J E C T I O N ( NumSalleCinema , NumFilm , d a t e D e b u t P r o j e c t i o n F i l m , d u r e e P r o j e c t i o n F i l m )
+16
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+4.6 Exemple : Ville/Location
+1 Ville ( idVille , nomVille , departement , region )
+2 Location ( idLogement , nomClient , dateSignature , # idVille , nbPieces )
+3
+4 DF dans Ville :
+5 - idVille -> nomVille , departement , region
+6 - d e p a r t e m e n t -> region ( VI OL AT IO N BCNF !)
+7
+8 Pourquoi vi ola ti on ?
+9 d e p a r t e m e n t det er mi ne region , mais d e p a r t e m e n t n ' est pas une cle c an di da te .
+10
+11 D e c o m p o s i t i o n en BCNF :
+12 Ville ( idVille , nomVille , d e p a r t e m e n t )
+13 D e p a r t e m e n t ( departement , region )
+14 Location ( idLogement , nomClient , dateSignature , # idVille , nbPieces )
+17
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+5 Pièges Fréquents et Erreurs à Éviter
+5.1 Erreurs SQL
+A TTENTION
+1. Oublier DISTINCT quand "sans doublons" est demandé
+2. Utiliser WHERE avec agrégation  utiliser HA VING
+3. Oublier GROUP BY avec COUNT/SUM + autres colonnes
+4. Mal gérer LEFT JOIN (vérier IS NULL si nécessaire)
+5. Division : oublier DISTINCT dans COUNT
+6. Utiliser = NULL au lieu de IS NULL
+5.2 Erreurs Modélisation
+A TTENTION
+1. Oublier les attributs portés par les relations N:M
+2. Confondre type et instance
+3. Mauvaises cardinalités
+4. Oublier des FK dans le MLD
+5. Ne pas souligner les PK ou préxer les FK avec #
+5.3 Erreurs Normalisation
+A TTENTION
+1. Oublier les dépendances transitives
+2. Ne pas identier toutes les clés candidates
+3. Confondre 3FN et BCNF
+4. Mauvaise décomposition (perte d'information)
+18
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+6 Stratégie d'Examen
+6.1 Répartition du temps (2h = 120 minutes)
+Exercice Points T emps recommandé
+Modélisation (MCD/MLD) 5-7 40-45 min
+Normalisation 3-4 20-25 min
+Requêtes SQL 10-12 50-60 min
+Relecture - 10-15 min
+6.2 Ordre de traitement recommandé
+1. Lire TOUT l'énoncé (2-3 minutes)
+2. Commencer par les requêtes SQL faciles
+ SELECT simple, LIKE, COUNT, MAX
+ Ces questions rapportent 4-5 points faciles
+3. F aire la modélisation (MCD puis MLD)
+4. F aire la normalisation
+5. Retour aux requêtes SQL diciles
+ Jointures complexes, division relationnelle
+6. Relecture complète
+6.3 Points à vérier en relecture
+✓ MLD : Tous les # pour FK et soulignements pour PK
+✓ SQL : Points-virgules, parenthèses fermées
+✓ SQL : DISTINCT si "sans doublons"
+✓ SQL : GROUP BY si agrégation + autres colonnes
+✓ Normalisation : Toutes les DF listées et justication
+✓ Pas de questions faciles oubliées
+19
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+7 Récapitulatif : Les 20 Points Clés
+1. Relations N:M  Table d'association avec PK composite + attributs
+2. Distinction Type vs Instance dans 80% des modélisations
+3. Cardinalités : (1,N) = FK côté N, (N,M) = table intermédiaire
+4. MLD : # pour FK, souligné pour PK
+5. DF transitives = violation de 3FN
+6. LIKE '%texte%' pour contient, 'texte%' pour commence
+7. COUNT(*) compte les lignes, COUNT(colonne) les non-NULL
+8. GROUP BY obligatoire avec agrégation et autres colonnes
+9. HA VING pour ltrer après GROUP BY, WHERE avant
+10. LEFT JOIN pour inclure tous (même sans correspondance)
+11. NOT IN pour "qui n'ont jamais"
+12. Division relationnelle = double NOT EXISTS ou COUNT = COUNT total
+13. DISTINCT pour éviter les doublons
+14. ORDER BY ... LIMIT 1 pour "le plus/moins"
+15. Sous-requête avec agrégation pour comparaison à moyenne/max
+16. CREATE TABLE : dénir PK et FK avec REFERENCES
+17. UPDATE : toujours avec WHERE sauf mise à jour globale
+18. JOIN : toujours préciser la condition ON
+19. NULL : utiliser IS NULL / IS NOT NULL (jamais = NULL)
+20. Tester mentalement chaque requête
+20
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+8 Exemples Complets d'Examens
+8.1 Exemple 1 : Mario Kart (2021)
+1 P e r s o n n a g e ( id , nom , d a t e N a i s s a n c e )
+2 Circuit ( id , nom , nbTour )
+3 R a l i s e r U n e C o u r s e (# idPerso , # idCircuit , dateCourse , d u r e )
+4 Voiture ( id , nom , vitesse , poids , # idPerso )
+Listing 17: Schéma relationnel
+Question : Quels personnages ont réalisé TOUS les circuits ?
+1 SELECT p . nom
+2 FROM P e r s o n n a g e p
+3 WHERE NOT EXISTS (
+4 SELECT *
+5 FROM Circuit c
+6 WHERE NOT EXISTS (
+7 SELECT *
+8 FROM R a l i s e r U n e C o u r s e r
+9 WHERE r . idPerso = p . id AND r . i dC irc ui t = c . id
+10 )
+11 ) ;
+Listing 18: Solution - Méthode 1
+1 SELECT p . nom
+2 FROM P e r s o n n a g e p
+3 JOIN R a l i s e r U n e C o u r s e r ON p . id = r . idPerso
+4 GROUP BY p . id , p . nom
+5 HAVING COUNT ( DISTINCT r . i dC irc ui t ) = ( SELECT COUNT (*) FROM Circuit ) ;
+Listing 19: Solution - Méthode 2
+8.2 Exemple 2 : Commandes (2022-2023)
+1 Commande ( no_commande , montant_achat , date , # client_id , # v e n d e u r _ i d )
+2 Client ( client_id , nom , ville , note )
+3 Vendeur ( vendeur_id , nom , ville , c o m m i s s i o n )
+Listing 20: Schéma relationnel
+Question : Clients dont la somme des achats est supérieure à la moyenne
+1 SELECT c . nom
+2 FROM Client c
+3 JOIN Commande cmd ON c . c lie nt _i d = cmd . c lie nt _i d
+4 GROUP BY c . client_id , c . nom
+5 HAVING SUM ( cmd . m o n t a n t _ a c h a t ) > (
+6 SELECT AVG ( t o t a l _ a c h a t s )
+7 FROM (
+8 SELECT SUM ( m o n t a n t _ a c h a t ) AS t o t a l _ a c h a t s
+9 FROM Commande
+10 GROUP BY c li en t_ id
+11 ) AS moyennes
+12 ) ;
+Listing 21: Solution
+21
+<<<PAGE>>>
+Révision Bases de Données CY Tech ING1-GM
+9 Annexe : Aide-mémoire SQL
+9.1 Fonctions d'agrégation
+F onction Description
+COUNT(*) Compte toutes les lignes
+COUNT(colonne) Compte les valeurs non-NULL
+COUNT(DISTINCT col) Compte les valeurs distinctes
+SUM(colonne) Somme des valeurs
+A VG(colonne) Moyenne des valeurs
+MAX(colonne) Valeur maximale
+MIN(colonne) Valeur minimale
+9.2 Opérateurs de comparaison
+Opérateur Description
+= Égal
+!= ou <> Diérent
+> Supérieur
+< Inférieur
+>= Supérieur ou égal
+<= Inférieur ou égal
+BETWEEN a AND b Entre a et b (inclus)
+IN (val1, val2, ...) Dans la liste
+NOT IN (val1, val2, ...) Pas dans la liste
+IS NULL Est NULL
+IS NOT NULL N'est pas NULL
+LIKE Correspondance de motif
+9.3 Opérateurs logiques
+ AND : Les deux conditions doivent être vraies
+ OR : Au moins une condition doit être vraie
+ NOT : Inverse la condition
+9.4 Fonctions de chaînes
+F onction Description
+LENGTH(str) Longueur de la chaîne
+UPPER(str) Convertir en majuscules
+LOWER(str) Convertir en minuscules
+CONCAT(str1, str2, ...) Concaténer des chaînes
+SUBSTRING(str, pos, len) Extraire sous-chaîne
+TRIM(str) Enlever espaces début/n
+Bon courage pour tes révisions !
+22

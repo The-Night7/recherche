@@ -1,0 +1,66 @@
+CY Tech Semestre printemps 2025–2026
+ING1 Data Mining 1
+TD 6 : Série temporelle
+Exercice 1 :On considère dans cet exercice une série temporelle(Xt)t∈Z avec un modèle additif
+Xt =m t +s t +ε t,
+où l’on considère que le bruit est un bruit blanc, i.e.εt sont des v.a.i.i.d.On suppose que la
+tendance est constante et qu’il n’y a pas de saison.
+1. Montrez que dans le cas où la tendance est constante et qu’il n’y a pas de saison, un filtre
+unitaire ne modifie pas la tendance.
+2. Pour un filtreF, on appelle facteur de réduction du bruit la quantité
+Var(F(X) t)
+Var(Xt) .
+(a) Donnez le facteur de réduction du bruit pour un filtre linéaire unitaire de saisonnalité
+nulle.
+(b) Donnez le facteur de réduction du bruit pour un filtre linéaire quelconque dont les
+poids sont égaux.
+(c) On considère le filtre de moyenne mobile centrée d’ordre2q+ 1suivant :
+F (2q+1)(Xt) = 1
+2q+ 1
+qX
+i=−q
+Xt+i
+Montrer que le facteur de réduction du bruit de ce filtre est de1
+2q+ 1 .
+Exercice 2 :On observe les ventes mensuelles d’un produit sur deux années consécutives.
+Mois Année 1 Année 2
+Janvier 100 120
+Février 110 130
+Mars 120 140
+Avril 130 150
+On suppose que la série suit un modèle additif :
+Xt =m t +s t +ϵ t
+1. Combien y a-t-il d’observationsτ?
+2. Quelle est la période de la série?
+3. Combien y a-t-il de cycles?
+4. Écrire la série sous forme chronologique (t= 1,...,τ).
+5. Représentez graphiquement la série.
+<<<PAGE>>>
+6. On considère le filtre suivant :
+F(X t) = 0.25X t−1 + 0.5Xt + 0.25Xt+1
+(a) Montrez queF(X t)est unitaire, centré et symétrique.
+(b) Calculez la tendancemt.
+(c) Calculez et interpréter le facteur de réduction du bruit
+(d) Calculez les coefficients saisonniersSt et corriger les ci-nécessaire.
+(e) Calculez la série corrigée des variations saisonnières (CVS).
+Exercice 3 :L’objectif de cet exercice est de déterminer la tendance et les coefficients saisonniers
+d’une série temporelles en utilisant la méthode de lissage par moyennes mobiles.
+1. Représenter graphiquement la série.
+2. Pour la suite, on considère que les trois premières années.
+(a) Estimez la tendance.
+(b) Déterminez la partie saisonnale.
+(c) Calculez les valeurs Corrigée des Variations Saisonnières (CVS).
+3. Faites une nouvelle estimation de la tendance par les moindres carrés. Quel montant de
+dépenses peut-on prévoir pour l’année 2008?
+Exercice 4 :Nous allons analyser un jeu de données représentant le nombre de voyageurs SNCF
+par mois de 1963 à 1980 entre Gouriéroux et Monfort.
+1. Affichez la série temporelle. Faites quelques commentaires sur l’évolution de la série.
+2. Utilisez la fonctionacfpour déterminer la période de la série. Tracez les nuages de points
+(xt,x t+h)pour différents lagsh. Obtenez-vous la même conclusion?
+3. Affichez la série par période. Commentez la structure saisonnière observée.
+4. Selon vous, est-il plus pertinent d’utiliser un modèle additif ou multiplicatif pour cette série
+temporelle? Justifiez votre réponse.
+5. Utilisez la fonctiondecomposepour effectuer une décomposition additive, puis multiplica-
+tive. Comparez les résultats obtenus et commentez les différences.
+6. Testez la décomposition avec différentes périodes. Commentez.
+7. Tracez la série corrigée des variations saisonnières.

@@ -1,0 +1,93 @@
+Pré-ING2
+Informatique 3
+Semestre 1 - 2022/2023
+TD 08 : Unix - Redirections et Fil trage
+Note : cd TD sera effectué depuis une fenêtre de Terminal. Il s’agira d’utiliser les commandes du système pour effectuer
+chaque étape des exercices suivants. Même si il est possible d’utiliser l’explorateur de fichiers graphique pour comparer/vérifier
+le comportement des commandes exécutées, il ne faut pas oublier que le but est de comprendre et de maîtriser les commandes
+dans un environnement UNIX.
+Exercice 1 (Lecture et Ecriture de fichiers)
+1. Pour ce TD, dans votre dossier personnel, créer un dossier TD8_UNIX et se placer à l’intérieur.
+2. Afficher le contenu du fichier hp1.txt de 2 manières : en utilisant les paramètres de la commande cat, puis en utilisant
+la redirection de l’entrée standard.
+3. Quelle commande permet de compter les lignes/mots d’un fichier? Afficher le nombre de lignes du fichier hp1.txt en
+utilisant les paramètres de la commande, puis afficher le nombre de mots du fichier hp1.txt en utilisant la redirection
+de l’entrée standard. Mise à part la valeur numérique affichée, quelle différence est visible entre les 2 résultats des
+commandes?
+4. En une seule commande, créer un fichierhoy qui contiendra la date du système
+5. Créer un fichier vide Harry.txt, ajouter dedans (à l’aide d’une commande) la phrase suivante :Mais Harry! Ce n’est
+pas n’importe quel balai, c’est un Nimbus 2000.et afficher le contenu du fichier pour vérifier.
+6. En une seule commande, ajouter le texte suivant à la suite du contenu du fichier Harry.txt :Un éclair de feu.Afficher
+ensuite le contenu du fichier résultant.
+7. Afficher le contenu du fichier soccer.csv, d’abord à l’aide de la commande cat, puis à l’aide de la commande more :
+Quelle différence entre les deux?
+8. Afficher le contenu du fichier soccer.csv, par groupes successifs de 3 lignes, et ce, à partir de la ligne 15 incluse.
+L’affichage est-il celui attendu? Modifier la commande pour afficher les lignes correctement?
+9. Afficher le contenu du fichier soccer.csv en inversant l’ordre des lignes du fichier.
+Exercice 2 (Tris de lignes)
+1. Trier le contenu du fichier soccer.csv pour afficher les joueurs par ordre alphabétique
+2. Trier le contenu du fichier soccer.csv pour afficher les noms des pays par ordre décroissant.
+3. Trier le contenu du fichier soccer.csv pour afficher les joueurs par poids, par ordre numérique décroissant (attention :
+on ne veut pas le résultat par ordre lexicographique). Que remarquez-vous concernant la dernière ligne affichée?
+4. reprendre la question précédente et stocker le résultat dans un fichier soccer_weight.csv. Afficher le contenu du fichier
+soccer_weight.csv.
+Exercice 3 (Filtrage en ligne)
+1. Afficher seulement la première ligne du fichier soccer.csv.
+2. Afficher les 100 premières lignes du fichier soccer.csv.
+3. Afficher toutes les lignes du fichier soccer.csv à l’exception de la dernière.
+4. Afficher toutes les lignes du fichier soccer.csv à l’exception des 70 dernières.
+5. Afficher seulement la dernière ligne du fichier soccer.csv.
+6. Afficher les 5 dernières lignes du fichier soccer.csv.
+7. Afficher toutes les lignes du fichier soccer.csv à l’exception de la première.
+8. Afficher toutes les lignes du fichier soccer.csv à l’exception des 100 premières.
+9. Créer un fichier data.csv qui contient les lignes 12 à 14 inclus ainsi que les lignes 33 à 36 inclus du fichier soccer.csv. Il
+ne faut utiliser QUE les commandes head, tail, cat et les redirections de la sortie standard vers un fichier. Il est autorisé
+de créer des fichiers intermédiaires mais il faudra les supprimer à la fin des opérations.
+10. Filtrer le fichier soccer.csv, pour n’afficher QUE les lignes qui contiennent le prénom ou le nom ’Ronaldo’.
+11. Filtrer comme la question précédente, en ajoutant les numéros des lignes retournées.
+12. Filtrer comme la question précédente mais en affichant seulement les 3 premiers résultats.
+13. Dans le fichier hp1.txt, combien de fois apparait le mot ’Muggles’?
+14. Afficher seulement les lignes qui commencent par la lettre H majuscule ou M Majuscule, dans le fichier hp1.txt.
+1
+<<<PAGE>>>
+15. Afficher seulement les lignes qui se terminent par la lettre D majuscule dans le fichier hp1.txt (attention, il y a un
+espace supplémentaire à la fin de chaque ligne dans ce fichier)
+16. Afficher les lignes qui ne se terminent pas par un point dans le fichier hp1.txt (attention, il y a un espace supplémentaire
+à la fin de chaque ligne utile de ce fichier)
+17. Afficher les lignes du fichier hp1.txt et leurs numéros si elles contiennent un mot immédiatement suivi par un point
+d’exclamation, peu importe la casse.
+Exercice 4 (Filtrage en colonne)
+1. Afficher le contenu du fichier /etc/passwd en ne gardant QUE le nom des utilisateurs.
+2. Afficher le contenu du fichier soccer.csv en ne gardant QUE le nom du joueur et sa date de naissance.
+3. Afficher le contenu du fichier soccer.csv en ne conservant que les 4 premiers champs de chaque ligne.
+4. Afficher le contenu du fichier soccer.csv en supprimant les noms de tous les joueurs.
+5. Afficher le contenu du fichier soccer.csv en ne conservant QUE les noms des joueurs et les pays. L’affichage de sortie
+aura remplacé toutes les virgules par des points-virgules.
+Exercice 5 (Recherche dans les fichiers)
+1. Rechercher le fichier hp1.txt depuis la racine du répertoire utilisateur.
+2. En utilisant la commande find, et à l’aide de la commande ls, afficher les informations détaillées du fichier hp1.txt.
+3. En utilisant la commande find, et à l’aide de la commande grep, afficher toutes les lignes du fichier hp1.txt qui
+contiennent le caractère ’H’ ou la lettre ’V’. Affichez le résultat de la recherche en couleur.
+4. En utilisant la commande find, et à l’aide de la commande cp, effectuer une copie du fichier hp1.txt en HarryPot-
+ter_vol1.txt.
+5. Rechercher votre login dans tous les fichiers du répertoire /etc (mais pas les sous-dossiers) en utilisant la commande
+grep. que constatez-vous?
+6. Reprendre la question précédente, et rediriger les messages d’erreur vers un fichier log.txt. Afficher le contenu de log.txt
+après l’exécution.
+7. Reprendre la question précédente, et faire en sorte que les messages d’erreur ne soient ni affichés ni stockés. De plus, il
+faut effectuer la recherche dans le dossier /etc et tous ses sous-repertoires.
+Exercice 6 (Redirections entre commandes)
+1. Afficher le contenu détaillé du répertoire /bin mais en faisant en sorte de l’afficher petit à petit, page par page à l’écran.
+2. Combien de fichiers (pas les dossiers, ni les liens) sont présents dans le dossier /bin.
+3. Créer un fichier nbBinFiles qui contiendra le nombre d’éléments présents dans le répertoire /bin.
+4. Stocker le contenu du fichier soccer.csv entre les lignes 22 et 27 (incluses) dans le fichier results.txt, en une seule ligne
+de commandes. Ensuite, afficher le contenu du fichier results.txt pour vérifier.
+5. Ajouter dans le fichier results.txt, les lignes 3 à 7 du fichier soccer.csv. Vérifier le résultat dans le fichier cible.
+6. Afficher uniquement les noms des joueurs du fichier soccer.csv mais dans un ordre aléatoire.
+7. Filtrer les noms des joueurs comme dans la question précédente, et vérifier qu’ils sont classés dans l’ordre croissant.
+Quel résultat obtient-on? Trier les noms par ordre croissant et vérifier à nouveau. Refaire la manipulation avec un tri
+en ordre inverse et une vérification que les données sont bien triées en ordre inverse.
+8. Afficher à l’écran les nom et age des joueurs présents dans le fichier soccer.csv, triés par age croissant d’abord, puis par
+nom décroissant ensuite. Le nom et l’age en sortie seront séparés par le caractère ’ :’.
+9. Quelle différence y a-t-il entre un ’pipe’ classique et l’option -exec de la commande find?
+2

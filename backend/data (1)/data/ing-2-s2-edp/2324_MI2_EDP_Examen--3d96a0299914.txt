@@ -1,0 +1,112 @@
+Année universitaire 2023-2024
+EXAMEN de 1ere session
+Filière : ING2 MI Matière : EDP
+Date : 11/04/2024 Durée : 2h
+Responsables : Kortchemski I. ; Barrau N.
+ Aucun document n 'est autorisé, Aucun appareil électronique n 'est autorisé.
+ La qualité de la rédaction sera prise en compte dans la note . Les réponses devront
+être soigneusement justiées.
+ Le barème est signalé à titre indicatif ( sur 26 ). Cet examen est composé de trois exercices
+indépendants .
+Question de cours 1 [12pts]
+Considérons l'équation
+∂u
+∂t (t,x ) =α∂2u
+∂x2 (t,x ) ∀x∈ Ωx,∀t∈ Ωt (1)
+où
+ Ωt =]0;T ]⊂ R le domaine temporel,
+ Ωx =]0;L[⊂ R le domaine spatial,
+ u est la fonction inconnue,
+ α est le coecient de diusion.
+1. L'équation (1) est une équation connue : laquelle ? Rappeler sa nature, son ordre, sa dimension.
+2. Montrer que l'équation (1) est linéaire.
+3. Proposer une discrétisation de Ωt et Ωx, avec pas constants (en dénissant soigneusement vos
+notations) et visualiser le maillage.
+4. À l'aide de vos notations précédentes, écrire les équations discrètes associées au schéma
+(a) d'Euler explicite (b) d'Euler implicite (c) de Crank-Nicolson
+5. Pour chacun des schémas précédents, rappeler leur ordre d'approximation (de consistance) et
+leur critère de stabilité.
+6. Considérons diverses conditions : 
+
+
+∂u
+∂x (t,x = 0) = π
+4 ∀t∈ Ωt (2)
+u(t = 0,x ) = sin
+πx
+L
+
++ 5 ∀x∈ Ωx (3)
+u(t,x =L) = 5 ∀t∈ Ωt (4)
+∂u
+∂t (t,x = 0) = 1 ∀t∈ Ωt (5)
+∂u
+∂x (t,x = 0) = 1 ∀t∈ Ωt (6)
+u(t = 0,x ) = ex ∀x∈ Ωx (7)
+∂u
+∂x (t,x =L) = π
+4 ∀t∈ Ωt (8)
+u(t,x = 0) = 0 ∀t∈ Ωt (9)
+∂u
+∂x (t,x =L) = ex ∀t∈ Ωt (10)
+u(t = 0,x ) = sin
+πx
+L
+
+∀x∈ Ωx (11)
+(a) Préciser pour chacune de ces conditions s'il s'agit d'une condition initiale ou d'une condition
+de bord. Spécier la nature des conditions de bord.
+(b) Choisir des conditions aux limites et une condition initiale (assurez-vous de leur cohérence)
+parmi les conditions proposées et donner les systèmes matriciels associés aux schémas
+implicites.
+Tournez svp →
+<<<PAGE>>>
+Problème 2 Schéma symétrique [6pts]
+Considérons un schéma symmetrique :
+un+1
+i −un
+i
+∆t =V un
+i+1−un
+i−1
+2∆x , V ∈ R+
+∗
+1. A vec quelle l'équation ce schéma est-il consistant ?
+2. Quel est l'ordre de précision de ce schéma ?
+3. Le schéma est-il stable en norme L2 ?
+4. Est-il explicite ou implicite ? Justier votre réponse.
+5. Comment peut on modier la discrétisation pour obtenir un schéma stable sans conditions ?
+Problème 3 Schéma de Crank-Nicolson pour l'équation de Hull-White [8pts]
+Soit L∈ R+
+∗ . Considérons une équation Hull-White qui modélise l'évolution du prix d'un Bond
+zero-coupon P (t,x ) sur l'intervalle Ω = [0,L ] :
+
+
+
+∂P
+∂t −σ∂2P
+∂x2− (η(t)−γx)∂P
+∂x +xP = 0 ∀x∈ Ω,∀t> 0
+P (t = 0,x ) = 1 ∀x∈ Ω
+∂P
+∂x (t,x = 0) = ter0t ∀t> 0
+P (t,x =L) = er0t∀t> 0
+avec
+ la variable x modélise le taut d'interêt stochastiques,
+ les coecients σ >0, γ, r0 sont des constantes,
+ la fonction η fournit l'information sur la stabilité du marché et est souvent donnée par
+η(t) = 2t.
+ P AR TIE I : Discrétisation
+1. Décrire votre maillage sur Ω. Pour cela utiliser un dessin et expliciter les deux quantités
+h = ∆x et k = ∆t en fonction du nombre de discrétisation des intervalles [0,L ] et [0,T ].
+2. Discrétiser les conditions initiales.
+3. Discrétiser les conditions aux limites.
+4. Sur le maillage, marquer les conditions initiales et aux limites.
+ P AR TIE II : Implémentation
+1. Discrétiser l'équation par la méthode de Crank-Nicolson.
+2. Ecrire l'équation sous la forme matricielle :
+MP n+1 =Kn,
+préciser la matrice M et Kn.
+3. Expliquer à l'aide des dessins comment calculer toutes les valeurs de niveau temporel n = 1.
+Expliquer clairement comment on calcule P (t,x =L).
+Fin.

@@ -1,0 +1,80 @@
+## Auteur : Nelly BARRAU
+## 2021-2022 - ING1 MI
+## Analyse Numérique
+## Serie de TD7 - EXERCICE 7.4
+
+# Packages utiles
+# import math
+import numpy as np
+
+
+l1=np.array([1.0, 1.0, 0.0])
+l2=np.array([0.0, 0.0, 1.0])
+
+A = np.array([ l1, l2])
+#print('A = ',A)
+
+
+## Question 1
+# calculons les differentes quantites de la question
+
+AconjT=np.conj(A).transpose()  #A* = conjuguee transposee
+#print('A* = ',AconjT)
+
+AAconjT=A.dot(AconjT)   # produit AA*
+#print('AxA* = ',AAconjT)
+AconjTA = AconjT.dot(A)  # produit A*A
+#print('A*xA = ',AconjTA)
+
+
+# Determiner les val p et vect p de AA*  et  A*A
+D1, V1 = np.linalg.eigh(AAconjT)
+# print('D1=',D1)
+# print('V1=',V1)
+
+D2, V2 = np.linalg.eigh(AconjTA)
+# print('D2=',D2)
+# print('V2=',V2)
+
+
+
+## Question 3
+U, s, Vh = np.linalg.svd(A, full_matrices=True)
+# print('U=',U)
+# print('s=',s)
+#print('Vh=',Vh)
+
+# Dimension des matrices
+n1,n2 =U.shape
+m1,m2=Vh.shape
+
+# # s est un vecteur, on reconstruit une matrice diagonale S
+B = np.zeros((n1,m1))
+B[:n1,:n1] = np.diag(s)
+# print('B=',B)
+
+
+# Pseudo inverse de A : invA=A+=Vt x inv(B) x U
+invB=np.zeros((m1,n1))
+# invB[0,0] = 1.0/s[0]
+# invB[1,1] = 1.0/s[1]
+invB[:n1,:n1] = np.linalg.inv(np.diag(s))
+#print('invB=',invB)
+
+#print(Vh.dot(invB))
+invA = (Vh.transpose().dot(invB)).dot(U)
+#print('invA=',invA)
+
+# test
+test1=(invA.dot(A)).dot(invA)  #test1=invA
+print("test1=",test1)
+print('invA=', invA)
+test2=(A.dot(invA)).dot(A)     #test2 = A
+print("test2 ",test2)
+print('A', A)
+
+
+
+
+
+

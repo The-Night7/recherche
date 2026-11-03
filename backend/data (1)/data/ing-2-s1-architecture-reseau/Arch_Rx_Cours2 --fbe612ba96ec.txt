@@ -1,0 +1,362 @@
+Architecture Réseaux
+ING 2 MI
+<<<PAGE>>>
+Plan
+❑Définition Réseaux, Modèle OSI, principes du modèle TCP/IP, 
+Protocoles IP, ICMP, TCP et UDP
+❑Topologies, types et tailles de réseaux, Principe des VLANs
+❑Adressage IPv4, IPv6
+❑Protocole ARP, Routage
+❑Protocoles DHCP, DNS, NAT
+2
+<<<PAGE>>>
+Définition
+• Rappel : demanière générale, les adressesforment une notion importante
+en communicationet sont un moyen d’identification.
+• Dans un réseauinformatique, une adresseIP est un identifiant unique
+attribué à chaqueinterface avec le réseauIP et associéà une machine
+(routeur ,ordinateur ,etc.). C’est une adresseunicast utilisable commeadresse
+sourceou commedestination.
+3
+Introduction
+IP signifie Internet Protocol.
+<<<PAGE>>>
+Principe
+4
+Rappel : l’adresseIP est utiliséedans l’entête IP des paquets échangés.
+
+<<<PAGE>>>
+Exemple de réseau
+5
+
+<<<PAGE>>>
+Remarque 1 : notion de netid et hostid
+• À partir du schémaprécédent,on en déduit qu’une adresseIP est 
+probablementdécomposéeen deux parties:
+• une partie de l’adresseidentifie le réseau(netid ) auquelappartient l’hôte et
+• une partie identifie le numéro de l’hôte (hostid) dans le réseau.
+6
+
+<<<PAGE>>>
+Remarque2 : notiond’échangesdirecteset indirectes
+• À partir du schémaprécédent,on distinguedeux situations :
+• Les équipementscommuniquentdirectemententre eux à condition qu’ils
+soient sur le mêmeréseauIP (mêmenetid). Ils peuventêtre 
+interconnectésphysiquementpar des concentrateurs(hub) et/ou des 
+commutateurs(switch).
+• Les équipementsqui n’appartiennentpas au mêmeréseauIP (netid
+différents)ne peuventpas communiquerentre eux directement.Ils 
+pourront le faire par l’intermédiaire d’un routeur (gateway).
+7
+Le routeurdoit posséderune adresseIP dans chaqueréseauIP qu’il
+interconnecte. On dit qu’il est multi-domicilié.
+<<<PAGE>>>
+Différentesversionsdes adressesIP
+8
+Il existedeuxversionspour les adressesIP :
+version4 : les adressessont codéessur 32 bits
+- Elle est généralementnotéeavecquatrenombrescomprisentre0 et 255, séparés
+par despoints.
+version6 : les adressessont codéessur 128 bits
+- Elle est généralementnotéepar groupesde 4 chiffreshexadécimaux séparéspar ’:’ 
+(exemple : FE80:0000:0000:0000:020C:76FF:FE21:1C3B).
+L’adressede version4 (IPv4) est encoreactuellementla plus utilisée.
+<<<PAGE>>>
+Affectationdes adressesIP
+• On distinguedeux situations pour assignerune adresseIP
+à un équipement:
+• de manièrestatique : l’adresseest fixe et configuréele plus
+souvent manuellementpuis stockée dans la configuration de
+son système d’exploitation.
+• de manière dynamique : l’adresse est automatiquement
+transmise et assignéegrâceau protocoleDHCP (Dynamic Host
+Configuration Protocol).
+9
+<<<PAGE>>>
+Décompositiondes adressesIPv4
+10
+Rappel :
+Pour décomposerune adresseIP (c’est-à-dire séparerle netid du hostid ), il faut utiliser un masque
+(netmask). Chaqueéquipementeffectueraune opérationET (bit à bit) entrel’adresseIP complète
+et le masque.
+Il suffit alorsde placerdesbits à 1 dansle masquepour conserverle netid et des0 pour écraserle
+hostid. Un masquea donc la mêmelongueur qu’une adresseIP .
+C’est donc la valeur du masquequi définit le netid (et donc le hostid). On parle de masquede réseau.
+La valeur du masqueest essentielledans l’adressageIP .
+<<<PAGE>>>
+Décompositiondes adressesIPv4
+11
+Rappel : la table de vérité du ET
+
+<<<PAGE>>>
+Décompositiondes adressesIPv4
+12
+• Pour déterminer la partie réseau(netid ) auquelappartientun 
+équipement,l’opération suivanteest réalisée:
+net-id ←− adresse IP ET bit à bit Masque
+Exemple: 192.168.52.0 ←− 192.168.52.85& 255.255.255.0
+• Pour déterminer le numéro de l’hôte (hostid) dans le réseau,  
+l’opération suivanteest réalisée:
+host-id ←− adresse IP ET bit à bit ~Masque  
+Exemple: 0.0.0.85 ←− 192.168.52.85& 0.0.0.255
+L’utilisation du masque255.255.255.255donneral’adresseIP complète assignéeà
+une machine.
+<<<PAGE>>>
+Remarque: adressesinterdites
+13
+• On remarqueque l’adressed’un réseauest composéedu netid et d’un hostid
+oùtouslesbits sontà 0 (Exemple : 192.168.52.0 avec un masque
+255.255.255.0).
+• On endéduit qu’une adresse de réseau nepeut être assignée à une machine
+pour éviter tout risquede confusion.C’est donc une adresse interdite.
+• Lorsquel’on met tous les bits à 1 dans le hostid, on obtient une adresse de
+broadcast: c’est une adresse de diffusion générale à toutes les machinesdu
+réseau(Exemple: 192.168.52.255 avec un masque255.255.255.0).C’est aussi
+une adresseinterdite.
+Dans les plagesd’adressesassignablesà des machinesd’un réseau,il y aura toujours
+deux adressesinterdites: l’adressedu réseauet l’adresse de broadcast.
+<<<PAGE>>>
+Exercice
+14
+Utilisation du masquede réseau
+1) Unemachine A qui a pour adresse IP 190.24.12.8 et un masque255.255.0.0 fait partie de
+quel réseau ?
+2) Unemachine B qui a pour adresse IP 10.0.100.1 et un masque255.0.0.0 fait partie de
+quel réseau ?
+3) La machine A et B pourront -elles communiquer directement ? Si non, que faut - il faire ?
+4) Donner l’adresse IP d’une machine C qui appartiendrait au m ê m eréseau logique que la
+machine A. Idem pour une machine D qui serait reliée au m ê m eréseau que B.
+<<<PAGE>>>
+T ailled’unréseauIPv4
+15
+• C’est le masquequi définit la taille d’une réseauIP : c’est-à-dire la plage d’adressesassignablesaux
+machinesdu réseau.
+• Exemple
+• Soit le réseau176.16.0.0avecun masquede 255.255.0.0.Quel est le
+nombre d’adresses machinesde ce réseau?
+Le masque255.255.0.0possède16 bits à 1 et découpedonc uneadresse
+IP de la manièresuivante:
+• le netid feradonc 16 bits (valeurfixéepar le masque) 
+• nombrede bits restantpour le hostid: 32 - 16 = 16 bits
+Le nombred’adressesmachinesde ce réseauest donc : 216 − 2 = 65536− 2 = 65534adresse machines
+Il existeuneautre notation (nomméeCIDR: (Classless Inter-Domain Routing )) pour exprimerl’adresse
+d’un réseau.On indiquealorsle nombrede bits à 1 dansle masquede la manièresuivante: 176.16.0.0/16
+<<<PAGE>>>
+Exercice
+1) Unemachine A a pour adresse IP 192.168.12.1 et un masque255.255.255.0. Combien r e s t e- t - il
+d’adresses disponibles dans ce réseau ?
+2) Donner pour ce réseau, la valeur des deux adresses interdites en indiquant leur signification.
+3) Ondécide d’interconnecter ce réseau avec un routeur. Affecter la dernière adresse disponible à
+l’interface du routeur raccordée physiquement à ce réseau.
+4) Donner en écriture CIDR l’adresse de ce réseau.
+5) Donner la valeur en écriture décimale pointée du masquedu réseau 192.168.1.0/25.
+16
+<<<PAGE>>>
+Techniquesd’adressaged’unréseauIPv4
+17
+• L’adressagepar classes
+L’ensembledesadressesIP ont été répartiesdans5 classes(A à E) Un masquede réseauest
+fixé pour chaqueclasse
+Seulesles classesA, B et C sont utilisables pour un adressagede machines La classeD est réservée
+pour l’adressagemulticast(diffusion à un groupe) La classeE est réservéepour un usagefutur
+Remarque: l’adressagepar classesn’est plus utilisé sur le réseaupublic Internet. Il est donc réservéà un usage
+privé.
+• L’adressagesansclassesnomméCIDR (ClasslessInter-Domain Routing) RFC 1519
+Comme son nom l’indique, l’adressagepar classesest ici abandonné Il n’y a donc plus de
+masquefixé par référenceà une classe
+Remarque: l’adressagesansclassesCIDR est notamment utilisé sur le réseaupublic Internet.
+On distinguedeuxtechniquesutilisablespour choisir une adresseréseauIP (version4) :
+<<<PAGE>>>
+18
+Pour voir si l’adresse du réseau d’une machine est codée sur 1,2 ou 3 octets, il 
+suffit de regarder la valeur du premier octet. L'adressage IP v4 est définit dans 
+le document rfc791
+Différentes classes d’adresses
+
+<<<PAGE>>>
+19
+Classe A
+Classe B
+Classe C
+Réseau
+Réseau
+Réseau
+Machine
+Machine
+Machine
+Différentes classes d’adresses
+<<<PAGE>>>
+20
+Id réseau (8bit)
+Id machine (24 bits)
+La place du premier octets de la classe A est : 1 à 127
+Le premier bit à gauche de la partie réseau est fixé à 0
+Classe A
+<<<PAGE>>>
+21
+Avec les adresses de classe A, le bit le plus significatif (MSB: Most Significant
+Bit) (c’est-à-dire le bit le plus à gauche) est réservé et doit être égal à zéro, il en
+résulte dans la plage d'adresses réseau suivante:
+➢ La plage des adresses réseau:  1 – 126
+➢ Le réseau 127 est réservé pour le loopbacks (@ de boucle)
+➢ Il y a 126 réseaux utilisables
+➢ Chaque réseau peut adresser:  𝟐𝟐𝟒 -2  machines
+Classe A
+<<<PAGE>>>
+22
+Id réseau (16 bits) Id machine (16 bits)
+La place du premier octets de la classe B est : 128 à 191
+Le deux premiers bits à gauche de la partie réseau sont fixés à 1|0
+Classe B
+<<<PAGE>>>
+23
+Avec les adresses de classe B, les deux bits les plus significatifs (MSB: two Most
+Significant Bits) (c’est-à-dire les deux bits les plus à gauche) sont réservés et
+doivent être égal à 10, il en résulte dans la plage d'adresses réseau suivante:
+➢ La plage des adresses réseau:  128 – 191
+➢ Il y a 𝟐𝟔 ∗ 𝟐𝟖 réseaux utilisables
+➢ Chaque réseau peut adresser:  𝟐𝟏𝟔 -2  machines
+Classe B
+<<<PAGE>>>
+24
+Id réseau (24 bits) Id machine (8 bits)
+La place du premier octets de la classe B est : 192 à 223
+Le deux premiers bits à gauche de la partie réseau sont fixés à 1|1|0
+Classe C
+<<<PAGE>>>
+25
+Avec les adresses de classe C, les trois bits les plus significatifs (MSB: the three
+Most Significant Bits) (c’est-à-dire les trois bits les plus à gauche) sont réservés
+et doivent être égal à 110, il en résulte dans la plage d'adresses réseau
+suivante:
+➢ La plage des adresses réseau:  192 – 223
+➢ Il y a 𝟐𝟓 ∗ 𝟐𝟖 ∗ 𝟐𝟖 réseaux utilisables
+➢ Chaque réseau peut adresser:  𝟐𝟖 -2  machines
+Classe C
+<<<PAGE>>>
+Typesde réseaux
+26
+On doit maintenantdistinguerdeux types de réseauxadressablesen IP :
+• le réseau public Internet où chaque équipement connecté doit
+posséderune adresseuniqueet enregistréeau niveaumondial.
+• les réseauxprivés, dans ce cas le choix des adressesest libre et ne doivent
+être uniquesque dans ce réseau.
+Remarques:
+Si un réseauprivé doit être interconnectéavec le réseauInternet,il faudra alors utiliser
+des adressesprivéesqui ne puissentcorrespondreà des adresses publiquesutiliséessur
+Internet. Des plagesd’adressesréservéesà usage privéexistentet ellesne sont donc
+pas acheminéespar les routeursInternet,ce qui supprimetout risquede conflit
+Dans ce cas, pour interconnecterun réseauprivé avec Internet,on utilisera un routeur
+NAT (Network AddressTranslation) qui permet de remplacer l’adresse IP source
+privéepar l’adressepubliquedu routeur.
+<<<PAGE>>>
+AdressesIPv4 interdites
+27
+Il y a des adressesinterditesque l’on ne peut pas utiliser commeadresse IP pour un
+équipement:
+• les adressesréseaux: c’est-à-dire les adressesdont tous les bits de la partie hosted sont à 0
+• les adressesde diffusion générale(broadcast) : c’est-à-dire les adressesdont tous les bits de la
+partie hostid sont à 1
+• l’adressede boucle locale (loopback) 127.0.0.1associéau nom localhost. De manièregénérale,
+toutes les adressesde ce réseau127.0.0.01
+• l’adresse0.0.0.0qui est utilisée par des différentsservices(DHCP, tables de routage, ...) et qui a
+souventune signification particulière
+• Les adresses privées 
+
+<<<PAGE>>>
+Exercice
+Adressageprivé
+• L’adresse réseau de l’entreprise est 172.16.0.0.
+1) Donner la classe de ce réseau.
+2) Donner le masque de ce réseau.
+3) Donner le nombremaximumde noeuds que l’on peut connecter.
+4) Quelle est l’adresse de diffusion (broadcast) de ce réseau ?
+28
+<<<PAGE>>>
+Sous-réseaux
+Sous-réseaux(subneting)
+En 1984,devantla limitation du modèlede classes,la RFC 917 (Internet subnets) 
+créele conceptde sous-réseau.
+Ceci permet par exemple:
+• d’utiliser une adressede Classe B comme 256 sous-réseauxde 254 ordinateurs
+au lieu d’un seul réseau de 65536 ordinateurs, sans toutefois remettre en
+questionla notion de classed’adresse.
+• d’optimiser l’utilisation et la sécuritédu réseauen le segmentant
+• de maîtriser l’adressageà l’intérieur du réseau
+<<<PAGE>>>
+Sous-réseaux
+AdressageIPv4 des sous-réseaux(subneting)
+Pour segmenterun réseauen sous-réseaux,il faut alors décomposerla 
+partie hostid de l’adresseIP en deux parties: une adressede sous-réseau 
+(subnetid) et une adressemachine(hostid).
+Par exemple,pour créer3 sous-réseaux,il faudraprendre2 bits dansla 
+partie hostid et on créera22 donc 4 sous-réseaux:
+0 0 pour le sous-réseauxn°0 - 1 0 pour le sous-réseauxn°2
+0 1 pour le sous-réseauxn°1 - 1 1 pour le sous-réseauxn°3
+<<<PAGE>>>
+Sous-réseaux
+Masque de sous-réseaux(subnetmask)
+Évidemment,le masquede départchangeet doit maintenantengloberla 
+partie netid et la partie subnetid. Ce nouveaumasquese nommemasque 
+de sous-réseaux.
+Exemple: pour le réseau192.168.1.0/24découpéen 4 sous-réseaux
+netid = 24 bits 
+subnetid = 2 bits
+hostid = 32 - 24 - 2 = 6 bits
+Le masquede sous-réseausera: 24 + 2 = 26 bits soit 255.255.255.192
+<<<PAGE>>>
+Sous-réseaux
+Plage d’ adressesdes sous-réseaux
+Le nombrede machinesadressablesdans chaquesous-réseauserade 
+2nb bits hostid − 2 adressesinterdites.
+Exemple: pour le réseau192.168.1.0/24découpéen 4 sous-réseaux
+Le nombrede machinesadressablesdans chaque sous-réseausera de : 
+26 − 2 adressesinterdites = 62 adresses
+sous-réseauxn°0 192.168.1.0/26: 192.168.1.1à 192.168.1.62(broadcast = 
+192.168.1.63)
+sous-réseauxn°1 192.168.1.64/26: 192.168.1.65à 192.168.1.126(broadcast = 
+192.168.1.127)
+sous-réseauxn°2 192.168.1.128/26: 192.168.1.129à 192.168.1.190(broadcast = 
+192.168.1.191)
+sous-réseauxn°3 192.168.1.192/26: 192.168.1.193à 192.168.1.254(broadcast = 
+192.168.1.255)
+<<<PAGE>>>
+Sous-réseaux
+Intérêtdes sous-réseaux
+On peut distinguerdeux démarchespour déterminerun masquede 
+sous-réseaux:
+à partir du nombrede machinesà adresseret/ou 
+à partir du nombrede sous-réseauxà créer
+<<<PAGE>>>
+AdressageIPv6
+AdresseIPv6
+Les adressesIPv6 sur 128 bits sont décomposéesen : 
+un préfixede localisation public : 48 bits
+un champ sous-réseaude topologielocale du site (subnet): 16 bits
+un identifiant de l’interface (basésur l’adresseMAC ou aléatoirement)qui 
+garantiel’unicité de l’adresse(équivalentà hostid) : 64 bits
+L’IANA et les RIR gèrentaussiles ressourcesd’adressageIPv6.
+<<<PAGE>>>
+AdressageIPv6
+Notationdes adressesIPv6
+La notation décimalepointée employéepour les adressesIPv4 (par exemple 
+172.31.128.1)est abandonnéeau profit d’une écriture hexadécimale, où les 8 
+groupesde 2 octets (soit 16 bits par groupe)sont séparéspar un signe
+deux-points ’ :’ :
+Exemple: La notation complètecomprendexactement39 caractères
+2001:0db8:0000:85a3:0000:0000:ac1f:8001
+Il est permisd’omettrede 1 à 3 chiffreszérosnon significatifsdanschaquegroupe 
+de 4 chiffreshexadécimaux.Ainsi, l’adresseIPv6 ci-dessusest équivalenteà :
+2001:db8:0:85a3:0:0:ac1f:8001
+De plus, une uniquesuite de un ou plusieursgroupesconsécutifsde 16 bits tous 
+nuls peut être omise,en conservanttoutefoisles signesdeux-points de chaque 
+côté de la suite de chiffresomise,c’est-à-dire une paire de deux-points (::). Ainsi, 
+l’adresseIPv6 ci-dessuspeut être abrégéeen :
+2001:db8:0:85a3::ac1f:8001
+<<<PAGE>>>
+AdressageIPv6
+RemarquesIPv6
+En IPv6, les sous-réseauxont une taille fixe de /64, c’est-à-dire que 
+64 des128 bits del’adresse IPv6 sont réservésà la numérotation d’un 
+hôte dans le sous-réseau.
+En IPv6, les masquesde sous-réseauxont donc une taille fixe de /64. 

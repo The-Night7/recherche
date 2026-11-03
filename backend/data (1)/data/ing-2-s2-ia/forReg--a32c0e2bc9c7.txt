@@ -1,0 +1,168 @@
+#In this file we present the main Python functions for
+#regex. A comprehensive description of these functions
+#can be found in https://docs.python.org/3/library/re.html 
+
+import re
+
+#To see the content (functions+constants) of this module
+dir(re)
+
+
+#Strings are the simplest examples of regular expressions. They
+#are regular expression without metacharacters. They match
+#only themselves.
+
+#The r prefix : since the '\' character has a special meaning
+#in regex and that Python uses it in strings for other meanings ('\n' for newline,
+#'\t' for tabs, ..), we use "raw" Python strings in which
+#\ is interpreted as a simple '\' (e.g. '\n' is interpreted as \
+#followed by 'n'). The prefix r defines these raw strings. 
+print('a\nb')
+print(r'a\nb')
+print('a\tb')
+print(r'a\tb')
+
+
+#The function search returns a Match  object if the regex
+#matches a substring. If there are several matches, 
+#the object represents the first
+#substring matched.
+
+txt = 'A screenwriter is a writer who writes for TV, films, radio, comics'
+a = re.search('writ',txt) 
+a
+type(a)
+#The result of the last command shows that the result
+#returned by search is a Match object.
+
+
+#The function findall returns a list of all the matches.
+
+txt = 'A screenwriter is a writer who writes for TV, films, radio, comics'
+a = re.findall('writ',txt) 
+
+#The function sub replaces the substrings matched by a new substring.
+
+new_txt = re.sub('writ','***',txt)
+new_txt
+
+#The function finditerate returns a list of Match object, one
+#for each substring matched.
+matches = re.finditer('writ',txt)
+for m in matches:
+  print(m)
+  
+#The function split returns the list of substrings obtained by
+#removing the matches and splitting the original string
+#where we have the matches. 
+lst_substrings = re.split(',',txt)
+lst_substrings
+
+
+#The list of metacharacters : . ? ^ $ * +  { } [ ] \ | ( )
+
+#The metacharacter . matches any character (except newline character).
+
+txt2 = 'start a sentence and then bring it to an end'
+a = re.findall(r"a..", txt2)
+
+#The metacharacter ? matches zero or one occurence of 
+#the preceding character.
+
+txt='Shoud I write neighbour or neighbor ?'
+a = re.findall("neighbou?r", txt)
+
+#The metacharacter \ signals special sequences :
+#\w matches word characters,\W matches non word characters, \s matches whitespace 
+#characters (' ', \t, \n, ...).
+
+txt = 'start a sentence and then bring it to an end.'
+
+a = re.findall(r"a\w\w", txt)
+b = re.findall(r"a\W\w", txt)
+c = re.findall(r"a\s\w", txt)
+d = re.findall(r"a\w\s", txt)
+
+#The metachracter * matches zero or more occurences of 
+#the preceding character.
+txt = 'start a sentence and then bring it to an end.'
+a = re.findall(r"\w*\s", txt)
+
+
+
+#| is the either/or metacharacter. x|y matches x or y.
+
+txt = 'Mr. is a title used before a surname or full name of a male, whether he is married or not. Mrs. is a title used before a surname or full name of a married female. Ms. is a title used before a surname of full name of a female whether she is married or not. Ms. has been in use since the 1950s, it is a portmanteau of the words Miss and Missus. The title of Ms. was popularized by Ms. magazine in the 1970s.'
+a = re.findall(r"M(r|s|rs)\.?\s", txt)
+
+txt = 'start a sentence and then bring it to an end.'
+a = re.findall(r"\w*\s|\w*\.", txt)
+
+#\b and \B : beginning, end and middle of a word
+
+txt = 'example, textual, expression, regex, text, index'
+
+a = re.findall(r'\bex\w*',txt)
+b = re.findall(r'\w*ex\b',txt)
+c = re.findall(r'\Bex\w*',txt)
+d = re.findall(r'\w*ex\B',txt)
+
+#\d matches decimal digits and \D matches non digit characters
+txt='Dame Agatha Mary Clarissa Christie, Lady Mallowan, DBE (née Miller; 15 September 1890 – 12 January 1976) was an English writer known for her 66 detective novels and 14 short story collections, particularly those revolving around fictional detectives Hercule Poirot and Miss Marple.'
+
+y1 = re.sub("[0-9]+", "(NUMBER)", txt)
+y2 = re.sub("\d\d\d\d", "(A four digit number)", txt)
+y3 = re.sub("\d{4}", "(A four digit number)", txt)
+
+#The metacharacter \ despecializes special characters
+txt = 'Alan Turing was an English mathematician and computer scientist. He was highly influential in the development of theoretical computer science. He is widely considered to be the father of theoretical computer science and artificial intelligence. Born in London, He was raised in southern England. He graduated at King''s College, Cambridge, with a degree in mathematics.'
+a = re.findall(r"\w*\.", txt)
+
+txt='Dame Agatha Mary Clarissa Christie, Lady Mallowan, DBE (née Miller; 15 September 1890 – 12 January 1976) was an English writer known for her 66 detective novels and 14 short story collections, particularly those revolving around fictional detectives Hercule Poirot and Miss Marple.'
+x = re.search("\(.*\)", txt)
+x
+
+#Beginning and end of a string
+txt3 = 'Spelling Smelling Swelling'
+a = re.findall("^S.ell", txt3)
+b = re.findall("S.elling$", txt3)
+
+#The Match objects
+txt='Dame Agatha Mary Clarissa Christie, Lady Mallowan, DBE (née Miller; 15 September 1890 – 12 January 1976) was an English writer known for her 66 detective novels and 14 short story collections, particularly those revolving around fictional detectives Hercule Poirot and Miss Marple.'
+x = re.search("\(.*\)", txt)
+
+type(x)
+dir(x)
+#We see that the type of x is re.Match and that it has 40 properties
+x.string
+x.group()
+x.span()
+
+#Compile, findall, search, finditer, ...
+#Find all mails .com or .fr
+#group method
+
+#Regular expression objects
+
+#The function compile transforms a string into regex object 
+rx1 = re.compile("en",flags=0)
+type(rx1)
+
+#Methods and attributes supported by regex objects
+dir(re.Pattern)
+
+#The search method : finding the first match
+txt2 = 'start a sentence and then bring it to an end'
+res=rx1.search(txt2)
+res
+type(res)
+dir(re.Pattern)
+
+#The finditer method : finding all the matches
+res=rx1.finditer(txt2)
+type(res)
+for m in res:
+  print(m)
+  
+#And many other methods : match, findall, ...
+

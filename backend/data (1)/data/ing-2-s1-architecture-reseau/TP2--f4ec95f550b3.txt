@@ -1,0 +1,89 @@
+1 
+ 
+ 
+TP2 : Interconnexions de réseaux 
+ 
+ 
+La topologie ci-dessus représente deux réseaux 192.168.1.0/24 et 172.16.1.0/24 interconnectés avec 
+un routeur. L’objectif de cet exercice est de configurer les PCs, Switch et routeur afin qu’un PC sur le 
+réseau 1 arrive à communiquer avec un PC sur le réseau 2 et vice-versa. 
+Etape 1: Créer la topologie en haut avec Cisco Packet Tracer. 
+Etape 2: Sur chaque PC dans le réseau, il faudrait configurer une adresse IP unique, un masque et 
+une passerelle selon le schéma en haut. Exemple : adresse IP PC0 = 192.168.1.2, Masque : 
+255.255.255.0, Passerelle : 192.168.1.254 
+Etape 3: Chaque interface sur le routeur doit être configuré avec l’adresse IP qui correspondant au 
+réseau auquel il est connecté. 
+Router>enable  
+Router#configure terminal 
+Enter configuration commands, one per line. End with CNTL/Z. 
+Router(config)#interface fastEthernet 0/0 
+Router(config-if)#ip address 192.168.1.254 255.255.255.0 
+Router(config-if)#no shutdown 
+Router(config-if)#exit 
+ 
+Router(config)#interface fastEthernet 0/1 
+Router(config-if)#ip address 172.16.1.254 255.255.255.0 
+Router(config-if)#no shutdown 
+Router(config-if)#exit 
+ 
+Etape 4: Sécuriser l’accès au routeur et switches (console et telnet) et n’oublier pas de sauvegarder 
+la configuration (voir TP1). 
+Router#sh ip interface brief 
+Interface IP-Address OK? Method Status Protocol 
+FastEthernet0/0 192.168.1.100 YES manual up up <<<<< Interface connecté au réseau 192.168.1.0 
+FastEthernet0/1 172.16.1.100 YES manual up up <<<<< Interface connecté au réseau 172.16.1.0 
+Vlan1 unassigned YES unset administratively down down 
+<<<PAGE>>>
+1 
+ 
+ 
+ 
+Etape 5 : Les switches sont préconfigurés. Il faudrait juste vérifier que les ports sur lesquelles les PCs et le 
+routeur sont connectés sont actifs (UP) 
+Switch> 
+Switch>enable 
+Switch#sh ip interface brief 
+Interface IP-Address OK? Method Status Protocol 
+FastEthernet0/1 unassigned YES manual up up <<<<<<<< Port connecté a PC0 
+FastEthernet0/2 unassigned YES manual up up <<<<<<<< Port connecté a PC1 
+FastEthernet0/3 unassigned YES manual up up <<<<<<<< Port connecté a PC2 
+FastEthernet0/4 unassigned YES manual up up <<<<<<<< Port connecté au routeur 
+FastEthernet0/5 unassigned YES manual down down 
+FastEthernet0/6 unassigned YES manual down down 
+FastEthernet0/7 unassigned YES manual down down 
+FastEthernet0/8 unassigned YES manual down d own 
+FastEthernet0/9 unassigned YES manual down down 
+FastEthernet0/10 unassigned YES manual down down 
+ 
+Si tout a été bien configuré, on pourra lancer un ping de PC0 par exemple vers PC3 avec succès et vice-
+versa: 
+PC>ping 172.16.1.1 
+Pinging 172.16.1.1 with 32 bytes of data: 
+Reply from 172.16.1.1: bytes=32 time=1ms TTL=127 Reply 
+from 172.16.1.1: bytes=32 time=0ms TTL=127 Reply  from 
+172.16.1.1: bytes=32 time=0ms TTL=127 Reply  from 
+172.16.1.1: bytes=32 time=0ms TTL=127 
+ 
+Ping statistics for 172.16.1.1: 
+Packets: Sent = 4, Received = 4, Lost = 0 (0% loss), Approximate 
+round trip times in milli-seconds: 
+Minimum = 0ms, Maximum = 1ms, Average = 0ms 
+ 
+PC>tracert 172.16.1.1 
+Tracing route to 172.16.1.1 over a maximum of 30 hops: 
+1 1 ms 0 ms 0 ms 192.168.1.100 
+2 0 ms 0 ms 0 ms 172.16.1.1 Trace 
+complete. 
+ 
+Etape 6 : Ajouter un nouveau PC sur un des réseaux et visualiser la table des addresse MAC sur le switch  
+correspondant (sh mac address-table). Lancer maintenant un  ping vers le nouveau PC à partir du même 
+réseau.  
+Visualiser la table des adresses MAC encore une fois et expliquer la différence. 
+Lancer la commande arp –a sur le PC et expliquer le résultat. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

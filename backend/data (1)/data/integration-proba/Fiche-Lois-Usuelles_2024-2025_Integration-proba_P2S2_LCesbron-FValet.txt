@@ -1,0 +1,567 @@
+Lois de variables aléatoires réelles discrètes
+usuelles
+Ludovic Cesbron
+Frédéric Valet
+2024-2025
+1 Loi uniforme
+De façon analogue à la probabilité uniforme, la loi uniforme est celle des v.a.r.
+discrète qui prennent leur différentes valeurs de manière équiprobable, pour que
+ce soit possible il est nécessaire queX(Ω) soit fini.
+Définition 1.1
+Soient (Ω, P) un espace de probabilité etX une v.a.r. telle queX(Ω) ={a1,a 2,...,a n}.
+On dit queX suit une loi uniforme sur{a1,a 2,...,a n} si
+∀i∈ J1,n K, P(X =ai) = 1
+n.
+On noteX ↪→U{a1,a2,...,an}.
+Exemple 1.1
+Si X est la v.a.r. qui donne le résultat du lancer d’un dé équilibré alors on a
+X ↪→U J1,6K.
+Proposition 1.1
+Soient n∈ N∗ et X une v.a.r. discrète telle queX ↪→U J1,nK, alors
+• E(X) = n + 1
+2 , c’est la moyenne (non-pondérée) des valeurs deX.
+• V(X) = n2− 1
+12 .
+Démonstration :
+• Pour l’espérance on a
+E(X) =
+n∑
+i=1
+iP(X =i) =
+n∑
+i=1
+i 1
+n = 1
+n
+n∑
+i=1
+i.
+1
+<<<PAGE>>>
+De plus, on reconnaît la somme d’une suite arithmétique de raison1 qui
+commence ài = 1 donc
+n∑
+i=1
+i =n
+(n + 1
+2
+)
+. On obtient
+E(X) = 1
+nn
+(n + 1
+2
+)
+= n + 1
+2 .
+• Pour la variance, on calcule d’abord
+E(X 2) =
+n∑
+i=1
+i2P(X =i) = 1
+n
+n∑
+i=1
+i2.
+La somme des carrés (laissée en exercice) vaut
+n∑
+i=1
+i2 = n(n + 1)(2n + 1)
+6
+donc on aE(X 2) = (n + 1)(2n + 1)
+6 , on en déduit
+V(X) = E(X 2)− E(X)2
+= (n + 1)(2n + 1)
+6 −
+(n + 1
+2
+)2
+= 2(n + 1)(2n + 1)− 3(n + 1)2
+12 = n2− 1
+12 .
+2 Loi de Bernouilli de paramètre p∈ [0, 1]
+On s’intéresse à une expérience qui n’a que deux issues possibles (par exemple un
+pile ou face ou un tirage unique dans une urne avec seulement 2 types de boules).
+On appelle la première issue "le succès", et la seconde "l’échec". Le paramètrep
+de la loi de Bernouilli désigne la probabilité du succès. Par complémentarité la
+probabilité de l’échec est donc1−p.
+On introduit la variable aléatoireX : Ω→{ 0, 1} définie par :X = 1 en cas de
+succès, X = 0 en cas d’échec.
+Définition 2.1
+Soient (Ω, P) un espace de probabilité,p∈ [0, 1] et X une v.a.r. discrète telle
+que X(Ω) ={0, 1}.
+On dit queX suit une loi de Bernouilli de paramètre p, notéX ↪→B (p),
+si
+P(X = 1) =p et P(X = 0) = 1−p.
+Proposition 2.1
+Soient p∈ [0, 1] et X ↪→B (p). Alors
+• E(X) =p,
+• V(X) =p(1−p).
+2
+<<<PAGE>>>
+Démonstration :
+Les résultats s’obtiennent par calculs directs:
+• E(X) = 0× (1−p) + 1×p =p.
+• V(X) = E(X 2)− E(X)2 = 02× (1−p) + 12×p− (p)2 =p−p2 =p(1−p).
+3 Loi Binomiale de paramètre (n,p )
+Les lois binomiales sont celles associées à la répétition, de manière indépendante,
+d’une expérience suivant une loi de Bernouilli. Par exemple, on peut faire une
+série de pile ou face, ou encore faire des tirages avec remise dans une urne
+contenant 2 types de boules. Les paramètres d’une loi Binomiale sont donc :
+n le nombre de répétitions, etp le paramètre de la loi de Bernouilli que l’on
+répète.
+On introduit une v.a.r. discrèteX qui compte le nombre de succès parmi lesn
+itérations. On a doncX(Ω) = J0,n K.
+Définition 3.1
+Soient (Ω, P) un espace de probabilité,p∈ [0, 1], n∈ N et X une v.a.r. discrète
+telle queX(Ω) = J0,n K.
+On dit queX suit une loi binomiale de paramètres (n,p ), noté
+X ↪→B (n,p ), si
+∀k∈ J0,n K, P(X =k) =
+(n
+k
+)
+pk(1−p)n−k.
+Cette formule peut s’interpréter de la façon suivante : pour avoir exactementk
+succès parmi lesn lancers il faut avoirk réussites, d’où lepk, et n’avoir que des
+échecs par ailleurs, doncn−k échecs, d’où le(1−p)n−k. L’ordre des lancers
+n’a pas d’importance : on peut répartir ces succès comme on le souhaite parmi
+lesn lancers et il y a exactement
+(n
+k
+)
+façons de répartir lesk succès parmi lesn
+lancers.
+Remarque 3.1
+Une loi de Bernouilli de paramètrep est en fait une loi Binomiale de paramètre
+(1,p ) :B(p) =B(1,p ), d’où l’utilisation de la même lettreB.
+Remarque 3.2
+La formule du binôme de Newton nous assure que l’on a bien défini une loi de
+probabilité puisque
+n∑
+k=0
+P(X =k) =
+n∑
+k=0
+(n
+k
+)
+pk(1−p)n−k = (p + 1−p)n = 1.
+Exemple 3.1
+1. On lance une pièce équilibrée 15 fois. Quelle est la probabilité de faire
+exactement 4 fois pile ?
+3
+<<<PAGE>>>
+2. Une urne contient12 boules blanches et8 boules noires. On tire10 fois,
+avec remise, une boule dans l’urne. Quelle est la probabilité de tirer7 fois
+une boule blanche ?
+Proposition 3.1
+Soient p∈ [0, 1], n∈ N et X ↪→B (n,p ). Alors
+• E(X) =np,
+• V(X) =np(1−p)
+Démonstration :
+• Calcul de l’espérance :
+E(X) =
+n∑
+k=0
+kP(X =k) =
+n∑
+k=1
+k
+(n
+k
+)
+pk(1−p)n−k
+=
+n∑
+k=1
+n
+(n− 1
+k− 1
+)
+pk(1−p)n−k =n
+n−1∑
+i=0
+(n− 1
+i
+)
+pi+1(1−p)n−i−1
+=np
+n−1∑
+i=0
+(n− 1
+i
+)
+pi(1−p)(n−1)−i =np
+On a utilisé ci-dessus la relation suivante sur les coefficients binomiaux
+k
+(n
+k
+)
+=k n!
+k!(n−k)! = n!
+(k− 1)!(n− 1−k + 1)!
+=n (n− 1)!
+(k− 1)!(n− 1− (k− 1))! =n
+(n− 1
+k− 1
+)
+ainsi que le changement d’indicei =k− 1 et on a reconnu un binôme de
+Newton (cf Remarque 3.2) au rangn− 1 à la dernière étape.
+• Calcul de E(X 2) : en décomposantk2 = (k− 1 + 1)k = (k− 1)k +k on a
+E(X 2) =
+n∑
+k=0
+k2P(X =k)
+=
+n∑
+k=2
+(k− 1)k
+(n
+k
+)
+pk(1−p)n−k +
+n∑
+k=1
+kP(X =k).
+On reconnaîtE(X) =np dans le second terme, pour le premier on utilise
+4
+<<<PAGE>>>
+deux fois la relation précédente sur les coefficients binomiaux :
+n∑
+k=2
+(k− 1)n
+(n− 1
+k− 1
+)
+pk(1−p)n−k =n
+n∑
+k=2
+(n− 1)
+(n− 2
+k− 2
+)
+pk(1−p)n−k
+=n(n− 1)
+n−2∑
+j=0
+(n− 2
+j
+)
+pj+2(1−p)n−2−j
+=n(n− 1)p2
+n−2∑
+j=0
+(n− 2
+j
+)
+pj(1−p)n−2−j
+=n2p2−np2
+en reconnaissant un binôme de Newton au rangn− 2. On a donc
+E(X 2) =2 p2−np2 +np
+et on en déduit que
+V(X) =n2p2−np2 +np− (np)2 =np(−p + 1) =np(1−p).
+4 Loi Géométrique de paramètre p∈]0, 1]
+Comme les loi Binomiales, les lois Géométriques sont aussi associées à des répéti-
+tions (indépendantes) d’une expérience de Bernoulli. La différence est qu’une
+v.a.r. de loi Géométrique compte le rang du premier succès. Par exemple, si
+on reprend l’expérience du pile ou face où on nomme "succès" le pile et "échec"
+le face. Une v.a.r. X de loi géométrique compte combien il a fallu d’essais
+pour obtenir le premier pile. Le paramètrep de la loi Géométrique est celui de
+l’expérience de Bernoulli sous-jacente.
+Définition 4.1
+Soient (Ω, P) un espace de probabilité,p∈]0, 1] et X une v.a.r. discrète telle
+que X(Ω) = N∗.
+On dit queX suit une loi géométrique de paramètre p, notéX ↪→G (p), si
+∀k∈ N∗, P(X =k) =p(1−p)k−1.
+Cette formule s’interprète de manière similaire à celle de la loi Binomiale. Pour
+que le premier succès ait lieu à lakième répétition de l’expérience (événement
+"X =k") il faut avoir enchainék−1 échecs, d’où le(1−p)k−1, et un succès, d’où
+le p. On remarque que l’ordre des résultats importe pour la loi géométrique,
+pour queX =k il faut faire d’abordk− 1 échecs puis un succès, il n’y a donc
+pas de coefficient binomial dans la formule de la loi géométrique.
+Remarque 4.1
+On exclut le casp = 0 de la définition de la loi géométrique car dans ce cas on
+aurait P(X = k) = 0 pour toutk∈ N∗ et la propriété 2 de la définition d’une
+5
+<<<PAGE>>>
+probabilité ne serait donc pas satisfaite.
+En revanche, pour toutp∈]0, 1] et n∈ N∗, en reconnaissant la somme d’une
+suite géométrique de raison(1−p) on a
+n∑
+k=1
+P(X =k) =
+n∑
+k=1
+p(1−p)k−1 =p1− (1−p)n
+1− (1−p) = 1− (1−p)n
+et puisque 1−p∈ [0, 1[ on retrouve bien
++∞∑
+k=1
+P(X =k) = 1.
+Exemple 4.1
+1. On lance une pièce équilibrée. Quelle est la probabilité qu’on obtienne pile
+pour la première fois lors du 5ème lancer ?
+2. Une urne contient10 boules blanches et3 boules noires. On effectue des
+tirages successifs avec remise. Quelle est la probabilité de tirer une boule
+noire pour la première fois lors du 8ème tirage ?
+Proposition 4.1
+Soient p∈]0, 1] et X ↪→G (p). Alors
+• E(X) = 1
+p,
+• V(X) = 1−p
+p2
+Démonstration :
+• On commence par remarquer qu’en dérivant la série entière géométrique
+∞∑
+k=0
+xk = 1
+1−x pour toutx∈]0, 1[ (on rappelle qu’une série entière CVN
+sur son disque ouvert de convergence donc on peut intervertir somme et
+dérivée, ici le rayon de convergence estR = 1) on obtient
+∞∑
+k=1
+kxk−1 = 1
+(1−x)2.
+Calcul de l’espérance :
+E(X) =
++∞∑
+k=1
+kP(X =k) =
++∞∑
+k=1
+kp(1−p)k−1 =p 1
+(1− (1−p))2 = 1
+p.
+• Pour la variance, on commence par calculerE(X 2) et, en dérivant une
+deuxième fois la série entière géométrique
++∞∑
+k=2
+k(k− 1)xk−2 = 2
+(1−x)3
+6
+<<<PAGE>>>
+(on rapelle qu’une série entière à le même rayon de convergence que toutes
+ses séries dérivées). Ainsi, en décomposantk2 =k(k− 1) +k on a
+E(X 2) =
++∞∑
+k=1
+k2P(X =k)
+=
++∞∑
+k=1
+k(k− 1)p(1−p)k−1 +
++∞∑
+k=1
+kp(1−p)k−1
+=p(1−p)
++∞∑
+k=1
+k(k− 1)(1−p)k−2 + E(X)
+=p(1−p) 2
+(1− (1−p))3 + 1
+p
+= 2(1−p)
+p2 + 1
+p.
+On en déduit
+V(X) = E(X 2)− E(X)2 = 2(1−p)
+p2 + 1
+p− 1
+p2 = 2− 2p +p− 1
+p2 = 1−p
+p2 .
+5 Loi de Poisson de paramètre λ> 0
+Les lois de Poisson interviennent lorsque l’on souhaite compter les occurrences
+d’un "événement rare".
+Par exemple, si on souhaite compter le nombre de clients qui entrent dans un
+magasinentre16het17h, sachantqu’enmoyenneunnouveauclientarrivetoutes
+les 10 minutes, la variable aléatoireX qui compte le nombre de clients suivra
+une loi de Poisson de paramètre1/6 (= 1heure/10minutes).
+LeparamètredelaloidePoissonreprésentelafréquenceaveclaquellel’événement
+a lieu en moyenne sur l’intervalle de temps considéré.
+Définition 5.1
+Soient (Ω, P) un espace de probabilité,λ >0 et X une v.a.r. discrète telle que
+X(Ω) = N.
+On dit queX suit une loi de Poisson de paramètre λ, notéX ↪→P (λ), si
+∀k∈ N, P(X =k) = e−λλk
+k! .
+Remarque 5.1
+On rappelle que par définitionex =
++∞∑
+k=0
+xk
+k!. On retrouve donc bien
++∞∑
+k=0
+P(X =k) =
++∞∑
+k=0
+e−λλk
+k! =e−λ
++∞∑
+k=0
+λk
+k! =e−λeλ = 1.
+7
+<<<PAGE>>>
+Remarque 5.2
+La formule de la loi de Poisson découle de son lien avec la loi Binomiale. En
+effet, dans l’exemple des clients qui entrent dans un magasin, une autre modéli-
+sation possible aurait été la suivante : on considère que chaque minute il y a une
+probabilitép qu’un client entre dans le magasin. Compter le nombre de clients
+revient donc à effectuer donc60 fois une expérience de Bernouilli de paramètre
+p, la v.a.r. associée suit donc une loi Binomiale de paramètre(60,p ).
+On pourrait aussi considéré que toutes les10 secondes il y a une probabilitép′
+qu’un client entre, et la v.a.r. qui compte le nombre de clients suivra donc une
+loi binomialeB(360,p′).
+On peut voir la loi de Poisson comme la limite de cette modélisation binomiale
+quand on fait tendre le pas de temps vers0. Naturellement, plus le pas de temps
+est court plus la probabilitép qu’un client entre est faible (en d’autres termes,p
+dépend den : le nombre de pas de temps nécessaire pour recouvrir l’intervalle
+d’1 heure).
+Plus précisément, si on fixeλ >0 et qu’on regarde la limite quandN→ +∞
+d’une loi binomialeB
+(
+N, λ
+N
+)
+on obtient (dans un certain sens) une loi de Pois-
+son.
+Cela se vérifie par le calcul : SiX ↪→B
+(
+N, λ
+N
+)
+alors pour toutk∈ J0,N K
+P(X =k) =
+(N
+k
+)(λ
+N
+)k(
+1− λ
+N
+)N−k
+= N!
+k!(N−k)!λk 1
+Nk
+(
+1− λ
+N
+)N(
+1− λ
+N
+)−k
+= λk
+k!
+(
+1− λ
+N
+)N[
+N!
+Nk(N−k)!
+(
+1− k
+N
+)−k]
+.
+Pour le second terme, sachant queln(1 +x)∼x quand x→ 0 on a
+lim
+N→+∞
+(
+1− λ
+N
+)N
+= lim
+N→+∞
+eN ln(1−λ
+N ) = lim
+N→+∞
+eN(−λ
+N ) =e−λ.
+D’autre part avec l’équivalenceN−k∼N quand N→ +∞ pour toutk fixé :
+lim
+N→+∞
+N!
+Nk(N−k)!
+(
+1− k
+N
+)−k
+= lim
+N→+∞
+N(N− 1)... (N−k + 1)
+Nk
+= lim
+N→+∞
+Nk
+Nk = 1
+donc on retrouve bien l’expression de la loi de Poisson
+lim
+N→+∞
+P(X =k) = λk
+k!e−λ.
+8
+<<<PAGE>>>
+Exercice 5.1
+1. Une entreprise constate en moyenne 3 accidents du travail par an. L’effectif
+total étant relativement élevé on utilise une loi de Poisson pour modéliser
+le nombre d’accidents du travail. Quelle est la probabilité que 5 accidents
+du travail aient lieu sur la même année ?
+2. Dans un parking de centre commercial, il arrive en moyenne 120 voitures
+par heure lors des jours de soldes. Calculer la probabilité de voir 4 voitures
+arriver en 1 minute.
+Remarque 5.3
+Dans le premier exercice ci-dessus il est précisé que l’entreprise a un grand
+nombre d’employés. C’est en effet là que se joue le choix de modélisation. Si
+l’entreprise n’avait que 20 employés et 3 accidents du travail par an, il serait
+raisonnable de modéliser la situation par : chaque employé a une probabilité
+3/20 d’avoir un accident dans l’année. On utiliserait donc une loi Binomiale
+pour répondre à la question. En revanche, quand le nombre d’employés est
+très grand il est plus pertinent d’utiliser une loi de Poisson plutôt qu’une loi
+Binomiale dont le paramètre serait très proche de0. C’est dans ce sens qu’on
+parle "d’événement rare" quand on introduit la loi de Poisson.
+Proposition 5.1
+Soit λ> 0 et X ↪→P (λ). Alors
+• E(X) =λ,
+• V(X) =λ .
+Démonstration :
+• Calcul de l’espérance :
+E(X) =
++∞∑
+k=0
+kλk
+k!e−λ =e−λ
++∞∑
+k=1
+λk
+(k− 1)! =e−λ
++∞∑
+j=0
+λλj
+j! =e−λλeλ =λ.
+• Cette fois encore, pour la variance on commence par calculerE(X 2) en
+écrivantk2 =k(k− 1) +k:
+E(X 2) =
++∞∑
+k=0
+k2λk
+k!e−λ =
++∞∑
+k=2
+k(k− 1)λk
+k!e−λ +
++∞∑
+k=0
+kλk
+k!e−λ
+=e−λλ2
++∞∑
+k=2
+λk−2
+(k− 2)! + E(X) =e−λλ2eλ +λ
+=λ2 +λ.
+On en déduit
+V(X) = E(X 2)− E(X)2 =λ2 +λ−λ2 =λ.
+9

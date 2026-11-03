@@ -1,0 +1,428 @@
+Corrigé Analyse Numérique mai 2024
+1. Exercice 1
+1.  strictement croissante. .f'x= 3x+ 1 > 0  ⟹ f( ) 2 f0 =-1 < 0,f1 = 1 > 0 ( ) ( )
+Donc  possède une racine unique f 𝛼 ∈0, 1 . ] [
+2.  est continue et est à valeurs dans , donc si  converge, ce sera vers un point g 0, 1 ] ]x( n)n
+fixe de  dans .g0, 1 ] ]
+Or .  est donc l'unique point fixe de  dans .g x=x ⟺=x ⟺ f x= 0( ) 1
+1 +x2 ( )𝛼 g0, 1 ] ]
+Conclusion : .  x=𝛼limn
+La construction de cette suite est une application de la méthode du point fixe pour déterminer 
+un zéro de f.
+3. En appliquant l'inégalité des accroissements finis à  entre  et , on obtient : g x n 𝛼
+|g x - g𝛼|⩽C|x -𝛼| (n) ( ) n
+ et , d'où le 1er résultat. Le 2ème s'obtient par récurrence :g x=x(n) n+1 g𝛼=𝛼( )
+• .|x -𝛼|⩽1 =C0
+0
+• Si on suppose pour un  fixé, alors :|x -𝛼|⩽Cn
+n n
+.|x -𝛼|⩽C|x -𝛼|⩽Cn+1n
+n+1
+4.      et              |x -𝛼|⩽C≃0.0133610
+10 |x -𝛼|⩽C≃0.00858 < 0.0111
+11
+On est donc sûr qu'à partir de la 11ème itération,  donne une valeur approchée à moins de xn
+<<<PAGE>>>
+ près.10-2
+5. La formule de récurrence de la méthode de Newton est : 
+z=z -=z -n+1n
+f z
+f'z
+( n)
+( n)
+n
+z+z -1
+3z+ 1
+3
+n n
+2
+n
+.z= 0  ⟹z= 0-= 1 ⟹ z= 1-=0 1
+-1
+1 2
+1 + 1-1
+3 + 1
+3
+4
+6. La méthode de Newton est quadratique signifie que :
+.|z -𝛼|⩽K|z -𝛼|n+1n
+2
+Une récurrence immédiate permet d'en déduire : 
+.|z -𝛼|⩽K|z -𝛼|n
+n
+0
+2n
+La convergence va être beaucoup plus rapide, mais l'effet quadratique dépendra de la 
+position de  et de la valeur de . z0 K
+Toutefois, pour , on a  et  n'est pas trop proche de  ni de , donc n= 10 2 = 102410 𝛼0 1
+ ne sera pas trop proche de . Et par conséquent  sera beaucoup |z -𝛼|0 1 |z -𝛼| 0
+210
+beaucoup plus petit que . 10-2
+On peut donc prévoir que la précision souhaitée sera atteinte beaucoup plus rapidement 
+avec la méthode de Newton à moins que  soit très grand.K
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+2. Exercice 2
+1.  et donc .M=-1 106 0
+0 1 𝜅M=𝜅M=𝜅M= 1 × 10 = 101( ) 2( ) ∞( ) 6 6
+<<<PAGE>>>
+2. On trouve très facilement  et .x=1
+1
+1 x=2
+2
+1
+3. ,   et   .𝛿x=⟹=1
+0
+‖𝛿x‖
+‖x‖1
+1
+2
+=≃10‖𝛿b‖
+‖b‖
+10-6
+1 + 10-12
+-6
+On sait que l'on devrait avoir :   et on vérifie bien que : ⩽ 𝜅M‖𝛿x‖
+‖x‖1
+2( ) ‖𝛿b‖
+‖b‖
+.⩽10 × 10 = 11
+2
+6-6
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+3. Exercice 3
+1. La 2ème sous-matrice principale de , , n'est pas inversible, donc  ne possède A 1 0
+2 0 A
+pas de factorisation LU.
+Il suffit de permuter les lignes 1 et 3, ou bien les lignes 2 et 3 pour obtenir une matrice 
+possédant une factorisation LU.
+On peut donc prendre   ou bien .P=
+0 0 1
+0 1 0
+1 0 0
+P=
+1 0 0
+0 0 1
+0 1 0
+
+<<<PAGE>>>
+2. Prenons la première solution , on a alors :  dont on va P=
+0 0 1
+0 1 0
+1 0 0
+PA=
+3 3 1
+2 0 2
+1 0 1
+faire la factorisation LU.
+On commence par annuler les coefs de la 1ère colonne, en multipliant par L=1
+1 0 0
+-2 / 3 1 0
+-1 / 3 0 1
+. On passe à la 2ème colonne, en multipliant par : L A=1
+3 3 1
+0-2 4 / 3
+0-1 2 / 3
+L=2
+1 0 0
+0 1 0
+0-1 / 2 1
+.L L A= =U2 1
+3 3 1
+0-2 4 / 3
+0 0 0
+Pour déterminer , il faut inverser .L L L= 2 1
+1 0 0
+-2 / 3 1 0
+0-1 / 2 1
+On obtient alors . Et on peut conclure que :  .L=L L= (2 1 )-1
+1 0 0
+2 / 3 1 0
+1 / 3 1 / 2 1
+PA=LU
+3. On voit immédiatement que  et donc . On peut C=C+C1
+2
+32 3 Im A=Vect C,C( ) {2 3 }
+ensuite pour simplifier remplacer  par  et  par , ce qui nou donne :C2 C1
+32 C3 C - C3
+1
+32
+.Im A=Vect, ( )
+0
+0
+1
+1
+2
+0
+, donc le système  n'a pas de solution.b∉Im A( )Ax=b
+4. On peut déjà écrire : , et  est le projeté orthogonal de  sur b' =x+y=
+0
+0
+1
+1
+2
+0
+y
+2y
+x
+b' b
+. Donc  est orthogonal à  et donc aux deux vecteurs qui l'engendrent.Im A( )b'- b Im A( )
+<<<PAGE>>>
+ et l'orthogonalité donne : .b'- b=
+y -2
+2y
+x -1
+⟺x -1 = 0
+y -2 + 2 2y= 0 ( ) ( )
+x= 1
+y= 2 / 5
+Donc .b' =
+2 / 5
+4 / 5
+1
+5. .Ax=b' ⟺ PAx=Pb' ⟺ LUx=Pb'
+On va donc d'abord résoudre :  et ensuite .Ly=Pb'Ux=y
+ donne comme solution .Ly=Pb' =
+1
+4 / 5
+2 / 5
+y=
+1
+2 / 15
+0
+ donne comme solution :  avec  quelconque.Ux=y x=
+-z+ 2 / 5
+2 / 3z -1 / 15 ( )
+z
+z
+En particulier, si on prend , on obtient la solution z= 0x=
+2 / 5
+-1 / 15
+0
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+4. Exercice 4
+1.  a pour polynôme caractéristque  et donc comme valeurs A A=T 5 2
+2 8 x -13x+ 362
+propres    et . Les valeurs singulières de  sont donc  et .𝜆= 91 𝜆= 42 A𝜎= 3 1 𝜎= 22
+La recherche de vecteurs propres de  donne .A AT ⟺ y= 2x5x+ 2y= 9x
+2x+ 8y= 9y
+On peut donc prendre  pour .v=1
+1
+5
+1
+2 𝜆= 91
+. On peut donc prendre  pour .⟺ x=-2y5x+ 2y= 4x
+2x+ 8y= 4y v=2
+1
+5
+-2
+1 𝜆= 42
+<<<PAGE>>>
+La matrice  est donc connue : .V V= 1
+5
+1-2
+2 1
+Pour déterminer , on va d'abord calculer  et  à partir de  et . On obtient :U u 1 u2 v1 v2
+u=Av=1
+1
+𝜎1
+1
+1
+35
+5
+2
+4
+u=Av=2
+1
+𝜎2
+2
+1
+5
+0
+-2
+1
+On doit ensuite compléter par un vecteur unitaire du noyau de  ou bien, ce qui revient AAT
+au même, un vecteur orthogonal à  et . On obtient par exemple : .u1 u2 u=3
+1
+3
+-2
+1
+2
+La matrice  est donc donnée par : .U U= 1
+35
+5 0-2 5
+2-6 5
+4 3 2 5
+La dernière matrice est finalement :  .𝛴=
+3 0
+0 2
+0 0
+2. On sait que   et que   avec .A=U𝛴V T A=V𝛴U† †T 𝛴=† 1 / 3 0 0
+0 1 / 2 0
+Le calcul donne bien :  .A=V𝛴U=† †T 1
+9
+1 4-1
+2-1 5 / 2
+3. Le système  a pour solution : Ax=b
+.x=A b= =† 1
+9
+1 4-1
+2-1 5 / 2
+3
+2
+2
+1
+1
+
+<<<PAGE>>>
+4. On cherche  solution de .𝛼,𝛽 ⟺A=
+𝛼+ 2𝛽= 1
+2𝛼+ 0.𝛽= 1
+0.𝛼+ 2𝛽= 1
+𝛼
+𝛽
+1
+1
+1
+La solution est donc : 
+=A= =𝛼
+𝛽
+†
+1
+1
+1
+1
+9
+1 4-1
+2-1 5 / 2
+1
+1
+1
+1
+9
+4
+7 / 2
+.
+𝛼= 4
+9
+𝛽= 7
+18
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+5. Exercice 5
+1. En notant  la partie diagonale de , on peut écrire la formule de récurrence de Jacobi D A
+sous la forme : 
+x=D D - A x+b=D D - A x+D bn+1
+-1(( ) n ) -1( ) n
+-1
+x=Bx+Cn+1n
+avec B=D D - A= =-1( ) 1
+4
+1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1
+0-2 0 0
+2 0 2 0
+0 0 0 2
+0 0-2 0
+1
+2
+0-1 0 0
+1 0 1 0
+0 0 0 1
+0 0-1 0
+ et .C= =1
+4
+1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1
+1
+2
+3
+4
+1
+4
+1
+2
+3
+4
+2. La matrice  n'étant pas symétrique, il faut calculer le rayon spectral de , en A B
+<<<PAGE>>>
+commençant par calculer son polynôme caractéristique.
+𝜒x= =x+ =x+B( )
+-x - 1
+20 0
+1
+2-x 1
+20
+0 0-x 1
+2
+0 0- 1
+2-x
+2
+-x 1
+2
+-1
+2-x
+1
+4
+-x 1
+2
+-1
+2-x
+2 1
+4
+2
+Donc . Et son rayon spectral est donc .Spec B=-, ( ) i
+2
+i
+2 𝜌B= < 1 ( )1
+2
+La métode de Jacobi est donc convergente.
+3.  On sait que : . On en déduit :x=Bx+Cn+1n
+x= + =1
+1
+2
+0-1 0 0
+1 0 1 0
+0 0 0 1
+0 0-1 0
+0
+1
+1
+0
+1
+4
+1
+2
+3
+4
+1
+4
+-1
+4
+3
+2
+x= + =2
+1
+8
+0-1 0 0
+1 0 1 0
+0 0 0 1
+0 0-1 0
+-1
+4
+3
+2
+1
+4
+1
+2
+3
+4
+1
+8
+-2
+6
+8
+5

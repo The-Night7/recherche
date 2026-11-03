@@ -1,0 +1,129 @@
+Qu'est-ce qu'un problème ?
+
+Qu'appelle-t-on résoudre un problème ?
+
+Premier exemple : le problème des 3 pièces
+
+Un état e = C1C2C3 avec Ci=P,F
+e0 = PPF
+F = {PPP, FFF}
+T = {action = retourner une pièce}
+L'ensemble des états+actions est résumé par un cube.
+
+Généralisation au cas de n pièces :
+
+2^n états (C1...Cn avec Ci=P,F)
+à partir de chaque état : n actions (action=retourner une pièce)
+L'ensemble des états+actions est résumé par un hypercube.
+
+Comment résoudre un problème ?
+
+Autrement dit : comment trouver une suite d'actions e0 ---> ef in F
+
+On peut procéder comme suit :
+partir de l'état initial
+Tant que l'état courant n'est pas un état final
+  générer un nouvel état par une action à partir de l'état courant
+  
+----> Stratégie de recherche pour conduire la construction d'une solution.
+
+Arbre de rechecrche (exemple simple)
+
+Racine : PPF
+Niveau 1 : FPF, PFF, PPP
+
+==========================================
+Exemple de problème : Le loup, la chèvre et le chou
+
+Description : Nous avons une barque qui a deux places. Un berger doit utiliser
+   cette barque pour faire traverser un loup, une chèvre et un chou.
+   Contraintes : ne jamais laisser le loup et la chèvre seuls,
+                 ne jamais laisser la chèvre et le chou seuls
+
+Définition des états :
+  Ce qui définit les états : où se trouve chacun des 4 acteurs (Berger+barque,
+       loup, chèvre, chou)
+  Chacun des acteurs se trouve à gauche du fleuve (rive de départ), 
+        ou à droite (arrivée).	  
+
+Liste des états ('a priori', sans prendre en compte les contraintes)
+  GGGG, GDGG, GGDG, GDDG, GGGD, GDGD, GGDD, GDDD
+  DGGG, DDGG, DGDG, DDDG, DGGD, DDGD, DGDD, DDDD
+  
+Prenons en compte les contraintes
+
+Un état e est valide s'il vérifie les condition suivante :
+
+e = X1X2X3X4 avec Xi = G,D (X1: position du berger, X2:loup, X3:chèvre,
+                                    X4: chou)
+e est valide ssi:
+  le loup et la chèvre ne peuvent être du même coté sans le berger.
+    invalide : X2=X3<>X1
+  la chèvre et le chou ne peuvent être du même coté sans le berger.
+    invalide : X3=X4<>X1
+	
+D'où :
+
+  GGGG V, GDGG V, GGDG V, GDDG NV, GGGD V, GDGD V, GGDD NV, GDDD NV
+  DGGG NV, DDGG NV, DGDG V, DDDG V, DGGD NV, DDGD V, DGDD V, DDDD V
+
+Liste des états :
+  GGGG, GDGG, GGDG, GGGD, GDGD, DGDG, DDDG, DDGD, DGDD, DDDD
+  
+Etat initial : e0 = GGGG, état final ef = DDDD
+  
+Actions :
+  X1X2X3X4 ----> Y1Y2Y3Y4
+  
+  Y1 <> X1
+  et il existe au plus un indice i = 2,3,4 tque Yi <> Xi
+  
+Construction de l'abre de recherche :
+  Racine e0 = GGGG
+  Niveau 1 (successeurs de e0) : DGDG
+  Niveau 2 : GGGG, GGDG
+  Niveau 3 : DGDG, DGDG, DDDG, DGDD
+  ... jusqu'à atteindre l'état final DDDD.
+  
+Remarquons au passage que cette façon de construire l'arbre de recherche 
+(càd de préparer la résolution d pb) conduit à des boucles (e.g. GGGG --> DGDG
+    --> GGGG ...)
+	
+==========================
+Recherche aveugle ----> Inefficace (complexité élevée)
+
+-----> Recherche guidée : associer à chaque état e une valeur h(e)qui     
+                      caractérise sa qualité.
+		Qualité d'un état <---> proximité d'un état final.
+		
+Propriétés d'une heuristique:
+p2 : Si h monotone et coincidente alors h minorante (admissible) 
+
+démonstration :
+
+h monotone : h(e1)-h(e2) <= k(e1,e2) e2 successeur de e1
+h coincidente h(ef) = 0 pour tout état final
+
+Démontrons que h est minorante
+
+Considérons un chemin qui va d'un état e à un état final ef
+
+e0=e --> e1 -> e2 -> ... -> en=ef
+
+h(e) = h(e) - h(ef)   (h coincidente)
+     = h(e)-h(e1) + h(e1)-h(e2) + h(e2)-h(e3) + .... + h(en-1)-h(ef)
+	 <= k(e,e1) + k(e1,e2) + k(e2,e3) .... + k(en-1,ef)  (h monotone)
+	 
+Cette inégalité est vraie pour toute séquence d'actions e ---> ef. En particulier,
+  elle est vraie pour les meilleures séquences, dont le coût est h*(e).
+  
+Nous avons donc
+
+h(e) <= h*(e)
+
+càd  h est minorante. CQFD
+  
+
+
+  
+

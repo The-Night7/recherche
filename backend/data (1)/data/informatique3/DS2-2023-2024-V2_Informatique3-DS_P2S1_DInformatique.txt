@@ -1,0 +1,88 @@
+Pré-ING2
+Semestre 1 - 2023/2024
+DS n ° 2 Informa tique III
+(doubles-diplômes)
+Calculatrice et documents non autorisés
+Lorsqu’aucune consigne n’est précisée, les réponses peuvent être données en langage C ou en pseudo-code.
+Vous pouvez définir autant de fonctions que vous le souhaitez dans chaque exercice. Il n’y a pas nécessairement l’équiva-
+lence : une question = une fonction.
+Exercice 1 (Conversion ABR -> LISTE )
+Dans cet exercice on souhaite coder une fonction qui va transformer un arbre de type ABR en liste chainée. La liste
+chainée qui sera créée devra être triée dans l’ordrecroissant.
+1. Déclarer la structure ABR qui va contenir un entier comme valeur, et 2 pointeurs vers d’autres structures ABR.
+2. Déclarer la structure Chainon d’une liste, qui va contenir un entier comme valeur et un pointeur vers le prochain
+chainon de la liste.
+3. — Ecrire une fonction conversion(...) qui prend en paramètre simplement l’ABR que l’on souhaite parcourir (et
+rien d’autre !), et qui va retourner la liste chainée remplie.
+— Cette fonction devra s’exécuter avec une complexité temporelle linéaire!
+— Si la fonctionconversion rencontre un problème, elle stoppera le programme.
+Exercice 2 (Transformation inhabituelle)
+Dans cet exercice on souhaite coder une fonction qui va modifier le contenu d’un ABR. Après transformation, chaque
+noeud contiendra comme valeur la somme de tous les noeuds dont les valeurs sont strictement inférieures à la sienne (on part
+du principe qu’il n’y a pas de doublons).
+Ci-dessous, un exemple d’un ABRavantet après transformation :
+— En utilisant la structure ABR déclarée dans l’exercice précédente, écrire une fonctiontransformation(...) qui prend
+en entrée un ABR (et rien d’autre ! ) et qui va le modifier comme indiqué dans l’énoncé. La fonction retournera
+l’arbre modifié.
+— (BONUS) La complexité temporelle de cette fonction doit être linéaire!
+— Si la fonctiontransformation rencontre un problème, on stoppera le programme.
+Exercice 3 (Intersection de deux ABR )
+Dans cet exercice, nous souhaitons créer un ABR à partir de 2 autres ABR deja existants. Le contenu du troisième arbre
+sera l’intersection des 2 premiers, c’est à dire les valeurs qui se trouvent à la fois dans le premier arbre et le deuxième.
+— A l’aide de la structure ABR déclarée dans le premier exercice, Ecrire la fonctionintersection(...) qui prendra
+2 ABR en paramètre et qui retournera le troisième arbre. Ce troisième arbre contiendra alors toutes les valeurs
+communes aux 2 premiers.
+— Si la fonctionintersection rencontre un problème, le programme doit s’arrêter.
+1
+<<<PAGE>>>
+Exercice 4 (Arbre Modulobinaire)
+L’objectif de cet exercice est de mettre en œuvre un arbre binaire particulier, respectant des règles de placement spéci-
+fiques. Chaque noeud de l’arbre doit contenir une valeur entière.
+Règles de placement :
+— Si l’arbre est vide, le premier noeud devient la racine.
+— Si la racine n’a pas d’enfant, placez un nouveau noeud à gauche si sa valeur est un multiple de 2, sinon à droite.
+— À chaque changement de profondeur, incrémentez le diviseur. Pour la valeur à ajouter, à cette profondeur, placez-la
+à gauche si c’est une valeur multiple du diviseur, sinon à droite.
+[ETAPE 1] ajout de 5 [ETAPE 2] ajout de 6
+l'arbre est vide, on créé la racine divisible par 2, donc on créé le fils gauche.
+[5] [5]
+/ \ / \
+[6]
+/ \
+[ETAPE 3] ajout de 8 [ETAPE 4] ajout de 12
+divisible par 2, on parcourt le fils gauche, divisible par 2, on parcourt le fils gauche
+puis non divisible par 3, on créé le fils puis divisible par 3 : on créé le fils gauche
+droit
+[5] [5]
+/ \ / \
+[6] [6]
+/ \ / \
+[8] [12] [8]
+/ \ / \ / \
+[ETAPE 5] ajout de 7 [ETAPE 6] ajout de 9
+non divisible par 2 : non divisible par 2, on parcourt le fils droit
+on créé le fils droit divisible par 3, on créé le fils gauche
+__[5]__ ____[5]____
+/ \ / \
+[6] [7] [6] [7]
+/ \ / \ / \ / \
+[12] [8] [12] [8] [9]
+/ \ / \ / \ / \ / \
+[ETAPE 7] ajout de 25 [ETAPE 8] ajout de 16
+non divisible par 2, on parcourt le fils droit divisible par 2, on parcourt le fils gauche
+non divisible par 3, on créé le fils droit non divisible par 3, on parcourt le fils droit
+divisible par 4, on créé le fils gauche
+__[5]__ __[5]__
+/ \ / \
+[6] [7] [6] [7]
+/ \ / \ / \ / \
+[12] [8] [9] [25] [12] [8] [9] [25]
+/ \
+[16]
+1. Ecrire la fonctionCreationArbre(valeur) qui crée un noeud d’un arbre contenant une valeur passée en paramètre et
+renvoie son adresse.
+2. Ecrire la fonctionAjoutNoeud(arbre, valeur) qui prend en paramètre l’adresse d’un noeud de l’arbre, ainsi qu’une
+valeur entière à ajouter dans cet arbre. Elle va ajouter un noeud dans l’arbre contenant cet entier en respectant les
+règles de placement de l’arbre Modulobinaire
+3. Où se trouvera un noeud contenant un nombre premier dans un tel arbre?
+2

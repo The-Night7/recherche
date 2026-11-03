@@ -1,0 +1,286 @@
+CY-Tech - Département Mathématiques
+1ère année Ingénieurs - Génie Mathématique
+Mesure & intégration
+TD4 – Intégration de fonctions mesurables
+Une fonction f de Ω dans R est dite µ-intégrable si f est (T ,B(R))-mesurable et
+Z
+f +d µ < +∞ et
+Z
+f −d µ < +∞.
+Fonction réelle intégrable – Rappel 1.
+EXERCICE 1 Soient
+¡
+Ω, T , µ
+¢
+et
+¡
+R+, B(R+), λ
+¢
+deux espaces mesurés où µ est une mesure finie sur Ω et
+λ la mesure de Lebesgue sur R+. On considère l’application mesurable
+f :
+¡
+Ω, T , µ
+¢
+→
+¡
+R+, B(R+), λ
+¢
+.
+On suppose que
+Z
+Ω
+f 2d µ < +∞.
+Soient A1 =
+'
+x ∈ Ω, 0 ≤ f (x) ≤ 1
+“
+et A2 =
+'
+x ∈ Ω, f (x) > 1
+“
+.
+1. Montrer que A1 et A2 sont deux ensembles mesurables, A1 ∈ T et A2 ∈ T .
+2. Montrer que
+Z
+A1
+f d µ < +∞.
+3. Montrer que
+Z
+A2
+f d µ < +∞.
+4. Que peut-on déduire sur l’intégrabilité de f sur Ω? Justifier.
+Soient (fn)n∈N une suite de fonctions de L (Ω, T ) et g ∈ L 1(Ω, T , µ). On suppose que
+• ( fn)n∈N converge vers f µ-p.p
+• Pour tout n ∈ N,
+ﬂﬂfn
+ﬂﬂ≤ g .
+Alors 
+
+
+f ∈ L 1(Ω, T , µ)
+limn→+∞
+Z
+fnd µ =
+Z
+f d µ
+Théorème de la convergence dominée – Rappel 2.
+<<<PAGE>>>
+Mesure et intégration
+EXERCICE 2 Soit
+¡
+fn
+¢
+n∈N une suite de fonctions définie, pour tout entier n, par
+∀x ∈ R, fn(x) = xn
+1 + xn+2 1R+ (x).
+1. Déterminer la limite simple de la suite
+¡
+fn
+¢
+n∈N.
+2. Pour tout entier n, on considère l’intégrale In =
+Z
+R
+fn(x)d x. Calculer la limite limn→+∞ In.
+EXERCICE 3 Soit
+¡
+fn
+¢
+n∈N∗ une suite de fonctions définie, pour n ∈ N∗ par
+∀x ∈ R, fn(x) = sin
+‡x
+n
+· n
+x
+¡
+1 + x2¢ 1R∗(x).
+1. Montrer que ∀n ∈ N, fn est mesurable.
+2. Calculer limn→+∞ fn.
+3. Calculer, en justifiant, limn→+∞
+Z
+R
+fn(x)d λ(x).
+EXERCICE 4 (Mesure définie par une densité) Soient
+¡
+Ω, T , µ
+¢
+un espace mesuré et f une fonction pos-
+itive et (Ω, T )-mesurable. On considère la fonction d’ensembles ν définie par
+∀A ∈ T , ν(A) =
+Z
+A
+f d µ =
+Z
+Ω
+1A f d µ.
+1. Montrer que ν définit une mesure sur (Ω, T ). La fonction f s’appelle la densité de ν par rapport à µ.
+2. Soit g : (Ω, T ) →
+‡
+R, B (R)
+·
+une fonction mesurable et positive.
+(a) Montrer que
+Z
+Ω
+g dν =
+Z
+Ω
+f g dµ.
+(b) En déduire que g est ν-intégrable si et seulement si g f est µ-intégrable.
+3. Soit g : (Ω, T ) →
+‡
+R, B (R)
+·
+une fonction mesurable de signe quelconque.
+(a) g est ν-intégrable si et seulement si g f est µ-intégrable.
+(b) Montrer que
+Z
+Ω
+g dν =
+Z
+Ω
+f g dµ.
+EXERCICE 5 Montrer que toute mesure sur R de densité f vérifiant
+Z +∞
+−∞
+f (x)d x = 1 est une mesure de
+probabilité.
+EXERCICE 6 Soient
+¡
+Ω, T , µ
+¢
+un espace mesuré,
+‡
+Ω
+′
+, A
+·
+un espace mesurable, et T : (Ω, T ) →
+‡
+Ω
+′
+, A
+·
+une application mesurable. On considère la fonction d’ensembles µT définie par :
+∀B ∈ A , µT(B) = µ
+¡
+T−1 (B)
+¢
+= µ ◦ T−1 (B).
+1. Montrer que µT définit une mesure sur
+‡
+Ω
+′
+, A
+·
+. µT s’appelle mesure image de µ par T.
+ING1 GM – TD4 2/3
+<<<PAGE>>>
+Mesure et intégration
+2. Soit g :
+‡
+Ω
+′
+, A
+·
+→
+¡
+R, B (R)
+¢
+une fonction mesurable. Montrer que g est µT−intégrable si et seule-
+ment si l’application mesurable g ◦ T est µ−intégrable et que
+Z
+Ω′
+g dµT =
+Z
+Ω
+g ◦ Td µ.
+Soit p ∈ [1, +∞[. On dit que f est est de puissance pième-intégrable, et on note f ∈ L p ¡
+Ω, T , µ
+¢
+, si f
+est mesurable et | f |p est µ-intégrable.
+f ∈ L p ¡
+Ω, T , µ
+¢
+⇐ ⇒f ∈ L (Ω, T ) et
+Z
+Ω
+ﬂﬂf
+ﬂﬂp d µ < +∞.
+Si f ∈ L p ¡
+Ω, T , µ
+¢
+, Np( f ) =
+µZ
+Ω
+ﬂﬂf
+ﬂﬂp d µ
+¶ 1
+p
+.
+Espace L p – Rappel 4.
+EXERCICE 7 Soit f une fonction réelle strictement positive. On suppose que f ∈ L 1 ¡
+Ω, T , µ
+¢
+et 1
+f ∈
+L 1 ¡
+Ω, T , µ
+¢
+. Montrer que Ω est fini.
+EXERCICE 8 Soit
+¡
+Ω, T , µ
+¢
+un espace mesuré. On considère trois réels non nuls et positifs p, q et r tels
+que
+1
+p + 1
+q = 1
+r .
+On suppose que f ∈ L p ¡
+Ω, T , µ
+¢
+et que g ∈ L q ¡
+Ω, T , µ
+¢
+.
+1. Montrer que Nr
+¡
+f g
+¢
+≤ Np
+¡
+f
+¢
+Nq
+¡
+g
+¢
+.
+2. Montrer que la fonction f g est r −intégrable.
+Une fonction f de L (Ω, T ) est dite essentiellement bornée s’il existe r ≥ 0 tel que | f | ≤ r µ-p.p.
+On note L ∞ ¡
+Ω, T , µ
+¢
+l’ensemble des fonctions essentiellement bornées de L (Ω, T ).
+L ∞ ¡
+Ω, T , µ
+¢
+=
+'
+f ∈ L (Ω, T ), ∃r ≥ 0 tel que | f | ≤ r µ − p.p.
+“
+et N∞( f ) = inf
+'
+r ≥ 0 / | f | ≤ r µ-p.p
+“
+.
+Fonction essentiellement bornée – Rappel 5.
+EXERCICE 9
+1. Soit f ∈ L 1 et g ∈ L ∞. Montrer que f g est µ-intégrable et que
+N1( f × g ) ≤ N1( f ) × N∞(g ).
+2. Supposons que µ(Ω) < +∞ et 1 ≤ p1 ≤ p2 ≤ +∞. Montrer que L ∞ ⊂ L p2 ⊂ L p1 ⊂ L 1.
+ING1 GM – TD4 3/3

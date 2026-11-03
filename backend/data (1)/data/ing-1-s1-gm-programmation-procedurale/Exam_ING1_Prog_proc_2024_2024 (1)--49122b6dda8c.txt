@@ -1,0 +1,65 @@
+ING1
+Semestre 1 - 2024/2025
+Session #1 - Programma tion procédurale
+Durée : 2h
+Calculatrice et documents non autorisés
+Exercice 1 (Makefile & Co.)[3.0 pts.]
+1. Quelles sont les principales parties d’une règle dans un Makefile?
+2. Quelle est la règle par défaut dans un Makefile lorsqu’aucune cible n’est spécifiée?
+3. Pourquoi est-il important d’utiliser des fichiers objets (.o) plutôt que de compiler directement un exécutable depuis les
+fichiers sources?
+4. Quelles sont les principales variables pré-définies dans make, et que contiennent-elles comme valeurs?
+5. Comment make décide-t-il si une cible doit être reconstruite?
+6. Que fait la directive .PHONY? Pourquoi est-il recommandé de l’utiliser pour certaines cibles?
+Exercice 2 (Fonction ’split’)[17.5 pts.]
+Les réponses sont obligatoirement en Langage C.
+Le code doit être robuste pour ne pas se terminer de manière intempestive.
+Il est conseillé de lire l’ensemble de l’énoncé avant de démarrer la composition.
+En langage Python il existe une fonction qui permet de séparer des sous-chaines de caractères à partir d’une chaîne
+de caractères principale : c’est la fonction ’split(...)’. Elle permet de ’couper’ une chaîne de caractères en détectant
+un caractère de séparation bien spécifique, et la sortie devient un tableau contenant les sous-chaînes de caractères. Dans
+l’exemple qui suit, le caractère de séparation utilisé est le ’point-virgule’.
+chaîne d 'entrée = "123;4;abcdefg;;wxyz"
+tableau de sortie = ["123", "4", "abcdefg", "", "wxyz"]
+On peut voir que dans le tableau, la 4ème case contient une chaine vide car il y avait 2 caractères point-virgule qui se sui-
+vaient dans la chaîne d’entrée. Ce tableau contient 5 chaînes de caractères distinctes (il y avait 4 occurences du point-virgule
+dans la chaîne d’entrée).
+Le but global de cet exercice est de coder enLangage C un programme qui permet de prendre une chaîne de caractères en
+entrée et de créer un tableau de sous-chaînes en sortie, comme le ferait la fonction split(...) si facile d’utilisation en Python.
+Pour cela, il est prévu différentes étapes :
+1. [2.8 pts.] Ecrire une procédurecopy(...) qui va prendre en entrée une chaîne de caractères source, une autre chaîne
+de caractères de destination, et le nombre de caractères maximal que l’on souhaite copier de l’une à l’autre.
+Cette fonction va copier les caractères source vers la destination. Le nombre de caractères copiés sera la plus petite
+valeur entre le nombre de caractères utiles de la chaîne source et le nombre maximal de caractères passé en paramètre.
+En d’autres termes, cette fonction copie les caractères source vers destination jusqu’à rencontrer une fin de chaîne, ou
+jusqu’à avoir copié le nombre maximal demandé de caractères, le premier critère rencontré terminant le traitement.
+On part du principe que la zone source et la zone de destination ont déjà été allouées en mémoire en dehors de cette
+fonction.
+1
+<<<PAGE>>>
+2. [2.8 pts.] Ecrire une fonctionnbOccurs(...) qui prend en entrée une chaîne de caractères, et un caractère à rechercher
+dans la chaîne.
+La fonction va retourner le nombre de fois où le caractère spécifique apparait dans la chaîne.
+3. [2.45 pts.] Ecrire une fonctiongetFirstSubStringLen(...) qui va prendre en entrée une chaîne de caractères, et un
+caractère à rechercher dans cette chaîne.
+La fonction va rechercher l’emplacement de la première occurence du caractère spécifique, et va retourner le nombre
+de caractères qui se situentavant la position de ce caractère spécifique.
+4. [5.95 pts.] Ecrire une fonctionsplitString(...) qui doit être la réplique fonctionnelle de la fonction Python.
+Cette fonction prend en paramètres une chaîne de caractères, et un caractère spécifique de séparation. Cette fonction
+doit retourner un tableau de chaînes de caractères ainsi que sa taille.
+L’ensemble des zones mémoires nécessaires à la construction du tableau doivent être allouées dynamiquement.
+Après l’appel de cette fonction, si la chaîne de caractères d’entrée est modifiée et/ou supprimée, le tableau de sous-
+chaînes de caractères ne doit pas être impacté.
+Les fonctions précédemment écrites, devraient vous aider à écrire cette fonction. Si vous n’avez pas su répondre aux
+questions précédentes, vous pouvez tout de même écrire le prototype de ces fonctions et les utiliser comme si vous les
+aviez déjà codées.
+5. [3.5 pts.] Ecrire un programme principal qui va permettre de tester l’ensemble du code précédent.
+Ce programme va :
+— demander à l’utilisateur d’entrer une chaîne de caractères sans espace,
+— passer la chaîne de caractères à la fonctionsplitString(...) en utilisant le caractère ’;’ comme séparateur,
+— récupérer le tableau de sous-chaînes de caractères créé, ainsi que sa taille
+— en partant de l’hypothèse que la chaîne de caractères en entrée vaut :"123;4;abcdefg;;wxyz", afficher le contenu
+du tableau en respectant le format suivant :
+['123', '4', 'abcdefg', '', 'wxyz']
+6. on ne demandepas de libérer la mémoire pour cet exercice
+2

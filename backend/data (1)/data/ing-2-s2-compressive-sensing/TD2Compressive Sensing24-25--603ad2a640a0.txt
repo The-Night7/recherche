@@ -1,0 +1,114 @@
+CY-TECH - Département Mathématiques
+2ème  année Ingénieurs - Mathématiques & Informatique
+2024-2025
+_______________________________________________________________________________
+TD 2 - Codage parcimonieux
+______________________________________________________________________________
+1. Exercice 1 
+Poursuite adatative (Matching Pursuit)
+Pour un dictionnaire déjà connu , on cherche pour un vecteur  une représentation D x
+parcimonieuse .𝛼
+On va donc résoudre le problème suivant :
+‖𝛼‖D𝛼=xmin
+𝛼 0 sous la contrainte 
+On notera  la -ème colonne de dj j D.
+Les algorithmes de poursuite  résolvent séquentiellement le problème (1).ℓ0
+Le Matching Pursuit (MP) est un algorithme itératif qui recherche des approximations du 
+signal  par optimisation unidimensionnelle :x∈R N
+x= +x
+(p)
+⏠⏣⏣⏡⏣⏣⏢Approximation de x après p itérations
+R(p)
+⏠⏣⏣⏡⏣⏣⏢Résidu après p itérations
+x= +𝛼d+𝛼d+…+𝛼dm1 m1 m2 m2 mp mp
+⏠⏣⏣⏣⏣⏣⏣⏣⏡⏣⏣⏣⏣⏣⏣⏣⏢Approximation de x après p itérations
+R(p)
+⏠⏣⏣⏡⏣⏣⏢Résidu après n itérations
+L'algorithme repose sur la sélection, à chaque étape, d'un atome dont la contribution au 
+résidu est la plus grande par optimisation unidimensionnelle. 
+Analysons la 1ère étape : 
+À l'étape initiale ( ), on considère  .p= 0R=x (0)
+1) Montrer que pour , le projeté orthogonal de  sur  est donné par : ,∈R(uv) k u v
+Proj=v(u) < , >
+‖ ‖
+uv
+v2 v
+2) Quelle est la norme de ce projeté ?
+3) Expliquer pourquoi l'indice de l'atome dont la contribution au résidu  est la plus R(0)
+grande est donné par :
+m=1 arg max
+j
+|<d,R>|
+‖d‖
+j
+(0)
+j
+4) En déduire  et l'expression de  à l'issue de cette première itération.R 1 ( ) x
+(1)
+<<<PAGE>>>
+Deuxième étape du Matching Pursuit (MP) :
+On cherche une composante plus significative telle que :
+R=zd+R(1)
+m2 m2
+(2)
+5) Réitérer les mêmes opérations que l'exercice 1 pour déterminer  et .zm2 dm2
+6) En déduire une approximation de  à l'issue des deux premières étapes.x
+7) Généraliser le processus pour une itération .p⩾1
+2. Exercice 2 (Algorithme M.P.)
+1) Décrire l'algorithme de la méthode du Matching Pursuit.
+2) Implémenter cet algorithme sur Python. (En sortie, afficher le nombre d'itérations, 
+l'approximation parcimonieuse, le résidu final et les positions des atomes ayant 
+contribué au résidu à chaque itération).
+3) Appliquer votre code pour obtenir la représentation parcimonieuse de chacun des 3 
+signaux et par rapport aux 3 dictionnaires fournis dans le fichier "dicos-signauxMP .txt".
+3. Exercice 3 (Algorithme de l'Orthogonal Matching Pursuit O.M.P)
+L'algorithme Orthogonal Matching Pursuit est basé sur le même principe que l'algorithme MP,
+cependant avec le Matching Pursuit, un atome peut être sélectionné plusieurs fois, ce qui 
+peut ralentir la convergence de l'algorithme vers une solution. L'OMP recalcule à chaque 
+itération l'ensemble des coefficients calculés aux itérations précédentes, correspondant aux 
+atomes déjà choisis, de telle sorte que le résidu calculé soit orthogonal à la fois à l'atome 
+juste sélectionné mais également à tous les atomes précédemment calculés.
+Ceci est obtenu en projetant le signal  sur le sous-espace vectoriel engendré par tous les x
+atomes sélectionnés jusque là.
+La 1ère étape (itération) de OMP est identique à celle de MP, elle donne une écritue :
+<<<PAGE>>>
+x=zd+R(1)
+m1 m1
+1 ( )
+Deuxième étape de l'Orthogonal Matching Pursuit
+On cherche une approximation de  telle que x
+x=zd+zd+R.(2)
+1 m1
+(2)
+2 m2
+(2)
+1) Montrer qu'en sélectionnant l'atome  tel que : dm2
+m= ,2 arg max
+j
+d R
+‖d‖
+T
+j
+(1)
+j
+l'atome déjà sélectionné  ne peut pas être resélectionné.    dm1
+Dans l'algorithme OMP, afin de garantir que le résidu  soit orthogonal aux atomes R 2 ( )
+précédemment sélectionnés  et , on va projeter orthogonalement  sur dm1 dm2 x
+.Vect d,d(m1 m2 )
+2) Expliquer comment sont obtenus les contributions  et . On pourra écrire la z 2
+m
+( )
+1 z 2
+m
+( )
+1
+recherche du projeté comme un problème des moindres carrés et utiliser les 
+méthodes vues en Optimisation déterministe ou en Analyse numérique. 
+3) Mettre à jour le résidu à l'issue de cette deuxième étape.
+4) Généraliser le processus pour une itération .p⩾1
+5) Décrire l'algorithme de la méthode de l'Orthogonal Matching Pursuit.
+6) Implémenter cet algorithme sur Python. (En sortie, afficher le nombre d'itérations, 
+l'approximation parcimonieuse, le résidu final et les positions des atomes ayant 
+contribué au résidu à chaque itération).
+7) Appliquer votre code pour obtenir la représentation parcimonieuse de chacun des 3 
+signaux et par rapport aux 3 dictionnaires fournis dans le fichier "dicos-signauxMP.txt".

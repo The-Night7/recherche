@@ -1,0 +1,44 @@
+# ***Exercice 5
+#Choisir le nombre de groupes de validation
+n=nrow(dataS) 
+l=3
+#D�terminer la taille de chaque groupe
+Taille=n%/%l
+#on fera un d�coupe al�atoire et on souhaite garder le m�me d�coupage
+set.seed(3) # pour garder le m�me d�coupage
+c=runif(n) # g�n�rer une colonne de valeurs al�atoires entre 1 et n
+rang=rank(c) #associer � chaque individu un num�ro de rang dans c.
+groupeF=(rang-1)%/%Taille +1
+groupeF=as.factor(groupeF) # transformer le groupe en facteur
+print(summary(groupeF))  # imprimer les r�sultats pour v�rifier si un seul individu est affect� � un groupe 
+# *******
+lambda_to_try=seq(0.0001, 1, 0.01)
+m=length(lambda_to_try) 
+# matrice � m lignes et 2 colonnes, la 1�re  colonne pour lambda � tester et la 2nde pour les valeurs de l'erreur moyenne LOO
+MFOLD=matrix(lambda_to_try,m,2) 
+# matrice � n lignes et 2 colonnes, la 1�re  colonne pour les num�ros d' individus, la 2nde colonne pour les erreurs de pr�vision en  enlevant l'i�me  observation.
+Err_prevF=matrix(1:l,l,2) 
+# initialiser le vecteur des erreurs avec un vecteur nul de taille �gale � n
+erreurF=rep(0,l)
+for (j in 1:m){
+  for (i in 1:l){
+    # mold�le lin�aire ridge sans le groupe i  
+    rid=..... 
+    # pr�vision de la i�me observation � l'aide du mod�le obtenu 
+    pred=..... 
+    # erreur de pr�vision 
+    erreurF[i]= .....
+    Err_prevF[i,2]=erreurF[i]
+  }
+  MFOLD[j,2]=mean(Err_prevF[,2])
+}
+#print(MFOLD)
+plot(MFOLD,type="l",col=2,xlab="Valeurs de lambda � tester",ylab="Moyenne Erreur de validation crois�e 3-FOLD",sub="Evolution de l'erreur moyenne de la validation crois�e selon les valeurs de lambda ",col.sub="blue")
+Lambda_optF=MFOLD[which.min(MFOLD[,2]),1]
+Lambda_optF
+ridop=lmridge(CO~.,dataS,K=Lambda_optF) 
+
+
+predtest3=predict(.....)
+predtestt3=....
+print(predtestt3)

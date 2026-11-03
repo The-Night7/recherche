@@ -1,0 +1,534 @@
+Système d’Exploitation
+Cycle de vie des processus
+Ordonnanceur
+Juan Angel Lorenzo del Castillo
+jlo@cy-tech.fr
+Contributions de :
+Thierry Garcia
+Florent Devin
+Taisa Guidini Goncalves
+1/37
+<<<PAGE>>>
+Cycle de vie des processus
+Plan
+1 Cycle de vie des processus
+Processus
+swap
+Exécution d’un programme
+2 Ordonnanceur
+Généralités
+Ordonnancement
+Ordonnancement sans réquisition
+Ordonnancement avec réquisition
+Ordonnancement par priorité
+Ordonnancement à deux niveaux
+2/37
+<<<PAGE>>>
+Cycle de vie des processus
+Cycle de vie des processus
+3/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Rappel : Processus
+Un processus est une instance de programme en cours d’exécution.
+Il possède un certain nombre de propriétés et ressources :
+▶ un espace d’adressage privé (adresses virtuelles)
+▶ un numéro d’identification : le pid (process identifier)
+▶ un numéro de propriétaire (propriétaire de l’exécutable)
+▶ un numéro d’utilisateur
+▶ une table de descripteur des fichiers
+▶ le pid du processus parent (père)
+Objectifs des processus :
+▶ Séparer les différentes tâches du système
+▶ Gestion des fichiers et des applications
+▶ Permettre le multitâche (plusieurs activités “en même temps”)
+▶ Permettre à plusieurs utilisateurs de travailler sur la même machine et
+donner l’illusion à l’utilisateur d’avoir la machine pour lui tout seul.
+Chaque processus doit tenir compte des autres.
+4/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Rappel : Processus
+Un processus est un programme en
+cours d’exécution auquel est associé
+un environnement processeur (PSW,
+registres géneraux, etc.) et un
+environnement mémoire appelé
+contexte du processus .
+Un processus est l’instance dynamique
+d’un programme et incarne le fil
+d’exécution de celui-ci.
+Un processus évolue dans un espace
+d’adressage protégé
+5/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Composants d’un processus
+Des données (variables globales, etc.) stockées dans une zone de la
+mémoire qui a été allouée au processus;
+La valeur des registres du processeur lors de l’exécution;
+Les ressources qui lui ont été allouées par le système d’exploitation
+(mémoire principale, fichiers ouverts, périphériques utilisés, etc.).
+L’ensemble de ces composants forme lecontexte d’exécution d’un
+processus.
+6/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Caractéristiques des processus
+Un identificateur ou numéro (PID,Process IDentification, en UNIX)
+Un état opérationnel : actif /endormi /prêt, en mémoire centrale / en
+swap, mode système ou utilisateur.
+Son contexte.
+Des informations comme les priorités, la date de démarrage, la
+filiation.
+Des statistiques calculées par le système, telles que le temps
+d’exécution cumulé, le nombre d’opérations d’E/S, etc.
+Le PCB ( Process Control Block ), qui représente chaque processus dans
+le système, contient ces informations :
+7/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Structure d’un processus
+Format d’un fichier exécutable :
+En-tête pour décrire l’ensemble du fichier (attributs, etc.)
+La taille à allouer pour les variables non initialisées.
+Section TEXT qui contient le code à exécuter (en langage machine).
+Section DATA qui contient les données initialisées (en langage
+machine).
+D’autres sections.
+8/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Structure d’un processus
+Chargement en mémoire d’un exécutable (UNIX) :
+Source : stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap
+9/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Structure d’un processus
+Chargement en mémoire d’un exécutable (UNIX) :
+4 régions sont allouées en mémoire :
+▶ Région du code (text segment) : pour la section TEXT. Taille fixée.
+▶ Région des données (data segment) : pour la section DATA. Taille fixée.
+⋆ Section .data : variables globales ou statiques initialisées.
+⋆ Section .bss (Block Started by Symbol ) : données qui ne sont pas initialisées.
+▶ La Pile (Stack) :
+⋆ Croissance automatique dans le sens décroissant des adresses.
+⋆ Ses éléments sont empilés et dépilés (croissance ou décroissance du Stack)
+lors de l’appel ou retour de fonction.
+⋆ Taille limitée. Variableslocales et de taille fixée.
+⋆ Pointeur de pile pour indiquer la profondeur courante de la pile.
+⋆ Un processus UNIX pouvant s’exécuter en mode noyau et/ou utilisateur, une
+pile privée sera utilisée dans chaque mode.
+▶ Le Tas(Heap) :
+⋆ Allocation manuelle par l’utilisateur :malloc(), calloc() mais aussi
+free() sont nécessaires.
+⋆ Taille non limitée. Variables accessibles globalement avec une taille qui peut
+varier (realloc()).
+Plus d’information : https://en.wikipedia.org/wiki/Data_segment
+10/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Contexte d’un processus
+Environnement matériel
+▶ compteur ordinal
+▶ pointeur de pile
+▶ registres de travail
+▶ registres de données
+▶ registres pour la mémoire virtuelle
+▶ ...
+11/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Contexte d’un processus
+Environnement système
+▶ Table des processus :
+⋆ Le SE maintient une table des processus où chaque processus a une
+entrée unique : le PID (process ID).
+⋆ Interne au noyau.
+⋆ Pour afficher la table des processus, on peut utiliser dans un terminal
+les commandes ps, pstree, top :
+11/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Contexte d’un processus
+Environnement système
+▶ Table des processus :
+⋆ Sortie de la commande‘ps l’
+F : localisation du processus
+▶ 0 : Hors de la mémoire centrale
+▶ 1 : En mémoire
+▶ 2 : Processus système
+▶ 4 : Verrouillé (en attente d’E/S)
+▶ 8 : Vidage
+UID : User IDentifier
+PID : Process IDentifier
+PPID : Parent Process IDentifier
+PRI : Priorité du processus. Une valeur
+plus élevée veut dire une priorité plus
+basse.
+NI : Valeur de Nice
+VSZ : Taille du processus
+RSS : Mémoire vive utilisée par le
+processus (en kiloBytes)
+WCHAN : Attente du processus
+STAT : État du processus
+▶ O : non existant
+▶ S : sleeping
+▶ W : waiting
+▶ R : running
+▶ Z : zombie
+▶ X : en évolution
+▶ P : pause
+▶ I : attente d’entrée au terminal ou input
+▶ L : attente d’un fichier (verrouillé ou locked)
+TTY : Terminal associé
+TIME : Temps d’exécution cumulé
+COMMAND : Commande lancée 12/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Contexte d’un processus
+Environnement système
+▶ Table des processus
+▶ Structure U (U Area) :
+⋆ Structure allouée par le noyau pour chaque processus.
+⋆ Privée au processus et uniquement manipulable par le noyau.
+⋆ Contient information spécifique du processus (fichiers ouverts, répertoire
+courant, etc.).
+⋆ Contient l’adresse de laTable des Régions par processus qui permet d’accéder
+à la Table des Régions. Ce double niveau d’indirection permet de faire
+partager des régions.
+Source : http://www-igm.univ-mlv.fr/∼dr/cs/node67.html
+13/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Cycle de vie d’un processus
+Quand un processus s’exécute, il change d’état.
+Le processeur va basculer constamment d’un processus à l’autre.
+Un seul processus peut être en exécution sur n’importe quel
+processeur à tout moment.
+14/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+Cycle de vie d’un processus
+15/37
+<<<PAGE>>>
+Cycle de vie des processus Processus
+État d’un processus sous Unix
+1 Nouveau: création. Ni prêt, ni endormi; état initial de tous les processus.
+2 Prêt (waiting) : mis en attente jusqu’à que la CPU soit libérée.
+▶ Endormi en mémoire centrale ou
+▶ Endormi en zone de swap (sur disque par exemple)
+3 Actif (running) :
+▶ Si le processus épuise le temps qui lui est alloué par l’ordonnanceur, il est remis en
+file d’attente des prêts.
+▶ S’il a besoin d’une ressource non disponible (op. E/S, par exemple) il est mis en
+état bloqué.
+▶ S’il se termine, il passe à l’état Zombie.
+4 Endormi : Bloqué. Le processus est en attente d’une ressource. Dès sa libération il
+repasse à l’état Prêt.
+▶ Endormi en mémoire centrale ou en zone de swap
+5 Terminé(Zombie) : réalisation d’un exit.
+▶ Il est conservé uniquement dans la table des processus le temps nécessaire pour que
+son processus père puisse récupérer le code de retour et d’autres informations de
+gestion (coût de l’exécution sous forme de temps, et d’utilisation des ressources).
+▶ Si un processus est orphelin de père, c’est le processus de PID 1 qui l’accueillera.
+16/37
+<<<PAGE>>>
+Cycle de vie des processus swap
+L’espace d’échange (swap)
+Utilisé lorsque la mémoire physique (RAM) arrive à saturation.
+Situé sur le disque dur (donc temps d’accèsplus lent que la RAM).
+Il peut être une partition de swap consacrée, un fichier de swap ou
+une combinaison des deux.
+17/37
+<<<PAGE>>>
+Cycle de vie des processus swap
+Gestion du swap
+Géré par le processus de PID 0.
+Transfert hors de la mémoire
+▶ Transfert en priorité les processus bloqués, puis les prêts.
+▶ Aucun transfert de processus Zombie, ni verrouillé par le SE.
+▶ Transfert d’un processus prêt : uniquement s’il est présent en mémoire
+depuis un certain temps (en général 2s).
+▶ Si pas de possibilité : “re-scan” toutes les secondes.
+Transfert vers la mémoire
+▶ Examen des différents processus prêt présents sur le disque.
+▶ Choix du plus ancien.
+▶ Transfert de celui-ci : allocation de mémoire, lecture depuis le disque,
+libération de l’espace utilisé en swap.
+▶ Exécution jusqu’à
+⋆ Plus de processus prêt sur le disque.
+⋆ Plus de place en mémoire.
+18/37
+<<<PAGE>>>
+Cycle de vie des processus Exécution d’un programme
+Exécution interactive d’un programme
+Exécution en avant plan :
+1 Lecture de la commande (ex :./bidon)
+2 Duplication du shell via la commandefork. Existence de deux shells
+3 Recouvrement du segment de texte (programme), par le code
+approprié
+4 Récupération du numéro du processus fils par le shell initial
+5 Attente de la fin d’exécution du processus fils (wait (etat) )
+19/37
+<<<PAGE>>>
+Cycle de vie des processus Exécution d’un programme
+Exécution interactive d’un programme
+Exécution en arrière plan :
+1 Lecture de la commande (ex :./bidon)
+2 Duplication du shell via la commandefork. Existence de deux shells
+3 Recouvrement du segment de texte (programme), par le code
+approprié
+4 Récupération du numéro du processus fils par le shell initial
+5 Émission d’un prompt, puis reprise de l’activité
+20/37
+<<<PAGE>>>
+Ordonnanceur
+Plan
+1 Cycle de vie des processus
+Processus
+swap
+Exécution d’un programme
+2 Ordonnanceur
+Généralités
+Ordonnancement
+Ordonnancement sans réquisition
+Ordonnancement avec réquisition
+Ordonnancement par priorité
+Ordonnancement à deux niveaux
+21/37
+<<<PAGE>>>
+Ordonnanceur
+Ordonnanceur
+22/37
+<<<PAGE>>>
+Ordonnanceur Généralités
+Problématique
+Rappel : Le processeur (CPU) est chargé d’exécuter les instructions
+des programmes placés en mémoire centrale .
+Considérons qu’un processeur ne peut exécuter qu’une seule
+instruction à la fois.
+Nous sommes dans un système multitâche = plusieurs processus
+s’exécutent simultanément avec un processeur ne pouvant exécuter
+qu’une instruction (d’un programme) à la fois.
+Comment exécuter plusieurs programmes en même temps et travailler
+à plusieurs utilisateurs sur la même machine, afin que tout le monde
+ait l’impression d’avoir la machine à lui tout seul?
+23/37
+<<<PAGE>>>
+Ordonnanceur Généralités
+Simultanéités
+Activation de plusieurs processus en même temps :Multiprogrammation
+Simultanéité totale ou vraie : nombre de processus≤ nombre de processeurs
+Simultanéité partielle : sinon
+▶ Exécution enchevêtrée de plusieurs processus sur un seul processeur.
+▶ Obtenue par commutation temporelle d’un processus à l’autre sur le
+processeur : pseudo-parallélisme
+(a) Multiprogramming 4 processus
+(b) Modèle conceptuel de 4 processus séquentiels.
+(c) Simultanéité partielle : un seul processus actif en même temps.
+Source : Tanenbaum
+24/37
+<<<PAGE>>>
+Ordonnanceur Généralités
+Mécanismes de commutation
+La commutation de processus va sauvegarder le contexte d’un
+processus pour restaurer/reprendre (à la place) le contexte d’un
+processus précédemment interrompu dans le cadre d’un partage des
+ressources d’un processeur.
+1 P1 s’exécute, on stoppe P1 et on mémorise le contexte de P1
+2 P2 s’exécute, on stoppe P2 et on mémorise le contexte de P2
+3 On restaure le contexte de P1 et on refait 1) à partir de l’endroit où P1 a été stoppé
+4 On restaure le contexte de P2 et on refait 2) à partir de l’endroit où P2 a été
+stoppé ...
+Qui effectue la commutation? Le système d’exploitation
+▶ il stocke l’état du processus en RAM
+▶ il choisit le nouveau processus
+▶ il récupère son état et le relance
+Mais comment décider quel nouveau processus exécuter?
+25/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement
+Ordonnancement
+L’ordonnancement des processus va permettre de planifier l’exécution
+des processus.
+Dans le système d’exploitation il existe un ordonnanceur qui a pour
+rôle de choisir, parmi tous les processus existants, lequel va pouvoir
+s’exécuter en fonction d’une politique d’ordonnancement.
+Pour savoir quel est l’état des processus, s’ils existent dans le
+système, le système d’exploitation utilise les informations du processus
+sur le PCB (Process Control Block).
+26/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement
+Critères d’ordonnancement
+Équité : chaque processus doit pouvoir s’exécuter
+Efficacité : utilisation des processeurs maximales
+Temps de réponse: minimiser les temps de réponses pour les
+processus interactifs
+Temps d’exécution: minimiser le temps d’exécution
+Rendements : Nombre de travaux réalisés par unités de temps doit
+être maximal
+27/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement
+Problèmes
+Favorise une catégorie : défavorise une autre
+Comment connaître à l’avance les demandes de l’entrée/sortie?
+Nécessité de mettre en œuvre un mécanisme pour “reprendre la main”
+Obligation d’effectuer un ordonanncement avec réquisition :
+Préemption
+Possibilité de conflits : utilisation d’un mécanisme comme les
+sémaphores
+28/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement
+Familles d’ordonnanceurs
+Non préemptif ou sans réquisition (OSR) : l’algorithme du SE choisit un
+nouveau processus sur blocage ou terminaison du processus courant.
+Préemptif ou avec réquisition (OAR) : Les ordinateurs ont une horloge
+électronique qui génère périodiquement une interruption. À chaque interruption
+(après un temps fixé, ouquantum) l’ordonnanceur reprend la main et élit un
+nouveau processus actif.
+29/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement sans réquisition
+OSR : Ordonnanceur Sans Réquisition
+Politiques d’ordonnancement :
+FCFS ( First Come First Served ) ou FIFO (First In First Out) : Ordre d’arrivée
+en gérant une file des processus.
+▶ Premier processus de la queue commence à s’exécuter jusqu’à ce qu’il se
+termine ou qu’il se bloque. En retournant du blocage, il est mis à la fin de la
+file→ Tourniquetou Round Robin.
+▶ Algorithme facile à implanter.
+▶ Loin d’optimiser le temps de traitement moyen pour des processus avec
+temps d’exécution très différents.
+30/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement sans réquisition
+OSR : Ordonnanceur Sans Réquisition
+Politiques d’ordonnancement :
+PCTE ( Plus Court Temps d’exécution ) ou SJF ( Shortest Job First ) : inverse
+du temps d’exécution :
+▶ Plusieurs travaux d’égale importance se trouvent dans une file
+▶ Élection du plus court d’abord : il faut connaître leurs temps d’exécution à
+l’avance (bien adapté au traitement par lots)
+▶ Temps d’attente moyen minimal SI toutes les tâches sont présentes dans la
+file d’attente au moment où débute l’assignation.
+▶ Meilleur temps moyen de séjour (tséjour : intervalle de temps entre la
+soumission du processus et son achèvement)
+Avant SJF Après SJF
+tséjourA = 8
+tséjourB = 8 +4
+tséjourC = 8 +4 +4
+tséjourD = 8 +4 +4 +4
+¯tséjour = 4∗8+3∗4+2∗4+4
+4 = 14
+tséjourB = 4
+tséjourC = 4 +4
+tséjourD = 4 +4 +4
+tséjourA = 4 +4 +4 +8
+¯tséjour = 4∗4+3∗4+2∗4+8
+4 = 11
+31/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement avec réquisition
+OAR : Ordonnanceur Avec Réquisition
+Politiques d’ordonnancement :
+Round-Robin ou Ordonnancement circulaire:
+Un des plus simples et des plus robustes
+Attribution d’un quantum de temps
+Temps d’exécution maximal par processus
+Deux cas :
+▶ Exécution pas achevée : Processeur réquisitionné par l’ordonnanceur et
+attribué à un autre processus
+▶ Exécution terminée ou bloquée : Processeur attribué automatiquement
+à un autre processus
+32/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement avec réquisition
+OAR : Ordonnanceur Avec Réquisition
+Politiques d’ordonnancement :
+Round-Robin ou Ordonnancement circulaire:
+Quantum de temps trop petit : trop de commutations de processus et abaisse
+l’efficacité du processeur.
+Quantum de temps trop grand : peu d’interactivité, augmente le temps de réponse
+des commandes courtes.
+Quantum acceptable : entre 20 et 50 ms.
+32/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement avec réquisition
+OAR : Ordonnanceur Avec Réquisition
+Politiques d’ordonnancement :
+Shortest Remaining Time (SRT) : version préemptive de SJF.
+1 Processus arrive dans la file de processus.
+2 L’ordonnanceur compare la valeur espérée pour ce processus avec la
+valeur du processus actuellement en exécution.
+3 Si le temps du nouveau processus est plus petit, il rentre en exécution
+immédiatement.
+33/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement avec réquisition
+Ordonnancement par priorités constantes
+Le processus de plus forte priorité est élu.
+La plus petite valeur correspond à la plus forte priorité.
+Avec le même temps d’arrivée
+Processus Temps d’exéc. Priorité
+P1 10 3
+P2 1 1
+P3 5 4
+P4 2 2
+34/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement par priorité
+Ordonnancement par priorités constantes
+Avec un temps d’arrivée différent
+Processus Temps d’exéc. Priorité Temps d’arrivée
+P1 10 3 0
+P2 1 1 5
+P3 5 4 0
+P4 2 2 3
+35/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement par priorité
+Ordonnancement par priorités constantes
+Les processus sont classifiés en plusieurs classes de priorité.
+Sélection d’un processus, l’ordonnanceur parcourt successivement les queues dans
+l’ordre décroissant.
+Autre possibilité : partager les quantums de temps sur les différentes queues.
+Autre possibilité : réaliser différents algorithmes d’ordonnancement sur les
+différentes queues. Risques :
+▶ Risque de famine pour les priorités faibles
+⇒ Solution : augmenter la priorité avec le temps d’attente
+▶ Risque de dégradation importante du système pour schedulers non
+préemptifs⇒ Solution : préemption
+36/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement à deux niveaux
+Ordonnancement à deux niveaux
+La taille de la mémoire centrale peut être insuffisante pour contenir
+tous les processus prêts à être exécutés.
+Certains processus doivent résider sur disque.
+Ordonnanceur de bas niveau (CPU scheduler) :
+▶ utilisation de l’un des algorithmes précédents aux processus résidant en
+mémoire centrale.
+Ordonnanceur de haut niveau (medium term scheduler) :
+▶ retire de la mémoire les processus qui y sont resté assez longtemps.
+▶ transfère en mémoire des processus résidant sur disque.
+37/37
+<<<PAGE>>>
+Ordonnanceur Ordonnancement à deux niveaux
+Ordonnancement à deux niveaux
+Possibilité d’existence d’un ordonnanceur à long terme (job scheduler)
+▶ détermine si un processus utilisateur peut effectivement entrer dans le
+système
+▶ au besoin diffère l’entrée : temps de réponse se dégradent
+Prise en compte par l’ordonnanceur de haut niveau :
+▶ Temps du processus en mémoire ou sur disque
+▶ Temps d’utilisation du processeur par le processus
+▶ Priorité du processus
+▶ Taille du processus
+Simulateur d’ordonnancement sur :
+https://nicomedes.assistedcoding.eu/app/os/processscheduling
+37/37

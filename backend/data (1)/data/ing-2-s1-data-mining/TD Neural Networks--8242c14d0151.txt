@@ -1,0 +1,108 @@
+#construction du dataset XOR
+library(neuralnet)
+XOR <- c(0,1,1,0)
+xor.data <- data.frame(expand.grid(c(0,1), c(0,1)), XOR)
+
+#2. Construction d’un réseau de neurone adapté Construction d’un
+#réseau de neurone avec une couchée contenant 2 neurones. Regarderla
+
+net.xor <- neuralnet( XOR~Var1+Var2, xor.data, hidden=2, rep=5) 
+# rep=5: On construit 5 réseaux et on prend le meilleur car la construction est aléatoire 
+print(net.xor)
+plot(net.xor, rep="best")
+
+#3. Caractéristique du réseau construit : Observer la fonction d’activation,
+#la fonction erreur ; les données et les résultats
+net.xor$act.fct #fonctoin d'activation
+net.xor$err.fct #fonction d'erreur optimisé
+net.xor$data
+net.xor$net.result
+
+net.xor$result.matrix
+#TD en lui même
+
+#Exploration de l’ensemble des données IRIS :
+#  2. Caractéristiques :
+  dim(iris)
+  names(iris)
+  str(iris)
+  attributes(iris)
+  
+#3. Ajout de trois variables booléennes :
+  iris$setosa <- iris$Species=="setosa"
+  iris$virginica <- iris$Species == "virginica"
+  iris$versicolor <- iris$Species == "versicolor"
+  
+#4. Centrer et réduire les données
+  mean=apply(iris[,1:4],2,mean)
+  sd=sapply(iris[,1:4], sd)
+  data.scaled = scale(iris[,1:4], center = mean, scale = sd) # Scale the data
+  iris[,1:4]=data.scaled
+  
+#5. Devision en train et test
+  iris.train.idx <- sample(x = nrow(iris), size = nrow(iris)*0.75)
+  iris.train <- iris[iris.train.idx,]
+  iris.valid <- iris[-iris.train.idx,]
+  
+#6. Construction d’un réseau de neuone
+  iris.net <- neuralnet(setosa+versicolor+virginica ~
+                        Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
+                        data=iris.train, hidden=5, rep = 5,
+                        linear.output = F)
+  plot(iris.net, rep="best")
+  iris.net$act.fct
+  iris.net$err.fct
+  iris.net$data
+  iris.net$net.result
+  
+#7. Prédictions et matrices de confusion
+  iris.prediction <- compute(iris.net, iris.valid[1:4])
+  idx <- apply(iris.prediction$net.result, 1, which.max)
+  predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+  table(predicted, iris.valid$Species)
+  
+  
+  
+#### Ex 9 ####
+  # Construire un nouveau réseau avec deux couches cachées la
+  # première contenant 5 neurones et la deuxième 2 neurones.
+  
+  #Exploration de l’ensemble des données IRIS :
+  #  2. Caractéristiques :
+  dim(iris)
+  names(iris)
+  str(iris)
+  attributes(iris)
+  
+  #3. Ajout de trois variables booléennes :
+  iris$setosa <- iris$Species=="setosa"
+  iris$virginica <- iris$Species == "virginica"
+  iris$versicolor <- iris$Species == "versicolor"
+  
+  #4. Centrer et réduire les données
+  mean=apply(iris[,1:4],2,mean)
+  sd=sapply(iris[,1:4], sd)
+  data.scaled = scale(iris[,1:4], center = mean, scale = sd) # Scale the data
+  iris[,1:4]=data.scaled
+  
+  #5. Devision en train et test
+  iris.train.idx <- sample(x = nrow(iris), size = nrow(iris)*0.75)
+  iris.train <- iris[iris.train.idx,]
+  iris.valid <- iris[-iris.train.idx,]
+  
+  #6. Construction d’un réseau de neuone
+  iris.net <- neuralnet(setosa+versicolor+virginica ~
+                          Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
+                        data=iris.train, hidden=5, rep = 5,
+                        linear.output = F)
+  plot(iris.net, rep="best")
+  iris.net$act.fct
+  iris.net$err.fct
+  iris.net$data
+  iris.net$net.result
+  
+  #7. Prédictions et matrices de confusion
+  iris.prediction <- compute(iris.net, iris.valid[1:4])
+  idx <- apply(iris.prediction$net.result, 1, which.max)
+  predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+  table(predicted, iris.valid$Species)

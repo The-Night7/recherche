@@ -1,0 +1,111 @@
+Exercice 1.SoitXune variable al´ eatoire telle queF X(x)∈ {0,1}pour toutx. Montrer que X est constante presque
+sˆ urement.
+Indication : Utiliserx 0 := inf{c∈R|F X(c) = 1}
+Solution propos´ ee par l’´ el` eve
+”SoitE:={c∈R|F X(c) = 1}On montre que E est non vide et que son infimum existe. Existence de inf E : On
+a queF X(c)→1 lorsquec→+∞.Cela implique que pour toutϵ >0,il existeM >0 tel que pourc≥M,
+on aF X(c)−1≤ϵ.En particulier, pourϵ= 0.5 on a un M telque F X(M) = 1. Ainsi, E est non vide et born´ e
+inf´ erieurement, ce qui permet de d´ efinirx0 :=inf E.Maintenant, consid´ eronsFX(x0).Puisquex 0 est l’infimum de
+E, on sait queF X(x0) = 1 carF X est croissante. On suppose qu’il existeb<x 0 tel queF X(b) = 1 Alors,b∈E, mais
+cela est une contradiction carx 0 est l’infimum de E. Par cons´ equent,x0 est une valeur prise presque sˆ urement par X.
+En conclusion, X est constante presque sˆ urement, et doncP(X=x 0) = 1”
+Analyse p´ edagogique de la solution
+Cher ´ el` eve, Votre solution contient les bonnes intuitions, mais elle n’est pas une d´ emonstration math´ ematique valide
+car elle comporte plusieurs affirmations non prouv´ ees ou incorrectes. Analysons les points faibles :
+Point de vigilance : Erreur de raisonnement
+Erreur 1 : L’ensembleEest ”born´ e inf´ erieurement”
+Vous affirmez queEest ”born´ e inf´ erieurement” sansaucune justification. C’est un trou majeur dans la preuve.
+Pourquoi n’y a-t-il pas dectel queF X(c) = 1 ` a−∞?
+Correction et Rigueur
+Il faut utiliser l’autre propri´ et´ e des fonctions de r´ epartition : limx→−∞FX(x) = 0. Par d´ efinition de la limite, il existe
+M′ tel que pour toutx<M ′,F X(x)<1/2. Par l’hypoth` ese de l’exercice (FX(x)∈{0,1}), cela forceF X(x) = 0 pour
+x<M ′. Donc,M ′ est un minorant deE. L’ensembleEest bien minor´ e.
+Point de vigilance : Erreur de raisonnement
+Erreur 2 : L’infimum est atteint
+Vous affirmez : ”on sait queFX(x0) = 1 carFX est croissante”.Ceci est faux. L’infimum d’un ensemble n’appartient
+pas forc´ ement ` a cet ensemble, mˆ eme pour une fonction croissante.Contre-exemple :SoitA=]0,1]. L’infimum est 0,
+qui n’est pas dansA.
+Correction et Rigueur
+L’argument correct est lacontinuit´ e ` a droitedeFX. Pour toutϵ>0,x 0 +ϵn’est pas un minorant, donc il existe
+c∈Etel quex 0≤c<x 0 +ϵ. CommeF X est croissante etc∈E, on aF X(x0 +ϵ)≥F X(c) = 1. DoncF X(x0 +ϵ) = 1
+pour toutϵ>0. Par continuit´ e ` a droite :FX(x0) = limϵ→0+FX(x0 +ϵ) = 1.
+Point de vigilance : Erreur de raisonnement
+Erreur 3 : La conclusion est trop rapide
+Votre argument (correct) surb < x 0 prouve queP(X≤q) = 0 pourq < x 0, et doncP(X < x 0) = 0. Mais vous
+concluez imm´ ediatement ”Par cons´ equent,x0 est une valeur prise presque sˆ urement”. Il manque l’´ etape finale du
+calcul.
+1
+<<<PAGE>>>
+Correction et Rigueur
+La preuve se termine par le calcul explicite de la probabilit´ e de l’´ ev´ enement{X=x0}:
+P(X=x 0) =P(X≤x 0)−P(X <x 0) =F X(x0)−0
+Et ce n’est que parce que nous avons prouv´ eFX(x0) = 1 (` a l’´ etape 2) que nous pouvons conclure :
+P(X=x 0) = 1−0 = 1
+2
+<<<PAGE>>>
+Solution Rigoureuse et Compl` ete
+Solution : L’objectif est de montrer queXest ´ egale ` a une constantex0 presque sˆ urement, c’est-` a-dire
+P(X=x 0) = 1.
+La preuve se fait en trois temps, en suivant l’indicationx 0 = inf{c∈R, F X(c) = 1}:
+1. Justifier quex 0 est un nombre r´ eel bien d´ efini et queFX(x0) = 1.
+2. Montrer queP(X <x 0) = 0.
+3. Conclure queP(X=x 0) = 1.
+1. Existence et atteinte dex 0
+PosonsA={c∈R|F X(c) = 1}. Pour quex 0 = infAexiste,Adoit ˆ etre non-vide et minor´ e.
+—A est non-vide :Nous savons que lim x→∞FX(x) = 1.Par l’hypoth` ese queFX(x)∈{0,1},F X ne peut
+pas ˆ etre 0 partout (sinon sa limite serait 0, ce qui est faux). Il existe donc au moins unctel queF X(c) = 1.
+L’ensembleAest donc non-vide.
+—A est minor´ e :Nous savons que lim x→−∞FX(x) = 0. Il existe donc unMtel que pour toutx < M,
+FX(x)<1/2.Par l’hypoth` eseF X(x)∈{0,1}, cela impliqueF X(x) = 0 pourx < M.Mest donc un
+minorant deA.
+Aest une partie non-vide et minor´ ee deR, elle admet donc une borne inf´ erieurex 0 = infA.
+Il faut montrer que l’infimum est atteint (x 0∈A).
+Rappel sur les fonctions de r´ epartition :FX est continue ` a droite en tout point. Par d´ efinition, cela signifie que
+FX(x0) = limϵ→0+FX(x0 +ϵ).
+Rappel sur l’infimum :x 0 est leplus grand des minorantsdeA.
+Consid´ erons unϵ>0 quelconque. Le nombrex 0 +ϵest strictement plus grand quex 0. Puisquex 0 est leplus grand
+des minorants,x 0 +ϵn’est pasun minorant deA(en effet six 0 +ε´ etait un minorant deAalorsx 0 etx 0 +εseraient
+deux minorants avecx 0 +εqui est plus grand quex 0 strictement, ce qui est absurde).
+Dire quex 0 +ϵn’est pas un minorant signifie (par d´ efinition) qu’il existe au moins un ´ el´ ementc∈Atel quec<x0 +ϵ,
+en effet pouruminorant deAon a
+∀c∈A, u≤cetF X(c) = 1.
+Commex 0 est un minorant deA, on ax 0≤c. On a donc l’encadrementx 0≤c<x 0 +ϵ.
+PuisqueF X est une fonction croissante et quec∈A(doncF X(c) = 1), on a :
+FX(x0 +ϵ)≥F X(c) = 1
+CommeF X est une probabilit´ e, elle est plafonn´ ee ` a 1. On a doncFX(x0 +ϵ) = 1.
+Ceci est vrai pour n’importe quelϵ>0. La limite ` a droite est donc 1 :
+lim
+ϵ→0+
+FX(x0 +ϵ) = 1
+Par continuit´ e ` a droite, on conclut :
+FX(x0) = 1 (c’est-` a-direP(X≤x 0) = 1)
+2. Calcul deP(X <x 0)
+L’´ ev´ enement{X <x0}peut s’´ ecrire comme une union d´ enombrable sur les rationnels :
+{X <x0}=
+[
+q∈Q∩]−∞,x0[
+{X≤q}
+NotonsB=Q∩]−∞,x 0[. Parσ-sous-additivit´ e deP:
+P(X <x0) =P
+
+ [
+q∈B
+{X≤q}
+
+≤
+X
+q∈B
+P(X≤q) =
+X
+q∈B
+FX(q)
+Par d´ efinition dex0 = infA, pour toutq∈B(puisqueq <x 0),qn’est pas dansA, doncF X(q)̸= 1.Par l’hypoth` ese
+FX(x)∈{0,1}, on en d´ eduit queF X(q) = 0 pour toutq∈B. La somme est doncP(X < x 0)≤ P
+q∈B 0 = 0. On a
+bienP(X <x 0) = 0.
+3. Conclusion
+On calcule la probabilit´ e queXvaille exactementx 0 :
+P(X=x 0) =P(X≤x 0)−P(X <x 0)
+= 1−0 = 1
+PuisqueP(X=x 0) = 1, la variable al´ eatoireXest presque sˆ urement constante.
+3

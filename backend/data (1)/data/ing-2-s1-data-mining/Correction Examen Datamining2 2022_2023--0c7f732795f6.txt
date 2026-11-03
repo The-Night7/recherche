@@ -1,0 +1,237 @@
+Correction et barème de l’examen de datamining 2 2022-2023 
+ 
+Barème 
+Exercice 1 (3pts) 
+1)  1,5pt 
+2)  1,5pt 
+ 
+Exercice 2 (5pts) 
+1)  0,5pt 
+2)  1pt 
+3)  1pt 
+4)  1pt 
+5)  0,5pt pour valeur de p(x) + 1pt pour 
+mise à jour des poids 
+ 
+Exercice 3 : Etude de cas (12pts) 
+Partie 1 (4pts) 
+1)  0,5pt pour nombre d’arbres + 0,25pt 
+pour convergence 
+2)  0,5pt pour nombre de variables testées 
++ 0,25pt pour explication racine(8) 
+3)  0,5pt 
+4)  0,25pt pour échantillons bootstrap + 
+0,25pt pour tirage aléatoire des 
+variables à chaque nœud 
+5)  0,25pt*3 
+6)  0,25pt*3 
+Partie 2 (4pts) 
+1)  0,5pt 
+2)  0,5pt 
+3)  0,5pt 
+4)  1pt pour le modèle + 0,5pt pour 
+probabilité sur l’exemple 
+5)  0,5pt pour calcule erreur + 0,5pt pour 
+comparaison 
+Partie 3 (4pts) 
+1)  0,5pt pour indépendance + 0,5pt pour 
+normalité 
+2)  1pt 
+3)  1pt 
+4)  0,5pt pour calcul erreur + 0,5pt pour 
+comparaison 
+ 
++1pt bonus si l’étudiant à noter 
+l’incohérence à comparer les scores 
+entre la foret aléatoire et les deux 
+autres modèles 
+ 
+ 
+Exercice 1 (3 pts)  
+Soit la matrice de confusion suivante obtenue sur une base de 125 observations 
+True values 
+ Predicted values 
+ 
+A B C 
+A 51  2 1 
+B 3 58  0 
+C 2 3 5 
+ 
+1)  Quel est le taux de bien classés ? 
+2)  Que pouvez-vous dire sur la performance du modèle ? 
+Correction 
+<<<PAGE>>>
+1)  tb=(51+58+5)/125=0.912. 91,2% des observations sont bien classées. 
+2)  91% des observations sont bien classées cependant on note que la classe C est sous-représentée 
+et son taux de bien classés est très faible (50%). Le modèle n’est donc pas satisfaisant. 
+Exercice 2 
+Soit Y une variable cible binaire. Considérons le réseau de neurones sans biais suivant, 
+ 
+où Σ est la combinaison linéaire à laquelle on applique la fonction d’activation sigmoïde, f(x)=1/(1+e -x).  
+1)  Que représente la sortie du réseau de neurones ? 
+2)  Ecrire la sortie du réseau de neurones en fonction des entrées x 1 et x 2. 
+Dans l’algorithme de rétropragation du gradient, on  initialise les poids à w 1=w2=1 et on considère la 
+formule de mise à jour des poids 
+∆wi=α[y-p( x)]x i 
+wi ←  wi + ∆wi 
+avec un taux d’apprentissage α= 0.9. 
+Soit la base d’apprentissage suivante, 
+ x1 x2 y 
+1 0.5  0.6  1 
+2 2.6  1.2  0 
+ 
+3)  Quelle est la sortie du réseau de neurones pour la ligne 1 (arrondi à 10 -2)? 
+4)  Que deviennent les poids à l’issue de la 1 ère  itération (ligne 1) ? 
+5)  Que deviennent les poids à l’issue de la 2 ème  itération (ligne 2) ? 
+Correction 
+1)  La sortie représente la probabilité que Y soit positif connaissant les valeurs des variables d’entrée : 
+    1|. 
+2)   
+
+
+ 
+3)   
+
+
+∗.∗.  0.75             1 
+4)  ∆wi=0.9* [1-0.75]*x i 
+∆w1=0.9* [1-0.75]*0.5=0.11   -->    w 1=1+0.11=1.11 
+∆w2=0.9* [1-0.75]*0.6=0.135   -->    w 2=1+0.07=1.135 
+5)  p(x)=f(1.11*x 1+1.135*x 2)=f(1.11*2.6+1.135*1.2)=f(4.25)=0.99 
+∆wi=0.9* [0-0.99]*x i 
+∆w1=0.9* [0-0.99]*2.6=-2.32   -->    w 1=1.11-2.32=-1.21 
+∆w2=0.9* [0-0.99]*1.2=-1.07   -->    w 2=1.135-1.07=0.07 
+ 
+
+<<<PAGE>>>
+ 
+ 
+Exercice 3 : Etude de cas 
+Afin de construire un modèle pour prédire le cancer de la prostate, on considère une base d’apprentissage 
+de 100 patients caractérisés par 8 variables numériques (Radius, Texture, Perimeter, Area, Smoothness, 
+Compactness, Symmetry, Fractal dimension) et une va riable cible binaire représentant la présence ou 
+l’absence de cellules cancéreuses (Y=diagnostic_res ult). La classe positive (Y=1) est notée « M » pour  
+Malignant et la classe négative (Y=0) est notée « B » pour Begnin.  
+Partie 1. Foret aléatoire 
+On ajuste une forêt aléatoire avec le package Rando mForest de R dont les résultats sont donnés ci-
+dessous. 
+1)  Combien y-a-t-il d’arbres dans la forêt ? Pensez-vous que cela est suffisant ou bien faut-il ajouter 
+des arbres (justifiez votre réponse) ? 
+2)  Combien de variables sont testées (mises en concurr ence) à chaque nœud de chaque arbre ? 
+Expliquez ce chiffre. 
+3)  Quelles sont les variables les plus importantes pour prédire la présence ou l’absence de cellules 
+cancéreuses ? 
+4)  Expliquez pourquoi les forêts aléatoires sont des algorithmes stochastiques (aléatoires) ?  
+5)  Donnez 3 hyperparamètres qui ont un impact sur le temps de calcul. 
+6)  Calculer le taux de bien classés, la specificity (recall) et la precision. 
+ 
+ 
+ 
+
+<<<PAGE>>>
+ 
+ 
+Correction 
+1)  Il y a 100 arbres dans la forêt. L’évolution de l’erreur en fonction du nombre d’arbre n’a pas 
+atteint un seuil stable. Il semble nécessaire d’ajouter des arbres dans la forêt pour faire 
+converger l’erreur. 
+2)  Le nombre de variables testées à chaque nœud est 2. Il correspond au paramétrage par défaut 
+√10=2.8  2. 
+ 
+3)  D’après les graphiques sur l’importance des variables, on note que les variables Compactness, 
+Perimeter et Area sont les plus déterminantes pour la classification. 
+4)  Dans la construction d’une foret aléatoire, l’aléa est introduit à deux niveaux. 
+- Lors de la création des échantillons bootstrap pour construire les arbres. 
+- Lors du tirage aléatoire des variables à testées à chaque nœud. 
+5)  Le nombre d’arbres, le nombre de variables testées à chaque split, la profondeur des arbres. 
+6)  A partir de la matrice de confusion 
+Taux de bien classés = (29+51)/100=0.8 (1- erreur OOB) 
+Recall = 29/(29+9)=0.76 
+Specificity = 51/(51+11)=0.18 
+Precision = 29/(29+11)=0.725 
+N.B. Erreur dans le sujet entre sensitivity (recall) et specificity. Donc 0.5*3 si 3 OK parmi les 4. 
+ 
+Partie 2. Régression logistique 
+On construit une régression logistique. Ci-dessous les résultats obtenus pour un modèle avec toutes le s 
+variables. 
+1)  Dans la procédure de sélection de modèle pas-à-pas,  quelle variable allez-vous supprimer du 
+modèle à la première itération ? 
+2)  Quand arrête-t-on la procédure pas-à-pas ? 
+
+<<<PAGE>>>
+ 
+Sur la figure ci-dessous, on a le modèle obtenu à l’issue de la procédure de sélection de modèle pas-à-pas. 
+ 
+3)  Est-ce que les variables importantes à la classification sont les mêmes que pour le modèle de foret 
+aléatoire ? 
+4)  Ecrire le modèle obtenu pour     1| où  est la variable cible (on rappelle que 
+« Y=1 » équivaut à « diagnostic_result=M ») et   
+,…,  sont les variables retenues par le 
+modèle. En déduire la probabilité que les cellules soient malignes (M) pour les valeurs suivantes : 
+radius  texture  perimeter  area  smoothness  compactness  symmetry  fractal_dimension  
+23 12 151 954  0.143 0.278 0.242 0.079 
+ 
+5)  On obtient la matrice de confusion suivante. 
+ 
+
+<<<PAGE>>>
+Comparer les performances de la régression logistique et de la forêt aléatoire à l’aide du taux de 
+bien classés. 
+Correction 
+1)  La variable la moins pertinente dans le modèle complet est celle qui a la plus grande p-valeur. 
+Donc on retire la variable symmetry lors de la 1ere itération de la procédure pas-à-pas. 
+2)  Le processus s’arrête (on arrête de retirer des variables) quand le critère AIC arrête de décroitre. 
+3)  compactness est la variable la plus importante dans la régression logistique. On la retrouve dans 
+le trio de tête des variables importantes dans le modèle de foret aléatoire. En revanche, la 
+variable fractal_dimension n’est pas considérée comme importante dans la foret aléatoire et a 
+contrario les variables area et perimeter ne sont pas retenues dans la régression logistique.  
+4)   !"#  11.689+64.141∗) *+)#,-..−289.415∗12+)# +_4"*-,." ,  
+  1
+1+- 5
+
+.67869.
+9
+∗:;<=:>?@@5A78.9
+B∗CD=:>=E_FG<?@G;? 
+  1
+1+- 5
+
+.67869.
+9
+∗H.AI75A78.9
+B∗H.HI8 0,9987159  
+5)  Le taux de bien classés est (31+56)/100)=0.87. Donc globalement la régression logistique est 
+meilleure que la forêt aléatoire (mais la forêt n’a que 100 arbres) 
+Cf. commentaires de la correction de la question 4 partie 3. 
+ 
+Partie 3. Naive Bayes 
+On utilise maintenant la méthode Naive Bayes et on obtient les résultats suivants sur le modèle. 
+1)  Quelles sont les deux hypothèses sur les variables   
+,…,  que nous devons supposer 
+pour appliquer le modèle Naive Bayes ?  
+2)  A quoi correspond la ligne « A-priori probabilities » ? 
+3)  Dans la parte « Conditional probabilities » à quoi correspondent les colonnes 1 et 2 des lignes B 
+et M pour la variable radius ? 
+<<<PAGE>>>
+ 
+4)  Comparer la performance de ce modèle avec les précédents à l’aide de la matrice de confusion 
+suivante, 
+ 
+Correction 
+1)  On doit supposer que les variables x i sont indépendantes à l’intérieur de chaque classe. Les 
+variables x i étant numériques, on va supposer qu’elles suivent une loi normale à l’intérieur de 
+chaque classe. 
+2)  Il s’agit de P(Y=B)=0.38 et P(Y=M)=0.62 
+3)  Il s’agit des caractéristiques (moyenne pour la 1ere colonne et écart-type pour la 2eme colonne) 
+de la loi normale de la variable radius|B (ligne B) ou de la variable radiux|M (ligne M) 
+4)  Le taux de bien classés est (32+48)/100)=0.80. 
+Naive Bayes donne de moins bons résultats que la régression logistique et des résultats 
+équivalents à la forêt aléatoire. 
+N.B. En fait, on ne pouvait pas vraiment comparer car la matrice de confusion donnée par la 
+forêt aléatoire est calculée à partir de la procédure OOB (ni sur base d’apprentissage ni sur 
+base de validation/test). De plus, on ne dit pas sur quelle base a été calculée la matrice de 
+confusion de la régression logistique ou Naïve Bayes. 1pt bonus si cette remarque a été faite. 
+ 
+ 
+ 
+ 

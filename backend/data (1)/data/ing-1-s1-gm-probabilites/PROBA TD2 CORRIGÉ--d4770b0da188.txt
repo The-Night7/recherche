@@ -1,0 +1,1335 @@
+Correction Détaillée - TD 2 de Probabilités
+ING1-GM – CYTech 2025-2026
+Exercice 1 : Inégalité de Markov Généralisée
+Rappel de Cours : L’inégalité de Markov
+L’inégalité de Markov est un résultat fondamental qui fournit une borne supérieure sur la
+probabilité qu’une variable aléatoire non négative dépasse une certaine valeur.
+Pour une variable aléatoireY≥0admettant une espérance, et pour tout réela >0,
+l’inégalité s’écrit :
+P(Y≥a)≤ E[Y]
+a
+Intuitivement, cela signifie qu’une variable ne peut pas avoir une forte probabilité de prendre
+de grandes valeurs si son espérance (sa "moyenne") est faible.
+L’exercice 1 est unegénéralisationde cette inégalité. En appliquant une fonction crois-
+santegà la variable|X|, on peut obtenir des bornes plus fines ou adaptées à des contextes
+différents. Par exemple, en choisissantg(x) =x2, cette inégalité mène directement à l’inégalité
+de Bienaymé-Tchebychev.
+Énoncé :Soitg: [0,∞[→[0,∞[une fonction strictement croissante avecg(0)̸= 0. Montrer
+que pour touta>0:
+P(|X|≥a)≤ E[g(|X|)]
+g(a) .
+Démonstration
+La méthode de démonstration est classique pour les inégalités de ce type. Elle repose sur la
+décomposition de l’espérance.
+1.Partir de la définition de l’espérance.
+SoitY=g(|X|). Commegest à valeurs positives,Yest une variable aléatoire positive.
+Son espérance est :
+E[Y] =E[g(|X|)] =
+Z
+Ω
+g(|X|)dP
+2.Décomposer l’intégrale.
+On sépare l’espace de probabilitéΩen deux parties disjointes : l’ensemble où|X|≥aet
+son complémentaire où|X|<a.
+E[g(|X|)] =
+Z
+{ω∈Ω||X(ω)|≥a}
+g(|X|)dP+
+Z
+{ω∈Ω||X(ω)|<a}
+g(|X|)dP
+3.Minorer l’expression.
+La fonctiongest à valeurs dans[0,∞[, donc l’intégrandeg(|X|)est toujours positif ou
+1
+<<<PAGE>>>
+nul. Par conséquent, la deuxième intégrale est positive ou nulle. On peut donc la retirer
+pour obtenir une inégalité :
+E[g(|X|)]≥
+Z
+{|X|≥a}
+g(|X|)dP
+4.Utiliser la croissance deg.
+Sur l’ensemble d’intégration{|X|≥a}, on a|X|≥a. Comme la fonctiongeststricte-
+ment croissantesur[0,∞[, on a :
+g(|X|)≥g(a)
+En substituant cette minoration dans l’intégrale :
+Z
+{|X|≥a}
+g(|X|)dP≥
+Z
+{|X|≥a}
+g(a)dP
+5.Finaliser le calcul.
+g(a)est une constante par rapport à l’intégration. On peut donc la sortir :
+Z
+{|X|≥a}
+g(a)dP=g(a)
+Z
+{|X|≥a}
+1dP=g(a)·P(|X|≥a)
+6.Conclusion.
+En combinant les étapes, nous avons montré que :
+E[g(|X|)]≥g(a)·P(|X|≥a)
+Puisquea>0etgest strictement croissante,g(a)>g(0). L’énoncé préciseg(0)̸= 0, et
+commegest à valeurs positives, on ag(0)>0. Doncg(a)est strictement positif et on
+peut diviser parg(a)sans changer le sens de l’inégalité :
+E[g(|X|)]
+g(a) ≥P(|X|≥a)
+Ce qui est le résultat demandé.
+Exercice 2 : Inégalité de Cantelli (variante)
+Rappel de Cours : Inégalités à sens inverse
+Tandis que l’inégalité de Markov borne la probabilité d’un événement par unevaleur maxi-
+male, d’autres inégalités permettent de la borner par unevaleur minimale. C’est le cas de
+l’exercice 2. Ces inégalités sont souvent utiles pour montrer qu’une variable aléatoire a une
+probabilité non nulle de s’éloigner de sa moyenne.
+La condition clé pour ce type d’inégalité est que la variable aléatoire soitbornée, ce qui
+n’est pas requis pour l’inégalité de Markov standard.
+Énoncé :Soith:R→[0,α]. Montrer que pour0≤a<α, on a :
+P(h(X)≥a)≥ E[h(X)]−a
+α−a
+2
+<<<PAGE>>>
+Démonstration
+La démarche est similaire à celle de l’exercice 1, mais cette fois nous allons chercher à
+majorer l’espérance.
+1.Partir de la définition de l’espérance.
+SoitY=h(X). Par hypothèse,Yest une variable aléatoire bornée, avec0≤Y≤α.
+On écrit son espérance en décomposant l’intégrale :
+E[Y] =
+Z
+{Y≥a}
+Y dP+
+Z
+{Y<a}
+Y dP
+2.Majorer chaque partie de l’intégrale.
+Nous utilisons les bornes deYsur chaque sous-ensemble :
+— Sur l’ensemble{Y≥a}, on aY≤α. Donc :
+Z
+{Y≥a}
+Y dP≤
+Z
+{Y≥a}
+αdP=α·P(Y≥a)
+— Sur l’ensemble{Y <a}, on a (trivialement)Y <a. Donc :
+Z
+{Y<a}
+Y dP≤
+Z
+{Y<a}
+adP=a·P(Y <a)
+3.Combiner les majorations.
+En additionnant les deux inégalités, on obtient une borne supérieure pour l’espérance :
+E[Y]≤α·P(Y≥a) +a·P(Y <a)
+4.Exprimer en fonction d’une seule probabilité.
+On sait queP(Y <a) = 1−P(Y≥a). En substituant :
+E[Y]≤α·P(Y≥a) +a·(1−P(Y≥a))
+5.Isoler le terme de probabilité.
+Il s’agit maintenant d’une manipulation algébrique pour isolerP(Y≥a):
+E[Y]≤α·P(Y≥a) +a−a·P(Y≥a)
+E[Y]−a≤(α−a)·P(Y≥a)
+6.Conclusion.
+L’énoncé précise quea<α, donc(α−a)est un réel strictement positif. On peut diviser
+les deux côtés de l’inégalité par ce terme sans en changer le sens :
+E[Y]−a
+α−a ≤P(Y≥a)
+En remplaçantYparh(X), on obtient le résultat final :
+P(h(X)≥a)≥ E[h(X)]−a
+α−a
+3
+<<<PAGE>>>
+Exercice 3 : Formule de Huygens-König
+Rappel de Cours : Définition de la Variance
+Lavarianced’une variable aléatoireX, notéeV(X)ouσ 2
+X, est une mesure de la dispersion
+(ou de l’étalement) des valeurs deXautour de son espéranceE[X].
+Formellement, la variance est définie comme l’espérance du carré de l’écart à la moyenne :
+σ2
+X =V(X) =E
+
+(X−E[X]) 2
+Une variance faible indique que les valeurs deXsont très regroupées autour de la moyenne,
+tandis qu’une variance élevée indique qu’elles sont très dispersées.
+La formule de l’énoncé, connue sous le nom deformule de Huygens-Königou formule
+de la variance développée, est une manière alternative et souvent plus simple de calculer la
+variance. Elle est valable à condition queXadmette un moment d’ordre 2 fini, c’est-à-dire
+E[X2]<∞.
+[citestart]Énoncé :Montrerqueσ2
+X =E[X 2]−E[X] 2 siE[X 2]<+∞[cite : 8].
+Démonstration
+La démonstration repose sur la linéarité de l’espérance.
+1.Partir de la définition de la variance.
+Par définition, en posantµ=E[X]pour alléger les notations :
+σ2
+X =E[(X−µ) 2]
+2.Développer le carré.
+On développe l’identité remarquable à l’intérieur de l’espérance :
+(X−µ) 2 =X 2−2µX+µ 2
+L’expression devient :
+σ2
+X =E[X 2−2µX+µ 2]
+3.Utiliser la linéarité de l’espérance.
+L’espérance d’une somme est la somme des espérances. On peut donc séparer les termes :
+E[X2−2µX+µ 2] =E[X 2]−E[2µX] +E[µ 2]
+4.Simplifier chaque terme.
+Rappelons queµ=E[X]est une constante (un nombre réel, pas une variable aléatoire).
+—E[X 2]reste tel quel.
+—E[2µX] = 2µ·E[X] = 2µ·µ= 2µ 2.
+— L’espérance d’une constante est la constante elle-même, doncE[µ2] =µ 2.
+5.Combiner les résultats.
+En substituant les termes simplifiés, on obtient :
+σ2
+X =E[X 2]−2µ 2 +µ 2
+σ2
+X =E[X 2]−µ 2
+4
+<<<PAGE>>>
+6.Conclusion.
+En remplaçantµparE[X], on aboutit à la formule de Huygens-König :
+σ2
+X =E[X 2]−(E[X]) 2
+Exercice 4 : Inégalité de Jensen (cas particulier)
+Rappel de Cours : Positivité de la Variance et Inégalité de Jensen
+—Positivité de la variance: La variance, étant l’espérance d’une quantité au carré
+((X−µ) 2), est toujours positive ou nulle. C’est une propriété fondamentale :
+σ2
+X≥0
+L’inégalité de l’exercice 4 est une conséquence directe de cette propriété.
+—Inégalité de Jensen: C’est un résultat beaucoup plus général. Pour toute variable
+aléatoireXet toute fonctionconvexeφ, on a :
+φ(E[X])≤E[φ(X)]
+L’inégalité de l’exercice est un cas particulier de l’inégalité de Jensen, obtenu en choisis-
+sant la fonctionφ(x) =x 2, qui est une fonction convexe.
+[citestart]Énoncé :MontrerqueE[X]2≤E[X 2]siXadmet une espérance (et un moment
+d’ordre 2 pour queE[X2]soit défini)[cite : 9].
+Démonstration
+Cette démonstration est une conséquence immédiate de l’exercice 3.
+1.Partir de la positivité de la variance.
+Pour toute variable aléatoireXadmettant un moment d’ordre 2, sa variance est bien
+définie et est toujours positive ou nulle :
+V(X) =σ 2
+X≥0
+2.Utiliser la formule de Huygens-König.
+D’après l’exercice 3, nous savons que :
+σ2
+X =E[X 2]−(E[X]) 2
+3.Combiner les deux points.
+En substituant la formule de la variance dans l’inégalité de positivité, on obtient :
+E[X2]−(E[X]) 2≥0
+4.Conclusion.
+En réarrangeant les termes, on trouve directement l’inégalité recherchée :
+E[X2]≥(E[X]) 2
+Cette inégalité montre que le moment d’ordre 2 est toujours supérieur ou égal au carré du
+moment d’ordre 1.
+5
+<<<PAGE>>>
+Exercice 5 : Parité d’une Variable Aléatoire Binomiale
+Rappel de Cours : Loi Binomiale et Formule du Binôme
+—Loi BinomialeB(n,p): Elle modélise le nombre de succèskobtenus après la répétition
+denépreuves de Bernoulli indépendantes, où la probabilité d’un succès estp. Sa loi de
+probabilité est donnée par :
+P(X=k) =
+n
+k
+
+pk(1−p) n−k,pourk∈{0,1,...,n}
+—Formule du binôme de Newton: Pour tous nombresaetbet tout entiern≥0:
+(a+b) n =
+nX
+k=0
+n
+k
+
+akbn−k
+Cette formule est l’outil clé pour résoudre cet exercice de manière élégante.
+Énoncé:SoitXunev.a.r.quisuituneloibinomialeB(p,n).[cite start]MontrerquelaprobabilitpourqueXsoitpaireestde1 2(1+(1−2p)n).
+[cite : 10, 11]
+Démonstration
+La méthode consiste à utiliser astucieusement la formule du binôme de Newton pour isoler
+les termes pairs.
+1.Exprimer la probabilité recherchée.
+Nous cherchonsP pair =P(Xest pair), ce qui correspond à la somme des probabilités
+pour tous leskpairs :
+Ppair =
+X
+kpair,0≤k≤n
+P(X=k) =
+X
+kpair
+n
+k
+
+pk(1−p) n−k
+2.Utiliser la formule du binôme de Newton.
+Appliquons la formule du binôme aveca=petb= 1−p. La somme de toutes les
+probabilités doit valoir 1 :
+(p+ (1−p)) n = 1n = 1 =
+nX
+k=0
+n
+k
+
+pk(1−p) n−k (1)
+Appliquons maintenant la formule aveca=−petb= 1−p:
+(−p+ (1−p)) n = (1−2p) n =
+nX
+k=0
+n
+k
+
+(−p)k(1−p) n−k
+=
+nX
+k=0
+(−1)k
+n
+k
+
+pk(1−p) n−k (2)
+Dans cette deuxième somme, les termes sont positifs pourkpair et négatifs pourk
+impair.
+6
+<<<PAGE>>>
+3.Combiner les deux égalités.
+Additionnons les équations (1) et (2) :
+1 + (1−2p) n =
+nX
+k=0
+P(X=k) +
+nX
+k=0
+(−1)kP(X=k)
+1 + (1−2p) n =
+nX
+k=0
+ 
+1 + (−1)k
+P(X=k)
+Analysons le terme(1 + (−1)k):
+— Sikestpair,1 + (−1) k = 1 + 1 = 2.
+— Sikestimpair,1 + (−1) k = 1−1 = 0.
+La somme ne retient donc que les termes pairs, qui sont multipliés par 2 :
+1 + (1−2p) n =
+X
+kpair
+2·P(X=k) = 2·P pair
+4.Conclusion.
+Il suffit maintenant d’isolerPpair pour obtenir le résultat final :
+Ppair = 1
+2 (1 + (1−2p) n)
+Exercice 6 : Convergence de la Loi Binomiale Conditionnelle
+Rappel de Cours : Approximation de Poisson
+—Loi de PoissonP(λ): Elle modélise le nombre d’événements se produisant dans un
+intervalle de temps ou d’espace fixé, si ces événements se produisent avec une fréquence
+moyenne connueλ. Sa loi de probabilité est :
+P(Y=k) = e−λλk
+k! ,pourk∈N
+—Théorème de convergence: SiX n∼B(n,p n)est une suite de variables aléatoires
+binomiales telle quen→∞,p n→0etnp n→λ(une constante), alors la loi deX n
+converge vers la loi de PoissonP(λ). Formellement, pour tout entierj≥0:
+lim
+n→∞
+P(Xn =j) = e−λλj
+j!
+Partie 1 : Limite de la probabilité conditionnelle
+Énoncé :SoitX n ∼ B(pn,n)avecλ=np n constant. SoitA n ={X n ≥1}, et soit
+Y∼Poisson(λ). [cite start]Montrerquelimn→∞ P(Xn =j|A n) =P(Y=j|Y≥1). [cite : 12]
+7
+<<<PAGE>>>
+Démonstration
+1.Analyser le membre de gauche.Pour toutj≥1:
+P(Xn =j|A n) =P(X n =j|X n≥1) = P({Xn =j}∩{X n≥1})
+P(Xn≥1) = P(Xn =j)
+1−P(X n = 0)
+2.Calculer la limite.En utilisant le théorème de l’approximation de Poisson :
+— Limite du numérateur :limn→∞ P(Xn =j) =P(Y=j) = e−λλj
+j! .
+— Limite du dénominateur :limn→∞(1−P(X n = 0)) = 1−P(Y= 0) = 1−e −λ.
+Comme la limite du dénominateur est non nulle (pourλ>0), la limite du quotient est
+le quotient des limites :
+lim
+n→∞
+P(Xn =j|A n) = P(Y=j)
+1−e −λ
+3.Analyser le membre de droite.Par définition :
+P(Y=j|Y≥1) = P({Y=j}∩{Y≥1})
+P(Y≥1) = P(Y=j)
+1−P(Y= 0) = P(Y=j)
+1−e −λ
+4.Conclusion.Les deux expressions étant identiques, l’égalité est démontrée.
+Partie 2 : Espérance de l’écart absolu à la moyenne
+Énoncé :On suppose queλest un entier. [cite start]MontrerqueE[|Y-λ|] = 2λλe−λ
+(λ−1)! . [cite :
+13]
+Démonstration
+1.Décomposer l’espérance.Par définition de l’espérance d’une variable discrète :
+E[|Y−λ|] =
+∞X
+k=0
+|k−λ|P(Y=k)
+=
+λ−1X
+k=0
+(λ−k)P(Y=k) +|λ−λ|P(Y=λ)| {z }
+=0
++
+∞X
+k=λ+1
+(k−λ)P(Y=k)
+2.Utiliser une propriété de l’espérance.On sait queE[Y−λ] =E[Y]−λ=λ−λ= 0.
+0 =E[Y−λ] =
+∞X
+k=0
+(k−λ)P(Y=k)
+=
+λ−1X
+k=0
+(k−λ)P(Y=k) +
+∞X
+k=λ+1
+(k−λ)P(Y=k)
+=−
+λ−1X
+k=0
+(λ−k)P(Y=k) +
+∞X
+k=λ+1
+(k−λ)P(Y=k)
+On en déduit que les deux sommes sont égales :Pλ−1
+k=0(λ−k)P(Y=k) = P∞
+k=λ+1(k−
+λ)P(Y=k).
+3.Simplifier le calcul.L’espérance recherchée est la somme des deux termes, elle est
+donc égale à deux fois le second terme :
+E[|Y−λ|] = 2
+∞X
+k=λ+1
+(k−λ)P(Y=k) = 2
+∞X
+k=λ+1
+(k−λ) e−λλk
+k!
+8
+<<<PAGE>>>
+4.Manipuler la somme.
+E[|Y−λ|] = 2e −λ
+" ∞X
+k=λ+1
+kλk
+k!−
+∞X
+k=λ+1
+λλk
+k!
+#
+= 2e−λ
+" ∞X
+k=λ+1
+λk
+(k−1)! −λ
+∞X
+k=λ+1
+λk
+k!
+#
+On posej=k−1dans la première somme :
+= 2e−λ
+" ∞X
+j=λ
+λj+1
+j! −λ
+∞X
+k=λ+1
+λk
+k!
+#
+= 2λe−λ
+" ∞X
+j=λ
+λj
+j!−
+∞X
+k=λ+1
+λk
+k!
+#
+= 2λe−λ
+" 
+λλ
+λ! +
+∞X
+k=λ+1
+λk
+k!
+!
+−
+∞X
+k=λ+1
+λk
+k!
+#
+= 2λe−λλλ
+λ! = 2λe−λ λλ
+λ(λ−1)!
+5.Conclusion.Après simplification, on obtient le résultat :
+E[|Y−λ|] = 2λλe−λ
+(λ−1)!
+Exercice 7 : Formule de l’Espérance par la Survie
+Rappel de Cours : Deux Visions de l’Espérance
+Pour une variable aléatoireXà valeurs dans l’ensemble des entiers naturelsN, l’espérance
+est classiquement définie comme la somme des valeurs pondérées par leur probabilité :
+E[X] =
+∞X
+k=0
+k·P(X=k)
+Cette formule peut être vue comme une "somme par valeurs".
+L’exercice 7 présente une formule alternative, souvent appeléeformule de la somme de
+la queue de distribution(ou "tail-sum formula"). Elle exprime l’espérance en fonction de la
+fonction de survieP(X >n).
+E[X] =
+∞X
+n=0
+P(X >n)
+Cette vision est très puissante en théorie et s’avère souvent plus simple à manipuler, notamment
+pour les variables aléatoires continues non-négatives où la formule devientE[X] =
+R∞
+0 P(X >
+x)dx.
+Énoncé:SoitXunev.a.quiprendsesvaleursdansN.MontrerqueE[X] = P∞
+n=0 P(X >n).
+Démonstration
+La démonstration repose sur une astuce classique : l’interversion de l’ordre de sommation
+dans une somme double.
+9
+<<<PAGE>>>
+1.Partir du membre de droite.
+Nous commençons par l’expression que nous souhaitons transformer :
+∞X
+n=0
+P(X >n)
+2.Exprimer la probabilité comme une somme.
+La probabilité queXsoit strictement plus grand quenest la somme des probabilités
+queXprenne n’importe quelle valeur entière den+ 1à l’infini :
+P(X >n) =
+∞X
+k=n+1
+P(X=k)
+En substituant, on obtient une somme double :
+∞X
+n=0
+ ∞X
+k=n+1
+P(X=k)
+!
+3.Intervertir l’ordre de sommation.
+Nous sommons sur tous les couples d’entiers(n,k)tels quen≥0etk≥n+ 1. Cette
+condition est équivalente àk≥1et0≤n≤k−1. Au lieu de sommer d’abord surn
+puis surk, nous pouvons sommer d’abord surkpuis surn:
+∞X
+k=1
+ k−1X
+n=0
+P(X=k)
+!
+Visualisation : Imaginez un tableau infini. La somme initiale parcourt les lignes, la nou-
+velle somme parcourt les colonnes.
+4.Calculer la somme intérieure.
+Dans la somme intérieurePk−1
+n=0, le termeP(X=k)est une constante par rapport à
+l’indice de sommationn. On somme donc cette constante den= 0àn=k−1, ce qui
+représentektermes.
+k−1X
+n=0
+P(X=k) =k·P(X=k)
+5.Conclure.
+En substituant ce résultat dans l’expression principale, on obtient :
+∞X
+k=1
+k·P(X=k)
+Cette expression est la définition de l’espérance deX. Le terme pourk= 0est nul
+(0·P(X= 0) = 0), on peut donc faire commencer la somme àk= 0sans changer le
+résultat : ∞X
+k=0
+k·P(X=k) =E[X]
+Nous avons ainsi montré que le membre de droite est égal au membre de gauche, ce qui
+achève la démonstration.
+10
+<<<PAGE>>>
+Exercice 8 : Moments Factoriels de la Loi de Poisson
+Rappel de Cours : Moments Factoriels
+Lemoment factoriel d’ordrerd’une variable aléatoireXest l’espérance de sa "factorielle
+descendante" :
+E[X(X−1)(X−2)...(X−r+ 1)]
+Ces moments sont particulièrement utiles pour des lois discrètes comme la loi de Poisson ou la
+loi binomiale, car leur calcul est souvent plus simple que celui des moments classiquesE[Xr].
+La loi de PoissonP(λ)a pour loi de probabilité :P(X=k) = e−λλk
+k! pourk∈N.
+Énoncé :SoitXune variable aléatoire de loi de Poisson de paramètreλ. Montrer que pour
+r∈N ∗\{1}, on aE[X(X−1)···(X−r+ 1)] =λ r.Note : La formule est en fait valide pour
+tout entierr≥1. La démonstration qui suit le prouve.
+Démonstration
+1.Écrire l’espérance par définition.
+E[X(X−1)...(X−r+ 1)] =
+∞X
+k=0
+k(k−1)...(k−r+ 1)·P(X=k)
+2.Simplifier le domaine de sommation.
+Le produitk(k−1)...(k−r+ 1)est nul pour tous les entiersk < r. La somme peut
+donc commencer à l’indicek=r:
+∞X
+k=r
+k(k−1)...(k−r+ 1)· e−λλk
+k!
+3.Simplifier les termes factoriels.
+On peut simplifier le quotient des termes factoriels :
+k(k−1)...(k−r+ 1)
+k! = k!/(k−r)!
+k! = 1
+(k−r)!
+L’expression devient :
+∞X
+k=r
+e−λλk
+(k−r)!
+4.Manipuler la somme pour faire apparaître une série connue.
+On met en évidence les termes constants par rapport àket on fait un changement de
+variable.
+e−λ
+∞X
+k=r
+λk
+(k−r)!
+Factorisonsλ r pour faire apparaîtreλk−r :
+e−λλr
+∞X
+k=r
+λk−r
+(k−r)!
+11
+<<<PAGE>>>
+5.Changement d’indice.
+Posons un nouvel indicej=k−r. Lorsquek=r,j= 0. Lorsquek→∞,j→∞. La
+somme devient :
+e−λλr
+∞X
+j=0
+λj
+j!
+6.Reconnaître la série exponentielle.
+La sommeP∞
+j=0
+λj
+j! est le développement en série de Taylor deeλ.
+7.Conclusion.
+En substituant, on obtient :
+e−λλr·eλ =λ r(e−λeλ) =λ r
+Le résultat est donc bien :
+E[X(X−1)...(X−r+ 1)] =λ r
+Exercice 9 : Propriétés des Variables à Variance Finie
+Rappel de Cours : Variance et Moments
+— Une variable aléatoireXadmet une variancesi sa varianceV(X)est finie.
+— Par la formule de Huygens-König,V(X) =E[X 2]−(E[X]) 2. Pour queV(X)soit finie,
+il est nécessaire que lemoment d’ordre 2,E[X2], soit lui-même fini.
+— L’existence d’un moment d’ordre 2 implique l’existence du moment d’ordre 1 (l’espé-
+rance).
+— Pour une variable à valeurs dansN, le moment d’ordre 2 est défini par la série :E[X2] =P∞
+k=0k2P(X=k). Dire queE[X 2]est fini signifie que cette sérieconverge.
+— Une propriété des séries à termes positifs convergentes (Puk) est que le reste d’ordren,
+Rn =P∞
+k=n+1uk, tend vers 0 lorsquen→∞.
+Partie 1 : Convergence du moment d’ordre 2
+Énoncé :Montrer queP∞
+k=0k2P(X=k)converge.
+Démonstration
+C’est une conséquence directe de l’hypothèse.
+1. On suppose queXadmet une variance, ce qui signifieV(X)<∞.
+2. La variance est définie parV(X) =E[(X−E[X]) 2]. Pour qu’elle soit finie, il faut que
+l’espéranceE[X]et le moment d’ordre 2,E[X 2], soient finis.
+3. Le moment d’ordre 2,E[X2], est précisément la sommeP∞
+k=0k2P(X=k).
+4. Donc, siXadmet une variance, la sérieP∞
+k=0k2P(X=k)converge nécessairement.
+Partie 2 : Limite de la queue de distribution
+Énoncé :En déduire quelimn→∞n2P(X >n) = 0.
+12
+<<<PAGE>>>
+Démonstration
+Cette preuve utilise le fait que le reste d’une série convergente tend vers zéro.
+1. D’après la partie 1, la sérieS= P∞
+k=0k2P(X=k)converge. SoitR n son reste d’ordre
+n:
+Rn =
+∞X
+k=n+1
+k2P(X=k)
+Puisque la série converge, on alimn→∞Rn = 0.
+2. Considérons l’expressionn 2P(X > n). En utilisant la définition de la probabilité de
+queue :
+n2P(X >n) =n 2
+∞X
+k=n+1
+P(X=k) =
+∞X
+k=n+1
+n2P(X=k)
+3. Pour chaque terme de la somme, on ak≥n+ 1, ce qui impliquek2 >n 2. On peut donc
+majorer chaque terme :
+n2P(X=k)≤k 2P(X=k)
+4. En sommant cette inégalité dek=n+ 1à l’infini, on obtient :
+∞X
+k=n+1
+n2P(X=k)≤
+∞X
+k=n+1
+k2P(X=k)
+Ce qui se traduit par :
+n2P(X >n)≤R n
+5. Commen 2≥0etP(X >n)≥0, on a l’encadrement :
+0≤n 2P(X >n)≤R n
+Puisquelim n→∞Rn = 0, par lethéorème des gendarmes, on conclut :
+lim
+n→∞
+n2P(X >n) = 0
+Partie 3 : Autre formule pour le moment d’ordre 2
+Énoncé :Montrer queE[X 2] =P∞
+k=0(2k+ 1)P(X >k).
+Démonstration
+Cette démonstration utilise une transformation de somme, similaire à une sommation par
+parties pour les séries (transformation d’Abel).
+1. On part de la définition deE[X2]et on utilise l’astuceP(X=j) =P(X >j−1)−P(X >
+j):
+E[X2] =
+∞X
+j=1
+j2P(X=j)
+=
+∞X
+j=1
+j2 (P(X >j−1)−P(X >j))
+13
+<<<PAGE>>>
+2. On sépare la somme en deux et on regroupe les termes par probabilitéP(X >k).
+E[X2] =
+ 
+12P(X >0)−1 2P(X >1)
+
++
+ 
+22P(X >1)−2 2P(X >2)
+
++
+ 
+32P(X >2)−3 2P(X >3)
+
++...
+= 12P(X >0) + (22−1 2)P(X >1) + (32−2 2)P(X >2) +...
+=
+∞X
+k=0
+ 
+(k+ 1) 2−k 2
+P(X >k)
+3. On simplifie le terme(k+ 1)2−k 2 = (k2 + 2k+ 1)−k 2 = 2k+ 1.
+4. On obtient donc le résultat final :
+E[X2] =
+∞X
+k=0
+(2k+ 1)P(X >k)
+Exercice 10 : Inégalité de Bienaymé-Tchebychev
+Rappel de Cours
+—Loi de PoissonP(λ): Une variable aléatoireXsuivant cette loi a pour espérance et
+variance :
+E[X] =λetV(X) =λ
+—Inégalité de Bienaymé-Tchebychev: Pour toute variable aléatoireXd’espéranceµ
+et de varianceσ2 finies, et pour tout réela>0, on a :
+P(|X−µ|≥a)≤ σ2
+a2
+Cette inégalité donne une borne universelle (indépendante de la loi deX) sur la proba-
+bilité queXs’écarte de sa moyenne de plus d’une certaine quantitéa.
+Énoncé :Soit X Poisson(λ). Rappeler l’espérance et la variance de X, et montrer que
+P(X≤λ/2)≤4/λ.
+Démonstration
+1.Identifier les paramètres et l’objectif.
+Pour une loi de Poisson, on aµ=E[X] =λetσ 2 =V(X) =λ. Nous voulons majorer
+P(X≤λ/2).
+2.Relier l’événement à la forme de Tchebychev.
+L’inégalité de Tchebychev porte sur l’événement|X−µ|≥a. Nous devons montrer que
+notre événement{X≤λ/2}estinclusdans un événement de cette forme.
+X≤ λ
+2 =⇒X−λ≤ λ
+2−λ=⇒X−λ≤− λ
+2
+14
+<<<PAGE>>>
+SiX−λestinférieurouégalà−λ/2,alorssavaleurabsolueestnécessairementsupérieure
+ou égale àλ/2.
+X−λ≤− λ
+2 =⇒ |X−λ|≥ λ
+2
+On a donc l’inclusion d’événements :
+
+X≤ λ
+2
+
+⊆
+
+|X−λ|≥ λ
+2
+
+3.Appliquer la monotonie de la probabilité.
+Puisqu’un événement est inclus dans l’autre, sa probabilité est plus petite :
+P
+
+X≤ λ
+2
+
+≤P
+
+|X−λ|≥ λ
+2
+
+4.Appliquer l’inégalité de Bienaymé-Tchebychev.
+Nous pouvons maintenant majorer le membre de droite avec l’inégalité de Tchebychev,
+en posanta=λ/2:
+P
+
+|X−λ|≥ λ
+2
+
+≤ V(X)
+(λ/2)2
+5.Substituer et conclure.
+En remplaçantV(X)parλ:
+λ
+(λ/2)2 = λ
+λ2/4 = 4λ
+λ2 = 4
+λ
+En combinant toutes les étapes, on obtient :
+P
+
+X≤ λ
+2
+
+≤ 4
+λ
+Exercice 11 : Loi Jointe de Variables Géométriques
+Rappel de Cours
+—Mesure de probabilité discrète: Pour définir une mesure de probabilité sur un
+univers dénombrableΩ(commeN 2), il faut et il suffit de vérifier deux points pour la
+fonctionp ω =P({ω}):
+1.p ω≥0pour toutω∈Ω.
+2. P
+ω∈Ωpω = 1.
+—Série géométrique: Pour tout réelrtel que|r|<1, on a P∞
+k=0rk = 1
+1−r.
+—Loi marginale: Si on connaît la loi jointe d’un couple de variables aléatoires(X,Y),
+la loi deXseule (appelée loi marginale) s’obtient en sommant sur toutes les valeurs
+possibles deY:
+P(X=i) =
+X
+j
+P(X=i,Y=j)
+—Indépendance: Deux variablesXetYsont indépendantes si et seulement si pour tout
+couple(i,j),P(X=i,Y=j) =P(X=i)P(Y=j).
+Partie 1 : Vérification de la mesure de probabilité
+Énoncé :Montrer quep i,j =αβ(1−α) i(1−β) j définit une mesure de probabilité surN2.
+15
+<<<PAGE>>>
+Démonstration
+1.Positivité :Commeα,β∈]0,1[, tous les termesα,β,(1−α)et(1−β)sont strictement
+positifs. Doncpi,j≥0pour tout(i,j)∈N 2.
+2.Somme égale à 1 :On calcule la somme sur tout l’universΩ =N2.
+X
+(i,j)∈N2
+pi,j =
+∞X
+i=0
+∞X
+j=0
+αβ(1−α) i(1−β) j
+=αβ
+ ∞X
+i=0
+(1−α) i
+! ∞X
+j=0
+(1−β) j
+!
+Les deux sommes sont des séries géométriques convergentes car0<1−α <1et
+0<1−β <1.
+∞X
+i=0
+(1−α) i = 1
+1−(1−α) = 1
+α
+∞X
+j=0
+(1−β) j = 1
+1−(1−β) = 1
+β
+En substituant, la somme totale devient :
+αβ· 1
+α· 1
+β = 1
+Les deux conditions sont vérifiées, doncpi,j définit bien une mesure de probabilité.
+Partie 2 : Lois marginales de X et Y
+Énoncé :Déterminer la loi deX((i,j)) =iet deY((i,j)) =j.
+Démonstration
+—Loi de X: On somme sur toutes les valeurs possibles dej:
+P(X=i) =
+∞X
+j=0
+pi,j =
+∞X
+j=0
+αβ(1−α) i(1−β) j
+=α(1−α) i
+ 
+β
+∞X
+j=0
+(1−β) j
+!
+=α(1−α) i
+
+β· 1
+β
+
+=α(1−α) i
+On reconnaît la loi de probabilité d’uneloi géométriquede paramètreα, notéeG(α).
+—Loi de Y: Par un calcul symétrique, on trouve :
+P(Y=j) =β(1−β) j
+Ysuit une loi géométriqueG(β).Remarque : On constate queP(X=i,Y=j) =P(X=
+i)P(Y=j), ce qui signifie que les variablesXetYsont indépendantes.
+16
+<<<PAGE>>>
+Partie 3 : Calcul de probabilités
+Énoncé :CalculerP(X <Y),P(X=Y)etP(X >Y).
+Démonstration
+—Calcul deP(X=Y):
+P(X=Y) =
+∞X
+k=0
+P(X=k,Y=k) =
+∞X
+k=0
+αβ(1−α) k(1−β) k
+=αβ
+∞X
+k=0
+[(1−α)(1−β)] k
+C’est une série géométrique de raisonr= (1−α)(1−β), avec|r|<1.
+P(X=Y) =αβ· 1
+1−(1−α)(1−β) = αβ
+1−(1−α−β+αβ) = αβ
+α+β−αβ
+—Calcul deP(X <Y):
+P(X <Y) =
+∞X
+i=0
+∞X
+j=i+1
+P(X=i,Y=j) =
+∞X
+i=0
+P(X=i)
+∞X
+j=i+1
+P(Y=j)(par indépendance)
+=
+∞X
+i=0
+α(1−α) i
+ ∞X
+j=i+1
+β(1−β) j
+!
+La somme intérieure est le reste d’une série géométrique :P∞
+j=i+1β(1−β) j =β (1−β)i+1
+1−(1−β) =
+(1−β) i+1.
+P(X <Y) =
+∞X
+i=0
+α(1−α) i(1−β) i+1 =α(1−β)
+∞X
+i=0
+[(1−α)(1−β)] i
+=α(1−β)· 1
+1−(1−α)(1−β) = α(1−β)
+α+β−αβ
+—Calcul deP(X >Y): Par symétrie, on peut intervertir les rôles deXetY, et deαet
+β:
+P(X >Y) =P(Y <X) = β(1−α)
+α+β−αβ
+On peut vérifier que la somme des trois probabilités vaut bien 1.
+17
+<<<PAGE>>>
+Exercice 12 : Limite de la Probabilité d’Événements Dis-
+joints
+Rappel de Cours
+—Axiome deσ-additivité: Pour une suite(A n)n≥1 d’événementsdeux à deux dis-
+joints, la probabilité de leur union est la somme de leurs probabilités :
+P
+ ∞[
+n=1
+An
+!
+=
+∞X
+n=1
+P(An)
+—Séries convergentes: Une condition nécessaire pour qu’une série à termes positifsP∞
+n=1un converge est que son terme général tende vers zéro :
+lim
+n→∞
+un = 0
+Énoncé:Soit(A n)n≥1 unesuited’événementsdeuxàdeuxdisjoints.Montrerquelim n→∞ P(An) =
+0.
+Démonstration
+La démonstration est une conséquence directe des axiomes des probabilités.
+1. SoitA= S∞
+n=1An. Puisque lesA n sont des événements, leur unionAest aussi un
+événement de la tribuA.
+2. Par définition d’une mesure de probabilité, la probabilité de tout événement est bornée
+par 1. On a donc :
+P(A) =P
+ ∞[
+n=1
+An
+!
+≤1
+3. L’hypothèse nous dit que les événements(An)sont deux à deux disjoints. Nous pouvons
+donc appliquer l’axiome deσ-additivité :
+P
+ ∞[
+n=1
+An
+!
+=
+∞X
+n=1
+P(An)
+4. En combinant les deux points, on obtient que la série des probabilités est finie :
+∞X
+n=1
+P(An)≤1
+5. La sérieP∞
+n=1 P(An)est une série à termes positifs dont la somme est finie. C’est donc
+unesérie convergente.
+6. Une condition nécessaire fondamentale pour la convergence d’une série est que son terme
+général doit tendre vers 0. On en déduit donc immédiatement :
+lim
+n→∞
+P(An) = 0
+Ceci conclut la démonstration.
+18
+<<<PAGE>>>
+Exercice 13 : Familles Dénombrables d’Événements
+Rappel de Cours
+—Ensemble dénombrable: Un ensemble est dit dénombrable s’il est fini ou s’il peut
+être mis en bijection avec l’ensemble des entiers naturelsN. Une union dénombrable
+d’ensembles dénombrables est elle-même dénombrable.
+—Fonction de Répartition (F.d.R.): La fonction de répartitionF X d’une variable
+aléatoireXest définie parF X(x) =P(X≤x).
+—Points de discontinuité d’une F.d.R.: Une fonction de répartition est continue
+à droite en tout point. Ses points de discontinuité correspondent aux valeursx0 pour
+lesquelles la variable aléatoire a une probabilité non nulle de se réaliser, i.e.,P(X=
+x0)>0. La valeur du saut enx 0 est précisément cette probabilité :P(X=x 0) =
+FX(x0)−lim x→x−
+0
+FX(x).
+Partie 1 : Caractère dénombrable d’une famille d’événements
+Énoncé :Soit(A β)β∈B une famille d’événements deux à deux disjoints. Montrer que si
+P(Aβ)>0pour toutβ∈B, alors l’ensemble des indicesBest dénombrable.
+Démonstration
+La démonstration suit l’astuce proposée dans l’énoncé.
+1.Construire une partition de B.Pour chaque entiern≥1, définissons le sous-
+ensemble d’indicesBn par :
+Bn =
+
+β∈B|P(A β)> 1
+n
+
+Tout indiceβ∈Ba une probabilitéP(A β)>0. Par la propriété d’Archimède, il existe
+un entierntel queP(A β)>1/n. Par conséquent, chaqueβ∈Bappartient à au moins
+unB n. On peut donc écrireBcomme l’union de tous lesBn :
+B=
+∞[
+n=1
+Bn
+2.Montrer que chaqueB n est fini.Soit un ensembleB n fixé. Prenonskéléments
+distincts deBn, notésβ1,...,β k. Les événements correspondantsAβ1,...,A βk sont deux
+à deux disjoints par hypothèse. La probabilité de leur union est donc la somme de leurs
+probabilités, et cette somme doit être inférieure ou égale à 1 :
+P
+ k[
+i=1
+Aβi
+!
+=
+kX
+i=1
+P(Aβi)≤1
+Par définition deBn, pour chaquei∈{1,...,k}, on aP(A βi)>1/n.
+kX
+i=1
+P(Aβi)>
+kX
+i=1
+1
+n = k
+n
+En combinant les deux inégalités, on ak
+n <1, ce qui impliquek < n. Cela signifie que
+l’on ne peut pas trouvernéléments (ou plus) dansBn. L’ensembleBn est doncfinipour
+toutn.
+19
+<<<PAGE>>>
+3.Conclusion.L’ensembleBest une uniondénombrabled’ensemblesfinis. Une telle
+union est au plus dénombrable. Comme B est supposé infini dans le contexte de la
+question 2, B est donc dénombrable.
+Partie 2 : Ensemble des points de discontinuité d’une F.d.R.
+Énoncé :En déduire que l’ensembleBdes points de discontinuité d’une fonction de répar-
+titionFest dénombrable.
+Démonstration
+1. SoitBl’ensemble des points de discontinuité deF. Pour chaquex 0∈B, la fonctionF
+présente un saut, ce qui correspond à une probabilité ponctuelle non nulle :
+P(X=x 0)>0
+2. Considérons la famille d’événements(Ax0)x0∈B oùA x0 ={X=x 0}.
+3. Ces événements sontdeux à deux disjoints. En effet, six1̸=x 2, il est impossible que
+Xprenne simultanément les deux valeurs, donc{X=x 1}∩{X=x 2}=∅.
+4. Nous sommes exactement dans la situation de la Partie 1 : nous avons une famille
+d’événements(A x0)x0∈B deux à deux disjoints, et pour chaque indicex 0 ∈B, on a
+P(Ax0)>0.
+5. D’après le résultat de la Partie 1, l’ensemble des indices, qui est ici l’ensembleBdes
+points de discontinuité, est nécessairementdénombrable.
+Exercice 14 : Probabilité ponctuelle pour une loi à densité
+Rappel de Cours
+—Loi à densité: Une probabilitéPsurRadmet une densitéfsi, pour tout événement
+A(borélien), sa probabilité est donnée par l’intégrale defsurA:
+P(A) =
+Z
+A
+f(x)dx
+En particulier, pour un intervalle[a,b],P([a,b]) =
+Rb
+a f(x)dx.
+—Continuité de la probabilité: Pour une suite d’événementsdécroissante(C n)n≥1
+(i.e.,C n+1⊆C n), la probabilité de l’intersection est la limite des probabilités :
+P
+ ∞\
+n=1
+Cn
+!
+= lim
+n→∞
+P(Cn)
+Énoncé :SoitPune probabilité surRadmettant une densitéf. Montrer queP({x 0}) = 0
+pour toutx 0∈R.
+20
+<<<PAGE>>>
+Démonstration
+La démonstration utilise la continuité de la mesure de probabilité.
+1.Représenter le singleton comme une intersection.
+Pour unx 0 ∈Rfixé, on peut l’écrire comme l’intersection d’une suite d’intervalles
+emboîtés dont la longueur tend vers 0. Soit la suite d’événements(Cn)n≥1 définie par :
+Cn =
+
+x0,x 0 + 1
+n
+
+Cette suite estdécroissante(Cn+1⊆C n) et son intersection est exactement le singleton
+{x0}:
+∞\
+n=1
+Cn ={x 0}
+2.Appliquer la continuité de la probabilité.
+D’après la propriété de continuité pour les suites décroissantes, on a :
+P({x0}) =P
+ ∞\
+n=1
+Cn
+!
+= lim
+n→∞
+P(Cn)
+3.Calculer la probabilité de l’intervalleCn.
+Puisque la probabilité admet une densitéf, on a :
+P(Cn) =P
+
+x0,x 0 + 1
+n
+
+=
+Z x0+1/n
+x0
+f(x)dx
+4.Calculer la limite de l’intégrale.
+On cherche la limite de cette intégrale lorsquen→∞. Quandn→∞, la longueur de
+l’intervalle d’intégration,1/n, tend vers 0. L’intégrale d’une fonction (intégrable) sur un
+intervalle de longueur nulle est nulle.
+lim
+n→∞
+Z x0+1/n
+x0
+f(x)dx= 0
+5.Conclusion.
+En combinant les étapes, on obtient :
+P({x0}) = lim
+n→∞
+P(Cn) = 0
+Pour une variable aléatoire continue (à densité), la probabilité de tomber exactement
+sur une valeur ponctuelle est toujours nulle.
+Exercice 15 : Fonction de Répartition d’une Loi Discrète
+Rappel de Cours : Fonction de Répartition (F.d.R)
+Une fonctionF:R→[0,1]est une fonction de répartition d’une probabilité si et seulement
+si elle vérifie les trois propriétés suivantes :
+1.Croissance :Fest une fonction croissante.
+2.Limites aux bornes :lim x→−∞F(x) = 0etlim x→∞F(x) = 1.
+21
+<<<PAGE>>>
+3.Continuité à droite :Pour toutx 0∈R,lim x→x+
+0
+F(x) =F(x 0).
+À partir d’une F.d.R.F, on peut calculer la probabilité de n’importe quel intervalle :
+—P(]a,b]) =F(b)−F(a)
+—P({a}) =F(a)−F(a −)(oùF(a −)est la limite à gauche ena)
+—P([a,b[) =F(b −)−F(a −)
+Énoncé :SoitF(x) = P∞
+i=1
+1
+2i·1 [1/i,∞[(x). Montrer que c’est une F.d.R. et calculer les
+probabilités de plusieurs événements.
+Partie 1 : Vérification que F est une F.d.R.
+1.Croissance :Pour chaquei, la fonction indicatricex7→1 [1/i,∞[(x)est croissante. La
+fonctionFestunesommedefonctionscroissantesavecdescoefficientspositifs(1/2 i >0),
+elle est donc elle-même croissante.
+2.Limites aux bornes :
+— Lorsquex→−∞,pourtouti≥1,x<1/i,donc1 [1/i,∞[(x) = 0.Ainsi,lim x→−∞F(x) =P∞
+i=1
+1
+2i·0 = 0.
+— Lorsquex→∞, pour touti≥1,x>1/i, donc1 [1/i,∞[(x) = 1. Ainsi,limx→∞F(x) =P∞
+i=1
+1
+2i. C’est une série géométrique de raison1/2et de premier terme1/2, dont la
+somme est 1/2
+1−1/2 = 1.
+3.Continuité à droite :La fonctionFest une somme de fonctions en escalier. Chaque
+fonctionx7→1 [1/i,∞[(x)est continue à droite. Une somme (convergente) de fonctions
+continues à droite est continue à droite.
+Les trois propriétés étant vérifiées,Fest bien la fonction de répartition d’une mesure de pro-
+babilité.
+Partie 2 : Calcul de probabilités
+LafonctionFestunefonctionenescalierdontlessautssesituentauxpoints{1,1/2,1/3,...}.
+La probabilité est donc concentrée sur ces points. La masse de probabilité en un pointx= 1/i
+est la hauteur du saut :
+P({1/i}) =F(1/i)−F((1/i) −) = 1
+2i
+La probabilité est nulle partout ailleurs.
+a)P([1,∞[): Le seul point de masse dans cet intervalle estx= 1(pouri= 1).
+P([1,∞[) =P({1}) = 1
+21 = 1
+2
+b)P([1/2,∞[): Les points de masse sont1/2et1.
+P([1/2,∞[) =P({1/2}) +P({1}) = 1
+22 + 1
+21 = 1
+4 + 1
+2 = 3
+4
+c)P({0}): 0 ne fait pas partie des points{1/i|i∈N ∗}.
+P({0}) = 0
+d)P([0,1/2[): Les points de masse dans cet intervalle sont{1/3,1/4,1/5,...}.
+P([0,1/2[) =
+∞X
+i=3
+P({1/i}) =
+∞X
+i=3
+1
+2i
+22
+<<<PAGE>>>
+C’est une série géométrique de premier terme(1/2)3 = 1/8et de raison1/2.
+Somme= premier terme
+1−raison = 1/8
+1−1/2 = 1/8
+1/2 = 1
+4
+e)P(]−∞,0[): Il n’y a pas de points de masse négatifs.
+P(]−∞,0[) = 0
+f)P(]0,∞[): Tous les points de masse{1/i}sont strictement positifs.
+P(]0,∞[) =
+∞X
+i=1
+P({1/i}) =
+∞X
+i=1
+1
+2i = 1
+Exercice 16 : Mesurabilité et Égalité Presque Sûre
+Rappel de Cours
+—Fonction mesurable: Une fonctionX: (Ω,F)→(R,B(R))est dite mesurable si pour
+tout ensembleBde la tribu borélienneB(R), l’image réciproqueX −1(B) ={ω∈Ω|
+X(ω)∈B}est un événement de la tribuF.
+—Égalité presque sûre (p.s.): On dit que deux variables aléatoiresXetYsont égales
+presque sûrement, notéX=Yp.s., si l’ensemble où elles diffèrent est de probabilité
+nulle :P({X̸=Y}) = 0. L’ensemble{X̸=Y}est appelé un ensemblenégligeable.
+—Tribu complétée: La tribuA ′ décrite dans l’énoncé est lacomplétéedeA. Elle
+contientAainsi que tous les sous-ensembles des ensembles négligeables deA. L’intérêt
+est que si un événementNest négligeable, alors tout sous-ensembleN ′⊆Ndevient
+mesurable (et de probabilité nulle) dans la nouvelle tribuA′.
+Énoncé :SoientXetYdeux applications telles queX=Yp.s. Montrer queXest
+(A′,B(R))-mesurable si et seulement siYest(A ′,B(R))-mesurable.
+Démonstration
+La preuve étant symétrique, il suffit de montrer une seule implication :SiXestA ′-
+mesurable, alorsYestA ′-mesurable.
+1.Hypothèse :XestA ′-mesurable. Cela signifie que pour tout borélienB∈B(R), on a
+X−1(B)∈A ′.
+2.Objectif :Montrer que pour tout borélienB∈B(R), l’ensembleY −1(B)appartient
+aussi àA′.
+3.Décomposer l’ensembleY −1(B).On peut écrireY−1(B)en le séparant sur l’ensemble
+oùX=Yet l’ensemble oùX̸=Y. SoitN={X̸=Y}. On sait queNest un ensemble
+négligeable, doncN∈A ′.
+Y−1(B) =
+ 
+Y−1(B)∩{X=Y}
+
+∪
+ 
+Y−1(B)∩{X̸=Y}
+
+Y−1(B) =
+ 
+Y−1(B)∩N c
+∪
+ 
+Y−1(B)∩N
+
+23
+<<<PAGE>>>
+4.Analyser chaque partie de l’union.
+—Première partie :Sur l’ensembleN c ={X=Y}, la conditionY(ω)∈Best
+équivalente àX(ω)∈B. Donc :
+Y−1(B)∩N c =X −1(B)∩N c
+Par hypothèse,X−1(B)∈A ′. CommeN∈A ′, son complémentaireNc est aussi dans
+A′. Puisqu’une tribu est stable par intersection, on aX−1(B)∩N c∈A′.
+—Seconde partie :Considérons l’ensembleE=Y −1(B)∩N. Cet ensemble est un
+sous-ensemble deN.
+E⊆N
+Par hypothèse,Nest un ensemble négligeable. Par définition de la tribu complétée
+A′, tout sous-ensemble d’un ensemble négligeable appartient àA′. Donc,E∈A ′.
+5.Conclusion.Nous avons montré queY −1(B)est l’union de deux ensembles qui appar-
+tiennent tous les deux à la tribuA′ :
+Y−1(B) = (X−1(B)∩N c)| {z }
+∈A′
+∪(Y −1(B)∩N)| {z }
+∈A′
+Puisqu’une tribu est stable par union, on conclut queY−1(B)∈A ′. Ceci étant vrai pour
+tout borélienB, la fonctionYest bienA ′-mesurable. L’autre implication se prouve de
+manière identique en échangeant les rôles deXetY.
+24

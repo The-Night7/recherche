@@ -1,0 +1,6414 @@
+.
+E.I.S.T.I. D´ epartement Math´ ematiques
+EQUATIONS AUX D ´ERIV´EES PARTIELLES.
+R´ESOLUTION NUM ´ERIQUE DES EDP.
+DIFF´ERENCES FINIES.
+Irina Kortchemski
+–30
+–20
+–10
+10
+20
+30
+y
+–30 –20 –10 10 20 30 0
+x
+1
+<<<PAGE>>>
+Contents
+1 Mod´ elisation math´ ematique et les ´ equations diﬀ´ erentielles aux d´ eriv´ ees partielles 5
+1.1 Equations non stationnaires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.1.1 Equation de la chaleur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.2 Equation de convection-diﬀusion . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.3 Equation d’advection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.4 Equation d’ondes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.1.5 Equations de Maxwell . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.1.6 Equation de Schrodinger . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.1.7 Equation de Klein-Gordon . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.1.8 Equation de Korteweg de Vries . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.9 Equation de Sine-Gordon . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.10 Equation de Black et Scholes . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.11 Equations de Keller-Segel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.1.12 Equations de Navier-Stokes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.1.13 Equation de Burgers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.1.14 Equations de Lagrange . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.2 Equations stationnaires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2.1 Equations d’Einstein . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2.2 Equation de Poisson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2.3 Syst` eme de Lam´ e . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2.4 Equation des plaques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.2.5 Equation de Helmholtz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2 ´Equations diﬀ´ erentielles ordinaires 11
+2.1 Probl` eme de Cauchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.2 Principes de la m´ ethode aux Diﬀ´ erences Finies . . . . . . . . . . . . . . . . . . . . . . 11
+2.3 Formules de Taylor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.4 Discr´ etisation des d´ eriv´ ees premi` eres . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.5 Discr´ etisation des d´ eriv´ ees secondes . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.6 Consistance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.6.1 Erreur de troncature locale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.6.2 Consistance du sch´ ema . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.6.3 Consistance du sch´ ema d’Euler progressif ou explici te . . . . . . . . . . . . . . 13
+2.6.4 Stabilit´ e du sch´ ema d’Euler progressif ou explicit e . . . . . . . . . . . . . . . . 14
+2.7 Sch´ ema de Runge-Kutta d’ordre 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+2.7.1 Consistance du sch´ ema de Runge-Kutta . . . . . . . . . . . . . . . . . . . . . . 15
+2.8 Sch´ ema de Runge-Kutta d’ordre 4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.9 Sch´ ema implicite d’Euler et sch´ ema implicite de Crank -Nicolson . . . . . . . . . . . . 16
+2.10 Consistance du sch´ ema implicite de Crank-Nicolson . . . . . . . . . . . . . . . . . . . 16
+2.11 Convergence du sch´ ema implicite de Crank-Nicolson . . . . . . . . . . . . . . . . . . 17
+2.12 Applications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.12.1 Compte Epargne : Calculette d’int´ erˆ ets . . . . . . . . . . . . . . . . . . . . . . 18
+2.12.2 Oscillations harmoniques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.12.3 Oscillateur nonlin´ eaire dissipatif . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.12.4 Mod´ ele de Lotka - Volterra . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.12.5 Mouvement des astres c´ elestes . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2
+<<<PAGE>>>
+3 Principes de la m´ ethode aux Diﬀ´ erences Finies pour les EDP . 23
+3.1 Formule de Taylor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+3.2 Discr´ etisation des d´ eriv´ ees premi` eres . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+3.2.1 Discr´ etisation des d´ eriv´ ees secondes . . . . . . . . . . . . . . . . . . . . . . . . 25
+4 Strat´ egie de base dans les approches de discr´ etisation 26
+4.1 Maillage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.2 M´ ethodes explicites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+4.2.1 M´ ethode d’Euler progressive . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+4.2.2 Implementation du sch´ ema explicite d’Euler progres sive . . . . . . . . . . . . 27
+4.2.3 Forme matricielle de l’´ equation discrete . . . . . . . . . . . . . . . . . . . . . 29
+4.2.4 Visualisation des solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+4.3 M´ ethodes implicites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+4.3.1 M´ ethode de Crank-Nicolson . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+4.3.2 Forme matricielle de l’´ equation discr´ ete et Algorithme de Thomas . . . . . . . 32
+5 Equations paraboliques. R´ esolution num´ erique de l’´ equation de la chaleur par
+Crank-Nicolson 34
+5.1 Algorithme de Crank-Nicolson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+5.2 Impl´ ementation en MATLAB ou SCILAB. . . . . . . . . . . . . . . . . . . . . . . . . 36
+5.3 Visualisation des solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+5.4 Comparaisons des conditions aux limites . . . . . . . . . . . . . . . . . . . . . . . . . 39
+5.5 M´ ethode d’Euler r´ etrograde ou implicite. . . . . . . . . . . . . . . . . . . . . . . . . . 41
+6 T raitement des conditions aux limites de Neumann 42
+6.1 Conditions aux limites de Neumann d’ordre 1 . . . . . . . . . . . . . . . . . . . . . . . 42
+6.2 Implementation des conditions aux limites de Neumann d’ ordre 1 en utilisant la
+m´ ethode d’Euler explicite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+6.3 Implementation des conditions aux limites de Neumann d’ ordre 2 en utilisant la
+m´ ethode d’Euler explicite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+6.4 Implementation des conditions aux limites de Neumann en utilisant la m´ ethode de
+Crank-Nicolson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+6.5 Conditions aux limites p´ eriodiques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+7 Sch´ emas aux plusieurs niveaux temporels 50
+7.1 Sch´ ema de Leap-Frog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+7.2 Sch´ ema de Lax-Wendroﬀ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+8 Sch´ emas de discr´ etisation. Resum´ e 52
+9 Consistance 52
+9.1 Consistance de la m´ ethode d’Euler progressif . . . . . . . . . . . . . . . . . . . . . . 53
+9.2 Consistance du sch´ ema de DuFort-Frankel . . . . . . . . . . . . . . . . . . . . . . . . . 54
+10 Stabilit´ e 54
+10.1 Stabilit´ e d’un point du vue pratique . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
+10.2 Stabilit´ e de m´ ethode de Crank-Nicolson . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+11 Convergence 58
+11.1 Th´ eor` eme de Lax . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+3
+<<<PAGE>>>
+12 Propagation des erreurs. 60
+13 Analyse de F ourier des EDP . R´ elation de dispersion 62
+14 Equations hyperboliques 64
+14.1 Equation d’advection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+14.1.1 Sch´ ema upwind . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+14.1.2 Impl´ ementation du sch` ema explicite upwind . . . . . . . . . . . . . . . . . . . 64
+14.1.3 Sch´ ema explicite centr´ e . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+14.1.4 Sch´ ema de Lax-Friedrichs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+14.1.5 Sch´ ema de Lax-Wendroﬀ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68
+14.1.6 Sch´ ema de Leap-Frog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+14.1.7 Sch´ ema de Crank-Nicolson . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+14.2 Sch´ emas de l’´ equation d’onde d’ordre 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+14.3 Conditions aux limites num´ eriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78
+15 Equations elliptiques 79
+15.1 Equation de Poisson en coordonn´ ees cart´ esiennes . . . . . . . . . . . . . . . . . . . . . 79
+15.2 Equation de Poisson en coordonn´ ees polaires . . . . . . . . . . . . . . . . . . . . . . . 83
+16 R´ esolution num´ erique de l’´ equation de chaleur ` a 2 dimension 85
+16.1 M´ ethode explicite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 85
+16.2 M´ ethode implicite . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 87
+17 EDP nonlin´ eaires 88
+17.1 R´ esolution num´ erique de l’´ equation de Burgers ` a une dimension. . . . . . . . . . . . . 88
+17.1.1 M´ ethode de Mac-Cormack . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89
+17.1.2 M´ ethode de Crank-Nicolson. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89
+17.2 R´ esolution num´ erique de l’´ equation de Burgers non visqueuse ` a une dimension. . . . . 90
+17.2.1 M´ ethode de Lax. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+17.2.2 M´ ethode de Lax-Wendroﬀ. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+17.2.3 M´ ethode de Mac-Cormack. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+17.3 R´ esolution num´ erique de l’´ equation de Korteweg de Vries. . . . . . . . . . . . . . . . 91
+17.3.1 Discr´ etisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+17.3.2 R´ esolution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 92
+4
+<<<PAGE>>>
+1 Mod´ elisation math´ ematique et les ´ equations diﬀ´ erentielles aux
+d´ eriv´ ees partielles
+En math´ ematiques une ´ equation aux d´ eriv´ ees partiellesou (EDP) est une ´ equation dont les solutions
+sont les fonctions inconnues v´ eriﬁant certaines conditions concernant leurs d´ eriv´ ees partielles.
+Une EDP a souvent de tr` es nombreuses solutions. Alors que le s ensembles de solutions d’une
+´ equation diﬀ´ erentielle ordinaire sont param´ etr´ ees par un ou plusieurs param` etres correspondant aux
+conditions aux limites, dans le cas des EDP les conditions au x limites se pr´ esentent plutˆ ot sous la
+forme de fonction. Intuitivement cela signiﬁe que l’ensemb le des solutions est beaucoup plus grand,
+ce qui est vrai dans la quasi-totalit´ e des probl` emes.
+Les EDP sont tr` es r´ epandues dans les sciences, puisqu’elles apparaissent aussi bien en dynamique
+des structures, m´ ecanique des ﬂuides que dans les th´ eories de la gravitation, de l’´ electromagn´ etisme
+(´ equations de Maxwell) ou en ﬁnance. Elles sont primordiales dans des domaines tels que la simulation
+a´ eronautique, la synth` ese d’images, ou la pr´ evision m´ et´ eorologique. Enﬁn, les ´ equations les plus
+importantes de la relativit´ e g´ en´ erale et de la m´ ecanique quantique sont ´ egalement des EDP.
+Comme un exemple consid´ erons un syst` eme de deux trous noirs. Une binaire compacte spiralante
+est ce que deviendra le syst` eme de deux trous noirs ` a la ﬁn de sa vie. A la ﬁn de la phase spiralante,
+le syst` eme binaire atteint ce qu’on appelle la derni` ere orbite circulaire.
+Sur cette orbite les calculs approximatifs doivent ˆ etre remplac´ e par un calcul de resolution num´ eriques
+des ´ equations d’Einstein. Un tel calcul est indispensable pour d´ ecrire le m´ ecanisme de fusion des deux
+trous noirs, et obtenir la forme d’onde gravitationnelle pr oduite lors de cette phase. Ce probl` eme
+diﬃcile a ´ et´ e l’objet de ce qu’on a appel´ e le ” binary blackhole grande challenge ”, qui a mobilis´ e de
+nombreux instituts am´ ericains. En 2012 la relativit´ e num´ erique a r´ eussi le r´ esoudre num´ eriquement
+et simuler la fusion des deux trous noirs. En partie grace ` a c es simulations les chercheurs de la
+collaboration LIGO-Virgo ont en eﬀet d´ etect´ e des ondes gravitationnelles.
+L’un des dix probl` emes ` a un million de dollars propos´ es par la fondation Clay consiste ` a montrer
+l’existence et la continuit´ e par rapport aux donn´ ees initiales d’un syst` eme d’EDP appel´ e ´ equations de
+Navier Stokes. Ces ´ equations servent ´ enorm´ ement dans lam´ ecanique des ﬂuides.
+1.1 Equations non stationnaires
+Des ´ equations non stationnaires correspondent ` a une ´ evolution temporelle. La solution est donn´ ee
+` a partir d’une fonction ( ou condition initiale) que l’on do it propager le long de l’axe du temps; en
+compl´ ement on doit tenir compte des conditions aux limites du probl` eme.
+5
+<<<PAGE>>>
+1.1.1 Equation de la chaleur
+
+
+
+∂u
+∂t − β∆ u = f (x, y, z, t) ( x, y, z) ∈ Ω
+u(t = 0, x, y, z) = g(x, y, z)
+u(t, x, y, z) = 0 ( x, y, z) ∈ ∂Ω
+(1)
+Ici ∆ est le Laplacien:
+∆ = ∂2u
+∂x2 + ∂2u
+∂y 2 + ∂2u
+∂z 2
+Ce probl` eme est connue aussie sous le nom d’´ equation de diﬀusion et mod´ elise la diﬀusion ou mi-
+gration d’une concentration ou densit´ e ` a travers des fronti` eres ∂Ω du domaine Ω. On peut imaginer
+un poluant diﬀusant dans l’atmosph` ere, ou bien une esp` ece chimique migrant dans un substrat.
+1.1.2 Equation de convection-diﬀusion
+
+
+
+∂u
+∂t − V · ∇u − β∆ u = f
+u(t = 0, x) = g(x)
+u(t, x) = 0 x ∈ ∂Ω
+(2)
+Il existe de nombreuse variantes de l’´ equation de la chaleurs. Supposons que la chaleur se propage
+dans un milieus en mouvement comme, par exemple, un ﬂuide ani m´ e d’une vitesseV (x, t). On doit
+ajouter dans l’´ equation de chaleur un terme qui s’appelle le terme de convection. La solution de cette
+´ equation repr´ esente aussie la fonction de distribution dont les particules individuelles participent au
+mouvement Brownian (th´ eoreme Feynman-Kac).
+1.1.3 Equation d’advection
+
+
+
+∂u
+∂t − V · ∇u = 0
+u(t = 0, x) = g(x)
+u(t, x) = 0 x ∈ ∂Ω
+(3)
+Cette ´ equation d´ ecrit la propagation d’une ﬂuctuation sans deformation. La fonction g(x − V t)
+est une solution de l’´ equation.
+1.1.4 Equation d’ondes
+L’´ equation des ondes mod´ elise des ph´ enom` enes de propagation d’ondes ou de vibration.
+
+
+
+∂2u
+∂t2 − ∆ u = f
+u(t = 0, x) = g
+u = 0 x ∈ ∂Ω
+∂u
+∂t (t = 0) = g1(x) x ∈ ∂Ω
+(4)
+La nature des ondes ou des paquets d’onde ou des ﬂuctuations q ui se propagent peut ´ etre tr` es
+diﬀ´ erentes.
+• A une ﬂuctuation thermique qui se propage on associe PHONON.
+• A une ﬂuctuation de densit´ e volumique de charge dans un plas ma qui se propage on associe
+PLASMON.
+• A une ﬂuctuation d’aimantation qui se propage on associe MAG NON.
+• A une deformation ´ elastique qui se propage on associe POLAR ON.
+6
+<<<PAGE>>>
+• A un paquet d’une onde ´ electromagn´ etique on associe PHOTON.
+• A une ﬂuctuation de polarisation d’une onde qui se propage on associe EXCITON.
+En 2 dimensions l’´ equation mod´ elise les vibrations d’unemembrane ´ elastique tendue . Sous l’action
+d’une force elle se d´ eforme et son d´ eplacement est not´ eu. On suppose qu’elle est ﬁx´ ee sur son bord,
+ce qui donne une condition aux limites de Dirichlet.
+1.1.5 Equations de Maxwell
+La propagation des ondes ´ electromagn´ etiques est r´ egie par les ´ equations des Maxwell:
+{
+rot ⃗E = − ∂ ⃗B
+∂t
+rot ⃗B = 1
+c2
+∂ ⃗E
+∂t
+(5)
+Supposons que l’onde ⃗E(0, Ey, 0), ⃗B(Bx, 0, 0) se propage dans la direction OZ. Notons B ≡
+Bx, E ≡ Ey. Soit c = 1.
+Le syst` eme se transforme au syst` eme de deux ´ equations coupl´ ees:
+{ ∂E
+∂z = ∂B
+∂t∂B
+∂z = ∂E
+∂t
+(6)
+Pour r´ esoudre le syst` eme de Maxwell on utilise un sch´ ema a ux diﬀ´ erence ﬁnis dit Leap Frog (
+Saute Mouton).
+1.1.6 Equation de Schrodinger
+L’´ equation de Schrodinger d´ ecrit l’evolution de la fonction d’onde Ψ d’une particule soumise ` a un
+potentiel V . Le module au carr´ e |Ψ |2 s’interpr` ete comme la densit´ e de probabilit´ e pour d´ etecter que
+la particule se trouve au point ( x, t).
+
+
+
+i ∂Ψ
+∂t + ∆Ψ − V Ψ = 0
+Ψ( t = 0) = Ψ 0(x)
+Ψ(0 , t) = 0 x ∈ ∂Ω
+(7)
+Pour r´ esoudre l’´ equation de Schrodinger on utilise le sch´ ema aux diﬀ´ erences ﬁnis dit Crank- Nicol-
+son qui conserve la norme de fonction-d’onde.
+1.1.7 Equation de Klein-Gordon
+L’´ equation de Klein-Gordon est une version relativiste de l’´ equation de Schrodinger d´ ecrivant des
+particules massives de spin nul, sans ou avec charge ´ electr ique.
+
+
+
+∂2Ψ
+∂t2 − ∆Ψ − bΨ = 0
+Ψ( t = 0, x) = Ψ 0(x)
+Ψ = 0 x ∈ ∂Ω
+(8)
+7
+<<<PAGE>>>
+1.1.8 Equation de Korteweg de V ries
+∂u
+∂t + u ∂u
+∂x + b ∂3u
+∂x3 = 0 (9)
+Une des solutions de cette ´ equation nonlin´ eaire s’appelle soliton. C’est une onde solitaire qui se
+propage sans se d´ eformer dans un milieu non-lin´ eaire et dispersif.
+Ce mode de propagation d’une vague sur de longues distances e xplique aussi la propagation des
+tsunami. Ceux-ci se d´ eplacent pratiquement sans eﬀet notoi re en eaux profondes.
+L’utilisation de solitons a ´ et´ e propos´ ee pour am´ eliorer la performance des transmissions dans les
+r´ eseaux optiques de t´ el´ ecommunications.
+En th´ eorie (quantique) des champs, les solitons topologiq ues sont des solutions classiques non
+triviales topologiquement. Ils portent diﬀrents noms suiva nt qu’ils minimisent l’action ( instanton)
+ou l’´ energie, et en fonction des topologies respectives de l’espace et du groupe de jauge (monopˆ ole,
+vortex, skyrmion, toron,...).
+1.1.9 Equation de Sine-Gordon
+∂2u
+∂t2 − ∂2u
+∂x2 − sin u = 0 (10)
+Les solutions de cette ´ equation nonlin´ eaire sont aussi les solitons: kink et antikink.
+1.1.10 Equation de Black et Scholes
+
+
+
+∂V
+∂t − rV + rS ∂V
+∂S + 1
+2 σ2S2 ∂2V
+∂S 2 = 0
+V (t = T, S ) = max(S − K, 0)
+S ∈ [0, L]
+(11)
+Cette ´ equation permet de trouver le prix V (S, t) de l’option d’achat (ou call) d’une action qui vaut
+initialement S et qu’on pourra acheter au prix K dans un temps ult´ erieur T . V (0, S) est le prix au
+temps t = 0 de l’option d’achat de prix d’exercice K ` a l’´ ech´ eanceT > 0, et d’actif S en t = 0. On
+note σ la votalit´ e de l’action etr le taux d’int´ erˆ et. est un probl` eme avec condition ﬁnale et non pas
+initiale, mais que le signe de d´ eriv´ ee seconde en espace est oppos´ e ` a celui dans (10). Par cons´ equent,
+apr` es inversion du temps (10) est bien une ´ equation parabolique.
+1.1.11 Equations de Keller-Segel
+De nombreux exemples proviennent de la biologie qui constit ue un vaste champ d’applications et une
+source de nombreuses questions des math´ ematiques nouvell es. L’exemple le plus classique recouvre
+des ph´ enom` enes appel´ es ”chimiotactie”. Cette terminologie recouvre un colonies bact´ eriennes qui
+adopte des mouvements collectifs surprenants ` a partir de c ommunications individuelles ´ el´ ementaires.
+L’analyse math´ ematique permet de faire le lien entre ces co mportement individuels suppos´ es et les
+ph´ enom` enes collectifs obsev´ es ( concentrations ponctuelles anormalement fortes, fronts p´ eriodiques o` u
+alternent fortes densit´ e et zones d´ eser´ ees, zones d’invasion dont les fronti` eres suivent des lois que l’on
+voudrait expliquer). Les ´ equations de Keller-Segel d´ ecrivent ces ph´ enom` enes:
+{ ∂n
+∂t − β∆ n − div(nχ∇φ) = 0
+−∆ φ = n (12)
+8
+<<<PAGE>>>
+1.1.12 Equations de Navier-Stokes
+Les ´ equations de Navier-Stokes restent un des grands probl ` emes math` ematiques depuit qu’elles ont
+´ et´ e ´ ecrites au d´ ebut de 19 ` eme si` ecle pour mod` eliser la dynamique des ﬂuides.
+• La forme la plus g´ en´ erale des ´ equations de Navier-Stokes:
+ρ( ∂⃗ v
+∂t + 1
+2 grad(v2) − [⃗ v× rot⃗ v]) = ρ ⃗ g− grad p + µ∆ ⃗ v+ 1
+3 µ grad (div ⃗ v) (13)
+• Les ´ equations d’Euler.
+
+
+
+∂ρ
+∂t = −(ρ ∂vx
+∂x + vx
+∂ρ
+∂x + ρ ∂vy
+∂y + vy
+∂ρ
+∂y )
+∂vx
+∂t = −(vx ∂vx
+∂x + vy ∂vx
+∂y + 1
+ρ
+∂p
+∂x )
+∂vy
+∂t = −(vx
+∂vy
+∂x + vy
+∂vy
+∂y + 1
+ρ
+∂p
+∂x )
+(14)
+Ici vx et vy sont les composantes des vitesses, ρ est la dinsit´ e d’un ﬂuide.
+Les ´ equations d’Euler sont le cas limite des ´ equations de Navier-Stokes pour les grandes nombres
+de Reynolds. On neglige par la viscosit´ e devant les termes d ’inerties nonlin´ eaires .
+• Ecoulement bidimensionnel d’un ﬂuide re´ el visqueux incompressible.
+
+
+
+∂vx
+∂t = −vx ∂vx
+∂x − vy ∂vx
+∂y − gx − 1
+ρ
+∂p
+∂x + µ
+ρ ( ∂2vx
+∂x2 + ∂2vx
+∂y 2 )
+∂vy
+∂t = −vy
+∂vy
+∂y − vx
+∂vy
+∂x − gy − 1
+ρ
+∂p
+∂y + µ
+ρ ( ∂2vy
+∂x2 + ∂2vy
+∂y 2 )
+∂vx
+∂x + ∂vy
+∂y = 0
+(15)
+• Ecoulement monodimensionnel
+Si il n’a y pas de gradient de pression le long du parcours ( ∂p
+∂x = 0 ) l’´ equation se transforme ` a
+l’´ equation de Burgers:
+∂vx
+∂t + vx
+∂vx
+∂x = µ
+ρ
+∂2vx
+∂x2 .
+1.1.13 Equation de Burgers
+∂u
+∂t + u ∂u
+∂x = c ∂2u
+∂x2 .
+L’´ equation de Burgers monodimensionelle mod´ elise le mouvement d’un ﬂuide compressible, en
+particulier la propagation des ondes de choc. Celles ci sont par exemple des ondes de choc produites
+par des avions se d´ eplacant ` a une vitesse supersonic ou par des explosions. Les choc apparaissent
+aussi dans des ph´ enom` enes faisant intervenir des vitesse s plus petites. On peut s’interesser au ﬂux
+du p´ etrole dans des r´ eservoirs de p´ etrole : l’huile et l’e au ne se melangent pas et l’interface ainsi
+constitu´ ee forme ce que s’appelle choc. En 1859, le math´ ematicien Riemann a consid´ er´ e le probl` eme
+suivant: Soient deux cylindres de gaz de pressions diﬀ´ eren tes, separ´ es par une ﬁne membrane. Que
+se passe-t-il si on enleve la membrane? Ce probl` eme, appel´ e plus tard le probl` eme de Riemann, se
+r´ ev` ele ˆ etre tr` es compliqu´ e.La solution exacte a ´ et´ e trouv´ e par Peter Lax en 1957 qui aussi
+apport´ e contribution importante dans la m´ ethode aux diﬀ´ erences ﬁnies appliqu´ ee aux
+´ equations non lin´ eaires ` a savoir les m´ ethodes de Lax et de Lax-W endroﬀ.
+1.1.14 Equations de Lagrange
+∂L
+∂q − ∂
+∂t
+∂L
+∂p = 0
+9
+<<<PAGE>>>
+A chaque syst` eme physique on associe une fonction que s’app elle Lagrangien. L’equations de
+Lagrange d´ ecrit l’evolution du syst` eme dans le temps. En m´ echnique classique l’´ equations de Lagrange
+est ´ equivalente ` a l’´ equations de Newton. En physique relativiste et en th´ eorie quantique de champ
+l’´ equations de Lagrange d´ ecrit l’interaction entre des particules el´ ementaires, m ˆ me leurs naissance et
+disparition.
+1.2 Equations stationnaires
+1.2.1 Equations d’Einstein
+Rµν − 1
+2 gµνRρρ = 8πGTµν + Λ gµν
+o` uRµν est le tenseur de Ricci, R le scalaire de Ricci, gµν le tenseur m´ etrique Λ la constante
+cosmologique, G la constante gravitationnelle et Tµν le tenseur ´ energie-impulsion.
+Les solutions de l’´ equation d’Einstein sont les tenseurs m´ etriques de l’espace-temps. Elles d´ ecrivent
+la structure de l’espace-temps en incluant le mouvement ine rtien des objets. Du fait que les ´ equations
+de champs ne sont pas lin´ eaires, elles ne peuvent pas ˆ etre c ompl` etement r´ esolues (c’est-` a-dire sans
+faire des approximations).
+1.2.2 Equation de Poisson
+En ´ electrostatique le potentiel coulombien V (x, y) satisfait l’´ equation suivante:
+{ ∆ V = −ρ(x, y) x ∈ Ω
+V (x, y) = h(x, y) x ∈ ∂Ω (16)
+o` uρ(x, y) est la densit´ e locale de charge.
+1.2.3 Syst` eme de Lam´ e
+Le syst` eme de Lam´ e est un cas particulier des ´ equations st ationnaire de l’´ elasticit´ e lin´ earis´ ee qui
+mod´ elisent les d´ eformations d’un solide sous l’hypoth` ese de petites d´ eformations et de petites d´ eplacements.
+{ −µ∆ u − (µ + λ)∇(div u) = f
+u = 0x x ∈ ∂Ω (17)
+1.2.4 Equation des plaques
+La solution des ´ equations des plaques donne la d´ eformation ´ elastique d’une plaque plane d’´ epasseur
+petite sous l’action de la force normale.
+
+
+
+∆(∆ u) = f
+u = 0 x ∈ ∂Ω
+∂u
+∂n = 0 x ∈ ∂Ω
+(18)
+1.2.5 Equation de Helmholtz
+
+
+
+∆ u + k2u = 0
+u(t = 0, x) = g(x)
+u = 0 x ∈ ∂Ω
+(19)
+10
+<<<PAGE>>>
+L’´ equation de Helmholtz est une ´ equation aux d´ eriv´ ees partielles elliptique qui apparait lorsque
+l’on cherche des solutions stationnaires de l’´ equation de propagation des ondes d’Alembert, appel´ ees
+” modes propres ”. Pour que le probl` eme math´ ematique soit b ien pos´ e, il faut sp´ eciﬁer une condition
+aux limites sur le bord du domaine, typiquement :
+soit la condition de Dirichlet (le champ scalaire est nul sur le bord), soit la condition de Neumann.
+soit la condition de Neumann (la d´ eriv´ ee normale du champ scalaire est nulle sur le bord).
+2 ´Equations diﬀ´ erentielles ordinaires
+2.1 Probl` eme de Cauchy
+On consid` re une fonction continue f : R+ × R → R.
+Pour y0 ∈ R donn´ e, on cherchey : t ∈ R+ → y(t) ∈ R qui satisfait le problme suivant, appel´ e
+probl` eme de Cauchy :
+{ dy(t)
+dt = f (t, y(t))
+y(0) = y0
+(20)
+Un probl‘eme de Cauchy peut ˆ etre lin´ eaire, comme par exemple :
+{ dy(t)
+dt = 3y(t) − 3t
+y(0) = 1
+pour lequel f (t, y) = 3 y − 3t et dont la solution est y(t) = (1 − 1/3)e3t + t + 1/3.
+On peut avoir aussi des probl` emes non-lin´ eaires, comme :
+{ dy(t)
+dt = y1/3(t)
+y(0) = 0
+avec f (t, y) = y1/3. Ce probl` eme admet les trois solutions suivantes :
+y(t) = 0 , y(t) =
+√
+t3/27, y(t) = −
+√
+t3/27.
+Le probl` eme suivant : { dy(t)
+dt = 1 + y2(t)
+y(0) = 0
+admet comme solution la fonction y(t) = tan( t) avec 0 < t < π/ 2, cest-‘a-dire une solution locale.
+Th´ eor` eme (de Cauchy-Lipschitz): Sif est continue sur R+ × R et sil existe une constante L > 0
+telle que |f (t, v) − f (t, w)| = L|v − w| ∀ v, w ∈ R, ∀t > 0, alors le probl` eme de Cauchy admet une
+solution globale (c-` a-d. pour tout t > 0) et elle est unique.
+2.2 Principes de la m´ ethode aux Diﬀ´ erences Finies
+Pour discr´ etiser le temps, on introduit un pas temporel ∆ t. On d´ eﬁnit un maillage o` u des coordonn´ ees
+discr´ etes du temps sont
+tn = n∆ t.
+On note yn la valeur d’une solution approch´ ee calcul´ ee aux points t = tn.
+On note y(tn) la valeur de la solution exacte.
+Le principe de la m´ ethode des diﬀ´ erence ﬁnies est de rempla cer les d´ eriv´ ees par des diﬀ´ erences
+ﬁnies en utilisant des formules de Taylor dans lesquelles on n´ eglige les restes.
+11
+<<<PAGE>>>
+2.3 Formules de Taylor
+y(t + ∆ t) = y(t) + dy
+dt ∆ t + 1
+2
+d2y
+dt2 (∆ t)2 + ... + 1
+n!
+dny
+dtn (∆ t)n + O((∆ t)n+1) (1)
+y(t − ∆ t) = y(t) − dy
+dt ∆ t + 1
+2
+d2y
+dt2 (∆ t)2 + ... + (−1)n
+n!
+dny
+dtn (∆ t)n + O((∆ t)n+1) (2)
+2.4 Discr´ etisation des d´ eriv´ ees premi` eres
+• Deriv´ ee progressive temporelle::
+Pour obtenir l’approximation de la d´ eriv´ ee on exprime la d´ eriv´ eedy
+dt de la formule (1):
+dy
+dt (tn) = y(tn + ∆ t) − y(tn)
+∆ t + T1(y) = y(tn+1) − y(tn)
+∆ y + T1(y)
+Ici l’erreur de troncature est
+T1(y) = − 1
+2!
+d2y
+dt2 (∆ t) − 1
+3!
+d3y
+dt3 (∆ t)2 + O((∆ t)3)
+On observe que T1(u) = O(∆ t) et on obtient
+∂y
+∂t (tn) ≈ yn+1 − yn
+∆ t + O(∆ t) ≈ yn+1 − yn
+∆ t
+• Deriv´ ee r´ etrograde temporelle:
+∂y
+∂t (tn) = y(tn) − y(tn − ∆ t)
+∆ t + T2(y) = y(tn) − y(tn−1)
+∆ t + T2(y)
+Ici l’erreur de troncature est
+T2(y) = 1
+2!
+∂2y
+∂t2 (∆ t) − 1
+3!
+∂3y
+∂t3 (∆ t)2
+On observe que T2(y) = O(∆ t) et on obtient:
+dy
+dt (tn) ≈ yn − yn−1
+∆ t + O(∆ t) ≈ yn − yn−1
+∆ t
+• Deriv´ ee centr´ ee temporelle:
+Pour obtenir l’approximation de la d´ eriv´ ee on soustraie (1) de (2) et on exprime la d´ eriv´ eedy
+dt du
+r´ esultat:
+dy
+dt (tn) = y(tn + ∆ t) − y(tn − ∆ t)
+2∆ t + T3(y) = y(tn+1) − y(tn−1)
+2∆ t + T3(y)
+Ici l’erreur de troncature est
+T3(y) = − 1
+6
+d3y
+dt3 (∆ t)2 + O(∆ t3)
+On observe que T3(y) = O(∆ t2) et on obtient:
+dy
+dt (tn) ≈ yn+1 − yn−1
+2∆ t + O(∆ t)2 ≈ yn+1 − yn−1
+2∆ t
+12
+<<<PAGE>>>
+2.5 Discr´ etisation des d´ eriv´ ees secondes
+On ajoute les deux s´ eries de Taylor et apr` es arrangement, o n obtient l’approximation suivante du
+second ordre:
+• D´ eriv´ ee temporelle:
+d2y
+dt2 (tn) = y(t + ∆ t) − 2y(t) + y(t − ∆ t)
+(∆ t)2 + T4(y),
+o` u l’erreur de troncature
+T4(y) = − 1
+12
+d4y
+dt4 (∆ t)2 + O(∆ t4)
+et observant que T4(y) = O(∆ t2) on obtient:
+d2y
+dt2 (tn) = u(tn+1) − 2u(tn) + u(tn−1)
+(∆ t)2 + T4(u) ≈ un+1 − 2un + un−1
+(∆ t)2 + O(∆ t)2
+2.6 Consistance
+2.6.1 Erreur de troncature locale
+On appelle erreur de troncature locale l’erreur commise lor squ’on eﬀectue UN SEUL P AS de temps
+du sch´ ema. Autrement dit, on compare la solution de l’EDO y(tn+1)
+{
+( dy(t)
+dt = f (t, y(t))
+y(tn) = yn
+au temps tn+1 et la valeur yn+1 obtenue avec un sch´ ema num´ erique. On la note parfois l’erreur
+εn = yn+1 − y(tn+1)
+2.6.2 Consistance du sch´ ema
+Le sch´ ema sera dit consistant si l’erreur de troncature loc ale tend vers zero:
+lim∆ t→0εn = 0
+Et il sera d’ordre p s’il existe K tel que:
+|εn| ≤ K(∆ t)p
+2.6.3 Consistance du sch´ ema d’Euler progressif ou explicite
+Sch´ ema dEuler progressif :
+yn+1 − yn
+∆ t = f (tn, yn)
+soit
+yn+1 = yn + ∆ tf (tn, yn)
+Aﬁn de d´ emontrer la consistance du sch´ ema, on eﬀectue un d´ e veloppement limit´ e de l’erreur de
+troncature locale:
+13
+<<<PAGE>>>
+y(tn+1) − yn+1 = y(tn+1) − (yn + ∆ tf (tn, yn)) = dy
+dt ∆ t + y(tn) − T1(y) − (yn + ∆ t dy
+dt ) =
+= −T1(y) = 1
+2!
+d2y
+dt2 (∆ t) + 1
+3!
+d3y
+dt2 (∆ t)2 + ... = 1
+2!
+d2y
+dt2 (tn + η∆ t)(∆ t), η ∈ [tn, tn+1]
+On en d´ eduit qu’il existeK tel que
+|y(tn+1) − yn+1| ≤ K(∆ t)1
+On en d´ eduit que la m´ ethode d’Euler explicite est consistante, et d’ordre 1.
+2.6.4 Stabilit´ e du sch´ ema d’Euler progressif ou explicite
+Montrons que la m´ ethode d’Euler explicite est stable: on vacomparer d’une part la solution approch´ ee
+obtenue au temps n avec le sch´ ema exact
+{ yn+1 = yn + ∆ tf (tn, yn)
+y(0) = y0
+et d’autre part la solution obtenue avec le sch´ ema perturb´e:
+{ zn+1 = zn + ∆ tf (tn, zn) + ∆ tτn
+z(0) = y0 + ε0
+On commence par recherche une ´ egalit´ e sur un seul pas de temps, que l’on va ensuite it´ erer:
+zn+1 − yn+1 = (zn − yn + ∆ t(f (tn, yn) − f (tn, zn)) − ∆ tτn
+f est lipschitzienne, donc on en d´ eduit l’in´ egalit´ e
+|zn+1 − yn+1| = (1 + ∆ tL)|zn − yn| + ∆ t|τn|
+Il est facile de montrer par r´ ecurence que
+|zn − yn| = (1 + ∆ tL)n|ε0| + ∆ t
+n−1∑
+i=0
+(1 + ∆ tL)n−1−i|τi|
+Il vient alors
+∆ t
+n−1∑
+i=0
+(1+∆ tL)n−1−i|τi| ≤ max|τi|∆ t
+n−1∑
+i=0
+(1+∆ tL)n−1−i ≤ max|τi|∆ t
+n−1∑
+i=0
+(1+∆ tL)i ≤ max|τi|∆ t (1 + ∆ tL)n − 1
+L
+Enﬁn, on sait que (1 + ∆ tL) ≤ e∆ tL, et on en d´ eduit que (1 + ∆ tL)n ≤ e∆ tLn. On a de plus
+n∆ t ≤ T . Donc
+|zn − yn| ≤ eLT |ε0| + (eLT − 1)
+L max|τi|
+soit
+∃K ∈ R ∀n ∈ N |zn − yn| ≤ Kmax(|ε0| + max|τi|)
+La la m´ ethode d’Euler explicite est donc stable.
+Th´ eor` eme sur la stabilit´ e des m´ ethodes ` a un pas temporel:
+14
+<<<PAGE>>>
+Soit une m´ ethode ` a un pas de la forme:
+yn+1 = yn + Φ( tn, yn, ∆ t)
+alors la m´ ethode est stable si
+(t, y, ∆ t) → Φ( t, y, ∆ t)
+est lipschitzienne par rapport ` a y.
+2.7 Sch´ ema de Runge-Kutta d’ordre 2
+On ´ etudie le sch´ ema de Runge-Kutta suivant
+
+
+
+yn+1 = yn + ∆ tf (t′, y′)
+y′ = yn + ∆ t
+2 f (yn, tn)
+t′ = tn + ∆ t
+2
+L’id´ ee de sch´ ema est de ne pas d´ eriver la fonctionf mais d’utiliser les arguments de f deplac´ es.
+On peut re´ ecrir le sch´ ema de la forme:
+yn+1 = yn + ∆ tf (tn + ∆ t
+2 , yn + ∆ t
+2 f (yn, tn))
+2.7.1 Consistance du sch´ ema de Runge-Kutta
+On applique la formule de Taylor ` a la fonction de deux variab les:
+f (tn + ∆ t
+2 , yn + ∆ t
+2 f ) = f (tn, yn) + ∂f
+∂t
+∆ t
+2 + ∂f
+∂y
+∆ t
+2 f + O((∆ t)2)
+On utilise aussi les formules:
+{
+y′(t) = f (t, y(t))
+y′′(t) = ∂f
+∂t + f ∂f
+∂y
+On en d´ eduit
+y(tn+1) = y(tn) + y′(tn)∆ t + ∆ t2
+2 y′′(tn) + O((∆ t)3) =
+= y(tn) + f (tn, y(tn))∆ t + ∆ t2
+2 ( ∂f
+∂t + f ∂f
+∂y ) + O((∆ t)3)
+Aﬁn de d´ emontrer la consistance du sch´ ema, on eﬀectue un d´ eveloppement limit´ e de l’erreur de
+troncature locale:
+y(tn+1) − yn+1 = y(tn+1) − (yn + ∆ tf (tn + ∆ t
+2 , yn + ∆ t
+2 f (yn, tn))) =
+= y(tn) + f (tn, y(tn))∆ t + (∆ t)2
+2 ( ∂f
+∂t + f ∂f
+∂y ) + O((∆ t)3) − yn−
+−f (tn, yn)∆ t + ∂f
+∂t
+(∆ t)2
+2 + ∂f
+∂y
+(∆ t)2
+2 f + O((∆ t)3) = O((∆ t)3)
+Donc le sch´ ema est consistant et d’ordre 2.
+Montrons que ce sch´ ema est stable. Pour cela, il suﬃt de mont rer que
+y ↦→Φ( tn, y, ∆ t)
+15
+<<<PAGE>>>
+est lipschitzienne par rapport ` a y.
+|Φ( tn, u, ∆ t) − Φ( tn, v, ∆ t)| = |f (tn + ∆ t
+2 , u + ∆ t
+2 f (u, tn)) − f (tn + ∆ t
+2 , v + ∆ t
+2 f (v, tn)) ≤
+L|u + ∆ t
+2 f (u, tn) − v − ∆ t
+2 f (v, tn)| ≤ L|u − v| + L∆ t
+2 |f (u, tn) − f (v, tn)| ≤ (L + L∆ t
+2 )|u − v|
+2.8 Sch´ ema de Runge-Kutta d’ordre 4
+Il existe d’autres m´ ethodes plus compliqu´ ees, comme par exemple la m´ ethode de Runge-Kutta dordre
+4 suivante: 
+
+
+yn+1 = yn + ∆ t(K1 + 2K2 + 2K3 + K4)
+K1 = f (tn, yn)
+K2 = f (tn + ∆ t
+2 , yn + ∆ t
+2 K1)
+K3 = f (tn + ∆ t
+2 , yn + ∆ t
+2 K2)
+K4 = f (tn+1, yn + ∆ tK3)
+2.9 Sch´ ema implicite d’Euler et sch´ ema implicite de Crank -Nicolson
+Sch´ ema dEuler progressif :
+yn+1 = yn + ∆ tf (tn, yn)
+Sch´ ema dEuler implicite :
+yn+1 = yn + ∆ tf (tn+1, yn+1)
+Sch´ ema implicite de Crank-Nicolson:
+yn+1 = yn + ∆ t
+2 (f (tn, yn) + f (tn+1, yn+1))
+2.10 Consistance du sch´ ema implicite de Crank-Nicolson
+Aﬁn de d´ emontrer la consistance du sch´ ema, on eﬀectue un d´ e veloppement limit´ e de l’erreur de
+troncature locale. On compare la solution de l’EDO
+{
+( dy(t)
+dt = f (y(t), t)
+y(tn) = yn
+au temps tn+1 et la valeur yn+1 obtenue avec le sch´ ema num´ erique de Crank-Nicolson:
+{
+yn+1 = yn + ∆ t
+2 (f (tn, yn) + f (tn+1, yn+1))
+y(tn) = yn
+On soustrait et ajoute le mˆ eme terme:
+y(tn+1) − yn+1 = y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, yn+1)) =
+= y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, y(tn+1)) ) − ∆ t
+2 (f (tn+1, yn+1) − f (tn+1, y(tn+1)) )
+On en d´ eduit en supposant que la fonction f est lipschitzienne:
+|y(tn+1) − yn+1| ≤ | y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, y(tn+1))) + ∆ tL
+2 |y(tn+1) − yn+1|
+16
+<<<PAGE>>>
+soit
+(1 − ∆ tL
+2 )|y(tn+1) − yn+1| ≤ | y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, y(tn+1)))| =
+= |y(tn+1) − yn − ∆ t
+2 (y′(tn) + y′(tn+1))| =
+= y(tn)+∆ ty′(tn)+ (∆ t)2
+2 y′′(tn)+ (∆ t)3
+6 y(3)(tn)−yn − ∆ t
+2 (y′(tn)+ y′(tn)+∆ ty′′(tn)+ (∆ t)2
+2 y(3)(tn)) =
+= (∆ t)3
+12 y(3)(tn)
+On a utilis´ ey(tn) = yn car on ne s’interesse que de l’ordre du sch´ ema. (On appelle erreur de troncature
+locale l’erreur commise lorsqu’on eﬀectue UN SEUL P AS de temps du sch´ ema.)
+Il existe K tel que
+|y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, y(tn+1)))| ≤ K(∆ t)3
+Donc
+|y(tn+1) − yn+1| ≤ K(∆ t)3
+(1 − ∆ tL
+2 )
+Le sch´ ema implicite de Crank-Nicolson est consistant et d’ ordre 2.
+2.11 Convergence du sch´ ema implicite de Crank-Nicolson
+On ´ etudie la convergence du sch´ ema de Crank-Nicolson
+{
+( dy(t)
+dt = f (y(t), t)
+y(t0) = y0
+On estime l’erreur apr´ es avoir eﬀectuer n pas au total:
+y(tn+1) − yn+1 = y(tn+1) − yn − ∆ t
+2 (f (tn, yn) + f (tn+1, yn+1)) =
+= y(tn+1)−yn− ∆ t
+2 (f (tn, yn)+ f (tn+1, y(tn+1)) )+y(tn)−y(tn)− ∆ t
+2 (f (tn+1, yn+1)− f (tn+1, y(tn+1)) )
+|y(tn+1) − yn+1| =
+= |y(tn+1)−y(tn)|− ∆ t
+2 (f (tn, yn)+f (tn+1, y(tn+1)))+|y(tn)−yn|− ∆ t
+2 (f (tn+1, yn+1)−f (tn+1, y(tn+1)))
+De la mˆ eme mani` ere on peut montrer que:
+|y(tn+1) − yn+1| ≤ (1 + L∆ t
+1 − ∆ tL
+2
+)|y(tn) − yn| + K(∆ t)3
+(1 − ∆ tL
+2 )
+n = 0 |y(t1) − y1| ≤ (1 + L∆ t
+1− ∆ tL
+2
+)|y(t0) − y0| + K(∆ t)3
+(1− ∆ tL
+2 ) = K(∆ t)3
+(1− ∆ tL
+2 )
+n = 1 |y(t2) − y2| ≤ (1 + L∆ t
+1− ∆ tL
+2
+)|y(t1) − y1| + K(∆ t)3
+(1− ∆ tL
+2 ) = 2 K(∆ t)3
+(1− ∆ tL
+2 )
+...
+P our n |y(tn+1) − yn+1| ≤ Kn(∆ t)3
+(1− ∆ tL
+2 ) ≤ T (∆ t)2
+(1− ∆ tL
+2 )
+Donc si ∆ t tend vers zero la solution numerique (approch´ ee) tend vers solution exacte, ce que
+signiﬁe la convergence.
+17
+<<<PAGE>>>
+2.12 Applications
+2.12.1 Compte Epargne : Calculette d’int´ erˆ ets
+Les int´ erˆ ets g´ en´ er´ es par un livret ´ epargne v´ eriﬁe l’´ equation diﬀ´ erentielle:
+dy(t)
+dt = ry(t),
+o´ ur est le taux d’ int´ erˆ ets annuel.
+Soit le capital plac´ e y0 = 100 ε, r = 0 .06 Calculons la somme sur le livret ´ epargne apr´ es 1 ans en
+utilisant:
+a) M´ ethode continue (Continuous compounding)
+y(t) = y0ert, y (1) = 106 .1835
+b) M´ ethode d’Euler explicite avec ∆t = 1/12 (Cette m´ ethode utilise l’industrie banquaire).
+yn+1 = yn + ryn∆ t
+yn = y0(1 + r∆ t)n, y 12 = 106.1678
+c) M´ ethode de Runge-Kutta d’ordre 2.
+
+
+
+yn+1 = yn + f (y′, t′)∆ t
+y′ = yn + ∆ t
+2 f (yn, tn)
+t′ = tn + ∆ t
+2
+Soit { yn+1 = yn + ry′∆ t
+y′ = yn + ∆ t
+2 ryn
+Soit
+yn+1 = yn + ryn∆ t + 1
+2 r2y2
+n(∆ t)2, y 12 = 106.183628
+e) M´ ethode de Crank-Nicolson
+yn+1 = yn + ryn + ryn+1
+∆ t
+2
+Donc
+yn = ( 1 + r∆ t
+2
+1 − r∆ t
+2
+)n, y 12 = 106.1836679
+Il est rarement possible de trouver yn+1 explicitement. De facon g´ en´ erale on utilise la m´ ethode de
+Newton pour trouver yn+1.
+2.12.2 Oscillations harmoniques
+Appliquons les m´ ethodes num´ eriques suivantes pour r´ esoudre l’´ equation diﬀerentielle des oscillations
+harmoniques:
+d2Θ( t)
+dt2 = −ω2Θ( t)
+Introduisons la fonction v(t) = dΘ( t)
+dt . Ecrivons l’´ equation de la forme:
+18
+<<<PAGE>>>
+{
+dΘ( t)
+dt = v(t)
+dv(t)
+dt = −ω2Θ( t)
+a) M´ ethode d’Euler explicite
+{ Θ n+1 = Θ n + ∆ tvn
+vn+1 = vn − ω2Θ n∆ t
+Ce m´ ethode ne conserve pas l’´ energie et fonctionne tr` es mal. On l’abondone.
+b) M´ ethode d’Euler-Cromer
+{ Θ n+1 = Θ n + ∆ tvn+1
+vn+1 = vn − ω2Θ n∆ t
+c) M´ ethode de Runge-Kutta d’ordre 2.
+
+
+
+Θ n+1 = Θ n + v′∆ t
+vn+1 = vn − ω2Θ ′∆ t
+Θ ′ = Θ n + ∆ t
+2 vn
+v′ = vn − ∆ t
+2 ω2Θ n
+2.12.3 Oscillateur nonlin´ eaire dissipatif
+Appliquons les m´ ethodes num´ eriques suivantes pour r´ esoudre l’´ equation diﬀ´ erentielle des oscillations
+nonlin´ eaires:
+d2Θ( t)
+dt2 = −ω2 sin(Θ( t)) − k dΘ( t)
+dt
+a) M´ ethode d’Euler-Cromer
+{ Θ n+1 = Θ n + ∆ tvn+1
+vn+1 = vn − (ω2 sin Θ n + kΘ n)∆ t
+b) M´ ethode de Runge-Kutta d’ordre 2.
+
+
+
+Θ n+1 = Θ n + v′∆ t
+vn+1 = vn − (ω2 sin Θ ′ + k v′)∆ t
+Θ ′ = Θ n + ∆ t
+2 vn
+v′ = vn − ∆ t
+2 (ω2 sin Θ n + kΘ n)
+c) M´ ethode de Crank-Nicolson
+{ Θ n+1 = Θ n + vn+1∆ t
+vn+1 = vn + ∆ t
+2 (−ω2 sin Θ n+1 − k vn+1 − ω2 sin Θ n − k vn)
+On applique apr` es la m´ ethode de Newton.
+19
+<<<PAGE>>>
+2.12.4 Mod´ ele de Lotka - V olterra
+On consid` ere maintenant deux populations, x et y, o` u x sont les proies et y sont les pr´ edateurs.
+L´ evolution des deux populations est alors d´ ecrite par le syst‘eme d´ equations diﬀ´ erentielles
+{
+dx(t)
+dt = a x(t) − b x(t) y(t)
+dy(t)
+dt = −c y(t) + d x(t) y(t),
+o‘ua et c sont les facteurs de croissance des deux populations, b et d tiennent compte de linteraction
+entre les deux populations, Ce syst‘eme d´ equations diﬀ´ erentielles est connu comme mod` ele de Lotka-
+Volterra. Comment peut-on r´ esoudre ce probl` eme?
+Ecrivons le syst´ eme de la forme:
+dS(t)
+dt = f (S(t), t) = AS(t), S (t) = ( x(t), y(t)), A =
+( a −bx(t)
+dy(t) −c
+)
+Appliquons les m´ ethodes num´ eriques pour r´ esoudre cette´ equation vectorielle:
+a) M´ ethode de Runge-Kutta d’ordre 2.
+
+
+
+Sn+1 = Sn + f (S′, t′)∆ t
+S′ = Sn + ∆ t
+2 f (Sn, tn)
+t′ = tn + ∆ t
+2
+Soit
+
+
+
+xn+1 = xn + (ax′ − bx′y′)∆ t
+yn+1 = yn + (dx′y′ − cy′)∆ t
+x′ = xn + ∆ t
+2 (axn − bxnyn)
+y′ = xn + ∆ t
+2 (dxnyn − cyn)
+b) M´ ethode de Crank-Nicolson
+Sn+1 = Sn + ∆ t
+2 (f (Sn, tn) + f (Sn+1, tn+1))∆ t
+{ xn+1 = xn + ∆ t
+2 (axn − bxnyn + axn+1 − bxn+1yn+1) (1)
+yn+1 = yn + ∆ t
+2 (dxnyn − cyn + dxn+1yn+1 − cyn+1) (2)
+On exprime xn+1 de (1), on l’injecte dans (2), on calcule y(n + 1) ` a partir de xn et yn ` a l’aide de
+la m´ ethode de Newton.
+On pr´ esente ici les solutions obtenues par la m´ ethode d’Euler explicite avec les constantes suivantes:
+
+
+
+x(1) = 20 , y (1) = 9
+N = 20000
+∆ t = 0.001
+a = 2, b = 1, c = 1, d = 0.2
+20
+<<<PAGE>>>
+20 00010 0005 000 15 000
+20
+40
+10
+30
+5
+15
+25
+35
+nombre de jours
+nombre de lapins et lynx
+modèle de Lotta et Volterra
+00 20 4010 305 15 25 35
+10
+6
+8
+12
+3
+5
+7
+9
+11
+nombre de lapins
+nombre de  lynx
+modèle de Lotta et Volterra. Diagramme de phase
+00
+2
+4
+1
+2.12.5 Mouvement des astres c´ elestes
+• Probl` eme de deux corps: le mouvement de deux masses M et m
+On ´ ecrit d’abord 2 eme loi de Newton qui regie le mouvement de la Terre de masse m autour
+du Soleil de masse m:
+m d2⃗ r(t)
+dt2 = − mM G
+r(t)2
+⃗ r(t)
+r(t)
+Ici ⃗ r(t) est le vecteur position de la Terre, G est la constante fondamentale gravitationnelle. Le
+Soleil se trouve dans le centre du systme de coordonn´ ees. Pr ojetons l’´ eqiation sur les axes OX
+et OY. On obtient deux ´ equations scalaires:
+
+
+
+d2X(t)
+dt2 = − G M X (t)
+(
+√
+X(t)2+Y (t)2)3
+d2Y (t)
+dt2 = − G M Y (t)
+(
+√
+X(t)2+Y (t)2)3
+Introduisons les vitesses pour diminuer l’ordre des ´ equat ions: Vx(t) = dX(t)
+dt et Vy(t) = dY (t)
+dt et
+on re´ ecrit le syst` eme de la forme:
+
+
+
+dVx
+dt = − G M X (t)
+(
+√
+X(t)2+Y (t)2)3
+dVy
+dt = − G M Y (t)
+(
+√
+X(t)2+Y (t)2)3
+Vx(t) = dX
+dt
+Vy(t) = dY
+dt
+On r´ esout par DF les ´ equations en utilisant les algorithme s de Euler-Cromer. Discr´ etisons le
+syst` eme et notons Vx = v et Vy = u.
+
+
+
+vn+1 = vn − G M Xn
+(
+√
+X 2n+Y 2n )3 ∆ t
+un+1 = un − G M Yn
+(
+√
+X 2n+Y 2n )3 ∆ t
+Xn+1 = Xn + ∆ t vn+1
+Yn+1 = Yn + ∆ t un+1
+On impose les conditions initiales et on trouve facilement l es solution en utilisant la r´ eceptivit´ es
+des relations obtenues et appliquant une seule boucle par ra pport ` an. On pr´ esente la trajectoire
+21
+<<<PAGE>>>
+de la Terre. Il n’est pas diﬃcile d’ajouter la Lune. Dans ce ca s on obtient le syst` eme de 8
+equations que peut ˆ etre aussi facilement r´ esolu.
+−4 6 8 10
+−5
+−4
+−3
+3
+5
+ Terre autour du Soleil
+x coordonnee de la Terre
+y coordonnee de la Terre
+−1
+0
+0
+−2
+−2
+2
+2
+4
+4
+1
+−4 6 8 10
+−5
+−4
+−3
+3
+5
+Lune autour de la Terre, Terre autour du Soleil
+−1
+0
+0
+−2
+−2
+2
+2
+4
+4
+1
+22
+<<<PAGE>>>
+3 Principes de la m´ ethode aux Diﬀ´ erences Finies pour les ED P.
+Pour discr´ etiser l’espace-temps, on introduit un pas d’es pace ∆ x, et un pas du temps ∆ t. On
+d´ eﬁnit un maillage ou des coordonn´ ees discr´ etes de l’espace et du temps sont
+(tn, xi) = ( n∆ t, i∆ x).
+Le principe de la m´ ethode des diﬀ´ erence ﬁnies est de rempla cer les d´ eriv´ ees par des diﬀ´ erences
+ﬁnies en utilisant des formules de Taylor dans lesquelles on n´ eglige les restes.
+3.1 Formule de Taylor
+u(t, x + ∆ x) = u(t, x) + ∂u
+∂x ∆ x + 1
+2
+∂2u
+∂x2 (∆ x)2 + ... + 1
+n!
+∂nu
+∂xn (∆ x)n + O((∆ x)n+1) (1)
+u(t + ∆ t, x) = u(t, x) + ∂u
+∂t ∆ t + 1
+2
+∂2u
+∂t2 (∆ t)2 + ... + 1
+n!
+∂nu
+∂tn (∆ t)n + O((∆ t)n+1) (2)
+u(t, x − ∆ x) = u(t, x) − ∂u
+∂x ∆ x + 1
+2
+∂2u
+∂x2 (∆ x)2 + ... + (−1)n
+n!
+∂nu
+∂xn (∆ x)n + O((∆ x)n+1) (3)
+u(t − ∆ t, x) = u(t, x) − ∂u
+∂t ∆ t + 1
+2
+∂2u
+∂t2 (∆ t)2 + ... + (−1)n
+n!
+∂nu
+∂tn (∆ t)n + O((∆ t)n+1) (4)
+3.2 Discr´ etisation des d´ eriv´ ees premi` eres
+• Deriv´ ee progressive temporelle:
+Pour obtenir l’approximation de la d´ eriv´ ee on exprime la d´ eriv´ ee∂u
+∂t de la formule (2):
+∂u
+∂t (tn, xi) = u(tn + ∆ t, xi) − u(tn, xi)
+∆ t + T1(u) = u(tn+1, xi) − u(tn, xi)
+∆ t + T1(u)
+Ici l’erreur de troncature est
+T1(u) = − 1
+2!
+∂2u
+∂t2 (∆ t) − 1
+3!
+∂3u
+∂t2 (∆ t)2 + O((∆ t)3).
+On observe que T1(u) = O(∆ t) et on obtient l’approximation avec la pr´ ecisionO(∆ t) ou d’ordre
+1 en temps:
+∂u
+∂t (tn, xi) ≈ un+1
+i − un
+i
+∆ t
+• Deriv´ ee progressive spatiale:
+23
+<<<PAGE>>>
+∂u
+∂x (tn, xi) = u(tn, xi + ∆ t) − u(tn, xi)
+∆ x + T ′
+1(u) = u(tn, xi+1) − u(tn, xi)
+∆ x + T ′
+1(u)
+Ici l’erreur de troncature est
+T ′
+1(u) = − 1
+2!
+∂2u
+∂x2 (∆ x) − 1
+3!
+∂3u
+∂x2 (∆ x)2 + O((∆ x)3).
+On observe que T ′
+1(u) = O(∆ x) et on obtient l’approximation avec la pr´ ecisionO(∆ x) ou d’ordre
+1 en espace:
+∂u
+∂t (tn, xi) ≈ un
+i+1 − un
+i
+∆ t
+• Deriv´ ee r´ etrograde temporelle:
+Pour obtenir l’approximation de la d´ eriv´ ee on exprime la d´ eriv´ ee∂u
+∂t de la formule (4):
+∂u
+∂t (tn, xi) = u(tn, xi) − u(tn − ∆ t, xi)
+∆ t + T2(u) = u(tn, xi) − u(tn−1, xi)
+∆ t + T2(u)
+Ici l’erreur de troncature est
+T2(u) = 1
+2!
+∂2u
+∂t2 (∆ t) − 1
+3!
+∂3u
+∂t3 (∆ t)2 + O((∆ t)3)
+On observe que T2(u) = O(∆ t) et on obtient la pr´ ecision O(∆ t):
+∂u
+∂t (tn, xi) ≈ un
+i − un−1
+i
+∆ t
+• Deriv´ ee r´ etrograde spatiale:
+∂u
+∂x (tn, xi) = u(tn, xi) − u(tn, xi − ∆ x)
+∆ x + T ′
+2(u) = u(tn, xi) − u(tn, xi−1)
+∆ x + T ′
+2(u)
+Ici l’erreur de troncature est
+T ′
+2(u) = 1
+2!
+∂2u
+∂x2 (∆ x) − 1
+3!
+∂3u
+∂x3 (∆ x)2 + O((∆ x)3)
+On observe que T2(u) = O(∆ x) et on obtient la pr´ ecision O(∆ x):
+∂u
+∂x (tn, xi) ≈ un
+i − un
+i−1
+∆ x
+• Deriv´ ee centr´ ee temporelle:
+Pour obtenir l’approximation de la d´ eriv´ ee on soustraie (4) de (2) et on exprime la d´ eriv´ ee ∂u
+∂x
+du r´ esultat:
+∂u
+∂t (tn, xi) = u(tn + ∆ t, xi) − u(tn − ∆ t, xi)
+2∆ t + T3(u) = u(tn+1, xi) − u(tn−1, xi)
+2∆ t + T3(u)
+24
+<<<PAGE>>>
+Ici l’erreur de troncature est
+T3(u) = − 1
+6
+∂3u
+∂t3 (∆ t)2 + O((∆ t)3)
+On observe que T3(u) = O(∆ t2) et on obtient la pr´ ecision O(∆ t)2:
+∂u
+∂t (tn, xi) ≈ un+1
+i − un−1
+i
+2∆ t
+• Deriv´ ee centr´ ee spatiale:
+∂u
+∂x (tn, xi) = u(tn, xi + ∆ x) − u(tn, xi − ∆ x)
+2∆ x + T ′
+3(u) = u(tn, xi+1) − u(tn, xi−1)
+2∆ x + T ′
+3(u)
+Ici l’erreur de troncature est
+T ′
+3(u) = − 1
+6
+∂3u
+∂x3 (∆ x)2 + O((∆ x)3)
+On observe que T ′
+3(u) = O(∆ x2) et on obtient la pr´ ecision O(∆ x)2:
+∂u
+∂x (tn, xi) ≈ un
+i+1 − un
+i−1
+2∆ x
+3.2.1 Discr´ etisation des d´ eriv´ ees secondes
+On ajoute les deux s´ eries de Taylor (2) et (4) et apr` es arran gement, on obtient l’approximation
+suivante du second ordre:
+• D´ eriv´ ee temporelle:
+∂2u
+∂t2 (tn, xi) = u(t + ∆ t, x) − 2u(t, x) + u(t − ∆ t, x)
+(∆ t)2 + T4(u),
+o` u l’erreur de troncature
+T4(u) = − 1
+12
+∂4u
+∂t4 (∆ t)2 + O((∆ t)4)
+et observant que T4(u) = O(∆ t2) on obtient la pr´ ecision O(∆ t)2:
+∂2u
+∂t2 (tn, xi) = u(tn+1, xi) − 2u(tn, xi) + u(tn−1, xi)
+(∆ t)2 + T4(u) ≈ un+1
+i − 2un
+i + un−1
+i
+(∆ t)2
+• D´ eriv´ ee seconde spatiale:
+∂2u
+∂x2 (tn, xi) = un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 + T5(u) ≈ un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+o` u l’erreur de troncature est
+T5(u) = − 1
+12
+∂4u
+∂x4 (∆ x)2 + O((∆ x)4)
+et on obtient la pr´ ecision O(∆ x)2:
+25
+<<<PAGE>>>
+4 Strat´ egie de base dans les approches de discr´ etisation
+4.1 Maillage
+On doit r´ esoudre num´ eriquement l’´ equation de chaleur sur l’intervalle x ∈ [0, L]:
+
+
+
+∂u
+∂t − β ∂2u
+∂x2 = 0
+u(0, x) = g(x) condition initiale
+u(t, 0) = h(t) condition aux limites
+u(t, L) = ξ(t) condition aux limites
+(21)
+Ici, nous utilisons des conditions aux limites de Dirichlet .
+Discr´ etisons les variables spatiale et temporelle
+x: x0 = 0, ..., xi = i∆ x, ..., xN +1 = L.
+t: t0 = 0, ..., tn = n∆ t, ..., tM +1 = T .
+On note un
+i la valeur d’une solution calcul´ ee ` a l’aide d’un sch´ ema num´ erique aux
+points x = xi, t = tn.
+On note u(tn, xi) la valeur de la solution exacte calcul´ ee aux points x = xi, t = tn.
+Donc
+
+
+
+i = 0, 1, 2, ..., N + 1
+n = 0, 1, 2, ..., M + 1
+On cherche u n
+i
+(22)
+Conditions aux limites: 
+
+
+un
+0 = h(n∆ t) = hn
+un
+N +1 = ξ(n∆ t) = ξn
+n = 1, 2, ..., M + 1
+(23)
+Conditions initiales :
+{
+u0
+i = g(i∆ x) = gi, i = 0, 1, 2..., N + 1 (24)
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+u0
+i = gi
+un
+0 = hn
+un
+N +1 = ξn
+xi xix0 x1 x2
+26
+<<<PAGE>>>
+4.2 M´ ethodes explicites
+4.2.1 M´ ethode d’Euler progressive
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+iun
+i−1 un
+i+1
+un+1
+i
+u0
+i = gi
+un
+0 = hn
+un
+N +1 = ξn
+valeurs connues
+valeurs inconnues
+xi xix0 x1 x2
+Utilisons la d´ eriv´ ees temporelle progressive et la d´ eriv´ ee spatiale centr´ ee. On obtient l’´ equation
+discrete qui repr´ esente une approximation de l’´ equationoriginale continue:
+
+
+
+un+1
+i −un
+i
+∆ t = β
+un
+i+1−2un
+i +un
+i− 1
+(∆ x)2
+u0
+i = gi
+un
+0 = hn
+un
+N +1 = ξn
+(25)
+On appelle sch´ ema num´ erique explicite, un sch´ ema pour lequel une seule inconnue apparait dans
+l’´ equation aux diﬀ´ erences ﬁnies, d’une telle mani` ere qu’il permet son ´ evaluation en fonction des
+valeurs connues, ici les un
+i−1, un
+i , un
+i+1 par une simple r´ ecurence:
+un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+4.2.2 Implementation du sch´ ema explicite d’Euler progressive
+On ´ ecrit les conditions initiales et aux limites avec deux b oucles separ´ ees, puis on construit deux
+boucles telles que l’une est ` a l’int´ erieur de l’autre:
+27
+<<<PAGE>>>
+Algorithme d’Euler explicite
+Pour i = 0, ...N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 1, ...M + 1
+un
+0 = hn
+un
+N +1 = ξn
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+Fin Pour
+Fin Pour
+En eﬀet, on tourne l’algorithme ` a la main pour un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1):
+n = 0 toutes les valeurs u0
+i sont connues de la condition initiale: u0
+i = gi
+
+
+
+i = 1 u1
+1 = u0
+1 + ∆ tβ
+(∆ x)2 ( u0
+2 − 2 u0
+1 + u0
+0 )
+i = 2 u1
+2 = u0
+2 + ∆ tβ
+(∆ x)2 ( u0
+3 − 2 u0
+2 + u0
+1 )
+...
+i = N u 1
+N = u0
+N + ∆ tβ
+(∆ x)2 ( u0
+N +1 − 2 u0
+N + u0
+N −1 )
+n = 1 les valeurs u1
+i (i=1,...N ) sont calcul´ ees ` a l’iterationn = 0 , u1
+0 et
+u1
+N +1 sont connues de conditions aux limites: u1
+0 = h1, u1
+N +1 = ξ1.
+
+
+
+i = 1 u2
+1 = u1
+1 + ∆ tβ
+(∆ x)2 (u1
+2 − 2u1
+1 + u1
+0 )
+i = 2 u2
+2 = u1
+2 + ∆ tβ
+(∆ x)2 (u1
+3 − 2u1
+2 + u1
+1)
+...
+i = N u 2
+N = u1
+N + ∆ tβ
+(∆ x)2 ( u1
+N +1 − 2u1
+N + u1
+N −1)
+n = M
+
+
+
+i = 1 uM
+1 = uM −1
+1 + ∆ tβ
+(∆ x)2 (uM −1
+2 − 2uM −1
+1 + uM −1
+0 )
+i = 2 uM
+2 = uM −1
+2 + ∆ tβ
+(∆ x)2 (uM −1
+3 − 2uM −1
+2 + uM −1
+1 )
+...
+i = N u M
+N = uM −1
+N + ∆ tβ
+(∆ x)2 ( uM −1
+N +1 − 2uM −1
+N + uM −1
+N −1 )
+On peut visualiser cette explication par un dessin suivant:
+28
+<<<PAGE>>>
+u1
+0 u1
+1 u1
+2
+u0
+0 u0
+1 u0
+2
+u2
+1
+On voit qu’on commence par calculer u1
+1, u1
+2, ..., u1
+i , ... ` a l’aide de la condition initiale u0
+i = gi.
+Puis on passe ` a n = 2. On calcule u2
+1 en utilisant u1
+0(condition aux limites), u1
+1, u1
+2. Ensuit on
+calcule u2
+2 ... etc.
+4.2.3 F orme matricielle de l’´ equation discrete
+On pr´ esente ici deux formes matricielles lin´ eaire de l’´ equation discrete avec les condition aux
+limites de Dirichlet et C = ∆ tβ
+(∆ x)2 :
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+1 − 2C C 0 0 0
+C 1 − 2C C 0 0
+C 1 − 2C C
+0 C 1 − 2C
+
+
+.
+
+
+un
+1
+un
+2
+un
+3
+.
+.
+un
+N
+
+
+−
+
+
+C · un
+0
+0
+0
+.
+0
+C · un
+N +1
+
+
+o` u
+
+
+un+1
+0
+un+1
+1
+un+1
+2
+.
+.
+un+1
+N +1
+
+
+=
+
+
+1 0 0 0 0
+0 1 − 2C C 0 0
+0 C 1 − 2C C 0
+C 1 − 2C C 0
+0 C 1 − 2C 0
+0 0 0 1
+
+
+.
+
+
+un
+0
+un
+1
+un
+2
+.
+.
+un
+N +1
+
+
+4.2.4 Visualisation des solutions
+On trace en 2 et 3 dimensions les solutions de l’´ equation sui vante avec les conditions aux limites
+de Dirichlet:
+29
+<<<PAGE>>>
+
+
+
+ut = uxx + t2
+u(0, x) = cos( πx)
+u(t, 0) = 1 − 10t
+u(t, 1) = 1 + 10 t
+(26)
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+−0.8
+−0.6
+−0.4
+−0.2
+0.2
+0.4
+0.6
+0.8
+t=0
+t=T/2
+t=T
+solution t=0, t=T/2 et t=T/2
+−1
+0
+0
+1
+1
+0.2
+0.4
+0.6
+0.8
+0.1
+0.02
+0.04
+0.06
+0.08
+−0.5
+0.5
+t
+Z
+solution U_t=U_xx +t^2, Conditions aux limites de Dirichlet
+−1
+0
+0 0
+1
+1
+x
+4.3 M´ ethodes implicites
+4.3.1 M´ ethode de Crank-Nicolson
+On doit r´ esoudre num´ eriquement l’´ equation de chaleur:
+un+1
+i − un
+i
+∆ t = β ∂2u
+∂x2 + f (tn, xi).
+Le sch´ ema explicite simple donne:
+un+1
+i − un
+i
+∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 + f (tn, xi)
+La m´ ethode de Crank-Nicolson consiste ` a remplacer chaque fonction un
+i ` a l’instant
+n par la fonction moyenne temporelle (un
+i + un+1
+i )/2.
+un+1
+i − un
+i
+∆ t = β
+(∆ x)2 [ 1
+2 (un
+i+1 + un+1
+i+1 ) − 2 1
+2 (un
+i + un+1
+i ) + 1
+2 (un
+i−1 + un+1
+i−1 )] + 1
+2 (f n
+i + f n+1
+i )
+On peut re´ ecrire cette ´ equation sous la forme :
+Biun+1
+i−1 + Diun+1
+i + Aiun+1
+i+1 = K n
+i , (27)
+30
+<<<PAGE>>>
+o` u
+Ai = − ∆ tβ
+2(∆ x)2 , (28)
+Bi = − ∆ tβ
+2(∆ x)2 , (29)
+Di = 1 + ∆ tβ
+(∆ x)2 , (30)
+K n
+i = (1 − ∆ tβ
+(∆ x)2 )un
+i + ∆ tβ
+2(∆ x)2 (un
+i+1 + un
+i−1) + ∆ t
+2 (f n
+i + f n+1
+i ) (31)
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+un
+iun
+i−1 un
+i+1
+un+1
+iun+1
+i−1 un+1
+i+1
+u0
+i = gi
+un
+0 = hn
+un
+N +1 = ξn
+valeurs connues
+valeurs inconnues
+xi xix0 x1 x2
+On re´ ecrit l’´ equation sous la forme de syst` eme lin´ eaire:
+i = 1, B 1un+1
+0 + D1un+1
+1 + A1un+1
+2 = K n
+1
+i = 2, B 2un+1
+1 + D2un+1
+2 + A2un+1
+3 = K n
+2
+...........................................................
+i = N, B N un+1
+N −1 + DN un+1
+N + AN un+1
+N +1 = K n
+N
+On utilise les conditions aux limites un+1
+0 = hn+1, u n+1
+N +1 = ξn+1 et on obtient la forme
+matricielle suivante:
+31
+<<<PAGE>>>
+
+
+D1 A1 0 0 0
+B2 D2 A2 0 0
+0 B3 D3 A3 0
+BN −1 DN −1 AN −1
+0 BN DN
+
+
+.
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+K n
+1 − B1hn+1
+K n
+2
+K n
+3
+.
+KN −1
+K n
+N − AN ξn+1
+
+
+Or
+M · U n+1 = K n
+Notre but est de trouver U n+1 = (un+1
+N , un+1
+N −1, un+1
+N −2, ...un+1
+1 ), exprim´ ees en termes des (un
+N , un
+N −1, un
+N −2, ...un
+1 )
+On ne peut plus calculer directement un+1
+i . Pour cela il faut inverser la matrice car
+U n+1 = M −1 K n.
+Pour obtenir la matrice inverse d’une matrice tridiagonalle on applique l’Algorithme de
+Thomas.
+4.3.2 F orme matricielle de l’´ equation discr´ ete et Algorithme de Thomas
+On cherche la solution du syst` eme
+
+
+
+d1u1 + a1u2 = c1
+b2u1 + d2u2 + a2u3 = c2
+b3u2 + d3u3 + a3u4 = c3
+bm−1um−2 + dm−1um−1 + am−1um = cm−1
+bmum−1 + dmum = cm
+(32)
+qui peut ˆ etre ´ ecrie aussie en forme matricielle:
+
+
+d1 a1 0 0 0
+b2 d2 a2 0 0
+0 b3 d3 a3 0
+bm−1 dm−1 am−1
+0 bm dm
+
+
+
+
+u1
+u2
+u3
+.
+.
+um
+
+
+=
+
+
+c1
+c2
+c3
+.
+cm−1
+cm
+
+
+D´ eduisons l’algorithme de Thomas de facon g´ en´ erale. On multiplie 1ere ´ equation sur b2, 2eme
+sur d1, on d´ eduit 1ere de 2eme et on obtient:
+b2(d1u1 + a1u2) = b2c1
+d1(b2u1 + d2u2 + a2u3) = d1c2
+u2(d2 − b2a1
+d1
+) + a2u3 = c2 − b2c1
+d1
+Notons
+d∗
+2 = d2 − b2a1
+d1
+, c ∗
+2 = c2 − b2c1
+d1
+.
+32
+<<<PAGE>>>
+On continue la mˆ eme procedure pour les ´ equation 2 et 3, 3 et 4 ,.... Finalement on obtient le
+syst` eme: 
+
+
+d1u1 + a1u2 = c1
+d∗
+2u2 + a2u3 = c∗
+2
+d∗
+3u3 + a3u4 = c∗
+3
+d∗
+m−1um−1 + am−1um = c∗
+m−1
+d∗
+mum = c∗
+m.
+(33)
+Les coeﬃcients se calculent de facon iterative.
+{
+d∗
+i = di − biai− 1
+d∗
+i− 1
+, i = 2, 3, ...m
+d∗
+1 = d1
+(34)
+{
+c∗
+i = ci −
+bic∗
+i− 1
+d∗
+i− 1
+, i = 2, 3, ...m
+c∗
+1 = c1
+(35)
+La solution se calcule aussi de facon iterative en commenant par l’indice maximal i = m et
+en decendant: {
+um = c∗
+m
+d∗m
+ui = c∗
+i −aiui+1
+d∗
+i
+, i = m − 1, ...1 (36)
+Revenons ` a l’´ equation de chaleur ´ ecrite de facon g´ en´ erale. Faisons les identiﬁcations:
+
+
+
+di = Di, i = 1, ...N
+ai = Ai, i = 1, ...N − 1
+bi = Bi, i = 2, ...N
+(37)
+
+
+K n
+1 − B1hn+1
+K n
+2
+K n
+3
+.
+KN −1
+K n
+N − AN ξn+1
+
+
+=
+
+
+c1
+c2
+c3
+.
+cm−1
+cm
+
+
+Les solutions pour les fonctions un+1
+i en terms des fonctions un
+i sont donn´ ees par les formules
+r´ ecurentes:
+
+
+
+un+1
+N = K ∗ n
+N
+D∗
+N
+un+1
+i =
+K ∗ n
+i −Aiun+1
+i+1
+D∗
+i
+, i = N − 1, ..., 1
+D∗
+i = Di − BiAi− 1
+D∗
+i− 1
+, i = 2, ...N, D ∗
+1 = D1
+K ∗n
+i = K n
+i −
+BiK ∗ n
+i− 1
+D∗
+i− 1
+, i = 2, ...N − 1, K ∗n
+1 = K n
+1 − B1hn+1
+K ∗n
+N = K n
+N − AN ξn+1 −
+BN K ∗ n
+N− 1
+D∗
+N− 1
+(38)
+Si on utilise les propriet´ es de l’´ equation de chaleur:
+Bi = Ai = A = − ∆ tβ
+2(∆ x)2 , D i = D = 1 + ∆ tβ
+(∆ x)2
+on obtient
+33
+<<<PAGE>>>
+
+
+
+K ∗n
+1 = K n
+1 − B1hn+1 K ∗n
+i = K n
+i −
+AK ∗ n
+i− 1
+D∗
+i− 1
+, i = 2, ...N − 1
+K ∗n
+N = K n
+N − Aξn+1 −
+AK ∗ n
+N− 1
+D∗
+N− 1
+D∗
+1 = D1 = D, D ∗
+i = D − A2
+D∗
+i− 1
+, i = 2, ...N
+un+1
+N = K ∗ n
+N
+D∗
+N
+un+1
+i =
+K ∗ n
+i −Aun+1
+i+1
+D∗
+i
+, i = N − 1, ..., 1
+(39)
+5 Equations paraboliques. R´ esolution num´ erique de l’´ equation
+de la chaleur par Crank-Nicolson
+5.1 Algorithme de Crank-Nicolson
+On fait une boucle temporelle et l’algorithme de Thomas ` a l’ int´ erieur. Pour corriger les valeurs
+K n
+1 et K n
+N on utilise les symboles de Kroneker δij: δij = 1 si i = j et δij = 0 si
+i ⁄= j.
+On suppose que les coeﬃcients Ai, Bi et Di de la matrice M sont precis´ es.
+Algorithme de Crank-Nicolson. Conditions aux limites de Dirichlet.
+Ai = − ∆ tβ
+2(∆ x)2 ; Bi = − ∆ tβ
+2(∆ x)2 ; Di = 1 + ∆ tβ
+(∆ x)2
+Pour i = 0, N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 1, M + 1
+un
+0 = hn
+un
+N +1 = ξn
+Fin Pour
+Pour n = 0, M
+Pour i = 1, N
+K n
+i = (1 − ∆ tβ
+(∆ x)2 )un
+i + ∆ tβ
+2(∆ x)2 (un
+i+1 + un
+i−1) + ∆ t
+2 (f n
+i + f n+1
+i ) − δ1i · B1 · hn+1 − δN i · AN · ξn+1
+Fin Pour
+D∗
+1 = D1, K ∗n
+1 = K n
+1
+Pour i = 2, N
+D∗
+i = Di − Bi·Ai− 1
+D∗
+i− 1
+, K ∗n
+i = K n
+i −
+Bi·K ∗ n
+i− 1
+D∗
+i− 1
+Fin Pour
+un+1
+N = K ∗ n
+N
+D∗
+N
+34
+<<<PAGE>>>
+Pour i = N − 1, −1, 1
+un+1
+i =
+K ∗ n
+i −Ai·un+1
+i+1
+D∗
+i
+Fin Pour
+Fin Pour
+En eﬀet , pour n = 0 la valeur
+K 0
+i = (1 − ∆ tβ
+(∆ x)2 )u0
+i + ∆ tβ
+2(∆ x)2 (u0
+i+1 + u0
+i−1) + ∆ t
+2 (f 0
+i + f 1
+i ) − δ1i B1h1 − δN i AN ξ1
+est connue, car u0
+i repr´ esente les conditions initiales.
+On calcule les valeurs u1
+i : d’abord u1
+N , u1
+N −1, ...u1
+1 comme indiqu´ e par les ﬂeches sur la ﬁgure.
+Puis pour n = 1 la valeur
+K 1
+i = (1 − ∆ tβ
+(∆ x)2 )u1
+i + ∆ tβ
+2(∆ x)2 (u1
+i+1 + u1
+i−1) + ∆ t
+2 (f 1
+i + f 2
+i ) − δ1i B1h2 − δN i AN ξ2
+se calcule ` a l’aide de u1
+i d´ ej` a calcul´ ees.
+On calcule sur le niveau n = 2 les valeurs u2
+i : d’abord u2
+N , u2
+N −1, ...u2
+1 comme indiqu´ e par les
+ﬂeches sur la ﬁgure.
+xN xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+u0
+i = gi
+un
+0 = hn
+u2
+N
+u1
+i
+u1
+N
+xi xix0 x1 x2
+35
+<<<PAGE>>>
+5.2 Impl´ ementation en MATLAB ou SCILAB.
+• Discr´ etisation de l’espace-temps
+◦ x = (0 : N + 1) · ∆ x ou x = linspace(0, L, N + 2)
+Par cons´ equent les coordonn´ ees portent les vraies valeurs :
+x(1) = 0 ,
+x(2) = ∆ x,
+x(3) = 2∆ x, ...,
+x(N + 2) = ( N + 1) ∗ ∆ x ≡ L
+Il y a N + 2 composantes.
+◦ t = (0 : M + 1) · ∆ t ou t = linspace(0, T, M + 2)
+Par cons´ equent les coordonn´ ees portent les vraies valeurs : t(1) = 0 ,
+t(2) = ∆ t,
+t(3) = 2∆ t, ...,
+t(M + 2) = ( M + 1) ∗ ∆ t ≡ T
+Il y a M + 2 composantes.
+• Programmation structur´ ee
+function[f]=condition initiale(x)
+f = ...
+endfunction
+• On d´ eplacer de 1 tout les indices ﬁxes
+Pour i = 1 : N + 2
+u(1, i)=condition initiale(x(i))
+Fin Pour
+ﬁgure;
+plot(x,u(1,:));
+title(’condition initiale’)
+Pour n = 2 : M + 2
+u(n, 1)=Condition1 limite ( t(n))
+u(n, N + 2))=Condition2 limite(t(n))
+Fin Pour
+ﬁgure;
+36
+<<<PAGE>>>
+plot(t,u(:, N+2),t,u(:,1));
+title(’condition aux limites’)
+Le sch´ ema est toujours stable.
+• Programme principal
+Algorithme de Crank-Nicolson pour MA TLAB. Condition aux limites de Dirichlet.
+A(i) = − ∆ tβ
+2(∆ x)2 ; B(i) = − ∆ tβ
+2(∆ x)2 ; D(i) = 1 + ∆ tβ
+(∆ x)2
+Pour i = 1 : N + 2
+u(1, i) = g(x(i))
+Fin Pour
+Pour n = 2 : M + 2
+u(n, 1) = h(t(n))
+u(n, N + 2) = ξ(t(n))
+Fin Pour
+Pour n = 1 : M + 1
+Pour i = 2, N + 1
+K(n, i) = (1 − ∆ tβ
+(∆ x)2 )u(n, i) + ∆ tβ
+2(∆ x)2 (u(n, i + 1) + u(n, i − 1)) + ∆ t
+2 (f (t(n), x(i)) + f (t(n +
+1), x(i))) − δ2,i · B(2) · h(t(n + 1)) − δN +1,i · A(N + 1) · ξ(t(n + 1))
+Fin Pour
+Detoile(2) = D(2), Ketoile (2, n) = K(2, n)
+Pour i = 3 : N + 1
+Detoile(i) = D(i) − B(i)·A(i−1)
+Detoile(i−1) , Ketoile (n, i) = K(n, i) − B(i)·Ketoile(n,i−1)
+Detoile(i−1)
+Fin Pour
+u(n + 1, N + 1) = Ketoile(n,N +1)
+Detoile(N +1)
+Pour i = N : −1, 2
+u(n + 1, i) = Ketoile(n,i)−A(i)·u(n+1,i+1)
+Detoile(i)
+Fin Pour
+Fin Pour
+37
+<<<PAGE>>>
+5.3 Visualisation des solutions
+Consid` erons le probl` eme suivant:
+• On ´ etudie la distribution de la temp´ etature le long d’une tige m´ etallique. Une extr´ emit´ e est
+maintenue ` a la temp´ eratureu(x = 0) = 0, l’autre est maintenue ` a la temp´ eratureu(x = L) = 50.
+Il n’a y pas des sources ext´ erieures de la chaleur (f (x, t) = 0). La temp´ etature le long d’une tige
+v´ eriﬁe l’´ equation:
+
+
+
+∂u
+∂t − β ∂2u
+∂x2 = 0
+u(0, x) = g(x) condition initiale
+u(t, 0) = 0 condition aux limites
+u(t, L) = T0 condition aux limites
+(40)
+u = 0 u = 50
+x = 0 x = L
+Pour trouver les solutions on a utilis´ e la m´ ethode de Crank-Nicolson avec les donn´ ees suivantes
+
+
+L = 20, T = 10, g (x) = 0
+∆ x = 0.2, ∆ t = 0.1
+N = 100, M = 100
+La ﬁgure 1 pres´ ente la distribution de la temp´ erature aux instants: t = 0, t = T et t = T /2
+pour les conditions initiales: u(t = 0, x) = 0
+20106 8 12 14 16 18
+20
+40
+10
+30
+50
+5
+15
+25
+35
+45t
+t=0
+t=T/2
+t=T
+solution U_t=U_xx , Conditions aux limites de Dirichlet
+00 2 4 x
+20
+10
+6 8
+12 14 16 18
+10
+6
+8
+20
+40
+10
+30
+50
+t
+Z
+solution U_t=U_xx , Conditions aux limites de Dirichlet
+0
+0 0
+2 2
+4
+4 x
+38
+<<<PAGE>>>
+Fig. 1
+La ﬁgure 2 pres´ ente la distribution de la temp´ erature aux i nstants: t = 0, t = T et t = T /2
+pour les conditions initiales:
+u(t = 0, x) = 50√π e
+− (x− 10)2
+2
+La temp´ erature extr´ emit´ ex = L varie en fonction du temps u(x = L) = 5 t.
+20106 8 12 14 16 18
+20
+40
+10
+30
+50
+5
+15
+25
+35
+45
+t=0
+t=T/2
+t=T
+solution t=0, t=T/2 et t=T/2
+00 2 4
+20
+10
+6 8
+12 14 16 18
+10
+6
+8
+20
+40
+10
+30
+50
+t
+Z
+solution U_t=U_xx , Conditions aux limites de Dirichlet
+0
+0 0
+2 2
+4
+4 x
+Fig. 1
+5.4 Comparaisons des conditions aux limites
+• On trace en 2 et 3 dimensions la solution de l’´ equation suiva nte avec les conditions aux limites
+de Dirichlet pour T = 0.1:
+
+
+
+ut = uxx + t2
+u(0, x) = cos( πx)
+u(t, 0) = 1 − 10t
+u(t, 1) = 1 + 10 t
+x ∈ [0, 1]
+T = 0.1
+(41)
+39
+<<<PAGE>>>
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+−0.8
+−0.6
+−0.4
+−0.2
+0.2
+0.4
+0.6
+0.8
+t=0
+t=T/2
+t=T
+solution t=0, t=T/2 et t=T/2
+−1
+0
+0
+1
+1
+0.2
+0.4
+0.6
+0.8
+0.1
+0.02
+0.04
+0.06
+0.08
+−0.5
+0.5
+t
+Z
+solution U_t=U_xx +t^2, Conditions aux limites de Dirichlet
+−1
+0
+0 0
+1
+1
+x
+• On trace en 2 et 3 dimensions la solution de l’´ equation suiva nte avec les conditions aux limites
+de Neumann pour T = 0.1:
+
+
+
+ut = uxx + t2
+u(0, x) = cos( πx)
+ux(t, 0) = 1 − 10t
+ux(t, 1) = 1 + 10 t
+x ∈ [0, 1]
+T = 0.1
+(42)
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+−0.8
+−0.6
+−0.4
+−0.2
+0.2
+0.4
+0.6
+0.8
+t
+t=0
+t=T/2
+t=T
+solution U_t=U_xx +t^2, Conditions aux limites de Neuman
+−1
+0
+0
+1
+1x
+0.2
+0.4
+0.6
+0.8
+0.1
+0.02
+0.04
+0.06
+0.08
+−0.5
+0.5
+t
+Z
+solution U_t=U_xx +t^2, Conditions aux limites de Neuman
+−1
+0
+0 0
+1
+1
+x
+• On trace en 2 et 3 dimensions la solution de la mˆ eme ´ equation avec les conditions aux limites
+de Dirichlet pour T = 1:
+40
+<<<PAGE>>>
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+−10
+10
+−8
+−6
+−4
+6
+8
+t
+t=0
+t=T/2
+t=T
+solution U_t=U_xx +t^2, Conditions aux limites de Dirichlet
+0
+0
+−2
+2
+4
+1x
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8 −10
+10
+−5
+5
+t
+Z
+solution U_t=U_xx +t^2, Conditions aux limites de Dirichlet
+0
+0 0
+1
+1
+x
+• On trace en 2 et 3 dimensions la solution de la mˆ eme ´ equation avec les conditions aux limites
+de Neumann pour T = 1:
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+10
+6
+8
+12
+3
+5
+7
+9
+11t
+t=0
+t=T/2
+t=T
+solution U_t=U_xx +t^2, Conditions aux limites de Neuman
+−1
+0
+0−2
+2
+4
+1
+1x
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+10
+6
+8
+12
+t
+Z
+solution U_t=U_xx +t^2, Conditions aux limites de Neuman
+0
+0 0
+−2
+2
+4
+1
+1
+x
+5.5 M´ ethode d’Euler r´ etrograde ou implicite.
+Appliquons pour les d´ eriv´ ees : la d´ eriv´ ees temporelle r´ etrograde et la d´ eriv´ ee seconde spatiale.
+On obtient:
+un
+i − un−1
+i
+∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 .
+Il est facile de v´ eriﬁer que ce sch´ ema est implicite et biend´ eﬁni, c’est- ` a - dire qu’on peut calculer
+les valeurs un+1
+i en fonction des un
+i . On introduit les notations:
+C = − ∆ tβ
+(∆ x)2 , (43)
+D = 1 + ∆ tβ
+(∆ x)2 , (44)
+Qn
+i = un
+i + f n
+i (45)
+41
+<<<PAGE>>>
+On re´ ecrie l’´ equation sous la forme :
+Cu n+1
+i−1 + Dun+1
+i + Cu n+1
+i+1 = Qn
+i , soit (46)
+
+
+D C 0 0 0
+C D C 0 0
+0 C D C 0
+C D C
+0 C D
+
+
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+Qn
+1 − Ch n+1
+Qn
+2
+Qn
+3
+.
+QN −1
+Qn
+N − Cξ n+1
+
+
+Pour calculer les valeurs un+1
+i en fonction des un
+i il faut inverser la matrice. On applique
+l’algorithme de Thomas.
+6 Traitement des conditions aux limites de Neumann
+6.1 Conditions aux limites de Neumann d’ordre 1
+On peut remplacer les conditions aux limites de Dirichlet pa r des conditions aux limites de Neu-
+mann. Il existe deux mani` eres diﬀ´ erentes de discr´ etiserles conditions aux limites de Neumann:
+∂u
+∂x (t, 0) = h(t) ∂u
+∂x (t, L) = ξ(t)
+On peux les discr´ etiser de facon suivante:
+un
+1 − un
+0
+∆ x = hn un
+N +1 − un
+N
+∆ x = ξn
+soit
+un
+0 = un
+1 − ∆ xhn un
+N +1 = un
+N + ∆ xξn
+6.2 Implementation des conditions aux limites de Neumann d’ ordre 1 en
+utilisant la m´ ethode d’Euler explicite
+On peut visualiser le maillage:
+42
+<<<PAGE>>>
+xN +1
+t0
+t1
+t2
+tn
+tn+1
+tM +1
+u0
+i = gi
+valeurs se calculent
+valeurs se calculent
+xi xix0 x1 x2
+Algorithme d’Euler explicite avec les conditions aux limites de Neumann
+Pour i = 0, ...N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+Fin Pour
+un+1
+0 = un+1
+1 − ∆ xhn+1
+un+1
+N +1 = un+1
+N + ∆ xξn+1
+Fin Pour
+On visualise cette explication par un dessin suivant:
+u1
+0 u1
+1 u1
+2
+u0
+0 u0
+1 u0
+2
+u2
+1
+43
+<<<PAGE>>>
+On voit qu’on commence par calculer u1
+1, u1
+2, ..., u1
+i , ... ` a l’aide de la condition initiale u0
+i = gi.
+Puis on calcule u1
+0 ` a l’aide de la condition aux limites de Neumann un
+0 = un
+1 − ∆ xhn .
+Puis on passe ` a n = 2. On calcule u2
+1 en utilisant u1
+0, u1
+1, u1
+2. Ensuit on calcule u2
+2 ... etc.
+6.3 Implementation des conditions aux limites de Neumann d’ ordre 2 en
+utilisant la m´ ethode d’Euler explicite
+Si le sch´ ema est du deuxi` eme ordre, discr´ etisation de la condition de Neumann du premier ordre
+engendre une perte de pr´ ecision pr` es du bord. C’est pourquoi on propose une autre disc´ etisation
+( du deuxi` eme ordre):
+un
+1 − un
+−1
+2∆ x = hn un
+N +2 − un
+N
+2∆ x = ξn
+qui est plus pr´ ecise, mais n´ ecessite l’ajout de 2 points ﬁctifs, et il reste maintenant N + 2 valeurs
+` a calculer, ` a savoir (un
+i )0≤i≤N +1.
+En eﬀet pour i = 0 et i = N + 1 nous avons les ´ equations:
+
+
+
+un+1
+0 = un
+0 + ∆ tβ
+(∆ x)2 (un
+1 − 2un
+0 + un
+−1 )
+...
+un+1
+N +1 = un
+N +1 + ∆ tβ
+(∆ x)2 ( un
+N +2 − 2un
+N +1 + un
+N )
+qui deviendrons apr` es l’injectionun
+−1 = un
+1 − 2∆ xhn et un
+N +2 = un
+N + 2∆ xξn
+
+
+
+un+1
+0 = un
+0 + ∆ tβ
+(∆ x)2 (un
+1 − 2un
+0 + un
+1 − 2∆ xhn) = un
+0 + ∆ tβ
+(∆ x)2 (2un
+1 − 2un
+0 − 2∆ xhn)
+...
+un+1
+N +1 = un
+N +1 + ∆ tβ
+(∆ x)2 (un
+N − 2un
+N +1 + un
+N + 2∆ xξn) = un
+N +1 + ∆ tβ
+(∆ x)2 (2un
+N − 2un
+N +1 + 2∆ xξn)
+u1
+0
+u1
+1 u1
+2
+u0
+0 u0
+1 u0
+2
+u2
+0
+44
+<<<PAGE>>>
+Algorithme d’Euler explicite avec les conditions aux limites de Neumann d’ordre 2
+Pour i = 0, ...N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+Fin Pour
+un+1
+0 = un
+0 + ∆ tβ
+(∆ x)2 (2un
+1 − 2un
+0 − 2∆ xhn)
+un+1
+N +1 = un
+N +1 + ∆ tβ
+(∆ x)2 (2un
+N − 2un
+N +1 + 2∆ xξn)
+Fin Pour
+6.4 Implementation des conditions aux limites de Neumann en utilisant la
+m´ ethode de Crank-Nicolson
+La m´ ethode de Crank-Nicolson conduit ` a l’´ equation de la forme :
+Biun+1
+i−1 + Diun+1
+i + Aiun+1
+i+1 = K n
+i , (47)
+On re´ ecrit l’´ equation sous la forme de syst` eme lin´ eaire:
+i = 1, B 1un+1
+0 + D1un+1
+1 + A1un+1
+2 = K n
+1
+i = 2, B 2un+1
+1 + D2un+1
+2 + A2un+1
+3 = K n
+2
+...........................................................
+i = N, B N un+1
+N −1 + DN un+1
+N + AN un+1
+N +1 = K n
+N
+On utilise les conditions aux limites un+1
+0 = un+1
+1 − ∆ xhn+1, u n+1
+N +1 = un+1
+N + ∆ xξn+1 et on
+obtient la forme matricielle suivante:
+
+
+B1 + D1 A1 0 0 0
+B2 D2 A2 0 0
+0 B3 D3 A3 0
+BN −1 DN −1 AN −1
+0 BN DN + AN
+
+
+.
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+K n
+1 + ∆ xB1hn+1
+K n
+2
+K n
+3
+.
+KN −1
+K n
+N − ∆ xAN ξn+1
+
+
+45
+<<<PAGE>>>
+Or
+M · U n+1 = K n
+Notre but est de trouver U n+1 = (un+1
+N , un+1
+N −1, un+1
+N −2, ...un+1
+1 ), exprim´ ees en termes des
+(un
+N , un
+N −1, un
+N −2, ...un
+1 ). On ne peut plus calculer directement un+1
+i . Pour cela il faut inverser la
+matrice M car
+U n+1 = M −1 K n.
+Pour obtenir la matrice inverse d’une matrice tridiagonalle on applique l’Algorithme de
+Thomas.
+Algorithme de Crank-Nicolson. Condition aux limites de Neumann.
+Pour i = 0 : N + 1
+u0
+i = gi
+Fin Pour
+Ai = − ∆ tβ
+2(∆ x)2
+Bi = − ∆ tβ
+2(∆ x)2
+Di = 1 + ∆ tβ
+(∆ x)2
+D1 = D1 + B1, D N = DN + AN
+Pour n = 0 : M
+Pour i = 1 : N
+K n
+i = (1 − ∆ tβ
+(∆ x)2 )un
+i + ∆ tβ
+2(∆ x)2 (un
+i+1+un
+i−1)++ ∆ t
+2 (f n
+i +f n+1
+i )−δ1i B1·hn+1·∆ x−δN i AN ·ξn+1·∆ x
+Fin Pour
+Detoile1 = D1, Ketoile n
+1 = K n
+1
+Pour i = 2 : N
+Detoilei = Di − Bi·Ai− 1
+Detoilei− 1
+Ketoile n
+i = K n
+i −
+Bi·Ketoile n
+i− 1
+Detoilei− 1
+Fin Pour
+un+1
+N = Ketoile n
+N
+DetoileN
+Pour i = N − 1 : −1 : 1
+un+1
+i =
+Ketoile n
+i −Ai·un+1
+i+1
+Detoilei
+Fin Pour
+un+1
+0 = un+1
+1 − ∆ x · hn+1
+46
+<<<PAGE>>>
+un+1
+N +1 = un+1
+N + ∆ x · ξn+1
+Fin Pour
+Algorithme de Crank-Nicolson pour MA TLAB. Condition aux limites de Neumann.
+Pour i = 1 : N + 2
+u(1, i) = g(x(i))
+Fin Pour
+A(i) = − ∆ tβ
+2(∆ x)2
+B(i) = − ∆ tβ
+2(∆ x)2
+D(i) = 1 + ∆ tβ
+(∆ x)2
+D(2) = D(2) + B(2), D (N + 1) = D(N + 1) + A(N + 1)
+Pour n = 1 : M + 1
+Pour i = 2 : N + 1
+K(n, i) = (1 − ∆ tβ
+(∆ x)2 )u(n, i) + ∆ tβ
+2(∆ x)2 (u(n, i + 1) + u(n, i − 1)) + + ∆ t
+2 (f (t(n), x(i)) + f (t(n +
+1), x(i))) − δ2,i · B(2) · h(t(n + 1)) · ∆ x − δN +1,i · A(N + 1) · ξ(t(n + 1)) · ∆ x
+Fin Pour
+Detoile(2) = D(2), Ketoile (n, 2) = K(n, 2)
+Pour i = 3 : N + 1
+Detoile(i) = D(i) − B(i)·A(i−1)
+Detoile(i−1)
+Ketoile(n, i) = K(n, i) − B(i)·Ketoile(n,i−1)
+Detoile(i−1)
+Fin Pour
+u(n + 1, N + 1) = Ketoile(n,N +1)
+Detoile(N +1)
+Pour i = N : −1 : 2
+u(n + 1, i) = Ketoile(n,i)−A(i)·u(n+1,i+1)
+Detoile(i)
+Fin Pour
+u(n + 1, 1) = u(n + 1, 2) − ∆ x · h(t(n + 1))
+u(n + 1, N + 2) = u(n + 1, N + 1) + ∆ x · ξ(t(n + 1))
+Fin Pour
+47
+<<<PAGE>>>
+6.5 Conditions aux limites p´ eriodiques
+La condition aux limites p´ eriodiques s’´ ecrit:
+u(x0, t) = u(xN +1, t).
+0N
+N + 1
+1
+Finalement on ´ ecrit les conditions de la forme
+{ un
+0 = un
+N
+un
+1 = un
+N +1
+On ´ ecrit les conditions initiales et aux limites avec deux b oucles separ´ ees, puis on construit deux
+boucles telles que l’une est ` a l’int´ erieur de l’autre:
+Algorithme d’Euler explicite avec les conditions aux limites p´ eriodiques
+Pour i = 0, ...N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 0...M
+Pour i = 1...N
+un+1
+i = un
+i + ∆ tβ
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+Fin Pour
+un+1
+0 = un+1
+N
+un+1
+N +1 = un+1
+1
+Fin Pour
+En eﬀet, on tourne l’algorithme ` a la main:
+n = 0 toutes les valeurs u0
+i sont connues de la condition initiale: u0
+i = gi (0 ≤
+i ≤ N + 1).
+
+
+
+i = 1 u1
+1 = u0
+1 + ∆ tβ
+(∆ x)2 (u0
+2 − 2u0
+1 + u0
+0)
+i = 2 u1
+2 = u0
+2 + ∆ tβ
+(∆ x)2 (u0
+3 − 2u0
+2 + u0
+1)
+...
+i = N u 1
+N = u0
+N + ∆ tβ
+(∆ x)2 (u0
+N +1 − 2u0
+N + u0
+N −1)
+48
+<<<PAGE>>>
+u1
+0 = u1
+N
+u1
+N +1 = u1
+1
+n = 1 les valeurs u1
+i (i=0,...N ) sont calcul´ ees ` a l’iterationn = 0 , u1
+0 et u1
+N +1
+sont connues de conditions aux limites p´ eriodiques: u1
+0 = u1
+N , u 1
+N +1 = u1
+1.
+
+
+
+i = 1 u2
+1 = u1
+1 + ∆ tβ
+(∆ x)2 (u1
+2 − 2u1
+1 + u1
+0)
+i = 2 u2
+2 = u1
+2 + ∆ tβ
+(∆ x)2 (u1
+3 − 2u1
+2 + u1
+1)
+...
+i = N u 2
+N = u1
+N + ∆ tβ
+(∆ x)2 ( u1
+N +1 − 2u1
+N + u1
+N −1)
+u2
+0 = u2
+N
+u2
+N +1 = u2
+1
+n = M
+
+
+
+i = 1 uM
+1 = uM −1
+1 + ∆ tβ
+(∆ x)2 (uM −1
+2 − 2uM −1
+1 + uM −1
+0 )
+i = 2 uM
+2 = uM −1
+2 + ∆ tβ
+(∆ x)2 (uM −1
+3 − 2uM −1
+2 + uM −1
+1 )
+...
+i = N u M
+N = uM −1
+N + ∆ tβ
+(∆ x)2 ( uM −1
+N +1 − 2uM −1
+N + uM −1
+N −1 )
+uM
+0 = uM
+N
+uM
+N +1 = uM
+1
+49
+<<<PAGE>>>
+On peut visualiser cette explication par un dessin suivant:
+u1
+0
+u1
+1 u1
+2
+u0
+0
+u0
+1 u0
+2
+u2
+1
+u2
+0
+u1
+N
+u0
+N u0
+N +1
+u1
+N +1
+7 Sch´ emas aux plusieurs niveaux temporels
+7.1 Sch´ ema de Leap-Frog
+Consid´ erons la m´ ethode de Leap-Frog:
+un+1
+i − un−1
+i
+2∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+La d´ eriv´ ee temporelle centr´ ee et la d´ eriv´ ee spatiale centr´ ee conduit au sch´ ema compl´ etement
+sym´ etrique par rapport ` an et i. Ce sch´ ema est incapable de calculer des solutions approch ´ ees
+car il est instable. On explique la notion de la stabilit´ e pl us tard.
+Cependant le m´ ethode de Leap-Frog s’utilise souvent pour l a resolution des ´ equations hyper-
+boliques et les ´ equations non lin´ eaires du type de Kortewe g-de Vries. Expliquons l’application
+de m´ ethode de Leap-Frog en prenant comme exemple l’´ equation de chaleur.
+un+1
+i = un−1
+i + 2β∆ t
+(∆ x)2 (un
+i+1 − 2un
+i + un
+i−1)
+On commence par n = 1. Comment calculer u1
+i ? On fait le premier pas avec le sch´ ema d’Euler
+implicite, et ensuite on continue en Leap-Frog.
+En eﬀet, le sch´ ema d’Euler explicite donne:
+50
+<<<PAGE>>>
+un+1
+i − un
+i
+∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+n = 0 u1
+i − u0
+i
+∆ t = β u0
+i+1 − 2u0
+i + u0
+i−1
+(∆ x)2 ,
+u1
+i = u0
+i − ∆ tβ
+(∆ x)2 (u0
+i+1 − 2u0
+i + u0
+i−1).
+On continue en Leap-Frog:
+n = 1 les valeurs u1
+i (i=1,...N ) sont calcul´ ees par la m´ ethode d’Euler ,
+u1
+0 et u1
+N +1 sont connues de conditions aux limites: u1
+0 = h1, u1
+N +1 = ξ1.
+
+
+
+i = 1 u2
+1 = u0
+1 + 2∆ tβ
+(∆ x)2 (u1
+2 − 2u1
+1 + u1
+0)
+i = 2 u2
+2 = u0
+2 + 2∆ tβ
+(∆ x)2 (u1
+3 − 2u1
+2 + u1
+1)
+...
+i = N u 2
+N = u0
+N + 2∆ tβ
+(∆ x)2 (u1
+N +1 − 2u1
+N + u1
+N −1)
+n = M
+
+
+
+i = 1 uM
+1 = uM −2
+1 + 2∆ tβ
+(∆ x)2 (uM −1
+2 − 2uM −1
+1 + uM −1
+0 )
+i = 2 uM
+2 = uM −2
+2 + 2∆ tβ
+(∆ x)2 (uM −1
+3 − 2uM −1
+2 + uM −1
+1 )
+...
+i = N u M
+N = uM −2
+N + 2∆ tβ
+(∆ x)2 (uM −1
+N +1 − 2uM −1
+N + uM −1
+N −1 )
+7.2 Sch´ ema de Lax-Wendroﬀ
+On commence par la decomposition de la fonction cherch´ ee en series de Taylor d’ordre 2:
+un+1
+i = un
+i + ∂u
+∂t ∆ t + 1
+2
+∂2u
+∂t2 (∆ t)2 + ...
+On r´ emplace∂u
+∂t par β ∂2u
+∂x2 , ∂2u
+∂t2 par β2 ∂4u
+∂x4 .
+On discr´ etise les deriv´ ees spatiales:
+∂2u
+∂x2 = un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+∂4u
+∂x4 = un
+i+2 − 4un+1
+i + 6un
+i − 4un
+i−1 + un
+i−2
+(∆ x)4
+On obtient le sch` ema explicite:
+un+1
+i = un
+i + β∆ t un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 + β2(∆ t)2
+2
+un
+i+2 − 4un
+i+1 + 6un
+i − 4un
+i−1 + un
+i−2
+(∆ x)4
+51
+<<<PAGE>>>
+8 Resum´ e sur les sch´ emas de discr´ etisation.
+• Euler explicite: Forward in time, centered in space:
+un+1
+i − un
+i
+∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+• Euler implicite: Backward in time, centered in space:
+un+1
+i − un
+i
+∆ t = β un+1
+i+1 − 2un+1
+i + un+1
+i−1
+(∆ x)2
+• Crank-Nicolson:
+un+1
+i − un
+i
+∆ t = β
+(∆ x)2 [ 1
+2 (un
+i+1 + un+1
+i+1 ) − 2 1
+2 (un
+i + un+1
+i ) + 1
+2 (un
+i−1 + un+1
+i−1 )]
+• Lax-Friedrich:
+un+1
+i − 1
+2 (un
+i+1 + un
+i−1)
+∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+• Lax-Wendroﬀ:
+un+1
+i = un
+i + β∆ t un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 + β2(∆ t)2
+2
+un
+i+2 − 4un
+i + 6un
+i − 4un
+i−1 + un
+i−2
+(∆ x)4
+• Leap-Frog:
+un+1
+i − un−1
+i
+2∆ t = β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+• Du Fort-Frankel
+un+1
+i − un−1
+i
+2∆ t = β
+(∆ x)2 (un
+i+1 − (un−1
+i + un+1
+i ) + un
+i−1)
+• Gear:
+3un+1
+i − 4un
+i + un−1
+i
+2∆ t = β un+1
+i+1 − 2un+1
+i + un+1
+i−1
+(∆ x)2
+9 Consistance
+Une repr´ esentation aux diﬀ´ erences ﬁnies sera dite consistante si l’on peut montrer que l’erreur
+de troncature tend vers z´ ero lorsque les pas du maillage ten dent vers z´ ero. En d’autres termes la
+consistance exprime que les ´ equations discr´ etis´ ees doivent tendre vers les ´ equations aux d´ eriv´ ees
+partielles originales lorsque les pas du maillage tendent v ers z´ ero.
+D´ eﬁnition de Consistance
+52
+<<<PAGE>>>
+Soit l’´ equation aux d´ eriv´ ees partielles
+F (u, ∂u
+∂t , ∂u
+∂x , ∂2u
+∂x2 , ∂2u
+∂t2 , ...) = 0 .
+Le sch´ ema aux diﬀ´ erences ﬁnies est dit consistant avec l’´ equation aux d´ eriv´ees par-
+tielles F (·) = 0 si pour toute solution suﬃsamment r´ eguli` ere, l’erreur de tron-
+cature du sch´ ema, d´ eﬁni par l’´ equation discrete
+F (u(tn + m∆ t, xi + j∆ x)) = 0 ,
+tend vers z´ eros, uniform´ ement par rapport ` a (t, x), lorsque ∆ t et ∆ x tendent vers
+z´ eros ind´ ependement.
+On dit que le sch´ ema est pr´ esis ` a l’ordrep en espace et ` a l’ordre q en temps si l’erreur
+de troncature tend vers z´ ero comme O((∆ x)p + (∆ t)q) lorsque ∆ t et ∆ x tendent vers
+z´ ero.
+Un example de l’´ equation discrete F (u(tn + m∆ t, xi + j)) = 0, de cette d´ eﬁnition est
+F ( un+1
+i − un
+i
+∆ t , un
+i+1 − un
+i
+∆ x , un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 , un+1
+i − 2un
+i + un−1
+i
+(∆ t)2 , ...) = 0
+Concr´ etement on calcule l’erreur de troncature d’un sch´ ema en remplacant un+m
+i+j
+faisant partie de l’´ equation discrete associ´ ee ` a ce sch´ ema par u(tn + m∆ t, xi + j∆ x).
+9.1 Consistance de la m´ ethode d’Euler progressif
+On v´ eriﬁe consistance ` a l’´ equation de la chaleur et on calcule l’erreur de troncature du sch´ ema
+suivant:
+un+1
+i − un
+i
+∆ t − β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 = 0
+On eﬀectue le remplacement:
+u(tn + ∆ t, xi) − u(tn, xi)
+∆ t − β u(tn, xi + ∆ x) − 2u(tn, xi) + u(tn, xi − ∆ x)
+(∆ x)2 = 0
+On utilise la formule de Taylor et on obtient:
+∂u
+∂t (tn, xi) − β ∂2u
+∂x2 (tn, xi) − β
+12
+∂4u
+∂x4 (∆ x)2 + 1
+2!
+∂2u
+∂t2 (∆ t) + O((∆ t)2) + O((∆ x)4) = 0
+Si u(tn, xi) est la solution de l’´ equation de chaleur (ut = βuxx) , on obtient ais´ ement la consistance
+ainsi que la pr´ ecision ` a l’ordre 1 et temps et 2 en espace. En eﬀet
+∂u
+∂t − β ∂2u
+∂x2 − β
+12
+∂4u
+∂x4 (∆ x)2 + 1
+2!
+∂2u
+∂t2 (∆ t) =
+= − β
+12
+∂4u
+∂x4 (∆ x)2 + 1
+2!
+∂2u
+∂t2 (∆ t) → 0, ∆ x, ∆ t → 0
+53
+<<<PAGE>>>
+Il est possible d’augmenter l’ordre de pr´ ecision. En eﬀet
+∂
+∂t
+∂u
+∂t = β ∂
+∂t
+∂2u
+∂x2 = β ∂2
+∂x2
+∂u
+∂t = β2 ∂4u
+∂x4
+On r´ eecrit l’erreur de troncature
+T = ( β2∆ t
+2 − β(∆ x)2
+12 ) ∂4u
+∂x4 + O((∆ t)2, (∆ x)4).
+Si on choisit
+∆ t = (∆ x)2
+6β
+alors ce sch´ ema est pr´ ecis ` a l’ordre 2 en temps et 4 en espace. On a augment´ e la pr´ ecision sans
+changer la complexit´ e du calcul.
+9.2 Consistance du sch´ ema de DuFort-Frankel
+On calcule l’erreur de troncature du sch´ ema:
+un+1
+i − un−1
+i
+2∆ t − β
+(∆ x)2 (un
+i+1 − un−1
+i − un+1
+i + un
+i−1) = 0
+u(tn + ∆ t, xi) − u(tn − ∆ t, xi)
+∆ t −β u(tn, xi + ∆ x) − u(tn + ∆ t, xi) − u(tn − ∆ t, xi) + u(tn, xi − ∆ x)
+(∆ x)2 =
+= ∂u
+∂t − β ∂2u
+∂x2 + 1
+12
+∂3u
+∂t3 (∆ t)2 + β ∂2u
+∂t2 ( ∆ t
+∆ x )2 − β
+12
+∂4u
+∂x4 (∆ x)2
+Tout se passe bien si le rapport ( ∆ t
+∆ x )2 tend vers z´ ero. Le sch´ ema est d’ordreO(( ∆ t
+∆ x )2), (∆ x)2).
+Par contre si, lorsque ∆ t et ∆ x tendent vers z´ ero en conservant le rapport ( ∆ t
+∆ x )2 = α2 constant,
+l’´ equation aux diﬀ´ erence ﬁnies ´ etudi´ es sera consistante avec une autre ´ equation, qui sera d’ailleurs
+de type hyperbolique:
+∂u
+∂t − β ∂2u
+∂x2 + βα2 ∂2u
+∂t2 = 0
+10 Stabilit´ e
+L’instabilit´ e se manifeste par des oscillations non born´ees de la solution num´ erique.
+D´ eﬁnissons une norme pour une solution num´ eriqueu(tn, xi). Nous reprenons les normes clas-
+siques sur RN que nous pond´ erons simplement par le pas ∆ x. La norme Lp :
+||un||p = (
+N∑
+i=0
+∆ x|un
+i |p)1/p
+o` u le cas limite p = ∞ doit ˆ etre compris dans le sens
+||un||∞ = max
+1≤j≤N
+|un
+i |
+Nous allons travailler dans l’espace discrete muni da la nor me L2 :
+||un||2 =
+/radicaltp/radicalvertex/radicalvertex√
+N∑
+i=0
+∆ x|un
+i |2
+54
+<<<PAGE>>>
+D´ eﬁnition de Stabilit´ e
+Un sch´ ema aux diﬀ´ erences ﬁnies est dit stable pour la norme L2 s’il existe une
+constante K > 0 ind´ ependante de∆ x et ∆ t ( lorsque ces valeurs tendent vers z´ ero)
+telle que
+||un|| ≤ K||u0|| pour tout n ≥ 0,
+quelle que soit la donn´ ee initiale u0.
+Si l’inegalit´ e n’a lieu que pour des pas ∆ t et ∆ x restreints ` a une inegalit´ e, on dit que le sch´ ema
+est conditionnellement stable.
+On va ´ etudier la stabilit´ e en normeL2. La norme L2 se prˆ ete tr` es bien ` a l’´ etude de la stabilit´ e
+grˆ ace ` a l’outil tr` es puissant de l’analyse de Fourier. Nous supposons d´ esormais que les conditions
+aux limites sont les conditions aux limites p´ eriodiques:
+u(t, x + 1) = u(t, x)
+pour ∀x ∈ [0, 1]. A chaque vecteur un
+i (0 ≤ i ≤ N ) on associe une fonction un(x), constante par
+morceaux, p´ eriodique de p´ eriode 1, d´ eﬁnie sur [0, 1] par
+un(x) = un
+i si x i−1/2 < x < x i+1/2.
+un
+i
+un
+0
+un
+1
+un
+2
+un
+3
+xix0 x0x1 x1x2 x2x3 x3
+un(x)
+x
+D’apr` es l’analyse de Fourier, toute fonction de L2[0, 1] peut se decomposer en une somme de
+Fourier:
+un(x) =
+∑
+k∈Z
+ˆun(k)e2iπkx ˆun(k) =
+∫ 1
+0
+un(x)e−2iπkx dx.
+On a aussi la formule de Plancherel
+∫ 1
+0
+|un(x)|2dx =
+∑
+k∈Z
+|ˆun(k)|2
+55
+<<<PAGE>>>
+Expliquons maintenant la m´ ethode sur l’exemple du sch´ emaexplicite d’Euler:
+un+1
+i − un
+i
+∆ t = β un(x + ∆ x) − 2un(x) + un(x − ∆ x)
+(∆ x)2
+On applique la transformation de Fourier et on obtient
+ˆun+1(k) = (1 − β∆ t
+(∆ x)2 (−e2iπk∆ x + 2 − e−2iπk∆ x))ˆun(k)
+On peut re´ ecrir cette expression de la forme:
+ˆun+1(k) = G(k)ˆun(k) = ( G(k))n+1 ˆu0(k) avec G (k) = 1 − 4β∆ t
+(∆ x)2 (sin(πk∆ x))2
+Ce facteur G s’appelle facteur d’ampliﬁcation. Pour que la solution soi t stable il faut que G ne
+soit pas sup´ erieur ` a 1 pour tous les modes de Fourier de la so lution un. En eﬀet le coeﬃcient de
+Fourier ˆun+1(k) est born´ e par la condition initiale|ˆun+1(k)| ≤ | ˆu0(k)| si le facteur d’ampliﬁcation
+|G(k)| ≤ 1. En eﬀet
+|ˆun+1(k)| = |(G(k))n+1 ˆu0(k)| ≤ | ˆu0(k)|
+` a condition que |G(k)| ≤ 1. Le facteur d’ampliﬁcation |G(k)| ≤ 1 si
+|1 − 4β∆ t
+(∆ x)2 (sin(πk∆ x))2| ≤ 1 = ⇒ 2β∆ t(sin(πk∆ x))2 ≤ (∆ x)2 =⇒ 2β∆ t ≤ (∆ x)2
+Si la condition 2 β∆ t ≤ (∆ x)2 est satisfaite on d´ eduit de la formule de Plancherel:
+||un||2
+2 =
+∫ 1
+0
+|un(x)|2dx =
+∑
+k∈Z
+|ˆun(k)|2 ≤
+∑
+k∈Z
+|ˆu0(k)|2 =
+∫ 1
+0
+|u0(x)|2dx = ||u0||2
+2
+Donc
+||un||2 ≤ ||u0||2
+ce qui n’est rien d’autre que la stabilit´ e L2.
+Un sch´ ema instable est totalement inutilisable. En eﬀet les don´ ees initiales peuvent entrainer
+les ﬂuctuations tr` es fortes. Mˆ eme si on part d’une donn´ ee initiale sp´ ecialement pr´ epar´ ee de
+mani` ere ` a ce qu’aucun des modes de Fourier instable ne soit pas excit´ e par elle, les in´ evitables
+erreurs d’arrondi vont cre´ er des composantes non nulles de la solution sur ces modes instables.
+La croissance exponentielle des modes instables entraine q u’apr` es quelques pas en temps ces
+petits modes deviennent ´ enormes et polluent compl` etement le reste de la solution num´ erique.
+10.1 Stabilit´ e d’un point du vue pratique
+1) On injecte dans le sch´ ema des diﬀ´ erences ﬁnies un mode deFourier ou un ansatz sous la forme
+d’une onde plane:
+un
+i = Gn(k)e2iπkx i, x i = i∆ x
+2) On analyse la valeur du facteur d’impliﬁcation Gn(k).
+3) On applique la condition de stabilit´ e de Von Neumann:
+|G(k)| ≤ 1 pour tout mode k ∈ Z
+Si la condition de stabilit´ e de Von Neumann est satisfaite ( avec ´ eventuellement des restrictions
+sur ∆ t et ∆ x) alors le sch´ ema est stable pour la norme L2.
+56
+<<<PAGE>>>
+10.2 Stabilit´ e de m´ ethode de Crank-Nicolson
+On injecte dans l’´ equation discr´ etis´ ee
+un+1
+i − un
+i
+∆ t = β
+(∆ x)2 [ 1
+2 (un
+i+1 + un+1
+i+1 ) − 2 1
+2 (un
+i + un+1
+i ) + 1
+2 (un
+i−1 + un+1
+i−1 )]
+une onde plane: un
+i = Gn(k)e2iπkx i. On obtient:
+Gn+1(k)e2iπkx i − Gn(k)e2iπkx i
+∆ t = β
+(∆ x)2 ( 1
+2 (Gn(k)e2iπk(xi+∆ x) + Gn+1(k)e2iπk(xi+∆ x))−
+Gn(k)e2iπkx i − Gn+1(k)e2iπkx i + 1
+2 (Gn(k)e2iπk(xi−∆ x) + Gn+1(k)e2iπk(xi−∆ x))
+Le facteur d’ampliﬁcation G(k) est donn´ e par
+G(k) =
+1 − 2β∆ t
+(∆ x)2 sin2(πk∆ x)
+1 + 2β∆ t
+(∆ x)2 sin2(πk∆ x)
+Pour toute valeur de k, on a |G(k)| ≤ 1, ce qui donne une m´ ethode qui est inconditionnellement
+convergente. La m´ ethode de Crank- Nicolson est une am´ elioration signiﬁcative par rapport ` a la
+m´ ethode d’Euler. Elle est remarquable si le front ou la queue de condition initiale ne pr´ esente pas
+de discontinuit´ e, mais elle g´ en´ ere des oscillations rapides si les discontinuit´ es dans les conditions
+initiales sont pr´ esentes.
+En eﬀet, sur le graphe ` a 3 dimensions on voit ces ﬂuctuations. Ils interviennent au domaine de
+discontinuit´ e de conditions ﬁnales de l’option ”Cash or no thing” avec fonction payoﬀ :
+V (t = T, S ) = 4 Heaviside (S − K).
+Sur le graphe ` a 2 dimensions on voit les solutions V (St, t) pour t = 0 , t = T
+2 , t = T (fonction
+payoﬀ). La surface - solution est la solution de l’´ equation de Black et Scholes avec la condition
+ﬁnale et les conditions aux limites :
+
+
+
+∂V
+∂t − rV + rS ∂V
+∂S + 1
+2 σ2S2 ∂2V
+∂S 2 = 0
+V (t = T, S ) = 4 Heaviside (S − K)
+V (t, S = 0) = 0
+V (t, S → ∞) = 4
+(48)
+5
+10
+15
+20
+0.2
+0.4
+0.6
+0.8
+3
+S0
+Prix de loption Cash or Nothing
+temps t
+Prix de loption
+0
+0 0
+2
+4
+1
+57
+<<<PAGE>>>
+5 10 15 20
+0.5
+1.5
+2.5
+3
+3.5
+S0
+Prix de loption à t=0
+Prix de loption Cash or Nothing
+ 
+ 
+[t=T, t=T/2, t=0]
+00
+2
+4
+1
+Remarque: L’analyse de Fourier repose sur le choix des condi tions aux limites p´ eriodiques. La
+stabilit´ eL2 peut etre aussi d´ emontrer dans le cas de conditions aux limi tes de Dirichlet. Il suﬃt
+d’eﬀectuer la prolongation de la fonction un(x) sur l’intervalle [ −1, 0] de facon paire et puis
+appliquer la decomposition en s´ eerie de Fourier de la fonct ion p´ eriodique sur [−1, 1].
+11 Convergence
+La solution num´ eriqueun
+i doit tendre vers la solution exacte u(i∆ x, n∆ t) de l’´ quation diﬀ´ erentielle
+en tout point xi et en tout point tn quand ∆ x et ∆ t tendent vers z´ ero.
+D´ eﬁnition de Convergence
+Si l’erreur entre la solution num´ erique et la solution exacte satisfasse la condition
+suivante
+∀T > 0, lim
+∆ x,∆ t→0
+( sup
+tn≤T
+||u(i∆ x, n∆ t) − un
+i ||) = 0
+le sch´ ema est convergent.
+11.1 Th´ eor` eme de Lax
+Th´ eor` eme de Lax dit:
+Soit u(x, t) la solution suﬃsamment r´ eguli` ere de l’´ equation de la chaleur.
+Soit un
+i la solution de l’´ equation discrete obtenue par un sch´ ema aux diﬀ´ erence ﬁnies
+avec la condition initiale
+u0
+i = g(xi).
+On suppose que le sch´ ema est lin´ eaire, ` a deux niveaux, consistant, et stable p our la
+norme || · ||. Alors le sch´ ema est convergent au sens o` u
+∀T > 0, lim
+∆ x,∆ t→0
+( sup
+tn≤T
+||u(i∆ x, n∆ t) − un
+i ||) = 0
+58
+<<<PAGE>>>
+De plus, si le sch´ ema est pr´ ecis ` a l’ordre p en espace et ` a l’ordre q en temps, alors
+pour tout temps T > 0 il existe une constante CT > 0 telle que
+sup
+tn≤T
+||u(i∆ x, n∆ t) − un
+i || ≤ CT ((∆ x)p + (∆ t)q)
+On peut dire plus simplement:
+Pour un sch´ ema lin´ eaire consistance et stabilit´ e implique convergence.
+D´ emonstration du th´ eor` eme de Lax
+Un sch´ ema lin´ eaire ` a deux niveaux peut s’´ ecrir sous la forme condens´ ee:
+un+1 = M un (1)
+o` uM est la matrice d’it´ eration (carr´ e de tailleN ).
+En eﬀet l’´ quation de la chaleur discrete avec les les conditi ons aux limites de Dirichlet nulls
+admet la forme:
+un+1
+i − un
+i
+∆ t − β un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2 = 0
+soit
+un+1
+i = aun
+i−1 + un
+i (1 − 2a) + aun
+i+1 = 0, a = β∆ t
+(∆ x)2
+et s’´ ecrit sous la forme matricielle
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+1 − 2a a 0 0 0
+a 1 − 2a a 0 0
+a 1 − 2a a
+0 C 1 − 2a
+
+
+.
+
+
+un
+1
+un
+2
+un
+3
+.
+.
+un
+N
+
+
+.
+Soit U n
+i ≡ u(tn, xi) la solution analytique de l’´ equation de la chaleur:
+∂U
+∂t = β ∂2U
+∂x2 .
+Comme le sch´ ema est consistant, il existe un vecteur ǫn tel que
+U n+1 = M Un + ∆ tǫn, avec lim
+∆ x,∆ t→0
+||ǫn|| = 0 (2)
+et la convergence de l’erreur de troncature ǫn est uniforme pour tout les temps 0 ≤ tn ≤ T . Si
+le sch´ ema pr´ esis ` a l’ordrep en espace et ` a l’ordre q en temps alors l’erreur de troncature
+||ǫn|| ≤ C((∆ x)p + (∆ t)q)
+On pose
+ǫn
+i = un
+i − U n
+i
+59
+<<<PAGE>>>
+et on obtient par soustraction le (2) du (1):
+ǫn+1 = M ǫn − ∆ tǫn
+d’` ou par r´ ecurence
+ǫn = M nǫ0 − ∆ t
+n∑
+k=1
+M n−kǫk−1
+Or, la stabilit´ e du sch´ ema veut dire que
+||un|| = M nu0|| ≤ K||u0||
+pour toute donn´ ee initiale, c’est-` a -dire ||M n|| ≤ K o` u la constante Kne depend pas de n;
+D’autre part ǫ0 = 0 donc on obtient
+ǫn ≤ ∆ t
+n∑
+k=1
+||M n−k|| · ||ǫk−1|| ≤ ∆ t · n · K · C · ((∆ x)p + (∆ t)q)
+ce qu’il fallait d´ emontrer siCT = T KC.
+D’un point de vue pratique, le th´ eor` eme de Lax est tr` es ras surant: si l’on utilise un sch´ ema
+consistant et que l’on n’observe pas d’oscillations num´ erique( c’est-` a- dire qu’il est stable), alors
+la solution num´ erique est proche de la solution exacte ( le s ch´ ema converge).
+12 Propagation des erreurs.
+Dans cette section nous pr´ esontons les r´ esultats des experiences num´ eriques. Nous comparons
+les solutions num´ eriques obtenus par les sch´ ema d’Euler e xplicite et Crank-Nicolson avec la
+solution analytique. Consid´ erons l’´ equation de la chaleur sur [0 , 1] avec la condition initiales
+u(t = 0, x) = x(1 − x)
+
+
+
+∂u
+∂t = ∂2u
+∂x2
+u(t = 0, x) = x(1 − x)
+u(t, x = 0) = 0
+u(t, x = 1) = 0
+(49)
+La solution analytique de cette ´ equation s’´ ecrit de la forme:
+u(t, x) =
+∑ 4(1 − (−1)n)
+(πn)3 sin(πnx)e−π2n2t
+On trace la solution exacte en 2 et 3 dimensions:
+60
+<<<PAGE>>>
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+0.2
+0.1
+0.02
+0.04
+0.06
+0.08
+0.12
+0.14
+0.16
+0.18
+0.22
+0.24u
+Solution analytique: condition initiale et solution à t=T
+00 1x
+0.2
+0.4
+0.6
+0.8
+0.2
+0.1
+0.05
+0.15
+0.2
+0.1
+0.05
+0.15
+0.25
+t
+u_analytique
+solution numerique  
+0
+0 0
+1
+x
+Choisissons la discr´ etisation suivantes de l’espace temps:
+{ T = 0.2 M + 1 = 1000 ∆ t = T /(M + 1) = 0 .0002
+L = 1 N + 1 = 50 ∆ t = L/(N + 1) = 0 .02 (50)
+0.2
+0.4
+0.6
+0.8
+0.2
+0.1
+0.05
+0.15
+0e00
+−6e−05
+−4e−05
+−2e−05
+t
+u−U_theorique
+erreur V−U entre la solution numerique Euler et la solution analytique 
+0 0
+1
+x
+0.2
+0.4
+0.6
+0.8
+0.2
+0.1
+0.05
+0.15
+0e00
+2e−05
+−1e−05
+1e−05
+3e−05
+coordonnee x
+coordonnee t
+ erreur V−U entre la solution numerique Crank−Nicolson et la solution analytique 
+0 0
+1
+61
+<<<PAGE>>>
+L’approximation d’Euler explicite est (∆ t) ∼ 0.02% (∆ x)2 ∼ 0.04
+L’approximation de Crank-Nicolson implicite est (∆ t)2 ∼ 4 · 10−6% (∆ x)2 ∼ 0.04
+• Sur le graphe ´ a gauche obtenu par Euler explicite l’erreur m aximal est d’ordre 6 · 10−5 ce que
+correspond ` a (6· 10−5)/0.24 ∼ 0.025% et se trouve en accord avec l’approximation.
+• Sur le graphe ´ a gauche obtenu par Euler explicite l’erreur m aximal est d’ordre 6 · 10−5 ce que
+correspond ` a (3· 10−6)/0.24 ∼ 0.012% et se trouve en accord avec l’approximation.
+13 Analyse de Fourier des EDP. R´ elation de dispersion
+Chaque fonction u ∈ L2 peut ˆ etre d´ ecompos´ ee en int´ egrale de Fourier:
+u(x, t) = 1
+2π
+∫
+eikx ˆu(k, t)dk, ˆu(k, t) =
+∫
+e−ikxu(x, t)dx
+Une composante de Fourier v(x, t) = ei(kx+ωt) (l’onde plane) est une solution de chaque ´ equation
+` a condition qu’on impose une relation entre k et ω. Cette relation s’appelle la relation de
+dispersion. Le rapport ω
+k s’appelle la vitesse de propagation de phase
+vϕ = ω
+k
+Consid´ erons les cinq types des EDP les plus importantes:
+• L’´ equation de chaleur:
+∂u
+∂t − ∂2u
+∂x2 = 0
+• L’´ equation d’onde:
+∂u
+∂t + ∂u
+∂x = 0
+• L’´ equation de Schrodinger
+∂u
+∂t − i ∂2u
+∂x2 = 0
+• L’´ equation de Burgers
+∂u
+∂t + u ∂u
+∂x = 0
+• L’´ equation de KdV lin´ earis´ ee
+∂u
+∂t + u0
+∂u
+∂x + b ∂3u
+∂x3 = 0
+• L’´ equation de KdV
+∂u
+∂t + u ∂u
+∂x + b ∂3u
+∂x3 = 0
+• Injectons v(x, t) = ei(kx+ωt) dans l’´ equation de chaleur. On obtient:
+ω = ik2, u (x, t) = e(ikx−k2t)
+La solution diminue dans le temps. Donc l’´ equation est diﬀus ive.
+62
+<<<PAGE>>>
+• Injectons v(x, t) = ei(kx+ωt) dans l’´ equation d’onde. On obtient:
+ω = k, u (x, t) = eik(x−t)
+la vitesse de phase vϕ = 1 est une constante donc la solution se propage sans deforma tion.
+• Injectons v(x, t) = ei(kx+ωt) dans l’´ equation de Schrodinger. On obtient:
+ω = −k2, u (x, t) = ei(kx−k2t)
+La solution n’est pas diﬀusive mais dispersive. C’est-` a-dire la solution tend se briser aux paquets
+d’ondes qui se d´ eplacent avec les vitesses diﬀ´ erentes. Eneﬀet, la vitesse de phase vϕ = ω
+k = −k,
+d´ epend du vecteur d’onde k (ou longueur d’onde), chaque composante de Fourier de propa ge
+avec les vitesses diﬀ´ erentes, on dit que la solution se disp erse.
+• Injectons v(x, t) = ei(kx+ωt) dans l’´ equation de Burgers. On obtient:
+ω + vk = 0, v phase = v
+Cela signiﬁe que la vitesse de propagation de phase d´ epend d e l’amplitude.
+L’´ equation de Burgers nonlin´ eaire d´ ecrit la propagation d’une vague. Le sommet d’une vague
+se propage avec la vitesse plus grande que celle du sol. Ce ph´ enom` ene, la formation des choc,
+explique pourquoi les vagues tombent et se brisent.
+⃗ v1
+⃗ v2
+• Injectons v(x, t) = ei(kx+ωt) dans l’´ equation de KdV lin´ earis´ ee. On obtient:
+ω = k3
+La solution est dispersive.
+• L’´ equation de KdV est une sorte de remarquable ´ equilibre entre les ph´ enom` enes de formation
+des choc et de la dispersion. Les solutions de KdV - solitons s ont tr` es stables.
+63
+<<<PAGE>>>
+14 Equations hyperboliques
+• Equation d’advection 
+
+
+∂u
+∂t + V ∂u
+∂x = 0
+u(t = 0, x) = g(x)
+u(t, 0) = h(t), si V > 0
+u(t, L) = ξ(t), si V < 0
+(51)
+Cette ´ equation d´ ecrit la propagation d’une ﬂuctuation sans deformation. La fonction g(x − V t)
+est une solution de l’´ equation.
+Si V > 0 l’onde se propage ` a droite
+Si V < 0 l’onde se propage ` a gauche.
+C’est pourquoi on ﬁxe deux conditions aux limites diﬀ´ erent es.
+• Equation d’ondes d’ordre 2
+L’´ equation des ondes mod´ elise des ph´ enom` enes de propagation d’ondes ou des vibrations. L’´ equation
+d´ ecrit des ondes se propageant ` a gauche et ` a droite.
+
+
+
+∂2u
+∂t2 = V 2 ∂2u
+∂x2
+u(t = 0, x) = g(x)
+u(0, t) = u(L, t)
+∂u
+∂t (t = 0, x) = g1(x)
+(52)
+14.1 Equation d’advection
+On a l’´ equation:
+∂u
+∂t + V ∂u
+∂x = 0
+14.1.1 Sch´ ema upwind
+• Discr´ etisation:
+un+1
+i − un
+i
+∆ t =
+
+
+
+−V
+un
+i −un
+i− 1
+∆ x , V > 0
+u0
+i = gi
+un
+0 = hn
+un+1
+i − un
+i
+∆ t =
+
+
+
+−V
+un
+i+1−un
+i
+∆ x , V < 0
+u0
+i = gi
+un
+N +1 = ξn
+14.1.2 Impl´ ementation du sch` ema explicite upwind
+Pour impl´ ementer le sch´ ema upwind on a pas besoin une seule condition aux limites:
+en x = 0 si V > 0 et en x = L si V < 0.
+En eﬀet, soit V > 0 et
+C = V ∆ t
+∆ x
+64
+<<<PAGE>>>
+On r´ eecrit le sch´ ema de la forme
+un+1
+i = un
+i (1 + C) + Cu n
+i−1
+On ´ ecrit les conditions initiales et aux limites avec deux b oucles separ´ ees, puis on construit deux
+boucles telles que l’une est ` a l’int´ erieur de l’autre::
+Algorithme du sch´ ema explicite upwind
+Pour i = 0, ...N + 1
+u0
+i = gi
+Fin Pour
+Pour n = 1, ...M + 1
+un
+0 = hn
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = un
+i (1 + C) + Cu n
+i−1
+Fin pour
+Fin pour
+En eﬀet, on tourne l’algorithme ` a la main:
+n = 0 toutes les valeurs u0
+i sont connues de la condition initiale: u0
+i = gi
+
+
+
+i = 1 u1
+1 = u0
+1(1 + C) + Cu 0
+0
+...
+i = N + 1 u1
+N +1 = u0
+N +1(1 + C) + Cu 0
+N
+n = 1 les valeurs u1
+i (i = 1, ...N + 1) sont calcul´ ees ` a l’iterationn = 0 ,
+u1
+0 sont connues de conditions aux limites: u1
+0 = h1.
+
+
+
+i = 1 u2
+1 = u1
+1(1 + C) + Cu 1
+0
+i = 2 u2
+2 = u1
+2(1 + C) + Cu 1
+1
+...
+i = N + 1 u2
+N +1 = u1
+N +1(1 + C) + Cu 1
+N
+n = M ...
+Donc on peut tout calculer et visualiser l’algorithme par le dessin suivant:
+65
+<<<PAGE>>>
+u1
+0 u1
+1 u1
+2
+u0
+0 u0
+1 u0
+2
+u2
+1
+u1
+N +1
+• Consistance.
+L’ordre de precision est ∆ x en espace et ∆ t en temps.
+• Stabilit´ e.
+On injecte dans l’´ equation discr´ etis´ ee pourV > 0
+un+1
+i − un
+i
+∆ t = −V un
+i − un
+i−1
+∆ x
+une onde plane: un
+i = Gn(k)e2iπkx i. On obtient:
+Gn+1(k)e2iπkx i − Gn(k)e2iπkx i
+∆ t = − V
+∆ x (Gn(k)e2iπkx i − Gn(k)e2iπk(xi−∆ x))
+Le facteur d’ampliﬁcation G(k) est donn´ e par
+G(k) = 1 − V ∆ t
+∆ x (1 − e−2iπk∆ x)
+On en d´ eduit
+|G| =
+√
+1 − 2 V ∆ t
+∆ x (1 − V ∆ t
+∆ x ) sin2(πk∆ x)
+Pour la stabilit´ e il faut que |G(k)| ≤ 1, ce qui donne
+V ∆ t
+∆ x < 1
+Si la variable V est une fonction V (x, t) la condition de stabilit´ e se transforme ` a
+max|V (x, t)|∆ t
+∆ x ≤ 1
+66
+<<<PAGE>>>
+14.1.3 Sch´ ema explicite centr´ e
+• Discr´ etisation:
+
+
+
+un+1
+i −un
+i
+∆ t = −V
+un
+i+1−un
+i− 1
+2∆ x
+u0
+i = gi
+un
+0 = hn
+(53)
+• Consistance.
+L’ordre de pr´ ecision est (∆x)2 en espace et ∆ t en temps.
+• Stabilit´ e.
+On injecte dans l’´ equation discr´ etis´ ee pour
+un+1
+i − un
+i
+∆ t = −V un
+i+1 − un
+i−1
+2∆ x
+une onde plane: un
+i = Gn(k)e2iπkx i. On obtient:
+Gn+1(k)e2iπkx i − Gn(k)e2iπkx i
+∆ t = − V
+∆ x (Gn(k)e2iπk(xi+∆ x) − Gn(k)e2iπk(xi−∆ x))
+Le facteur d’ampliﬁcation G(k) est donn´ e par
+G(k) = 1 − i V ∆ t
+∆ x sin(2πk∆ x)
+On en d´ eduit
+|G| = 1 + ( V ∆ t
+∆ x sin(2πk∆ x))2 ≥ 1.
+Le schema est instable.
+14.1.4 Sch´ ema de Lax-F riedrichs
+Si l’on tient absolument ` a rester centr´ e et explicite, le sch´ ema de Lax-Friedrichs est un sch´ ema
+simple, robuste, mais pas tr` es pr´ ecis.
+• Discr´ etisation:
+
+
+
+2un+1
+i −un
+i+1−un
+i− 1
+2∆ t = −V
+un
+i+1−un
+i− 1
+2∆ x
+u0
+i = gi
+un
+0 = hn
+(54)
+• Consistance.
+Le sch´ ema de Lax-Friedrichs est consistant avec l’´ equation d’advection si le rapport ∆ t
+∆ x est gard´ e
+constant lorsque ∆ x et ∆ t tendent vers z´ ero.
+L’ordre de precision est ∆ x en espace et ∆ t en temps.
+• Stabilit´ e.
+On injecte dans l’´ equation discr´ etis´ ee
+2un+1
+i − un
+i+1 − un
+i−1
+2∆ t = −V un
+i+1 − un
+i−1
+2∆ x
+67
+<<<PAGE>>>
+une onde plane: un
+i = Gn(k)e2iπkx i. On obtient:
+2Gn+1(k)e2iπkx i − Gn(k)e2iπk(xi+∆ x) − Gn(k)e2iπk(xi−∆ x)
+2∆ t = − V
+2∆ x(Gn(k)e2iπk(xi+∆ x)−Gn(k)e2iπk(xi−∆ x))
+Le facteur d’ampliﬁcation G(k) est donn´ e par
+G(k) = cos(2 πk∆ x) − i V ∆ t
+∆ x sin(2πk∆ x)
+On en d´ eduit
+|G|2 = cos 2(2πk∆ x) + ( V ∆ t
+∆ x )2 sin2(2πk∆ x)
+Le schema est stable ` a condition que
+|V |∆ t
+∆ x ≤ 1
+• Conditions aux limites num´ erique.
+Il faut ﬁxer u(t, L).
+14.1.5 Sch´ ema de Lax-W endroﬀ
+Un sch´ ema centr´ e, explicite, plus pr´ ecis est le sch´ ema de Lax-Wendroﬀ.
+• Discr´ etisation:
+
+
+
+un+1
+i −un
+i
+∆ t = −V
+un
+i+1−un
+i− 1
+2∆ x + V 2∆ t
+2
+un
+i+1−2un
+i +un
+i− 1
+(∆ x)2
+u0
+i = gi
+un
+0 = hn
+(55)
+• Consistance.
+L’ordre de precision est (∆ x)2 en espace et ∆ t en temps.
+• Stabilit´ e.
+On injecte dans l’´ equation discr´ etis´ ee
+un+1
+i − un
+i
+∆ t = −V un
+i+1 − un
+i−1
+2∆ x + V 2∆ t
+2
+un
+i+1 − 2un
+i + un
+i−1
+(∆ x)2
+une onde plane: un
+i = Gn(k)e2iπkx i. Le facteur d’ampliﬁcation G(k) est donn´ e par
+G(k) = 1 − 2( V ∆ t
+∆ x )2 sin2(πk∆ x) − i V ∆ t
+∆ x sin(2πk∆ x)
+On en d´ eduit
+|G|2 = 1 − 4( V ∆ t
+∆ x )2 sin4(πk∆ x)(1 − ( V ∆ t
+∆ x )2)
+Ainsi, le sch´ ema est stable d` es que
+|V |∆ t
+∆ x ≤ 1
+• Condition aux limites num´ erique.
+Il faut ﬁxer u(t, L).
+68
+<<<PAGE>>>
+14.1.6 Sch´ ema de Leap-F rog
+• Discr´ etisation:
+
+
+
+un+1
+i −un− 1
+i
+2∆ t = −V
+un
+i+1−un
+i− 1
+2∆ x
+u0
+i = gi
+un
+0 = hn
+(56)
+Le sch´ ema a besoin u1
+i pour se lancer:
+u1
+i − u0
+i
+∆ t = vi
+On peut aussi calculer u1
+i en utilisant le sch´ ema upwind ou un autre de deux niveaux tem porels.
+• Consistance.
+L’ordre de pr´ ecision est (∆x)2 en espace et (∆ t)2 en temps.
+• Stabilit´ e.
+C’est un sch´ ema aux 3 niveaux temporels.
+On decompose un(x) en une somme de Fourier:
+un(x) =
+∑
+k∈Z
+ˆun(k)e2iπkx
+On applique la transformation de Fourier ` a
+un+1
+i − un−1
+i
+2∆ t = −V un
+i+1 − un
+i−1
+2∆ x
+et on obtient :
+ˆun+1(k) − ˆun−1(k) = −2iC sin(2iπk∆ x)ˆun(k), C = V ∆ t
+∆ x
+On cherche la solution ˆun(k) de la forme
+ˆun(k) = Gn
+On en d´ eduit queG v´ riﬁe l’´ equation caract´ eristique:
+G2 + bG − 1 = 0 , b = 2iC sin(2πk∆ x)
+La solution g´ en´ erale s’´ ecrit de la forme
+ˆun(k) = A1λn
+1 + A2λn
+2 ,
+ˆun(k) = ( A1 + nA2)λn, si ∆ = 0
+o` uλ1 et λ2 sont les racines de l’´ equation caract´ eristique.
+λ1,2 = −iC sin(2πk∆ x) ±
+√
+∆ /2, ∆ = 4(1 − C 2(sin2(2πk∆ x))
+On note aussi ∆ le discriminant.
+69
+<<<PAGE>>>
+Si n = 0 ˆ u0 = A1 + A2
+Si n = 1 ˆ u1 = A1λ1 + A2λ2
+On en d´ eduit
+A2 = ˆu0λ1 − ˆu1
+λ1 − λ2
+, A 1 = ˆu1 − ˆu0λ2
+λ1 − λ2
+On peut exprimer les solutions explicitement en fonction de ˆu0, ˆu1:
+ˆun =
+{ λ1λn
+2 −λ2λn
+1
+λ1−λ2
+ˆu0 + λn
+1 −λn
+2
+λ1−λ2
+ˆu1, si ∆ ⁄= 0
+(1 − n)λn
+1 ˆu0 + nλn−1
+1 ˆu1, si ∆ = 0
+Si C > 1, le module de la somme des deux racines est ´ egale ` a 2 C sin(2πk∆ x). Il existe donc
+k, ∆ x t.q. sin(2 πk∆ x) = 1 et le module de la somme des deux racines est ´ egale ` a 2 C > 2. Le
+module de l’une des deux racine est plus grand que 1 et le sch´ e ma est instable.
+Si C = 1, on peut avoir ∆ = 0 pour certaines valeurs de k et ∆ x. Dans ce cas, λ1 = λ2 = i et
+ˆun = (nˆu1 + i(n − 1)ˆu0)in−1
+d´ epand den et n’est pas born´ ee. Le sch´ ema est instable.
+Consid´ erons le cas o` uC est major´ e par une constante M < 1. Dans ce cas, les racines sont de
+mˆ eme module
+|λ1| = |λ2| = 1
+De plus, |λ1 − λ2| =
+√
+∆ > 2
+√
+1 − M 2 > 0. On en d´ eduit de l’expression explicite de ˆun
+|ˆun| ≤ ˆu0 + ˆu1
+2(1 − M 2)
+Ainsi, sous la condition
+|V |∆ t
+∆ x < M < 1,
+le shc´ ema saute - mouton est stable.
+• Condition aux limites num´ erique.
+Il faut s’occuper de u(t, L).
+• M´ ethode 1 consiste ` a ´ etablir une condition aux limites ﬁxe en i = 0 et une interpolation pour
+i = N + 1: { un
+0 = hn
+un
+N +1 = −un
+N −1 + 2un
+N
+(57)
+• M´ ethode 2 consiste ` a ´ etablir les conditions aux limites p´ eriodiques:
+{ un
+N +1 = un
+1
+un
+0 = un
+N
+(58)
+70
+<<<PAGE>>>
+14.1.7 Sch´ ema de Crank-Nicolson
+• Discr´ etisation:
+
+
+
+un+1
+i −un
+i
+∆ t = 1
+2 (−V
+un
+i+1−un
+i− 1
+2∆ x − V
+un+1
+i+1 −un+1
+i− 1
+2∆ x )
+u0
+i = gi
+un
+0 = hn
+(59)
+• Consistance.
+L’ordre de precision est (∆ x)2 en espace et (∆ t)2 en temps.
+• Stabilit´ e.
+Le sch´ ema est inconditionnellement stable en norme L2.
+• Condition aux limites num´ erique.
+Il faut ﬁxer u(t, L).
+On va r´ esoudre num´ eriquement l’´ equation d’onde avec second membre:
+∂u
+∂t + V ∂u
+∂x = f (t, x).
+Le sch´ ema explicite avec la d´ eriv´ ee centr´ ee donne:
+un+1
+i − un
+i
+∆ t + V un
+i+1 − un
+i−1
+2∆ x = f (tn, xi)
+Ce sch´ ema n’est pas stable. On doit utiliser la m´ ethode de C rank-Nicolson. La m´ ethode de
+Crank-Nicolson consiste ` a remplacer chaque fonction un
+i ` a l’instantn par la fonction moyenne
+(un
+i + un+1
+i )/2.
+un+1
+i − un
+i
+∆ t + V
+2∆ x [ 1
+2 (un
+i+1 + un+1
+i+1 ) − 1
+2 (un
+i−1 + un+1
+i−1 )] = 1
+2 (f n
+i + f n+1
+i )
+On peut re´ ecrire cette ´ equation sous la forme :
+Biun+1
+i−1 + Diun+1
+i + Aiun+1
+i+1 = K n
+i , (60)
+o` u
+Ai = V ∆ t
+4∆ x , (61)
+Bi = − V ∆ t
+4∆ x (62)
+Di = 1 (63)
+K n
+i = V ∆ t
+4∆ x (un
+i+1 − un
+i−1) + un
+i + ∆ t
+2 (f n
+i + f n+1
+i ) (64)
+On note c∆ t
+4∆ x = a
+On re´ ecrit l’´ equation sous la forme de syst` eme lin´ eaire:
+i = 1, −aun+1
+0 + un+1
+1 + aun+1
+2 = K n
+1
+71
+<<<PAGE>>>
+i = 2, −aun+1
+1 + un+1
+2 + aun+1
+3 = K n
+2
+...........................................................
+i = N − 1, −aun+1
+N −2 + un+1
+N −1 + aun+1
+N = K n
+N −1
+i = N, −aun+1
+N −1 + un+1
+N + aun+1
+N +1 = K n
+N
+1) Conditions aux limites ﬁxes.
+On utilise une condition aux limites ﬁxe:
+un+1
+0 = hn+1
+et une condition aux limites artiﬁcielles:
+un+1
+N +1 = un+1
+N
+On obtient la forme matricielle suivante:
+
+
+1 a 0 0 0 0
+−a 1 a 0 0
+0 −a 1 a 0
+−a 1 a
+0 0 −a a + 1
+
+
+.
+
+
+un+1
+1
+un+1
+2
+un+1
+3
+.
+.
+un+1
+N
+
+
+=
+
+
+K n
+0
+K n
+1
+K n
+2
+.
+KN −1
+K n
+N
+
+
+Or
+M1 · U n+1 = K n ⇒ U n+1 = (M1)−1K n
+2) Conditions aux limites p´ eriodiques
+On utilise les conditions aux limites p´ eriodiques
+un+1
+−1 = un+1
+N , u n+1
+N +1 = un+1
+0
+C’est pour cette raison on a introduit un point ﬁctif un
+−1.
+On re´ ecrit l’´ equation sous la forme de syst` eme lin´ eaire(avec un point ﬁctif un+1
+−1 ):
+i = 0, −aun+1
+−1 + un+1
+0 + aun+1
+1 = K n
+0
+i = 1, −aun+1
+0 + un+1
+1 + aun+1
+2 = K n
+1
+i = 2, −aun+1
+1 + un+1
+2 + aun+1
+3 = K n
+2
+...........................................................
+i = N − 1, −aun+1
+N −2 + un+1
+N −1 + aun+1
+N = K n
+N −1
+72
+<<<PAGE>>>
+i = N, −aun+1
+N −1 + un+1
+N + aun+1
+N +1 = K n
+N
+On obtient la forme matricielle suivante:
+
+
+1 a 0 0 0 −a
+−a 1 a 0 0
+0 −a 1 a 0
+−a 1 a
+a 0 −a 1
+
+
+.
+
+
+un+1
+0
+un+1
+1
+un+1
+2
+.
+.
+un+1
+N
+
+
+=
+
+
+K n
+0
+K n
+1
+K n
+2
+.
+KN −1
+K n
+N
+
+
+Or
+M2 · U n+1 = K n
+Notre but est de trouver U n+1 = (un+1
+N , un+1
+N −1, un+1
+N −2, ...un+1
+1 ), exprim´ ees en termes des (un
+N , un
+N −1, un
+N −2, ...un
+1 )
+On ne peut plus calculer directement un+1
+i . Pour cela il faut inverser la matrice car
+U n+1 = (M2)−1 K n.
+Pour obtenir la matrice inverse d’une matrice quasi-tridiagonalle on applique l’Algorithme
+de Thomas g´ en´ eralis´ e.
+On doit remarquer que si on n’introduit pas le point ﬁctif alo rs une seule condition p´ eriodique
+un+1
+N +1 = un+1
+0 n’est pas suﬃsante pour r´ esoudre le syst´ eme deN ´ equations avecN + 1 inconnues:
+(un+1
+0 , un+1
+1 , un+1
+2 , ...un+1
+N ).
+i = 1, −aun+1
+0 + un+1
+1 + aun+1
+2 = K n
+1
+i = 2, −aun+1
+1 + un+1
+2 + aun+1
+3 = K n
+2
+...........................................................
+i = N − 1, −aun+1
+N −1 + un+1
+N + aun+1
+N +1 = K n
+N −1
+i = N, −aun+1
+N −1 + un+1
+N + aun+1
+N +1 = K n
+N
+73
+<<<PAGE>>>
+14.2 Sch´ emas de l’´ equation d’onde d’ordre 2
+L’´ equation d’onde:
+
+
+
+∂2u
+∂t2 = V 2 ∂2u
+∂x2
+u(t = 0, x) = g(x)
+∂u
+∂t (t = 0, x) = v(x)
+(65)
+• Discr´ etisation 1 - conditions aux limites p´ eriodiques:
+
+
+
+un+1
+i +un− 1
+i −2un
+i
+(∆ t)2 = −V 2 un
+i+1+un
+i− 1−2un
+i
+(∆ x)2
+u0
+i = gi
+un
+N +1 = un
+1
+un
+0 = un
+N
+u1
+i −u0
+i
+∆ t = vi
+(66)
+74
+<<<PAGE>>>
+Algorithme 1 du sch´ ema explicite de l’´ quation d’onde d’ordre 2.
+Conditions aux limites p´ eriodiques.
+Pour i = 0, ...N + 1
+u0
+i = gi
+u1
+i = u0
+i + ∆ tvi
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = 2un
+i (1 − C) + C(un
+i−1 + un
+i+1) + un−1
+i
+Fin pour
+un+1
+N +1 = un+1
+1
+un+1
+0 = un+1
+N
+Fin pour
+u2
+N +1
+n
+u2
+N
+M + 1
+i
+0 N N + 11
+u2
+1u2
+0
+Les graphes suivants illustrent la propagation d’un paquet d’onde et d’une onde harmonique.
+On voit que la ﬂuctuation initiale se s´ epare en deux. Ils se d ´ eplace dans les sens inverses:
+75
+<<<PAGE>>>
+6 83 5 7
+−6
+−4
+6
+−5
+−3
+3
+5
+−1
+0
+0
+−2
+2
+2
+4
+4
+1
+1 6 83 5 7
+−4
+−5
+−3
+3
+5
+t=0
+ t=T/5
+ t=2T/5
+Propagation dun paquet donde
+−1
+0
+0
+−2
+2
+2
+4
+4
+1
+1
+6 83 5 7
+−4
+−5
+−3
+3
+5
+−1
+0
+0
+−2
+2
+2
+4
+4
+1
+1 6 83 5 7
+−6
+−4
+6
+−5
+−3
+3
+5
+t=0
+ t=T/5
+ t=2T/5
+Propagation dune onde harmonique. Conditions aux limites periodiques
+−1
+0
+0
+−2
+2
+2
+4
+4
+1
+1
+• Discr´ etisation 2 - conditions aux limites ﬁxes:
+
+
+
+un+1
+i +un− 1
+i −2un
+i
+(∆ t)2 = −V 2 un
+i+1+un
+i− 1−2un
+i
+(∆ x)2
+u0
+i = gi
+un
+N +1 = 0
+un
+0 = 0
+u1
+i −u0
+i
+∆ t = vi
+(67)
+Algorithme 2 du sch´ ema explicite de l’´ equation d’onde d’ordre 2.
+Conditions aux limites ﬁxes.
+Pour i = 0, ...N + 1
+u0
+i = gi
+u1
+i = u0
+i + ∆ tvi
+Fin Pour
+Pour n = 1, ...M + 1
+76
+<<<PAGE>>>
+un
+0 = 0
+un+1
+N +1 = 0
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = 2un
+i (1 − C) + C(un
+i−1 + un
+i+1) + un−1
+i
+Fin pour
+Fin pour
+Pr´ sentons ici les solutions de l’´ equation d’ordre 1 qui re pr´ esentent la vibration d’une corde
+(simulation de la guitare)
+0.2 0.4 0.6 0.80.1 0.3 0.5 0.7 0.9
+−0.6
+−0.4
+−0.2
+0.2
+0.4
+0.6
+0.8
+−0.5
+−0.3
+−0.1
+0.1
+0.3
+0.5
+0.7
+0.9
+Coordonnée X
+Fonction u − forme de la corde
+t=0
+t=T/5
+t=2T/5
+Solution de léquation donde
+0
+0
+1
+1
+• Discr´ etisation 3 - condition aux limites ﬁxe en i = 0 et l’interpolation pour i = N + 1:
+
+
+
+un+1
+i +un− 1
+i −2un
+i
+(∆ t)2 = −V 2 un
+i+1+un
+i− 1−2un
+i
+(∆ x)2
+u0
+i = gi
+un
+0 = hn
+un
+N +1 = −un
+N −1 + 2un
+N
+u1
+i −u0
+i
+∆ t = vi
+(68)
+77
+<<<PAGE>>>
+Algorithme 3 du sch´ ema explicite de l’´ quation d’onde d’ordre 2
+Interpolation ` a droite
+Pour i = 0, ...N + 1
+u0
+i = gi
+u1
+i = u0
+i + ∆ tvi
+Fin Pour
+Pour n = 1, ...M + 1
+un
+0 = hn
+Fin Pour
+Pour n = 0, ...M
+Pour i = 1, ...N
+un+1
+i = 2un
+i (1 − C) + C(un
+i−1 + un
+i+1) + un−1
+i
+Fin pour
+un+1
+N +1 = 2un+1
+N − un+1
+N −1
+Fin pour
+gi
+hn
+u2
+N +1
+n
+u2
+N
+u2
+N −1
+M + 1
+i
+0
+0
+N + 1
+2
+1
+u2
+1
+14.3 Conditions aux limites num´ eriques
+Pour la r´ esolution num´ erique on a besoin d’une condition aux limites suppl´ ementaire: il faut ﬁxer
+u(t, L). c’est une condition aux limites artiﬁcielle, car on n’a pa s d’en besoin pour la r´ esolution
+analytique. Il a y plusieurs approches.
+78
+<<<PAGE>>>
+• Extrapolation.
+On utilise la formule d’interpolation de Lagrange
+f (x) = f (x1) x − x2
+x1 − x2
++ f (x2) x − x1
+x2 − x1
+On peut faire l’interpolation en mˆ eme niveau temporel:
+L’interpolation d’ordre 0 :
+un
+N = un
+N −1
+L’interpolation d’ordre 1 (l’interpolation lin´ eaire):
+un
+N = un
+N −2
+xN − xN −1
+xN −2 − xN −1
++ un
+N −1
+xN − xN −2
+xN −1 − xN −2
+Si le maillage est uniforme le formule devient:
+un
+N = −un
+N −2 + 2un
+N −1
+• M´ ethode des caract´ eristiques
+L’interpolation d’ordre 0 :
+un+1
+N = un
+N −1
+L’interpolation d’ordre 1 :
+un+1
+N = −un
+N −2 + 2un
+N −1
+15 Equations elliptiques
+15.1 Equation de Poisson en coordonn´ ees cart´ esiennes
+On cherche une fonction u que v´ eriﬁe l’´ equation de Poisson
+∂2u
+∂x2 + ∂2u
+∂y 2 = f (x, y)
+Tr´ es souvent cette fonction r´ epresente le potentiel d’unchamp ´ electromagn´ etique ou gravitation-
+nel.
+1) Discr´ etisons les variables: spatiales :
+x: x0 = 0, ...xi, ...xNx+1 = Lx.
+y: y0 = 0, ...yj , ...yNy+1 = Ly.
+Donc les points ( xi, yj) forment une grille uniforme du rectangle [0 , Lx] × [0, Ly]
+
+
+
+i = 0, 1, 2, ..., Nx + 1
+j = 0, 1, 2, ..., Ny + 1
+∆ x = Lx
+Nx+1 , ∆ y = Ly
+Ny+1
+V (xi, yj) ≡ Vij
+(69)
+79
+<<<PAGE>>>
+2) Discr´ etisons les conditions aux limites:
+
+
+
+u0,j = gj
+ui,0 = hi
+uNx+1,j = µj
+ui,Ny+1 = νi
+(70)
+3) Pour discr´ etiser l’´ equation de Poisson on utilise:
+• pour ∂2u
+∂x2 la seconde d´ eriv´ ee, centr´ e,
+∂2u
+∂x2 = ui+1,j − 2ui,j + ui−1,j
+(∆ x)2
+• pour ∂2u
+∂y 2 la seconde d´ eriv´ ee, centr´ e,
+∂2u
+∂y 2 = ui,j+1 − 2ui,j + ui,j−1
+(∆ y)2
+80
+<<<PAGE>>>
+M´ ethode 1 de la r´ esolution : M´ ethode it´ erative de Gauss-Seidel ou Jacobi.
+νi
+µj
+hi
+gj
+Nx + 1
+Ny + 1
+j
+i
+On ´ ecrit l’´ equation de la forme ( on prend ∆x = ∆ y = ∆, et Nx = Ny = N )
+uij = 1
+4 (ui+1,j + ui−1,j + ui,j+1 + ui,j−1 − fi,j(∆) 2)
+A chaque it´ eration on calcule toutes les valeurs uij ´ a l’aide de la formule ´ etablie. On r´ ep` ete
+le mˆ eme calcul un grand nombre de fois et on met en place le cri t` ere d’arrˆ et:
+|
+N∑
+i,j=1
+|u(k+1)
+ij | −
+N∑
+i,j=1
+|u(k)
+ij || < ε
+Ici on compare les valeurs de u de deux it´ erations succ´ essives: (k) et ( k + 1).
+81
+<<<PAGE>>>
+Algorithme de Gauss-Seidel pour l’´ equation de Poisson
+Pour j = 0, ...N + 1
+u0,j = gj
+uN +1,j = µj
+Fin Pour
+Pour i = 0, ...N + 1
+ui,0 = hi
+ui,N +1 = νi
+Fin Pour
+Initialisation:
+Pour i = 1...N
+Pour j = 1...N
+ui,j = 0
+Fin Pour
+Fin Pour
+Pour k = 1...10000
+uold
+i,j = ui,j
+Pour i = 1...N
+Pour j = 1...N
+uij = 1
+4 (ui+1,j + ui−1,j + ui,j+1 + ui,j−1 − fi,j(∆) 2)
+Fin Pour
+Fin Pour
+Si | ∑ N
+i,j=1 |uij| − ∑ N
+i,j=1 |uold
+ij || < ε et k > 50 arrˆ et
+Fin Pour
+M´ ethode 2 de la r´ esolution : M´ ethode de Gauss ou de decomposition LU.
+On introduit la variable x selon la r` egle
+xk = uij, k = j + N (i − 1)
+Soit N=3.
+On peut re´ ecrire le syst` eme le la forme:
+1
+∆ 2
+
+
+−4 1 0 1 0 0 0 0 0
+1 −4 1 0 1 0 0 0 0
+0 1 −4 0 0 1 0 0 0
+1 0 0 −4 1 0 1 0 0
+0 1 0 1 −4 1 0 1 0
+0 0 1 0 1 −4 0 0 1
+0 0 0 1 0 0 −4 1 0
+0 0 0 0 1 0 1 −4 1
+0 0 0 0 0 1 0 1 −4
+
+
+·
+
+
+x1
+x2
+x3
+x4
+x5
+x6
+x7
+x8
+x9
+
+
+=
+
+
+f11 − u01+u10
+∆ 2
+f12 − u02
+∆ 2
+f13 − u03+u14
+∆ 2
+f12 − u20
+∆ 2
+f22
+f23 − u24
+∆ 2
+f31 − u30+u41
+∆ 2
+f23 − u24
+∆ 2
+f33 − u34+u43
+∆ 2
+
+
+82
+<<<PAGE>>>
+On a obtenu une matrice diagonale par blocks.
+A = 1
+∆ 2
+
+
+B I 0
+I B I
+0 I B
+
+ , B =
+
+
+−4 1 0
+1 −4 1
+0 1 −4
+
+
+La matrice A est une matrice creuse et il existe des m´ ethodes spatiales p our la r´ esolution
+des syst` emes lin´ eaires avec les matrices creuses.
+15.2 Equation de Poisson en coordonn´ ees polaires
+L’´ equation s’´ ecrit de la facon suivantes:
+1
+r
+∂u
+∂r + ∂2u
+∂r 2 + 1
+r2
+∂2u
+∂θ 2 = f (r, θ)
+θ
+r
+h(θ)
+1) Pour surmonter le probl` eme de singularit´ e en r=0 on utilise le maillage special ( staggered
+grid)
+ri = (i − 1/2)∆ r
+2) Discr´ etisons les variables: spatiales :
+r: r1 = ∆ r
+2 , ...ri, ...rNr +1 = R.
+θ: θ0 = 0, ...θj , ...θNθ +1 = 2π.
+3) On impose une condition aux limites (evec une fonction p´ eri odique h(θ)).
+{
+uNr+1,j = hj, j = 0...Nθ + 1
+4) On impose les conditions p´ eriodiques (on introduit un poin t ﬁctif):
+{ ui,0 = ui,Nθ +1
+ui,−1 = ui,Nθ
+Discr´ etisons l’´ equation. On peut ´ ecrre l’´ equaton de laforme:
+2i
+2i − 1 ui+1,j − 2(1 + 4
+(2i − 1)(∆ θ)2 )uij + 2(i − 1)
+2i − 1 ui−1,j+
+83
+<<<PAGE>>>
+4
+(2i − 1)2
+1
+(∆ θ)2 ui,j+1 + 4
+(2i − 1)2
+1
+(∆ θ)2 ui,j−1 = fij(∆ r)2
+Prenons i=1. On voit que le coeﬃcient devant u0,j s’annule. On n’a pas donc besoin une
+condition aux limites ` a i = 0.
+L’algorithme it´ eratif (Gauss-Seidel) permet de calculer les valeurs uij.
+Algorithme de Gauss-Seidel pour l’´ equation de Poisson en cooordon´ ees polaires
+Pour j = 0, ...Nθ + 1
+uNr+1,j = hj
+Fin Pour
+Initialisation:
+Pour i = 1...Nr
+Pour j = 1...Nθ + 1
+ui,j = 0
+Fin Pour
+Fin Pour
+Pour k = 1...10000
+uold
+i,j = ui,j
+Pour i = Nr...1
+Pour j = 1...Nθ
+uij =
+2i
+2i−1 ui+1,j + 2(i−1)
+2i−1 ui−1,j + 4
+(2i−1)2
+1
+(∆ θ)2 ui,j+1 + 4
+(2i−1)2
+1
+(∆ θ)2 ui,j−1 − fij(∆ r)2
+(1 + 4
+(2i−1)(∆ θ)2 )
+Fin Pour
+Fin Pour
+Si | ∑ Nθ ,Nr
+i,j=1 |uij| − ∑ Nθ ,Nr
+i,j=1 |uold
+ij || < ε et k > 50 arrˆ et
+Fin Pour
+u1
+−1
+u1
+Nθ u1
+Nθ +1
+Nθ Nθ + 1
+hjNr
+Nr + 1
+ﬁctif
+j
+i
+−1 0 1
+u1
+0
+84
+<<<PAGE>>>
+Remarque:
+1) La valeur uNr,0 se calcule.
+2) Les valeurs u0,j, j = 1 ...Nθ + 1 en realit´ e n’existent pas. Nous aussi ne les calculons
+pas. Unique valeur qu’il existe est u0,0. Cette valeur peut ˆ etre calcul´ ee par l’interpolation:
+u0,0 = 2u1,0 − u2,0
+16 R´ esolution num´ erique de l’´ equation de chaleur ` a 2 dimension
+16.1 M´ ethode explicite
+Discr´ etisons l’espace-temps: discr´ etisons les variables spatiales et temporelle
+x: x0 = 0, ..., xi = i · ∆ x, ..., xNx+1 = L.
+y: y0 = 0, ..., yj = j · ∆ y, ..., yNy +1 = L.
+t: t0 = 0, ..., tn = n∆ t, ..., tM +1 = T .
+On note un
+i,j la valeur d’une solution calcul´ ee ` a l’aide d’un sch´ ema num´ erique aux
+points x = xi, y j, t = tn. Discutons les id´ ees principales de la r´ esolution num´ erique de
+l’´ equation de la chaleur:
+∂u
+∂t = D
+(∂2u
+∂x2 + ∂2u
+∂y 2
+)
+, (71)
+o` uD est le coeﬃcient de diﬀusion.
+Les conditions aux limites :
+
+
+
+u(0, y, t) = f1(y, t)
+u(L1, y, t) = f2(y, t)
+u(x, 0, t) = f3(x, t)
+u(x, L2, t) = f4(x, t)
+(72)
+et la condition initiale
+{
+u(x, y, 0) = φ(x, y) (73)
+On calcule la solution U M +1
+i,j ` at = T et on ne cherche pas ` a calculer les valeurs aux instants
+temporels interm´ ediaires. Pour cela on introduit les matr ices ”old” et ”new” : U oldi,j, U newi,j
+on les update dans la boucle temporelle.
+Algorithme d’Euler pour l’´ equation de la chaleur ` a 3 dimensions
+Initialisation: Conditions initiales
+Pour j = 0, ...Ny + 1
+Pour i = 0, ...Nx + 1
+85
+<<<PAGE>>>
+U initiali,j = φ(x(i), y(j))
+Fin Pour
+Fin Pour
+Uold=Uinitial;
+Pour n = 1 : M + 1
+Pour i = 1 : Nx
+Pour j = 1 : Ny
+Uold=Uinitial;
+Pour n = 1 : 1 + M
+Pour i = 1 : Nx
+Pour j = 1 : Ny
+U newi,j = U oldi,j + (−2 · U oldi,j + U oldi−1,j + U oldi+1,j) · ∆ t/(∆ x)2+
+(−2 ∗ U oldi,j + U oldi,j−1 + U oldi,j+1) · ∆ t/(∆ y)2
+end
+U new1,j = 0;
+U newNx+1,j = 0;
+end
+U newi,1 = 0;
+U newi,Ny+1 = 0;
+uold = unew;
+Fin Pour
+Pr´ esentons ici la solution num´ erique pour la condition initiales gaussienne
+φ(x, y) = e−180·(x−1/2)2−180·(y−1/2)2
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+u(t=0,x,y)
+condition initiale
+X
+Y
+0
+0 0
+1
+1
+1
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+0.1
+0.05
+0.15
+u(t=T,x,y)
+solution à t=T
+X
+Y
+0
+0 0
+1
+1
+86
+<<<PAGE>>>
+De la mˆ eme facon on peut r´ esoudre l’´ equation d’advection-diﬀusion et d´ emonstrer la propagation
+d’une ﬂuctuation initiale.
+∂u
+∂t = D
+(∂2u
+∂x2 + ∂2u
+∂y 2 ) + ∂u
+∂x + ∂u
+∂y
+)
+(74)
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+u(t=0,x,y)
+condition initiale
+X
+Y
+0
+0 0
+1
+1
+1
+0.2
+0.4
+0.6
+0.8
+0.2
+0.4
+0.6
+0.8
+0e00
+2e−08
+4e−08
+1e−08
+3e−08
+5e−08
+u(t=T,x,y)
+X
+Y 00
+1
+1
+16.2 M´ ethode implicite
+L’id´ ee est la r´ esolution alternativement des deux ´ equations unidimensionnelles:
+∂u
+∂t = 2D ∂2u
+∂x2 et ∂u
+∂t = 2D ∂2u
+∂y 2
+La r´ esolution peut ˆ etre faite en deux ´ etapes par une technique de directions altern´ ees (ADI):
+un+1/2
+i,j − un
+i,j
+∆ t = β
+un+1/2
+i+1,j − 2un+1/2
+i,j + un+1/2
+i−1,j
+2(∆ x)2 + β
+un
+i+1,j − 2un
+i,j + un
+i−1,j
+2(∆ x)2
+Ce sch´ ema est explicite par rapport ` a la variable j et implicite par rapport ` a la variable i.
+un+1
+i,j − un+1/2
+i,j
+∆ t = β
+un+1
+i,j+1 − 2un+1
+ij + un+1
+ij−1
+2(∆ y)2 + β
+un+1/2
+i,j+1 − 2un+1/2
+i,j + un+1/2
+i,j−1
+2(∆ y)2
+Ce sch´ ema est explicite par rapport ` a la variable i et implicite par rapport ` a la variable j.
+La discr´ etisation des ´ equations se fait en deux ´ etapes etdonne les ´ equations suivantes:
+−d1un+1/2
+i+1,j + (1 + 2d1)un+1/2
+i,j − d1un+1/2
+i−1,j = d2un
+i,j+1 + (1 − 2d2)un
+i,j + d2un
+i,j−1 (75)
+−d2un+1
+i,j+1 + (1 + 2d2)un+1
+i,j − d2un+1
+i,j−1 = d1un+1/2
+i+1,j + (1 − 2d1)un+1/2
+i,j + d1un+1/2
+i−1,j (76)
+87
+<<<PAGE>>>
+Ici
+d1 = D∆ t
+(∆ x)2 et d 2 = D∆ t
+(∆ y)2 .
+Pour chaque j on applique l’algorithme de Thomas ` a
+A un+1/2
+i+1,j + D un+1/2
+i,j + B un+1/2
+i−1,j = K n
+ij
+pour trouver un+1/2
+i,j .
+Pour chaque i on applique l’algorithme de Thomas ` a
+˜Aun+1
+i,j+1 + ˜Dun+1
+i,j + ˜Bun+1
+i,j−1 = K n+1/2
+ij
+pour trouver un
+i,j.
+Le sch´ ema de ADI est stable si
+d1 + d2 ≤ 1
+2 .
+17 EDP nonlin´ eaires
+17.1 R´ esolution num´ erique de l’´ equation de Burgers ` a une dimension.
+L’´ equation de Burgers nonlin´ eaire qui r´ egie par exemplele mouvement d’un ﬂuide visceux a la
+forme:
+∂u
+∂t + u ∂u
+∂x = µ
+ρ
+∂2u
+∂x2 , (77)
+o` uu, ρ et µ sont respectivement la vitesse, la densit´ e et le coeﬃcient de viscosit´ e d’un ﬂuide.
+Cette ´ equation re´ ecrite en terme des variables sans dimensions admet la forme:
+∂u′
+∂t′ + u′ ∂u′
+∂x′ = 1
+Re
+∂2u′
+∂x′2 (78)
+Ici on a introduit les variables sans dimensions:
+u′ = u
+u0
+, t ′ = t
+L/u0
+, y ′ = y
+L , 1
+Re = µ
+ρu0L .
+Par la suite on va ´ ecrire toujours u , x, t au lieu de u′, x′, t′.
+∂u
+∂t + u ∂u
+∂x = 1
+Re
+∂2u
+∂x2
+Pour une collision de deux ondes de choc l’´ equation admet la solution exacte:
+u(x, t) = −2 shx
+chx + e− t
+Re
+(79)
+En eﬀet sur le graphe de distribution des vitesses u(x, t) vous voyez deux ondes de vitesse
+u(−∞, −∞) = 2 et u(∞, −∞) = −2 qui se rapprochent dans le temps.
+88
+<<<PAGE>>>
+17.1.1 M´ ethode de Mac-Cormack
+La m´ ethode de Mac-Cormack est explicite et n’exige que les d eriv´ ees d’ordre 1 par rapport au
+temps. La m´ ethode consiste ` a calculer la vitesse en utilis ant la sch´ ema aux diﬀ´ erences ﬁnies
+”progressives” en temps et en espace et l’introduction de la valeur moyenne de variation de la
+vitesse entre les moments t et t + ∆ t.
+un+1
+i = un
+i + ( ∂u
+∂t )moy∆ t = un
+i + 1
+2 (( ∂u
+∂t )n
+i + ( ∂ ˜u
+∂t )n+1
+i )∆ t (80)
+Pour calculer ( ∂u
+∂t )n
+i on discr´ etise l’´ equation en forme conservative:
+∂u
+∂t + ∂F
+∂x = − 1
+Re
+∂2u
+∂x2 , ou F = u2
+2 =⇒ (81)
+( ∂u
+∂t )n
+i = F n
+i+1 − F n
+i
+∆ x + 1
+Re
+1
+(∆ x)2 (un
+i−1 − 2un
+i + un
+i+1) (82)
+Pour calculer ( ∂ ˜u
+∂t )n
+i on utilise le sch´ ema ` a deux ´ etapes: Pr´ ediction et Correction:
+Pr´ ediction d’une vitesse interm´ ediaire :
+˜un+1
+i = un
+i + ( ∂u
+∂t )n
+i ∆ t
+Correction: Dans l’´ etape de correction on utilise la sch` ema aux diﬀ´ erences ﬁnies ”r´ etrograd´ ees”
+et centr´ ees en espace
+( ∂ ˜u
+∂t )n+1
+i = −
+˜F n+1
+i − ˜F n+1
+i−1
+∆ x + 1
+Re
+1
+(∆ x)2 (˜un+1
+i−1 − 2˜un+1
+i + ˜un+1
+i+1 ), ˜F n+1
+i = 1
+2
+(
+˜un+1
+i
+) 2
+On applique les conditions initiales et aux limites:
+{ u0
+i = −2 shxi
+chxi+1
+un
+0 = 2, u n
+N = −2. (83)
+17.1.2 M´ ethode de Crank-Nicolson.
+L’id´ ee de la m´ ethode est la discr´ etisation de l’´ equation aﬁn d’obtenir apr` es la lin´ eairisation le
+syst` eme des ´ equations lin´ eaires avec une matrice tridiagonale. L’application de l’algorithme de
+Thomas permet d’achever la solution.
+On applique Crank-Nicolson ` a (82):
+un+1
+i − un
+i
+∆ t = − 1
+2 ( F n
+i+1 − F n
+i−1
+2∆ x + F n+1
+i+1 − F n+1
+i−1
+2∆ x )+ 1
+2Re ( (un
+i−1 − 2un
+i + un
+i+1)
+(∆ x)2 + (un+1
+i−1 − 2un+1
+i + un+1
+i+1 )
+(∆ x)2 )
+Pour pouvoir r´ eduire cette ´ equation au syst` eme tridiagonal il faut lin´ eairiser les termes F n+1
+i+1 et
+F n+1
+i−1 . On utilise les formules:
+89
+<<<PAGE>>>
+F n+1
+i = F n
+i + ( ∂F
+∂u )n
+i ( ∂u
+∂t )n
+i ∆ t = F n
+i + un
+i (un+1
+i − un
+i ) (84)
+L’´ equation se r´ eduit au syst` eme tridiagonal:
+bn
+i un+1
+i−1 + dn
+i un+1
+i + an
+i un+1
+i+1 = K n
+i ,
+o` u 
+
+
+bn
+i = − ∆ t
+4∆ x un
+i−1 − 1
+2 s
+dn
+i = 1 + s
+an
+i = ∆ t
+4∆ x un
+i+1 − 1
+2 s
+K n
+i = 1
+2 sun
+i−1 + (1 − s)un
+i + 1
+2 sun
+i+1, ou
+s = ∆ t
+Re(∆ x)2
+(85)
+A ce syst` eme on applique l’algorithme de Thomas avec les con ditions initiales et aux limites:
+{ un
+0 = 2,
+un
+N +1 = −2
+{
+u0
+i = 2 shxi
+chxi+1 , i = 0...N/2
+u0
+i = −2 shxi
+chxi+1 , i = N/2 + 1, ...N + 1 (86)
+17.2 R´ esolution num´ erique de l’´ equation de Burgers non v isqueuse ` a une
+dimension.
+L’´ equation de Burgers non visqueuse a la forme:
+∂u
+∂t + u ∂u
+∂x = 0 (87)
+o` uu est la vitesse d’un ﬂuide.
+Imposons les conditions initiales:
+u(x, 0) =
+{ ul = 1 si 0 < x < 2
+ur = 0 si 2 < x < 4 (88)
+Pour la propagation d’une onde de choc l’´ equation admet la s olution exacte. C’est un choc qui
+se propage sans changer la forme avec la c´ el´ erit´ evs = 1
+2 (ul + ur) = 1
+2 .
+17.2.1 M´ ethode de Lax.
+un+1
+i = 1
+2 (un
+i+1 + un
+i−1) − ∆ t
+4∆ x ((un
+i+1)2 − (un
+i−1)2)
+90
+<<<PAGE>>>
+17.2.2 M´ ethode de Lax-W endroﬀ.
+un+1
+i = un
+i − ∆ t
+2∆ x (F n
+i+1 − F n
+i−1) + (∆ t)2
+4(∆ x)2 ((un
+i+1 + un
+i )(F n
+i+1 − F n
+i ) − (un
+i + un
+i−1)(F n
+i − F n
+i−1)),
+o` uF n
+i = (un
+i )2/2.
+17.2.3 M´ ethode de Mac-Cormack.
+La m´ ethode de Mac-Cormack est explicite et n’exige que les d eriv´ ees d’ordre 1 par rapport au
+temps. La m´ ethode consiste ` a calculer la vitesse en utilis ant la sch` ema aux diﬀ´ erence ﬁnies ”
+progressives” en temps et en espace et l’introduction de la v aleur moyenne de variation de la
+vitesse entre les moments t et t + ∆ t.
+un+1
+i = un
+i + ( ∂u
+∂t )moy∆ t = un
+i + 1
+2 (( ∂u
+∂t )n
+i + ( ∂ ˜u
+∂t )n+1
+i )∆ t (89)
+Pour calculer ( ∂u
+∂t )n+1
+i on discr´ etise l’´ equation () en forme conservative:
+∂u
+∂t + ∂F
+∂x = 0, o` uF = u2
+2 =⇒ (90)
+( ∂u
+∂t )n
+i = − F n
+i+1 − F n
+i
+∆ x (91)
+Pour calculer ( ∂ ˜u
+∂t )n
+i on utilise le sch` ema ` a deux ´ etapes: Prediction et Correction:
+Prediction d’une vitesse interm´ ediaire :
+˜un+1
+i = un
+i + ( ∂u
+∂t )n
+i ∆ t
+Correction: Dans l’´ etape de correction on utilise la sch` ema aux diﬀ´ erences ﬁnies ” r´ etrograd´ ees”
+et centr´ es en espace:
+( ∂ ˜u
+∂t )n+1
+i = −
+˜F n+1
+i − ˜F n+1
+i−1
+∆ x
+On impose soit les conditions aux limites :
+un
+0 = 1, u n
+N = 0,
+soit les conditions aux limites p´ eriodiques.
+17.3 R´ esolution num´ erique de l’´ equation de Korteweg de V ries.
+17.3.1 Discr´ etisation
+On applique la m´ ethode aux diﬀ´ erences ﬁnies de Zabusky pour r´ esoudre l’´ equation de Korteweg
+de Vries nonlin´ eaire qui d´ ecrie la propagation des solitons.
+∂u
+∂t + 6u ∂u
+∂x + ∂3u
+∂x3 = 0
+91
+<<<PAGE>>>
+1) On utilise Leap-Frog( Saute mouton) pour approximer la d´ eriv´ ee temporelle, la diﬀerence
+centrale pour approximer la d´ eriv´ ee spatiale et l’approximation d’ordre 2 pour ∂3u
+∂x3
+∂u
+∂t (tn, xi) ≈ un+1
+i − un−1
+i
+2∆ t
+∂u
+∂x (tn, xi) ≈ un
+i+1 − un
+i−1
+2∆ x
+∂3u
+∂x3 ≈ un
+i+2 − 2un
+i+1 + 2un
+i−1 − un
+i−2
+2(∆ x)3
+2) Au lieu de u dans 6 u ∂u
+∂x on ´ ecrit la moyenne temporelle
+un
+i → 1
+3 (un
+i+1 + un
+i + un
+i−1)
+3) On obtient l’´ equation discretis´ ee
+un+1
+i − un−1
+i
+2∆ t + 2(un
+i+1 + un
+i + un
+i−1) un
+i+1 − un
+i−1
+2∆ x + un
+i+2 − 2un
+i+1 + 2un
+i−1 − un
+i−2
+2(∆ x)3 = 0
+17.3.2 R´ esolution
+• On a obtenu le sch´ ema explicite:
+{
+un+1
+i = un−1
+i − 2∆ t
+∆ x (un
+i−1 + un
+i+1 + un
+i−1)(un
+i+1 − un
+i−1) − ∆ t
+(∆ x)3 (un
+i+2 − 2un
+i+1 + 2un
+i−1 − un
+i−2)
+u0
+i = g(x) = v
+2ch2(√v/2∆ xi)
+• Introduisons une notation pour simpliﬁer l’´ ecriture:
+un+1
+i = un−1
+i + F (un
+i+2, un
+i+1, un
+i−1, un
+i−2)
+F = − 2∆ t
+∆ x (un
+i−1 + un
+i+1 − un
+i−1)(un
+i+1 − un
+i−1) − ∆ t
+(∆ x)3 (un
+i+2 − 2ni+1 + 2un
+i−1 − un
+i−2)
+• On commence par une boucle temporelle:
+For (n = 1; n <= M ; n + +){ un+1
+i = un−1
+i + F (un
+i+2, un
+i+1, un
+i−1, un
+i−2) }
+Il y a un probl` eme: on ne connait par u1
+i
+Pour calculer la valeur de u dans ce point ﬁctif on peut approximer une seule fois (pour n= 0)
+∂u
+∂t la deriv´ ee avanc´ ee temporelle:
+∂u
+∂t (tn, xi) ≈ un+1
+i − un
+i
+∆ t
+92
+<<<PAGE>>>
+Pour l’´ equation de KdV on a
+un+1
+i = un
+i − 2∆ t
+∆ x (un
+i−1 + un
+i+1 − un
+i−1)(un
+i+1 − un
+i−1) − ∆ t
+(∆ x)3 (un
+i+2 − 2un
+i+1 + 2un
+i−1 − un
+i−2)
+Prenons n = 0
+u1
+i = u0
+i + 2∆ t
+∆ x (u0
+i−1 + u0
+i+1 − u0
+i−1)(un
+i+1 − u0
+i−1) + ∆ t
+(∆ x)3 (u0
+i+2 − 2u0
+i+1 + 2u0
+i−1 − u0
+i−2)
+• L’´ equation KdV est une ´ equation nonlin´ eaire hyperbolique qui d´ ecrit la propagation des
+solitons. Donc pour obtenir les solution analytiques sur ] − ∞ , +∞[ on n’a pas besoin des
+conditions aux limites. Pour une r´ esolution num´ erique ondoit les imposer. Ces conditions aux
+limites artiﬁcielles s’appellent conditions aux limites n um´ eriques.
+• On peut imposer
+{ un
+0 = 0
+un
+N +1 = 0
+• L’autre possibilit´ e est d’imposer les conditions aux limites periodiques avec deux point ﬁctifs:
+
+
+
+un
+0 = un
+N −2
+un
+1 = un
+N −1
+un
+N = un
+2
+un
+N +1 = un
+3
+On peut utiliser les donn´ ees num´ eriques pour simuler deuxsolitons avec les amplitudes diﬀ´ erentes
+et par cons´ equent propagants avec les vitesses diﬀ´ erentes:
+
+
+
+v1 = 200, v 2 = 200, L = 2
+N = 100, M = 10000
+∆ x = 2/100 = 1 /50
+∆ t = 10−6
+Le sch´ ema est stable si
+∆ t ≤ 1
+4 (∆ x)3
+93
+<<<PAGE>>>
+0.2 0.4 0.6 0.8 1.2 1.4 1.6 1.8
+50
+100
+150
+200
+0
+0 21 0.2 0.4 0.6 0.8 1.2 1.4 1.6 1.8
+50
+100
+150
+200
+0
+0 21
+2.5
+1.5
+Dimension spaciale x
+Propagation de deux soltions
+-50
+100 90
+50
+80 0.5
+Temps
+70
+100Dimension spaciale y
+60
+150
+50 40
+200
+30 20
+250
+10
+ 0 0
+0 2
+1
+Sur les ﬁgures on voit bien que le soliton avec l’amplitude pl us elev´ ee se propage avec la vitesse
+plus grande et double le prem` ere.
+94
+<<<PAGE>>>
+Bibliographie :
+1. H. M. Antia. Numerical Methodes for Scietists and Enginee rs. Birkhauser.
+2. M. Rappaz, M. Bellet, M. Deville. Numerical Modeling in Ma terial Science and Engineering.
+Springer
+3. J.W. Thomas. Numerical Partial Diﬀerential Equations: Fi nite Diﬀerence Methods. Springer,
+1995
+4. W.F. Ames. Numerical Methods for Partial Diﬀerential Equa tions, Nelson and Sons LTD.
+London, 1969
+5. G.D. Smith, Numerical solution of PDE : Fintite diﬀerence m ethods,Clarendon Press, Oxford,
+1978
+6. J. Anderson. Computational Fluid dynamics. McGraw-Hill , Inc.
+7. Tveito and Winther. Introduction to Partial Diﬀerential E quations: A Computational Ap-
+proach. Springer
+8. Taylor. Partial Diﬀerential Equations: Basic Theory. Spr inger
+9. Gustafson and Wilcox. Analytical and Computational Meth ods of Advanced Engineering
+Mathematics. Springer
+10. Gr´ egoire Allaire. Cours sur EDP de l’Ecole Polytechniq ue.
+11. Gr´ egoire Allaire. Analyse num´ erique et optimisation. Les Editions Ellipses.
+95

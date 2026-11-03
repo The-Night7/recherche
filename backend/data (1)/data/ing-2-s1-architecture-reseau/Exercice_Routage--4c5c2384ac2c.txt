@@ -1,0 +1,55 @@
+Année 2016-2017 Page 6 / 9 
+Question 5 – Routage IP (4 points) 
+ 
+On considère le réseau d’entreprise ci-dessous.  
+ 
+ 
+ 
+ 
+Sur chaque réseau, la passerelle par défaut des PCs est le .251. Les tables de routages des routeurs GW1 à 
+GW4 sont décrites dans le tableau ci-dessous. 
+ 
+Routeur Destination (réseau cible) Passerelle Poids (Métrique) 
+GW1 0.0.0.0 (défaut) 
+192.168.40.0/24 
+91.213.90.251 
+192.168.10.252 
+10 
+10 
+GW2 0.0.0.0 (défaut) 192.168.10.251 10 
+GW3 0.0.0.0 (defaut) 192.168.30.252 10 
+GW4 192.168.0.0/16 192.168.40.251 10 
+ 
+Vérifiez maintenant si la communication entre les divers PC de l’entreprise est possible. Pour rappel, la 
+communication entre PCx et PCy est possible si les paquets peuvent aller de PCx vers PCy mais aussi de 
+PCy vers PCx (la communication doit être bidirectionnelle). 
+En suivant l’exemple donné en première ligne, complétez le tableau suivant afin d’indiquer si les PC 
+peuvent communiquer. Dans le cas où la communication n’est pas possible proposez une correction des 
+tables de routage permettant d’y remédier. 
+Vous utiliserez la notation suivante pour décrire le chemin des maquets : 
+- (R>) signifie « confie le paquet à un routeur à cause d’une règle de routage », 
+- (D>) signifie « confie le paquet à une station que je peux atteindre directement sur l’une de mes 
+interfaces » 
+ 
+ 
+
+<<<PAGE>>>
+Année 2016-2017 Page 7 / 9 
+ 
+Entre… Chemin Possible ? Correction ? 
+PC4 et PC1 
+PC4 vers PC1 : PC4 (R>) GW2 (D>) 
+PC1 
+ 
+PC1 vers PC4 : PC1 (R>) GW1 (R>) 
+GW2 (D>) PC4 
+ 
+Oui  
+PC4 et PC2 
+   
+PC4 et PC3 
+   
+PC1 et PC3 
+   
+PC3 et PC2 
+   

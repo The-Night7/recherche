@@ -1,0 +1,442 @@
+1 
+ 
+ 
+ 
+Architecture et Programmation Parallèle 
+Examen Session Normale Corrigé 
+ Thierry Garcia - Mohamed Haddache - Juan Angel Lorenzo - Rachid Chelouah  
+ING2-GSI-MI Année 2024 - 2025 
+ 
+Modalités 
+֊ Durée : 2 heures. 
+֊ Vous devez rédiger votre copie à l’aide d’un stylo à encre exclusivement. 
+֊ Toutes vos affaires (sacs, vestes, trousse, etc.) doivent être placées à l’avant de la salle. 
+֊ Aucun document n’est autorisé sauf les feuilles des fonctions MPI et OpenMP fournies 
+avec ce sujet. 
+֊ Aucune question ne peut être posée aux enseignants, posez des hypothèses en cas de 
+doute. 
+֊ Aucune sortie n’est autorisée avant une durée incompressible d’une heure. 
+֊ Aucun déplacement n’est autorisé. 
+֊ Aucun échange, de quelque nature que ce soit, n’est possible. 
+ 
+Exercice 1 : Questions de cours (5 points) 
+1. Citer et expliquer trois facteurs qui peuvent affecter la performance d'un programme 
+OpenMP (1 point) ? 
+2. Quelle est la différence entre la planification (scheduling) dynamic et la planification 
+guided  (1 point) ? 
+3. Qu'est-ce que la clause private et comment diffère-t-elle de la clause shared  (1 point) 
+? 
+4. Qu’est-ce qu’OpenMPI et en quoi diffère-t-il d’OpenMP  (1 point) ? 
+5. Quelle est la différence entre la communication point -à-point et la communication 
+collective en MPI  (1 point) ? 
+Exercice 2 : Évaluation de la performance (5 points) 
+1.    On vous demande de concevoir un système mémoire pour la nouvelle génération d’un 
+processeur.  
+
+<<<PAGE>>>
+2 
+a.    Si dans sa version courante, le processeur passe 50% de son temps à traiter 
+des références mémoires, de combien devez -vous accélérer le système 
+mémoire pour proposer une accélération générale de 1.2 ? (1,5 points) 
+b.    Qu’en serait-il pour une accélération générale de 1.7 ?  (1 point) 
+2.   Vous disposez d’un programme qui met 100 unités de temps pour s’exécuter et requiert 
+65% des ressources. Après analyse, vous constatez que 80% de son code est 
+parallélisable.  En appliquant la loi d’Amdahl, quel est le s peedup si vous exécutez le 
+programme sur un système à 4 cœurs ? (1 points) 
+3.   Quel gain global du système pourriez-vous obtenir si vous faites tourner ce programme 
+avec un autre programme parallélisable à 90 % et requérant 35 % des ressources ? (1,5 
+points) 
+Exercice 3 : OpenMP (5 points) 
+a. Transformée en ondelettes (2,5 points) 
+ 
+Soit le code suivant calculant la transformée en ondelettes (DWT - Discrete Wavelet 
+Transform) d'un vecteur X de taille N. Le résultat est enregistré dans le vecteur Y. 
+ 
+void DWT(int* X, int* Y, int N){ 
+int l; 
+for (l=N/2;l>1;l/=2){ 
+int i ; 
+for (i=0;i<l;i++){ 
+Y[i] = X[2*i] + X[2*i+1] ; 
+Y[i+1] = X[2*i] - X[2*i+1] ; 
+} 
+} 
+} 
+ 
+1. Quelle(s) boucle(s) peu(ven)t être parallélisée(s) avec OpenMP. Pourquoi ? 
+2. Donner l'idée générale d'une parallélisation de ce code. Quelles variables doivent 
+être partagées et lesquelles doivent être locales ? 
+3. Implémenter la solution parallélisée. 
+ 
+b. Soit A une matrice carrée n x n. La trace de A est la somme des éléments diagonaux de 
+A. Écrire le programme OpenMP qui permet de calculer la trace de la  matrice A (2,5 
+points) 
+<<<PAGE>>>
+3 
+Exercice 4 : MPI (5 points)  
+On cherche à estimer l'intégrale suivante à l'aide de la méthode des trapèzes 
+ 
+avec f(x)=x² sur l'intervalle [0,1] . Le nombre de subdivisions (trapèzes) est donné par N. 
+La méthode des trapèzes  approxime l'intégrale en divisant l'intervalle [a,b] en N sous -
+intervalles de taille h et en approchant l’aire sous la courbe par des trapèzes élémentaires : 
+ 
+L'intégrale est alors approximée par la somme : 
+ 
+où xi = a + i x h. 
+1. Donner le programme permettant une parallélisation avec OpenMPI associé à la 
+méthode suivante : 
+○ Chaque processus MPI reçoit une partie fixe des N trapèzes à traiter. 
+○ Le processus 0 distribue les calculs à tous les processus via MPI_Scatter. 
+○ Chaque processus calcule sa partie de l'intégrale et envoie son résultat via 
+MPI_Reduce. 
+○ Le processus 0 affiche la valeur de l'intégrale et le temps d'exécution avec 
+MPI_WTime. 
+2. Donner le programme permettant une parallélisation avec OpenMPI associé à la 
+méthode suivante : 
+○ Le processus 0 joue le rôle de maître et répartit dynamiquement les sous -
+intervalles. 
+○ Les travailleurs demandent des tâches à exécuter et renvoient leurs résultats. 
+○ La communication est basée sur Mpi_Send et MPI_Recv. 
+○ Le processus 0 affiche la valeur de l'intégrale et le temps d'exécution avec 
+MPI_WTime. 
+3. A votre avis quelle méthode est la plus efficace ?
+
+<<<PAGE>>>
+4 
+Exercice 1 : Questions de cours (5 points) 
+1. Citer et expliquer trois facteurs qui peuvent affecter la performance d'un programme 
+OpenMP ? 
+Trois facteurs qui peuvent affecter la performance d'un programme OpenMP 
+Granularité des tâches  : Si les tâches parallélisées sont trop petites, le temps de gestion du 
+parallélisme (overhead de création, gestion et synchronisation des threads) peut devenir plus 
+important que le gain obtenu par la parallélisation. 
+Équilibre de la charge entre les threads  : plus la charge est équilibrée, plus on obtient un 
+gain de parallélisation. 
+Synchronisation et sections critiques  : L’utilisation excessive de sections critiques, de 
+verrous ou de barrières peut entraîner des goulots d’étranglement, Cela réduit le parallélisme  
+effectif et peut même provoquer une exécution plus lente qu’en mode séquentiel 
+2. Quelle est la différence entre la planification (scheduling) dynamic et la planification Guided 
+? 
+La différence entre la planification (scheduling) dynamic et la planification guided 
+on attend des explications concernant l’affectation des tâches aux processus qui ont terminé au 
+plus tôt (similitudes entre les 2 modes) et une explication concernant la taille des données pour 
+chaque processus ( équilibrées au m ieux pour le dynamic, tailles de plus en plus petites 
+pour le guided) 
+3. Qu'est-ce que la clause private et comment diffère-t-elle de la clause shared ? 
+La clause private indique qu’une copie locale de la variable est créée pour chaque thread, 
+Chaque thread possede sa propre version de la variable, non partagée avec les autres threads. 
+Elle n'est pas initialisée avec la valeur d'origine (sauf avec des clauses comme firstprivate). La 
+clause shared signifie que tous les threads accèdent à la même variable, et cela peut provoquer 
+des problèmes d'accès concurrents. 
+4. Qu’est-ce qu’OpenMPI et en quoi diffère-t-il d’OpenMP ? 
+● Le OpenMP est basé sur la communication par mémoire partagée entre les threads par contre 
+MPI est basé sur la communication par passage de message ( avec des méthodes d'envoi et de 
+réception de messages) entre les processus 
+<<<PAGE>>>
+5 
+● OpenMP est souvent utilisé pour accélérer les calculs sur les processeurs multicoeurs, par 
+contre le MPI est utilisé pour des architectures distribuées 
+5. Quelle est la différence entre la communication point-à-point et la communication collective 
+en MPI ? 
+La communication point à point se fait entre deux processus spécifiques : un émetteur et un 
+récepteur. Idéale pour les communications personnalisées. La communication collective 
+implique l’ensemble d’ un groupe de processus (généralement tous les processus dans 
+MPI_COMM_WORLD). Très utile pour partager des données ou agréger des résultats. 
+Exercice 2 : Évaluation de la performance (5 points) 
+1.  
+ 
+a/ Pour résoudre ce problème, nous appliquons la loi d’ Amdahl, en utilisant le facteur 
+d’accélération comme variable inconnue (c’est-à-dire x) au lieu de l’accélération générale.  
+le système initial passe 40 % de son temps à gérer les références mémoire.  
+On l'accélération S = 1.2 = 1/(0.5+(0.5/x)) donc x =1.5  
+ 
+b/ Pour S= 1.7= 1/(0.5+(0.5/x)) donc x= 5.7  
+ 
+2.  
+On appliquant la loi d’Amdahl on a S= 1/ (f+(1-f)/p) avec f est la fraction non parallélisable, 
+1-f la fraction parallélisable P : le nombre de processeurs on aura  
+ 
+S= 1/(0.2+0.8/4)= 1/0.4= 2.5  
+ 
+3. 
+S= 1/ (0.65*(0.2+0.8/4)+0.35*(0.1+0.9/4))=1/(0.65*0.4+0.35*0.325)=1/(0.26+0.114)=2.67  
+ 
+Le gain global est 2.67 
+ 
+Exercice 3 : OpenMP (5 points) 
+ 
+a. On a (2,5 pts) 
+ 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <omp.h> 
+ 
+// Transformée en ondelettes discrète (DWT) 
+void DWT(int* X, int* Y, int N) { 
+ int l; 
+ 
+ // Copie initiale du signal dans Y 
+ for (int i = 0; i < N; i++) 
+          Y[i] = X[i]; 
+<<<PAGE>>>
+6 
+ 
+ // Décomposition en ondelettes 
+ for (l = N / 2; l >= 1; l /= 2) { 
+                   int* temp = (int*)malloc(2 * l * sizeof(int)); 
+ 
+           #pragma omp parallel for 
+           for (int i = 0; i < l; i++) { 
+                     temp[i] = (Y[2 * i] + Y[2 * i + 1]) / 2;  // Approximation 
+                     temp[i + l] = (Y[2 * i] - Y[2 * i + 1]) / 2;  // Détail 
+           } 
+ 
+          // Mise à jour du tableau Y 
+          for (int i = 0; i < 2 * l; i++) { 
+                        Y[i] = temp[i]; 
+          } 
+ 
+          free(temp); 
+ } 
+} 
+ 
+// Programme principal 
+int main() { 
+ int X[] = {4, 6, 8, 10, 12, 14, 16, 18};  // Signal d'entrée (doit être une puissance de 2) 
+ int N = sizeof(X) / sizeof(X[0]); 
+ int* Y = (int*)malloc(N * sizeof(int)); 
+ 
+ double start_time = omp_get_wtime(); 
+ DWT(X, Y, N); 
+ double end_time = omp_get_wtime(); 
+ 
+ // Affichage du résultat 
+ printf("Résultat :\n"); 
+ for (int i = 0; i < N; i++) { 
+         printf("%d ", Y[i]); 
+ } 
+ printf("\n Temps d'exécution : %f secondes\n", end_time - start_time); 
+ 
+ free(Y); 
+ return 0; 
+} 
+ 
+ 
+<<<PAGE>>>
+7 
+b. Soit A une matrice carrée n x n. La trace de A est la somme des éléments diagonaux 
+de A. Écrire le programme OpenMP qui permet de calculer la trace de la matrice A 
+(2,5 points)  (2,5 pts):  
+ 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <omp.h> 
+#define N 100 
+ 
+void main(int argc, char ** argv)  
+{  
+ 
+   int n; /* la taille de la matrice */  
+   double A[n][n];  
+   int i, trace = 0; 
+ 
+  /* Initialisation de A cas taille connues ou allocation statique*/  
+  /* 
+     int A[n][n]; 
+     for (i = 0; i < n; i++) { 
+          for (int j = 0; j < n; j++) { 
+            A[i][j] = i + j; // on remplit avec des valeurs simples 
+  */ 
+ 
+   
+  /* Initialisation de A cas taille inconnues ou allocation dynamique*/ 
+  int **A = (int **)malloc(n * sizeof(int *)); 
+   for (i = 0; i < n; i++) { 
+      A[i] = (int *)malloc(n * sizeof(int)); 
+          for (int j = 0; j < n; j++) { 
+            A[i][j] = i + j; // on remplit avec des valeurs simples 
+ 
+ // nous avons 3 possibilités (atomic, critical ou reduction) pour proteger 
+ // la modification du contenu de la variable traceA 
+ 
+#pragma omp for { 
+ #pragma omp atomic 
+       trace += A[i][i];  
+} 
+ 
+// ou 
+#pragma omp for { 
+  #pragma omp critical   
+  {  
+    trace += A[i][i];  
+  } 
+} 
+ 
+// ou 
+#pragma omp for reduction (+:traceA)  
+  {  
+     for (i=0; i<n; i++)  
+      {  
+        trace += A[i][i]  
+      }  
+   }  
+ 
+printf("La trace de A est : %f \n", traceA); 
+ 
+<<<PAGE>>>
+8 
+   // Libération de la mémoire 
+   for (i = 0; i < n; i++) { 
+      free(A[i]); 
+   } 
+   free(A); 
+ 
+   return 0;  
+} 
+ 
+Exercice 4 : MPI (5 points)  
+#include <mpi.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+#define N 1000000  // Nombre de trapèzes 
+#define A 0.0   // Début de l'intervalle 
+#define B 1.0   // Fin de l'intervalle 
+ 
+// Fonction à intégrer 
+double f(double x) { 
+ return x * x; 
+} 
+// Calcul de l'intégrale par trapèzes 
+double trapezoidal_rule(double a, double b, int n) { 
+ double h = (b - a) / n; 
+ double sum = (f(a) + f(b)) / 2.0; 
+ for (int i = 1; i < n; i++) { 
+     sum += f(a + i * h); 
+ } 
+ return sum * h; 
+} 
+int main(int argc, char** argv) { 
+ int rank, size; 
+ double local_a, local_b, local_integral, total_integral; 
+ int local_N; 
+ double start_time, end_time; 
+ MPI_Init(&argc, &argv); 
+ MPI_Comm_rank(MPI_COMM_WORLD, &rank); 
+ MPI_Comm_size(MPI_COMM_WORLD, &size); 
+ start_time = MPI_Wtime();  // Début chrono 
+  
+            // Nombre de trapèzes par processus 
+ local_N = N / size; 
+ local_a = A + rank * local_N * ((B - A) / N); 
+ local_b = local_a + local_N * ((B - A) / N); 
+  
+           // Chaque processus calcule son intégrale locale 
+ local_integral = trapezoidal_rule(local_a, local_b, local_N); 
+  
+            // Réduction des intégrales locales en une somme totale 
+ MPI_Reduce(&local_integral, &total_integral, 1, MPI_DOUBLE, MPI_SUM, 
+ 0, MPI_COMM_WORLD); 
+<<<PAGE>>>
+9 
+ if (rank == 0) { 
+     end_time = MPI_Wtime(); 
+     printf("Intégrale approximée = %lf\n", total_integral); 
+     printf("Temps d'exécution = %lf secondes\n", end_time - start_time); 
+ } 
+ MPI_Finalize(); 
+ return 0; 
+} 
+---------------------------------------------------------------------------------- 
+#include <mpi.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+ 
+#define N 1000000  // Nombre total de trapèzes 
+#define A 0.0 
+#define B 1.0 
+#define TASK_SIZE 10000  // Taille d'une tâche dynamique 
+double f(double x) { 
+     return x * x; 
+} 
+double trapezoidal_rule(double a, double b, int n) { 
+ double h = (b - a) / n; 
+ double sum = (f(a) + f(b)) / 2.0; 
+ for (int i = 1; i < n; i++) { 
+        sum += f(a + i * h); 
+ } 
+ return sum * h; 
+} 
+ 
+int main(int argc, char** argv)  
+{ 
+ int rank, size; 
+ MPI_Init(&argc, &argv); 
+ MPI_Comm_rank(MPI_COMM_WORLD, &rank); 
+ MPI_Comm_size(MPI_COMM_WORLD, &size); 
+ double start_time = MPI_Wtime(); 
+ double total_integral = 0.0; 
+ if (rank == 0) { 
+         
+             // --- MAÎTRE --- 
+      int current_task = 0; 
+      double partial_integral; 
+      MPI_Status status; 
+       
+              // Envoi initial des tâches aux travailleurs 
+       for (int i = 1; i < size; i++) { 
+             if (current_task >= N) break; 
+                     MPI_Send(&current_task, 1, MPI_INT, i, 0, MPI_COMM_WORLD); 
+                     current_task += TASK_SIZE; 
+       } 
+<<<PAGE>>>
+10 
+       // Réception des résultats et attribution de nouvelles tâches 
+       while (current_task < N) { 
+                  MPI_Recv(&partial_integral, 1, MPI_DOUBLE, MPI_ANY_SOURCE, 
+                                  MPI_ANY_TAG, MPI_COMM_WORLD, &status); 
+               total_integral += partial_integral; 
+ 
+               MPI_Send(&current_task, 1, MPI_INT, status.MPI_SOURCE, 0,  
+                                         MPI_COMM_WORLD); 
+                current_task += TASK_SIZE; 
+       } 
+ 
+     // Attendre les derniers résultats 
+     for (int i = 1; i < size; i++)  
+           { 
+                MPI_Recv(&partial_integral, 1, MPI_DOUBLE, MPI_ANY_SOURCE,  
+                                      MPI_ANY_TAG, MPI_COMM_WORLD, &status); 
+                 total_integral += partial_integral; 
+     } 
+     // Envoyer un signal d'arrêt aux travailleurs 
+     for (int i = 1; i < size; i++)  
+           { 
+              int stop_signal = -1; 
+                  MPI_Send(&stop_signal, 1, MPI_INT, i, 0, MPI_COMM_WORLD); 
+     } 
+     double end_time = MPI_Wtime(); 
+     printf("Intégrale approximée = %lf\n", total_integral); 
+     printf("Temps d'exécution = %lf secondes\n", end_time - start_time); 
+         } 
+         else  
+        { 
+       // --- TRAVAILLEURS --- 
+         int task; 
+           double local_integral; 
+         MPI_Status status; 
+ 
+         while (1)  
+               { 
+                          MPI_Recv(&task, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status); 
+                         if (task == -1) break; // Arrêt 
+ 
+                        double a = A + task * ((B - A) / N); 
+                       double b = a + TASK_SIZE * ((B - A) / N); 
+                       local_integral = trapezoidal_rule(a, b, TASK_SIZE); 
+                      MPI_Send(&local_integral, 1, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD); 
+        } 
+ } 
+ 
+ MPI_Finalize(); 
+ return 0; 
+} 

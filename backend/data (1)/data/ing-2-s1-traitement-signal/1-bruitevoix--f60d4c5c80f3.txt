@@ -1,0 +1,40 @@
+import numpy as np
+import soundfile as sf
+import  sounddevice as sd
+import matplotlib.pyplot as plt
+
+# Etape 1 :
+# pour un fichier son (texte vocal), on ajoute un biiiiip pour masquer la voix
+
+nom="fournis-notice"
+# fichier wav possible :
+# fournis-notice ; lair-idiote ;
+
+freqbruit=6000
+data, fs = sf.read(nom+".wav", dtype='float32')
+print('Processing..')
+print('Playing original signal')
+#sd.play(data, blocking=True)
+
+n=len(data)
+Duration=n*1.0/fs
+data=0.1*data
+times=np.linspace(0,Duration,n)
+bruit=10*np.sin(times*2*np.pi*freqbruit)
+data[0:,0]=data[0:,0]+bruit
+data[0:,1]=data[0:,1]+bruit
+# data[0:,0]=bruit
+# data[0:,1]=bruit
+data=data/np.max(np.abs(data))
+sf.write(nom+"-bruite.wav",data,fs)
+
+databis, fs = sf.read(nom+"-bruite.wav", dtype='float32')
+#sd.play(databis, blocking=True)
+fourier=np.fft.fftshift(np.fft.fft(databis[0:,0]))
+plt.figure(1)
+plt.stem(np.linspace(-int(n/2),int(n/2),n)*fs/n,np.absolute(fourier))
+plt.show()
+
+## Fin etape 1 :
+## on obtient un fichier son où on n'entend plus la voix, seulement le biiiip
+## la voix est masquée derriere

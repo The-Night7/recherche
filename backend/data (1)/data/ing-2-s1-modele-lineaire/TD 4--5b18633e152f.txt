@@ -1,0 +1,102 @@
+library(readxl)
+Poids <-read_excel("poids.xlsx")
+print(Poids)
+
+summary(Poids)
+
+#Statistiques descriptives simples pour chaque variable : X1, ..., X10
+pairs(Poids,col="red",main="le nuage des points deux à deux variables")
+
+#Estimation du modèle linéaire expliquant Y par X1, ..., X10
+modele <- lm(Y ~ X1 + X2 +X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids)
+print(modele)
+#Afficher le résumé du modèle (contient les estimations, R², F-statistiques, valeurs p, etc.)
+summary_modele <- summary(modele)
+
+#1 Afficher les estimations des coefficients
+cat("Estimations des coefficients :\n")
+print(summary_modele$coefficients)
+
+
+### Q1
+
+
+####Q2. Que peut-on dire sur la qualité d'ajustmeent du modèle ? On le notera modèle 1
+
+#### Rep - Q2:
+
+  #R^2 = 0,9772 donc cela est très correct on peut dire qu environ 97% ,
+  #La variance de Y est expliquée par les 10 variables
+
+#### Q3 Le modèle est-il globalement significatif avec un risque de 5%
+# - Pour étudier la significativité globale du modèe on utilise la statistique de Fisher
+# - La p-valeur < 0.005 donc l'utilisation du modèle linéaire multiple est pertinente
+# - Les variables sont globalement significatives
+
+#### Q 4 que peut-on dire sur la significativité de chaque coefficient avec un risque 5% ?
+
+# - Pour éutider la significativité individuelle de chaque variable, on utilise la statistique de ??
+# - Comme la p-valeur relative au test de Student pour la nullité d'un coefficient a_j est 
+# - plus grande que 0.005 pour plusieurs variables,
+# - On peut remarquer que beaucoup de variables explicatives ne sont pas significatives,
+# - On peut éventuellement faire une sélection de variables avant toute choses.
+
+
+################################################
+############ Sélection de variables ############ 
+################################################
+
+### Statistiques descriptives - Graphiques
+
+#histogramme des variables
+# frationne la fenêtre graphique en portions rectangulaires
+par(mfrow=c(2,3))
+#for (j in 1:5)(hsit(Poids(,j),main=names(Poids)(j))
+
+## Nuages de points deux à deux 
+pairs(Poids,col="red",main="le nuage des points deux a deux variables")
+
+## Q2 On note r_(Y,X_j) la corrélation entre Y et X_j
+# Remplir le tableau suivant : 
+# Matrice des corrélations
+
+mt <- cor(Poids[,c(1,2,3,4,5,6,7,8,9, 0)])
+
+Corr <-cor(Poids)
+
+Corr[,1]
+
+
+
+#Affichez les coefficients estimés : 
+print(modele$coefficients)
+
+print(modele$coeffcients[,1])
+
+
+## En étudiant la cohérence des signes, peut-on détecter une éventuelle colinéarité en Y et Xj ?
+
+## Rép : 
+# - On remarque que signe(r_(YX_j) diff signe(a^_j)pour j=1,5 et 6
+# - On en déduit qu'il existe une éventuelle colinéarité entre : Y et X1, Y et X5 et Y et X6
+
+### Soit entre 
+# - Le poids d'un homme et la circonférence maximale de l'avant -breas
+# - Le poids d'un homme et la distance autour des épaules, mesurées autour de la pointe des omoplates
+# - Le poids d'un homme et la distance autour de la taille au niveau de la ligne de pantalon, en com
+
+### Cecit est observé sur les plots de statistiques bivariées Y et Xj, j=1,5,4
+
+plot(Y-Xi, data=poids)
+plot(Y-X5, data=Poids)
+plot(Y-X6, data=Poids)
+
+Y=Poids[,1]
+Xi=Poids[,2]
+lm(Y-Xi)
+lm(formula= Y - Xi)
+
+Coefficient 
+
+
+### 

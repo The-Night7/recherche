@@ -1,0 +1,94 @@
+Cours : La Normalisation des Bases de
+Données
+1 À quoi ça sert?
+Imagine que tu gères les commandes d’une boutique dans un seul immense fichier
+Excel. Tu as des colonnes :Client,Adresse,Produit,Prix,Date.
+Le problème (La Redondance) :Si M. Dupont commande 10 fois, tu vas écrire 10
+fois son adresse.
+—Risque 1 (Erreur) :Si M. Dupont déménage, tu modifies la ligne 1, mais tu
+oublies la ligne 5. Résultat : tu as deux adresses différentes pour le même client.
+Laquelle est la bonne?
+—Risque 2 (Poids) :Ta base de données est inutilement lourde.
+La Solution (Normalisation) :C’est un ensemble de règles (appeléesFormes Nor-
+males) pour découper ce gros fichier en plusieurs petites tables propres (Clients, Produits,
+Commandes) reliées entre elles sans répétitions inutiles.
+2 Le concept clé : La Dépendance Fonctionnelle (DF)
+Avant de voir les règles, il faut comprendre ce terme barbare du PDF.
+Définition :Une Dépendance FonctionnelleA→B(A détermine B), cela veut dire :
+"Si je connais la valeur de A, alors je connaisimmédiatement et sans
+doutela valeur de B."
+Exemples :
+—Numéro_Secu→Nom_Personne:VRAI(Un numéro appartient à une seule per-
+sonne).
+—Code_Postal→Ville:VRAI(généralement).
+—Nom_Personne→Prénom:FAUX(Si je sais que tu t’appelles "Martin", je ne sais
+pas si ton prénom est "Paul" ou "Julie").
+Vocabulaire du PDF (Exercice 1) :
+—DF Élémentaire :C’est quand la partie gauche est "minimum".
+—Exemple :(Num_Etudiant,Matière)→Note.J’aibesoindesdeuxpourconnaître
+la note. C’est élémentaire.
+1
+<<<PAGE>>>
+—Contre-exemple :(Num_Etudiant,Matière,Age_Etudiant)→Note. Le champ
+Agene sert à rien pour trouver la note, il est en trop. Ce n’est pas élémentaire.
+—DF Directe :C’est quand on va du point A au point B sans étape.
+—Exemple :ID_Client→Ville. C’est souventindirect.
+—Pourquoi ?Parce qu’en réalité : ID_Client→Code_Postal→Ville. On passe
+par le code postal.
+3 Les Trois Formes Normales (Les règles du jeu)
+Pour qu’une base soit "propre", on vérifie les règles dans l’ordre : 1, puis 2, puis 3.
+3.1 Première Forme Normale (1FN) : L’Atomicité
+Règle :Une case = Une seule valeur. Pas de listes, pas de virgules.
+Mauvais (Non 1FN) :
+ID Nom Prenoms
+1 Bond James, Henri
+Bon (1FN) :On crée soit une nouvelle ligne, soit une nouvelle table pour les prénoms.
+3.2 Deuxième Forme Normale (2FN) : Tout dépend de TOUTE
+la clé
+Cette règle ne concerne que les tables qui ont une clé primaire composée (ex : ID_Commande
++ ID_Produit).
+Règle :Les colonnes qui ne sont pas des clés doivent dépendre del’ensemblede la
+clé, pas juste d’un morceau.
+Exemple Mauvais :
+TableLigne_Commande(Clé :ID_Commande,ID_Produit)
+— ColonneQuantité: OK (dépend de la commande ET du produit).
+— ColonneNom_Produit:ERREUR.
+—Pourquoi ?Lenomduproduitnedépendquedel’ID_Produit.Ilsefichedunuméro
+de commande.
+Solution :On sortNom_Produitpour le mettre dans une tablePRODUITà part.
+3.3 Troisième Forme Normale (3FN) : Pas de dépendance tran-
+sitive
+Règle :Une colonne (non-clé) ne doit pas dépendre d’une autre colonne (non-clé).
+Exemple Mauvais :
+TableClient(Clé :ID_Client)
+Colonnes :Nom,Code_Postal,Ville.
+— IciID_ClientdonneVille. C’est vrai.
+— MAIS :Villedépend en réalité deCode_Postal.
+— On a la chaîne : ID→CP→Ville.
+Solution :On gardeCPdans la table Client. On crée une tableVILLES(Code_Postal,
+Ville).
+2
+<<<PAGE>>>
+4 Résumé (La phrase magique)
+Pour retenir la 3ème Forme Normale (la plus importante), Bill Kent a inventé une
+phrase célèbre. Une colonne doit dépendre de :
+1.La clé(1FN/Base)
+2.Toute la clé(2FN)
+3.Et rien que la clé(3FN)
+(So help me Codd - jeu de mot avec "So help me God").
+5 Application sur ton Exercice 1 (Partie II)
+Revenons à ton exercice PDF avec ce cours en tête.
+Tu as :A→B,A→C,B, C→F, etc.
+Pourquoi la question 2 demande les dépendances "directes"?C’est pour pré-
+parer la 3FN! Si une dépendance est indirecte, c’est qu’il y a une transitivité (comme
+l’exemple Code Postal→Ville).
+Regarde la liste :
+—A→E(Donnée dans l’énoncé).
+— Mais on sait aussi queA→(B, C)(carA→BetA→C).
+— Et on sait que(B, C)→F.
+— Et on sait queF→E.
+La route complète est :
+A→(B, C)→F→E
+Donc, dire queAdonneE, c’est vrai, mais c’estindirect. C’est comme dire "Mon
+anniversaire détermine la météo". C’est indirect (Anniversaire→Saison→Météo).
+3

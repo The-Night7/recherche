@@ -1,0 +1,161 @@
+Ingénieurs 1ère année MI                                                                                                                                                                                     Datamining 1 
+                                                                                                                                                                                                                
+ 
+1 
+ 
+                           
+                Arbres de décision  
+ 
+Durée  : 3h 
+ 
+L’objectif de ce TP est d’étudier l’apprentissage supervisé à l’aide d’une méthode 
+très simple basée sur des règles de décision.  
+ 
+Exercice 1 
+ 
+Considérons le fameux jeu de données « Iris » (http://archive.ics.uci.edu/ml/datasets/Iris) représenté 
+ci-dessous. Il s’agit de trois types d’Iris caractérisés entre autres par la longueur et la largeur des 
+pétales. 
+ 
+1) Représentez sur le graphique la règle : Si la longueur des pétales est inférieure à 2  alors l’iris 
+est de type Setosa. 
+2) Dans le cas où la longueur des pétales est supérieure à 2, ajoutez sur le graphique la règle : Si 
+la largeur des pétales est supérieure à 1,7 alors l’iris est de type Virginia, sinon l’iris est de 
+type Versicolor. 
+3) Représenter l’arbre correspondant à ces règles. 
+4) Refaire la même chose en inversant l’ordre de longueur et largeur. 
+ 
+ 
+Exercice 2 
+Considérons l’exemple très simple sur le football avec les données du tableau ci-dessous. 
+Quelle variable sera choisie à la racine de l’arbre si l’on souhaite maximiser le gain à l’aide de 
+l’entropie ? 
+
+<<<PAGE>>>
+Ingénieurs 1ère année MI                                                                                                                                                                                     Datamining 1 
+                                                                                                                                                                                                                
+ 
+2 
+ 
+ 
+X1=Match à 
+domicile ? 
+X2=Balance 
+positive ? 
+X3=Mauvaises 
+conditions 
+climatiques ? 
+X4=Match 
+précédent 
+gagné ? 
+Y=Match gagné 
+V V F F V 
+F F V V V 
+V V V F V 
+V V F V V 
+F V V V F 
+F F V F F 
+V F F V F 
+V F V F F 
+ 
+ 
+Exercice 3 (en autonomie) 
+On considère des images en noir et blanc codées sur 4 pixels. Chaque image est donc codée par un 
+élément (x1,x2,x3,x4){0,1}4, où les pixels noirs sont notés 1 et les pixels blancs sont notés 0 e t sont 
+numérotés dans l’ordre 
+x1 x2 
+x3 x4 
+ 
+On dispose de la base d’apprentissage ci -dessous pour laquelle les images ont été réparties selon deux 
+classes. 
+                                       Classe 1                                            Classe 2 
+ 
+    
+ 
+    
+ 
+    
+        
+    
+ 
+    
+ 
+    
+    
+ 
+    
+ 
+    
+        
+    
+ 
+    
+ 
+    
+                            
+ 
+    
+ 
+    
+        
+    
+ 
+    
+ 
+    
+    
+ 
+    
+ 
+    
+        
+    
+ 
+    
+ 
+    
+ 
+On souhaite construire un arbre de décision sur cet échantillon avec comme varia bles explicatives 
+(attributs), x1, x2, x3 et x4. 
+1) Ecrire la base d’apprentissage sous la forme d’un tableau. 
+2) Quelle variable sera choisie à la racine de l’arbre si l’on souhaite maximiser le gain à l’aide de 
+l’indice de Gini ? 
+3) Représenter ensuite l’arbre T avec un partage des nœuds suivant les variables dans l’ordre 
+(arbitraire sans calcul d’indice) suivant : X2, X3, X1. 
+4) On considère l’ensemble de test suivant 
+    
+                                                Classe 1                                            Classe 2 
+ 
+                        
+      
+            
+                        
+      
+            
+                      
+ 
+ 
+      
+            
+ Parmi tous les élagages possibles de T, quel est celui qui commet le moins d’erreur ? 
+ 
+<<<PAGE>>>
+Ingénieurs 1ère année MI                                                                                                                                                                                     Datamining 1 
+                                                                                                                                                                                                                
+ 
+3 
+ 
+Exercice 4 
+L’objectif du tutoriel  http://apiacoa.org/blog/2014/02/initiation-a-rpart.fr.html  est de dérouler un 
+arbre de décision avec R.  
+A la suite de ce tutoriel, construire un arbre de décision avec R sur le jeu de données « Iris ». 
+- Construire une base d’apprentissage et une base test avec un ratio 70%-30% 
+- Déterminer le meilleur arbre de décision. 
+- A partir du graphique de l’arbre, déterminer la matrice de confusion. En déduire l’erreur 
+d’ajustement.  
+- Calculer la matrice de confusion sur la base de test. En déduire l’erreur de prévision. 
+- Comparer l’erreur d’apprentissage et l’erreur de prévision pour détecter un éventuel sur-
+ajustement. 
+- Enoncer les règles obtenues. 
+ 
+ 

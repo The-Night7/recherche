@@ -1,0 +1,245 @@
+Programmation C
+Makefile
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 23
+<<<PAGE>>>
+Pr´ esentation
+ING1 Programmation C CY Tech 2 / 23
+<<<PAGE>>>
+Pr´ esentation
+Permettre de construire des fichiers
+´Eventuellement ` a partir d’autres fichiers
+Utilisation de commandes shell
+Exemple
+Compilation de programme
+Construction de fichier ps, pdf ` a partir de LATEX
+Construction de librairie
+Sauvegarde de fichiers, ...
+ING1 Programmation C CY Tech 3 / 23
+<<<PAGE>>>
+Utilisation
+N´ ecessite un fichier de configuration
+▶ G´ en´ eralement appel´ emakefile
+▶ Description des d´ ependances entre fichiers
+▶ R` egles de mises ` a jour, cr´ eation, sauvegarde, ...
+▶ Tr` es ”sensible” ` a l’utilisation des espaces et tabulations
+N´ ecessite une commande
+▶ G´ en` ere ce qui est demand´ e en fonction du fichier de configuration
+▶ make
+Se base sur la date des fichiers
+Affiche les commandes avant de les ex´ ecuter
+ING1 Programmation C CY Tech 4 / 23
+<<<PAGE>>>
+Appels possibles
+Forme expans´ ee :make -f fichier configuration cible
+Possibilit´ e d’omettre lefichier configuration si celui-ci
+s’appelle : makefile ou Makefile
+Possibilit´ e d’omettre lacible ⇔ invocation de la premi` ere cible
+rencontr´ ee
+`A CY Tech, nom du fichier de configuration : Makefile
+Premi` ere cible doit ˆ etreall
+ING1 Programmation C CY Tech 5 / 23
+<<<PAGE>>>
+Structure d’un Makefile simple
+Listing 1 – Exemple d’un Makefile tr` es simple 
+1#c e c i e s t un commentaire
+2#l e symbole i n d i q u e une t a b u l a t i o n
+3t o t o : t o t o . c
+4gcc t o t o . c −o t o t o
+ 
+ligne 3 : toto : cible ; toto.c d´ ependance de la cible
+ligne 4 : Tabulation : indique que l’on est toujours dans la mˆ eme
+cible ; Comment faire la cible ` a partir des d´ ependances
+ING1 Programmation C CY Tech 6 / 23
+<<<PAGE>>>
+D´ efinition d’une r` egle
+Une premi` ere ligne contenant
+▶ un nom de cible
+▶ :
+▶ une liste de fichier dont d´ epend la cible
+de 0 ` an lignes de commandes contenant
+▶ le caract` ere de tabulation
+▶ une ou plusieurs commandes
+Ex´ ecution de la r` egle uniquement si les d´ ependances sont pr´ esentes, ou si
+elles sont ”constructibles”
+ING1 Programmation C CY Tech 7 / 23
+<<<PAGE>>>
+Cas particulier
+R` egles sans d´ ependances : r` egles toujours ex´ ecut´ ees
+▶ clean :
+R` egles sans commandes : permet de ”construire” des r` egles de
+mani` ere arborescente
+▶ all : .../...
+ING1 Programmation C CY Tech 8 / 23
+<<<PAGE>>>
+Structure d’un Makefile simple
+Listing 2 – Exemple d’un Makefile simple 
+1a l l : t o t o
+2
+3t o t o : t o t o . o
+4gcc t o t o . o −o t o t o
+5
+6t o t o . o : t o t o . c t o t o . h
+7gcc −c t o t o . c −o t o t o . o
+ 
+ING1 Programmation C CY Tech 9 / 23
+<<<PAGE>>>
+Utilisation avanc´ ee
+ING1 Programmation C CY Tech 10 / 23
+<<<PAGE>>>
+D´ efinition de variables
+Possibilit´ e de d´ efinir des variables
+▶ nom = valeur ou nom=valeur
+▶ CC = gcc
+▶ FICHIER = toto.c toto.h
+▶ compilation = gcc -c
+Utilisation des variables
+▶ $(nom) ou ${nom}
+▶ $(FICHIER)
+▶ ${CC}
+´Equivaut ` a la substitution syntaxique du pr´ e-processeur
+Doit ˆ etre d´ efini avant l’utilisation
+ING1 Programmation C CY Tech 11 / 23
+<<<PAGE>>>
+Variables internes
+$@ : nom de la cible
+$? : liste des d´ ependances plus r´ ecentes que la cible
+$^ : liste des d´ ependances
+$< : nom de la premi` ere d´ ependance
+Pour plus d’informations :
+http://www.gnu.org/software/make/manual/make.html
+ING1 Programmation C CY Tech 12 / 23
+<<<PAGE>>>
+Utilisation
+Listing 3 – Makefile avec variables 
+1CC = gcc
+2PROG =t o t o
+3OBJ=t o t o . o
+4SRC=t o t o . c
+5HEAD =t o t o . h
+6
+7a l l : $ (PROG)
+ 
+ING1 Programmation C CY Tech 13 / 23
+<<<PAGE>>>
+Utilisation
+Listing 4 – Makefile avec variables 
+1$ (PROG) : $ (OBJ)
+2$ (CC) $ˆ −o $@
+3
+4$ (OBJ) : $ (SRC) $ (HEAD)
+5$ (CC) −c $ (SRC) −o $@
+6
+7c l e a n :
+8rm −f $ (OBJ) $ (PROG)
+ 
+ING1 Programmation C CY Tech 14 / 23
+<<<PAGE>>>
+R` egles phony
+Phony (fam.) : Faux/fausse, bidon (d’apr` es Harraps)
+Que se passe-t-il si une cible porte le nom d’un fichier ?
+▶ make regarde si le fichier existe et est ` a jour : c’est le cas
+▶ Pas de compilation
+▶ Exception pour la cible all
+Utilisation des r` egles ”bidons”
+Sp´ ecifie qu’il faut toujours faire la cible, sans se soucier d’autre choses
+.PHONY : cible
+Notion de directives
+ING1 Programmation C CY Tech 15 / 23
+<<<PAGE>>>
+wildcard et substitution
+wildcard
+▶ Permet l’utilisation de caract` eres jokers
+▶ SRC=$(wildcard *.c)
+substitution
+▶ Permet de changer l’extension
+▶ OBJ=$(SRC:.c=.o)
+▶ Attention tr` es tr` es sensible aunon-espace
+ING1 Programmation C CY Tech 16 / 23
+<<<PAGE>>>
+suffixes et caract` eres sp´ eciaux
+suffixes
+▶ Permet de construire tous les fichiers d’un certain suffixe, ` a partir
+d’autres fichiers
+▶ Utile pour construire un ensemble de fichiers objets avant de construire
+le programme
+▶ .sufx1.sufx2 :
+caract` eres sp´ eciaux
+▶ @ : pas d’affichage de la commande avant ex´ ecution
+▶ - : en cas d’erreur poursuite du main
+ING1 Programmation C CY Tech 17 / 23
+<<<PAGE>>>
+Exemple r´ ecapitulatif
+Listing 5 – Ma ˆ ıtrise ? 
+1SRC = $ ( w i l d c a r d ∗ . c ) # f i c h i e r s s o u r c e s
+2OBJ = $ (SRC : . c =.o ) # f i c h i e r s o b j e t s
+3
+4t o t o : $ (OBJ) # c o m p i l a t i o n du programme
+5@gcc $ˆ −o $@
+6
+7. c . o : # c o m p i l a t i o n d e s o b j e t s
+8gcc −c $ˆ −o $@
+9
+10.PHONY : c l e a n
+11
+12c l e a n : # e f f a c e m e n t de s o b j e t s
+13rm −f $ (OBJ)
+ 
+ING1 Programmation C CY Tech 18 / 23
+<<<PAGE>>>
+Makefile r´ ecursif
+Supposons une arborescence classique : rep1, rep2, ...,
+sourep11, sourep12, ..., sourep1n, sourep21, sourep22,
+..., sourep2n, ...
+Comment faire pour tout compiler ?
+Impossible de faire :
+.PHONY : r e p 1 r e p 2
+r e p 1 :
+cd r e p 1
+make s o u r e p 1
+make s o u r e p 2
+Deux probl` emes :
+▶ structure peut changer
+▶ une commande : un shell
+ING1 Programmation C CY Tech 19 / 23
+<<<PAGE>>>
+Impossible ?
+Utilisation de l’option -C
+make -C rep cible(s)
+Peu g´ en´ erique : n´ ecessite de conna ˆ ıtre la structure ` a l’avance
+Utilisation du shell :
+▶ $(shell cmde)
+▶ $(shell ls *.c)
+▶ DIR = $(shell find . -maxdepth 1 -type d -print)
+Peut n´ ecessiter un filtre : utilisation de filter/filter-out
+ING1 Programmation C CY Tech 20 / 23
+<<<PAGE>>>
+Filtres
+filter
+▶ $(filter motif, texte)
+▶ Tous les ´ el´ ements de texte qui v´ erifie un motif
+▶ motif : noms s´ epar´ es par des espaces, utilisation possible de %
+▶ texte : idem
+filter-out
+▶ Idem que filter
+▶ Tous les ´ el´ ements de texte qui ne v´ erifient pas l’un des motifs
+ING1 Programmation C CY Tech 21 / 23
+<<<PAGE>>>
+Enfin !
+Listing 6 – Erreur mais pourquoi ? 
+DIR = $ ( f i l t e r −out . . / Image , $ ( s h e l l f i n d .
+−maxdepth 1 −t y p e d −p r i n t ) )
+a l l : $ ( DIR )
+$ ( DIR ) :
+$ (MAKE) −C $@
+ 
+ING1 Programmation C CY Tech 22 / 23
+<<<PAGE>>>
+Il en reste
+Beaucoup d’autres fonctionnalit´ es
+▶ Directives d’inclusion, export, de masquage d’export, conditionnelles
+▶ R` egles implicites (sur certaines version demake uniquement)
+▶ L’utilitaire : makedepend
+▶ Fonctions de substitution, de tri, de r´ ep´ etition, ...
+ING1 Programmation C CY Tech 23 / 23

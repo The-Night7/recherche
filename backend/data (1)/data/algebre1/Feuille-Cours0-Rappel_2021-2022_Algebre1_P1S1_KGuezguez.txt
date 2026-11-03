@@ -1,0 +1,1338 @@
+Table des matières
+1 Suites et récurrence 2
+1.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.1.1 Déﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.1.2 Sens de variation des suites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.1.3 Suites majorées, minorées, bornées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Suites Arithmétiques et Suite Géométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2.1 Suites arithmétiques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2.2 Suites géométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.3 Raisonnement par récurrence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.4 Convergence - Divergences de suites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.4.1 Déﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.4.2 Propriétés sur les limites . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.4.3 Théorèmes de comparaisons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2 Fonctions 9
+2.1 Limite d’une fonction au voisinage de l’inﬁni. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.1.1 Limite ﬁnie - Asymptote horizontale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.1.2 Limite inﬁnie - Asymptote Oblique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.2 Limite d’une fonction en un réel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.2.1 Limite inﬁnie - Asymptote verticale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.2.2 Limite ﬁnie . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.3 Limites de référence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.4 Opérations Algébriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.4.1 Cas général . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.4.2 Cas particuliers des formes indéterminées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.5 Théorème de comparaison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2.6 Limite d’une fonction composée ena . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3 Continuité d’une fonction 16
+3.1 Déﬁnition et premières propriétés . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.2 Continuité et opérations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3 Le théorème des valeurs intermédiaires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+4 Dérivation 17
+4.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4.2 Opérations algébriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.3 Formules de calculs des dérivées . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.4 Dérivée d’une fonction composée . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.5 Lien entre fonction et dérivée . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+5 Fonctions Sinus et Cosinus 19
+5.1 Rappel : Repérage sur le cercle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+5.1.1 Déﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+5.1.2 Position des angles remarquables sur le cercle trigonométrique. . . . . . . . . . . . . . . . . . . . . . . 21
+5.2 Déﬁnition de sinus et cosinus . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+5.3 Formules Trigonométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+5.4 Fonctions Trigonométriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.4.1 Déﬁnitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.4.2 Propriété . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.4.3 Représentation graphique des fonctions trigonométriques . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+<<<PAGE>>>
+1 Suites et récurrence
+1.1 Généralités
+1.1.1 Déﬁnitions
+Déﬁnition 1.1.Une suite numériqueu est une fonction à valeur dansR telle que :
+Il existe un entier natureln0 tel que l’ensemble de déﬁnition deu est l’ensemble des entiersn≥n0.
+Remarque 1.1. On nomme souvent les suites en utilisant les lettresu et pour écrire les images des entiersu(n), on écrit
+de préférenceun. On peut donc alors noter les suites
+(un)n≥n0
+Le terme initialde la suite est le termeun0.
+Le terme généralde la suite estun.
+L’entiern est appelléindice du termeun.
+Exemple 1.1. (exemples de suites)
+Nom Déﬁnition Terme initial Deuxième Troisième
+(un)n≥0 ∀n∈ N,u n = 2n + 1. u0 = 1 u1 = 3 u2 = 5
+(hn)n≥0 ∀n∈ N,h n = 2 n. h0 = 2 h1 = 4 h2 = 8
+(kn)n≥0 ∀n∈ N,k n = 1−
+( 1
+2
+)n
+. k0 = 0 k1 = 1
+2 = 0.5 k2 = 3
+4 = 0.75
+(vn)n≥1 ∀n∈ N∗,v n = 1
+n. v1 = 1 v2 = 1
+2 = 0.5 v3 = 1
+3≈ 0.3333
+(wn)n≥0 w0 = 4 et∀n∈ N,w n+1 = 1
+2wn + 1 w0 = 3 w1 = 5
+2 = 2.5 w2 = 9
+4 = 2.25
+(tn)n≥0 ∀n∈ N,t n = (−2)n t0 = 1 t1 =−2 t2 = 4
+(sn)n≥0 s0 = 3 et∀n∈ N,s n+1 =− 1
+2sn. s0 = 3 s1 =− 3
+2 =−1.5 s2 = 3
+4 = 0.75
+Remarque 1.2. Une suite peut être déﬁnie :
+1. Soit à partir d’une formule en fonction den, comme les fonctions suites(un), (hn), (vn) de l’exemple 1.1
+2. Soit à partir d’une formule en fonction d’un ou plusieurs termes précédents (et éventuellement den), comme les suites
+(wn), (sn)) de l’exemple 1.1
+Dans le premier cas, on peut calculer n’importe quel terme de la suite rapidement, dans le second cas, il faut calculer tous
+les termes intermédiaires.
+1.1.2 Sens de variation des suites
+Déﬁnition 1.2.(suite monotone)
+Une suite (un)n≥0 croissante est telle que pour toutn∈ N, un+1≥un.
+Une suite (un)n≥0 décroissante est telle que pour toutn∈ N, un+1≤un.
+Une suite est monotone si elle est croissante ou si elle est décroissante.
+Remarque 1.3. La suite est strictement croissante ou décroissante lorsque l’inégalité est stricte.
+Exemple 1.2. Les suites (un), (hn), (kn) sont croissantes, les suites (vn), (wn) sont décroissantes, les suites
+(tn), (sn) ne sont ni croissantes, ni décroissantes.
+Propriété 1.1. Soit une suite(un)n∈N déﬁnie de façon explicite :∀n∈ N,u n =f (n).
+Si la fonctionf est croissante sur[0; +∞[ la suite est croissante, si la fonctionf est décroissante sur[0; +∞[, la
+suite est décroissante.
+<<<PAGE>>>
+On dispose donc de plusieursméthodes pour étudier le sens de variation d’une suite :
+— étudier le signe de la diﬀérenceun+1−un
+— pour une suite à termes strictement positifs, étudierun+1
+un
+à 1.
+— si la suite est du typeun+1 =f (n), on peut étudier le sens de variation def, puis en déduire celui de la suite (mais
+pas dans le cas oùun+1 =f (un) la suitewn de l’exemple 1.1 est un contre-exemple).
+Remarque 1.4. Pour démontrer qu’une suite est croissante, il faut démontrer que pour toutn, un+1≥un. Il ne suﬃt pas
+de constater que les premiers termes sont en ordre croissant.
+Par contre pour démontrer qu’une suite n’est pas croissante il suﬃt de trouver deux termes en ordre décroissant.
+1.1.3 Suites majorées, minorées, bornées
+Déﬁnition 1.3.(suites majorées, minorées, bornées)
+• Par déﬁnition, une suite(un)n≥0 majorée est telle qu’il existe un réelM tel que pour tout entier natureln,
+un≤M
+• Par déﬁnition, une suite(un) minorée est telle qu’il existe un réelm tel que pour tout entier natureln,
+m≤un.
+• Par déﬁnition, une suitebornée est majorée et minorée.
+Exemple 1.3. On se réfère aux suites de l’exemple 1.1
+1. La suite (sn) est majorée par 1 et 0.
+2. La suite (un) n’est pas majorée.
+3. La suite (kn) et majorée par 1 et minorée par 0, elle est donc bornée.
+Exercice 1.1. Déﬁ : Soit la suite(un) déﬁnie parun = 1 + 1
+2 + 1
+3 + 1
+4 +... + 1
+n. Est-elle bornée?
+(on pourra programmer le calcul des termes successifs pour tester).
+1.2 Suites Arithmétiques et Suite Géométriques
+1.2.1 Suites arithmétiques
+Déﬁnition 1.4.Une suite (un)n≥0 est dite “arithmétique” lorsqu’il existe un réelr tels que pour tout entier
+naturel n un+1 =un +r (relation de récurrence).
+Le réelr s’appelle laraison de la suite arithmétique.
+u0
++r
+u1
++r
+u2
++r
+u3
++r
+Remarque:Montrerqu’unesuiteestarithmétiquerevientàmontrerque un+1−un estconstant(“commondiﬀerencesequence”)
+Propriété 1.2. (terme général) Si(un)n≥0 est une suite arithmétique de raisonr alors
+pour tout entier natureln, un =u0 +nr ← formule du terme de rangn en fonction den
+Plus généralement, pour tout entier naturelk, un =uk + (n−k)r
+Propriété 1.3. Une suite (un)n≥0 est arithmétique si et seulement si elle est déﬁnie parun =an +b.
+La raison de la suiteun est a. Le premier termeu0 =b.
+Propriété 1.4. Soit une suite arithmétique(un)n∈N.
+La somme deSn =u0 +u1 +u2 +... +un =
+n∑
+i=0
+ui = n + 1
+2 (u0 +un).
+D’une façon générale, soitm et p deux entiers tels quem > p, la somme des termes consécutifs des termes de
+um à up est le produit de la moyenne des deux termes extrêmes (um et up) et du nombre de termes.
+<<<PAGE>>>
+Propriété 1.5. (sens de variation)
+Soit un réela. Soit (un)n≥0 une suite arithmétique de raisona.
+Si a> 0, la suite est strictement croissante.
+Si a = 0 la suite est constante.
+Si a< 0, la suite est strictement décroissante.
+1.2.2 Suites géométriques
+Déﬁnition 1.5.Une suite (un)n≥0 est dite “géométrique” lorsque il existe un entier natureln0 et un réelq tels
+que pour tout entier natureln, un+1 =qun (relation de récurrence).
+Le réelq s’appelle la “raison” de la suite géométrique.
+u0
+×q
+u1
+×q
+u2
+×q
+u3
+×q
+Remarque: Lorsque l’on est assuré que les termes sont non nuls, montrer qu’une suite est géométrique revient à montrer que
+un+1/un est constant (“common ratio sequence”)
+Propriété 1.6. (terme général) Si(un)n≥0 est une suite géométrique de raisonq alors
+pour tout entier natureln, un =u0qn ← formule du terme de rangn en fonction den
+Plus généralement, pour tout entier naturelk , un =ukqn−k .
+Propriété 1.7. (admise)
+Soit une suite géométique de raisonq⁄= 1, (vn)n∈N.
+La somme deSn =v0 +v1 +v2 +... +vn =
+n∑
+i=0
+vi =v0
+1−qn+1
+1−q .
+Remarque 1.5. Pour deux entiersn et p tels quep<n ,
+Sn =vp +vp+1 +vp+2 +... +vn =
+n∑
+i=p
+vi =vp
+1−qn−p+1
+1−q .
+Propriété 1.8. (sens de variation)
+Soit un réelq non nul. Soit(un)n≥0 une suite géométrique de raisonq.
+Si q >1, siu0 > 0, la suite est strictement croissante, siu0 < 0 la suite est strictement croissante.
+Si 0<q < 1, siu0 > 0 la suite est strictement décroissante, siu0 < 0 la suite est strictement décroissante.
+Si q <0, la suite n’est pas monotone.
+Exemple 1.4. En se référant à l’exemple 1.1
+La suite (hn) est géométrique et croissante car le premier terme est positif et la raisonq = 2 > 1.
+Les suites (tn) et (sn) sont géométriques mais ni croissantes, ni décroissantes car leurs raisons, respectivement
+-2 et− 1
+2 sont négatives.
+1.3 Raisonnement par récurrence
+Propriété 1.9. (Récurrence simple).
+Soit P( une propriété portant sur les entiers naturels.
+Soit n0 un entier naturel.
+On suppose queP(n0) est vraie.
+On suppose également que pour tout entiern≥n0 , si P(n) est vraie, alorsP(n + 1) est vraie.
+(cela revient à dire que l’implicationP(n)⇒ P(n + 1) est vraie)
+Alors pour tout entiern≥n0, la propositionP(n) est vraie.
+<<<PAGE>>>
+Voici comment doit se faire un raisonnement par récurrence et comment il doit être rédigé :
+1. On énonce clairement la propriétéP étudiée.
+2. On vériﬁe que la propriétéP est vraie pourn0 (Initialisation)
+3. On se donne un entiern≥n0 quelconque et on suppose queP(n) est vraie (Hypothèse de récurrence).
+On démontre alors queP(n + 1) est vraie (Hérédité)
+4. On conclut en annonçant que, par récurrence, la propriété est vraie pour tout entiern≥n0.
+Remarque 1.6. Il faut voir le principe de récurrence comme une échelle que l’on essaye de monter :
+Si l’on est capable de poser le pied sur le premier barreau et que l’on est capable de passer d’un barreau au suivant, alors on
+est capable de monter l’échelle en entier. Si l’une des deux conditions manque, alors nous ne pouvons pas monter l’échelle.
+D’où l’importance de vériﬁer l’initialisation ET l’hérédité.
+Exemple 1.5. Démontrer par récurrence que pour toutN∈ N∗ , on a l’égalité1 + 2 + 3 + + n = n(n + 1)
+2
+1. Soit P(n) la propriété déﬁnie surN∗ par 1 + 2 + 3 + + n = n(n + 1)
+2
+2. Nous avons 1 = 1(1 + 1)
+2 , donc P(1) est vraie.
+3. Soit un entiern∈ N∗ tel P(n) est vraie. Démontrons alors queP(n + 1) est vraie aussi. Nous devons
+donc montrer que
+1 + 2 + 3 +··· +n + (n + 1) = (n + 1)(n + 2)
+2
+Nous avons supposé queP(n) est vrai, donc on peut écrire :
+1 + 2 +··· +n + (n + 1) = (1 + 2 +··· +n) + (n + 1)
+= n(n + 1)
+2 + (n + 1)
+= n(n + 1) + 2(n + 1)
+2
+= (n + 1)(n + 2)
+2
+Donc l’implicationP(n)⇒ P(n + 1) est vraie.
+4. Nous avons donc montré par récurrence que pour tout entiern∈ N∗, 1 + 2 + 3 +··· +n = n(n + 1)
+2
+Une erreur classique est d’oublier l’initialisation. L’exemple suivant est un exemple de cette erreur classique.
+<<<PAGE>>>
+Exemple 1.6(FAUX!). Démontrer par récurrence que pour toutn∈ N∗ , on a l’égalité (fausse)1+2+3+ + n =
+n2 +n + 1
+2
+1. Soit P(n) la propriété déﬁnie surN∗ : 1 + 2 + 3 + + n = n2 +n + 1
+2
+2. L’élève oublie l’initialisation.
+3. Soit un entiern∈ N∗ tel P(n) est vraie. Démontrons alors queP(n + 1) est vraie aussi. Nous devons
+donc montrer que
+1 + 2 + 3 + + n + (n + 1) = (n + 1)2 + (n + 1) + 1
+2
+La fraction est égale à(n + 1)2 + (n + 1) + 1
+2 = n2 + 3n + 3
+2 .
+De plus
+1 + 2 +··· +n + (n + 1) = (1 + 2 +··· +n) + (n + 1)
+= n2 +n + 1
+2 + (n + 1)
+= n2 +n + 1 + 2n + 2
+2
+= n2 + 3n + 3
+2
+= (n + 1)2 + (n + 1) + 1
+2
+Donc l’implicationP(n)⇒ P(n + 1) est vrai.
+4. Nous avons donc montré par récurrence que pour tout entiern∈ N∗, 1 + 2 + 3 + + N = n2 +n + 1
+2
+Vous l’aurez compris, il y a une erreur. Un calcul simple permet de montrer queP(1) est fausse puisqu’elle
+stipule que 1 = 3
+2. Le premier barreau étant cassé, nous ne pouvons pas monter à l’échelle.
+Remarque 1.7. Pour montrer une propriété universelle (∀), c’est à dire montrer que tous les éléments d’un ensemble ont
+cette propriété, on prend un élémentquelconque de l’ensemble et on démontre qu’il a la propriété.
+On utilise souvent une rédaction du type “Soit....”.
+Exemple 1.7. Par exemple :
+« Pour tout quadrilatère, le quadrilatère non croisé formé par les milieux des segments est un parallélogramme.
+»
+Soit un quadrilatère quelconque, nommons les sommets ABCD et les milieux I, J, K et L respectivement de
+[AB], [BC],[CD] et [DA].
+D’après la propriété de la droite des milieux dans ABC,− →IJ = 1
+2
+−→AC. De meme− − →LK = 1
+2
+−→AC donc− →IJ =−→AC.
+Donc IJKL est un parallélogramme.
+Conclusion «Pour tout quadrilatère, le quadrilatère non croisé formé par les milieux des segments est un
+parallélogramme.»
+Exemple 1.8. Autre exemple :
+« La somme de 3 entiers consécutifs est un multiple de 3.»
+("pour tout 3 entiers consécutifs, etc...")
+Soit trois entiers consécutifs (quelconques).
+On noten le plus petit des trois. La somme est alorsn + (n + 1) + (n + 2) = 3 n + 3 = 3( n + 1) donc est un
+multiple de 3.
+D’où la propriété annoncée.
+Remarque 1.8. Pour montrerP⇒Q que faut-il montrer?
+<<<PAGE>>>
+Table de vérité de l’implication
+P Q P⇒Q
+V V V
+V F F
+F V V
+F F V
+Donc si P est faux, l’implication est toujours vraie (un P faux peut donner n’importe : quoi Q vraie et Q faux conviennent).
+Pour montrer l’implication, il suﬃt de montrer qu’elle n’est pas fausse, cela n’arrive que dans un seul cas : quand P est vraie
+et Q est faux. Donc on va vériﬁer que «si P est vraie, Q est vraie aussi».
+Donc pour montrerP⇒Q on rédige :«Supposons P vraie, montrons Q vraie.»
+Exemple 1.9. Si n est impair alorsn2 est impair.
+Supposons n pair, n = 2×p + 1 avecp∈ N. Doncn2 = 2(2p2 + 2p) + 1 donc n2 est impair.
+L’implication est donc vraie.
+Exercice 1.2. Démontrer une formule
+Soit la suite(un)n∈N déﬁnie par :
+u0 = 2 et∀n∈ N,u n+1 = 3un− 5.
+Démontrer par récurrence que∀n∈ N,u n = 1
+2 (5− 3n)
+Remarque 1.9. Penser à utiliser la calculatrice (application suite) pour vériﬁer que la formule est correcte
+Solution
+Pour toutn∈ N soit la propriétéP(n) : un = 1
+2 (5− 3n)
+• 1
+2 (5− 30) = 1
+2 (5− 1) = 2 = u0 donc P(0) est vraie.(Vériﬁcation au premier rang)
+• Soit n∈ N. On suppose queP(n) est vraie. C’est à direun = 1
+2 (5− 3n).
+On veut montrer que pour toutn, si P(n) est vraie, on aP(n + 1) vraie. On choisit donc unn quelconque, on suppose
+que P(n) est vraie et on va essayer de montrer queP(n + 1) est vraie. Puisquen était quelconque, on a bien démontré
+que pour toutn, si P(n) est vraie, P(n + 1) est vraie.
+On veut montrer queP(n + 1) est vraie, c’est à direun+1 = 1
+2 (5− 3n+1) On aun+1 = 3un− 5 = 3
+( 1
+2 (5− 3n)
+)
+− 5
+= 15
+2 − 3n+1
+2 − 5 = 5
+2− 3n+1
+2
+Donc P(n + 1) est vraie.
+• Donc par récurrence, pour tout entier natureln, un = 1
+2 (5− 3n).
+1.4 Convergence - Divergences de suites
+1.4.1 Déﬁnitions
+Déﬁnition 1.6.Une suite numérique admet le réell comme limite lorsque pour tout intervalle ouvert qui
+contientl, il existe un entiern0 tel que pour tous les entiersn>n 0, un appartient à I.
+Cela revient, en écriture symbolique, à :
+∀ϵ∈ R> 0,∃n0,∀n∈ N,n≥n0,u n∈]l−ϵ;l +ϵ[
+<<<PAGE>>>
+Déﬁnition 1.7.Une suite numérique admet pour limite+∞ (respectivement−∞) lorsque pour tout intervalle
+ouvert I de la forme]a; +∞[ (de la forme]−∞ ;a[), il existe un entiern0 tel que pour tous les entiersn>n 0,
+un appartient à I.
+Cela revient, en écriture symbolique, à :
+∀a∈ R,∃n0,∀n∈ N,n≥n0,u n∈]a; +∞[
+Déﬁnition 1.8.Par déﬁnition,
+Une suiteconvergenteadmet une limiteﬁnie.
+Une suitedivergente est une suite qui n’est pas convergente.
+Remarque:
+Il y a deux suites de type convergentes:
+— Les suites monotones. Dans l’exemple 1.1 :(kn), (vn), (wn) ou
+( 1
+n
+)
+n∈N∗
+— Les suites qui ne sont pas monotones. Dans l’exemple 1.1 :(sn) ou
+((
+− 1
+2
+)n)
+n∈N
+Il y a deux types de suites divergentes:
+— les suites qui ont pour limite+∞ ou−∞. Dans l’exemple 1.1 :(un), (hn) ou (n)n∈N∗
+— les suites qui n’ont pas de limite. Dans l’exemple 1.1 :(tn) ou ((−2)n)n∈N
+UNE LIMITE PAS DE LIMITE
+FINIE INFINIE
+CONVERGENTE DIVERGENTE
+1.4.2 Propriétés sur les limites
+Propriété 1.10. Si une suite admet une limite (ﬁnie ou inﬁnie), alors celle-ci est unique.
+Remarque 1.10. Une suite convergente n’est pas nécessairement monotone. Par exemple
+((
+− 1
+2
+)n)
+.
+Propriété 1.11.Si une suite est croissante et admet pour limitel, alors tous les termes de la suite sont inférieurs
+ou égaux àl.
+Théorème 1.1. (Convergence des suites monotones bornées)
+Toute suite monotone et bornée converge.
+Autrement dit :
+• Si (un) est une suite croissante et majorée alors elle converge.
+• Si (un) est une suite décroissante et minorée alors elle converge.
+Propriété 1.12.Soitf une fonction continue sur un intervalle I deR à valeur dans I et soit(un) une suite telle
+que u0∈I et∀n∈ N,u n+1 =f (un).
+Si (un) converge vers une limitel alors l vériﬁe l’équationl =f (l)
+Théorème 1.2. (Divergence des suites monotones non bornées)
+Si (un) est une suite croissante et non majorée alorslim
+n→+∞
+un = +∞.
+Si (un) est une suite décroissante et non minorée alorslim
+n→+∞
+un =−∞.
+<<<PAGE>>>
+1.4.3 Théorèmes de comparaisons
+Théorème 1.3. (Théorème des gendarmes ou de l’encadrement)
+Soit (un), (vn), (wn) des suites et un réell tels que :
+— Il existep tel que pour toutn≥p, un≤vn≤wn.
+— (un) est convergente et lim
+n→+∞
+un =l
+— (wn) est convergente et lim
+n→+∞
+wn =l
+La suite (vn) est convergente et lim
+n→+∞
+vn =l
+Propriété 1.13. Théorème de comparaison
+Soit (un) et (vn) deux suites telles que :
+1. un≤vn à partir d’un certain rang.
+2. un tend vers +∞ quand n tend vers +∞.
+alors vn tend vers +∞ quand n tend vers +∞.
+2 Fonctions
+2.1 Limite d’une fonction au voisinage de l’inﬁni.
+2.1.1 Limite ﬁnie - Asymptote horizontale
+On énoncera les propriétés seulement pourx→ +∞ (transposition facile pourx→−∞ ).
+Soit un réelm et f une fonction déﬁnie sur[m; +∞[
+Déﬁnition 2.1.Soit l un réel.
+Dire quef (x) tend versl quandx tend vers +∞ signiﬁe que tout intervalle ouvertI contenantl, il existe un
+réel x0 tel que pour tout réelx>x 0, f (x)∈I.
+Cela revient en écriture symbolique à :
+∀ϵ> 0,∃A∈ R,∀x∈ R,x∈]A; +∞[⇒f (x)∈]l−ϵ;l +ϵ[
+On note lim
+x→+∞
+f (x) = l
+x
+y
+1
+1
+0
+Exemple 2.1. lim
+x→+∞
+1
+x + 1 = 1
+Déﬁnition 2.2.Quand lim
+x→+∞
+f (x) = l on dit que la droite d’équationy =l est uneasymptote horizontale
+à la courbeCf vers +∞.
+<<<PAGE>>>
+2.1.2 Limite inﬁnie - Asymptote Oblique
+Déﬁnition 2.3.Dire quef (x) tend vers+∞ quandx tend vers+∞ signiﬁe que pour tout réelM, , il existe
+un réelx0 tel que pour tout réelx>x 0, f (x)>A
+Cela revient en écriture symbolique à :
+∀M∈ R,∃A∈ R/∀x∈ R,x∈]A; +∞[⇒f (x)∈]M ; +∞[
+Dire quef (x) tend vers−∞ quandx tend vers+∞ signiﬁe que pour tout réelM, il existe un réelx0 tel que
+pour tout réelx>x 0, f (x)<A .
+Cela revient en écriture symbolique à :
+∀M∈ R,∃A∈ R/∀x∈ R,x∈]A; +∞[⇒f (x)∈]−∞ ;M [
+x
+y
+1
+1
+0
+Exemple 2.2. lim
+x→+∞
+x2
+2 = +∞
+Déﬁnition 2.4.Soit a et b deux réels , a non nul. Quand lim
+x→+∞
+f (x)− (ax +b) = 0 on dit que la droite
+d’équationy =ax +b est uneasymptote obliqueà la courbeCf vers +∞.
+Remarque 2.1. Attention : toute courbe représentative d’une fonction “déﬁnie” en+∞ n’admet pas nécessairement une
+asymptote : la parabole (fonction carré)
+x
+y
+1
+1
+0
+Exemple 2.3. Soit f déﬁnie surR\{ 3} par f (x) = x2− 3x + 1
+x− 3 , on écritf (x) = ax +b + c
+x− 3 ; on trouve
+f (x) = x + 1
+x− 3. Comme lim
+x→+∞
+f (x)−x = lim
+x→+∞
+1
+x− 3 = 0 et également lim
+x→−∞
+f (x)−x = lim
+x→−∞
+1
+x− 3 = 0
+la droite d’équationy =x est uneasymptote obliqueà la courbeCf
+2.2 Limite d’une fonction en un réel
+2.2.1 Limite inﬁnie - Asymptote verticale
+Soit un réela. Soit un intervalle I deR tel quea∈I. Soitf une fonction déﬁnie surI en excluant éventuellement le pointa.
+<<<PAGE>>>
+Déﬁnition 2.5.Dire quef (x) tend vers +∞ quand x tend versa signiﬁe que pour tout réelM, il existe un
+intervalle I contenanta tel que pour tout réel de I,f (x)>M .
+Cela revient en écriture symbolique à :
+∀M∈ R,∃α∈ R,α> 0/∀x∈ R,x∈]a−α;a +α[⇒f (x)∈]M ; +∞[
+Dire quef (x) tend vers−∞ quandx tend versa signiﬁe que pour tout réelM, il existe un intervalle I contenant
+a tel que pour tout réel de I,f (x)<M .
+Cela revient en écriture symbolique à :
+∀M∈ R,∃α∈ R,α> 0/∀x∈ R,x∈]a−α;a +α[⇒f (x)∈]−∞ ;M [
+On déﬁnit de la même manière les limites à gauche ou à droite dea.
+x
+y
+1
+1
+0
+Déﬁnition 2.6.Quand lim
+x→a
+x>a
+f (x) ou lim
+x→a
+x<a
+f (x) ou lim
+x→a
+f (x) est inﬁnie on dit que la droite d’équationx =a
+est uneasymptote verticaleà la courbe représentativeC.
+2.2.2 Limite ﬁnie
+Déﬁnition 2.7.Soit l un réel.
+Dire que f (x) tend vers l quand x tend vers a signiﬁe que pour tout intervalle J contenantl, il existe un
+intervalle I contenanta tel que pour tout réel de I,f (x) appartient à J.
+Cela revient en écriture symbolique à :
+∀ϵ∈ R,ϵ> 0∃α∈ R,α> 0,∀x∈ R,x∈]a−α;a +α[⇒f (x)∈]l−ϵ;l +ϵ[
+2.3 Limites de référence
+∀n∈ N∗
+lim
+x→+∞
+xn = +∞ lim
+x→+∞
+√x = +∞
+Si n pair lim
+x→−∞
+xn = +∞ Si n impair lim
+x→−∞
+xn =−∞
+lim
+x→−∞
+1
+x = 0 lim
+x→+∞
+1
+x = 0
+lim
+x→−∞
+1
+xn = 0 lim
+x→−∞
+1
+xn = 0
+lim
+x→0
+x<0
+1
+xn =−∞ lim
+x→0
+x>0
+1
+xn = +∞
+lim
+x→−∞
+ex = 0 lim
+x→+∞
+ex = +∞
+lim
+x→0
+lnx =−∞ lim
+x→+∞
+lnx = +∞
+<<<PAGE>>>
+2.4 Opérations Algébriques
+2.4.1 Cas général
+Les théorèmes qui suivent, présentés sous forme de tableaux, permettent de connaître les limites des fonctionsf +g, fg,f
+g
+lorsque l’on connaît celle def et celle deg.
+Les limites des fonctionsf et g sont prises soit en+∞ soit en−∞, soit en un réela.
+l etl′ sont des nombres réels. Les cases barrées signalent les cas ou il n’y a pas de conclusion en général, on dit qu’il s’agit de
+formes indéterminées. Dans tous les autres cas, les résultats, quenous admettrons, sont intuitifs et faciles à retenir.
+Limite d’une somme
+Si f a pour limite l l l +∞ −∞ +∞
+et sig a pour limite l′ +∞ −∞ +∞ −∞ −∞
+alors f +g a pour limite l +l′ +∞ −∞ +∞ −∞ ?
+Limite d’un produit
+si f a pour limite l l> 0 l> 0 l< 0 l< 0 +∞ +∞ −∞ 0
+et sig a pour limite l′ +∞ −∞ +∞ −∞ +∞ −∞ −∞ +∞ ou −∞
+alors fg a pour limite ll′ +∞ −∞ −∞ +∞ +∞ −∞ +∞ ?
+Limite d’un quotient
+Cas où la limite d’un dénominateurg n’est pas nulle.
+si f a pour limite l l +∞ +∞ −∞ −∞ −∞ ou +∞
+et sig a pour limite l′⁄= 0 −∞ ou +∞ l′ > 0 l′ < 0 l′ > 0 l′ < 0 −∞ ou +∞
+alors f
+g a pour limite l
+l′ 0 +∞ −∞ −∞ +∞ ?
+<<<PAGE>>>
+Cas où la limite d’un dénominateurg est nulle.
+si f a pour limite l> 0 ou +∞ l> 0 ou +∞ l< 0 ou −∞ l< 0 ou −∞ 0
+et sig a pour limite 0 en restant 0 en restant 0 en restant 0 en restant 0
+positive négative positive négative
+alors f
+g a pour limite +∞ −∞ −∞ +∞ ?
+Etude des limites deA
+B
+B
+A
+−∞ m< 0 0 m> 0 +∞
+−∞ FI 0 0 0 FI
+l< 0 +∞ m
+l 0 m
+l −∞
+0 sgn sgn FI sgn sgn
+l> 0 −∞ m
+l 0 m
+l +∞
++∞ FI 0 0 0 FI
+sgn signiﬁe qu’il faut étudier le signe avant de conclure.
+FI signiﬁe forme indéterminée : il faut écrire l’expression
+diﬀéremment pour pouvoir conclure.
+2.4.2 Cas particuliers des formes indéterminées
+Les cas de formes indéterminées nécessiteront une étude particulière chaque fois qu’ils se présenteront. Ces cas sont au nombre
+de quatre :
+"∞−∞ " , "0×∞" , "∞
+∞" , "0
+0"
+Méthodes Comment lever une forme indéterminée :
+Dans les exercices qui suivent on admettra l’existence d’une limite.
+Le cas “∞
+∞”
+• On peut factoriser le numérateur et le dénominateur par le terme le plus “inﬂuent”.
+Exemple 2.4. Déterminer les limites (si elles existent) des expressions suivantes :
+1− 2x
+x− 5 en +∞.
+On a∀x∈ R∗, 1− 2x
+x− 5 =
+x
+( 1
+x− 2
+)
+x
+(
+1− 5
+x
+) =
+1
+x− 2
+1− 5
+x
+.
+Donc la limite est -2
+1−x3
+1 + 2x2 en +∞.
+On a∀x∈ R∗, 1−x3
+1 + 2x2 =
+x3
+(
+1− 1
+x3
+)
+x2
+( 1
+x2 + 2
+) =x
+1− 1
+x3
+1
+x2 + 2
+donc la limite est+∞
+Propriété 2.1. Soit une fonction polynôme P de monôme de plus haut degréaxn(a réels non nul,n un entier
+naturel)
+P admet en +∞ (respectivement en−∞) une limite qui est égale à la limite deaxn.
+<<<PAGE>>>
+Propriété 2.2.Soient R une fonction rationnelle d’ensemble de déﬁnition D et deux polynômes P et Q tels que
+∀x∈D,R (x) = P (x)
+Q(x).
+Sachant queP etQ admettent pour monômes de plus haut degré respectivementaxn etbxm (a,b réels non nuls,
+n,m deux entiers naturels).
+R admet en +∞ et−∞ une limite qui est égale à la limite de la fonction rationnelleaxn
+bxm.
+Remarque: Cette propriété ne s’applique qu’à un quotient de polynômes.
+Le cas "∞−∞ "
+• On peut factoriser par le terme le plus “inﬂuent”
+• Pour les expressions avec radicaux, on peut utiliser l’expression conjuguée (voir Section 4)
+Exemple 2.5. 3x5− 2x4 +x8 en−∞.
+3x5− 2x4 +x8 =x8
+( 3
+x3− 2 1
+x4 + 1
+)
+Le cas “0
+0”
+• Lorsqu’on prend la limite ena on peut factoriser(x−a) au numérateur et dénominateur, puis simpliﬁer.
+• Pour les expressions avec des radicaux, on peut utiliser l’expression conjuguée (voir Section 4)
+Exemple 2.6. x2− 2x + 1
+x2− 1 en 1.
+x2− 2x + 1
+x2− 1 = (x− 1)2
+(x + 1)(x− 1) = x− 1
+x + 1.
+x2−x
+−2x + 2 en 1.
+x2− 2x + 1
+x2− 1 = (x− 1)2
+−2(x− 1) = x
+−2.
+2.5 Théorème de comparaison
+l et l′ désignent deux réels.a est un réel ou+∞ ou−∞.
+Théorème 2.1. (théorème de comparaison) Soitf et g deux fonctions telles que pour toutx assez proche de
+a, f (x)≤g(x).
+Si lim
+x→a
+f (x) = l et lim
+x→a
+g(x) = l′ alors l≤l′.
+Théorème 2.2. Soit f et g deux fonctions telles que pour toutx assez proche dea, f (x)≤g(x).
+Si lim
+x→a
+f (x) = +∞ alors lim
+x→a
+g(x) = +∞.
+Si lim
+x→a
+g(x) =−∞ alors lim
+x→a
+f (x) =−∞.
+Exemple 2.7. lim
+x→+∞
+x cosx−x3
+On a∀x∈ R+,x cosx−x3 <x −x3. Donc comme lim
+x→+∞
+x−x3 =−∞, lim
+x→+∞
+x cosx−x3 =−∞
+Théorème 2.3. (Théorème des gendarmes)
+Soit f, g et h trois fonctions telles que pour toutx assez proche dea, f (x)≤g(x)≤h(x).
+Si f et h admettent une limite ena égale àl alors g admet une limite ena et lim
+x→a
+g(x) = l.
+Remarque 2.2. Ce théorème est souvent utiliser avec des limites utilisant des fonctions trigonométrique (sin, cos et tan)
+<<<PAGE>>>
+2.6 Limite d’une fonction composée ena
+Déﬁnition 2.8.Soit I et J deux intervalles.
+Soit g une fonction déﬁnie surJ et u une fonction déﬁnie surI telles que
+pour toutx de I, u(x) appartient à l’intervalleJ.
+La fonctionf déﬁnie pour tout élément deI par f :x↦→g(u(x)) est appelée "composée" deu suivi deg.
+Cela correspond au “montage” :x
+u
+→u(x) = U
+g
+→g(U ) = g(u(x))
+Remarque 2.3. On la noteg◦u.
+On considère les fonctionsg et u telles que leur composée existeg(u)
+Théorème 2.4.a, b csont des réels ou bien ils désignent+∞ ou−∞.
+Si lim
+x→a
+u(x) = b et que lim
+U→b
+g(U ) = c alors lim
+x→a
+g(u(x)) = c
+Exemple 2.8. On veut déterminer lim
+x→+∞
+√
+1
+x + 4
+On décomposex
+u
+→ 1
+x + 4 = U
+g
+→
+√
+U =
+√
+1
+x + 4
+On calcule les limites lim
+x→+∞
+1
+x + 4 = 4 et lim
+U→4
+√
+U = 2
+d’où par compositionlim
+x→+∞
+√
+1
+x + 4 = 2
+Formes indéterminées avec radicaux
+On utilise la propriété suivante :
+Propriété 2.3. Pour toutx∈ R+,
+√
+x2 =x et pour toutx∈ R−,
+√
+x2 =−x
+Déterminer les limites (si elles existent) des expressions suivantes.
+• x2
+√
+x2 + 2
+en +∞ et−∞.
+Si x positif, x2
+√
+x2 + 2
+= x2
+x
+(√
+1 + 2
+x
+) = x(√
+1 + 2
+x
+) donc la limite en+∞ est +∞
+Si x négatif, x2
+√
+x2 + 2
+= x2
+−x
+(√
+1 + 2
+x
+) =− x(√
+1 + 2
+x
+) donc la limite en−∞ est +∞
+•
+√
+x2 + 1− 2x en +∞
+•x−√x en−∞.
+•
+√
+x + 1−√x en +∞.
+•
+√
+4x2 + 1− 2x en +∞√
+x2 + 2− 2x + 3 en +∞ et en−∞.
+√
+x2 + 2−x en +∞.
+−x +√x
+x− 1 en 1.
+lim
+x→+∞
+√
+4x2 + 3x + 1− 2x = 3
+4
+Propriété 2.4. (Quelques limites à connaître)
+lim
+x→0
+sinx
+x = 1 lim
+x→0
+ex− 1
+x = 1 lim
+x→0
+ln(x + 1)
+x = 1
+<<<PAGE>>>
+3 Continuité d’une fonction
+3.1 Déﬁnition et premières propriétés
+Déﬁnition 3.1.Soit a un réel, soit une fonctionf déﬁnie sur un intervalle I contenanta.
+• f est continue ena quand lim
+x→a
+f (x) = f (a)
+• f est continue sur un intervalle I lorsquef est continue pour touta de I.
+Remarque 3.1. Lorsque la courbe représentative def se trace sans lever le crayon (ne présente pas de saut)f est continue
+sur I.
+3.2 Continuité et opérations
+Propriété 3.1. (admise)
+Les fonctions de référence sont continues sur chaque intervalle de leur ensemble de déﬁnition.
+Les sommes, produits, quotients ou composées des fonctions continues sont continues sur chaque intervalle de
+leur ensemble de déﬁnition.
+En particulier, les fonctions polynômes et les fonctions rationnelles sont continues sur chaque intervalle de leur
+ensemble de déﬁnition.
+3.3 Le théorème des valeurs intermédiaires
+x
+y
+k
+x
+y
+k
+x
+y
+k
+Fonctions continue monotone Fonction continue Fonction discontinue
+Théorème 3.1. (Théorème des valeurs intermédiaires)
+Soit f une fonction déﬁnie et continue sur un intervalle[a;b].
+Pour tout réelk compris entref (a) et f (b), il existe au moins un réelc compris entrea et b tel quef (c) = k.
+Remarque 3.2. Ce théorème peut être démontré à l’aide des suites adjacentes.
+Propriété 3.2. (image d’un intervalle par une fonction continue)
+Soit f un fonction déﬁnie et continue sur un intervalle[a;b].
+L’image d’un intervalle est un intervalle.
+Théorème 3.2. Soit f une fonction continue et strictement monotonesur [a;b].
+Pour tout réelk compris entref (a) et f (b), l’équationf (x) = k admet une solution unique dans[a;b] (il existe
+un unique réelc dans [a;b] tel quef (c) = k).
+<<<PAGE>>>
+x a c b
+var. de x↦→f
+f (a)
+k
+f (b)
+x a c b
+var. de x↦→f
+f (a)
+k
+f (b)
+Fonctions croissante Fonctions décroissante
+Remarque 3.3.Extension du théorème : on admet que ces théorèmes restent vrais pour tout type d’intervalle (ﬁni ou inﬁni,
+ouvert ou semi-ouvert) en remplaçant les images par les limites.
+Exemple 3.1. Soit f (x) = x3− 12x déﬁnie surR. Son tableau de variations est donné ci-dessous.
+x −∞ −2 2 +∞
+Variations de f (x)
+−∞
+16
+-16
++∞
+Déterminer le nombre de solutions def (x) =−1; def (x) = k
+pour k< −16 une solution;
+k =−16 deux solutions;
+pour−16<k< 16 trois solutions;
+pour k = 16 deux solutions;
+pour 16<k une solution;
+4 Dérivation
+4.1 Généralités
+Déﬁnition 4.1.Soit une fonctionf déﬁnie sur un intervalle contenanta.
+On dit quef dérivable ena quand le taux de variationf (x)−f (a)
+x−a admet une limite ena. Le nombre dérivée
+est la limite de ce taux et est notéf′(a)
+f′(a) = lim
+x→a
+f (x)−f (a)
+x−a
+ou bien
+f′(a) = lim
+h→0
+f (a +h)−f (a)
+h
+Exemple 4.1. Démontrer que la fonction inverse est dérivable en 2.
+Propriété 4.1. Le nombre dérivéf′(a) est le coeﬃcient directeur de la tangente.
+L’équation de cette tangente est donc
+y =f′(a)(x−a) +f (a)
+Exemple 4.2. Déterminer l’équation de la tangente à la courbe représentative de la fonction inverse au point
+d’abscisse 2.
+Déﬁnition 4.2.Une fonctionf est dérivable sur un intervalle I lorsqu’elle est dérivable en tout point de I.
+Dans ce cas on appelle dérivé la fonctionx↦→f′(x)
+<<<PAGE>>>
+Exemple 4.3. Soit la fonctionf :x↦→x2 + 2x− 3. Déterminerf′(x) et f′′(x)
+4.2 Opérations algébriques
+Théorème 4.1. Soit u et v deux fonctions dérivables sur un intervalleI et k un réel.
+Les fonctionsu +v, ku et uv sont dérivables surI.
+Si v ne s’annule pas surI alors les fonctions 1
+v et u
+v sont dérivables surI.
+On a alors :
+(u +v)′ =u′ +v′
+(uv)′ =u′v +uv′ et (ku)′ =ku′
+(u
+v
+)′
+= u′v−uv′
+v2 et
+( 1
+v
+)′
+=−v′
+v2
+4.3 Formules de calculs des dérivées
+Tableau des fonctions dérivées pour les
+fonctions de référence
+Fonctionf D f Fonctionf′ D′
+f
+f (x) = k R f′(x) = 0 R
+f (x) = x R f′(x) = 1 R
+f (x) = x2 R f′(x) = 2x R
+f (x) = xn (n∈ N∗) R f′(x) = nxn−1 R
+f (x) = xn (n∈ Z−∗) R∗ f′(x) = nxn−1 R∗
+f (x) = 1
+x R∗ f′(x) =− 1
+x2 R∗
+f (x) =√x R+ f′(x) = 1
+2√x R∗
++
+f (x) = sin(x) R f′(x) = cos(x) R
+f (x) = cos(x) R f′(x) =− sin(x) R
+f (x) = ex R f′(x) = ex R
+f (x) = ln(x) R+∗
+f′(x) = 1
+x R+∗
+Tableau de dérivation des fonctions composées
+Soit u une fonction déﬁnie et dérivable sur un intervalleI
+Fonctionf
+conditions
+d’existence
+de f
+Fonctionf′
+conditions
+d’existence
+de f′
+f =u2 f′ = 2uu′
+f (x) = un (n∈ N∗) f′(x) = nun−1u′
+f = 1
+u u(x)⁄= 0 f′ =−u′
+u2 u(x)⁄= 0
+f =un (n∈ Z−∗) u(x)⁄= 0 f′ =nun−1u′ u(x)⁄= 0
+f =√u u (x)≥ 0 f′ = u′
+2√u u(x)> 0
+f = sin(u) f′ = cos(u)u′
+f = cos(u) f′ =− sin(u)u′
+f =eu f′ =euu′
+f = lnu f′ = u′
+u
+Propriété 4.2. Toute fonction polynôme est dérivable surR.
+Toute fonction rationnelle est dérivable sur tout intervalle de son ensemble de déﬁnition.
+Remarque 4.1. Chacune de ces formules se démontre en déterminant la limite du taux de variation enx. Voir par exemple
+la démonstration de la formule pour la fonction sinus.
+<<<PAGE>>>
+4.4 Dérivée d’une fonction composée
+Théorème 4.2. (admis) Soitu une fonction dérivable sur un intervalleI et g une fonction dérivable en tout
+réel u(x) avecx∈I.
+Alors la fonctionf :x↦→g(u(x)) est dérivable surI et, pour toutx de I
+f′(x) = g′(u(x))u′(x)
+Propriété 4.3. Soita etb deux réels, soitf une fonction déﬁnie sur un intervalle I, soit J un intervalle tel que
+∀x∈J,ax +b∈I. La fonctiong :x↦→f (ax +b) est dérivable et
+g′(x) = af′(ax +b)
+4.5 Lien entre fonction et dérivée
+Soit f une fonction dérivable sur un intervalleI.
+Théorème 4.3. Signe de la dérivée et sens de variations de la fonction
+• f est constante surI si et seulement sif′ est nulle surI.
+•Sif′ est strictement positive surI, à l’exception d’un nombre ﬁni de réels où elle s’annule alorsf est strictement
+croissante surI.
+• Si f′ est strictement négative sur I, à l’exception d’un nombre ﬁni de réels où elle s’annule alorsf est
+strictement décroissante surI.
+Théorème 4.4. Zéro de la dérivée et extremum local de la fonction
+• Si f admet un extremum local ena alors f′(a) = 0
+• Si f′ s’annule ena en changeant de signe alorsf admet un extremum local ena.
+Propriété 4.4. Toute fonction dont la dérivée est nulle sur un intervalle est constante.
+5 Fonctions Sinus et Cosinus
+5.1 Rappel : Repérage sur le cercle
+5.1.1 Déﬁnitions
+Soit un repère (O,− →i ,− →j ) .
+Soit I le point de coordonnées (1,0).
+Soit D la droite passant par I parallèle à l’axe des ordonnées, munie du repère
+(I,− →j ).
+Soit C le cercle de centre O et de rayon 1.
+A tout réelx, on associe le point N d’abscissex sur la droiteD.
+Lorsque l’on “enroule” la droite sur le cercle (dans le sens inverse des aiguilles
+d’une montre), le point N coïncide avec un point M situé sur le cercleC.
+On a donc déﬁni un repère sur le cercleC dont l’origine est I. L’abscisse d’un
+point dans ce repère est appeléeabscisse curviligne.
+M
+N
+− →i
+− →j
+O
+I
+J
+C D
+Déﬁnition 5.1.Le cercle C de centre O, de rayon 1 muni d’un tel repère est appelé le cercle trigonométrique.
+<<<PAGE>>>
+Propriété 5.1. Tout point du cercle est reperé de manière unique par un réel compris dans l’intervalle]−π;π]
+(ou dans tout intervalle d’amplitude2π).
+Remarque 5.1. Un point du cercle peut être repéré avec une inﬁnité de réels : si un point M du cercle est associé au réel
+x, il est aussi associé à l’ensemble des réels de la formex + 2kπ où k est entier.
+Exemple 5.1. Le point associé au réelπ
+4 est aussi associé aux réels9π
+4 , 17π
+4 ,− 7π
+4 .
+Déﬁnition 5.2.
+Le radian est la mesure de l’angle du secteur d’un cercle tel que
+la longueur de l’arc est égale au rayon.
+On note un angle en radian «1 rad» ou «1» (sans unité).
+1
+1 1
+1 rad
+Remarque 5.2. Sur le cercle trigonométrique, la longueur de l’arc et la mesure de l’angle en radian coïncident.
+Remarque 5.3. Un angle de mesure 360° (degrés) correspond à un angle de mesure2π radians puisque le périmètre d’un
+cercle de rayon 1 est2π.
+Propriété 5.2. Les mesures des angles en degrés et les mesures des angles en radians sont proportionnelles
+avec un facteur de proportionnalité deπ
+180.
+Angle exprimé en degré⇒ en radian : multiplier parπ
+180.
+Angle exprimé en radian⇒ en degré : multiplier par180
+π .
+Remarque 5.4. Intérêt des radians.
+Si l’on souhaite calculer la longueur d’un arc de cercle correspondant à un secteur de 86 degrés. On construit le tableau de
+proportionnalité suivant : 360 86
+2πR l
+On en déduit quel = 2π
+360 86R or α = 2π
+360 86 est la mesure de l’angle en radian doncl =αR.
+Correspondance Degrés - Radians
+degrés 0 30 45 60 90 180
+radians 0 π
+6
+π
+4
+π
+3
+π
+2 π
+<<<PAGE>>>
+5.1.2 Position des angles remarquables sur le cercle trigonométrique.
+I
+π
+2
+π
+3π
+2
+0 ou 2π
+π
+6
+π
+3
+2π
+3
+5π
+6
+7π
+6
+4π
+3
+5π
+3
+11π
+6
+π
+4
+3π
+4
+5π
+4
+7π
+4
+I
+π
+2
+π
+−π
+2
+0 ou 2π
+−5π
+6
+−2π
+3 −π
+3
+−π
+6
+π
+6
+π
+3
+2π
+3
+5π
+6
+−3π
+4
+−π
+4
+π
+4
+3π
+4
+Exercice 5.1. Placer sur le cercle trigonométrique les angles suivants :
+5π,− 5π
+2 , 11π
+3 ,− 11π
+4 , 13π
+4 , 13π
+6 ,− 5π
+3 ,−534π,− 99π
+2
+5.2 Déﬁnition de sinus et cosinus
+Déﬁnition 5.3.A tout réelx, on associe le point M repéré parx sur
+le cercle trigonométrique.
+L’abscisse de ce point dans le repère (O,− →i ,− →j ) est appelé cosinus dex
+(notécos(x)), l’ordonnée de ce point est appelé sinus dex(notésin(x)).
+On peut donc déﬁnir deux fonctions :x↦→cos(x), y↦→sin(x).
+Remarque: Pour 0≤ x≤ π
+2, les fonctions cosinus et sinus correspondent aux
+notions rencontrées en troisième.
+J
+J’
+A
+H
+O
+M
+cosα
+sinα tanα
+Propriété 5.3. Quelques valeurs des sinus et cosinus.
+x 0 π
+6
+π
+4
+π
+3
+π
+2 π
+cos(x) 1
+√
+3
+2
+√
+2
+2
+1
+2 0 -1
+sin(x) 0 1
+2
+√
+2
+2
+√
+3
+2 1 0
+5.3 Formules Trigonométriques
+Propriété 5.4. Les fonctions sinus et cosinus sont telles que pour tout réelx,
+cos2(x) + sin2(x) = 1
+Cette relation est connue sous le nom de "relation fondamentale de la trigonométrie".
+<<<PAGE>>>
+Propriété 5.5. Pour tout réelx
+cos (x + 2π) = cosx sin (x + 2π) = sin x
+cos (x +π) =− cosx sin (x +π) =− sinx
+cos (−x) = cosx sin(−x) =− sinx
+cos (π−x) =− cosx sin (π−x) = sin x
+cos
+(π
+2−x
+)
+= sinx sin
+(π
+2−x
+)
+= cosx
+cos
+(π
+2 +x
+)
+=− sinx sin
+(π
+2 +x
+)
+= cosx
+5.4 Fonctions Trigonométriques
+5.4.1 Déﬁnitions
+Déﬁnition 5.4.A tout réelx, on peut associer le sinus dex en radian. La fonction correspondante s’appelle la
+fonction sinus et est notéesin.
+Déﬁnition 5.5.A tout réelx, on peut associer le cosinus dex en radian. La fonction correspondante s’appelle
+la fonction cosinus et est notéecos.
+5.4.2 Propriété
+Déﬁnition 5.6.(Rappel)
+Soit un réelT. Une fonctionf déﬁnie surR est périodique, s’il existe un réelT tel que pour toutx de R,
+f (x +T ) = f (x).
+La période T d’une fonction périodique est le plus petit réel non nul qui vériﬁe la propriété.
+T =min{T∈ R,∀x∈R,f (x +T ) = f (x)}
+Propriété 5.6. Fonction cosinus
+— La fonction cosinus est paire.
+— La fonction cosinus (x↦→cos(x)) est une fonction périodique de période2π.
+— Pour tout réelx,−1≤cos(x)≤ 1.
+x
+y
+1
+1
+0 π
+2−π
+2
+π−π 2π−2π 3π
+2− 3π
+2
+Propriété 5.7. Fonction sinus
+— La fonction sinus est impaire.
+— La fonction sinus (x↦→sin(x)) est une fonction périodique de période2π.
+— Pour tout réelx,−1≤sin(x)≤ 1.
+<<<PAGE>>>
+x
+y
+1
+1
+0 π
+2−π
+2
+π−π 2π−2π 3π
+2− 3π
+2
+Les fonctions sin et cos n’admettent pas de limite en+∞ ou−∞
+x
+y
+1
+1
+0 π
+2−π
+2
+π−π 2π−2π 3π
+2− 3π
+2
+5.4.3 Représentation graphique des fonctions trigonométriques
+Déﬁnition 5.7.Soit une fonctionf déﬁnie surDf une partie deR
+• La fonctionf est ditepaire lorsque :
+- Pour toutx de Df,−x appartient àDf.
+- Pour toutx de Df, f (−x) = f (x).
+• La fonctionf est diteimpaire lorsque :
+- Pour toutx de Df,−x appartient àDf.
+- Pour toutx de Df, f (−x) =−f (x).
+Théorème 5.1. Une fonction est pairessi sa représentation graphique dans un repère orthonormé(O,⃗i,⃗j)
+admet l’axeOx pour axe de symétrie.
+Une fonction est impairessi sa représentation graphique dans un repère quelconque(O,⃗i,⃗j) admet l’axeO pour
+centre de symétrie.
+Exemple 5.2. La fonction carré est paire.
+La fonction inverse est impaire.
+x
+y
+-4 -3 -2 -1 0 1 2 3 40
+1
+2
+3
+4
+5
+6
+7
+8
+9
+M (x, f (x))M (−x, f (−x))
+x−x
+x
+y
+-3 -2 -1 0 1 2 3
+-3
+-2
+-1
+0
+1
+2
+M (x, f (x))
+M (−x, f (−x))
+f (x)
+f (−x)
+x−x

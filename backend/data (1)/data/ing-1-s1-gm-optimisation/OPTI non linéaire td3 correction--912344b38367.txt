@@ -1,0 +1,477 @@
+Correction Complète TD3
+Optimisation avec contraintes d’égalité et d’inégalité
+CY Tech - 1ère année Ingénieurs
+Année 2024-2025
+Table des matières
+1
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+1 Exercice 1 : Géométrie différentielle et optimisa-
+tion
+Rappel de Cours
+Plan tangent à une surface :
+Pour une surface S définie par F (x,y,z ) = 0 , le plan tangent en un point
+P0 = (x0,y 0,z 0) est donné par :
+∇F (P0)· (P−P0) = 0
+Pour une courbe paramétréeγ(t) passant parP0 (avecγ(t0) = P0), le vecteur
+tangent estγ′(t0).
+Le plan tangent est engendré par tous les vecteurs tangents aux courbes passant
+par P0.
+Données :
+— S ={(x,y,z )∈ R3 :x2 +y2 +z2 = 1} (sphère unité)
+— H ={(x,y,z )∈ R3 :x2 +y2 +z2 = 1 et x +y = 0} (grand cercle)
+— γ1(t) = (sin(t), 0, cos(t)) pour t∈ (−π
+2, π
+2 )
+— γ2(t) = (0, sin(t), cos(t)) pour t∈ (−π
+2, π
+2 )
+— N = (0, 0, 1) (pôle Nord)
+Question 1 : Représentations graphiques
+Les courbesγ1 et γ2 sont deux demi-grands cercles sur la sphère :
+— γ1 : méridien dans le plan(x,z ) (avecy = 0)
+— γ2 : méridien dans le plan(y,z ) (avecx = 0)
+Les deux courbes passent par le pointN = (0, 0, 1) (obtenu pourt = 0).
+Question 2 : Plan tangent àS au pointN
+Méthode 1 : Par les courbes paramétréesCalculons les vecteurs tangents :
+γ′
+1(t) = (cos(t), 0,− sin(t)) =⇒ γ′
+1(0) = (1, 0, 0)
+γ′
+2(t) = (0, cos(t),− sin(t)) =⇒ γ′
+2(0) = (0, 1, 0)
+Les deux vecteurs tangents sont(1, 0, 0) et (0, 1, 0). Ils sont linéairement indépendants
+et orthogonaux.
+Le plan tangent enN est engendré par ces deux vecteurs :
+TN (S) = Vect{(1, 0, 0), (0, 1, 0)} ={(x,y, 0) : x,y∈ R}
+C’est le plan horizontalz = 1 (décalé au pointN), ou en coordonnées relatives :z = 0.
+2
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+Méthode 2 : Par l’équation cartésiennePosonsF (x,y,z ) = x2 +y2 +z2− 1. Alors :
+∇F (x,y,z ) = (2x, 2y, 2z) =⇒ ∇F (N ) = (0, 0, 2)
+L’équation du plan tangent enN = (0, 0, 1) est :
+∇F (N )·
+
+
+x− 0
+y− 0
+z− 1
+
+ = 0 ⇐⇒ 2(z− 1) = 0 ⇐⇒ z = 1
+Ou en coordonnées relatives àN : z = 0 (plan horizontal).
+Question 3 : Représentation deH
+H est l’intersection de la sphèreS et du planx +y = 0 (soit y =−x).
+C’est un grand cercle de la sphère. En substituanty = −x dans l’équation de la
+sphère :
+x2 + (−x)2 +z2 = 1 ⇐⇒ 2x2 +z2 = 1
+C’est une ellipse de demi-axes 1√
+2 (en x) et 1 (en z), située dans le plany =−x.
+Question 4 : Espace tangent àH au pointN
+Méthode 1 : Par une courbe paramétréeCherchons une courbe dansH passant
+par N.
+Paramétrisation deH : avecy =−x et 2x2 +z2 = 1, posonsx = 1√
+2 sin(t),z = cos(t) :
+γ(t) =
+(
+1√
+2 sin(t),− 1√
+2 sin(t), cos(t)
+)
+Pourt = 0 : γ(0) = (0, 0, 1) = N
+Vecteur tangent :
+γ′(t) =
+(
+1√
+2 cos(t),− 1√
+2 cos(t),− sin(t)
+)
+γ′(0) =
+(
+1√
+2,− 1√
+2, 0
+)
+L’espace tangent àH en N est la droite engendrée par ce vecteur :
+TN (H) = Vect
+{(
+1√
+2,− 1√
+2, 0
+)}
+= Vect{(1,−1, 0)}
+Méthode 2 : Par les équations cartésiennesH est définie par deux contraintes :
+h1(x,y,z ) = x2 +y2 +z2− 1 = 0
+h2(x,y,z ) = x +y = 0
+Gradients :
+∇h1(N ) = (0, 0, 2), ∇h2(N ) = (1, 1, 0)
+3
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+L’espace tangent est le noyau de la matrice Jacobienne :
+∇h(N ) =
+(
+0 0 2
+1 1 0
+)
+On cherchev = (v1,v 2,v 3) tel que :
+
+
+
+2v3 = 0
+v1 +v2 = 0 ⇐⇒
+
+
+
+v3 = 0
+v2 =−v1
+Donc :v =v1(1,−1, 0).
+TN (H) = Vect{(1,−1, 0)}
+Question 5 : Optima deh(x,y,z ) = z sur H
+Méthode
+On minimise/maximisez sous les contraintesx2 +y2 +z2 = 1 et x +y = 0.
+Lagrangien :
+L(x,y,z,λ 1,λ 2) = z +λ1(x2 +y2 +z2− 1) +λ2(x +y)
+Conditions de stationnarité :
+∂L
+∂x = 2λ1x +λ2 = 0 (1)
+∂L
+∂y = 2λ1y +λ2 = 0 (2)
+∂L
+∂z = 1 + 2λ1z = 0 (3)
+De (1) et (2) :2λ1x = 2λ1y =⇒ x =y (si λ1̸= 0).
+Mais la contrainte imposex +y = 0, doncx =y =⇒ 2x = 0 =⇒ x = 0.
+Donc :x =y = 0.
+De la contrainte sphérique :0 + 0 +z2 = 1 =⇒ z =±1.
+De (3) :λ1 =− 1
+2z.
+Points critiques :
+— (0, 0, 1) : z = 1 (maximum)
+— (0, 0,−1) : z =−1 (minimum)
+Résultat
+Maximum : (0, 0, 1) avech = 1
+Minimum : (0, 0,−1) avech =−1
+4
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+Question 6 : Optima deg(x,y,z ) = z2 sur S
+Lagrangien :
+L(x,y,z,λ ) = z2 +λ(x2 +y2 +z2− 1)
+Conditions :
+∂L
+∂x = 2λx = 0
+∂L
+∂y = 2λy = 0
+∂L
+∂z = 2z + 2λz = 0
+Cas 1 :λ = 0 =⇒ de la 3ème équation :z = 0.
+De la contrainte :x2 +y2 = 1.
+Points : cercle équatorial{(x,y, 0) : x2 +y2 = 1} avecg = 0.
+Cas 2 :λ̸= 0 =⇒ x =y = 0 et 2z(1 +λ) = 0.
+Si z̸= 0 : λ =−1 et z2 = 1 =⇒ z =±1.
+Points : (0, 0, 1) et (0, 0,−1) avecg = 1.
+Résultat
+Minimum : cercle équatorial(x,y, 0) avecgmin = 0
+Maximum : pôles(0, 0,±1) avecgmax = 1
+5
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+2 Exercice 2 : Projection sur un hyperplan
+Énoncé : Calculer la distance d’un pointx0∈ Rn au plan défini parAx = b, où
+A∈M p×n(R) et Rang(A) = p.
+Méthode
+On minimise la distance au carré :min 1
+2∥x−x0∥2 sous Ax =b.
+Lagrangien :
+L(x,λ ) = 1
+2 (x−x0)T (x−x0) +λT (Ax−b)
+Condition de stationnarité :
+∇xL =x−x0 +ATλ = 0 =⇒ x =x0−ATλ
+Injection dans la contrainte :
+Ax =b =⇒ A(x0−ATλ) = b =⇒ Ax0−AATλ =b
+Comme Rang(A) = p, la matriceAAT∈M p×p(R) est inversible :
+λ = (AAT )−1(Ax0−b)
+Projection orthogonale :
+x∗ =x0−AT (AAT )−1(Ax0−b)
+Distance au plan :
+d(x0,Plan) =∥x∗−x0∥ =
+‖‖‖AT (AAT )−1(Ax0−b)
+‖‖‖
+=
+√
+(Ax0−b)T (AAT )−1(Ax0−b)
+3 Exercice 3 : Condition nécessaire du second ordre
+Théorème :Voir Exercice 3 de la correction TD3-bis (identique).
+La démonstration repose sur :
+1. L’unicité de λ découle de la régularité du point (indépendance linéaire des gra-
+dients).
+2. La positivité de la forme quadratique provient de l’analyse des variations secondes
+le long des courbes admissibles.
+6
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+4 Exercice 4 : Méthodes de substitution et Lagrange
+Problème (P1)
+Énoncé :
+
+
+
+Optimiser f (x1,x 2,x 3,x 4) = 2x1− 2x2
+1− 5x2
+2−x2
+3 + 4x3 + 4x4
+sous
+
+
+
+x4− 2x2 = 2
+x3−x1 = 1
+Solution :Voir correction TD3-bis (identique).
+x∗ =
+(2
+3, 4
+5, 5
+3, 18
+5
+)
+(maximum)
+Problème (P2) - renommé (P1) dans l’énoncé
+Énoncé :
+
+
+
+Optimiser f (x1,x 2,x 3,x 4) =−x2
+1−x2
+2−x2
+3 + 4x1 + 6x2 + 4x3 + 2x4
+sous
+
+
+
+x4− 2x2 = 0
+x3−x1 = 1
+Solution :Voir correction TD3-bis.
+x∗ =
+(3
+2, 5, 5
+2, 10
+)
+avecfmax = 65
+2
+7
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+5 Exercice 5 : Optimisation avec contraintes d’inéga-
+lité
+Énoncé : 
+
+
+Minimiser f (x1,x 2,x 3) = x2
+1−x2
+2 +x2
+3− 2x1x2
+sous
+
+
+
+g1(x) = x2
+1 +x2
+2 +x2
+3− 1≤ 0
+g2(x) = x1 +x2− 1≤ 0
+Question 1 : Lagrangien
+L(x,µ ) = x2
+1−x2
+2 +x2
+3− 2x1x2 +µ1(x2
+1 +x2
+2 +x2
+3− 1) +µ2(x1 +x2− 1)
+Question 2 : Points réguliers
+PointP1 = (0, 0, 0) Vérification de l’admissibilité :
+g1(P1) = 0 + 0 + 0− 1 =−1< 0 (inactive)
+g2(P1) = 0 + 0− 1 =−1< 0 (inactive)
+Aucune contrainte active =⇒ P1 est régulier.
+Le plan tangent est toutR3 (aucune restriction).
+PointP2 = (0, 1, 0) Vérification :
+g1(P2) = 0 + 1 + 0− 1 = 0 (active)
+g2(P2) = 0 + 1− 1 = 0 (active)
+Gradients :
+∇g1(x) = (2x1, 2x2, 2x3) =⇒ ∇g1(P2) = (0, 2, 0)
+∇g2(x) = (1, 1, 0) =⇒ ∇g2(P2) = (1, 1, 0)
+Ces deux vecteurs sont linéairement indépendants=⇒ P2 est régulier.
+Plan tangent :T (P2) ={v :∇g1(P2)·v≤ 0 et∇g2(P2)·v≤ 0}
+T (P2) ={(v1,v 2,v 3) : 2v2≤ 0 et v1 +v2≤ 0} ={v :v2≤ 0 et v1≤−v2}
+Question 3 : Conditions de KKT
+Rappel de Cours
+Conditions de Karush-Kuhn-Tucker :
+1. Stationnarité :∇f (x) +∑
+iµi∇gi(x) = 0
+2. Admissibilité primale :gi(x)≤ 0 pour touti
+3. Admissibilité duale :µi≥ 0 pour touti
+8
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+4. Écart complémentaire :µigi(x) = 0 pour touti
+Pour notre problème :
+∇f (x) = (2x1− 2x2,−2x1− 2x2, 2x3)
+Système KKT :
+2x1− 2x2 + 2µ1x1 +µ2 = 0 (1)
+−2x1− 2x2 + 2µ1x2 +µ2 = 0 (2)
+2x3 + 2µ1x3 = 0 (3)
+µ1(x2
+1 +x2
+2 +x2
+3− 1) = 0 (4)
+µ2(x1 +x2− 1) = 0 (5)
+x2
+1 +x2
+2 +x2
+3≤ 1 (6)
+x1 +x2≤ 1 (7)
+µ1,µ 2≥ 0 (8)
+Question 4 : Tous les points KKT
+Méthode
+On examine tous les cas selon les contraintes actives : (I,I), (I,A), (A,I), (A,A) où
+I=inactive, A=active.
+Cas 1 :µ1 = 0,µ 2 = 0 (aucune contrainte active) Système :
+2x1− 2x2 = 0 =⇒ x1 =x2
+−2x1− 2x2 = 0 =⇒ x1 =−x2
+2x3 = 0 =⇒ x3 = 0
+De x1 =x2 et x1 =−x2 : x1 = 0. Donc (0, 0, 0).
+Vérification des contraintes :
+— g1 =−1< 0
+— g2 =−1< 0
+Point candidat : (0, 0, 0)
+Cas 2 :µ1 = 0,µ 2 > 0 (seule g2 active) De (5) :x1 +x2 = 1.
+Système :
+2x1− 2x2 +µ2 = 0
+−2x1− 2x2 +µ2 = 0
+2x3 = 0 =⇒ x3 = 0
+Soustraction des deux premières :4x1 = 0 =⇒ x1 = 0.
+Donc x2 = 1 et µ2 =−2x1 + 2x2 = 2 > 0
+Vérificationg1 = 0 + 1 + 0 − 1 = 0 : la contrainteg1 est aussi active! Contradiction
+avecµ1 = 0.
+Ce cas ne donne pas de solution valide.
+9
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+Cas 3 :µ1 > 0,µ 2 = 0 (seule g1 active) De (4) :x2
+1 +x2
+2 +x2
+3 = 1.
+De (3) :2x3(1 +µ1) = 0 =⇒ x3 = 0 (car µ1 > 0).
+Donc x2
+1 +x2
+2 = 1.
+Système :
+2x1(1 +µ1)− 2x2 = 0 (a)
+−2x1 + 2x2(1−µ1) = 0 (b)
+De (a) :x2 =x1(1 +µ1)
+De (b) :x1 =x2(1−µ1)
+Substitution :x2 =x2(1−µ1)(1 +µ1) = x2(1−µ2
+1)
+Si x2̸= 0 : 1 = 1−µ2
+1 =⇒ µ1 = 0. Contradiction.
+Donc x2 = 0 =⇒ x1 = 0. Mais alorsx2
+3 = 1, et de (7) :0≤ 1
+Points : (0, 0,±1).
+De (a) avecx2 = 0 : toujours vérifié.
+Calcul deµ1 : on utilise (a) ou (b) qui sont automatiquement vérifiées.
+En fait, pourx1 =x2 = 0, les équations (1) et (2) deviennent :
+µ2 = 0 (déjà supposé)
+µ2 = 0
+µ1 peut être quelconque> 0. Vérifions avec une valeur : prenonsµ1 = 1.
+Points candidats : (0, 0, 1) et (0, 0,−1) avecµ1 > 0 arbitraire.
+Cas 4 :µ1 > 0,µ 2 > 0 (les deux contraintes actives)
+x2
+1 +x2
+2 +x2
+3 = 1
+x1 +x2 = 1
+De (3) :x3 = 0 (car µ1 > 0).
+Donc :x2
+1 +x2
+2 = 1 et x1 +x2 = 1.
+De x2 = 1−x1 : x2
+1 + (1−x1)2 = 1
+2x2
+1− 2x1 + 1 = 1 =⇒ 2x2
+1− 2x1 = 0 =⇒ x1(x1− 1) = 0
+Solutions :x1 = 0 ou x1 = 1.
+— x1 = 0 =⇒ x2 = 1 : point (0, 1, 0)
+— x1 = 1 =⇒ x2 = 0 : point (1, 0, 0)
+Calculons les multiplicateurs pour(0, 1, 0) :
+De (1) :−2 +µ2 = 0 =⇒ µ2 = 2
+De (2) :−2 + 2µ1 +µ2 = 0 =⇒ µ1 = 2−µ2
+2 = 0
+Contradiction :µ1 > 0 requis. (0, 1, 0) ne satisfait pas KKT dans ce cas.
+Pour (1, 0, 0) :
+De (1) :2 + 2µ1 +µ2 = 0 =⇒ µ2 =−2− 2µ1 < 0
+Contradiction avecµ2≥ 0. (1, 0, 0) ne satisfait pas non plus.
+Conclusion du Cas 4 :Aucun point valide.
+10
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+Question 5 : Résolution du problème
+Points candidats KKT :
+— P1 = (0, 0, 0)
+— P2 = (0, 0, 1)
+— P3 = (0, 0,−1)
+Calculons f en ces points :
+f (P1) = 0
+f (P2) = 0− 0 + 1− 0 = 1
+f (P3) = 0− 0 + 1− 0 = 1
+Résultat
+Minimum global :(0, 0, 0) avecfmin = 0
+Note : On peut vérifier la condition du second ordre pour confirmer.
+11
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+6 Exercice 6 : Application des conditions KKT
+Énoncé :Identique à l’Exercice 7 du TD3-bis.
+Solution complète :Voir correction TD3-bis, Exercice 7.
+Résultat
+Le pointy = (−1,−1) satisfait les conditions KKT avecµ1 = 0, µ2 = 8.
+La condition suffisante du second ordre est vérifiée.
+y = (−1,−1) est un minimum local strict
+12
+<<<PAGE>>>
+Optimisation Non Linéaire - TD3 Génie Mathématique - ING1
+A Récapitulatif des formules essentielles
+Géométrie différentielle
+— Surface implicite :S ={P :F (P ) = 0}
+— Plan tangent :∇F (P0)· (P−P0) = 0
+— Courbe paramétrée :Vecteur tangent =γ′(t0)
+— Intersection de surfaces :T (P0) = Ker(∇h(P0))
+Optimisation avec égalités
+— Lagrangien :L(x,λ ) = f (x) +λTh(x)
+— CN1 :∇xL = 0 et h(x) = 0
+— Cône tangent :T (x∗) ={y :∇h(x∗)Ty = 0}
+— CS2 :yT∇2
+xxLy >0 pour touty∈T (x∗), y̸= 0
+Optimisation avec inégalités (KKT)
+— Lagrangien :L(x,µ ) = f (x) +∑
+iµigi(x)
+— Stationnarité :∇f (x) +∑
+iµi∇gi(x) = 0
+— Admissibilité :gi(x)≤ 0 et µi≥ 0
+— Écart complémentaire :µigi(x) = 0
+— Cône tangent :T (x∗) ={y :∇gi(x∗)Ty≤ 0 si gi(x∗) = 0}
+— CS2 :yT∇2
+xxLy >0 pour touty∈T (x∗), y̸= 0
+B Méthodologie générale
+1. Identifier le type de problème: sans contraintes, égalités, inégalités
+2. Écrire le Lagrangienavec les bons multiplicateurs
+3. Cas avec inégalités: explorer tous les cas selon les contraintes actives
+4. Résoudre le systèmede conditions nécessaires
+5. Vérifier l’admissibilitéde chaque candidat
+6. Comparer les valeurspour identifier l’optimum global
+7. Vérifier CS2si demandé (nature locale)
+Attention
+Pièges classiques :
+— Oublier de vérifier l’admissibilité (contraintes satisfaites)
+— Ne pas explorer tous les cas de contraintes actives/inactives
+— Confondre gradient et Hessienne
+— Oublier les conditionsµi≥ 0 et µigi(x) = 0
+13

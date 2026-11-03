@@ -1,0 +1,416 @@
+Département de Mathématiques
+Année universitaire 2021-2022
+CYTECH EXAMEN CORRECTION
+Filière : ING2 MI
+Matière : Traitement du Signal
+Date : A vril 2022 Durée : 2h
+Responsables : BARRAU Nelly; DESPLA T Lucie
+Exercice 1 [2 points] VRAI ou F AUX ?
+Réponse exacte (+0.25pt), Pas de réponse (0pt), Réponse fausse (-0.25pt).
+Aucune justiﬁcation n’est demandé en cas de réponse VRAI.
+Une justiﬁcation doit être apportée en cas de réponse FAUX.
+1. Le bruit d’une image désigne les pixels de l’image dont l’intensité est très différente de celles des pixels
+voisins.
+2. Le ﬁltre Laplacien ne possède pas un masque de convolution.
+3. Pour numériser une image analogique, une seule opération est nécessaire : l’échantillonnage.
+Exercice 2 [2 points]
+Considérons les deux images et les deux histogrammes suivants :
+Associer chaque image à son histogramme en justiﬁant soigneusement vos réponses.
+Exercice 3 [4 points] Distributions
+Considérons les deux applications suivantes
+f : R −→ R
+x ↦−→ signe(x) =
+{ 1 six≥ 0
+−1 six≤ 0
+g : R −→ R
+x ↦−→ |x|
+1. Justiﬁer que f etg déﬁnissent des distributions deD′(R).
+f etg sont localement intégrables : elles déﬁnissent donc bien des distributions.
+2. Déterminer f′ etg′ au sens des distributions.
+Soitϕ∈D (R)
+— On a pour f′ :
+⟨f′,ϕ⟩ =−⟨f,ϕ′⟩ =
+∫ 0
+−∞
+ϕ′(x)dx−
+∫ +∞
+0
+ϕ′(x)dx = 2ϕ(0)
+1
+<<<PAGE>>>
+Ainsi f′ = 2δ0
+— On a pour g′ :
+⟨g′,ϕ⟩ =−⟨g,ϕ′⟩ =
+∫ 0
+−∞
+xϕ′(x)dx−
+∫ +∞
+0
+xϕ′(x)dx
+On effectue une intégration par partie pour chacune des deux intégrales
+∫ +∞
+0
+xϕ′(x)dx = [xϕ(x)]+∞
+0 −
+∫ +∞
+0
+ϕ(x)dx =−
+∫ +∞
+0
+ϕ(x)dx
+De même : ∫ 0
+−∞
+xϕ′(x)dx =−
+∫ 0
+−∞
+ϕ(x)dx
+Il vient alors
+⟨g′,ϕ⟩ =−
+∫ 0
+−∞
+ϕ(x)dx +
+∫ +∞
+0
+ϕ(x)dx =
+∫ +∞
+−∞
+1[0;+∞[ϕ(x)dx +
+∫ +∞
+−∞
+−1]−∞;0]ϕ(x)dx
+Ainsi g′ = 1[0;+∞[−1]−∞;0]
+Exercice 4 [4 points] Convolution
+Soita≥ 1 et considérons les deux applications suivantes
+f = 1[−1;1] et g = 1[−a;a]
+1. Justiﬁer que le produit de convolution f ⋆g a un sens.
+f etg sont toutes deux des fonctionsL2(R) : nous pouvons donc calculer leur produit de convolution.
+2. Calculer f ⋆g.
+On a
+(f ⋆g)(x) =
+∫
+R
+f (y)g(x−y)dy =
+∫ 1
+−1
+g(x−y)dy =
+∫ 1−x
+−1−x
+g(u)du
+Nous pouvons donc déjà en conclure que
+— si −1−x≥a (iex≤−a− 1) alors (f ⋆g)(x) = 0
+— si si 1−x≤−a (iex≥a + 1) alors (f ⋆g)(x) = 0
+Considérons à présentx∈ [−a− 1;a + 1]. Alors
+(f ⋆g)(x) =
+∫ 1−x
+−1−x
+g(u)du =
+∫ min(1+x;a)
+max(−1+x;−a)
+du = 2 +min(x;a− 1) +min(−x,a− 1)
+On remarque quef∗g est paire. (Rmq. : On montre que sif etg sont paires alorsf∗g est paire).
+Prenons alorsx positif. On a alors pourx∈ [0,a + 1]
+(f∗g)(x) =
+{
+2 si x∈ [0,a− 1]
+1 +a−x si x∈ [a− 1,a + 1].
+Finalement, on obtient
+(f∗g)(x) =
+
+
+
+0 si x≤−a− 1
+1 +a +x si x∈ [−a− 1,−a + 1]
+2 si x∈ [−a + 1,a− 1]
+1 +a−x si x∈ [a− 1,a + 1]
+0 si x≥a + 1
+.
+2
+<<<PAGE>>>
+Exercice 5 [5 points] Convolution discrète
+On souhaite réaliser la convolution 2D discrète de A par la distribution résumée par une matrice de convolution
+M (de taille 3). La matrice A considérée est la suivante
+A =
+
+
+2 2 2
+4 6 8
+−1 0 1
+
+
+1. Donner la matrice de convolution M correspondant à l’élément neutre du produit de convolution.
+L’élément neutre du produit de convolution est
+M =
+
+
+0 0 0
+0 1 0
+0 0 0
+
+
+2. Prenons
+M =
+
+
+1 1 1
+1 1 1
+1 1 1
+
+
+DonnerB la convolution discrète deA parM (vos étapes de calculs doivent être visibles et justiﬁées)
+On chercheB∈M 3(R) telle queB =A⋆M et
+B =
+
+
+a b c
+d e f
+g h i
+
+
+Considérons d’abordA′ correspondant àA que l’on entoure de0 :
+A′ =
+
+
+0 0 0 0 0
+0 2 2 2 0
+0 4 6 8 0
+0 −1 0 1 0
+0 0 0 0 0
+
+
+— Pour déterminer a, posons
+Aa =
+
+
+0 0 0
+0 2 2
+0 4 6
+
+
+et effectuons le produit terme à terme de Aa avecM : on obtient Aa.a correspond à la somme de
+tous les éléments deAa : autrement dit
+a = 2 + 2 + 4 + 6 = 14
+— Pour déterminer b, posons
+Ab =
+
+
+0 0 0
+2 2 2
+4 6 8
+
+
+et effectuons le produit terme à terme deAb avecM : on obtientAb.b correspond à la somme de tous
+les éléments deAb : autrement dit
+b = 2 + 2 + 2 + 4 + 6 + 8 = 24
+— Pour déterminer c, posons
+Ac =
+
+
+0 0 0
+2 2 0
+6 8 0
+
+
+et effectuons le produit terme à terme deAc avecM : on obtientAc.c correspond à la somme de tous
+les éléments deAc : autrement dit
+c = 2 + 2 + 6 + 8 = 18
+3
+<<<PAGE>>>
+En réitérant le processus, on obtient ﬁnalement
+B =
+
+
+14 24 18
+13 24 19
+9 18 15
+
+
+Exercice 6 [8 points]
+On considère le circuit électrique correspondant au schéma suivant :
+On crée entre les bornes a et b une différence de potentiel E(t) dépendant du temps. Soit alors S(t) la
+différence de potentiel entre les bornesc etd à l’instantt.
+On supposeE(t) etS(t) nulles pourt< 0. On noteI(t) l’intensité du courant deb versa à l’instantt.
+La résistanceR et l’inductanceL sont des constantes connues. On rappelle que l’on a les relations
+E−S =RI et S =LI′.
+1. Montrer que l’on a
+S′ + R
+LS =E′ (1)
+On considère dans la suite, le circuit électrique comme un ﬁltre qui à un signal d’entrée E associe un
+signal de sortieS.
+On aS =E−RI. En dérivant, on obtientS′ =E′−RI′ =E′− R
+LS d’oùS′ + R
+LS =E′.
+2. Soit T une distribution deD′(R) etf∈C∞(R). Rappeler la déﬁnition du produitf×T.
+Vériﬁer que sif (0) = 1 alorsf×δ0 =δ0 .
+Pour toute fonctionf∈C∞(R),la distributionf×T est déﬁnie par :∀ϕ∈D (R),
+<f ×T,ϕ> =<T,f ×ϕ>.
+Par conséquent, sif (0) = 1, on a∀ϕ∈D (R), <f×δ0,ϕ> =<δ 0,fϕ> =f (0)×ϕ(0) = ϕ(0) =<
+δ0,ϕ> . Cela montre quef×δ0 =δ0.
+3. On considère maintenant la fonction f déﬁnie sur R par f (t) = H(t)e− R
+L t où H est la fonction de
+Heaviside.
+(a) Justiﬁer que f déﬁnit une distribution régulièreT .
+f est localement intégrable et déﬁnit donc une distribution régulière.
+(b) Montrer que (δ′
+0 + R
+Lδ0)∗T =δ0.
+On a
+(δ′
+0 + R
+Lδ0)∗T =δ′
+0∗T + R
+Lδ0∗T
+=δ0∗T′ + R
+LT
+=T′ + R
+LT.
+4
+<<<PAGE>>>
+Or au sens des distributions, on a
+T′ = (H(t)e− R
+L t)′ =δ0e− R
+L t− R
+LH(t)e− R
+L t =δ0e− R
+L t− R
+LT.
+Par conséquent,
+(δ′
+0 + R
+Lδ0)∗T =δ0e− R
+L t− R
+LT + R
+LT =δ0e− R
+L t.
+La fonctionf déﬁnie parf (t) = e− R
+L t est de classeC∞ et vériﬁef (0) = 1. D’après la question 2,
+(δ′
+0 + R
+Lδ0)∗T =δ0.
+(c) Montrer que T est une solution au sens des distributions de l’équation
+T′ + R
+LT =H′.
+(T est donc le signal de sortie correspondant au signal d’entrée égal à H. On dit que T est « la »
+réponse indicielle du circuit).
+On a vu que
+T′ =δ0e− R
+L t− R
+LT =δ0− R
+LT,
+donc
+T′ + R
+LT =δ0.
+Or on aH′ =δ0. DoncT vériﬁe bien la relation
+T′ + R
+LT =H′.
+(d) On veut montrer l’unicité de la réponse indicielle. On considère une solution au sens des distributions
+de l’équation
+S′ + R
+LS =H′.
+Montrer que l’on a alors
+(δ′
+0 + R
+Lδ0)∗S =δ0.
+En déduire queS =T.
+On a, comme précédemment,
+(δ′
+0 + R
+Lδ0)∗S =δ′
+0∗S + R
+Lδ0∗S =δ0∗S′ + R
+LS =S′ + R
+LS =H′ =δ0.
+Montrons queS =T. En convoluant parT dans la relation (δ′
+0 + R
+Lδ0)∗S =δ0, on obtient :
+T∗ (δ′
+0 + R
+Lδ0)∗S =T∗δ0 =T.
+De même, en convoluant parS dans la relation (δ′
+0 + R
+Lδ0)∗T =δ0, on aboutit à :
+S∗ (δ′
+0 + R
+Lδ0)∗T =S∗δ0 =S.
+CommeT∗ (δ′
+0 + R
+Lδ0)∗S =S∗ (δ′
+0 + R
+Lδ0)∗T, on en conclut queT =S.
+4. On note D la réponse impulsionnelle du circuit, c’est-à-dire la réponse correspondant au signal d’entrée
+E =δ0.D est donc solution de
+D′ + R
+LD =δ′
+0.
+5
+<<<PAGE>>>
+(a) Montrer que l’on a T =D∗H.
+Il sufﬁt de vériﬁer que D∗H est la réponse indicielle du système. Or
+(D∗H)′ + R
+L (D∗H) = D′∗H + R
+L (D∗H) = (D′ + R
+LD)∗H
+=δ′
+0∗H =H′.
+Dela montre que D∗H est bien la réponse indicielle du système et par unicité de celle-ci, on a
+D∗H =T.
+(b) Par dérivation de la relation T =D∗H, en déduire l’expression deD.
+En dérivant au sens distribution, on obtient
+T′ =D∗H′ =D∗δ0 =D.
+Donc
+D =T′ =δ0− R
+LT =δ0− R
+LT.
+5. Déterminer la réponse du circuit pour le signal d’entrée : E(t) = H(t)(1−e− R
+L t).
+En procédant comme à la question 4.(a), on a
+(D∗E)′ + R
+L (D∗E) = D′∗E + R
+L (D∗E) = (D′ + R
+LD)∗E =E′.
+La réponse du circuit est doncD∗E c’est-à-dire
+(δ0− R
+LT )∗H(t)(1−e− R
+L t) = δ0∗H(t)(1−e− R
+L t)− R
+LT∗H(t)(1−e− R
+L t)
+=H(t)(1−e− R
+L t)− R
+LT∗H(t)(1−e− R
+L t).
+Or pour toutt≥ 0
+T∗H(t)(1−e− R
+L t) =
+∫ +∞
+−∞
+H(x)e− R
+L xH(t−x)(1−e− R
+L (t−x))dx
+=
+∫ t
+0
+e− R
+L x(1−e− R
+L (t−x))dx
+=
+∫ t
+0
+e− R
+L x−e− R
+L tdx
+=−L
+R [e− R
+L x]t
+0−te− R
+L t
+= L
+R (1−e− R
+L t)−te− R
+L t.
+Le signal de sortie correspondant àE(t) = H(t)(1−e− R
+L t) est donc
+S(t) = H(t)R
+Lte− R
+L t.
+Fin.
+6

@@ -1,0 +1,493 @@
+Exercice 1
+Soit (E,A,µ ) un espace mesuré etf :E→ R une fonction mesurable. On suppose quef est intégrable surE.
+Définition : Un ensembleA∈A est ditσ-fini s’il existe une suite(An)n≥1 d’ensembles mesurables tels queA =S∞
+n=1An
+et µ(An)<∞ pour toutn≥ 1.
+Le but de cet exercice est de démontrer que l’ensembleA ={x∈E :f (x)̸= 0} est σ-fini.
+1. Pour tout entier natureln≥ 1, on définit l’ensemble
+An ={x∈E :|f (x)|≥ 1
+n}.
+Montrer que pour toutn≥ 1, An∈A .
+2. Montrer queA =S∞
+n=1An.
+3. Montrer que pour toutn≥ 1,
+1
+nµ(An)≤
+Z
+An
+|f|dµ.
+4. En déduire que pour toutn≥ 1, µ(An)<∞.
+5. Conclure que l’ensembleA est σ-fini.
+Corrigé
+1. Pour tout n≥ 1, la fonctionx7→| f (x)| est mesurable carf est mesurable. L’ensemble An est l’image réciproque de
+l’intervalle fermé [ 1
+n, +∞[ par cette fonction. Comme l’intervalle[ 1
+n, +∞[ est un borélien et que l’image réciproque d’un
+borélien par une fonction mesurable est un ensemble mesurable, on a bienAn∈A .
+2. Soit x∈ A. Alors f (x)̸= 0, ce qui implique|f (x)| > 0. Il existe donc un entiern≥ 1 tel que|f (x)|≥ 1
+n, c’est-à-dire
+x∈An. On a donc montré queA⊂S∞
+n=1An.
+Réciproquement, six∈S∞
+n=1An, alors il existe un entiern≥ 1 tel quex∈An, ce qui signifie que|f (x)|≥ 1
+n > 0. Donc
+f (x)̸= 0 et x∈A. On a montré queS∞
+n=1An⊂A.
+Par double inclusion, on aA =S∞
+n=1An.
+3. Pour toutn≥ 1, la fonction indicatrice1An est mesurable et positive. De plus, pour toutx∈An, on a|f (x)|≥ 1
+n, donc
+1
+n 1An (x)≤|f (x)|1An (x). Par monotonie de l’intégrale, on a :
+1
+n
+Z
+E
+1Andµ≤
+Z
+E
+|f|1Andµ.
+Ce qui donne :
+1
+nµ(An)≤
+Z
+An
+|f|dµ.
+4. En utilisant l’inégalité de la question 3 et la croissance de l’intégrale, on a pour toutn≥ 1 :
+1
+nµ(An)≤
+Z
+An
+|f|dµ≤
+Z
+E
+|f|dµ.
+Comme f est intégrable surE, on a
+R
+E|f|dµ< ∞. Donc, pour toutn≥ 1,
+µ(An)≤n
+Z
+E
+|f|dµ< ∞.
+5. On a montré queA =S∞
+n=1An (question 2) et que pour toutn≥ 1, µ(An) <∞ (question 4). Donc A est une union
+dénombrable d’ensembles de mesure finie, ce qui signifie queA est σ-fini.
+1
+<<<PAGE>>>
+Exercice 2
+Soit f une fonction mesurable au sens de Lebesgue, à valeurs réelles, définie sur[0, +∞[, telle que :
+1. f est intégrable au sens de Lebesgue sur tout sous-intervalle fini de[0, +∞[.
+2. limx→+∞f (x) = c∈ R.
+Le but de cet exercice est de démontrer que
+lim
+a→+∞
+1
+a
+Z
+[0,a]
+fdµ L =c.
+où µL désigne la mesure de Lebesgue.
+1. En utilisant l’hypothèse 2, montrer que :
+∀ε> 0, ∃N∈ R, ∀x>N, |f (x)−c|<ε.
+2. Poura>N , montrer que 
+1
+a
+Z
+[0,a]
+fdµ L−c
+≤ 1
+a
+Z
+[0,a]
+|f−c|dµL.
+3. En déduire que poura>N ,
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+≤ 1
+a
+ Z
+[0,N ]
+|f−c|dµL +
+Z
+[N,a]
+|f−c|dµL
+!
+.
+4. Montrer que
+lim
+a→+∞
+(a−N )
+a ε =ε.
+5. En utilisant l’hypothèse 1, montrer que
+R
+[0,N ]|f−c|dµL est finie.
+6. Montrer que
+lim
+a→+∞
+1
+a
+Z
+[0,N ]
+|f−c|dµL = 0.
+7. Conclure que
+lim
+a→+∞
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+ = 0.
+8. En déduire que
+lim
+a→+∞
+1
+a
+Z
+[0,a]
+fdµ L =c.
+Corrigé
+1. L’hypothèse 2 signifie quef (x) tend versc lorsquex tend vers l’infini. Par définition de la limite, cela se traduit par : pour
+tout ε> 0, il existe un réelN tel que pour toutx>N , on a|f (x)−c|<ε .
+2. Poura>N , on a :
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+ =
+
+1
+a
+Z
+[0,a]
+fdµ L− 1
+a
+Z
+[0,a]
+cdµ L
+
+=
+
+1
+a
+Z
+[0,a]
+(f−c)dµL
+
+≤ 1
+a
+Z
+[0,a]
+|f−c|dµL
+2
+<<<PAGE>>>
+3. En utilisant la relation de Chasles pour l’intégrale, on a :
+Z
+[0,a]
+|f−c|dµL =
+Z
+[0,N ]
+|f−c|dµL +
+Z
+[N,a]
+|f−c|dµL.
+En combinant avec l’inégalité de la question 2, on obtient :
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+≤ 1
+a
+ Z
+[0,N ]
+|f−c|dµL +
+Z
+[N,a]
+|f−c|dµL
+!
+.
+4. On a :
+(a−N )
+a ε =
+
+1− N
+a
+
+ε =ε− Nε
+a .
+Comme N et ε sont des constantes, on alima→+∞ N ε
+a = 0. Donc :
+lim
+a→+∞
+(a−N )
+a ε =ε.
+5. L’hypothèse 1 stipule quef est intégrable sur tout sous-intervalle fini de[0, +∞[. En particulier,f est intégrable sur[0,N ].
+Comme c est une constante, la fonction(f−c) est également intégrable sur[0,N ]. Donc, par définition de l’intégrabilité,R
+[0,N ]|f−c|dµL est finie.
+6. On a :
+0≤ 1
+a
+Z
+[0,N ]
+|f−c|dµL≤ 1
+aM,
+où M =
+R
+[0,N ]|f−c|dµL est une constante finie (d’après la question 5).
+Comme lima→+∞ 1
+aM = 0, on a, par le théorème des gendarmes :
+lim
+a→+∞
+1
+a
+Z
+[0,N ]
+|f−c|dµL = 0.
+7. En utilisant les questions 1, 3, 4 et 6, on obtient :
+lim
+a→+∞
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+≤ lim
+a→+∞
+1
+a
+ Z
+[0,N ]
+|f−c|dµL +
+Z
+[N,a]
+|f−c|dµL
+!
+≤ lim
+a→+∞
+1
+a
+Z
+[0,N ]
+|f−c|dµL + lim
+a→+∞
+1
+a
+Z
+[N,a]
+|f−c|dµL
+≤ 0 + lim
+a→+∞
+(a−N )
+a ε
+=ε.
+Comme ε> 0 est arbitraire, on a :
+lim
+a→+∞
+
+1
+a
+Z
+[0,a]
+fdµ L−c
+ = 0.
+8. La limite de la valeur absolue de l’expression est nulle, donc la limite de l’expression elle-même est également nulle :
+lim
+a→+∞
+ 
+1
+a
+Z
+[0,a]
+fdµ L−c
+!
+= 0.
+Ce qui donne finalement :
+lim
+a→+∞
+1
+a
+Z
+[0,a]
+fdµ L =c.
+3
+<<<PAGE>>>
+Exercice 3
+Soit (X,A,µ ) un espace mesuré. Soitf une fonction mesurable à valeurs réelles étendues, intégrable surX. Pour toutn∈ N,
+on définit l’ensembleEn ={x∈X :|f (x)|≥ n}.
+Le but de cet exercice est de démontrer quelimn→∞µ(En) = 0.
+1. Montrer queX =E0.
+2. Pour toutn∈ N, exprimer l’ensembleEn\En+1 en fonction def.
+3. Montrer que la famille d’ensembles{En\En+1 :n∈ N} est constituée d’ensembles mesurables deux à deux disjoints.
+4. Montrer que
+∞[
+n=0
+(En\En+1) = X.
+5. En utilisant l’intégrabilité def, montrer que
+∞>
+Z
+X
+|f|dµ =
+∞X
+n=0
+Z
+En\En+1
+|f|dµ≥
+∞X
+n=0
+nµ(En\En+1).
+6. Montrer que
+∞X
+n=0
+nµ(En\En+1) =
+∞X
+n=0
+n[µ(En)−µ(En+1)].
+7. En développant la somme précédente, montrer que
+∞X
+n=0
+nµ(En\En+1) =
+∞X
+n=1
+µ(En).
+8. Conclure que limn→∞µ(En) = 0.
+Corrigé
+1. Par définition,E0 ={x∈X :|f (x)|≥ 0} =X car la valeur absolue est toujours positive.
+2. Pour toutn∈ N, on a :
+En\En+1 ={x∈X :n≤|f (x)|<n + 1}.
+3. Pour toutn∈ N, l’ensembleEn\En+1 est mesurable car c’est la différence de deux ensembles mesurables. De plus, si
+n̸=m, les ensemblesEn\En+1 et Em\Em+1 sont disjoints car les intervalles[n,n + 1[ et [m,m + 1[ sont disjoints.
+4. Soit x∈ X. Si f (x) = 0 , alorsx∈ E0\E1. Sinon, il existe un unique entiern≥ 0 tel quen≤| f (x)| < n+ 1, et donc
+x∈En\En+1. Dans tous les cas,x∈S∞
+n=0(En\En+1). On a donc montré queX⊂S∞
+n=0(En\En+1). L’inclusion inverse
+est évidente.
+5. Par l’intégrabilité def, on a
+R
+X|f|dµ< ∞. D’après la question 4, on aX =S∞
+n=0(En\En+1), et les ensemblesEn\En+1
+sont mesurables et deux à deux disjoints (question 3). Par le théorème de convergence monotone pour les séries d’intégrales,
+on a :
+Z
+X
+|f|dµ =
+∞X
+n=0
+Z
+En\En+1
+|f|dµ.
+De plus, pour toutn∈ N et toutx∈En\En+1, on a|f (x)|≥ n. Donc :
+Z
+En\En+1
+|f|dµ≥
+Z
+En\En+1
+ndµ =nµ(En\En+1).
+On obtient donc l’inégalité souhaitée.
+6. Pour toutn∈ N, on aEn+1⊂En, doncµ(En\En+1) = µ(En)−µ(En+1).
+4
+<<<PAGE>>>
+7. En développant la somme et en regroupant les termes, on obtient :
+∞X
+n=0
+n[µ(En)−µ(En+1)] = µ(E0)−µ(E1) + 2[µ(E1)−µ(E2)] + 3[µ(E2)−µ(E3)] +···
+=µ(E1) +µ(E2) +µ(E3) +···
+=
+∞X
+n=1
+µ(En).
+8. D’après les questions 5 et 7, la sérieP∞
+n=1µ(En) est convergente. Par conséquent, son terme général tend vers 0, c’est-à-dire
+limn→∞µ(En) = 0.
+Exercice 4
+Soit (X,A,µ ) un espace mesuré. Soitf une fonction mesurable à valeurs réelles étendues, intégrable surX.
+1. Montrer que pour toutε> 0, il existeδ >0 tel que pour toutA∈A avecµ(A)<δ , on a :
+
+Z
+A
+fdµ
+<ε.
+Indication : On pourra introduire la suite de fonctions(fn)n∈N définie par :
+fn(x) =
+(
+f (x) si f (x)≤n
+n sinon
+et utiliser le théorème de convergence monotone.
+2. Soit (En)n∈N une suite d’ensembles mesurables tels quelimn→∞µ(En) = 0. Montrer que
+lim
+n→∞
+Z
+En
+fdµ = 0.
+Corrigé
+1. Pour toutn∈ N, on définit la fonctionfn comme dans l’indication.
+a) Montrer que la suite(fn)n∈N est croissante et converge simplement versf.
+b) Montrer que chaque fonctionfn est bornée et mesurable.
+c) En utilisant le théorème de convergence monotone, montrer qu’il existeN∈ N tel que :
+
+Z
+X
+fNdµ−
+Z
+X
+fdµ
+< ε
+2.
+d) On poseδ = ε
+2N. SoitA∈A tel queµ(A)<δ . Montrer que :
+
+Z
+A
+fdµ
+≤
+
+Z
+A
+(f−fN )dµ
+ +
+
+Z
+A
+fNdµ
+
+≤
+
+Z
+X
+(f−fN )dµ
+ +
+Z
+A
+|fN|dµ
+< ε
+2 +Nµ (A)
+< ε
+2 +N· ε
+2N
+=ε.
+5
+<<<PAGE>>>
+2. Soit ε> 0. D’après la question 1, il existeδ >0 tel que pour toutA∈A avecµ(A)<δ , on a
+R
+Afdµ
+<ε .
+Comme limn→∞µ(En) = 0, il existen0∈ N tel que pour toutn≥n0, on aµ(En)<δ . Donc, pour toutn≥n0, on a :
+
+Z
+En
+fdµ
+<ε.
+Ceci montre quelimn→∞
+R
+En
+fdµ = 0.
+6

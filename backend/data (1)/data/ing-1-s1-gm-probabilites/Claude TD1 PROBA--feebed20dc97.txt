@@ -1,0 +1,608 @@
+CYTech 2025-2026
+ING1 - GM : Probabilit´ es
+TD 1
+Exercice 1Soit (A n)n≥1 une suite de partie de Ω. Montrer que
+lim sup
+n→∞
+1An−lim inf
+n→∞
+1An =1 lim supn→∞An\lim infn→∞An.
+Correction
+Rappelons que lim supn→∞An = T∞
+n=1
+S∞
+k=nAk (ensemble des ´ el´ ements appartenant ` a
+une infinit´ e deAn) et lim infn→∞An =S∞
+n=1
+T∞
+k=nAk (ensemble des ´ el´ ements appartenant
+` a tous lesAn sauf un nombre fini).
+Pourω∈Ω :
+— lim supn→∞ 1An(ω) = 1 siωappartient ` a une infinit´ e deAn, 0 sinon
+— lim infn→∞ 1An(ω) = 1 siωappartient ` a tous lesA n sauf un nombre fini, 0 sinon
+Donc lim supn→∞ 1An(ω)−lim inf n→∞ 1An(ω) = 1 si et seulement siω∈lim supA n et
+ω /∈lim infAn, c’est-` a-direω∈lim supA n\lim infA n.
+Ainsi : lim sup
+n→∞
+1An−lim inf
+n→∞
+1An =1 lim supn→∞An\lim infn→∞An
+Pour tous les exercices suivants, on consid` ere un espace Ω, une tribuAde cet espace, et une
+probabilit´ ePsur cette tribu ; les partiesA,B,A i, etc. sont toutes suppos´ ees appartenir ` aA
+Exercice 2(Identit´ e de Poincar´ e) Montrer que
+P
+ n[
+i=1
+Ai
+!
+=
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj)+
+X
+i<j<k
+P(Ai∩Aj∩Ak)−···+(−1) n+1P(A 1∩A2∩···A n),
+o` u par exemple,P
+i<j signifie la somme pour toutes les parties d’indices (i,j) avec 1≤i<j≤n.
+1
+<<<PAGE>>>
+Correction
+D´ emonstration par r´ ecurrence :
+Initialisation (n= 1) :P(A 1) =P(A 1)
+Initialisation (n= 2) :P(A 1∪A 2) =P(A 1) +P(A 2)−P(A 1∩A 2) (formule classique)
+H´ er´ edit´ e :Supposons la formule vraie pourn. Pourn+ 1 :
+P
+ n+1[
+i=1
+Ai
+!
+=P
+ n[
+i=1
+Ai
+!
++P(A n+1)−P
+  n[
+i=1
+Ai
+!
+∩An+1
+!
+Or (Sn
+i=1Ai)∩A n+1 =Sn
+i=1(Ai∩An+1)
+Par hypoth` ese de r´ ecurrence appliqu´ ee ` aP(Sn
+i=1Ai), puis ` aP(Sn
+i=1(Ai∩An+1)) :
+Les termes de la formeP(A i) deviennentPn+1
+i=1 P(Ai)
+Les termes de la formeP(A i∩A j) aveci < j≤netP(A i∩A n+1) donnentP
+i<j≤n+1P(Ai∩Aj)
+Et ainsi de suite pour tous les ordres d’intersection. On obtient bien la formule pourn+1.
+Exercice 3Montrer que siP(A) = 3
+4 etP(B) = 1
+3, on a n´ ecessairement1
+12≤P(A∩B)≤ 1
+3.
+Correction
+Utilisons les propri´ et´ es fondamentales de la probabilit´ e :
+Borne sup´ erieure :
+P(A∩B)≤min(P(A),P(B)) = min
+3
+4, 1
+3
+
+= 1
+3
+CarA∩B⊂AetA∩B⊂B.
+Borne inf´ erieure :Par la formuleP(A∪B) =P(A) +P(B)−P(A∩B) et sachant que
+P(A∪B)≤1, on obtient :
+P(A) +P(B)−P(A∩B)≤1
+P(A∩B)≥P(A) +P(B)−1 = 3
+4 + 1
+3−1 = 9 + 4−12
+12 = 1
+12
+Conclusion : 1
+12≤P(A∩B)≤ 1
+3
+Exercice 4(Sous-additivit´ e.) Montrer que
+P
+ n[
+i=1
+Ai
+!
+≤
+nX
+i=1
+P(Ai)
+pour chaquen, et aussi que
+P
+ ∞[
+i=1
+Ai
+!
+≤
+∞X
+i=1
+P(Ai).
+2
+<<<PAGE>>>
+Correction
+Cas fini :D´ emonstration par r´ ecurrence surn.
+Initialisation (n= 1) :P(A 1)≤P(A 1)
+H´ er´ edit´ e :Supposons l’in´ egalit´ e vraie pourn. Alors :
+P
+ n+1[
+i=1
+Ai
+!
+=P
+  n[
+i=1
+Ai
+!
+∪An+1
+!
+En utilisantP(X∪Y) =P(X) +P(Y)−P(X∩Y)≤P(X) +P(Y) (carP(X∩Y)≥0) :
+P
+ n+1[
+i=1
+Ai
+!
+≤P
+ n[
+i=1
+Ai
+!
++P(A n+1)
+Par hypoth` ese de r´ ecurrence :
+P
+ n+1[
+i=1
+Ai
+!
+≤
+nX
+i=1
+P(Ai) +P(A n+1) =
+n+1X
+i=1
+P(Ai)
+Cas infini :PosonsB n =Sn
+i=1Ai. Alors (Bn)n≥1 est une suite croissante :B 1⊂B 2⊂
+B3⊂···
+Cette suite converge vers S∞
+i=1Ai.
+Par continuit´ e monotone de la probabilit´ e :
+P
+ ∞[
+i=1
+Ai
+!
+= lim
+n→∞
+P(Bn) = lim
+n→∞
+P
+ n[
+i=1
+Ai
+!
+Par le cas fini :P( Sn
+i=1Ai)≤ Pn
+i=1P(Ai)
+En passant ` a la limite :
+P
+ ∞[
+i=1
+Ai
+!
+≤lim
+n→∞
+nX
+i=1
+P(Ai) =
+∞X
+i=1
+P(Ai)
+Exercice 5(In´ egalit´ es de Bonferroni.) Montrer que
+a)P
+ n[
+i=1
+Ai
+!
+≥
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj).
+b)P
+ n[
+i=1
+Ai
+!
+≤
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj) +
+X
+i<j<k
+P(Ai∩Aj∩Ak).
+3
+<<<PAGE>>>
+Correction
+Ces in´ egalit´ es d´ ecoulent directement de l’identit´ e de Poincar´ e (Exercice 2) en tronquant
+la s´ erie altern´ ee.
+Par l’identit´ e de Poincar´ e :
+P
+ n[
+i=1
+Ai
+!
+=
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj)+
+X
+i<j<k
+P(Ai∩Aj∩Ak)−···+(−1) n+1P(A 1∩···∩A n)
+a)Le troisi` eme termeP
+i<j<kP(Ai∩Aj∩Ak) est positif (pr´ ec´ ed´ e du signe +).
+En supprimant tous les termes ` a partir du troisi` eme, on obtient une minoration :
+P
+ n[
+i=1
+Ai
+!
+≥
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj)
+b)Le quatri` eme terme est n´ egatif (pr´ ec´ ed´ e du signe−).
+En s’arrˆ etant au troisi` eme terme (positif) et en supprimant les termes n´ egatifs suivants,
+on obtient une majoration :
+P
+ n[
+i=1
+Ai
+!
+≤
+nX
+i=1
+P(Ai)−
+X
+i<j
+P(Ai∩Aj) +
+X
+i<j<k
+P(Ai∩Aj∩Ak)
+Principe g´ en´ eral :En tronquant apr` es un terme positif, on obtient une majoration ; en
+tronquant apr` es un terme n´ egatif, on obtient une minoration.
+Exercice 6Montrer queF:={A⊂R|AouA c est d´ enombrable}est une tribu surR.
+On d´ efinit une fonctionP:F→[0,1] parP(A) = 0 siAest d´ enombrable etP(A) = 1 si
+Ac est d´ enombrable.
+Montrer quePd´ efinit une mesure de probabilit´ e.
+4
+<<<PAGE>>>
+Correction
+Partie 1 :Fest une tribu
+V´ erifions les trois axiomes d’une tribu :
+(i)R∈F:R c =∅est d´ enombrable, doncR∈F.
+(ii) Stabilit´ e par compl´ ementaire :SoitA∈F. AlorsAouA c est d´ enombrable.
+— SiAest d´ enombrable, alors (A c)c =Aest d´ enombrable, doncA c∈F
+— SiA c est d´ enombrable, alorsAc est d´ enombrable, doncAc∈F
+Dans tous les cas,A c∈F.
+(iii) Stabilit´ e par union d´ enombrable :Soit (An)n∈N une suite d’´ el´ ements deF. Posons
+A= S∞
+n=0An.
+Cas 1 :S’il existen 0 tel queA c
+n0 est d´ enombrable, alors :
+Ac =
+ ∞[
+n=0
+An
+!c
+=
+∞\
+n=0
+Ac
+n⊂A c
+n0
+DoncA c est d´ enombrable (inclus dans un d´ enombrable), etA∈F.
+Cas 2 :Sinon, tous lesA n sont d´ enombrables. AlorsA= S∞
+n=0An est une union
+d´ enombrable de d´ enombrables, donc d´ enombrable, etA∈F.
+Conclusion :Fest une tribu.
+Partie 2 :Pest une mesure de probabilit´ e
+V´ erifions les axiomes de Kolmogorov :
+(i)P(R) = 1:R c =∅est d´ enombrable, doncP(R) = 1.
+(ii)P(A)∈[0,1]pour toutA∈F:Par d´ efinition,P(A)∈{0,1}⊂[0,1].
+(iii)σ-additivit´ e :Soit (An)n∈N une suite d’´ el´ ements deFdeux ` a deux disjoints. Posons
+A= S∞
+n=0An.
+SiAest d´ enombrable :AlorsP(A) = 0. ChaqueA n⊂Aest donc d´ enombrable, donc
+P(An) = 0 pour toutn. Ainsi P∞
+n=0P(An) = 0 =P(A).
+SiA c est d´ enombrable :AlorsP(A) = 1. On a ( S∞
+n=0An)c =T∞
+n=0Ac
+n. Pour toutn,
+Ac
+n⊃A c, donc siA c est d´ enombrable etAc
+n̸=A c, alorsA c
+n est non d´ enombrable, ce qui
+signifieA n doit avoirA c
+n d´ enombrable, doncP(An) = 1.
+Mais lesA n sont disjoints : au plus unA n peut v´ erifierP(An) = 1 (car sinonA n1 etA n2
+avecn 1̸=n 2 auraient des compl´ ementaires d´ enombrables, maisAn1∩An2 =∅implique
+An1⊂A c
+n2 qui serait d´ enombrable, contradiction).
+Donc exactement unA n0 v´ erifieP(An0) = 1 et tous les autres v´ erifientP(An) = 0. AinsiP∞
+n=0P(An) = 1 =P(A).
+Conclusion :Pest une mesure de probabilit´ e sur (R,F).
+Exercice 7Soit (A i)1≤i≤n est une suite d’´ ev´ enements ind´ ependants. Montrer que la probabilit´ e
+pour qu’aucun desA i ne soit r´ ealis´ e est au plus ´ egale ` ae− Pn
+i=1P(Ai).
+5
+<<<PAGE>>>
+Correction
+Notonsp i =P(A i) pouri= 1,...,n.
+La probabilit´ e qu’aucun desAi ne soit r´ ealis´ e est :P(Tn
+i=1Ac
+i) =Qn
+i=1P(Ac
+i) =Qn
+i=1(1−
+pi)
+car les ´ ev´ enements sont ind´ ependants (donc leurs compl´ ementaires aussi).
+Utilisons l’in´ egalit´ e :1−x≤e−x pour toutx∈[0,1].
+Cette in´ egalit´ e se d´ emontre en ´ etudiant la fonctionf(x) =e−x−(1−x) sur [0,1] :
+—f(0) = 1−1 = 0
+—f ′(x) =−e−x + 1≥0 sur [0,1] care −x≤1
+— Doncfest croissante etf(x)≥f(0) = 0, d’o` u 1−x≤e −x
+Appliquons cette in´ egalit´ e ` a chaque facteur :Qn
+i=1(1−p i)≤ Qn
+i=1e−pi =e − Pn
+i=1pi =
+e− Pn
+i=1P(Ai)
+Conclusion :P
+ n\
+i=1
+Ac
+i
+!
+≤e− Pn
+i=1P(Ai)
+Exercice 8SoitP(A)>0. Montrer queP(A∩B|A∪B)≤P(A∩B|A).
+Correction
+Calculons les deux probabilit´ es conditionnelles.
+Membre de gauche :P(A∩B|A∪B) = P((A∩B)∩(A∪B))
+P(A∪B) = P(A∩B)
+P(A∪B)
+car (A∩B)∩(A∪B) =A∩B.
+Membre de droite :P(A∩B|A) = P((A∩B)∩A)
+P(A) = P(A∩B)
+P(A)
+car (A∩B)∩A=A∩B.
+Comparaison :Il faut montrer que : P(A∩B)
+P(A∪B) ≤ P(A∩B)
+P(A)
+SiP(A∩B) = 0, l’in´ egalit´ e est vraie (´ egalit´ e 0 = 0).
+SiP(A∩B)>0, on peut simplifier parP(A∩B) et l’in´ egalit´ e devient : 1
+P(A∪B) ≤ 1
+P(A)
+ce qui est ´ equivalent ` a :P(A)≤P(A∪B)
+Cette derni` ere in´ egalit´ e est toujours vraie carA⊂A∪B.
+Conclusion :P(A∩B|A∪B)≤P(A∩B|A)
+Exercice 9SoientA,B,Csont ind´ ependants etP(A∩B)̸= 0. Montrer queP(C|A∩B) =P(C).
+Correction
+Par d´ efinition de la probabilit´ e conditionnelle :P(C|A∩B) =P(C∩(A∩B))
+P(A∩B) = P(A∩B∩C)
+P(A∩B)
+Utilisons l’ind´ ependance mutuelle :
+Les ´ ev´ enementsA,B,Csont (mutuellement) ind´ ependants signifie :
+—P(A∩B) =P(A)·P(B)
+—P(A∩C) =P(A)·P(C)
+—P(B∩C) =P(B)·P(C)
+—P(A∩B∩C) =P(A)·P(B)·P(C)
+Donc :P(C|A∩B) = P(A∩B∩C)
+P(A∩B) = P(A)·P(B)·P(C)
+P(A)·P(B) =P(C)
+Conclusion :P(C|A∩B) =P(C)
+Interpr´ etation :L’information queAetBsont r´ ealis´ es n’apporte aucune information
+surCcar les ´ ev´ enements sont ind´ ependants.
+6
+<<<PAGE>>>
+Exercice 10Soit (An)n∈N∗→Aet (B n)n∈N∗→B. Supposons aussi queP(B)>0 etP(B n)>0
+pour toutn∈N ∗. Montrer que
+a) lim
+n→∞
+P(An|B) =P(A|B) ;
+b) lim
+n→∞
+P(A|Bn) =P(A|B) ;
+c) lim
+n→∞
+P(An|Bn) =P(A|B).
+Correction
+Rappel : (A n)→Asignifie que lim n→∞ 1An =1 A presque sˆ urement, ou de mani` ere
+´ equivalente dans le contexte des ´ ev´ enements, queAn →Aau sens de la convergence
+d’ensembles.
+a)Par d´ efinition :P(An|B) = P(An∩B)
+P(B)
+Comme (An)→A, on a (A n∩B)→(A∩B).
+Par continuit´ e de la probabilit´ e (pour une suite convergente d’´ ev´ enements) :
+limn→∞P(An∩B) =P(A∩B)
+Donc : limn→∞P(An|B) = limn→∞
+P(An∩B)
+P(B) = P(A∩B)
+P(B) =P(A|B)
+b)Par d´ efinition :P(A|Bn) = P(A∩Bn)
+P(Bn)
+Comme (Bn)→B, on a (A∩B n)→(A∩B).
+Par continuit´ e de la probabilit´ e : limn→∞P(A∩B n) =P(A∩B) et lim n→∞P(Bn) =
+P(B)>0
+Donc : limn→∞P(A|Bn) = limn→∞
+P(A∩Bn)
+P(Bn) = P(A∩B)
+P(B) =P(A|B)
+c)Par d´ efinition :P(An|Bn) = P(An∩Bn)
+P(Bn)
+Comme (An)→Aet (B n)→B, on a (A n∩Bn)→(A∩B).
+Par continuit´ e de la probabilit´ e : limn→∞P(An∩Bn) =P(A∩B)
+Et on sait que limn→∞P(Bn) =P(B)>0.
+Donc : limn→∞P(An|Bn) = limn→∞
+P(An∩Bn)
+P(Bn) = P(A∩B)
+P(B) =P(A|B)
+Ces trois r´ esultats montrent que la probabilit´ e conditionnelle est continue par rapport ` a
+ses arguments.
+Exercice 11On dispose de deux urnes, la premi` ere contenant 1 boule•et 3 boules◦, la seconde
+contenant 2 boules•et 2 boules◦.
+L’exp´ erience consiste ` a choisir d’abord une urne, puis ` a tirer une boule dans l’urne choisie.
+On cherche la probabilit´ e de l’´ ev´ enementA= ”on tire une boule•”
+7
+<<<PAGE>>>
+Correction
+Notons :
+—U 1 : ´ ev´ enement ”on choisit l’urne 1”
+—U 2 : ´ ev´ enement ”on choisit l’urne 2”
+—A: ´ ev´ enement ”on tire une boule•”
+Hypoth` eses :
+— On suppose que les urnes sont choisies avec probabilit´ e ´ egale :P(U1) =P(U 2) = 1
+2
+— Dans l’urne 1 : 1 boule•sur 4 boules au total, doncP(A|U 1) = 1
+4
+— Dans l’urne 2 : 2 boules•sur 4 boules au total, doncP(A|U 2) = 2
+4 = 1
+2
+Application de la formule des probabilit´ es totales :
+Les ´ ev´ enementsU1 etU 2 forment une partition de Ω (ils sont disjoints et leur union est
+Ω).
+Donc :P(A) =P(A|U 1)·P(U 1) +P(A|U 2)·P(U 2)
+P(A) = 1
+4× 1
+2 + 1
+2× 1
+2 = 1
+8 + 1
+4 = 1
+8 + 2
+8 = 3
+8
+Conclusion :P(A) = 3
+8
+Exercice 12Chaque don de sang est soumis ` a un test du Co. On suppose que ce test a une
+efficacit´ e de 99% (probabilit´ e que le test soit positif pour une personne atteinte du Co), et une
+probabilit´ e de fausse alarme de 5% (probabilit´ e que les test soit positif pour une personne non
+atteinte). Enfin, on suppose la fr´ equence de s´ eropositivit´ e est 10−4. Quelle est la probabilit´ e
+pour qu’une personne obtenant un test positif soit atteinte du Co ?
+Correction
+Notons :
+—M: ´ ev´ enement ”la personne est malade (atteinte du Co)”
+—T + : ´ ev´ enement ”le test est positif”
+Donn´ ees :
+—P(M) = 10 −4 = 0,0001 (pr´ evalence de la maladie)
+—P(M c) = 1−10 −4 = 0,9999
+—P(T +|M) = 0,99 (sensibilit´ e du test)
+—P(T +|Mc) = 0,05 (taux de faux positifs)
+Question :CalculerP(M|T +) (valeur pr´ edictive positive)
+Application de la formule de Bayes :P(M|T +) = P(T +|M)·P(M)
+P(T +)
+Calculons d’abordP(T +) par la formule des probabilit´ es totales :P(T +) =P(T +|M)·
+P(M) +P(T +|Mc)·P(M c)P(T +) = 0,99×10−4 + 0,05×(1−10 −4)P(T +) = 0,000099 +
+0,05×0,9999P(T +) = 0,000099 + 0,049995 = 0,050094
+Donc :P(M|T +) = 0,99×10−4
+0,050094 = 0,000099
+0,050094≈0,001976≈0,002
+P(M|T +)≈0,2% ou environ 1
+506
+Interpr´ etation :Malgr´ e un test efficace ` a 99%, une personne ayant un test positif n’a
+qu’environ 0,2% de chances d’ˆ etre r´ eellement malade ! Ceci est dˆ u ` a la tr` es faible pr´ evalence
+de la maladie : les faux positifs (5% de 99,99% de la population) sont bien plus nombreux
+que les vrais positifs (99% de 0,01% de la population).
+Exercice 13Une compagnie d’assurance assure un nombre ´ egal de conducteurs masculins et
+f´ eminins. Tous les conducteurs (masculins) ont chaque ann´ ee, la probabilit´ eαd’avoir un acci-
+dent et ceci ind´ ependamment des autres ann´ ees, et des autres conducteurs. Il en est de mˆ eme
+8
+<<<PAGE>>>
+des conductrices, avec une probabilit´ e d’accident ´ egale ` aβ. La compagnie s´ electionne un/une
+conducteur/trice au hasard.
+a) Montrer que la probabilit´ e pour que la personne s´ electionn´ ee ait un accident cette ann´ ee
+est α+β
+2 .
+b) Quelle est la probabilit´ e pour que la personne s´ electionn´ ee ait un accident deux ann´ ees
+cons´ ecutives ?
+c) SoitA i l’´ ev´ enement ”la personne s´ electionn´ ee a un accident l’ann´ ee num´ eroi”. Montrer
+queP(A 2|A1)≥P(A 1).
+d) Trouver la probabilit´ e pour que une ann´ ee donn´ ee une personne s´ electionn´ ee au hasard
+parmi celles ayant eu un accident soit une conductrice
+Correction
+Notons :
+—H: ´ ev´ enement ”la personne s´ electionn´ ee est un homme”
+—F: ´ ev´ enement ”la personne s´ electionn´ ee est une femme”
+—A i : ´ ev´ enement ”la personne a un accident l’ann´ eei”
+On a :P(H) =P(F) = 1
+2,P(A i|H) =αetP(A i|F) =βpour touti.
+a)Par la formule des probabilit´ es totales :P(A 1) =P(A 1|H)·P(H) +P(A 1|F)·P(F)
+P(A 1) =α× 1
+2 +β× 1
+2 = α+β
+2
+b)On chercheP(A 1∩A 2).
+Pour un homme, les accidents sont ind´ ependants d’une ann´ ee ` a l’autre :P(A1∩A 2|H) =
+P(A 1|H)·P(A 2|H) =α 2
+De mˆ eme pour une femme :P(A1∩A 2|F) =β 2
+Par la formule des probabilit´ es totales :P(A 1∩A 2) =P(A 1∩A 2|H)·P(H) +P(A 1∩
+A2|F)·P(F)P(A 1∩A 2) =α 2× 1
+2 +β 2× 1
+2 = α2 +β 2
+2
+c)On doit montrer queP(A 2|A1)≥P(A 1).
+Par d´ efinition :P(A2|A1) = P(A 1∩A2)
+P(A 1) =
+α2+β2
+2
+α+β
+2
+= α2+β2
+α+β
+Il faut montrer que : α2+β2
+α+β ≥ α+β
+2
+C’est ´ equivalent ` a : 2(α2 +β 2)≥(α+β) 2 2α2 + 2β2≥α 2 + 2αβ+β 2 α2−2αβ+β 2≥0
+(α−β) 2≥0
+Cette derni` ere in´ egalit´ e est toujours vraie.
+DoncP(A 2|A1)≥P(A 1) avec ´ egalit´ e si et seulement siα=β.
+Interpr´ etation :Si une personne a eu un accident l’ann´ ee 1, il est plus probable que
+ce soit quelqu’un qui a un fort taux d’accident, donc la probabilit´ e d’avoir un accident
+l’ann´ ee 2 est plus ´ elev´ ee.
+d)On chercheP(F|A 1) (probabilit´ e que ce soit une femme sachant qu’il y a eu un
+accident).
+Par la formule de Bayes :P(F|A 1) = P(A 1|F)·P(F)
+P(A 1) =
+β× 1
+2
+α+β
+2
+= β
+α+β
+De mˆ eme,P(H|A1) = α
+α+β .
+9

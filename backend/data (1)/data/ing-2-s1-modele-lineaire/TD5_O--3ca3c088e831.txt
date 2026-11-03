@@ -1,0 +1,205 @@
+library(readxl)
+Poids <- read_excel("Poids.xlsx")
+View(Poids)
+summary(Poids)
+
+
+
+###EXERCICE 2###
+
+# Nombre d'individus
+n <- nrow(Poids)
+# Taille de l'ensemble d'apprentissage (3/4 des données)
+TailleH <- (3 * n) %/% 4
+#On fera un découpage aléatoire et on souhaite garder le même découpage
+# Définir un découpage aléatoire avec un seed pour le reproduire
+set.seed(3)
+c <- runif(n) # Génération de valeurs aléatoires pour chaque individu
+rang <- rank(c) # Associer à chaque individu un numéro de rang
+# Définir l'ensemble d'apprentissage et l'ensemble de test
+app <- which(rang <= TailleH) # Indices pour l'ensemble d'apprentissage
+test <- which(rang > TailleH) # Indices pour l'ensemble de test
+
+###Q1.
+
+# Modèle M1 avec toutes les variables
+M1 <- lm(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids[app, ])
+M1
+# Modèle M2 avec les variables sélectionnées par le critère AIC
+M2 <- lm(Y ~ X1 + X6 + X7 + X8 + X9 + X10, data = Poids[app, ])
+M2
+# Modèle M3 avec les variables sélectionnées par le critère BIC
+M3 <- lm(Y ~ X1 + X6 + X7 + X8 + X10, data = Poids[app, ])
+M3
+
+###Q2.
+
+# Prédictions pour le modèle M1
+pred_M1 <- predict(M1, newdata = Poids[test, ]) #on peut aussi noter : predict(M1, newdata = Poids[-app, ]) car le test est le complémentaire de app
+pred_M1
+# Prédictions pour le modèle M2
+pred_M2 <- predict(M2, newdata = Poids[test, ])
+pred_M2
+# Prédictions pour le modèle M3
+pred_M3 <- predict(M3, newdata = Poids[test, ])
+pred_M3
+
+###Q3.
+
+# Erreur de prédiction pour chaque modèle (différence au carré entre prédiction et valeur réelle)
+erreur_M1 <- (Poids$Y[test] - pred_M1)^2
+erreur_M1
+erreur_M2 <- (Poids$Y[test] - pred_M2)^2
+erreur_M2
+erreur_M3 <- (Poids$Y[test] - pred_M3)^2
+erreur_M3
+# Moyenne des erreurs de prédiction (critère Hold-out)
+epsilon_HO_M1 <- mean(erreur_M1)
+epsilon_HO_M2 <- mean(erreur_M2)
+epsilon_HO_M3 <- mean(erreur_M3)
+# Affichage des résultats
+cat("Erreur Hold-out pour M1:", epsilon_HO_M1, "\n")
+cat("Erreur Hold-out pour M2:", epsilon_HO_M2, "\n")
+cat("Erreur Hold-out pour M3:", epsilon_HO_M3, "\n")
+###voir photo 18/11/2024
+
+
+###EXERCICE 3###
+
+#Q1.
+
+# Nombre d'individus
+n <- nrow(Poids)
+
+# Initialisation des vecteurs d'erreur
+erreur_M1 <- rep(0, n) # Erreur pour le modèle M1
+erreur_M2 <- rep(0, n) # Erreur pour le modèle M2
+erreur_M3 <- rep(0, n) # Erreur pour le modèle M3
+
+#Q2.
+
+# Boucle sur chaque observation pour la validation croisée LOOCV
+for (i in 1:n) {
+  # Modèle M1 avec toutes les variables, sans l'observation i
+  LOOCV_M1 <- lm(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids[-i, ])
+  # Prédiction pour l'observation i
+  pred_M1 <- predict(LOOCV_M1, newdata = Poids[i, , drop = FALSE])
+  # Calcul de l'erreur pour M1
+  erreur_M1[i] <- (Poids$Y[i] - pred_M1)^2
+  
+  # Modèle M2 avec les variables sélectionnées par le critère AIC, sans l'observation i
+  LOOCV_M2 <- lm(Y ~ X1 + X6 + X7 + X8 + X9 + X10, data = Poids[-i, ])
+  # Prédiction pour l'observation i
+  pred_M2 <- predict(LOOCV_M2, newdata = Poids[i, , drop = FALSE])
+  # Calcul de l'erreur pour M2
+  erreur_M2[i] <- (Poids$Y[i] - pred_M2)^2
+  
+  # Modèle M3 avec les variables sélectionnées par le critère BIC, sans l'observation i
+  LOOCV_M3 <- lm(Y ~ X1 + X6 + X7 + X8 + X10, data = Poids[-i, ])
+  # Prédiction pour l'observation i
+  pred_M3 <- predict(LOOCV_M3, newdata = Poids[i, , drop = FALSE])
+  # Calcul de l'erreur pour M3
+  erreur_M3[i] <- (Poids$Y[i] - pred_M3)^2
+}
+
+#Q3.
+
+# Calcul de l'erreur quadratique moyenne pour chaque modèle
+epsilon_LOO_M1 <- mean(erreur_M1)
+epsilon_LOO_M2 <- mean(erreur_M2)
+epsilon_LOO_M3 <- mean(erreur_M3)
+
+# Affichage des résultats
+cat("Erreur LOOCV pour M1:", epsilon_LOO_M1, "\n")
+cat("Erreur LOOCV pour M2:", epsilon_LOO_M2, "\n")
+cat("Erreur LOOCV pour M3:", epsilon_LOO_M3, "\n")
+
+
+
+###EXERCICE 4###
+
+#Q1.
+
+# Définition des indices pour chaque groupe (fold)
+Fold1 <- rang[1:7]
+Fold2 <- rang[8:15]
+Fold3 <- rang[16:22]
+
+#Q2.
+
+# Définition des indices pour chaque groupe complémentaire
+Fold12 <- rang[1:15]
+Fold23 <- rang[8:22]
+Fold13 <- c(rang[1:7], rang[16:22])
+
+#Q3.
+
+# Initialisation du vecteur pour stocker les erreurs de prédiction pour M1
+erreur_fold_M1 <- c()
+
+# Fold 1 : Entraînement sur Fold12, test sur Fold3
+model_M1_Fold12 <- lm(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold12, ])
+pred_M1_Fold3 <- predict(model_M1_Fold12, newdata = Poids[Fold3, ])
+erreur_fold_M1 <- c(erreur_fold_M1, (Poids$Y[Fold3] - pred_M1_Fold3)^2)
+
+# Fold 2 : Entraînement sur Fold23, test sur Fold1
+model_M1_Fold23 <- lm(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold23, ])
+pred_M1_Fold1 <- predict(model_M1_Fold23, newdata = Poids[Fold1, ])
+erreur_fold_M1 <- c(erreur_fold_M1, (Poids$Y[Fold1] - pred_M1_Fold1)^2)
+
+# Fold 3 : Entraînement sur Fold13, test sur Fold2
+model_M1_Fold13 <- lm(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold13, ])
+pred_M1_Fold2 <- predict(model_M1_Fold13, newdata = Poids[Fold2, ])
+erreur_fold_M1 <- c(erreur_fold_M1, (Poids$Y[Fold2] - pred_M1_Fold2)^2)
+
+#Q4.
+
+# Initialisation du vecteur pour stocker les erreurs de prédiction pour M2
+erreur_fold_M2 <- c()
+
+# Fold 1 : Entraînement sur Fold12, test sur Fold3
+model_M2_Fold12 <- lm(Y ~ X1 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold12, ])
+pred_M2_Fold3 <- predict(model_M2_Fold12, newdata = Poids[Fold3, ])
+erreur_fold_M2 <- c(erreur_fold_M2, (Poids$Y[Fold3] - pred_M2_Fold3)^2)
+
+# Fold 2 : Entraînement sur Fold23, test sur Fold1
+model_M2_Fold23 <- lm(Y ~ X1 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold23, ])
+pred_M2_Fold1 <- predict(model_M2_Fold23, newdata = Poids[Fold1, ])
+erreur_fold_M2 <- c(erreur_fold_M2, (Poids$Y[Fold1] - pred_M2_Fold1)^2)
+
+# Fold 3 : Entraînement sur Fold13, test sur Fold2
+model_M2_Fold13 <- lm(Y ~ X1 + X6 + X7 + X8 + X9 + X10, data = Poids[Fold13, ])
+pred_M2_Fold2 <- predict(model_M2_Fold13, newdata = Poids[Fold2, ])
+erreur_fold_M2 <- c(erreur_fold_M2, (Poids$Y[Fold2] - pred_M2_Fold2)^2)
+
+#Q5.
+
+# Initialisation du vecteur pour stocker les erreurs de prédiction pour M3
+erreur_fold_M3 <- c()
+
+# Fold 1 : Entraînement sur Fold12, test sur Fold3
+model_M3_Fold12 <- lm(Y ~ X1 + X6 + X7 + X8 + X10, data = Poids[Fold12, ])
+pred_M3_Fold3 <- predict(model_M3_Fold12, newdata = Poids[Fold3, ])
+erreur_fold_M3 <- c(erreur_fold_M3, (Poids$Y[Fold3] - pred_M3_Fold3)^2)
+
+# Fold 2 : Entraînement sur Fold23, test sur Fold1
+model_M3_Fold23 <- lm(Y ~ X1 + X6 + X7 + X8 + X10, data = Poids[Fold23, ])
+pred_M3_Fold1 <- predict(model_M3_Fold23, newdata = Poids[Fold1, ])
+erreur_fold_M3 <- c(erreur_fold_M3, (Poids$Y[Fold1] - pred_M3_Fold1)^2)
+
+# Fold 3 : Entraînement sur Fold13, test sur Fold2
+model_M3_Fold13 <- lm(Y ~ X1 + X6 + X7 + X8 + X10, data = Poids[Fold13, ])
+pred_M3_Fold2 <- predict(model_M3_Fold13, newdata = Poids[Fold2, ])
+erreur_fold_M3 <- c(erreur_fold_M3, (Poids$Y[Fold2] - pred_M3_Fold2)^2)
+
+#Q6.
+
+# Calcul de l'erreur quadratique moyenne pour chaque modèle
+epsilon_Fold_M1 <- mean(erreur_fold_M1)
+epsilon_Fold_M2 <- mean(erreur_fold_M2)
+epsilon_Fold_M3 <- mean(erreur_fold_M3)
+
+# Affichage des résultats
+cat("Erreur K-Fold pour M1:", epsilon_Fold_M1, "\n")
+cat("Erreur K-Fold pour M2:", epsilon_Fold_M2, "\n")
+cat("Erreur K-Fold pour M3:", epsilon_Fold_M3, "\n")

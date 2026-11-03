@@ -1,0 +1,106 @@
+Pré-ING1
+Semestre 1 - 2023/2024
+TD Informa tique 03 : Commandes UNIX
+Lors de cette scéance vous apprendrez à vous familiarisé avec les ordinateurs de l’école et plus particulièrement avec le
+système d’exloitationLinux.
+Linux et ses très nombreux dérivés (iciDebian) sont des systèmes d’exploitation très utilisés par les developpeurs car
+ils s’agit, entre autre, de logiciels gratuits et open-source qui sont donc très personnalisables et configurables.
+Un autre interet de Linux est son exploitation des lignes de commandes qui permettent d’effectuer rapidement voir
+d’automatiser des actions qui auraient mis du temps à la sourris.
+L’objectif de ce TP est de montrer l’intérêt de la ligne de commande, ainsi que de commencer à explorer la puissance de
+la ligne de commande. Sauf lorsque cela est précisé dans les questions ou si on souhaite vérifier visuellement ce qui a été fait,
+on n’a donc pas le droit d’utiliser la souris !.
+1 Navigation et gestion de fichiers
+.
+Les différents fichiers de votre ordinateurs sont rangés dans desrepertoires (des dossiers) qui sont classé de manière
+hierarchique comme représenter sur le shéma çi-dessous.
+Figure 1 – Pour accéder au fichier "Electro" depuis le "Dossier Personnel", il faut passer par le fichier "Musiques".
+1.1 Tutoriel
+1. Le terminal est la fenêtre dans laquelle il est possible d’écrire et d’executer les lignes des commande. Pour ouvrir un
+terminal taperalt + F2puis écrire gnome-terminal dans la fenêtre qui vient d’apparaître.
+2. Lorsque vous ouvrez un terminal, vous vous trouver dans vos "Dossier personnel". Comme c’est la première fois que
+vous utilisez votre session, ce dossier est vide car vous n’avez encore rien créer.
+3. Dans le terminal écrire puis valider la commandemkdir Informatique_Preing1 . Avec la sourris, ouvrez le dossier
+"Dossier Personnelle depuis le bureau. Que s’est-il passé?
+4. Dans le terminal écrire puis valider la commandetouch test . Que s’est-il passé? Quelle est la différence entre la
+commande mkdir et touch?
+1
+<<<PAGE>>>
+5. Ecrire ls dans le terminal. A quoi sert cette commande?
+6. La commande rm suivit d’un nom permet de suprimer des fichier ou des dossier de ce nom. Supprimer "test".
+Attention! La commande rm ne met pas ce qui est supprimé à la corbeille : elle supprime définitivement! Attention
+donc à ne pas faire de bétise!
+7. Verifier sur le terminal que le fichier a bien été supprimé.
+8. Lacommande cdsuivitd’unnomdefichierpermetderentrerdanscefichier.Entrerdanslefichier Informatique_Preing1
+et y creer le fichierTP1. Verifier que celà a bien fonctionné.
+1.2 A vous !
+1. Récupérer le dossierTD_unix.tar.gz sur la page du cours et le placer dans le répertoireDossier personnel(vous
+avez le droit d’utiliser la souris).
+L’extension tar.gz indique que le répertoire a été compressé avec le logicielgzip (le logiciel de compression usuel
+d’UNIX). Il s’agit de le décompresser grâce à une ligne de commande.
+2. Ouvrir un nouveau terminal.
+3. Décompresser le dossier que l’on vient de télécharger grâce à la commande suivante :
+tar -xzvf nom_dossier_a_decompresser
+4. Entrer dans le répertoireTD_ubuntu issu de la décompression.
+5. Quelle commande permet de voir les fichiers du répertoire courant? L’utiliser pour voir les fichiers qui ont été extraits.
+6. Quelle sont les différents types de fichiers obtenus? Dans le répertoire courant, créer des répertoires correspondants aux
+différents types de fichiers que vous avez reconnus (ex : créer un répertoire image) à l’exception du dossier compressé.
+7. La commande mv + nom de fichier + nom de dossier permet de déplacer un fichier dans un dossier. Déplacer les
+fichiers image dans le dossier image que vous venez de créer.
+8. Déplacer les fichiers texte dans le dossier texte que vous venez de créer enune seule ligne de commande.
+Commande utile : le méta-caractère "*"
+9. Déplacer ainsi le reste des fichiers dans leur répertoire correspondant.
+10. Revenir au repertoire précédent (dossier personnel)
+Commande utile : pour revenir en arrièrecd ..
+11. Supprimer le fichier compressé.
+Commande utile :rm
+2 Preparation aux futurs TP
+1. Dans le répertoire Informatique_PreIng1, créer le dossier TP1_C. C’est dans ce répertoire que l’on travaillera la
+prochaine séance!
+2. Aller dans le répertoire où vous avez placé le fichierpremier_programme.c.
+3. La commandegcc permet de compiler un programme et de créer un exécutable dont vous choisissez le nom :
+gcc -o nom_executable nom_fichier.c
+Compiler premier_programme.c. et vérifier que l’executable est bien été crée.
+4. Exécuter le programme grâce à la commande suivante :
+./nom_executable
+5. Renommer premier_programme.c en mon_programme.c.
+Commande utile :mv
+6. Gedit est un éditeur de texte qui permet d’écrire les programmes. Ouvrirmon_programme.c grâce à la commande
+suivante :
+gedit mon_programme.c
+Est-ce que ce code semble bien compatible avec ce que l’on a obtenu en l’exécutant?
+7. Pouvez vous entrer une commande dans le terminal? Fermergedit. Et maintenant?
+8. Lorsque l’on lance une commande dans un terminal, on ne peut écrire dans le terminal que lorsque la commande est
+terminée. Si on veut pouvoir continuer à écrire dans le terminal, il faut rajouter à la fin de la ligne le caractère&
+gedit mon_programme.c &
+2
+<<<PAGE>>>
+(Attention : la première commande est toujours en cours mais en "arrière plan (background)" : si on ferme le terminal,
+elle s’arrête).
+9. Modifier le programme pour qu’il affiche le message "C’est mon premier programme en C ! " à l’exécution. À quoi
+sert \n?
+10. Compiler et exécuter le code que l’on vient de modifier pour vérifier que l’on affiche bien le message souhaité (ne pas
+oublier de sauvegarder les changements dans le fichier.c!).
+3 Pour les plus avancés...
+1. Dans le fichier "TP1" creer un dossier "Bonus".
+2. Récupérer le dossierTD_unix_bonus.tar.gz sur la page du cours, le placer dans le dossier "bonus" (vous pouvez
+utiliser la sourris) et le décompresser.
+3. Entrer dans le dossier contenant les fichiers décompressés et écrire dans le terminal la commande "./commande.sh".
+4. Lacommande eog permetd’ouvrir lesimages. Visualiserpdf.png,TUX.png etbebe_manchot.jpg. Yparvient-on?
+5. Pour comprendre d’où vient le problème visualiser les différentes permissions de ces fichiers.
+commande utile :ls -l
+6. Modifier les permissions debebe_manchot.jpg pour parvenir à visualiser l’image.
+astuce : chercher le fonctionnement de la commande "chmod".
+7. Supprimer en une seule commande les images donc le nom comporte 3 lettres (.png non compris). Que reste-t-il dans
+le répertoire?
+Commandes utiles : le méta-caractère "?"
+8. Afficher dans le terminal le fichiermp3.txt
+Commande utile :cat
+9. Quels sont les fichiers texte qui contiennent le mot "programmation"? Commande utile :grep
+10. Créer dans le répertoire texte le répertoire "langage_programmation".
+11. Copier-coller les fichiers comprenant le mot "programmation" dans le répertoire que l’on vient de créer. Vérifier que
+l’opération a bien été réalisée.
+Commande utile :cp
+12. A l’aide de lignes de commande, regardez le nombre de lignes et de mots du fichierlangage_c.txt.
+Commande utile :wc
+3

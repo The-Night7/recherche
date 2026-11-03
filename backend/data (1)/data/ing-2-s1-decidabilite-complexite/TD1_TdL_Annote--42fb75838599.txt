@@ -1,0 +1,105 @@
+CY TECH : Théorie des langages 2024-2025
+TD1 - Introduction
+Objectifs
+• Introduction à la théorie des langages
+– Grammaire
+– Dérivation de mots
+• Décomposition d’un problème en analyse lexicale et syntaxique
+Rappels et notations
+On rappelle que le mot langage s’écrit sans u en français.
+Exercice 1. Dérivation de règles
+En théorie des langages, quand les symboles sont déjà des suites de symboles, on parlera de voca-
+bulaire plutôt que d’alphabet et de phrases plutôt que de mots.
+On considère le langage naturel (simplifié) suivant :
+• Le vocabulaire A ={le,la,fille,raisin,cueille}.
+• Une phrase est de la forme groupe nominal verbe groupe nominal.
+• Un groupe nominal est de la forme déterminant nom.
+• Les déterminants sontla ou le.
+• Les noms sontfille ou raisin.
+• Le verbe estcueille.
+Question 1. Etablir la grammaire de ce langage.
+Question 2. Montrer par dérivation quela fille cueille le raisinest une phrase du langage.
+Question 3. Montrer quele raisin cueille la filleest une phrase du langage en construisant l’arbre
+de dérivation correspondant.
+Question 4. Que pensez-vous de la deuxième phrase?
+Question 5.Existe-t-il des phrases grammaticalement incorrectes dans le langage? Comment corriger
+la grammaire pour les interdire?
+Question 6. Combien de phrases différentes contient ce langage?
+1
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+Exercice 2. Analyse lexicale et syntaxique
+On considère le mini-langage de programmation suivant :
+1. L’alphabet Alp du langage L est formé des lettres{a, ...,z,A, ...,Z}, des chiffres{0, ..., 9}, du
+point{.}, de la quote{′} et des caractères{+,−,∗, /, =, &}.
+2. Un identificateur est composé de lettres et de chiffres et commence par une lettre.
+3. Un nombre peut être un entier (composé de chiffres) ou un décimal (composé d’une partie entière
+et d’une partie fractionnaire séparées par un point).
+4. Un opérateur est l’une des 4 opérations arithmétiques.
+5. Une expression numérique est une suite de nombres ou d’identificateurs reliés par des opérateurs.
+6. Une affectation numérique associe un identificateur à une expression numérique par le symbole
+égal (=).
+7. Un littéral est une suite de symboles entre simple quotes.
+8. Une expression alphanumérique est une suite de littéraux ou d’identificateurs reliés par l’opéra-
+teur de concaténation (symbole&).
+9. Une affectation alphanumérique associe un identificateur à une expression alphanumérique par
+le symbole égal (=).
+10. Une expression syntaxiquement correcte du langage défini surAlp est une affectation numérique
+ou alphanumérique.
+On cherche les expressions syntaxiquement correctes.
+Question 1. Décomposer ce problème en analyse lexicale et analyse syntaxique.
+1. Parmi les termes mentionnés, lequels correspondent à des lexèmes?
+2. Pour chaque spécification, relève-t-elle de l’analyse lexicale ou syntaxique?
+3. (Plus dur) Quelles grammaires peuvent correspondre chacune de ces analyses?
+2
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+Exercice 3. Le langage SQL
+Soitlesous-langagedeSQL,permettantd’écriredesrequêtessimplifiéesdeprojectionetdesélection
+sur une seule table ayant des champs de type chaîne et/ou de type entier :
+SELECT champ1, ... , champn FROM table WHERE condition;
+où condition peut prendre l’une des formes suivantes :
+• champi comp constante
+• (condition oper condition).
+avec
+• oper∈{ OR,AND}
+• comp∈{ =, >, <}
+• constante∈{′chaine′,entier} où chaine est une suite finie de lettres ou de chiffres etentier
+une suite finie de chiffres.
+• champi ettable sont des identificateurs (un identificateur étant composé de lettres et de chiffres
+et commençant par une lettre).
+Question 1. Nous nous plaçons ici dans le cadre de l’analyse lexicale permettant de reconnaître les
+lexèmes utilisés dans une requête SQL. Donner une grammaire permettant d’identifier les différents
+lexèmes nécessaires pour les requêtes de ce langage SQL.
+Question 2. Cette fois-ci, nous nous allons procéder à l’analyse syntaxique d’une requête SQL. En
+fonction des lexèmes obtenus lors de la question précédente, proposer une grammaire hors-contexte qui
+reconnait les requêtes syntaxiquement bien formées.
+Les lexèmes obtenus précédemment deviennent donc les éléments terminaux de cette
+grammaire.
+Exercice 4. (Pour s’entrainer) Langage binaires
+Soit A ={a, b} un alphabet binaire.
+Question 1. Proposer une grammaire formelle définissant chacun des langages suivants :
+1. Le langage des mots de taille 6 :A6
+2. Le langage de tous les mots :A∗
+3. Le langage des mots commencant par le symbolea et finissant par le symboleb :{a·u·b| u∈ A∗}
+4. Le langage des palindromes :{ε, a, b, aa, bb, aba, bab, ...}.
+5. Le langage des mots tels que le symbolea n’est jamais suivi d’un autre symbolea :
+{ε, a, ab, ba, bb, aba, abb, bab, bba, bbb, ...}
+6. L’intersection des deux langages précédents
+7. Le langage des mots contenant autant dea que de b
+3
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>
+
+<<<PAGE>>>

@@ -1,0 +1,200 @@
+Optimisation 
+stochastique - 3
+L’Optimisation par Essaims Particulaires
+
+<<<PAGE>>>
+L’Optimisation par Essaims Particulaires (OEP)
+2
+
+<<<PAGE>>>
+Un peu d’histoire...
+● Proposée “par hasard” par James Kennedy (socio-psychologue) et Russel 
+Eberhart (ingénieur en électricité) en 1995 ;
+● Algorithme multi-agents, adapté aux problèmes continus ; 
+● Population d’individus peu intelligents (possédant une petite mémoire ) 
+mais fortement communicants ;
+● Basée sur l’imitation et non sur la sélection ;
+● http://www.swarmintelligence.org/, http://www.particleswarm.info/, un 
+livre de Maurice Clerc sur le sujet.
+3
+<<<PAGE>>>
+Optimisation par Essaims particulaires - La particule
+4
+position 
+actuelle
+vitesse 
+actuelle
+vers ma meilleure 
+position connue
+vers la meilleure 
+position de mes 
+informatrices
+nouvelle position
+<<<PAGE>>>
+OEP - La particule
+5
+Une particule connaît : 
+● Sa position actuelle et son évaluation ;
+● Sa vitesse ;
+● La meilleure position par laquelle elle est passée et son évaluation ;
+● La composition de son voisinage d’informatrices ;
+● La meilleure position de son voisinage d’informatrices et son évaluation.
+
+<<<PAGE>>>
+Les concepts sous-jacents de la métaphore : 
+● Une particule : un candidat du problème et un peu plus... ;
+● L’essaim : la population de particules ;
+● La vitesse d’une particule : le vecteur de déplacement (perturbation du 
+candidat) ;
+● Le voisinage d’une particule : ensemble des particules échangeant de 
+l’information avec celle-ci.
+6
+OEP - La métaphore détaillée
+<<<PAGE>>>
+L’algorithme s’articule autour de deux itérations, parallélisables : 
+● Pour chaque particule, on met à jour les informations utiles au 
+déplacement ;
+● Pour chaque particule, on calcule la nouvelle vitesse et on effectue le 
+déplacement.
+7
+OEP - Principe
+<<<PAGE>>>
+OEP - Algorithme
+8
+initialisation de l’essaim de N particules 
+Répéter
+iter + 1 
+Pour chaque particule Faire 
+maj de sa meilleure position 
+maj de la meilleure position du voisinage 
+Fin Pour 
+Pour chaque particule Faire 
+calcul de la nouvelle vitesse 
+déplacement de la particule 
+évaluation de la nouvelle position 
+Fin Pour 
+mise à jour de la meilleure position globale 
+Jusqu’à critèreDArrêt()
+
+<<<PAGE>>>
+À chaque itération, on calcule la nouvelle vitesse Vk+1, compromis entre les 3 
+comportements et on déplace la particule Xk en fonction : 
+● Vk+1 = ψ Vk + ρ1 (Xpbest − Xk) + ρ2 (Xvbest − Xk)
+○ ψ : coefficient d'inertie, affine la convergence de la méthode ;
+○ ρi : coefficients de confiance, modifient l'instinct de la particule, ρi = ri.ci, avec ri suit une loi 
+uniforme sur [0,1] et c1 + c2 ≤ 4;
+● Xk+1 = Xk + Vk+1
+OEP - Vitesse et Déplacement
+9
+<<<PAGE>>>
+OEP - Coefficients
+10
+Définir des valeurs efficientes de coefficients est le paramétrage sensible de la 
+méthode. Ils définissent plusieurs types de comportement :
+● coefficient d’inertie : je fais confiance à mon déplacement ;
+● coefficient social : je fais confiance à mes informatrices ;
+● coefficient cognitif : je fais confiance à ma mémoire ;
+● facteur de contrition : coefficient introduit pour éviter la divergence hors 
+de l’espace de recherche ;
+● Il existe de nombreux papiers de recherche sur ce thème.
+<<<PAGE>>>
+OEP - Coefficients
+11
+L’équation de la vitesse peut s’exprimer plus simplement sous la forme :
+● Vk+1 = ψ Vk + cmax*rand(0,1) (Xpbest − Xk) + cmax*rand(0,1) (Xvbest − Xk)
+○ c1 = c2 = cmax
+○ avec (ψ; cmax) = (0.7; 1.47) ou (0.8; 1.62) : valeurs performantes de couple
+En utilisant le facteur de contrition1, un calcul de vitesse faisant consensus :  
+● Vk+1 = 0.7298844 Vk + 2.05*rand(0,1) (Xpbest − Xk) + 2.05*rand(0,1) (Xvbest − Xk)
+1Clerc et Kennedy. 2002, “The particle swarm - explosion, stability, and convergence in a multidimensional complex space”, Transactions on Evolutionary Computation, vol. 6, n o 1, p. 58–73.
+<<<PAGE>>>
+OEP - Caractéristiques de l’essaim
+12
+Le nombre de particules composant l’essaim et leur organisation en son sein 
+sont deux paramètres de la méthode : 
+● Une taille d’essaim trop faible empêche une exploration convenable de 
+l’espace de recherche ;
+● Une taille trop importante n’améliore pas nécessairement la convergence 
+et augmente le temps de calcul ;
+● Une taille modérée, couplée à un nombre maximum d’itérations judicieux, 
+conduit à un comportement efficace de l’algorithme ; 
+● La taille du problème influe néanmoins sur le nombre de particules 
+(10+2√D : SPSO 2006, SPSO 2007).
+
+<<<PAGE>>>
+OEP - Voisinage
+13
+Plusieurs questions à se poser : 
+● Qui communique avec qui ? 
+● Quelle information est échangée ? 
+● Que faire de l’information ? 
+● Quand intervient l‘échange ?
+<<<PAGE>>>
+OEP - Topologie de voisinage
+14
+● Voisinage global : toutes les particules communiquent entre elles ;
+● Voisinage “local/social” : chaque particule communique avec un 
+sous-groupe, organisé en topologie particulière, par exemple :
+[Kaveh, A. 2014, ≪ Particle swarm optimization ≫ , dans 
+Advances in Metaheuristic Algorithms for Optimal Design
+of Structures, Springer]
+Topologies Gbest, en anneau, four-clusters, Von Neumann et pyramide
+<<<PAGE>>>
+OEP - Initialisation de l’essaim
+15
+Une métaheuristique multi-agents nécessite une initialisation qui propose une 
+bonne couverture de l’espace de recherche :
+● Aléatoire : on initialise les particules par un tirage aléatoire de leur 
+position sur l’espace de recherche (pseudorandom, chaotic...);
+● Guidée : il existe plusieurs stratégies pour “écarter” au maximum les 
+solutions sur l’ensemble de l’espace de recherche:
+○ division de l’espace de recherche ;
+○ technique d’opposition-based learning
+○ utilisation de séquences d’initialisation (Halton, Sobol…) ;
+○ utilisation d’hypercubes latins ;
+○ ….
+<<<PAGE>>>
+OEP - Problème aux limites
+16
+Il existe plusieurs stratégies pour éviter de sortir des limites de l’espace de 
+recherche :
+● Limiteur : on introduit un paramètre Vmax qui contrôle le déplacement 
+maximum de la vitesse ;
+● Ignorance : la particule est laissée hors de l’espace de recherche et son 
+évaluation n’est pas réalisée (ou fortement pénalisée) ;
+● Stop : la particule est arrêtée aux limites de l’espace, on annule ou on 
+oppose la vitesse ;
+● Rebond : la particule rebondit vers l’intérieur de l’espace de recherche.
+<<<PAGE>>>
+OEP - Critères d’arrêt
+17
+Permet de terminer l’algorithme selon plusieurs conditions : 
+● Le nombre d’évaluations atteint une limite. Ce nombre peut être ajusté en 
+fonction du nombre de particules composant l’essaim ;
+● Le temps d’exécution atteint une limite ;
+● Il n’y a pas eu d’amélioration depuis un certain nombre d’itérations.
+<<<PAGE>>>
+OEP - Discrétisation
+18
+L’optimisation par essaims particulaires est une métaheuristique adaptée aux 
+problèmes continus. Néanmoins, elle est “adaptable” à des problèmes à 
+variables discrètes en résolvant les problématiques suivantes : 
+● Comment définit-on une particule ? 
+● Que représente la vitesse ? 
+● Qu’est-ce que la distance entre deux particules ? 
+● Que représentent les opérations *, +, - ? 
+<<<PAGE>>>
+OEP - Autres améliorations
+19
+Il existe de nombreuses améliorations de cet algorithme pour chacune de ses 
+caractéristiques, notamment :
+● TRIBES : l’essaim est divisé en sous-essaims communicants dont le 
+nombre de particules les composant évolue au cours du temps ;
+● FIPS : Le déplacement prend en compte la position de l’ensemble des 
+particules de l’essaim et non plus de la meilleure ;
+● Bare Bones PSO : Le déplacement est effectué selon une loi de probabilité 
+suivant une distribution gaussienne dont les paramètres dépendent des 
+meilleures valeurs personnelle et du voisinage ;
+● De nombreuses autres !
+<<<PAGE>>>
+That’s all folks !

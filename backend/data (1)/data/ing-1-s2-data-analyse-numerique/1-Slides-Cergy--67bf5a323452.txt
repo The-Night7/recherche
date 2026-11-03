@@ -1,0 +1,977 @@
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+ING1 MI/MF Semestre 2
+ANAL YSE NUMÉRIQUE EN PYTHON
+* Chapitre 1 *
+Nelly BARRAU
+( nelly.barrau@cyu.fr )
+1/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Modalités
+Enseignement : 9h de CM + 18h de TD
+Évaluations : ; La moyenne de 1ere session est composée de 2 notes
+Un TP noté en python
+Durée : 3h / Travail individuel ou binôme
+Non rattrapable en cas d'absence (justiée ou non justiée)
+TP comptant pour 25 % dans la moyenne
+Un examen nal écrit sur papier
+Durée : 2h
+Examen comptant pour 75 % dans la moyenne
+2 feuilles R/V manuscrites autorisées. Appareil electronique interdit.
+Pas de question de code/programmation/python.
+En cas d'échec à la 1ère session 1 , la 2ème session comporte un examen
+écrit papier, avec les mêmes modalités que l'examen nal de première
+session, qui comptera pour 75 % de la moyenne de rattrapage (le TP de
+la 1ère session comptant toujours pour 25 %).
+1. moyenne de l'EC inférieur à la note seuil (6/20) ou moyenne de l'EC inférieure à
+10 et non compensée par la moyenne de l'UE2/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Modalités - Compétences visées
+3/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Objectifs
+But
+Permettre aux élèves de s'initier aux méthodes développées pour résoudre
+numériquement des problèmes issus de phénomènes physiques, chimiques
+ou biologiques, ou autres et dont la solution (exacte) n'est pas connue ou
+est trop compliquée à déterminer.
+Documentations sur TEAMS
+Supports Cours/TD/TP : régulièrement maj, selon avancement
+Python pour les TP (Aide, guide)
+Archives Examens, Rattrapages (ex Analyse Numérique)
+Archives TP Noté (ex Analyse Numérique)
+Bibliographies
+4/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Recherche de valeurs propres
+CM [1.5h] et TD [3h]
+1 Cadre et Motivations
+2 Localisation des valeurs propres
+Disques de Gershgorin
+Propriétés et Exemples
+3 Puissance itérée
+Principe et algo
+Convergence
+4 Puissance inverse
+Recherche d'une valeur propre
+Factorisation QR
+5 Fin
+5/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Un certain nombre de résultats établis (chapitres précédents) ou à venir,
+repose sur le calcul des valeurs propres.
+Néanmoins, aucune méthode de calcul n'est construite autour de la
+dénition "initiale" (racines du polynôme caractéristique)
+Valeur propre
+Soit A∈M n(K). λ∈ K est valeur propre de A si et seulement si il existe
+u∈ Rn non nul tel que Au =λu
+But de ce chapitre
+Apprendre à localiser "grossièrement" les valeurs propres d'une
+matrice
+Apprendre à calculer (par des méthodes itératives) des valeurs
+propres particulières
+Apprendre à déterminer toutes les valeurs propres, à l'aide d'une
+méthode itérative de factorisation
+6/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Disques de Gershgorin
+Soit n∈ N∗ et A∈M n(K).
+Le théorème de Gershgorin permet, pour une matrice carrée A donnée, de
+construire un domaine (appelé disque de Gershgorin) contenant toutes les
+valeurs propres
+i-ème disque-ligne de Gershgorin
+On appelle i-ème disque-ligne de Gershgorin l'ensemble déni pour
+tout i∈ [ [1 , n] ]par
+D (l)
+i (A) ={z∈ C :|z− ai,i|≤
+nX
+j=1 (j̸=i)
+|ai,j|} = D(ai,i ; ri )
+où ri =
+nX
+j=1 (j̸=i)
+|ai,j|
+7/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Disques de Gershgorin
+j-ème disque-colonne de Gershgorin
+On appelle j-ème disque-colonne de Gershgorin l'ensemble déni pour
+tout j∈ [ [1 , n] ]par
+D (c)
+j (A) ={z∈ C :|z− ai,i|≤
+nX
+i=1 (i̸=j)
+|ai,j|} = D(ai,i ; rj )
+où rj =
+nX
+i=1 (i̸=j)
+|ai,j|
+Théorème de Gershgorin
+Sp(A)⊂
+
+
+n[
+i=1
+D (l)
+i (A)∩
+n[
+j=1
+D (c)
+j (A)
+
+
+8/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Ranement de la localisation
+Soit m∈ [ [1 , n] ]
+S'il existe m disques-lignes (resp. colonnes) de A dont la réunion est
+disjointe des n− m restants, alors ces m disques contiennent exactement
+m valeurs propres de A (en tenant compte de leur multiplicité).
+Cas - Disques deux à deux disjoints
+Si tous les disques-lignes (resp. colonnes) de Gershgorin de A sont
+disjoints 2 à 2, alors chaque disque-ligne (resp. colonnes) contient
+exactement 1 valeur propre.
+Cas - Valeurs propres complexes conjuguées
+Pour A matrice carrée à coecients réels. Soit λ une valeur propre
+complexe (non réelle) de A. Alors λ est également valeur propre de A.
+λ et λ sont dans le même disque de Gershgorin.
+9/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Disques de A
+Disques de Gershgorin
+Donner une estimation du nombre maximal de valeurs propres complexes
+de la matrice suivante :
+A =
+
+
+2 −1 /2 0 −1 /2
+0 4 0 2
+−1 /2 0 6 1 /2
+0 0 1 9
+
+
+A admet 4 disques-lignes (resp. colonnes) de Gershgorin
+D (l)
+1 (A) ={z∈ C;|z− (2 )|≤|− 1 /2| +|− 1 /2| = 1} = D1 (2 ; 1 )
+D (l)
+2 (A) ={z∈ C;|z− 4|≤ 2} = D2 (4 ; 2 )
+D (l)
+3 (A) ={z∈ C;|z− 6|≤ 1} = D3 (6 ; 1 )
+D (l)
+4 (A) ={z∈ C;|z− 9|≤ 1} = D4 (9 ; 1 )
+Disques-colonnes D1 (2 ; 1 /2 ) ; D2 (4 ; 1 /2 ) ; D3 (6 ; 1 ) et D4 (9 ; 3 )
+10/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Disques de A
+Disques de Gershgorin
+Donner une estimation du nombre maximal de valeurs propres complexes
+de la matrice suivante :
+A =
+
+
+2 −1 /2 0 −1 /2
+0 4 0 2
+−1 /2 0 6 1 /2
+0 0 1 9
+
+
+A admet 4 disques-lignes (resp. colonnes) de Gershgorin
+D (l)
+1 (A) ={z∈ C;|z− (2 )|≤|− 1 /2| +|− 1 /2| = 1} = D1 (2 ; 1 )
+D (l)
+2 (A) ={z∈ C;|z− 4|≤ 2} = D2 (4 ; 2 )
+D (l)
+3 (A) ={z∈ C;|z− 6|≤ 1} = D3 (6 ; 1 )
+D (l)
+4 (A) ={z∈ C;|z− 9|≤ 1} = D4 (9 ; 1 )
+Disques-colonnes D1 (2 ; 1 /2 ) ; D2 (4 ; 1 /2 ) ; D3 (6 ; 1 ) et D4 (9 ; 3 )
+10/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Disques de A
+Disques de Gershgorin
+Donner une estimation du nombre maximal de valeurs propres complexes
+de la matrice suivante :
+A =
+
+
+2 −1 /2 0 −1 /2
+0 4 0 2
+−1 /2 0 6 1 /2
+0 0 1 9
+
+
+A admet 4 disques-lignes (resp. colonnes) de Gershgorin
+D (l)
+1 (A) ={z∈ C;|z− (2 )|≤|− 1 /2| +|− 1 /2| = 1} = D1 (2 ; 1 )
+D (l)
+2 (A) ={z∈ C;|z− 4|≤ 2} = D2 (4 ; 2 )
+D (l)
+3 (A) ={z∈ C;|z− 6|≤ 1} = D3 (6 ; 1 )
+D (l)
+4 (A) ={z∈ C;|z− 9|≤ 1} = D4 (9 ; 1 )
+Disques-colonnes D1 (2 ; 1 /2 ) ; D2 (4 ; 1 /2 ) ; D3 (6 ; 1 ) et D4 (9 ; 3 )
+10/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Disques de A
+Disques de Gershgorin
+Donner une estimation du nombre maximal de valeurs propres complexes
+de la matrice suivante :
+A =
+
+
+2 −1 /2 0 −1 /2
+0 4 0 2
+−1 /2 0 6 1 /2
+0 0 1 9
+
+
+A admet 4 disques-lignes (resp. colonnes) de Gershgorin
+D (l)
+1 (A) ={z∈ C;|z− (2 )|≤|− 1 /2| +|− 1 /2| = 1} = D1 (2 ; 1 )
+D (l)
+2 (A) ={z∈ C;|z− 4|≤ 2} = D2 (4 ; 2 )
+D (l)
+3 (A) ={z∈ C;|z− 6|≤ 1} = D3 (6 ; 1 )
+D (l)
+4 (A) ={z∈ C;|z− 9|≤ 1} = D4 (9 ; 1 )
+Disques-colonnes D1 (2 ; 1 /2 ) ; D2 (4 ; 1 /2 ) ; D3 (6 ; 1 ) et D4 (9 ; 3 )
+10/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+De plus, si λ∈ Sp(A) alors elle est dans (au moins) un disque
+|λ|−| ai,i|≤| λ− ai,i|≤
+nX
+j=1 (j̸=i)
+|ai,j|
+Autrement dit
+|λ|≤
+nX
+j=1 (j̸=i)
+|ai,j| +|ai,i|⇔| λ|≤
+nX
+j=1
+|ai,j|
+Ainsi, d'après les disques-lignes de A
+ρ(A)≤ 3 OU ρ(A)≤ 6 OU ρ(A)≤ 7 OU ρ(A)≤ 10
+D'après les disques-colonnes de A
+ρ(A)≤ 2 .5 OU ρ(A)≤ 4 .5 OU ρ(A)≤ 7 OU ρ(A)≤ 12
+11/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Figure  Disques-lignes (à gauche) et Disques-colonnes (à droite) de A
+On constate que
+1 disque-ligne isolé D4 (9 ; 1 ), disjoint de la réunion des 3 autres : ce
+dernier ne peut contenir 1 unique valeur propre λ1 réelle et
+λ1 ∈]8 ; 10 [
+2 disques-colonnes isolés D1 (2 ; 1 /2 ) et D2 (4 ; 1 /2 ), disjoints de la
+réunion des 2 autres : chacun ne peut contenir qu'1 valeur propre λ2
+et λ3 réelles avec λ2 ∈]1 .5 ; 2 .5 [ et λ3 ∈]3 .5 ; 4 .5 [
+Tous les coef de A étant réels, la 4ème valeur propre est
+nécessairement réelle (avec λ4 ≤ρ(A))
+12/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Figure  Disques-lignes (à gauche) et Disques-colonnes (à droite) de A
+On constate que
+1 disque-ligne isolé D4 (9 ; 1 ), disjoint de la réunion des 3 autres : ce
+dernier ne peut contenir 1 unique valeur propre λ1 réelle et
+λ1 ∈]8 ; 10 [
+2 disques-colonnes isolés D1 (2 ; 1 /2 ) et D2 (4 ; 1 /2 ), disjoints de la
+réunion des 2 autres : chacun ne peut contenir qu'1 valeur propre λ2
+et λ3 réelles avec λ2 ∈]1 .5 ; 2 .5 [ et λ3 ∈]3 .5 ; 4 .5 [
+Tous les coef de A étant réels, la 4ème valeur propre est
+nécessairement réelle (avec λ4 ≤ρ(A))
+12/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Figure  Disques-lignes (à gauche) et Disques-colonnes (à droite) de A
+On constate que
+1 disque-ligne isolé D4 (9 ; 1 ), disjoint de la réunion des 3 autres : ce
+dernier ne peut contenir 1 unique valeur propre λ1 réelle et
+λ1 ∈]8 ; 10 [
+2 disques-colonnes isolés D1 (2 ; 1 /2 ) et D2 (4 ; 1 /2 ), disjoints de la
+réunion des 2 autres : chacun ne peut contenir qu'1 valeur propre λ2
+et λ3 réelles avec λ2 ∈]1 .5 ; 2 .5 [ et λ3 ∈]3 .5 ; 4 .5 [
+Tous les coef de A étant réels, la 4ème valeur propre est
+nécessairement réelle (avec λ4 ≤ρ(A))
+12/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Propriétés et Exemples
+Figure  Disques-lignes (à gauche) et Disques-colonnes (à droite) de A
+On constate que
+1 disque-ligne isolé D4 (9 ; 1 ), disjoint de la réunion des 3 autres : ce
+dernier ne peut contenir 1 unique valeur propre λ1 réelle et
+λ1 ∈]8 ; 10 [
+2 disques-colonnes isolés D1 (2 ; 1 /2 ) et D2 (4 ; 1 /2 ), disjoints de la
+réunion des 2 autres : chacun ne peut contenir qu'1 valeur propre λ2
+et λ3 réelles avec λ2 ∈]1 .5 ; 2 .5 [ et λ3 ∈]3 .5 ; 4 .5 [
+Tous les coef de A étant réels, la 4ème valeur propre est
+nécessairement réelle (avec λ4 ≤ρ(A))
+12/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Cette méthode permet le calcul d'une approximation
+de la valeur propre de plus grand module,
+de la valeur d'un vecteur propre associé à la valeur propre précédente
+Exemple introductif
+A =
+ 10 0
+−9 1
+
+A a pour valeurs propres 10 et 1
+A a pour vecteurs propres associés respectivement
+ 1
+−1
+
+et
+0
+1
+
+Considérons la suite (x (k))k∈N dont le vecteur initial est x (0 ) =
+
+2
+1
+
+et
+dénie par x (k+1 ) = Ax (k) pour tout k∈ N.
+13/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Il vient
+x (1 ) = Ax (0 ) x (2 ) x (3 ) x (4 ) x (5 )
+ 20
+−17
+  200
+−197
+  2000
+−1997
+  20000
+−19997
+  200000
+−199997
+
+A la lecture de ce tableau, nous pouvons constater que l'évolution de la
+suite x (k) est "presque proportionnelle" au vecteur propre
+ 1
+−1
+
+et
+même x (k+1 )≃ 10
+ 1
+−1
+
+Nous pouvons expliquer ce phénomène :
+Comme x (k+1 ) = Ax (k), alors par récurrence x (k+1 ) = Ak+1 x (0 )
+En utilisant la diagonalisation de A = PDP−1 où
+D =
+10 0
+0 1
+
+P =
+ 1 0
+−1 1
+
+P−1 =
+1 0
+1 1
+
+14/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+On a alors
+Ak = (PDP−1 )k = PD k P−1 =
+ 10 k 0
+−10 k + 1 1
+
+et
+x (k) = Ak x (0 ) =
+ 2 .10 k
+−2 .10 k + 3
+
+= 2 .10 k
+ 1
+−1 + 3
+2 .10 k
+
+On constate également que le rapport entre 2 composantes successives
+de même indice tend vers la valeur propre de plus grand module :
+lim
+k→+∞
+x (k+1 )
+1
+x (k)
+1
+= lim
+k→+∞
+2 .10 k+1
+2 .10 k = 10
+et
+lim
+k→+∞
+x (k+1 )
+2
+x (k)
+2
+= lim
+k→+∞
+−2 .10 k+1 + 3
+−2 .10 k + 3 = 10
+15/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+On en déduit que
+lim
+k→+∞
+∥x (k+1 )∥
+∥x (k)∥ = 10
+À travers cet exemple, où ρ(A) = 10, les composantes de (x (k))k
+augmentent proportionnellement à 10 k . On notera donc que lorsque k
+tend vers l'inni, on peut rapidement aboutir à un dépassement des
+capacités machine.
+Pour soulager cet aspect, comme un vecteur propre est déni à un
+facteur de proportionnalité près, il est naturel de normaliser x (k) (à
+chaque itération).
+16/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Principe et algo
+On suppose que A possède n valeurs propres ordonnées
+|λ1|>|λ2|≥ ...≥|λn|
+et on notera e1 le vecteur propre orthonormé associé à λ1 .
+1 On part d'un y (0 ) = x (0 )
+∥x (0 )∥ un vecteur unitaire (de norme 1)
+arbitraire, où x (0 ) un vecteur initial quelconque.
+2 Pour k∈ N∗, on calcule
+
+
+
+x (k) = Ay (k−1 )
+y (k) = x (k)
+∥x (k)∥
+r (k) = t y (k)Ay (k) ♯ quotient de Rayleigh
+3 pour ε> 0 petit xé, on répète l'étape 2 jusqu'à
+|r (k)− r (k−1 )|<ε
+17/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Principe et algo
+On suppose que A possède n valeurs propres ordonnées
+|λ1|>|λ2|≥ ...≥|λn|
+et on notera e1 le vecteur propre orthonormé associé à λ1 .
+1 On part d'un y (0 ) = x (0 )
+∥x (0 )∥ un vecteur unitaire (de norme 1)
+arbitraire, où x (0 ) un vecteur initial quelconque.
+2 Pour k∈ N∗, on calcule
+
+
+
+x (k) = Ay (k−1 )
+y (k) = x (k)
+∥x (k)∥
+r (k) = t y (k)Ay (k) ♯ quotient de Rayleigh
+3 pour ε> 0 petit xé, on répète l'étape 2 jusqu'à
+|r (k)− r (k−1 )|<ε
+17/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Principe et algo
+On suppose que A possède n valeurs propres ordonnées
+|λ1|>|λ2|≥ ...≥|λn|
+et on notera e1 le vecteur propre orthonormé associé à λ1 .
+1 On part d'un y (0 ) = x (0 )
+∥x (0 )∥ un vecteur unitaire (de norme 1)
+arbitraire, où x (0 ) un vecteur initial quelconque.
+2 Pour k∈ N∗, on calcule
+
+
+
+x (k) = Ay (k−1 )
+y (k) = x (k)
+∥x (k)∥
+r (k) = t y (k)Ay (k) ♯ quotient de Rayleigh
+3 pour ε> 0 petit xé, on répète l'étape 2 jusqu'à
+|r (k)− r (k−1 )|<ε
+17/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Convergence
+Étudions rapidement les convergences des suites de l'algorithme
+précédent.
+On note {e1 ;...; en} une base de vecteurs propres associés {λ1 ;...;λn}.
+Ainsi, chaque vecteur y (k) se décompose de manière unique dans cette
+base, notamment y (0 ) :
+∃α1 ,...,α n∈ R : y (0 ) =
+nX
+i=1
+αi ei
+En eet, par récurrence, on établit facilement que y (k) = Ak y (0 )
+∥Ak y (0 )∥
+Ainsi
+Ak y (0 ) =
+nX
+i=1
+αiλk
+i ei =α1 λk
+1 e1 +
+nX
+i=2
+αiλk
+i ei
+18/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Convergence
+Après factorisation, on obtient
+Ak y (0 ) =α1 λk
+1
+ 
+e1 +
+nX
+i=2
+αi
+α1
+λk
+i
+λk
+1
+ei
+!
+=α1 λk
+1 (e1 +εk )
+Il vient alors, lorsque k tend vers ∞ :
+εk tend vers 0, car λ1 est la plus grande valeur propre
+Ak y (0 ) tend vers α1 λk
+1 e1
+y (k) tend vers ±e1 ( e1 normé) car
+y (k) = Ak y (0 )
+∥Ak y (0 )∥ = α1 λk
+1 (e1 +εk )
+∥α1 λk
+1 (e1 +εk )∥ =± e1 +εk
+∥e1 +εk∥
+r (k) tend vers λ1
+x (k) = Ak y (0 ) tend vers α1 λk
+1 e1
+19/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Convergence
+Remarque. La convergence de A s'adapte
+si A est diagonalisable, avec une valeur propre dominante unique
+si A est non diagonalisable, avec une valeur propre dominante unique
+si la valeur propre dominante n'est pas unique (ordre de multiplicité)
+Sur le même principe que celui-ci, il existe la méthode de la puissance
+inverse. Elle permet d'obtenir la valeur propre de plus petite module. Ce
+type de méthode repose sur des décompositions/factorisation de A
+20/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Il s'agit de la méthode précédente (méthode de la puissance) appliquée
+soit à A−1 : cela permet alors d'obtenir la valeur propre de plus petit
+module de A (ainsi qu'un vecteur propre associé)
+soit à (A−µIn)−1 : cela permet d'obtenir la valeur propre de A la
+plus proche de µ (ainsi qu'un vecteur propre associé)
+21/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Recherche d'une valeur propre
+La valeur propre de plus grand module de A−1 est égale à l'inverse de la
+la valeur propre de A de plus petit module car
+max
+i
+
+1
+λi
+ = 1
+miniλi
+On applique donc la méthode de la puissance à A−1 , puis on inverse la
+valeurs propre trouvée (celle de plus grand module de A−1 ) pour obtenir
+la valeur propre de A de plus petit module.
+ATTENTION ! En pratique, on ne calcule pas A−1 !
+Mais on résout successivement les systèmes Ax (k+1 ) = y (k) en ayant
+factorisé A sous la forme d'un produit de deux matrices triangulaires
+( A = BB T avec Cholesky ou A = LU ou A = PLU avec la méthode LU
+par exemple)
+22/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Recherche d'une valeur propre
+1 Pour y (0 ) unitaire, avec y (0 ) = x (0 )
+∥x (0 )∥ où x (0 ) non nul donné
+2 Pour k∈ N∗ :
+On cherche x (k) solution de Ax (k) = y (k−1 ) où à chaque itération k :
+A = LU
+Problème. Cela nécessite l'existence d'une factorisation (ici LU) à chaque
+itération (ou d'une factorisation PLU).
+voir algo cours : construction d'une matrice tri. sup semblable à A
+Il est plus intéressant d'utiliser une autre factorisation dont l'existence est
+garantie : la factorisation QR
+23/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+La factorisation QR d'une matrice A∈M m,n(K) est donnée par A = QR
+avec
+Q∈M m(K) orthogonale (ie Q−1 = Q T ),
+R∈M m,n(K) triangulaire supérieure.
+BUT de cette méthode
+Résoudre Ax = b pour A carrée ou non, inversible ou non.
+Plusieurs approches possibles pour déterminer Q et R :
+Procédé de Gram-Schmitt : voir cours
+Méthode de Househölder (détaillée ci-dessous, très pratique mais
+non abordée dans le cours)
+24/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+Cette partie n'est pas ainsi faite dans le support de cours.
+Soit v∈ Rn. On pose H = In− 1
+β vv T avec β = 1
+2∥v∥2
+2 .
+La matrice H est symétrique et orthogonale.
+Démonstration. H est symétrique ssi H T = H :
+H T =
+
+In− 1
+β vv T
+T
+= In− 1
+β (v T )T v T = H.
+H est orthogonale ssi H−1 = H T ie H T H = In :
+H T H = HH =
+
+In− 1
+β vv T
+2
+= I 2
+n− 2
+β vv T + 1
+β2 (vv T )2
+= In− 4
+∥v∥2
+2
+vv T + 4
+∥v∥4
+2
+∥v∥2
+2 = In
+Donc H est orthogonale.
+H est appelée matrice de Househölder associée à v .
+25/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+Soit a, b∈ Rn non colinéaires et ∥b∥ = 1.
+Soit v = a−∥ a∥b et H la matrice de Househölder associée à v .
+Alors Ha =∥a∥2 b
+Démonstration. On a
+Ha =
+
+In− 1
+β vv T
+
+a = a− 1
+β vv T a = a− 1
+β⟨v, a⟩v
+Or
+β = 1
+2∥v∥2 = 1
+2∥a−∥ a∥2 b∥2
+2 = 1
+2⟨a−∥ a∥2 b, a−∥ a∥2 b⟩
+= 1
+2∥a∥2
+2 + 1
+2∥a∥2
+2∥b∥2
+2 −∥ a∥⟨b, a⟩
+= ∥a∥2
+2 −∥ a∥2⟨b, a⟩
+= ⟨a−∥ a∥2 b, a⟩ =⟨v, a⟩
+Ainsi H = a− 1
+β⟨v, a⟩v = a− v =∥a∥2 b.
+26/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+Application à la factorisation QR
+A =
+
+
+4 −1 −1
+−3 2 −3
+0 −1 2
+
+
+Notons C1 , C2 , C3 les 3 colonnes de A.
+ÉTAPE 1 : Posons a = C1 et b = e1 =
+
+
+1
+0
+0
+
+. Alors
+∥a∥2 b = 5 e1 v = a−∥ a∥b =
+
+
+−1
+−3
+0
+
+ β = 1
+2 ∥v∥2 = 5
+et
+H1 = I3 − 1
+β vv T =
+
+
+4 /5 −3 /5 0
+−3 /5 −4 /5 0
+0 0 1
+
+
+Remarque. Pensez au moins à contrôler que H1 est bien symétrique !
+27/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+On a alors H1 C1 = Ha = 5 e1 (par construction) et
+H1 C2 =
+
+I3 − 1
+5
+
+
+−1
+−3
+0
+
+ −1 −3 0 
+
+
+
+
+−1
+2
+−1
+
+ =
+
+
+−1
+2
+−1
+
++
+
+
+−1
+−3
+0
+
+ =
+
+
+−2
+−1
+−1
+
+
+H1 C3 =
+
+
+1
+3
+2
+
+
+Ainsi
+H1 A =
+
+
+5 −2 1
+0 −1 3
+0 −1 2
+
+
+Posons ˜A =
+
+−1 3
+−1 2
+
+et notons C1 , C2 les 2 colonnes de ˜A
+28/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+ÉTAPE 2 : Posons a = C1 et b = e1 =
+1
+0
+
+. Alors
+∥a∥2 b =
+√
+2 e1 v = a−∥a∥b =
+
+−1 −
+√
+2
+−1
+
+β = 1
+2 ∥v∥2 =
+p
+2 +
+√
+2
+2
+et
+˜H2 = I2 − 1
+β vv T =
+ 
+−
+√
+2 +1√
+2 +2 −
+√
+2 +1√
+2 +2
+−
+√
+2 +1√
+2 +2
+√
+2 +1√
+2 +2
+!
+Remarque. Pensez à contrôler que ˜H2 est bien symétrique ! Alors
+H2 =
+
+
+1 0 0
+0 ˜H2
+0
+
+ =
+
+
+1 0 0
+0 −
+√
+2 +1√
+2 +2 −
+√
+2 +1√
+2 +2
+0 −
+√
+2 +1√
+2 +2
+√
+2 +1√
+2 +2
+
+
+29/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Factorisation QR
+On a alors
+H2 H1 A =
+
+
+5 −2 1
+0 2 3 /2 +2√
+2 +2 − 5
+√
+2 +5√
+2 +2
+0 0 − 3
+√
+2 +4
+2 5 /2 +6
+
+ = R
+Enn, comme H1 et H2 sont symétriques (ie H = H T ) et orthogonales
+(ie H−1 = H T ), il vient
+A = (H2 H1 )−1 R = H−1
+1 H−1
+2 R = H T
+1 H T
+2 R = H1 H2 R
+ie Q = H1 H2 .
+Finalement, via cette factorisation QR, on a
+Ax = b⇔ QRx = b⇔ Rx = Q T b
+30/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *
+<<<PAGE>>>
+Cadre et Motivations Localisation des valeurs propres Puissance itérée Puissance inverse Fin
+Fin - Chapitre 1.
+Prochaine séance : TD (3h)
+Télécharger la série de TD1 (voir support sur TEAMS)
+Préparer un maximum d'exercices.
+Conseils
+Travailler le cours (slides + support cours)
+Commencer à faire des ches.
+31/30
+Nelly BARRAU ( nelly .barrau@cyu.fr ) ING1 MI/MF Semestre 2 ANAL YSE NUMÉRIQUE EN PYTHON * Chapitre 1 *

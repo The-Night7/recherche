@@ -1,0 +1,779 @@
+---
+source: "PREING2-S2/Physique-moderne/revision_physique_moderne_complet.docx"
+transcription: conversion structurée du Word et relecture du contenu natif
+transcription_date: 2026-10-03
+verification: tous les paragraphes et cellules, y compris les tableaux imbriqués, comparés au XML Word ; formules Unicode conservées ; incohérences signalées
+---
+
+# Introduction à la physique moderne — Document de révision complet
+
+> Transcription intégrale du contenu natif du Word. Les encadrés deviennent des paragraphes et les tableaux de données restent des tableaux. Les notations Unicode de la source sont conservées. Le document se présente comme une synthèse générée à partir d’annales ; ses affirmations sur la fréquence des sujets sont celles de son auteur et n’ont pas été auditées ici. Les notes de vérification finales font partie de la transcription, pas du document source.
+
+CY TECH  ·  PREING2  ·  S2
+
+Introduction à la
+
+Physique Moderne
+
+Document de Révision Complet
+
+3
+
+CHAPITRES
+
+12
+
+FORMULES CLÉS
+
+11+
+
+SUJETS ANALYSÉS
+
+Ce document synthétise l'intégralité du programme de Physique Moderne PREING2 S2 de CY Tech, avec les formules, démonstrations, exercices corrigés et pièges relevés dans les sujets réels de 2022 à 2025 (CC1, CC2, rattrapages et TDs officiels de M. Akridas-Morel).
+
+## Données et constantes fondamentales
+
+Exactement telles que données dans les sujets CY Tech — à reconnaître immédiatement.
+
+| Constante | Valeur |
+| --- | --- |
+| Constante de Planck h | 6,626 × 10⁻³⁴ J·s |
+| Constante de Planck réduite ℏ = h/2π | 1,055 × 10⁻³⁴ J·s |
+| Vitesse de la lumière dans le vide c | 299 792 458 m·s⁻¹  ≈ 3,00 × 10⁸ m·s⁻¹ |
+| Masse de l'électron mₑ | 9,109 × 10⁻³¹ kg |
+| Charge élémentaire e | 1,602 × 10⁻¹⁹ C |
+| Masse d'un nucléon m | 1,7 × 10⁻²⁷ kg |
+| Permittivité du vide ε₀ | 8,854 × 10⁻¹² F·m⁻¹ |
+| 1 eV en joules | 1,602 × 10⁻¹⁹ J |
+| 1 MeV en joules | 1,602 × 10⁻¹³ J |
+
+**💡 Astuce**
+
+  
+Conversions fréquentes en examen :  
+  • λ en nm → m : multiplier par 10⁻⁹  
+  • E en eV → J : multiplier par 1,602×10⁻¹⁹  
+  • Spectre visible : 400 nm (violet) à 700 nm (rouge)  
+  • UV < 400 nm  |  IR > 700 nm  |  λ_seuil photoélectrique typique : 200–350 nm (UV)
+
+## Chapitre 1  —  Quanta de lumière
+
+### 1.1  Description ondulatoire de la lumière
+
+La lumière est une onde électromagnétique décrite par les équations de Maxwell dans le vide :
+
+**Équations de Maxwell → Onde électromagnétique**
+
+div E = 0       div B = 0  
+rot B = ε₀μ₀ ∂E/∂t       rot E = −∂B/∂t  
+→  Équation d'onde :  ∂²Ey/∂t² − c² ∂²Ey/∂x² = 0   avec c² = 1/(ε₀μ₀)  
+Solution : Ey(x,t) = E₀ cos(ωt − kx)   où ω = 2πν  et  k = 2π/λ
+
+Diffraction par une ouverture de taille a :
+
+- Si λ ≪ a : tache lumineuse géométrique (optique géométrique)
+
+- Si λ ~ a : diffraction — la lumière s'étale au-delà de l'ouverture
+
+### 1.2  Insuffisance du modèle ondulatoire — Effet photoélectrique
+
+**L'effet photoélectrique :**
+
+un métal éclairé par une lumière de fréquence ν > ν_s émet des électrons. Ce phénomène ne peut pas être expliqué par le modèle ondulatoire classique car :
+
+- L'énergie cinétique des électrons ne dépend pas de l'intensité
+
+- Il existe une fréquence seuil ν_s en dessous de laquelle aucun électron n'est arraché
+
+- L'effet est instantané même pour une faible intensité
+
+**Formules de l'effet photoélectrique**
+
+E_photon = hν = hc/λ = ℏω          (Planck-Einstein)  
+Bilan énergie :  hν = W + E_c_max  
+À la fréquence seuil :  hν_s = W  →  ν_s = W/h  →  λ_s = hc/W  
+Énergie cinétique max :  E_c = hν − W = h(ν − ν_s)
+
+**Points clés**
+
+  
+• W = travail d'extraction = propriété du métal seul (en eV ou en J)  
+• E_c dépend uniquement de ν, JAMAIS de l'intensité I  
+• Courant i ∝ I (nombre de photons) — mais pas l'énergie cinétique  
+• Potentiel d'arrêt V_stop : eV_stop = E_c_max  →  V_stop = (hν − W)/e = h(ν−ν_s)/e  
+• V_stop est une fonction AFFINE de ν : pente = h/e  →  méthode Millikan pour mesurer h
+
+**⚠ Piège**
+
+  
+Doubler l'intensité → le courant i double, mais E_c reste identique (tombé dans CC1-2023, CC1-2024 Session 2, TD1).  
+λ > λ_s → pas d'effet photoélectrique, peu importe l'intensité.  
+Pour E_c > 0 il faut λ < λ_s, donc DIMINUER λ (augmenter ν).
+
+Exemples numériques tirés des sujets réels
+
+| Contexte (sujet) | Données | Résultat |
+| --- | --- | --- |
+| CC1-2023 Ex2 Q1 | Rayon X, λ = 0,1 nm | E = hc/λ = 1,98×10⁻¹⁵ J = 12,4 keV |
+| CC1-2023 Ex2 Q2 | Photon E = 2,5 eV | λ = hc/E = 495 nm (bleu visible) |
+| CC1-2023 Ex2 Q3 | Tungstène W = 4,52 eV | ν_s = 1,1×10¹⁵ Hz ; λ_s = 274 nm (UV) |
+| CC1-2024 Session 2 | W = 4,1 eV | f_S = 9,9×10¹⁴ Hz ; λ_S = 303 nm (UV) |
+| CC1-2024 Ex3 | λ₁=160nm E₁=5×10⁻¹⁹J, λ₂=240nm E₂=9×10⁻²⁰J | h = (E₁−E₂)/(1/λ₁−1/λ₂)·(1/c) ≈ 6,6×10⁻³⁴ J·s |
+| Ratt. 2023 Ex2 | Zinc W ≈ 4 eV | λ_max = hc/W ≈ 310 nm → invisible (UV) |
+
+### 1.3  La lumière : onde ou particule ? — Le quanton
+
+- Dans l'interféromètre de Mach-Zehnder :
+
+- Si le chemin du photon est INCONNU → interférences observées (aspect ondulatoire)
+
+- Si le chemin du photon est CONNU (mesure) → interférences disparaissent (aspect corpusculaire)
+
+- Le photon est un quanton : ni onde ni particule au sens classique, il manifeste l'un ou l'autre selon le dispositif.
+
+- Principe de complémentarité de Bohr : information de chemin et visibilité des franges sont mutuellement exclusives.
+
+### 1.4  Action typique et critère classique/quantique
+
+Action typique : [S] = M·L²·T⁻¹ = J·s  
+S_typ ≫ h  →  traitement classique valide  
+S_typ ~ h  →  physique quantique nécessaire  
+Construction : S ~ mvL  ou  S ~ ML²/τ  ou  S ~ eBA  etc. (analyse dimensionnelle)
+
+| Système (sujet) | S_typ calculée | Conclusion |
+| --- | --- | --- |
+| Terre/Soleil (CC1-2023 Ex3) | ~1,7×10⁴¹ J·s ≈ 2,6×10⁷⁴ h | Classique ✓ |
+| Hélium superfluide d=0,1mm (CC1-2023) | ~6,8×10⁻³⁴ J·s ~ h | Quantique ! |
+| Effet Hall A=1cm², B=1T (CC1-2024) | ~1,6×10⁻²³ J·s ≫ h | Classique |
+| Effet Hall ℓ=60 nm (CC1-2024) | ~h²/e²·R ~ h | Quantique → R quantifiée |
+
+## Chapitre 2  —  Ondes de matière
+
+### 2.1  Hypothèse de de Broglie
+
+De Broglie (1924) : à toute particule matérielle de masse m est associée une onde de longueur d'onde :
+
+λ_dB = h/p = h/(mv)              (relation de de Broglie)  
+Si la particule est accélérée sous tension V : E_c = eV = p²/(2m)  
+→  λ_dB = h / √(2mE_c) = h / √(2meV)
+
+| Particule / contexte | Données | λ_dB calculée |
+| --- | --- | --- |
+| Électron λ=0,1 nm (CC2-2023 Ex2 Q1) | λ_dB = 0,1 nm | E_c = h²/(2mλ²) ≈ 10⁻¹⁶ J |
+| Neutron λ=0,1 nm (CC2-2023 Ex2 Q1) | m_n = 1,7×10⁻²⁷ kg | E_c ≈ 10⁻¹⁹ J (3 OdG de moins) |
+| Électrons arrachés (CC1-2024 Ex3) | E_c = 5×10⁻¹⁹ J | λ_dB = h/√(2mE_c) ≈ 0,69 nm |
+| Atome H fondamental (Ratt. 2023) | Énergie E₀ | λ₀ = h/√(2mE₀) |
+| Chat 5 kg, 3,31 m/s (TD1 Ex1.4) | m=5 kg, v=3,31 m/s | λ_dB ≈ 4×10⁻³⁵ m (classique) |
+
+### 2.2  Postulats de la mécanique quantique
+
+- **Postulat 1 :**
+
+L'état d'un système quantique est entièrement décrit par sa fonction d'onde ψ(r,t).
+
+- **Postulat 2 (Born, 1926) :**
+
+La quantité |ψ(r,t)|²d³r représente la probabilité de trouver la particule dans le volume d³r autour de r.
+
+**Dimension physique de la fonction d'onde**
+
+Dimension de ψ en 1D : [ψ] = L^(−1/2)  
+Dimension de ψ en 3D : [ψ] = L^(−3/2)  
+Général (d dimensions) : [ψ] = L^(−d/2)  
+Démonstration : ∫|ψ|² d^d r = 1 (sans dim.) → [ψ²]·L^d = 1 → [ψ] = L^(−d/2)
+
+**⚠ Piège**
+
+  
+La dimension de ψ tombe dans CHAQUE CC2 (CC2-2023 Q3, CC2-2024 Q6, CC2 2024-25 Q2).  
+Toujours démontrer depuis la condition de normalisation ∫|ψ|²d^d r = 1.  
+En 1D : réponse D du QCM = L^(−1/2). Les pièges proposent ML^(−3/2)T^(−1) ou L^(−3/2).
+
+### 2.3  Relations d'indétermination d'Heisenberg
+
+Position-impulsion :  Δx · Δp ≥ ℏ/2  
+Énergie-temps :      ΔE · Δt ≥ ℏ/2  
+Δx = écart-type de la position     Δp = écart-type de l'impulsion  
+Méthode : poser Δx ≈ taille caractéristique, calculer Δp_min = ℏ/(2Δx)  
+puis E_c_min = (Δp_min)²/(2m)
+
+Applications aux exercices réels :
+
+| Système (sujet) | Δx choisi | Résultat et conclusion |
+| --- | --- | --- |
+| Puits [0,L] — E_min (TD2 Ex2.1) | Δx ≤ L | ⟨E⟩ ≥ ℏ²/(8mL²) — énergie du pt zéro ≠ 0 |
+| Atome H, rayon a (TD2 Ex2.2) | Δx ≈ a | Rayon min. a₀ = 2πε₀ℏ²/(me²) = r₁/2 (Bohr) |
+| Puits centré, Révis. CC2 Q5 | Δx ≈ L | E_c_min = ℏ²/(8mL²) ; cohérent avec E₁ = π²ℏ²/(2mL²) |
+
+**⚠ Distinction incertitude / indétermination**
+
+  
+Distinction fondamentale (tombée CC2-2023 Q4b et Révis. CC2 Q3) :  
+• 'Incertitude' = erreur expérimentale liée à l'appareil de mesure (évitable).  
+• 'Indétermination' = limite imposée par les lois de la MQ, indépendante de toute mesure.  
+L'inégalité n'a plus le statut de PRINCIPE car elle se démontre mathématiquement.  
+Le modèle de Bohr est en contradiction avec Heisenberg : il suppose Δr=0 et Δp=0 simultanément.
+
+## Chapitre 3  —  Équation de Schrödinger
+
+### 3.1  Équation générale
+
+L'équation de Schrödinger gouverne l'évolution de la fonction d'onde d'une particule non relativiste de masse m dans un potentiel V(r,t) :
+
+Forme dépendante du temps (1D) :  
+  iℏ ∂ψ/∂t (x,t) = −(ℏ²/2m) ∂²ψ/∂x² (x,t) + V(x,t)·ψ(x,t)  
+  
+Forme à 3 dimensions (CC2-2024 Q7, CC2 2024-25 Q1) :  
+  iℏ ∂ψ/∂t (r,t) = −(ℏ²/2m) Δψ(r,t) + V(r,t)·ψ(r,t)  
+  où Δ = ∂²/∂x² + ∂²/∂y² + ∂²/∂z² est le laplacien.
+
+**Limites de validité**
+
+  
+Validité de l'équation de Schrödinger (tombé CC2 2024-25 Q4 et Q5) :  
+• VALIDE pour toutes les particules MATÉRIELLES de masse m avec v ≪ c (régime non relativiste).  
+• NON VALIDE pour le photon (masse nulle, se déplace à c → équation de Maxwell).  
+• NON VALIDE pour les particules relativistes (v ~ c → équation de Dirac).
+
+### 3.2  États stationnaires — Factorisation
+
+Un état est dit stationnaire si son énergie E est constante dans le temps. La fonction d'onde se factorise :
+
+ψ(x,t) = φ(x) · e^(−iEt/ℏ)  
+  
+où φ(x) est la partie spatiale, solution de l'équation de Schrödinger  
+INDÉPENDANTE du temps (EIS) :  
+  −(ℏ²/2m) φ''(x) + V(x)·φ(x) = E·φ(x)
+
+**Point clé**
+
+  
+Différence entre φ(x) et Ψ(x,t) (tombé CC2 2024-25 Q3) :  
+• φ(x) : partie spatiale uniquement — solution de l'EIS — ne dépend pas du temps.  
+• Ψ(x,t) = φ(x)·e^(−iEt/ℏ) : état stationnaire complet — l'énergie E est constante.  
+L'équation de Schrödinger est déterministe (évolution de ψ connue), mais la MESURE est  
+probabiliste (résultat aléatoire selon |ψ|²). L'indéterminisme est dans la mesure, pas dans l'évolution.
+
+### 3.3  Puits de potentiel infini — Résolution complète
+
+Configuration la plus fréquente en examen (6/7 sujets). Deux variantes :
+
+Puits sur [0, L] — le plus courant
+
+V(x) = 0  si x ∈ [0;L]  
+V(x) = +∞ sinon  
+  
+Condition aux bords : ψ(0) = ψ(L) = 0  
+**Solution générale :**
+
+φ=C·cos(kx)+S·sin(kx)  
+En x=0 : C = 0  →  φ = S·sin(kx)  
+En x=L : sin(kL) = 0  →  kₙ = nπ/L  
+  
+Fonctions propres :  
+  φₙ(x) = √(2/L) · sin(nπx/L)
+
+Puits centré [−L/2, L/2]
+
+V(x) = 0  si x ∈ [−L/2;L/2]  
+V(x) = +∞ sinon  
+  
+Symétrie V(x) = V(−x) → parité définie  
+Solutions PAIRES  : φ = C·cos(kx)  
+  cos(kL/2) = 0 → kₙ=(2n−1)π/L  
+Solutions IMPAIRES: φ = S·sin(kx)  
+  sin(kL/2) = 0 → kₙ = 2nπ/L  
+  
+Fondamental (sans nœud) : cosinus
+
+**Résultat final**
+
+Niveaux d'énergie (IDENTIQUES pour les deux puits de largeur L) :  
+  Eₙ = n²π²ℏ² / (2mL²) = n²h² / (8mL²) = n² × E₁  
+  avec n = 1, 2, 3, ...  (n ∈ ℕ*)  et  E₁ = π²ℏ²/(2mL²)  
+  
+État fondamental complet [0,L] :  
+  Ψ₁(x,t) = √(2/L) · sin(πx/L) · e^(−iE₁t/ℏ)
+
+**⚠ Piège**
+
+  
+ERREUR LA PLUS FRÉQUENTE (CC2-2022 'Sophie') : écrire Eₙ = n·(…) sans le n².  
+Raisonnement correct : kₙ = nπ/L → Eₙ = ℏ²kₙ²/(2m) = ℏ²(nπ/L)²/(2m) → le n² vient du k².  
+Si n=0 alors ψ≡0 partout → probabilité nulle → pas de particule. Donc n ≥ 1.  
+Pour le puits CENTRÉ : le niveau fondamental est un COSINUS (pas sin). Sophie avait sin → faux.
+
+### 3.4  Normalisation de la fonction d'onde
+
+**Normalisation — méthode complète**
+
+Condition : ∫₀ᴸ |φₙ(x)|² dx = 1  
+  
+Calcul de S pour φₙ = S·sin(nπx/L) :  
+  S² ∫₀ᴸ sin²(nπx/L) dx = S² × L/2 = 1  
+  → S = √(2/L)  (valide pour tout n ∈ ℕ*)  
+  
+Intégrale clé (rappel donné dans tous les énoncés) :  
+  2sin²(u) = 1 − cos(2u)  
+  ∫₀ᴸ sin²(nπx/L) dx = L/2  
+  
+Pour le puits centré avec cosinus :  
+  A² ∫₋L/2^(L/2) cos²(πx/L) dx = A² × L/2 = 1  →  A = √(2/L)
+
+### 3.5  Applications numériques des niveaux d'énergie
+
+| Sujet / contexte | L et données | Résultats |
+| --- | --- | --- |
+| Ratt. 2024 — Couleur de la carotte | L = 1,85 nm, transition 11→12 | ε = h²/(8mL²) ; ΔE = 23ε ; λ ≈ 490 nm → carotte orange |
+| Ratt. 2023 — Électron confiné | L quelconque | Eₙ = n²h²/(8mL²) ; S = √(2/L) démontré |
+| CC2 2024-25 — Puits centré | L quelconque | E₁ = π²ℏ²/(2mL²) ; E_Heisenberg ≈ E₁/π² |
+
+### 3.6  Effet tunnel
+
+**Effet tunnel — formules clés**
+
+Dans la région classiquement interdite (E < V₀) :  
+  φ''(x) − κ²φ(x) = 0   avec κ = √(2m(V₀−E))/ℏ  > 0  
+  Solution : φ(x) = A·e^(κx) + B·e^(−κx)  →  φ ≈ B·e^(−κx)  (décroissance exponentielle)  
+  
+Probabilité de transmission (barrière épaisse κa ≫ 1) :  
+  T ≈ 16·E·(V₀−E)/V₀² · e^(−2κa)  
+  Exemple (TD4 Ex4.F1) : E=1eV, V₀=2E, a=1Å  →  T ≈ 0,78 !
+
+- Applications de l'effet tunnel (attendues à l'examen) :
+
+- Radioactivité α : la particule α d'énergie E < V_coulomb traverse la barrière coulombienne du noyau.
+
+- Microscope à effet tunnel (STM) : courant de tunnel entre pointe et surface.
+
+- Transistor à effet de champ, diode tunnel, fusion thermonucléaire à basse température.
+
+**⚠ Piège**
+
+  
+L'effet tunnel est IMPOSSIBLE dans un puits infini (répondu CC2-2023 Q5 et TD2).  
+Pour sortir d'un puits infini, il faudrait E = ∞ → physiquement impossible.  
+L'effet tunnel ne s'observe que pour des barrières de hauteur FINIE.
+
+### 3.7  Puits fini et états de diffusion (TD3, TD4, CC2-2024)
+
+Puits fini V₀ < 0 (états liés E < 0, TD3 Ex3.1) :  
+  Région 1 (x<0) : ψ = A·e^(qx)           avec q = √(−2mE)/ℏ  
+  Région 2 (puits): ψ = C·cos(kx)+S·sin(kx) avec k = √(2m(E+V₀))/ℏ  
+  Région 3 (x>a) : ψ = B·e^(−qx)  
+  Conditions aux bords : ψ et ψ' continues en x=0 et x=a  
+  
+Marche de potentiel (TD4 Ex4.1) — E > V₀ :  
+  k₁ = √(2mE)/ℏ  ;  k₂ = √(2m(E−V₀))/ℏ  
+  R = |B₁/A₁|² = (k₁−k₂)²/(k₁+k₂)²   T = 4k₁k₂/(k₁+k₂)²   R+T = 1  
+  
+Condition de continuité : ψ et ψ' continues à toute discontinuité FINIE de V.  
+(ψ et ψ' discontinues uniquement si V = ∞)
+
+## Analyse dimensionnelle et dimensions fondamentales
+
+L'analyse dimensionnelle apparaît dans CHAQUE sujet. Maîtriser ces 6 résultats.
+
+| Grandeur | Formule utilisée | Dimension | Unité SI |
+| --- | --- | --- | --- |
+| Constante de Planck h | E = hν → [h]=[E]/[ν] | M·L²·T⁻¹ | J·s = kg·m²·s⁻¹ |
+| Constante ℏ = h/(2π) | Même dim. que h (2π sans dim.) | M·L²·T⁻¹ | J·s |
+| Fonction d'onde ψ (1D) | ∫\|ψ\|²dx = 1 | L^(−1/2) | m^(−1/2) |
+| Fonction d'onde ψ (3D) | ∫\|ψ\|²d³r = 1 | L^(−3/2) | m^(−3/2) |
+| Fonction d'onde ψ (d dim.) | ∫\|ψ\|²d^d r = 1 | L^(−d/2) | m^(−d/2) |
+| Vecteur d'onde k | kₙ = nπ/L | L⁻¹ | m⁻¹ |
+| Action S | S ~ mvL, [S]=[h] | M·L²·T⁻¹ | J·s |
+
+**Grandeurs de même dimension que h**
+
+  
+La constante de Planck a la MÊME dimension que :  
+  • Le moment cinétique L = r×p  → [L] = kg·m²·s⁻¹  
+  • Une action S = ∫p dq  → [S] = J·s  
+  • Le spin (quantité de mouvement angulaire)  
+Grandeur dimensionnellement DIFFÉRENTE : une énergie (J), une densité d'énergie (J/m³), une puissance (W).  
+QCM CC2-2024 Q5 : réponses correctes sont C (moment cinétique) ET D (action).
+
+### Méthode universelle d'analyse dimensionnelle
+
+- Choisir une formule faisant intervenir la grandeur cherchée (E=hν, ∫|ψ|²dx=1, λ=h/p…)
+
+- Isoler la grandeur et remplacer chaque terme par ses dimensions M, L, T
+
+- Simplifier et exprimer la dimension finale
+
+- Convertir en unité SI (J, kg, m, s…)
+
+**✏ Méthode**
+
+  
+Exemple CC1-2023 Ex1 Q4 — Dimension de h :  
+  E = hν  →  [h] = [E]/[ν] = (M·L²·T⁻²)/(T⁻¹) = M·L²·T⁻¹  
+Exemple CC2-2024 Q6 — Dimension de ψ en 1D :  
+  ∫|ψ|²dx = 1  →  [ψ²]·[L] = 1  →  [ψ²] = L⁻¹  →  [ψ] = L^(−1/2)
+
+## Tableau récapitulatif — Les 12 formules incontournables
+
+Classées par fréquence d'apparition dans les sujets réels CY Tech 2022–2025.
+
+| # | Nom | Formule(s) clé(s) | Sujets / fréquence |
+| --- | --- | --- | --- |
+| 1 | Planck-Einstein | E = hν = hc/λ = ℏω | 7/7 sujets ★★★ |
+| 2 | Bilan photoélectrique | hν = W + E_c  ;  ν_s = W/h  ;  λ_s = hc/W | 7/7 sujets ★★★ |
+| 3 | De Broglie | λ_dB = h/p = h/√(2mE_c) | 5/7 sujets ★★★ |
+| 4 | Heisenberg | Δx·Δp ≥ ℏ/2  ;  ΔE·Δt ≥ ℏ/2 | 4/7 sujets ★★ |
+| 5 | Puits infini — φₙ | φₙ(x) = √(2/L)·sin(nπx/L)  ([0,L]) | 6/7 sujets ★★★ |
+| 6 | Puits infini — Eₙ | Eₙ = n²π²ℏ²/(2mL²) = n²h²/(8mL²) = n²E₁ | 6/7 sujets ★★★ |
+| 7 | Équation de Schrödinger | iℏ∂ψ/∂t = −(ℏ²/2m)Δψ + Vψ | 5/7 sujets ★★★ |
+| 8 | Normalisation | ∫\|ψ\|²dx = 1  ;  ∫sin²dx = L/2  →  A=√(2/L) | 4/7 sujets ★★ |
+| 9 | Dimension de h | [h] = M·L²·T⁻¹ = J·s  (via E=hν) | 4/7 sujets ★★ |
+| 10 | Dimension de ψ | [ψ] = L^(−d/2)  (via ∫\|ψ\|²d^d r = 1) | 3/7 sujets ★★ |
+| 11 | Action typique | S_typ ~ h → quantique  ;  S ≫ h → classique | 3/7 sujets ★ |
+| 12 | Transition / photon émis | E_photon = Eₙ₂−Eₙ₁ = (n₂²−n₁²)E₁ ; λ = hc/E | 4/7 sujets ★★ |
+
+## Fréquence des thèmes — Analyse des sujets réels
+
+| Thème | Présence | Priorité |
+| --- | --- | --- |
+| Effet photoélectrique — E=hν, fréquence seuil, travail extraction | 7 / 7 | ● INCONTOURNABLE |
+| Questions de cours — définitions, E=hν, ψ, Heisenberg | 7 / 7 | ● INCONTOURNABLE |
+| Puits de potentiel infini — φₙ, Eₙ, normalisation | 6 / 7 | ● INCONTOURNABLE |
+| Équation de Schrödinger — forme générale, états stationnaires | 5 / 7 | ● INCONTOURNABLE |
+| Relation de de Broglie — λ_dB = h/p, énergie cinétique | 5 / 7 | ● Très probable |
+| Analyse dimensionnelle — dimension de h, de ψ, de k | 5 / 7 | ● Très probable |
+| Inégalités d'Heisenberg — Δx·Δp, application | 4 / 7 | ● Très probable |
+| Effet tunnel — définition, application (radioactivité α, STM) | 4 / 7 | ● Très probable |
+| Action typique — analyse dimensionnelle, comparaison à h | 3 / 7 | ● Possible |
+| Puits de potentiel fini — régions, Schrödinger, continuité | 2 / 7 | ● Possible (CC2) |
+| États de diffusion — marche, barrière, coefficients R et T | 2 / 7 | ● Possible (CC2) |
+| Dualité onde-corpuscule — quanton, Mach-Zehnder | 2 / 7 | ● Possible |
+| Modèle de Bohr — postulats, spectres, rayon de Bohr | 1 / 7 | ● Culture / bonus |
+
+### Questions de cours tombées à chaque examen — réponses exactes
+
+| Question posée | Réponse exacte valorisée |
+| --- | --- |
+| Citer un objet quantique | Transistor, laser, GPS (horloges atomiques), microscope STM, ordinateur quantique, panneau solaire accepté. |
+| Valeur approx. de c | c ≈ 3,00 × 10⁸ m·s⁻¹ |
+| Formule de Planck-Einstein + notations | E = hν = hc/λ = ℏω, avec E énergie du photon, ν fréquence, ω pulsation, h constante de Planck. |
+| Dimension et unité de h | [h] = M·L²·T⁻¹ = J·s = kg·m²·s⁻¹. Démontrée depuis E = hν. |
+| Équation de Schrödinger 1D | iℏ ∂ψ/∂t = −(ℏ²/2m)∂²ψ/∂x² + V(x,t)ψ(x,t). Définir ψ, m, V, ℏ. |
+| Équation de Schrödinger 3D | iℏ ∂ψ/∂t = −(ℏ²/2m)Δψ + V(r,t)ψ(r,t). Avec Δ le laplacien. |
+| Interprétation de \|ψ\|² | \|ψ(x,t)\|²dx = proba de trouver la particule dans [x, x+dx]. Due à Max Born (1926). |
+| Pourquoi 'indétermination' ≠ 'incertitude' ? | 'Incertitude' = erreur expérimentale évitable. 'Indétermination' = limite fondamentale des lois de la MQ, indépendante de toute mesure. |
+| Effet tunnel + application | Particule E < V₀ : proba non nulle de traverser la barrière. Applications : radioactivité α (Gamow), STM, diode tunnel. |
+
+## Les 10 pièges et erreurs les plus fréquents
+
+Tous relevés dans des corrigés officiels ou des annales CY Tech.
+
+**P1**
+
+Eₙ = n·(…) au lieu de n²·(…)  —  CC2-2022 'Sophie'
+
+La quantification donne kₙ = nπ/L → Eₙ = ℏ²kₙ²/(2m) = ℏ²n²π²/(2mL²). Le n² est indispensable.
+
+**P2**
+
+Puits centré : sin pour le fondamental  —  CC2-2022, TD3, Révis. CC2
+
+Puits [−L/2,L/2] → V symétrique → solutions de parité définie. Fondamental (sans nœud) = cosinus. sin(kx) s'annule en x=0 → présence d'un nœud au centre → ce n'est pas le fondamental.
+
+**P3**
+
+Intensité ↑ → E_c ↑ (faux)  —  CC1-2023, CC1-2024 Session 2, TD1
+
+Intensité ↑ → nombre de photons ↑ → courant i ↑. Mais E_c dépend uniquement de ν, pas de I.
+
+**P4**
+
+Oubli de convertir eV en joules  —  Tous les sujets
+
+W(J) = W(eV) × 1,602×10⁻¹⁹. Toujours convertir avant de calculer ν_s = W/h.
+
+**P5**
+
+'Incertitude' au lieu d'Indétermination  —  CC2-2023 Q4b, Révis. CC2 Q3
+
+Réponse attendue : l'inégalité d'Heisenberg n'est pas liée à une mesure ou à un appareil ; c'est une limite fondamentale de la MQ.
+
+**P6**
+
+n = 0 autorisé dans le puits  —  Ratt. 2023 Ex3, tous
+
+Si n=0 → ψ≡0 → proba nulle → pas de particule. E₁ ≠ 0 = énergie du point zéro (conséquence du principe d'Heisenberg).
+
+**P7**
+
+Facteur A = 2/L au lieu de √(2/L)  —  CC2-2022 'Sophie' Q3
+
+La condition de normalisation ∫|φ|²dx = 1 impose A² × L/2 = 1 → A = √(2/L), pas 2/L.
+
+**P8**
+
+Effet tunnel possible dans un puits infini  —  CC2-2023 Q5, TD2 Q3
+
+V = ∞ à l'extérieur → pour franchir la barrière, il faudrait E = ∞. Impossible physiquement.
+
+**P9**
+
+Schrödinger valide pour le photon  —  CC2 2024-25 Q4
+
+Le photon est de masse nulle et se déplace à c → équation de Maxwell. Schrödinger ne s'applique qu'aux particules massives non relativistes (v ≪ c).
+
+**P10**
+
+Oublier B₃ = 0 dans les états de diffusion  —  TD4 Ex4.1, TD4 Ex4.F1
+
+La particule provient de la gauche, aucune source à +∞ → pas d'onde revenant de +∞ → B₃ = 0 (terme e^(+ikx) nul dans la région 3).
+
+## Méthodes — Comment rédiger pour avoir les points
+
+TYPE A — EFFET PHOTOÉLECTRIQUE  (TOMBÉ DANS 7/7 SUJETS)
+
+Démarche complète valorisée par l'examinateur :
+
+- **Identifier les données :**
+
+λ ou ν de la source, W du métal en eV. Convertir W en joules : W(J) = W(eV) × 1,6×10⁻¹⁹.
+
+- **Calculer ν_s et λ_s :**
+
+ν_s = W/h ; λ_s = c/ν_s. Identifier le domaine spectral. Remarque : λ_s est presque toujours dans l'UV (W ~ 4–6 eV → λ_s ~ 200–300 nm).
+
+- **Bilan d'énergie :**
+
+E_c = hν − W = hc/λ − W. Si λ > λ_s → E_c < 0 → pas d'effet photoélectrique.
+
+- **Effet de l'intensité :**
+
+Intensité ↑ → nombre de photons ↑ → courant ↑ → E_c INCHANGÉE. Toujours justifier physiquement.
+
+- **Si demandé, N_photons :**
+
+N = ϕ·S·t / (hν) = ϕ·S·t·λ / (hc) (CC1-2024 Session 2 Q5).
+
+**💡 Astuce**
+
+  
+Phrase-clé valorisée (CC1-2024 CC2 2024-25) : 'L'énergie cinétique des électrons dépend uniquement de la fréquence ν, et non de l'intensité de la source. Cela est inexplicable par le modèle ondulatoire classique.'
+
+TYPE B — PUITS DE POTENTIEL INFINI  (TOMBÉ DANS 6/7 SUJETS)
+
+- **Identifier le type de puits :**
+
+[0,L] ou [−L/2,L/2] ? Cela détermine sin ou cos pour le fondamental.
+
+- **Énoncer les conditions aux bords :**
+
+Toujours écrire explicitement ψ(0) = ψ(L) = 0 (ou aux bords du puits centré). Justifier depuis V = ∞.
+
+- Solution générale : φ(x) = C·cos(kx) + S·sin(kx) avec k = √(2mE)/ℏ. La condition en x=0 donne C=0 (puits [0,L]).
+
+- **Quantification :**
+
+Condition en x=L → sin(kL)=0 → kₙ = nπ/L. Déduire Eₙ = ℏ²kₙ²/(2m) = n²π²ℏ²/(2mL²).
+
+- **Normalisation :**
+
+∫|φₙ|²dx = S²·L/2 = 1 → S = √(2/L). Utiliser la formule 2sin²(u) = 1−cos(2u).
+
+- **Transitions :**
+
+E_photon = Eₙ₂ − Eₙ₁ = (n₂²−n₁²)·E₁. Calculer λ = hc/E_photon.
+
+TYPE C — ANALYSE DIMENSIONNELLE  (TOMBÉ DANS 5/7 SUJETS)
+
+- **Choisir la formule :**
+
+E = hν pour [h], ∫|ψ|²d^d r = 1 pour [ψ], kₙ = nπ/L pour [k].
+
+- **Remplacer les grandeurs par leurs dimensions :**
+
+[E] = M·L²·T⁻², [ν] = T⁻¹, [L] = L.
+
+- **Simplifier :**
+
+[h] = [E]/[ν] = (M·L²·T⁻²)/T⁻¹ = M·L²·T⁻¹.
+
+- **Conclure sur l'unité SI :**
+
+[h] = J·s = kg·m²·s⁻¹. Grandeur analogue : moment cinétique.
+
+TYPE D — HEISENBERG — ÉNERGIE MINIMALE  (TD2, RÉVIS. CC2)
+
+- **Identifier Δx :**
+
+Δx ≈ taille caractéristique du confinement (largeur du puits L, rayon a₀…).
+
+- **Appliquer l'inégalité :**
+
+Δp_min = ℏ/(2Δx).
+
+- **E_c minimale :**
+
+⟨E_c⟩ = ⟨p²⟩/(2m) ≥ (Δp)²/(2m) ≥ ℏ²/(8mΔx²).
+
+- **Comparer à E₁ :**
+
+E_Heisenberg ≈ E₁/π² (facteur ~10 de différence). Conclusion : l'énergie de point zéro est une conséquence directe d'Heisenberg.
+
+**⚠ Piège**
+
+  
+La moyenne ⟨E⟩ est supérieure à une BORNE INFÉRIEURE. On ne peut pas conclure que l'énergie minimale EST cette borne (remarque TD2 Ex7).  
+Ne pas confondre avec le résultat exact E₁ = π²ℏ²/(2mL²). L'estimation donne E₁/π² ≈ E₁/10.
+
+## QCM — Réponses et explications (format CC2-2024)
+
+Ces QCM ont été posés quasi-identiquement dans CC2-2024 et CC2 2024-25.
+
+**Q1**
+
+L'équation de Schrödinger décrit l'évolution de la fonction d'onde :
+
+Réponse : D  →  de toutes les particules matérielles tant que leur vitesse est très petite devant c
+
+A=lumière dans le vide (faux) ; B=ne dépassant pas c (faux, c'est v≪c) ; C=matière ET lumière (faux).
+
+**Q2**
+
+Lequel peut s'expliquer SANS physique quantique ?
+
+Réponse : D  →  Le radar (ondes EM classiques, Maxwell suffisent)
+
+Interférence de neutrons, spectres de raies, laser → tous quantiques.
+
+**Q3**
+
+Quelle branche n'a aucune application quotidienne ?
+
+Réponse : E  →  Aucune — toutes en ont
+
+La relativité générale : GPS (corrections relativistes), ondes gravitationnelles.
+
+**Q4**
+
+Électron et proton même λ_dB → même ___
+
+Réponse : C  →  quantité de mouvement (p = h/λ)
+
+λ_dB = h/p → même λ → même p. Mais masses différentes → vitesses et énergies différentes.
+
+**Q5**
+
+Dimension physique de h :
+
+Réponse : C et D  →  moment cinétique ET action
+
+[h] = M·L²·T⁻¹ = dimension du moment cinétique L = r×p et de l'action S.
+
+**Q6**
+
+Dimension de ψ en 1D :
+
+Réponse : D  →  L^(−1/2)
+
+∫|ψ|²dx=1 → [ψ²]·L=1 → [ψ]=L^(−1/2). Réponses pièges : A,B avec M et T (faux), C = 3D.
+
+**Q8**
+
+À l'extérieur du puits infini, φ vaut :
+
+Réponse : C  →  φ₁ = 0 car la particule ne peut pas être dehors
+
+V=∞ dehors → particule impossible → ψ=0. Les autres formes A,B,D s'appliquent dans le cas V fini.
+
+**Q10**
+
+Conditions aux bords physiques :
+
+Réponse : E  →  φ₁/₂(0) = φ₁/₂(L) = 0
+
+Les conditions aux bords du puits INFINI : ψ=0 aux parois. Pour un puits fini : ψ continue.
+
+**Q11**
+
+Conditions aux bords → ψₙ = A sin(kₙx) avec :
+
+Réponse : C  →  kₙ = nπ/L et n ∈ ℕ*
+
+kₙ=nπ/L (pas 2nπ/L). n=0 exclu car ψ≡0. n∈ℕ* (entiers strictement positifs).
+
+**Q12**
+
+Interprétation de Born implique A = :
+
+Réponse : A  →  A = √(2/L)
+
+Normalisation ∫A²sin²dx = A²L/2 = 1 → A=√(2/L). B=2/L est le carré (erreur 'Sophie').
+
+## Stratégie pour l'examen — Gestion du temps et rédaction
+
+⏱ Gestion du temps (1h30)
+
+- Ex. 1 — Questions de cours : 20 min MAX. Points faciles à ne pas rater.
+
+- Ex. 2 — Applications directes : 35 min. Cœur du barème.
+
+- Ex. 3/4 — Puits, Schrödinger : 30 min.
+
+- Bonus : uniquement si tout le reste est terminé.
+
+✅ Points faciles (5 pts gratuits)
+
+- c ≈ 3×10⁸ m/s avec unité  (+1 pt)
+
+- Citer un objet quantique  (+1 pt)
+
+- E = hν avec notations définies  (+1 pt)
+
+- [h] = M·L²·T⁻¹ = J·s  (+1 pt)
+
+- Énoncer les conditions aux bords du puits avant de résoudre  (+1 pt)
+
+📝 Rédaction (valorisée !)
+
+- Toujours écrire l'expression LITTÉRALE avant l'application numérique.
+
+- Définir toutes les notations utilisées.
+
+- Conclure chaque calcul numérique avec l'unité.
+
+- En cas d'erreur dans l'énoncé : l'indiquer sur la copie et continuer.
+
+- Pour les questions de cours : réponse concise et précise (> 5 lignes = trop long).
+
+🎯 Réflexes clés
+
+- Convertir eV → J AVANT tout calcul.
+
+- Vérifier que les conditions aux bords sont énoncées et satisfaites.
+
+- Vérifier la normalisation si un facteur est demandé.
+
+- Dans le puits centré : cos pour le fondamental, pas sin.
+
+### Format typique selon le type d'épreuve
+
+| Type d'épreuve | Structure observée | Spécificités |
+| --- | --- | --- |
+| CC1 (avec calculatrice) | Questions de cours (5 pts) + Applications directes (8 pts) + Exercice thématique (7 pts) | Calculs numériques exigés. Expression littérale + valeur numérique. |
+| CC2 (sans calculatrice) | QCM (6 pts) + Puits infini (8 pts) + Puits fini (5 pts) + Question ouverte | Ordres de grandeur. Raisonnement qualitatif valorisé. |
+| Rattrapage (mixte) | Effet photoélectrique (10 pts) + Puits / Schrödinger (10 pts) | Format variable. Application numérique avec 2 chiffres significatifs. |
+
+Bonne révision !
+
+Ce document a été généré à partir de l'analyse exhaustive de 11 sujets réels CY Tech (CC1, CC2, rattrapages 2022–2025) et du cahier de TD 2025-2026 de M. Akridas-Morel.
+
+## Notes de vérification de la transcription
+
+Le texte ci-dessus conserve les expressions du Word. Les incohérences suivantes sont repérées en comparant ses propres formules :
+
+- **Borne de Heisenberg.** Avec $\Delta x\simeq L$, la borne $\hbar^2/(8mL^2)$ vaut $E_1/(4\pi^2)$ pour $E_1=\pi^2\hbar^2/(2mL^2)$, et non $E_1/\pi^2$. Le second rapport correspondrait à l’autre choix $\Delta x\simeq L/2$. Une borne inférieure n’est pas une valeur exacte du minimum.
+- **Barrière épaisse et exemple numérique (§ 3.6).** Pour les valeurs affichées $E=1\ \mathrm{eV}$, $V_0=2E$ et $a=1\ \text{Å}$, les constantes du tableau donnent $\kappa a\simeq0{,}512$, qui ne satisfait pas $\kappa a\gg1$. La formule approchée affichée donne environ $1{,}44$, donc une probabilité impossible ; la formule exacte du TD, $T=1/\cosh^2(\kappa a)$ dans ce cas, donne environ $0{,}78$. Le nombre du Word est cohérent avec la formule exacte, mais pas avec l’approximation annoncée.
+- **Signe de la profondeur du puits (§ 3.7).** La ligne « $V_0<0$ » et la formule $k=\sqrt{2m(E+V_0)}/\hbar$ mélangent deux conventions. Si le potentiel intérieur vaut $V_0<0$, il faut $E-V_0$ ; si la profondeur positive est notée $V_0>0$ et le potentiel vaut $-V_0$, la somme $E+V_0$ convient.
+- **Sens de propagation (piège P10).** Avec $\phi_3=A_3e^{ikx}+B_3e^{-ikx}$ et le facteur temporel $e^{-iEt/\hbar}$, l’absence d’onde incidente depuis la droite impose l’annulation du terme en $e^{-ikx}$. Le Word écrit $e^{+ikx}$ dans cette parenthèse.
+- **État stationnaire (§ 3.2).** La seule constance de l’espérance de l’énergie ne garantit pas la factorisation. La forme donnée correspond à un état propre d’énergie d’un Hamiltonien indépendant du temps ; une superposition d’énergies différentes peut conserver son énergie moyenne sans être stationnaire.
+- **Action dans le tableau sur l’effet Hall.** L’expression $h^2/e^2\cdot R$ n’a pas la dimension d’une action si $R$ désigne une résistance. Elle est conservée comme erreur de la source, sans reconstruction conjecturale de la formule voulue.
+- **Hydrogène (§ 2.1).** La formule $h/\sqrt{2mE_0}$ exige une énergie cinétique positive. Le terme « énergie fondamentale » ne doit pas être interprété ici comme l’énergie interne totale négative d’un état lié.

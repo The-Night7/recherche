@@ -1,0 +1,498 @@
+Espace Préhilbertien Réel
+Khalid El Amine I.
+Department of Mathematics and Finance
+⋆⋆⋆
+Notations et conventions :
+• K désigne le corps R ou le corps C.
+• E désigne un espace vectoriel sur R.
+1 Produit scalaire
+1.1 Dénition
+Dénition 1.1 (Produit scalaire)
+On appelle produit scalaire sur E, toute forme bilinéaire symétrique positive dénie sur E.
+• On abrègera souvent produit scalaire en p.s.
+Notation . Si ϕ est un p.s. sur E, alors on note souvent ϕ(x,y ) par,
+⟨x,y⟩ ou (x|y) ou x.y
+Remarque . Un p.s. sur E induit naturellement un p.s. sur tout s.e.v. de E.
+Exemple . ∀x = (x1,...,x n)∈ Rn, ∀y = (y1,...,y n)∈ Rn, on pose
+⟨x,y⟩ =
+n∑
+k=1
+xkyk
+Montrer que ⟨.,.⟩ est un produit scalaire sur Rn.
+Solution . ∀x,x′,y∈ Rn et ∀α∈ R
+(1) ⟨x,y⟩ =
+n∑
+k=1
+xkyk∈ R (car somme nie de réels).
+⟨.,.⟩ est donc une forme sur Rn× Rn (car bien dénie sur cet e.v. et à valeurs dans R).
+(2) ⟨x,y⟩ =
+n∑
+k=1
+xkyk =
+n∑
+k=1
+ykxk =⟨y,x⟩. ⟨.,.⟩ est donc symétrique.
+(3) ⟨αx +x′,y⟩ =
+n∑
+k=1
+(αxk +x′
+k)yk =α
+n∑
+k=1
+xkyk +
+n∑
+k=1
+x′
+kyk =α⟨x,y⟩ +⟨x′,y⟩.
+⟨.,.⟩ est donc linéaire à gauche. Par symétrie, ⟨.,.⟩ est linéaire à droite. ⟨.,.⟩ est alors bilinéaire.
+(4) ⟨x,x⟩ =
+n∑
+k=1
+x2
+k≥ 0 (car somme de réels tous positifs). ⟨.,.⟩ est donc positive.
+1
+<<<PAGE>>>
+2 K. El Amine
+(5) ⟨x,x⟩ = 0⇔
+n∑
+k=1
+x2
+k = 0⇔∀ k∈ [ [1,n ] ], xk = 0⇔ x = (0,..., 0). ⟨.,.⟩ est donc dénie.
+Conclusion. ⟨.,.⟩ est bien un produit scalaire sur Rn. Il est appelé produit scalaire canonique sur Rn.
+Remarque . On peut aussi utiliser la formulation matricielle.
+La matrice de la f.b.⟨.,.⟩ dans la base canonique de Rn est In, qui est symétrique positive dénie,
+par conséquent ⟨.,.⟩ est un produit scalaire sur Rn.
+1.2 Exemples fondamentaux de produit scalaire
+ Produit scalaire canonique sur Rn : ∀x = (x1,...,x n)∈ Rn, ∀y = (y1,...,y n)∈ Rn
+⟨x,y⟩ =
+n∑
+k=1
+xkyk
+ Produit scalaire canonique sur Mn,1(R) : ∀X = [xk]∈M n,1(R), ∀Y = [yk]∈M n,1(R)
+⟨X,Y⟩ =X TY =
+n∑
+k=1
+xkyk
+ Produit scalaire canonique sur Mn,p(R) : ∀A = [aij]∈M n,p(R), ∀B = [bij]∈M n,p(R)
+⟨A,B⟩ =tr(ATB) =
+p∑
+j=1
+n∑
+i=1
+aijbij
+ Produit scalaire canonique sur Rn[X] : ∀P =
+n∑
+k=0
+akX k∈ Rn[X], ∀Q =
+n∑
+k=0
+bkX k∈ Rn[X]
+⟨P,Q⟩ =
+n∑
+k=0
+akbk
+ Produit scalaire canonique sur C([a,b ], R) : ∀f,g ∈C ([a,b ], R)
+⟨f,g⟩ =
+∫ b
+a
+f (t)g(t) dt
+1.3 Inégalité de Schw arz
+Théorème 1.2 (Inégalité de Schw arz )
+Soit ⟨.,.⟩ un produit scalaire sur E. Pour tout x,y∈E
+•
+⟨x,y⟩2≤⟨x,x⟩⟨y,y⟩
+•⟨ x,y⟩2 =⟨x,x⟩⟨y,y⟩ si et seulement si x et y sont liés.
+Remarque . Par passage à la racine, l'inégalité de Schw arz s'écrit aussi
+|⟨x,y⟩|≤
+√
+⟨x,x⟩
+√
+⟨y,y⟩
+Preuve .
+<<<PAGE>>>
+Espace Préhilbertien Réel 3
+Exemples .
+• Sur E = Rn muni du produit scalaire canonique, l'inégalité de Schw arz prend la forme :
+( n∑
+k=1
+xkyk
+)2
+≤
+( n∑
+k=1
+x2
+k
+)( n∑
+k=1
+y2
+k
+)
+∀x,y∈E
+• Sur E =Mn,p(R) muni du produit scalaire canonique, l'inégalité de Schw arz prend la forme :
+(
+tr(ATB)
+)2
+≤tr(ATA)tr(BTB) ∀A,B∈E
+• Sur E =C([a,b ], R) muni du produit scalaire canonique, l'inégalité de Schw arz prend la forme :
+(∫ b
+a
+f (t)g(t)dt
+)2
+≤
+(∫ b
+a
+f 2(t)dt
+)(∫ b
+a
+g2(t)dt
+)
+∀f,g ∈E
+Théorème 1.3 (Inégalité de Minkowski )
+Soit ⟨.,.⟩ un produit scalaire sur E. Pour tout x,y∈E
+• √
+⟨x +y,x +y⟩≤
+√
+⟨x,x⟩ +
+√
+⟨y,y⟩
+•
+√
+⟨x +y,x +y⟩ =
+√
+⟨x,x⟩ +
+√
+⟨y,y⟩ si et seulement si x et y sont positivement liés.
+Rappel . x et y sont positivement liés ⇐⇒∃λ≥ 0 : x = λy ou y = λx⇐⇒ ( x = 0 ) ou ( y = 0 ) ou
+( x⁄= 0 et y⁄= 0 et ∃λ> 0 : y =λx).
+Preuve .
+1.4 Norme associée à un produit scalaire
+Rappelons la dénition d'une norme sur un espace vectoriel.
+Dénition 1.4 (Norme)
+Soit E un K-espace vectoriel. On appelle norme sur E, toute fonction N : E→ R qui vérie les
+propriétés suivantes :
+(1) ∀x∈E, N (x) = 0⇔x = 0 E (Séparation )
+(2) ∀x∈E et ∀λ∈ K, N (λx) =|λ|N (x) ( Homogénéité )
+(3) ∀(x,y )∈E2, N (x +y)≤N (x) +N (y) ( Inégalité triangulaire )
+Un K-espace vectoriel E muni d'une norme N est appelé espace vectoriel normé. Il est noté (E, N).
+Théorème 1.5 Si ⟨.,.⟩ est un produit scalaire sur E, alors l'application ‖.‖ :E→ R dénie par :
+‖x‖ =
+√
+⟨x,x⟩ , ∀x∈E
+est une norme sur E. ‖.‖ est appelée norme associée au produit scalaire ⟨.,.⟩.
+Preuve .
+<<<PAGE>>>
+4 K. El Amine
+1.5 Exemples de normes associées au produit scalaire
+ Dans Rn, la norme associée au produit scalaire canonique est : ∀x = (x1,...,x n)∈ Rn
+‖x‖ =
+( n∑
+k=1
+x2
+k
+)1/2
+ Dans Mn,p(R), la norme associée au produit scalaire canonique est : ∀A = [aij]∈M n,p(R)
+‖A‖ =
+(
+tr(ATA)
+)1/2
+=
+
+
+p∑
+j=1
+n∑
+i=1
+a2
+ij
+
+
+1/2
+ Dans C([a,b ], R), la norme associée au produit scalaire canonique est : ∀f∈C ([a,b ], R)
+‖f‖ =
+(∫ b
+a
+(f (t))2dt
+)1/2
+2 Espace Préhilbertien Réel
+2.1 Dénition
+Dénition 2.1 (Espace préhilbertien)
+On appelle espace préhilbertien réel, un R-ev E muni d'un produit scalaire. On le note (E,⟨.,.⟩).
+• On abrègera parfois espace préhilbertien réel en : e.p.r.
+Dénition 2.2 (Espace euclidien)
+On appelle espace euclidien, un espace préhilbertien réel de dimension nie.
+2.2 Inégalités et Identités
+Convention . La norme associée à un produit scalaire sera appelée norme préhilbertienne ou norme
+euclidienne si dim(E)<∞.
+En utilisant la dénition de la norme associée à un produit scalaire, i.e.
+‖x‖ =
+√
+⟨x,x⟩
+on reformule le théorème de Schw arz et le théorème de Minkowski .
+Théorème 2.3 (Inégalité de Schw arz )
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Pour tout x,y∈E
+•
+|⟨x,y⟩|≤‖ x‖‖y‖
+•|⟨ x,y⟩| =‖x‖‖y‖ si et seulement si x et y sont liés.
+Théorème 2.4 (Inégalité de Minkowski )
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Pour tout x,y∈E
+•
+‖x +y‖≤‖ x‖ +‖y‖
+•‖ x +y‖ =‖x‖ +‖y‖ si et seulement si x et y sont positivement liés. (i.e. ∃λ≥ 0 : x = λy ou
+y =λx)
+<<<PAGE>>>
+Espace Préhilbertien Réel 5
+Proposition 2.5 (Identités remarquables)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Pour tout x,y∈E :
+ ‖x +y‖2 =‖x‖2 + 2⟨x,y⟩ +‖y‖2
+ ‖x−y‖2 =‖x‖2− 2⟨x,y⟩ +‖y‖2
+Preuve .
+ ‖x +y‖2 =⟨x +y,x +y⟩ =⟨x,x⟩ + 2⟨x,y⟩ +⟨y,y⟩ =‖x‖2 + 2⟨x,y⟩ +‖y‖2
+ ‖x−y‖2 =⟨x−y,x−y⟩ =⟨x,x⟩− 2⟨x,y⟩ +⟨y,y⟩ =‖x‖2− 2⟨x,y⟩ +‖y‖2
+Proposition 2.6 (Identité du parallélogramme)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Pour tout x,y∈E :
+‖x +y‖2 +‖x−y‖2 = 2(‖x‖2 +‖y‖2)
+Preuve . Par addition des identités remarquables ci-dessus.
+Interprétation . Dans un parallélogramme, la somme des carrés des diagonales est égale à 2 fois la
+somme des carrés des cotés. (faire un dessin)
+Remarque Importante . Toute norme vériant l'identité du parallélogramme est préhilbertienne.
+Cette identité permet donc de vérier si une norme est associée à un produit scalaire ou pas.
+Proposition 2.7 (Identités de polarisation)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Pour tout x,y∈E :
+⟨x,y⟩ = 1
+2
+(
+‖x +y‖2−‖x‖2−‖y‖2)
+= 1
+4
+(
+‖x +y‖2−‖x−y‖2)
+Preuve . A partir des identités remarquables.
+Remarque . L'identité de polarisation (une des 2) permet de reconstituer l'expression d'un produit
+scalaire connaissant la norme préhilbertienne associée.
+Note .
+1) Si E est un e.p.r. alors E est un e.v.n. ; puisqu'à un p.s. on peut toujours associer une norme.
+2) "Réciproquement", si E est un e.v.n. et si sa norme vérie l'identité du parallélogramme, alors
+E est un e.p.r., dont le p.s. est obtenu par l'une des identités de polarisation.
+3 Orthogonalité
+3.1 Dénition-Généralités
+Dénition 3.1 (Vecteurs orthogonaux)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel.
+On dit que deux vecteurs x et y de E sont orthogonaux, et on note x⊥y, si :
+⟨x,y⟩ = 0
+Remarque . Donc par symétrie :
+x et y sont orthogonaux équivaut à x est orthogonal à y équivaut à y est orthogonal à x.
+<<<PAGE>>>
+6 K. El Amine
+Remarque . La notion d'orthogonalité est relative au produit scalaire choisi sur E.
+Deux vecteurs peuvent être orthogonaux pour un produit scalaire mais pas pour un autre.
+Dénition 3.2 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Un vecteur x∈E est dit isotrope s'il est
+orthogonal à lui même. i.e. :
+⟨x,x⟩ = 0
+Propriétés 3.3 Soit (E,⟨.,.⟩) un espace préhilbertien réel.
+ Le vecteur nul est orthogonal à tous les autres vecteurs de E.
+ Le vecteur nul est le seul vecteur isotrope de E.
+Preuve .
+Dénition 3.4 (Orthogonal à une partie de E)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel.
+ Soit A⊂E et x∈E. On dit que x est orthogonal à A, et on note x⊥A, si :
+∀y∈A, ⟨x,y⟩ = 0
+ Soit A,B⊂E. On dit que A et B sont orthogonales, et on note A⊥B, si :
+∀x∈A et ∀y∈B , ⟨x,y⟩ = 0
+Proposition 3.5 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Si F est un s.e.v. de E tel que
+F =Vect (v1,...,v p)
+alors, ∀x∈E
+x⊥F ⇔ x⊥vi ∀i∈ [ [1,p ] ]
+Preuve .
+Proposition 3.6 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Si F et G deux s.e.v. de E tels que
+F =Vect (u1,...,u p) et G =Vect (v1,...,v q)
+Alors
+F⊥G ⇐⇒ ∀(i,j )∈ [ [1,p ] ]× [ [1,q ] ], ⟨ui,v j⟩ = 0
+Preuve .
+Exemple . Dans R4 muni du p.s. usuel, on pose
+F =Vect ((1, 0, 0, 1), (0, 1, 0, 1)) et G =Vect ((0, 0, 1, 0), (1, 1, 0,−1))
+Montrer que F⊥G.
+Solution .
+<<<PAGE>>>
+Espace Préhilbertien Réel 7
+Dénition 3.7 (Orthogonal d'une partie de E)
+Soit (E,⟨.,.⟩) un espace préhilbertien réel et A⊂E.
+On appelle orthogonal de A, et on note A⊥, l'ensemble des vecteurs x de E orthogonaux à A. i.e.
+A⊥ ={x∈E : ∀y∈A ⟨x,y⟩ = 0}
+Proposition 3.8 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Alors
+A⊥ est un s.e.v. de E.
+Remarque . A⊥ est un s.e.v. de E, même si A ne l'est pas.
+Preuve .
+Propriétés 3.9 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Alors :
+ {0E}⊥ =E
+ E⊥ ={0E}
+Preuve . ∀x∈E
+ ⟨x, 0E⟩ = 0⇒{ 0E}⊥ =E
+ x∈E⊥⇔∀y∈E, ⟨x,y⟩ = 0⇒ en particulier que ⟨x,x⟩ = 0⇒ x = 0 E. Ainsi E⊥ ={0E}.
+Proposition 3.10 Soit (E,⟨.,.⟩) un espace préhilbertien réel et A⊂E. Alors,
+A⊥ = (Vect (A))⊥
+où Vect (A) est le s.e.v. de E engendré par A.
+Preuve .
+Exemple . Dans l'espace euclidien usuel (R3,⟨.,.⟩), déterminer F⊥, où
+F =Vect ((1, 0,−1), (−1, 1, 0))
+Solution .
+Remarque . Attention, dire que deux s.e.v. de E (ou deux parties de E) sont orthogonaux ne signie
+pas que l'un est l'orthogonal de l'autre. Penser à l'exemple de deux droites perpendiculaires dans
+l'espace R3.
+Exemple . R3 est muni du p.s. usuel. Soit
+D1 =Vect ((1, 0, 0)) ={(a, 0, 0) ; a∈ R}
+D2 =Vect ((0, 1, 0)) ={(0,b, 0) ; b∈ R}
+On a
+D1⊥D2 car ⟨(1, 0, 0), (0, 1, 0)⟩ = 0
+Mais
+(D1)⊥ =P =Vect ((0, 1, 0), (0, 0, 1)) ={(0,b,c ) ; b,c∈ R}
+Proposition 3.11 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Soit F un s.e.v. de E. Alors
+ F∩F⊥ ={0E}
+ F⊥F⊥
+ F⊂ (F⊥)⊥
+Preuve .
+<<<PAGE>>>
+8 K. El Amine
+3.2 Famille orthogonale, famille orthonormale
+Dénition 3.12 Soit (E,⟨.,.⟩) un espace préhilbertien réel et I un ensemble d'indices quelconque.
+ Une famille {xi}i∈I d'éléments de E est dite orthogonale si :
+∀i,j ∈I (i⁄=j ⇒ ⟨xi,x j⟩ = 0)
+ Une famille {xi}i∈I d'éléments de E est dite orthonormale si :
+
+
+
+{xi}i∈I est orthogonale
+∀i∈I ‖xi‖ = 1
+ Si {xi}i∈I est une base de E, alors on parle de base orthogonale ou de base orthonormale.
+On abrègera parfois base orthonormale en : b.o.n.
+Note . On appelle delta de Kronecker , la fonction de deux variables i et j notée et dénie par
+δij =
+{
+0 si i⁄=j
+1 si i =j
+• Une famille {xi}i∈I d'éléments de E est donc orthonormale, si
+∀i,j ∈I ⟨xi,x j⟩ =δij
+Proposition 3.13 Soit (E,⟨.,.⟩) un espace préhilbertien réel et I un ensemble d'indices quelconque.
+Toute famille orthogonale {xi}i∈I de vecteurs tous non-nuls de E est libre.
+Preuve . Soit J une partie nie de I. Si
+∑
+j∈J
+αjxj = 0 E (avec αj∈ R), alors pour tout k∈J :
+0 =⟨0E,x k⟩ =⟨
+∑
+j∈J
+αjxj,x k⟩ =
+∑
+j∈J
+αj⟨xj,x k⟩ =αk⟨xk,x k⟩ =αk‖xk‖2 ⇒ αk = 0, car ‖xk‖⁄ = 0
+Théorème 3.14 (Formule de Pythagore )
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. ∀x,y∈E :
+x⊥y ⇔ ‖x +y‖2 =‖x‖2 +‖y‖2
+Preuve . On sait que ∀x,y∈E, ‖x +y‖2 =‖x‖2 +‖y‖2 + 2⟨x,y⟩. D'où
+x⊥y⇔⟨x,y⟩ = 0⇔‖x‖2 +‖y‖2 + 2⟨x,y⟩ =‖x‖2 +‖y‖2⇔‖x +y‖2 =‖x‖2 +‖y‖2
+Proposition 3.15 Soit (E,⟨.,.⟩) un espace préhilbertien réel. Soit p∈ N∗ et {xi}1≤i≤p une famille
+de p éléments de E. Alors
+{xi}1≤i≤p est orthogonale ⇒ ‖
+p∑
+i=1
+xi‖2 =
+p∑
+i=1
+‖xi‖2
+• La réciproque est fausse pour p≥ 3.
+Preuve .
+<<<PAGE>>>
+Espace Préhilbertien Réel 9
+3.3 Procédé d'orthogonalisation de Gram-Schmidt
+Théorème 3.16 (Orthogonalisation de Gram-Schmidt )
+Soit (E,⟨.,.⟩) un espace préhilbertien réel. Soit p∈ N∗ et {v1,v 2,...,v p} une famille libre de E.
+La famille {q1,q 2,...,q p} dénie par récurrence par :
+q1 =v1 et ∀k∈{ 2,...,p } qk =vk−
+k−1∑
+i=1
+⟨vk,q i⟩
+‖qi‖2 qi
+Vérie :
+ {q1,q 2,...,q p} est une famille orthogonale
+ Vect (v1,v 2,...,v p) = Vect (q1,q 2,...,q p)
+▶ Pour obtenir une famille orthonormale, on normalise les vecteurs qi, i.e., on pose
+εi = qi
+‖qi‖, ∀i∈ [ [1,p ] ]
+La famille obtenue {ε1,ε 2,...,ε p} est une famille orthonormale.
+Preuve .
+Exemple . Soit E = R4, muni de son produit scalaire canonique. Soit F =Vect (v1,v 2,v 3) avec :
+v1 = (0, 0, 1, 1) ; v2 = (0, 0, 1, 0) ; v3 = (1, 1, 1, 0)
+Déterminer une base orthonormale de F .
+Solution .
+3.4 Base orthonormale et espace euclidien
+Dénition 3.17 (Espace euclidien)
+On appelle espace euclidien, tout espace vectoriel sur R, de dimension nie, muni d'un produit scalaire.
+Proposition 3.18 Tout espace euclidien (E,⟨.,.⟩) admet une base orthonormale.
+Preuve . On part d'une base quelconque de E et on utilise le procédé d'orthonormalisation de Gram-
+Schmidt .
+Exemples . Dans Rn muni du produit scalaire canonique :
+1) La base canonique de Rn est une base orthonormale de Rn.
+2) ( ε1,ε 2) est une base orthonormale de R2, où
+ε1≡
+[ cosθ
+sinθ
+]
+; ε2≡
+[ − sinθ
+cosθ
+]
+avec θ∈ [0, 2π[.
+3) ( ε1,ε 2,ε 3) est une base orthonormale de R3, où
+ε1≡
+
+
+cosθ cosϕ
+sinθ cosϕ
+sinϕ
+
+ ; ε2≡
+
+
+cosθ sinϕ
+sinθ sinϕ
+− cosϕ
+
+ ; ε3≡
+
+
+− sinθ
+cosθ
+0
+
+
+avec θ∈ [0, 2π[ et ϕ∈ [−π
+2 ,π
+2 [.
+<<<PAGE>>>
+10 K. El Amine
+Théorème 3.19 Toute famille orthonormale d'un espace euclidien E peut être complétée en une base
+orthonormale de E.
+Preuve . On utilise le théorème de la base incomplète et on orthonormalise les vecteurs ajoutés grâce
+au procédé de Gram-Schmidt .
+Proposition 3.20 Soit (E,⟨.,.⟩) un espace euclidien, B une base de E et A =MB(⟨.,.⟩). Alors :
+ B est orthogonale si et seulement si A∈D n(R).
+ B est orthonormale si et seulement si A =In.
+Preuve . Posons B = (ei)1≤i≤n. Par dénition : A = [⟨ei,e j⟩]1≤i,j≤n.
+Proposition 3.21 Soit (E,⟨.,.⟩) un espace euclidien et B une base orthonormale de E. Pour tout
+x,y∈E, en notant X =MB(x) et Y =MB(y) :
+⟨x,y⟩ =X TY
+Preuve . La matrice de ⟨.,.⟩ dans une base orthonormale est In.
+Remarque importante . Dans un espace euclidien muni d'une b.o.n., le produit scalaire de 2 vecteurs
+s'exprime comme le produit scalaire usuel de Rn.
+Proposition 3.22 (Règles de calcul en base orthonormale)
+Soit (E,⟨.,.⟩) un espace euclidien et B = (e1,...,e n) une base orthonormale de E. Pour tout x,y∈E
+x =
+n∑
+i=1
+⟨x,e i⟩ei ; ‖x‖2 =
+n∑
+i=1
+⟨x,e i⟩2 ; ⟨x,y⟩ =
+n∑
+i=1
+⟨x,e i⟩⟨y,e i⟩
+Preuve .

@@ -1,0 +1,1321 @@
+CY Cergy Paris Universit´ e 2023 – 2024
+CY Tech
+Pr´ eIng 1
+Travaux dirig´ es de Panorama sur la
+Physique
+Ce document est disponible en ligne
+— 1/38 —
+<<<PAGE>>>
+Table des mati` eres
+1. Rappels 6
+I. Unit´ es . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+II. Pr´ efixes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+III. Alphabet grec . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+IV. Pr´ erequis de Math´ ematiques pour la physique . . . . . . . . . . . . . . . . . . . . . . 9
+2. G´ eom´ etrie 11
+I. Propri´ et´ es g´ eom´ etriques usuelles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+II. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3. Analyse dimensionnelle 13
+I. Analyse dimensionnelle et unit´ es . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+II. Trouver les exposants d’une formule . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4. La lumi` ere 16
+I. G´ en´ eralit´ es . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+II. Effet photo´ electrique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+III. Indice . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+IV. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5. Optique g´ eom´ etrique 18
+I. Dioptres plans et sph´ eriques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+II. Lentilles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6. Rappel : rep´ erage et cin´ ematique 21
+I. Nature et rep´ erage de l’espace . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+II. Cin´ ematique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+7. Rep´ erage et Vecteurs 25
+I. Rep´ erage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+II. Addition de vecteurs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+III. Produit scalaire . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+IV. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+8. Cin´ ematique 28
+I. D´ efinition des vitesses et acc´ el´ eration . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+II. Trajectoire . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+IV. Annexe : D´ eriv´ ees des fonctions scalaires . . . . . . . . . . . . . . . . . . . . . . . . . 31
+9. Lois de Newton 32
+I. Trajectoires paraboliques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+II. Bilan de forces . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+III. Lois de Newton . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+— 2/38 —
+<<<PAGE>>>
+IV. Deuxi` eme loi de Newton . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+10.Lois de Newton suite 36
+I. Divers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+II. Frottements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+III. Pour aller plus loin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+— 3/38 —
+<<<PAGE>>>
+Plan du cours
+Introduction
+Les grands domaines de la physique
+Les diff´ erentes ´ echelles
+Les diff´ erentes« ´ ecoles de pens´ ees»
+Introduction ` a la« pens´ ee scientifique»
+La m´ ethode scientifique
+Dimensions, unit´ es, analyse dimensionnelle
+Optique : l’´ etude de la lumi` ere
+Les mod` eles d´ ecrivant la lumi` ere
+Optique g´ eom´ etrique
+Cin´ ematique : la description du mouvement
+Rep´ erage dans l’espace et le temps
+Rappels (et +) : Calcul vectoriel, D´ eriv´ ee
+Les grandeurs cin´ ematiques
+M´ ecanique
+Les 3 lois de Newton
+Les diff´ erentes forces
+Travail et ´ energie
+— 4/38 —
+<<<PAGE>>>
+Contact
+— Enseignant charg´ e du cours magistral :´Emilie Dupont
+— Bureau : Bˆ atiment Cauchy| ´Etage 3 | CY 308
+— E-mail : emilie.dupont@cyu.fr
+L’´ equipe p´ edagogique
+Cours Magistral (CM) : ´Emilie Dupont (Cergy) ; et Lucie Desplat (Pau)
+Travaux dirig´ es (TD):
+Panayotis Akridas (Cergy) panayotis.akridas-morel@cyu.fr
+Abdelaziz Boumiz (Cergy) abdelaziz.boumiz@cyu.fr
+Lucie Desplat (Pau) lucie.desplat@cyu.fr
+´Emilie Dupont (Cergy) emilie.dupont@cyu.fr
+Fabien Piguet (Cergy) fabien.piguet@cyu.fr
+Quelques r´ ef´ erences
+Liste non exhaustive de livres recommand´ es pour ce cours.
+— « Le Cours de physique de Feynman » (titre original : Feynman Lectures on Physics) de Richard
+Feynman, Robert B. Leighton (en) et Matthew Sands (en), volume I
+— Jean-Marie Br´ ebec :« H-pr´ epa Optique-1re Ann´ ee MPSI-PCSI-PTSI», Collectif Hachette
+— Lucien Quaranta : « Optique », ELSEVIER-MASSON
+— P. Brenders, M. Sauzeix : « pr´ ecis d’Optique physique MP PC PSI PT», Br´ eal
+— Halliday, Resnick, Walker : « Physique 1. M´ ecanique», Dunod
+— Hecht : « Physique 1 : M´ ecanique», de Boeck
+— Alonso, Finn : « Physique g´ en´ erale 1», InterEditions
+— Giancoli : « Physique g´ en´ erale 1», De Boeck Universit´ e
+— S´ eguin :« Physique : M´ ecanique», de Boeck
+— Gi´ e, Sarmant :« M´ ecanique 1` ere Ann´ ee», Tec et Doc
+— Jos´ e-Philippe P´ erez :« M´ ecanique : Fondements et applications», Masson
+— Jean Marc Levy-Leblonc : « La physique en question : m´ ecanique», Vuibert
+— Luc Valentin : « L’univers m´ ecanique», Hermann
+— Bernard Salamito et al. : « Physique PCSI - Tout-en-un - 5e ´ edition», Dunod
+— J´ erˆ ome Majou :« Super manuel de physique », MPSI, PCSI, PTSI, Br´ eal
+Consultez le site du cours sur la plateforme.
+Allez voir aussi les sites http://cpinettes.u-cergy.fr/S1-Meca et https://etienneklein.fr/.
+Regarder la chaˆ ıne youtube sciences ´ etonnantes... Il y a beaucoup de ressources en ligne, apprenez ` a
+choisir les bonnes (et bien sˆ ur gare aux fakesciences)
+— 5/38 —
+<<<PAGE>>>
+1 Rappels
+Unit´ es
+Le Syst` eme International (SI)
+En 1960, lors de la onzi` eme Conf´ erence g´ en´ erale des poids et mesures (CGPM), apparaˆ ıt le Syst` eme
+International d’unit´ es, le SI, qui comprend aujourd’hui deux classes d’unit´ es : les unit´ es de base, au
+nombre de sept et les unit´ es d´ eriv´ ees.
+En 2018, lors de la 26 ` emeCGPM, a eu lieu une red´ efinition de quatre des sept unit´ es de base, cette
+r´ eforme est entr´ ee en vigueur le 20 mai 2019. Cet ´ ev´ enement marque un tournant important pour la
+physique, puisque les ´ etalons mat´ eriels sont maintenant remplac´ es par la donn´ ee de sept constantes
+physiques. Ce proc´ ed´ e avait commenc´ e d` es 1983, en fixant la valeur dec, la vitesse de la lumi` ere,
+c’est au tour de h, la constante de Planck, de e, la charge ´ electrique de l’´ electron, dek, la constante
+de Boltzman, et de NA , la constante d’Avogadro, d’ˆ etre d´ esormais grav´ ees dans les tables du SI,
+sans oublier ∆νCs la fr´ equence de la transition hyperfine de l’atome de c´ esium 133 etKcd l’efficacit´ e
+lumineuse d’un rayonnement monochromatique.
+Cette m´ ethode est tr` es ´ el´ egante, mais elle comporte un risque...r´ efl´ echissez y ! Et n’h´ esitez pas ` a lire
+par exemple :
+https://lejournal.cnrs.fr/articles/ces-constantes-qui-donnent-la-mesure
+Les unit´ es de base
+I.1. Le m` etre (m)
+Le m` etre est la longueur du trajet parcouru dans le vide par la lumi` ere pendant une dur´ ee de
+1/299792458 de seconde.
+I.2. Le kilogramme (kg)
+Avant octobre 2018 : le kilogramme est la masse du prototype en platine iridi´ e qui a ´ et´ e sanctionn´ e
+par la Conf´ erence g´ en´ erale des poids et mesures tenue ` a Paris en 1889 et qui est d´ epos´ e au Bureau
+International des Poids et Mesures.
+Apr` es le 20 mai 2019 : le kilogramme, unit´ e de masse du SI, est d´ efini en prenant la valeur num´ erique
+fix´ ee de la constante de Planck,h, ´ egale ` a6, 62607015× 10−34 lorsqu’elle est exprim´ ee en J·s, unit´ e
+´ egale ` a kg·m2·s−1, le m` etre et la seconde ´ etant d´ efinis en fonction dec et de ∆νCs.
+Pour mesurer la constante de Planck h, les chercheurs ont utilis´ e une balance du watt (ou de Kibble)
+de quoi produire une valeur de h avec une incertitude relative de 5, 7.10−8 conforme aux prescriptions
+du CIPM (Comit´ e international des poids et mesures) .
+I.3. La seconde (s)
+La seconde est la dur´ ee de9192631770 p´ eriodes de la radiation correspondant ` a la transition entre les
+deux niveaux hyperfins de l’´ etat fondamental de l’atome de c´ esium 133,∆νCs.
+— 6/38 —
+<<<PAGE>>>
+I.4. L’amp` ere (A)
+Avant octobre 2018 : l’amp` ere est l’intensit´ e d’un courant ´ electrique constant qui, maintenu dans deux
+conducteurs parall` eles, rectilignes, de longueur infinie, de section circulaire n´ egligeable et plac´ es ` a une
+distance de un m` etre l’un de l’autre dans le vide, produirait entre ces conducteurs une force de 2.10−7
+newton par m` etre de longueur.
+Apr` es le 20 mai 2019 : l’amp` ere, unit´ e de courant ´ electrique du SI, est d´ efini en prenant la valeur
+num´ erique fix´ ee de la charge ´ el´ ementaire,e, ´ egale ` a1, 602176634× 10−19 lorsqu’elle est exprim´ ee en
+C, unit´ e ´ egale ` a A·s.
+I.5. Le kelvin (K)
+Avant octobre 2018 : le kelvin est la fraction 1/273,16 de la temp´ erature thermodynamique du point
+triple de l’eau.
+Apr` es le 20 mai 2019 : le kelvin, unit´ e de temp´ erature thermodynamique du SI, est d´ efini en prenant
+la valeur num´ erique fix´ ee de la constante de Boltzmann,k, ´ egale ` a1, 380649× 10−23 lorsqu’elle est
+exprim´ ee en J·K−1, unit´ e ´ egale ` a kg·m2·s−2·K−1.
+I.6. La candela (cd)
+Avant octobre 2018 : le candela est l’intensit´ e lumineuse, dans une direction donn´ ee, d’une source qui
+´ emet un rayonnement monochromatique de fr´ equence540, 1012 hertz et dont l’intensit´ e ´ energ´ etique
+dans cette direction est 1/683 watt par st´ eradian.
+Apr` es le 20 mai 2019 : le candela est l’unit´ e du SI d’intensit´ e lumineuse dans une direction donn´ ee.
+Elle est d´ efinie en prenant la valeur num´ erique fix´ ee de l’efficacit´ e lumineuse d’un rayonnement
+monochromatique de fr´ equence5401012 Hz, Kcd , ´ egale ` a683 lorsqu’elle est exprim´ ee en lm·W−1,
+unit´ e ´ egale ` a cd·sr·W−1, ou cd ·sr·kg−1·m−2·s3 , le kilogramme, le m` etre et la seconde ´ etant d´ efinis en
+fonction de h, c et ∆νCs.
+I.7. La mole (mol)
+Avant octobre 2018 : la mole est la quantit´ e de mati` ere d’un syst` eme contenant autant d’entit´ es
+´ el´ ementaires qu’il y a d’atomes dans0, 012 kilogramme de carbone 12.
+Apr` es le 20 mai 2019 : la mole est la quantit´ e de mati` ere d’un syst` eme contenantNA = 6, 022140761023
+entit´ es ´ el´ ementaires (atomes, ions, mol´ ecules, etc. . .),NA ´ etant la constante d’Avogadro.
+Ces donn´ ees viennent des sites web suivants :
+— http://www.metrologie-francaise.fr/fr/si/unites-mesure.asp ,
+— https://www.bipm.org/fr/worldwide-metrology/metre-convention/.
+N’h´ esitez pas ` a les consulter, vous y trouverez bien d’autres informations, et de jolies histoires. . . Car
+comme c’est expliqu´ e sur ce site : “...il ne faudrait pas croire que ce syst` eme, une fois ´ etabli, reste fig´ e.
+Les progr` es de la science et des technologies, les nouveaux besoins de la soci´ et´ e, et par cons´ equence les
+nouveaux besoins en terme d’exactitude accrue, am` enent le LNE et l’ensemble des instituts nationaux
+de m´ etrologie ` a am´ eliorer, de fa¸ con constante et continue, la r´ ealisation pratique de l’ensemble des
+unit´ es du SI. Cette pr´ eoccupation concerne aussi bien les r´ ef´ erences que les moyens de transfert vers
+les utilisateurs, pour permettre de r´ epondre au mieux ` a ces nouveaux besoins. Il est donc parfois
+n´ ecessaire de faire ´ evoluer les d´ efinitions des unit´ es ou d’en introduire de nouvelles.”
+Pour regarder une vid´ eo sur la red´ efinition du kilogramme :
+https://www.youtube.com/watch?v=pBUdM30qmgM&feature=youtu.be
+— 7/38 —
+<<<PAGE>>>
+Pr´ efixes
+Facteur Pr´ efixe Symbole
+1024 yotta Y
+1021 zetta Z
+1018 exa E
+1015 p´ eta P
+1012 t´ era T
+109 giga G
+106 m´ ega M
+103 kilo k
+102 hecto h
+101 d´ eca da
+10−1 d´ eci d
+10−2 centi c
+10−3 milli m
+10−6 micro µ
+10−9 nano n
+10−12 pico p
+10−15 femto f
+10−18 atto a
+10−21 zepto z
+10−24 yocto y
+Alphabet grec
+Nom Minuscule Majuscule
+alpha α Α
+beta β Β
+gamma γ Γ
+delta δ Δ
+epsilon ε Ε
+zeta ζ Ζ
+eta η Η
+theta θ Θ
+iota ι Ι
+kappa κ Κ
+lambda λ Λ
+mu µ Μ
+nu ν Ν
+xi ξ Ξ
+omicron ο Ο
+pi π Π
+rho ρ Ρ
+sigma σ Σ
+tau τ Τ
+upsilon υ Υ
+phi φ Φ
+chi χ Χ
+psi ψ Ψ
+omega ω Ω
+— 8/38 —
+<<<PAGE>>>
+Pr´ erequis de Math´ ematiques pour la physique
+Exercice 1 – D´ efinition d’un angle
+θ
+R
+L
+θ
+Un arc de cercle de rayonR = 2m a pour longueurL = 4m. Quelle est la valeur de l’angleθ ? Plusieurs
+r´ eponses possibles.
+1/ 2rd
+2/ 360/πo
+3/ 0, 5rd
+4/ 8rd
+5/ π/90o
+6/ 180πo
+7/ Il n’y aucune r´ eponse juste.
+Exercice 2 – Lecture sur le cercle trigonom´ etrique
+θ
+1
+a
+d
+b
+c
+θ
+Relier correctement le nom du segment ` a sa valeur :
+1/ a 1 sinθ
+2/ b 2 cotanθ
+3/ c 3 cosθ
+4/ d 4 tanθ
+Exercice 3 – les angles dans un triangle
+β
+π
+α
+/6
+— 9/38 —
+<<<PAGE>>>
+1/ D´ eterminer l’angleα en radian et en degr´ e.
+2/ D´ eterminer l’angleβ en radian et en degr´ e.
+Exercice 4 – Th´ eor` eme de Thales
+x
+4
+1,8
+6
+Sachant que les deux segments en gras sont parall` eles que vautx :
+1/ 2, 7
+2/ 2
+3/ 3
+4/ 3, 8
+5/ On ne peut pas conclure.
+Exercice 5 – Formules d’addition des cosinus et sinus
+Relier correctement :
+1/ cos(a +b) 1 cosa cosb + sina sinb
+2/ sin(a +b) 2 cosa cosb− sina sinb
+3/ cos(a−b) 3 sina cosb + cosa sinb
+4/ sin(a−b) 4 sina cosb− cosa sinb
+Exercice 6 – D´ eriv´ ee des cosinus et sinus en0
+Relier correctement :
+1/ cos′ 0 1 π/2
+2/ sin′ 0 2 0
+3 −1
+4 1
+— 10/38 —
+<<<PAGE>>>
+2 G´ eom´ etrie
+Propri´ et´ es g´ eom´ etriques usuelles
+Exercice 1 – Somme des angles dans un triangle
+On consid` ere le triangle(ABC) et on appelle α, β et γ ses trois angles internes. On trace la parall` ele
+` a la droite(AB) passant par C.
+1/ D´ eterminer les deux angles not´ es« ? » sur la figure.
+2/ En d´ eduire la valeur de la somme des trois angles
+internes d’un triangle.
+α β γ
+?
+?
+A C
+B
+Exercice 2 – Triangle inscrit dans un cercle
+On consid` ereC un point quelconque sur le cercle de centre O et de diam` etre[AB]. On appelle α
+l’angle interne en A au triangle (ABC), et β celui en B.
+1/ D´ eterminer les deux angles not´ es« ? » sur la figure.
+2/ En d´ eduire la valeur de l’angle interne enC au triangle (ABC).
+3/ Trouver les valeurs des deux derniers angles des triangles (AOC)
+et (OBC ).
+A B
+C
+α ?
+β?
+O
+Exercice 3 – Th´ eor` eme de Pythagore
+Soit un triangle rectangle dont l’hypot´ enuse est de longueur1
+(dans l’unit´ e de mesure choisie).
+On appelle a et b les longueurs de ses deux autres cˆ ot´ es (a pour le plus petit).
+a
+b
+1
+1/ On dilate ce triangle d’un facteur h. On a ainsi obtenu un triangle semblable au pr´ ec´ edent.
+Rappeler ce que cela signifie, qu’ont en commun les deux triangles ? Quelles sont les longueurs
+des trois cˆ ot´ es du triangle dilat´ e (` a exprimer en terme deh, a et b) ?
+2/ On trace la hauteur de l’angle droit vers l’hypot´ enuse.
+Montrer que les deux petits triangles int´ erieurs sont semblables au
+triangle initial.
+En d´ eduire les longueurs de tous les cˆ ot´ es de ces deux petits triangles.
+(` a exprimer en terme deh, a et b)
+h
+3/ On trace la hauteur de l’angle droit vers l’hypot´ enuse.
+Montrer que les deux petits triangles int´ erieurs sont semblables au
+triangle initial. En d´ eduire les longueurs de tous les cˆ ot´ es
+de ces deux petits triangles.(` a exprimer en terme deh, a et b).
+h
+4/ En d´ eduire le th´ eor` eme de Pythagore.
+5/ On appelle α et β les angles du premier triangle rectangle consid´ er´ e.
+Quel lien existe-t-il entre les angles α et β ?
+Exprimer les longueurs a et b en fonction de α, puis de β.
+Quelle formule de trigonom´ etrie peut-on d´ eduire directement de la
+question c) ?
+On suppose que l’angle α devient tr` es petit, vers quoi tendent l’angleβ et les longueurs a etb ?
+a
+b
+1
+α
+β
+— 11/38 —
+<<<PAGE>>>
+Pour aller plus loin
+Exercice 4 – Triangle ´ equilat´ eral
+Soit (A1A2A3) un triangle ´ equilat´ eral de centreO et de cˆ ot´ ea.
+1/ Calculer d la distance du centre ` a l’un des sommets.
+2/ Calculer α l’angle interne du triangle en l’un des sommets.
+Exercice 5 – « Je vois le sinus de l’angle double »
+(A,B,C ) et (A,B,D ) sont deux triangles semblables, ils sont tout deux rectangles en B et leur
+hypot´ enuse est de longueur1.
+(CH ) en pointill´ es sur la figure est une hauteur du triangle(ADC).
+α
+1
+αA
+C
+H
+B
+D
+1/ Que vaut l’angle en C entre la hauteur et le cˆ ot´ e(CD) ?
+2/ Calculer la longueur (CH ) de deux fa¸ con diff´ erente et en d´ eduire
+la formule du sinus de l’angle double.
+— 12/38 —
+<<<PAGE>>>
+3 Analyse dimensionnelle
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Analyse dimensionnelle et unit´ es
+Exercice 1 – Dimension et unit´ e de grandeur
+1/ La force magn´ etique− →F exerc´ ee sur un porteur de charge ´ electriqueq en mouvement ` a la vitesse
+− →v dans un champ magn´ etique− →B est donn´ ee par la relation de Lorentz :− →F =q− →v ∧− →B (∧ est
+un produit vectoriel et α est l’angle form´ e par les vecteurs− →v et− →B ).
+Exprimer la dimension de la grandeur B.
+2/ L’expression du champ magn´ etique ` a l’int´ erieur d’un long sol´ eno¨ıde est B = µ0
+N
+lI (o` uµ0
+perm´ eabilit´ e du vide,N nombre de spires, l longueur du sol´ eno¨ıde, I intensit´ e du courant).
+En d´ eduire la dimension et l’unit´ e S.I. deµ0.
+3/ D´ eterminer la dimension et l’unit´ e S.I. de la constante de Planckh sachant qu’` a toute onde
+´ electromagn´ etique de fr´ equenceν, on associe des photons d’´ energieE =hν.
+Exercice 2 – Obtention d’une formule
+1/ On lance, verticalement, vers le haut et depuis le sol, un objet de masse m avec une vitesse
+initiale v0. On veut trouver par une analyse dimensionnelle une expression de la hauteur h
+au-dessus du sol que l’objet atteindra (on n´ egligera tout frottement).
+Quelles sont les grandeurs pertinentes du probl` eme ? En d´ eduire une expression pour la hauteur
+h ` a l’aide d’une analyse dimensionnelle.
+2/ On lˆ ache sans vitesse initiale un objet de massem d’une hauteur h au-dessus du sol. On veut
+trouver par une analyse dimensionnelle une expression de sa vitesse finale vf en n´ egligeant tout
+frottement.
+Quelles sont les grandeurs pertinentes du probl` eme ? En d´ eduire une expression pour la vitesse
+vf ` a l’aide d’une analyse dimensionnelle.
+Trouver les exposants d’une formule
+Exercice 3 – Pouss´ ee d’Archim` ede
+Trouver ` a l’aide d’une analyse dimensionnelle, la formule donnant la pouss´ ee d’Archim` ede, sachant
+que cette force est fonction du volume du corps immerg´ eV , de la masse volumique ρ du fluide et de
+l’acc´ el´ eration de la pesanteurg.
+Aide : on cherchera les valeurs des exposants α, β et γ satisfaisant l’´ equationPA = CV αρβgγ, C
+´ etant une constante num´ erique sans dimension.
+1/ Donner les dimensions des param` etres du probl` eme.
+— 13/38 —
+<<<PAGE>>>
+2/ Quelles sont les valeurs des exposants α, β et γ.
+Exercice 4 – Corde de guitare
+On consid` ere une corde de guitare tendue. La corde est homog` ene, de massem et de longueur l ; on
+mesure sa tension T . On pince la corde et l’´ elongation se propage le long de la corde ` a la vitessev.
+1/ Quelles sont les grandeurs pertinentes du probl` eme.
+2/ D´ eduire, ` a l’aide d’une analyse dimensionnelle, une expression pour la vitessev en fonction des
+grandeurs pertinentes du probl` eme.
+Exercice 5 – Pendule simple
+Un pendule simple est un fil sans masse de longueur l au bout duquel est attach´ ee une massem. A
+priori, la p´ eriode des oscillations d’un tel pendule (not´ eeT ) peut d´ ependre deg,l,m et θmax, l’angle
+de d´ eviation maximale par rapport ` a la verticale.
+1/ Montrer par analyse dimensionnelle queT ne peut pas d´ ependre dem et trouver sa d´ ependance
+en fonction de l et g.
+2/ Pourquoi ne vous demande-t-on pas la d´ ependance en fonction deθmax ?
+Remarque : Galil´ ee est le premier ` a s’ˆ etre rendu compte exp´ erimentalement que la p´ eriode ne
+d´ epend que tr` es faiblement deθmax quand cet angle est petit.
+Exercice 6 – Trajectoires possibles
+Une bille de masse m est lanc´ ee au bas d’une piste cylindrique de rayonR avec une vitesse initiale
+v0. Si v0 est faible la bille oscillera autour de sa position initiale (tout en bas de la piste). Pour v0
+tr` es grande la bille fera une rotation compl` ete. Enfin pour une valeur interm´ ediaire de la vitesse, elle
+d´ ecollera de la piste.
+1/ Donner les dimensions de chacun des param` etres du probl` eme (m, R ... ).
+2/ Trouver ` a l’aide d’une analyse dimensionnelle ` a quelle grandeur doit ˆ etre compar´ eev0 pour
+parler de « faible » ou « grande » vitesse (l’acc´ el´ eration de la pesanteurg est bien sur connue).
+Pour aller plus loin
+Exercice 7 – Analyse dimensionnelle d’une explosion
+On raconte que c’est grˆ ace ` a une simple analyse dimensionnelle que Geoffrey Ingram Taylor a pu
+estimer l’´ energieE d´ egag´ ee par l’explosion d’une bombe atomique, alors que cette information ´ etait
+encore class´ ee secret-d´ efense. Un film de l’explosion avait en effet ´ et´ e rendu public, permettant de
+connaˆ ıtre la tailler du champignon atomique apr` es un tempst suivant l’explosion de la bombe.
+1/ Justifier par un argument de dimension, qu’une relation entre E, r et t met n´ ecessairement en
+jeu une autre grandeur dimensionn´ ee.
+On comprend d’ailleurs facilement qu’une caract´ eristique du milieu dans lequel l’explosion a
+lieu intervient ; on choisi la masse volumique de l’air ρ.
+2/ En utilisant une analyse dimensionnelle, trouver une expression de r en fonction de t, faisant
+intervenirE et ρ (et une constante sans dimension).
+Exercice 8 – L’effet Casimir
+Comme on peut le lire sur Wikipedia : « L’effet Casimir, tel que pr´ edit par le physicien n´ eerlandais
+Hendrik Casimir en 1948, est une force attractive entre deux plaques parall` eles conductrices et non
+charg´ ees. Cet effet, dˆ u aux fluctuations quantiques du vide... »
+Pr´ ecisons-le bien, la force dont il est ici question se manifeste alors que les plaques conductrices sont
+dans le vide.
+— 14/38 —
+<<<PAGE>>>
+Le ph´ enom` ene ´ etant fondamentalement d’origine quantique, nous supposerons que cette force d´ epend
+de la constante de Planck h (celle permettant de connaˆ ıtre l’´ energie d’un photon de fr´ equenceν :
+E =hν ).
+Le caract` ere conducteur des plaques indique que des propri´ et´ es ´ electromagn´ etiques sont en jeu, et
+nous supposerons donc aussi que cette force d´ epend dec, la vitesse de la lumi` ere.
+1/ Donner les dimensions de chacun des param` etres du probl` eme (h, ν, c ... ).
+2/ En utilisant une analyse dimensionnelle, trouver une expression de la force par unit´ e de surface
+s’exer¸ cant entre ces plaques en fonction deh, c et a, la distance s´ eparant les plaques.
+Exercice 9 – Masse d’un trou noir ∗
+`A partir des lois de Newton, il est possible de retrouver la troisi` eme loi de Kepler donnant la p´ eriode
+de rotation T d’une plan` ete situ´ ee ` a une distanceR du soleil de masse MS :
+T =
+√
+4π2R3
+GMS
+.
+1/ Montrer que le terme ` a droite de l’´ egalit´ e est bien homog` ene ` a un temps.
+2/ `A partir de vos connaissances et de la troisi` eme loi de Kepler, donner un ordre de grandeur de
+la masse du Soleil.
+3/ `A partir de la figure ci-dessous, donner un ordre de grandeur de la masse de ce trou noir (situ´ e
+au centre de notre galaxie).
+Trajectoire d’une ´ etoile entre janvier 1992 et juillet 2006.
+Exercice 10 – Rayon de Schwarzschild∗
+La vitesse de lib´ eration d’un corps est la vitesse minimale ` a communiquer ` a ce corps pour ´ echapper ` a
+l’attraction gravitationnelle d’un astre de masse M. `A partir de la conservation de l’´ energie, on peut
+montrer que la vitesse de lib´ erationv v´ erifie l’´ equation :
+1
+2mv2−GmM
+R = 0, (3.1)
+o` um est la masse du corps dont on cherche la vitesse et R est le rayon de l’astre en question.
+1/ Sur Terre
+a) Exprimer v en fonction des donn´ ees du probl` eme.
+b) Calculer la vitesse de lib´ eration d’une fus´ ee sur Terre.
+2/ Un trou noir est caract´ eris´ e par son rayon de SchwarzschildRS : la distance en-dessous de
+laquelle mˆ eme la lumi` ere ne peut s’´ echapper du trou noir. Calculer puis donner la valeur du
+rayon de Schwarzschild du trou noir pr´ ec´ edemment ´ etudi´ e.
+— 15/38 —
+<<<PAGE>>>
+4 La lumi` ere
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+On donne :
+-la valeur de la vitesse de la lumi` ere dans le videc = 299 792 458 m/s≃ 3 108m/s.
+-les longueurs d’onde dans le vide des rayonnements visibles : rouge (620-700 nm), orange (580-620
+nm), jaune (575-580 nm), vert (500-575 nm), bleu (450-500 nm) et violet (400-450 nm).
+-la valeur approch´ ee de la constante de Planckh = 6,626 070 15 10−34J s.
+G´ en´ eralit´ es
+Exercice 1 – Exp´ erience de Fresnel
+On place un disque opaque derri` ere un petit trou ` a travers lequel ´ emerge de la lumi` ere. On observe
+sur un ´ ecran l’ombre ainsi cr´ e´ ee par ce disque. Qu’observe-t-on au centre de cette ombre ? Expliquer.
+Exercice 2 –
+La puissance par unit´ e de surface de la lumi` ere solaire, ` a la surface terrestre, vaut environ1400 W/m2.
+En admettant que l’´ energie moyenne des photons solaires correspond ` a la couleur orange, calculer le
+nombre de photons frappant une surface de 1 cm2 ` a chaque seconde.
+Effet photo´ electrique
+Exercice 3 – Travail d’extraction
+La longueur d’onde maximale pour observer l’effet photo´ electrique en ´ eclairant du potassium est de
+λ1 = 564 nm.
+1/ Calculer le travail d’extraction ϕ (´ energie minimale pour extraire un ´ electron).
+2/ Si la longueur d’onde de la lumi` ere utilis´ ee est deλ2 = 400 nm, d´ eterminer l’´ energie cin´ etique
+maximale des ´ electrons extraits.
+Exercice 4 –
+Sachant que le travail d’extraction du zinc vaut ϕ = 4,33 eV, peut-on observer l’effet photo´ electrique
+avec de la lumi` ere visible ? On donne1 eV = 1,6 10−19 J.
+Indice
+Exercice 5 –
+Quel est la diff´ erence de temps de propagation de la lumi` ere dans le vide et dans une fibre optique de
+longueur 1000 km et d’indice n = 1,62 ?
+— 16/38 —
+<<<PAGE>>>
+Exercice 6 – Dioptre plan
+Un rayon lumineux de longueur d’onde dans le vide λ = 589 nm passe de l’atmosph` ere ` a une cuve
+d’eau. La vitesse de propagation de la lumi` ere dans l’eau est de 2,25 108m/s.
+1/ Quel est l’indice optique n associ´ e ` a ce rayon lumineux dans l’eau ?
+2/ Quelle est la fr´ equence de ce rayon lumineux ? D´ epend-elle du milieu ?
+3/ Quelle est la longueur d’onde de ce rayon dans l’eau ?
+4/ Quelle couleur voit un observateur si ce rayon lumineux lui parvient dans l’air ? Mˆ eme question
+s’il lui parvient dans l’eau ?
+Exercice 7 – Dioptre plan
+On consid` ere un rayon lumineux traversant le plan s´ eparant deux milieux homog` enes 1 et 2 d’indices
+de r´ efraction respectifsn1 = 1,5 et n2 = 1.
+1/ Donner un exemple de milieux ayant ces indices.
+2/ On suppose que le rayon incident arrive sur le plan depuis le milieu 1 sous un angle d’incidence
+α1 = π/6. Calculer l’angle α2 sous lequel il est r´ efract´ e dans le milieu 2. Tracer les rayons
+incidents et r´ efract´ es.
+3/ Reprendre la question pr´ ec´ edente pour un angle d’incidenceβ1 =π/3.
+4/ Reprendre les questions pr´ ec´ edentes si l’on suppose maintenant que le rayon incident arrive sur
+le plan depuis le milieu 2.
+Pour aller plus loin
+Exercice 8 – Stigmatisme ∗
+On consid` ere le dioptre plan d’un milieu plus r´ efringent (verre d’indicen = 1,5) ` a un milieu moins
+r´ efringent (air d’indicen = 1).
+On consid` ere trois rayons issus d’un point objetA r´ eel : le rayonAH normal au dioptre, le rayon AI
+tombant sous une incidence de 10o sur le dioptre et le rayon AJ tombant sous une incidence de 40o
+sur le dioptre. Les droites support des trois rayons ´ emergents se coupent-elles en un mˆ eme point ?
+Commenter le r´ esultat.
+Exercice 9 – Truite∗
+Une truite nage dans la rivi` ere ` a la profondeurh.
+1/ Comment la surface de l’eau lui apparaˆ ıt-elle : lumineuse, sombre, les deux ?
+2/ `A quelle condition peut-elle apercevoir un pˆ echeur qui se tient sur la rive de cette rivi` ere ? On
+prendra l’indice n de l’eau ´ egal ` a1,33.
+Exercice 10 –∗
+Un pˆ echeur situ´ e sur le bord d’une rivi` ere regarde un poisson nageant entre deux eaux parall` element
+` a la surface de l’eau. La surface de l’eau sera assimil´ ee ` a un dioptre plan.
+Le pˆ echeur voit-il le poisson plus haut, dans sa position r´ eelle ou plus bas ? Justifier votre r´ eponse ` a
+l’aide d’un sch´ ema.
+— 17/38 —
+<<<PAGE>>>
+5 Optique g´ eom´ etrique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Dioptres plans et sph´ eriques
+Exercice 1 – Lois de Descartes
+Deux milieux transparents homog` enes et isotropes (mthi) d’indices respectifsn1 etn2 sont s´ epar´ es par
+un dioptre plan. On appelle A un point dans le milieu 1, B un point dans le milieu 2 et I un point
+sur le dioptre.
+1/ Exprimer le chemin optique L de A ` aB passant par I.
+2/ A et B ´ etant donn´ es, montrer queL est extr´ emal lorsqueI est tel que la loi de la r´ efraction
+est v´ erifi´ ee.
+3/ Sur quel principe d’optique s’appuie-t-on pour affirmer que L est extr´ emal ?
+4/ ´Etablir de la mˆ eme fa¸ con la loi de la r´ eflexion.
+Exercice 2 – Espace objet et espace image
+Construire quelques rayons lumineux traversant un syst` eme optique centr´ e avec
+1/ un objet ` a l’infini dans la directionα et un point image virtuel,
+2/ un objet ` a l’infini dans la directionα et une image ` a l’infini dans la directionβ,
+3/ un point objet virtuel et une image ` a l’infini dans la direction de l’axe optique.
+Exercice 3 – Stigmatisme
+1/ Montrer que le miroir plan est stigmatique pour tous les points de l’espace.
+2/ Le point image d’un point objet r´ eel est-il r´ eel ou virtuel ?
+3/ L’image d’un objet (´ etendu) lui est-elle superposable ?
+Exercice 4 –
+Une personne de hauteur h, dont les yeux se trouvent ` a une distanced au dessous du sommet du
+crˆ ane, d´ esire se voir enti` erement dans un miroir plan.
+1/ Faire un sch´ ema avec les rayons n´ ecessaires.
+2/ Quelle est la taille minimale du miroir dans le sens de la hauteur ?
+3/ Comment la personne doit-elle poser son miroir ? A quelle distance doit-elle le placer ?
+Exercice 5 –
+Un catadioptre est constitu´ e de trois miroirs plans perpendiculaires deux ` a deux (plans(Oxy) , (Oyz)
+et (Ozx) , par exemple).
+D´ eterminer les directions des rayons r´ efl´ echis successifs et caract´ eriser la direction du rayon ´ emergent
+du catadioptre (rayon qui a donc subi au plus trois r´ eflexions).
+— 18/38 —
+<<<PAGE>>>
+1/ Si le rayon incident arrive sur le miroir (Oxy) parall` ellement ` a la direction(Oz).
+2/ Si le rayon incident arrive sur le miroir (Oxy) parall` ellement au plan(Ozx).
+3/∗ Si le rayon incident arrive sur le miroir (Oxy) sous une incidence quelconque.
+4/ Quel vous semble pouvoir ˆ etre l’int´ erˆ et d’un tel dispositif ?
+Lentilles
+Exercice 6 – Lentilles minces
+On consid` ere des lentilles minces utilis´ ees dans les conditions de Gauss pour construire des images.
+1/ Pour une lentille convergente lorsque l’objet est (i) r´ eel, (ii) virtuel, les images obtenues sont-elles
+r´ eelles ou virtuelles ?
+2/ En d´ eduire les conditions dans lesquelles une lentille convergente donne une image (i) plus
+grande que l’objet, (ii) virtuelle, (iii) non renvers´ ee, (iv) de grandissement +1 ou -1.
+3/ Reprendre les mˆ emes questions pour une lentille divergente.
+Exercice 7 – Deux lentilles convergentes
+Soit un syst` eme form´ e de deux lentilles minces convergentesL1 et L2 respectivement de foyers objets
+F1 et F2, de foyers images F′
+1 et F′
+2, de focales f′
+1 = 5 cm et f′
+2 = 10 cm, et de centres O1 et O2. Elles
+sont dispos´ ees de fa¸ con ` a former unsyst` eme afocal(les rayons venant de l’infini repartent ` a l’infini).
+1/ Faire un sch´ ema du dispositif.
+2/ On veut former une image r´ eelleA′B′ d’un objet r´ eel de hauteur1 cm. On place l’objet AB
+tel que O1A =−6cm et AB orthogonal ` a l’axe optique. Construire l’image A’B’ (justifier
+l’utilisation des conditions de Gauss). Cette image est-elle r´ eelle ?
+3/ Tracez un faisceau de rayons issu de B ` a travers ce syst` eme optique.
+4/ Calculer le grandissement transversal de ce syst` eme optique (pourquoi peut-on d´ efinir un
+grandissement pour ce syst` eme optique ?).
+Pour aller plus loin
+Exercice 8 – Lentille ´ epaisse∗
+On consid` ere une lentille d’´ epaisseure, elle est constitu´ ee d’un mthi d’indicen ayant la forme d’une
+boule de rayon R tronqu´ ee pour avoir une face plane. On l’utilise dans l’air.
+1/ Partie A Un rayon lumineux arrive de l’infini parall` element ` a l’axe optique, il a un angle
+d’incidenceα au point I sur le dioptre sph´ erique, il traverse la lentille comme indiqu´ e sur la
+figure :
+a) Donner les trois relations permettant de d´ eterminer les anglesβ,γ etδ ` a partir des donn´ ees.
+b) Obtenir (dans cet ordre) ` a partir des donn´ ees les distances suivantes :hi, Li, HJ , HI , hf
+et Lf.
+c) Simplifier les r´ esultats obtenus aux questions pr´ ec´ edentes si l’on supposeα <<1. Que
+peut-on dire du point F′ dans ces conditions ?
+d) Simplifier les r´ esultats obtenus aux questions 1/ et 2/ si l’on suppose maintenantα =π/3
+et n =
+√
+3. Conclure sur le stigmatisme.
+— 19/38 —
+<<<PAGE>>>
+h f
+ih
+Li
+Lf
+β γ
+δ
+α
+R
+e
+I
+JH
+F’
+2/ Partie B Un autre rayon lumineux arrive de l’infini parall` element ` a l’axe optique, en sens
+inverse. Il est ` a une hauteurh au dessus de l’axe optique, il traverse la lentille comme indiqu´ e
+sur la figure :
+e
+hR
+a
+b
+L
+a) `A quelle condition sur les donn´ ees y a-t-il en effet un rayon qui sort ` a gauche de la lentille ?
+b) On suppose h<<R , calculer L. Comparer avec Lf (question Ac) quand e devient petit
+devantR.
+Exercice 9 – Miroir sph´ erique concave∗
+Un œil se regarde dans un miroir sph´ erique concave (le milieu de œil se situe sur l’axe optique du
+miroir). Plac´ e ` a24 cm du miroir, il se voit ` a l’endroit, agrandi d’un facteur3.
+1/ Faire un sch´ ema en repr´ esentant l’œil par deux pointsA et B convenablement choisis.
+2/ L’image A′B′ de l’œil par le miroir est-elle r´ eelle ou virtuelle ?
+3/ D´ eterminer les positions des foyers objetF et image F′ du miroir.
+4/ Calculer le rayon de la calotte sph´ erique r´ efl´ echissante (le miroir).
+5/ Comment varie le grandissement transversal lorsque l’œil s’approche du miroir ?
+6/ Que voit-on si l’œil est ` a36 cm du miroir ? (stigmatisme, agrandissement et orientation de
+l’image)
+— 20/38 —
+<<<PAGE>>>
+6 Rappel : rep´ erage et cin´ ematique
+La m´ ecaniqueest l’´ etude du mouvement des corps, elle comporte une partie descriptive (lacin´ ematique)
+et une partie d’analyse des causes et des lois (la dynamique ).
+Avant d’aborder les questions du mouvement, nous devons pr´ eciser la nature de l’espace physique
+dans lequel il a lieu.
+Nature et rep´ erage de l’espace
+Dans une assez bonne approximation, pour les ph´ enom` enes ayant lieu ` a notre ´ echelle, l’espace physique
+peut ˆ etre identifi´ e ` a un espace plat de dimension trois.
+Un point M de l’espace peut donc ˆ etre rep´ er´ e par trois nombres r´ eels(x1, x2, x3), appel´ es les
+coordonn´ eesdu point M.
+Le nombre des syst` emes de coordonn´ ees possibles est infini et le choix d’utiliser l’un plutˆ ot que l’autre
+n’a pour objet que la simplification technique du probl` eme.
+Si le mouvement ´ etudi´ e est plan, deux coordonn´ ees sont alors suffisantes pour rep´ erer un point, et les
+syst` emes usuels de coordonn´ ees sont alors les syst` emes cart´ esien et polaire:
+M
+O x
+y
+M
+O x
+y
+r
+θ
+x
+y
+système cartésien: (x, y) θsystème polaire: (r,    )
+Remarque On peut bien entendu relier les coordonn´ ees cart´ esiennes et polaires d’un pointM par :
+x =r cosθ et y =r sinθ
+Un point M peut aussi ˆ etre rep´ er´ e, ` a partir de l’origineO, par son vecteur position, encore appel´ e
+rayon vecteur :− →r =−−→OM.
+Ce vecteur peut lui-mˆ eme ˆ etre d´ efini par troisautres nombres r´ eels : sescomposantes (X1, X2, X3)
+dans une base (− →e1,− →e2,− →e3) :
+− →r =X1
+− →e1 +X2
+− →e2 +X3
+− →e3.
+`A un syst` eme de coordonn´ ees,{(x1, x2, x3)}, on peut associer en chaque point de l’espace , de
+coordonn´ ees(x1, x2, x3), une base norm´ ee(− →u1,− →u2,− →u3), dite base canonique associ´ ee, de la fa¸ con
+suivante :
+La direction et le sens de − →u1 sont obtenus en fixant les valeurs de x2 et x3 et en faisant croˆ ıtrex1.
+En rajoutant que− →u1 est unitaire (||− →u1|| = 1) on le d´ etermine tout ` a fait. On proc` ede de mˆ eme pour
+construire− →u2 et− →u3.
+Pour les syst` emes de coordonn´ ees du plan que nous avons pr´ esent´ es, nous trouvons :
+— 21/38 —
+<<<PAGE>>>
+M
+O x
+y
+M
+O x
+y
+r
+θ
+système polaire
+x
+y
+système cartésien
+u
+u
+u
+u
+y
+x
+r
+θ
+Pour ces deux syst` emes usuels la base associ´ ee est orthonorm´ ee, ce qui simplifie les calculs.
+On note qu’en g´ en´ eral la base associ´ ee n’est pasuniforme : les vecteurs sont diff´ erents pour diff´ erents
+choix du point M. Seuls les syst` emes cart´ esiens ont une base uniforme.
+La table suivante donne pour trois syst` emes de coordonn´ ees usuels les coordonn´ ees d’un pointM et
+les composantes du rayon vecteur sur la base associ´ ee :
+syst` eme de coordonn´ eescoordonn´ ees deM rayon vecteur− →r =−−→OM
+cart´ esien de dimension 3 (x,y,z ) − →r (x,y,z ) =x− →ux + y− →uy + z− →uz
+cart´ esien de dimension 2 (x,y ) − →r (x,y ) =x− →ux + y− →uy
+polaire (r,θ ) − →r (r,θ ) =r− →ur
+Cin´ ematique
+Toute description du mouvement n´ ecessite au pr´ ealable d’avoird´ ecid´ ede ce qui ne bouge pas ! Le
+mouvement est en effet une grandeur relative par essence. Il faut donc choisir un corps solide de
+r´ ef´ erence, le r´ ef´ erentiel, pour rep´ erer tous les mouvements.
+A ce corps solide de r´ ef´ erence, on associe alors ` a chaque instant un espace du type d´ ecrit pr´ ec´ edemment
+et l’on peut ainsi d´ ecrire la position de tous les points mat´ eriels.
+La trajectoire d’un point mat´ erielM est la courbe de l’espace physique d´ ecrite parM au cours du
+temps.
+L’´ equation horairedu point mat´ erielM est la donn´ ee de sa position en fonction du tempsM(t).
+La grandeur rendant compte du mouvement est la vitesse , c’est ` a dire la mesure de la variation de la
+position au cours du temps.
+On d´ efinit ainsi :
+-la vitesse moyenne du point mat´ erielM entre les instants t1 et t2 :
+−−−−−−−−→M(t1)M(t2)
+t2−t1
+=
+− →r (t2)−− →r (t1)
+t2−t1
+.
+-et la vitesse instantan´ eeau temps t :− →v (t) = ˙− →r (t) = d− →r
+dt = lim
+∆t→0
+− →r (t + ∆t)−− →r (t)
+∆t .
+Pour d´ ecrire le mouvement, on d´ efinit aussi l’acc´ el´ eration: mesure de variation de vitesse au cours
+du temps.
+L’acc´ el´ eration moyenneentre les instants t1 et t2 est donc :
+− →v (t2)−− →v (t1)
+t2−t1
+.
+— 22/38 —
+<<<PAGE>>>
+la vitesse moyenne tend vers la vitesse
+instantanée lorsque    t diminue vers 0∆
+O xx(t)
+y(t)
+y
+v(t)
+r(t)
+M(t)
+θ (t) t
+t
+t
+1
+2
+Figure 6.1. exemple de trajectoire plane d’un point mat´ eriel M
+L’acc´ el´ eration instantan´ eeau temps t ´ etant :− →γ (t) = ˙− →v (t) = d− →v
+dt = lim
+∆t→0
+− →v (t + ∆t)−− →v (t)
+∆t .
+Si l’on a choisi de d´ ecrire la position du point mat´ erielM ` a chaque instant par les composantes de
+son rayon vecteur sur une base, en g´ en´ eralles composantes et la base sont fonctions du temps :
+− →r (t) =X1(t)− →e1(t) +X2(t)− →e2(t) +X3(t)− →e3(t).
+Ainsi la vitesse de M est :
+− →v (t) = ˙X1(t)− →e1(t) + ˙X2(t)− →e2(t) + ˙X3(t)− →e3(t) +X1(t) ˙− →e1(t) +X2(t) ˙− →e2(t) +X3(t) ˙− →e3(t).
+Pour obtenir les composantes de − →v sur la base, il faut donc connaˆ ıtre celles des vecteurs ˙− →e1(t), ˙− →e2(t)
+et ˙− →e3(t).
+vitesse en cart´ esien
+Ici− →e1 =− →ux,− →e2 =− →uy.
+Sachant que la base cart´ esienne est uniforme : ˙− →ux = ˙− →uy =− →0 .
+On obtient donc les composantes de − →v sur la base cart´ esienne, en partant de− →r =x− →ux + y− →uy :
+− →v (t) = ˙x− →ux + ˙y− →uy
+vitesse en polaire
+Ici− →e1 =− →ur,− →e2 =− →uθ.
+Sachant que− →ur = cosθ− →ux + sinθ− →uy et− →uθ =− sinθ− →ux + cosθ− →uy,
+on trouve d− →ur
+dθ =− →uθ et d− →uθ
+dθ =−− →ur.
+Donc en composant par la fonction θ(t) : ˙− →ur = d− →ur(θ(t))
+dt = dθ
+dt
+d− →ur
+dθ (θ(t)) = ˙θ− →uθ
+et de mˆ eme˙− →uθ = d− →uθ(θ(t))
+dt = dθ
+dt
+d− →uθ
+dθ (θ(t)) =− ˙θ− →ur.
+On obtient donc les composantes de − →v sur la base polaire, en partant de − →r =r− →ur :
+− →v (t) = ˙r− →ur +r ˙− →ur = ˙r− →ur +r ˙θ− →uθ
+acc´ el´ eration en cart´ esien
+On a vu que− →v (t) = ˙x− →ux + ˙y− →uy.
+En d´ erivant encore une fois par rapport au temps on obtient donc les composantes de− →a sur la base
+cart´ esienne :
+− →a (t) = ¨x− →ux + ¨y− →uy
+— 23/38 —
+<<<PAGE>>>
+acc´ el´ eration en polaire
+On a vu que− →v (t) = ˙r− →ur +r ˙θ− →uθ.
+En d´ erivant encore une fois par rapport au temps on obtient donc les composantes de− →a sur la base
+polaire :
+− →a (t) = ¨ r− →ur + ˙r ˙− →ur + ˙r ˙θ− →uθ +r ¨θ− →uθ +r ˙θ ˙− →uθ
+= ¨r− →ur + ˙r ˙θ− →uθ + ˙r ˙θ− →uθ +r ¨θ− →uθ−r ( ˙θ)2− →ur
+= (¨r−r ( ˙θ)2)− →ur + (2 ˙r ˙θ +r ¨θ)− →uθ
+Consid´ erons lecas particulier du mouvement circulaire sur un cercle de rayon R ; on trouve :
+− →r = R− →ur
+− →v = R ˙θ− →uθ
+− →a (t) = −R ( ˙θ)2− →ur +R ¨θ− →uθ
+On trouve en particulier que la valeur alg´ ebrique de la vitesse dans un mouvement circulaire est
+v =R ˙θ et on peut donc aussi ´ ecrire− →a (t) =−v2
+R
+− →ur +R ¨θ− →uθ.
+— 24/38 —
+<<<PAGE>>>
+7 Rep´ erage et Vecteurs
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Rep´ erage
+Exercice 1 – Rep´ erage dans un plan
+A et B sont deux points du plan.
+1/ On donne les coordonn´ ees cart´ esiennes des pointsA = (1, 3) et B = (3, 2). Trouver leurs
+coordonn´ ees polaires. Donner l’´ equation de la droite passant par ces points en coordonn´ ees
+cart´ esiennes.´Ecrire cette ´ equation en coordonn´ ees polaires.
+2/ On donne les coordonn´ ees polaires des pointsrA = 4, θA = 120o etrB = 10, θB = 330o, trouver
+leurs coordonn´ ees cart´ esiennes. Trouver une courbe d’´ equationr = aθ +b en coordonn´ ees
+polaires passant par ces points ( a et b sont deux nombres ` a d´ eterminer). Tracer cette courbe.
+Exercice 2 – Repr´ esentation de vecteurs dans un plan
+Repr´ esenter sur un graphique les vecteurs :
+− →a = 3− →ux− 4− →uy,− →b =− →ux− 5− →uy,−1
+2
+− →a, −− →a +− →b et
+− →a−− →b
+||− →a||
+.
+Addition de vecteurs
+Exercice 3 – Petites Questions
+1/ Si− →V =− →V 1+− →V 2,V =||− →V|| est-il n´ ecessairement plus grand queV1 =||− →V 1|| et/ouV2 =||− →V 2|| ?
+2/ La somme de deux vecteurs de normes diff´ erentes peut-elle ˆ etre nulle (ie ´ egale au vecteur nul) ?
+Est-ce possible avec la somme de trois vecteurs de normes diff´ erentes ?
+3/ Indiquer si la somme des vecteurs sur les figures suivantes peut avoir une r´ esultante nulle.
+— 25/38 —
+<<<PAGE>>>
+Exercice 4 – En force
+O1 et O2 sont deux points de l’espace. Un point mat´ erielM du plan subit deux forces : − →F1 =−k− →r1
+due ` aO1 et− →F2 =k− →r2 due ` aO2 (k est une constante et les vecteurs positions − →ri =−−→OiM rep` erentM
+par rapport ` a chacun des deux pointsO1 et O2).
+1/ Calculer la force totale− →F =− →F1 +− →F2 subie par M.
+2/ Faire un sch´ ema pour plusieurs positions du pointM.
+Produit scalaire
+Exercice 5 – Composantes cart´ esiennes de vecteurs
+Trouver les composantes cart´ esiennes des vecteurs suivants et les indiquer sur le diagramme (la norme
+des vecteurs est indiqu´ ee en unit´ es arbitraires).
+Pour le cas (c) projeter les vecteurs sur les axes (x′,y′) indiqu´ es sur la figure :
+Exercice 6 – Produit scalaire
+1/ On donne une base quelconque du plan usuel : (− →e1,− →e2). On appelle (x1,x 2) les composantes
+d’un vecteur− →x dans cette base.
+Calculez− →x·− →e1 et la norme de− →x .
+2/ Si− →a.− →b = 0 ceci implique-t-il que− →a et− →b sont perpendiculaires ? Et la r´ eciproque ?
+3/ Si− →a.− →b =− →a.− →c ceci implique-t-il que− →b =− →c ? Et la r´ eciproque ?
+4/ En utilisant la d´ efinition du produit scalaire de deux vecteurs, calculer les produits scalaires
+des vecteurs de base des rep` eres cart´ esien et polaire.
+5/ En utilisant la propri´ et´ e de distributivit´ e du produit scalaire sur l’addition, montrer que :
+si− →a =ax
+− →ux +ay
+− →uy +az
+− →uz et− →b =bx
+− →ux +by
+− →uy +bz
+− →uz, alors :− →a.− →b =axbx +ayby +azbz.
+En d´ eduire l’expression dea =||− →a|| (on rappelle que||− →a||2 =− →a.− →a ).
+6/ Trouver l’angle form´ e par les vecteurs :− →a = 3− →ux + 2− →uy−− →uz et− →b =−− →ux + 2− →uz.
+Pour aller plus loin
+Exercice 7 – Composantes polaires de vecteurs ∗
+On donne les coordonn´ ees cart´ esiennes des pointsA = (1, 3) et B = (3, 2) ainsi que les composantes
+cart´ esiennes des vecteurs− →VA =−3− →ux +− →uy et− →VB = 5− →ux−− →uy.
+1/ Trouvez les composantes polaires du vecteur− →VA sur la base polaire au point A.
+2/ Trouvez les composantes polaires du vecteur− →VB sur la base polaire au point B.
+— 26/38 —
+<<<PAGE>>>
+Exercice 8 – Vol de la mouche ∗
+Une mouche vole d’un coin d’une chambre de dimensions 5m× 4m× 3m jusqu’au coin oppos´ e sur la
+diagonale du parall´ el´ epip` ede.
+1/ Quelle est la norme de son vecteur d´ eplacement total ? Choisir un syst` eme de coordonn´ ees et
+donner les composantes de ce vecteur. Le repr´ esenter graphiquement.
+2/ La longueur de la trajectoire du vol de la mouche peut-elle ˆ etre inf´ erieure (sup´ erieure ou ´ egale)
+` a la norme du vecteur d´ eplacement total ?
+3/ Si la mouche marchait sur le sol et les murs au lieu de voler, quelle serait la trajectoire la
+plus courte pour le mˆ eme d´ eplacement total ?Astuce : Le plus court chemin sur un plan vous
+connaissez...alors pensez ` a d´ eplier le parall´ el´ epip` ede. Attention, il y a plus d’une fa¸ con de le
+faire.
+Exercice 9 – Et pour terminer ∗
+Une roue d’un rayon de R = 45 cm roule sans glissement d’un demi-tour. On rep` ere le point de contact
+avec le sol ` at = 0 avec la lettre P.
+1/ Trouver la norme du vecteur d´ eplacement du pointP lors de ce d´ eplacement.
+2/ Trouver l’angle par rapport au sol du vecteur d´ eplacement du pointP lors de ce d´ eplacement.
+— 27/38 —
+<<<PAGE>>>
+8 Cin´ ematique
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+D´ efinition des vitesses et acc´ el´ eration
+Exercice 1 – On commence en vitesse (moyenne)
+1/ Le record de vitesse au service d’une balle de tennis est de 263km/h. Elle parcours environ
+25 m avant de toucher le sol. Quel est le temps de vol de la balle ?
+2/ Un pilote de chasse s’exerce au vol en dessous des radars. Il vole horizontalement ` a une altitude
+de 35 m ` a une vitesse de1300 km/h. Subitement il rencontre un terrain qui a une pente de
+4, 3o. Cette pente est suffisamment douce pour ˆ etre difficile ` a d´ etecter. De combien de temps
+dispose le pilote pour ne pas s’´ ecraser ?
+Exercice 2 – Et on acc´ el` ere
+1/ Un ´ electron avec une vitesse initiale dev0 = 1, 50× 105 ms−1 rentre dans une r´ egion longue de
+1 cm o` u il est acc´ el´ er´ e ´ electriquement. Il sort avec une vitesse de5, 70× 105 ms−1. Supposant
+que l’acc´ el´ eration est constante, quelle est sa valeur ?
+2/ L’ascenseur ` a l’hˆ otel Marriott peut monter de190 m. Il a une vitesse maximale de 305 m/min
+et son acc´ el´ eration et d´ ec´ el´ eration sont constantes et de mˆ eme norme :|a0| = 1, 22 ms−2.
+a) Quelle distance est parcourue par l’ascenseur dans la phase d’acc´ el´ eration : repos→ vitesse
+maximale ?
+b) Combien de temps faut-il pour faire le trajet de 190 m, commen¸ cant et terminant au
+repos ?
+c) Tracer les graphes de a(t), v(t) et z(t) des acc´ el´ eration, vitesse et position de l’ascenseur
+(on orientera l’axe des z positivement vers le haut).
+Exercice 3 – Le lapin
+Le graphique de la figure ci-dessous repr´ esente la position en fonction du temps d’un lapin courant en
+ligne droite dans un tunnel.
+1/ Quelle est sa vitesse moyenne entre t = 0 et t = 20s et entre t = 40s et t = 50s ?
+2/ Estimez sa vitesse instantan´ ee ` a t=10s et ` a t=30s.
+3/ La vitesse du lapin est-elle constante ` a certaines p´ eriodes de temps ? Si oui, indiquez lesquelles.
+4/ `A quel moment le lapin atteint-il une vitesse maximale ?
+5/ Le lapin s’arrˆ ete-t-il ` a un moment quelconque ? Si oui lequel ?
+6/ Pendant la p´ eriode illustr´ ee sur la figure, le lapin court-il toujours dans le mˆ eme sens ?
+7/ Tracer les graphes de a(t) et v(t), acc´ el´ eration et vitesse du lapin en fonction du temps.
+— 28/38 —
+<<<PAGE>>>
+0 10 20 40
+0
+10
+20
+t(s)
+x (m)
+30
+Trajectoire
+Exercice 4 – Le li` evre et la tortue
+Apr` es avoir fait la sieste sous un arbre ` a20 m de la ligne d’arriv´ ee, le li` evre se r´ eveille et aper¸ coit la
+tortue qui le pr´ ec` ede d’une distance ´ egale ` a19, 5 m.
+Elle file vers le succ` es dans une derni` ere ligne droite avec une vitesse de valeurVo ´ egale ` a0, 25 m/s.
+Le li` evre se met alors ` a courir en ligne droite avec une acc´ el´ eration de9 ms−2 jusqu’` a atteindre une
+vitesse de 18 m/s qu’il garde jusqu’` a la fin de la course.
+On choisira l’origine O pour rep´ erer le mouvement au pied de l’arbre o` u le li` evre faisait la sieste. Le
+li` evre et la tortue sont mod´ elis´ es par des points mat´ eriels.
+1/ Combien de temps faut-il ` a la tortue pour atteindre la ligne d’arriv´ ee ?
+2/ `A la vitesse de pointe de 18 m/s, quelle distance parcourt le li` evre pendant cette dur´ ee ? Peut-on
+faire un pronostic sur le r´ esultat de la course ` a partir de ces valeurs ?
+3/ ´Ecrire les ´ equations horaires des mouvements de la tortue (xT (t)) et du li` evre (xL(t)) lors de la
+premi` ere phase de son mouvement.
+4/ `A quelle distance de l’arbre le li` evre se trouve-t-il ` a la fin de la premi` ere phase de son
+mouvement ? Montrer alors qu’il a perdu la course.
+5/ Combien de temps apr` es la tortue le li` evre franchira-t-il la ligne d’arriv´ ee ?
+Exercice 5 – En voiture
+Les performances d’une voiture au d´ emarrage sont transcrites sur la figure. On fixe les origines de
+temps et d’espace pour que x(t = 0s) = 0 m.
+1/ Au voisinage det0 = 0 s ett1 = 10 s, d´ eterminer (avec une pr´ ecision acceptable) l’´ equation de la
+tangente ` a la courbe de vitessev(t) donn´ ee sur la figure. En d´ eduire la valeur de l’acc´ el´ eration
+` a ces deux instants et une approximation par un polynˆ ome ordre deux en∆t de la position
+x(ti + ∆t).
+2/ Donnez le comportement asymptotique de v(t), a(t) et x(t) (t→∞ ).
+3/ Traceza(t) et x(t).
+— 29/38 —
+<<<PAGE>>>
+0
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+0 10 20 30 40 50 60 70
+v(t) (m/s)
+t (s)
+Exercice 6 – Dans le plan
+Un objet assimilable ` a un point mat´ erielM se d´ eplace et peut y ˆ etre rep´ er´ e ` a tout instantt par
+ses coordonn´ ees cart´ esiennes(x(t),y (t)) et/ou ses coordonn´ ees polaires(r(t),θ (t)). t est mesur´ e en
+secondes, les longueurs en m` etres et les angles en radians.
+On donne :
+entret = 0, 00 s et t = 2, 00 s : M a une vitesse constante− →vM =v0 (− →ux + 6− →uy) avecv0 = 3 ms−1.
+entret = 2, 00 s et t = 5, 00 s : y reste constant et x(t) = 2t2− 2.
+entret = 5, 00 s ett =tf s :r reste constant etM a une vitesse angulaire constanteω0 =−0, 25 rd s−1.
+` atf, M a atteint l’axe des y et s’y arrˆ ete.
+1/ Tracer la trajectoire de M dans le plan.
+2/ `A quels instants la vitesse de M n’est-elle pas d´ efinie ?
+3/ Calculer tf.
+4/ Calculer la vitesse instantan´ ee deM ` at = 3, 00 s, t = 5, 00 s et t = 6, 00 s
+5/ Calculer sa vitesse moyenne entre t = 3, 00 s et t = 6, 00 s.
+6/ Tracer les graphes de x(t) et y(t).
+Pour aller plus loin
+Exercice 7 – Silence, on tourne
+Dans le plan xy, un point mat´ erielM effectue un mouvement circulaire uniforme de rayon R = 2 m
+autour de l’origine O, dans le sens inverse des aiguilles d’une montre. La p´ eriode du mouvement est
+T = 12 s. `A t = 0, le point est situ´ e enA (voir figure).
+x
+y
+O A x
+Calculer (en faisant l’approximation π≃ 3 pour simplifier les A.N.) :
+1/ ω0 la vitesse angulaire,
+2/ les coordonn´ ees cart´ esiennes deM aux instants t1 = 3 s et t2 = 6 s,
+3/ le vecteur vitesse moyenne− →v m entret1 et t2,
+4/ les vecteurs vitesse− →v 1 ` at1 et− →v 2 ` at2 ,
+5/ le vecteur acc´ el´ eration moyenne− →a m entret1 et t2,
+6/ les vecteurs acc´ el´ eration− →a 1 ` at1 et− →a 2 ` at2.
+— 30/38 —
+<<<PAGE>>>
+Exercice 8 – Le TGV ∗
+Le TGV a une vitesse moyenne de 216 km h−1 en service normal. Si le train prend un virage ` a cette
+vitesse, contante en norme, il est stipul´ e que les passagers ne doivent pas subir une acc´ el´ eration
+sup´ erieure ` a0, 05g :
+1/ Puisque le TGV a une vitesse contante en norme de quelle acc´ el´ eration parle-t-on ? La repr´ esenter
+sur un sch´ ema ` a plusieurs instants, repr´ esenter aussi la vitesse ` a ces mˆ emes instants.
+2/ Obtenir l’expression sur la base polaire des vecteurs position, vitesse et acc´ el´ eration du TGV
+pendant le virage.
+3/ Quel est le rayon le plus petit pour la courbe ? (prendre g = 9, 8 ms−2).
+4/ `A quelle vitesse le train doit-il prendre un virage de rayon 1 km?
+Exercice 9 – Le piston ∗
+On consid` ere un syst` eme articul´ e enA et constitu´ e de deux barres identiquesOA et AB assujetties ` a
+rester dans le plan x,y . O est fixe et B glisse le long de l’axe x et l’angle entre OA et l’axe x, φ, varie
+tel que φ =ωt. Chaque barre est de longueur 2b.
+1/ D´ eterminer l’´ equation cart´ esienne de la trajectoire du milieu,M, de AB.
+D´ ecrire cette trajectoire.
+2/ D´ eterminer la vitesse et l’acc´ el´ eration du pointM.
+3/ D´ eterminer les expressions des coordonn´ ees du pointB en fonction du temps.
+4/ La vitesse maximale du point B est de 12 m/s et b = 1 cm. D´ eterminer la vitesse de rotation
+en tour/min du point A dans son mouvement de rotation autour de O.
+Annexe : D´ eriv´ ees des fonctions scalaires
+Exercice 10 –
+Calculer la d´ eriv´ ee des fonctions r´ eelles de variable r´ eelle suivantes :
+1/ y1(x) = 2x + 3
+2/ y2(x) = cos(2x)
+3/ y3(x) = 3 sinx− 2x
+4/ y4(x) = 2x3 + 1
+x
+5/ y5(x) = (x3 + 2) (x2 + 1)
+6/ y6(x) = x3 + 2
+x2 + 1
+7/ y7(x) = 3e3x + ln|x|
+8/ y8(x) = sin(2x +x3)
+Exercice 11 –
+Soit la courbe d’´ equation cat´ esienney = 2x2 + 5x+1. La tracer sch´ ematiquement. Quel est son
+minimum et en quels points s’annule-t-elle ?
+Exercice 12 –
+´Ecrire la forme d´ evelopp´ ee des polynˆ omes(x +ϵ)n pour n = 1, 2 et 3.
+Expliquer le lien avec la d´ eriv´ ee de la fonctionx↦→xn. En d´ eduire l’´ equation de la tangente ` a la
+courbe d’´ equationy =xn au point de coordonn´ ees cart´ esiennes(1, 1).
+— 31/38 —
+<<<PAGE>>>
+9 Lois de Newton
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Trajectoires paraboliques
+Exercice 1 – Tir parabolique
+Un projectile est lanc´ e du sol avec une vitesse− →v0 faisant un angle θ0 avec l’horizontale.
+1/ Exprimer la hauteur maximale atteinte par le projectile (en fonction de g, v0 et θ0).
+2/ `A quelle distance d du point de d´ epart atterrit le projectile ?
+3/ Montrer qu’il existe un autre angle possible pour atteindre la mˆ eme distanced. Pr´ ecisez cet
+angle.
+4/ Pour quelle valeur de l’angle θ0 la distance d est-elle maximale ?
+Exercice 2 – Une balle en l’air
+Une balle est lanc´ ee ` a partir du deuxi` eme ´ etage d’une maison vers une personne se trouvant aussi
+au deuxi` eme ´ etage d’un immeuble distant de100 m. Une photographie stroboscopique de ce lancer
+est prise et pr´ esent´ ee dans le graphique ci-dessous. Les ´ eclairs ont lieu toutes les2 s, et la balle a ´ et´ e
+lanc´ ee ` at = 0 s. On prendra g = 10 m s−2.
+1/ Quelle est la vitesse initiale de la balle (trouver plusieurs fa¸ cons de la d´ eterminer et pr´ eciser
+celle qui vous semble la plus fiable) ?
+2/ Quelle est la vitesse de la balle au point le plus haut de sa trajectoire ?
+3/ Quelle est la hauteur maximale atteinte par la balle ?
+Trajectoire de la balle
+— 32/38 —
+<<<PAGE>>>
+Exercice 3 – Un colis venu des airs
+Un avion humanitaire vole ` a une vitesse de290 km h−1 et plonge sur sa cible ` a un angle deπ/6 en
+dessous de l’horizontale. Le pilote lˆ ache un colis ` a700 m de sa cible (distance au sol).
+1/ Quel est le temps de vol du colis ?
+2/ Quelle ´ etait l’altitude de l’avion lorsque le colis a ´ et´ e lˆ ach´ e ?
+Exercice 4 –
+Un gamin veut lancer une pierre sur un chat perch´ e dans un arbre. D` es qu’il tire, le chat se laisse
+tomber. Comment le gamin doit-il viser ? (direction de la vitesse initiale et condition sur sa norme)
+Bilan de forces
+Exercice 5 –
+Mettre en ´ evidence les forces agissant sur chacun des trois syst` emes : blocm seul, table seule, bloc et
+table ensemble (cf.figure 9.1). Pour chacune de ces forces indiquer sa r´ eaction associ´ ee (au sens : paire
+de forces action-r´ eaction d’une interaction).
+On supposera qu’il n’y a pas de frottements entre la table et le bloc m.
+m table
+Figure 9.1. Bloc sur une table
+Exercice 6 –
+Deux blocs en contact peuvent glisser sans frottement sur une surface horizontale. Une force constante− →F s’exerce sur le bloc A entraˆ ınant un mouvement d’ensemble des deux blocs (cf. figure 9.2).
+1/ La force exerc´ ee parB sur A est-elle ´ egale en module ` a la force exerc´ ee parA sur B ?
+2/ La force exerc´ ee par le blocA sur le bloc B est-elle ´ egale ` a− →F ?
+3/ Reprendre ces questions lorsque les blocs s’immobilisent contre le mur.
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1F A B
+Figure 9.2. Blocs en mouvement
+Exercice 7 – Masse suspendue
+Une masse m de 10 kg est suspendue ` a deux cordes identiques, accroch´ ees au plafond, comme le
+montre la figure (cf. figure 9.3)..
+Calculer la tension dans les cordes.
+On donne α =π/6 et β =π/3.
+Figure 9.3. Masse suspendue
+— 33/38 —
+<<<PAGE>>>
+Lois de Newton
+Exercice 8 –
+Un vieux fermier attache son ˆ ane ` a son chariot et essaye de le faire avancer. Mais l’ˆ ane, qui vient de
+lire les « Principia Mathematica » de Newton, lui dit : « Il est inutile que j’essaye de faire bouger le
+chariot. ´Etant donn´ e que l’action et la r´ eaction sont de mˆ eme module mais de sens oppos´ es, le chariot
+tirera sur moi autant que je tirerai sur lui et aucun de nous n’avancera ».
+´Etant donn´ e votre maˆ ıtrise des principes de Newton et sachant que vous n’ˆ etes pas un ˆ ane, pourriez-vous
+convaincre l’ˆ ane« ´ erudit» de bouger ?
+Exercice 9 –
+1/ On p` ese une cage contenant un oiseau. L’indication de la balance est-elle modifi´ ee suivant que
+l’oiseau est au repos sur son perchoir ou vol` ete dans la cage ?
+2/ On p` ese un aquarium contenant un poisson. L’indication de la balance est-elle modifi´ ee suivant
+que le poisson est pos´ e au fond de l’aquarium ou en train de nager horizontalement ?
+Deuxi` eme loi de Newton
+Exercice 10 – Bloc de glace
+On tire un bloc de glace le long d’un sol plan avec deux forces, − →F1 et− →F2, comme indiqu´ e sur la
+figure 9.4. On peut n´ egliger les forces de frottement entre le bloc de glace et le sol. Les deux forces
+sont choisies pour que la vitesse de glissement reste constante.
+Si l’angle θ est diminu´ e, pour garder la vitesse constante faut-il augmenter, diminuer ou garder
+constante la norme de la force − →F 2 ?
+Figure 9.4. Bloc de glace
+Exercice 11 – Bloc contre bloc
+On supposera les frottements n´ egligeables, le fil inextensible, et la poulie et le fil de masses n´ egligeables.
+Calculer la valeur de sa masse pour que le m1 se d´ eplace :
+1/ ` a vitesse constante.
+2/ avec une acc´ el´ eration vers la gauche deg/2 pour α =π/4.
+m1 2m
+α
+g
+Figure 9.5. Deux blocs
+— 34/38 —
+<<<PAGE>>>
+Exercice 12 – Un pendule conique ∗
+Une bille de masse m est attach´ ee ` a deux fils inextensibles et sans masse de longueurL, fix´ es enA et
+B tels que AB =L.
+La bille d´ ecrit un mouvement circulaire uniforme dans un plan horizontal avec une vitesse angulaireω
+(les fils sont tendus).
+1/ Exprimer la tension de chaque fil en fonction de m, L et ω.
+2/ Quelle est la vitesse angulaire minimale pour que les fils restent tendus (donner d’abord la
+forme possible de ωmin par une analyse dimensionnelle, puis faire le calcul) ?
+A
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+z
+ω
+m
+L
+L
+B
+L
+Pendule conique
+— 35/38 —
+<<<PAGE>>>
+10 Lois de Newton suite
+Les exercices ou questions marqu´ es d’une ´ etoile (∗) sont d’un niveau sup´ erieur ` a celui exigible aux
+examens.
+Divers
+Exercice 1 – Chute libre sur la Lune
+Sur la lune le temps de chute verticale d’un objet sur une hauteur h = 1 m est ∆t = 1, 1 s. En d´ eduire
+la masse ML de la Lune sachant que son rayon est RL = 1, 75× 103 km.
+On donne : G = 6, 67× 10−11 N.m2.kg−2.
+Exercice 2 –
+Une barque contenant des cailloux flotte dans une piscine. Trouvez une relation entre le volume
+immerg´ e, la masse de la barque et celle des cailloux. Si l’on jette les cailloux dans l’eau, que devient le
+niveau de l’eau de la piscine ?
+Frottements
+Exercice 3 – Glissera, glissera pas ?
+Un bloc de masse m est pos´ e sur un plan faisant un angle α avec l’horizontale. On notera µs le
+coefficient de frottement statique entre le bloc et le plan. Quel est l’angle α limite pour que le bloc se
+mette en mouvement ?
+Exercice 4 – Bloc frottant
+Un bloc est tir´ e ` a l’aide d’une corde avec une force− →F , indiqu´ ee sur la figure, qui fait un angleθ avec
+l’horizontale.
+Bloc sur une table
+Si le bloc est au repos et θ augment´ e, quelles sont les quantit´ es qui augmentent, d´ ecroient, ou restent
+les mˆ emes parmi :
+1/ Fx la composante horizontale de la force,
+2/ fs la force de frottement statique,
+3/ N la force normale,
+4/ fs,max la force de frottement statique maximale.
+5/ Si, par contre, le bloc est en mouvement, et θ est augment´ e, est-ce que la force de frottement
+augmente, diminue ou reste la mˆ eme ?
+— 36/38 —
+<<<PAGE>>>
+Exercice 5 –
+Une voiture bloque ses roues. Elle d´ erape sur une distanced = 110 m avant de s’arrˆ eter (d’apr` es les
+traces de pneu). En supposant, pour simplifier, que l’acc´ el´ eration de la voiture est constante pendant
+le d´ erapage, calculer la vitesse de la voiture juste avant le freinage.
+On donne le coefficient de frottement dynamique : µd = 0, 6.
+Exercice 6 – Attention au virage
+Une voiture roule, ` a vitesse constante (en norme)v0, dans un virage de rayon R = 50 m sur une route
+horizontale.
+1/ Si la voiture ne d´ erape pas et suit donc la courbe de la route, quelle est la nature des frottements
+sur les roues ? Que se passerait-il si les roues se bloquaient (coup de frein brutal) ?
+2/ Calculez le coefficient de frottement minimal pour que la voiture ne glisse pas.
+A.N. : v0 = 50 km h−1 et v0 = 80 km h−1.
+3/ De quel angle faut-il relever le virage pour qu’il n’y ait aucun frottement transverse ` a
+v0 = 50 km h−1 ? (On suppose que la voiture roule ` a une altitude constante).
+Pour aller plus loin
+Exercice 7 – Le saut de l’ange ∗
+Un parachutiste aimant les sensations fortes se laisse tomber le plus longtemps possible avant d’ouvrir
+son parachute. Lors de sa chute, que l’on supposera verticale pour simplifier, le parachutiste est soumis
+` a une force de frottement due ` a l’air de la forme :
+− →f =− 1
+2 Cx ρ A v2
+− →v
+v
+o` uρ = 1.2 kg/m3 est la masse volumique de l’air, Cx un coefficient de r´ esistance a´ erodynamique qui
+d´ epend essentiellement de la forme du corps,− →v la vitesse de chute du parachutiste et A l’aire de sa
+section perpendiculaire ` a− →v .
+1/ Montrer que le parachutiste atteint une vitesse limite. Etablir l’expression de cette vitesse
+limite.
+2/ Estimer cette vitesse limite pour un homme de massem = 80 kg (´ equipement compris) tombant
+en position horizontale du saut de l’ange ( Cx≃ 1) puis en position tˆ ete en avant (Cx≃ 0.7).
+Exercice 8 – Ressort ∗
+Dans cet exercice la gravit´ e n’intervient pas.
+Une masse m est accroch´ ee ` a un ressort, de longueur ` a videl0 et de raideur k, lui-mˆ eme fix´ e ` a un
+mur. Initialementm est au repos, le ressort ayant sa longueur ` a vide.
+On tire m dans la direction du ressort (x) avec une force constante− →F .
+1/ D´ eterminez la longueur du ressort quand m a une acc´ el´ eration nulle, puis quandm fait
+demi-tour.
+2/ On suppose maintenant que deux masses identiques m/2 sont attach´ ees aux extr´ emit´ es du
+ressort et que l’on tire dans la direction x chacune d’entre elles avec une force d’intensit´ eF/2.
+m/2m/2F/2 F/2
+0
+x
+x(t)−x(t)
+— 37/38 —
+<<<PAGE>>>
+Initialement les deux masses sont au repos et le ressort ` a sa longueur ` a vide. La sym´ etrie du
+syst` eme assure que le milieu du ressort est immobile et que les masses peuvent ˆ etre rep´ er´ ees
+par x(t) et−x(t) respectivement.
+Reprendre les questions pr´ ec´ edentes pour les massesm/2.
+— 38/38 —

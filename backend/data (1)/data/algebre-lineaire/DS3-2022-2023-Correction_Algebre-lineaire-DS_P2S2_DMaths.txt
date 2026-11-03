@@ -1,0 +1,360 @@
+2022/2023
+Département Mathématiques
+PreIng2
+Algèbre linéaire et bilinéaire
+Devoir surveillé 3
+7 juin 2023
+◁ Consignes ⊿
+Durée : 90 mn
+▶ Les documents et les supports électroniques sont interdits.
+▶ L’épreuve est composée de 3 exercices indépendants.
+Important
+▶ Veuillez écrire lisiblement votre NOM et votre PRÉNOM et en lettres majuscules.
+▶ Veuillez également noter le NOM ou le NUMÉRO de votre groupe sur votre copie.
+Tout manquement à ces consignes entrainera des sanctions.
+◁ Sujet de l’épreuve⊿
+Exercice 1. (5 points)
+Résoudre le système diﬀérentiel linéaire
+
+
+
+x′ = 5x− 7y + 7z
+y′ = 3x− 3y + 5z
+z′ = 3x−y + 3z
+Réponse. On pose la matriceA =
+
+
+5 −7 7
+3 −3 5
+3 −1 3
+
+ et on réécrit le système sous forme matricielle
+X′(t) = AX(t), X =
+
+
+x(t)
+y(t)
+z(t)
+
+.
+Pour réduire la matriceA on calcule son polynôme caractéristique :
+pA(X) = (5−X)(−3−X)(3−X)− 21− 5× 21− 21(−3−X) + 5(5−X) + 21(3−X)
+=−X 3 + 5X 2 + 9X− 45− 21− 5× 21 + 3× 21 + 21X + 25− 5X + 3× 21− 21X
+=−X 3 + 5X 2 + 4X− 20
+=−(X− 2)(X 2− 3X− 10)
+=−(X− 2)(X− 5)(X + 2).
+La matriceA est donc diagonalisable puisquepA est scindé à racines simples. En résolvant des
+systèmes linéaires on trouve les vecteurs propres associés aux valeurs propres5, 2 et−2, on
+obtient
+A =PDP−1 avecD =
+
+
+5 0 0
+0 2 0
+0 0 −2
+
+ et P =
+
+
+1 0 2
+1 1 1
+1 1 −1
+
+.
+1
+<<<PAGE>>>
+On en déduit, avecY =P−1X
+X′ =AX⇔Y′ =DY
+⇔Y (t) =
+
+
+c1e5t
+c2e2t
+c3e−2t
+
+ c1,c 2,c 3∈ R
+⇔X(t) = P
+
+
+c1e5t
+c2e2t
+c3e−2t
+
+ c1,c 2,c 3∈ R
+⇔X(t) =
+
+
+c1e5t + 2c3e−2t
+c1e5t +c2e2t +c3e−2t
+c1e5t +c2e2t−c3e−2t
+
+ c1,c 2,c 3∈ R
+Conclusion : L’ensemble des solutions du système diﬀérentiel linéaire homogène est :
+
+
+
+x(t) = c1e5t + 2c3e−2t
+y(t) = c1e5t +c2e2t +c3e−2t
+z(t) = c1e5t +c2e2t−c3e−2t
+avecc1,c 2,c 3∈ R.
+Exercice 2. (7 points)
+On ﬁxea,b∈ R. Pour toutx = (x1,x 2) et y = (y1,y 2) on pose
+φ(x,y ) = ax1y1 +bx1y2 + 3x2y1 +x2y2.
+1. Montrer que pour touta,b∈ R, φ est une forme bilinéaire surR2× R2.
+2. Montrer queφ est symétrique si et seulement sib = 3.
+3. On ﬁxeb = 3. Montrer que pour toutx = (x1,x 2) :
+φ(x,x ) = (a− 9)x2
+1 + (3x1 +x2)2.
+4. En déduire une condition nécessaire et suﬃsante sura pour queφ soit un produit scalaire.
+Dans la suite de l’exercice on ﬁxea = 13 et b = 3.
+5. Montrer que les vecteursv1 = (1, 1) etv2 = (1,−4) sont orthogonaux pour le produit scalaireφ.
+6. En déduire{v1}⊥.
+7. Transformer la baseB ={v1,v 2} en une base orthonormale deR2.
+Réponse. 1. • Forme :∀(x,y )∈ R2× R2, φ(x,y )∈ R puisque c’est une somme de réel.
+R2 est un R-espace vectoriel doncφ est bien une forme.
+• Linéaire à gauche :∀x,x′,y∈ R2, λ∈ R
+φ(x +λx′,y ) = a(x1 +λx′
+1)y1 +b(x1 +λx′
+1)y2 + 3(x2 +λx′
+2)y1 + (x2 +λx′
+2)y2
+=ax1y1 +bx1y2 + 3x2y1 +x2y2 +λ(ax′
+1y1 +bx′
+1y2 + 3x′
+2y1 +x′
+2y2)
+=φ(x,y ) +λφ(x′,y )
+donc φ est linéaire par rapport au premier argument.
+• Linéaire à droite :∀x,y,y ′∈ R2, λ∈ R
+φ(x,y +λy′) = ax1(y1 +λy′
+1) +bx1(y2 +λy′
+2) + 3x2(y1 +λy′
+1) +x2((y2 +λy′
+2)
+=ax1y1 +bx1y2 + 3x2y1 +x2y2 +λ(ax1y′
+1 +bx1y′
+2 + 3x2y′
+1 +x2y′
+2)
+=φ(x,y ) +λφ(x,y′)
+2
+<<<PAGE>>>
+donc φ est linéaire par rapport au second argument.
+Conclusion :φ est une forme bilinéaire surR2× R2.
+2. Raisonnons directement par équivalence :
+φ est symétrique⇔∀ (x,y )∈ R2× R2 φ(x,y ) = φ(y,x )
+⇔∀ (x,y )∈ R2× R2 ax1y1 +bx1y2 + 3x2y1 +x2y2 =ax1y1 +bx2y1 + 3x1y2 +x2y2
+⇔∀ (x,y )∈ R2× R2 (b− 3)x1y2 = (b− 3)x2y1
+⇔b = 3.
+3. Pour b = 3 et pour toutx∈ R on a
+(a− 9)x2
+1 + (3x1 +x2)2 = (a− 9)x2
+1 + 9x2
+1 + 6x1x2 +x2
+2
+=ax2
+1 + 3x1x2 + 3x2x1 +x2
+2
+=φ(x,x ).
+4. Pour b = 3 on sait queφ est une forme bilinéaire symétrique. Il s’agit donc de trouver une
+condition nécessaire et suﬃsante sura pour queφ soit déﬁnie et positive.
+• φ est positive si pour toutx∈ R2, φ(x,x )≥ 0. En particulier, pourx = (1,−3) on a
+φ(1,−3)≥ 0⇒ (a− 9)12 + 02≥ 0⇒a≥ 9
+donc a≥ 9 est une condition nécessaire pour queφ soit positive. De plus, elle est
+suﬃsante puisque sia≥ 9 alors pour toutx∈ R2, φ(x,x )≥ 0 comme somme de
+termes positifs.
+• φ est déﬁnie siφ(x,x ) = 0⇔x = (0, 0). Poura≥ 9 on a (somme de termes positifs)
+φ(x,x ) = 0⇔
+{
+(a− 9)x2
+1 = 0
+3x1 +x2 = 0⇔
+
+
+
+a⁄= 9
+x1 = 0
+x2 = 0
+ou
+{
+a = 9
+x2 =−3x1
+On en déduit queφ est positive et déﬁnie si et seulement sia> 9.
+Conclusion :φ est un produit scalaire si et seulement sia> 9.
+5. Par calcul direct
+φ(v1,v 2) = 13× 1× 1 + 3× 1× (−4) + 3× 1× 1 + 1× (−4) = 0
+donc v1 et v2 sont orthogonaux pour le produit scalaireφ.
+6. Soit x = (x1,x 2)∈ R2,
+x∈{v1}⊥⇔φ(x,v 1) = 0
+⇔ 13x1 + 3x1 + 3x2 +x2 = 0
+⇔x2 =−4x1.
+On en déduit que{v1}⊥ = Vect(v2).
+3
+<<<PAGE>>>
+7. La baseB est déjà orthogonal, il nous suﬃt donc de la normaliser.
+‖v1‖ =
+√
+φ(v1,v 1) =
+√
+20 = 2
+√
+5, ‖v2‖ =
+√
+φ(v2,v 2) =
+√
+5.
+On en déduit la base orthonormale~B ={~v1,~v2} avec
+~v1 =
+( 1
+2
+√
+5, 1
+2
+√
+5
+)
+, v 2 =
+( 1√
+5,−4√
+5
+)
+.
+Exercice 3. (8 points)
+On considèreE = R2[X]. Pour toutP,Q∈E, on pose
+⟨P,Q⟩ =P (−1)Q(−1) + 2P (0)Q(0) +P (1)Q(1).
+1. Montrer que⟨·,·⟩ est un produit scalaire.
+On notera‖·‖ la norme associée au produit scalaire⟨·,·⟩.
+2. Calculer la norme du polynôme constantP = 1. On noteraP0 = 1
+‖1‖.
+3. Montrer que le polynômeP =X est orthogonale àP0 pour le produit scalaire⟨·,·⟩.
+4. Calculer||X||. On noteraP1 = X
+‖X‖.
+5. On poseQ =X 2−⟨X 2,P 0⟩P0−⟨X 2,P 1⟩P1 et P2 = Q
+‖Q‖. Calculer les coeﬃcients deP2.
+6. Montrer que (P0,P 1,P 2) forme une base orthonormée deR2[X] pour le produit scalaire⟨·,·⟩.
+Réponse. 1. Montrons que⟨·,·⟩ est une forme bilinéaire symétrique déﬁnie positive :
+• Forme : l’application⟨·,·⟩ va deE, un R-espace vectoriel, dansR.
+• Symétrique : Pour toutP,Q∈E :
+⟨Q,P⟩ =Q(−1)P (−1)+2Q(0)P (0)+Q(1)P (1) = P (−1)Q(−1)+2P (0)Q(0)+P (1)Q(1) =⟨P,Q⟩.
+• Bilinéaire : Pour toutP, ˜P,Q ∈E et λ∈ R :
+⟨P +λ ˜P,Q⟩ = (P (−1) +λ ˜P (−1))Q(−1) + 2(P (0) +λ ˜P (0))Q(0) + (P (1) +λ ˜P (1))Q(1)
+=P (−1)Q(−1) + 2P (0)Q(0) +P (1)Q(1) +λ( ˜P (−1)Q(−1) + 2 ˜P (0)Q(0) + ˜P (1)Q(1)
+=⟨P,Q⟩ +λ⟨ ˜P,Q⟩.
+Comme⟨·,·⟩ est symétrique, on en déduit qu’elle est bilinéaire.
+• Positive : Pour toutP∈E:
+⟨P,P⟩ =P (−1)2 + 2P (0)2 +P (1)2≥ 0
+comme somme de termes positifs.
+• Déﬁnie :
+⟨P,P⟩ = 0⇔P (−1)2 + 2P (0)2 +P (1)2 = 0⇔
+
+
+
+P (−1) = 0
+P (0) = 0
+P (1) = 0
+.
+En d’autres termes,⟨P,P⟩ = 0 si et seulement siP admet trois racines distinctes−1,
+0 et 1. Or les éléments deP sont des polynômes de degrée≤ 2 donc le seul élément
+de P qui admet plus de deux racines est le polynôme nul. Ainsi
+⟨P,P⟩ = 0⇔P = 0.
+4
+<<<PAGE>>>
+2. Pour P = 1 on a
+‖P‖ =
+√
+⟨P,P⟩ =
+√
+1× 1 + 2× 1× 1 + 1× 1 = 2
+donc P0 = 1
+2.
+3. Calculons le produit scalaire :
+⟨X, 1
+2⟩ =−1× 1
+2 + 2× 0× 1
+2 + 1× 1
+2 = 0
+donc X et P0 sont orthogonaux.
+4. On calcule
+‖X‖ =
+√
+⟨X,X⟩ =
+√
+−1× (−1) + 2× 0× 0 + 1× 1 =
+√
+2
+donc P1 = 1√
+2X.
+5. D’une part
+⟨X 2,P 0⟩ = (−1)2× 1
+2 + 2× 02× 1
+2 + 12× 1
+2 = 1
+et d’autre part
+⟨X 2,P 1⟩ = (−1)2× 1√
+2 (−1) + 2× 02× 1√
+2 0 + 12× 1√
+2 1 = 0.
+On en déduit que
+Q =X 2− 1× 1
+2− 0×P1 =X 2− 1
+2.
+De plus,
+‖Q‖ =
+√
+⟨Q,Q⟩ =
+√(
+(−1)2− 1
+2
+)2
++ 2
+(
+0− 1
+2
+)2
++
+(
+1− 1
+2
+)2
+= 1
+donc
+P2 =X 2− 1
+2.
+6. Par construction on sait que les polynômesP0,P 1 et P2 sont de norme 1 et on sait déjà
+que P0⊥P1. Vériﬁons queP2 est orthogonal àP0 et P1 :
+⟨P2,P 0⟩ =
+(
+(−1)2− 1
+2
+) 1
+2 + 2
+(
+0− 1
+2
+) 1
+2 +
+(
+1− 1
+2
+) 1
+2 = 0.
+⟨P2,P 1⟩ =
+(
+(−1)2− 1
+2
+)−1√
+2 + 2
+(
+0− 1
+2
+) 0√
+2 +
+(
+1− 1
+2
+) 1√
+2 = 0.
+On en déduit que(P0,P 1,P 2) est une famille libre deR2[X], c’est donc une base puisque
+dim(R2[X]) = 3 . Ses éléments sont tous de norme 1 et orthogonaux deux à deux : c’est
+une base orthonormée.
+5

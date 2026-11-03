@@ -1,0 +1,83 @@
+ING2 – Mathématiques et Informatiques
+TP : Le recuit simulé
+EISTI
+Matière : IA et optimisation Écheance : 13 octobre 2017
+Nombre de pages : 3
+1 Le problème du voyageur de commerce
+Problème 1.
+Le problème du voyageur de commerce (ou Traveling Salesman Problem, TSP)
+s’énonce de la manière suivante :
+"Étant donnée une liste de villes et les distances séparant chacune d’entre elles ;
+quelle est la plus courte tournée possible qui visite chaque ville une seule fois et
+revient au point de départ ?"
+L ’objectif est de trouver le cycle hamiltonien le plus court du graphe complet,
+non orienté de villes. Pour 22 villes, il existe plus de 51.1018 tournées possibles, pour
+304 villes, plus de 2.10624 ! Pour un trajet symétrique, la complexité est de (n +1) !
+2 .
+L ’archiveRS.tgz contient l’ensemble des ﬁchiers permettant de réaliser ce TP .
+Vous trouverez une description détaillée de son contenu dans le ﬁchierREADME.md,
+ainsi qu’un ensemble d’instances de problèmes pour tester vos paramétrages sur
+un nombre plus importants de villes.
+2 Comprendre l’impact des paramètres
+Nous allons tout d’abord faire tourner l’algorithme à température ﬁxe, aﬁn d’étu-
+dier le comportement de ce paramètre.
+Exercice 1.
+a. Fixer une température élevée 10 6, interpréter le comportement.
+b. Fixer une température proche de 0, interpréter le comportement.
+c. Étudier une valeur de température autour de laquelle on passe d’un compor-
+tement à l’autre, interpréter sa valeur.
+3 Mesures de performance
+Exercice 2.
+a. Afﬁcher, en ﬁn de programme, le nombre d’améliorations réalisées durant l’exé-
+cution de l’algorithme ainsi que le rapport (amélioration/nb d’évaluations).
+b. Quels seraient les critères de performances de l’algorithme pour comparer 2
+versions ?
+- 1 / 3 -
+<<<PAGE>>>
+c. Comment savoir si le résultat fourni est convenable ou bien si l’algorithme est
+stable ?
+4 Température
+Nous allons ensuite faire tourner l’algorithme à température variable, aﬁn d’étu-
+dier le comportement de ce paramètre.
+Exercice 3.
+a. Fixer une température élevée 10 6, interpréter le comportement.
+b. Fixer une température proche de 0, interpréter le comportement.
+c. Fixer une valeur de décroissance à 0.1, 0.5, 0.8, 0.9 et 0.99, interpréter le com-
+portement.
+d. En faisant varier sa valeur, étudier l’impact du palier de température sur le ré-
+sultat de l’algorithme.
+e. Étudier la différence entre les deux équations de température.
+5 Initialisation et Voisinage
+Exercice 4.
+a. Est-ce judicieux d’initialiser la solution telle que réalisée ? Quel et l’impact d’une
+initialisation aléatoire.
+b. La perturbation codée réalise une modiﬁcation de 4 arrêtes. Réalisez une fonc-
+tion qui perturbe la solution de seulement 3 arrêtes.
+c. La permutation 2-opt réalise une perturbation qui ne modiﬁe que 2 arrêtes.
+Tester cette permutation.
+6 Convergence
+Exercice 5.
+a. Créer un critère de convergence qui arrête stoppe le palier de température lors-
+qu’il y a eu un certain nombre d’itérations sans amélioration.
+b. Créer un critère de convergence qui arrête l’algorithme lorsqu’il y a eu un cer-
+tain nombre d’itérations sans amélioration.
+- 2 / 3 -
+<<<PAGE>>>
+7 Cas continu
+Problème 2.
+L ’objectif ici est de souligner le caractèreMÉTAheuristique. Nous allons donc
+appliquer l’algorithme du recuit simulé sur deux fonctions continues : Sphère 1 et
+Griewank 2. Copier le ﬁchier RSTSP .py en RSCONT .py, ﬁchier que vous modiﬁerez.
+Remplacer les appels à la fonction dessine par des appels à la fonction affRes.
+Exercice 6. L ’objectif est d’adapter l’algorithme pour résoudre le problème de
+minimisation sur les fonctions Sphère et Griewank sur l’intervalle[−600; 600].
+a. Écrire les deux fonctions sphere et griewank.
+b. Écrire la fonction init qui retourne un point initialisé au hasard dans l’espace
+de recherche.
+c. Ré-écrire la fonction fluctuation qui retourne un voisin du point actuel. On
+déﬁnira une constante PAS, de décalage.
+d. Lancer l’algorithme pour chacune des fonctions en dimension 4, 10 et 50. Adap-
+tez les paramètres aux exigences de convergence...
+1. http://www.sfu.ca/~ssurjano/spheref.html
+2. http://www.sfu.ca/~ssurjano/griewank.html
+- 3 / 3 -

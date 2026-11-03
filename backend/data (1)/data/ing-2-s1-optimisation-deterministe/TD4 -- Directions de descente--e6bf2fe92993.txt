@@ -1,0 +1,129 @@
+CY-TECH - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Optimisation déterministe
+TD4 - Directions de descente
+2023-2024
+EXERCICE 1 On considère la fonction f : R2 7→ R définie pour tout X ∈ R2, X = (x1, x2) par
+f (X ) = x2
+1 +
+x4
+2
+4 .
+On cherche à minimiser f sur R2 par la méthode de Newton (Algorithme rappelé ci-dessous).
+1. Calculer le gradient ∇ f (X ) de f en X .
+2. Calculer la matrice hessienne H f (X ) de f en X puis calculer son inverse H −1
+f (X ).
+3. (a) En partant de X (0) =
+ˆ
+0
+γ
+!
+(γ un réel quelconque et non nul) et en appliquant la méthode
+de Newton pour un pas fixe ρ = 1, calculer les itérés X (1) et X (2).
+(b) Déduire que X (k) =
+µ 2
+3
+¶k
+X (0).
+(c) Que peut-on conclure par rapport à la convergence de la méthode.
+EXERCICE 2 On considère la fonction f : R2 → R et le problème d’optimisation sans contraintes suiv-
+ant :
+(P ) : min
+(x,y)∈R2
+µ
+f (x, y) = 5x2 + 1
+2 y 2 − 3(x + y)
+¶
+1. On pose Xk = (xk, yk) l’itéré courant. Donner l’expression du pas optimal ρopt
+k .
+2. On considère qu’à chaque itération, dk = −∇f (Xk). On initialise la méthode de descente au point
+X0 = (−2; −7). Compléter le tableau suivant:
+Direction du gradient Pas optimal Itéré courant
+1ère itération d0 = ρ0 = X1 =
+2ème itération d1 = ρ1 = X2 =
+3ème itération d2 = ρ2 = X3 =
+4ème itération d3 = ρ3 = X4 =
+3. On fixe les données suivantes ω = 10−4, ρ0
+0 = 1 et τ = 0.7. Compléter le tableau suivant:
+<<<PAGE>>>
+TD 4
+Pas d’Armijo ρi
+0 f
+‡
+X0 + ρi
+0d0
+·
+− f (X0) − ωρi
+0〈∇ f (X0), d0〉 Itéré courant
+1ère itération
+ρ0
+0
+ρ1
+0
+ρ2
+0 X1 =
+ρ3
+0
+ρ4
+0
+ρ5
+0
+EXERCICE 3 Implémenter l’algorithme de la méthode de descente du gradient conjugué et avec
+1. un pas optimal de Cauchy dans le cas d’une fonction quadratique.
+2. un pas d’Armijo dans le cas de la variante Flechter-Reeves avec relance.
+3. un pas d’Armijo dans le cas de la variante Polak Ribière avec relance.
+EXERCICE 4 On considère le problème d’optimisation sans contraintes suivant :
+(P ) : min
+(x,y)∈R2
+¡
+f (x, y
+¢
+= 5x2 + 1
+2 y 2 − 3(x + y)
+Soit X0 = (−2; −7), compléter le tableau suivant:
+Minimum local Nombre d’itérations Le résiduel
+°°∇ f
+¡
+X∗¢°°
+Méthode du gradient à pas fixe égal à 1 X∗ =
+Méthode du gradient à pas optimal de Cauchy X∗ =
+Méthode du gradient à pas d’Armijo X∗ =
+Méthode du gradient conjugué X∗ =
+EXERCICE 5 On considère le problème d’optimisation sans contraintes suivant :
+(P ) : min
+(x,y)∈R2
+¡
+f (x, y
+¢
+= x4 + 4y 4 + 4x y
+Soit X0 = (1; 1), compléter le tableau suivant:
+Minimum local Nombre d’itérations Le résiduel
+°°∇ f
+¡
+X∗¢°°
+Méthode du gradient à pas d’Armijo X∗ =
+Méthode de Flechter-Reeves X∗ =
+Méthode de Polak Ribière X∗ =
+CY TECH – Optimisation déterministe 2/3
+<<<PAGE>>>
+TD 4
+EXERCICE 6
+1. Implémenter l’algorithme de la méthode de descente à direction de Newton et à direction quasi
+Newton de BFGS.
+2. On considère le problème d’optimisation sans contraintes suivant :
+(P ) : min
+(x,y)∈R2
+¡
+f (x, y
+¢
+= x4 + 4y 4 + 4x y
+Soit X0 = (1; 1). Compléter le tableau suivant:
+Minimum local Nombre d’itérations Le résiduel
+°°∇ f
+¡
+X∗¢°°
+Méthode du gradient à pas d’Armijo X∗ =
+Méthode de Flechter-Reeves X∗ =
+Méthode de Polak Ribière X∗ =
+Méthode de BFGS X∗ =
+CY TECH – Optimisation déterministe 3/3

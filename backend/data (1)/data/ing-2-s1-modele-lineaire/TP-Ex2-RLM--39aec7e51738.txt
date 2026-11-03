@@ -1,0 +1,111 @@
+
+## TP (donn?es Ozone)
+
+# 1.
+ozone <- read.table("ozone.txt", header=T)
+ozone1 <- ozone[, 1:11] # Prendre juste les variables quantitatifs
+
+
+# 2.
+round(cor(ozone1),2) # Donne les correlations entre les variables, en
+#arrendissent ? deux chiffres apres le virgule
+
+# 3.
+reg.mul <- lm(maxO3~., data=ozone1) # Regression multiple
+summary(reg.mul) 
+
+# 4. 
+anova(reg.mul) # pour avoir les sommes des carr?es et les d.d.l
+anova(reg.mul)$`Sum Sq`[3] # pour avoir somme de carr? pour T15 qui est en 
+# troisieme ligne.
+
+
+# 5. 
+install.packages("carData")
+library(car)
+
+vif(reg.mul)
+
+
+#Les VIFs (Variance Inflation Factor) permettent de mesurer l'ampleur de la 
+#multicolin?arit? des variables explicatives incluses dans le mod?le.
+
+#Un VIF inf?rieur à 5 indique une faible corr?lation de cette variable explicative 
+#avec d'autres variables explicatives. Une valeur comprise entre 5 et 10 
+# indique une corr?lation mod?r?e, tandis que des valeurs VIF sup?rieures ? 
+#10 sont le signe d'une corr?lation ?lev?e et non tol?rable
+
+# ce qui nous interesse ce que les variables ne seront pas fortement correl?s,
+# donc on fixe le seuil de VIF ? 10.
+
+#Lorsque qu'une variable ? un VIF > 10, il est n?cessaire de la retirer du
+#mod?le,  puis de recalculer les VIFs, et de retirer une seconde variable 
+#si n?cessaire, etc. jusqu'? n'obtenir que des VIFs <10.
+
+
+## On peut remarquer que les variables  T12, T15 ont VIF>10, on 
+# construit un mod?le sans ces variables.
+
+reg.mul.new <-lm(maxO3~T9+Ne12+Ne9+Vx9+Ne15+Vx15+Vx12+maxO3v, data=ozone1)
+vif(reg.mul.new)
+
+#toutes les variables ont VIF< 10. On garde alors ce mod?le.
+
+
+# 6. 
+
+## Analyse des r?sidus
+
+res.m <- rstandard(reg.mul.new)
+plot(res.m, pch=10, cex=.5, ylab="Residus", main="Residus ")
+abline(h=c(-2, 2),col="blue",lwd=2)
+
+# Les valeurs aberrantes, sont les observations qui ont un residu standardis?
+# qui ne se trouvent pas dans l'intervalle [-2,2].
+
+# on cherche les observations aberrantes
+
+for (i in 1:112){ 
+  if (res.m[i]>2 || res.m[i]< -2)
+print(i)  
+}
+
+# on remarque que les obser 34,52,58 zt 79 sont aberrantes.
+# On regrade s'ils sont influentes et on le compare avec moyenne influent*2
+
+influence(reg.mul.new )$hat
+mean(influence(reg.mul.new )$hat) *2
+
+# Leviers ? comparer avec 0.1607143
+
+# On regarde en particulier les leviers de ces 4 observations influente et on 
+# compare avec 0.1607143
+
+influence(reg.mul.new )$hat [34]
+influence(reg.mul.new )$hat [52]
+influence(reg.mul.new )$hat [58]
+influence(reg.mul.new )$hat [79]
+
+
+# Leur leviers sont inf ? 0.1607143, donc je garde toutes ces observations et
+# on garde le modele actuel.
+
+
+
+# Remarque : Dans le cas ou une de ces observation par exmple 34, 52 sont 
+#influentes, pour les supprimer, on utilise les codes : 
+ozone2=ozone1[-c(34,52),]
+
+
+# 7. 
+
+## Pr?voir une nouvelle valeur
+xnew <- matrix(c(8, 0.85, 4, -4.32,120,14.1,5,-0.196), nrow=1)
+colnames(xnew) <- c("Ne9","Vx9","Ne15","Vx12","maxO3v","T9","Ne12","Vx15")
+xnew <- as.data.frame(xnew)
+predict(reg.mul.new, xnew, interval = "pred")
+
+# fit donne la valeur pr?dite par le mod?le
+# lwr et upr donne l'intervalle de confiance, c a dire cette valeur predite 
+# peut cituer entre quel deux valeurs.
+

@@ -1,0 +1,372 @@
+Programmation C
+Entr´ ees, Sorties
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 37
+<<<PAGE>>>
+Aide en ligne
+ING1 Programmation C CY Tech 2 / 37
+<<<PAGE>>>
+Utilisation du manuel
+Obtenir de l’aide
+▶ internet : peut ne pas ˆ etre actif (pendant les examens, ...) ; peut
+contenir des erreurs plus ou moins grave ; peut permettre de r´ esoudre
+un probl` eme en particulier
+▶ voisin : peut ne pas ˆ etre disponible (pendant les examens, ...) ; peut ne
+pas conna ˆ ıtre la r´ eponse
+▶ man : toujours disponible (si installation bien faite) ; ne contient pas
+d’erreur ; contient de nombreuses r´ eponses
+ING1 Programmation C CY Tech 3 / 37
+<<<PAGE>>>
+Aide sur une commande
+Obtenir de l’aide sur une commande
+man printf : donne l’aide sur la commande shell printf
+Inutile pour la programmation C
+▶ man -a printf
+▶ man 3 printf 1
+cf exemple
+1. Pour plus de renseignement sur man : tapez man man
+ING1 Programmation C CY Tech 4 / 37
+<<<PAGE>>>
+Section du manuel
+NAME : toutes les fonctions qui correspondent ` a la page de manuel
+SYNOPSIS : le prototype des fonctions, les librairies ` a inclure, voire
+mˆ eme les liens ` a utiliser
+DESCRIPTION : description des fonctions
+ERRORS : quelles erreurs sont trait´ ees
+RETURN VALUE : ce que retourne la fonction ainsi que la
+signification ´ eventuelle
+SEE ALSO : d’autres commandes similaires
+BUGS : les bugs connus
+ING1 Programmation C CY Tech 5 / 37
+<<<PAGE>>>
+Sortie format´ ee
+ING1 Programmation C CY Tech 6 / 37
+<<<PAGE>>>
+Sortie format´ ee
+Sortie : affichage ´ ecran (sortie standard)
+Format´ ee : contrˆ ole la forme et le format de l’affichage
+Sortie format´ ee en C :printf
+▶ Fonction pr´ e-cod´ ee : pas besoin de la recoder
+▶ Partie de la biblioth` eque d’entr´ ee-sortie standard :stdio
+▶ Besoin d’inclure stdio.h
+Attention sortie bufferis´ ee
+Syntaxe 
+i n t p r i n t f ( const char ∗ format , . . . ) ;
+/∗ P l u s g e n e r a l e m e n t on c o n s i d e r e ∗/
+p r i n t f ( ” f o r m a t ” , [ argument1 , [ argument2 , [ . . . ] ] ] ) ;
+ 
+ING1 Programmation C CY Tech 7 / 37
+<<<PAGE>>>
+Affichage d’entiers : ”%d”
+ 
+i n t i n t e x e m p l e ; // e n t i e r p o u r l ’ e x e m p l e
+i n t e x e m p l e = 3 ;
+p r i n t f ( ”%d” , 5 ) ;
+p r i n t f ( ”%d\ t ” , i n t e x e m p l e ) ;
+p r i n t f ( ”%d + %d = %d” , 5 , i n t e x e m p l e ,
+i n t e x e m p l e +5);
+p r i n t f ( ”\nLa v a r i a b l e d ’ exemple v a u t : %d\n” ,
+i n t e x e m p l e ) ;
+ 
+53 5+3=8
+La v a r i a b l e d ’ exemple v a u t : 3
+ING1 Programmation C CY Tech 8 / 37
+<<<PAGE>>>
+Autres affichages d’entier possible : ”%o”, ”%x”, ”%X” et
+”%u”
+ 
+i n t i n t e x e m p l e ; // e n c o r e l ’ e x e m p l e
+i n t e x e m p l e = 1 7 ;
+p r i n t f ( ”%d en o c t a l e v a u t %o\n” ,
+i n t e x e m p l e , i n t e x e m p l e ) ;
+p r i n t f ( ”%d en h e x a d e c i m a lv a u t %x\n” ,
+i n t e x e m p l e , i n t e x e m p l e ) ;
+ 
+17 en o c t a l e v a u t 21
+17 en h e x a d e c i m a l v a u t 11
+ING1 Programmation C CY Tech 9 / 37
+<<<PAGE>>>
+Affichage d’un caract` ere : ”%c”
+ 
+p r i n t f ( ”Un c a r a c t e r e s ’ a f f i c h e a v e c : %c\n” , ’ a ’ ) ;
+p r i n t f ( ” Cependant un e n t i e r < 255 peut e t r e
+i n t e r p r e t e comme un c a r a c t e r e\n” ) ;
+p r i n t f ( ” Exemple : %c\n” , 6 5 ) ;
+p r i n t f ( ” I n v e r s e m e n t: %d\n” , ’ a ’ ) ;
+ 
+Un c a r a c t e r e s ’ a f f i c h e a v e c : a
+Cependant un e n t i e r < 255 peut e t r e i n t e r p r e t e
+comme un e n t i e r
+Exemple : A
+I n v e r s e m e n t: 97
+ING1 Programmation C CY Tech 10 / 37
+<<<PAGE>>>
+Autres affichages
+e, E, f, F, g, G : r´ eels
+s : cha ˆ ıne de caract` eres
+p : adresse m´ emoire (pointeur)
+% : pour afficher le signe %
+ING1 Programmation C CY Tech 11 / 37
+<<<PAGE>>>
+Entr´ ee format´ ee
+ING1 Programmation C CY Tech 12 / 37
+<<<PAGE>>>
+Entr´ ee format´ ee
+Entr´ ee : clavier (entr´ ee standard)
+Format´ ee : contrˆ ole la forme et le format de la saisie
+Entr´ ee format´ ee en C :scanf
+Mˆ eme remarques que pour leprintf
+Syntaxe quasi identique 
+i n t s c a n f ( const char ∗ format , . . . ) ;
+ 
+ING1 Programmation C CY Tech 13 / 37
+<<<PAGE>>>
+Utilit´ e et valeur de retour
+Permet de demander une valeur, ou plusieurs, ` a l’utilisateur
+Stocke l’information dans une variable, ou plusieurs
+Lecture de l’entr´ ee
+Interpr´ etation en fonction de format
+Retourne le nombre de donn´ ees interpr´ et´ ees correctement
+Exemple (incorrect) d’utilisation 
+i n t s a i s i e ;
+i n t t o t o ;
+s c a n f ( ”%d%d” , &s a i s i e , &t o t o ) ;
+ 
+ING1 Programmation C CY Tech 14 / 37
+<<<PAGE>>>
+Sp´ ecificit´ es CY Tech
+Utilisation restreinte
+Interdiction de lire plus d’une variable par scanf
+Interdiction de mettre du texte ou autre chose dans le scanf ` a part :
+%...
+Obligation de prendre en compte la valeur de retour de scanf
+La lecture d’un double se fait par le format : %lf
+ING1 Programmation C CY Tech 15 / 37
+<<<PAGE>>>
+Utilisation correcte
+Exemple correct 
+i n t i n t v a l e u r ; // v a l e u r u t i l i s a t e u r
+i n t i n t r e t o u r ; // v a l e u r de r e t o u r
+p r i n t f ( ” E n t r e zune v a l e u r : ” ) ;
+i n t r e t o u r = s c a n f ( ”%d” , &i n t v a l e u r ) ;
+p r i n t f ( ” Le nombre de v a l e u r c o r r e c t e m e n tl u e : %d” ,
+i n t r e t o u r ) ;
+p r i n t f ( ”\ n V a l e u r l u e : %d\n” , i n t v a l e u r ) ;
+ 
+ING1 Programmation C CY Tech 16 / 37
+<<<PAGE>>>
+Cha ˆ ıne de caract` eres
+D´ eclaration d’une cha ˆ ıne :char str nom[30];
+Saisie : ... = scanf("%s", str nom);
+Attention pas de &
+ING1 Programmation C CY Tech 17 / 37
+<<<PAGE>>>
+´Ecriture des expressions
+alg´ ebriques et logiques
+ING1 Programmation C CY Tech 18 / 37
+<<<PAGE>>>
+Op´ erateurs alg´ ebriques
+Addition : +
+▶ int x = 2 + 3;
+Soustraction : -
+▶ int x = 2 - 3;
+Multiplication : *
+▶ int x = 2 * int x;
+▶ int x = 2int x; // Erreur !
+ING1 Programmation C CY Tech 19 / 37
+<<<PAGE>>>
+Op´ erateurs alg´ ebriques
+Division : /
+▶ int x = int x / 2; // Attention : division enti` ere
+▶ flt x = flt x / 2.0;
+▶ int x = int x / 2.0;
+▶ flt x = int x / 2.0;
+Modulo : %
+▶ int x = 10 % 2;
+▶ int x = 10.32 % 4;
+▶ int x = 10.32 % 4.2;
+ING1 Programmation C CY Tech 20 / 37
+<<<PAGE>>>
+Notion de bool´ een
+Bool´ een : donn´ ees qui ne peut prendre que deux ´ etats (Vrai ou Faux)
+N’existe pas en C
+Utilisation du type int
+▶ 0 : Faux
+▶ ̸= 0 : Vrai
+ING1 Programmation C CY Tech 21 / 37
+<<<PAGE>>>
+Op´ erateurs de comparaison
+´Egalit´ e : ==
+▶ int x == 5
+▶ int x == 2.0
+▶ ’a’ == ’b’
+▶ ’a’ == "oui"
+Inf´ erieur :<
+▶ int x < 5
+▶ int x < int y
+▶ ’a’ < ’b’
+▶ "non" < "oui"
+Sup´ erieur :>
+Inf´ erieur ou ´ egal :<=
+Sup´ erieur ou ´ egal :>=
+Diff´ erent : ! =
+ING1 Programmation C CY Tech 22 / 37
+<<<PAGE>>>
+Op´ erateurs logiques
+NON : !
+▶ !(int x < int y) ⇔ (int x >= int y)
+ET : &&
+▶ cond1 && cond2 : si cond1 est Faux alors cond2 non ´ evalu´ ee
+OU :||
+▶ cond1 || cond2 : si cond1 est Vrai alors cond2 non ´ evalu´ ee
+ING1 Programmation C CY Tech 23 / 37
+<<<PAGE>>>
+Conseils
+”Parenth´ esez” vos expressions le plus possible
+Normalement ´ evaluation :
+▶ Op´ erations num´ eriques
+▶ Op´ erations de comparaisons
+▶ Op´ erations logiques
+Faites attention ` a ne pas confondre == avec =
+▶ suggest parentheses around assignment used as truth value
+▶ Affectation : vaut la valeur de celle-ci
+▶ 3 == (int x = 3)⇔ Vrai et int x vaut 3
+ING1 Programmation C CY Tech 24 / 37
+<<<PAGE>>>
+Traduction des structures de
+contrˆ oles standards
+ING1 Programmation C CY Tech 25 / 37
+<<<PAGE>>>
+Instructions
+Affectation : int valeur = 5;
+Appel de fonctions : printf("Hello");
+Affectation et appel de fonctions : int retour = scanf(...);
+Se termine toujours par ;
+ING1 Programmation C CY Tech 26 / 37
+<<<PAGE>>>
+S´ equences
+Plusieurs instructions ` a la suite
+N´ ecessite la cr´ eation d’un bloc
+▶ Commence par un {
+▶ Termine par un}
+▶ Peut ne contenir qu’une seule instruction
+ING1 Programmation C CY Tech 27 / 37
+<<<PAGE>>>
+Conditionnelle simple
+si condition alors
+traitements
+fin si
+ 
+i f ( c o n d i t i o n ){
+t r a i t e m e n t s ;
+}
+ 
+ING1 Programmation C CY Tech 28 / 37
+<<<PAGE>>>
+Alternative
+si condition alors
+traitement1
+sinon
+traitement2
+fin si
+ 
+i f ( c o n d i t i o n ){
+t r a i t e m e n t 1 ;
+} e l s e{
+t r a i t e m e n t 2 ;
+}
+ 
+ING1 Programmation C CY Tech 29 / 37
+<<<PAGE>>>
+Aiguillage multiple
+selon expr de
+const1:
+traitement1
+const2:
+traitement2
+d´ efaut :
+traitementn
+fin selon
+ 
+switch ( e x p r ){
+case c o n s t 1 :
+t r a i t e m e n t 1 ;
+break ;
+case c o n s t 2 :
+t r a i t e m e n t 2 ;
+break ;
+. . . / . . .
+d e f a u l t :
+t r a i t e m e n t n ;
+break ;
+}
+ 
+ING1 Programmation C CY Tech 30 / 37
+<<<PAGE>>>
+Aiguillage multiple
+Permet de remplacer dans certains cas une imbrication de if else
+expr : doit ˆ etre une variable de type entier, ou une expression enti` ere
+ING1 Programmation C CY Tech 31 / 37
+<<<PAGE>>>
+Test en tˆ ete
+tant que condition faire
+traitements
+fin tant que
+ 
+while ( c o n d i t i o n ){
+t r a i t e m e n t s ;
+}
+ 
+ING1 Programmation C CY Tech 32 / 37
+<<<PAGE>>>
+Test en queue
+faire
+traitements
+tant que condition
+ 
+do {
+t r a i t e m e n t s ;
+} while ( c o n d i t i o n ) ;
+ 
+Attention ` a lacondition
+Termine par un ;
+ING1 Programmation C CY Tech 33 / 37
+<<<PAGE>>>
+R´ ep´ eter
+pour i← init ` afinal faire
+traitements
+fin pour
+ 
+f o r( i n i t ; cond ; i t e r ) {
+t r a i t e m e n t s ;
+}
+ 
+Alternative syntaxique au while
+D´ eroulement :
+1 Ex´ ecution deinit
+2 Si cond vaut Faux alors on quitte la boucle. Sinon
+3 Ex´ ecution detraitements
+4 Ex´ ecution deiter
+5 Retour ` a l’´ etape 2
+ING1 Programmation C CY Tech 34 / 37
+<<<PAGE>>>
+Sp´ ecificit´ es CY Tech
+ING1 Programmation C CY Tech 35 / 37
+<<<PAGE>>>
+Obligation
+Tester le retour des fonctions ( scanf, ...)
+Tester les param` etres d’entr´ ee des fonctions (utilisation d’assert 2)
+Parenth´ eser les expressions
+▶ int x * int x + 5 ⇔ ((int x * int x) + 5)
+Pas de test implicite
+▶ if!int x ⇔ if (int x != 0)
+Utilisation d’une boucle for uniquement lorsque la valeur de d´ ebut et
+de fin de l’it´ erateur sont connues ` a l’avance
+Obligation de mettre un break dans chaque case d’un switch
+2. Vu plus tard
+ING1 Programmation C CY Tech 36 / 37
+<<<PAGE>>>
+Exemple
+Cf exemple.c
+ING1 Programmation C CY Tech 37 / 37

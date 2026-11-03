@@ -1,0 +1,41 @@
+# Exercice 4
+
+# Lire les donn?es
+
+data(women)
+attach(women)
+
+# 1. 
+plot(weight~height, data = women, pch = 16, cex =0.5)
+
+# 2. Le graphique montre qu'un mod?le lin?aire serait excellent. On estime 
+# les param?tres de ce mod?le avec 'lm' : ( Y : Weight et X : Height)
+RegLin <- lm(weight~height)
+RegLin$coefficients
+
+# 3. 
+abline(RegLin, lwd = 4, lty = 1, col = 'red')
+# On constate que l'ajustement est excellent.
+
+# 4. Coefficient de d?termination.
+
+summary(RegLin)
+
+# Le coefficient de d?termination est donc R2 = 0.991, ce qui est pr?s de 1 et
+# confirme donc l'excellent ajustement du mod?le ?voqu? dans la question 3.
+
+# Pour etudier la significativité globale du modèle, on peut realiser le test de Fisher,(dernier ligne)
+#on etudie H0: modele non signifi contre H1: Modele signifi, pour realiser ce test  soit on compare
+# F-statistic =1433 avec le Ftheorique f(1,13), qu'on peut l'avoir du table fisher
+# soit on on compare le p-value 1.091*10^-14 avec 0.05.. ici p-value <0.05 donc on accepte H1,
+# donc modele significative, on valide encore les reponses de 3 et 4.
+# on 
+
+# 5. 
+
+anova(RegLin)
+
+# On a : SCR = 30.2 et SCE= 3332.7 donc SCT= SCR+SCE=3362.9
+# et R?= SCE/SCT= 3332.7/3362.9 = 0.9910197 qui est la m?me valeur obtenue en 4.
+
+

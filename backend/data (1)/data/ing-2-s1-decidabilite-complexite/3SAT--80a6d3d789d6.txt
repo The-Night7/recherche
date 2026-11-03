@@ -1,0 +1,37 @@
+3-SAT est NP-complet
+Énoncé du problème
+Donnée : une formule en forme normale conjonctive avecexactement 3littéraux par clause
+Question : la formule est-elle satisfiable,i.e. existe-t-il des valeurs des variables qui la rende vraie?
+3-SAT est dans NP
+Soit une affectation candidate des variables. On peut vérifier si elle satisfait la formule en temps polyno-
+mial.
+3-SAT est NP-difficile
+NP-difficile : au moins aussi difficile que les problèmes les plus durs de NP.
+Pour cette preuve, on part d’une formule quelconque de SAT. On admet qu’elle peut être mise en fnc et
+on montre que cette fnc peut à son tour être transformée en une formule de 3-SAT.
+On considère 3 cas où une clause de la fnc ne comporte pas exactement 3 littéraux : 2 littéraux, 1 littéral
+et 4 littéraux ou plus.
+Clause à 2 littéraux
+(x1∨ x2) peut être remplacé par(x1∨ x2∨ y)∧ (x1∨ x2∨¬ y) avec y une nouvelle variable.
+La deuxième formule est satisfiable ssi la première l’est (y et¬y ne sont jamais vrais simultanément).
+Clause à 1 littéral
+(x1) peut être remplacé par(x1∨ y1∨ y2)∧ (x1∨ y1∨¬ y2)∧ (x1∨¬ y1∨ y2)∧ (x1∨¬ y1∨¬ y2) avec y1
+et y2 deux nouvelles variables.
+La deuxième formule est satisfiable ssi la première l’est.
+Clause à 4 littéraux ou plus
+(x1∨ x2∨···∨ xi∨···∨ xℓ−1∨ xℓ) avec ℓ≥ 4 peut être remplacé par
+(x1∨ x2∨ y1)∧ (¬y1∨ x3∨ y2)∧ (¬y2∨ x4∨ y3)∧···
+∧(¬yi−2∨ xi∨ yi−1)∧···
+∧(¬yℓ−4∨ xℓ−2∨ yℓ−3)∧ (¬yℓ−3∨ xℓ−1∨ xℓ)
+clause satisfiable⇒ formule satisfiable
+Si la clause est satisfiable, au moins l’un des littéraux est vrai. Supposons que ce soitxi. dans ce cas, il
+suffit d’affecter tous lesyj avec j≤ i− 2 à vrai et tous lesyj avec j≥ i− 1 pour que la formule soit vraie.
+clause satisfiable⇐ formule satisfiable
+Si la formule est vraie, au moins unxi est vrai. Par l’absurde, supposons que tous lesxi soient faux.
+Alors y1 est vrai pour que la première clause soit vraie. Dans ce cas,y2 doit également être vrai pour que
+la deuxième clause soit vraie ... etyℓ−3 doit être vrai pour que l’avant-dernière clause soit vraie. Cependant
+dans ce cas, la dernière clause ne peut pas être vraie, ce qui est une contradiction.
+Cette transformation à partir d’une formule quelconque de SAT est polynomiale.
+<<<PAGE>>>
+3-SAT est à la fois dans NP et NP-difficile, donc il est NP-complet.
+2

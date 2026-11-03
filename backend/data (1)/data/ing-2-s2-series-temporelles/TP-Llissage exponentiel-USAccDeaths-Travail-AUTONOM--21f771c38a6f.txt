@@ -1,0 +1,353 @@
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 1/15
+TP3 : lissage exponentiel
+15/11/2018
+L’objectif de ce TP est de comprendre l’utilisation de la fonction ets()  du package forecast  pour estimer les
+paramètres d’un modèle de lissage exponentiel. Nous illustrerons son fonctionnement sur les données
+USAccDeaths  donnant le nombre mensuel de décès accidentels aux Etats-Unis entre 1973 et 1978.
+library("forecast") 
+help(ets) 
+help("USAccDeaths")
+Observation et pré-traitement des données
+Nous commençons par tracer les données :
+plot(USAccDeaths)
+monthplot(USAccDeaths)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 2/15
+Les tracés du chronogramme et du diagramme par mois montrent un motif saisonnier global avec une tendance à
+l’augmentation du nombre de décès entre février et juillet, suivie d’une baisse jusqu’en septembre.
+Nous allons tester différentes méthodes de lissage exponentiel. Pour évaluer leurs performances prédictives, nous
+allons estimer les paramètres du modèle sur la série allant de janvier 1973 jusqu’à décembre 1977 et garder les
+observations de l’année 1978 pour les comparer avec les prévisions.
+USAccDeaths.7377 <- window(USAccDeaths,start=1973,end=c(1977,12)) 
+USAccDeaths.78 <- window(USAccDeaths,start=1978)
+Lissage exponentiel simple
+Nous commençons par le lissage exponentiel simple. La commande
+fitLES <- ets(USAccDeaths.7377,model="ANN")
+estime les paramètres du modèle de lissage exponentiel simple avec erreur additive.
+La commande
+summary(fitLES)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 3/15
+## ETS(A,N,N)  
+##  
+## Call: 
+##  ets(y = USAccDeaths.7377, model = "ANN")  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.9999  
+##  
+##   Initial states: 
+##     l = 9771.3144  
+##  
+##   sigma:  731.3451 
+##  
+##      AIC     AICc      BIC  
+## 1043.047 1043.475 1049.330  
+##  
+## Training set error measures: 
+##                     ME     RMSE      MAE        MPE     MAPE     MASE 
+## Training set -16.25775 731.3451 641.5581 -0.5246159 7.359666 1.331897 
+##                    ACF1 
+## Training set 0.03409478
+nous donne une estimation par maximum de vraisemblance des paramètres du modèle ( ,  et ), les valeurs
+des critères AIC, AICc et BIC ainsi que différentes mesures d’erreurs.
+Notons  le résidus d’estimation. Si nous observons , nous avons :
+l’erreur moyenne :
+l’erreur quadratique moyenne :
+l’erreur absolue moyenne :
+l’erreur en pourcentage moyenne :
+l’erreur relative moyenne
+α ℓ1 σ
+:= −et Xt X^t|t−1 , . . . ,X1 Xn
+ME = ;1
+n ∑
+t=1
+n
+et
+RMSE = ,1
+n ∑
+t=1
+n
+e2
+t
+− −−−−−−
+√
+MAE = | |,1
+n ∑
+t=1
+n
+et
+MP E = 100 1
+n ∑
+t=1
+n et
+Xt
+MAP E = 100 1
+n ∑
+t=1
+n | |et
+| |Xt
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 4/15
+erreur moyenne normalisée
+autocorrélation des erreurs à l’horizon 1 (ACF1).
+La fonction forecast()  permet de prédire à l’aide du modèle généré par la fonction ets() .
+predLES <- forecast(fitLES,h=12) 
+plot(predLES) 
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2) 
+legend('top',c("Valeurs observées","Prédictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = r
+ep(2,2))
+Nous remarquons que le modèle est trop basique dans notre cas pour prédire à l’horizon 12 et que l’intervalle de
+confiance à 80%, bien que très large, ne contient pas les vraies valeurs de la série.
+Lissage exponentiel double
+fitLED <- ets(USAccDeaths.7377,model="AAN") 
+summary(fitLED)
+MASE = n − 1
+n
+∑n
+t=1 et
+| − |∑n
+u=2 Xu Xu−1
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 5/15
+## ETS(A,A,N)  
+##  
+## Call: 
+##  ets(y = USAccDeaths.7377, model = "AAN")  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.9841  
+##     beta  = 1e-04  
+##  
+##   Initial states: 
+##     l = 8554.9205  
+##     b = 9.7804  
+##  
+##   sigma:  727.1569 
+##  
+##      AIC     AICc      BIC  
+## 1046.358 1047.469 1056.829  
+##  
+## Training set error measures: 
+##                     ME     RMSE      MAE        MPE     MAPE     MASE 
+## Training set -5.986894 727.1569 635.8686 -0.4200186 7.300841 1.320085 
+##                    ACF1 
+## Training set 0.01683508
+predLED <- forecast(fitLED,h=12) 
+plot(predLED) 
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2) 
+legend('top',c("Valeurs observées","Prédictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = r
+ep(2,2))
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 6/15
+Le modèle étant plus général, l’erreur moyenne est nécessairement inférieure mais cette méthode ne semble pas
+préférable à la précédente, le paramètre  estimé est très petit, l’AIC, l’AICc et le BIC sont plus grands et l’erreur
+moyenne relative est à peu près du même ordre.
+Méthode de Holt-Winters
+Nous prenons maintenant en compte la composante saisonnière.
+fitHW <- ets(USAccDeaths.7377,model="AAA") 
+summary(fitHW)
+β
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 7/15
+## ETS(A,A,A)  
+##  
+## Call: 
+##  ets(y = USAccDeaths.7377, model = "AAA")  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.5691  
+##     beta  = 1e-04  
+##     gamma = 0.0031  
+##  
+##   Initial states: 
+##     l = 9922.1856  
+##     b = -21.818  
+##     s=-61.4333 -252.2644 208.4148 -77.8913 1043.66 1626.069 
+##            771.4102 324.1323 -507.4611 -708.1016 -1473.645 -892.8896 
+##  
+##   sigma:  266.5008 
+##  
+##      AIC     AICc      BIC  
+## 949.9059 964.4773 985.5098  
+##  
+## Training set error measures: 
+##                    ME     RMSE      MAE         MPE     MAPE      MASE 
+## Training set 2.733903 266.5008 210.7843 -0.02286331 2.443577 0.4375955 
+##                      ACF1 
+## Training set -0.004056209
+predHW <- forecast(fitHW,h=12) 
+plot(predHW) 
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2) 
+legend('top',c("Valeurs observées","Prédictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = r
+ep(2,2))
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 8/15
+On améliore ici grandement la prédiction.
+Choix d’un modèle
+Mais peut-être un modèle de lissage exponentiel sans tendance pourrait être plus simple tout en ayant des
+propriétés prédictives similaires ? Peut-être faut-il considérer une saisonnalité additive ? Une erreur multiplicative
+? Pour tester d’autres modèles, nous pouvons modifier le paramètre model  de la fonction qui est codé en 3 lettres
+:
+la première lettre désigne la nature de l’erreur :
+A  erreur additive,
+M  erreur multiplicative,
+Z  si l’on veut que la fonction sélectionne automatiquement la nature de l’erreur;
+la deuxième lettre désigne la tendance :
+N  pas de tendance (première ligne du tableau du poly),
+A  tendance additive (deuxième ligne du tableau du poly),
+M  tendance multiplicative (quatrième ligne du tableau du poly),
+Z  sélection automatique;
+enfin, la troisième lettre désigne la saisonnalité :
+N  pas de saisonnalité (première colonne du tableau du poly),
+A  saisonnalité additive (deuxième colonne du tableau du poly),
+M  saisonnalité multiplicative (quatrième colonne du tableau du poly),
+Z  sélection automatique.
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 9/15
+Il est possible aussi de considérer des modèles amortis (troisième et cinquième ligne du tableau) à l’aide de
+l’option damped  ( damped=TRUE  saisonnalité amortie, damped=FALSE  saisonnalité non amortie, damped=NULL – par
+défaut – sélection automatique).
+Pour une sélection automatique à l’aide des critères d’information, il suffit de ne rien spécifier dans l’option model .
+fit <- ets(USAccDeaths.7377) 
+summary(fit)
+## ETS(M,N,M)  
+##  
+## Call: 
+##  ets(y = USAccDeaths.7377)  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.5953  
+##     gamma = 2e-04  
+##  
+##   Initial states: 
+##     l = 9185.9202  
+##     s=0.9991 0.9747 1.027 0.9827 1.1089 1.1851 
+##            1.0895 1.0353 0.9351 0.9178 0.8329 0.9119 
+##  
+##   sigma:  0.0316 
+##  
+##      AIC     AICc      BIC  
+## 950.2571 961.1662 981.6723  
+##  
+## Training set error measures: 
+##                     ME     RMSE      MAE        MPE     MAPE      MASE 
+## Training set -15.90959 273.7124 218.7139 -0.2261217 2.510863 0.4540576 
+##                    ACF1 
+## Training set -0.0351398
+predfit <- forecast(fit,h=12) 
+plot(predfit) 
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2) 
+legend('top',c("Valeurs observées","Prédictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = r
+ep(2,2))
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 10/15
+Le modèle sélectionné est le modèle sans tendance et avec erreur et saisonnalité multiplicatives. Notons que l’AIC
+de ce modèle est plus élevé que celui du modèle avec tendance considéré précedemment alors que l’AICc et le
+BIC sont moins élevés.
+Nous pouvons spécifier quel critère doit être utilisé pour sélectionner le modèle. Par exemple, pour minimiser l’AIC
+:
+fitAIC <- ets(USAccDeaths.7377,ic="aic") 
+summary(fitAIC)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 11/15
+## ETS(M,Ad,M)  
+##  
+## Call: 
+##  ets(y = USAccDeaths.7377, ic = "aic")  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.4687  
+##     beta  = 1e-04  
+##     gamma = 1e-04  
+##     phi   = 0.9745  
+##  
+##   Initial states: 
+##     l = 9941.5507  
+##     b = -60.4594  
+##     s=0.9927 0.9673 1.0271 0.9854 1.1132 1.1926 
+##            1.0941 1.0348 0.9392 0.9158 0.8313 0.9064 
+##  
+##   sigma:  0.0295 
+##  
+##      AIC     AICc      BIC  
+## 947.6278 964.3107 985.3260  
+##  
+## Training set error measures: 
+##                    ME     RMSE      MAE       MPE     MAPE      MASE 
+## Training set 20.02429 252.3848 200.8253 0.1743219 2.310405 0.4169203 
+##                    ACF1 
+## Training set 0.01102017
+predfitAIC <- forecast(fitAIC,h=12) 
+plot(predfitAIC) 
+points(USAccDeaths.78,type='l',col='darkgreen',lwd=2) 
+legend('top',c("Valeurs observées","Prédictions"),col=c("darkgreen","blue"),lty=rep(1,2),lwd = r
+ep(2,2))
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 12/15
+Le critère AIC seul sélectionne le modèle avec erreur et saisonnalité multiplicative et tendance amortie.
+Nous allons maintenant comparer les différents modèles en terme de prédiction. Pour cela, nous traçons les
+prédictions données par les différentes méthodes pour les comparer aux vraies valeurs.
+plot(USAccDeaths.78,col="darkgreen",lwd=2,ylab="Nombre de décès accidentels",xlab="Temps") 
+points(predLES$mean,col="chocolate",lwd=2,type='l') 
+points(predLED$mean,col="pink",lwd=2,type='l') 
+points(predHW$mean,col="blue",lwd=2,type='l') 
+points(predfit$mean,col="cadetblue",lwd=2,type='l') 
+points(predfitAIC$mean,col="blueviolet",lwd=2,type='l') 
+legend("topleft",c("Vraies valeurs","LES","LED","Holt Winters","MNM","MAdM"),col=c("darkgreen",
+"chocolate","pink","blue","cadetblue","blueviolet"),lty=rep(1,6),lwd=rep(2,6),cex=0.7)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 13/15
+Nous constatons toujours que les deux méthodes qui ne prennent pas en compte la saisonnalité (LES, LED)
+donnent des prédictions très éloignées de la réalité pour cette série. Les trois autres méthodes semblent très
+proches, le modèle sans tendance et avec saisonnalité et bruit multiplicatifs semble toutefois donner de meilleurs
+prédictions à long terme.
+Nous sélectionnons donc ce dernier modèle et appliquons la méthode d’estimation à l’ensemble de la série pour
+prédire l’année 1979 (non observée).
+fittotal <- ets(USAccDeaths,model="MNM") 
+summary(fittotal)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 14/15
+## ETS(M,N,M)  
+##  
+## Call: 
+##  ets(y = USAccDeaths, model = "MNM")  
+##  
+##   Smoothing parameters: 
+##     alpha = 0.5612  
+##     gamma = 2e-04  
+##  
+##   Initial states: 
+##     l = 9188.1943  
+##     s=1.003 0.9678 1.0229 0.9889 1.1063 1.1868 
+##            1.0895 1.0381 0.9417 0.9167 0.8251 0.9131 
+##  
+##   sigma:  0.0305 
+##  
+##      AIC     AICc      BIC  
+## 1142.376 1150.948 1176.526  
+##  
+## Training set error measures: 
+##                     ME     RMSE      MAE         MPE     MAPE     MASE 
+## Training set -3.098497 264.2929 207.9705 -0.09407356 2.386312 0.475633 
+##                     ACF1 
+## Training set 0.008456416
+predfittotal <- forecast(fittotal,h=12) 
+plot(predfittotal)
+<<<PAGE>>>
+1/25/2021 TP3 : lissage exponentiel
+https://www.ceremade.dauphine.fr/~roche/Enseignement/Series_temps_exMaster/TP3_SeriesTemp.html 15/15

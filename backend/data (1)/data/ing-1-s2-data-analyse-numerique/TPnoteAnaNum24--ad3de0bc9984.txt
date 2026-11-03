@@ -1,0 +1,200 @@
+ING1 - MI - S2
+TP not´ e
+Reconstruction d’image d´ et´ erior´ ee
+Mati` ere :Analyse Num´ erique Date : 24 avril 2024
+Nombre de pages : 2 Heure limite : 23h59
+Contents
+1 Introduction 1
+2 Pr´ ealables de la m´ ethode de reconstruction 2
+3 Partie Math´ ematique 2
+3.1 R´ esultats pr´ eliminaires . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3.2 M´ ethode de r´ esolution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4 Partie programmation 4
+5 Donn´ ees fournies 4
+6 Rendus attendus 4
+1 Introduction
+Sujet
+Le but de ce TP est d’impl´ ementer une m´ ethode simple d’inpainting utilisant une approximation
+par fonctions splines et une r´ esolution de syst` eme lin´ eaire ` a partir de l’algorithme de Gauss-Seidel
+´ etudi´ e en cours.
+Plus pr´ ecis´ ement, on va chercher ` a reconstruire des donn´ ees manquantes dans une image num´ erique
+pour laquelle un pourcentage ´ elev´ e de pixels ont ´ et´ e perdus (jusqu’` a 95%).
+En conservant l’information restante (c’est-` a-dire les pixels non d´ egrad´ es), on va eﬀectuer une
+interpolation aﬁn de redonner une valeur r´ ealiste aux pixels perdus.
+Compte-tenu du nombre important de pixels perdus, une simple interpolation ne saurait donner de
+r´ esultats satisfaisants. Nous allons alors imposer ` a la fonction interpol´ ee de v´ eriﬁer un certain crit` ere
+de r´ egularit´ e. Parmi toutes les fonctions appartenant ` a une famille de fonctions d’interpolation, nous
+allons d´ eterminer celle dont le gradient (sur la totalit´ e de l’image) est le plus petit. En proc´ edant
+ainsi, l’information correcte restante sera ”diﬀus´ ee” dans toutes les directions ` a l’ensemble des pixels
+de l’images permettant ainsi une restauration correcte de celle-ci.
+Python - Packages n´ ecessaires et suﬃsants
+import numpy as np
+import matplotlib.pyplot as plt
+1
+<<<PAGE>>>
+2 Pr´ ealables de la m´ ethode de reconstruction
+Aﬁn de r´ ealiser la totalit´ e du travail demand´ e dans le temps imparti pour ce TP (3h), nous nous
+restreindrons ` a des images noir et blanc (qui vous sont fournies). `A chaque pixel est associ´ e un niveau
+de gris qui est tout simplement, une valeur entre 0 et 1 (0: noir, 1:blanc).
+L’image corrompue IC (en noir et blanc) que l’on cherche ` a restaurer vous est fournie. Elle sera vue
+comme une matrice. On notera dans l’ensemble du sujet:
+• nx, ny le nombre de pixels de l’image dans chaque direction
+• Ω = [ [1,n x] ]× [ [1,n y] ] un domaine sur lequel on d´ eﬁnit une image (matrice ayantnx lignes et ny
+colonnes).
+• Une image noir et blancI sera assimil´ ee ` a une fonction d´ eﬁnie sur Ω et ` a valeur dans [0, 1] (ensemble
+des niveaux de gris possibles).
+I : Ω→ [0, 1]
+• pi,j = (i,j ) pour i∈ [ [1,n x] ] etj∈ [ [1,n y] ]. pi,j repr´ esente le pixel en position (i,j ).
+• De plus, aﬁn de vous faciliter la tˆ ache, nous vous fournissons en plus de l’image corrompueIC, une
+seconde image m, de mˆ emes dimensions queIC que l’on appelle masque dont les pixels mij v´ eriﬁe
+mij =
+{
+0 siI C(pij) est un pixel perdu
+1 sinon
+C’est cette matrice (image) qui permet de s´ eparer les pixels endommag´ es des pixels sains.
+3 Partie Math´ ematique
+3.1 R´ esultats pr´ eliminaires
+1. Montrer que la fonction spline cubique ϕ naturelle associ´ ee aux abscisses−2,−1, 0, 1, 2 telle
+que
+ϕ(−2) =ϕ(2) = 0
+ϕ(−1) =ϕ(1) = 1
+6
+ϕ(0) = 2
+3
+ϕ(s) = 0 si s⁄∈ [−2, 2]
+est la suivante :
+ϕ(s) =
+
+
+
+(2+s)3
+6 si x∈ [−2,−1[
+2
+3− s2(2+s)
+2 si x∈ [−1, 0[
+2
+3− s2(2−s)
+2 si x∈ [0, 1[
+(2−s)3
+6 si x∈ [1, 2]
+Pr´ eciser les valeurs des d´ eriv´ ees secondes deϕ aux points d’interpolation.
+2. Cette fonction ϕ va nous permettre d’exprimer chaque pixel comme moyenne pond´ er´ ee du
+pixel lui mˆ eme avec poids2
+3 et de ses quatres voisins avec poids 1
+6.
+De plus, et en raison des pixels corrompus, nous aurons besoin d’une version continue de cette
+image.
+2
+<<<PAGE>>>
+On d´ eﬁnit sur˜Ω = [1,n x]×[1,n y] la fonction ˜I (repr´ esentant une version continue de l’image)
+pour tout x∈ [1,n x] et tout y∈ [1,n y] par :
+˜I(x,y ) =
+nx∑
+i=1
+ny∑
+j=1
+βijϕ(x−i)ϕ(y−j), (1)
+o` uβij est un coeﬃcient r´ eel que nous allons chercher ` a d´ eterminer.
+La nullit´ e du laplacien, qui traduit la lissit´ e de l’image, nous permettra alors de compl´ eter les
+´ equations n´ ecessaires ` a l’obtention des coefsβi,j.
+Exprimer ˜I(pk𝓁), valeur de la fonction d´ eﬁnie en (1) au pixelpk𝓁.
+D´ eterminer ensuite, uniquement en fonction des coeﬃcientsβi,j, l’expression de ˜I(pk𝓁).
+3. Calculer le laplacien ∆ i,j = ∆(ϕ(x−i)ϕ(y−i)), puis en d´ eduire l’expression de ∆˜I(pi,j) =
+∆˜I(i,j ) en fonction des coefs βi,j uniquement.
+On rappelle que si f est une fonction de 2 variables, ∆ f repr´ esente le laplacien de la fonctionf
+d´ eﬁni par :
+∆f(x,y ) = ∂2f
+∂x2 (x,y ) +∂2f
+∂y2 (x,y ).
+3.2 M´ ethode de r´ esolution
+Pour d´ eterminer les coeﬃcientsβij, on va chercher la fonction ˜I s’´ ecrivant sous la forme (1) qui
+minimise la valeur de
+∫
+Ω|∇˜I|2dx sous la contrainte
+˜I(pi,j) =IC(pij) si mij > 0.
+Remarque: La contrainte permet de garder la valeur des pixels qui n’ont pas ´ et´ e corrompus, tandis
+que la fonctionnelle, que l’on minimise, permet de chercher l’image la plus ”lisse” possible.
+On admettra pour la suite que ce probl` eme de minimisation se ram` ene ` a r´ esoudre le syst` eme
+d’´ equations suivant :∀i,j ∈ [ [1,n x] ]× [ [1,n y] ]
+{ ˜I(pi,j) = IC(pij) si m ij > 0,
+∆˜I(pi,j) = 0 sinon.
+1. Exprimer les ´ equations ci-dessus en fonction des coeﬃcientsβij.
+2. Les ´ equations pr´ ec´ edentes permettent de d´ eterminer les coeﬃcientsβi,j comme solution d’un
+syst` eme lin´ eaire que l’on peut ´ ecrire
+Aβ =b (2)
+o` uβ est un vecteur dont les composantes sont lesβi,j ordonn´ ees selon l’ordre lexicographique.
+Donner la dimension de ce vecteur β en fonction de nx et ny, et en d´ eduire la dimension de
+la matrice A.
+3. Donner un ordre de grandeur de la dimension de A en partant d’une des images fournies.
+Expliquer alors pourquoi il convient d’´ eviter de stocker cette matrice ou d’essayer d’inverser
+sa partie triangulaire inf´ erieure.
+On va r´ esoudre ce syst` eme par la m´ ethode de Gauss-Seidel relax´ ee.
+4. Montrer que la formule de r´ ecurrence de Gauss-Seidel peut s’´ ecrire, d’apr` es les notations du
+cours :
+(D−E)x(k+1) =Fx (k) +b,
+et en d´ eduire que cela revient ` a ´ ecrire le syst` emeAx(k) = b, puis ` a remplacer la 1` ere
+composante de x(k) par celle de x(k+1) dans la premi` ere ´ equation, remplacer la 1` ere et la
+2` eme composante dex(k) par celles de x(k+1) dans la 2` eme ´ equation, et ainsi de suite.
+Il est ainsi possible de d´ eterminer les composantes dex(k+1) ` a partir de celles dex(k) et de b
+sans avoir besoin de calcul matriciel de type :
+x(k+1) = (D−E)−1Fx (k) + (D−E)−1b.
+3
+<<<PAGE>>>
+5. Appliquer cette id´ ee pour exprimer le coefβ(k+1)
+i,j en fonction des β(k+1)
+i−1,j−1,β (k+1)
+i−1,j,β (k+1)
+i,j−1,... et
+des β(k)
+i+1,j+1,β (k)
+i+1,j,β (k)
+i,j+1,..
+6. Faites de mˆ eme pour la m´ ethode de Gauss-Seidel relax´ ee avec coef de relaxationω.
+4 Partie programmation
+La partie math´ ematique est essentielle pour impl´ ementer cette partie (notamment pour la compr´ ehension
+des fonctions ` a impl´ ementer)
+Compl´ eter le programme Python fourni, permettant d’eﬀectuer les tˆ aches suivantes:
+1. Lire l’image corrompue ainsi que le masque associ´ e : ces 2 ´ etapes vous sont fournies dans le
+ﬁchier python ` a compl´ eter
+2. ´Ecrire une fonction eﬀectuant une it´ eration de Gauss-Seidel relax´ ee.
+Cette fonction prendra en argument le second membreb, la solution approch´ eeβ(k) ` a l’it´ eration
+k ainsi que le masque de l’image corrompue et renverra la solutionβ(k+1) ` a l’it´ eration suivante.
+Compte-tenue de la taille importante de la matrice A, il sera primordial de ne pas la stocker
+en m´ emoire.
+Noter que la valeur du param` etre de relaxation est pr´ epositionn´ ee ` aω = 1.25. Il vous
+appartiendra ´ eventuellemnt de modiﬁer cette valeur.
+3. ´Ecrire une fonction qui eﬀectue les it´ erations de Gauss-Seidel relax´ ee pour r´ esoudre le syst` eme
+(2).
+On prendra soin d’´ ecrire proprement les crit` eres d’arrˆ et.
+4. ´Ecrire une fonction qui construit et qui aﬃche une image restaur´ ee ` a l’aide des valeurs deβ
+obtenues par la r´ esolution de (2), et par utilisation de la relation (1).
+5 Donn´ ees fournies
+– Fichier Python a compl´ eter et rendre ` a la ﬁn du TP
+– Les images corrompues chevaux et chien, d´ et´ erior´ ees ` a 60% sont facilement identiﬁables.
+Elles vous permettront de tester votre code, pour juger de la pertinence de l’image obtenue
+(les images reconstitu´ ees vous sont aussi fournies pour faciliter votre comparaison et donc
+l’optimisation de votre code)
+– Les images corrompues crapule1 crapule2 ..., d´ et´ erior´ ees ` a 85%, sont d´ ej` a plus d´ elicates. Elles
+doivent vous permettre d’am´ eliorer le choix du param` etreω
+– Les images corrompues inconnuA inconnuB ..., d´ et´ erior´ ees ` a 95% : votre mission est de
+reconnaitre/reconstruire/identiﬁer au moins l’une d’entre elle !
+Le code rendu doit ˆ etre au minimum compilable (sans erreur ni warning) et fonctionnel
+pour les images chevaux et chien, pour esp´ erer avoir au moins 10
+6 Rendus attendus
+Votre rendu doit se faire sous la forme d’une archive .zip, portant les noms des membres du groupe,
+contenant un rapport pdf et le ﬁchier restaure-GS-relaxe-Etud.py compl´ et´ e notamment aux lignes
+4, 44 et 49.
+Le rapport pdf doit comporter :
+– Une introduction g´ en´ erale de la m´ ethode,
+– une explication des liens entre image, matrice, fonction I et ˜I,
+4
+<<<PAGE>>>
+– les r´ eponses aux questions de la partie 3, concernant l’interpolation par spline cubique et la
+r´ esolution du syst` eme par la m´ ethode de Gauss-Seidel relax´ ee,
+– l’explication des ´ eventuels choix faits lors de la programmation, notamment concernant la
+valeur du param` etre de relaxationω,
+– une analyse critique des r´ esultats obtenus,
+– une conclusion g´ en´ erale sur le TP not´ e.
+Aucun code ne doit ﬁgurer dans le rapport.
+Les formules math´ ematiques doivent ˆ etre proprement saisies, en latex de pr´ ef´ erence.
+5

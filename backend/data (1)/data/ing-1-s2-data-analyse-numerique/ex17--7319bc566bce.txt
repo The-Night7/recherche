@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Feb 25 11:36:45 2026
+
+@author: daveau
+"""
+
+from scipy.interpolate import CubicSpline
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.style.use('seaborn-poster')
+
+def f1(x):
+    return 2*x**3+3*x**2-7*x+1
+
+x = [1, 2, 3, 4, 5]
+x = [0, 1/3, 2/3, 1]
+y = [0.002, 0.01, 0.1, 0.08, 0.01]
+y = [f1(0), f1(1/3), f1(2/3), f1(1)]
+
+# use bc_type = 'natural' adds the constraints as we described above
+f = CubicSpline(x, y, bc_type='natural')
+print(f(0.5))
+print(f1(0.5))
+
+x_new = np.linspace(1, 5, 100)
+x_new=  np.linspace(0,1,100)
+y_new = f(x_new)
+
+plt.figure(figsize = (10,8))
+plt.plot(x_new, y_new, 'b')
+plt.plot(x, y, 'ro')
+plt.title('Cubic Spline Interpolation')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()

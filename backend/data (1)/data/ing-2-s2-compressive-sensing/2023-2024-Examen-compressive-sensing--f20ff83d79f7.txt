@@ -1,0 +1,192 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Examen : Compressive sensing
+Donné le 09-04-2024 (Durée 2h00)
+Ordinateurs, téléphones portables et tout document sont interdits
+Calculatrice interdite
+EXERCICE 1 (8 points.) On considère un signal d’origine x ∈ RN. Soient D ∈ RN×K un dictionnaire,
+Φ ∈ RM×N une matrice de mesure avec M < N ≤ K et on pose A = ΦD. On considère le problème de
+minimisation
+(𝓁0) :
+
+
+
+min
+(
+𝓁0(α)
+)
+sous contrainte: y = Aα
+1. Que représente y où y = Φx ?
+2. Que représente α où x = Dα ?
+3. Donner la déﬁnition de Σs où s est un entier naturel. Σs est-il un espace vectoriel ? justiﬁer.
+4. Soit α une solution du problème de minimisation (𝓁0) avec 𝓁0(α) = s. On note
+L =
+{
+j ∈ {1,. .. ,K}, tel que α j , 0.
+}
+(a) Montrer que y s’écrit sous forme d’une combinaison linéaire desA j où j ∈ L.
+(b) Montrer que les vecteurs colonnes A j , j ∈ L sont linéairement indépendants.
+(Indication : Supposer par l’absurde que les Aj sont liés et en déduire l’existence d’une solution (s-1)-parcimonieuse.).
+(c) En déduire, en raisonnant sur le rang de A, que M ≥ s.
+5. Supposons que ker( A) ∩ Σ2s = {0K}. On note
+J ⊂ {1,. .. ,K}, tel que card(J) = 2s
+et A[J] une matrice extraite de A dont les colonnes sont les colonnes A j de A, j ∈ J.
+(a) Montrer que le problème de minimisation ( 𝓁0) admet une solution unique.
+(b) Soient α′ ∈ ker
+(
+A[J]
+)
+et α ∈ RK tel que
+αi =
+{
+α′
+i si i ∈ J
+0 si i ∈ {1,. .. ,K} \ J
+Montrer que α ∈ Σ2s.
+(c) Montrer que α ∈ ker(A).
+(d) En déduire que ker
+(
+A[J]
+)
+= {0K}.
+(e) En déduire que M ≥ 2s.
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+EXERCICE 2 (Codage parcimonieux – 7 points) On se propose de déterminer une représentation parci-
+monieuse α ∈ R14 de x ∈ R10 dans le dictionnaire D ∈ R10×14 à partir de la méthode de poursuite glou-
+tonne CoSamp (Voir ﬁn de sujet). On ﬁxe s = 4.
+1. Itération 1. Le calcul des contributions des atomes au signal a donné les valeurs suivantes :
+2.9 0.56 0.73 2.23 0.1 1.72 2.44 1.72 0.62 1.64 1.84 0.38 1.62 1.58
+(a) Déterminer le support de la sélection, Supp1.
+(b) Mettre à jour le le support qu’on notera Supp.
+(c) La représentation parcimonieuse estimée sur le support mis à jour est donnée par le vecteur
+αSupp =
+[
+3.895 1.756 −0.334 −0.845 −1.571 −0.724 −1.434 0.42
+]
+Expliquer les différentes étapes menant au calcul de αSupp.
+(d) Déterminer le support de la solution parcimonieuse après le rejet, on le notera Supp.
+(e) La représentation parcimonieuse estimée sur le support mis à jour à la question 1.(d) est
+donnée par le vecteur
+αSupp =
+[
+1.374 −1.685 1.09 −0.619
+]
+Donner la représentation parcimonieuse de x après rejet et à l’issue de cette première itéra-
+tion.
+(f) Le calcul du résiduel a donné la valeur de la norme ‖R(1)‖ = 1.083. Expliquer comment on
+obtient cette valeur.
+2. Itération 2. Le calcul des contributions des atomes au résiduel R(1) a donné les valeurs suivantes:
+0.46 0.48 0.45 0.41 0.3 0.1 0.17 0.21 0.04 0.16 0.12 0.12 0.49 0.34
+(a) Déterminer le support de la sélection, Supp1.
+(b) Mettre à jour le le support qu’on notera Supp.
+(c) La représentation parcimonieuse estimée sur le support mis à jour est donnée par le vecteur
+αSupp =
+[
+2.24 1.2 −2.1 0.01 0.002 0.004 0.005 0. 1.48 −0.003 0.003
+]
+Déterminer le support de la solution parcimonieuse après le rejet, on le notera Supp.
+(d) La représentation parcimonieuse estimée sur le support mis à jour à la question 2.(c) est
+donnée par le vecteur
+αSupp =
+[
+−2. 1. 1. 1.
+]
+Donner la représentation parcimonieuse dex après rejet et à l’issue de cette deuxième itéra-
+tion.
+(e) Le calcul du résiduel a donné la valeur de la norme ‖R(2)‖ = 4.96e −15. Commenter ce résul-
+tat.
+CY-Tech 2/4
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+EXERCICE 3 (5 points.) L ’algorithme de la poursuite gloutonneMatching Pursuit (MP) consiste en la
+sélection d’un atome à chaque itération et la mise à jour du résiduel. À l’itération k ≥ 1, le signal se
+décompose en
+x = z1dm1 + z2dm2 + · · · +zk dmk + R(k)
+|   {z   }
+Résiduel après k itérations
+.
+dm j désigne la mème
+j colonne de la matrice D. Le MP s’initialise comme suit :
+R(0) = x ; R : le résiduel ;
+Le MP suit les trois étapes principales suivantes :
+Tant que le critère d’arrêt n’est pas satisfait faire,k ≥ 1,
+1. ::La:::::::::sélection :: Sélectionner un atome dmk qui soit le plus corrélé avec le résiduel R(k−1).
+2. :::::::::::L ’estimation:: Estimer zk = argmin
+z∈R
+‖R(k−1) − zdmk ‖.
+3. ::La:::::mise::à ::::jour :::du :::::::résiduel:: Exprimer R(k) en fonction du résiduel R(k−1), zk et dmk .
+1. Supposons que le résiduel R (k−1) est connu, on sélectionne l’atome dmk le plus corrélé avec le
+résiduel R(k−1). Pour j = 1, .. ., K, on déﬁnit la fonction :
+f j : R → R
+z 7→ ‖R(k−1) − zd j ‖2
+(a) Montrer que f j (z) = z2‖d j ‖2 − 2z
+⟨
+R(k−1), d j
+⟩
++ ‖R(k−1)‖2.
+(b) Montrer que f j atteint son minimum en z∗
+j =
+⟨
+R(k−1), d j
+⟩
+‖d j ‖2 .
+(c) Montrer que f j
+(
+z∗
+j
+)
+= ‖R(k−1)‖2 −
+( ⟨
+R(k−1), d j
+⟩
+‖d j ‖
+)2
+.
+(d) On sélectionne l’atome dmk tel que mk = arg min
+j =1,...,K
+f j
+(
+z∗
+j
+)
+. Montrer que mk = arg max
+j =1,...,K
+⏐⏐⟨
+R(k−1), d j
+⟩⏐⏐
+‖‖d j
+‖‖ .
+2. Après l’étape de sélection de l’atome dmk le plus corrélé avec R(k−1), on calcule la contribution zk
+de cet atome au résiduel, zk = argmin
+z∈R
+‖R(k−1) − zdmk ‖.
+Montrer que zk = 〈R(k−1), dmk 〉
+‖dmk ‖2 .
+3. Montrer que R (k) = R(k−1) − zk dmk .
+CY-Tech 3/4
+<<<PAGE>>>
+EXAMEN : C OMPRESSIVE SENSING
+:::::::::::Algorithme ::::::::CoSamp
+L ’algorithme duCompressive Sampling du Matching Pursuit (CoSaMP) consiste en lasélection de plusieurs
+atomes et le rejet de certains atomes déjà sélectionnés en une itération. Le CoSaMP s’initialise comme
+suit :
+α(0) = 0K,1, R(0) = x ; R : le résiduel
+Supp = ; Supp : le support de la solution parcimonieuse
+Le CoSaMP suit six étapes principales et repose sur la connaissance a priori de l’ordre s de parci-
+monie de la solution :
+Tant que le critère d’arrêt n’est pas satisfait faire,k ≥ 1,
+1. La sélection : Déterminer les 2 s atomes de plus grande contribution au résiduel et en dé-
+duire le vecteur des positions de ces atomes, on notera le support de la sélection supp1.
+2. Mise à jour du support : Fusionner le support de la sélection supp1 avec le support de la
+solution de l’itération précédentesupp :
+supp = supp ∪ supp1
+On note AS = D(:, supp) la matrice des atomes actifs sélectionnés.
+3. Estimation : Utiliser la méthode des moindres carrés pour estimer les coefﬁcients zi de la
+solution parcimonieuse α correspondant au support mis à jour.
+4. Rejet: Considérer les s plus grands coefﬁcients de |z| et rejeter les autres. En déduire le
+support de la sélection après rejet.
+5. Estimation : Utiliser la méthode des moindres carrés pour estimer les coefﬁcients zi de la
+solution parcimonieuse α correspondant au support mis à jour après rejet.
+6. Mise à jour du résiduel : R.
+CY-Tech 4/4

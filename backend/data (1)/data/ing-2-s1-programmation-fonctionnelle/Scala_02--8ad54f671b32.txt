@@ -1,0 +1,1302 @@
+Functional programming with Scala
+Functions
+Djaouida ZAOUCHE , Romain DUJOL
+CY T ECH – ING2
+2020 – 2021
+Djaouida ZAOUCHE , Romain DUJOL 1
+<<<PAGE>>>
+Declaration
+<<<PAGE>>>
+Declaration
+Main statement
+<<<PAGE>>>
+Declaration : def
+Syntax
+def functionName(typedParameter∗)[:returnType] =
+{
+functionBody
+}
+▶ functionName must start with a lowercase letter.
+▶ Type is required for each input parameter.
+▶ Return type may be infered so it may not be required.
+▶ The body is a block so its type is the type of last statement.
+Djaouida ZAOUCHE , Romain DUJOL 4
+<<<PAGE>>>
+Declaration
+Examples
+scala> def sum2(a : Int , b : Int ) : Int = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sum2(a : Int , b : Int ) = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sayHello(name : String ) = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello("world")
+Hello world !
+String interpolator s"..."
+Replaces any $-preﬁxed expression with its toString evaluation
+scala> println(s"1 + 1 is ${1 + 1}.")
+1 + 1 is 2.
+Djaouida ZAOUCHE , Romain DUJOL 5
+<<<PAGE>>>
+Declaration
+Examples
+scala> def sum2(a : Int , b : Int ) : Int = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sum2(a : Int , b : Int ) = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sayHello(name : String ) = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello("world")
+Hello world !
+String interpolator s"..."
+Replaces any $-preﬁxed expression with its toString evaluation
+scala> println(s"1 + 1 is ${1 + 1}.")
+1 + 1 is 2.
+Djaouida ZAOUCHE , Romain DUJOL 5
+<<<PAGE>>>
+Declaration
+Examples
+scala> def sum2(a : Int , b : Int ) : Int = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sum2(a : Int , b : Int ) = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sayHello(name : String ) = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello("world")
+Hello world !
+String interpolator s"..."
+Replaces any $-preﬁxed expression with its toString evaluation
+scala> println(s"1 + 1 is ${1 + 1}.")
+1 + 1 is 2.
+Djaouida ZAOUCHE , Romain DUJOL 5
+<<<PAGE>>>
+Declaration
+Examples
+scala> def sum2(a : Int , b : Int ) : Int = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sum2(a : Int , b : Int ) = a + b
+sum2: (a: Int, b: Int)Int
+scala> def sayHello(name : String ) = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello("world")
+Hello world !
+String interpolator s"..."
+Replaces any $-preﬁxed expression with its toString evaluation
+scala> println(s"1 + 1 is ${1 + 1}.")
+1 + 1 is 2.
+Djaouida ZAOUCHE , Romain DUJOL 5
+<<<PAGE>>>
+Declaration
+Parameters
+<<<PAGE>>>
+Default value for parameter
+Example : sayHello
+scala> def sayHello(name : String = "world") = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello()
+Hello world !
+scala> sayHello("everybody")
+Hello everybody !
+Djaouida ZAOUCHE , Romain DUJOL 7
+<<<PAGE>>>
+Default value for parameter
+Example : sayHello
+scala> def sayHello(name : String = "world") = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello()
+Hello world !
+scala> sayHello("everybody")
+Hello everybody !
+Djaouida ZAOUCHE , Romain DUJOL 7
+<<<PAGE>>>
+Default value for parameter
+Example : sayHello
+scala> def sayHello(name : String = "world") = println(s"Hello $name !")
+sayHello: (name: String)Unit
+scala> sayHello()
+Hello world !
+scala> sayHello("everybody")
+Hello everybody !
+Djaouida ZAOUCHE , Romain DUJOL 7
+<<<PAGE>>>
+Default value for parameter(s) ?
+Default value for more than one parameter is NOT recommended.
+Example
+scala> def greet(fr : Boolean = false, name : String = "world") =
+{
+val greeter = if (fr) "Bonjour" else "Hello"
+println(s"$greeter $name !")
+}
+greet: (fr: Boolean, name: String)Unit
+scala> greet()
+Hello world !
+scala> greet("everybody")
+<console>:13: error: type mismatch;
+found : String("everybody")
+required: Boolean
+greet("everybody")
+^
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Default value for parameter(s) ?
+Default value for more than one parameter is NOT recommended.
+Example
+scala> def greet(fr : Boolean = false, name : String = "world") =
+{
+val greeter = if (fr) "Bonjour" else "Hello"
+println(s"$greeter $name !")
+}
+greet: (fr: Boolean, name: String)Unit
+scala> greet()
+Hello world !
+scala> greet("everybody")
+<console>:13: error: type mismatch;
+found : String("everybody")
+required: Boolean
+greet("everybody")
+^
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Default value for parameter(s) ?
+Default value for more than one parameter is NOT recommended.
+Example
+scala> def greet(fr : Boolean = false, name : String = "world") =
+{
+val greeter = if (fr) "Bonjour" else "Hello"
+println(s"$greeter $name !")
+}
+greet: (fr: Boolean, name: String)Unit
+scala> greet()
+Hello world !
+scala> greet("everybody")
+<console>:13: error: type mismatch;
+found : String("everybody")
+required: Boolean
+greet("everybody")
+^
+Djaouida ZAOUCHE , Romain DUJOL 8
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Evaluation by value (default behaviour)
+▶ Parameter is always evaluated at function call.
+▶ Parameter is evaluated once.
+Evaluation by name (add => before type)
+▶ Parameter is evaluated at each actual use.
+▶ Parameter may be evaluated more than once.
+Why should we consider an evaluation by name ?
+Particularly useful for lengthy or throwable evaluations
+Djaouida ZAOUCHE , Romain DUJOL 9
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Evaluation by value (default behaviour)
+▶ Parameter is always evaluated at function call.
+▶ Parameter is evaluated once.
+Evaluation by name (add => before type)
+▶ Parameter is evaluated at each actual use.
+▶ Parameter may be evaluated more than once.
+Why should we consider an evaluation by name ?
+Particularly useful for lengthy or throwable evaluations
+Djaouida ZAOUCHE , Romain DUJOL 9
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Evaluation by value (default behaviour)
+▶ Parameter is always evaluated at function call.
+▶ Parameter is evaluated once.
+Evaluation by name (add => before type)
+▶ Parameter is evaluated at each actual use.
+▶ Parameter may be evaluated more than once.
+Why should we consider an evaluation by name ?
+Particularly useful for lengthy or throwable evaluations
+Djaouida ZAOUCHE , Romain DUJOL 9
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (throwable evaluation)
+scala> 1/0 == 0
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+res3: Boolean = false
+Logical operators are designed that way
+scala> false && (1/0 == 0)
+res4: Boolean = false
+Djaouida ZAOUCHE , Romain DUJOL 10
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (throwable evaluation)
+scala> 1/0 == 0
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+res3: Boolean = false
+Logical operators are designed that way
+scala> false && (1/0 == 0)
+res4: Boolean = false
+Djaouida ZAOUCHE , Romain DUJOL 10
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (throwable evaluation)
+scala> 1/0 == 0
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+res3: Boolean = false
+Logical operators are designed that way
+scala> false && (1/0 == 0)
+res4: Boolean = false
+Djaouida ZAOUCHE , Romain DUJOL 10
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (throwable evaluation)
+scala> 1/0 == 0
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+java.lang.ArithmeticException: / by zero
+... 32 elided
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, 1/0 == 0)
+res3: Boolean = false
+Logical operators are designed that way
+scala> false && (1/0 == 0)
+res4: Boolean = false
+Djaouida ZAOUCHE , Romain DUJOL 10
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (lengthy evaluation)
+scala> def slow(x : Boolean ) = { Thread.sleep(9000) ; x }
+slow: (x: Boolean)Boolean
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, slow(true))
+res0: Boolean = false (At least nine seconds later)
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, slow(true))
+res1: Boolean = false (Immediately)
+Logical operators are designed that way
+scala> false && slow(true)
+res2: Boolean = false (Immediately)
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (lengthy evaluation)
+scala> def slow(x : Boolean ) = { Thread.sleep(9000) ; x }
+slow: (x: Boolean)Boolean
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, slow(true))
+res0: Boolean = false (At least nine seconds later)
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, slow(true))
+res1: Boolean = false (Immediately)
+Logical operators are designed that way
+scala> false && slow(true)
+res2: Boolean = false (Immediately)
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (lengthy evaluation)
+scala> def slow(x : Boolean ) = { Thread.sleep(9000) ; x }
+slow: (x: Boolean)Boolean
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, slow(true))
+res0: Boolean = false (At least nine seconds later)
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, slow(true))
+res1: Boolean = false (Immediately)
+Logical operators are designed that way
+scala> false && slow(true)
+res2: Boolean = false (Immediately)
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Parameter evaluation : by value vs by name
+Example (lengthy evaluation)
+scala> def slow(x : Boolean ) = { Thread.sleep(9000) ; x }
+slow: (x: Boolean)Boolean
+scala> def and2(x : Boolean , y : Boolean ) = if (x) y else false
+and2: (x: Boolean, y: Boolean)Boolean
+scala> and2(false, slow(true))
+res0: Boolean = false (At least nine seconds later)
+scala> def and2(x : Boolean , y : => Boolean) = if (x) y else false
+and2: (x: Boolean, y: => Boolean)Boolean
+scala> and2(false, slow(true))
+res1: Boolean = false (Immediately)
+Logical operators are designed that way
+scala> false && slow(true)
+res2: Boolean = false (Immediately)
+Djaouida ZAOUCHE , Romain DUJOL 11
+<<<PAGE>>>
+Other features
+require (for preconditions, not functional-compliant)
+▶ Syntax : require(condition, message)
+▶ If condition is not met, throws IllegalArgumentException
+with message as message.
+@tailrec annotation for functions
+▶ Needs import : import scala.annotation.tailrec
+▶ Indicates that annoted function is tail-recursive
+▶ Allows compiler to optimize execution
+Djaouida ZAOUCHE , Romain DUJOL 12
+<<<PAGE>>>
+Other features
+require (for preconditions, not functional-compliant)
+▶ Syntax : require(condition, message)
+▶ If condition is not met, throws IllegalArgumentException
+with message as message.
+@tailrec annotation for functions
+▶ Needs import : import scala.annotation.tailrec
+▶ Indicates that annoted function is tail-recursive
+▶ Allows compiler to optimize execution
+Djaouida ZAOUCHE , Romain DUJOL 12
+<<<PAGE>>>
+First-class citizen
+<<<PAGE>>>
+Every function is a “ﬁrst-class citizen”
+One of keystones of functional programming paradigm
+What does that mean ?
+A function has the same rank (“citizenship”) as any other object,
+so it can be used as :
+▶ a value ;
+▶ a variable ;
+▶ a parameter in another function ;
+▶ a result of another function ;
+▶ . . .
+Djaouida ZAOUCHE , Romain DUJOL 14
+<<<PAGE>>>
+First-class citizen
+Function as a value
+<<<PAGE>>>
+Function as a value
+Examples
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+scala> val nextInt : Int => Int = x => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res1: Int = 3
+scala> val nextInt : Int => Int = _ + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res2: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 16
+<<<PAGE>>>
+Function as a value
+Examples
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+scala> val nextInt : Int => Int = x => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res1: Int = 3
+scala> val nextInt : Int => Int = _ + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res2: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 16
+<<<PAGE>>>
+Function as a value
+Examples
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+scala> val nextInt : Int => Int = x => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res1: Int = 3
+scala> val nextInt : Int => Int = _ + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res2: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 16
+<<<PAGE>>>
+Function as a value
+Recursive val-declared function needs explicit return type
+scala> val fact : Int => Int =
+x => if (x <= 0) 1 else x * fact(x - 1)
+fact: Int => Int = <function1>
+scala> fact(5)
+res0: Int = 120
+Wildcard _ is a placeholder for each new parameter
+=⇒ As much parameters as _ wildcards
+scala> val add2 : (Int, Int) => Int = _ + _
+add2: (Int, Int) => Int = <function2>
+scala> add2(2, 3)
+res0: Int = 5
+Djaouida ZAOUCHE , Romain DUJOL 17
+<<<PAGE>>>
+Function as a value
+Recursive val-declared function needs explicit return type
+scala> val fact : Int => Int =
+x => if (x <= 0) 1 else x * fact(x - 1)
+fact: Int => Int = <function1>
+scala> fact(5)
+res0: Int = 120
+Wildcard _ is a placeholder for each new parameter
+=⇒ As much parameters as _ wildcards
+scala> val add2 : (Int, Int) => Int = _ + _
+add2: (Int, Int) => Int = <function2>
+scala> add2(2, 3)
+res0: Int = 5
+Djaouida ZAOUCHE , Romain DUJOL 17
+<<<PAGE>>>
+Function as a value
+Recursive val-declared function needs explicit return type
+scala> val fact : Int => Int =
+x => if (x <= 0) 1 else x * fact(x - 1)
+fact: Int => Int = <function1>
+scala> fact(5)
+res0: Int = 120
+Wildcard _ is a placeholder for each new parameter
+=⇒ As much parameters as _ wildcards
+scala> val add2 : (Int, Int) => Int = _ + _
+add2: (Int, Int) => Int = <function2>
+scala> add2(2, 3)
+res0: Int = 5
+Djaouida ZAOUCHE , Romain DUJOL 17
+<<<PAGE>>>
+Function as a value
+Recursive val-declared function needs explicit return type
+scala> val fact : Int => Int =
+x => if (x <= 0) 1 else x * fact(x - 1)
+fact: Int => Int = <function1>
+scala> fact(5)
+res0: Int = 120
+Wildcard _ is a placeholder for each new parameter
+=⇒ As much parameters as _ wildcards
+scala> val add2 : (Int, Int) => Int = _ + _
+add2: (Int, Int) => Int = <function2>
+scala> add2(2, 3)
+res0: Int = 5
+Djaouida ZAOUCHE , Romain DUJOL 17
+<<<PAGE>>>
+How does it work ?
+Let’s get ahead a litte bit
+Any val-declared function is an object with anapply method with
+same signature so that
+function(parameters)≡ function.apply(parameters)
+scala> val nextInt : Int => Int = x => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+scala> nextInt.apply(2)
+res1: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 18
+<<<PAGE>>>
+How does it work ?
+Let’s get ahead a litte bit
+Any val-declared function is an object with anapply method with
+same signature so that
+function(parameters)≡ function.apply(parameters)
+scala> val nextInt : Int => Int = x => x + 1
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+scala> nextInt.apply(2)
+res1: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 18
+<<<PAGE>>>
+Differences with def-declared. . . methods
+Example
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> nextInt.apply(2)
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+scala> nextInt
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+Conversion to a value :f(_)
+scala> val nextInt_val = nextInt(_)
+nextInt_val : Int => Int = <function1>
+scala> nextInt_val.apply(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 19
+<<<PAGE>>>
+Differences with def-declared. . . methods
+Example
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> nextInt.apply(2)
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+scala> nextInt
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+Conversion to a value :f(_)
+scala> val nextInt_val = nextInt(_)
+nextInt_val : Int => Int = <function1>
+scala> nextInt_val.apply(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 19
+<<<PAGE>>>
+Differences with def-declared. . . methods
+Example
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> nextInt.apply(2)
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+scala> nextInt
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+Conversion to a value :f(_)
+scala> val nextInt_val = nextInt(_)
+nextInt_val : Int => Int = <function1>
+scala> nextInt_val.apply(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 19
+<<<PAGE>>>
+Differences with def-declared. . . methods
+Example
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> nextInt.apply(2)
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+scala> nextInt
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+Conversion to a value :f(_)
+scala> val nextInt_val = nextInt(_)
+nextInt_val : Int => Int = <function1>
+scala> nextInt_val.apply(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 19
+<<<PAGE>>>
+Differences with def-declared. . . methods
+Example
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> nextInt.apply(2)
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+scala> nextInt
+<console>:13: error: missing argument list for method nextInt
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `nextInt _` or `nextInt(_)` instead of `nextInt`.
+nextInt
+^
+Conversion to a value :f(_)
+scala> val nextInt_val = nextInt(_)
+nextInt_val : Int => Int = <function1>
+scala> nextInt_val.apply(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 19
+<<<PAGE>>>
+Nesting functions
+Nesting functions are allowed
+▶ One can declare a function with def or val with another
+function.
+▶ Scope of nested function is limited to deﬁning function.
+Classic example : tail-recursion encapsulation
+scala> def factorial(n : Int )
+{
+def factorialTR(n : Int , acc : Int ) =
+if (n <= 0) acc else factorialTR(n - 1, acc * n)
+factorialTR(n, 1)
+}
+factorial: (n: Int)Int
+scala> factorialTR
+<console>:13: error: not found: value factorialTR
+factorialTR
+^
+Djaouida ZAOUCHE , Romain DUJOL 20
+<<<PAGE>>>
+Nesting functions
+Nesting functions are allowed
+▶ One can declare a function with def or val with another
+function.
+▶ Scope of nested function is limited to deﬁning function.
+Classic example : tail-recursion encapsulation
+scala> def factorial(n : Int )
+{
+def factorialTR(n : Int , acc : Int ) =
+if (n <= 0) acc else factorialTR(n - 1, acc * n)
+factorialTR(n, 1)
+}
+factorial: (n: Int)Int
+scala> factorialTR
+<console>:13: error: not found: value factorialTR
+factorialTR
+^
+Djaouida ZAOUCHE , Romain DUJOL 20
+<<<PAGE>>>
+Nesting functions
+Nesting functions are allowed
+▶ One can declare a function with def or val with another
+function.
+▶ Scope of nested function is limited to deﬁning function.
+Classic example : tail-recursion encapsulation
+scala> def factorial(n : Int )
+{
+def factorialTR(n : Int , acc : Int ) =
+if (n <= 0) acc else factorialTR(n - 1, acc * n)
+factorialTR(n, 1)
+}
+factorial: (n: Int)Int
+scala> factorialTR
+<console>:13: error: not found: value factorialTR
+factorialTR
+^
+Djaouida ZAOUCHE , Romain DUJOL 20
+<<<PAGE>>>
+First-class citizen
+Function as a parameter/result
+<<<PAGE>>>
+Function as a parameter
+Example
+scala> def applyTwice(f : Int => Int, x : Int ) = f(f(x))
+applyTwice: (Int => Int)Int
+Passing anonymous function value
+scala> applyTwice(_ + 1, 2)
+res0: Int = 4
+Passing val-declared function
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> applyTwice(nextInt, 2)
+res1: Int = 4
+Passing def-declared function
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> applyTwice(nextInt, 2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 22
+<<<PAGE>>>
+Function as a parameter
+Example
+scala> def applyTwice(f : Int => Int, x : Int ) = f(f(x))
+applyTwice: (Int => Int)Int
+Passing anonymous function value
+scala> applyTwice(_ + 1, 2)
+res0: Int = 4
+Passing val-declared function
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> applyTwice(nextInt, 2)
+res1: Int = 4
+Passing def-declared function
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> applyTwice(nextInt, 2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 22
+<<<PAGE>>>
+Function as a parameter
+Example
+scala> def applyTwice(f : Int => Int, x : Int ) = f(f(x))
+applyTwice: (Int => Int)Int
+Passing anonymous function value
+scala> applyTwice(_ + 1, 2)
+res0: Int = 4
+Passing val-declared function
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> applyTwice(nextInt, 2)
+res1: Int = 4
+Passing def-declared function
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> applyTwice(nextInt, 2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 22
+<<<PAGE>>>
+Function as a parameter
+Example
+scala> def applyTwice(f : Int => Int, x : Int ) = f(f(x))
+applyTwice: (Int => Int)Int
+Passing anonymous function value
+scala> applyTwice(_ + 1, 2)
+res0: Int = 4
+Passing val-declared function
+scala> val nextInt = (x : Int ) => x + 1
+nextInt: Int => Int = <function1>
+scala> applyTwice(nextInt, 2)
+res1: Int = 4
+Passing def-declared function
+scala> def nextInt(x : Int ) = x + 1
+nextInt: (x: Int)Int
+scala> applyTwice(nextInt, 2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 22
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Function as a result and curryﬁcation
+Example
+scala> def twice(f : Int => Int) : Int => Int = x => f(f(x))
+twice: (f: Int => Int)Int => Int
+scala> val plusTwo = twice(_ + 1)
+plusTwo: Int => Int = <function1>
+scala> plusTwo(2)
+res0: Int = 4
+scala> twice(_ + 1)(2)
+res1: Int = 4
+Full def-declared version
+scala> def twice(f : Int => Int)(x : Int ) = f(f(x))
+twice: (f: Int => Int)(x: Int)Int
+scala> val plusTwo = twice(_ + 1)(_)
+plusTwo: Int => Int = <function1>
+scala> twice(_ + 1)(2)
+res2: Int = 4
+Djaouida ZAOUCHE , Romain DUJOL 23
+<<<PAGE>>>
+Partially applied functions
+Partially applied functions
+One can build a function from another function with some (but not
+all) parameters ﬁxed.
+Example
+scala> val transvect2 : (Int, Int, Int) => Int = _ + _ * _
+transvect2: (Int, Int, Int) => Int = <function3>
+scala> val add2 = (transvect2(_ : Int , 1, _ : Int )
+add2: (Int, Int) => Int = <function2>
+scala> val nextInt = add2(_ : Int , 1) ortransvect2(_ : Int , 1, 1)
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Partially applied functions
+Partially applied functions
+One can build a function from another function with some (but not
+all) parameters ﬁxed.
+Example
+scala> val transvect2 : (Int, Int, Int) => Int = _ + _ * _
+transvect2: (Int, Int, Int) => Int = <function3>
+scala> val add2 = (transvect2(_ : Int , 1, _ : Int )
+add2: (Int, Int) => Int = <function2>
+scala> val nextInt = add2(_ : Int , 1) ortransvect2(_ : Int , 1, 1)
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Partially applied functions
+Partially applied functions
+One can build a function from another function with some (but not
+all) parameters ﬁxed.
+Example
+scala> val transvect2 : (Int, Int, Int) => Int = _ + _ * _
+transvect2: (Int, Int, Int) => Int = <function3>
+scala> val add2 = (transvect2(_ : Int , 1, _ : Int )
+add2: (Int, Int) => Int = <function2>
+scala> val nextInt = add2(_ : Int , 1) ortransvect2(_ : Int , 1, 1)
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Partially applied functions
+Partially applied functions
+One can build a function from another function with some (but not
+all) parameters ﬁxed.
+Example
+scala> val transvect2 : (Int, Int, Int) => Int = _ + _ * _
+transvect2: (Int, Int, Int) => Int = <function3>
+scala> val add2 = (transvect2(_ : Int , 1, _ : Int )
+add2: (Int, Int) => Int = <function2>
+scala> val nextInt = add2(_ : Int , 1) ortransvect2(_ : Int , 1, 1)
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Partially applied functions
+Partially applied functions
+One can build a function from another function with some (but not
+all) parameters ﬁxed.
+Example
+scala> val transvect2 : (Int, Int, Int) => Int = _ + _ * _
+transvect2: (Int, Int, Int) => Int = <function3>
+scala> val add2 = (transvect2(_ : Int , 1, _ : Int )
+add2: (Int, Int) => Int = <function2>
+scala> val nextInt = add2(_ : Int , 1) ortransvect2(_ : Int , 1, 1)
+nextInt: Int => Int = <function1>
+scala> nextInt(2)
+res0: Int = 3
+Djaouida ZAOUCHE , Romain DUJOL 24
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+Generic/polymorphic. . . method actually
+Example
+▶ When used, parameter type may be infered.
+scala> def isNone[T](o : Option [T]) = (o == None)
+isNone: [T](o: Option[T])Boolean
+scala> isNone(None)
+res0: Boolean = true
+scala> isNone(Some(42))
+res0: Boolean = false
+scala> isNone(Some("42"))
+res0: Boolean = false
+▶ Generic val-declared functions are not possible.
+But one can use val for ﬁxed type.
+scala> val isNone_Int = isNone[Int](_)
+isNone_Int: Option[Int] => Boolean = <function1>
+scala> isNone_Int(Some(42))
+res1: Boolean = true
+Djaouida ZAOUCHE , Romain DUJOL 25
+<<<PAGE>>>
+First-class citizen
+Pattern matching
+<<<PAGE>>>
+Pattern matching : match
+General syntax
+expression match
+{
+case pattern1 => result1
+case pattern2 => result2
+. . .
+case _ => defaultResult
+}
+Features
+▶ expression is matched against any patterni :
+▶ if there is a match, corresponding resulti is returned ;
+▶ otherwise defaultResult is returned
+▶ type of result is least common supertype of all expressions
+result1, . . . ,defaultResult
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Pattern matching : match
+General syntax
+expression match
+{
+case pattern1 => result1
+case pattern2 => result2
+. . .
+case _ => defaultResult
+}
+Features
+▶ expression is matched against any patterni :
+▶ if there is a match, corresponding resulti is returned ;
+▶ otherwise defaultResult is returned
+▶ type of result is least common supertype of all expressions
+result1, . . . ,defaultResult
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Pattern matching : match
+General syntax
+expression match
+{
+case pattern1 => result1
+case pattern2 => result2
+. . .
+case _ => defaultResult
+}
+Features
+▶ expression is matched against any patterni :
+▶ if there is a match, corresponding resulti is returned ;
+▶ otherwise defaultResult is returned
+▶ type of result is least common supertype of all expressions
+result1, . . . ,defaultResult
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Pattern matching : match
+General syntax
+expression match
+{
+case pattern1 => result1
+case pattern2 => result2
+. . .
+case _ => defaultResult
+}
+Features
+▶ expression is matched against any patterni :
+▶ if there is a match, corresponding resulti is returned ;
+▶ otherwise defaultResult is returned
+▶ type of result is least common supertype of all expressions
+result1, . . . ,defaultResult
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Pattern matching : match
+General syntax
+expression match
+{
+case pattern1 => result1
+case pattern2 => result2
+. . .
+case _ => defaultResult
+}
+Features
+▶ expression is matched against any patterni :
+▶ if there is a match, corresponding resulti is returned ;
+▶ otherwise defaultResult is returned
+▶ type of result is least common supertype of all expressions
+result1, . . . ,defaultResult
+Djaouida ZAOUCHE , Romain DUJOL 27
+<<<PAGE>>>
+Pattern matching rules
+Exhaustiveness
+▶ All possibilities should be covered.
+▶ Wildcard _ handles all remaining possibilities in one pass
+Sequentiality
+▶ Pattern are treated in the same order as written.
+▶ Only the ﬁrst matching pattern is considered.
+Uniqueness
+▶ An identiﬁer ony appears one in a pattern.
+▶ if guard may be used to explicit links.
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Pattern matching rules
+Exhaustiveness
+▶ All possibilities should be covered.
+▶ Wildcard _ handles all remaining possibilities in one pass
+Sequentiality
+▶ Pattern are treated in the same order as written.
+▶ Only the ﬁrst matching pattern is considered.
+Uniqueness
+▶ An identiﬁer ony appears one in a pattern.
+▶ if guard may be used to explicit links.
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Pattern matching rules
+Exhaustiveness
+▶ All possibilities should be covered.
+▶ Wildcard _ handles all remaining possibilities in one pass
+Sequentiality
+▶ Pattern are treated in the same order as written.
+▶ Only the ﬁrst matching pattern is considered.
+Uniqueness
+▶ An identiﬁer ony appears one in a pattern.
+▶ if guard may be used to explicit links.
+Djaouida ZAOUCHE , Romain DUJOL 28
+<<<PAGE>>>
+Pattern matching rules : rules
+Example
+scala> (1, 2, 3) match
+{
+case (1, 2, _) => 2
+case (1, _, _) => 1
+case _ => 0
+}
+res0: Int = 2
+scala> (1, 2, 3) match
+{
+case (1, _, _) => 1
+case (1, 2, _) => 2
+case _ => 0
+}
+<console>:15: warning: unreachable code
+case (1, 2, _) => 2
+^
+res1: Int = 1
+Djaouida ZAOUCHE , Romain DUJOL 29
+<<<PAGE>>>
+Pattern matching rules : rules
+Example
+scala> (1, 2, 3) match
+{
+case (1, 2, _) => 2
+case (1, _, _) => 1
+case _ => 0
+}
+res0: Int = 2
+scala> (1, 2, 3) match
+{
+case (1, _, _) => 1
+case (1, 2, _) => 2
+case _ => 0
+}
+<console>:15: warning: unreachable code
+case (1, 2, _) => 2
+^
+res1: Int = 1
+Djaouida ZAOUCHE , Romain DUJOL 29
+<<<PAGE>>>
+Pattern matching rules : uniqueness and if guard
+Example
+scala> (2, 2) match
+{
+case (x, x) => x
+case _ => 0
+}
+<console>:14: error: x is already defined as value x
+case (x, x) => x
+^
+scala> (2, 2) match
+{
+case (x, y) if x == y => x
+case _ => 0
+}
+res0: Int = 2
+Djaouida ZAOUCHE , Romain DUJOL 30
+<<<PAGE>>>
+Pattern matching rules : uniqueness and if guard
+Example
+scala> (2, 2) match
+{
+case (x, x) => x
+case _ => 0
+}
+<console>:14: error: x is already defined as value x
+case (x, x) => x
+^
+scala> (2, 2) match
+{
+case (x, y) if x == y => x
+case _ => 0
+}
+res0: Int = 2
+Djaouida ZAOUCHE , Romain DUJOL 30

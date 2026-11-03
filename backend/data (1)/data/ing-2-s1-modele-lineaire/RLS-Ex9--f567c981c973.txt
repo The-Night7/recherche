@@ -1,0 +1,43 @@
+
+dataset<-read.table("FrenchCities.csv", header = TRUE,,row.names=1, sep=';')
+
+summary(dataset[,c('TEMP','NO2')])
+boxplot(dataset$TEMP,dataset$NO2)
+plot(TEMP~NO2, data = dataset, pch = 21, cex = 0.5)
+reg.simple <- lm(TEMP~NO2,data=dataset)
+summary(reg.simple)
+abline(reg.simple, lwd=3, col='red')
+
+restd<-rstandard(reg.simple) 
+
+plot(dataset$TEMP,restd,ylim = range(-2,2,restd),main="Residus standardis?s") 
+
+
+text(dataset$TEMP,restd,row.names(dataset),cex=0.7) 
+abline(h=-2,col="blue",lwd=2) 
+abline(h=2,col="blue",lwd=2)
+influence(reg.simple)$hat 
+
+mean(influence(reg.simple)$hat ) # un point est influente si levier>2*0.0625
+
+# le pays error est une valeur aberrante avec un levier 0.269 > 0.125 donc 
+# influente, il faut alors l'enlever et creer un nouveau modele sans cette 
+#observation.
+
+newdata=dataset[1:31,]
+
+
+new.model<-lm(TEMP ~ NO2,data=newdata ) 
+new.model
+
+
+new.restd<-rstandard(new.model)
+plot(newdata$TEMP,new.restd,ylim = range(-2,2,restd),main="Residus standardis?s") 
+
+
+text(newdata$TEMP,new.restd,row.names(newdata),cex=0.7) 
+abline(h=-2,col="blue",lwd=2)
+abline(h=2,col="blue",lwd=2)
+
+#Tous les residus standardis?s sont entre -2 et 2 donc pas des valeurs aberrantes.
+

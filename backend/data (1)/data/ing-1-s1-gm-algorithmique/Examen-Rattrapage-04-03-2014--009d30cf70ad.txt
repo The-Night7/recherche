@@ -1,0 +1,91 @@
+  
+IINNGG  11  ::  EEXXAAMMEENN  DDEE  RRAATTTTRRAAPPAAGGEE  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Rédigé par : l'équipe pédagogique du module Algo. Procédurale Ref : ING1-ALG-PROC-EXAMEN-RATT 
+A l’intention de : Etudiants des ING1 Créé le : 18/02/2014 
+ 
+Page 1 sur 2 
+ 
+Préambule 
+Cet examen dure 2h00. L'examen se fait sur feuilles. Aucun document n'est autorisé. L'ordinateur est interdit.  On 
+vous demande de mentionner dans votre copie le libellé de votre groupe.   
+1. Tableaux, tris et structures 
+Afin de jouer à la dame de pique, on souhaite trier son jeu de carte. Une carte est définie par une valeur allant du 2 à 
+l’As et par une couleur pouvant prendre les valeurs suivantes : TREFLE (♣), CARREAU (♦), PIQUE (♠) et CŒUR (♥).   
+Pour trier le jeu, on décide d’utiliser la méthode du tri par base. Le tri par base commence par trier en fonction des 
+éléments le moins significatif jusqu’à l’élément le plus significatif. Dans notre cas de jeu de cartes, on commencera 
+par trier en fonction de la valeur, puis en fonction de la couleur. Il faut que l'algorithme du deuxième tri conserve 
+l'ordre du premier tri en cas d'égalité, c'est-à-dire que toutes les cartes d'une même couleur soient encore triées par 
+valeur (d'où le terme de stabilité). 
+Par exemple : [4♥, V♣, 4♣, 9♦, A♠]  [4♥, 4♣, 9♦, V♣, A♠]  [4♣, V♣, 9♦, A♠, 4♥]. 
+ 
+Pour simplifier, on considèrera les valeurs suivantes pour les figures : Valet = 11, Dame = 12, Roi = 13 et As = 14. On a 
+également à disposition le type Couleur qui prend les valeurs TREFLE, CARREAU, PIQUE puis CŒUR. Pour la dame 
+de pique, on impose le tri d’ordre croissant ainsi que l’ordre des couleurs suivant: TREFLE, CARREAU, PIQUE puis 
+CŒUR.  
+ 
+ Définir la structure Carte. 
+Ecrire la méthode comparerCouleur qui permet de comparer la couleur d’une carte par rapport à une autre. 
+Ecrire la méthode comparerValeur qui permet de comparer la valeur d’une carte par rapport à une autre. 
+ Ecrire la méthode trierCouleur qui permet de trier de façon stable les cartes par rapport à la couleur. 
+Ecrire la méthode trierValeur qui permet de trier les cartes par rapport à la valeur. 
+ Ecrire la méthode triCartes qui permet de trier le jeu de cartes (tableau de Carte) en utilisant un tri par 
+base.  
+ De quoi faut-il s’assurer pour que le tri par base soit de complexité linéaire ? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<<<PAGE>>>
+IINNGG  11  ::  EEXXAAMMEENN  DD''AALLGGOORRIITTHHMMIIQQUUEE  PPRROOCCEEDDUURRAALLEE 
+Page 2 sur 2 
+2. Structures séquentielles 
+On veut implémenter une file d’au plus n éléments à l’aide d’une structure nommée FileTableau  contenant un 
+tableau T[1 . . n] et deux indices tete et queue. Si on note F une variable de type FileTableau, F.tête indexe le premier 
+élément de la file et  F.queue indexe l’emplacement où sera inséré un élément nouveau. Les éléments de la file se 
+trouvent aux emplacements  F.T(F.tête), F.T(F.tête+1), . . ., F.T(F.queue), en bouclant à la fin du tableau  : 
+l’emplacement 1 suit immédiatement l’emplacement n dans un ordre circulaire.  Quand la  file est vide, tenter de 
+défiler un élément provoque un débordement négatif de la file. De même, quand la file est pleine, tenter d’enfiler un 
+élément provoque alors un débordement. 
+1) Ecrire le type de cette structure que l’on appellera FileTableau. 
+2) Quelle doit être la valeur initiale de tête et celle de queue pour une variable de type FileTableau ? 
+3) Ecrire la procédure estVideFT (FT : FileTableau de élément(E/S)). 
+4) Quand la file est -elle pleine  ? Ecrire la procédure enfiler FT (FT : F ileTableau de élément(E/S), 
+elt :élément)  en tenant compte des débordements.  (On rappelle que l’on dispose d’une procédure erreur 
+qui prend en argument une chaîne qu’elle affiche avant d’interrompre le programme.) 
+5) Ecrire la procédure defilerFT (FT : FileTableau de élément(E/S)) en tenant compte des débordements.  
+ 
+3. Problème  
+On considère un échiquier (8 cases x 8 cases) et on prend un cavalier. Le problème consiste à trouver la succession 
+de déplacements que doit faire le cavalier pour passer par toutes les cases de l'échiquier en ne passant qu'une seule 
+fois par chaque case à l'exception de la case de départ qui doit être aussi la case d'arrivée. 
+Rappel : un déplacement d'un cavalier consiste :  
+ Soit à avancer de deux cases verticalement puis d'une case horizontalement. 
+ Soit à avancer de deux cases horizontalement puis d'une case verticalement. 
+ 
+On vous donne ci-dessous les huit déplacements possibles d'un cavalier. La case marquée symbolise la case du 
+cavalier avant le déplacement. Toutes les autres cases marquées symbolisent tous les déplacements possibles.  
+        
+          
+   a1   a2     
+ a8       a3   
+     d       
+ a7       a4   
+   a6   a5     
+          
+L'algorithme qui est demandé consiste à parcourir tous les chemins possibles jusqu'à trouver une première solution. 
+Le principe de l'algorithme consiste à faire avancer le cavalier tant que c'est possible. Si on arrive sur une case qui ne 
+permet plus d'avancer alors on revient une case en arrière et à partir de cette case, on essaie de déplacer le cavalier 
+vers une autre  case si cela est possible sinon on recule encore d'une case et ainsi de suite. 
+1)   Donner le principe de l'algorithme en utilisant une matrice de booléen et une pile de couple d'entiers. 
+Chaque couple représente les coordonnées d'une case sur l'échiquier. 
+2)   Ecrire l'algorithme sous forme d'une procédure. 
+ 
+4. Récursivité 
+Soit la fonction définie par f(n)=n-10 pour n>100 et f(n)=f(f(n+11)) pour n≤100. 
+1) Que vaut f(99) ? f(100) ? f(101) ? 
+2) Montrer que le calcul de f(n) se termine toujours pour n>0. 

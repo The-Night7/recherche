@@ -1,0 +1,833 @@
+TD2 - Recherche des zéros d’une fonction
+Corrigé
+CY Tech
+ING1 Mathématiques
+Algèbre linéaire appliquées
+Exercice 8
+On cherche à résoudre l’équation du second degréx2−2x−3 = 0par une méthode de point fixe.
+1. Déterminer les solutions exactes.
+Solution :On calcule le discriminant :
+∆ =b 2−4ac= (−2) 2−4(1)(−3) = 4 + 12 = 16
+Les solutions sont :
+x1 = 2−4
+2 =−1etx 2 = 2 + 4
+2 = 3
+On peut aussi factoriser directement :x2−2x−3 = (x+ 1)(x−3) = 0.
+2. Pour transformer cette équation sous la formex=g(x), il y a une infinité de solutions
+possibles. Parmi elles, on choisit :
+g1(x) =
+√
+2x+ 3g 2(x) = 3
+x−2 g3(x) = x2−3
+2
+Appliquer l’algorithme de point fixe à chacun de ces cas, en partant dex0 = 4.
+Solution :L’algorithme de point fixe consiste à calculerxn+1 =g(x n).
+Pourg 1(x) =√2x+ 3:
+x0 = 4
+x1 =
+p
+2(4) + 3 =
+√
+11≈3.3166
+x2 =
+p
+2(3.3166) + 3 =
+√
+9.6332≈3.1037
+x3 =
+p
+2(3.1037) + 3 =
+√
+9.2074≈3.0343
+x4 =
+p
+2(3.0343) + 3 =
+√
+9.0686≈3.0114
+x5 =
+p
+2(3.0114) + 3 =
+√
+9.0228≈3.0038
+La suite converge vers3.
+1
+<<<PAGE>>>
+Pourg 2(x) = 3
+x−2 :
+x0 = 4
+x1 = 3
+4−2 = 3
+2 = 1.5
+x2 = 3
+1.5−2 = 3
+−0.5 =−6
+x3 = 3
+−6−2 = 3
+−8 =−0.375
+x4 = 3
+−0.375−2 = 3
+−2.375≈−1.2632
+x5 = 3
+−1.2632−2 = 3
+−3.2632≈−0.9194
+La suite oscille et converge lentement vers−1.
+Pourg 3(x) = x2−3
+2 :
+x0 = 4
+x1 = 16−3
+2 = 6.5
+x2 = 42.25−3
+2 = 19.625
+x3 = 385.14−3
+2 = 191.07
+x4 = 36507.7−3
+2 ≈18252
+La suite diverge vers+∞.
+3. Dans quels cas converge-t-on apparemment, et vers quelle racine ?
+Solution :
+•g 1 : convergence versx= 3
+•g 2 : convergence (lente et oscillante) versx=−1
+•g 3 : divergence
+4. Expliquer les résultats que vous constatez.
+Solution :Le théorème du point fixe nous dit que si|g′(x∗)|<1au point fixex ∗, alors la
+méthode converge localement.
+Calculons les dérivées :
+•g ′
+1(x) = 1√2x+3. Enx= 3:g ′
+1(3) = 1√
+9 = 1
+3 <1✓
+Enx=−1:g ′
+1(−1) = 1√
+1 = 1(pas de convergence garantie, etg1(−1) = 1̸=−1)
+•g ′
+2(x) =− 3
+(x−2)2. Enx= 3:g ′
+2(3) =− 3
+1 =−3, donc|g ′
+2(3)|= 3>1(divergence)
+Enx=−1:g ′
+2(−1) =− 3
+9 =− 1
+3, donc|g′
+2(−1)|= 1
+3 <1✓
+•g ′
+3(x) =x. Enx= 3:g ′
+3(3) = 3>1(divergence)
+Enx=−1:g ′
+3(−1) =−1, donc|g ′
+3(−1)|= 1(cas limite, pas de convergence)
+Ceci explique pourquoi :
+•g 1 converge vers3(point fixe attractif)
+•g 2 converge vers−1(point fixe attractif, oscillations carg′
+2<0)
+•g 3 diverge (aucun point fixe attractif depuisx0 = 4)
+2
+<<<PAGE>>>
+Exercice 9
+Cet exercice est tiré de [5].
+Soitλ∈R. On pose
+g(x) =λx(1−x)(33)
+1. Déterminer les points fixes de la fonctiong.
+Solution :On cherchextel queg(x) =x, c’est-à-dire :
+λx(1−x) =x
+x[λ(1−x)−1] = 0
+x[λ−λx−1] = 0
+Soitx= 0, soitλ−λx−1 = 0, d’oùx= λ−1
+λ (pourλ̸= 0).
+Les points fixes sont donc :
+•x ∗
+1 = 0(pour toutλ)
+•x ∗
+2 = λ−1
+λ = 1− 1
+λ (pourλ̸= 0)
+2. Déterminer pour chaque point fixe, les valeurs deλpour lesquelles ce point fixe est attractif.
+Solution :Un point fixe est attractif si|g′(x∗)|<1.
+Calculonsg′(x) =λ(1−2x).
+Pourx∗
+1 = 0:
+g′(0) =λ
+Le point fixe0est attractif si|λ|<1, soit−1<λ<1 .
+Pourx∗
+2 = 1− 1
+λ :
+g′
+
+1− 1
+λ
+
+=λ
+
+1−2
+
+1− 1
+λ
+
+=λ
+
+1−2 + 2
+λ
+
+=λ
+
+−1 + 2
+λ
+
+=−λ+ 2 = 2−λ
+Le point fixex∗
+2 est attractif si|2−λ|<1, soit :
+−1<2−λ<1
+−3<−λ<−1
+1<λ<3
+3. Déterminerpourchaquepointfixe, lavaleurdeλpourlaquellelaconvergencedelaméthode
+de point fixe sera quadratique.
+Solution :La convergence est quadratique sig′(x∗) = 0.
+Pourx∗
+1 = 0:
+g′(0) =λ= 0⇒λ= 0
+Mais siλ= 0, alorsg(x) = 0pour toutx, et le seul point fixe est0. C’est un cas dégénéré.
+Pourx∗
+2 = 1− 1
+λ :
+g′(x∗
+2) = 2−λ= 0⇒λ= 2
+Vérifions : siλ= 2, alorsx ∗
+2 = 1− 1
+2 = 1
+2, etg′(1/2) = 2(1−1) = 0.
+La convergence est quadratique pour le point fixex∗ = 1
+2 quandλ= 2.
+3
+<<<PAGE>>>
+Exercice 10
+Cet exercice est dû à Matthieu Romagny.
+On considère les six fonctions ci-dessous, ayant toutesα=
+√
+2pour zéro :
+1.f(x) =x 2−2
+2.g(x) =x 2−
+√
+3x+ (
+√
+6−2)
+3.h(x) =x 2−2x+ (2
+√
+2−2)
+4.i(x) = (x−
+√
+2)4 + 1
+2(x−
+√
+2)
+5.j(x) = 1
+8(e4(x−
+√
+2)−1)
+6.k(x) = 1
+2(x−
+√
+2)
+On notexf
+n,xg
+n,xh
+n,xi
+n,xj
+n,xk
+n les suites obtenues par application de la méthode de Newton à
+partir dex 0 = 1.
+1. Complétez le tableau des valeurs enx=
+√
+2des dérivées premières et secondes des six
+fonctions
+f g h i j k
+dérivée enx=
+√
+2
+dérivée seconde enx=
+√
+2
+Solution :Calculons les dérivées de chaque fonction.
+F onctionf(x) =x 2−2:
+•f ′(x) = 2x, doncf′(
+√
+2) = 2
+√
+2
+•f ′′(x) = 2, doncf′′(
+√
+2) = 2
+F onctiong(x) =x 2−
+√
+3x+ (
+√
+6−2):
+•g ′(x) = 2x−
+√
+3, doncg′(
+√
+2) = 2
+√
+2−
+√
+3
+•g ′′(x) = 2, doncg′′(
+√
+2) = 2
+F onctionh(x) =x 2−2x+ (2
+√
+2−2):
+•h ′(x) = 2x−2, donch ′(
+√
+2) = 2
+√
+2−2 = 2(
+√
+2−1)
+•h ′′(x) = 2, donch′′(
+√
+2) = 2
+F onctioni(x) = (x−
+√
+2)4 + 1
+2(x−
+√
+2):
+•i ′(x) = 4(x−
+√
+2)3 + 1
+2, donci′(
+√
+2) = 0 + 1
+2 = 1
+2
+•i ′′(x) = 12(x−
+√
+2)2, donci′′(
+√
+2) = 0
+F onctionj(x) = 1
+8(e4(x−
+√
+2)−1):
+•j ′(x) = 1
+8·4e 4(x−
+√
+2) = 1
+2e4(x−
+√
+2), doncj′(
+√
+2) = 1
+2e0 = 1
+2
+•j ′′(x) = 2e4(x−
+√
+2), doncj′′(
+√
+2) = 2
+F onctionk(x) = 1
+2(x−
+√
+2):
+4
+<<<PAGE>>>
+•k ′(x) = 1
+2, donck′(
+√
+2) = 1
+2
+•k ′′(x) = 0, donck′′(
+√
+2) = 0
+f g h i j k
+dérivée enx=
+√
+2 2
+√
+2 2
+√
+2−
+√
+3 2(
+√
+2−1) 1
+2
+1
+2
+1
+2
+dérivée seconde enx=
+√
+2 2 2 2 0 2 0
+2. Tracez sur la figure (2.5) des courbes représentatives defetg, les quatre premiers termes
+des suites associées (i.e.x0 àx 3).
+Solution :La méthode de Newton donnex n+1 =x n− f(x n)
+f ′(xn).
+Pourf(x) =x 2−2:
+x0 = 1
+x1 = 1− 1−2
+2 = 1− −1
+2 = 1.5
+x2 = 1.5− 2.25−2
+3 = 1.5− 0.25
+3 = 1.5−0.0833 = 1.4167
+x3 = 1.4167− 2.0070−2
+2.8334 = 1.4167−0.0025≈1.4142
+Pourg(x) =x 2−
+√
+3x+ (
+√
+6−2):
+Avecg′(x) = 2x−
+√
+3:
+x0 = 1
+g(1) = 1−
+√
+3 +
+√
+6−2 =
+√
+6−
+√
+3−1≈−0.268
+g′(1) = 2−
+√
+3≈0.268
+x1 = 1− −0.268
+0.268 = 1 + 1 = 2
+g(2) = 4−2
+√
+3 +
+√
+6−2 = 2−2
+√
+3 +
+√
+6≈0.991
+g′(2) = 4−
+√
+3≈2.268
+x2 = 2− 0.991
+2.268≈1.563
+x3≈1.440
+Convergence plus lente pourgcarg′(
+√
+2) = 2
+√
+2−
+√
+3≈1.096est plus petit quef ′(
+√
+2) =
+2
+√
+2≈2.83.
+3. Que se passe-t-il pour la fonctionhreprésentée sur la figure (2.6) ?
+Solution :Pourh(x) =x 2−2x+ (2
+√
+2−2), avech ′(x) = 2x−2:
+x0 = 1
+h(1) = 1−2 + 2
+√
+2−2 = 2
+√
+2−3≈−0.172
+h′(1) = 2−2 = 0
+Problème !La dérivée s’annule enx 0 = 1, donc la méthode de Newton n’est pas définie.
+La tangente à la courbe au point(1,h(1))est horizontale et ne coupe pas l’axe des abscisses.
+Il faudrait choisir un autre point de départx0̸= 1.
+5
+<<<PAGE>>>
+4. Tracez sur la figure (2.7) des courbes représentatives deietj, les quatre premiers termes
+des suites associées (i.e.x 0 àx 3). (Vous ne pourrez pas placer le point d’abscissexj
+1, on
+donne la valeurxj
+2≃1.83pour tracer les points suivants)
+Solution :
+Pouri(x) = (x−
+√
+2)4 + 1
+2(x−
+√
+2):
+Aveci′(x) = 4(x−
+√
+2)3 + 1
+2 :
+x0 = 1
+i(1) = (1−
+√
+2)4 + 1
+2(1−
+√
+2) = (−0.414)4 + 1
+2(−0.414)≈0.0294−0.207 =−0.178
+i′(1) = 4(−0.414)3 + 0.5≈−0.283 + 0.5 = 0.217
+x1 = 1− −0.178
+0.217 ≈1.82
+Puisx 2 ≈1.52,x 3 ≈1.43... La convergence est rapide cari ′′(
+√
+2) = 0(convergence
+cubique).
+Pourj(x) = 1
+8(e4(x−
+√
+2)−1):
+Avecj′(x) = 1
+2e4(x−
+√
+2) :
+x0 = 1
+j(1) = 1
+8(e4(1−
+√
+2)−1) = 1
+8(e−1.657−1)≈ 1
+8(0.191−1) =−0.101
+j′(1) = 1
+2e−1.657≈0.096
+x1 = 1− −0.101
+0.096 ≈2.06
+La convergence est quadratique mais le facteurC=j′′(
+√
+2)
+2j′(
+√
+2) = 2
+2·0.5 = 2est élevé.
+5. Que se passe-t-il pour la fonctionkreprésentée sur la figure (2.8) ?
+Solution :Pourk(x) = 1
+2(x−
+√
+2), aveck′(x) = 1
+2 :
+xn+1 =x n− k(xn)
+k′(xn) =x n−
+1
+2(xn−
+√
+2)
+1
+2
+=x n−(xn−
+√
+2) =
+√
+2
+La méthode de Newton convergeen une seule itération! C’est parce quekest une
+fonction linéaire (droite), et la tangente en tout point est la droite elle-même, qui coupe
+l’axe desxexactement en
+√
+2.
+6. Classez les fonctionsfetgselon la vitesse de convergence apparente de la suite de Newton.
+Comment pouvez-vous expliquer ce classement ?
+Solution :Classement :fconverge plus vite queg.
+Explication : Pour la méthode de Newton appliquée à une racine simple (oùf′(α)̸= 0),
+l’erreur au pasn+ 1vérifie :
+en+1≈ f′′(α)
+2f′(α)e2
+n
+Le facteur de convergence estC=
+f ′′(α)
+2f ′(α)
+ :
+6
+<<<PAGE>>>
+•Pourf:C f = 2
+2·2
+√
+2 = 1
+2
+√
+2≈0.354
+•Pourg:C g = 2
+2(2
+√
+2−
+√
+3) = 1
+2
+√
+2−
+√
+3≈0.912
+PuisqueC f <C g, la fonctionfconverge plus rapidement.
+7. Classez les fonctionsi,jetkselon la vitesse de convergence apparente de la suite de
+Newton. Comment pouvez-vous expliquer ce classement ?
+Solution :Classement :k(1 itération)> i(cubique)> j(quadratique).
+Explication :
+•k: fonction linéaire, convergence exacte en 1 pas.
+•i:i ′(
+√
+2) = 1
+2̸= 0eti ′′(
+√
+2) = 0, ce qui donne une convergencecubique. En effet,
+commei′′(
+√
+2) = 0, on aen+1≈ i′′′(α)
+6i′(α)e3
+n.
+•j:j ′(
+√
+2) = 1
+2̸= 0etj ′′(
+√
+2) = 2̸= 0, convergence quadratique classique avec facteur
+Cj = 2.
+8. Expliquez pourquoi les fonctionsg,h,i,j,kne sont pas très adaptées au problème si on
+veut calculer des approximations de
+√
+2
+Solution :Ces fonctions ne sont pas adaptées pour plusieurs raisons :
+•g: Elle contient
+√
+3et
+√
+6dans son expression. Pour l’évaluer, il faudrait déjà
+connaître ces racines carrées, ce qui rend le calcul circulaire.
+•h: Elle contient explicitement
+√
+2dans son terme constant(2
+√
+2−2). Il faut donc
+connaître
+√
+2pour définir la fonction !
+•i: Elle contient(x−
+√
+2), donc nécessite la connaissance de
+√
+2.
+•j: Elle contiente 4(x−
+√
+2), donc nécessite aussi
+√
+2.
+•k: Elle contient directement(x−
+√
+2), donc
+√
+2apparaît explicitement.
+Seule la fonctionf(x) =x 2−2est vraiment utilisable en pratique car son expression ne fait
+intervenir que des constantes connues. C’est d’ailleurs la méthode classique pour calculer√
+2par Newton :x n+1 = 1
+2
+
+xn + 2
+xn
+
+.
+Exercice 11
+Cet exercice est tiré de [5].
+La demi-épaisseurt(x)d’un profil d’aile d’avion de la classe NACA (National Aeronautics
+and Space Administration) peut être approchée par :
+t(x) =T·(3.7 √x−3.4x−0.3x 4)(34)
+oùTest la demi-épaisseur nominale maximale etxvarie dex= 0(bord d’attaque) àx= 1
+(bord de fuite). La véritable demi-épaisseur maximaletmax est légèrement supérieure àT. Un
+profil avecT= 0.15est illustré sur la figure (2.9) (les fonctionstet−tont été tracées pour
+reconstituer le profil complet).
+Déterminerlavaleurdexoùl’épaisseurestmaximaleparlaméthodedeNewton. Onjustifiera
+l’approche utilisée et on fera au moins deux itérations de la méthode.
+Solution :Pour trouver le maximum det(x), on cherche les zéros det′(x).
+On a :
+t(x) =T(3.7√x−3.4x−0.3x 4) =T
+
+3.7x1/2−3.4x−0.3x 4
+
+7
+<<<PAGE>>>
+Donc :
+t′(x) =T
+3.7
+2 x−1/2−3.4−1.2x 3
+
+=T
+1.85√x −3.4−1.2x 3
+
+On posef(x) = 1.85√x−3.4−1.2x 3 (on peut ignorerT >0).
+Pour Newton, on a besoin de :
+f′(x) =− 1.85
+2 x−3/2−3.6x 2 =− 0.925
+x3/2 −3.6x 2
+Choix dex 0 :En observant le profil NACA typique, le maximum est proche du bord
+d’attaque. Prenonsx 0 = 0.3.
+Itération 1 :
+f(0.3) = 1.85√
+0.3−3.4−1.2(0.3) 3 = 1.85
+0.5477−3.4−0.0324
+= 3.378−3.4−0.032 =−0.054
+f′(0.3) =− 0.925
+(0.3)3/2−3.6(0.3) 2 =− 0.925
+0.1643−0.324
+=−5.63−0.324 =−5.954
+x1 = 0.3− −0.054
+−5.954 = 0.3−0.0091 = 0.2909
+Itération 2 :
+f(0.2909) = 1.85√
+0.2909−3.4−1.2(0.2909) 3
+= 1.85
+0.5394−3.4−0.0295 = 3.430−3.4−0.030 = 0.000
+f′(0.2909)≈−5.99
+x2≈0.2909
+La valeur converge très rapidement. Le maximum d’épaisseur est atteint enx≈0.291(soit
+environ 29% de la corde depuis le bord d’attaque).
+On peut vérifier quet′′(x)<0en ce point pour confirmer qu’il s’agit d’un maximum.
+Exercice 12
+Déterminer les points d’intersection d’un cercle avec une ellipse situés dans le premier cadran,
+par la méthode de Newton vectorielle. On recherche les solutions du système d’équations :
+(
+x2 +y 2 = 2
+x2 + (4y)2 = 4 (35)
+On choisira une précisionε= 10−4. On représentera le lieu des itérés et on précisera l’écart
+avec la solution exacte. On donne la représentation des courbes dans la figure ci-dessous.
+Solution :
+Reformulation :On poseF(x,y) =
+f1(x,y)
+f2(x,y)
+
+=
+ x2 +y 2−2
+x2 + 16y2−4
+
+On cherche(x,y)tel queF(x,y) = 0.
+Jacobienne :
+JF (x,y) =
+ ∂f1
+∂x
+∂f1
+∂y
+∂f2
+∂x
+∂f2
+∂y
+!
+=
+2x2y
+2x32y
+
+8
+<<<PAGE>>>
+Solution exacte :En soustrayant les équations :
+16y2−y 2 = 4−2⇒15y 2 = 2⇒y 2 = 2
+15⇒y=
+r
+2
+15≈0.3651
+Puisx 2 = 2−y 2 = 2− 2
+15 = 28
+15⇒x=
+q
+28
+15≈1.3663
+Solution exacte dans le premier cadran :
+q
+28
+15,
+q
+2
+15
+
+≈(1.3663,0.3651)
+Méthode de Newton vectorielle :
+xn+1
+yn+1
+
+=
+xn
+yn
+
+−J−1
+F (xn,yn)F(xn,yn)
+AvecJ−1
+F = 1
+det(JF )
+ 32y−2y
+−2x2x
+
+etdet(J F ) = 64xy−4xy= 60xy.
+Itération avecx 0 = 1,y 0 = 1:
+Itération 1 :
+F(1,1) =
+ 1 + 1−2
+1 + 16−4
+
+=
+ 0
+13
+
+JF (1,1) =
+2 2
+2 32
+
+,det = 64−4 = 60
+J−1
+F (1,1) = 1
+60
+ 32−2
+−2 2
+
+x1
+y1
+
+=
+1
+1
+
+− 1
+60
+ 32−2
+−2 2
+ 0
+13
+
+=
+1
+1
+
+− 1
+60
+−26
+26
+
+=
+1.4333
+0.5667
+
+Itération 2 :
+F(1.4333,0.5667) =
+2.054 + 0.321−2
+2.054 + 5.138−4
+
+=
+0.375
+3.192
+
+det(JF ) = 60(1.4333)(0.5667) = 48.72
+x2
+y2
+
+≈
+1.3694
+0.3733
+
+Itération 3 : x3
+y3
+
+≈
+1.3663
+0.3652
+
+Itération 4 : x4
+y4
+
+≈
+1.3663
+0.3651
+
+Convergence atteinte avec∥F(x4,y 4)∥<10 −4.
+Écart avec solution exacte :≈10 −5
+9

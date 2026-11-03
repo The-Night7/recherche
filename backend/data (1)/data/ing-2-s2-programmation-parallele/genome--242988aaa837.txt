@@ -1,0 +1,94 @@
+/******************************************************************************
+* FILE: mpi_array_genom.c
+* DESCRIPTION: 
+*   
+Exemple MPI - Affectation de tableau - Version C
+Ce programme illustre une d�composition simple des donn�es. 
+La t�che ma�tre initialise d'abord un tableau de taille N et distribue ensuite � portion 
+�gale ce tableau pour les autres t�ches. Apr�s avoir re�u leurs portions de tableau
+les ex�cutent une op�ration de mise � jour de la tranche du tableau 
+et de comptage du nombre de 'A' dans chaque tranche du tableau.
+Ils maintiennent �galement la somme de 'A'  pour leur partie du tableau. 
+La t�che ma�tre en fait de m�me avec sa partie du tableau. 
+Lorsque chacunes des taches non maitre terminent le calcul, 
+elles envoient leur partie mise � jour du tableau pour le ma�tre.
+Un appel de communication MPI collective est utilis�e pour collecter 
+les sommes tenus par chaque t�che. 
+Enfin, la t�che principale affiche tout le tableau mise � jour, 
+et la somme globale de tous les 'A' du tableau.
+
+* REMARQUE: la taille du tableau doit �tre uniform�ment disible par le nombre de taches N.
+* AUTHOR: 
+* LAST REVISED: 11/01/13
+****************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<time.h>
+#define  ARRAYSIZE	20
+
+char  data[ARRAYSIZE];
+int update();
+char Random_Nucleotide();
+char Random(char m,char n);
+void afficher_genome();
+
+int main (int argc, char *argv[])
+{
+
+   srand(time(NULL));
+   
+  /* Initialise le tableau initial de nucl�otides */
+  int sum = 0;
+  int i;
+  for(i=0; i<ARRAYSIZE; i++) {
+    data[i] =  Random_Nucleotide();
+    }
+
+   
+  /* Maitre execute sa part du travail */
+  sum = update();
+  afficher_genome();
+  printf(" Nombre de nucleoitide A : = %d\n", sum);
+}  /* fin du main */
+
+
+//fonction de mise � jour d'un tableau et le calcul de la somme de ses elements
+int update() {
+  int i; 
+  int mysum =0;
+  
+  for(i=0; i<ARRAYSIZE; i++) {
+     //remplacement du nucleoitide R par A ou G 
+    if (data[i]=='R') data[i]= Random('A', 'G');
+	//remplacement du nucleoitide W par A ou T 
+	if (data[i]=='W') data[i]= Random('A', 'T');
+    }
+  // comptage du nombre de nucleotides 'A'
+ for(i=0; i<ARRAYSIZE; i++) 
+  if (data[i]=='A')  mysum++;
+ 
+  return(mysum);
+}
+
+
+  // generation al�atoire d'un nucleotide
+  char Random_Nucleotide(){
+        char tab[6]= {'A','G', 'T', 'C', 'R', 'W'};
+        return tab[(rand()%6)]; 
+  }
+  
+  //choix al�atoire d'un nucleotide m ou n
+  char Random(char m,char n){
+  if( (rand()%2) == 0) return m;
+  else return n;
+  }
+
+ // affichage du genome
+ void afficher_genome(){
+	 int i;
+	 printf("[ ");
+	 for(i=0; i<ARRAYSIZE; i++) 
+	   printf(" %c ", data[i]); 
+	 printf("]\n");
+ }

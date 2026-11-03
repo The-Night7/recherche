@@ -1,0 +1,91 @@
+Pré-ING2
+Informatique 3
+Semestre 1 - 2022/2023
+TD 07 : Unix - Commandes
+Note : cd TD sera effectué depuis une fenêtre de Terminal. Il s’agira d’utiliser les commandes du système pour effectuer
+chaque étape des exercices suivants. Même si il est possible d’utiliser l’explorateur de fichiers graphique pour comparer/vérifier
+le comportement des commandes exécutées, il ne faut pas oublier que le but est de comprendre et de maîtriser les commandes
+dans un environnement UNIX.
+Exercice 1 (Afficher des informations du système)
+1. Afficher dans le terminal la date du système.
+2. Afficher les utilisateurs connectés au système. Qui est connecté?
+3. Afficher le chemin absolu du dossier personnel utilisateur.
+Exercice 2 (Naviguer dans le système)
+1. Aller dans le répertoire bin du système et afficher son contenu.
+2. Revenir dans le dossier utilisateur (3 manières possibles + 1 possibilité supplémentaire en fonction de l’historique de
+vos commandes).
+Exercice 3 (Création de fichier)
+1. Créer un fichier hello.c contenant le code minimal d’un programme en langage C. Afficher le type de contenu de ce
+fichier.
+2. Compiler le programme hello.c précédent et afficher le type de contenu de l’exécutable obtenu.
+3. Dans votre dossier personnel, créer un fichier appelé mesMusiques. Insérer quelques lignes à l’intérieur de ce fichier à
+l’aide de votre éditeur de texte.
+4. Afficher le contenu du fichier mesMusiques sur le terminal.
+5. Afficher le type de contenu du fichier mesMusiques sur le terminal.
+6. Quelle est la taille du fichier mesMusiques (plusieurs manières pour l’afficher)?
+Exercice 4 (Copie et déplacement)
+1. Effectuer une copie du fichier mesMusiques vers le fichier myMusic.
+2. Afficher la taille des 2 fichiers et comparer.
+3. Renommer le fichier myMusic en mySongs.
+4. Quelle différence entre les commandesmv myMusic mySongs et cp myMusic mySongs ?
+Exercice 5 (Création de dossiers)
+1. Créer un dossier myFiles.
+2. Déplacer le fichier mySongs dans le dossier myFiles, et le renommer en songs2 (tout ça en une seule commande).
+3. Créer 2 sous-dossiers à myFiles : Albums/favorites/ et Artistes/ (sans se déplacer dans myFiles). Pour le sous-répertoire
+favorites, il faut le créer en une seule commande).
+Exercice 6 (Affichage de fichiers/dossiers)
+1. Décrire ce que fait la commande ls -l?
+2. Afficher le contenu détaillé du dossier myFiles (même les fichiers cachés).
+3. En plus de l’affichage précédent, afficher les numéros des inodes.
+4. Lister les fichiers du dossier courant en affichant les numéros des inodes. Comparer le numéro du dossier myFiles avec
+le numéro du dossier "." de la question précédente.
+5. A quoi sert l’option -R de la commande ls?
+6. Quel est l’ordre par défaut d’affichage des éléments suite à la commande ls?
+7. Quelles sont la(les) option(s) de la commande ls qui permettent de modifier l’ordre d’affichage?
+8. Afficher le contenu du répertoire utilisateur en faisant apparaitre les fichiers les plus récemment utilisés en premier.
+9. Comment afficher les droits d’accès d’un répertoire?
+10. Afficher des signes distinctifs pour chaque élément (/ pour les dossiers, @ pour les liens, etc...).
+1
+<<<PAGE>>>
+Exercice 7 (Suppression de fichiers/dossiers)
+1. Supprimer le répertoire myFiles à l’aide de la commande rm. Quel est le résultat?
+2. Supprimer myFiles à l’aide de la commande rmdir. Quel est le résultat?
+3. Supprimer le dossier myFiles et tout ce qu’il contient avec la commande rm en mode récursif.
+4. Maintenant que myFiles n’existe plus, relancer la commande précédente. Quel est le résultat?
+5. Relancer la commande précédente en faisant en sorte qu’elle n’affiche aucun message d’erreur si la cible n’existe pas.
+Exercice 8 (Droits d’accès)
+1. Un répertoire a les droits suivants :drwx-x-x. Un utilisateur qui n’est pas le propriétaire peut-il afficher le contenu
+du répertoire? Quelles sont les actions que peut faire cet utilisateur?
+2. Créer un dossier Moi, et affecter les droits suivants : drwxr-x-wx. Ces droits sont-ils pertinents pour un fichier ou un
+dossier? Justifier. Proposer un cas général de droits restrictifs en fonction des utilisateurs. Modifier les droits du dossier
+avec votre proposition.
+Exercice 9 (Liens symboliques et physiques)
+1. Recréer le fichier hello.c comme au début du TD. Créer un lien symbolique myLinkS vers ce fichier, et un lien physique
+myLinkP vers ce fichier.
+2. Afficher la liste détaillée avec les numéros des inodes de ces trois fichiers. Que remarque-t-on?
+3. Afficher le contenu des 3 fichiers. Que remarque-t-on?
+4. Modifier le contenu du fichier myLinkP avec un éditeur texte et réafficher le contenu des trois fichiers. Que remarque-
+t-on?
+5. Modifier les droits du fichier hello.c pour enlever l’accès en écriture pour tous les utilisateurs. Réafficher les informations
+détaillées avec les numéros des inodes et commenter.
+6. Supprimer le fichier hello.c. Afficher la liste détaillée avec les numéros des inodes des 2 liens. Que remarque-t-on?
+7. Afficher le contenu du fichier myLinkP. Que remarque-ton?
+8. Copier le lien physique myLinkP vers le fichier myLinkP2. Supprimer le lien physique myLinkP. Quel effet a cette
+suppression sur le lien symbolique myLinkS? Quel impact sur les numéros d’inodes?
+9. Renommer le lien physique myLinkP2 en hello.c. Afficher à nouveau la liste détaillée et les inodes des fichiers. Que
+remarque-t-on?
+Exercice 10 (Alias de commandes)
+1. Qu’est-ce qu’un alias?
+2. Afficher tous les alias actuellement chargés dans la session de votre terminal. Décrire le résultat affiché. Quel est l’impact
+d’un alias sur une commande si les deux ont exactement la même syntaxe?
+3. Dans le terminal, entrer la commande suivante :alias cd=’ls’. Utiliser la commande cd : que se passe-t-il?
+4. Supprimer l’alias cd créé précédemment. Tester à nouveau la commande cd pour voir si le changement est bien pris en
+compte.
+5. Définir un aliasmyDirs qui va afficher tous les sous-répertoires de la racine de votre dossier personnel. Tester l’alias
+créé
+6. Quitter le terminal, et le réouvrir. Utiliser l’alias précédent : que se passe-t-il?
+7. Afficher le contenu du fichier .bashrc qui se trouve à la racine de votre répertoire personnel. Que contient ce fichier?
+8. Avec un éditeur de texte, modifier le fichier .bashrc pour y ajouter l’alias qui affiche les dossiers du répertoire personnel.
+Tester à nouveau l’alias myDirs dans la session actuelle du terminal. Que se passe-t-il?
+9. Fermer le terminal et rouvrir une nouvelle session. Tester l’alias myDirs : que se passe-t-il?
+2

@@ -1,0 +1,278 @@
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Donn´ ees complexes
+Jean-Paul Forest 2018-
+Houcine Senoussi 2016-2018
+2019-2020
+1 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+1 Introduction
+2 Enregistrements
+3 Tableaux
+4 Conclusion
+2 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Introduction
+Dans une application de g´ eom´ etrie nous manipulons des
+points et des vecteurs.
+Dans toutes les applications supposant la r´ esolution de
+syst` emes d’´ equations lin´ eaires, nous manipulons desvecteurs
+et des matrices.
+Dans une application de gestion de la scolarit´ e nous
+manipulons des ´ etudiantset des mati` eres.
+Dans une application de gestion commerciale nous manipulons
+des produits, des clients et des fournisseurs.
+3 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Introduction
+Le point commun entre ces donn´ ees est que ce sont des
+donn´ ees ”complexes” :
+Par opposition aux donn´ ees ”simples” du premier chapitre :
+d´ eﬁnies par une seule valeur.
+Un point p se d´ eﬁnit par un couple (x, y) si on est dans le
+plan et par un n-uplet ( x1, ..., xn) si on est dans un espace de
+dimension n.
+Un vecteur de R n se d´ eﬁnit par un n-uplet (x1, ..., xn) de r´ eels.
+Une matrice ` an lignes et m colonnes s’´ ecrit
+((x11, ..., x1m); . . .; (xn1, ..., xnm)) de r´ eels.
+4 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Introduction
+Un ´ etudiant est d´ eﬁni, par exemple, par un nom, un pr´ enom
+et une ann´ ee d’´ etudes.
+Un produit est d´ eﬁni, par exemple, par un code et un libell´ e.
+Un client (ou un fournisseur) est d´ eﬁni, par exemple, par un
+code, un nom et une adresse.
+5 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Introduction
+Ces donn´ ees ont en commun d’ˆ etre ”compos´ ees” d’autres
+donn´ ees mais diﬀ` erent de deux points de vue :
+Certaines sont ”num´ erot´ ees” (on acc` ede ` a chaque ´ el´ ement ` a
+l’aide d’un indice) et homog` enes (tous les ´ el´ ements sont du
+mˆ eme type) : c’est le cas des vecteurs et des matrices.
+Certaines sont ”h´ et´ erog` enes” et non num´ erot´ ees : c’est le cas
+des ´ etudiants, des mati` eres, des produits, des clients et des
+fourniseeurs.
+Nous allons repr´ esenter la premi` ere cat´ egorie ` a l’aide des
+tableaux et la seconde ` a l’aide desenregistrements.
+6 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les enregistrements
+Les enregistrements nous permettent de repr´ esenter des
+donn´ eescompos´ eeset ´ eventuellementh´ et´ erog` enes.
+Exemple :
+(Dans une application de gestion de la scolarit´ e) ´Etudiant =
+nom+pr´ enom+ann´ ee d’´ etudes
+(Idem) Mati` ere = intitul´ e+ann´ ee d’enseignement+nombre
+d’heures
+(Dans une application de gestion commerciale ) Produit =
+code+libell´ e
+(Dans une application math´ ematique) Nombre complexe =
+une partie r´ eelle + une partie imaginaire
+7 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les enregistrements
+D´ eﬁnition
+Enregistrement nomEnreg
+nomChamps1 : typeChamps1
+...
+nomChampsn : typeChampsn
+FinEnregistrement
+D´ eclaration
+nomvar : nomEnreg
+Manipulation
+L’acc` es au champsnomChamps d’une variable nomVar se fait
+par nomVar.nomChamps.
+8 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les enregistrements
+Exemple
+Enregistrement Produit
+code : Entier
+libelle : Cha ˆ ıne
+FinEnregistrement
+...
+vprod : Produit
+Ecrire(”Donnez le code du produit : ”)
+Lire(vProd.code)
+Ecrire(”Donnez la d´ esignation du produit : ”)
+Lire(vProd.libelle)
+Ecrire(”Produit saisi : code=”,vProd.code,” libell´ e =
+”,vProd.libelle)
+9 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les enregistrements
+Exercice
+´Ecrire un algorithme permettant de lire un nombre complexe saisi
+par l’utilisateur et aﬃcher son module.
+10 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+D´ eﬁnitions
+Nous avons souvent besoin de manipuler une suite ﬁnie de
+donn´ ees de mˆ eme type.
+Exemple : les notes (ou les noms ou les adresses) d’un groupe
+d’´ etudiants.
+Une telle suite est repr´ esent´ ee par un tableau (` a une
+dimension).
+Dans un tableau nous avons donc un ensemble d’´ el´ ements de
+mˆ eme type et num´ erot´ es (accessible via un indice).
+11 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux
+D´ eclaration
+nomDuTableau : tableau[1..tailleDuTableau] de typeDeDonn´ ees
+tailleDuTableau doit ˆ etre une constante (jamais de variable).
+typeDeDonnees est un type de donn´ ees quelconque (simple ou
+complexe).
+Manipulation
+L’acc` es aui ieme ´ el´ ement d’un tableautab se fait par tab[i].
+12 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux
+Exemples :
+notesEtudiants : tableau[1..150] de R´ eel
+nomsEtudiants : tableau[1..150] de Cha ˆ ıne
+listeProduits : tableau[1..10] de Produit
+13 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux dynamiques
+Ici la taille n’est pas connue d’avance.
+Le tableau sera alors d´ eclar´ e de la mani` ere suivante :
+nomdutableau : tableau de typededonn´ ees
+Lorsque nous pourrons lui donner une taille pr´ ecise, nous le
+ferons de la mani` ere suivante :
+creerTableau(S nomDuTableau, E tailleDuTableau)
+14 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux
+Algorithme inverserTableau
+variables
+i : Entier
+tab : tableau[1..10] de Entier
+D´ ebut
+//Lecture du tableau
+Pour i de 1 ` a10
+Ecrire(”tab[”,i, ”]=”)
+Lire(tab[i])
+FinPour
+15 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux
+Suite
+//Inversion du tableau
+Pour i de 1 ` a5
+tmp := tab[i]
+tab[i] := tab[11-i]
+tab[11-i] := tmp
+FinPour
+//R´ eaﬃchage du tableau
+Ecrire(”tab = ”)
+Pour i de 1 ` a10
+Ecrire(tab[i],” ”)
+FinPour
+16 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux multi-dimensionnels
+Les tableaux multi-dimensionnels (le plus souvent
+bi-dimensionnels) se manipulent de mani` ere analogue ` a celle
+des tableaux ` a une dimension.
+D´ eclaration
+nomDuTableau : tableau[1..taille1, 1..taille2] de typeDeDonn´ ees
+Manipulation
+L’acc` es aux ´ el´ ements se fait grˆ ace ` a un couple d’indices (i, j).
+Ces ´ el´ ements sont not´ estab[i, j].
+17 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Les tableaux multi-dimensionnels
+Les tableaux multi-dimensionnels peuvent ˆ etre dynamiques.
+Dans ce cas ils sont d´ eclar´ es de la mani` ere suivante :
+nomDuTableau : tableau de tableau typeDeDonn´ ees
+L’aﬀectation des tailles se fait alors de la mani` ere suivante :
+creerTableau(tab, t)
+Pour i de 1 ` a t
+creerTableau(tab[i], ti)
+FinPour
+Remarque : Notez bien que dans ce cas les ti ne sont pas
+forc´ ement tous ´ egaux. On peut avoir un tableau de tableaux
+de tailles diﬀ´ erentes.
+18 / 19
+<<<PAGE>>>
+Introduction
+Enregistrements
+Tableaux
+Conclusion
+Conclusion
+Donn´ ees complexes : enregistrements et tableaux.
+Chapitre suivant : structures de donn´ ees (pile, ﬁle et liste).
+19 / 19

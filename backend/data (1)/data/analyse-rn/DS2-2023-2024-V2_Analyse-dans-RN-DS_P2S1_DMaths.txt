@@ -1,0 +1,379 @@
+Préing 2 : DS 2 (sujet 0) d’Analyse dans Rn
+L’usage d’appareil électronique est interdit.Date : Lundi 11 Décembre 2023 à 10h15
+Aucun document n’est autorisé. Durée : 1h
+Le barème est donné à titre indicatif. Nombre de pages : 1 page recto verso
+Il sera tenu compte de la qualité de la rédaction et de la précision des justiﬁcations.Le
+sujet comporte 3 exercices. L’ordre dans lequel ceux-ci sont traités n ’est pas imposé.
+♣ ♣ ♣
+Exercice 1 : limite, continuité, diﬀérentiabilité et classeC1. (11.5
+points)
+Soit l’applicationf déﬁnie par
+f (x,y ) =
+
+
+
+x2 sin
+(
+1√
+x2+y2
+)
+si (x,y )⁄= (0, 0)
+0 sinon
+1. Montrer quef est continue surR2. (1.5 points)
+2. Sur quel(s) domaine(s)f est-elle de classeC1? (6.5 points)
+3. Sur quel(s) domaine(s)f est-elle diﬀérentiable et le cas échéant, quelle est sa diﬀérentielle?
+(3.5 points)
+1. Montrons quef est continue surR2.
+Sur R2\{(0, 0)} : (0.5 point)
+1/
+√
+x2 +y2 est continue sur R2\{(0, 0)} car le dénominateur ne s’annule jamais sur cet
+ensemble et quex2 +y2 est positif. On déduit de cela que sin(1/
+√
+x2 +y2) est continue
+sur R2\{(0, 0)} comme composée de fonctions continues. Finalement,x2 sin(1/
+√
+x2 +y2) est
+continue sur R2\{(0, 0)} comme produit de fonctions continues.
+En (0, 0) : (1 point)
+On a
+|f (x,y )| =
+⏐⏐⏐⏐⏐x2 sin
+(
+1√
+x2 +y2
+)⏐⏐⏐⏐⏐≤x2 −→
+(x,y)→(0,0)
+0
+donc
+lim
+(x,y)→(0,0)
+f (x,y ) = 0 = f (0, 0)
+Finalementf est continue surR2.
+1
+<<<PAGE>>>
+2. Etudions les dérivées partielles premières def :
+En (0, 0) :
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f (t, 0)−f (0, 0)
+t = lim
+t→0
+1
+t×t2 sin
+( 1
+|t|
+)
+= 0 (1 point)
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+= lim
+t→0
+f (0,t )−f (0, 0)
+t = 0 (1 point)
+En (x,y )⁄= (0, 0) :
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
+= 2x sin
+(
+1√
+x2 +y2
+)
+− x3
+(x2 +y2)3/2 cos
+(
+1√
+x2 +y2
+)
+(1 point)
+∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+=− yx2
+(x2 +y2)3/2 cos
+(
+1√
+x2 +y2
+)
+(1 point)
+Ainsi, les applications dérivées partielles premières def sont données surR2 par
+∂f
+∂x
+⏐⏐⏐⏐
+(x,y)
+=
+
+
+
+2x sin
+(
+1√
+x2+y2
+)
+− x3
+(x2+y2)3/2 cos
+(
+1√
+x2+y2
+)
+si (x,y )⁄= (0, 0)
+0 sinon
+∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+=
+
+
+
+− yx2
+(x2+y2)3/2 cos
+(
+1√
+x2+y2
+)
+si (x,y )⁄= (0, 0)
+0 sinon
+Continuité des dérivées partielles premières surR2\{(0, 0)} : (1 point)
+Comme précédemment 1/
+√
+x2 +y2 est continue surR2\{(0, 0)} car x2 +y2 est strictement
+positif. De ce fait cos(1/
+√
+x2 +y2) et sin(1/
+√
+x2 +y2) sont continues comme composées
+de fonctions continues. De plusx3/(x2 +y2)3/2 et yx2/(x2 +y2)3/2 sont continues comme
+fractions rationnelles dont le dénominateur ne s’annule jamais. Finalement les deux dérivées
+partielles sont conitnues surR2\{(0, 0)}.
+Continuité des dérivées partielles premières en(0, 0) : (1.5 point)
+Posons, pour simpliﬁer les notations
+h(x,y ) = ∂f
+∂y
+⏐⏐⏐⏐
+(x,y)
+Passons en coordonnées polaires
+˜h(ρ,θ ) =−ρ3 cos2(θ) sin(θ)
+ρ3 cos
+(
+1
+ρ
+) =− cos2(θ) sin(θ) cos
+( 1
+ρ
+)
+qui n’est clairement pas déﬁni quandρ tend vers 0. Ainsif n’est pasC1 en (0, 0).
+2
+<<<PAGE>>>
+3. Etudions maintenant sif est diﬀérentiable.
+Sur R2\{(0, 0)} :
+Comme f estC1 sur cet ensemble alorsf y est diﬀérentiable. (0.5 point)
+De plus la diﬀérentielle est alors donnée par
+D(x,y)f (h1,h 2) = h1
+[
+2x sin
+(
+1√
+x2 +y2
+)
+− x3
+(x2 +y2)3/2 cos
+(
+1√
+x2 +y2
+)]
+−h2
+[
+yx2
+(x2 +y2)3/2 cos
+(
+1√
+x2 +y2
+)]
+(0.5 point)
+En (0, 0) :
+D’après le cours,f est diﬀérentiable en(0, 0) si et seulement si
+lim
+(h1,h2)→(0,0)
+1√
+h2
+1 +h2
+2
+[
+f (h1,h 2)−f (0, 0)−h1
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+]
+= 0 (0 .5 point)
+notons alors
+ϵ(h1,h 2) = 1√
+h2
+1 +h2
+2
+[
+f (h1,h 2)−f (0, 0)−h1
+∂f
+∂x
+⏐⏐⏐⏐
+(0,0)
+−h2
+∂f
+∂y
+⏐⏐⏐⏐
+(0,0)
+]
+Dans notre cas, on a
+ϵ(h1,h 2) = 1√
+h2
+1 +h2
+2
+h2
+1 sin
+(
+1√
+x2 +y2
+)
+(0.5 point)
+Passons alors en coordonnées polaires
+˜ϵ(ρ,θ ) = ρ cos2(θ) sin
+( 1
+ρ
+)
+−→
+rho→0
+0 (1 point)
+donc f est diﬀérentiable en(0, 0).
+La diﬀérentielle est alors donnée par
+D(0,0)f (h1,h 2) = 0 (0 .5 point)
+Exercice 2 : Continuité (4 points)
+Soit la fonction déﬁnie par
+f (x,y ) =
+
+
+
+|x|
+y2 si y >|x|
+4y
+(|x|+|y|)2 si
+(
+y≤|x| et (x,y )⁄= (0, 0)
+)
+0 si (x,y ) = (0, 0)
+3
+<<<PAGE>>>
+1. Répresenter dansR2, les domaines sur lesquelles la fonctionf ci-dessus a été déﬁnie. (1 point)
+2. Etudier sur R2 la continuité def. (3 points)
+1. Voir ci-dessous la représentation des diﬀérents domaines (il manque(0, 0)) (1 point)
+2. Posons
+U ={(x,y )∈ R2 /y >|x|} V ={(x,y )∈ R2 /y <|x|} F ={(x,y )∈ R2 /y =|x|}
+Continuité surU : (0.5 point)
+f est continue surU comme fraction rationnelle dont le dénominateur ne s’annule jamais
+puisque y >|x|≥ 0.
+Continuité surV : (0.5 point)
+f est continue surV comme quotient de 2 fonctions continues dont le dénominateur ne s’an-
+nule jamais.
+Continuité surF :
+Soit (x0,y 0)∈F.
+A partir deU : (0.5 point)
+lim
+(x,y)→(x0,y0)
+|x|
+y2 = x0
+y2
+0
+= |x0|
+|x0|2 = 1
+x0
+A partir deV : (0.5 point)
+lim
+(x,y)→(x0,y0)
+4y
+(|x| +|y|)2 = 4y0
+(|x0| +|y0|)2 = 1
+|x0|
+donc continue surF.
+Continuité en (0, 0) : (1 point)
+4
+<<<PAGE>>>
+Prenons yy <0. Alors
+f (0,y ) = 4y
+y2 = 4
+y−→
+y→0
+−∞
+donc f n’est pas continue en(0, 0).
+Finalementf est continue surR2\{(0, 0)}.
+Exercice 3 : continuité bis (4.5 points)
+Déterminer sur R2, la continuité des fonctions suivantes (1 point + 1.5 points + 2 points)
+f1(x,y ) = xy3
+x2 +y2 f2(x,y ) = x2 +y2
+|x| +|y| f3(x,y ) =
+{ y3
+(x−1)2+y2 si (x,y )⁄= (1, 0)
+0 si (x,y ) = (1, 0)
+Soit f (x,y ) = xy3
+x2+y2 :
+Pour R2\{(0, 0)} : (0.5 point)
+La fonction est clairement continue comme fraction rationnelle dont le dénominateur ne s’annule
+jamais.
+En (0, 0) : (0.5 point)
+|f1(x,y )| = |xy|y2
+x2 +y2≤|xy| −→
+(x,y)→(0,0)
+0
+donc la fonction est continue en(0, 0) et sa limite est0.
+Finalement la fonction est continue surR2.
+Soit f (x,y )x2+y2
+|x|+|y| :
+Pour R2\{(0, 0)} : (0.5 point)
+La fonction est clairement continue comme quotient de deux fonctions continues dont le dénomina-
+teur ne s’annule jamais.
+En (0, 0) : (1 point)
+Passons en polaire
+˜f2(ρ,θ ) = ρ2
+ρ(| cos(θ)| +| sin(θ)|) = ρ
+| cos(θ)| +| sin(θ)|
+or
+∀θ∈ R,| cos(θ)| +| sin(θ)|> 0
+d’où l’on déduit que
+˜f2(ρ,θ )−→
+ρ→0
+0
+5
+<<<PAGE>>>
+et ﬁnalementf2 est continue en(0, 0) et sa limite vaut0.
+Soit
+f3(x,y ) =
+{ y3
+(x−1)2+y2 si (x,y )⁄= (1, 0)
+0 si (x,y ) = (1, 0)
+Pour R2\{(1, 0)} : (0.5 point)
+La fonction est clairement continue comme fraction rationnelle dont le dénominateur ne s’annule
+jamais.
+En (0, 0) : (1.5 point)
+Passons en polaire en posant {
+x = 1 +ρ cos(θ)
+y =ρ sin(θ)
+Alors
+˜f3(ρ,θ ) = ρ3 sin3(θ)
+ρ2(cos2(θ) + sin2(θ)) =ρ sin3(θ)−→
+ρ→0
+0
+donc la fonction est continue en(1, 0) et sa limite vaut0.
+6

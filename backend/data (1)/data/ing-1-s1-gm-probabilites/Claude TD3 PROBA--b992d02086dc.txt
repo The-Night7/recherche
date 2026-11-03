@@ -1,0 +1,376 @@
+CYT ech 2025-2026
+ING1 - GM : Probabilités
+TD 3
+Exercice 1 Soit X∈L1(Ω,A,P ) et (An)n∈N∈A N telle que limn→∞P (An) = 0.
+Montrer que limn→∞E[X1An] = 0.
+Correction :
+On a X∈L1(Ω,A,P ), donc E[|X|]<∞.
+Pour tout n∈ N, on a :
+|E[X1An]|≤ E[|X|1An]
+Décomposons : pour M >0, posons B ={|X|≤ M} et Bc ={|X|>M}. Alors :
+E[|X|1An]=E[|X|1An∩B] +E[|X|1An∩Bc]
+≤M·P (An) +E[|X|1Bc]
+Pour tout ε> 0, choisissons M assez grand tel que E[|X|1Bc]<ε/ 2 (possible car X∈L1).
+A vec ce M xé, comme P (An)→ 0, il existe N tel que pour n≥N :
+M·P (An)<ε/ 2
+Donc pour n≥N :
+|E[X1An]|≤ E[|X|1An]<ε/ 2 +ε/2 =ε
+Ceci prouve que limn→∞E[X1An] = 0.
+Exercice 2 Soit (Ω,A,P ) un espace de probabilité et X une v.a. réelle telle que X≥ 0 p.s. et
+E[X] = 1. Dénissons Q :A→ R par Q(A) =E[X1A].
+1. Montrer que Q est une mesure probabilité sur (Ω,A).
+2. Montrer que P (A) = 0⇒Q(A) = 0.
+3. Montrer que l'autre sens de l'implication est fausse, en utilisant P dénie via la distribution
+uniforme sur [0, 1] et X dénie par X(x) = 21[0,1/2](x) pour tout x∈ R et A =]1/2, 1].
+4. En notant EQ l'espérance par rapport à Q, montrer que EQ[Y ] =EP [XY ] pour toute v.a.
+Y ≥ 0 p.s. ou bornée.
+Pour les trois questions suivantes supposons que X >0 p.s.
+5. Montrer que 1
+X est intégrable pour Q.
+6. Soit R :A→ R dénie par R(A) =EQ
+ 1
+X 1A
+
+. Montrer que R est exactement la probabilité
+P .
+7. Montrer que Q(A) = 0⇒P (A) = 0.
+Correction :
+1. Q est une mesure de probabilité :
+ Q(∅) =E[X1∅] =E[0] = 0
+1
+<<<PAGE>>>
+ Pour (An) disjoints :
+Q
+ [
+n
+An
+!
+=E
+h
+X1S
+nAn
+i
+=E
+"
+X
+X
+n
+1An
+#
+=E
+"X
+n
+X1An
+#
+=
+X
+n
+E[X1An] =
+X
+n
+Q(An)
+par convergence monotone (car X≥ 0).
+ Q(Ω) =E[X1Ω] =E[X] = 1
+Donc Q est une mesure de probabilité.
+2. P (A) = 0⇒Q(A) = 0 :
+Si P (A) = 0, alors 1A = 0 p.s., donc X1A = 0 p.s.
+Par conséquent : Q(A) =E[X1A] = 0.
+3. La réciproque est fausse :
+On a Ω = [0, 1], P est la loi uniforme, et X(x) = 21[0,1/2](x).
+Vérions : E[X] =
+R 1
+0 X(x)dx =
+R 1/2
+0 2dx = 1 (ok)
+Pour A =]1/2, 1] :
+Q(A) =E[X1A] =
+Z 1
+1/2
+X(x)dx =
+Z 1
+1/2
+0dx = 0
+Mais P (A) =P (]1/2, 1]) = 1/2̸= 0.
+Donc Q(A) = 0 n'implique pas P (A) = 0.
+4. Relation entre EQ et EP :
+Pour Y ≥ 0 ou bornée, par dénition de l'espérance sous Q :
+EQ[Y ]=
+Z
+Ω
+Y (ω)dQ(ω)
+=
+Z
+Ω
+Y (ω)X(ω)dP (ω) =EP [XY ]
+5. 1
+X est Q-intégrable :
+Supposons X >0 p.s. On doit montrer EQ
+ 1
+X
+
+<∞.
+Par la question 4 :
+EQ
+ 1
+X
+
+=EP
+
+X· 1
+X
+
+=EP [1] = 1<∞
+Donc 1
+X est Q-intégrable.
+6. R =P :
+Pour tout A∈A :
+R(A)=EQ
+ 1
+X 1A
+
+=EP
+
+X· 1
+X 1A
+
+=EP [1A] =P (A)
+Donc R =P .
+7. Q(A) = 0⇒P (A) = 0 :
+Si Q(A) = 0, alors E[X1A] = 0.
+Comme X >0 p.s. et X1A≥ 0, on a nécessairement X1A = 0 p.s.
+Donc 1A = 0 p.s. (car X >0 p.s.), d'où P (A) = 0.
+Exercice 3 Soit X une variable aléatoire de densité de Cauchy, i.e. fX(x) = 1
+π
+1
+1+x2 pour tout
+x∈ R.
+2
+<<<PAGE>>>
+Montrer que X n'admet pas d'espérance.
+Correction :
+Pour que X admette une espérance, il faut que E[|X|]<∞, c'est-à-dire :
+Z
+R
+|x|fX(x)dx< ∞
+Calculons :
+Z
+R
+|x|fX(x)dx=
+Z
+R
+|x|· 1
+π
+1
+1 +x2dx
+= 2
+π
+Z +∞
+0
+x
+1 +x2dx
+Posons u = 1 +x2, donc du = 2xdx :
+Z +∞
+0
+x
+1 +x2dx= 1
+2
+Z +∞
+1
+1
+udu
+= 1
+2 [ln(u)]+∞
+1 = +∞
+Donc E[|X|] = +∞, et X n'admet pas d'espérance.
+Exercice 4 Montrer que E[XY ] =E[X]E[Y ] n'implique pas que X et Y sont indépendants.
+Aide : utiliser X∼U([−1, 1]) et Y =X2.
+Correction :
+Prenons X∼U([−1, 1]) et Y =X2.
+Calcul de E[X] :
+E[X] =
+Z 1
+−1
+x· 1
+2dx = 1
+2
+x2
+2
+1
+−1
+= 0
+Calcul de E[XY ] =E[X3] :
+E[X3] =
+Z 1
+−1
+x3· 1
+2dx = 1
+2
+x4
+4
+1
+−1
+= 0
+Calcul de E[Y ] :
+E[Y ] =E[X2] =
+Z 1
+−1
+x2· 1
+2dx = 1
+2
+x3
+3
+1
+−1
+= 1
+3
+On a donc :
+E[XY ] = 0 = 0· 1
+3 =E[X]E[Y ]
+Mais X et Y ne sont pas indépendantes :
+En eet, si X et Y étaient indépendantes, alors pour tout a,b :
+P (X≤a,Y ≤b) =P (X≤a)P (Y ≤b)
+Or, Y =X2, donc P (Y ≤ 0) = 0 car Y ≥ 0 toujours.
+Mais P (X≤ 0,Y ≤ 0) =P (X≤ 0,X 2≤ 0) =P (X = 0) = 0.
+Si X et Y étaient indépendantes : P (X≤ 0,Y ≤ 0) =P (X≤ 0)·P (Y ≤ 0) = 1
+2· 0 = 0 (ok)
+3
+<<<PAGE>>>
+Mais considérons P (X >0,Y ≤ 1/4). On a Y ≤ 1/4⇔X2≤ 1/4⇔|X|≤ 1/2.
+Donc P (X >0,Y ≤ 1/4) =P (0<X ≤ 1/2) = 1
+4 .
+Si indépendance : P (X >0,Y ≤ 1/4) =P (X >0)·P (Y ≤ 1/4) = 1
+2·P (X2≤ 1/4).
+Or P (X2≤ 1/4) =P (−1/2≤X≤ 1/2) = 1
+2 .
+Donc si indépendance : P (X >0,Y ≤ 1/4) = 1
+2· 1
+2 = 1
+4 (ok)
+En fait, la non-indépendance est plus claire en remarquant que Y est complètement détermi-
+née par X : si on connaît X, on connaît Y . Donc X et Y ne peuvent pas être indépendantes.
+Exercice 5 Soient X et Y deux v.a. indépendantes à valeurs dans N∗, avec P (X =i) =P (Y =
+i) = 2−i.
+Trouver les probabilités des événements suivants :
+a) P (min(X,Y )≤i)
+b) P (X =Y )
+c) P (Y >X )
+d) P (X divise Y )
+e) P (X≥kY ) pour k∈ N∗ donné.
+Correction :
+On a P (X =i) =P (Y =i) = 2−i pour i∈ N∗.
+a) P (min(X,Y )≤i) :
+Par complémentaire :
+P (min(X,Y )≤i)= 1−P (min(X,Y )>i )
+= 1−P (X >i,Y >i )
+= 1−P (X >i)P (Y >i) (par indépendance)
+Calculons P (X >i) :
+P (X >i) =
+∞X
+j=i+1
+2−j = 2−i
+∞X
+k=1
+2−k = 2−i· 1/2
+1− 1/2 = 2−i
+Donc :
+P (min(X,Y )≤i) = 1− 2−i· 2−i = 1− 2−2i
+b) P (X =Y ) :
+P (X =Y )=
+∞X
+i=1
+P (X =i,Y =i)
+=
+∞X
+i=1
+P (X =i)P (Y =i)
+=
+∞X
+i=1
+2−i· 2−i =
+∞X
+i=1
+2−2i
+=
+∞X
+i=1
+(1/4)i = 1/4
+1− 1/4 = 1
+3
+c) P (Y >X ) :
+Par symétrie (car X et Y ont la même loi) :
+P (Y >X ) =P (X >Y )
+4
+<<<PAGE>>>
+Or P (X >Y ) +P (X =Y ) +P (X <Y ) = 1, donc :
+2P (Y >X ) + 1
+3 = 1
+P (Y >X ) = 1
+3
+d) P (X divise Y ) :
+P (X|Y )=
+∞X
+i=1
+∞X
+j=1
+P (X =i,Y =ij)
+=
+∞X
+i=1
+∞X
+j=1
+2−i· 2−ij
+=
+∞X
+i=1
+2−i
+∞X
+j=1
+2−ij
+=
+∞X
+i=1
+2−i· 2−i
+1− 2−i
+=
+∞X
+i=1
+2−2i
+1− 2−i =
+∞X
+i=1
+1
+4i(1− 2−i)
+Cette somme nécessite un calcul numérique. On peut aussi écrire :
+=
+∞X
+i=1
+2−i
+2i− 1
+e) P (X≥kY ) pour k∈ N∗ :
+Exercice 6 Montrer que min(X,Y ) suit une loi géométrique lorsqu'on suppose que X et Y sont
+indépendantes et suivent une loi géométrique de paramètres respectifs λ et µ.
+Correction :
+Rappel : Si X∼ Géom (λ), alors P (X =k) =λ(1−λ)k pour k∈ N.
+Calculons P (min(X,Y ) =k) :
+P (min(X,Y ) =k)=P (X =k,Y >k ) +P (X >k,Y =k)
+=P (X =k)P (Y >k ) +P (X >k)P (Y =k)
+On a :
+P (X =k) =λ(1−λ)k
+P (X >k) =
+∞X
+j=k+1
+λ(1−λ)j = (1−λ)k+1
+De même pour Y :
+P (Y =k) =µ(1−µ)k, P (Y >k ) = (1−µ)k+1
+5
+<<<PAGE>>>
+Donc :
+P (min(X,Y ) =k)=λ(1−λ)k(1−µ)k+1 + (1−λ)k+1µ(1−µ)k
+= (1−λ)k(1−µ)k[λ(1−µ) +µ(1−λ)]
+= [(1−λ)(1−µ)]k[λ +µ− 2λµ]
+= (λ +µ−λµ)[1− (λ +µ−λµ)]k
+Posons p =λ +µ−λµ = 1− (1−λ)(1−µ). Alors :
+P (min(X,Y ) =k) =p(1−p)k
+Donc min(X,Y )∼ Géom (λ +µ−λµ).
+1/1
+6

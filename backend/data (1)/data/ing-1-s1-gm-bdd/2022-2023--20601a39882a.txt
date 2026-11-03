@@ -1,0 +1,97 @@
+ Examen Bases de Données 
+Session normale 
+ 
+ING1-GI-GM-GIA-GMA Année 2022-23 
+ 
+ 
+1 / 2 
+Examen papier - Durée : 2h 
+Aucun document ou machine n'est autorisé. 
+ 
+Exercice 1 : Modélisation (6 pts) 
+Conception d’une base de données pour les assurances 
+Une mutuelle souhaite informatiser les contrats d’assurance que les sociétaires souscrivent. 
+ 
+ Les contrats d’assurance 
+La mutuelle propose à ses sociétaires des contrats d’assurance. Pour offrir différents types 
+de contrats, elle a mis au point des formules d’assurance. 
+Une formule couvre différentes garanties. Pa r exemple, la formule confort auto couvre 
+l’incendie, le vol... et la formule tout risque auto couvre l’incendie, le vol, les attentats... 
+Chaque formule couvre les garanties avec des pl afonds et des franchises spécifiques. Par 
+exemple, la formule confort auto couvre l’incendie avec un plafond de 100 000 euros et une 
+franchise de 200 euros. 
+Les clients souscrivent des contrats en choisissant une formule d’assurance. Un contrat est 
+défini par une formule. Un contrat est signé à une date donnée (date de souscription) et pour 
+une durée donnée, qui définit la date d´échéance du contrat. Mais un client peut souscrire 
+plusieurs contrats d'assurance : voitures, logements... avec des formules différentes. 
+Les déclarations de sinistres 
+Lorsque le sociétaire-client est victime d’un sinistre, il fait une déclaration auprès de sa 
+mutuelle. La mutuelle vérifie que le sociétaire bénéficie d’une assurance pour ce sinistre. 
+Puis elle ouvre un dossier de sinistre, dans le cadre du contrat correspondant. Le dossier de 
+sinistre contiendra les informations suivantes :  date d’ouverture, date de clôture, montant 
+des indemnités. Ensuite la mutuelle désigne un correspondant (employé de la mutuelle) qui 
+va suivre le dossier jusqu’a sa clôture. Enfin elle nomme un expert indépendant qui sera lui 
+aussi chargé du dossier. 
+Par convention, les dossiers en cours de traitement ont une date de clôture fixée au 
+31/12/2100. 
+Le correspondant suit le dossier de façon permanente. L’expert ne fait que des interventions 
+ponctuelles : expertise, contre-expertise, contrôle... Le correspondant comme l’expert sont 
+nommés dès l’ouverture du dossier.  La nomination de l’expert est indépendante des 
+éventuelles interventions qui seront réalisées. Sur certains sinistres, il est même possible 
+que l’expert n’intervienne pas parce que la mutuelle aura donné son accord pour un 
+remboursement du sinistre. Mais dans la plupart des cas, l’expert devra effectuer plusieurs 
+interventions. 
+La mutuelle veut pouvoir mémoriser qui est le correspondant d’un dossier, qui est l’expert 
+nommé sur un dossier et quelles sont les éventuelles dates de ses interventions. La mutuelle 
+ne désire pas mémoriser les motifs de l’intervention. 
+ 
+1. Proposer un MCD modélisant cet énoncé.  
+2. Traduire votre MCD en MLD.   
+<<<PAGE>>>
+ Examen Bases de Données 
+Session normale 
+ 
+ING1-GI-GM-GIA-GMA Année 2022-23 
+ 
+ 
+2 / 2 
+ 
+Exercice 2 : Normalisation (3.5 pts) 
+ 
+Une agence immobilière gère la location d’appartements et dispose d’une base de données 
+dont le schéma relationnel est le suivant : 
+Ville (idVille, nomVille, departement, region) 
+Location (idLogement, nomClient, dateSignature, #idVille, nbPieces) 
+1. Lister l’ensemble des dépendances fonctionnelles des deux relations. 
+2. Ces relations sont-elles en BCNF ? Justifier. Si non, transformer les relations pour 
+qu’elles le deviennent. 
+ 
+Exercice 3 : Requêtes (10.5 pts) 
+ 
+Nous considérons le MLD suivant : 
+Commande (no_commande, montant_achat, date, #client_id, #vendeur_id) 
+Client (client_id, nom, ville, note) 
+Vendeur (vendeur_id, nom, ville, commission) 
+Écrivez une requête SQL pour : 
+1. Créer la table contenant les données des commandes. 
+2. Augmenter la commission de tous les vendeurs de Paris de 1%. 
+3. Déterminer la commission des vendeurs à “Paris”. Renvoyez l’identifiant du vendeur, 
+son nom et sa commission. 
+4. Retrouver les clients qui habitent à “Toulouse” et dont le nom, de longueur 6 
+caractères, commence par DEF et se termine par Z. 
+5. Donner la note la plus élevée des clients dans chaque ville. 
+6. Donner la liste des vendeurs et clients qui résident dans la même ville. Retourner le 
+nom du vendeur, le nom du client et la ville. 
+7. Trouver le montant de commande (achat) le plus élevé pour chaque client à une date 
+de commande particulière. Filtrez le résultat par le montant de la commande (achat) 
+le plus élevé et supérieur à 2 000 €. Renvoyez l'identifiant du client, la date de la 
+commande et le montant maximum d'achat. 
+8. Créer un rapport avec le nom du client, la ville, le numéro de commande, la date et le 
+montant de la commande dans l'ordre croissant en fonction de la date de la commande 
+pour déterminer si l'un des clients existants a passé une commande ou non. 
+9. Localiser les vendeurs qui n'habitent pas dans la même ville où vivent leurs clients et 
+qui ont reçu une commission de plus de 12 % de la part de l'entreprise. Retourner le 
+nom du client, la ville du client, le vendeur, la ville du vendeur et la commission. 
+10. Donner les noms des clients qui ont commandé à tous les vendeurs. 
+11. Donner la liste des clients dont la somme des achats est supérieure à la moyenne des 
+achats de tous les clients. 

@@ -1,0 +1,645 @@
+Algorithmique procédurale
+Examen - ING1 GI/GM
+12 janvier 2023
+Modalités
+-
+Durée : 2 heures
+-
+Vous
+devez
+rédiger
+votre
+copie
+à
+l’aide
+d’un
+stylo
+à
+encre
+foncée
+exclusivement
+(pas
+de
+stylo
+rouge).
+-
+Toutes vos affaires (sacs, vestes, trousse, etc.) doivent être placées à l’avant de la salle.
+-
+Aucun document n’est autorisé.
+-
+Aucune machine électronique ne doit se trouver sur vous ou à proximité, même éteinte.
+-
+Aucun déplacement n’est autorisé.
+-
+Aucune
+question
+au
+professeur
+n’est
+autorisée.
+Si
+vous
+pensez
+avoir
+détecté
+une
+erreur,
+continuez en expliquant les hypothèses que vous faites.
+-
+Aucun échange, de quelque nature que ce soit, n’est possible.
+-
+Le barème est donné à titre indicatif.
+-
+Merci d'inscrire très lisiblement votre numéro de groupe sur vos copies.
+Exercice 1 : Chemin absolu  (4 pts)
+On rappelle qu’une chaîne est un tableau de caractères, et qu’on la manipule comme un tableau.
+On dispose de l’opérateur +
+permettant la concaténation
+de deux chaînes de caractères.
+Dans
+un
+système
+de
+fichiers
+Unix,
+un
+point .
+fait
+référence
+au
+répertoire
+courant,
+un
+double
+point ..
+fait
+référence
+au
+répertoire
+d'un
+niveau
+supérieur
+et
+toute
+barre
+oblique
+consécutive
+(c'est-à-dire //
+)
+est
+traitée
+comme une seule barre oblique /
+.
+Soit
+un
+chemin
+absolu
+(commençant
+par
+une
+barre
+oblique /
+)
+vers
+un
+fichier
+ou
+un
+répertoire
+dans
+un
+système
+de
+fichiers
+Unix.
+Il
+est
+représenté
+par
+une
+chaîne
+de
+caractères
+(ex
+:/home/titi/./algo/../../toto/cv.doc
+).
+Le chemin canonique (ex : /home/toto/cv.doc
+) doit
+avoir le format suivant :
+-
+Le chemin commence par une seule barre oblique /
+.
+-
+Deux répertoires sont séparés par une seule barre oblique /
+.
+-
+Le chemin ne se termine pas par un /
+final.
+-
+Le
+chemin
+contient
+uniquement
+les
+répertoires
+sur
+le
+chemin
+du
+répertoire
+racine
+au
+fichier
+ou
+répertoire cible (c'est-à-dire, pas de point .
+ou
+de point double ..
+).
+Écrire
+une
+fonction
+cheminCanonique
+qui
+le
+convertit
+en
+chemin
+canonique
+simplifié.
+On
+pourra
+définir
+une (des) fonction(s) auxiliaire(s).
+1
+/
+3
+<<<PAGE>>>
+Exercice 2 : Puissance (4,5 pts)
+Soit
+une
+fonction
+récursive
+puissance
+qui
+prend
+en
+paramètre
+un
+réel
+n
+et
+un
+entier
+naturel
+k
+et
+renvoie
+le
+calcul de
+n
+k
+.
+1.
+Écrire
+la
+fonction
+récursive
+terminale
+puissance
+qui
+calcul
+n
+k
+de
+façon
+naı̈ve
+en
+considérant
+que
+n
+k
+= n × n
+k−1
+et que
+n
+0
+= 1.
+2.
+En précisant la taille du problème, calculer la complexité de la fonction
+puissance
+.
+3.
+Il
+existe
+une
+autre
+méthode
+de
+calcul
+de
+n
+k
+plus
+efficace
+:
+la
+méthode
+par
+dichotomie.
+Elle
+repose
+sur
+le
+fait
+que
+si
+k
+est
+pair,
+alors
+n
+k
+=
+(n
+×
+n)
+k/2
+et
+n
+k
+=
+n
+×
+n
+k−1
+sinon.
+Écrire
+la
+fonction
+récursive
+puissanceDicho
+qui calcul
+n
+k
+par dichotomie.
+4.
+D’un
+point
+de
+vue
+complexité,
+quel
+est
+le
+meilleur
+des
+cas
+pour
+la
+fonction
+puissanceDicho
+?
+Justifier.
+5.
+En
+précisant
+la
+taille
+du
+problème,
+calculer
+la
+complexité
+de
+la
+fonction
+puissanceDicho
+dans
+le
+meilleur des cas.
+Exercice 3 : Mais qui est Charlie ? (5 pts)
+Soit
+un
+tableau
+de
+taille
+n
+qui
+contient
+des
+entiers
+distincts
+de
+1
+à
+n
++1.
+Il
+en
+manque
+donc
+exactement
+un.
+On supposera que le tableau n’est pas modifiable.
+1.
+Écrire
+un
+algorithme
+qui
+détermine
+l’entier
+manquant
+si
+le
+tableau
+n’est
+pas
+trié.
+Calculer
+et
+justifier
+sa complexité.
+2.
+Écrire
+un
+algorithme
+logarithmique
+qui
+détermine
+l’entier
+manquant
+si
+le
+tableau
+est
+trié.
+Justifier
+la
+complexité.
+2
+/
+3
+<<<PAGE>>>
+Exercice 4 :  Robot borné (6,5 pts)
+On
+considère
+un
+robot
+qui
+se
+déplace
+dans
+le
+plan
+euclidien.
+Il
+est
+à
+un
+instant
+donné
+à
+une
+position
+décrite
+par
+2
+coordonnées
+entières.
+Il
+a
+également
+une
+orientation
+nord,
+est,
+sud
+ou
+ouest.
+Celle-ci
+sera
+codée
+par
+le vecteur unité approprié :
+-
+nord : (0,+1)
+-
+est : (+1,0)
+-
+sud : (0,-1)
+-
+ouest : (-1,0)
+Le robot est initialement à l’origine (0,0) et est orienté vers le nord.
+Le robot se déplace selon des consignes données par une chaîne de caractères qui sont tous parmi :
+- A pour avancer : le robot avance d'une case dans la direction dans laquelle il est orienté ;
+- G pour gauche : le robot tourne de 90° vers la gauche ;
+- D pour droite : le robot tourne de 90° vers la droite.
+Le robot répète une infinité de fois les consignes qui correspondent à la chaîne de caractères.
+L'objectif
+de
+ce
+problème
+est
+de
+déterminer
+si
+le
+robot
+va
+rester
+indéfiniment
+à
+distance
+finie
+de
+l'origine
+ou
+non.
+On
+admettra
+que
+s’il
+reste
+à
+distance
+finie,
+il
+repasse
+par
+sa
+position
+initiale
+après
+avoir
+exécuté
+un
+nombre
+entier de fois la séquence de la consigne, et cela une infinité de fois.
+1.
+Comment sont modifiées la position et l’orientation pour chacun des 3 mouvements possibles ?
+2.
+Écrire
+une
+fonction
+qui
+prend
+en
+entrée
+une
+position,
+une
+orientation
+et
+une
+chaîne
+de
+caractères
+et
+qui
+renvoie
+la
+position
+et
+l’orientation
+après
+avoir
+effectué
+la
+suite
+de
+mouvements
+qui
+correspond
+à
+la chaîne.
+3.
+Dans
+cette
+question,
+on
+va
+illustrer
+qu’en
+répétant
+une
+suite
+de
+consignes
+à
+l’infini
+certaines
+trajectoires partent à l’infini alors que d’autres non.
+a.
+Donner
+un
+exemple
+où
+l’exécution
+de
+la
+séquence
+1
+fois
+ramène
+le
+robot
+à
+sa
+position
+et
+son
+orientation initiale.
+b.
+Donner
+un
+exemple
+où
+l’exécution
+de
+la
+séquence
+2
+fois
+ramène
+le
+robot
+à
+sa
+position
+et
+son
+orientation initiale alors que ce n’est pas le cas au bout d’ 1 fois.
+c.
+Donner
+un
+exemple
+où
+l’exécution
+de
+la
+séquence
+4
+fois
+ramène
+le
+robot
+à
+sa
+position
+et
+son
+orientation initiale alors que ce n’est pas le cas au bout de 2 fois.
+d.
+Donner un exemple où l’exécution de la séquence une infinité de fois part à l’infini.
+4.
+Écrire
+un
+algorithme estTrajectoireInfinie
+qui
+prend
+en
+argument
+une
+position
+et
+une
+orientation
+initiale
+et
+une
+chaîne
+de
+caractères
+et
+qui
+renvoie
+Vrai
+ssi
+le
+robot
+s’éloigne
+à
+l’infini
+de
+son
+point
+de
+départ
+en
+répétant
+une
+infinité
+de
+fois
+les
+consignes
+qui
+correspondent
+à
+la
+chaîne
+de
+caractères.
+3
+/
+3

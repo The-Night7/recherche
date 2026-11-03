@@ -1,0 +1,525 @@
+Programmation Web
+Page & Text Layout
+<<<PAGE>>>
+2
+PLAN
+Mise en page(Page 
+layout)
+Mise en forme de texte(
+Text layout)
+Nouvelles balises en HTML5 
+
+<<<PAGE>>>
+3
+RAPPELS
+• HTML repose sur la notion de  Balises (tags).
+• les Balises permettent de structurer le contenu d’un document 
+HTML
+• Les balises HTML peuvent être de deux types :
+✓balises qui sont ouvertes puis fermées, et encadrent du contenu
+Example: <b> gras texte </b>
+✓balises qui s’ouvrent et se ferment en même temps
+Example: <br /> , <hr />, <meta>, <img> 
+<h1> Exemple </h1>
+<hr />
+<p>
+<b>gras</b> puis <em>italique</em>, puis <b><em>gras 
+et italique</em></b>. 
+</p>
+<<<PAGE>>>
+4
+RAPPELS
+• Les balises HTML peuvent avoir des attributs qui configurent ces balises 
+ou ajustent leurs comportements de différentes manières
+• Les attributs sont déclarés au sein la balise ouvrante de l’élément
+• En HTML, les noms de balise et d'attribut ne sont pas sensibles à la 
+casse (mais la plupart des valeurs d'attribut sont sensibles à la 
+casse)
+• Il est important de fermer les balises dans l'ordre
+<B> Valid Text.</B>
+<b> valid Text.</b>
+<p align = "right">C'est aligné à droite </p>
+<b><em>gras et italique</em></b>
+<<<PAGE>>>
+5
+PAGE LAYOUT
+La page HTML contient deux parties 
+principales :
+En-tête :
+✓la tête contient les informations concernant du titre, 
+du codage, des mots-clés, etc.
+✓ Ces Information sont destinée aux machines 
+(navigateur, robots, etc.)
+Corps(Body) :
+✓ le corps contient le contenu de la page web qui 
+sera affiché au client 
+✓ Information destinée à l’humain et aux machines
+Squelette d'un document HTML
+<<<PAGE>>>
+6
+PAGE LAYOUT
+Tête (Head)
+❖ C'est là que nous mettrons des informations sur la page elle-même
+(appelées métadonnées).
+❖ Remarque: Il est important que vos balises <head> soient toujours le
+premier ensemble de balises après <html>.
+❖ Il est très fortement conseillé de toujours spécifier:
+✓ Le tittre
+✓ l’auteur,
+✓ la description,
+✓ les mots-clés.
+<head>
+<title>Our First Page</title>
+<meta name=”keywords” content=”beginning html,learning, CSIT-107″ 
+/>
+<meta name=”description” content=”A beginning web page for CSIT-107 
+SUNY Fredonia” />
+<meta name=”author” content=”Your Name Here” />
+</head>
+<<<PAGE>>>
+7
+PAGE LAYOUT
+Corps (Body)
+• Tout le contenu que nous souhaitons avoir à l'écran doit être 
+englobé par un ensemble de balises corporelles. 
+<body bgcolor="blue" text="white" link="black">
+<a href="page2.html">Hello in Web progrming Class!</a>
+<p> Teacher: DR Mussab Zneika </p>
+</body>
+<<<PAGE>>>
+8
+PAGE LAYOUT
+Attributs universels
+• Les attributs universels sont des attributs qui  peuvent être ajoutés sur tous les 
+éléments
+• Certains des attributs couramment utilisés sont ci-dessous:
+• class Spécifie un ou plusieurs noms de classe pour un élément (fait référence à une 
+classe dans une feuille de style CSS)
+• Id définit un identifiant, unique au sein de tout le document, ,pour un élément.
+• style: Spécifie un style CSS en ligne pour un élément
+• lang Spécifie la langue du contenu de l'élément 
+• title Contient une représentation textuelle de l'information auquel il est lié. 
+• dir Spécifie la direction du texte pour le contenu d'un élément . Les valeurs autorisées 
+pour cet attribut sont :
+✓ ltr (lLeft To Right) indique que le contenu est écrit de gauche à droite
+✓ rtl ( Right To Left) indique que le contenu est écrit de droite à gauche 
+✓ auto : c'est l'agent utilisateur qui décide
+• contenteditable Spécifie si le contenu d'un élément est modifiable ou non 
+<<<PAGE>>>
+9
+PAGE LAYOUT
+Attributs universels: Exemple1
+<head>
+<style>
+.bluetext {color: blue;}
+.greentext{color:green;} 
+</style>
+</head>
+<body>
+<b class="bluetext">bold Text1 1</b> <br />
+<i class="greentext">italaic Text 2</i> <br />
+<p style="font-size: 40px;">This is paragraph 3</p>
+<p style="color:pink; border-style: dotted; font-size: 30px;"> This 
+is a new paragraph 4</p>
+</body> </html>
+CSS
+Dans cet exemple, nous utilisons les attributs
+class et style pour modifier le style de certains
+éléments html et nous montrons comment nous
+pouvons utiliser le CSS pour le faire, ne vous
+inquiétez pas si vous ne comprenez pas le CSS
+maintenant, nous verrons cela plus tard.
+<<<PAGE>>>
+10
+PAGE LAYOUT
+Attributs universels: Exemple2
+<html> <body>
+<p dir="rtl">Write this text right-to-left!</p>
+<p dir="ltr">Write this text left-to-right!</p>
+<p contenteditable="true">This is an editable paragraph.</p>
+</body> </html> Dans cet exemple nous montrons comment
+utiliser l'attribut dir pour mettre le sens des
+paragraphes de texte le premier de droite à
+gauche le second de gauche à droite
+
+<<<PAGE>>>
+11
+PAGE LAYOUT
+Div/Span
+• Alors que <p> nous aide à diviser notre texte, nous avons également
+besoin d'un mécanisme pour séparer différents éléments de contenu
+comme nous le faisions lorsque nous utilisions l'en-tête et le pied de
+page
+Cela
+ nous permettra de définir plus qu'un simple haut, milieu et bas de notre
+page. Pour ce faire, nous pouvons envelopper ces sections dans des balises
+<div>.
+• Div signifie diviser - il définit une section de contenu qui doit être
+traitée séparément des autres contenus. Span est très similaire à div,
+sauf qu'il doit identifier le contenu en ligne, c'est-à-dire le matériel qui
+se trouve dans un bloc de texte.
+En
+ fin de compte, un div placera un saut de ligne avant et après ses balises,
+contrairement à un span. En dehors de cela, ces balises sont fonctionnellement
+équivalentes
+Span
+ sert surtout à associer un style à une partie d'un texte tandis que div sert à
+agencer le contenu de la page
+• Bien que ces balises semblent très simples maintenant, elles sont
+très utiles lors de la création de mises en page complexes et sont les
+balises que nous utiliserons le plus souvent
+<<<PAGE>>>
+12
+PAGE LAYOUT
+Div/Span: Exemple1
+<body>
+<header>
+<h1>This is our first page! </h1>
+</header>
+<div id=”left”>
+some menu items
+</div>
+<div id=”content”>
+Hello World
+</div>
+<div id=”right”>
+and some content on the right
+</div>
+/</body>
+• L'attribut align est désormais obsolète et ne doit plus être appliqué pour un <div>
+• Vous remarquerez que la mise en page ne va pas à gauche ou à droite lorsque nous 
+étiquetons nos divs (tout s'organisera de haut en bas)
+C'est parce que nous devons ajouter CSS pour le plein effet. Nous reprendrons 
+cet exemple plus tard pour ajouter le CSS nécessaire à la création de la mise en 
+page souhaitée :
+<<<PAGE>>>
+13
+PAGE LAYOUT
+Div/Span: Exemple2
+<html> <head>
+<style>
+.lefttext {text-align: left;} 
+.righttext{text-align: right;} 
+.centertext{text-align: center;} 
+</style>
+</head> <body> <h1>This is our first page! </h1>
+<div id=”left” class="lefttext"> some menu items </div>
+<div id=”content” class="centertext"> Hello World </div>
+<div id=”right” class="righttext"> and some content on the right </div>
+</body> </html>
+CSS
+Dans cet exemple, nous utilisons trois 
+classes CSS (righttext, lefttext, centertext) 
+pour définir l'alignement de trois éléments 
+div (gauche, centre, droite ) 
+<<<PAGE>>>
+14
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Paragraphes
+❖ Pour développer un peu notre structure de base, nous pouvons diviser une 
+longue section de texte en paragraphes. 
+Nous pouvons le faire en ajoutant des pauses (<
+br/>) dans notre code. 
+❖ Si nous allons le faire plusieurs fois, et si nous voulons styliser nos 
+paragraphes sur toute la ligne, nous devrions plutôt envelopper chacun 
+d'eux dans un ensemble de balises de paragraphe, <p></p>. 
+L'utilisation des balises de paragraphe nous permet d'ajouter automatiquement un 
+espacement autour de notre contenu pour le séparer du reste de la page.
+<body>
+<p>
+This is some text. It is really 
+long. We want to break this into paragraphs so it looks more 
+like a document. This is some text. It is really long. We want 
+to break this into paragraphs so it looks more like a 
+document. This is some text. It is really long.
+</p>
+<p>
+This is some text. It is really 
+long. We want to break this into paragraphs so it looks more 
+like a document. This is some text. It is really long. We want 
+to break this into paragraphs so it looks more like a 
+document. This is some text.
+</p>
+<p>
+This is some text. It is really 
+long. We want to break this into paragraphs so it looks more 
+like a document. This is some text. It is really long. We want 
+to break this into paragraphs so it looks more like a 
+document.
+</p>
+</body>
+<body>
+This is some text. It is really long. We want to 
+break this into paragraphs so it looks more like a document. 
+This is some text. It is really long. We want to break this 
+into paragraphs so it looks more like a document. This is some 
+text. It is really long. This is some text. It is really 
+long. We want to break this into paragraphs so it looks more 
+like a document. This is some text. It is really long. We want 
+to break this into paragraphs so it looks more like a 
+document. This is some text. This is some text. It is really 
+long. We want to break this into paragraphs so it looks more 
+like a document. This is some text. It is really long. We want 
+to break this into paragraphs so it looks more like a 
+document.
+</body>
+Avant Après
+<<<PAGE>>>
+15
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Paragraphes: Exemple
+<div>
+<p align="center">Pour développer un peu notre structure de base, 
+nous pouvons diviser une longue section de texte en paragraphes .</p>
+<p align="left">Si nous allons le faire plusieurs fois, et si nous 
+voulons styliser nos paragraphes sur toute la ligne, nous devrions 
+plutôt envelopper chacun d'eux dans un ensemble de balises de 
+paragraphe. </p>
+</div>
+<<<PAGE>>>
+16
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Éléments de titres HTML
+• Les titres HTML sont des titres ou des sous-titres que vous souhaitez 
+afficher sur une page Web :
+▪ <H1>...</H1> Un titre de premier niveau. 
+▪ <H2>...</H2> Un titre de deuxième niveau.
+▪ <H3>...</H3> Un titre de troisième niveau .
+▪ <H4>...</H4> Un titre de quatrième niveau. 
+▪ <H5>...</H5> Un titre de cinquième niveau. 
+▪ <H6>...</H6> Un titre de sixième niveau. 
+• Toutes les balises de titre acceptent l'attribut suivant :
+A LIGN="..." Les valeurs possibles sont : Center, left, and right. 
+<<<PAGE>>>
+17
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Éléments de titres HTML: Exemple
+</body>
+<H1>A first-level heading.</H1>
+<H2>A second-level heading.</H2>
+<H3>A third-level heading.</H3>
+<H4>A fourth-level heading.</H4>
+<H5>A fifth-level heading.</H5>
+<H6>A sixth-level heading</H6>
+</body>
+<<<PAGE>>>
+18
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Listes ordonnées et non ordonnées
+• Nous utilisons les balises <ol> (listes ordonnées) ou <ul> 
+(listes non ordonnées)
+• Les listes ordonnées, en revanche, concernent les articles qui 
+doivent être commandés pour une raison, comme des 
+instructions qui doivent être suivies dans le bon ordre
+• Les listes ordonnées et non ordonnées sont respectivement 
+des listes d'éléments alphanumériques et non ordonnées
+• En les utilisant, nous pouvons créer des listes pour les afficher 
+à l'écran car nous sommes habitués à voir une liste 
+d'éléments
+• L’affichage des listes peut être considérablement personnalisé 
+par les feuilles de style CSS
+• Lorsque, nous avons placé des balises <li> imbriquées dans 
+chacune pour représenter chaque élément de la liste.
+<<<PAGE>>>
+19
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Listes ordonnées et non ordonnées: Example 1
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
+<ul>
+<li>An item</li>
+<li>Another item</li>
+<li>Yet another item</li>
+</ul>
+
+<<<PAGE>>>
+20
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Listes ordonnées et non ordonnées: Example 2
+<body>
+<h2>A Nested List</h2>
+<p>Lists can be nested (list inside 
+list):</p>
+<ul>
+<li>Drink
+<ul>
+<li>Black tea</li>
+<li>Green tea</li>
+<li>Milk </li>
+</ul>
+</li>
+<li>Food
+<ul>
+<li>Chicken</li>
+<li>Meat</li>
+</ul>
+</li>
+<li> ٍSweetmeats</li>
+</ul>
+
+<<<PAGE>>>
+21
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Listes de définitions
+• Un ensemble de balises associé peut être utilisé lorsque vous 
+souhaitez répertorier des définitions
+• Ce sont <dl> pour la liste elle-même, avec <dt> imbriqué à 
+l'intérieur pour les termes et <dd> également imbriqué, pour la 
+définition, à la suite de son <dt> correspondant
+<dl>
+<dt>Coffee</dt>
+<dd>Bean-based caffeinated beverage </dd>
+<dt>Tea</dt>
+<dd>Leaf-based caffeinated beverage</dd>
+<dt>Water</dt>
+<dd>Standard H20</dd>
+</dl>
+<<<PAGE>>>
+22
+MISE EN PAGE DU TEXTE (TEXT LAYOUT)
+Entités
+• Dans les exemples de la section En-
+tête et pied de page, nous avons placé 
+un symbole de droit d'auteur à l'écran à 
+l'aide de « &copy; » qui a indiqué au 
+navigateur quel symbole nous voulions 
+utiliser. Il s'agit d'un symbole réservé, 
+ou d'une entité, en HTML. Nous 
+pouvons appeler des entités en utilisant 
+&[nom de l'entité ici]; ou &[numéro 
+d'entité ici]
+Par exemple, &
+nbsp; signifie espace 
+insécable, ou juste un espace standard. 
+C'est une façon d'insérer des espaces 
+supplémentaires dans notre sortie
+• Le tableau ci-dessous comprend des 
+exemples d'autres symboles populaires 
+(il y en a beaucoup plus)
+Gardez à l'esprit que lorsque vous utilisez 
+des noms d'entité, ils sont sensibles à la 
+casse
+
+<<<PAGE>>>
+23
+NOUVELLES BALISES EN HTML5 
+Structuration du document HTML5
+• Entête : <header> </header>
+• Menu de navigation : <nav> </nav>
+• Section : <section> </section>
+• Article : <article> </article>
+• Encadré : <aside> </aside>
+• Pied de page : <footer> </footer>
+• Boîte de dialogue : <dialog> </dialog>
+
+<<<PAGE>>>
+24
+NOUVELLES BALISES EN HTML5 
+Adresse
+La balise d'adresse nous permet de spécifier le texte qui
+appartient à une adresse ou des informations de contact pour le
+créateur de contenu, ce qui permet aux applications de trouver
+plus facilement les informations nécessaires pour des outils tels
+que la cartographie et la génération de références.
+
+<<<PAGE>>>
+25
+NOUVELLES BALISES EN HTML5 
+Article
+• Les balises d'article sont destinées à être utilisées sur du 
+contenu qui peut être réutilisé en dehors de son site d'origine. 
+• Il est destiné aux articles de presse, aux articles de blog et à 
+d'autres types de contenu qui seraient republiés à plusieurs 
+endroits.
+
+<<<PAGE>>>
+26
+NOUVELLES BALISES EN HTML5 
+De côté (Aside)
+• Le côté est destiné à être utilisé lorsque vous souhaitez 
+marquer un élément de contenu lié au matériel dans lequel il 
+est imbriqué. 
+• Il a été créé principalement pour définir des informations 
+connexes, comme une partie d'un article ou d'un blog.
+
+<<<PAGE>>>
+27
+NOUVELLES BALISES EN HTML5 
+Citer
+• Alors que cite a été inclus dans les versions précédentes de 
+HTML, la spécification HTML5 actuelle prévoit qu'il soit utilisé 
+pour définir le titre d'un ouvrage qui est inclus dans le document. 
+• Les versions précédentes limitaient cette balise aux citations 
+appropriées de publications écrites.
+
+<<<PAGE>>>
+28
+NOUVELLES BALISES EN HTML5 
+Figure
+• La balise figure nous permet d'étiqueter une image, un portrait 
+ou tout autre art visuel inclus dans une balise d'image pour 
+identifier le contenu en tant que tel.
+Figcaption
+• Figcaption, comme caption, nous permet d'ajouter une légende à 
+notre image comme nous le ferions pour un tableau.
+
+<<<PAGE>>>
+29
+NOUVELLES BALISES EN HTML5 
+Mètre (meter)
+• La balise meter nous permet de générer une image visuelle 
+basée sur les valeurs fournies
+• Ceci est destiné aux valeurs déjà connues ou chargées à l'écran 
+comme un tableau ou un graphique
+• Il existe également une balise Progress pour surveiller les 
+actions de fichier en cours, comme un téléchargement
+
+<<<PAGE>>>
+30
+NOUVELLES BALISES EN HTML5 
+Nav
+• Si nous avons un groupe de liens que nous voulons au même
+endroit (c'est-à-dire un menu ou une liste de références), nous
+pouvons les inclure dans les balises de navigation afin que les
+navigateurs les reconnaissent comme un groupe de liens
+• Ceci est particulièrement utile pour les logiciels de lecture
+d'écran, car les balises indiquent à quoi servent les liens
+
+<<<PAGE>>>
+31
+NOUVELLES BALISES EN HTML5 
+Progress
+• La balise de progression a été créée pour aider à afficher l'état 
+d'un téléchargement ou d'un téléchargement. Il prend deux 
+attributs, y compris le montant actuel (que nous modifierions à 
+l'aide de JavaScript) et la valeur totale ou la plus élevée de ce 
+que nous surveillons. Si nous montrons le pourcentage d'un 
+téléchargement, nous pourrions utiliser :
+• Ou, si nous voulons afficher le montant réel déplacé, ou si nous 
+déplaçons un certain nombre d'éléments, nous pouvons utiliser 
+le nombre terminé et le nombre total au lieu d'un pourcentage, et 
+l'image le calculera pour nous :
+
+<<<PAGE>>>
+32
+NOUVELLES BALISES EN HTML5 
+Time
+• L'étiquette de temps est flexible dans la mesure où elle peut spécifier 
+une valeur au format 24 heures, une date de calendrier grégorien 
+complète ou à la fois une date et une heure
+• L'utilisation de cette balise en elle-même ne changera aucun style 
+visuel sur la page, mais permet aux applications sur nos appareils de 
+trouver les informations afin de prendre en charge des fonctionnalités 
+telles que la création d'entrées de calendrier ou de rappels basés sur 
+les informations
+
+<<<PAGE>>>
+33
+https://www.w3schools.com/html/default.asp
+https://developer.mozilla.org/fr/docs/Web/HTML
+MENDEZ, MICHAEL. THE MISSING LINK: AN INTRODUCTION TO WEB 
+DEVELOPMENT AND PROGRAMMING. 2014, CH9,10
+SOURCES D'INFORMATIONS

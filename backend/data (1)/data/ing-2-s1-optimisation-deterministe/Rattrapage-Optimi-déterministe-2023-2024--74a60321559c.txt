@@ -1,0 +1,79 @@
+CY-Tech - Département Mathématiques
+2ème année Ingénieurs - Mathématiques & Informatique
+Rattrapage : Optimisation déterministe
+Donné le 01-02-2024 (Durée 2h00)
+Téléphones portables et tout document sont interdits
+EXERCICE 1 (7 points) .
+Soit f une fonction de classe C 1 sur un ouvert U de Rn, x ∈ U et d ∈ Rn.
+1. Montrer que lim
+θ→0
+f (x + θd ) − f (x)
+θ = ∇f (x)T d
+2. On suppose que U est convexe et que x ∗ est un minimum local de f , en déduire que :
+∀x ∈ U , 〈∇f (x∗), x − x∗〉 ≥ 0.
+3. Supposons f est convexe et ∀x ∈ U , 〈∇f (x∗), x − x∗〉 ≥ 0, montrer alors que x ∗ est un minimum global
+de f .
+EXERCICE 2 (7 points) .
+On cherche le minimum de la la fonction f déﬁnie sur Rn par :
+f (x) = 1
+2 ‖Ax − b‖2
+où A est une matrice carrée d’ordre n inversible et b ∈ Rn.
+1. Montrer que ∇f (x) = AT Ax − AT b et que H f (x) = AT A.
+Montrer que le minimum de f est atteint en un point unique x ∗.
+2. Montrer que la méthode de Newton permet d’atteindre le minimum de f en une seule étape quelque
+soit le choix du point initial x 0. Autrement dit x 1 = x∗.
+3. En combien d’itérations la méthode du gradient conjugué peut-elle converger dans le cas d’une fonc-
+tion quadratique ?
+EXERCICE 3 (6 points) .
+Soit g : R2 → R une fonction différentiable et d ∈ R2 un vecteur non nul telles que : ‖∇f + d ‖ ≤ ‖∇f ‖
+Montrer que d est une direction de descente de f en x.
+<<<PAGE>>>
+RATTRAPAGE : O PTIMISATION DÉTERMINISTE
+EXERCICE 4 (. points) Méthode du gradient conjugué
+On considère la fonction J de R2 dans R déﬁnie par
+∀X = (x1, x2) ∈ R2, J (X ) = 2x2
+1 + x1x2 + x2
+2 − 6x1 − x2
+Partie I: Généralités
+1. Mettre J sous la forme quadratique suivante J (X ) = 1
+2 X T AX + bT X + c avec A symétrique et donner
+l’expression de A, b et c.
+2. Donner l’expression du gradient, ∇J, en fonction de A et b. Donner l’expression du hessien ou matrice
+hessienne, H J , en fonction de A.
+3. J est-elle convexe ?
+4. Déterminer le point X ∗ minimisant J.
+Partie II: Algorithme du gradient conjugué
+On cherche à minimiser J sur R2 par la méthode du gradient conjugué (Algorithme rappelé ci-dessous) en
+partant du point initial X 0 =
+( 0
+0
+)
+.
+1. Calculer d 0, α0 sous la forme de fractions irréductibles, puis déterminer X 1.
+2. Calculer le paramètre β0 = ‖∇J (X 1)‖2
+‖∇J (X 0‖2 ainsi que la direction d1. Vériﬁer que d 1 et d0 sont A-conjuguées.
+3. Calculer α1 sous forme d’une fraction irréductible puis déterminer X 2. Quel point retrouve-t-on ?
+Conclure.
+Algorithme du gradient conjugué :
+X(0) donné
+r(0) = ∇J (X(0))
+d(0) = −∇J (X0)
+T ant quer(k) = ∇J (X(k)) , 0
+α(k) pas optimal à déterminer
+X(k+1) = X(k) + α(k)d(k)
+β(k) = ‖∇J (X(k))‖2
+‖∇J (X(k−1))‖2
+d(k+1) = −r (k+1) + β(k+1)d(k)
+passer à k + 1
+Algorithme de Newton :
+X(0) donné;
+ρ(k) = 1 ∀k;
+d(k) = −
+(
+H (X(k))
+)−1∇f (X(k));
+X(k+1) = X(k) −
+(
+H (X(k))
+)−1∇f (X(k));
+CY-T ech 2/2

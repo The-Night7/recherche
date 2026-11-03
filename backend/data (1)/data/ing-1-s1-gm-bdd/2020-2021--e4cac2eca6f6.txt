@@ -1,0 +1,114 @@
+1 
+ 
+Examen de Bases de Données 
+  
+CY TECH, ING1 GI/GM/Apprentissage 
+ 
+12 janvier 2020 - Durée : 2h 
+ 
+ 
+Exercice 1 : Modélisation (6pts = 3.5 + 2.5) 
+ 
+La direction d’un zoo veut informatiser la gestion de l’alimentation des animaux. On profitera de 
+cette informatisation pour mémoriser les informations concernant les animaux. 
+Animaux au zoo 
+Les animaux du zoo possèdent un nom d’individu. Sur chaque enclos du zoo, sont affichées des 
+fiches d’informations concernant ces individus. Voici un exemple typique de fiche animalière: 
+  
+Nom Babar 
+Nom scientifique Loxodonta Africana 
+Famille Eléphantidés 
+Nom vulgaire Éléphant d’Afrique 
+Population estimée 200 000 individus 
+Localisation Afrique Équatoriale, Afrique du sud 
+Sexe mâle 
+Date de naissance 12/03/1985 
+Date d'arrivee 12/03/1985 
+Remarques 
+ 
+L'espèce  est  menacée  de  disparition. 
+Babar est le premier éléphant né dans le zoo. 
+Donc, pour chaque animal, il faut pouvoir afficher ces informations. Les noms scientifiques et 
+vulgaires sont ceux de l'espèce. 
+On rappelle que les familles regroupent plusieurs espèces dans la taxinomie. 
+Pour la localisation géographique, la liste des espaces répertoriés contient une cinquantaine de 
+zones géographiques. 
+<<<PAGE>>>
+2 
+ 
+Pour la population, l’effectif de l'espèce sera toujours indiqué.  Éventuellement, si l’information 
+était disponible, il serait intéressant de pouvoir indiquer l’effectif par zone géographique. 
+Les  animaux  sont  enfermés  dans  des  enclos. Un enclos peut  contenir  plusieurs  individus  
+d’une  même espèce, mais parfois aussi plusieurs animaux d'espèces différentes.  Pour les 
+enclos, on mémorise une désignation (parc, cage, aquarium,...) et u ne situation dans le zoo 
+(comme sur une carte, C4, E2...  un enclos étant situé dans une seule zone). 
+ Alimentation 
+Chaque espèce a des besoins alimentaires.  Pour un animal appartenant à une espèce, l'employé 
+responsable de l’enclos doit amener quotidien nement une certaine quantité de nourriture.  Par 
+exemple, l'éléphant d’Afrique demande 80 kg de foin, 10 kg d’avoine et 5 kg de carottes par jour.  
+Toutes les quantités sont indiquées en kg. 
+Le zoo possède un catalogue d’aliments qui permet de gérer le sto ck disponible. Pour chaque 
+aliment, le catalogue indique aussi les aliments de substitution qui seront utilisés en cas  de  
+rupture de stock. Pour chaque aliment de substitution, il y a un taux de remplacement.  Par 
+exemple, 1 kg de foin peut être remplacé  par 0.9 kg de luzerne; donc, si le stock de foin ´était 
+épuisé, l'éléphant pourrait recevoir 0.9 * 80 kg de luzerne. Pour chaque aliment, il peut y avoir 
+plusieurs aliments de substitution; il doit y en avoir au moins un. 
+ Utilisation de la base de données 
+Les informations concernant un animal sont mémorisées lorsque l’animal fait son entrée dans le 
+zoo. Il est évident que certaines informations ne sont pas effacées de la base de données même 
+si elles ne sont pas utiles. 
+A un moment donné, par exemple, on n’efface pas les informations concernant une espèce même 
+si le zoo ne possède plus d’animal de cette espèce; on ne supprime pas un enclos même s’il est 
+vide... 
+ 
+1. Proposer un MCD modélisant cet énoncé.  
+2. Traduire votre MCD en MLD.  
+ 
+Exercice 2 : Normalisation (4 pts = 1,5 + 2,5) 
+ 
+Soit le schéma relationnel suivant : 
+CINEMA (NumSalleCinema, adresseSalleCinema, nomSalleCinema, NumFilm, 
+titreFilm, NumCatégorieFilm, intituléCatégorieFilm, dateDébutProjectionFilm, 
+duréeProjectionFilm) 
+1. Lister l’ensemble des dépendances fonctionnelles de la relation. 
+2. Cette relation est -elle en 3FN? Justifier. Si non, transformer la relation pour qu’elle le 
+devienne. 
+ 
+<<<PAGE>>>
+3 
+ 
+ Exercice 3 : Requêtes (10 pts) 
+ 
+Nous considérons le MLD suivant : 
+Joueur(idJoueur, pseudo, niveauEndurance, nbCoeurs) 
+Plat (idPlat, nom, famille, puissance) 
+Manger (#idJoueur,#idPlat,horaire) 
+Ingredient (idIngredient, nom) 
+Composer (#idPlat,#idIngredient,quantite) 
+Sanctuaire (idSanctuaire,nom,niveau) 
+Visiter(#idSanctuaire,#idJoueur,horaire,vainqueur) 
+CreatureDivine (idCreatureDivine,nom,#idMonde) 
+Monde(idMonde,nom) 
+Combattre(#idCreatureDivine, #idJoueur, horaire, vainqueur) 
+ 
+ 
+Ecrivez chacune des requêtes suivantes en SQL:  
+1. Quels sont les sanctuaires commençant par la lettre T ? Dans le résultat, vous afficherez 
+l’ensemble des colonnes de la table Sanctuaire. (0,5 pt) 
+2. Compter le nombre de combats contre les créatures divines ? (0,5 pt) 
+3. Quel est le nom du monde auquel la créature divine “Vah Medoh” appartient ? Dans le 
+résultat, vous afficherez le nom du monde. (0,5 pt) 
+4. Quel est le niveau de sanctuaire le plus bas ? Dans le résultat, vous afficherez le niveau. 
+(0,5 pt) 
+5. Quels sont les joueurs qui n’ont jamais mangé de plat ? Dans le résultat, vous afficherez 
+le pseudo du joueur. (1 pt) 
+6. Quelle est la moyenne de plats consommés par joueur ? Dans le résultat, vous afficherez 
+uniquement la moyenne de plats consommés. ( 1.5 pts) 
+7. Quel est le joueur qui a consommé le plus de plats ? Dans le résultat, vous afficherez le 
+pseudo du joueur (attention de ne pas mettre de doublons). (2 pts) 
+8. Quel plat contient le plus d'ingrédients différents ? Dans le résultat, vous afficherez le nom 
+du plat (attention de ne pas mettre de doublons). (2 pts) 
+9. Pour chaque joueur, donner le nombre total de plats consommés. Afficher les joueurs 
+dans l’ordre décroissant du nombre de plats consommés, y compris ceux qui n’ont rien 
+consommé.   (1,5 pts) 
+ 

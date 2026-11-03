@@ -1,0 +1,206 @@
+Programmation C
+Compilation S´ epar´ ee, Biblioth` eques
+ING1
+CY Tech
+ING1 Programmation C CY Tech 1 / 20
+<<<PAGE>>>
+Fichier en-tˆ ete
+ING1 Programmation C CY Tech 2 / 20
+<<<PAGE>>>
+Probl` eme
+Listing 1 – Probl` eme des suites crois´ ees 
+f l o a t s u i t e U ( i n t i n t n ) {
+. . . / . . .
+f l t v a l = 2 ∗ s u i t e U ( i n tn −1) − s u i t e V ( i n tn −1);
+. . . / . . .
+}
+f l o a t s u i t e V ( i n t i n t n ) {
+. . . / . . .
+f l t v a l = 0 . 5 ∗ s u i t e V ( i n tn −1) − 3∗ s u i t e U ( i n tn −1);
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 3 / 20
+<<<PAGE>>>
+D´ eclaration de fonction
+Besoin de conna ˆ ıtre le prototype pour l’appel
+Comment faire pour :
+▶ utiliser des fonctions r´ ealis´ ees par d’autres
+▶ utiliser des fonctions crois´ ees (Un, Vn)
+▶ fournir des biblioth` eques sans fournir le code
+Besoin d’externaliser la d´ eclaration et le code
+R´ ealisation d’un fichier contenant uniquement les prototypes
+ING1 Programmation C CY Tech 4 / 20
+<<<PAGE>>>
+D´ eclaration de fonction ”inline”
+Permet de r´ epondre au probl` eme des fonctions crois´ ees
+D´ eclaration du prototype au d´ ebut du fichier C
+ 
+#i n c l u d e <s t d i o . h>
+f l o a t s u i t e U ( i n t i n t n ) ;
+f l o a t s u i t e V ( i n t i n t n ) ;
+. . . / . . .
+f l o a t s u i t e U ( i n t i n t n ) {
+. . . / . . .
+f l t v a l = 2 ∗ s u i t e U ( i n tn −1) − s u i t e V ( i n tn −1);
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 5 / 20
+<<<PAGE>>>
+Cr´ eation d’un fichier d’en-tˆ ete
+Permet de regrouper
+▶ les inclusions
+▶ les d´ efinitions de constantes
+▶ les d´ efinitions de structures
+▶ les d´ eclarations de fonctions ainsi que les commentaires associ´ es
+▶ ...
+▶ Ne comporte pas la d´ eclaration de la fonction main
+ING1 Programmation C CY Tech 6 / 20
+<<<PAGE>>>
+Fichier d’en-tˆ ete
+Avant : suite1.c
+Maintenant : suite2.c et suite2.h
+Possibilit´ e de cr´ eer unmodule
+▶ Cr´ eation des fichierssuite3.c, suite3.h
+▶ Cr´ eation d’un fichiermain.c, ´ eventuellementmain.h
+▶ Compilation s´ epar´ ee desuite3.o, main.o
+gcc −c s u i t e 3 . c −o s u i t e 3 . o
+gcc −c main . c −o main . o
+▶ ´Edition de liens avec suite3.o et main.o
+gcc s u i t e 3 . o main . o −o monProg
+Besoin de se prot´ eger contre les inclusions multiples
+ING1 Programmation C CY Tech 7 / 20
+<<<PAGE>>>
+Pi` ege des modules
+Attention aux inclusions multiples
+Se produit lors d’inclusion de plusieurs fichiers
+▶ A inclu B
+▶ B inclu A
+▶ Boucle d’inclusion infinie
+▶ Compilation conditionnelle
+ING1 Programmation C CY Tech 8 / 20
+<<<PAGE>>>
+Explication
+Dans A
+▶ V´ erification de la pr´ esence de la variable A
+▶ Si non pr´ esente, on la d´ efinit et on inclut le fichier
+▶ Si pr´ esente, fin de l’inclusion
+Dans B
+▶ Idem, mais avec une variable diff´ erente
+Ce qui donne ...
+ING1 Programmation C CY Tech 9 / 20
+<<<PAGE>>>
+Exemple
+Listing 2 – A.h 
+#i f n d e f A H
+#d e f i n e A H
+#i n c l u d e ”B . h”
+/∗ D e f i n i t i o n d e s f o n c t i o n s ∗/
+#e n d i f
+ 
+Listing 3 – B.h 
+#i f n d e f B H
+#d e f i n e B H
+#i n c l u d e ”A . h”
+/∗ D e f i n i t i o n d e s f o n c t i o n s ∗/
+#e n d i f
+ 
+ING1 Programmation C CY Tech 10 / 20
+<<<PAGE>>>
+Cas particulier
+Attention : cr´ eer un fichier s´ epar´ e pour les structures
+Sinon possibilit´ e d’inclure des fonctions qui manipulent un type sans
+ˆ etre d´ efini
+ING1 Programmation C CY Tech 11 / 20
+<<<PAGE>>>
+Exemple
+Listing 4 – suite.h 
+#i f n d e f SUITE H
+#d e f i n e SUITE H
+// i n c l u s i o n d e s e n t e t e s de l i b r a i r i e s
+#i n c l u d e <s t d i o . h>
+/∗ D e f i n i t i o n d e s c o n s t a n t e s s y m b o l i q u e s d ’ e r r e u r ∗/
+#d e f i n e ERREUR SAISIE −1
+/ ∗ ! C o m m e n t a i r e s d o x y g e n ∗/
+f l o a t s u i t e U (i n t i n t n ) ;
+/ ∗ ! C o m m e n t a i r e s d o x y g e n ∗/
+f l o a t s u i t e V (i n t i n t n ) ;
+#e n d i f
+ 
+ING1 Programmation C CY Tech 12 / 20
+<<<PAGE>>>
+Exemple
+Listing 5 – suite.c 
+#i n c l u d e ” s u i t e . h”
+// D e s c r i p t i o n de l a f o n c t i o n s u i t e U
+f l o a t s u i t e U ( i n t i n t n ) {
+. . . / . . .
+}
+// D e s c r i p t i o n de l a f o n c t i o n s u i t e V
+f l o a t s u i t e V ( i n t i n t n ) {
+. . . / . . .
+}
+ 
+ING1 Programmation C CY Tech 13 / 20
+<<<PAGE>>>
+Biblioth` eques
+ING1 Programmation C CY Tech 14 / 20
+<<<PAGE>>>
+Biblioth` eques et fichier en-tˆ ete
+Ne pas confondre fichier en-tˆ ete et biblioth` eque
+▶ Fichier en-tˆ ete : prototype des fonctions
+▶ Biblioth` eque : code des fonctions
+Utilit´ e des biblioth` eques
+▶ Regrouper un ensemble de fonctions traitant d’un mˆ eme sujet (E/S,
+math, ...)
+▶ Statique : code des fonctions inclus dans l’ex´ ecutable
+⋆ Perte de place
+⋆ Gain de confidentialit´ e
+▶ Dynamique : code des fonctions non inclus
+⋆ Gain de place
+⋆ Possible perte de confidentialit´ e
+ING1 Programmation C CY Tech 15 / 20
+<<<PAGE>>>
+Biblioth` eque statique
+Code des fonctions inclus dans l’ex´ ecutable
+Possibilit´ e d’ex´ ecuter le programme sur un syst` eme ”quelconque1”
+Produit un ex´ ecutable de plus grande taille
+Utile pour des fonctions tr` es sp´ ecifiques ou propri´ etaires
+1. N’ayant pas la librairie en question
+ING1 Programmation C CY Tech 16 / 20
+<<<PAGE>>>
+Biblioth` eque dynamique
+Code des fonctions non inclus dans l’ex´ ecutable
+Chargement de la biblioth` eque en m´ emoire lors de l’ex´ ecution (sauf si
+d´ ej` a pr´ esente en m´ emoire)
+Occupe moins de place sur le disque
+Utile pour des fonctions tr` es utilis´ ees
+ING1 Programmation C CY Tech 17 / 20
+<<<PAGE>>>
+Cr´ eation de librairies statiques
+N´ ecessit´ e de cr´ eer un fichier objet
+Puis utilisation de la commande ar
+a r r li bno m . a f i c h i e r s o b j e t s
+Ajout de nouvelle fonctionnalit´ e par la mˆ eme commande
+Obligation de cr´ eer un index avec la commande ranlib ` a chaque
+modification
+Utiliser toujours l’extension .a
+ING1 Programmation C CY Tech 18 / 20
+<<<PAGE>>>
+Cr´ eation de librairies dynamiques
+Compilation des fichiers objets avec l’option -fPIC
+Cr´ eation : utilisation de l’option-shared
+gcc −s h a r e d l ib no m . so f i c h i e r s o b j e t s
+Toujours utiliser l’extension .so
+ING1 Programmation C CY Tech 19 / 20
+<<<PAGE>>>
+Utilisation des librairies
+Librairies statiques : utilisation de l’option -L
+gcc −L $ {HOME}/ l i b . . . . −lnom
+Librairies dynamiques : utilisation de l’option -Wl
+gcc −Wl . . .
+▶ Documentez vous : librairies dynamiques s’inscrivent dans un cadre
+particulier, beaucoup de formalisme
+▶ Utilisation de ldconfig, soname, ...
+ING1 Programmation C CY Tech 20 / 20

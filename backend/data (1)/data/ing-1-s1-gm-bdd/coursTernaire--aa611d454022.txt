@@ -1,0 +1,360 @@
+1
+Philippe CHOCHOIS - Florence PETIT 
+Octobre 2020 
+Base de données 
+Modèle Conceptuel de Données 
+Les associations ternaires 
+2
+Associations binaires ou ternaires ? 
+Quel serait le MCD dans cet exemple ? 
+Les professeurs enseignent dans des établissements dans 
+certaines matières. Il est possible qu’un professeur 
+enseigne des matières différentes dans les établissements. 
+Décomposons cet exemple en phrases simples : 
+Un professeur peut enseigner dans plusieurs établissements 
+Un établissement peut avoir plusieurs professeurs 
+Une matière est enseignée par plusieurs professeurs 
+Un professeur peut enseigner plusieurs matières 
+Un établissement propose plusieurs matières 
+Une matière est proposée dans plusieurs établissements 
+3
+Associations binaires ? Problème...
+Avec cette modélisation, nous savons qu'un professeur enseigne 
+certaines matières et travaillent dans certains établissements. 
+Le professeur Dupont enseigne les mathématiques et l'informatique. 
+Le professeur Dupont travaille à l'UPEM et au lycée Descartes. 
+Mais nous ne savons pas quelles matières sont enseignées par le 
+professeur Dupont au lycée Descartes. 
+4
+Intérêt d'une association ternaire 
+Pour savoir quelle matière est enseignée par tel professeur 
+dans tel établissement, il faut relier les 3 entités par une 
+association ternaire. 
+5
+Associations n-aires 
+• Il peut exister des quaternaires, voire des n-aires mai s 
+c'est extrêmement rare. 
+• Il y a peut être une erreur de conception si le nombr e 
+d'entités reliées (arité) est supérieur ou égale à 4. 
+6
+Association ternaire et cardinalité maximale 
+Dans une association ternaire, 
+• Les cardinalités minimales peuvent être à 0 ou 1 s elon le 
+contexte (participation facultative ou obligatoire de l'entité à 
+l'association). 
+• Toutes les cardinalités maximales sont obligatoire ment à n. 
+La cardinalité maximale à n représente le fait qu'une occurrence 
+de l'entité peut participer n fois à l'association.
+Si l'une des cardinalités maximales n'est pas à n, il y a une 
+erreur de conception. 
+Association 
+ternaire 
+Entite2 Entite1
+Entite3 
+0,1 
+0,n 1,n 
+<<<PAGE>>>
+2
+7
+Associations ternaires : limites 
+Une association ternaire met en jeu les 3 entités. 
+Dans l’association ternaire « enseigne », on ne peut pas 
+mémoriser des professeurs qui enseignent des matières en 
+dehors d’un établissement car dans ce cas, l’entité 
+« établissement » ne serait pas concernée par la relation. 
+Par contre, on peut mémoriser des professeurs qui 
+n’enseignent pas, car la cardinalité minimale est à zéro. 
+8
+Association ternaire et agrégat
+Si un professeur peut enseigner plusieurs matières mais si 
+un professeur ne peut enseigner qu’une seule matière par 
+établissement, nous sommes en présence d’une "fausse 
+ternaire". 
+Ce cas particulier s’appelle un agrégat et sera vu plus en 
+détail ultérieurement. 
+Il est possible de le traiter comme une ternaire dans le 
+MCD mais cela aura une répercussion sur la clé de la 
+nouvelle table dans le MLD. 
+9
+Association ternaire et réflexive 
+NB: Si les réflexives n’ont pas été vues, ignorez cette 
+diapositive. 
+L'étude concerne un seul établissement. 
+Un professeur peut enseigner plusieurs matières à d'autres 
+professeurs. 
+Il y a une association ternaire avec : 
+- 1 lien vers l'entité Matière 
+- 1 lien vers l'entité Professeur 
+(rôle de professeur-formateur) 
+- 1 autre lien vers l'entité Professeur 
+(rôle de professeur-formé). 
+10 
+Interprétation d'un MCD : cas Sport
+Nous allons proposer plusieurs cas qui modélisent un 
+même contexte avec 3 entités : Adhérent, Centre, Sport. 
+Chaque modélisation a une signification différente. 
+Indiquez en français ce que modélise chaque schéma. 
+Essayez de voir les limites de chaque schéma. 
+Il est fortement conseillé d'essayer de rédiger la 
+signification de chaque schéma avant de regarder la 
+correction ! 
+11 
+1,n 
+1,n 
+1,n 1,n 
+ADHERENT CENTRE SPORT propose inscrit 
+Interprétation d'un MCD -cas 1 
+Des adhérents sont inscrits dans des centres. 
+Les centres proposent des sports. 
+On ne sait pas quel(s) sport(s) pratique un adhérent.
+12 
+0,n 
+0,n 
+0,n 0,n 
+ADHERENT CENTRE SPORT inscrit pratique 
+Interprétation d'un MCD -cas 2 
+Des adhérents sont inscrits dans des centres. 
+Les adhérents pratiquent certains sports. 
+On ne sait pas quel(s) sport(s) propose un centre. 
+<<<PAGE>>>
+3
+13 
+1,n 1,n 
+1,n 
+1,n 
+1,n 0,n 
+ADHERENT CENTRE SPORT inscrit pratique 
+propose 
+Interprétation d'un MCD -cas 3 
+Des adhérents sont inscrits dans des centres. 
+Les adhérents pratiquent des sports. 
+Les centres proposent des sports. 
+On ne sait pas dans quel(s) centre(s) un adhérent pratique 
+un sport donné. 
+14 
+0,n 
+1,n 
+0,n 
+ADHERENT 
+CENTRE SPORT pratique 
+Interprétation d'un MCD -cas 4 
+Des adhérents pratiquent des sports dans des centres. 
+On ne sait pas quel sport est proposé par un centre si ce 
+sport n’est pratiqué par aucun adhérent.
+15 
+0,n 
+1,n 
+0,n 
+1,n 
+1,n 
+ADHERENT 
+CENTRE SPORT 
+propose 
+pratique 
+Interprétation d'un MCD -cas 5 
+Des adhérents sont inscrits dans des centres pour 
+pratiquer des sports. 
+Les centres proposent des sports à pratiquer. 
+On ne connaît pas les sports pratiqués par les adhérents 
+hors de ces centres (ex : sports individuels). 
+16 
+0,n 
+1,n 
+0,n 
+1,n 
+1,n 
+ADHERENT 
+CENTRE SPORT 
+propose 
+pratique 
+Interprétation d'un MCD -cas 6 
+Des adhérents sont inscrits dans des centres pour 
+pratiquer des sports. 
+Les centres proposent des sports à pratiquer. 
+Proposez une modification pour connaître les sports 
+pratiqués par les adhérents hors des centres. 
+17 
+Ternaires et modèle logique de données 
+- Les règles définies pour les binaires de type plusieurs à  
+plusieurs s’appliquent aux ternaires… 
+- Les cardinalités maximales sont à n sur chaque lien de 
+l'association dans le MCD, donc l'association est 
+transformée en une nouvelle table dans le MLD. 
+- La clé primaire de cette nouvelle table est une clé 
+primaire composée des clés primaires des tables liées 
+(donc clé composée de 3 éléments pour une ternaire). 
+- Chaque élément de la clé primaire est une clé étrangè re 
+qui référence la clé primaire de chaque table associée.
+- Si  l'association porte des propriétés, ces propriétés 
+deviennent des attributs de la table résultante. 
+18 
+Passage au MLD d'une ternaire 
+Table Centre (numCentre, nomCentre) 
+numCentre: clé primaire de la table Centre 
+Table Sport (idSport, nomSport, nbLicencies) 
+idSport: clé primaire de la table sport 
+Table Adherent (numAdherent, nomAdherent, prenomAdherent, telAdherent) 
+numAdherent: clé primaire de la table Adherent 
+Table Pratique (numCentre, idSport, numAdherent, dateDebut) 
+numCentre, idSport, numAdherent: clé primaire composé e de la table Pratique 
+numCentre clé étrangère qui référence numCentre de la t able Centre 
+idSport clé étrangère qui référence idSport de la table  Sport 
+numAdherent clé étrangère qui référence numAdherent de la table Adherent 
+<<<PAGE>>>
+4
+19 
+Exercice Minis1
+M. MINIS est responsable de la gestion du parc automobile du ministère de l'éducation nationale. 
+Il affecte des véhicules et des chauffeurs pour des missions de transport demandées par des services. 
+• Un véhicule est caractérisé par un n° d'immatricula tion et une date de mise en circulation. 
+• Une mission est caractérisée par un numéro et son objet. 
+• Un chauffeur est caractérisé par un numéro de matr icule et un nom. 
+• Un service est caractérisé par un code service et un nom de service.
+Règles de gestion 
+1. Une mission nécessite un seul véhicule. 
+2. Une mission nécessite un seul chauffeur. 
+3. Un chauffeur peut être affecté à plusieurs missio ns. 
+4. Un chauffeur peut être en attente d'affectation. 
+5. Un véhicule peut ne pas être utilisé pour une mis sion. 
+6. Un véhicule peut être utilisé pour des missions d ifférentes. 
+7. Une mission est sous la responsabilité d'un seul service. 
+8. Un service peut être à l'origine de plusieurs mis sions ou d'aucune.
+20 
+Exercice Minis2
+M. MINIS est responsable de la gestion du parc automobile du ministère de l'éducation nationale. 
+Il affecte des véhicules et des chauffeurs pour des missions de transport demandées par des services. 
+• Un véhicule est caractérisé par un n° d'immatricula tion et une date de mise en circulation. 
+• Une mission est caractérisée par un numéro et son objet. 
+• Un chauffeur est caractérisé par un numéro de matr icule et un nom. 
+• Un service est caractérisé par un code service et un nom de service 
+Règles de gestion 
+1. Une mission nécessite un seul véhicule et un seul  chauffeur. 
+2. Un chauffeur peut être affecté à plusieurs missio ns. 
+3. Un chauffeur peut être en attente d'affectation. 
+4. Un véhicule peut ne pas être utilisé pour une mis sion. 
+5. Un véhicule peut être utilisé pour des missions d ifférentes. 
+6. Une mission est sous la responsabilité d'un seul service. 
+7. Un service peut être à l'origine de plusieurs mis sions ou d'aucune. 
+8. Un chauffeur a son propre véhicule qui lui est exclusivement affecté. 
+9. Lorsque le chauffeur n’est pas en service, il peut emmener son véhicule avec lui.
+21 
+Exercice Minis 3 
+M. MINIS est responsable de la gestion du parc automobile du ministère de l'éducation nationale. 
+Il affecte des véhicules et des chauffeurs pour des missions de transport demandées par des services. 
+• Un véhicule est caractérisé par un n° d'immatricula tion et une date de mise en circulation. 
+• Une mission est caractérisée par un numéro et son objet. 
+• Un chauffeur est caractérisé par un numéro de matr icule et un nom. 
+• Un service est caractérisé par un code service et un nom de service.
+Règles de gestion 
+1. Une mission peut nécessiter plusieurs véhicules et plusieurs chauffeurs. 
+2. Un chauffeur peut être affecté à plusieurs missio ns. 
+3. Un chauffeur peut être en attente d'affectation. 
+4. Un véhicule peut ne pas être utilisé pour une mis sion. 
+5. Un véhicule peut être utilisé pour des missions d ifférentes. 
+6. Une mission est sous la responsabilité d'un seul service. 
+7. Un service peut être à l'origine de plusieurs mis sions ou d'aucune. 
+8. Pour les missions de longue durée, il y a plusieurs chauffeurs par véhicule.. 
+9. Un chauffeur peut conduire des véhicules différents lors d’une mission (pas en même temps !). 
+10. On doit pouvoir connaître quel chauffeur a conduit quel véhicule au cours d’une mission. 
+22 
+Ternaires avec date 
+Notion d’historique 
+23 
+Ternaire avec date 
+Des individus pratiquent des sports à un certain niveau… 
+Au cours des années, leur niveau évolue… 
+Le niveau dépend de l’individu, mais aussi du sport et aussi 
+de l’année. 
+La solution pour conserver l’historique des niveaux selon 
+les années est de faire une ternaire comme ci-dessous. 
+24 
+Passage au MLD d'une ternaire avec date 
+Modèle brut, non optimisé 
+Table Individu (numIndividu, nomIndividu, dateNaissance) 
+numIndividu: clé primaire de la table Individu 
+Table Sport (idSport, nomSport) 
+idSport: clé primaire de la table Sport 
+Table Date (annee) 
+annee: clé primaire de la table Date 
+Table Pratique (numIndividu, idSport, annee, niveau) 
+numIndividu, idSport, annee: clé primaire composée de la table Pratique 
+numIndividu clé étrangère qui référence numIndividu de la table Individu 
+idSport clé étrangère qui référence idSport de la table Sport 
+annee clé étrangère qui référence annee de la table Date 
+<<<PAGE>>>
+5
+25 
+Passage au MLD d'une ternaire avec date 
+Modèle optimisé 
+Table Individu (numIndividu, nomIndividu, dateNaissance) 
+numIndividu: clé primaire de la table Individu 
+Table Sport (idSport, nomSport) 
+idSport: clé primaire de la table Sport 
+Table Pratique (numIndividu, idSport, annee, niveau) 
+numIndividu, idSport, annee: clé primaire composée de la table Pratique 
+numIndividu clé étrangère qui référence numIndividu de la table Individu 
+idSport clé étrangère qui référence idSport de la table Sport 
+Remarques: 
+- La table Date disparaît 
+car elle ne contenait aucune donnée intéressante 
+à mémoriser. 
+- La référence de la clé étrangère 
+vers le champ « annee » disparaît donc également. 
+26 
+Comparaison 
+Gestion de dates: Binaire ou Ternaire ? 
+Voici 2 schémas permettant de gérer les dates d’obtention du permis de conduire. 
+Cas a: L’association binaire « obtenir » permet de mémoriser que des personnes obtiennent leur 
+permis de conduire à une date donnée (dateObtention). 
+Cas b: L’association ternaire « obtenir » permet de mémoriser que des personnes obtiennent leur 
+permis de conduire à une date donnée (dateObtention). 
+Y a-t-il une différence notoire entre les 2 représentations ou sont-elles équivalentes ? 
+Pour cela, nous allons essayer de répondre à une série de questions concernant les 2 modélisations 
+Cas a 
+Cas b 
+27 
+Vous devez répondre aux questions ci-dessous en déter minant votre réponse en fonction 
+du schéma ci-dessus ! 
+Comparaison 
+Gestion de dates: Binaire ou Ternaire ? 
+- Dans le cas a, toutes les personnes ont-elles un p ermis ? 
+- Dans le cas b, toutes les personnes ont-elles un p ermis ? 
+- Dans le cas a, existe-t-il au moins une personne p our chaque permis ? 
+- Dans le cas b, existe-t-il au moins une personne p our chaque permis ? 
+- Dans le cas a, y a-t-il chaque jour quelqu’un qui o btient son permis ?
+- Dans le cas b, y a-t-il chaque jour quelqu’un qui o btient son permis ? 
+- Dans le cas a, pour une date d’obtention d’un perm is, y a-t-il toujours une personne concernée ?
+- Dans le cas b, pour une date d’obtention d’un perm is, y a-t-il toujours une personne concernée ? 
+- Dans le cas a, une personne peut-elle avoir plusie urs permis ? 
+- Dans le cas b, une personne peut-elle avoir plusie urs permis ? 
+Cas a 
+Cas b 
+28 
+Comparaison 
+Gestion de dates: Binaire ou Ternaire ? 
+- Dans le cas a, peut-il y avoir plusieurs personnes  qui ont le même permis ? 
+- Dans le cas b, peut-il y avoir plusieurs personnes  qui ont le même permis ? 
+- Dans le cas a, des personnes différentes peuvent-e lles avoir la même date d’obtention du permis ?
+- Dans le cas b, des personnes différentes peuvent-e lles avoir la même date d’obtention du permis ? 
+- Dans le cas a, des personnes différentes peuvent-e lles obtenir le même permis le même jour ? 
+- Dans le cas b, des personnes différentes peuvent-e lles obtenir le même permis le même jour ? 
+- Dans le cas a, une personne peut-elle obtenir 2 pe rmis différents le même jour ? 
+- Dans le cas b, une personne peut-elle obtenir 2 pe rmis différents le même jour ? 
+Cas a 
+Cas b 
+29 
+Comparaison 
+Gestion de dates: Binaire ou Ternaire ? 
+- Donc, existe t-il une différence ? 
+- Dans le cas a, une personne peut elle obtenir un p ermis qu’elle a déjà obtenu ? 
+- Dans le cas b, une personne peut elle obtenir un p ermis qu’elle a déjà obtenu ? 
+- Avec l’association binaire, une personne ne peut o btenir un permis qu’une seule fois 
+- Avec l’association ternaire, une personne peut obt enir plusieurs fois un permis. 
+- On utilisera donc une association binaire si le pe rmis est acquis « à vie ». On ne peut pas le 
+repasser. 
+- On utilisera donc une association ternaire si le p ermis peut être supprimé et dans ce cas, on doit 
+pouvoir le repasser.
+Oui 
+Non 
+Cas a 
+Cas b 

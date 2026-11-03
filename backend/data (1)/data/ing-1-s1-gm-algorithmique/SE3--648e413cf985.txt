@@ -1,0 +1,49 @@
+S´ erie d’exercices 3
+2019-2020
+Objet de la s´ erie: Pile, ﬁle et liste.
+1 Manipulation des piles, des ﬁles et des listes
+1. ´Ecrire une proc´ edure permettant d’inverser l’ordre des ´ el´ ements d’une
+pile (resp. une ﬁle).
+2. ´Ecrire une fonction permettant de calculer le nombre d’´ el´ ements d’une
+pile (resp. une ﬁle, une liste).
+3. ´Ecrire une proc´ edure permettant d’ins´ erer un ´ el´ ement ` a laieme posi-
+tion d’une pile (resp. une ﬁle, une liste).
+4. ´Ecrire une proc´ edure permettant de supprimer un ´ el´ ement d’une pile
+(resp. une ﬁle, une liste).
+— Plusieurs variantes : l’´ el´ ement est donn´ e par sa valeur ou par sa
+position, on supprime une occurence ou toutes les occurences.
+5. ´Ecrire une fonction permettant de chercher un ´ el´ ement dans une pile
+(resp. une ﬁle, une liste).
+— Plusieurs variantes.
+6. Expliquer comment on peut simuler une pile ` a l’aide de deux ﬁles et
+inversement.
+2 Impl´ ementations
+1. `A l’aide d’un tableau et d’un enregistrement impl´ ementer une pile
+(resp. une ﬁle) de taille ﬁnie.
+1
+<<<PAGE>>>
+3 ´Evaluation d’expressions arithm´ etiques
+Algorithms Sedgewick et Wayne p. 128
+On appelle expression arithm´ etique (enti` erement parenth´ es´ ee) est une
+expression qui est soit un nombre, soit dans l’ordre une parenth` ese ouvrante,
+une expression arithm´ etique, un op´ erateur, une expression arithm´ etique et
+une parenth` ese fermante.
+On consid` ere ici comme op´ erateurs +,-,* et /.
+Un algorithme tr` es simple pour l’´ evaluation des ces expressions a ´ et´ e
+donn´ e par Dijkstra dans les ann´ ees 1960. Il utilise deux piles : une pile
+d’op´ erandes et une pile d’op´ erateurs. On parcourt l’expression caract` ere par
+caract` ere (on supposera qu’elle est donn´ ee sous forme d’un tableau). On a 4
+possibilit´ es en fonction du caract` ere lu :
+— empiler les op´ erandes sur la pile d’op´ erandes ;
+— empiler les op´ erateurs sur la pile d’op´ erateurs ;
+— ignorer les parenth` eses ouvrantes ;
+— si le caract` ere est une parenth` ese fermante, d´ epiler un op´ erateur,
+d´ epiler le nombre d’op´ erandes requis et empiler le r´ esultat de l’op´ eration
+sur la pile d’op´ erandes.
+Apr` es le traitement de la derni` ere parenth` ese fermante, il y a une valeur
+sur la pile des op´ erandes. Cette valeur est le r´ esultat.
+1. V´ eriﬁer que cet algorithme donne bien le r´ esultat attendu pour l’ex-
+pression
+(1+((2+3)*(4*5))).
+2. ´Ecrire l’algorithme.
+2

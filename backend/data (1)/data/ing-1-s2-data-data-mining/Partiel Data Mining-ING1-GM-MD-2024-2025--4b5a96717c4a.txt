@@ -1,0 +1,76 @@
+CY-Tech - Département Mathématiques
+1ère année Ingénieurs - Mathématiques appliquées
+Examen : Data Mining
+Donné le 06-05-2025 (Durée 2h00)
+2 feuilles manuscrites recto verso sont autorisées. La calculatrice (standard) est autorisée.
+Téléphones portables et tout autre document sont interdits.
+Exercice 1 (6 points) Répondre aux questions suivantes :
+1. Expliquer la différence entre les méthodes supervisées et non supervisées, en donnant un
+exemple pour chaque méthode.
+2. Parmi les méthodes suivantes, lesquelles nécessitent de centrer et réduire les données
+avant leur application et exliquer pourquoi : ACP, K-means, arbre de décision, régression
+linéaire, CAH.
+3. On considère un problème de datamining visant à classifier 10 espèces animales différentes
+(lion, éléphant, girafe, zèbre, loup, renard, aigle, hibou, dauphin, requin) en fonction de
+leurs caractéristiques biologiques et comportementales. Chaque espèce est décrite par
+50 variables quantitatives (taille, poids, vitesse de déplacement, durée de vie, etc.). On
+dispose de 600 observations dans le jeu de données.
+(a) Identifier la tâche de Data Mining permettant de résoudre le problème et préciser
+quelle(s) méthode(s) peut-on utiliser pour répondre à cet objectif?
+(b) Quelle est la dimension du nuage de points constitué des observations?
+(c) Quelle méthode permet de réduire la dimension de ce nuage de points?
+(d) Quel est le nombre total de valeurs propres obtenues lors de la réduction de dimension?
+(e) Dans le tableau ci-dessous, on donne les cinq premières valeurs propres. Combien
+d’axes peut-on choisir pour interpréter le résultat? Pourquoi?
+Axe 1 2 3 4 5
+% 65.3 12.1 8.4 3.2 2.1
+Cum. % 65.3 77.4 85.8 89.0 91.1
+(f) Quel est l’intérêt de réaliser un clustering après une réduction de dimension?
+Exercice 2 (3 points) On donne des informations concernant 10 animaux. Chaque animal est
+caractérisé par 3 variables : Type, Taille et Habitat. La variable cible Nocturne peut prendre les
+valeurs Oui ou Non.
+1
+<<<PAGE>>>
+Type T aille Habitat Nocturne
+Chat Petit Maison Oui
+Chien Grand Maison Non
+Hibou Petit Forêt Oui
+Renard Moyen Forêt Oui
+Éléphant Grand Savane Non
+Chauve-souris Petit Grotte Oui
+Cerf Moyen Forêt Non
+Loup Moyen Forêt Oui
+Dauphin Grand Océan Non
+Hérisson Petit Jardin Oui
+1. Calculer l’indice de Gini et l’entropie de la variable cible.
+2. Calculer le gain de la variable Taille en utilisant l’indice de Gini.
+Exercice 3 (6.5 points) L’arbre de décision ci-dessous a été construit pour prédire le type de
+l’animal (carnivore, omnivore, herbivore et frugivore) en fonction des variables taille (en cm),
+poids (en kg) et espérance de vie EV (en année).
+1. Établir la matrice de confusion et déduire l’erreur d’ajustement.
+2
+<<<PAGE>>>
+2. En utilisant cet arbre de décision :
+(a) Quel est le type prédit pour un perroquet de 20 cm qui pèse 200 g et qui peut vivre
+jusqu’à 32 ans.
+(b) Quel est le type prédit pour un orque de 5 m qui pèse 3 tonnes et qui peut vivre
+jusqu’à 75 ans.
+3. Dessiner l’arbre élagué au niveau du nœud (Taille≥ 342), en précisant dans les nouvelles
+feuilles le type prédit et la contingence de chaque type.
+4. Établir la nouvelle matrice de confusion et déduire le nouveau taux d’ajustement.
+5. Le perroquet et l’orque de la Question 2 auront-ils la même prédiction?
+Exercice 4 (4.5 points) On considère les animaux du tableau ci-dessous, caractérisés par leur
+poids (kg) et leur vitesse (m/s). On utilise la distance de Manhattan pour mesurer la dissimilarité
+entre deux animaux :
+d(A, B) =|P oidsA− P oidsB| +|V itesseA− V itesseB|
+Animal Poids (kg) Vitesse (m/s)
+Chat 4 5
+Chien 8 7
+Lapin 3 6
+Écureuil 1 4
+Hérisson 2 2
+Canard 3 4
+1. Utiliser l’algorithme de k-means pour construire 2 clusters. On initialise les centres de
+gravité avec les deux premiers animaux (Chat et Chien).
+2. Calculer le pourcentage d’inertie expliquée par la partition obtenue.
+3

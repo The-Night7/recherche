@@ -1,0 +1,2955 @@
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Comportements Asymptotiques
+1 Relations de comparaisons de suites
+Domination, négligeabilité
+Equivalence
+2 Relations de comparaisons de fonctions
+Domination, négligeabilité
+Equivalence
+3 Développements limités
+Généralités
+Formule de Taylor-Young
+Opérations sur les D.L.
+4 Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Dénition
+Soit (un) et (vn) deux suites.
+On dit que :
+(un) est dominée par (vn) si la suite
+( un
+vn
+)
+est bornée.
+On note alors un = O (vn).
+la suite (un) est négligeable devant (vn) (ou que (vn) est
+prépondérante devant la suite (un))
+si la suite
+( un
+vn
+)
+converge vers 0 .
+On note alors un = o (vn).
+Exemples.
+On a : cos(n) + 4
+n2 = O
+( 1
+n2
+)
+car (cos(n) + 4 ) est bornée.
+On a : n3 sin(n) = o
+(
+n5 )
+En eet : lim
+n→+∞
+n3 sin(n)
+n5 = sin(n)
+n2 −→
+n→+∞
+0 (théorème d'encadrement)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Remarques.
+(un) est bornée si et seulement si un = O(1 ).
+(un) converge vers 0 si et seulement si un = o(1 ).
+un = o (vn) =⇒ un = O (vn).
+Proposition
+Soient (un), (vn) et (wn) trois suites.
+Si un = O (vn) et vn = O (wn),
+alors un = O (wn) (transitivité de la relation O ).
+Si un = o (vn) et vn = o (wn), alors un = o (wn) (transitivité de la
+relation o ).
+Démonstration.
+On démontre le deuxième point, le premier point est analogue.
+Soit (un) une suite telle que un = o (wn) et wn = o (tn).
+Alors, pour tout n≥ n0 , on a : un
+wn
+= un
+vn
+· vn
+wn
+−→
+n→+∞
+0 · 0 = 0 .
+Ainsi, un = o (tn).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient (un), (vn), (wn) et (tn) quatre suites telles que (wn) et (tn) ne
+s'annulent pas à partir d'un certain rang. Soit (λ,µ )∈ K2 .
+Si un = O (wn) et vn = O (wn), alors λun +µvn = O (wn).
+Si un = o (wn) et vn = o (wn), alors λun +µvn = o (wn).
+Si un = O (wn) et vn = O (tn), alors unvn = O (wntn)
+Si un = O (wn) et vn = o (tn), alors unvn = o (wntn).
+Exemples
+n2 =
+n→+∞
+o
+(
+n4 )
+.
+2 n =
+n→+∞
+o (3 n).
+1
+n2 =
+n→+∞
+o
+( 1
+n
+)
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Rappel
+Dénition (Exponentielle d'exposant réel quelconque)
+Soit a∈ R+∗ et b∈ R,
+ab = eb ln a
+Démonstration.
+On a
+ln ab = b ln a
+en appliquant la fonction exponentielle on obtient le résultat.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+lim
+n→+∞
+ln n
+n = 0
+Démonstration.
+On étudie φ(x) = ln x− x.
+φ′(x) = 1 − x
+x , donc sur [1 ; +∞[ φ est décroissante . Comme φ(1 ) =−1,
+φ< 0, donc
+0 ⩽ ln x ⩽ x sur [1 ; +∞[
+Si on remplace x par √x, on obtient 0 ⩽ ln√x ⩽√x =⇒ 0 ⩽ 1
+2 ln x ⩽√x
+0 ⩽ ln x
+x ⩽ 2√x
+En passant à la limite en +∞, d'après le théorème des gendarmes on a
+lim
+x→+∞
+ln x
+x = 0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+lim
+n→+∞
+(
+1 + 1
+n
+)n
+= e
+Démonstration.
+(
+1 + 1
+n
+)n
+= en ln(1 + 1
+n )
+Or
+ln(1 + X )
+X = ln(1 + X )− ln(1 + 0 )
+X− 0 →
+X→0
+1
+et lim
+n→+∞
+1
+n = 0 donc, par composition,
+lim
+n→+∞
+ln
+(
+1 + 1
+n
+)
+1
+n
+= 1 = lim
+n→+∞
+n ln
+(
+1 + 1
+n
+)
+On en déduit, par composition, que
+lim
+n→+∞
+(
+1 + 1
+n
+)n
+= e
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition (croissances comparées)
+Soit (α,β )∈ R avec α,β > 0 , et q> 1 . Alors :
+lnβ n = o (nα) nα = o (qn)
+qn = o (n!) n! = o (nn)
+Démonstration.
+On étudie le rapport nα
+qn = eα ln n−n ln q = en(α ln n
+n−ln q)
+On a α ln n
+n − ln q→− ln q
+n→+∞
+donc n
+(
+α ln n
+n − ln q
+)
+→
+n→+∞
+−∞ car
+q> 1
+Or eX →
+X→−∞
+0 donc par composition en(α ln n
+n−ln q) →
+n→+∞
+0
+On a bien nα
+qn →
+n→+∞
+0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+On étudie le rapport lnβ n
+nα = eβ ln(ln n)−α ln n = eln n(β ln(ln n)
+ln n −α)
+Or ln X
+X → 0
+X→+∞
+et ln n→ +∞
+n→+∞
+donc par composition
+ln(ln n)
+ln n → 0
+n→+∞
+donc β ln(ln n)
+ln n −α →
+n→+∞
+−α
+donc ln n
+(
+β ln(ln n)
+ln n −α
+)
+→
+n→+∞
+−∞.
+Or eX →
+X→−∞
+0 donc par composition eln n(β ln(ln n)
+ln n −α) →
+n→−∞
+0
+On a bien lnβ n
+nα →
+n→−∞
+0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+On étudie la suite un = qn
+n!
+On souhaite démontrer que cette suite tend vers 0.
+On a ∀n∈ N∗, un+1 = un
+qn+1 n!
+(n + 1 )!qn = un
+q
+n + 1
+Pour n + 1 > q, cette suite est décroissante. De plus elle est minorée
+par 0. Donc elle est convergente.
+Soit 𝓁 la limite de un, on passe à la limite sur la relation de
+récurrence.
+On obtient 𝓁 = 0.
+Donc un →
+n→+∞
+0
+On a bien qn
+n! →
+n→+∞
+0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+On étudie la suite vn = n!
+nn
+On souhaite démontrer que cette suite tend vers 0.
+On a ∀n∈ N∗, vn+1
+vn
+= (n + 1 )nn
+(n + 1 )n+1 =
+( n
+n + 1
+)n
+< 1
+on a la relation de récurrence vn+1 =
+( n
+n + 1
+)n
+vn
+Cette suite est décroissante. De plus elle est minorée par 0. Donc
+elle est convergente.
+Soit 𝓁 la limite de vn, on souhaite passer à la limite sur la relation de
+récurrence.( n + 1
+n
+)n
+=
+(
+1 + 1
+n
+)n
+→
+n→+∞
+e donc
+( n
+n + 1
+)n
+= e−1
+Donc si on passe à la limite sur la relation de récurrence, on obtient
+𝓁 =𝓁e−1 donc 𝓁 = 0
+Donc vn →
+n→+∞
+0
+On a bien n!
+nn →
+n→+∞
+0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+On en déduit directement la proposition suivante :
+Proposition
+1
+nα = o
+( 1
+lnβ
+) 1
+qn = o
+( 1
+nα
+)
+1
+n! = o
+( 1
+qn
+) 1
+nn = o
+( 1
+n!
+)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Remarque.
+En notant un≪ vn au lieu de un = o (vn), on a donc lorsque n tend vers
++∞ :
+1
+nn≪ 1
+n!≪ 1
+qn≪ 1
+nα≪ 1
+lnβ n
+≪ lnβ n≪ nα≪ qn≪ n!≪ nn.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Equivalence
+Dénition
+Soit (un) et (vn) deux suites.
+On dit que (un)n∈N est équivalente à (vn)n∈N,
+si la suite
+( un
+vn
+)
+converge vers 1.
+On note alors
+un∼ vn
+Exemple. On a √n∼
+√
+n + 1. En eet,
+√n + 1√n =
+√
+1 + 1
+n . Or,
+lim
+n→+∞
+(
+1 + 1
+n
+)
+= 1 et par composition par la fonction racine, continue
+en 1, on a bien lim
+n→+∞
+√n + 1√n =
+√
+1 = 1.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+La relation ∼ est une relation d'équivalence sur l'ensemble des suites
+ne s'annulant pas, c'est à dire :
+∼ est réexive : un∼ un ;
+∼ est symétrique : un∼ vn⇒ vn∼ un ;
+∼ est transitive : si un∼ vn et vn∼ wn, alors un∼ wn.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient (un), (vn).
+un∼ vn⇐⇒ un− vn = o (vn).
+un∼ vn =⇒ un = O (vn) et vn = O (un).
+Démonstration.
+un∼ vn⇔ lim
+n→+∞
+un
+vn
+= 1 ⇔ lim
+n→+∞
+( un
+vn
+− 1
+)
+= 0
+⇔ lim
+n→+∞
+( un− vn
+vn
+)
+= 0 ⇔ un− vn = o (vn).
+Si un∼ vn alors
+( un
+vn
+)
+n≥n0
+converge vers 1 donc bornée. De plus, comme
+( un
+vn
+)
+n≥n0
+converge vers 1 alors un
+vn
+donc un est non nulle à partir d'un
+certain rang et
+( vn
+un
+)
+n≥n0
+converge vers 1 donc
+( vn
+un
+)
+n≥n0
+est bornée.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient (un), (vn), (wn) et (tn) quatre suites telles que un∼ wn et
+vn∼ tn. Alors on a :
+unvn∼ wntn
+un
+vn
+∼ wn
+tn
+∀p∈ N, up
+n∼ w p
+n
+Démonstration.
+On a, pour n∈ N, unwn
+vnzn
+= un
+vn
+× wn
+zn
+−→
+n→+∞
+1 par produit de limites
+Pour n∈ N, on a
+un
+vn
+wn
+zn
+= unzn
+vnwn
+= un
+vn
+×
+( wn
+zn
+)−1
+−→
+n→+∞
+1
+comme quotient de limites.
+Enn, pour n et p∈ N, on a up
+n
+v p
+n
+=
+( un
+vn
+)p
+−→
+n→+∞
+1 p = 1 par opérations
+sur les limites.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Exemple.
+Montrons que
+( n
+6
+)
+∼ n6
+720 .
+En eet, pour tout j∈ N xé, on a n− j∼ n ;
+par conséquent :
+( n
+6
+)
+= 1
+6 !
+5∏
+j=0
+(n− j)∼ 1
+6 !
+5∏
+j=0
+n = n6
+720
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+A TTENTION ! ! ! !
+On ne peut ni ajouter , ni soustraire, les équivalents :
+n + 1 ∼ n + 2 et n∼ n mais on n'a pas 1 ∼ 2
+On ne compose pas les équivalents :
+si f est une fonction (même continue sur R ) et si un∼ vn, on n'a
+pas forcément f (un)∼ f (vn) :
+si un = n2 + n, vn = n2 et f = exp, on a un∼ vn, mais :
+f (un)
+f (vn) = en2 +n−n2
+= en −→
+n→+∞
++∞, donc f (un)⁄∼ f (vn).
+Lors d'une mise en puissance d'un équivalent, l'exposant doit être
+constant :
+on a 1 + 1
+n∼ 1 mais
+(
+1 + 1
+n
+)n
+⁄∼ 1 n
+(en eet
+(
+1 + 1
+n
+)n
+→ e, donc
+(
+1 + 1
+n
+)n
+∼ e
+)
+.
+En règle générale, on ne sépare pas les limites
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soit (un) une suite et 𝓁∈ R∗.
+lim
+n→+∞
+un =𝓁⇐⇒ un∼𝓁
+Démonstration.
+En eet, si lim
+n→+∞
+un =𝓁⁄= 0 alors (un) ne s'annule pas à partir d'un
+certain rang et on a : un
+𝓁 −→
+n→+∞
+𝓁
+𝓁 = 1 . Donc un∼𝓁.
+Réciproquement, si un∼𝓁, alors puisque 𝓁⁄= 0, un
+𝓁 −→
+n→+∞
+1 donc
+un = un
+𝓁 𝓁 −→
+n→+∞
+𝓁
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient (un) et (vn) deux suites telles que un∼ vn.
+un et vn ont même signe strict ( > 0 ou < 0 ) à partir d'un certain
+rang.
+(un)n∈N admet une limite (nie ou innie) si et seulement si (vn)n∈N
+admet une limite et alors lim
+n→+∞
+un = lim
+n→+∞
+vn.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+Comme (un) et (vn) sont équivalentes, on a un
+vn
+−→
+n→+∞
+1. Donc pour
+ϵ = 1
+2 > 0, il existe N∈ N tel que ∀n≥ N,
+⏐⏐⏐⏐
+un
+vn
+− 1
+⏐⏐⏐⏐≤ 1
+2 .
+En particulier pour tout n≥ N, on a un
+vn
+≥ 1
+2 , et un et vn ont même
+signe strict.
+Supposons que (vn)n∈N admet une limite 𝓁∈ R. On a un = un
+vn
+× vn,
+done un −→
+n→+∞
+l par opérations sur les limites. De même si (un)n∈N
+admet une limite l, on a vn = vn
+un
+× un, vn −→
+n→+∞
+l par opérations sur
+les limites.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Relations de comparaisons de fonctions
+I désignera un intervalle réel non vide et non réduit à un point, a un
+point de I ou une extrémité de I (éventuellement ±∞ )
+D désignera I ou I\{a} ;
+toutes les fonctions considérées seront dénies sur D à valeurs dans
+K = R ou C, et supposées non nulles sur I\{a} (de sorte que le
+quotient de deux fonctions est toujours bien déni sur I\{a} ) ;
+si les fonctions sont dénies en a, on supposera de plus qu'elles sont
+continues en a.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Dénition
+Soient f et g :D→ K. On dit que :
+f est dominée par g au voisinage de a si f
+g est bornée au voisinage
+de a.
+On note alors f (x) = O(g(x)) ou f = O(g).
+f est négligeable devant g au voisinage de a si lim
+x→a
+f (x)
+g(x) = 0 .
+On note alors f (x) = o(g(x)) ou f = o(g).
+Exemples.
+x 2 sin
+(
+x 3 )
+= O
+(
+x 2 )
+:
+En eet pour I = R, x↦→ x 2 et x↦→ x 2 sin
+(
+x 3 )
+sont dénies sur R\{0} et
+pour tout x∈ R∗, on a :
+⏐⏐⏐⏐⏐
+x 2 sin
+(
+x 3 )
+x 2
+⏐⏐⏐⏐⏐ =
+⏐⏐sin
+(
+x 3 )⏐⏐ ⩽ 1 .
+Si p < q, x p =
++∞
+o (x q) et x q =
+0
+o (x p) :
+En eet pour I = R, x↦→ x p et x↦→ x q ne s'annulent pas sur I\{0} et
+lim
+x→+∞
+x p
+x q = 0 = lim
+x→0
+x q
+x p
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Remarque.
+Pour f :D→ R, on a :
+f est bornée au voisinage de a si et seulement si f = O(1 ).
+f converge vers 0 au voisinage de a si et seulement si f = o(1 ).
+f (x) = o(g(x)) =⇒ f (x) = O(g(x)).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soit (α,β )∈
+(
+R+
+∗
+)2
+(ln x)β =
++∞
+o (x α) x β =
++∞
+o (eαx)
+lnβ x =
+0
+o
+( 1
+x α
+)
+eαx =
+−∞
+o
+( 1
+x β
+)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Equivalence
+Dénition
+Soient f et g :D→ K.
+On dit que f est équivalente à g au voisinage de a si lim
+x→a
+f (x)
+g(x) = 1 .
+On note alors f (x)∼
+a
+g(x) ou f∼
+a
+g.
+Exemple.
+sin x∼
+0
+x :en eet pour I = R, x↦→ x ne s'annule pas su r I\{ 0} et
+lim
+x→0
+sin x
+x = 1
+Remarque :
+Si f est continue en a, on a : f (x)∼ f (a) si f (a)⁄= 0.
+a
+Si f est dérivable en a, on a : f (x)− f (a)∼ f′(a)(x− a) si f′(a)⁄= 0.
+Si P(x) = apx p + ap−1 x p−1 + . . . aqx q(p≥ q est une fonction polynomiale,
+alors :
+P(x) ∼
++∞
+apx p et P(x)∼
+0
+aqx q.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient f et g dénies sur D.
+f (x)∼
+a
+g(x)⇐⇒ f (x)− g(x) = o(g(x)).
+f (x)∼
+a
+g(x) = ⇒ f (x) = O(g(x)) et g(x) = O(f (x)).
+Proposition
+La relation ∼
+a
+est une relation d'équivalence, c'est à dire :
+∼
+a
+est réexive : f∼
+a
+f ;
+∼
+a
+est symétrique : f∼
+a
+g⇒ g∼
+a
+f ;
+∼
+a
+est transitive : f∼
+a
+g et g∼
+a
+h impliquent f∼
+a
+h.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition (Opérations sur les équivalents)
+Soient f, g, h, u quatre fonctions dénies sur D.
+Si f (x) ∼
+x→a
+g(x) et si h(x) ∼
+x→a
+u(x), alors :
+f (x)h(x) ∼
+x→a
+g(x)u(x) ;
+f (x)
+h(x) ∼
+x→a
+g(x)
+u(x) ;
+∀p∈ N, f (x)p ∼
+x→a
+g(x)p ;
+Pour α∈ R∗
++, et si f α et g α sont bien dénies sur D, alors
+f (x)α ∼
+x→a
+g(x)α
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+On a, pour x∈D, f (x)h(x)
+g(x)u(x) = f (x)
+g(x)× h(x)
+u(x)−→
+x→a
+1 par produit de
+limites.
+Pour x∈D , on a
+f (x)
+h(x)
+g (x)
+u(x)
+= f (x)u(x)
+g(x)h(x) = f (x)
+g(x)×
+( h(x)
+u(x)
+)−1
+−→
+x→a
+1
+comme quotient de limites.
+Pour x∈D et p∈ N, on a f (x)p
+g(x)p =
+( f (x)
+g(x)
+)p
+−→
+x→a
+1 p = 1 par
+opérations sur les limites.
+Pour tout x∈D, f α(x)
+g α(x) =
+( f (x)
+g(x)
+)α
+= eα ln(
+f (x)
+g (x) ). Comme
+f (x)
+g(x)−→
+x→a
+1 donc eα ln(
+f (x)
+g (x) )−→
+x→a
+1.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition (Équivalents classiques au voisinage de 0 )
+ex− 1 ∼
+0
+x ln(1 + x)∼
+0
+x
+sin x∼
+0
+x tan x∼
+0
+x
+arcsin x∼
+0
+x arctan x∼
+0
+x
+sh x∼
+0
+x th x∼
+0
+x
+(1 + x)α− 1 ∼
+0
+αx avec α∈ R∗
+1 − cos(x)∼
+0
+x 2
+2 1 − ch(x)∼
+0
+− x 2
+2
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Démonstration.
+On a :
+1 − cos x = 1 − cos2 (x)
+1 + cos(x) = sin2 (x)
+1 + cos(x)∼ x 2
+2
+car sin(x)∼
+0
+x et 1 + cos(x)∼
+0
+2 .
+De même, :
+1 − ch(x) = 1 − ch2 (x)
+1 + ch(x) =− sh2 (x)
+1 + ch(x)∼
+0
+− x 2
+2
+Dans tous les autres cas, on utilise la propriété ci-dessous.
+Proposition
+Si f est dérivable en a, si f′(a)⁄= 0 ,
+f (x)− f (a)∼ f′(a)(x− a)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition (Composition à droite dans un équivalent)
+Soient f et g deux fonctions dénies sur D.
+On suppose que g ne s'annule pas au voisinage de a et que f (x)∼
+a
+g(x).
+Soit φ une fonction à valeurs dans D telle que lim
+t→b
+φ(t) = a avec
+b∈ R∪{±∞}.
+On a :
+f◦φ(t)∼
+b
+g◦φ(t)
+Démonstration.
+En utilisant le théorème de composition pour les limites, on peut écrire :
+lim
+t→b
+f
+g (φ(t)) = lim
+x→a
+f
+g (x) = 1
+D'où le résultat.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+IMPORTANT. On veillera à ne pas additionner, soustraire ou composer à
+gauche des équivalents sans justication, car les résultats obtenus sont
+généralement faux.
+Par exemple :
+x + 1 ∼
+±∞
+x + 2 et −x ∼
+±∞
+−x mais 1 ∼
+±∞
+2 ;
+x + 1 ∼
+±∞
+x, mais on n'a pas exp(x + 1 ) ∼
+±∞
+exp(x) ;
+1 + 2 x∼
+0
+1 + x et ln(1 + 2 x)∼
+0
+2 x, ln(1 + x)∼
+0
+x.
+Exemple.
+Puisque lim
+t→0
+sin t = 0 et ln(1 + x)∼
+0
+x, on en déduit :
+ln(1 + sin t)∼
+0
+sin t∼
+0
+t.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Mais dans certains cas, la composition à gauche peut s'appliquer.
+On ne peut pas déduire directement de
+sin(t)∼ t et 1 + sin t∼ 1 + t
+que
+ln(1 + sin t)∼ ln(1 + t)
+car alors on compose à gauche les équivalents par x↦→ ln(1 + x).
+Pourtant c'est bien exact car
+ln(1 + sin t)
+ln(1 + t) = ln(1 + sin t)
+sin t
+sin t
+t
+t
+ln(1 + t)
+Donc la limite est 1.
+On a bien :
+1 + 2 x ∼
++∞
+3 + 2 x
+et
+ln(1 + 2 x) ∼
++∞
+ln(3 + 2 x)
+Lorsqu'on compose à gauche, il faut donc vérier dans chaque cas.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Domination, négligeabilité
+Equivalence
+Proposition
+Soient f, g :D→ R deux fonctions telle que f (x)∼
+a
+g(x).
+Si g est de signe constant (> 0 ou < 0 ) au voisinage de a, alors f
+est de même signe strict que g au voisinage de a.
+Si g admet une limite nie ou innie en a alors f admet une limite
+en a et lim
+x→a
+f (x) = lim
+x→a
+g(x).
+Démonstration.
+On a f (x)
+g (x)−→
+x→a
+1, donc par dénition de la limite, en posant ϵ = 1
+2 > 0, il
+existe r > 0 tel que ∀x∈ [a− r, a + r ]∩D,
+⏐⏐⏐⏐
+f (x)
+g (x)− 1
+⏐⏐⏐⏐≤ 1
+2 et pour
+x∈ [a− r, a + r ]∩D, f (x)
+f (x)≥ 1
+2 , donc f (x) et g (x) ont même signe strict.
+Supposons que g (x)−→
+x→a
+l. Pour tout x∈D , on a f (x) = f (x)
+g (x)× g (x),
+donc g (x)−→
+x→a
+l par opérations sur les limites.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Développements limités
+Dans toute cette section :
+I désignera un intervalle réel non vide et non réduit à un point
+a désignera un réel appartenant à ¯I (= I∪ {extrémité de I} )
+D désignera I ou I\{a}
+Toutes les fonctions considérées seront dénies sur D à valeurs dans
+K = R ou C.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Dénition
+On dit que f :D→ K admet un développement limité en a à l'ordre
+n∈ N (en abrégé DLn(a)) s'il existe (a0 ,..., an)∈ Kn+1 tel que
+f (x) = a0 + a1 (x− a) +··· + an(x− a)n + o ((x− a)n).
+Remarque On distingue dans ce développement limité :
+Sa partie régulière , qui est la fonction polynomiale :
+Pn(x) = a0 + a1 (x− a) +... + an(x− a)n =
+n∑
+k=0
+pk(x− a)k
+le reste o ((x− a)n), fonction négligeable devant (x− a)n lorsque
+x→ a, qui s'écrit aussi
+(x− a)nεn(x− a)
+où εn :D→ K est telle que lim
+x→0
+ε(x) = 0.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemples
+La fonction f : ] − 1 , +∞[ → R
+x ↦→ x− x 2 + x 3 ln(1 + x)
+admet un développement limité à l'ordre 3 en 0 .
+En eet, comme ln(1 + x)−→
+x→0
+0, on a x 3 ln(1 + x) = o
+(
+x 3 )
+, ce qui
+permet d'écrire :
+f (x) = x− x 2 + o
+(
+x 3 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+On sait que ∀n > 1
+1 − x n+1
+1 − x = 1 + x + x 2 +... + x n
+Donc
+1
+1 − x = 1 + x + x 2 +... + x n + x n+1
+1 − x
+Il vient 1
+1 − x− (1 + x + x 2 +... + x n) = x n x
+1 − x
+On en conclut que
+1
+1 − x =
+x→0
+1 + x + x 2 +... + x n + o(x n)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Proposition
+Une fonction f admet, au voisinage de a∈ R, un développement limité à
+l'ordre n
+si et seulement si
+la fonction g : h↦→ f (a + h) admet au voisinage de 0 un développement
+limité à l'ordre n.
+On a de plus
+f (x) =
+x→a
+n∑
+k=0
+ak(x−a)k +o ((x− a)n)⇐⇒ f (a+h) =
+h→0
+n∑
+k=0
+ak hk +o
+(
+hk)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+Calculons le DL2 (3 ) de f (x) = 1
+x . On pose h = x− 3. On a alors :
+f (x) = f (3 + h) = 1
+3 + h = 1
+3
+1
+1 + h
+3
+On utilise alors le DL en 0 de la fonction x→ 1
+1 − x calculé
+précédemment pour obtenir nalement :
+f (3 + h) = 1
+3
+(
+1 − h
+3 + h2
+9 + o
+(
+h2 ))
+et donc :
+f (x) = 1
+3 − (x− 3 )
+9 + (x− 3 )2
+27 + o
+(
+(x− 3 )2 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Proposition (Unicité d'un DL)
+Si f admet un développement limité à l'ordre n en a, celui-ci est unique.
+Démonstration.
+Par l'absurde, supposons que
+f (x) =
+n∑
+k=0
+ak(x− a)k + o ((x− a)n) =
+n∑
+k=0
+bk(x− a)k + o ((x− a)n)
+avec (a0 ,..., an)⁄= (b0 ,..., bn).
+Soit p le plus petit entier tel que bp⁄= ap.
+Alors, pour tout 0 ≤ k < p, on a ak− bk = 0 . On a
+f (x)−
+n∑
+k=0
+ak(x− a)k = o ((x− a)n) et
+f (x)−
+n∑
+k=0
+bk(x− a)k = o ((x− a)n).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Ainsi, pour tout x⁄= a :
+0 = f (x)− f (x) =
+n∑
+k=0
+(ak− bk) (x− a)k + o ((x− a)n)
+En divisant par (x− a)p :
+0 = (ap− bp) + (x− a)
+n∑
+k=p+1
+(ak− bk) (x− a)k−p−1 + o
+(
+(x− a)n−p)
+Donc
+0 −→
+x→a
+ap− bp
+D'où ap = bp, ce qui constitue une contradiction.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Proposition (Troncature d'un DL)
+Supposons que f admette un développement limité à l'ordre n en a,
+f (x) =
+x→a
+a0 + a1 (x− a) +··· + an(x− a)n + o ((x− a)n)
+Alors pour tout p∈ J0 , nK, f admet un développement limité à l'ordre p
+en a obtenu en tronquant le développement limité à l'ordre p :
+f (x) =
+x→a
+a0 + a1 (x− a) +··· + ap(x− a)p + o ((x− a)p)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Si f admet un développement limité à l'ordre n en a dont la partie
+régulière est x↦→
+n∑
+k=0
+ak(x− a)k , alors, pour tout p≤ n, on a :
+f (x) =
+n∑
+k=0
+ak(x− a)k + o ((x− a)n)
+=
+p∑
+k=0
+ak(x− a)k +
+n∑
+k=p+1
+ak(x− a)k + o ((x− a)n)
+=
+p∑
+k=0
+ak(x− a)k + (x− a)p
+n∑
+k=p+1
+ak(x− a)k−p + o ((x− a)n)
+=
+p∑
+k=0
+ak(x− a)k + (x− a)p
+n∑
+k=p+1
+ak(x− a)k−p + o ((x− a)n)
+| {z }
+o((x−a)p )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Proposition
+Si f est paire (resp. impaire) et admet un développement limité à l'ordre
+n en 0, ce développement limité ne contient que des termes pairs (resp.
+impairs).
+Démonstration.
+Supposons par exemple f paire, et notons
+f (x) = a0 + a1 x +··· + anx n + o (x n)
+son développement limité en 0 .
+On a alors
+f (x) = f (−x) = a0 + a1 (−x) +··· + an(−x)n + o (x n)
+car une fonction négligeable devant (−x)n l'est aussi devant x n. Par
+unicité du DL, ak = (−1 )k ak pour tout k∈ J0 , nK.
+On a donc pour tout k impair, ak =−ak donc ak = 0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Proposition
+Supposons que f admette un développement limité à l'ordre n en a de
+partie régulière non nulle :
+f (x) = a0 + a1 (x− a) +... + an(x− a)n + o ((x− a)n).
+Alors en notant p le plus petit entier tel que ap⁄= 0 , on a :
+f (x) ∼
+x→a
+ap(x− a)p
+Remarque
+f est donc du même signe strict que le premier terme non nul de son DL
+au voisinage de a.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Comme pour k∈ J0 , p− 1 K, ak = 0, on a
+f (x) = ap(x− a)p +··· + an(x− a)n + oa(x− a)n, puis
+f (x)
+ap(x− a)p = 1 + ap+1
+ap
+(x−a)+··· + an
+ap
+(x−a)n−p +o
+(
+(x− a)n−p)
+−→
+x→a
+1 .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Formule de T aylor-Y oung
+Théorème (Lemme de primitivation des développements limités)
+Soient I un intervalle, g∈ D(I, R), a∈ I et n∈ N.
+Si g′(x) =
+x→a
+o ((x− a)n) alors g(x) =
+x→a
+g(a) + o
+(
+(x− a)n+1 )
+.
+Démonstration.
+Pour tout x∈ I\{a}, g est continue sur [a, x] (ou [x, a] ) et dérivable sur ]a, x[
+(ou ]x, a[ ), donc d'après le théorème des accroissements
+nis : g (x)− g (a)
+x− a = g′ (cx ) pour un certain cx∈] a, x[ (ou ] x, a[).
+Ce procédé nous fournit une fonction c : I\{a}−→ R telle que pour tout
+x∈ I\{a} :|cx− a|<|x− a|.
+Par encadrement : lim
+x→a
+cx = a, donc :
+⏐⏐⏐⏐
+g (x)− g (a)
+(x− a)n+1
+⏐⏐⏐⏐ =
+⏐⏐⏐⏐
+g′ (cx )
+(x− a)n
+⏐⏐⏐⏐ =
+⏐⏐⏐⏐
+g′ (cx )
+(cx− a)n
+⏐⏐⏐⏐
+| {z }
+−→0
+x→0
+×
+⏐⏐⏐⏐
+cx− a
+x− a
+⏐⏐⏐⏐
+n
+| {z }
+⩽1
+−→
+x→a
+0
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Théorème (Primitivation des développements limités)
+Soient I un intervalle, f∈ D(I, R) et a∈ I.
+Si f′ possède un développement limité à l'ordre n au voisinage de a :
+f′(x) =
+n∑
+x→0
+ak(x− a)k + o ((x− a)n) avec a0 ,..., an∈ R,
+alors f possède un développement limité à l'ordre n + 1 au voisinage de
+a :
+f (x) = f (a) +
+n∑
+x=0
+ak
+(x− a)k+1
+k + 1 + o
+(
+(x− a)n+1 )
+.
+Remarque
+On peut donc toujours primitiver terme à terme le développement limité
+d'une dérivée !
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+La fonction x
+g
+−→ f (x)− f (a)−
+n∑
+k=0
+ak
+(x− a)k+1
+k + 1 est dérivable sur I et
+sa dérivée est la fonction x
+g ′
+−→ f′(x)−
+n∑
+k=0
+ak(x− a)k.
+Or ici : g′(x) =
+x→a
+o ((x− a)n),
+donc, d'après le lemme : g(x) = g(a) + o
+(
+(x− a)n+1 )
+, d'où le
+résultat.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+∀n∈ N∗ : ln(1 + x) =
+n∑
+k=1
+(−1 )k−1 x k
+k + o (x n)
+∀n∈ N∗ : ln(1 + x) = x− x 2
+2 + x 3
+3 − x 4
+4 +... + (−1 )n−1 x n
+n + o (x n).
+Démonstration.
+Puisque : 1
+1 − x =
+n−1∑
+k=0
+x k + o
+(
+x n−1 )
+, alors :
+1
+1 + x =
+n−1∑
+k=0
+(−1 )k x k + o
+(
+x n−1 )
+en remplaçant x par −x.
+Primitivons : ln(1 + x) =
+n∑
+k=1
+(−1 )k−1 x k
+k + o (x n) sachant que :
+ln 1 = 0 et que pour tout k∈ N, (−1 )k+1 = (−1 )k−1
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Théorème (Formule de Taylor Young)
+Soit I un intervalle, n∈ N, f∈ C n(I, R), et a∈ I .
+Alors f possède un développement limité à l'ordre n au voisinage de a et
+f (x) =
+n∑
+k=0
+f (k)(a)
+k! (x− a)k + o((x− a)n)
+Remarque
+Ce résultat est un théorème d'existence de développement limités.
+On a les résultats suivants :
+Continuité ⇔ existence d'un développement limité à l'ordre 0.
+Dérivabilité ⇔ existence d'un développement limité à l'ordre 1.
+f de classe C n⇒ existence d'un développement limité à l'ordre n
+ATTENTION La dernière proposition n'est qu'une implication.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Initialisation : Nous savons déjà que pour toute fonction f : I−→ R continue :
+f (x) = f (a) + o(1 ).
+Hérédité : Soit n∈ N.
+On suppose la proposition vraie au rang n.
+Soit f∈ C n +1 (I, R). La fonction f′ est de classe C n sur I , donc par hypothèse
+de récurrence :
+f′(x) =
+n∑
+k=0
+(f′)(k) (a)
+k! (x− a)k + o ((x− a)n)
+=
+n∑
+k=0
+f (k+1 )(a)
+k! (x− a)k + o ((x− a)n)
+Le théorème de primitivation des développements limités montre aussitôt le
+résultat souhaité :
+f (x) = f (a) +
+n∑
+k=0
+f (k+1 )(a)
+k!
+(x− a)k+1
+k + 1 + o
+(
+(x− a)n+1 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+f (x) = f (a) +
+n∑
+k=0
+f (k+1 )(a)
+k!
+(x− a)k+1
+k + 1 + o
+(
+(x− a)n+1 )
+= f (a) +
+n∑
+k=0
+f (k+1 )(a)
+(k + 1 )! (x− a)k+1 + o
+(
+(x− a)n+1 )
+= f (a) +
+n+1∑
+k=1
+f (k)(a)
+k! (x− a)k + o
+(
+(x− a)n+1 )
+=
+n+1∑
+k=0
+f (k)(a)
+k! (x− a)k + o
+(
+(x− a)n+1 )
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+Pour tout n∈ N : e x =
+n∑
+k=0
+x k
+k! + o (x n)
+e x = 1 + x + x 2
+2 + x 3
+6 + x 4
+24 +... + x n
+n! + o (x n).
+Pour tout n∈ N : cos x =
+n∑
+k=0
+(−1 )k x 2 k
+(2 k)! + o
+(
+x 2 n)
+cos x = 1 − x 2
+2 + x 4
+24 +... + (−1 )nx 2 n
+(2 n)! + o
+(
+x 2 n)
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Remarque.
+On l'a dit, la formule de Taylor-Young est dicile à appliquer en pratique
+pour obtenir un DL, car elle impose de calculer les dérivées successives de
+la fonction.
+On présente dans cette section des résultats permettant d'obtenir des DL
+à partir de DL connus :
+par intégration de DL.
+par opérations (combinaison linéaire, produits,...) sur les DL.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Combinaison linéaire, produit
+Proposition
+Supposons que f et g admettent des développements limités à l'ordre n
+en 0 :
+f (x) = Pn(x) + o (x n) et (x) = Qn(x) + o (x n).
+∀(λ,µ )∈ K2 , λf +µg a un développement limité à l'ordre n en 0 :
+et
+(λf +µg)(x)= (λPn +µQn) (x) + o (x n).
+fg a un développement limité à l'ordre n en 0 et
+(fg)(x)=Tn(PQ)(x) + o (x n)
+où Tn(PQ) désigne la troncature à l'ordre n du polynôme PQ.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+On a :
+(λf +µg)(x) =
+x→0
+(λPn +µQn) (x) + o (x n)
+C'est le DLn(0 ) de λf +µg car λPn +µQn est une fonction
+polynomiale de degré ≤ n.
+On a par produit des développements limités :
+f (x)g(x) =
+x→0
+(Pn(x) + o (x n)) (Qn(x) + o (x n)) = Pn(x)Qn(x)+o (x n)
+car Pn(x)o (x n) + Qn(x)o (x n) + o (x n) o (x n) est négligeable devant
+x n en 0 . On sait que Pn(x)Qn(x) = Tn (PnQn) (x) + x n+1 Rn(x) où
+Rn est une fonction polynomiale. On en déduit que
+Pn(x)Qn(x) = Tn (PnQn) (x) + o (x n) et donc :
+f (x)g(x) =
+x→0
+Tn (PnQn) (x) + o (x n)
+qui est le DLn(0 ) de fg car Tn (PnQn) est une fonction polynomiale
+de degré ≤ n.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+Calculons le DL3 (0 ) de x↦→ cos x sin x :
+cos x sin x =
+(
+1 − x 2
+2 + o
+(
+x 3 ))(
+x− x 3
+6 + o
+(
+x 3 ))
+= x− x 3
+6 − x 3
+2 + o
+(
+x 3 )
+= x− 2
+3 x 3 + o
+(
+x 3 )
+Calculons le DL3 (0 ) de la fonction f : x↦→ e x
+1 − x .
+1
+1 − x = 1 + x + x 2 + x 3 + o
+(
+x 3 )
+et e x = 1 + x + x 2
+2 + x 3
+6 + o
+(
+x 3 )
+D'où par produit :
+f (x) =
+(
+1 + x + x 2 + x 3 + o
+(
+x 3 ))(
+1 + x + x 2
+2 + x 3
+6 + o
+(
+x 3 ))
+ce qui donne, en développant et en simpliant :
+f (x) = 1 + (x + x) +
+( x 2
+2 + x 2 + x 2
+)
++
+( x 3
+6 + x 3
+2 + 2 x 3
+)
++ o
+(
+x 3 )
+= 1 + 2 x + 5
+2 x 2 + 8
+3 x 3 + o
+(
+x 3 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Composition
+Proposition
+Si f : I→ J et g : J→ K ont des développements limités en 0 à l'ordre
+n :
+f (x) = Pn(x) + o (x n) ; g(x) = Qn(x) + o (x n),
+si lim
+x→0
+f (x) = 0 , alors la composée g◦ f a un développement limité
+g◦ f (x) = Tn (Qn◦ Pn) (x) + o (x n).
+Démonstration.
+Puisque lim
+x→0
+f (x) = 0, on peut factoriser dans le DL de f en 0 :
+f (x) = Pn(x) + o (x n) = x
+(
+Pn−1 (x) + o
+(
+x n−1 ))
+.
+g◦ f (x) =
+n∑
+k=0
+qk (Pn(x) + o (x n))k + x n(
+Pn−1 (x) + o
+(
+x n−1 ))n
+εg (f (x)).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+On regarde à présent chaque terme de cette expression :
+(Pn(x) + o (x n))k : en développant par la formule du binôme, on a
+un terme en (Pn(x))k et tous les autres termes contiennent o (x n) et
+sont négligeables devant x n. Ainsi, on a :
+(Pn(x) + o (x n))k = (Pn(x))k + o (x n).
+x n(
+Pn−1 (x) + o
+(
+x n−1 ))n
+εg (f (x)) : on a
+lim
+x→0
+(
+Pn−1 (x) + o
+(
+x n−1 ))n
+εg (f (x)) = 0, donc :
+x n(
+Pn−1 (x) + o
+(
+x n−1 ))n
+εg (f (x)) = o (x n).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Finalement, on obtient que :
+g◦ f (x) =
+n∑
+k=0
+qk (Pn(x))k + o (x n) = Qn◦ Pn(x) + o (x n).
+Et comme Qn(x)◦ Pn(x) = Tn (Qn◦ Pn) (x) + x n+1 Rn(x) où Rn est une
+fonction polynomiale, on en déduit que
+Qn(x)◦ Pn(x) = Tn (Qn◦ Pn) (x) + o (x n)
+C'est bien le DLn(0 ) de g◦ f car Tn (Qn◦ Pn) est une fonction
+polynomiale de degré ≤ n.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+Déterminons le DL4 (0 ) de x↦→ f (x) = (1 + x)x . Pour tout
+x∈ I, f (x) = ex ln(1 +x) avec lim
+x→0
+x ln(1 + x) = 0 .
+On utilise la composition des DL. Le développement limité à l'ordre 4 de
+x↦→ x ln(1 + x) s'écrit :
+x ln(1 + x) = x
+(
+x− x 2
+2 + x 3
+3 + o
+(
+x 3 ))
+= x 2 − x 3
+2 + x 4
+3 + o
+(
+x 4 )
+| {z }
+=u(x)
+.
+On a u(x)2 = x 4 + o
+(
+x 4 )
+, u(x)3 = o
+(
+x 4 )
+. Il sut donc de faire le
+DL2 (0 ) de l'exponentielle :
+eu = 1 + u + u2
+2 + o
+(
+u2 )
+On obtient en substituant (composition à droite) :
+(1 +x)x = 1 +
+(
+x 2 − x 3
+2 + x 4
+3
+)
++ 1
+2 x 4 +o
+(
+x 4 )
+= 1 +x 2− x 3
+2 + 5
+6 x 4 +o
+(
+x 4 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Quotient de DL
+Proposition
+Soient f, g :D→ K.
+Si f et g ont des développements limités à l'ordre n en 0 et si g admet
+une limite nie non nulle en 0,
+alors f
+g admet un développement limité à l'ordre n en 0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Démonstration.
+Puisque lim
+x→0
+g (x) = 𝓁⁄= 0, il existe un intervalle J contenant 0 et inclus dans I
+sur lequel g ne s'annule pas sur D∩ J, et la fonction f
+g est dénie sur D∩ J.
+Écrivons g (x) = 𝓁(1 + u(x)) (où u(x) = g (x)−𝓁
+𝓁 ).
+On a alors : Puisque lim
+x→0
+u(x) = 0 et que u admet un DLn(0 ) (car c'est le cas
+pour g ), on en déduit que x↦→ 1
+1 + u(x) admet un DLn(0 ) par composition
+des DLn(0 ) de x↦→ 1
+1 + x et de x↦→ u(x).
+On obtient ainsi le DLn(0 ) de f
+g en multipliant le DLn(0 ) ainsi obtenu avec
+celui de f .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Remarque
+Pour faire le DL en 0 d'un quotient x↦→ 1
+g(x) avec lim
+0
+g⁄= 0, on se
+ramènera toujours (comme dans la preuve précédente) à un
+développement limité d'une fonction de la forme :
+x↦→ 1
+1 + u(x) avec u(x)−→
+x→0
+0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple Déterminons le DL5 (0 ) de tan.
+tan x = sin x
+cos x = sin x
+1 − x 2
+2 + x 4
+24 + o
+(
+x 5 )
+| {z }
+=u(x)
+= sin x× 1
+1 + u(x)
+= sin x×
+(
+1 − u(x) + u(x)2 − u(x)3 + u(x)4 − u(x)5 + o
+(
+x 5 ))
+On a u(x)2 = x 2
+4 + o
+(
+x 4 )
+, u(x)3 = o
+(
+x 4 )
+.
+D'où en substituant :
+tan x =
+x→0
+(
+x− x 3
+6 + x 5
+120 + o
+(
+x 5 ))(
+1 + x 2
+2 − x 4
+24 + x 4
+4 + o
+(
+x 4 ))
+=
+(
+x− x 3
+6 + x 5
+120 + o
+(
+x 5 ))(
+1 + x 2
+2 + 5 x 4
+24 + o
+(
+x 4 ))
+= x− x 3
+6 + x 5
+120 + x 3
+2 − x 5
+12 + 5 x 5
+24 + o
+(
+x 5 )
+= x + x 3
+3 + 2 x 5
+15 + o
+(
+x 5 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Remarque
+Si g tend vers 0, il est encore possible que la fonction f
+g possède un
+développement limité : si f et g admettent des DLn(0 ) de formes normalisées :
+f (x) = x p1 (
+ap1 + ap1 +1 x +... + an1 x n1−p1 + o
+(
+x n1−p1 ))
+g (x) = x p2 (
+bp2 + bp2 +1 x +... + bn2 x n2−p2 + o
+(
+x n2−p2 ))
+avec ap1 , bp2 ⁄= 0, alors le quotient s'écrit :
+f (x)
+g (x) = x p1−p2
+(
+ap1 + ap1 +1 x +... + an1 x n1−p1 + o
+(
+x n1−p1
+)
+bp2 + bp2 +1 x +... + bn2 x n2−p2 + o (x n2−p2 )
+)
+| {z }
+=h(x)
+Comme bp2 ⁄= 0, la proposition précédente, assure que la fonction h possède un
+développement limité.
+De plus, le terme constant du développement limité de la fonction h vaut ap1
+bp2
+donc est non nul.
+Par suite f
+g admet un développement limité si et seulement si p1 − p2 ∈ N,
+c'est à dire p2 ≤ p1 , et son ordre est min (n1 − p1 , n2 − p2 ).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Exemple
+Déterminer, s'il existe, le DL3 (0 ) de la fonction x↦→ ex− 1 − x
+ln(1 + x) .
+Prédiction de l'ordre des DL à choisir (au brouillon) :
+f (x) = ex− 1 − x
+ln(1 + x) =
+x 2
+2 + x 3
+6 + x 4
+24 +...
+x + x 2
+2 + x 3
+3 +... =
+x 2
+(
+1
+2 + x
+6 + x 2
+24 +...
+)
+x
+(
+1 + x
+2 + x 2
+3 +...
+)
+= x×
+[
+1
+2 + x
+6 + x 2
+24 +...
+1 + x
+2 + x 2
+3 +...
+]
+| {z }
+=h(x)
+Pour obtenir le DL3 (0 ) de f , il faut donc le DL2 (0 ) de h ce qui
+nécessite un DL2 (0 ) du numérateur et du dénominateur de h. Cela
+nécessite donc un DL4 (0 ) de x↦→ ex− 1 − x (on a factorisé par x 2 )
+et un DL3 (0 ) de x↦→ ln(1 + x) (on a factorisé par x ).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Rédaction :
+e x−1 −x = x 2
+2 + x 3
+6 + x 4
+24 +o
+(
+x 4 )
+et ln(1 +x) = x− x 2
+2 + x 3
+3 +o
+(
+x 3 )
+ou sous forme normalisée :
+e x−1−x = x 2
+( 1
+2 + x
+6 + x 2
+24 + o
+(
+x 2 ))
+et ln(1 +x) = x
+(
+1 − x
+2 + x 2
+3 + o
+(
+x 2 ))
+On obtient l'écriture suivante :
+f (x) = x×
+( 1
+2 + x
+6 + x 2
+24 + o
+(
+x 2 ))
+× 1
+1 − x
+2 + x 2
+3 + o
+(
+x 2 )
+| {z }
+=u(x)
+Comme on a :
+u(x)2 = x 2
+4 + o
+(
+x 2 )
+on obtient :
+1
+1 − x
+2 + x 2
+3 + o (x 2 )
+= 1
+1 − u(x) = 1 + x
+2 − x 2
+12 + o
+(
+x 2 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Généralités
+Formule de T aylor-Y oung
+Opérations sur les D.L.
+Pour obtenir le développement limité de f cherché, il reste à calculer le
+produit :
+f (x) = x
+( 1
+2 + x
+6 + x 2
+24 + o
+(
+x 2 ))
+×
+(
+1 + x
+2 − x 2
+12 + o
+(
+x 2 ))
+= x
+( 1
+2 +
+( x
+4 + x
+6
+)
++
+(
+− x 2
+24 + x 2
+12 + x 2
+24
+)
++ o
+(
+x 2 ))
+= x
+( 1
+2 + 5 x
+2 + x 2
+12 + o
+(
+x 2 ))
+= x
+2 + 5 x 2
+2 + x 3
+12 + o
+(
+x 3 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Application des Développements Limités
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Rappel
+Supposons que f admette un développement limité à l'ordre n en a de
+partie régulière non nulle. On écrit sa forme normalisée :
+f (x) = (x−a)p(
+ap + ap+1 (x− a) +... + an−p(x− a)n−p + o
+(
+(x− a)n−p)
+.
+Alors on a : f (x) ∼
+x→a
+ap(x− a)p
+Exemple
+Déterminons un équivalent au voisinage de 0 de sin(2 x)− sh(2 x)
+(2 x− sin x− tan x)2 .
+Cherchons un équivalent du numérateur :
+sin(2 x) = 2 x− 4
+3 x 3 + o
+(
+x 3 )
+et sh(2 x) = 2 x + 4
+3 x 3 + o
+(
+x 3 )
+ce qui donne : sin(2 x)− sh(2 x)∼− 8
+3 x 3 .
+Cherchons un équivalent du dénominateur.
+2 x− sin x− tan x = 2 x−
+(
+x− 1
+6 x 3 + o
+(
+x 3 ))
+−
+(
+x + 1
+3 x 3 + o
+(
+x 3 ))
+=− 1
+6 x 3 + o
+(
+x 3 )
+∼− 1
+6 x 3
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+On en déduit par produit et quotient d'équivalents :
+sin(2 x)− sh(2 x)
+(2 x− sin x tan x)2 ∼ − 8
+3 x 3
+(
+− 1
+6 x 3 )2 ∼− 96
+x 3
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Rappel Si f admet un DL1 (a), f est dérivable en a et la courbe
+représentative de f admet une tangente en a.
+Pour déterminer la position relative de la courbe représentative d'une
+fonction f par rapport à sa tangente, on cherche un equivalent de
+x↦→ f (x)− f (a)− (x− a)f′(a) en a en eectuant un DL de f :
+f (x)−f (a)−f′(a)(x−a)∼ ap(x−a)p avec ap∈ R∗ et p∈ N\{0 , 1}
+Alors x↦→ f (x)− f (a)− f′(a)(x− a) est du signe de ap(x− a)p au
+voisinage de a :
+si p est pair, f (x)− f (a)− f′(a)(x− a) est de signe constant au
+voisinage de a. La courbe est au-dessus ou en-dessous de sa
+tangente en a (suivant le signe de ap ).
+si p est impair, f (x)− f (a)− f′(a)(x− a) change de signe en a.
+La courbe traverse sa tangente en a. On parle de point d'inexion.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+x
+y
+1
+1
+0
+DL1 (0 )DL2 (0 )DL3 (0 )
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Remarque.
+Dans le cas d'un point critique a, c'est à dire si f′(a) = 0, cette étude
+nous dit si on a un extremum local (si n pair) ou non (si n est impair).
+Exemple
+Soit f : x↦→ cos x− 1
+x .f admet le DL3 (0 ) suivant :
+f (x) =− 1
+2 x + 1
+24 x 3 + o
+(
+x 3 )
+Ainsi f est dérivable en 0, et f′(0 ) =− 1
+2 . Comme f (x) + 1
+2 x ∼
+x→0
+1
+24 x 3 ,
+qui change de signe en 0, la courbe représentative de f traverse sa
+tangente en 0 . Ainsi f admet un point d'inexion en 0 .
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Dénition
+Soit f : I→ R dénie au voisinage de ±∞. On dit que f possède un
+DLn(±∞) si la fonction g : u→ f
+( 1
+u
+)
+possède un DLn(0 ).
+Exemple Calculons le DL2 (∞) de f : x↦→ x
+x− 1 . On pose u = 1
+x. Alors
+g(u) = 1
+1 − u =
+u→0
+1 + u + u2 + o
+(
+u2 )
+et on en déduit le DL2 (∞) de f :
+f (x) =
+x→+∞
+1 + 1
+x + 1
+x 2 + o
+( 1
+x 2
+)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Dénition
+Soit f : I→ R.
+On dit que f admet une asymptote oblique en ±∞
+s'il existe (a, b)∈ R2 tel que f (x)− ax− b tende vers 0 en ±∞.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Soit f : I→ R telle que f (x) −→
+x→+∞
+±∞.
+On souhaite préciser son comportement en +∞, en étudiant l'existence
+éventuelle d'une asymptote oblique et sa position relative par rapport à
+Cf. Pour cela, on procèdera comme suit :
+On eectue un DL2 (+∞) de f (x)
+x :
+f (x)
+x =
+x→+∞
+a0 + a1
+x + a2
+x 2 + o
+(
+1 /x 2 )
+.
+En multipliant par x, il vient f (x) =
+x→+∞
+a0 x + a1 + a2
+x + o(1 /x). La
+courbe admet alors la droite y = a0 x + a1 pour asymptote oblique
+en +∞.
+La position de la courbe de f par rapport à l'asymptote oblique est
+donnée par le signe de a2
+x (si a2 = 0, on augmente l'ordre du DL
+jusqu'à trouver un coecient non nul).
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Soit f : x↦→
+√
+x 3
+x− 1 . Déterminons l'asymptote éventuelle de f en +∞.
+x
+y
+1
+1
+0
+DL1 (+∞)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+Exemple. Soit f : x↦→
+√
+x 3
+x− 1 . Déterminons l'asymptote éventuelle de
+f en +∞.
+On pose u = 1
+x et on étudie f (x)
+x = uf
+(
+u−1 )
+= 1√1 − u (on recherche
+l'asymptote en +∞, donc 0 < u< 1 ).
+On eectue le DL(0 ) de u↦→ 1√1 − u :
+1√1 − u = 1 + u
+2 + 3 u2
+8 + o
+u→0
+(
+u2 )
+Donc on obtient f (x) = x + 1
+2 + 3
+8 x + o
+x→+∞
+(
+x−1 )
+.
+La droite y = x + 1
+2 est asymptote à la courbe et le graphe de f est
+au-dessus de l'asymptote au voisinage de +∞ ( car
+f (x)− x− 1
+2 ∼ 3
+8 x > 0
+)
+.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+DÉVELOPPEMENTS LIMITÉS USUELS
+Les formules du tableau qui suit doivent être connues PAR COEUR sans
+délai et sans la moindre hésitation.
+Pour les fonctions paires, les développements limités sont donnés à
+l'ordre 2 n pour tout n∈ N, mais par exemple, puisque vous connaissez un
+développement limité de la fonction cosinus au voisinage de 0 aux ordres
+0 , 2 , 4 , 6 ... , bien sûr que vous en connaissez un à l'ordre 3 , il sut de
+tronquer au bon endroit : cos x = 1 − x 2
+2 + o
+(
+x 3 )
+.
+Notez bien que ce développement est PLUS FIN que le développement à
+l'ordre 2 : cos x =
+x→0
+1 − x 2
+2 + o
+(
+x 2 )
+. Sur le développement à l'ordre 3,
+on ne voit pas de terme d'ordre 3 mais ce n'est qu'une impression, IL Y A
+UN TERME D'ORDRE 3 , avec un coecient 0 .
+À l'ordre 2, c'est diérent, on ne voit pas de terme d'ordre 3 parce qu'un
+tel terme est réellement invisble à ce niveau de précision.
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+1
+1 − x =
+n∑
+x→0
+x k + o (x n) =
+x→0
+= 1 + x + x 2 +... + x n + o (x n)
+ln(1 + x) =
+x→0
+n∑
+k=1
+(−1 )k−1 x k
+k + o (x n)
+ln(1 + x) =
+x→0
+x− x 2
+2 + x 3
+3 − x 4
+4 +... + (−1 )n−1 x n
+n + o (x n)
+e x =
+x→0
+n∑
+k=0
+x k
+k! + o (x n) =
+x→0
+1 + x + x 2
+2 + x 3
+6 + x 4
+24 +... + x n
+n! + o (x n)
+(1 + x)α =
+x→0
+1 +αx + α(α− 1 )
+2 x 2 + α(α− 1 )(α− 2 )
+6 x 3 +...
++α(α− 1 )(α− 2 )... (α− n + 1 )
+n! x n + o (x n)
+D. Cransac Analyse
+<<<PAGE>>>
+Relations de comparaisons de suites
+Relations de comparaisons de fonctions
+Développements limités
+Application des DL
+Recherche de limites et équivalents
+Etude locale de fonctions
+Application à l'étude d'asymptotes obliques
+sin x =
+x→0
+n∑
+k=0
+(−1 )k x 2 k+1
+(2 k + 1 )! + o
+(
+x 2 n+1 )
+sin x =
+x→0
+x− x 3
+6 + x 5
+120 +... + (−1 )n x 2 n+1
+(2 n + 1 )! + o
+(
+x 2 n+1 )
+cos x =
+x→0
+n∑
+k=0
+(−1 )k x 2 k
+(2 k)! + o
+(
+x 2 n)
+cos x = 1 − x 2
+2 + x 4
+24 +... + (−1 )n x 2 n
+(2 n)! + o
+(
+x 2 n)
+Arctan x =
+n∑
+x→0
+(−1 )k x 2 k+1
+2 k + 1 + o
+(
+x 2 n+1 )
+Arctan x = x− x 3
+3 + x 5
+5 − x 7
+7 +... + (−1 )n x 2 n+1
+2 n + 1 + o
+(
+x 2 n+1 )
+tan x =
+x→0
+x + x 3
+3 + o
+(
+x 3 )
+D. Cransac Analyse
